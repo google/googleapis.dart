@@ -1,3 +1,7 @@
+## 1.1.0-dev
+
+- Add positional parameters to all schema types.
+
 ## 1.0.0
 
 - Generates null-safe code.

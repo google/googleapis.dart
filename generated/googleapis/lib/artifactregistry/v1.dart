@@ -463,28 +463,34 @@ class AptArtifact {
   /// - "SOURCE" : Source package.
   core.String? packageType;
 
-  AptArtifact();
+  AptArtifact({
+    this.architecture,
+    this.component,
+    this.controlFile,
+    this.name,
+    this.packageName,
+    this.packageType,
+  });
 
-  AptArtifact.fromJson(core.Map _json) {
-    if (_json.containsKey('architecture')) {
-      architecture = _json['architecture'] as core.String;
-    }
-    if (_json.containsKey('component')) {
-      component = _json['component'] as core.String;
-    }
-    if (_json.containsKey('controlFile')) {
-      controlFile = _json['controlFile'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('packageName')) {
-      packageName = _json['packageName'] as core.String;
-    }
-    if (_json.containsKey('packageType')) {
-      packageType = _json['packageType'] as core.String;
-    }
-  }
+  AptArtifact.fromJson(core.Map _json)
+      : this(
+          architecture: _json.containsKey('architecture')
+              ? _json['architecture'] as core.String
+              : null,
+          component: _json.containsKey('component')
+              ? _json['component'] as core.String
+              : null,
+          controlFile: _json.containsKey('controlFile')
+              ? _json['controlFile'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          packageName: _json.containsKey('packageName')
+              ? _json['packageName'] as core.String
+              : null,
+          packageType: _json.containsKey('packageType')
+              ? _json['packageType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (architecture != null) 'architecture': architecture!,
@@ -563,33 +569,38 @@ class DockerImage {
   /// Required.
   core.String? uri;
 
-  DockerImage();
+  DockerImage({
+    this.buildTime,
+    this.imageSizeBytes,
+    this.mediaType,
+    this.name,
+    this.tags,
+    this.uploadTime,
+    this.uri,
+  });
 
-  DockerImage.fromJson(core.Map _json) {
-    if (_json.containsKey('buildTime')) {
-      buildTime = _json['buildTime'] as core.String;
-    }
-    if (_json.containsKey('imageSizeBytes')) {
-      imageSizeBytes = _json['imageSizeBytes'] as core.String;
-    }
-    if (_json.containsKey('mediaType')) {
-      mediaType = _json['mediaType'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('tags')) {
-      tags = (_json['tags'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('uploadTime')) {
-      uploadTime = _json['uploadTime'] as core.String;
-    }
-    if (_json.containsKey('uri')) {
-      uri = _json['uri'] as core.String;
-    }
-  }
+  DockerImage.fromJson(core.Map _json)
+      : this(
+          buildTime: _json.containsKey('buildTime')
+              ? _json['buildTime'] as core.String
+              : null,
+          imageSizeBytes: _json.containsKey('imageSizeBytes')
+              ? _json['imageSizeBytes'] as core.String
+              : null,
+          mediaType: _json.containsKey('mediaType')
+              ? _json['mediaType'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          tags: _json.containsKey('tags')
+              ? (_json['tags'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          uploadTime: _json.containsKey('uploadTime')
+              ? _json['uploadTime'] as core.String
+              : null,
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (buildTime != null) 'buildTime': buildTime!,
@@ -627,18 +638,22 @@ class ImportAptArtifactsErrorInfo {
   /// Google Cloud Storage location requested.
   ImportAptArtifactsGcsSource? gcsSource;
 
-  ImportAptArtifactsErrorInfo();
+  ImportAptArtifactsErrorInfo({
+    this.error,
+    this.gcsSource,
+  });
 
-  ImportAptArtifactsErrorInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('error')) {
-      error = Status.fromJson(
-          _json['error'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('gcsSource')) {
-      gcsSource = ImportAptArtifactsGcsSource.fromJson(
-          _json['gcsSource'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ImportAptArtifactsErrorInfo.fromJson(core.Map _json)
+      : this(
+          error: _json.containsKey('error')
+              ? Status.fromJson(
+                  _json['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          gcsSource: _json.containsKey('gcsSource')
+              ? ImportAptArtifactsGcsSource.fromJson(
+                  _json['gcsSource'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (error != null) 'error': error!.toJson(),
@@ -654,18 +669,22 @@ class ImportAptArtifactsGcsSource {
   /// Supports URI wildcards for matching multiple objects from a single URI.
   core.bool? useWildcards;
 
-  ImportAptArtifactsGcsSource();
+  ImportAptArtifactsGcsSource({
+    this.uris,
+    this.useWildcards,
+  });
 
-  ImportAptArtifactsGcsSource.fromJson(core.Map _json) {
-    if (_json.containsKey('uris')) {
-      uris = (_json['uris'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('useWildcards')) {
-      useWildcards = _json['useWildcards'] as core.bool;
-    }
-  }
+  ImportAptArtifactsGcsSource.fromJson(core.Map _json)
+      : this(
+          uris: _json.containsKey('uris')
+              ? (_json['uris'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          useWildcards: _json.containsKey('useWildcards')
+              ? _json['useWildcards'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (uris != null) 'uris': uris!,
@@ -681,23 +700,27 @@ class ImportAptArtifactsResponse {
   /// Detailed error info for packages that were not imported.
   core.List<ImportAptArtifactsErrorInfo>? errors;
 
-  ImportAptArtifactsResponse();
+  ImportAptArtifactsResponse({
+    this.aptArtifacts,
+    this.errors,
+  });
 
-  ImportAptArtifactsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('aptArtifacts')) {
-      aptArtifacts = (_json['aptArtifacts'] as core.List)
-          .map<AptArtifact>((value) => AptArtifact.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('errors')) {
-      errors = (_json['errors'] as core.List)
-          .map<ImportAptArtifactsErrorInfo>((value) =>
-              ImportAptArtifactsErrorInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ImportAptArtifactsResponse.fromJson(core.Map _json)
+      : this(
+          aptArtifacts: _json.containsKey('aptArtifacts')
+              ? (_json['aptArtifacts'] as core.List)
+                  .map<AptArtifact>((value) => AptArtifact.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          errors: _json.containsKey('errors')
+              ? (_json['errors'] as core.List)
+                  .map<ImportAptArtifactsErrorInfo>((value) =>
+                      ImportAptArtifactsErrorInfo.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (aptArtifacts != null)
@@ -715,18 +738,22 @@ class ImportYumArtifactsErrorInfo {
   /// Google Cloud Storage location requested.
   ImportYumArtifactsGcsSource? gcsSource;
 
-  ImportYumArtifactsErrorInfo();
+  ImportYumArtifactsErrorInfo({
+    this.error,
+    this.gcsSource,
+  });
 
-  ImportYumArtifactsErrorInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('error')) {
-      error = Status.fromJson(
-          _json['error'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('gcsSource')) {
-      gcsSource = ImportYumArtifactsGcsSource.fromJson(
-          _json['gcsSource'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ImportYumArtifactsErrorInfo.fromJson(core.Map _json)
+      : this(
+          error: _json.containsKey('error')
+              ? Status.fromJson(
+                  _json['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          gcsSource: _json.containsKey('gcsSource')
+              ? ImportYumArtifactsGcsSource.fromJson(
+                  _json['gcsSource'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (error != null) 'error': error!.toJson(),
@@ -742,18 +769,22 @@ class ImportYumArtifactsGcsSource {
   /// Supports URI wildcards for matching multiple objects from a single URI.
   core.bool? useWildcards;
 
-  ImportYumArtifactsGcsSource();
+  ImportYumArtifactsGcsSource({
+    this.uris,
+    this.useWildcards,
+  });
 
-  ImportYumArtifactsGcsSource.fromJson(core.Map _json) {
-    if (_json.containsKey('uris')) {
-      uris = (_json['uris'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('useWildcards')) {
-      useWildcards = _json['useWildcards'] as core.bool;
-    }
-  }
+  ImportYumArtifactsGcsSource.fromJson(core.Map _json)
+      : this(
+          uris: _json.containsKey('uris')
+              ? (_json['uris'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          useWildcards: _json.containsKey('useWildcards')
+              ? _json['useWildcards'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (uris != null) 'uris': uris!,
@@ -769,23 +800,27 @@ class ImportYumArtifactsResponse {
   /// The yum artifacts updated.
   core.List<YumArtifact>? yumArtifacts;
 
-  ImportYumArtifactsResponse();
+  ImportYumArtifactsResponse({
+    this.errors,
+    this.yumArtifacts,
+  });
 
-  ImportYumArtifactsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('errors')) {
-      errors = (_json['errors'] as core.List)
-          .map<ImportYumArtifactsErrorInfo>((value) =>
-              ImportYumArtifactsErrorInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('yumArtifacts')) {
-      yumArtifacts = (_json['yumArtifacts'] as core.List)
-          .map<YumArtifact>((value) => YumArtifact.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ImportYumArtifactsResponse.fromJson(core.Map _json)
+      : this(
+          errors: _json.containsKey('errors')
+              ? (_json['errors'] as core.List)
+                  .map<ImportYumArtifactsErrorInfo>((value) =>
+                      ImportYumArtifactsErrorInfo.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          yumArtifacts: _json.containsKey('yumArtifacts')
+              ? (_json['yumArtifacts'] as core.List)
+                  .map<YumArtifact>((value) => YumArtifact.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errors != null)
@@ -804,19 +839,23 @@ class ListDockerImagesResponse {
   /// more artifacts to return.
   core.String? nextPageToken;
 
-  ListDockerImagesResponse();
+  ListDockerImagesResponse({
+    this.dockerImages,
+    this.nextPageToken,
+  });
 
-  ListDockerImagesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('dockerImages')) {
-      dockerImages = (_json['dockerImages'] as core.List)
-          .map<DockerImage>((value) => DockerImage.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListDockerImagesResponse.fromJson(core.Map _json)
+      : this(
+          dockerImages: _json.containsKey('dockerImages')
+              ? (_json['dockerImages'] as core.List)
+                  .map<DockerImage>((value) => DockerImage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dockerImages != null)
@@ -833,19 +872,23 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse();
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
 
-  ListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('operations')) {
-      operations = (_json['operations'] as core.List)
-          .map<Operation>((value) =>
-              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListOperationsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          operations: _json.containsKey('operations')
+              ? (_json['operations'] as core.List)
+                  .map<Operation>((value) => Operation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -863,19 +906,23 @@ class ListRepositoriesResponse {
   /// The repositories returned.
   core.List<Repository>? repositories;
 
-  ListRepositoriesResponse();
+  ListRepositoriesResponse({
+    this.nextPageToken,
+    this.repositories,
+  });
 
-  ListRepositoriesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('repositories')) {
-      repositories = (_json['repositories'] as core.List)
-          .map<Repository>((value) =>
-              Repository.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListRepositoriesResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          repositories: _json.containsKey('repositories')
+              ? (_json['repositories'] as core.List)
+                  .map<Repository>((value) => Repository.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -927,36 +974,39 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object>? response;
 
-  Operation();
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
-  Operation.fromJson(core.Map _json) {
-    if (_json.containsKey('done')) {
-      done = _json['done'] as core.bool;
-    }
-    if (_json.containsKey('error')) {
-      error = Status.fromJson(
-          _json['error'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('response')) {
-      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-  }
+  Operation.fromJson(core.Map _json)
+      : this(
+          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
+          error: _json.containsKey('error')
+              ? Status.fromJson(
+                  _json['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          response: _json.containsKey('response')
+              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
@@ -1008,36 +1058,43 @@ class Repository {
   /// The time when the repository was last updated.
   core.String? updateTime;
 
-  Repository();
+  Repository({
+    this.createTime,
+    this.description,
+    this.format,
+    this.kmsKeyName,
+    this.labels,
+    this.name,
+    this.updateTime,
+  });
 
-  Repository.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('format')) {
-      format = _json['format'] as core.String;
-    }
-    if (_json.containsKey('kmsKeyName')) {
-      kmsKeyName = _json['kmsKeyName'] as core.String;
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  Repository.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          format: _json.containsKey('format')
+              ? _json['format'] as core.String
+              : null,
+          kmsKeyName: _json.containsKey('kmsKeyName')
+              ? _json['kmsKeyName'] as core.String
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -1075,27 +1132,30 @@ class Status {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  Status();
+  Status({
+    this.code,
+    this.details,
+    this.message,
+  });
 
-  Status.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.int;
-    }
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  Status.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -1109,14 +1169,17 @@ class UploadAptArtifactMediaResponse {
   /// Operation to be returned to the user.
   Operation? operation;
 
-  UploadAptArtifactMediaResponse();
+  UploadAptArtifactMediaResponse({
+    this.operation,
+  });
 
-  UploadAptArtifactMediaResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('operation')) {
-      operation = Operation.fromJson(
-          _json['operation'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  UploadAptArtifactMediaResponse.fromJson(core.Map _json)
+      : this(
+          operation: _json.containsKey('operation')
+              ? Operation.fromJson(
+                  _json['operation'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (operation != null) 'operation': operation!.toJson(),
@@ -1130,16 +1193,19 @@ class UploadAptArtifactResponse {
   /// The Apt artifacts updated.
   core.List<AptArtifact>? aptArtifacts;
 
-  UploadAptArtifactResponse();
+  UploadAptArtifactResponse({
+    this.aptArtifacts,
+  });
 
-  UploadAptArtifactResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('aptArtifacts')) {
-      aptArtifacts = (_json['aptArtifacts'] as core.List)
-          .map<AptArtifact>((value) => AptArtifact.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  UploadAptArtifactResponse.fromJson(core.Map _json)
+      : this(
+          aptArtifacts: _json.containsKey('aptArtifacts')
+              ? (_json['aptArtifacts'] as core.List)
+                  .map<AptArtifact>((value) => AptArtifact.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (aptArtifacts != null)
@@ -1152,14 +1218,17 @@ class UploadYumArtifactMediaResponse {
   /// Operation to be returned to the user.
   Operation? operation;
 
-  UploadYumArtifactMediaResponse();
+  UploadYumArtifactMediaResponse({
+    this.operation,
+  });
 
-  UploadYumArtifactMediaResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('operation')) {
-      operation = Operation.fromJson(
-          _json['operation'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  UploadYumArtifactMediaResponse.fromJson(core.Map _json)
+      : this(
+          operation: _json.containsKey('operation')
+              ? Operation.fromJson(
+                  _json['operation'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (operation != null) 'operation': operation!.toJson(),
@@ -1173,16 +1242,19 @@ class UploadYumArtifactResponse {
   /// The Apt artifacts updated.
   core.List<YumArtifact>? yumArtifacts;
 
-  UploadYumArtifactResponse();
+  UploadYumArtifactResponse({
+    this.yumArtifacts,
+  });
 
-  UploadYumArtifactResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('yumArtifacts')) {
-      yumArtifacts = (_json['yumArtifacts'] as core.List)
-          .map<YumArtifact>((value) => YumArtifact.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  UploadYumArtifactResponse.fromJson(core.Map _json)
+      : this(
+          yumArtifacts: _json.containsKey('yumArtifacts')
+              ? (_json['yumArtifacts'] as core.List)
+                  .map<YumArtifact>((value) => YumArtifact.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (yumArtifacts != null)
@@ -1216,22 +1288,26 @@ class YumArtifact {
   /// - "SOURCE" : Source package (.srpm).
   core.String? packageType;
 
-  YumArtifact();
+  YumArtifact({
+    this.architecture,
+    this.name,
+    this.packageName,
+    this.packageType,
+  });
 
-  YumArtifact.fromJson(core.Map _json) {
-    if (_json.containsKey('architecture')) {
-      architecture = _json['architecture'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('packageName')) {
-      packageName = _json['packageName'] as core.String;
-    }
-    if (_json.containsKey('packageType')) {
-      packageType = _json['packageType'] as core.String;
-    }
-  }
+  YumArtifact.fromJson(core.Map _json)
+      : this(
+          architecture: _json.containsKey('architecture')
+              ? _json['architecture'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          packageName: _json.containsKey('packageName')
+              ? _json['packageName'] as core.String
+              : null,
+          packageType: _json.containsKey('packageType')
+              ? _json['packageType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (architecture != null) 'architecture': architecture!,

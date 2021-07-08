@@ -464,15 +464,18 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings {
   /// Example: 'com.companyname.appname'
   core.List<core.String>? allowedPackageNames;
 
-  GoogleCloudRecaptchaenterpriseV1AndroidKeySettings();
+  GoogleCloudRecaptchaenterpriseV1AndroidKeySettings({
+    this.allowedPackageNames,
+  });
 
-  GoogleCloudRecaptchaenterpriseV1AndroidKeySettings.fromJson(core.Map _json) {
-    if (_json.containsKey('allowedPackageNames')) {
-      allowedPackageNames = (_json['allowedPackageNames'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  GoogleCloudRecaptchaenterpriseV1AndroidKeySettings.fromJson(core.Map _json)
+      : this(
+          allowedPackageNames: _json.containsKey('allowedPackageNames')
+              ? (_json['allowedPackageNames'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedPackageNames != null)
@@ -508,19 +511,23 @@ class GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest {
   /// Optional.
   core.List<core.String>? reasons;
 
-  GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest();
+  GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest({
+    this.annotation,
+    this.reasons,
+  });
 
   GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('annotation')) {
-      annotation = _json['annotation'] as core.String;
-    }
-    if (_json.containsKey('reasons')) {
-      reasons = (_json['reasons'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+      core.Map _json)
+      : this(
+          annotation: _json.containsKey('annotation')
+              ? _json['annotation'] as core.String
+              : null,
+          reasons: _json.containsKey('reasons')
+              ? (_json['reasons'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotation != null) 'annotation': annotation!,
@@ -560,26 +567,30 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
   /// Output only.
   GoogleCloudRecaptchaenterpriseV1TokenProperties? tokenProperties;
 
-  GoogleCloudRecaptchaenterpriseV1Assessment();
+  GoogleCloudRecaptchaenterpriseV1Assessment({
+    this.event,
+    this.name,
+    this.riskAnalysis,
+    this.tokenProperties,
+  });
 
-  GoogleCloudRecaptchaenterpriseV1Assessment.fromJson(core.Map _json) {
-    if (_json.containsKey('event')) {
-      event = GoogleCloudRecaptchaenterpriseV1Event.fromJson(
-          _json['event'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('riskAnalysis')) {
-      riskAnalysis = GoogleCloudRecaptchaenterpriseV1RiskAnalysis.fromJson(
-          _json['riskAnalysis'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('tokenProperties')) {
-      tokenProperties =
-          GoogleCloudRecaptchaenterpriseV1TokenProperties.fromJson(
-              _json['tokenProperties'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudRecaptchaenterpriseV1Assessment.fromJson(core.Map _json)
+      : this(
+          event: _json.containsKey('event')
+              ? GoogleCloudRecaptchaenterpriseV1Event.fromJson(
+                  _json['event'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          riskAnalysis: _json.containsKey('riskAnalysis')
+              ? GoogleCloudRecaptchaenterpriseV1RiskAnalysis.fromJson(
+                  _json['riskAnalysis'] as core.Map<core.String, core.dynamic>)
+              : null,
+          tokenProperties: _json.containsKey('tokenProperties')
+              ? GoogleCloudRecaptchaenterpriseV1TokenProperties.fromJson(
+                  _json['tokenProperties']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (event != null) 'event': event!.toJson(),
@@ -610,22 +621,28 @@ class GoogleCloudRecaptchaenterpriseV1ChallengeMetrics {
   /// verification.
   core.String? passedCount;
 
-  GoogleCloudRecaptchaenterpriseV1ChallengeMetrics();
+  GoogleCloudRecaptchaenterpriseV1ChallengeMetrics({
+    this.failedCount,
+    this.nocaptchaCount,
+    this.pageloadCount,
+    this.passedCount,
+  });
 
-  GoogleCloudRecaptchaenterpriseV1ChallengeMetrics.fromJson(core.Map _json) {
-    if (_json.containsKey('failedCount')) {
-      failedCount = _json['failedCount'] as core.String;
-    }
-    if (_json.containsKey('nocaptchaCount')) {
-      nocaptchaCount = _json['nocaptchaCount'] as core.String;
-    }
-    if (_json.containsKey('pageloadCount')) {
-      pageloadCount = _json['pageloadCount'] as core.String;
-    }
-    if (_json.containsKey('passedCount')) {
-      passedCount = _json['passedCount'] as core.String;
-    }
-  }
+  GoogleCloudRecaptchaenterpriseV1ChallengeMetrics.fromJson(core.Map _json)
+      : this(
+          failedCount: _json.containsKey('failedCount')
+              ? _json['failedCount'] as core.String
+              : null,
+          nocaptchaCount: _json.containsKey('nocaptchaCount')
+              ? _json['nocaptchaCount'] as core.String
+              : null,
+          pageloadCount: _json.containsKey('pageloadCount')
+              ? _json['pageloadCount'] as core.String
+              : null,
+          passedCount: _json.containsKey('passedCount')
+              ? _json['passedCount'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (failedCount != null) 'failedCount': failedCount!,
@@ -668,25 +685,31 @@ class GoogleCloudRecaptchaenterpriseV1Event {
   /// Optional.
   core.String? userIpAddress;
 
-  GoogleCloudRecaptchaenterpriseV1Event();
+  GoogleCloudRecaptchaenterpriseV1Event({
+    this.expectedAction,
+    this.siteKey,
+    this.token,
+    this.userAgent,
+    this.userIpAddress,
+  });
 
-  GoogleCloudRecaptchaenterpriseV1Event.fromJson(core.Map _json) {
-    if (_json.containsKey('expectedAction')) {
-      expectedAction = _json['expectedAction'] as core.String;
-    }
-    if (_json.containsKey('siteKey')) {
-      siteKey = _json['siteKey'] as core.String;
-    }
-    if (_json.containsKey('token')) {
-      token = _json['token'] as core.String;
-    }
-    if (_json.containsKey('userAgent')) {
-      userAgent = _json['userAgent'] as core.String;
-    }
-    if (_json.containsKey('userIpAddress')) {
-      userIpAddress = _json['userIpAddress'] as core.String;
-    }
-  }
+  GoogleCloudRecaptchaenterpriseV1Event.fromJson(core.Map _json)
+      : this(
+          expectedAction: _json.containsKey('expectedAction')
+              ? _json['expectedAction'] as core.String
+              : null,
+          siteKey: _json.containsKey('siteKey')
+              ? _json['siteKey'] as core.String
+              : null,
+          token:
+              _json.containsKey('token') ? _json['token'] as core.String : null,
+          userAgent: _json.containsKey('userAgent')
+              ? _json['userAgent'] as core.String
+              : null,
+          userIpAddress: _json.containsKey('userIpAddress')
+              ? _json['userIpAddress'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (expectedAction != null) 'expectedAction': expectedAction!,
@@ -704,15 +727,18 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettings {
   /// Example: 'com.companyname.productname.appname'
   core.List<core.String>? allowedBundleIds;
 
-  GoogleCloudRecaptchaenterpriseV1IOSKeySettings();
+  GoogleCloudRecaptchaenterpriseV1IOSKeySettings({
+    this.allowedBundleIds,
+  });
 
-  GoogleCloudRecaptchaenterpriseV1IOSKeySettings.fromJson(core.Map _json) {
-    if (_json.containsKey('allowedBundleIds')) {
-      allowedBundleIds = (_json['allowedBundleIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  GoogleCloudRecaptchaenterpriseV1IOSKeySettings.fromJson(core.Map _json)
+      : this(
+          allowedBundleIds: _json.containsKey('allowedBundleIds')
+              ? (_json['allowedBundleIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedBundleIds != null) 'allowedBundleIds': allowedBundleIds!,
@@ -749,44 +775,53 @@ class GoogleCloudRecaptchaenterpriseV1Key {
   /// Settings for keys that can be used by websites.
   GoogleCloudRecaptchaenterpriseV1WebKeySettings? webSettings;
 
-  GoogleCloudRecaptchaenterpriseV1Key();
+  GoogleCloudRecaptchaenterpriseV1Key({
+    this.androidSettings,
+    this.createTime,
+    this.displayName,
+    this.iosSettings,
+    this.labels,
+    this.name,
+    this.testingOptions,
+    this.webSettings,
+  });
 
-  GoogleCloudRecaptchaenterpriseV1Key.fromJson(core.Map _json) {
-    if (_json.containsKey('androidSettings')) {
-      androidSettings =
-          GoogleCloudRecaptchaenterpriseV1AndroidKeySettings.fromJson(
-              _json['androidSettings'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('iosSettings')) {
-      iosSettings = GoogleCloudRecaptchaenterpriseV1IOSKeySettings.fromJson(
-          _json['iosSettings'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('testingOptions')) {
-      testingOptions = GoogleCloudRecaptchaenterpriseV1TestingOptions.fromJson(
-          _json['testingOptions'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('webSettings')) {
-      webSettings = GoogleCloudRecaptchaenterpriseV1WebKeySettings.fromJson(
-          _json['webSettings'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudRecaptchaenterpriseV1Key.fromJson(core.Map _json)
+      : this(
+          androidSettings: _json.containsKey('androidSettings')
+              ? GoogleCloudRecaptchaenterpriseV1AndroidKeySettings.fromJson(
+                  _json['androidSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          iosSettings: _json.containsKey('iosSettings')
+              ? GoogleCloudRecaptchaenterpriseV1IOSKeySettings.fromJson(
+                  _json['iosSettings'] as core.Map<core.String, core.dynamic>)
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          testingOptions: _json.containsKey('testingOptions')
+              ? GoogleCloudRecaptchaenterpriseV1TestingOptions.fromJson(
+                  _json['testingOptions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          webSettings: _json.containsKey('webSettings')
+              ? GoogleCloudRecaptchaenterpriseV1WebKeySettings.fromJson(
+                  _json['webSettings'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (androidSettings != null)
@@ -811,20 +846,24 @@ class GoogleCloudRecaptchaenterpriseV1ListKeysResponse {
   /// It is set to empty if no keys remain in results.
   core.String? nextPageToken;
 
-  GoogleCloudRecaptchaenterpriseV1ListKeysResponse();
+  GoogleCloudRecaptchaenterpriseV1ListKeysResponse({
+    this.keys,
+    this.nextPageToken,
+  });
 
-  GoogleCloudRecaptchaenterpriseV1ListKeysResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('keys')) {
-      keys = (_json['keys'] as core.List)
-          .map<GoogleCloudRecaptchaenterpriseV1Key>((value) =>
-              GoogleCloudRecaptchaenterpriseV1Key.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  GoogleCloudRecaptchaenterpriseV1ListKeysResponse.fromJson(core.Map _json)
+      : this(
+          keys: _json.containsKey('keys')
+              ? (_json['keys'] as core.List)
+                  .map<GoogleCloudRecaptchaenterpriseV1Key>((value) =>
+                      GoogleCloudRecaptchaenterpriseV1Key.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (keys != null) 'keys': keys!.map((value) => value.toJson()).toList(),
@@ -850,27 +889,34 @@ class GoogleCloudRecaptchaenterpriseV1Metrics {
   /// Inclusive start time aligned to a day (UTC).
   core.String? startTime;
 
-  GoogleCloudRecaptchaenterpriseV1Metrics();
+  GoogleCloudRecaptchaenterpriseV1Metrics({
+    this.challengeMetrics,
+    this.scoreMetrics,
+    this.startTime,
+  });
 
-  GoogleCloudRecaptchaenterpriseV1Metrics.fromJson(core.Map _json) {
-    if (_json.containsKey('challengeMetrics')) {
-      challengeMetrics = (_json['challengeMetrics'] as core.List)
-          .map<GoogleCloudRecaptchaenterpriseV1ChallengeMetrics>((value) =>
-              GoogleCloudRecaptchaenterpriseV1ChallengeMetrics.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('scoreMetrics')) {
-      scoreMetrics = (_json['scoreMetrics'] as core.List)
-          .map<GoogleCloudRecaptchaenterpriseV1ScoreMetrics>((value) =>
-              GoogleCloudRecaptchaenterpriseV1ScoreMetrics.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-  }
+  GoogleCloudRecaptchaenterpriseV1Metrics.fromJson(core.Map _json)
+      : this(
+          challengeMetrics: _json.containsKey('challengeMetrics')
+              ? (_json['challengeMetrics'] as core.List)
+                  .map<GoogleCloudRecaptchaenterpriseV1ChallengeMetrics>(
+                      (value) =>
+                          GoogleCloudRecaptchaenterpriseV1ChallengeMetrics
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          scoreMetrics: _json.containsKey('scoreMetrics')
+              ? (_json['scoreMetrics'] as core.List)
+                  .map<GoogleCloudRecaptchaenterpriseV1ScoreMetrics>((value) =>
+                      GoogleCloudRecaptchaenterpriseV1ScoreMetrics.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (challengeMetrics != null)
@@ -904,18 +950,22 @@ class GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
   /// non-legitimate traffic).
   core.double? score;
 
-  GoogleCloudRecaptchaenterpriseV1RiskAnalysis();
+  GoogleCloudRecaptchaenterpriseV1RiskAnalysis({
+    this.reasons,
+    this.score,
+  });
 
-  GoogleCloudRecaptchaenterpriseV1RiskAnalysis.fromJson(core.Map _json) {
-    if (_json.containsKey('reasons')) {
-      reasons = (_json['reasons'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('score')) {
-      score = (_json['score'] as core.num).toDouble();
-    }
-  }
+  GoogleCloudRecaptchaenterpriseV1RiskAnalysis.fromJson(core.Map _json)
+      : this(
+          reasons: _json.containsKey('reasons')
+              ? (_json['reasons'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          score: _json.containsKey('score')
+              ? (_json['score'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (reasons != null) 'reasons': reasons!,
@@ -931,19 +981,22 @@ class GoogleCloudRecaptchaenterpriseV1ScoreDistribution {
   /// buckets is on order of a few dozen, but typically much lower (ie. 10).
   core.Map<core.String, core.String>? scoreBuckets;
 
-  GoogleCloudRecaptchaenterpriseV1ScoreDistribution();
+  GoogleCloudRecaptchaenterpriseV1ScoreDistribution({
+    this.scoreBuckets,
+  });
 
-  GoogleCloudRecaptchaenterpriseV1ScoreDistribution.fromJson(core.Map _json) {
-    if (_json.containsKey('scoreBuckets')) {
-      scoreBuckets =
-          (_json['scoreBuckets'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-  }
+  GoogleCloudRecaptchaenterpriseV1ScoreDistribution.fromJson(core.Map _json)
+      : this(
+          scoreBuckets: _json.containsKey('scoreBuckets')
+              ? (_json['scoreBuckets'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (scoreBuckets != null) 'scoreBuckets': scoreBuckets!,
@@ -962,25 +1015,29 @@ class GoogleCloudRecaptchaenterpriseV1ScoreMetrics {
   /// Aggregated score metrics for all traffic.
   GoogleCloudRecaptchaenterpriseV1ScoreDistribution? overallMetrics;
 
-  GoogleCloudRecaptchaenterpriseV1ScoreMetrics();
+  GoogleCloudRecaptchaenterpriseV1ScoreMetrics({
+    this.actionMetrics,
+    this.overallMetrics,
+  });
 
-  GoogleCloudRecaptchaenterpriseV1ScoreMetrics.fromJson(core.Map _json) {
-    if (_json.containsKey('actionMetrics')) {
-      actionMetrics =
-          (_json['actionMetrics'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          GoogleCloudRecaptchaenterpriseV1ScoreDistribution.fromJson(
-              item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('overallMetrics')) {
-      overallMetrics =
-          GoogleCloudRecaptchaenterpriseV1ScoreDistribution.fromJson(
-              _json['overallMetrics'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudRecaptchaenterpriseV1ScoreMetrics.fromJson(core.Map _json)
+      : this(
+          actionMetrics: _json.containsKey('actionMetrics')
+              ? (_json['actionMetrics'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    GoogleCloudRecaptchaenterpriseV1ScoreDistribution.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          overallMetrics: _json.containsKey('overallMetrics')
+              ? GoogleCloudRecaptchaenterpriseV1ScoreDistribution.fromJson(
+                  _json['overallMetrics']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (actionMetrics != null)
@@ -1011,16 +1068,20 @@ class GoogleCloudRecaptchaenterpriseV1TestingOptions {
   /// inclusive.
   core.double? testingScore;
 
-  GoogleCloudRecaptchaenterpriseV1TestingOptions();
+  GoogleCloudRecaptchaenterpriseV1TestingOptions({
+    this.testingChallenge,
+    this.testingScore,
+  });
 
-  GoogleCloudRecaptchaenterpriseV1TestingOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('testingChallenge')) {
-      testingChallenge = _json['testingChallenge'] as core.String;
-    }
-    if (_json.containsKey('testingScore')) {
-      testingScore = (_json['testingScore'] as core.num).toDouble();
-    }
-  }
+  GoogleCloudRecaptchaenterpriseV1TestingOptions.fromJson(core.Map _json)
+      : this(
+          testingChallenge: _json.containsKey('testingChallenge')
+              ? _json['testingChallenge'] as core.String
+              : null,
+          testingScore: _json.containsKey('testingScore')
+              ? (_json['testingScore'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (testingChallenge != null) 'testingChallenge': testingChallenge!,
@@ -1058,25 +1119,31 @@ class GoogleCloudRecaptchaenterpriseV1TokenProperties {
   /// the one specified in the assessment).
   core.bool? valid;
 
-  GoogleCloudRecaptchaenterpriseV1TokenProperties();
+  GoogleCloudRecaptchaenterpriseV1TokenProperties({
+    this.action,
+    this.createTime,
+    this.hostname,
+    this.invalidReason,
+    this.valid,
+  });
 
-  GoogleCloudRecaptchaenterpriseV1TokenProperties.fromJson(core.Map _json) {
-    if (_json.containsKey('action')) {
-      action = _json['action'] as core.String;
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('hostname')) {
-      hostname = _json['hostname'] as core.String;
-    }
-    if (_json.containsKey('invalidReason')) {
-      invalidReason = _json['invalidReason'] as core.String;
-    }
-    if (_json.containsKey('valid')) {
-      valid = _json['valid'] as core.bool;
-    }
-  }
+  GoogleCloudRecaptchaenterpriseV1TokenProperties.fromJson(core.Map _json)
+      : this(
+          action: _json.containsKey('action')
+              ? _json['action'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          hostname: _json.containsKey('hostname')
+              ? _json['hostname'] as core.String
+              : null,
+          invalidReason: _json.containsKey('invalidReason')
+              ? _json['invalidReason'] as core.String
+              : null,
+          valid:
+              _json.containsKey('valid') ? _json['valid'] as core.bool : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
@@ -1134,28 +1201,35 @@ class GoogleCloudRecaptchaenterpriseV1WebKeySettings {
   /// show captcha challenges after risk analysis.
   core.String? integrationType;
 
-  GoogleCloudRecaptchaenterpriseV1WebKeySettings();
+  GoogleCloudRecaptchaenterpriseV1WebKeySettings({
+    this.allowAllDomains,
+    this.allowAmpTraffic,
+    this.allowedDomains,
+    this.challengeSecurityPreference,
+    this.integrationType,
+  });
 
-  GoogleCloudRecaptchaenterpriseV1WebKeySettings.fromJson(core.Map _json) {
-    if (_json.containsKey('allowAllDomains')) {
-      allowAllDomains = _json['allowAllDomains'] as core.bool;
-    }
-    if (_json.containsKey('allowAmpTraffic')) {
-      allowAmpTraffic = _json['allowAmpTraffic'] as core.bool;
-    }
-    if (_json.containsKey('allowedDomains')) {
-      allowedDomains = (_json['allowedDomains'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('challengeSecurityPreference')) {
-      challengeSecurityPreference =
-          _json['challengeSecurityPreference'] as core.String;
-    }
-    if (_json.containsKey('integrationType')) {
-      integrationType = _json['integrationType'] as core.String;
-    }
-  }
+  GoogleCloudRecaptchaenterpriseV1WebKeySettings.fromJson(core.Map _json)
+      : this(
+          allowAllDomains: _json.containsKey('allowAllDomains')
+              ? _json['allowAllDomains'] as core.bool
+              : null,
+          allowAmpTraffic: _json.containsKey('allowAmpTraffic')
+              ? _json['allowAmpTraffic'] as core.bool
+              : null,
+          allowedDomains: _json.containsKey('allowedDomains')
+              ? (_json['allowedDomains'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          challengeSecurityPreference:
+              _json.containsKey('challengeSecurityPreference')
+                  ? _json['challengeSecurityPreference'] as core.String
+                  : null,
+          integrationType: _json.containsKey('integrationType')
+              ? _json['integrationType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowAllDomains != null) 'allowAllDomains': allowAllDomains!,

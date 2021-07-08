@@ -182,33 +182,42 @@ class PlatformSummary {
   /// Whether the site is currently under review on this platform.
   core.bool? underReview;
 
-  PlatformSummary();
+  PlatformSummary({
+    this.betterAdsStatus,
+    this.enforcementTime,
+    this.filterStatus,
+    this.lastChangeTime,
+    this.region,
+    this.reportUrl,
+    this.underReview,
+  });
 
-  PlatformSummary.fromJson(core.Map _json) {
-    if (_json.containsKey('betterAdsStatus')) {
-      betterAdsStatus = _json['betterAdsStatus'] as core.String;
-    }
-    if (_json.containsKey('enforcementTime')) {
-      enforcementTime = _json['enforcementTime'] as core.String;
-    }
-    if (_json.containsKey('filterStatus')) {
-      filterStatus = _json['filterStatus'] as core.String;
-    }
-    if (_json.containsKey('lastChangeTime')) {
-      lastChangeTime = _json['lastChangeTime'] as core.String;
-    }
-    if (_json.containsKey('region')) {
-      region = (_json['region'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('reportUrl')) {
-      reportUrl = _json['reportUrl'] as core.String;
-    }
-    if (_json.containsKey('underReview')) {
-      underReview = _json['underReview'] as core.bool;
-    }
-  }
+  PlatformSummary.fromJson(core.Map _json)
+      : this(
+          betterAdsStatus: _json.containsKey('betterAdsStatus')
+              ? _json['betterAdsStatus'] as core.String
+              : null,
+          enforcementTime: _json.containsKey('enforcementTime')
+              ? _json['enforcementTime'] as core.String
+              : null,
+          filterStatus: _json.containsKey('filterStatus')
+              ? _json['filterStatus'] as core.String
+              : null,
+          lastChangeTime: _json.containsKey('lastChangeTime')
+              ? _json['lastChangeTime'] as core.String
+              : null,
+          region: _json.containsKey('region')
+              ? (_json['region'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          reportUrl: _json.containsKey('reportUrl')
+              ? _json['reportUrl'] as core.String
+              : null,
+          underReview: _json.containsKey('underReview')
+              ? _json['underReview'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (betterAdsStatus != null) 'betterAdsStatus': betterAdsStatus!,
@@ -232,21 +241,26 @@ class SiteSummaryResponse {
   /// The name of the reviewed site, e.g. `google.com`.
   core.String? reviewedSite;
 
-  SiteSummaryResponse();
+  SiteSummaryResponse({
+    this.desktopSummary,
+    this.mobileSummary,
+    this.reviewedSite,
+  });
 
-  SiteSummaryResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('desktopSummary')) {
-      desktopSummary = PlatformSummary.fromJson(
-          _json['desktopSummary'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('mobileSummary')) {
-      mobileSummary = PlatformSummary.fromJson(
-          _json['mobileSummary'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('reviewedSite')) {
-      reviewedSite = _json['reviewedSite'] as core.String;
-    }
-  }
+  SiteSummaryResponse.fromJson(core.Map _json)
+      : this(
+          desktopSummary: _json.containsKey('desktopSummary')
+              ? PlatformSummary.fromJson(_json['desktopSummary']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          mobileSummary: _json.containsKey('mobileSummary')
+              ? PlatformSummary.fromJson(
+                  _json['mobileSummary'] as core.Map<core.String, core.dynamic>)
+              : null,
+          reviewedSite: _json.containsKey('reviewedSite')
+              ? _json['reviewedSite'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (desktopSummary != null) 'desktopSummary': desktopSummary!.toJson(),
@@ -260,16 +274,20 @@ class ViolatingSitesResponse {
   /// The list of violating sites.
   core.List<SiteSummaryResponse>? violatingSites;
 
-  ViolatingSitesResponse();
+  ViolatingSitesResponse({
+    this.violatingSites,
+  });
 
-  ViolatingSitesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('violatingSites')) {
-      violatingSites = (_json['violatingSites'] as core.List)
-          .map<SiteSummaryResponse>((value) => SiteSummaryResponse.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ViolatingSitesResponse.fromJson(core.Map _json)
+      : this(
+          violatingSites: _json.containsKey('violatingSites')
+              ? (_json['violatingSites'] as core.List)
+                  .map<SiteSummaryResponse>((value) =>
+                      SiteSummaryResponse.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (violatingSites != null)

@@ -604,31 +604,36 @@ class AppEngineHttpTarget {
   /// are allowed, and the maximum length allowed is 2083 characters.
   core.String? relativeUri;
 
-  AppEngineHttpTarget();
+  AppEngineHttpTarget({
+    this.appEngineRouting,
+    this.body,
+    this.headers,
+    this.httpMethod,
+    this.relativeUri,
+  });
 
-  AppEngineHttpTarget.fromJson(core.Map _json) {
-    if (_json.containsKey('appEngineRouting')) {
-      appEngineRouting = AppEngineRouting.fromJson(
-          _json['appEngineRouting'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('body')) {
-      body = _json['body'] as core.String;
-    }
-    if (_json.containsKey('headers')) {
-      headers = (_json['headers'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('httpMethod')) {
-      httpMethod = _json['httpMethod'] as core.String;
-    }
-    if (_json.containsKey('relativeUri')) {
-      relativeUri = _json['relativeUri'] as core.String;
-    }
-  }
+  AppEngineHttpTarget.fromJson(core.Map _json)
+      : this(
+          appEngineRouting: _json.containsKey('appEngineRouting')
+              ? AppEngineRouting.fromJson(_json['appEngineRouting']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          body: _json.containsKey('body') ? _json['body'] as core.String : null,
+          headers: _json.containsKey('headers')
+              ? (_json['headers'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          httpMethod: _json.containsKey('httpMethod')
+              ? _json['httpMethod'] as core.String
+              : null,
+          relativeUri: _json.containsKey('relativeUri')
+              ? _json['relativeUri'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appEngineRouting != null)
@@ -701,22 +706,26 @@ class AppEngineRouting {
   /// when the job is attempted.
   core.String? version;
 
-  AppEngineRouting();
+  AppEngineRouting({
+    this.host,
+    this.instance,
+    this.service,
+    this.version,
+  });
 
-  AppEngineRouting.fromJson(core.Map _json) {
-    if (_json.containsKey('host')) {
-      host = _json['host'] as core.String;
-    }
-    if (_json.containsKey('instance')) {
-      instance = _json['instance'] as core.String;
-    }
-    if (_json.containsKey('service')) {
-      service = _json['service'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.String;
-    }
-  }
+  AppEngineRouting.fromJson(core.Map _json)
+      : this(
+          host: _json.containsKey('host') ? _json['host'] as core.String : null,
+          instance: _json.containsKey('instance')
+              ? _json['instance'] as core.String
+              : null,
+          service: _json.containsKey('service')
+              ? _json['service'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (host != null) 'host': host!,
@@ -820,35 +829,39 @@ class HttpTarget {
   /// Required.
   core.String? uri;
 
-  HttpTarget();
+  HttpTarget({
+    this.body,
+    this.headers,
+    this.httpMethod,
+    this.oauthToken,
+    this.oidcToken,
+    this.uri,
+  });
 
-  HttpTarget.fromJson(core.Map _json) {
-    if (_json.containsKey('body')) {
-      body = _json['body'] as core.String;
-    }
-    if (_json.containsKey('headers')) {
-      headers = (_json['headers'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('httpMethod')) {
-      httpMethod = _json['httpMethod'] as core.String;
-    }
-    if (_json.containsKey('oauthToken')) {
-      oauthToken = OAuthToken.fromJson(
-          _json['oauthToken'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('oidcToken')) {
-      oidcToken = OidcToken.fromJson(
-          _json['oidcToken'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('uri')) {
-      uri = _json['uri'] as core.String;
-    }
-  }
+  HttpTarget.fromJson(core.Map _json)
+      : this(
+          body: _json.containsKey('body') ? _json['body'] as core.String : null,
+          headers: _json.containsKey('headers')
+              ? (_json['headers'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          httpMethod: _json.containsKey('httpMethod')
+              ? _json['httpMethod'] as core.String
+              : null,
+          oauthToken: _json.containsKey('oauthToken')
+              ? OAuthToken.fromJson(
+                  _json['oauthToken'] as core.Map<core.String, core.dynamic>)
+              : null,
+          oidcToken: _json.containsKey('oidcToken')
+              ? OidcToken.fromJson(
+                  _json['oidcToken'] as core.Map<core.String, core.dynamic>)
+              : null,
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (body != null) 'body': body!,
@@ -972,57 +985,70 @@ class Job {
   /// Output only.
   core.String? userUpdateTime;
 
-  Job();
+  Job({
+    this.appEngineHttpTarget,
+    this.attemptDeadline,
+    this.description,
+    this.httpTarget,
+    this.lastAttemptTime,
+    this.name,
+    this.pubsubTarget,
+    this.retryConfig,
+    this.schedule,
+    this.scheduleTime,
+    this.state,
+    this.status,
+    this.timeZone,
+    this.userUpdateTime,
+  });
 
-  Job.fromJson(core.Map _json) {
-    if (_json.containsKey('appEngineHttpTarget')) {
-      appEngineHttpTarget = AppEngineHttpTarget.fromJson(
-          _json['appEngineHttpTarget'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('attemptDeadline')) {
-      attemptDeadline = _json['attemptDeadline'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('httpTarget')) {
-      httpTarget = HttpTarget.fromJson(
-          _json['httpTarget'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('lastAttemptTime')) {
-      lastAttemptTime = _json['lastAttemptTime'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('pubsubTarget')) {
-      pubsubTarget = PubsubTarget.fromJson(
-          _json['pubsubTarget'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('retryConfig')) {
-      retryConfig = RetryConfig.fromJson(
-          _json['retryConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('schedule')) {
-      schedule = _json['schedule'] as core.String;
-    }
-    if (_json.containsKey('scheduleTime')) {
-      scheduleTime = _json['scheduleTime'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('status')) {
-      status = Status.fromJson(
-          _json['status'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('timeZone')) {
-      timeZone = _json['timeZone'] as core.String;
-    }
-    if (_json.containsKey('userUpdateTime')) {
-      userUpdateTime = _json['userUpdateTime'] as core.String;
-    }
-  }
+  Job.fromJson(core.Map _json)
+      : this(
+          appEngineHttpTarget: _json.containsKey('appEngineHttpTarget')
+              ? AppEngineHttpTarget.fromJson(_json['appEngineHttpTarget']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          attemptDeadline: _json.containsKey('attemptDeadline')
+              ? _json['attemptDeadline'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          httpTarget: _json.containsKey('httpTarget')
+              ? HttpTarget.fromJson(
+                  _json['httpTarget'] as core.Map<core.String, core.dynamic>)
+              : null,
+          lastAttemptTime: _json.containsKey('lastAttemptTime')
+              ? _json['lastAttemptTime'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          pubsubTarget: _json.containsKey('pubsubTarget')
+              ? PubsubTarget.fromJson(
+                  _json['pubsubTarget'] as core.Map<core.String, core.dynamic>)
+              : null,
+          retryConfig: _json.containsKey('retryConfig')
+              ? RetryConfig.fromJson(
+                  _json['retryConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          schedule: _json.containsKey('schedule')
+              ? _json['schedule'] as core.String
+              : null,
+          scheduleTime: _json.containsKey('scheduleTime')
+              ? _json['scheduleTime'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          status: _json.containsKey('status')
+              ? Status.fromJson(
+                  _json['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+          timeZone: _json.containsKey('timeZone')
+              ? _json['timeZone'] as core.String
+              : null,
+          userUpdateTime: _json.containsKey('userUpdateTime')
+              ? _json['userUpdateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appEngineHttpTarget != null)
@@ -1056,19 +1082,23 @@ class ListJobsResponse {
   /// valid for only 2 hours.
   core.String? nextPageToken;
 
-  ListJobsResponse();
+  ListJobsResponse({
+    this.jobs,
+    this.nextPageToken,
+  });
 
-  ListJobsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('jobs')) {
-      jobs = (_json['jobs'] as core.List)
-          .map<Job>((value) =>
-              Job.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListJobsResponse.fromJson(core.Map _json)
+      : this(
+          jobs: _json.containsKey('jobs')
+              ? (_json['jobs'] as core.List)
+                  .map<Job>((value) => Job.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (jobs != null) 'jobs': jobs!.map((value) => value.toJson()).toList(),
@@ -1084,19 +1114,23 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse();
+  ListLocationsResponse({
+    this.locations,
+    this.nextPageToken,
+  });
 
-  ListLocationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('locations')) {
-      locations = (_json['locations'] as core.List)
-          .map<Location>((value) =>
-              Location.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListLocationsResponse.fromJson(core.Map _json)
+      : this(
+          locations: _json.containsKey('locations')
+              ? (_json['locations'] as core.List)
+                  .map<Location>((value) => Location.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (locations != null)
@@ -1135,35 +1169,40 @@ class Location {
   /// For example: `"projects/example-project/locations/us-east1"`
   core.String? name;
 
-  Location();
+  Location({
+    this.displayName,
+    this.labels,
+    this.locationId,
+    this.metadata,
+    this.name,
+  });
 
-  Location.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('locationId')) {
-      locationId = _json['locationId'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  Location.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          locationId: _json.containsKey('locationId')
+              ? _json['locationId'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -1193,16 +1232,19 @@ class OAuthToken {
   /// must have iam.serviceAccounts.actAs permission for the service account.
   core.String? serviceAccountEmail;
 
-  OAuthToken();
+  OAuthToken({
+    this.scope,
+    this.serviceAccountEmail,
+  });
 
-  OAuthToken.fromJson(core.Map _json) {
-    if (_json.containsKey('scope')) {
-      scope = _json['scope'] as core.String;
-    }
-    if (_json.containsKey('serviceAccountEmail')) {
-      serviceAccountEmail = _json['serviceAccountEmail'] as core.String;
-    }
-  }
+  OAuthToken.fromJson(core.Map _json)
+      : this(
+          scope:
+              _json.containsKey('scope') ? _json['scope'] as core.String : null,
+          serviceAccountEmail: _json.containsKey('serviceAccountEmail')
+              ? _json['serviceAccountEmail'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (scope != null) 'scope': scope!,
@@ -1229,16 +1271,20 @@ class OidcToken {
   /// must have iam.serviceAccounts.actAs permission for the service account.
   core.String? serviceAccountEmail;
 
-  OidcToken();
+  OidcToken({
+    this.audience,
+    this.serviceAccountEmail,
+  });
 
-  OidcToken.fromJson(core.Map _json) {
-    if (_json.containsKey('audience')) {
-      audience = _json['audience'] as core.String;
-    }
-    if (_json.containsKey('serviceAccountEmail')) {
-      serviceAccountEmail = _json['serviceAccountEmail'] as core.String;
-    }
-  }
+  OidcToken.fromJson(core.Map _json)
+      : this(
+          audience: _json.containsKey('audience')
+              ? _json['audience'] as core.String
+              : null,
+          serviceAccountEmail: _json.containsKey('serviceAccountEmail')
+              ? _json['serviceAccountEmail'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (audience != null) 'audience': audience!,
@@ -1308,31 +1354,36 @@ class PubsubMessage {
   /// It must not be populated by the publisher in a `Publish` call.
   core.String? publishTime;
 
-  PubsubMessage();
+  PubsubMessage({
+    this.attributes,
+    this.data,
+    this.messageId,
+    this.orderingKey,
+    this.publishTime,
+  });
 
-  PubsubMessage.fromJson(core.Map _json) {
-    if (_json.containsKey('attributes')) {
-      attributes =
-          (_json['attributes'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('data')) {
-      data = _json['data'] as core.String;
-    }
-    if (_json.containsKey('messageId')) {
-      messageId = _json['messageId'] as core.String;
-    }
-    if (_json.containsKey('orderingKey')) {
-      orderingKey = _json['orderingKey'] as core.String;
-    }
-    if (_json.containsKey('publishTime')) {
-      publishTime = _json['publishTime'] as core.String;
-    }
-  }
+  PubsubMessage.fromJson(core.Map _json)
+      : this(
+          attributes: _json.containsKey('attributes')
+              ? (_json['attributes'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          data: _json.containsKey('data') ? _json['data'] as core.String : null,
+          messageId: _json.containsKey('messageId')
+              ? _json['messageId'] as core.String
+              : null,
+          orderingKey: _json.containsKey('orderingKey')
+              ? _json['orderingKey'] as core.String
+              : null,
+          publishTime: _json.containsKey('publishTime')
+              ? _json['publishTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null) 'attributes': attributes!,
@@ -1377,25 +1428,28 @@ class PubsubTarget {
   /// Required.
   core.String? topicName;
 
-  PubsubTarget();
+  PubsubTarget({
+    this.attributes,
+    this.data,
+    this.topicName,
+  });
 
-  PubsubTarget.fromJson(core.Map _json) {
-    if (_json.containsKey('attributes')) {
-      attributes =
-          (_json['attributes'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('data')) {
-      data = _json['data'] as core.String;
-    }
-    if (_json.containsKey('topicName')) {
-      topicName = _json['topicName'] as core.String;
-    }
-  }
+  PubsubTarget.fromJson(core.Map _json)
+      : this(
+          attributes: _json.containsKey('attributes')
+              ? (_json['attributes'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          data: _json.containsKey('data') ? _json['data'] as core.String : null,
+          topicName: _json.containsKey('topicName')
+              ? _json['topicName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null) 'attributes': attributes!,
@@ -1465,25 +1519,32 @@ class RetryConfig {
   /// values are not allowed.
   core.int? retryCount;
 
-  RetryConfig();
+  RetryConfig({
+    this.maxBackoffDuration,
+    this.maxDoublings,
+    this.maxRetryDuration,
+    this.minBackoffDuration,
+    this.retryCount,
+  });
 
-  RetryConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('maxBackoffDuration')) {
-      maxBackoffDuration = _json['maxBackoffDuration'] as core.String;
-    }
-    if (_json.containsKey('maxDoublings')) {
-      maxDoublings = _json['maxDoublings'] as core.int;
-    }
-    if (_json.containsKey('maxRetryDuration')) {
-      maxRetryDuration = _json['maxRetryDuration'] as core.String;
-    }
-    if (_json.containsKey('minBackoffDuration')) {
-      minBackoffDuration = _json['minBackoffDuration'] as core.String;
-    }
-    if (_json.containsKey('retryCount')) {
-      retryCount = _json['retryCount'] as core.int;
-    }
-  }
+  RetryConfig.fromJson(core.Map _json)
+      : this(
+          maxBackoffDuration: _json.containsKey('maxBackoffDuration')
+              ? _json['maxBackoffDuration'] as core.String
+              : null,
+          maxDoublings: _json.containsKey('maxDoublings')
+              ? _json['maxDoublings'] as core.int
+              : null,
+          maxRetryDuration: _json.containsKey('maxRetryDuration')
+              ? _json['maxRetryDuration'] as core.String
+              : null,
+          minBackoffDuration: _json.containsKey('minBackoffDuration')
+              ? _json['minBackoffDuration'] as core.String
+              : null,
+          retryCount: _json.containsKey('retryCount')
+              ? _json['retryCount'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (maxBackoffDuration != null)
@@ -1532,27 +1593,30 @@ class Status {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  Status();
+  Status({
+    this.code,
+    this.details,
+    this.message,
+  });
 
-  Status.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.int;
-    }
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  Status.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,

@@ -573,16 +573,16 @@ class AliasContext {
   /// The alias name.
   core.String? name;
 
-  AliasContext();
+  AliasContext({
+    this.kind,
+    this.name,
+  });
 
-  AliasContext.fromJson(core.Map _json) {
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  AliasContext.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
@@ -715,82 +715,99 @@ class Breakpoint {
   /// referenced variable.
   core.List<Variable>? variableTable;
 
-  Breakpoint();
+  Breakpoint({
+    this.action,
+    this.canaryExpireTime,
+    this.condition,
+    this.createTime,
+    this.evaluatedExpressions,
+    this.expressions,
+    this.finalTime,
+    this.id,
+    this.isFinalState,
+    this.labels,
+    this.location,
+    this.logLevel,
+    this.logMessageFormat,
+    this.stackFrames,
+    this.state,
+    this.status,
+    this.userEmail,
+    this.variableTable,
+  });
 
-  Breakpoint.fromJson(core.Map _json) {
-    if (_json.containsKey('action')) {
-      action = _json['action'] as core.String;
-    }
-    if (_json.containsKey('canaryExpireTime')) {
-      canaryExpireTime = _json['canaryExpireTime'] as core.String;
-    }
-    if (_json.containsKey('condition')) {
-      condition = _json['condition'] as core.String;
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('evaluatedExpressions')) {
-      evaluatedExpressions = (_json['evaluatedExpressions'] as core.List)
-          .map<Variable>((value) =>
-              Variable.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('expressions')) {
-      expressions = (_json['expressions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('finalTime')) {
-      finalTime = _json['finalTime'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('isFinalState')) {
-      isFinalState = _json['isFinalState'] as core.bool;
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('location')) {
-      location = SourceLocation.fromJson(
-          _json['location'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('logLevel')) {
-      logLevel = _json['logLevel'] as core.String;
-    }
-    if (_json.containsKey('logMessageFormat')) {
-      logMessageFormat = _json['logMessageFormat'] as core.String;
-    }
-    if (_json.containsKey('stackFrames')) {
-      stackFrames = (_json['stackFrames'] as core.List)
-          .map<StackFrame>((value) =>
-              StackFrame.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('status')) {
-      status = StatusMessage.fromJson(
-          _json['status'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('userEmail')) {
-      userEmail = _json['userEmail'] as core.String;
-    }
-    if (_json.containsKey('variableTable')) {
-      variableTable = (_json['variableTable'] as core.List)
-          .map<Variable>((value) =>
-              Variable.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  Breakpoint.fromJson(core.Map _json)
+      : this(
+          action: _json.containsKey('action')
+              ? _json['action'] as core.String
+              : null,
+          canaryExpireTime: _json.containsKey('canaryExpireTime')
+              ? _json['canaryExpireTime'] as core.String
+              : null,
+          condition: _json.containsKey('condition')
+              ? _json['condition'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          evaluatedExpressions: _json.containsKey('evaluatedExpressions')
+              ? (_json['evaluatedExpressions'] as core.List)
+                  .map<Variable>((value) => Variable.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          expressions: _json.containsKey('expressions')
+              ? (_json['expressions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          finalTime: _json.containsKey('finalTime')
+              ? _json['finalTime'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          isFinalState: _json.containsKey('isFinalState')
+              ? _json['isFinalState'] as core.bool
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          location: _json.containsKey('location')
+              ? SourceLocation.fromJson(
+                  _json['location'] as core.Map<core.String, core.dynamic>)
+              : null,
+          logLevel: _json.containsKey('logLevel')
+              ? _json['logLevel'] as core.String
+              : null,
+          logMessageFormat: _json.containsKey('logMessageFormat')
+              ? _json['logMessageFormat'] as core.String
+              : null,
+          stackFrames: _json.containsKey('stackFrames')
+              ? (_json['stackFrames'] as core.List)
+                  .map<StackFrame>((value) => StackFrame.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          status: _json.containsKey('status')
+              ? StatusMessage.fromJson(
+                  _json['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+          userEmail: _json.containsKey('userEmail')
+              ? _json['userEmail'] as core.String
+              : null,
+          variableTable: _json.containsKey('variableTable')
+              ? (_json['variableTable'] as core.List)
+                  .map<Variable>((value) => Variable.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
@@ -834,24 +851,30 @@ class CloudRepoSourceContext {
   /// A revision ID.
   core.String? revisionId;
 
-  CloudRepoSourceContext();
+  CloudRepoSourceContext({
+    this.aliasContext,
+    this.aliasName,
+    this.repoId,
+    this.revisionId,
+  });
 
-  CloudRepoSourceContext.fromJson(core.Map _json) {
-    if (_json.containsKey('aliasContext')) {
-      aliasContext = AliasContext.fromJson(
-          _json['aliasContext'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('aliasName')) {
-      aliasName = _json['aliasName'] as core.String;
-    }
-    if (_json.containsKey('repoId')) {
-      repoId = RepoId.fromJson(
-          _json['repoId'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('revisionId')) {
-      revisionId = _json['revisionId'] as core.String;
-    }
-  }
+  CloudRepoSourceContext.fromJson(core.Map _json)
+      : this(
+          aliasContext: _json.containsKey('aliasContext')
+              ? AliasContext.fromJson(
+                  _json['aliasContext'] as core.Map<core.String, core.dynamic>)
+              : null,
+          aliasName: _json.containsKey('aliasName')
+              ? _json['aliasName'] as core.String
+              : null,
+          repoId: _json.containsKey('repoId')
+              ? RepoId.fromJson(
+                  _json['repoId'] as core.Map<core.String, core.dynamic>)
+              : null,
+          revisionId: _json.containsKey('revisionId')
+              ? _json['revisionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (aliasContext != null) 'aliasContext': aliasContext!.toJson(),
@@ -875,17 +898,19 @@ class CloudWorkspaceId {
   /// The ID of the repo containing the workspace.
   RepoId? repoId;
 
-  CloudWorkspaceId();
+  CloudWorkspaceId({
+    this.name,
+    this.repoId,
+  });
 
-  CloudWorkspaceId.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('repoId')) {
-      repoId = RepoId.fromJson(
-          _json['repoId'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  CloudWorkspaceId.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          repoId: _json.containsKey('repoId')
+              ? RepoId.fromJson(
+                  _json['repoId'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -903,17 +928,21 @@ class CloudWorkspaceSourceContext {
   /// The ID of the workspace.
   CloudWorkspaceId? workspaceId;
 
-  CloudWorkspaceSourceContext();
+  CloudWorkspaceSourceContext({
+    this.snapshotId,
+    this.workspaceId,
+  });
 
-  CloudWorkspaceSourceContext.fromJson(core.Map _json) {
-    if (_json.containsKey('snapshotId')) {
-      snapshotId = _json['snapshotId'] as core.String;
-    }
-    if (_json.containsKey('workspaceId')) {
-      workspaceId = CloudWorkspaceId.fromJson(
-          _json['workspaceId'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  CloudWorkspaceSourceContext.fromJson(core.Map _json)
+      : this(
+          snapshotId: _json.containsKey('snapshotId')
+              ? _json['snapshotId'] as core.String
+              : null,
+          workspaceId: _json.containsKey('workspaceId')
+              ? CloudWorkspaceId.fromJson(
+                  _json['workspaceId'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (snapshotId != null) 'snapshotId': snapshotId!,
@@ -1001,58 +1030,71 @@ class Debuggee {
   /// identifies the code, binary, configuration and environment.
   core.String? uniquifier;
 
-  Debuggee();
+  Debuggee({
+    this.agentVersion,
+    this.canaryMode,
+    this.description,
+    this.extSourceContexts,
+    this.id,
+    this.isDisabled,
+    this.isInactive,
+    this.labels,
+    this.project,
+    this.sourceContexts,
+    this.status,
+    this.uniquifier,
+  });
 
-  Debuggee.fromJson(core.Map _json) {
-    if (_json.containsKey('agentVersion')) {
-      agentVersion = _json['agentVersion'] as core.String;
-    }
-    if (_json.containsKey('canaryMode')) {
-      canaryMode = _json['canaryMode'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('extSourceContexts')) {
-      extSourceContexts = (_json['extSourceContexts'] as core.List)
-          .map<ExtendedSourceContext>((value) => ExtendedSourceContext.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('isDisabled')) {
-      isDisabled = _json['isDisabled'] as core.bool;
-    }
-    if (_json.containsKey('isInactive')) {
-      isInactive = _json['isInactive'] as core.bool;
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('project')) {
-      project = _json['project'] as core.String;
-    }
-    if (_json.containsKey('sourceContexts')) {
-      sourceContexts = (_json['sourceContexts'] as core.List)
-          .map<SourceContext>((value) => SourceContext.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('status')) {
-      status = StatusMessage.fromJson(
-          _json['status'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('uniquifier')) {
-      uniquifier = _json['uniquifier'] as core.String;
-    }
-  }
+  Debuggee.fromJson(core.Map _json)
+      : this(
+          agentVersion: _json.containsKey('agentVersion')
+              ? _json['agentVersion'] as core.String
+              : null,
+          canaryMode: _json.containsKey('canaryMode')
+              ? _json['canaryMode'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          extSourceContexts: _json.containsKey('extSourceContexts')
+              ? (_json['extSourceContexts'] as core.List)
+                  .map<ExtendedSourceContext>((value) =>
+                      ExtendedSourceContext.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          isDisabled: _json.containsKey('isDisabled')
+              ? _json['isDisabled'] as core.bool
+              : null,
+          isInactive: _json.containsKey('isInactive')
+              ? _json['isInactive'] as core.bool
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          project: _json.containsKey('project')
+              ? _json['project'] as core.String
+              : null,
+          sourceContexts: _json.containsKey('sourceContexts')
+              ? (_json['sourceContexts'] as core.List)
+                  .map<SourceContext>((value) => SourceContext.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          status: _json.containsKey('status')
+              ? StatusMessage.fromJson(
+                  _json['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+          uniquifier: _json.containsKey('uniquifier')
+              ? _json['uniquifier'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (agentVersion != null) 'agentVersion': agentVersion!,
@@ -1100,22 +1142,26 @@ class ExtendedSourceContext {
   /// Labels with user defined metadata.
   core.Map<core.String, core.String>? labels;
 
-  ExtendedSourceContext();
+  ExtendedSourceContext({
+    this.context,
+    this.labels,
+  });
 
-  ExtendedSourceContext.fromJson(core.Map _json) {
-    if (_json.containsKey('context')) {
-      context = SourceContext.fromJson(
-          _json['context'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-  }
+  ExtendedSourceContext.fromJson(core.Map _json)
+      : this(
+          context: _json.containsKey('context')
+              ? SourceContext.fromJson(
+                  _json['context'] as core.Map<core.String, core.dynamic>)
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (context != null) 'context': context!.toJson(),
@@ -1136,18 +1182,22 @@ class FormatMessage {
   /// Optional parameters to be embedded into the message.
   core.List<core.String>? parameters;
 
-  FormatMessage();
+  FormatMessage({
+    this.format,
+    this.parameters,
+  });
 
-  FormatMessage.fromJson(core.Map _json) {
-    if (_json.containsKey('format')) {
-      format = _json['format'] as core.String;
-    }
-    if (_json.containsKey('parameters')) {
-      parameters = (_json['parameters'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  FormatMessage.fromJson(core.Map _json)
+      : this(
+          format: _json.containsKey('format')
+              ? _json['format'] as core.String
+              : null,
+          parameters: _json.containsKey('parameters')
+              ? (_json['parameters'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (format != null) 'format': format!,
@@ -1175,26 +1225,33 @@ class GerritSourceContext {
   /// A revision (commit) ID.
   core.String? revisionId;
 
-  GerritSourceContext();
+  GerritSourceContext({
+    this.aliasContext,
+    this.aliasName,
+    this.gerritProject,
+    this.hostUri,
+    this.revisionId,
+  });
 
-  GerritSourceContext.fromJson(core.Map _json) {
-    if (_json.containsKey('aliasContext')) {
-      aliasContext = AliasContext.fromJson(
-          _json['aliasContext'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('aliasName')) {
-      aliasName = _json['aliasName'] as core.String;
-    }
-    if (_json.containsKey('gerritProject')) {
-      gerritProject = _json['gerritProject'] as core.String;
-    }
-    if (_json.containsKey('hostUri')) {
-      hostUri = _json['hostUri'] as core.String;
-    }
-    if (_json.containsKey('revisionId')) {
-      revisionId = _json['revisionId'] as core.String;
-    }
-  }
+  GerritSourceContext.fromJson(core.Map _json)
+      : this(
+          aliasContext: _json.containsKey('aliasContext')
+              ? AliasContext.fromJson(
+                  _json['aliasContext'] as core.Map<core.String, core.dynamic>)
+              : null,
+          aliasName: _json.containsKey('aliasName')
+              ? _json['aliasName'] as core.String
+              : null,
+          gerritProject: _json.containsKey('gerritProject')
+              ? _json['gerritProject'] as core.String
+              : null,
+          hostUri: _json.containsKey('hostUri')
+              ? _json['hostUri'] as core.String
+              : null,
+          revisionId: _json.containsKey('revisionId')
+              ? _json['revisionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (aliasContext != null) 'aliasContext': aliasContext!.toJson(),
@@ -1212,14 +1269,17 @@ class GetBreakpointResponse {
   /// The fields `id` and `location` are guaranteed to be set.
   Breakpoint? breakpoint;
 
-  GetBreakpointResponse();
+  GetBreakpointResponse({
+    this.breakpoint,
+  });
 
-  GetBreakpointResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('breakpoint')) {
-      breakpoint = Breakpoint.fromJson(
-          _json['breakpoint'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GetBreakpointResponse.fromJson(core.Map _json)
+      : this(
+          breakpoint: _json.containsKey('breakpoint')
+              ? Breakpoint.fromJson(
+                  _json['breakpoint'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (breakpoint != null) 'breakpoint': breakpoint!.toJson(),
@@ -1237,16 +1297,18 @@ class GitSourceContext {
   /// Git repository URL.
   core.String? url;
 
-  GitSourceContext();
+  GitSourceContext({
+    this.revisionId,
+    this.url,
+  });
 
-  GitSourceContext.fromJson(core.Map _json) {
-    if (_json.containsKey('revisionId')) {
-      revisionId = _json['revisionId'] as core.String;
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  GitSourceContext.fromJson(core.Map _json)
+      : this(
+          revisionId: _json.containsKey('revisionId')
+              ? _json['revisionId'] as core.String
+              : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (revisionId != null) 'revisionId': revisionId!,
@@ -1272,22 +1334,27 @@ class ListActiveBreakpointsResponse {
   /// The `breakpoints` field would be empty and should be ignored.
   core.bool? waitExpired;
 
-  ListActiveBreakpointsResponse();
+  ListActiveBreakpointsResponse({
+    this.breakpoints,
+    this.nextWaitToken,
+    this.waitExpired,
+  });
 
-  ListActiveBreakpointsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('breakpoints')) {
-      breakpoints = (_json['breakpoints'] as core.List)
-          .map<Breakpoint>((value) =>
-              Breakpoint.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextWaitToken')) {
-      nextWaitToken = _json['nextWaitToken'] as core.String;
-    }
-    if (_json.containsKey('waitExpired')) {
-      waitExpired = _json['waitExpired'] as core.bool;
-    }
-  }
+  ListActiveBreakpointsResponse.fromJson(core.Map _json)
+      : this(
+          breakpoints: _json.containsKey('breakpoints')
+              ? (_json['breakpoints'] as core.List)
+                  .map<Breakpoint>((value) => Breakpoint.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextWaitToken: _json.containsKey('nextWaitToken')
+              ? _json['nextWaitToken'] as core.String
+              : null,
+          waitExpired: _json.containsKey('waitExpired')
+              ? _json['waitExpired'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (breakpoints != null)
@@ -1311,19 +1378,23 @@ class ListBreakpointsResponse {
   /// changes.
   core.String? nextWaitToken;
 
-  ListBreakpointsResponse();
+  ListBreakpointsResponse({
+    this.breakpoints,
+    this.nextWaitToken,
+  });
 
-  ListBreakpointsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('breakpoints')) {
-      breakpoints = (_json['breakpoints'] as core.List)
-          .map<Breakpoint>((value) =>
-              Breakpoint.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextWaitToken')) {
-      nextWaitToken = _json['nextWaitToken'] as core.String;
-    }
-  }
+  ListBreakpointsResponse.fromJson(core.Map _json)
+      : this(
+          breakpoints: _json.containsKey('breakpoints')
+              ? (_json['breakpoints'] as core.List)
+                  .map<Breakpoint>((value) => Breakpoint.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextWaitToken: _json.containsKey('nextWaitToken')
+              ? _json['nextWaitToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (breakpoints != null)
@@ -1341,16 +1412,19 @@ class ListDebuggeesResponse {
   /// be displayed to users.
   core.List<Debuggee>? debuggees;
 
-  ListDebuggeesResponse();
+  ListDebuggeesResponse({
+    this.debuggees,
+  });
 
-  ListDebuggeesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('debuggees')) {
-      debuggees = (_json['debuggees'] as core.List)
-          .map<Debuggee>((value) =>
-              Debuggee.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListDebuggeesResponse.fromJson(core.Map _json)
+      : this(
+          debuggees: _json.containsKey('debuggees')
+              ? (_json['debuggees'] as core.List)
+                  .map<Debuggee>((value) => Debuggee.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (debuggees != null)
@@ -1369,16 +1443,20 @@ class ProjectRepoId {
   /// Leave empty for the default repo.
   core.String? repoName;
 
-  ProjectRepoId();
+  ProjectRepoId({
+    this.projectId,
+    this.repoName,
+  });
 
-  ProjectRepoId.fromJson(core.Map _json) {
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('repoName')) {
-      repoName = _json['repoName'] as core.String;
-    }
-  }
+  ProjectRepoId.fromJson(core.Map _json)
+      : this(
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          repoName: _json.containsKey('repoName')
+              ? _json['repoName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (projectId != null) 'projectId': projectId!,
@@ -1396,14 +1474,17 @@ class RegisterDebuggeeRequest {
   /// Required.
   Debuggee? debuggee;
 
-  RegisterDebuggeeRequest();
+  RegisterDebuggeeRequest({
+    this.debuggee,
+  });
 
-  RegisterDebuggeeRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('debuggee')) {
-      debuggee = Debuggee.fromJson(
-          _json['debuggee'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  RegisterDebuggeeRequest.fromJson(core.Map _json)
+      : this(
+          debuggee: _json.containsKey('debuggee')
+              ? Debuggee.fromJson(
+                  _json['debuggee'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (debuggee != null) 'debuggee': debuggee!.toJson(),
@@ -1425,17 +1506,21 @@ class RegisterDebuggeeResponse {
   /// should however continue to poll `RegisterDebuggee` until reenabled.
   Debuggee? debuggee;
 
-  RegisterDebuggeeResponse();
+  RegisterDebuggeeResponse({
+    this.agentId,
+    this.debuggee,
+  });
 
-  RegisterDebuggeeResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('agentId')) {
-      agentId = _json['agentId'] as core.String;
-    }
-    if (_json.containsKey('debuggee')) {
-      debuggee = Debuggee.fromJson(
-          _json['debuggee'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  RegisterDebuggeeResponse.fromJson(core.Map _json)
+      : this(
+          agentId: _json.containsKey('agentId')
+              ? _json['agentId'] as core.String
+              : null,
+          debuggee: _json.containsKey('debuggee')
+              ? Debuggee.fromJson(
+                  _json['debuggee'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (agentId != null) 'agentId': agentId!,
@@ -1451,17 +1536,19 @@ class RepoId {
   /// A server-assigned, globally unique identifier.
   core.String? uid;
 
-  RepoId();
+  RepoId({
+    this.projectRepoId,
+    this.uid,
+  });
 
-  RepoId.fromJson(core.Map _json) {
-    if (_json.containsKey('projectRepoId')) {
-      projectRepoId = ProjectRepoId.fromJson(
-          _json['projectRepoId'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('uid')) {
-      uid = _json['uid'] as core.String;
-    }
-  }
+  RepoId.fromJson(core.Map _json)
+      : this(
+          projectRepoId: _json.containsKey('projectRepoId')
+              ? ProjectRepoId.fromJson(
+                  _json['projectRepoId'] as core.Map<core.String, core.dynamic>)
+              : null,
+          uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (projectRepoId != null) 'projectRepoId': projectRepoId!.toJson(),
@@ -1476,14 +1563,17 @@ class SetBreakpointResponse {
   /// The field `id` is guaranteed to be set (in addition to the echoed fields).
   Breakpoint? breakpoint;
 
-  SetBreakpointResponse();
+  SetBreakpointResponse({
+    this.breakpoint,
+  });
 
-  SetBreakpointResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('breakpoint')) {
-      breakpoint = Breakpoint.fromJson(
-          _json['breakpoint'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  SetBreakpointResponse.fromJson(core.Map _json)
+      : this(
+          breakpoint: _json.containsKey('breakpoint')
+              ? Breakpoint.fromJson(
+                  _json['breakpoint'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (breakpoint != null) 'breakpoint': breakpoint!.toJson(),
@@ -1507,26 +1597,32 @@ class SourceContext {
   /// A SourceContext referring to any third party Git repo (e.g. GitHub).
   GitSourceContext? git;
 
-  SourceContext();
+  SourceContext({
+    this.cloudRepo,
+    this.cloudWorkspace,
+    this.gerrit,
+    this.git,
+  });
 
-  SourceContext.fromJson(core.Map _json) {
-    if (_json.containsKey('cloudRepo')) {
-      cloudRepo = CloudRepoSourceContext.fromJson(
-          _json['cloudRepo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('cloudWorkspace')) {
-      cloudWorkspace = CloudWorkspaceSourceContext.fromJson(
-          _json['cloudWorkspace'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('gerrit')) {
-      gerrit = GerritSourceContext.fromJson(
-          _json['gerrit'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('git')) {
-      git = GitSourceContext.fromJson(
-          _json['git'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  SourceContext.fromJson(core.Map _json)
+      : this(
+          cloudRepo: _json.containsKey('cloudRepo')
+              ? CloudRepoSourceContext.fromJson(
+                  _json['cloudRepo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          cloudWorkspace: _json.containsKey('cloudWorkspace')
+              ? CloudWorkspaceSourceContext.fromJson(_json['cloudWorkspace']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          gerrit: _json.containsKey('gerrit')
+              ? GerritSourceContext.fromJson(
+                  _json['gerrit'] as core.Map<core.String, core.dynamic>)
+              : null,
+          git: _json.containsKey('git')
+              ? GitSourceContext.fromJson(
+                  _json['git'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cloudRepo != null) 'cloudRepo': cloudRepo!.toJson(),
@@ -1552,19 +1648,19 @@ class SourceLocation {
   /// Path to the source file within the source context of the target binary.
   core.String? path;
 
-  SourceLocation();
+  SourceLocation({
+    this.column,
+    this.line,
+    this.path,
+  });
 
-  SourceLocation.fromJson(core.Map _json) {
-    if (_json.containsKey('column')) {
-      column = _json['column'] as core.int;
-    }
-    if (_json.containsKey('line')) {
-      line = _json['line'] as core.int;
-    }
-    if (_json.containsKey('path')) {
-      path = _json['path'] as core.String;
-    }
-  }
+  SourceLocation.fromJson(core.Map _json)
+      : this(
+          column:
+              _json.containsKey('column') ? _json['column'] as core.int : null,
+          line: _json.containsKey('line') ? _json['line'] as core.int : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (column != null) 'column': column!,
@@ -1591,29 +1687,35 @@ class StackFrame {
   /// Source location of the call site.
   SourceLocation? location;
 
-  StackFrame();
+  StackFrame({
+    this.arguments,
+    this.function,
+    this.locals,
+    this.location,
+  });
 
-  StackFrame.fromJson(core.Map _json) {
-    if (_json.containsKey('arguments')) {
-      arguments = (_json['arguments'] as core.List)
-          .map<Variable>((value) =>
-              Variable.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('function')) {
-      function = _json['function'] as core.String;
-    }
-    if (_json.containsKey('locals')) {
-      locals = (_json['locals'] as core.List)
-          .map<Variable>((value) =>
-              Variable.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('location')) {
-      location = SourceLocation.fromJson(
-          _json['location'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  StackFrame.fromJson(core.Map _json)
+      : this(
+          arguments: _json.containsKey('arguments')
+              ? (_json['arguments'] as core.List)
+                  .map<Variable>((value) => Variable.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          function: _json.containsKey('function')
+              ? _json['function'] as core.String
+              : null,
+          locals: _json.containsKey('locals')
+              ? (_json['locals'] as core.List)
+                  .map<Variable>((value) => Variable.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          location: _json.containsKey('location')
+              ? SourceLocation.fromJson(
+                  _json['location'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (arguments != null)
@@ -1656,20 +1758,25 @@ class StatusMessage {
   /// valid).
   core.String? refersTo;
 
-  StatusMessage();
+  StatusMessage({
+    this.description,
+    this.isError,
+    this.refersTo,
+  });
 
-  StatusMessage.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = FormatMessage.fromJson(
-          _json['description'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('isError')) {
-      isError = _json['isError'] as core.bool;
-    }
-    if (_json.containsKey('refersTo')) {
-      refersTo = _json['refersTo'] as core.String;
-    }
-  }
+  StatusMessage.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? FormatMessage.fromJson(
+                  _json['description'] as core.Map<core.String, core.dynamic>)
+              : null,
+          isError: _json.containsKey('isError')
+              ? _json['isError'] as core.bool
+              : null,
+          refersTo: _json.containsKey('refersTo')
+              ? _json['refersTo'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!.toJson(),
@@ -1688,14 +1795,17 @@ class UpdateActiveBreakpointRequest {
   /// Required.
   Breakpoint? breakpoint;
 
-  UpdateActiveBreakpointRequest();
+  UpdateActiveBreakpointRequest({
+    this.breakpoint,
+  });
 
-  UpdateActiveBreakpointRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('breakpoint')) {
-      breakpoint = Breakpoint.fromJson(
-          _json['breakpoint'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  UpdateActiveBreakpointRequest.fromJson(core.Map _json)
+      : this(
+          breakpoint: _json.containsKey('breakpoint')
+              ? Breakpoint.fromJson(
+                  _json['breakpoint'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (breakpoint != null) 'breakpoint': breakpoint!.toJson(),
@@ -1787,32 +1897,35 @@ class Variable {
   /// `var_table_index` field is an index into `variable_table` in Breakpoint.
   core.int? varTableIndex;
 
-  Variable();
+  Variable({
+    this.members,
+    this.name,
+    this.status,
+    this.type,
+    this.value,
+    this.varTableIndex,
+  });
 
-  Variable.fromJson(core.Map _json) {
-    if (_json.containsKey('members')) {
-      members = (_json['members'] as core.List)
-          .map<Variable>((value) =>
-              Variable.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('status')) {
-      status = StatusMessage.fromJson(
-          _json['status'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-    if (_json.containsKey('varTableIndex')) {
-      varTableIndex = _json['varTableIndex'] as core.int;
-    }
-  }
+  Variable.fromJson(core.Map _json)
+      : this(
+          members: _json.containsKey('members')
+              ? (_json['members'] as core.List)
+                  .map<Variable>((value) => Variable.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          status: _json.containsKey('status')
+              ? StatusMessage.fromJson(
+                  _json['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+          varTableIndex: _json.containsKey('varTableIndex')
+              ? _json['varTableIndex'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (members != null)

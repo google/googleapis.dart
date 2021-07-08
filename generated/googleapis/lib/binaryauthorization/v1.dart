@@ -806,21 +806,26 @@ class AdmissionRule {
   /// Optional.
   core.List<core.String>? requireAttestationsBy;
 
-  AdmissionRule();
+  AdmissionRule({
+    this.enforcementMode,
+    this.evaluationMode,
+    this.requireAttestationsBy,
+  });
 
-  AdmissionRule.fromJson(core.Map _json) {
-    if (_json.containsKey('enforcementMode')) {
-      enforcementMode = _json['enforcementMode'] as core.String;
-    }
-    if (_json.containsKey('evaluationMode')) {
-      evaluationMode = _json['evaluationMode'] as core.String;
-    }
-    if (_json.containsKey('requireAttestationsBy')) {
-      requireAttestationsBy = (_json['requireAttestationsBy'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  AdmissionRule.fromJson(core.Map _json)
+      : this(
+          enforcementMode: _json.containsKey('enforcementMode')
+              ? _json['enforcementMode'] as core.String
+              : null,
+          evaluationMode: _json.containsKey('evaluationMode')
+              ? _json['evaluationMode'] as core.String
+              : null,
+          requireAttestationsBy: _json.containsKey('requireAttestationsBy')
+              ? (_json['requireAttestationsBy'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enforcementMode != null) 'enforcementMode': enforcementMode!,
@@ -840,13 +845,16 @@ class AdmissionWhitelistPattern {
   /// which matches subdirectories of a given entry.
   core.String? namePattern;
 
-  AdmissionWhitelistPattern();
+  AdmissionWhitelistPattern({
+    this.namePattern,
+  });
 
-  AdmissionWhitelistPattern.fromJson(core.Map _json) {
-    if (_json.containsKey('namePattern')) {
-      namePattern = _json['namePattern'] as core.String;
-    }
-  }
+  AdmissionWhitelistPattern.fromJson(core.Map _json)
+      : this(
+          namePattern: _json.containsKey('namePattern')
+              ? _json['namePattern'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (namePattern != null) 'namePattern': namePattern!,
@@ -893,25 +901,30 @@ class AttestationOccurrence {
   /// in common.proto for more details on signature structure and verification.
   core.List<Signature>? signatures;
 
-  AttestationOccurrence();
+  AttestationOccurrence({
+    this.jwts,
+    this.serializedPayload,
+    this.signatures,
+  });
 
-  AttestationOccurrence.fromJson(core.Map _json) {
-    if (_json.containsKey('jwts')) {
-      jwts = (_json['jwts'] as core.List)
-          .map<Jwt>((value) =>
-              Jwt.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('serializedPayload')) {
-      serializedPayload = _json['serializedPayload'] as core.String;
-    }
-    if (_json.containsKey('signatures')) {
-      signatures = (_json['signatures'] as core.List)
-          .map<Signature>((value) =>
-              Signature.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  AttestationOccurrence.fromJson(core.Map _json)
+      : this(
+          jwts: _json.containsKey('jwts')
+              ? (_json['jwts'] as core.List)
+                  .map<Jwt>((value) => Jwt.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          serializedPayload: _json.containsKey('serializedPayload')
+              ? _json['serializedPayload'] as core.String
+              : null,
+          signatures: _json.containsKey('signatures')
+              ? (_json['signatures'] as core.List)
+                  .map<Signature>((value) => Signature.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (jwts != null) 'jwts': jwts!.map((value) => value.toJson()).toList(),
@@ -948,23 +961,27 @@ class Attestor {
   /// during policy enforcement.
   UserOwnedGrafeasNote? userOwnedGrafeasNote;
 
-  Attestor();
+  Attestor({
+    this.description,
+    this.name,
+    this.updateTime,
+    this.userOwnedGrafeasNote,
+  });
 
-  Attestor.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-    if (_json.containsKey('userOwnedGrafeasNote')) {
-      userOwnedGrafeasNote = UserOwnedGrafeasNote.fromJson(
-          _json['userOwnedGrafeasNote'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Attestor.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+          userOwnedGrafeasNote: _json.containsKey('userOwnedGrafeasNote')
+              ? UserOwnedGrafeasNote.fromJson(_json['userOwnedGrafeasNote']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -1013,24 +1030,28 @@ class AttestorPublicKey {
   /// the public key.
   PkixPublicKey? pkixPublicKey;
 
-  AttestorPublicKey();
+  AttestorPublicKey({
+    this.asciiArmoredPgpPublicKey,
+    this.comment,
+    this.id,
+    this.pkixPublicKey,
+  });
 
-  AttestorPublicKey.fromJson(core.Map _json) {
-    if (_json.containsKey('asciiArmoredPgpPublicKey')) {
-      asciiArmoredPgpPublicKey =
-          _json['asciiArmoredPgpPublicKey'] as core.String;
-    }
-    if (_json.containsKey('comment')) {
-      comment = _json['comment'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('pkixPublicKey')) {
-      pkixPublicKey = PkixPublicKey.fromJson(
-          _json['pkixPublicKey'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  AttestorPublicKey.fromJson(core.Map _json)
+      : this(
+          asciiArmoredPgpPublicKey:
+              _json.containsKey('asciiArmoredPgpPublicKey')
+                  ? _json['asciiArmoredPgpPublicKey'] as core.String
+                  : null,
+          comment: _json.containsKey('comment')
+              ? _json['comment'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          pkixPublicKey: _json.containsKey('pkixPublicKey')
+              ? PkixPublicKey.fromJson(
+                  _json['pkixPublicKey'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (asciiArmoredPgpPublicKey != null)
@@ -1090,22 +1111,25 @@ class Binding {
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String? role;
 
-  Binding();
+  Binding({
+    this.condition,
+    this.members,
+    this.role,
+  });
 
-  Binding.fromJson(core.Map _json) {
-    if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(
-          _json['condition'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('members')) {
-      members = (_json['members'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('role')) {
-      role = _json['role'] as core.String;
-    }
-  }
+  Binding.fromJson(core.Map _json)
+      : this(
+          condition: _json.containsKey('condition')
+              ? Expr.fromJson(
+                  _json['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          members: _json.containsKey('members')
+              ? (_json['members'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!.toJson(),
@@ -1175,22 +1199,27 @@ class Expr {
   /// Optional.
   core.String? title;
 
-  Expr();
+  Expr({
+    this.description,
+    this.expression,
+    this.location,
+    this.title,
+  });
 
-  Expr.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('expression')) {
-      expression = _json['expression'] as core.String;
-    }
-    if (_json.containsKey('location')) {
-      location = _json['location'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  Expr.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          expression: _json.containsKey('expression')
+              ? _json['expression'] as core.String
+              : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -1278,22 +1307,25 @@ class IamPolicy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  IamPolicy();
+  IamPolicy({
+    this.bindings,
+    this.etag,
+    this.version,
+  });
 
-  IamPolicy.fromJson(core.Map _json) {
-    if (_json.containsKey('bindings')) {
-      bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) =>
-              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.int;
-    }
-  }
+  IamPolicy.fromJson(core.Map _json)
+      : this(
+          bindings: _json.containsKey('bindings')
+              ? (_json['bindings'] as core.List)
+                  .map<Binding>((value) => Binding.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bindings != null)
@@ -1310,13 +1342,16 @@ class Jwt {
   /// For details, see: https://tools.ietf.org/html/rfc7515.html#section-3.1
   core.String? compactJwt;
 
-  Jwt();
+  Jwt({
+    this.compactJwt,
+  });
 
-  Jwt.fromJson(core.Map _json) {
-    if (_json.containsKey('compactJwt')) {
-      compactJwt = _json['compactJwt'] as core.String;
-    }
-  }
+  Jwt.fromJson(core.Map _json)
+      : this(
+          compactJwt: _json.containsKey('compactJwt')
+              ? _json['compactJwt'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (compactJwt != null) 'compactJwt': compactJwt!,
@@ -1335,19 +1370,23 @@ class ListAttestorsResponse {
   /// results.
   core.String? nextPageToken;
 
-  ListAttestorsResponse();
+  ListAttestorsResponse({
+    this.attestors,
+    this.nextPageToken,
+  });
 
-  ListAttestorsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('attestors')) {
-      attestors = (_json['attestors'] as core.List)
-          .map<Attestor>((value) =>
-              Attestor.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListAttestorsResponse.fromJson(core.Map _json)
+      : this(
+          attestors: _json.containsKey('attestors')
+              ? (_json['attestors'] as core.List)
+                  .map<Attestor>((value) => Attestor.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attestors != null)
@@ -1400,16 +1439,20 @@ class PkixPublicKey {
   /// digest.
   core.String? signatureAlgorithm;
 
-  PkixPublicKey();
+  PkixPublicKey({
+    this.publicKeyPem,
+    this.signatureAlgorithm,
+  });
 
-  PkixPublicKey.fromJson(core.Map _json) {
-    if (_json.containsKey('publicKeyPem')) {
-      publicKeyPem = _json['publicKeyPem'] as core.String;
-    }
-    if (_json.containsKey('signatureAlgorithm')) {
-      signatureAlgorithm = _json['signatureAlgorithm'] as core.String;
-    }
-  }
+  PkixPublicKey.fromJson(core.Map _json)
+      : this(
+          publicKeyPem: _json.containsKey('publicKeyPem')
+              ? _json['publicKeyPem'] as core.String
+              : null,
+          signatureAlgorithm: _json.containsKey('signatureAlgorithm')
+              ? _json['signatureAlgorithm'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (publicKeyPem != null) 'publicKeyPem': publicKeyPem!,
@@ -1501,78 +1544,92 @@ class Policy {
   /// Output only.
   core.String? updateTime;
 
-  Policy();
+  Policy({
+    this.admissionWhitelistPatterns,
+    this.clusterAdmissionRules,
+    this.defaultAdmissionRule,
+    this.description,
+    this.globalPolicyEvaluationMode,
+    this.istioServiceIdentityAdmissionRules,
+    this.kubernetesNamespaceAdmissionRules,
+    this.kubernetesServiceAccountAdmissionRules,
+    this.name,
+    this.updateTime,
+  });
 
-  Policy.fromJson(core.Map _json) {
-    if (_json.containsKey('admissionWhitelistPatterns')) {
-      admissionWhitelistPatterns =
-          (_json['admissionWhitelistPatterns'] as core.List)
-              .map<AdmissionWhitelistPattern>((value) =>
-                  AdmissionWhitelistPattern.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList();
-    }
-    if (_json.containsKey('clusterAdmissionRules')) {
-      clusterAdmissionRules = (_json['clusterAdmissionRules']
-              as core.Map<core.String, core.dynamic>)
-          .map(
-        (key, item) => core.MapEntry(
-          key,
-          AdmissionRule.fromJson(item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('defaultAdmissionRule')) {
-      defaultAdmissionRule = AdmissionRule.fromJson(
-          _json['defaultAdmissionRule'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('globalPolicyEvaluationMode')) {
-      globalPolicyEvaluationMode =
-          _json['globalPolicyEvaluationMode'] as core.String;
-    }
-    if (_json.containsKey('istioServiceIdentityAdmissionRules')) {
-      istioServiceIdentityAdmissionRules =
-          (_json['istioServiceIdentityAdmissionRules']
+  Policy.fromJson(core.Map _json)
+      : this(
+          admissionWhitelistPatterns:
+              _json.containsKey('admissionWhitelistPatterns')
+                  ? (_json['admissionWhitelistPatterns'] as core.List)
+                      .map<AdmissionWhitelistPattern>((value) =>
+                          AdmissionWhitelistPattern.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          clusterAdmissionRules: _json.containsKey('clusterAdmissionRules')
+              ? (_json['clusterAdmissionRules']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    AdmissionRule.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          defaultAdmissionRule: _json.containsKey('defaultAdmissionRule')
+              ? AdmissionRule.fromJson(_json['defaultAdmissionRule']
                   as core.Map<core.String, core.dynamic>)
-              .map(
-        (key, item) => core.MapEntry(
-          key,
-          AdmissionRule.fromJson(item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('kubernetesNamespaceAdmissionRules')) {
-      kubernetesNamespaceAdmissionRules =
-          (_json['kubernetesNamespaceAdmissionRules']
-                  as core.Map<core.String, core.dynamic>)
-              .map(
-        (key, item) => core.MapEntry(
-          key,
-          AdmissionRule.fromJson(item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('kubernetesServiceAccountAdmissionRules')) {
-      kubernetesServiceAccountAdmissionRules =
-          (_json['kubernetesServiceAccountAdmissionRules']
-                  as core.Map<core.String, core.dynamic>)
-              .map(
-        (key, item) => core.MapEntry(
-          key,
-          AdmissionRule.fromJson(item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          globalPolicyEvaluationMode:
+              _json.containsKey('globalPolicyEvaluationMode')
+                  ? _json['globalPolicyEvaluationMode'] as core.String
+                  : null,
+          istioServiceIdentityAdmissionRules:
+              _json.containsKey('istioServiceIdentityAdmissionRules')
+                  ? (_json['istioServiceIdentityAdmissionRules']
+                          as core.Map<core.String, core.dynamic>)
+                      .map(
+                      (key, item) => core.MapEntry(
+                        key,
+                        AdmissionRule.fromJson(
+                            item as core.Map<core.String, core.dynamic>),
+                      ),
+                    )
+                  : null,
+          kubernetesNamespaceAdmissionRules:
+              _json.containsKey('kubernetesNamespaceAdmissionRules')
+                  ? (_json['kubernetesNamespaceAdmissionRules']
+                          as core.Map<core.String, core.dynamic>)
+                      .map(
+                      (key, item) => core.MapEntry(
+                        key,
+                        AdmissionRule.fromJson(
+                            item as core.Map<core.String, core.dynamic>),
+                      ),
+                    )
+                  : null,
+          kubernetesServiceAccountAdmissionRules:
+              _json.containsKey('kubernetesServiceAccountAdmissionRules')
+                  ? (_json['kubernetesServiceAccountAdmissionRules']
+                          as core.Map<core.String, core.dynamic>)
+                      .map(
+                      (key, item) => core.MapEntry(
+                        key,
+                        AdmissionRule.fromJson(
+                            item as core.Map<core.String, core.dynamic>),
+                      ),
+                    )
+                  : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (admissionWhitelistPatterns != null)
@@ -1613,14 +1670,17 @@ class SetIamPolicyRequest {
   /// reject them.
   IamPolicy? policy;
 
-  SetIamPolicyRequest();
+  SetIamPolicyRequest({
+    this.policy,
+  });
 
-  SetIamPolicyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('policy')) {
-      policy = IamPolicy.fromJson(
-          _json['policy'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  SetIamPolicyRequest.fromJson(core.Map _json)
+      : this(
+          policy: _json.containsKey('policy')
+              ? IamPolicy.fromJson(
+                  _json['policy'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (policy != null) 'policy': policy!.toJson(),
@@ -1676,16 +1736,20 @@ class Signature {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  Signature();
+  Signature({
+    this.publicKeyId,
+    this.signature,
+  });
 
-  Signature.fromJson(core.Map _json) {
-    if (_json.containsKey('publicKeyId')) {
-      publicKeyId = _json['publicKeyId'] as core.String;
-    }
-    if (_json.containsKey('signature')) {
-      signature = _json['signature'] as core.String;
-    }
-  }
+  Signature.fromJson(core.Map _json)
+      : this(
+          publicKeyId: _json.containsKey('publicKeyId')
+              ? _json['publicKeyId'] as core.String
+              : null,
+          signature: _json.containsKey('signature')
+              ? _json['signature'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (publicKeyId != null) 'publicKeyId': publicKeyId!,
@@ -1702,15 +1766,18 @@ class TestIamPermissionsRequest {
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String>? permissions;
 
-  TestIamPermissionsRequest();
+  TestIamPermissionsRequest({
+    this.permissions,
+  });
 
-  TestIamPermissionsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  TestIamPermissionsRequest.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
@@ -1723,15 +1790,18 @@ class TestIamPermissionsResponse {
   /// allowed.
   core.List<core.String>? permissions;
 
-  TestIamPermissionsResponse();
+  TestIamPermissionsResponse({
+    this.permissions,
+  });
 
-  TestIamPermissionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  TestIamPermissionsResponse.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
@@ -1774,23 +1844,28 @@ class UserOwnedGrafeasNote {
   /// Optional.
   core.List<AttestorPublicKey>? publicKeys;
 
-  UserOwnedGrafeasNote();
+  UserOwnedGrafeasNote({
+    this.delegationServiceAccountEmail,
+    this.noteReference,
+    this.publicKeys,
+  });
 
-  UserOwnedGrafeasNote.fromJson(core.Map _json) {
-    if (_json.containsKey('delegationServiceAccountEmail')) {
-      delegationServiceAccountEmail =
-          _json['delegationServiceAccountEmail'] as core.String;
-    }
-    if (_json.containsKey('noteReference')) {
-      noteReference = _json['noteReference'] as core.String;
-    }
-    if (_json.containsKey('publicKeys')) {
-      publicKeys = (_json['publicKeys'] as core.List)
-          .map<AttestorPublicKey>((value) => AttestorPublicKey.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  UserOwnedGrafeasNote.fromJson(core.Map _json)
+      : this(
+          delegationServiceAccountEmail:
+              _json.containsKey('delegationServiceAccountEmail')
+                  ? _json['delegationServiceAccountEmail'] as core.String
+                  : null,
+          noteReference: _json.containsKey('noteReference')
+              ? _json['noteReference'] as core.String
+              : null,
+          publicKeys: _json.containsKey('publicKeys')
+              ? (_json['publicKeys'] as core.List)
+                  .map<AttestorPublicKey>((value) => AttestorPublicKey.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (delegationServiceAccountEmail != null)
@@ -1824,20 +1899,25 @@ class ValidateAttestationOccurrenceRequest {
   /// Required.
   core.String? occurrenceResourceUri;
 
-  ValidateAttestationOccurrenceRequest();
+  ValidateAttestationOccurrenceRequest({
+    this.attestation,
+    this.occurrenceNote,
+    this.occurrenceResourceUri,
+  });
 
-  ValidateAttestationOccurrenceRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('attestation')) {
-      attestation = AttestationOccurrence.fromJson(
-          _json['attestation'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('occurrenceNote')) {
-      occurrenceNote = _json['occurrenceNote'] as core.String;
-    }
-    if (_json.containsKey('occurrenceResourceUri')) {
-      occurrenceResourceUri = _json['occurrenceResourceUri'] as core.String;
-    }
-  }
+  ValidateAttestationOccurrenceRequest.fromJson(core.Map _json)
+      : this(
+          attestation: _json.containsKey('attestation')
+              ? AttestationOccurrence.fromJson(
+                  _json['attestation'] as core.Map<core.String, core.dynamic>)
+              : null,
+          occurrenceNote: _json.containsKey('occurrenceNote')
+              ? _json['occurrenceNote'] as core.String
+              : null,
+          occurrenceResourceUri: _json.containsKey('occurrenceResourceUri')
+              ? _json['occurrenceResourceUri'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attestation != null) 'attestation': attestation!.toJson(),
@@ -1860,16 +1940,20 @@ class ValidateAttestationOccurrenceResponse {
   /// by the Attestor.
   core.String? result;
 
-  ValidateAttestationOccurrenceResponse();
+  ValidateAttestationOccurrenceResponse({
+    this.denialReason,
+    this.result,
+  });
 
-  ValidateAttestationOccurrenceResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('denialReason')) {
-      denialReason = _json['denialReason'] as core.String;
-    }
-    if (_json.containsKey('result')) {
-      result = _json['result'] as core.String;
-    }
-  }
+  ValidateAttestationOccurrenceResponse.fromJson(core.Map _json)
+      : this(
+          denialReason: _json.containsKey('denialReason')
+              ? _json['denialReason'] as core.String
+              : null,
+          result: _json.containsKey('result')
+              ? _json['result'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (denialReason != null) 'denialReason': denialReason!,

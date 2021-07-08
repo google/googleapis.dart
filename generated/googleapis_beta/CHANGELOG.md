@@ -1,5 +1,9 @@
 ## 4.0.0-dev
 
+- All schema types now have positional constructor parameters.
+
+### API changes
+
 - `firebaseappcheck` - new!
 - `networksecurity` - new!
 - `osconfig` – new!

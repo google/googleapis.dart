@@ -141,15 +141,18 @@ class PublishUrlNotificationResponse {
   /// Description of the notification events received for this URL.
   UrlNotificationMetadata? urlNotificationMetadata;
 
-  PublishUrlNotificationResponse();
+  PublishUrlNotificationResponse({
+    this.urlNotificationMetadata,
+  });
 
-  PublishUrlNotificationResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('urlNotificationMetadata')) {
-      urlNotificationMetadata = UrlNotificationMetadata.fromJson(
-          _json['urlNotificationMetadata']
-              as core.Map<core.String, core.dynamic>);
-    }
-  }
+  PublishUrlNotificationResponse.fromJson(core.Map _json)
+      : this(
+          urlNotificationMetadata: _json.containsKey('urlNotificationMetadata')
+              ? UrlNotificationMetadata.fromJson(
+                  _json['urlNotificationMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (urlNotificationMetadata != null)
@@ -179,19 +182,20 @@ class UrlNotification {
   /// of `URL_UPDATED` notifications, it _must_ be crawlable by Google.
   core.String? url;
 
-  UrlNotification();
+  UrlNotification({
+    this.notifyTime,
+    this.type,
+    this.url,
+  });
 
-  UrlNotification.fromJson(core.Map _json) {
-    if (_json.containsKey('notifyTime')) {
-      notifyTime = _json['notifyTime'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  UrlNotification.fromJson(core.Map _json)
+      : this(
+          notifyTime: _json.containsKey('notifyTime')
+              ? _json['notifyTime'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (notifyTime != null) 'notifyTime': notifyTime!,
@@ -212,21 +216,24 @@ class UrlNotificationMetadata {
   /// URL to which this metadata refers.
   core.String? url;
 
-  UrlNotificationMetadata();
+  UrlNotificationMetadata({
+    this.latestRemove,
+    this.latestUpdate,
+    this.url,
+  });
 
-  UrlNotificationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('latestRemove')) {
-      latestRemove = UrlNotification.fromJson(
-          _json['latestRemove'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('latestUpdate')) {
-      latestUpdate = UrlNotification.fromJson(
-          _json['latestUpdate'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  UrlNotificationMetadata.fromJson(core.Map _json)
+      : this(
+          latestRemove: _json.containsKey('latestRemove')
+              ? UrlNotification.fromJson(
+                  _json['latestRemove'] as core.Map<core.String, core.dynamic>)
+              : null,
+          latestUpdate: _json.containsKey('latestUpdate')
+              ? UrlNotification.fromJson(
+                  _json['latestUpdate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (latestRemove != null) 'latestRemove': latestRemove!.toJson(),

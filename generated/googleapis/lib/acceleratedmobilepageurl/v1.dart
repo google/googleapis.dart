@@ -107,19 +107,24 @@ class AmpUrl {
   /// The original non-AMP URL.
   core.String? originalUrl;
 
-  AmpUrl();
+  AmpUrl({
+    this.ampUrl,
+    this.cdnAmpUrl,
+    this.originalUrl,
+  });
 
-  AmpUrl.fromJson(core.Map _json) {
-    if (_json.containsKey('ampUrl')) {
-      ampUrl = _json['ampUrl'] as core.String;
-    }
-    if (_json.containsKey('cdnAmpUrl')) {
-      cdnAmpUrl = _json['cdnAmpUrl'] as core.String;
-    }
-    if (_json.containsKey('originalUrl')) {
-      originalUrl = _json['originalUrl'] as core.String;
-    }
-  }
+  AmpUrl.fromJson(core.Map _json)
+      : this(
+          ampUrl: _json.containsKey('ampUrl')
+              ? _json['ampUrl'] as core.String
+              : null,
+          cdnAmpUrl: _json.containsKey('cdnAmpUrl')
+              ? _json['cdnAmpUrl'] as core.String
+              : null,
+          originalUrl: _json.containsKey('originalUrl')
+              ? _json['originalUrl'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ampUrl != null) 'ampUrl': ampUrl!,
@@ -153,19 +158,24 @@ class AmpUrlError {
   /// The original non-AMP URL.
   core.String? originalUrl;
 
-  AmpUrlError();
+  AmpUrlError({
+    this.errorCode,
+    this.errorMessage,
+    this.originalUrl,
+  });
 
-  AmpUrlError.fromJson(core.Map _json) {
-    if (_json.containsKey('errorCode')) {
-      errorCode = _json['errorCode'] as core.String;
-    }
-    if (_json.containsKey('errorMessage')) {
-      errorMessage = _json['errorMessage'] as core.String;
-    }
-    if (_json.containsKey('originalUrl')) {
-      originalUrl = _json['originalUrl'] as core.String;
-    }
-  }
+  AmpUrlError.fromJson(core.Map _json)
+      : this(
+          errorCode: _json.containsKey('errorCode')
+              ? _json['errorCode'] as core.String
+              : null,
+          errorMessage: _json.containsKey('errorMessage')
+              ? _json['errorMessage'] as core.String
+              : null,
+          originalUrl: _json.containsKey('originalUrl')
+              ? _json['originalUrl'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorCode != null) 'errorCode': errorCode!,
@@ -195,18 +205,22 @@ class BatchGetAmpUrlsRequest {
   /// Limits\](/amp/cache/reference/limits)).
   core.List<core.String>? urls;
 
-  BatchGetAmpUrlsRequest();
+  BatchGetAmpUrlsRequest({
+    this.lookupStrategy,
+    this.urls,
+  });
 
-  BatchGetAmpUrlsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('lookupStrategy')) {
-      lookupStrategy = _json['lookupStrategy'] as core.String;
-    }
-    if (_json.containsKey('urls')) {
-      urls = (_json['urls'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  BatchGetAmpUrlsRequest.fromJson(core.Map _json)
+      : this(
+          lookupStrategy: _json.containsKey('lookupStrategy')
+              ? _json['lookupStrategy'] as core.String
+              : null,
+          urls: _json.containsKey('urls')
+              ? (_json['urls'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (lookupStrategy != null) 'lookupStrategy': lookupStrategy!,
@@ -226,22 +240,26 @@ class BatchGetAmpUrlsResponse {
   /// The errors for requested URLs that have no AMP URL.
   core.List<AmpUrlError>? urlErrors;
 
-  BatchGetAmpUrlsResponse();
+  BatchGetAmpUrlsResponse({
+    this.ampUrls,
+    this.urlErrors,
+  });
 
-  BatchGetAmpUrlsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('ampUrls')) {
-      ampUrls = (_json['ampUrls'] as core.List)
-          .map<AmpUrl>((value) =>
-              AmpUrl.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('urlErrors')) {
-      urlErrors = (_json['urlErrors'] as core.List)
-          .map<AmpUrlError>((value) => AmpUrlError.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  BatchGetAmpUrlsResponse.fromJson(core.Map _json)
+      : this(
+          ampUrls: _json.containsKey('ampUrls')
+              ? (_json['ampUrls'] as core.List)
+                  .map<AmpUrl>((value) => AmpUrl.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          urlErrors: _json.containsKey('urlErrors')
+              ? (_json['urlErrors'] as core.List)
+                  .map<AmpUrlError>((value) => AmpUrlError.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ampUrls != null)

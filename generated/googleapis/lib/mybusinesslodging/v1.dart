@@ -271,40 +271,50 @@ class Accessibility {
   /// the day of the week.
   core.String? mobilityAccessiblePoolException;
 
-  Accessibility();
+  Accessibility({
+    this.mobilityAccessible,
+    this.mobilityAccessibleElevator,
+    this.mobilityAccessibleElevatorException,
+    this.mobilityAccessibleException,
+    this.mobilityAccessibleParking,
+    this.mobilityAccessibleParkingException,
+    this.mobilityAccessiblePool,
+    this.mobilityAccessiblePoolException,
+  });
 
-  Accessibility.fromJson(core.Map _json) {
-    if (_json.containsKey('mobilityAccessible')) {
-      mobilityAccessible = _json['mobilityAccessible'] as core.bool;
-    }
-    if (_json.containsKey('mobilityAccessibleElevator')) {
-      mobilityAccessibleElevator =
-          _json['mobilityAccessibleElevator'] as core.bool;
-    }
-    if (_json.containsKey('mobilityAccessibleElevatorException')) {
-      mobilityAccessibleElevatorException =
-          _json['mobilityAccessibleElevatorException'] as core.String;
-    }
-    if (_json.containsKey('mobilityAccessibleException')) {
-      mobilityAccessibleException =
-          _json['mobilityAccessibleException'] as core.String;
-    }
-    if (_json.containsKey('mobilityAccessibleParking')) {
-      mobilityAccessibleParking =
-          _json['mobilityAccessibleParking'] as core.bool;
-    }
-    if (_json.containsKey('mobilityAccessibleParkingException')) {
-      mobilityAccessibleParkingException =
-          _json['mobilityAccessibleParkingException'] as core.String;
-    }
-    if (_json.containsKey('mobilityAccessiblePool')) {
-      mobilityAccessiblePool = _json['mobilityAccessiblePool'] as core.bool;
-    }
-    if (_json.containsKey('mobilityAccessiblePoolException')) {
-      mobilityAccessiblePoolException =
-          _json['mobilityAccessiblePoolException'] as core.String;
-    }
-  }
+  Accessibility.fromJson(core.Map _json)
+      : this(
+          mobilityAccessible: _json.containsKey('mobilityAccessible')
+              ? _json['mobilityAccessible'] as core.bool
+              : null,
+          mobilityAccessibleElevator:
+              _json.containsKey('mobilityAccessibleElevator')
+                  ? _json['mobilityAccessibleElevator'] as core.bool
+                  : null,
+          mobilityAccessibleElevatorException:
+              _json.containsKey('mobilityAccessibleElevatorException')
+                  ? _json['mobilityAccessibleElevatorException'] as core.String
+                  : null,
+          mobilityAccessibleException:
+              _json.containsKey('mobilityAccessibleException')
+                  ? _json['mobilityAccessibleException'] as core.String
+                  : null,
+          mobilityAccessibleParking:
+              _json.containsKey('mobilityAccessibleParking')
+                  ? _json['mobilityAccessibleParking'] as core.bool
+                  : null,
+          mobilityAccessibleParkingException:
+              _json.containsKey('mobilityAccessibleParkingException')
+                  ? _json['mobilityAccessibleParkingException'] as core.String
+                  : null,
+          mobilityAccessiblePool: _json.containsKey('mobilityAccessiblePool')
+              ? _json['mobilityAccessiblePool'] as core.bool
+              : null,
+          mobilityAccessiblePoolException:
+              _json.containsKey('mobilityAccessiblePoolException')
+                  ? _json['mobilityAccessiblePoolException'] as core.String
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mobilityAccessible != null)
@@ -649,116 +659,147 @@ class Activities {
   /// the day of the week.
   core.String? watercraftRentalException;
 
-  Activities();
+  Activities({
+    this.beachAccess,
+    this.beachAccessException,
+    this.beachFront,
+    this.beachFrontException,
+    this.bicycleRental,
+    this.bicycleRentalException,
+    this.boutiqueStores,
+    this.boutiqueStoresException,
+    this.casino,
+    this.casinoException,
+    this.freeBicycleRental,
+    this.freeBicycleRentalException,
+    this.freeWatercraftRental,
+    this.freeWatercraftRentalException,
+    this.gameRoom,
+    this.gameRoomException,
+    this.golf,
+    this.golfException,
+    this.horsebackRiding,
+    this.horsebackRidingException,
+    this.nightclub,
+    this.nightclubException,
+    this.privateBeach,
+    this.privateBeachException,
+    this.scuba,
+    this.scubaException,
+    this.snorkeling,
+    this.snorkelingException,
+    this.tennis,
+    this.tennisException,
+    this.waterSkiing,
+    this.waterSkiingException,
+    this.watercraftRental,
+    this.watercraftRentalException,
+  });
 
-  Activities.fromJson(core.Map _json) {
-    if (_json.containsKey('beachAccess')) {
-      beachAccess = _json['beachAccess'] as core.bool;
-    }
-    if (_json.containsKey('beachAccessException')) {
-      beachAccessException = _json['beachAccessException'] as core.String;
-    }
-    if (_json.containsKey('beachFront')) {
-      beachFront = _json['beachFront'] as core.bool;
-    }
-    if (_json.containsKey('beachFrontException')) {
-      beachFrontException = _json['beachFrontException'] as core.String;
-    }
-    if (_json.containsKey('bicycleRental')) {
-      bicycleRental = _json['bicycleRental'] as core.bool;
-    }
-    if (_json.containsKey('bicycleRentalException')) {
-      bicycleRentalException = _json['bicycleRentalException'] as core.String;
-    }
-    if (_json.containsKey('boutiqueStores')) {
-      boutiqueStores = _json['boutiqueStores'] as core.bool;
-    }
-    if (_json.containsKey('boutiqueStoresException')) {
-      boutiqueStoresException = _json['boutiqueStoresException'] as core.String;
-    }
-    if (_json.containsKey('casino')) {
-      casino = _json['casino'] as core.bool;
-    }
-    if (_json.containsKey('casinoException')) {
-      casinoException = _json['casinoException'] as core.String;
-    }
-    if (_json.containsKey('freeBicycleRental')) {
-      freeBicycleRental = _json['freeBicycleRental'] as core.bool;
-    }
-    if (_json.containsKey('freeBicycleRentalException')) {
-      freeBicycleRentalException =
-          _json['freeBicycleRentalException'] as core.String;
-    }
-    if (_json.containsKey('freeWatercraftRental')) {
-      freeWatercraftRental = _json['freeWatercraftRental'] as core.bool;
-    }
-    if (_json.containsKey('freeWatercraftRentalException')) {
-      freeWatercraftRentalException =
-          _json['freeWatercraftRentalException'] as core.String;
-    }
-    if (_json.containsKey('gameRoom')) {
-      gameRoom = _json['gameRoom'] as core.bool;
-    }
-    if (_json.containsKey('gameRoomException')) {
-      gameRoomException = _json['gameRoomException'] as core.String;
-    }
-    if (_json.containsKey('golf')) {
-      golf = _json['golf'] as core.bool;
-    }
-    if (_json.containsKey('golfException')) {
-      golfException = _json['golfException'] as core.String;
-    }
-    if (_json.containsKey('horsebackRiding')) {
-      horsebackRiding = _json['horsebackRiding'] as core.bool;
-    }
-    if (_json.containsKey('horsebackRidingException')) {
-      horsebackRidingException =
-          _json['horsebackRidingException'] as core.String;
-    }
-    if (_json.containsKey('nightclub')) {
-      nightclub = _json['nightclub'] as core.bool;
-    }
-    if (_json.containsKey('nightclubException')) {
-      nightclubException = _json['nightclubException'] as core.String;
-    }
-    if (_json.containsKey('privateBeach')) {
-      privateBeach = _json['privateBeach'] as core.bool;
-    }
-    if (_json.containsKey('privateBeachException')) {
-      privateBeachException = _json['privateBeachException'] as core.String;
-    }
-    if (_json.containsKey('scuba')) {
-      scuba = _json['scuba'] as core.bool;
-    }
-    if (_json.containsKey('scubaException')) {
-      scubaException = _json['scubaException'] as core.String;
-    }
-    if (_json.containsKey('snorkeling')) {
-      snorkeling = _json['snorkeling'] as core.bool;
-    }
-    if (_json.containsKey('snorkelingException')) {
-      snorkelingException = _json['snorkelingException'] as core.String;
-    }
-    if (_json.containsKey('tennis')) {
-      tennis = _json['tennis'] as core.bool;
-    }
-    if (_json.containsKey('tennisException')) {
-      tennisException = _json['tennisException'] as core.String;
-    }
-    if (_json.containsKey('waterSkiing')) {
-      waterSkiing = _json['waterSkiing'] as core.bool;
-    }
-    if (_json.containsKey('waterSkiingException')) {
-      waterSkiingException = _json['waterSkiingException'] as core.String;
-    }
-    if (_json.containsKey('watercraftRental')) {
-      watercraftRental = _json['watercraftRental'] as core.bool;
-    }
-    if (_json.containsKey('watercraftRentalException')) {
-      watercraftRentalException =
-          _json['watercraftRentalException'] as core.String;
-    }
-  }
+  Activities.fromJson(core.Map _json)
+      : this(
+          beachAccess: _json.containsKey('beachAccess')
+              ? _json['beachAccess'] as core.bool
+              : null,
+          beachAccessException: _json.containsKey('beachAccessException')
+              ? _json['beachAccessException'] as core.String
+              : null,
+          beachFront: _json.containsKey('beachFront')
+              ? _json['beachFront'] as core.bool
+              : null,
+          beachFrontException: _json.containsKey('beachFrontException')
+              ? _json['beachFrontException'] as core.String
+              : null,
+          bicycleRental: _json.containsKey('bicycleRental')
+              ? _json['bicycleRental'] as core.bool
+              : null,
+          bicycleRentalException: _json.containsKey('bicycleRentalException')
+              ? _json['bicycleRentalException'] as core.String
+              : null,
+          boutiqueStores: _json.containsKey('boutiqueStores')
+              ? _json['boutiqueStores'] as core.bool
+              : null,
+          boutiqueStoresException: _json.containsKey('boutiqueStoresException')
+              ? _json['boutiqueStoresException'] as core.String
+              : null,
+          casino:
+              _json.containsKey('casino') ? _json['casino'] as core.bool : null,
+          casinoException: _json.containsKey('casinoException')
+              ? _json['casinoException'] as core.String
+              : null,
+          freeBicycleRental: _json.containsKey('freeBicycleRental')
+              ? _json['freeBicycleRental'] as core.bool
+              : null,
+          freeBicycleRentalException:
+              _json.containsKey('freeBicycleRentalException')
+                  ? _json['freeBicycleRentalException'] as core.String
+                  : null,
+          freeWatercraftRental: _json.containsKey('freeWatercraftRental')
+              ? _json['freeWatercraftRental'] as core.bool
+              : null,
+          freeWatercraftRentalException:
+              _json.containsKey('freeWatercraftRentalException')
+                  ? _json['freeWatercraftRentalException'] as core.String
+                  : null,
+          gameRoom: _json.containsKey('gameRoom')
+              ? _json['gameRoom'] as core.bool
+              : null,
+          gameRoomException: _json.containsKey('gameRoomException')
+              ? _json['gameRoomException'] as core.String
+              : null,
+          golf: _json.containsKey('golf') ? _json['golf'] as core.bool : null,
+          golfException: _json.containsKey('golfException')
+              ? _json['golfException'] as core.String
+              : null,
+          horsebackRiding: _json.containsKey('horsebackRiding')
+              ? _json['horsebackRiding'] as core.bool
+              : null,
+          horsebackRidingException:
+              _json.containsKey('horsebackRidingException')
+                  ? _json['horsebackRidingException'] as core.String
+                  : null,
+          nightclub: _json.containsKey('nightclub')
+              ? _json['nightclub'] as core.bool
+              : null,
+          nightclubException: _json.containsKey('nightclubException')
+              ? _json['nightclubException'] as core.String
+              : null,
+          privateBeach: _json.containsKey('privateBeach')
+              ? _json['privateBeach'] as core.bool
+              : null,
+          privateBeachException: _json.containsKey('privateBeachException')
+              ? _json['privateBeachException'] as core.String
+              : null,
+          scuba:
+              _json.containsKey('scuba') ? _json['scuba'] as core.bool : null,
+          scubaException: _json.containsKey('scubaException')
+              ? _json['scubaException'] as core.String
+              : null,
+          snorkeling: _json.containsKey('snorkeling')
+              ? _json['snorkeling'] as core.bool
+              : null,
+          snorkelingException: _json.containsKey('snorkelingException')
+              ? _json['snorkelingException'] as core.String
+              : null,
+          tennis:
+              _json.containsKey('tennis') ? _json['tennis'] as core.bool : null,
+          tennisException: _json.containsKey('tennisException')
+              ? _json['tennisException'] as core.String
+              : null,
+          waterSkiing: _json.containsKey('waterSkiing')
+              ? _json['waterSkiing'] as core.bool
+              : null,
+          waterSkiingException: _json.containsKey('waterSkiingException')
+              ? _json['waterSkiingException'] as core.String
+              : null,
+          watercraftRental: _json.containsKey('watercraftRental')
+              ? _json['watercraftRental'] as core.bool
+              : null,
+          watercraftRentalException:
+              _json.containsKey('watercraftRentalException')
+                  ? _json['watercraftRentalException'] as core.String
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (beachAccess != null) 'beachAccess': beachAccess!,
@@ -867,29 +908,37 @@ class Business {
   /// the day of the week.
   core.String? meetingRoomsException;
 
-  Business();
+  Business({
+    this.businessCenter,
+    this.businessCenterException,
+    this.meetingRooms,
+    this.meetingRoomsCount,
+    this.meetingRoomsCountException,
+    this.meetingRoomsException,
+  });
 
-  Business.fromJson(core.Map _json) {
-    if (_json.containsKey('businessCenter')) {
-      businessCenter = _json['businessCenter'] as core.bool;
-    }
-    if (_json.containsKey('businessCenterException')) {
-      businessCenterException = _json['businessCenterException'] as core.String;
-    }
-    if (_json.containsKey('meetingRooms')) {
-      meetingRooms = _json['meetingRooms'] as core.bool;
-    }
-    if (_json.containsKey('meetingRoomsCount')) {
-      meetingRoomsCount = _json['meetingRoomsCount'] as core.int;
-    }
-    if (_json.containsKey('meetingRoomsCountException')) {
-      meetingRoomsCountException =
-          _json['meetingRoomsCountException'] as core.String;
-    }
-    if (_json.containsKey('meetingRoomsException')) {
-      meetingRoomsException = _json['meetingRoomsException'] as core.String;
-    }
-  }
+  Business.fromJson(core.Map _json)
+      : this(
+          businessCenter: _json.containsKey('businessCenter')
+              ? _json['businessCenter'] as core.bool
+              : null,
+          businessCenterException: _json.containsKey('businessCenterException')
+              ? _json['businessCenterException'] as core.String
+              : null,
+          meetingRooms: _json.containsKey('meetingRooms')
+              ? _json['meetingRooms'] as core.bool
+              : null,
+          meetingRoomsCount: _json.containsKey('meetingRoomsCount')
+              ? _json['meetingRoomsCount'] as core.int
+              : null,
+          meetingRoomsCountException:
+              _json.containsKey('meetingRoomsCountException')
+                  ? _json['meetingRoomsCountException'] as core.String
+                  : null,
+          meetingRoomsException: _json.containsKey('meetingRoomsException')
+              ? _json['meetingRoomsException'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (businessCenter != null) 'businessCenter': businessCenter!,
@@ -975,36 +1024,46 @@ class Connectivity {
   /// the day of the week.
   core.String? wifiAvailableException;
 
-  Connectivity();
+  Connectivity({
+    this.freeWifi,
+    this.freeWifiException,
+    this.publicAreaWifiAvailable,
+    this.publicAreaWifiAvailableException,
+    this.publicInternetTerminal,
+    this.publicInternetTerminalException,
+    this.wifiAvailable,
+    this.wifiAvailableException,
+  });
 
-  Connectivity.fromJson(core.Map _json) {
-    if (_json.containsKey('freeWifi')) {
-      freeWifi = _json['freeWifi'] as core.bool;
-    }
-    if (_json.containsKey('freeWifiException')) {
-      freeWifiException = _json['freeWifiException'] as core.String;
-    }
-    if (_json.containsKey('publicAreaWifiAvailable')) {
-      publicAreaWifiAvailable = _json['publicAreaWifiAvailable'] as core.bool;
-    }
-    if (_json.containsKey('publicAreaWifiAvailableException')) {
-      publicAreaWifiAvailableException =
-          _json['publicAreaWifiAvailableException'] as core.String;
-    }
-    if (_json.containsKey('publicInternetTerminal')) {
-      publicInternetTerminal = _json['publicInternetTerminal'] as core.bool;
-    }
-    if (_json.containsKey('publicInternetTerminalException')) {
-      publicInternetTerminalException =
-          _json['publicInternetTerminalException'] as core.String;
-    }
-    if (_json.containsKey('wifiAvailable')) {
-      wifiAvailable = _json['wifiAvailable'] as core.bool;
-    }
-    if (_json.containsKey('wifiAvailableException')) {
-      wifiAvailableException = _json['wifiAvailableException'] as core.String;
-    }
-  }
+  Connectivity.fromJson(core.Map _json)
+      : this(
+          freeWifi: _json.containsKey('freeWifi')
+              ? _json['freeWifi'] as core.bool
+              : null,
+          freeWifiException: _json.containsKey('freeWifiException')
+              ? _json['freeWifiException'] as core.String
+              : null,
+          publicAreaWifiAvailable: _json.containsKey('publicAreaWifiAvailable')
+              ? _json['publicAreaWifiAvailable'] as core.bool
+              : null,
+          publicAreaWifiAvailableException:
+              _json.containsKey('publicAreaWifiAvailableException')
+                  ? _json['publicAreaWifiAvailableException'] as core.String
+                  : null,
+          publicInternetTerminal: _json.containsKey('publicInternetTerminal')
+              ? _json['publicInternetTerminal'] as core.bool
+              : null,
+          publicInternetTerminalException:
+              _json.containsKey('publicInternetTerminalException')
+                  ? _json['publicInternetTerminalException'] as core.String
+                  : null,
+          wifiAvailable: _json.containsKey('wifiAvailable')
+              ? _json['wifiAvailable'] as core.bool
+              : null,
+          wifiAvailableException: _json.containsKey('wifiAvailableException')
+              ? _json['wifiAvailableException'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (freeWifi != null) 'freeWifi': freeWifi!,
@@ -1109,58 +1168,76 @@ class EnhancedCleaning {
   /// the day of the week.
   core.String? guestRoomsEnhancedCleaningException;
 
-  EnhancedCleaning();
+  EnhancedCleaning({
+    this.commercialGradeDisinfectantCleaning,
+    this.commercialGradeDisinfectantCleaningException,
+    this.commonAreasEnhancedCleaning,
+    this.commonAreasEnhancedCleaningException,
+    this.employeesTrainedCleaningProcedures,
+    this.employeesTrainedCleaningProceduresException,
+    this.employeesTrainedThoroughHandWashing,
+    this.employeesTrainedThoroughHandWashingException,
+    this.employeesWearProtectiveEquipment,
+    this.employeesWearProtectiveEquipmentException,
+    this.guestRoomsEnhancedCleaning,
+    this.guestRoomsEnhancedCleaningException,
+  });
 
-  EnhancedCleaning.fromJson(core.Map _json) {
-    if (_json.containsKey('commercialGradeDisinfectantCleaning')) {
-      commercialGradeDisinfectantCleaning =
-          _json['commercialGradeDisinfectantCleaning'] as core.bool;
-    }
-    if (_json.containsKey('commercialGradeDisinfectantCleaningException')) {
-      commercialGradeDisinfectantCleaningException =
-          _json['commercialGradeDisinfectantCleaningException'] as core.String;
-    }
-    if (_json.containsKey('commonAreasEnhancedCleaning')) {
-      commonAreasEnhancedCleaning =
-          _json['commonAreasEnhancedCleaning'] as core.bool;
-    }
-    if (_json.containsKey('commonAreasEnhancedCleaningException')) {
-      commonAreasEnhancedCleaningException =
-          _json['commonAreasEnhancedCleaningException'] as core.String;
-    }
-    if (_json.containsKey('employeesTrainedCleaningProcedures')) {
-      employeesTrainedCleaningProcedures =
-          _json['employeesTrainedCleaningProcedures'] as core.bool;
-    }
-    if (_json.containsKey('employeesTrainedCleaningProceduresException')) {
-      employeesTrainedCleaningProceduresException =
-          _json['employeesTrainedCleaningProceduresException'] as core.String;
-    }
-    if (_json.containsKey('employeesTrainedThoroughHandWashing')) {
-      employeesTrainedThoroughHandWashing =
-          _json['employeesTrainedThoroughHandWashing'] as core.bool;
-    }
-    if (_json.containsKey('employeesTrainedThoroughHandWashingException')) {
-      employeesTrainedThoroughHandWashingException =
-          _json['employeesTrainedThoroughHandWashingException'] as core.String;
-    }
-    if (_json.containsKey('employeesWearProtectiveEquipment')) {
-      employeesWearProtectiveEquipment =
-          _json['employeesWearProtectiveEquipment'] as core.bool;
-    }
-    if (_json.containsKey('employeesWearProtectiveEquipmentException')) {
-      employeesWearProtectiveEquipmentException =
-          _json['employeesWearProtectiveEquipmentException'] as core.String;
-    }
-    if (_json.containsKey('guestRoomsEnhancedCleaning')) {
-      guestRoomsEnhancedCleaning =
-          _json['guestRoomsEnhancedCleaning'] as core.bool;
-    }
-    if (_json.containsKey('guestRoomsEnhancedCleaningException')) {
-      guestRoomsEnhancedCleaningException =
-          _json['guestRoomsEnhancedCleaningException'] as core.String;
-    }
-  }
+  EnhancedCleaning.fromJson(core.Map _json)
+      : this(
+          commercialGradeDisinfectantCleaning:
+              _json.containsKey('commercialGradeDisinfectantCleaning')
+                  ? _json['commercialGradeDisinfectantCleaning'] as core.bool
+                  : null,
+          commercialGradeDisinfectantCleaningException:
+              _json.containsKey('commercialGradeDisinfectantCleaningException')
+                  ? _json['commercialGradeDisinfectantCleaningException']
+                      as core.String
+                  : null,
+          commonAreasEnhancedCleaning:
+              _json.containsKey('commonAreasEnhancedCleaning')
+                  ? _json['commonAreasEnhancedCleaning'] as core.bool
+                  : null,
+          commonAreasEnhancedCleaningException:
+              _json.containsKey('commonAreasEnhancedCleaningException')
+                  ? _json['commonAreasEnhancedCleaningException'] as core.String
+                  : null,
+          employeesTrainedCleaningProcedures:
+              _json.containsKey('employeesTrainedCleaningProcedures')
+                  ? _json['employeesTrainedCleaningProcedures'] as core.bool
+                  : null,
+          employeesTrainedCleaningProceduresException:
+              _json.containsKey('employeesTrainedCleaningProceduresException')
+                  ? _json['employeesTrainedCleaningProceduresException']
+                      as core.String
+                  : null,
+          employeesTrainedThoroughHandWashing:
+              _json.containsKey('employeesTrainedThoroughHandWashing')
+                  ? _json['employeesTrainedThoroughHandWashing'] as core.bool
+                  : null,
+          employeesTrainedThoroughHandWashingException:
+              _json.containsKey('employeesTrainedThoroughHandWashingException')
+                  ? _json['employeesTrainedThoroughHandWashingException']
+                      as core.String
+                  : null,
+          employeesWearProtectiveEquipment:
+              _json.containsKey('employeesWearProtectiveEquipment')
+                  ? _json['employeesWearProtectiveEquipment'] as core.bool
+                  : null,
+          employeesWearProtectiveEquipmentException:
+              _json.containsKey('employeesWearProtectiveEquipmentException')
+                  ? _json['employeesWearProtectiveEquipmentException']
+                      as core.String
+                  : null,
+          guestRoomsEnhancedCleaning:
+              _json.containsKey('guestRoomsEnhancedCleaning')
+                  ? _json['guestRoomsEnhancedCleaning'] as core.bool
+                  : null,
+          guestRoomsEnhancedCleaningException:
+              _json.containsKey('guestRoomsEnhancedCleaningException')
+                  ? _json['guestRoomsEnhancedCleaningException'] as core.String
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (commercialGradeDisinfectantCleaning != null)
@@ -1258,28 +1335,36 @@ class Families {
   /// the day of the week.
   core.String? kidsClubException;
 
-  Families();
+  Families({
+    this.babysitting,
+    this.babysittingException,
+    this.kidsActivities,
+    this.kidsActivitiesException,
+    this.kidsClub,
+    this.kidsClubException,
+  });
 
-  Families.fromJson(core.Map _json) {
-    if (_json.containsKey('babysitting')) {
-      babysitting = _json['babysitting'] as core.bool;
-    }
-    if (_json.containsKey('babysittingException')) {
-      babysittingException = _json['babysittingException'] as core.String;
-    }
-    if (_json.containsKey('kidsActivities')) {
-      kidsActivities = _json['kidsActivities'] as core.bool;
-    }
-    if (_json.containsKey('kidsActivitiesException')) {
-      kidsActivitiesException = _json['kidsActivitiesException'] as core.String;
-    }
-    if (_json.containsKey('kidsClub')) {
-      kidsClub = _json['kidsClub'] as core.bool;
-    }
-    if (_json.containsKey('kidsClubException')) {
-      kidsClubException = _json['kidsClubException'] as core.String;
-    }
-  }
+  Families.fromJson(core.Map _json)
+      : this(
+          babysitting: _json.containsKey('babysitting')
+              ? _json['babysitting'] as core.bool
+              : null,
+          babysittingException: _json.containsKey('babysittingException')
+              ? _json['babysittingException'] as core.String
+              : null,
+          kidsActivities: _json.containsKey('kidsActivities')
+              ? _json['kidsActivities'] as core.bool
+              : null,
+          kidsActivitiesException: _json.containsKey('kidsActivitiesException')
+              ? _json['kidsActivitiesException'] as core.String
+              : null,
+          kidsClub: _json.containsKey('kidsClub')
+              ? _json['kidsClub'] as core.bool
+              : null,
+          kidsClubException: _json.containsKey('kidsClubException')
+              ? _json['kidsClubException'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (babysitting != null) 'babysitting': babysitting!,
@@ -1505,87 +1590,110 @@ class FoodAndDrink {
   /// the day of the week.
   core.String? vendingMachineException;
 
-  FoodAndDrink();
+  FoodAndDrink({
+    this.bar,
+    this.barException,
+    this.breakfastAvailable,
+    this.breakfastAvailableException,
+    this.breakfastBuffet,
+    this.breakfastBuffetException,
+    this.buffet,
+    this.buffetException,
+    this.dinnerBuffet,
+    this.dinnerBuffetException,
+    this.freeBreakfast,
+    this.freeBreakfastException,
+    this.restaurant,
+    this.restaurantException,
+    this.restaurantsCount,
+    this.restaurantsCountException,
+    this.roomService,
+    this.roomServiceException,
+    this.tableService,
+    this.tableServiceException,
+    this.twentyFourHourRoomService,
+    this.twentyFourHourRoomServiceException,
+    this.vendingMachine,
+    this.vendingMachineException,
+  });
 
-  FoodAndDrink.fromJson(core.Map _json) {
-    if (_json.containsKey('bar')) {
-      bar = _json['bar'] as core.bool;
-    }
-    if (_json.containsKey('barException')) {
-      barException = _json['barException'] as core.String;
-    }
-    if (_json.containsKey('breakfastAvailable')) {
-      breakfastAvailable = _json['breakfastAvailable'] as core.bool;
-    }
-    if (_json.containsKey('breakfastAvailableException')) {
-      breakfastAvailableException =
-          _json['breakfastAvailableException'] as core.String;
-    }
-    if (_json.containsKey('breakfastBuffet')) {
-      breakfastBuffet = _json['breakfastBuffet'] as core.bool;
-    }
-    if (_json.containsKey('breakfastBuffetException')) {
-      breakfastBuffetException =
-          _json['breakfastBuffetException'] as core.String;
-    }
-    if (_json.containsKey('buffet')) {
-      buffet = _json['buffet'] as core.bool;
-    }
-    if (_json.containsKey('buffetException')) {
-      buffetException = _json['buffetException'] as core.String;
-    }
-    if (_json.containsKey('dinnerBuffet')) {
-      dinnerBuffet = _json['dinnerBuffet'] as core.bool;
-    }
-    if (_json.containsKey('dinnerBuffetException')) {
-      dinnerBuffetException = _json['dinnerBuffetException'] as core.String;
-    }
-    if (_json.containsKey('freeBreakfast')) {
-      freeBreakfast = _json['freeBreakfast'] as core.bool;
-    }
-    if (_json.containsKey('freeBreakfastException')) {
-      freeBreakfastException = _json['freeBreakfastException'] as core.String;
-    }
-    if (_json.containsKey('restaurant')) {
-      restaurant = _json['restaurant'] as core.bool;
-    }
-    if (_json.containsKey('restaurantException')) {
-      restaurantException = _json['restaurantException'] as core.String;
-    }
-    if (_json.containsKey('restaurantsCount')) {
-      restaurantsCount = _json['restaurantsCount'] as core.int;
-    }
-    if (_json.containsKey('restaurantsCountException')) {
-      restaurantsCountException =
-          _json['restaurantsCountException'] as core.String;
-    }
-    if (_json.containsKey('roomService')) {
-      roomService = _json['roomService'] as core.bool;
-    }
-    if (_json.containsKey('roomServiceException')) {
-      roomServiceException = _json['roomServiceException'] as core.String;
-    }
-    if (_json.containsKey('tableService')) {
-      tableService = _json['tableService'] as core.bool;
-    }
-    if (_json.containsKey('tableServiceException')) {
-      tableServiceException = _json['tableServiceException'] as core.String;
-    }
-    if (_json.containsKey('twentyFourHourRoomService')) {
-      twentyFourHourRoomService =
-          _json['twentyFourHourRoomService'] as core.bool;
-    }
-    if (_json.containsKey('twentyFourHourRoomServiceException')) {
-      twentyFourHourRoomServiceException =
-          _json['twentyFourHourRoomServiceException'] as core.String;
-    }
-    if (_json.containsKey('vendingMachine')) {
-      vendingMachine = _json['vendingMachine'] as core.bool;
-    }
-    if (_json.containsKey('vendingMachineException')) {
-      vendingMachineException = _json['vendingMachineException'] as core.String;
-    }
-  }
+  FoodAndDrink.fromJson(core.Map _json)
+      : this(
+          bar: _json.containsKey('bar') ? _json['bar'] as core.bool : null,
+          barException: _json.containsKey('barException')
+              ? _json['barException'] as core.String
+              : null,
+          breakfastAvailable: _json.containsKey('breakfastAvailable')
+              ? _json['breakfastAvailable'] as core.bool
+              : null,
+          breakfastAvailableException:
+              _json.containsKey('breakfastAvailableException')
+                  ? _json['breakfastAvailableException'] as core.String
+                  : null,
+          breakfastBuffet: _json.containsKey('breakfastBuffet')
+              ? _json['breakfastBuffet'] as core.bool
+              : null,
+          breakfastBuffetException:
+              _json.containsKey('breakfastBuffetException')
+                  ? _json['breakfastBuffetException'] as core.String
+                  : null,
+          buffet:
+              _json.containsKey('buffet') ? _json['buffet'] as core.bool : null,
+          buffetException: _json.containsKey('buffetException')
+              ? _json['buffetException'] as core.String
+              : null,
+          dinnerBuffet: _json.containsKey('dinnerBuffet')
+              ? _json['dinnerBuffet'] as core.bool
+              : null,
+          dinnerBuffetException: _json.containsKey('dinnerBuffetException')
+              ? _json['dinnerBuffetException'] as core.String
+              : null,
+          freeBreakfast: _json.containsKey('freeBreakfast')
+              ? _json['freeBreakfast'] as core.bool
+              : null,
+          freeBreakfastException: _json.containsKey('freeBreakfastException')
+              ? _json['freeBreakfastException'] as core.String
+              : null,
+          restaurant: _json.containsKey('restaurant')
+              ? _json['restaurant'] as core.bool
+              : null,
+          restaurantException: _json.containsKey('restaurantException')
+              ? _json['restaurantException'] as core.String
+              : null,
+          restaurantsCount: _json.containsKey('restaurantsCount')
+              ? _json['restaurantsCount'] as core.int
+              : null,
+          restaurantsCountException:
+              _json.containsKey('restaurantsCountException')
+                  ? _json['restaurantsCountException'] as core.String
+                  : null,
+          roomService: _json.containsKey('roomService')
+              ? _json['roomService'] as core.bool
+              : null,
+          roomServiceException: _json.containsKey('roomServiceException')
+              ? _json['roomServiceException'] as core.String
+              : null,
+          tableService: _json.containsKey('tableService')
+              ? _json['tableService'] as core.bool
+              : null,
+          tableServiceException: _json.containsKey('tableServiceException')
+              ? _json['tableServiceException'] as core.String
+              : null,
+          twentyFourHourRoomService:
+              _json.containsKey('twentyFourHourRoomService')
+                  ? _json['twentyFourHourRoomService'] as core.bool
+                  : null,
+          twentyFourHourRoomServiceException:
+              _json.containsKey('twentyFourHourRoomServiceException')
+                  ? _json['twentyFourHourRoomServiceException'] as core.String
+                  : null,
+          vendingMachine: _json.containsKey('vendingMachine')
+              ? _json['vendingMachine'] as core.bool
+              : null,
+          vendingMachineException: _json.containsKey('vendingMachineException')
+              ? _json['vendingMachineException'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bar != null) 'bar': bar!,
@@ -1642,17 +1750,21 @@ class GetGoogleUpdatedLodgingResponse {
   /// Required.
   Lodging? lodging;
 
-  GetGoogleUpdatedLodgingResponse();
+  GetGoogleUpdatedLodgingResponse({
+    this.diffMask,
+    this.lodging,
+  });
 
-  GetGoogleUpdatedLodgingResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('diffMask')) {
-      diffMask = _json['diffMask'] as core.String;
-    }
-    if (_json.containsKey('lodging')) {
-      lodging = Lodging.fromJson(
-          _json['lodging'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GetGoogleUpdatedLodgingResponse.fromJson(core.Map _json)
+      : this(
+          diffMask: _json.containsKey('diffMask')
+              ? _json['diffMask'] as core.String
+              : null,
+          lodging: _json.containsKey('lodging')
+              ? Lodging.fromJson(
+                  _json['lodging'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (diffMask != null) 'diffMask': diffMask!,
@@ -1843,77 +1955,96 @@ class GuestUnitFeatures {
   /// Views available from the guest unit itself.
   ViewsFromUnit? views;
 
-  GuestUnitFeatures();
+  GuestUnitFeatures({
+    this.bungalowOrVilla,
+    this.bungalowOrVillaException,
+    this.connectingUnitAvailable,
+    this.connectingUnitAvailableException,
+    this.executiveFloor,
+    this.executiveFloorException,
+    this.maxAdultOccupantsCount,
+    this.maxAdultOccupantsCountException,
+    this.maxChildOccupantsCount,
+    this.maxChildOccupantsCountException,
+    this.maxOccupantsCount,
+    this.maxOccupantsCountException,
+    this.privateHome,
+    this.privateHomeException,
+    this.suite,
+    this.suiteException,
+    this.tier,
+    this.tierException,
+    this.totalLivingAreas,
+    this.views,
+  });
 
-  GuestUnitFeatures.fromJson(core.Map _json) {
-    if (_json.containsKey('bungalowOrVilla')) {
-      bungalowOrVilla = _json['bungalowOrVilla'] as core.bool;
-    }
-    if (_json.containsKey('bungalowOrVillaException')) {
-      bungalowOrVillaException =
-          _json['bungalowOrVillaException'] as core.String;
-    }
-    if (_json.containsKey('connectingUnitAvailable')) {
-      connectingUnitAvailable = _json['connectingUnitAvailable'] as core.bool;
-    }
-    if (_json.containsKey('connectingUnitAvailableException')) {
-      connectingUnitAvailableException =
-          _json['connectingUnitAvailableException'] as core.String;
-    }
-    if (_json.containsKey('executiveFloor')) {
-      executiveFloor = _json['executiveFloor'] as core.bool;
-    }
-    if (_json.containsKey('executiveFloorException')) {
-      executiveFloorException = _json['executiveFloorException'] as core.String;
-    }
-    if (_json.containsKey('maxAdultOccupantsCount')) {
-      maxAdultOccupantsCount = _json['maxAdultOccupantsCount'] as core.int;
-    }
-    if (_json.containsKey('maxAdultOccupantsCountException')) {
-      maxAdultOccupantsCountException =
-          _json['maxAdultOccupantsCountException'] as core.String;
-    }
-    if (_json.containsKey('maxChildOccupantsCount')) {
-      maxChildOccupantsCount = _json['maxChildOccupantsCount'] as core.int;
-    }
-    if (_json.containsKey('maxChildOccupantsCountException')) {
-      maxChildOccupantsCountException =
-          _json['maxChildOccupantsCountException'] as core.String;
-    }
-    if (_json.containsKey('maxOccupantsCount')) {
-      maxOccupantsCount = _json['maxOccupantsCount'] as core.int;
-    }
-    if (_json.containsKey('maxOccupantsCountException')) {
-      maxOccupantsCountException =
-          _json['maxOccupantsCountException'] as core.String;
-    }
-    if (_json.containsKey('privateHome')) {
-      privateHome = _json['privateHome'] as core.bool;
-    }
-    if (_json.containsKey('privateHomeException')) {
-      privateHomeException = _json['privateHomeException'] as core.String;
-    }
-    if (_json.containsKey('suite')) {
-      suite = _json['suite'] as core.bool;
-    }
-    if (_json.containsKey('suiteException')) {
-      suiteException = _json['suiteException'] as core.String;
-    }
-    if (_json.containsKey('tier')) {
-      tier = _json['tier'] as core.String;
-    }
-    if (_json.containsKey('tierException')) {
-      tierException = _json['tierException'] as core.String;
-    }
-    if (_json.containsKey('totalLivingAreas')) {
-      totalLivingAreas = LivingArea.fromJson(
-          _json['totalLivingAreas'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('views')) {
-      views = ViewsFromUnit.fromJson(
-          _json['views'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GuestUnitFeatures.fromJson(core.Map _json)
+      : this(
+          bungalowOrVilla: _json.containsKey('bungalowOrVilla')
+              ? _json['bungalowOrVilla'] as core.bool
+              : null,
+          bungalowOrVillaException:
+              _json.containsKey('bungalowOrVillaException')
+                  ? _json['bungalowOrVillaException'] as core.String
+                  : null,
+          connectingUnitAvailable: _json.containsKey('connectingUnitAvailable')
+              ? _json['connectingUnitAvailable'] as core.bool
+              : null,
+          connectingUnitAvailableException:
+              _json.containsKey('connectingUnitAvailableException')
+                  ? _json['connectingUnitAvailableException'] as core.String
+                  : null,
+          executiveFloor: _json.containsKey('executiveFloor')
+              ? _json['executiveFloor'] as core.bool
+              : null,
+          executiveFloorException: _json.containsKey('executiveFloorException')
+              ? _json['executiveFloorException'] as core.String
+              : null,
+          maxAdultOccupantsCount: _json.containsKey('maxAdultOccupantsCount')
+              ? _json['maxAdultOccupantsCount'] as core.int
+              : null,
+          maxAdultOccupantsCountException:
+              _json.containsKey('maxAdultOccupantsCountException')
+                  ? _json['maxAdultOccupantsCountException'] as core.String
+                  : null,
+          maxChildOccupantsCount: _json.containsKey('maxChildOccupantsCount')
+              ? _json['maxChildOccupantsCount'] as core.int
+              : null,
+          maxChildOccupantsCountException:
+              _json.containsKey('maxChildOccupantsCountException')
+                  ? _json['maxChildOccupantsCountException'] as core.String
+                  : null,
+          maxOccupantsCount: _json.containsKey('maxOccupantsCount')
+              ? _json['maxOccupantsCount'] as core.int
+              : null,
+          maxOccupantsCountException:
+              _json.containsKey('maxOccupantsCountException')
+                  ? _json['maxOccupantsCountException'] as core.String
+                  : null,
+          privateHome: _json.containsKey('privateHome')
+              ? _json['privateHome'] as core.bool
+              : null,
+          privateHomeException: _json.containsKey('privateHomeException')
+              ? _json['privateHomeException'] as core.String
+              : null,
+          suite:
+              _json.containsKey('suite') ? _json['suite'] as core.bool : null,
+          suiteException: _json.containsKey('suiteException')
+              ? _json['suiteException'] as core.String
+              : null,
+          tier: _json.containsKey('tier') ? _json['tier'] as core.String : null,
+          tierException: _json.containsKey('tierException')
+              ? _json['tierException'] as core.String
+              : null,
+          totalLivingAreas: _json.containsKey('totalLivingAreas')
+              ? LivingArea.fromJson(_json['totalLivingAreas']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          views: _json.containsKey('views')
+              ? ViewsFromUnit.fromJson(
+                  _json['views'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bungalowOrVilla != null) 'bungalowOrVilla': bungalowOrVilla!,
@@ -1969,22 +2100,26 @@ class GuestUnitType {
   /// Required.
   core.String? label;
 
-  GuestUnitType();
+  GuestUnitType({
+    this.codes,
+    this.features,
+    this.label,
+  });
 
-  GuestUnitType.fromJson(core.Map _json) {
-    if (_json.containsKey('codes')) {
-      codes = (_json['codes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('features')) {
-      features = GuestUnitFeatures.fromJson(
-          _json['features'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('label')) {
-      label = _json['label'] as core.String;
-    }
-  }
+  GuestUnitType.fromJson(core.Map _json)
+      : this(
+          codes: _json.containsKey('codes')
+              ? (_json['codes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          features: _json.containsKey('features')
+              ? GuestUnitFeatures.fromJson(
+                  _json['features'] as core.Map<core.String, core.dynamic>)
+              : null,
+          label:
+              _json.containsKey('label') ? _json['label'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (codes != null) 'codes': codes!,
@@ -2010,30 +2145,37 @@ class HealthAndSafety {
   /// Physical distancing measures implemented by the hotel during COVID-19.
   PhysicalDistancing? physicalDistancing;
 
-  HealthAndSafety();
+  HealthAndSafety({
+    this.enhancedCleaning,
+    this.increasedFoodSafety,
+    this.minimizedContact,
+    this.personalProtection,
+    this.physicalDistancing,
+  });
 
-  HealthAndSafety.fromJson(core.Map _json) {
-    if (_json.containsKey('enhancedCleaning')) {
-      enhancedCleaning = EnhancedCleaning.fromJson(
-          _json['enhancedCleaning'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('increasedFoodSafety')) {
-      increasedFoodSafety = IncreasedFoodSafety.fromJson(
-          _json['increasedFoodSafety'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('minimizedContact')) {
-      minimizedContact = MinimizedContact.fromJson(
-          _json['minimizedContact'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('personalProtection')) {
-      personalProtection = PersonalProtection.fromJson(
-          _json['personalProtection'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('physicalDistancing')) {
-      physicalDistancing = PhysicalDistancing.fromJson(
-          _json['physicalDistancing'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  HealthAndSafety.fromJson(core.Map _json)
+      : this(
+          enhancedCleaning: _json.containsKey('enhancedCleaning')
+              ? EnhancedCleaning.fromJson(_json['enhancedCleaning']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          increasedFoodSafety: _json.containsKey('increasedFoodSafety')
+              ? IncreasedFoodSafety.fromJson(_json['increasedFoodSafety']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          minimizedContact: _json.containsKey('minimizedContact')
+              ? MinimizedContact.fromJson(_json['minimizedContact']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          personalProtection: _json.containsKey('personalProtection')
+              ? PersonalProtection.fromJson(_json['personalProtection']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          physicalDistancing: _json.containsKey('physicalDistancing')
+              ? PhysicalDistancing.fromJson(_json['physicalDistancing']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enhancedCleaning != null)
@@ -2103,31 +2245,39 @@ class Housekeeping {
   /// the day of the week.
   core.String? turndownServiceException;
 
-  Housekeeping();
+  Housekeeping({
+    this.dailyHousekeeping,
+    this.dailyHousekeepingException,
+    this.housekeepingAvailable,
+    this.housekeepingAvailableException,
+    this.turndownService,
+    this.turndownServiceException,
+  });
 
-  Housekeeping.fromJson(core.Map _json) {
-    if (_json.containsKey('dailyHousekeeping')) {
-      dailyHousekeeping = _json['dailyHousekeeping'] as core.bool;
-    }
-    if (_json.containsKey('dailyHousekeepingException')) {
-      dailyHousekeepingException =
-          _json['dailyHousekeepingException'] as core.String;
-    }
-    if (_json.containsKey('housekeepingAvailable')) {
-      housekeepingAvailable = _json['housekeepingAvailable'] as core.bool;
-    }
-    if (_json.containsKey('housekeepingAvailableException')) {
-      housekeepingAvailableException =
-          _json['housekeepingAvailableException'] as core.String;
-    }
-    if (_json.containsKey('turndownService')) {
-      turndownService = _json['turndownService'] as core.bool;
-    }
-    if (_json.containsKey('turndownServiceException')) {
-      turndownServiceException =
-          _json['turndownServiceException'] as core.String;
-    }
-  }
+  Housekeeping.fromJson(core.Map _json)
+      : this(
+          dailyHousekeeping: _json.containsKey('dailyHousekeeping')
+              ? _json['dailyHousekeeping'] as core.bool
+              : null,
+          dailyHousekeepingException:
+              _json.containsKey('dailyHousekeepingException')
+                  ? _json['dailyHousekeepingException'] as core.String
+                  : null,
+          housekeepingAvailable: _json.containsKey('housekeepingAvailable')
+              ? _json['housekeepingAvailable'] as core.bool
+              : null,
+          housekeepingAvailableException:
+              _json.containsKey('housekeepingAvailableException')
+                  ? _json['housekeepingAvailableException'] as core.String
+                  : null,
+          turndownService: _json.containsKey('turndownService')
+              ? _json['turndownService'] as core.bool
+              : null,
+          turndownServiceException:
+              _json.containsKey('turndownServiceException')
+                  ? _json['turndownServiceException'] as core.String
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dailyHousekeeping != null) 'dailyHousekeeping': dailyHousekeeping!,
@@ -2215,49 +2365,60 @@ class IncreasedFoodSafety {
   /// the day of the week.
   core.String? singleUseFoodMenusException;
 
-  IncreasedFoodSafety();
+  IncreasedFoodSafety({
+    this.diningAreasAdditionalSanitation,
+    this.diningAreasAdditionalSanitationException,
+    this.disposableFlatware,
+    this.disposableFlatwareException,
+    this.foodPreparationAndServingAdditionalSafety,
+    this.foodPreparationAndServingAdditionalSafetyException,
+    this.individualPackagedMeals,
+    this.individualPackagedMealsException,
+    this.singleUseFoodMenus,
+    this.singleUseFoodMenusException,
+  });
 
-  IncreasedFoodSafety.fromJson(core.Map _json) {
-    if (_json.containsKey('diningAreasAdditionalSanitation')) {
-      diningAreasAdditionalSanitation =
-          _json['diningAreasAdditionalSanitation'] as core.bool;
-    }
-    if (_json.containsKey('diningAreasAdditionalSanitationException')) {
-      diningAreasAdditionalSanitationException =
-          _json['diningAreasAdditionalSanitationException'] as core.String;
-    }
-    if (_json.containsKey('disposableFlatware')) {
-      disposableFlatware = _json['disposableFlatware'] as core.bool;
-    }
-    if (_json.containsKey('disposableFlatwareException')) {
-      disposableFlatwareException =
-          _json['disposableFlatwareException'] as core.String;
-    }
-    if (_json.containsKey('foodPreparationAndServingAdditionalSafety')) {
-      foodPreparationAndServingAdditionalSafety =
-          _json['foodPreparationAndServingAdditionalSafety'] as core.bool;
-    }
-    if (_json
-        .containsKey('foodPreparationAndServingAdditionalSafetyException')) {
-      foodPreparationAndServingAdditionalSafetyException =
-          _json['foodPreparationAndServingAdditionalSafetyException']
-              as core.String;
-    }
-    if (_json.containsKey('individualPackagedMeals')) {
-      individualPackagedMeals = _json['individualPackagedMeals'] as core.bool;
-    }
-    if (_json.containsKey('individualPackagedMealsException')) {
-      individualPackagedMealsException =
-          _json['individualPackagedMealsException'] as core.String;
-    }
-    if (_json.containsKey('singleUseFoodMenus')) {
-      singleUseFoodMenus = _json['singleUseFoodMenus'] as core.bool;
-    }
-    if (_json.containsKey('singleUseFoodMenusException')) {
-      singleUseFoodMenusException =
-          _json['singleUseFoodMenusException'] as core.String;
-    }
-  }
+  IncreasedFoodSafety.fromJson(core.Map _json)
+      : this(
+          diningAreasAdditionalSanitation:
+              _json.containsKey('diningAreasAdditionalSanitation')
+                  ? _json['diningAreasAdditionalSanitation'] as core.bool
+                  : null,
+          diningAreasAdditionalSanitationException: _json
+                  .containsKey('diningAreasAdditionalSanitationException')
+              ? _json['diningAreasAdditionalSanitationException'] as core.String
+              : null,
+          disposableFlatware: _json.containsKey('disposableFlatware')
+              ? _json['disposableFlatware'] as core.bool
+              : null,
+          disposableFlatwareException:
+              _json.containsKey('disposableFlatwareException')
+                  ? _json['disposableFlatwareException'] as core.String
+                  : null,
+          foodPreparationAndServingAdditionalSafety: _json
+                  .containsKey('foodPreparationAndServingAdditionalSafety')
+              ? _json['foodPreparationAndServingAdditionalSafety'] as core.bool
+              : null,
+          foodPreparationAndServingAdditionalSafetyException: _json.containsKey(
+                  'foodPreparationAndServingAdditionalSafetyException')
+              ? _json['foodPreparationAndServingAdditionalSafetyException']
+                  as core.String
+              : null,
+          individualPackagedMeals: _json.containsKey('individualPackagedMeals')
+              ? _json['individualPackagedMeals'] as core.bool
+              : null,
+          individualPackagedMealsException:
+              _json.containsKey('individualPackagedMealsException')
+                  ? _json['individualPackagedMealsException'] as core.String
+                  : null,
+          singleUseFoodMenus: _json.containsKey('singleUseFoodMenus')
+              ? _json['singleUseFoodMenus'] as core.bool
+              : null,
+          singleUseFoodMenusException:
+              _json.containsKey('singleUseFoodMenusException')
+                  ? _json['singleUseFoodMenusException'] as core.String
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (diningAreasAdditionalSanitation != null)
@@ -2310,19 +2471,23 @@ class LanguageSpoken {
   /// the day of the week.
   core.String? spokenException;
 
-  LanguageSpoken();
+  LanguageSpoken({
+    this.languageCode,
+    this.spoken,
+    this.spokenException,
+  });
 
-  LanguageSpoken.fromJson(core.Map _json) {
-    if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'] as core.String;
-    }
-    if (_json.containsKey('spoken')) {
-      spoken = _json['spoken'] as core.bool;
-    }
-    if (_json.containsKey('spokenException')) {
-      spokenException = _json['spokenException'] as core.String;
-    }
-  }
+  LanguageSpoken.fromJson(core.Map _json)
+      : this(
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
+          spoken:
+              _json.containsKey('spoken') ? _json['spoken'] as core.bool : null,
+          spokenException: _json.containsKey('spokenException')
+              ? _json['spokenException'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (languageCode != null) 'languageCode': languageCode!,
@@ -2349,30 +2514,37 @@ class LivingArea {
   /// Information about sleeping features in the living area.
   LivingAreaSleeping? sleeping;
 
-  LivingArea();
+  LivingArea({
+    this.accessibility,
+    this.eating,
+    this.features,
+    this.layout,
+    this.sleeping,
+  });
 
-  LivingArea.fromJson(core.Map _json) {
-    if (_json.containsKey('accessibility')) {
-      accessibility = LivingAreaAccessibility.fromJson(
-          _json['accessibility'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('eating')) {
-      eating = LivingAreaEating.fromJson(
-          _json['eating'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('features')) {
-      features = LivingAreaFeatures.fromJson(
-          _json['features'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('layout')) {
-      layout = LivingAreaLayout.fromJson(
-          _json['layout'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('sleeping')) {
-      sleeping = LivingAreaSleeping.fromJson(
-          _json['sleeping'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  LivingArea.fromJson(core.Map _json)
+      : this(
+          accessibility: _json.containsKey('accessibility')
+              ? LivingAreaAccessibility.fromJson(
+                  _json['accessibility'] as core.Map<core.String, core.dynamic>)
+              : null,
+          eating: _json.containsKey('eating')
+              ? LivingAreaEating.fromJson(
+                  _json['eating'] as core.Map<core.String, core.dynamic>)
+              : null,
+          features: _json.containsKey('features')
+              ? LivingAreaFeatures.fromJson(
+                  _json['features'] as core.Map<core.String, core.dynamic>)
+              : null,
+          layout: _json.containsKey('layout')
+              ? LivingAreaLayout.fromJson(
+                  _json['layout'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sleeping: _json.containsKey('sleeping')
+              ? LivingAreaSleeping.fromJson(
+                  _json['sleeping'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessibility != null) 'accessibility': accessibility!.toJson(),
@@ -2525,69 +2697,89 @@ class LivingAreaAccessibility {
   /// the day of the week.
   core.String? mobilityAccessibleUnitException;
 
-  LivingAreaAccessibility();
+  LivingAreaAccessibility({
+    this.adaCompliantUnit,
+    this.adaCompliantUnitException,
+    this.hearingAccessibleDoorbell,
+    this.hearingAccessibleDoorbellException,
+    this.hearingAccessibleFireAlarm,
+    this.hearingAccessibleFireAlarmException,
+    this.hearingAccessibleUnit,
+    this.hearingAccessibleUnitException,
+    this.mobilityAccessibleBathtub,
+    this.mobilityAccessibleBathtubException,
+    this.mobilityAccessibleShower,
+    this.mobilityAccessibleShowerException,
+    this.mobilityAccessibleToilet,
+    this.mobilityAccessibleToiletException,
+    this.mobilityAccessibleUnit,
+    this.mobilityAccessibleUnitException,
+  });
 
-  LivingAreaAccessibility.fromJson(core.Map _json) {
-    if (_json.containsKey('adaCompliantUnit')) {
-      adaCompliantUnit = _json['adaCompliantUnit'] as core.bool;
-    }
-    if (_json.containsKey('adaCompliantUnitException')) {
-      adaCompliantUnitException =
-          _json['adaCompliantUnitException'] as core.String;
-    }
-    if (_json.containsKey('hearingAccessibleDoorbell')) {
-      hearingAccessibleDoorbell =
-          _json['hearingAccessibleDoorbell'] as core.bool;
-    }
-    if (_json.containsKey('hearingAccessibleDoorbellException')) {
-      hearingAccessibleDoorbellException =
-          _json['hearingAccessibleDoorbellException'] as core.String;
-    }
-    if (_json.containsKey('hearingAccessibleFireAlarm')) {
-      hearingAccessibleFireAlarm =
-          _json['hearingAccessibleFireAlarm'] as core.bool;
-    }
-    if (_json.containsKey('hearingAccessibleFireAlarmException')) {
-      hearingAccessibleFireAlarmException =
-          _json['hearingAccessibleFireAlarmException'] as core.String;
-    }
-    if (_json.containsKey('hearingAccessibleUnit')) {
-      hearingAccessibleUnit = _json['hearingAccessibleUnit'] as core.bool;
-    }
-    if (_json.containsKey('hearingAccessibleUnitException')) {
-      hearingAccessibleUnitException =
-          _json['hearingAccessibleUnitException'] as core.String;
-    }
-    if (_json.containsKey('mobilityAccessibleBathtub')) {
-      mobilityAccessibleBathtub =
-          _json['mobilityAccessibleBathtub'] as core.bool;
-    }
-    if (_json.containsKey('mobilityAccessibleBathtubException')) {
-      mobilityAccessibleBathtubException =
-          _json['mobilityAccessibleBathtubException'] as core.String;
-    }
-    if (_json.containsKey('mobilityAccessibleShower')) {
-      mobilityAccessibleShower = _json['mobilityAccessibleShower'] as core.bool;
-    }
-    if (_json.containsKey('mobilityAccessibleShowerException')) {
-      mobilityAccessibleShowerException =
-          _json['mobilityAccessibleShowerException'] as core.String;
-    }
-    if (_json.containsKey('mobilityAccessibleToilet')) {
-      mobilityAccessibleToilet = _json['mobilityAccessibleToilet'] as core.bool;
-    }
-    if (_json.containsKey('mobilityAccessibleToiletException')) {
-      mobilityAccessibleToiletException =
-          _json['mobilityAccessibleToiletException'] as core.String;
-    }
-    if (_json.containsKey('mobilityAccessibleUnit')) {
-      mobilityAccessibleUnit = _json['mobilityAccessibleUnit'] as core.bool;
-    }
-    if (_json.containsKey('mobilityAccessibleUnitException')) {
-      mobilityAccessibleUnitException =
-          _json['mobilityAccessibleUnitException'] as core.String;
-    }
-  }
+  LivingAreaAccessibility.fromJson(core.Map _json)
+      : this(
+          adaCompliantUnit: _json.containsKey('adaCompliantUnit')
+              ? _json['adaCompliantUnit'] as core.bool
+              : null,
+          adaCompliantUnitException:
+              _json.containsKey('adaCompliantUnitException')
+                  ? _json['adaCompliantUnitException'] as core.String
+                  : null,
+          hearingAccessibleDoorbell:
+              _json.containsKey('hearingAccessibleDoorbell')
+                  ? _json['hearingAccessibleDoorbell'] as core.bool
+                  : null,
+          hearingAccessibleDoorbellException:
+              _json.containsKey('hearingAccessibleDoorbellException')
+                  ? _json['hearingAccessibleDoorbellException'] as core.String
+                  : null,
+          hearingAccessibleFireAlarm:
+              _json.containsKey('hearingAccessibleFireAlarm')
+                  ? _json['hearingAccessibleFireAlarm'] as core.bool
+                  : null,
+          hearingAccessibleFireAlarmException:
+              _json.containsKey('hearingAccessibleFireAlarmException')
+                  ? _json['hearingAccessibleFireAlarmException'] as core.String
+                  : null,
+          hearingAccessibleUnit: _json.containsKey('hearingAccessibleUnit')
+              ? _json['hearingAccessibleUnit'] as core.bool
+              : null,
+          hearingAccessibleUnitException:
+              _json.containsKey('hearingAccessibleUnitException')
+                  ? _json['hearingAccessibleUnitException'] as core.String
+                  : null,
+          mobilityAccessibleBathtub:
+              _json.containsKey('mobilityAccessibleBathtub')
+                  ? _json['mobilityAccessibleBathtub'] as core.bool
+                  : null,
+          mobilityAccessibleBathtubException:
+              _json.containsKey('mobilityAccessibleBathtubException')
+                  ? _json['mobilityAccessibleBathtubException'] as core.String
+                  : null,
+          mobilityAccessibleShower:
+              _json.containsKey('mobilityAccessibleShower')
+                  ? _json['mobilityAccessibleShower'] as core.bool
+                  : null,
+          mobilityAccessibleShowerException:
+              _json.containsKey('mobilityAccessibleShowerException')
+                  ? _json['mobilityAccessibleShowerException'] as core.String
+                  : null,
+          mobilityAccessibleToilet:
+              _json.containsKey('mobilityAccessibleToilet')
+                  ? _json['mobilityAccessibleToilet'] as core.bool
+                  : null,
+          mobilityAccessibleToiletException:
+              _json.containsKey('mobilityAccessibleToiletException')
+                  ? _json['mobilityAccessibleToiletException'] as core.String
+                  : null,
+          mobilityAccessibleUnit: _json.containsKey('mobilityAccessibleUnit')
+              ? _json['mobilityAccessibleUnit'] as core.bool
+              : null,
+          mobilityAccessibleUnitException:
+              _json.containsKey('mobilityAccessibleUnitException')
+                  ? _json['mobilityAccessibleUnitException'] as core.String
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (adaCompliantUnit != null) 'adaCompliantUnit': adaCompliantUnit!,
@@ -2912,107 +3104,135 @@ class LivingAreaEating {
   /// the day of the week.
   core.String? toasterException;
 
-  LivingAreaEating();
+  LivingAreaEating({
+    this.coffeeMaker,
+    this.coffeeMakerException,
+    this.cookware,
+    this.cookwareException,
+    this.dishwasher,
+    this.dishwasherException,
+    this.indoorGrill,
+    this.indoorGrillException,
+    this.kettle,
+    this.kettleException,
+    this.kitchenAvailable,
+    this.kitchenAvailableException,
+    this.microwave,
+    this.microwaveException,
+    this.minibar,
+    this.minibarException,
+    this.outdoorGrill,
+    this.outdoorGrillException,
+    this.oven,
+    this.ovenException,
+    this.refrigerator,
+    this.refrigeratorException,
+    this.sink,
+    this.sinkException,
+    this.snackbar,
+    this.snackbarException,
+    this.stove,
+    this.stoveException,
+    this.teaStation,
+    this.teaStationException,
+    this.toaster,
+    this.toasterException,
+  });
 
-  LivingAreaEating.fromJson(core.Map _json) {
-    if (_json.containsKey('coffeeMaker')) {
-      coffeeMaker = _json['coffeeMaker'] as core.bool;
-    }
-    if (_json.containsKey('coffeeMakerException')) {
-      coffeeMakerException = _json['coffeeMakerException'] as core.String;
-    }
-    if (_json.containsKey('cookware')) {
-      cookware = _json['cookware'] as core.bool;
-    }
-    if (_json.containsKey('cookwareException')) {
-      cookwareException = _json['cookwareException'] as core.String;
-    }
-    if (_json.containsKey('dishwasher')) {
-      dishwasher = _json['dishwasher'] as core.bool;
-    }
-    if (_json.containsKey('dishwasherException')) {
-      dishwasherException = _json['dishwasherException'] as core.String;
-    }
-    if (_json.containsKey('indoorGrill')) {
-      indoorGrill = _json['indoorGrill'] as core.bool;
-    }
-    if (_json.containsKey('indoorGrillException')) {
-      indoorGrillException = _json['indoorGrillException'] as core.String;
-    }
-    if (_json.containsKey('kettle')) {
-      kettle = _json['kettle'] as core.bool;
-    }
-    if (_json.containsKey('kettleException')) {
-      kettleException = _json['kettleException'] as core.String;
-    }
-    if (_json.containsKey('kitchenAvailable')) {
-      kitchenAvailable = _json['kitchenAvailable'] as core.bool;
-    }
-    if (_json.containsKey('kitchenAvailableException')) {
-      kitchenAvailableException =
-          _json['kitchenAvailableException'] as core.String;
-    }
-    if (_json.containsKey('microwave')) {
-      microwave = _json['microwave'] as core.bool;
-    }
-    if (_json.containsKey('microwaveException')) {
-      microwaveException = _json['microwaveException'] as core.String;
-    }
-    if (_json.containsKey('minibar')) {
-      minibar = _json['minibar'] as core.bool;
-    }
-    if (_json.containsKey('minibarException')) {
-      minibarException = _json['minibarException'] as core.String;
-    }
-    if (_json.containsKey('outdoorGrill')) {
-      outdoorGrill = _json['outdoorGrill'] as core.bool;
-    }
-    if (_json.containsKey('outdoorGrillException')) {
-      outdoorGrillException = _json['outdoorGrillException'] as core.String;
-    }
-    if (_json.containsKey('oven')) {
-      oven = _json['oven'] as core.bool;
-    }
-    if (_json.containsKey('ovenException')) {
-      ovenException = _json['ovenException'] as core.String;
-    }
-    if (_json.containsKey('refrigerator')) {
-      refrigerator = _json['refrigerator'] as core.bool;
-    }
-    if (_json.containsKey('refrigeratorException')) {
-      refrigeratorException = _json['refrigeratorException'] as core.String;
-    }
-    if (_json.containsKey('sink')) {
-      sink = _json['sink'] as core.bool;
-    }
-    if (_json.containsKey('sinkException')) {
-      sinkException = _json['sinkException'] as core.String;
-    }
-    if (_json.containsKey('snackbar')) {
-      snackbar = _json['snackbar'] as core.bool;
-    }
-    if (_json.containsKey('snackbarException')) {
-      snackbarException = _json['snackbarException'] as core.String;
-    }
-    if (_json.containsKey('stove')) {
-      stove = _json['stove'] as core.bool;
-    }
-    if (_json.containsKey('stoveException')) {
-      stoveException = _json['stoveException'] as core.String;
-    }
-    if (_json.containsKey('teaStation')) {
-      teaStation = _json['teaStation'] as core.bool;
-    }
-    if (_json.containsKey('teaStationException')) {
-      teaStationException = _json['teaStationException'] as core.String;
-    }
-    if (_json.containsKey('toaster')) {
-      toaster = _json['toaster'] as core.bool;
-    }
-    if (_json.containsKey('toasterException')) {
-      toasterException = _json['toasterException'] as core.String;
-    }
-  }
+  LivingAreaEating.fromJson(core.Map _json)
+      : this(
+          coffeeMaker: _json.containsKey('coffeeMaker')
+              ? _json['coffeeMaker'] as core.bool
+              : null,
+          coffeeMakerException: _json.containsKey('coffeeMakerException')
+              ? _json['coffeeMakerException'] as core.String
+              : null,
+          cookware: _json.containsKey('cookware')
+              ? _json['cookware'] as core.bool
+              : null,
+          cookwareException: _json.containsKey('cookwareException')
+              ? _json['cookwareException'] as core.String
+              : null,
+          dishwasher: _json.containsKey('dishwasher')
+              ? _json['dishwasher'] as core.bool
+              : null,
+          dishwasherException: _json.containsKey('dishwasherException')
+              ? _json['dishwasherException'] as core.String
+              : null,
+          indoorGrill: _json.containsKey('indoorGrill')
+              ? _json['indoorGrill'] as core.bool
+              : null,
+          indoorGrillException: _json.containsKey('indoorGrillException')
+              ? _json['indoorGrillException'] as core.String
+              : null,
+          kettle:
+              _json.containsKey('kettle') ? _json['kettle'] as core.bool : null,
+          kettleException: _json.containsKey('kettleException')
+              ? _json['kettleException'] as core.String
+              : null,
+          kitchenAvailable: _json.containsKey('kitchenAvailable')
+              ? _json['kitchenAvailable'] as core.bool
+              : null,
+          kitchenAvailableException:
+              _json.containsKey('kitchenAvailableException')
+                  ? _json['kitchenAvailableException'] as core.String
+                  : null,
+          microwave: _json.containsKey('microwave')
+              ? _json['microwave'] as core.bool
+              : null,
+          microwaveException: _json.containsKey('microwaveException')
+              ? _json['microwaveException'] as core.String
+              : null,
+          minibar: _json.containsKey('minibar')
+              ? _json['minibar'] as core.bool
+              : null,
+          minibarException: _json.containsKey('minibarException')
+              ? _json['minibarException'] as core.String
+              : null,
+          outdoorGrill: _json.containsKey('outdoorGrill')
+              ? _json['outdoorGrill'] as core.bool
+              : null,
+          outdoorGrillException: _json.containsKey('outdoorGrillException')
+              ? _json['outdoorGrillException'] as core.String
+              : null,
+          oven: _json.containsKey('oven') ? _json['oven'] as core.bool : null,
+          ovenException: _json.containsKey('ovenException')
+              ? _json['ovenException'] as core.String
+              : null,
+          refrigerator: _json.containsKey('refrigerator')
+              ? _json['refrigerator'] as core.bool
+              : null,
+          refrigeratorException: _json.containsKey('refrigeratorException')
+              ? _json['refrigeratorException'] as core.String
+              : null,
+          sink: _json.containsKey('sink') ? _json['sink'] as core.bool : null,
+          sinkException: _json.containsKey('sinkException')
+              ? _json['sinkException'] as core.String
+              : null,
+          snackbar: _json.containsKey('snackbar')
+              ? _json['snackbar'] as core.bool
+              : null,
+          snackbarException: _json.containsKey('snackbarException')
+              ? _json['snackbarException'] as core.String
+              : null,
+          stove:
+              _json.containsKey('stove') ? _json['stove'] as core.bool : null,
+          stoveException: _json.containsKey('stoveException')
+              ? _json['stoveException'] as core.String
+              : null,
+          teaStation: _json.containsKey('teaStation')
+              ? _json['teaStation'] as core.bool
+              : null,
+          teaStationException: _json.containsKey('teaStationException')
+              ? _json['teaStationException'] as core.String
+              : null,
+          toaster: _json.containsKey('toaster')
+              ? _json['toaster'] as core.bool
+              : null,
+          toasterException: _json.containsKey('toasterException')
+              ? _json['toasterException'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (coffeeMaker != null) 'coffeeMaker': coffeeMaker!,
@@ -3408,137 +3628,172 @@ class LivingAreaFeatures {
   /// the day of the week.
   core.String? washerException;
 
-  LivingAreaFeatures();
+  LivingAreaFeatures({
+    this.airConditioning,
+    this.airConditioningException,
+    this.bathtub,
+    this.bathtubException,
+    this.bidet,
+    this.bidetException,
+    this.dryer,
+    this.dryerException,
+    this.electronicRoomKey,
+    this.electronicRoomKeyException,
+    this.fireplace,
+    this.fireplaceException,
+    this.hairdryer,
+    this.hairdryerException,
+    this.heating,
+    this.heatingException,
+    this.inunitSafe,
+    this.inunitSafeException,
+    this.inunitWifiAvailable,
+    this.inunitWifiAvailableException,
+    this.ironingEquipment,
+    this.ironingEquipmentException,
+    this.payPerViewMovies,
+    this.payPerViewMoviesException,
+    this.privateBathroom,
+    this.privateBathroomException,
+    this.shower,
+    this.showerException,
+    this.toilet,
+    this.toiletException,
+    this.tv,
+    this.tvCasting,
+    this.tvCastingException,
+    this.tvException,
+    this.tvStreaming,
+    this.tvStreamingException,
+    this.universalPowerAdapters,
+    this.universalPowerAdaptersException,
+    this.washer,
+    this.washerException,
+  });
 
-  LivingAreaFeatures.fromJson(core.Map _json) {
-    if (_json.containsKey('airConditioning')) {
-      airConditioning = _json['airConditioning'] as core.bool;
-    }
-    if (_json.containsKey('airConditioningException')) {
-      airConditioningException =
-          _json['airConditioningException'] as core.String;
-    }
-    if (_json.containsKey('bathtub')) {
-      bathtub = _json['bathtub'] as core.bool;
-    }
-    if (_json.containsKey('bathtubException')) {
-      bathtubException = _json['bathtubException'] as core.String;
-    }
-    if (_json.containsKey('bidet')) {
-      bidet = _json['bidet'] as core.bool;
-    }
-    if (_json.containsKey('bidetException')) {
-      bidetException = _json['bidetException'] as core.String;
-    }
-    if (_json.containsKey('dryer')) {
-      dryer = _json['dryer'] as core.bool;
-    }
-    if (_json.containsKey('dryerException')) {
-      dryerException = _json['dryerException'] as core.String;
-    }
-    if (_json.containsKey('electronicRoomKey')) {
-      electronicRoomKey = _json['electronicRoomKey'] as core.bool;
-    }
-    if (_json.containsKey('electronicRoomKeyException')) {
-      electronicRoomKeyException =
-          _json['electronicRoomKeyException'] as core.String;
-    }
-    if (_json.containsKey('fireplace')) {
-      fireplace = _json['fireplace'] as core.bool;
-    }
-    if (_json.containsKey('fireplaceException')) {
-      fireplaceException = _json['fireplaceException'] as core.String;
-    }
-    if (_json.containsKey('hairdryer')) {
-      hairdryer = _json['hairdryer'] as core.bool;
-    }
-    if (_json.containsKey('hairdryerException')) {
-      hairdryerException = _json['hairdryerException'] as core.String;
-    }
-    if (_json.containsKey('heating')) {
-      heating = _json['heating'] as core.bool;
-    }
-    if (_json.containsKey('heatingException')) {
-      heatingException = _json['heatingException'] as core.String;
-    }
-    if (_json.containsKey('inunitSafe')) {
-      inunitSafe = _json['inunitSafe'] as core.bool;
-    }
-    if (_json.containsKey('inunitSafeException')) {
-      inunitSafeException = _json['inunitSafeException'] as core.String;
-    }
-    if (_json.containsKey('inunitWifiAvailable')) {
-      inunitWifiAvailable = _json['inunitWifiAvailable'] as core.bool;
-    }
-    if (_json.containsKey('inunitWifiAvailableException')) {
-      inunitWifiAvailableException =
-          _json['inunitWifiAvailableException'] as core.String;
-    }
-    if (_json.containsKey('ironingEquipment')) {
-      ironingEquipment = _json['ironingEquipment'] as core.bool;
-    }
-    if (_json.containsKey('ironingEquipmentException')) {
-      ironingEquipmentException =
-          _json['ironingEquipmentException'] as core.String;
-    }
-    if (_json.containsKey('payPerViewMovies')) {
-      payPerViewMovies = _json['payPerViewMovies'] as core.bool;
-    }
-    if (_json.containsKey('payPerViewMoviesException')) {
-      payPerViewMoviesException =
-          _json['payPerViewMoviesException'] as core.String;
-    }
-    if (_json.containsKey('privateBathroom')) {
-      privateBathroom = _json['privateBathroom'] as core.bool;
-    }
-    if (_json.containsKey('privateBathroomException')) {
-      privateBathroomException =
-          _json['privateBathroomException'] as core.String;
-    }
-    if (_json.containsKey('shower')) {
-      shower = _json['shower'] as core.bool;
-    }
-    if (_json.containsKey('showerException')) {
-      showerException = _json['showerException'] as core.String;
-    }
-    if (_json.containsKey('toilet')) {
-      toilet = _json['toilet'] as core.bool;
-    }
-    if (_json.containsKey('toiletException')) {
-      toiletException = _json['toiletException'] as core.String;
-    }
-    if (_json.containsKey('tv')) {
-      tv = _json['tv'] as core.bool;
-    }
-    if (_json.containsKey('tvCasting')) {
-      tvCasting = _json['tvCasting'] as core.bool;
-    }
-    if (_json.containsKey('tvCastingException')) {
-      tvCastingException = _json['tvCastingException'] as core.String;
-    }
-    if (_json.containsKey('tvException')) {
-      tvException = _json['tvException'] as core.String;
-    }
-    if (_json.containsKey('tvStreaming')) {
-      tvStreaming = _json['tvStreaming'] as core.bool;
-    }
-    if (_json.containsKey('tvStreamingException')) {
-      tvStreamingException = _json['tvStreamingException'] as core.String;
-    }
-    if (_json.containsKey('universalPowerAdapters')) {
-      universalPowerAdapters = _json['universalPowerAdapters'] as core.bool;
-    }
-    if (_json.containsKey('universalPowerAdaptersException')) {
-      universalPowerAdaptersException =
-          _json['universalPowerAdaptersException'] as core.String;
-    }
-    if (_json.containsKey('washer')) {
-      washer = _json['washer'] as core.bool;
-    }
-    if (_json.containsKey('washerException')) {
-      washerException = _json['washerException'] as core.String;
-    }
-  }
+  LivingAreaFeatures.fromJson(core.Map _json)
+      : this(
+          airConditioning: _json.containsKey('airConditioning')
+              ? _json['airConditioning'] as core.bool
+              : null,
+          airConditioningException:
+              _json.containsKey('airConditioningException')
+                  ? _json['airConditioningException'] as core.String
+                  : null,
+          bathtub: _json.containsKey('bathtub')
+              ? _json['bathtub'] as core.bool
+              : null,
+          bathtubException: _json.containsKey('bathtubException')
+              ? _json['bathtubException'] as core.String
+              : null,
+          bidet:
+              _json.containsKey('bidet') ? _json['bidet'] as core.bool : null,
+          bidetException: _json.containsKey('bidetException')
+              ? _json['bidetException'] as core.String
+              : null,
+          dryer:
+              _json.containsKey('dryer') ? _json['dryer'] as core.bool : null,
+          dryerException: _json.containsKey('dryerException')
+              ? _json['dryerException'] as core.String
+              : null,
+          electronicRoomKey: _json.containsKey('electronicRoomKey')
+              ? _json['electronicRoomKey'] as core.bool
+              : null,
+          electronicRoomKeyException:
+              _json.containsKey('electronicRoomKeyException')
+                  ? _json['electronicRoomKeyException'] as core.String
+                  : null,
+          fireplace: _json.containsKey('fireplace')
+              ? _json['fireplace'] as core.bool
+              : null,
+          fireplaceException: _json.containsKey('fireplaceException')
+              ? _json['fireplaceException'] as core.String
+              : null,
+          hairdryer: _json.containsKey('hairdryer')
+              ? _json['hairdryer'] as core.bool
+              : null,
+          hairdryerException: _json.containsKey('hairdryerException')
+              ? _json['hairdryerException'] as core.String
+              : null,
+          heating: _json.containsKey('heating')
+              ? _json['heating'] as core.bool
+              : null,
+          heatingException: _json.containsKey('heatingException')
+              ? _json['heatingException'] as core.String
+              : null,
+          inunitSafe: _json.containsKey('inunitSafe')
+              ? _json['inunitSafe'] as core.bool
+              : null,
+          inunitSafeException: _json.containsKey('inunitSafeException')
+              ? _json['inunitSafeException'] as core.String
+              : null,
+          inunitWifiAvailable: _json.containsKey('inunitWifiAvailable')
+              ? _json['inunitWifiAvailable'] as core.bool
+              : null,
+          inunitWifiAvailableException:
+              _json.containsKey('inunitWifiAvailableException')
+                  ? _json['inunitWifiAvailableException'] as core.String
+                  : null,
+          ironingEquipment: _json.containsKey('ironingEquipment')
+              ? _json['ironingEquipment'] as core.bool
+              : null,
+          ironingEquipmentException:
+              _json.containsKey('ironingEquipmentException')
+                  ? _json['ironingEquipmentException'] as core.String
+                  : null,
+          payPerViewMovies: _json.containsKey('payPerViewMovies')
+              ? _json['payPerViewMovies'] as core.bool
+              : null,
+          payPerViewMoviesException:
+              _json.containsKey('payPerViewMoviesException')
+                  ? _json['payPerViewMoviesException'] as core.String
+                  : null,
+          privateBathroom: _json.containsKey('privateBathroom')
+              ? _json['privateBathroom'] as core.bool
+              : null,
+          privateBathroomException:
+              _json.containsKey('privateBathroomException')
+                  ? _json['privateBathroomException'] as core.String
+                  : null,
+          shower:
+              _json.containsKey('shower') ? _json['shower'] as core.bool : null,
+          showerException: _json.containsKey('showerException')
+              ? _json['showerException'] as core.String
+              : null,
+          toilet:
+              _json.containsKey('toilet') ? _json['toilet'] as core.bool : null,
+          toiletException: _json.containsKey('toiletException')
+              ? _json['toiletException'] as core.String
+              : null,
+          tv: _json.containsKey('tv') ? _json['tv'] as core.bool : null,
+          tvCasting: _json.containsKey('tvCasting')
+              ? _json['tvCasting'] as core.bool
+              : null,
+          tvCastingException: _json.containsKey('tvCastingException')
+              ? _json['tvCastingException'] as core.String
+              : null,
+          tvException: _json.containsKey('tvException')
+              ? _json['tvException'] as core.String
+              : null,
+          tvStreaming: _json.containsKey('tvStreaming')
+              ? _json['tvStreaming'] as core.bool
+              : null,
+          tvStreamingException: _json.containsKey('tvStreamingException')
+              ? _json['tvStreamingException'] as core.String
+              : null,
+          universalPowerAdapters: _json.containsKey('universalPowerAdapters')
+              ? _json['universalPowerAdapters'] as core.bool
+              : null,
+          universalPowerAdaptersException:
+              _json.containsKey('universalPowerAdaptersException')
+                  ? _json['universalPowerAdaptersException'] as core.String
+                  : null,
+          washer:
+              _json.containsKey('washer') ? _json['washer'] as core.bool : null,
+          washerException: _json.containsKey('washerException')
+              ? _json['washerException'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (airConditioning != null) 'airConditioning': airConditioning!,
@@ -3703,47 +3958,57 @@ class LivingAreaLayout {
   /// the day of the week.
   core.String? stairsException;
 
-  LivingAreaLayout();
+  LivingAreaLayout({
+    this.balcony,
+    this.balconyException,
+    this.livingAreaSqMeters,
+    this.livingAreaSqMetersException,
+    this.loft,
+    this.loftException,
+    this.nonSmoking,
+    this.nonSmokingException,
+    this.patio,
+    this.patioException,
+    this.stairs,
+    this.stairsException,
+  });
 
-  LivingAreaLayout.fromJson(core.Map _json) {
-    if (_json.containsKey('balcony')) {
-      balcony = _json['balcony'] as core.bool;
-    }
-    if (_json.containsKey('balconyException')) {
-      balconyException = _json['balconyException'] as core.String;
-    }
-    if (_json.containsKey('livingAreaSqMeters')) {
-      livingAreaSqMeters = (_json['livingAreaSqMeters'] as core.num).toDouble();
-    }
-    if (_json.containsKey('livingAreaSqMetersException')) {
-      livingAreaSqMetersException =
-          _json['livingAreaSqMetersException'] as core.String;
-    }
-    if (_json.containsKey('loft')) {
-      loft = _json['loft'] as core.bool;
-    }
-    if (_json.containsKey('loftException')) {
-      loftException = _json['loftException'] as core.String;
-    }
-    if (_json.containsKey('nonSmoking')) {
-      nonSmoking = _json['nonSmoking'] as core.bool;
-    }
-    if (_json.containsKey('nonSmokingException')) {
-      nonSmokingException = _json['nonSmokingException'] as core.String;
-    }
-    if (_json.containsKey('patio')) {
-      patio = _json['patio'] as core.bool;
-    }
-    if (_json.containsKey('patioException')) {
-      patioException = _json['patioException'] as core.String;
-    }
-    if (_json.containsKey('stairs')) {
-      stairs = _json['stairs'] as core.bool;
-    }
-    if (_json.containsKey('stairsException')) {
-      stairsException = _json['stairsException'] as core.String;
-    }
-  }
+  LivingAreaLayout.fromJson(core.Map _json)
+      : this(
+          balcony: _json.containsKey('balcony')
+              ? _json['balcony'] as core.bool
+              : null,
+          balconyException: _json.containsKey('balconyException')
+              ? _json['balconyException'] as core.String
+              : null,
+          livingAreaSqMeters: _json.containsKey('livingAreaSqMeters')
+              ? (_json['livingAreaSqMeters'] as core.num).toDouble()
+              : null,
+          livingAreaSqMetersException:
+              _json.containsKey('livingAreaSqMetersException')
+                  ? _json['livingAreaSqMetersException'] as core.String
+                  : null,
+          loft: _json.containsKey('loft') ? _json['loft'] as core.bool : null,
+          loftException: _json.containsKey('loftException')
+              ? _json['loftException'] as core.String
+              : null,
+          nonSmoking: _json.containsKey('nonSmoking')
+              ? _json['nonSmoking'] as core.bool
+              : null,
+          nonSmokingException: _json.containsKey('nonSmokingException')
+              ? _json['nonSmokingException'] as core.String
+              : null,
+          patio:
+              _json.containsKey('patio') ? _json['patio'] as core.bool : null,
+          patioException: _json.containsKey('patioException')
+              ? _json['patioException'] as core.String
+              : null,
+          stairs:
+              _json.containsKey('stairs') ? _json['stairs'] as core.bool : null,
+          stairsException: _json.containsKey('stairsException')
+              ? _json['stairsException'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (balcony != null) 'balcony': balcony!,
@@ -4010,100 +4275,130 @@ class LivingAreaSleeping {
   /// the day of the week.
   core.String? syntheticPillowsException;
 
-  LivingAreaSleeping();
+  LivingAreaSleeping({
+    this.bedsCount,
+    this.bedsCountException,
+    this.bunkBedsCount,
+    this.bunkBedsCountException,
+    this.cribsCount,
+    this.cribsCountException,
+    this.doubleBedsCount,
+    this.doubleBedsCountException,
+    this.featherPillows,
+    this.featherPillowsException,
+    this.hypoallergenicBedding,
+    this.hypoallergenicBeddingException,
+    this.kingBedsCount,
+    this.kingBedsCountException,
+    this.memoryFoamPillows,
+    this.memoryFoamPillowsException,
+    this.otherBedsCount,
+    this.otherBedsCountException,
+    this.queenBedsCount,
+    this.queenBedsCountException,
+    this.rollAwayBedsCount,
+    this.rollAwayBedsCountException,
+    this.singleOrTwinBedsCount,
+    this.singleOrTwinBedsCountException,
+    this.sofaBedsCount,
+    this.sofaBedsCountException,
+    this.syntheticPillows,
+    this.syntheticPillowsException,
+  });
 
-  LivingAreaSleeping.fromJson(core.Map _json) {
-    if (_json.containsKey('bedsCount')) {
-      bedsCount = _json['bedsCount'] as core.int;
-    }
-    if (_json.containsKey('bedsCountException')) {
-      bedsCountException = _json['bedsCountException'] as core.String;
-    }
-    if (_json.containsKey('bunkBedsCount')) {
-      bunkBedsCount = _json['bunkBedsCount'] as core.int;
-    }
-    if (_json.containsKey('bunkBedsCountException')) {
-      bunkBedsCountException = _json['bunkBedsCountException'] as core.String;
-    }
-    if (_json.containsKey('cribsCount')) {
-      cribsCount = _json['cribsCount'] as core.int;
-    }
-    if (_json.containsKey('cribsCountException')) {
-      cribsCountException = _json['cribsCountException'] as core.String;
-    }
-    if (_json.containsKey('doubleBedsCount')) {
-      doubleBedsCount = _json['doubleBedsCount'] as core.int;
-    }
-    if (_json.containsKey('doubleBedsCountException')) {
-      doubleBedsCountException =
-          _json['doubleBedsCountException'] as core.String;
-    }
-    if (_json.containsKey('featherPillows')) {
-      featherPillows = _json['featherPillows'] as core.bool;
-    }
-    if (_json.containsKey('featherPillowsException')) {
-      featherPillowsException = _json['featherPillowsException'] as core.String;
-    }
-    if (_json.containsKey('hypoallergenicBedding')) {
-      hypoallergenicBedding = _json['hypoallergenicBedding'] as core.bool;
-    }
-    if (_json.containsKey('hypoallergenicBeddingException')) {
-      hypoallergenicBeddingException =
-          _json['hypoallergenicBeddingException'] as core.String;
-    }
-    if (_json.containsKey('kingBedsCount')) {
-      kingBedsCount = _json['kingBedsCount'] as core.int;
-    }
-    if (_json.containsKey('kingBedsCountException')) {
-      kingBedsCountException = _json['kingBedsCountException'] as core.String;
-    }
-    if (_json.containsKey('memoryFoamPillows')) {
-      memoryFoamPillows = _json['memoryFoamPillows'] as core.bool;
-    }
-    if (_json.containsKey('memoryFoamPillowsException')) {
-      memoryFoamPillowsException =
-          _json['memoryFoamPillowsException'] as core.String;
-    }
-    if (_json.containsKey('otherBedsCount')) {
-      otherBedsCount = _json['otherBedsCount'] as core.int;
-    }
-    if (_json.containsKey('otherBedsCountException')) {
-      otherBedsCountException = _json['otherBedsCountException'] as core.String;
-    }
-    if (_json.containsKey('queenBedsCount')) {
-      queenBedsCount = _json['queenBedsCount'] as core.int;
-    }
-    if (_json.containsKey('queenBedsCountException')) {
-      queenBedsCountException = _json['queenBedsCountException'] as core.String;
-    }
-    if (_json.containsKey('rollAwayBedsCount')) {
-      rollAwayBedsCount = _json['rollAwayBedsCount'] as core.int;
-    }
-    if (_json.containsKey('rollAwayBedsCountException')) {
-      rollAwayBedsCountException =
-          _json['rollAwayBedsCountException'] as core.String;
-    }
-    if (_json.containsKey('singleOrTwinBedsCount')) {
-      singleOrTwinBedsCount = _json['singleOrTwinBedsCount'] as core.int;
-    }
-    if (_json.containsKey('singleOrTwinBedsCountException')) {
-      singleOrTwinBedsCountException =
-          _json['singleOrTwinBedsCountException'] as core.String;
-    }
-    if (_json.containsKey('sofaBedsCount')) {
-      sofaBedsCount = _json['sofaBedsCount'] as core.int;
-    }
-    if (_json.containsKey('sofaBedsCountException')) {
-      sofaBedsCountException = _json['sofaBedsCountException'] as core.String;
-    }
-    if (_json.containsKey('syntheticPillows')) {
-      syntheticPillows = _json['syntheticPillows'] as core.bool;
-    }
-    if (_json.containsKey('syntheticPillowsException')) {
-      syntheticPillowsException =
-          _json['syntheticPillowsException'] as core.String;
-    }
-  }
+  LivingAreaSleeping.fromJson(core.Map _json)
+      : this(
+          bedsCount: _json.containsKey('bedsCount')
+              ? _json['bedsCount'] as core.int
+              : null,
+          bedsCountException: _json.containsKey('bedsCountException')
+              ? _json['bedsCountException'] as core.String
+              : null,
+          bunkBedsCount: _json.containsKey('bunkBedsCount')
+              ? _json['bunkBedsCount'] as core.int
+              : null,
+          bunkBedsCountException: _json.containsKey('bunkBedsCountException')
+              ? _json['bunkBedsCountException'] as core.String
+              : null,
+          cribsCount: _json.containsKey('cribsCount')
+              ? _json['cribsCount'] as core.int
+              : null,
+          cribsCountException: _json.containsKey('cribsCountException')
+              ? _json['cribsCountException'] as core.String
+              : null,
+          doubleBedsCount: _json.containsKey('doubleBedsCount')
+              ? _json['doubleBedsCount'] as core.int
+              : null,
+          doubleBedsCountException:
+              _json.containsKey('doubleBedsCountException')
+                  ? _json['doubleBedsCountException'] as core.String
+                  : null,
+          featherPillows: _json.containsKey('featherPillows')
+              ? _json['featherPillows'] as core.bool
+              : null,
+          featherPillowsException: _json.containsKey('featherPillowsException')
+              ? _json['featherPillowsException'] as core.String
+              : null,
+          hypoallergenicBedding: _json.containsKey('hypoallergenicBedding')
+              ? _json['hypoallergenicBedding'] as core.bool
+              : null,
+          hypoallergenicBeddingException:
+              _json.containsKey('hypoallergenicBeddingException')
+                  ? _json['hypoallergenicBeddingException'] as core.String
+                  : null,
+          kingBedsCount: _json.containsKey('kingBedsCount')
+              ? _json['kingBedsCount'] as core.int
+              : null,
+          kingBedsCountException: _json.containsKey('kingBedsCountException')
+              ? _json['kingBedsCountException'] as core.String
+              : null,
+          memoryFoamPillows: _json.containsKey('memoryFoamPillows')
+              ? _json['memoryFoamPillows'] as core.bool
+              : null,
+          memoryFoamPillowsException:
+              _json.containsKey('memoryFoamPillowsException')
+                  ? _json['memoryFoamPillowsException'] as core.String
+                  : null,
+          otherBedsCount: _json.containsKey('otherBedsCount')
+              ? _json['otherBedsCount'] as core.int
+              : null,
+          otherBedsCountException: _json.containsKey('otherBedsCountException')
+              ? _json['otherBedsCountException'] as core.String
+              : null,
+          queenBedsCount: _json.containsKey('queenBedsCount')
+              ? _json['queenBedsCount'] as core.int
+              : null,
+          queenBedsCountException: _json.containsKey('queenBedsCountException')
+              ? _json['queenBedsCountException'] as core.String
+              : null,
+          rollAwayBedsCount: _json.containsKey('rollAwayBedsCount')
+              ? _json['rollAwayBedsCount'] as core.int
+              : null,
+          rollAwayBedsCountException:
+              _json.containsKey('rollAwayBedsCountException')
+                  ? _json['rollAwayBedsCountException'] as core.String
+                  : null,
+          singleOrTwinBedsCount: _json.containsKey('singleOrTwinBedsCount')
+              ? _json['singleOrTwinBedsCount'] as core.int
+              : null,
+          singleOrTwinBedsCountException:
+              _json.containsKey('singleOrTwinBedsCountException')
+                  ? _json['singleOrTwinBedsCountException'] as core.String
+                  : null,
+          sofaBedsCount: _json.containsKey('sofaBedsCount')
+              ? _json['sofaBedsCount'] as core.int
+              : null,
+          sofaBedsCountException: _json.containsKey('sofaBedsCountException')
+              ? _json['sofaBedsCountException'] as core.String
+              : null,
+          syntheticPillows: _json.containsKey('syntheticPillows')
+              ? _json['syntheticPillows'] as core.bool
+              : null,
+          syntheticPillowsException:
+              _json.containsKey('syntheticPillowsException')
+                  ? _json['syntheticPillowsException'] as core.String
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bedsCount != null) 'bedsCount': bedsCount!,
@@ -4236,99 +4531,121 @@ class Lodging {
   /// and fitness.
   Wellness? wellness;
 
-  Lodging();
+  Lodging({
+    this.accessibility,
+    this.activities,
+    this.allUnits,
+    this.business,
+    this.commonLivingArea,
+    this.connectivity,
+    this.families,
+    this.foodAndDrink,
+    this.guestUnits,
+    this.healthAndSafety,
+    this.housekeeping,
+    this.metadata,
+    this.name,
+    this.parking,
+    this.pets,
+    this.policies,
+    this.pools,
+    this.property,
+    this.services,
+    this.someUnits,
+    this.transportation,
+    this.wellness,
+  });
 
-  Lodging.fromJson(core.Map _json) {
-    if (_json.containsKey('accessibility')) {
-      accessibility = Accessibility.fromJson(
-          _json['accessibility'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('activities')) {
-      activities = Activities.fromJson(
-          _json['activities'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('allUnits')) {
-      allUnits = GuestUnitFeatures.fromJson(
-          _json['allUnits'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('business')) {
-      business = Business.fromJson(
-          _json['business'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('commonLivingArea')) {
-      commonLivingArea = LivingArea.fromJson(
-          _json['commonLivingArea'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('connectivity')) {
-      connectivity = Connectivity.fromJson(
-          _json['connectivity'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('families')) {
-      families = Families.fromJson(
-          _json['families'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('foodAndDrink')) {
-      foodAndDrink = FoodAndDrink.fromJson(
-          _json['foodAndDrink'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('guestUnits')) {
-      guestUnits = (_json['guestUnits'] as core.List)
-          .map<GuestUnitType>((value) => GuestUnitType.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('healthAndSafety')) {
-      healthAndSafety = HealthAndSafety.fromJson(
-          _json['healthAndSafety'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('housekeeping')) {
-      housekeeping = Housekeeping.fromJson(
-          _json['housekeeping'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = LodgingMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('parking')) {
-      parking = Parking.fromJson(
-          _json['parking'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('pets')) {
-      pets =
-          Pets.fromJson(_json['pets'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('policies')) {
-      policies = Policies.fromJson(
-          _json['policies'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('pools')) {
-      pools =
-          Pools.fromJson(_json['pools'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('property')) {
-      property = Property.fromJson(
-          _json['property'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('services')) {
-      services = Services.fromJson(
-          _json['services'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('someUnits')) {
-      someUnits = GuestUnitFeatures.fromJson(
-          _json['someUnits'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('transportation')) {
-      transportation = Transportation.fromJson(
-          _json['transportation'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('wellness')) {
-      wellness = Wellness.fromJson(
-          _json['wellness'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Lodging.fromJson(core.Map _json)
+      : this(
+          accessibility: _json.containsKey('accessibility')
+              ? Accessibility.fromJson(
+                  _json['accessibility'] as core.Map<core.String, core.dynamic>)
+              : null,
+          activities: _json.containsKey('activities')
+              ? Activities.fromJson(
+                  _json['activities'] as core.Map<core.String, core.dynamic>)
+              : null,
+          allUnits: _json.containsKey('allUnits')
+              ? GuestUnitFeatures.fromJson(
+                  _json['allUnits'] as core.Map<core.String, core.dynamic>)
+              : null,
+          business: _json.containsKey('business')
+              ? Business.fromJson(
+                  _json['business'] as core.Map<core.String, core.dynamic>)
+              : null,
+          commonLivingArea: _json.containsKey('commonLivingArea')
+              ? LivingArea.fromJson(_json['commonLivingArea']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          connectivity: _json.containsKey('connectivity')
+              ? Connectivity.fromJson(
+                  _json['connectivity'] as core.Map<core.String, core.dynamic>)
+              : null,
+          families: _json.containsKey('families')
+              ? Families.fromJson(
+                  _json['families'] as core.Map<core.String, core.dynamic>)
+              : null,
+          foodAndDrink: _json.containsKey('foodAndDrink')
+              ? FoodAndDrink.fromJson(
+                  _json['foodAndDrink'] as core.Map<core.String, core.dynamic>)
+              : null,
+          guestUnits: _json.containsKey('guestUnits')
+              ? (_json['guestUnits'] as core.List)
+                  .map<GuestUnitType>((value) => GuestUnitType.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          healthAndSafety: _json.containsKey('healthAndSafety')
+              ? HealthAndSafety.fromJson(_json['healthAndSafety']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          housekeeping: _json.containsKey('housekeeping')
+              ? Housekeeping.fromJson(
+                  _json['housekeeping'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? LodgingMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          parking: _json.containsKey('parking')
+              ? Parking.fromJson(
+                  _json['parking'] as core.Map<core.String, core.dynamic>)
+              : null,
+          pets: _json.containsKey('pets')
+              ? Pets.fromJson(
+                  _json['pets'] as core.Map<core.String, core.dynamic>)
+              : null,
+          policies: _json.containsKey('policies')
+              ? Policies.fromJson(
+                  _json['policies'] as core.Map<core.String, core.dynamic>)
+              : null,
+          pools: _json.containsKey('pools')
+              ? Pools.fromJson(
+                  _json['pools'] as core.Map<core.String, core.dynamic>)
+              : null,
+          property: _json.containsKey('property')
+              ? Property.fromJson(
+                  _json['property'] as core.Map<core.String, core.dynamic>)
+              : null,
+          services: _json.containsKey('services')
+              ? Services.fromJson(
+                  _json['services'] as core.Map<core.String, core.dynamic>)
+              : null,
+          someUnits: _json.containsKey('someUnits')
+              ? GuestUnitFeatures.fromJson(
+                  _json['someUnits'] as core.Map<core.String, core.dynamic>)
+              : null,
+          transportation: _json.containsKey('transportation')
+              ? Transportation.fromJson(_json['transportation']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          wellness: _json.containsKey('wellness')
+              ? Wellness.fromJson(
+                  _json['wellness'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessibility != null) 'accessibility': accessibility!.toJson(),
@@ -4369,13 +4686,16 @@ class LodgingMetadata {
   /// Required.
   core.String? updateTime;
 
-  LodgingMetadata();
+  LodgingMetadata({
+    this.updateTime,
+  });
 
-  LodgingMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  LodgingMetadata.fromJson(core.Map _json)
+      : this(
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (updateTime != null) 'updateTime': updateTime!,
@@ -4482,64 +4802,81 @@ class MinimizedContact {
   /// the day of the week.
   core.String? roomBookingsBufferException;
 
-  MinimizedContact();
+  MinimizedContact({
+    this.contactlessCheckinCheckout,
+    this.contactlessCheckinCheckoutException,
+    this.digitalGuestRoomKeys,
+    this.digitalGuestRoomKeysException,
+    this.housekeepingScheduledRequestOnly,
+    this.housekeepingScheduledRequestOnlyException,
+    this.noHighTouchItemsCommonAreas,
+    this.noHighTouchItemsCommonAreasException,
+    this.noHighTouchItemsGuestRooms,
+    this.noHighTouchItemsGuestRoomsException,
+    this.plasticKeycardsDisinfected,
+    this.plasticKeycardsDisinfectedException,
+    this.roomBookingsBuffer,
+    this.roomBookingsBufferException,
+  });
 
-  MinimizedContact.fromJson(core.Map _json) {
-    if (_json.containsKey('contactlessCheckinCheckout')) {
-      contactlessCheckinCheckout =
-          _json['contactlessCheckinCheckout'] as core.bool;
-    }
-    if (_json.containsKey('contactlessCheckinCheckoutException')) {
-      contactlessCheckinCheckoutException =
-          _json['contactlessCheckinCheckoutException'] as core.String;
-    }
-    if (_json.containsKey('digitalGuestRoomKeys')) {
-      digitalGuestRoomKeys = _json['digitalGuestRoomKeys'] as core.bool;
-    }
-    if (_json.containsKey('digitalGuestRoomKeysException')) {
-      digitalGuestRoomKeysException =
-          _json['digitalGuestRoomKeysException'] as core.String;
-    }
-    if (_json.containsKey('housekeepingScheduledRequestOnly')) {
-      housekeepingScheduledRequestOnly =
-          _json['housekeepingScheduledRequestOnly'] as core.bool;
-    }
-    if (_json.containsKey('housekeepingScheduledRequestOnlyException')) {
-      housekeepingScheduledRequestOnlyException =
-          _json['housekeepingScheduledRequestOnlyException'] as core.String;
-    }
-    if (_json.containsKey('noHighTouchItemsCommonAreas')) {
-      noHighTouchItemsCommonAreas =
-          _json['noHighTouchItemsCommonAreas'] as core.bool;
-    }
-    if (_json.containsKey('noHighTouchItemsCommonAreasException')) {
-      noHighTouchItemsCommonAreasException =
-          _json['noHighTouchItemsCommonAreasException'] as core.String;
-    }
-    if (_json.containsKey('noHighTouchItemsGuestRooms')) {
-      noHighTouchItemsGuestRooms =
-          _json['noHighTouchItemsGuestRooms'] as core.bool;
-    }
-    if (_json.containsKey('noHighTouchItemsGuestRoomsException')) {
-      noHighTouchItemsGuestRoomsException =
-          _json['noHighTouchItemsGuestRoomsException'] as core.String;
-    }
-    if (_json.containsKey('plasticKeycardsDisinfected')) {
-      plasticKeycardsDisinfected =
-          _json['plasticKeycardsDisinfected'] as core.bool;
-    }
-    if (_json.containsKey('plasticKeycardsDisinfectedException')) {
-      plasticKeycardsDisinfectedException =
-          _json['plasticKeycardsDisinfectedException'] as core.String;
-    }
-    if (_json.containsKey('roomBookingsBuffer')) {
-      roomBookingsBuffer = _json['roomBookingsBuffer'] as core.bool;
-    }
-    if (_json.containsKey('roomBookingsBufferException')) {
-      roomBookingsBufferException =
-          _json['roomBookingsBufferException'] as core.String;
-    }
-  }
+  MinimizedContact.fromJson(core.Map _json)
+      : this(
+          contactlessCheckinCheckout:
+              _json.containsKey('contactlessCheckinCheckout')
+                  ? _json['contactlessCheckinCheckout'] as core.bool
+                  : null,
+          contactlessCheckinCheckoutException:
+              _json.containsKey('contactlessCheckinCheckoutException')
+                  ? _json['contactlessCheckinCheckoutException'] as core.String
+                  : null,
+          digitalGuestRoomKeys: _json.containsKey('digitalGuestRoomKeys')
+              ? _json['digitalGuestRoomKeys'] as core.bool
+              : null,
+          digitalGuestRoomKeysException:
+              _json.containsKey('digitalGuestRoomKeysException')
+                  ? _json['digitalGuestRoomKeysException'] as core.String
+                  : null,
+          housekeepingScheduledRequestOnly:
+              _json.containsKey('housekeepingScheduledRequestOnly')
+                  ? _json['housekeepingScheduledRequestOnly'] as core.bool
+                  : null,
+          housekeepingScheduledRequestOnlyException:
+              _json.containsKey('housekeepingScheduledRequestOnlyException')
+                  ? _json['housekeepingScheduledRequestOnlyException']
+                      as core.String
+                  : null,
+          noHighTouchItemsCommonAreas:
+              _json.containsKey('noHighTouchItemsCommonAreas')
+                  ? _json['noHighTouchItemsCommonAreas'] as core.bool
+                  : null,
+          noHighTouchItemsCommonAreasException:
+              _json.containsKey('noHighTouchItemsCommonAreasException')
+                  ? _json['noHighTouchItemsCommonAreasException'] as core.String
+                  : null,
+          noHighTouchItemsGuestRooms:
+              _json.containsKey('noHighTouchItemsGuestRooms')
+                  ? _json['noHighTouchItemsGuestRooms'] as core.bool
+                  : null,
+          noHighTouchItemsGuestRoomsException:
+              _json.containsKey('noHighTouchItemsGuestRoomsException')
+                  ? _json['noHighTouchItemsGuestRoomsException'] as core.String
+                  : null,
+          plasticKeycardsDisinfected:
+              _json.containsKey('plasticKeycardsDisinfected')
+                  ? _json['plasticKeycardsDisinfected'] as core.bool
+                  : null,
+          plasticKeycardsDisinfectedException:
+              _json.containsKey('plasticKeycardsDisinfectedException')
+                  ? _json['plasticKeycardsDisinfectedException'] as core.String
+                  : null,
+          roomBookingsBuffer: _json.containsKey('roomBookingsBuffer')
+              ? _json['roomBookingsBuffer'] as core.bool
+              : null,
+          roomBookingsBufferException:
+              _json.containsKey('roomBookingsBufferException')
+                  ? _json['roomBookingsBufferException'] as core.String
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contactlessCheckinCheckout != null)
@@ -4706,59 +5043,75 @@ class Parking {
   /// the day of the week.
   core.String? valetParkingAvailableException;
 
-  Parking();
+  Parking({
+    this.electricCarChargingStations,
+    this.electricCarChargingStationsException,
+    this.freeParking,
+    this.freeParkingException,
+    this.freeSelfParking,
+    this.freeSelfParkingException,
+    this.freeValetParking,
+    this.freeValetParkingException,
+    this.parkingAvailable,
+    this.parkingAvailableException,
+    this.selfParkingAvailable,
+    this.selfParkingAvailableException,
+    this.valetParkingAvailable,
+    this.valetParkingAvailableException,
+  });
 
-  Parking.fromJson(core.Map _json) {
-    if (_json.containsKey('electricCarChargingStations')) {
-      electricCarChargingStations =
-          _json['electricCarChargingStations'] as core.bool;
-    }
-    if (_json.containsKey('electricCarChargingStationsException')) {
-      electricCarChargingStationsException =
-          _json['electricCarChargingStationsException'] as core.String;
-    }
-    if (_json.containsKey('freeParking')) {
-      freeParking = _json['freeParking'] as core.bool;
-    }
-    if (_json.containsKey('freeParkingException')) {
-      freeParkingException = _json['freeParkingException'] as core.String;
-    }
-    if (_json.containsKey('freeSelfParking')) {
-      freeSelfParking = _json['freeSelfParking'] as core.bool;
-    }
-    if (_json.containsKey('freeSelfParkingException')) {
-      freeSelfParkingException =
-          _json['freeSelfParkingException'] as core.String;
-    }
-    if (_json.containsKey('freeValetParking')) {
-      freeValetParking = _json['freeValetParking'] as core.bool;
-    }
-    if (_json.containsKey('freeValetParkingException')) {
-      freeValetParkingException =
-          _json['freeValetParkingException'] as core.String;
-    }
-    if (_json.containsKey('parkingAvailable')) {
-      parkingAvailable = _json['parkingAvailable'] as core.bool;
-    }
-    if (_json.containsKey('parkingAvailableException')) {
-      parkingAvailableException =
-          _json['parkingAvailableException'] as core.String;
-    }
-    if (_json.containsKey('selfParkingAvailable')) {
-      selfParkingAvailable = _json['selfParkingAvailable'] as core.bool;
-    }
-    if (_json.containsKey('selfParkingAvailableException')) {
-      selfParkingAvailableException =
-          _json['selfParkingAvailableException'] as core.String;
-    }
-    if (_json.containsKey('valetParkingAvailable')) {
-      valetParkingAvailable = _json['valetParkingAvailable'] as core.bool;
-    }
-    if (_json.containsKey('valetParkingAvailableException')) {
-      valetParkingAvailableException =
-          _json['valetParkingAvailableException'] as core.String;
-    }
-  }
+  Parking.fromJson(core.Map _json)
+      : this(
+          electricCarChargingStations:
+              _json.containsKey('electricCarChargingStations')
+                  ? _json['electricCarChargingStations'] as core.bool
+                  : null,
+          electricCarChargingStationsException:
+              _json.containsKey('electricCarChargingStationsException')
+                  ? _json['electricCarChargingStationsException'] as core.String
+                  : null,
+          freeParking: _json.containsKey('freeParking')
+              ? _json['freeParking'] as core.bool
+              : null,
+          freeParkingException: _json.containsKey('freeParkingException')
+              ? _json['freeParkingException'] as core.String
+              : null,
+          freeSelfParking: _json.containsKey('freeSelfParking')
+              ? _json['freeSelfParking'] as core.bool
+              : null,
+          freeSelfParkingException:
+              _json.containsKey('freeSelfParkingException')
+                  ? _json['freeSelfParkingException'] as core.String
+                  : null,
+          freeValetParking: _json.containsKey('freeValetParking')
+              ? _json['freeValetParking'] as core.bool
+              : null,
+          freeValetParkingException:
+              _json.containsKey('freeValetParkingException')
+                  ? _json['freeValetParkingException'] as core.String
+                  : null,
+          parkingAvailable: _json.containsKey('parkingAvailable')
+              ? _json['parkingAvailable'] as core.bool
+              : null,
+          parkingAvailableException:
+              _json.containsKey('parkingAvailableException')
+                  ? _json['parkingAvailableException'] as core.String
+                  : null,
+          selfParkingAvailable: _json.containsKey('selfParkingAvailable')
+              ? _json['selfParkingAvailable'] as core.bool
+              : null,
+          selfParkingAvailableException:
+              _json.containsKey('selfParkingAvailableException')
+                  ? _json['selfParkingAvailableException'] as core.String
+                  : null,
+          valetParkingAvailable: _json.containsKey('valetParkingAvailable')
+              ? _json['valetParkingAvailable'] as core.bool
+              : null,
+          valetParkingAvailableException:
+              _json.containsKey('valetParkingAvailableException')
+                  ? _json['valetParkingAvailableException'] as core.String
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (electricCarChargingStations != null)
@@ -4878,40 +5231,49 @@ class PaymentOptions {
   /// the day of the week.
   core.String? mobileNfcException;
 
-  PaymentOptions();
+  PaymentOptions({
+    this.cash,
+    this.cashException,
+    this.cheque,
+    this.chequeException,
+    this.creditCard,
+    this.creditCardException,
+    this.debitCard,
+    this.debitCardException,
+    this.mobileNfc,
+    this.mobileNfcException,
+  });
 
-  PaymentOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('cash')) {
-      cash = _json['cash'] as core.bool;
-    }
-    if (_json.containsKey('cashException')) {
-      cashException = _json['cashException'] as core.String;
-    }
-    if (_json.containsKey('cheque')) {
-      cheque = _json['cheque'] as core.bool;
-    }
-    if (_json.containsKey('chequeException')) {
-      chequeException = _json['chequeException'] as core.String;
-    }
-    if (_json.containsKey('creditCard')) {
-      creditCard = _json['creditCard'] as core.bool;
-    }
-    if (_json.containsKey('creditCardException')) {
-      creditCardException = _json['creditCardException'] as core.String;
-    }
-    if (_json.containsKey('debitCard')) {
-      debitCard = _json['debitCard'] as core.bool;
-    }
-    if (_json.containsKey('debitCardException')) {
-      debitCardException = _json['debitCardException'] as core.String;
-    }
-    if (_json.containsKey('mobileNfc')) {
-      mobileNfc = _json['mobileNfc'] as core.bool;
-    }
-    if (_json.containsKey('mobileNfcException')) {
-      mobileNfcException = _json['mobileNfcException'] as core.String;
-    }
-  }
+  PaymentOptions.fromJson(core.Map _json)
+      : this(
+          cash: _json.containsKey('cash') ? _json['cash'] as core.bool : null,
+          cashException: _json.containsKey('cashException')
+              ? _json['cashException'] as core.String
+              : null,
+          cheque:
+              _json.containsKey('cheque') ? _json['cheque'] as core.bool : null,
+          chequeException: _json.containsKey('chequeException')
+              ? _json['chequeException'] as core.String
+              : null,
+          creditCard: _json.containsKey('creditCard')
+              ? _json['creditCard'] as core.bool
+              : null,
+          creditCardException: _json.containsKey('creditCardException')
+              ? _json['creditCardException'] as core.String
+              : null,
+          debitCard: _json.containsKey('debitCard')
+              ? _json['debitCard'] as core.bool
+              : null,
+          debitCardException: _json.containsKey('debitCardException')
+              ? _json['debitCardException'] as core.String
+              : null,
+          mobileNfc: _json.containsKey('mobileNfc')
+              ? _json['mobileNfc'] as core.bool
+              : null,
+          mobileNfcException: _json.containsKey('mobileNfcException')
+              ? _json['mobileNfcException'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cash != null) 'cash': cash!,
@@ -4989,41 +5351,51 @@ class PersonalProtection {
   /// the day of the week.
   core.String? protectiveEquipmentAvailableException;
 
-  PersonalProtection();
+  PersonalProtection({
+    this.commonAreasOfferSanitizingItems,
+    this.commonAreasOfferSanitizingItemsException,
+    this.faceMaskRequired,
+    this.faceMaskRequiredException,
+    this.guestRoomHygieneKitsAvailable,
+    this.guestRoomHygieneKitsAvailableException,
+    this.protectiveEquipmentAvailable,
+    this.protectiveEquipmentAvailableException,
+  });
 
-  PersonalProtection.fromJson(core.Map _json) {
-    if (_json.containsKey('commonAreasOfferSanitizingItems')) {
-      commonAreasOfferSanitizingItems =
-          _json['commonAreasOfferSanitizingItems'] as core.bool;
-    }
-    if (_json.containsKey('commonAreasOfferSanitizingItemsException')) {
-      commonAreasOfferSanitizingItemsException =
-          _json['commonAreasOfferSanitizingItemsException'] as core.String;
-    }
-    if (_json.containsKey('faceMaskRequired')) {
-      faceMaskRequired = _json['faceMaskRequired'] as core.bool;
-    }
-    if (_json.containsKey('faceMaskRequiredException')) {
-      faceMaskRequiredException =
-          _json['faceMaskRequiredException'] as core.String;
-    }
-    if (_json.containsKey('guestRoomHygieneKitsAvailable')) {
-      guestRoomHygieneKitsAvailable =
-          _json['guestRoomHygieneKitsAvailable'] as core.bool;
-    }
-    if (_json.containsKey('guestRoomHygieneKitsAvailableException')) {
-      guestRoomHygieneKitsAvailableException =
-          _json['guestRoomHygieneKitsAvailableException'] as core.String;
-    }
-    if (_json.containsKey('protectiveEquipmentAvailable')) {
-      protectiveEquipmentAvailable =
-          _json['protectiveEquipmentAvailable'] as core.bool;
-    }
-    if (_json.containsKey('protectiveEquipmentAvailableException')) {
-      protectiveEquipmentAvailableException =
-          _json['protectiveEquipmentAvailableException'] as core.String;
-    }
-  }
+  PersonalProtection.fromJson(core.Map _json)
+      : this(
+          commonAreasOfferSanitizingItems:
+              _json.containsKey('commonAreasOfferSanitizingItems')
+                  ? _json['commonAreasOfferSanitizingItems'] as core.bool
+                  : null,
+          commonAreasOfferSanitizingItemsException: _json
+                  .containsKey('commonAreasOfferSanitizingItemsException')
+              ? _json['commonAreasOfferSanitizingItemsException'] as core.String
+              : null,
+          faceMaskRequired: _json.containsKey('faceMaskRequired')
+              ? _json['faceMaskRequired'] as core.bool
+              : null,
+          faceMaskRequiredException:
+              _json.containsKey('faceMaskRequiredException')
+                  ? _json['faceMaskRequiredException'] as core.String
+                  : null,
+          guestRoomHygieneKitsAvailable:
+              _json.containsKey('guestRoomHygieneKitsAvailable')
+                  ? _json['guestRoomHygieneKitsAvailable'] as core.bool
+                  : null,
+          guestRoomHygieneKitsAvailableException: _json
+                  .containsKey('guestRoomHygieneKitsAvailableException')
+              ? _json['guestRoomHygieneKitsAvailableException'] as core.String
+              : null,
+          protectiveEquipmentAvailable:
+              _json.containsKey('protectiveEquipmentAvailable')
+                  ? _json['protectiveEquipmentAvailable'] as core.bool
+                  : null,
+          protectiveEquipmentAvailableException: _json
+                  .containsKey('protectiveEquipmentAvailableException')
+              ? _json['protectiveEquipmentAvailableException'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (commonAreasOfferSanitizingItems != null)
@@ -5120,35 +5492,45 @@ class Pets {
   /// the day of the week.
   core.String? petsAllowedFreeException;
 
-  Pets();
+  Pets({
+    this.catsAllowed,
+    this.catsAllowedException,
+    this.dogsAllowed,
+    this.dogsAllowedException,
+    this.petsAllowed,
+    this.petsAllowedException,
+    this.petsAllowedFree,
+    this.petsAllowedFreeException,
+  });
 
-  Pets.fromJson(core.Map _json) {
-    if (_json.containsKey('catsAllowed')) {
-      catsAllowed = _json['catsAllowed'] as core.bool;
-    }
-    if (_json.containsKey('catsAllowedException')) {
-      catsAllowedException = _json['catsAllowedException'] as core.String;
-    }
-    if (_json.containsKey('dogsAllowed')) {
-      dogsAllowed = _json['dogsAllowed'] as core.bool;
-    }
-    if (_json.containsKey('dogsAllowedException')) {
-      dogsAllowedException = _json['dogsAllowedException'] as core.String;
-    }
-    if (_json.containsKey('petsAllowed')) {
-      petsAllowed = _json['petsAllowed'] as core.bool;
-    }
-    if (_json.containsKey('petsAllowedException')) {
-      petsAllowedException = _json['petsAllowedException'] as core.String;
-    }
-    if (_json.containsKey('petsAllowedFree')) {
-      petsAllowedFree = _json['petsAllowedFree'] as core.bool;
-    }
-    if (_json.containsKey('petsAllowedFreeException')) {
-      petsAllowedFreeException =
-          _json['petsAllowedFreeException'] as core.String;
-    }
-  }
+  Pets.fromJson(core.Map _json)
+      : this(
+          catsAllowed: _json.containsKey('catsAllowed')
+              ? _json['catsAllowed'] as core.bool
+              : null,
+          catsAllowedException: _json.containsKey('catsAllowedException')
+              ? _json['catsAllowedException'] as core.String
+              : null,
+          dogsAllowed: _json.containsKey('dogsAllowed')
+              ? _json['dogsAllowed'] as core.bool
+              : null,
+          dogsAllowedException: _json.containsKey('dogsAllowedException')
+              ? _json['dogsAllowedException'] as core.String
+              : null,
+          petsAllowed: _json.containsKey('petsAllowed')
+              ? _json['petsAllowed'] as core.bool
+              : null,
+          petsAllowedException: _json.containsKey('petsAllowedException')
+              ? _json['petsAllowedException'] as core.String
+              : null,
+          petsAllowedFree: _json.containsKey('petsAllowedFree')
+              ? _json['petsAllowedFree'] as core.bool
+              : null,
+          petsAllowedFreeException:
+              _json.containsKey('petsAllowedFreeException')
+                  ? _json['petsAllowedFreeException'] as core.String
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (catsAllowed != null) 'catsAllowed': catsAllowed!,
@@ -5238,49 +5620,61 @@ class PhysicalDistancing {
   /// the day of the week.
   core.String? wellnessAreasHavePrivateSpacesException;
 
-  PhysicalDistancing();
+  PhysicalDistancing({
+    this.commonAreasPhysicalDistancingArranged,
+    this.commonAreasPhysicalDistancingArrangedException,
+    this.physicalDistancingRequired,
+    this.physicalDistancingRequiredException,
+    this.safetyDividers,
+    this.safetyDividersException,
+    this.sharedAreasLimitedOccupancy,
+    this.sharedAreasLimitedOccupancyException,
+    this.wellnessAreasHavePrivateSpaces,
+    this.wellnessAreasHavePrivateSpacesException,
+  });
 
-  PhysicalDistancing.fromJson(core.Map _json) {
-    if (_json.containsKey('commonAreasPhysicalDistancingArranged')) {
-      commonAreasPhysicalDistancingArranged =
-          _json['commonAreasPhysicalDistancingArranged'] as core.bool;
-    }
-    if (_json.containsKey('commonAreasPhysicalDistancingArrangedException')) {
-      commonAreasPhysicalDistancingArrangedException =
-          _json['commonAreasPhysicalDistancingArrangedException']
-              as core.String;
-    }
-    if (_json.containsKey('physicalDistancingRequired')) {
-      physicalDistancingRequired =
-          _json['physicalDistancingRequired'] as core.bool;
-    }
-    if (_json.containsKey('physicalDistancingRequiredException')) {
-      physicalDistancingRequiredException =
-          _json['physicalDistancingRequiredException'] as core.String;
-    }
-    if (_json.containsKey('safetyDividers')) {
-      safetyDividers = _json['safetyDividers'] as core.bool;
-    }
-    if (_json.containsKey('safetyDividersException')) {
-      safetyDividersException = _json['safetyDividersException'] as core.String;
-    }
-    if (_json.containsKey('sharedAreasLimitedOccupancy')) {
-      sharedAreasLimitedOccupancy =
-          _json['sharedAreasLimitedOccupancy'] as core.bool;
-    }
-    if (_json.containsKey('sharedAreasLimitedOccupancyException')) {
-      sharedAreasLimitedOccupancyException =
-          _json['sharedAreasLimitedOccupancyException'] as core.String;
-    }
-    if (_json.containsKey('wellnessAreasHavePrivateSpaces')) {
-      wellnessAreasHavePrivateSpaces =
-          _json['wellnessAreasHavePrivateSpaces'] as core.bool;
-    }
-    if (_json.containsKey('wellnessAreasHavePrivateSpacesException')) {
-      wellnessAreasHavePrivateSpacesException =
-          _json['wellnessAreasHavePrivateSpacesException'] as core.String;
-    }
-  }
+  PhysicalDistancing.fromJson(core.Map _json)
+      : this(
+          commonAreasPhysicalDistancingArranged:
+              _json.containsKey('commonAreasPhysicalDistancingArranged')
+                  ? _json['commonAreasPhysicalDistancingArranged'] as core.bool
+                  : null,
+          commonAreasPhysicalDistancingArrangedException: _json
+                  .containsKey('commonAreasPhysicalDistancingArrangedException')
+              ? _json['commonAreasPhysicalDistancingArrangedException']
+                  as core.String
+              : null,
+          physicalDistancingRequired:
+              _json.containsKey('physicalDistancingRequired')
+                  ? _json['physicalDistancingRequired'] as core.bool
+                  : null,
+          physicalDistancingRequiredException:
+              _json.containsKey('physicalDistancingRequiredException')
+                  ? _json['physicalDistancingRequiredException'] as core.String
+                  : null,
+          safetyDividers: _json.containsKey('safetyDividers')
+              ? _json['safetyDividers'] as core.bool
+              : null,
+          safetyDividersException: _json.containsKey('safetyDividersException')
+              ? _json['safetyDividersException'] as core.String
+              : null,
+          sharedAreasLimitedOccupancy:
+              _json.containsKey('sharedAreasLimitedOccupancy')
+                  ? _json['sharedAreasLimitedOccupancy'] as core.bool
+                  : null,
+          sharedAreasLimitedOccupancyException:
+              _json.containsKey('sharedAreasLimitedOccupancyException')
+                  ? _json['sharedAreasLimitedOccupancyException'] as core.String
+                  : null,
+          wellnessAreasHavePrivateSpaces:
+              _json.containsKey('wellnessAreasHavePrivateSpaces')
+                  ? _json['wellnessAreasHavePrivateSpaces'] as core.bool
+                  : null,
+          wellnessAreasHavePrivateSpacesException: _json
+                  .containsKey('wellnessAreasHavePrivateSpacesException')
+              ? _json['wellnessAreasHavePrivateSpacesException'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (commonAreasPhysicalDistancingArranged != null)
@@ -5456,68 +5850,87 @@ class Policies {
   /// the day of the week.
   core.String? smokeFreePropertyException;
 
-  Policies();
+  Policies({
+    this.allInclusiveAvailable,
+    this.allInclusiveAvailableException,
+    this.allInclusiveOnly,
+    this.allInclusiveOnlyException,
+    this.checkinTime,
+    this.checkinTimeException,
+    this.checkoutTime,
+    this.checkoutTimeException,
+    this.kidsStayFree,
+    this.kidsStayFreeException,
+    this.maxChildAge,
+    this.maxChildAgeException,
+    this.maxKidsStayFreeCount,
+    this.maxKidsStayFreeCountException,
+    this.paymentOptions,
+    this.smokeFreeProperty,
+    this.smokeFreePropertyException,
+  });
 
-  Policies.fromJson(core.Map _json) {
-    if (_json.containsKey('allInclusiveAvailable')) {
-      allInclusiveAvailable = _json['allInclusiveAvailable'] as core.bool;
-    }
-    if (_json.containsKey('allInclusiveAvailableException')) {
-      allInclusiveAvailableException =
-          _json['allInclusiveAvailableException'] as core.String;
-    }
-    if (_json.containsKey('allInclusiveOnly')) {
-      allInclusiveOnly = _json['allInclusiveOnly'] as core.bool;
-    }
-    if (_json.containsKey('allInclusiveOnlyException')) {
-      allInclusiveOnlyException =
-          _json['allInclusiveOnlyException'] as core.String;
-    }
-    if (_json.containsKey('checkinTime')) {
-      checkinTime = TimeOfDay.fromJson(
-          _json['checkinTime'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('checkinTimeException')) {
-      checkinTimeException = _json['checkinTimeException'] as core.String;
-    }
-    if (_json.containsKey('checkoutTime')) {
-      checkoutTime = TimeOfDay.fromJson(
-          _json['checkoutTime'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('checkoutTimeException')) {
-      checkoutTimeException = _json['checkoutTimeException'] as core.String;
-    }
-    if (_json.containsKey('kidsStayFree')) {
-      kidsStayFree = _json['kidsStayFree'] as core.bool;
-    }
-    if (_json.containsKey('kidsStayFreeException')) {
-      kidsStayFreeException = _json['kidsStayFreeException'] as core.String;
-    }
-    if (_json.containsKey('maxChildAge')) {
-      maxChildAge = _json['maxChildAge'] as core.int;
-    }
-    if (_json.containsKey('maxChildAgeException')) {
-      maxChildAgeException = _json['maxChildAgeException'] as core.String;
-    }
-    if (_json.containsKey('maxKidsStayFreeCount')) {
-      maxKidsStayFreeCount = _json['maxKidsStayFreeCount'] as core.int;
-    }
-    if (_json.containsKey('maxKidsStayFreeCountException')) {
-      maxKidsStayFreeCountException =
-          _json['maxKidsStayFreeCountException'] as core.String;
-    }
-    if (_json.containsKey('paymentOptions')) {
-      paymentOptions = PaymentOptions.fromJson(
-          _json['paymentOptions'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('smokeFreeProperty')) {
-      smokeFreeProperty = _json['smokeFreeProperty'] as core.bool;
-    }
-    if (_json.containsKey('smokeFreePropertyException')) {
-      smokeFreePropertyException =
-          _json['smokeFreePropertyException'] as core.String;
-    }
-  }
+  Policies.fromJson(core.Map _json)
+      : this(
+          allInclusiveAvailable: _json.containsKey('allInclusiveAvailable')
+              ? _json['allInclusiveAvailable'] as core.bool
+              : null,
+          allInclusiveAvailableException:
+              _json.containsKey('allInclusiveAvailableException')
+                  ? _json['allInclusiveAvailableException'] as core.String
+                  : null,
+          allInclusiveOnly: _json.containsKey('allInclusiveOnly')
+              ? _json['allInclusiveOnly'] as core.bool
+              : null,
+          allInclusiveOnlyException:
+              _json.containsKey('allInclusiveOnlyException')
+                  ? _json['allInclusiveOnlyException'] as core.String
+                  : null,
+          checkinTime: _json.containsKey('checkinTime')
+              ? TimeOfDay.fromJson(
+                  _json['checkinTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+          checkinTimeException: _json.containsKey('checkinTimeException')
+              ? _json['checkinTimeException'] as core.String
+              : null,
+          checkoutTime: _json.containsKey('checkoutTime')
+              ? TimeOfDay.fromJson(
+                  _json['checkoutTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+          checkoutTimeException: _json.containsKey('checkoutTimeException')
+              ? _json['checkoutTimeException'] as core.String
+              : null,
+          kidsStayFree: _json.containsKey('kidsStayFree')
+              ? _json['kidsStayFree'] as core.bool
+              : null,
+          kidsStayFreeException: _json.containsKey('kidsStayFreeException')
+              ? _json['kidsStayFreeException'] as core.String
+              : null,
+          maxChildAge: _json.containsKey('maxChildAge')
+              ? _json['maxChildAge'] as core.int
+              : null,
+          maxChildAgeException: _json.containsKey('maxChildAgeException')
+              ? _json['maxChildAgeException'] as core.String
+              : null,
+          maxKidsStayFreeCount: _json.containsKey('maxKidsStayFreeCount')
+              ? _json['maxKidsStayFreeCount'] as core.int
+              : null,
+          maxKidsStayFreeCountException:
+              _json.containsKey('maxKidsStayFreeCountException')
+                  ? _json['maxKidsStayFreeCountException'] as core.String
+                  : null,
+          paymentOptions: _json.containsKey('paymentOptions')
+              ? PaymentOptions.fromJson(_json['paymentOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          smokeFreeProperty: _json.containsKey('smokeFreeProperty')
+              ? _json['smokeFreeProperty'] as core.bool
+              : null,
+          smokeFreePropertyException:
+              _json.containsKey('smokeFreePropertyException')
+                  ? _json['smokeFreePropertyException'] as core.String
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allInclusiveAvailable != null)
@@ -5796,96 +6209,123 @@ class Pools {
   /// the day of the week.
   core.String? wavePoolException;
 
-  Pools();
+  Pools({
+    this.adultPool,
+    this.adultPoolException,
+    this.hotTub,
+    this.hotTubException,
+    this.indoorPool,
+    this.indoorPoolException,
+    this.indoorPoolsCount,
+    this.indoorPoolsCountException,
+    this.lazyRiver,
+    this.lazyRiverException,
+    this.lifeguard,
+    this.lifeguardException,
+    this.outdoorPool,
+    this.outdoorPoolException,
+    this.outdoorPoolsCount,
+    this.outdoorPoolsCountException,
+    this.pool,
+    this.poolException,
+    this.poolsCount,
+    this.poolsCountException,
+    this.wadingPool,
+    this.wadingPoolException,
+    this.waterPark,
+    this.waterParkException,
+    this.waterslide,
+    this.waterslideException,
+    this.wavePool,
+    this.wavePoolException,
+  });
 
-  Pools.fromJson(core.Map _json) {
-    if (_json.containsKey('adultPool')) {
-      adultPool = _json['adultPool'] as core.bool;
-    }
-    if (_json.containsKey('adultPoolException')) {
-      adultPoolException = _json['adultPoolException'] as core.String;
-    }
-    if (_json.containsKey('hotTub')) {
-      hotTub = _json['hotTub'] as core.bool;
-    }
-    if (_json.containsKey('hotTubException')) {
-      hotTubException = _json['hotTubException'] as core.String;
-    }
-    if (_json.containsKey('indoorPool')) {
-      indoorPool = _json['indoorPool'] as core.bool;
-    }
-    if (_json.containsKey('indoorPoolException')) {
-      indoorPoolException = _json['indoorPoolException'] as core.String;
-    }
-    if (_json.containsKey('indoorPoolsCount')) {
-      indoorPoolsCount = _json['indoorPoolsCount'] as core.int;
-    }
-    if (_json.containsKey('indoorPoolsCountException')) {
-      indoorPoolsCountException =
-          _json['indoorPoolsCountException'] as core.String;
-    }
-    if (_json.containsKey('lazyRiver')) {
-      lazyRiver = _json['lazyRiver'] as core.bool;
-    }
-    if (_json.containsKey('lazyRiverException')) {
-      lazyRiverException = _json['lazyRiverException'] as core.String;
-    }
-    if (_json.containsKey('lifeguard')) {
-      lifeguard = _json['lifeguard'] as core.bool;
-    }
-    if (_json.containsKey('lifeguardException')) {
-      lifeguardException = _json['lifeguardException'] as core.String;
-    }
-    if (_json.containsKey('outdoorPool')) {
-      outdoorPool = _json['outdoorPool'] as core.bool;
-    }
-    if (_json.containsKey('outdoorPoolException')) {
-      outdoorPoolException = _json['outdoorPoolException'] as core.String;
-    }
-    if (_json.containsKey('outdoorPoolsCount')) {
-      outdoorPoolsCount = _json['outdoorPoolsCount'] as core.int;
-    }
-    if (_json.containsKey('outdoorPoolsCountException')) {
-      outdoorPoolsCountException =
-          _json['outdoorPoolsCountException'] as core.String;
-    }
-    if (_json.containsKey('pool')) {
-      pool = _json['pool'] as core.bool;
-    }
-    if (_json.containsKey('poolException')) {
-      poolException = _json['poolException'] as core.String;
-    }
-    if (_json.containsKey('poolsCount')) {
-      poolsCount = _json['poolsCount'] as core.int;
-    }
-    if (_json.containsKey('poolsCountException')) {
-      poolsCountException = _json['poolsCountException'] as core.String;
-    }
-    if (_json.containsKey('wadingPool')) {
-      wadingPool = _json['wadingPool'] as core.bool;
-    }
-    if (_json.containsKey('wadingPoolException')) {
-      wadingPoolException = _json['wadingPoolException'] as core.String;
-    }
-    if (_json.containsKey('waterPark')) {
-      waterPark = _json['waterPark'] as core.bool;
-    }
-    if (_json.containsKey('waterParkException')) {
-      waterParkException = _json['waterParkException'] as core.String;
-    }
-    if (_json.containsKey('waterslide')) {
-      waterslide = _json['waterslide'] as core.bool;
-    }
-    if (_json.containsKey('waterslideException')) {
-      waterslideException = _json['waterslideException'] as core.String;
-    }
-    if (_json.containsKey('wavePool')) {
-      wavePool = _json['wavePool'] as core.bool;
-    }
-    if (_json.containsKey('wavePoolException')) {
-      wavePoolException = _json['wavePoolException'] as core.String;
-    }
-  }
+  Pools.fromJson(core.Map _json)
+      : this(
+          adultPool: _json.containsKey('adultPool')
+              ? _json['adultPool'] as core.bool
+              : null,
+          adultPoolException: _json.containsKey('adultPoolException')
+              ? _json['adultPoolException'] as core.String
+              : null,
+          hotTub:
+              _json.containsKey('hotTub') ? _json['hotTub'] as core.bool : null,
+          hotTubException: _json.containsKey('hotTubException')
+              ? _json['hotTubException'] as core.String
+              : null,
+          indoorPool: _json.containsKey('indoorPool')
+              ? _json['indoorPool'] as core.bool
+              : null,
+          indoorPoolException: _json.containsKey('indoorPoolException')
+              ? _json['indoorPoolException'] as core.String
+              : null,
+          indoorPoolsCount: _json.containsKey('indoorPoolsCount')
+              ? _json['indoorPoolsCount'] as core.int
+              : null,
+          indoorPoolsCountException:
+              _json.containsKey('indoorPoolsCountException')
+                  ? _json['indoorPoolsCountException'] as core.String
+                  : null,
+          lazyRiver: _json.containsKey('lazyRiver')
+              ? _json['lazyRiver'] as core.bool
+              : null,
+          lazyRiverException: _json.containsKey('lazyRiverException')
+              ? _json['lazyRiverException'] as core.String
+              : null,
+          lifeguard: _json.containsKey('lifeguard')
+              ? _json['lifeguard'] as core.bool
+              : null,
+          lifeguardException: _json.containsKey('lifeguardException')
+              ? _json['lifeguardException'] as core.String
+              : null,
+          outdoorPool: _json.containsKey('outdoorPool')
+              ? _json['outdoorPool'] as core.bool
+              : null,
+          outdoorPoolException: _json.containsKey('outdoorPoolException')
+              ? _json['outdoorPoolException'] as core.String
+              : null,
+          outdoorPoolsCount: _json.containsKey('outdoorPoolsCount')
+              ? _json['outdoorPoolsCount'] as core.int
+              : null,
+          outdoorPoolsCountException:
+              _json.containsKey('outdoorPoolsCountException')
+                  ? _json['outdoorPoolsCountException'] as core.String
+                  : null,
+          pool: _json.containsKey('pool') ? _json['pool'] as core.bool : null,
+          poolException: _json.containsKey('poolException')
+              ? _json['poolException'] as core.String
+              : null,
+          poolsCount: _json.containsKey('poolsCount')
+              ? _json['poolsCount'] as core.int
+              : null,
+          poolsCountException: _json.containsKey('poolsCountException')
+              ? _json['poolsCountException'] as core.String
+              : null,
+          wadingPool: _json.containsKey('wadingPool')
+              ? _json['wadingPool'] as core.bool
+              : null,
+          wadingPoolException: _json.containsKey('wadingPoolException')
+              ? _json['wadingPoolException'] as core.String
+              : null,
+          waterPark: _json.containsKey('waterPark')
+              ? _json['waterPark'] as core.bool
+              : null,
+          waterParkException: _json.containsKey('waterParkException')
+              ? _json['waterParkException'] as core.String
+              : null,
+          waterslide: _json.containsKey('waterslide')
+              ? _json['waterslide'] as core.bool
+              : null,
+          waterslideException: _json.containsKey('waterslideException')
+              ? _json['waterslideException'] as core.String
+              : null,
+          wavePool: _json.containsKey('wavePool')
+              ? _json['wavePool'] as core.bool
+              : null,
+          wavePoolException: _json.containsKey('wavePoolException')
+              ? _json['wavePoolException'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (adultPool != null) 'adultPool': adultPool!,
@@ -6002,35 +6442,45 @@ class Property {
   /// the day of the week.
   core.String? roomsCountException;
 
-  Property();
+  Property({
+    this.builtYear,
+    this.builtYearException,
+    this.floorsCount,
+    this.floorsCountException,
+    this.lastRenovatedYear,
+    this.lastRenovatedYearException,
+    this.roomsCount,
+    this.roomsCountException,
+  });
 
-  Property.fromJson(core.Map _json) {
-    if (_json.containsKey('builtYear')) {
-      builtYear = _json['builtYear'] as core.int;
-    }
-    if (_json.containsKey('builtYearException')) {
-      builtYearException = _json['builtYearException'] as core.String;
-    }
-    if (_json.containsKey('floorsCount')) {
-      floorsCount = _json['floorsCount'] as core.int;
-    }
-    if (_json.containsKey('floorsCountException')) {
-      floorsCountException = _json['floorsCountException'] as core.String;
-    }
-    if (_json.containsKey('lastRenovatedYear')) {
-      lastRenovatedYear = _json['lastRenovatedYear'] as core.int;
-    }
-    if (_json.containsKey('lastRenovatedYearException')) {
-      lastRenovatedYearException =
-          _json['lastRenovatedYearException'] as core.String;
-    }
-    if (_json.containsKey('roomsCount')) {
-      roomsCount = _json['roomsCount'] as core.int;
-    }
-    if (_json.containsKey('roomsCountException')) {
-      roomsCountException = _json['roomsCountException'] as core.String;
-    }
-  }
+  Property.fromJson(core.Map _json)
+      : this(
+          builtYear: _json.containsKey('builtYear')
+              ? _json['builtYear'] as core.int
+              : null,
+          builtYearException: _json.containsKey('builtYearException')
+              ? _json['builtYearException'] as core.String
+              : null,
+          floorsCount: _json.containsKey('floorsCount')
+              ? _json['floorsCount'] as core.int
+              : null,
+          floorsCountException: _json.containsKey('floorsCountException')
+              ? _json['floorsCountException'] as core.String
+              : null,
+          lastRenovatedYear: _json.containsKey('lastRenovatedYear')
+              ? _json['lastRenovatedYear'] as core.int
+              : null,
+          lastRenovatedYearException:
+              _json.containsKey('lastRenovatedYearException')
+                  ? _json['lastRenovatedYearException'] as core.String
+                  : null,
+          roomsCount: _json.containsKey('roomsCount')
+              ? _json['roomsCount'] as core.int
+              : null,
+          roomsCountException: _json.containsKey('roomsCountException')
+              ? _json['roomsCountException'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (builtYear != null) 'builtYear': builtYear!,
@@ -6270,93 +6720,120 @@ class Services {
   /// the day of the week.
   core.String? wakeUpCallsException;
 
-  Services();
+  Services({
+    this.baggageStorage,
+    this.baggageStorageException,
+    this.concierge,
+    this.conciergeException,
+    this.convenienceStore,
+    this.convenienceStoreException,
+    this.currencyExchange,
+    this.currencyExchangeException,
+    this.elevator,
+    this.elevatorException,
+    this.frontDesk,
+    this.frontDeskException,
+    this.fullServiceLaundry,
+    this.fullServiceLaundryException,
+    this.giftShop,
+    this.giftShopException,
+    this.languagesSpoken,
+    this.selfServiceLaundry,
+    this.selfServiceLaundryException,
+    this.socialHour,
+    this.socialHourException,
+    this.twentyFourHourFrontDesk,
+    this.twentyFourHourFrontDeskException,
+    this.wakeUpCalls,
+    this.wakeUpCallsException,
+  });
 
-  Services.fromJson(core.Map _json) {
-    if (_json.containsKey('baggageStorage')) {
-      baggageStorage = _json['baggageStorage'] as core.bool;
-    }
-    if (_json.containsKey('baggageStorageException')) {
-      baggageStorageException = _json['baggageStorageException'] as core.String;
-    }
-    if (_json.containsKey('concierge')) {
-      concierge = _json['concierge'] as core.bool;
-    }
-    if (_json.containsKey('conciergeException')) {
-      conciergeException = _json['conciergeException'] as core.String;
-    }
-    if (_json.containsKey('convenienceStore')) {
-      convenienceStore = _json['convenienceStore'] as core.bool;
-    }
-    if (_json.containsKey('convenienceStoreException')) {
-      convenienceStoreException =
-          _json['convenienceStoreException'] as core.String;
-    }
-    if (_json.containsKey('currencyExchange')) {
-      currencyExchange = _json['currencyExchange'] as core.bool;
-    }
-    if (_json.containsKey('currencyExchangeException')) {
-      currencyExchangeException =
-          _json['currencyExchangeException'] as core.String;
-    }
-    if (_json.containsKey('elevator')) {
-      elevator = _json['elevator'] as core.bool;
-    }
-    if (_json.containsKey('elevatorException')) {
-      elevatorException = _json['elevatorException'] as core.String;
-    }
-    if (_json.containsKey('frontDesk')) {
-      frontDesk = _json['frontDesk'] as core.bool;
-    }
-    if (_json.containsKey('frontDeskException')) {
-      frontDeskException = _json['frontDeskException'] as core.String;
-    }
-    if (_json.containsKey('fullServiceLaundry')) {
-      fullServiceLaundry = _json['fullServiceLaundry'] as core.bool;
-    }
-    if (_json.containsKey('fullServiceLaundryException')) {
-      fullServiceLaundryException =
-          _json['fullServiceLaundryException'] as core.String;
-    }
-    if (_json.containsKey('giftShop')) {
-      giftShop = _json['giftShop'] as core.bool;
-    }
-    if (_json.containsKey('giftShopException')) {
-      giftShopException = _json['giftShopException'] as core.String;
-    }
-    if (_json.containsKey('languagesSpoken')) {
-      languagesSpoken = (_json['languagesSpoken'] as core.List)
-          .map<LanguageSpoken>((value) => LanguageSpoken.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('selfServiceLaundry')) {
-      selfServiceLaundry = _json['selfServiceLaundry'] as core.bool;
-    }
-    if (_json.containsKey('selfServiceLaundryException')) {
-      selfServiceLaundryException =
-          _json['selfServiceLaundryException'] as core.String;
-    }
-    if (_json.containsKey('socialHour')) {
-      socialHour = _json['socialHour'] as core.bool;
-    }
-    if (_json.containsKey('socialHourException')) {
-      socialHourException = _json['socialHourException'] as core.String;
-    }
-    if (_json.containsKey('twentyFourHourFrontDesk')) {
-      twentyFourHourFrontDesk = _json['twentyFourHourFrontDesk'] as core.bool;
-    }
-    if (_json.containsKey('twentyFourHourFrontDeskException')) {
-      twentyFourHourFrontDeskException =
-          _json['twentyFourHourFrontDeskException'] as core.String;
-    }
-    if (_json.containsKey('wakeUpCalls')) {
-      wakeUpCalls = _json['wakeUpCalls'] as core.bool;
-    }
-    if (_json.containsKey('wakeUpCallsException')) {
-      wakeUpCallsException = _json['wakeUpCallsException'] as core.String;
-    }
-  }
+  Services.fromJson(core.Map _json)
+      : this(
+          baggageStorage: _json.containsKey('baggageStorage')
+              ? _json['baggageStorage'] as core.bool
+              : null,
+          baggageStorageException: _json.containsKey('baggageStorageException')
+              ? _json['baggageStorageException'] as core.String
+              : null,
+          concierge: _json.containsKey('concierge')
+              ? _json['concierge'] as core.bool
+              : null,
+          conciergeException: _json.containsKey('conciergeException')
+              ? _json['conciergeException'] as core.String
+              : null,
+          convenienceStore: _json.containsKey('convenienceStore')
+              ? _json['convenienceStore'] as core.bool
+              : null,
+          convenienceStoreException:
+              _json.containsKey('convenienceStoreException')
+                  ? _json['convenienceStoreException'] as core.String
+                  : null,
+          currencyExchange: _json.containsKey('currencyExchange')
+              ? _json['currencyExchange'] as core.bool
+              : null,
+          currencyExchangeException:
+              _json.containsKey('currencyExchangeException')
+                  ? _json['currencyExchangeException'] as core.String
+                  : null,
+          elevator: _json.containsKey('elevator')
+              ? _json['elevator'] as core.bool
+              : null,
+          elevatorException: _json.containsKey('elevatorException')
+              ? _json['elevatorException'] as core.String
+              : null,
+          frontDesk: _json.containsKey('frontDesk')
+              ? _json['frontDesk'] as core.bool
+              : null,
+          frontDeskException: _json.containsKey('frontDeskException')
+              ? _json['frontDeskException'] as core.String
+              : null,
+          fullServiceLaundry: _json.containsKey('fullServiceLaundry')
+              ? _json['fullServiceLaundry'] as core.bool
+              : null,
+          fullServiceLaundryException:
+              _json.containsKey('fullServiceLaundryException')
+                  ? _json['fullServiceLaundryException'] as core.String
+                  : null,
+          giftShop: _json.containsKey('giftShop')
+              ? _json['giftShop'] as core.bool
+              : null,
+          giftShopException: _json.containsKey('giftShopException')
+              ? _json['giftShopException'] as core.String
+              : null,
+          languagesSpoken: _json.containsKey('languagesSpoken')
+              ? (_json['languagesSpoken'] as core.List)
+                  .map<LanguageSpoken>((value) => LanguageSpoken.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          selfServiceLaundry: _json.containsKey('selfServiceLaundry')
+              ? _json['selfServiceLaundry'] as core.bool
+              : null,
+          selfServiceLaundryException:
+              _json.containsKey('selfServiceLaundryException')
+                  ? _json['selfServiceLaundryException'] as core.String
+                  : null,
+          socialHour: _json.containsKey('socialHour')
+              ? _json['socialHour'] as core.bool
+              : null,
+          socialHourException: _json.containsKey('socialHourException')
+              ? _json['socialHourException'] as core.String
+              : null,
+          twentyFourHourFrontDesk: _json.containsKey('twentyFourHourFrontDesk')
+              ? _json['twentyFourHourFrontDesk'] as core.bool
+              : null,
+          twentyFourHourFrontDeskException:
+              _json.containsKey('twentyFourHourFrontDeskException')
+                  ? _json['twentyFourHourFrontDeskException'] as core.String
+                  : null,
+          wakeUpCalls: _json.containsKey('wakeUpCalls')
+              ? _json['wakeUpCalls'] as core.bool
+              : null,
+          wakeUpCallsException: _json.containsKey('wakeUpCallsException')
+              ? _json['wakeUpCallsException'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (baggageStorage != null) 'baggageStorage': baggageStorage!,
@@ -6430,22 +6907,24 @@ class TimeOfDay {
   /// leap-seconds.
   core.int? seconds;
 
-  TimeOfDay();
+  TimeOfDay({
+    this.hours,
+    this.minutes,
+    this.nanos,
+    this.seconds,
+  });
 
-  TimeOfDay.fromJson(core.Map _json) {
-    if (_json.containsKey('hours')) {
-      hours = _json['hours'] as core.int;
-    }
-    if (_json.containsKey('minutes')) {
-      minutes = _json['minutes'] as core.int;
-    }
-    if (_json.containsKey('nanos')) {
-      nanos = _json['nanos'] as core.int;
-    }
-    if (_json.containsKey('seconds')) {
-      seconds = _json['seconds'] as core.int;
-    }
-  }
+  TimeOfDay.fromJson(core.Map _json)
+      : this(
+          hours: _json.containsKey('hours') ? _json['hours'] as core.int : null,
+          minutes: _json.containsKey('minutes')
+              ? _json['minutes'] as core.int
+              : null,
+          nanos: _json.containsKey('nanos') ? _json['nanos'] as core.int : null,
+          seconds: _json.containsKey('seconds')
+              ? _json['seconds'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (hours != null) 'hours': hours!,
@@ -6586,56 +7065,72 @@ class Transportation {
   /// the day of the week.
   core.String? transferException;
 
-  Transportation();
+  Transportation({
+    this.airportShuttle,
+    this.airportShuttleException,
+    this.carRentalOnProperty,
+    this.carRentalOnPropertyException,
+    this.freeAirportShuttle,
+    this.freeAirportShuttleException,
+    this.freePrivateCarService,
+    this.freePrivateCarServiceException,
+    this.localShuttle,
+    this.localShuttleException,
+    this.privateCarService,
+    this.privateCarServiceException,
+    this.transfer,
+    this.transferException,
+  });
 
-  Transportation.fromJson(core.Map _json) {
-    if (_json.containsKey('airportShuttle')) {
-      airportShuttle = _json['airportShuttle'] as core.bool;
-    }
-    if (_json.containsKey('airportShuttleException')) {
-      airportShuttleException = _json['airportShuttleException'] as core.String;
-    }
-    if (_json.containsKey('carRentalOnProperty')) {
-      carRentalOnProperty = _json['carRentalOnProperty'] as core.bool;
-    }
-    if (_json.containsKey('carRentalOnPropertyException')) {
-      carRentalOnPropertyException =
-          _json['carRentalOnPropertyException'] as core.String;
-    }
-    if (_json.containsKey('freeAirportShuttle')) {
-      freeAirportShuttle = _json['freeAirportShuttle'] as core.bool;
-    }
-    if (_json.containsKey('freeAirportShuttleException')) {
-      freeAirportShuttleException =
-          _json['freeAirportShuttleException'] as core.String;
-    }
-    if (_json.containsKey('freePrivateCarService')) {
-      freePrivateCarService = _json['freePrivateCarService'] as core.bool;
-    }
-    if (_json.containsKey('freePrivateCarServiceException')) {
-      freePrivateCarServiceException =
-          _json['freePrivateCarServiceException'] as core.String;
-    }
-    if (_json.containsKey('localShuttle')) {
-      localShuttle = _json['localShuttle'] as core.bool;
-    }
-    if (_json.containsKey('localShuttleException')) {
-      localShuttleException = _json['localShuttleException'] as core.String;
-    }
-    if (_json.containsKey('privateCarService')) {
-      privateCarService = _json['privateCarService'] as core.bool;
-    }
-    if (_json.containsKey('privateCarServiceException')) {
-      privateCarServiceException =
-          _json['privateCarServiceException'] as core.String;
-    }
-    if (_json.containsKey('transfer')) {
-      transfer = _json['transfer'] as core.bool;
-    }
-    if (_json.containsKey('transferException')) {
-      transferException = _json['transferException'] as core.String;
-    }
-  }
+  Transportation.fromJson(core.Map _json)
+      : this(
+          airportShuttle: _json.containsKey('airportShuttle')
+              ? _json['airportShuttle'] as core.bool
+              : null,
+          airportShuttleException: _json.containsKey('airportShuttleException')
+              ? _json['airportShuttleException'] as core.String
+              : null,
+          carRentalOnProperty: _json.containsKey('carRentalOnProperty')
+              ? _json['carRentalOnProperty'] as core.bool
+              : null,
+          carRentalOnPropertyException:
+              _json.containsKey('carRentalOnPropertyException')
+                  ? _json['carRentalOnPropertyException'] as core.String
+                  : null,
+          freeAirportShuttle: _json.containsKey('freeAirportShuttle')
+              ? _json['freeAirportShuttle'] as core.bool
+              : null,
+          freeAirportShuttleException:
+              _json.containsKey('freeAirportShuttleException')
+                  ? _json['freeAirportShuttleException'] as core.String
+                  : null,
+          freePrivateCarService: _json.containsKey('freePrivateCarService')
+              ? _json['freePrivateCarService'] as core.bool
+              : null,
+          freePrivateCarServiceException:
+              _json.containsKey('freePrivateCarServiceException')
+                  ? _json['freePrivateCarServiceException'] as core.String
+                  : null,
+          localShuttle: _json.containsKey('localShuttle')
+              ? _json['localShuttle'] as core.bool
+              : null,
+          localShuttleException: _json.containsKey('localShuttleException')
+              ? _json['localShuttleException'] as core.String
+              : null,
+          privateCarService: _json.containsKey('privateCarService')
+              ? _json['privateCarService'] as core.bool
+              : null,
+          privateCarServiceException:
+              _json.containsKey('privateCarServiceException')
+                  ? _json['privateCarServiceException'] as core.String
+                  : null,
+          transfer: _json.containsKey('transfer')
+              ? _json['transfer'] as core.bool
+              : null,
+          transferException: _json.containsKey('transferException')
+              ? _json['transferException'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (airportShuttle != null) 'airportShuttle': airportShuttle!,
@@ -6797,58 +7292,76 @@ class ViewsFromUnit {
   /// the day of the week.
   core.String? valleyViewException;
 
-  ViewsFromUnit();
+  ViewsFromUnit({
+    this.beachView,
+    this.beachViewException,
+    this.cityView,
+    this.cityViewException,
+    this.gardenView,
+    this.gardenViewException,
+    this.lakeView,
+    this.lakeViewException,
+    this.landmarkView,
+    this.landmarkViewException,
+    this.oceanView,
+    this.oceanViewException,
+    this.poolView,
+    this.poolViewException,
+    this.valleyView,
+    this.valleyViewException,
+  });
 
-  ViewsFromUnit.fromJson(core.Map _json) {
-    if (_json.containsKey('beachView')) {
-      beachView = _json['beachView'] as core.bool;
-    }
-    if (_json.containsKey('beachViewException')) {
-      beachViewException = _json['beachViewException'] as core.String;
-    }
-    if (_json.containsKey('cityView')) {
-      cityView = _json['cityView'] as core.bool;
-    }
-    if (_json.containsKey('cityViewException')) {
-      cityViewException = _json['cityViewException'] as core.String;
-    }
-    if (_json.containsKey('gardenView')) {
-      gardenView = _json['gardenView'] as core.bool;
-    }
-    if (_json.containsKey('gardenViewException')) {
-      gardenViewException = _json['gardenViewException'] as core.String;
-    }
-    if (_json.containsKey('lakeView')) {
-      lakeView = _json['lakeView'] as core.bool;
-    }
-    if (_json.containsKey('lakeViewException')) {
-      lakeViewException = _json['lakeViewException'] as core.String;
-    }
-    if (_json.containsKey('landmarkView')) {
-      landmarkView = _json['landmarkView'] as core.bool;
-    }
-    if (_json.containsKey('landmarkViewException')) {
-      landmarkViewException = _json['landmarkViewException'] as core.String;
-    }
-    if (_json.containsKey('oceanView')) {
-      oceanView = _json['oceanView'] as core.bool;
-    }
-    if (_json.containsKey('oceanViewException')) {
-      oceanViewException = _json['oceanViewException'] as core.String;
-    }
-    if (_json.containsKey('poolView')) {
-      poolView = _json['poolView'] as core.bool;
-    }
-    if (_json.containsKey('poolViewException')) {
-      poolViewException = _json['poolViewException'] as core.String;
-    }
-    if (_json.containsKey('valleyView')) {
-      valleyView = _json['valleyView'] as core.bool;
-    }
-    if (_json.containsKey('valleyViewException')) {
-      valleyViewException = _json['valleyViewException'] as core.String;
-    }
-  }
+  ViewsFromUnit.fromJson(core.Map _json)
+      : this(
+          beachView: _json.containsKey('beachView')
+              ? _json['beachView'] as core.bool
+              : null,
+          beachViewException: _json.containsKey('beachViewException')
+              ? _json['beachViewException'] as core.String
+              : null,
+          cityView: _json.containsKey('cityView')
+              ? _json['cityView'] as core.bool
+              : null,
+          cityViewException: _json.containsKey('cityViewException')
+              ? _json['cityViewException'] as core.String
+              : null,
+          gardenView: _json.containsKey('gardenView')
+              ? _json['gardenView'] as core.bool
+              : null,
+          gardenViewException: _json.containsKey('gardenViewException')
+              ? _json['gardenViewException'] as core.String
+              : null,
+          lakeView: _json.containsKey('lakeView')
+              ? _json['lakeView'] as core.bool
+              : null,
+          lakeViewException: _json.containsKey('lakeViewException')
+              ? _json['lakeViewException'] as core.String
+              : null,
+          landmarkView: _json.containsKey('landmarkView')
+              ? _json['landmarkView'] as core.bool
+              : null,
+          landmarkViewException: _json.containsKey('landmarkViewException')
+              ? _json['landmarkViewException'] as core.String
+              : null,
+          oceanView: _json.containsKey('oceanView')
+              ? _json['oceanView'] as core.bool
+              : null,
+          oceanViewException: _json.containsKey('oceanViewException')
+              ? _json['oceanViewException'] as core.String
+              : null,
+          poolView: _json.containsKey('poolView')
+              ? _json['poolView'] as core.bool
+              : null,
+          poolViewException: _json.containsKey('poolViewException')
+              ? _json['poolViewException'] as core.String
+              : null,
+          valleyView: _json.containsKey('valleyView')
+              ? _json['valleyView'] as core.bool
+              : null,
+          valleyViewException: _json.containsKey('valleyViewException')
+              ? _json['valleyViewException'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (beachView != null) 'beachView': beachView!,
@@ -7090,78 +7603,98 @@ class Wellness {
   /// the day of the week.
   core.String? weightMachineException;
 
-  Wellness();
+  Wellness({
+    this.doctorOnCall,
+    this.doctorOnCallException,
+    this.ellipticalMachine,
+    this.ellipticalMachineException,
+    this.fitnessCenter,
+    this.fitnessCenterException,
+    this.freeFitnessCenter,
+    this.freeFitnessCenterException,
+    this.freeWeights,
+    this.freeWeightsException,
+    this.massage,
+    this.massageException,
+    this.salon,
+    this.salonException,
+    this.sauna,
+    this.saunaException,
+    this.spa,
+    this.spaException,
+    this.treadmill,
+    this.treadmillException,
+    this.weightMachine,
+    this.weightMachineException,
+  });
 
-  Wellness.fromJson(core.Map _json) {
-    if (_json.containsKey('doctorOnCall')) {
-      doctorOnCall = _json['doctorOnCall'] as core.bool;
-    }
-    if (_json.containsKey('doctorOnCallException')) {
-      doctorOnCallException = _json['doctorOnCallException'] as core.String;
-    }
-    if (_json.containsKey('ellipticalMachine')) {
-      ellipticalMachine = _json['ellipticalMachine'] as core.bool;
-    }
-    if (_json.containsKey('ellipticalMachineException')) {
-      ellipticalMachineException =
-          _json['ellipticalMachineException'] as core.String;
-    }
-    if (_json.containsKey('fitnessCenter')) {
-      fitnessCenter = _json['fitnessCenter'] as core.bool;
-    }
-    if (_json.containsKey('fitnessCenterException')) {
-      fitnessCenterException = _json['fitnessCenterException'] as core.String;
-    }
-    if (_json.containsKey('freeFitnessCenter')) {
-      freeFitnessCenter = _json['freeFitnessCenter'] as core.bool;
-    }
-    if (_json.containsKey('freeFitnessCenterException')) {
-      freeFitnessCenterException =
-          _json['freeFitnessCenterException'] as core.String;
-    }
-    if (_json.containsKey('freeWeights')) {
-      freeWeights = _json['freeWeights'] as core.bool;
-    }
-    if (_json.containsKey('freeWeightsException')) {
-      freeWeightsException = _json['freeWeightsException'] as core.String;
-    }
-    if (_json.containsKey('massage')) {
-      massage = _json['massage'] as core.bool;
-    }
-    if (_json.containsKey('massageException')) {
-      massageException = _json['massageException'] as core.String;
-    }
-    if (_json.containsKey('salon')) {
-      salon = _json['salon'] as core.bool;
-    }
-    if (_json.containsKey('salonException')) {
-      salonException = _json['salonException'] as core.String;
-    }
-    if (_json.containsKey('sauna')) {
-      sauna = _json['sauna'] as core.bool;
-    }
-    if (_json.containsKey('saunaException')) {
-      saunaException = _json['saunaException'] as core.String;
-    }
-    if (_json.containsKey('spa')) {
-      spa = _json['spa'] as core.bool;
-    }
-    if (_json.containsKey('spaException')) {
-      spaException = _json['spaException'] as core.String;
-    }
-    if (_json.containsKey('treadmill')) {
-      treadmill = _json['treadmill'] as core.bool;
-    }
-    if (_json.containsKey('treadmillException')) {
-      treadmillException = _json['treadmillException'] as core.String;
-    }
-    if (_json.containsKey('weightMachine')) {
-      weightMachine = _json['weightMachine'] as core.bool;
-    }
-    if (_json.containsKey('weightMachineException')) {
-      weightMachineException = _json['weightMachineException'] as core.String;
-    }
-  }
+  Wellness.fromJson(core.Map _json)
+      : this(
+          doctorOnCall: _json.containsKey('doctorOnCall')
+              ? _json['doctorOnCall'] as core.bool
+              : null,
+          doctorOnCallException: _json.containsKey('doctorOnCallException')
+              ? _json['doctorOnCallException'] as core.String
+              : null,
+          ellipticalMachine: _json.containsKey('ellipticalMachine')
+              ? _json['ellipticalMachine'] as core.bool
+              : null,
+          ellipticalMachineException:
+              _json.containsKey('ellipticalMachineException')
+                  ? _json['ellipticalMachineException'] as core.String
+                  : null,
+          fitnessCenter: _json.containsKey('fitnessCenter')
+              ? _json['fitnessCenter'] as core.bool
+              : null,
+          fitnessCenterException: _json.containsKey('fitnessCenterException')
+              ? _json['fitnessCenterException'] as core.String
+              : null,
+          freeFitnessCenter: _json.containsKey('freeFitnessCenter')
+              ? _json['freeFitnessCenter'] as core.bool
+              : null,
+          freeFitnessCenterException:
+              _json.containsKey('freeFitnessCenterException')
+                  ? _json['freeFitnessCenterException'] as core.String
+                  : null,
+          freeWeights: _json.containsKey('freeWeights')
+              ? _json['freeWeights'] as core.bool
+              : null,
+          freeWeightsException: _json.containsKey('freeWeightsException')
+              ? _json['freeWeightsException'] as core.String
+              : null,
+          massage: _json.containsKey('massage')
+              ? _json['massage'] as core.bool
+              : null,
+          massageException: _json.containsKey('massageException')
+              ? _json['massageException'] as core.String
+              : null,
+          salon:
+              _json.containsKey('salon') ? _json['salon'] as core.bool : null,
+          salonException: _json.containsKey('salonException')
+              ? _json['salonException'] as core.String
+              : null,
+          sauna:
+              _json.containsKey('sauna') ? _json['sauna'] as core.bool : null,
+          saunaException: _json.containsKey('saunaException')
+              ? _json['saunaException'] as core.String
+              : null,
+          spa: _json.containsKey('spa') ? _json['spa'] as core.bool : null,
+          spaException: _json.containsKey('spaException')
+              ? _json['spaException'] as core.String
+              : null,
+          treadmill: _json.containsKey('treadmill')
+              ? _json['treadmill'] as core.bool
+              : null,
+          treadmillException: _json.containsKey('treadmillException')
+              ? _json['treadmillException'] as core.String
+              : null,
+          weightMachine: _json.containsKey('weightMachine')
+              ? _json['weightMachine'] as core.bool
+              : null,
+          weightMachineException: _json.containsKey('weightMachineException')
+              ? _json['weightMachineException'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (doctorOnCall != null) 'doctorOnCall': doctorOnCall!,

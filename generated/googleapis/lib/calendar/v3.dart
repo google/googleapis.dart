@@ -2430,28 +2430,31 @@ class Acl {
   /// provided.
   core.String? nextSyncToken;
 
-  Acl();
+  Acl({
+    this.etag,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.nextSyncToken,
+  });
 
-  Acl.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<AclRule>((value) =>
-              AclRule.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('nextSyncToken')) {
-      nextSyncToken = _json['nextSyncToken'] as core.String;
-    }
-  }
+  Acl.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<AclRule>((value) => AclRule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          nextSyncToken: _json.containsKey('nextSyncToken')
+              ? _json['nextSyncToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -2482,16 +2485,17 @@ class AclRuleScope {
   /// Omitted for type "default".
   core.String? value;
 
-  AclRuleScope();
+  AclRuleScope({
+    this.type,
+    this.value,
+  });
 
-  AclRuleScope.fromJson(core.Map _json) {
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  AclRuleScope.fromJson(core.Map _json)
+      : this(
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
@@ -2529,26 +2533,25 @@ class AclRule {
   /// The extent to which calendar access is granted by this ACL rule.
   AclRuleScope? scope;
 
-  AclRule();
+  AclRule({
+    this.etag,
+    this.id,
+    this.kind,
+    this.role,
+    this.scope,
+  });
 
-  AclRule.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('role')) {
-      role = _json['role'] as core.String;
-    }
-    if (_json.containsKey('scope')) {
-      scope = AclRuleScope.fromJson(
-          _json['scope'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  AclRule.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+          scope: _json.containsKey('scope')
+              ? AclRuleScope.fromJson(
+                  _json['scope'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -2594,35 +2597,39 @@ class Calendar {
   /// Optional.
   core.String? timeZone;
 
-  Calendar();
+  Calendar({
+    this.conferenceProperties,
+    this.description,
+    this.etag,
+    this.id,
+    this.kind,
+    this.location,
+    this.summary,
+    this.timeZone,
+  });
 
-  Calendar.fromJson(core.Map _json) {
-    if (_json.containsKey('conferenceProperties')) {
-      conferenceProperties = ConferenceProperties.fromJson(
-          _json['conferenceProperties'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('location')) {
-      location = _json['location'] as core.String;
-    }
-    if (_json.containsKey('summary')) {
-      summary = _json['summary'] as core.String;
-    }
-    if (_json.containsKey('timeZone')) {
-      timeZone = _json['timeZone'] as core.String;
-    }
-  }
+  Calendar.fromJson(core.Map _json)
+      : this(
+          conferenceProperties: _json.containsKey('conferenceProperties')
+              ? ConferenceProperties.fromJson(_json['conferenceProperties']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          summary: _json.containsKey('summary')
+              ? _json['summary'] as core.String
+              : null,
+          timeZone: _json.containsKey('timeZone')
+              ? _json['timeZone'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (conferenceProperties != null)
@@ -2660,28 +2667,31 @@ class CalendarList {
   /// provided.
   core.String? nextSyncToken;
 
-  CalendarList();
+  CalendarList({
+    this.etag,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.nextSyncToken,
+  });
 
-  CalendarList.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<CalendarListEntry>((value) => CalendarListEntry.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('nextSyncToken')) {
-      nextSyncToken = _json['nextSyncToken'] as core.String;
-    }
-  }
+  CalendarList.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<CalendarListEntry>((value) => CalendarListEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          nextSyncToken: _json.containsKey('nextSyncToken')
+              ? _json['nextSyncToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -2699,16 +2709,20 @@ class CalendarListEntryNotificationSettings {
   /// The list of notifications set for this calendar.
   core.List<CalendarNotification>? notifications;
 
-  CalendarListEntryNotificationSettings();
+  CalendarListEntryNotificationSettings({
+    this.notifications,
+  });
 
-  CalendarListEntryNotificationSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('notifications')) {
-      notifications = (_json['notifications'] as core.List)
-          .map<CalendarNotification>((value) => CalendarNotification.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  CalendarListEntryNotificationSettings.fromJson(core.Map _json)
+      : this(
+          notifications: _json.containsKey('notifications')
+              ? (_json['notifications'] as core.List)
+                  .map<CalendarNotification>((value) =>
+                      CalendarNotification.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (notifications != null)
@@ -2820,72 +2834,87 @@ class CalendarListEntry {
   /// Optional. Read-only.
   core.String? timeZone;
 
-  CalendarListEntry();
+  CalendarListEntry({
+    this.accessRole,
+    this.backgroundColor,
+    this.colorId,
+    this.conferenceProperties,
+    this.defaultReminders,
+    this.deleted,
+    this.description,
+    this.etag,
+    this.foregroundColor,
+    this.hidden,
+    this.id,
+    this.kind,
+    this.location,
+    this.notificationSettings,
+    this.primary,
+    this.selected,
+    this.summary,
+    this.summaryOverride,
+    this.timeZone,
+  });
 
-  CalendarListEntry.fromJson(core.Map _json) {
-    if (_json.containsKey('accessRole')) {
-      accessRole = _json['accessRole'] as core.String;
-    }
-    if (_json.containsKey('backgroundColor')) {
-      backgroundColor = _json['backgroundColor'] as core.String;
-    }
-    if (_json.containsKey('colorId')) {
-      colorId = _json['colorId'] as core.String;
-    }
-    if (_json.containsKey('conferenceProperties')) {
-      conferenceProperties = ConferenceProperties.fromJson(
-          _json['conferenceProperties'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('defaultReminders')) {
-      defaultReminders = (_json['defaultReminders'] as core.List)
-          .map<EventReminder>((value) => EventReminder.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('deleted')) {
-      deleted = _json['deleted'] as core.bool;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('foregroundColor')) {
-      foregroundColor = _json['foregroundColor'] as core.String;
-    }
-    if (_json.containsKey('hidden')) {
-      hidden = _json['hidden'] as core.bool;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('location')) {
-      location = _json['location'] as core.String;
-    }
-    if (_json.containsKey('notificationSettings')) {
-      notificationSettings = CalendarListEntryNotificationSettings.fromJson(
-          _json['notificationSettings'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('primary')) {
-      primary = _json['primary'] as core.bool;
-    }
-    if (_json.containsKey('selected')) {
-      selected = _json['selected'] as core.bool;
-    }
-    if (_json.containsKey('summary')) {
-      summary = _json['summary'] as core.String;
-    }
-    if (_json.containsKey('summaryOverride')) {
-      summaryOverride = _json['summaryOverride'] as core.String;
-    }
-    if (_json.containsKey('timeZone')) {
-      timeZone = _json['timeZone'] as core.String;
-    }
-  }
+  CalendarListEntry.fromJson(core.Map _json)
+      : this(
+          accessRole: _json.containsKey('accessRole')
+              ? _json['accessRole'] as core.String
+              : null,
+          backgroundColor: _json.containsKey('backgroundColor')
+              ? _json['backgroundColor'] as core.String
+              : null,
+          colorId: _json.containsKey('colorId')
+              ? _json['colorId'] as core.String
+              : null,
+          conferenceProperties: _json.containsKey('conferenceProperties')
+              ? ConferenceProperties.fromJson(_json['conferenceProperties']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          defaultReminders: _json.containsKey('defaultReminders')
+              ? (_json['defaultReminders'] as core.List)
+                  .map<EventReminder>((value) => EventReminder.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          deleted: _json.containsKey('deleted')
+              ? _json['deleted'] as core.bool
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          foregroundColor: _json.containsKey('foregroundColor')
+              ? _json['foregroundColor'] as core.String
+              : null,
+          hidden:
+              _json.containsKey('hidden') ? _json['hidden'] as core.bool : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          notificationSettings: _json.containsKey('notificationSettings')
+              ? CalendarListEntryNotificationSettings.fromJson(
+                  _json['notificationSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          primary: _json.containsKey('primary')
+              ? _json['primary'] as core.bool
+              : null,
+          selected: _json.containsKey('selected')
+              ? _json['selected'] as core.bool
+              : null,
+          summary: _json.containsKey('summary')
+              ? _json['summary'] as core.String
+              : null,
+          summaryOverride: _json.containsKey('summaryOverride')
+              ? _json['summaryOverride'] as core.String
+              : null,
+          timeZone: _json.containsKey('timeZone')
+              ? _json['timeZone'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessRole != null) 'accessRole': accessRole!,
@@ -2936,16 +2965,18 @@ class CalendarNotification {
   /// Required when adding a notification.
   core.String? type;
 
-  CalendarNotification();
+  CalendarNotification({
+    this.method,
+    this.type,
+  });
 
-  CalendarNotification.fromJson(core.Map _json) {
-    if (_json.containsKey('method')) {
-      method = _json['method'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  CalendarNotification.fromJson(core.Map _json)
+      : this(
+          method: _json.containsKey('method')
+              ? _json['method'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (method != null) 'method': method!,
@@ -3000,45 +3031,50 @@ class Channel {
   /// where Http requests are used to deliver messages.
   core.String? type;
 
-  Channel();
+  Channel({
+    this.address,
+    this.expiration,
+    this.id,
+    this.kind,
+    this.params,
+    this.payload,
+    this.resourceId,
+    this.resourceUri,
+    this.token,
+    this.type,
+  });
 
-  Channel.fromJson(core.Map _json) {
-    if (_json.containsKey('address')) {
-      address = _json['address'] as core.String;
-    }
-    if (_json.containsKey('expiration')) {
-      expiration = _json['expiration'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('params')) {
-      params = (_json['params'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('payload')) {
-      payload = _json['payload'] as core.bool;
-    }
-    if (_json.containsKey('resourceId')) {
-      resourceId = _json['resourceId'] as core.String;
-    }
-    if (_json.containsKey('resourceUri')) {
-      resourceUri = _json['resourceUri'] as core.String;
-    }
-    if (_json.containsKey('token')) {
-      token = _json['token'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  Channel.fromJson(core.Map _json)
+      : this(
+          address: _json.containsKey('address')
+              ? _json['address'] as core.String
+              : null,
+          expiration: _json.containsKey('expiration')
+              ? _json['expiration'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          params: _json.containsKey('params')
+              ? (_json['params'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          payload: _json.containsKey('payload')
+              ? _json['payload'] as core.bool
+              : null,
+          resourceId: _json.containsKey('resourceId')
+              ? _json['resourceId'] as core.String
+              : null,
+          resourceUri: _json.containsKey('resourceUri')
+              ? _json['resourceUri'] as core.String
+              : null,
+          token:
+              _json.containsKey('token') ? _json['token'] as core.String : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (address != null) 'address': address!,
@@ -3062,16 +3098,20 @@ class ColorDefinition {
   /// 'background' color.
   core.String? foreground;
 
-  ColorDefinition();
+  ColorDefinition({
+    this.background,
+    this.foreground,
+  });
 
-  ColorDefinition.fromJson(core.Map _json) {
-    if (_json.containsKey('background')) {
-      background = _json['background'] as core.String;
-    }
-    if (_json.containsKey('foreground')) {
-      foreground = _json['foreground'] as core.String;
-    }
-  }
+  ColorDefinition.fromJson(core.Map _json)
+      : this(
+          background: _json.containsKey('background')
+              ? _json['background'] as core.String
+              : null,
+          foreground: _json.containsKey('foreground')
+              ? _json['foreground'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (background != null) 'background': background!,
@@ -3102,32 +3142,38 @@ class Colors {
   /// Read-only.
   core.DateTime? updated;
 
-  Colors();
+  Colors({
+    this.calendar,
+    this.event,
+    this.kind,
+    this.updated,
+  });
 
-  Colors.fromJson(core.Map _json) {
-    if (_json.containsKey('calendar')) {
-      calendar = (_json['calendar'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          ColorDefinition.fromJson(item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('event')) {
-      event = (_json['event'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          ColorDefinition.fromJson(item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('updated')) {
-      updated = core.DateTime.parse(_json['updated'] as core.String);
-    }
-  }
+  Colors.fromJson(core.Map _json)
+      : this(
+          calendar: _json.containsKey('calendar')
+              ? (_json['calendar'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    ColorDefinition.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          event: _json.containsKey('event')
+              ? (_json['event'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    ColorDefinition.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          updated: _json.containsKey('updated')
+              ? core.DateTime.parse(_json['updated'] as core.String)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (calendar != null)
@@ -3196,37 +3242,45 @@ class ConferenceData {
   /// Optional for a conference with a pending create request.
   core.String? signature;
 
-  ConferenceData();
+  ConferenceData({
+    this.conferenceId,
+    this.conferenceSolution,
+    this.createRequest,
+    this.entryPoints,
+    this.notes,
+    this.parameters,
+    this.signature,
+  });
 
-  ConferenceData.fromJson(core.Map _json) {
-    if (_json.containsKey('conferenceId')) {
-      conferenceId = _json['conferenceId'] as core.String;
-    }
-    if (_json.containsKey('conferenceSolution')) {
-      conferenceSolution = ConferenceSolution.fromJson(
-          _json['conferenceSolution'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('createRequest')) {
-      createRequest = CreateConferenceRequest.fromJson(
-          _json['createRequest'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('entryPoints')) {
-      entryPoints = (_json['entryPoints'] as core.List)
-          .map<EntryPoint>((value) =>
-              EntryPoint.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('notes')) {
-      notes = _json['notes'] as core.String;
-    }
-    if (_json.containsKey('parameters')) {
-      parameters = ConferenceParameters.fromJson(
-          _json['parameters'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('signature')) {
-      signature = _json['signature'] as core.String;
-    }
-  }
+  ConferenceData.fromJson(core.Map _json)
+      : this(
+          conferenceId: _json.containsKey('conferenceId')
+              ? _json['conferenceId'] as core.String
+              : null,
+          conferenceSolution: _json.containsKey('conferenceSolution')
+              ? ConferenceSolution.fromJson(_json['conferenceSolution']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          createRequest: _json.containsKey('createRequest')
+              ? CreateConferenceRequest.fromJson(
+                  _json['createRequest'] as core.Map<core.String, core.dynamic>)
+              : null,
+          entryPoints: _json.containsKey('entryPoints')
+              ? (_json['entryPoints'] as core.List)
+                  .map<EntryPoint>((value) => EntryPoint.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          notes:
+              _json.containsKey('notes') ? _json['notes'] as core.String : null,
+          parameters: _json.containsKey('parameters')
+              ? ConferenceParameters.fromJson(
+                  _json['parameters'] as core.Map<core.String, core.dynamic>)
+              : null,
+          signature: _json.containsKey('signature')
+              ? _json['signature'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (conferenceId != null) 'conferenceId': conferenceId!,
@@ -3245,14 +3299,18 @@ class ConferenceParameters {
   /// Additional add-on specific data.
   ConferenceParametersAddOnParameters? addOnParameters;
 
-  ConferenceParameters();
+  ConferenceParameters({
+    this.addOnParameters,
+  });
 
-  ConferenceParameters.fromJson(core.Map _json) {
-    if (_json.containsKey('addOnParameters')) {
-      addOnParameters = ConferenceParametersAddOnParameters.fromJson(
-          _json['addOnParameters'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ConferenceParameters.fromJson(core.Map _json)
+      : this(
+          addOnParameters: _json.containsKey('addOnParameters')
+              ? ConferenceParametersAddOnParameters.fromJson(
+                  _json['addOnParameters']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (addOnParameters != null)
@@ -3263,19 +3321,22 @@ class ConferenceParameters {
 class ConferenceParametersAddOnParameters {
   core.Map<core.String, core.String>? parameters;
 
-  ConferenceParametersAddOnParameters();
+  ConferenceParametersAddOnParameters({
+    this.parameters,
+  });
 
-  ConferenceParametersAddOnParameters.fromJson(core.Map _json) {
-    if (_json.containsKey('parameters')) {
-      parameters =
-          (_json['parameters'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-  }
+  ConferenceParametersAddOnParameters.fromJson(core.Map _json)
+      : this(
+          parameters: _json.containsKey('parameters')
+              ? (_json['parameters'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (parameters != null) 'parameters': parameters!,
@@ -3290,16 +3351,19 @@ class ConferenceProperties {
   /// - "hangoutsMeet"  Optional.
   core.List<core.String>? allowedConferenceSolutionTypes;
 
-  ConferenceProperties();
+  ConferenceProperties({
+    this.allowedConferenceSolutionTypes,
+  });
 
-  ConferenceProperties.fromJson(core.Map _json) {
-    if (_json.containsKey('allowedConferenceSolutionTypes')) {
-      allowedConferenceSolutionTypes =
-          (_json['allowedConferenceSolutionTypes'] as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList();
-    }
-  }
+  ConferenceProperties.fromJson(core.Map _json)
+      : this(
+          allowedConferenceSolutionTypes:
+              _json.containsKey('allowedConferenceSolutionTypes')
+                  ? (_json['allowedConferenceSolutionTypes'] as core.List)
+                      .map<core.String>((value) => value as core.String)
+                      .toList()
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedConferenceSolutionTypes != null)
@@ -3319,13 +3383,16 @@ class ConferenceRequestStatus {
   /// points.
   core.String? statusCode;
 
-  ConferenceRequestStatus();
+  ConferenceRequestStatus({
+    this.statusCode,
+  });
 
-  ConferenceRequestStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('statusCode')) {
-      statusCode = _json['statusCode'] as core.String;
-    }
-  }
+  ConferenceRequestStatus.fromJson(core.Map _json)
+      : this(
+          statusCode: _json.containsKey('statusCode')
+              ? _json['statusCode'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (statusCode != null) 'statusCode': statusCode!,
@@ -3345,20 +3412,23 @@ class ConferenceSolution {
   /// Not localized.
   core.String? name;
 
-  ConferenceSolution();
+  ConferenceSolution({
+    this.iconUri,
+    this.key,
+    this.name,
+  });
 
-  ConferenceSolution.fromJson(core.Map _json) {
-    if (_json.containsKey('iconUri')) {
-      iconUri = _json['iconUri'] as core.String;
-    }
-    if (_json.containsKey('key')) {
-      key = ConferenceSolutionKey.fromJson(
-          _json['key'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  ConferenceSolution.fromJson(core.Map _json)
+      : this(
+          iconUri: _json.containsKey('iconUri')
+              ? _json['iconUri'] as core.String
+              : null,
+          key: _json.containsKey('key')
+              ? ConferenceSolutionKey.fromJson(
+                  _json['key'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (iconUri != null) 'iconUri': iconUri!,
@@ -3381,13 +3451,14 @@ class ConferenceSolutionKey {
   /// - "addOn" for 3P conference providers
   core.String? type;
 
-  ConferenceSolutionKey();
+  ConferenceSolutionKey({
+    this.type,
+  });
 
-  ConferenceSolutionKey.fromJson(core.Map _json) {
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  ConferenceSolutionKey.fromJson(core.Map _json)
+      : this(
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
@@ -3408,22 +3479,26 @@ class CreateConferenceRequest {
   /// The status of the conference create request.
   ConferenceRequestStatus? status;
 
-  CreateConferenceRequest();
+  CreateConferenceRequest({
+    this.conferenceSolutionKey,
+    this.requestId,
+    this.status,
+  });
 
-  CreateConferenceRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('conferenceSolutionKey')) {
-      conferenceSolutionKey = ConferenceSolutionKey.fromJson(
-          _json['conferenceSolutionKey']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('requestId')) {
-      requestId = _json['requestId'] as core.String;
-    }
-    if (_json.containsKey('status')) {
-      status = ConferenceRequestStatus.fromJson(
-          _json['status'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  CreateConferenceRequest.fromJson(core.Map _json)
+      : this(
+          conferenceSolutionKey: _json.containsKey('conferenceSolutionKey')
+              ? ConferenceSolutionKey.fromJson(_json['conferenceSolutionKey']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          requestId: _json.containsKey('requestId')
+              ? _json['requestId'] as core.String
+              : null,
+          status: _json.containsKey('status')
+              ? ConferenceRequestStatus.fromJson(
+                  _json['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (conferenceSolutionKey != null)
@@ -3532,42 +3607,49 @@ class EntryPoint {
   /// - for more, http: or https: schema is required.
   core.String? uri;
 
-  EntryPoint();
+  EntryPoint({
+    this.accessCode,
+    this.entryPointFeatures,
+    this.entryPointType,
+    this.label,
+    this.meetingCode,
+    this.passcode,
+    this.password,
+    this.pin,
+    this.regionCode,
+    this.uri,
+  });
 
-  EntryPoint.fromJson(core.Map _json) {
-    if (_json.containsKey('accessCode')) {
-      accessCode = _json['accessCode'] as core.String;
-    }
-    if (_json.containsKey('entryPointFeatures')) {
-      entryPointFeatures = (_json['entryPointFeatures'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('entryPointType')) {
-      entryPointType = _json['entryPointType'] as core.String;
-    }
-    if (_json.containsKey('label')) {
-      label = _json['label'] as core.String;
-    }
-    if (_json.containsKey('meetingCode')) {
-      meetingCode = _json['meetingCode'] as core.String;
-    }
-    if (_json.containsKey('passcode')) {
-      passcode = _json['passcode'] as core.String;
-    }
-    if (_json.containsKey('password')) {
-      password = _json['password'] as core.String;
-    }
-    if (_json.containsKey('pin')) {
-      pin = _json['pin'] as core.String;
-    }
-    if (_json.containsKey('regionCode')) {
-      regionCode = _json['regionCode'] as core.String;
-    }
-    if (_json.containsKey('uri')) {
-      uri = _json['uri'] as core.String;
-    }
-  }
+  EntryPoint.fromJson(core.Map _json)
+      : this(
+          accessCode: _json.containsKey('accessCode')
+              ? _json['accessCode'] as core.String
+              : null,
+          entryPointFeatures: _json.containsKey('entryPointFeatures')
+              ? (_json['entryPointFeatures'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          entryPointType: _json.containsKey('entryPointType')
+              ? _json['entryPointType'] as core.String
+              : null,
+          label:
+              _json.containsKey('label') ? _json['label'] as core.String : null,
+          meetingCode: _json.containsKey('meetingCode')
+              ? _json['meetingCode'] as core.String
+              : null,
+          passcode: _json.containsKey('passcode')
+              ? _json['passcode'] as core.String
+              : null,
+          password: _json.containsKey('password')
+              ? _json['password'] as core.String
+              : null,
+          pin: _json.containsKey('pin') ? _json['pin'] as core.String : null,
+          regionCode: _json.containsKey('regionCode')
+              ? _json['regionCode'] as core.String
+              : null,
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessCode != null) 'accessCode': accessCode!,
@@ -3601,16 +3683,20 @@ class Error {
   /// gracefully handle additional error statuses not included in this list.
   core.String? reason;
 
-  Error();
+  Error({
+    this.domain,
+    this.reason,
+  });
 
-  Error.fromJson(core.Map _json) {
-    if (_json.containsKey('domain')) {
-      domain = _json['domain'] as core.String;
-    }
-    if (_json.containsKey('reason')) {
-      reason = _json['reason'] as core.String;
-    }
-  }
+  Error.fromJson(core.Map _json)
+      : this(
+          domain: _json.containsKey('domain')
+              ? _json['domain'] as core.String
+              : null,
+          reason: _json.containsKey('reason')
+              ? _json['reason'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (domain != null) 'domain': domain!,
@@ -3637,22 +3723,23 @@ class EventCreator {
   /// Read-only. The default is False.
   core.bool? self;
 
-  EventCreator();
+  EventCreator({
+    this.displayName,
+    this.email,
+    this.id,
+    this.self,
+  });
 
-  EventCreator.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('self')) {
-      self = _json['self'] as core.bool;
-    }
-  }
+  EventCreator.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          self: _json.containsKey('self') ? _json['self'] as core.bool : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -3672,26 +3759,30 @@ class EventExtendedProperties {
   /// calendars.
   core.Map<core.String, core.String>? shared;
 
-  EventExtendedProperties();
+  EventExtendedProperties({
+    this.private,
+    this.shared,
+  });
 
-  EventExtendedProperties.fromJson(core.Map _json) {
-    if (_json.containsKey('private')) {
-      private = (_json['private'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('shared')) {
-      shared = (_json['shared'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-  }
+  EventExtendedProperties.fromJson(core.Map _json)
+      : this(
+          private: _json.containsKey('private')
+              ? (_json['private'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          shared: _json.containsKey('shared')
+              ? (_json['shared'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (private != null) 'private': private!,
@@ -3745,40 +3836,42 @@ class EventGadget {
   /// The width must be an integer greater than 0. Optional. Deprecated.
   core.int? width;
 
-  EventGadget();
+  EventGadget({
+    this.display,
+    this.height,
+    this.iconLink,
+    this.link,
+    this.preferences,
+    this.title,
+    this.type,
+    this.width,
+  });
 
-  EventGadget.fromJson(core.Map _json) {
-    if (_json.containsKey('display')) {
-      display = _json['display'] as core.String;
-    }
-    if (_json.containsKey('height')) {
-      height = _json['height'] as core.int;
-    }
-    if (_json.containsKey('iconLink')) {
-      iconLink = _json['iconLink'] as core.String;
-    }
-    if (_json.containsKey('link')) {
-      link = _json['link'] as core.String;
-    }
-    if (_json.containsKey('preferences')) {
-      preferences =
-          (_json['preferences'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('width')) {
-      width = _json['width'] as core.int;
-    }
-  }
+  EventGadget.fromJson(core.Map _json)
+      : this(
+          display: _json.containsKey('display')
+              ? _json['display'] as core.String
+              : null,
+          height:
+              _json.containsKey('height') ? _json['height'] as core.int : null,
+          iconLink: _json.containsKey('iconLink')
+              ? _json['iconLink'] as core.String
+              : null,
+          link: _json.containsKey('link') ? _json['link'] as core.String : null,
+          preferences: _json.containsKey('preferences')
+              ? (_json['preferences'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          width: _json.containsKey('width') ? _json['width'] as core.int : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (display != null) 'display': display!,
@@ -3816,22 +3909,23 @@ class EventOrganizer {
   /// Read-only. The default is False.
   core.bool? self;
 
-  EventOrganizer();
+  EventOrganizer({
+    this.displayName,
+    this.email,
+    this.id,
+    this.self,
+  });
 
-  EventOrganizer.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('self')) {
-      self = _json['self'] as core.bool;
-    }
-  }
+  EventOrganizer.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          self: _json.containsKey('self') ? _json['self'] as core.bool : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -3853,19 +3947,23 @@ class EventReminders {
   /// Whether the default reminders of the calendar apply to the event.
   core.bool? useDefault;
 
-  EventReminders();
+  EventReminders({
+    this.overrides,
+    this.useDefault,
+  });
 
-  EventReminders.fromJson(core.Map _json) {
-    if (_json.containsKey('overrides')) {
-      overrides = (_json['overrides'] as core.List)
-          .map<EventReminder>((value) => EventReminder.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('useDefault')) {
-      useDefault = _json['useDefault'] as core.bool;
-    }
-  }
+  EventReminders.fromJson(core.Map _json)
+      : this(
+          overrides: _json.containsKey('overrides')
+              ? (_json['overrides'] as core.List)
+                  .map<EventReminder>((value) => EventReminder.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          useDefault: _json.containsKey('useDefault')
+              ? _json['useDefault'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (overrides != null)
@@ -3889,16 +3987,17 @@ class EventSource {
   /// The URL scheme must be HTTP or HTTPS.
   core.String? url;
 
-  EventSource();
+  EventSource({
+    this.title,
+    this.url,
+  });
 
-  EventSource.fromJson(core.Map _json) {
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  EventSource.fromJson(core.Map _json)
+      : this(
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (title != null) 'title': title!,
@@ -4179,145 +4278,179 @@ class Event {
   /// compatibility reasons.
   core.String? visibility;
 
-  Event();
+  Event({
+    this.anyoneCanAddSelf,
+    this.attachments,
+    this.attendees,
+    this.attendeesOmitted,
+    this.colorId,
+    this.conferenceData,
+    this.created,
+    this.creator,
+    this.description,
+    this.end,
+    this.endTimeUnspecified,
+    this.etag,
+    this.eventType,
+    this.extendedProperties,
+    this.gadget,
+    this.guestsCanInviteOthers,
+    this.guestsCanModify,
+    this.guestsCanSeeOtherGuests,
+    this.hangoutLink,
+    this.htmlLink,
+    this.iCalUID,
+    this.id,
+    this.kind,
+    this.location,
+    this.locked,
+    this.organizer,
+    this.originalStartTime,
+    this.privateCopy,
+    this.recurrence,
+    this.recurringEventId,
+    this.reminders,
+    this.sequence,
+    this.source,
+    this.start,
+    this.status,
+    this.summary,
+    this.transparency,
+    this.updated,
+    this.visibility,
+  });
 
-  Event.fromJson(core.Map _json) {
-    if (_json.containsKey('anyoneCanAddSelf')) {
-      anyoneCanAddSelf = _json['anyoneCanAddSelf'] as core.bool;
-    }
-    if (_json.containsKey('attachments')) {
-      attachments = (_json['attachments'] as core.List)
-          .map<EventAttachment>((value) => EventAttachment.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('attendees')) {
-      attendees = (_json['attendees'] as core.List)
-          .map<EventAttendee>((value) => EventAttendee.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('attendeesOmitted')) {
-      attendeesOmitted = _json['attendeesOmitted'] as core.bool;
-    }
-    if (_json.containsKey('colorId')) {
-      colorId = _json['colorId'] as core.String;
-    }
-    if (_json.containsKey('conferenceData')) {
-      conferenceData = ConferenceData.fromJson(
-          _json['conferenceData'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('created')) {
-      created = core.DateTime.parse(_json['created'] as core.String);
-    }
-    if (_json.containsKey('creator')) {
-      creator = EventCreator.fromJson(
-          _json['creator'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('end')) {
-      end = EventDateTime.fromJson(
-          _json['end'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('endTimeUnspecified')) {
-      endTimeUnspecified = _json['endTimeUnspecified'] as core.bool;
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('eventType')) {
-      eventType = _json['eventType'] as core.String;
-    }
-    if (_json.containsKey('extendedProperties')) {
-      extendedProperties = EventExtendedProperties.fromJson(
-          _json['extendedProperties'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('gadget')) {
-      gadget = EventGadget.fromJson(
-          _json['gadget'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('guestsCanInviteOthers')) {
-      guestsCanInviteOthers = _json['guestsCanInviteOthers'] as core.bool;
-    }
-    if (_json.containsKey('guestsCanModify')) {
-      guestsCanModify = _json['guestsCanModify'] as core.bool;
-    }
-    if (_json.containsKey('guestsCanSeeOtherGuests')) {
-      guestsCanSeeOtherGuests = _json['guestsCanSeeOtherGuests'] as core.bool;
-    }
-    if (_json.containsKey('hangoutLink')) {
-      hangoutLink = _json['hangoutLink'] as core.String;
-    }
-    if (_json.containsKey('htmlLink')) {
-      htmlLink = _json['htmlLink'] as core.String;
-    }
-    if (_json.containsKey('iCalUID')) {
-      iCalUID = _json['iCalUID'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('location')) {
-      location = _json['location'] as core.String;
-    }
-    if (_json.containsKey('locked')) {
-      locked = _json['locked'] as core.bool;
-    }
-    if (_json.containsKey('organizer')) {
-      organizer = EventOrganizer.fromJson(
-          _json['organizer'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('originalStartTime')) {
-      originalStartTime = EventDateTime.fromJson(
-          _json['originalStartTime'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('privateCopy')) {
-      privateCopy = _json['privateCopy'] as core.bool;
-    }
-    if (_json.containsKey('recurrence')) {
-      recurrence = (_json['recurrence'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('recurringEventId')) {
-      recurringEventId = _json['recurringEventId'] as core.String;
-    }
-    if (_json.containsKey('reminders')) {
-      reminders = EventReminders.fromJson(
-          _json['reminders'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('sequence')) {
-      sequence = _json['sequence'] as core.int;
-    }
-    if (_json.containsKey('source')) {
-      source = EventSource.fromJson(
-          _json['source'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('start')) {
-      start = EventDateTime.fromJson(
-          _json['start'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-    if (_json.containsKey('summary')) {
-      summary = _json['summary'] as core.String;
-    }
-    if (_json.containsKey('transparency')) {
-      transparency = _json['transparency'] as core.String;
-    }
-    if (_json.containsKey('updated')) {
-      updated = core.DateTime.parse(_json['updated'] as core.String);
-    }
-    if (_json.containsKey('visibility')) {
-      visibility = _json['visibility'] as core.String;
-    }
-  }
+  Event.fromJson(core.Map _json)
+      : this(
+          anyoneCanAddSelf: _json.containsKey('anyoneCanAddSelf')
+              ? _json['anyoneCanAddSelf'] as core.bool
+              : null,
+          attachments: _json.containsKey('attachments')
+              ? (_json['attachments'] as core.List)
+                  .map<EventAttachment>((value) => EventAttachment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          attendees: _json.containsKey('attendees')
+              ? (_json['attendees'] as core.List)
+                  .map<EventAttendee>((value) => EventAttendee.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          attendeesOmitted: _json.containsKey('attendeesOmitted')
+              ? _json['attendeesOmitted'] as core.bool
+              : null,
+          colorId: _json.containsKey('colorId')
+              ? _json['colorId'] as core.String
+              : null,
+          conferenceData: _json.containsKey('conferenceData')
+              ? ConferenceData.fromJson(_json['conferenceData']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          created: _json.containsKey('created')
+              ? core.DateTime.parse(_json['created'] as core.String)
+              : null,
+          creator: _json.containsKey('creator')
+              ? EventCreator.fromJson(
+                  _json['creator'] as core.Map<core.String, core.dynamic>)
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          end: _json.containsKey('end')
+              ? EventDateTime.fromJson(
+                  _json['end'] as core.Map<core.String, core.dynamic>)
+              : null,
+          endTimeUnspecified: _json.containsKey('endTimeUnspecified')
+              ? _json['endTimeUnspecified'] as core.bool
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          eventType: _json.containsKey('eventType')
+              ? _json['eventType'] as core.String
+              : null,
+          extendedProperties: _json.containsKey('extendedProperties')
+              ? EventExtendedProperties.fromJson(_json['extendedProperties']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          gadget: _json.containsKey('gadget')
+              ? EventGadget.fromJson(
+                  _json['gadget'] as core.Map<core.String, core.dynamic>)
+              : null,
+          guestsCanInviteOthers: _json.containsKey('guestsCanInviteOthers')
+              ? _json['guestsCanInviteOthers'] as core.bool
+              : null,
+          guestsCanModify: _json.containsKey('guestsCanModify')
+              ? _json['guestsCanModify'] as core.bool
+              : null,
+          guestsCanSeeOtherGuests: _json.containsKey('guestsCanSeeOtherGuests')
+              ? _json['guestsCanSeeOtherGuests'] as core.bool
+              : null,
+          hangoutLink: _json.containsKey('hangoutLink')
+              ? _json['hangoutLink'] as core.String
+              : null,
+          htmlLink: _json.containsKey('htmlLink')
+              ? _json['htmlLink'] as core.String
+              : null,
+          iCalUID: _json.containsKey('iCalUID')
+              ? _json['iCalUID'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          locked:
+              _json.containsKey('locked') ? _json['locked'] as core.bool : null,
+          organizer: _json.containsKey('organizer')
+              ? EventOrganizer.fromJson(
+                  _json['organizer'] as core.Map<core.String, core.dynamic>)
+              : null,
+          originalStartTime: _json.containsKey('originalStartTime')
+              ? EventDateTime.fromJson(_json['originalStartTime']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          privateCopy: _json.containsKey('privateCopy')
+              ? _json['privateCopy'] as core.bool
+              : null,
+          recurrence: _json.containsKey('recurrence')
+              ? (_json['recurrence'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          recurringEventId: _json.containsKey('recurringEventId')
+              ? _json['recurringEventId'] as core.String
+              : null,
+          reminders: _json.containsKey('reminders')
+              ? EventReminders.fromJson(
+                  _json['reminders'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sequence: _json.containsKey('sequence')
+              ? _json['sequence'] as core.int
+              : null,
+          source: _json.containsKey('source')
+              ? EventSource.fromJson(
+                  _json['source'] as core.Map<core.String, core.dynamic>)
+              : null,
+          start: _json.containsKey('start')
+              ? EventDateTime.fromJson(
+                  _json['start'] as core.Map<core.String, core.dynamic>)
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+          summary: _json.containsKey('summary')
+              ? _json['summary'] as core.String
+              : null,
+          transparency: _json.containsKey('transparency')
+              ? _json['transparency'] as core.String
+              : null,
+          updated: _json.containsKey('updated')
+              ? core.DateTime.parse(_json['updated'] as core.String)
+              : null,
+          visibility: _json.containsKey('visibility')
+              ? _json['visibility'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (anyoneCanAddSelf != null) 'anyoneCanAddSelf': anyoneCanAddSelf!,
@@ -4394,25 +4527,31 @@ class EventAttachment {
   /// Attachment title.
   core.String? title;
 
-  EventAttachment();
+  EventAttachment({
+    this.fileId,
+    this.fileUrl,
+    this.iconLink,
+    this.mimeType,
+    this.title,
+  });
 
-  EventAttachment.fromJson(core.Map _json) {
-    if (_json.containsKey('fileId')) {
-      fileId = _json['fileId'] as core.String;
-    }
-    if (_json.containsKey('fileUrl')) {
-      fileUrl = _json['fileUrl'] as core.String;
-    }
-    if (_json.containsKey('iconLink')) {
-      iconLink = _json['iconLink'] as core.String;
-    }
-    if (_json.containsKey('mimeType')) {
-      mimeType = _json['mimeType'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  EventAttachment.fromJson(core.Map _json)
+      : this(
+          fileId: _json.containsKey('fileId')
+              ? _json['fileId'] as core.String
+              : null,
+          fileUrl: _json.containsKey('fileUrl')
+              ? _json['fileUrl'] as core.String
+              : null,
+          iconLink: _json.containsKey('iconLink')
+              ? _json['iconLink'] as core.String
+              : null,
+          mimeType: _json.containsKey('mimeType')
+              ? _json['mimeType'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fileId != null) 'fileId': fileId!,
@@ -4481,40 +4620,47 @@ class EventAttendee {
   /// Read-only. The default is False.
   core.bool? self;
 
-  EventAttendee();
+  EventAttendee({
+    this.additionalGuests,
+    this.comment,
+    this.displayName,
+    this.email,
+    this.id,
+    this.optional,
+    this.organizer,
+    this.resource,
+    this.responseStatus,
+    this.self,
+  });
 
-  EventAttendee.fromJson(core.Map _json) {
-    if (_json.containsKey('additionalGuests')) {
-      additionalGuests = _json['additionalGuests'] as core.int;
-    }
-    if (_json.containsKey('comment')) {
-      comment = _json['comment'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('optional')) {
-      optional = _json['optional'] as core.bool;
-    }
-    if (_json.containsKey('organizer')) {
-      organizer = _json['organizer'] as core.bool;
-    }
-    if (_json.containsKey('resource')) {
-      resource = _json['resource'] as core.bool;
-    }
-    if (_json.containsKey('responseStatus')) {
-      responseStatus = _json['responseStatus'] as core.String;
-    }
-    if (_json.containsKey('self')) {
-      self = _json['self'] as core.bool;
-    }
-  }
+  EventAttendee.fromJson(core.Map _json)
+      : this(
+          additionalGuests: _json.containsKey('additionalGuests')
+              ? _json['additionalGuests'] as core.int
+              : null,
+          comment: _json.containsKey('comment')
+              ? _json['comment'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          optional: _json.containsKey('optional')
+              ? _json['optional'] as core.bool
+              : null,
+          organizer: _json.containsKey('organizer')
+              ? _json['organizer'] as core.bool
+              : null,
+          resource: _json.containsKey('resource')
+              ? _json['resource'] as core.bool
+              : null,
+          responseStatus: _json.containsKey('responseStatus')
+              ? _json['responseStatus'] as core.String
+              : null,
+          self: _json.containsKey('self') ? _json['self'] as core.bool : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (additionalGuests != null) 'additionalGuests': additionalGuests!,
@@ -4548,19 +4694,24 @@ class EventDateTime {
   /// and indicates a custom time zone for the event start/end.
   core.String? timeZone;
 
-  EventDateTime();
+  EventDateTime({
+    this.date,
+    this.dateTime,
+    this.timeZone,
+  });
 
-  EventDateTime.fromJson(core.Map _json) {
-    if (_json.containsKey('date')) {
-      date = core.DateTime.parse(_json['date'] as core.String);
-    }
-    if (_json.containsKey('dateTime')) {
-      dateTime = core.DateTime.parse(_json['dateTime'] as core.String);
-    }
-    if (_json.containsKey('timeZone')) {
-      timeZone = _json['timeZone'] as core.String;
-    }
-  }
+  EventDateTime.fromJson(core.Map _json)
+      : this(
+          date: _json.containsKey('date')
+              ? core.DateTime.parse(_json['date'] as core.String)
+              : null,
+          dateTime: _json.containsKey('dateTime')
+              ? core.DateTime.parse(_json['dateTime'] as core.String)
+              : null,
+          timeZone: _json.containsKey('timeZone')
+              ? _json['timeZone'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (date != null)
@@ -4587,16 +4738,20 @@ class EventReminder {
   /// Required when adding a reminder.
   core.int? minutes;
 
-  EventReminder();
+  EventReminder({
+    this.method,
+    this.minutes,
+  });
 
-  EventReminder.fromJson(core.Map _json) {
-    if (_json.containsKey('method')) {
-      method = _json['method'] as core.String;
-    }
-    if (_json.containsKey('minutes')) {
-      minutes = _json['minutes'] as core.int;
-    }
-  }
+  EventReminder.fromJson(core.Map _json)
+      : this(
+          method: _json.containsKey('method')
+              ? _json['method'] as core.String
+              : null,
+          minutes: _json.containsKey('minutes')
+              ? _json['minutes'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (method != null) 'method': method!,
@@ -4669,49 +4824,58 @@ class Events {
   /// Read-only.
   core.DateTime? updated;
 
-  Events();
+  Events({
+    this.accessRole,
+    this.defaultReminders,
+    this.description,
+    this.etag,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.nextSyncToken,
+    this.summary,
+    this.timeZone,
+    this.updated,
+  });
 
-  Events.fromJson(core.Map _json) {
-    if (_json.containsKey('accessRole')) {
-      accessRole = _json['accessRole'] as core.String;
-    }
-    if (_json.containsKey('defaultReminders')) {
-      defaultReminders = (_json['defaultReminders'] as core.List)
-          .map<EventReminder>((value) => EventReminder.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<Event>((value) =>
-              Event.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('nextSyncToken')) {
-      nextSyncToken = _json['nextSyncToken'] as core.String;
-    }
-    if (_json.containsKey('summary')) {
-      summary = _json['summary'] as core.String;
-    }
-    if (_json.containsKey('timeZone')) {
-      timeZone = _json['timeZone'] as core.String;
-    }
-    if (_json.containsKey('updated')) {
-      updated = core.DateTime.parse(_json['updated'] as core.String);
-    }
-  }
+  Events.fromJson(core.Map _json)
+      : this(
+          accessRole: _json.containsKey('accessRole')
+              ? _json['accessRole'] as core.String
+              : null,
+          defaultReminders: _json.containsKey('defaultReminders')
+              ? (_json['defaultReminders'] as core.List)
+                  .map<EventReminder>((value) => EventReminder.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<Event>((value) => Event.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          nextSyncToken: _json.containsKey('nextSyncToken')
+              ? _json['nextSyncToken'] as core.String
+              : null,
+          summary: _json.containsKey('summary')
+              ? _json['summary'] as core.String
+              : null,
+          timeZone: _json.containsKey('timeZone')
+              ? _json['timeZone'] as core.String
+              : null,
+          updated: _json.containsKey('updated')
+              ? core.DateTime.parse(_json['updated'] as core.String)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessRole != null) 'accessRole': accessRole!,
@@ -4738,22 +4902,26 @@ class FreeBusyCalendar {
   /// Optional error(s) (if computation for the calendar failed).
   core.List<Error>? errors;
 
-  FreeBusyCalendar();
+  FreeBusyCalendar({
+    this.busy,
+    this.errors,
+  });
 
-  FreeBusyCalendar.fromJson(core.Map _json) {
-    if (_json.containsKey('busy')) {
-      busy = (_json['busy'] as core.List)
-          .map<TimePeriod>((value) =>
-              TimePeriod.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('errors')) {
-      errors = (_json['errors'] as core.List)
-          .map<Error>((value) =>
-              Error.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  FreeBusyCalendar.fromJson(core.Map _json)
+      : this(
+          busy: _json.containsKey('busy')
+              ? (_json['busy'] as core.List)
+                  .map<TimePeriod>((value) => TimePeriod.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          errors: _json.containsKey('errors')
+              ? (_json['errors'] as core.List)
+                  .map<Error>((value) => Error.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (busy != null) 'busy': busy!.map((value) => value.toJson()).toList(),
@@ -4769,21 +4937,25 @@ class FreeBusyGroup {
   /// Optional error(s) (if computation for the group failed).
   core.List<Error>? errors;
 
-  FreeBusyGroup();
+  FreeBusyGroup({
+    this.calendars,
+    this.errors,
+  });
 
-  FreeBusyGroup.fromJson(core.Map _json) {
-    if (_json.containsKey('calendars')) {
-      calendars = (_json['calendars'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('errors')) {
-      errors = (_json['errors'] as core.List)
-          .map<Error>((value) =>
-              Error.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  FreeBusyGroup.fromJson(core.Map _json)
+      : this(
+          calendars: _json.containsKey('calendars')
+              ? (_json['calendars'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          errors: _json.containsKey('errors')
+              ? (_json['errors'] as core.List)
+                  .map<Error>((value) => Error.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (calendars != null) 'calendars': calendars!,
@@ -4819,31 +4991,40 @@ class FreeBusyRequest {
   /// Optional. The default is UTC.
   core.String? timeZone;
 
-  FreeBusyRequest();
+  FreeBusyRequest({
+    this.calendarExpansionMax,
+    this.groupExpansionMax,
+    this.items,
+    this.timeMax,
+    this.timeMin,
+    this.timeZone,
+  });
 
-  FreeBusyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('calendarExpansionMax')) {
-      calendarExpansionMax = _json['calendarExpansionMax'] as core.int;
-    }
-    if (_json.containsKey('groupExpansionMax')) {
-      groupExpansionMax = _json['groupExpansionMax'] as core.int;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<FreeBusyRequestItem>((value) => FreeBusyRequestItem.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('timeMax')) {
-      timeMax = core.DateTime.parse(_json['timeMax'] as core.String);
-    }
-    if (_json.containsKey('timeMin')) {
-      timeMin = core.DateTime.parse(_json['timeMin'] as core.String);
-    }
-    if (_json.containsKey('timeZone')) {
-      timeZone = _json['timeZone'] as core.String;
-    }
-  }
+  FreeBusyRequest.fromJson(core.Map _json)
+      : this(
+          calendarExpansionMax: _json.containsKey('calendarExpansionMax')
+              ? _json['calendarExpansionMax'] as core.int
+              : null,
+          groupExpansionMax: _json.containsKey('groupExpansionMax')
+              ? _json['groupExpansionMax'] as core.int
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<FreeBusyRequestItem>((value) =>
+                      FreeBusyRequestItem.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          timeMax: _json.containsKey('timeMax')
+              ? core.DateTime.parse(_json['timeMax'] as core.String)
+              : null,
+          timeMin: _json.containsKey('timeMin')
+              ? core.DateTime.parse(_json['timeMin'] as core.String)
+              : null,
+          timeZone: _json.containsKey('timeZone')
+              ? _json['timeZone'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (calendarExpansionMax != null)
@@ -4861,13 +5042,14 @@ class FreeBusyRequestItem {
   /// The identifier of a calendar or a group.
   core.String? id;
 
-  FreeBusyRequestItem();
+  FreeBusyRequestItem({
+    this.id,
+  });
 
-  FreeBusyRequestItem.fromJson(core.Map _json) {
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-  }
+  FreeBusyRequestItem.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
@@ -4890,37 +5072,42 @@ class FreeBusyResponse {
   /// The start of the interval.
   core.DateTime? timeMin;
 
-  FreeBusyResponse();
+  FreeBusyResponse({
+    this.calendars,
+    this.groups,
+    this.kind,
+    this.timeMax,
+    this.timeMin,
+  });
 
-  FreeBusyResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('calendars')) {
-      calendars =
-          (_json['calendars'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          FreeBusyCalendar.fromJson(
-              item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('groups')) {
-      groups = (_json['groups'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          FreeBusyGroup.fromJson(item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('timeMax')) {
-      timeMax = core.DateTime.parse(_json['timeMax'] as core.String);
-    }
-    if (_json.containsKey('timeMin')) {
-      timeMin = core.DateTime.parse(_json['timeMin'] as core.String);
-    }
-  }
+  FreeBusyResponse.fromJson(core.Map _json)
+      : this(
+          calendars: _json.containsKey('calendars')
+              ? (_json['calendars'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    FreeBusyCalendar.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          groups: _json.containsKey('groups')
+              ? (_json['groups'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    FreeBusyGroup.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          timeMax: _json.containsKey('timeMax')
+              ? core.DateTime.parse(_json['timeMax'] as core.String)
+              : null,
+          timeMin: _json.containsKey('timeMin')
+              ? core.DateTime.parse(_json['timeMin'] as core.String)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (calendars != null)
@@ -4951,22 +5138,21 @@ class Setting {
   /// be a UTF-8 string of length up to 1024 characters.
   core.String? value;
 
-  Setting();
+  Setting({
+    this.etag,
+    this.id,
+    this.kind,
+    this.value,
+  });
 
-  Setting.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  Setting.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -4999,28 +5185,31 @@ class Settings {
   /// provided.
   core.String? nextSyncToken;
 
-  Settings();
+  Settings({
+    this.etag,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.nextSyncToken,
+  });
 
-  Settings.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<Setting>((value) =>
-              Setting.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('nextSyncToken')) {
-      nextSyncToken = _json['nextSyncToken'] as core.String;
-    }
-  }
+  Settings.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<Setting>((value) => Setting.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          nextSyncToken: _json.containsKey('nextSyncToken')
+              ? _json['nextSyncToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -5039,16 +5228,20 @@ class TimePeriod {
   /// The (inclusive) start of the time period.
   core.DateTime? start;
 
-  TimePeriod();
+  TimePeriod({
+    this.end,
+    this.start,
+  });
 
-  TimePeriod.fromJson(core.Map _json) {
-    if (_json.containsKey('end')) {
-      end = core.DateTime.parse(_json['end'] as core.String);
-    }
-    if (_json.containsKey('start')) {
-      start = core.DateTime.parse(_json['start'] as core.String);
-    }
-  }
+  TimePeriod.fromJson(core.Map _json)
+      : this(
+          end: _json.containsKey('end')
+              ? core.DateTime.parse(_json['end'] as core.String)
+              : null,
+          start: _json.containsKey('start')
+              ? core.DateTime.parse(_json['start'] as core.String)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (end != null) 'end': end!.toIso8601String(),

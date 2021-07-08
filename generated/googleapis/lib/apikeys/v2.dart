@@ -601,36 +601,39 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object>? response;
 
-  Operation();
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
-  Operation.fromJson(core.Map _json) {
-    if (_json.containsKey('done')) {
-      done = _json['done'] as core.bool;
-    }
-    if (_json.containsKey('error')) {
-      error = Status.fromJson(
-          _json['error'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('response')) {
-      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-  }
+  Operation.fromJson(core.Map _json)
+      : this(
+          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
+          error: _json.containsKey('error')
+              ? Status.fromJson(
+                  _json['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          response: _json.containsKey('response')
+              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
@@ -666,27 +669,30 @@ class Status {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  Status();
+  Status({
+    this.code,
+    this.details,
+    this.message,
+  });
 
-  Status.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.int;
-    }
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  Status.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -707,16 +713,20 @@ class V2AndroidApplication {
   /// DA39A3EE5E6B4B0D3255BFEF95601890AFD80709. Output format is the latter.
   core.String? sha1Fingerprint;
 
-  V2AndroidApplication();
+  V2AndroidApplication({
+    this.packageName,
+    this.sha1Fingerprint,
+  });
 
-  V2AndroidApplication.fromJson(core.Map _json) {
-    if (_json.containsKey('packageName')) {
-      packageName = _json['packageName'] as core.String;
-    }
-    if (_json.containsKey('sha1Fingerprint')) {
-      sha1Fingerprint = _json['sha1Fingerprint'] as core.String;
-    }
-  }
+  V2AndroidApplication.fromJson(core.Map _json)
+      : this(
+          packageName: _json.containsKey('packageName')
+              ? _json['packageName'] as core.String
+              : null,
+          sha1Fingerprint: _json.containsKey('sha1Fingerprint')
+              ? _json['sha1Fingerprint'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (packageName != null) 'packageName': packageName!,
@@ -730,16 +740,20 @@ class V2AndroidKeyRestrictions {
   /// this key.
   core.List<V2AndroidApplication>? allowedApplications;
 
-  V2AndroidKeyRestrictions();
+  V2AndroidKeyRestrictions({
+    this.allowedApplications,
+  });
 
-  V2AndroidKeyRestrictions.fromJson(core.Map _json) {
-    if (_json.containsKey('allowedApplications')) {
-      allowedApplications = (_json['allowedApplications'] as core.List)
-          .map<V2AndroidApplication>((value) => V2AndroidApplication.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  V2AndroidKeyRestrictions.fromJson(core.Map _json)
+      : this(
+          allowedApplications: _json.containsKey('allowedApplications')
+              ? (_json['allowedApplications'] as core.List)
+                  .map<V2AndroidApplication>((value) =>
+                      V2AndroidApplication.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedApplications != null)
@@ -771,18 +785,22 @@ class V2ApiTarget {
   /// that are enabled in the project.
   core.String? service;
 
-  V2ApiTarget();
+  V2ApiTarget({
+    this.methods,
+    this.service,
+  });
 
-  V2ApiTarget.fromJson(core.Map _json) {
-    if (_json.containsKey('methods')) {
-      methods = (_json['methods'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('service')) {
-      service = _json['service'] as core.String;
-    }
-  }
+  V2ApiTarget.fromJson(core.Map _json)
+      : this(
+          methods: _json.containsKey('methods')
+              ? (_json['methods'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          service: _json.containsKey('service')
+              ? _json['service'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (methods != null) 'methods': methods!,
@@ -796,15 +814,18 @@ class V2BrowserKeyRestrictions {
   /// make API calls with this key.
   core.List<core.String>? allowedReferrers;
 
-  V2BrowserKeyRestrictions();
+  V2BrowserKeyRestrictions({
+    this.allowedReferrers,
+  });
 
-  V2BrowserKeyRestrictions.fromJson(core.Map _json) {
-    if (_json.containsKey('allowedReferrers')) {
-      allowedReferrers = (_json['allowedReferrers'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  V2BrowserKeyRestrictions.fromJson(core.Map _json)
+      : this(
+          allowedReferrers: _json.containsKey('allowedReferrers')
+              ? (_json['allowedReferrers'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedReferrers != null) 'allowedReferrers': allowedReferrers!,
@@ -822,13 +843,15 @@ class V2CloneKeyRequest {
   /// `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. The id must NOT be a UUID-like string.
   core.String? keyId;
 
-  V2CloneKeyRequest();
+  V2CloneKeyRequest({
+    this.keyId,
+  });
 
-  V2CloneKeyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('keyId')) {
-      keyId = _json['keyId'] as core.String;
-    }
-  }
+  V2CloneKeyRequest.fromJson(core.Map _json)
+      : this(
+          keyId:
+              _json.containsKey('keyId') ? _json['keyId'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (keyId != null) 'keyId': keyId!,
@@ -840,13 +863,16 @@ class V2GetKeyStringResponse {
   /// An encrypted and signed value of the key.
   core.String? keyString;
 
-  V2GetKeyStringResponse();
+  V2GetKeyStringResponse({
+    this.keyString,
+  });
 
-  V2GetKeyStringResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('keyString')) {
-      keyString = _json['keyString'] as core.String;
-    }
-  }
+  V2GetKeyStringResponse.fromJson(core.Map _json)
+      : this(
+          keyString: _json.containsKey('keyString')
+              ? _json['keyString'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (keyString != null) 'keyString': keyString!,
@@ -858,15 +884,18 @@ class V2IosKeyRestrictions {
   /// A list of bundle IDs that are allowed when making API calls with this key.
   core.List<core.String>? allowedBundleIds;
 
-  V2IosKeyRestrictions();
+  V2IosKeyRestrictions({
+    this.allowedBundleIds,
+  });
 
-  V2IosKeyRestrictions.fromJson(core.Map _json) {
-    if (_json.containsKey('allowedBundleIds')) {
-      allowedBundleIds = (_json['allowedBundleIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  V2IosKeyRestrictions.fromJson(core.Map _json)
+      : this(
+          allowedBundleIds: _json.containsKey('allowedBundleIds')
+              ? (_json['allowedBundleIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedBundleIds != null) 'allowedBundleIds': allowedBundleIds!,
@@ -931,38 +960,43 @@ class V2Key {
   /// Output only.
   core.String? updateTime;
 
-  V2Key();
+  V2Key({
+    this.createTime,
+    this.deleteTime,
+    this.displayName,
+    this.etag,
+    this.keyString,
+    this.name,
+    this.restrictions,
+    this.uid,
+    this.updateTime,
+  });
 
-  V2Key.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('deleteTime')) {
-      deleteTime = _json['deleteTime'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('keyString')) {
-      keyString = _json['keyString'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('restrictions')) {
-      restrictions = V2Restrictions.fromJson(
-          _json['restrictions'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('uid')) {
-      uid = _json['uid'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  V2Key.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          deleteTime: _json.containsKey('deleteTime')
+              ? _json['deleteTime'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          keyString: _json.containsKey('keyString')
+              ? _json['keyString'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          restrictions: _json.containsKey('restrictions')
+              ? V2Restrictions.fromJson(
+                  _json['restrictions'] as core.Map<core.String, core.dynamic>)
+              : null,
+          uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -985,19 +1019,23 @@ class V2ListKeysResponse {
   /// The pagination token for the next page of results.
   core.String? nextPageToken;
 
-  V2ListKeysResponse();
+  V2ListKeysResponse({
+    this.keys,
+    this.nextPageToken,
+  });
 
-  V2ListKeysResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('keys')) {
-      keys = (_json['keys'] as core.List)
-          .map<V2Key>((value) =>
-              V2Key.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  V2ListKeysResponse.fromJson(core.Map _json)
+      : this(
+          keys: _json.containsKey('keys')
+              ? (_json['keys'] as core.List)
+                  .map<V2Key>((value) => V2Key.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (keys != null) 'keys': keys!.map((value) => value.toJson()).toList(),
@@ -1015,16 +1053,18 @@ class V2LookupKeyResponse {
   /// The project that owns the key with the value specified in the request.
   core.String? parent;
 
-  V2LookupKeyResponse();
+  V2LookupKeyResponse({
+    this.name,
+    this.parent,
+  });
 
-  V2LookupKeyResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('parent')) {
-      parent = _json['parent'] as core.String;
-    }
-  }
+  V2LookupKeyResponse.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          parent: _json.containsKey('parent')
+              ? _json['parent'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -1053,35 +1093,41 @@ class V2Restrictions {
   /// The IP addresses of callers that are allowed to use the key.
   V2ServerKeyRestrictions? serverKeyRestrictions;
 
-  V2Restrictions();
+  V2Restrictions({
+    this.androidKeyRestrictions,
+    this.apiTargets,
+    this.browserKeyRestrictions,
+    this.iosKeyRestrictions,
+    this.serverKeyRestrictions,
+  });
 
-  V2Restrictions.fromJson(core.Map _json) {
-    if (_json.containsKey('androidKeyRestrictions')) {
-      androidKeyRestrictions = V2AndroidKeyRestrictions.fromJson(
-          _json['androidKeyRestrictions']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('apiTargets')) {
-      apiTargets = (_json['apiTargets'] as core.List)
-          .map<V2ApiTarget>((value) => V2ApiTarget.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('browserKeyRestrictions')) {
-      browserKeyRestrictions = V2BrowserKeyRestrictions.fromJson(
-          _json['browserKeyRestrictions']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('iosKeyRestrictions')) {
-      iosKeyRestrictions = V2IosKeyRestrictions.fromJson(
-          _json['iosKeyRestrictions'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('serverKeyRestrictions')) {
-      serverKeyRestrictions = V2ServerKeyRestrictions.fromJson(
-          _json['serverKeyRestrictions']
-              as core.Map<core.String, core.dynamic>);
-    }
-  }
+  V2Restrictions.fromJson(core.Map _json)
+      : this(
+          androidKeyRestrictions: _json.containsKey('androidKeyRestrictions')
+              ? V2AndroidKeyRestrictions.fromJson(
+                  _json['androidKeyRestrictions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          apiTargets: _json.containsKey('apiTargets')
+              ? (_json['apiTargets'] as core.List)
+                  .map<V2ApiTarget>((value) => V2ApiTarget.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          browserKeyRestrictions: _json.containsKey('browserKeyRestrictions')
+              ? V2BrowserKeyRestrictions.fromJson(
+                  _json['browserKeyRestrictions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          iosKeyRestrictions: _json.containsKey('iosKeyRestrictions')
+              ? V2IosKeyRestrictions.fromJson(_json['iosKeyRestrictions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          serverKeyRestrictions: _json.containsKey('serverKeyRestrictions')
+              ? V2ServerKeyRestrictions.fromJson(_json['serverKeyRestrictions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (androidKeyRestrictions != null)
@@ -1103,15 +1149,18 @@ class V2ServerKeyRestrictions {
   /// this key.
   core.List<core.String>? allowedIps;
 
-  V2ServerKeyRestrictions();
+  V2ServerKeyRestrictions({
+    this.allowedIps,
+  });
 
-  V2ServerKeyRestrictions.fromJson(core.Map _json) {
-    if (_json.containsKey('allowedIps')) {
-      allowedIps = (_json['allowedIps'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  V2ServerKeyRestrictions.fromJson(core.Map _json)
+      : this(
+          allowedIps: _json.containsKey('allowedIps')
+              ? (_json['allowedIps'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedIps != null) 'allowedIps': allowedIps!,

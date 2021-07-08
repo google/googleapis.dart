@@ -833,41 +833,50 @@ class CreateAuthUriResponse {
   /// All sign-in methods this user has used.
   core.List<core.String>? signinMethods;
 
-  CreateAuthUriResponse();
+  CreateAuthUriResponse({
+    this.allProviders,
+    this.authUri,
+    this.captchaRequired,
+    this.forExistingProvider,
+    this.kind,
+    this.providerId,
+    this.registered,
+    this.sessionId,
+    this.signinMethods,
+  });
 
-  CreateAuthUriResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('allProviders')) {
-      allProviders = (_json['allProviders'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('authUri')) {
-      authUri = _json['authUri'] as core.String;
-    }
-    if (_json.containsKey('captchaRequired')) {
-      captchaRequired = _json['captchaRequired'] as core.bool;
-    }
-    if (_json.containsKey('forExistingProvider')) {
-      forExistingProvider = _json['forExistingProvider'] as core.bool;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('providerId')) {
-      providerId = _json['providerId'] as core.String;
-    }
-    if (_json.containsKey('registered')) {
-      registered = _json['registered'] as core.bool;
-    }
-    if (_json.containsKey('sessionId')) {
-      sessionId = _json['sessionId'] as core.String;
-    }
-    if (_json.containsKey('signinMethods')) {
-      signinMethods = (_json['signinMethods'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  CreateAuthUriResponse.fromJson(core.Map _json)
+      : this(
+          allProviders: _json.containsKey('allProviders')
+              ? (_json['allProviders'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          authUri: _json.containsKey('authUri')
+              ? _json['authUri'] as core.String
+              : null,
+          captchaRequired: _json.containsKey('captchaRequired')
+              ? _json['captchaRequired'] as core.bool
+              : null,
+          forExistingProvider: _json.containsKey('forExistingProvider')
+              ? _json['forExistingProvider'] as core.bool
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          providerId: _json.containsKey('providerId')
+              ? _json['providerId'] as core.String
+              : null,
+          registered: _json.containsKey('registered')
+              ? _json['registered'] as core.bool
+              : null,
+          sessionId: _json.containsKey('sessionId')
+              ? _json['sessionId'] as core.String
+              : null,
+          signinMethods: _json.containsKey('signinMethods')
+              ? (_json['signinMethods'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allProviders != null) 'allProviders': allProviders!,
@@ -888,13 +897,14 @@ class DeleteAccountResponse {
   /// The fixed string "identitytoolkit#DeleteAccountResponse".
   core.String? kind;
 
-  DeleteAccountResponse();
+  DeleteAccountResponse({
+    this.kind,
+  });
 
-  DeleteAccountResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-  }
+  DeleteAccountResponse.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
@@ -914,22 +924,25 @@ class DownloadAccountResponse {
   /// The user accounts data.
   core.List<UserInfo>? users;
 
-  DownloadAccountResponse();
+  DownloadAccountResponse({
+    this.kind,
+    this.nextPageToken,
+    this.users,
+  });
 
-  DownloadAccountResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('users')) {
-      users = (_json['users'] as core.List)
-          .map<UserInfo>((value) =>
-              UserInfo.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  DownloadAccountResponse.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          users: _json.containsKey('users')
+              ? (_json['users'] as core.List)
+                  .map<UserInfo>((value) => UserInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
@@ -962,31 +975,37 @@ class EmailLinkSigninResponse {
   /// The refresh token for the signed in user.
   core.String? refreshToken;
 
-  EmailLinkSigninResponse();
+  EmailLinkSigninResponse({
+    this.email,
+    this.expiresIn,
+    this.idToken,
+    this.isNewUser,
+    this.kind,
+    this.localId,
+    this.refreshToken,
+  });
 
-  EmailLinkSigninResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('expiresIn')) {
-      expiresIn = _json['expiresIn'] as core.String;
-    }
-    if (_json.containsKey('idToken')) {
-      idToken = _json['idToken'] as core.String;
-    }
-    if (_json.containsKey('isNewUser')) {
-      isNewUser = _json['isNewUser'] as core.bool;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('localId')) {
-      localId = _json['localId'] as core.String;
-    }
-    if (_json.containsKey('refreshToken')) {
-      refreshToken = _json['refreshToken'] as core.String;
-    }
-  }
+  EmailLinkSigninResponse.fromJson(core.Map _json)
+      : this(
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          expiresIn: _json.containsKey('expiresIn')
+              ? _json['expiresIn'] as core.String
+              : null,
+          idToken: _json.containsKey('idToken')
+              ? _json['idToken'] as core.String
+              : null,
+          isNewUser: _json.containsKey('isNewUser')
+              ? _json['isNewUser'] as core.bool
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          localId: _json.containsKey('localId')
+              ? _json['localId'] as core.String
+              : null,
+          refreshToken: _json.containsKey('refreshToken')
+              ? _json['refreshToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
@@ -1019,28 +1038,32 @@ class EmailTemplate {
   /// Subject of the email.
   core.String? subject;
 
-  EmailTemplate();
+  EmailTemplate({
+    this.body,
+    this.format,
+    this.from,
+    this.fromDisplayName,
+    this.replyTo,
+    this.subject,
+  });
 
-  EmailTemplate.fromJson(core.Map _json) {
-    if (_json.containsKey('body')) {
-      body = _json['body'] as core.String;
-    }
-    if (_json.containsKey('format')) {
-      format = _json['format'] as core.String;
-    }
-    if (_json.containsKey('from')) {
-      from = _json['from'] as core.String;
-    }
-    if (_json.containsKey('fromDisplayName')) {
-      fromDisplayName = _json['fromDisplayName'] as core.String;
-    }
-    if (_json.containsKey('replyTo')) {
-      replyTo = _json['replyTo'] as core.String;
-    }
-    if (_json.containsKey('subject')) {
-      subject = _json['subject'] as core.String;
-    }
-  }
+  EmailTemplate.fromJson(core.Map _json)
+      : this(
+          body: _json.containsKey('body') ? _json['body'] as core.String : null,
+          format: _json.containsKey('format')
+              ? _json['format'] as core.String
+              : null,
+          from: _json.containsKey('from') ? _json['from'] as core.String : null,
+          fromDisplayName: _json.containsKey('fromDisplayName')
+              ? _json['fromDisplayName'] as core.String
+              : null,
+          replyTo: _json.containsKey('replyTo')
+              ? _json['replyTo'] as core.String
+              : null,
+          subject: _json.containsKey('subject')
+              ? _json['subject'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (body != null) 'body': body!,
@@ -1060,19 +1083,21 @@ class GetAccountInfoResponse {
   /// The info of the users.
   core.List<UserInfo>? users;
 
-  GetAccountInfoResponse();
+  GetAccountInfoResponse({
+    this.kind,
+    this.users,
+  });
 
-  GetAccountInfoResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('users')) {
-      users = (_json['users'] as core.List)
-          .map<UserInfo>((value) =>
-              UserInfo.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GetAccountInfoResponse.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          users: _json.containsKey('users')
+              ? (_json['users'] as core.List)
+                  .map<UserInfo>((value) => UserInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
@@ -1093,19 +1118,21 @@ class GetOobConfirmationCodeResponse {
   /// The code to be send to the user.
   core.String? oobCode;
 
-  GetOobConfirmationCodeResponse();
+  GetOobConfirmationCodeResponse({
+    this.email,
+    this.kind,
+    this.oobCode,
+  });
 
-  GetOobConfirmationCodeResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('oobCode')) {
-      oobCode = _json['oobCode'] as core.String;
-    }
-  }
+  GetOobConfirmationCodeResponse.fromJson(core.Map _json)
+      : this(
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          oobCode: _json.containsKey('oobCode')
+              ? _json['oobCode'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
@@ -1126,19 +1153,22 @@ class GetRecaptchaParamResponse {
   /// challenge.
   core.String? recaptchaStoken;
 
-  GetRecaptchaParamResponse();
+  GetRecaptchaParamResponse({
+    this.kind,
+    this.recaptchaSiteKey,
+    this.recaptchaStoken,
+  });
 
-  GetRecaptchaParamResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('recaptchaSiteKey')) {
-      recaptchaSiteKey = _json['recaptchaSiteKey'] as core.String;
-    }
-    if (_json.containsKey('recaptchaStoken')) {
-      recaptchaStoken = _json['recaptchaStoken'] as core.String;
-    }
-  }
+  GetRecaptchaParamResponse.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          recaptchaSiteKey: _json.containsKey('recaptchaSiteKey')
+              ? _json['recaptchaSiteKey'] as core.String
+              : null,
+          recaptchaStoken: _json.containsKey('recaptchaStoken')
+              ? _json['recaptchaStoken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
@@ -1217,64 +1247,82 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
   /// Tenant project number to be used for idp discovery.
   core.String? tenantProjectNumber;
 
-  IdentitytoolkitRelyingpartyCreateAuthUriRequest();
+  IdentitytoolkitRelyingpartyCreateAuthUriRequest({
+    this.appId,
+    this.authFlowType,
+    this.clientId,
+    this.context,
+    this.continueUri,
+    this.customParameter,
+    this.hostedDomain,
+    this.identifier,
+    this.oauthConsumerKey,
+    this.oauthScope,
+    this.openidRealm,
+    this.otaApp,
+    this.providerId,
+    this.sessionId,
+    this.tenantId,
+    this.tenantProjectNumber,
+  });
 
-  IdentitytoolkitRelyingpartyCreateAuthUriRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('appId')) {
-      appId = _json['appId'] as core.String;
-    }
-    if (_json.containsKey('authFlowType')) {
-      authFlowType = _json['authFlowType'] as core.String;
-    }
-    if (_json.containsKey('clientId')) {
-      clientId = _json['clientId'] as core.String;
-    }
-    if (_json.containsKey('context')) {
-      context = _json['context'] as core.String;
-    }
-    if (_json.containsKey('continueUri')) {
-      continueUri = _json['continueUri'] as core.String;
-    }
-    if (_json.containsKey('customParameter')) {
-      customParameter =
-          (_json['customParameter'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('hostedDomain')) {
-      hostedDomain = _json['hostedDomain'] as core.String;
-    }
-    if (_json.containsKey('identifier')) {
-      identifier = _json['identifier'] as core.String;
-    }
-    if (_json.containsKey('oauthConsumerKey')) {
-      oauthConsumerKey = _json['oauthConsumerKey'] as core.String;
-    }
-    if (_json.containsKey('oauthScope')) {
-      oauthScope = _json['oauthScope'] as core.String;
-    }
-    if (_json.containsKey('openidRealm')) {
-      openidRealm = _json['openidRealm'] as core.String;
-    }
-    if (_json.containsKey('otaApp')) {
-      otaApp = _json['otaApp'] as core.String;
-    }
-    if (_json.containsKey('providerId')) {
-      providerId = _json['providerId'] as core.String;
-    }
-    if (_json.containsKey('sessionId')) {
-      sessionId = _json['sessionId'] as core.String;
-    }
-    if (_json.containsKey('tenantId')) {
-      tenantId = _json['tenantId'] as core.String;
-    }
-    if (_json.containsKey('tenantProjectNumber')) {
-      tenantProjectNumber = _json['tenantProjectNumber'] as core.String;
-    }
-  }
+  IdentitytoolkitRelyingpartyCreateAuthUriRequest.fromJson(core.Map _json)
+      : this(
+          appId:
+              _json.containsKey('appId') ? _json['appId'] as core.String : null,
+          authFlowType: _json.containsKey('authFlowType')
+              ? _json['authFlowType'] as core.String
+              : null,
+          clientId: _json.containsKey('clientId')
+              ? _json['clientId'] as core.String
+              : null,
+          context: _json.containsKey('context')
+              ? _json['context'] as core.String
+              : null,
+          continueUri: _json.containsKey('continueUri')
+              ? _json['continueUri'] as core.String
+              : null,
+          customParameter: _json.containsKey('customParameter')
+              ? (_json['customParameter']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          hostedDomain: _json.containsKey('hostedDomain')
+              ? _json['hostedDomain'] as core.String
+              : null,
+          identifier: _json.containsKey('identifier')
+              ? _json['identifier'] as core.String
+              : null,
+          oauthConsumerKey: _json.containsKey('oauthConsumerKey')
+              ? _json['oauthConsumerKey'] as core.String
+              : null,
+          oauthScope: _json.containsKey('oauthScope')
+              ? _json['oauthScope'] as core.String
+              : null,
+          openidRealm: _json.containsKey('openidRealm')
+              ? _json['openidRealm'] as core.String
+              : null,
+          otaApp: _json.containsKey('otaApp')
+              ? _json['otaApp'] as core.String
+              : null,
+          providerId: _json.containsKey('providerId')
+              ? _json['providerId'] as core.String
+              : null,
+          sessionId: _json.containsKey('sessionId')
+              ? _json['sessionId'] as core.String
+              : null,
+          tenantId: _json.containsKey('tenantId')
+              ? _json['tenantId'] as core.String
+              : null,
+          tenantProjectNumber: _json.containsKey('tenantProjectNumber')
+              ? _json['tenantProjectNumber'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appId != null) 'appId': appId!,
@@ -1310,19 +1358,24 @@ class IdentitytoolkitRelyingpartyDeleteAccountRequest {
   /// The local ID of the user.
   core.String? localId;
 
-  IdentitytoolkitRelyingpartyDeleteAccountRequest();
+  IdentitytoolkitRelyingpartyDeleteAccountRequest({
+    this.delegatedProjectNumber,
+    this.idToken,
+    this.localId,
+  });
 
-  IdentitytoolkitRelyingpartyDeleteAccountRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('delegatedProjectNumber')) {
-      delegatedProjectNumber = _json['delegatedProjectNumber'] as core.String;
-    }
-    if (_json.containsKey('idToken')) {
-      idToken = _json['idToken'] as core.String;
-    }
-    if (_json.containsKey('localId')) {
-      localId = _json['localId'] as core.String;
-    }
-  }
+  IdentitytoolkitRelyingpartyDeleteAccountRequest.fromJson(core.Map _json)
+      : this(
+          delegatedProjectNumber: _json.containsKey('delegatedProjectNumber')
+              ? _json['delegatedProjectNumber'] as core.String
+              : null,
+          idToken: _json.containsKey('idToken')
+              ? _json['idToken'] as core.String
+              : null,
+          localId: _json.containsKey('localId')
+              ? _json['localId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (delegatedProjectNumber != null)
@@ -1352,22 +1405,28 @@ class IdentitytoolkitRelyingpartyDownloadAccountRequest {
   /// Only used when provided credential.
   core.String? targetProjectId;
 
-  IdentitytoolkitRelyingpartyDownloadAccountRequest();
+  IdentitytoolkitRelyingpartyDownloadAccountRequest({
+    this.delegatedProjectNumber,
+    this.maxResults,
+    this.nextPageToken,
+    this.targetProjectId,
+  });
 
-  IdentitytoolkitRelyingpartyDownloadAccountRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('delegatedProjectNumber')) {
-      delegatedProjectNumber = _json['delegatedProjectNumber'] as core.String;
-    }
-    if (_json.containsKey('maxResults')) {
-      maxResults = _json['maxResults'] as core.int;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('targetProjectId')) {
-      targetProjectId = _json['targetProjectId'] as core.String;
-    }
-  }
+  IdentitytoolkitRelyingpartyDownloadAccountRequest.fromJson(core.Map _json)
+      : this(
+          delegatedProjectNumber: _json.containsKey('delegatedProjectNumber')
+              ? _json['delegatedProjectNumber'] as core.String
+              : null,
+          maxResults: _json.containsKey('maxResults')
+              ? _json['maxResults'] as core.int
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          targetProjectId: _json.containsKey('targetProjectId')
+              ? _json['targetProjectId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (delegatedProjectNumber != null)
@@ -1389,19 +1448,23 @@ class IdentitytoolkitRelyingpartyEmailLinkSigninRequest {
   /// The confirmation code.
   core.String? oobCode;
 
-  IdentitytoolkitRelyingpartyEmailLinkSigninRequest();
+  IdentitytoolkitRelyingpartyEmailLinkSigninRequest({
+    this.email,
+    this.idToken,
+    this.oobCode,
+  });
 
-  IdentitytoolkitRelyingpartyEmailLinkSigninRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('idToken')) {
-      idToken = _json['idToken'] as core.String;
-    }
-    if (_json.containsKey('oobCode')) {
-      oobCode = _json['oobCode'] as core.String;
-    }
-  }
+  IdentitytoolkitRelyingpartyEmailLinkSigninRequest.fromJson(core.Map _json)
+      : this(
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          idToken: _json.containsKey('idToken')
+              ? _json['idToken'] as core.String
+              : null,
+          oobCode: _json.containsKey('oobCode')
+              ? _json['oobCode'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
@@ -1429,31 +1492,38 @@ class IdentitytoolkitRelyingpartyGetAccountInfoRequest {
   /// Privileged caller can query users by specified phone number.
   core.List<core.String>? phoneNumber;
 
-  IdentitytoolkitRelyingpartyGetAccountInfoRequest();
+  IdentitytoolkitRelyingpartyGetAccountInfoRequest({
+    this.delegatedProjectNumber,
+    this.email,
+    this.idToken,
+    this.localId,
+    this.phoneNumber,
+  });
 
-  IdentitytoolkitRelyingpartyGetAccountInfoRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('delegatedProjectNumber')) {
-      delegatedProjectNumber = _json['delegatedProjectNumber'] as core.String;
-    }
-    if (_json.containsKey('email')) {
-      email = (_json['email'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('idToken')) {
-      idToken = _json['idToken'] as core.String;
-    }
-    if (_json.containsKey('localId')) {
-      localId = (_json['localId'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('phoneNumber')) {
-      phoneNumber = (_json['phoneNumber'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  IdentitytoolkitRelyingpartyGetAccountInfoRequest.fromJson(core.Map _json)
+      : this(
+          delegatedProjectNumber: _json.containsKey('delegatedProjectNumber')
+              ? _json['delegatedProjectNumber'] as core.String
+              : null,
+          email: _json.containsKey('email')
+              ? (_json['email'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          idToken: _json.containsKey('idToken')
+              ? _json['idToken'] as core.String
+              : null,
+          localId: _json.containsKey('localId')
+              ? (_json['localId'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          phoneNumber: _json.containsKey('phoneNumber')
+              ? (_json['phoneNumber'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (delegatedProjectNumber != null)
@@ -1501,57 +1571,70 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
   /// Verify email template.
   EmailTemplate? verifyEmailTemplate;
 
-  IdentitytoolkitRelyingpartyGetProjectConfigResponse();
+  IdentitytoolkitRelyingpartyGetProjectConfigResponse({
+    this.allowPasswordUser,
+    this.apiKey,
+    this.authorizedDomains,
+    this.changeEmailTemplate,
+    this.dynamicLinksDomain,
+    this.enableAnonymousUser,
+    this.idpConfig,
+    this.legacyResetPasswordTemplate,
+    this.projectId,
+    this.resetPasswordTemplate,
+    this.useEmailSending,
+    this.verifyEmailTemplate,
+  });
 
-  IdentitytoolkitRelyingpartyGetProjectConfigResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('allowPasswordUser')) {
-      allowPasswordUser = _json['allowPasswordUser'] as core.bool;
-    }
-    if (_json.containsKey('apiKey')) {
-      apiKey = _json['apiKey'] as core.String;
-    }
-    if (_json.containsKey('authorizedDomains')) {
-      authorizedDomains = (_json['authorizedDomains'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('changeEmailTemplate')) {
-      changeEmailTemplate = EmailTemplate.fromJson(
-          _json['changeEmailTemplate'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('dynamicLinksDomain')) {
-      dynamicLinksDomain = _json['dynamicLinksDomain'] as core.String;
-    }
-    if (_json.containsKey('enableAnonymousUser')) {
-      enableAnonymousUser = _json['enableAnonymousUser'] as core.bool;
-    }
-    if (_json.containsKey('idpConfig')) {
-      idpConfig = (_json['idpConfig'] as core.List)
-          .map<IdpConfig>((value) =>
-              IdpConfig.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('legacyResetPasswordTemplate')) {
-      legacyResetPasswordTemplate = EmailTemplate.fromJson(
-          _json['legacyResetPasswordTemplate']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('resetPasswordTemplate')) {
-      resetPasswordTemplate = EmailTemplate.fromJson(
-          _json['resetPasswordTemplate']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('useEmailSending')) {
-      useEmailSending = _json['useEmailSending'] as core.bool;
-    }
-    if (_json.containsKey('verifyEmailTemplate')) {
-      verifyEmailTemplate = EmailTemplate.fromJson(
-          _json['verifyEmailTemplate'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  IdentitytoolkitRelyingpartyGetProjectConfigResponse.fromJson(core.Map _json)
+      : this(
+          allowPasswordUser: _json.containsKey('allowPasswordUser')
+              ? _json['allowPasswordUser'] as core.bool
+              : null,
+          apiKey: _json.containsKey('apiKey')
+              ? _json['apiKey'] as core.String
+              : null,
+          authorizedDomains: _json.containsKey('authorizedDomains')
+              ? (_json['authorizedDomains'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          changeEmailTemplate: _json.containsKey('changeEmailTemplate')
+              ? EmailTemplate.fromJson(_json['changeEmailTemplate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          dynamicLinksDomain: _json.containsKey('dynamicLinksDomain')
+              ? _json['dynamicLinksDomain'] as core.String
+              : null,
+          enableAnonymousUser: _json.containsKey('enableAnonymousUser')
+              ? _json['enableAnonymousUser'] as core.bool
+              : null,
+          idpConfig: _json.containsKey('idpConfig')
+              ? (_json['idpConfig'] as core.List)
+                  .map<IdpConfig>((value) => IdpConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          legacyResetPasswordTemplate:
+              _json.containsKey('legacyResetPasswordTemplate')
+                  ? EmailTemplate.fromJson(_json['legacyResetPasswordTemplate']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          resetPasswordTemplate: _json.containsKey('resetPasswordTemplate')
+              ? EmailTemplate.fromJson(_json['resetPasswordTemplate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          useEmailSending: _json.containsKey('useEmailSending')
+              ? _json['useEmailSending'] as core.bool
+              : null,
+          verifyEmailTemplate: _json.containsKey('verifyEmailTemplate')
+              ? EmailTemplate.fromJson(_json['verifyEmailTemplate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowPasswordUser != null) 'allowPasswordUser': allowPasswordUser!,
@@ -1627,22 +1710,27 @@ class IdentitytoolkitRelyingpartyResetPasswordRequest {
   /// The confirmation code.
   core.String? oobCode;
 
-  IdentitytoolkitRelyingpartyResetPasswordRequest();
+  IdentitytoolkitRelyingpartyResetPasswordRequest({
+    this.email,
+    this.newPassword,
+    this.oldPassword,
+    this.oobCode,
+  });
 
-  IdentitytoolkitRelyingpartyResetPasswordRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('newPassword')) {
-      newPassword = _json['newPassword'] as core.String;
-    }
-    if (_json.containsKey('oldPassword')) {
-      oldPassword = _json['oldPassword'] as core.String;
-    }
-    if (_json.containsKey('oobCode')) {
-      oobCode = _json['oobCode'] as core.String;
-    }
-  }
+  IdentitytoolkitRelyingpartyResetPasswordRequest.fromJson(core.Map _json)
+      : this(
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          newPassword: _json.containsKey('newPassword')
+              ? _json['newPassword'] as core.String
+              : null,
+          oldPassword: _json.containsKey('oldPassword')
+              ? _json['oldPassword'] as core.String
+              : null,
+          oobCode: _json.containsKey('oobCode')
+              ? _json['oobCode'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
@@ -1666,23 +1754,29 @@ class IdentitytoolkitRelyingpartySendVerificationCodeRequest {
   /// Recaptcha solution.
   core.String? recaptchaToken;
 
-  IdentitytoolkitRelyingpartySendVerificationCodeRequest();
+  IdentitytoolkitRelyingpartySendVerificationCodeRequest({
+    this.iosReceipt,
+    this.iosSecret,
+    this.phoneNumber,
+    this.recaptchaToken,
+  });
 
   IdentitytoolkitRelyingpartySendVerificationCodeRequest.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('iosReceipt')) {
-      iosReceipt = _json['iosReceipt'] as core.String;
-    }
-    if (_json.containsKey('iosSecret')) {
-      iosSecret = _json['iosSecret'] as core.String;
-    }
-    if (_json.containsKey('phoneNumber')) {
-      phoneNumber = _json['phoneNumber'] as core.String;
-    }
-    if (_json.containsKey('recaptchaToken')) {
-      recaptchaToken = _json['recaptchaToken'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          iosReceipt: _json.containsKey('iosReceipt')
+              ? _json['iosReceipt'] as core.String
+              : null,
+          iosSecret: _json.containsKey('iosSecret')
+              ? _json['iosSecret'] as core.String
+              : null,
+          phoneNumber: _json.containsKey('phoneNumber')
+              ? _json['phoneNumber'] as core.String
+              : null,
+          recaptchaToken: _json.containsKey('recaptchaToken')
+              ? _json['recaptchaToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (iosReceipt != null) 'iosReceipt': iosReceipt!,
@@ -1697,14 +1791,17 @@ class IdentitytoolkitRelyingpartySendVerificationCodeResponse {
   /// Encrypted session information
   core.String? sessionInfo;
 
-  IdentitytoolkitRelyingpartySendVerificationCodeResponse();
+  IdentitytoolkitRelyingpartySendVerificationCodeResponse({
+    this.sessionInfo,
+  });
 
   IdentitytoolkitRelyingpartySendVerificationCodeResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('sessionInfo')) {
-      sessionInfo = _json['sessionInfo'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          sessionInfo: _json.containsKey('sessionInfo')
+              ? _json['sessionInfo'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sessionInfo != null) 'sessionInfo': sessionInfo!,
@@ -1784,85 +1881,109 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
   /// Timestamp in seconds for valid login token.
   core.String? validSince;
 
-  IdentitytoolkitRelyingpartySetAccountInfoRequest();
+  IdentitytoolkitRelyingpartySetAccountInfoRequest({
+    this.captchaChallenge,
+    this.captchaResponse,
+    this.createdAt,
+    this.customAttributes,
+    this.delegatedProjectNumber,
+    this.deleteAttribute,
+    this.deleteProvider,
+    this.disableUser,
+    this.displayName,
+    this.email,
+    this.emailVerified,
+    this.idToken,
+    this.instanceId,
+    this.lastLoginAt,
+    this.localId,
+    this.oobCode,
+    this.password,
+    this.phoneNumber,
+    this.photoUrl,
+    this.provider,
+    this.returnSecureToken,
+    this.upgradeToFederatedLogin,
+    this.validSince,
+  });
 
-  IdentitytoolkitRelyingpartySetAccountInfoRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('captchaChallenge')) {
-      captchaChallenge = _json['captchaChallenge'] as core.String;
-    }
-    if (_json.containsKey('captchaResponse')) {
-      captchaResponse = _json['captchaResponse'] as core.String;
-    }
-    if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'] as core.String;
-    }
-    if (_json.containsKey('customAttributes')) {
-      customAttributes = _json['customAttributes'] as core.String;
-    }
-    if (_json.containsKey('delegatedProjectNumber')) {
-      delegatedProjectNumber = _json['delegatedProjectNumber'] as core.String;
-    }
-    if (_json.containsKey('deleteAttribute')) {
-      deleteAttribute = (_json['deleteAttribute'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('deleteProvider')) {
-      deleteProvider = (_json['deleteProvider'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('disableUser')) {
-      disableUser = _json['disableUser'] as core.bool;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('emailVerified')) {
-      emailVerified = _json['emailVerified'] as core.bool;
-    }
-    if (_json.containsKey('idToken')) {
-      idToken = _json['idToken'] as core.String;
-    }
-    if (_json.containsKey('instanceId')) {
-      instanceId = _json['instanceId'] as core.String;
-    }
-    if (_json.containsKey('lastLoginAt')) {
-      lastLoginAt = _json['lastLoginAt'] as core.String;
-    }
-    if (_json.containsKey('localId')) {
-      localId = _json['localId'] as core.String;
-    }
-    if (_json.containsKey('oobCode')) {
-      oobCode = _json['oobCode'] as core.String;
-    }
-    if (_json.containsKey('password')) {
-      password = _json['password'] as core.String;
-    }
-    if (_json.containsKey('phoneNumber')) {
-      phoneNumber = _json['phoneNumber'] as core.String;
-    }
-    if (_json.containsKey('photoUrl')) {
-      photoUrl = _json['photoUrl'] as core.String;
-    }
-    if (_json.containsKey('provider')) {
-      provider = (_json['provider'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('returnSecureToken')) {
-      returnSecureToken = _json['returnSecureToken'] as core.bool;
-    }
-    if (_json.containsKey('upgradeToFederatedLogin')) {
-      upgradeToFederatedLogin = _json['upgradeToFederatedLogin'] as core.bool;
-    }
-    if (_json.containsKey('validSince')) {
-      validSince = _json['validSince'] as core.String;
-    }
-  }
+  IdentitytoolkitRelyingpartySetAccountInfoRequest.fromJson(core.Map _json)
+      : this(
+          captchaChallenge: _json.containsKey('captchaChallenge')
+              ? _json['captchaChallenge'] as core.String
+              : null,
+          captchaResponse: _json.containsKey('captchaResponse')
+              ? _json['captchaResponse'] as core.String
+              : null,
+          createdAt: _json.containsKey('createdAt')
+              ? _json['createdAt'] as core.String
+              : null,
+          customAttributes: _json.containsKey('customAttributes')
+              ? _json['customAttributes'] as core.String
+              : null,
+          delegatedProjectNumber: _json.containsKey('delegatedProjectNumber')
+              ? _json['delegatedProjectNumber'] as core.String
+              : null,
+          deleteAttribute: _json.containsKey('deleteAttribute')
+              ? (_json['deleteAttribute'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          deleteProvider: _json.containsKey('deleteProvider')
+              ? (_json['deleteProvider'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          disableUser: _json.containsKey('disableUser')
+              ? _json['disableUser'] as core.bool
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          emailVerified: _json.containsKey('emailVerified')
+              ? _json['emailVerified'] as core.bool
+              : null,
+          idToken: _json.containsKey('idToken')
+              ? _json['idToken'] as core.String
+              : null,
+          instanceId: _json.containsKey('instanceId')
+              ? _json['instanceId'] as core.String
+              : null,
+          lastLoginAt: _json.containsKey('lastLoginAt')
+              ? _json['lastLoginAt'] as core.String
+              : null,
+          localId: _json.containsKey('localId')
+              ? _json['localId'] as core.String
+              : null,
+          oobCode: _json.containsKey('oobCode')
+              ? _json['oobCode'] as core.String
+              : null,
+          password: _json.containsKey('password')
+              ? _json['password'] as core.String
+              : null,
+          phoneNumber: _json.containsKey('phoneNumber')
+              ? _json['phoneNumber'] as core.String
+              : null,
+          photoUrl: _json.containsKey('photoUrl')
+              ? _json['photoUrl'] as core.String
+              : null,
+          provider: _json.containsKey('provider')
+              ? (_json['provider'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          returnSecureToken: _json.containsKey('returnSecureToken')
+              ? _json['returnSecureToken'] as core.bool
+              : null,
+          upgradeToFederatedLogin: _json.containsKey('upgradeToFederatedLogin')
+              ? _json['upgradeToFederatedLogin'] as core.bool
+              : null,
+          validSince: _json.containsKey('validSince')
+              ? _json['validSince'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (captchaChallenge != null) 'captchaChallenge': captchaChallenge!,
@@ -1930,54 +2051,66 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
   /// Verify email template.
   EmailTemplate? verifyEmailTemplate;
 
-  IdentitytoolkitRelyingpartySetProjectConfigRequest();
+  IdentitytoolkitRelyingpartySetProjectConfigRequest({
+    this.allowPasswordUser,
+    this.apiKey,
+    this.authorizedDomains,
+    this.changeEmailTemplate,
+    this.delegatedProjectNumber,
+    this.enableAnonymousUser,
+    this.idpConfig,
+    this.legacyResetPasswordTemplate,
+    this.resetPasswordTemplate,
+    this.useEmailSending,
+    this.verifyEmailTemplate,
+  });
 
-  IdentitytoolkitRelyingpartySetProjectConfigRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('allowPasswordUser')) {
-      allowPasswordUser = _json['allowPasswordUser'] as core.bool;
-    }
-    if (_json.containsKey('apiKey')) {
-      apiKey = _json['apiKey'] as core.String;
-    }
-    if (_json.containsKey('authorizedDomains')) {
-      authorizedDomains = (_json['authorizedDomains'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('changeEmailTemplate')) {
-      changeEmailTemplate = EmailTemplate.fromJson(
-          _json['changeEmailTemplate'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('delegatedProjectNumber')) {
-      delegatedProjectNumber = _json['delegatedProjectNumber'] as core.String;
-    }
-    if (_json.containsKey('enableAnonymousUser')) {
-      enableAnonymousUser = _json['enableAnonymousUser'] as core.bool;
-    }
-    if (_json.containsKey('idpConfig')) {
-      idpConfig = (_json['idpConfig'] as core.List)
-          .map<IdpConfig>((value) =>
-              IdpConfig.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('legacyResetPasswordTemplate')) {
-      legacyResetPasswordTemplate = EmailTemplate.fromJson(
-          _json['legacyResetPasswordTemplate']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('resetPasswordTemplate')) {
-      resetPasswordTemplate = EmailTemplate.fromJson(
-          _json['resetPasswordTemplate']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('useEmailSending')) {
-      useEmailSending = _json['useEmailSending'] as core.bool;
-    }
-    if (_json.containsKey('verifyEmailTemplate')) {
-      verifyEmailTemplate = EmailTemplate.fromJson(
-          _json['verifyEmailTemplate'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  IdentitytoolkitRelyingpartySetProjectConfigRequest.fromJson(core.Map _json)
+      : this(
+          allowPasswordUser: _json.containsKey('allowPasswordUser')
+              ? _json['allowPasswordUser'] as core.bool
+              : null,
+          apiKey: _json.containsKey('apiKey')
+              ? _json['apiKey'] as core.String
+              : null,
+          authorizedDomains: _json.containsKey('authorizedDomains')
+              ? (_json['authorizedDomains'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          changeEmailTemplate: _json.containsKey('changeEmailTemplate')
+              ? EmailTemplate.fromJson(_json['changeEmailTemplate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          delegatedProjectNumber: _json.containsKey('delegatedProjectNumber')
+              ? _json['delegatedProjectNumber'] as core.String
+              : null,
+          enableAnonymousUser: _json.containsKey('enableAnonymousUser')
+              ? _json['enableAnonymousUser'] as core.bool
+              : null,
+          idpConfig: _json.containsKey('idpConfig')
+              ? (_json['idpConfig'] as core.List)
+                  .map<IdpConfig>((value) => IdpConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          legacyResetPasswordTemplate:
+              _json.containsKey('legacyResetPasswordTemplate')
+                  ? EmailTemplate.fromJson(_json['legacyResetPasswordTemplate']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          resetPasswordTemplate: _json.containsKey('resetPasswordTemplate')
+              ? EmailTemplate.fromJson(_json['resetPasswordTemplate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          useEmailSending: _json.containsKey('useEmailSending')
+              ? _json['useEmailSending'] as core.bool
+              : null,
+          verifyEmailTemplate: _json.containsKey('verifyEmailTemplate')
+              ? EmailTemplate.fromJson(_json['verifyEmailTemplate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowPasswordUser != null) 'allowPasswordUser': allowPasswordUser!,
@@ -2006,13 +2139,16 @@ class IdentitytoolkitRelyingpartySetProjectConfigResponse {
   /// Project ID of the relying party.
   core.String? projectId;
 
-  IdentitytoolkitRelyingpartySetProjectConfigResponse();
+  IdentitytoolkitRelyingpartySetProjectConfigResponse({
+    this.projectId,
+  });
 
-  IdentitytoolkitRelyingpartySetProjectConfigResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-  }
+  IdentitytoolkitRelyingpartySetProjectConfigResponse.fromJson(core.Map _json)
+      : this(
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (projectId != null) 'projectId': projectId!,
@@ -2027,16 +2163,20 @@ class IdentitytoolkitRelyingpartySignOutUserRequest {
   /// The local ID of the user.
   core.String? localId;
 
-  IdentitytoolkitRelyingpartySignOutUserRequest();
+  IdentitytoolkitRelyingpartySignOutUserRequest({
+    this.instanceId,
+    this.localId,
+  });
 
-  IdentitytoolkitRelyingpartySignOutUserRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('instanceId')) {
-      instanceId = _json['instanceId'] as core.String;
-    }
-    if (_json.containsKey('localId')) {
-      localId = _json['localId'] as core.String;
-    }
-  }
+  IdentitytoolkitRelyingpartySignOutUserRequest.fromJson(core.Map _json)
+      : this(
+          instanceId: _json.containsKey('instanceId')
+              ? _json['instanceId'] as core.String
+              : null,
+          localId: _json.containsKey('localId')
+              ? _json['localId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (instanceId != null) 'instanceId': instanceId!,
@@ -2049,13 +2189,16 @@ class IdentitytoolkitRelyingpartySignOutUserResponse {
   /// The local ID of the user.
   core.String? localId;
 
-  IdentitytoolkitRelyingpartySignOutUserResponse();
+  IdentitytoolkitRelyingpartySignOutUserResponse({
+    this.localId,
+  });
 
-  IdentitytoolkitRelyingpartySignOutUserResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('localId')) {
-      localId = _json['localId'] as core.String;
-    }
-  }
+  IdentitytoolkitRelyingpartySignOutUserResponse.fromJson(core.Map _json)
+      : this(
+          localId: _json.containsKey('localId')
+              ? _json['localId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (localId != null) 'localId': localId!,
@@ -2112,52 +2255,67 @@ class IdentitytoolkitRelyingpartySignupNewUserRequest {
   /// Tenant project number to be used for idp discovery.
   core.String? tenantProjectNumber;
 
-  IdentitytoolkitRelyingpartySignupNewUserRequest();
+  IdentitytoolkitRelyingpartySignupNewUserRequest({
+    this.captchaChallenge,
+    this.captchaResponse,
+    this.disabled,
+    this.displayName,
+    this.email,
+    this.emailVerified,
+    this.idToken,
+    this.instanceId,
+    this.localId,
+    this.password,
+    this.phoneNumber,
+    this.photoUrl,
+    this.tenantId,
+    this.tenantProjectNumber,
+  });
 
-  IdentitytoolkitRelyingpartySignupNewUserRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('captchaChallenge')) {
-      captchaChallenge = _json['captchaChallenge'] as core.String;
-    }
-    if (_json.containsKey('captchaResponse')) {
-      captchaResponse = _json['captchaResponse'] as core.String;
-    }
-    if (_json.containsKey('disabled')) {
-      disabled = _json['disabled'] as core.bool;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('emailVerified')) {
-      emailVerified = _json['emailVerified'] as core.bool;
-    }
-    if (_json.containsKey('idToken')) {
-      idToken = _json['idToken'] as core.String;
-    }
-    if (_json.containsKey('instanceId')) {
-      instanceId = _json['instanceId'] as core.String;
-    }
-    if (_json.containsKey('localId')) {
-      localId = _json['localId'] as core.String;
-    }
-    if (_json.containsKey('password')) {
-      password = _json['password'] as core.String;
-    }
-    if (_json.containsKey('phoneNumber')) {
-      phoneNumber = _json['phoneNumber'] as core.String;
-    }
-    if (_json.containsKey('photoUrl')) {
-      photoUrl = _json['photoUrl'] as core.String;
-    }
-    if (_json.containsKey('tenantId')) {
-      tenantId = _json['tenantId'] as core.String;
-    }
-    if (_json.containsKey('tenantProjectNumber')) {
-      tenantProjectNumber = _json['tenantProjectNumber'] as core.String;
-    }
-  }
+  IdentitytoolkitRelyingpartySignupNewUserRequest.fromJson(core.Map _json)
+      : this(
+          captchaChallenge: _json.containsKey('captchaChallenge')
+              ? _json['captchaChallenge'] as core.String
+              : null,
+          captchaResponse: _json.containsKey('captchaResponse')
+              ? _json['captchaResponse'] as core.String
+              : null,
+          disabled: _json.containsKey('disabled')
+              ? _json['disabled'] as core.bool
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          emailVerified: _json.containsKey('emailVerified')
+              ? _json['emailVerified'] as core.bool
+              : null,
+          idToken: _json.containsKey('idToken')
+              ? _json['idToken'] as core.String
+              : null,
+          instanceId: _json.containsKey('instanceId')
+              ? _json['instanceId'] as core.String
+              : null,
+          localId: _json.containsKey('localId')
+              ? _json['localId'] as core.String
+              : null,
+          password: _json.containsKey('password')
+              ? _json['password'] as core.String
+              : null,
+          phoneNumber: _json.containsKey('phoneNumber')
+              ? _json['phoneNumber'] as core.String
+              : null,
+          photoUrl: _json.containsKey('photoUrl')
+              ? _json['photoUrl'] as core.String
+              : null,
+          tenantId: _json.containsKey('tenantId')
+              ? _json['tenantId'] as core.String
+              : null,
+          tenantProjectNumber: _json.containsKey('tenantProjectNumber')
+              ? _json['tenantProjectNumber'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (captchaChallenge != null) 'captchaChallenge': captchaChallenge!,
@@ -2238,55 +2396,68 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
   /// The account info to be stored.
   core.List<UserInfo>? users;
 
-  IdentitytoolkitRelyingpartyUploadAccountRequest();
+  IdentitytoolkitRelyingpartyUploadAccountRequest({
+    this.allowOverwrite,
+    this.blockSize,
+    this.cpuMemCost,
+    this.delegatedProjectNumber,
+    this.dkLen,
+    this.hashAlgorithm,
+    this.memoryCost,
+    this.parallelization,
+    this.rounds,
+    this.saltSeparator,
+    this.sanityCheck,
+    this.signerKey,
+    this.targetProjectId,
+    this.users,
+  });
 
-  IdentitytoolkitRelyingpartyUploadAccountRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('allowOverwrite')) {
-      allowOverwrite = _json['allowOverwrite'] as core.bool;
-    }
-    if (_json.containsKey('blockSize')) {
-      blockSize = _json['blockSize'] as core.int;
-    }
-    if (_json.containsKey('cpuMemCost')) {
-      cpuMemCost = _json['cpuMemCost'] as core.int;
-    }
-    if (_json.containsKey('delegatedProjectNumber')) {
-      delegatedProjectNumber = _json['delegatedProjectNumber'] as core.String;
-    }
-    if (_json.containsKey('dkLen')) {
-      dkLen = _json['dkLen'] as core.int;
-    }
-    if (_json.containsKey('hashAlgorithm')) {
-      hashAlgorithm = _json['hashAlgorithm'] as core.String;
-    }
-    if (_json.containsKey('memoryCost')) {
-      memoryCost = _json['memoryCost'] as core.int;
-    }
-    if (_json.containsKey('parallelization')) {
-      parallelization = _json['parallelization'] as core.int;
-    }
-    if (_json.containsKey('rounds')) {
-      rounds = _json['rounds'] as core.int;
-    }
-    if (_json.containsKey('saltSeparator')) {
-      saltSeparator = _json['saltSeparator'] as core.String;
-    }
-    if (_json.containsKey('sanityCheck')) {
-      sanityCheck = _json['sanityCheck'] as core.bool;
-    }
-    if (_json.containsKey('signerKey')) {
-      signerKey = _json['signerKey'] as core.String;
-    }
-    if (_json.containsKey('targetProjectId')) {
-      targetProjectId = _json['targetProjectId'] as core.String;
-    }
-    if (_json.containsKey('users')) {
-      users = (_json['users'] as core.List)
-          .map<UserInfo>((value) =>
-              UserInfo.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  IdentitytoolkitRelyingpartyUploadAccountRequest.fromJson(core.Map _json)
+      : this(
+          allowOverwrite: _json.containsKey('allowOverwrite')
+              ? _json['allowOverwrite'] as core.bool
+              : null,
+          blockSize: _json.containsKey('blockSize')
+              ? _json['blockSize'] as core.int
+              : null,
+          cpuMemCost: _json.containsKey('cpuMemCost')
+              ? _json['cpuMemCost'] as core.int
+              : null,
+          delegatedProjectNumber: _json.containsKey('delegatedProjectNumber')
+              ? _json['delegatedProjectNumber'] as core.String
+              : null,
+          dkLen: _json.containsKey('dkLen') ? _json['dkLen'] as core.int : null,
+          hashAlgorithm: _json.containsKey('hashAlgorithm')
+              ? _json['hashAlgorithm'] as core.String
+              : null,
+          memoryCost: _json.containsKey('memoryCost')
+              ? _json['memoryCost'] as core.int
+              : null,
+          parallelization: _json.containsKey('parallelization')
+              ? _json['parallelization'] as core.int
+              : null,
+          rounds:
+              _json.containsKey('rounds') ? _json['rounds'] as core.int : null,
+          saltSeparator: _json.containsKey('saltSeparator')
+              ? _json['saltSeparator'] as core.String
+              : null,
+          sanityCheck: _json.containsKey('sanityCheck')
+              ? _json['sanityCheck'] as core.bool
+              : null,
+          signerKey: _json.containsKey('signerKey')
+              ? _json['signerKey'] as core.String
+              : null,
+          targetProjectId: _json.containsKey('targetProjectId')
+              ? _json['targetProjectId'] as core.String
+              : null,
+          users: _json.containsKey('users')
+              ? (_json['users'] as core.List)
+                  .map<UserInfo>((value) => UserInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowOverwrite != null) 'allowOverwrite': allowOverwrite!,
@@ -2361,49 +2532,64 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
   /// Tenant project number to be used for idp discovery.
   core.String? tenantProjectNumber;
 
-  IdentitytoolkitRelyingpartyVerifyAssertionRequest();
+  IdentitytoolkitRelyingpartyVerifyAssertionRequest({
+    this.autoCreate,
+    this.delegatedProjectNumber,
+    this.idToken,
+    this.instanceId,
+    this.pendingIdToken,
+    this.postBody,
+    this.requestUri,
+    this.returnIdpCredential,
+    this.returnRefreshToken,
+    this.returnSecureToken,
+    this.sessionId,
+    this.tenantId,
+    this.tenantProjectNumber,
+  });
 
-  IdentitytoolkitRelyingpartyVerifyAssertionRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('autoCreate')) {
-      autoCreate = _json['autoCreate'] as core.bool;
-    }
-    if (_json.containsKey('delegatedProjectNumber')) {
-      delegatedProjectNumber = _json['delegatedProjectNumber'] as core.String;
-    }
-    if (_json.containsKey('idToken')) {
-      idToken = _json['idToken'] as core.String;
-    }
-    if (_json.containsKey('instanceId')) {
-      instanceId = _json['instanceId'] as core.String;
-    }
-    if (_json.containsKey('pendingIdToken')) {
-      pendingIdToken = _json['pendingIdToken'] as core.String;
-    }
-    if (_json.containsKey('postBody')) {
-      postBody = _json['postBody'] as core.String;
-    }
-    if (_json.containsKey('requestUri')) {
-      requestUri = _json['requestUri'] as core.String;
-    }
-    if (_json.containsKey('returnIdpCredential')) {
-      returnIdpCredential = _json['returnIdpCredential'] as core.bool;
-    }
-    if (_json.containsKey('returnRefreshToken')) {
-      returnRefreshToken = _json['returnRefreshToken'] as core.bool;
-    }
-    if (_json.containsKey('returnSecureToken')) {
-      returnSecureToken = _json['returnSecureToken'] as core.bool;
-    }
-    if (_json.containsKey('sessionId')) {
-      sessionId = _json['sessionId'] as core.String;
-    }
-    if (_json.containsKey('tenantId')) {
-      tenantId = _json['tenantId'] as core.String;
-    }
-    if (_json.containsKey('tenantProjectNumber')) {
-      tenantProjectNumber = _json['tenantProjectNumber'] as core.String;
-    }
-  }
+  IdentitytoolkitRelyingpartyVerifyAssertionRequest.fromJson(core.Map _json)
+      : this(
+          autoCreate: _json.containsKey('autoCreate')
+              ? _json['autoCreate'] as core.bool
+              : null,
+          delegatedProjectNumber: _json.containsKey('delegatedProjectNumber')
+              ? _json['delegatedProjectNumber'] as core.String
+              : null,
+          idToken: _json.containsKey('idToken')
+              ? _json['idToken'] as core.String
+              : null,
+          instanceId: _json.containsKey('instanceId')
+              ? _json['instanceId'] as core.String
+              : null,
+          pendingIdToken: _json.containsKey('pendingIdToken')
+              ? _json['pendingIdToken'] as core.String
+              : null,
+          postBody: _json.containsKey('postBody')
+              ? _json['postBody'] as core.String
+              : null,
+          requestUri: _json.containsKey('requestUri')
+              ? _json['requestUri'] as core.String
+              : null,
+          returnIdpCredential: _json.containsKey('returnIdpCredential')
+              ? _json['returnIdpCredential'] as core.bool
+              : null,
+          returnRefreshToken: _json.containsKey('returnRefreshToken')
+              ? _json['returnRefreshToken'] as core.bool
+              : null,
+          returnSecureToken: _json.containsKey('returnSecureToken')
+              ? _json['returnSecureToken'] as core.bool
+              : null,
+          sessionId: _json.containsKey('sessionId')
+              ? _json['sessionId'] as core.String
+              : null,
+          tenantId: _json.containsKey('tenantId')
+              ? _json['tenantId'] as core.String
+              : null,
+          tenantProjectNumber: _json.containsKey('tenantProjectNumber')
+              ? _json['tenantProjectNumber'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoCreate != null) 'autoCreate': autoCreate!,
@@ -2442,22 +2628,27 @@ class IdentitytoolkitRelyingpartyVerifyCustomTokenRequest {
   /// The custom token to verify
   core.String? token;
 
-  IdentitytoolkitRelyingpartyVerifyCustomTokenRequest();
+  IdentitytoolkitRelyingpartyVerifyCustomTokenRequest({
+    this.delegatedProjectNumber,
+    this.instanceId,
+    this.returnSecureToken,
+    this.token,
+  });
 
-  IdentitytoolkitRelyingpartyVerifyCustomTokenRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('delegatedProjectNumber')) {
-      delegatedProjectNumber = _json['delegatedProjectNumber'] as core.String;
-    }
-    if (_json.containsKey('instanceId')) {
-      instanceId = _json['instanceId'] as core.String;
-    }
-    if (_json.containsKey('returnSecureToken')) {
-      returnSecureToken = _json['returnSecureToken'] as core.bool;
-    }
-    if (_json.containsKey('token')) {
-      token = _json['token'] as core.String;
-    }
-  }
+  IdentitytoolkitRelyingpartyVerifyCustomTokenRequest.fromJson(core.Map _json)
+      : this(
+          delegatedProjectNumber: _json.containsKey('delegatedProjectNumber')
+              ? _json['delegatedProjectNumber'] as core.String
+              : null,
+          instanceId: _json.containsKey('instanceId')
+              ? _json['instanceId'] as core.String
+              : null,
+          returnSecureToken: _json.containsKey('returnSecureToken')
+              ? _json['returnSecureToken'] as core.bool
+              : null,
+          token:
+              _json.containsKey('token') ? _json['token'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (delegatedProjectNumber != null)
@@ -2508,43 +2699,55 @@ class IdentitytoolkitRelyingpartyVerifyPasswordRequest {
   /// Tenant project number to be used for idp discovery.
   core.String? tenantProjectNumber;
 
-  IdentitytoolkitRelyingpartyVerifyPasswordRequest();
+  IdentitytoolkitRelyingpartyVerifyPasswordRequest({
+    this.captchaChallenge,
+    this.captchaResponse,
+    this.delegatedProjectNumber,
+    this.email,
+    this.idToken,
+    this.instanceId,
+    this.password,
+    this.pendingIdToken,
+    this.returnSecureToken,
+    this.tenantId,
+    this.tenantProjectNumber,
+  });
 
-  IdentitytoolkitRelyingpartyVerifyPasswordRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('captchaChallenge')) {
-      captchaChallenge = _json['captchaChallenge'] as core.String;
-    }
-    if (_json.containsKey('captchaResponse')) {
-      captchaResponse = _json['captchaResponse'] as core.String;
-    }
-    if (_json.containsKey('delegatedProjectNumber')) {
-      delegatedProjectNumber = _json['delegatedProjectNumber'] as core.String;
-    }
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('idToken')) {
-      idToken = _json['idToken'] as core.String;
-    }
-    if (_json.containsKey('instanceId')) {
-      instanceId = _json['instanceId'] as core.String;
-    }
-    if (_json.containsKey('password')) {
-      password = _json['password'] as core.String;
-    }
-    if (_json.containsKey('pendingIdToken')) {
-      pendingIdToken = _json['pendingIdToken'] as core.String;
-    }
-    if (_json.containsKey('returnSecureToken')) {
-      returnSecureToken = _json['returnSecureToken'] as core.bool;
-    }
-    if (_json.containsKey('tenantId')) {
-      tenantId = _json['tenantId'] as core.String;
-    }
-    if (_json.containsKey('tenantProjectNumber')) {
-      tenantProjectNumber = _json['tenantProjectNumber'] as core.String;
-    }
-  }
+  IdentitytoolkitRelyingpartyVerifyPasswordRequest.fromJson(core.Map _json)
+      : this(
+          captchaChallenge: _json.containsKey('captchaChallenge')
+              ? _json['captchaChallenge'] as core.String
+              : null,
+          captchaResponse: _json.containsKey('captchaResponse')
+              ? _json['captchaResponse'] as core.String
+              : null,
+          delegatedProjectNumber: _json.containsKey('delegatedProjectNumber')
+              ? _json['delegatedProjectNumber'] as core.String
+              : null,
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          idToken: _json.containsKey('idToken')
+              ? _json['idToken'] as core.String
+              : null,
+          instanceId: _json.containsKey('instanceId')
+              ? _json['instanceId'] as core.String
+              : null,
+          password: _json.containsKey('password')
+              ? _json['password'] as core.String
+              : null,
+          pendingIdToken: _json.containsKey('pendingIdToken')
+              ? _json['pendingIdToken'] as core.String
+              : null,
+          returnSecureToken: _json.containsKey('returnSecureToken')
+              ? _json['returnSecureToken'] as core.bool
+              : null,
+          tenantId: _json.containsKey('tenantId')
+              ? _json['tenantId'] as core.String
+              : null,
+          tenantProjectNumber: _json.containsKey('tenantProjectNumber')
+              ? _json['tenantProjectNumber'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (captchaChallenge != null) 'captchaChallenge': captchaChallenge!,
@@ -2576,31 +2779,38 @@ class IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest {
   core.String? temporaryProof;
   core.String? verificationProof;
 
-  IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest();
+  IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest({
+    this.code,
+    this.idToken,
+    this.operation,
+    this.phoneNumber,
+    this.sessionInfo,
+    this.temporaryProof,
+    this.verificationProof,
+  });
 
-  IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.String;
-    }
-    if (_json.containsKey('idToken')) {
-      idToken = _json['idToken'] as core.String;
-    }
-    if (_json.containsKey('operation')) {
-      operation = _json['operation'] as core.String;
-    }
-    if (_json.containsKey('phoneNumber')) {
-      phoneNumber = _json['phoneNumber'] as core.String;
-    }
-    if (_json.containsKey('sessionInfo')) {
-      sessionInfo = _json['sessionInfo'] as core.String;
-    }
-    if (_json.containsKey('temporaryProof')) {
-      temporaryProof = _json['temporaryProof'] as core.String;
-    }
-    if (_json.containsKey('verificationProof')) {
-      verificationProof = _json['verificationProof'] as core.String;
-    }
-  }
+  IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.String : null,
+          idToken: _json.containsKey('idToken')
+              ? _json['idToken'] as core.String
+              : null,
+          operation: _json.containsKey('operation')
+              ? _json['operation'] as core.String
+              : null,
+          phoneNumber: _json.containsKey('phoneNumber')
+              ? _json['phoneNumber'] as core.String
+              : null,
+          sessionInfo: _json.containsKey('sessionInfo')
+              ? _json['sessionInfo'] as core.String
+              : null,
+          temporaryProof: _json.containsKey('temporaryProof')
+              ? _json['temporaryProof'] as core.String
+              : null,
+          verificationProof: _json.containsKey('verificationProof')
+              ? _json['verificationProof'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -2626,42 +2836,53 @@ class IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse {
   core.String? verificationProof;
   core.String? verificationProofExpiresIn;
 
-  IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse();
+  IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse({
+    this.expiresIn,
+    this.idToken,
+    this.isNewUser,
+    this.localId,
+    this.phoneNumber,
+    this.refreshToken,
+    this.temporaryProof,
+    this.temporaryProofExpiresIn,
+    this.verificationProof,
+    this.verificationProofExpiresIn,
+  });
 
-  IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('expiresIn')) {
-      expiresIn = _json['expiresIn'] as core.String;
-    }
-    if (_json.containsKey('idToken')) {
-      idToken = _json['idToken'] as core.String;
-    }
-    if (_json.containsKey('isNewUser')) {
-      isNewUser = _json['isNewUser'] as core.bool;
-    }
-    if (_json.containsKey('localId')) {
-      localId = _json['localId'] as core.String;
-    }
-    if (_json.containsKey('phoneNumber')) {
-      phoneNumber = _json['phoneNumber'] as core.String;
-    }
-    if (_json.containsKey('refreshToken')) {
-      refreshToken = _json['refreshToken'] as core.String;
-    }
-    if (_json.containsKey('temporaryProof')) {
-      temporaryProof = _json['temporaryProof'] as core.String;
-    }
-    if (_json.containsKey('temporaryProofExpiresIn')) {
-      temporaryProofExpiresIn = _json['temporaryProofExpiresIn'] as core.String;
-    }
-    if (_json.containsKey('verificationProof')) {
-      verificationProof = _json['verificationProof'] as core.String;
-    }
-    if (_json.containsKey('verificationProofExpiresIn')) {
-      verificationProofExpiresIn =
-          _json['verificationProofExpiresIn'] as core.String;
-    }
-  }
+  IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse.fromJson(core.Map _json)
+      : this(
+          expiresIn: _json.containsKey('expiresIn')
+              ? _json['expiresIn'] as core.String
+              : null,
+          idToken: _json.containsKey('idToken')
+              ? _json['idToken'] as core.String
+              : null,
+          isNewUser: _json.containsKey('isNewUser')
+              ? _json['isNewUser'] as core.bool
+              : null,
+          localId: _json.containsKey('localId')
+              ? _json['localId'] as core.String
+              : null,
+          phoneNumber: _json.containsKey('phoneNumber')
+              ? _json['phoneNumber'] as core.String
+              : null,
+          refreshToken: _json.containsKey('refreshToken')
+              ? _json['refreshToken'] as core.String
+              : null,
+          temporaryProof: _json.containsKey('temporaryProof')
+              ? _json['temporaryProof'] as core.String
+              : null,
+          temporaryProofExpiresIn: _json.containsKey('temporaryProofExpiresIn')
+              ? _json['temporaryProofExpiresIn'] as core.String
+              : null,
+          verificationProof: _json.containsKey('verificationProof')
+              ? _json['verificationProof'] as core.String
+              : null,
+          verificationProofExpiresIn:
+              _json.containsKey('verificationProofExpiresIn')
+                  ? _json['verificationProofExpiresIn'] as core.String
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (expiresIn != null) 'expiresIn': expiresIn!,
@@ -2700,30 +2921,38 @@ class IdpConfig {
   /// Whitelisted client IDs for audience check.
   core.List<core.String>? whitelistedAudiences;
 
-  IdpConfig();
+  IdpConfig({
+    this.clientId,
+    this.enabled,
+    this.experimentPercent,
+    this.provider,
+    this.secret,
+    this.whitelistedAudiences,
+  });
 
-  IdpConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('clientId')) {
-      clientId = _json['clientId'] as core.String;
-    }
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-    if (_json.containsKey('experimentPercent')) {
-      experimentPercent = _json['experimentPercent'] as core.int;
-    }
-    if (_json.containsKey('provider')) {
-      provider = _json['provider'] as core.String;
-    }
-    if (_json.containsKey('secret')) {
-      secret = _json['secret'] as core.String;
-    }
-    if (_json.containsKey('whitelistedAudiences')) {
-      whitelistedAudiences = (_json['whitelistedAudiences'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  IdpConfig.fromJson(core.Map _json)
+      : this(
+          clientId: _json.containsKey('clientId')
+              ? _json['clientId'] as core.String
+              : null,
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+          experimentPercent: _json.containsKey('experimentPercent')
+              ? _json['experimentPercent'] as core.int
+              : null,
+          provider: _json.containsKey('provider')
+              ? _json['provider'] as core.String
+              : null,
+          secret: _json.containsKey('secret')
+              ? _json['secret'] as core.String
+              : null,
+          whitelistedAudiences: _json.containsKey('whitelistedAudiences')
+              ? (_json['whitelistedAudiences'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clientId != null) 'clientId': clientId!,
@@ -2788,55 +3017,69 @@ class Relyingparty {
   /// The IP address of the user.
   core.String? userIp;
 
-  Relyingparty();
+  Relyingparty({
+    this.androidInstallApp,
+    this.androidMinimumVersion,
+    this.androidPackageName,
+    this.canHandleCodeInApp,
+    this.captchaResp,
+    this.challenge,
+    this.continueUrl,
+    this.email,
+    this.iOSAppStoreId,
+    this.iOSBundleId,
+    this.idToken,
+    this.kind,
+    this.newEmail,
+    this.requestType,
+    this.userIp,
+  });
 
-  Relyingparty.fromJson(core.Map _json) {
-    if (_json.containsKey('androidInstallApp')) {
-      androidInstallApp = _json['androidInstallApp'] as core.bool;
-    }
-    if (_json.containsKey('androidMinimumVersion')) {
-      androidMinimumVersion = _json['androidMinimumVersion'] as core.String;
-    }
-    if (_json.containsKey('androidPackageName')) {
-      androidPackageName = _json['androidPackageName'] as core.String;
-    }
-    if (_json.containsKey('canHandleCodeInApp')) {
-      canHandleCodeInApp = _json['canHandleCodeInApp'] as core.bool;
-    }
-    if (_json.containsKey('captchaResp')) {
-      captchaResp = _json['captchaResp'] as core.String;
-    }
-    if (_json.containsKey('challenge')) {
-      challenge = _json['challenge'] as core.String;
-    }
-    if (_json.containsKey('continueUrl')) {
-      continueUrl = _json['continueUrl'] as core.String;
-    }
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('iOSAppStoreId')) {
-      iOSAppStoreId = _json['iOSAppStoreId'] as core.String;
-    }
-    if (_json.containsKey('iOSBundleId')) {
-      iOSBundleId = _json['iOSBundleId'] as core.String;
-    }
-    if (_json.containsKey('idToken')) {
-      idToken = _json['idToken'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('newEmail')) {
-      newEmail = _json['newEmail'] as core.String;
-    }
-    if (_json.containsKey('requestType')) {
-      requestType = _json['requestType'] as core.String;
-    }
-    if (_json.containsKey('userIp')) {
-      userIp = _json['userIp'] as core.String;
-    }
-  }
+  Relyingparty.fromJson(core.Map _json)
+      : this(
+          androidInstallApp: _json.containsKey('androidInstallApp')
+              ? _json['androidInstallApp'] as core.bool
+              : null,
+          androidMinimumVersion: _json.containsKey('androidMinimumVersion')
+              ? _json['androidMinimumVersion'] as core.String
+              : null,
+          androidPackageName: _json.containsKey('androidPackageName')
+              ? _json['androidPackageName'] as core.String
+              : null,
+          canHandleCodeInApp: _json.containsKey('canHandleCodeInApp')
+              ? _json['canHandleCodeInApp'] as core.bool
+              : null,
+          captchaResp: _json.containsKey('captchaResp')
+              ? _json['captchaResp'] as core.String
+              : null,
+          challenge: _json.containsKey('challenge')
+              ? _json['challenge'] as core.String
+              : null,
+          continueUrl: _json.containsKey('continueUrl')
+              ? _json['continueUrl'] as core.String
+              : null,
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          iOSAppStoreId: _json.containsKey('iOSAppStoreId')
+              ? _json['iOSAppStoreId'] as core.String
+              : null,
+          iOSBundleId: _json.containsKey('iOSBundleId')
+              ? _json['iOSBundleId'] as core.String
+              : null,
+          idToken: _json.containsKey('idToken')
+              ? _json['idToken'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          newEmail: _json.containsKey('newEmail')
+              ? _json['newEmail'] as core.String
+              : null,
+          requestType: _json.containsKey('requestType')
+              ? _json['requestType'] as core.String
+              : null,
+          userIp: _json.containsKey('userIp')
+              ? _json['userIp'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (androidInstallApp != null) 'androidInstallApp': androidInstallApp!,
@@ -2876,22 +3119,25 @@ class ResetPasswordResponse {
   /// The request type.
   core.String? requestType;
 
-  ResetPasswordResponse();
+  ResetPasswordResponse({
+    this.email,
+    this.kind,
+    this.newEmail,
+    this.requestType,
+  });
 
-  ResetPasswordResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('newEmail')) {
-      newEmail = _json['newEmail'] as core.String;
-    }
-    if (_json.containsKey('requestType')) {
-      requestType = _json['requestType'] as core.String;
-    }
-  }
+  ResetPasswordResponse.fromJson(core.Map _json)
+      : this(
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          newEmail: _json.containsKey('newEmail')
+              ? _json['newEmail'] as core.String
+              : null,
+          requestType: _json.containsKey('requestType')
+              ? _json['requestType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
@@ -2917,22 +3163,28 @@ class SetAccountInfoResponseProviderUserInfo {
   /// live.net and yahoo.com. For other OpenID IdPs it's the OP identifier.
   core.String? providerId;
 
-  SetAccountInfoResponseProviderUserInfo();
+  SetAccountInfoResponseProviderUserInfo({
+    this.displayName,
+    this.federatedId,
+    this.photoUrl,
+    this.providerId,
+  });
 
-  SetAccountInfoResponseProviderUserInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('federatedId')) {
-      federatedId = _json['federatedId'] as core.String;
-    }
-    if (_json.containsKey('photoUrl')) {
-      photoUrl = _json['photoUrl'] as core.String;
-    }
-    if (_json.containsKey('providerId')) {
-      providerId = _json['providerId'] as core.String;
-    }
-  }
+  SetAccountInfoResponseProviderUserInfo.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          federatedId: _json.containsKey('federatedId')
+              ? _json['federatedId'] as core.String
+              : null,
+          photoUrl: _json.containsKey('photoUrl')
+              ? _json['photoUrl'] as core.String
+              : null,
+          providerId: _json.containsKey('providerId')
+              ? _json['providerId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -2988,50 +3240,61 @@ class SetAccountInfoResponse {
   /// If idToken is STS id token, then this field will be refresh token.
   core.String? refreshToken;
 
-  SetAccountInfoResponse();
+  SetAccountInfoResponse({
+    this.displayName,
+    this.email,
+    this.emailVerified,
+    this.expiresIn,
+    this.idToken,
+    this.kind,
+    this.localId,
+    this.newEmail,
+    this.passwordHash,
+    this.photoUrl,
+    this.providerUserInfo,
+    this.refreshToken,
+  });
 
-  SetAccountInfoResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('emailVerified')) {
-      emailVerified = _json['emailVerified'] as core.bool;
-    }
-    if (_json.containsKey('expiresIn')) {
-      expiresIn = _json['expiresIn'] as core.String;
-    }
-    if (_json.containsKey('idToken')) {
-      idToken = _json['idToken'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('localId')) {
-      localId = _json['localId'] as core.String;
-    }
-    if (_json.containsKey('newEmail')) {
-      newEmail = _json['newEmail'] as core.String;
-    }
-    if (_json.containsKey('passwordHash')) {
-      passwordHash = _json['passwordHash'] as core.String;
-    }
-    if (_json.containsKey('photoUrl')) {
-      photoUrl = _json['photoUrl'] as core.String;
-    }
-    if (_json.containsKey('providerUserInfo')) {
-      providerUserInfo = (_json['providerUserInfo'] as core.List)
-          .map<SetAccountInfoResponseProviderUserInfo>((value) =>
-              SetAccountInfoResponseProviderUserInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('refreshToken')) {
-      refreshToken = _json['refreshToken'] as core.String;
-    }
-  }
+  SetAccountInfoResponse.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          emailVerified: _json.containsKey('emailVerified')
+              ? _json['emailVerified'] as core.bool
+              : null,
+          expiresIn: _json.containsKey('expiresIn')
+              ? _json['expiresIn'] as core.String
+              : null,
+          idToken: _json.containsKey('idToken')
+              ? _json['idToken'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          localId: _json.containsKey('localId')
+              ? _json['localId'] as core.String
+              : null,
+          newEmail: _json.containsKey('newEmail')
+              ? _json['newEmail'] as core.String
+              : null,
+          passwordHash: _json.containsKey('passwordHash')
+              ? _json['passwordHash'] as core.String
+              : null,
+          photoUrl: _json.containsKey('photoUrl')
+              ? _json['photoUrl'] as core.String
+              : null,
+          providerUserInfo: _json.containsKey('providerUserInfo')
+              ? (_json['providerUserInfo'] as core.List)
+                  .map<SetAccountInfoResponseProviderUserInfo>((value) =>
+                      SetAccountInfoResponseProviderUserInfo.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          refreshToken: _json.containsKey('refreshToken')
+              ? _json['refreshToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -3076,31 +3339,37 @@ class SignupNewUserResponse {
   /// If idToken is STS id token, then this field will be refresh token.
   core.String? refreshToken;
 
-  SignupNewUserResponse();
+  SignupNewUserResponse({
+    this.displayName,
+    this.email,
+    this.expiresIn,
+    this.idToken,
+    this.kind,
+    this.localId,
+    this.refreshToken,
+  });
 
-  SignupNewUserResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('expiresIn')) {
-      expiresIn = _json['expiresIn'] as core.String;
-    }
-    if (_json.containsKey('idToken')) {
-      idToken = _json['idToken'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('localId')) {
-      localId = _json['localId'] as core.String;
-    }
-    if (_json.containsKey('refreshToken')) {
-      refreshToken = _json['refreshToken'] as core.String;
-    }
-  }
+  SignupNewUserResponse.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          expiresIn: _json.containsKey('expiresIn')
+              ? _json['expiresIn'] as core.String
+              : null,
+          idToken: _json.containsKey('idToken')
+              ? _json['idToken'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          localId: _json.containsKey('localId')
+              ? _json['localId'] as core.String
+              : null,
+          refreshToken: _json.containsKey('refreshToken')
+              ? _json['refreshToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -3120,16 +3389,18 @@ class UploadAccountResponseError {
   /// Detailed error message for the account info.
   core.String? message;
 
-  UploadAccountResponseError();
+  UploadAccountResponseError({
+    this.index,
+    this.message,
+  });
 
-  UploadAccountResponseError.fromJson(core.Map _json) {
-    if (_json.containsKey('index')) {
-      index = _json['index'] as core.int;
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  UploadAccountResponseError.fromJson(core.Map _json)
+      : this(
+          index: _json.containsKey('index') ? _json['index'] as core.int : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (index != null) 'index': index!,
@@ -3145,20 +3416,22 @@ class UploadAccountResponse {
   /// The fixed string "identitytoolkit#UploadAccountResponse".
   core.String? kind;
 
-  UploadAccountResponse();
+  UploadAccountResponse({
+    this.error,
+    this.kind,
+  });
 
-  UploadAccountResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('error')) {
-      error = (_json['error'] as core.List)
-          .map<UploadAccountResponseError>((value) =>
-              UploadAccountResponseError.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-  }
+  UploadAccountResponse.fromJson(core.Map _json)
+      : this(
+          error: _json.containsKey('error')
+              ? (_json['error'] as core.List)
+                  .map<UploadAccountResponseError>((value) =>
+                      UploadAccountResponseError.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (error != null)
@@ -3195,34 +3468,42 @@ class UserInfoProviderUserInfo {
   /// User's screen name at Twitter or login name at Github.
   core.String? screenName;
 
-  UserInfoProviderUserInfo();
+  UserInfoProviderUserInfo({
+    this.displayName,
+    this.email,
+    this.federatedId,
+    this.phoneNumber,
+    this.photoUrl,
+    this.providerId,
+    this.rawId,
+    this.screenName,
+  });
 
-  UserInfoProviderUserInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('federatedId')) {
-      federatedId = _json['federatedId'] as core.String;
-    }
-    if (_json.containsKey('phoneNumber')) {
-      phoneNumber = _json['phoneNumber'] as core.String;
-    }
-    if (_json.containsKey('photoUrl')) {
-      photoUrl = _json['photoUrl'] as core.String;
-    }
-    if (_json.containsKey('providerId')) {
-      providerId = _json['providerId'] as core.String;
-    }
-    if (_json.containsKey('rawId')) {
-      rawId = _json['rawId'] as core.String;
-    }
-    if (_json.containsKey('screenName')) {
-      screenName = _json['screenName'] as core.String;
-    }
-  }
+  UserInfoProviderUserInfo.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          federatedId: _json.containsKey('federatedId')
+              ? _json['federatedId'] as core.String
+              : null,
+          phoneNumber: _json.containsKey('phoneNumber')
+              ? _json['phoneNumber'] as core.String
+              : null,
+          photoUrl: _json.containsKey('photoUrl')
+              ? _json['photoUrl'] as core.String
+              : null,
+          providerId: _json.containsKey('providerId')
+              ? _json['providerId'] as core.String
+              : null,
+          rawId:
+              _json.containsKey('rawId') ? _json['rawId'] as core.String : null,
+          screenName: _json.containsKey('screenName')
+              ? _json['screenName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -3308,71 +3589,89 @@ class UserInfo {
   /// Version of the user's password.
   core.int? version;
 
-  UserInfo();
+  UserInfo({
+    this.createdAt,
+    this.customAttributes,
+    this.customAuth,
+    this.disabled,
+    this.displayName,
+    this.email,
+    this.emailVerified,
+    this.lastLoginAt,
+    this.localId,
+    this.passwordHash,
+    this.passwordUpdatedAt,
+    this.phoneNumber,
+    this.photoUrl,
+    this.providerUserInfo,
+    this.rawPassword,
+    this.salt,
+    this.screenName,
+    this.validSince,
+    this.version,
+  });
 
-  UserInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'] as core.String;
-    }
-    if (_json.containsKey('customAttributes')) {
-      customAttributes = _json['customAttributes'] as core.String;
-    }
-    if (_json.containsKey('customAuth')) {
-      customAuth = _json['customAuth'] as core.bool;
-    }
-    if (_json.containsKey('disabled')) {
-      disabled = _json['disabled'] as core.bool;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('emailVerified')) {
-      emailVerified = _json['emailVerified'] as core.bool;
-    }
-    if (_json.containsKey('lastLoginAt')) {
-      lastLoginAt = _json['lastLoginAt'] as core.String;
-    }
-    if (_json.containsKey('localId')) {
-      localId = _json['localId'] as core.String;
-    }
-    if (_json.containsKey('passwordHash')) {
-      passwordHash = _json['passwordHash'] as core.String;
-    }
-    if (_json.containsKey('passwordUpdatedAt')) {
-      passwordUpdatedAt = (_json['passwordUpdatedAt'] as core.num).toDouble();
-    }
-    if (_json.containsKey('phoneNumber')) {
-      phoneNumber = _json['phoneNumber'] as core.String;
-    }
-    if (_json.containsKey('photoUrl')) {
-      photoUrl = _json['photoUrl'] as core.String;
-    }
-    if (_json.containsKey('providerUserInfo')) {
-      providerUserInfo = (_json['providerUserInfo'] as core.List)
-          .map<UserInfoProviderUserInfo>((value) =>
-              UserInfoProviderUserInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('rawPassword')) {
-      rawPassword = _json['rawPassword'] as core.String;
-    }
-    if (_json.containsKey('salt')) {
-      salt = _json['salt'] as core.String;
-    }
-    if (_json.containsKey('screenName')) {
-      screenName = _json['screenName'] as core.String;
-    }
-    if (_json.containsKey('validSince')) {
-      validSince = _json['validSince'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.int;
-    }
-  }
+  UserInfo.fromJson(core.Map _json)
+      : this(
+          createdAt: _json.containsKey('createdAt')
+              ? _json['createdAt'] as core.String
+              : null,
+          customAttributes: _json.containsKey('customAttributes')
+              ? _json['customAttributes'] as core.String
+              : null,
+          customAuth: _json.containsKey('customAuth')
+              ? _json['customAuth'] as core.bool
+              : null,
+          disabled: _json.containsKey('disabled')
+              ? _json['disabled'] as core.bool
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          emailVerified: _json.containsKey('emailVerified')
+              ? _json['emailVerified'] as core.bool
+              : null,
+          lastLoginAt: _json.containsKey('lastLoginAt')
+              ? _json['lastLoginAt'] as core.String
+              : null,
+          localId: _json.containsKey('localId')
+              ? _json['localId'] as core.String
+              : null,
+          passwordHash: _json.containsKey('passwordHash')
+              ? _json['passwordHash'] as core.String
+              : null,
+          passwordUpdatedAt: _json.containsKey('passwordUpdatedAt')
+              ? (_json['passwordUpdatedAt'] as core.num).toDouble()
+              : null,
+          phoneNumber: _json.containsKey('phoneNumber')
+              ? _json['phoneNumber'] as core.String
+              : null,
+          photoUrl: _json.containsKey('photoUrl')
+              ? _json['photoUrl'] as core.String
+              : null,
+          providerUserInfo: _json.containsKey('providerUserInfo')
+              ? (_json['providerUserInfo'] as core.List)
+                  .map<UserInfoProviderUserInfo>((value) =>
+                      UserInfoProviderUserInfo.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          rawPassword: _json.containsKey('rawPassword')
+              ? _json['rawPassword'] as core.String
+              : null,
+          salt: _json.containsKey('salt') ? _json['salt'] as core.String : null,
+          screenName: _json.containsKey('screenName')
+              ? _json['screenName'] as core.String
+              : null,
+          validSince: _json.containsKey('validSince')
+              ? _json['validSince'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createdAt != null) 'createdAt': createdAt!,
@@ -3539,129 +3838,167 @@ class VerifyAssertionResponse {
   /// confirmation.
   core.List<core.String>? verifiedProvider;
 
-  VerifyAssertionResponse();
+  VerifyAssertionResponse({
+    this.action,
+    this.appInstallationUrl,
+    this.appScheme,
+    this.context,
+    this.dateOfBirth,
+    this.displayName,
+    this.email,
+    this.emailRecycled,
+    this.emailVerified,
+    this.errorMessage,
+    this.expiresIn,
+    this.federatedId,
+    this.firstName,
+    this.fullName,
+    this.idToken,
+    this.inputEmail,
+    this.isNewUser,
+    this.kind,
+    this.language,
+    this.lastName,
+    this.localId,
+    this.needConfirmation,
+    this.needEmail,
+    this.nickName,
+    this.oauthAccessToken,
+    this.oauthAuthorizationCode,
+    this.oauthExpireIn,
+    this.oauthIdToken,
+    this.oauthRequestToken,
+    this.oauthScope,
+    this.oauthTokenSecret,
+    this.originalEmail,
+    this.photoUrl,
+    this.providerId,
+    this.rawUserInfo,
+    this.refreshToken,
+    this.screenName,
+    this.timeZone,
+    this.verifiedProvider,
+  });
 
-  VerifyAssertionResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('action')) {
-      action = _json['action'] as core.String;
-    }
-    if (_json.containsKey('appInstallationUrl')) {
-      appInstallationUrl = _json['appInstallationUrl'] as core.String;
-    }
-    if (_json.containsKey('appScheme')) {
-      appScheme = _json['appScheme'] as core.String;
-    }
-    if (_json.containsKey('context')) {
-      context = _json['context'] as core.String;
-    }
-    if (_json.containsKey('dateOfBirth')) {
-      dateOfBirth = _json['dateOfBirth'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('emailRecycled')) {
-      emailRecycled = _json['emailRecycled'] as core.bool;
-    }
-    if (_json.containsKey('emailVerified')) {
-      emailVerified = _json['emailVerified'] as core.bool;
-    }
-    if (_json.containsKey('errorMessage')) {
-      errorMessage = _json['errorMessage'] as core.String;
-    }
-    if (_json.containsKey('expiresIn')) {
-      expiresIn = _json['expiresIn'] as core.String;
-    }
-    if (_json.containsKey('federatedId')) {
-      federatedId = _json['federatedId'] as core.String;
-    }
-    if (_json.containsKey('firstName')) {
-      firstName = _json['firstName'] as core.String;
-    }
-    if (_json.containsKey('fullName')) {
-      fullName = _json['fullName'] as core.String;
-    }
-    if (_json.containsKey('idToken')) {
-      idToken = _json['idToken'] as core.String;
-    }
-    if (_json.containsKey('inputEmail')) {
-      inputEmail = _json['inputEmail'] as core.String;
-    }
-    if (_json.containsKey('isNewUser')) {
-      isNewUser = _json['isNewUser'] as core.bool;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('language')) {
-      language = _json['language'] as core.String;
-    }
-    if (_json.containsKey('lastName')) {
-      lastName = _json['lastName'] as core.String;
-    }
-    if (_json.containsKey('localId')) {
-      localId = _json['localId'] as core.String;
-    }
-    if (_json.containsKey('needConfirmation')) {
-      needConfirmation = _json['needConfirmation'] as core.bool;
-    }
-    if (_json.containsKey('needEmail')) {
-      needEmail = _json['needEmail'] as core.bool;
-    }
-    if (_json.containsKey('nickName')) {
-      nickName = _json['nickName'] as core.String;
-    }
-    if (_json.containsKey('oauthAccessToken')) {
-      oauthAccessToken = _json['oauthAccessToken'] as core.String;
-    }
-    if (_json.containsKey('oauthAuthorizationCode')) {
-      oauthAuthorizationCode = _json['oauthAuthorizationCode'] as core.String;
-    }
-    if (_json.containsKey('oauthExpireIn')) {
-      oauthExpireIn = _json['oauthExpireIn'] as core.int;
-    }
-    if (_json.containsKey('oauthIdToken')) {
-      oauthIdToken = _json['oauthIdToken'] as core.String;
-    }
-    if (_json.containsKey('oauthRequestToken')) {
-      oauthRequestToken = _json['oauthRequestToken'] as core.String;
-    }
-    if (_json.containsKey('oauthScope')) {
-      oauthScope = _json['oauthScope'] as core.String;
-    }
-    if (_json.containsKey('oauthTokenSecret')) {
-      oauthTokenSecret = _json['oauthTokenSecret'] as core.String;
-    }
-    if (_json.containsKey('originalEmail')) {
-      originalEmail = _json['originalEmail'] as core.String;
-    }
-    if (_json.containsKey('photoUrl')) {
-      photoUrl = _json['photoUrl'] as core.String;
-    }
-    if (_json.containsKey('providerId')) {
-      providerId = _json['providerId'] as core.String;
-    }
-    if (_json.containsKey('rawUserInfo')) {
-      rawUserInfo = _json['rawUserInfo'] as core.String;
-    }
-    if (_json.containsKey('refreshToken')) {
-      refreshToken = _json['refreshToken'] as core.String;
-    }
-    if (_json.containsKey('screenName')) {
-      screenName = _json['screenName'] as core.String;
-    }
-    if (_json.containsKey('timeZone')) {
-      timeZone = _json['timeZone'] as core.String;
-    }
-    if (_json.containsKey('verifiedProvider')) {
-      verifiedProvider = (_json['verifiedProvider'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  VerifyAssertionResponse.fromJson(core.Map _json)
+      : this(
+          action: _json.containsKey('action')
+              ? _json['action'] as core.String
+              : null,
+          appInstallationUrl: _json.containsKey('appInstallationUrl')
+              ? _json['appInstallationUrl'] as core.String
+              : null,
+          appScheme: _json.containsKey('appScheme')
+              ? _json['appScheme'] as core.String
+              : null,
+          context: _json.containsKey('context')
+              ? _json['context'] as core.String
+              : null,
+          dateOfBirth: _json.containsKey('dateOfBirth')
+              ? _json['dateOfBirth'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          emailRecycled: _json.containsKey('emailRecycled')
+              ? _json['emailRecycled'] as core.bool
+              : null,
+          emailVerified: _json.containsKey('emailVerified')
+              ? _json['emailVerified'] as core.bool
+              : null,
+          errorMessage: _json.containsKey('errorMessage')
+              ? _json['errorMessage'] as core.String
+              : null,
+          expiresIn: _json.containsKey('expiresIn')
+              ? _json['expiresIn'] as core.String
+              : null,
+          federatedId: _json.containsKey('federatedId')
+              ? _json['federatedId'] as core.String
+              : null,
+          firstName: _json.containsKey('firstName')
+              ? _json['firstName'] as core.String
+              : null,
+          fullName: _json.containsKey('fullName')
+              ? _json['fullName'] as core.String
+              : null,
+          idToken: _json.containsKey('idToken')
+              ? _json['idToken'] as core.String
+              : null,
+          inputEmail: _json.containsKey('inputEmail')
+              ? _json['inputEmail'] as core.String
+              : null,
+          isNewUser: _json.containsKey('isNewUser')
+              ? _json['isNewUser'] as core.bool
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          language: _json.containsKey('language')
+              ? _json['language'] as core.String
+              : null,
+          lastName: _json.containsKey('lastName')
+              ? _json['lastName'] as core.String
+              : null,
+          localId: _json.containsKey('localId')
+              ? _json['localId'] as core.String
+              : null,
+          needConfirmation: _json.containsKey('needConfirmation')
+              ? _json['needConfirmation'] as core.bool
+              : null,
+          needEmail: _json.containsKey('needEmail')
+              ? _json['needEmail'] as core.bool
+              : null,
+          nickName: _json.containsKey('nickName')
+              ? _json['nickName'] as core.String
+              : null,
+          oauthAccessToken: _json.containsKey('oauthAccessToken')
+              ? _json['oauthAccessToken'] as core.String
+              : null,
+          oauthAuthorizationCode: _json.containsKey('oauthAuthorizationCode')
+              ? _json['oauthAuthorizationCode'] as core.String
+              : null,
+          oauthExpireIn: _json.containsKey('oauthExpireIn')
+              ? _json['oauthExpireIn'] as core.int
+              : null,
+          oauthIdToken: _json.containsKey('oauthIdToken')
+              ? _json['oauthIdToken'] as core.String
+              : null,
+          oauthRequestToken: _json.containsKey('oauthRequestToken')
+              ? _json['oauthRequestToken'] as core.String
+              : null,
+          oauthScope: _json.containsKey('oauthScope')
+              ? _json['oauthScope'] as core.String
+              : null,
+          oauthTokenSecret: _json.containsKey('oauthTokenSecret')
+              ? _json['oauthTokenSecret'] as core.String
+              : null,
+          originalEmail: _json.containsKey('originalEmail')
+              ? _json['originalEmail'] as core.String
+              : null,
+          photoUrl: _json.containsKey('photoUrl')
+              ? _json['photoUrl'] as core.String
+              : null,
+          providerId: _json.containsKey('providerId')
+              ? _json['providerId'] as core.String
+              : null,
+          rawUserInfo: _json.containsKey('rawUserInfo')
+              ? _json['rawUserInfo'] as core.String
+              : null,
+          refreshToken: _json.containsKey('refreshToken')
+              ? _json['refreshToken'] as core.String
+              : null,
+          screenName: _json.containsKey('screenName')
+              ? _json['screenName'] as core.String
+              : null,
+          timeZone: _json.containsKey('timeZone')
+              ? _json['timeZone'] as core.String
+              : null,
+          verifiedProvider: _json.containsKey('verifiedProvider')
+              ? (_json['verifiedProvider'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
@@ -3726,25 +4063,30 @@ class VerifyCustomTokenResponse {
   /// If idToken is STS id token, then this field will be refresh token.
   core.String? refreshToken;
 
-  VerifyCustomTokenResponse();
+  VerifyCustomTokenResponse({
+    this.expiresIn,
+    this.idToken,
+    this.isNewUser,
+    this.kind,
+    this.refreshToken,
+  });
 
-  VerifyCustomTokenResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('expiresIn')) {
-      expiresIn = _json['expiresIn'] as core.String;
-    }
-    if (_json.containsKey('idToken')) {
-      idToken = _json['idToken'] as core.String;
-    }
-    if (_json.containsKey('isNewUser')) {
-      isNewUser = _json['isNewUser'] as core.bool;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('refreshToken')) {
-      refreshToken = _json['refreshToken'] as core.String;
-    }
-  }
+  VerifyCustomTokenResponse.fromJson(core.Map _json)
+      : this(
+          expiresIn: _json.containsKey('expiresIn')
+              ? _json['expiresIn'] as core.String
+              : null,
+          idToken: _json.containsKey('idToken')
+              ? _json['idToken'] as core.String
+              : null,
+          isNewUser: _json.containsKey('isNewUser')
+              ? _json['isNewUser'] as core.bool
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          refreshToken: _json.containsKey('refreshToken')
+              ? _json['refreshToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (expiresIn != null) 'expiresIn': expiresIn!,
@@ -3797,46 +4139,57 @@ class VerifyPasswordResponse {
   /// Whether the email is registered.
   core.bool? registered;
 
-  VerifyPasswordResponse();
+  VerifyPasswordResponse({
+    this.displayName,
+    this.email,
+    this.expiresIn,
+    this.idToken,
+    this.kind,
+    this.localId,
+    this.oauthAccessToken,
+    this.oauthAuthorizationCode,
+    this.oauthExpireIn,
+    this.photoUrl,
+    this.refreshToken,
+    this.registered,
+  });
 
-  VerifyPasswordResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('expiresIn')) {
-      expiresIn = _json['expiresIn'] as core.String;
-    }
-    if (_json.containsKey('idToken')) {
-      idToken = _json['idToken'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('localId')) {
-      localId = _json['localId'] as core.String;
-    }
-    if (_json.containsKey('oauthAccessToken')) {
-      oauthAccessToken = _json['oauthAccessToken'] as core.String;
-    }
-    if (_json.containsKey('oauthAuthorizationCode')) {
-      oauthAuthorizationCode = _json['oauthAuthorizationCode'] as core.String;
-    }
-    if (_json.containsKey('oauthExpireIn')) {
-      oauthExpireIn = _json['oauthExpireIn'] as core.int;
-    }
-    if (_json.containsKey('photoUrl')) {
-      photoUrl = _json['photoUrl'] as core.String;
-    }
-    if (_json.containsKey('refreshToken')) {
-      refreshToken = _json['refreshToken'] as core.String;
-    }
-    if (_json.containsKey('registered')) {
-      registered = _json['registered'] as core.bool;
-    }
-  }
+  VerifyPasswordResponse.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          expiresIn: _json.containsKey('expiresIn')
+              ? _json['expiresIn'] as core.String
+              : null,
+          idToken: _json.containsKey('idToken')
+              ? _json['idToken'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          localId: _json.containsKey('localId')
+              ? _json['localId'] as core.String
+              : null,
+          oauthAccessToken: _json.containsKey('oauthAccessToken')
+              ? _json['oauthAccessToken'] as core.String
+              : null,
+          oauthAuthorizationCode: _json.containsKey('oauthAuthorizationCode')
+              ? _json['oauthAuthorizationCode'] as core.String
+              : null,
+          oauthExpireIn: _json.containsKey('oauthExpireIn')
+              ? _json['oauthExpireIn'] as core.int
+              : null,
+          photoUrl: _json.containsKey('photoUrl')
+              ? _json['photoUrl'] as core.String
+              : null,
+          refreshToken: _json.containsKey('refreshToken')
+              ? _json['refreshToken'] as core.String
+              : null,
+          registered: _json.containsKey('registered')
+              ? _json['registered'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,

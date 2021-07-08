@@ -1957,13 +1957,16 @@ class CheckTransitiveMembershipResponse {
   /// possible lack of authorization in some of the paths.
   core.bool? hasMembership;
 
-  CheckTransitiveMembershipResponse();
+  CheckTransitiveMembershipResponse({
+    this.hasMembership,
+  });
 
-  CheckTransitiveMembershipResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('hasMembership')) {
-      hasMembership = _json['hasMembership'] as core.bool;
-    }
-  }
+  CheckTransitiveMembershipResponse.fromJson(core.Map _json)
+      : this(
+          hasMembership: _json.containsKey('hasMembership')
+              ? _json['hasMembership'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (hasMembership != null) 'hasMembership': hasMembership!,
@@ -1983,20 +1986,24 @@ class DynamicGroupMetadata {
   /// Output only.
   DynamicGroupStatus? status;
 
-  DynamicGroupMetadata();
+  DynamicGroupMetadata({
+    this.queries,
+    this.status,
+  });
 
-  DynamicGroupMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('queries')) {
-      queries = (_json['queries'] as core.List)
-          .map<DynamicGroupQuery>((value) => DynamicGroupQuery.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('status')) {
-      status = DynamicGroupStatus.fromJson(
-          _json['status'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  DynamicGroupMetadata.fromJson(core.Map _json)
+      : this(
+          queries: _json.containsKey('queries')
+              ? (_json['queries'] as core.List)
+                  .map<DynamicGroupQuery>((value) => DynamicGroupQuery.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          status: _json.containsKey('status')
+              ? DynamicGroupStatus.fromJson(
+                  _json['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (queries != null)
@@ -2022,16 +2029,19 @@ class DynamicGroupQuery {
   /// - "USER" : For queries on User
   core.String? resourceType;
 
-  DynamicGroupQuery();
+  DynamicGroupQuery({
+    this.query,
+    this.resourceType,
+  });
 
-  DynamicGroupQuery.fromJson(core.Map _json) {
-    if (_json.containsKey('query')) {
-      query = _json['query'] as core.String;
-    }
-    if (_json.containsKey('resourceType')) {
-      resourceType = _json['resourceType'] as core.String;
-    }
-  }
+  DynamicGroupQuery.fromJson(core.Map _json)
+      : this(
+          query:
+              _json.containsKey('query') ? _json['query'] as core.String : null,
+          resourceType: _json.containsKey('resourceType')
+              ? _json['resourceType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (query != null) 'query': query!,
@@ -2057,16 +2067,20 @@ class DynamicGroupStatus {
   /// at which dynamic group was created.
   core.String? statusTime;
 
-  DynamicGroupStatus();
+  DynamicGroupStatus({
+    this.status,
+    this.statusTime,
+  });
 
-  DynamicGroupStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-    if (_json.containsKey('statusTime')) {
-      statusTime = _json['statusTime'] as core.String;
-    }
-  }
+  DynamicGroupStatus.fromJson(core.Map _json)
+      : this(
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+          statusTime: _json.containsKey('statusTime')
+              ? _json['statusTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (status != null) 'status': status!,
@@ -2097,16 +2111,18 @@ class EntityKey {
   /// the form of `identitysources/{identity_source_id}`.
   core.String? namespace;
 
-  EntityKey();
+  EntityKey({
+    this.id,
+    this.namespace,
+  });
 
-  EntityKey.fromJson(core.Map _json) {
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('namespace')) {
-      namespace = _json['namespace'] as core.String;
-    }
-  }
+  EntityKey.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          namespace: _json.containsKey('namespace')
+              ? _json['namespace'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
@@ -2119,13 +2135,16 @@ class ExpiryDetail {
   /// The time at which the `MembershipRole` will expire.
   core.String? expireTime;
 
-  ExpiryDetail();
+  ExpiryDetail({
+    this.expireTime,
+  });
 
-  ExpiryDetail.fromJson(core.Map _json) {
-    if (_json.containsKey('expireTime')) {
-      expireTime = _json['expireTime'] as core.String;
-    }
-  }
+  ExpiryDetail.fromJson(core.Map _json)
+      : this(
+          expireTime: _json.containsKey('expireTime')
+              ? _json['expireTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (expireTime != null) 'expireTime': expireTime!,
@@ -2143,23 +2162,27 @@ class GetMembershipGraphResponse {
   /// MembershipAdjacencyList using the 'name' of the Group resource.
   core.List<Group>? groups;
 
-  GetMembershipGraphResponse();
+  GetMembershipGraphResponse({
+    this.adjacencyList,
+    this.groups,
+  });
 
-  GetMembershipGraphResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('adjacencyList')) {
-      adjacencyList = (_json['adjacencyList'] as core.List)
-          .map<MembershipAdjacencyList>((value) =>
-              MembershipAdjacencyList.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('groups')) {
-      groups = (_json['groups'] as core.List)
-          .map<Group>((value) =>
-              Group.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GetMembershipGraphResponse.fromJson(core.Map _json)
+      : this(
+          adjacencyList: _json.containsKey('adjacencyList')
+              ? (_json['adjacencyList'] as core.List)
+                  .map<MembershipAdjacencyList>((value) =>
+                      MembershipAdjacencyList.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          groups: _json.containsKey('groups')
+              ? (_json['groups'] as core.List)
+                  .map<Group>((value) => Group.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (adjacencyList != null)
@@ -2197,22 +2220,28 @@ class GoogleAppsCloudidentityDevicesV1AndroidAttributes {
   /// administrator turns on the "Enforce Work Profile" policy.
   core.bool? supportsWorkProfile;
 
-  GoogleAppsCloudidentityDevicesV1AndroidAttributes();
+  GoogleAppsCloudidentityDevicesV1AndroidAttributes({
+    this.enabledUnknownSources,
+    this.ownerProfileAccount,
+    this.ownershipPrivilege,
+    this.supportsWorkProfile,
+  });
 
-  GoogleAppsCloudidentityDevicesV1AndroidAttributes.fromJson(core.Map _json) {
-    if (_json.containsKey('enabledUnknownSources')) {
-      enabledUnknownSources = _json['enabledUnknownSources'] as core.bool;
-    }
-    if (_json.containsKey('ownerProfileAccount')) {
-      ownerProfileAccount = _json['ownerProfileAccount'] as core.bool;
-    }
-    if (_json.containsKey('ownershipPrivilege')) {
-      ownershipPrivilege = _json['ownershipPrivilege'] as core.String;
-    }
-    if (_json.containsKey('supportsWorkProfile')) {
-      supportsWorkProfile = _json['supportsWorkProfile'] as core.bool;
-    }
-  }
+  GoogleAppsCloudidentityDevicesV1AndroidAttributes.fromJson(core.Map _json)
+      : this(
+          enabledUnknownSources: _json.containsKey('enabledUnknownSources')
+              ? _json['enabledUnknownSources'] as core.bool
+              : null,
+          ownerProfileAccount: _json.containsKey('ownerProfileAccount')
+              ? _json['ownerProfileAccount'] as core.bool
+              : null,
+          ownershipPrivilege: _json.containsKey('ownershipPrivilege')
+              ? _json['ownershipPrivilege'] as core.String
+              : null,
+          supportsWorkProfile: _json.containsKey('supportsWorkProfile')
+              ? _json['supportsWorkProfile'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabledUnknownSources != null)
@@ -2239,14 +2268,17 @@ class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest {
   /// Optional.
   core.String? customer;
 
-  GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest();
+  GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest({
+    this.customer,
+  });
 
   GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('customer')) {
-      customer = _json['customer'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          customer: _json.containsKey('customer')
+              ? _json['customer'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customer != null) 'customer': customer!,
@@ -2258,15 +2290,18 @@ class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse {
   /// Resultant DeviceUser object for the action.
   GoogleAppsCloudidentityDevicesV1DeviceUser? deviceUser;
 
-  GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse();
+  GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse({
+    this.deviceUser,
+  });
 
   GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('deviceUser')) {
-      deviceUser = GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
-          _json['deviceUser'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+      core.Map _json)
+      : this(
+          deviceUser: _json.containsKey('deviceUser')
+              ? GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
+                  _json['deviceUser'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceUser != null) 'deviceUser': deviceUser!.toJson(),
@@ -2286,14 +2321,17 @@ class GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest {
   /// Optional.
   core.String? customer;
 
-  GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest();
+  GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest({
+    this.customer,
+  });
 
   GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('customer')) {
-      customer = _json['customer'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          customer: _json.containsKey('customer')
+              ? _json['customer'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customer != null) 'customer': customer!,
@@ -2305,15 +2343,18 @@ class GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse {
   /// Resultant DeviceUser object for the action.
   GoogleAppsCloudidentityDevicesV1DeviceUser? deviceUser;
 
-  GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse();
+  GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse({
+    this.deviceUser,
+  });
 
   GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('deviceUser')) {
-      deviceUser = GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
-          _json['deviceUser'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+      core.Map _json)
+      : this(
+          deviceUser: _json.containsKey('deviceUser')
+              ? GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
+                  _json['deviceUser'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceUser != null) 'deviceUser': deviceUser!.toJson(),
@@ -2333,14 +2374,17 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest {
   /// Optional.
   core.String? customer;
 
-  GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest();
+  GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest({
+    this.customer,
+  });
 
   GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('customer')) {
-      customer = _json['customer'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          customer: _json.containsKey('customer')
+              ? _json['customer'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customer != null) 'customer': customer!,
@@ -2354,15 +2398,18 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse {
   /// Note that asset tags will not be returned in the device object.
   GoogleAppsCloudidentityDevicesV1Device? device;
 
-  GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse();
+  GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse({
+    this.device,
+  });
 
   GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('device')) {
-      device = GoogleAppsCloudidentityDevicesV1Device.fromJson(
-          _json['device'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+      core.Map _json)
+      : this(
+          device: _json.containsKey('device')
+              ? GoogleAppsCloudidentityDevicesV1Device.fromJson(
+                  _json['device'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (device != null) 'device': device!.toJson(),
@@ -2382,14 +2429,17 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest {
   /// Optional.
   core.String? customer;
 
-  GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest();
+  GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest({
+    this.customer,
+  });
 
   GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('customer')) {
-      customer = _json['customer'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          customer: _json.containsKey('customer')
+              ? _json['customer'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customer != null) 'customer': customer!,
@@ -2401,15 +2451,18 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse {
   /// Resultant DeviceUser object for the action.
   GoogleAppsCloudidentityDevicesV1DeviceUser? deviceUser;
 
-  GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse();
+  GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse({
+    this.deviceUser,
+  });
 
   GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('deviceUser')) {
-      deviceUser = GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
-          _json['deviceUser'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+      core.Map _json)
+      : this(
+          deviceUser: _json.containsKey('deviceUser')
+              ? GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
+                  _json['deviceUser'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceUser != null) 'deviceUser': deviceUser!.toJson(),
@@ -2515,55 +2568,65 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
   /// A descriptive cause of the health score.
   core.String? scoreReason;
 
-  GoogleAppsCloudidentityDevicesV1ClientState();
+  GoogleAppsCloudidentityDevicesV1ClientState({
+    this.assetTags,
+    this.complianceState,
+    this.createTime,
+    this.customId,
+    this.etag,
+    this.healthScore,
+    this.keyValuePairs,
+    this.lastUpdateTime,
+    this.managed,
+    this.name,
+    this.ownerType,
+    this.scoreReason,
+  });
 
-  GoogleAppsCloudidentityDevicesV1ClientState.fromJson(core.Map _json) {
-    if (_json.containsKey('assetTags')) {
-      assetTags = (_json['assetTags'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('complianceState')) {
-      complianceState = _json['complianceState'] as core.String;
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('customId')) {
-      customId = _json['customId'] as core.String;
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('healthScore')) {
-      healthScore = _json['healthScore'] as core.String;
-    }
-    if (_json.containsKey('keyValuePairs')) {
-      keyValuePairs =
-          (_json['keyValuePairs'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          GoogleAppsCloudidentityDevicesV1CustomAttributeValue.fromJson(
-              item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('lastUpdateTime')) {
-      lastUpdateTime = _json['lastUpdateTime'] as core.String;
-    }
-    if (_json.containsKey('managed')) {
-      managed = _json['managed'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('ownerType')) {
-      ownerType = _json['ownerType'] as core.String;
-    }
-    if (_json.containsKey('scoreReason')) {
-      scoreReason = _json['scoreReason'] as core.String;
-    }
-  }
+  GoogleAppsCloudidentityDevicesV1ClientState.fromJson(core.Map _json)
+      : this(
+          assetTags: _json.containsKey('assetTags')
+              ? (_json['assetTags'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          complianceState: _json.containsKey('complianceState')
+              ? _json['complianceState'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          customId: _json.containsKey('customId')
+              ? _json['customId'] as core.String
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          healthScore: _json.containsKey('healthScore')
+              ? _json['healthScore'] as core.String
+              : null,
+          keyValuePairs: _json.containsKey('keyValuePairs')
+              ? (_json['keyValuePairs'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    GoogleAppsCloudidentityDevicesV1CustomAttributeValue
+                        .fromJson(item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          lastUpdateTime: _json.containsKey('lastUpdateTime')
+              ? _json['lastUpdateTime'] as core.String
+              : null,
+          managed: _json.containsKey('managed')
+              ? _json['managed'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          ownerType: _json.containsKey('ownerType')
+              ? _json['ownerType'] as core.String
+              : null,
+          scoreReason: _json.containsKey('scoreReason')
+              ? _json['scoreReason'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assetTags != null) 'assetTags': assetTags!,
@@ -2594,20 +2657,24 @@ class GoogleAppsCloudidentityDevicesV1CustomAttributeValue {
   /// Represents a string value.
   core.String? stringValue;
 
-  GoogleAppsCloudidentityDevicesV1CustomAttributeValue();
+  GoogleAppsCloudidentityDevicesV1CustomAttributeValue({
+    this.boolValue,
+    this.numberValue,
+    this.stringValue,
+  });
 
-  GoogleAppsCloudidentityDevicesV1CustomAttributeValue.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('boolValue')) {
-      boolValue = _json['boolValue'] as core.bool;
-    }
-    if (_json.containsKey('numberValue')) {
-      numberValue = (_json['numberValue'] as core.num).toDouble();
-    }
-    if (_json.containsKey('stringValue')) {
-      stringValue = _json['stringValue'] as core.String;
-    }
-  }
+  GoogleAppsCloudidentityDevicesV1CustomAttributeValue.fromJson(core.Map _json)
+      : this(
+          boolValue: _json.containsKey('boolValue')
+              ? _json['boolValue'] as core.bool
+              : null,
+          numberValue: _json.containsKey('numberValue')
+              ? (_json['numberValue'] as core.num).toDouble()
+              : null,
+          stringValue: _json.containsKey('stringValue')
+              ? _json['stringValue'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (boolValue != null) 'boolValue': boolValue!,
@@ -2810,101 +2877,123 @@ class GoogleAppsCloudidentityDevicesV1Device {
   /// WiFi MAC addresses of device.
   core.List<core.String>? wifiMacAddresses;
 
-  GoogleAppsCloudidentityDevicesV1Device();
+  GoogleAppsCloudidentityDevicesV1Device({
+    this.androidSpecificAttributes,
+    this.assetTag,
+    this.basebandVersion,
+    this.bootloaderVersion,
+    this.brand,
+    this.buildNumber,
+    this.compromisedState,
+    this.createTime,
+    this.deviceType,
+    this.enabledDeveloperOptions,
+    this.enabledUsbDebugging,
+    this.encryptionState,
+    this.imei,
+    this.kernelVersion,
+    this.lastSyncTime,
+    this.managementState,
+    this.manufacturer,
+    this.meid,
+    this.model,
+    this.name,
+    this.networkOperator,
+    this.osVersion,
+    this.otherAccounts,
+    this.ownerType,
+    this.releaseVersion,
+    this.securityPatchTime,
+    this.serialNumber,
+    this.wifiMacAddresses,
+  });
 
-  GoogleAppsCloudidentityDevicesV1Device.fromJson(core.Map _json) {
-    if (_json.containsKey('androidSpecificAttributes')) {
-      androidSpecificAttributes =
-          GoogleAppsCloudidentityDevicesV1AndroidAttributes.fromJson(
-              _json['androidSpecificAttributes']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('assetTag')) {
-      assetTag = _json['assetTag'] as core.String;
-    }
-    if (_json.containsKey('basebandVersion')) {
-      basebandVersion = _json['basebandVersion'] as core.String;
-    }
-    if (_json.containsKey('bootloaderVersion')) {
-      bootloaderVersion = _json['bootloaderVersion'] as core.String;
-    }
-    if (_json.containsKey('brand')) {
-      brand = _json['brand'] as core.String;
-    }
-    if (_json.containsKey('buildNumber')) {
-      buildNumber = _json['buildNumber'] as core.String;
-    }
-    if (_json.containsKey('compromisedState')) {
-      compromisedState = _json['compromisedState'] as core.String;
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('deviceType')) {
-      deviceType = _json['deviceType'] as core.String;
-    }
-    if (_json.containsKey('enabledDeveloperOptions')) {
-      enabledDeveloperOptions = _json['enabledDeveloperOptions'] as core.bool;
-    }
-    if (_json.containsKey('enabledUsbDebugging')) {
-      enabledUsbDebugging = _json['enabledUsbDebugging'] as core.bool;
-    }
-    if (_json.containsKey('encryptionState')) {
-      encryptionState = _json['encryptionState'] as core.String;
-    }
-    if (_json.containsKey('imei')) {
-      imei = _json['imei'] as core.String;
-    }
-    if (_json.containsKey('kernelVersion')) {
-      kernelVersion = _json['kernelVersion'] as core.String;
-    }
-    if (_json.containsKey('lastSyncTime')) {
-      lastSyncTime = _json['lastSyncTime'] as core.String;
-    }
-    if (_json.containsKey('managementState')) {
-      managementState = _json['managementState'] as core.String;
-    }
-    if (_json.containsKey('manufacturer')) {
-      manufacturer = _json['manufacturer'] as core.String;
-    }
-    if (_json.containsKey('meid')) {
-      meid = _json['meid'] as core.String;
-    }
-    if (_json.containsKey('model')) {
-      model = _json['model'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('networkOperator')) {
-      networkOperator = _json['networkOperator'] as core.String;
-    }
-    if (_json.containsKey('osVersion')) {
-      osVersion = _json['osVersion'] as core.String;
-    }
-    if (_json.containsKey('otherAccounts')) {
-      otherAccounts = (_json['otherAccounts'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('ownerType')) {
-      ownerType = _json['ownerType'] as core.String;
-    }
-    if (_json.containsKey('releaseVersion')) {
-      releaseVersion = _json['releaseVersion'] as core.String;
-    }
-    if (_json.containsKey('securityPatchTime')) {
-      securityPatchTime = _json['securityPatchTime'] as core.String;
-    }
-    if (_json.containsKey('serialNumber')) {
-      serialNumber = _json['serialNumber'] as core.String;
-    }
-    if (_json.containsKey('wifiMacAddresses')) {
-      wifiMacAddresses = (_json['wifiMacAddresses'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  GoogleAppsCloudidentityDevicesV1Device.fromJson(core.Map _json)
+      : this(
+          androidSpecificAttributes:
+              _json.containsKey('androidSpecificAttributes')
+                  ? GoogleAppsCloudidentityDevicesV1AndroidAttributes.fromJson(
+                      _json['androidSpecificAttributes']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          assetTag: _json.containsKey('assetTag')
+              ? _json['assetTag'] as core.String
+              : null,
+          basebandVersion: _json.containsKey('basebandVersion')
+              ? _json['basebandVersion'] as core.String
+              : null,
+          bootloaderVersion: _json.containsKey('bootloaderVersion')
+              ? _json['bootloaderVersion'] as core.String
+              : null,
+          brand:
+              _json.containsKey('brand') ? _json['brand'] as core.String : null,
+          buildNumber: _json.containsKey('buildNumber')
+              ? _json['buildNumber'] as core.String
+              : null,
+          compromisedState: _json.containsKey('compromisedState')
+              ? _json['compromisedState'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          deviceType: _json.containsKey('deviceType')
+              ? _json['deviceType'] as core.String
+              : null,
+          enabledDeveloperOptions: _json.containsKey('enabledDeveloperOptions')
+              ? _json['enabledDeveloperOptions'] as core.bool
+              : null,
+          enabledUsbDebugging: _json.containsKey('enabledUsbDebugging')
+              ? _json['enabledUsbDebugging'] as core.bool
+              : null,
+          encryptionState: _json.containsKey('encryptionState')
+              ? _json['encryptionState'] as core.String
+              : null,
+          imei: _json.containsKey('imei') ? _json['imei'] as core.String : null,
+          kernelVersion: _json.containsKey('kernelVersion')
+              ? _json['kernelVersion'] as core.String
+              : null,
+          lastSyncTime: _json.containsKey('lastSyncTime')
+              ? _json['lastSyncTime'] as core.String
+              : null,
+          managementState: _json.containsKey('managementState')
+              ? _json['managementState'] as core.String
+              : null,
+          manufacturer: _json.containsKey('manufacturer')
+              ? _json['manufacturer'] as core.String
+              : null,
+          meid: _json.containsKey('meid') ? _json['meid'] as core.String : null,
+          model:
+              _json.containsKey('model') ? _json['model'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          networkOperator: _json.containsKey('networkOperator')
+              ? _json['networkOperator'] as core.String
+              : null,
+          osVersion: _json.containsKey('osVersion')
+              ? _json['osVersion'] as core.String
+              : null,
+          otherAccounts: _json.containsKey('otherAccounts')
+              ? (_json['otherAccounts'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          ownerType: _json.containsKey('ownerType')
+              ? _json['ownerType'] as core.String
+              : null,
+          releaseVersion: _json.containsKey('releaseVersion')
+              ? _json['releaseVersion'] as core.String
+              : null,
+          securityPatchTime: _json.containsKey('securityPatchTime')
+              ? _json['securityPatchTime'] as core.String
+              : null,
+          serialNumber: _json.containsKey('serialNumber')
+              ? _json['serialNumber'] as core.String
+              : null,
+          wifiMacAddresses: _json.containsKey('wifiMacAddresses')
+              ? (_json['wifiMacAddresses'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (androidSpecificAttributes != null)
@@ -3009,40 +3098,50 @@ class GoogleAppsCloudidentityDevicesV1DeviceUser {
   /// Email address of the user registered on the device.
   core.String? userEmail;
 
-  GoogleAppsCloudidentityDevicesV1DeviceUser();
+  GoogleAppsCloudidentityDevicesV1DeviceUser({
+    this.compromisedState,
+    this.createTime,
+    this.firstSyncTime,
+    this.languageCode,
+    this.lastSyncTime,
+    this.managementState,
+    this.name,
+    this.passwordState,
+    this.userAgent,
+    this.userEmail,
+  });
 
-  GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(core.Map _json) {
-    if (_json.containsKey('compromisedState')) {
-      compromisedState = _json['compromisedState'] as core.String;
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('firstSyncTime')) {
-      firstSyncTime = _json['firstSyncTime'] as core.String;
-    }
-    if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'] as core.String;
-    }
-    if (_json.containsKey('lastSyncTime')) {
-      lastSyncTime = _json['lastSyncTime'] as core.String;
-    }
-    if (_json.containsKey('managementState')) {
-      managementState = _json['managementState'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('passwordState')) {
-      passwordState = _json['passwordState'] as core.String;
-    }
-    if (_json.containsKey('userAgent')) {
-      userAgent = _json['userAgent'] as core.String;
-    }
-    if (_json.containsKey('userEmail')) {
-      userEmail = _json['userEmail'] as core.String;
-    }
-  }
+  GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(core.Map _json)
+      : this(
+          compromisedState: _json.containsKey('compromisedState')
+              ? _json['compromisedState'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          firstSyncTime: _json.containsKey('firstSyncTime')
+              ? _json['firstSyncTime'] as core.String
+              : null,
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
+          lastSyncTime: _json.containsKey('lastSyncTime')
+              ? _json['lastSyncTime'] as core.String
+              : null,
+          managementState: _json.containsKey('managementState')
+              ? _json['managementState'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          passwordState: _json.containsKey('passwordState')
+              ? _json['passwordState'] as core.String
+              : null,
+          userAgent: _json.containsKey('userAgent')
+              ? _json['userAgent'] as core.String
+              : null,
+          userEmail: _json.containsKey('userEmail')
+              ? _json['userEmail'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (compromisedState != null) 'compromisedState': compromisedState!,
@@ -3068,21 +3167,25 @@ class GoogleAppsCloudidentityDevicesV1ListClientStatesResponse {
   /// Empty if there are no more results.
   core.String? nextPageToken;
 
-  GoogleAppsCloudidentityDevicesV1ListClientStatesResponse();
+  GoogleAppsCloudidentityDevicesV1ListClientStatesResponse({
+    this.clientStates,
+    this.nextPageToken,
+  });
 
   GoogleAppsCloudidentityDevicesV1ListClientStatesResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('clientStates')) {
-      clientStates = (_json['clientStates'] as core.List)
-          .map<GoogleAppsCloudidentityDevicesV1ClientState>((value) =>
-              GoogleAppsCloudidentityDevicesV1ClientState.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          clientStates: _json.containsKey('clientStates')
+              ? (_json['clientStates'] as core.List)
+                  .map<GoogleAppsCloudidentityDevicesV1ClientState>((value) =>
+                      GoogleAppsCloudidentityDevicesV1ClientState.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clientStates != null)
@@ -3101,21 +3204,25 @@ class GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse {
   /// Empty if there are no more results.
   core.String? nextPageToken;
 
-  GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse();
+  GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse({
+    this.deviceUsers,
+    this.nextPageToken,
+  });
 
   GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('deviceUsers')) {
-      deviceUsers = (_json['deviceUsers'] as core.List)
-          .map<GoogleAppsCloudidentityDevicesV1DeviceUser>((value) =>
-              GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          deviceUsers: _json.containsKey('deviceUsers')
+              ? (_json['deviceUsers'] as core.List)
+                  .map<GoogleAppsCloudidentityDevicesV1DeviceUser>((value) =>
+                      GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceUsers != null)
@@ -3134,20 +3241,24 @@ class GoogleAppsCloudidentityDevicesV1ListDevicesResponse {
   /// Empty if there are no more results.
   core.String? nextPageToken;
 
-  GoogleAppsCloudidentityDevicesV1ListDevicesResponse();
+  GoogleAppsCloudidentityDevicesV1ListDevicesResponse({
+    this.devices,
+    this.nextPageToken,
+  });
 
-  GoogleAppsCloudidentityDevicesV1ListDevicesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('devices')) {
-      devices = (_json['devices'] as core.List)
-          .map<GoogleAppsCloudidentityDevicesV1Device>((value) =>
-              GoogleAppsCloudidentityDevicesV1Device.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  GoogleAppsCloudidentityDevicesV1ListDevicesResponse.fromJson(core.Map _json)
+      : this(
+          devices: _json.containsKey('devices')
+              ? (_json['devices'] as core.List)
+                  .map<GoogleAppsCloudidentityDevicesV1Device>((value) =>
+                      GoogleAppsCloudidentityDevicesV1Device.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (devices != null)
@@ -3175,22 +3286,27 @@ class GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse {
   /// Empty if there are no more results.
   core.String? nextPageToken;
 
-  GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse();
+  GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse({
+    this.customer,
+    this.names,
+    this.nextPageToken,
+  });
 
   GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('customer')) {
-      customer = _json['customer'] as core.String;
-    }
-    if (_json.containsKey('names')) {
-      names = (_json['names'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          customer: _json.containsKey('customer')
+              ? _json['customer'] as core.String
+              : null,
+          names: _json.containsKey('names')
+              ? (_json['names'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customer != null) 'customer': customer!,
@@ -3212,13 +3328,16 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceRequest {
   /// Optional.
   core.String? customer;
 
-  GoogleAppsCloudidentityDevicesV1WipeDeviceRequest();
+  GoogleAppsCloudidentityDevicesV1WipeDeviceRequest({
+    this.customer,
+  });
 
-  GoogleAppsCloudidentityDevicesV1WipeDeviceRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('customer')) {
-      customer = _json['customer'] as core.String;
-    }
-  }
+  GoogleAppsCloudidentityDevicesV1WipeDeviceRequest.fromJson(core.Map _json)
+      : this(
+          customer: _json.containsKey('customer')
+              ? _json['customer'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customer != null) 'customer': customer!,
@@ -3232,14 +3351,17 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceResponse {
   /// Note that asset tags will not be returned in the device object.
   GoogleAppsCloudidentityDevicesV1Device? device;
 
-  GoogleAppsCloudidentityDevicesV1WipeDeviceResponse();
+  GoogleAppsCloudidentityDevicesV1WipeDeviceResponse({
+    this.device,
+  });
 
-  GoogleAppsCloudidentityDevicesV1WipeDeviceResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('device')) {
-      device = GoogleAppsCloudidentityDevicesV1Device.fromJson(
-          _json['device'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleAppsCloudidentityDevicesV1WipeDeviceResponse.fromJson(core.Map _json)
+      : this(
+          device: _json.containsKey('device')
+              ? GoogleAppsCloudidentityDevicesV1Device.fromJson(
+                  _json['device'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (device != null) 'device': device!.toJson(),
@@ -3259,14 +3381,16 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest {
   /// Optional.
   core.String? customer;
 
-  GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest();
+  GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest({
+    this.customer,
+  });
 
-  GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('customer')) {
-      customer = _json['customer'] as core.String;
-    }
-  }
+  GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest.fromJson(core.Map _json)
+      : this(
+          customer: _json.containsKey('customer')
+              ? _json['customer'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customer != null) 'customer': customer!,
@@ -3278,15 +3402,18 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse {
   /// Resultant DeviceUser object for the action.
   GoogleAppsCloudidentityDevicesV1DeviceUser? deviceUser;
 
-  GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse();
+  GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse({
+    this.deviceUser,
+  });
 
   GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('deviceUser')) {
-      deviceUser = GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
-          _json['deviceUser'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+      core.Map _json)
+      : this(
+          deviceUser: _json.containsKey('deviceUser')
+              ? GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
+                  _json['deviceUser'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceUser != null) 'deviceUser': deviceUser!.toJson(),
@@ -3360,44 +3487,53 @@ class Group {
   /// Output only.
   core.String? updateTime;
 
-  Group();
+  Group({
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.dynamicGroupMetadata,
+    this.groupKey,
+    this.labels,
+    this.name,
+    this.parent,
+    this.updateTime,
+  });
 
-  Group.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('dynamicGroupMetadata')) {
-      dynamicGroupMetadata = DynamicGroupMetadata.fromJson(
-          _json['dynamicGroupMetadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('groupKey')) {
-      groupKey = EntityKey.fromJson(
-          _json['groupKey'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('parent')) {
-      parent = _json['parent'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  Group.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          dynamicGroupMetadata: _json.containsKey('dynamicGroupMetadata')
+              ? DynamicGroupMetadata.fromJson(_json['dynamicGroupMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          groupKey: _json.containsKey('groupKey')
+              ? EntityKey.fromJson(
+                  _json['groupKey'] as core.Map<core.String, core.dynamic>)
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          parent: _json.containsKey('parent')
+              ? _json['parent'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -3445,38 +3581,45 @@ class GroupRelation {
   /// Membership roles of the member for the group.
   core.List<TransitiveMembershipRole>? roles;
 
-  GroupRelation();
+  GroupRelation({
+    this.displayName,
+    this.group,
+    this.groupKey,
+    this.labels,
+    this.relationType,
+    this.roles,
+  });
 
-  GroupRelation.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('group')) {
-      group = _json['group'] as core.String;
-    }
-    if (_json.containsKey('groupKey')) {
-      groupKey = EntityKey.fromJson(
-          _json['groupKey'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('relationType')) {
-      relationType = _json['relationType'] as core.String;
-    }
-    if (_json.containsKey('roles')) {
-      roles = (_json['roles'] as core.List)
-          .map<TransitiveMembershipRole>((value) =>
-              TransitiveMembershipRole.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GroupRelation.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          group:
+              _json.containsKey('group') ? _json['group'] as core.String : null,
+          groupKey: _json.containsKey('groupKey')
+              ? EntityKey.fromJson(
+                  _json['groupKey'] as core.Map<core.String, core.dynamic>)
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          relationType: _json.containsKey('relationType')
+              ? _json['relationType'] as core.String
+              : null,
+          roles: _json.containsKey('roles')
+              ? (_json['roles'] as core.List)
+                  .map<TransitiveMembershipRole>((value) =>
+                      TransitiveMembershipRole.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -3500,19 +3643,23 @@ class ListGroupsResponse {
   /// results available for listing.
   core.String? nextPageToken;
 
-  ListGroupsResponse();
+  ListGroupsResponse({
+    this.groups,
+    this.nextPageToken,
+  });
 
-  ListGroupsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('groups')) {
-      groups = (_json['groups'] as core.List)
-          .map<Group>((value) =>
-              Group.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListGroupsResponse.fromJson(core.Map _json)
+      : this(
+          groups: _json.containsKey('groups')
+              ? (_json['groups'] as core.List)
+                  .map<Group>((value) => Group.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (groups != null)
@@ -3530,19 +3677,23 @@ class ListMembershipsResponse {
   /// there are no more results available.
   core.String? nextPageToken;
 
-  ListMembershipsResponse();
+  ListMembershipsResponse({
+    this.memberships,
+    this.nextPageToken,
+  });
 
-  ListMembershipsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('memberships')) {
-      memberships = (_json['memberships'] as core.List)
-          .map<Membership>((value) =>
-              Membership.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListMembershipsResponse.fromJson(core.Map _json)
+      : this(
+          memberships: _json.containsKey('memberships')
+              ? (_json['memberships'] as core.List)
+                  .map<Membership>((value) => Membership.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (memberships != null)
@@ -3557,13 +3708,14 @@ class LookupGroupNameResponse {
   /// of the looked-up `Group`.
   core.String? name;
 
-  LookupGroupNameResponse();
+  LookupGroupNameResponse({
+    this.name,
+  });
 
-  LookupGroupNameResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  LookupGroupNameResponse.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -3578,13 +3730,14 @@ class LookupMembershipNameResponse {
   /// Must be of the form `groups/{group_id}/memberships/{membership_id}`.
   core.String? name;
 
-  LookupMembershipNameResponse();
+  LookupMembershipNameResponse({
+    this.name,
+  });
 
-  LookupMembershipNameResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  LookupMembershipNameResponse.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -3617,29 +3770,35 @@ class MemberRelation {
   /// The membership role details (i.e name of role and expiry time).
   core.List<TransitiveMembershipRole>? roles;
 
-  MemberRelation();
+  MemberRelation({
+    this.member,
+    this.preferredMemberKey,
+    this.relationType,
+    this.roles,
+  });
 
-  MemberRelation.fromJson(core.Map _json) {
-    if (_json.containsKey('member')) {
-      member = _json['member'] as core.String;
-    }
-    if (_json.containsKey('preferredMemberKey')) {
-      preferredMemberKey = (_json['preferredMemberKey'] as core.List)
-          .map<EntityKey>((value) =>
-              EntityKey.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('relationType')) {
-      relationType = _json['relationType'] as core.String;
-    }
-    if (_json.containsKey('roles')) {
-      roles = (_json['roles'] as core.List)
-          .map<TransitiveMembershipRole>((value) =>
-              TransitiveMembershipRole.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  MemberRelation.fromJson(core.Map _json)
+      : this(
+          member: _json.containsKey('member')
+              ? _json['member'] as core.String
+              : null,
+          preferredMemberKey: _json.containsKey('preferredMemberKey')
+              ? (_json['preferredMemberKey'] as core.List)
+                  .map<EntityKey>((value) => EntityKey.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          relationType: _json.containsKey('relationType')
+              ? _json['relationType'] as core.String
+              : null,
+          roles: _json.containsKey('roles')
+              ? (_json['roles'] as core.List)
+                  .map<TransitiveMembershipRole>((value) =>
+                      TransitiveMembershipRole.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (member != null) 'member': member!,
@@ -3699,32 +3858,36 @@ class Membership {
   /// Output only.
   core.String? updateTime;
 
-  Membership();
+  Membership({
+    this.createTime,
+    this.name,
+    this.preferredMemberKey,
+    this.roles,
+    this.type,
+    this.updateTime,
+  });
 
-  Membership.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('preferredMemberKey')) {
-      preferredMemberKey = EntityKey.fromJson(
-          _json['preferredMemberKey'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('roles')) {
-      roles = (_json['roles'] as core.List)
-          .map<MembershipRole>((value) => MembershipRole.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  Membership.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          preferredMemberKey: _json.containsKey('preferredMemberKey')
+              ? EntityKey.fromJson(_json['preferredMemberKey']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          roles: _json.containsKey('roles')
+              ? (_json['roles'] as core.List)
+                  .map<MembershipRole>((value) => MembershipRole.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -3751,19 +3914,22 @@ class MembershipAdjacencyList {
   /// Resource name of the group that the members belong to.
   core.String? group;
 
-  MembershipAdjacencyList();
+  MembershipAdjacencyList({
+    this.edges,
+    this.group,
+  });
 
-  MembershipAdjacencyList.fromJson(core.Map _json) {
-    if (_json.containsKey('edges')) {
-      edges = (_json['edges'] as core.List)
-          .map<Membership>((value) =>
-              Membership.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('group')) {
-      group = _json['group'] as core.String;
-    }
-  }
+  MembershipAdjacencyList.fromJson(core.Map _json)
+      : this(
+          edges: _json.containsKey('edges')
+              ? (_json['edges'] as core.List)
+                  .map<Membership>((value) => Membership.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          group:
+              _json.containsKey('group') ? _json['group'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (edges != null)
@@ -3787,17 +3953,19 @@ class MembershipRole {
   /// Must be one of `OWNER`, `MANAGER`, `MEMBER`.
   core.String? name;
 
-  MembershipRole();
+  MembershipRole({
+    this.expiryDetail,
+    this.name,
+  });
 
-  MembershipRole.fromJson(core.Map _json) {
-    if (_json.containsKey('expiryDetail')) {
-      expiryDetail = ExpiryDetail.fromJson(
-          _json['expiryDetail'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  MembershipRole.fromJson(core.Map _json)
+      : this(
+          expiryDetail: _json.containsKey('expiryDetail')
+              ? ExpiryDetail.fromJson(
+                  _json['expiryDetail'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (expiryDetail != null) 'expiryDetail': expiryDetail!.toJson(),
@@ -3828,28 +3996,33 @@ class ModifyMembershipRolesRequest {
   /// supported. Must not be set if either `add_roles` or `remove_roles` is set.
   core.List<UpdateMembershipRolesParams>? updateRolesParams;
 
-  ModifyMembershipRolesRequest();
+  ModifyMembershipRolesRequest({
+    this.addRoles,
+    this.removeRoles,
+    this.updateRolesParams,
+  });
 
-  ModifyMembershipRolesRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('addRoles')) {
-      addRoles = (_json['addRoles'] as core.List)
-          .map<MembershipRole>((value) => MembershipRole.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('removeRoles')) {
-      removeRoles = (_json['removeRoles'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('updateRolesParams')) {
-      updateRolesParams = (_json['updateRolesParams'] as core.List)
-          .map<UpdateMembershipRolesParams>((value) =>
-              UpdateMembershipRolesParams.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ModifyMembershipRolesRequest.fromJson(core.Map _json)
+      : this(
+          addRoles: _json.containsKey('addRoles')
+              ? (_json['addRoles'] as core.List)
+                  .map<MembershipRole>((value) => MembershipRole.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          removeRoles: _json.containsKey('removeRoles')
+              ? (_json['removeRoles'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          updateRolesParams: _json.containsKey('updateRolesParams')
+              ? (_json['updateRolesParams'] as core.List)
+                  .map<UpdateMembershipRolesParams>((value) =>
+                      UpdateMembershipRolesParams.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (addRoles != null)
@@ -3866,14 +4039,17 @@ class ModifyMembershipRolesResponse {
   /// The `Membership` resource after modifying its `MembershipRole`s.
   Membership? membership;
 
-  ModifyMembershipRolesResponse();
+  ModifyMembershipRolesResponse({
+    this.membership,
+  });
 
-  ModifyMembershipRolesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('membership')) {
-      membership = Membership.fromJson(
-          _json['membership'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ModifyMembershipRolesResponse.fromJson(core.Map _json)
+      : this(
+          membership: _json.containsKey('membership')
+              ? Membership.fromJson(
+                  _json['membership'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (membership != null) 'membership': membership!.toJson(),
@@ -3923,36 +4099,39 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object>? response;
 
-  Operation();
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
-  Operation.fromJson(core.Map _json) {
-    if (_json.containsKey('done')) {
-      done = _json['done'] as core.bool;
-    }
-    if (_json.containsKey('error')) {
-      error = Status.fromJson(
-          _json['error'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('response')) {
-      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-  }
+  Operation.fromJson(core.Map _json)
+      : this(
+          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
+          error: _json.containsKey('error')
+              ? Status.fromJson(
+                  _json['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          response: _json.containsKey('response')
+              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
@@ -3972,19 +4151,23 @@ class SearchGroupsResponse {
   /// there are no more results available.
   core.String? nextPageToken;
 
-  SearchGroupsResponse();
+  SearchGroupsResponse({
+    this.groups,
+    this.nextPageToken,
+  });
 
-  SearchGroupsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('groups')) {
-      groups = (_json['groups'] as core.List)
-          .map<Group>((value) =>
-              Group.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  SearchGroupsResponse.fromJson(core.Map _json)
+      : this(
+          groups: _json.containsKey('groups')
+              ? (_json['groups'] as core.List)
+                  .map<Group>((value) => Group.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (groups != null)
@@ -4002,19 +4185,23 @@ class SearchTransitiveGroupsResponse {
   /// results available for listing.
   core.String? nextPageToken;
 
-  SearchTransitiveGroupsResponse();
+  SearchTransitiveGroupsResponse({
+    this.memberships,
+    this.nextPageToken,
+  });
 
-  SearchTransitiveGroupsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('memberships')) {
-      memberships = (_json['memberships'] as core.List)
-          .map<GroupRelation>((value) => GroupRelation.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  SearchTransitiveGroupsResponse.fromJson(core.Map _json)
+      : this(
+          memberships: _json.containsKey('memberships')
+              ? (_json['memberships'] as core.List)
+                  .map<GroupRelation>((value) => GroupRelation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (memberships != null)
@@ -4032,19 +4219,23 @@ class SearchTransitiveMembershipsResponse {
   /// results.
   core.String? nextPageToken;
 
-  SearchTransitiveMembershipsResponse();
+  SearchTransitiveMembershipsResponse({
+    this.memberships,
+    this.nextPageToken,
+  });
 
-  SearchTransitiveMembershipsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('memberships')) {
-      memberships = (_json['memberships'] as core.List)
-          .map<MemberRelation>((value) => MemberRelation.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  SearchTransitiveMembershipsResponse.fromJson(core.Map _json)
+      : this(
+          memberships: _json.containsKey('memberships')
+              ? (_json['memberships'] as core.List)
+                  .map<MemberRelation>((value) => MemberRelation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (memberships != null)
@@ -4078,27 +4269,30 @@ class Status {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  Status();
+  Status({
+    this.code,
+    this.details,
+    this.message,
+  });
 
-  Status.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.int;
-    }
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  Status.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -4115,13 +4309,14 @@ class TransitiveMembershipRole {
   /// `"MANAGER"`.
   core.String? role;
 
-  TransitiveMembershipRole();
+  TransitiveMembershipRole({
+    this.role,
+  });
 
-  TransitiveMembershipRole.fromJson(core.Map _json) {
-    if (_json.containsKey('role')) {
-      role = _json['role'] as core.String;
-    }
-  }
+  TransitiveMembershipRole.fromJson(core.Map _json)
+      : this(
+          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (role != null) 'role': role!,
@@ -4140,17 +4335,21 @@ class UpdateMembershipRolesParams {
   /// Only `MEMBER` `MembershipRole` can currently be updated.
   MembershipRole? membershipRole;
 
-  UpdateMembershipRolesParams();
+  UpdateMembershipRolesParams({
+    this.fieldMask,
+    this.membershipRole,
+  });
 
-  UpdateMembershipRolesParams.fromJson(core.Map _json) {
-    if (_json.containsKey('fieldMask')) {
-      fieldMask = _json['fieldMask'] as core.String;
-    }
-    if (_json.containsKey('membershipRole')) {
-      membershipRole = MembershipRole.fromJson(
-          _json['membershipRole'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  UpdateMembershipRolesParams.fromJson(core.Map _json)
+      : this(
+          fieldMask: _json.containsKey('fieldMask')
+              ? _json['fieldMask'] as core.String
+              : null,
+          membershipRole: _json.containsKey('membershipRole')
+              ? MembershipRole.fromJson(_json['membershipRole']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fieldMask != null) 'fieldMask': fieldMask!,
@@ -4188,22 +4387,25 @@ class UserInvitation {
   /// Time when the `UserInvitation` was last updated.
   core.String? updateTime;
 
-  UserInvitation();
+  UserInvitation({
+    this.mailsSentCount,
+    this.name,
+    this.state,
+    this.updateTime,
+  });
 
-  UserInvitation.fromJson(core.Map _json) {
-    if (_json.containsKey('mailsSentCount')) {
-      mailsSentCount = _json['mailsSentCount'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  UserInvitation.fromJson(core.Map _json)
+      : this(
+          mailsSentCount: _json.containsKey('mailsSentCount')
+              ? _json['mailsSentCount'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mailsSentCount != null) 'mailsSentCount': mailsSentCount!,

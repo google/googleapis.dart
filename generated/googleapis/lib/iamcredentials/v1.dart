@@ -281,23 +281,28 @@ class GenerateAccessTokenRequest {
   /// Required.
   core.List<core.String>? scope;
 
-  GenerateAccessTokenRequest();
+  GenerateAccessTokenRequest({
+    this.delegates,
+    this.lifetime,
+    this.scope,
+  });
 
-  GenerateAccessTokenRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('delegates')) {
-      delegates = (_json['delegates'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('lifetime')) {
-      lifetime = _json['lifetime'] as core.String;
-    }
-    if (_json.containsKey('scope')) {
-      scope = (_json['scope'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  GenerateAccessTokenRequest.fromJson(core.Map _json)
+      : this(
+          delegates: _json.containsKey('delegates')
+              ? (_json['delegates'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          lifetime: _json.containsKey('lifetime')
+              ? _json['lifetime'] as core.String
+              : null,
+          scope: _json.containsKey('scope')
+              ? (_json['scope'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (delegates != null) 'delegates': delegates!,
@@ -315,16 +320,20 @@ class GenerateAccessTokenResponse {
   /// The expiration time is always set.
   core.String? expireTime;
 
-  GenerateAccessTokenResponse();
+  GenerateAccessTokenResponse({
+    this.accessToken,
+    this.expireTime,
+  });
 
-  GenerateAccessTokenResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('accessToken')) {
-      accessToken = _json['accessToken'] as core.String;
-    }
-    if (_json.containsKey('expireTime')) {
-      expireTime = _json['expireTime'] as core.String;
-    }
-  }
+  GenerateAccessTokenResponse.fromJson(core.Map _json)
+      : this(
+          accessToken: _json.containsKey('accessToken')
+              ? _json['accessToken'] as core.String
+              : null,
+          expireTime: _json.containsKey('expireTime')
+              ? _json['expireTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessToken != null) 'accessToken': accessToken!,
@@ -357,21 +366,26 @@ class GenerateIdTokenRequest {
   /// claims.
   core.bool? includeEmail;
 
-  GenerateIdTokenRequest();
+  GenerateIdTokenRequest({
+    this.audience,
+    this.delegates,
+    this.includeEmail,
+  });
 
-  GenerateIdTokenRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('audience')) {
-      audience = _json['audience'] as core.String;
-    }
-    if (_json.containsKey('delegates')) {
-      delegates = (_json['delegates'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('includeEmail')) {
-      includeEmail = _json['includeEmail'] as core.bool;
-    }
-  }
+  GenerateIdTokenRequest.fromJson(core.Map _json)
+      : this(
+          audience: _json.containsKey('audience')
+              ? _json['audience'] as core.String
+              : null,
+          delegates: _json.containsKey('delegates')
+              ? (_json['delegates'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          includeEmail: _json.containsKey('includeEmail')
+              ? _json['includeEmail'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (audience != null) 'audience': audience!,
@@ -384,13 +398,15 @@ class GenerateIdTokenResponse {
   /// The OpenId Connect ID token.
   core.String? token;
 
-  GenerateIdTokenResponse();
+  GenerateIdTokenResponse({
+    this.token,
+  });
 
-  GenerateIdTokenResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('token')) {
-      token = _json['token'] as core.String;
-    }
-  }
+  GenerateIdTokenResponse.fromJson(core.Map _json)
+      : this(
+          token:
+              _json.containsKey('token') ? _json['token'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (token != null) 'token': token!,
@@ -421,18 +437,22 @@ class SignBlobRequest {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  SignBlobRequest();
+  SignBlobRequest({
+    this.delegates,
+    this.payload,
+  });
 
-  SignBlobRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('delegates')) {
-      delegates = (_json['delegates'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('payload')) {
-      payload = _json['payload'] as core.String;
-    }
-  }
+  SignBlobRequest.fromJson(core.Map _json)
+      : this(
+          delegates: _json.containsKey('delegates')
+              ? (_json['delegates'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          payload: _json.containsKey('payload')
+              ? _json['payload'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (delegates != null) 'delegates': delegates!,
@@ -469,16 +489,19 @@ class SignBlobResponse {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  SignBlobResponse();
+  SignBlobResponse({
+    this.keyId,
+    this.signedBlob,
+  });
 
-  SignBlobResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('keyId')) {
-      keyId = _json['keyId'] as core.String;
-    }
-    if (_json.containsKey('signedBlob')) {
-      signedBlob = _json['signedBlob'] as core.String;
-    }
-  }
+  SignBlobResponse.fromJson(core.Map _json)
+      : this(
+          keyId:
+              _json.containsKey('keyId') ? _json['keyId'] as core.String : null,
+          signedBlob: _json.containsKey('signedBlob')
+              ? _json['signedBlob'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (keyId != null) 'keyId': keyId!,
@@ -509,18 +532,22 @@ class SignJwtRequest {
   /// Required.
   core.String? payload;
 
-  SignJwtRequest();
+  SignJwtRequest({
+    this.delegates,
+    this.payload,
+  });
 
-  SignJwtRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('delegates')) {
-      delegates = (_json['delegates'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('payload')) {
-      payload = _json['payload'] as core.String;
-    }
-  }
+  SignJwtRequest.fromJson(core.Map _json)
+      : this(
+          delegates: _json.containsKey('delegates')
+              ? (_json['delegates'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          payload: _json.containsKey('payload')
+              ? _json['payload'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (delegates != null) 'delegates': delegates!,
@@ -552,16 +579,19 @@ class SignJwtResponse {
   /// the signature.
   core.String? signedJwt;
 
-  SignJwtResponse();
+  SignJwtResponse({
+    this.keyId,
+    this.signedJwt,
+  });
 
-  SignJwtResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('keyId')) {
-      keyId = _json['keyId'] as core.String;
-    }
-    if (_json.containsKey('signedJwt')) {
-      signedJwt = _json['signedJwt'] as core.String;
-    }
-  }
+  SignJwtResponse.fromJson(core.Map _json)
+      : this(
+          keyId:
+              _json.containsKey('keyId') ? _json['keyId'] as core.String : null,
+          signedJwt: _json.containsKey('signedJwt')
+              ? _json['signedJwt'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (keyId != null) 'keyId': keyId!,

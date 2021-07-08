@@ -128,19 +128,24 @@ class GoogleCloudPolicytroubleshooterV1AccessTuple {
   /// Required.
   core.String? principal;
 
-  GoogleCloudPolicytroubleshooterV1AccessTuple();
+  GoogleCloudPolicytroubleshooterV1AccessTuple({
+    this.fullResourceName,
+    this.permission,
+    this.principal,
+  });
 
-  GoogleCloudPolicytroubleshooterV1AccessTuple.fromJson(core.Map _json) {
-    if (_json.containsKey('fullResourceName')) {
-      fullResourceName = _json['fullResourceName'] as core.String;
-    }
-    if (_json.containsKey('permission')) {
-      permission = _json['permission'] as core.String;
-    }
-    if (_json.containsKey('principal')) {
-      principal = _json['principal'] as core.String;
-    }
-  }
+  GoogleCloudPolicytroubleshooterV1AccessTuple.fromJson(core.Map _json)
+      : this(
+          fullResourceName: _json.containsKey('fullResourceName')
+              ? _json['fullResourceName'] as core.String
+              : null,
+          permission: _json.containsKey('permission')
+              ? _json['permission'] as core.String
+              : null,
+          principal: _json.containsKey('principal')
+              ? _json['principal'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fullResourceName != null) 'fullResourceName': fullResourceName!,
@@ -233,39 +238,46 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanation {
   /// data point is likely to affect the overall determination.
   core.String? rolePermissionRelevance;
 
-  GoogleCloudPolicytroubleshooterV1BindingExplanation();
+  GoogleCloudPolicytroubleshooterV1BindingExplanation({
+    this.access,
+    this.condition,
+    this.memberships,
+    this.relevance,
+    this.role,
+    this.rolePermission,
+    this.rolePermissionRelevance,
+  });
 
-  GoogleCloudPolicytroubleshooterV1BindingExplanation.fromJson(core.Map _json) {
-    if (_json.containsKey('access')) {
-      access = _json['access'] as core.String;
-    }
-    if (_json.containsKey('condition')) {
-      condition = GoogleTypeExpr.fromJson(
-          _json['condition'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('memberships')) {
-      memberships =
-          (_json['memberships'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership
-              .fromJson(item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('relevance')) {
-      relevance = _json['relevance'] as core.String;
-    }
-    if (_json.containsKey('role')) {
-      role = _json['role'] as core.String;
-    }
-    if (_json.containsKey('rolePermission')) {
-      rolePermission = _json['rolePermission'] as core.String;
-    }
-    if (_json.containsKey('rolePermissionRelevance')) {
-      rolePermissionRelevance = _json['rolePermissionRelevance'] as core.String;
-    }
-  }
+  GoogleCloudPolicytroubleshooterV1BindingExplanation.fromJson(core.Map _json)
+      : this(
+          access: _json.containsKey('access')
+              ? _json['access'] as core.String
+              : null,
+          condition: _json.containsKey('condition')
+              ? GoogleTypeExpr.fromJson(
+                  _json['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          memberships: _json.containsKey('memberships')
+              ? (_json['memberships'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership
+                        .fromJson(item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          relevance: _json.containsKey('relevance')
+              ? _json['relevance'] as core.String
+              : null,
+          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+          rolePermission: _json.containsKey('rolePermission')
+              ? _json['rolePermission'] as core.String
+              : null,
+          rolePermissionRelevance: _json.containsKey('rolePermissionRelevance')
+              ? _json['rolePermissionRelevance'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (access != null) 'access': access!,
@@ -308,17 +320,21 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership {
   /// data point is likely to affect the overall determination.
   core.String? relevance;
 
-  GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership();
+  GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership({
+    this.membership,
+    this.relevance,
+  });
 
   GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('membership')) {
-      membership = _json['membership'] as core.String;
-    }
-    if (_json.containsKey('relevance')) {
-      relevance = _json['relevance'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          membership: _json.containsKey('membership')
+              ? _json['membership'] as core.String
+              : null,
+          relevance: _json.containsKey('relevance')
+              ? _json['relevance'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (membership != null) 'membership': membership!,
@@ -382,30 +398,39 @@ class GoogleCloudPolicytroubleshooterV1ExplainedPolicy {
   /// data point is likely to affect the overall determination.
   core.String? relevance;
 
-  GoogleCloudPolicytroubleshooterV1ExplainedPolicy();
+  GoogleCloudPolicytroubleshooterV1ExplainedPolicy({
+    this.access,
+    this.bindingExplanations,
+    this.fullResourceName,
+    this.policy,
+    this.relevance,
+  });
 
-  GoogleCloudPolicytroubleshooterV1ExplainedPolicy.fromJson(core.Map _json) {
-    if (_json.containsKey('access')) {
-      access = _json['access'] as core.String;
-    }
-    if (_json.containsKey('bindingExplanations')) {
-      bindingExplanations = (_json['bindingExplanations'] as core.List)
-          .map<GoogleCloudPolicytroubleshooterV1BindingExplanation>((value) =>
-              GoogleCloudPolicytroubleshooterV1BindingExplanation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('fullResourceName')) {
-      fullResourceName = _json['fullResourceName'] as core.String;
-    }
-    if (_json.containsKey('policy')) {
-      policy = GoogleIamV1Policy.fromJson(
-          _json['policy'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('relevance')) {
-      relevance = _json['relevance'] as core.String;
-    }
-  }
+  GoogleCloudPolicytroubleshooterV1ExplainedPolicy.fromJson(core.Map _json)
+      : this(
+          access: _json.containsKey('access')
+              ? _json['access'] as core.String
+              : null,
+          bindingExplanations: _json.containsKey('bindingExplanations')
+              ? (_json['bindingExplanations'] as core.List)
+                  .map<GoogleCloudPolicytroubleshooterV1BindingExplanation>(
+                      (value) =>
+                          GoogleCloudPolicytroubleshooterV1BindingExplanation
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          fullResourceName: _json.containsKey('fullResourceName')
+              ? _json['fullResourceName'] as core.String
+              : null,
+          policy: _json.containsKey('policy')
+              ? GoogleIamV1Policy.fromJson(
+                  _json['policy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          relevance: _json.containsKey('relevance')
+              ? _json['relevance'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (access != null) 'access': access!,
@@ -424,15 +449,18 @@ class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest {
   /// a resource.
   GoogleCloudPolicytroubleshooterV1AccessTuple? accessTuple;
 
-  GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest();
+  GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest({
+    this.accessTuple,
+  });
 
   GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('accessTuple')) {
-      accessTuple = GoogleCloudPolicytroubleshooterV1AccessTuple.fromJson(
-          _json['accessTuple'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+      core.Map _json)
+      : this(
+          accessTuple: _json.containsKey('accessTuple')
+              ? GoogleCloudPolicytroubleshooterV1AccessTuple.fromJson(
+                  _json['accessTuple'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessTuple != null) 'accessTuple': accessTuple!.toJson(),
@@ -466,21 +494,27 @@ class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse {
   core.List<GoogleCloudPolicytroubleshooterV1ExplainedPolicy>?
       explainedPolicies;
 
-  GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse();
+  GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse({
+    this.access,
+    this.explainedPolicies,
+  });
 
   GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('access')) {
-      access = _json['access'] as core.String;
-    }
-    if (_json.containsKey('explainedPolicies')) {
-      explainedPolicies = (_json['explainedPolicies'] as core.List)
-          .map<GoogleCloudPolicytroubleshooterV1ExplainedPolicy>((value) =>
-              GoogleCloudPolicytroubleshooterV1ExplainedPolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+      core.Map _json)
+      : this(
+          access: _json.containsKey('access')
+              ? _json['access'] as core.String
+              : null,
+          explainedPolicies: _json.containsKey('explainedPolicies')
+              ? (_json['explainedPolicies'] as core.List)
+                  .map<GoogleCloudPolicytroubleshooterV1ExplainedPolicy>(
+                      (value) =>
+                          GoogleCloudPolicytroubleshooterV1ExplainedPolicy
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (access != null) 'access': access!,
@@ -517,20 +551,24 @@ class GoogleIamV1AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  GoogleIamV1AuditConfig();
+  GoogleIamV1AuditConfig({
+    this.auditLogConfigs,
+    this.service,
+  });
 
-  GoogleIamV1AuditConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('auditLogConfigs')) {
-      auditLogConfigs = (_json['auditLogConfigs'] as core.List)
-          .map<GoogleIamV1AuditLogConfig>((value) =>
-              GoogleIamV1AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('service')) {
-      service = _json['service'] as core.String;
-    }
-  }
+  GoogleIamV1AuditConfig.fromJson(core.Map _json)
+      : this(
+          auditLogConfigs: _json.containsKey('auditLogConfigs')
+              ? (_json['auditLogConfigs'] as core.List)
+                  .map<GoogleIamV1AuditLogConfig>((value) =>
+                      GoogleIamV1AuditLogConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          service: _json.containsKey('service')
+              ? _json['service'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (auditLogConfigs != null)
@@ -561,18 +599,22 @@ class GoogleIamV1AuditLogConfig {
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
   core.String? logType;
 
-  GoogleIamV1AuditLogConfig();
+  GoogleIamV1AuditLogConfig({
+    this.exemptedMembers,
+    this.logType,
+  });
 
-  GoogleIamV1AuditLogConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('exemptedMembers')) {
-      exemptedMembers = (_json['exemptedMembers'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('logType')) {
-      logType = _json['logType'] as core.String;
-    }
-  }
+  GoogleIamV1AuditLogConfig.fromJson(core.Map _json)
+      : this(
+          exemptedMembers: _json.containsKey('exemptedMembers')
+              ? (_json['exemptedMembers'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          logType: _json.containsKey('logType')
+              ? _json['logType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
@@ -629,22 +671,25 @@ class GoogleIamV1Binding {
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String? role;
 
-  GoogleIamV1Binding();
+  GoogleIamV1Binding({
+    this.condition,
+    this.members,
+    this.role,
+  });
 
-  GoogleIamV1Binding.fromJson(core.Map _json) {
-    if (_json.containsKey('condition')) {
-      condition = GoogleTypeExpr.fromJson(
-          _json['condition'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('members')) {
-      members = (_json['members'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('role')) {
-      role = _json['role'] as core.String;
-    }
-  }
+  GoogleIamV1Binding.fromJson(core.Map _json)
+      : this(
+          condition: _json.containsKey('condition')
+              ? GoogleTypeExpr.fromJson(
+                  _json['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          members: _json.containsKey('members')
+              ? (_json['members'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!.toJson(),
@@ -734,29 +779,34 @@ class GoogleIamV1Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  GoogleIamV1Policy();
+  GoogleIamV1Policy({
+    this.auditConfigs,
+    this.bindings,
+    this.etag,
+    this.version,
+  });
 
-  GoogleIamV1Policy.fromJson(core.Map _json) {
-    if (_json.containsKey('auditConfigs')) {
-      auditConfigs = (_json['auditConfigs'] as core.List)
-          .map<GoogleIamV1AuditConfig>((value) =>
-              GoogleIamV1AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('bindings')) {
-      bindings = (_json['bindings'] as core.List)
-          .map<GoogleIamV1Binding>((value) => GoogleIamV1Binding.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.int;
-    }
-  }
+  GoogleIamV1Policy.fromJson(core.Map _json)
+      : this(
+          auditConfigs: _json.containsKey('auditConfigs')
+              ? (_json['auditConfigs'] as core.List)
+                  .map<GoogleIamV1AuditConfig>((value) =>
+                      GoogleIamV1AuditConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          bindings: _json.containsKey('bindings')
+              ? (_json['bindings'] as core.List)
+                  .map<GoogleIamV1Binding>((value) =>
+                      GoogleIamV1Binding.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (auditConfigs != null)
@@ -812,22 +862,27 @@ class GoogleTypeExpr {
   /// Optional.
   core.String? title;
 
-  GoogleTypeExpr();
+  GoogleTypeExpr({
+    this.description,
+    this.expression,
+    this.location,
+    this.title,
+  });
 
-  GoogleTypeExpr.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('expression')) {
-      expression = _json['expression'] as core.String;
-    }
-    if (_json.containsKey('location')) {
-      location = _json['location'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  GoogleTypeExpr.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          expression: _json.containsKey('expression')
+              ? _json['expression'] as core.String
+              : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,

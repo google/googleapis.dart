@@ -1334,17 +1334,19 @@ class GoogleFirebaseAppcheckV1betaAppAttestChallengeResponse {
   /// field.
   core.String? ttl;
 
-  GoogleFirebaseAppcheckV1betaAppAttestChallengeResponse();
+  GoogleFirebaseAppcheckV1betaAppAttestChallengeResponse({
+    this.challenge,
+    this.ttl,
+  });
 
   GoogleFirebaseAppcheckV1betaAppAttestChallengeResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('challenge')) {
-      challenge = _json['challenge'] as core.String;
-    }
-    if (_json.containsKey('ttl')) {
-      ttl = _json['ttl'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          challenge: _json.containsKey('challenge')
+              ? _json['challenge'] as core.String
+              : null,
+          ttl: _json.containsKey('ttl') ? _json['ttl'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (challenge != null) 'challenge': challenge!,
@@ -1369,17 +1371,18 @@ class GoogleFirebaseAppcheckV1betaAttestationTokenResponse {
   /// duration.
   core.String? ttl;
 
-  GoogleFirebaseAppcheckV1betaAttestationTokenResponse();
+  GoogleFirebaseAppcheckV1betaAttestationTokenResponse({
+    this.attestationToken,
+    this.ttl,
+  });
 
-  GoogleFirebaseAppcheckV1betaAttestationTokenResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('attestationToken')) {
-      attestationToken = _json['attestationToken'] as core.String;
-    }
-    if (_json.containsKey('ttl')) {
-      ttl = _json['ttl'] as core.String;
-    }
-  }
+  GoogleFirebaseAppcheckV1betaAttestationTokenResponse.fromJson(core.Map _json)
+      : this(
+          attestationToken: _json.containsKey('attestationToken')
+              ? _json['attestationToken'] as core.String
+              : null,
+          ttl: _json.containsKey('ttl') ? _json['ttl'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attestationToken != null) 'attestationToken': attestationToken!,
@@ -1392,18 +1395,21 @@ class GoogleFirebaseAppcheckV1betaBatchGetDeviceCheckConfigsResponse {
   /// DeviceCheckConfigs retrieved.
   core.List<GoogleFirebaseAppcheckV1betaDeviceCheckConfig>? configs;
 
-  GoogleFirebaseAppcheckV1betaBatchGetDeviceCheckConfigsResponse();
+  GoogleFirebaseAppcheckV1betaBatchGetDeviceCheckConfigsResponse({
+    this.configs,
+  });
 
   GoogleFirebaseAppcheckV1betaBatchGetDeviceCheckConfigsResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('configs')) {
-      configs = (_json['configs'] as core.List)
-          .map<GoogleFirebaseAppcheckV1betaDeviceCheckConfig>((value) =>
-              GoogleFirebaseAppcheckV1betaDeviceCheckConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+      core.Map _json)
+      : this(
+          configs: _json.containsKey('configs')
+              ? (_json['configs'] as core.List)
+                  .map<GoogleFirebaseAppcheckV1betaDeviceCheckConfig>((value) =>
+                      GoogleFirebaseAppcheckV1betaDeviceCheckConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (configs != null)
@@ -1416,18 +1422,21 @@ class GoogleFirebaseAppcheckV1betaBatchGetRecaptchaConfigsResponse {
   /// RecaptchaConfigs retrieved.
   core.List<GoogleFirebaseAppcheckV1betaRecaptchaConfig>? configs;
 
-  GoogleFirebaseAppcheckV1betaBatchGetRecaptchaConfigsResponse();
+  GoogleFirebaseAppcheckV1betaBatchGetRecaptchaConfigsResponse({
+    this.configs,
+  });
 
   GoogleFirebaseAppcheckV1betaBatchGetRecaptchaConfigsResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('configs')) {
-      configs = (_json['configs'] as core.List)
-          .map<GoogleFirebaseAppcheckV1betaRecaptchaConfig>((value) =>
-              GoogleFirebaseAppcheckV1betaRecaptchaConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+      core.Map _json)
+      : this(
+          configs: _json.containsKey('configs')
+              ? (_json['configs'] as core.List)
+                  .map<GoogleFirebaseAppcheckV1betaRecaptchaConfig>((value) =>
+                      GoogleFirebaseAppcheckV1betaRecaptchaConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (configs != null)
@@ -1453,21 +1462,27 @@ class GoogleFirebaseAppcheckV1betaBatchUpdateServicesRequest {
   /// Optional.
   core.String? updateMask;
 
-  GoogleFirebaseAppcheckV1betaBatchUpdateServicesRequest();
+  GoogleFirebaseAppcheckV1betaBatchUpdateServicesRequest({
+    this.requests,
+    this.updateMask,
+  });
 
   GoogleFirebaseAppcheckV1betaBatchUpdateServicesRequest.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('requests')) {
-      requests = (_json['requests'] as core.List)
-          .map<GoogleFirebaseAppcheckV1betaUpdateServiceRequest>((value) =>
-              GoogleFirebaseAppcheckV1betaUpdateServiceRequest.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          requests: _json.containsKey('requests')
+              ? (_json['requests'] as core.List)
+                  .map<GoogleFirebaseAppcheckV1betaUpdateServiceRequest>(
+                      (value) =>
+                          GoogleFirebaseAppcheckV1betaUpdateServiceRequest
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          updateMask: _json.containsKey('updateMask')
+              ? _json['updateMask'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requests != null)
@@ -1481,18 +1496,21 @@ class GoogleFirebaseAppcheckV1betaBatchUpdateServicesResponse {
   /// Service objects after the updates have been applied.
   core.List<GoogleFirebaseAppcheckV1betaService>? services;
 
-  GoogleFirebaseAppcheckV1betaBatchUpdateServicesResponse();
+  GoogleFirebaseAppcheckV1betaBatchUpdateServicesResponse({
+    this.services,
+  });
 
   GoogleFirebaseAppcheckV1betaBatchUpdateServicesResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('services')) {
-      services = (_json['services'] as core.List)
-          .map<GoogleFirebaseAppcheckV1betaService>((value) =>
-              GoogleFirebaseAppcheckV1betaService.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+      core.Map _json)
+      : this(
+          services: _json.containsKey('services')
+              ? (_json['services'] as core.List)
+                  .map<GoogleFirebaseAppcheckV1betaService>((value) =>
+                      GoogleFirebaseAppcheckV1betaService.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (services != null)
@@ -1525,19 +1543,21 @@ class GoogleFirebaseAppcheckV1betaDebugToken {
   /// reasons, this field will never be populated in any response.
   core.String? token;
 
-  GoogleFirebaseAppcheckV1betaDebugToken();
+  GoogleFirebaseAppcheckV1betaDebugToken({
+    this.displayName,
+    this.name,
+    this.token,
+  });
 
-  GoogleFirebaseAppcheckV1betaDebugToken.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('token')) {
-      token = _json['token'] as core.String;
-    }
-  }
+  GoogleFirebaseAppcheckV1betaDebugToken.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          token:
+              _json.containsKey('token') ? _json['token'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -1584,22 +1604,25 @@ class GoogleFirebaseAppcheckV1betaDeviceCheckConfig {
   /// Output only.
   core.bool? privateKeySet;
 
-  GoogleFirebaseAppcheckV1betaDeviceCheckConfig();
+  GoogleFirebaseAppcheckV1betaDeviceCheckConfig({
+    this.keyId,
+    this.name,
+    this.privateKey,
+    this.privateKeySet,
+  });
 
-  GoogleFirebaseAppcheckV1betaDeviceCheckConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('keyId')) {
-      keyId = _json['keyId'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('privateKey')) {
-      privateKey = _json['privateKey'] as core.String;
-    }
-    if (_json.containsKey('privateKeySet')) {
-      privateKeySet = _json['privateKeySet'] as core.bool;
-    }
-  }
+  GoogleFirebaseAppcheckV1betaDeviceCheckConfig.fromJson(core.Map _json)
+      : this(
+          keyId:
+              _json.containsKey('keyId') ? _json['keyId'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          privateKey: _json.containsKey('privateKey')
+              ? _json['privateKey'] as core.String
+              : null,
+          privateKeySet: _json.containsKey('privateKeySet')
+              ? _json['privateKeySet'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (keyId != null) 'keyId': keyId!,
@@ -1638,20 +1661,25 @@ class GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest();
+  GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest({
+    this.artifact,
+    this.assertion,
+    this.challenge,
+  });
 
   GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('artifact')) {
-      artifact = _json['artifact'] as core.String;
-    }
-    if (_json.containsKey('assertion')) {
-      assertion = _json['assertion'] as core.String;
-    }
-    if (_json.containsKey('challenge')) {
-      challenge = _json['challenge'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          artifact: _json.containsKey('artifact')
+              ? _json['artifact'] as core.String
+              : null,
+          assertion: _json.containsKey('assertion')
+              ? _json['assertion'] as core.String
+              : null,
+          challenge: _json.containsKey('challenge')
+              ? _json['challenge'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (artifact != null) 'artifact': artifact!,
@@ -1694,20 +1722,24 @@ class GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest();
+  GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest({
+    this.attestationStatement,
+    this.challenge,
+    this.keyId,
+  });
 
   GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('attestationStatement')) {
-      attestationStatement = _json['attestationStatement'] as core.String;
-    }
-    if (_json.containsKey('challenge')) {
-      challenge = _json['challenge'] as core.String;
-    }
-    if (_json.containsKey('keyId')) {
-      keyId = _json['keyId'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          attestationStatement: _json.containsKey('attestationStatement')
+              ? _json['attestationStatement'] as core.String
+              : null,
+          challenge: _json.containsKey('challenge')
+              ? _json['challenge'] as core.String
+              : null,
+          keyId:
+              _json.containsKey('keyId') ? _json['keyId'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attestationStatement != null)
@@ -1732,19 +1764,23 @@ class GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse {
   /// An attestation token which can be used to access Firebase APIs.
   GoogleFirebaseAppcheckV1betaAttestationTokenResponse? attestationToken;
 
-  GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse();
+  GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse({
+    this.artifact,
+    this.attestationToken,
+  });
 
   GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('artifact')) {
-      artifact = _json['artifact'] as core.String;
-    }
-    if (_json.containsKey('attestationToken')) {
-      attestationToken =
-          GoogleFirebaseAppcheckV1betaAttestationTokenResponse.fromJson(
-              _json['attestationToken'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+      core.Map _json)
+      : this(
+          artifact: _json.containsKey('artifact')
+              ? _json['artifact'] as core.String
+              : null,
+          attestationToken: _json.containsKey('attestationToken')
+              ? GoogleFirebaseAppcheckV1betaAttestationTokenResponse.fromJson(
+                  _json['attestationToken']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (artifact != null) 'artifact': artifact!,
@@ -1759,14 +1795,17 @@ class GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest {
   /// credentials.
   core.String? customToken;
 
-  GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest();
+  GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest({
+    this.customToken,
+  });
 
   GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('customToken')) {
-      customToken = _json['customToken'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          customToken: _json.containsKey('customToken')
+              ? _json['customToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customToken != null) 'customToken': customToken!,
@@ -1781,14 +1820,16 @@ class GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest {
   /// CreateDebugToken.
   core.String? debugToken;
 
-  GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest();
+  GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest({
+    this.debugToken,
+  });
 
-  GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('debugToken')) {
-      debugToken = _json['debugToken'] as core.String;
-    }
-  }
+  GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest.fromJson(core.Map _json)
+      : this(
+          debugToken: _json.containsKey('debugToken')
+              ? _json['debugToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (debugToken != null) 'debugToken': debugToken!,
@@ -1803,14 +1844,17 @@ class GoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest {
   /// This is the Base64 encoded `Data` (Swift) or `NSData` (ObjC) object.
   core.String? deviceToken;
 
-  GoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest();
+  GoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest({
+    this.deviceToken,
+  });
 
   GoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('deviceToken')) {
-      deviceToken = _json['deviceToken'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          deviceToken: _json.containsKey('deviceToken')
+              ? _json['deviceToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceToken != null) 'deviceToken': deviceToken!,
@@ -1823,14 +1867,17 @@ class GoogleFirebaseAppcheckV1betaExchangeRecaptchaTokenRequest {
   /// [reCAPTCHA v3 JavaScript API](https://developers.google.com/recaptcha/docs/v3).
   core.String? recaptchaToken;
 
-  GoogleFirebaseAppcheckV1betaExchangeRecaptchaTokenRequest();
+  GoogleFirebaseAppcheckV1betaExchangeRecaptchaTokenRequest({
+    this.recaptchaToken,
+  });
 
   GoogleFirebaseAppcheckV1betaExchangeRecaptchaTokenRequest.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('recaptchaToken')) {
-      recaptchaToken = _json['recaptchaToken'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          recaptchaToken: _json.containsKey('recaptchaToken')
+              ? _json['recaptchaToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (recaptchaToken != null) 'recaptchaToken': recaptchaToken!,
@@ -1844,14 +1891,17 @@ class GoogleFirebaseAppcheckV1betaExchangeSafetyNetTokenRequest {
   /// issued to your app.
   core.String? safetyNetToken;
 
-  GoogleFirebaseAppcheckV1betaExchangeSafetyNetTokenRequest();
+  GoogleFirebaseAppcheckV1betaExchangeSafetyNetTokenRequest({
+    this.safetyNetToken,
+  });
 
   GoogleFirebaseAppcheckV1betaExchangeSafetyNetTokenRequest.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('safetyNetToken')) {
-      safetyNetToken = _json['safetyNetToken'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          safetyNetToken: _json.containsKey('safetyNetToken')
+              ? _json['safetyNetToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (safetyNetToken != null) 'safetyNetToken': safetyNetToken!,
@@ -1883,20 +1933,24 @@ class GoogleFirebaseAppcheckV1betaListDebugTokensResponse {
   /// not be persisted.
   core.String? nextPageToken;
 
-  GoogleFirebaseAppcheckV1betaListDebugTokensResponse();
+  GoogleFirebaseAppcheckV1betaListDebugTokensResponse({
+    this.debugTokens,
+    this.nextPageToken,
+  });
 
-  GoogleFirebaseAppcheckV1betaListDebugTokensResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('debugTokens')) {
-      debugTokens = (_json['debugTokens'] as core.List)
-          .map<GoogleFirebaseAppcheckV1betaDebugToken>((value) =>
-              GoogleFirebaseAppcheckV1betaDebugToken.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  GoogleFirebaseAppcheckV1betaListDebugTokensResponse.fromJson(core.Map _json)
+      : this(
+          debugTokens: _json.containsKey('debugTokens')
+              ? (_json['debugTokens'] as core.List)
+                  .map<GoogleFirebaseAppcheckV1betaDebugToken>((value) =>
+                      GoogleFirebaseAppcheckV1betaDebugToken.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (debugTokens != null)
@@ -1919,20 +1973,24 @@ class GoogleFirebaseAppcheckV1betaListServicesResponse {
   /// The Services retrieved.
   core.List<GoogleFirebaseAppcheckV1betaService>? services;
 
-  GoogleFirebaseAppcheckV1betaListServicesResponse();
+  GoogleFirebaseAppcheckV1betaListServicesResponse({
+    this.nextPageToken,
+    this.services,
+  });
 
-  GoogleFirebaseAppcheckV1betaListServicesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('services')) {
-      services = (_json['services'] as core.List)
-          .map<GoogleFirebaseAppcheckV1betaService>((value) =>
-              GoogleFirebaseAppcheckV1betaService.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleFirebaseAppcheckV1betaListServicesResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          services: _json.containsKey('services')
+              ? (_json['services'] as core.List)
+                  .map<GoogleFirebaseAppcheckV1betaService>((value) =>
+                      GoogleFirebaseAppcheckV1betaService.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1969,28 +2027,24 @@ class GoogleFirebaseAppcheckV1betaPublicJwk {
   /// [section 4.2 of RFC 7517](https://tools.ietf.org/html/rfc7517#section-4.2).
   core.String? use;
 
-  GoogleFirebaseAppcheckV1betaPublicJwk();
+  GoogleFirebaseAppcheckV1betaPublicJwk({
+    this.alg,
+    this.e,
+    this.kid,
+    this.kty,
+    this.n,
+    this.use,
+  });
 
-  GoogleFirebaseAppcheckV1betaPublicJwk.fromJson(core.Map _json) {
-    if (_json.containsKey('alg')) {
-      alg = _json['alg'] as core.String;
-    }
-    if (_json.containsKey('e')) {
-      e = _json['e'] as core.String;
-    }
-    if (_json.containsKey('kid')) {
-      kid = _json['kid'] as core.String;
-    }
-    if (_json.containsKey('kty')) {
-      kty = _json['kty'] as core.String;
-    }
-    if (_json.containsKey('n')) {
-      n = _json['n'] as core.String;
-    }
-    if (_json.containsKey('use')) {
-      use = _json['use'] as core.String;
-    }
-  }
+  GoogleFirebaseAppcheckV1betaPublicJwk.fromJson(core.Map _json)
+      : this(
+          alg: _json.containsKey('alg') ? _json['alg'] as core.String : null,
+          e: _json.containsKey('e') ? _json['e'] as core.String : null,
+          kid: _json.containsKey('kid') ? _json['kid'] as core.String : null,
+          kty: _json.containsKey('kty') ? _json['kty'] as core.String : null,
+          n: _json.containsKey('n') ? _json['n'] as core.String : null,
+          use: _json.containsKey('use') ? _json['use'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alg != null) 'alg': alg!,
@@ -2015,17 +2069,20 @@ class GoogleFirebaseAppcheckV1betaPublicJwkSet {
   /// [section 5.1 of RFC 7517](https://tools.ietf.org/html/rfc7517#section-5).
   core.List<GoogleFirebaseAppcheckV1betaPublicJwk>? keys;
 
-  GoogleFirebaseAppcheckV1betaPublicJwkSet();
+  GoogleFirebaseAppcheckV1betaPublicJwkSet({
+    this.keys,
+  });
 
-  GoogleFirebaseAppcheckV1betaPublicJwkSet.fromJson(core.Map _json) {
-    if (_json.containsKey('keys')) {
-      keys = (_json['keys'] as core.List)
-          .map<GoogleFirebaseAppcheckV1betaPublicJwk>((value) =>
-              GoogleFirebaseAppcheckV1betaPublicJwk.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleFirebaseAppcheckV1betaPublicJwkSet.fromJson(core.Map _json)
+      : this(
+          keys: _json.containsKey('keys')
+              ? (_json['keys'] as core.List)
+                  .map<GoogleFirebaseAppcheckV1betaPublicJwk>((value) =>
+                      GoogleFirebaseAppcheckV1betaPublicJwk.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (keys != null) 'keys': keys!.map((value) => value.toJson()).toList(),
@@ -2062,19 +2119,22 @@ class GoogleFirebaseAppcheckV1betaRecaptchaConfig {
   /// Output only.
   core.bool? siteSecretSet;
 
-  GoogleFirebaseAppcheckV1betaRecaptchaConfig();
+  GoogleFirebaseAppcheckV1betaRecaptchaConfig({
+    this.name,
+    this.siteSecret,
+    this.siteSecretSet,
+  });
 
-  GoogleFirebaseAppcheckV1betaRecaptchaConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('siteSecret')) {
-      siteSecret = _json['siteSecret'] as core.String;
-    }
-    if (_json.containsKey('siteSecretSet')) {
-      siteSecretSet = _json['siteSecretSet'] as core.bool;
-    }
-  }
+  GoogleFirebaseAppcheckV1betaRecaptchaConfig.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          siteSecret: _json.containsKey('siteSecret')
+              ? _json['siteSecret'] as core.String
+              : null,
+          siteSecretSet: _json.containsKey('siteSecretSet')
+              ? _json['siteSecretSet'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -2127,16 +2187,18 @@ class GoogleFirebaseAppcheckV1betaService {
   /// Required.
   core.String? name;
 
-  GoogleFirebaseAppcheckV1betaService();
+  GoogleFirebaseAppcheckV1betaService({
+    this.enforcementMode,
+    this.name,
+  });
 
-  GoogleFirebaseAppcheckV1betaService.fromJson(core.Map _json) {
-    if (_json.containsKey('enforcementMode')) {
-      enforcementMode = _json['enforcementMode'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  GoogleFirebaseAppcheckV1betaService.fromJson(core.Map _json)
+      : this(
+          enforcementMode: _json.containsKey('enforcementMode')
+              ? _json['enforcementMode'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enforcementMode != null) 'enforcementMode': enforcementMode!,
@@ -2166,17 +2228,21 @@ class GoogleFirebaseAppcheckV1betaUpdateServiceRequest {
   /// Required.
   core.String? updateMask;
 
-  GoogleFirebaseAppcheckV1betaUpdateServiceRequest();
+  GoogleFirebaseAppcheckV1betaUpdateServiceRequest({
+    this.service,
+    this.updateMask,
+  });
 
-  GoogleFirebaseAppcheckV1betaUpdateServiceRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('service')) {
-      service = GoogleFirebaseAppcheckV1betaService.fromJson(
-          _json['service'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'] as core.String;
-    }
-  }
+  GoogleFirebaseAppcheckV1betaUpdateServiceRequest.fromJson(core.Map _json)
+      : this(
+          service: _json.containsKey('service')
+              ? GoogleFirebaseAppcheckV1betaService.fromJson(
+                  _json['service'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: _json.containsKey('updateMask')
+              ? _json['updateMask'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (service != null) 'service': service!.toJson(),

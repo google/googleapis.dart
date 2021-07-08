@@ -958,44 +958,55 @@ class CVSSv3 {
   /// can be exploited.
   core.String? userInteraction;
 
-  CVSSv3();
+  CVSSv3({
+    this.attackComplexity,
+    this.attackVector,
+    this.availabilityImpact,
+    this.baseScore,
+    this.confidentialityImpact,
+    this.exploitabilityScore,
+    this.impactScore,
+    this.integrityImpact,
+    this.privilegesRequired,
+    this.scope,
+    this.userInteraction,
+  });
 
-  CVSSv3.fromJson(core.Map _json) {
-    if (_json.containsKey('attackComplexity')) {
-      attackComplexity = _json['attackComplexity'] as core.String;
-    }
-    if (_json.containsKey('attackVector')) {
-      attackVector = _json['attackVector'] as core.String;
-    }
-    if (_json.containsKey('availabilityImpact')) {
-      availabilityImpact = _json['availabilityImpact'] as core.String;
-    }
-    if (_json.containsKey('baseScore')) {
-      baseScore = (_json['baseScore'] as core.num).toDouble();
-    }
-    if (_json.containsKey('confidentialityImpact')) {
-      confidentialityImpact = _json['confidentialityImpact'] as core.String;
-    }
-    if (_json.containsKey('exploitabilityScore')) {
-      exploitabilityScore =
-          (_json['exploitabilityScore'] as core.num).toDouble();
-    }
-    if (_json.containsKey('impactScore')) {
-      impactScore = (_json['impactScore'] as core.num).toDouble();
-    }
-    if (_json.containsKey('integrityImpact')) {
-      integrityImpact = _json['integrityImpact'] as core.String;
-    }
-    if (_json.containsKey('privilegesRequired')) {
-      privilegesRequired = _json['privilegesRequired'] as core.String;
-    }
-    if (_json.containsKey('scope')) {
-      scope = _json['scope'] as core.String;
-    }
-    if (_json.containsKey('userInteraction')) {
-      userInteraction = _json['userInteraction'] as core.String;
-    }
-  }
+  CVSSv3.fromJson(core.Map _json)
+      : this(
+          attackComplexity: _json.containsKey('attackComplexity')
+              ? _json['attackComplexity'] as core.String
+              : null,
+          attackVector: _json.containsKey('attackVector')
+              ? _json['attackVector'] as core.String
+              : null,
+          availabilityImpact: _json.containsKey('availabilityImpact')
+              ? _json['availabilityImpact'] as core.String
+              : null,
+          baseScore: _json.containsKey('baseScore')
+              ? (_json['baseScore'] as core.num).toDouble()
+              : null,
+          confidentialityImpact: _json.containsKey('confidentialityImpact')
+              ? _json['confidentialityImpact'] as core.String
+              : null,
+          exploitabilityScore: _json.containsKey('exploitabilityScore')
+              ? (_json['exploitabilityScore'] as core.num).toDouble()
+              : null,
+          impactScore: _json.containsKey('impactScore')
+              ? (_json['impactScore'] as core.num).toDouble()
+              : null,
+          integrityImpact: _json.containsKey('integrityImpact')
+              ? _json['integrityImpact'] as core.String
+              : null,
+          privilegesRequired: _json.containsKey('privilegesRequired')
+              ? _json['privilegesRequired'] as core.String
+              : null,
+          scope:
+              _json.containsKey('scope') ? _json['scope'] as core.String : null,
+          userInteraction: _json.containsKey('userInteraction')
+              ? _json['userInteraction'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attackComplexity != null) 'attackComplexity': attackComplexity!,
@@ -1054,16 +1065,18 @@ class FixedOrPercent {
   /// multiplied by a reference value.
   core.int? percent;
 
-  FixedOrPercent();
+  FixedOrPercent({
+    this.fixed,
+    this.percent,
+  });
 
-  FixedOrPercent.fromJson(core.Map _json) {
-    if (_json.containsKey('fixed')) {
-      fixed = _json['fixed'] as core.int;
-    }
-    if (_json.containsKey('percent')) {
-      percent = _json['percent'] as core.int;
-    }
-  }
+  FixedOrPercent.fromJson(core.Map _json)
+      : this(
+          fixed: _json.containsKey('fixed') ? _json['fixed'] as core.int : null,
+          percent: _json.containsKey('percent')
+              ? _json['percent'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fixed != null) 'fixed': fixed!,
@@ -1146,38 +1159,46 @@ class InstanceOSPoliciesCompliance {
   /// the instance. This state is only applicable to the instance.
   core.String? state;
 
-  InstanceOSPoliciesCompliance();
+  InstanceOSPoliciesCompliance({
+    this.detailedState,
+    this.detailedStateReason,
+    this.instance,
+    this.lastComplianceCheckTime,
+    this.lastComplianceRunId,
+    this.name,
+    this.osPolicyCompliances,
+    this.state,
+  });
 
-  InstanceOSPoliciesCompliance.fromJson(core.Map _json) {
-    if (_json.containsKey('detailedState')) {
-      detailedState = _json['detailedState'] as core.String;
-    }
-    if (_json.containsKey('detailedStateReason')) {
-      detailedStateReason = _json['detailedStateReason'] as core.String;
-    }
-    if (_json.containsKey('instance')) {
-      instance = _json['instance'] as core.String;
-    }
-    if (_json.containsKey('lastComplianceCheckTime')) {
-      lastComplianceCheckTime = _json['lastComplianceCheckTime'] as core.String;
-    }
-    if (_json.containsKey('lastComplianceRunId')) {
-      lastComplianceRunId = _json['lastComplianceRunId'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('osPolicyCompliances')) {
-      osPolicyCompliances = (_json['osPolicyCompliances'] as core.List)
-          .map<InstanceOSPoliciesComplianceOSPolicyCompliance>((value) =>
-              InstanceOSPoliciesComplianceOSPolicyCompliance.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-  }
+  InstanceOSPoliciesCompliance.fromJson(core.Map _json)
+      : this(
+          detailedState: _json.containsKey('detailedState')
+              ? _json['detailedState'] as core.String
+              : null,
+          detailedStateReason: _json.containsKey('detailedStateReason')
+              ? _json['detailedStateReason'] as core.String
+              : null,
+          instance: _json.containsKey('instance')
+              ? _json['instance'] as core.String
+              : null,
+          lastComplianceCheckTime: _json.containsKey('lastComplianceCheckTime')
+              ? _json['lastComplianceCheckTime'] as core.String
+              : null,
+          lastComplianceRunId: _json.containsKey('lastComplianceRunId')
+              ? _json['lastComplianceRunId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          osPolicyCompliances: _json.containsKey('osPolicyCompliances')
+              ? (_json['osPolicyCompliances'] as core.List)
+                  .map<InstanceOSPoliciesComplianceOSPolicyCompliance>(
+                      (value) => InstanceOSPoliciesComplianceOSPolicyCompliance
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (detailedState != null) 'detailedState': detailedState!,
@@ -1222,27 +1243,32 @@ class InstanceOSPoliciesComplianceOSPolicyCompliance {
   /// the instance. This state is only applicable to the instance.
   core.String? state;
 
-  InstanceOSPoliciesComplianceOSPolicyCompliance();
+  InstanceOSPoliciesComplianceOSPolicyCompliance({
+    this.osPolicyAssignment,
+    this.osPolicyId,
+    this.osPolicyResourceCompliances,
+    this.state,
+  });
 
-  InstanceOSPoliciesComplianceOSPolicyCompliance.fromJson(core.Map _json) {
-    if (_json.containsKey('osPolicyAssignment')) {
-      osPolicyAssignment = _json['osPolicyAssignment'] as core.String;
-    }
-    if (_json.containsKey('osPolicyId')) {
-      osPolicyId = _json['osPolicyId'] as core.String;
-    }
-    if (_json.containsKey('osPolicyResourceCompliances')) {
-      osPolicyResourceCompliances =
-          (_json['osPolicyResourceCompliances'] as core.List)
-              .map<OSPolicyResourceCompliance>((value) =>
-                  OSPolicyResourceCompliance.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList();
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-  }
+  InstanceOSPoliciesComplianceOSPolicyCompliance.fromJson(core.Map _json)
+      : this(
+          osPolicyAssignment: _json.containsKey('osPolicyAssignment')
+              ? _json['osPolicyAssignment'] as core.String
+              : null,
+          osPolicyId: _json.containsKey('osPolicyId')
+              ? _json['osPolicyId'] as core.String
+              : null,
+          osPolicyResourceCompliances:
+              _json.containsKey('osPolicyResourceCompliances')
+                  ? (_json['osPolicyResourceCompliances'] as core.List)
+                      .map<OSPolicyResourceCompliance>((value) =>
+                          OSPolicyResourceCompliance.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (osPolicyAssignment != null)
@@ -1290,28 +1316,33 @@ class Inventory {
   /// Output only.
   core.String? updateTime;
 
-  Inventory();
+  Inventory({
+    this.items,
+    this.name,
+    this.osInfo,
+    this.updateTime,
+  });
 
-  Inventory.fromJson(core.Map _json) {
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          InventoryItem.fromJson(item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('osInfo')) {
-      osInfo = InventoryOsInfo.fromJson(
-          _json['osInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  Inventory.fromJson(core.Map _json)
+      : this(
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    InventoryItem.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          osInfo: _json.containsKey('osInfo')
+              ? InventoryOsInfo.fromJson(
+                  _json['osInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
@@ -1355,33 +1386,38 @@ class InventoryItem {
   /// When this inventory item was last modified.
   core.String? updateTime;
 
-  InventoryItem();
+  InventoryItem({
+    this.availablePackage,
+    this.createTime,
+    this.id,
+    this.installedPackage,
+    this.originType,
+    this.type,
+    this.updateTime,
+  });
 
-  InventoryItem.fromJson(core.Map _json) {
-    if (_json.containsKey('availablePackage')) {
-      availablePackage = InventorySoftwarePackage.fromJson(
-          _json['availablePackage'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('installedPackage')) {
-      installedPackage = InventorySoftwarePackage.fromJson(
-          _json['installedPackage'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('originType')) {
-      originType = _json['originType'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  InventoryItem.fromJson(core.Map _json)
+      : this(
+          availablePackage: _json.containsKey('availablePackage')
+              ? InventorySoftwarePackage.fromJson(_json['availablePackage']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          installedPackage: _json.containsKey('installedPackage')
+              ? InventorySoftwarePackage.fromJson(_json['installedPackage']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          originType: _json.containsKey('originType')
+              ? _json['originType'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (availablePackage != null)
@@ -1427,34 +1463,44 @@ class InventoryOsInfo {
   /// The version of the operating system.
   core.String? version;
 
-  InventoryOsInfo();
+  InventoryOsInfo({
+    this.architecture,
+    this.hostname,
+    this.kernelRelease,
+    this.kernelVersion,
+    this.longName,
+    this.osconfigAgentVersion,
+    this.shortName,
+    this.version,
+  });
 
-  InventoryOsInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('architecture')) {
-      architecture = _json['architecture'] as core.String;
-    }
-    if (_json.containsKey('hostname')) {
-      hostname = _json['hostname'] as core.String;
-    }
-    if (_json.containsKey('kernelRelease')) {
-      kernelRelease = _json['kernelRelease'] as core.String;
-    }
-    if (_json.containsKey('kernelVersion')) {
-      kernelVersion = _json['kernelVersion'] as core.String;
-    }
-    if (_json.containsKey('longName')) {
-      longName = _json['longName'] as core.String;
-    }
-    if (_json.containsKey('osconfigAgentVersion')) {
-      osconfigAgentVersion = _json['osconfigAgentVersion'] as core.String;
-    }
-    if (_json.containsKey('shortName')) {
-      shortName = _json['shortName'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.String;
-    }
-  }
+  InventoryOsInfo.fromJson(core.Map _json)
+      : this(
+          architecture: _json.containsKey('architecture')
+              ? _json['architecture'] as core.String
+              : null,
+          hostname: _json.containsKey('hostname')
+              ? _json['hostname'] as core.String
+              : null,
+          kernelRelease: _json.containsKey('kernelRelease')
+              ? _json['kernelRelease'] as core.String
+              : null,
+          kernelVersion: _json.containsKey('kernelVersion')
+              ? _json['kernelVersion'] as core.String
+              : null,
+          longName: _json.containsKey('longName')
+              ? _json['longName'] as core.String
+              : null,
+          osconfigAgentVersion: _json.containsKey('osconfigAgentVersion')
+              ? _json['osconfigAgentVersion'] as core.String
+              : null,
+          shortName: _json.containsKey('shortName')
+              ? _json['shortName'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (architecture != null) 'architecture': architecture!,
@@ -1517,42 +1563,52 @@ class InventorySoftwarePackage {
   /// https://en.opensuse.org/SDB:Zypper_manual.
   InventoryZypperPatch? zypperPatch;
 
-  InventorySoftwarePackage();
+  InventorySoftwarePackage({
+    this.aptPackage,
+    this.cosPackage,
+    this.googetPackage,
+    this.qfePackage,
+    this.wuaPackage,
+    this.yumPackage,
+    this.zypperPackage,
+    this.zypperPatch,
+  });
 
-  InventorySoftwarePackage.fromJson(core.Map _json) {
-    if (_json.containsKey('aptPackage')) {
-      aptPackage = InventoryVersionedPackage.fromJson(
-          _json['aptPackage'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('cosPackage')) {
-      cosPackage = InventoryVersionedPackage.fromJson(
-          _json['cosPackage'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('googetPackage')) {
-      googetPackage = InventoryVersionedPackage.fromJson(
-          _json['googetPackage'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('qfePackage')) {
-      qfePackage = InventoryWindowsQuickFixEngineeringPackage.fromJson(
-          _json['qfePackage'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('wuaPackage')) {
-      wuaPackage = InventoryWindowsUpdatePackage.fromJson(
-          _json['wuaPackage'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('yumPackage')) {
-      yumPackage = InventoryVersionedPackage.fromJson(
-          _json['yumPackage'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('zypperPackage')) {
-      zypperPackage = InventoryVersionedPackage.fromJson(
-          _json['zypperPackage'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('zypperPatch')) {
-      zypperPatch = InventoryZypperPatch.fromJson(
-          _json['zypperPatch'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  InventorySoftwarePackage.fromJson(core.Map _json)
+      : this(
+          aptPackage: _json.containsKey('aptPackage')
+              ? InventoryVersionedPackage.fromJson(
+                  _json['aptPackage'] as core.Map<core.String, core.dynamic>)
+              : null,
+          cosPackage: _json.containsKey('cosPackage')
+              ? InventoryVersionedPackage.fromJson(
+                  _json['cosPackage'] as core.Map<core.String, core.dynamic>)
+              : null,
+          googetPackage: _json.containsKey('googetPackage')
+              ? InventoryVersionedPackage.fromJson(
+                  _json['googetPackage'] as core.Map<core.String, core.dynamic>)
+              : null,
+          qfePackage: _json.containsKey('qfePackage')
+              ? InventoryWindowsQuickFixEngineeringPackage.fromJson(
+                  _json['qfePackage'] as core.Map<core.String, core.dynamic>)
+              : null,
+          wuaPackage: _json.containsKey('wuaPackage')
+              ? InventoryWindowsUpdatePackage.fromJson(
+                  _json['wuaPackage'] as core.Map<core.String, core.dynamic>)
+              : null,
+          yumPackage: _json.containsKey('yumPackage')
+              ? InventoryVersionedPackage.fromJson(
+                  _json['yumPackage'] as core.Map<core.String, core.dynamic>)
+              : null,
+          zypperPackage: _json.containsKey('zypperPackage')
+              ? InventoryVersionedPackage.fromJson(
+                  _json['zypperPackage'] as core.Map<core.String, core.dynamic>)
+              : null,
+          zypperPatch: _json.containsKey('zypperPatch')
+              ? InventoryZypperPatch.fromJson(
+                  _json['zypperPatch'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (aptPackage != null) 'aptPackage': aptPackage!.toJson(),
@@ -1580,19 +1636,24 @@ class InventoryVersionedPackage {
   /// The version of the package.
   core.String? version;
 
-  InventoryVersionedPackage();
+  InventoryVersionedPackage({
+    this.architecture,
+    this.packageName,
+    this.version,
+  });
 
-  InventoryVersionedPackage.fromJson(core.Map _json) {
-    if (_json.containsKey('architecture')) {
-      architecture = _json['architecture'] as core.String;
-    }
-    if (_json.containsKey('packageName')) {
-      packageName = _json['packageName'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.String;
-    }
-  }
+  InventoryVersionedPackage.fromJson(core.Map _json)
+      : this(
+          architecture: _json.containsKey('architecture')
+              ? _json['architecture'] as core.String
+              : null,
+          packageName: _json.containsKey('packageName')
+              ? _json['packageName'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (architecture != null) 'architecture': architecture!,
@@ -1621,22 +1682,28 @@ class InventoryWindowsQuickFixEngineeringPackage {
   /// Mapped from installed_on field.
   core.String? installTime;
 
-  InventoryWindowsQuickFixEngineeringPackage();
+  InventoryWindowsQuickFixEngineeringPackage({
+    this.caption,
+    this.description,
+    this.hotFixId,
+    this.installTime,
+  });
 
-  InventoryWindowsQuickFixEngineeringPackage.fromJson(core.Map _json) {
-    if (_json.containsKey('caption')) {
-      caption = _json['caption'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('hotFixId')) {
-      hotFixId = _json['hotFixId'] as core.String;
-    }
-    if (_json.containsKey('installTime')) {
-      installTime = _json['installTime'] as core.String;
-    }
-  }
+  InventoryWindowsQuickFixEngineeringPackage.fromJson(core.Map _json)
+      : this(
+          caption: _json.containsKey('caption')
+              ? _json['caption'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          hotFixId: _json.containsKey('hotFixId')
+              ? _json['hotFixId'] as core.String
+              : null,
+          installTime: _json.containsKey('installTime')
+              ? _json['installTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (caption != null) 'caption': caption!,
@@ -1684,46 +1751,58 @@ class InventoryWindowsUpdatePackage {
   /// Stays the same across revisions.
   core.String? updateId;
 
-  InventoryWindowsUpdatePackage();
+  InventoryWindowsUpdatePackage({
+    this.categories,
+    this.description,
+    this.kbArticleIds,
+    this.lastDeploymentChangeTime,
+    this.moreInfoUrls,
+    this.revisionNumber,
+    this.supportUrl,
+    this.title,
+    this.updateId,
+  });
 
-  InventoryWindowsUpdatePackage.fromJson(core.Map _json) {
-    if (_json.containsKey('categories')) {
-      categories = (_json['categories'] as core.List)
-          .map<InventoryWindowsUpdatePackageWindowsUpdateCategory>((value) =>
-              InventoryWindowsUpdatePackageWindowsUpdateCategory.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('kbArticleIds')) {
-      kbArticleIds = (_json['kbArticleIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('lastDeploymentChangeTime')) {
-      lastDeploymentChangeTime =
-          _json['lastDeploymentChangeTime'] as core.String;
-    }
-    if (_json.containsKey('moreInfoUrls')) {
-      moreInfoUrls = (_json['moreInfoUrls'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('revisionNumber')) {
-      revisionNumber = _json['revisionNumber'] as core.int;
-    }
-    if (_json.containsKey('supportUrl')) {
-      supportUrl = _json['supportUrl'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-    if (_json.containsKey('updateId')) {
-      updateId = _json['updateId'] as core.String;
-    }
-  }
+  InventoryWindowsUpdatePackage.fromJson(core.Map _json)
+      : this(
+          categories: _json.containsKey('categories')
+              ? (_json['categories'] as core.List)
+                  .map<InventoryWindowsUpdatePackageWindowsUpdateCategory>(
+                      (value) =>
+                          InventoryWindowsUpdatePackageWindowsUpdateCategory
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          kbArticleIds: _json.containsKey('kbArticleIds')
+              ? (_json['kbArticleIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          lastDeploymentChangeTime:
+              _json.containsKey('lastDeploymentChangeTime')
+                  ? _json['lastDeploymentChangeTime'] as core.String
+                  : null,
+          moreInfoUrls: _json.containsKey('moreInfoUrls')
+              ? (_json['moreInfoUrls'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          revisionNumber: _json.containsKey('revisionNumber')
+              ? _json['revisionNumber'] as core.int
+              : null,
+          supportUrl: _json.containsKey('supportUrl')
+              ? _json['supportUrl'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+          updateId: _json.containsKey('updateId')
+              ? _json['updateId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (categories != null)
@@ -1748,16 +1827,16 @@ class InventoryWindowsUpdatePackageWindowsUpdateCategory {
   /// The name of the windows update category.
   core.String? name;
 
-  InventoryWindowsUpdatePackageWindowsUpdateCategory();
+  InventoryWindowsUpdatePackageWindowsUpdateCategory({
+    this.id,
+    this.name,
+  });
 
-  InventoryWindowsUpdatePackageWindowsUpdateCategory.fromJson(core.Map _json) {
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  InventoryWindowsUpdatePackageWindowsUpdateCategory.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
@@ -1779,22 +1858,28 @@ class InventoryZypperPatch {
   /// Any summary information provided about this patch.
   core.String? summary;
 
-  InventoryZypperPatch();
+  InventoryZypperPatch({
+    this.category,
+    this.patchName,
+    this.severity,
+    this.summary,
+  });
 
-  InventoryZypperPatch.fromJson(core.Map _json) {
-    if (_json.containsKey('category')) {
-      category = _json['category'] as core.String;
-    }
-    if (_json.containsKey('patchName')) {
-      patchName = _json['patchName'] as core.String;
-    }
-    if (_json.containsKey('severity')) {
-      severity = _json['severity'] as core.String;
-    }
-    if (_json.containsKey('summary')) {
-      summary = _json['summary'] as core.String;
-    }
-  }
+  InventoryZypperPatch.fromJson(core.Map _json)
+      : this(
+          category: _json.containsKey('category')
+              ? _json['category'] as core.String
+              : null,
+          patchName: _json.containsKey('patchName')
+              ? _json['patchName'] as core.String
+              : null,
+          severity: _json.containsKey('severity')
+              ? _json['severity'] as core.String
+              : null,
+          summary: _json.containsKey('summary')
+              ? _json['summary'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (category != null) 'category': category!,
@@ -1814,21 +1899,25 @@ class ListInstanceOSPoliciesCompliancesResponse {
   /// compliance objects.
   core.String? nextPageToken;
 
-  ListInstanceOSPoliciesCompliancesResponse();
+  ListInstanceOSPoliciesCompliancesResponse({
+    this.instanceOsPoliciesCompliances,
+    this.nextPageToken,
+  });
 
-  ListInstanceOSPoliciesCompliancesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('instanceOsPoliciesCompliances')) {
-      instanceOsPoliciesCompliances =
-          (_json['instanceOsPoliciesCompliances'] as core.List)
-              .map<InstanceOSPoliciesCompliance>((value) =>
-                  InstanceOSPoliciesCompliance.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListInstanceOSPoliciesCompliancesResponse.fromJson(core.Map _json)
+      : this(
+          instanceOsPoliciesCompliances:
+              _json.containsKey('instanceOsPoliciesCompliances')
+                  ? (_json['instanceOsPoliciesCompliances'] as core.List)
+                      .map<InstanceOSPoliciesCompliance>((value) =>
+                          InstanceOSPoliciesCompliance.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (instanceOsPoliciesCompliances != null)
@@ -1848,19 +1937,23 @@ class ListInventoriesResponse {
   /// The pagination token to retrieve the next page of inventory objects.
   core.String? nextPageToken;
 
-  ListInventoriesResponse();
+  ListInventoriesResponse({
+    this.inventories,
+    this.nextPageToken,
+  });
 
-  ListInventoriesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('inventories')) {
-      inventories = (_json['inventories'] as core.List)
-          .map<Inventory>((value) =>
-              Inventory.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListInventoriesResponse.fromJson(core.Map _json)
+      : this(
+          inventories: _json.containsKey('inventories')
+              ? (_json['inventories'] as core.List)
+                  .map<Inventory>((value) => Inventory.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (inventories != null)
@@ -1878,19 +1971,24 @@ class ListOSPolicyAssignmentRevisionsResponse {
   /// The OS policy assignment revisions
   core.List<OSPolicyAssignment>? osPolicyAssignments;
 
-  ListOSPolicyAssignmentRevisionsResponse();
+  ListOSPolicyAssignmentRevisionsResponse({
+    this.nextPageToken,
+    this.osPolicyAssignments,
+  });
 
-  ListOSPolicyAssignmentRevisionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('osPolicyAssignments')) {
-      osPolicyAssignments = (_json['osPolicyAssignments'] as core.List)
-          .map<OSPolicyAssignment>((value) => OSPolicyAssignment.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListOSPolicyAssignmentRevisionsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          osPolicyAssignments: _json.containsKey('osPolicyAssignments')
+              ? (_json['osPolicyAssignments'] as core.List)
+                  .map<OSPolicyAssignment>((value) =>
+                      OSPolicyAssignment.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1908,19 +2006,24 @@ class ListOSPolicyAssignmentsResponse {
   /// The list of assignments
   core.List<OSPolicyAssignment>? osPolicyAssignments;
 
-  ListOSPolicyAssignmentsResponse();
+  ListOSPolicyAssignmentsResponse({
+    this.nextPageToken,
+    this.osPolicyAssignments,
+  });
 
-  ListOSPolicyAssignmentsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('osPolicyAssignments')) {
-      osPolicyAssignments = (_json['osPolicyAssignments'] as core.List)
-          .map<OSPolicyAssignment>((value) => OSPolicyAssignment.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListOSPolicyAssignmentsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          osPolicyAssignments: _json.containsKey('osPolicyAssignments')
+              ? (_json['osPolicyAssignments'] as core.List)
+                  .map<OSPolicyAssignment>((value) =>
+                      OSPolicyAssignment.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1940,19 +2043,24 @@ class ListVulnerabilityReportsResponse {
   /// List of vulnerabilityReport objects.
   core.List<VulnerabilityReport>? vulnerabilityReports;
 
-  ListVulnerabilityReportsResponse();
+  ListVulnerabilityReportsResponse({
+    this.nextPageToken,
+    this.vulnerabilityReports,
+  });
 
-  ListVulnerabilityReportsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('vulnerabilityReports')) {
-      vulnerabilityReports = (_json['vulnerabilityReports'] as core.List)
-          .map<VulnerabilityReport>((value) => VulnerabilityReport.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListVulnerabilityReportsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          vulnerabilityReports: _json.containsKey('vulnerabilityReports')
+              ? (_json['vulnerabilityReports'] as core.List)
+                  .map<VulnerabilityReport>((value) =>
+                      VulnerabilityReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -2008,29 +2116,33 @@ class OSPolicy {
   /// Required.
   core.List<OSPolicyResourceGroup>? resourceGroups;
 
-  OSPolicy();
+  OSPolicy({
+    this.allowNoResourceGroupMatch,
+    this.description,
+    this.id,
+    this.mode,
+    this.resourceGroups,
+  });
 
-  OSPolicy.fromJson(core.Map _json) {
-    if (_json.containsKey('allowNoResourceGroupMatch')) {
-      allowNoResourceGroupMatch =
-          _json['allowNoResourceGroupMatch'] as core.bool;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('mode')) {
-      mode = _json['mode'] as core.String;
-    }
-    if (_json.containsKey('resourceGroups')) {
-      resourceGroups = (_json['resourceGroups'] as core.List)
-          .map<OSPolicyResourceGroup>((value) => OSPolicyResourceGroup.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  OSPolicy.fromJson(core.Map _json)
+      : this(
+          allowNoResourceGroupMatch:
+              _json.containsKey('allowNoResourceGroupMatch')
+                  ? _json['allowNoResourceGroupMatch'] as core.bool
+                  : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          mode: _json.containsKey('mode') ? _json['mode'] as core.String : null,
+          resourceGroups: _json.containsKey('resourceGroups')
+              ? (_json['resourceGroups'] as core.List)
+                  .map<OSPolicyResourceGroup>((value) =>
+                      OSPolicyResourceGroup.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowNoResourceGroupMatch != null)
@@ -2134,51 +2246,62 @@ class OSPolicyAssignment {
   /// Output only.
   core.String? uid;
 
-  OSPolicyAssignment();
+  OSPolicyAssignment({
+    this.baseline,
+    this.deleted,
+    this.description,
+    this.instanceFilter,
+    this.name,
+    this.osPolicies,
+    this.reconciling,
+    this.revisionCreateTime,
+    this.revisionId,
+    this.rollout,
+    this.rolloutState,
+    this.uid,
+  });
 
-  OSPolicyAssignment.fromJson(core.Map _json) {
-    if (_json.containsKey('baseline')) {
-      baseline = _json['baseline'] as core.bool;
-    }
-    if (_json.containsKey('deleted')) {
-      deleted = _json['deleted'] as core.bool;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('instanceFilter')) {
-      instanceFilter = OSPolicyAssignmentInstanceFilter.fromJson(
-          _json['instanceFilter'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('osPolicies')) {
-      osPolicies = (_json['osPolicies'] as core.List)
-          .map<OSPolicy>((value) =>
-              OSPolicy.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('reconciling')) {
-      reconciling = _json['reconciling'] as core.bool;
-    }
-    if (_json.containsKey('revisionCreateTime')) {
-      revisionCreateTime = _json['revisionCreateTime'] as core.String;
-    }
-    if (_json.containsKey('revisionId')) {
-      revisionId = _json['revisionId'] as core.String;
-    }
-    if (_json.containsKey('rollout')) {
-      rollout = OSPolicyAssignmentRollout.fromJson(
-          _json['rollout'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('rolloutState')) {
-      rolloutState = _json['rolloutState'] as core.String;
-    }
-    if (_json.containsKey('uid')) {
-      uid = _json['uid'] as core.String;
-    }
-  }
+  OSPolicyAssignment.fromJson(core.Map _json)
+      : this(
+          baseline: _json.containsKey('baseline')
+              ? _json['baseline'] as core.bool
+              : null,
+          deleted: _json.containsKey('deleted')
+              ? _json['deleted'] as core.bool
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          instanceFilter: _json.containsKey('instanceFilter')
+              ? OSPolicyAssignmentInstanceFilter.fromJson(
+                  _json['instanceFilter']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          osPolicies: _json.containsKey('osPolicies')
+              ? (_json['osPolicies'] as core.List)
+                  .map<OSPolicy>((value) => OSPolicy.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          reconciling: _json.containsKey('reconciling')
+              ? _json['reconciling'] as core.bool
+              : null,
+          revisionCreateTime: _json.containsKey('revisionCreateTime')
+              ? _json['revisionCreateTime'] as core.String
+              : null,
+          revisionId: _json.containsKey('revisionId')
+              ? _json['revisionId'] as core.String
+              : null,
+          rollout: _json.containsKey('rollout')
+              ? OSPolicyAssignmentRollout.fromJson(
+                  _json['rollout'] as core.Map<core.String, core.dynamic>)
+              : null,
+          rolloutState: _json.containsKey('rolloutState')
+              ? _json['rolloutState'] as core.String
+              : null,
+          uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (baseline != null) 'baseline': baseline!,
@@ -2223,32 +2346,36 @@ class OSPolicyAssignmentInstanceFilter {
   /// provided in this list.
   core.List<core.String>? osShortNames;
 
-  OSPolicyAssignmentInstanceFilter();
+  OSPolicyAssignmentInstanceFilter({
+    this.all,
+    this.exclusionLabels,
+    this.inclusionLabels,
+    this.osShortNames,
+  });
 
-  OSPolicyAssignmentInstanceFilter.fromJson(core.Map _json) {
-    if (_json.containsKey('all')) {
-      all = _json['all'] as core.bool;
-    }
-    if (_json.containsKey('exclusionLabels')) {
-      exclusionLabels = (_json['exclusionLabels'] as core.List)
-          .map<OSPolicyAssignmentLabelSet>((value) =>
-              OSPolicyAssignmentLabelSet.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('inclusionLabels')) {
-      inclusionLabels = (_json['inclusionLabels'] as core.List)
-          .map<OSPolicyAssignmentLabelSet>((value) =>
-              OSPolicyAssignmentLabelSet.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('osShortNames')) {
-      osShortNames = (_json['osShortNames'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  OSPolicyAssignmentInstanceFilter.fromJson(core.Map _json)
+      : this(
+          all: _json.containsKey('all') ? _json['all'] as core.bool : null,
+          exclusionLabels: _json.containsKey('exclusionLabels')
+              ? (_json['exclusionLabels'] as core.List)
+                  .map<OSPolicyAssignmentLabelSet>((value) =>
+                      OSPolicyAssignmentLabelSet.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          inclusionLabels: _json.containsKey('inclusionLabels')
+              ? (_json['inclusionLabels'] as core.List)
+                  .map<OSPolicyAssignmentLabelSet>((value) =>
+                      OSPolicyAssignmentLabelSet.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          osShortNames: _json.containsKey('osShortNames')
+              ? (_json['osShortNames'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (all != null) 'all': all!,
@@ -2276,18 +2403,21 @@ class OSPolicyAssignmentLabelSet {
   /// selected.
   core.Map<core.String, core.String>? labels;
 
-  OSPolicyAssignmentLabelSet();
+  OSPolicyAssignmentLabelSet({
+    this.labels,
+  });
 
-  OSPolicyAssignmentLabelSet.fromJson(core.Map _json) {
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-  }
+  OSPolicyAssignmentLabelSet.fromJson(core.Map _json)
+      : this(
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (labels != null) 'labels': labels!,
@@ -2326,25 +2456,32 @@ class OSPolicyAssignmentOperationMetadata {
   /// Rollout update time
   core.String? rolloutUpdateTime;
 
-  OSPolicyAssignmentOperationMetadata();
+  OSPolicyAssignmentOperationMetadata({
+    this.apiMethod,
+    this.osPolicyAssignment,
+    this.rolloutStartTime,
+    this.rolloutState,
+    this.rolloutUpdateTime,
+  });
 
-  OSPolicyAssignmentOperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('apiMethod')) {
-      apiMethod = _json['apiMethod'] as core.String;
-    }
-    if (_json.containsKey('osPolicyAssignment')) {
-      osPolicyAssignment = _json['osPolicyAssignment'] as core.String;
-    }
-    if (_json.containsKey('rolloutStartTime')) {
-      rolloutStartTime = _json['rolloutStartTime'] as core.String;
-    }
-    if (_json.containsKey('rolloutState')) {
-      rolloutState = _json['rolloutState'] as core.String;
-    }
-    if (_json.containsKey('rolloutUpdateTime')) {
-      rolloutUpdateTime = _json['rolloutUpdateTime'] as core.String;
-    }
-  }
+  OSPolicyAssignmentOperationMetadata.fromJson(core.Map _json)
+      : this(
+          apiMethod: _json.containsKey('apiMethod')
+              ? _json['apiMethod'] as core.String
+              : null,
+          osPolicyAssignment: _json.containsKey('osPolicyAssignment')
+              ? _json['osPolicyAssignment'] as core.String
+              : null,
+          rolloutStartTime: _json.containsKey('rolloutStartTime')
+              ? _json['rolloutStartTime'] as core.String
+              : null,
+          rolloutState: _json.containsKey('rolloutState')
+              ? _json['rolloutState'] as core.String
+              : null,
+          rolloutUpdateTime: _json.containsKey('rolloutUpdateTime')
+              ? _json['rolloutUpdateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiMethod != null) 'apiMethod': apiMethod!,
@@ -2374,17 +2511,21 @@ class OSPolicyAssignmentRollout {
   /// Required.
   core.String? minWaitDuration;
 
-  OSPolicyAssignmentRollout();
+  OSPolicyAssignmentRollout({
+    this.disruptionBudget,
+    this.minWaitDuration,
+  });
 
-  OSPolicyAssignmentRollout.fromJson(core.Map _json) {
-    if (_json.containsKey('disruptionBudget')) {
-      disruptionBudget = FixedOrPercent.fromJson(
-          _json['disruptionBudget'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('minWaitDuration')) {
-      minWaitDuration = _json['minWaitDuration'] as core.String;
-    }
-  }
+  OSPolicyAssignmentRollout.fromJson(core.Map _json)
+      : this(
+          disruptionBudget: _json.containsKey('disruptionBudget')
+              ? FixedOrPercent.fromJson(_json['disruptionBudget']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          minWaitDuration: _json.containsKey('minWaitDuration')
+              ? _json['minWaitDuration'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disruptionBudget != null)
@@ -2408,16 +2549,20 @@ class OSPolicyOSFilter {
   /// specify the following value for this field `7.*`
   core.String? osVersion;
 
-  OSPolicyOSFilter();
+  OSPolicyOSFilter({
+    this.osShortName,
+    this.osVersion,
+  });
 
-  OSPolicyOSFilter.fromJson(core.Map _json) {
-    if (_json.containsKey('osShortName')) {
-      osShortName = _json['osShortName'] as core.String;
-    }
-    if (_json.containsKey('osVersion')) {
-      osVersion = _json['osVersion'] as core.String;
-    }
-  }
+  OSPolicyOSFilter.fromJson(core.Map _json)
+      : this(
+          osShortName: _json.containsKey('osShortName')
+              ? _json['osShortName'] as core.String
+              : null,
+          osVersion: _json.containsKey('osVersion')
+              ? _json['osVersion'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (osShortName != null) 'osShortName': osShortName!,
@@ -2453,29 +2598,34 @@ class OSPolicyResource {
   /// Package repository resource
   OSPolicyResourceRepositoryResource? repository;
 
-  OSPolicyResource();
+  OSPolicyResource({
+    this.exec,
+    this.file,
+    this.id,
+    this.pkg,
+    this.repository,
+  });
 
-  OSPolicyResource.fromJson(core.Map _json) {
-    if (_json.containsKey('exec')) {
-      exec = OSPolicyResourceExecResource.fromJson(
-          _json['exec'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('file')) {
-      file = OSPolicyResourceFileResource.fromJson(
-          _json['file'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('pkg')) {
-      pkg = OSPolicyResourcePackageResource.fromJson(
-          _json['pkg'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('repository')) {
-      repository = OSPolicyResourceRepositoryResource.fromJson(
-          _json['repository'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  OSPolicyResource.fromJson(core.Map _json)
+      : this(
+          exec: _json.containsKey('exec')
+              ? OSPolicyResourceExecResource.fromJson(
+                  _json['exec'] as core.Map<core.String, core.dynamic>)
+              : null,
+          file: _json.containsKey('file')
+              ? OSPolicyResourceFileResource.fromJson(
+                  _json['file'] as core.Map<core.String, core.dynamic>)
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          pkg: _json.containsKey('pkg')
+              ? OSPolicyResourcePackageResource.fromJson(
+                  _json['pkg'] as core.Map<core.String, core.dynamic>)
+              : null,
+          repository: _json.containsKey('repository')
+              ? OSPolicyResourceRepositoryResource.fromJson(
+                  _json['repository'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exec != null) 'exec': exec!.toJson(),
@@ -2509,29 +2659,33 @@ class OSPolicyResourceCompliance {
   /// the instance. This state is only applicable to the instance.
   core.String? state;
 
-  OSPolicyResourceCompliance();
+  OSPolicyResourceCompliance({
+    this.configSteps,
+    this.execResourceOutput,
+    this.osPolicyResourceId,
+    this.state,
+  });
 
-  OSPolicyResourceCompliance.fromJson(core.Map _json) {
-    if (_json.containsKey('configSteps')) {
-      configSteps = (_json['configSteps'] as core.List)
-          .map<OSPolicyResourceConfigStep>((value) =>
-              OSPolicyResourceConfigStep.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('execResourceOutput')) {
-      execResourceOutput =
-          OSPolicyResourceComplianceExecResourceOutput.fromJson(
-              _json['execResourceOutput']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('osPolicyResourceId')) {
-      osPolicyResourceId = _json['osPolicyResourceId'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-  }
+  OSPolicyResourceCompliance.fromJson(core.Map _json)
+      : this(
+          configSteps: _json.containsKey('configSteps')
+              ? (_json['configSteps'] as core.List)
+                  .map<OSPolicyResourceConfigStep>((value) =>
+                      OSPolicyResourceConfigStep.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          execResourceOutput: _json.containsKey('execResourceOutput')
+              ? OSPolicyResourceComplianceExecResourceOutput.fromJson(
+                  _json['execResourceOutput']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          osPolicyResourceId: _json.containsKey('osPolicyResourceId')
+              ? _json['osPolicyResourceId'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (configSteps != null)
@@ -2558,13 +2712,16 @@ class OSPolicyResourceComplianceExecResourceOutput {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  OSPolicyResourceComplianceExecResourceOutput();
+  OSPolicyResourceComplianceExecResourceOutput({
+    this.enforcementOutput,
+  });
 
-  OSPolicyResourceComplianceExecResourceOutput.fromJson(core.Map _json) {
-    if (_json.containsKey('enforcementOutput')) {
-      enforcementOutput = _json['enforcementOutput'] as core.String;
-    }
-  }
+  OSPolicyResourceComplianceExecResourceOutput.fromJson(core.Map _json)
+      : this(
+          enforcementOutput: _json.containsKey('enforcementOutput')
+              ? _json['enforcementOutput'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enforcementOutput != null) 'enforcementOutput': enforcementOutput!,
@@ -2603,19 +2760,22 @@ class OSPolicyResourceConfigStep {
   /// other resources during the current configuration run.
   core.String? type;
 
-  OSPolicyResourceConfigStep();
+  OSPolicyResourceConfigStep({
+    this.errorMessage,
+    this.outcome,
+    this.type,
+  });
 
-  OSPolicyResourceConfigStep.fromJson(core.Map _json) {
-    if (_json.containsKey('errorMessage')) {
-      errorMessage = _json['errorMessage'] as core.String;
-    }
-    if (_json.containsKey('outcome')) {
-      outcome = _json['outcome'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  OSPolicyResourceConfigStep.fromJson(core.Map _json)
+      : this(
+          errorMessage: _json.containsKey('errorMessage')
+              ? _json['errorMessage'] as core.String
+              : null,
+          outcome: _json.containsKey('outcome')
+              ? _json['outcome'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorMessage != null) 'errorMessage': errorMessage!,
@@ -2660,18 +2820,22 @@ class OSPolicyResourceExecResource {
   /// Required.
   OSPolicyResourceExecResourceExec? validate;
 
-  OSPolicyResourceExecResource();
+  OSPolicyResourceExecResource({
+    this.enforce,
+    this.validate,
+  });
 
-  OSPolicyResourceExecResource.fromJson(core.Map _json) {
-    if (_json.containsKey('enforce')) {
-      enforce = OSPolicyResourceExecResourceExec.fromJson(
-          _json['enforce'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('validate')) {
-      validate = OSPolicyResourceExecResourceExec.fromJson(
-          _json['validate'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  OSPolicyResourceExecResource.fromJson(core.Map _json)
+      : this(
+          enforce: _json.containsKey('enforce')
+              ? OSPolicyResourceExecResourceExec.fromJson(
+                  _json['enforce'] as core.Map<core.String, core.dynamic>)
+              : null,
+          validate: _json.containsKey('validate')
+              ? OSPolicyResourceExecResourceExec.fromJson(
+                  _json['validate'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enforce != null) 'enforce': enforce!.toJson(),
@@ -2713,28 +2877,35 @@ class OSPolicyResourceExecResourceExec {
   /// The size of the script is limited to 1024 characters.
   core.String? script;
 
-  OSPolicyResourceExecResourceExec();
+  OSPolicyResourceExecResourceExec({
+    this.args,
+    this.file,
+    this.interpreter,
+    this.outputFilePath,
+    this.script,
+  });
 
-  OSPolicyResourceExecResourceExec.fromJson(core.Map _json) {
-    if (_json.containsKey('args')) {
-      args = (_json['args'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('file')) {
-      file = OSPolicyResourceFile.fromJson(
-          _json['file'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('interpreter')) {
-      interpreter = _json['interpreter'] as core.String;
-    }
-    if (_json.containsKey('outputFilePath')) {
-      outputFilePath = _json['outputFilePath'] as core.String;
-    }
-    if (_json.containsKey('script')) {
-      script = _json['script'] as core.String;
-    }
-  }
+  OSPolicyResourceExecResourceExec.fromJson(core.Map _json)
+      : this(
+          args: _json.containsKey('args')
+              ? (_json['args'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          file: _json.containsKey('file')
+              ? OSPolicyResourceFile.fromJson(
+                  _json['file'] as core.Map<core.String, core.dynamic>)
+              : null,
+          interpreter: _json.containsKey('interpreter')
+              ? _json['interpreter'] as core.String
+              : null,
+          outputFilePath: _json.containsKey('outputFilePath')
+              ? _json['outputFilePath'] as core.String
+              : null,
+          script: _json.containsKey('script')
+              ? _json['script'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (args != null) 'args': args!,
@@ -2763,24 +2934,30 @@ class OSPolicyResourceFile {
   /// A generic remote file.
   OSPolicyResourceFileRemote? remote;
 
-  OSPolicyResourceFile();
+  OSPolicyResourceFile({
+    this.allowInsecure,
+    this.gcs,
+    this.localPath,
+    this.remote,
+  });
 
-  OSPolicyResourceFile.fromJson(core.Map _json) {
-    if (_json.containsKey('allowInsecure')) {
-      allowInsecure = _json['allowInsecure'] as core.bool;
-    }
-    if (_json.containsKey('gcs')) {
-      gcs = OSPolicyResourceFileGcs.fromJson(
-          _json['gcs'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('localPath')) {
-      localPath = _json['localPath'] as core.String;
-    }
-    if (_json.containsKey('remote')) {
-      remote = OSPolicyResourceFileRemote.fromJson(
-          _json['remote'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  OSPolicyResourceFile.fromJson(core.Map _json)
+      : this(
+          allowInsecure: _json.containsKey('allowInsecure')
+              ? _json['allowInsecure'] as core.bool
+              : null,
+          gcs: _json.containsKey('gcs')
+              ? OSPolicyResourceFileGcs.fromJson(
+                  _json['gcs'] as core.Map<core.String, core.dynamic>)
+              : null,
+          localPath: _json.containsKey('localPath')
+              ? _json['localPath'] as core.String
+              : null,
+          remote: _json.containsKey('remote')
+              ? OSPolicyResourceFileRemote.fromJson(
+                  _json['remote'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowInsecure != null) 'allowInsecure': allowInsecure!,
@@ -2805,19 +2982,24 @@ class OSPolicyResourceFileGcs {
   /// Required.
   core.String? object;
 
-  OSPolicyResourceFileGcs();
+  OSPolicyResourceFileGcs({
+    this.bucket,
+    this.generation,
+    this.object,
+  });
 
-  OSPolicyResourceFileGcs.fromJson(core.Map _json) {
-    if (_json.containsKey('bucket')) {
-      bucket = _json['bucket'] as core.String;
-    }
-    if (_json.containsKey('generation')) {
-      generation = _json['generation'] as core.String;
-    }
-    if (_json.containsKey('object')) {
-      object = _json['object'] as core.String;
-    }
-  }
+  OSPolicyResourceFileGcs.fromJson(core.Map _json)
+      : this(
+          bucket: _json.containsKey('bucket')
+              ? _json['bucket'] as core.String
+              : null,
+          generation: _json.containsKey('generation')
+              ? _json['generation'] as core.String
+              : null,
+          object: _json.containsKey('object')
+              ? _json['object'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bucket != null) 'bucket': bucket!,
@@ -2839,16 +3021,18 @@ class OSPolicyResourceFileRemote {
   /// Required.
   core.String? uri;
 
-  OSPolicyResourceFileRemote();
+  OSPolicyResourceFileRemote({
+    this.sha256Checksum,
+    this.uri,
+  });
 
-  OSPolicyResourceFileRemote.fromJson(core.Map _json) {
-    if (_json.containsKey('sha256Checksum')) {
-      sha256Checksum = _json['sha256Checksum'] as core.String;
-    }
-    if (_json.containsKey('uri')) {
-      uri = _json['uri'] as core.String;
-    }
-  }
+  OSPolicyResourceFileRemote.fromJson(core.Map _json)
+      : this(
+          sha256Checksum: _json.containsKey('sha256Checksum')
+              ? _json['sha256Checksum'] as core.String
+              : null,
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sha256Checksum != null) 'sha256Checksum': sha256Checksum!,
@@ -2893,26 +3077,30 @@ class OSPolicyResourceFileResource {
   /// the file does not exist it will be created.
   core.String? state;
 
-  OSPolicyResourceFileResource();
+  OSPolicyResourceFileResource({
+    this.content,
+    this.file,
+    this.path,
+    this.permissions,
+    this.state,
+  });
 
-  OSPolicyResourceFileResource.fromJson(core.Map _json) {
-    if (_json.containsKey('content')) {
-      content = _json['content'] as core.String;
-    }
-    if (_json.containsKey('file')) {
-      file = OSPolicyResourceFile.fromJson(
-          _json['file'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('path')) {
-      path = _json['path'] as core.String;
-    }
-    if (_json.containsKey('permissions')) {
-      permissions = _json['permissions'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-  }
+  OSPolicyResourceFileResource.fromJson(core.Map _json)
+      : this(
+          content: _json.containsKey('content')
+              ? _json['content'] as core.String
+              : null,
+          file: _json.containsKey('file')
+              ? OSPolicyResourceFile.fromJson(
+                  _json['file'] as core.Map<core.String, core.dynamic>)
+              : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+          permissions: _json.containsKey('permissions')
+              ? _json['permissions'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
@@ -2940,20 +3128,24 @@ class OSPolicyResourceGroup {
   /// Required.
   core.List<OSPolicyResource>? resources;
 
-  OSPolicyResourceGroup();
+  OSPolicyResourceGroup({
+    this.osFilter,
+    this.resources,
+  });
 
-  OSPolicyResourceGroup.fromJson(core.Map _json) {
-    if (_json.containsKey('osFilter')) {
-      osFilter = OSPolicyOSFilter.fromJson(
-          _json['osFilter'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('resources')) {
-      resources = (_json['resources'] as core.List)
-          .map<OSPolicyResource>((value) => OSPolicyResource.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  OSPolicyResourceGroup.fromJson(core.Map _json)
+      : this(
+          osFilter: _json.containsKey('osFilter')
+              ? OSPolicyOSFilter.fromJson(
+                  _json['osFilter'] as core.Map<core.String, core.dynamic>)
+              : null,
+          resources: _json.containsKey('resources')
+              ? (_json['resources'] as core.List)
+                  .map<OSPolicyResource>((value) => OSPolicyResource.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (osFilter != null) 'osFilter': osFilter!.toJson(),
@@ -2995,41 +3187,51 @@ class OSPolicyResourcePackageResource {
   /// A package managed by Zypper.
   OSPolicyResourcePackageResourceZypper? zypper;
 
-  OSPolicyResourcePackageResource();
+  OSPolicyResourcePackageResource({
+    this.apt,
+    this.deb,
+    this.desiredState,
+    this.googet,
+    this.msi,
+    this.rpm,
+    this.yum,
+    this.zypper,
+  });
 
-  OSPolicyResourcePackageResource.fromJson(core.Map _json) {
-    if (_json.containsKey('apt')) {
-      apt = OSPolicyResourcePackageResourceAPT.fromJson(
-          _json['apt'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('deb')) {
-      deb = OSPolicyResourcePackageResourceDeb.fromJson(
-          _json['deb'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('desiredState')) {
-      desiredState = _json['desiredState'] as core.String;
-    }
-    if (_json.containsKey('googet')) {
-      googet = OSPolicyResourcePackageResourceGooGet.fromJson(
-          _json['googet'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('msi')) {
-      msi = OSPolicyResourcePackageResourceMSI.fromJson(
-          _json['msi'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('rpm')) {
-      rpm = OSPolicyResourcePackageResourceRPM.fromJson(
-          _json['rpm'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('yum')) {
-      yum = OSPolicyResourcePackageResourceYUM.fromJson(
-          _json['yum'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('zypper')) {
-      zypper = OSPolicyResourcePackageResourceZypper.fromJson(
-          _json['zypper'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  OSPolicyResourcePackageResource.fromJson(core.Map _json)
+      : this(
+          apt: _json.containsKey('apt')
+              ? OSPolicyResourcePackageResourceAPT.fromJson(
+                  _json['apt'] as core.Map<core.String, core.dynamic>)
+              : null,
+          deb: _json.containsKey('deb')
+              ? OSPolicyResourcePackageResourceDeb.fromJson(
+                  _json['deb'] as core.Map<core.String, core.dynamic>)
+              : null,
+          desiredState: _json.containsKey('desiredState')
+              ? _json['desiredState'] as core.String
+              : null,
+          googet: _json.containsKey('googet')
+              ? OSPolicyResourcePackageResourceGooGet.fromJson(
+                  _json['googet'] as core.Map<core.String, core.dynamic>)
+              : null,
+          msi: _json.containsKey('msi')
+              ? OSPolicyResourcePackageResourceMSI.fromJson(
+                  _json['msi'] as core.Map<core.String, core.dynamic>)
+              : null,
+          rpm: _json.containsKey('rpm')
+              ? OSPolicyResourcePackageResourceRPM.fromJson(
+                  _json['rpm'] as core.Map<core.String, core.dynamic>)
+              : null,
+          yum: _json.containsKey('yum')
+              ? OSPolicyResourcePackageResourceYUM.fromJson(
+                  _json['yum'] as core.Map<core.String, core.dynamic>)
+              : null,
+          zypper: _json.containsKey('zypper')
+              ? OSPolicyResourcePackageResourceZypper.fromJson(
+                  _json['zypper'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apt != null) 'apt': apt!.toJson(),
@@ -3053,13 +3255,14 @@ class OSPolicyResourcePackageResourceAPT {
   /// Required.
   core.String? name;
 
-  OSPolicyResourcePackageResourceAPT();
+  OSPolicyResourcePackageResourceAPT({
+    this.name,
+  });
 
-  OSPolicyResourcePackageResourceAPT.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  OSPolicyResourcePackageResourceAPT.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -3081,17 +3284,21 @@ class OSPolicyResourcePackageResourceDeb {
   /// Required.
   OSPolicyResourceFile? source;
 
-  OSPolicyResourcePackageResourceDeb();
+  OSPolicyResourcePackageResourceDeb({
+    this.pullDeps,
+    this.source,
+  });
 
-  OSPolicyResourcePackageResourceDeb.fromJson(core.Map _json) {
-    if (_json.containsKey('pullDeps')) {
-      pullDeps = _json['pullDeps'] as core.bool;
-    }
-    if (_json.containsKey('source')) {
-      source = OSPolicyResourceFile.fromJson(
-          _json['source'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  OSPolicyResourcePackageResourceDeb.fromJson(core.Map _json)
+      : this(
+          pullDeps: _json.containsKey('pullDeps')
+              ? _json['pullDeps'] as core.bool
+              : null,
+          source: _json.containsKey('source')
+              ? OSPolicyResourceFile.fromJson(
+                  _json['source'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (pullDeps != null) 'pullDeps': pullDeps!,
@@ -3109,13 +3316,14 @@ class OSPolicyResourcePackageResourceGooGet {
   /// Required.
   core.String? name;
 
-  OSPolicyResourcePackageResourceGooGet();
+  OSPolicyResourcePackageResourceGooGet({
+    this.name,
+  });
 
-  OSPolicyResourcePackageResourceGooGet.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  OSPolicyResourcePackageResourceGooGet.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -3137,19 +3345,23 @@ class OSPolicyResourcePackageResourceMSI {
   /// Required.
   OSPolicyResourceFile? source;
 
-  OSPolicyResourcePackageResourceMSI();
+  OSPolicyResourcePackageResourceMSI({
+    this.properties,
+    this.source,
+  });
 
-  OSPolicyResourcePackageResourceMSI.fromJson(core.Map _json) {
-    if (_json.containsKey('properties')) {
-      properties = (_json['properties'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('source')) {
-      source = OSPolicyResourceFile.fromJson(
-          _json['source'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  OSPolicyResourcePackageResourceMSI.fromJson(core.Map _json)
+      : this(
+          properties: _json.containsKey('properties')
+              ? (_json['properties'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          source: _json.containsKey('source')
+              ? OSPolicyResourceFile.fromJson(
+                  _json['source'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (properties != null) 'properties': properties!,
@@ -3172,17 +3384,21 @@ class OSPolicyResourcePackageResourceRPM {
   /// Required.
   OSPolicyResourceFile? source;
 
-  OSPolicyResourcePackageResourceRPM();
+  OSPolicyResourcePackageResourceRPM({
+    this.pullDeps,
+    this.source,
+  });
 
-  OSPolicyResourcePackageResourceRPM.fromJson(core.Map _json) {
-    if (_json.containsKey('pullDeps')) {
-      pullDeps = _json['pullDeps'] as core.bool;
-    }
-    if (_json.containsKey('source')) {
-      source = OSPolicyResourceFile.fromJson(
-          _json['source'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  OSPolicyResourcePackageResourceRPM.fromJson(core.Map _json)
+      : this(
+          pullDeps: _json.containsKey('pullDeps')
+              ? _json['pullDeps'] as core.bool
+              : null,
+          source: _json.containsKey('source')
+              ? OSPolicyResourceFile.fromJson(
+                  _json['source'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (pullDeps != null) 'pullDeps': pullDeps!,
@@ -3199,13 +3415,14 @@ class OSPolicyResourcePackageResourceYUM {
   /// Required.
   core.String? name;
 
-  OSPolicyResourcePackageResourceYUM();
+  OSPolicyResourcePackageResourceYUM({
+    this.name,
+  });
 
-  OSPolicyResourcePackageResourceYUM.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  OSPolicyResourcePackageResourceYUM.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -3221,13 +3438,14 @@ class OSPolicyResourcePackageResourceZypper {
   /// Required.
   core.String? name;
 
-  OSPolicyResourcePackageResourceZypper();
+  OSPolicyResourcePackageResourceZypper({
+    this.name,
+  });
 
-  OSPolicyResourcePackageResourceZypper.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  OSPolicyResourcePackageResourceZypper.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -3248,26 +3466,32 @@ class OSPolicyResourceRepositoryResource {
   /// A Zypper Repository.
   OSPolicyResourceRepositoryResourceZypperRepository? zypper;
 
-  OSPolicyResourceRepositoryResource();
+  OSPolicyResourceRepositoryResource({
+    this.apt,
+    this.goo,
+    this.yum,
+    this.zypper,
+  });
 
-  OSPolicyResourceRepositoryResource.fromJson(core.Map _json) {
-    if (_json.containsKey('apt')) {
-      apt = OSPolicyResourceRepositoryResourceAptRepository.fromJson(
-          _json['apt'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('goo')) {
-      goo = OSPolicyResourceRepositoryResourceGooRepository.fromJson(
-          _json['goo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('yum')) {
-      yum = OSPolicyResourceRepositoryResourceYumRepository.fromJson(
-          _json['yum'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('zypper')) {
-      zypper = OSPolicyResourceRepositoryResourceZypperRepository.fromJson(
-          _json['zypper'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  OSPolicyResourceRepositoryResource.fromJson(core.Map _json)
+      : this(
+          apt: _json.containsKey('apt')
+              ? OSPolicyResourceRepositoryResourceAptRepository.fromJson(
+                  _json['apt'] as core.Map<core.String, core.dynamic>)
+              : null,
+          goo: _json.containsKey('goo')
+              ? OSPolicyResourceRepositoryResourceGooRepository.fromJson(
+                  _json['goo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          yum: _json.containsKey('yum')
+              ? OSPolicyResourceRepositoryResourceYumRepository.fromJson(
+                  _json['yum'] as core.Map<core.String, core.dynamic>)
+              : null,
+          zypper: _json.containsKey('zypper')
+              ? OSPolicyResourceRepositoryResourceZypperRepository.fromJson(
+                  _json['zypper'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apt != null) 'apt': apt!.toJson(),
@@ -3314,27 +3538,32 @@ class OSPolicyResourceRepositoryResourceAptRepository {
   /// Required.
   core.String? uri;
 
-  OSPolicyResourceRepositoryResourceAptRepository();
+  OSPolicyResourceRepositoryResourceAptRepository({
+    this.archiveType,
+    this.components,
+    this.distribution,
+    this.gpgKey,
+    this.uri,
+  });
 
-  OSPolicyResourceRepositoryResourceAptRepository.fromJson(core.Map _json) {
-    if (_json.containsKey('archiveType')) {
-      archiveType = _json['archiveType'] as core.String;
-    }
-    if (_json.containsKey('components')) {
-      components = (_json['components'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('distribution')) {
-      distribution = _json['distribution'] as core.String;
-    }
-    if (_json.containsKey('gpgKey')) {
-      gpgKey = _json['gpgKey'] as core.String;
-    }
-    if (_json.containsKey('uri')) {
-      uri = _json['uri'] as core.String;
-    }
-  }
+  OSPolicyResourceRepositoryResourceAptRepository.fromJson(core.Map _json)
+      : this(
+          archiveType: _json.containsKey('archiveType')
+              ? _json['archiveType'] as core.String
+              : null,
+          components: _json.containsKey('components')
+              ? (_json['components'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          distribution: _json.containsKey('distribution')
+              ? _json['distribution'] as core.String
+              : null,
+          gpgKey: _json.containsKey('gpgKey')
+              ? _json['gpgKey'] as core.String
+              : null,
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (archiveType != null) 'archiveType': archiveType!,
@@ -3360,16 +3589,16 @@ class OSPolicyResourceRepositoryResourceGooRepository {
   /// Required.
   core.String? url;
 
-  OSPolicyResourceRepositoryResourceGooRepository();
+  OSPolicyResourceRepositoryResourceGooRepository({
+    this.name,
+    this.url,
+  });
 
-  OSPolicyResourceRepositoryResourceGooRepository.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  OSPolicyResourceRepositoryResourceGooRepository.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -3402,24 +3631,28 @@ class OSPolicyResourceRepositoryResourceYumRepository {
   /// Required.
   core.String? id;
 
-  OSPolicyResourceRepositoryResourceYumRepository();
+  OSPolicyResourceRepositoryResourceYumRepository({
+    this.baseUrl,
+    this.displayName,
+    this.gpgKeys,
+    this.id,
+  });
 
-  OSPolicyResourceRepositoryResourceYumRepository.fromJson(core.Map _json) {
-    if (_json.containsKey('baseUrl')) {
-      baseUrl = _json['baseUrl'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('gpgKeys')) {
-      gpgKeys = (_json['gpgKeys'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-  }
+  OSPolicyResourceRepositoryResourceYumRepository.fromJson(core.Map _json)
+      : this(
+          baseUrl: _json.containsKey('baseUrl')
+              ? _json['baseUrl'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          gpgKeys: _json.containsKey('gpgKeys')
+              ? (_json['gpgKeys'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (baseUrl != null) 'baseUrl': baseUrl!,
@@ -3454,24 +3687,28 @@ class OSPolicyResourceRepositoryResourceZypperRepository {
   /// Required.
   core.String? id;
 
-  OSPolicyResourceRepositoryResourceZypperRepository();
+  OSPolicyResourceRepositoryResourceZypperRepository({
+    this.baseUrl,
+    this.displayName,
+    this.gpgKeys,
+    this.id,
+  });
 
-  OSPolicyResourceRepositoryResourceZypperRepository.fromJson(core.Map _json) {
-    if (_json.containsKey('baseUrl')) {
-      baseUrl = _json['baseUrl'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('gpgKeys')) {
-      gpgKeys = (_json['gpgKeys'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-  }
+  OSPolicyResourceRepositoryResourceZypperRepository.fromJson(core.Map _json)
+      : this(
+          baseUrl: _json.containsKey('baseUrl')
+              ? _json['baseUrl'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          gpgKeys: _json.containsKey('gpgKeys')
+              ? (_json['gpgKeys'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (baseUrl != null) 'baseUrl': baseUrl!,
@@ -3524,36 +3761,39 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object>? response;
 
-  Operation();
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
-  Operation.fromJson(core.Map _json) {
-    if (_json.containsKey('done')) {
-      done = _json['done'] as core.bool;
-    }
-    if (_json.containsKey('error')) {
-      error = Status.fromJson(
-          _json['error'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('response')) {
-      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-  }
+  Operation.fromJson(core.Map _json)
+      : this(
+          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
+          error: _json.containsKey('error')
+              ? Status.fromJson(
+                  _json['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          response: _json.containsKey('response')
+              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
@@ -3589,27 +3829,30 @@ class Status {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  Status();
+  Status({
+    this.code,
+    this.details,
+    this.message,
+  });
 
-  Status.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.int;
-    }
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  Status.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -3643,23 +3886,26 @@ class VulnerabilityReport {
   /// Output only.
   core.List<VulnerabilityReportVulnerability>? vulnerabilities;
 
-  VulnerabilityReport();
+  VulnerabilityReport({
+    this.name,
+    this.updateTime,
+    this.vulnerabilities,
+  });
 
-  VulnerabilityReport.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-    if (_json.containsKey('vulnerabilities')) {
-      vulnerabilities = (_json['vulnerabilities'] as core.List)
-          .map<VulnerabilityReportVulnerability>((value) =>
-              VulnerabilityReportVulnerability.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  VulnerabilityReport.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+          vulnerabilities: _json.containsKey('vulnerabilities')
+              ? (_json['vulnerabilities'] as core.List)
+                  .map<VulnerabilityReportVulnerability>((value) =>
+                      VulnerabilityReportVulnerability.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -3698,32 +3944,39 @@ class VulnerabilityReportVulnerability {
   /// The timestamp for when the vulnerability was last modified.
   core.String? updateTime;
 
-  VulnerabilityReportVulnerability();
+  VulnerabilityReportVulnerability({
+    this.availableInventoryItemIds,
+    this.createTime,
+    this.details,
+    this.installedInventoryItemIds,
+    this.updateTime,
+  });
 
-  VulnerabilityReportVulnerability.fromJson(core.Map _json) {
-    if (_json.containsKey('availableInventoryItemIds')) {
-      availableInventoryItemIds =
-          (_json['availableInventoryItemIds'] as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList();
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('details')) {
-      details = VulnerabilityReportVulnerabilityDetails.fromJson(
-          _json['details'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('installedInventoryItemIds')) {
-      installedInventoryItemIds =
-          (_json['installedInventoryItemIds'] as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList();
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  VulnerabilityReportVulnerability.fromJson(core.Map _json)
+      : this(
+          availableInventoryItemIds:
+              _json.containsKey('availableInventoryItemIds')
+                  ? (_json['availableInventoryItemIds'] as core.List)
+                      .map<core.String>((value) => value as core.String)
+                      .toList()
+                  : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          details: _json.containsKey('details')
+              ? VulnerabilityReportVulnerabilityDetails.fromJson(
+                  _json['details'] as core.Map<core.String, core.dynamic>)
+              : null,
+          installedInventoryItemIds:
+              _json.containsKey('installedInventoryItemIds')
+                  ? (_json['installedInventoryItemIds'] as core.List)
+                      .map<core.String>((value) => value as core.String)
+                      .toList()
+                  : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (availableInventoryItemIds != null)
@@ -3765,33 +4018,41 @@ class VulnerabilityReportVulnerabilityDetails {
   /// Assigned severity/impact ranking from the distro.
   core.String? severity;
 
-  VulnerabilityReportVulnerabilityDetails();
+  VulnerabilityReportVulnerabilityDetails({
+    this.cve,
+    this.cvssV2Score,
+    this.cvssV3,
+    this.description,
+    this.references,
+    this.severity,
+  });
 
-  VulnerabilityReportVulnerabilityDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('cve')) {
-      cve = _json['cve'] as core.String;
-    }
-    if (_json.containsKey('cvssV2Score')) {
-      cvssV2Score = (_json['cvssV2Score'] as core.num).toDouble();
-    }
-    if (_json.containsKey('cvssV3')) {
-      cvssV3 = CVSSv3.fromJson(
-          _json['cvssV3'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('references')) {
-      references = (_json['references'] as core.List)
-          .map<VulnerabilityReportVulnerabilityDetailsReference>((value) =>
-              VulnerabilityReportVulnerabilityDetailsReference.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('severity')) {
-      severity = _json['severity'] as core.String;
-    }
-  }
+  VulnerabilityReportVulnerabilityDetails.fromJson(core.Map _json)
+      : this(
+          cve: _json.containsKey('cve') ? _json['cve'] as core.String : null,
+          cvssV2Score: _json.containsKey('cvssV2Score')
+              ? (_json['cvssV2Score'] as core.num).toDouble()
+              : null,
+          cvssV3: _json.containsKey('cvssV3')
+              ? CVSSv3.fromJson(
+                  _json['cvssV3'] as core.Map<core.String, core.dynamic>)
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          references: _json.containsKey('references')
+              ? (_json['references'] as core.List)
+                  .map<VulnerabilityReportVulnerabilityDetailsReference>(
+                      (value) =>
+                          VulnerabilityReportVulnerabilityDetailsReference
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          severity: _json.containsKey('severity')
+              ? _json['severity'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cve != null) 'cve': cve!,
@@ -3809,13 +4070,14 @@ class VulnerabilityReportVulnerabilityDetailsReference {
   /// The url of the reference.
   core.String? url;
 
-  VulnerabilityReportVulnerabilityDetailsReference();
+  VulnerabilityReportVulnerabilityDetailsReference({
+    this.url,
+  });
 
-  VulnerabilityReportVulnerabilityDetailsReference.fromJson(core.Map _json) {
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  VulnerabilityReportVulnerabilityDetailsReference.fromJson(core.Map _json)
+      : this(
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (url != null) 'url': url!,

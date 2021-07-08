@@ -309,29 +309,28 @@ class Application {
   /// application to be transferred.
   core.List<ApplicationTransferParam>? transferParams;
 
-  Application();
+  Application({
+    this.etag,
+    this.id,
+    this.kind,
+    this.name,
+    this.transferParams,
+  });
 
-  Application.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('transferParams')) {
-      transferParams = (_json['transferParams'] as core.List)
-          .map<ApplicationTransferParam>((value) =>
-              ApplicationTransferParam.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  Application.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          transferParams: _json.containsKey('transferParams')
+              ? (_json['transferParams'] as core.List)
+                  .map<ApplicationTransferParam>((value) =>
+                      ApplicationTransferParam.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -360,25 +359,30 @@ class ApplicationDataTransfer {
   /// (Read-only)
   core.String? applicationTransferStatus;
 
-  ApplicationDataTransfer();
+  ApplicationDataTransfer({
+    this.applicationId,
+    this.applicationTransferParams,
+    this.applicationTransferStatus,
+  });
 
-  ApplicationDataTransfer.fromJson(core.Map _json) {
-    if (_json.containsKey('applicationId')) {
-      applicationId = _json['applicationId'] as core.String;
-    }
-    if (_json.containsKey('applicationTransferParams')) {
-      applicationTransferParams =
-          (_json['applicationTransferParams'] as core.List)
-              .map<ApplicationTransferParam>((value) =>
-                  ApplicationTransferParam.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList();
-    }
-    if (_json.containsKey('applicationTransferStatus')) {
-      applicationTransferStatus =
-          _json['applicationTransferStatus'] as core.String;
-    }
-  }
+  ApplicationDataTransfer.fromJson(core.Map _json)
+      : this(
+          applicationId: _json.containsKey('applicationId')
+              ? _json['applicationId'] as core.String
+              : null,
+          applicationTransferParams:
+              _json.containsKey('applicationTransferParams')
+                  ? (_json['applicationTransferParams'] as core.List)
+                      .map<ApplicationTransferParam>((value) =>
+                          ApplicationTransferParam.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          applicationTransferStatus:
+              _json.containsKey('applicationTransferStatus')
+                  ? _json['applicationTransferStatus'] as core.String
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (applicationId != null) 'applicationId': applicationId!,
@@ -403,18 +407,20 @@ class ApplicationTransferParam {
   /// eg: 'PRIVATE' or 'SHARED'
   core.List<core.String>? value;
 
-  ApplicationTransferParam();
+  ApplicationTransferParam({
+    this.key,
+    this.value,
+  });
 
-  ApplicationTransferParam.fromJson(core.Map _json) {
-    if (_json.containsKey('key')) {
-      key = _json['key'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = (_json['value'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  ApplicationTransferParam.fromJson(core.Map _json)
+      : this(
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          value: _json.containsKey('value')
+              ? (_json['value'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
@@ -437,25 +443,27 @@ class ApplicationsListResponse {
   /// Continuation token which will be used to specify next page in list API.
   core.String? nextPageToken;
 
-  ApplicationsListResponse();
+  ApplicationsListResponse({
+    this.applications,
+    this.etag,
+    this.kind,
+    this.nextPageToken,
+  });
 
-  ApplicationsListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('applications')) {
-      applications = (_json['applications'] as core.List)
-          .map<Application>((value) => Application.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ApplicationsListResponse.fromJson(core.Map _json)
+      : this(
+          applications: _json.containsKey('applications')
+              ? (_json['applications'] as core.List)
+                  .map<Application>((value) => Application.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (applications != null)
@@ -498,40 +506,44 @@ class DataTransfer {
   /// The time at which the data transfer was requested (Read-only).
   core.DateTime? requestTime;
 
-  DataTransfer();
+  DataTransfer({
+    this.applicationDataTransfers,
+    this.etag,
+    this.id,
+    this.kind,
+    this.newOwnerUserId,
+    this.oldOwnerUserId,
+    this.overallTransferStatusCode,
+    this.requestTime,
+  });
 
-  DataTransfer.fromJson(core.Map _json) {
-    if (_json.containsKey('applicationDataTransfers')) {
-      applicationDataTransfers =
-          (_json['applicationDataTransfers'] as core.List)
-              .map<ApplicationDataTransfer>((value) =>
-                  ApplicationDataTransfer.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList();
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('newOwnerUserId')) {
-      newOwnerUserId = _json['newOwnerUserId'] as core.String;
-    }
-    if (_json.containsKey('oldOwnerUserId')) {
-      oldOwnerUserId = _json['oldOwnerUserId'] as core.String;
-    }
-    if (_json.containsKey('overallTransferStatusCode')) {
-      overallTransferStatusCode =
-          _json['overallTransferStatusCode'] as core.String;
-    }
-    if (_json.containsKey('requestTime')) {
-      requestTime = core.DateTime.parse(_json['requestTime'] as core.String);
-    }
-  }
+  DataTransfer.fromJson(core.Map _json)
+      : this(
+          applicationDataTransfers:
+              _json.containsKey('applicationDataTransfers')
+                  ? (_json['applicationDataTransfers'] as core.List)
+                      .map<ApplicationDataTransfer>((value) =>
+                          ApplicationDataTransfer.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          newOwnerUserId: _json.containsKey('newOwnerUserId')
+              ? _json['newOwnerUserId'] as core.String
+              : null,
+          oldOwnerUserId: _json.containsKey('oldOwnerUserId')
+              ? _json['oldOwnerUserId'] as core.String
+              : null,
+          overallTransferStatusCode:
+              _json.containsKey('overallTransferStatusCode')
+                  ? _json['overallTransferStatusCode'] as core.String
+                  : null,
+          requestTime: _json.containsKey('requestTime')
+              ? core.DateTime.parse(_json['requestTime'] as core.String)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (applicationDataTransfers != null)
@@ -562,25 +574,27 @@ class DataTransfersListResponse {
   /// Continuation token which will be used to specify next page in list API.
   core.String? nextPageToken;
 
-  DataTransfersListResponse();
+  DataTransfersListResponse({
+    this.dataTransfers,
+    this.etag,
+    this.kind,
+    this.nextPageToken,
+  });
 
-  DataTransfersListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('dataTransfers')) {
-      dataTransfers = (_json['dataTransfers'] as core.List)
-          .map<DataTransfer>((value) => DataTransfer.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  DataTransfersListResponse.fromJson(core.Map _json)
+      : this(
+          dataTransfers: _json.containsKey('dataTransfers')
+              ? (_json['dataTransfers'] as core.List)
+                  .map<DataTransfer>((value) => DataTransfer.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataTransfers != null)

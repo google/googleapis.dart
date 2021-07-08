@@ -1398,27 +1398,31 @@ class AccessLevel {
   /// Must be unique within the Policy.
   core.String? title;
 
-  AccessLevel();
+  AccessLevel({
+    this.basic,
+    this.custom,
+    this.description,
+    this.name,
+    this.title,
+  });
 
-  AccessLevel.fromJson(core.Map _json) {
-    if (_json.containsKey('basic')) {
-      basic = BasicLevel.fromJson(
-          _json['basic'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('custom')) {
-      custom = CustomLevel.fromJson(
-          _json['custom'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  AccessLevel.fromJson(core.Map _json)
+      : this(
+          basic: _json.containsKey('basic')
+              ? BasicLevel.fromJson(
+                  _json['basic'] as core.Map<core.String, core.dynamic>)
+              : null,
+          custom: _json.containsKey('custom')
+              ? CustomLevel.fromJson(
+                  _json['custom'] as core.Map<core.String, core.dynamic>)
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (basic != null) 'basic': basic!.toJson(),
@@ -1467,22 +1471,23 @@ class AccessPolicy {
   /// Required.
   core.String? title;
 
-  AccessPolicy();
+  AccessPolicy({
+    this.etag,
+    this.name,
+    this.parent,
+    this.title,
+  });
 
-  AccessPolicy.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('parent')) {
-      parent = _json['parent'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  AccessPolicy.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          parent: _json.containsKey('parent')
+              ? _json['parent'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -1509,19 +1514,23 @@ class ApiOperation {
   /// methods AND permissions for all services.
   core.String? serviceName;
 
-  ApiOperation();
+  ApiOperation({
+    this.methodSelectors,
+    this.serviceName,
+  });
 
-  ApiOperation.fromJson(core.Map _json) {
-    if (_json.containsKey('methodSelectors')) {
-      methodSelectors = (_json['methodSelectors'] as core.List)
-          .map<MethodSelector>((value) => MethodSelector.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('serviceName')) {
-      serviceName = _json['serviceName'] as core.String;
-    }
-  }
+  ApiOperation.fromJson(core.Map _json)
+      : this(
+          methodSelectors: _json.containsKey('methodSelectors')
+              ? (_json['methodSelectors'] as core.List)
+                  .map<MethodSelector>((value) => MethodSelector.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          serviceName: _json.containsKey('serviceName')
+              ? _json['serviceName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (methodSelectors != null)
@@ -1551,19 +1560,23 @@ class BasicLevel {
   /// Required.
   core.List<Condition>? conditions;
 
-  BasicLevel();
+  BasicLevel({
+    this.combiningFunction,
+    this.conditions,
+  });
 
-  BasicLevel.fromJson(core.Map _json) {
-    if (_json.containsKey('combiningFunction')) {
-      combiningFunction = _json['combiningFunction'] as core.String;
-    }
-    if (_json.containsKey('conditions')) {
-      conditions = (_json['conditions'] as core.List)
-          .map<Condition>((value) =>
-              Condition.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  BasicLevel.fromJson(core.Map _json)
+      : this(
+          combiningFunction: _json.containsKey('combiningFunction')
+              ? _json['combiningFunction'] as core.String
+              : null,
+          conditions: _json.containsKey('conditions')
+              ? (_json['conditions'] as core.List)
+                  .map<Condition>((value) => Condition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (combiningFunction != null) 'combiningFunction': combiningFunction!,
@@ -1598,13 +1611,14 @@ class CommitServicePerimetersRequest {
   /// Optional.
   core.String? etag;
 
-  CommitServicePerimetersRequest();
+  CommitServicePerimetersRequest({
+    this.etag,
+  });
 
-  CommitServicePerimetersRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-  }
+  CommitServicePerimetersRequest.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -1618,16 +1632,19 @@ class CommitServicePerimetersResponse {
   /// List of all the Service Perimeter instances in the Access Policy.
   core.List<ServicePerimeter>? servicePerimeters;
 
-  CommitServicePerimetersResponse();
+  CommitServicePerimetersResponse({
+    this.servicePerimeters,
+  });
 
-  CommitServicePerimetersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('servicePerimeters')) {
-      servicePerimeters = (_json['servicePerimeters'] as core.List)
-          .map<ServicePerimeter>((value) => ServicePerimeter.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  CommitServicePerimetersResponse.fromJson(core.Map _json)
+      : this(
+          servicePerimeters: _json.containsKey('servicePerimeters')
+              ? (_json['servicePerimeters'] as core.List)
+                  .map<ServicePerimeter>((value) => ServicePerimeter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (servicePerimeters != null)
@@ -1688,37 +1705,44 @@ class Condition {
   /// "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`
   core.List<core.String>? requiredAccessLevels;
 
-  Condition();
+  Condition({
+    this.devicePolicy,
+    this.ipSubnetworks,
+    this.members,
+    this.negate,
+    this.regions,
+    this.requiredAccessLevels,
+  });
 
-  Condition.fromJson(core.Map _json) {
-    if (_json.containsKey('devicePolicy')) {
-      devicePolicy = DevicePolicy.fromJson(
-          _json['devicePolicy'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('ipSubnetworks')) {
-      ipSubnetworks = (_json['ipSubnetworks'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('members')) {
-      members = (_json['members'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('negate')) {
-      negate = _json['negate'] as core.bool;
-    }
-    if (_json.containsKey('regions')) {
-      regions = (_json['regions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('requiredAccessLevels')) {
-      requiredAccessLevels = (_json['requiredAccessLevels'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  Condition.fromJson(core.Map _json)
+      : this(
+          devicePolicy: _json.containsKey('devicePolicy')
+              ? DevicePolicy.fromJson(
+                  _json['devicePolicy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          ipSubnetworks: _json.containsKey('ipSubnetworks')
+              ? (_json['ipSubnetworks'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          members: _json.containsKey('members')
+              ? (_json['members'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          negate:
+              _json.containsKey('negate') ? _json['negate'] as core.bool : null,
+          regions: _json.containsKey('regions')
+              ? (_json['regions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          requiredAccessLevels: _json.containsKey('requiredAccessLevels')
+              ? (_json['requiredAccessLevels'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (devicePolicy != null) 'devicePolicy': devicePolicy!.toJson(),
@@ -1741,14 +1765,17 @@ class CustomLevel {
   /// Required.
   Expr? expr;
 
-  CustomLevel();
+  CustomLevel({
+    this.expr,
+  });
 
-  CustomLevel.fromJson(core.Map _json) {
-    if (_json.containsKey('expr')) {
-      expr =
-          Expr.fromJson(_json['expr'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  CustomLevel.fromJson(core.Map _json)
+      : this(
+          expr: _json.containsKey('expr')
+              ? Expr.fromJson(
+                  _json['expr'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (expr != null) 'expr': expr!.toJson(),
@@ -1788,37 +1815,45 @@ class DevicePolicy {
   /// Defaults to `false`.
   core.bool? requireScreenlock;
 
-  DevicePolicy();
+  DevicePolicy({
+    this.allowedDeviceManagementLevels,
+    this.allowedEncryptionStatuses,
+    this.osConstraints,
+    this.requireAdminApproval,
+    this.requireCorpOwned,
+    this.requireScreenlock,
+  });
 
-  DevicePolicy.fromJson(core.Map _json) {
-    if (_json.containsKey('allowedDeviceManagementLevels')) {
-      allowedDeviceManagementLevels =
-          (_json['allowedDeviceManagementLevels'] as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList();
-    }
-    if (_json.containsKey('allowedEncryptionStatuses')) {
-      allowedEncryptionStatuses =
-          (_json['allowedEncryptionStatuses'] as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList();
-    }
-    if (_json.containsKey('osConstraints')) {
-      osConstraints = (_json['osConstraints'] as core.List)
-          .map<OsConstraint>((value) => OsConstraint.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('requireAdminApproval')) {
-      requireAdminApproval = _json['requireAdminApproval'] as core.bool;
-    }
-    if (_json.containsKey('requireCorpOwned')) {
-      requireCorpOwned = _json['requireCorpOwned'] as core.bool;
-    }
-    if (_json.containsKey('requireScreenlock')) {
-      requireScreenlock = _json['requireScreenlock'] as core.bool;
-    }
-  }
+  DevicePolicy.fromJson(core.Map _json)
+      : this(
+          allowedDeviceManagementLevels:
+              _json.containsKey('allowedDeviceManagementLevels')
+                  ? (_json['allowedDeviceManagementLevels'] as core.List)
+                      .map<core.String>((value) => value as core.String)
+                      .toList()
+                  : null,
+          allowedEncryptionStatuses:
+              _json.containsKey('allowedEncryptionStatuses')
+                  ? (_json['allowedEncryptionStatuses'] as core.List)
+                      .map<core.String>((value) => value as core.String)
+                      .toList()
+                  : null,
+          osConstraints: _json.containsKey('osConstraints')
+              ? (_json['osConstraints'] as core.List)
+                  .map<OsConstraint>((value) => OsConstraint.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          requireAdminApproval: _json.containsKey('requireAdminApproval')
+              ? _json['requireAdminApproval'] as core.bool
+              : null,
+          requireCorpOwned: _json.containsKey('requireCorpOwned')
+              ? _json['requireCorpOwned'] as core.bool
+              : null,
+          requireScreenlock: _json.containsKey('requireScreenlock')
+              ? _json['requireScreenlock'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedDeviceManagementLevels != null)
@@ -1864,18 +1899,22 @@ class EgressFrom {
   /// outside the perimeter.
   core.String? identityType;
 
-  EgressFrom();
+  EgressFrom({
+    this.identities,
+    this.identityType,
+  });
 
-  EgressFrom.fromJson(core.Map _json) {
-    if (_json.containsKey('identities')) {
-      identities = (_json['identities'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('identityType')) {
-      identityType = _json['identityType'] as core.String;
-    }
-  }
+  EgressFrom.fromJson(core.Map _json)
+      : this(
+          identities: _json.containsKey('identities')
+              ? (_json['identities'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          identityType: _json.containsKey('identityType')
+              ? _json['identityType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (identities != null) 'identities': identities!,
@@ -1906,18 +1945,22 @@ class EgressPolicy {
   /// cause this EgressPolicy to apply.
   EgressTo? egressTo;
 
-  EgressPolicy();
+  EgressPolicy({
+    this.egressFrom,
+    this.egressTo,
+  });
 
-  EgressPolicy.fromJson(core.Map _json) {
-    if (_json.containsKey('egressFrom')) {
-      egressFrom = EgressFrom.fromJson(
-          _json['egressFrom'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('egressTo')) {
-      egressTo = EgressTo.fromJson(
-          _json['egressTo'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  EgressPolicy.fromJson(core.Map _json)
+      : this(
+          egressFrom: _json.containsKey('egressFrom')
+              ? EgressFrom.fromJson(
+                  _json['egressFrom'] as core.Map<core.String, core.dynamic>)
+              : null,
+          egressTo: _json.containsKey('egressTo')
+              ? EgressTo.fromJson(
+                  _json['egressTo'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (egressFrom != null) 'egressFrom': egressFrom!.toJson(),
@@ -1949,21 +1992,25 @@ class EgressTo {
   /// to all resources outside the perimeter.
   core.List<core.String>? resources;
 
-  EgressTo();
+  EgressTo({
+    this.operations,
+    this.resources,
+  });
 
-  EgressTo.fromJson(core.Map _json) {
-    if (_json.containsKey('operations')) {
-      operations = (_json['operations'] as core.List)
-          .map<ApiOperation>((value) => ApiOperation.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('resources')) {
-      resources = (_json['resources'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  EgressTo.fromJson(core.Map _json)
+      : this(
+          operations: _json.containsKey('operations')
+              ? (_json['operations'] as core.List)
+                  .map<ApiOperation>((value) => ApiOperation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          resources: _json.containsKey('resources')
+              ? (_json['resources'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (operations != null)
@@ -2033,22 +2080,27 @@ class Expr {
   /// Optional.
   core.String? title;
 
-  Expr();
+  Expr({
+    this.description,
+    this.expression,
+    this.location,
+    this.title,
+  });
 
-  Expr.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('expression')) {
-      expression = _json['expression'] as core.String;
-    }
-    if (_json.containsKey('location')) {
-      location = _json['location'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  Expr.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          expression: _json.containsKey('expression')
+              ? _json['expression'] as core.String
+              : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -2092,21 +2144,24 @@ class GcpUserAccessBinding {
   /// Immutable.
   core.String? name;
 
-  GcpUserAccessBinding();
+  GcpUserAccessBinding({
+    this.accessLevels,
+    this.groupKey,
+    this.name,
+  });
 
-  GcpUserAccessBinding.fromJson(core.Map _json) {
-    if (_json.containsKey('accessLevels')) {
-      accessLevels = (_json['accessLevels'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('groupKey')) {
-      groupKey = _json['groupKey'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  GcpUserAccessBinding.fromJson(core.Map _json)
+      : this(
+          accessLevels: _json.containsKey('accessLevels')
+              ? (_json['accessLevels'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          groupKey: _json.containsKey('groupKey')
+              ? _json['groupKey'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessLevels != null) 'accessLevels': accessLevels!,
@@ -2145,24 +2200,29 @@ class IngressFrom {
   /// Sources that this IngressPolicy authorizes access from.
   core.List<IngressSource>? sources;
 
-  IngressFrom();
+  IngressFrom({
+    this.identities,
+    this.identityType,
+    this.sources,
+  });
 
-  IngressFrom.fromJson(core.Map _json) {
-    if (_json.containsKey('identities')) {
-      identities = (_json['identities'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('identityType')) {
-      identityType = _json['identityType'] as core.String;
-    }
-    if (_json.containsKey('sources')) {
-      sources = (_json['sources'] as core.List)
-          .map<IngressSource>((value) => IngressSource.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  IngressFrom.fromJson(core.Map _json)
+      : this(
+          identities: _json.containsKey('identities')
+              ? (_json['identities'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          identityType: _json.containsKey('identityType')
+              ? _json['identityType'] as core.String
+              : null,
+          sources: _json.containsKey('sources')
+              ? (_json['sources'] as core.List)
+                  .map<IngressSource>((value) => IngressSource.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (identities != null) 'identities': identities!,
@@ -2193,18 +2253,22 @@ class IngressPolicy {
   /// cause this IngressPolicy to apply.
   IngressTo? ingressTo;
 
-  IngressPolicy();
+  IngressPolicy({
+    this.ingressFrom,
+    this.ingressTo,
+  });
 
-  IngressPolicy.fromJson(core.Map _json) {
-    if (_json.containsKey('ingressFrom')) {
-      ingressFrom = IngressFrom.fromJson(
-          _json['ingressFrom'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('ingressTo')) {
-      ingressTo = IngressTo.fromJson(
-          _json['ingressTo'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  IngressPolicy.fromJson(core.Map _json)
+      : this(
+          ingressFrom: _json.containsKey('ingressFrom')
+              ? IngressFrom.fromJson(
+                  _json['ingressFrom'] as core.Map<core.String, core.dynamic>)
+              : null,
+          ingressTo: _json.containsKey('ingressTo')
+              ? IngressTo.fromJson(
+                  _json['ingressTo'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ingressFrom != null) 'ingressFrom': ingressFrom!.toJson(),
@@ -2234,16 +2298,20 @@ class IngressSource {
   /// case of allowing all Google Cloud resources only is not supported.
   core.String? resource;
 
-  IngressSource();
+  IngressSource({
+    this.accessLevel,
+    this.resource,
+  });
 
-  IngressSource.fromJson(core.Map _json) {
-    if (_json.containsKey('accessLevel')) {
-      accessLevel = _json['accessLevel'] as core.String;
-    }
-    if (_json.containsKey('resource')) {
-      resource = _json['resource'] as core.String;
-    }
-  }
+  IngressSource.fromJson(core.Map _json)
+      : this(
+          accessLevel: _json.containsKey('accessLevel')
+              ? _json['accessLevel'] as core.String
+              : null,
+          resource: _json.containsKey('resource')
+              ? _json['resource'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessLevel != null) 'accessLevel': accessLevel!,
@@ -2269,21 +2337,25 @@ class IngressTo {
   /// perimeter are allowed.
   core.List<core.String>? resources;
 
-  IngressTo();
+  IngressTo({
+    this.operations,
+    this.resources,
+  });
 
-  IngressTo.fromJson(core.Map _json) {
-    if (_json.containsKey('operations')) {
-      operations = (_json['operations'] as core.List)
-          .map<ApiOperation>((value) => ApiOperation.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('resources')) {
-      resources = (_json['resources'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  IngressTo.fromJson(core.Map _json)
+      : this(
+          operations: _json.containsKey('operations')
+              ? (_json['operations'] as core.List)
+                  .map<ApiOperation>((value) => ApiOperation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          resources: _json.containsKey('resources')
+              ? (_json['resources'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (operations != null)
@@ -2302,19 +2374,23 @@ class ListAccessLevelsResponse {
   /// If the value is empty, no further results remain.
   core.String? nextPageToken;
 
-  ListAccessLevelsResponse();
+  ListAccessLevelsResponse({
+    this.accessLevels,
+    this.nextPageToken,
+  });
 
-  ListAccessLevelsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('accessLevels')) {
-      accessLevels = (_json['accessLevels'] as core.List)
-          .map<AccessLevel>((value) => AccessLevel.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListAccessLevelsResponse.fromJson(core.Map _json)
+      : this(
+          accessLevels: _json.containsKey('accessLevels')
+              ? (_json['accessLevels'] as core.List)
+                  .map<AccessLevel>((value) => AccessLevel.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessLevels != null)
@@ -2333,19 +2409,23 @@ class ListAccessPoliciesResponse {
   /// If the value is empty, no further results remain.
   core.String? nextPageToken;
 
-  ListAccessPoliciesResponse();
+  ListAccessPoliciesResponse({
+    this.accessPolicies,
+    this.nextPageToken,
+  });
 
-  ListAccessPoliciesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('accessPolicies')) {
-      accessPolicies = (_json['accessPolicies'] as core.List)
-          .map<AccessPolicy>((value) => AccessPolicy.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListAccessPoliciesResponse.fromJson(core.Map _json)
+      : this(
+          accessPolicies: _json.containsKey('accessPolicies')
+              ? (_json['accessPolicies'] as core.List)
+                  .map<AccessPolicy>((value) => AccessPolicy.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessPolicies != null)
@@ -2365,19 +2445,24 @@ class ListGcpUserAccessBindingsResponse {
   /// If blank, there are no more items.
   core.String? nextPageToken;
 
-  ListGcpUserAccessBindingsResponse();
+  ListGcpUserAccessBindingsResponse({
+    this.gcpUserAccessBindings,
+    this.nextPageToken,
+  });
 
-  ListGcpUserAccessBindingsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('gcpUserAccessBindings')) {
-      gcpUserAccessBindings = (_json['gcpUserAccessBindings'] as core.List)
-          .map<GcpUserAccessBinding>((value) => GcpUserAccessBinding.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListGcpUserAccessBindingsResponse.fromJson(core.Map _json)
+      : this(
+          gcpUserAccessBindings: _json.containsKey('gcpUserAccessBindings')
+              ? (_json['gcpUserAccessBindings'] as core.List)
+                  .map<GcpUserAccessBinding>((value) =>
+                      GcpUserAccessBinding.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gcpUserAccessBindings != null)
@@ -2395,19 +2480,23 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse();
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
 
-  ListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('operations')) {
-      operations = (_json['operations'] as core.List)
-          .map<Operation>((value) =>
-              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListOperationsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          operations: _json.containsKey('operations')
+              ? (_json['operations'] as core.List)
+                  .map<Operation>((value) => Operation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -2426,19 +2515,23 @@ class ListServicePerimetersResponse {
   /// List of the Service Perimeter instances.
   core.List<ServicePerimeter>? servicePerimeters;
 
-  ListServicePerimetersResponse();
+  ListServicePerimetersResponse({
+    this.nextPageToken,
+    this.servicePerimeters,
+  });
 
-  ListServicePerimetersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('servicePerimeters')) {
-      servicePerimeters = (_json['servicePerimeters'] as core.List)
-          .map<ServicePerimeter>((value) => ServicePerimeter.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListServicePerimetersResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          servicePerimeters: _json.containsKey('servicePerimeters')
+              ? (_json['servicePerimeters'] as core.List)
+                  .map<ServicePerimeter>((value) => ServicePerimeter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -2461,16 +2554,20 @@ class MethodSelector {
   /// corresponding `service_name` in ApiOperation.
   core.String? permission;
 
-  MethodSelector();
+  MethodSelector({
+    this.method,
+    this.permission,
+  });
 
-  MethodSelector.fromJson(core.Map _json) {
-    if (_json.containsKey('method')) {
-      method = _json['method'] as core.String;
-    }
-    if (_json.containsKey('permission')) {
-      permission = _json['permission'] as core.String;
-    }
-  }
+  MethodSelector.fromJson(core.Map _json)
+      : this(
+          method: _json.containsKey('method')
+              ? _json['method'] as core.String
+              : null,
+          permission: _json.containsKey('permission')
+              ? _json['permission'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (method != null) 'method': method!,
@@ -2521,36 +2618,39 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object>? response;
 
-  Operation();
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
-  Operation.fromJson(core.Map _json) {
-    if (_json.containsKey('done')) {
-      done = _json['done'] as core.bool;
-    }
-    if (_json.containsKey('error')) {
-      error = Status.fromJson(
-          _json['error'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('response')) {
-      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-  }
+  Operation.fromJson(core.Map _json)
+      : this(
+          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
+          error: _json.containsKey('error')
+              ? Status.fromJson(
+                  _json['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          response: _json.containsKey('response')
+              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
@@ -2590,19 +2690,24 @@ class OsConstraint {
   /// API targeted by the request.
   core.bool? requireVerifiedChromeOs;
 
-  OsConstraint();
+  OsConstraint({
+    this.minimumVersion,
+    this.osType,
+    this.requireVerifiedChromeOs,
+  });
 
-  OsConstraint.fromJson(core.Map _json) {
-    if (_json.containsKey('minimumVersion')) {
-      minimumVersion = _json['minimumVersion'] as core.String;
-    }
-    if (_json.containsKey('osType')) {
-      osType = _json['osType'] as core.String;
-    }
-    if (_json.containsKey('requireVerifiedChromeOs')) {
-      requireVerifiedChromeOs = _json['requireVerifiedChromeOs'] as core.bool;
-    }
-  }
+  OsConstraint.fromJson(core.Map _json)
+      : this(
+          minimumVersion: _json.containsKey('minimumVersion')
+              ? _json['minimumVersion'] as core.String
+              : null,
+          osType: _json.containsKey('osType')
+              ? _json['osType'] as core.String
+              : null,
+          requireVerifiedChromeOs: _json.containsKey('requireVerifiedChromeOs')
+              ? _json['requireVerifiedChromeOs'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (minimumVersion != null) 'minimumVersion': minimumVersion!,
@@ -2635,19 +2740,21 @@ class ReplaceAccessLevelsRequest {
   /// Optional.
   core.String? etag;
 
-  ReplaceAccessLevelsRequest();
+  ReplaceAccessLevelsRequest({
+    this.accessLevels,
+    this.etag,
+  });
 
-  ReplaceAccessLevelsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('accessLevels')) {
-      accessLevels = (_json['accessLevels'] as core.List)
-          .map<AccessLevel>((value) => AccessLevel.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-  }
+  ReplaceAccessLevelsRequest.fromJson(core.Map _json)
+      : this(
+          accessLevels: _json.containsKey('accessLevels')
+              ? (_json['accessLevels'] as core.List)
+                  .map<AccessLevel>((value) => AccessLevel.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessLevels != null)
@@ -2663,16 +2770,19 @@ class ReplaceAccessLevelsResponse {
   /// List of the Access Level instances.
   core.List<AccessLevel>? accessLevels;
 
-  ReplaceAccessLevelsResponse();
+  ReplaceAccessLevelsResponse({
+    this.accessLevels,
+  });
 
-  ReplaceAccessLevelsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('accessLevels')) {
-      accessLevels = (_json['accessLevels'] as core.List)
-          .map<AccessLevel>((value) => AccessLevel.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ReplaceAccessLevelsResponse.fromJson(core.Map _json)
+      : this(
+          accessLevels: _json.containsKey('accessLevels')
+              ? (_json['accessLevels'] as core.List)
+                  .map<AccessLevel>((value) => AccessLevel.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessLevels != null)
@@ -2703,19 +2813,21 @@ class ReplaceServicePerimetersRequest {
   /// Required.
   core.List<ServicePerimeter>? servicePerimeters;
 
-  ReplaceServicePerimetersRequest();
+  ReplaceServicePerimetersRequest({
+    this.etag,
+    this.servicePerimeters,
+  });
 
-  ReplaceServicePerimetersRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('servicePerimeters')) {
-      servicePerimeters = (_json['servicePerimeters'] as core.List)
-          .map<ServicePerimeter>((value) => ServicePerimeter.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ReplaceServicePerimetersRequest.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          servicePerimeters: _json.containsKey('servicePerimeters')
+              ? (_json['servicePerimeters'] as core.List)
+                  .map<ServicePerimeter>((value) => ServicePerimeter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -2732,16 +2844,19 @@ class ReplaceServicePerimetersResponse {
   /// List of the Service Perimeter instances.
   core.List<ServicePerimeter>? servicePerimeters;
 
-  ReplaceServicePerimetersResponse();
+  ReplaceServicePerimetersResponse({
+    this.servicePerimeters,
+  });
 
-  ReplaceServicePerimetersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('servicePerimeters')) {
-      servicePerimeters = (_json['servicePerimeters'] as core.List)
-          .map<ServicePerimeter>((value) => ServicePerimeter.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ReplaceServicePerimetersResponse.fromJson(core.Map _json)
+      : this(
+          servicePerimeters: _json.containsKey('servicePerimeters')
+              ? (_json['servicePerimeters'] as core.List)
+                  .map<ServicePerimeter>((value) => ServicePerimeter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (servicePerimeters != null)
@@ -2821,33 +2936,39 @@ class ServicePerimeter {
   /// spec are set to non-default values.
   core.bool? useExplicitDryRunSpec;
 
-  ServicePerimeter();
+  ServicePerimeter({
+    this.description,
+    this.name,
+    this.perimeterType,
+    this.spec,
+    this.status,
+    this.title,
+    this.useExplicitDryRunSpec,
+  });
 
-  ServicePerimeter.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('perimeterType')) {
-      perimeterType = _json['perimeterType'] as core.String;
-    }
-    if (_json.containsKey('spec')) {
-      spec = ServicePerimeterConfig.fromJson(
-          _json['spec'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('status')) {
-      status = ServicePerimeterConfig.fromJson(
-          _json['status'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-    if (_json.containsKey('useExplicitDryRunSpec')) {
-      useExplicitDryRunSpec = _json['useExplicitDryRunSpec'] as core.bool;
-    }
-  }
+  ServicePerimeter.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          perimeterType: _json.containsKey('perimeterType')
+              ? _json['perimeterType'] as core.String
+              : null,
+          spec: _json.containsKey('spec')
+              ? ServicePerimeterConfig.fromJson(
+                  _json['spec'] as core.Map<core.String, core.dynamic>)
+              : null,
+          status: _json.containsKey('status')
+              ? ServicePerimeterConfig.fromJson(
+                  _json['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+          useExplicitDryRunSpec: _json.containsKey('useExplicitDryRunSpec')
+              ? _json['useExplicitDryRunSpec'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -2906,42 +3027,49 @@ class ServicePerimeterConfig {
   /// Configuration for APIs allowed within Perimeter.
   VpcAccessibleServices? vpcAccessibleServices;
 
-  ServicePerimeterConfig();
+  ServicePerimeterConfig({
+    this.accessLevels,
+    this.egressPolicies,
+    this.ingressPolicies,
+    this.resources,
+    this.restrictedServices,
+    this.vpcAccessibleServices,
+  });
 
-  ServicePerimeterConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('accessLevels')) {
-      accessLevels = (_json['accessLevels'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('egressPolicies')) {
-      egressPolicies = (_json['egressPolicies'] as core.List)
-          .map<EgressPolicy>((value) => EgressPolicy.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('ingressPolicies')) {
-      ingressPolicies = (_json['ingressPolicies'] as core.List)
-          .map<IngressPolicy>((value) => IngressPolicy.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('resources')) {
-      resources = (_json['resources'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('restrictedServices')) {
-      restrictedServices = (_json['restrictedServices'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('vpcAccessibleServices')) {
-      vpcAccessibleServices = VpcAccessibleServices.fromJson(
-          _json['vpcAccessibleServices']
-              as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ServicePerimeterConfig.fromJson(core.Map _json)
+      : this(
+          accessLevels: _json.containsKey('accessLevels')
+              ? (_json['accessLevels'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          egressPolicies: _json.containsKey('egressPolicies')
+              ? (_json['egressPolicies'] as core.List)
+                  .map<EgressPolicy>((value) => EgressPolicy.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          ingressPolicies: _json.containsKey('ingressPolicies')
+              ? (_json['ingressPolicies'] as core.List)
+                  .map<IngressPolicy>((value) => IngressPolicy.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          resources: _json.containsKey('resources')
+              ? (_json['resources'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          restrictedServices: _json.containsKey('restrictedServices')
+              ? (_json['restrictedServices'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          vpcAccessibleServices: _json.containsKey('vpcAccessibleServices')
+              ? VpcAccessibleServices.fromJson(_json['vpcAccessibleServices']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessLevels != null) 'accessLevels': accessLevels!,
@@ -2984,27 +3112,30 @@ class Status {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  Status();
+  Status({
+    this.code,
+    this.details,
+    this.message,
+  });
 
-  Status.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.int;
-    }
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  Status.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -3027,18 +3158,22 @@ class VpcAccessibleServices {
   /// APIs specified in 'allowed_services'.
   core.bool? enableRestriction;
 
-  VpcAccessibleServices();
+  VpcAccessibleServices({
+    this.allowedServices,
+    this.enableRestriction,
+  });
 
-  VpcAccessibleServices.fromJson(core.Map _json) {
-    if (_json.containsKey('allowedServices')) {
-      allowedServices = (_json['allowedServices'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('enableRestriction')) {
-      enableRestriction = _json['enableRestriction'] as core.bool;
-    }
-  }
+  VpcAccessibleServices.fromJson(core.Map _json)
+      : this(
+          allowedServices: _json.containsKey('allowedServices')
+              ? (_json['allowedServices'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          enableRestriction: _json.containsKey('enableRestriction')
+              ? _json['enableRestriction'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedServices != null) 'allowedServices': allowedServices!,

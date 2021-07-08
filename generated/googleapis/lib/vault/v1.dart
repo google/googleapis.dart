@@ -1600,17 +1600,20 @@ class AccountCount {
   /// The number of results (messages or files) found for this account.
   core.String? count;
 
-  AccountCount();
+  AccountCount({
+    this.account,
+    this.count,
+  });
 
-  AccountCount.fromJson(core.Map _json) {
-    if (_json.containsKey('account')) {
-      account = UserInfo.fromJson(
-          _json['account'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('count')) {
-      count = _json['count'] as core.String;
-    }
-  }
+  AccountCount.fromJson(core.Map _json)
+      : this(
+          account: _json.containsKey('account')
+              ? UserInfo.fromJson(
+                  _json['account'] as core.Map<core.String, core.dynamic>)
+              : null,
+          count:
+              _json.containsKey('count') ? _json['count'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (account != null) 'account': account!.toJson(),
@@ -1635,17 +1638,21 @@ class AccountCountError {
   /// - "DEADLINE_EXCEEDED" : Deadline exceeded when querying the account.
   core.String? errorType;
 
-  AccountCountError();
+  AccountCountError({
+    this.account,
+    this.errorType,
+  });
 
-  AccountCountError.fromJson(core.Map _json) {
-    if (_json.containsKey('account')) {
-      account = UserInfo.fromJson(
-          _json['account'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('errorType')) {
-      errorType = _json['errorType'] as core.String;
-    }
-  }
+  AccountCountError.fromJson(core.Map _json)
+      : this(
+          account: _json.containsKey('account')
+              ? UserInfo.fromJson(
+                  _json['account'] as core.Map<core.String, core.dynamic>)
+              : null,
+          errorType: _json.containsKey('errorType')
+              ? _json['errorType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (account != null) 'account': account!.toJson(),
@@ -1658,15 +1665,18 @@ class AccountInfo {
   /// A set of accounts to search.
   core.List<core.String>? emails;
 
-  AccountInfo();
+  AccountInfo({
+    this.emails,
+  });
 
-  AccountInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('emails')) {
-      emails = (_json['emails'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  AccountInfo.fromJson(core.Map _json)
+      : this(
+          emails: _json.containsKey('emails')
+              ? (_json['emails'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (emails != null) 'emails': emails!,
@@ -1683,18 +1693,22 @@ class AddHeldAccountResult {
   /// If it failed, returns an error message.
   Status? status;
 
-  AddHeldAccountResult();
+  AddHeldAccountResult({
+    this.account,
+    this.status,
+  });
 
-  AddHeldAccountResult.fromJson(core.Map _json) {
-    if (_json.containsKey('account')) {
-      account = HeldAccount.fromJson(
-          _json['account'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('status')) {
-      status = Status.fromJson(
-          _json['status'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  AddHeldAccountResult.fromJson(core.Map _json)
+      : this(
+          account: _json.containsKey('account')
+              ? HeldAccount.fromJson(
+                  _json['account'] as core.Map<core.String, core.dynamic>)
+              : null,
+          status: _json.containsKey('status')
+              ? Status.fromJson(
+                  _json['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (account != null) 'account': account!.toJson(),
@@ -1715,20 +1729,24 @@ class AddHeldAccountsRequest {
   /// Specify either **emails** or **account_ids**, but not both.
   core.List<core.String>? emails;
 
-  AddHeldAccountsRequest();
+  AddHeldAccountsRequest({
+    this.accountIds,
+    this.emails,
+  });
 
-  AddHeldAccountsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('accountIds')) {
-      accountIds = (_json['accountIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('emails')) {
-      emails = (_json['emails'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  AddHeldAccountsRequest.fromJson(core.Map _json)
+      : this(
+          accountIds: _json.containsKey('accountIds')
+              ? (_json['accountIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          emails: _json.containsKey('emails')
+              ? (_json['emails'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountIds != null) 'accountIds': accountIds!,
@@ -1741,16 +1759,20 @@ class AddHeldAccountsResponse {
   /// The list of responses, in the same order as the batch request.
   core.List<AddHeldAccountResult>? responses;
 
-  AddHeldAccountsResponse();
+  AddHeldAccountsResponse({
+    this.responses,
+  });
 
-  AddHeldAccountsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('responses')) {
-      responses = (_json['responses'] as core.List)
-          .map<AddHeldAccountResult>((value) => AddHeldAccountResult.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  AddHeldAccountsResponse.fromJson(core.Map _json)
+      : this(
+          responses: _json.containsKey('responses')
+              ? (_json['responses'] as core.List)
+                  .map<AddHeldAccountResult>((value) =>
+                      AddHeldAccountResult.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (responses != null)
@@ -1777,20 +1799,23 @@ class AddMatterPermissionsRequest {
   /// To not send a notification email, set to **false**.
   core.bool? sendEmails;
 
-  AddMatterPermissionsRequest();
+  AddMatterPermissionsRequest({
+    this.ccMe,
+    this.matterPermission,
+    this.sendEmails,
+  });
 
-  AddMatterPermissionsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('ccMe')) {
-      ccMe = _json['ccMe'] as core.bool;
-    }
-    if (_json.containsKey('matterPermission')) {
-      matterPermission = MatterPermission.fromJson(
-          _json['matterPermission'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('sendEmails')) {
-      sendEmails = _json['sendEmails'] as core.bool;
-    }
-  }
+  AddMatterPermissionsRequest.fromJson(core.Map _json)
+      : this(
+          ccMe: _json.containsKey('ccMe') ? _json['ccMe'] as core.bool : null,
+          matterPermission: _json.containsKey('matterPermission')
+              ? MatterPermission.fromJson(_json['matterPermission']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          sendEmails: _json.containsKey('sendEmails')
+              ? _json['sendEmails'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ccMe != null) 'ccMe': ccMe!,
@@ -1827,14 +1852,17 @@ class CloseMatterResponse {
   /// The updated matter, with state **CLOSED**.
   Matter? matter;
 
-  CloseMatterResponse();
+  CloseMatterResponse({
+    this.matter,
+  });
 
-  CloseMatterResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('matter')) {
-      matter = Matter.fromJson(
-          _json['matter'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  CloseMatterResponse.fromJson(core.Map _json)
+      : this(
+          matter: _json.containsKey('matter')
+              ? Matter.fromJson(
+                  _json['matter'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (matter != null) 'matter': matter!.toJson(),
@@ -1864,22 +1892,26 @@ class CloudStorageFile {
   /// The export file size.
   core.String? size;
 
-  CloudStorageFile();
+  CloudStorageFile({
+    this.bucketName,
+    this.md5Hash,
+    this.objectName,
+    this.size,
+  });
 
-  CloudStorageFile.fromJson(core.Map _json) {
-    if (_json.containsKey('bucketName')) {
-      bucketName = _json['bucketName'] as core.String;
-    }
-    if (_json.containsKey('md5Hash')) {
-      md5Hash = _json['md5Hash'] as core.String;
-    }
-    if (_json.containsKey('objectName')) {
-      objectName = _json['objectName'] as core.String;
-    }
-    if (_json.containsKey('size')) {
-      size = _json['size'] as core.String;
-    }
-  }
+  CloudStorageFile.fromJson(core.Map _json)
+      : this(
+          bucketName: _json.containsKey('bucketName')
+              ? _json['bucketName'] as core.String
+              : null,
+          md5Hash: _json.containsKey('md5Hash')
+              ? _json['md5Hash'] as core.String
+              : null,
+          objectName: _json.containsKey('objectName')
+              ? _json['objectName'] as core.String
+              : null,
+          size: _json.containsKey('size') ? _json['size'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bucketName != null) 'bucketName': bucketName!,
@@ -1896,16 +1928,19 @@ class CloudStorageSink {
   /// Output only.
   core.List<CloudStorageFile>? files;
 
-  CloudStorageSink();
+  CloudStorageSink({
+    this.files,
+  });
 
-  CloudStorageSink.fromJson(core.Map _json) {
-    if (_json.containsKey('files')) {
-      files = (_json['files'] as core.List)
-          .map<CloudStorageFile>((value) => CloudStorageFile.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  CloudStorageSink.fromJson(core.Map _json)
+      : this(
+          files: _json.containsKey('files')
+              ? (_json['files'] as core.List)
+                  .map<CloudStorageFile>((value) => CloudStorageFile.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (files != null)
@@ -1940,30 +1975,37 @@ class CorpusQuery {
   /// If set, **CorpusType** must be **VOICE**.
   HeldVoiceQuery? voiceQuery;
 
-  CorpusQuery();
+  CorpusQuery({
+    this.driveQuery,
+    this.groupsQuery,
+    this.hangoutsChatQuery,
+    this.mailQuery,
+    this.voiceQuery,
+  });
 
-  CorpusQuery.fromJson(core.Map _json) {
-    if (_json.containsKey('driveQuery')) {
-      driveQuery = HeldDriveQuery.fromJson(
-          _json['driveQuery'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('groupsQuery')) {
-      groupsQuery = HeldGroupsQuery.fromJson(
-          _json['groupsQuery'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('hangoutsChatQuery')) {
-      hangoutsChatQuery = HeldHangoutsChatQuery.fromJson(
-          _json['hangoutsChatQuery'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('mailQuery')) {
-      mailQuery = HeldMailQuery.fromJson(
-          _json['mailQuery'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('voiceQuery')) {
-      voiceQuery = HeldVoiceQuery.fromJson(
-          _json['voiceQuery'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  CorpusQuery.fromJson(core.Map _json)
+      : this(
+          driveQuery: _json.containsKey('driveQuery')
+              ? HeldDriveQuery.fromJson(
+                  _json['driveQuery'] as core.Map<core.String, core.dynamic>)
+              : null,
+          groupsQuery: _json.containsKey('groupsQuery')
+              ? HeldGroupsQuery.fromJson(
+                  _json['groupsQuery'] as core.Map<core.String, core.dynamic>)
+              : null,
+          hangoutsChatQuery: _json.containsKey('hangoutsChatQuery')
+              ? HeldHangoutsChatQuery.fromJson(_json['hangoutsChatQuery']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          mailQuery: _json.containsKey('mailQuery')
+              ? HeldMailQuery.fromJson(
+                  _json['mailQuery'] as core.Map<core.String, core.dynamic>)
+              : null,
+          voiceQuery: _json.containsKey('voiceQuery')
+              ? HeldVoiceQuery.fromJson(
+                  _json['voiceQuery'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (driveQuery != null) 'driveQuery': driveQuery!.toJson(),
@@ -1991,23 +2033,29 @@ class CountArtifactsMetadata {
   /// Creation time of count operation.
   core.String? startTime;
 
-  CountArtifactsMetadata();
+  CountArtifactsMetadata({
+    this.endTime,
+    this.matterId,
+    this.query,
+    this.startTime,
+  });
 
-  CountArtifactsMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('matterId')) {
-      matterId = _json['matterId'] as core.String;
-    }
-    if (_json.containsKey('query')) {
-      query =
-          Query.fromJson(_json['query'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-  }
+  CountArtifactsMetadata.fromJson(core.Map _json)
+      : this(
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          matterId: _json.containsKey('matterId')
+              ? _json['matterId'] as core.String
+              : null,
+          query: _json.containsKey('query')
+              ? Query.fromJson(
+                  _json['query'] as core.Map<core.String, core.dynamic>)
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
@@ -2032,17 +2080,19 @@ class CountArtifactsRequest {
   /// additional account breakdown.
   core.String? view;
 
-  CountArtifactsRequest();
+  CountArtifactsRequest({
+    this.query,
+    this.view,
+  });
 
-  CountArtifactsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('query')) {
-      query =
-          Query.fromJson(_json['query'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('view')) {
-      view = _json['view'] as core.String;
-    }
-  }
+  CountArtifactsRequest.fromJson(core.Map _json)
+      : this(
+          query: _json.containsKey('query')
+              ? Query.fromJson(
+                  _json['query'] as core.Map<core.String, core.dynamic>)
+              : null,
+          view: _json.containsKey('view') ? _json['view'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (query != null) 'query': query!.toJson(),
@@ -2061,21 +2111,26 @@ class CountArtifactsResponse {
   /// Total count of messages.
   core.String? totalCount;
 
-  CountArtifactsResponse();
+  CountArtifactsResponse({
+    this.groupsCountResult,
+    this.mailCountResult,
+    this.totalCount,
+  });
 
-  CountArtifactsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('groupsCountResult')) {
-      groupsCountResult = GroupsCountResult.fromJson(
-          _json['groupsCountResult'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('mailCountResult')) {
-      mailCountResult = MailCountResult.fromJson(
-          _json['mailCountResult'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('totalCount')) {
-      totalCount = _json['totalCount'] as core.String;
-    }
-  }
+  CountArtifactsResponse.fromJson(core.Map _json)
+      : this(
+          groupsCountResult: _json.containsKey('groupsCountResult')
+              ? GroupsCountResult.fromJson(_json['groupsCountResult']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          mailCountResult: _json.containsKey('mailCountResult')
+              ? MailCountResult.fromJson(_json['mailCountResult']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          totalCount: _json.containsKey('totalCount')
+              ? _json['totalCount'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (groupsCountResult != null)
@@ -2093,13 +2148,16 @@ class DriveExportOptions {
   /// to files, set to **true**.
   core.bool? includeAccessInfo;
 
-  DriveExportOptions();
+  DriveExportOptions({
+    this.includeAccessInfo,
+  });
 
-  DriveExportOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('includeAccessInfo')) {
-      includeAccessInfo = _json['includeAccessInfo'] as core.bool;
-    }
-  }
+  DriveExportOptions.fromJson(core.Map _json)
+      : this(
+          includeAccessInfo: _json.containsKey('includeAccessInfo')
+              ? _json['includeAccessInfo'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (includeAccessInfo != null) 'includeAccessInfo': includeAccessInfo!,
@@ -2120,19 +2178,24 @@ class DriveOptions {
   /// Enter the date in UTC.
   core.String? versionDate;
 
-  DriveOptions();
+  DriveOptions({
+    this.includeSharedDrives,
+    this.includeTeamDrives,
+    this.versionDate,
+  });
 
-  DriveOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('includeSharedDrives')) {
-      includeSharedDrives = _json['includeSharedDrives'] as core.bool;
-    }
-    if (_json.containsKey('includeTeamDrives')) {
-      includeTeamDrives = _json['includeTeamDrives'] as core.bool;
-    }
-    if (_json.containsKey('versionDate')) {
-      versionDate = _json['versionDate'] as core.String;
-    }
-  }
+  DriveOptions.fromJson(core.Map _json)
+      : this(
+          includeSharedDrives: _json.containsKey('includeSharedDrives')
+              ? _json['includeSharedDrives'] as core.bool
+              : null,
+          includeTeamDrives: _json.containsKey('includeTeamDrives')
+              ? _json['includeTeamDrives'] as core.bool
+              : null,
+          versionDate: _json.containsKey('versionDate')
+              ? _json['versionDate'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (includeSharedDrives != null)
@@ -2216,45 +2279,53 @@ class Export {
   /// - "IN_PROGRESS" : The export is in progress.
   core.String? status;
 
-  Export();
+  Export({
+    this.cloudStorageSink,
+    this.createTime,
+    this.exportOptions,
+    this.id,
+    this.matterId,
+    this.name,
+    this.query,
+    this.requester,
+    this.stats,
+    this.status,
+  });
 
-  Export.fromJson(core.Map _json) {
-    if (_json.containsKey('cloudStorageSink')) {
-      cloudStorageSink = CloudStorageSink.fromJson(
-          _json['cloudStorageSink'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('exportOptions')) {
-      exportOptions = ExportOptions.fromJson(
-          _json['exportOptions'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('matterId')) {
-      matterId = _json['matterId'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('query')) {
-      query =
-          Query.fromJson(_json['query'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('requester')) {
-      requester = UserInfo.fromJson(
-          _json['requester'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('stats')) {
-      stats = ExportStats.fromJson(
-          _json['stats'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-  }
+  Export.fromJson(core.Map _json)
+      : this(
+          cloudStorageSink: _json.containsKey('cloudStorageSink')
+              ? CloudStorageSink.fromJson(_json['cloudStorageSink']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          exportOptions: _json.containsKey('exportOptions')
+              ? ExportOptions.fromJson(
+                  _json['exportOptions'] as core.Map<core.String, core.dynamic>)
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          matterId: _json.containsKey('matterId')
+              ? _json['matterId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          query: _json.containsKey('query')
+              ? Query.fromJson(
+                  _json['query'] as core.Map<core.String, core.dynamic>)
+              : null,
+          requester: _json.containsKey('requester')
+              ? UserInfo.fromJson(
+                  _json['requester'] as core.Map<core.String, core.dynamic>)
+              : null,
+          stats: _json.containsKey('stats')
+              ? ExportStats.fromJson(
+                  _json['stats'] as core.Map<core.String, core.dynamic>)
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cloudStorageSink != null)
@@ -2297,33 +2368,41 @@ class ExportOptions {
   /// Options for Voice exports.
   VoiceExportOptions? voiceOptions;
 
-  ExportOptions();
+  ExportOptions({
+    this.driveOptions,
+    this.groupsOptions,
+    this.hangoutsChatOptions,
+    this.mailOptions,
+    this.region,
+    this.voiceOptions,
+  });
 
-  ExportOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('driveOptions')) {
-      driveOptions = DriveExportOptions.fromJson(
-          _json['driveOptions'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('groupsOptions')) {
-      groupsOptions = GroupsExportOptions.fromJson(
-          _json['groupsOptions'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('hangoutsChatOptions')) {
-      hangoutsChatOptions = HangoutsChatExportOptions.fromJson(
-          _json['hangoutsChatOptions'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('mailOptions')) {
-      mailOptions = MailExportOptions.fromJson(
-          _json['mailOptions'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('region')) {
-      region = _json['region'] as core.String;
-    }
-    if (_json.containsKey('voiceOptions')) {
-      voiceOptions = VoiceExportOptions.fromJson(
-          _json['voiceOptions'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ExportOptions.fromJson(core.Map _json)
+      : this(
+          driveOptions: _json.containsKey('driveOptions')
+              ? DriveExportOptions.fromJson(
+                  _json['driveOptions'] as core.Map<core.String, core.dynamic>)
+              : null,
+          groupsOptions: _json.containsKey('groupsOptions')
+              ? GroupsExportOptions.fromJson(
+                  _json['groupsOptions'] as core.Map<core.String, core.dynamic>)
+              : null,
+          hangoutsChatOptions: _json.containsKey('hangoutsChatOptions')
+              ? HangoutsChatExportOptions.fromJson(_json['hangoutsChatOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          mailOptions: _json.containsKey('mailOptions')
+              ? MailExportOptions.fromJson(
+                  _json['mailOptions'] as core.Map<core.String, core.dynamic>)
+              : null,
+          region: _json.containsKey('region')
+              ? _json['region'] as core.String
+              : null,
+          voiceOptions: _json.containsKey('voiceOptions')
+              ? VoiceExportOptions.fromJson(
+                  _json['voiceOptions'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (driveOptions != null) 'driveOptions': driveOptions!.toJson(),
@@ -2347,19 +2426,24 @@ class ExportStats {
   /// The number of messages or files to be exported.
   core.String? totalArtifactCount;
 
-  ExportStats();
+  ExportStats({
+    this.exportedArtifactCount,
+    this.sizeInBytes,
+    this.totalArtifactCount,
+  });
 
-  ExportStats.fromJson(core.Map _json) {
-    if (_json.containsKey('exportedArtifactCount')) {
-      exportedArtifactCount = _json['exportedArtifactCount'] as core.String;
-    }
-    if (_json.containsKey('sizeInBytes')) {
-      sizeInBytes = _json['sizeInBytes'] as core.String;
-    }
-    if (_json.containsKey('totalArtifactCount')) {
-      totalArtifactCount = _json['totalArtifactCount'] as core.String;
-    }
-  }
+  ExportStats.fromJson(core.Map _json)
+      : this(
+          exportedArtifactCount: _json.containsKey('exportedArtifactCount')
+              ? _json['exportedArtifactCount'] as core.String
+              : null,
+          sizeInBytes: _json.containsKey('sizeInBytes')
+              ? _json['sizeInBytes'] as core.String
+              : null,
+          totalArtifactCount: _json.containsKey('totalArtifactCount')
+              ? _json['totalArtifactCount'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exportedArtifactCount != null)
@@ -2391,33 +2475,40 @@ class GroupsCountResult {
   /// Total number of accounts involved in this count operation.
   core.String? queriedAccountsCount;
 
-  GroupsCountResult();
+  GroupsCountResult({
+    this.accountCountErrors,
+    this.accountCounts,
+    this.matchingAccountsCount,
+    this.nonQueryableAccounts,
+    this.queriedAccountsCount,
+  });
 
-  GroupsCountResult.fromJson(core.Map _json) {
-    if (_json.containsKey('accountCountErrors')) {
-      accountCountErrors = (_json['accountCountErrors'] as core.List)
-          .map<AccountCountError>((value) => AccountCountError.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('accountCounts')) {
-      accountCounts = (_json['accountCounts'] as core.List)
-          .map<AccountCount>((value) => AccountCount.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('matchingAccountsCount')) {
-      matchingAccountsCount = _json['matchingAccountsCount'] as core.String;
-    }
-    if (_json.containsKey('nonQueryableAccounts')) {
-      nonQueryableAccounts = (_json['nonQueryableAccounts'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('queriedAccountsCount')) {
-      queriedAccountsCount = _json['queriedAccountsCount'] as core.String;
-    }
-  }
+  GroupsCountResult.fromJson(core.Map _json)
+      : this(
+          accountCountErrors: _json.containsKey('accountCountErrors')
+              ? (_json['accountCountErrors'] as core.List)
+                  .map<AccountCountError>((value) => AccountCountError.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          accountCounts: _json.containsKey('accountCounts')
+              ? (_json['accountCounts'] as core.List)
+                  .map<AccountCount>((value) => AccountCount.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          matchingAccountsCount: _json.containsKey('matchingAccountsCount')
+              ? _json['matchingAccountsCount'] as core.String
+              : null,
+          nonQueryableAccounts: _json.containsKey('nonQueryableAccounts')
+              ? (_json['nonQueryableAccounts'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          queriedAccountsCount: _json.containsKey('queriedAccountsCount')
+              ? _json['queriedAccountsCount'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountCountErrors != null)
@@ -2444,13 +2535,16 @@ class GroupsExportOptions {
   /// - "PST" : Export as PST.
   core.String? exportFormat;
 
-  GroupsExportOptions();
+  GroupsExportOptions({
+    this.exportFormat,
+  });
 
-  GroupsExportOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('exportFormat')) {
-      exportFormat = _json['exportFormat'] as core.String;
-    }
-  }
+  GroupsExportOptions.fromJson(core.Map _json)
+      : this(
+          exportFormat: _json.containsKey('exportFormat')
+              ? _json['exportFormat'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exportFormat != null) 'exportFormat': exportFormat!,
@@ -2466,13 +2560,16 @@ class HangoutsChatExportOptions {
   /// - "PST" : Export as PST.
   core.String? exportFormat;
 
-  HangoutsChatExportOptions();
+  HangoutsChatExportOptions({
+    this.exportFormat,
+  });
 
-  HangoutsChatExportOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('exportFormat')) {
-      exportFormat = _json['exportFormat'] as core.String;
-    }
-  }
+  HangoutsChatExportOptions.fromJson(core.Map _json)
+      : this(
+          exportFormat: _json.containsKey('exportFormat')
+              ? _json['exportFormat'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exportFormat != null) 'exportFormat': exportFormat!,
@@ -2485,15 +2582,18 @@ class HangoutsChatInfo {
   /// [Chat API](https://developers.google.com/hangouts/chat).
   core.List<core.String>? roomId;
 
-  HangoutsChatInfo();
+  HangoutsChatInfo({
+    this.roomId,
+  });
 
-  HangoutsChatInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('roomId')) {
-      roomId = (_json['roomId'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  HangoutsChatInfo.fromJson(core.Map _json)
+      : this(
+          roomId: _json.containsKey('roomId')
+              ? (_json['roomId'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (roomId != null) 'roomId': roomId!,
@@ -2506,13 +2606,16 @@ class HangoutsChatOptions {
   /// rooms.
   core.bool? includeRooms;
 
-  HangoutsChatOptions();
+  HangoutsChatOptions({
+    this.includeRooms,
+  });
 
-  HangoutsChatOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('includeRooms')) {
-      includeRooms = _json['includeRooms'] as core.bool;
-    }
-  }
+  HangoutsChatOptions.fromJson(core.Map _json)
+      : this(
+          includeRooms: _json.containsKey('includeRooms')
+              ? _json['includeRooms'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (includeRooms != null) 'includeRooms': includeRooms!,
@@ -2553,25 +2656,31 @@ class HeldAccount {
   /// Output only.
   core.String? lastName;
 
-  HeldAccount();
+  HeldAccount({
+    this.accountId,
+    this.email,
+    this.firstName,
+    this.holdTime,
+    this.lastName,
+  });
 
-  HeldAccount.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('firstName')) {
-      firstName = _json['firstName'] as core.String;
-    }
-    if (_json.containsKey('holdTime')) {
-      holdTime = _json['holdTime'] as core.String;
-    }
-    if (_json.containsKey('lastName')) {
-      lastName = _json['lastName'] as core.String;
-    }
-  }
+  HeldAccount.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          firstName: _json.containsKey('firstName')
+              ? _json['firstName'] as core.String
+              : null,
+          holdTime: _json.containsKey('holdTime')
+              ? _json['holdTime'] as core.String
+              : null,
+          lastName: _json.containsKey('lastName')
+              ? _json['lastName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -2590,16 +2699,20 @@ class HeldDriveQuery {
   /// To include files in Team Drives in the hold, set to **true**.
   core.bool? includeTeamDriveFiles;
 
-  HeldDriveQuery();
+  HeldDriveQuery({
+    this.includeSharedDriveFiles,
+    this.includeTeamDriveFiles,
+  });
 
-  HeldDriveQuery.fromJson(core.Map _json) {
-    if (_json.containsKey('includeSharedDriveFiles')) {
-      includeSharedDriveFiles = _json['includeSharedDriveFiles'] as core.bool;
-    }
-    if (_json.containsKey('includeTeamDriveFiles')) {
-      includeTeamDriveFiles = _json['includeTeamDriveFiles'] as core.bool;
-    }
-  }
+  HeldDriveQuery.fromJson(core.Map _json)
+      : this(
+          includeSharedDriveFiles: _json.containsKey('includeSharedDriveFiles')
+              ? _json['includeSharedDriveFiles'] as core.bool
+              : null,
+          includeTeamDriveFiles: _json.containsKey('includeTeamDriveFiles')
+              ? _json['includeTeamDriveFiles'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (includeSharedDriveFiles != null)
@@ -2625,19 +2738,23 @@ class HeldGroupsQuery {
   /// used to refine the messages covered by the hold.
   core.String? terms;
 
-  HeldGroupsQuery();
+  HeldGroupsQuery({
+    this.endTime,
+    this.startTime,
+    this.terms,
+  });
 
-  HeldGroupsQuery.fromJson(core.Map _json) {
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-    if (_json.containsKey('terms')) {
-      terms = _json['terms'] as core.String;
-    }
-  }
+  HeldGroupsQuery.fromJson(core.Map _json)
+      : this(
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+          terms:
+              _json.containsKey('terms') ? _json['terms'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
@@ -2652,13 +2769,16 @@ class HeldHangoutsChatQuery {
   /// **true**.
   core.bool? includeRooms;
 
-  HeldHangoutsChatQuery();
+  HeldHangoutsChatQuery({
+    this.includeRooms,
+  });
 
-  HeldHangoutsChatQuery.fromJson(core.Map _json) {
-    if (_json.containsKey('includeRooms')) {
-      includeRooms = _json['includeRooms'] as core.bool;
-    }
-  }
+  HeldHangoutsChatQuery.fromJson(core.Map _json)
+      : this(
+          includeRooms: _json.containsKey('includeRooms')
+              ? _json['includeRooms'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (includeRooms != null) 'includeRooms': includeRooms!,
@@ -2681,19 +2801,23 @@ class HeldMailQuery {
   /// used to refine the messages covered by the hold.
   core.String? terms;
 
-  HeldMailQuery();
+  HeldMailQuery({
+    this.endTime,
+    this.startTime,
+    this.terms,
+  });
 
-  HeldMailQuery.fromJson(core.Map _json) {
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-    if (_json.containsKey('terms')) {
-      terms = _json['terms'] as core.String;
-    }
-  }
+  HeldMailQuery.fromJson(core.Map _json)
+      : this(
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+          terms:
+              _json.containsKey('terms') ? _json['terms'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
@@ -2715,16 +2839,20 @@ class HeldOrgUnit {
   /// [Admin SDK](https://developers.google.com/admin-sdk/).
   core.String? orgUnitId;
 
-  HeldOrgUnit();
+  HeldOrgUnit({
+    this.holdTime,
+    this.orgUnitId,
+  });
 
-  HeldOrgUnit.fromJson(core.Map _json) {
-    if (_json.containsKey('holdTime')) {
-      holdTime = _json['holdTime'] as core.String;
-    }
-    if (_json.containsKey('orgUnitId')) {
-      orgUnitId = _json['orgUnitId'] as core.String;
-    }
-  }
+  HeldOrgUnit.fromJson(core.Map _json)
+      : this(
+          holdTime: _json.containsKey('holdTime')
+              ? _json['holdTime'] as core.String
+              : null,
+          orgUnitId: _json.containsKey('orgUnitId')
+              ? _json['orgUnitId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (holdTime != null) 'holdTime': holdTime!,
@@ -2739,15 +2867,18 @@ class HeldVoiceQuery {
   /// Should be non-empty. Order does not matter and duplicates are ignored.
   core.List<core.String>? coveredData;
 
-  HeldVoiceQuery();
+  HeldVoiceQuery({
+    this.coveredData,
+  });
 
-  HeldVoiceQuery.fromJson(core.Map _json) {
-    if (_json.containsKey('coveredData')) {
-      coveredData = (_json['coveredData'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  HeldVoiceQuery.fromJson(core.Map _json)
+      : this(
+          coveredData: _json.containsKey('coveredData')
+              ? (_json['coveredData'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (coveredData != null) 'coveredData': coveredData!,
@@ -2801,36 +2932,43 @@ class Hold {
   /// The last time this hold was modified.
   core.String? updateTime;
 
-  Hold();
+  Hold({
+    this.accounts,
+    this.corpus,
+    this.holdId,
+    this.name,
+    this.orgUnit,
+    this.query,
+    this.updateTime,
+  });
 
-  Hold.fromJson(core.Map _json) {
-    if (_json.containsKey('accounts')) {
-      accounts = (_json['accounts'] as core.List)
-          .map<HeldAccount>((value) => HeldAccount.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('corpus')) {
-      corpus = _json['corpus'] as core.String;
-    }
-    if (_json.containsKey('holdId')) {
-      holdId = _json['holdId'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('orgUnit')) {
-      orgUnit = HeldOrgUnit.fromJson(
-          _json['orgUnit'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('query')) {
-      query = CorpusQuery.fromJson(
-          _json['query'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  Hold.fromJson(core.Map _json)
+      : this(
+          accounts: _json.containsKey('accounts')
+              ? (_json['accounts'] as core.List)
+                  .map<HeldAccount>((value) => HeldAccount.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          corpus: _json.containsKey('corpus')
+              ? _json['corpus'] as core.String
+              : null,
+          holdId: _json.containsKey('holdId')
+              ? _json['holdId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          orgUnit: _json.containsKey('orgUnit')
+              ? HeldOrgUnit.fromJson(
+                  _json['orgUnit'] as core.Map<core.String, core.dynamic>)
+              : null,
+          query: _json.containsKey('query')
+              ? CorpusQuery.fromJson(
+                  _json['query'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accounts != null)
@@ -2852,19 +2990,23 @@ class ListExportsResponse {
   /// Page token to retrieve the next page of results in the list.
   core.String? nextPageToken;
 
-  ListExportsResponse();
+  ListExportsResponse({
+    this.exports,
+    this.nextPageToken,
+  });
 
-  ListExportsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('exports')) {
-      exports = (_json['exports'] as core.List)
-          .map<Export>((value) =>
-              Export.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListExportsResponse.fromJson(core.Map _json)
+      : this(
+          exports: _json.containsKey('exports')
+              ? (_json['exports'] as core.List)
+                  .map<Export>((value) => Export.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exports != null)
@@ -2878,16 +3020,19 @@ class ListHeldAccountsResponse {
   /// The held accounts on a hold.
   core.List<HeldAccount>? accounts;
 
-  ListHeldAccountsResponse();
+  ListHeldAccountsResponse({
+    this.accounts,
+  });
 
-  ListHeldAccountsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('accounts')) {
-      accounts = (_json['accounts'] as core.List)
-          .map<HeldAccount>((value) => HeldAccount.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListHeldAccountsResponse.fromJson(core.Map _json)
+      : this(
+          accounts: _json.containsKey('accounts')
+              ? (_json['accounts'] as core.List)
+                  .map<HeldAccount>((value) => HeldAccount.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accounts != null)
@@ -2905,19 +3050,23 @@ class ListHoldsResponse {
   /// If this is empty, then there are no more holds to list.
   core.String? nextPageToken;
 
-  ListHoldsResponse();
+  ListHoldsResponse({
+    this.holds,
+    this.nextPageToken,
+  });
 
-  ListHoldsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('holds')) {
-      holds = (_json['holds'] as core.List)
-          .map<Hold>((value) =>
-              Hold.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListHoldsResponse.fromJson(core.Map _json)
+      : this(
+          holds: _json.containsKey('holds')
+              ? (_json['holds'] as core.List)
+                  .map<Hold>((value) => Hold.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (holds != null)
@@ -2934,19 +3083,23 @@ class ListMattersResponse {
   /// Page token to retrieve the next page of results in the list.
   core.String? nextPageToken;
 
-  ListMattersResponse();
+  ListMattersResponse({
+    this.matters,
+    this.nextPageToken,
+  });
 
-  ListMattersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('matters')) {
-      matters = (_json['matters'] as core.List)
-          .map<Matter>((value) =>
-              Matter.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListMattersResponse.fromJson(core.Map _json)
+      : this(
+          matters: _json.containsKey('matters')
+              ? (_json['matters'] as core.List)
+                  .map<Matter>((value) => Matter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (matters != null)
@@ -2963,19 +3116,23 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse();
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
 
-  ListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('operations')) {
-      operations = (_json['operations'] as core.List)
-          .map<Operation>((value) =>
-              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListOperationsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          operations: _json.containsKey('operations')
+              ? (_json['operations'] as core.List)
+                  .map<Operation>((value) => Operation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -2994,19 +3151,23 @@ class ListSavedQueriesResponse {
   /// List of saved queries.
   core.List<SavedQuery>? savedQueries;
 
-  ListSavedQueriesResponse();
+  ListSavedQueriesResponse({
+    this.nextPageToken,
+    this.savedQueries,
+  });
 
-  ListSavedQueriesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('savedQueries')) {
-      savedQueries = (_json['savedQueries'] as core.List)
-          .map<SavedQuery>((value) =>
-              SavedQuery.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListSavedQueriesResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          savedQueries: _json.containsKey('savedQueries')
+              ? (_json['savedQueries'] as core.List)
+                  .map<SavedQuery>((value) => SavedQuery.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3036,33 +3197,40 @@ class MailCountResult {
   /// Total number of accounts involved in this count operation.
   core.String? queriedAccountsCount;
 
-  MailCountResult();
+  MailCountResult({
+    this.accountCountErrors,
+    this.accountCounts,
+    this.matchingAccountsCount,
+    this.nonQueryableAccounts,
+    this.queriedAccountsCount,
+  });
 
-  MailCountResult.fromJson(core.Map _json) {
-    if (_json.containsKey('accountCountErrors')) {
-      accountCountErrors = (_json['accountCountErrors'] as core.List)
-          .map<AccountCountError>((value) => AccountCountError.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('accountCounts')) {
-      accountCounts = (_json['accountCounts'] as core.List)
-          .map<AccountCount>((value) => AccountCount.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('matchingAccountsCount')) {
-      matchingAccountsCount = _json['matchingAccountsCount'] as core.String;
-    }
-    if (_json.containsKey('nonQueryableAccounts')) {
-      nonQueryableAccounts = (_json['nonQueryableAccounts'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('queriedAccountsCount')) {
-      queriedAccountsCount = _json['queriedAccountsCount'] as core.String;
-    }
-  }
+  MailCountResult.fromJson(core.Map _json)
+      : this(
+          accountCountErrors: _json.containsKey('accountCountErrors')
+              ? (_json['accountCountErrors'] as core.List)
+                  .map<AccountCountError>((value) => AccountCountError.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          accountCounts: _json.containsKey('accountCounts')
+              ? (_json['accountCounts'] as core.List)
+                  .map<AccountCount>((value) => AccountCount.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          matchingAccountsCount: _json.containsKey('matchingAccountsCount')
+              ? _json['matchingAccountsCount'] as core.String
+              : null,
+          nonQueryableAccounts: _json.containsKey('nonQueryableAccounts')
+              ? (_json['nonQueryableAccounts'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          queriedAccountsCount: _json.containsKey('queriedAccountsCount')
+              ? _json['queriedAccountsCount'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountCountErrors != null)
@@ -3092,17 +3260,21 @@ class MailExportOptions {
   /// To export confidential mode content, set to **true**.
   core.bool? showConfidentialModeContent;
 
-  MailExportOptions();
+  MailExportOptions({
+    this.exportFormat,
+    this.showConfidentialModeContent,
+  });
 
-  MailExportOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('exportFormat')) {
-      exportFormat = _json['exportFormat'] as core.String;
-    }
-    if (_json.containsKey('showConfidentialModeContent')) {
-      showConfidentialModeContent =
-          _json['showConfidentialModeContent'] as core.bool;
-    }
-  }
+  MailExportOptions.fromJson(core.Map _json)
+      : this(
+          exportFormat: _json.containsKey('exportFormat')
+              ? _json['exportFormat'] as core.String
+              : null,
+          showConfidentialModeContent:
+              _json.containsKey('showConfidentialModeContent')
+                  ? _json['showConfidentialModeContent'] as core.bool
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exportFormat != null) 'exportFormat': exportFormat!,
@@ -3116,13 +3288,16 @@ class MailOptions {
   /// Set to **true** to exclude drafts.
   core.bool? excludeDrafts;
 
-  MailOptions();
+  MailOptions({
+    this.excludeDrafts,
+  });
 
-  MailOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('excludeDrafts')) {
-      excludeDrafts = _json['excludeDrafts'] as core.bool;
-    }
-  }
+  MailOptions.fromJson(core.Map _json)
+      : this(
+          excludeDrafts: _json.containsKey('excludeDrafts')
+              ? _json['excludeDrafts'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (excludeDrafts != null) 'excludeDrafts': excludeDrafts!,
@@ -3162,28 +3337,32 @@ class Matter {
   /// - "DELETED" : The matter is deleted.
   core.String? state;
 
-  Matter();
+  Matter({
+    this.description,
+    this.matterId,
+    this.matterPermissions,
+    this.name,
+    this.state,
+  });
 
-  Matter.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('matterId')) {
-      matterId = _json['matterId'] as core.String;
-    }
-    if (_json.containsKey('matterPermissions')) {
-      matterPermissions = (_json['matterPermissions'] as core.List)
-          .map<MatterPermission>((value) => MatterPermission.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-  }
+  Matter.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          matterId: _json.containsKey('matterId')
+              ? _json['matterId'] as core.String
+              : null,
+          matterPermissions: _json.containsKey('matterPermissions')
+              ? (_json['matterPermissions'] as core.List)
+                  .map<MatterPermission>((value) => MatterPermission.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -3213,16 +3392,18 @@ class MatterPermission {
   /// - "OWNER" : The owner of the matter.
   core.String? role;
 
-  MatterPermission();
+  MatterPermission({
+    this.accountId,
+    this.role,
+  });
 
-  MatterPermission.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('role')) {
-      role = _json['role'] as core.String;
-    }
-  }
+  MatterPermission.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -3273,36 +3454,39 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object>? response;
 
-  Operation();
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
-  Operation.fromJson(core.Map _json) {
-    if (_json.containsKey('done')) {
-      done = _json['done'] as core.bool;
-    }
-    if (_json.containsKey('error')) {
-      error = Status.fromJson(
-          _json['error'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('response')) {
-      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-  }
+  Operation.fromJson(core.Map _json)
+      : this(
+          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
+          error: _json.containsKey('error')
+              ? Status.fromJson(
+                  _json['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          response: _json.containsKey('response')
+              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
@@ -3319,13 +3503,16 @@ class OrgUnitInfo {
   /// [Admin SDK Directory API](https://developers.google.com/admin-sdk/directory/).
   core.String? orgUnitId;
 
-  OrgUnitInfo();
+  OrgUnitInfo({
+    this.orgUnitId,
+  });
 
-  OrgUnitInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('orgUnitId')) {
-      orgUnitId = _json['orgUnitId'] as core.String;
-    }
-  }
+  OrgUnitInfo.fromJson(core.Map _json)
+      : this(
+          orgUnitId: _json.containsKey('orgUnitId')
+              ? _json['orgUnitId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (orgUnitId != null) 'orgUnitId': orgUnitId!,
@@ -3453,70 +3640,88 @@ class Query {
   /// Set Voice search-specific options.
   VoiceOptions? voiceOptions;
 
-  Query();
+  Query({
+    this.accountInfo,
+    this.corpus,
+    this.dataScope,
+    this.driveOptions,
+    this.endTime,
+    this.hangoutsChatInfo,
+    this.hangoutsChatOptions,
+    this.mailOptions,
+    this.method,
+    this.orgUnitInfo,
+    this.searchMethod,
+    this.sharedDriveInfo,
+    this.startTime,
+    this.teamDriveInfo,
+    this.terms,
+    this.timeZone,
+    this.voiceOptions,
+  });
 
-  Query.fromJson(core.Map _json) {
-    if (_json.containsKey('accountInfo')) {
-      accountInfo = AccountInfo.fromJson(
-          _json['accountInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('corpus')) {
-      corpus = _json['corpus'] as core.String;
-    }
-    if (_json.containsKey('dataScope')) {
-      dataScope = _json['dataScope'] as core.String;
-    }
-    if (_json.containsKey('driveOptions')) {
-      driveOptions = DriveOptions.fromJson(
-          _json['driveOptions'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('hangoutsChatInfo')) {
-      hangoutsChatInfo = HangoutsChatInfo.fromJson(
-          _json['hangoutsChatInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('hangoutsChatOptions')) {
-      hangoutsChatOptions = HangoutsChatOptions.fromJson(
-          _json['hangoutsChatOptions'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('mailOptions')) {
-      mailOptions = MailOptions.fromJson(
-          _json['mailOptions'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('method')) {
-      method = _json['method'] as core.String;
-    }
-    if (_json.containsKey('orgUnitInfo')) {
-      orgUnitInfo = OrgUnitInfo.fromJson(
-          _json['orgUnitInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('searchMethod')) {
-      searchMethod = _json['searchMethod'] as core.String;
-    }
-    if (_json.containsKey('sharedDriveInfo')) {
-      sharedDriveInfo = SharedDriveInfo.fromJson(
-          _json['sharedDriveInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-    if (_json.containsKey('teamDriveInfo')) {
-      teamDriveInfo = TeamDriveInfo.fromJson(
-          _json['teamDriveInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('terms')) {
-      terms = _json['terms'] as core.String;
-    }
-    if (_json.containsKey('timeZone')) {
-      timeZone = _json['timeZone'] as core.String;
-    }
-    if (_json.containsKey('voiceOptions')) {
-      voiceOptions = VoiceOptions.fromJson(
-          _json['voiceOptions'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Query.fromJson(core.Map _json)
+      : this(
+          accountInfo: _json.containsKey('accountInfo')
+              ? AccountInfo.fromJson(
+                  _json['accountInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          corpus: _json.containsKey('corpus')
+              ? _json['corpus'] as core.String
+              : null,
+          dataScope: _json.containsKey('dataScope')
+              ? _json['dataScope'] as core.String
+              : null,
+          driveOptions: _json.containsKey('driveOptions')
+              ? DriveOptions.fromJson(
+                  _json['driveOptions'] as core.Map<core.String, core.dynamic>)
+              : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          hangoutsChatInfo: _json.containsKey('hangoutsChatInfo')
+              ? HangoutsChatInfo.fromJson(_json['hangoutsChatInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          hangoutsChatOptions: _json.containsKey('hangoutsChatOptions')
+              ? HangoutsChatOptions.fromJson(_json['hangoutsChatOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          mailOptions: _json.containsKey('mailOptions')
+              ? MailOptions.fromJson(
+                  _json['mailOptions'] as core.Map<core.String, core.dynamic>)
+              : null,
+          method: _json.containsKey('method')
+              ? _json['method'] as core.String
+              : null,
+          orgUnitInfo: _json.containsKey('orgUnitInfo')
+              ? OrgUnitInfo.fromJson(
+                  _json['orgUnitInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          searchMethod: _json.containsKey('searchMethod')
+              ? _json['searchMethod'] as core.String
+              : null,
+          sharedDriveInfo: _json.containsKey('sharedDriveInfo')
+              ? SharedDriveInfo.fromJson(_json['sharedDriveInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+          teamDriveInfo: _json.containsKey('teamDriveInfo')
+              ? TeamDriveInfo.fromJson(
+                  _json['teamDriveInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          terms:
+              _json.containsKey('terms') ? _json['terms'] as core.String : null,
+          timeZone: _json.containsKey('timeZone')
+              ? _json['timeZone'] as core.String
+              : null,
+          voiceOptions: _json.containsKey('voiceOptions')
+              ? VoiceOptions.fromJson(
+                  _json['voiceOptions'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountInfo != null) 'accountInfo': accountInfo!.toJson(),
@@ -3547,15 +3752,18 @@ class RemoveHeldAccountsRequest {
   /// The account IDs of the accounts to remove from the hold.
   core.List<core.String>? accountIds;
 
-  RemoveHeldAccountsRequest();
+  RemoveHeldAccountsRequest({
+    this.accountIds,
+  });
 
-  RemoveHeldAccountsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('accountIds')) {
-      accountIds = (_json['accountIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  RemoveHeldAccountsRequest.fromJson(core.Map _json)
+      : this(
+          accountIds: _json.containsKey('accountIds')
+              ? (_json['accountIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountIds != null) 'accountIds': accountIds!,
@@ -3569,16 +3777,19 @@ class RemoveHeldAccountsResponse {
   /// Results have the same order as the request.
   core.List<Status>? statuses;
 
-  RemoveHeldAccountsResponse();
+  RemoveHeldAccountsResponse({
+    this.statuses,
+  });
 
-  RemoveHeldAccountsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('statuses')) {
-      statuses = (_json['statuses'] as core.List)
-          .map<Status>((value) =>
-              Status.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  RemoveHeldAccountsResponse.fromJson(core.Map _json)
+      : this(
+          statuses: _json.containsKey('statuses')
+              ? (_json['statuses'] as core.List)
+                  .map<Status>((value) => Status.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (statuses != null)
@@ -3591,13 +3802,16 @@ class RemoveMatterPermissionsRequest {
   /// The account ID.
   core.String? accountId;
 
-  RemoveMatterPermissionsRequest();
+  RemoveMatterPermissionsRequest({
+    this.accountId,
+  });
 
-  RemoveMatterPermissionsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-  }
+  RemoveMatterPermissionsRequest.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -3620,14 +3834,17 @@ class ReopenMatterResponse {
   /// The updated matter, with state **OPEN**.
   Matter? matter;
 
-  ReopenMatterResponse();
+  ReopenMatterResponse({
+    this.matter,
+  });
 
-  ReopenMatterResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('matter')) {
-      matter = Matter.fromJson(
-          _json['matter'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ReopenMatterResponse.fromJson(core.Map _json)
+      : this(
+          matter: _json.containsKey('matter')
+              ? Matter.fromJson(
+                  _json['matter'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (matter != null) 'matter': matter!.toJson(),
@@ -3664,26 +3881,33 @@ class SavedQuery {
   /// A unique identifier for the saved query.
   core.String? savedQueryId;
 
-  SavedQuery();
+  SavedQuery({
+    this.createTime,
+    this.displayName,
+    this.matterId,
+    this.query,
+    this.savedQueryId,
+  });
 
-  SavedQuery.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('matterId')) {
-      matterId = _json['matterId'] as core.String;
-    }
-    if (_json.containsKey('query')) {
-      query =
-          Query.fromJson(_json['query'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('savedQueryId')) {
-      savedQueryId = _json['savedQueryId'] as core.String;
-    }
-  }
+  SavedQuery.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          matterId: _json.containsKey('matterId')
+              ? _json['matterId'] as core.String
+              : null,
+          query: _json.containsKey('query')
+              ? Query.fromJson(
+                  _json['query'] as core.Map<core.String, core.dynamic>)
+              : null,
+          savedQueryId: _json.containsKey('savedQueryId')
+              ? _json['savedQueryId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -3700,15 +3924,18 @@ class SharedDriveInfo {
   /// [Drive API](https://developers.google.com/drive).
   core.List<core.String>? sharedDriveIds;
 
-  SharedDriveInfo();
+  SharedDriveInfo({
+    this.sharedDriveIds,
+  });
 
-  SharedDriveInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('sharedDriveIds')) {
-      sharedDriveIds = (_json['sharedDriveIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  SharedDriveInfo.fromJson(core.Map _json)
+      : this(
+          sharedDriveIds: _json.containsKey('sharedDriveIds')
+              ? (_json['sharedDriveIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sharedDriveIds != null) 'sharedDriveIds': sharedDriveIds!,
@@ -3740,27 +3967,30 @@ class Status {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  Status();
+  Status({
+    this.code,
+    this.details,
+    this.message,
+  });
 
-  Status.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.int;
-    }
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  Status.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -3775,15 +4005,18 @@ class TeamDriveInfo {
   /// [Drive API](https://developers.google.com/drive).
   core.List<core.String>? teamDriveIds;
 
-  TeamDriveInfo();
+  TeamDriveInfo({
+    this.teamDriveIds,
+  });
 
-  TeamDriveInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('teamDriveIds')) {
-      teamDriveIds = (_json['teamDriveIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  TeamDriveInfo.fromJson(core.Map _json)
+      : this(
+          teamDriveIds: _json.containsKey('teamDriveIds')
+              ? (_json['teamDriveIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (teamDriveIds != null) 'teamDriveIds': teamDriveIds!,
@@ -3809,16 +4042,19 @@ class UserInfo {
   /// The email address of the user.
   core.String? email;
 
-  UserInfo();
+  UserInfo({
+    this.displayName,
+    this.email,
+  });
 
-  UserInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-  }
+  UserInfo.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -3835,13 +4071,16 @@ class VoiceExportOptions {
   /// - "PST" : Export as PST.
   core.String? exportFormat;
 
-  VoiceExportOptions();
+  VoiceExportOptions({
+    this.exportFormat,
+  });
 
-  VoiceExportOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('exportFormat')) {
-      exportFormat = _json['exportFormat'] as core.String;
-    }
-  }
+  VoiceExportOptions.fromJson(core.Map _json)
+      : this(
+          exportFormat: _json.containsKey('exportFormat')
+              ? _json['exportFormat'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exportFormat != null) 'exportFormat': exportFormat!,
@@ -3853,15 +4092,18 @@ class VoiceOptions {
   /// Datatypes to search
   core.List<core.String>? coveredData;
 
-  VoiceOptions();
+  VoiceOptions({
+    this.coveredData,
+  });
 
-  VoiceOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('coveredData')) {
-      coveredData = (_json['coveredData'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  VoiceOptions.fromJson(core.Map _json)
+      : this(
+          coveredData: _json.containsKey('coveredData')
+              ? (_json['coveredData'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (coveredData != null) 'coveredData': coveredData!,

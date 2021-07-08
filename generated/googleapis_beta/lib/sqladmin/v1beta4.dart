@@ -2346,22 +2346,23 @@ class AclEntry {
   /// The allowlisted value for the access control list.
   core.String? value;
 
-  AclEntry();
+  AclEntry({
+    this.expirationTime,
+    this.kind,
+    this.name,
+    this.value,
+  });
 
-  AclEntry.fromJson(core.Map _json) {
-    if (_json.containsKey('expirationTime')) {
-      expirationTime = _json['expirationTime'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  AclEntry.fromJson(core.Map _json)
+      : this(
+          expirationTime: _json.containsKey('expirationTime')
+              ? _json['expirationTime'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (expirationTime != null) 'expirationTime': expirationTime!,
@@ -2387,19 +2388,22 @@ class ApiWarning {
   /// The region name for REGION_UNREACHABLE warning.
   core.String? region;
 
-  ApiWarning();
+  ApiWarning({
+    this.code,
+    this.message,
+    this.region,
+  });
 
-  ApiWarning.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.String;
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-    if (_json.containsKey('region')) {
-      region = _json['region'] as core.String;
-    }
-  }
+  ApiWarning.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.String : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+          region: _json.containsKey('region')
+              ? _json['region'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -2441,42 +2445,51 @@ class BackupConfiguration {
   /// restore, from 1-7.
   core.int? transactionLogRetentionDays;
 
-  BackupConfiguration();
+  BackupConfiguration({
+    this.backupRetentionSettings,
+    this.binaryLogEnabled,
+    this.enabled,
+    this.kind,
+    this.location,
+    this.pointInTimeRecoveryEnabled,
+    this.replicationLogArchivingEnabled,
+    this.startTime,
+    this.transactionLogRetentionDays,
+  });
 
-  BackupConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey('backupRetentionSettings')) {
-      backupRetentionSettings = BackupRetentionSettings.fromJson(
-          _json['backupRetentionSettings']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('binaryLogEnabled')) {
-      binaryLogEnabled = _json['binaryLogEnabled'] as core.bool;
-    }
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('location')) {
-      location = _json['location'] as core.String;
-    }
-    if (_json.containsKey('pointInTimeRecoveryEnabled')) {
-      pointInTimeRecoveryEnabled =
-          _json['pointInTimeRecoveryEnabled'] as core.bool;
-    }
-    if (_json.containsKey('replicationLogArchivingEnabled')) {
-      replicationLogArchivingEnabled =
-          _json['replicationLogArchivingEnabled'] as core.bool;
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-    if (_json.containsKey('transactionLogRetentionDays')) {
-      transactionLogRetentionDays =
-          _json['transactionLogRetentionDays'] as core.int;
-    }
-  }
+  BackupConfiguration.fromJson(core.Map _json)
+      : this(
+          backupRetentionSettings: _json.containsKey('backupRetentionSettings')
+              ? BackupRetentionSettings.fromJson(
+                  _json['backupRetentionSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          binaryLogEnabled: _json.containsKey('binaryLogEnabled')
+              ? _json['binaryLogEnabled'] as core.bool
+              : null,
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          pointInTimeRecoveryEnabled:
+              _json.containsKey('pointInTimeRecoveryEnabled')
+                  ? _json['pointInTimeRecoveryEnabled'] as core.bool
+                  : null,
+          replicationLogArchivingEnabled:
+              _json.containsKey('replicationLogArchivingEnabled')
+                  ? _json['replicationLogArchivingEnabled'] as core.bool
+                  : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+          transactionLogRetentionDays:
+              _json.containsKey('transactionLogRetentionDays')
+                  ? _json['transactionLogRetentionDays'] as core.int
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backupRetentionSettings != null)
@@ -2503,16 +2516,18 @@ class BackupContext {
   /// This is always *sql#backupContext*.
   core.String? kind;
 
-  BackupContext();
+  BackupContext({
+    this.backupId,
+    this.kind,
+  });
 
-  BackupContext.fromJson(core.Map _json) {
-    if (_json.containsKey('backupId')) {
-      backupId = _json['backupId'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-  }
+  BackupContext.fromJson(core.Map _json)
+      : this(
+          backupId: _json.containsKey('backupId')
+              ? _json['backupId'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backupId != null) 'backupId': backupId!,
@@ -2537,16 +2552,20 @@ class BackupRetentionSettings {
   /// backups".
   core.String? retentionUnit;
 
-  BackupRetentionSettings();
+  BackupRetentionSettings({
+    this.retainedBackups,
+    this.retentionUnit,
+  });
 
-  BackupRetentionSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('retainedBackups')) {
-      retainedBackups = _json['retainedBackups'] as core.int;
-    }
-    if (_json.containsKey('retentionUnit')) {
-      retentionUnit = _json['retentionUnit'] as core.String;
-    }
-  }
+  BackupRetentionSettings.fromJson(core.Map _json)
+      : this(
+          retainedBackups: _json.containsKey('retainedBackups')
+              ? _json['retainedBackups'] as core.int
+              : null,
+          retentionUnit: _json.containsKey('retentionUnit')
+              ? _json['retentionUnit'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (retainedBackups != null) 'retainedBackups': retainedBackups!,
@@ -2641,62 +2660,75 @@ class BackupRun {
   /// attempted in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
   core.String? windowStartTime;
 
-  BackupRun();
+  BackupRun({
+    this.backupKind,
+    this.description,
+    this.diskEncryptionConfiguration,
+    this.diskEncryptionStatus,
+    this.endTime,
+    this.enqueuedTime,
+    this.error,
+    this.id,
+    this.instance,
+    this.kind,
+    this.location,
+    this.selfLink,
+    this.startTime,
+    this.status,
+    this.type,
+    this.windowStartTime,
+  });
 
-  BackupRun.fromJson(core.Map _json) {
-    if (_json.containsKey('backupKind')) {
-      backupKind = _json['backupKind'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('diskEncryptionConfiguration')) {
-      diskEncryptionConfiguration = DiskEncryptionConfiguration.fromJson(
-          _json['diskEncryptionConfiguration']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('diskEncryptionStatus')) {
-      diskEncryptionStatus = DiskEncryptionStatus.fromJson(
-          _json['diskEncryptionStatus'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('enqueuedTime')) {
-      enqueuedTime = _json['enqueuedTime'] as core.String;
-    }
-    if (_json.containsKey('error')) {
-      error = OperationError.fromJson(
-          _json['error'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('instance')) {
-      instance = _json['instance'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('location')) {
-      location = _json['location'] as core.String;
-    }
-    if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'] as core.String;
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('windowStartTime')) {
-      windowStartTime = _json['windowStartTime'] as core.String;
-    }
-  }
+  BackupRun.fromJson(core.Map _json)
+      : this(
+          backupKind: _json.containsKey('backupKind')
+              ? _json['backupKind'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          diskEncryptionConfiguration:
+              _json.containsKey('diskEncryptionConfiguration')
+                  ? DiskEncryptionConfiguration.fromJson(
+                      _json['diskEncryptionConfiguration']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          diskEncryptionStatus: _json.containsKey('diskEncryptionStatus')
+              ? DiskEncryptionStatus.fromJson(_json['diskEncryptionStatus']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          enqueuedTime: _json.containsKey('enqueuedTime')
+              ? _json['enqueuedTime'] as core.String
+              : null,
+          error: _json.containsKey('error')
+              ? OperationError.fromJson(
+                  _json['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          instance: _json.containsKey('instance')
+              ? _json['instance'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          selfLink: _json.containsKey('selfLink')
+              ? _json['selfLink'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          windowStartTime: _json.containsKey('windowStartTime')
+              ? _json['windowStartTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backupKind != null) 'backupKind': backupKind!,
@@ -2734,22 +2766,25 @@ class BackupRunsListResponse {
   /// results.
   core.String? nextPageToken;
 
-  BackupRunsListResponse();
+  BackupRunsListResponse({
+    this.items,
+    this.kind,
+    this.nextPageToken,
+  });
 
-  BackupRunsListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<BackupRun>((value) =>
-              BackupRun.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  BackupRunsListResponse.fromJson(core.Map _json)
+      : this(
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<BackupRun>((value) => BackupRun.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
@@ -2770,19 +2805,22 @@ class BinLogCoordinates {
   /// This is always *sql#binLogCoordinates*.
   core.String? kind;
 
-  BinLogCoordinates();
+  BinLogCoordinates({
+    this.binLogFileName,
+    this.binLogPosition,
+    this.kind,
+  });
 
-  BinLogCoordinates.fromJson(core.Map _json) {
-    if (_json.containsKey('binLogFileName')) {
-      binLogFileName = _json['binLogFileName'] as core.String;
-    }
-    if (_json.containsKey('binLogPosition')) {
-      binLogPosition = _json['binLogPosition'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-  }
+  BinLogCoordinates.fromJson(core.Map _json)
+      : this(
+          binLogFileName: _json.containsKey('binLogFileName')
+              ? _json['binLogFileName'] as core.String
+              : null,
+          binLogPosition: _json.containsKey('binLogPosition')
+              ? _json['binLogPosition'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (binLogFileName != null) 'binLogFileName': binLogFileName!,
@@ -2812,26 +2850,31 @@ class CloneContext {
   /// Reserved for future use.
   core.String? pointInTime;
 
-  CloneContext();
+  CloneContext({
+    this.binLogCoordinates,
+    this.destinationInstanceName,
+    this.kind,
+    this.pitrTimestampMs,
+    this.pointInTime,
+  });
 
-  CloneContext.fromJson(core.Map _json) {
-    if (_json.containsKey('binLogCoordinates')) {
-      binLogCoordinates = BinLogCoordinates.fromJson(
-          _json['binLogCoordinates'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('destinationInstanceName')) {
-      destinationInstanceName = _json['destinationInstanceName'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('pitrTimestampMs')) {
-      pitrTimestampMs = _json['pitrTimestampMs'] as core.String;
-    }
-    if (_json.containsKey('pointInTime')) {
-      pointInTime = _json['pointInTime'] as core.String;
-    }
-  }
+  CloneContext.fromJson(core.Map _json)
+      : this(
+          binLogCoordinates: _json.containsKey('binLogCoordinates')
+              ? BinLogCoordinates.fromJson(_json['binLogCoordinates']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          destinationInstanceName: _json.containsKey('destinationInstanceName')
+              ? _json['destinationInstanceName'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          pitrTimestampMs: _json.containsKey('pitrTimestampMs')
+              ? _json['pitrTimestampMs'] as core.String
+              : null,
+          pointInTime: _json.containsKey('pointInTime')
+              ? _json['pointInTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (binLogCoordinates != null)
@@ -2878,39 +2921,45 @@ class Database {
   core.String? selfLink;
   SqlServerDatabaseDetails? sqlserverDatabaseDetails;
 
-  Database();
+  Database({
+    this.charset,
+    this.collation,
+    this.etag,
+    this.instance,
+    this.kind,
+    this.name,
+    this.project,
+    this.selfLink,
+    this.sqlserverDatabaseDetails,
+  });
 
-  Database.fromJson(core.Map _json) {
-    if (_json.containsKey('charset')) {
-      charset = _json['charset'] as core.String;
-    }
-    if (_json.containsKey('collation')) {
-      collation = _json['collation'] as core.String;
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('instance')) {
-      instance = _json['instance'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('project')) {
-      project = _json['project'] as core.String;
-    }
-    if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'] as core.String;
-    }
-    if (_json.containsKey('sqlserverDatabaseDetails')) {
-      sqlserverDatabaseDetails = SqlServerDatabaseDetails.fromJson(
-          _json['sqlserverDatabaseDetails']
-              as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Database.fromJson(core.Map _json)
+      : this(
+          charset: _json.containsKey('charset')
+              ? _json['charset'] as core.String
+              : null,
+          collation: _json.containsKey('collation')
+              ? _json['collation'] as core.String
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          instance: _json.containsKey('instance')
+              ? _json['instance'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          project: _json.containsKey('project')
+              ? _json['project'] as core.String
+              : null,
+          selfLink: _json.containsKey('selfLink')
+              ? _json['selfLink'] as core.String
+              : null,
+          sqlserverDatabaseDetails:
+              _json.containsKey('sqlserverDatabaseDetails')
+                  ? SqlServerDatabaseDetails.fromJson(
+                      _json['sqlserverDatabaseDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (charset != null) 'charset': charset!,
@@ -2942,16 +2991,17 @@ class DatabaseFlags {
   /// omitted if the flag doesn't take a value.
   core.String? value;
 
-  DatabaseFlags();
+  DatabaseFlags({
+    this.name,
+    this.value,
+  });
 
-  DatabaseFlags.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  DatabaseFlags.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -2977,16 +3027,18 @@ class DatabaseInstanceFailoverReplica {
   /// applicable only to Second Generation instances.
   core.String? name;
 
-  DatabaseInstanceFailoverReplica();
+  DatabaseInstanceFailoverReplica({
+    this.available,
+    this.name,
+  });
 
-  DatabaseInstanceFailoverReplica.fromJson(core.Map _json) {
-    if (_json.containsKey('available')) {
-      available = _json['available'] as core.bool;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  DatabaseInstanceFailoverReplica.fromJson(core.Map _json)
+      : this(
+          available: _json.containsKey('available')
+              ? _json['available'] as core.bool
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (available != null) 'available': available!,
@@ -3212,125 +3264,154 @@ class DatabaseInstance {
   /// If the instance state is SUSPENDED, the reason for the suspension.
   core.List<core.String>? suspensionReason;
 
-  DatabaseInstance();
+  DatabaseInstance({
+    this.backendType,
+    this.connectionName,
+    this.currentDiskSize,
+    this.databaseVersion,
+    this.diskEncryptionConfiguration,
+    this.diskEncryptionStatus,
+    this.etag,
+    this.failoverReplica,
+    this.gceZone,
+    this.instanceType,
+    this.ipAddresses,
+    this.ipv6Address,
+    this.kind,
+    this.masterInstanceName,
+    this.maxDiskSize,
+    this.name,
+    this.onPremisesConfiguration,
+    this.outOfDiskReport,
+    this.project,
+    this.region,
+    this.replicaConfiguration,
+    this.replicaNames,
+    this.rootPassword,
+    this.satisfiesPzs,
+    this.scheduledMaintenance,
+    this.secondaryGceZone,
+    this.selfLink,
+    this.serverCaCert,
+    this.serviceAccountEmailAddress,
+    this.settings,
+    this.state,
+    this.suspensionReason,
+  });
 
-  DatabaseInstance.fromJson(core.Map _json) {
-    if (_json.containsKey('backendType')) {
-      backendType = _json['backendType'] as core.String;
-    }
-    if (_json.containsKey('connectionName')) {
-      connectionName = _json['connectionName'] as core.String;
-    }
-    if (_json.containsKey('currentDiskSize')) {
-      currentDiskSize = _json['currentDiskSize'] as core.String;
-    }
-    if (_json.containsKey('databaseVersion')) {
-      databaseVersion = _json['databaseVersion'] as core.String;
-    }
-    if (_json.containsKey('diskEncryptionConfiguration')) {
-      diskEncryptionConfiguration = DiskEncryptionConfiguration.fromJson(
-          _json['diskEncryptionConfiguration']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('diskEncryptionStatus')) {
-      diskEncryptionStatus = DiskEncryptionStatus.fromJson(
-          _json['diskEncryptionStatus'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('failoverReplica')) {
-      failoverReplica = DatabaseInstanceFailoverReplica.fromJson(
-          _json['failoverReplica'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('gceZone')) {
-      gceZone = _json['gceZone'] as core.String;
-    }
-    if (_json.containsKey('instanceType')) {
-      instanceType = _json['instanceType'] as core.String;
-    }
-    if (_json.containsKey('ipAddresses')) {
-      ipAddresses = (_json['ipAddresses'] as core.List)
-          .map<IpMapping>((value) =>
-              IpMapping.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('ipv6Address')) {
-      ipv6Address = _json['ipv6Address'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('masterInstanceName')) {
-      masterInstanceName = _json['masterInstanceName'] as core.String;
-    }
-    if (_json.containsKey('maxDiskSize')) {
-      maxDiskSize = _json['maxDiskSize'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('onPremisesConfiguration')) {
-      onPremisesConfiguration = OnPremisesConfiguration.fromJson(
-          _json['onPremisesConfiguration']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('outOfDiskReport')) {
-      outOfDiskReport = SqlOutOfDiskReport.fromJson(
-          _json['outOfDiskReport'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('project')) {
-      project = _json['project'] as core.String;
-    }
-    if (_json.containsKey('region')) {
-      region = _json['region'] as core.String;
-    }
-    if (_json.containsKey('replicaConfiguration')) {
-      replicaConfiguration = ReplicaConfiguration.fromJson(
-          _json['replicaConfiguration'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('replicaNames')) {
-      replicaNames = (_json['replicaNames'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('rootPassword')) {
-      rootPassword = _json['rootPassword'] as core.String;
-    }
-    if (_json.containsKey('satisfiesPzs')) {
-      satisfiesPzs = _json['satisfiesPzs'] as core.bool;
-    }
-    if (_json.containsKey('scheduledMaintenance')) {
-      scheduledMaintenance = SqlScheduledMaintenance.fromJson(
-          _json['scheduledMaintenance'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('secondaryGceZone')) {
-      secondaryGceZone = _json['secondaryGceZone'] as core.String;
-    }
-    if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'] as core.String;
-    }
-    if (_json.containsKey('serverCaCert')) {
-      serverCaCert = SslCert.fromJson(
-          _json['serverCaCert'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('serviceAccountEmailAddress')) {
-      serviceAccountEmailAddress =
-          _json['serviceAccountEmailAddress'] as core.String;
-    }
-    if (_json.containsKey('settings')) {
-      settings = Settings.fromJson(
-          _json['settings'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('suspensionReason')) {
-      suspensionReason = (_json['suspensionReason'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  DatabaseInstance.fromJson(core.Map _json)
+      : this(
+          backendType: _json.containsKey('backendType')
+              ? _json['backendType'] as core.String
+              : null,
+          connectionName: _json.containsKey('connectionName')
+              ? _json['connectionName'] as core.String
+              : null,
+          currentDiskSize: _json.containsKey('currentDiskSize')
+              ? _json['currentDiskSize'] as core.String
+              : null,
+          databaseVersion: _json.containsKey('databaseVersion')
+              ? _json['databaseVersion'] as core.String
+              : null,
+          diskEncryptionConfiguration:
+              _json.containsKey('diskEncryptionConfiguration')
+                  ? DiskEncryptionConfiguration.fromJson(
+                      _json['diskEncryptionConfiguration']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          diskEncryptionStatus: _json.containsKey('diskEncryptionStatus')
+              ? DiskEncryptionStatus.fromJson(_json['diskEncryptionStatus']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          failoverReplica: _json.containsKey('failoverReplica')
+              ? DatabaseInstanceFailoverReplica.fromJson(
+                  _json['failoverReplica']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          gceZone: _json.containsKey('gceZone')
+              ? _json['gceZone'] as core.String
+              : null,
+          instanceType: _json.containsKey('instanceType')
+              ? _json['instanceType'] as core.String
+              : null,
+          ipAddresses: _json.containsKey('ipAddresses')
+              ? (_json['ipAddresses'] as core.List)
+                  .map<IpMapping>((value) => IpMapping.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          ipv6Address: _json.containsKey('ipv6Address')
+              ? _json['ipv6Address'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          masterInstanceName: _json.containsKey('masterInstanceName')
+              ? _json['masterInstanceName'] as core.String
+              : null,
+          maxDiskSize: _json.containsKey('maxDiskSize')
+              ? _json['maxDiskSize'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          onPremisesConfiguration: _json.containsKey('onPremisesConfiguration')
+              ? OnPremisesConfiguration.fromJson(
+                  _json['onPremisesConfiguration']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          outOfDiskReport: _json.containsKey('outOfDiskReport')
+              ? SqlOutOfDiskReport.fromJson(_json['outOfDiskReport']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          project: _json.containsKey('project')
+              ? _json['project'] as core.String
+              : null,
+          region: _json.containsKey('region')
+              ? _json['region'] as core.String
+              : null,
+          replicaConfiguration: _json.containsKey('replicaConfiguration')
+              ? ReplicaConfiguration.fromJson(_json['replicaConfiguration']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          replicaNames: _json.containsKey('replicaNames')
+              ? (_json['replicaNames'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          rootPassword: _json.containsKey('rootPassword')
+              ? _json['rootPassword'] as core.String
+              : null,
+          satisfiesPzs: _json.containsKey('satisfiesPzs')
+              ? _json['satisfiesPzs'] as core.bool
+              : null,
+          scheduledMaintenance: _json.containsKey('scheduledMaintenance')
+              ? SqlScheduledMaintenance.fromJson(_json['scheduledMaintenance']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          secondaryGceZone: _json.containsKey('secondaryGceZone')
+              ? _json['secondaryGceZone'] as core.String
+              : null,
+          selfLink: _json.containsKey('selfLink')
+              ? _json['selfLink'] as core.String
+              : null,
+          serverCaCert: _json.containsKey('serverCaCert')
+              ? SslCert.fromJson(
+                  _json['serverCaCert'] as core.Map<core.String, core.dynamic>)
+              : null,
+          serviceAccountEmailAddress:
+              _json.containsKey('serviceAccountEmailAddress')
+                  ? _json['serviceAccountEmailAddress'] as core.String
+                  : null,
+          settings: _json.containsKey('settings')
+              ? Settings.fromJson(
+                  _json['settings'] as core.Map<core.String, core.dynamic>)
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          suspensionReason: _json.containsKey('suspensionReason')
+              ? (_json['suspensionReason'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backendType != null) 'backendType': backendType!,
@@ -3386,19 +3467,21 @@ class DatabasesListResponse {
   /// This is always *sql#databasesList*.
   core.String? kind;
 
-  DatabasesListResponse();
+  DatabasesListResponse({
+    this.items,
+    this.kind,
+  });
 
-  DatabasesListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<Database>((value) =>
-              Database.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-  }
+  DatabasesListResponse.fromJson(core.Map _json)
+      : this(
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<Database>((value) => Database.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
@@ -3423,19 +3506,21 @@ class DemoteMasterConfiguration {
   /// data directory.
   DemoteMasterMySqlReplicaConfiguration? mysqlReplicaConfiguration;
 
-  DemoteMasterConfiguration();
+  DemoteMasterConfiguration({
+    this.kind,
+    this.mysqlReplicaConfiguration,
+  });
 
-  DemoteMasterConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('mysqlReplicaConfiguration')) {
-      mysqlReplicaConfiguration =
-          DemoteMasterMySqlReplicaConfiguration.fromJson(
-              _json['mysqlReplicaConfiguration']
-                  as core.Map<core.String, core.dynamic>);
-    }
-  }
+  DemoteMasterConfiguration.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          mysqlReplicaConfiguration:
+              _json.containsKey('mysqlReplicaConfiguration')
+                  ? DemoteMasterMySqlReplicaConfiguration.fromJson(
+                      _json['mysqlReplicaConfiguration']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
@@ -3467,23 +3552,27 @@ class DemoteMasterContext {
   /// confident that doing so will not cause any replication issues.
   core.bool? verifyGtidConsistency;
 
-  DemoteMasterContext();
+  DemoteMasterContext({
+    this.kind,
+    this.masterInstanceName,
+    this.replicaConfiguration,
+    this.verifyGtidConsistency,
+  });
 
-  DemoteMasterContext.fromJson(core.Map _json) {
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('masterInstanceName')) {
-      masterInstanceName = _json['masterInstanceName'] as core.String;
-    }
-    if (_json.containsKey('replicaConfiguration')) {
-      replicaConfiguration = DemoteMasterConfiguration.fromJson(
-          _json['replicaConfiguration'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('verifyGtidConsistency')) {
-      verifyGtidConsistency = _json['verifyGtidConsistency'] as core.bool;
-    }
-  }
+  DemoteMasterContext.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          masterInstanceName: _json.containsKey('masterInstanceName')
+              ? _json['masterInstanceName'] as core.String
+              : null,
+          replicaConfiguration: _json.containsKey('replicaConfiguration')
+              ? DemoteMasterConfiguration.fromJson(_json['replicaConfiguration']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          verifyGtidConsistency: _json.containsKey('verifyGtidConsistency')
+              ? _json['verifyGtidConsistency'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
@@ -3519,28 +3608,34 @@ class DemoteMasterMySqlReplicaConfiguration {
   /// The username for the replication connection.
   core.String? username;
 
-  DemoteMasterMySqlReplicaConfiguration();
+  DemoteMasterMySqlReplicaConfiguration({
+    this.caCertificate,
+    this.clientCertificate,
+    this.clientKey,
+    this.kind,
+    this.password,
+    this.username,
+  });
 
-  DemoteMasterMySqlReplicaConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey('caCertificate')) {
-      caCertificate = _json['caCertificate'] as core.String;
-    }
-    if (_json.containsKey('clientCertificate')) {
-      clientCertificate = _json['clientCertificate'] as core.String;
-    }
-    if (_json.containsKey('clientKey')) {
-      clientKey = _json['clientKey'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('password')) {
-      password = _json['password'] as core.String;
-    }
-    if (_json.containsKey('username')) {
-      username = _json['username'] as core.String;
-    }
-  }
+  DemoteMasterMySqlReplicaConfiguration.fromJson(core.Map _json)
+      : this(
+          caCertificate: _json.containsKey('caCertificate')
+              ? _json['caCertificate'] as core.String
+              : null,
+          clientCertificate: _json.containsKey('clientCertificate')
+              ? _json['clientCertificate'] as core.String
+              : null,
+          clientKey: _json.containsKey('clientKey')
+              ? _json['clientKey'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          password: _json.containsKey('password')
+              ? _json['password'] as core.String
+              : null,
+          username: _json.containsKey('username')
+              ? _json['username'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (caCertificate != null) 'caCertificate': caCertificate!,
@@ -3578,19 +3673,22 @@ class DenyMaintenancePeriod {
   /// The time is in format: HH:mm:SS, i.e., 00:00:00
   core.String? time;
 
-  DenyMaintenancePeriod();
+  DenyMaintenancePeriod({
+    this.endDate,
+    this.startDate,
+    this.time,
+  });
 
-  DenyMaintenancePeriod.fromJson(core.Map _json) {
-    if (_json.containsKey('endDate')) {
-      endDate = _json['endDate'] as core.String;
-    }
-    if (_json.containsKey('startDate')) {
-      startDate = _json['startDate'] as core.String;
-    }
-    if (_json.containsKey('time')) {
-      time = _json['time'] as core.String;
-    }
-  }
+  DenyMaintenancePeriod.fromJson(core.Map _json)
+      : this(
+          endDate: _json.containsKey('endDate')
+              ? _json['endDate'] as core.String
+              : null,
+          startDate: _json.containsKey('startDate')
+              ? _json['startDate'] as core.String
+              : null,
+          time: _json.containsKey('time') ? _json['time'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endDate != null) 'endDate': endDate!,
@@ -3607,16 +3705,18 @@ class DiskEncryptionConfiguration {
   /// Resource name of KMS key for disk encryption
   core.String? kmsKeyName;
 
-  DiskEncryptionConfiguration();
+  DiskEncryptionConfiguration({
+    this.kind,
+    this.kmsKeyName,
+  });
 
-  DiskEncryptionConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('kmsKeyName')) {
-      kmsKeyName = _json['kmsKeyName'] as core.String;
-    }
-  }
+  DiskEncryptionConfiguration.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          kmsKeyName: _json.containsKey('kmsKeyName')
+              ? _json['kmsKeyName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
@@ -3632,16 +3732,18 @@ class DiskEncryptionStatus {
   /// KMS key version used to encrypt the Cloud SQL instance resource
   core.String? kmsKeyVersionName;
 
-  DiskEncryptionStatus();
+  DiskEncryptionStatus({
+    this.kind,
+    this.kmsKeyVersionName,
+  });
 
-  DiskEncryptionStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('kmsKeyVersionName')) {
-      kmsKeyVersionName = _json['kmsKeyVersionName'] as core.String;
-    }
-  }
+  DiskEncryptionStatus.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          kmsKeyVersionName: _json.containsKey('kmsKeyVersionName')
+              ? _json['kmsKeyVersionName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
@@ -3656,13 +3758,16 @@ class ExportContextCsvExportOptions {
   /// The select query used to extract the data.
   core.String? selectQuery;
 
-  ExportContextCsvExportOptions();
+  ExportContextCsvExportOptions({
+    this.selectQuery,
+  });
 
-  ExportContextCsvExportOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('selectQuery')) {
-      selectQuery = _json['selectQuery'] as core.String;
-    }
-  }
+  ExportContextCsvExportOptions.fromJson(core.Map _json)
+      : this(
+          selectQuery: _json.containsKey('selectQuery')
+              ? _json['selectQuery'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (selectQuery != null) 'selectQuery': selectQuery!,
@@ -3680,13 +3785,16 @@ class ExportContextSqlExportOptionsMysqlExportOptions {
   /// OFF.
   core.int? masterData;
 
-  ExportContextSqlExportOptionsMysqlExportOptions();
+  ExportContextSqlExportOptionsMysqlExportOptions({
+    this.masterData,
+  });
 
-  ExportContextSqlExportOptionsMysqlExportOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('masterData')) {
-      masterData = _json['masterData'] as core.int;
-    }
-  }
+  ExportContextSqlExportOptionsMysqlExportOptions.fromJson(core.Map _json)
+      : this(
+          masterData: _json.containsKey('masterData')
+              ? _json['masterData'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (masterData != null) 'masterData': masterData!,
@@ -3707,24 +3815,28 @@ class ExportContextSqlExportOptions {
   /// instances, you can specify only one table.
   core.List<core.String>? tables;
 
-  ExportContextSqlExportOptions();
+  ExportContextSqlExportOptions({
+    this.mysqlExportOptions,
+    this.schemaOnly,
+    this.tables,
+  });
 
-  ExportContextSqlExportOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('mysqlExportOptions')) {
-      mysqlExportOptions =
-          ExportContextSqlExportOptionsMysqlExportOptions.fromJson(
-              _json['mysqlExportOptions']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('schemaOnly')) {
-      schemaOnly = _json['schemaOnly'] as core.bool;
-    }
-    if (_json.containsKey('tables')) {
-      tables = (_json['tables'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  ExportContextSqlExportOptions.fromJson(core.Map _json)
+      : this(
+          mysqlExportOptions: _json.containsKey('mysqlExportOptions')
+              ? ExportContextSqlExportOptionsMysqlExportOptions.fromJson(
+                  _json['mysqlExportOptions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          schemaOnly: _json.containsKey('schemaOnly')
+              ? _json['schemaOnly'] as core.bool
+              : null,
+          tables: _json.containsKey('tables')
+              ? (_json['tables'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mysqlExportOptions != null)
@@ -3782,35 +3894,40 @@ class ExportContext {
   /// *SQL* and the filename ends with .gz, the contents are compressed.
   core.String? uri;
 
-  ExportContext();
+  ExportContext({
+    this.csvExportOptions,
+    this.databases,
+    this.fileType,
+    this.kind,
+    this.offload,
+    this.sqlExportOptions,
+    this.uri,
+  });
 
-  ExportContext.fromJson(core.Map _json) {
-    if (_json.containsKey('csvExportOptions')) {
-      csvExportOptions = ExportContextCsvExportOptions.fromJson(
-          _json['csvExportOptions'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('databases')) {
-      databases = (_json['databases'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('fileType')) {
-      fileType = _json['fileType'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('offload')) {
-      offload = _json['offload'] as core.bool;
-    }
-    if (_json.containsKey('sqlExportOptions')) {
-      sqlExportOptions = ExportContextSqlExportOptions.fromJson(
-          _json['sqlExportOptions'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('uri')) {
-      uri = _json['uri'] as core.String;
-    }
-  }
+  ExportContext.fromJson(core.Map _json)
+      : this(
+          csvExportOptions: _json.containsKey('csvExportOptions')
+              ? ExportContextCsvExportOptions.fromJson(_json['csvExportOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          databases: _json.containsKey('databases')
+              ? (_json['databases'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          fileType: _json.containsKey('fileType')
+              ? _json['fileType'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          offload: _json.containsKey('offload')
+              ? _json['offload'] as core.bool
+              : null,
+          sqlExportOptions: _json.containsKey('sqlExportOptions')
+              ? ExportContextSqlExportOptions.fromJson(_json['sqlExportOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (csvExportOptions != null)
@@ -3836,16 +3953,18 @@ class FailoverContext {
   /// settings version.
   core.String? settingsVersion;
 
-  FailoverContext();
+  FailoverContext({
+    this.kind,
+    this.settingsVersion,
+  });
 
-  FailoverContext.fromJson(core.Map _json) {
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('settingsVersion')) {
-      settingsVersion = _json['settingsVersion'] as core.String;
-    }
-  }
+  FailoverContext.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          settingsVersion: _json.containsKey('settingsVersion')
+              ? _json['settingsVersion'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
@@ -3908,46 +4027,51 @@ class Flag {
   /// enum.
   core.String? type;
 
-  Flag();
+  Flag({
+    this.allowedIntValues,
+    this.allowedStringValues,
+    this.appliesTo,
+    this.inBeta,
+    this.kind,
+    this.maxValue,
+    this.minValue,
+    this.name,
+    this.requiresRestart,
+    this.type,
+  });
 
-  Flag.fromJson(core.Map _json) {
-    if (_json.containsKey('allowedIntValues')) {
-      allowedIntValues = (_json['allowedIntValues'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('allowedStringValues')) {
-      allowedStringValues = (_json['allowedStringValues'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('appliesTo')) {
-      appliesTo = (_json['appliesTo'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('inBeta')) {
-      inBeta = _json['inBeta'] as core.bool;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('maxValue')) {
-      maxValue = _json['maxValue'] as core.String;
-    }
-    if (_json.containsKey('minValue')) {
-      minValue = _json['minValue'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('requiresRestart')) {
-      requiresRestart = _json['requiresRestart'] as core.bool;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  Flag.fromJson(core.Map _json)
+      : this(
+          allowedIntValues: _json.containsKey('allowedIntValues')
+              ? (_json['allowedIntValues'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          allowedStringValues: _json.containsKey('allowedStringValues')
+              ? (_json['allowedStringValues'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          appliesTo: _json.containsKey('appliesTo')
+              ? (_json['appliesTo'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          inBeta:
+              _json.containsKey('inBeta') ? _json['inBeta'] as core.bool : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          maxValue: _json.containsKey('maxValue')
+              ? _json['maxValue'] as core.String
+              : null,
+          minValue: _json.containsKey('minValue')
+              ? _json['minValue'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          requiresRestart: _json.containsKey('requiresRestart')
+              ? _json['requiresRestart'] as core.bool
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedIntValues != null) 'allowedIntValues': allowedIntValues!,
@@ -3972,19 +4096,21 @@ class FlagsListResponse {
   /// This is always *sql#flagsList*.
   core.String? kind;
 
-  FlagsListResponse();
+  FlagsListResponse({
+    this.items,
+    this.kind,
+  });
 
-  FlagsListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<Flag>((value) =>
-              Flag.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-  }
+  FlagsListResponse.fromJson(core.Map _json)
+      : this(
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<Flag>((value) => Flag.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
@@ -4011,19 +4137,24 @@ class ImportContextBakImportOptionsEncryptionOptions {
   /// the file.
   core.String? pvkPath;
 
-  ImportContextBakImportOptionsEncryptionOptions();
+  ImportContextBakImportOptionsEncryptionOptions({
+    this.certPath,
+    this.pvkPassword,
+    this.pvkPath,
+  });
 
-  ImportContextBakImportOptionsEncryptionOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('certPath')) {
-      certPath = _json['certPath'] as core.String;
-    }
-    if (_json.containsKey('pvkPassword')) {
-      pvkPassword = _json['pvkPassword'] as core.String;
-    }
-    if (_json.containsKey('pvkPath')) {
-      pvkPath = _json['pvkPath'] as core.String;
-    }
-  }
+  ImportContextBakImportOptionsEncryptionOptions.fromJson(core.Map _json)
+      : this(
+          certPath: _json.containsKey('certPath')
+              ? _json['certPath'] as core.String
+              : null,
+          pvkPassword: _json.containsKey('pvkPassword')
+              ? _json['pvkPassword'] as core.String
+              : null,
+          pvkPath: _json.containsKey('pvkPath')
+              ? _json['pvkPath'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (certPath != null) 'certPath': certPath!,
@@ -4036,16 +4167,18 @@ class ImportContextBakImportOptionsEncryptionOptions {
 class ImportContextBakImportOptions {
   ImportContextBakImportOptionsEncryptionOptions? encryptionOptions;
 
-  ImportContextBakImportOptions();
+  ImportContextBakImportOptions({
+    this.encryptionOptions,
+  });
 
-  ImportContextBakImportOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('encryptionOptions')) {
-      encryptionOptions =
-          ImportContextBakImportOptionsEncryptionOptions.fromJson(
-              _json['encryptionOptions']
-                  as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ImportContextBakImportOptions.fromJson(core.Map _json)
+      : this(
+          encryptionOptions: _json.containsKey('encryptionOptions')
+              ? ImportContextBakImportOptionsEncryptionOptions.fromJson(
+                  _json['encryptionOptions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (encryptionOptions != null)
@@ -4064,18 +4197,21 @@ class ImportContextCsvImportOptions {
   /// The table to which CSV data is imported.
   core.String? table;
 
-  ImportContextCsvImportOptions();
+  ImportContextCsvImportOptions({
+    this.columns,
+    this.table,
+  });
 
-  ImportContextCsvImportOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('columns')) {
-      columns = (_json['columns'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('table')) {
-      table = _json['table'] as core.String;
-    }
-  }
+  ImportContextCsvImportOptions.fromJson(core.Map _json)
+      : this(
+          columns: _json.containsKey('columns')
+              ? (_json['columns'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          table:
+              _json.containsKey('table') ? _json['table'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (columns != null) 'columns': columns!,
@@ -4126,33 +4262,38 @@ class ImportContext {
   /// file.
   core.String? uri;
 
-  ImportContext();
+  ImportContext({
+    this.bakImportOptions,
+    this.csvImportOptions,
+    this.database,
+    this.fileType,
+    this.importUser,
+    this.kind,
+    this.uri,
+  });
 
-  ImportContext.fromJson(core.Map _json) {
-    if (_json.containsKey('bakImportOptions')) {
-      bakImportOptions = ImportContextBakImportOptions.fromJson(
-          _json['bakImportOptions'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('csvImportOptions')) {
-      csvImportOptions = ImportContextCsvImportOptions.fromJson(
-          _json['csvImportOptions'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('database')) {
-      database = _json['database'] as core.String;
-    }
-    if (_json.containsKey('fileType')) {
-      fileType = _json['fileType'] as core.String;
-    }
-    if (_json.containsKey('importUser')) {
-      importUser = _json['importUser'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('uri')) {
-      uri = _json['uri'] as core.String;
-    }
-  }
+  ImportContext.fromJson(core.Map _json)
+      : this(
+          bakImportOptions: _json.containsKey('bakImportOptions')
+              ? ImportContextBakImportOptions.fromJson(_json['bakImportOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          csvImportOptions: _json.containsKey('csvImportOptions')
+              ? ImportContextCsvImportOptions.fromJson(_json['csvImportOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          database: _json.containsKey('database')
+              ? _json['database'] as core.String
+              : null,
+          fileType: _json.containsKey('fileType')
+              ? _json['fileType'] as core.String
+              : null,
+          importUser: _json.containsKey('importUser')
+              ? _json['importUser'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bakImportOptions != null)
@@ -4195,25 +4336,32 @@ class InsightsConfig {
   /// Whether Query Insights will record client address when enabled.
   core.bool? recordClientAddress;
 
-  InsightsConfig();
+  InsightsConfig({
+    this.queryInsightsEnabled,
+    this.queryPlansPerMinute,
+    this.queryStringLength,
+    this.recordApplicationTags,
+    this.recordClientAddress,
+  });
 
-  InsightsConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('queryInsightsEnabled')) {
-      queryInsightsEnabled = _json['queryInsightsEnabled'] as core.bool;
-    }
-    if (_json.containsKey('queryPlansPerMinute')) {
-      queryPlansPerMinute = _json['queryPlansPerMinute'] as core.int;
-    }
-    if (_json.containsKey('queryStringLength')) {
-      queryStringLength = _json['queryStringLength'] as core.int;
-    }
-    if (_json.containsKey('recordApplicationTags')) {
-      recordApplicationTags = _json['recordApplicationTags'] as core.bool;
-    }
-    if (_json.containsKey('recordClientAddress')) {
-      recordClientAddress = _json['recordClientAddress'] as core.bool;
-    }
-  }
+  InsightsConfig.fromJson(core.Map _json)
+      : this(
+          queryInsightsEnabled: _json.containsKey('queryInsightsEnabled')
+              ? _json['queryInsightsEnabled'] as core.bool
+              : null,
+          queryPlansPerMinute: _json.containsKey('queryPlansPerMinute')
+              ? _json['queryPlansPerMinute'] as core.int
+              : null,
+          queryStringLength: _json.containsKey('queryStringLength')
+              ? _json['queryStringLength'] as core.int
+              : null,
+          recordApplicationTags: _json.containsKey('recordApplicationTags')
+              ? _json['recordApplicationTags'] as core.bool
+              : null,
+          recordClientAddress: _json.containsKey('recordClientAddress')
+              ? _json['recordClientAddress'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (queryInsightsEnabled != null)
@@ -4233,14 +4381,17 @@ class InstancesCloneRequest {
   /// Contains details about the clone operation.
   CloneContext? cloneContext;
 
-  InstancesCloneRequest();
+  InstancesCloneRequest({
+    this.cloneContext,
+  });
 
-  InstancesCloneRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('cloneContext')) {
-      cloneContext = CloneContext.fromJson(
-          _json['cloneContext'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  InstancesCloneRequest.fromJson(core.Map _json)
+      : this(
+          cloneContext: _json.containsKey('cloneContext')
+              ? CloneContext.fromJson(
+                  _json['cloneContext'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cloneContext != null) 'cloneContext': cloneContext!.toJson(),
@@ -4252,14 +4403,17 @@ class InstancesDemoteMasterRequest {
   /// Contains details about the demoteMaster operation.
   DemoteMasterContext? demoteMasterContext;
 
-  InstancesDemoteMasterRequest();
+  InstancesDemoteMasterRequest({
+    this.demoteMasterContext,
+  });
 
-  InstancesDemoteMasterRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('demoteMasterContext')) {
-      demoteMasterContext = DemoteMasterContext.fromJson(
-          _json['demoteMasterContext'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  InstancesDemoteMasterRequest.fromJson(core.Map _json)
+      : this(
+          demoteMasterContext: _json.containsKey('demoteMasterContext')
+              ? DemoteMasterContext.fromJson(_json['demoteMasterContext']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (demoteMasterContext != null)
@@ -4272,14 +4426,17 @@ class InstancesExportRequest {
   /// Contains details about the export operation.
   ExportContext? exportContext;
 
-  InstancesExportRequest();
+  InstancesExportRequest({
+    this.exportContext,
+  });
 
-  InstancesExportRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('exportContext')) {
-      exportContext = ExportContext.fromJson(
-          _json['exportContext'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  InstancesExportRequest.fromJson(core.Map _json)
+      : this(
+          exportContext: _json.containsKey('exportContext')
+              ? ExportContext.fromJson(
+                  _json['exportContext'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exportContext != null) 'exportContext': exportContext!.toJson(),
@@ -4291,14 +4448,17 @@ class InstancesFailoverRequest {
   /// Failover Context.
   FailoverContext? failoverContext;
 
-  InstancesFailoverRequest();
+  InstancesFailoverRequest({
+    this.failoverContext,
+  });
 
-  InstancesFailoverRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('failoverContext')) {
-      failoverContext = FailoverContext.fromJson(
-          _json['failoverContext'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  InstancesFailoverRequest.fromJson(core.Map _json)
+      : this(
+          failoverContext: _json.containsKey('failoverContext')
+              ? FailoverContext.fromJson(_json['failoverContext']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (failoverContext != null)
@@ -4311,14 +4471,17 @@ class InstancesImportRequest {
   /// Contains details about the import operation.
   ImportContext? importContext;
 
-  InstancesImportRequest();
+  InstancesImportRequest({
+    this.importContext,
+  });
 
-  InstancesImportRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('importContext')) {
-      importContext = ImportContext.fromJson(
-          _json['importContext'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  InstancesImportRequest.fromJson(core.Map _json)
+      : this(
+          importContext: _json.containsKey('importContext')
+              ? ImportContext.fromJson(
+                  _json['importContext'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (importContext != null) 'importContext': importContext!.toJson(),
@@ -4342,28 +4505,32 @@ class InstancesListResponse {
   /// List of warnings that occurred while handling the request.
   core.List<ApiWarning>? warnings;
 
-  InstancesListResponse();
+  InstancesListResponse({
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.warnings,
+  });
 
-  InstancesListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<DatabaseInstance>((value) => DatabaseInstance.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('warnings')) {
-      warnings = (_json['warnings'] as core.List)
-          .map<ApiWarning>((value) =>
-              ApiWarning.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  InstancesListResponse.fromJson(core.Map _json)
+      : this(
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<DatabaseInstance>((value) => DatabaseInstance.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          warnings: _json.containsKey('warnings')
+              ? (_json['warnings'] as core.List)
+                  .map<ApiWarning>((value) => ApiWarning.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
@@ -4385,22 +4552,25 @@ class InstancesListServerCasResponse {
   /// This is always *sql#instancesListServerCas*.
   core.String? kind;
 
-  InstancesListServerCasResponse();
+  InstancesListServerCasResponse({
+    this.activeVersion,
+    this.certs,
+    this.kind,
+  });
 
-  InstancesListServerCasResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('activeVersion')) {
-      activeVersion = _json['activeVersion'] as core.String;
-    }
-    if (_json.containsKey('certs')) {
-      certs = (_json['certs'] as core.List)
-          .map<SslCert>((value) =>
-              SslCert.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-  }
+  InstancesListServerCasResponse.fromJson(core.Map _json)
+      : this(
+          activeVersion: _json.containsKey('activeVersion')
+              ? _json['activeVersion'] as core.String
+              : null,
+          certs: _json.containsKey('certs')
+              ? (_json['certs'] as core.List)
+                  .map<SslCert>((value) => SslCert.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (activeVersion != null) 'activeVersion': activeVersion!,
@@ -4415,14 +4585,17 @@ class InstancesRestoreBackupRequest {
   /// Parameters required to perform the restore backup operation.
   RestoreBackupContext? restoreBackupContext;
 
-  InstancesRestoreBackupRequest();
+  InstancesRestoreBackupRequest({
+    this.restoreBackupContext,
+  });
 
-  InstancesRestoreBackupRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('restoreBackupContext')) {
-      restoreBackupContext = RestoreBackupContext.fromJson(
-          _json['restoreBackupContext'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  InstancesRestoreBackupRequest.fromJson(core.Map _json)
+      : this(
+          restoreBackupContext: _json.containsKey('restoreBackupContext')
+              ? RestoreBackupContext.fromJson(_json['restoreBackupContext']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (restoreBackupContext != null)
@@ -4435,15 +4608,17 @@ class InstancesRotateServerCaRequest {
   /// Contains details about the rotate server CA operation.
   RotateServerCaContext? rotateServerCaContext;
 
-  InstancesRotateServerCaRequest();
+  InstancesRotateServerCaRequest({
+    this.rotateServerCaContext,
+  });
 
-  InstancesRotateServerCaRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('rotateServerCaContext')) {
-      rotateServerCaContext = RotateServerCaContext.fromJson(
-          _json['rotateServerCaContext']
-              as core.Map<core.String, core.dynamic>);
-    }
-  }
+  InstancesRotateServerCaRequest.fromJson(core.Map _json)
+      : this(
+          rotateServerCaContext: _json.containsKey('rotateServerCaContext')
+              ? RotateServerCaContext.fromJson(_json['rotateServerCaContext']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (rotateServerCaContext != null)
@@ -4456,14 +4631,17 @@ class InstancesTruncateLogRequest {
   /// Contains details about the truncate log operation.
   TruncateLogContext? truncateLogContext;
 
-  InstancesTruncateLogRequest();
+  InstancesTruncateLogRequest({
+    this.truncateLogContext,
+  });
 
-  InstancesTruncateLogRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('truncateLogContext')) {
-      truncateLogContext = TruncateLogContext.fromJson(
-          _json['truncateLogContext'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  InstancesTruncateLogRequest.fromJson(core.Map _json)
+      : this(
+          truncateLogContext: _json.containsKey('truncateLogContext')
+              ? TruncateLogContext.fromJson(_json['truncateLogContext']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (truncateLogContext != null)
@@ -4493,25 +4671,31 @@ class IpConfiguration {
   /// Whether SSL connections over IP are enforced or not.
   core.bool? requireSsl;
 
-  IpConfiguration();
+  IpConfiguration({
+    this.authorizedNetworks,
+    this.ipv4Enabled,
+    this.privateNetwork,
+    this.requireSsl,
+  });
 
-  IpConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey('authorizedNetworks')) {
-      authorizedNetworks = (_json['authorizedNetworks'] as core.List)
-          .map<AclEntry>((value) =>
-              AclEntry.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('ipv4Enabled')) {
-      ipv4Enabled = _json['ipv4Enabled'] as core.bool;
-    }
-    if (_json.containsKey('privateNetwork')) {
-      privateNetwork = _json['privateNetwork'] as core.String;
-    }
-    if (_json.containsKey('requireSsl')) {
-      requireSsl = _json['requireSsl'] as core.bool;
-    }
-  }
+  IpConfiguration.fromJson(core.Map _json)
+      : this(
+          authorizedNetworks: _json.containsKey('authorizedNetworks')
+              ? (_json['authorizedNetworks'] as core.List)
+                  .map<AclEntry>((value) => AclEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          ipv4Enabled: _json.containsKey('ipv4Enabled')
+              ? _json['ipv4Enabled'] as core.bool
+              : null,
+          privateNetwork: _json.containsKey('privateNetwork')
+              ? _json['privateNetwork'] as core.String
+              : null,
+          requireSsl: _json.containsKey('requireSsl')
+              ? _json['requireSsl'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authorizedNetworks != null)
@@ -4554,19 +4738,22 @@ class IpMapping {
   /// instances with V1 ip addresses will be counted as PRIMARY.
   core.String? type;
 
-  IpMapping();
+  IpMapping({
+    this.ipAddress,
+    this.timeToRetire,
+    this.type,
+  });
 
-  IpMapping.fromJson(core.Map _json) {
-    if (_json.containsKey('ipAddress')) {
-      ipAddress = _json['ipAddress'] as core.String;
-    }
-    if (_json.containsKey('timeToRetire')) {
-      timeToRetire = _json['timeToRetire'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  IpMapping.fromJson(core.Map _json)
+      : this(
+          ipAddress: _json.containsKey('ipAddress')
+              ? _json['ipAddress'] as core.String
+              : null,
+          timeToRetire: _json.containsKey('timeToRetire')
+              ? _json['timeToRetire'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ipAddress != null) 'ipAddress': ipAddress!,
@@ -4599,22 +4786,24 @@ class LocationPreference {
   /// us-central1-b, etc.).
   core.String? zone;
 
-  LocationPreference();
+  LocationPreference({
+    this.followGaeApplication,
+    this.kind,
+    this.secondaryZone,
+    this.zone,
+  });
 
-  LocationPreference.fromJson(core.Map _json) {
-    if (_json.containsKey('followGaeApplication')) {
-      followGaeApplication = _json['followGaeApplication'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('secondaryZone')) {
-      secondaryZone = _json['secondaryZone'] as core.String;
-    }
-    if (_json.containsKey('zone')) {
-      zone = _json['zone'] as core.String;
-    }
-  }
+  LocationPreference.fromJson(core.Map _json)
+      : this(
+          followGaeApplication: _json.containsKey('followGaeApplication')
+              ? _json['followGaeApplication'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          secondaryZone: _json.containsKey('secondaryZone')
+              ? _json['secondaryZone'] as core.String
+              : null,
+          zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (followGaeApplication != null)
@@ -4653,22 +4842,22 @@ class MaintenanceWindow {
   /// restart (within its Maintenance window, if applicable).
   core.String? updateTrack;
 
-  MaintenanceWindow();
+  MaintenanceWindow({
+    this.day,
+    this.hour,
+    this.kind,
+    this.updateTrack,
+  });
 
-  MaintenanceWindow.fromJson(core.Map _json) {
-    if (_json.containsKey('day')) {
-      day = _json['day'] as core.int;
-    }
-    if (_json.containsKey('hour')) {
-      hour = _json['hour'] as core.int;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('updateTrack')) {
-      updateTrack = _json['updateTrack'] as core.String;
-    }
-  }
+  MaintenanceWindow.fromJson(core.Map _json)
+      : this(
+          day: _json.containsKey('day') ? _json['day'] as core.int : null,
+          hour: _json.containsKey('hour') ? _json['hour'] as core.int : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          updateTrack: _json.containsKey('updateTrack')
+              ? _json['updateTrack'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (day != null) 'day': day!,
@@ -4724,43 +4913,54 @@ class MySqlReplicaConfiguration {
   /// certificate that it sends during the SSL handshake.
   core.bool? verifyServerCertificate;
 
-  MySqlReplicaConfiguration();
+  MySqlReplicaConfiguration({
+    this.caCertificate,
+    this.clientCertificate,
+    this.clientKey,
+    this.connectRetryInterval,
+    this.dumpFilePath,
+    this.kind,
+    this.masterHeartbeatPeriod,
+    this.password,
+    this.sslCipher,
+    this.username,
+    this.verifyServerCertificate,
+  });
 
-  MySqlReplicaConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey('caCertificate')) {
-      caCertificate = _json['caCertificate'] as core.String;
-    }
-    if (_json.containsKey('clientCertificate')) {
-      clientCertificate = _json['clientCertificate'] as core.String;
-    }
-    if (_json.containsKey('clientKey')) {
-      clientKey = _json['clientKey'] as core.String;
-    }
-    if (_json.containsKey('connectRetryInterval')) {
-      connectRetryInterval = _json['connectRetryInterval'] as core.int;
-    }
-    if (_json.containsKey('dumpFilePath')) {
-      dumpFilePath = _json['dumpFilePath'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('masterHeartbeatPeriod')) {
-      masterHeartbeatPeriod = _json['masterHeartbeatPeriod'] as core.String;
-    }
-    if (_json.containsKey('password')) {
-      password = _json['password'] as core.String;
-    }
-    if (_json.containsKey('sslCipher')) {
-      sslCipher = _json['sslCipher'] as core.String;
-    }
-    if (_json.containsKey('username')) {
-      username = _json['username'] as core.String;
-    }
-    if (_json.containsKey('verifyServerCertificate')) {
-      verifyServerCertificate = _json['verifyServerCertificate'] as core.bool;
-    }
-  }
+  MySqlReplicaConfiguration.fromJson(core.Map _json)
+      : this(
+          caCertificate: _json.containsKey('caCertificate')
+              ? _json['caCertificate'] as core.String
+              : null,
+          clientCertificate: _json.containsKey('clientCertificate')
+              ? _json['clientCertificate'] as core.String
+              : null,
+          clientKey: _json.containsKey('clientKey')
+              ? _json['clientKey'] as core.String
+              : null,
+          connectRetryInterval: _json.containsKey('connectRetryInterval')
+              ? _json['connectRetryInterval'] as core.int
+              : null,
+          dumpFilePath: _json.containsKey('dumpFilePath')
+              ? _json['dumpFilePath'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          masterHeartbeatPeriod: _json.containsKey('masterHeartbeatPeriod')
+              ? _json['masterHeartbeatPeriod'] as core.String
+              : null,
+          password: _json.containsKey('password')
+              ? _json['password'] as core.String
+              : null,
+          sslCipher: _json.containsKey('sslCipher')
+              ? _json['sslCipher'] as core.String
+              : null,
+          username: _json.containsKey('username')
+              ? _json['username'] as core.String
+              : null,
+          verifyServerCertificate: _json.containsKey('verifyServerCertificate')
+              ? _json['verifyServerCertificate'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (caCertificate != null) 'caCertificate': caCertificate!,
@@ -4808,34 +5008,42 @@ class OnPremisesConfiguration {
   /// The username for connecting to on-premises instance.
   core.String? username;
 
-  OnPremisesConfiguration();
+  OnPremisesConfiguration({
+    this.caCertificate,
+    this.clientCertificate,
+    this.clientKey,
+    this.dumpFilePath,
+    this.hostPort,
+    this.kind,
+    this.password,
+    this.username,
+  });
 
-  OnPremisesConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey('caCertificate')) {
-      caCertificate = _json['caCertificate'] as core.String;
-    }
-    if (_json.containsKey('clientCertificate')) {
-      clientCertificate = _json['clientCertificate'] as core.String;
-    }
-    if (_json.containsKey('clientKey')) {
-      clientKey = _json['clientKey'] as core.String;
-    }
-    if (_json.containsKey('dumpFilePath')) {
-      dumpFilePath = _json['dumpFilePath'] as core.String;
-    }
-    if (_json.containsKey('hostPort')) {
-      hostPort = _json['hostPort'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('password')) {
-      password = _json['password'] as core.String;
-    }
-    if (_json.containsKey('username')) {
-      username = _json['username'] as core.String;
-    }
-  }
+  OnPremisesConfiguration.fromJson(core.Map _json)
+      : this(
+          caCertificate: _json.containsKey('caCertificate')
+              ? _json['caCertificate'] as core.String
+              : null,
+          clientCertificate: _json.containsKey('clientCertificate')
+              ? _json['clientCertificate'] as core.String
+              : null,
+          clientKey: _json.containsKey('clientKey')
+              ? _json['clientKey'] as core.String
+              : null,
+          dumpFilePath: _json.containsKey('dumpFilePath')
+              ? _json['dumpFilePath'] as core.String
+              : null,
+          hostPort: _json.containsKey('hostPort')
+              ? _json['hostPort'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          password: _json.containsKey('password')
+              ? _json['password'] as core.String
+              : null,
+          username: _json.containsKey('username')
+              ? _json['username'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (caCertificate != null) 'caCertificate': caCertificate!,
@@ -4964,62 +5172,74 @@ class Operation {
   /// The email address of the user who initiated this operation.
   core.String? user;
 
-  Operation();
+  Operation({
+    this.backupContext,
+    this.endTime,
+    this.error,
+    this.exportContext,
+    this.importContext,
+    this.insertTime,
+    this.kind,
+    this.name,
+    this.operationType,
+    this.selfLink,
+    this.startTime,
+    this.status,
+    this.targetId,
+    this.targetLink,
+    this.targetProject,
+    this.user,
+  });
 
-  Operation.fromJson(core.Map _json) {
-    if (_json.containsKey('backupContext')) {
-      backupContext = BackupContext.fromJson(
-          _json['backupContext'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('error')) {
-      error = OperationErrors.fromJson(
-          _json['error'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('exportContext')) {
-      exportContext = ExportContext.fromJson(
-          _json['exportContext'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('importContext')) {
-      importContext = ImportContext.fromJson(
-          _json['importContext'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('insertTime')) {
-      insertTime = _json['insertTime'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('operationType')) {
-      operationType = _json['operationType'] as core.String;
-    }
-    if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'] as core.String;
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-    if (_json.containsKey('targetId')) {
-      targetId = _json['targetId'] as core.String;
-    }
-    if (_json.containsKey('targetLink')) {
-      targetLink = _json['targetLink'] as core.String;
-    }
-    if (_json.containsKey('targetProject')) {
-      targetProject = _json['targetProject'] as core.String;
-    }
-    if (_json.containsKey('user')) {
-      user = _json['user'] as core.String;
-    }
-  }
+  Operation.fromJson(core.Map _json)
+      : this(
+          backupContext: _json.containsKey('backupContext')
+              ? BackupContext.fromJson(
+                  _json['backupContext'] as core.Map<core.String, core.dynamic>)
+              : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          error: _json.containsKey('error')
+              ? OperationErrors.fromJson(
+                  _json['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          exportContext: _json.containsKey('exportContext')
+              ? ExportContext.fromJson(
+                  _json['exportContext'] as core.Map<core.String, core.dynamic>)
+              : null,
+          importContext: _json.containsKey('importContext')
+              ? ImportContext.fromJson(
+                  _json['importContext'] as core.Map<core.String, core.dynamic>)
+              : null,
+          insertTime: _json.containsKey('insertTime')
+              ? _json['insertTime'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          operationType: _json.containsKey('operationType')
+              ? _json['operationType'] as core.String
+              : null,
+          selfLink: _json.containsKey('selfLink')
+              ? _json['selfLink'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+          targetId: _json.containsKey('targetId')
+              ? _json['targetId'] as core.String
+              : null,
+          targetLink: _json.containsKey('targetLink')
+              ? _json['targetLink'] as core.String
+              : null,
+          targetProject: _json.containsKey('targetProject')
+              ? _json['targetProject'] as core.String
+              : null,
+          user: _json.containsKey('user') ? _json['user'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backupContext != null) 'backupContext': backupContext!.toJson(),
@@ -5052,19 +5272,20 @@ class OperationError {
   /// Additional information about the error encountered.
   core.String? message;
 
-  OperationError();
+  OperationError({
+    this.code,
+    this.kind,
+    this.message,
+  });
 
-  OperationError.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  OperationError.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -5081,19 +5302,21 @@ class OperationErrors {
   /// This is always *sql#operationErrors*.
   core.String? kind;
 
-  OperationErrors();
+  OperationErrors({
+    this.errors,
+    this.kind,
+  });
 
-  OperationErrors.fromJson(core.Map _json) {
-    if (_json.containsKey('errors')) {
-      errors = (_json['errors'] as core.List)
-          .map<OperationError>((value) => OperationError.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-  }
+  OperationErrors.fromJson(core.Map _json)
+      : this(
+          errors: _json.containsKey('errors')
+              ? (_json['errors'] as core.List)
+                  .map<OperationError>((value) => OperationError.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errors != null)
@@ -5116,22 +5339,25 @@ class OperationsListResponse {
   /// results.
   core.String? nextPageToken;
 
-  OperationsListResponse();
+  OperationsListResponse({
+    this.items,
+    this.kind,
+    this.nextPageToken,
+  });
 
-  OperationsListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<Operation>((value) =>
-              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  OperationsListResponse.fromJson(core.Map _json)
+      : this(
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<Operation>((value) => Operation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
@@ -5165,21 +5391,25 @@ class ReplicaConfiguration {
   /// data directory.
   MySqlReplicaConfiguration? mysqlReplicaConfiguration;
 
-  ReplicaConfiguration();
+  ReplicaConfiguration({
+    this.failoverTarget,
+    this.kind,
+    this.mysqlReplicaConfiguration,
+  });
 
-  ReplicaConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey('failoverTarget')) {
-      failoverTarget = _json['failoverTarget'] as core.bool;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('mysqlReplicaConfiguration')) {
-      mysqlReplicaConfiguration = MySqlReplicaConfiguration.fromJson(
-          _json['mysqlReplicaConfiguration']
-              as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ReplicaConfiguration.fromJson(core.Map _json)
+      : this(
+          failoverTarget: _json.containsKey('failoverTarget')
+              ? _json['failoverTarget'] as core.bool
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          mysqlReplicaConfiguration:
+              _json.containsKey('mysqlReplicaConfiguration')
+                  ? MySqlReplicaConfiguration.fromJson(
+                      _json['mysqlReplicaConfiguration']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (failoverTarget != null) 'failoverTarget': failoverTarget!,
@@ -5208,16 +5438,20 @@ class Reschedule {
   /// Optional.
   core.String? scheduleTime;
 
-  Reschedule();
+  Reschedule({
+    this.rescheduleType,
+    this.scheduleTime,
+  });
 
-  Reschedule.fromJson(core.Map _json) {
-    if (_json.containsKey('rescheduleType')) {
-      rescheduleType = _json['rescheduleType'] as core.String;
-    }
-    if (_json.containsKey('scheduleTime')) {
-      scheduleTime = _json['scheduleTime'] as core.String;
-    }
-  }
+  Reschedule.fromJson(core.Map _json)
+      : this(
+          rescheduleType: _json.containsKey('rescheduleType')
+              ? _json['rescheduleType'] as core.String
+              : null,
+          scheduleTime: _json.containsKey('scheduleTime')
+              ? _json['scheduleTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (rescheduleType != null) 'rescheduleType': rescheduleType!,
@@ -5241,22 +5475,26 @@ class RestoreBackupContext {
   /// The full project ID of the source instance.
   core.String? project;
 
-  RestoreBackupContext();
+  RestoreBackupContext({
+    this.backupRunId,
+    this.instanceId,
+    this.kind,
+    this.project,
+  });
 
-  RestoreBackupContext.fromJson(core.Map _json) {
-    if (_json.containsKey('backupRunId')) {
-      backupRunId = _json['backupRunId'] as core.String;
-    }
-    if (_json.containsKey('instanceId')) {
-      instanceId = _json['instanceId'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('project')) {
-      project = _json['project'] as core.String;
-    }
-  }
+  RestoreBackupContext.fromJson(core.Map _json)
+      : this(
+          backupRunId: _json.containsKey('backupRunId')
+              ? _json['backupRunId'] as core.String
+              : null,
+          instanceId: _json.containsKey('instanceId')
+              ? _json['instanceId'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          project: _json.containsKey('project')
+              ? _json['project'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backupRunId != null) 'backupRunId': backupRunId!,
@@ -5277,16 +5515,18 @@ class RotateServerCaContext {
   /// version.
   core.String? nextVersion;
 
-  RotateServerCaContext();
+  RotateServerCaContext({
+    this.kind,
+    this.nextVersion,
+  });
 
-  RotateServerCaContext.fromJson(core.Map _json) {
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextVersion')) {
-      nextVersion = _json['nextVersion'] as core.String;
-    }
-  }
+  RotateServerCaContext.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextVersion: _json.containsKey('nextVersion')
+              ? _json['nextVersion'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
@@ -5448,106 +5688,128 @@ class Settings {
   /// single key value pair.
   core.Map<core.String, core.String>? userLabels;
 
-  Settings();
+  Settings({
+    this.activationPolicy,
+    this.activeDirectoryConfig,
+    this.authorizedGaeApplications,
+    this.availabilityType,
+    this.backupConfiguration,
+    this.collation,
+    this.crashSafeReplicationEnabled,
+    this.dataDiskSizeGb,
+    this.dataDiskType,
+    this.databaseFlags,
+    this.databaseReplicationEnabled,
+    this.denyMaintenancePeriods,
+    this.insightsConfig,
+    this.ipConfiguration,
+    this.kind,
+    this.locationPreference,
+    this.maintenanceWindow,
+    this.pricingPlan,
+    this.replicationType,
+    this.settingsVersion,
+    this.storageAutoResize,
+    this.storageAutoResizeLimit,
+    this.tier,
+    this.userLabels,
+  });
 
-  Settings.fromJson(core.Map _json) {
-    if (_json.containsKey('activationPolicy')) {
-      activationPolicy = _json['activationPolicy'] as core.String;
-    }
-    if (_json.containsKey('activeDirectoryConfig')) {
-      activeDirectoryConfig = SqlActiveDirectoryConfig.fromJson(
-          _json['activeDirectoryConfig']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('authorizedGaeApplications')) {
-      authorizedGaeApplications =
-          (_json['authorizedGaeApplications'] as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList();
-    }
-    if (_json.containsKey('availabilityType')) {
-      availabilityType = _json['availabilityType'] as core.String;
-    }
-    if (_json.containsKey('backupConfiguration')) {
-      backupConfiguration = BackupConfiguration.fromJson(
-          _json['backupConfiguration'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('collation')) {
-      collation = _json['collation'] as core.String;
-    }
-    if (_json.containsKey('crashSafeReplicationEnabled')) {
-      crashSafeReplicationEnabled =
-          _json['crashSafeReplicationEnabled'] as core.bool;
-    }
-    if (_json.containsKey('dataDiskSizeGb')) {
-      dataDiskSizeGb = _json['dataDiskSizeGb'] as core.String;
-    }
-    if (_json.containsKey('dataDiskType')) {
-      dataDiskType = _json['dataDiskType'] as core.String;
-    }
-    if (_json.containsKey('databaseFlags')) {
-      databaseFlags = (_json['databaseFlags'] as core.List)
-          .map<DatabaseFlags>((value) => DatabaseFlags.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('databaseReplicationEnabled')) {
-      databaseReplicationEnabled =
-          _json['databaseReplicationEnabled'] as core.bool;
-    }
-    if (_json.containsKey('denyMaintenancePeriods')) {
-      denyMaintenancePeriods = (_json['denyMaintenancePeriods'] as core.List)
-          .map<DenyMaintenancePeriod>((value) => DenyMaintenancePeriod.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('insightsConfig')) {
-      insightsConfig = InsightsConfig.fromJson(
-          _json['insightsConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('ipConfiguration')) {
-      ipConfiguration = IpConfiguration.fromJson(
-          _json['ipConfiguration'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('locationPreference')) {
-      locationPreference = LocationPreference.fromJson(
-          _json['locationPreference'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('maintenanceWindow')) {
-      maintenanceWindow = MaintenanceWindow.fromJson(
-          _json['maintenanceWindow'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('pricingPlan')) {
-      pricingPlan = _json['pricingPlan'] as core.String;
-    }
-    if (_json.containsKey('replicationType')) {
-      replicationType = _json['replicationType'] as core.String;
-    }
-    if (_json.containsKey('settingsVersion')) {
-      settingsVersion = _json['settingsVersion'] as core.String;
-    }
-    if (_json.containsKey('storageAutoResize')) {
-      storageAutoResize = _json['storageAutoResize'] as core.bool;
-    }
-    if (_json.containsKey('storageAutoResizeLimit')) {
-      storageAutoResizeLimit = _json['storageAutoResizeLimit'] as core.String;
-    }
-    if (_json.containsKey('tier')) {
-      tier = _json['tier'] as core.String;
-    }
-    if (_json.containsKey('userLabels')) {
-      userLabels =
-          (_json['userLabels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-  }
+  Settings.fromJson(core.Map _json)
+      : this(
+          activationPolicy: _json.containsKey('activationPolicy')
+              ? _json['activationPolicy'] as core.String
+              : null,
+          activeDirectoryConfig: _json.containsKey('activeDirectoryConfig')
+              ? SqlActiveDirectoryConfig.fromJson(_json['activeDirectoryConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          authorizedGaeApplications:
+              _json.containsKey('authorizedGaeApplications')
+                  ? (_json['authorizedGaeApplications'] as core.List)
+                      .map<core.String>((value) => value as core.String)
+                      .toList()
+                  : null,
+          availabilityType: _json.containsKey('availabilityType')
+              ? _json['availabilityType'] as core.String
+              : null,
+          backupConfiguration: _json.containsKey('backupConfiguration')
+              ? BackupConfiguration.fromJson(_json['backupConfiguration']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          collation: _json.containsKey('collation')
+              ? _json['collation'] as core.String
+              : null,
+          crashSafeReplicationEnabled:
+              _json.containsKey('crashSafeReplicationEnabled')
+                  ? _json['crashSafeReplicationEnabled'] as core.bool
+                  : null,
+          dataDiskSizeGb: _json.containsKey('dataDiskSizeGb')
+              ? _json['dataDiskSizeGb'] as core.String
+              : null,
+          dataDiskType: _json.containsKey('dataDiskType')
+              ? _json['dataDiskType'] as core.String
+              : null,
+          databaseFlags: _json.containsKey('databaseFlags')
+              ? (_json['databaseFlags'] as core.List)
+                  .map<DatabaseFlags>((value) => DatabaseFlags.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          databaseReplicationEnabled:
+              _json.containsKey('databaseReplicationEnabled')
+                  ? _json['databaseReplicationEnabled'] as core.bool
+                  : null,
+          denyMaintenancePeriods: _json.containsKey('denyMaintenancePeriods')
+              ? (_json['denyMaintenancePeriods'] as core.List)
+                  .map<DenyMaintenancePeriod>((value) =>
+                      DenyMaintenancePeriod.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          insightsConfig: _json.containsKey('insightsConfig')
+              ? InsightsConfig.fromJson(_json['insightsConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          ipConfiguration: _json.containsKey('ipConfiguration')
+              ? IpConfiguration.fromJson(_json['ipConfiguration']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          locationPreference: _json.containsKey('locationPreference')
+              ? LocationPreference.fromJson(_json['locationPreference']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          maintenanceWindow: _json.containsKey('maintenanceWindow')
+              ? MaintenanceWindow.fromJson(_json['maintenanceWindow']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          pricingPlan: _json.containsKey('pricingPlan')
+              ? _json['pricingPlan'] as core.String
+              : null,
+          replicationType: _json.containsKey('replicationType')
+              ? _json['replicationType'] as core.String
+              : null,
+          settingsVersion: _json.containsKey('settingsVersion')
+              ? _json['settingsVersion'] as core.String
+              : null,
+          storageAutoResize: _json.containsKey('storageAutoResize')
+              ? _json['storageAutoResize'] as core.bool
+              : null,
+          storageAutoResizeLimit: _json.containsKey('storageAutoResizeLimit')
+              ? _json['storageAutoResizeLimit'] as core.String
+              : null,
+          tier: _json.containsKey('tier') ? _json['tier'] as core.String : null,
+          userLabels: _json.containsKey('userLabels')
+              ? (_json['userLabels'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (activationPolicy != null) 'activationPolicy': activationPolicy!,
@@ -5598,16 +5860,18 @@ class SqlActiveDirectoryConfig {
   /// This is always sql#activeDirectoryConfig.
   core.String? kind;
 
-  SqlActiveDirectoryConfig();
+  SqlActiveDirectoryConfig({
+    this.domain,
+    this.kind,
+  });
 
-  SqlActiveDirectoryConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('domain')) {
-      domain = _json['domain'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-  }
+  SqlActiveDirectoryConfig.fromJson(core.Map _json)
+      : this(
+          domain: _json.containsKey('domain')
+              ? _json['domain'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (domain != null) 'domain': domain!,
@@ -5667,19 +5931,20 @@ class SqlExternalSyncSettingError {
   /// fail the setup.
   core.String? type;
 
-  SqlExternalSyncSettingError();
+  SqlExternalSyncSettingError({
+    this.detail,
+    this.kind,
+    this.type,
+  });
 
-  SqlExternalSyncSettingError.fromJson(core.Map _json) {
-    if (_json.containsKey('detail')) {
-      detail = _json['detail'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  SqlExternalSyncSettingError.fromJson(core.Map _json)
+      : this(
+          detail: _json.containsKey('detail')
+              ? _json['detail'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (detail != null) 'detail': detail!,
@@ -5695,14 +5960,17 @@ class SqlInstancesRescheduleMaintenanceRequestBody {
   /// Required.
   Reschedule? reschedule;
 
-  SqlInstancesRescheduleMaintenanceRequestBody();
+  SqlInstancesRescheduleMaintenanceRequestBody({
+    this.reschedule,
+  });
 
-  SqlInstancesRescheduleMaintenanceRequestBody.fromJson(core.Map _json) {
-    if (_json.containsKey('reschedule')) {
-      reschedule = Reschedule.fromJson(
-          _json['reschedule'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  SqlInstancesRescheduleMaintenanceRequestBody.fromJson(core.Map _json)
+      : this(
+          reschedule: _json.containsKey('reschedule')
+              ? Reschedule.fromJson(
+                  _json['reschedule'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (reschedule != null) 'reschedule': reschedule!.toJson(),
@@ -5720,27 +5988,30 @@ class SqlInstancesVerifyExternalSyncSettingsResponse {
   /// List of migration warnings.
   core.List<SqlExternalSyncSettingError>? warnings;
 
-  SqlInstancesVerifyExternalSyncSettingsResponse();
+  SqlInstancesVerifyExternalSyncSettingsResponse({
+    this.errors,
+    this.kind,
+    this.warnings,
+  });
 
-  SqlInstancesVerifyExternalSyncSettingsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('errors')) {
-      errors = (_json['errors'] as core.List)
-          .map<SqlExternalSyncSettingError>((value) =>
-              SqlExternalSyncSettingError.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('warnings')) {
-      warnings = (_json['warnings'] as core.List)
-          .map<SqlExternalSyncSettingError>((value) =>
-              SqlExternalSyncSettingError.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  SqlInstancesVerifyExternalSyncSettingsResponse.fromJson(core.Map _json)
+      : this(
+          errors: _json.containsKey('errors')
+              ? (_json['errors'] as core.List)
+                  .map<SqlExternalSyncSettingError>((value) =>
+                      SqlExternalSyncSettingError.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          warnings: _json.containsKey('warnings')
+              ? (_json['warnings'] as core.List)
+                  .map<SqlExternalSyncSettingError>((value) =>
+                      SqlExternalSyncSettingError.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errors != null)
@@ -5769,17 +6040,21 @@ class SqlOutOfDiskReport {
   /// data corruption.
   core.String? sqlOutOfDiskState;
 
-  SqlOutOfDiskReport();
+  SqlOutOfDiskReport({
+    this.sqlMinRecommendedIncreaseSizeGb,
+    this.sqlOutOfDiskState,
+  });
 
-  SqlOutOfDiskReport.fromJson(core.Map _json) {
-    if (_json.containsKey('sqlMinRecommendedIncreaseSizeGb')) {
-      sqlMinRecommendedIncreaseSizeGb =
-          _json['sqlMinRecommendedIncreaseSizeGb'] as core.int;
-    }
-    if (_json.containsKey('sqlOutOfDiskState')) {
-      sqlOutOfDiskState = _json['sqlOutOfDiskState'] as core.String;
-    }
-  }
+  SqlOutOfDiskReport.fromJson(core.Map _json)
+      : this(
+          sqlMinRecommendedIncreaseSizeGb:
+              _json.containsKey('sqlMinRecommendedIncreaseSizeGb')
+                  ? _json['sqlMinRecommendedIncreaseSizeGb'] as core.int
+                  : null,
+          sqlOutOfDiskState: _json.containsKey('sqlOutOfDiskState')
+              ? _json['sqlOutOfDiskState'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sqlMinRecommendedIncreaseSizeGb != null)
@@ -5798,19 +6073,24 @@ class SqlScheduledMaintenance {
   /// The start time of any upcoming scheduled maintenance for this instance.
   core.String? startTime;
 
-  SqlScheduledMaintenance();
+  SqlScheduledMaintenance({
+    this.canDefer,
+    this.canReschedule,
+    this.startTime,
+  });
 
-  SqlScheduledMaintenance.fromJson(core.Map _json) {
-    if (_json.containsKey('canDefer')) {
-      canDefer = _json['canDefer'] as core.bool;
-    }
-    if (_json.containsKey('canReschedule')) {
-      canReschedule = _json['canReschedule'] as core.bool;
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-  }
+  SqlScheduledMaintenance.fromJson(core.Map _json)
+      : this(
+          canDefer: _json.containsKey('canDefer')
+              ? _json['canDefer'] as core.bool
+              : null,
+          canReschedule: _json.containsKey('canReschedule')
+              ? _json['canReschedule'] as core.bool
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (canDefer != null) 'canDefer': canDefer!,
@@ -5827,16 +6107,20 @@ class SqlServerDatabaseDetails {
   /// The recovery model of a SQL Server database
   core.String? recoveryModel;
 
-  SqlServerDatabaseDetails();
+  SqlServerDatabaseDetails({
+    this.compatibilityLevel,
+    this.recoveryModel,
+  });
 
-  SqlServerDatabaseDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('compatibilityLevel')) {
-      compatibilityLevel = _json['compatibilityLevel'] as core.int;
-    }
-    if (_json.containsKey('recoveryModel')) {
-      recoveryModel = _json['recoveryModel'] as core.String;
-    }
-  }
+  SqlServerDatabaseDetails.fromJson(core.Map _json)
+      : this(
+          compatibilityLevel: _json.containsKey('compatibilityLevel')
+              ? _json['compatibilityLevel'] as core.int
+              : null,
+          recoveryModel: _json.containsKey('recoveryModel')
+              ? _json['recoveryModel'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (compatibilityLevel != null)
@@ -5853,18 +6137,22 @@ class SqlServerUserDetails {
   /// The server roles for this user
   core.List<core.String>? serverRoles;
 
-  SqlServerUserDetails();
+  SqlServerUserDetails({
+    this.disabled,
+    this.serverRoles,
+  });
 
-  SqlServerUserDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('disabled')) {
-      disabled = _json['disabled'] as core.bool;
-    }
-    if (_json.containsKey('serverRoles')) {
-      serverRoles = (_json['serverRoles'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  SqlServerUserDetails.fromJson(core.Map _json)
+      : this(
+          disabled: _json.containsKey('disabled')
+              ? _json['disabled'] as core.bool
+              : null,
+          serverRoles: _json.containsKey('serverRoles')
+              ? (_json['serverRoles'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disabled != null) 'disabled': disabled!,
@@ -5905,37 +6193,44 @@ class SslCert {
   /// Sha1 Fingerprint.
   core.String? sha1Fingerprint;
 
-  SslCert();
+  SslCert({
+    this.cert,
+    this.certSerialNumber,
+    this.commonName,
+    this.createTime,
+    this.expirationTime,
+    this.instance,
+    this.kind,
+    this.selfLink,
+    this.sha1Fingerprint,
+  });
 
-  SslCert.fromJson(core.Map _json) {
-    if (_json.containsKey('cert')) {
-      cert = _json['cert'] as core.String;
-    }
-    if (_json.containsKey('certSerialNumber')) {
-      certSerialNumber = _json['certSerialNumber'] as core.String;
-    }
-    if (_json.containsKey('commonName')) {
-      commonName = _json['commonName'] as core.String;
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('expirationTime')) {
-      expirationTime = _json['expirationTime'] as core.String;
-    }
-    if (_json.containsKey('instance')) {
-      instance = _json['instance'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'] as core.String;
-    }
-    if (_json.containsKey('sha1Fingerprint')) {
-      sha1Fingerprint = _json['sha1Fingerprint'] as core.String;
-    }
-  }
+  SslCert.fromJson(core.Map _json)
+      : this(
+          cert: _json.containsKey('cert') ? _json['cert'] as core.String : null,
+          certSerialNumber: _json.containsKey('certSerialNumber')
+              ? _json['certSerialNumber'] as core.String
+              : null,
+          commonName: _json.containsKey('commonName')
+              ? _json['commonName'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          expirationTime: _json.containsKey('expirationTime')
+              ? _json['expirationTime'] as core.String
+              : null,
+          instance: _json.containsKey('instance')
+              ? _json['instance'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          selfLink: _json.containsKey('selfLink')
+              ? _json['selfLink'] as core.String
+              : null,
+          sha1Fingerprint: _json.containsKey('sha1Fingerprint')
+              ? _json['sha1Fingerprint'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cert != null) 'cert': cert!,
@@ -5960,17 +6255,21 @@ class SslCertDetail {
   /// Keep private in order to protect your security.
   core.String? certPrivateKey;
 
-  SslCertDetail();
+  SslCertDetail({
+    this.certInfo,
+    this.certPrivateKey,
+  });
 
-  SslCertDetail.fromJson(core.Map _json) {
-    if (_json.containsKey('certInfo')) {
-      certInfo = SslCert.fromJson(
-          _json['certInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('certPrivateKey')) {
-      certPrivateKey = _json['certPrivateKey'] as core.String;
-    }
-  }
+  SslCertDetail.fromJson(core.Map _json)
+      : this(
+          certInfo: _json.containsKey('certInfo')
+              ? SslCert.fromJson(
+                  _json['certInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          certPrivateKey: _json.containsKey('certPrivateKey')
+              ? _json['certPrivateKey'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (certInfo != null) 'certInfo': certInfo!.toJson(),
@@ -5986,16 +6285,20 @@ class SslCertsCreateEphemeralRequest {
   /// PEM encoded public key to include in the signed certificate.
   core.String? publicKey;
 
-  SslCertsCreateEphemeralRequest();
+  SslCertsCreateEphemeralRequest({
+    this.accessToken,
+    this.publicKey,
+  });
 
-  SslCertsCreateEphemeralRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('access_token')) {
-      accessToken = _json['access_token'] as core.String;
-    }
-    if (_json.containsKey('public_key')) {
-      publicKey = _json['public_key'] as core.String;
-    }
-  }
+  SslCertsCreateEphemeralRequest.fromJson(core.Map _json)
+      : this(
+          accessToken: _json.containsKey('access_token')
+              ? _json['access_token'] as core.String
+              : null,
+          publicKey: _json.containsKey('public_key')
+              ? _json['public_key'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessToken != null) 'access_token': accessToken!,
@@ -6010,13 +6313,16 @@ class SslCertsInsertRequest {
   /// Must be a distinct name from the other certificates for this instance.
   core.String? commonName;
 
-  SslCertsInsertRequest();
+  SslCertsInsertRequest({
+    this.commonName,
+  });
 
-  SslCertsInsertRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('commonName')) {
-      commonName = _json['commonName'] as core.String;
-    }
-  }
+  SslCertsInsertRequest.fromJson(core.Map _json)
+      : this(
+          commonName: _json.containsKey('commonName')
+              ? _json['commonName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (commonName != null) 'commonName': commonName!,
@@ -6040,25 +6346,29 @@ class SslCertsInsertResponse {
   /// resetSslConfig method on instances resource.
   SslCert? serverCaCert;
 
-  SslCertsInsertResponse();
+  SslCertsInsertResponse({
+    this.clientCert,
+    this.kind,
+    this.operation,
+    this.serverCaCert,
+  });
 
-  SslCertsInsertResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('clientCert')) {
-      clientCert = SslCertDetail.fromJson(
-          _json['clientCert'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('operation')) {
-      operation = Operation.fromJson(
-          _json['operation'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('serverCaCert')) {
-      serverCaCert = SslCert.fromJson(
-          _json['serverCaCert'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  SslCertsInsertResponse.fromJson(core.Map _json)
+      : this(
+          clientCert: _json.containsKey('clientCert')
+              ? SslCertDetail.fromJson(
+                  _json['clientCert'] as core.Map<core.String, core.dynamic>)
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          operation: _json.containsKey('operation')
+              ? Operation.fromJson(
+                  _json['operation'] as core.Map<core.String, core.dynamic>)
+              : null,
+          serverCaCert: _json.containsKey('serverCaCert')
+              ? SslCert.fromJson(
+                  _json['serverCaCert'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clientCert != null) 'clientCert': clientCert!.toJson(),
@@ -6076,19 +6386,21 @@ class SslCertsListResponse {
   /// This is always *sql#sslCertsList*.
   core.String? kind;
 
-  SslCertsListResponse();
+  SslCertsListResponse({
+    this.items,
+    this.kind,
+  });
 
-  SslCertsListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<SslCert>((value) =>
-              SslCert.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-  }
+  SslCertsListResponse.fromJson(core.Map _json)
+      : this(
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<SslCert>((value) => SslCert.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
@@ -6116,27 +6428,28 @@ class Tier {
   /// For related information, see Pricing.
   core.String? tier;
 
-  Tier();
+  Tier({
+    this.DiskQuota,
+    this.RAM,
+    this.kind,
+    this.region,
+    this.tier,
+  });
 
-  Tier.fromJson(core.Map _json) {
-    if (_json.containsKey('DiskQuota')) {
-      DiskQuota = _json['DiskQuota'] as core.String;
-    }
-    if (_json.containsKey('RAM')) {
-      RAM = _json['RAM'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('region')) {
-      region = (_json['region'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('tier')) {
-      tier = _json['tier'] as core.String;
-    }
-  }
+  Tier.fromJson(core.Map _json)
+      : this(
+          DiskQuota: _json.containsKey('DiskQuota')
+              ? _json['DiskQuota'] as core.String
+              : null,
+          RAM: _json.containsKey('RAM') ? _json['RAM'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          region: _json.containsKey('region')
+              ? (_json['region'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          tier: _json.containsKey('tier') ? _json['tier'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (DiskQuota != null) 'DiskQuota': DiskQuota!,
@@ -6155,19 +6468,21 @@ class TiersListResponse {
   /// This is always *sql#tiersList*.
   core.String? kind;
 
-  TiersListResponse();
+  TiersListResponse({
+    this.items,
+    this.kind,
+  });
 
-  TiersListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<Tier>((value) =>
-              Tier.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-  }
+  TiersListResponse.fromJson(core.Map _json)
+      : this(
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<Tier>((value) => Tier.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
@@ -6186,16 +6501,18 @@ class TruncateLogContext {
   /// Valid values are *MYSQL_GENERAL_TABLE* and *MYSQL_SLOW_TABLE*.
   core.String? logType;
 
-  TruncateLogContext();
+  TruncateLogContext({
+    this.kind,
+    this.logType,
+  });
 
-  TruncateLogContext.fromJson(core.Map _json) {
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('logType')) {
-      logType = _json['logType'] as core.String;
-    }
-  }
+  TruncateLogContext.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          logType: _json.containsKey('logType')
+              ? _json['logType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
@@ -6250,38 +6567,39 @@ class User {
   /// - "CLOUD_IAM_SERVICE_ACCOUNT" : Cloud IAM service account.
   core.String? type;
 
-  User();
+  User({
+    this.etag,
+    this.host,
+    this.instance,
+    this.kind,
+    this.name,
+    this.password,
+    this.project,
+    this.sqlserverUserDetails,
+    this.type,
+  });
 
-  User.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('host')) {
-      host = _json['host'] as core.String;
-    }
-    if (_json.containsKey('instance')) {
-      instance = _json['instance'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('password')) {
-      password = _json['password'] as core.String;
-    }
-    if (_json.containsKey('project')) {
-      project = _json['project'] as core.String;
-    }
-    if (_json.containsKey('sqlserverUserDetails')) {
-      sqlserverUserDetails = SqlServerUserDetails.fromJson(
-          _json['sqlserverUserDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  User.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          host: _json.containsKey('host') ? _json['host'] as core.String : null,
+          instance: _json.containsKey('instance')
+              ? _json['instance'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          password: _json.containsKey('password')
+              ? _json['password'] as core.String
+              : null,
+          project: _json.containsKey('project')
+              ? _json['project'] as core.String
+              : null,
+          sqlserverUserDetails: _json.containsKey('sqlserverUserDetails')
+              ? SqlServerUserDetails.fromJson(_json['sqlserverUserDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -6311,22 +6629,25 @@ class UsersListResponse {
   /// information about the operation.
   core.String? nextPageToken;
 
-  UsersListResponse();
+  UsersListResponse({
+    this.items,
+    this.kind,
+    this.nextPageToken,
+  });
 
-  UsersListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<User>((value) =>
-              User.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  UsersListResponse.fromJson(core.Map _json)
+      : this(
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<User>((value) => User.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)

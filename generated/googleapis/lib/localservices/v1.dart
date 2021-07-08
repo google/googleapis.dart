@@ -315,73 +315,87 @@ class GoogleAdsHomeservicesLocalservicesV1AccountReport {
   /// Total number of reviews the account has up to current date.
   core.int? totalReview;
 
-  GoogleAdsHomeservicesLocalservicesV1AccountReport();
+  GoogleAdsHomeservicesLocalservicesV1AccountReport({
+    this.accountId,
+    this.aggregatorInfo,
+    this.averageFiveStarRating,
+    this.averageWeeklyBudget,
+    this.businessName,
+    this.currencyCode,
+    this.currentPeriodChargedLeads,
+    this.currentPeriodConnectedPhoneCalls,
+    this.currentPeriodPhoneCalls,
+    this.currentPeriodTotalCost,
+    this.impressionsLastTwoDays,
+    this.phoneLeadResponsiveness,
+    this.previousPeriodChargedLeads,
+    this.previousPeriodConnectedPhoneCalls,
+    this.previousPeriodPhoneCalls,
+    this.previousPeriodTotalCost,
+    this.totalReview,
+  });
 
-  GoogleAdsHomeservicesLocalservicesV1AccountReport.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('aggregatorInfo')) {
-      aggregatorInfo =
-          GoogleAdsHomeservicesLocalservicesV1AggregatorInfo.fromJson(
-              _json['aggregatorInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('averageFiveStarRating')) {
-      averageFiveStarRating =
-          (_json['averageFiveStarRating'] as core.num).toDouble();
-    }
-    if (_json.containsKey('averageWeeklyBudget')) {
-      averageWeeklyBudget =
-          (_json['averageWeeklyBudget'] as core.num).toDouble();
-    }
-    if (_json.containsKey('businessName')) {
-      businessName = _json['businessName'] as core.String;
-    }
-    if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'] as core.String;
-    }
-    if (_json.containsKey('currentPeriodChargedLeads')) {
-      currentPeriodChargedLeads =
-          _json['currentPeriodChargedLeads'] as core.String;
-    }
-    if (_json.containsKey('currentPeriodConnectedPhoneCalls')) {
-      currentPeriodConnectedPhoneCalls =
-          _json['currentPeriodConnectedPhoneCalls'] as core.String;
-    }
-    if (_json.containsKey('currentPeriodPhoneCalls')) {
-      currentPeriodPhoneCalls = _json['currentPeriodPhoneCalls'] as core.String;
-    }
-    if (_json.containsKey('currentPeriodTotalCost')) {
-      currentPeriodTotalCost =
-          (_json['currentPeriodTotalCost'] as core.num).toDouble();
-    }
-    if (_json.containsKey('impressionsLastTwoDays')) {
-      impressionsLastTwoDays = _json['impressionsLastTwoDays'] as core.String;
-    }
-    if (_json.containsKey('phoneLeadResponsiveness')) {
-      phoneLeadResponsiveness =
-          (_json['phoneLeadResponsiveness'] as core.num).toDouble();
-    }
-    if (_json.containsKey('previousPeriodChargedLeads')) {
-      previousPeriodChargedLeads =
-          _json['previousPeriodChargedLeads'] as core.String;
-    }
-    if (_json.containsKey('previousPeriodConnectedPhoneCalls')) {
-      previousPeriodConnectedPhoneCalls =
-          _json['previousPeriodConnectedPhoneCalls'] as core.String;
-    }
-    if (_json.containsKey('previousPeriodPhoneCalls')) {
-      previousPeriodPhoneCalls =
-          _json['previousPeriodPhoneCalls'] as core.String;
-    }
-    if (_json.containsKey('previousPeriodTotalCost')) {
-      previousPeriodTotalCost =
-          (_json['previousPeriodTotalCost'] as core.num).toDouble();
-    }
-    if (_json.containsKey('totalReview')) {
-      totalReview = _json['totalReview'] as core.int;
-    }
-  }
+  GoogleAdsHomeservicesLocalservicesV1AccountReport.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          aggregatorInfo: _json.containsKey('aggregatorInfo')
+              ? GoogleAdsHomeservicesLocalservicesV1AggregatorInfo.fromJson(
+                  _json['aggregatorInfo']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          averageFiveStarRating: _json.containsKey('averageFiveStarRating')
+              ? (_json['averageFiveStarRating'] as core.num).toDouble()
+              : null,
+          averageWeeklyBudget: _json.containsKey('averageWeeklyBudget')
+              ? (_json['averageWeeklyBudget'] as core.num).toDouble()
+              : null,
+          businessName: _json.containsKey('businessName')
+              ? _json['businessName'] as core.String
+              : null,
+          currencyCode: _json.containsKey('currencyCode')
+              ? _json['currencyCode'] as core.String
+              : null,
+          currentPeriodChargedLeads:
+              _json.containsKey('currentPeriodChargedLeads')
+                  ? _json['currentPeriodChargedLeads'] as core.String
+                  : null,
+          currentPeriodConnectedPhoneCalls:
+              _json.containsKey('currentPeriodConnectedPhoneCalls')
+                  ? _json['currentPeriodConnectedPhoneCalls'] as core.String
+                  : null,
+          currentPeriodPhoneCalls: _json.containsKey('currentPeriodPhoneCalls')
+              ? _json['currentPeriodPhoneCalls'] as core.String
+              : null,
+          currentPeriodTotalCost: _json.containsKey('currentPeriodTotalCost')
+              ? (_json['currentPeriodTotalCost'] as core.num).toDouble()
+              : null,
+          impressionsLastTwoDays: _json.containsKey('impressionsLastTwoDays')
+              ? _json['impressionsLastTwoDays'] as core.String
+              : null,
+          phoneLeadResponsiveness: _json.containsKey('phoneLeadResponsiveness')
+              ? (_json['phoneLeadResponsiveness'] as core.num).toDouble()
+              : null,
+          previousPeriodChargedLeads:
+              _json.containsKey('previousPeriodChargedLeads')
+                  ? _json['previousPeriodChargedLeads'] as core.String
+                  : null,
+          previousPeriodConnectedPhoneCalls:
+              _json.containsKey('previousPeriodConnectedPhoneCalls')
+                  ? _json['previousPeriodConnectedPhoneCalls'] as core.String
+                  : null,
+          previousPeriodPhoneCalls:
+              _json.containsKey('previousPeriodPhoneCalls')
+                  ? _json['previousPeriodPhoneCalls'] as core.String
+                  : null,
+          previousPeriodTotalCost: _json.containsKey('previousPeriodTotalCost')
+              ? (_json['previousPeriodTotalCost'] as core.num).toDouble()
+              : null,
+          totalReview: _json.containsKey('totalReview')
+              ? _json['totalReview'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -424,13 +438,16 @@ class GoogleAdsHomeservicesLocalservicesV1AggregatorInfo {
   /// GLS system.
   core.String? aggregatorProviderId;
 
-  GoogleAdsHomeservicesLocalservicesV1AggregatorInfo();
+  GoogleAdsHomeservicesLocalservicesV1AggregatorInfo({
+    this.aggregatorProviderId,
+  });
 
-  GoogleAdsHomeservicesLocalservicesV1AggregatorInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('aggregatorProviderId')) {
-      aggregatorProviderId = _json['aggregatorProviderId'] as core.String;
-    }
-  }
+  GoogleAdsHomeservicesLocalservicesV1AggregatorInfo.fromJson(core.Map _json)
+      : this(
+          aggregatorProviderId: _json.containsKey('aggregatorProviderId')
+              ? _json['aggregatorProviderId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (aggregatorProviderId != null)
@@ -494,61 +511,76 @@ class GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
   /// Timezone of the particular provider associated to a lead.
   GoogleTypeTimeZone? timezone;
 
-  GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport();
+  GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport({
+    this.accountId,
+    this.aggregatorInfo,
+    this.businessName,
+    this.chargeStatus,
+    this.currencyCode,
+    this.disputeStatus,
+    this.geo,
+    this.leadCategory,
+    this.leadCreationTimestamp,
+    this.leadId,
+    this.leadPrice,
+    this.leadType,
+    this.messageLead,
+    this.phoneLead,
+    this.timezone,
+  });
 
   GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('aggregatorInfo')) {
-      aggregatorInfo =
-          GoogleAdsHomeservicesLocalservicesV1AggregatorInfo.fromJson(
-              _json['aggregatorInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('businessName')) {
-      businessName = _json['businessName'] as core.String;
-    }
-    if (_json.containsKey('chargeStatus')) {
-      chargeStatus = _json['chargeStatus'] as core.String;
-    }
-    if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'] as core.String;
-    }
-    if (_json.containsKey('disputeStatus')) {
-      disputeStatus = _json['disputeStatus'] as core.String;
-    }
-    if (_json.containsKey('geo')) {
-      geo = _json['geo'] as core.String;
-    }
-    if (_json.containsKey('leadCategory')) {
-      leadCategory = _json['leadCategory'] as core.String;
-    }
-    if (_json.containsKey('leadCreationTimestamp')) {
-      leadCreationTimestamp = _json['leadCreationTimestamp'] as core.String;
-    }
-    if (_json.containsKey('leadId')) {
-      leadId = _json['leadId'] as core.String;
-    }
-    if (_json.containsKey('leadPrice')) {
-      leadPrice = (_json['leadPrice'] as core.num).toDouble();
-    }
-    if (_json.containsKey('leadType')) {
-      leadType = _json['leadType'] as core.String;
-    }
-    if (_json.containsKey('messageLead')) {
-      messageLead = GoogleAdsHomeservicesLocalservicesV1MessageLead.fromJson(
-          _json['messageLead'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('phoneLead')) {
-      phoneLead = GoogleAdsHomeservicesLocalservicesV1PhoneLead.fromJson(
-          _json['phoneLead'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('timezone')) {
-      timezone = GoogleTypeTimeZone.fromJson(
-          _json['timezone'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+      core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          aggregatorInfo: _json.containsKey('aggregatorInfo')
+              ? GoogleAdsHomeservicesLocalservicesV1AggregatorInfo.fromJson(
+                  _json['aggregatorInfo']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          businessName: _json.containsKey('businessName')
+              ? _json['businessName'] as core.String
+              : null,
+          chargeStatus: _json.containsKey('chargeStatus')
+              ? _json['chargeStatus'] as core.String
+              : null,
+          currencyCode: _json.containsKey('currencyCode')
+              ? _json['currencyCode'] as core.String
+              : null,
+          disputeStatus: _json.containsKey('disputeStatus')
+              ? _json['disputeStatus'] as core.String
+              : null,
+          geo: _json.containsKey('geo') ? _json['geo'] as core.String : null,
+          leadCategory: _json.containsKey('leadCategory')
+              ? _json['leadCategory'] as core.String
+              : null,
+          leadCreationTimestamp: _json.containsKey('leadCreationTimestamp')
+              ? _json['leadCreationTimestamp'] as core.String
+              : null,
+          leadId: _json.containsKey('leadId')
+              ? _json['leadId'] as core.String
+              : null,
+          leadPrice: _json.containsKey('leadPrice')
+              ? (_json['leadPrice'] as core.num).toDouble()
+              : null,
+          leadType: _json.containsKey('leadType')
+              ? _json['leadType'] as core.String
+              : null,
+          messageLead: _json.containsKey('messageLead')
+              ? GoogleAdsHomeservicesLocalservicesV1MessageLead.fromJson(
+                  _json['messageLead'] as core.Map<core.String, core.dynamic>)
+              : null,
+          phoneLead: _json.containsKey('phoneLead')
+              ? GoogleAdsHomeservicesLocalservicesV1PhoneLead.fromJson(
+                  _json['phoneLead'] as core.Map<core.String, core.dynamic>)
+              : null,
+          timezone: _json.containsKey('timezone')
+              ? GoogleTypeTimeZone.fromJson(
+                  _json['timezone'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -584,22 +616,28 @@ class GoogleAdsHomeservicesLocalservicesV1MessageLead {
   /// The postal code of the customer who created the lead.
   core.String? postalCode;
 
-  GoogleAdsHomeservicesLocalservicesV1MessageLead();
+  GoogleAdsHomeservicesLocalservicesV1MessageLead({
+    this.consumerPhoneNumber,
+    this.customerName,
+    this.jobType,
+    this.postalCode,
+  });
 
-  GoogleAdsHomeservicesLocalservicesV1MessageLead.fromJson(core.Map _json) {
-    if (_json.containsKey('consumerPhoneNumber')) {
-      consumerPhoneNumber = _json['consumerPhoneNumber'] as core.String;
-    }
-    if (_json.containsKey('customerName')) {
-      customerName = _json['customerName'] as core.String;
-    }
-    if (_json.containsKey('jobType')) {
-      jobType = _json['jobType'] as core.String;
-    }
-    if (_json.containsKey('postalCode')) {
-      postalCode = _json['postalCode'] as core.String;
-    }
-  }
+  GoogleAdsHomeservicesLocalservicesV1MessageLead.fromJson(core.Map _json)
+      : this(
+          consumerPhoneNumber: _json.containsKey('consumerPhoneNumber')
+              ? _json['consumerPhoneNumber'] as core.String
+              : null,
+          customerName: _json.containsKey('customerName')
+              ? _json['customerName'] as core.String
+              : null,
+          jobType: _json.containsKey('jobType')
+              ? _json['jobType'] as core.String
+              : null,
+          postalCode: _json.containsKey('postalCode')
+              ? _json['postalCode'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (consumerPhoneNumber != null)
@@ -621,20 +659,25 @@ class GoogleAdsHomeservicesLocalservicesV1PhoneLead {
   /// Consumer phone number associated with the phone lead.
   core.String? consumerPhoneNumber;
 
-  GoogleAdsHomeservicesLocalservicesV1PhoneLead();
+  GoogleAdsHomeservicesLocalservicesV1PhoneLead({
+    this.chargedCallTimestamp,
+    this.chargedConnectedCallDurationSeconds,
+    this.consumerPhoneNumber,
+  });
 
-  GoogleAdsHomeservicesLocalservicesV1PhoneLead.fromJson(core.Map _json) {
-    if (_json.containsKey('chargedCallTimestamp')) {
-      chargedCallTimestamp = _json['chargedCallTimestamp'] as core.String;
-    }
-    if (_json.containsKey('chargedConnectedCallDurationSeconds')) {
-      chargedConnectedCallDurationSeconds =
-          _json['chargedConnectedCallDurationSeconds'] as core.String;
-    }
-    if (_json.containsKey('consumerPhoneNumber')) {
-      consumerPhoneNumber = _json['consumerPhoneNumber'] as core.String;
-    }
-  }
+  GoogleAdsHomeservicesLocalservicesV1PhoneLead.fromJson(core.Map _json)
+      : this(
+          chargedCallTimestamp: _json.containsKey('chargedCallTimestamp')
+              ? _json['chargedCallTimestamp'] as core.String
+              : null,
+          chargedConnectedCallDurationSeconds:
+              _json.containsKey('chargedConnectedCallDurationSeconds')
+                  ? _json['chargedConnectedCallDurationSeconds'] as core.String
+                  : null,
+          consumerPhoneNumber: _json.containsKey('consumerPhoneNumber')
+              ? _json['consumerPhoneNumber'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (chargedCallTimestamp != null)
@@ -662,21 +705,27 @@ class GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse {
   /// list returned is the last page in the result set.
   core.String? nextPageToken;
 
-  GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse();
+  GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse({
+    this.accountReports,
+    this.nextPageToken,
+  });
 
   GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('accountReports')) {
-      accountReports = (_json['accountReports'] as core.List)
-          .map<GoogleAdsHomeservicesLocalservicesV1AccountReport>((value) =>
-              GoogleAdsHomeservicesLocalservicesV1AccountReport.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          accountReports: _json.containsKey('accountReports')
+              ? (_json['accountReports'] as core.List)
+                  .map<GoogleAdsHomeservicesLocalservicesV1AccountReport>(
+                      (value) =>
+                          GoogleAdsHomeservicesLocalservicesV1AccountReport
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountReports != null)
@@ -702,21 +751,27 @@ class GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse {
   /// list returned is the last page in the result set.
   core.String? nextPageToken;
 
-  GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse();
+  GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse({
+    this.detailedLeadReports,
+    this.nextPageToken,
+  });
 
   GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('detailedLeadReports')) {
-      detailedLeadReports = (_json['detailedLeadReports'] as core.List)
-          .map<GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport>(
-              (value) => GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport
-                  .fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          detailedLeadReports: _json.containsKey('detailedLeadReports')
+              ? (_json['detailedLeadReports'] as core.List)
+                  .map<GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport>(
+                      (value) =>
+                          GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (detailedLeadReports != null)
@@ -737,16 +792,18 @@ class GoogleTypeTimeZone {
   /// Optional.
   core.String? version;
 
-  GoogleTypeTimeZone();
+  GoogleTypeTimeZone({
+    this.id,
+    this.version,
+  });
 
-  GoogleTypeTimeZone.fromJson(core.Map _json) {
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.String;
-    }
-  }
+  GoogleTypeTimeZone.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,

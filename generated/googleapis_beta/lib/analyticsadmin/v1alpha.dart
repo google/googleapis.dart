@@ -4205,28 +4205,34 @@ class GoogleAnalyticsAdminV1alphaAccount {
   /// Output only.
   core.String? updateTime;
 
-  GoogleAnalyticsAdminV1alphaAccount();
+  GoogleAnalyticsAdminV1alphaAccount({
+    this.createTime,
+    this.deleted,
+    this.displayName,
+    this.name,
+    this.regionCode,
+    this.updateTime,
+  });
 
-  GoogleAnalyticsAdminV1alphaAccount.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('deleted')) {
-      deleted = _json['deleted'] as core.bool;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('regionCode')) {
-      regionCode = _json['regionCode'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  GoogleAnalyticsAdminV1alphaAccount.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          deleted: _json.containsKey('deleted')
+              ? _json['deleted'] as core.bool
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          regionCode: _json.containsKey('regionCode')
+              ? _json['regionCode'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -4256,26 +4262,30 @@ class GoogleAnalyticsAdminV1alphaAccountSummary {
   /// List of summaries for child accounts of this account.
   core.List<GoogleAnalyticsAdminV1alphaPropertySummary>? propertySummaries;
 
-  GoogleAnalyticsAdminV1alphaAccountSummary();
+  GoogleAnalyticsAdminV1alphaAccountSummary({
+    this.account,
+    this.displayName,
+    this.name,
+    this.propertySummaries,
+  });
 
-  GoogleAnalyticsAdminV1alphaAccountSummary.fromJson(core.Map _json) {
-    if (_json.containsKey('account')) {
-      account = _json['account'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('propertySummaries')) {
-      propertySummaries = (_json['propertySummaries'] as core.List)
-          .map<GoogleAnalyticsAdminV1alphaPropertySummary>((value) =>
-              GoogleAnalyticsAdminV1alphaPropertySummary.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleAnalyticsAdminV1alphaAccountSummary.fromJson(core.Map _json)
+      : this(
+          account: _json.containsKey('account')
+              ? _json['account'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          propertySummaries: _json.containsKey('propertySummaries')
+              ? (_json['propertySummaries'] as core.List)
+                  .map<GoogleAnalyticsAdminV1alphaPropertySummary>((value) =>
+                      GoogleAnalyticsAdminV1alphaPropertySummary.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (account != null) 'account': account!,
@@ -4326,28 +4336,34 @@ class GoogleAnalyticsAdminV1alphaAndroidAppDataStream {
   /// Output only.
   core.String? updateTime;
 
-  GoogleAnalyticsAdminV1alphaAndroidAppDataStream();
+  GoogleAnalyticsAdminV1alphaAndroidAppDataStream({
+    this.createTime,
+    this.displayName,
+    this.firebaseAppId,
+    this.name,
+    this.packageName,
+    this.updateTime,
+  });
 
-  GoogleAnalyticsAdminV1alphaAndroidAppDataStream.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('firebaseAppId')) {
-      firebaseAppId = _json['firebaseAppId'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('packageName')) {
-      packageName = _json['packageName'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  GoogleAnalyticsAdminV1alphaAndroidAppDataStream.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          firebaseAppId: _json.containsKey('firebaseAppId')
+              ? _json['firebaseAppId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          packageName: _json.containsKey('packageName')
+              ? _json['packageName'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -4401,26 +4417,30 @@ class GoogleAnalyticsAdminV1alphaAuditUserLink {
   /// Example format: properties/1234/userLinks/5678
   core.String? name;
 
-  GoogleAnalyticsAdminV1alphaAuditUserLink();
+  GoogleAnalyticsAdminV1alphaAuditUserLink({
+    this.directRoles,
+    this.effectiveRoles,
+    this.emailAddress,
+    this.name,
+  });
 
-  GoogleAnalyticsAdminV1alphaAuditUserLink.fromJson(core.Map _json) {
-    if (_json.containsKey('directRoles')) {
-      directRoles = (_json['directRoles'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('effectiveRoles')) {
-      effectiveRoles = (_json['effectiveRoles'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('emailAddress')) {
-      emailAddress = _json['emailAddress'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  GoogleAnalyticsAdminV1alphaAuditUserLink.fromJson(core.Map _json)
+      : this(
+          directRoles: _json.containsKey('directRoles')
+              ? (_json['directRoles'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          effectiveRoles: _json.containsKey('effectiveRoles')
+              ? (_json['effectiveRoles'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          emailAddress: _json.containsKey('emailAddress')
+              ? _json['emailAddress'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (directRoles != null) 'directRoles': directRoles!,
@@ -4446,16 +4466,20 @@ class GoogleAnalyticsAdminV1alphaAuditUserLinksRequest {
   /// the page token.
   core.String? pageToken;
 
-  GoogleAnalyticsAdminV1alphaAuditUserLinksRequest();
+  GoogleAnalyticsAdminV1alphaAuditUserLinksRequest({
+    this.pageSize,
+    this.pageToken,
+  });
 
-  GoogleAnalyticsAdminV1alphaAuditUserLinksRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('pageSize')) {
-      pageSize = _json['pageSize'] as core.int;
-    }
-    if (_json.containsKey('pageToken')) {
-      pageToken = _json['pageToken'] as core.String;
-    }
-  }
+  GoogleAnalyticsAdminV1alphaAuditUserLinksRequest.fromJson(core.Map _json)
+      : this(
+          pageSize: _json.containsKey('pageSize')
+              ? _json['pageSize'] as core.int
+              : null,
+          pageToken: _json.containsKey('pageToken')
+              ? _json['pageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (pageSize != null) 'pageSize': pageSize!,
@@ -4475,20 +4499,24 @@ class GoogleAnalyticsAdminV1alphaAuditUserLinksResponse {
   /// These will be ordered stably, but in an arbitrary order.
   core.List<GoogleAnalyticsAdminV1alphaAuditUserLink>? userLinks;
 
-  GoogleAnalyticsAdminV1alphaAuditUserLinksResponse();
+  GoogleAnalyticsAdminV1alphaAuditUserLinksResponse({
+    this.nextPageToken,
+    this.userLinks,
+  });
 
-  GoogleAnalyticsAdminV1alphaAuditUserLinksResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('userLinks')) {
-      userLinks = (_json['userLinks'] as core.List)
-          .map<GoogleAnalyticsAdminV1alphaAuditUserLink>((value) =>
-              GoogleAnalyticsAdminV1alphaAuditUserLink.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleAnalyticsAdminV1alphaAuditUserLinksResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          userLinks: _json.containsKey('userLinks')
+              ? (_json['userLinks'] as core.List)
+                  .map<GoogleAnalyticsAdminV1alphaAuditUserLink>((value) =>
+                      GoogleAnalyticsAdminV1alphaAuditUserLink.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -4515,21 +4543,27 @@ class GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest {
   /// Required.
   core.List<GoogleAnalyticsAdminV1alphaCreateUserLinkRequest>? requests;
 
-  GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest();
+  GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest({
+    this.notifyNewUsers,
+    this.requests,
+  });
 
   GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('notifyNewUsers')) {
-      notifyNewUsers = _json['notifyNewUsers'] as core.bool;
-    }
-    if (_json.containsKey('requests')) {
-      requests = (_json['requests'] as core.List)
-          .map<GoogleAnalyticsAdminV1alphaCreateUserLinkRequest>((value) =>
-              GoogleAnalyticsAdminV1alphaCreateUserLinkRequest.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+      core.Map _json)
+      : this(
+          notifyNewUsers: _json.containsKey('notifyNewUsers')
+              ? _json['notifyNewUsers'] as core.bool
+              : null,
+          requests: _json.containsKey('requests')
+              ? (_json['requests'] as core.List)
+                  .map<GoogleAnalyticsAdminV1alphaCreateUserLinkRequest>(
+                      (value) =>
+                          GoogleAnalyticsAdminV1alphaCreateUserLinkRequest
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (notifyNewUsers != null) 'notifyNewUsers': notifyNewUsers!,
@@ -4543,18 +4577,21 @@ class GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse {
   /// The user links created.
   core.List<GoogleAnalyticsAdminV1alphaUserLink>? userLinks;
 
-  GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse();
+  GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse({
+    this.userLinks,
+  });
 
   GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('userLinks')) {
-      userLinks = (_json['userLinks'] as core.List)
-          .map<GoogleAnalyticsAdminV1alphaUserLink>((value) =>
-              GoogleAnalyticsAdminV1alphaUserLink.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+      core.Map _json)
+      : this(
+          userLinks: _json.containsKey('userLinks')
+              ? (_json['userLinks'] as core.List)
+                  .map<GoogleAnalyticsAdminV1alphaUserLink>((value) =>
+                      GoogleAnalyticsAdminV1alphaUserLink.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (userLinks != null)
@@ -4571,18 +4608,23 @@ class GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest {
   /// Required.
   core.List<GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest>? requests;
 
-  GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest();
+  GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest({
+    this.requests,
+  });
 
   GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('requests')) {
-      requests = (_json['requests'] as core.List)
-          .map<GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest>((value) =>
-              GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+      core.Map _json)
+      : this(
+          requests: _json.containsKey('requests')
+              ? (_json['requests'] as core.List)
+                  .map<GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest>(
+                      (value) =>
+                          GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requests != null)
@@ -4595,18 +4637,20 @@ class GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse {
   /// The requested user links.
   core.List<GoogleAnalyticsAdminV1alphaUserLink>? userLinks;
 
-  GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse();
+  GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse({
+    this.userLinks,
+  });
 
-  GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('userLinks')) {
-      userLinks = (_json['userLinks'] as core.List)
-          .map<GoogleAnalyticsAdminV1alphaUserLink>((value) =>
-              GoogleAnalyticsAdminV1alphaUserLink.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse.fromJson(core.Map _json)
+      : this(
+          userLinks: _json.containsKey('userLinks')
+              ? (_json['userLinks'] as core.List)
+                  .map<GoogleAnalyticsAdminV1alphaUserLink>((value) =>
+                      GoogleAnalyticsAdminV1alphaUserLink.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (userLinks != null)
@@ -4623,18 +4667,23 @@ class GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest {
   /// Required.
   core.List<GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest>? requests;
 
-  GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest();
+  GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest({
+    this.requests,
+  });
 
   GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('requests')) {
-      requests = (_json['requests'] as core.List)
-          .map<GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest>((value) =>
-              GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+      core.Map _json)
+      : this(
+          requests: _json.containsKey('requests')
+              ? (_json['requests'] as core.List)
+                  .map<GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest>(
+                      (value) =>
+                          GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requests != null)
@@ -4647,18 +4696,21 @@ class GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse {
   /// The user links updated.
   core.List<GoogleAnalyticsAdminV1alphaUserLink>? userLinks;
 
-  GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse();
+  GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse({
+    this.userLinks,
+  });
 
   GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('userLinks')) {
-      userLinks = (_json['userLinks'] as core.List)
-          .map<GoogleAnalyticsAdminV1alphaUserLink>((value) =>
-              GoogleAnalyticsAdminV1alphaUserLink.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+      core.Map _json)
+      : this(
+          userLinks: _json.containsKey('userLinks')
+              ? (_json['userLinks'] as core.List)
+                  .map<GoogleAnalyticsAdminV1alphaUserLink>((value) =>
+                      GoogleAnalyticsAdminV1alphaUserLink.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (userLinks != null)
@@ -4691,28 +4743,32 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChange {
   GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource?
       resourceBeforeChange;
 
-  GoogleAnalyticsAdminV1alphaChangeHistoryChange();
+  GoogleAnalyticsAdminV1alphaChangeHistoryChange({
+    this.action,
+    this.resource,
+    this.resourceAfterChange,
+    this.resourceBeforeChange,
+  });
 
-  GoogleAnalyticsAdminV1alphaChangeHistoryChange.fromJson(core.Map _json) {
-    if (_json.containsKey('action')) {
-      action = _json['action'] as core.String;
-    }
-    if (_json.containsKey('resource')) {
-      resource = _json['resource'] as core.String;
-    }
-    if (_json.containsKey('resourceAfterChange')) {
-      resourceAfterChange =
-          GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource
-              .fromJson(_json['resourceAfterChange']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('resourceBeforeChange')) {
-      resourceBeforeChange =
-          GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource
-              .fromJson(_json['resourceBeforeChange']
-                  as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleAnalyticsAdminV1alphaChangeHistoryChange.fromJson(core.Map _json)
+      : this(
+          action: _json.containsKey('action')
+              ? _json['action'] as core.String
+              : null,
+          resource: _json.containsKey('resource')
+              ? _json['resource'] as core.String
+              : null,
+          resourceAfterChange: _json.containsKey('resourceAfterChange')
+              ? GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource
+                  .fromJson(_json['resourceAfterChange']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          resourceBeforeChange: _json.containsKey('resourceBeforeChange')
+              ? GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource
+                  .fromJson(_json['resourceBeforeChange']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
@@ -4764,65 +4820,80 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
   /// A snapshot of a WebDataStream resource in change history.
   GoogleAnalyticsAdminV1alphaWebDataStream? webDataStream;
 
-  GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource();
+  GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource({
+    this.account,
+    this.androidAppDataStream,
+    this.conversionEvent,
+    this.customDimension,
+    this.customMetric,
+    this.firebaseLink,
+    this.googleAdsLink,
+    this.googleSignalsSettings,
+    this.iosAppDataStream,
+    this.measurementProtocolSecret,
+    this.property,
+    this.webDataStream,
+  });
 
   GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('account')) {
-      account = GoogleAnalyticsAdminV1alphaAccount.fromJson(
-          _json['account'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('androidAppDataStream')) {
-      androidAppDataStream =
-          GoogleAnalyticsAdminV1alphaAndroidAppDataStream.fromJson(
-              _json['androidAppDataStream']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('conversionEvent')) {
-      conversionEvent = GoogleAnalyticsAdminV1alphaConversionEvent.fromJson(
-          _json['conversionEvent'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('customDimension')) {
-      customDimension = GoogleAnalyticsAdminV1alphaCustomDimension.fromJson(
-          _json['customDimension'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('customMetric')) {
-      customMetric = GoogleAnalyticsAdminV1alphaCustomMetric.fromJson(
-          _json['customMetric'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('firebaseLink')) {
-      firebaseLink = GoogleAnalyticsAdminV1alphaFirebaseLink.fromJson(
-          _json['firebaseLink'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('googleAdsLink')) {
-      googleAdsLink = GoogleAnalyticsAdminV1alphaGoogleAdsLink.fromJson(
-          _json['googleAdsLink'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('googleSignalsSettings')) {
-      googleSignalsSettings =
-          GoogleAnalyticsAdminV1alphaGoogleSignalsSettings.fromJson(
-              _json['googleSignalsSettings']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('iosAppDataStream')) {
-      iosAppDataStream = GoogleAnalyticsAdminV1alphaIosAppDataStream.fromJson(
-          _json['iosAppDataStream'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('measurementProtocolSecret')) {
-      measurementProtocolSecret =
-          GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
-              _json['measurementProtocolSecret']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('property')) {
-      property = GoogleAnalyticsAdminV1alphaProperty.fromJson(
-          _json['property'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('webDataStream')) {
-      webDataStream = GoogleAnalyticsAdminV1alphaWebDataStream.fromJson(
-          _json['webDataStream'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+      core.Map _json)
+      : this(
+          account: _json.containsKey('account')
+              ? GoogleAnalyticsAdminV1alphaAccount.fromJson(
+                  _json['account'] as core.Map<core.String, core.dynamic>)
+              : null,
+          androidAppDataStream: _json.containsKey('androidAppDataStream')
+              ? GoogleAnalyticsAdminV1alphaAndroidAppDataStream.fromJson(
+                  _json['androidAppDataStream']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          conversionEvent: _json.containsKey('conversionEvent')
+              ? GoogleAnalyticsAdminV1alphaConversionEvent.fromJson(
+                  _json['conversionEvent']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          customDimension: _json.containsKey('customDimension')
+              ? GoogleAnalyticsAdminV1alphaCustomDimension.fromJson(
+                  _json['customDimension']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          customMetric: _json.containsKey('customMetric')
+              ? GoogleAnalyticsAdminV1alphaCustomMetric.fromJson(
+                  _json['customMetric'] as core.Map<core.String, core.dynamic>)
+              : null,
+          firebaseLink: _json.containsKey('firebaseLink')
+              ? GoogleAnalyticsAdminV1alphaFirebaseLink.fromJson(
+                  _json['firebaseLink'] as core.Map<core.String, core.dynamic>)
+              : null,
+          googleAdsLink: _json.containsKey('googleAdsLink')
+              ? GoogleAnalyticsAdminV1alphaGoogleAdsLink.fromJson(
+                  _json['googleAdsLink'] as core.Map<core.String, core.dynamic>)
+              : null,
+          googleSignalsSettings: _json.containsKey('googleSignalsSettings')
+              ? GoogleAnalyticsAdminV1alphaGoogleSignalsSettings.fromJson(
+                  _json['googleSignalsSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          iosAppDataStream: _json.containsKey('iosAppDataStream')
+              ? GoogleAnalyticsAdminV1alphaIosAppDataStream.fromJson(
+                  _json['iosAppDataStream']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          measurementProtocolSecret: _json
+                  .containsKey('measurementProtocolSecret')
+              ? GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
+                  _json['measurementProtocolSecret']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          property: _json.containsKey('property')
+              ? GoogleAnalyticsAdminV1alphaProperty.fromJson(
+                  _json['property'] as core.Map<core.String, core.dynamic>)
+              : null,
+          webDataStream: _json.containsKey('webDataStream')
+              ? GoogleAnalyticsAdminV1alphaWebDataStream.fromJson(
+                  _json['webDataStream'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (account != null) 'account': account!.toJson(),
@@ -4883,32 +4954,39 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryEvent {
   /// error.
   core.String? userActorEmail;
 
-  GoogleAnalyticsAdminV1alphaChangeHistoryEvent();
+  GoogleAnalyticsAdminV1alphaChangeHistoryEvent({
+    this.actorType,
+    this.changeTime,
+    this.changes,
+    this.changesFiltered,
+    this.id,
+    this.userActorEmail,
+  });
 
-  GoogleAnalyticsAdminV1alphaChangeHistoryEvent.fromJson(core.Map _json) {
-    if (_json.containsKey('actorType')) {
-      actorType = _json['actorType'] as core.String;
-    }
-    if (_json.containsKey('changeTime')) {
-      changeTime = _json['changeTime'] as core.String;
-    }
-    if (_json.containsKey('changes')) {
-      changes = (_json['changes'] as core.List)
-          .map<GoogleAnalyticsAdminV1alphaChangeHistoryChange>((value) =>
-              GoogleAnalyticsAdminV1alphaChangeHistoryChange.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('changesFiltered')) {
-      changesFiltered = _json['changesFiltered'] as core.bool;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('userActorEmail')) {
-      userActorEmail = _json['userActorEmail'] as core.String;
-    }
-  }
+  GoogleAnalyticsAdminV1alphaChangeHistoryEvent.fromJson(core.Map _json)
+      : this(
+          actorType: _json.containsKey('actorType')
+              ? _json['actorType'] as core.String
+              : null,
+          changeTime: _json.containsKey('changeTime')
+              ? _json['changeTime'] as core.String
+              : null,
+          changes: _json.containsKey('changes')
+              ? (_json['changes'] as core.List)
+                  .map<GoogleAnalyticsAdminV1alphaChangeHistoryChange>(
+                      (value) => GoogleAnalyticsAdminV1alphaChangeHistoryChange
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          changesFiltered: _json.containsKey('changesFiltered')
+              ? _json['changesFiltered'] as core.bool
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          userActorEmail: _json.containsKey('userActorEmail')
+              ? _json['userActorEmail'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (actorType != null) 'actorType': actorType!,
@@ -4958,25 +5036,29 @@ class GoogleAnalyticsAdminV1alphaConversionEvent {
   /// Output only.
   core.String? name;
 
-  GoogleAnalyticsAdminV1alphaConversionEvent();
+  GoogleAnalyticsAdminV1alphaConversionEvent({
+    this.createTime,
+    this.custom,
+    this.deletable,
+    this.eventName,
+    this.name,
+  });
 
-  GoogleAnalyticsAdminV1alphaConversionEvent.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('custom')) {
-      custom = _json['custom'] as core.bool;
-    }
-    if (_json.containsKey('deletable')) {
-      deletable = _json['deletable'] as core.bool;
-    }
-    if (_json.containsKey('eventName')) {
-      eventName = _json['eventName'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  GoogleAnalyticsAdminV1alphaConversionEvent.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          custom:
+              _json.containsKey('custom') ? _json['custom'] as core.bool : null,
+          deletable: _json.containsKey('deletable')
+              ? _json['deletable'] as core.bool
+              : null,
+          eventName: _json.containsKey('eventName')
+              ? _json['eventName'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -5012,20 +5094,25 @@ class GoogleAnalyticsAdminV1alphaCreateUserLinkRequest {
   /// Required.
   GoogleAnalyticsAdminV1alphaUserLink? userLink;
 
-  GoogleAnalyticsAdminV1alphaCreateUserLinkRequest();
+  GoogleAnalyticsAdminV1alphaCreateUserLinkRequest({
+    this.notifyNewUser,
+    this.parent,
+    this.userLink,
+  });
 
-  GoogleAnalyticsAdminV1alphaCreateUserLinkRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('notifyNewUser')) {
-      notifyNewUser = _json['notifyNewUser'] as core.bool;
-    }
-    if (_json.containsKey('parent')) {
-      parent = _json['parent'] as core.String;
-    }
-    if (_json.containsKey('userLink')) {
-      userLink = GoogleAnalyticsAdminV1alphaUserLink.fromJson(
-          _json['userLink'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleAnalyticsAdminV1alphaCreateUserLinkRequest.fromJson(core.Map _json)
+      : this(
+          notifyNewUser: _json.containsKey('notifyNewUser')
+              ? _json['notifyNewUser'] as core.bool
+              : null,
+          parent: _json.containsKey('parent')
+              ? _json['parent'] as core.String
+              : null,
+          userLink: _json.containsKey('userLink')
+              ? GoogleAnalyticsAdminV1alphaUserLink.fromJson(
+                  _json['userLink'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (notifyNewUser != null) 'notifyNewUser': notifyNewUser!,
@@ -5088,29 +5175,34 @@ class GoogleAnalyticsAdminV1alphaCustomDimension {
   /// - "USER" : Dimension scoped to a user.
   core.String? scope;
 
-  GoogleAnalyticsAdminV1alphaCustomDimension();
+  GoogleAnalyticsAdminV1alphaCustomDimension({
+    this.description,
+    this.disallowAdsPersonalization,
+    this.displayName,
+    this.name,
+    this.parameterName,
+    this.scope,
+  });
 
-  GoogleAnalyticsAdminV1alphaCustomDimension.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('disallowAdsPersonalization')) {
-      disallowAdsPersonalization =
-          _json['disallowAdsPersonalization'] as core.bool;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('parameterName')) {
-      parameterName = _json['parameterName'] as core.String;
-    }
-    if (_json.containsKey('scope')) {
-      scope = _json['scope'] as core.String;
-    }
-  }
+  GoogleAnalyticsAdminV1alphaCustomDimension.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          disallowAdsPersonalization:
+              _json.containsKey('disallowAdsPersonalization')
+                  ? _json['disallowAdsPersonalization'] as core.bool
+                  : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          parameterName: _json.containsKey('parameterName')
+              ? _json['parameterName'] as core.String
+              : null,
+          scope:
+              _json.containsKey('scope') ? _json['scope'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -5183,28 +5275,33 @@ class GoogleAnalyticsAdminV1alphaCustomMetric {
   /// - "EVENT" : Metric scoped to an event.
   core.String? scope;
 
-  GoogleAnalyticsAdminV1alphaCustomMetric();
+  GoogleAnalyticsAdminV1alphaCustomMetric({
+    this.description,
+    this.displayName,
+    this.measurementUnit,
+    this.name,
+    this.parameterName,
+    this.scope,
+  });
 
-  GoogleAnalyticsAdminV1alphaCustomMetric.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('measurementUnit')) {
-      measurementUnit = _json['measurementUnit'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('parameterName')) {
-      parameterName = _json['parameterName'] as core.String;
-    }
-    if (_json.containsKey('scope')) {
-      scope = _json['scope'] as core.String;
-    }
-  }
+  GoogleAnalyticsAdminV1alphaCustomMetric.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          measurementUnit: _json.containsKey('measurementUnit')
+              ? _json['measurementUnit'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          parameterName: _json.containsKey('parameterName')
+              ? _json['parameterName'] as core.String
+              : null,
+          scope:
+              _json.containsKey('scope') ? _json['scope'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -5248,32 +5345,39 @@ class GoogleAnalyticsAdminV1alphaDataSharingSettings {
   /// Allows Google to share the data anonymously in aggregate form with others.
   core.bool? sharingWithOthersEnabled;
 
-  GoogleAnalyticsAdminV1alphaDataSharingSettings();
+  GoogleAnalyticsAdminV1alphaDataSharingSettings({
+    this.name,
+    this.sharingWithGoogleAnySalesEnabled,
+    this.sharingWithGoogleAssignedSalesEnabled,
+    this.sharingWithGoogleProductsEnabled,
+    this.sharingWithGoogleSupportEnabled,
+    this.sharingWithOthersEnabled,
+  });
 
-  GoogleAnalyticsAdminV1alphaDataSharingSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('sharingWithGoogleAnySalesEnabled')) {
-      sharingWithGoogleAnySalesEnabled =
-          _json['sharingWithGoogleAnySalesEnabled'] as core.bool;
-    }
-    if (_json.containsKey('sharingWithGoogleAssignedSalesEnabled')) {
-      sharingWithGoogleAssignedSalesEnabled =
-          _json['sharingWithGoogleAssignedSalesEnabled'] as core.bool;
-    }
-    if (_json.containsKey('sharingWithGoogleProductsEnabled')) {
-      sharingWithGoogleProductsEnabled =
-          _json['sharingWithGoogleProductsEnabled'] as core.bool;
-    }
-    if (_json.containsKey('sharingWithGoogleSupportEnabled')) {
-      sharingWithGoogleSupportEnabled =
-          _json['sharingWithGoogleSupportEnabled'] as core.bool;
-    }
-    if (_json.containsKey('sharingWithOthersEnabled')) {
-      sharingWithOthersEnabled = _json['sharingWithOthersEnabled'] as core.bool;
-    }
-  }
+  GoogleAnalyticsAdminV1alphaDataSharingSettings.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          sharingWithGoogleAnySalesEnabled:
+              _json.containsKey('sharingWithGoogleAnySalesEnabled')
+                  ? _json['sharingWithGoogleAnySalesEnabled'] as core.bool
+                  : null,
+          sharingWithGoogleAssignedSalesEnabled:
+              _json.containsKey('sharingWithGoogleAssignedSalesEnabled')
+                  ? _json['sharingWithGoogleAssignedSalesEnabled'] as core.bool
+                  : null,
+          sharingWithGoogleProductsEnabled:
+              _json.containsKey('sharingWithGoogleProductsEnabled')
+                  ? _json['sharingWithGoogleProductsEnabled'] as core.bool
+                  : null,
+          sharingWithGoogleSupportEnabled:
+              _json.containsKey('sharingWithGoogleSupportEnabled')
+                  ? _json['sharingWithGoogleSupportEnabled'] as core.bool
+                  : null,
+          sharingWithOthersEnabled:
+              _json.containsKey('sharingWithOthersEnabled')
+                  ? _json['sharingWithOthersEnabled'] as core.bool
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -5298,13 +5402,14 @@ class GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest {
   /// Required.
   core.String? name;
 
-  GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest();
+  GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest({
+    this.name,
+  });
 
-  GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -5378,47 +5483,59 @@ class GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings {
   /// view embedded videos on your site.
   core.bool? videoEngagementEnabled;
 
-  GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings();
+  GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings({
+    this.fileDownloadsEnabled,
+    this.name,
+    this.outboundClicksEnabled,
+    this.pageChangesEnabled,
+    this.pageLoadsEnabled,
+    this.pageViewsEnabled,
+    this.scrollsEnabled,
+    this.searchQueryParameter,
+    this.siteSearchEnabled,
+    this.streamEnabled,
+    this.uriQueryParameter,
+    this.videoEngagementEnabled,
+  });
 
   GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('fileDownloadsEnabled')) {
-      fileDownloadsEnabled = _json['fileDownloadsEnabled'] as core.bool;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('outboundClicksEnabled')) {
-      outboundClicksEnabled = _json['outboundClicksEnabled'] as core.bool;
-    }
-    if (_json.containsKey('pageChangesEnabled')) {
-      pageChangesEnabled = _json['pageChangesEnabled'] as core.bool;
-    }
-    if (_json.containsKey('pageLoadsEnabled')) {
-      pageLoadsEnabled = _json['pageLoadsEnabled'] as core.bool;
-    }
-    if (_json.containsKey('pageViewsEnabled')) {
-      pageViewsEnabled = _json['pageViewsEnabled'] as core.bool;
-    }
-    if (_json.containsKey('scrollsEnabled')) {
-      scrollsEnabled = _json['scrollsEnabled'] as core.bool;
-    }
-    if (_json.containsKey('searchQueryParameter')) {
-      searchQueryParameter = _json['searchQueryParameter'] as core.String;
-    }
-    if (_json.containsKey('siteSearchEnabled')) {
-      siteSearchEnabled = _json['siteSearchEnabled'] as core.bool;
-    }
-    if (_json.containsKey('streamEnabled')) {
-      streamEnabled = _json['streamEnabled'] as core.bool;
-    }
-    if (_json.containsKey('uriQueryParameter')) {
-      uriQueryParameter = _json['uriQueryParameter'] as core.String;
-    }
-    if (_json.containsKey('videoEngagementEnabled')) {
-      videoEngagementEnabled = _json['videoEngagementEnabled'] as core.bool;
-    }
-  }
+      core.Map _json)
+      : this(
+          fileDownloadsEnabled: _json.containsKey('fileDownloadsEnabled')
+              ? _json['fileDownloadsEnabled'] as core.bool
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          outboundClicksEnabled: _json.containsKey('outboundClicksEnabled')
+              ? _json['outboundClicksEnabled'] as core.bool
+              : null,
+          pageChangesEnabled: _json.containsKey('pageChangesEnabled')
+              ? _json['pageChangesEnabled'] as core.bool
+              : null,
+          pageLoadsEnabled: _json.containsKey('pageLoadsEnabled')
+              ? _json['pageLoadsEnabled'] as core.bool
+              : null,
+          pageViewsEnabled: _json.containsKey('pageViewsEnabled')
+              ? _json['pageViewsEnabled'] as core.bool
+              : null,
+          scrollsEnabled: _json.containsKey('scrollsEnabled')
+              ? _json['scrollsEnabled'] as core.bool
+              : null,
+          searchQueryParameter: _json.containsKey('searchQueryParameter')
+              ? _json['searchQueryParameter'] as core.String
+              : null,
+          siteSearchEnabled: _json.containsKey('siteSearchEnabled')
+              ? _json['siteSearchEnabled'] as core.bool
+              : null,
+          streamEnabled: _json.containsKey('streamEnabled')
+              ? _json['streamEnabled'] as core.bool
+              : null,
+          uriQueryParameter: _json.containsKey('uriQueryParameter')
+              ? _json['uriQueryParameter'] as core.String
+              : null,
+          videoEngagementEnabled: _json.containsKey('videoEngagementEnabled')
+              ? _json['videoEngagementEnabled'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fileDownloadsEnabled != null)
@@ -5464,19 +5581,22 @@ class GoogleAnalyticsAdminV1alphaFirebaseLink {
   /// Immutable.
   core.String? project;
 
-  GoogleAnalyticsAdminV1alphaFirebaseLink();
+  GoogleAnalyticsAdminV1alphaFirebaseLink({
+    this.createTime,
+    this.name,
+    this.project,
+  });
 
-  GoogleAnalyticsAdminV1alphaFirebaseLink.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('project')) {
-      project = _json['project'] as core.String;
-    }
-  }
+  GoogleAnalyticsAdminV1alphaFirebaseLink.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          project: _json.containsKey('project')
+              ? _json['project'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -5501,16 +5621,18 @@ class GoogleAnalyticsAdminV1alphaGlobalSiteTag {
   /// Immutable.
   core.String? snippet;
 
-  GoogleAnalyticsAdminV1alphaGlobalSiteTag();
+  GoogleAnalyticsAdminV1alphaGlobalSiteTag({
+    this.name,
+    this.snippet,
+  });
 
-  GoogleAnalyticsAdminV1alphaGlobalSiteTag.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('snippet')) {
-      snippet = _json['snippet'] as core.String;
-    }
-  }
+  GoogleAnalyticsAdminV1alphaGlobalSiteTag.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          snippet: _json.containsKey('snippet')
+              ? _json['snippet'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -5560,32 +5682,39 @@ class GoogleAnalyticsAdminV1alphaGoogleAdsLink {
   /// Output only.
   core.String? updateTime;
 
-  GoogleAnalyticsAdminV1alphaGoogleAdsLink();
+  GoogleAnalyticsAdminV1alphaGoogleAdsLink({
+    this.adsPersonalizationEnabled,
+    this.canManageClients,
+    this.createTime,
+    this.creatorEmailAddress,
+    this.customerId,
+    this.name,
+    this.updateTime,
+  });
 
-  GoogleAnalyticsAdminV1alphaGoogleAdsLink.fromJson(core.Map _json) {
-    if (_json.containsKey('adsPersonalizationEnabled')) {
-      adsPersonalizationEnabled =
-          _json['adsPersonalizationEnabled'] as core.bool;
-    }
-    if (_json.containsKey('canManageClients')) {
-      canManageClients = _json['canManageClients'] as core.bool;
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('creatorEmailAddress')) {
-      creatorEmailAddress = _json['creatorEmailAddress'] as core.String;
-    }
-    if (_json.containsKey('customerId')) {
-      customerId = _json['customerId'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  GoogleAnalyticsAdminV1alphaGoogleAdsLink.fromJson(core.Map _json)
+      : this(
+          adsPersonalizationEnabled:
+              _json.containsKey('adsPersonalizationEnabled')
+                  ? _json['adsPersonalizationEnabled'] as core.bool
+                  : null,
+          canManageClients: _json.containsKey('canManageClients')
+              ? _json['canManageClients'] as core.bool
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          creatorEmailAddress: _json.containsKey('creatorEmailAddress')
+              ? _json['creatorEmailAddress'] as core.String
+              : null,
+          customerId: _json.containsKey('customerId')
+              ? _json['customerId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (adsPersonalizationEnabled != null)
@@ -5633,19 +5762,21 @@ class GoogleAnalyticsAdminV1alphaGoogleSignalsSettings {
   /// - "GOOGLE_SIGNALS_DISABLED" : Google Signals is disabled.
   core.String? state;
 
-  GoogleAnalyticsAdminV1alphaGoogleSignalsSettings();
+  GoogleAnalyticsAdminV1alphaGoogleSignalsSettings({
+    this.consent,
+    this.name,
+    this.state,
+  });
 
-  GoogleAnalyticsAdminV1alphaGoogleSignalsSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('consent')) {
-      consent = _json['consent'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-  }
+  GoogleAnalyticsAdminV1alphaGoogleSignalsSettings.fromJson(core.Map _json)
+      : this(
+          consent: _json.containsKey('consent')
+              ? _json['consent'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (consent != null) 'consent': consent!,
@@ -5691,28 +5822,34 @@ class GoogleAnalyticsAdminV1alphaIosAppDataStream {
   /// Output only.
   core.String? updateTime;
 
-  GoogleAnalyticsAdminV1alphaIosAppDataStream();
+  GoogleAnalyticsAdminV1alphaIosAppDataStream({
+    this.bundleId,
+    this.createTime,
+    this.displayName,
+    this.firebaseAppId,
+    this.name,
+    this.updateTime,
+  });
 
-  GoogleAnalyticsAdminV1alphaIosAppDataStream.fromJson(core.Map _json) {
-    if (_json.containsKey('bundleId')) {
-      bundleId = _json['bundleId'] as core.String;
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('firebaseAppId')) {
-      firebaseAppId = _json['firebaseAppId'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  GoogleAnalyticsAdminV1alphaIosAppDataStream.fromJson(core.Map _json)
+      : this(
+          bundleId: _json.containsKey('bundleId')
+              ? _json['bundleId'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          firebaseAppId: _json.containsKey('firebaseAppId')
+              ? _json['firebaseAppId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bundleId != null) 'bundleId': bundleId!,
@@ -5734,21 +5871,25 @@ class GoogleAnalyticsAdminV1alphaListAccountSummariesResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  GoogleAnalyticsAdminV1alphaListAccountSummariesResponse();
+  GoogleAnalyticsAdminV1alphaListAccountSummariesResponse({
+    this.accountSummaries,
+    this.nextPageToken,
+  });
 
   GoogleAnalyticsAdminV1alphaListAccountSummariesResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('accountSummaries')) {
-      accountSummaries = (_json['accountSummaries'] as core.List)
-          .map<GoogleAnalyticsAdminV1alphaAccountSummary>((value) =>
-              GoogleAnalyticsAdminV1alphaAccountSummary.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          accountSummaries: _json.containsKey('accountSummaries')
+              ? (_json['accountSummaries'] as core.List)
+                  .map<GoogleAnalyticsAdminV1alphaAccountSummary>((value) =>
+                      GoogleAnalyticsAdminV1alphaAccountSummary.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountSummaries != null)
@@ -5768,20 +5909,24 @@ class GoogleAnalyticsAdminV1alphaListAccountsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  GoogleAnalyticsAdminV1alphaListAccountsResponse();
+  GoogleAnalyticsAdminV1alphaListAccountsResponse({
+    this.accounts,
+    this.nextPageToken,
+  });
 
-  GoogleAnalyticsAdminV1alphaListAccountsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('accounts')) {
-      accounts = (_json['accounts'] as core.List)
-          .map<GoogleAnalyticsAdminV1alphaAccount>((value) =>
-              GoogleAnalyticsAdminV1alphaAccount.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  GoogleAnalyticsAdminV1alphaListAccountsResponse.fromJson(core.Map _json)
+      : this(
+          accounts: _json.containsKey('accounts')
+              ? (_json['accounts'] as core.List)
+                  .map<GoogleAnalyticsAdminV1alphaAccount>((value) =>
+                      GoogleAnalyticsAdminV1alphaAccount.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accounts != null)
@@ -5802,21 +5947,26 @@ class GoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  GoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse();
+  GoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse({
+    this.androidAppDataStreams,
+    this.nextPageToken,
+  });
 
   GoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('androidAppDataStreams')) {
-      androidAppDataStreams = (_json['androidAppDataStreams'] as core.List)
-          .map<GoogleAnalyticsAdminV1alphaAndroidAppDataStream>((value) =>
-              GoogleAnalyticsAdminV1alphaAndroidAppDataStream.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          androidAppDataStreams: _json.containsKey('androidAppDataStreams')
+              ? (_json['androidAppDataStreams'] as core.List)
+                  .map<GoogleAnalyticsAdminV1alphaAndroidAppDataStream>(
+                      (value) => GoogleAnalyticsAdminV1alphaAndroidAppDataStream
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (androidAppDataStreams != null)
@@ -5836,21 +5986,25 @@ class GoogleAnalyticsAdminV1alphaListConversionEventsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  GoogleAnalyticsAdminV1alphaListConversionEventsResponse();
+  GoogleAnalyticsAdminV1alphaListConversionEventsResponse({
+    this.conversionEvents,
+    this.nextPageToken,
+  });
 
   GoogleAnalyticsAdminV1alphaListConversionEventsResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('conversionEvents')) {
-      conversionEvents = (_json['conversionEvents'] as core.List)
-          .map<GoogleAnalyticsAdminV1alphaConversionEvent>((value) =>
-              GoogleAnalyticsAdminV1alphaConversionEvent.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          conversionEvents: _json.containsKey('conversionEvents')
+              ? (_json['conversionEvents'] as core.List)
+                  .map<GoogleAnalyticsAdminV1alphaConversionEvent>((value) =>
+                      GoogleAnalyticsAdminV1alphaConversionEvent.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (conversionEvents != null)
@@ -5870,21 +6024,25 @@ class GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse();
+  GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse({
+    this.customDimensions,
+    this.nextPageToken,
+  });
 
   GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('customDimensions')) {
-      customDimensions = (_json['customDimensions'] as core.List)
-          .map<GoogleAnalyticsAdminV1alphaCustomDimension>((value) =>
-              GoogleAnalyticsAdminV1alphaCustomDimension.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          customDimensions: _json.containsKey('customDimensions')
+              ? (_json['customDimensions'] as core.List)
+                  .map<GoogleAnalyticsAdminV1alphaCustomDimension>((value) =>
+                      GoogleAnalyticsAdminV1alphaCustomDimension.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customDimensions != null)
@@ -5904,21 +6062,24 @@ class GoogleAnalyticsAdminV1alphaListCustomMetricsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  GoogleAnalyticsAdminV1alphaListCustomMetricsResponse();
+  GoogleAnalyticsAdminV1alphaListCustomMetricsResponse({
+    this.customMetrics,
+    this.nextPageToken,
+  });
 
-  GoogleAnalyticsAdminV1alphaListCustomMetricsResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('customMetrics')) {
-      customMetrics = (_json['customMetrics'] as core.List)
-          .map<GoogleAnalyticsAdminV1alphaCustomMetric>((value) =>
-              GoogleAnalyticsAdminV1alphaCustomMetric.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  GoogleAnalyticsAdminV1alphaListCustomMetricsResponse.fromJson(core.Map _json)
+      : this(
+          customMetrics: _json.containsKey('customMetrics')
+              ? (_json['customMetrics'] as core.List)
+                  .map<GoogleAnalyticsAdminV1alphaCustomMetric>((value) =>
+                      GoogleAnalyticsAdminV1alphaCustomMetric.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customMetrics != null)
@@ -5942,21 +6103,24 @@ class GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse {
   /// be populated.
   core.String? nextPageToken;
 
-  GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse();
+  GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse({
+    this.firebaseLinks,
+    this.nextPageToken,
+  });
 
-  GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('firebaseLinks')) {
-      firebaseLinks = (_json['firebaseLinks'] as core.List)
-          .map<GoogleAnalyticsAdminV1alphaFirebaseLink>((value) =>
-              GoogleAnalyticsAdminV1alphaFirebaseLink.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse.fromJson(core.Map _json)
+      : this(
+          firebaseLinks: _json.containsKey('firebaseLinks')
+              ? (_json['firebaseLinks'] as core.List)
+                  .map<GoogleAnalyticsAdminV1alphaFirebaseLink>((value) =>
+                      GoogleAnalyticsAdminV1alphaFirebaseLink.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (firebaseLinks != null)
@@ -5976,21 +6140,24 @@ class GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse();
+  GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse({
+    this.googleAdsLinks,
+    this.nextPageToken,
+  });
 
-  GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('googleAdsLinks')) {
-      googleAdsLinks = (_json['googleAdsLinks'] as core.List)
-          .map<GoogleAnalyticsAdminV1alphaGoogleAdsLink>((value) =>
-              GoogleAnalyticsAdminV1alphaGoogleAdsLink.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse.fromJson(core.Map _json)
+      : this(
+          googleAdsLinks: _json.containsKey('googleAdsLinks')
+              ? (_json['googleAdsLinks'] as core.List)
+                  .map<GoogleAnalyticsAdminV1alphaGoogleAdsLink>((value) =>
+                      GoogleAnalyticsAdminV1alphaGoogleAdsLink.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (googleAdsLinks != null)
@@ -6011,21 +6178,25 @@ class GoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  GoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse();
+  GoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse({
+    this.iosAppDataStreams,
+    this.nextPageToken,
+  });
 
   GoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('iosAppDataStreams')) {
-      iosAppDataStreams = (_json['iosAppDataStreams'] as core.List)
-          .map<GoogleAnalyticsAdminV1alphaIosAppDataStream>((value) =>
-              GoogleAnalyticsAdminV1alphaIosAppDataStream.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          iosAppDataStreams: _json.containsKey('iosAppDataStreams')
+              ? (_json['iosAppDataStreams'] as core.List)
+                  .map<GoogleAnalyticsAdminV1alphaIosAppDataStream>((value) =>
+                      GoogleAnalyticsAdminV1alphaIosAppDataStream.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (iosAppDataStreams != null)
@@ -6046,22 +6217,28 @@ class GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse();
+  GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse({
+    this.measurementProtocolSecrets,
+    this.nextPageToken,
+  });
 
   GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('measurementProtocolSecrets')) {
-      measurementProtocolSecrets = (_json['measurementProtocolSecrets']
-              as core.List)
-          .map<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret>((value) =>
-              GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          measurementProtocolSecrets: _json
+                  .containsKey('measurementProtocolSecrets')
+              ? (_json['measurementProtocolSecrets'] as core.List)
+                  .map<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret>(
+                      (value) =>
+                          GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (measurementProtocolSecrets != null)
@@ -6083,20 +6260,24 @@ class GoogleAnalyticsAdminV1alphaListPropertiesResponse {
   /// caller.
   core.List<GoogleAnalyticsAdminV1alphaProperty>? properties;
 
-  GoogleAnalyticsAdminV1alphaListPropertiesResponse();
+  GoogleAnalyticsAdminV1alphaListPropertiesResponse({
+    this.nextPageToken,
+    this.properties,
+  });
 
-  GoogleAnalyticsAdminV1alphaListPropertiesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('properties')) {
-      properties = (_json['properties'] as core.List)
-          .map<GoogleAnalyticsAdminV1alphaProperty>((value) =>
-              GoogleAnalyticsAdminV1alphaProperty.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleAnalyticsAdminV1alphaListPropertiesResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          properties: _json.containsKey('properties')
+              ? (_json['properties'] as core.List)
+                  .map<GoogleAnalyticsAdminV1alphaProperty>((value) =>
+                      GoogleAnalyticsAdminV1alphaProperty.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -6117,20 +6298,24 @@ class GoogleAnalyticsAdminV1alphaListUserLinksResponse {
   /// These will be ordered stably, but in an arbitrary order.
   core.List<GoogleAnalyticsAdminV1alphaUserLink>? userLinks;
 
-  GoogleAnalyticsAdminV1alphaListUserLinksResponse();
+  GoogleAnalyticsAdminV1alphaListUserLinksResponse({
+    this.nextPageToken,
+    this.userLinks,
+  });
 
-  GoogleAnalyticsAdminV1alphaListUserLinksResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('userLinks')) {
-      userLinks = (_json['userLinks'] as core.List)
-          .map<GoogleAnalyticsAdminV1alphaUserLink>((value) =>
-              GoogleAnalyticsAdminV1alphaUserLink.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleAnalyticsAdminV1alphaListUserLinksResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          userLinks: _json.containsKey('userLinks')
+              ? (_json['userLinks'] as core.List)
+                  .map<GoogleAnalyticsAdminV1alphaUserLink>((value) =>
+                      GoogleAnalyticsAdminV1alphaUserLink.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -6150,21 +6335,24 @@ class GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse {
   /// caller.
   core.List<GoogleAnalyticsAdminV1alphaWebDataStream>? webDataStreams;
 
-  GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse();
+  GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse({
+    this.nextPageToken,
+    this.webDataStreams,
+  });
 
-  GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('webDataStreams')) {
-      webDataStreams = (_json['webDataStreams'] as core.List)
-          .map<GoogleAnalyticsAdminV1alphaWebDataStream>((value) =>
-              GoogleAnalyticsAdminV1alphaWebDataStream.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          webDataStreams: _json.containsKey('webDataStreams')
+              ? (_json['webDataStreams'] as core.List)
+                  .map<GoogleAnalyticsAdminV1alphaWebDataStream>((value) =>
+                      GoogleAnalyticsAdminV1alphaWebDataStream.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -6197,20 +6385,22 @@ class GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret {
   /// Output only.
   core.String? secretValue;
 
-  GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret();
+  GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret({
+    this.displayName,
+    this.name,
+    this.secretValue,
+  });
 
-  GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('secretValue')) {
-      secretValue = _json['secretValue'] as core.String;
-    }
-  }
+  GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          secretValue: _json.containsKey('secretValue')
+              ? _json['secretValue'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -6317,40 +6507,50 @@ class GoogleAnalyticsAdminV1alphaProperty {
   /// Output only.
   core.String? updateTime;
 
-  GoogleAnalyticsAdminV1alphaProperty();
+  GoogleAnalyticsAdminV1alphaProperty({
+    this.createTime,
+    this.currencyCode,
+    this.deleteTime,
+    this.displayName,
+    this.expireTime,
+    this.industryCategory,
+    this.name,
+    this.parent,
+    this.timeZone,
+    this.updateTime,
+  });
 
-  GoogleAnalyticsAdminV1alphaProperty.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'] as core.String;
-    }
-    if (_json.containsKey('deleteTime')) {
-      deleteTime = _json['deleteTime'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('expireTime')) {
-      expireTime = _json['expireTime'] as core.String;
-    }
-    if (_json.containsKey('industryCategory')) {
-      industryCategory = _json['industryCategory'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('parent')) {
-      parent = _json['parent'] as core.String;
-    }
-    if (_json.containsKey('timeZone')) {
-      timeZone = _json['timeZone'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  GoogleAnalyticsAdminV1alphaProperty.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          currencyCode: _json.containsKey('currencyCode')
+              ? _json['currencyCode'] as core.String
+              : null,
+          deleteTime: _json.containsKey('deleteTime')
+              ? _json['deleteTime'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          expireTime: _json.containsKey('expireTime')
+              ? _json['expireTime'] as core.String
+              : null,
+          industryCategory: _json.containsKey('industryCategory')
+              ? _json['industryCategory'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          parent: _json.containsKey('parent')
+              ? _json['parent'] as core.String
+              : null,
+          timeZone: _json.containsKey('timeZone')
+              ? _json['timeZone'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -6375,16 +6575,20 @@ class GoogleAnalyticsAdminV1alphaPropertySummary {
   /// properties/{property_id} Example: "properties/1000"
   core.String? property;
 
-  GoogleAnalyticsAdminV1alphaPropertySummary();
+  GoogleAnalyticsAdminV1alphaPropertySummary({
+    this.displayName,
+    this.property,
+  });
 
-  GoogleAnalyticsAdminV1alphaPropertySummary.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('property')) {
-      property = _json['property'] as core.String;
-    }
-  }
+  GoogleAnalyticsAdminV1alphaPropertySummary.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          property: _json.containsKey('property')
+              ? _json['property'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -6402,18 +6606,22 @@ class GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest {
   /// Must be configured in Developers Console as a Redirect URI
   core.String? redirectUri;
 
-  GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest();
+  GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest({
+    this.account,
+    this.redirectUri,
+  });
 
   GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('account')) {
-      account = GoogleAnalyticsAdminV1alphaAccount.fromJson(
-          _json['account'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('redirectUri')) {
-      redirectUri = _json['redirectUri'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          account: _json.containsKey('account')
+              ? GoogleAnalyticsAdminV1alphaAccount.fromJson(
+                  _json['account'] as core.Map<core.String, core.dynamic>)
+              : null,
+          redirectUri: _json.containsKey('redirectUri')
+              ? _json['redirectUri'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (account != null) 'account': account!.toJson(),
@@ -6426,14 +6634,17 @@ class GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse {
   /// The param to be passed in the ToS link.
   core.String? accountTicketId;
 
-  GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse();
+  GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse({
+    this.accountTicketId,
+  });
 
   GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('accountTicketId')) {
-      accountTicketId = _json['accountTicketId'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          accountTicketId: _json.containsKey('accountTicketId')
+              ? _json['accountTicketId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountTicketId != null) 'accountTicketId': accountTicketId!,
@@ -6494,41 +6705,51 @@ class GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest {
   /// Optional.
   core.List<core.String>? resourceType;
 
-  GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest();
+  GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest({
+    this.action,
+    this.actorEmail,
+    this.earliestChangeTime,
+    this.latestChangeTime,
+    this.pageSize,
+    this.pageToken,
+    this.property,
+    this.resourceType,
+  });
 
   GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('action')) {
-      action = (_json['action'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('actorEmail')) {
-      actorEmail = (_json['actorEmail'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('earliestChangeTime')) {
-      earliestChangeTime = _json['earliestChangeTime'] as core.String;
-    }
-    if (_json.containsKey('latestChangeTime')) {
-      latestChangeTime = _json['latestChangeTime'] as core.String;
-    }
-    if (_json.containsKey('pageSize')) {
-      pageSize = _json['pageSize'] as core.int;
-    }
-    if (_json.containsKey('pageToken')) {
-      pageToken = _json['pageToken'] as core.String;
-    }
-    if (_json.containsKey('property')) {
-      property = _json['property'] as core.String;
-    }
-    if (_json.containsKey('resourceType')) {
-      resourceType = (_json['resourceType'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+      core.Map _json)
+      : this(
+          action: _json.containsKey('action')
+              ? (_json['action'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          actorEmail: _json.containsKey('actorEmail')
+              ? (_json['actorEmail'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          earliestChangeTime: _json.containsKey('earliestChangeTime')
+              ? _json['earliestChangeTime'] as core.String
+              : null,
+          latestChangeTime: _json.containsKey('latestChangeTime')
+              ? _json['latestChangeTime'] as core.String
+              : null,
+          pageSize: _json.containsKey('pageSize')
+              ? _json['pageSize'] as core.int
+              : null,
+          pageToken: _json.containsKey('pageToken')
+              ? _json['pageToken'] as core.String
+              : null,
+          property: _json.containsKey('property')
+              ? _json['property'] as core.String
+              : null,
+          resourceType: _json.containsKey('resourceType')
+              ? (_json['resourceType'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
@@ -6553,21 +6774,25 @@ class GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse();
+  GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse({
+    this.changeHistoryEvents,
+    this.nextPageToken,
+  });
 
   GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('changeHistoryEvents')) {
-      changeHistoryEvents = (_json['changeHistoryEvents'] as core.List)
-          .map<GoogleAnalyticsAdminV1alphaChangeHistoryEvent>((value) =>
-              GoogleAnalyticsAdminV1alphaChangeHistoryEvent.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          changeHistoryEvents: _json.containsKey('changeHistoryEvents')
+              ? (_json['changeHistoryEvents'] as core.List)
+                  .map<GoogleAnalyticsAdminV1alphaChangeHistoryEvent>((value) =>
+                      GoogleAnalyticsAdminV1alphaChangeHistoryEvent.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (changeHistoryEvents != null)
@@ -6584,14 +6809,17 @@ class GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest {
   /// Required.
   GoogleAnalyticsAdminV1alphaUserLink? userLink;
 
-  GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest();
+  GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest({
+    this.userLink,
+  });
 
-  GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('userLink')) {
-      userLink = GoogleAnalyticsAdminV1alphaUserLink.fromJson(
-          _json['userLink'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest.fromJson(core.Map _json)
+      : this(
+          userLink: _json.containsKey('userLink')
+              ? GoogleAnalyticsAdminV1alphaUserLink.fromJson(
+                  _json['userLink'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (userLink != null) 'userLink': userLink!.toJson(),
@@ -6620,21 +6848,24 @@ class GoogleAnalyticsAdminV1alphaUserLink {
   /// Output only.
   core.String? name;
 
-  GoogleAnalyticsAdminV1alphaUserLink();
+  GoogleAnalyticsAdminV1alphaUserLink({
+    this.directRoles,
+    this.emailAddress,
+    this.name,
+  });
 
-  GoogleAnalyticsAdminV1alphaUserLink.fromJson(core.Map _json) {
-    if (_json.containsKey('directRoles')) {
-      directRoles = (_json['directRoles'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('emailAddress')) {
-      emailAddress = _json['emailAddress'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  GoogleAnalyticsAdminV1alphaUserLink.fromJson(core.Map _json)
+      : this(
+          directRoles: _json.containsKey('directRoles')
+              ? (_json['directRoles'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          emailAddress: _json.containsKey('emailAddress')
+              ? _json['emailAddress'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (directRoles != null) 'directRoles': directRoles!,
@@ -6691,31 +6922,38 @@ class GoogleAnalyticsAdminV1alphaWebDataStream {
   /// Output only.
   core.String? updateTime;
 
-  GoogleAnalyticsAdminV1alphaWebDataStream();
+  GoogleAnalyticsAdminV1alphaWebDataStream({
+    this.createTime,
+    this.defaultUri,
+    this.displayName,
+    this.firebaseAppId,
+    this.measurementId,
+    this.name,
+    this.updateTime,
+  });
 
-  GoogleAnalyticsAdminV1alphaWebDataStream.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('defaultUri')) {
-      defaultUri = _json['defaultUri'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('firebaseAppId')) {
-      firebaseAppId = _json['firebaseAppId'] as core.String;
-    }
-    if (_json.containsKey('measurementId')) {
-      measurementId = _json['measurementId'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  GoogleAnalyticsAdminV1alphaWebDataStream.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          defaultUri: _json.containsKey('defaultUri')
+              ? _json['defaultUri'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          firebaseAppId: _json.containsKey('firebaseAppId')
+              ? _json['firebaseAppId'] as core.String
+              : null,
+          measurementId: _json.containsKey('measurementId')
+              ? _json['measurementId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,

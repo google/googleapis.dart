@@ -315,20 +315,25 @@ class Error {
   /// Stack trace with detailed information of where error was generated.
   StackTrace? stackTrace;
 
-  Error();
+  Error({
+    this.context,
+    this.payload,
+    this.stackTrace,
+  });
 
-  Error.fromJson(core.Map _json) {
-    if (_json.containsKey('context')) {
-      context = _json['context'] as core.String;
-    }
-    if (_json.containsKey('payload')) {
-      payload = _json['payload'] as core.String;
-    }
-    if (_json.containsKey('stackTrace')) {
-      stackTrace = StackTrace.fromJson(
-          _json['stackTrace'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Error.fromJson(core.Map _json)
+      : this(
+          context: _json.containsKey('context')
+              ? _json['context'] as core.String
+              : null,
+          payload: _json.containsKey('payload')
+              ? _json['payload'] as core.String
+              : null,
+          stackTrace: _json.containsKey('stackTrace')
+              ? StackTrace.fromJson(
+                  _json['stackTrace'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (context != null) 'context': context!,
@@ -397,35 +402,42 @@ class Execution {
   /// Output only.
   core.String? workflowRevisionId;
 
-  Execution();
+  Execution({
+    this.argument,
+    this.endTime,
+    this.error,
+    this.name,
+    this.result,
+    this.startTime,
+    this.state,
+    this.workflowRevisionId,
+  });
 
-  Execution.fromJson(core.Map _json) {
-    if (_json.containsKey('argument')) {
-      argument = _json['argument'] as core.String;
-    }
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('error')) {
-      error =
-          Error.fromJson(_json['error'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('result')) {
-      result = _json['result'] as core.String;
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('workflowRevisionId')) {
-      workflowRevisionId = _json['workflowRevisionId'] as core.String;
-    }
-  }
+  Execution.fromJson(core.Map _json)
+      : this(
+          argument: _json.containsKey('argument')
+              ? _json['argument'] as core.String
+              : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          error: _json.containsKey('error')
+              ? Error.fromJson(
+                  _json['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          result: _json.containsKey('result')
+              ? _json['result'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          workflowRevisionId: _json.containsKey('workflowRevisionId')
+              ? _json['workflowRevisionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (argument != null) 'argument': argument!,
@@ -450,19 +462,23 @@ class ListExecutionsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListExecutionsResponse();
+  ListExecutionsResponse({
+    this.executions,
+    this.nextPageToken,
+  });
 
-  ListExecutionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('executions')) {
-      executions = (_json['executions'] as core.List)
-          .map<Execution>((value) =>
-              Execution.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListExecutionsResponse.fromJson(core.Map _json)
+      : this(
+          executions: _json.containsKey('executions')
+              ? (_json['executions'] as core.List)
+                  .map<Execution>((value) => Execution.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (executions != null)
@@ -485,19 +501,22 @@ class Position {
   /// The source code line number the current instruction was generated from.
   core.String? line;
 
-  Position();
+  Position({
+    this.column,
+    this.length,
+    this.line,
+  });
 
-  Position.fromJson(core.Map _json) {
-    if (_json.containsKey('column')) {
-      column = _json['column'] as core.String;
-    }
-    if (_json.containsKey('length')) {
-      length = _json['length'] as core.String;
-    }
-    if (_json.containsKey('line')) {
-      line = _json['line'] as core.String;
-    }
-  }
+  Position.fromJson(core.Map _json)
+      : this(
+          column: _json.containsKey('column')
+              ? _json['column'] as core.String
+              : null,
+          length: _json.containsKey('length')
+              ? _json['length'] as core.String
+              : null,
+          line: _json.containsKey('line') ? _json['line'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (column != null) 'column': column!,
@@ -511,16 +530,19 @@ class StackTrace {
   /// An array of Stack elements.
   core.List<StackTraceElement>? elements;
 
-  StackTrace();
+  StackTrace({
+    this.elements,
+  });
 
-  StackTrace.fromJson(core.Map _json) {
-    if (_json.containsKey('elements')) {
-      elements = (_json['elements'] as core.List)
-          .map<StackTraceElement>((value) => StackTraceElement.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  StackTrace.fromJson(core.Map _json)
+      : this(
+          elements: _json.containsKey('elements')
+              ? (_json['elements'] as core.List)
+                  .map<StackTraceElement>((value) => StackTraceElement.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (elements != null)
@@ -539,20 +561,23 @@ class StackTraceElement {
   /// The step the error occurred at.
   core.String? step;
 
-  StackTraceElement();
+  StackTraceElement({
+    this.position,
+    this.routine,
+    this.step,
+  });
 
-  StackTraceElement.fromJson(core.Map _json) {
-    if (_json.containsKey('position')) {
-      position = Position.fromJson(
-          _json['position'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('routine')) {
-      routine = _json['routine'] as core.String;
-    }
-    if (_json.containsKey('step')) {
-      step = _json['step'] as core.String;
-    }
-  }
+  StackTraceElement.fromJson(core.Map _json)
+      : this(
+          position: _json.containsKey('position')
+              ? Position.fromJson(
+                  _json['position'] as core.Map<core.String, core.dynamic>)
+              : null,
+          routine: _json.containsKey('routine')
+              ? _json['routine'] as core.String
+              : null,
+          step: _json.containsKey('step') ? _json['step'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (position != null) 'position': position!.toJson(),

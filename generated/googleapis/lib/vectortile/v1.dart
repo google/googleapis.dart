@@ -448,42 +448,49 @@ class Area {
   /// message. The z-order may be negative or zero. Prefer Area.basemap_z_order.
   core.int? zOrder;
 
-  Area();
+  Area({
+    this.basemapZOrder,
+    this.hasExternalEdges,
+    this.internalEdges,
+    this.loopBreaks,
+    this.triangleIndices,
+    this.type,
+    this.vertexOffsets,
+    this.zOrder,
+  });
 
-  Area.fromJson(core.Map _json) {
-    if (_json.containsKey('basemapZOrder')) {
-      basemapZOrder = BasemapZOrder.fromJson(
-          _json['basemapZOrder'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('hasExternalEdges')) {
-      hasExternalEdges = _json['hasExternalEdges'] as core.bool;
-    }
-    if (_json.containsKey('internalEdges')) {
-      internalEdges = (_json['internalEdges'] as core.List)
-          .map<core.int>((value) => value as core.int)
-          .toList();
-    }
-    if (_json.containsKey('loopBreaks')) {
-      loopBreaks = (_json['loopBreaks'] as core.List)
-          .map<core.int>((value) => value as core.int)
-          .toList();
-    }
-    if (_json.containsKey('triangleIndices')) {
-      triangleIndices = (_json['triangleIndices'] as core.List)
-          .map<core.int>((value) => value as core.int)
-          .toList();
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('vertexOffsets')) {
-      vertexOffsets = Vertex2DList.fromJson(
-          _json['vertexOffsets'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('zOrder')) {
-      zOrder = _json['zOrder'] as core.int;
-    }
-  }
+  Area.fromJson(core.Map _json)
+      : this(
+          basemapZOrder: _json.containsKey('basemapZOrder')
+              ? BasemapZOrder.fromJson(
+                  _json['basemapZOrder'] as core.Map<core.String, core.dynamic>)
+              : null,
+          hasExternalEdges: _json.containsKey('hasExternalEdges')
+              ? _json['hasExternalEdges'] as core.bool
+              : null,
+          internalEdges: _json.containsKey('internalEdges')
+              ? (_json['internalEdges'] as core.List)
+                  .map<core.int>((value) => value as core.int)
+                  .toList()
+              : null,
+          loopBreaks: _json.containsKey('loopBreaks')
+              ? (_json['loopBreaks'] as core.List)
+                  .map<core.int>((value) => value as core.int)
+                  .toList()
+              : null,
+          triangleIndices: _json.containsKey('triangleIndices')
+              ? (_json['triangleIndices'] as core.List)
+                  .map<core.int>((value) => value as core.int)
+                  .toList()
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          vertexOffsets: _json.containsKey('vertexOffsets')
+              ? Vertex2DList.fromJson(
+                  _json['vertexOffsets'] as core.Map<core.String, core.dynamic>)
+              : null,
+          zOrder:
+              _json.containsKey('zOrder') ? _json['zOrder'] as core.int : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (basemapZOrder != null) 'basemapZOrder': basemapZOrder!.toJson(),
@@ -515,19 +522,22 @@ class BasemapZOrder {
   /// rendered onto the basemap.
   core.int? zWithinGrade;
 
-  BasemapZOrder();
+  BasemapZOrder({
+    this.zGrade,
+    this.zPlane,
+    this.zWithinGrade,
+  });
 
-  BasemapZOrder.fromJson(core.Map _json) {
-    if (_json.containsKey('zGrade')) {
-      zGrade = _json['zGrade'] as core.int;
-    }
-    if (_json.containsKey('zPlane')) {
-      zPlane = _json['zPlane'] as core.int;
-    }
-    if (_json.containsKey('zWithinGrade')) {
-      zWithinGrade = _json['zWithinGrade'] as core.int;
-    }
-  }
+  BasemapZOrder.fromJson(core.Map _json)
+      : this(
+          zGrade:
+              _json.containsKey('zGrade') ? _json['zGrade'] as core.int : null,
+          zPlane:
+              _json.containsKey('zPlane') ? _json['zPlane'] as core.int : null,
+          zWithinGrade: _json.containsKey('zWithinGrade')
+              ? _json['zWithinGrade'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (zGrade != null) 'zGrade': zGrade!,
@@ -557,20 +567,21 @@ class ExtrudedArea {
   /// with a non-zero min_z.
   core.int? minZ;
 
-  ExtrudedArea();
+  ExtrudedArea({
+    this.area,
+    this.maxZ,
+    this.minZ,
+  });
 
-  ExtrudedArea.fromJson(core.Map _json) {
-    if (_json.containsKey('area')) {
-      area =
-          Area.fromJson(_json['area'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('maxZ')) {
-      maxZ = _json['maxZ'] as core.int;
-    }
-    if (_json.containsKey('minZ')) {
-      minZ = _json['minZ'] as core.int;
-    }
-  }
+  ExtrudedArea.fromJson(core.Map _json)
+      : this(
+          area: _json.containsKey('area')
+              ? Area.fromJson(
+                  _json['area'] as core.Map<core.String, core.dynamic>)
+              : null,
+          maxZ: _json.containsKey('maxZ') ? _json['maxZ'] as core.int : null,
+          minZ: _json.containsKey('minZ') ? _json['minZ'] as core.int : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (area != null) 'area': area!.toJson(),
@@ -645,33 +656,39 @@ class Feature {
   /// - "WATER" : Water features such as rivers and lakes.
   core.String? type;
 
-  Feature();
+  Feature({
+    this.displayName,
+    this.geometry,
+    this.placeId,
+    this.relations,
+    this.segmentInfo,
+    this.type,
+  });
 
-  Feature.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('geometry')) {
-      geometry = Geometry.fromJson(
-          _json['geometry'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('placeId')) {
-      placeId = _json['placeId'] as core.String;
-    }
-    if (_json.containsKey('relations')) {
-      relations = (_json['relations'] as core.List)
-          .map<Relation>((value) =>
-              Relation.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('segmentInfo')) {
-      segmentInfo = SegmentInfo.fromJson(
-          _json['segmentInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  Feature.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          geometry: _json.containsKey('geometry')
+              ? Geometry.fromJson(
+                  _json['geometry'] as core.Map<core.String, core.dynamic>)
+              : null,
+          placeId: _json.containsKey('placeId')
+              ? _json['placeId'] as core.String
+              : null,
+          relations: _json.containsKey('relations')
+              ? (_json['relations'] as core.List)
+                  .map<Relation>((value) => Relation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          segmentInfo: _json.containsKey('segmentInfo')
+              ? SegmentInfo.fromJson(
+                  _json['segmentInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -728,35 +745,41 @@ class FeatureTile {
   /// STATUS_OK_DATA_UNCHANGED.
   core.String? versionId;
 
-  FeatureTile();
+  FeatureTile({
+    this.coordinates,
+    this.features,
+    this.name,
+    this.providers,
+    this.status,
+    this.versionId,
+  });
 
-  FeatureTile.fromJson(core.Map _json) {
-    if (_json.containsKey('coordinates')) {
-      coordinates = TileCoordinates.fromJson(
-          _json['coordinates'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('features')) {
-      features = (_json['features'] as core.List)
-          .map<Feature>((value) =>
-              Feature.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('providers')) {
-      providers = (_json['providers'] as core.List)
-          .map<ProviderInfo>((value) => ProviderInfo.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-    if (_json.containsKey('versionId')) {
-      versionId = _json['versionId'] as core.String;
-    }
-  }
+  FeatureTile.fromJson(core.Map _json)
+      : this(
+          coordinates: _json.containsKey('coordinates')
+              ? TileCoordinates.fromJson(
+                  _json['coordinates'] as core.Map<core.String, core.dynamic>)
+              : null,
+          features: _json.containsKey('features')
+              ? (_json['features'] as core.List)
+                  .map<Feature>((value) => Feature.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          providers: _json.containsKey('providers')
+              ? (_json['providers'] as core.List)
+                  .map<ProviderInfo>((value) => ProviderInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+          versionId: _json.containsKey('versionId')
+              ? _json['versionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (coordinates != null) 'coordinates': coordinates!.toJson(),
@@ -795,19 +818,23 @@ class FirstDerivativeElevationGrid {
   /// rows\[0\] is the north-most row, and rows\[n\] is the south-most row.
   core.List<Row>? rows;
 
-  FirstDerivativeElevationGrid();
+  FirstDerivativeElevationGrid({
+    this.altitudeMultiplier,
+    this.rows,
+  });
 
-  FirstDerivativeElevationGrid.fromJson(core.Map _json) {
-    if (_json.containsKey('altitudeMultiplier')) {
-      altitudeMultiplier = (_json['altitudeMultiplier'] as core.num).toDouble();
-    }
-    if (_json.containsKey('rows')) {
-      rows = (_json['rows'] as core.List)
-          .map<Row>((value) =>
-              Row.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  FirstDerivativeElevationGrid.fromJson(core.Map _json)
+      : this(
+          altitudeMultiplier: _json.containsKey('altitudeMultiplier')
+              ? (_json['altitudeMultiplier'] as core.num).toDouble()
+              : null,
+          rows: _json.containsKey('rows')
+              ? (_json['rows'] as core.List)
+                  .map<Row>((value) => Row.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (altitudeMultiplier != null)
@@ -846,34 +873,40 @@ class Geometry {
   /// GetFeatureTileRequest.
   core.List<ModeledVolume>? modeledVolumes;
 
-  Geometry();
+  Geometry({
+    this.areas,
+    this.extrudedAreas,
+    this.lines,
+    this.modeledVolumes,
+  });
 
-  Geometry.fromJson(core.Map _json) {
-    if (_json.containsKey('areas')) {
-      areas = (_json['areas'] as core.List)
-          .map<Area>((value) =>
-              Area.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('extrudedAreas')) {
-      extrudedAreas = (_json['extrudedAreas'] as core.List)
-          .map<ExtrudedArea>((value) => ExtrudedArea.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('lines')) {
-      lines = (_json['lines'] as core.List)
-          .map<Line>((value) =>
-              Line.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('modeledVolumes')) {
-      modeledVolumes = (_json['modeledVolumes'] as core.List)
-          .map<ModeledVolume>((value) => ModeledVolume.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  Geometry.fromJson(core.Map _json)
+      : this(
+          areas: _json.containsKey('areas')
+              ? (_json['areas'] as core.List)
+                  .map<Area>((value) => Area.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          extrudedAreas: _json.containsKey('extrudedAreas')
+              ? (_json['extrudedAreas'] as core.List)
+                  .map<ExtrudedArea>((value) => ExtrudedArea.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          lines: _json.containsKey('lines')
+              ? (_json['lines'] as core.List)
+                  .map<Line>((value) => Line.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          modeledVolumes: _json.containsKey('modeledVolumes')
+              ? (_json['modeledVolumes'] as core.List)
+                  .map<ModeledVolume>((value) => ModeledVolume.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (areas != null)
@@ -918,21 +951,25 @@ class Line {
   /// zero. Prefer Line.basemap_z_order.
   core.int? zOrder;
 
-  Line();
+  Line({
+    this.basemapZOrder,
+    this.vertexOffsets,
+    this.zOrder,
+  });
 
-  Line.fromJson(core.Map _json) {
-    if (_json.containsKey('basemapZOrder')) {
-      basemapZOrder = BasemapZOrder.fromJson(
-          _json['basemapZOrder'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('vertexOffsets')) {
-      vertexOffsets = Vertex2DList.fromJson(
-          _json['vertexOffsets'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('zOrder')) {
-      zOrder = _json['zOrder'] as core.int;
-    }
-  }
+  Line.fromJson(core.Map _json)
+      : this(
+          basemapZOrder: _json.containsKey('basemapZOrder')
+              ? BasemapZOrder.fromJson(
+                  _json['basemapZOrder'] as core.Map<core.String, core.dynamic>)
+              : null,
+          vertexOffsets: _json.containsKey('vertexOffsets')
+              ? Vertex2DList.fromJson(
+                  _json['vertexOffsets'] as core.Map<core.String, core.dynamic>)
+              : null,
+          zOrder:
+              _json.containsKey('zOrder') ? _json['zOrder'] as core.int : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (basemapZOrder != null) 'basemapZOrder': basemapZOrder!.toJson(),
@@ -951,20 +988,24 @@ class ModeledVolume {
   /// The vertices present in the mesh defining the modeled volume.
   Vertex3DList? vertexOffsets;
 
-  ModeledVolume();
+  ModeledVolume({
+    this.strips,
+    this.vertexOffsets,
+  });
 
-  ModeledVolume.fromJson(core.Map _json) {
-    if (_json.containsKey('strips')) {
-      strips = (_json['strips'] as core.List)
-          .map<TriangleStrip>((value) => TriangleStrip.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('vertexOffsets')) {
-      vertexOffsets = Vertex3DList.fromJson(
-          _json['vertexOffsets'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ModeledVolume.fromJson(core.Map _json)
+      : this(
+          strips: _json.containsKey('strips')
+              ? (_json['strips'] as core.List)
+                  .map<TriangleStrip>((value) => TriangleStrip.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          vertexOffsets: _json.containsKey('vertexOffsets')
+              ? Vertex3DList.fromJson(
+                  _json['vertexOffsets'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (strips != null)
@@ -981,13 +1022,16 @@ class ProviderInfo {
   /// This string is not localized.
   core.String? description;
 
-  ProviderInfo();
+  ProviderInfo({
+    this.description,
+  });
 
-  ProviderInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-  }
+  ProviderInfo.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -1012,16 +1056,20 @@ class Relation {
   /// the related feature.
   core.String? relationType;
 
-  Relation();
+  Relation({
+    this.relatedFeatureIndex,
+    this.relationType,
+  });
 
-  Relation.fromJson(core.Map _json) {
-    if (_json.containsKey('relatedFeatureIndex')) {
-      relatedFeatureIndex = _json['relatedFeatureIndex'] as core.int;
-    }
-    if (_json.containsKey('relationType')) {
-      relationType = _json['relationType'] as core.String;
-    }
-  }
+  Relation.fromJson(core.Map _json)
+      : this(
+          relatedFeatureIndex: _json.containsKey('relatedFeatureIndex')
+              ? _json['relatedFeatureIndex'] as core.int
+              : null,
+          relationType: _json.containsKey('relationType')
+              ? _json['relationType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (relatedFeatureIndex != null)
@@ -1037,13 +1085,16 @@ class RoadInfo {
   /// E.g., roads with signs that say "Private", or "No trespassing."
   core.bool? isPrivate;
 
-  RoadInfo();
+  RoadInfo({
+    this.isPrivate,
+  });
 
-  RoadInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('isPrivate')) {
-      isPrivate = _json['isPrivate'] as core.bool;
-    }
-  }
+  RoadInfo.fromJson(core.Map _json)
+      : this(
+          isPrivate: _json.containsKey('isPrivate')
+              ? _json['isPrivate'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (isPrivate != null) 'isPrivate': isPrivate!,
@@ -1063,15 +1114,18 @@ class Row {
   /// + altitude_diffs\[n-1\] * altitude_multiplier.
   core.List<core.int>? altitudeDiffs;
 
-  Row();
+  Row({
+    this.altitudeDiffs,
+  });
 
-  Row.fromJson(core.Map _json) {
-    if (_json.containsKey('altitudeDiffs')) {
-      altitudeDiffs = (_json['altitudeDiffs'] as core.List)
-          .map<core.int>((value) => value as core.int)
-          .toList();
-    }
-  }
+  Row.fromJson(core.Map _json)
+      : this(
+          altitudeDiffs: _json.containsKey('altitudeDiffs')
+              ? (_json['altitudeDiffs'] as core.List)
+                  .map<core.int>((value) => value as core.int)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (altitudeDiffs != null) 'altitudeDiffs': altitudeDiffs!,
@@ -1137,22 +1191,28 @@ class SecondDerivativeElevationGrid {
   /// vertical resolution of the grid).
   core.int? rowCount;
 
-  SecondDerivativeElevationGrid();
+  SecondDerivativeElevationGrid({
+    this.altitudeMultiplier,
+    this.columnCount,
+    this.encodedData,
+    this.rowCount,
+  });
 
-  SecondDerivativeElevationGrid.fromJson(core.Map _json) {
-    if (_json.containsKey('altitudeMultiplier')) {
-      altitudeMultiplier = (_json['altitudeMultiplier'] as core.num).toDouble();
-    }
-    if (_json.containsKey('columnCount')) {
-      columnCount = _json['columnCount'] as core.int;
-    }
-    if (_json.containsKey('encodedData')) {
-      encodedData = _json['encodedData'] as core.String;
-    }
-    if (_json.containsKey('rowCount')) {
-      rowCount = _json['rowCount'] as core.int;
-    }
-  }
+  SecondDerivativeElevationGrid.fromJson(core.Map _json)
+      : this(
+          altitudeMultiplier: _json.containsKey('altitudeMultiplier')
+              ? (_json['altitudeMultiplier'] as core.num).toDouble()
+              : null,
+          columnCount: _json.containsKey('columnCount')
+              ? _json['columnCount'] as core.int
+              : null,
+          encodedData: _json.containsKey('encodedData')
+              ? _json['encodedData'] as core.String
+              : null,
+          rowCount: _json.containsKey('rowCount')
+              ? _json['rowCount'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (altitudeMultiplier != null)
@@ -1168,14 +1228,17 @@ class SegmentInfo {
   /// Metadata for features with the ROAD FeatureType.
   RoadInfo? roadInfo;
 
-  SegmentInfo();
+  SegmentInfo({
+    this.roadInfo,
+  });
 
-  SegmentInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('roadInfo')) {
-      roadInfo = RoadInfo.fromJson(
-          _json['roadInfo'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  SegmentInfo.fromJson(core.Map _json)
+      : this(
+          roadInfo: _json.containsKey('roadInfo')
+              ? RoadInfo.fromJson(
+                  _json['roadInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (roadInfo != null) 'roadInfo': roadInfo!.toJson(),
@@ -1203,25 +1266,29 @@ class TerrainTile {
   /// .
   SecondDerivativeElevationGrid? secondDerivative;
 
-  TerrainTile();
+  TerrainTile({
+    this.coordinates,
+    this.firstDerivative,
+    this.name,
+    this.secondDerivative,
+  });
 
-  TerrainTile.fromJson(core.Map _json) {
-    if (_json.containsKey('coordinates')) {
-      coordinates = TileCoordinates.fromJson(
-          _json['coordinates'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('firstDerivative')) {
-      firstDerivative = FirstDerivativeElevationGrid.fromJson(
-          _json['firstDerivative'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('secondDerivative')) {
-      secondDerivative = SecondDerivativeElevationGrid.fromJson(
-          _json['secondDerivative'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  TerrainTile.fromJson(core.Map _json)
+      : this(
+          coordinates: _json.containsKey('coordinates')
+              ? TileCoordinates.fromJson(
+                  _json['coordinates'] as core.Map<core.String, core.dynamic>)
+              : null,
+          firstDerivative: _json.containsKey('firstDerivative')
+              ? FirstDerivativeElevationGrid.fromJson(_json['firstDerivative']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          secondDerivative: _json.containsKey('secondDerivative')
+              ? SecondDerivativeElevationGrid.fromJson(_json['secondDerivative']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (coordinates != null) 'coordinates': coordinates!.toJson(),
@@ -1264,19 +1331,18 @@ class TileCoordinates {
   /// Required.
   core.int? zoom;
 
-  TileCoordinates();
+  TileCoordinates({
+    this.x,
+    this.y,
+    this.zoom,
+  });
 
-  TileCoordinates.fromJson(core.Map _json) {
-    if (_json.containsKey('x')) {
-      x = _json['x'] as core.int;
-    }
-    if (_json.containsKey('y')) {
-      y = _json['y'] as core.int;
-    }
-    if (_json.containsKey('zoom')) {
-      zoom = _json['zoom'] as core.int;
-    }
-  }
+  TileCoordinates.fromJson(core.Map _json)
+      : this(
+          x: _json.containsKey('x') ? _json['x'] as core.int : null,
+          y: _json.containsKey('y') ? _json['y'] as core.int : null,
+          zoom: _json.containsKey('zoom') ? _json['zoom'] as core.int : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (x != null) 'x': x!,
@@ -1297,15 +1363,18 @@ class TriangleStrip {
   /// triangle strip.
   core.List<core.int>? vertexIndices;
 
-  TriangleStrip();
+  TriangleStrip({
+    this.vertexIndices,
+  });
 
-  TriangleStrip.fromJson(core.Map _json) {
-    if (_json.containsKey('vertexIndices')) {
-      vertexIndices = (_json['vertexIndices'] as core.List)
-          .map<core.int>((value) => value as core.int)
-          .toList();
-    }
-  }
+  TriangleStrip.fromJson(core.Map _json)
+      : this(
+          vertexIndices: _json.containsKey('vertexIndices')
+              ? (_json['vertexIndices'] as core.List)
+                  .map<core.int>((value) => value as core.int)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (vertexIndices != null) 'vertexIndices': vertexIndices!,
@@ -1325,20 +1394,24 @@ class Vertex2DList {
   /// List of y-offsets in local tile coordinates.
   core.List<core.int>? yOffsets;
 
-  Vertex2DList();
+  Vertex2DList({
+    this.xOffsets,
+    this.yOffsets,
+  });
 
-  Vertex2DList.fromJson(core.Map _json) {
-    if (_json.containsKey('xOffsets')) {
-      xOffsets = (_json['xOffsets'] as core.List)
-          .map<core.int>((value) => value as core.int)
-          .toList();
-    }
-    if (_json.containsKey('yOffsets')) {
-      yOffsets = (_json['yOffsets'] as core.List)
-          .map<core.int>((value) => value as core.int)
-          .toList();
-    }
-  }
+  Vertex2DList.fromJson(core.Map _json)
+      : this(
+          xOffsets: _json.containsKey('xOffsets')
+              ? (_json['xOffsets'] as core.List)
+                  .map<core.int>((value) => value as core.int)
+                  .toList()
+              : null,
+          yOffsets: _json.containsKey('yOffsets')
+              ? (_json['yOffsets'] as core.List)
+                  .map<core.int>((value) => value as core.int)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (xOffsets != null) 'xOffsets': xOffsets!,
@@ -1360,25 +1433,30 @@ class Vertex3DList {
   /// List of z-offsets in local tile coordinates.
   core.List<core.int>? zOffsets;
 
-  Vertex3DList();
+  Vertex3DList({
+    this.xOffsets,
+    this.yOffsets,
+    this.zOffsets,
+  });
 
-  Vertex3DList.fromJson(core.Map _json) {
-    if (_json.containsKey('xOffsets')) {
-      xOffsets = (_json['xOffsets'] as core.List)
-          .map<core.int>((value) => value as core.int)
-          .toList();
-    }
-    if (_json.containsKey('yOffsets')) {
-      yOffsets = (_json['yOffsets'] as core.List)
-          .map<core.int>((value) => value as core.int)
-          .toList();
-    }
-    if (_json.containsKey('zOffsets')) {
-      zOffsets = (_json['zOffsets'] as core.List)
-          .map<core.int>((value) => value as core.int)
-          .toList();
-    }
-  }
+  Vertex3DList.fromJson(core.Map _json)
+      : this(
+          xOffsets: _json.containsKey('xOffsets')
+              ? (_json['xOffsets'] as core.List)
+                  .map<core.int>((value) => value as core.int)
+                  .toList()
+              : null,
+          yOffsets: _json.containsKey('yOffsets')
+              ? (_json['yOffsets'] as core.List)
+                  .map<core.int>((value) => value as core.int)
+                  .toList()
+              : null,
+          zOffsets: _json.containsKey('zOffsets')
+              ? (_json['zOffsets'] as core.List)
+                  .map<core.int>((value) => value as core.int)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (xOffsets != null) 'xOffsets': xOffsets!,

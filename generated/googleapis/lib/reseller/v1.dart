@@ -1033,40 +1033,50 @@ class Address {
   /// An example of a `region` value is `CA` for the state of California.
   core.String? region;
 
-  Address();
+  Address({
+    this.addressLine1,
+    this.addressLine2,
+    this.addressLine3,
+    this.contactName,
+    this.countryCode,
+    this.kind,
+    this.locality,
+    this.organizationName,
+    this.postalCode,
+    this.region,
+  });
 
-  Address.fromJson(core.Map _json) {
-    if (_json.containsKey('addressLine1')) {
-      addressLine1 = _json['addressLine1'] as core.String;
-    }
-    if (_json.containsKey('addressLine2')) {
-      addressLine2 = _json['addressLine2'] as core.String;
-    }
-    if (_json.containsKey('addressLine3')) {
-      addressLine3 = _json['addressLine3'] as core.String;
-    }
-    if (_json.containsKey('contactName')) {
-      contactName = _json['contactName'] as core.String;
-    }
-    if (_json.containsKey('countryCode')) {
-      countryCode = _json['countryCode'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('locality')) {
-      locality = _json['locality'] as core.String;
-    }
-    if (_json.containsKey('organizationName')) {
-      organizationName = _json['organizationName'] as core.String;
-    }
-    if (_json.containsKey('postalCode')) {
-      postalCode = _json['postalCode'] as core.String;
-    }
-    if (_json.containsKey('region')) {
-      region = _json['region'] as core.String;
-    }
-  }
+  Address.fromJson(core.Map _json)
+      : this(
+          addressLine1: _json.containsKey('addressLine1')
+              ? _json['addressLine1'] as core.String
+              : null,
+          addressLine2: _json.containsKey('addressLine2')
+              ? _json['addressLine2'] as core.String
+              : null,
+          addressLine3: _json.containsKey('addressLine3')
+              ? _json['addressLine3'] as core.String
+              : null,
+          contactName: _json.containsKey('contactName')
+              ? _json['contactName'] as core.String
+              : null,
+          countryCode: _json.containsKey('countryCode')
+              ? _json['countryCode'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          locality: _json.containsKey('locality')
+              ? _json['locality'] as core.String
+              : null,
+          organizationName: _json.containsKey('organizationName')
+              ? _json['organizationName'] as core.String
+              : null,
+          postalCode: _json.containsKey('postalCode')
+              ? _json['postalCode'] as core.String
+              : null,
+          region: _json.containsKey('region')
+              ? _json['region'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (addressLine1 != null) 'addressLine1': addressLine1!,
@@ -1125,26 +1135,31 @@ class ChangePlanRequest {
   /// The seats property is the number of user seat licenses.
   Seats? seats;
 
-  ChangePlanRequest();
+  ChangePlanRequest({
+    this.dealCode,
+    this.kind,
+    this.planName,
+    this.purchaseOrderId,
+    this.seats,
+  });
 
-  ChangePlanRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('dealCode')) {
-      dealCode = _json['dealCode'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('planName')) {
-      planName = _json['planName'] as core.String;
-    }
-    if (_json.containsKey('purchaseOrderId')) {
-      purchaseOrderId = _json['purchaseOrderId'] as core.String;
-    }
-    if (_json.containsKey('seats')) {
-      seats =
-          Seats.fromJson(_json['seats'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ChangePlanRequest.fromJson(core.Map _json)
+      : this(
+          dealCode: _json.containsKey('dealCode')
+              ? _json['dealCode'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          planName: _json.containsKey('planName')
+              ? _json['planName'] as core.String
+              : null,
+          purchaseOrderId: _json.containsKey('purchaseOrderId')
+              ? _json['purchaseOrderId'] as core.String
+              : null,
+          seats: _json.containsKey('seats')
+              ? Seats.fromJson(
+                  _json['seats'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dealCode != null) 'dealCode': dealCode!,
@@ -1219,42 +1234,52 @@ class Customer {
   /// console.
   core.String? resourceUiUrl;
 
-  Customer();
+  Customer({
+    this.alternateEmail,
+    this.customerDomain,
+    this.customerDomainVerified,
+    this.customerId,
+    this.customerType,
+    this.kind,
+    this.phoneNumber,
+    this.postalAddress,
+    this.primaryAdmin,
+    this.resourceUiUrl,
+  });
 
-  Customer.fromJson(core.Map _json) {
-    if (_json.containsKey('alternateEmail')) {
-      alternateEmail = _json['alternateEmail'] as core.String;
-    }
-    if (_json.containsKey('customerDomain')) {
-      customerDomain = _json['customerDomain'] as core.String;
-    }
-    if (_json.containsKey('customerDomainVerified')) {
-      customerDomainVerified = _json['customerDomainVerified'] as core.bool;
-    }
-    if (_json.containsKey('customerId')) {
-      customerId = _json['customerId'] as core.String;
-    }
-    if (_json.containsKey('customerType')) {
-      customerType = _json['customerType'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('phoneNumber')) {
-      phoneNumber = _json['phoneNumber'] as core.String;
-    }
-    if (_json.containsKey('postalAddress')) {
-      postalAddress = Address.fromJson(
-          _json['postalAddress'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('primaryAdmin')) {
-      primaryAdmin = PrimaryAdmin.fromJson(
-          _json['primaryAdmin'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('resourceUiUrl')) {
-      resourceUiUrl = _json['resourceUiUrl'] as core.String;
-    }
-  }
+  Customer.fromJson(core.Map _json)
+      : this(
+          alternateEmail: _json.containsKey('alternateEmail')
+              ? _json['alternateEmail'] as core.String
+              : null,
+          customerDomain: _json.containsKey('customerDomain')
+              ? _json['customerDomain'] as core.String
+              : null,
+          customerDomainVerified: _json.containsKey('customerDomainVerified')
+              ? _json['customerDomainVerified'] as core.bool
+              : null,
+          customerId: _json.containsKey('customerId')
+              ? _json['customerId'] as core.String
+              : null,
+          customerType: _json.containsKey('customerType')
+              ? _json['customerType'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          phoneNumber: _json.containsKey('phoneNumber')
+              ? _json['phoneNumber'] as core.String
+              : null,
+          postalAddress: _json.containsKey('postalAddress')
+              ? Address.fromJson(
+                  _json['postalAddress'] as core.Map<core.String, core.dynamic>)
+              : null,
+          primaryAdmin: _json.containsKey('primaryAdmin')
+              ? PrimaryAdmin.fromJson(
+                  _json['primaryAdmin'] as core.Map<core.String, core.dynamic>)
+              : null,
+          resourceUiUrl: _json.containsKey('resourceUiUrl')
+              ? _json['resourceUiUrl'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alternateEmail != null) 'alternateEmail': alternateEmail!,
@@ -1277,13 +1302,16 @@ class PrimaryAdmin {
   /// TEAM customer
   core.String? primaryEmail;
 
-  PrimaryAdmin();
+  PrimaryAdmin({
+    this.primaryEmail,
+  });
 
-  PrimaryAdmin.fromJson(core.Map _json) {
-    if (_json.containsKey('primaryEmail')) {
-      primaryEmail = _json['primaryEmail'] as core.String;
-    }
-  }
+  PrimaryAdmin.fromJson(core.Map _json)
+      : this(
+          primaryEmail: _json.containsKey('primaryEmail')
+              ? _json['primaryEmail'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (primaryEmail != null) 'primaryEmail': primaryEmail!,
@@ -1304,16 +1332,18 @@ class RenewalSettings {
   /// property.
   core.String? renewalType;
 
-  RenewalSettings();
+  RenewalSettings({
+    this.kind,
+    this.renewalType,
+  });
 
-  RenewalSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('renewalType')) {
-      renewalType = _json['renewalType'] as core.String;
-    }
-  }
+  RenewalSettings.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          renewalType: _json.containsKey('renewalType')
+              ? _json['renewalType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
@@ -1329,19 +1359,23 @@ class ResellernotifyGetwatchdetailsResponse {
   /// Topic name of the PubSub
   core.String? topicName;
 
-  ResellernotifyGetwatchdetailsResponse();
+  ResellernotifyGetwatchdetailsResponse({
+    this.serviceAccountEmailAddresses,
+    this.topicName,
+  });
 
-  ResellernotifyGetwatchdetailsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('serviceAccountEmailAddresses')) {
-      serviceAccountEmailAddresses =
-          (_json['serviceAccountEmailAddresses'] as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList();
-    }
-    if (_json.containsKey('topicName')) {
-      topicName = _json['topicName'] as core.String;
-    }
-  }
+  ResellernotifyGetwatchdetailsResponse.fromJson(core.Map _json)
+      : this(
+          serviceAccountEmailAddresses:
+              _json.containsKey('serviceAccountEmailAddresses')
+                  ? (_json['serviceAccountEmailAddresses'] as core.List)
+                      .map<core.String>((value) => value as core.String)
+                      .toList()
+                  : null,
+          topicName: _json.containsKey('topicName')
+              ? _json['topicName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (serviceAccountEmailAddresses != null)
@@ -1355,13 +1389,16 @@ class ResellernotifyResource {
   /// Topic name of the PubSub
   core.String? topicName;
 
-  ResellernotifyResource();
+  ResellernotifyResource({
+    this.topicName,
+  });
 
-  ResellernotifyResource.fromJson(core.Map _json) {
-    if (_json.containsKey('topicName')) {
-      topicName = _json['topicName'] as core.String;
-    }
-  }
+  ResellernotifyResource.fromJson(core.Map _json)
+      : this(
+          topicName: _json.containsKey('topicName')
+              ? _json['topicName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (topicName != null) 'topicName': topicName!,
@@ -1404,22 +1441,26 @@ class Seats {
   /// a license to every user.
   core.int? numberOfSeats;
 
-  Seats();
+  Seats({
+    this.kind,
+    this.licensedNumberOfSeats,
+    this.maximumNumberOfSeats,
+    this.numberOfSeats,
+  });
 
-  Seats.fromJson(core.Map _json) {
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('licensedNumberOfSeats')) {
-      licensedNumberOfSeats = _json['licensedNumberOfSeats'] as core.int;
-    }
-    if (_json.containsKey('maximumNumberOfSeats')) {
-      maximumNumberOfSeats = _json['maximumNumberOfSeats'] as core.int;
-    }
-    if (_json.containsKey('numberOfSeats')) {
-      numberOfSeats = _json['numberOfSeats'] as core.int;
-    }
-  }
+  Seats.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          licensedNumberOfSeats: _json.containsKey('licensedNumberOfSeats')
+              ? _json['licensedNumberOfSeats'] as core.int
+              : null,
+          maximumNumberOfSeats: _json.containsKey('maximumNumberOfSeats')
+              ? _json['maximumNumberOfSeats'] as core.int
+              : null,
+          numberOfSeats: _json.containsKey('numberOfSeats')
+              ? _json['numberOfSeats'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
@@ -1448,16 +1489,20 @@ class SubscriptionPlanCommitmentInterval {
   /// See an example Epoch converter.
   core.String? startTime;
 
-  SubscriptionPlanCommitmentInterval();
+  SubscriptionPlanCommitmentInterval({
+    this.endTime,
+    this.startTime,
+  });
 
-  SubscriptionPlanCommitmentInterval.fromJson(core.Map _json) {
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-  }
+  SubscriptionPlanCommitmentInterval.fromJson(core.Map _json)
+      : this(
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
@@ -1500,20 +1545,26 @@ class SubscriptionPlan {
   /// exclusive to the Cloud Identity SKU and does not incur any billing.
   core.String? planName;
 
-  SubscriptionPlan();
+  SubscriptionPlan({
+    this.commitmentInterval,
+    this.isCommitmentPlan,
+    this.planName,
+  });
 
-  SubscriptionPlan.fromJson(core.Map _json) {
-    if (_json.containsKey('commitmentInterval')) {
-      commitmentInterval = SubscriptionPlanCommitmentInterval.fromJson(
-          _json['commitmentInterval'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('isCommitmentPlan')) {
-      isCommitmentPlan = _json['isCommitmentPlan'] as core.bool;
-    }
-    if (_json.containsKey('planName')) {
-      planName = _json['planName'] as core.String;
-    }
-  }
+  SubscriptionPlan.fromJson(core.Map _json)
+      : this(
+          commitmentInterval: _json.containsKey('commitmentInterval')
+              ? SubscriptionPlanCommitmentInterval.fromJson(
+                  _json['commitmentInterval']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          isCommitmentPlan: _json.containsKey('isCommitmentPlan')
+              ? _json['isCommitmentPlan'] as core.bool
+              : null,
+          planName: _json.containsKey('planName')
+              ? _json['planName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (commitmentInterval != null)
@@ -1547,20 +1598,26 @@ class SubscriptionTransferInfo {
   /// The time is in milliseconds using UNIX Epoch format.
   core.String? transferabilityExpirationTime;
 
-  SubscriptionTransferInfo();
+  SubscriptionTransferInfo({
+    this.currentLegacySkuId,
+    this.minimumTransferableSeats,
+    this.transferabilityExpirationTime,
+  });
 
-  SubscriptionTransferInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('currentLegacySkuId')) {
-      currentLegacySkuId = _json['currentLegacySkuId'] as core.String;
-    }
-    if (_json.containsKey('minimumTransferableSeats')) {
-      minimumTransferableSeats = _json['minimumTransferableSeats'] as core.int;
-    }
-    if (_json.containsKey('transferabilityExpirationTime')) {
-      transferabilityExpirationTime =
-          _json['transferabilityExpirationTime'] as core.String;
-    }
-  }
+  SubscriptionTransferInfo.fromJson(core.Map _json)
+      : this(
+          currentLegacySkuId: _json.containsKey('currentLegacySkuId')
+              ? _json['currentLegacySkuId'] as core.String
+              : null,
+          minimumTransferableSeats:
+              _json.containsKey('minimumTransferableSeats')
+                  ? _json['minimumTransferableSeats'] as core.int
+                  : null,
+          transferabilityExpirationTime:
+              _json.containsKey('transferabilityExpirationTime')
+                  ? _json['transferabilityExpirationTime'] as core.String
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (currentLegacySkuId != null)
@@ -1589,16 +1646,20 @@ class SubscriptionTrialSettings {
   /// Epoch converter.
   core.String? trialEndTime;
 
-  SubscriptionTrialSettings();
+  SubscriptionTrialSettings({
+    this.isInTrial,
+    this.trialEndTime,
+  });
 
-  SubscriptionTrialSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('isInTrial')) {
-      isInTrial = _json['isInTrial'] as core.bool;
-    }
-    if (_json.containsKey('trialEndTime')) {
-      trialEndTime = _json['trialEndTime'] as core.String;
-    }
-  }
+  SubscriptionTrialSettings.fromJson(core.Map _json)
+      : this(
+          isInTrial: _json.containsKey('isInTrial')
+              ? _json['isInTrial'] as core.bool
+              : null,
+          trialEndTime: _json.containsKey('trialEndTime')
+              ? _json['trialEndTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (isInTrial != null) 'isInTrial': isInTrial!,
@@ -1727,71 +1788,88 @@ class Subscription {
   /// For more information, see the API concepts.
   SubscriptionTrialSettings? trialSettings;
 
-  Subscription();
+  Subscription({
+    this.billingMethod,
+    this.creationTime,
+    this.customerDomain,
+    this.customerId,
+    this.dealCode,
+    this.kind,
+    this.plan,
+    this.purchaseOrderId,
+    this.renewalSettings,
+    this.resourceUiUrl,
+    this.seats,
+    this.skuId,
+    this.skuName,
+    this.status,
+    this.subscriptionId,
+    this.suspensionReasons,
+    this.transferInfo,
+    this.trialSettings,
+  });
 
-  Subscription.fromJson(core.Map _json) {
-    if (_json.containsKey('billingMethod')) {
-      billingMethod = _json['billingMethod'] as core.String;
-    }
-    if (_json.containsKey('creationTime')) {
-      creationTime = _json['creationTime'] as core.String;
-    }
-    if (_json.containsKey('customerDomain')) {
-      customerDomain = _json['customerDomain'] as core.String;
-    }
-    if (_json.containsKey('customerId')) {
-      customerId = _json['customerId'] as core.String;
-    }
-    if (_json.containsKey('dealCode')) {
-      dealCode = _json['dealCode'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('plan')) {
-      plan = SubscriptionPlan.fromJson(
-          _json['plan'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('purchaseOrderId')) {
-      purchaseOrderId = _json['purchaseOrderId'] as core.String;
-    }
-    if (_json.containsKey('renewalSettings')) {
-      renewalSettings = RenewalSettings.fromJson(
-          _json['renewalSettings'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('resourceUiUrl')) {
-      resourceUiUrl = _json['resourceUiUrl'] as core.String;
-    }
-    if (_json.containsKey('seats')) {
-      seats =
-          Seats.fromJson(_json['seats'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('skuId')) {
-      skuId = _json['skuId'] as core.String;
-    }
-    if (_json.containsKey('skuName')) {
-      skuName = _json['skuName'] as core.String;
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-    if (_json.containsKey('subscriptionId')) {
-      subscriptionId = _json['subscriptionId'] as core.String;
-    }
-    if (_json.containsKey('suspensionReasons')) {
-      suspensionReasons = (_json['suspensionReasons'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('transferInfo')) {
-      transferInfo = SubscriptionTransferInfo.fromJson(
-          _json['transferInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('trialSettings')) {
-      trialSettings = SubscriptionTrialSettings.fromJson(
-          _json['trialSettings'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Subscription.fromJson(core.Map _json)
+      : this(
+          billingMethod: _json.containsKey('billingMethod')
+              ? _json['billingMethod'] as core.String
+              : null,
+          creationTime: _json.containsKey('creationTime')
+              ? _json['creationTime'] as core.String
+              : null,
+          customerDomain: _json.containsKey('customerDomain')
+              ? _json['customerDomain'] as core.String
+              : null,
+          customerId: _json.containsKey('customerId')
+              ? _json['customerId'] as core.String
+              : null,
+          dealCode: _json.containsKey('dealCode')
+              ? _json['dealCode'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          plan: _json.containsKey('plan')
+              ? SubscriptionPlan.fromJson(
+                  _json['plan'] as core.Map<core.String, core.dynamic>)
+              : null,
+          purchaseOrderId: _json.containsKey('purchaseOrderId')
+              ? _json['purchaseOrderId'] as core.String
+              : null,
+          renewalSettings: _json.containsKey('renewalSettings')
+              ? RenewalSettings.fromJson(_json['renewalSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          resourceUiUrl: _json.containsKey('resourceUiUrl')
+              ? _json['resourceUiUrl'] as core.String
+              : null,
+          seats: _json.containsKey('seats')
+              ? Seats.fromJson(
+                  _json['seats'] as core.Map<core.String, core.dynamic>)
+              : null,
+          skuId:
+              _json.containsKey('skuId') ? _json['skuId'] as core.String : null,
+          skuName: _json.containsKey('skuName')
+              ? _json['skuName'] as core.String
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+          subscriptionId: _json.containsKey('subscriptionId')
+              ? _json['subscriptionId'] as core.String
+              : null,
+          suspensionReasons: _json.containsKey('suspensionReasons')
+              ? (_json['suspensionReasons'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          transferInfo: _json.containsKey('transferInfo')
+              ? SubscriptionTransferInfo.fromJson(
+                  _json['transferInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          trialSettings: _json.containsKey('trialSettings')
+              ? SubscriptionTrialSettings.fromJson(
+                  _json['trialSettings'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (billingMethod != null) 'billingMethod': billingMethod!,
@@ -1837,22 +1915,25 @@ class Subscriptions {
   /// The subscriptions in this page of results.
   core.List<Subscription>? subscriptions;
 
-  Subscriptions();
+  Subscriptions({
+    this.kind,
+    this.nextPageToken,
+    this.subscriptions,
+  });
 
-  Subscriptions.fromJson(core.Map _json) {
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('subscriptions')) {
-      subscriptions = (_json['subscriptions'] as core.List)
-          .map<Subscription>((value) => Subscription.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  Subscriptions.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          subscriptions: _json.containsKey('subscriptions')
+              ? (_json['subscriptions'] as core.List)
+                  .map<Subscription>((value) => Subscription.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,

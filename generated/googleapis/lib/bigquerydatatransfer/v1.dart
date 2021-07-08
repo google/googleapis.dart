@@ -1738,13 +1738,16 @@ class CheckValidCredsResponse {
   /// If set to `true`, the credentials exist and are valid.
   core.bool? hasValidCreds;
 
-  CheckValidCredsResponse();
+  CheckValidCredsResponse({
+    this.hasValidCreds,
+  });
 
-  CheckValidCredsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('hasValidCreds')) {
-      hasValidCreds = _json['hasValidCreds'] as core.bool;
-    }
-  }
+  CheckValidCredsResponse.fromJson(core.Map _json)
+      : this(
+          hasValidCreds: _json.containsKey('hasValidCreds')
+              ? _json['hasValidCreds'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (hasValidCreds != null) 'hasValidCreds': hasValidCreds!,
@@ -1857,71 +1860,90 @@ class DataSource {
   /// the Data Transfer Service marks the transfer as FAILED.
   core.int? updateDeadlineSeconds;
 
-  DataSource();
+  DataSource({
+    this.authorizationType,
+    this.clientId,
+    this.dataRefreshType,
+    this.dataSourceId,
+    this.defaultDataRefreshWindowDays,
+    this.defaultSchedule,
+    this.description,
+    this.displayName,
+    this.helpUrl,
+    this.manualRunsDisabled,
+    this.minimumScheduleInterval,
+    this.name,
+    this.parameters,
+    this.scopes,
+    this.supportsCustomSchedule,
+    this.supportsMultipleTransfers,
+    this.transferType,
+    this.updateDeadlineSeconds,
+  });
 
-  DataSource.fromJson(core.Map _json) {
-    if (_json.containsKey('authorizationType')) {
-      authorizationType = _json['authorizationType'] as core.String;
-    }
-    if (_json.containsKey('clientId')) {
-      clientId = _json['clientId'] as core.String;
-    }
-    if (_json.containsKey('dataRefreshType')) {
-      dataRefreshType = _json['dataRefreshType'] as core.String;
-    }
-    if (_json.containsKey('dataSourceId')) {
-      dataSourceId = _json['dataSourceId'] as core.String;
-    }
-    if (_json.containsKey('defaultDataRefreshWindowDays')) {
-      defaultDataRefreshWindowDays =
-          _json['defaultDataRefreshWindowDays'] as core.int;
-    }
-    if (_json.containsKey('defaultSchedule')) {
-      defaultSchedule = _json['defaultSchedule'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('helpUrl')) {
-      helpUrl = _json['helpUrl'] as core.String;
-    }
-    if (_json.containsKey('manualRunsDisabled')) {
-      manualRunsDisabled = _json['manualRunsDisabled'] as core.bool;
-    }
-    if (_json.containsKey('minimumScheduleInterval')) {
-      minimumScheduleInterval = _json['minimumScheduleInterval'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('parameters')) {
-      parameters = (_json['parameters'] as core.List)
-          .map<DataSourceParameter>((value) => DataSourceParameter.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('scopes')) {
-      scopes = (_json['scopes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('supportsCustomSchedule')) {
-      supportsCustomSchedule = _json['supportsCustomSchedule'] as core.bool;
-    }
-    if (_json.containsKey('supportsMultipleTransfers')) {
-      supportsMultipleTransfers =
-          _json['supportsMultipleTransfers'] as core.bool;
-    }
-    if (_json.containsKey('transferType')) {
-      transferType = _json['transferType'] as core.String;
-    }
-    if (_json.containsKey('updateDeadlineSeconds')) {
-      updateDeadlineSeconds = _json['updateDeadlineSeconds'] as core.int;
-    }
-  }
+  DataSource.fromJson(core.Map _json)
+      : this(
+          authorizationType: _json.containsKey('authorizationType')
+              ? _json['authorizationType'] as core.String
+              : null,
+          clientId: _json.containsKey('clientId')
+              ? _json['clientId'] as core.String
+              : null,
+          dataRefreshType: _json.containsKey('dataRefreshType')
+              ? _json['dataRefreshType'] as core.String
+              : null,
+          dataSourceId: _json.containsKey('dataSourceId')
+              ? _json['dataSourceId'] as core.String
+              : null,
+          defaultDataRefreshWindowDays:
+              _json.containsKey('defaultDataRefreshWindowDays')
+                  ? _json['defaultDataRefreshWindowDays'] as core.int
+                  : null,
+          defaultSchedule: _json.containsKey('defaultSchedule')
+              ? _json['defaultSchedule'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          helpUrl: _json.containsKey('helpUrl')
+              ? _json['helpUrl'] as core.String
+              : null,
+          manualRunsDisabled: _json.containsKey('manualRunsDisabled')
+              ? _json['manualRunsDisabled'] as core.bool
+              : null,
+          minimumScheduleInterval: _json.containsKey('minimumScheduleInterval')
+              ? _json['minimumScheduleInterval'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          parameters: _json.containsKey('parameters')
+              ? (_json['parameters'] as core.List)
+                  .map<DataSourceParameter>((value) =>
+                      DataSourceParameter.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          scopes: _json.containsKey('scopes')
+              ? (_json['scopes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          supportsCustomSchedule: _json.containsKey('supportsCustomSchedule')
+              ? _json['supportsCustomSchedule'] as core.bool
+              : null,
+          supportsMultipleTransfers:
+              _json.containsKey('supportsMultipleTransfers')
+                  ? _json['supportsMultipleTransfers'] as core.bool
+                  : null,
+          transferType: _json.containsKey('transferType')
+              ? _json['transferType'] as core.String
+              : null,
+          updateDeadlineSeconds: _json.containsKey('updateDeadlineSeconds')
+              ? _json['updateDeadlineSeconds'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authorizationType != null) 'authorizationType': authorizationType!,
@@ -2025,63 +2047,80 @@ class DataSourceParameter {
   /// Regular expression which can be used for parameter validation.
   core.String? validationRegex;
 
-  DataSourceParameter();
+  DataSourceParameter({
+    this.allowedValues,
+    this.deprecated,
+    this.description,
+    this.displayName,
+    this.fields,
+    this.immutable,
+    this.maxValue,
+    this.minValue,
+    this.paramId,
+    this.recurse,
+    this.repeated,
+    this.required,
+    this.type,
+    this.validationDescription,
+    this.validationHelpUrl,
+    this.validationRegex,
+  });
 
-  DataSourceParameter.fromJson(core.Map _json) {
-    if (_json.containsKey('allowedValues')) {
-      allowedValues = (_json['allowedValues'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('deprecated')) {
-      deprecated = _json['deprecated'] as core.bool;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('fields')) {
-      fields = (_json['fields'] as core.List)
-          .map<DataSourceParameter>((value) => DataSourceParameter.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('immutable')) {
-      immutable = _json['immutable'] as core.bool;
-    }
-    if (_json.containsKey('maxValue')) {
-      maxValue = (_json['maxValue'] as core.num).toDouble();
-    }
-    if (_json.containsKey('minValue')) {
-      minValue = (_json['minValue'] as core.num).toDouble();
-    }
-    if (_json.containsKey('paramId')) {
-      paramId = _json['paramId'] as core.String;
-    }
-    if (_json.containsKey('recurse')) {
-      recurse = _json['recurse'] as core.bool;
-    }
-    if (_json.containsKey('repeated')) {
-      repeated = _json['repeated'] as core.bool;
-    }
-    if (_json.containsKey('required')) {
-      required = _json['required'] as core.bool;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('validationDescription')) {
-      validationDescription = _json['validationDescription'] as core.String;
-    }
-    if (_json.containsKey('validationHelpUrl')) {
-      validationHelpUrl = _json['validationHelpUrl'] as core.String;
-    }
-    if (_json.containsKey('validationRegex')) {
-      validationRegex = _json['validationRegex'] as core.String;
-    }
-  }
+  DataSourceParameter.fromJson(core.Map _json)
+      : this(
+          allowedValues: _json.containsKey('allowedValues')
+              ? (_json['allowedValues'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          deprecated: _json.containsKey('deprecated')
+              ? _json['deprecated'] as core.bool
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          fields: _json.containsKey('fields')
+              ? (_json['fields'] as core.List)
+                  .map<DataSourceParameter>((value) =>
+                      DataSourceParameter.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          immutable: _json.containsKey('immutable')
+              ? _json['immutable'] as core.bool
+              : null,
+          maxValue: _json.containsKey('maxValue')
+              ? (_json['maxValue'] as core.num).toDouble()
+              : null,
+          minValue: _json.containsKey('minValue')
+              ? (_json['minValue'] as core.num).toDouble()
+              : null,
+          paramId: _json.containsKey('paramId')
+              ? _json['paramId'] as core.String
+              : null,
+          recurse: _json.containsKey('recurse')
+              ? _json['recurse'] as core.bool
+              : null,
+          repeated: _json.containsKey('repeated')
+              ? _json['repeated'] as core.bool
+              : null,
+          required: _json.containsKey('required')
+              ? _json['required'] as core.bool
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          validationDescription: _json.containsKey('validationDescription')
+              ? _json['validationDescription'] as core.String
+              : null,
+          validationHelpUrl: _json.containsKey('validationHelpUrl')
+              ? _json['validationHelpUrl'] as core.String
+              : null,
+          validationRegex: _json.containsKey('validationRegex')
+              ? _json['validationRegex'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedValues != null) 'allowedValues': allowedValues!,
@@ -2111,13 +2150,16 @@ class EmailPreferences {
   /// If true, email notifications will be sent on transfer run failures.
   core.bool? enableFailureEmail;
 
-  EmailPreferences();
+  EmailPreferences({
+    this.enableFailureEmail,
+  });
 
-  EmailPreferences.fromJson(core.Map _json) {
-    if (_json.containsKey('enableFailureEmail')) {
-      enableFailureEmail = _json['enableFailureEmail'] as core.bool;
-    }
-  }
+  EmailPreferences.fromJson(core.Map _json)
+      : this(
+          enableFailureEmail: _json.containsKey('enableFailureEmail')
+              ? _json['enableFailureEmail'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enableFailureEmail != null)
@@ -2156,19 +2198,23 @@ class ListDataSourcesResponse {
   /// Output only.
   core.String? nextPageToken;
 
-  ListDataSourcesResponse();
+  ListDataSourcesResponse({
+    this.dataSources,
+    this.nextPageToken,
+  });
 
-  ListDataSourcesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('dataSources')) {
-      dataSources = (_json['dataSources'] as core.List)
-          .map<DataSource>((value) =>
-              DataSource.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListDataSourcesResponse.fromJson(core.Map _json)
+      : this(
+          dataSources: _json.containsKey('dataSources')
+              ? (_json['dataSources'] as core.List)
+                  .map<DataSource>((value) => DataSource.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataSources != null)
@@ -2185,19 +2231,23 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse();
+  ListLocationsResponse({
+    this.locations,
+    this.nextPageToken,
+  });
 
-  ListLocationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('locations')) {
-      locations = (_json['locations'] as core.List)
-          .map<Location>((value) =>
-              Location.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListLocationsResponse.fromJson(core.Map _json)
+      : this(
+          locations: _json.containsKey('locations')
+              ? (_json['locations'] as core.List)
+                  .map<Location>((value) => Location.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (locations != null)
@@ -2222,19 +2272,23 @@ class ListTransferConfigsResponse {
   /// Output only.
   core.List<TransferConfig>? transferConfigs;
 
-  ListTransferConfigsResponse();
+  ListTransferConfigsResponse({
+    this.nextPageToken,
+    this.transferConfigs,
+  });
 
-  ListTransferConfigsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('transferConfigs')) {
-      transferConfigs = (_json['transferConfigs'] as core.List)
-          .map<TransferConfig>((value) => TransferConfig.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListTransferConfigsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          transferConfigs: _json.containsKey('transferConfigs')
+              ? (_json['transferConfigs'] as core.List)
+                  .map<TransferConfig>((value) => TransferConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -2260,19 +2314,23 @@ class ListTransferLogsResponse {
   /// Output only.
   core.List<TransferMessage>? transferMessages;
 
-  ListTransferLogsResponse();
+  ListTransferLogsResponse({
+    this.nextPageToken,
+    this.transferMessages,
+  });
 
-  ListTransferLogsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('transferMessages')) {
-      transferMessages = (_json['transferMessages'] as core.List)
-          .map<TransferMessage>((value) => TransferMessage.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListTransferLogsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          transferMessages: _json.containsKey('transferMessages')
+              ? (_json['transferMessages'] as core.List)
+                  .map<TransferMessage>((value) => TransferMessage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -2298,19 +2356,23 @@ class ListTransferRunsResponse {
   /// Output only.
   core.List<TransferRun>? transferRuns;
 
-  ListTransferRunsResponse();
+  ListTransferRunsResponse({
+    this.nextPageToken,
+    this.transferRuns,
+  });
 
-  ListTransferRunsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('transferRuns')) {
-      transferRuns = (_json['transferRuns'] as core.List)
-          .map<TransferRun>((value) => TransferRun.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListTransferRunsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          transferRuns: _json.containsKey('transferRuns')
+              ? (_json['transferRuns'] as core.List)
+                  .map<TransferRun>((value) => TransferRun.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -2349,35 +2411,40 @@ class Location {
   /// For example: `"projects/example-project/locations/us-east1"`
   core.String? name;
 
-  Location();
+  Location({
+    this.displayName,
+    this.labels,
+    this.locationId,
+    this.metadata,
+    this.name,
+  });
 
-  Location.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('locationId')) {
-      locationId = _json['locationId'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  Location.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          locationId: _json.containsKey('locationId')
+              ? _json['locationId'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -2413,19 +2480,24 @@ class ScheduleOptions {
   /// manually is not limited by this option.
   core.String? startTime;
 
-  ScheduleOptions();
+  ScheduleOptions({
+    this.disableAutoScheduling,
+    this.endTime,
+    this.startTime,
+  });
 
-  ScheduleOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('disableAutoScheduling')) {
-      disableAutoScheduling = _json['disableAutoScheduling'] as core.bool;
-    }
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-  }
+  ScheduleOptions.fromJson(core.Map _json)
+      : this(
+          disableAutoScheduling: _json.containsKey('disableAutoScheduling')
+              ? _json['disableAutoScheduling'] as core.bool
+              : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disableAutoScheduling != null)
@@ -2451,16 +2523,20 @@ class ScheduleTransferRunsRequest {
   /// Required.
   core.String? startTime;
 
-  ScheduleTransferRunsRequest();
+  ScheduleTransferRunsRequest({
+    this.endTime,
+    this.startTime,
+  });
 
-  ScheduleTransferRunsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-  }
+  ScheduleTransferRunsRequest.fromJson(core.Map _json)
+      : this(
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
@@ -2473,16 +2549,19 @@ class ScheduleTransferRunsResponse {
   /// The transfer runs that were scheduled.
   core.List<TransferRun>? runs;
 
-  ScheduleTransferRunsResponse();
+  ScheduleTransferRunsResponse({
+    this.runs,
+  });
 
-  ScheduleTransferRunsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('runs')) {
-      runs = (_json['runs'] as core.List)
-          .map<TransferRun>((value) => TransferRun.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ScheduleTransferRunsResponse.fromJson(core.Map _json)
+      : this(
+          runs: _json.containsKey('runs')
+              ? (_json['runs'] as core.List)
+                  .map<TransferRun>((value) => TransferRun.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (runs != null) 'runs': runs!.map((value) => value.toJson()).toList(),
@@ -2499,17 +2578,21 @@ class StartManualTransferRunsRequest {
   /// Time range for the transfer runs that should be started.
   TimeRange? requestedTimeRange;
 
-  StartManualTransferRunsRequest();
+  StartManualTransferRunsRequest({
+    this.requestedRunTime,
+    this.requestedTimeRange,
+  });
 
-  StartManualTransferRunsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('requestedRunTime')) {
-      requestedRunTime = _json['requestedRunTime'] as core.String;
-    }
-    if (_json.containsKey('requestedTimeRange')) {
-      requestedTimeRange = TimeRange.fromJson(
-          _json['requestedTimeRange'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  StartManualTransferRunsRequest.fromJson(core.Map _json)
+      : this(
+          requestedRunTime: _json.containsKey('requestedRunTime')
+              ? _json['requestedRunTime'] as core.String
+              : null,
+          requestedTimeRange: _json.containsKey('requestedTimeRange')
+              ? TimeRange.fromJson(_json['requestedTimeRange']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestedRunTime != null) 'requestedRunTime': requestedRunTime!,
@@ -2523,16 +2606,19 @@ class StartManualTransferRunsResponse {
   /// The transfer runs that were created.
   core.List<TransferRun>? runs;
 
-  StartManualTransferRunsResponse();
+  StartManualTransferRunsResponse({
+    this.runs,
+  });
 
-  StartManualTransferRunsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('runs')) {
-      runs = (_json['runs'] as core.List)
-          .map<TransferRun>((value) => TransferRun.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  StartManualTransferRunsResponse.fromJson(core.Map _json)
+      : this(
+          runs: _json.containsKey('runs')
+              ? (_json['runs'] as core.List)
+                  .map<TransferRun>((value) => TransferRun.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (runs != null) 'runs': runs!.map((value) => value.toJson()).toList(),
@@ -2564,27 +2650,30 @@ class Status {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  Status();
+  Status({
+    this.code,
+    this.details,
+    this.message,
+  });
 
-  Status.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.int;
-    }
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  Status.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -2610,16 +2699,20 @@ class TimeRange {
   /// in the range between start_time (inclusive) and end_time (exclusive).
   core.String? startTime;
 
-  TimeRange();
+  TimeRange({
+    this.endTime,
+    this.startTime,
+  });
 
-  TimeRange.fromJson(core.Map _json) {
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-  }
+  TimeRange.fromJson(core.Map _json)
+      : this(
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
@@ -2735,65 +2828,80 @@ class TransferConfig {
   /// Deprecated.
   core.String? userId;
 
-  TransferConfig();
+  TransferConfig({
+    this.dataRefreshWindowDays,
+    this.dataSourceId,
+    this.datasetRegion,
+    this.destinationDatasetId,
+    this.disabled,
+    this.displayName,
+    this.emailPreferences,
+    this.name,
+    this.nextRunTime,
+    this.notificationPubsubTopic,
+    this.params,
+    this.schedule,
+    this.scheduleOptions,
+    this.state,
+    this.updateTime,
+    this.userId,
+  });
 
-  TransferConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('dataRefreshWindowDays')) {
-      dataRefreshWindowDays = _json['dataRefreshWindowDays'] as core.int;
-    }
-    if (_json.containsKey('dataSourceId')) {
-      dataSourceId = _json['dataSourceId'] as core.String;
-    }
-    if (_json.containsKey('datasetRegion')) {
-      datasetRegion = _json['datasetRegion'] as core.String;
-    }
-    if (_json.containsKey('destinationDatasetId')) {
-      destinationDatasetId = _json['destinationDatasetId'] as core.String;
-    }
-    if (_json.containsKey('disabled')) {
-      disabled = _json['disabled'] as core.bool;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('emailPreferences')) {
-      emailPreferences = EmailPreferences.fromJson(
-          _json['emailPreferences'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('nextRunTime')) {
-      nextRunTime = _json['nextRunTime'] as core.String;
-    }
-    if (_json.containsKey('notificationPubsubTopic')) {
-      notificationPubsubTopic = _json['notificationPubsubTopic'] as core.String;
-    }
-    if (_json.containsKey('params')) {
-      params = (_json['params'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('schedule')) {
-      schedule = _json['schedule'] as core.String;
-    }
-    if (_json.containsKey('scheduleOptions')) {
-      scheduleOptions = ScheduleOptions.fromJson(
-          _json['scheduleOptions'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-    if (_json.containsKey('userId')) {
-      userId = _json['userId'] as core.String;
-    }
-  }
+  TransferConfig.fromJson(core.Map _json)
+      : this(
+          dataRefreshWindowDays: _json.containsKey('dataRefreshWindowDays')
+              ? _json['dataRefreshWindowDays'] as core.int
+              : null,
+          dataSourceId: _json.containsKey('dataSourceId')
+              ? _json['dataSourceId'] as core.String
+              : null,
+          datasetRegion: _json.containsKey('datasetRegion')
+              ? _json['datasetRegion'] as core.String
+              : null,
+          destinationDatasetId: _json.containsKey('destinationDatasetId')
+              ? _json['destinationDatasetId'] as core.String
+              : null,
+          disabled: _json.containsKey('disabled')
+              ? _json['disabled'] as core.bool
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          emailPreferences: _json.containsKey('emailPreferences')
+              ? EmailPreferences.fromJson(_json['emailPreferences']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          nextRunTime: _json.containsKey('nextRunTime')
+              ? _json['nextRunTime'] as core.String
+              : null,
+          notificationPubsubTopic: _json.containsKey('notificationPubsubTopic')
+              ? _json['notificationPubsubTopic'] as core.String
+              : null,
+          params: _json.containsKey('params')
+              ? (_json['params'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          schedule: _json.containsKey('schedule')
+              ? _json['schedule'] as core.String
+              : null,
+          scheduleOptions: _json.containsKey('scheduleOptions')
+              ? ScheduleOptions.fromJson(_json['scheduleOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+          userId: _json.containsKey('userId')
+              ? _json['userId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataRefreshWindowDays != null)
@@ -2836,19 +2944,24 @@ class TransferMessage {
   /// - "ERROR" : Error message.
   core.String? severity;
 
-  TransferMessage();
+  TransferMessage({
+    this.messageText,
+    this.messageTime,
+    this.severity,
+  });
 
-  TransferMessage.fromJson(core.Map _json) {
-    if (_json.containsKey('messageText')) {
-      messageText = _json['messageText'] as core.String;
-    }
-    if (_json.containsKey('messageTime')) {
-      messageTime = _json['messageTime'] as core.String;
-    }
-    if (_json.containsKey('severity')) {
-      severity = _json['severity'] as core.String;
-    }
-  }
+  TransferMessage.fromJson(core.Map _json)
+      : this(
+          messageText: _json.containsKey('messageText')
+              ? _json['messageText'] as core.String
+              : null,
+          messageTime: _json.containsKey('messageTime')
+              ? _json['messageTime'] as core.String
+              : null,
+          severity: _json.containsKey('severity')
+              ? _json['severity'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (messageText != null) 'messageText': messageText!,
@@ -2959,62 +3072,76 @@ class TransferRun {
   /// Deprecated.
   core.String? userId;
 
-  TransferRun();
+  TransferRun({
+    this.dataSourceId,
+    this.destinationDatasetId,
+    this.emailPreferences,
+    this.endTime,
+    this.errorStatus,
+    this.name,
+    this.notificationPubsubTopic,
+    this.params,
+    this.runTime,
+    this.schedule,
+    this.scheduleTime,
+    this.startTime,
+    this.state,
+    this.updateTime,
+    this.userId,
+  });
 
-  TransferRun.fromJson(core.Map _json) {
-    if (_json.containsKey('dataSourceId')) {
-      dataSourceId = _json['dataSourceId'] as core.String;
-    }
-    if (_json.containsKey('destinationDatasetId')) {
-      destinationDatasetId = _json['destinationDatasetId'] as core.String;
-    }
-    if (_json.containsKey('emailPreferences')) {
-      emailPreferences = EmailPreferences.fromJson(
-          _json['emailPreferences'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('errorStatus')) {
-      errorStatus = Status.fromJson(
-          _json['errorStatus'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('notificationPubsubTopic')) {
-      notificationPubsubTopic = _json['notificationPubsubTopic'] as core.String;
-    }
-    if (_json.containsKey('params')) {
-      params = (_json['params'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('runTime')) {
-      runTime = _json['runTime'] as core.String;
-    }
-    if (_json.containsKey('schedule')) {
-      schedule = _json['schedule'] as core.String;
-    }
-    if (_json.containsKey('scheduleTime')) {
-      scheduleTime = _json['scheduleTime'] as core.String;
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-    if (_json.containsKey('userId')) {
-      userId = _json['userId'] as core.String;
-    }
-  }
+  TransferRun.fromJson(core.Map _json)
+      : this(
+          dataSourceId: _json.containsKey('dataSourceId')
+              ? _json['dataSourceId'] as core.String
+              : null,
+          destinationDatasetId: _json.containsKey('destinationDatasetId')
+              ? _json['destinationDatasetId'] as core.String
+              : null,
+          emailPreferences: _json.containsKey('emailPreferences')
+              ? EmailPreferences.fromJson(_json['emailPreferences']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          errorStatus: _json.containsKey('errorStatus')
+              ? Status.fromJson(
+                  _json['errorStatus'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          notificationPubsubTopic: _json.containsKey('notificationPubsubTopic')
+              ? _json['notificationPubsubTopic'] as core.String
+              : null,
+          params: _json.containsKey('params')
+              ? (_json['params'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          runTime: _json.containsKey('runTime')
+              ? _json['runTime'] as core.String
+              : null,
+          schedule: _json.containsKey('schedule')
+              ? _json['schedule'] as core.String
+              : null,
+          scheduleTime: _json.containsKey('scheduleTime')
+              ? _json['scheduleTime'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+          userId: _json.containsKey('userId')
+              ? _json['userId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataSourceId != null) 'dataSourceId': dataSourceId!,

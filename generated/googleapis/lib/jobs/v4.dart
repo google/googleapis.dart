@@ -1232,23 +1232,28 @@ class ApplicationInfo {
   /// The maximum number of allowed characters for each entry is 2,000.
   core.List<core.String>? uris;
 
-  ApplicationInfo();
+  ApplicationInfo({
+    this.emails,
+    this.instruction,
+    this.uris,
+  });
 
-  ApplicationInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('emails')) {
-      emails = (_json['emails'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('instruction')) {
-      instruction = _json['instruction'] as core.String;
-    }
-    if (_json.containsKey('uris')) {
-      uris = (_json['uris'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  ApplicationInfo.fromJson(core.Map _json)
+      : this(
+          emails: _json.containsKey('emails')
+              ? (_json['emails'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          instruction: _json.containsKey('instruction')
+              ? _json['instruction'] as core.String
+              : null,
+          uris: _json.containsKey('uris')
+              ? (_json['uris'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (emails != null) 'emails': emails!,
@@ -1266,16 +1271,19 @@ class BatchCreateJobsRequest {
   /// Required.
   core.List<Job>? jobs;
 
-  BatchCreateJobsRequest();
+  BatchCreateJobsRequest({
+    this.jobs,
+  });
 
-  BatchCreateJobsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('jobs')) {
-      jobs = (_json['jobs'] as core.List)
-          .map<Job>((value) =>
-              Job.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  BatchCreateJobsRequest.fromJson(core.Map _json)
+      : this(
+          jobs: _json.containsKey('jobs')
+              ? (_json['jobs'] as core.List)
+                  .map<Job>((value) => Job.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (jobs != null) 'jobs': jobs!.map((value) => value.toJson()).toList(),
@@ -1292,16 +1300,19 @@ class BatchCreateJobsResponse {
   /// It can change until operation status is FINISHED, FAILED or CANCELLED.
   core.List<JobResult>? jobResults;
 
-  BatchCreateJobsResponse();
+  BatchCreateJobsResponse({
+    this.jobResults,
+  });
 
-  BatchCreateJobsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('jobResults')) {
-      jobResults = (_json['jobResults'] as core.List)
-          .map<JobResult>((value) =>
-              JobResult.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  BatchCreateJobsResponse.fromJson(core.Map _json)
+      : this(
+          jobResults: _json.containsKey('jobResults')
+              ? (_json['jobResults'] as core.List)
+                  .map<JobResult>((value) => JobResult.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (jobResults != null)
@@ -1318,15 +1329,18 @@ class BatchDeleteJobsRequest {
   /// can be deleted in a batch.
   core.List<core.String>? names;
 
-  BatchDeleteJobsRequest();
+  BatchDeleteJobsRequest({
+    this.names,
+  });
 
-  BatchDeleteJobsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('names')) {
-      names = (_json['names'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  BatchDeleteJobsRequest.fromJson(core.Map _json)
+      : this(
+          names: _json.containsKey('names')
+              ? (_json['names'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (names != null) 'names': names!,
@@ -1343,16 +1357,19 @@ class BatchDeleteJobsResponse {
   /// It can change until operation status is FINISHED, FAILED or CANCELLED.
   core.List<JobResult>? jobResults;
 
-  BatchDeleteJobsResponse();
+  BatchDeleteJobsResponse({
+    this.jobResults,
+  });
 
-  BatchDeleteJobsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('jobResults')) {
-      jobResults = (_json['jobResults'] as core.List)
-          .map<JobResult>((value) =>
-              JobResult.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  BatchDeleteJobsResponse.fromJson(core.Map _json)
+      : this(
+          jobResults: _json.containsKey('jobResults')
+              ? (_json['jobResults'] as core.List)
+                  .map<JobResult>((value) => JobResult.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (jobResults != null)
@@ -1405,34 +1422,43 @@ class BatchOperationMetadata {
   /// cached data is returned.
   core.String? updateTime;
 
-  BatchOperationMetadata();
+  BatchOperationMetadata({
+    this.createTime,
+    this.endTime,
+    this.failureCount,
+    this.state,
+    this.stateDescription,
+    this.successCount,
+    this.totalCount,
+    this.updateTime,
+  });
 
-  BatchOperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('failureCount')) {
-      failureCount = _json['failureCount'] as core.int;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('stateDescription')) {
-      stateDescription = _json['stateDescription'] as core.String;
-    }
-    if (_json.containsKey('successCount')) {
-      successCount = _json['successCount'] as core.int;
-    }
-    if (_json.containsKey('totalCount')) {
-      totalCount = _json['totalCount'] as core.int;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  BatchOperationMetadata.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          failureCount: _json.containsKey('failureCount')
+              ? _json['failureCount'] as core.int
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          stateDescription: _json.containsKey('stateDescription')
+              ? _json['stateDescription'] as core.String
+              : null,
+          successCount: _json.containsKey('successCount')
+              ? _json['successCount'] as core.int
+              : null,
+          totalCount: _json.containsKey('totalCount')
+              ? _json['totalCount'] as core.int
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -1466,19 +1492,23 @@ class BatchUpdateJobsRequest {
   /// will include all fields, which can yield a very large response.
   core.String? updateMask;
 
-  BatchUpdateJobsRequest();
+  BatchUpdateJobsRequest({
+    this.jobs,
+    this.updateMask,
+  });
 
-  BatchUpdateJobsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('jobs')) {
-      jobs = (_json['jobs'] as core.List)
-          .map<Job>((value) =>
-              Job.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'] as core.String;
-    }
-  }
+  BatchUpdateJobsRequest.fromJson(core.Map _json)
+      : this(
+          jobs: _json.containsKey('jobs')
+              ? (_json['jobs'] as core.List)
+                  .map<Job>((value) => Job.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          updateMask: _json.containsKey('updateMask')
+              ? _json['updateMask'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (jobs != null) 'jobs': jobs!.map((value) => value.toJson()).toList(),
@@ -1496,16 +1526,19 @@ class BatchUpdateJobsResponse {
   /// It can change until operation status is FINISHED, FAILED or CANCELLED.
   core.List<JobResult>? jobResults;
 
-  BatchUpdateJobsResponse();
+  BatchUpdateJobsResponse({
+    this.jobResults,
+  });
 
-  BatchUpdateJobsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('jobResults')) {
-      jobResults = (_json['jobResults'] as core.List)
-          .map<JobResult>((value) =>
-              JobResult.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  BatchUpdateJobsResponse.fromJson(core.Map _json)
+      : this(
+          jobResults: _json.containsKey('jobResults')
+              ? (_json['jobResults'] as core.List)
+                  .map<JobResult>((value) => JobResult.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (jobResults != null)
@@ -1545,26 +1578,33 @@ class ClientEvent {
   /// ResponseMetadata.request_id.
   core.String? requestId;
 
-  ClientEvent();
+  ClientEvent({
+    this.createTime,
+    this.eventId,
+    this.eventNotes,
+    this.jobEvent,
+    this.requestId,
+  });
 
-  ClientEvent.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('eventId')) {
-      eventId = _json['eventId'] as core.String;
-    }
-    if (_json.containsKey('eventNotes')) {
-      eventNotes = _json['eventNotes'] as core.String;
-    }
-    if (_json.containsKey('jobEvent')) {
-      jobEvent = JobEvent.fromJson(
-          _json['jobEvent'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('requestId')) {
-      requestId = _json['requestId'] as core.String;
-    }
-  }
+  ClientEvent.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          eventId: _json.containsKey('eventId')
+              ? _json['eventId'] as core.String
+              : null,
+          eventNotes: _json.containsKey('eventNotes')
+              ? _json['eventNotes'] as core.String
+              : null,
+          jobEvent: _json.containsKey('jobEvent')
+              ? JobEvent.fromJson(
+                  _json['jobEvent'] as core.Map<core.String, core.dynamic>)
+              : null,
+          requestId: _json.containsKey('requestId')
+              ? _json['requestId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -1623,30 +1663,38 @@ class CommuteFilter {
   /// Required.
   core.String? travelDuration;
 
-  CommuteFilter();
+  CommuteFilter({
+    this.allowImpreciseAddresses,
+    this.commuteMethod,
+    this.departureTime,
+    this.roadTraffic,
+    this.startCoordinates,
+    this.travelDuration,
+  });
 
-  CommuteFilter.fromJson(core.Map _json) {
-    if (_json.containsKey('allowImpreciseAddresses')) {
-      allowImpreciseAddresses = _json['allowImpreciseAddresses'] as core.bool;
-    }
-    if (_json.containsKey('commuteMethod')) {
-      commuteMethod = _json['commuteMethod'] as core.String;
-    }
-    if (_json.containsKey('departureTime')) {
-      departureTime = TimeOfDay.fromJson(
-          _json['departureTime'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('roadTraffic')) {
-      roadTraffic = _json['roadTraffic'] as core.String;
-    }
-    if (_json.containsKey('startCoordinates')) {
-      startCoordinates = LatLng.fromJson(
-          _json['startCoordinates'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('travelDuration')) {
-      travelDuration = _json['travelDuration'] as core.String;
-    }
-  }
+  CommuteFilter.fromJson(core.Map _json)
+      : this(
+          allowImpreciseAddresses: _json.containsKey('allowImpreciseAddresses')
+              ? _json['allowImpreciseAddresses'] as core.bool
+              : null,
+          commuteMethod: _json.containsKey('commuteMethod')
+              ? _json['commuteMethod'] as core.String
+              : null,
+          departureTime: _json.containsKey('departureTime')
+              ? TimeOfDay.fromJson(
+                  _json['departureTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+          roadTraffic: _json.containsKey('roadTraffic')
+              ? _json['roadTraffic'] as core.String
+              : null,
+          startCoordinates: _json.containsKey('startCoordinates')
+              ? LatLng.fromJson(_json['startCoordinates']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          travelDuration: _json.containsKey('travelDuration')
+              ? _json['travelDuration'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowImpreciseAddresses != null)
@@ -1672,17 +1720,21 @@ class CommuteInfo {
   /// requested duration, but was returned as part of an expanded query.
   core.String? travelDuration;
 
-  CommuteInfo();
+  CommuteInfo({
+    this.jobLocation,
+    this.travelDuration,
+  });
 
-  CommuteInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('jobLocation')) {
-      jobLocation = Location.fromJson(
-          _json['jobLocation'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('travelDuration')) {
-      travelDuration = _json['travelDuration'] as core.String;
-    }
-  }
+  CommuteInfo.fromJson(core.Map _json)
+      : this(
+          jobLocation: _json.containsKey('jobLocation')
+              ? Location.fromJson(
+                  _json['jobLocation'] as core.Map<core.String, core.dynamic>)
+              : null,
+          travelDuration: _json.containsKey('travelDuration')
+              ? _json['travelDuration'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (jobLocation != null) 'jobLocation': jobLocation!.toJson(),
@@ -1780,53 +1832,64 @@ class Company {
   /// The maximum number of allowed characters is 255.
   core.String? websiteUri;
 
-  Company();
+  Company({
+    this.careerSiteUri,
+    this.derivedInfo,
+    this.displayName,
+    this.eeoText,
+    this.externalId,
+    this.headquartersAddress,
+    this.hiringAgency,
+    this.imageUri,
+    this.keywordSearchableJobCustomAttributes,
+    this.name,
+    this.size,
+    this.suspended,
+    this.websiteUri,
+  });
 
-  Company.fromJson(core.Map _json) {
-    if (_json.containsKey('careerSiteUri')) {
-      careerSiteUri = _json['careerSiteUri'] as core.String;
-    }
-    if (_json.containsKey('derivedInfo')) {
-      derivedInfo = CompanyDerivedInfo.fromJson(
-          _json['derivedInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('eeoText')) {
-      eeoText = _json['eeoText'] as core.String;
-    }
-    if (_json.containsKey('externalId')) {
-      externalId = _json['externalId'] as core.String;
-    }
-    if (_json.containsKey('headquartersAddress')) {
-      headquartersAddress = _json['headquartersAddress'] as core.String;
-    }
-    if (_json.containsKey('hiringAgency')) {
-      hiringAgency = _json['hiringAgency'] as core.bool;
-    }
-    if (_json.containsKey('imageUri')) {
-      imageUri = _json['imageUri'] as core.String;
-    }
-    if (_json.containsKey('keywordSearchableJobCustomAttributes')) {
-      keywordSearchableJobCustomAttributes =
-          (_json['keywordSearchableJobCustomAttributes'] as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('size')) {
-      size = _json['size'] as core.String;
-    }
-    if (_json.containsKey('suspended')) {
-      suspended = _json['suspended'] as core.bool;
-    }
-    if (_json.containsKey('websiteUri')) {
-      websiteUri = _json['websiteUri'] as core.String;
-    }
-  }
+  Company.fromJson(core.Map _json)
+      : this(
+          careerSiteUri: _json.containsKey('careerSiteUri')
+              ? _json['careerSiteUri'] as core.String
+              : null,
+          derivedInfo: _json.containsKey('derivedInfo')
+              ? CompanyDerivedInfo.fromJson(
+                  _json['derivedInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          eeoText: _json.containsKey('eeoText')
+              ? _json['eeoText'] as core.String
+              : null,
+          externalId: _json.containsKey('externalId')
+              ? _json['externalId'] as core.String
+              : null,
+          headquartersAddress: _json.containsKey('headquartersAddress')
+              ? _json['headquartersAddress'] as core.String
+              : null,
+          hiringAgency: _json.containsKey('hiringAgency')
+              ? _json['hiringAgency'] as core.bool
+              : null,
+          imageUri: _json.containsKey('imageUri')
+              ? _json['imageUri'] as core.String
+              : null,
+          keywordSearchableJobCustomAttributes:
+              _json.containsKey('keywordSearchableJobCustomAttributes')
+                  ? (_json['keywordSearchableJobCustomAttributes'] as core.List)
+                      .map<core.String>((value) => value as core.String)
+                      .toList()
+                  : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          size: _json.containsKey('size') ? _json['size'] as core.String : null,
+          suspended: _json.containsKey('suspended')
+              ? _json['suspended'] as core.bool
+              : null,
+          websiteUri: _json.containsKey('websiteUri')
+              ? _json['websiteUri'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (careerSiteUri != null) 'careerSiteUri': careerSiteUri!,
@@ -1854,14 +1917,17 @@ class CompanyDerivedInfo {
   /// Company.headquarters_address if provided.
   Location? headquartersLocation;
 
-  CompanyDerivedInfo();
+  CompanyDerivedInfo({
+    this.headquartersLocation,
+  });
 
-  CompanyDerivedInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('headquartersLocation')) {
-      headquartersLocation = Location.fromJson(
-          _json['headquartersLocation'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  CompanyDerivedInfo.fromJson(core.Map _json)
+      : this(
+          headquartersLocation: _json.containsKey('headquartersLocation')
+              ? Location.fromJson(_json['headquartersLocation']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (headquartersLocation != null)
@@ -1928,31 +1994,34 @@ class CompensationEntry {
   /// - "OTHER_COMPENSATION_UNIT" : Other compensation units.
   core.String? unit;
 
-  CompensationEntry();
+  CompensationEntry({
+    this.amount,
+    this.description,
+    this.expectedUnitsPerYear,
+    this.range,
+    this.type,
+    this.unit,
+  });
 
-  CompensationEntry.fromJson(core.Map _json) {
-    if (_json.containsKey('amount')) {
-      amount = Money.fromJson(
-          _json['amount'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('expectedUnitsPerYear')) {
-      expectedUnitsPerYear =
-          (_json['expectedUnitsPerYear'] as core.num).toDouble();
-    }
-    if (_json.containsKey('range')) {
-      range = CompensationRange.fromJson(
-          _json['range'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('unit')) {
-      unit = _json['unit'] as core.String;
-    }
-  }
+  CompensationEntry.fromJson(core.Map _json)
+      : this(
+          amount: _json.containsKey('amount')
+              ? Money.fromJson(
+                  _json['amount'] as core.Map<core.String, core.dynamic>)
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          expectedUnitsPerYear: _json.containsKey('expectedUnitsPerYear')
+              ? (_json['expectedUnitsPerYear'] as core.num).toDouble()
+              : null,
+          range: _json.containsKey('range')
+              ? CompensationRange.fromJson(
+                  _json['range'] as core.Map<core.String, core.dynamic>)
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          unit: _json.containsKey('unit') ? _json['unit'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (amount != null) 'amount': amount!.toJson(),
@@ -2005,26 +2074,31 @@ class CompensationFilter {
   /// Required.
   core.List<core.String>? units;
 
-  CompensationFilter();
+  CompensationFilter({
+    this.includeJobsWithUnspecifiedCompensationRange,
+    this.range,
+    this.type,
+    this.units,
+  });
 
-  CompensationFilter.fromJson(core.Map _json) {
-    if (_json.containsKey('includeJobsWithUnspecifiedCompensationRange')) {
-      includeJobsWithUnspecifiedCompensationRange =
-          _json['includeJobsWithUnspecifiedCompensationRange'] as core.bool;
-    }
-    if (_json.containsKey('range')) {
-      range = CompensationRange.fromJson(
-          _json['range'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('units')) {
-      units = (_json['units'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  CompensationFilter.fromJson(core.Map _json)
+      : this(
+          includeJobsWithUnspecifiedCompensationRange:
+              _json.containsKey('includeJobsWithUnspecifiedCompensationRange')
+                  ? _json['includeJobsWithUnspecifiedCompensationRange']
+                      as core.bool
+                  : null,
+          range: _json.containsKey('range')
+              ? CompensationRange.fromJson(
+                  _json['range'] as core.Map<core.String, core.dynamic>)
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          units: _json.containsKey('units')
+              ? (_json['units'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (includeJobsWithUnspecifiedCompensationRange != null)
@@ -2062,26 +2136,33 @@ class CompensationInfo {
   /// which is referred as **base compensation entry** for the job.
   core.List<CompensationEntry>? entries;
 
-  CompensationInfo();
+  CompensationInfo({
+    this.annualizedBaseCompensationRange,
+    this.annualizedTotalCompensationRange,
+    this.entries,
+  });
 
-  CompensationInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('annualizedBaseCompensationRange')) {
-      annualizedBaseCompensationRange = CompensationRange.fromJson(
-          _json['annualizedBaseCompensationRange']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('annualizedTotalCompensationRange')) {
-      annualizedTotalCompensationRange = CompensationRange.fromJson(
-          _json['annualizedTotalCompensationRange']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('entries')) {
-      entries = (_json['entries'] as core.List)
-          .map<CompensationEntry>((value) => CompensationEntry.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  CompensationInfo.fromJson(core.Map _json)
+      : this(
+          annualizedBaseCompensationRange:
+              _json.containsKey('annualizedBaseCompensationRange')
+                  ? CompensationRange.fromJson(
+                      _json['annualizedBaseCompensationRange']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          annualizedTotalCompensationRange:
+              _json.containsKey('annualizedTotalCompensationRange')
+                  ? CompensationRange.fromJson(
+                      _json['annualizedTotalCompensationRange']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          entries: _json.containsKey('entries')
+              ? (_json['entries'] as core.List)
+                  .map<CompensationEntry>((value) => CompensationEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annualizedBaseCompensationRange != null)
@@ -2109,18 +2190,22 @@ class CompensationRange {
   /// match the currency code of max_compensation.
   Money? minCompensation;
 
-  CompensationRange();
+  CompensationRange({
+    this.maxCompensation,
+    this.minCompensation,
+  });
 
-  CompensationRange.fromJson(core.Map _json) {
-    if (_json.containsKey('maxCompensation')) {
-      maxCompensation = Money.fromJson(
-          _json['maxCompensation'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('minCompensation')) {
-      minCompensation = Money.fromJson(
-          _json['minCompensation'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  CompensationRange.fromJson(core.Map _json)
+      : this(
+          maxCompensation: _json.containsKey('maxCompensation')
+              ? Money.fromJson(_json['maxCompensation']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          minCompensation: _json.containsKey('minCompensation')
+              ? Money.fromJson(_json['minCompensation']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (maxCompensation != null)
@@ -2139,20 +2224,24 @@ class CompleteQueryResponse {
   /// tracking id.
   ResponseMetadata? metadata;
 
-  CompleteQueryResponse();
+  CompleteQueryResponse({
+    this.completionResults,
+    this.metadata,
+  });
 
-  CompleteQueryResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('completionResults')) {
-      completionResults = (_json['completionResults'] as core.List)
-          .map<CompletionResult>((value) => CompletionResult.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = ResponseMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  CompleteQueryResponse.fromJson(core.Map _json)
+      : this(
+          completionResults: _json.containsKey('completionResults')
+              ? (_json['completionResults'] as core.List)
+                  .map<CompletionResult>((value) => CompletionResult.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? ResponseMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (completionResults != null)
@@ -2185,19 +2274,22 @@ class CompletionResult {
   /// language_codes are returned.
   core.String? type;
 
-  CompletionResult();
+  CompletionResult({
+    this.imageUri,
+    this.suggestion,
+    this.type,
+  });
 
-  CompletionResult.fromJson(core.Map _json) {
-    if (_json.containsKey('imageUri')) {
-      imageUri = _json['imageUri'] as core.String;
-    }
-    if (_json.containsKey('suggestion')) {
-      suggestion = _json['suggestion'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  CompletionResult.fromJson(core.Map _json)
+      : this(
+          imageUri: _json.containsKey('imageUri')
+              ? _json['imageUri'] as core.String
+              : null,
+          suggestion: _json.containsKey('suggestion')
+              ? _json['suggestion'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (imageUri != null) 'imageUri': imageUri!,
@@ -2239,26 +2331,32 @@ class CustomAttribute {
   /// string isn't allowed.
   core.List<core.String>? stringValues;
 
-  CustomAttribute();
+  CustomAttribute({
+    this.filterable,
+    this.keywordSearchable,
+    this.longValues,
+    this.stringValues,
+  });
 
-  CustomAttribute.fromJson(core.Map _json) {
-    if (_json.containsKey('filterable')) {
-      filterable = _json['filterable'] as core.bool;
-    }
-    if (_json.containsKey('keywordSearchable')) {
-      keywordSearchable = _json['keywordSearchable'] as core.bool;
-    }
-    if (_json.containsKey('longValues')) {
-      longValues = (_json['longValues'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('stringValues')) {
-      stringValues = (_json['stringValues'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  CustomAttribute.fromJson(core.Map _json)
+      : this(
+          filterable: _json.containsKey('filterable')
+              ? _json['filterable'] as core.bool
+              : null,
+          keywordSearchable: _json.containsKey('keywordSearchable')
+              ? _json['keywordSearchable'] as core.bool
+              : null,
+          longValues: _json.containsKey('longValues')
+              ? (_json['longValues'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          stringValues: _json.containsKey('stringValues')
+              ? (_json['stringValues'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (filterable != null) 'filterable': filterable!,
@@ -2319,16 +2417,20 @@ class CustomRankingInfo {
   /// Required.
   core.String? rankingExpression;
 
-  CustomRankingInfo();
+  CustomRankingInfo({
+    this.importanceLevel,
+    this.rankingExpression,
+  });
 
-  CustomRankingInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('importanceLevel')) {
-      importanceLevel = _json['importanceLevel'] as core.String;
-    }
-    if (_json.containsKey('rankingExpression')) {
-      rankingExpression = _json['rankingExpression'] as core.String;
-    }
-  }
+  CustomRankingInfo.fromJson(core.Map _json)
+      : this(
+          importanceLevel: _json.containsKey('importanceLevel')
+              ? _json['importanceLevel'] as core.String
+              : null,
+          rankingExpression: _json.containsKey('rankingExpression')
+              ? _json['rankingExpression'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (importanceLevel != null) 'importanceLevel': importanceLevel!,
@@ -2362,16 +2464,18 @@ class DeviceInfo {
   /// other devices.
   core.String? id;
 
-  DeviceInfo();
+  DeviceInfo({
+    this.deviceType,
+    this.id,
+  });
 
-  DeviceInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('deviceType')) {
-      deviceType = _json['deviceType'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-  }
+  DeviceInfo.fromJson(core.Map _json)
+      : this(
+          deviceType: _json.containsKey('deviceType')
+              ? _json['deviceType'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceType != null) 'deviceType': deviceType!,
@@ -2404,13 +2508,16 @@ class HistogramQuery {
   /// See SearchJobsRequest.histogram_queries for details about syntax.
   core.String? histogramQuery;
 
-  HistogramQuery();
+  HistogramQuery({
+    this.histogramQuery,
+  });
 
-  HistogramQuery.fromJson(core.Map _json) {
-    if (_json.containsKey('histogramQuery')) {
-      histogramQuery = _json['histogramQuery'] as core.String;
-    }
-  }
+  HistogramQuery.fromJson(core.Map _json)
+      : this(
+          histogramQuery: _json.containsKey('histogramQuery')
+              ? _json['histogramQuery'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (histogramQuery != null) 'histogramQuery': histogramQuery!,
@@ -2432,22 +2539,25 @@ class HistogramQueryResult {
   /// Requested histogram expression.
   core.String? histogramQuery;
 
-  HistogramQueryResult();
+  HistogramQueryResult({
+    this.histogram,
+    this.histogramQuery,
+  });
 
-  HistogramQueryResult.fromJson(core.Map _json) {
-    if (_json.containsKey('histogram')) {
-      histogram =
-          (_json['histogram'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('histogramQuery')) {
-      histogramQuery = _json['histogramQuery'] as core.String;
-    }
-  }
+  HistogramQueryResult.fromJson(core.Map _json)
+      : this(
+          histogram: _json.containsKey('histogram')
+              ? (_json['histogram'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          histogramQuery: _json.containsKey('histogramQuery')
+              ? _json['histogramQuery'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (histogram != null) 'histogram': histogram!,
@@ -2740,119 +2850,149 @@ class Job {
   /// visible to all other API clients.
   core.String? visibility;
 
-  Job();
+  Job({
+    this.addresses,
+    this.applicationInfo,
+    this.company,
+    this.companyDisplayName,
+    this.compensationInfo,
+    this.customAttributes,
+    this.degreeTypes,
+    this.department,
+    this.derivedInfo,
+    this.description,
+    this.employmentTypes,
+    this.incentives,
+    this.jobBenefits,
+    this.jobEndTime,
+    this.jobLevel,
+    this.jobStartTime,
+    this.languageCode,
+    this.name,
+    this.postingCreateTime,
+    this.postingExpireTime,
+    this.postingPublishTime,
+    this.postingRegion,
+    this.postingUpdateTime,
+    this.processingOptions,
+    this.promotionValue,
+    this.qualifications,
+    this.requisitionId,
+    this.responsibilities,
+    this.title,
+    this.visibility,
+  });
 
-  Job.fromJson(core.Map _json) {
-    if (_json.containsKey('addresses')) {
-      addresses = (_json['addresses'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('applicationInfo')) {
-      applicationInfo = ApplicationInfo.fromJson(
-          _json['applicationInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('company')) {
-      company = _json['company'] as core.String;
-    }
-    if (_json.containsKey('companyDisplayName')) {
-      companyDisplayName = _json['companyDisplayName'] as core.String;
-    }
-    if (_json.containsKey('compensationInfo')) {
-      compensationInfo = CompensationInfo.fromJson(
-          _json['compensationInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('customAttributes')) {
-      customAttributes =
-          (_json['customAttributes'] as core.Map<core.String, core.dynamic>)
-              .map(
-        (key, item) => core.MapEntry(
-          key,
-          CustomAttribute.fromJson(item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('degreeTypes')) {
-      degreeTypes = (_json['degreeTypes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('department')) {
-      department = _json['department'] as core.String;
-    }
-    if (_json.containsKey('derivedInfo')) {
-      derivedInfo = JobDerivedInfo.fromJson(
-          _json['derivedInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('employmentTypes')) {
-      employmentTypes = (_json['employmentTypes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('incentives')) {
-      incentives = _json['incentives'] as core.String;
-    }
-    if (_json.containsKey('jobBenefits')) {
-      jobBenefits = (_json['jobBenefits'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('jobEndTime')) {
-      jobEndTime = _json['jobEndTime'] as core.String;
-    }
-    if (_json.containsKey('jobLevel')) {
-      jobLevel = _json['jobLevel'] as core.String;
-    }
-    if (_json.containsKey('jobStartTime')) {
-      jobStartTime = _json['jobStartTime'] as core.String;
-    }
-    if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('postingCreateTime')) {
-      postingCreateTime = _json['postingCreateTime'] as core.String;
-    }
-    if (_json.containsKey('postingExpireTime')) {
-      postingExpireTime = _json['postingExpireTime'] as core.String;
-    }
-    if (_json.containsKey('postingPublishTime')) {
-      postingPublishTime = _json['postingPublishTime'] as core.String;
-    }
-    if (_json.containsKey('postingRegion')) {
-      postingRegion = _json['postingRegion'] as core.String;
-    }
-    if (_json.containsKey('postingUpdateTime')) {
-      postingUpdateTime = _json['postingUpdateTime'] as core.String;
-    }
-    if (_json.containsKey('processingOptions')) {
-      processingOptions = ProcessingOptions.fromJson(
-          _json['processingOptions'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('promotionValue')) {
-      promotionValue = _json['promotionValue'] as core.int;
-    }
-    if (_json.containsKey('qualifications')) {
-      qualifications = _json['qualifications'] as core.String;
-    }
-    if (_json.containsKey('requisitionId')) {
-      requisitionId = _json['requisitionId'] as core.String;
-    }
-    if (_json.containsKey('responsibilities')) {
-      responsibilities = _json['responsibilities'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-    if (_json.containsKey('visibility')) {
-      visibility = _json['visibility'] as core.String;
-    }
-  }
+  Job.fromJson(core.Map _json)
+      : this(
+          addresses: _json.containsKey('addresses')
+              ? (_json['addresses'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          applicationInfo: _json.containsKey('applicationInfo')
+              ? ApplicationInfo.fromJson(_json['applicationInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          company: _json.containsKey('company')
+              ? _json['company'] as core.String
+              : null,
+          companyDisplayName: _json.containsKey('companyDisplayName')
+              ? _json['companyDisplayName'] as core.String
+              : null,
+          compensationInfo: _json.containsKey('compensationInfo')
+              ? CompensationInfo.fromJson(_json['compensationInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          customAttributes: _json.containsKey('customAttributes')
+              ? (_json['customAttributes']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    CustomAttribute.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          degreeTypes: _json.containsKey('degreeTypes')
+              ? (_json['degreeTypes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          department: _json.containsKey('department')
+              ? _json['department'] as core.String
+              : null,
+          derivedInfo: _json.containsKey('derivedInfo')
+              ? JobDerivedInfo.fromJson(
+                  _json['derivedInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          employmentTypes: _json.containsKey('employmentTypes')
+              ? (_json['employmentTypes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          incentives: _json.containsKey('incentives')
+              ? _json['incentives'] as core.String
+              : null,
+          jobBenefits: _json.containsKey('jobBenefits')
+              ? (_json['jobBenefits'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          jobEndTime: _json.containsKey('jobEndTime')
+              ? _json['jobEndTime'] as core.String
+              : null,
+          jobLevel: _json.containsKey('jobLevel')
+              ? _json['jobLevel'] as core.String
+              : null,
+          jobStartTime: _json.containsKey('jobStartTime')
+              ? _json['jobStartTime'] as core.String
+              : null,
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          postingCreateTime: _json.containsKey('postingCreateTime')
+              ? _json['postingCreateTime'] as core.String
+              : null,
+          postingExpireTime: _json.containsKey('postingExpireTime')
+              ? _json['postingExpireTime'] as core.String
+              : null,
+          postingPublishTime: _json.containsKey('postingPublishTime')
+              ? _json['postingPublishTime'] as core.String
+              : null,
+          postingRegion: _json.containsKey('postingRegion')
+              ? _json['postingRegion'] as core.String
+              : null,
+          postingUpdateTime: _json.containsKey('postingUpdateTime')
+              ? _json['postingUpdateTime'] as core.String
+              : null,
+          processingOptions: _json.containsKey('processingOptions')
+              ? ProcessingOptions.fromJson(_json['processingOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          promotionValue: _json.containsKey('promotionValue')
+              ? _json['promotionValue'] as core.int
+              : null,
+          qualifications: _json.containsKey('qualifications')
+              ? _json['qualifications'] as core.String
+              : null,
+          requisitionId: _json.containsKey('requisitionId')
+              ? _json['requisitionId'] as core.String
+              : null,
+          responsibilities: _json.containsKey('responsibilities')
+              ? _json['responsibilities'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+          visibility: _json.containsKey('visibility')
+              ? _json['visibility'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (addresses != null) 'addresses': addresses!,
@@ -2905,21 +3045,25 @@ class JobDerivedInfo {
   /// locations are exactly matched to Job.addresses in the same order.
   core.List<Location>? locations;
 
-  JobDerivedInfo();
+  JobDerivedInfo({
+    this.jobCategories,
+    this.locations,
+  });
 
-  JobDerivedInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('jobCategories')) {
-      jobCategories = (_json['jobCategories'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('locations')) {
-      locations = (_json['locations'] as core.List)
-          .map<Location>((value) =>
-              Location.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  JobDerivedInfo.fromJson(core.Map _json)
+      : this(
+          jobCategories: _json.containsKey('jobCategories')
+              ? (_json['jobCategories'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          locations: _json.containsKey('locations')
+              ? (_json['locations'] as core.List)
+                  .map<Location>((value) => Location.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (jobCategories != null) 'jobCategories': jobCategories!,
@@ -3010,18 +3154,20 @@ class JobEvent {
   /// Solution service.
   core.String? type;
 
-  JobEvent();
+  JobEvent({
+    this.jobs,
+    this.type,
+  });
 
-  JobEvent.fromJson(core.Map _json) {
-    if (_json.containsKey('jobs')) {
-      jobs = (_json['jobs'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  JobEvent.fromJson(core.Map _json)
+      : this(
+          jobs: _json.containsKey('jobs')
+              ? (_json['jobs'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (jobs != null) 'jobs': jobs!,
@@ -3150,70 +3296,85 @@ class JobQuery {
   /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
   core.String? queryLanguageCode;
 
-  JobQuery();
+  JobQuery({
+    this.commuteFilter,
+    this.companies,
+    this.companyDisplayNames,
+    this.compensationFilter,
+    this.customAttributeFilter,
+    this.disableSpellCheck,
+    this.employmentTypes,
+    this.excludedJobs,
+    this.jobCategories,
+    this.languageCodes,
+    this.locationFilters,
+    this.publishTimeRange,
+    this.query,
+    this.queryLanguageCode,
+  });
 
-  JobQuery.fromJson(core.Map _json) {
-    if (_json.containsKey('commuteFilter')) {
-      commuteFilter = CommuteFilter.fromJson(
-          _json['commuteFilter'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('companies')) {
-      companies = (_json['companies'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('companyDisplayNames')) {
-      companyDisplayNames = (_json['companyDisplayNames'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('compensationFilter')) {
-      compensationFilter = CompensationFilter.fromJson(
-          _json['compensationFilter'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('customAttributeFilter')) {
-      customAttributeFilter = _json['customAttributeFilter'] as core.String;
-    }
-    if (_json.containsKey('disableSpellCheck')) {
-      disableSpellCheck = _json['disableSpellCheck'] as core.bool;
-    }
-    if (_json.containsKey('employmentTypes')) {
-      employmentTypes = (_json['employmentTypes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('excludedJobs')) {
-      excludedJobs = (_json['excludedJobs'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('jobCategories')) {
-      jobCategories = (_json['jobCategories'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('languageCodes')) {
-      languageCodes = (_json['languageCodes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('locationFilters')) {
-      locationFilters = (_json['locationFilters'] as core.List)
-          .map<LocationFilter>((value) => LocationFilter.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('publishTimeRange')) {
-      publishTimeRange = TimestampRange.fromJson(
-          _json['publishTimeRange'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('query')) {
-      query = _json['query'] as core.String;
-    }
-    if (_json.containsKey('queryLanguageCode')) {
-      queryLanguageCode = _json['queryLanguageCode'] as core.String;
-    }
-  }
+  JobQuery.fromJson(core.Map _json)
+      : this(
+          commuteFilter: _json.containsKey('commuteFilter')
+              ? CommuteFilter.fromJson(
+                  _json['commuteFilter'] as core.Map<core.String, core.dynamic>)
+              : null,
+          companies: _json.containsKey('companies')
+              ? (_json['companies'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          companyDisplayNames: _json.containsKey('companyDisplayNames')
+              ? (_json['companyDisplayNames'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          compensationFilter: _json.containsKey('compensationFilter')
+              ? CompensationFilter.fromJson(_json['compensationFilter']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          customAttributeFilter: _json.containsKey('customAttributeFilter')
+              ? _json['customAttributeFilter'] as core.String
+              : null,
+          disableSpellCheck: _json.containsKey('disableSpellCheck')
+              ? _json['disableSpellCheck'] as core.bool
+              : null,
+          employmentTypes: _json.containsKey('employmentTypes')
+              ? (_json['employmentTypes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          excludedJobs: _json.containsKey('excludedJobs')
+              ? (_json['excludedJobs'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          jobCategories: _json.containsKey('jobCategories')
+              ? (_json['jobCategories'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          languageCodes: _json.containsKey('languageCodes')
+              ? (_json['languageCodes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          locationFilters: _json.containsKey('locationFilters')
+              ? (_json['locationFilters'] as core.List)
+                  .map<LocationFilter>((value) => LocationFilter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          publishTimeRange: _json.containsKey('publishTimeRange')
+              ? TimestampRange.fromJson(_json['publishTimeRange']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          query:
+              _json.containsKey('query') ? _json['query'] as core.String : null,
+          queryLanguageCode: _json.containsKey('queryLanguageCode')
+              ? _json['queryLanguageCode'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (commuteFilter != null) 'commuteFilter': commuteFilter!.toJson(),
@@ -3251,17 +3412,22 @@ class JobResult {
   /// This field is populated if the processing of the job fails.
   Status? status;
 
-  JobResult();
+  JobResult({
+    this.job,
+    this.status,
+  });
 
-  JobResult.fromJson(core.Map _json) {
-    if (_json.containsKey('job')) {
-      job = Job.fromJson(_json['job'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('status')) {
-      status = Status.fromJson(
-          _json['status'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  JobResult.fromJson(core.Map _json)
+      : this(
+          job: _json.containsKey('job')
+              ? Job.fromJson(
+                  _json['job'] as core.Map<core.String, core.dynamic>)
+              : null,
+          status: _json.containsKey('status')
+              ? Status.fromJson(
+                  _json['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (job != null) 'job': job!.toJson(),
@@ -3285,16 +3451,20 @@ class LatLng {
   /// It must be in the range \[-180.0, +180.0\].
   core.double? longitude;
 
-  LatLng();
+  LatLng({
+    this.latitude,
+    this.longitude,
+  });
 
-  LatLng.fromJson(core.Map _json) {
-    if (_json.containsKey('latitude')) {
-      latitude = (_json['latitude'] as core.num).toDouble();
-    }
-    if (_json.containsKey('longitude')) {
-      longitude = (_json['longitude'] as core.num).toDouble();
-    }
-  }
+  LatLng.fromJson(core.Map _json)
+      : this(
+          latitude: _json.containsKey('latitude')
+              ? (_json['latitude'] as core.num).toDouble()
+              : null,
+          longitude: _json.containsKey('longitude')
+              ? (_json['longitude'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (latitude != null) 'latitude': latitude!,
@@ -3314,23 +3484,28 @@ class ListCompaniesResponse {
   /// A token to retrieve the next page of results.
   core.String? nextPageToken;
 
-  ListCompaniesResponse();
+  ListCompaniesResponse({
+    this.companies,
+    this.metadata,
+    this.nextPageToken,
+  });
 
-  ListCompaniesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('companies')) {
-      companies = (_json['companies'] as core.List)
-          .map<Company>((value) =>
-              Company.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = ResponseMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListCompaniesResponse.fromJson(core.Map _json)
+      : this(
+          companies: _json.containsKey('companies')
+              ? (_json['companies'] as core.List)
+                  .map<Company>((value) => Company.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? ResponseMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (companies != null)
@@ -3355,23 +3530,28 @@ class ListJobsResponse {
   /// A token to retrieve the next page of results.
   core.String? nextPageToken;
 
-  ListJobsResponse();
+  ListJobsResponse({
+    this.jobs,
+    this.metadata,
+    this.nextPageToken,
+  });
 
-  ListJobsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('jobs')) {
-      jobs = (_json['jobs'] as core.List)
-          .map<Job>((value) =>
-              Job.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = ResponseMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListJobsResponse.fromJson(core.Map _json)
+      : this(
+          jobs: _json.containsKey('jobs')
+              ? (_json['jobs'] as core.List)
+                  .map<Job>((value) => Job.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? ResponseMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (jobs != null) 'jobs': jobs!.map((value) => value.toJson()).toList(),
@@ -3392,23 +3572,28 @@ class ListTenantsResponse {
   /// Tenants for the current client.
   core.List<Tenant>? tenants;
 
-  ListTenantsResponse();
+  ListTenantsResponse({
+    this.metadata,
+    this.nextPageToken,
+    this.tenants,
+  });
 
-  ListTenantsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('metadata')) {
-      metadata = ResponseMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('tenants')) {
-      tenants = (_json['tenants'] as core.List)
-          .map<Tenant>((value) =>
-              Tenant.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListTenantsResponse.fromJson(core.Map _json)
+      : this(
+          metadata: _json.containsKey('metadata')
+              ? ResponseMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          tenants: _json.containsKey('tenants')
+              ? (_json['tenants'] as core.List)
+                  .map<Tenant>((value) => Tenant.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (metadata != null) 'metadata': metadata!.toJson(),
@@ -3462,24 +3647,30 @@ class Location {
   /// CA, USA" has a radius of 6.17 miles.
   core.double? radiusMiles;
 
-  Location();
+  Location({
+    this.latLng,
+    this.locationType,
+    this.postalAddress,
+    this.radiusMiles,
+  });
 
-  Location.fromJson(core.Map _json) {
-    if (_json.containsKey('latLng')) {
-      latLng = LatLng.fromJson(
-          _json['latLng'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('locationType')) {
-      locationType = _json['locationType'] as core.String;
-    }
-    if (_json.containsKey('postalAddress')) {
-      postalAddress = PostalAddress.fromJson(
-          _json['postalAddress'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('radiusMiles')) {
-      radiusMiles = (_json['radiusMiles'] as core.num).toDouble();
-    }
-  }
+  Location.fromJson(core.Map _json)
+      : this(
+          latLng: _json.containsKey('latLng')
+              ? LatLng.fromJson(
+                  _json['latLng'] as core.Map<core.String, core.dynamic>)
+              : null,
+          locationType: _json.containsKey('locationType')
+              ? _json['locationType'] as core.String
+              : null,
+          postalAddress: _json.containsKey('postalAddress')
+              ? PostalAddress.fromJson(
+                  _json['postalAddress'] as core.Map<core.String, core.dynamic>)
+              : null,
+          radiusMiles: _json.containsKey('radiusMiles')
+              ? (_json['radiusMiles'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (latLng != null) 'latLng': latLng!.toJson(),
@@ -3543,26 +3734,33 @@ class LocationFilter {
   /// - "TELECOMMUTE_ALLOWED" : Allow telecommute jobs.
   core.String? telecommutePreference;
 
-  LocationFilter();
+  LocationFilter({
+    this.address,
+    this.distanceInMiles,
+    this.latLng,
+    this.regionCode,
+    this.telecommutePreference,
+  });
 
-  LocationFilter.fromJson(core.Map _json) {
-    if (_json.containsKey('address')) {
-      address = _json['address'] as core.String;
-    }
-    if (_json.containsKey('distanceInMiles')) {
-      distanceInMiles = (_json['distanceInMiles'] as core.num).toDouble();
-    }
-    if (_json.containsKey('latLng')) {
-      latLng = LatLng.fromJson(
-          _json['latLng'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('regionCode')) {
-      regionCode = _json['regionCode'] as core.String;
-    }
-    if (_json.containsKey('telecommutePreference')) {
-      telecommutePreference = _json['telecommutePreference'] as core.String;
-    }
-  }
+  LocationFilter.fromJson(core.Map _json)
+      : this(
+          address: _json.containsKey('address')
+              ? _json['address'] as core.String
+              : null,
+          distanceInMiles: _json.containsKey('distanceInMiles')
+              ? (_json['distanceInMiles'] as core.num).toDouble()
+              : null,
+          latLng: _json.containsKey('latLng')
+              ? LatLng.fromJson(
+                  _json['latLng'] as core.Map<core.String, core.dynamic>)
+              : null,
+          regionCode: _json.containsKey('regionCode')
+              ? _json['regionCode'] as core.String
+              : null,
+          telecommutePreference: _json.containsKey('telecommutePreference')
+              ? _json['telecommutePreference'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (address != null) 'address': address!,
@@ -3599,26 +3797,34 @@ class MatchingJob {
   /// field, and matching query keywords are enclosed in HTML bold tags.
   core.String? searchTextSnippet;
 
-  MatchingJob();
+  MatchingJob({
+    this.commuteInfo,
+    this.job,
+    this.jobSummary,
+    this.jobTitleSnippet,
+    this.searchTextSnippet,
+  });
 
-  MatchingJob.fromJson(core.Map _json) {
-    if (_json.containsKey('commuteInfo')) {
-      commuteInfo = CommuteInfo.fromJson(
-          _json['commuteInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('job')) {
-      job = Job.fromJson(_json['job'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('jobSummary')) {
-      jobSummary = _json['jobSummary'] as core.String;
-    }
-    if (_json.containsKey('jobTitleSnippet')) {
-      jobTitleSnippet = _json['jobTitleSnippet'] as core.String;
-    }
-    if (_json.containsKey('searchTextSnippet')) {
-      searchTextSnippet = _json['searchTextSnippet'] as core.String;
-    }
-  }
+  MatchingJob.fromJson(core.Map _json)
+      : this(
+          commuteInfo: _json.containsKey('commuteInfo')
+              ? CommuteInfo.fromJson(
+                  _json['commuteInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          job: _json.containsKey('job')
+              ? Job.fromJson(
+                  _json['job'] as core.Map<core.String, core.dynamic>)
+              : null,
+          jobSummary: _json.containsKey('jobSummary')
+              ? _json['jobSummary'] as core.String
+              : null,
+          jobTitleSnippet: _json.containsKey('jobTitleSnippet')
+              ? _json['jobTitleSnippet'] as core.String
+              : null,
+          searchTextSnippet: _json.containsKey('searchTextSnippet')
+              ? _json['searchTextSnippet'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (commuteInfo != null) 'commuteInfo': commuteInfo!.toJson(),
@@ -3644,21 +3850,24 @@ class MendelDebugInput {
   /// go/mendel-debug-forcing for more details.
   core.Map<core.String, NamespacedDebugInput>? namespacedDebugInput;
 
-  MendelDebugInput();
+  MendelDebugInput({
+    this.namespacedDebugInput,
+  });
 
-  MendelDebugInput.fromJson(core.Map _json) {
-    if (_json.containsKey('namespacedDebugInput')) {
-      namespacedDebugInput =
-          (_json['namespacedDebugInput'] as core.Map<core.String, core.dynamic>)
-              .map(
-        (key, item) => core.MapEntry(
-          key,
-          NamespacedDebugInput.fromJson(
-              item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-  }
+  MendelDebugInput.fromJson(core.Map _json)
+      : this(
+          namespacedDebugInput: _json.containsKey('namespacedDebugInput')
+              ? (_json['namespacedDebugInput']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    NamespacedDebugInput.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (namespacedDebugInput != null)
@@ -3686,19 +3895,21 @@ class Money {
   /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
   core.String? units;
 
-  Money();
+  Money({
+    this.currencyCode,
+    this.nanos,
+    this.units,
+  });
 
-  Money.fromJson(core.Map _json) {
-    if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'] as core.String;
-    }
-    if (_json.containsKey('nanos')) {
-      nanos = _json['nanos'] as core.int;
-    }
-    if (_json.containsKey('units')) {
-      units = _json['units'] as core.String;
-    }
-  }
+  Money.fromJson(core.Map _json)
+      : this(
+          currencyCode: _json.containsKey('currencyCode')
+              ? _json['currencyCode'] as core.String
+              : null,
+          nanos: _json.containsKey('nanos') ? _json['nanos'] as core.int : null,
+          units:
+              _json.containsKey('units') ? _json['units'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (currencyCode != null) 'currencyCode': currencyCode!,
@@ -3804,87 +4015,103 @@ class NamespacedDebugInput {
   /// Map from rollout name to rollout value.
   core.Map<core.String, core.bool>? forcedRollouts;
 
-  NamespacedDebugInput();
+  NamespacedDebugInput({
+    this.absolutelyForcedExpNames,
+    this.absolutelyForcedExpTags,
+    this.absolutelyForcedExps,
+    this.conditionallyForcedExpNames,
+    this.conditionallyForcedExpTags,
+    this.conditionallyForcedExps,
+    this.disableAutomaticEnrollmentSelection,
+    this.disableExpNames,
+    this.disableExpTags,
+    this.disableExps,
+    this.disableManualEnrollmentSelection,
+    this.disableOrganicSelection,
+    this.forcedFlags,
+    this.forcedRollouts,
+  });
 
-  NamespacedDebugInput.fromJson(core.Map _json) {
-    if (_json.containsKey('absolutelyForcedExpNames')) {
-      absolutelyForcedExpNames =
-          (_json['absolutelyForcedExpNames'] as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList();
-    }
-    if (_json.containsKey('absolutelyForcedExpTags')) {
-      absolutelyForcedExpTags = (_json['absolutelyForcedExpTags'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('absolutelyForcedExps')) {
-      absolutelyForcedExps = (_json['absolutelyForcedExps'] as core.List)
-          .map<core.int>((value) => value as core.int)
-          .toList();
-    }
-    if (_json.containsKey('conditionallyForcedExpNames')) {
-      conditionallyForcedExpNames =
-          (_json['conditionallyForcedExpNames'] as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList();
-    }
-    if (_json.containsKey('conditionallyForcedExpTags')) {
-      conditionallyForcedExpTags =
-          (_json['conditionallyForcedExpTags'] as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList();
-    }
-    if (_json.containsKey('conditionallyForcedExps')) {
-      conditionallyForcedExps = (_json['conditionallyForcedExps'] as core.List)
-          .map<core.int>((value) => value as core.int)
-          .toList();
-    }
-    if (_json.containsKey('disableAutomaticEnrollmentSelection')) {
-      disableAutomaticEnrollmentSelection =
-          _json['disableAutomaticEnrollmentSelection'] as core.bool;
-    }
-    if (_json.containsKey('disableExpNames')) {
-      disableExpNames = (_json['disableExpNames'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('disableExpTags')) {
-      disableExpTags = (_json['disableExpTags'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('disableExps')) {
-      disableExps = (_json['disableExps'] as core.List)
-          .map<core.int>((value) => value as core.int)
-          .toList();
-    }
-    if (_json.containsKey('disableManualEnrollmentSelection')) {
-      disableManualEnrollmentSelection =
-          _json['disableManualEnrollmentSelection'] as core.bool;
-    }
-    if (_json.containsKey('disableOrganicSelection')) {
-      disableOrganicSelection = _json['disableOrganicSelection'] as core.bool;
-    }
-    if (_json.containsKey('forcedFlags')) {
-      forcedFlags =
-          (_json['forcedFlags'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('forcedRollouts')) {
-      forcedRollouts =
-          (_json['forcedRollouts'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.bool,
-        ),
-      );
-    }
-  }
+  NamespacedDebugInput.fromJson(core.Map _json)
+      : this(
+          absolutelyForcedExpNames:
+              _json.containsKey('absolutelyForcedExpNames')
+                  ? (_json['absolutelyForcedExpNames'] as core.List)
+                      .map<core.String>((value) => value as core.String)
+                      .toList()
+                  : null,
+          absolutelyForcedExpTags: _json.containsKey('absolutelyForcedExpTags')
+              ? (_json['absolutelyForcedExpTags'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          absolutelyForcedExps: _json.containsKey('absolutelyForcedExps')
+              ? (_json['absolutelyForcedExps'] as core.List)
+                  .map<core.int>((value) => value as core.int)
+                  .toList()
+              : null,
+          conditionallyForcedExpNames:
+              _json.containsKey('conditionallyForcedExpNames')
+                  ? (_json['conditionallyForcedExpNames'] as core.List)
+                      .map<core.String>((value) => value as core.String)
+                      .toList()
+                  : null,
+          conditionallyForcedExpTags:
+              _json.containsKey('conditionallyForcedExpTags')
+                  ? (_json['conditionallyForcedExpTags'] as core.List)
+                      .map<core.String>((value) => value as core.String)
+                      .toList()
+                  : null,
+          conditionallyForcedExps: _json.containsKey('conditionallyForcedExps')
+              ? (_json['conditionallyForcedExps'] as core.List)
+                  .map<core.int>((value) => value as core.int)
+                  .toList()
+              : null,
+          disableAutomaticEnrollmentSelection:
+              _json.containsKey('disableAutomaticEnrollmentSelection')
+                  ? _json['disableAutomaticEnrollmentSelection'] as core.bool
+                  : null,
+          disableExpNames: _json.containsKey('disableExpNames')
+              ? (_json['disableExpNames'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          disableExpTags: _json.containsKey('disableExpTags')
+              ? (_json['disableExpTags'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          disableExps: _json.containsKey('disableExps')
+              ? (_json['disableExps'] as core.List)
+                  .map<core.int>((value) => value as core.int)
+                  .toList()
+              : null,
+          disableManualEnrollmentSelection:
+              _json.containsKey('disableManualEnrollmentSelection')
+                  ? _json['disableManualEnrollmentSelection'] as core.bool
+                  : null,
+          disableOrganicSelection: _json.containsKey('disableOrganicSelection')
+              ? _json['disableOrganicSelection'] as core.bool
+              : null,
+          forcedFlags: _json.containsKey('forcedFlags')
+              ? (_json['forcedFlags'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          forcedRollouts: _json.containsKey('forcedRollouts')
+              ? (_json['forcedRollouts'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.bool,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (absolutelyForcedExpNames != null)
@@ -3957,36 +4184,39 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object>? response;
 
-  Operation();
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
-  Operation.fromJson(core.Map _json) {
-    if (_json.containsKey('done')) {
-      done = _json['done'] as core.bool;
-    }
-    if (_json.containsKey('error')) {
-      error = Status.fromJson(
-          _json['error'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('response')) {
-      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-  }
+  Operation.fromJson(core.Map _json)
+      : this(
+          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
+          error: _json.containsKey('error')
+              ? Status.fromJson(
+                  _json['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          response: _json.containsKey('response')
+              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
@@ -4118,47 +4348,60 @@ class PostalAddress {
   /// Optional.
   core.String? sublocality;
 
-  PostalAddress();
+  PostalAddress({
+    this.addressLines,
+    this.administrativeArea,
+    this.languageCode,
+    this.locality,
+    this.organization,
+    this.postalCode,
+    this.recipients,
+    this.regionCode,
+    this.revision,
+    this.sortingCode,
+    this.sublocality,
+  });
 
-  PostalAddress.fromJson(core.Map _json) {
-    if (_json.containsKey('addressLines')) {
-      addressLines = (_json['addressLines'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('administrativeArea')) {
-      administrativeArea = _json['administrativeArea'] as core.String;
-    }
-    if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'] as core.String;
-    }
-    if (_json.containsKey('locality')) {
-      locality = _json['locality'] as core.String;
-    }
-    if (_json.containsKey('organization')) {
-      organization = _json['organization'] as core.String;
-    }
-    if (_json.containsKey('postalCode')) {
-      postalCode = _json['postalCode'] as core.String;
-    }
-    if (_json.containsKey('recipients')) {
-      recipients = (_json['recipients'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('regionCode')) {
-      regionCode = _json['regionCode'] as core.String;
-    }
-    if (_json.containsKey('revision')) {
-      revision = _json['revision'] as core.int;
-    }
-    if (_json.containsKey('sortingCode')) {
-      sortingCode = _json['sortingCode'] as core.String;
-    }
-    if (_json.containsKey('sublocality')) {
-      sublocality = _json['sublocality'] as core.String;
-    }
-  }
+  PostalAddress.fromJson(core.Map _json)
+      : this(
+          addressLines: _json.containsKey('addressLines')
+              ? (_json['addressLines'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          administrativeArea: _json.containsKey('administrativeArea')
+              ? _json['administrativeArea'] as core.String
+              : null,
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
+          locality: _json.containsKey('locality')
+              ? _json['locality'] as core.String
+              : null,
+          organization: _json.containsKey('organization')
+              ? _json['organization'] as core.String
+              : null,
+          postalCode: _json.containsKey('postalCode')
+              ? _json['postalCode'] as core.String
+              : null,
+          recipients: _json.containsKey('recipients')
+              ? (_json['recipients'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          regionCode: _json.containsKey('regionCode')
+              ? _json['regionCode'] as core.String
+              : null,
+          revision: _json.containsKey('revision')
+              ? _json['revision'] as core.int
+              : null,
+          sortingCode: _json.containsKey('sortingCode')
+              ? _json['sortingCode'] as core.String
+              : null,
+          sublocality: _json.containsKey('sublocality')
+              ? _json['sublocality'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (addressLines != null) 'addressLines': addressLines!,
@@ -4195,17 +4438,21 @@ class ProcessingOptions {
   /// italic, ordered list, and unordered list markup tags.
   core.String? htmlSanitization;
 
-  ProcessingOptions();
+  ProcessingOptions({
+    this.disableStreetAddressResolution,
+    this.htmlSanitization,
+  });
 
-  ProcessingOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('disableStreetAddressResolution')) {
-      disableStreetAddressResolution =
-          _json['disableStreetAddressResolution'] as core.bool;
-    }
-    if (_json.containsKey('htmlSanitization')) {
-      htmlSanitization = _json['htmlSanitization'] as core.String;
-    }
-  }
+  ProcessingOptions.fromJson(core.Map _json)
+      : this(
+          disableStreetAddressResolution:
+              _json.containsKey('disableStreetAddressResolution')
+                  ? _json['disableStreetAddressResolution'] as core.bool
+                  : null,
+          htmlSanitization: _json.containsKey('htmlSanitization')
+              ? _json['htmlSanitization'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disableStreetAddressResolution != null)
@@ -4262,26 +4509,33 @@ class RequestMetadata {
   /// The maximum number of allowed characters is 255.
   core.String? userId;
 
-  RequestMetadata();
+  RequestMetadata({
+    this.allowMissingIds,
+    this.deviceInfo,
+    this.domain,
+    this.sessionId,
+    this.userId,
+  });
 
-  RequestMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('allowMissingIds')) {
-      allowMissingIds = _json['allowMissingIds'] as core.bool;
-    }
-    if (_json.containsKey('deviceInfo')) {
-      deviceInfo = DeviceInfo.fromJson(
-          _json['deviceInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('domain')) {
-      domain = _json['domain'] as core.String;
-    }
-    if (_json.containsKey('sessionId')) {
-      sessionId = _json['sessionId'] as core.String;
-    }
-    if (_json.containsKey('userId')) {
-      userId = _json['userId'] as core.String;
-    }
-  }
+  RequestMetadata.fromJson(core.Map _json)
+      : this(
+          allowMissingIds: _json.containsKey('allowMissingIds')
+              ? _json['allowMissingIds'] as core.bool
+              : null,
+          deviceInfo: _json.containsKey('deviceInfo')
+              ? DeviceInfo.fromJson(
+                  _json['deviceInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          domain: _json.containsKey('domain')
+              ? _json['domain'] as core.String
+              : null,
+          sessionId: _json.containsKey('sessionId')
+              ? _json['sessionId'] as core.String
+              : null,
+          userId: _json.containsKey('userId')
+              ? _json['userId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowMissingIds != null) 'allowMissingIds': allowMissingIds!,
@@ -4299,13 +4553,16 @@ class ResponseMetadata {
   /// This id is logged for tracking purposes.
   core.String? requestId;
 
-  ResponseMetadata();
+  ResponseMetadata({
+    this.requestId,
+  });
 
-  ResponseMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('requestId')) {
-      requestId = _json['requestId'] as core.String;
-    }
-  }
+  ResponseMetadata.fromJson(core.Map _json)
+      : this(
+          requestId: _json.containsKey('requestId')
+              ? _json['requestId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestId != null) 'requestId': requestId!,
@@ -4535,55 +4792,69 @@ class SearchJobsRequest {
   /// up in the search results), with relevance being used as a tiebreaker.
   core.String? searchMode;
 
-  SearchJobsRequest();
+  SearchJobsRequest({
+    this.customRankingInfo,
+    this.disableKeywordMatch,
+    this.diversificationLevel,
+    this.enableBroadening,
+    this.histogramQueries,
+    this.jobQuery,
+    this.jobView,
+    this.maxPageSize,
+    this.offset,
+    this.orderBy,
+    this.pageToken,
+    this.requestMetadata,
+    this.searchMode,
+  });
 
-  SearchJobsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('customRankingInfo')) {
-      customRankingInfo = CustomRankingInfo.fromJson(
-          _json['customRankingInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('disableKeywordMatch')) {
-      disableKeywordMatch = _json['disableKeywordMatch'] as core.bool;
-    }
-    if (_json.containsKey('diversificationLevel')) {
-      diversificationLevel = _json['diversificationLevel'] as core.String;
-    }
-    if (_json.containsKey('enableBroadening')) {
-      enableBroadening = _json['enableBroadening'] as core.bool;
-    }
-    if (_json.containsKey('histogramQueries')) {
-      histogramQueries = (_json['histogramQueries'] as core.List)
-          .map<HistogramQuery>((value) => HistogramQuery.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('jobQuery')) {
-      jobQuery = JobQuery.fromJson(
-          _json['jobQuery'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('jobView')) {
-      jobView = _json['jobView'] as core.String;
-    }
-    if (_json.containsKey('maxPageSize')) {
-      maxPageSize = _json['maxPageSize'] as core.int;
-    }
-    if (_json.containsKey('offset')) {
-      offset = _json['offset'] as core.int;
-    }
-    if (_json.containsKey('orderBy')) {
-      orderBy = _json['orderBy'] as core.String;
-    }
-    if (_json.containsKey('pageToken')) {
-      pageToken = _json['pageToken'] as core.String;
-    }
-    if (_json.containsKey('requestMetadata')) {
-      requestMetadata = RequestMetadata.fromJson(
-          _json['requestMetadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('searchMode')) {
-      searchMode = _json['searchMode'] as core.String;
-    }
-  }
+  SearchJobsRequest.fromJson(core.Map _json)
+      : this(
+          customRankingInfo: _json.containsKey('customRankingInfo')
+              ? CustomRankingInfo.fromJson(_json['customRankingInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          disableKeywordMatch: _json.containsKey('disableKeywordMatch')
+              ? _json['disableKeywordMatch'] as core.bool
+              : null,
+          diversificationLevel: _json.containsKey('diversificationLevel')
+              ? _json['diversificationLevel'] as core.String
+              : null,
+          enableBroadening: _json.containsKey('enableBroadening')
+              ? _json['enableBroadening'] as core.bool
+              : null,
+          histogramQueries: _json.containsKey('histogramQueries')
+              ? (_json['histogramQueries'] as core.List)
+                  .map<HistogramQuery>((value) => HistogramQuery.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          jobQuery: _json.containsKey('jobQuery')
+              ? JobQuery.fromJson(
+                  _json['jobQuery'] as core.Map<core.String, core.dynamic>)
+              : null,
+          jobView: _json.containsKey('jobView')
+              ? _json['jobView'] as core.String
+              : null,
+          maxPageSize: _json.containsKey('maxPageSize')
+              ? _json['maxPageSize'] as core.int
+              : null,
+          offset:
+              _json.containsKey('offset') ? _json['offset'] as core.int : null,
+          orderBy: _json.containsKey('orderBy')
+              ? _json['orderBy'] as core.String
+              : null,
+          pageToken: _json.containsKey('pageToken')
+              ? _json['pageToken'] as core.String
+              : null,
+          requestMetadata: _json.containsKey('requestMetadata')
+              ? RequestMetadata.fromJson(_json['requestMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          searchMode: _json.containsKey('searchMode')
+              ? _json['searchMode'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customRankingInfo != null)
@@ -4652,45 +4923,56 @@ class SearchJobsResponse {
   /// Note: This size is precise only if the total is less than 100,000.
   core.int? totalSize;
 
-  SearchJobsResponse();
+  SearchJobsResponse({
+    this.broadenedQueryJobsCount,
+    this.histogramQueryResults,
+    this.locationFilters,
+    this.matchingJobs,
+    this.metadata,
+    this.nextPageToken,
+    this.spellCorrection,
+    this.totalSize,
+  });
 
-  SearchJobsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('broadenedQueryJobsCount')) {
-      broadenedQueryJobsCount = _json['broadenedQueryJobsCount'] as core.int;
-    }
-    if (_json.containsKey('histogramQueryResults')) {
-      histogramQueryResults = (_json['histogramQueryResults'] as core.List)
-          .map<HistogramQueryResult>((value) => HistogramQueryResult.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('locationFilters')) {
-      locationFilters = (_json['locationFilters'] as core.List)
-          .map<Location>((value) =>
-              Location.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('matchingJobs')) {
-      matchingJobs = (_json['matchingJobs'] as core.List)
-          .map<MatchingJob>((value) => MatchingJob.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = ResponseMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('spellCorrection')) {
-      spellCorrection = SpellingCorrection.fromJson(
-          _json['spellCorrection'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('totalSize')) {
-      totalSize = _json['totalSize'] as core.int;
-    }
-  }
+  SearchJobsResponse.fromJson(core.Map _json)
+      : this(
+          broadenedQueryJobsCount: _json.containsKey('broadenedQueryJobsCount')
+              ? _json['broadenedQueryJobsCount'] as core.int
+              : null,
+          histogramQueryResults: _json.containsKey('histogramQueryResults')
+              ? (_json['histogramQueryResults'] as core.List)
+                  .map<HistogramQueryResult>((value) =>
+                      HistogramQueryResult.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          locationFilters: _json.containsKey('locationFilters')
+              ? (_json['locationFilters'] as core.List)
+                  .map<Location>((value) => Location.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          matchingJobs: _json.containsKey('matchingJobs')
+              ? (_json['matchingJobs'] as core.List)
+                  .map<MatchingJob>((value) => MatchingJob.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? ResponseMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          spellCorrection: _json.containsKey('spellCorrection')
+              ? SpellingCorrection.fromJson(_json['spellCorrection']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          totalSize: _json.containsKey('totalSize')
+              ? _json['totalSize'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (broadenedQueryJobsCount != null)
@@ -4727,19 +5009,24 @@ class SpellingCorrection {
   /// Correction output consisting of the corrected keyword string.
   core.String? correctedText;
 
-  SpellingCorrection();
+  SpellingCorrection({
+    this.corrected,
+    this.correctedHtml,
+    this.correctedText,
+  });
 
-  SpellingCorrection.fromJson(core.Map _json) {
-    if (_json.containsKey('corrected')) {
-      corrected = _json['corrected'] as core.bool;
-    }
-    if (_json.containsKey('correctedHtml')) {
-      correctedHtml = _json['correctedHtml'] as core.String;
-    }
-    if (_json.containsKey('correctedText')) {
-      correctedText = _json['correctedText'] as core.String;
-    }
-  }
+  SpellingCorrection.fromJson(core.Map _json)
+      : this(
+          corrected: _json.containsKey('corrected')
+              ? _json['corrected'] as core.bool
+              : null,
+          correctedHtml: _json.containsKey('correctedHtml')
+              ? _json['correctedHtml'] as core.String
+              : null,
+          correctedText: _json.containsKey('correctedText')
+              ? _json['correctedText'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (corrected != null) 'corrected': corrected!,
@@ -4773,27 +5060,30 @@ class Status {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  Status();
+  Status({
+    this.code,
+    this.details,
+    this.message,
+  });
 
-  Status.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.int;
-    }
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  Status.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -4823,16 +5113,18 @@ class Tenant {
   /// "projects/foo/tenants/bar".
   core.String? name;
 
-  Tenant();
+  Tenant({
+    this.externalId,
+    this.name,
+  });
 
-  Tenant.fromJson(core.Map _json) {
-    if (_json.containsKey('externalId')) {
-      externalId = _json['externalId'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  Tenant.fromJson(core.Map _json)
+      : this(
+          externalId: _json.containsKey('externalId')
+              ? _json['externalId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (externalId != null) 'externalId': externalId!,
@@ -4868,22 +5160,24 @@ class TimeOfDay {
   /// leap-seconds.
   core.int? seconds;
 
-  TimeOfDay();
+  TimeOfDay({
+    this.hours,
+    this.minutes,
+    this.nanos,
+    this.seconds,
+  });
 
-  TimeOfDay.fromJson(core.Map _json) {
-    if (_json.containsKey('hours')) {
-      hours = _json['hours'] as core.int;
-    }
-    if (_json.containsKey('minutes')) {
-      minutes = _json['minutes'] as core.int;
-    }
-    if (_json.containsKey('nanos')) {
-      nanos = _json['nanos'] as core.int;
-    }
-    if (_json.containsKey('seconds')) {
-      seconds = _json['seconds'] as core.int;
-    }
-  }
+  TimeOfDay.fromJson(core.Map _json)
+      : this(
+          hours: _json.containsKey('hours') ? _json['hours'] as core.int : null,
+          minutes: _json.containsKey('minutes')
+              ? _json['minutes'] as core.int
+              : null,
+          nanos: _json.containsKey('nanos') ? _json['nanos'] as core.int : null,
+          seconds: _json.containsKey('seconds')
+              ? _json['seconds'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (hours != null) 'hours': hours!,
@@ -4901,16 +5195,20 @@ class TimestampRange {
   /// Begin of the period (inclusive).
   core.String? startTime;
 
-  TimestampRange();
+  TimestampRange({
+    this.endTime,
+    this.startTime,
+  });
 
-  TimestampRange.fromJson(core.Map _json) {
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-  }
+  TimestampRange.fromJson(core.Map _json)
+      : this(
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,

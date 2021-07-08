@@ -1108,21 +1108,24 @@ class GoogleCloudEssentialcontactsV1ComputeContactsResponse {
   /// as the original request.
   core.String? nextPageToken;
 
-  GoogleCloudEssentialcontactsV1ComputeContactsResponse();
+  GoogleCloudEssentialcontactsV1ComputeContactsResponse({
+    this.contacts,
+    this.nextPageToken,
+  });
 
-  GoogleCloudEssentialcontactsV1ComputeContactsResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('contacts')) {
-      contacts = (_json['contacts'] as core.List)
-          .map<GoogleCloudEssentialcontactsV1Contact>((value) =>
-              GoogleCloudEssentialcontactsV1Contact.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  GoogleCloudEssentialcontactsV1ComputeContactsResponse.fromJson(core.Map _json)
+      : this(
+          contacts: _json.containsKey('contacts')
+              ? (_json['contacts'] as core.List)
+                  .map<GoogleCloudEssentialcontactsV1Contact>((value) =>
+                      GoogleCloudEssentialcontactsV1Contact.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contacts != null)
@@ -1176,31 +1179,36 @@ class GoogleCloudEssentialcontactsV1Contact {
   /// if the contact's email is found to be unreachable.
   core.String? validationState;
 
-  GoogleCloudEssentialcontactsV1Contact();
+  GoogleCloudEssentialcontactsV1Contact({
+    this.email,
+    this.languageTag,
+    this.name,
+    this.notificationCategorySubscriptions,
+    this.validateTime,
+    this.validationState,
+  });
 
-  GoogleCloudEssentialcontactsV1Contact.fromJson(core.Map _json) {
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('languageTag')) {
-      languageTag = _json['languageTag'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('notificationCategorySubscriptions')) {
-      notificationCategorySubscriptions =
-          (_json['notificationCategorySubscriptions'] as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList();
-    }
-    if (_json.containsKey('validateTime')) {
-      validateTime = _json['validateTime'] as core.String;
-    }
-    if (_json.containsKey('validationState')) {
-      validationState = _json['validationState'] as core.String;
-    }
-  }
+  GoogleCloudEssentialcontactsV1Contact.fromJson(core.Map _json)
+      : this(
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          languageTag: _json.containsKey('languageTag')
+              ? _json['languageTag'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          notificationCategorySubscriptions:
+              _json.containsKey('notificationCategorySubscriptions')
+                  ? (_json['notificationCategorySubscriptions'] as core.List)
+                      .map<core.String>((value) => value as core.String)
+                      .toList()
+                  : null,
+          validateTime: _json.containsKey('validateTime')
+              ? _json['validateTime'] as core.String
+              : null,
+          validationState: _json.containsKey('validationState')
+              ? _json['validationState'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
@@ -1227,20 +1235,24 @@ class GoogleCloudEssentialcontactsV1ListContactsResponse {
   /// as the original request.
   core.String? nextPageToken;
 
-  GoogleCloudEssentialcontactsV1ListContactsResponse();
+  GoogleCloudEssentialcontactsV1ListContactsResponse({
+    this.contacts,
+    this.nextPageToken,
+  });
 
-  GoogleCloudEssentialcontactsV1ListContactsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('contacts')) {
-      contacts = (_json['contacts'] as core.List)
-          .map<GoogleCloudEssentialcontactsV1Contact>((value) =>
-              GoogleCloudEssentialcontactsV1Contact.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  GoogleCloudEssentialcontactsV1ListContactsResponse.fromJson(core.Map _json)
+      : this(
+          contacts: _json.containsKey('contacts')
+              ? (_json['contacts'] as core.List)
+                  .map<GoogleCloudEssentialcontactsV1Contact>((value) =>
+                      GoogleCloudEssentialcontactsV1Contact.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contacts != null)
@@ -1286,19 +1298,22 @@ class GoogleCloudEssentialcontactsV1SendTestMessageRequest {
   /// TECHNICAL.
   core.String? notificationCategory;
 
-  GoogleCloudEssentialcontactsV1SendTestMessageRequest();
+  GoogleCloudEssentialcontactsV1SendTestMessageRequest({
+    this.contacts,
+    this.notificationCategory,
+  });
 
-  GoogleCloudEssentialcontactsV1SendTestMessageRequest.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('contacts')) {
-      contacts = (_json['contacts'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('notificationCategory')) {
-      notificationCategory = _json['notificationCategory'] as core.String;
-    }
-  }
+  GoogleCloudEssentialcontactsV1SendTestMessageRequest.fromJson(core.Map _json)
+      : this(
+          contacts: _json.containsKey('contacts')
+              ? (_json['contacts'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          notificationCategory: _json.containsKey('notificationCategory')
+              ? _json['notificationCategory'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contacts != null) 'contacts': contacts!,

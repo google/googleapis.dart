@@ -1120,27 +1120,31 @@ class AccessApprovalSettings {
   /// addresses are allowed.
   core.List<core.String>? notificationEmails;
 
-  AccessApprovalSettings();
+  AccessApprovalSettings({
+    this.enrolledAncestor,
+    this.enrolledServices,
+    this.name,
+    this.notificationEmails,
+  });
 
-  AccessApprovalSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('enrolledAncestor')) {
-      enrolledAncestor = _json['enrolledAncestor'] as core.bool;
-    }
-    if (_json.containsKey('enrolledServices')) {
-      enrolledServices = (_json['enrolledServices'] as core.List)
-          .map<EnrolledService>((value) => EnrolledService.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('notificationEmails')) {
-      notificationEmails = (_json['notificationEmails'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  AccessApprovalSettings.fromJson(core.Map _json)
+      : this(
+          enrolledAncestor: _json.containsKey('enrolledAncestor')
+              ? _json['enrolledAncestor'] as core.bool
+              : null,
+          enrolledServices: _json.containsKey('enrolledServices')
+              ? (_json['enrolledServices'] as core.List)
+                  .map<EnrolledService>((value) => EnrolledService.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          notificationEmails: _json.containsKey('notificationEmails')
+              ? (_json['notificationEmails'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enrolledAncestor != null) 'enrolledAncestor': enrolledAncestor!,
@@ -1173,17 +1177,21 @@ class AccessLocations {
   /// * SAM: South America * ANT: Antarctica * ANY: Any location
   core.String? principalPhysicalLocationCountry;
 
-  AccessLocations();
+  AccessLocations({
+    this.principalOfficeCountry,
+    this.principalPhysicalLocationCountry,
+  });
 
-  AccessLocations.fromJson(core.Map _json) {
-    if (_json.containsKey('principalOfficeCountry')) {
-      principalOfficeCountry = _json['principalOfficeCountry'] as core.String;
-    }
-    if (_json.containsKey('principalPhysicalLocationCountry')) {
-      principalPhysicalLocationCountry =
-          _json['principalPhysicalLocationCountry'] as core.String;
-    }
-  }
+  AccessLocations.fromJson(core.Map _json)
+      : this(
+          principalOfficeCountry: _json.containsKey('principalOfficeCountry')
+              ? _json['principalOfficeCountry'] as core.String
+              : null,
+          principalPhysicalLocationCountry:
+              _json.containsKey('principalPhysicalLocationCountry')
+                  ? _json['principalPhysicalLocationCountry'] as core.String
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (principalOfficeCountry != null)
@@ -1216,16 +1224,18 @@ class AccessReason {
   /// fraud, abuse, or compliance purposes.
   core.String? type;
 
-  AccessReason();
+  AccessReason({
+    this.detail,
+    this.type,
+  });
 
-  AccessReason.fromJson(core.Map _json) {
-    if (_json.containsKey('detail')) {
-      detail = _json['detail'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  AccessReason.fromJson(core.Map _json)
+      : this(
+          detail: _json.containsKey('detail')
+              ? _json['detail'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (detail != null) 'detail': detail!,
@@ -1275,43 +1285,52 @@ class ApprovalRequest {
   /// Properties related to the resource represented by requested_resource_name.
   ResourceProperties? requestedResourceProperties;
 
-  ApprovalRequest();
+  ApprovalRequest({
+    this.approve,
+    this.dismiss,
+    this.name,
+    this.requestTime,
+    this.requestedExpiration,
+    this.requestedLocations,
+    this.requestedReason,
+    this.requestedResourceName,
+    this.requestedResourceProperties,
+  });
 
-  ApprovalRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('approve')) {
-      approve = ApproveDecision.fromJson(
-          _json['approve'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('dismiss')) {
-      dismiss = DismissDecision.fromJson(
-          _json['dismiss'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('requestTime')) {
-      requestTime = _json['requestTime'] as core.String;
-    }
-    if (_json.containsKey('requestedExpiration')) {
-      requestedExpiration = _json['requestedExpiration'] as core.String;
-    }
-    if (_json.containsKey('requestedLocations')) {
-      requestedLocations = AccessLocations.fromJson(
-          _json['requestedLocations'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('requestedReason')) {
-      requestedReason = AccessReason.fromJson(
-          _json['requestedReason'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('requestedResourceName')) {
-      requestedResourceName = _json['requestedResourceName'] as core.String;
-    }
-    if (_json.containsKey('requestedResourceProperties')) {
-      requestedResourceProperties = ResourceProperties.fromJson(
-          _json['requestedResourceProperties']
-              as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ApprovalRequest.fromJson(core.Map _json)
+      : this(
+          approve: _json.containsKey('approve')
+              ? ApproveDecision.fromJson(
+                  _json['approve'] as core.Map<core.String, core.dynamic>)
+              : null,
+          dismiss: _json.containsKey('dismiss')
+              ? DismissDecision.fromJson(
+                  _json['dismiss'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          requestTime: _json.containsKey('requestTime')
+              ? _json['requestTime'] as core.String
+              : null,
+          requestedExpiration: _json.containsKey('requestedExpiration')
+              ? _json['requestedExpiration'] as core.String
+              : null,
+          requestedLocations: _json.containsKey('requestedLocations')
+              ? AccessLocations.fromJson(_json['requestedLocations']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          requestedReason: _json.containsKey('requestedReason')
+              ? AccessReason.fromJson(_json['requestedReason']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          requestedResourceName: _json.containsKey('requestedResourceName')
+              ? _json['requestedResourceName'] as core.String
+              : null,
+          requestedResourceProperties: _json
+                  .containsKey('requestedResourceProperties')
+              ? ResourceProperties.fromJson(_json['requestedResourceProperties']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (approve != null) 'approve': approve!.toJson(),
@@ -1336,13 +1355,16 @@ class ApproveApprovalRequestMessage {
   /// The expiration time of this approval.
   core.String? expireTime;
 
-  ApproveApprovalRequestMessage();
+  ApproveApprovalRequestMessage({
+    this.expireTime,
+  });
 
-  ApproveApprovalRequestMessage.fromJson(core.Map _json) {
-    if (_json.containsKey('expireTime')) {
-      expireTime = _json['expireTime'] as core.String;
-    }
-  }
+  ApproveApprovalRequestMessage.fromJson(core.Map _json)
+      : this(
+          expireTime: _json.containsKey('expireTime')
+              ? _json['expireTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (expireTime != null) 'expireTime': expireTime!,
@@ -1357,16 +1379,20 @@ class ApproveDecision {
   /// The time at which the approval expires.
   core.String? expireTime;
 
-  ApproveDecision();
+  ApproveDecision({
+    this.approveTime,
+    this.expireTime,
+  });
 
-  ApproveDecision.fromJson(core.Map _json) {
-    if (_json.containsKey('approveTime')) {
-      approveTime = _json['approveTime'] as core.String;
-    }
-    if (_json.containsKey('expireTime')) {
-      expireTime = _json['expireTime'] as core.String;
-    }
-  }
+  ApproveDecision.fromJson(core.Map _json)
+      : this(
+          approveTime: _json.containsKey('approveTime')
+              ? _json['approveTime'] as core.String
+              : null,
+          expireTime: _json.containsKey('expireTime')
+              ? _json['expireTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (approveTime != null) 'approveTime': approveTime!,
@@ -1395,16 +1421,20 @@ class DismissDecision {
   /// by the approvers before the exiration time).
   core.bool? implicit;
 
-  DismissDecision();
+  DismissDecision({
+    this.dismissTime,
+    this.implicit,
+  });
 
-  DismissDecision.fromJson(core.Map _json) {
-    if (_json.containsKey('dismissTime')) {
-      dismissTime = _json['dismissTime'] as core.String;
-    }
-    if (_json.containsKey('implicit')) {
-      implicit = _json['implicit'] as core.bool;
-    }
-  }
+  DismissDecision.fromJson(core.Map _json)
+      : this(
+          dismissTime: _json.containsKey('dismissTime')
+              ? _json['dismissTime'] as core.String
+              : null,
+          implicit: _json.containsKey('implicit')
+              ? _json['implicit'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dismissTime != null) 'dismissTime': dismissTime!,
@@ -1460,16 +1490,20 @@ class EnrolledService {
   /// - "BLOCK_ALL" : Service is enrolled in Access Approval for all requests
   core.String? enrollmentLevel;
 
-  EnrolledService();
+  EnrolledService({
+    this.cloudProduct,
+    this.enrollmentLevel,
+  });
 
-  EnrolledService.fromJson(core.Map _json) {
-    if (_json.containsKey('cloudProduct')) {
-      cloudProduct = _json['cloudProduct'] as core.String;
-    }
-    if (_json.containsKey('enrollmentLevel')) {
-      enrollmentLevel = _json['enrollmentLevel'] as core.String;
-    }
-  }
+  EnrolledService.fromJson(core.Map _json)
+      : this(
+          cloudProduct: _json.containsKey('cloudProduct')
+              ? _json['cloudProduct'] as core.String
+              : null,
+          enrollmentLevel: _json.containsKey('enrollmentLevel')
+              ? _json['enrollmentLevel'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cloudProduct != null) 'cloudProduct': cloudProduct!,
@@ -1485,19 +1519,23 @@ class ListApprovalRequestsResponse {
   /// Token to retrieve the next page of results, or empty if there are no more.
   core.String? nextPageToken;
 
-  ListApprovalRequestsResponse();
+  ListApprovalRequestsResponse({
+    this.approvalRequests,
+    this.nextPageToken,
+  });
 
-  ListApprovalRequestsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('approvalRequests')) {
-      approvalRequests = (_json['approvalRequests'] as core.List)
-          .map<ApprovalRequest>((value) => ApprovalRequest.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListApprovalRequestsResponse.fromJson(core.Map _json)
+      : this(
+          approvalRequests: _json.containsKey('approvalRequests')
+              ? (_json['approvalRequests'] as core.List)
+                  .map<ApprovalRequest>((value) => ApprovalRequest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (approvalRequests != null)
@@ -1513,13 +1551,16 @@ class ResourceProperties {
   /// requested.
   core.bool? excludesDescendants;
 
-  ResourceProperties();
+  ResourceProperties({
+    this.excludesDescendants,
+  });
 
-  ResourceProperties.fromJson(core.Map _json) {
-    if (_json.containsKey('excludesDescendants')) {
-      excludesDescendants = _json['excludesDescendants'] as core.bool;
-    }
-  }
+  ResourceProperties.fromJson(core.Map _json)
+      : this(
+          excludesDescendants: _json.containsKey('excludesDescendants')
+              ? _json['excludesDescendants'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (excludesDescendants != null)

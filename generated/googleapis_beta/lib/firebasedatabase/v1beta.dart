@@ -439,25 +439,27 @@ class DatabaseInstance {
   /// - "USER_DATABASE" : A database that the user created.
   core.String? type;
 
-  DatabaseInstance();
+  DatabaseInstance({
+    this.databaseUrl,
+    this.name,
+    this.project,
+    this.state,
+    this.type,
+  });
 
-  DatabaseInstance.fromJson(core.Map _json) {
-    if (_json.containsKey('databaseUrl')) {
-      databaseUrl = _json['databaseUrl'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('project')) {
-      project = _json['project'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  DatabaseInstance.fromJson(core.Map _json)
+      : this(
+          databaseUrl: _json.containsKey('databaseUrl')
+              ? _json['databaseUrl'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          project: _json.containsKey('project')
+              ? _json['project'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (databaseUrl != null) 'databaseUrl': databaseUrl!,
@@ -493,19 +495,23 @@ class ListDatabaseInstancesResponse {
   /// should not be persisted.
   core.String? nextPageToken;
 
-  ListDatabaseInstancesResponse();
+  ListDatabaseInstancesResponse({
+    this.instances,
+    this.nextPageToken,
+  });
 
-  ListDatabaseInstancesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('instances')) {
-      instances = (_json['instances'] as core.List)
-          .map<DatabaseInstance>((value) => DatabaseInstance.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListDatabaseInstancesResponse.fromJson(core.Map _json)
+      : this(
+          instances: _json.containsKey('instances')
+              ? (_json['instances'] as core.List)
+                  .map<DatabaseInstance>((value) => DatabaseInstance.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (instances != null)

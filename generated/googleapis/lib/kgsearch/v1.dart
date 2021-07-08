@@ -144,21 +144,25 @@ class SearchResponse {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Object>? itemListElement;
 
-  SearchResponse();
+  SearchResponse({
+    this.P_context,
+    this.P_type,
+    this.itemListElement,
+  });
 
-  SearchResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('@context')) {
-      P_context = _json['@context'] as core.Object;
-    }
-    if (_json.containsKey('@type')) {
-      P_type = _json['@type'] as core.Object;
-    }
-    if (_json.containsKey('itemListElement')) {
-      itemListElement = (_json['itemListElement'] as core.List)
-          .map<core.Object>((value) => value as core.Object)
-          .toList();
-    }
-  }
+  SearchResponse.fromJson(core.Map _json)
+      : this(
+          P_context: _json.containsKey('@context')
+              ? _json['@context'] as core.Object
+              : null,
+          P_type:
+              _json.containsKey('@type') ? _json['@type'] as core.Object : null,
+          itemListElement: _json.containsKey('itemListElement')
+              ? (_json['itemListElement'] as core.List)
+                  .map<core.Object>((value) => value as core.Object)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (P_context != null) '@context': P_context!,

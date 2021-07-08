@@ -3510,16 +3510,20 @@ class AcceleratorConfig {
   /// [here](https://cloud.google.com/compute/docs/gpus)
   core.String? acceleratorType;
 
-  AcceleratorConfig();
+  AcceleratorConfig({
+    this.acceleratorCount,
+    this.acceleratorType,
+  });
 
-  AcceleratorConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('acceleratorCount')) {
-      acceleratorCount = _json['acceleratorCount'] as core.String;
-    }
-    if (_json.containsKey('acceleratorType')) {
-      acceleratorType = _json['acceleratorType'] as core.String;
-    }
-  }
+  AcceleratorConfig.fromJson(core.Map _json)
+      : this(
+          acceleratorCount: _json.containsKey('acceleratorCount')
+              ? _json['acceleratorCount'] as core.String
+              : null,
+          acceleratorType: _json.containsKey('acceleratorType')
+              ? _json['acceleratorType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (acceleratorCount != null) 'acceleratorCount': acceleratorCount!,
@@ -3567,46 +3571,56 @@ class AddonsConfig {
   /// does not track whether network policy is enabled for the nodes.
   NetworkPolicyConfig? networkPolicyConfig;
 
-  AddonsConfig();
+  AddonsConfig({
+    this.cloudRunConfig,
+    this.configConnectorConfig,
+    this.dnsCacheConfig,
+    this.gcePersistentDiskCsiDriverConfig,
+    this.horizontalPodAutoscaling,
+    this.httpLoadBalancing,
+    this.kubernetesDashboard,
+    this.networkPolicyConfig,
+  });
 
-  AddonsConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('cloudRunConfig')) {
-      cloudRunConfig = CloudRunConfig.fromJson(
-          _json['cloudRunConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('configConnectorConfig')) {
-      configConnectorConfig = ConfigConnectorConfig.fromJson(
-          _json['configConnectorConfig']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('dnsCacheConfig')) {
-      dnsCacheConfig = DnsCacheConfig.fromJson(
-          _json['dnsCacheConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('gcePersistentDiskCsiDriverConfig')) {
-      gcePersistentDiskCsiDriverConfig =
-          GcePersistentDiskCsiDriverConfig.fromJson(
-              _json['gcePersistentDiskCsiDriverConfig']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('horizontalPodAutoscaling')) {
-      horizontalPodAutoscaling = HorizontalPodAutoscaling.fromJson(
-          _json['horizontalPodAutoscaling']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('httpLoadBalancing')) {
-      httpLoadBalancing = HttpLoadBalancing.fromJson(
-          _json['httpLoadBalancing'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('kubernetesDashboard')) {
-      kubernetesDashboard = KubernetesDashboard.fromJson(
-          _json['kubernetesDashboard'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('networkPolicyConfig')) {
-      networkPolicyConfig = NetworkPolicyConfig.fromJson(
-          _json['networkPolicyConfig'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  AddonsConfig.fromJson(core.Map _json)
+      : this(
+          cloudRunConfig: _json.containsKey('cloudRunConfig')
+              ? CloudRunConfig.fromJson(_json['cloudRunConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          configConnectorConfig: _json.containsKey('configConnectorConfig')
+              ? ConfigConnectorConfig.fromJson(_json['configConnectorConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          dnsCacheConfig: _json.containsKey('dnsCacheConfig')
+              ? DnsCacheConfig.fromJson(_json['dnsCacheConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          gcePersistentDiskCsiDriverConfig:
+              _json.containsKey('gcePersistentDiskCsiDriverConfig')
+                  ? GcePersistentDiskCsiDriverConfig.fromJson(
+                      _json['gcePersistentDiskCsiDriverConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          horizontalPodAutoscaling:
+              _json.containsKey('horizontalPodAutoscaling')
+                  ? HorizontalPodAutoscaling.fromJson(
+                      _json['horizontalPodAutoscaling']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          httpLoadBalancing: _json.containsKey('httpLoadBalancing')
+              ? HttpLoadBalancing.fromJson(_json['httpLoadBalancing']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          kubernetesDashboard: _json.containsKey('kubernetesDashboard')
+              ? KubernetesDashboard.fromJson(_json['kubernetesDashboard']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          networkPolicyConfig: _json.containsKey('networkPolicyConfig')
+              ? NetworkPolicyConfig.fromJson(_json['networkPolicyConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cloudRunConfig != null) 'cloudRunConfig': cloudRunConfig!.toJson(),
@@ -3638,16 +3652,20 @@ class AuthenticatorGroupsConfig {
   /// Only relevant if enabled = true.
   core.String? securityGroup;
 
-  AuthenticatorGroupsConfig();
+  AuthenticatorGroupsConfig({
+    this.enabled,
+    this.securityGroup,
+  });
 
-  AuthenticatorGroupsConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-    if (_json.containsKey('securityGroup')) {
-      securityGroup = _json['securityGroup'] as core.String;
-    }
-  }
+  AuthenticatorGroupsConfig.fromJson(core.Map _json)
+      : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+          securityGroup: _json.containsKey('securityGroup')
+              ? _json['securityGroup'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -3671,16 +3689,20 @@ class AutoUpgradeOptions {
   /// Output only.
   core.String? description;
 
-  AutoUpgradeOptions();
+  AutoUpgradeOptions({
+    this.autoUpgradeStartTime,
+    this.description,
+  });
 
-  AutoUpgradeOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('autoUpgradeStartTime')) {
-      autoUpgradeStartTime = _json['autoUpgradeStartTime'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-  }
+  AutoUpgradeOptions.fromJson(core.Map _json)
+      : this(
+          autoUpgradeStartTime: _json.containsKey('autoUpgradeStartTime')
+              ? _json['autoUpgradeStartTime'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoUpgradeStartTime != null)
@@ -3694,13 +3716,16 @@ class Autopilot {
   /// Enable Autopilot
   core.bool? enabled;
 
-  Autopilot();
+  Autopilot({
+    this.enabled,
+  });
 
-  Autopilot.fromJson(core.Map _json) {
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-  }
+  Autopilot.fromJson(core.Map _json)
+      : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -3758,46 +3783,57 @@ class AutoprovisioningNodePoolDefaults {
   /// Specifies the upgrade settings for NAP created node pools
   UpgradeSettings? upgradeSettings;
 
-  AutoprovisioningNodePoolDefaults();
+  AutoprovisioningNodePoolDefaults({
+    this.bootDiskKmsKey,
+    this.diskSizeGb,
+    this.diskType,
+    this.imageType,
+    this.management,
+    this.minCpuPlatform,
+    this.oauthScopes,
+    this.serviceAccount,
+    this.shieldedInstanceConfig,
+    this.upgradeSettings,
+  });
 
-  AutoprovisioningNodePoolDefaults.fromJson(core.Map _json) {
-    if (_json.containsKey('bootDiskKmsKey')) {
-      bootDiskKmsKey = _json['bootDiskKmsKey'] as core.String;
-    }
-    if (_json.containsKey('diskSizeGb')) {
-      diskSizeGb = _json['diskSizeGb'] as core.int;
-    }
-    if (_json.containsKey('diskType')) {
-      diskType = _json['diskType'] as core.String;
-    }
-    if (_json.containsKey('imageType')) {
-      imageType = _json['imageType'] as core.String;
-    }
-    if (_json.containsKey('management')) {
-      management = NodeManagement.fromJson(
-          _json['management'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('minCpuPlatform')) {
-      minCpuPlatform = _json['minCpuPlatform'] as core.String;
-    }
-    if (_json.containsKey('oauthScopes')) {
-      oauthScopes = (_json['oauthScopes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('serviceAccount')) {
-      serviceAccount = _json['serviceAccount'] as core.String;
-    }
-    if (_json.containsKey('shieldedInstanceConfig')) {
-      shieldedInstanceConfig = ShieldedInstanceConfig.fromJson(
-          _json['shieldedInstanceConfig']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('upgradeSettings')) {
-      upgradeSettings = UpgradeSettings.fromJson(
-          _json['upgradeSettings'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  AutoprovisioningNodePoolDefaults.fromJson(core.Map _json)
+      : this(
+          bootDiskKmsKey: _json.containsKey('bootDiskKmsKey')
+              ? _json['bootDiskKmsKey'] as core.String
+              : null,
+          diskSizeGb: _json.containsKey('diskSizeGb')
+              ? _json['diskSizeGb'] as core.int
+              : null,
+          diskType: _json.containsKey('diskType')
+              ? _json['diskType'] as core.String
+              : null,
+          imageType: _json.containsKey('imageType')
+              ? _json['imageType'] as core.String
+              : null,
+          management: _json.containsKey('management')
+              ? NodeManagement.fromJson(
+                  _json['management'] as core.Map<core.String, core.dynamic>)
+              : null,
+          minCpuPlatform: _json.containsKey('minCpuPlatform')
+              ? _json['minCpuPlatform'] as core.String
+              : null,
+          oauthScopes: _json.containsKey('oauthScopes')
+              ? (_json['oauthScopes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          serviceAccount: _json.containsKey('serviceAccount')
+              ? _json['serviceAccount'] as core.String
+              : null,
+          shieldedInstanceConfig: _json.containsKey('shieldedInstanceConfig')
+              ? ShieldedInstanceConfig.fromJson(_json['shieldedInstanceConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          upgradeSettings: _json.containsKey('upgradeSettings')
+              ? UpgradeSettings.fromJson(_json['upgradeSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bootDiskKmsKey != null) 'bootDiskKmsKey': bootDiskKmsKey!,
@@ -3820,13 +3856,16 @@ class BigQueryDestination {
   /// The ID of a BigQuery Dataset.
   core.String? datasetId;
 
-  BigQueryDestination();
+  BigQueryDestination({
+    this.datasetId,
+  });
 
-  BigQueryDestination.fromJson(core.Map _json) {
-    if (_json.containsKey('datasetId')) {
-      datasetId = _json['datasetId'] as core.String;
-    }
-  }
+  BigQueryDestination.fromJson(core.Map _json)
+      : this(
+          datasetId: _json.containsKey('datasetId')
+              ? _json['datasetId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (datasetId != null) 'datasetId': datasetId!,
@@ -3841,13 +3880,16 @@ class BinaryAuthorization {
   /// Authorization.
   core.bool? enabled;
 
-  BinaryAuthorization();
+  BinaryAuthorization({
+    this.enabled,
+  });
 
-  BinaryAuthorization.fromJson(core.Map _json) {
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-  }
+  BinaryAuthorization.fromJson(core.Map _json)
+      : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -3885,22 +3927,24 @@ class CancelOperationRequest {
   /// Deprecated.
   core.String? zone;
 
-  CancelOperationRequest();
+  CancelOperationRequest({
+    this.name,
+    this.operationId,
+    this.projectId,
+    this.zone,
+  });
 
-  CancelOperationRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('operationId')) {
-      operationId = _json['operationId'] as core.String;
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('zone')) {
-      zone = _json['zone'] as core.String;
-    }
-  }
+  CancelOperationRequest.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          operationId: _json.containsKey('operationId')
+              ? _json['operationId'] as core.String
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -3918,16 +3962,20 @@ class CidrBlock {
   /// display_name is an optional field for users to identify CIDR blocks.
   core.String? displayName;
 
-  CidrBlock();
+  CidrBlock({
+    this.cidrBlock,
+    this.displayName,
+  });
 
-  CidrBlock.fromJson(core.Map _json) {
-    if (_json.containsKey('cidrBlock')) {
-      cidrBlock = _json['cidrBlock'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-  }
+  CidrBlock.fromJson(core.Map _json)
+      : this(
+          cidrBlock: _json.containsKey('cidrBlock')
+              ? _json['cidrBlock'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cidrBlock != null) 'cidrBlock': cidrBlock!,
@@ -3940,13 +3988,16 @@ class ClientCertificateConfig {
   /// Issue a client certificate.
   core.bool? issueClientCertificate;
 
-  ClientCertificateConfig();
+  ClientCertificateConfig({
+    this.issueClientCertificate,
+  });
 
-  ClientCertificateConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('issueClientCertificate')) {
-      issueClientCertificate = _json['issueClientCertificate'] as core.bool;
-    }
-  }
+  ClientCertificateConfig.fromJson(core.Map _json)
+      : this(
+          issueClientCertificate: _json.containsKey('issueClientCertificate')
+              ? _json['issueClientCertificate'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (issueClientCertificate != null)
@@ -3969,16 +4020,20 @@ class CloudRunConfig {
   /// Run.
   core.String? loadBalancerType;
 
-  CloudRunConfig();
+  CloudRunConfig({
+    this.disabled,
+    this.loadBalancerType,
+  });
 
-  CloudRunConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('disabled')) {
-      disabled = _json['disabled'] as core.bool;
-    }
-    if (_json.containsKey('loadBalancerType')) {
-      loadBalancerType = _json['loadBalancerType'] as core.String;
-    }
-  }
+  CloudRunConfig.fromJson(core.Map _json)
+      : this(
+          disabled: _json.containsKey('disabled')
+              ? _json['disabled'] as core.bool
+              : null,
+          loadBalancerType: _json.containsKey('loadBalancerType')
+              ? _json['loadBalancerType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disabled != null) 'disabled': disabled!,
@@ -4323,220 +4378,272 @@ class Cluster {
   /// Output only.
   core.String? zone;
 
-  Cluster();
+  Cluster({
+    this.addonsConfig,
+    this.authenticatorGroupsConfig,
+    this.autopilot,
+    this.autoscaling,
+    this.binaryAuthorization,
+    this.clusterIpv4Cidr,
+    this.conditions,
+    this.confidentialNodes,
+    this.createTime,
+    this.currentMasterVersion,
+    this.currentNodeCount,
+    this.currentNodeVersion,
+    this.databaseEncryption,
+    this.defaultMaxPodsConstraint,
+    this.description,
+    this.enableKubernetesAlpha,
+    this.enableTpu,
+    this.endpoint,
+    this.expireTime,
+    this.id,
+    this.initialClusterVersion,
+    this.initialNodeCount,
+    this.instanceGroupUrls,
+    this.ipAllocationPolicy,
+    this.labelFingerprint,
+    this.legacyAbac,
+    this.location,
+    this.locations,
+    this.loggingService,
+    this.maintenancePolicy,
+    this.masterAuth,
+    this.masterAuthorizedNetworksConfig,
+    this.monitoringService,
+    this.name,
+    this.network,
+    this.networkConfig,
+    this.networkPolicy,
+    this.nodeConfig,
+    this.nodeIpv4CidrSize,
+    this.nodePools,
+    this.notificationConfig,
+    this.privateClusterConfig,
+    this.releaseChannel,
+    this.resourceLabels,
+    this.resourceUsageExportConfig,
+    this.selfLink,
+    this.servicesIpv4Cidr,
+    this.shieldedNodes,
+    this.status,
+    this.statusMessage,
+    this.subnetwork,
+    this.tpuIpv4CidrBlock,
+    this.verticalPodAutoscaling,
+    this.workloadIdentityConfig,
+    this.zone,
+  });
 
-  Cluster.fromJson(core.Map _json) {
-    if (_json.containsKey('addonsConfig')) {
-      addonsConfig = AddonsConfig.fromJson(
-          _json['addonsConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('authenticatorGroupsConfig')) {
-      authenticatorGroupsConfig = AuthenticatorGroupsConfig.fromJson(
-          _json['authenticatorGroupsConfig']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('autopilot')) {
-      autopilot = Autopilot.fromJson(
-          _json['autopilot'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('autoscaling')) {
-      autoscaling = ClusterAutoscaling.fromJson(
-          _json['autoscaling'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('binaryAuthorization')) {
-      binaryAuthorization = BinaryAuthorization.fromJson(
-          _json['binaryAuthorization'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('clusterIpv4Cidr')) {
-      clusterIpv4Cidr = _json['clusterIpv4Cidr'] as core.String;
-    }
-    if (_json.containsKey('conditions')) {
-      conditions = (_json['conditions'] as core.List)
-          .map<StatusCondition>((value) => StatusCondition.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('confidentialNodes')) {
-      confidentialNodes = ConfidentialNodes.fromJson(
-          _json['confidentialNodes'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('currentMasterVersion')) {
-      currentMasterVersion = _json['currentMasterVersion'] as core.String;
-    }
-    if (_json.containsKey('currentNodeCount')) {
-      currentNodeCount = _json['currentNodeCount'] as core.int;
-    }
-    if (_json.containsKey('currentNodeVersion')) {
-      currentNodeVersion = _json['currentNodeVersion'] as core.String;
-    }
-    if (_json.containsKey('databaseEncryption')) {
-      databaseEncryption = DatabaseEncryption.fromJson(
-          _json['databaseEncryption'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('defaultMaxPodsConstraint')) {
-      defaultMaxPodsConstraint = MaxPodsConstraint.fromJson(
-          _json['defaultMaxPodsConstraint']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('enableKubernetesAlpha')) {
-      enableKubernetesAlpha = _json['enableKubernetesAlpha'] as core.bool;
-    }
-    if (_json.containsKey('enableTpu')) {
-      enableTpu = _json['enableTpu'] as core.bool;
-    }
-    if (_json.containsKey('endpoint')) {
-      endpoint = _json['endpoint'] as core.String;
-    }
-    if (_json.containsKey('expireTime')) {
-      expireTime = _json['expireTime'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('initialClusterVersion')) {
-      initialClusterVersion = _json['initialClusterVersion'] as core.String;
-    }
-    if (_json.containsKey('initialNodeCount')) {
-      initialNodeCount = _json['initialNodeCount'] as core.int;
-    }
-    if (_json.containsKey('instanceGroupUrls')) {
-      instanceGroupUrls = (_json['instanceGroupUrls'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('ipAllocationPolicy')) {
-      ipAllocationPolicy = IPAllocationPolicy.fromJson(
-          _json['ipAllocationPolicy'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('labelFingerprint')) {
-      labelFingerprint = _json['labelFingerprint'] as core.String;
-    }
-    if (_json.containsKey('legacyAbac')) {
-      legacyAbac = LegacyAbac.fromJson(
-          _json['legacyAbac'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('location')) {
-      location = _json['location'] as core.String;
-    }
-    if (_json.containsKey('locations')) {
-      locations = (_json['locations'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('loggingService')) {
-      loggingService = _json['loggingService'] as core.String;
-    }
-    if (_json.containsKey('maintenancePolicy')) {
-      maintenancePolicy = MaintenancePolicy.fromJson(
-          _json['maintenancePolicy'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('masterAuth')) {
-      masterAuth = MasterAuth.fromJson(
-          _json['masterAuth'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('masterAuthorizedNetworksConfig')) {
-      masterAuthorizedNetworksConfig = MasterAuthorizedNetworksConfig.fromJson(
-          _json['masterAuthorizedNetworksConfig']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('monitoringService')) {
-      monitoringService = _json['monitoringService'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('network')) {
-      network = _json['network'] as core.String;
-    }
-    if (_json.containsKey('networkConfig')) {
-      networkConfig = NetworkConfig.fromJson(
-          _json['networkConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('networkPolicy')) {
-      networkPolicy = NetworkPolicy.fromJson(
-          _json['networkPolicy'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('nodeConfig')) {
-      nodeConfig = NodeConfig.fromJson(
-          _json['nodeConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('nodeIpv4CidrSize')) {
-      nodeIpv4CidrSize = _json['nodeIpv4CidrSize'] as core.int;
-    }
-    if (_json.containsKey('nodePools')) {
-      nodePools = (_json['nodePools'] as core.List)
-          .map<NodePool>((value) =>
-              NodePool.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('notificationConfig')) {
-      notificationConfig = NotificationConfig.fromJson(
-          _json['notificationConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('privateClusterConfig')) {
-      privateClusterConfig = PrivateClusterConfig.fromJson(
-          _json['privateClusterConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('releaseChannel')) {
-      releaseChannel = ReleaseChannel.fromJson(
-          _json['releaseChannel'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('resourceLabels')) {
-      resourceLabels =
-          (_json['resourceLabels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('resourceUsageExportConfig')) {
-      resourceUsageExportConfig = ResourceUsageExportConfig.fromJson(
-          _json['resourceUsageExportConfig']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'] as core.String;
-    }
-    if (_json.containsKey('servicesIpv4Cidr')) {
-      servicesIpv4Cidr = _json['servicesIpv4Cidr'] as core.String;
-    }
-    if (_json.containsKey('shieldedNodes')) {
-      shieldedNodes = ShieldedNodes.fromJson(
-          _json['shieldedNodes'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-    if (_json.containsKey('statusMessage')) {
-      statusMessage = _json['statusMessage'] as core.String;
-    }
-    if (_json.containsKey('subnetwork')) {
-      subnetwork = _json['subnetwork'] as core.String;
-    }
-    if (_json.containsKey('tpuIpv4CidrBlock')) {
-      tpuIpv4CidrBlock = _json['tpuIpv4CidrBlock'] as core.String;
-    }
-    if (_json.containsKey('verticalPodAutoscaling')) {
-      verticalPodAutoscaling = VerticalPodAutoscaling.fromJson(
-          _json['verticalPodAutoscaling']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('workloadIdentityConfig')) {
-      workloadIdentityConfig = WorkloadIdentityConfig.fromJson(
-          _json['workloadIdentityConfig']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('zone')) {
-      zone = _json['zone'] as core.String;
-    }
-  }
+  Cluster.fromJson(core.Map _json)
+      : this(
+          addonsConfig: _json.containsKey('addonsConfig')
+              ? AddonsConfig.fromJson(
+                  _json['addonsConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          authenticatorGroupsConfig:
+              _json.containsKey('authenticatorGroupsConfig')
+                  ? AuthenticatorGroupsConfig.fromJson(
+                      _json['authenticatorGroupsConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          autopilot: _json.containsKey('autopilot')
+              ? Autopilot.fromJson(
+                  _json['autopilot'] as core.Map<core.String, core.dynamic>)
+              : null,
+          autoscaling: _json.containsKey('autoscaling')
+              ? ClusterAutoscaling.fromJson(
+                  _json['autoscaling'] as core.Map<core.String, core.dynamic>)
+              : null,
+          binaryAuthorization: _json.containsKey('binaryAuthorization')
+              ? BinaryAuthorization.fromJson(_json['binaryAuthorization']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          clusterIpv4Cidr: _json.containsKey('clusterIpv4Cidr')
+              ? _json['clusterIpv4Cidr'] as core.String
+              : null,
+          conditions: _json.containsKey('conditions')
+              ? (_json['conditions'] as core.List)
+                  .map<StatusCondition>((value) => StatusCondition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          confidentialNodes: _json.containsKey('confidentialNodes')
+              ? ConfidentialNodes.fromJson(_json['confidentialNodes']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          currentMasterVersion: _json.containsKey('currentMasterVersion')
+              ? _json['currentMasterVersion'] as core.String
+              : null,
+          currentNodeCount: _json.containsKey('currentNodeCount')
+              ? _json['currentNodeCount'] as core.int
+              : null,
+          currentNodeVersion: _json.containsKey('currentNodeVersion')
+              ? _json['currentNodeVersion'] as core.String
+              : null,
+          databaseEncryption: _json.containsKey('databaseEncryption')
+              ? DatabaseEncryption.fromJson(_json['databaseEncryption']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          defaultMaxPodsConstraint:
+              _json.containsKey('defaultMaxPodsConstraint')
+                  ? MaxPodsConstraint.fromJson(_json['defaultMaxPodsConstraint']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          enableKubernetesAlpha: _json.containsKey('enableKubernetesAlpha')
+              ? _json['enableKubernetesAlpha'] as core.bool
+              : null,
+          enableTpu: _json.containsKey('enableTpu')
+              ? _json['enableTpu'] as core.bool
+              : null,
+          endpoint: _json.containsKey('endpoint')
+              ? _json['endpoint'] as core.String
+              : null,
+          expireTime: _json.containsKey('expireTime')
+              ? _json['expireTime'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          initialClusterVersion: _json.containsKey('initialClusterVersion')
+              ? _json['initialClusterVersion'] as core.String
+              : null,
+          initialNodeCount: _json.containsKey('initialNodeCount')
+              ? _json['initialNodeCount'] as core.int
+              : null,
+          instanceGroupUrls: _json.containsKey('instanceGroupUrls')
+              ? (_json['instanceGroupUrls'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          ipAllocationPolicy: _json.containsKey('ipAllocationPolicy')
+              ? IPAllocationPolicy.fromJson(_json['ipAllocationPolicy']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          labelFingerprint: _json.containsKey('labelFingerprint')
+              ? _json['labelFingerprint'] as core.String
+              : null,
+          legacyAbac: _json.containsKey('legacyAbac')
+              ? LegacyAbac.fromJson(
+                  _json['legacyAbac'] as core.Map<core.String, core.dynamic>)
+              : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          locations: _json.containsKey('locations')
+              ? (_json['locations'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          loggingService: _json.containsKey('loggingService')
+              ? _json['loggingService'] as core.String
+              : null,
+          maintenancePolicy: _json.containsKey('maintenancePolicy')
+              ? MaintenancePolicy.fromJson(_json['maintenancePolicy']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          masterAuth: _json.containsKey('masterAuth')
+              ? MasterAuth.fromJson(
+                  _json['masterAuth'] as core.Map<core.String, core.dynamic>)
+              : null,
+          masterAuthorizedNetworksConfig:
+              _json.containsKey('masterAuthorizedNetworksConfig')
+                  ? MasterAuthorizedNetworksConfig.fromJson(
+                      _json['masterAuthorizedNetworksConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          monitoringService: _json.containsKey('monitoringService')
+              ? _json['monitoringService'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          network: _json.containsKey('network')
+              ? _json['network'] as core.String
+              : null,
+          networkConfig: _json.containsKey('networkConfig')
+              ? NetworkConfig.fromJson(
+                  _json['networkConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          networkPolicy: _json.containsKey('networkPolicy')
+              ? NetworkPolicy.fromJson(
+                  _json['networkPolicy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          nodeConfig: _json.containsKey('nodeConfig')
+              ? NodeConfig.fromJson(
+                  _json['nodeConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          nodeIpv4CidrSize: _json.containsKey('nodeIpv4CidrSize')
+              ? _json['nodeIpv4CidrSize'] as core.int
+              : null,
+          nodePools: _json.containsKey('nodePools')
+              ? (_json['nodePools'] as core.List)
+                  .map<NodePool>((value) => NodePool.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          notificationConfig: _json.containsKey('notificationConfig')
+              ? NotificationConfig.fromJson(_json['notificationConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          privateClusterConfig: _json.containsKey('privateClusterConfig')
+              ? PrivateClusterConfig.fromJson(_json['privateClusterConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          releaseChannel: _json.containsKey('releaseChannel')
+              ? ReleaseChannel.fromJson(_json['releaseChannel']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          resourceLabels: _json.containsKey('resourceLabels')
+              ? (_json['resourceLabels'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          resourceUsageExportConfig:
+              _json.containsKey('resourceUsageExportConfig')
+                  ? ResourceUsageExportConfig.fromJson(
+                      _json['resourceUsageExportConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          selfLink: _json.containsKey('selfLink')
+              ? _json['selfLink'] as core.String
+              : null,
+          servicesIpv4Cidr: _json.containsKey('servicesIpv4Cidr')
+              ? _json['servicesIpv4Cidr'] as core.String
+              : null,
+          shieldedNodes: _json.containsKey('shieldedNodes')
+              ? ShieldedNodes.fromJson(
+                  _json['shieldedNodes'] as core.Map<core.String, core.dynamic>)
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+          statusMessage: _json.containsKey('statusMessage')
+              ? _json['statusMessage'] as core.String
+              : null,
+          subnetwork: _json.containsKey('subnetwork')
+              ? _json['subnetwork'] as core.String
+              : null,
+          tpuIpv4CidrBlock: _json.containsKey('tpuIpv4CidrBlock')
+              ? _json['tpuIpv4CidrBlock'] as core.String
+              : null,
+          verticalPodAutoscaling: _json.containsKey('verticalPodAutoscaling')
+              ? VerticalPodAutoscaling.fromJson(_json['verticalPodAutoscaling']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          workloadIdentityConfig: _json.containsKey('workloadIdentityConfig')
+              ? WorkloadIdentityConfig.fromJson(_json['workloadIdentityConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (addonsConfig != null) 'addonsConfig': addonsConfig!.toJson(),
@@ -4637,32 +4744,38 @@ class ClusterAutoscaling {
   /// resources in the cluster.
   core.List<ResourceLimit>? resourceLimits;
 
-  ClusterAutoscaling();
+  ClusterAutoscaling({
+    this.autoprovisioningLocations,
+    this.autoprovisioningNodePoolDefaults,
+    this.enableNodeAutoprovisioning,
+    this.resourceLimits,
+  });
 
-  ClusterAutoscaling.fromJson(core.Map _json) {
-    if (_json.containsKey('autoprovisioningLocations')) {
-      autoprovisioningLocations =
-          (_json['autoprovisioningLocations'] as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList();
-    }
-    if (_json.containsKey('autoprovisioningNodePoolDefaults')) {
-      autoprovisioningNodePoolDefaults =
-          AutoprovisioningNodePoolDefaults.fromJson(
-              _json['autoprovisioningNodePoolDefaults']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('enableNodeAutoprovisioning')) {
-      enableNodeAutoprovisioning =
-          _json['enableNodeAutoprovisioning'] as core.bool;
-    }
-    if (_json.containsKey('resourceLimits')) {
-      resourceLimits = (_json['resourceLimits'] as core.List)
-          .map<ResourceLimit>((value) => ResourceLimit.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ClusterAutoscaling.fromJson(core.Map _json)
+      : this(
+          autoprovisioningLocations:
+              _json.containsKey('autoprovisioningLocations')
+                  ? (_json['autoprovisioningLocations'] as core.List)
+                      .map<core.String>((value) => value as core.String)
+                      .toList()
+                  : null,
+          autoprovisioningNodePoolDefaults:
+              _json.containsKey('autoprovisioningNodePoolDefaults')
+                  ? AutoprovisioningNodePoolDefaults.fromJson(
+                      _json['autoprovisioningNodePoolDefaults']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          enableNodeAutoprovisioning:
+              _json.containsKey('enableNodeAutoprovisioning')
+                  ? _json['enableNodeAutoprovisioning'] as core.bool
+                  : null,
+          resourceLimits: _json.containsKey('resourceLimits')
+              ? (_json['resourceLimits'] as core.List)
+                  .map<ResourceLimit>((value) => ResourceLimit.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoprovisioningLocations != null)
@@ -4826,129 +4939,164 @@ class ClusterUpdate {
   /// Configuration for Workload Identity.
   WorkloadIdentityConfig? desiredWorkloadIdentityConfig;
 
-  ClusterUpdate();
+  ClusterUpdate({
+    this.desiredAddonsConfig,
+    this.desiredAuthenticatorGroupsConfig,
+    this.desiredAutopilot,
+    this.desiredBinaryAuthorization,
+    this.desiredClusterAutoscaling,
+    this.desiredDatabaseEncryption,
+    this.desiredDatapathProvider,
+    this.desiredDefaultSnatStatus,
+    this.desiredImageType,
+    this.desiredIntraNodeVisibilityConfig,
+    this.desiredL4ilbSubsettingConfig,
+    this.desiredLocations,
+    this.desiredLoggingService,
+    this.desiredMasterAuthorizedNetworksConfig,
+    this.desiredMasterVersion,
+    this.desiredMonitoringService,
+    this.desiredNodePoolAutoscaling,
+    this.desiredNodePoolId,
+    this.desiredNodeVersion,
+    this.desiredNotificationConfig,
+    this.desiredPrivateClusterConfig,
+    this.desiredPrivateIpv6GoogleAccess,
+    this.desiredReleaseChannel,
+    this.desiredResourceUsageExportConfig,
+    this.desiredShieldedNodes,
+    this.desiredVerticalPodAutoscaling,
+    this.desiredWorkloadIdentityConfig,
+  });
 
-  ClusterUpdate.fromJson(core.Map _json) {
-    if (_json.containsKey('desiredAddonsConfig')) {
-      desiredAddonsConfig = AddonsConfig.fromJson(
-          _json['desiredAddonsConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('desiredAuthenticatorGroupsConfig')) {
-      desiredAuthenticatorGroupsConfig = AuthenticatorGroupsConfig.fromJson(
-          _json['desiredAuthenticatorGroupsConfig']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('desiredAutopilot')) {
-      desiredAutopilot = Autopilot.fromJson(
-          _json['desiredAutopilot'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('desiredBinaryAuthorization')) {
-      desiredBinaryAuthorization = BinaryAuthorization.fromJson(
-          _json['desiredBinaryAuthorization']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('desiredClusterAutoscaling')) {
-      desiredClusterAutoscaling = ClusterAutoscaling.fromJson(
-          _json['desiredClusterAutoscaling']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('desiredDatabaseEncryption')) {
-      desiredDatabaseEncryption = DatabaseEncryption.fromJson(
-          _json['desiredDatabaseEncryption']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('desiredDatapathProvider')) {
-      desiredDatapathProvider = _json['desiredDatapathProvider'] as core.String;
-    }
-    if (_json.containsKey('desiredDefaultSnatStatus')) {
-      desiredDefaultSnatStatus = DefaultSnatStatus.fromJson(
-          _json['desiredDefaultSnatStatus']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('desiredImageType')) {
-      desiredImageType = _json['desiredImageType'] as core.String;
-    }
-    if (_json.containsKey('desiredIntraNodeVisibilityConfig')) {
-      desiredIntraNodeVisibilityConfig = IntraNodeVisibilityConfig.fromJson(
-          _json['desiredIntraNodeVisibilityConfig']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('desiredL4ilbSubsettingConfig')) {
-      desiredL4ilbSubsettingConfig = ILBSubsettingConfig.fromJson(
-          _json['desiredL4ilbSubsettingConfig']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('desiredLocations')) {
-      desiredLocations = (_json['desiredLocations'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('desiredLoggingService')) {
-      desiredLoggingService = _json['desiredLoggingService'] as core.String;
-    }
-    if (_json.containsKey('desiredMasterAuthorizedNetworksConfig')) {
-      desiredMasterAuthorizedNetworksConfig =
-          MasterAuthorizedNetworksConfig.fromJson(
-              _json['desiredMasterAuthorizedNetworksConfig']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('desiredMasterVersion')) {
-      desiredMasterVersion = _json['desiredMasterVersion'] as core.String;
-    }
-    if (_json.containsKey('desiredMonitoringService')) {
-      desiredMonitoringService =
-          _json['desiredMonitoringService'] as core.String;
-    }
-    if (_json.containsKey('desiredNodePoolAutoscaling')) {
-      desiredNodePoolAutoscaling = NodePoolAutoscaling.fromJson(
-          _json['desiredNodePoolAutoscaling']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('desiredNodePoolId')) {
-      desiredNodePoolId = _json['desiredNodePoolId'] as core.String;
-    }
-    if (_json.containsKey('desiredNodeVersion')) {
-      desiredNodeVersion = _json['desiredNodeVersion'] as core.String;
-    }
-    if (_json.containsKey('desiredNotificationConfig')) {
-      desiredNotificationConfig = NotificationConfig.fromJson(
-          _json['desiredNotificationConfig']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('desiredPrivateClusterConfig')) {
-      desiredPrivateClusterConfig = PrivateClusterConfig.fromJson(
-          _json['desiredPrivateClusterConfig']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('desiredPrivateIpv6GoogleAccess')) {
-      desiredPrivateIpv6GoogleAccess =
-          _json['desiredPrivateIpv6GoogleAccess'] as core.String;
-    }
-    if (_json.containsKey('desiredReleaseChannel')) {
-      desiredReleaseChannel = ReleaseChannel.fromJson(
-          _json['desiredReleaseChannel']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('desiredResourceUsageExportConfig')) {
-      desiredResourceUsageExportConfig = ResourceUsageExportConfig.fromJson(
-          _json['desiredResourceUsageExportConfig']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('desiredShieldedNodes')) {
-      desiredShieldedNodes = ShieldedNodes.fromJson(
-          _json['desiredShieldedNodes'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('desiredVerticalPodAutoscaling')) {
-      desiredVerticalPodAutoscaling = VerticalPodAutoscaling.fromJson(
-          _json['desiredVerticalPodAutoscaling']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('desiredWorkloadIdentityConfig')) {
-      desiredWorkloadIdentityConfig = WorkloadIdentityConfig.fromJson(
-          _json['desiredWorkloadIdentityConfig']
-              as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ClusterUpdate.fromJson(core.Map _json)
+      : this(
+          desiredAddonsConfig: _json.containsKey('desiredAddonsConfig')
+              ? AddonsConfig.fromJson(_json['desiredAddonsConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          desiredAuthenticatorGroupsConfig:
+              _json.containsKey('desiredAuthenticatorGroupsConfig')
+                  ? AuthenticatorGroupsConfig.fromJson(
+                      _json['desiredAuthenticatorGroupsConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          desiredAutopilot: _json.containsKey('desiredAutopilot')
+              ? Autopilot.fromJson(_json['desiredAutopilot']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          desiredBinaryAuthorization: _json
+                  .containsKey('desiredBinaryAuthorization')
+              ? BinaryAuthorization.fromJson(_json['desiredBinaryAuthorization']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          desiredClusterAutoscaling: _json
+                  .containsKey('desiredClusterAutoscaling')
+              ? ClusterAutoscaling.fromJson(_json['desiredClusterAutoscaling']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          desiredDatabaseEncryption: _json
+                  .containsKey('desiredDatabaseEncryption')
+              ? DatabaseEncryption.fromJson(_json['desiredDatabaseEncryption']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          desiredDatapathProvider: _json.containsKey('desiredDatapathProvider')
+              ? _json['desiredDatapathProvider'] as core.String
+              : null,
+          desiredDefaultSnatStatus:
+              _json.containsKey('desiredDefaultSnatStatus')
+                  ? DefaultSnatStatus.fromJson(_json['desiredDefaultSnatStatus']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          desiredImageType: _json.containsKey('desiredImageType')
+              ? _json['desiredImageType'] as core.String
+              : null,
+          desiredIntraNodeVisibilityConfig:
+              _json.containsKey('desiredIntraNodeVisibilityConfig')
+                  ? IntraNodeVisibilityConfig.fromJson(
+                      _json['desiredIntraNodeVisibilityConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          desiredL4ilbSubsettingConfig:
+              _json.containsKey('desiredL4ilbSubsettingConfig')
+                  ? ILBSubsettingConfig.fromJson(
+                      _json['desiredL4ilbSubsettingConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          desiredLocations: _json.containsKey('desiredLocations')
+              ? (_json['desiredLocations'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          desiredLoggingService: _json.containsKey('desiredLoggingService')
+              ? _json['desiredLoggingService'] as core.String
+              : null,
+          desiredMasterAuthorizedNetworksConfig:
+              _json.containsKey('desiredMasterAuthorizedNetworksConfig')
+                  ? MasterAuthorizedNetworksConfig.fromJson(
+                      _json['desiredMasterAuthorizedNetworksConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          desiredMasterVersion: _json.containsKey('desiredMasterVersion')
+              ? _json['desiredMasterVersion'] as core.String
+              : null,
+          desiredMonitoringService:
+              _json.containsKey('desiredMonitoringService')
+                  ? _json['desiredMonitoringService'] as core.String
+                  : null,
+          desiredNodePoolAutoscaling: _json
+                  .containsKey('desiredNodePoolAutoscaling')
+              ? NodePoolAutoscaling.fromJson(_json['desiredNodePoolAutoscaling']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          desiredNodePoolId: _json.containsKey('desiredNodePoolId')
+              ? _json['desiredNodePoolId'] as core.String
+              : null,
+          desiredNodeVersion: _json.containsKey('desiredNodeVersion')
+              ? _json['desiredNodeVersion'] as core.String
+              : null,
+          desiredNotificationConfig: _json
+                  .containsKey('desiredNotificationConfig')
+              ? NotificationConfig.fromJson(_json['desiredNotificationConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          desiredPrivateClusterConfig:
+              _json.containsKey('desiredPrivateClusterConfig')
+                  ? PrivateClusterConfig.fromJson(
+                      _json['desiredPrivateClusterConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          desiredPrivateIpv6GoogleAccess:
+              _json.containsKey('desiredPrivateIpv6GoogleAccess')
+                  ? _json['desiredPrivateIpv6GoogleAccess'] as core.String
+                  : null,
+          desiredReleaseChannel: _json.containsKey('desiredReleaseChannel')
+              ? ReleaseChannel.fromJson(_json['desiredReleaseChannel']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          desiredResourceUsageExportConfig:
+              _json.containsKey('desiredResourceUsageExportConfig')
+                  ? ResourceUsageExportConfig.fromJson(
+                      _json['desiredResourceUsageExportConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          desiredShieldedNodes: _json.containsKey('desiredShieldedNodes')
+              ? ShieldedNodes.fromJson(_json['desiredShieldedNodes']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          desiredVerticalPodAutoscaling:
+              _json.containsKey('desiredVerticalPodAutoscaling')
+                  ? VerticalPodAutoscaling.fromJson(
+                      _json['desiredVerticalPodAutoscaling']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          desiredWorkloadIdentityConfig:
+              _json.containsKey('desiredWorkloadIdentityConfig')
+                  ? WorkloadIdentityConfig.fromJson(
+                      _json['desiredWorkloadIdentityConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (desiredAddonsConfig != null)
@@ -5044,22 +5192,24 @@ class CompleteIPRotationRequest {
   /// Deprecated.
   core.String? zone;
 
-  CompleteIPRotationRequest();
+  CompleteIPRotationRequest({
+    this.clusterId,
+    this.name,
+    this.projectId,
+    this.zone,
+  });
 
-  CompleteIPRotationRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('zone')) {
-      zone = _json['zone'] as core.String;
-    }
-  }
+  CompleteIPRotationRequest.fromJson(core.Map _json)
+      : this(
+          clusterId: _json.containsKey('clusterId')
+              ? _json['clusterId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
@@ -5076,13 +5226,16 @@ class ConfidentialNodes {
   /// cluster.
   core.bool? enabled;
 
-  ConfidentialNodes();
+  ConfidentialNodes({
+    this.enabled,
+  });
 
-  ConfidentialNodes.fromJson(core.Map _json) {
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-  }
+  ConfidentialNodes.fromJson(core.Map _json)
+      : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -5094,13 +5247,16 @@ class ConfigConnectorConfig {
   /// Whether Cloud Connector is enabled for this cluster.
   core.bool? enabled;
 
-  ConfigConnectorConfig();
+  ConfigConnectorConfig({
+    this.enabled,
+  });
 
-  ConfigConnectorConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-  }
+  ConfigConnectorConfig.fromJson(core.Map _json)
+      : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -5115,13 +5271,16 @@ class ConsumptionMeteringConfig {
   /// consumption records.
   core.bool? enabled;
 
-  ConsumptionMeteringConfig();
+  ConsumptionMeteringConfig({
+    this.enabled,
+  });
 
-  ConsumptionMeteringConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-  }
+  ConsumptionMeteringConfig.fromJson(core.Map _json)
+      : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -5158,23 +5317,27 @@ class CreateClusterRequest {
   /// Deprecated.
   core.String? zone;
 
-  CreateClusterRequest();
+  CreateClusterRequest({
+    this.cluster,
+    this.parent,
+    this.projectId,
+    this.zone,
+  });
 
-  CreateClusterRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('cluster')) {
-      cluster = Cluster.fromJson(
-          _json['cluster'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('parent')) {
-      parent = _json['parent'] as core.String;
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('zone')) {
-      zone = _json['zone'] as core.String;
-    }
-  }
+  CreateClusterRequest.fromJson(core.Map _json)
+      : this(
+          cluster: _json.containsKey('cluster')
+              ? Cluster.fromJson(
+                  _json['cluster'] as core.Map<core.String, core.dynamic>)
+              : null,
+          parent: _json.containsKey('parent')
+              ? _json['parent'] as core.String
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cluster != null) 'cluster': cluster!.toJson(),
@@ -5221,26 +5384,31 @@ class CreateNodePoolRequest {
   /// Deprecated.
   core.String? zone;
 
-  CreateNodePoolRequest();
+  CreateNodePoolRequest({
+    this.clusterId,
+    this.nodePool,
+    this.parent,
+    this.projectId,
+    this.zone,
+  });
 
-  CreateNodePoolRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'] as core.String;
-    }
-    if (_json.containsKey('nodePool')) {
-      nodePool = NodePool.fromJson(
-          _json['nodePool'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('parent')) {
-      parent = _json['parent'] as core.String;
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('zone')) {
-      zone = _json['zone'] as core.String;
-    }
-  }
+  CreateNodePoolRequest.fromJson(core.Map _json)
+      : this(
+          clusterId: _json.containsKey('clusterId')
+              ? _json['clusterId'] as core.String
+              : null,
+          nodePool: _json.containsKey('nodePool')
+              ? NodePool.fromJson(
+                  _json['nodePool'] as core.Map<core.String, core.dynamic>)
+              : null,
+          parent: _json.containsKey('parent')
+              ? _json['parent'] as core.String
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
@@ -5268,16 +5436,20 @@ class DailyMaintenanceWindow {
   /// format "HH:MM", where HH : \[00-23\] and MM : \[00-59\] GMT.
   core.String? startTime;
 
-  DailyMaintenanceWindow();
+  DailyMaintenanceWindow({
+    this.duration,
+    this.startTime,
+  });
 
-  DailyMaintenanceWindow.fromJson(core.Map _json) {
-    if (_json.containsKey('duration')) {
-      duration = _json['duration'] as core.String;
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-  }
+  DailyMaintenanceWindow.fromJson(core.Map _json)
+      : this(
+          duration: _json.containsKey('duration')
+              ? _json['duration'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (duration != null) 'duration': duration!,
@@ -5301,16 +5473,19 @@ class DatabaseEncryption {
   /// this is unrelated to Compute Engine level full disk encryption.
   core.String? state;
 
-  DatabaseEncryption();
+  DatabaseEncryption({
+    this.keyName,
+    this.state,
+  });
 
-  DatabaseEncryption.fromJson(core.Map _json) {
-    if (_json.containsKey('keyName')) {
-      keyName = _json['keyName'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-  }
+  DatabaseEncryption.fromJson(core.Map _json)
+      : this(
+          keyName: _json.containsKey('keyName')
+              ? _json['keyName'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (keyName != null) 'keyName': keyName!,
@@ -5324,13 +5499,16 @@ class DefaultSnatStatus {
   /// Disables cluster default sNAT rules.
   core.bool? disabled;
 
-  DefaultSnatStatus();
+  DefaultSnatStatus({
+    this.disabled,
+  });
 
-  DefaultSnatStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('disabled')) {
-      disabled = _json['disabled'] as core.bool;
-    }
-  }
+  DefaultSnatStatus.fromJson(core.Map _json)
+      : this(
+          disabled: _json.containsKey('disabled')
+              ? _json['disabled'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disabled != null) 'disabled': disabled!,
@@ -5342,13 +5520,16 @@ class DnsCacheConfig {
   /// Whether NodeLocal DNSCache is enabled for this cluster.
   core.bool? enabled;
 
-  DnsCacheConfig();
+  DnsCacheConfig({
+    this.enabled,
+  });
 
-  DnsCacheConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-  }
+  DnsCacheConfig.fromJson(core.Map _json)
+      : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -5377,13 +5558,16 @@ class GcePersistentDiskCsiDriverConfig {
   /// Whether the Compute Engine PD CSI driver is enabled for this cluster.
   core.bool? enabled;
 
-  GcePersistentDiskCsiDriverConfig();
+  GcePersistentDiskCsiDriverConfig({
+    this.enabled,
+  });
 
-  GcePersistentDiskCsiDriverConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-  }
+  GcePersistentDiskCsiDriverConfig.fromJson(core.Map _json)
+      : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -5400,20 +5584,24 @@ class GetJSONWebKeysResponse {
   /// requests.
   core.List<Jwk>? keys;
 
-  GetJSONWebKeysResponse();
+  GetJSONWebKeysResponse({
+    this.cacheHeader,
+    this.keys,
+  });
 
-  GetJSONWebKeysResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('cacheHeader')) {
-      cacheHeader = HttpCacheControlResponseHeader.fromJson(
-          _json['cacheHeader'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('keys')) {
-      keys = (_json['keys'] as core.List)
-          .map<Jwk>((value) =>
-              Jwk.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GetJSONWebKeysResponse.fromJson(core.Map _json)
+      : this(
+          cacheHeader: _json.containsKey('cacheHeader')
+              ? HttpCacheControlResponseHeader.fromJson(
+                  _json['cacheHeader'] as core.Map<core.String, core.dynamic>)
+              : null,
+          keys: _json.containsKey('keys')
+              ? (_json['keys'] as core.List)
+                  .map<Jwk>((value) => Jwk.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cacheHeader != null) 'cacheHeader': cacheHeader!.toJson(),
@@ -5450,46 +5638,56 @@ class GetOpenIDConfigResponse {
   /// Supported subject types.
   core.List<core.String>? subjectTypesSupported;
 
-  GetOpenIDConfigResponse();
+  GetOpenIDConfigResponse({
+    this.cacheHeader,
+    this.claimsSupported,
+    this.grantTypes,
+    this.idTokenSigningAlgValuesSupported,
+    this.issuer,
+    this.jwksUri,
+    this.responseTypesSupported,
+    this.subjectTypesSupported,
+  });
 
-  GetOpenIDConfigResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('cacheHeader')) {
-      cacheHeader = HttpCacheControlResponseHeader.fromJson(
-          _json['cacheHeader'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('claims_supported')) {
-      claimsSupported = (_json['claims_supported'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('grant_types')) {
-      grantTypes = (_json['grant_types'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('id_token_signing_alg_values_supported')) {
-      idTokenSigningAlgValuesSupported =
-          (_json['id_token_signing_alg_values_supported'] as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList();
-    }
-    if (_json.containsKey('issuer')) {
-      issuer = _json['issuer'] as core.String;
-    }
-    if (_json.containsKey('jwks_uri')) {
-      jwksUri = _json['jwks_uri'] as core.String;
-    }
-    if (_json.containsKey('response_types_supported')) {
-      responseTypesSupported = (_json['response_types_supported'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('subject_types_supported')) {
-      subjectTypesSupported = (_json['subject_types_supported'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  GetOpenIDConfigResponse.fromJson(core.Map _json)
+      : this(
+          cacheHeader: _json.containsKey('cacheHeader')
+              ? HttpCacheControlResponseHeader.fromJson(
+                  _json['cacheHeader'] as core.Map<core.String, core.dynamic>)
+              : null,
+          claimsSupported: _json.containsKey('claims_supported')
+              ? (_json['claims_supported'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          grantTypes: _json.containsKey('grant_types')
+              ? (_json['grant_types'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          idTokenSigningAlgValuesSupported: _json
+                  .containsKey('id_token_signing_alg_values_supported')
+              ? (_json['id_token_signing_alg_values_supported'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          issuer: _json.containsKey('issuer')
+              ? _json['issuer'] as core.String
+              : null,
+          jwksUri: _json.containsKey('jwks_uri')
+              ? _json['jwks_uri'] as core.String
+              : null,
+          responseTypesSupported: _json.containsKey('response_types_supported')
+              ? (_json['response_types_supported'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          subjectTypesSupported: _json.containsKey('subject_types_supported')
+              ? (_json['subject_types_supported'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cacheHeader != null) 'cacheHeader': cacheHeader!.toJson(),
@@ -5517,13 +5715,16 @@ class HorizontalPodAutoscaling {
   /// Monitoring.
   core.bool? disabled;
 
-  HorizontalPodAutoscaling();
+  HorizontalPodAutoscaling({
+    this.disabled,
+  });
 
-  HorizontalPodAutoscaling.fromJson(core.Map _json) {
-    if (_json.containsKey('disabled')) {
-      disabled = _json['disabled'] as core.bool;
-    }
-  }
+  HorizontalPodAutoscaling.fromJson(core.Map _json)
+      : this(
+          disabled: _json.containsKey('disabled')
+              ? _json['disabled'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disabled != null) 'disabled': disabled!,
@@ -5541,19 +5742,22 @@ class HttpCacheControlResponseHeader {
   /// 14.21 response cache expires, in RFC 1123 date format
   core.String? expires;
 
-  HttpCacheControlResponseHeader();
+  HttpCacheControlResponseHeader({
+    this.age,
+    this.directive,
+    this.expires,
+  });
 
-  HttpCacheControlResponseHeader.fromJson(core.Map _json) {
-    if (_json.containsKey('age')) {
-      age = _json['age'] as core.String;
-    }
-    if (_json.containsKey('directive')) {
-      directive = _json['directive'] as core.String;
-    }
-    if (_json.containsKey('expires')) {
-      expires = _json['expires'] as core.String;
-    }
-  }
+  HttpCacheControlResponseHeader.fromJson(core.Map _json)
+      : this(
+          age: _json.containsKey('age') ? _json['age'] as core.String : null,
+          directive: _json.containsKey('directive')
+              ? _json['directive'] as core.String
+              : null,
+          expires: _json.containsKey('expires')
+              ? _json['expires'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (age != null) 'age': age!,
@@ -5571,13 +5775,16 @@ class HttpLoadBalancing {
   /// balancers.
   core.bool? disabled;
 
-  HttpLoadBalancing();
+  HttpLoadBalancing({
+    this.disabled,
+  });
 
-  HttpLoadBalancing.fromJson(core.Map _json) {
-    if (_json.containsKey('disabled')) {
-      disabled = _json['disabled'] as core.bool;
-    }
-  }
+  HttpLoadBalancing.fromJson(core.Map _json)
+      : this(
+          disabled: _json.containsKey('disabled')
+              ? _json['disabled'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disabled != null) 'disabled': disabled!,
@@ -5590,13 +5797,16 @@ class ILBSubsettingConfig {
   /// Enables l4 ILB subsetting for this cluster.
   core.bool? enabled;
 
-  ILBSubsettingConfig();
+  ILBSubsettingConfig({
+    this.enabled,
+  });
 
-  ILBSubsettingConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-  }
+  ILBSubsettingConfig.fromJson(core.Map _json)
+      : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -5702,51 +5912,66 @@ class IPAllocationPolicy {
   /// then the server picks the default IP allocation mode
   core.bool? useRoutes;
 
-  IPAllocationPolicy();
+  IPAllocationPolicy({
+    this.clusterIpv4Cidr,
+    this.clusterIpv4CidrBlock,
+    this.clusterSecondaryRangeName,
+    this.createSubnetwork,
+    this.nodeIpv4Cidr,
+    this.nodeIpv4CidrBlock,
+    this.servicesIpv4Cidr,
+    this.servicesIpv4CidrBlock,
+    this.servicesSecondaryRangeName,
+    this.subnetworkName,
+    this.tpuIpv4CidrBlock,
+    this.useIpAliases,
+    this.useRoutes,
+  });
 
-  IPAllocationPolicy.fromJson(core.Map _json) {
-    if (_json.containsKey('clusterIpv4Cidr')) {
-      clusterIpv4Cidr = _json['clusterIpv4Cidr'] as core.String;
-    }
-    if (_json.containsKey('clusterIpv4CidrBlock')) {
-      clusterIpv4CidrBlock = _json['clusterIpv4CidrBlock'] as core.String;
-    }
-    if (_json.containsKey('clusterSecondaryRangeName')) {
-      clusterSecondaryRangeName =
-          _json['clusterSecondaryRangeName'] as core.String;
-    }
-    if (_json.containsKey('createSubnetwork')) {
-      createSubnetwork = _json['createSubnetwork'] as core.bool;
-    }
-    if (_json.containsKey('nodeIpv4Cidr')) {
-      nodeIpv4Cidr = _json['nodeIpv4Cidr'] as core.String;
-    }
-    if (_json.containsKey('nodeIpv4CidrBlock')) {
-      nodeIpv4CidrBlock = _json['nodeIpv4CidrBlock'] as core.String;
-    }
-    if (_json.containsKey('servicesIpv4Cidr')) {
-      servicesIpv4Cidr = _json['servicesIpv4Cidr'] as core.String;
-    }
-    if (_json.containsKey('servicesIpv4CidrBlock')) {
-      servicesIpv4CidrBlock = _json['servicesIpv4CidrBlock'] as core.String;
-    }
-    if (_json.containsKey('servicesSecondaryRangeName')) {
-      servicesSecondaryRangeName =
-          _json['servicesSecondaryRangeName'] as core.String;
-    }
-    if (_json.containsKey('subnetworkName')) {
-      subnetworkName = _json['subnetworkName'] as core.String;
-    }
-    if (_json.containsKey('tpuIpv4CidrBlock')) {
-      tpuIpv4CidrBlock = _json['tpuIpv4CidrBlock'] as core.String;
-    }
-    if (_json.containsKey('useIpAliases')) {
-      useIpAliases = _json['useIpAliases'] as core.bool;
-    }
-    if (_json.containsKey('useRoutes')) {
-      useRoutes = _json['useRoutes'] as core.bool;
-    }
-  }
+  IPAllocationPolicy.fromJson(core.Map _json)
+      : this(
+          clusterIpv4Cidr: _json.containsKey('clusterIpv4Cidr')
+              ? _json['clusterIpv4Cidr'] as core.String
+              : null,
+          clusterIpv4CidrBlock: _json.containsKey('clusterIpv4CidrBlock')
+              ? _json['clusterIpv4CidrBlock'] as core.String
+              : null,
+          clusterSecondaryRangeName:
+              _json.containsKey('clusterSecondaryRangeName')
+                  ? _json['clusterSecondaryRangeName'] as core.String
+                  : null,
+          createSubnetwork: _json.containsKey('createSubnetwork')
+              ? _json['createSubnetwork'] as core.bool
+              : null,
+          nodeIpv4Cidr: _json.containsKey('nodeIpv4Cidr')
+              ? _json['nodeIpv4Cidr'] as core.String
+              : null,
+          nodeIpv4CidrBlock: _json.containsKey('nodeIpv4CidrBlock')
+              ? _json['nodeIpv4CidrBlock'] as core.String
+              : null,
+          servicesIpv4Cidr: _json.containsKey('servicesIpv4Cidr')
+              ? _json['servicesIpv4Cidr'] as core.String
+              : null,
+          servicesIpv4CidrBlock: _json.containsKey('servicesIpv4CidrBlock')
+              ? _json['servicesIpv4CidrBlock'] as core.String
+              : null,
+          servicesSecondaryRangeName:
+              _json.containsKey('servicesSecondaryRangeName')
+                  ? _json['servicesSecondaryRangeName'] as core.String
+                  : null,
+          subnetworkName: _json.containsKey('subnetworkName')
+              ? _json['subnetworkName'] as core.String
+              : null,
+          tpuIpv4CidrBlock: _json.containsKey('tpuIpv4CidrBlock')
+              ? _json['tpuIpv4CidrBlock'] as core.String
+              : null,
+          useIpAliases: _json.containsKey('useIpAliases')
+              ? _json['useIpAliases'] as core.bool
+              : null,
+          useRoutes: _json.containsKey('useRoutes')
+              ? _json['useRoutes'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterIpv4Cidr != null) 'clusterIpv4Cidr': clusterIpv4Cidr!,
@@ -5775,13 +6000,16 @@ class IntraNodeVisibilityConfig {
   /// Enables intra node visibility for this cluster.
   core.bool? enabled;
 
-  IntraNodeVisibilityConfig();
+  IntraNodeVisibilityConfig({
+    this.enabled,
+  });
 
-  IntraNodeVisibilityConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-  }
+  IntraNodeVisibilityConfig.fromJson(core.Map _json)
+      : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -5817,37 +6045,30 @@ class Jwk {
   /// Used for ECDSA keys.
   core.String? y;
 
-  Jwk();
+  Jwk({
+    this.alg,
+    this.crv,
+    this.e,
+    this.kid,
+    this.kty,
+    this.n,
+    this.use,
+    this.x,
+    this.y,
+  });
 
-  Jwk.fromJson(core.Map _json) {
-    if (_json.containsKey('alg')) {
-      alg = _json['alg'] as core.String;
-    }
-    if (_json.containsKey('crv')) {
-      crv = _json['crv'] as core.String;
-    }
-    if (_json.containsKey('e')) {
-      e = _json['e'] as core.String;
-    }
-    if (_json.containsKey('kid')) {
-      kid = _json['kid'] as core.String;
-    }
-    if (_json.containsKey('kty')) {
-      kty = _json['kty'] as core.String;
-    }
-    if (_json.containsKey('n')) {
-      n = _json['n'] as core.String;
-    }
-    if (_json.containsKey('use')) {
-      use = _json['use'] as core.String;
-    }
-    if (_json.containsKey('x')) {
-      x = _json['x'] as core.String;
-    }
-    if (_json.containsKey('y')) {
-      y = _json['y'] as core.String;
-    }
-  }
+  Jwk.fromJson(core.Map _json)
+      : this(
+          alg: _json.containsKey('alg') ? _json['alg'] as core.String : null,
+          crv: _json.containsKey('crv') ? _json['crv'] as core.String : null,
+          e: _json.containsKey('e') ? _json['e'] as core.String : null,
+          kid: _json.containsKey('kid') ? _json['kid'] as core.String : null,
+          kty: _json.containsKey('kty') ? _json['kty'] as core.String : null,
+          n: _json.containsKey('n') ? _json['n'] as core.String : null,
+          use: _json.containsKey('use') ? _json['use'] as core.String : null,
+          x: _json.containsKey('x') ? _json['x'] as core.String : null,
+          y: _json.containsKey('y') ? _json['y'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alg != null) 'alg': alg!,
@@ -5867,13 +6088,16 @@ class KubernetesDashboard {
   /// Whether the Kubernetes Dashboard is enabled for this cluster.
   core.bool? disabled;
 
-  KubernetesDashboard();
+  KubernetesDashboard({
+    this.disabled,
+  });
 
-  KubernetesDashboard.fromJson(core.Map _json) {
-    if (_json.containsKey('disabled')) {
-      disabled = _json['disabled'] as core.bool;
-    }
-  }
+  KubernetesDashboard.fromJson(core.Map _json)
+      : this(
+          disabled: _json.containsKey('disabled')
+              ? _json['disabled'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disabled != null) 'disabled': disabled!,
@@ -5890,13 +6114,16 @@ class LegacyAbac {
   /// provided by the RBAC configuration or IAM.
   core.bool? enabled;
 
-  LegacyAbac();
+  LegacyAbac({
+    this.enabled,
+  });
 
-  LegacyAbac.fromJson(core.Map _json) {
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-  }
+  LegacyAbac.fromJson(core.Map _json)
+      : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -5914,18 +6141,21 @@ class LinuxNodeConfig {
   /// net.ipv4.tcp_tw_reuse
   core.Map<core.String, core.String>? sysctls;
 
-  LinuxNodeConfig();
+  LinuxNodeConfig({
+    this.sysctls,
+  });
 
-  LinuxNodeConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('sysctls')) {
-      sysctls = (_json['sysctls'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-  }
+  LinuxNodeConfig.fromJson(core.Map _json)
+      : this(
+          sysctls: _json.containsKey('sysctls')
+              ? (_json['sysctls'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sysctls != null) 'sysctls': sysctls!,
@@ -5942,21 +6172,25 @@ class ListClustersResponse {
   /// those zones.
   core.List<core.String>? missingZones;
 
-  ListClustersResponse();
+  ListClustersResponse({
+    this.clusters,
+    this.missingZones,
+  });
 
-  ListClustersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('clusters')) {
-      clusters = (_json['clusters'] as core.List)
-          .map<Cluster>((value) =>
-              Cluster.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('missingZones')) {
-      missingZones = (_json['missingZones'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  ListClustersResponse.fromJson(core.Map _json)
+      : this(
+          clusters: _json.containsKey('clusters')
+              ? (_json['clusters'] as core.List)
+                  .map<Cluster>((value) => Cluster.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          missingZones: _json.containsKey('missingZones')
+              ? (_json['missingZones'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusters != null)
@@ -5970,16 +6204,19 @@ class ListNodePoolsResponse {
   /// A list of node pools for a cluster.
   core.List<NodePool>? nodePools;
 
-  ListNodePoolsResponse();
+  ListNodePoolsResponse({
+    this.nodePools,
+  });
 
-  ListNodePoolsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nodePools')) {
-      nodePools = (_json['nodePools'] as core.List)
-          .map<NodePool>((value) =>
-              NodePool.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListNodePoolsResponse.fromJson(core.Map _json)
+      : this(
+          nodePools: _json.containsKey('nodePools')
+              ? (_json['nodePools'] as core.List)
+                  .map<NodePool>((value) => NodePool.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nodePools != null)
@@ -5996,21 +6233,25 @@ class ListOperationsResponse {
   /// A list of operations in the project in the specified zone.
   core.List<Operation>? operations;
 
-  ListOperationsResponse();
+  ListOperationsResponse({
+    this.missingZones,
+    this.operations,
+  });
 
-  ListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('missingZones')) {
-      missingZones = (_json['missingZones'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('operations')) {
-      operations = (_json['operations'] as core.List)
-          .map<Operation>((value) =>
-              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListOperationsResponse.fromJson(core.Map _json)
+      : this(
+          missingZones: _json.containsKey('missingZones')
+              ? (_json['missingZones'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          operations: _json.containsKey('operations')
+              ? (_json['operations'] as core.List)
+                  .map<Operation>((value) => Operation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (missingZones != null) 'missingZones': missingZones!,
@@ -6032,19 +6273,23 @@ class ListUsableSubnetworksResponse {
   /// A list of usable subnetworks in the specified network project.
   core.List<UsableSubnetwork>? subnetworks;
 
-  ListUsableSubnetworksResponse();
+  ListUsableSubnetworksResponse({
+    this.nextPageToken,
+    this.subnetworks,
+  });
 
-  ListUsableSubnetworksResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('subnetworks')) {
-      subnetworks = (_json['subnetworks'] as core.List)
-          .map<UsableSubnetwork>((value) => UsableSubnetwork.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListUsableSubnetworksResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          subnetworks: _json.containsKey('subnetworks')
+              ? (_json['subnetworks'] as core.List)
+                  .map<UsableSubnetwork>((value) => UsableSubnetwork.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -6067,17 +6312,21 @@ class MaintenancePolicy {
   /// Specifies the maintenance window in which maintenance may be performed.
   MaintenanceWindow? window;
 
-  MaintenancePolicy();
+  MaintenancePolicy({
+    this.resourceVersion,
+    this.window,
+  });
 
-  MaintenancePolicy.fromJson(core.Map _json) {
-    if (_json.containsKey('resourceVersion')) {
-      resourceVersion = _json['resourceVersion'] as core.String;
-    }
-    if (_json.containsKey('window')) {
-      window = MaintenanceWindow.fromJson(
-          _json['window'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  MaintenancePolicy.fromJson(core.Map _json)
+      : this(
+          resourceVersion: _json.containsKey('resourceVersion')
+              ? _json['resourceVersion'] as core.String
+              : null,
+          window: _json.containsKey('window')
+              ? MaintenanceWindow.fromJson(
+                  _json['window'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceVersion != null) 'resourceVersion': resourceVersion!,
@@ -6102,29 +6351,34 @@ class MaintenanceWindow {
   /// maintenance can occur at any time.
   RecurringTimeWindow? recurringWindow;
 
-  MaintenanceWindow();
+  MaintenanceWindow({
+    this.dailyMaintenanceWindow,
+    this.maintenanceExclusions,
+    this.recurringWindow,
+  });
 
-  MaintenanceWindow.fromJson(core.Map _json) {
-    if (_json.containsKey('dailyMaintenanceWindow')) {
-      dailyMaintenanceWindow = DailyMaintenanceWindow.fromJson(
-          _json['dailyMaintenanceWindow']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('maintenanceExclusions')) {
-      maintenanceExclusions = (_json['maintenanceExclusions']
-              as core.Map<core.String, core.dynamic>)
-          .map(
-        (key, item) => core.MapEntry(
-          key,
-          TimeWindow.fromJson(item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('recurringWindow')) {
-      recurringWindow = RecurringTimeWindow.fromJson(
-          _json['recurringWindow'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  MaintenanceWindow.fromJson(core.Map _json)
+      : this(
+          dailyMaintenanceWindow: _json.containsKey('dailyMaintenanceWindow')
+              ? DailyMaintenanceWindow.fromJson(_json['dailyMaintenanceWindow']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          maintenanceExclusions: _json.containsKey('maintenanceExclusions')
+              ? (_json['maintenanceExclusions']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    TimeWindow.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          recurringWindow: _json.containsKey('recurringWindow')
+              ? RecurringTimeWindow.fromJson(_json['recurringWindow']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dailyMaintenanceWindow != null)
@@ -6186,30 +6440,38 @@ class MasterAuth {
   /// https://cloud.google.com/kubernetes-engine/docs/how-to/api-server-authentication
   core.String? username;
 
-  MasterAuth();
+  MasterAuth({
+    this.clientCertificate,
+    this.clientCertificateConfig,
+    this.clientKey,
+    this.clusterCaCertificate,
+    this.password,
+    this.username,
+  });
 
-  MasterAuth.fromJson(core.Map _json) {
-    if (_json.containsKey('clientCertificate')) {
-      clientCertificate = _json['clientCertificate'] as core.String;
-    }
-    if (_json.containsKey('clientCertificateConfig')) {
-      clientCertificateConfig = ClientCertificateConfig.fromJson(
-          _json['clientCertificateConfig']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('clientKey')) {
-      clientKey = _json['clientKey'] as core.String;
-    }
-    if (_json.containsKey('clusterCaCertificate')) {
-      clusterCaCertificate = _json['clusterCaCertificate'] as core.String;
-    }
-    if (_json.containsKey('password')) {
-      password = _json['password'] as core.String;
-    }
-    if (_json.containsKey('username')) {
-      username = _json['username'] as core.String;
-    }
-  }
+  MasterAuth.fromJson(core.Map _json)
+      : this(
+          clientCertificate: _json.containsKey('clientCertificate')
+              ? _json['clientCertificate'] as core.String
+              : null,
+          clientCertificateConfig: _json.containsKey('clientCertificateConfig')
+              ? ClientCertificateConfig.fromJson(
+                  _json['clientCertificateConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          clientKey: _json.containsKey('clientKey')
+              ? _json['clientKey'] as core.String
+              : null,
+          clusterCaCertificate: _json.containsKey('clusterCaCertificate')
+              ? _json['clusterCaCertificate'] as core.String
+              : null,
+          password: _json.containsKey('password')
+              ? _json['password'] as core.String
+              : null,
+          username: _json.containsKey('username')
+              ? _json['username'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clientCertificate != null) 'clientCertificate': clientCertificate!,
@@ -6236,19 +6498,23 @@ class MasterAuthorizedNetworksConfig {
   /// Whether or not master authorized networks is enabled.
   core.bool? enabled;
 
-  MasterAuthorizedNetworksConfig();
+  MasterAuthorizedNetworksConfig({
+    this.cidrBlocks,
+    this.enabled,
+  });
 
-  MasterAuthorizedNetworksConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('cidrBlocks')) {
-      cidrBlocks = (_json['cidrBlocks'] as core.List)
-          .map<CidrBlock>((value) =>
-              CidrBlock.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-  }
+  MasterAuthorizedNetworksConfig.fromJson(core.Map _json)
+      : this(
+          cidrBlocks: _json.containsKey('cidrBlocks')
+              ? (_json['cidrBlocks'] as core.List)
+                  .map<CidrBlock>((value) => CidrBlock.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cidrBlocks != null)
@@ -6262,13 +6528,16 @@ class MaxPodsConstraint {
   /// Constraint enforced on the max num of pods per node.
   core.String? maxPodsPerNode;
 
-  MaxPodsConstraint();
+  MaxPodsConstraint({
+    this.maxPodsPerNode,
+  });
 
-  MaxPodsConstraint.fromJson(core.Map _json) {
-    if (_json.containsKey('maxPodsPerNode')) {
-      maxPodsPerNode = _json['maxPodsPerNode'] as core.String;
-    }
-  }
+  MaxPodsConstraint.fromJson(core.Map _json)
+      : this(
+          maxPodsPerNode: _json.containsKey('maxPodsPerNode')
+              ? _json['maxPodsPerNode'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (maxPodsPerNode != null) 'maxPodsPerNode': maxPodsPerNode!,
@@ -6291,22 +6560,26 @@ class Metric {
   /// For metrics with custom values (ratios, visual progress, etc.).
   core.String? stringValue;
 
-  Metric();
+  Metric({
+    this.doubleValue,
+    this.intValue,
+    this.name,
+    this.stringValue,
+  });
 
-  Metric.fromJson(core.Map _json) {
-    if (_json.containsKey('doubleValue')) {
-      doubleValue = (_json['doubleValue'] as core.num).toDouble();
-    }
-    if (_json.containsKey('intValue')) {
-      intValue = _json['intValue'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('stringValue')) {
-      stringValue = _json['stringValue'] as core.String;
-    }
-  }
+  Metric.fromJson(core.Map _json)
+      : this(
+          doubleValue: _json.containsKey('doubleValue')
+              ? (_json['doubleValue'] as core.num).toDouble()
+              : null,
+          intValue: _json.containsKey('intValue')
+              ? _json['intValue'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          stringValue: _json.containsKey('stringValue')
+              ? _json['stringValue'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (doubleValue != null) 'doubleValue': doubleValue!,
@@ -6378,33 +6651,42 @@ class NetworkConfig {
   /// Output only.
   core.String? subnetwork;
 
-  NetworkConfig();
+  NetworkConfig({
+    this.datapathProvider,
+    this.defaultSnatStatus,
+    this.enableIntraNodeVisibility,
+    this.enableL4ilbSubsetting,
+    this.network,
+    this.privateIpv6GoogleAccess,
+    this.subnetwork,
+  });
 
-  NetworkConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('datapathProvider')) {
-      datapathProvider = _json['datapathProvider'] as core.String;
-    }
-    if (_json.containsKey('defaultSnatStatus')) {
-      defaultSnatStatus = DefaultSnatStatus.fromJson(
-          _json['defaultSnatStatus'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('enableIntraNodeVisibility')) {
-      enableIntraNodeVisibility =
-          _json['enableIntraNodeVisibility'] as core.bool;
-    }
-    if (_json.containsKey('enableL4ilbSubsetting')) {
-      enableL4ilbSubsetting = _json['enableL4ilbSubsetting'] as core.bool;
-    }
-    if (_json.containsKey('network')) {
-      network = _json['network'] as core.String;
-    }
-    if (_json.containsKey('privateIpv6GoogleAccess')) {
-      privateIpv6GoogleAccess = _json['privateIpv6GoogleAccess'] as core.String;
-    }
-    if (_json.containsKey('subnetwork')) {
-      subnetwork = _json['subnetwork'] as core.String;
-    }
-  }
+  NetworkConfig.fromJson(core.Map _json)
+      : this(
+          datapathProvider: _json.containsKey('datapathProvider')
+              ? _json['datapathProvider'] as core.String
+              : null,
+          defaultSnatStatus: _json.containsKey('defaultSnatStatus')
+              ? DefaultSnatStatus.fromJson(_json['defaultSnatStatus']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          enableIntraNodeVisibility:
+              _json.containsKey('enableIntraNodeVisibility')
+                  ? _json['enableIntraNodeVisibility'] as core.bool
+                  : null,
+          enableL4ilbSubsetting: _json.containsKey('enableL4ilbSubsetting')
+              ? _json['enableL4ilbSubsetting'] as core.bool
+              : null,
+          network: _json.containsKey('network')
+              ? _json['network'] as core.String
+              : null,
+          privateIpv6GoogleAccess: _json.containsKey('privateIpv6GoogleAccess')
+              ? _json['privateIpv6GoogleAccess'] as core.String
+              : null,
+          subnetwork: _json.containsKey('subnetwork')
+              ? _json['subnetwork'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (datapathProvider != null) 'datapathProvider': datapathProvider!,
@@ -6434,16 +6716,20 @@ class NetworkPolicy {
   /// - "CALICO" : Tigera (Calico Felix).
   core.String? provider;
 
-  NetworkPolicy();
+  NetworkPolicy({
+    this.enabled,
+    this.provider,
+  });
 
-  NetworkPolicy.fromJson(core.Map _json) {
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-    if (_json.containsKey('provider')) {
-      provider = _json['provider'] as core.String;
-    }
-  }
+  NetworkPolicy.fromJson(core.Map _json)
+      : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+          provider: _json.containsKey('provider')
+              ? _json['provider'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -6459,13 +6745,16 @@ class NetworkPolicyConfig {
   /// Whether NetworkPolicy is enabled for this cluster.
   core.bool? disabled;
 
-  NetworkPolicyConfig();
+  NetworkPolicyConfig({
+    this.disabled,
+  });
 
-  NetworkPolicyConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('disabled')) {
-      disabled = _json['disabled'] as core.bool;
-    }
-  }
+  NetworkPolicyConfig.fromJson(core.Map _json)
+      : this(
+          disabled: _json.containsKey('disabled')
+              ? _json['disabled'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disabled != null) 'disabled': disabled!,
@@ -6623,104 +6912,126 @@ class NodeConfig {
   /// The workload metadata configuration for this node.
   WorkloadMetadataConfig? workloadMetadataConfig;
 
-  NodeConfig();
+  NodeConfig({
+    this.accelerators,
+    this.bootDiskKmsKey,
+    this.diskSizeGb,
+    this.diskType,
+    this.imageType,
+    this.kubeletConfig,
+    this.labels,
+    this.linuxNodeConfig,
+    this.localSsdCount,
+    this.machineType,
+    this.metadata,
+    this.minCpuPlatform,
+    this.nodeGroup,
+    this.oauthScopes,
+    this.preemptible,
+    this.reservationAffinity,
+    this.sandboxConfig,
+    this.serviceAccount,
+    this.shieldedInstanceConfig,
+    this.tags,
+    this.taints,
+    this.workloadMetadataConfig,
+  });
 
-  NodeConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('accelerators')) {
-      accelerators = (_json['accelerators'] as core.List)
-          .map<AcceleratorConfig>((value) => AcceleratorConfig.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('bootDiskKmsKey')) {
-      bootDiskKmsKey = _json['bootDiskKmsKey'] as core.String;
-    }
-    if (_json.containsKey('diskSizeGb')) {
-      diskSizeGb = _json['diskSizeGb'] as core.int;
-    }
-    if (_json.containsKey('diskType')) {
-      diskType = _json['diskType'] as core.String;
-    }
-    if (_json.containsKey('imageType')) {
-      imageType = _json['imageType'] as core.String;
-    }
-    if (_json.containsKey('kubeletConfig')) {
-      kubeletConfig = NodeKubeletConfig.fromJson(
-          _json['kubeletConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('linuxNodeConfig')) {
-      linuxNodeConfig = LinuxNodeConfig.fromJson(
-          _json['linuxNodeConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('localSsdCount')) {
-      localSsdCount = _json['localSsdCount'] as core.int;
-    }
-    if (_json.containsKey('machineType')) {
-      machineType = _json['machineType'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('minCpuPlatform')) {
-      minCpuPlatform = _json['minCpuPlatform'] as core.String;
-    }
-    if (_json.containsKey('nodeGroup')) {
-      nodeGroup = _json['nodeGroup'] as core.String;
-    }
-    if (_json.containsKey('oauthScopes')) {
-      oauthScopes = (_json['oauthScopes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('preemptible')) {
-      preemptible = _json['preemptible'] as core.bool;
-    }
-    if (_json.containsKey('reservationAffinity')) {
-      reservationAffinity = ReservationAffinity.fromJson(
-          _json['reservationAffinity'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('sandboxConfig')) {
-      sandboxConfig = SandboxConfig.fromJson(
-          _json['sandboxConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('serviceAccount')) {
-      serviceAccount = _json['serviceAccount'] as core.String;
-    }
-    if (_json.containsKey('shieldedInstanceConfig')) {
-      shieldedInstanceConfig = ShieldedInstanceConfig.fromJson(
-          _json['shieldedInstanceConfig']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('tags')) {
-      tags = (_json['tags'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('taints')) {
-      taints = (_json['taints'] as core.List)
-          .map<NodeTaint>((value) =>
-              NodeTaint.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('workloadMetadataConfig')) {
-      workloadMetadataConfig = WorkloadMetadataConfig.fromJson(
-          _json['workloadMetadataConfig']
-              as core.Map<core.String, core.dynamic>);
-    }
-  }
+  NodeConfig.fromJson(core.Map _json)
+      : this(
+          accelerators: _json.containsKey('accelerators')
+              ? (_json['accelerators'] as core.List)
+                  .map<AcceleratorConfig>((value) => AcceleratorConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          bootDiskKmsKey: _json.containsKey('bootDiskKmsKey')
+              ? _json['bootDiskKmsKey'] as core.String
+              : null,
+          diskSizeGb: _json.containsKey('diskSizeGb')
+              ? _json['diskSizeGb'] as core.int
+              : null,
+          diskType: _json.containsKey('diskType')
+              ? _json['diskType'] as core.String
+              : null,
+          imageType: _json.containsKey('imageType')
+              ? _json['imageType'] as core.String
+              : null,
+          kubeletConfig: _json.containsKey('kubeletConfig')
+              ? NodeKubeletConfig.fromJson(
+                  _json['kubeletConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          linuxNodeConfig: _json.containsKey('linuxNodeConfig')
+              ? LinuxNodeConfig.fromJson(_json['linuxNodeConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          localSsdCount: _json.containsKey('localSsdCount')
+              ? _json['localSsdCount'] as core.int
+              : null,
+          machineType: _json.containsKey('machineType')
+              ? _json['machineType'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          minCpuPlatform: _json.containsKey('minCpuPlatform')
+              ? _json['minCpuPlatform'] as core.String
+              : null,
+          nodeGroup: _json.containsKey('nodeGroup')
+              ? _json['nodeGroup'] as core.String
+              : null,
+          oauthScopes: _json.containsKey('oauthScopes')
+              ? (_json['oauthScopes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          preemptible: _json.containsKey('preemptible')
+              ? _json['preemptible'] as core.bool
+              : null,
+          reservationAffinity: _json.containsKey('reservationAffinity')
+              ? ReservationAffinity.fromJson(_json['reservationAffinity']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          sandboxConfig: _json.containsKey('sandboxConfig')
+              ? SandboxConfig.fromJson(
+                  _json['sandboxConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          serviceAccount: _json.containsKey('serviceAccount')
+              ? _json['serviceAccount'] as core.String
+              : null,
+          shieldedInstanceConfig: _json.containsKey('shieldedInstanceConfig')
+              ? ShieldedInstanceConfig.fromJson(_json['shieldedInstanceConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          tags: _json.containsKey('tags')
+              ? (_json['tags'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          taints: _json.containsKey('taints')
+              ? (_json['taints'] as core.List)
+                  .map<NodeTaint>((value) => NodeTaint.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          workloadMetadataConfig: _json.containsKey('workloadMetadataConfig')
+              ? WorkloadMetadataConfig.fromJson(_json['workloadMetadataConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accelerators != null)
@@ -6784,19 +7095,24 @@ class NodeKubeletConfig {
   /// exclusivity on the node. The default value is 'none' if unspecified.
   core.String? cpuManagerPolicy;
 
-  NodeKubeletConfig();
+  NodeKubeletConfig({
+    this.cpuCfsQuota,
+    this.cpuCfsQuotaPeriod,
+    this.cpuManagerPolicy,
+  });
 
-  NodeKubeletConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('cpuCfsQuota')) {
-      cpuCfsQuota = _json['cpuCfsQuota'] as core.bool;
-    }
-    if (_json.containsKey('cpuCfsQuotaPeriod')) {
-      cpuCfsQuotaPeriod = _json['cpuCfsQuotaPeriod'] as core.String;
-    }
-    if (_json.containsKey('cpuManagerPolicy')) {
-      cpuManagerPolicy = _json['cpuManagerPolicy'] as core.String;
-    }
-  }
+  NodeKubeletConfig.fromJson(core.Map _json)
+      : this(
+          cpuCfsQuota: _json.containsKey('cpuCfsQuota')
+              ? _json['cpuCfsQuota'] as core.bool
+              : null,
+          cpuCfsQuotaPeriod: _json.containsKey('cpuCfsQuotaPeriod')
+              ? _json['cpuCfsQuotaPeriod'] as core.String
+              : null,
+          cpuManagerPolicy: _json.containsKey('cpuManagerPolicy')
+              ? _json['cpuManagerPolicy'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cpuCfsQuota != null) 'cpuCfsQuota': cpuCfsQuota!,
@@ -6826,20 +7142,25 @@ class NodeManagement {
   /// Specifies the Auto Upgrade knobs for the node pool.
   AutoUpgradeOptions? upgradeOptions;
 
-  NodeManagement();
+  NodeManagement({
+    this.autoRepair,
+    this.autoUpgrade,
+    this.upgradeOptions,
+  });
 
-  NodeManagement.fromJson(core.Map _json) {
-    if (_json.containsKey('autoRepair')) {
-      autoRepair = _json['autoRepair'] as core.bool;
-    }
-    if (_json.containsKey('autoUpgrade')) {
-      autoUpgrade = _json['autoUpgrade'] as core.bool;
-    }
-    if (_json.containsKey('upgradeOptions')) {
-      upgradeOptions = AutoUpgradeOptions.fromJson(
-          _json['upgradeOptions'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  NodeManagement.fromJson(core.Map _json)
+      : this(
+          autoRepair: _json.containsKey('autoRepair')
+              ? _json['autoRepair'] as core.bool
+              : null,
+          autoUpgrade: _json.containsKey('autoUpgrade')
+              ? _json['autoUpgrade'] as core.bool
+              : null,
+          upgradeOptions: _json.containsKey('upgradeOptions')
+              ? AutoUpgradeOptions.fromJson(_json['upgradeOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoRepair != null) 'autoRepair': autoRepair!,
@@ -6948,67 +7269,82 @@ class NodePool {
   /// The version of the Kubernetes of this node.
   core.String? version;
 
-  NodePool();
+  NodePool({
+    this.autoscaling,
+    this.conditions,
+    this.config,
+    this.initialNodeCount,
+    this.instanceGroupUrls,
+    this.locations,
+    this.management,
+    this.maxPodsConstraint,
+    this.name,
+    this.podIpv4CidrSize,
+    this.selfLink,
+    this.status,
+    this.statusMessage,
+    this.upgradeSettings,
+    this.version,
+  });
 
-  NodePool.fromJson(core.Map _json) {
-    if (_json.containsKey('autoscaling')) {
-      autoscaling = NodePoolAutoscaling.fromJson(
-          _json['autoscaling'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('conditions')) {
-      conditions = (_json['conditions'] as core.List)
-          .map<StatusCondition>((value) => StatusCondition.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('config')) {
-      config = NodeConfig.fromJson(
-          _json['config'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('initialNodeCount')) {
-      initialNodeCount = _json['initialNodeCount'] as core.int;
-    }
-    if (_json.containsKey('instanceGroupUrls')) {
-      instanceGroupUrls = (_json['instanceGroupUrls'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('locations')) {
-      locations = (_json['locations'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('management')) {
-      management = NodeManagement.fromJson(
-          _json['management'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('maxPodsConstraint')) {
-      maxPodsConstraint = MaxPodsConstraint.fromJson(
-          _json['maxPodsConstraint'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('podIpv4CidrSize')) {
-      podIpv4CidrSize = _json['podIpv4CidrSize'] as core.int;
-    }
-    if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'] as core.String;
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-    if (_json.containsKey('statusMessage')) {
-      statusMessage = _json['statusMessage'] as core.String;
-    }
-    if (_json.containsKey('upgradeSettings')) {
-      upgradeSettings = UpgradeSettings.fromJson(
-          _json['upgradeSettings'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.String;
-    }
-  }
+  NodePool.fromJson(core.Map _json)
+      : this(
+          autoscaling: _json.containsKey('autoscaling')
+              ? NodePoolAutoscaling.fromJson(
+                  _json['autoscaling'] as core.Map<core.String, core.dynamic>)
+              : null,
+          conditions: _json.containsKey('conditions')
+              ? (_json['conditions'] as core.List)
+                  .map<StatusCondition>((value) => StatusCondition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          config: _json.containsKey('config')
+              ? NodeConfig.fromJson(
+                  _json['config'] as core.Map<core.String, core.dynamic>)
+              : null,
+          initialNodeCount: _json.containsKey('initialNodeCount')
+              ? _json['initialNodeCount'] as core.int
+              : null,
+          instanceGroupUrls: _json.containsKey('instanceGroupUrls')
+              ? (_json['instanceGroupUrls'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          locations: _json.containsKey('locations')
+              ? (_json['locations'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          management: _json.containsKey('management')
+              ? NodeManagement.fromJson(
+                  _json['management'] as core.Map<core.String, core.dynamic>)
+              : null,
+          maxPodsConstraint: _json.containsKey('maxPodsConstraint')
+              ? MaxPodsConstraint.fromJson(_json['maxPodsConstraint']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          podIpv4CidrSize: _json.containsKey('podIpv4CidrSize')
+              ? _json['podIpv4CidrSize'] as core.int
+              : null,
+          selfLink: _json.containsKey('selfLink')
+              ? _json['selfLink'] as core.String
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+          statusMessage: _json.containsKey('statusMessage')
+              ? _json['statusMessage'] as core.String
+              : null,
+          upgradeSettings: _json.containsKey('upgradeSettings')
+              ? UpgradeSettings.fromJson(_json['upgradeSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoscaling != null) 'autoscaling': autoscaling!.toJson(),
@@ -7052,22 +7388,28 @@ class NodePoolAutoscaling {
   /// Must be >= 1 and <= max_node_count.
   core.int? minNodeCount;
 
-  NodePoolAutoscaling();
+  NodePoolAutoscaling({
+    this.autoprovisioned,
+    this.enabled,
+    this.maxNodeCount,
+    this.minNodeCount,
+  });
 
-  NodePoolAutoscaling.fromJson(core.Map _json) {
-    if (_json.containsKey('autoprovisioned')) {
-      autoprovisioned = _json['autoprovisioned'] as core.bool;
-    }
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-    if (_json.containsKey('maxNodeCount')) {
-      maxNodeCount = _json['maxNodeCount'] as core.int;
-    }
-    if (_json.containsKey('minNodeCount')) {
-      minNodeCount = _json['minNodeCount'] as core.int;
-    }
-  }
+  NodePoolAutoscaling.fromJson(core.Map _json)
+      : this(
+          autoprovisioned: _json.containsKey('autoprovisioned')
+              ? _json['autoprovisioned'] as core.bool
+              : null,
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+          maxNodeCount: _json.containsKey('maxNodeCount')
+              ? _json['maxNodeCount'] as core.int
+              : null,
+          minNodeCount: _json.containsKey('minNodeCount')
+              ? _json['minNodeCount'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoprovisioned != null) 'autoprovisioned': autoprovisioned!,
@@ -7098,19 +7440,21 @@ class NodeTaint {
   /// Value for taint.
   core.String? value;
 
-  NodeTaint();
+  NodeTaint({
+    this.effect,
+    this.key,
+    this.value,
+  });
 
-  NodeTaint.fromJson(core.Map _json) {
-    if (_json.containsKey('effect')) {
-      effect = _json['effect'] as core.String;
-    }
-    if (_json.containsKey('key')) {
-      key = _json['key'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  NodeTaint.fromJson(core.Map _json)
+      : this(
+          effect: _json.containsKey('effect')
+              ? _json['effect'] as core.String
+              : null,
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (effect != null) 'effect': effect!,
@@ -7124,14 +7468,17 @@ class NotificationConfig {
   /// Notification config for Pub/Sub.
   PubSub? pubsub;
 
-  NotificationConfig();
+  NotificationConfig({
+    this.pubsub,
+  });
 
-  NotificationConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('pubsub')) {
-      pubsub = PubSub.fromJson(
-          _json['pubsub'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  NotificationConfig.fromJson(core.Map _json)
+      : this(
+          pubsub: _json.containsKey('pubsub')
+              ? PubSub.fromJson(
+                  _json['pubsub'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (pubsub != null) 'pubsub': pubsub!.toJson(),
@@ -7238,63 +7585,76 @@ class Operation {
   /// This field is deprecated, use location instead.
   core.String? zone;
 
-  Operation();
+  Operation({
+    this.clusterConditions,
+    this.detail,
+    this.endTime,
+    this.error,
+    this.location,
+    this.name,
+    this.nodepoolConditions,
+    this.operationType,
+    this.progress,
+    this.selfLink,
+    this.startTime,
+    this.status,
+    this.statusMessage,
+    this.targetLink,
+    this.zone,
+  });
 
-  Operation.fromJson(core.Map _json) {
-    if (_json.containsKey('clusterConditions')) {
-      clusterConditions = (_json['clusterConditions'] as core.List)
-          .map<StatusCondition>((value) => StatusCondition.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('detail')) {
-      detail = _json['detail'] as core.String;
-    }
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('error')) {
-      error = Status.fromJson(
-          _json['error'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('location')) {
-      location = _json['location'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('nodepoolConditions')) {
-      nodepoolConditions = (_json['nodepoolConditions'] as core.List)
-          .map<StatusCondition>((value) => StatusCondition.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('operationType')) {
-      operationType = _json['operationType'] as core.String;
-    }
-    if (_json.containsKey('progress')) {
-      progress = OperationProgress.fromJson(
-          _json['progress'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'] as core.String;
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-    if (_json.containsKey('statusMessage')) {
-      statusMessage = _json['statusMessage'] as core.String;
-    }
-    if (_json.containsKey('targetLink')) {
-      targetLink = _json['targetLink'] as core.String;
-    }
-    if (_json.containsKey('zone')) {
-      zone = _json['zone'] as core.String;
-    }
-  }
+  Operation.fromJson(core.Map _json)
+      : this(
+          clusterConditions: _json.containsKey('clusterConditions')
+              ? (_json['clusterConditions'] as core.List)
+                  .map<StatusCondition>((value) => StatusCondition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          detail: _json.containsKey('detail')
+              ? _json['detail'] as core.String
+              : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          error: _json.containsKey('error')
+              ? Status.fromJson(
+                  _json['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          nodepoolConditions: _json.containsKey('nodepoolConditions')
+              ? (_json['nodepoolConditions'] as core.List)
+                  .map<StatusCondition>((value) => StatusCondition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          operationType: _json.containsKey('operationType')
+              ? _json['operationType'] as core.String
+              : null,
+          progress: _json.containsKey('progress')
+              ? OperationProgress.fromJson(
+                  _json['progress'] as core.Map<core.String, core.dynamic>)
+              : null,
+          selfLink: _json.containsKey('selfLink')
+              ? _json['selfLink'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+          statusMessage: _json.containsKey('statusMessage')
+              ? _json['statusMessage'] as core.String
+              : null,
+          targetLink: _json.containsKey('targetLink')
+              ? _json['targetLink'] as core.String
+              : null,
+          zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterConditions != null)
@@ -7346,28 +7706,32 @@ class OperationProgress {
   /// - "ABORTING" : The operation is aborting.
   core.String? status;
 
-  OperationProgress();
+  OperationProgress({
+    this.metrics,
+    this.name,
+    this.stages,
+    this.status,
+  });
 
-  OperationProgress.fromJson(core.Map _json) {
-    if (_json.containsKey('metrics')) {
-      metrics = (_json['metrics'] as core.List)
-          .map<Metric>((value) =>
-              Metric.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('stages')) {
-      stages = (_json['stages'] as core.List)
-          .map<OperationProgress>((value) => OperationProgress.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-  }
+  OperationProgress.fromJson(core.Map _json)
+      : this(
+          metrics: _json.containsKey('metrics')
+              ? (_json['metrics'] as core.List)
+                  .map<Metric>((value) => Metric.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          stages: _json.containsKey('stages')
+              ? (_json['stages'] as core.List)
+                  .map<OperationProgress>((value) => OperationProgress.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (metrics != null)
@@ -7415,34 +7779,43 @@ class PrivateClusterConfig {
   /// Output only.
   core.String? publicEndpoint;
 
-  PrivateClusterConfig();
+  PrivateClusterConfig({
+    this.enablePrivateEndpoint,
+    this.enablePrivateNodes,
+    this.masterGlobalAccessConfig,
+    this.masterIpv4CidrBlock,
+    this.peeringName,
+    this.privateEndpoint,
+    this.publicEndpoint,
+  });
 
-  PrivateClusterConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('enablePrivateEndpoint')) {
-      enablePrivateEndpoint = _json['enablePrivateEndpoint'] as core.bool;
-    }
-    if (_json.containsKey('enablePrivateNodes')) {
-      enablePrivateNodes = _json['enablePrivateNodes'] as core.bool;
-    }
-    if (_json.containsKey('masterGlobalAccessConfig')) {
-      masterGlobalAccessConfig =
-          PrivateClusterMasterGlobalAccessConfig.fromJson(
-              _json['masterGlobalAccessConfig']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('masterIpv4CidrBlock')) {
-      masterIpv4CidrBlock = _json['masterIpv4CidrBlock'] as core.String;
-    }
-    if (_json.containsKey('peeringName')) {
-      peeringName = _json['peeringName'] as core.String;
-    }
-    if (_json.containsKey('privateEndpoint')) {
-      privateEndpoint = _json['privateEndpoint'] as core.String;
-    }
-    if (_json.containsKey('publicEndpoint')) {
-      publicEndpoint = _json['publicEndpoint'] as core.String;
-    }
-  }
+  PrivateClusterConfig.fromJson(core.Map _json)
+      : this(
+          enablePrivateEndpoint: _json.containsKey('enablePrivateEndpoint')
+              ? _json['enablePrivateEndpoint'] as core.bool
+              : null,
+          enablePrivateNodes: _json.containsKey('enablePrivateNodes')
+              ? _json['enablePrivateNodes'] as core.bool
+              : null,
+          masterGlobalAccessConfig:
+              _json.containsKey('masterGlobalAccessConfig')
+                  ? PrivateClusterMasterGlobalAccessConfig.fromJson(
+                      _json['masterGlobalAccessConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          masterIpv4CidrBlock: _json.containsKey('masterIpv4CidrBlock')
+              ? _json['masterIpv4CidrBlock'] as core.String
+              : null,
+          peeringName: _json.containsKey('peeringName')
+              ? _json['peeringName'] as core.String
+              : null,
+          privateEndpoint: _json.containsKey('privateEndpoint')
+              ? _json['privateEndpoint'] as core.String
+              : null,
+          publicEndpoint: _json.containsKey('publicEndpoint')
+              ? _json['publicEndpoint'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enablePrivateEndpoint != null)
@@ -7464,13 +7837,16 @@ class PrivateClusterMasterGlobalAccessConfig {
   /// Whenever master is accessible globally or not.
   core.bool? enabled;
 
-  PrivateClusterMasterGlobalAccessConfig();
+  PrivateClusterMasterGlobalAccessConfig({
+    this.enabled,
+  });
 
-  PrivateClusterMasterGlobalAccessConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-  }
+  PrivateClusterMasterGlobalAccessConfig.fromJson(core.Map _json)
+      : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -7487,16 +7863,19 @@ class PubSub {
   /// Format is `projects/{project}/topics/{topic}`.
   core.String? topic;
 
-  PubSub();
+  PubSub({
+    this.enabled,
+    this.topic,
+  });
 
-  PubSub.fromJson(core.Map _json) {
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-    if (_json.containsKey('topic')) {
-      topic = _json['topic'] as core.String;
-    }
-  }
+  PubSub.fromJson(core.Map _json)
+      : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+          topic:
+              _json.containsKey('topic') ? _json['topic'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -7529,17 +7908,21 @@ class RecurringTimeWindow {
   /// The window of the first recurrence.
   TimeWindow? window;
 
-  RecurringTimeWindow();
+  RecurringTimeWindow({
+    this.recurrence,
+    this.window,
+  });
 
-  RecurringTimeWindow.fromJson(core.Map _json) {
-    if (_json.containsKey('recurrence')) {
-      recurrence = _json['recurrence'] as core.String;
-    }
-    if (_json.containsKey('window')) {
-      window = TimeWindow.fromJson(
-          _json['window'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  RecurringTimeWindow.fromJson(core.Map _json)
+      : this(
+          recurrence: _json.containsKey('recurrence')
+              ? _json['recurrence'] as core.String
+              : null,
+          window: _json.containsKey('window')
+              ? TimeWindow.fromJson(
+                  _json['window'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (recurrence != null) 'recurrence': recurrence!,
@@ -7567,13 +7950,16 @@ class ReleaseChannel {
   /// to be stable and reliable in production.
   core.String? channel;
 
-  ReleaseChannel();
+  ReleaseChannel({
+    this.channel,
+  });
 
-  ReleaseChannel.fromJson(core.Map _json) {
-    if (_json.containsKey('channel')) {
-      channel = _json['channel'] as core.String;
-    }
-  }
+  ReleaseChannel.fromJson(core.Map _json)
+      : this(
+          channel: _json.containsKey('channel')
+              ? _json['channel'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channel != null) 'channel': channel!,
@@ -7602,21 +7988,26 @@ class ReleaseChannelConfig {
   /// List of valid versions for the channel.
   core.List<core.String>? validVersions;
 
-  ReleaseChannelConfig();
+  ReleaseChannelConfig({
+    this.channel,
+    this.defaultVersion,
+    this.validVersions,
+  });
 
-  ReleaseChannelConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('channel')) {
-      channel = _json['channel'] as core.String;
-    }
-    if (_json.containsKey('defaultVersion')) {
-      defaultVersion = _json['defaultVersion'] as core.String;
-    }
-    if (_json.containsKey('validVersions')) {
-      validVersions = (_json['validVersions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  ReleaseChannelConfig.fromJson(core.Map _json)
+      : this(
+          channel: _json.containsKey('channel')
+              ? _json['channel'] as core.String
+              : null,
+          defaultVersion: _json.containsKey('defaultVersion')
+              ? _json['defaultVersion'] as core.String
+              : null,
+          validVersions: _json.containsKey('validVersions')
+              ? (_json['validVersions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channel != null) 'channel': channel!,
@@ -7648,21 +8039,24 @@ class ReservationAffinity {
   /// Corresponds to the label value(s) of reservation resource(s).
   core.List<core.String>? values;
 
-  ReservationAffinity();
+  ReservationAffinity({
+    this.consumeReservationType,
+    this.key,
+    this.values,
+  });
 
-  ReservationAffinity.fromJson(core.Map _json) {
-    if (_json.containsKey('consumeReservationType')) {
-      consumeReservationType = _json['consumeReservationType'] as core.String;
-    }
-    if (_json.containsKey('key')) {
-      key = _json['key'] as core.String;
-    }
-    if (_json.containsKey('values')) {
-      values = (_json['values'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  ReservationAffinity.fromJson(core.Map _json)
+      : this(
+          consumeReservationType: _json.containsKey('consumeReservationType')
+              ? _json['consumeReservationType'] as core.String
+              : null,
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          values: _json.containsKey('values')
+              ? (_json['values'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (consumeReservationType != null)
@@ -7685,19 +8079,24 @@ class ResourceLimit {
   /// Resource name "cpu", "memory" or gpu-specific string.
   core.String? resourceType;
 
-  ResourceLimit();
+  ResourceLimit({
+    this.maximum,
+    this.minimum,
+    this.resourceType,
+  });
 
-  ResourceLimit.fromJson(core.Map _json) {
-    if (_json.containsKey('maximum')) {
-      maximum = _json['maximum'] as core.String;
-    }
-    if (_json.containsKey('minimum')) {
-      minimum = _json['minimum'] as core.String;
-    }
-    if (_json.containsKey('resourceType')) {
-      resourceType = _json['resourceType'] as core.String;
-    }
-  }
+  ResourceLimit.fromJson(core.Map _json)
+      : this(
+          maximum: _json.containsKey('maximum')
+              ? _json['maximum'] as core.String
+              : null,
+          minimum: _json.containsKey('minimum')
+              ? _json['minimum'] as core.String
+              : null,
+          resourceType: _json.containsKey('resourceType')
+              ? _json['resourceType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (maximum != null) 'maximum': maximum!,
@@ -7720,23 +8119,29 @@ class ResourceUsageExportConfig {
   /// egress traffic.
   core.bool? enableNetworkEgressMetering;
 
-  ResourceUsageExportConfig();
+  ResourceUsageExportConfig({
+    this.bigqueryDestination,
+    this.consumptionMeteringConfig,
+    this.enableNetworkEgressMetering,
+  });
 
-  ResourceUsageExportConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('bigqueryDestination')) {
-      bigqueryDestination = BigQueryDestination.fromJson(
-          _json['bigqueryDestination'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('consumptionMeteringConfig')) {
-      consumptionMeteringConfig = ConsumptionMeteringConfig.fromJson(
-          _json['consumptionMeteringConfig']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('enableNetworkEgressMetering')) {
-      enableNetworkEgressMetering =
-          _json['enableNetworkEgressMetering'] as core.bool;
-    }
-  }
+  ResourceUsageExportConfig.fromJson(core.Map _json)
+      : this(
+          bigqueryDestination: _json.containsKey('bigqueryDestination')
+              ? BigQueryDestination.fromJson(_json['bigqueryDestination']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          consumptionMeteringConfig:
+              _json.containsKey('consumptionMeteringConfig')
+                  ? ConsumptionMeteringConfig.fromJson(
+                      _json['consumptionMeteringConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          enableNetworkEgressMetering:
+              _json.containsKey('enableNetworkEgressMetering')
+                  ? _json['enableNetworkEgressMetering'] as core.bool
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bigqueryDestination != null)
@@ -7791,25 +8196,28 @@ class RollbackNodePoolUpgradeRequest {
   /// Deprecated.
   core.String? zone;
 
-  RollbackNodePoolUpgradeRequest();
+  RollbackNodePoolUpgradeRequest({
+    this.clusterId,
+    this.name,
+    this.nodePoolId,
+    this.projectId,
+    this.zone,
+  });
 
-  RollbackNodePoolUpgradeRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('nodePoolId')) {
-      nodePoolId = _json['nodePoolId'] as core.String;
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('zone')) {
-      zone = _json['zone'] as core.String;
-    }
-  }
+  RollbackNodePoolUpgradeRequest.fromJson(core.Map _json)
+      : this(
+          clusterId: _json.containsKey('clusterId')
+              ? _json['clusterId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          nodePoolId: _json.containsKey('nodePoolId')
+              ? _json['nodePoolId'] as core.String
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
@@ -7828,13 +8236,14 @@ class SandboxConfig {
   /// - "GVISOR" : Run sandbox using gvisor.
   core.String? type;
 
-  SandboxConfig();
+  SandboxConfig({
+    this.type,
+  });
 
-  SandboxConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  SandboxConfig.fromJson(core.Map _json)
+      : this(
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
@@ -7861,37 +8270,46 @@ class ServerConfig {
   /// List of valid node upgrade target versions, in descending order.
   core.List<core.String>? validNodeVersions;
 
-  ServerConfig();
+  ServerConfig({
+    this.channels,
+    this.defaultClusterVersion,
+    this.defaultImageType,
+    this.validImageTypes,
+    this.validMasterVersions,
+    this.validNodeVersions,
+  });
 
-  ServerConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('channels')) {
-      channels = (_json['channels'] as core.List)
-          .map<ReleaseChannelConfig>((value) => ReleaseChannelConfig.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('defaultClusterVersion')) {
-      defaultClusterVersion = _json['defaultClusterVersion'] as core.String;
-    }
-    if (_json.containsKey('defaultImageType')) {
-      defaultImageType = _json['defaultImageType'] as core.String;
-    }
-    if (_json.containsKey('validImageTypes')) {
-      validImageTypes = (_json['validImageTypes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('validMasterVersions')) {
-      validMasterVersions = (_json['validMasterVersions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('validNodeVersions')) {
-      validNodeVersions = (_json['validNodeVersions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  ServerConfig.fromJson(core.Map _json)
+      : this(
+          channels: _json.containsKey('channels')
+              ? (_json['channels'] as core.List)
+                  .map<ReleaseChannelConfig>((value) =>
+                      ReleaseChannelConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          defaultClusterVersion: _json.containsKey('defaultClusterVersion')
+              ? _json['defaultClusterVersion'] as core.String
+              : null,
+          defaultImageType: _json.containsKey('defaultImageType')
+              ? _json['defaultImageType'] as core.String
+              : null,
+          validImageTypes: _json.containsKey('validImageTypes')
+              ? (_json['validImageTypes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          validMasterVersions: _json.containsKey('validMasterVersions')
+              ? (_json['validMasterVersions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          validNodeVersions: _json.containsKey('validNodeVersions')
+              ? (_json['validNodeVersions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channels != null)
@@ -7943,26 +8361,29 @@ class SetAddonsConfigRequest {
   /// Deprecated.
   core.String? zone;
 
-  SetAddonsConfigRequest();
+  SetAddonsConfigRequest({
+    this.addonsConfig,
+    this.clusterId,
+    this.name,
+    this.projectId,
+    this.zone,
+  });
 
-  SetAddonsConfigRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('addonsConfig')) {
-      addonsConfig = AddonsConfig.fromJson(
-          _json['addonsConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('zone')) {
-      zone = _json['zone'] as core.String;
-    }
-  }
+  SetAddonsConfigRequest.fromJson(core.Map _json)
+      : this(
+          addonsConfig: _json.containsKey('addonsConfig')
+              ? AddonsConfig.fromJson(
+                  _json['addonsConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          clusterId: _json.containsKey('clusterId')
+              ? _json['clusterId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (addonsConfig != null) 'addonsConfig': addonsConfig!.toJson(),
@@ -8022,34 +8443,38 @@ class SetLabelsRequest {
   /// Deprecated.
   core.String? zone;
 
-  SetLabelsRequest();
+  SetLabelsRequest({
+    this.clusterId,
+    this.labelFingerprint,
+    this.name,
+    this.projectId,
+    this.resourceLabels,
+    this.zone,
+  });
 
-  SetLabelsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'] as core.String;
-    }
-    if (_json.containsKey('labelFingerprint')) {
-      labelFingerprint = _json['labelFingerprint'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('resourceLabels')) {
-      resourceLabels =
-          (_json['resourceLabels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('zone')) {
-      zone = _json['zone'] as core.String;
-    }
-  }
+  SetLabelsRequest.fromJson(core.Map _json)
+      : this(
+          clusterId: _json.containsKey('clusterId')
+              ? _json['clusterId'] as core.String
+              : null,
+          labelFingerprint: _json.containsKey('labelFingerprint')
+              ? _json['labelFingerprint'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          resourceLabels: _json.containsKey('resourceLabels')
+              ? (_json['resourceLabels'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
@@ -8099,25 +8524,28 @@ class SetLegacyAbacRequest {
   /// Deprecated.
   core.String? zone;
 
-  SetLegacyAbacRequest();
+  SetLegacyAbacRequest({
+    this.clusterId,
+    this.enabled,
+    this.name,
+    this.projectId,
+    this.zone,
+  });
 
-  SetLegacyAbacRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'] as core.String;
-    }
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('zone')) {
-      zone = _json['zone'] as core.String;
-    }
-  }
+  SetLegacyAbacRequest.fromJson(core.Map _json)
+      : this(
+          clusterId: _json.containsKey('clusterId')
+              ? _json['clusterId'] as core.String
+              : null,
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
@@ -8171,27 +8599,30 @@ class SetLocationsRequest {
   /// Deprecated.
   core.String? zone;
 
-  SetLocationsRequest();
+  SetLocationsRequest({
+    this.clusterId,
+    this.locations,
+    this.name,
+    this.projectId,
+    this.zone,
+  });
 
-  SetLocationsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'] as core.String;
-    }
-    if (_json.containsKey('locations')) {
-      locations = (_json['locations'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('zone')) {
-      zone = _json['zone'] as core.String;
-    }
-  }
+  SetLocationsRequest.fromJson(core.Map _json)
+      : this(
+          clusterId: _json.containsKey('clusterId')
+              ? _json['clusterId'] as core.String
+              : null,
+          locations: _json.containsKey('locations')
+              ? (_json['locations'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
@@ -8246,25 +8677,28 @@ class SetLoggingServiceRequest {
   /// Deprecated.
   core.String? zone;
 
-  SetLoggingServiceRequest();
+  SetLoggingServiceRequest({
+    this.clusterId,
+    this.loggingService,
+    this.name,
+    this.projectId,
+    this.zone,
+  });
 
-  SetLoggingServiceRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'] as core.String;
-    }
-    if (_json.containsKey('loggingService')) {
-      loggingService = _json['loggingService'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('zone')) {
-      zone = _json['zone'] as core.String;
-    }
-  }
+  SetLoggingServiceRequest.fromJson(core.Map _json)
+      : this(
+          clusterId: _json.containsKey('clusterId')
+              ? _json['clusterId'] as core.String
+              : null,
+          loggingService: _json.containsKey('loggingService')
+              ? _json['loggingService'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
@@ -8308,26 +8742,29 @@ class SetMaintenancePolicyRequest {
   /// Required.
   core.String? zone;
 
-  SetMaintenancePolicyRequest();
+  SetMaintenancePolicyRequest({
+    this.clusterId,
+    this.maintenancePolicy,
+    this.name,
+    this.projectId,
+    this.zone,
+  });
 
-  SetMaintenancePolicyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'] as core.String;
-    }
-    if (_json.containsKey('maintenancePolicy')) {
-      maintenancePolicy = MaintenancePolicy.fromJson(
-          _json['maintenancePolicy'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('zone')) {
-      zone = _json['zone'] as core.String;
-    }
-  }
+  SetMaintenancePolicyRequest.fromJson(core.Map _json)
+      : this(
+          clusterId: _json.containsKey('clusterId')
+              ? _json['clusterId'] as core.String
+              : null,
+          maintenancePolicy: _json.containsKey('maintenancePolicy')
+              ? MaintenancePolicy.fromJson(_json['maintenancePolicy']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
@@ -8388,29 +8825,33 @@ class SetMasterAuthRequest {
   /// Deprecated.
   core.String? zone;
 
-  SetMasterAuthRequest();
+  SetMasterAuthRequest({
+    this.action,
+    this.clusterId,
+    this.name,
+    this.projectId,
+    this.update,
+    this.zone,
+  });
 
-  SetMasterAuthRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('action')) {
-      action = _json['action'] as core.String;
-    }
-    if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('update')) {
-      update = MasterAuth.fromJson(
-          _json['update'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('zone')) {
-      zone = _json['zone'] as core.String;
-    }
-  }
+  SetMasterAuthRequest.fromJson(core.Map _json)
+      : this(
+          action: _json.containsKey('action')
+              ? _json['action'] as core.String
+              : null,
+          clusterId: _json.containsKey('clusterId')
+              ? _json['clusterId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          update: _json.containsKey('update')
+              ? MasterAuth.fromJson(
+                  _json['update'] as core.Map<core.String, core.dynamic>)
+              : null,
+          zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
@@ -8466,25 +8907,28 @@ class SetMonitoringServiceRequest {
   /// Deprecated.
   core.String? zone;
 
-  SetMonitoringServiceRequest();
+  SetMonitoringServiceRequest({
+    this.clusterId,
+    this.monitoringService,
+    this.name,
+    this.projectId,
+    this.zone,
+  });
 
-  SetMonitoringServiceRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'] as core.String;
-    }
-    if (_json.containsKey('monitoringService')) {
-      monitoringService = _json['monitoringService'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('zone')) {
-      zone = _json['zone'] as core.String;
-    }
-  }
+  SetMonitoringServiceRequest.fromJson(core.Map _json)
+      : this(
+          clusterId: _json.containsKey('clusterId')
+              ? _json['clusterId'] as core.String
+              : null,
+          monitoringService: _json.containsKey('monitoringService')
+              ? _json['monitoringService'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
@@ -8532,26 +8976,29 @@ class SetNetworkPolicyRequest {
   /// Deprecated.
   core.String? zone;
 
-  SetNetworkPolicyRequest();
+  SetNetworkPolicyRequest({
+    this.clusterId,
+    this.name,
+    this.networkPolicy,
+    this.projectId,
+    this.zone,
+  });
 
-  SetNetworkPolicyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('networkPolicy')) {
-      networkPolicy = NetworkPolicy.fromJson(
-          _json['networkPolicy'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('zone')) {
-      zone = _json['zone'] as core.String;
-    }
-  }
+  SetNetworkPolicyRequest.fromJson(core.Map _json)
+      : this(
+          clusterId: _json.containsKey('clusterId')
+              ? _json['clusterId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          networkPolicy: _json.containsKey('networkPolicy')
+              ? NetworkPolicy.fromJson(
+                  _json['networkPolicy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
@@ -8607,29 +9054,33 @@ class SetNodePoolAutoscalingRequest {
   /// Deprecated.
   core.String? zone;
 
-  SetNodePoolAutoscalingRequest();
+  SetNodePoolAutoscalingRequest({
+    this.autoscaling,
+    this.clusterId,
+    this.name,
+    this.nodePoolId,
+    this.projectId,
+    this.zone,
+  });
 
-  SetNodePoolAutoscalingRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('autoscaling')) {
-      autoscaling = NodePoolAutoscaling.fromJson(
-          _json['autoscaling'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('nodePoolId')) {
-      nodePoolId = _json['nodePoolId'] as core.String;
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('zone')) {
-      zone = _json['zone'] as core.String;
-    }
-  }
+  SetNodePoolAutoscalingRequest.fromJson(core.Map _json)
+      : this(
+          autoscaling: _json.containsKey('autoscaling')
+              ? NodePoolAutoscaling.fromJson(
+                  _json['autoscaling'] as core.Map<core.String, core.dynamic>)
+              : null,
+          clusterId: _json.containsKey('clusterId')
+              ? _json['clusterId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          nodePoolId: _json.containsKey('nodePoolId')
+              ? _json['nodePoolId'] as core.String
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoscaling != null) 'autoscaling': autoscaling!.toJson(),
@@ -8687,29 +9138,33 @@ class SetNodePoolManagementRequest {
   /// Deprecated.
   core.String? zone;
 
-  SetNodePoolManagementRequest();
+  SetNodePoolManagementRequest({
+    this.clusterId,
+    this.management,
+    this.name,
+    this.nodePoolId,
+    this.projectId,
+    this.zone,
+  });
 
-  SetNodePoolManagementRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'] as core.String;
-    }
-    if (_json.containsKey('management')) {
-      management = NodeManagement.fromJson(
-          _json['management'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('nodePoolId')) {
-      nodePoolId = _json['nodePoolId'] as core.String;
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('zone')) {
-      zone = _json['zone'] as core.String;
-    }
-  }
+  SetNodePoolManagementRequest.fromJson(core.Map _json)
+      : this(
+          clusterId: _json.containsKey('clusterId')
+              ? _json['clusterId'] as core.String
+              : null,
+          management: _json.containsKey('management')
+              ? NodeManagement.fromJson(
+                  _json['management'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          nodePoolId: _json.containsKey('nodePoolId')
+              ? _json['nodePoolId'] as core.String
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
@@ -8766,28 +9221,32 @@ class SetNodePoolSizeRequest {
   /// Deprecated.
   core.String? zone;
 
-  SetNodePoolSizeRequest();
+  SetNodePoolSizeRequest({
+    this.clusterId,
+    this.name,
+    this.nodeCount,
+    this.nodePoolId,
+    this.projectId,
+    this.zone,
+  });
 
-  SetNodePoolSizeRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('nodeCount')) {
-      nodeCount = _json['nodeCount'] as core.int;
-    }
-    if (_json.containsKey('nodePoolId')) {
-      nodePoolId = _json['nodePoolId'] as core.String;
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('zone')) {
-      zone = _json['zone'] as core.String;
-    }
-  }
+  SetNodePoolSizeRequest.fromJson(core.Map _json)
+      : this(
+          clusterId: _json.containsKey('clusterId')
+              ? _json['clusterId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          nodeCount: _json.containsKey('nodeCount')
+              ? _json['nodeCount'] as core.int
+              : null,
+          nodePoolId: _json.containsKey('nodePoolId')
+              ? _json['nodePoolId'] as core.String
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
@@ -8816,17 +9275,21 @@ class ShieldedInstanceConfig {
   /// boot process if signature verification fails.
   core.bool? enableSecureBoot;
 
-  ShieldedInstanceConfig();
+  ShieldedInstanceConfig({
+    this.enableIntegrityMonitoring,
+    this.enableSecureBoot,
+  });
 
-  ShieldedInstanceConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('enableIntegrityMonitoring')) {
-      enableIntegrityMonitoring =
-          _json['enableIntegrityMonitoring'] as core.bool;
-    }
-    if (_json.containsKey('enableSecureBoot')) {
-      enableSecureBoot = _json['enableSecureBoot'] as core.bool;
-    }
-  }
+  ShieldedInstanceConfig.fromJson(core.Map _json)
+      : this(
+          enableIntegrityMonitoring:
+              _json.containsKey('enableIntegrityMonitoring')
+                  ? _json['enableIntegrityMonitoring'] as core.bool
+                  : null,
+          enableSecureBoot: _json.containsKey('enableSecureBoot')
+              ? _json['enableSecureBoot'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enableIntegrityMonitoring != null)
@@ -8840,13 +9303,16 @@ class ShieldedNodes {
   /// Whether Shielded Nodes features are enabled on all nodes in this cluster.
   core.bool? enabled;
 
-  ShieldedNodes();
+  ShieldedNodes({
+    this.enabled,
+  });
 
-  ShieldedNodes.fromJson(core.Map _json) {
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-  }
+  ShieldedNodes.fromJson(core.Map _json)
+      : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -8889,25 +9355,28 @@ class StartIPRotationRequest {
   /// Deprecated.
   core.String? zone;
 
-  StartIPRotationRequest();
+  StartIPRotationRequest({
+    this.clusterId,
+    this.name,
+    this.projectId,
+    this.rotateCredentials,
+    this.zone,
+  });
 
-  StartIPRotationRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('rotateCredentials')) {
-      rotateCredentials = _json['rotateCredentials'] as core.bool;
-    }
-    if (_json.containsKey('zone')) {
-      zone = _json['zone'] as core.String;
-    }
-  }
+  StartIPRotationRequest.fromJson(core.Map _json)
+      : this(
+          clusterId: _json.containsKey('clusterId')
+              ? _json['clusterId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          rotateCredentials: _json.containsKey('rotateCredentials')
+              ? _json['rotateCredentials'] as core.bool
+              : null,
+          zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
@@ -8943,27 +9412,30 @@ class Status {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  Status();
+  Status({
+    this.code,
+    this.details,
+    this.message,
+  });
 
-  Status.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.int;
-    }
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  Status.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -9078,19 +9550,22 @@ class StatusCondition {
   /// Human-friendly representation of the condition
   core.String? message;
 
-  StatusCondition();
+  StatusCondition({
+    this.canonicalCode,
+    this.code,
+    this.message,
+  });
 
-  StatusCondition.fromJson(core.Map _json) {
-    if (_json.containsKey('canonicalCode')) {
-      canonicalCode = _json['canonicalCode'] as core.String;
-    }
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.String;
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  StatusCondition.fromJson(core.Map _json)
+      : this(
+          canonicalCode: _json.containsKey('canonicalCode')
+              ? _json['canonicalCode'] as core.String
+              : null,
+          code: _json.containsKey('code') ? _json['code'] as core.String : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (canonicalCode != null) 'canonicalCode': canonicalCode!,
@@ -9109,16 +9584,20 @@ class TimeWindow {
   /// The time that the window first starts.
   core.String? startTime;
 
-  TimeWindow();
+  TimeWindow({
+    this.endTime,
+    this.startTime,
+  });
 
-  TimeWindow.fromJson(core.Map _json) {
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-  }
+  TimeWindow.fromJson(core.Map _json)
+      : this(
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
@@ -9162,26 +9641,29 @@ class UpdateClusterRequest {
   /// Deprecated.
   core.String? zone;
 
-  UpdateClusterRequest();
+  UpdateClusterRequest({
+    this.clusterId,
+    this.name,
+    this.projectId,
+    this.update,
+    this.zone,
+  });
 
-  UpdateClusterRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('update')) {
-      update = ClusterUpdate.fromJson(
-          _json['update'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('zone')) {
-      zone = _json['zone'] as core.String;
-    }
-  }
+  UpdateClusterRequest.fromJson(core.Map _json)
+      : this(
+          clusterId: _json.containsKey('clusterId')
+              ? _json['clusterId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          update: _json.containsKey('update')
+              ? ClusterUpdate.fromJson(
+                  _json['update'] as core.Map<core.String, core.dynamic>)
+              : null,
+          zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
@@ -9235,25 +9717,28 @@ class UpdateMasterRequest {
   /// Deprecated.
   core.String? zone;
 
-  UpdateMasterRequest();
+  UpdateMasterRequest({
+    this.clusterId,
+    this.masterVersion,
+    this.name,
+    this.projectId,
+    this.zone,
+  });
 
-  UpdateMasterRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'] as core.String;
-    }
-    if (_json.containsKey('masterVersion')) {
-      masterVersion = _json['masterVersion'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('zone')) {
-      zone = _json['zone'] as core.String;
-    }
-  }
+  UpdateMasterRequest.fromJson(core.Map _json)
+      : this(
+          clusterId: _json.containsKey('clusterId')
+              ? _json['clusterId'] as core.String
+              : null,
+          masterVersion: _json.containsKey('masterVersion')
+              ? _json['masterVersion'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
@@ -9342,53 +9827,62 @@ class UpdateNodePoolRequest {
   /// Deprecated.
   core.String? zone;
 
-  UpdateNodePoolRequest();
+  UpdateNodePoolRequest({
+    this.clusterId,
+    this.imageType,
+    this.kubeletConfig,
+    this.linuxNodeConfig,
+    this.locations,
+    this.name,
+    this.nodePoolId,
+    this.nodeVersion,
+    this.projectId,
+    this.upgradeSettings,
+    this.workloadMetadataConfig,
+    this.zone,
+  });
 
-  UpdateNodePoolRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'] as core.String;
-    }
-    if (_json.containsKey('imageType')) {
-      imageType = _json['imageType'] as core.String;
-    }
-    if (_json.containsKey('kubeletConfig')) {
-      kubeletConfig = NodeKubeletConfig.fromJson(
-          _json['kubeletConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('linuxNodeConfig')) {
-      linuxNodeConfig = LinuxNodeConfig.fromJson(
-          _json['linuxNodeConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('locations')) {
-      locations = (_json['locations'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('nodePoolId')) {
-      nodePoolId = _json['nodePoolId'] as core.String;
-    }
-    if (_json.containsKey('nodeVersion')) {
-      nodeVersion = _json['nodeVersion'] as core.String;
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('upgradeSettings')) {
-      upgradeSettings = UpgradeSettings.fromJson(
-          _json['upgradeSettings'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('workloadMetadataConfig')) {
-      workloadMetadataConfig = WorkloadMetadataConfig.fromJson(
-          _json['workloadMetadataConfig']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('zone')) {
-      zone = _json['zone'] as core.String;
-    }
-  }
+  UpdateNodePoolRequest.fromJson(core.Map _json)
+      : this(
+          clusterId: _json.containsKey('clusterId')
+              ? _json['clusterId'] as core.String
+              : null,
+          imageType: _json.containsKey('imageType')
+              ? _json['imageType'] as core.String
+              : null,
+          kubeletConfig: _json.containsKey('kubeletConfig')
+              ? NodeKubeletConfig.fromJson(
+                  _json['kubeletConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          linuxNodeConfig: _json.containsKey('linuxNodeConfig')
+              ? LinuxNodeConfig.fromJson(_json['linuxNodeConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          locations: _json.containsKey('locations')
+              ? (_json['locations'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          nodePoolId: _json.containsKey('nodePoolId')
+              ? _json['nodePoolId'] as core.String
+              : null,
+          nodeVersion: _json.containsKey('nodeVersion')
+              ? _json['nodeVersion'] as core.String
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          upgradeSettings: _json.containsKey('upgradeSettings')
+              ? UpgradeSettings.fromJson(_json['upgradeSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          workloadMetadataConfig: _json.containsKey('workloadMetadataConfig')
+              ? WorkloadMetadataConfig.fromJson(_json['workloadMetadataConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
@@ -9433,23 +9927,29 @@ class UpgradeAvailableEvent {
   /// The release version available for upgrade.
   core.String? version;
 
-  UpgradeAvailableEvent();
+  UpgradeAvailableEvent({
+    this.releaseChannel,
+    this.resource,
+    this.resourceType,
+    this.version,
+  });
 
-  UpgradeAvailableEvent.fromJson(core.Map _json) {
-    if (_json.containsKey('releaseChannel')) {
-      releaseChannel = ReleaseChannel.fromJson(
-          _json['releaseChannel'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('resource')) {
-      resource = _json['resource'] as core.String;
-    }
-    if (_json.containsKey('resourceType')) {
-      resourceType = _json['resourceType'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.String;
-    }
-  }
+  UpgradeAvailableEvent.fromJson(core.Map _json)
+      : this(
+          releaseChannel: _json.containsKey('releaseChannel')
+              ? ReleaseChannel.fromJson(_json['releaseChannel']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          resource: _json.containsKey('resource')
+              ? _json['resource'] as core.String
+              : null,
+          resourceType: _json.containsKey('resourceType')
+              ? _json['resourceType'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (releaseChannel != null) 'releaseChannel': releaseChannel!.toJson(),
@@ -9487,28 +9987,36 @@ class UpgradeEvent {
   /// The target version for the upgrade.
   core.String? targetVersion;
 
-  UpgradeEvent();
+  UpgradeEvent({
+    this.currentVersion,
+    this.operation,
+    this.operationStartTime,
+    this.resource,
+    this.resourceType,
+    this.targetVersion,
+  });
 
-  UpgradeEvent.fromJson(core.Map _json) {
-    if (_json.containsKey('currentVersion')) {
-      currentVersion = _json['currentVersion'] as core.String;
-    }
-    if (_json.containsKey('operation')) {
-      operation = _json['operation'] as core.String;
-    }
-    if (_json.containsKey('operationStartTime')) {
-      operationStartTime = _json['operationStartTime'] as core.String;
-    }
-    if (_json.containsKey('resource')) {
-      resource = _json['resource'] as core.String;
-    }
-    if (_json.containsKey('resourceType')) {
-      resourceType = _json['resourceType'] as core.String;
-    }
-    if (_json.containsKey('targetVersion')) {
-      targetVersion = _json['targetVersion'] as core.String;
-    }
-  }
+  UpgradeEvent.fromJson(core.Map _json)
+      : this(
+          currentVersion: _json.containsKey('currentVersion')
+              ? _json['currentVersion'] as core.String
+              : null,
+          operation: _json.containsKey('operation')
+              ? _json['operation'] as core.String
+              : null,
+          operationStartTime: _json.containsKey('operationStartTime')
+              ? _json['operationStartTime'] as core.String
+              : null,
+          resource: _json.containsKey('resource')
+              ? _json['resource'] as core.String
+              : null,
+          resourceType: _json.containsKey('resourceType')
+              ? _json['resourceType'] as core.String
+              : null,
+          targetVersion: _json.containsKey('targetVersion')
+              ? _json['targetVersion'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (currentVersion != null) 'currentVersion': currentVersion!,
@@ -9548,16 +10056,20 @@ class UpgradeSettings {
   /// A node is considered available if its status is Ready.
   core.int? maxUnavailable;
 
-  UpgradeSettings();
+  UpgradeSettings({
+    this.maxSurge,
+    this.maxUnavailable,
+  });
 
-  UpgradeSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('maxSurge')) {
-      maxSurge = _json['maxSurge'] as core.int;
-    }
-    if (_json.containsKey('maxUnavailable')) {
-      maxUnavailable = _json['maxUnavailable'] as core.int;
-    }
-  }
+  UpgradeSettings.fromJson(core.Map _json)
+      : this(
+          maxSurge: _json.containsKey('maxSurge')
+              ? _json['maxSurge'] as core.int
+              : null,
+          maxUnavailable: _json.containsKey('maxUnavailable')
+              ? _json['maxUnavailable'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (maxSurge != null) 'maxSurge': maxSurge!,
@@ -9591,29 +10103,36 @@ class UsableSubnetwork {
   /// Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
   core.String? subnetwork;
 
-  UsableSubnetwork();
+  UsableSubnetwork({
+    this.ipCidrRange,
+    this.network,
+    this.secondaryIpRanges,
+    this.statusMessage,
+    this.subnetwork,
+  });
 
-  UsableSubnetwork.fromJson(core.Map _json) {
-    if (_json.containsKey('ipCidrRange')) {
-      ipCidrRange = _json['ipCidrRange'] as core.String;
-    }
-    if (_json.containsKey('network')) {
-      network = _json['network'] as core.String;
-    }
-    if (_json.containsKey('secondaryIpRanges')) {
-      secondaryIpRanges = (_json['secondaryIpRanges'] as core.List)
-          .map<UsableSubnetworkSecondaryRange>((value) =>
-              UsableSubnetworkSecondaryRange.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('statusMessage')) {
-      statusMessage = _json['statusMessage'] as core.String;
-    }
-    if (_json.containsKey('subnetwork')) {
-      subnetwork = _json['subnetwork'] as core.String;
-    }
-  }
+  UsableSubnetwork.fromJson(core.Map _json)
+      : this(
+          ipCidrRange: _json.containsKey('ipCidrRange')
+              ? _json['ipCidrRange'] as core.String
+              : null,
+          network: _json.containsKey('network')
+              ? _json['network'] as core.String
+              : null,
+          secondaryIpRanges: _json.containsKey('secondaryIpRanges')
+              ? (_json['secondaryIpRanges'] as core.List)
+                  .map<UsableSubnetworkSecondaryRange>((value) =>
+                      UsableSubnetworkSecondaryRange.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          statusMessage: _json.containsKey('statusMessage')
+              ? _json['statusMessage'] as core.String
+              : null,
+          subnetwork: _json.containsKey('subnetwork')
+              ? _json['subnetwork'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ipCidrRange != null) 'ipCidrRange': ipCidrRange!,
@@ -9649,19 +10168,24 @@ class UsableSubnetworkSecondaryRange {
   /// by GKE and is claimed for pods. It cannot be used for other clusters.
   core.String? status;
 
-  UsableSubnetworkSecondaryRange();
+  UsableSubnetworkSecondaryRange({
+    this.ipCidrRange,
+    this.rangeName,
+    this.status,
+  });
 
-  UsableSubnetworkSecondaryRange.fromJson(core.Map _json) {
-    if (_json.containsKey('ipCidrRange')) {
-      ipCidrRange = _json['ipCidrRange'] as core.String;
-    }
-    if (_json.containsKey('rangeName')) {
-      rangeName = _json['rangeName'] as core.String;
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-  }
+  UsableSubnetworkSecondaryRange.fromJson(core.Map _json)
+      : this(
+          ipCidrRange: _json.containsKey('ipCidrRange')
+              ? _json['ipCidrRange'] as core.String
+              : null,
+          rangeName: _json.containsKey('rangeName')
+              ? _json['rangeName'] as core.String
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ipCidrRange != null) 'ipCidrRange': ipCidrRange!,
@@ -9677,13 +10201,16 @@ class VerticalPodAutoscaling {
   /// Enables vertical pod autoscaling.
   core.bool? enabled;
 
-  VerticalPodAutoscaling();
+  VerticalPodAutoscaling({
+    this.enabled,
+  });
 
-  VerticalPodAutoscaling.fromJson(core.Map _json) {
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-  }
+  VerticalPodAutoscaling.fromJson(core.Map _json)
+      : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -9696,13 +10223,16 @@ class WorkloadIdentityConfig {
   /// The workload pool to attach all Kubernetes service accounts to.
   core.String? workloadPool;
 
-  WorkloadIdentityConfig();
+  WorkloadIdentityConfig({
+    this.workloadPool,
+  });
 
-  WorkloadIdentityConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('workloadPool')) {
-      workloadPool = _json['workloadPool'] as core.String;
-    }
-  }
+  WorkloadIdentityConfig.fromJson(core.Map _json)
+      : this(
+          workloadPool: _json.containsKey('workloadPool')
+              ? _json['workloadPool'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (workloadPool != null) 'workloadPool': workloadPool!,
@@ -9724,13 +10254,14 @@ class WorkloadMetadataConfig {
   /// Identity is enabled at the cluster level.
   core.String? mode;
 
-  WorkloadMetadataConfig();
+  WorkloadMetadataConfig({
+    this.mode,
+  });
 
-  WorkloadMetadataConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('mode')) {
-      mode = _json['mode'] as core.String;
-    }
-  }
+  WorkloadMetadataConfig.fromJson(core.Map _json)
+      : this(
+          mode: _json.containsKey('mode') ? _json['mode'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mode != null) 'mode': mode!,

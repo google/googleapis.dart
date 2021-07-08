@@ -430,13 +430,16 @@ class AdBreak {
   /// The default is `0s`.
   core.String? startTimeOffset;
 
-  AdBreak();
+  AdBreak({
+    this.startTimeOffset,
+  });
 
-  AdBreak.fromJson(core.Map _json) {
-    if (_json.containsKey('startTimeOffset')) {
-      startTimeOffset = _json['startTimeOffset'] as core.String;
-    }
-  }
+  AdBreak.fromJson(core.Map _json)
+      : this(
+          startTimeOffset: _json.containsKey('startTimeOffset')
+              ? _json['startTimeOffset'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
@@ -452,13 +455,16 @@ class Aes128Encryption {
   /// Required.
   core.String? keyUri;
 
-  Aes128Encryption();
+  Aes128Encryption({
+    this.keyUri,
+  });
 
-  Aes128Encryption.fromJson(core.Map _json) {
-    if (_json.containsKey('keyUri')) {
-      keyUri = _json['keyUri'] as core.String;
-    }
-  }
+  Aes128Encryption.fromJson(core.Map _json)
+      : this(
+          keyUri: _json.containsKey('keyUri')
+              ? _json['keyUri'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (keyUri != null) 'keyUri': keyUri!,
@@ -476,22 +482,27 @@ class Animation {
   /// Display static overlay object.
   AnimationStatic? animationStatic;
 
-  Animation();
+  Animation({
+    this.animationEnd,
+    this.animationFade,
+    this.animationStatic,
+  });
 
-  Animation.fromJson(core.Map _json) {
-    if (_json.containsKey('animationEnd')) {
-      animationEnd = AnimationEnd.fromJson(
-          _json['animationEnd'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('animationFade')) {
-      animationFade = AnimationFade.fromJson(
-          _json['animationFade'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('animationStatic')) {
-      animationStatic = AnimationStatic.fromJson(
-          _json['animationStatic'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Animation.fromJson(core.Map _json)
+      : this(
+          animationEnd: _json.containsKey('animationEnd')
+              ? AnimationEnd.fromJson(
+                  _json['animationEnd'] as core.Map<core.String, core.dynamic>)
+              : null,
+          animationFade: _json.containsKey('animationFade')
+              ? AnimationFade.fromJson(
+                  _json['animationFade'] as core.Map<core.String, core.dynamic>)
+              : null,
+          animationStatic: _json.containsKey('animationStatic')
+              ? AnimationStatic.fromJson(_json['animationStatic']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (animationEnd != null) 'animationEnd': animationEnd!.toJson(),
@@ -511,13 +522,16 @@ class AnimationEnd {
   /// Default: 0
   core.String? startTimeOffset;
 
-  AnimationEnd();
+  AnimationEnd({
+    this.startTimeOffset,
+  });
 
-  AnimationEnd.fromJson(core.Map _json) {
-    if (_json.containsKey('startTimeOffset')) {
-      startTimeOffset = _json['startTimeOffset'] as core.String;
-    }
-  }
+  AnimationEnd.fromJson(core.Map _json)
+      : this(
+          startTimeOffset: _json.containsKey('startTimeOffset')
+              ? _json['startTimeOffset'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
@@ -553,23 +567,29 @@ class AnimationFade {
   /// output video.
   NormalizedCoordinate? xy;
 
-  AnimationFade();
+  AnimationFade({
+    this.endTimeOffset,
+    this.fadeType,
+    this.startTimeOffset,
+    this.xy,
+  });
 
-  AnimationFade.fromJson(core.Map _json) {
-    if (_json.containsKey('endTimeOffset')) {
-      endTimeOffset = _json['endTimeOffset'] as core.String;
-    }
-    if (_json.containsKey('fadeType')) {
-      fadeType = _json['fadeType'] as core.String;
-    }
-    if (_json.containsKey('startTimeOffset')) {
-      startTimeOffset = _json['startTimeOffset'] as core.String;
-    }
-    if (_json.containsKey('xy')) {
-      xy = NormalizedCoordinate.fromJson(
-          _json['xy'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  AnimationFade.fromJson(core.Map _json)
+      : this(
+          endTimeOffset: _json.containsKey('endTimeOffset')
+              ? _json['endTimeOffset'] as core.String
+              : null,
+          fadeType: _json.containsKey('fadeType')
+              ? _json['fadeType'] as core.String
+              : null,
+          startTimeOffset: _json.containsKey('startTimeOffset')
+              ? _json['startTimeOffset'] as core.String
+              : null,
+          xy: _json.containsKey('xy')
+              ? NormalizedCoordinate.fromJson(
+                  _json['xy'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
@@ -594,17 +614,21 @@ class AnimationStatic {
   /// output video.
   NormalizedCoordinate? xy;
 
-  AnimationStatic();
+  AnimationStatic({
+    this.startTimeOffset,
+    this.xy,
+  });
 
-  AnimationStatic.fromJson(core.Map _json) {
-    if (_json.containsKey('startTimeOffset')) {
-      startTimeOffset = _json['startTimeOffset'] as core.String;
-    }
-    if (_json.containsKey('xy')) {
-      xy = NormalizedCoordinate.fromJson(
-          _json['xy'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  AnimationStatic.fromJson(core.Map _json)
+      : this(
+          startTimeOffset: _json.containsKey('startTimeOffset')
+              ? _json['startTimeOffset'] as core.String
+              : null,
+          xy: _json.containsKey('xy')
+              ? NormalizedCoordinate.fromJson(
+                  _json['xy'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
@@ -635,19 +659,24 @@ class Audio {
   /// well as Amazon Echo * 0 disables normalization
   core.double? lufs;
 
-  Audio();
+  Audio({
+    this.highBoost,
+    this.lowBoost,
+    this.lufs,
+  });
 
-  Audio.fromJson(core.Map _json) {
-    if (_json.containsKey('highBoost')) {
-      highBoost = _json['highBoost'] as core.bool;
-    }
-    if (_json.containsKey('lowBoost')) {
-      lowBoost = _json['lowBoost'] as core.bool;
-    }
-    if (_json.containsKey('lufs')) {
-      lufs = (_json['lufs'] as core.num).toDouble();
-    }
-  }
+  Audio.fromJson(core.Map _json)
+      : this(
+          highBoost: _json.containsKey('highBoost')
+              ? _json['highBoost'] as core.bool
+              : null,
+          lowBoost: _json.containsKey('lowBoost')
+              ? _json['lowBoost'] as core.bool
+              : null,
+          lufs: _json.containsKey('lufs')
+              ? (_json['lufs'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (highBoost != null) 'highBoost': highBoost!,
@@ -669,19 +698,21 @@ class AudioAtom {
   /// Required.
   core.String? key;
 
-  AudioAtom();
+  AudioAtom({
+    this.channels,
+    this.key,
+  });
 
-  AudioAtom.fromJson(core.Map _json) {
-    if (_json.containsKey('channels')) {
-      channels = (_json['channels'] as core.List)
-          .map<AudioChannel>((value) => AudioChannel.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('key')) {
-      key = _json['key'] as core.String;
-    }
-  }
+  AudioAtom.fromJson(core.Map _json)
+      : this(
+          channels: _json.containsKey('channels')
+              ? (_json['channels'] as core.List)
+                  .map<AudioChannel>((value) => AudioChannel.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channels != null)
@@ -695,16 +726,19 @@ class AudioChannel {
   /// List of `Job.inputs` for this audio channel.
   core.List<AudioChannelInput>? inputs;
 
-  AudioChannel();
+  AudioChannel({
+    this.inputs,
+  });
 
-  AudioChannel.fromJson(core.Map _json) {
-    if (_json.containsKey('inputs')) {
-      inputs = (_json['inputs'] as core.List)
-          .map<AudioChannelInput>((value) => AudioChannelInput.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  AudioChannel.fromJson(core.Map _json)
+      : this(
+          inputs: _json.containsKey('inputs')
+              ? (_json['inputs'] as core.List)
+                  .map<AudioChannelInput>((value) => AudioChannelInput.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (inputs != null)
@@ -735,22 +769,24 @@ class AudioChannelInput {
   /// Required.
   core.int? track;
 
-  AudioChannelInput();
+  AudioChannelInput({
+    this.channel,
+    this.gainDb,
+    this.key,
+    this.track,
+  });
 
-  AudioChannelInput.fromJson(core.Map _json) {
-    if (_json.containsKey('channel')) {
-      channel = _json['channel'] as core.int;
-    }
-    if (_json.containsKey('gainDb')) {
-      gainDb = (_json['gainDb'] as core.num).toDouble();
-    }
-    if (_json.containsKey('key')) {
-      key = _json['key'] as core.String;
-    }
-    if (_json.containsKey('track')) {
-      track = _json['track'] as core.int;
-    }
-  }
+  AudioChannelInput.fromJson(core.Map _json)
+      : this(
+          channel: _json.containsKey('channel')
+              ? _json['channel'] as core.int
+              : null,
+          gainDb: _json.containsKey('gainDb')
+              ? (_json['gainDb'] as core.num).toDouble()
+              : null,
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          track: _json.containsKey('track') ? _json['track'] as core.int : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channel != null) 'channel': channel!,
@@ -797,33 +833,40 @@ class AudioStream {
   /// The default is 48000 Hertz.
   core.int? sampleRateHertz;
 
-  AudioStream();
+  AudioStream({
+    this.bitrateBps,
+    this.channelCount,
+    this.channelLayout,
+    this.codec,
+    this.mapping,
+    this.sampleRateHertz,
+  });
 
-  AudioStream.fromJson(core.Map _json) {
-    if (_json.containsKey('bitrateBps')) {
-      bitrateBps = _json['bitrateBps'] as core.int;
-    }
-    if (_json.containsKey('channelCount')) {
-      channelCount = _json['channelCount'] as core.int;
-    }
-    if (_json.containsKey('channelLayout')) {
-      channelLayout = (_json['channelLayout'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('codec')) {
-      codec = _json['codec'] as core.String;
-    }
-    if (_json.containsKey('mapping')) {
-      mapping = (_json['mapping'] as core.List)
-          .map<AudioAtom>((value) =>
-              AudioAtom.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('sampleRateHertz')) {
-      sampleRateHertz = _json['sampleRateHertz'] as core.int;
-    }
-  }
+  AudioStream.fromJson(core.Map _json)
+      : this(
+          bitrateBps: _json.containsKey('bitrateBps')
+              ? _json['bitrateBps'] as core.int
+              : null,
+          channelCount: _json.containsKey('channelCount')
+              ? _json['channelCount'] as core.int
+              : null,
+          channelLayout: _json.containsKey('channelLayout')
+              ? (_json['channelLayout'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          codec:
+              _json.containsKey('codec') ? _json['codec'] as core.String : null,
+          mapping: _json.containsKey('mapping')
+              ? (_json['mapping'] as core.List)
+                  .map<AudioAtom>((value) => AudioAtom.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          sampleRateHertz: _json.containsKey('sampleRateHertz')
+              ? _json['sampleRateHertz'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bitrateBps != null) 'bitrateBps': bitrateBps!,
@@ -856,19 +899,24 @@ class Color {
   /// maximum saturation. 0 is no change. The default is 0.
   core.double? saturation;
 
-  Color();
+  Color({
+    this.brightness,
+    this.contrast,
+    this.saturation,
+  });
 
-  Color.fromJson(core.Map _json) {
-    if (_json.containsKey('brightness')) {
-      brightness = (_json['brightness'] as core.num).toDouble();
-    }
-    if (_json.containsKey('contrast')) {
-      contrast = (_json['contrast'] as core.num).toDouble();
-    }
-    if (_json.containsKey('saturation')) {
-      saturation = (_json['saturation'] as core.num).toDouble();
-    }
-  }
+  Color.fromJson(core.Map _json)
+      : this(
+          brightness: _json.containsKey('brightness')
+              ? (_json['brightness'] as core.num).toDouble()
+              : null,
+          contrast: _json.containsKey('contrast')
+              ? (_json['contrast'] as core.num).toDouble()
+              : null,
+          saturation: _json.containsKey('saturation')
+              ? (_json['saturation'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (brightness != null) 'brightness': brightness!,
@@ -901,22 +949,28 @@ class Crop {
   /// The default is 0.
   core.int? topPixels;
 
-  Crop();
+  Crop({
+    this.bottomPixels,
+    this.leftPixels,
+    this.rightPixels,
+    this.topPixels,
+  });
 
-  Crop.fromJson(core.Map _json) {
-    if (_json.containsKey('bottomPixels')) {
-      bottomPixels = _json['bottomPixels'] as core.int;
-    }
-    if (_json.containsKey('leftPixels')) {
-      leftPixels = _json['leftPixels'] as core.int;
-    }
-    if (_json.containsKey('rightPixels')) {
-      rightPixels = _json['rightPixels'] as core.int;
-    }
-    if (_json.containsKey('topPixels')) {
-      topPixels = _json['topPixels'] as core.int;
-    }
-  }
+  Crop.fromJson(core.Map _json)
+      : this(
+          bottomPixels: _json.containsKey('bottomPixels')
+              ? _json['bottomPixels'] as core.int
+              : null,
+          leftPixels: _json.containsKey('leftPixels')
+              ? _json['leftPixels'] as core.int
+              : null,
+          rightPixels: _json.containsKey('rightPixels')
+              ? _json['rightPixels'] as core.int
+              : null,
+          topPixels: _json.containsKey('topPixels')
+              ? _json['topPixels'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bottomPixels != null) 'bottomPixels': bottomPixels!,
@@ -939,16 +993,20 @@ class Deblock {
   /// block removal. 0 is no deblocking. The default is 0.
   core.double? strength;
 
-  Deblock();
+  Deblock({
+    this.enabled,
+    this.strength,
+  });
 
-  Deblock.fromJson(core.Map _json) {
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-    if (_json.containsKey('strength')) {
-      strength = (_json['strength'] as core.num).toDouble();
-    }
-  }
+  Deblock.fromJson(core.Map _json)
+      : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+          strength: _json.containsKey('strength')
+              ? (_json['strength'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -970,16 +1028,18 @@ class Denoise {
   /// 'grain'
   core.String? tune;
 
-  Denoise();
+  Denoise({
+    this.strength,
+    this.tune,
+  });
 
-  Denoise.fromJson(core.Map _json) {
-    if (_json.containsKey('strength')) {
-      strength = (_json['strength'] as core.num).toDouble();
-    }
-    if (_json.containsKey('tune')) {
-      tune = _json['tune'] as core.String;
-    }
-  }
+  Denoise.fromJson(core.Map _json)
+      : this(
+          strength: _json.containsKey('strength')
+              ? (_json['strength'] as core.num).toDouble()
+              : null,
+          tune: _json.containsKey('tune') ? _json['tune'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (strength != null) 'strength': strength!,
@@ -1010,24 +1070,28 @@ class EditAtom {
   /// The default is `0s`.
   core.String? startTimeOffset;
 
-  EditAtom();
+  EditAtom({
+    this.endTimeOffset,
+    this.inputs,
+    this.key,
+    this.startTimeOffset,
+  });
 
-  EditAtom.fromJson(core.Map _json) {
-    if (_json.containsKey('endTimeOffset')) {
-      endTimeOffset = _json['endTimeOffset'] as core.String;
-    }
-    if (_json.containsKey('inputs')) {
-      inputs = (_json['inputs'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('key')) {
-      key = _json['key'] as core.String;
-    }
-    if (_json.containsKey('startTimeOffset')) {
-      startTimeOffset = _json['startTimeOffset'] as core.String;
-    }
-  }
+  EditAtom.fromJson(core.Map _json)
+      : this(
+          endTimeOffset: _json.containsKey('endTimeOffset')
+              ? _json['endTimeOffset'] as core.String
+              : null,
+          inputs: _json.containsKey('inputs')
+              ? (_json['inputs'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          startTimeOffset: _json.containsKey('startTimeOffset')
+              ? _json['startTimeOffset'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
@@ -1056,25 +1120,29 @@ class ElementaryStream {
   /// Encoding of a video stream.
   VideoStream? videoStream;
 
-  ElementaryStream();
+  ElementaryStream({
+    this.audioStream,
+    this.key,
+    this.textStream,
+    this.videoStream,
+  });
 
-  ElementaryStream.fromJson(core.Map _json) {
-    if (_json.containsKey('audioStream')) {
-      audioStream = AudioStream.fromJson(
-          _json['audioStream'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('key')) {
-      key = _json['key'] as core.String;
-    }
-    if (_json.containsKey('textStream')) {
-      textStream = TextStream.fromJson(
-          _json['textStream'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('videoStream')) {
-      videoStream = VideoStream.fromJson(
-          _json['videoStream'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ElementaryStream.fromJson(core.Map _json)
+      : this(
+          audioStream: _json.containsKey('audioStream')
+              ? AudioStream.fromJson(
+                  _json['audioStream'] as core.Map<core.String, core.dynamic>)
+              : null,
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          textStream: _json.containsKey('textStream')
+              ? TextStream.fromJson(
+                  _json['textStream'] as core.Map<core.String, core.dynamic>)
+              : null,
+          videoStream: _json.containsKey('videoStream')
+              ? VideoStream.fromJson(
+                  _json['videoStream'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (audioStream != null) 'audioStream': audioStream!.toJson(),
@@ -1123,28 +1191,31 @@ class Encryption {
   /// Configuration for SAMPLE-AES encryption.
   SampleAesEncryption? sampleAes;
 
-  Encryption();
+  Encryption({
+    this.aes128,
+    this.iv,
+    this.key,
+    this.mpegCenc,
+    this.sampleAes,
+  });
 
-  Encryption.fromJson(core.Map _json) {
-    if (_json.containsKey('aes128')) {
-      aes128 = Aes128Encryption.fromJson(
-          _json['aes128'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('iv')) {
-      iv = _json['iv'] as core.String;
-    }
-    if (_json.containsKey('key')) {
-      key = _json['key'] as core.String;
-    }
-    if (_json.containsKey('mpegCenc')) {
-      mpegCenc = MpegCommonEncryption.fromJson(
-          _json['mpegCenc'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('sampleAes')) {
-      sampleAes = SampleAesEncryption.fromJson(
-          _json['sampleAes'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Encryption.fromJson(core.Map _json)
+      : this(
+          aes128: _json.containsKey('aes128')
+              ? Aes128Encryption.fromJson(
+                  _json['aes128'] as core.Map<core.String, core.dynamic>)
+              : null,
+          iv: _json.containsKey('iv') ? _json['iv'] as core.String : null,
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          mpegCenc: _json.containsKey('mpegCenc')
+              ? MpegCommonEncryption.fromJson(
+                  _json['mpegCenc'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sampleAes: _json.containsKey('sampleAes')
+              ? SampleAesEncryption.fromJson(
+                  _json['sampleAes'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (aes128 != null) 'aes128': aes128!.toJson(),
@@ -1160,13 +1231,16 @@ class FailureDetail {
   /// A description of the failure.
   core.String? description;
 
-  FailureDetail();
+  FailureDetail({
+    this.description,
+  });
 
-  FailureDetail.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-  }
+  FailureDetail.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -1196,20 +1270,23 @@ class Image {
   /// Required.
   core.String? uri;
 
-  Image();
+  Image({
+    this.alpha,
+    this.resolution,
+    this.uri,
+  });
 
-  Image.fromJson(core.Map _json) {
-    if (_json.containsKey('alpha')) {
-      alpha = (_json['alpha'] as core.num).toDouble();
-    }
-    if (_json.containsKey('resolution')) {
-      resolution = NormalizedCoordinate.fromJson(
-          _json['resolution'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('uri')) {
-      uri = _json['uri'] as core.String;
-    }
-  }
+  Image.fromJson(core.Map _json)
+      : this(
+          alpha: _json.containsKey('alpha')
+              ? (_json['alpha'] as core.num).toDouble()
+              : null,
+          resolution: _json.containsKey('resolution')
+              ? NormalizedCoordinate.fromJson(
+                  _json['resolution'] as core.Map<core.String, core.dynamic>)
+              : null,
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alpha != null) 'alpha': alpha!,
@@ -1235,20 +1312,21 @@ class Input {
   /// will be populated from `Job.input_uri`.
   core.String? uri;
 
-  Input();
+  Input({
+    this.key,
+    this.preprocessingConfig,
+    this.uri,
+  });
 
-  Input.fromJson(core.Map _json) {
-    if (_json.containsKey('key')) {
-      key = _json['key'] as core.String;
-    }
-    if (_json.containsKey('preprocessingConfig')) {
-      preprocessingConfig = PreprocessingConfig.fromJson(
-          _json['preprocessingConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('uri')) {
-      uri = _json['uri'] as core.String;
-    }
-  }
+  Input.fromJson(core.Map _json)
+      : this(
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          preprocessingConfig: _json.containsKey('preprocessingConfig')
+              ? PreprocessingConfig.fromJson(_json['preprocessingConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
@@ -1360,61 +1438,75 @@ class Job {
   /// between 1 and 90. The default is 30.
   core.int? ttlAfterCompletionDays;
 
-  Job();
+  Job({
+    this.config,
+    this.createTime,
+    this.endTime,
+    this.failureDetails,
+    this.failureReason,
+    this.inputUri,
+    this.name,
+    this.originUri,
+    this.outputUri,
+    this.priority,
+    this.progress,
+    this.startTime,
+    this.state,
+    this.templateId,
+    this.ttlAfterCompletionDays,
+  });
 
-  Job.fromJson(core.Map _json) {
-    if (_json.containsKey('config')) {
-      config = JobConfig.fromJson(
-          _json['config'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('failureDetails')) {
-      failureDetails = (_json['failureDetails'] as core.List)
-          .map<FailureDetail>((value) => FailureDetail.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('failureReason')) {
-      failureReason = _json['failureReason'] as core.String;
-    }
-    if (_json.containsKey('inputUri')) {
-      inputUri = _json['inputUri'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('originUri')) {
-      originUri = OriginUri.fromJson(
-          _json['originUri'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('outputUri')) {
-      outputUri = _json['outputUri'] as core.String;
-    }
-    if (_json.containsKey('priority')) {
-      priority = _json['priority'] as core.int;
-    }
-    if (_json.containsKey('progress')) {
-      progress = Progress.fromJson(
-          _json['progress'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('templateId')) {
-      templateId = _json['templateId'] as core.String;
-    }
-    if (_json.containsKey('ttlAfterCompletionDays')) {
-      ttlAfterCompletionDays = _json['ttlAfterCompletionDays'] as core.int;
-    }
-  }
+  Job.fromJson(core.Map _json)
+      : this(
+          config: _json.containsKey('config')
+              ? JobConfig.fromJson(
+                  _json['config'] as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          failureDetails: _json.containsKey('failureDetails')
+              ? (_json['failureDetails'] as core.List)
+                  .map<FailureDetail>((value) => FailureDetail.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          failureReason: _json.containsKey('failureReason')
+              ? _json['failureReason'] as core.String
+              : null,
+          inputUri: _json.containsKey('inputUri')
+              ? _json['inputUri'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          originUri: _json.containsKey('originUri')
+              ? OriginUri.fromJson(
+                  _json['originUri'] as core.Map<core.String, core.dynamic>)
+              : null,
+          outputUri: _json.containsKey('outputUri')
+              ? _json['outputUri'] as core.String
+              : null,
+          priority: _json.containsKey('priority')
+              ? _json['priority'] as core.int
+              : null,
+          progress: _json.containsKey('progress')
+              ? Progress.fromJson(
+                  _json['progress'] as core.Map<core.String, core.dynamic>)
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          templateId: _json.containsKey('templateId')
+              ? _json['templateId'] as core.String
+              : null,
+          ttlAfterCompletionDays: _json.containsKey('ttlAfterCompletionDays')
+              ? _json['ttlAfterCompletionDays'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (config != null) 'config': config!.toJson(),
@@ -1474,66 +1566,78 @@ class JobConfig {
   /// List of output sprite sheets.
   core.List<SpriteSheet>? spriteSheets;
 
-  JobConfig();
+  JobConfig({
+    this.adBreaks,
+    this.editList,
+    this.elementaryStreams,
+    this.inputs,
+    this.manifests,
+    this.muxStreams,
+    this.output,
+    this.overlays,
+    this.pubsubDestination,
+    this.spriteSheets,
+  });
 
-  JobConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('adBreaks')) {
-      adBreaks = (_json['adBreaks'] as core.List)
-          .map<AdBreak>((value) =>
-              AdBreak.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('editList')) {
-      editList = (_json['editList'] as core.List)
-          .map<EditAtom>((value) =>
-              EditAtom.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('elementaryStreams')) {
-      elementaryStreams = (_json['elementaryStreams'] as core.List)
-          .map<ElementaryStream>((value) => ElementaryStream.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('inputs')) {
-      inputs = (_json['inputs'] as core.List)
-          .map<Input>((value) =>
-              Input.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('manifests')) {
-      manifests = (_json['manifests'] as core.List)
-          .map<Manifest>((value) =>
-              Manifest.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('muxStreams')) {
-      muxStreams = (_json['muxStreams'] as core.List)
-          .map<MuxStream>((value) =>
-              MuxStream.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('output')) {
-      output = Output.fromJson(
-          _json['output'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('overlays')) {
-      overlays = (_json['overlays'] as core.List)
-          .map<Overlay>((value) =>
-              Overlay.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('pubsubDestination')) {
-      pubsubDestination = PubsubDestination.fromJson(
-          _json['pubsubDestination'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('spriteSheets')) {
-      spriteSheets = (_json['spriteSheets'] as core.List)
-          .map<SpriteSheet>((value) => SpriteSheet.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  JobConfig.fromJson(core.Map _json)
+      : this(
+          adBreaks: _json.containsKey('adBreaks')
+              ? (_json['adBreaks'] as core.List)
+                  .map<AdBreak>((value) => AdBreak.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          editList: _json.containsKey('editList')
+              ? (_json['editList'] as core.List)
+                  .map<EditAtom>((value) => EditAtom.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          elementaryStreams: _json.containsKey('elementaryStreams')
+              ? (_json['elementaryStreams'] as core.List)
+                  .map<ElementaryStream>((value) => ElementaryStream.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          inputs: _json.containsKey('inputs')
+              ? (_json['inputs'] as core.List)
+                  .map<Input>((value) => Input.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          manifests: _json.containsKey('manifests')
+              ? (_json['manifests'] as core.List)
+                  .map<Manifest>((value) => Manifest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          muxStreams: _json.containsKey('muxStreams')
+              ? (_json['muxStreams'] as core.List)
+                  .map<MuxStream>((value) => MuxStream.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          output: _json.containsKey('output')
+              ? Output.fromJson(
+                  _json['output'] as core.Map<core.String, core.dynamic>)
+              : null,
+          overlays: _json.containsKey('overlays')
+              ? (_json['overlays'] as core.List)
+                  .map<Overlay>((value) => Overlay.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          pubsubDestination: _json.containsKey('pubsubDestination')
+              ? PubsubDestination.fromJson(_json['pubsubDestination']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          spriteSheets: _json.containsKey('spriteSheets')
+              ? (_json['spriteSheets'] as core.List)
+                  .map<SpriteSheet>((value) => SpriteSheet.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (adBreaks != null)
@@ -1570,17 +1674,19 @@ class JobTemplate {
   /// `projects/{project}/locations/{location}/jobTemplates/{job_template}`
   core.String? name;
 
-  JobTemplate();
+  JobTemplate({
+    this.config,
+    this.name,
+  });
 
-  JobTemplate.fromJson(core.Map _json) {
-    if (_json.containsKey('config')) {
-      config = JobConfig.fromJson(
-          _json['config'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  JobTemplate.fromJson(core.Map _json)
+      : this(
+          config: _json.containsKey('config')
+              ? JobConfig.fromJson(
+                  _json['config'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (config != null) 'config': config!.toJson(),
@@ -1596,19 +1702,23 @@ class ListJobTemplatesResponse {
   /// The pagination token.
   core.String? nextPageToken;
 
-  ListJobTemplatesResponse();
+  ListJobTemplatesResponse({
+    this.jobTemplates,
+    this.nextPageToken,
+  });
 
-  ListJobTemplatesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('jobTemplates')) {
-      jobTemplates = (_json['jobTemplates'] as core.List)
-          .map<JobTemplate>((value) => JobTemplate.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListJobTemplatesResponse.fromJson(core.Map _json)
+      : this(
+          jobTemplates: _json.containsKey('jobTemplates')
+              ? (_json['jobTemplates'] as core.List)
+                  .map<JobTemplate>((value) => JobTemplate.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (jobTemplates != null)
@@ -1625,19 +1735,23 @@ class ListJobsResponse {
   /// The pagination token.
   core.String? nextPageToken;
 
-  ListJobsResponse();
+  ListJobsResponse({
+    this.jobs,
+    this.nextPageToken,
+  });
 
-  ListJobsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('jobs')) {
-      jobs = (_json['jobs'] as core.List)
-          .map<Job>((value) =>
-              Job.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListJobsResponse.fromJson(core.Map _json)
+      : this(
+          jobs: _json.containsKey('jobs')
+              ? (_json['jobs'] as core.List)
+                  .map<Job>((value) => Job.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (jobs != null) 'jobs': jobs!.map((value) => value.toJson()).toList(),
@@ -1673,21 +1787,24 @@ class Manifest {
   /// `".mpd"`.
   core.String? type;
 
-  Manifest();
+  Manifest({
+    this.fileName,
+    this.muxStreams,
+    this.type,
+  });
 
-  Manifest.fromJson(core.Map _json) {
-    if (_json.containsKey('fileName')) {
-      fileName = _json['fileName'] as core.String;
-    }
-    if (_json.containsKey('muxStreams')) {
-      muxStreams = (_json['muxStreams'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  Manifest.fromJson(core.Map _json)
+      : this(
+          fileName: _json.containsKey('fileName')
+              ? _json['fileName'] as core.String
+              : null,
+          muxStreams: _json.containsKey('muxStreams')
+              ? (_json['muxStreams'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fileName != null) 'fileName': fileName!,
@@ -1711,16 +1828,19 @@ class MpegCommonEncryption {
   /// Required.
   core.String? scheme;
 
-  MpegCommonEncryption();
+  MpegCommonEncryption({
+    this.keyId,
+    this.scheme,
+  });
 
-  MpegCommonEncryption.fromJson(core.Map _json) {
-    if (_json.containsKey('keyId')) {
-      keyId = _json['keyId'] as core.String;
-    }
-    if (_json.containsKey('scheme')) {
-      scheme = _json['scheme'] as core.String;
-    }
-  }
+  MpegCommonEncryption.fromJson(core.Map _json)
+      : this(
+          keyId:
+              _json.containsKey('keyId') ? _json['keyId'] as core.String : null,
+          scheme: _json.containsKey('scheme')
+              ? _json['scheme'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (keyId != null) 'keyId': keyId!,
@@ -1759,32 +1879,38 @@ class MuxStream {
   /// Segment settings for `"ts"`, `"fmp4"` and `"vtt"`.
   SegmentSettings? segmentSettings;
 
-  MuxStream();
+  MuxStream({
+    this.container,
+    this.elementaryStreams,
+    this.encryption,
+    this.fileName,
+    this.key,
+    this.segmentSettings,
+  });
 
-  MuxStream.fromJson(core.Map _json) {
-    if (_json.containsKey('container')) {
-      container = _json['container'] as core.String;
-    }
-    if (_json.containsKey('elementaryStreams')) {
-      elementaryStreams = (_json['elementaryStreams'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('encryption')) {
-      encryption = Encryption.fromJson(
-          _json['encryption'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('fileName')) {
-      fileName = _json['fileName'] as core.String;
-    }
-    if (_json.containsKey('key')) {
-      key = _json['key'] as core.String;
-    }
-    if (_json.containsKey('segmentSettings')) {
-      segmentSettings = SegmentSettings.fromJson(
-          _json['segmentSettings'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  MuxStream.fromJson(core.Map _json)
+      : this(
+          container: _json.containsKey('container')
+              ? _json['container'] as core.String
+              : null,
+          elementaryStreams: _json.containsKey('elementaryStreams')
+              ? (_json['elementaryStreams'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          encryption: _json.containsKey('encryption')
+              ? Encryption.fromJson(
+                  _json['encryption'] as core.Map<core.String, core.dynamic>)
+              : null,
+          fileName: _json.containsKey('fileName')
+              ? _json['fileName'] as core.String
+              : null,
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          segmentSettings: _json.containsKey('segmentSettings')
+              ? SegmentSettings.fromJson(_json['segmentSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (container != null) 'container': container!,
@@ -1807,16 +1933,20 @@ class NormalizedCoordinate {
   /// Normalized y coordinate.
   core.double? y;
 
-  NormalizedCoordinate();
+  NormalizedCoordinate({
+    this.x,
+    this.y,
+  });
 
-  NormalizedCoordinate.fromJson(core.Map _json) {
-    if (_json.containsKey('x')) {
-      x = (_json['x'] as core.num).toDouble();
-    }
-    if (_json.containsKey('y')) {
-      y = (_json['y'] as core.num).toDouble();
-    }
-  }
+  NormalizedCoordinate.fromJson(core.Map _json)
+      : this(
+          x: _json.containsKey('x')
+              ? (_json['x'] as core.num).toDouble()
+              : null,
+          y: _json.containsKey('y')
+              ? (_json['y'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (x != null) 'x': x!,
@@ -1865,31 +1995,38 @@ class OperationMetadata {
   /// Output only.
   core.String? verb;
 
-  OperationMetadata();
+  OperationMetadata({
+    this.apiVersion,
+    this.cancelRequested,
+    this.createTime,
+    this.endTime,
+    this.statusDetail,
+    this.target,
+    this.verb,
+  });
 
-  OperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('apiVersion')) {
-      apiVersion = _json['apiVersion'] as core.String;
-    }
-    if (_json.containsKey('cancelRequested')) {
-      cancelRequested = _json['cancelRequested'] as core.bool;
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('statusDetail')) {
-      statusDetail = _json['statusDetail'] as core.String;
-    }
-    if (_json.containsKey('target')) {
-      target = _json['target'] as core.String;
-    }
-    if (_json.containsKey('verb')) {
-      verb = _json['verb'] as core.String;
-    }
-  }
+  OperationMetadata.fromJson(core.Map _json)
+      : this(
+          apiVersion: _json.containsKey('apiVersion')
+              ? _json['apiVersion'] as core.String
+              : null,
+          cancelRequested: _json.containsKey('cancelRequested')
+              ? _json['cancelRequested'] as core.bool
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          statusDetail: _json.containsKey('statusDetail')
+              ? _json['statusDetail'] as core.String
+              : null,
+          target: _json.containsKey('target')
+              ? _json['target'] as core.String
+              : null,
+          verb: _json.containsKey('verb') ? _json['verb'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiVersion != null) 'apiVersion': apiVersion!,
@@ -1914,16 +2051,16 @@ class OriginUri {
   /// If multiple HLS manifests are created, only the first one is listed.
   core.String? hls;
 
-  OriginUri();
+  OriginUri({
+    this.dash,
+    this.hls,
+  });
 
-  OriginUri.fromJson(core.Map _json) {
-    if (_json.containsKey('dash')) {
-      dash = _json['dash'] as core.String;
-    }
-    if (_json.containsKey('hls')) {
-      hls = _json['hls'] as core.String;
-    }
-  }
+  OriginUri.fromJson(core.Map _json)
+      : this(
+          dash: _json.containsKey('dash') ? _json['dash'] as core.String : null,
+          hls: _json.containsKey('hls') ? _json['hls'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dash != null) 'dash': dash!,
@@ -1939,13 +2076,14 @@ class Output {
   /// from `Job.output_uri`.
   core.String? uri;
 
-  Output();
+  Output({
+    this.uri,
+  });
 
-  Output.fromJson(core.Map _json) {
-    if (_json.containsKey('uri')) {
-      uri = _json['uri'] as core.String;
-    }
-  }
+  Output.fromJson(core.Map _json)
+      : this(
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (uri != null) 'uri': uri!,
@@ -1962,20 +2100,24 @@ class Overlay {
   /// Image overlay.
   Image? image;
 
-  Overlay();
+  Overlay({
+    this.animations,
+    this.image,
+  });
 
-  Overlay.fromJson(core.Map _json) {
-    if (_json.containsKey('animations')) {
-      animations = (_json['animations'] as core.List)
-          .map<Animation>((value) =>
-              Animation.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('image')) {
-      image =
-          Image.fromJson(_json['image'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Overlay.fromJson(core.Map _json)
+      : this(
+          animations: _json.containsKey('animations')
+              ? (_json['animations'] as core.List)
+                  .map<Animation>((value) => Animation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          image: _json.containsKey('image')
+              ? Image.fromJson(
+                  _json['image'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (animations != null)
@@ -2009,22 +2151,28 @@ class Pad {
   /// The default is 0.
   core.int? topPixels;
 
-  Pad();
+  Pad({
+    this.bottomPixels,
+    this.leftPixels,
+    this.rightPixels,
+    this.topPixels,
+  });
 
-  Pad.fromJson(core.Map _json) {
-    if (_json.containsKey('bottomPixels')) {
-      bottomPixels = _json['bottomPixels'] as core.int;
-    }
-    if (_json.containsKey('leftPixels')) {
-      leftPixels = _json['leftPixels'] as core.int;
-    }
-    if (_json.containsKey('rightPixels')) {
-      rightPixels = _json['rightPixels'] as core.int;
-    }
-    if (_json.containsKey('topPixels')) {
-      topPixels = _json['topPixels'] as core.int;
-    }
-  }
+  Pad.fromJson(core.Map _json)
+      : this(
+          bottomPixels: _json.containsKey('bottomPixels')
+              ? _json['bottomPixels'] as core.int
+              : null,
+          leftPixels: _json.containsKey('leftPixels')
+              ? _json['leftPixels'] as core.int
+              : null,
+          rightPixels: _json.containsKey('rightPixels')
+              ? _json['rightPixels'] as core.int
+              : null,
+          topPixels: _json.containsKey('topPixels')
+              ? _json['topPixels'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bottomPixels != null) 'bottomPixels': bottomPixels!,
@@ -2054,33 +2202,42 @@ class PreprocessingConfig {
   /// Specify the video pad filter configuration.
   Pad? pad;
 
-  PreprocessingConfig();
+  PreprocessingConfig({
+    this.audio,
+    this.color,
+    this.crop,
+    this.deblock,
+    this.denoise,
+    this.pad,
+  });
 
-  PreprocessingConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('audio')) {
-      audio =
-          Audio.fromJson(_json['audio'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('color')) {
-      color =
-          Color.fromJson(_json['color'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('crop')) {
-      crop =
-          Crop.fromJson(_json['crop'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('deblock')) {
-      deblock = Deblock.fromJson(
-          _json['deblock'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('denoise')) {
-      denoise = Denoise.fromJson(
-          _json['denoise'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('pad')) {
-      pad = Pad.fromJson(_json['pad'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  PreprocessingConfig.fromJson(core.Map _json)
+      : this(
+          audio: _json.containsKey('audio')
+              ? Audio.fromJson(
+                  _json['audio'] as core.Map<core.String, core.dynamic>)
+              : null,
+          color: _json.containsKey('color')
+              ? Color.fromJson(
+                  _json['color'] as core.Map<core.String, core.dynamic>)
+              : null,
+          crop: _json.containsKey('crop')
+              ? Crop.fromJson(
+                  _json['crop'] as core.Map<core.String, core.dynamic>)
+              : null,
+          deblock: _json.containsKey('deblock')
+              ? Deblock.fromJson(
+                  _json['deblock'] as core.Map<core.String, core.dynamic>)
+              : null,
+          denoise: _json.containsKey('denoise')
+              ? Denoise.fromJson(
+                  _json['denoise'] as core.Map<core.String, core.dynamic>)
+              : null,
+          pad: _json.containsKey('pad')
+              ? Pad.fromJson(
+                  _json['pad'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (audio != null) 'audio': audio!.toJson(),
@@ -2106,22 +2263,28 @@ class Progress {
   /// Estimated fractional progress for `uploading` step.
   core.double? uploaded;
 
-  Progress();
+  Progress({
+    this.analyzed,
+    this.encoded,
+    this.notified,
+    this.uploaded,
+  });
 
-  Progress.fromJson(core.Map _json) {
-    if (_json.containsKey('analyzed')) {
-      analyzed = (_json['analyzed'] as core.num).toDouble();
-    }
-    if (_json.containsKey('encoded')) {
-      encoded = (_json['encoded'] as core.num).toDouble();
-    }
-    if (_json.containsKey('notified')) {
-      notified = (_json['notified'] as core.num).toDouble();
-    }
-    if (_json.containsKey('uploaded')) {
-      uploaded = (_json['uploaded'] as core.num).toDouble();
-    }
-  }
+  Progress.fromJson(core.Map _json)
+      : this(
+          analyzed: _json.containsKey('analyzed')
+              ? (_json['analyzed'] as core.num).toDouble()
+              : null,
+          encoded: _json.containsKey('encoded')
+              ? (_json['encoded'] as core.num).toDouble()
+              : null,
+          notified: _json.containsKey('notified')
+              ? (_json['notified'] as core.num).toDouble()
+              : null,
+          uploaded: _json.containsKey('uploaded')
+              ? (_json['uploaded'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (analyzed != null) 'analyzed': analyzed!,
@@ -2138,13 +2301,15 @@ class PubsubDestination {
   /// For example: `projects/{project}/topics/{topic}`.
   core.String? topic;
 
-  PubsubDestination();
+  PubsubDestination({
+    this.topic,
+  });
 
-  PubsubDestination.fromJson(core.Map _json) {
-    if (_json.containsKey('topic')) {
-      topic = _json['topic'] as core.String;
-    }
-  }
+  PubsubDestination.fromJson(core.Map _json)
+      : this(
+          topic:
+              _json.containsKey('topic') ? _json['topic'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (topic != null) 'topic': topic!,
@@ -2160,13 +2325,16 @@ class SampleAesEncryption {
   /// Required.
   core.String? keyUri;
 
-  SampleAesEncryption();
+  SampleAesEncryption({
+    this.keyUri,
+  });
 
-  SampleAesEncryption.fromJson(core.Map _json) {
-    if (_json.containsKey('keyUri')) {
-      keyUri = _json['keyUri'] as core.String;
-    }
-  }
+  SampleAesEncryption.fromJson(core.Map _json)
+      : this(
+          keyUri: _json.containsKey('keyUri')
+              ? _json['keyUri'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (keyUri != null) 'keyUri': keyUri!,
@@ -2189,16 +2357,20 @@ class SegmentSettings {
   /// divisible by \[`gopDuration`\](#videostream).
   core.String? segmentDuration;
 
-  SegmentSettings();
+  SegmentSettings({
+    this.individualSegments,
+    this.segmentDuration,
+  });
 
-  SegmentSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('individualSegments')) {
-      individualSegments = _json['individualSegments'] as core.bool;
-    }
-    if (_json.containsKey('segmentDuration')) {
-      segmentDuration = _json['segmentDuration'] as core.String;
-    }
-  }
+  SegmentSettings.fromJson(core.Map _json)
+      : this(
+          individualSegments: _json.containsKey('individualSegments')
+              ? _json['individualSegments'] as core.bool
+              : null,
+          segmentDuration: _json.containsKey('segmentDuration')
+              ? _json['segmentDuration'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (individualSegments != null)
@@ -2282,43 +2454,56 @@ class SpriteSheet {
   /// timeline of the output media. The default is 100.
   core.int? totalCount;
 
-  SpriteSheet();
+  SpriteSheet({
+    this.columnCount,
+    this.endTimeOffset,
+    this.filePrefix,
+    this.format,
+    this.interval,
+    this.quality,
+    this.rowCount,
+    this.spriteHeightPixels,
+    this.spriteWidthPixels,
+    this.startTimeOffset,
+    this.totalCount,
+  });
 
-  SpriteSheet.fromJson(core.Map _json) {
-    if (_json.containsKey('columnCount')) {
-      columnCount = _json['columnCount'] as core.int;
-    }
-    if (_json.containsKey('endTimeOffset')) {
-      endTimeOffset = _json['endTimeOffset'] as core.String;
-    }
-    if (_json.containsKey('filePrefix')) {
-      filePrefix = _json['filePrefix'] as core.String;
-    }
-    if (_json.containsKey('format')) {
-      format = _json['format'] as core.String;
-    }
-    if (_json.containsKey('interval')) {
-      interval = _json['interval'] as core.String;
-    }
-    if (_json.containsKey('quality')) {
-      quality = _json['quality'] as core.int;
-    }
-    if (_json.containsKey('rowCount')) {
-      rowCount = _json['rowCount'] as core.int;
-    }
-    if (_json.containsKey('spriteHeightPixels')) {
-      spriteHeightPixels = _json['spriteHeightPixels'] as core.int;
-    }
-    if (_json.containsKey('spriteWidthPixels')) {
-      spriteWidthPixels = _json['spriteWidthPixels'] as core.int;
-    }
-    if (_json.containsKey('startTimeOffset')) {
-      startTimeOffset = _json['startTimeOffset'] as core.String;
-    }
-    if (_json.containsKey('totalCount')) {
-      totalCount = _json['totalCount'] as core.int;
-    }
-  }
+  SpriteSheet.fromJson(core.Map _json)
+      : this(
+          columnCount: _json.containsKey('columnCount')
+              ? _json['columnCount'] as core.int
+              : null,
+          endTimeOffset: _json.containsKey('endTimeOffset')
+              ? _json['endTimeOffset'] as core.String
+              : null,
+          filePrefix: _json.containsKey('filePrefix')
+              ? _json['filePrefix'] as core.String
+              : null,
+          format: _json.containsKey('format')
+              ? _json['format'] as core.String
+              : null,
+          interval: _json.containsKey('interval')
+              ? _json['interval'] as core.String
+              : null,
+          quality: _json.containsKey('quality')
+              ? _json['quality'] as core.int
+              : null,
+          rowCount: _json.containsKey('rowCount')
+              ? _json['rowCount'] as core.int
+              : null,
+          spriteHeightPixels: _json.containsKey('spriteHeightPixels')
+              ? _json['spriteHeightPixels'] as core.int
+              : null,
+          spriteWidthPixels: _json.containsKey('spriteWidthPixels')
+              ? _json['spriteWidthPixels'] as core.int
+              : null,
+          startTimeOffset: _json.containsKey('startTimeOffset')
+              ? _json['startTimeOffset'] as core.String
+              : null,
+          totalCount: _json.containsKey('totalCount')
+              ? _json['totalCount'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (columnCount != null) 'columnCount': columnCount!,
@@ -2349,19 +2534,21 @@ class TextAtom {
   /// Required.
   core.String? key;
 
-  TextAtom();
+  TextAtom({
+    this.inputs,
+    this.key,
+  });
 
-  TextAtom.fromJson(core.Map _json) {
-    if (_json.containsKey('inputs')) {
-      inputs = (_json['inputs'] as core.List)
-          .map<TextInput>((value) =>
-              TextInput.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('key')) {
-      key = _json['key'] as core.String;
-    }
-  }
+  TextAtom.fromJson(core.Map _json)
+      : this(
+          inputs: _json.containsKey('inputs')
+              ? (_json['inputs'] as core.List)
+                  .map<TextInput>((value) => TextInput.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (inputs != null)
@@ -2382,16 +2569,16 @@ class TextInput {
   /// Required.
   core.int? track;
 
-  TextInput();
+  TextInput({
+    this.key,
+    this.track,
+  });
 
-  TextInput.fromJson(core.Map _json) {
-    if (_json.containsKey('key')) {
-      key = _json['key'] as core.String;
-    }
-    if (_json.containsKey('track')) {
-      track = _json['track'] as core.int;
-    }
-  }
+  TextInput.fromJson(core.Map _json)
+      : this(
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          track: _json.containsKey('track') ? _json['track'] as core.int : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
@@ -2420,22 +2607,26 @@ class TextStream {
   /// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
   core.List<TextAtom>? mapping;
 
-  TextStream();
+  TextStream({
+    this.codec,
+    this.languageCode,
+    this.mapping,
+  });
 
-  TextStream.fromJson(core.Map _json) {
-    if (_json.containsKey('codec')) {
-      codec = _json['codec'] as core.String;
-    }
-    if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'] as core.String;
-    }
-    if (_json.containsKey('mapping')) {
-      mapping = (_json['mapping'] as core.List)
-          .map<TextAtom>((value) =>
-              TextAtom.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  TextStream.fromJson(core.Map _json)
+      : this(
+          codec:
+              _json.containsKey('codec') ? _json['codec'] as core.String : null,
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
+          mapping: _json.containsKey('mapping')
+              ? (_json['mapping'] as core.List)
+                  .map<TextAtom>((value) => TextAtom.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (codec != null) 'codec': codec!,
@@ -2587,73 +2778,93 @@ class VideoStream {
   /// the input width is used.
   core.int? widthPixels;
 
-  VideoStream();
+  VideoStream({
+    this.allowOpenGop,
+    this.aqStrength,
+    this.bFrameCount,
+    this.bPyramid,
+    this.bitrateBps,
+    this.codec,
+    this.crfLevel,
+    this.enableTwoPass,
+    this.entropyCoder,
+    this.frameRate,
+    this.gopDuration,
+    this.gopFrameCount,
+    this.heightPixels,
+    this.pixelFormat,
+    this.preset,
+    this.profile,
+    this.rateControlMode,
+    this.tune,
+    this.vbvFullnessBits,
+    this.vbvSizeBits,
+    this.widthPixels,
+  });
 
-  VideoStream.fromJson(core.Map _json) {
-    if (_json.containsKey('allowOpenGop')) {
-      allowOpenGop = _json['allowOpenGop'] as core.bool;
-    }
-    if (_json.containsKey('aqStrength')) {
-      aqStrength = (_json['aqStrength'] as core.num).toDouble();
-    }
-    if (_json.containsKey('bFrameCount')) {
-      bFrameCount = _json['bFrameCount'] as core.int;
-    }
-    if (_json.containsKey('bPyramid')) {
-      bPyramid = _json['bPyramid'] as core.bool;
-    }
-    if (_json.containsKey('bitrateBps')) {
-      bitrateBps = _json['bitrateBps'] as core.int;
-    }
-    if (_json.containsKey('codec')) {
-      codec = _json['codec'] as core.String;
-    }
-    if (_json.containsKey('crfLevel')) {
-      crfLevel = _json['crfLevel'] as core.int;
-    }
-    if (_json.containsKey('enableTwoPass')) {
-      enableTwoPass = _json['enableTwoPass'] as core.bool;
-    }
-    if (_json.containsKey('entropyCoder')) {
-      entropyCoder = _json['entropyCoder'] as core.String;
-    }
-    if (_json.containsKey('frameRate')) {
-      frameRate = (_json['frameRate'] as core.num).toDouble();
-    }
-    if (_json.containsKey('gopDuration')) {
-      gopDuration = _json['gopDuration'] as core.String;
-    }
-    if (_json.containsKey('gopFrameCount')) {
-      gopFrameCount = _json['gopFrameCount'] as core.int;
-    }
-    if (_json.containsKey('heightPixels')) {
-      heightPixels = _json['heightPixels'] as core.int;
-    }
-    if (_json.containsKey('pixelFormat')) {
-      pixelFormat = _json['pixelFormat'] as core.String;
-    }
-    if (_json.containsKey('preset')) {
-      preset = _json['preset'] as core.String;
-    }
-    if (_json.containsKey('profile')) {
-      profile = _json['profile'] as core.String;
-    }
-    if (_json.containsKey('rateControlMode')) {
-      rateControlMode = _json['rateControlMode'] as core.String;
-    }
-    if (_json.containsKey('tune')) {
-      tune = _json['tune'] as core.String;
-    }
-    if (_json.containsKey('vbvFullnessBits')) {
-      vbvFullnessBits = _json['vbvFullnessBits'] as core.int;
-    }
-    if (_json.containsKey('vbvSizeBits')) {
-      vbvSizeBits = _json['vbvSizeBits'] as core.int;
-    }
-    if (_json.containsKey('widthPixels')) {
-      widthPixels = _json['widthPixels'] as core.int;
-    }
-  }
+  VideoStream.fromJson(core.Map _json)
+      : this(
+          allowOpenGop: _json.containsKey('allowOpenGop')
+              ? _json['allowOpenGop'] as core.bool
+              : null,
+          aqStrength: _json.containsKey('aqStrength')
+              ? (_json['aqStrength'] as core.num).toDouble()
+              : null,
+          bFrameCount: _json.containsKey('bFrameCount')
+              ? _json['bFrameCount'] as core.int
+              : null,
+          bPyramid: _json.containsKey('bPyramid')
+              ? _json['bPyramid'] as core.bool
+              : null,
+          bitrateBps: _json.containsKey('bitrateBps')
+              ? _json['bitrateBps'] as core.int
+              : null,
+          codec:
+              _json.containsKey('codec') ? _json['codec'] as core.String : null,
+          crfLevel: _json.containsKey('crfLevel')
+              ? _json['crfLevel'] as core.int
+              : null,
+          enableTwoPass: _json.containsKey('enableTwoPass')
+              ? _json['enableTwoPass'] as core.bool
+              : null,
+          entropyCoder: _json.containsKey('entropyCoder')
+              ? _json['entropyCoder'] as core.String
+              : null,
+          frameRate: _json.containsKey('frameRate')
+              ? (_json['frameRate'] as core.num).toDouble()
+              : null,
+          gopDuration: _json.containsKey('gopDuration')
+              ? _json['gopDuration'] as core.String
+              : null,
+          gopFrameCount: _json.containsKey('gopFrameCount')
+              ? _json['gopFrameCount'] as core.int
+              : null,
+          heightPixels: _json.containsKey('heightPixels')
+              ? _json['heightPixels'] as core.int
+              : null,
+          pixelFormat: _json.containsKey('pixelFormat')
+              ? _json['pixelFormat'] as core.String
+              : null,
+          preset: _json.containsKey('preset')
+              ? _json['preset'] as core.String
+              : null,
+          profile: _json.containsKey('profile')
+              ? _json['profile'] as core.String
+              : null,
+          rateControlMode: _json.containsKey('rateControlMode')
+              ? _json['rateControlMode'] as core.String
+              : null,
+          tune: _json.containsKey('tune') ? _json['tune'] as core.String : null,
+          vbvFullnessBits: _json.containsKey('vbvFullnessBits')
+              ? _json['vbvFullnessBits'] as core.int
+              : null,
+          vbvSizeBits: _json.containsKey('vbvSizeBits')
+              ? _json['vbvSizeBits'] as core.int
+              : null,
+          widthPixels: _json.containsKey('widthPixels')
+              ? _json['widthPixels'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowOpenGop != null) 'allowOpenGop': allowOpenGop!,

@@ -657,16 +657,19 @@ class BatchCreateRowsRequest {
   /// Required.
   core.List<CreateRowRequest>? requests;
 
-  BatchCreateRowsRequest();
+  BatchCreateRowsRequest({
+    this.requests,
+  });
 
-  BatchCreateRowsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('requests')) {
-      requests = (_json['requests'] as core.List)
-          .map<CreateRowRequest>((value) => CreateRowRequest.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  BatchCreateRowsRequest.fromJson(core.Map _json)
+      : this(
+          requests: _json.containsKey('requests')
+              ? (_json['requests'] as core.List)
+                  .map<CreateRowRequest>((value) => CreateRowRequest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requests != null)
@@ -679,16 +682,19 @@ class BatchCreateRowsResponse {
   /// The created rows.
   core.List<Row>? rows;
 
-  BatchCreateRowsResponse();
+  BatchCreateRowsResponse({
+    this.rows,
+  });
 
-  BatchCreateRowsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('rows')) {
-      rows = (_json['rows'] as core.List)
-          .map<Row>((value) =>
-              Row.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  BatchCreateRowsResponse.fromJson(core.Map _json)
+      : this(
+          rows: _json.containsKey('rows')
+              ? (_json['rows'] as core.List)
+                  .map<Row>((value) => Row.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
@@ -706,15 +712,18 @@ class BatchDeleteRowsRequest {
   /// Required.
   core.List<core.String>? names;
 
-  BatchDeleteRowsRequest();
+  BatchDeleteRowsRequest({
+    this.names,
+  });
 
-  BatchDeleteRowsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('names')) {
-      names = (_json['names'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  BatchDeleteRowsRequest.fromJson(core.Map _json)
+      : this(
+          names: _json.containsKey('names')
+              ? (_json['names'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (names != null) 'names': names!,
@@ -730,16 +739,19 @@ class BatchUpdateRowsRequest {
   /// Required.
   core.List<UpdateRowRequest>? requests;
 
-  BatchUpdateRowsRequest();
+  BatchUpdateRowsRequest({
+    this.requests,
+  });
 
-  BatchUpdateRowsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('requests')) {
-      requests = (_json['requests'] as core.List)
-          .map<UpdateRowRequest>((value) => UpdateRowRequest.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  BatchUpdateRowsRequest.fromJson(core.Map _json)
+      : this(
+          requests: _json.containsKey('requests')
+              ? (_json['requests'] as core.List)
+                  .map<UpdateRowRequest>((value) => UpdateRowRequest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requests != null)
@@ -752,16 +764,19 @@ class BatchUpdateRowsResponse {
   /// The updated rows.
   core.List<Row>? rows;
 
-  BatchUpdateRowsResponse();
+  BatchUpdateRowsResponse({
+    this.rows,
+  });
 
-  BatchUpdateRowsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('rows')) {
-      rows = (_json['rows'] as core.List)
-          .map<Row>((value) =>
-              Row.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  BatchUpdateRowsResponse.fromJson(core.Map _json)
+      : this(
+          rows: _json.containsKey('rows')
+              ? (_json['rows'] as core.List)
+                  .map<Row>((value) => Row.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
@@ -816,36 +831,42 @@ class ColumnDescription {
   /// Optional.
   RelationshipDetails? relationshipDetails;
 
-  ColumnDescription();
+  ColumnDescription({
+    this.dataType,
+    this.id,
+    this.labels,
+    this.lookupDetails,
+    this.multipleValuesDisallowed,
+    this.name,
+    this.relationshipDetails,
+  });
 
-  ColumnDescription.fromJson(core.Map _json) {
-    if (_json.containsKey('dataType')) {
-      dataType = _json['dataType'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.List)
-          .map<LabeledItem>((value) => LabeledItem.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('lookupDetails')) {
-      lookupDetails = LookupDetails.fromJson(
-          _json['lookupDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('multipleValuesDisallowed')) {
-      multipleValuesDisallowed = _json['multipleValuesDisallowed'] as core.bool;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('relationshipDetails')) {
-      relationshipDetails = RelationshipDetails.fromJson(
-          _json['relationshipDetails'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ColumnDescription.fromJson(core.Map _json)
+      : this(
+          dataType: _json.containsKey('dataType')
+              ? _json['dataType'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.List)
+                  .map<LabeledItem>((value) => LabeledItem.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          lookupDetails: _json.containsKey('lookupDetails')
+              ? LookupDetails.fromJson(
+                  _json['lookupDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
+          multipleValuesDisallowed:
+              _json.containsKey('multipleValuesDisallowed')
+                  ? _json['multipleValuesDisallowed'] as core.bool
+                  : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          relationshipDetails: _json.containsKey('relationshipDetails')
+              ? RelationshipDetails.fromJson(_json['relationshipDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataType != null) 'dataType': dataType!,
@@ -886,19 +907,23 @@ class CreateRowRequest {
   /// values.
   core.String? view;
 
-  CreateRowRequest();
+  CreateRowRequest({
+    this.parent,
+    this.row,
+    this.view,
+  });
 
-  CreateRowRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('parent')) {
-      parent = _json['parent'] as core.String;
-    }
-    if (_json.containsKey('row')) {
-      row = Row.fromJson(_json['row'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('view')) {
-      view = _json['view'] as core.String;
-    }
-  }
+  CreateRowRequest.fromJson(core.Map _json)
+      : this(
+          parent: _json.containsKey('parent')
+              ? _json['parent'] as core.String
+              : null,
+          row: _json.containsKey('row')
+              ? Row.fromJson(
+                  _json['row'] as core.Map<core.String, core.dynamic>)
+              : null,
+          view: _json.containsKey('view') ? _json['view'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (parent != null) 'parent': parent!,
@@ -932,16 +957,16 @@ class LabeledItem {
   /// Display string as entered by user.
   core.String? name;
 
-  LabeledItem();
+  LabeledItem({
+    this.id,
+    this.name,
+  });
 
-  LabeledItem.fromJson(core.Map _json) {
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  LabeledItem.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
@@ -959,19 +984,23 @@ class ListRowsResponse {
   /// The rows from the specified table.
   core.List<Row>? rows;
 
-  ListRowsResponse();
+  ListRowsResponse({
+    this.nextPageToken,
+    this.rows,
+  });
 
-  ListRowsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('rows')) {
-      rows = (_json['rows'] as core.List)
-          .map<Row>((value) =>
-              Row.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListRowsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          rows: _json.containsKey('rows')
+              ? (_json['rows'] as core.List)
+                  .map<Row>((value) => Row.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -989,19 +1018,23 @@ class ListTablesResponse {
   /// The list of tables.
   core.List<Table>? tables;
 
-  ListTablesResponse();
+  ListTablesResponse({
+    this.nextPageToken,
+    this.tables,
+  });
 
-  ListTablesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('tables')) {
-      tables = (_json['tables'] as core.List)
-          .map<Table>((value) =>
-              Table.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListTablesResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          tables: _json.containsKey('tables')
+              ? (_json['tables'] as core.List)
+                  .map<Table>((value) => Table.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1020,19 +1053,23 @@ class ListWorkspacesResponse {
   /// The list of workspaces.
   core.List<Workspace>? workspaces;
 
-  ListWorkspacesResponse();
+  ListWorkspacesResponse({
+    this.nextPageToken,
+    this.workspaces,
+  });
 
-  ListWorkspacesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('workspaces')) {
-      workspaces = (_json['workspaces'] as core.List)
-          .map<Workspace>((value) =>
-              Workspace.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListWorkspacesResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          workspaces: _json.containsKey('workspaces')
+              ? (_json['workspaces'] as core.List)
+                  .map<Workspace>((value) => Workspace.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1050,16 +1087,20 @@ class LookupDetails {
   /// The id of the relationship column.
   core.String? relationshipColumnId;
 
-  LookupDetails();
+  LookupDetails({
+    this.relationshipColumn,
+    this.relationshipColumnId,
+  });
 
-  LookupDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('relationshipColumn')) {
-      relationshipColumn = _json['relationshipColumn'] as core.String;
-    }
-    if (_json.containsKey('relationshipColumnId')) {
-      relationshipColumnId = _json['relationshipColumnId'] as core.String;
-    }
-  }
+  LookupDetails.fromJson(core.Map _json)
+      : this(
+          relationshipColumn: _json.containsKey('relationshipColumn')
+              ? _json['relationshipColumn'] as core.String
+              : null,
+          relationshipColumnId: _json.containsKey('relationshipColumnId')
+              ? _json['relationshipColumnId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (relationshipColumn != null)
@@ -1074,13 +1115,16 @@ class RelationshipDetails {
   /// The name of the table this relationship is linked to.
   core.String? linkedTable;
 
-  RelationshipDetails();
+  RelationshipDetails({
+    this.linkedTable,
+  });
 
-  RelationshipDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('linkedTable')) {
-      linkedTable = _json['linkedTable'] as core.String;
-    }
-  }
+  RelationshipDetails.fromJson(core.Map _json)
+      : this(
+          linkedTable: _json.containsKey('linkedTable')
+              ? _json['linkedTable'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (linkedTable != null) 'linkedTable': linkedTable!,
@@ -1110,27 +1154,31 @@ class Row {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object>? values;
 
-  Row();
+  Row({
+    this.createTime,
+    this.name,
+    this.updateTime,
+    this.values,
+  });
 
-  Row.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-    if (_json.containsKey('values')) {
-      values = (_json['values'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-  }
+  Row.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+          values: _json.containsKey('values')
+              ? (_json['values'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -1150,16 +1198,16 @@ class SavedView {
   /// Display name of the saved view.
   core.String? name;
 
-  SavedView();
+  SavedView({
+    this.id,
+    this.name,
+  });
 
-  SavedView.fromJson(core.Map _json) {
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  SavedView.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
@@ -1193,34 +1241,40 @@ class Table {
   /// Time when the table was last updated excluding updates to individual rows
   core.String? updateTime;
 
-  Table();
+  Table({
+    this.columns,
+    this.createTime,
+    this.displayName,
+    this.name,
+    this.savedViews,
+    this.updateTime,
+  });
 
-  Table.fromJson(core.Map _json) {
-    if (_json.containsKey('columns')) {
-      columns = (_json['columns'] as core.List)
-          .map<ColumnDescription>((value) => ColumnDescription.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('savedViews')) {
-      savedViews = (_json['savedViews'] as core.List)
-          .map<SavedView>((value) =>
-              SavedView.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  Table.fromJson(core.Map _json)
+      : this(
+          columns: _json.containsKey('columns')
+              ? (_json['columns'] as core.List)
+                  .map<ColumnDescription>((value) => ColumnDescription.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          savedViews: _json.containsKey('savedViews')
+              ? (_json['savedViews'] as core.List)
+                  .map<SavedView>((value) => SavedView.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (columns != null)
@@ -1255,19 +1309,23 @@ class UpdateRowRequest {
   /// values.
   core.String? view;
 
-  UpdateRowRequest();
+  UpdateRowRequest({
+    this.row,
+    this.updateMask,
+    this.view,
+  });
 
-  UpdateRowRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('row')) {
-      row = Row.fromJson(_json['row'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'] as core.String;
-    }
-    if (_json.containsKey('view')) {
-      view = _json['view'] as core.String;
-    }
-  }
+  UpdateRowRequest.fromJson(core.Map _json)
+      : this(
+          row: _json.containsKey('row')
+              ? Row.fromJson(
+                  _json['row'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: _json.containsKey('updateMask')
+              ? _json['updateMask'] as core.String
+              : null,
+          view: _json.containsKey('view') ? _json['view'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (row != null) 'row': row!.toJson(),
@@ -1295,28 +1353,33 @@ class Workspace {
   /// Time when the workspace was last updated.
   core.String? updateTime;
 
-  Workspace();
+  Workspace({
+    this.createTime,
+    this.displayName,
+    this.name,
+    this.tables,
+    this.updateTime,
+  });
 
-  Workspace.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('tables')) {
-      tables = (_json['tables'] as core.List)
-          .map<Table>((value) =>
-              Table.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  Workspace.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          tables: _json.containsKey('tables')
+              ? (_json['tables'] as core.List)
+                  .map<Table>((value) => Table.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,

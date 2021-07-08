@@ -11042,27 +11042,30 @@ class GoogleApiHttpBody {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>>? extensions;
 
-  GoogleApiHttpBody();
+  GoogleApiHttpBody({
+    this.contentType,
+    this.data,
+    this.extensions,
+  });
 
-  GoogleApiHttpBody.fromJson(core.Map _json) {
-    if (_json.containsKey('contentType')) {
-      contentType = _json['contentType'] as core.String;
-    }
-    if (_json.containsKey('data')) {
-      data = _json['data'] as core.String;
-    }
-    if (_json.containsKey('extensions')) {
-      extensions = (_json['extensions'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-  }
+  GoogleApiHttpBody.fromJson(core.Map _json)
+      : this(
+          contentType: _json.containsKey('contentType')
+              ? _json['contentType'] as core.String
+              : null,
+          data: _json.containsKey('data') ? _json['data'] as core.String : null,
+          extensions: _json.containsKey('extensions')
+              ? (_json['extensions'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentType != null) 'contentType': contentType!,
@@ -11076,22 +11079,27 @@ class GoogleCloudApigeeV1Access {
   GoogleCloudApigeeV1AccessRemove? Remove;
   GoogleCloudApigeeV1AccessSet? Set;
 
-  GoogleCloudApigeeV1Access();
+  GoogleCloudApigeeV1Access({
+    this.Get,
+    this.Remove,
+    this.Set,
+  });
 
-  GoogleCloudApigeeV1Access.fromJson(core.Map _json) {
-    if (_json.containsKey('Get')) {
-      Get = GoogleCloudApigeeV1AccessGet.fromJson(
-          _json['Get'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('Remove')) {
-      Remove = GoogleCloudApigeeV1AccessRemove.fromJson(
-          _json['Remove'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('Set')) {
-      Set = GoogleCloudApigeeV1AccessSet.fromJson(
-          _json['Set'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudApigeeV1Access.fromJson(core.Map _json)
+      : this(
+          Get: _json.containsKey('Get')
+              ? GoogleCloudApigeeV1AccessGet.fromJson(
+                  _json['Get'] as core.Map<core.String, core.dynamic>)
+              : null,
+          Remove: _json.containsKey('Remove')
+              ? GoogleCloudApigeeV1AccessRemove.fromJson(
+                  _json['Remove'] as core.Map<core.String, core.dynamic>)
+              : null,
+          Set: _json.containsKey('Set')
+              ? GoogleCloudApigeeV1AccessSet.fromJson(
+                  _json['Set'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (Get != null) 'Get': Get!.toJson(),
@@ -11107,16 +11115,17 @@ class GoogleCloudApigeeV1AccessGet {
   core.String? name;
   core.String? value;
 
-  GoogleCloudApigeeV1AccessGet();
+  GoogleCloudApigeeV1AccessGet({
+    this.name,
+    this.value,
+  });
 
-  GoogleCloudApigeeV1AccessGet.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1AccessGet.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -11131,16 +11140,18 @@ class GoogleCloudApigeeV1AccessRemove {
   core.String? name;
   core.bool? success;
 
-  GoogleCloudApigeeV1AccessRemove();
+  GoogleCloudApigeeV1AccessRemove({
+    this.name,
+    this.success,
+  });
 
-  GoogleCloudApigeeV1AccessRemove.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('success')) {
-      success = _json['success'] as core.bool;
-    }
-  }
+  GoogleCloudApigeeV1AccessRemove.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          success: _json.containsKey('success')
+              ? _json['success'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -11157,19 +11168,21 @@ class GoogleCloudApigeeV1AccessSet {
   core.bool? success;
   core.String? value;
 
-  GoogleCloudApigeeV1AccessSet();
+  GoogleCloudApigeeV1AccessSet({
+    this.name,
+    this.success,
+    this.value,
+  });
 
-  GoogleCloudApigeeV1AccessSet.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('success')) {
-      success = _json['success'] as core.bool;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1AccessSet.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          success: _json.containsKey('success')
+              ? _json['success'] as core.bool
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -11202,22 +11215,30 @@ class GoogleCloudApigeeV1AddonsConfig {
   /// Configuration for the Monetization add-on.
   GoogleCloudApigeeV1MonetizationConfig? monetizationConfig;
 
-  GoogleCloudApigeeV1AddonsConfig();
+  GoogleCloudApigeeV1AddonsConfig({
+    this.advancedApiOpsConfig,
+    this.integrationConfig,
+    this.monetizationConfig,
+  });
 
-  GoogleCloudApigeeV1AddonsConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('advancedApiOpsConfig')) {
-      advancedApiOpsConfig = GoogleCloudApigeeV1AdvancedApiOpsConfig.fromJson(
-          _json['advancedApiOpsConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('integrationConfig')) {
-      integrationConfig = GoogleCloudApigeeV1IntegrationConfig.fromJson(
-          _json['integrationConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('monetizationConfig')) {
-      monetizationConfig = GoogleCloudApigeeV1MonetizationConfig.fromJson(
-          _json['monetizationConfig'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudApigeeV1AddonsConfig.fromJson(core.Map _json)
+      : this(
+          advancedApiOpsConfig: _json.containsKey('advancedApiOpsConfig')
+              ? GoogleCloudApigeeV1AdvancedApiOpsConfig.fromJson(
+                  _json['advancedApiOpsConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          integrationConfig: _json.containsKey('integrationConfig')
+              ? GoogleCloudApigeeV1IntegrationConfig.fromJson(
+                  _json['integrationConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          monetizationConfig: _json.containsKey('monetizationConfig')
+              ? GoogleCloudApigeeV1MonetizationConfig.fromJson(
+                  _json['monetizationConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advancedApiOpsConfig != null)
@@ -11234,13 +11255,16 @@ class GoogleCloudApigeeV1AdvancedApiOpsConfig {
   /// Flag that specifies whether the Advanced API Ops add-on is enabled.
   core.bool? enabled;
 
-  GoogleCloudApigeeV1AdvancedApiOpsConfig();
+  GoogleCloudApigeeV1AdvancedApiOpsConfig({
+    this.enabled,
+  });
 
-  GoogleCloudApigeeV1AdvancedApiOpsConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-  }
+  GoogleCloudApigeeV1AdvancedApiOpsConfig.fromJson(core.Map _json)
+      : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -11264,20 +11288,22 @@ class GoogleCloudApigeeV1Alias {
   /// - "KEY_CERT" : Key/certificate pair.
   core.String? type;
 
-  GoogleCloudApigeeV1Alias();
+  GoogleCloudApigeeV1Alias({
+    this.alias,
+    this.certsInfo,
+    this.type,
+  });
 
-  GoogleCloudApigeeV1Alias.fromJson(core.Map _json) {
-    if (_json.containsKey('alias')) {
-      alias = _json['alias'] as core.String;
-    }
-    if (_json.containsKey('certsInfo')) {
-      certsInfo = GoogleCloudApigeeV1Certificate.fromJson(
-          _json['certsInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1Alias.fromJson(core.Map _json)
+      : this(
+          alias:
+              _json.containsKey('alias') ? _json['alias'] as core.String : null,
+          certsInfo: _json.containsKey('certsInfo')
+              ? GoogleCloudApigeeV1Certificate.fromJson(
+                  _json['certsInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alias != null) 'alias': alias!,
@@ -11304,19 +11330,20 @@ class GoogleCloudApigeeV1AliasRevisionConfig {
   /// - "KEY_CERT" : Key/certificate pair.
   core.String? type;
 
-  GoogleCloudApigeeV1AliasRevisionConfig();
+  GoogleCloudApigeeV1AliasRevisionConfig({
+    this.location,
+    this.name,
+    this.type,
+  });
 
-  GoogleCloudApigeeV1AliasRevisionConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('location')) {
-      location = _json['location'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1AliasRevisionConfig.fromJson(core.Map _json)
+      : this(
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (location != null) 'location': location!,
@@ -11342,26 +11369,33 @@ class GoogleCloudApigeeV1ApiCategory {
   /// Status of the operation.
   core.String? status;
 
-  GoogleCloudApigeeV1ApiCategory();
+  GoogleCloudApigeeV1ApiCategory({
+    this.data,
+    this.errorCode,
+    this.message,
+    this.requestId,
+    this.status,
+  });
 
-  GoogleCloudApigeeV1ApiCategory.fromJson(core.Map _json) {
-    if (_json.containsKey('data')) {
-      data = GoogleCloudApigeeV1ApiCategoryData.fromJson(
-          _json['data'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('errorCode')) {
-      errorCode = _json['errorCode'] as core.String;
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-    if (_json.containsKey('requestId')) {
-      requestId = _json['requestId'] as core.String;
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1ApiCategory.fromJson(core.Map _json)
+      : this(
+          data: _json.containsKey('data')
+              ? GoogleCloudApigeeV1ApiCategoryData.fromJson(
+                  _json['data'] as core.Map<core.String, core.dynamic>)
+              : null,
+          errorCode: _json.containsKey('errorCode')
+              ? _json['errorCode'] as core.String
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+          requestId: _json.containsKey('requestId')
+              ? _json['requestId'] as core.String
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (data != null) 'data': data!.toJson(),
@@ -11386,22 +11420,24 @@ class GoogleCloudApigeeV1ApiCategoryData {
   /// Time the category was last modified in milliseconds since epoch.
   core.String? updateTime;
 
-  GoogleCloudApigeeV1ApiCategoryData();
+  GoogleCloudApigeeV1ApiCategoryData({
+    this.id,
+    this.name,
+    this.siteId,
+    this.updateTime,
+  });
 
-  GoogleCloudApigeeV1ApiCategoryData.fromJson(core.Map _json) {
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('siteId')) {
-      siteId = _json['siteId'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1ApiCategoryData.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          siteId: _json.containsKey('siteId')
+              ? _json['siteId'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
@@ -11543,73 +11579,89 @@ class GoogleCloudApigeeV1ApiProduct {
   /// scopes defined in the OAuth policy associated with the API product.
   core.List<core.String>? scopes;
 
-  GoogleCloudApigeeV1ApiProduct();
+  GoogleCloudApigeeV1ApiProduct({
+    this.apiResources,
+    this.approvalType,
+    this.attributes,
+    this.createdAt,
+    this.description,
+    this.displayName,
+    this.environments,
+    this.graphqlOperationGroup,
+    this.lastModifiedAt,
+    this.name,
+    this.operationGroup,
+    this.proxies,
+    this.quota,
+    this.quotaInterval,
+    this.quotaTimeUnit,
+    this.scopes,
+  });
 
-  GoogleCloudApigeeV1ApiProduct.fromJson(core.Map _json) {
-    if (_json.containsKey('apiResources')) {
-      apiResources = (_json['apiResources'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('approvalType')) {
-      approvalType = _json['approvalType'] as core.String;
-    }
-    if (_json.containsKey('attributes')) {
-      attributes = (_json['attributes'] as core.List)
-          .map<GoogleCloudApigeeV1Attribute>((value) =>
-              GoogleCloudApigeeV1Attribute.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('environments')) {
-      environments = (_json['environments'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('graphqlOperationGroup')) {
-      graphqlOperationGroup = GoogleCloudApigeeV1GraphQLOperationGroup.fromJson(
-          _json['graphqlOperationGroup']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('lastModifiedAt')) {
-      lastModifiedAt = _json['lastModifiedAt'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('operationGroup')) {
-      operationGroup = GoogleCloudApigeeV1OperationGroup.fromJson(
-          _json['operationGroup'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('proxies')) {
-      proxies = (_json['proxies'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('quota')) {
-      quota = _json['quota'] as core.String;
-    }
-    if (_json.containsKey('quotaInterval')) {
-      quotaInterval = _json['quotaInterval'] as core.String;
-    }
-    if (_json.containsKey('quotaTimeUnit')) {
-      quotaTimeUnit = _json['quotaTimeUnit'] as core.String;
-    }
-    if (_json.containsKey('scopes')) {
-      scopes = (_json['scopes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1ApiProduct.fromJson(core.Map _json)
+      : this(
+          apiResources: _json.containsKey('apiResources')
+              ? (_json['apiResources'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          approvalType: _json.containsKey('approvalType')
+              ? _json['approvalType'] as core.String
+              : null,
+          attributes: _json.containsKey('attributes')
+              ? (_json['attributes'] as core.List)
+                  .map<GoogleCloudApigeeV1Attribute>((value) =>
+                      GoogleCloudApigeeV1Attribute.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          createdAt: _json.containsKey('createdAt')
+              ? _json['createdAt'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          environments: _json.containsKey('environments')
+              ? (_json['environments'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          graphqlOperationGroup: _json.containsKey('graphqlOperationGroup')
+              ? GoogleCloudApigeeV1GraphQLOperationGroup.fromJson(
+                  _json['graphqlOperationGroup']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          lastModifiedAt: _json.containsKey('lastModifiedAt')
+              ? _json['lastModifiedAt'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          operationGroup: _json.containsKey('operationGroup')
+              ? GoogleCloudApigeeV1OperationGroup.fromJson(
+                  _json['operationGroup']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          proxies: _json.containsKey('proxies')
+              ? (_json['proxies'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          quota:
+              _json.containsKey('quota') ? _json['quota'] as core.String : null,
+          quotaInterval: _json.containsKey('quotaInterval')
+              ? _json['quotaInterval'] as core.String
+              : null,
+          quotaTimeUnit: _json.containsKey('quotaTimeUnit')
+              ? _json['quotaTimeUnit'] as core.String
+              : null,
+          scopes: _json.containsKey('scopes')
+              ? (_json['scopes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiResources != null) 'apiResources': apiResources!,
@@ -11640,16 +11692,20 @@ class GoogleCloudApigeeV1ApiProductRef {
   /// Status of the API product.
   core.String? status;
 
-  GoogleCloudApigeeV1ApiProductRef();
+  GoogleCloudApigeeV1ApiProductRef({
+    this.apiproduct,
+    this.status,
+  });
 
-  GoogleCloudApigeeV1ApiProductRef.fromJson(core.Map _json) {
-    if (_json.containsKey('apiproduct')) {
-      apiproduct = _json['apiproduct'] as core.String;
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1ApiProductRef.fromJson(core.Map _json)
+      : this(
+          apiproduct: _json.containsKey('apiproduct')
+              ? _json['apiproduct'] as core.String
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiproduct != null) 'apiproduct': apiproduct!,
@@ -11671,25 +11727,29 @@ class GoogleCloudApigeeV1ApiProxy {
   /// List of revisons defined for the API proxy.
   core.List<core.String>? revision;
 
-  GoogleCloudApigeeV1ApiProxy();
+  GoogleCloudApigeeV1ApiProxy({
+    this.latestRevisionId,
+    this.metaData,
+    this.name,
+    this.revision,
+  });
 
-  GoogleCloudApigeeV1ApiProxy.fromJson(core.Map _json) {
-    if (_json.containsKey('latestRevisionId')) {
-      latestRevisionId = _json['latestRevisionId'] as core.String;
-    }
-    if (_json.containsKey('metaData')) {
-      metaData = GoogleCloudApigeeV1EntityMetadata.fromJson(
-          _json['metaData'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('revision')) {
-      revision = (_json['revision'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1ApiProxy.fromJson(core.Map _json)
+      : this(
+          latestRevisionId: _json.containsKey('latestRevisionId')
+              ? _json['latestRevisionId'] as core.String
+              : null,
+          metaData: _json.containsKey('metaData')
+              ? GoogleCloudApigeeV1EntityMetadata.fromJson(
+                  _json['metaData'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          revision: _json.containsKey('revision')
+              ? (_json['revision'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (latestRevisionId != null) 'latestRevisionId': latestRevisionId!,
@@ -11791,105 +11851,125 @@ class GoogleCloudApigeeV1ApiProxyRevision {
   /// API.
   core.String? type;
 
-  GoogleCloudApigeeV1ApiProxyRevision();
+  GoogleCloudApigeeV1ApiProxyRevision({
+    this.basepaths,
+    this.configurationVersion,
+    this.contextInfo,
+    this.createdAt,
+    this.description,
+    this.displayName,
+    this.entityMetaDataAsProperties,
+    this.lastModifiedAt,
+    this.name,
+    this.policies,
+    this.proxies,
+    this.proxyEndpoints,
+    this.resourceFiles,
+    this.resources,
+    this.revision,
+    this.sharedFlows,
+    this.spec,
+    this.targetEndpoints,
+    this.targetServers,
+    this.targets,
+    this.teams,
+    this.type,
+  });
 
-  GoogleCloudApigeeV1ApiProxyRevision.fromJson(core.Map _json) {
-    if (_json.containsKey('basepaths')) {
-      basepaths = (_json['basepaths'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('configurationVersion')) {
-      configurationVersion = GoogleCloudApigeeV1ConfigVersion.fromJson(
-          _json['configurationVersion'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('contextInfo')) {
-      contextInfo = _json['contextInfo'] as core.String;
-    }
-    if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('entityMetaDataAsProperties')) {
-      entityMetaDataAsProperties = (_json['entityMetaDataAsProperties']
-              as core.Map<core.String, core.dynamic>)
-          .map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('lastModifiedAt')) {
-      lastModifiedAt = _json['lastModifiedAt'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('policies')) {
-      policies = (_json['policies'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('proxies')) {
-      proxies = (_json['proxies'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('proxyEndpoints')) {
-      proxyEndpoints = (_json['proxyEndpoints'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('resourceFiles')) {
-      resourceFiles = GoogleCloudApigeeV1ResourceFiles.fromJson(
-          _json['resourceFiles'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('resources')) {
-      resources = (_json['resources'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('revision')) {
-      revision = _json['revision'] as core.String;
-    }
-    if (_json.containsKey('sharedFlows')) {
-      sharedFlows = (_json['sharedFlows'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('spec')) {
-      spec = _json['spec'] as core.String;
-    }
-    if (_json.containsKey('targetEndpoints')) {
-      targetEndpoints = (_json['targetEndpoints'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('targetServers')) {
-      targetServers = (_json['targetServers'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('targets')) {
-      targets = (_json['targets'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('teams')) {
-      teams = (_json['teams'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1ApiProxyRevision.fromJson(core.Map _json)
+      : this(
+          basepaths: _json.containsKey('basepaths')
+              ? (_json['basepaths'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          configurationVersion: _json.containsKey('configurationVersion')
+              ? GoogleCloudApigeeV1ConfigVersion.fromJson(
+                  _json['configurationVersion']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          contextInfo: _json.containsKey('contextInfo')
+              ? _json['contextInfo'] as core.String
+              : null,
+          createdAt: _json.containsKey('createdAt')
+              ? _json['createdAt'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          entityMetaDataAsProperties:
+              _json.containsKey('entityMetaDataAsProperties')
+                  ? (_json['entityMetaDataAsProperties']
+                          as core.Map<core.String, core.dynamic>)
+                      .map(
+                      (key, item) => core.MapEntry(
+                        key,
+                        item as core.String,
+                      ),
+                    )
+                  : null,
+          lastModifiedAt: _json.containsKey('lastModifiedAt')
+              ? _json['lastModifiedAt'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          policies: _json.containsKey('policies')
+              ? (_json['policies'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          proxies: _json.containsKey('proxies')
+              ? (_json['proxies'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          proxyEndpoints: _json.containsKey('proxyEndpoints')
+              ? (_json['proxyEndpoints'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          resourceFiles: _json.containsKey('resourceFiles')
+              ? GoogleCloudApigeeV1ResourceFiles.fromJson(
+                  _json['resourceFiles'] as core.Map<core.String, core.dynamic>)
+              : null,
+          resources: _json.containsKey('resources')
+              ? (_json['resources'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          revision: _json.containsKey('revision')
+              ? _json['revision'] as core.String
+              : null,
+          sharedFlows: _json.containsKey('sharedFlows')
+              ? (_json['sharedFlows'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          spec: _json.containsKey('spec') ? _json['spec'] as core.String : null,
+          targetEndpoints: _json.containsKey('targetEndpoints')
+              ? (_json['targetEndpoints'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          targetServers: _json.containsKey('targetServers')
+              ? (_json['targetServers'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          targets: _json.containsKey('targets')
+              ? (_json['targets'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          teams: _json.containsKey('teams')
+              ? (_json['teams'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (basepaths != null) 'basepaths': basepaths!,
@@ -11932,22 +12012,28 @@ class GoogleCloudApigeeV1ApiResponseWrapper {
   /// Status of the operation.
   core.String? status;
 
-  GoogleCloudApigeeV1ApiResponseWrapper();
+  GoogleCloudApigeeV1ApiResponseWrapper({
+    this.errorCode,
+    this.message,
+    this.requestId,
+    this.status,
+  });
 
-  GoogleCloudApigeeV1ApiResponseWrapper.fromJson(core.Map _json) {
-    if (_json.containsKey('errorCode')) {
-      errorCode = _json['errorCode'] as core.String;
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-    if (_json.containsKey('requestId')) {
-      requestId = _json['requestId'] as core.String;
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1ApiResponseWrapper.fromJson(core.Map _json)
+      : this(
+          errorCode: _json.containsKey('errorCode')
+              ? _json['errorCode'] as core.String
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+          requestId: _json.containsKey('requestId')
+              ? _json['requestId'] as core.String
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorCode != null) 'errorCode': errorCode!,
@@ -12013,63 +12099,75 @@ class GoogleCloudApigeeV1App {
   /// Status of the credential.
   core.String? status;
 
-  GoogleCloudApigeeV1App();
+  GoogleCloudApigeeV1App({
+    this.apiProducts,
+    this.appId,
+    this.attributes,
+    this.callbackUrl,
+    this.companyName,
+    this.createdAt,
+    this.credentials,
+    this.developerId,
+    this.keyExpiresIn,
+    this.lastModifiedAt,
+    this.name,
+    this.scopes,
+    this.status,
+  });
 
-  GoogleCloudApigeeV1App.fromJson(core.Map _json) {
-    if (_json.containsKey('apiProducts')) {
-      apiProducts = (_json['apiProducts'] as core.List)
-          .map<GoogleCloudApigeeV1ApiProductRef>((value) =>
-              GoogleCloudApigeeV1ApiProductRef.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('appId')) {
-      appId = _json['appId'] as core.String;
-    }
-    if (_json.containsKey('attributes')) {
-      attributes = (_json['attributes'] as core.List)
-          .map<GoogleCloudApigeeV1Attribute>((value) =>
-              GoogleCloudApigeeV1Attribute.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('callbackUrl')) {
-      callbackUrl = _json['callbackUrl'] as core.String;
-    }
-    if (_json.containsKey('companyName')) {
-      companyName = _json['companyName'] as core.String;
-    }
-    if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'] as core.String;
-    }
-    if (_json.containsKey('credentials')) {
-      credentials = (_json['credentials'] as core.List)
-          .map<GoogleCloudApigeeV1Credential>((value) =>
-              GoogleCloudApigeeV1Credential.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('developerId')) {
-      developerId = _json['developerId'] as core.String;
-    }
-    if (_json.containsKey('keyExpiresIn')) {
-      keyExpiresIn = _json['keyExpiresIn'] as core.String;
-    }
-    if (_json.containsKey('lastModifiedAt')) {
-      lastModifiedAt = _json['lastModifiedAt'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('scopes')) {
-      scopes = (_json['scopes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1App.fromJson(core.Map _json)
+      : this(
+          apiProducts: _json.containsKey('apiProducts')
+              ? (_json['apiProducts'] as core.List)
+                  .map<GoogleCloudApigeeV1ApiProductRef>((value) =>
+                      GoogleCloudApigeeV1ApiProductRef.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          appId:
+              _json.containsKey('appId') ? _json['appId'] as core.String : null,
+          attributes: _json.containsKey('attributes')
+              ? (_json['attributes'] as core.List)
+                  .map<GoogleCloudApigeeV1Attribute>((value) =>
+                      GoogleCloudApigeeV1Attribute.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          callbackUrl: _json.containsKey('callbackUrl')
+              ? _json['callbackUrl'] as core.String
+              : null,
+          companyName: _json.containsKey('companyName')
+              ? _json['companyName'] as core.String
+              : null,
+          createdAt: _json.containsKey('createdAt')
+              ? _json['createdAt'] as core.String
+              : null,
+          credentials: _json.containsKey('credentials')
+              ? (_json['credentials'] as core.List)
+                  .map<GoogleCloudApigeeV1Credential>((value) =>
+                      GoogleCloudApigeeV1Credential.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          developerId: _json.containsKey('developerId')
+              ? _json['developerId'] as core.String
+              : null,
+          keyExpiresIn: _json.containsKey('keyExpiresIn')
+              ? _json['keyExpiresIn'] as core.String
+              : null,
+          lastModifiedAt: _json.containsKey('lastModifiedAt')
+              ? _json['lastModifiedAt'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          scopes: _json.containsKey('scopes')
+              ? (_json['scopes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiProducts != null)
@@ -12136,51 +12234,60 @@ class GoogleCloudApigeeV1AsyncQuery {
   /// Last updated timestamp for the query.
   core.String? updated;
 
-  GoogleCloudApigeeV1AsyncQuery();
+  GoogleCloudApigeeV1AsyncQuery({
+    this.created,
+    this.envgroupHostname,
+    this.error,
+    this.executionTime,
+    this.name,
+    this.queryParams,
+    this.reportDefinitionId,
+    this.result,
+    this.resultFileSize,
+    this.resultRows,
+    this.self,
+    this.state,
+    this.updated,
+  });
 
-  GoogleCloudApigeeV1AsyncQuery.fromJson(core.Map _json) {
-    if (_json.containsKey('created')) {
-      created = _json['created'] as core.String;
-    }
-    if (_json.containsKey('envgroupHostname')) {
-      envgroupHostname = _json['envgroupHostname'] as core.String;
-    }
-    if (_json.containsKey('error')) {
-      error = _json['error'] as core.String;
-    }
-    if (_json.containsKey('executionTime')) {
-      executionTime = _json['executionTime'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('queryParams')) {
-      queryParams = GoogleCloudApigeeV1QueryMetadata.fromJson(
-          _json['queryParams'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('reportDefinitionId')) {
-      reportDefinitionId = _json['reportDefinitionId'] as core.String;
-    }
-    if (_json.containsKey('result')) {
-      result = GoogleCloudApigeeV1AsyncQueryResult.fromJson(
-          _json['result'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('resultFileSize')) {
-      resultFileSize = _json['resultFileSize'] as core.String;
-    }
-    if (_json.containsKey('resultRows')) {
-      resultRows = _json['resultRows'] as core.String;
-    }
-    if (_json.containsKey('self')) {
-      self = _json['self'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('updated')) {
-      updated = _json['updated'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1AsyncQuery.fromJson(core.Map _json)
+      : this(
+          created: _json.containsKey('created')
+              ? _json['created'] as core.String
+              : null,
+          envgroupHostname: _json.containsKey('envgroupHostname')
+              ? _json['envgroupHostname'] as core.String
+              : null,
+          error:
+              _json.containsKey('error') ? _json['error'] as core.String : null,
+          executionTime: _json.containsKey('executionTime')
+              ? _json['executionTime'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          queryParams: _json.containsKey('queryParams')
+              ? GoogleCloudApigeeV1QueryMetadata.fromJson(
+                  _json['queryParams'] as core.Map<core.String, core.dynamic>)
+              : null,
+          reportDefinitionId: _json.containsKey('reportDefinitionId')
+              ? _json['reportDefinitionId'] as core.String
+              : null,
+          result: _json.containsKey('result')
+              ? GoogleCloudApigeeV1AsyncQueryResult.fromJson(
+                  _json['result'] as core.Map<core.String, core.dynamic>)
+              : null,
+          resultFileSize: _json.containsKey('resultFileSize')
+              ? _json['resultFileSize'] as core.String
+              : null,
+          resultRows: _json.containsKey('resultRows')
+              ? _json['resultRows'] as core.String
+              : null,
+          self: _json.containsKey('self') ? _json['self'] as core.String : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          updated: _json.containsKey('updated')
+              ? _json['updated'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (created != null) 'created': created!,
@@ -12212,16 +12319,18 @@ class GoogleCloudApigeeV1AsyncQueryResult {
   /// `/organizations/myorg/hostQueries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result`
   core.String? self;
 
-  GoogleCloudApigeeV1AsyncQueryResult();
+  GoogleCloudApigeeV1AsyncQueryResult({
+    this.expires,
+    this.self,
+  });
 
-  GoogleCloudApigeeV1AsyncQueryResult.fromJson(core.Map _json) {
-    if (_json.containsKey('expires')) {
-      expires = _json['expires'] as core.String;
-    }
-    if (_json.containsKey('self')) {
-      self = _json['self'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1AsyncQueryResult.fromJson(core.Map _json)
+      : this(
+          expires: _json.containsKey('expires')
+              ? _json['expires'] as core.String
+              : null,
+          self: _json.containsKey('self') ? _json['self'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (expires != null) 'expires': expires!,
@@ -12252,28 +12361,31 @@ class GoogleCloudApigeeV1AsyncQueryResultView {
   /// State of retrieving ResultView.
   core.String? state;
 
-  GoogleCloudApigeeV1AsyncQueryResultView();
+  GoogleCloudApigeeV1AsyncQueryResultView({
+    this.code,
+    this.error,
+    this.metadata,
+    this.rows,
+    this.state,
+  });
 
-  GoogleCloudApigeeV1AsyncQueryResultView.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.int;
-    }
-    if (_json.containsKey('error')) {
-      error = _json['error'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = GoogleCloudApigeeV1QueryMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('rows')) {
-      rows = (_json['rows'] as core.List)
-          .map<core.Object>((value) => value as core.Object)
-          .toList();
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1AsyncQueryResultView.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          error:
+              _json.containsKey('error') ? _json['error'] as core.String : null,
+          metadata: _json.containsKey('metadata')
+              ? GoogleCloudApigeeV1QueryMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          rows: _json.containsKey('rows')
+              ? (_json['rows'] as core.List)
+                  .map<core.Object>((value) => value as core.Object)
+                  .toList()
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -12292,16 +12404,17 @@ class GoogleCloudApigeeV1Attribute {
   /// Value of the attribute.
   core.String? value;
 
-  GoogleCloudApigeeV1Attribute();
+  GoogleCloudApigeeV1Attribute({
+    this.name,
+    this.value,
+  });
 
-  GoogleCloudApigeeV1Attribute.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1Attribute.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -12313,17 +12426,20 @@ class GoogleCloudApigeeV1Attributes {
   /// List of attributes.
   core.List<GoogleCloudApigeeV1Attribute>? attribute;
 
-  GoogleCloudApigeeV1Attributes();
+  GoogleCloudApigeeV1Attributes({
+    this.attribute,
+  });
 
-  GoogleCloudApigeeV1Attributes.fromJson(core.Map _json) {
-    if (_json.containsKey('attribute')) {
-      attribute = (_json['attribute'] as core.List)
-          .map<GoogleCloudApigeeV1Attribute>((value) =>
-              GoogleCloudApigeeV1Attribute.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1Attributes.fromJson(core.Map _json)
+      : this(
+          attribute: _json.containsKey('attribute')
+              ? (_json['attribute'] as core.List)
+                  .map<GoogleCloudApigeeV1Attribute>((value) =>
+                      GoogleCloudApigeeV1Attribute.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attribute != null)
@@ -12388,38 +12504,46 @@ class GoogleCloudApigeeV1CanaryEvaluation {
   /// - "PASS" : Evaluation is good.
   core.String? verdict;
 
-  GoogleCloudApigeeV1CanaryEvaluation();
+  GoogleCloudApigeeV1CanaryEvaluation({
+    this.control,
+    this.createTime,
+    this.endTime,
+    this.metricLabels,
+    this.name,
+    this.startTime,
+    this.state,
+    this.treatment,
+    this.verdict,
+  });
 
-  GoogleCloudApigeeV1CanaryEvaluation.fromJson(core.Map _json) {
-    if (_json.containsKey('control')) {
-      control = _json['control'] as core.String;
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('metricLabels')) {
-      metricLabels = GoogleCloudApigeeV1CanaryEvaluationMetricLabels.fromJson(
-          _json['metricLabels'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('treatment')) {
-      treatment = _json['treatment'] as core.String;
-    }
-    if (_json.containsKey('verdict')) {
-      verdict = _json['verdict'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1CanaryEvaluation.fromJson(core.Map _json)
+      : this(
+          control: _json.containsKey('control')
+              ? _json['control'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          metricLabels: _json.containsKey('metricLabels')
+              ? GoogleCloudApigeeV1CanaryEvaluationMetricLabels.fromJson(
+                  _json['metricLabels'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          treatment: _json.containsKey('treatment')
+              ? _json['treatment'] as core.String
+              : null,
+          verdict: _json.containsKey('verdict')
+              ? _json['verdict'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (control != null) 'control': control!,
@@ -12451,19 +12575,22 @@ class GoogleCloudApigeeV1CanaryEvaluationMetricLabels {
   /// Required.
   core.String? location;
 
-  GoogleCloudApigeeV1CanaryEvaluationMetricLabels();
+  GoogleCloudApigeeV1CanaryEvaluationMetricLabels({
+    this.env,
+    this.instanceId,
+    this.location,
+  });
 
-  GoogleCloudApigeeV1CanaryEvaluationMetricLabels.fromJson(core.Map _json) {
-    if (_json.containsKey('env')) {
-      env = _json['env'] as core.String;
-    }
-    if (_json.containsKey('instance_id')) {
-      instanceId = _json['instance_id'] as core.String;
-    }
-    if (_json.containsKey('location')) {
-      location = _json['location'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1CanaryEvaluationMetricLabels.fromJson(core.Map _json)
+      : this(
+          env: _json.containsKey('env') ? _json['env'] as core.String : null,
+          instanceId: _json.containsKey('instance_id')
+              ? _json['instance_id'] as core.String
+              : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (env != null) 'env': env!,
@@ -12510,45 +12637,58 @@ class GoogleCloudApigeeV1CertInfo {
   /// X.509 version.
   core.int? version;
 
-  GoogleCloudApigeeV1CertInfo();
+  GoogleCloudApigeeV1CertInfo({
+    this.basicConstraints,
+    this.expiryDate,
+    this.isValid,
+    this.issuer,
+    this.publicKey,
+    this.serialNumber,
+    this.sigAlgName,
+    this.subject,
+    this.subjectAlternativeNames,
+    this.validFrom,
+    this.version,
+  });
 
-  GoogleCloudApigeeV1CertInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('basicConstraints')) {
-      basicConstraints = _json['basicConstraints'] as core.String;
-    }
-    if (_json.containsKey('expiryDate')) {
-      expiryDate = _json['expiryDate'] as core.String;
-    }
-    if (_json.containsKey('isValid')) {
-      isValid = _json['isValid'] as core.String;
-    }
-    if (_json.containsKey('issuer')) {
-      issuer = _json['issuer'] as core.String;
-    }
-    if (_json.containsKey('publicKey')) {
-      publicKey = _json['publicKey'] as core.String;
-    }
-    if (_json.containsKey('serialNumber')) {
-      serialNumber = _json['serialNumber'] as core.String;
-    }
-    if (_json.containsKey('sigAlgName')) {
-      sigAlgName = _json['sigAlgName'] as core.String;
-    }
-    if (_json.containsKey('subject')) {
-      subject = _json['subject'] as core.String;
-    }
-    if (_json.containsKey('subjectAlternativeNames')) {
-      subjectAlternativeNames = (_json['subjectAlternativeNames'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('validFrom')) {
-      validFrom = _json['validFrom'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.int;
-    }
-  }
+  GoogleCloudApigeeV1CertInfo.fromJson(core.Map _json)
+      : this(
+          basicConstraints: _json.containsKey('basicConstraints')
+              ? _json['basicConstraints'] as core.String
+              : null,
+          expiryDate: _json.containsKey('expiryDate')
+              ? _json['expiryDate'] as core.String
+              : null,
+          isValid: _json.containsKey('isValid')
+              ? _json['isValid'] as core.String
+              : null,
+          issuer: _json.containsKey('issuer')
+              ? _json['issuer'] as core.String
+              : null,
+          publicKey: _json.containsKey('publicKey')
+              ? _json['publicKey'] as core.String
+              : null,
+          serialNumber: _json.containsKey('serialNumber')
+              ? _json['serialNumber'] as core.String
+              : null,
+          sigAlgName: _json.containsKey('sigAlgName')
+              ? _json['sigAlgName'] as core.String
+              : null,
+          subject: _json.containsKey('subject')
+              ? _json['subject'] as core.String
+              : null,
+          subjectAlternativeNames: _json.containsKey('subjectAlternativeNames')
+              ? (_json['subjectAlternativeNames'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          validFrom: _json.containsKey('validFrom')
+              ? _json['validFrom'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (basicConstraints != null) 'basicConstraints': basicConstraints!,
@@ -12570,17 +12710,20 @@ class GoogleCloudApigeeV1Certificate {
   /// Chain of certificates under this name.
   core.List<GoogleCloudApigeeV1CertInfo>? certInfo;
 
-  GoogleCloudApigeeV1Certificate();
+  GoogleCloudApigeeV1Certificate({
+    this.certInfo,
+  });
 
-  GoogleCloudApigeeV1Certificate.fromJson(core.Map _json) {
-    if (_json.containsKey('certInfo')) {
-      certInfo = (_json['certInfo'] as core.List)
-          .map<GoogleCloudApigeeV1CertInfo>((value) =>
-              GoogleCloudApigeeV1CertInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1Certificate.fromJson(core.Map _json)
+      : this(
+          certInfo: _json.containsKey('certInfo')
+              ? (_json['certInfo'] as core.List)
+                  .map<GoogleCloudApigeeV1CertInfo>((value) =>
+                      GoogleCloudApigeeV1CertInfo.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (certInfo != null)
@@ -12592,16 +12735,18 @@ class GoogleCloudApigeeV1CommonNameConfig {
   core.bool? matchWildCards;
   core.String? name;
 
-  GoogleCloudApigeeV1CommonNameConfig();
+  GoogleCloudApigeeV1CommonNameConfig({
+    this.matchWildCards,
+    this.name,
+  });
 
-  GoogleCloudApigeeV1CommonNameConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('matchWildCards')) {
-      matchWildCards = _json['matchWildCards'] as core.bool;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1CommonNameConfig.fromJson(core.Map _json)
+      : this(
+          matchWildCards: _json.containsKey('matchWildCards')
+              ? _json['matchWildCards'] as core.bool
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (matchWildCards != null) 'matchWildCards': matchWildCards!,
@@ -12619,16 +12764,20 @@ class GoogleCloudApigeeV1ConfigVersion {
   /// Minor version of the API proxy configuration schema.
   core.int? minorVersion;
 
-  GoogleCloudApigeeV1ConfigVersion();
+  GoogleCloudApigeeV1ConfigVersion({
+    this.majorVersion,
+    this.minorVersion,
+  });
 
-  GoogleCloudApigeeV1ConfigVersion.fromJson(core.Map _json) {
-    if (_json.containsKey('majorVersion')) {
-      majorVersion = _json['majorVersion'] as core.int;
-    }
-    if (_json.containsKey('minorVersion')) {
-      minorVersion = _json['minorVersion'] as core.int;
-    }
-  }
+  GoogleCloudApigeeV1ConfigVersion.fromJson(core.Map _json)
+      : this(
+          majorVersion: _json.containsKey('majorVersion')
+              ? _json['majorVersion'] as core.int
+              : null,
+          minorVersion: _json.containsKey('minorVersion')
+              ? _json['minorVersion'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (majorVersion != null) 'majorVersion': majorVersion!,
@@ -12664,44 +12813,54 @@ class GoogleCloudApigeeV1Credential {
   /// Status of the credential.
   core.String? status;
 
-  GoogleCloudApigeeV1Credential();
+  GoogleCloudApigeeV1Credential({
+    this.apiProducts,
+    this.attributes,
+    this.consumerKey,
+    this.consumerSecret,
+    this.expiresAt,
+    this.issuedAt,
+    this.scopes,
+    this.status,
+  });
 
-  GoogleCloudApigeeV1Credential.fromJson(core.Map _json) {
-    if (_json.containsKey('apiProducts')) {
-      apiProducts = (_json['apiProducts'] as core.List)
-          .map<GoogleCloudApigeeV1ApiProductRef>((value) =>
-              GoogleCloudApigeeV1ApiProductRef.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('attributes')) {
-      attributes = (_json['attributes'] as core.List)
-          .map<GoogleCloudApigeeV1Attribute>((value) =>
-              GoogleCloudApigeeV1Attribute.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('consumerKey')) {
-      consumerKey = _json['consumerKey'] as core.String;
-    }
-    if (_json.containsKey('consumerSecret')) {
-      consumerSecret = _json['consumerSecret'] as core.String;
-    }
-    if (_json.containsKey('expiresAt')) {
-      expiresAt = _json['expiresAt'] as core.String;
-    }
-    if (_json.containsKey('issuedAt')) {
-      issuedAt = _json['issuedAt'] as core.String;
-    }
-    if (_json.containsKey('scopes')) {
-      scopes = (_json['scopes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1Credential.fromJson(core.Map _json)
+      : this(
+          apiProducts: _json.containsKey('apiProducts')
+              ? (_json['apiProducts'] as core.List)
+                  .map<GoogleCloudApigeeV1ApiProductRef>((value) =>
+                      GoogleCloudApigeeV1ApiProductRef.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          attributes: _json.containsKey('attributes')
+              ? (_json['attributes'] as core.List)
+                  .map<GoogleCloudApigeeV1Attribute>((value) =>
+                      GoogleCloudApigeeV1Attribute.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          consumerKey: _json.containsKey('consumerKey')
+              ? _json['consumerKey'] as core.String
+              : null,
+          consumerSecret: _json.containsKey('consumerSecret')
+              ? _json['consumerSecret'] as core.String
+              : null,
+          expiresAt: _json.containsKey('expiresAt')
+              ? _json['expiresAt'] as core.String
+              : null,
+          issuedAt: _json.containsKey('issuedAt')
+              ? _json['issuedAt'] as core.String
+              : null,
+          scopes: _json.containsKey('scopes')
+              ? (_json['scopes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiProducts != null)
@@ -12818,92 +12977,111 @@ class GoogleCloudApigeeV1CustomReport {
   /// This field contains the top k parameter value for restricting the result
   core.String? topk;
 
-  GoogleCloudApigeeV1CustomReport();
+  GoogleCloudApigeeV1CustomReport({
+    this.chartType,
+    this.comments,
+    this.createdAt,
+    this.dimensions,
+    this.displayName,
+    this.environment,
+    this.filter,
+    this.fromTime,
+    this.lastModifiedAt,
+    this.lastViewedAt,
+    this.limit,
+    this.metrics,
+    this.name,
+    this.offset,
+    this.organization,
+    this.properties,
+    this.sortByCols,
+    this.sortOrder,
+    this.tags,
+    this.timeUnit,
+    this.toTime,
+    this.topk,
+  });
 
-  GoogleCloudApigeeV1CustomReport.fromJson(core.Map _json) {
-    if (_json.containsKey('chartType')) {
-      chartType = _json['chartType'] as core.String;
-    }
-    if (_json.containsKey('comments')) {
-      comments = (_json['comments'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'] as core.String;
-    }
-    if (_json.containsKey('dimensions')) {
-      dimensions = (_json['dimensions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('environment')) {
-      environment = _json['environment'] as core.String;
-    }
-    if (_json.containsKey('filter')) {
-      filter = _json['filter'] as core.String;
-    }
-    if (_json.containsKey('fromTime')) {
-      fromTime = _json['fromTime'] as core.String;
-    }
-    if (_json.containsKey('lastModifiedAt')) {
-      lastModifiedAt = _json['lastModifiedAt'] as core.String;
-    }
-    if (_json.containsKey('lastViewedAt')) {
-      lastViewedAt = _json['lastViewedAt'] as core.String;
-    }
-    if (_json.containsKey('limit')) {
-      limit = _json['limit'] as core.String;
-    }
-    if (_json.containsKey('metrics')) {
-      metrics = (_json['metrics'] as core.List)
-          .map<GoogleCloudApigeeV1CustomReportMetric>((value) =>
-              GoogleCloudApigeeV1CustomReportMetric.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('offset')) {
-      offset = _json['offset'] as core.String;
-    }
-    if (_json.containsKey('organization')) {
-      organization = _json['organization'] as core.String;
-    }
-    if (_json.containsKey('properties')) {
-      properties = (_json['properties'] as core.List)
-          .map<GoogleCloudApigeeV1ReportProperty>((value) =>
-              GoogleCloudApigeeV1ReportProperty.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('sortByCols')) {
-      sortByCols = (_json['sortByCols'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('sortOrder')) {
-      sortOrder = _json['sortOrder'] as core.String;
-    }
-    if (_json.containsKey('tags')) {
-      tags = (_json['tags'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('timeUnit')) {
-      timeUnit = _json['timeUnit'] as core.String;
-    }
-    if (_json.containsKey('toTime')) {
-      toTime = _json['toTime'] as core.String;
-    }
-    if (_json.containsKey('topk')) {
-      topk = _json['topk'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1CustomReport.fromJson(core.Map _json)
+      : this(
+          chartType: _json.containsKey('chartType')
+              ? _json['chartType'] as core.String
+              : null,
+          comments: _json.containsKey('comments')
+              ? (_json['comments'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          createdAt: _json.containsKey('createdAt')
+              ? _json['createdAt'] as core.String
+              : null,
+          dimensions: _json.containsKey('dimensions')
+              ? (_json['dimensions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          environment: _json.containsKey('environment')
+              ? _json['environment'] as core.String
+              : null,
+          filter: _json.containsKey('filter')
+              ? _json['filter'] as core.String
+              : null,
+          fromTime: _json.containsKey('fromTime')
+              ? _json['fromTime'] as core.String
+              : null,
+          lastModifiedAt: _json.containsKey('lastModifiedAt')
+              ? _json['lastModifiedAt'] as core.String
+              : null,
+          lastViewedAt: _json.containsKey('lastViewedAt')
+              ? _json['lastViewedAt'] as core.String
+              : null,
+          limit:
+              _json.containsKey('limit') ? _json['limit'] as core.String : null,
+          metrics: _json.containsKey('metrics')
+              ? (_json['metrics'] as core.List)
+                  .map<GoogleCloudApigeeV1CustomReportMetric>((value) =>
+                      GoogleCloudApigeeV1CustomReportMetric.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          offset: _json.containsKey('offset')
+              ? _json['offset'] as core.String
+              : null,
+          organization: _json.containsKey('organization')
+              ? _json['organization'] as core.String
+              : null,
+          properties: _json.containsKey('properties')
+              ? (_json['properties'] as core.List)
+                  .map<GoogleCloudApigeeV1ReportProperty>((value) =>
+                      GoogleCloudApigeeV1ReportProperty.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          sortByCols: _json.containsKey('sortByCols')
+              ? (_json['sortByCols'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          sortOrder: _json.containsKey('sortOrder')
+              ? _json['sortOrder'] as core.String
+              : null,
+          tags: _json.containsKey('tags')
+              ? (_json['tags'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          timeUnit: _json.containsKey('timeUnit')
+              ? _json['timeUnit'] as core.String
+              : null,
+          toTime: _json.containsKey('toTime')
+              ? _json['toTime'] as core.String
+              : null,
+          topk: _json.containsKey('topk') ? _json['topk'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (chartType != null) 'chartType': chartType!,
@@ -12942,16 +13120,18 @@ class GoogleCloudApigeeV1CustomReportMetric {
   /// name of the metric
   core.String? name;
 
-  GoogleCloudApigeeV1CustomReportMetric();
+  GoogleCloudApigeeV1CustomReportMetric({
+    this.function,
+    this.name,
+  });
 
-  GoogleCloudApigeeV1CustomReportMetric.fromJson(core.Map _json) {
-    if (_json.containsKey('function')) {
-      function = _json['function'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1CustomReportMetric.fromJson(core.Map _json)
+      : this(
+          function: _json.containsKey('function')
+              ? _json['function'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (function != null) 'function': function!,
@@ -12993,25 +13173,28 @@ class GoogleCloudApigeeV1DataCollector {
   /// - "DATETIME" : For datetime values.
   core.String? type;
 
-  GoogleCloudApigeeV1DataCollector();
+  GoogleCloudApigeeV1DataCollector({
+    this.createdAt,
+    this.description,
+    this.lastModifiedAt,
+    this.name,
+    this.type,
+  });
 
-  GoogleCloudApigeeV1DataCollector.fromJson(core.Map _json) {
-    if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('lastModifiedAt')) {
-      lastModifiedAt = _json['lastModifiedAt'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1DataCollector.fromJson(core.Map _json)
+      : this(
+          createdAt: _json.containsKey('createdAt')
+              ? _json['createdAt'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          lastModifiedAt: _json.containsKey('lastModifiedAt')
+              ? _json['lastModifiedAt'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createdAt != null) 'createdAt': createdAt!,
@@ -13038,16 +13221,16 @@ class GoogleCloudApigeeV1DataCollectorConfig {
   /// - "DATETIME" : For datetime values.
   core.String? type;
 
-  GoogleCloudApigeeV1DataCollectorConfig();
+  GoogleCloudApigeeV1DataCollectorConfig({
+    this.name,
+    this.type,
+  });
 
-  GoogleCloudApigeeV1DataCollectorConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1DataCollectorConfig.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -13096,32 +13279,38 @@ class GoogleCloudApigeeV1Datastore {
   /// Supported types `gcs` or `bigquery`.
   core.String? targetType;
 
-  GoogleCloudApigeeV1Datastore();
+  GoogleCloudApigeeV1Datastore({
+    this.createTime,
+    this.datastoreConfig,
+    this.displayName,
+    this.lastUpdateTime,
+    this.org,
+    this.self,
+    this.targetType,
+  });
 
-  GoogleCloudApigeeV1Datastore.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('datastoreConfig')) {
-      datastoreConfig = GoogleCloudApigeeV1DatastoreConfig.fromJson(
-          _json['datastoreConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('lastUpdateTime')) {
-      lastUpdateTime = _json['lastUpdateTime'] as core.String;
-    }
-    if (_json.containsKey('org')) {
-      org = _json['org'] as core.String;
-    }
-    if (_json.containsKey('self')) {
-      self = _json['self'] as core.String;
-    }
-    if (_json.containsKey('targetType')) {
-      targetType = _json['targetType'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1Datastore.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          datastoreConfig: _json.containsKey('datastoreConfig')
+              ? GoogleCloudApigeeV1DatastoreConfig.fromJson(
+                  _json['datastoreConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          lastUpdateTime: _json.containsKey('lastUpdateTime')
+              ? _json['lastUpdateTime'] as core.String
+              : null,
+          org: _json.containsKey('org') ? _json['org'] as core.String : null,
+          self: _json.containsKey('self') ? _json['self'] as core.String : null,
+          targetType: _json.containsKey('targetType')
+              ? _json['targetType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -13156,25 +13345,30 @@ class GoogleCloudApigeeV1DatastoreConfig {
   /// Prefix of BigQuery table Required for `bigquery` target_type.
   core.String? tablePrefix;
 
-  GoogleCloudApigeeV1DatastoreConfig();
+  GoogleCloudApigeeV1DatastoreConfig({
+    this.bucketName,
+    this.datasetName,
+    this.path,
+    this.projectId,
+    this.tablePrefix,
+  });
 
-  GoogleCloudApigeeV1DatastoreConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('bucketName')) {
-      bucketName = _json['bucketName'] as core.String;
-    }
-    if (_json.containsKey('datasetName')) {
-      datasetName = _json['datasetName'] as core.String;
-    }
-    if (_json.containsKey('path')) {
-      path = _json['path'] as core.String;
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('tablePrefix')) {
-      tablePrefix = _json['tablePrefix'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1DatastoreConfig.fromJson(core.Map _json)
+      : this(
+          bucketName: _json.containsKey('bucketName')
+              ? _json['bucketName'] as core.String
+              : null,
+          datasetName: _json.containsKey('datasetName')
+              ? _json['datasetName'] as core.String
+              : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          tablePrefix: _json.containsKey('tablePrefix')
+              ? _json['tablePrefix'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bucketName != null) 'bucketName': bucketName!,
@@ -13202,16 +13396,17 @@ class GoogleCloudApigeeV1DateRange {
   /// Required.
   core.String? start;
 
-  GoogleCloudApigeeV1DateRange();
+  GoogleCloudApigeeV1DateRange({
+    this.end,
+    this.start,
+  });
 
-  GoogleCloudApigeeV1DateRange.fromJson(core.Map _json) {
-    if (_json.containsKey('end')) {
-      end = _json['end'] as core.String;
-    }
-    if (_json.containsKey('start')) {
-      start = _json['start'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1DateRange.fromJson(core.Map _json)
+      : this(
+          end: _json.containsKey('end') ? _json['end'] as core.String : null,
+          start:
+              _json.containsKey('start') ? _json['start'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (end != null) 'end': end!,
@@ -13253,57 +13448,66 @@ class GoogleCloudApigeeV1DebugMask {
   /// List of variables that should be masked from the debug output.
   core.List<core.String>? variables;
 
-  GoogleCloudApigeeV1DebugMask();
+  GoogleCloudApigeeV1DebugMask({
+    this.faultJSONPaths,
+    this.faultXPaths,
+    this.name,
+    this.namespaces,
+    this.requestJSONPaths,
+    this.requestXPaths,
+    this.responseJSONPaths,
+    this.responseXPaths,
+    this.variables,
+  });
 
-  GoogleCloudApigeeV1DebugMask.fromJson(core.Map _json) {
-    if (_json.containsKey('faultJSONPaths')) {
-      faultJSONPaths = (_json['faultJSONPaths'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('faultXPaths')) {
-      faultXPaths = (_json['faultXPaths'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('namespaces')) {
-      namespaces =
-          (_json['namespaces'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('requestJSONPaths')) {
-      requestJSONPaths = (_json['requestJSONPaths'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('requestXPaths')) {
-      requestXPaths = (_json['requestXPaths'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('responseJSONPaths')) {
-      responseJSONPaths = (_json['responseJSONPaths'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('responseXPaths')) {
-      responseXPaths = (_json['responseXPaths'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('variables')) {
-      variables = (_json['variables'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1DebugMask.fromJson(core.Map _json)
+      : this(
+          faultJSONPaths: _json.containsKey('faultJSONPaths')
+              ? (_json['faultJSONPaths'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          faultXPaths: _json.containsKey('faultXPaths')
+              ? (_json['faultXPaths'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          namespaces: _json.containsKey('namespaces')
+              ? (_json['namespaces'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          requestJSONPaths: _json.containsKey('requestJSONPaths')
+              ? (_json['requestJSONPaths'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          requestXPaths: _json.containsKey('requestXPaths')
+              ? (_json['requestXPaths'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          responseJSONPaths: _json.containsKey('responseJSONPaths')
+              ? (_json['responseJSONPaths'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          responseXPaths: _json.containsKey('responseXPaths')
+              ? (_json['responseXPaths'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          variables: _json.containsKey('variables')
+              ? (_json['variables'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (faultJSONPaths != null) 'faultJSONPaths': faultJSONPaths!,
@@ -13359,28 +13563,32 @@ class GoogleCloudApigeeV1DebugSession {
   /// Optional.
   core.int? validity;
 
-  GoogleCloudApigeeV1DebugSession();
+  GoogleCloudApigeeV1DebugSession({
+    this.count,
+    this.filter,
+    this.name,
+    this.timeout,
+    this.tracesize,
+    this.validity,
+  });
 
-  GoogleCloudApigeeV1DebugSession.fromJson(core.Map _json) {
-    if (_json.containsKey('count')) {
-      count = _json['count'] as core.int;
-    }
-    if (_json.containsKey('filter')) {
-      filter = _json['filter'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('timeout')) {
-      timeout = _json['timeout'] as core.String;
-    }
-    if (_json.containsKey('tracesize')) {
-      tracesize = _json['tracesize'] as core.int;
-    }
-    if (_json.containsKey('validity')) {
-      validity = _json['validity'] as core.int;
-    }
-  }
+  GoogleCloudApigeeV1DebugSession.fromJson(core.Map _json)
+      : this(
+          count: _json.containsKey('count') ? _json['count'] as core.int : null,
+          filter: _json.containsKey('filter')
+              ? _json['filter'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          timeout: _json.containsKey('timeout')
+              ? _json['timeout'] as core.String
+              : null,
+          tracesize: _json.containsKey('tracesize')
+              ? _json['tracesize'] as core.int
+              : null,
+          validity: _json.containsKey('validity')
+              ? _json['validity'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
@@ -13405,20 +13613,24 @@ class GoogleCloudApigeeV1DebugSessionTransaction {
   /// the flow.
   core.List<GoogleCloudApigeeV1Point>? point;
 
-  GoogleCloudApigeeV1DebugSessionTransaction();
+  GoogleCloudApigeeV1DebugSessionTransaction({
+    this.completed,
+    this.point,
+  });
 
-  GoogleCloudApigeeV1DebugSessionTransaction.fromJson(core.Map _json) {
-    if (_json.containsKey('completed')) {
-      completed = _json['completed'] as core.bool;
-    }
-    if (_json.containsKey('point')) {
-      point = (_json['point'] as core.List)
-          .map<GoogleCloudApigeeV1Point>((value) =>
-              GoogleCloudApigeeV1Point.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1DebugSessionTransaction.fromJson(core.Map _json)
+      : this(
+          completed: _json.containsKey('completed')
+              ? _json['completed'] as core.bool
+              : null,
+          point: _json.containsKey('point')
+              ? (_json['point'] as core.List)
+                  .map<GoogleCloudApigeeV1Point>((value) =>
+                      GoogleCloudApigeeV1Point.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (completed != null) 'completed': completed!,
@@ -13431,13 +13643,16 @@ class GoogleCloudApigeeV1DeleteCustomReportResponse {
   /// The response contains only a message field.
   core.String? message;
 
-  GoogleCloudApigeeV1DeleteCustomReportResponse();
+  GoogleCloudApigeeV1DeleteCustomReportResponse({
+    this.message,
+  });
 
-  GoogleCloudApigeeV1DeleteCustomReportResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1DeleteCustomReportResponse.fromJson(core.Map _json)
+      : this(
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (message != null) 'message': message!,
@@ -13497,53 +13712,64 @@ class GoogleCloudApigeeV1Deployment {
   /// intervention.
   core.String? state;
 
-  GoogleCloudApigeeV1Deployment();
+  GoogleCloudApigeeV1Deployment({
+    this.apiProxy,
+    this.deployStartTime,
+    this.environment,
+    this.errors,
+    this.instances,
+    this.pods,
+    this.revision,
+    this.routeConflicts,
+    this.state,
+  });
 
-  GoogleCloudApigeeV1Deployment.fromJson(core.Map _json) {
-    if (_json.containsKey('apiProxy')) {
-      apiProxy = _json['apiProxy'] as core.String;
-    }
-    if (_json.containsKey('deployStartTime')) {
-      deployStartTime = _json['deployStartTime'] as core.String;
-    }
-    if (_json.containsKey('environment')) {
-      environment = _json['environment'] as core.String;
-    }
-    if (_json.containsKey('errors')) {
-      errors = (_json['errors'] as core.List)
-          .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('instances')) {
-      instances = (_json['instances'] as core.List)
-          .map<GoogleCloudApigeeV1InstanceDeploymentStatus>((value) =>
-              GoogleCloudApigeeV1InstanceDeploymentStatus.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('pods')) {
-      pods = (_json['pods'] as core.List)
-          .map<GoogleCloudApigeeV1PodStatus>((value) =>
-              GoogleCloudApigeeV1PodStatus.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('revision')) {
-      revision = _json['revision'] as core.String;
-    }
-    if (_json.containsKey('routeConflicts')) {
-      routeConflicts = (_json['routeConflicts'] as core.List)
-          .map<GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>(
-              (value) =>
-                  GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1Deployment.fromJson(core.Map _json)
+      : this(
+          apiProxy: _json.containsKey('apiProxy')
+              ? _json['apiProxy'] as core.String
+              : null,
+          deployStartTime: _json.containsKey('deployStartTime')
+              ? _json['deployStartTime'] as core.String
+              : null,
+          environment: _json.containsKey('environment')
+              ? _json['environment'] as core.String
+              : null,
+          errors: _json.containsKey('errors')
+              ? (_json['errors'] as core.List)
+                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          instances: _json.containsKey('instances')
+              ? (_json['instances'] as core.List)
+                  .map<GoogleCloudApigeeV1InstanceDeploymentStatus>((value) =>
+                      GoogleCloudApigeeV1InstanceDeploymentStatus.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          pods: _json.containsKey('pods')
+              ? (_json['pods'] as core.List)
+                  .map<GoogleCloudApigeeV1PodStatus>((value) =>
+                      GoogleCloudApigeeV1PodStatus.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          revision: _json.containsKey('revision')
+              ? _json['revision'] as core.String
+              : null,
+          routeConflicts: _json.containsKey('routeConflicts')
+              ? (_json['routeConflicts'] as core.List)
+                  .map<GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>(
+                      (value) =>
+                          GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiProxy != null) 'apiProxy': apiProxy!,
@@ -13588,29 +13814,37 @@ class GoogleCloudApigeeV1DeploymentChangeReport {
   /// rejected.
   GoogleRpcPreconditionFailure? validationErrors;
 
-  GoogleCloudApigeeV1DeploymentChangeReport();
+  GoogleCloudApigeeV1DeploymentChangeReport({
+    this.routingChanges,
+    this.routingConflicts,
+    this.validationErrors,
+  });
 
-  GoogleCloudApigeeV1DeploymentChangeReport.fromJson(core.Map _json) {
-    if (_json.containsKey('routingChanges')) {
-      routingChanges = (_json['routingChanges'] as core.List)
-          .map<GoogleCloudApigeeV1DeploymentChangeReportRoutingChange>(
-              (value) => GoogleCloudApigeeV1DeploymentChangeReportRoutingChange
-                  .fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('routingConflicts')) {
-      routingConflicts = (_json['routingConflicts'] as core.List)
-          .map<GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>(
-              (value) =>
-                  GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('validationErrors')) {
-      validationErrors = GoogleRpcPreconditionFailure.fromJson(
-          _json['validationErrors'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudApigeeV1DeploymentChangeReport.fromJson(core.Map _json)
+      : this(
+          routingChanges: _json.containsKey('routingChanges')
+              ? (_json['routingChanges'] as core.List)
+                  .map<GoogleCloudApigeeV1DeploymentChangeReportRoutingChange>(
+                      (value) =>
+                          GoogleCloudApigeeV1DeploymentChangeReportRoutingChange
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          routingConflicts: _json.containsKey('routingConflicts')
+              ? (_json['routingConflicts'] as core.List)
+                  .map<GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>(
+                      (value) =>
+                          GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          validationErrors: _json.containsKey('validationErrors')
+              ? GoogleRpcPreconditionFailure.fromJson(_json['validationErrors']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (routingChanges != null)
@@ -13648,30 +13882,37 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingChange {
   /// May be null if no deployment is able to receive the traffic.
   GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment? toDeployment;
 
-  GoogleCloudApigeeV1DeploymentChangeReportRoutingChange();
+  GoogleCloudApigeeV1DeploymentChangeReportRoutingChange({
+    this.description,
+    this.environmentGroup,
+    this.fromDeployment,
+    this.shouldSequenceRollout,
+    this.toDeployment,
+  });
 
   GoogleCloudApigeeV1DeploymentChangeReportRoutingChange.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('environmentGroup')) {
-      environmentGroup = _json['environmentGroup'] as core.String;
-    }
-    if (_json.containsKey('fromDeployment')) {
-      fromDeployment =
-          GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment.fromJson(
-              _json['fromDeployment'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('shouldSequenceRollout')) {
-      shouldSequenceRollout = _json['shouldSequenceRollout'] as core.bool;
-    }
-    if (_json.containsKey('toDeployment')) {
-      toDeployment =
-          GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment.fromJson(
-              _json['toDeployment'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+      core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          environmentGroup: _json.containsKey('environmentGroup')
+              ? _json['environmentGroup'] as core.String
+              : null,
+          fromDeployment: _json.containsKey('fromDeployment')
+              ? GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment
+                  .fromJson(_json['fromDeployment']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          shouldSequenceRollout: _json.containsKey('shouldSequenceRollout')
+              ? _json['shouldSequenceRollout'] as core.bool
+              : null,
+          toDeployment: _json.containsKey('toDeployment')
+              ? GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment
+                  .fromJson(_json['toDeployment']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -13696,23 +13937,27 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict {
   /// Name of the environment group in which this conflict exists.
   core.String? environmentGroup;
 
-  GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict();
+  GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict({
+    this.conflictingDeployment,
+    this.description,
+    this.environmentGroup,
+  });
 
   GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('conflictingDeployment')) {
-      conflictingDeployment =
-          GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment.fromJson(
-              _json['conflictingDeployment']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('environmentGroup')) {
-      environmentGroup = _json['environmentGroup'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          conflictingDeployment: _json.containsKey('conflictingDeployment')
+              ? GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment
+                  .fromJson(_json['conflictingDeployment']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          environmentGroup: _json.containsKey('environmentGroup')
+              ? _json['environmentGroup'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (conflictingDeployment != null)
@@ -13736,23 +13981,29 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment {
   /// Name of the deployed API proxy revision containing the base path.
   core.String? revision;
 
-  GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment();
+  GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment({
+    this.apiProxy,
+    this.basepath,
+    this.environment,
+    this.revision,
+  });
 
   GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('apiProxy')) {
-      apiProxy = _json['apiProxy'] as core.String;
-    }
-    if (_json.containsKey('basepath')) {
-      basepath = _json['basepath'] as core.String;
-    }
-    if (_json.containsKey('environment')) {
-      environment = _json['environment'] as core.String;
-    }
-    if (_json.containsKey('revision')) {
-      revision = _json['revision'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          apiProxy: _json.containsKey('apiProxy')
+              ? _json['apiProxy'] as core.String
+              : null,
+          basepath: _json.containsKey('basepath')
+              ? _json['basepath'] as core.String
+              : null,
+          environment: _json.containsKey('environment')
+              ? _json['environment'] as core.String
+              : null,
+          revision: _json.containsKey('revision')
+              ? _json['revision'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiProxy != null) 'apiProxy': apiProxy!,
@@ -13794,37 +14045,42 @@ class GoogleCloudApigeeV1DeploymentConfig {
   /// The ID will only change if the deployment is deleted and recreated.
   core.String? uid;
 
-  GoogleCloudApigeeV1DeploymentConfig();
+  GoogleCloudApigeeV1DeploymentConfig({
+    this.attributes,
+    this.basePath,
+    this.location,
+    this.name,
+    this.proxyUid,
+    this.serviceAccount,
+    this.uid,
+  });
 
-  GoogleCloudApigeeV1DeploymentConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('attributes')) {
-      attributes =
-          (_json['attributes'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('basePath')) {
-      basePath = _json['basePath'] as core.String;
-    }
-    if (_json.containsKey('location')) {
-      location = _json['location'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('proxyUid')) {
-      proxyUid = _json['proxyUid'] as core.String;
-    }
-    if (_json.containsKey('serviceAccount')) {
-      serviceAccount = _json['serviceAccount'] as core.String;
-    }
-    if (_json.containsKey('uid')) {
-      uid = _json['uid'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1DeploymentConfig.fromJson(core.Map _json)
+      : this(
+          attributes: _json.containsKey('attributes')
+              ? (_json['attributes'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          basePath: _json.containsKey('basePath')
+              ? _json['basePath'] as core.String
+              : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          proxyUid: _json.containsKey('proxyUid')
+              ? _json['proxyUid'] as core.String
+              : null,
+          serviceAccount: _json.containsKey('serviceAccount')
+              ? _json['serviceAccount'] as core.String
+              : null,
+          uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null) 'attributes': attributes!,
@@ -13910,60 +14166,75 @@ class GoogleCloudApigeeV1Developer {
   /// Required.
   core.String? userName;
 
-  GoogleCloudApigeeV1Developer();
+  GoogleCloudApigeeV1Developer({
+    this.accessType,
+    this.appFamily,
+    this.apps,
+    this.attributes,
+    this.companies,
+    this.createdAt,
+    this.developerId,
+    this.email,
+    this.firstName,
+    this.lastModifiedAt,
+    this.lastName,
+    this.organizationName,
+    this.status,
+    this.userName,
+  });
 
-  GoogleCloudApigeeV1Developer.fromJson(core.Map _json) {
-    if (_json.containsKey('accessType')) {
-      accessType = _json['accessType'] as core.String;
-    }
-    if (_json.containsKey('appFamily')) {
-      appFamily = _json['appFamily'] as core.String;
-    }
-    if (_json.containsKey('apps')) {
-      apps = (_json['apps'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('attributes')) {
-      attributes = (_json['attributes'] as core.List)
-          .map<GoogleCloudApigeeV1Attribute>((value) =>
-              GoogleCloudApigeeV1Attribute.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('companies')) {
-      companies = (_json['companies'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'] as core.String;
-    }
-    if (_json.containsKey('developerId')) {
-      developerId = _json['developerId'] as core.String;
-    }
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('firstName')) {
-      firstName = _json['firstName'] as core.String;
-    }
-    if (_json.containsKey('lastModifiedAt')) {
-      lastModifiedAt = _json['lastModifiedAt'] as core.String;
-    }
-    if (_json.containsKey('lastName')) {
-      lastName = _json['lastName'] as core.String;
-    }
-    if (_json.containsKey('organizationName')) {
-      organizationName = _json['organizationName'] as core.String;
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-    if (_json.containsKey('userName')) {
-      userName = _json['userName'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1Developer.fromJson(core.Map _json)
+      : this(
+          accessType: _json.containsKey('accessType')
+              ? _json['accessType'] as core.String
+              : null,
+          appFamily: _json.containsKey('appFamily')
+              ? _json['appFamily'] as core.String
+              : null,
+          apps: _json.containsKey('apps')
+              ? (_json['apps'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          attributes: _json.containsKey('attributes')
+              ? (_json['attributes'] as core.List)
+                  .map<GoogleCloudApigeeV1Attribute>((value) =>
+                      GoogleCloudApigeeV1Attribute.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          companies: _json.containsKey('companies')
+              ? (_json['companies'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          createdAt: _json.containsKey('createdAt')
+              ? _json['createdAt'] as core.String
+              : null,
+          developerId: _json.containsKey('developerId')
+              ? _json['developerId'] as core.String
+              : null,
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          firstName: _json.containsKey('firstName')
+              ? _json['firstName'] as core.String
+              : null,
+          lastModifiedAt: _json.containsKey('lastModifiedAt')
+              ? _json['lastModifiedAt'] as core.String
+              : null,
+          lastName: _json.containsKey('lastName')
+              ? _json['lastName'] as core.String
+              : null,
+          organizationName: _json.containsKey('organizationName')
+              ? _json['organizationName'] as core.String
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+          userName: _json.containsKey('userName')
+              ? _json['userName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessType != null) 'accessType': accessType!,
@@ -14041,61 +14312,73 @@ class GoogleCloudApigeeV1DeveloperApp {
   /// Valid values include `approved` or `revoked`.
   core.String? status;
 
-  GoogleCloudApigeeV1DeveloperApp();
+  GoogleCloudApigeeV1DeveloperApp({
+    this.apiProducts,
+    this.appFamily,
+    this.appId,
+    this.attributes,
+    this.callbackUrl,
+    this.createdAt,
+    this.credentials,
+    this.developerId,
+    this.keyExpiresIn,
+    this.lastModifiedAt,
+    this.name,
+    this.scopes,
+    this.status,
+  });
 
-  GoogleCloudApigeeV1DeveloperApp.fromJson(core.Map _json) {
-    if (_json.containsKey('apiProducts')) {
-      apiProducts = (_json['apiProducts'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('appFamily')) {
-      appFamily = _json['appFamily'] as core.String;
-    }
-    if (_json.containsKey('appId')) {
-      appId = _json['appId'] as core.String;
-    }
-    if (_json.containsKey('attributes')) {
-      attributes = (_json['attributes'] as core.List)
-          .map<GoogleCloudApigeeV1Attribute>((value) =>
-              GoogleCloudApigeeV1Attribute.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('callbackUrl')) {
-      callbackUrl = _json['callbackUrl'] as core.String;
-    }
-    if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'] as core.String;
-    }
-    if (_json.containsKey('credentials')) {
-      credentials = (_json['credentials'] as core.List)
-          .map<GoogleCloudApigeeV1Credential>((value) =>
-              GoogleCloudApigeeV1Credential.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('developerId')) {
-      developerId = _json['developerId'] as core.String;
-    }
-    if (_json.containsKey('keyExpiresIn')) {
-      keyExpiresIn = _json['keyExpiresIn'] as core.String;
-    }
-    if (_json.containsKey('lastModifiedAt')) {
-      lastModifiedAt = _json['lastModifiedAt'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('scopes')) {
-      scopes = (_json['scopes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1DeveloperApp.fromJson(core.Map _json)
+      : this(
+          apiProducts: _json.containsKey('apiProducts')
+              ? (_json['apiProducts'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          appFamily: _json.containsKey('appFamily')
+              ? _json['appFamily'] as core.String
+              : null,
+          appId:
+              _json.containsKey('appId') ? _json['appId'] as core.String : null,
+          attributes: _json.containsKey('attributes')
+              ? (_json['attributes'] as core.List)
+                  .map<GoogleCloudApigeeV1Attribute>((value) =>
+                      GoogleCloudApigeeV1Attribute.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          callbackUrl: _json.containsKey('callbackUrl')
+              ? _json['callbackUrl'] as core.String
+              : null,
+          createdAt: _json.containsKey('createdAt')
+              ? _json['createdAt'] as core.String
+              : null,
+          credentials: _json.containsKey('credentials')
+              ? (_json['credentials'] as core.List)
+                  .map<GoogleCloudApigeeV1Credential>((value) =>
+                      GoogleCloudApigeeV1Credential.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          developerId: _json.containsKey('developerId')
+              ? _json['developerId'] as core.String
+              : null,
+          keyExpiresIn: _json.containsKey('keyExpiresIn')
+              ? _json['keyExpiresIn'] as core.String
+              : null,
+          lastModifiedAt: _json.containsKey('lastModifiedAt')
+              ? _json['lastModifiedAt'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          scopes: _json.containsKey('scopes')
+              ? (_json['scopes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiProducts != null) 'apiProducts': apiProducts!,
@@ -14160,45 +14443,56 @@ class GoogleCloudApigeeV1DeveloperAppKey {
   /// Valid values include `approved` or `revoked`.
   core.String? status;
 
-  GoogleCloudApigeeV1DeveloperAppKey();
+  GoogleCloudApigeeV1DeveloperAppKey({
+    this.apiProducts,
+    this.attributes,
+    this.consumerKey,
+    this.consumerSecret,
+    this.expiresAt,
+    this.expiresInSeconds,
+    this.issuedAt,
+    this.scopes,
+    this.status,
+  });
 
-  GoogleCloudApigeeV1DeveloperAppKey.fromJson(core.Map _json) {
-    if (_json.containsKey('apiProducts')) {
-      apiProducts = (_json['apiProducts'] as core.List)
-          .map<core.Object>((value) => value as core.Object)
-          .toList();
-    }
-    if (_json.containsKey('attributes')) {
-      attributes = (_json['attributes'] as core.List)
-          .map<GoogleCloudApigeeV1Attribute>((value) =>
-              GoogleCloudApigeeV1Attribute.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('consumerKey')) {
-      consumerKey = _json['consumerKey'] as core.String;
-    }
-    if (_json.containsKey('consumerSecret')) {
-      consumerSecret = _json['consumerSecret'] as core.String;
-    }
-    if (_json.containsKey('expiresAt')) {
-      expiresAt = _json['expiresAt'] as core.String;
-    }
-    if (_json.containsKey('expiresInSeconds')) {
-      expiresInSeconds = _json['expiresInSeconds'] as core.String;
-    }
-    if (_json.containsKey('issuedAt')) {
-      issuedAt = _json['issuedAt'] as core.String;
-    }
-    if (_json.containsKey('scopes')) {
-      scopes = (_json['scopes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1DeveloperAppKey.fromJson(core.Map _json)
+      : this(
+          apiProducts: _json.containsKey('apiProducts')
+              ? (_json['apiProducts'] as core.List)
+                  .map<core.Object>((value) => value as core.Object)
+                  .toList()
+              : null,
+          attributes: _json.containsKey('attributes')
+              ? (_json['attributes'] as core.List)
+                  .map<GoogleCloudApigeeV1Attribute>((value) =>
+                      GoogleCloudApigeeV1Attribute.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          consumerKey: _json.containsKey('consumerKey')
+              ? _json['consumerKey'] as core.String
+              : null,
+          consumerSecret: _json.containsKey('consumerSecret')
+              ? _json['consumerSecret'] as core.String
+              : null,
+          expiresAt: _json.containsKey('expiresAt')
+              ? _json['expiresAt'] as core.String
+              : null,
+          expiresInSeconds: _json.containsKey('expiresInSeconds')
+              ? _json['expiresInSeconds'] as core.String
+              : null,
+          issuedAt: _json.containsKey('issuedAt')
+              ? _json['issuedAt'] as core.String
+              : null,
+          scopes: _json.containsKey('scopes')
+              ? (_json['scopes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiProducts != null) 'apiProducts': apiProducts!,
@@ -14243,28 +14537,34 @@ class GoogleCloudApigeeV1DeveloperSubscription {
   /// Time when the API product subscription starts in milliseconds since epoch.
   core.String? startTime;
 
-  GoogleCloudApigeeV1DeveloperSubscription();
+  GoogleCloudApigeeV1DeveloperSubscription({
+    this.apiproduct,
+    this.createdAt,
+    this.endTime,
+    this.lastModifiedAt,
+    this.name,
+    this.startTime,
+  });
 
-  GoogleCloudApigeeV1DeveloperSubscription.fromJson(core.Map _json) {
-    if (_json.containsKey('apiproduct')) {
-      apiproduct = _json['apiproduct'] as core.String;
-    }
-    if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'] as core.String;
-    }
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('lastModifiedAt')) {
-      lastModifiedAt = _json['lastModifiedAt'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1DeveloperSubscription.fromJson(core.Map _json)
+      : this(
+          apiproduct: _json.containsKey('apiproduct')
+              ? _json['apiproduct'] as core.String
+              : null,
+          createdAt: _json.containsKey('createdAt')
+              ? _json['createdAt'] as core.String
+              : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          lastModifiedAt: _json.containsKey('lastModifiedAt')
+              ? _json['lastModifiedAt'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiproduct != null) 'apiproduct': apiproduct!,
@@ -14284,20 +14584,22 @@ class GoogleCloudApigeeV1DimensionMetric {
   /// This field contains the name of the dimension.
   core.String? name;
 
-  GoogleCloudApigeeV1DimensionMetric();
+  GoogleCloudApigeeV1DimensionMetric({
+    this.metrics,
+    this.name,
+  });
 
-  GoogleCloudApigeeV1DimensionMetric.fromJson(core.Map _json) {
-    if (_json.containsKey('metrics')) {
-      metrics = (_json['metrics'] as core.List)
-          .map<GoogleCloudApigeeV1Metric>((value) =>
-              GoogleCloudApigeeV1Metric.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1DimensionMetric.fromJson(core.Map _json)
+      : this(
+          metrics: _json.containsKey('metrics')
+              ? (_json['metrics'] as core.List)
+                  .map<GoogleCloudApigeeV1Metric>((value) =>
+                      GoogleCloudApigeeV1Metric.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (metrics != null)
@@ -14318,19 +14620,24 @@ class GoogleCloudApigeeV1EntityMetadata {
   /// The type of entity described
   core.String? subType;
 
-  GoogleCloudApigeeV1EntityMetadata();
+  GoogleCloudApigeeV1EntityMetadata({
+    this.createdAt,
+    this.lastModifiedAt,
+    this.subType,
+  });
 
-  GoogleCloudApigeeV1EntityMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'] as core.String;
-    }
-    if (_json.containsKey('lastModifiedAt')) {
-      lastModifiedAt = _json['lastModifiedAt'] as core.String;
-    }
-    if (_json.containsKey('subType')) {
-      subType = _json['subType'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1EntityMetadata.fromJson(core.Map _json)
+      : this(
+          createdAt: _json.containsKey('createdAt')
+              ? _json['createdAt'] as core.String
+              : null,
+          lastModifiedAt: _json.containsKey('lastModifiedAt')
+              ? _json['lastModifiedAt'] as core.String
+              : null,
+          subType: _json.containsKey('subType')
+              ? _json['subType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createdAt != null) 'createdAt': createdAt!,
@@ -14385,32 +14692,38 @@ class GoogleCloudApigeeV1Environment {
   /// - "UPDATING" : The resource is being updated.
   core.String? state;
 
-  GoogleCloudApigeeV1Environment();
+  GoogleCloudApigeeV1Environment({
+    this.createdAt,
+    this.description,
+    this.displayName,
+    this.lastModifiedAt,
+    this.name,
+    this.properties,
+    this.state,
+  });
 
-  GoogleCloudApigeeV1Environment.fromJson(core.Map _json) {
-    if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('lastModifiedAt')) {
-      lastModifiedAt = _json['lastModifiedAt'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('properties')) {
-      properties = GoogleCloudApigeeV1Properties.fromJson(
-          _json['properties'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1Environment.fromJson(core.Map _json)
+      : this(
+          createdAt: _json.containsKey('createdAt')
+              ? _json['createdAt'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          lastModifiedAt: _json.containsKey('lastModifiedAt')
+              ? _json['lastModifiedAt'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          properties: _json.containsKey('properties')
+              ? GoogleCloudApigeeV1Properties.fromJson(
+                  _json['properties'] as core.Map<core.String, core.dynamic>)
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createdAt != null) 'createdAt': createdAt!,
@@ -14486,97 +14799,112 @@ class GoogleCloudApigeeV1EnvironmentConfig {
   /// The ID will only change if the environment is deleted and recreated.
   core.String? uid;
 
-  GoogleCloudApigeeV1EnvironmentConfig();
+  GoogleCloudApigeeV1EnvironmentConfig({
+    this.createTime,
+    this.dataCollectors,
+    this.debugMask,
+    this.deployments,
+    this.featureFlags,
+    this.flowhooks,
+    this.keystores,
+    this.name,
+    this.provider,
+    this.pubsubTopic,
+    this.resourceReferences,
+    this.resources,
+    this.revisionId,
+    this.sequenceNumber,
+    this.targets,
+    this.traceConfig,
+    this.uid,
+  });
 
-  GoogleCloudApigeeV1EnvironmentConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('dataCollectors')) {
-      dataCollectors = (_json['dataCollectors'] as core.List)
-          .map<GoogleCloudApigeeV1DataCollectorConfig>((value) =>
-              GoogleCloudApigeeV1DataCollectorConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('debugMask')) {
-      debugMask = GoogleCloudApigeeV1DebugMask.fromJson(
-          _json['debugMask'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('deployments')) {
-      deployments = (_json['deployments'] as core.List)
-          .map<GoogleCloudApigeeV1DeploymentConfig>((value) =>
-              GoogleCloudApigeeV1DeploymentConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('featureFlags')) {
-      featureFlags =
-          (_json['featureFlags'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('flowhooks')) {
-      flowhooks = (_json['flowhooks'] as core.List)
-          .map<GoogleCloudApigeeV1FlowHookConfig>((value) =>
-              GoogleCloudApigeeV1FlowHookConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('keystores')) {
-      keystores = (_json['keystores'] as core.List)
-          .map<GoogleCloudApigeeV1KeystoreConfig>((value) =>
-              GoogleCloudApigeeV1KeystoreConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('provider')) {
-      provider = _json['provider'] as core.String;
-    }
-    if (_json.containsKey('pubsubTopic')) {
-      pubsubTopic = _json['pubsubTopic'] as core.String;
-    }
-    if (_json.containsKey('resourceReferences')) {
-      resourceReferences = (_json['resourceReferences'] as core.List)
-          .map<GoogleCloudApigeeV1ReferenceConfig>((value) =>
-              GoogleCloudApigeeV1ReferenceConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('resources')) {
-      resources = (_json['resources'] as core.List)
-          .map<GoogleCloudApigeeV1ResourceConfig>((value) =>
-              GoogleCloudApigeeV1ResourceConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('revisionId')) {
-      revisionId = _json['revisionId'] as core.String;
-    }
-    if (_json.containsKey('sequenceNumber')) {
-      sequenceNumber = _json['sequenceNumber'] as core.String;
-    }
-    if (_json.containsKey('targets')) {
-      targets = (_json['targets'] as core.List)
-          .map<GoogleCloudApigeeV1TargetServerConfig>((value) =>
-              GoogleCloudApigeeV1TargetServerConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('traceConfig')) {
-      traceConfig = GoogleCloudApigeeV1RuntimeTraceConfig.fromJson(
-          _json['traceConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('uid')) {
-      uid = _json['uid'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1EnvironmentConfig.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          dataCollectors: _json.containsKey('dataCollectors')
+              ? (_json['dataCollectors'] as core.List)
+                  .map<GoogleCloudApigeeV1DataCollectorConfig>((value) =>
+                      GoogleCloudApigeeV1DataCollectorConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          debugMask: _json.containsKey('debugMask')
+              ? GoogleCloudApigeeV1DebugMask.fromJson(
+                  _json['debugMask'] as core.Map<core.String, core.dynamic>)
+              : null,
+          deployments: _json.containsKey('deployments')
+              ? (_json['deployments'] as core.List)
+                  .map<GoogleCloudApigeeV1DeploymentConfig>((value) =>
+                      GoogleCloudApigeeV1DeploymentConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          featureFlags: _json.containsKey('featureFlags')
+              ? (_json['featureFlags'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          flowhooks: _json.containsKey('flowhooks')
+              ? (_json['flowhooks'] as core.List)
+                  .map<GoogleCloudApigeeV1FlowHookConfig>((value) =>
+                      GoogleCloudApigeeV1FlowHookConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          keystores: _json.containsKey('keystores')
+              ? (_json['keystores'] as core.List)
+                  .map<GoogleCloudApigeeV1KeystoreConfig>((value) =>
+                      GoogleCloudApigeeV1KeystoreConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          provider: _json.containsKey('provider')
+              ? _json['provider'] as core.String
+              : null,
+          pubsubTopic: _json.containsKey('pubsubTopic')
+              ? _json['pubsubTopic'] as core.String
+              : null,
+          resourceReferences: _json.containsKey('resourceReferences')
+              ? (_json['resourceReferences'] as core.List)
+                  .map<GoogleCloudApigeeV1ReferenceConfig>((value) =>
+                      GoogleCloudApigeeV1ReferenceConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          resources: _json.containsKey('resources')
+              ? (_json['resources'] as core.List)
+                  .map<GoogleCloudApigeeV1ResourceConfig>((value) =>
+                      GoogleCloudApigeeV1ResourceConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          revisionId: _json.containsKey('revisionId')
+              ? _json['revisionId'] as core.String
+              : null,
+          sequenceNumber: _json.containsKey('sequenceNumber')
+              ? _json['sequenceNumber'] as core.String
+              : null,
+          targets: _json.containsKey('targets')
+              ? (_json['targets'] as core.List)
+                  .map<GoogleCloudApigeeV1TargetServerConfig>((value) =>
+                      GoogleCloudApigeeV1TargetServerConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          traceConfig: _json.containsKey('traceConfig')
+              ? GoogleCloudApigeeV1RuntimeTraceConfig.fromJson(
+                  _json['traceConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -14646,27 +14974,31 @@ class GoogleCloudApigeeV1EnvironmentGroup {
   /// - "UPDATING" : The resource is being updated.
   core.String? state;
 
-  GoogleCloudApigeeV1EnvironmentGroup();
+  GoogleCloudApigeeV1EnvironmentGroup({
+    this.createdAt,
+    this.hostnames,
+    this.lastModifiedAt,
+    this.name,
+    this.state,
+  });
 
-  GoogleCloudApigeeV1EnvironmentGroup.fromJson(core.Map _json) {
-    if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'] as core.String;
-    }
-    if (_json.containsKey('hostnames')) {
-      hostnames = (_json['hostnames'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('lastModifiedAt')) {
-      lastModifiedAt = _json['lastModifiedAt'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1EnvironmentGroup.fromJson(core.Map _json)
+      : this(
+          createdAt: _json.containsKey('createdAt')
+              ? _json['createdAt'] as core.String
+              : null,
+          hostnames: _json.containsKey('hostnames')
+              ? (_json['hostnames'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          lastModifiedAt: _json.containsKey('lastModifiedAt')
+              ? _json['lastModifiedAt'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createdAt != null) 'createdAt': createdAt!,
@@ -14694,19 +15026,22 @@ class GoogleCloudApigeeV1EnvironmentGroupAttachment {
   /// ID of the environment group attachment.
   core.String? name;
 
-  GoogleCloudApigeeV1EnvironmentGroupAttachment();
+  GoogleCloudApigeeV1EnvironmentGroupAttachment({
+    this.createdAt,
+    this.environment,
+    this.name,
+  });
 
-  GoogleCloudApigeeV1EnvironmentGroupAttachment.fromJson(core.Map _json) {
-    if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'] as core.String;
-    }
-    if (_json.containsKey('environment')) {
-      environment = _json['environment'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1EnvironmentGroupAttachment.fromJson(core.Map _json)
+      : this(
+          createdAt: _json.containsKey('createdAt')
+              ? _json['createdAt'] as core.String
+              : null,
+          environment: _json.containsKey('environment')
+              ? _json['environment'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createdAt != null) 'createdAt': createdAt!,
@@ -14739,31 +15074,34 @@ class GoogleCloudApigeeV1EnvironmentGroupConfig {
   /// environment group is deleted and recreated.
   core.String? uid;
 
-  GoogleCloudApigeeV1EnvironmentGroupConfig();
+  GoogleCloudApigeeV1EnvironmentGroupConfig({
+    this.hostnames,
+    this.name,
+    this.revisionId,
+    this.routingRules,
+    this.uid,
+  });
 
-  GoogleCloudApigeeV1EnvironmentGroupConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('hostnames')) {
-      hostnames = (_json['hostnames'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('revisionId')) {
-      revisionId = _json['revisionId'] as core.String;
-    }
-    if (_json.containsKey('routingRules')) {
-      routingRules = (_json['routingRules'] as core.List)
-          .map<GoogleCloudApigeeV1RoutingRule>((value) =>
-              GoogleCloudApigeeV1RoutingRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('uid')) {
-      uid = _json['uid'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1EnvironmentGroupConfig.fromJson(core.Map _json)
+      : this(
+          hostnames: _json.containsKey('hostnames')
+              ? (_json['hostnames'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          revisionId: _json.containsKey('revisionId')
+              ? _json['revisionId'] as core.String
+              : null,
+          routingRules: _json.containsKey('routingRules')
+              ? (_json['routingRules'] as core.List)
+                  .map<GoogleCloudApigeeV1RoutingRule>((value) =>
+                      GoogleCloudApigeeV1RoutingRule.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (hostnames != null) 'hostnames': hostnames!,
@@ -14837,37 +15175,42 @@ class GoogleCloudApigeeV1Export {
   /// Output only.
   core.String? updated;
 
-  GoogleCloudApigeeV1Export();
+  GoogleCloudApigeeV1Export({
+    this.created,
+    this.datastoreName,
+    this.description,
+    this.error,
+    this.executionTime,
+    this.name,
+    this.self,
+    this.state,
+    this.updated,
+  });
 
-  GoogleCloudApigeeV1Export.fromJson(core.Map _json) {
-    if (_json.containsKey('created')) {
-      created = _json['created'] as core.String;
-    }
-    if (_json.containsKey('datastoreName')) {
-      datastoreName = _json['datastoreName'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('error')) {
-      error = _json['error'] as core.String;
-    }
-    if (_json.containsKey('executionTime')) {
-      executionTime = _json['executionTime'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('self')) {
-      self = _json['self'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('updated')) {
-      updated = _json['updated'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1Export.fromJson(core.Map _json)
+      : this(
+          created: _json.containsKey('created')
+              ? _json['created'] as core.String
+              : null,
+          datastoreName: _json.containsKey('datastoreName')
+              ? _json['datastoreName'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          error:
+              _json.containsKey('error') ? _json['error'] as core.String : null,
+          executionTime: _json.containsKey('executionTime')
+              ? _json['executionTime'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          self: _json.containsKey('self') ? _json['self'] as core.String : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          updated: _json.containsKey('updated')
+              ? _json['updated'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (created != null) 'created': created!,
@@ -14920,29 +15263,35 @@ class GoogleCloudApigeeV1ExportRequest {
   /// Optional.
   core.String? outputFormat;
 
-  GoogleCloudApigeeV1ExportRequest();
+  GoogleCloudApigeeV1ExportRequest({
+    this.csvDelimiter,
+    this.datastoreName,
+    this.dateRange,
+    this.description,
+    this.name,
+    this.outputFormat,
+  });
 
-  GoogleCloudApigeeV1ExportRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('csvDelimiter')) {
-      csvDelimiter = _json['csvDelimiter'] as core.String;
-    }
-    if (_json.containsKey('datastoreName')) {
-      datastoreName = _json['datastoreName'] as core.String;
-    }
-    if (_json.containsKey('dateRange')) {
-      dateRange = GoogleCloudApigeeV1DateRange.fromJson(
-          _json['dateRange'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('outputFormat')) {
-      outputFormat = _json['outputFormat'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1ExportRequest.fromJson(core.Map _json)
+      : this(
+          csvDelimiter: _json.containsKey('csvDelimiter')
+              ? _json['csvDelimiter'] as core.String
+              : null,
+          datastoreName: _json.containsKey('datastoreName')
+              ? _json['datastoreName'] as core.String
+              : null,
+          dateRange: _json.containsKey('dateRange')
+              ? GoogleCloudApigeeV1DateRange.fromJson(
+                  _json['dateRange'] as core.Map<core.String, core.dynamic>)
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          outputFormat: _json.containsKey('outputFormat')
+              ? _json['outputFormat'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (csvDelimiter != null) 'csvDelimiter': csvDelimiter!,
@@ -14979,22 +15328,28 @@ class GoogleCloudApigeeV1FlowHook {
   /// attached.
   core.String? sharedFlow;
 
-  GoogleCloudApigeeV1FlowHook();
+  GoogleCloudApigeeV1FlowHook({
+    this.continueOnError,
+    this.description,
+    this.flowHookPoint,
+    this.sharedFlow,
+  });
 
-  GoogleCloudApigeeV1FlowHook.fromJson(core.Map _json) {
-    if (_json.containsKey('continueOnError')) {
-      continueOnError = _json['continueOnError'] as core.bool;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('flowHookPoint')) {
-      flowHookPoint = _json['flowHookPoint'] as core.String;
-    }
-    if (_json.containsKey('sharedFlow')) {
-      sharedFlow = _json['sharedFlow'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1FlowHook.fromJson(core.Map _json)
+      : this(
+          continueOnError: _json.containsKey('continueOnError')
+              ? _json['continueOnError'] as core.bool
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          flowHookPoint: _json.containsKey('flowHookPoint')
+              ? _json['flowHookPoint'] as core.String
+              : null,
+          sharedFlow: _json.containsKey('sharedFlow')
+              ? _json['sharedFlow'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (continueOnError != null) 'continueOnError': continueOnError!,
@@ -15022,19 +15377,22 @@ class GoogleCloudApigeeV1FlowHookConfig {
   /// `organizations/{org}/sharedflows/{sharedflow}`
   core.String? sharedFlowName;
 
-  GoogleCloudApigeeV1FlowHookConfig();
+  GoogleCloudApigeeV1FlowHookConfig({
+    this.continueOnError,
+    this.name,
+    this.sharedFlowName,
+  });
 
-  GoogleCloudApigeeV1FlowHookConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('continueOnError')) {
-      continueOnError = _json['continueOnError'] as core.bool;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('sharedFlowName')) {
-      sharedFlowName = _json['sharedFlowName'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1FlowHookConfig.fromJson(core.Map _json)
+      : this(
+          continueOnError: _json.containsKey('continueOnError')
+              ? _json['continueOnError'] as core.bool
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          sharedFlowName: _json.containsKey('sharedFlowName')
+              ? _json['sharedFlowName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (continueOnError != null) 'continueOnError': continueOnError!,
@@ -15072,18 +15430,22 @@ class GoogleCloudApigeeV1GraphQLOperation {
   /// Required.
   core.List<core.String>? operationTypes;
 
-  GoogleCloudApigeeV1GraphQLOperation();
+  GoogleCloudApigeeV1GraphQLOperation({
+    this.operation,
+    this.operationTypes,
+  });
 
-  GoogleCloudApigeeV1GraphQLOperation.fromJson(core.Map _json) {
-    if (_json.containsKey('operation')) {
-      operation = _json['operation'] as core.String;
-    }
-    if (_json.containsKey('operationTypes')) {
-      operationTypes = (_json['operationTypes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1GraphQLOperation.fromJson(core.Map _json)
+      : this(
+          operation: _json.containsKey('operation')
+              ? _json['operation'] as core.String
+              : null,
+          operationTypes: _json.containsKey('operationTypes')
+              ? (_json['operationTypes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (operation != null) 'operation': operation!,
@@ -15120,31 +15482,37 @@ class GoogleCloudApigeeV1GraphQLOperationConfig {
   /// If none are specified, quota enforcement will not be done.
   GoogleCloudApigeeV1Quota? quota;
 
-  GoogleCloudApigeeV1GraphQLOperationConfig();
+  GoogleCloudApigeeV1GraphQLOperationConfig({
+    this.apiSource,
+    this.attributes,
+    this.operations,
+    this.quota,
+  });
 
-  GoogleCloudApigeeV1GraphQLOperationConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('apiSource')) {
-      apiSource = _json['apiSource'] as core.String;
-    }
-    if (_json.containsKey('attributes')) {
-      attributes = (_json['attributes'] as core.List)
-          .map<GoogleCloudApigeeV1Attribute>((value) =>
-              GoogleCloudApigeeV1Attribute.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('operations')) {
-      operations = (_json['operations'] as core.List)
-          .map<GoogleCloudApigeeV1GraphQLOperation>((value) =>
-              GoogleCloudApigeeV1GraphQLOperation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('quota')) {
-      quota = GoogleCloudApigeeV1Quota.fromJson(
-          _json['quota'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudApigeeV1GraphQLOperationConfig.fromJson(core.Map _json)
+      : this(
+          apiSource: _json.containsKey('apiSource')
+              ? _json['apiSource'] as core.String
+              : null,
+          attributes: _json.containsKey('attributes')
+              ? (_json['attributes'] as core.List)
+                  .map<GoogleCloudApigeeV1Attribute>((value) =>
+                      GoogleCloudApigeeV1Attribute.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          operations: _json.containsKey('operations')
+              ? (_json['operations'] as core.List)
+                  .map<GoogleCloudApigeeV1GraphQLOperation>((value) =>
+                      GoogleCloudApigeeV1GraphQLOperation.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          quota: _json.containsKey('quota')
+              ? GoogleCloudApigeeV1Quota.fromJson(
+                  _json['quota'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiSource != null) 'apiSource': apiSource!,
@@ -15176,20 +15544,24 @@ class GoogleCloudApigeeV1GraphQLOperationGroup {
   /// Required.
   core.List<GoogleCloudApigeeV1GraphQLOperationConfig>? operationConfigs;
 
-  GoogleCloudApigeeV1GraphQLOperationGroup();
+  GoogleCloudApigeeV1GraphQLOperationGroup({
+    this.operationConfigType,
+    this.operationConfigs,
+  });
 
-  GoogleCloudApigeeV1GraphQLOperationGroup.fromJson(core.Map _json) {
-    if (_json.containsKey('operationConfigType')) {
-      operationConfigType = _json['operationConfigType'] as core.String;
-    }
-    if (_json.containsKey('operationConfigs')) {
-      operationConfigs = (_json['operationConfigs'] as core.List)
-          .map<GoogleCloudApigeeV1GraphQLOperationConfig>((value) =>
-              GoogleCloudApigeeV1GraphQLOperationConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1GraphQLOperationGroup.fromJson(core.Map _json)
+      : this(
+          operationConfigType: _json.containsKey('operationConfigType')
+              ? _json['operationConfigType'] as core.String
+              : null,
+          operationConfigs: _json.containsKey('operationConfigs')
+              ? (_json['operationConfigs'] as core.List)
+                  .map<GoogleCloudApigeeV1GraphQLOperationConfig>((value) =>
+                      GoogleCloudApigeeV1GraphQLOperationConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (operationConfigType != null)
@@ -15220,29 +15592,32 @@ class GoogleCloudApigeeV1IngressConfig {
   /// organization is deleted and recreated.
   core.String? uid;
 
-  GoogleCloudApigeeV1IngressConfig();
+  GoogleCloudApigeeV1IngressConfig({
+    this.environmentGroups,
+    this.name,
+    this.revisionCreateTime,
+    this.revisionId,
+    this.uid,
+  });
 
-  GoogleCloudApigeeV1IngressConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('environmentGroups')) {
-      environmentGroups = (_json['environmentGroups'] as core.List)
-          .map<GoogleCloudApigeeV1EnvironmentGroupConfig>((value) =>
-              GoogleCloudApigeeV1EnvironmentGroupConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('revisionCreateTime')) {
-      revisionCreateTime = _json['revisionCreateTime'] as core.String;
-    }
-    if (_json.containsKey('revisionId')) {
-      revisionId = _json['revisionId'] as core.String;
-    }
-    if (_json.containsKey('uid')) {
-      uid = _json['uid'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1IngressConfig.fromJson(core.Map _json)
+      : this(
+          environmentGroups: _json.containsKey('environmentGroups')
+              ? (_json['environmentGroups'] as core.List)
+                  .map<GoogleCloudApigeeV1EnvironmentGroupConfig>((value) =>
+                      GoogleCloudApigeeV1EnvironmentGroupConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          revisionCreateTime: _json.containsKey('revisionCreateTime')
+              ? _json['revisionCreateTime'] as core.String
+              : null,
+          revisionId: _json.containsKey('revisionId')
+              ? _json['revisionId'] as core.String
+              : null,
+          uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (environmentGroups != null)
@@ -15337,43 +15712,49 @@ class GoogleCloudApigeeV1Instance {
   /// - "UPDATING" : The resource is being updated.
   core.String? state;
 
-  GoogleCloudApigeeV1Instance();
+  GoogleCloudApigeeV1Instance({
+    this.createdAt,
+    this.description,
+    this.diskEncryptionKeyName,
+    this.displayName,
+    this.host,
+    this.lastModifiedAt,
+    this.location,
+    this.name,
+    this.peeringCidrRange,
+    this.port,
+    this.state,
+  });
 
-  GoogleCloudApigeeV1Instance.fromJson(core.Map _json) {
-    if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('diskEncryptionKeyName')) {
-      diskEncryptionKeyName = _json['diskEncryptionKeyName'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('host')) {
-      host = _json['host'] as core.String;
-    }
-    if (_json.containsKey('lastModifiedAt')) {
-      lastModifiedAt = _json['lastModifiedAt'] as core.String;
-    }
-    if (_json.containsKey('location')) {
-      location = _json['location'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('peeringCidrRange')) {
-      peeringCidrRange = _json['peeringCidrRange'] as core.String;
-    }
-    if (_json.containsKey('port')) {
-      port = _json['port'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1Instance.fromJson(core.Map _json)
+      : this(
+          createdAt: _json.containsKey('createdAt')
+              ? _json['createdAt'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          diskEncryptionKeyName: _json.containsKey('diskEncryptionKeyName')
+              ? _json['diskEncryptionKeyName'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          host: _json.containsKey('host') ? _json['host'] as core.String : null,
+          lastModifiedAt: _json.containsKey('lastModifiedAt')
+              ? _json['lastModifiedAt'] as core.String
+              : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          peeringCidrRange: _json.containsKey('peeringCidrRange')
+              ? _json['peeringCidrRange'] as core.String
+              : null,
+          port: _json.containsKey('port') ? _json['port'] as core.String : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createdAt != null) 'createdAt': createdAt!,
@@ -15407,19 +15788,22 @@ class GoogleCloudApigeeV1InstanceAttachment {
   /// Output only.
   core.String? name;
 
-  GoogleCloudApigeeV1InstanceAttachment();
+  GoogleCloudApigeeV1InstanceAttachment({
+    this.createdAt,
+    this.environment,
+    this.name,
+  });
 
-  GoogleCloudApigeeV1InstanceAttachment.fromJson(core.Map _json) {
-    if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'] as core.String;
-    }
-    if (_json.containsKey('environment')) {
-      environment = _json['environment'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1InstanceAttachment.fromJson(core.Map _json)
+      : this(
+          createdAt: _json.containsKey('createdAt')
+              ? _json['createdAt'] as core.String
+              : null,
+          environment: _json.containsKey('environment')
+              ? _json['environment'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createdAt != null) 'createdAt': createdAt!,
@@ -15443,29 +15827,36 @@ class GoogleCloudApigeeV1InstanceDeploymentStatus {
   /// ID of the instance reporting the status.
   core.String? instance;
 
-  GoogleCloudApigeeV1InstanceDeploymentStatus();
+  GoogleCloudApigeeV1InstanceDeploymentStatus({
+    this.deployedRevisions,
+    this.deployedRoutes,
+    this.instance,
+  });
 
-  GoogleCloudApigeeV1InstanceDeploymentStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('deployedRevisions')) {
-      deployedRevisions = (_json['deployedRevisions'] as core.List)
-          .map<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision>(
-              (value) =>
-                  GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('deployedRoutes')) {
-      deployedRoutes = (_json['deployedRoutes'] as core.List)
-          .map<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute>(
-              (value) =>
-                  GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('instance')) {
-      instance = _json['instance'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1InstanceDeploymentStatus.fromJson(core.Map _json)
+      : this(
+          deployedRevisions: _json.containsKey('deployedRevisions')
+              ? (_json['deployedRevisions'] as core.List)
+                  .map<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision>(
+                      (value) =>
+                          GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          deployedRoutes: _json.containsKey('deployedRoutes')
+              ? (_json['deployedRoutes'] as core.List)
+                  .map<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute>(
+                      (value) =>
+                          GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          instance: _json.containsKey('instance')
+              ? _json['instance'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deployedRevisions != null)
@@ -15486,17 +15877,21 @@ class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision {
   /// API proxy revision reported as deployed.
   core.String? revision;
 
-  GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision();
+  GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision({
+    this.percentage,
+    this.revision,
+  });
 
   GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('percentage')) {
-      percentage = _json['percentage'] as core.int;
-    }
-    if (_json.containsKey('revision')) {
-      revision = _json['revision'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          percentage: _json.containsKey('percentage')
+              ? _json['percentage'] as core.int
+              : null,
+          revision: _json.containsKey('revision')
+              ? _json['revision'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (percentage != null) 'percentage': percentage!,
@@ -15520,23 +15915,29 @@ class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute {
   /// Percentage of ingress replicas reporting this route.
   core.int? percentage;
 
-  GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute();
+  GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute({
+    this.basepath,
+    this.envgroup,
+    this.environment,
+    this.percentage,
+  });
 
   GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('basepath')) {
-      basepath = _json['basepath'] as core.String;
-    }
-    if (_json.containsKey('envgroup')) {
-      envgroup = _json['envgroup'] as core.String;
-    }
-    if (_json.containsKey('environment')) {
-      environment = _json['environment'] as core.String;
-    }
-    if (_json.containsKey('percentage')) {
-      percentage = _json['percentage'] as core.int;
-    }
-  }
+      core.Map _json)
+      : this(
+          basepath: _json.containsKey('basepath')
+              ? _json['basepath'] as core.String
+              : null,
+          envgroup: _json.containsKey('envgroup')
+              ? _json['envgroup'] as core.String
+              : null,
+          environment: _json.containsKey('environment')
+              ? _json['environment'] as core.String
+              : null,
+          percentage: _json.containsKey('percentage')
+              ? _json['percentage'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (basepath != null) 'basepath': basepath!,
@@ -15551,13 +15952,16 @@ class GoogleCloudApigeeV1IntegrationConfig {
   /// Flag that specifies whether the Integration add-on is enabled.
   core.bool? enabled;
 
-  GoogleCloudApigeeV1IntegrationConfig();
+  GoogleCloudApigeeV1IntegrationConfig({
+    this.enabled,
+  });
 
-  GoogleCloudApigeeV1IntegrationConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-  }
+  GoogleCloudApigeeV1IntegrationConfig.fromJson(core.Map _json)
+      : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -15574,16 +15978,20 @@ class GoogleCloudApigeeV1KeyAliasReference {
   /// `organizations/{org}/environments/{env}/references/{reference}`
   core.String? reference;
 
-  GoogleCloudApigeeV1KeyAliasReference();
+  GoogleCloudApigeeV1KeyAliasReference({
+    this.aliasId,
+    this.reference,
+  });
 
-  GoogleCloudApigeeV1KeyAliasReference.fromJson(core.Map _json) {
-    if (_json.containsKey('aliasId')) {
-      aliasId = _json['aliasId'] as core.String;
-    }
-    if (_json.containsKey('reference')) {
-      reference = _json['reference'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1KeyAliasReference.fromJson(core.Map _json)
+      : this(
+          aliasId: _json.containsKey('aliasId')
+              ? _json['aliasId'] as core.String
+              : null,
+          reference: _json.containsKey('reference')
+              ? _json['reference'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (aliasId != null) 'aliasId': aliasId!,
@@ -15603,16 +16011,18 @@ class GoogleCloudApigeeV1KeyValueMap {
   /// Required.
   core.String? name;
 
-  GoogleCloudApigeeV1KeyValueMap();
+  GoogleCloudApigeeV1KeyValueMap({
+    this.encrypted,
+    this.name,
+  });
 
-  GoogleCloudApigeeV1KeyValueMap.fromJson(core.Map _json) {
-    if (_json.containsKey('encrypted')) {
-      encrypted = _json['encrypted'] as core.bool;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1KeyValueMap.fromJson(core.Map _json)
+      : this(
+          encrypted: _json.containsKey('encrypted')
+              ? _json['encrypted'] as core.bool
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (encrypted != null) 'encrypted': encrypted!,
@@ -15634,18 +16044,20 @@ class GoogleCloudApigeeV1Keystore {
   /// Required.
   core.String? name;
 
-  GoogleCloudApigeeV1Keystore();
+  GoogleCloudApigeeV1Keystore({
+    this.aliases,
+    this.name,
+  });
 
-  GoogleCloudApigeeV1Keystore.fromJson(core.Map _json) {
-    if (_json.containsKey('aliases')) {
-      aliases = (_json['aliases'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1Keystore.fromJson(core.Map _json)
+      : this(
+          aliases: _json.containsKey('aliases')
+              ? (_json['aliases'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (aliases != null) 'aliases': aliases!,
@@ -15661,20 +16073,22 @@ class GoogleCloudApigeeV1KeystoreConfig {
   /// `organizations/{org}/environments/{env}/keystores/{keystore}`
   core.String? name;
 
-  GoogleCloudApigeeV1KeystoreConfig();
+  GoogleCloudApigeeV1KeystoreConfig({
+    this.aliases,
+    this.name,
+  });
 
-  GoogleCloudApigeeV1KeystoreConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('aliases')) {
-      aliases = (_json['aliases'] as core.List)
-          .map<GoogleCloudApigeeV1AliasRevisionConfig>((value) =>
-              GoogleCloudApigeeV1AliasRevisionConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1KeystoreConfig.fromJson(core.Map _json)
+      : this(
+          aliases: _json.containsKey('aliases')
+              ? (_json['aliases'] as core.List)
+                  .map<GoogleCloudApigeeV1AliasRevisionConfig>((value) =>
+                      GoogleCloudApigeeV1AliasRevisionConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (aliases != null)
@@ -15700,29 +16114,36 @@ class GoogleCloudApigeeV1ListApiCategoriesResponse {
   /// Status of the operation.
   core.String? status;
 
-  GoogleCloudApigeeV1ListApiCategoriesResponse();
+  GoogleCloudApigeeV1ListApiCategoriesResponse({
+    this.data,
+    this.errorCode,
+    this.message,
+    this.requestId,
+    this.status,
+  });
 
-  GoogleCloudApigeeV1ListApiCategoriesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('data')) {
-      data = (_json['data'] as core.List)
-          .map<GoogleCloudApigeeV1ApiCategoryData>((value) =>
-              GoogleCloudApigeeV1ApiCategoryData.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('errorCode')) {
-      errorCode = _json['errorCode'] as core.String;
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-    if (_json.containsKey('requestId')) {
-      requestId = _json['requestId'] as core.String;
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1ListApiCategoriesResponse.fromJson(core.Map _json)
+      : this(
+          data: _json.containsKey('data')
+              ? (_json['data'] as core.List)
+                  .map<GoogleCloudApigeeV1ApiCategoryData>((value) =>
+                      GoogleCloudApigeeV1ApiCategoryData.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          errorCode: _json.containsKey('errorCode')
+              ? _json['errorCode'] as core.String
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+          requestId: _json.containsKey('requestId')
+              ? _json['requestId'] as core.String
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (data != null) 'data': data!.map((value) => value.toJson()).toList(),
@@ -15737,17 +16158,20 @@ class GoogleCloudApigeeV1ListApiProductsResponse {
   /// Lists all API product names defined for an organization.
   core.List<GoogleCloudApigeeV1ApiProduct>? apiProduct;
 
-  GoogleCloudApigeeV1ListApiProductsResponse();
+  GoogleCloudApigeeV1ListApiProductsResponse({
+    this.apiProduct,
+  });
 
-  GoogleCloudApigeeV1ListApiProductsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('apiProduct')) {
-      apiProduct = (_json['apiProduct'] as core.List)
-          .map<GoogleCloudApigeeV1ApiProduct>((value) =>
-              GoogleCloudApigeeV1ApiProduct.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1ListApiProductsResponse.fromJson(core.Map _json)
+      : this(
+          apiProduct: _json.containsKey('apiProduct')
+              ? (_json['apiProduct'] as core.List)
+                  .map<GoogleCloudApigeeV1ApiProduct>((value) =>
+                      GoogleCloudApigeeV1ApiProduct.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiProduct != null)
@@ -15758,17 +16182,20 @@ class GoogleCloudApigeeV1ListApiProductsResponse {
 class GoogleCloudApigeeV1ListApiProxiesResponse {
   core.List<GoogleCloudApigeeV1ApiProxy>? proxies;
 
-  GoogleCloudApigeeV1ListApiProxiesResponse();
+  GoogleCloudApigeeV1ListApiProxiesResponse({
+    this.proxies,
+  });
 
-  GoogleCloudApigeeV1ListApiProxiesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('proxies')) {
-      proxies = (_json['proxies'] as core.List)
-          .map<GoogleCloudApigeeV1ApiProxy>((value) =>
-              GoogleCloudApigeeV1ApiProxy.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1ListApiProxiesResponse.fromJson(core.Map _json)
+      : this(
+          proxies: _json.containsKey('proxies')
+              ? (_json['proxies'] as core.List)
+                  .map<GoogleCloudApigeeV1ApiProxy>((value) =>
+                      GoogleCloudApigeeV1ApiProxy.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (proxies != null)
@@ -15779,17 +16206,20 @@ class GoogleCloudApigeeV1ListApiProxiesResponse {
 class GoogleCloudApigeeV1ListAppsResponse {
   core.List<GoogleCloudApigeeV1App>? app;
 
-  GoogleCloudApigeeV1ListAppsResponse();
+  GoogleCloudApigeeV1ListAppsResponse({
+    this.app,
+  });
 
-  GoogleCloudApigeeV1ListAppsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('app')) {
-      app = (_json['app'] as core.List)
-          .map<GoogleCloudApigeeV1App>((value) =>
-              GoogleCloudApigeeV1App.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1ListAppsResponse.fromJson(core.Map _json)
+      : this(
+          app: _json.containsKey('app')
+              ? (_json['app'] as core.List)
+                  .map<GoogleCloudApigeeV1App>((value) =>
+                      GoogleCloudApigeeV1App.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (app != null) 'app': app!.map((value) => value.toJson()).toList(),
@@ -15801,17 +16231,20 @@ class GoogleCloudApigeeV1ListAsyncQueriesResponse {
   /// The asynchronous queries belong to requested resource name.
   core.List<GoogleCloudApigeeV1AsyncQuery>? queries;
 
-  GoogleCloudApigeeV1ListAsyncQueriesResponse();
+  GoogleCloudApigeeV1ListAsyncQueriesResponse({
+    this.queries,
+  });
 
-  GoogleCloudApigeeV1ListAsyncQueriesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('queries')) {
-      queries = (_json['queries'] as core.List)
-          .map<GoogleCloudApigeeV1AsyncQuery>((value) =>
-              GoogleCloudApigeeV1AsyncQuery.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1ListAsyncQueriesResponse.fromJson(core.Map _json)
+      : this(
+          queries: _json.containsKey('queries')
+              ? (_json['queries'] as core.List)
+                  .map<GoogleCloudApigeeV1AsyncQuery>((value) =>
+                      GoogleCloudApigeeV1AsyncQuery.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (queries != null)
@@ -15823,17 +16256,20 @@ class GoogleCloudApigeeV1ListAsyncQueriesResponse {
 class GoogleCloudApigeeV1ListCustomReportsResponse {
   core.List<GoogleCloudApigeeV1CustomReport>? qualifier;
 
-  GoogleCloudApigeeV1ListCustomReportsResponse();
+  GoogleCloudApigeeV1ListCustomReportsResponse({
+    this.qualifier,
+  });
 
-  GoogleCloudApigeeV1ListCustomReportsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('qualifier')) {
-      qualifier = (_json['qualifier'] as core.List)
-          .map<GoogleCloudApigeeV1CustomReport>((value) =>
-              GoogleCloudApigeeV1CustomReport.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1ListCustomReportsResponse.fromJson(core.Map _json)
+      : this(
+          qualifier: _json.containsKey('qualifier')
+              ? (_json['qualifier'] as core.List)
+                  .map<GoogleCloudApigeeV1CustomReport>((value) =>
+                      GoogleCloudApigeeV1CustomReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (qualifier != null)
@@ -15852,20 +16288,24 @@ class GoogleCloudApigeeV1ListDataCollectorsResponse {
   /// If omitted, no subsequent pages exist.
   core.String? nextPageToken;
 
-  GoogleCloudApigeeV1ListDataCollectorsResponse();
+  GoogleCloudApigeeV1ListDataCollectorsResponse({
+    this.dataCollectors,
+    this.nextPageToken,
+  });
 
-  GoogleCloudApigeeV1ListDataCollectorsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('dataCollectors')) {
-      dataCollectors = (_json['dataCollectors'] as core.List)
-          .map<GoogleCloudApigeeV1DataCollector>((value) =>
-              GoogleCloudApigeeV1DataCollector.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1ListDataCollectorsResponse.fromJson(core.Map _json)
+      : this(
+          dataCollectors: _json.containsKey('dataCollectors')
+              ? (_json['dataCollectors'] as core.List)
+                  .map<GoogleCloudApigeeV1DataCollector>((value) =>
+                      GoogleCloudApigeeV1DataCollector.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataCollectors != null)
@@ -15880,17 +16320,20 @@ class GoogleCloudApigeeV1ListDatastoresResponse {
   /// A list of datastores
   core.List<GoogleCloudApigeeV1Datastore>? datastores;
 
-  GoogleCloudApigeeV1ListDatastoresResponse();
+  GoogleCloudApigeeV1ListDatastoresResponse({
+    this.datastores,
+  });
 
-  GoogleCloudApigeeV1ListDatastoresResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('datastores')) {
-      datastores = (_json['datastores'] as core.List)
-          .map<GoogleCloudApigeeV1Datastore>((value) =>
-              GoogleCloudApigeeV1Datastore.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1ListDatastoresResponse.fromJson(core.Map _json)
+      : this(
+          datastores: _json.containsKey('datastores')
+              ? (_json['datastores'] as core.List)
+                  .map<GoogleCloudApigeeV1Datastore>((value) =>
+                      GoogleCloudApigeeV1Datastore.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (datastores != null)
@@ -15909,20 +16352,24 @@ class GoogleCloudApigeeV1ListDebugSessionsResponse {
   /// creation timestamp.
   core.List<GoogleCloudApigeeV1Session>? sessions;
 
-  GoogleCloudApigeeV1ListDebugSessionsResponse();
+  GoogleCloudApigeeV1ListDebugSessionsResponse({
+    this.nextPageToken,
+    this.sessions,
+  });
 
-  GoogleCloudApigeeV1ListDebugSessionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('sessions')) {
-      sessions = (_json['sessions'] as core.List)
-          .map<GoogleCloudApigeeV1Session>((value) =>
-              GoogleCloudApigeeV1Session.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1ListDebugSessionsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          sessions: _json.containsKey('sessions')
+              ? (_json['sessions'] as core.List)
+                  .map<GoogleCloudApigeeV1Session>((value) =>
+                      GoogleCloudApigeeV1Session.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -15935,17 +16382,20 @@ class GoogleCloudApigeeV1ListDeploymentsResponse {
   /// List of deployments.
   core.List<GoogleCloudApigeeV1Deployment>? deployments;
 
-  GoogleCloudApigeeV1ListDeploymentsResponse();
+  GoogleCloudApigeeV1ListDeploymentsResponse({
+    this.deployments,
+  });
 
-  GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('deployments')) {
-      deployments = (_json['deployments'] as core.List)
-          .map<GoogleCloudApigeeV1Deployment>((value) =>
-              GoogleCloudApigeeV1Deployment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(core.Map _json)
+      : this(
+          deployments: _json.containsKey('deployments')
+              ? (_json['deployments'] as core.List)
+                  .map<GoogleCloudApigeeV1Deployment>((value) =>
+                      GoogleCloudApigeeV1Deployment.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deployments != null)
@@ -15957,17 +16407,20 @@ class GoogleCloudApigeeV1ListDeveloperAppsResponse {
   /// List of developer apps and their credentials.
   core.List<GoogleCloudApigeeV1DeveloperApp>? app;
 
-  GoogleCloudApigeeV1ListDeveloperAppsResponse();
+  GoogleCloudApigeeV1ListDeveloperAppsResponse({
+    this.app,
+  });
 
-  GoogleCloudApigeeV1ListDeveloperAppsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('app')) {
-      app = (_json['app'] as core.List)
-          .map<GoogleCloudApigeeV1DeveloperApp>((value) =>
-              GoogleCloudApigeeV1DeveloperApp.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1ListDeveloperAppsResponse.fromJson(core.Map _json)
+      : this(
+          app: _json.containsKey('app')
+              ? (_json['app'] as core.List)
+                  .map<GoogleCloudApigeeV1DeveloperApp>((value) =>
+                      GoogleCloudApigeeV1DeveloperApp.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (app != null) 'app': app!.map((value) => value.toJson()).toList(),
@@ -15984,21 +16437,24 @@ class GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextStartKey;
 
-  GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse();
+  GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse({
+    this.developerSubscriptions,
+    this.nextStartKey,
+  });
 
-  GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('developerSubscriptions')) {
-      developerSubscriptions = (_json['developerSubscriptions'] as core.List)
-          .map<GoogleCloudApigeeV1DeveloperSubscription>((value) =>
-              GoogleCloudApigeeV1DeveloperSubscription.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextStartKey')) {
-      nextStartKey = _json['nextStartKey'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse.fromJson(core.Map _json)
+      : this(
+          developerSubscriptions: _json.containsKey('developerSubscriptions')
+              ? (_json['developerSubscriptions'] as core.List)
+                  .map<GoogleCloudApigeeV1DeveloperSubscription>((value) =>
+                      GoogleCloudApigeeV1DeveloperSubscription.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextStartKey: _json.containsKey('nextStartKey')
+              ? _json['nextStartKey'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (developerSubscriptions != null)
@@ -16020,22 +16476,26 @@ class GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse {
   /// If omitted, no subsequent pages exist.
   core.String? nextPageToken;
 
-  GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse();
+  GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse({
+    this.environmentGroupAttachments,
+    this.nextPageToken,
+  });
 
   GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('environmentGroupAttachments')) {
-      environmentGroupAttachments =
-          (_json['environmentGroupAttachments'] as core.List)
-              .map<GoogleCloudApigeeV1EnvironmentGroupAttachment>((value) =>
-                  GoogleCloudApigeeV1EnvironmentGroupAttachment.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          environmentGroupAttachments: _json
+                  .containsKey('environmentGroupAttachments')
+              ? (_json['environmentGroupAttachments'] as core.List)
+                  .map<GoogleCloudApigeeV1EnvironmentGroupAttachment>((value) =>
+                      GoogleCloudApigeeV1EnvironmentGroupAttachment.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (environmentGroupAttachments != null)
@@ -16057,20 +16517,24 @@ class GoogleCloudApigeeV1ListEnvironmentGroupsResponse {
   /// If omitted, no subsequent pages exist.
   core.String? nextPageToken;
 
-  GoogleCloudApigeeV1ListEnvironmentGroupsResponse();
+  GoogleCloudApigeeV1ListEnvironmentGroupsResponse({
+    this.environmentGroups,
+    this.nextPageToken,
+  });
 
-  GoogleCloudApigeeV1ListEnvironmentGroupsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('environmentGroups')) {
-      environmentGroups = (_json['environmentGroups'] as core.List)
-          .map<GoogleCloudApigeeV1EnvironmentGroup>((value) =>
-              GoogleCloudApigeeV1EnvironmentGroup.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1ListEnvironmentGroupsResponse.fromJson(core.Map _json)
+      : this(
+          environmentGroups: _json.containsKey('environmentGroups')
+              ? (_json['environmentGroups'] as core.List)
+                  .map<GoogleCloudApigeeV1EnvironmentGroup>((value) =>
+                      GoogleCloudApigeeV1EnvironmentGroup.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (environmentGroups != null)
@@ -16085,17 +16549,20 @@ class GoogleCloudApigeeV1ListEnvironmentResourcesResponse {
   /// List of resources files.
   core.List<GoogleCloudApigeeV1ResourceFile>? resourceFile;
 
-  GoogleCloudApigeeV1ListEnvironmentResourcesResponse();
+  GoogleCloudApigeeV1ListEnvironmentResourcesResponse({
+    this.resourceFile,
+  });
 
-  GoogleCloudApigeeV1ListEnvironmentResourcesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('resourceFile')) {
-      resourceFile = (_json['resourceFile'] as core.List)
-          .map<GoogleCloudApigeeV1ResourceFile>((value) =>
-              GoogleCloudApigeeV1ResourceFile.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1ListEnvironmentResourcesResponse.fromJson(core.Map _json)
+      : this(
+          resourceFile: _json.containsKey('resourceFile')
+              ? (_json['resourceFile'] as core.List)
+                  .map<GoogleCloudApigeeV1ResourceFile>((value) =>
+                      GoogleCloudApigeeV1ResourceFile.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceFile != null)
@@ -16108,17 +16575,20 @@ class GoogleCloudApigeeV1ListExportsResponse {
   /// Details of the export jobs.
   core.List<GoogleCloudApigeeV1Export>? exports;
 
-  GoogleCloudApigeeV1ListExportsResponse();
+  GoogleCloudApigeeV1ListExportsResponse({
+    this.exports,
+  });
 
-  GoogleCloudApigeeV1ListExportsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('exports')) {
-      exports = (_json['exports'] as core.List)
-          .map<GoogleCloudApigeeV1Export>((value) =>
-              GoogleCloudApigeeV1Export.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1ListExportsResponse.fromJson(core.Map _json)
+      : this(
+          exports: _json.containsKey('exports')
+              ? (_json['exports'] as core.List)
+                  .map<GoogleCloudApigeeV1Export>((value) =>
+                      GoogleCloudApigeeV1Export.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exports != null)
@@ -16130,17 +16600,20 @@ class GoogleCloudApigeeV1ListHybridIssuersResponse {
   /// Lists of hybrid services and its trusted issuer email ids.
   core.List<GoogleCloudApigeeV1ServiceIssuersMapping>? issuers;
 
-  GoogleCloudApigeeV1ListHybridIssuersResponse();
+  GoogleCloudApigeeV1ListHybridIssuersResponse({
+    this.issuers,
+  });
 
-  GoogleCloudApigeeV1ListHybridIssuersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('issuers')) {
-      issuers = (_json['issuers'] as core.List)
-          .map<GoogleCloudApigeeV1ServiceIssuersMapping>((value) =>
-              GoogleCloudApigeeV1ServiceIssuersMapping.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1ListHybridIssuersResponse.fromJson(core.Map _json)
+      : this(
+          issuers: _json.containsKey('issuers')
+              ? (_json['issuers'] as core.List)
+                  .map<GoogleCloudApigeeV1ServiceIssuersMapping>((value) =>
+                      GoogleCloudApigeeV1ServiceIssuersMapping.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (issuers != null)
@@ -16159,20 +16632,24 @@ class GoogleCloudApigeeV1ListInstanceAttachmentsResponse {
   /// If omitted, no subsequent pages exist.
   core.String? nextPageToken;
 
-  GoogleCloudApigeeV1ListInstanceAttachmentsResponse();
+  GoogleCloudApigeeV1ListInstanceAttachmentsResponse({
+    this.attachments,
+    this.nextPageToken,
+  });
 
-  GoogleCloudApigeeV1ListInstanceAttachmentsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('attachments')) {
-      attachments = (_json['attachments'] as core.List)
-          .map<GoogleCloudApigeeV1InstanceAttachment>((value) =>
-              GoogleCloudApigeeV1InstanceAttachment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1ListInstanceAttachmentsResponse.fromJson(core.Map _json)
+      : this(
+          attachments: _json.containsKey('attachments')
+              ? (_json['attachments'] as core.List)
+                  .map<GoogleCloudApigeeV1InstanceAttachment>((value) =>
+                      GoogleCloudApigeeV1InstanceAttachment.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attachments != null)
@@ -16192,20 +16669,24 @@ class GoogleCloudApigeeV1ListInstancesResponse {
   /// If omitted, no subsequent pages exist.
   core.String? nextPageToken;
 
-  GoogleCloudApigeeV1ListInstancesResponse();
+  GoogleCloudApigeeV1ListInstancesResponse({
+    this.instances,
+    this.nextPageToken,
+  });
 
-  GoogleCloudApigeeV1ListInstancesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('instances')) {
-      instances = (_json['instances'] as core.List)
-          .map<GoogleCloudApigeeV1Instance>((value) =>
-              GoogleCloudApigeeV1Instance.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1ListInstancesResponse.fromJson(core.Map _json)
+      : this(
+          instances: _json.containsKey('instances')
+              ? (_json['instances'] as core.List)
+                  .map<GoogleCloudApigeeV1Instance>((value) =>
+                      GoogleCloudApigeeV1Instance.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (instances != null)
@@ -16225,20 +16706,24 @@ class GoogleCloudApigeeV1ListNatAddressesResponse {
   /// If omitted, no subsequent pages exist.
   core.String? nextPageToken;
 
-  GoogleCloudApigeeV1ListNatAddressesResponse();
+  GoogleCloudApigeeV1ListNatAddressesResponse({
+    this.natAddresses,
+    this.nextPageToken,
+  });
 
-  GoogleCloudApigeeV1ListNatAddressesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('natAddresses')) {
-      natAddresses = (_json['natAddresses'] as core.List)
-          .map<GoogleCloudApigeeV1NatAddress>((value) =>
-              GoogleCloudApigeeV1NatAddress.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1ListNatAddressesResponse.fromJson(core.Map _json)
+      : this(
+          natAddresses: _json.containsKey('natAddresses')
+              ? (_json['natAddresses'] as core.List)
+                  .map<GoogleCloudApigeeV1NatAddress>((value) =>
+                      GoogleCloudApigeeV1NatAddress.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (natAddresses != null)
@@ -16251,17 +16736,20 @@ class GoogleCloudApigeeV1ListOfDevelopersResponse {
   /// List of developers.
   core.List<GoogleCloudApigeeV1Developer>? developer;
 
-  GoogleCloudApigeeV1ListOfDevelopersResponse();
+  GoogleCloudApigeeV1ListOfDevelopersResponse({
+    this.developer,
+  });
 
-  GoogleCloudApigeeV1ListOfDevelopersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('developer')) {
-      developer = (_json['developer'] as core.List)
-          .map<GoogleCloudApigeeV1Developer>((value) =>
-              GoogleCloudApigeeV1Developer.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1ListOfDevelopersResponse.fromJson(core.Map _json)
+      : this(
+          developer: _json.containsKey('developer')
+              ? (_json['developer'] as core.List)
+                  .map<GoogleCloudApigeeV1Developer>((value) =>
+                      GoogleCloudApigeeV1Developer.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (developer != null)
@@ -16273,17 +16761,20 @@ class GoogleCloudApigeeV1ListOrganizationsResponse {
   /// List of Apigee organizations and associated GCP projects.
   core.List<GoogleCloudApigeeV1OrganizationProjectMapping>? organizations;
 
-  GoogleCloudApigeeV1ListOrganizationsResponse();
+  GoogleCloudApigeeV1ListOrganizationsResponse({
+    this.organizations,
+  });
 
-  GoogleCloudApigeeV1ListOrganizationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('organizations')) {
-      organizations = (_json['organizations'] as core.List)
-          .map<GoogleCloudApigeeV1OrganizationProjectMapping>((value) =>
-              GoogleCloudApigeeV1OrganizationProjectMapping.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1ListOrganizationsResponse.fromJson(core.Map _json)
+      : this(
+          organizations: _json.containsKey('organizations')
+              ? (_json['organizations'] as core.List)
+                  .map<GoogleCloudApigeeV1OrganizationProjectMapping>((value) =>
+                      GoogleCloudApigeeV1OrganizationProjectMapping.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (organizations != null)
@@ -16302,20 +16793,24 @@ class GoogleCloudApigeeV1ListRatePlansResponse {
   /// List of rate plans in an organization.
   core.List<GoogleCloudApigeeV1RatePlan>? ratePlans;
 
-  GoogleCloudApigeeV1ListRatePlansResponse();
+  GoogleCloudApigeeV1ListRatePlansResponse({
+    this.nextStartKey,
+    this.ratePlans,
+  });
 
-  GoogleCloudApigeeV1ListRatePlansResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextStartKey')) {
-      nextStartKey = _json['nextStartKey'] as core.String;
-    }
-    if (_json.containsKey('ratePlans')) {
-      ratePlans = (_json['ratePlans'] as core.List)
-          .map<GoogleCloudApigeeV1RatePlan>((value) =>
-              GoogleCloudApigeeV1RatePlan.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1ListRatePlansResponse.fromJson(core.Map _json)
+      : this(
+          nextStartKey: _json.containsKey('nextStartKey')
+              ? _json['nextStartKey'] as core.String
+              : null,
+          ratePlans: _json.containsKey('ratePlans')
+              ? (_json['ratePlans'] as core.List)
+                  .map<GoogleCloudApigeeV1RatePlan>((value) =>
+                      GoogleCloudApigeeV1RatePlan.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextStartKey != null) 'nextStartKey': nextStartKey!,
@@ -16327,17 +16822,20 @@ class GoogleCloudApigeeV1ListRatePlansResponse {
 class GoogleCloudApigeeV1ListSharedFlowsResponse {
   core.List<GoogleCloudApigeeV1SharedFlow>? sharedFlows;
 
-  GoogleCloudApigeeV1ListSharedFlowsResponse();
+  GoogleCloudApigeeV1ListSharedFlowsResponse({
+    this.sharedFlows,
+  });
 
-  GoogleCloudApigeeV1ListSharedFlowsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('sharedFlows')) {
-      sharedFlows = (_json['sharedFlows'] as core.List)
-          .map<GoogleCloudApigeeV1SharedFlow>((value) =>
-              GoogleCloudApigeeV1SharedFlow.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1ListSharedFlowsResponse.fromJson(core.Map _json)
+      : this(
+          sharedFlows: _json.containsKey('sharedFlows')
+              ? (_json['sharedFlows'] as core.List)
+                  .map<GoogleCloudApigeeV1SharedFlow>((value) =>
+                      GoogleCloudApigeeV1SharedFlow.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sharedFlows != null)
@@ -16354,20 +16852,24 @@ class GoogleCloudApigeeV1ListTraceConfigOverridesResponse {
   /// List all trace configuration overrides in an environment.
   core.List<GoogleCloudApigeeV1TraceConfigOverride>? traceConfigOverrides;
 
-  GoogleCloudApigeeV1ListTraceConfigOverridesResponse();
+  GoogleCloudApigeeV1ListTraceConfigOverridesResponse({
+    this.nextPageToken,
+    this.traceConfigOverrides,
+  });
 
-  GoogleCloudApigeeV1ListTraceConfigOverridesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('traceConfigOverrides')) {
-      traceConfigOverrides = (_json['traceConfigOverrides'] as core.List)
-          .map<GoogleCloudApigeeV1TraceConfigOverride>((value) =>
-              GoogleCloudApigeeV1TraceConfigOverride.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1ListTraceConfigOverridesResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          traceConfigOverrides: _json.containsKey('traceConfigOverrides')
+              ? (_json['traceConfigOverrides'] as core.List)
+                  .map<GoogleCloudApigeeV1TraceConfigOverride>((value) =>
+                      GoogleCloudApigeeV1TraceConfigOverride.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -16390,20 +16892,24 @@ class GoogleCloudApigeeV1Metadata {
   /// edge.api.uapgroup2.agg_api" \]
   core.List<core.String>? notices;
 
-  GoogleCloudApigeeV1Metadata();
+  GoogleCloudApigeeV1Metadata({
+    this.errors,
+    this.notices,
+  });
 
-  GoogleCloudApigeeV1Metadata.fromJson(core.Map _json) {
-    if (_json.containsKey('errors')) {
-      errors = (_json['errors'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('notices')) {
-      notices = (_json['notices'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1Metadata.fromJson(core.Map _json)
+      : this(
+          errors: _json.containsKey('errors')
+              ? (_json['errors'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          notices: _json.containsKey('notices')
+              ? (_json['notices'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errors != null) 'errors': errors!,
@@ -16429,18 +16935,20 @@ class GoogleCloudApigeeV1Metric {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Object>? values;
 
-  GoogleCloudApigeeV1Metric();
+  GoogleCloudApigeeV1Metric({
+    this.name,
+    this.values,
+  });
 
-  GoogleCloudApigeeV1Metric.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('values')) {
-      values = (_json['values'] as core.List)
-          .map<core.Object>((value) => value as core.Object)
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1Metric.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          values: _json.containsKey('values')
+              ? (_json['values'] as core.List)
+                  .map<core.Object>((value) => value as core.Object)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -16453,13 +16961,16 @@ class GoogleCloudApigeeV1MonetizationConfig {
   /// Flag that specifies whether the Monetization add-on is enabled.
   core.bool? enabled;
 
-  GoogleCloudApigeeV1MonetizationConfig();
+  GoogleCloudApigeeV1MonetizationConfig({
+    this.enabled,
+  });
 
-  GoogleCloudApigeeV1MonetizationConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-  }
+  GoogleCloudApigeeV1MonetizationConfig.fromJson(core.Map _json)
+      : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -16493,19 +17004,21 @@ class GoogleCloudApigeeV1NatAddress {
   /// - "DELETING" : The NAT address is being deleted.
   core.String? state;
 
-  GoogleCloudApigeeV1NatAddress();
+  GoogleCloudApigeeV1NatAddress({
+    this.ipAddress,
+    this.name,
+    this.state,
+  });
 
-  GoogleCloudApigeeV1NatAddress.fromJson(core.Map _json) {
-    if (_json.containsKey('ipAddress')) {
-      ipAddress = _json['ipAddress'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1NatAddress.fromJson(core.Map _json)
+      : this(
+          ipAddress: _json.containsKey('ipAddress')
+              ? _json['ipAddress'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ipAddress != null) 'ipAddress': ipAddress!,
@@ -16528,18 +17041,22 @@ class GoogleCloudApigeeV1Operation {
   /// Required.
   core.String? resource;
 
-  GoogleCloudApigeeV1Operation();
+  GoogleCloudApigeeV1Operation({
+    this.methods,
+    this.resource,
+  });
 
-  GoogleCloudApigeeV1Operation.fromJson(core.Map _json) {
-    if (_json.containsKey('methods')) {
-      methods = (_json['methods'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('resource')) {
-      resource = _json['resource'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1Operation.fromJson(core.Map _json)
+      : this(
+          methods: _json.containsKey('methods')
+              ? (_json['methods'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          resource: _json.containsKey('resource')
+              ? _json['resource'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (methods != null) 'methods': methods!,
@@ -16572,31 +17089,37 @@ class GoogleCloudApigeeV1OperationConfig {
   /// If none are specified, quota enforcement will not be done.
   GoogleCloudApigeeV1Quota? quota;
 
-  GoogleCloudApigeeV1OperationConfig();
+  GoogleCloudApigeeV1OperationConfig({
+    this.apiSource,
+    this.attributes,
+    this.operations,
+    this.quota,
+  });
 
-  GoogleCloudApigeeV1OperationConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('apiSource')) {
-      apiSource = _json['apiSource'] as core.String;
-    }
-    if (_json.containsKey('attributes')) {
-      attributes = (_json['attributes'] as core.List)
-          .map<GoogleCloudApigeeV1Attribute>((value) =>
-              GoogleCloudApigeeV1Attribute.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('operations')) {
-      operations = (_json['operations'] as core.List)
-          .map<GoogleCloudApigeeV1Operation>((value) =>
-              GoogleCloudApigeeV1Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('quota')) {
-      quota = GoogleCloudApigeeV1Quota.fromJson(
-          _json['quota'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudApigeeV1OperationConfig.fromJson(core.Map _json)
+      : this(
+          apiSource: _json.containsKey('apiSource')
+              ? _json['apiSource'] as core.String
+              : null,
+          attributes: _json.containsKey('attributes')
+              ? (_json['attributes'] as core.List)
+                  .map<GoogleCloudApigeeV1Attribute>((value) =>
+                      GoogleCloudApigeeV1Attribute.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          operations: _json.containsKey('operations')
+              ? (_json['operations'] as core.List)
+                  .map<GoogleCloudApigeeV1Operation>((value) =>
+                      GoogleCloudApigeeV1Operation.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          quota: _json.containsKey('quota')
+              ? GoogleCloudApigeeV1Quota.fromJson(
+                  _json['quota'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiSource != null) 'apiSource': apiSource!,
@@ -16628,20 +17151,24 @@ class GoogleCloudApigeeV1OperationGroup {
   /// Required.
   core.List<GoogleCloudApigeeV1OperationConfig>? operationConfigs;
 
-  GoogleCloudApigeeV1OperationGroup();
+  GoogleCloudApigeeV1OperationGroup({
+    this.operationConfigType,
+    this.operationConfigs,
+  });
 
-  GoogleCloudApigeeV1OperationGroup.fromJson(core.Map _json) {
-    if (_json.containsKey('operationConfigType')) {
-      operationConfigType = _json['operationConfigType'] as core.String;
-    }
-    if (_json.containsKey('operationConfigs')) {
-      operationConfigs = (_json['operationConfigs'] as core.List)
-          .map<GoogleCloudApigeeV1OperationConfig>((value) =>
-              GoogleCloudApigeeV1OperationConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1OperationGroup.fromJson(core.Map _json)
+      : this(
+          operationConfigType: _json.containsKey('operationConfigType')
+              ? _json['operationConfigType'] as core.String
+              : null,
+          operationConfigs: _json.containsKey('operationConfigs')
+              ? (_json['operationConfigs'] as core.List)
+                  .map<GoogleCloudApigeeV1OperationConfig>((value) =>
+                      GoogleCloudApigeeV1OperationConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (operationConfigType != null)
@@ -16676,23 +17203,28 @@ class GoogleCloudApigeeV1OperationMetadata {
   /// Name of the resource for which the operation is operating on.
   core.String? targetResourceName;
 
-  GoogleCloudApigeeV1OperationMetadata();
+  GoogleCloudApigeeV1OperationMetadata({
+    this.operationType,
+    this.progress,
+    this.state,
+    this.targetResourceName,
+  });
 
-  GoogleCloudApigeeV1OperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('operationType')) {
-      operationType = _json['operationType'] as core.String;
-    }
-    if (_json.containsKey('progress')) {
-      progress = GoogleCloudApigeeV1OperationMetadataProgress.fromJson(
-          _json['progress'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('targetResourceName')) {
-      targetResourceName = _json['targetResourceName'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1OperationMetadata.fromJson(core.Map _json)
+      : this(
+          operationType: _json.containsKey('operationType')
+              ? _json['operationType'] as core.String
+              : null,
+          progress: _json.containsKey('progress')
+              ? GoogleCloudApigeeV1OperationMetadataProgress.fromJson(
+                  _json['progress'] as core.Map<core.String, core.dynamic>)
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          targetResourceName: _json.containsKey('targetResourceName')
+              ? _json['targetResourceName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (operationType != null) 'operationType': operationType!,
@@ -16725,27 +17257,32 @@ class GoogleCloudApigeeV1OperationMetadataProgress {
   /// - "FINISHED"
   core.String? state;
 
-  GoogleCloudApigeeV1OperationMetadataProgress();
+  GoogleCloudApigeeV1OperationMetadataProgress({
+    this.description,
+    this.details,
+    this.percentDone,
+    this.state,
+  });
 
-  GoogleCloudApigeeV1OperationMetadataProgress.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('percentDone')) {
-      percentDone = _json['percentDone'] as core.int;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1OperationMetadataProgress.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          percentDone: _json.containsKey('percentDone')
+              ? _json['percentDone'] as core.int
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -16770,14 +17307,17 @@ class GoogleCloudApigeeV1OptimizedStats {
   /// "sum(is_error)", "values": \[ 36.0 \] } \] } \] } } }
   GoogleCloudApigeeV1OptimizedStatsResponse? Response;
 
-  GoogleCloudApigeeV1OptimizedStats();
+  GoogleCloudApigeeV1OptimizedStats({
+    this.Response,
+  });
 
-  GoogleCloudApigeeV1OptimizedStats.fromJson(core.Map _json) {
-    if (_json.containsKey('Response')) {
-      Response = GoogleCloudApigeeV1OptimizedStatsResponse.fromJson(
-          _json['Response'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudApigeeV1OptimizedStats.fromJson(core.Map _json)
+      : this(
+          Response: _json.containsKey('Response')
+              ? GoogleCloudApigeeV1OptimizedStatsResponse.fromJson(
+                  _json['Response'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (Response != null) 'Response': Response!.toJson(),
@@ -16798,15 +17338,18 @@ class GoogleCloudApigeeV1OptimizedStatsNode {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Object>? data;
 
-  GoogleCloudApigeeV1OptimizedStatsNode();
+  GoogleCloudApigeeV1OptimizedStatsNode({
+    this.data,
+  });
 
-  GoogleCloudApigeeV1OptimizedStatsNode.fromJson(core.Map _json) {
-    if (_json.containsKey('data')) {
-      data = (_json['data'] as core.List)
-          .map<core.Object>((value) => value as core.Object)
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1OptimizedStatsNode.fromJson(core.Map _json)
+      : this(
+          data: _json.containsKey('data')
+              ? (_json['data'] as core.List)
+                  .map<core.Object>((value) => value as core.Object)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (data != null) 'data': data!,
@@ -16830,26 +17373,32 @@ class GoogleCloudApigeeV1OptimizedStatsResponse {
   /// This field contains a stats results.
   GoogleCloudApigeeV1OptimizedStatsNode? stats;
 
-  GoogleCloudApigeeV1OptimizedStatsResponse();
+  GoogleCloudApigeeV1OptimizedStatsResponse({
+    this.TimeUnit,
+    this.metaData,
+    this.resultTruncated,
+    this.stats,
+  });
 
-  GoogleCloudApigeeV1OptimizedStatsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('TimeUnit')) {
-      TimeUnit = (_json['TimeUnit'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('metaData')) {
-      metaData = GoogleCloudApigeeV1Metadata.fromJson(
-          _json['metaData'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('resultTruncated')) {
-      resultTruncated = _json['resultTruncated'] as core.bool;
-    }
-    if (_json.containsKey('stats')) {
-      stats = GoogleCloudApigeeV1OptimizedStatsNode.fromJson(
-          _json['stats'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudApigeeV1OptimizedStatsResponse.fromJson(core.Map _json)
+      : this(
+          TimeUnit: _json.containsKey('TimeUnit')
+              ? (_json['TimeUnit'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          metaData: _json.containsKey('metaData')
+              ? GoogleCloudApigeeV1Metadata.fromJson(
+                  _json['metaData'] as core.Map<core.String, core.dynamic>)
+              : null,
+          resultTruncated: _json.containsKey('resultTruncated')
+              ? _json['resultTruncated'] as core.bool
+              : null,
+          stats: _json.containsKey('stats')
+              ? GoogleCloudApigeeV1OptimizedStatsNode.fromJson(
+                  _json['stats'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (TimeUnit != null) 'TimeUnit': TimeUnit!,
@@ -17016,80 +17565,98 @@ class GoogleCloudApigeeV1Organization {
   /// - "TYPE_INTERNAL" : For internal users only.
   core.String? type;
 
-  GoogleCloudApigeeV1Organization();
+  GoogleCloudApigeeV1Organization({
+    this.addonsConfig,
+    this.analyticsRegion,
+    this.attributes,
+    this.authorizedNetwork,
+    this.billingType,
+    this.caCertificate,
+    this.createdAt,
+    this.customerName,
+    this.description,
+    this.displayName,
+    this.environments,
+    this.expiresAt,
+    this.lastModifiedAt,
+    this.name,
+    this.projectId,
+    this.properties,
+    this.runtimeDatabaseEncryptionKeyName,
+    this.runtimeType_,
+    this.state,
+    this.subscriptionType,
+    this.type,
+  });
 
-  GoogleCloudApigeeV1Organization.fromJson(core.Map _json) {
-    if (_json.containsKey('addonsConfig')) {
-      addonsConfig = GoogleCloudApigeeV1AddonsConfig.fromJson(
-          _json['addonsConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('analyticsRegion')) {
-      analyticsRegion = _json['analyticsRegion'] as core.String;
-    }
-    if (_json.containsKey('attributes')) {
-      attributes = (_json['attributes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('authorizedNetwork')) {
-      authorizedNetwork = _json['authorizedNetwork'] as core.String;
-    }
-    if (_json.containsKey('billingType')) {
-      billingType = _json['billingType'] as core.String;
-    }
-    if (_json.containsKey('caCertificate')) {
-      caCertificate = _json['caCertificate'] as core.String;
-    }
-    if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'] as core.String;
-    }
-    if (_json.containsKey('customerName')) {
-      customerName = _json['customerName'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('environments')) {
-      environments = (_json['environments'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('expiresAt')) {
-      expiresAt = _json['expiresAt'] as core.String;
-    }
-    if (_json.containsKey('lastModifiedAt')) {
-      lastModifiedAt = _json['lastModifiedAt'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('properties')) {
-      properties = GoogleCloudApigeeV1Properties.fromJson(
-          _json['properties'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('runtimeDatabaseEncryptionKeyName')) {
-      runtimeDatabaseEncryptionKeyName =
-          _json['runtimeDatabaseEncryptionKeyName'] as core.String;
-    }
-    if (_json.containsKey('runtimeType')) {
-      runtimeType_ = _json['runtimeType'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('subscriptionType')) {
-      subscriptionType = _json['subscriptionType'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1Organization.fromJson(core.Map _json)
+      : this(
+          addonsConfig: _json.containsKey('addonsConfig')
+              ? GoogleCloudApigeeV1AddonsConfig.fromJson(
+                  _json['addonsConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          analyticsRegion: _json.containsKey('analyticsRegion')
+              ? _json['analyticsRegion'] as core.String
+              : null,
+          attributes: _json.containsKey('attributes')
+              ? (_json['attributes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          authorizedNetwork: _json.containsKey('authorizedNetwork')
+              ? _json['authorizedNetwork'] as core.String
+              : null,
+          billingType: _json.containsKey('billingType')
+              ? _json['billingType'] as core.String
+              : null,
+          caCertificate: _json.containsKey('caCertificate')
+              ? _json['caCertificate'] as core.String
+              : null,
+          createdAt: _json.containsKey('createdAt')
+              ? _json['createdAt'] as core.String
+              : null,
+          customerName: _json.containsKey('customerName')
+              ? _json['customerName'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          environments: _json.containsKey('environments')
+              ? (_json['environments'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          expiresAt: _json.containsKey('expiresAt')
+              ? _json['expiresAt'] as core.String
+              : null,
+          lastModifiedAt: _json.containsKey('lastModifiedAt')
+              ? _json['lastModifiedAt'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          properties: _json.containsKey('properties')
+              ? GoogleCloudApigeeV1Properties.fromJson(
+                  _json['properties'] as core.Map<core.String, core.dynamic>)
+              : null,
+          runtimeDatabaseEncryptionKeyName:
+              _json.containsKey('runtimeDatabaseEncryptionKeyName')
+                  ? _json['runtimeDatabaseEncryptionKeyName'] as core.String
+                  : null,
+          runtimeType_: _json.containsKey('runtimeType')
+              ? _json['runtimeType'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          subscriptionType: _json.containsKey('subscriptionType')
+              ? _json['subscriptionType'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (addonsConfig != null) 'addonsConfig': addonsConfig!.toJson(),
@@ -17124,18 +17691,22 @@ class GoogleCloudApigeeV1OrganizationProjectMapping {
   /// List of GCP projects associated with the Apigee organization.
   core.List<core.String>? projectIds;
 
-  GoogleCloudApigeeV1OrganizationProjectMapping();
+  GoogleCloudApigeeV1OrganizationProjectMapping({
+    this.organization,
+    this.projectIds,
+  });
 
-  GoogleCloudApigeeV1OrganizationProjectMapping.fromJson(core.Map _json) {
-    if (_json.containsKey('organization')) {
-      organization = _json['organization'] as core.String;
-    }
-    if (_json.containsKey('projectIds')) {
-      projectIds = (_json['projectIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1OrganizationProjectMapping.fromJson(core.Map _json)
+      : this(
+          organization: _json.containsKey('organization')
+              ? _json['organization'] as core.String
+              : null,
+          projectIds: _json.containsKey('projectIds')
+              ? (_json['projectIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (organization != null) 'organization': organization!,
@@ -17178,37 +17749,48 @@ class GoogleCloudApigeeV1PodStatus {
   /// Human-readable message associated with the status code.
   core.String? statusCodeDetails;
 
-  GoogleCloudApigeeV1PodStatus();
+  GoogleCloudApigeeV1PodStatus({
+    this.appVersion,
+    this.deploymentStatus,
+    this.deploymentStatusTime,
+    this.deploymentTime,
+    this.podName,
+    this.podStatus,
+    this.podStatusTime,
+    this.statusCode,
+    this.statusCodeDetails,
+  });
 
-  GoogleCloudApigeeV1PodStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('appVersion')) {
-      appVersion = _json['appVersion'] as core.String;
-    }
-    if (_json.containsKey('deploymentStatus')) {
-      deploymentStatus = _json['deploymentStatus'] as core.String;
-    }
-    if (_json.containsKey('deploymentStatusTime')) {
-      deploymentStatusTime = _json['deploymentStatusTime'] as core.String;
-    }
-    if (_json.containsKey('deploymentTime')) {
-      deploymentTime = _json['deploymentTime'] as core.String;
-    }
-    if (_json.containsKey('podName')) {
-      podName = _json['podName'] as core.String;
-    }
-    if (_json.containsKey('podStatus')) {
-      podStatus = _json['podStatus'] as core.String;
-    }
-    if (_json.containsKey('podStatusTime')) {
-      podStatusTime = _json['podStatusTime'] as core.String;
-    }
-    if (_json.containsKey('statusCode')) {
-      statusCode = _json['statusCode'] as core.String;
-    }
-    if (_json.containsKey('statusCodeDetails')) {
-      statusCodeDetails = _json['statusCodeDetails'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1PodStatus.fromJson(core.Map _json)
+      : this(
+          appVersion: _json.containsKey('appVersion')
+              ? _json['appVersion'] as core.String
+              : null,
+          deploymentStatus: _json.containsKey('deploymentStatus')
+              ? _json['deploymentStatus'] as core.String
+              : null,
+          deploymentStatusTime: _json.containsKey('deploymentStatusTime')
+              ? _json['deploymentStatusTime'] as core.String
+              : null,
+          deploymentTime: _json.containsKey('deploymentTime')
+              ? _json['deploymentTime'] as core.String
+              : null,
+          podName: _json.containsKey('podName')
+              ? _json['podName'] as core.String
+              : null,
+          podStatus: _json.containsKey('podStatus')
+              ? _json['podStatus'] as core.String
+              : null,
+          podStatusTime: _json.containsKey('podStatusTime')
+              ? _json['podStatusTime'] as core.String
+              : null,
+          statusCode: _json.containsKey('statusCode')
+              ? _json['statusCode'] as core.String
+              : null,
+          statusCodeDetails: _json.containsKey('statusCodeDetails')
+              ? _json['statusCodeDetails'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appVersion != null) 'appVersion': appVersion!,
@@ -17242,20 +17824,22 @@ class GoogleCloudApigeeV1Point {
   /// List of results extracted from a given debug point.
   core.List<GoogleCloudApigeeV1Result>? results;
 
-  GoogleCloudApigeeV1Point();
+  GoogleCloudApigeeV1Point({
+    this.id,
+    this.results,
+  });
 
-  GoogleCloudApigeeV1Point.fromJson(core.Map _json) {
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('results')) {
-      results = (_json['results'] as core.List)
-          .map<GoogleCloudApigeeV1Result>((value) =>
-              GoogleCloudApigeeV1Result.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1Point.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          results: _json.containsKey('results')
+              ? (_json['results'] as core.List)
+                  .map<GoogleCloudApigeeV1Result>((value) =>
+                      GoogleCloudApigeeV1Result.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
@@ -17270,17 +17854,20 @@ class GoogleCloudApigeeV1Properties {
   /// List of all properties in the object
   core.List<GoogleCloudApigeeV1Property>? property;
 
-  GoogleCloudApigeeV1Properties();
+  GoogleCloudApigeeV1Properties({
+    this.property,
+  });
 
-  GoogleCloudApigeeV1Properties.fromJson(core.Map _json) {
-    if (_json.containsKey('property')) {
-      property = (_json['property'] as core.List)
-          .map<GoogleCloudApigeeV1Property>((value) =>
-              GoogleCloudApigeeV1Property.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1Properties.fromJson(core.Map _json)
+      : this(
+          property: _json.containsKey('property')
+              ? (_json['property'] as core.List)
+                  .map<GoogleCloudApigeeV1Property>((value) =>
+                      GoogleCloudApigeeV1Property.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (property != null)
@@ -17296,16 +17883,17 @@ class GoogleCloudApigeeV1Property {
   /// The property value
   core.String? value;
 
-  GoogleCloudApigeeV1Property();
+  GoogleCloudApigeeV1Property({
+    this.name,
+    this.value,
+  });
 
-  GoogleCloudApigeeV1Property.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1Property.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -17336,19 +17924,24 @@ class GoogleCloudApigeeV1ProvisionOrganizationRequest {
   /// the runtime instance.
   core.String? runtimeLocation;
 
-  GoogleCloudApigeeV1ProvisionOrganizationRequest();
+  GoogleCloudApigeeV1ProvisionOrganizationRequest({
+    this.analyticsRegion,
+    this.authorizedNetwork,
+    this.runtimeLocation,
+  });
 
-  GoogleCloudApigeeV1ProvisionOrganizationRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('analyticsRegion')) {
-      analyticsRegion = _json['analyticsRegion'] as core.String;
-    }
-    if (_json.containsKey('authorizedNetwork')) {
-      authorizedNetwork = _json['authorizedNetwork'] as core.String;
-    }
-    if (_json.containsKey('runtimeLocation')) {
-      runtimeLocation = _json['runtimeLocation'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1ProvisionOrganizationRequest.fromJson(core.Map _json)
+      : this(
+          analyticsRegion: _json.containsKey('analyticsRegion')
+              ? _json['analyticsRegion'] as core.String
+              : null,
+          authorizedNetwork: _json.containsKey('authorizedNetwork')
+              ? _json['authorizedNetwork'] as core.String
+              : null,
+          runtimeLocation: _json.containsKey('runtimeLocation')
+              ? _json['runtimeLocation'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (analyticsRegion != null) 'analyticsRegion': analyticsRegion!,
@@ -17428,49 +18021,58 @@ class GoogleCloudApigeeV1Query {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object? timeRange;
 
-  GoogleCloudApigeeV1Query();
+  GoogleCloudApigeeV1Query({
+    this.csvDelimiter,
+    this.dimensions,
+    this.envgroupHostname,
+    this.filter,
+    this.groupByTimeUnit,
+    this.limit,
+    this.metrics,
+    this.name,
+    this.outputFormat,
+    this.reportDefinitionId,
+    this.timeRange,
+  });
 
-  GoogleCloudApigeeV1Query.fromJson(core.Map _json) {
-    if (_json.containsKey('csvDelimiter')) {
-      csvDelimiter = _json['csvDelimiter'] as core.String;
-    }
-    if (_json.containsKey('dimensions')) {
-      dimensions = (_json['dimensions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('envgroupHostname')) {
-      envgroupHostname = _json['envgroupHostname'] as core.String;
-    }
-    if (_json.containsKey('filter')) {
-      filter = _json['filter'] as core.String;
-    }
-    if (_json.containsKey('groupByTimeUnit')) {
-      groupByTimeUnit = _json['groupByTimeUnit'] as core.String;
-    }
-    if (_json.containsKey('limit')) {
-      limit = _json['limit'] as core.int;
-    }
-    if (_json.containsKey('metrics')) {
-      metrics = (_json['metrics'] as core.List)
-          .map<GoogleCloudApigeeV1QueryMetric>((value) =>
-              GoogleCloudApigeeV1QueryMetric.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('outputFormat')) {
-      outputFormat = _json['outputFormat'] as core.String;
-    }
-    if (_json.containsKey('reportDefinitionId')) {
-      reportDefinitionId = _json['reportDefinitionId'] as core.String;
-    }
-    if (_json.containsKey('timeRange')) {
-      timeRange = _json['timeRange'] as core.Object;
-    }
-  }
+  GoogleCloudApigeeV1Query.fromJson(core.Map _json)
+      : this(
+          csvDelimiter: _json.containsKey('csvDelimiter')
+              ? _json['csvDelimiter'] as core.String
+              : null,
+          dimensions: _json.containsKey('dimensions')
+              ? (_json['dimensions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          envgroupHostname: _json.containsKey('envgroupHostname')
+              ? _json['envgroupHostname'] as core.String
+              : null,
+          filter: _json.containsKey('filter')
+              ? _json['filter'] as core.String
+              : null,
+          groupByTimeUnit: _json.containsKey('groupByTimeUnit')
+              ? _json['groupByTimeUnit'] as core.String
+              : null,
+          limit: _json.containsKey('limit') ? _json['limit'] as core.int : null,
+          metrics: _json.containsKey('metrics')
+              ? (_json['metrics'] as core.List)
+                  .map<GoogleCloudApigeeV1QueryMetric>((value) =>
+                      GoogleCloudApigeeV1QueryMetric.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          outputFormat: _json.containsKey('outputFormat')
+              ? _json['outputFormat'] as core.String
+              : null,
+          reportDefinitionId: _json.containsKey('reportDefinitionId')
+              ? _json['reportDefinitionId'] as core.String
+              : null,
+          timeRange: _json.containsKey('timeRange')
+              ? _json['timeRange'] as core.Object
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (csvDelimiter != null) 'csvDelimiter': csvDelimiter!,
@@ -17510,32 +18112,40 @@ class GoogleCloudApigeeV1QueryMetadata {
   /// Query GroupBy time unit.
   core.String? timeUnit;
 
-  GoogleCloudApigeeV1QueryMetadata();
+  GoogleCloudApigeeV1QueryMetadata({
+    this.dimensions,
+    this.endTimestamp,
+    this.metrics,
+    this.outputFormat,
+    this.startTimestamp,
+    this.timeUnit,
+  });
 
-  GoogleCloudApigeeV1QueryMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('dimensions')) {
-      dimensions = (_json['dimensions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('endTimestamp')) {
-      endTimestamp = _json['endTimestamp'] as core.String;
-    }
-    if (_json.containsKey('metrics')) {
-      metrics = (_json['metrics'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('outputFormat')) {
-      outputFormat = _json['outputFormat'] as core.String;
-    }
-    if (_json.containsKey('startTimestamp')) {
-      startTimestamp = _json['startTimestamp'] as core.String;
-    }
-    if (_json.containsKey('timeUnit')) {
-      timeUnit = _json['timeUnit'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1QueryMetadata.fromJson(core.Map _json)
+      : this(
+          dimensions: _json.containsKey('dimensions')
+              ? (_json['dimensions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          endTimestamp: _json.containsKey('endTimestamp')
+              ? _json['endTimestamp'] as core.String
+              : null,
+          metrics: _json.containsKey('metrics')
+              ? (_json['metrics'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          outputFormat: _json.containsKey('outputFormat')
+              ? _json['outputFormat'] as core.String
+              : null,
+          startTimestamp: _json.containsKey('startTimestamp')
+              ? _json['startTimestamp'] as core.String
+              : null,
+          timeUnit: _json.containsKey('timeUnit')
+              ? _json['timeUnit'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dimensions != null) 'dimensions': dimensions!,
@@ -17569,25 +18179,28 @@ class GoogleCloudApigeeV1QueryMetric {
   /// Operand value should be provided when operator is set.
   core.String? value;
 
-  GoogleCloudApigeeV1QueryMetric();
+  GoogleCloudApigeeV1QueryMetric({
+    this.alias,
+    this.function,
+    this.name,
+    this.operator,
+    this.value,
+  });
 
-  GoogleCloudApigeeV1QueryMetric.fromJson(core.Map _json) {
-    if (_json.containsKey('alias')) {
-      alias = _json['alias'] as core.String;
-    }
-    if (_json.containsKey('function')) {
-      function = _json['function'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('operator')) {
-      operator = _json['operator'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1QueryMetric.fromJson(core.Map _json)
+      : this(
+          alias:
+              _json.containsKey('alias') ? _json['alias'] as core.String : null,
+          function: _json.containsKey('function')
+              ? _json['function'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          operator: _json.containsKey('operator')
+              ? _json['operator'] as core.String
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alias != null) 'alias': alias!,
@@ -17623,19 +18236,23 @@ class GoogleCloudApigeeV1Quota {
   /// is null.
   core.String? timeUnit;
 
-  GoogleCloudApigeeV1Quota();
+  GoogleCloudApigeeV1Quota({
+    this.interval,
+    this.limit,
+    this.timeUnit,
+  });
 
-  GoogleCloudApigeeV1Quota.fromJson(core.Map _json) {
-    if (_json.containsKey('interval')) {
-      interval = _json['interval'] as core.String;
-    }
-    if (_json.containsKey('limit')) {
-      limit = _json['limit'] as core.String;
-    }
-    if (_json.containsKey('timeUnit')) {
-      timeUnit = _json['timeUnit'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1Quota.fromJson(core.Map _json)
+      : this(
+          interval: _json.containsKey('interval')
+              ? _json['interval'] as core.String
+              : null,
+          limit:
+              _json.containsKey('limit') ? _json['limit'] as core.String : null,
+          timeUnit: _json.containsKey('timeUnit')
+              ? _json['timeUnit'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (interval != null) 'interval': interval!,
@@ -17775,77 +18392,95 @@ class GoogleCloudApigeeV1RatePlan {
   /// `endTime`).
   core.String? state;
 
-  GoogleCloudApigeeV1RatePlan();
+  GoogleCloudApigeeV1RatePlan({
+    this.apiproduct,
+    this.billingPeriod,
+    this.consumptionPricingRates,
+    this.consumptionPricingType,
+    this.createdAt,
+    this.currencyCode,
+    this.description,
+    this.displayName,
+    this.endTime,
+    this.fixedFeeFrequency,
+    this.fixedRecurringFee,
+    this.lastModifiedAt,
+    this.name,
+    this.paymentFundingModel,
+    this.revenueShareRates,
+    this.revenueShareType,
+    this.setupFee,
+    this.startTime,
+    this.state,
+  });
 
-  GoogleCloudApigeeV1RatePlan.fromJson(core.Map _json) {
-    if (_json.containsKey('apiproduct')) {
-      apiproduct = _json['apiproduct'] as core.String;
-    }
-    if (_json.containsKey('billingPeriod')) {
-      billingPeriod = _json['billingPeriod'] as core.String;
-    }
-    if (_json.containsKey('consumptionPricingRates')) {
-      consumptionPricingRates = (_json['consumptionPricingRates'] as core.List)
-          .map<GoogleCloudApigeeV1RateRange>((value) =>
-              GoogleCloudApigeeV1RateRange.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('consumptionPricingType')) {
-      consumptionPricingType = _json['consumptionPricingType'] as core.String;
-    }
-    if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'] as core.String;
-    }
-    if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('fixedFeeFrequency')) {
-      fixedFeeFrequency = _json['fixedFeeFrequency'] as core.int;
-    }
-    if (_json.containsKey('fixedRecurringFee')) {
-      fixedRecurringFee = GoogleTypeMoney.fromJson(
-          _json['fixedRecurringFee'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('lastModifiedAt')) {
-      lastModifiedAt = _json['lastModifiedAt'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('paymentFundingModel')) {
-      paymentFundingModel = _json['paymentFundingModel'] as core.String;
-    }
-    if (_json.containsKey('revenueShareRates')) {
-      revenueShareRates = (_json['revenueShareRates'] as core.List)
-          .map<GoogleCloudApigeeV1RevenueShareRange>((value) =>
-              GoogleCloudApigeeV1RevenueShareRange.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('revenueShareType')) {
-      revenueShareType = _json['revenueShareType'] as core.String;
-    }
-    if (_json.containsKey('setupFee')) {
-      setupFee = GoogleTypeMoney.fromJson(
-          _json['setupFee'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1RatePlan.fromJson(core.Map _json)
+      : this(
+          apiproduct: _json.containsKey('apiproduct')
+              ? _json['apiproduct'] as core.String
+              : null,
+          billingPeriod: _json.containsKey('billingPeriod')
+              ? _json['billingPeriod'] as core.String
+              : null,
+          consumptionPricingRates: _json.containsKey('consumptionPricingRates')
+              ? (_json['consumptionPricingRates'] as core.List)
+                  .map<GoogleCloudApigeeV1RateRange>((value) =>
+                      GoogleCloudApigeeV1RateRange.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          consumptionPricingType: _json.containsKey('consumptionPricingType')
+              ? _json['consumptionPricingType'] as core.String
+              : null,
+          createdAt: _json.containsKey('createdAt')
+              ? _json['createdAt'] as core.String
+              : null,
+          currencyCode: _json.containsKey('currencyCode')
+              ? _json['currencyCode'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          fixedFeeFrequency: _json.containsKey('fixedFeeFrequency')
+              ? _json['fixedFeeFrequency'] as core.int
+              : null,
+          fixedRecurringFee: _json.containsKey('fixedRecurringFee')
+              ? GoogleTypeMoney.fromJson(_json['fixedRecurringFee']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          lastModifiedAt: _json.containsKey('lastModifiedAt')
+              ? _json['lastModifiedAt'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          paymentFundingModel: _json.containsKey('paymentFundingModel')
+              ? _json['paymentFundingModel'] as core.String
+              : null,
+          revenueShareRates: _json.containsKey('revenueShareRates')
+              ? (_json['revenueShareRates'] as core.List)
+                  .map<GoogleCloudApigeeV1RevenueShareRange>((value) =>
+                      GoogleCloudApigeeV1RevenueShareRange.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          revenueShareType: _json.containsKey('revenueShareType')
+              ? _json['revenueShareType'] as core.String
+              : null,
+          setupFee: _json.containsKey('setupFee')
+              ? GoogleTypeMoney.fromJson(
+                  _json['setupFee'] as core.Map<core.String, core.dynamic>)
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiproduct != null) 'apiproduct': apiproduct!,
@@ -17893,20 +18528,22 @@ class GoogleCloudApigeeV1RateRange {
   /// Set to 0 or `null` for the initial range of values.
   core.String? start;
 
-  GoogleCloudApigeeV1RateRange();
+  GoogleCloudApigeeV1RateRange({
+    this.end,
+    this.fee,
+    this.start,
+  });
 
-  GoogleCloudApigeeV1RateRange.fromJson(core.Map _json) {
-    if (_json.containsKey('end')) {
-      end = _json['end'] as core.String;
-    }
-    if (_json.containsKey('fee')) {
-      fee = GoogleTypeMoney.fromJson(
-          _json['fee'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('start')) {
-      start = _json['start'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1RateRange.fromJson(core.Map _json)
+      : this(
+          end: _json.containsKey('end') ? _json['end'] as core.String : null,
+          fee: _json.containsKey('fee')
+              ? GoogleTypeMoney.fromJson(
+                  _json['fee'] as core.Map<core.String, core.dynamic>)
+              : null,
+          start:
+              _json.containsKey('start') ? _json['start'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (end != null) 'end': end!,
@@ -17945,22 +18582,26 @@ class GoogleCloudApigeeV1Reference {
   /// Valid values are 'KeyStore' or 'TrustStore'.
   core.String? resourceType;
 
-  GoogleCloudApigeeV1Reference();
+  GoogleCloudApigeeV1Reference({
+    this.description,
+    this.name,
+    this.refers,
+    this.resourceType,
+  });
 
-  GoogleCloudApigeeV1Reference.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('refers')) {
-      refers = _json['refers'] as core.String;
-    }
-    if (_json.containsKey('resourceType')) {
-      resourceType = _json['resourceType'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1Reference.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          refers: _json.containsKey('refers')
+              ? _json['refers'] as core.String
+              : null,
+          resourceType: _json.containsKey('resourceType')
+              ? _json['resourceType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -17980,16 +18621,18 @@ class GoogleCloudApigeeV1ReferenceConfig {
   /// references to keystore resources are supported.
   core.String? resourceName;
 
-  GoogleCloudApigeeV1ReferenceConfig();
+  GoogleCloudApigeeV1ReferenceConfig({
+    this.name,
+    this.resourceName,
+  });
 
-  GoogleCloudApigeeV1ReferenceConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('resourceName')) {
-      resourceName = _json['resourceName'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1ReferenceConfig.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          resourceName: _json.containsKey('resourceName')
+              ? _json['resourceName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -18013,23 +18656,28 @@ class GoogleCloudApigeeV1ReportInstanceStatusRequest {
   /// Status for config resources
   core.List<GoogleCloudApigeeV1ResourceStatus>? resources;
 
-  GoogleCloudApigeeV1ReportInstanceStatusRequest();
+  GoogleCloudApigeeV1ReportInstanceStatusRequest({
+    this.instanceUid,
+    this.reportTime,
+    this.resources,
+  });
 
-  GoogleCloudApigeeV1ReportInstanceStatusRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('instanceUid')) {
-      instanceUid = _json['instanceUid'] as core.String;
-    }
-    if (_json.containsKey('reportTime')) {
-      reportTime = _json['reportTime'] as core.String;
-    }
-    if (_json.containsKey('resources')) {
-      resources = (_json['resources'] as core.List)
-          .map<GoogleCloudApigeeV1ResourceStatus>((value) =>
-              GoogleCloudApigeeV1ResourceStatus.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1ReportInstanceStatusRequest.fromJson(core.Map _json)
+      : this(
+          instanceUid: _json.containsKey('instanceUid')
+              ? _json['instanceUid'] as core.String
+              : null,
+          reportTime: _json.containsKey('reportTime')
+              ? _json['reportTime'] as core.String
+              : null,
+          resources: _json.containsKey('resources')
+              ? (_json['resources'] as core.List)
+                  .map<GoogleCloudApigeeV1ResourceStatus>((value) =>
+                      GoogleCloudApigeeV1ResourceStatus.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (instanceUid != null) 'instanceUid': instanceUid!,
@@ -18057,20 +18705,24 @@ class GoogleCloudApigeeV1ReportProperty {
   /// property values
   core.List<GoogleCloudApigeeV1Attribute>? value;
 
-  GoogleCloudApigeeV1ReportProperty();
+  GoogleCloudApigeeV1ReportProperty({
+    this.property,
+    this.value,
+  });
 
-  GoogleCloudApigeeV1ReportProperty.fromJson(core.Map _json) {
-    if (_json.containsKey('property')) {
-      property = _json['property'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = (_json['value'] as core.List)
-          .map<GoogleCloudApigeeV1Attribute>((value) =>
-              GoogleCloudApigeeV1Attribute.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1ReportProperty.fromJson(core.Map _json)
+      : this(
+          property: _json.containsKey('property')
+              ? _json['property'] as core.String
+              : null,
+          value: _json.containsKey('value')
+              ? (_json['value'] as core.List)
+                  .map<GoogleCloudApigeeV1Attribute>((value) =>
+                      GoogleCloudApigeeV1Attribute.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (property != null) 'property': property!,
@@ -18088,16 +18740,18 @@ class GoogleCloudApigeeV1ResourceConfig {
   /// Only environment-scoped resource files are supported.
   core.String? name;
 
-  GoogleCloudApigeeV1ResourceConfig();
+  GoogleCloudApigeeV1ResourceConfig({
+    this.location,
+    this.name,
+  });
 
-  GoogleCloudApigeeV1ResourceConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('location')) {
-      location = _json['location'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1ResourceConfig.fromJson(core.Map _json)
+      : this(
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (location != null) 'location': location!,
@@ -18115,16 +18769,16 @@ class GoogleCloudApigeeV1ResourceFile {
   /// {{ resource_file_type }}
   core.String? type;
 
-  GoogleCloudApigeeV1ResourceFile();
+  GoogleCloudApigeeV1ResourceFile({
+    this.name,
+    this.type,
+  });
 
-  GoogleCloudApigeeV1ResourceFile.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1ResourceFile.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -18137,17 +18791,20 @@ class GoogleCloudApigeeV1ResourceFiles {
   /// List of resource files.
   core.List<GoogleCloudApigeeV1ResourceFile>? resourceFile;
 
-  GoogleCloudApigeeV1ResourceFiles();
+  GoogleCloudApigeeV1ResourceFiles({
+    this.resourceFile,
+  });
 
-  GoogleCloudApigeeV1ResourceFiles.fromJson(core.Map _json) {
-    if (_json.containsKey('resourceFile')) {
-      resourceFile = (_json['resourceFile'] as core.List)
-          .map<GoogleCloudApigeeV1ResourceFile>((value) =>
-              GoogleCloudApigeeV1ResourceFile.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1ResourceFiles.fromJson(core.Map _json)
+      : this(
+          resourceFile: _json.containsKey('resourceFile')
+              ? (_json['resourceFile'] as core.List)
+                  .map<GoogleCloudApigeeV1ResourceFile>((value) =>
+                      GoogleCloudApigeeV1ResourceFile.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceFile != null)
@@ -18176,26 +18833,30 @@ class GoogleCloudApigeeV1ResourceStatus {
   /// name, they should be reported under separate ResourceStatuses.
   core.String? uid;
 
-  GoogleCloudApigeeV1ResourceStatus();
+  GoogleCloudApigeeV1ResourceStatus({
+    this.resource,
+    this.revisions,
+    this.totalReplicas,
+    this.uid,
+  });
 
-  GoogleCloudApigeeV1ResourceStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('resource')) {
-      resource = _json['resource'] as core.String;
-    }
-    if (_json.containsKey('revisions')) {
-      revisions = (_json['revisions'] as core.List)
-          .map<GoogleCloudApigeeV1RevisionStatus>((value) =>
-              GoogleCloudApigeeV1RevisionStatus.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('totalReplicas')) {
-      totalReplicas = _json['totalReplicas'] as core.int;
-    }
-    if (_json.containsKey('uid')) {
-      uid = _json['uid'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1ResourceStatus.fromJson(core.Map _json)
+      : this(
+          resource: _json.containsKey('resource')
+              ? _json['resource'] as core.String
+              : null,
+          revisions: _json.containsKey('revisions')
+              ? (_json['revisions'] as core.List)
+                  .map<GoogleCloudApigeeV1RevisionStatus>((value) =>
+                      GoogleCloudApigeeV1RevisionStatus.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          totalReplicas: _json.containsKey('totalReplicas')
+              ? _json['totalReplicas'] as core.int
+              : null,
+          uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resource != null) 'resource': resource!,
@@ -18268,49 +18929,57 @@ class GoogleCloudApigeeV1Result {
   /// HTTP method verb
   core.String? verb;
 
-  GoogleCloudApigeeV1Result();
+  GoogleCloudApigeeV1Result({
+    this.ActionResult,
+    this.accessList,
+    this.content,
+    this.headers,
+    this.properties,
+    this.reasonPhrase,
+    this.statusCode,
+    this.timestamp,
+    this.uRI,
+    this.verb,
+  });
 
-  GoogleCloudApigeeV1Result.fromJson(core.Map _json) {
-    if (_json.containsKey('ActionResult')) {
-      ActionResult = _json['ActionResult'] as core.String;
-    }
-    if (_json.containsKey('accessList')) {
-      accessList = (_json['accessList'] as core.List)
-          .map<GoogleCloudApigeeV1Access>((value) =>
-              GoogleCloudApigeeV1Access.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('content')) {
-      content = _json['content'] as core.String;
-    }
-    if (_json.containsKey('headers')) {
-      headers = (_json['headers'] as core.List)
-          .map<GoogleCloudApigeeV1Property>((value) =>
-              GoogleCloudApigeeV1Property.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('properties')) {
-      properties = GoogleCloudApigeeV1Properties.fromJson(
-          _json['properties'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('reasonPhrase')) {
-      reasonPhrase = _json['reasonPhrase'] as core.String;
-    }
-    if (_json.containsKey('statusCode')) {
-      statusCode = _json['statusCode'] as core.String;
-    }
-    if (_json.containsKey('timestamp')) {
-      timestamp = _json['timestamp'] as core.String;
-    }
-    if (_json.containsKey('uRI')) {
-      uRI = _json['uRI'] as core.String;
-    }
-    if (_json.containsKey('verb')) {
-      verb = _json['verb'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1Result.fromJson(core.Map _json)
+      : this(
+          ActionResult: _json.containsKey('ActionResult')
+              ? _json['ActionResult'] as core.String
+              : null,
+          accessList: _json.containsKey('accessList')
+              ? (_json['accessList'] as core.List)
+                  .map<GoogleCloudApigeeV1Access>((value) =>
+                      GoogleCloudApigeeV1Access.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          content: _json.containsKey('content')
+              ? _json['content'] as core.String
+              : null,
+          headers: _json.containsKey('headers')
+              ? (_json['headers'] as core.List)
+                  .map<GoogleCloudApigeeV1Property>((value) =>
+                      GoogleCloudApigeeV1Property.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          properties: _json.containsKey('properties')
+              ? GoogleCloudApigeeV1Properties.fromJson(
+                  _json['properties'] as core.Map<core.String, core.dynamic>)
+              : null,
+          reasonPhrase: _json.containsKey('reasonPhrase')
+              ? _json['reasonPhrase'] as core.String
+              : null,
+          statusCode: _json.containsKey('statusCode')
+              ? _json['statusCode'] as core.String
+              : null,
+          timestamp: _json.containsKey('timestamp')
+              ? _json['timestamp'] as core.String
+              : null,
+          uRI: _json.containsKey('uRI') ? _json['uRI'] as core.String : null,
+          verb: _json.containsKey('verb') ? _json['verb'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ActionResult != null) 'ActionResult': ActionResult!,
@@ -18348,19 +19017,21 @@ class GoogleCloudApigeeV1RevenueShareRange {
   /// Set to 0 or `null` for the initial range of values.
   core.String? start;
 
-  GoogleCloudApigeeV1RevenueShareRange();
+  GoogleCloudApigeeV1RevenueShareRange({
+    this.end,
+    this.sharePercentage,
+    this.start,
+  });
 
-  GoogleCloudApigeeV1RevenueShareRange.fromJson(core.Map _json) {
-    if (_json.containsKey('end')) {
-      end = _json['end'] as core.String;
-    }
-    if (_json.containsKey('sharePercentage')) {
-      sharePercentage = (_json['sharePercentage'] as core.num).toDouble();
-    }
-    if (_json.containsKey('start')) {
-      start = _json['start'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1RevenueShareRange.fromJson(core.Map _json)
+      : this(
+          end: _json.containsKey('end') ? _json['end'] as core.String : null,
+          sharePercentage: _json.containsKey('sharePercentage')
+              ? (_json['sharePercentage'] as core.num).toDouble()
+              : null,
+          start:
+              _json.containsKey('start') ? _json['start'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (end != null) 'end': end!,
@@ -18386,26 +19057,32 @@ class GoogleCloudApigeeV1RevisionStatus {
   /// The revision of the resource.
   core.String? revisionId;
 
-  GoogleCloudApigeeV1RevisionStatus();
+  GoogleCloudApigeeV1RevisionStatus({
+    this.errors,
+    this.jsonSpec,
+    this.replicas,
+    this.revisionId,
+  });
 
-  GoogleCloudApigeeV1RevisionStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('errors')) {
-      errors = (_json['errors'] as core.List)
-          .map<GoogleCloudApigeeV1UpdateError>((value) =>
-              GoogleCloudApigeeV1UpdateError.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('jsonSpec')) {
-      jsonSpec = _json['jsonSpec'] as core.String;
-    }
-    if (_json.containsKey('replicas')) {
-      replicas = _json['replicas'] as core.int;
-    }
-    if (_json.containsKey('revisionId')) {
-      revisionId = _json['revisionId'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1RevisionStatus.fromJson(core.Map _json)
+      : this(
+          errors: _json.containsKey('errors')
+              ? (_json['errors'] as core.List)
+                  .map<GoogleCloudApigeeV1UpdateError>((value) =>
+                      GoogleCloudApigeeV1UpdateError.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          jsonSpec: _json.containsKey('jsonSpec')
+              ? _json['jsonSpec'] as core.String
+              : null,
+          replicas: _json.containsKey('replicas')
+              ? _json['replicas'] as core.int
+              : null,
+          revisionId: _json.containsKey('revisionId')
+              ? _json['revisionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errors != null)
@@ -18450,25 +19127,32 @@ class GoogleCloudApigeeV1RoutingRule {
   /// called with view=FULL.
   core.String? updateTime;
 
-  GoogleCloudApigeeV1RoutingRule();
+  GoogleCloudApigeeV1RoutingRule({
+    this.basepath,
+    this.envGroupRevision,
+    this.environment,
+    this.receiver,
+    this.updateTime,
+  });
 
-  GoogleCloudApigeeV1RoutingRule.fromJson(core.Map _json) {
-    if (_json.containsKey('basepath')) {
-      basepath = _json['basepath'] as core.String;
-    }
-    if (_json.containsKey('envGroupRevision')) {
-      envGroupRevision = _json['envGroupRevision'] as core.String;
-    }
-    if (_json.containsKey('environment')) {
-      environment = _json['environment'] as core.String;
-    }
-    if (_json.containsKey('receiver')) {
-      receiver = _json['receiver'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1RoutingRule.fromJson(core.Map _json)
+      : this(
+          basepath: _json.containsKey('basepath')
+              ? _json['basepath'] as core.String
+              : null,
+          envGroupRevision: _json.containsKey('envGroupRevision')
+              ? _json['envGroupRevision'] as core.String
+              : null,
+          environment: _json.containsKey('environment')
+              ? _json['environment'] as core.String
+              : null,
+          receiver: _json.containsKey('receiver')
+              ? _json['receiver'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (basepath != null) 'basepath': basepath!,
@@ -18505,22 +19189,26 @@ class GoogleCloudApigeeV1RuntimeConfig {
   /// Cloud Storage bucket used for uploading Trace records.
   core.String? traceBucket;
 
-  GoogleCloudApigeeV1RuntimeConfig();
+  GoogleCloudApigeeV1RuntimeConfig({
+    this.analyticsBucket,
+    this.name,
+    this.tenantProjectId,
+    this.traceBucket,
+  });
 
-  GoogleCloudApigeeV1RuntimeConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('analyticsBucket')) {
-      analyticsBucket = _json['analyticsBucket'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('tenantProjectId')) {
-      tenantProjectId = _json['tenantProjectId'] as core.String;
-    }
-    if (_json.containsKey('traceBucket')) {
-      traceBucket = _json['traceBucket'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1RuntimeConfig.fromJson(core.Map _json)
+      : this(
+          analyticsBucket: _json.containsKey('analyticsBucket')
+              ? _json['analyticsBucket'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          tenantProjectId: _json.containsKey('tenantProjectId')
+              ? _json['tenantProjectId'] as core.String
+              : null,
+          traceBucket: _json.containsKey('traceBucket')
+              ? _json['traceBucket'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (analyticsBucket != null) 'analyticsBucket': analyticsBucket!,
@@ -18564,36 +19252,44 @@ class GoogleCloudApigeeV1RuntimeTraceConfig {
   /// Trace configuration for all API proxies in an environment.
   GoogleCloudApigeeV1RuntimeTraceSamplingConfig? samplingConfig;
 
-  GoogleCloudApigeeV1RuntimeTraceConfig();
+  GoogleCloudApigeeV1RuntimeTraceConfig({
+    this.endpoint,
+    this.exporter,
+    this.name,
+    this.overrides,
+    this.revisionCreateTime,
+    this.revisionId,
+    this.samplingConfig,
+  });
 
-  GoogleCloudApigeeV1RuntimeTraceConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('endpoint')) {
-      endpoint = _json['endpoint'] as core.String;
-    }
-    if (_json.containsKey('exporter')) {
-      exporter = _json['exporter'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('overrides')) {
-      overrides = (_json['overrides'] as core.List)
-          .map<GoogleCloudApigeeV1RuntimeTraceConfigOverride>((value) =>
-              GoogleCloudApigeeV1RuntimeTraceConfigOverride.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('revisionCreateTime')) {
-      revisionCreateTime = _json['revisionCreateTime'] as core.String;
-    }
-    if (_json.containsKey('revisionId')) {
-      revisionId = _json['revisionId'] as core.String;
-    }
-    if (_json.containsKey('samplingConfig')) {
-      samplingConfig = GoogleCloudApigeeV1RuntimeTraceSamplingConfig.fromJson(
-          _json['samplingConfig'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudApigeeV1RuntimeTraceConfig.fromJson(core.Map _json)
+      : this(
+          endpoint: _json.containsKey('endpoint')
+              ? _json['endpoint'] as core.String
+              : null,
+          exporter: _json.containsKey('exporter')
+              ? _json['exporter'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          overrides: _json.containsKey('overrides')
+              ? (_json['overrides'] as core.List)
+                  .map<GoogleCloudApigeeV1RuntimeTraceConfigOverride>((value) =>
+                      GoogleCloudApigeeV1RuntimeTraceConfigOverride.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          revisionCreateTime: _json.containsKey('revisionCreateTime')
+              ? _json['revisionCreateTime'] as core.String
+              : null,
+          revisionId: _json.containsKey('revisionId')
+              ? _json['revisionId'] as core.String
+              : null,
+          samplingConfig: _json.containsKey('samplingConfig')
+              ? GoogleCloudApigeeV1RuntimeTraceSamplingConfig.fromJson(
+                  _json['samplingConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endpoint != null) 'endpoint': endpoint!,
@@ -18635,29 +19331,34 @@ class GoogleCloudApigeeV1RuntimeTraceConfigOverride {
   /// Corresponds to name's "override" field.
   core.String? uid;
 
-  GoogleCloudApigeeV1RuntimeTraceConfigOverride();
+  GoogleCloudApigeeV1RuntimeTraceConfigOverride({
+    this.apiProxy,
+    this.name,
+    this.revisionCreateTime,
+    this.revisionId,
+    this.samplingConfig,
+    this.uid,
+  });
 
-  GoogleCloudApigeeV1RuntimeTraceConfigOverride.fromJson(core.Map _json) {
-    if (_json.containsKey('apiProxy')) {
-      apiProxy = _json['apiProxy'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('revisionCreateTime')) {
-      revisionCreateTime = _json['revisionCreateTime'] as core.String;
-    }
-    if (_json.containsKey('revisionId')) {
-      revisionId = _json['revisionId'] as core.String;
-    }
-    if (_json.containsKey('samplingConfig')) {
-      samplingConfig = GoogleCloudApigeeV1RuntimeTraceSamplingConfig.fromJson(
-          _json['samplingConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('uid')) {
-      uid = _json['uid'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1RuntimeTraceConfigOverride.fromJson(core.Map _json)
+      : this(
+          apiProxy: _json.containsKey('apiProxy')
+              ? _json['apiProxy'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          revisionCreateTime: _json.containsKey('revisionCreateTime')
+              ? _json['revisionCreateTime'] as core.String
+              : null,
+          revisionId: _json.containsKey('revisionId')
+              ? _json['revisionId'] as core.String
+              : null,
+          samplingConfig: _json.containsKey('samplingConfig')
+              ? GoogleCloudApigeeV1RuntimeTraceSamplingConfig.fromJson(
+                  _json['samplingConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiProxy != null) 'apiProxy': apiProxy!,
@@ -18694,16 +19395,20 @@ class GoogleCloudApigeeV1RuntimeTraceSamplingConfig {
   /// supported values are > 0 and <= 0.5.
   core.double? samplingRate;
 
-  GoogleCloudApigeeV1RuntimeTraceSamplingConfig();
+  GoogleCloudApigeeV1RuntimeTraceSamplingConfig({
+    this.sampler,
+    this.samplingRate,
+  });
 
-  GoogleCloudApigeeV1RuntimeTraceSamplingConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('sampler')) {
-      sampler = _json['sampler'] as core.String;
-    }
-    if (_json.containsKey('samplingRate')) {
-      samplingRate = (_json['samplingRate'] as core.num).toDouble();
-    }
-  }
+  GoogleCloudApigeeV1RuntimeTraceSamplingConfig.fromJson(core.Map _json)
+      : this(
+          sampler: _json.containsKey('sampler')
+              ? _json['sampler'] as core.String
+              : null,
+          samplingRate: _json.containsKey('samplingRate')
+              ? (_json['samplingRate'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sampler != null) 'sampler': sampler!,
@@ -18725,29 +19430,34 @@ class GoogleCloudApigeeV1Schema {
   /// aggregate function such as `sum`, `avg`, `min`, and `max`.
   core.List<GoogleCloudApigeeV1SchemaSchemaElement>? metrics;
 
-  GoogleCloudApigeeV1Schema();
+  GoogleCloudApigeeV1Schema({
+    this.dimensions,
+    this.meta,
+    this.metrics,
+  });
 
-  GoogleCloudApigeeV1Schema.fromJson(core.Map _json) {
-    if (_json.containsKey('dimensions')) {
-      dimensions = (_json['dimensions'] as core.List)
-          .map<GoogleCloudApigeeV1SchemaSchemaElement>((value) =>
-              GoogleCloudApigeeV1SchemaSchemaElement.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('meta')) {
-      meta = (_json['meta'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('metrics')) {
-      metrics = (_json['metrics'] as core.List)
-          .map<GoogleCloudApigeeV1SchemaSchemaElement>((value) =>
-              GoogleCloudApigeeV1SchemaSchemaElement.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1Schema.fromJson(core.Map _json)
+      : this(
+          dimensions: _json.containsKey('dimensions')
+              ? (_json['dimensions'] as core.List)
+                  .map<GoogleCloudApigeeV1SchemaSchemaElement>((value) =>
+                      GoogleCloudApigeeV1SchemaSchemaElement.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          meta: _json.containsKey('meta')
+              ? (_json['meta'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          metrics: _json.containsKey('metrics')
+              ? (_json['metrics'] as core.List)
+                  .map<GoogleCloudApigeeV1SchemaSchemaElement>((value) =>
+                      GoogleCloudApigeeV1SchemaSchemaElement.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dimensions != null)
@@ -18769,17 +19479,19 @@ class GoogleCloudApigeeV1SchemaSchemaElement {
   /// "false", "type": "string" }
   GoogleCloudApigeeV1SchemaSchemaProperty? properties;
 
-  GoogleCloudApigeeV1SchemaSchemaElement();
+  GoogleCloudApigeeV1SchemaSchemaElement({
+    this.name,
+    this.properties,
+  });
 
-  GoogleCloudApigeeV1SchemaSchemaElement.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('properties')) {
-      properties = GoogleCloudApigeeV1SchemaSchemaProperty.fromJson(
-          _json['properties'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudApigeeV1SchemaSchemaElement.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          properties: _json.containsKey('properties')
+              ? GoogleCloudApigeeV1SchemaSchemaProperty.fromJson(
+                  _json['properties'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -18803,19 +19515,22 @@ class GoogleCloudApigeeV1SchemaSchemaProperty {
   /// Data type of the field.
   core.String? type;
 
-  GoogleCloudApigeeV1SchemaSchemaProperty();
+  GoogleCloudApigeeV1SchemaSchemaProperty({
+    this.createTime,
+    this.custom,
+    this.type,
+  });
 
-  GoogleCloudApigeeV1SchemaSchemaProperty.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('custom')) {
-      custom = _json['custom'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1SchemaSchemaProperty.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          custom: _json.containsKey('custom')
+              ? _json['custom'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -18831,18 +19546,22 @@ class GoogleCloudApigeeV1ServiceIssuersMapping {
   /// String indicating the Apigee service name.
   core.String? service;
 
-  GoogleCloudApigeeV1ServiceIssuersMapping();
+  GoogleCloudApigeeV1ServiceIssuersMapping({
+    this.emailIds,
+    this.service,
+  });
 
-  GoogleCloudApigeeV1ServiceIssuersMapping.fromJson(core.Map _json) {
-    if (_json.containsKey('emailIds')) {
-      emailIds = (_json['emailIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('service')) {
-      service = _json['service'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1ServiceIssuersMapping.fromJson(core.Map _json)
+      : this(
+          emailIds: _json.containsKey('emailIds')
+              ? (_json['emailIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          service: _json.containsKey('service')
+              ? _json['service'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (emailIds != null) 'emailIds': emailIds!,
@@ -18858,16 +19577,18 @@ class GoogleCloudApigeeV1Session {
   /// The first transaction creation timestamp in millisecond, recoreded by UAP.
   core.String? timestampMs;
 
-  GoogleCloudApigeeV1Session();
+  GoogleCloudApigeeV1Session({
+    this.id,
+    this.timestampMs,
+  });
 
-  GoogleCloudApigeeV1Session.fromJson(core.Map _json) {
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('timestampMs')) {
-      timestampMs = _json['timestampMs'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1Session.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          timestampMs: _json.containsKey('timestampMs')
+              ? _json['timestampMs'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
@@ -18882,14 +19603,17 @@ class GoogleCloudApigeeV1SetAddonsRequest {
   /// Required.
   GoogleCloudApigeeV1AddonsConfig? addonsConfig;
 
-  GoogleCloudApigeeV1SetAddonsRequest();
+  GoogleCloudApigeeV1SetAddonsRequest({
+    this.addonsConfig,
+  });
 
-  GoogleCloudApigeeV1SetAddonsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('addonsConfig')) {
-      addonsConfig = GoogleCloudApigeeV1AddonsConfig.fromJson(
-          _json['addonsConfig'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudApigeeV1SetAddonsRequest.fromJson(core.Map _json)
+      : this(
+          addonsConfig: _json.containsKey('addonsConfig')
+              ? GoogleCloudApigeeV1AddonsConfig.fromJson(
+                  _json['addonsConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (addonsConfig != null) 'addonsConfig': addonsConfig!.toJson(),
@@ -18910,25 +19634,29 @@ class GoogleCloudApigeeV1SharedFlow {
   /// A list of revisions of this shared flow.
   core.List<core.String>? revision;
 
-  GoogleCloudApigeeV1SharedFlow();
+  GoogleCloudApigeeV1SharedFlow({
+    this.latestRevisionId,
+    this.metaData,
+    this.name,
+    this.revision,
+  });
 
-  GoogleCloudApigeeV1SharedFlow.fromJson(core.Map _json) {
-    if (_json.containsKey('latestRevisionId')) {
-      latestRevisionId = _json['latestRevisionId'] as core.String;
-    }
-    if (_json.containsKey('metaData')) {
-      metaData = GoogleCloudApigeeV1EntityMetadata.fromJson(
-          _json['metaData'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('revision')) {
-      revision = (_json['revision'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1SharedFlow.fromJson(core.Map _json)
+      : this(
+          latestRevisionId: _json.containsKey('latestRevisionId')
+              ? _json['latestRevisionId'] as core.String
+              : null,
+          metaData: _json.containsKey('metaData')
+              ? GoogleCloudApigeeV1EntityMetadata.fromJson(
+                  _json['metaData'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          revision: _json.containsKey('revision')
+              ? (_json['revision'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (latestRevisionId != null) 'latestRevisionId': latestRevisionId!,
@@ -18990,67 +19718,81 @@ class GoogleCloudApigeeV1SharedFlowRevision {
   /// The string "Application"
   core.String? type;
 
-  GoogleCloudApigeeV1SharedFlowRevision();
+  GoogleCloudApigeeV1SharedFlowRevision({
+    this.configurationVersion,
+    this.contextInfo,
+    this.createdAt,
+    this.description,
+    this.displayName,
+    this.entityMetaDataAsProperties,
+    this.lastModifiedAt,
+    this.name,
+    this.policies,
+    this.resourceFiles,
+    this.resources,
+    this.revision,
+    this.sharedFlows,
+    this.type,
+  });
 
-  GoogleCloudApigeeV1SharedFlowRevision.fromJson(core.Map _json) {
-    if (_json.containsKey('configurationVersion')) {
-      configurationVersion = GoogleCloudApigeeV1ConfigVersion.fromJson(
-          _json['configurationVersion'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('contextInfo')) {
-      contextInfo = _json['contextInfo'] as core.String;
-    }
-    if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('entityMetaDataAsProperties')) {
-      entityMetaDataAsProperties = (_json['entityMetaDataAsProperties']
-              as core.Map<core.String, core.dynamic>)
-          .map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('lastModifiedAt')) {
-      lastModifiedAt = _json['lastModifiedAt'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('policies')) {
-      policies = (_json['policies'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('resourceFiles')) {
-      resourceFiles = GoogleCloudApigeeV1ResourceFiles.fromJson(
-          _json['resourceFiles'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('resources')) {
-      resources = (_json['resources'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('revision')) {
-      revision = _json['revision'] as core.String;
-    }
-    if (_json.containsKey('sharedFlows')) {
-      sharedFlows = (_json['sharedFlows'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1SharedFlowRevision.fromJson(core.Map _json)
+      : this(
+          configurationVersion: _json.containsKey('configurationVersion')
+              ? GoogleCloudApigeeV1ConfigVersion.fromJson(
+                  _json['configurationVersion']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          contextInfo: _json.containsKey('contextInfo')
+              ? _json['contextInfo'] as core.String
+              : null,
+          createdAt: _json.containsKey('createdAt')
+              ? _json['createdAt'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          entityMetaDataAsProperties:
+              _json.containsKey('entityMetaDataAsProperties')
+                  ? (_json['entityMetaDataAsProperties']
+                          as core.Map<core.String, core.dynamic>)
+                      .map(
+                      (key, item) => core.MapEntry(
+                        key,
+                        item as core.String,
+                      ),
+                    )
+                  : null,
+          lastModifiedAt: _json.containsKey('lastModifiedAt')
+              ? _json['lastModifiedAt'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          policies: _json.containsKey('policies')
+              ? (_json['policies'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          resourceFiles: _json.containsKey('resourceFiles')
+              ? GoogleCloudApigeeV1ResourceFiles.fromJson(
+                  _json['resourceFiles'] as core.Map<core.String, core.dynamic>)
+              : null,
+          resources: _json.containsKey('resources')
+              ? (_json['resources'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          revision: _json.containsKey('revision')
+              ? _json['revision'] as core.String
+              : null,
+          sharedFlows: _json.containsKey('sharedFlows')
+              ? (_json['sharedFlows'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (configurationVersion != null)
@@ -19083,28 +19825,33 @@ class GoogleCloudApigeeV1Stats {
   /// This field contains the metadata information.
   GoogleCloudApigeeV1Metadata? metaData;
 
-  GoogleCloudApigeeV1Stats();
+  GoogleCloudApigeeV1Stats({
+    this.environments,
+    this.hosts,
+    this.metaData,
+  });
 
-  GoogleCloudApigeeV1Stats.fromJson(core.Map _json) {
-    if (_json.containsKey('environments')) {
-      environments = (_json['environments'] as core.List)
-          .map<GoogleCloudApigeeV1StatsEnvironmentStats>((value) =>
-              GoogleCloudApigeeV1StatsEnvironmentStats.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('hosts')) {
-      hosts = (_json['hosts'] as core.List)
-          .map<GoogleCloudApigeeV1StatsHostStats>((value) =>
-              GoogleCloudApigeeV1StatsHostStats.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('metaData')) {
-      metaData = GoogleCloudApigeeV1Metadata.fromJson(
-          _json['metaData'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudApigeeV1Stats.fromJson(core.Map _json)
+      : this(
+          environments: _json.containsKey('environments')
+              ? (_json['environments'] as core.List)
+                  .map<GoogleCloudApigeeV1StatsEnvironmentStats>((value) =>
+                      GoogleCloudApigeeV1StatsEnvironmentStats.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          hosts: _json.containsKey('hosts')
+              ? (_json['hosts'] as core.List)
+                  .map<GoogleCloudApigeeV1StatsHostStats>((value) =>
+                      GoogleCloudApigeeV1StatsHostStats.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          metaData: _json.containsKey('metaData')
+              ? GoogleCloudApigeeV1Metadata.fromJson(
+                  _json['metaData'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (environments != null)
@@ -19137,27 +19884,30 @@ class GoogleCloudApigeeV1StatsEnvironmentStats {
   core.List<GoogleCloudApigeeV1Metric>? metrics;
   core.String? name;
 
-  GoogleCloudApigeeV1StatsEnvironmentStats();
+  GoogleCloudApigeeV1StatsEnvironmentStats({
+    this.dimensions,
+    this.metrics,
+    this.name,
+  });
 
-  GoogleCloudApigeeV1StatsEnvironmentStats.fromJson(core.Map _json) {
-    if (_json.containsKey('dimensions')) {
-      dimensions = (_json['dimensions'] as core.List)
-          .map<GoogleCloudApigeeV1DimensionMetric>((value) =>
-              GoogleCloudApigeeV1DimensionMetric.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('metrics')) {
-      metrics = (_json['metrics'] as core.List)
-          .map<GoogleCloudApigeeV1Metric>((value) =>
-              GoogleCloudApigeeV1Metric.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1StatsEnvironmentStats.fromJson(core.Map _json)
+      : this(
+          dimensions: _json.containsKey('dimensions')
+              ? (_json['dimensions'] as core.List)
+                  .map<GoogleCloudApigeeV1DimensionMetric>((value) =>
+                      GoogleCloudApigeeV1DimensionMetric.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          metrics: _json.containsKey('metrics')
+              ? (_json['metrics'] as core.List)
+                  .map<GoogleCloudApigeeV1Metric>((value) =>
+                      GoogleCloudApigeeV1Metric.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dimensions != null)
@@ -19191,27 +19941,30 @@ class GoogleCloudApigeeV1StatsHostStats {
   /// This field contains the hostname used in query.
   core.String? name;
 
-  GoogleCloudApigeeV1StatsHostStats();
+  GoogleCloudApigeeV1StatsHostStats({
+    this.dimensions,
+    this.metrics,
+    this.name,
+  });
 
-  GoogleCloudApigeeV1StatsHostStats.fromJson(core.Map _json) {
-    if (_json.containsKey('dimensions')) {
-      dimensions = (_json['dimensions'] as core.List)
-          .map<GoogleCloudApigeeV1DimensionMetric>((value) =>
-              GoogleCloudApigeeV1DimensionMetric.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('metrics')) {
-      metrics = (_json['metrics'] as core.List)
-          .map<GoogleCloudApigeeV1Metric>((value) =>
-              GoogleCloudApigeeV1Metric.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1StatsHostStats.fromJson(core.Map _json)
+      : this(
+          dimensions: _json.containsKey('dimensions')
+              ? (_json['dimensions'] as core.List)
+                  .map<GoogleCloudApigeeV1DimensionMetric>((value) =>
+                      GoogleCloudApigeeV1DimensionMetric.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          metrics: _json.containsKey('metrics')
+              ? (_json['metrics'] as core.List)
+                  .map<GoogleCloudApigeeV1Metric>((value) =>
+                      GoogleCloudApigeeV1Metric.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dimensions != null)
@@ -19230,13 +19983,14 @@ class GoogleCloudApigeeV1Subscription {
   /// "projects/foo/subscription/bar"`
   core.String? name;
 
-  GoogleCloudApigeeV1Subscription();
+  GoogleCloudApigeeV1Subscription({
+    this.name,
+  });
 
-  GoogleCloudApigeeV1Subscription.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1Subscription.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -19278,18 +20032,20 @@ class GoogleCloudApigeeV1SyncAuthorization {
   /// Required.
   core.List<core.String>? identities;
 
-  GoogleCloudApigeeV1SyncAuthorization();
+  GoogleCloudApigeeV1SyncAuthorization({
+    this.etag,
+    this.identities,
+  });
 
-  GoogleCloudApigeeV1SyncAuthorization.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('identities')) {
-      identities = (_json['identities'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  GoogleCloudApigeeV1SyncAuthorization.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          identities: _json.containsKey('identities')
+              ? (_json['identities'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -19356,32 +20112,35 @@ class GoogleCloudApigeeV1TargetServer {
   /// Optional.
   GoogleCloudApigeeV1TlsInfo? sSLInfo;
 
-  GoogleCloudApigeeV1TargetServer();
+  GoogleCloudApigeeV1TargetServer({
+    this.description,
+    this.host,
+    this.isEnabled,
+    this.name,
+    this.port,
+    this.protocol,
+    this.sSLInfo,
+  });
 
-  GoogleCloudApigeeV1TargetServer.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('host')) {
-      host = _json['host'] as core.String;
-    }
-    if (_json.containsKey('isEnabled')) {
-      isEnabled = _json['isEnabled'] as core.bool;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('port')) {
-      port = _json['port'] as core.int;
-    }
-    if (_json.containsKey('protocol')) {
-      protocol = _json['protocol'] as core.String;
-    }
-    if (_json.containsKey('sSLInfo')) {
-      sSLInfo = GoogleCloudApigeeV1TlsInfo.fromJson(
-          _json['sSLInfo'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudApigeeV1TargetServer.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          host: _json.containsKey('host') ? _json['host'] as core.String : null,
+          isEnabled: _json.containsKey('isEnabled')
+              ? _json['isEnabled'] as core.bool
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          port: _json.containsKey('port') ? _json['port'] as core.int : null,
+          protocol: _json.containsKey('protocol')
+              ? _json['protocol'] as core.String
+              : null,
+          sSLInfo: _json.containsKey('sSLInfo')
+              ? GoogleCloudApigeeV1TlsInfo.fromJson(
+                  _json['sSLInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -19416,26 +20175,27 @@ class GoogleCloudApigeeV1TargetServerConfig {
   /// TLS settings for the target server.
   GoogleCloudApigeeV1TlsInfoConfig? tlsInfo;
 
-  GoogleCloudApigeeV1TargetServerConfig();
+  GoogleCloudApigeeV1TargetServerConfig({
+    this.host,
+    this.name,
+    this.port,
+    this.protocol,
+    this.tlsInfo,
+  });
 
-  GoogleCloudApigeeV1TargetServerConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('host')) {
-      host = _json['host'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('port')) {
-      port = _json['port'] as core.int;
-    }
-    if (_json.containsKey('protocol')) {
-      protocol = _json['protocol'] as core.String;
-    }
-    if (_json.containsKey('tlsInfo')) {
-      tlsInfo = GoogleCloudApigeeV1TlsInfoConfig.fromJson(
-          _json['tlsInfo'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudApigeeV1TargetServerConfig.fromJson(core.Map _json)
+      : this(
+          host: _json.containsKey('host') ? _json['host'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          port: _json.containsKey('port') ? _json['port'] as core.int : null,
+          protocol: _json.containsKey('protocol')
+              ? _json['protocol'] as core.String
+              : null,
+          tlsInfo: _json.containsKey('tlsInfo')
+              ? GoogleCloudApigeeV1TlsInfoConfig.fromJson(
+                  _json['tlsInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (host != null) 'host': host!,
@@ -19458,16 +20218,18 @@ class GoogleCloudApigeeV1TestDatastoreResponse {
   /// Output only.
   core.String? state;
 
-  GoogleCloudApigeeV1TestDatastoreResponse();
+  GoogleCloudApigeeV1TestDatastoreResponse({
+    this.error,
+    this.state,
+  });
 
-  GoogleCloudApigeeV1TestDatastoreResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('error')) {
-      error = _json['error'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1TestDatastoreResponse.fromJson(core.Map _json)
+      : this(
+          error:
+              _json.containsKey('error') ? _json['error'] as core.String : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (error != null) 'error': error!,
@@ -19525,42 +20287,53 @@ class GoogleCloudApigeeV1TlsInfo {
   /// References not yet supported.
   core.String? trustStore;
 
-  GoogleCloudApigeeV1TlsInfo();
+  GoogleCloudApigeeV1TlsInfo({
+    this.ciphers,
+    this.clientAuthEnabled,
+    this.commonName,
+    this.enabled,
+    this.ignoreValidationErrors,
+    this.keyAlias,
+    this.keyStore,
+    this.protocols,
+    this.trustStore,
+  });
 
-  GoogleCloudApigeeV1TlsInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('ciphers')) {
-      ciphers = (_json['ciphers'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('clientAuthEnabled')) {
-      clientAuthEnabled = _json['clientAuthEnabled'] as core.bool;
-    }
-    if (_json.containsKey('commonName')) {
-      commonName = GoogleCloudApigeeV1TlsInfoCommonName.fromJson(
-          _json['commonName'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-    if (_json.containsKey('ignoreValidationErrors')) {
-      ignoreValidationErrors = _json['ignoreValidationErrors'] as core.bool;
-    }
-    if (_json.containsKey('keyAlias')) {
-      keyAlias = _json['keyAlias'] as core.String;
-    }
-    if (_json.containsKey('keyStore')) {
-      keyStore = _json['keyStore'] as core.String;
-    }
-    if (_json.containsKey('protocols')) {
-      protocols = (_json['protocols'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('trustStore')) {
-      trustStore = _json['trustStore'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1TlsInfo.fromJson(core.Map _json)
+      : this(
+          ciphers: _json.containsKey('ciphers')
+              ? (_json['ciphers'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          clientAuthEnabled: _json.containsKey('clientAuthEnabled')
+              ? _json['clientAuthEnabled'] as core.bool
+              : null,
+          commonName: _json.containsKey('commonName')
+              ? GoogleCloudApigeeV1TlsInfoCommonName.fromJson(
+                  _json['commonName'] as core.Map<core.String, core.dynamic>)
+              : null,
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+          ignoreValidationErrors: _json.containsKey('ignoreValidationErrors')
+              ? _json['ignoreValidationErrors'] as core.bool
+              : null,
+          keyAlias: _json.containsKey('keyAlias')
+              ? _json['keyAlias'] as core.String
+              : null,
+          keyStore: _json.containsKey('keyStore')
+              ? _json['keyStore'] as core.String
+              : null,
+          protocols: _json.containsKey('protocols')
+              ? (_json['protocols'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          trustStore: _json.containsKey('trustStore')
+              ? _json['trustStore'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ciphers != null) 'ciphers': ciphers!,
@@ -19583,16 +20356,19 @@ class GoogleCloudApigeeV1TlsInfoCommonName {
   /// Indicates whether the cert should be matched against as a wildcard cert.
   core.bool? wildcardMatch;
 
-  GoogleCloudApigeeV1TlsInfoCommonName();
+  GoogleCloudApigeeV1TlsInfoCommonName({
+    this.value,
+    this.wildcardMatch,
+  });
 
-  GoogleCloudApigeeV1TlsInfoCommonName.fromJson(core.Map _json) {
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-    if (_json.containsKey('wildcardMatch')) {
-      wildcardMatch = _json['wildcardMatch'] as core.bool;
-    }
-  }
+  GoogleCloudApigeeV1TlsInfoCommonName.fromJson(core.Map _json)
+      : this(
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+          wildcardMatch: _json.containsKey('wildcardMatch')
+              ? _json['wildcardMatch'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (value != null) 'value': value!,
@@ -19640,43 +20416,55 @@ class GoogleCloudApigeeV1TlsInfoConfig {
   /// `organizations/{org}/environments/{env}/references/{reference}`
   core.String? trustStore;
 
-  GoogleCloudApigeeV1TlsInfoConfig();
+  GoogleCloudApigeeV1TlsInfoConfig({
+    this.ciphers,
+    this.clientAuthEnabled,
+    this.commonName,
+    this.enabled,
+    this.ignoreValidationErrors,
+    this.keyAlias,
+    this.keyAliasReference,
+    this.protocols,
+    this.trustStore,
+  });
 
-  GoogleCloudApigeeV1TlsInfoConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('ciphers')) {
-      ciphers = (_json['ciphers'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('clientAuthEnabled')) {
-      clientAuthEnabled = _json['clientAuthEnabled'] as core.bool;
-    }
-    if (_json.containsKey('commonName')) {
-      commonName = GoogleCloudApigeeV1CommonNameConfig.fromJson(
-          _json['commonName'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-    if (_json.containsKey('ignoreValidationErrors')) {
-      ignoreValidationErrors = _json['ignoreValidationErrors'] as core.bool;
-    }
-    if (_json.containsKey('keyAlias')) {
-      keyAlias = _json['keyAlias'] as core.String;
-    }
-    if (_json.containsKey('keyAliasReference')) {
-      keyAliasReference = GoogleCloudApigeeV1KeyAliasReference.fromJson(
-          _json['keyAliasReference'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('protocols')) {
-      protocols = (_json['protocols'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('trustStore')) {
-      trustStore = _json['trustStore'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1TlsInfoConfig.fromJson(core.Map _json)
+      : this(
+          ciphers: _json.containsKey('ciphers')
+              ? (_json['ciphers'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          clientAuthEnabled: _json.containsKey('clientAuthEnabled')
+              ? _json['clientAuthEnabled'] as core.bool
+              : null,
+          commonName: _json.containsKey('commonName')
+              ? GoogleCloudApigeeV1CommonNameConfig.fromJson(
+                  _json['commonName'] as core.Map<core.String, core.dynamic>)
+              : null,
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+          ignoreValidationErrors: _json.containsKey('ignoreValidationErrors')
+              ? _json['ignoreValidationErrors'] as core.bool
+              : null,
+          keyAlias: _json.containsKey('keyAlias')
+              ? _json['keyAlias'] as core.String
+              : null,
+          keyAliasReference: _json.containsKey('keyAliasReference')
+              ? GoogleCloudApigeeV1KeyAliasReference.fromJson(
+                  _json['keyAliasReference']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          protocols: _json.containsKey('protocols')
+              ? (_json['protocols'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          trustStore: _json.containsKey('trustStore')
+              ? _json['trustStore'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ciphers != null) 'ciphers': ciphers!,
@@ -19720,20 +20508,26 @@ class GoogleCloudApigeeV1TraceConfig {
   /// distributed trace configuration overrides API.
   GoogleCloudApigeeV1TraceSamplingConfig? samplingConfig;
 
-  GoogleCloudApigeeV1TraceConfig();
+  GoogleCloudApigeeV1TraceConfig({
+    this.endpoint,
+    this.exporter,
+    this.samplingConfig,
+  });
 
-  GoogleCloudApigeeV1TraceConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('endpoint')) {
-      endpoint = _json['endpoint'] as core.String;
-    }
-    if (_json.containsKey('exporter')) {
-      exporter = _json['exporter'] as core.String;
-    }
-    if (_json.containsKey('samplingConfig')) {
-      samplingConfig = GoogleCloudApigeeV1TraceSamplingConfig.fromJson(
-          _json['samplingConfig'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudApigeeV1TraceConfig.fromJson(core.Map _json)
+      : this(
+          endpoint: _json.containsKey('endpoint')
+              ? _json['endpoint'] as core.String
+              : null,
+          exporter: _json.containsKey('exporter')
+              ? _json['exporter'] as core.String
+              : null,
+          samplingConfig: _json.containsKey('samplingConfig')
+              ? GoogleCloudApigeeV1TraceSamplingConfig.fromJson(
+                  _json['samplingConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endpoint != null) 'endpoint': endpoint!,
@@ -19754,20 +20548,24 @@ class GoogleCloudApigeeV1TraceConfigOverride {
   /// Trace configuration to override.
   GoogleCloudApigeeV1TraceSamplingConfig? samplingConfig;
 
-  GoogleCloudApigeeV1TraceConfigOverride();
+  GoogleCloudApigeeV1TraceConfigOverride({
+    this.apiProxy,
+    this.name,
+    this.samplingConfig,
+  });
 
-  GoogleCloudApigeeV1TraceConfigOverride.fromJson(core.Map _json) {
-    if (_json.containsKey('apiProxy')) {
-      apiProxy = _json['apiProxy'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('samplingConfig')) {
-      samplingConfig = GoogleCloudApigeeV1TraceSamplingConfig.fromJson(
-          _json['samplingConfig'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudApigeeV1TraceConfigOverride.fromJson(core.Map _json)
+      : this(
+          apiProxy: _json.containsKey('apiProxy')
+              ? _json['apiProxy'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          samplingConfig: _json.containsKey('samplingConfig')
+              ? GoogleCloudApigeeV1TraceSamplingConfig.fromJson(
+                  _json['samplingConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiProxy != null) 'apiProxy': apiProxy!,
@@ -19799,16 +20597,20 @@ class GoogleCloudApigeeV1TraceSamplingConfig {
   /// supported values are > 0 and <= 0.5.
   core.double? samplingRate;
 
-  GoogleCloudApigeeV1TraceSamplingConfig();
+  GoogleCloudApigeeV1TraceSamplingConfig({
+    this.sampler,
+    this.samplingRate,
+  });
 
-  GoogleCloudApigeeV1TraceSamplingConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('sampler')) {
-      sampler = _json['sampler'] as core.String;
-    }
-    if (_json.containsKey('samplingRate')) {
-      samplingRate = (_json['samplingRate'] as core.num).toDouble();
-    }
-  }
+  GoogleCloudApigeeV1TraceSamplingConfig.fromJson(core.Map _json)
+      : this(
+          sampler: _json.containsKey('sampler')
+              ? _json['sampler'] as core.String
+              : null,
+          samplingRate: _json.containsKey('samplingRate')
+              ? (_json['samplingRate'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sampler != null) 'sampler': sampler!,
@@ -19916,22 +20718,24 @@ class GoogleCloudApigeeV1UpdateError {
   /// and instances.
   core.String? type;
 
-  GoogleCloudApigeeV1UpdateError();
+  GoogleCloudApigeeV1UpdateError({
+    this.code,
+    this.message,
+    this.resource,
+    this.type,
+  });
 
-  GoogleCloudApigeeV1UpdateError.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.String;
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-    if (_json.containsKey('resource')) {
-      resource = _json['resource'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  GoogleCloudApigeeV1UpdateError.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.String : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+          resource: _json.containsKey('resource')
+              ? _json['resource'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -19968,20 +20772,24 @@ class GoogleIamV1AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  GoogleIamV1AuditConfig();
+  GoogleIamV1AuditConfig({
+    this.auditLogConfigs,
+    this.service,
+  });
 
-  GoogleIamV1AuditConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('auditLogConfigs')) {
-      auditLogConfigs = (_json['auditLogConfigs'] as core.List)
-          .map<GoogleIamV1AuditLogConfig>((value) =>
-              GoogleIamV1AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('service')) {
-      service = _json['service'] as core.String;
-    }
-  }
+  GoogleIamV1AuditConfig.fromJson(core.Map _json)
+      : this(
+          auditLogConfigs: _json.containsKey('auditLogConfigs')
+              ? (_json['auditLogConfigs'] as core.List)
+                  .map<GoogleIamV1AuditLogConfig>((value) =>
+                      GoogleIamV1AuditLogConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          service: _json.containsKey('service')
+              ? _json['service'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (auditLogConfigs != null)
@@ -20012,18 +20820,22 @@ class GoogleIamV1AuditLogConfig {
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
   core.String? logType;
 
-  GoogleIamV1AuditLogConfig();
+  GoogleIamV1AuditLogConfig({
+    this.exemptedMembers,
+    this.logType,
+  });
 
-  GoogleIamV1AuditLogConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('exemptedMembers')) {
-      exemptedMembers = (_json['exemptedMembers'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('logType')) {
-      logType = _json['logType'] as core.String;
-    }
-  }
+  GoogleIamV1AuditLogConfig.fromJson(core.Map _json)
+      : this(
+          exemptedMembers: _json.containsKey('exemptedMembers')
+              ? (_json['exemptedMembers'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          logType: _json.containsKey('logType')
+              ? _json['logType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
@@ -20080,22 +20892,25 @@ class GoogleIamV1Binding {
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String? role;
 
-  GoogleIamV1Binding();
+  GoogleIamV1Binding({
+    this.condition,
+    this.members,
+    this.role,
+  });
 
-  GoogleIamV1Binding.fromJson(core.Map _json) {
-    if (_json.containsKey('condition')) {
-      condition = GoogleTypeExpr.fromJson(
-          _json['condition'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('members')) {
-      members = (_json['members'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('role')) {
-      role = _json['role'] as core.String;
-    }
-  }
+  GoogleIamV1Binding.fromJson(core.Map _json)
+      : this(
+          condition: _json.containsKey('condition')
+              ? GoogleTypeExpr.fromJson(
+                  _json['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          members: _json.containsKey('members')
+              ? (_json['members'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!.toJson(),
@@ -20185,29 +21000,34 @@ class GoogleIamV1Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  GoogleIamV1Policy();
+  GoogleIamV1Policy({
+    this.auditConfigs,
+    this.bindings,
+    this.etag,
+    this.version,
+  });
 
-  GoogleIamV1Policy.fromJson(core.Map _json) {
-    if (_json.containsKey('auditConfigs')) {
-      auditConfigs = (_json['auditConfigs'] as core.List)
-          .map<GoogleIamV1AuditConfig>((value) =>
-              GoogleIamV1AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('bindings')) {
-      bindings = (_json['bindings'] as core.List)
-          .map<GoogleIamV1Binding>((value) => GoogleIamV1Binding.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.int;
-    }
-  }
+  GoogleIamV1Policy.fromJson(core.Map _json)
+      : this(
+          auditConfigs: _json.containsKey('auditConfigs')
+              ? (_json['auditConfigs'] as core.List)
+                  .map<GoogleIamV1AuditConfig>((value) =>
+                      GoogleIamV1AuditConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          bindings: _json.containsKey('bindings')
+              ? (_json['bindings'] as core.List)
+                  .map<GoogleIamV1Binding>((value) =>
+                      GoogleIamV1Binding.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (auditConfigs != null)
@@ -20234,17 +21054,21 @@ class GoogleIamV1SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  GoogleIamV1SetIamPolicyRequest();
+  GoogleIamV1SetIamPolicyRequest({
+    this.policy,
+    this.updateMask,
+  });
 
-  GoogleIamV1SetIamPolicyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('policy')) {
-      policy = GoogleIamV1Policy.fromJson(
-          _json['policy'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'] as core.String;
-    }
-  }
+  GoogleIamV1SetIamPolicyRequest.fromJson(core.Map _json)
+      : this(
+          policy: _json.containsKey('policy')
+              ? GoogleIamV1Policy.fromJson(
+                  _json['policy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: _json.containsKey('updateMask')
+              ? _json['updateMask'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (policy != null) 'policy': policy!.toJson(),
@@ -20261,15 +21085,18 @@ class GoogleIamV1TestIamPermissionsRequest {
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String>? permissions;
 
-  GoogleIamV1TestIamPermissionsRequest();
+  GoogleIamV1TestIamPermissionsRequest({
+    this.permissions,
+  });
 
-  GoogleIamV1TestIamPermissionsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  GoogleIamV1TestIamPermissionsRequest.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
@@ -20282,15 +21109,18 @@ class GoogleIamV1TestIamPermissionsResponse {
   /// allowed.
   core.List<core.String>? permissions;
 
-  GoogleIamV1TestIamPermissionsResponse();
+  GoogleIamV1TestIamPermissionsResponse({
+    this.permissions,
+  });
 
-  GoogleIamV1TestIamPermissionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  GoogleIamV1TestIamPermissionsResponse.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
@@ -20305,20 +21135,24 @@ class GoogleLongrunningListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<GoogleLongrunningOperation>? operations;
 
-  GoogleLongrunningListOperationsResponse();
+  GoogleLongrunningListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
 
-  GoogleLongrunningListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('operations')) {
-      operations = (_json['operations'] as core.List)
-          .map<GoogleLongrunningOperation>((value) =>
-              GoogleLongrunningOperation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleLongrunningListOperationsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          operations: _json.containsKey('operations')
+              ? (_json['operations'] as core.List)
+                  .map<GoogleLongrunningOperation>((value) =>
+                      GoogleLongrunningOperation.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -20370,36 +21204,39 @@ class GoogleLongrunningOperation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object>? response;
 
-  GoogleLongrunningOperation();
+  GoogleLongrunningOperation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
-  GoogleLongrunningOperation.fromJson(core.Map _json) {
-    if (_json.containsKey('done')) {
-      done = _json['done'] as core.bool;
-    }
-    if (_json.containsKey('error')) {
-      error = GoogleRpcStatus.fromJson(
-          _json['error'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('response')) {
-      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-  }
+  GoogleLongrunningOperation.fromJson(core.Map _json)
+      : this(
+          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
+          error: _json.containsKey('error')
+              ? GoogleRpcStatus.fromJson(
+                  _json['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          response: _json.containsKey('response')
+              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
@@ -20436,17 +21273,20 @@ class GoogleRpcPreconditionFailure {
   /// Describes all precondition violations.
   core.List<GoogleRpcPreconditionFailureViolation>? violations;
 
-  GoogleRpcPreconditionFailure();
+  GoogleRpcPreconditionFailure({
+    this.violations,
+  });
 
-  GoogleRpcPreconditionFailure.fromJson(core.Map _json) {
-    if (_json.containsKey('violations')) {
-      violations = (_json['violations'] as core.List)
-          .map<GoogleRpcPreconditionFailureViolation>((value) =>
-              GoogleRpcPreconditionFailureViolation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleRpcPreconditionFailure.fromJson(core.Map _json)
+      : this(
+          violations: _json.containsKey('violations')
+              ? (_json['violations'] as core.List)
+                  .map<GoogleRpcPreconditionFailureViolation>((value) =>
+                      GoogleRpcPreconditionFailureViolation.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (violations != null)
@@ -20475,19 +21315,22 @@ class GoogleRpcPreconditionFailureViolation {
   /// violation".
   core.String? type;
 
-  GoogleRpcPreconditionFailureViolation();
+  GoogleRpcPreconditionFailureViolation({
+    this.description,
+    this.subject,
+    this.type,
+  });
 
-  GoogleRpcPreconditionFailureViolation.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('subject')) {
-      subject = _json['subject'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  GoogleRpcPreconditionFailureViolation.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          subject: _json.containsKey('subject')
+              ? _json['subject'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -20521,27 +21364,30 @@ class GoogleRpcStatus {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  GoogleRpcStatus();
+  GoogleRpcStatus({
+    this.code,
+    this.details,
+    this.message,
+  });
 
-  GoogleRpcStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.int;
-    }
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  GoogleRpcStatus.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -20594,22 +21440,27 @@ class GoogleTypeExpr {
   /// Optional.
   core.String? title;
 
-  GoogleTypeExpr();
+  GoogleTypeExpr({
+    this.description,
+    this.expression,
+    this.location,
+    this.title,
+  });
 
-  GoogleTypeExpr.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('expression')) {
-      expression = _json['expression'] as core.String;
-    }
-    if (_json.containsKey('location')) {
-      location = _json['location'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  GoogleTypeExpr.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          expression: _json.containsKey('expression')
+              ? _json['expression'] as core.String
+              : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -20638,19 +21489,21 @@ class GoogleTypeMoney {
   /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
   core.String? units;
 
-  GoogleTypeMoney();
+  GoogleTypeMoney({
+    this.currencyCode,
+    this.nanos,
+    this.units,
+  });
 
-  GoogleTypeMoney.fromJson(core.Map _json) {
-    if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'] as core.String;
-    }
-    if (_json.containsKey('nanos')) {
-      nanos = _json['nanos'] as core.int;
-    }
-    if (_json.containsKey('units')) {
-      units = _json['units'] as core.String;
-    }
-  }
+  GoogleTypeMoney.fromJson(core.Map _json)
+      : this(
+          currencyCode: _json.containsKey('currencyCode')
+              ? _json['currencyCode'] as core.String
+              : null,
+          nanos: _json.containsKey('nanos') ? _json['nanos'] as core.int : null,
+          units:
+              _json.containsKey('units') ? _json['units'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (currencyCode != null) 'currencyCode': currencyCode!,

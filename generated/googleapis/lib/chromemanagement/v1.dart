@@ -321,25 +321,31 @@ class GoogleChromeManagementV1BrowserVersion {
   /// Output only.
   core.String? version;
 
-  GoogleChromeManagementV1BrowserVersion();
+  GoogleChromeManagementV1BrowserVersion({
+    this.channel,
+    this.count,
+    this.deviceOsVersion,
+    this.system,
+    this.version,
+  });
 
-  GoogleChromeManagementV1BrowserVersion.fromJson(core.Map _json) {
-    if (_json.containsKey('channel')) {
-      channel = _json['channel'] as core.String;
-    }
-    if (_json.containsKey('count')) {
-      count = _json['count'] as core.String;
-    }
-    if (_json.containsKey('deviceOsVersion')) {
-      deviceOsVersion = _json['deviceOsVersion'] as core.String;
-    }
-    if (_json.containsKey('system')) {
-      system = _json['system'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.String;
-    }
-  }
+  GoogleChromeManagementV1BrowserVersion.fromJson(core.Map _json)
+      : this(
+          channel: _json.containsKey('channel')
+              ? _json['channel'] as core.String
+              : null,
+          count:
+              _json.containsKey('count') ? _json['count'] as core.String : null,
+          deviceOsVersion: _json.containsKey('deviceOsVersion')
+              ? _json['deviceOsVersion'] as core.String
+              : null,
+          system: _json.containsKey('system')
+              ? _json['system'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channel != null) 'channel': channel!,
@@ -361,23 +367,28 @@ class GoogleChromeManagementV1CountChromeVersionsResponse {
   /// Total number browser versions matching request.
   core.int? totalSize;
 
-  GoogleChromeManagementV1CountChromeVersionsResponse();
+  GoogleChromeManagementV1CountChromeVersionsResponse({
+    this.browserVersions,
+    this.nextPageToken,
+    this.totalSize,
+  });
 
-  GoogleChromeManagementV1CountChromeVersionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('browserVersions')) {
-      browserVersions = (_json['browserVersions'] as core.List)
-          .map<GoogleChromeManagementV1BrowserVersion>((value) =>
-              GoogleChromeManagementV1BrowserVersion.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('totalSize')) {
-      totalSize = _json['totalSize'] as core.int;
-    }
-  }
+  GoogleChromeManagementV1CountChromeVersionsResponse.fromJson(core.Map _json)
+      : this(
+          browserVersions: _json.containsKey('browserVersions')
+              ? (_json['browserVersions'] as core.List)
+                  .map<GoogleChromeManagementV1BrowserVersion>((value) =>
+                      GoogleChromeManagementV1BrowserVersion.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          totalSize: _json.containsKey('totalSize')
+              ? _json['totalSize'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (browserVersions != null)
@@ -399,23 +410,28 @@ class GoogleChromeManagementV1CountInstalledAppsResponse {
   /// Total number of installed apps matching request.
   core.int? totalSize;
 
-  GoogleChromeManagementV1CountInstalledAppsResponse();
+  GoogleChromeManagementV1CountInstalledAppsResponse({
+    this.installedApps,
+    this.nextPageToken,
+    this.totalSize,
+  });
 
-  GoogleChromeManagementV1CountInstalledAppsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('installedApps')) {
-      installedApps = (_json['installedApps'] as core.List)
-          .map<GoogleChromeManagementV1InstalledApp>((value) =>
-              GoogleChromeManagementV1InstalledApp.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('totalSize')) {
-      totalSize = _json['totalSize'] as core.int;
-    }
-  }
+  GoogleChromeManagementV1CountInstalledAppsResponse.fromJson(core.Map _json)
+      : this(
+          installedApps: _json.containsKey('installedApps')
+              ? (_json['installedApps'] as core.List)
+                  .map<GoogleChromeManagementV1InstalledApp>((value) =>
+                      GoogleChromeManagementV1InstalledApp.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          totalSize: _json.containsKey('totalSize')
+              ? _json['totalSize'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (installedApps != null)
@@ -438,16 +454,20 @@ class GoogleChromeManagementV1Device {
   /// Output only.
   core.String? machine;
 
-  GoogleChromeManagementV1Device();
+  GoogleChromeManagementV1Device({
+    this.deviceId,
+    this.machine,
+  });
 
-  GoogleChromeManagementV1Device.fromJson(core.Map _json) {
-    if (_json.containsKey('deviceId')) {
-      deviceId = _json['deviceId'] as core.String;
-    }
-    if (_json.containsKey('machine')) {
-      machine = _json['machine'] as core.String;
-    }
-  }
+  GoogleChromeManagementV1Device.fromJson(core.Map _json)
+      : this(
+          deviceId: _json.containsKey('deviceId')
+              ? _json['deviceId'] as core.String
+              : null,
+          machine: _json.containsKey('machine')
+              ? _json['machine'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceId != null) 'deviceId': deviceId!,
@@ -468,24 +488,29 @@ class GoogleChromeManagementV1FindInstalledAppDevicesResponse {
   /// Total number of devices matching request.
   core.int? totalSize;
 
-  GoogleChromeManagementV1FindInstalledAppDevicesResponse();
+  GoogleChromeManagementV1FindInstalledAppDevicesResponse({
+    this.devices,
+    this.nextPageToken,
+    this.totalSize,
+  });
 
   GoogleChromeManagementV1FindInstalledAppDevicesResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('devices')) {
-      devices = (_json['devices'] as core.List)
-          .map<GoogleChromeManagementV1Device>((value) =>
-              GoogleChromeManagementV1Device.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('totalSize')) {
-      totalSize = _json['totalSize'] as core.int;
-    }
-  }
+      core.Map _json)
+      : this(
+          devices: _json.containsKey('devices')
+              ? (_json['devices'] as core.List)
+                  .map<GoogleChromeManagementV1Device>((value) =>
+                      GoogleChromeManagementV1Device.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          totalSize: _json.containsKey('totalSize')
+              ? _json['totalSize'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (devices != null)
@@ -575,45 +600,57 @@ class GoogleChromeManagementV1InstalledApp {
   /// Output only.
   core.List<core.String>? permissions;
 
-  GoogleChromeManagementV1InstalledApp();
+  GoogleChromeManagementV1InstalledApp({
+    this.appId,
+    this.appInstallType,
+    this.appSource,
+    this.appType,
+    this.browserDeviceCount,
+    this.description,
+    this.disabled,
+    this.displayName,
+    this.homepageUri,
+    this.osUserCount,
+    this.permissions,
+  });
 
-  GoogleChromeManagementV1InstalledApp.fromJson(core.Map _json) {
-    if (_json.containsKey('appId')) {
-      appId = _json['appId'] as core.String;
-    }
-    if (_json.containsKey('appInstallType')) {
-      appInstallType = _json['appInstallType'] as core.String;
-    }
-    if (_json.containsKey('appSource')) {
-      appSource = _json['appSource'] as core.String;
-    }
-    if (_json.containsKey('appType')) {
-      appType = _json['appType'] as core.String;
-    }
-    if (_json.containsKey('browserDeviceCount')) {
-      browserDeviceCount = _json['browserDeviceCount'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('disabled')) {
-      disabled = _json['disabled'] as core.bool;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('homepageUri')) {
-      homepageUri = _json['homepageUri'] as core.String;
-    }
-    if (_json.containsKey('osUserCount')) {
-      osUserCount = _json['osUserCount'] as core.String;
-    }
-    if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  GoogleChromeManagementV1InstalledApp.fromJson(core.Map _json)
+      : this(
+          appId:
+              _json.containsKey('appId') ? _json['appId'] as core.String : null,
+          appInstallType: _json.containsKey('appInstallType')
+              ? _json['appInstallType'] as core.String
+              : null,
+          appSource: _json.containsKey('appSource')
+              ? _json['appSource'] as core.String
+              : null,
+          appType: _json.containsKey('appType')
+              ? _json['appType'] as core.String
+              : null,
+          browserDeviceCount: _json.containsKey('browserDeviceCount')
+              ? _json['browserDeviceCount'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          disabled: _json.containsKey('disabled')
+              ? _json['disabled'] as core.bool
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          homepageUri: _json.containsKey('homepageUri')
+              ? _json['homepageUri'] as core.String
+              : null,
+          osUserCount: _json.containsKey('osUserCount')
+              ? _json['osUserCount'] as core.String
+              : null,
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appId != null) 'appId': appId!,

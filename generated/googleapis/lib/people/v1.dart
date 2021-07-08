@@ -1572,47 +1572,56 @@ class Address {
   /// `work` * `other`
   core.String? type;
 
-  Address();
+  Address({
+    this.city,
+    this.country,
+    this.countryCode,
+    this.extendedAddress,
+    this.formattedType,
+    this.formattedValue,
+    this.metadata,
+    this.poBox,
+    this.postalCode,
+    this.region,
+    this.streetAddress,
+    this.type,
+  });
 
-  Address.fromJson(core.Map _json) {
-    if (_json.containsKey('city')) {
-      city = _json['city'] as core.String;
-    }
-    if (_json.containsKey('country')) {
-      country = _json['country'] as core.String;
-    }
-    if (_json.containsKey('countryCode')) {
-      countryCode = _json['countryCode'] as core.String;
-    }
-    if (_json.containsKey('extendedAddress')) {
-      extendedAddress = _json['extendedAddress'] as core.String;
-    }
-    if (_json.containsKey('formattedType')) {
-      formattedType = _json['formattedType'] as core.String;
-    }
-    if (_json.containsKey('formattedValue')) {
-      formattedValue = _json['formattedValue'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('poBox')) {
-      poBox = _json['poBox'] as core.String;
-    }
-    if (_json.containsKey('postalCode')) {
-      postalCode = _json['postalCode'] as core.String;
-    }
-    if (_json.containsKey('region')) {
-      region = _json['region'] as core.String;
-    }
-    if (_json.containsKey('streetAddress')) {
-      streetAddress = _json['streetAddress'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  Address.fromJson(core.Map _json)
+      : this(
+          city: _json.containsKey('city') ? _json['city'] as core.String : null,
+          country: _json.containsKey('country')
+              ? _json['country'] as core.String
+              : null,
+          countryCode: _json.containsKey('countryCode')
+              ? _json['countryCode'] as core.String
+              : null,
+          extendedAddress: _json.containsKey('extendedAddress')
+              ? _json['extendedAddress'] as core.String
+              : null,
+          formattedType: _json.containsKey('formattedType')
+              ? _json['formattedType'] as core.String
+              : null,
+          formattedValue: _json.containsKey('formattedValue')
+              ? _json['formattedValue'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          poBox:
+              _json.containsKey('poBox') ? _json['poBox'] as core.String : null,
+          postalCode: _json.containsKey('postalCode')
+              ? _json['postalCode'] as core.String
+              : null,
+          region: _json.containsKey('region')
+              ? _json['region'] as core.String
+              : null,
+          streetAddress: _json.containsKey('streetAddress')
+              ? _json['streetAddress'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (city != null) 'city': city!,
@@ -1643,17 +1652,21 @@ class AgeRangeType {
   /// Metadata about the age range.
   FieldMetadata? metadata;
 
-  AgeRangeType();
+  AgeRangeType({
+    this.ageRange,
+    this.metadata,
+  });
 
-  AgeRangeType.fromJson(core.Map _json) {
-    if (_json.containsKey('ageRange')) {
-      ageRange = _json['ageRange'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  AgeRangeType.fromJson(core.Map _json)
+      : this(
+          ageRange: _json.containsKey('ageRange')
+              ? _json['ageRange'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ageRange != null) 'ageRange': ageRange!,
@@ -1693,24 +1706,29 @@ class BatchCreateContactsRequest {
   /// Optional.
   core.List<core.String>? sources;
 
-  BatchCreateContactsRequest();
+  BatchCreateContactsRequest({
+    this.contacts,
+    this.readMask,
+    this.sources,
+  });
 
-  BatchCreateContactsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('contacts')) {
-      contacts = (_json['contacts'] as core.List)
-          .map<ContactToCreate>((value) => ContactToCreate.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('readMask')) {
-      readMask = _json['readMask'] as core.String;
-    }
-    if (_json.containsKey('sources')) {
-      sources = (_json['sources'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  BatchCreateContactsRequest.fromJson(core.Map _json)
+      : this(
+          contacts: _json.containsKey('contacts')
+              ? (_json['contacts'] as core.List)
+                  .map<ContactToCreate>((value) => ContactToCreate.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          readMask: _json.containsKey('readMask')
+              ? _json['readMask'] as core.String
+              : null,
+          sources: _json.containsKey('sources')
+              ? (_json['sources'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contacts != null)
@@ -1725,16 +1743,19 @@ class BatchCreateContactsResponse {
   /// The contacts that were created, unless the request `read_mask` is empty.
   core.List<PersonResponse>? createdPeople;
 
-  BatchCreateContactsResponse();
+  BatchCreateContactsResponse({
+    this.createdPeople,
+  });
 
-  BatchCreateContactsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('createdPeople')) {
-      createdPeople = (_json['createdPeople'] as core.List)
-          .map<PersonResponse>((value) => PersonResponse.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  BatchCreateContactsResponse.fromJson(core.Map _json)
+      : this(
+          createdPeople: _json.containsKey('createdPeople')
+              ? (_json['createdPeople'] as core.List)
+                  .map<PersonResponse>((value) => PersonResponse.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createdPeople != null)
@@ -1752,15 +1773,18 @@ class BatchDeleteContactsRequest {
   /// Required.
   core.List<core.String>? resourceNames;
 
-  BatchDeleteContactsRequest();
+  BatchDeleteContactsRequest({
+    this.resourceNames,
+  });
 
-  BatchDeleteContactsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('resourceNames')) {
-      resourceNames = (_json['resourceNames'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  BatchDeleteContactsRequest.fromJson(core.Map _json)
+      : this(
+          resourceNames: _json.containsKey('resourceNames')
+              ? (_json['resourceNames'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceNames != null) 'resourceNames': resourceNames!,
@@ -1772,16 +1796,20 @@ class BatchGetContactGroupsResponse {
   /// The list of responses for each requested contact group resource.
   core.List<ContactGroupResponse>? responses;
 
-  BatchGetContactGroupsResponse();
+  BatchGetContactGroupsResponse({
+    this.responses,
+  });
 
-  BatchGetContactGroupsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('responses')) {
-      responses = (_json['responses'] as core.List)
-          .map<ContactGroupResponse>((value) => ContactGroupResponse.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  BatchGetContactGroupsResponse.fromJson(core.Map _json)
+      : this(
+          responses: _json.containsKey('responses')
+              ? (_json['responses'] as core.List)
+                  .map<ContactGroupResponse>((value) =>
+                      ContactGroupResponse.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (responses != null)
@@ -1833,29 +1861,36 @@ class BatchUpdateContactsRequest {
   /// Required.
   core.String? updateMask;
 
-  BatchUpdateContactsRequest();
+  BatchUpdateContactsRequest({
+    this.contacts,
+    this.readMask,
+    this.sources,
+    this.updateMask,
+  });
 
-  BatchUpdateContactsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('contacts')) {
-      contacts = (_json['contacts'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          Person.fromJson(item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('readMask')) {
-      readMask = _json['readMask'] as core.String;
-    }
-    if (_json.containsKey('sources')) {
-      sources = (_json['sources'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'] as core.String;
-    }
-  }
+  BatchUpdateContactsRequest.fromJson(core.Map _json)
+      : this(
+          contacts: _json.containsKey('contacts')
+              ? (_json['contacts'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    Person.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          readMask: _json.containsKey('readMask')
+              ? _json['readMask'] as core.String
+              : null,
+          sources: _json.containsKey('sources')
+              ? (_json['sources'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          updateMask: _json.containsKey('updateMask')
+              ? _json['updateMask'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contacts != null)
@@ -1873,19 +1908,23 @@ class BatchUpdateContactsResponse {
   /// request `read_mask` is empty.
   core.Map<core.String, PersonResponse>? updateResult;
 
-  BatchUpdateContactsResponse();
+  BatchUpdateContactsResponse({
+    this.updateResult,
+  });
 
-  BatchUpdateContactsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('updateResult')) {
-      updateResult =
-          (_json['updateResult'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          PersonResponse.fromJson(item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-  }
+  BatchUpdateContactsResponse.fromJson(core.Map _json)
+      : this(
+          updateResult: _json.containsKey('updateResult')
+              ? (_json['updateResult'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    PersonResponse.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (updateResult != null)
@@ -1909,20 +1948,24 @@ class Biography {
   /// The short biography.
   core.String? value;
 
-  Biography();
+  Biography({
+    this.contentType,
+    this.metadata,
+    this.value,
+  });
 
-  Biography.fromJson(core.Map _json) {
-    if (_json.containsKey('contentType')) {
-      contentType = _json['contentType'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  Biography.fromJson(core.Map _json)
+      : this(
+          contentType: _json.containsKey('contentType')
+              ? _json['contentType'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentType != null) 'contentType': contentType!,
@@ -1945,21 +1988,24 @@ class Birthday {
   /// A free-form string representing the user's birthday.
   core.String? text;
 
-  Birthday();
+  Birthday({
+    this.date,
+    this.metadata,
+    this.text,
+  });
 
-  Birthday.fromJson(core.Map _json) {
-    if (_json.containsKey('date')) {
-      date =
-          Date.fromJson(_json['date'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('text')) {
-      text = _json['text'] as core.String;
-    }
-  }
+  Birthday.fromJson(core.Map _json)
+      : this(
+          date: _json.containsKey('date')
+              ? Date.fromJson(
+                  _json['date'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (date != null) 'date': date!.toJson(),
@@ -1976,17 +2022,20 @@ class BraggingRights {
   /// The bragging rights; for example, `climbed mount everest`.
   core.String? value;
 
-  BraggingRights();
+  BraggingRights({
+    this.metadata,
+    this.value,
+  });
 
-  BraggingRights.fromJson(core.Map _json) {
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  BraggingRights.fromJson(core.Map _json)
+      : this(
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (metadata != null) 'metadata': metadata!.toJson(),
@@ -2014,23 +2063,25 @@ class CalendarUrl {
   /// The calendar URL.
   core.String? url;
 
-  CalendarUrl();
+  CalendarUrl({
+    this.formattedType,
+    this.metadata,
+    this.type,
+    this.url,
+  });
 
-  CalendarUrl.fromJson(core.Map _json) {
-    if (_json.containsKey('formattedType')) {
-      formattedType = _json['formattedType'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  CalendarUrl.fromJson(core.Map _json)
+      : this(
+          formattedType: _json.containsKey('formattedType')
+              ? _json['formattedType'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (formattedType != null) 'formattedType': formattedType!,
@@ -2053,20 +2104,22 @@ class ClientData {
   /// The client specified value of the client data.
   core.String? value;
 
-  ClientData();
+  ClientData({
+    this.key,
+    this.metadata,
+    this.value,
+  });
 
-  ClientData.fromJson(core.Map _json) {
-    if (_json.containsKey('key')) {
-      key = _json['key'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  ClientData.fromJson(core.Map _json)
+      : this(
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
@@ -2137,43 +2190,50 @@ class ContactGroup {
   /// An ASCII string, in the form of `contactGroups/{contact_group_id}`.
   core.String? resourceName;
 
-  ContactGroup();
+  ContactGroup({
+    this.clientData,
+    this.etag,
+    this.formattedName,
+    this.groupType,
+    this.memberCount,
+    this.memberResourceNames,
+    this.metadata,
+    this.name,
+    this.resourceName,
+  });
 
-  ContactGroup.fromJson(core.Map _json) {
-    if (_json.containsKey('clientData')) {
-      clientData = (_json['clientData'] as core.List)
-          .map<GroupClientData>((value) => GroupClientData.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('formattedName')) {
-      formattedName = _json['formattedName'] as core.String;
-    }
-    if (_json.containsKey('groupType')) {
-      groupType = _json['groupType'] as core.String;
-    }
-    if (_json.containsKey('memberCount')) {
-      memberCount = _json['memberCount'] as core.int;
-    }
-    if (_json.containsKey('memberResourceNames')) {
-      memberResourceNames = (_json['memberResourceNames'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = ContactGroupMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('resourceName')) {
-      resourceName = _json['resourceName'] as core.String;
-    }
-  }
+  ContactGroup.fromJson(core.Map _json)
+      : this(
+          clientData: _json.containsKey('clientData')
+              ? (_json['clientData'] as core.List)
+                  .map<GroupClientData>((value) => GroupClientData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          formattedName: _json.containsKey('formattedName')
+              ? _json['formattedName'] as core.String
+              : null,
+          groupType: _json.containsKey('groupType')
+              ? _json['groupType'] as core.String
+              : null,
+          memberCount: _json.containsKey('memberCount')
+              ? _json['memberCount'] as core.int
+              : null,
+          memberResourceNames: _json.containsKey('memberResourceNames')
+              ? (_json['memberResourceNames'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? ContactGroupMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          resourceName: _json.containsKey('resourceName')
+              ? _json['resourceName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clientData != null)
@@ -2206,17 +2266,21 @@ class ContactGroupMembership {
   /// contact must always have at least one contact group membership.
   core.String? contactGroupResourceName;
 
-  ContactGroupMembership();
+  ContactGroupMembership({
+    this.contactGroupId,
+    this.contactGroupResourceName,
+  });
 
-  ContactGroupMembership.fromJson(core.Map _json) {
-    if (_json.containsKey('contactGroupId')) {
-      contactGroupId = _json['contactGroupId'] as core.String;
-    }
-    if (_json.containsKey('contactGroupResourceName')) {
-      contactGroupResourceName =
-          _json['contactGroupResourceName'] as core.String;
-    }
-  }
+  ContactGroupMembership.fromJson(core.Map _json)
+      : this(
+          contactGroupId: _json.containsKey('contactGroupId')
+              ? _json['contactGroupId'] as core.String
+              : null,
+          contactGroupResourceName:
+              _json.containsKey('contactGroupResourceName')
+                  ? _json['contactGroupResourceName'] as core.String
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contactGroupId != null) 'contactGroupId': contactGroupId!,
@@ -2241,16 +2305,20 @@ class ContactGroupMetadata {
   /// Output only.
   core.String? updateTime;
 
-  ContactGroupMetadata();
+  ContactGroupMetadata({
+    this.deleted,
+    this.updateTime,
+  });
 
-  ContactGroupMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('deleted')) {
-      deleted = _json['deleted'] as core.bool;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  ContactGroupMetadata.fromJson(core.Map _json)
+      : this(
+          deleted: _json.containsKey('deleted')
+              ? _json['deleted'] as core.bool
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deleted != null) 'deleted': deleted!,
@@ -2269,21 +2337,26 @@ class ContactGroupResponse {
   /// The status of the response.
   Status? status;
 
-  ContactGroupResponse();
+  ContactGroupResponse({
+    this.contactGroup,
+    this.requestedResourceName,
+    this.status,
+  });
 
-  ContactGroupResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('contactGroup')) {
-      contactGroup = ContactGroup.fromJson(
-          _json['contactGroup'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('requestedResourceName')) {
-      requestedResourceName = _json['requestedResourceName'] as core.String;
-    }
-    if (_json.containsKey('status')) {
-      status = Status.fromJson(
-          _json['status'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ContactGroupResponse.fromJson(core.Map _json)
+      : this(
+          contactGroup: _json.containsKey('contactGroup')
+              ? ContactGroup.fromJson(
+                  _json['contactGroup'] as core.Map<core.String, core.dynamic>)
+              : null,
+          requestedResourceName: _json.containsKey('requestedResourceName')
+              ? _json['requestedResourceName'] as core.String
+              : null,
+          status: _json.containsKey('status')
+              ? Status.fromJson(
+                  _json['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contactGroup != null) 'contactGroup': contactGroup!.toJson(),
@@ -2300,14 +2373,17 @@ class ContactToCreate {
   /// Required.
   Person? contactPerson;
 
-  ContactToCreate();
+  ContactToCreate({
+    this.contactPerson,
+  });
 
-  ContactToCreate.fromJson(core.Map _json) {
-    if (_json.containsKey('contactPerson')) {
-      contactPerson = Person.fromJson(
-          _json['contactPerson'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ContactToCreate.fromJson(core.Map _json)
+      : this(
+          contactPerson: _json.containsKey('contactPerson')
+              ? Person.fromJson(
+                  _json['contactPerson'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contactPerson != null) 'contactPerson': contactPerson!.toJson(),
@@ -2345,21 +2421,26 @@ class CopyOtherContactToMyContactsGroupRequest {
   /// Optional.
   core.List<core.String>? sources;
 
-  CopyOtherContactToMyContactsGroupRequest();
+  CopyOtherContactToMyContactsGroupRequest({
+    this.copyMask,
+    this.readMask,
+    this.sources,
+  });
 
-  CopyOtherContactToMyContactsGroupRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('copyMask')) {
-      copyMask = _json['copyMask'] as core.String;
-    }
-    if (_json.containsKey('readMask')) {
-      readMask = _json['readMask'] as core.String;
-    }
-    if (_json.containsKey('sources')) {
-      sources = (_json['sources'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  CopyOtherContactToMyContactsGroupRequest.fromJson(core.Map _json)
+      : this(
+          copyMask: _json.containsKey('copyMask')
+              ? _json['copyMask'] as core.String
+              : null,
+          readMask: _json.containsKey('readMask')
+              ? _json['readMask'] as core.String
+              : null,
+          sources: _json.containsKey('sources')
+              ? (_json['sources'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (copyMask != null) 'copyMask': copyMask!,
@@ -2383,20 +2464,23 @@ class CoverPhoto {
   /// The URL of the cover photo.
   core.String? url;
 
-  CoverPhoto();
+  CoverPhoto({
+    this.default_,
+    this.metadata,
+    this.url,
+  });
 
-  CoverPhoto.fromJson(core.Map _json) {
-    if (_json.containsKey('default')) {
-      default_ = _json['default'] as core.bool;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  CoverPhoto.fromJson(core.Map _json)
+      : this(
+          default_: _json.containsKey('default')
+              ? _json['default'] as core.bool
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (default_ != null) 'default': default_!,
@@ -2420,17 +2504,21 @@ class CreateContactGroupRequest {
   /// Optional.
   core.String? readGroupFields;
 
-  CreateContactGroupRequest();
+  CreateContactGroupRequest({
+    this.contactGroup,
+    this.readGroupFields,
+  });
 
-  CreateContactGroupRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('contactGroup')) {
-      contactGroup = ContactGroup.fromJson(
-          _json['contactGroup'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('readGroupFields')) {
-      readGroupFields = _json['readGroupFields'] as core.String;
-    }
-  }
+  CreateContactGroupRequest.fromJson(core.Map _json)
+      : this(
+          contactGroup: _json.containsKey('contactGroup')
+              ? ContactGroup.fromJson(
+                  _json['contactGroup'] as core.Map<core.String, core.dynamic>)
+              : null,
+          readGroupFields: _json.containsKey('readGroupFields')
+              ? _json['readGroupFields'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contactGroup != null) 'contactGroup': contactGroup!.toJson(),
@@ -2464,19 +2552,18 @@ class Date {
   /// Must be from 1 to 9999, or 0 to specify a date without a year.
   core.int? year;
 
-  Date();
+  Date({
+    this.day,
+    this.month,
+    this.year,
+  });
 
-  Date.fromJson(core.Map _json) {
-    if (_json.containsKey('day')) {
-      day = _json['day'] as core.int;
-    }
-    if (_json.containsKey('month')) {
-      month = _json['month'] as core.int;
-    }
-    if (_json.containsKey('year')) {
-      year = _json['year'] as core.int;
-    }
-  }
+  Date.fromJson(core.Map _json)
+      : this(
+          day: _json.containsKey('day') ? _json['day'] as core.int : null,
+          month: _json.containsKey('month') ? _json['month'] as core.int : null,
+          year: _json.containsKey('year') ? _json['year'] as core.int : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (day != null) 'day': day!,
@@ -2491,14 +2578,17 @@ class DeleteContactPhotoResponse {
   /// DeleteContactPhotoRequest; otherwise this will be unset.
   Person? person;
 
-  DeleteContactPhotoResponse();
+  DeleteContactPhotoResponse({
+    this.person,
+  });
 
-  DeleteContactPhotoResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('person')) {
-      person = Person.fromJson(
-          _json['person'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  DeleteContactPhotoResponse.fromJson(core.Map _json)
+      : this(
+          person: _json.containsKey('person')
+              ? Person.fromJson(
+                  _json['person'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (person != null) 'person': person!.toJson(),
@@ -2510,13 +2600,16 @@ class DomainMembership {
   /// True if the person is in the viewer's Google Workspace domain.
   core.bool? inViewerDomain;
 
-  DomainMembership();
+  DomainMembership({
+    this.inViewerDomain,
+  });
 
-  DomainMembership.fromJson(core.Map _json) {
-    if (_json.containsKey('inViewerDomain')) {
-      inViewerDomain = _json['inViewerDomain'] as core.bool;
-    }
-  }
+  DomainMembership.fromJson(core.Map _json)
+      : this(
+          inViewerDomain: _json.containsKey('inViewerDomain')
+              ? _json['inViewerDomain'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (inViewerDomain != null) 'inViewerDomain': inViewerDomain!,
@@ -2546,26 +2639,30 @@ class EmailAddress {
   /// The email address.
   core.String? value;
 
-  EmailAddress();
+  EmailAddress({
+    this.displayName,
+    this.formattedType,
+    this.metadata,
+    this.type,
+    this.value,
+  });
 
-  EmailAddress.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('formattedType')) {
-      formattedType = _json['formattedType'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  EmailAddress.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          formattedType: _json.containsKey('formattedType')
+              ? _json['formattedType'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -2613,24 +2710,28 @@ class Event {
   /// * `other`
   core.String? type;
 
-  Event();
+  Event({
+    this.date,
+    this.formattedType,
+    this.metadata,
+    this.type,
+  });
 
-  Event.fromJson(core.Map _json) {
-    if (_json.containsKey('date')) {
-      date =
-          Date.fromJson(_json['date'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('formattedType')) {
-      formattedType = _json['formattedType'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  Event.fromJson(core.Map _json)
+      : this(
+          date: _json.containsKey('date')
+              ? Date.fromJson(
+                  _json['date'] as core.Map<core.String, core.dynamic>)
+              : null,
+          formattedType: _json.containsKey('formattedType')
+              ? _json['formattedType'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (date != null) 'date': date!.toJson(),
@@ -2660,23 +2761,26 @@ class ExternalId {
   /// The value of the external ID.
   core.String? value;
 
-  ExternalId();
+  ExternalId({
+    this.formattedType,
+    this.metadata,
+    this.type,
+    this.value,
+  });
 
-  ExternalId.fromJson(core.Map _json) {
-    if (_json.containsKey('formattedType')) {
-      formattedType = _json['formattedType'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  ExternalId.fromJson(core.Map _json)
+      : this(
+          formattedType: _json.containsKey('formattedType')
+              ? _json['formattedType'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (formattedType != null) 'formattedType': formattedType!,
@@ -2703,20 +2807,25 @@ class FieldMetadata {
   /// Output only.
   core.bool? verified;
 
-  FieldMetadata();
+  FieldMetadata({
+    this.primary,
+    this.source,
+    this.verified,
+  });
 
-  FieldMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('primary')) {
-      primary = _json['primary'] as core.bool;
-    }
-    if (_json.containsKey('source')) {
-      source = Source.fromJson(
-          _json['source'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('verified')) {
-      verified = _json['verified'] as core.bool;
-    }
-  }
+  FieldMetadata.fromJson(core.Map _json)
+      : this(
+          primary: _json.containsKey('primary')
+              ? _json['primary'] as core.bool
+              : null,
+          source: _json.containsKey('source')
+              ? Source.fromJson(
+                  _json['source'] as core.Map<core.String, core.dynamic>)
+              : null,
+          verified: _json.containsKey('verified')
+              ? _json['verified'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (primary != null) 'primary': primary!,
@@ -2733,17 +2842,20 @@ class FileAs {
   /// The file-as value
   core.String? value;
 
-  FileAs();
+  FileAs({
+    this.metadata,
+    this.value,
+  });
 
-  FileAs.fromJson(core.Map _json) {
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  FileAs.fromJson(core.Map _json)
+      : this(
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (metadata != null) 'metadata': metadata!.toJson(),
@@ -2776,23 +2888,28 @@ class Gender {
   /// `female` * `unspecified`
   core.String? value;
 
-  Gender();
+  Gender({
+    this.addressMeAs,
+    this.formattedValue,
+    this.metadata,
+    this.value,
+  });
 
-  Gender.fromJson(core.Map _json) {
-    if (_json.containsKey('addressMeAs')) {
-      addressMeAs = _json['addressMeAs'] as core.String;
-    }
-    if (_json.containsKey('formattedValue')) {
-      formattedValue = _json['formattedValue'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  Gender.fromJson(core.Map _json)
+      : this(
+          addressMeAs: _json.containsKey('addressMeAs')
+              ? _json['addressMeAs'] as core.String
+              : null,
+          formattedValue: _json.containsKey('formattedValue')
+              ? _json['formattedValue'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (addressMeAs != null) 'addressMeAs': addressMeAs!,
@@ -2807,16 +2924,19 @@ class GetPeopleResponse {
   /// The response for each requested resource name.
   core.List<PersonResponse>? responses;
 
-  GetPeopleResponse();
+  GetPeopleResponse({
+    this.responses,
+  });
 
-  GetPeopleResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('responses')) {
-      responses = (_json['responses'] as core.List)
-          .map<PersonResponse>((value) => PersonResponse.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GetPeopleResponse.fromJson(core.Map _json)
+      : this(
+          responses: _json.containsKey('responses')
+              ? (_json['responses'] as core.List)
+                  .map<PersonResponse>((value) => PersonResponse.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (responses != null)
@@ -2834,16 +2954,17 @@ class GroupClientData {
   /// The client specified value of the client data.
   core.String? value;
 
-  GroupClientData();
+  GroupClientData({
+    this.key,
+    this.value,
+  });
 
-  GroupClientData.fromJson(core.Map _json) {
-    if (_json.containsKey('key')) {
-      key = _json['key'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  GroupClientData.fromJson(core.Map _json)
+      : this(
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
@@ -2884,29 +3005,35 @@ class ImClient {
   /// The user name used in the IM client.
   core.String? username;
 
-  ImClient();
+  ImClient({
+    this.formattedProtocol,
+    this.formattedType,
+    this.metadata,
+    this.protocol,
+    this.type,
+    this.username,
+  });
 
-  ImClient.fromJson(core.Map _json) {
-    if (_json.containsKey('formattedProtocol')) {
-      formattedProtocol = _json['formattedProtocol'] as core.String;
-    }
-    if (_json.containsKey('formattedType')) {
-      formattedType = _json['formattedType'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('protocol')) {
-      protocol = _json['protocol'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('username')) {
-      username = _json['username'] as core.String;
-    }
-  }
+  ImClient.fromJson(core.Map _json)
+      : this(
+          formattedProtocol: _json.containsKey('formattedProtocol')
+              ? _json['formattedProtocol'] as core.String
+              : null,
+          formattedType: _json.containsKey('formattedType')
+              ? _json['formattedType'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          protocol: _json.containsKey('protocol')
+              ? _json['protocol'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          username: _json.containsKey('username')
+              ? _json['username'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (formattedProtocol != null) 'formattedProtocol': formattedProtocol!,
@@ -2926,17 +3053,20 @@ class Interest {
   /// The interest; for example, `stargazing`.
   core.String? value;
 
-  Interest();
+  Interest({
+    this.metadata,
+    this.value,
+  });
 
-  Interest.fromJson(core.Map _json) {
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  Interest.fromJson(core.Map _json)
+      : this(
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (metadata != null) 'metadata': metadata!.toJson(),
@@ -2968,28 +3098,35 @@ class ListConnectionsResponse {
   /// list without pagination.
   core.int? totalPeople;
 
-  ListConnectionsResponse();
+  ListConnectionsResponse({
+    this.connections,
+    this.nextPageToken,
+    this.nextSyncToken,
+    this.totalItems,
+    this.totalPeople,
+  });
 
-  ListConnectionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('connections')) {
-      connections = (_json['connections'] as core.List)
-          .map<Person>((value) =>
-              Person.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('nextSyncToken')) {
-      nextSyncToken = _json['nextSyncToken'] as core.String;
-    }
-    if (_json.containsKey('totalItems')) {
-      totalItems = _json['totalItems'] as core.int;
-    }
-    if (_json.containsKey('totalPeople')) {
-      totalPeople = _json['totalPeople'] as core.int;
-    }
-  }
+  ListConnectionsResponse.fromJson(core.Map _json)
+      : this(
+          connections: _json.containsKey('connections')
+              ? (_json['connections'] as core.List)
+                  .map<Person>((value) => Person.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          nextSyncToken: _json.containsKey('nextSyncToken')
+              ? _json['nextSyncToken'] as core.String
+              : null,
+          totalItems: _json.containsKey('totalItems')
+              ? _json['totalItems'] as core.int
+              : null,
+          totalPeople: _json.containsKey('totalPeople')
+              ? _json['totalPeople'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (connections != null)
@@ -3017,25 +3154,31 @@ class ListContactGroupsResponse {
   /// The total number of items in the list without pagination.
   core.int? totalItems;
 
-  ListContactGroupsResponse();
+  ListContactGroupsResponse({
+    this.contactGroups,
+    this.nextPageToken,
+    this.nextSyncToken,
+    this.totalItems,
+  });
 
-  ListContactGroupsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('contactGroups')) {
-      contactGroups = (_json['contactGroups'] as core.List)
-          .map<ContactGroup>((value) => ContactGroup.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('nextSyncToken')) {
-      nextSyncToken = _json['nextSyncToken'] as core.String;
-    }
-    if (_json.containsKey('totalItems')) {
-      totalItems = _json['totalItems'] as core.int;
-    }
-  }
+  ListContactGroupsResponse.fromJson(core.Map _json)
+      : this(
+          contactGroups: _json.containsKey('contactGroups')
+              ? (_json['contactGroups'] as core.List)
+                  .map<ContactGroup>((value) => ContactGroup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          nextSyncToken: _json.containsKey('nextSyncToken')
+              ? _json['nextSyncToken'] as core.String
+              : null,
+          totalItems: _json.containsKey('totalItems')
+              ? _json['totalItems'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contactGroups != null)
@@ -3063,22 +3206,27 @@ class ListDirectoryPeopleResponse {
   /// The list of people in the domain directory.
   core.List<Person>? people;
 
-  ListDirectoryPeopleResponse();
+  ListDirectoryPeopleResponse({
+    this.nextPageToken,
+    this.nextSyncToken,
+    this.people,
+  });
 
-  ListDirectoryPeopleResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('nextSyncToken')) {
-      nextSyncToken = _json['nextSyncToken'] as core.String;
-    }
-    if (_json.containsKey('people')) {
-      people = (_json['people'] as core.List)
-          .map<Person>((value) =>
-              Person.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListDirectoryPeopleResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          nextSyncToken: _json.containsKey('nextSyncToken')
+              ? _json['nextSyncToken'] as core.String
+              : null,
+          people: _json.containsKey('people')
+              ? (_json['people'] as core.List)
+                  .map<Person>((value) => Person.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3110,25 +3258,31 @@ class ListOtherContactsResponse {
   /// The total number of other contacts in the list without pagination.
   core.int? totalSize;
 
-  ListOtherContactsResponse();
+  ListOtherContactsResponse({
+    this.nextPageToken,
+    this.nextSyncToken,
+    this.otherContacts,
+    this.totalSize,
+  });
 
-  ListOtherContactsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('nextSyncToken')) {
-      nextSyncToken = _json['nextSyncToken'] as core.String;
-    }
-    if (_json.containsKey('otherContacts')) {
-      otherContacts = (_json['otherContacts'] as core.List)
-          .map<Person>((value) =>
-              Person.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('totalSize')) {
-      totalSize = _json['totalSize'] as core.int;
-    }
-  }
+  ListOtherContactsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          nextSyncToken: _json.containsKey('nextSyncToken')
+              ? _json['nextSyncToken'] as core.String
+              : null,
+          otherContacts: _json.containsKey('otherContacts')
+              ? (_json['otherContacts'] as core.List)
+                  .map<Person>((value) => Person.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          totalSize: _json.containsKey('totalSize')
+              ? _json['totalSize'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3149,17 +3303,20 @@ class Locale {
   /// tag representing the locale.
   core.String? value;
 
-  Locale();
+  Locale({
+    this.metadata,
+    this.value,
+  });
 
-  Locale.fromJson(core.Map _json) {
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  Locale.fromJson(core.Map _json)
+      : this(
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (metadata != null) 'metadata': metadata!.toJson(),
@@ -3196,35 +3353,41 @@ class Location {
   /// The free-form value of the location.
   core.String? value;
 
-  Location();
+  Location({
+    this.buildingId,
+    this.current,
+    this.deskCode,
+    this.floor,
+    this.floorSection,
+    this.metadata,
+    this.type,
+    this.value,
+  });
 
-  Location.fromJson(core.Map _json) {
-    if (_json.containsKey('buildingId')) {
-      buildingId = _json['buildingId'] as core.String;
-    }
-    if (_json.containsKey('current')) {
-      current = _json['current'] as core.bool;
-    }
-    if (_json.containsKey('deskCode')) {
-      deskCode = _json['deskCode'] as core.String;
-    }
-    if (_json.containsKey('floor')) {
-      floor = _json['floor'] as core.String;
-    }
-    if (_json.containsKey('floorSection')) {
-      floorSection = _json['floorSection'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  Location.fromJson(core.Map _json)
+      : this(
+          buildingId: _json.containsKey('buildingId')
+              ? _json['buildingId'] as core.String
+              : null,
+          current: _json.containsKey('current')
+              ? _json['current'] as core.bool
+              : null,
+          deskCode: _json.containsKey('deskCode')
+              ? _json['deskCode'] as core.String
+              : null,
+          floor:
+              _json.containsKey('floor') ? _json['floor'] as core.String : null,
+          floorSection: _json.containsKey('floorSection')
+              ? _json['floorSection'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (buildingId != null) 'buildingId': buildingId!,
@@ -3253,23 +3416,27 @@ class Membership {
   /// Metadata about the membership.
   FieldMetadata? metadata;
 
-  Membership();
+  Membership({
+    this.contactGroupMembership,
+    this.domainMembership,
+    this.metadata,
+  });
 
-  Membership.fromJson(core.Map _json) {
-    if (_json.containsKey('contactGroupMembership')) {
-      contactGroupMembership = ContactGroupMembership.fromJson(
-          _json['contactGroupMembership']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('domainMembership')) {
-      domainMembership = DomainMembership.fromJson(
-          _json['domainMembership'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Membership.fromJson(core.Map _json)
+      : this(
+          contactGroupMembership: _json.containsKey('contactGroupMembership')
+              ? ContactGroupMembership.fromJson(_json['contactGroupMembership']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          domainMembership: _json.containsKey('domainMembership')
+              ? DomainMembership.fromJson(_json['domainMembership']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contactGroupMembership != null)
@@ -3310,23 +3477,26 @@ class MiscKeyword {
   /// The value of the miscellaneous keyword.
   core.String? value;
 
-  MiscKeyword();
+  MiscKeyword({
+    this.formattedType,
+    this.metadata,
+    this.type,
+    this.value,
+  });
 
-  MiscKeyword.fromJson(core.Map _json) {
-    if (_json.containsKey('formattedType')) {
-      formattedType = _json['formattedType'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  MiscKeyword.fromJson(core.Map _json)
+      : this(
+          formattedType: _json.containsKey('formattedType')
+              ? _json['formattedType'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (formattedType != null) 'formattedType': formattedType!,
@@ -3359,20 +3529,24 @@ class ModifyContactGroupMembersRequest {
   /// Optional.
   core.List<core.String>? resourceNamesToRemove;
 
-  ModifyContactGroupMembersRequest();
+  ModifyContactGroupMembersRequest({
+    this.resourceNamesToAdd,
+    this.resourceNamesToRemove,
+  });
 
-  ModifyContactGroupMembersRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('resourceNamesToAdd')) {
-      resourceNamesToAdd = (_json['resourceNamesToAdd'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('resourceNamesToRemove')) {
-      resourceNamesToRemove = (_json['resourceNamesToRemove'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  ModifyContactGroupMembersRequest.fromJson(core.Map _json)
+      : this(
+          resourceNamesToAdd: _json.containsKey('resourceNamesToAdd')
+              ? (_json['resourceNamesToAdd'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          resourceNamesToRemove: _json.containsKey('resourceNamesToRemove')
+              ? (_json['resourceNamesToRemove'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceNamesToAdd != null)
@@ -3391,21 +3565,26 @@ class ModifyContactGroupMembersResponse {
   /// The contact people resource names that were not found.
   core.List<core.String>? notFoundResourceNames;
 
-  ModifyContactGroupMembersResponse();
+  ModifyContactGroupMembersResponse({
+    this.canNotRemoveLastContactGroupResourceNames,
+    this.notFoundResourceNames,
+  });
 
-  ModifyContactGroupMembersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('canNotRemoveLastContactGroupResourceNames')) {
-      canNotRemoveLastContactGroupResourceNames =
-          (_json['canNotRemoveLastContactGroupResourceNames'] as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList();
-    }
-    if (_json.containsKey('notFoundResourceNames')) {
-      notFoundResourceNames = (_json['notFoundResourceNames'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  ModifyContactGroupMembersResponse.fromJson(core.Map _json)
+      : this(
+          canNotRemoveLastContactGroupResourceNames:
+              _json.containsKey('canNotRemoveLastContactGroupResourceNames')
+                  ? (_json['canNotRemoveLastContactGroupResourceNames']
+                          as core.List)
+                      .map<core.String>((value) => value as core.String)
+                      .toList()
+                  : null,
+          notFoundResourceNames: _json.containsKey('notFoundResourceNames')
+              ? (_json['notFoundResourceNames'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (canNotRemoveLastContactGroupResourceNames != null)
@@ -3472,56 +3651,73 @@ class Name {
   /// The free form name value.
   core.String? unstructuredName;
 
-  Name();
+  Name({
+    this.displayName,
+    this.displayNameLastFirst,
+    this.familyName,
+    this.givenName,
+    this.honorificPrefix,
+    this.honorificSuffix,
+    this.metadata,
+    this.middleName,
+    this.phoneticFamilyName,
+    this.phoneticFullName,
+    this.phoneticGivenName,
+    this.phoneticHonorificPrefix,
+    this.phoneticHonorificSuffix,
+    this.phoneticMiddleName,
+    this.unstructuredName,
+  });
 
-  Name.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('displayNameLastFirst')) {
-      displayNameLastFirst = _json['displayNameLastFirst'] as core.String;
-    }
-    if (_json.containsKey('familyName')) {
-      familyName = _json['familyName'] as core.String;
-    }
-    if (_json.containsKey('givenName')) {
-      givenName = _json['givenName'] as core.String;
-    }
-    if (_json.containsKey('honorificPrefix')) {
-      honorificPrefix = _json['honorificPrefix'] as core.String;
-    }
-    if (_json.containsKey('honorificSuffix')) {
-      honorificSuffix = _json['honorificSuffix'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('middleName')) {
-      middleName = _json['middleName'] as core.String;
-    }
-    if (_json.containsKey('phoneticFamilyName')) {
-      phoneticFamilyName = _json['phoneticFamilyName'] as core.String;
-    }
-    if (_json.containsKey('phoneticFullName')) {
-      phoneticFullName = _json['phoneticFullName'] as core.String;
-    }
-    if (_json.containsKey('phoneticGivenName')) {
-      phoneticGivenName = _json['phoneticGivenName'] as core.String;
-    }
-    if (_json.containsKey('phoneticHonorificPrefix')) {
-      phoneticHonorificPrefix = _json['phoneticHonorificPrefix'] as core.String;
-    }
-    if (_json.containsKey('phoneticHonorificSuffix')) {
-      phoneticHonorificSuffix = _json['phoneticHonorificSuffix'] as core.String;
-    }
-    if (_json.containsKey('phoneticMiddleName')) {
-      phoneticMiddleName = _json['phoneticMiddleName'] as core.String;
-    }
-    if (_json.containsKey('unstructuredName')) {
-      unstructuredName = _json['unstructuredName'] as core.String;
-    }
-  }
+  Name.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          displayNameLastFirst: _json.containsKey('displayNameLastFirst')
+              ? _json['displayNameLastFirst'] as core.String
+              : null,
+          familyName: _json.containsKey('familyName')
+              ? _json['familyName'] as core.String
+              : null,
+          givenName: _json.containsKey('givenName')
+              ? _json['givenName'] as core.String
+              : null,
+          honorificPrefix: _json.containsKey('honorificPrefix')
+              ? _json['honorificPrefix'] as core.String
+              : null,
+          honorificSuffix: _json.containsKey('honorificSuffix')
+              ? _json['honorificSuffix'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          middleName: _json.containsKey('middleName')
+              ? _json['middleName'] as core.String
+              : null,
+          phoneticFamilyName: _json.containsKey('phoneticFamilyName')
+              ? _json['phoneticFamilyName'] as core.String
+              : null,
+          phoneticFullName: _json.containsKey('phoneticFullName')
+              ? _json['phoneticFullName'] as core.String
+              : null,
+          phoneticGivenName: _json.containsKey('phoneticGivenName')
+              ? _json['phoneticGivenName'] as core.String
+              : null,
+          phoneticHonorificPrefix: _json.containsKey('phoneticHonorificPrefix')
+              ? _json['phoneticHonorificPrefix'] as core.String
+              : null,
+          phoneticHonorificSuffix: _json.containsKey('phoneticHonorificSuffix')
+              ? _json['phoneticHonorificSuffix'] as core.String
+              : null,
+          phoneticMiddleName: _json.containsKey('phoneticMiddleName')
+              ? _json['phoneticMiddleName'] as core.String
+              : null,
+          unstructuredName: _json.containsKey('unstructuredName')
+              ? _json['unstructuredName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -3568,20 +3764,22 @@ class Nickname {
   /// The nickname.
   core.String? value;
 
-  Nickname();
+  Nickname({
+    this.metadata,
+    this.type,
+    this.value,
+  });
 
-  Nickname.fromJson(core.Map _json) {
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  Nickname.fromJson(core.Map _json)
+      : this(
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (metadata != null) 'metadata': metadata!.toJson(),
@@ -3598,17 +3796,20 @@ class Occupation {
   /// The occupation; for example, `carpenter`.
   core.String? value;
 
-  Occupation();
+  Occupation({
+    this.metadata,
+    this.value,
+  });
 
-  Occupation.fromJson(core.Map _json) {
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  Occupation.fromJson(core.Map _json)
+      : this(
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (metadata != null) 'metadata': metadata!.toJson(),
@@ -3671,55 +3872,66 @@ class Organization {
   /// `school`
   core.String? type;
 
-  Organization();
+  Organization({
+    this.current,
+    this.department,
+    this.domain,
+    this.endDate,
+    this.formattedType,
+    this.jobDescription,
+    this.location,
+    this.metadata,
+    this.name,
+    this.phoneticName,
+    this.startDate,
+    this.symbol,
+    this.title,
+    this.type,
+  });
 
-  Organization.fromJson(core.Map _json) {
-    if (_json.containsKey('current')) {
-      current = _json['current'] as core.bool;
-    }
-    if (_json.containsKey('department')) {
-      department = _json['department'] as core.String;
-    }
-    if (_json.containsKey('domain')) {
-      domain = _json['domain'] as core.String;
-    }
-    if (_json.containsKey('endDate')) {
-      endDate = Date.fromJson(
-          _json['endDate'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('formattedType')) {
-      formattedType = _json['formattedType'] as core.String;
-    }
-    if (_json.containsKey('jobDescription')) {
-      jobDescription = _json['jobDescription'] as core.String;
-    }
-    if (_json.containsKey('location')) {
-      location = _json['location'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('phoneticName')) {
-      phoneticName = _json['phoneticName'] as core.String;
-    }
-    if (_json.containsKey('startDate')) {
-      startDate = Date.fromJson(
-          _json['startDate'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('symbol')) {
-      symbol = _json['symbol'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  Organization.fromJson(core.Map _json)
+      : this(
+          current: _json.containsKey('current')
+              ? _json['current'] as core.bool
+              : null,
+          department: _json.containsKey('department')
+              ? _json['department'] as core.String
+              : null,
+          domain: _json.containsKey('domain')
+              ? _json['domain'] as core.String
+              : null,
+          endDate: _json.containsKey('endDate')
+              ? Date.fromJson(
+                  _json['endDate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          formattedType: _json.containsKey('formattedType')
+              ? _json['formattedType'] as core.String
+              : null,
+          jobDescription: _json.containsKey('jobDescription')
+              ? _json['jobDescription'] as core.String
+              : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          phoneticName: _json.containsKey('phoneticName')
+              ? _json['phoneticName'] as core.String
+              : null,
+          startDate: _json.containsKey('startDate')
+              ? Date.fromJson(
+                  _json['startDate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          symbol: _json.containsKey('symbol')
+              ? _json['symbol'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (current != null) 'current': current!,
@@ -3913,227 +4125,267 @@ class Person {
   /// The person's user defined data.
   core.List<UserDefined>? userDefined;
 
-  Person();
+  Person({
+    this.addresses,
+    this.ageRange,
+    this.ageRanges,
+    this.biographies,
+    this.birthdays,
+    this.braggingRights,
+    this.calendarUrls,
+    this.clientData,
+    this.coverPhotos,
+    this.emailAddresses,
+    this.etag,
+    this.events,
+    this.externalIds,
+    this.fileAses,
+    this.genders,
+    this.imClients,
+    this.interests,
+    this.locales,
+    this.locations,
+    this.memberships,
+    this.metadata,
+    this.miscKeywords,
+    this.names,
+    this.nicknames,
+    this.occupations,
+    this.organizations,
+    this.phoneNumbers,
+    this.photos,
+    this.relations,
+    this.relationshipInterests,
+    this.relationshipStatuses,
+    this.residences,
+    this.resourceName,
+    this.sipAddresses,
+    this.skills,
+    this.taglines,
+    this.urls,
+    this.userDefined,
+  });
 
-  Person.fromJson(core.Map _json) {
-    if (_json.containsKey('addresses')) {
-      addresses = (_json['addresses'] as core.List)
-          .map<Address>((value) =>
-              Address.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('ageRange')) {
-      ageRange = _json['ageRange'] as core.String;
-    }
-    if (_json.containsKey('ageRanges')) {
-      ageRanges = (_json['ageRanges'] as core.List)
-          .map<AgeRangeType>((value) => AgeRangeType.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('biographies')) {
-      biographies = (_json['biographies'] as core.List)
-          .map<Biography>((value) =>
-              Biography.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('birthdays')) {
-      birthdays = (_json['birthdays'] as core.List)
-          .map<Birthday>((value) =>
-              Birthday.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('braggingRights')) {
-      braggingRights = (_json['braggingRights'] as core.List)
-          .map<BraggingRights>((value) => BraggingRights.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('calendarUrls')) {
-      calendarUrls = (_json['calendarUrls'] as core.List)
-          .map<CalendarUrl>((value) => CalendarUrl.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('clientData')) {
-      clientData = (_json['clientData'] as core.List)
-          .map<ClientData>((value) =>
-              ClientData.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('coverPhotos')) {
-      coverPhotos = (_json['coverPhotos'] as core.List)
-          .map<CoverPhoto>((value) =>
-              CoverPhoto.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('emailAddresses')) {
-      emailAddresses = (_json['emailAddresses'] as core.List)
-          .map<EmailAddress>((value) => EmailAddress.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('events')) {
-      events = (_json['events'] as core.List)
-          .map<Event>((value) =>
-              Event.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('externalIds')) {
-      externalIds = (_json['externalIds'] as core.List)
-          .map<ExternalId>((value) =>
-              ExternalId.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('fileAses')) {
-      fileAses = (_json['fileAses'] as core.List)
-          .map<FileAs>((value) =>
-              FileAs.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('genders')) {
-      genders = (_json['genders'] as core.List)
-          .map<Gender>((value) =>
-              Gender.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('imClients')) {
-      imClients = (_json['imClients'] as core.List)
-          .map<ImClient>((value) =>
-              ImClient.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('interests')) {
-      interests = (_json['interests'] as core.List)
-          .map<Interest>((value) =>
-              Interest.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('locales')) {
-      locales = (_json['locales'] as core.List)
-          .map<Locale>((value) =>
-              Locale.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('locations')) {
-      locations = (_json['locations'] as core.List)
-          .map<Location>((value) =>
-              Location.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('memberships')) {
-      memberships = (_json['memberships'] as core.List)
-          .map<Membership>((value) =>
-              Membership.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = PersonMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('miscKeywords')) {
-      miscKeywords = (_json['miscKeywords'] as core.List)
-          .map<MiscKeyword>((value) => MiscKeyword.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('names')) {
-      names = (_json['names'] as core.List)
-          .map<Name>((value) =>
-              Name.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nicknames')) {
-      nicknames = (_json['nicknames'] as core.List)
-          .map<Nickname>((value) =>
-              Nickname.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('occupations')) {
-      occupations = (_json['occupations'] as core.List)
-          .map<Occupation>((value) =>
-              Occupation.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('organizations')) {
-      organizations = (_json['organizations'] as core.List)
-          .map<Organization>((value) => Organization.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('phoneNumbers')) {
-      phoneNumbers = (_json['phoneNumbers'] as core.List)
-          .map<PhoneNumber>((value) => PhoneNumber.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('photos')) {
-      photos = (_json['photos'] as core.List)
-          .map<Photo>((value) =>
-              Photo.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('relations')) {
-      relations = (_json['relations'] as core.List)
-          .map<Relation>((value) =>
-              Relation.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('relationshipInterests')) {
-      relationshipInterests = (_json['relationshipInterests'] as core.List)
-          .map<RelationshipInterest>((value) => RelationshipInterest.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('relationshipStatuses')) {
-      relationshipStatuses = (_json['relationshipStatuses'] as core.List)
-          .map<RelationshipStatus>((value) => RelationshipStatus.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('residences')) {
-      residences = (_json['residences'] as core.List)
-          .map<Residence>((value) =>
-              Residence.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('resourceName')) {
-      resourceName = _json['resourceName'] as core.String;
-    }
-    if (_json.containsKey('sipAddresses')) {
-      sipAddresses = (_json['sipAddresses'] as core.List)
-          .map<SipAddress>((value) =>
-              SipAddress.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('skills')) {
-      skills = (_json['skills'] as core.List)
-          .map<Skill>((value) =>
-              Skill.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('taglines')) {
-      taglines = (_json['taglines'] as core.List)
-          .map<Tagline>((value) =>
-              Tagline.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('urls')) {
-      urls = (_json['urls'] as core.List)
-          .map<Url>((value) =>
-              Url.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('userDefined')) {
-      userDefined = (_json['userDefined'] as core.List)
-          .map<UserDefined>((value) => UserDefined.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  Person.fromJson(core.Map _json)
+      : this(
+          addresses: _json.containsKey('addresses')
+              ? (_json['addresses'] as core.List)
+                  .map<Address>((value) => Address.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          ageRange: _json.containsKey('ageRange')
+              ? _json['ageRange'] as core.String
+              : null,
+          ageRanges: _json.containsKey('ageRanges')
+              ? (_json['ageRanges'] as core.List)
+                  .map<AgeRangeType>((value) => AgeRangeType.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          biographies: _json.containsKey('biographies')
+              ? (_json['biographies'] as core.List)
+                  .map<Biography>((value) => Biography.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          birthdays: _json.containsKey('birthdays')
+              ? (_json['birthdays'] as core.List)
+                  .map<Birthday>((value) => Birthday.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          braggingRights: _json.containsKey('braggingRights')
+              ? (_json['braggingRights'] as core.List)
+                  .map<BraggingRights>((value) => BraggingRights.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          calendarUrls: _json.containsKey('calendarUrls')
+              ? (_json['calendarUrls'] as core.List)
+                  .map<CalendarUrl>((value) => CalendarUrl.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          clientData: _json.containsKey('clientData')
+              ? (_json['clientData'] as core.List)
+                  .map<ClientData>((value) => ClientData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          coverPhotos: _json.containsKey('coverPhotos')
+              ? (_json['coverPhotos'] as core.List)
+                  .map<CoverPhoto>((value) => CoverPhoto.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          emailAddresses: _json.containsKey('emailAddresses')
+              ? (_json['emailAddresses'] as core.List)
+                  .map<EmailAddress>((value) => EmailAddress.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          events: _json.containsKey('events')
+              ? (_json['events'] as core.List)
+                  .map<Event>((value) => Event.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          externalIds: _json.containsKey('externalIds')
+              ? (_json['externalIds'] as core.List)
+                  .map<ExternalId>((value) => ExternalId.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          fileAses: _json.containsKey('fileAses')
+              ? (_json['fileAses'] as core.List)
+                  .map<FileAs>((value) => FileAs.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          genders: _json.containsKey('genders')
+              ? (_json['genders'] as core.List)
+                  .map<Gender>((value) => Gender.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          imClients: _json.containsKey('imClients')
+              ? (_json['imClients'] as core.List)
+                  .map<ImClient>((value) => ImClient.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          interests: _json.containsKey('interests')
+              ? (_json['interests'] as core.List)
+                  .map<Interest>((value) => Interest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          locales: _json.containsKey('locales')
+              ? (_json['locales'] as core.List)
+                  .map<Locale>((value) => Locale.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          locations: _json.containsKey('locations')
+              ? (_json['locations'] as core.List)
+                  .map<Location>((value) => Location.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          memberships: _json.containsKey('memberships')
+              ? (_json['memberships'] as core.List)
+                  .map<Membership>((value) => Membership.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? PersonMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          miscKeywords: _json.containsKey('miscKeywords')
+              ? (_json['miscKeywords'] as core.List)
+                  .map<MiscKeyword>((value) => MiscKeyword.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          names: _json.containsKey('names')
+              ? (_json['names'] as core.List)
+                  .map<Name>((value) => Name.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nicknames: _json.containsKey('nicknames')
+              ? (_json['nicknames'] as core.List)
+                  .map<Nickname>((value) => Nickname.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          occupations: _json.containsKey('occupations')
+              ? (_json['occupations'] as core.List)
+                  .map<Occupation>((value) => Occupation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          organizations: _json.containsKey('organizations')
+              ? (_json['organizations'] as core.List)
+                  .map<Organization>((value) => Organization.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          phoneNumbers: _json.containsKey('phoneNumbers')
+              ? (_json['phoneNumbers'] as core.List)
+                  .map<PhoneNumber>((value) => PhoneNumber.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          photos: _json.containsKey('photos')
+              ? (_json['photos'] as core.List)
+                  .map<Photo>((value) => Photo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          relations: _json.containsKey('relations')
+              ? (_json['relations'] as core.List)
+                  .map<Relation>((value) => Relation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          relationshipInterests: _json.containsKey('relationshipInterests')
+              ? (_json['relationshipInterests'] as core.List)
+                  .map<RelationshipInterest>((value) =>
+                      RelationshipInterest.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          relationshipStatuses: _json.containsKey('relationshipStatuses')
+              ? (_json['relationshipStatuses'] as core.List)
+                  .map<RelationshipStatus>((value) =>
+                      RelationshipStatus.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          residences: _json.containsKey('residences')
+              ? (_json['residences'] as core.List)
+                  .map<Residence>((value) => Residence.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          resourceName: _json.containsKey('resourceName')
+              ? _json['resourceName'] as core.String
+              : null,
+          sipAddresses: _json.containsKey('sipAddresses')
+              ? (_json['sipAddresses'] as core.List)
+                  .map<SipAddress>((value) => SipAddress.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          skills: _json.containsKey('skills')
+              ? (_json['skills'] as core.List)
+                  .map<Skill>((value) => Skill.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          taglines: _json.containsKey('taglines')
+              ? (_json['taglines'] as core.List)
+                  .map<Tagline>((value) => Tagline.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          urls: _json.containsKey('urls')
+              ? (_json['urls'] as core.List)
+                  .map<Url>((value) => Url.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          userDefined: _json.containsKey('userDefined')
+              ? (_json['userDefined'] as core.List)
+                  .map<UserDefined>((value) => UserDefined.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (addresses != null)
@@ -4258,33 +4510,40 @@ class PersonMetadata {
   /// The sources of data for the person.
   core.List<Source>? sources;
 
-  PersonMetadata();
+  PersonMetadata({
+    this.deleted,
+    this.linkedPeopleResourceNames,
+    this.objectType,
+    this.previousResourceNames,
+    this.sources,
+  });
 
-  PersonMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('deleted')) {
-      deleted = _json['deleted'] as core.bool;
-    }
-    if (_json.containsKey('linkedPeopleResourceNames')) {
-      linkedPeopleResourceNames =
-          (_json['linkedPeopleResourceNames'] as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList();
-    }
-    if (_json.containsKey('objectType')) {
-      objectType = _json['objectType'] as core.String;
-    }
-    if (_json.containsKey('previousResourceNames')) {
-      previousResourceNames = (_json['previousResourceNames'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('sources')) {
-      sources = (_json['sources'] as core.List)
-          .map<Source>((value) =>
-              Source.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  PersonMetadata.fromJson(core.Map _json)
+      : this(
+          deleted: _json.containsKey('deleted')
+              ? _json['deleted'] as core.bool
+              : null,
+          linkedPeopleResourceNames:
+              _json.containsKey('linkedPeopleResourceNames')
+                  ? (_json['linkedPeopleResourceNames'] as core.List)
+                      .map<core.String>((value) => value as core.String)
+                      .toList()
+                  : null,
+          objectType: _json.containsKey('objectType')
+              ? _json['objectType'] as core.String
+              : null,
+          previousResourceNames: _json.containsKey('previousResourceNames')
+              ? (_json['previousResourceNames'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          sources: _json.containsKey('sources')
+              ? (_json['sources'] as core.List)
+                  .map<Source>((value) => Source.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deleted != null) 'deleted': deleted!,
@@ -4318,24 +4577,30 @@ class PersonResponse {
   /// The status of the response.
   Status? status;
 
-  PersonResponse();
+  PersonResponse({
+    this.httpStatusCode,
+    this.person,
+    this.requestedResourceName,
+    this.status,
+  });
 
-  PersonResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('httpStatusCode')) {
-      httpStatusCode = _json['httpStatusCode'] as core.int;
-    }
-    if (_json.containsKey('person')) {
-      person = Person.fromJson(
-          _json['person'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('requestedResourceName')) {
-      requestedResourceName = _json['requestedResourceName'] as core.String;
-    }
-    if (_json.containsKey('status')) {
-      status = Status.fromJson(
-          _json['status'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  PersonResponse.fromJson(core.Map _json)
+      : this(
+          httpStatusCode: _json.containsKey('httpStatusCode')
+              ? _json['httpStatusCode'] as core.int
+              : null,
+          person: _json.containsKey('person')
+              ? Person.fromJson(
+                  _json['person'] as core.Map<core.String, core.dynamic>)
+              : null,
+          requestedResourceName: _json.containsKey('requestedResourceName')
+              ? _json['requestedResourceName'] as core.String
+              : null,
+          status: _json.containsKey('status')
+              ? Status.fromJson(
+                  _json['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (httpStatusCode != null) 'httpStatusCode': httpStatusCode!,
@@ -4374,26 +4639,30 @@ class PhoneNumber {
   /// The phone number.
   core.String? value;
 
-  PhoneNumber();
+  PhoneNumber({
+    this.canonicalForm,
+    this.formattedType,
+    this.metadata,
+    this.type,
+    this.value,
+  });
 
-  PhoneNumber.fromJson(core.Map _json) {
-    if (_json.containsKey('canonicalForm')) {
-      canonicalForm = _json['canonicalForm'] as core.String;
-    }
-    if (_json.containsKey('formattedType')) {
-      formattedType = _json['formattedType'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  PhoneNumber.fromJson(core.Map _json)
+      : this(
+          canonicalForm: _json.containsKey('canonicalForm')
+              ? _json['canonicalForm'] as core.String
+              : null,
+          formattedType: _json.containsKey('formattedType')
+              ? _json['formattedType'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (canonicalForm != null) 'canonicalForm': canonicalForm!,
@@ -4423,20 +4692,23 @@ class Photo {
   /// https://lh3.googleusercontent.com/-T_wVWLlmg7w/AAAAAAAAAAI/AAAAAAAABa8/00gzXvDBYqw/s100/photo.jpg?sz=50
   core.String? url;
 
-  Photo();
+  Photo({
+    this.default_,
+    this.metadata,
+    this.url,
+  });
 
-  Photo.fromJson(core.Map _json) {
-    if (_json.containsKey('default')) {
-      default_ = _json['default'] as core.bool;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  Photo.fromJson(core.Map _json)
+      : this(
+          default_: _json.containsKey('default')
+              ? _json['default'] as core.bool
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (default_ != null) 'default': default_!,
@@ -4462,18 +4734,22 @@ class ProfileMetadata {
   /// Output only.
   core.List<core.String>? userTypes;
 
-  ProfileMetadata();
+  ProfileMetadata({
+    this.objectType,
+    this.userTypes,
+  });
 
-  ProfileMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('objectType')) {
-      objectType = _json['objectType'] as core.String;
-    }
-    if (_json.containsKey('userTypes')) {
-      userTypes = (_json['userTypes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  ProfileMetadata.fromJson(core.Map _json)
+      : this(
+          objectType: _json.containsKey('objectType')
+              ? _json['objectType'] as core.String
+              : null,
+          userTypes: _json.containsKey('userTypes')
+              ? (_json['userTypes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (objectType != null) 'objectType': objectType!,
@@ -4503,23 +4779,27 @@ class Relation {
   /// * `partner`
   core.String? type;
 
-  Relation();
+  Relation({
+    this.formattedType,
+    this.metadata,
+    this.person,
+    this.type,
+  });
 
-  Relation.fromJson(core.Map _json) {
-    if (_json.containsKey('formattedType')) {
-      formattedType = _json['formattedType'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('person')) {
-      person = _json['person'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  Relation.fromJson(core.Map _json)
+      : this(
+          formattedType: _json.containsKey('formattedType')
+              ? _json['formattedType'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          person: _json.containsKey('person')
+              ? _json['person'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (formattedType != null) 'formattedType': formattedType!,
@@ -4547,20 +4827,24 @@ class RelationshipInterest {
   /// `date` * `relationship` * `networking`
   core.String? value;
 
-  RelationshipInterest();
+  RelationshipInterest({
+    this.formattedValue,
+    this.metadata,
+    this.value,
+  });
 
-  RelationshipInterest.fromJson(core.Map _json) {
-    if (_json.containsKey('formattedValue')) {
-      formattedValue = _json['formattedValue'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  RelationshipInterest.fromJson(core.Map _json)
+      : this(
+          formattedValue: _json.containsKey('formattedValue')
+              ? _json['formattedValue'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (formattedValue != null) 'formattedValue': formattedValue!,
@@ -4587,20 +4871,24 @@ class RelationshipStatus {
   /// `openRelationship` * `widowed` * `inDomesticPartnership` * `inCivilUnion`
   core.String? value;
 
-  RelationshipStatus();
+  RelationshipStatus({
+    this.formattedValue,
+    this.metadata,
+    this.value,
+  });
 
-  RelationshipStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('formattedValue')) {
-      formattedValue = _json['formattedValue'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  RelationshipStatus.fromJson(core.Map _json)
+      : this(
+          formattedValue: _json.containsKey('formattedValue')
+              ? _json['formattedValue'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (formattedValue != null) 'formattedValue': formattedValue!,
@@ -4623,20 +4911,24 @@ class Residence {
   /// The address of the residence.
   core.String? value;
 
-  Residence();
+  Residence({
+    this.current,
+    this.metadata,
+    this.value,
+  });
 
-  Residence.fromJson(core.Map _json) {
-    if (_json.containsKey('current')) {
-      current = _json['current'] as core.bool;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  Residence.fromJson(core.Map _json)
+      : this(
+          current: _json.containsKey('current')
+              ? _json['current'] as core.bool
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (current != null) 'current': current!,
@@ -4659,22 +4951,27 @@ class SearchDirectoryPeopleResponse {
   /// The total number of items in the list without pagination.
   core.int? totalSize;
 
-  SearchDirectoryPeopleResponse();
+  SearchDirectoryPeopleResponse({
+    this.nextPageToken,
+    this.people,
+    this.totalSize,
+  });
 
-  SearchDirectoryPeopleResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('people')) {
-      people = (_json['people'] as core.List)
-          .map<Person>((value) =>
-              Person.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('totalSize')) {
-      totalSize = _json['totalSize'] as core.int;
-    }
-  }
+  SearchDirectoryPeopleResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          people: _json.containsKey('people')
+              ? (_json['people'] as core.List)
+                  .map<Person>((value) => Person.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          totalSize: _json.containsKey('totalSize')
+              ? _json['totalSize'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -4689,16 +4986,19 @@ class SearchResponse {
   /// The results of the request.
   core.List<SearchResult>? results;
 
-  SearchResponse();
+  SearchResponse({
+    this.results,
+  });
 
-  SearchResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('results')) {
-      results = (_json['results'] as core.List)
-          .map<SearchResult>((value) => SearchResult.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  SearchResponse.fromJson(core.Map _json)
+      : this(
+          results: _json.containsKey('results')
+              ? (_json['results'] as core.List)
+                  .map<SearchResult>((value) => SearchResult.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (results != null)
@@ -4711,14 +5011,17 @@ class SearchResult {
   /// The matched Person.
   Person? person;
 
-  SearchResult();
+  SearchResult({
+    this.person,
+  });
 
-  SearchResult.fromJson(core.Map _json) {
-    if (_json.containsKey('person')) {
-      person = Person.fromJson(
-          _json['person'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  SearchResult.fromJson(core.Map _json)
+      : this(
+          person: _json.containsKey('person')
+              ? Person.fromJson(
+                  _json['person'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (person != null) 'person': person!.toJson(),
@@ -4750,23 +5053,26 @@ class SipAddress {
   /// format.
   core.String? value;
 
-  SipAddress();
+  SipAddress({
+    this.formattedType,
+    this.metadata,
+    this.type,
+    this.value,
+  });
 
-  SipAddress.fromJson(core.Map _json) {
-    if (_json.containsKey('formattedType')) {
-      formattedType = _json['formattedType'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  SipAddress.fromJson(core.Map _json)
+      : this(
+          formattedType: _json.containsKey('formattedType')
+              ? _json['formattedType'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (formattedType != null) 'formattedType': formattedType!,
@@ -4784,17 +5090,20 @@ class Skill {
   /// The skill; for example, `underwater basket weaving`.
   core.String? value;
 
-  Skill();
+  Skill({
+    this.metadata,
+    this.value,
+  });
 
-  Skill.fromJson(core.Map _json) {
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  Skill.fromJson(core.Map _json)
+      : this(
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (metadata != null) 'metadata': metadata!.toJson(),
@@ -4845,26 +5154,27 @@ class Source {
   /// Output only.
   core.String? updateTime;
 
-  Source();
+  Source({
+    this.etag,
+    this.id,
+    this.profileMetadata,
+    this.type,
+    this.updateTime,
+  });
 
-  Source.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('profileMetadata')) {
-      profileMetadata = ProfileMetadata.fromJson(
-          _json['profileMetadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  Source.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          profileMetadata: _json.containsKey('profileMetadata')
+              ? ProfileMetadata.fromJson(_json['profileMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -4901,27 +5211,30 @@ class Status {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  Status();
+  Status({
+    this.code,
+    this.details,
+    this.message,
+  });
 
-  Status.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.int;
-    }
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  Status.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -4939,17 +5252,20 @@ class Tagline {
   /// The tagline.
   core.String? value;
 
-  Tagline();
+  Tagline({
+    this.metadata,
+    this.value,
+  });
 
-  Tagline.fromJson(core.Map _json) {
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  Tagline.fromJson(core.Map _json)
+      : this(
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (metadata != null) 'metadata': metadata!.toJson(),
@@ -4984,20 +5300,25 @@ class UpdateContactGroupRequest {
   /// Optional.
   core.String? updateGroupFields;
 
-  UpdateContactGroupRequest();
+  UpdateContactGroupRequest({
+    this.contactGroup,
+    this.readGroupFields,
+    this.updateGroupFields,
+  });
 
-  UpdateContactGroupRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('contactGroup')) {
-      contactGroup = ContactGroup.fromJson(
-          _json['contactGroup'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('readGroupFields')) {
-      readGroupFields = _json['readGroupFields'] as core.String;
-    }
-    if (_json.containsKey('updateGroupFields')) {
-      updateGroupFields = _json['updateGroupFields'] as core.String;
-    }
-  }
+  UpdateContactGroupRequest.fromJson(core.Map _json)
+      : this(
+          contactGroup: _json.containsKey('contactGroup')
+              ? ContactGroup.fromJson(
+                  _json['contactGroup'] as core.Map<core.String, core.dynamic>)
+              : null,
+          readGroupFields: _json.containsKey('readGroupFields')
+              ? _json['readGroupFields'] as core.String
+              : null,
+          updateGroupFields: _json.containsKey('updateGroupFields')
+              ? _json['updateGroupFields'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contactGroup != null) 'contactGroup': contactGroup!.toJson(),
@@ -5044,21 +5365,26 @@ class UpdateContactPhotoRequest {
   /// Optional.
   core.List<core.String>? sources;
 
-  UpdateContactPhotoRequest();
+  UpdateContactPhotoRequest({
+    this.personFields,
+    this.photoBytes,
+    this.sources,
+  });
 
-  UpdateContactPhotoRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('personFields')) {
-      personFields = _json['personFields'] as core.String;
-    }
-    if (_json.containsKey('photoBytes')) {
-      photoBytes = _json['photoBytes'] as core.String;
-    }
-    if (_json.containsKey('sources')) {
-      sources = (_json['sources'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  UpdateContactPhotoRequest.fromJson(core.Map _json)
+      : this(
+          personFields: _json.containsKey('personFields')
+              ? _json['personFields'] as core.String
+              : null,
+          photoBytes: _json.containsKey('photoBytes')
+              ? _json['photoBytes'] as core.String
+              : null,
+          sources: _json.containsKey('sources')
+              ? (_json['sources'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (personFields != null) 'personFields': personFields!,
@@ -5073,14 +5399,17 @@ class UpdateContactPhotoResponse {
   /// UpdateContactPhotoRequest; otherwise this will be unset.
   Person? person;
 
-  UpdateContactPhotoResponse();
+  UpdateContactPhotoResponse({
+    this.person,
+  });
 
-  UpdateContactPhotoResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('person')) {
-      person = Person.fromJson(
-          _json['person'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  UpdateContactPhotoResponse.fromJson(core.Map _json)
+      : this(
+          person: _json.containsKey('person')
+              ? Person.fromJson(
+                  _json['person'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (person != null) 'person': person!.toJson(),
@@ -5108,23 +5437,26 @@ class Url {
   /// The URL.
   core.String? value;
 
-  Url();
+  Url({
+    this.formattedType,
+    this.metadata,
+    this.type,
+    this.value,
+  });
 
-  Url.fromJson(core.Map _json) {
-    if (_json.containsKey('formattedType')) {
-      formattedType = _json['formattedType'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  Url.fromJson(core.Map _json)
+      : this(
+          formattedType: _json.containsKey('formattedType')
+              ? _json['formattedType'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (formattedType != null) 'formattedType': formattedType!,
@@ -5145,20 +5477,22 @@ class UserDefined {
   /// The end user specified value of the user defined data.
   core.String? value;
 
-  UserDefined();
+  UserDefined({
+    this.key,
+    this.metadata,
+    this.value,
+  });
 
-  UserDefined.fromJson(core.Map _json) {
-    if (_json.containsKey('key')) {
-      key = _json['key'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = FieldMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  UserDefined.fromJson(core.Map _json)
+      : this(
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          metadata: _json.containsKey('metadata')
+              ? FieldMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,

@@ -679,17 +679,21 @@ class AccessDeniedPageSettings {
   /// application.
   core.bool? generateTroubleshootingUri;
 
-  AccessDeniedPageSettings();
+  AccessDeniedPageSettings({
+    this.accessDeniedPageUri,
+    this.generateTroubleshootingUri,
+  });
 
-  AccessDeniedPageSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('accessDeniedPageUri')) {
-      accessDeniedPageUri = _json['accessDeniedPageUri'] as core.String;
-    }
-    if (_json.containsKey('generateTroubleshootingUri')) {
-      generateTroubleshootingUri =
-          _json['generateTroubleshootingUri'] as core.bool;
-    }
-  }
+  AccessDeniedPageSettings.fromJson(core.Map _json)
+      : this(
+          accessDeniedPageUri: _json.containsKey('accessDeniedPageUri')
+              ? _json['accessDeniedPageUri'] as core.String
+              : null,
+          generateTroubleshootingUri:
+              _json.containsKey('generateTroubleshootingUri')
+                  ? _json['generateTroubleshootingUri'] as core.bool
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessDeniedPageUri != null)
@@ -716,27 +720,34 @@ class AccessSettings {
   /// INTERNAL_ONLY.
   PolicyDelegationSettings? policyDelegationSettings;
 
-  AccessSettings();
+  AccessSettings({
+    this.corsSettings,
+    this.gcipSettings,
+    this.oauthSettings,
+    this.policyDelegationSettings,
+  });
 
-  AccessSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('corsSettings')) {
-      corsSettings = CorsSettings.fromJson(
-          _json['corsSettings'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('gcipSettings')) {
-      gcipSettings = GcipSettings.fromJson(
-          _json['gcipSettings'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('oauthSettings')) {
-      oauthSettings = OAuthSettings.fromJson(
-          _json['oauthSettings'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('policyDelegationSettings')) {
-      policyDelegationSettings = PolicyDelegationSettings.fromJson(
-          _json['policyDelegationSettings']
-              as core.Map<core.String, core.dynamic>);
-    }
-  }
+  AccessSettings.fromJson(core.Map _json)
+      : this(
+          corsSettings: _json.containsKey('corsSettings')
+              ? CorsSettings.fromJson(
+                  _json['corsSettings'] as core.Map<core.String, core.dynamic>)
+              : null,
+          gcipSettings: _json.containsKey('gcipSettings')
+              ? GcipSettings.fromJson(
+                  _json['gcipSettings'] as core.Map<core.String, core.dynamic>)
+              : null,
+          oauthSettings: _json.containsKey('oauthSettings')
+              ? OAuthSettings.fromJson(
+                  _json['oauthSettings'] as core.Map<core.String, core.dynamic>)
+              : null,
+          policyDelegationSettings:
+              _json.containsKey('policyDelegationSettings')
+                  ? PolicyDelegationSettings.fromJson(
+                      _json['policyDelegationSettings']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (corsSettings != null) 'corsSettings': corsSettings!.toJson(),
@@ -761,22 +772,28 @@ class ApplicationSettings {
   /// Settings to configure IAP's behavior for a CSM mesh.
   CsmSettings? csmSettings;
 
-  ApplicationSettings();
+  ApplicationSettings({
+    this.accessDeniedPageSettings,
+    this.cookieDomain,
+    this.csmSettings,
+  });
 
-  ApplicationSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('accessDeniedPageSettings')) {
-      accessDeniedPageSettings = AccessDeniedPageSettings.fromJson(
-          _json['accessDeniedPageSettings']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('cookieDomain')) {
-      cookieDomain = _json['cookieDomain'] as core.String;
-    }
-    if (_json.containsKey('csmSettings')) {
-      csmSettings = CsmSettings.fromJson(
-          _json['csmSettings'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ApplicationSettings.fromJson(core.Map _json)
+      : this(
+          accessDeniedPageSettings:
+              _json.containsKey('accessDeniedPageSettings')
+                  ? AccessDeniedPageSettings.fromJson(
+                      _json['accessDeniedPageSettings']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          cookieDomain: _json.containsKey('cookieDomain')
+              ? _json['cookieDomain'] as core.String
+              : null,
+          csmSettings: _json.containsKey('csmSettings')
+              ? CsmSettings.fromJson(
+                  _json['csmSettings'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessDeniedPageSettings != null)
@@ -835,22 +852,25 @@ class Binding {
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String? role;
 
-  Binding();
+  Binding({
+    this.condition,
+    this.members,
+    this.role,
+  });
 
-  Binding.fromJson(core.Map _json) {
-    if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(
-          _json['condition'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('members')) {
-      members = (_json['members'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('role')) {
-      role = _json['role'] as core.String;
-    }
-  }
+  Binding.fromJson(core.Map _json)
+      : this(
+          condition: _json.containsKey('condition')
+              ? Expr.fromJson(
+                  _json['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          members: _json.containsKey('members')
+              ? (_json['members'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!.toJson(),
@@ -883,22 +903,26 @@ class Brand {
   /// Support email displayed on the OAuth consent screen.
   core.String? supportEmail;
 
-  Brand();
+  Brand({
+    this.applicationTitle,
+    this.name,
+    this.orgInternalOnly,
+    this.supportEmail,
+  });
 
-  Brand.fromJson(core.Map _json) {
-    if (_json.containsKey('applicationTitle')) {
-      applicationTitle = _json['applicationTitle'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('orgInternalOnly')) {
-      orgInternalOnly = _json['orgInternalOnly'] as core.bool;
-    }
-    if (_json.containsKey('supportEmail')) {
-      supportEmail = _json['supportEmail'] as core.String;
-    }
-  }
+  Brand.fromJson(core.Map _json)
+      : this(
+          applicationTitle: _json.containsKey('applicationTitle')
+              ? _json['applicationTitle'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          orgInternalOnly: _json.containsKey('orgInternalOnly')
+              ? _json['orgInternalOnly'] as core.bool
+              : null,
+          supportEmail: _json.containsKey('supportEmail')
+              ? _json['supportEmail'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (applicationTitle != null) 'applicationTitle': applicationTitle!,
@@ -916,13 +940,16 @@ class CorsSettings {
   /// If undefined, IAP will not apply any special logic to OPTIONS requests.
   core.bool? allowHttpOptions;
 
-  CorsSettings();
+  CorsSettings({
+    this.allowHttpOptions,
+  });
 
-  CorsSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('allowHttpOptions')) {
-      allowHttpOptions = _json['allowHttpOptions'] as core.bool;
-    }
-  }
+  CorsSettings.fromJson(core.Map _json)
+      : this(
+          allowHttpOptions: _json.containsKey('allowHttpOptions')
+              ? _json['allowHttpOptions'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowHttpOptions != null) 'allowHttpOptions': allowHttpOptions!,
@@ -940,13 +967,16 @@ class CsmSettings {
   /// This value is not validated by IAP.
   core.String? rctokenAud;
 
-  CsmSettings();
+  CsmSettings({
+    this.rctokenAud,
+  });
 
-  CsmSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('rctokenAud')) {
-      rctokenAud = _json['rctokenAud'] as core.String;
-    }
-  }
+  CsmSettings.fromJson(core.Map _json)
+      : this(
+          rctokenAud: _json.containsKey('rctokenAud')
+              ? _json['rctokenAud'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (rctokenAud != null) 'rctokenAud': rctokenAud!,
@@ -1014,22 +1044,27 @@ class Expr {
   /// Optional.
   core.String? title;
 
-  Expr();
+  Expr({
+    this.description,
+    this.expression,
+    this.location,
+    this.title,
+  });
 
-  Expr.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('expression')) {
-      expression = _json['expression'] as core.String;
-    }
-    if (_json.containsKey('location')) {
-      location = _json['location'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  Expr.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          expression: _json.containsKey('expression')
+              ? _json['expression'] as core.String
+              : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -1056,18 +1091,22 @@ class GcipSettings {
   /// can contain multiple elements.
   core.List<core.String>? tenantIds;
 
-  GcipSettings();
+  GcipSettings({
+    this.loginPageUri,
+    this.tenantIds,
+  });
 
-  GcipSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('loginPageUri')) {
-      loginPageUri = _json['loginPageUri'] as core.String;
-    }
-    if (_json.containsKey('tenantIds')) {
-      tenantIds = (_json['tenantIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  GcipSettings.fromJson(core.Map _json)
+      : this(
+          loginPageUri: _json.containsKey('loginPageUri')
+              ? _json['loginPageUri'] as core.String
+              : null,
+          tenantIds: _json.containsKey('tenantIds')
+              ? (_json['tenantIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (loginPageUri != null) 'loginPageUri': loginPageUri!,
@@ -1081,14 +1120,17 @@ class GetIamPolicyRequest {
   /// `GetIamPolicy`.
   GetPolicyOptions? options;
 
-  GetIamPolicyRequest();
+  GetIamPolicyRequest({
+    this.options,
+  });
 
-  GetIamPolicyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('options')) {
-      options = GetPolicyOptions.fromJson(
-          _json['options'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GetIamPolicyRequest.fromJson(core.Map _json)
+      : this(
+          options: _json.containsKey('options')
+              ? GetPolicyOptions.fromJson(
+                  _json['options'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (options != null) 'options': options!.toJson(),
@@ -1109,13 +1151,16 @@ class GetPolicyOptions {
   /// Optional.
   core.int? requestedPolicyVersion;
 
-  GetPolicyOptions();
+  GetPolicyOptions({
+    this.requestedPolicyVersion,
+  });
 
-  GetPolicyOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('requestedPolicyVersion')) {
-      requestedPolicyVersion = _json['requestedPolicyVersion'] as core.int;
-    }
-  }
+  GetPolicyOptions.fromJson(core.Map _json)
+      : this(
+          requestedPolicyVersion: _json.containsKey('requestedPolicyVersion')
+              ? _json['requestedPolicyVersion'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestedPolicyVersion != null)
@@ -1136,21 +1181,24 @@ class IapSettings {
   /// Required.
   core.String? name;
 
-  IapSettings();
+  IapSettings({
+    this.accessSettings,
+    this.applicationSettings,
+    this.name,
+  });
 
-  IapSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('accessSettings')) {
-      accessSettings = AccessSettings.fromJson(
-          _json['accessSettings'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('applicationSettings')) {
-      applicationSettings = ApplicationSettings.fromJson(
-          _json['applicationSettings'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  IapSettings.fromJson(core.Map _json)
+      : this(
+          accessSettings: _json.containsKey('accessSettings')
+              ? AccessSettings.fromJson(_json['accessSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          applicationSettings: _json.containsKey('applicationSettings')
+              ? ApplicationSettings.fromJson(_json['applicationSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessSettings != null) 'accessSettings': accessSettings!.toJson(),
@@ -1175,19 +1223,22 @@ class IdentityAwareProxyClient {
   /// Output only.
   core.String? secret;
 
-  IdentityAwareProxyClient();
+  IdentityAwareProxyClient({
+    this.displayName,
+    this.name,
+    this.secret,
+  });
 
-  IdentityAwareProxyClient.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('secret')) {
-      secret = _json['secret'] as core.String;
-    }
-  }
+  IdentityAwareProxyClient.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          secret: _json.containsKey('secret')
+              ? _json['secret'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -1201,16 +1252,19 @@ class ListBrandsResponse {
   /// Brands existing in the project.
   core.List<Brand>? brands;
 
-  ListBrandsResponse();
+  ListBrandsResponse({
+    this.brands,
+  });
 
-  ListBrandsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('brands')) {
-      brands = (_json['brands'] as core.List)
-          .map<Brand>((value) =>
-              Brand.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListBrandsResponse.fromJson(core.Map _json)
+      : this(
+          brands: _json.containsKey('brands')
+              ? (_json['brands'] as core.List)
+                  .map<Brand>((value) => Brand.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (brands != null)
@@ -1228,21 +1282,25 @@ class ListIdentityAwareProxyClientsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListIdentityAwareProxyClientsResponse();
+  ListIdentityAwareProxyClientsResponse({
+    this.identityAwareProxyClients,
+    this.nextPageToken,
+  });
 
-  ListIdentityAwareProxyClientsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('identityAwareProxyClients')) {
-      identityAwareProxyClients =
-          (_json['identityAwareProxyClients'] as core.List)
-              .map<IdentityAwareProxyClient>((value) =>
-                  IdentityAwareProxyClient.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListIdentityAwareProxyClientsResponse.fromJson(core.Map _json)
+      : this(
+          identityAwareProxyClients:
+              _json.containsKey('identityAwareProxyClients')
+                  ? (_json['identityAwareProxyClients'] as core.List)
+                      .map<IdentityAwareProxyClient>((value) =>
+                          IdentityAwareProxyClient.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (identityAwareProxyClients != null)
@@ -1264,13 +1322,16 @@ class OAuthSettings {
   /// since access behavior is managed by IAM policies.
   core.String? loginHint;
 
-  OAuthSettings();
+  OAuthSettings({
+    this.loginHint,
+  });
 
-  OAuthSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('loginHint')) {
-      loginHint = _json['loginHint'] as core.String;
-    }
-  }
+  OAuthSettings.fromJson(core.Map _json)
+      : this(
+          loginHint: _json.containsKey('loginHint')
+              ? _json['loginHint'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (loginHint != null) 'loginHint': loginHint!,
@@ -1355,22 +1416,25 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy();
+  Policy({
+    this.bindings,
+    this.etag,
+    this.version,
+  });
 
-  Policy.fromJson(core.Map _json) {
-    if (_json.containsKey('bindings')) {
-      bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) =>
-              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.int;
-    }
-  }
+  Policy.fromJson(core.Map _json)
+      : this(
+          bindings: _json.containsKey('bindings')
+              ? (_json['bindings'] as core.List)
+                  .map<Binding>((value) => Binding.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bindings != null)
@@ -1403,24 +1467,30 @@ class PolicyDelegationSettings {
   /// IAM resource to check permission on
   Resource? resource;
 
-  PolicyDelegationSettings();
+  PolicyDelegationSettings({
+    this.iamPermission,
+    this.iamServiceName,
+    this.policyName,
+    this.resource,
+  });
 
-  PolicyDelegationSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('iamPermission')) {
-      iamPermission = _json['iamPermission'] as core.String;
-    }
-    if (_json.containsKey('iamServiceName')) {
-      iamServiceName = _json['iamServiceName'] as core.String;
-    }
-    if (_json.containsKey('policyName')) {
-      policyName = PolicyName.fromJson(
-          _json['policyName'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('resource')) {
-      resource = Resource.fromJson(
-          _json['resource'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  PolicyDelegationSettings.fromJson(core.Map _json)
+      : this(
+          iamPermission: _json.containsKey('iamPermission')
+              ? _json['iamPermission'] as core.String
+              : null,
+          iamServiceName: _json.containsKey('iamServiceName')
+              ? _json['iamServiceName'] as core.String
+              : null,
+          policyName: _json.containsKey('policyName')
+              ? PolicyName.fromJson(
+                  _json['policyName'] as core.Map<core.String, core.dynamic>)
+              : null,
+          resource: _json.containsKey('resource')
+              ? Resource.fromJson(
+                  _json['resource'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (iamPermission != null) 'iamPermission': iamPermission!,
@@ -1456,19 +1526,20 @@ class PolicyName {
   /// 'gce', 'gcs', 'project', 'account' etc.
   core.String? type;
 
-  PolicyName();
+  PolicyName({
+    this.id,
+    this.region,
+    this.type,
+  });
 
-  PolicyName.fromJson(core.Map _json) {
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('region')) {
-      region = _json['region'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  PolicyName.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          region: _json.containsKey('region')
+              ? _json['region'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
@@ -1537,27 +1608,29 @@ class Resource {
   /// details see go/iam-conditions-integration-guide.
   core.String? type;
 
-  Resource();
+  Resource({
+    this.labels,
+    this.name,
+    this.service,
+    this.type,
+  });
 
-  Resource.fromJson(core.Map _json) {
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('service')) {
-      service = _json['service'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  Resource.fromJson(core.Map _json)
+      : this(
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          service: _json.containsKey('service')
+              ? _json['service'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (labels != null) 'labels': labels!,
@@ -1576,14 +1649,17 @@ class SetIamPolicyRequest {
   /// reject them.
   Policy? policy;
 
-  SetIamPolicyRequest();
+  SetIamPolicyRequest({
+    this.policy,
+  });
 
-  SetIamPolicyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(
-          _json['policy'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  SetIamPolicyRequest.fromJson(core.Map _json)
+      : this(
+          policy: _json.containsKey('policy')
+              ? Policy.fromJson(
+                  _json['policy'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (policy != null) 'policy': policy!.toJson(),
@@ -1599,15 +1675,18 @@ class TestIamPermissionsRequest {
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String>? permissions;
 
-  TestIamPermissionsRequest();
+  TestIamPermissionsRequest({
+    this.permissions,
+  });
 
-  TestIamPermissionsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  TestIamPermissionsRequest.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
@@ -1620,15 +1699,18 @@ class TestIamPermissionsResponse {
   /// allowed.
   core.List<core.String>? permissions;
 
-  TestIamPermissionsResponse();
+  TestIamPermissionsResponse({
+    this.permissions,
+  });
 
-  TestIamPermissionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  TestIamPermissionsResponse.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,

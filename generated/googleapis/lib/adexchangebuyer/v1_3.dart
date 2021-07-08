@@ -994,19 +994,22 @@ class AccountBidderLocation {
   /// The URL to which the Ad Exchange will send bid requests.
   core.String? url;
 
-  AccountBidderLocation();
+  AccountBidderLocation({
+    this.maximumQps,
+    this.region,
+    this.url,
+  });
 
-  AccountBidderLocation.fromJson(core.Map _json) {
-    if (_json.containsKey('maximumQps')) {
-      maximumQps = _json['maximumQps'] as core.int;
-    }
-    if (_json.containsKey('region')) {
-      region = _json['region'] as core.String;
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  AccountBidderLocation.fromJson(core.Map _json)
+      : this(
+          maximumQps: _json.containsKey('maximumQps')
+              ? _json['maximumQps'] as core.int
+              : null,
+          region: _json.containsKey('region')
+              ? _json['region'] as core.String
+              : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (maximumQps != null) 'maximumQps': maximumQps!,
@@ -1049,37 +1052,44 @@ class Account {
   /// 30 days.
   core.int? numberActiveCreatives;
 
-  Account();
+  Account({
+    this.bidderLocation,
+    this.cookieMatchingNid,
+    this.cookieMatchingUrl,
+    this.id,
+    this.kind,
+    this.maximumActiveCreatives,
+    this.maximumTotalQps,
+    this.numberActiveCreatives,
+  });
 
-  Account.fromJson(core.Map _json) {
-    if (_json.containsKey('bidderLocation')) {
-      bidderLocation = (_json['bidderLocation'] as core.List)
-          .map<AccountBidderLocation>((value) => AccountBidderLocation.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('cookieMatchingNid')) {
-      cookieMatchingNid = _json['cookieMatchingNid'] as core.String;
-    }
-    if (_json.containsKey('cookieMatchingUrl')) {
-      cookieMatchingUrl = _json['cookieMatchingUrl'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.int;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('maximumActiveCreatives')) {
-      maximumActiveCreatives = _json['maximumActiveCreatives'] as core.int;
-    }
-    if (_json.containsKey('maximumTotalQps')) {
-      maximumTotalQps = _json['maximumTotalQps'] as core.int;
-    }
-    if (_json.containsKey('numberActiveCreatives')) {
-      numberActiveCreatives = _json['numberActiveCreatives'] as core.int;
-    }
-  }
+  Account.fromJson(core.Map _json)
+      : this(
+          bidderLocation: _json.containsKey('bidderLocation')
+              ? (_json['bidderLocation'] as core.List)
+                  .map<AccountBidderLocation>((value) =>
+                      AccountBidderLocation.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          cookieMatchingNid: _json.containsKey('cookieMatchingNid')
+              ? _json['cookieMatchingNid'] as core.String
+              : null,
+          cookieMatchingUrl: _json.containsKey('cookieMatchingUrl')
+              ? _json['cookieMatchingUrl'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.int : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          maximumActiveCreatives: _json.containsKey('maximumActiveCreatives')
+              ? _json['maximumActiveCreatives'] as core.int
+              : null,
+          maximumTotalQps: _json.containsKey('maximumTotalQps')
+              ? _json['maximumTotalQps'] as core.int
+              : null,
+          numberActiveCreatives: _json.containsKey('numberActiveCreatives')
+              ? _json['numberActiveCreatives'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bidderLocation != null)
@@ -1108,19 +1118,21 @@ class AccountsList {
   /// Resource type.
   core.String? kind;
 
-  AccountsList();
+  AccountsList({
+    this.items,
+    this.kind,
+  });
 
-  AccountsList.fromJson(core.Map _json) {
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<Account>((value) =>
-              Account.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-  }
+  AccountsList.fromJson(core.Map _json)
+      : this(
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<Account>((value) => Account.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
@@ -1146,24 +1158,28 @@ class BillingInfo {
   /// Resource type.
   core.String? kind;
 
-  BillingInfo();
+  BillingInfo({
+    this.accountId,
+    this.accountName,
+    this.billingId,
+    this.kind,
+  });
 
-  BillingInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.int;
-    }
-    if (_json.containsKey('accountName')) {
-      accountName = _json['accountName'] as core.String;
-    }
-    if (_json.containsKey('billingId')) {
-      billingId = (_json['billingId'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-  }
+  BillingInfo.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.int
+              : null,
+          accountName: _json.containsKey('accountName')
+              ? _json['accountName'] as core.String
+              : null,
+          billingId: _json.containsKey('billingId')
+              ? (_json['billingId'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -1184,19 +1200,21 @@ class BillingInfoList {
   /// Resource type.
   core.String? kind;
 
-  BillingInfoList();
+  BillingInfoList({
+    this.items,
+    this.kind,
+  });
 
-  BillingInfoList.fromJson(core.Map _json) {
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<BillingInfo>((value) => BillingInfo.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-  }
+  BillingInfoList.fromJson(core.Map _json)
+      : this(
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<BillingInfo>((value) => BillingInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
@@ -1235,28 +1253,32 @@ class Budget {
   /// The kind of the resource, i.e. "adexchangebuyer#budget".
   core.String? kind;
 
-  Budget();
+  Budget({
+    this.accountId,
+    this.billingId,
+    this.budgetAmount,
+    this.currencyCode,
+    this.id,
+    this.kind,
+  });
 
-  Budget.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('billingId')) {
-      billingId = _json['billingId'] as core.String;
-    }
-    if (_json.containsKey('budgetAmount')) {
-      budgetAmount = _json['budgetAmount'] as core.String;
-    }
-    if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-  }
+  Budget.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          billingId: _json.containsKey('billingId')
+              ? _json['billingId'] as core.String
+              : null,
+          budgetAmount: _json.containsKey('budgetAmount')
+              ? _json['budgetAmount'] as core.String
+              : null,
+          currencyCode: _json.containsKey('currencyCode')
+              ? _json['currencyCode'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -1292,18 +1314,22 @@ class CreativeAdTechnologyProviders {
   /// Guidelines.
   core.bool? hasUnidentifiedProvider;
 
-  CreativeAdTechnologyProviders();
+  CreativeAdTechnologyProviders({
+    this.detectedProviderIds,
+    this.hasUnidentifiedProvider,
+  });
 
-  CreativeAdTechnologyProviders.fromJson(core.Map _json) {
-    if (_json.containsKey('detectedProviderIds')) {
-      detectedProviderIds = (_json['detectedProviderIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('hasUnidentifiedProvider')) {
-      hasUnidentifiedProvider = _json['hasUnidentifiedProvider'] as core.bool;
-    }
-  }
+  CreativeAdTechnologyProviders.fromJson(core.Map _json)
+      : this(
+          detectedProviderIds: _json.containsKey('detectedProviderIds')
+              ? (_json['detectedProviderIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          hasUnidentifiedProvider: _json.containsKey('hasUnidentifiedProvider')
+              ? _json['hasUnidentifiedProvider'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (detectedProviderIds != null)
@@ -1320,18 +1346,22 @@ class CreativeCorrections {
   /// The type of correction that was applied to the creative.
   core.String? reason;
 
-  CreativeCorrections();
+  CreativeCorrections({
+    this.details,
+    this.reason,
+  });
 
-  CreativeCorrections.fromJson(core.Map _json) {
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('reason')) {
-      reason = _json['reason'] as core.String;
-    }
-  }
+  CreativeCorrections.fromJson(core.Map _json)
+      : this(
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          reason: _json.containsKey('reason')
+              ? _json['reason'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (details != null) 'details': details!,
@@ -1346,18 +1376,22 @@ class CreativeDisapprovalReasons {
   /// The categorized reason for disapproval.
   core.String? reason;
 
-  CreativeDisapprovalReasons();
+  CreativeDisapprovalReasons({
+    this.details,
+    this.reason,
+  });
 
-  CreativeDisapprovalReasons.fromJson(core.Map _json) {
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('reason')) {
-      reason = _json['reason'] as core.String;
-    }
-  }
+  CreativeDisapprovalReasons.fromJson(core.Map _json)
+      : this(
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          reason: _json.containsKey('reason')
+              ? _json['reason'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (details != null) 'details': details!,
@@ -1376,16 +1410,20 @@ class CreativeFilteringReasonsReasons {
   /// Please refer to the creative-status-codes.txt file for different statuses.
   core.int? filteringStatus;
 
-  CreativeFilteringReasonsReasons();
+  CreativeFilteringReasonsReasons({
+    this.filteringCount,
+    this.filteringStatus,
+  });
 
-  CreativeFilteringReasonsReasons.fromJson(core.Map _json) {
-    if (_json.containsKey('filteringCount')) {
-      filteringCount = _json['filteringCount'] as core.String;
-    }
-    if (_json.containsKey('filteringStatus')) {
-      filteringStatus = _json['filteringStatus'] as core.int;
-    }
-  }
+  CreativeFilteringReasonsReasons.fromJson(core.Map _json)
+      : this(
+          filteringCount: _json.containsKey('filteringCount')
+              ? _json['filteringCount'] as core.String
+              : null,
+          filteringStatus: _json.containsKey('filteringStatus')
+              ? _json['filteringStatus'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (filteringCount != null) 'filteringCount': filteringCount!,
@@ -1405,20 +1443,22 @@ class CreativeFilteringReasons {
   /// The filtering reasons.
   core.List<CreativeFilteringReasonsReasons>? reasons;
 
-  CreativeFilteringReasons();
+  CreativeFilteringReasons({
+    this.date,
+    this.reasons,
+  });
 
-  CreativeFilteringReasons.fromJson(core.Map _json) {
-    if (_json.containsKey('date')) {
-      date = _json['date'] as core.String;
-    }
-    if (_json.containsKey('reasons')) {
-      reasons = (_json['reasons'] as core.List)
-          .map<CreativeFilteringReasonsReasons>((value) =>
-              CreativeFilteringReasonsReasons.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  CreativeFilteringReasons.fromJson(core.Map _json)
+      : this(
+          date: _json.containsKey('date') ? _json['date'] as core.String : null,
+          reasons: _json.containsKey('reasons')
+              ? (_json['reasons'] as core.List)
+                  .map<CreativeFilteringReasonsReasons>((value) =>
+                      CreativeFilteringReasonsReasons.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (date != null) 'date': date!,
@@ -1433,19 +1473,19 @@ class CreativeNativeAdAppIcon {
   core.String? url;
   core.int? width;
 
-  CreativeNativeAdAppIcon();
+  CreativeNativeAdAppIcon({
+    this.height,
+    this.url,
+    this.width,
+  });
 
-  CreativeNativeAdAppIcon.fromJson(core.Map _json) {
-    if (_json.containsKey('height')) {
-      height = _json['height'] as core.int;
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-    if (_json.containsKey('width')) {
-      width = _json['width'] as core.int;
-    }
-  }
+  CreativeNativeAdAppIcon.fromJson(core.Map _json)
+      : this(
+          height:
+              _json.containsKey('height') ? _json['height'] as core.int : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          width: _json.containsKey('width') ? _json['width'] as core.int : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (height != null) 'height': height!,
@@ -1460,19 +1500,19 @@ class CreativeNativeAdImage {
   core.String? url;
   core.int? width;
 
-  CreativeNativeAdImage();
+  CreativeNativeAdImage({
+    this.height,
+    this.url,
+    this.width,
+  });
 
-  CreativeNativeAdImage.fromJson(core.Map _json) {
-    if (_json.containsKey('height')) {
-      height = _json['height'] as core.int;
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-    if (_json.containsKey('width')) {
-      width = _json['width'] as core.int;
-    }
-  }
+  CreativeNativeAdImage.fromJson(core.Map _json)
+      : this(
+          height:
+              _json.containsKey('height') ? _json['height'] as core.int : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          width: _json.containsKey('width') ? _json['width'] as core.int : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (height != null) 'height': height!,
@@ -1487,19 +1527,19 @@ class CreativeNativeAdLogo {
   core.String? url;
   core.int? width;
 
-  CreativeNativeAdLogo();
+  CreativeNativeAdLogo({
+    this.height,
+    this.url,
+    this.width,
+  });
 
-  CreativeNativeAdLogo.fromJson(core.Map _json) {
-    if (_json.containsKey('height')) {
-      height = _json['height'] as core.int;
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-    if (_json.containsKey('width')) {
-      width = _json['width'] as core.int;
-    }
-  }
+  CreativeNativeAdLogo.fromJson(core.Map _json)
+      : this(
+          height:
+              _json.containsKey('height') ? _json['height'] as core.int : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          width: _json.containsKey('width') ? _json['width'] as core.int : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (height != null) 'height': height!,
@@ -1544,48 +1584,58 @@ class CreativeNativeAd {
   /// Must be in the range \[0-5\].
   core.double? starRating;
 
-  CreativeNativeAd();
+  CreativeNativeAd({
+    this.advertiser,
+    this.appIcon,
+    this.body,
+    this.callToAction,
+    this.clickTrackingUrl,
+    this.headline,
+    this.image,
+    this.impressionTrackingUrl,
+    this.logo,
+    this.price,
+    this.starRating,
+  });
 
-  CreativeNativeAd.fromJson(core.Map _json) {
-    if (_json.containsKey('advertiser')) {
-      advertiser = _json['advertiser'] as core.String;
-    }
-    if (_json.containsKey('appIcon')) {
-      appIcon = CreativeNativeAdAppIcon.fromJson(
-          _json['appIcon'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('body')) {
-      body = _json['body'] as core.String;
-    }
-    if (_json.containsKey('callToAction')) {
-      callToAction = _json['callToAction'] as core.String;
-    }
-    if (_json.containsKey('clickTrackingUrl')) {
-      clickTrackingUrl = _json['clickTrackingUrl'] as core.String;
-    }
-    if (_json.containsKey('headline')) {
-      headline = _json['headline'] as core.String;
-    }
-    if (_json.containsKey('image')) {
-      image = CreativeNativeAdImage.fromJson(
-          _json['image'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('impressionTrackingUrl')) {
-      impressionTrackingUrl = (_json['impressionTrackingUrl'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('logo')) {
-      logo = CreativeNativeAdLogo.fromJson(
-          _json['logo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('price')) {
-      price = _json['price'] as core.String;
-    }
-    if (_json.containsKey('starRating')) {
-      starRating = (_json['starRating'] as core.num).toDouble();
-    }
-  }
+  CreativeNativeAd.fromJson(core.Map _json)
+      : this(
+          advertiser: _json.containsKey('advertiser')
+              ? _json['advertiser'] as core.String
+              : null,
+          appIcon: _json.containsKey('appIcon')
+              ? CreativeNativeAdAppIcon.fromJson(
+                  _json['appIcon'] as core.Map<core.String, core.dynamic>)
+              : null,
+          body: _json.containsKey('body') ? _json['body'] as core.String : null,
+          callToAction: _json.containsKey('callToAction')
+              ? _json['callToAction'] as core.String
+              : null,
+          clickTrackingUrl: _json.containsKey('clickTrackingUrl')
+              ? _json['clickTrackingUrl'] as core.String
+              : null,
+          headline: _json.containsKey('headline')
+              ? _json['headline'] as core.String
+              : null,
+          image: _json.containsKey('image')
+              ? CreativeNativeAdImage.fromJson(
+                  _json['image'] as core.Map<core.String, core.dynamic>)
+              : null,
+          impressionTrackingUrl: _json.containsKey('impressionTrackingUrl')
+              ? (_json['impressionTrackingUrl'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          logo: _json.containsKey('logo')
+              ? CreativeNativeAdLogo.fromJson(
+                  _json['logo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          price:
+              _json.containsKey('price') ? _json['price'] as core.String : null,
+          starRating: _json.containsKey('starRating')
+              ? (_json['starRating'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advertiser != null) 'advertiser': advertiser!,
@@ -1705,113 +1755,135 @@ class Creative {
   /// Ad width.
   core.int? width;
 
-  Creative();
+  Creative({
+    this.HTMLSnippet,
+    this.accountId,
+    this.adTechnologyProviders,
+    this.advertiserId,
+    this.advertiserName,
+    this.agencyId,
+    this.apiUploadTimestamp,
+    this.attribute,
+    this.buyerCreativeId,
+    this.clickThroughUrl,
+    this.corrections,
+    this.disapprovalReasons,
+    this.filteringReasons,
+    this.height,
+    this.impressionTrackingUrl,
+    this.kind,
+    this.nativeAd,
+    this.productCategories,
+    this.restrictedCategories,
+    this.sensitiveCategories,
+    this.status,
+    this.vendorType,
+    this.version,
+    this.videoURL,
+    this.width,
+  });
 
-  Creative.fromJson(core.Map _json) {
-    if (_json.containsKey('HTMLSnippet')) {
-      HTMLSnippet = _json['HTMLSnippet'] as core.String;
-    }
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.int;
-    }
-    if (_json.containsKey('adTechnologyProviders')) {
-      adTechnologyProviders = CreativeAdTechnologyProviders.fromJson(
-          _json['adTechnologyProviders']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('advertiserId')) {
-      advertiserId = (_json['advertiserId'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('advertiserName')) {
-      advertiserName = _json['advertiserName'] as core.String;
-    }
-    if (_json.containsKey('agencyId')) {
-      agencyId = _json['agencyId'] as core.String;
-    }
-    if (_json.containsKey('apiUploadTimestamp')) {
-      apiUploadTimestamp =
-          core.DateTime.parse(_json['apiUploadTimestamp'] as core.String);
-    }
-    if (_json.containsKey('attribute')) {
-      attribute = (_json['attribute'] as core.List)
-          .map<core.int>((value) => value as core.int)
-          .toList();
-    }
-    if (_json.containsKey('buyerCreativeId')) {
-      buyerCreativeId = _json['buyerCreativeId'] as core.String;
-    }
-    if (_json.containsKey('clickThroughUrl')) {
-      clickThroughUrl = (_json['clickThroughUrl'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('corrections')) {
-      corrections = (_json['corrections'] as core.List)
-          .map<CreativeCorrections>((value) => CreativeCorrections.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('disapprovalReasons')) {
-      disapprovalReasons = (_json['disapprovalReasons'] as core.List)
-          .map<CreativeDisapprovalReasons>((value) =>
-              CreativeDisapprovalReasons.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('filteringReasons')) {
-      filteringReasons = CreativeFilteringReasons.fromJson(
-          _json['filteringReasons'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('height')) {
-      height = _json['height'] as core.int;
-    }
-    if (_json.containsKey('impressionTrackingUrl')) {
-      impressionTrackingUrl = (_json['impressionTrackingUrl'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nativeAd')) {
-      nativeAd = CreativeNativeAd.fromJson(
-          _json['nativeAd'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('productCategories')) {
-      productCategories = (_json['productCategories'] as core.List)
-          .map<core.int>((value) => value as core.int)
-          .toList();
-    }
-    if (_json.containsKey('restrictedCategories')) {
-      restrictedCategories = (_json['restrictedCategories'] as core.List)
-          .map<core.int>((value) => value as core.int)
-          .toList();
-    }
-    if (_json.containsKey('sensitiveCategories')) {
-      sensitiveCategories = (_json['sensitiveCategories'] as core.List)
-          .map<core.int>((value) => value as core.int)
-          .toList();
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-    if (_json.containsKey('vendorType')) {
-      vendorType = (_json['vendorType'] as core.List)
-          .map<core.int>((value) => value as core.int)
-          .toList();
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.int;
-    }
-    if (_json.containsKey('videoURL')) {
-      videoURL = _json['videoURL'] as core.String;
-    }
-    if (_json.containsKey('width')) {
-      width = _json['width'] as core.int;
-    }
-  }
+  Creative.fromJson(core.Map _json)
+      : this(
+          HTMLSnippet: _json.containsKey('HTMLSnippet')
+              ? _json['HTMLSnippet'] as core.String
+              : null,
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.int
+              : null,
+          adTechnologyProviders: _json.containsKey('adTechnologyProviders')
+              ? CreativeAdTechnologyProviders.fromJson(
+                  _json['adTechnologyProviders']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          advertiserId: _json.containsKey('advertiserId')
+              ? (_json['advertiserId'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          advertiserName: _json.containsKey('advertiserName')
+              ? _json['advertiserName'] as core.String
+              : null,
+          agencyId: _json.containsKey('agencyId')
+              ? _json['agencyId'] as core.String
+              : null,
+          apiUploadTimestamp: _json.containsKey('apiUploadTimestamp')
+              ? core.DateTime.parse(_json['apiUploadTimestamp'] as core.String)
+              : null,
+          attribute: _json.containsKey('attribute')
+              ? (_json['attribute'] as core.List)
+                  .map<core.int>((value) => value as core.int)
+                  .toList()
+              : null,
+          buyerCreativeId: _json.containsKey('buyerCreativeId')
+              ? _json['buyerCreativeId'] as core.String
+              : null,
+          clickThroughUrl: _json.containsKey('clickThroughUrl')
+              ? (_json['clickThroughUrl'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          corrections: _json.containsKey('corrections')
+              ? (_json['corrections'] as core.List)
+                  .map<CreativeCorrections>((value) =>
+                      CreativeCorrections.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          disapprovalReasons: _json.containsKey('disapprovalReasons')
+              ? (_json['disapprovalReasons'] as core.List)
+                  .map<CreativeDisapprovalReasons>((value) =>
+                      CreativeDisapprovalReasons.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          filteringReasons: _json.containsKey('filteringReasons')
+              ? CreativeFilteringReasons.fromJson(_json['filteringReasons']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          height:
+              _json.containsKey('height') ? _json['height'] as core.int : null,
+          impressionTrackingUrl: _json.containsKey('impressionTrackingUrl')
+              ? (_json['impressionTrackingUrl'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nativeAd: _json.containsKey('nativeAd')
+              ? CreativeNativeAd.fromJson(
+                  _json['nativeAd'] as core.Map<core.String, core.dynamic>)
+              : null,
+          productCategories: _json.containsKey('productCategories')
+              ? (_json['productCategories'] as core.List)
+                  .map<core.int>((value) => value as core.int)
+                  .toList()
+              : null,
+          restrictedCategories: _json.containsKey('restrictedCategories')
+              ? (_json['restrictedCategories'] as core.List)
+                  .map<core.int>((value) => value as core.int)
+                  .toList()
+              : null,
+          sensitiveCategories: _json.containsKey('sensitiveCategories')
+              ? (_json['sensitiveCategories'] as core.List)
+                  .map<core.int>((value) => value as core.int)
+                  .toList()
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+          vendorType: _json.containsKey('vendorType')
+              ? (_json['vendorType'] as core.List)
+                  .map<core.int>((value) => value as core.int)
+                  .toList()
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.int
+              : null,
+          videoURL: _json.containsKey('videoURL')
+              ? _json['videoURL'] as core.String
+              : null,
+          width: _json.containsKey('width') ? _json['width'] as core.int : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (HTMLSnippet != null) 'HTMLSnippet': HTMLSnippet!,
@@ -1868,22 +1940,25 @@ class CreativesList {
   /// value to this.
   core.String? nextPageToken;
 
-  CreativesList();
+  CreativesList({
+    this.items,
+    this.kind,
+    this.nextPageToken,
+  });
 
-  CreativesList.fromJson(core.Map _json) {
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<Creative>((value) =>
-              Creative.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  CreativesList.fromJson(core.Map _json)
+      : this(
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<Creative>((value) => Creative.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
@@ -1960,55 +2035,67 @@ class DirectDeal {
   /// since the epoch.
   core.String? startTime;
 
-  DirectDeal();
+  DirectDeal({
+    this.accountId,
+    this.advertiser,
+    this.allowsAlcohol,
+    this.buyerAccountId,
+    this.currencyCode,
+    this.dealTier,
+    this.endTime,
+    this.fixedCpm,
+    this.id,
+    this.kind,
+    this.name,
+    this.privateExchangeMinCpm,
+    this.publisherBlocksOverriden,
+    this.sellerNetwork,
+    this.startTime,
+  });
 
-  DirectDeal.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.int;
-    }
-    if (_json.containsKey('advertiser')) {
-      advertiser = _json['advertiser'] as core.String;
-    }
-    if (_json.containsKey('allowsAlcohol')) {
-      allowsAlcohol = _json['allowsAlcohol'] as core.bool;
-    }
-    if (_json.containsKey('buyerAccountId')) {
-      buyerAccountId = _json['buyerAccountId'] as core.String;
-    }
-    if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'] as core.String;
-    }
-    if (_json.containsKey('dealTier')) {
-      dealTier = _json['dealTier'] as core.String;
-    }
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('fixedCpm')) {
-      fixedCpm = _json['fixedCpm'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('privateExchangeMinCpm')) {
-      privateExchangeMinCpm = _json['privateExchangeMinCpm'] as core.String;
-    }
-    if (_json.containsKey('publisherBlocksOverriden')) {
-      publisherBlocksOverriden = _json['publisherBlocksOverriden'] as core.bool;
-    }
-    if (_json.containsKey('sellerNetwork')) {
-      sellerNetwork = _json['sellerNetwork'] as core.String;
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-  }
+  DirectDeal.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.int
+              : null,
+          advertiser: _json.containsKey('advertiser')
+              ? _json['advertiser'] as core.String
+              : null,
+          allowsAlcohol: _json.containsKey('allowsAlcohol')
+              ? _json['allowsAlcohol'] as core.bool
+              : null,
+          buyerAccountId: _json.containsKey('buyerAccountId')
+              ? _json['buyerAccountId'] as core.String
+              : null,
+          currencyCode: _json.containsKey('currencyCode')
+              ? _json['currencyCode'] as core.String
+              : null,
+          dealTier: _json.containsKey('dealTier')
+              ? _json['dealTier'] as core.String
+              : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          fixedCpm: _json.containsKey('fixedCpm')
+              ? _json['fixedCpm'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          privateExchangeMinCpm: _json.containsKey('privateExchangeMinCpm')
+              ? _json['privateExchangeMinCpm'] as core.String
+              : null,
+          publisherBlocksOverriden:
+              _json.containsKey('publisherBlocksOverriden')
+                  ? _json['publisherBlocksOverriden'] as core.bool
+                  : null,
+          sellerNetwork: _json.containsKey('sellerNetwork')
+              ? _json['sellerNetwork'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -2043,19 +2130,21 @@ class DirectDealsList {
   /// Resource type.
   core.String? kind;
 
-  DirectDealsList();
+  DirectDealsList({
+    this.directDeals,
+    this.kind,
+  });
 
-  DirectDealsList.fromJson(core.Map _json) {
-    if (_json.containsKey('directDeals')) {
-      directDeals = (_json['directDeals'] as core.List)
-          .map<DirectDeal>((value) =>
-              DirectDeal.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-  }
+  DirectDealsList.fromJson(core.Map _json)
+      : this(
+          directDeals: _json.containsKey('directDeals')
+              ? (_json['directDeals'] as core.List)
+                  .map<DirectDeal>((value) => DirectDeal.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (directDeals != null)
@@ -2154,92 +2243,106 @@ class PerformanceReport {
   /// incorrect formatting, etc.
   core.double? unsuccessfulRequestRate;
 
-  PerformanceReport();
+  PerformanceReport({
+    this.bidRate,
+    this.bidRequestRate,
+    this.calloutStatusRate,
+    this.cookieMatcherStatusRate,
+    this.creativeStatusRate,
+    this.filteredBidRate,
+    this.hostedMatchStatusRate,
+    this.inventoryMatchRate,
+    this.kind,
+    this.latency50thPercentile,
+    this.latency85thPercentile,
+    this.latency95thPercentile,
+    this.noQuotaInRegion,
+    this.outOfQuota,
+    this.pixelMatchRequests,
+    this.pixelMatchResponses,
+    this.quotaConfiguredLimit,
+    this.quotaThrottledLimit,
+    this.region,
+    this.successfulRequestRate,
+    this.timestamp,
+    this.unsuccessfulRequestRate,
+  });
 
-  PerformanceReport.fromJson(core.Map _json) {
-    if (_json.containsKey('bidRate')) {
-      bidRate = (_json['bidRate'] as core.num).toDouble();
-    }
-    if (_json.containsKey('bidRequestRate')) {
-      bidRequestRate = (_json['bidRequestRate'] as core.num).toDouble();
-    }
-    if (_json.containsKey('calloutStatusRate')) {
-      calloutStatusRate = (_json['calloutStatusRate'] as core.List)
-          .map<core.Object>((value) => value as core.Object)
-          .toList();
-    }
-    if (_json.containsKey('cookieMatcherStatusRate')) {
-      cookieMatcherStatusRate = (_json['cookieMatcherStatusRate'] as core.List)
-          .map<core.Object>((value) => value as core.Object)
-          .toList();
-    }
-    if (_json.containsKey('creativeStatusRate')) {
-      creativeStatusRate = (_json['creativeStatusRate'] as core.List)
-          .map<core.Object>((value) => value as core.Object)
-          .toList();
-    }
-    if (_json.containsKey('filteredBidRate')) {
-      filteredBidRate = (_json['filteredBidRate'] as core.num).toDouble();
-    }
-    if (_json.containsKey('hostedMatchStatusRate')) {
-      hostedMatchStatusRate = (_json['hostedMatchStatusRate'] as core.List)
-          .map<core.Object>((value) => value as core.Object)
-          .toList();
-    }
-    if (_json.containsKey('inventoryMatchRate')) {
-      inventoryMatchRate = (_json['inventoryMatchRate'] as core.num).toDouble();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('latency50thPercentile')) {
-      latency50thPercentile =
-          (_json['latency50thPercentile'] as core.num).toDouble();
-    }
-    if (_json.containsKey('latency85thPercentile')) {
-      latency85thPercentile =
-          (_json['latency85thPercentile'] as core.num).toDouble();
-    }
-    if (_json.containsKey('latency95thPercentile')) {
-      latency95thPercentile =
-          (_json['latency95thPercentile'] as core.num).toDouble();
-    }
-    if (_json.containsKey('noQuotaInRegion')) {
-      noQuotaInRegion = (_json['noQuotaInRegion'] as core.num).toDouble();
-    }
-    if (_json.containsKey('outOfQuota')) {
-      outOfQuota = (_json['outOfQuota'] as core.num).toDouble();
-    }
-    if (_json.containsKey('pixelMatchRequests')) {
-      pixelMatchRequests = (_json['pixelMatchRequests'] as core.num).toDouble();
-    }
-    if (_json.containsKey('pixelMatchResponses')) {
-      pixelMatchResponses =
-          (_json['pixelMatchResponses'] as core.num).toDouble();
-    }
-    if (_json.containsKey('quotaConfiguredLimit')) {
-      quotaConfiguredLimit =
-          (_json['quotaConfiguredLimit'] as core.num).toDouble();
-    }
-    if (_json.containsKey('quotaThrottledLimit')) {
-      quotaThrottledLimit =
-          (_json['quotaThrottledLimit'] as core.num).toDouble();
-    }
-    if (_json.containsKey('region')) {
-      region = _json['region'] as core.String;
-    }
-    if (_json.containsKey('successfulRequestRate')) {
-      successfulRequestRate =
-          (_json['successfulRequestRate'] as core.num).toDouble();
-    }
-    if (_json.containsKey('timestamp')) {
-      timestamp = _json['timestamp'] as core.String;
-    }
-    if (_json.containsKey('unsuccessfulRequestRate')) {
-      unsuccessfulRequestRate =
-          (_json['unsuccessfulRequestRate'] as core.num).toDouble();
-    }
-  }
+  PerformanceReport.fromJson(core.Map _json)
+      : this(
+          bidRate: _json.containsKey('bidRate')
+              ? (_json['bidRate'] as core.num).toDouble()
+              : null,
+          bidRequestRate: _json.containsKey('bidRequestRate')
+              ? (_json['bidRequestRate'] as core.num).toDouble()
+              : null,
+          calloutStatusRate: _json.containsKey('calloutStatusRate')
+              ? (_json['calloutStatusRate'] as core.List)
+                  .map<core.Object>((value) => value as core.Object)
+                  .toList()
+              : null,
+          cookieMatcherStatusRate: _json.containsKey('cookieMatcherStatusRate')
+              ? (_json['cookieMatcherStatusRate'] as core.List)
+                  .map<core.Object>((value) => value as core.Object)
+                  .toList()
+              : null,
+          creativeStatusRate: _json.containsKey('creativeStatusRate')
+              ? (_json['creativeStatusRate'] as core.List)
+                  .map<core.Object>((value) => value as core.Object)
+                  .toList()
+              : null,
+          filteredBidRate: _json.containsKey('filteredBidRate')
+              ? (_json['filteredBidRate'] as core.num).toDouble()
+              : null,
+          hostedMatchStatusRate: _json.containsKey('hostedMatchStatusRate')
+              ? (_json['hostedMatchStatusRate'] as core.List)
+                  .map<core.Object>((value) => value as core.Object)
+                  .toList()
+              : null,
+          inventoryMatchRate: _json.containsKey('inventoryMatchRate')
+              ? (_json['inventoryMatchRate'] as core.num).toDouble()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          latency50thPercentile: _json.containsKey('latency50thPercentile')
+              ? (_json['latency50thPercentile'] as core.num).toDouble()
+              : null,
+          latency85thPercentile: _json.containsKey('latency85thPercentile')
+              ? (_json['latency85thPercentile'] as core.num).toDouble()
+              : null,
+          latency95thPercentile: _json.containsKey('latency95thPercentile')
+              ? (_json['latency95thPercentile'] as core.num).toDouble()
+              : null,
+          noQuotaInRegion: _json.containsKey('noQuotaInRegion')
+              ? (_json['noQuotaInRegion'] as core.num).toDouble()
+              : null,
+          outOfQuota: _json.containsKey('outOfQuota')
+              ? (_json['outOfQuota'] as core.num).toDouble()
+              : null,
+          pixelMatchRequests: _json.containsKey('pixelMatchRequests')
+              ? (_json['pixelMatchRequests'] as core.num).toDouble()
+              : null,
+          pixelMatchResponses: _json.containsKey('pixelMatchResponses')
+              ? (_json['pixelMatchResponses'] as core.num).toDouble()
+              : null,
+          quotaConfiguredLimit: _json.containsKey('quotaConfiguredLimit')
+              ? (_json['quotaConfiguredLimit'] as core.num).toDouble()
+              : null,
+          quotaThrottledLimit: _json.containsKey('quotaThrottledLimit')
+              ? (_json['quotaThrottledLimit'] as core.num).toDouble()
+              : null,
+          region: _json.containsKey('region')
+              ? _json['region'] as core.String
+              : null,
+          successfulRequestRate: _json.containsKey('successfulRequestRate')
+              ? (_json['successfulRequestRate'] as core.num).toDouble()
+              : null,
+          timestamp: _json.containsKey('timestamp')
+              ? _json['timestamp'] as core.String
+              : null,
+          unsuccessfulRequestRate: _json.containsKey('unsuccessfulRequestRate')
+              ? (_json['unsuccessfulRequestRate'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bidRate != null) 'bidRate': bidRate!,
@@ -2288,19 +2391,21 @@ class PerformanceReportList {
   /// A list of performance reports relevant for the account.
   core.List<PerformanceReport>? performanceReport;
 
-  PerformanceReportList();
+  PerformanceReportList({
+    this.kind,
+    this.performanceReport,
+  });
 
-  PerformanceReportList.fromJson(core.Map _json) {
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('performanceReport')) {
-      performanceReport = (_json['performanceReport'] as core.List)
-          .map<PerformanceReport>((value) => PerformanceReport.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  PerformanceReportList.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          performanceReport: _json.containsKey('performanceReport')
+              ? (_json['performanceReport'] as core.List)
+                  .map<PerformanceReport>((value) => PerformanceReport.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
@@ -2317,16 +2422,19 @@ class PretargetingConfigDimensions {
   /// Width in pixels.
   core.String? width;
 
-  PretargetingConfigDimensions();
+  PretargetingConfigDimensions({
+    this.height,
+    this.width,
+  });
 
-  PretargetingConfigDimensions.fromJson(core.Map _json) {
-    if (_json.containsKey('height')) {
-      height = _json['height'] as core.String;
-    }
-    if (_json.containsKey('width')) {
-      width = _json['width'] as core.String;
-    }
-  }
+  PretargetingConfigDimensions.fromJson(core.Map _json)
+      : this(
+          height: _json.containsKey('height')
+              ? _json['height'] as core.String
+              : null,
+          width:
+              _json.containsKey('width') ? _json['width'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (height != null) 'height': height!,
@@ -2345,16 +2453,17 @@ class PretargetingConfigExcludedPlacements {
   /// The type of the placement.
   core.String? type;
 
-  PretargetingConfigExcludedPlacements();
+  PretargetingConfigExcludedPlacements({
+    this.token,
+    this.type,
+  });
 
-  PretargetingConfigExcludedPlacements.fromJson(core.Map _json) {
-    if (_json.containsKey('token')) {
-      token = _json['token'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  PretargetingConfigExcludedPlacements.fromJson(core.Map _json)
+      : this(
+          token:
+              _json.containsKey('token') ? _json['token'] as core.String : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (token != null) 'token': token!,
@@ -2373,16 +2482,17 @@ class PretargetingConfigPlacements {
   /// The type of the placement.
   core.String? type;
 
-  PretargetingConfigPlacements();
+  PretargetingConfigPlacements({
+    this.token,
+    this.type,
+  });
 
-  PretargetingConfigPlacements.fromJson(core.Map _json) {
-    if (_json.containsKey('token')) {
-      token = _json['token'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  PretargetingConfigPlacements.fromJson(core.Map _json)
+      : this(
+          token:
+              _json.containsKey('token') ? _json['token'] as core.String : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (token != null) 'token': token!,
@@ -2501,126 +2611,150 @@ class PretargetingConfig {
   /// Requests containing any of these vertical ids will match.
   core.List<core.String>? verticals;
 
-  PretargetingConfig();
+  PretargetingConfig({
+    this.billingId,
+    this.configId,
+    this.configName,
+    this.creativeType,
+    this.dimensions,
+    this.excludedContentLabels,
+    this.excludedGeoCriteriaIds,
+    this.excludedPlacements,
+    this.excludedUserLists,
+    this.excludedVerticals,
+    this.geoCriteriaIds,
+    this.isActive,
+    this.kind,
+    this.languages,
+    this.maximumQps,
+    this.mobileCarriers,
+    this.mobileDevices,
+    this.mobileOperatingSystemVersions,
+    this.placements,
+    this.platforms,
+    this.supportedCreativeAttributes,
+    this.userLists,
+    this.vendorTypes,
+    this.verticals,
+  });
 
-  PretargetingConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('billingId')) {
-      billingId = _json['billingId'] as core.String;
-    }
-    if (_json.containsKey('configId')) {
-      configId = _json['configId'] as core.String;
-    }
-    if (_json.containsKey('configName')) {
-      configName = _json['configName'] as core.String;
-    }
-    if (_json.containsKey('creativeType')) {
-      creativeType = (_json['creativeType'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('dimensions')) {
-      dimensions = (_json['dimensions'] as core.List)
-          .map<PretargetingConfigDimensions>((value) =>
-              PretargetingConfigDimensions.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('excludedContentLabels')) {
-      excludedContentLabels = (_json['excludedContentLabels'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('excludedGeoCriteriaIds')) {
-      excludedGeoCriteriaIds = (_json['excludedGeoCriteriaIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('excludedPlacements')) {
-      excludedPlacements = (_json['excludedPlacements'] as core.List)
-          .map<PretargetingConfigExcludedPlacements>((value) =>
-              PretargetingConfigExcludedPlacements.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('excludedUserLists')) {
-      excludedUserLists = (_json['excludedUserLists'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('excludedVerticals')) {
-      excludedVerticals = (_json['excludedVerticals'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('geoCriteriaIds')) {
-      geoCriteriaIds = (_json['geoCriteriaIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('isActive')) {
-      isActive = _json['isActive'] as core.bool;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('languages')) {
-      languages = (_json['languages'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('maximumQps')) {
-      maximumQps = _json['maximumQps'] as core.String;
-    }
-    if (_json.containsKey('mobileCarriers')) {
-      mobileCarriers = (_json['mobileCarriers'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('mobileDevices')) {
-      mobileDevices = (_json['mobileDevices'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('mobileOperatingSystemVersions')) {
-      mobileOperatingSystemVersions =
-          (_json['mobileOperatingSystemVersions'] as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList();
-    }
-    if (_json.containsKey('placements')) {
-      placements = (_json['placements'] as core.List)
-          .map<PretargetingConfigPlacements>((value) =>
-              PretargetingConfigPlacements.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('platforms')) {
-      platforms = (_json['platforms'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('supportedCreativeAttributes')) {
-      supportedCreativeAttributes =
-          (_json['supportedCreativeAttributes'] as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList();
-    }
-    if (_json.containsKey('userLists')) {
-      userLists = (_json['userLists'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('vendorTypes')) {
-      vendorTypes = (_json['vendorTypes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('verticals')) {
-      verticals = (_json['verticals'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  PretargetingConfig.fromJson(core.Map _json)
+      : this(
+          billingId: _json.containsKey('billingId')
+              ? _json['billingId'] as core.String
+              : null,
+          configId: _json.containsKey('configId')
+              ? _json['configId'] as core.String
+              : null,
+          configName: _json.containsKey('configName')
+              ? _json['configName'] as core.String
+              : null,
+          creativeType: _json.containsKey('creativeType')
+              ? (_json['creativeType'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          dimensions: _json.containsKey('dimensions')
+              ? (_json['dimensions'] as core.List)
+                  .map<PretargetingConfigDimensions>((value) =>
+                      PretargetingConfigDimensions.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          excludedContentLabels: _json.containsKey('excludedContentLabels')
+              ? (_json['excludedContentLabels'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          excludedGeoCriteriaIds: _json.containsKey('excludedGeoCriteriaIds')
+              ? (_json['excludedGeoCriteriaIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          excludedPlacements: _json.containsKey('excludedPlacements')
+              ? (_json['excludedPlacements'] as core.List)
+                  .map<PretargetingConfigExcludedPlacements>((value) =>
+                      PretargetingConfigExcludedPlacements.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          excludedUserLists: _json.containsKey('excludedUserLists')
+              ? (_json['excludedUserLists'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          excludedVerticals: _json.containsKey('excludedVerticals')
+              ? (_json['excludedVerticals'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          geoCriteriaIds: _json.containsKey('geoCriteriaIds')
+              ? (_json['geoCriteriaIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          isActive: _json.containsKey('isActive')
+              ? _json['isActive'] as core.bool
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          languages: _json.containsKey('languages')
+              ? (_json['languages'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          maximumQps: _json.containsKey('maximumQps')
+              ? _json['maximumQps'] as core.String
+              : null,
+          mobileCarriers: _json.containsKey('mobileCarriers')
+              ? (_json['mobileCarriers'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          mobileDevices: _json.containsKey('mobileDevices')
+              ? (_json['mobileDevices'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          mobileOperatingSystemVersions:
+              _json.containsKey('mobileOperatingSystemVersions')
+                  ? (_json['mobileOperatingSystemVersions'] as core.List)
+                      .map<core.String>((value) => value as core.String)
+                      .toList()
+                  : null,
+          placements: _json.containsKey('placements')
+              ? (_json['placements'] as core.List)
+                  .map<PretargetingConfigPlacements>((value) =>
+                      PretargetingConfigPlacements.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          platforms: _json.containsKey('platforms')
+              ? (_json['platforms'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          supportedCreativeAttributes:
+              _json.containsKey('supportedCreativeAttributes')
+                  ? (_json['supportedCreativeAttributes'] as core.List)
+                      .map<core.String>((value) => value as core.String)
+                      .toList()
+                  : null,
+          userLists: _json.containsKey('userLists')
+              ? (_json['userLists'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          vendorTypes: _json.containsKey('vendorTypes')
+              ? (_json['vendorTypes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          verticals: _json.containsKey('verticals')
+              ? (_json['verticals'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (billingId != null) 'billingId': billingId!,
@@ -2665,19 +2799,22 @@ class PretargetingConfigList {
   /// Resource type.
   core.String? kind;
 
-  PretargetingConfigList();
+  PretargetingConfigList({
+    this.items,
+    this.kind,
+  });
 
-  PretargetingConfigList.fromJson(core.Map _json) {
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<PretargetingConfig>((value) => PretargetingConfig.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-  }
+  PretargetingConfigList.fromJson(core.Map _json)
+      : this(
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<PretargetingConfig>((value) =>
+                      PretargetingConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)

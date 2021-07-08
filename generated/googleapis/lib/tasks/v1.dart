@@ -709,19 +709,20 @@ class TaskLinks {
   /// Type of the link, e.g. "email".
   core.String? type;
 
-  TaskLinks();
+  TaskLinks({
+    this.description,
+    this.link,
+    this.type,
+  });
 
-  TaskLinks.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('link')) {
-      link = _json['link'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  TaskLinks.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          link: _json.containsKey('link') ? _json['link'] as core.String : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -808,58 +809,64 @@ class Task {
   /// Last modification time of the task (as a RFC 3339 timestamp).
   core.String? updated;
 
-  Task();
+  Task({
+    this.completed,
+    this.deleted,
+    this.due,
+    this.etag,
+    this.hidden,
+    this.id,
+    this.kind,
+    this.links,
+    this.notes,
+    this.parent,
+    this.position,
+    this.selfLink,
+    this.status,
+    this.title,
+    this.updated,
+  });
 
-  Task.fromJson(core.Map _json) {
-    if (_json.containsKey('completed')) {
-      completed = _json['completed'] as core.String;
-    }
-    if (_json.containsKey('deleted')) {
-      deleted = _json['deleted'] as core.bool;
-    }
-    if (_json.containsKey('due')) {
-      due = _json['due'] as core.String;
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('hidden')) {
-      hidden = _json['hidden'] as core.bool;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('links')) {
-      links = (_json['links'] as core.List)
-          .map<TaskLinks>((value) =>
-              TaskLinks.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('notes')) {
-      notes = _json['notes'] as core.String;
-    }
-    if (_json.containsKey('parent')) {
-      parent = _json['parent'] as core.String;
-    }
-    if (_json.containsKey('position')) {
-      position = _json['position'] as core.String;
-    }
-    if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'] as core.String;
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-    if (_json.containsKey('updated')) {
-      updated = _json['updated'] as core.String;
-    }
-  }
+  Task.fromJson(core.Map _json)
+      : this(
+          completed: _json.containsKey('completed')
+              ? _json['completed'] as core.String
+              : null,
+          deleted: _json.containsKey('deleted')
+              ? _json['deleted'] as core.bool
+              : null,
+          due: _json.containsKey('due') ? _json['due'] as core.String : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          hidden:
+              _json.containsKey('hidden') ? _json['hidden'] as core.bool : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          links: _json.containsKey('links')
+              ? (_json['links'] as core.List)
+                  .map<TaskLinks>((value) => TaskLinks.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          notes:
+              _json.containsKey('notes') ? _json['notes'] as core.String : null,
+          parent: _json.containsKey('parent')
+              ? _json['parent'] as core.String
+              : null,
+          position: _json.containsKey('position')
+              ? _json['position'] as core.String
+              : null,
+          selfLink: _json.containsKey('selfLink')
+              ? _json['selfLink'] as core.String
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+          updated: _json.containsKey('updated')
+              ? _json['updated'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (completed != null) 'completed': completed!,
@@ -904,28 +911,29 @@ class TaskList {
   /// Last modification time of the task list (as a RFC 3339 timestamp).
   core.String? updated;
 
-  TaskList();
+  TaskList({
+    this.etag,
+    this.id,
+    this.kind,
+    this.selfLink,
+    this.title,
+    this.updated,
+  });
 
-  TaskList.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-    if (_json.containsKey('updated')) {
-      updated = _json['updated'] as core.String;
-    }
-  }
+  TaskList.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          selfLink: _json.containsKey('selfLink')
+              ? _json['selfLink'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+          updated: _json.containsKey('updated')
+              ? _json['updated'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -952,25 +960,27 @@ class TaskLists {
   /// Token that can be used to request the next page of this result.
   core.String? nextPageToken;
 
-  TaskLists();
+  TaskLists({
+    this.etag,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+  });
 
-  TaskLists.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<TaskList>((value) =>
-              TaskList.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  TaskLists.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<TaskList>((value) => TaskList.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -996,25 +1006,27 @@ class Tasks {
   /// Token used to access the next page of this result.
   core.String? nextPageToken;
 
-  Tasks();
+  Tasks({
+    this.etag,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+  });
 
-  Tasks.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<Task>((value) =>
-              Task.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  Tasks.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<Task>((value) => Task.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,

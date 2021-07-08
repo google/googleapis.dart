@@ -1835,14 +1835,17 @@ class Ancestor {
   /// Resource id of the ancestor.
   ResourceId? resourceId;
 
-  Ancestor();
+  Ancestor({
+    this.resourceId,
+  });
 
-  Ancestor.fromJson(core.Map _json) {
-    if (_json.containsKey('resourceId')) {
-      resourceId = ResourceId.fromJson(
-          _json['resourceId'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Ancestor.fromJson(core.Map _json)
+      : this(
+          resourceId: _json.containsKey('resourceId')
+              ? ResourceId.fromJson(
+                  _json['resourceId'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceId != null) 'resourceId': resourceId!.toJson(),
@@ -1876,19 +1879,23 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig();
+  AuditConfig({
+    this.auditLogConfigs,
+    this.service,
+  });
 
-  AuditConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('auditLogConfigs')) {
-      auditLogConfigs = (_json['auditLogConfigs'] as core.List)
-          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('service')) {
-      service = _json['service'] as core.String;
-    }
-  }
+  AuditConfig.fromJson(core.Map _json)
+      : this(
+          auditLogConfigs: _json.containsKey('auditLogConfigs')
+              ? (_json['auditLogConfigs'] as core.List)
+                  .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          service: _json.containsKey('service')
+              ? _json['service'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (auditLogConfigs != null)
@@ -1919,18 +1926,22 @@ class AuditLogConfig {
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
   core.String? logType;
 
-  AuditLogConfig();
+  AuditLogConfig({
+    this.exemptedMembers,
+    this.logType,
+  });
 
-  AuditLogConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('exemptedMembers')) {
-      exemptedMembers = (_json['exemptedMembers'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('logType')) {
-      logType = _json['logType'] as core.String;
-    }
-  }
+  AuditLogConfig.fromJson(core.Map _json)
+      : this(
+          exemptedMembers: _json.containsKey('exemptedMembers')
+              ? (_json['exemptedMembers'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          logType: _json.containsKey('logType')
+              ? _json['logType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
@@ -1987,22 +1998,25 @@ class Binding {
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String? role;
 
-  Binding();
+  Binding({
+    this.condition,
+    this.members,
+    this.role,
+  });
 
-  Binding.fromJson(core.Map _json) {
-    if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(
-          _json['condition'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('members')) {
-      members = (_json['members'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('role')) {
-      role = _json['role'] as core.String;
-    }
-  }
+  Binding.fromJson(core.Map _json)
+      : this(
+          condition: _json.containsKey('condition')
+              ? Expr.fromJson(
+                  _json['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          members: _json.containsKey('members')
+              ? (_json['members'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!.toJson(),
@@ -2057,13 +2071,16 @@ class BooleanPolicy {
   /// enforced, because `constraint_default` for the `Constraint` is `ALLOW`.
   core.bool? enforced;
 
-  BooleanPolicy();
+  BooleanPolicy({
+    this.enforced,
+  });
 
-  BooleanPolicy.fromJson(core.Map _json) {
-    if (_json.containsKey('enforced')) {
-      enforced = _json['enforced'] as core.bool;
-    }
-  }
+  BooleanPolicy.fromJson(core.Map _json)
+      : this(
+          enforced: _json.containsKey('enforced')
+              ? _json['enforced'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enforced != null) 'enforced': enforced!,
@@ -2086,16 +2103,18 @@ class ClearOrgPolicyRequest {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  ClearOrgPolicyRequest();
+  ClearOrgPolicyRequest({
+    this.constraint,
+    this.etag,
+  });
 
-  ClearOrgPolicyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('constraint')) {
-      constraint = _json['constraint'] as core.String;
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-  }
+  ClearOrgPolicyRequest.fromJson(core.Map _json)
+      : this(
+          constraint: _json.containsKey('constraint')
+              ? _json['constraint'] as core.String
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (constraint != null) 'constraint': constraint!,
@@ -2124,23 +2143,29 @@ class CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation {
   /// Only applicable when the operation_type is MOVE.
   core.String? sourceParent;
 
-  CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation();
+  CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation({
+    this.destinationParent,
+    this.displayName,
+    this.operationType,
+    this.sourceParent,
+  });
 
   CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('destinationParent')) {
-      destinationParent = _json['destinationParent'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('operationType')) {
-      operationType = _json['operationType'] as core.String;
-    }
-    if (_json.containsKey('sourceParent')) {
-      sourceParent = _json['sourceParent'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          destinationParent: _json.containsKey('destinationParent')
+              ? _json['destinationParent'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          operationType: _json.containsKey('operationType')
+              ? _json['operationType'] as core.String
+              : null,
+          sourceParent: _json.containsKey('sourceParent')
+              ? _json['sourceParent'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (destinationParent != null) 'destinationParent': destinationParent!,
@@ -2171,23 +2196,29 @@ class CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation {
   /// Only applicable when the operation_type is MOVE.
   core.String? sourceParent;
 
-  CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation();
+  CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation({
+    this.destinationParent,
+    this.displayName,
+    this.operationType,
+    this.sourceParent,
+  });
 
   CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('destinationParent')) {
-      destinationParent = _json['destinationParent'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('operationType')) {
-      operationType = _json['operationType'] as core.String;
-    }
-    if (_json.containsKey('sourceParent')) {
-      sourceParent = _json['sourceParent'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          destinationParent: _json.containsKey('destinationParent')
+              ? _json['destinationParent'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          operationType: _json.containsKey('operationType')
+              ? _json['operationType'] as core.String
+              : null,
+          sourceParent: _json.containsKey('sourceParent')
+              ? _json['sourceParent'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (destinationParent != null) 'destinationParent': destinationParent!,
@@ -2250,33 +2281,40 @@ class Constraint {
   /// Default version is 0;
   core.int? version;
 
-  Constraint();
+  Constraint({
+    this.booleanConstraint,
+    this.constraintDefault,
+    this.description,
+    this.displayName,
+    this.listConstraint,
+    this.name,
+    this.version,
+  });
 
-  Constraint.fromJson(core.Map _json) {
-    if (_json.containsKey('booleanConstraint')) {
-      booleanConstraint = BooleanConstraint.fromJson(
-          _json['booleanConstraint'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('constraintDefault')) {
-      constraintDefault = _json['constraintDefault'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('listConstraint')) {
-      listConstraint = ListConstraint.fromJson(
-          _json['listConstraint'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.int;
-    }
-  }
+  Constraint.fromJson(core.Map _json)
+      : this(
+          booleanConstraint: _json.containsKey('booleanConstraint')
+              ? BooleanConstraint.fromJson(_json['booleanConstraint']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          constraintDefault: _json.containsKey('constraintDefault')
+              ? _json['constraintDefault'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          listConstraint: _json.containsKey('listConstraint')
+              ? ListConstraint.fromJson(_json['listConstraint']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (booleanConstraint != null)
@@ -2299,16 +2337,20 @@ class CreateFolderMetadata {
   /// under.
   core.String? parent;
 
-  CreateFolderMetadata();
+  CreateFolderMetadata({
+    this.displayName,
+    this.parent,
+  });
 
-  CreateFolderMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('parent')) {
-      parent = _json['parent'] as core.String;
-    }
-  }
+  CreateFolderMetadata.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          parent: _json.containsKey('parent')
+              ? _json['parent'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -2334,19 +2376,23 @@ class CreateProjectMetadata {
   /// True if the project creation process is complete.
   core.bool? ready;
 
-  CreateProjectMetadata();
+  CreateProjectMetadata({
+    this.createTime,
+    this.gettable,
+    this.ready,
+  });
 
-  CreateProjectMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('gettable')) {
-      gettable = _json['gettable'] as core.bool;
-    }
-    if (_json.containsKey('ready')) {
-      ready = _json['ready'] as core.bool;
-    }
-  }
+  CreateProjectMetadata.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          gettable: _json.containsKey('gettable')
+              ? _json['gettable'] as core.bool
+              : null,
+          ready:
+              _json.containsKey('ready') ? _json['ready'] as core.bool : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -2518,22 +2564,27 @@ class Expr {
   /// Optional.
   core.String? title;
 
-  Expr();
+  Expr({
+    this.description,
+    this.expression,
+    this.location,
+    this.title,
+  });
 
-  Expr.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('expression')) {
-      expression = _json['expression'] as core.String;
-    }
-    if (_json.containsKey('location')) {
-      location = _json['location'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  Expr.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          expression: _json.containsKey('expression')
+              ? _json['expression'] as core.String
+              : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -2564,22 +2615,28 @@ class FolderOperation {
   /// Only applicable when the operation_type is MOVE.
   core.String? sourceParent;
 
-  FolderOperation();
+  FolderOperation({
+    this.destinationParent,
+    this.displayName,
+    this.operationType,
+    this.sourceParent,
+  });
 
-  FolderOperation.fromJson(core.Map _json) {
-    if (_json.containsKey('destinationParent')) {
-      destinationParent = _json['destinationParent'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('operationType')) {
-      operationType = _json['operationType'] as core.String;
-    }
-    if (_json.containsKey('sourceParent')) {
-      sourceParent = _json['sourceParent'] as core.String;
-    }
-  }
+  FolderOperation.fromJson(core.Map _json)
+      : this(
+          destinationParent: _json.containsKey('destinationParent')
+              ? _json['destinationParent'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          operationType: _json.containsKey('operationType')
+              ? _json['operationType'] as core.String
+              : null,
+          sourceParent: _json.containsKey('sourceParent')
+              ? _json['sourceParent'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (destinationParent != null) 'destinationParent': destinationParent!,
@@ -2615,13 +2672,16 @@ class FolderOperationError {
   /// the max deleted folder depth constraint.
   core.String? errorMessageId;
 
-  FolderOperationError();
+  FolderOperationError({
+    this.errorMessageId,
+  });
 
-  FolderOperationError.fromJson(core.Map _json) {
-    if (_json.containsKey('errorMessageId')) {
-      errorMessageId = _json['errorMessageId'] as core.String;
-    }
-  }
+  FolderOperationError.fromJson(core.Map _json)
+      : this(
+          errorMessageId: _json.containsKey('errorMessageId')
+              ? _json['errorMessageId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorMessageId != null) 'errorMessageId': errorMessageId!,
@@ -2647,16 +2707,19 @@ class GetAncestryResponse {
   /// parent, etc..
   core.List<Ancestor>? ancestor;
 
-  GetAncestryResponse();
+  GetAncestryResponse({
+    this.ancestor,
+  });
 
-  GetAncestryResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('ancestor')) {
-      ancestor = (_json['ancestor'] as core.List)
-          .map<Ancestor>((value) =>
-              Ancestor.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GetAncestryResponse.fromJson(core.Map _json)
+      : this(
+          ancestor: _json.containsKey('ancestor')
+              ? (_json['ancestor'] as core.List)
+                  .map<Ancestor>((value) => Ancestor.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ancestor != null)
@@ -2669,13 +2732,16 @@ class GetEffectiveOrgPolicyRequest {
   /// The name of the `Constraint` to compute the effective `Policy`.
   core.String? constraint;
 
-  GetEffectiveOrgPolicyRequest();
+  GetEffectiveOrgPolicyRequest({
+    this.constraint,
+  });
 
-  GetEffectiveOrgPolicyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('constraint')) {
-      constraint = _json['constraint'] as core.String;
-    }
-  }
+  GetEffectiveOrgPolicyRequest.fromJson(core.Map _json)
+      : this(
+          constraint: _json.containsKey('constraint')
+              ? _json['constraint'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (constraint != null) 'constraint': constraint!,
@@ -2688,14 +2754,17 @@ class GetIamPolicyRequest {
   /// `GetIamPolicy`.
   GetPolicyOptions? options;
 
-  GetIamPolicyRequest();
+  GetIamPolicyRequest({
+    this.options,
+  });
 
-  GetIamPolicyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('options')) {
-      options = GetPolicyOptions.fromJson(
-          _json['options'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GetIamPolicyRequest.fromJson(core.Map _json)
+      : this(
+          options: _json.containsKey('options')
+              ? GetPolicyOptions.fromJson(
+                  _json['options'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (options != null) 'options': options!.toJson(),
@@ -2707,13 +2776,16 @@ class GetOrgPolicyRequest {
   /// Name of the `Constraint` to get the `Policy`.
   core.String? constraint;
 
-  GetOrgPolicyRequest();
+  GetOrgPolicyRequest({
+    this.constraint,
+  });
 
-  GetOrgPolicyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('constraint')) {
-      constraint = _json['constraint'] as core.String;
-    }
-  }
+  GetOrgPolicyRequest.fromJson(core.Map _json)
+      : this(
+          constraint: _json.containsKey('constraint')
+              ? _json['constraint'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (constraint != null) 'constraint': constraint!,
@@ -2734,13 +2806,16 @@ class GetPolicyOptions {
   /// Optional.
   core.int? requestedPolicyVersion;
 
-  GetPolicyOptions();
+  GetPolicyOptions({
+    this.requestedPolicyVersion,
+  });
 
-  GetPolicyOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('requestedPolicyVersion')) {
-      requestedPolicyVersion = _json['requestedPolicyVersion'] as core.int;
-    }
-  }
+  GetPolicyOptions.fromJson(core.Map _json)
+      : this(
+          requestedPolicyVersion: _json.containsKey('requestedPolicyVersion')
+              ? _json['requestedPolicyVersion'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestedPolicyVersion != null)
@@ -2785,30 +2860,36 @@ class Lien {
   /// \['resourcemanager.projects.delete'\]
   core.List<core.String>? restrictions;
 
-  Lien();
+  Lien({
+    this.createTime,
+    this.name,
+    this.origin,
+    this.parent,
+    this.reason,
+    this.restrictions,
+  });
 
-  Lien.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('origin')) {
-      origin = _json['origin'] as core.String;
-    }
-    if (_json.containsKey('parent')) {
-      parent = _json['parent'] as core.String;
-    }
-    if (_json.containsKey('reason')) {
-      reason = _json['reason'] as core.String;
-    }
-    if (_json.containsKey('restrictions')) {
-      restrictions = (_json['restrictions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  Lien.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          origin: _json.containsKey('origin')
+              ? _json['origin'] as core.String
+              : null,
+          parent: _json.containsKey('parent')
+              ? _json['parent'] as core.String
+              : null,
+          reason: _json.containsKey('reason')
+              ? _json['reason'] as core.String
+              : null,
+          restrictions: _json.containsKey('restrictions')
+              ? (_json['restrictions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -2835,16 +2916,20 @@ class ListAvailableOrgPolicyConstraintsRequest {
   /// point start using this field.
   core.String? pageToken;
 
-  ListAvailableOrgPolicyConstraintsRequest();
+  ListAvailableOrgPolicyConstraintsRequest({
+    this.pageSize,
+    this.pageToken,
+  });
 
-  ListAvailableOrgPolicyConstraintsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('pageSize')) {
-      pageSize = _json['pageSize'] as core.int;
-    }
-    if (_json.containsKey('pageToken')) {
-      pageToken = _json['pageToken'] as core.String;
-    }
-  }
+  ListAvailableOrgPolicyConstraintsRequest.fromJson(core.Map _json)
+      : this(
+          pageSize: _json.containsKey('pageSize')
+              ? _json['pageSize'] as core.int
+              : null,
+          pageToken: _json.containsKey('pageToken')
+              ? _json['pageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (pageSize != null) 'pageSize': pageSize!,
@@ -2866,19 +2951,23 @@ class ListAvailableOrgPolicyConstraintsResponse {
   /// This is currently not used.
   core.String? nextPageToken;
 
-  ListAvailableOrgPolicyConstraintsResponse();
+  ListAvailableOrgPolicyConstraintsResponse({
+    this.constraints,
+    this.nextPageToken,
+  });
 
-  ListAvailableOrgPolicyConstraintsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('constraints')) {
-      constraints = (_json['constraints'] as core.List)
-          .map<Constraint>((value) =>
-              Constraint.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListAvailableOrgPolicyConstraintsResponse.fromJson(core.Map _json)
+      : this(
+          constraints: _json.containsKey('constraints')
+              ? (_json['constraints'] as core.List)
+                  .map<Constraint>((value) => Constraint.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (constraints != null)
@@ -2903,16 +2992,20 @@ class ListConstraint {
   /// 'folders/123' folder.
   core.bool? supportsUnder;
 
-  ListConstraint();
+  ListConstraint({
+    this.suggestedValue,
+    this.supportsUnder,
+  });
 
-  ListConstraint.fromJson(core.Map _json) {
-    if (_json.containsKey('suggestedValue')) {
-      suggestedValue = _json['suggestedValue'] as core.String;
-    }
-    if (_json.containsKey('supportsUnder')) {
-      supportsUnder = _json['supportsUnder'] as core.bool;
-    }
-  }
+  ListConstraint.fromJson(core.Map _json)
+      : this(
+          suggestedValue: _json.containsKey('suggestedValue')
+              ? _json['suggestedValue'] as core.String
+              : null,
+          supportsUnder: _json.containsKey('supportsUnder')
+              ? _json['supportsUnder'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (suggestedValue != null) 'suggestedValue': suggestedValue!,
@@ -2929,19 +3022,23 @@ class ListLiensResponse {
   /// results in the list.
   core.String? nextPageToken;
 
-  ListLiensResponse();
+  ListLiensResponse({
+    this.liens,
+    this.nextPageToken,
+  });
 
-  ListLiensResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('liens')) {
-      liens = (_json['liens'] as core.List)
-          .map<Lien>((value) =>
-              Lien.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListLiensResponse.fromJson(core.Map _json)
+      : this(
+          liens: _json.containsKey('liens')
+              ? (_json['liens'] as core.List)
+                  .map<Lien>((value) => Lien.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (liens != null)
@@ -2964,16 +3061,20 @@ class ListOrgPoliciesRequest {
   /// point start using this field.
   core.String? pageToken;
 
-  ListOrgPoliciesRequest();
+  ListOrgPoliciesRequest({
+    this.pageSize,
+    this.pageToken,
+  });
 
-  ListOrgPoliciesRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('pageSize')) {
-      pageSize = _json['pageSize'] as core.int;
-    }
-    if (_json.containsKey('pageToken')) {
-      pageToken = _json['pageToken'] as core.String;
-    }
-  }
+  ListOrgPoliciesRequest.fromJson(core.Map _json)
+      : this(
+          pageSize: _json.containsKey('pageSize')
+              ? _json['pageSize'] as core.int
+              : null,
+          pageToken: _json.containsKey('pageToken')
+              ? _json['pageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (pageSize != null) 'pageSize': pageSize!,
@@ -2996,19 +3097,23 @@ class ListOrgPoliciesResponse {
   /// It will be empty if no `Policies` are set.
   core.List<OrgPolicy>? policies;
 
-  ListOrgPoliciesResponse();
+  ListOrgPoliciesResponse({
+    this.nextPageToken,
+    this.policies,
+  });
 
-  ListOrgPoliciesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('policies')) {
-      policies = (_json['policies'] as core.List)
-          .map<OrgPolicy>((value) =>
-              OrgPolicy.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListOrgPoliciesResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          policies: _json.containsKey('policies')
+              ? (_json['policies'] as core.List)
+                  .map<OrgPolicy>((value) => OrgPolicy.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3126,29 +3231,36 @@ class ListPolicy {
   /// Optional.
   core.String? suggestedValue;
 
-  ListPolicy();
+  ListPolicy({
+    this.allValues,
+    this.allowedValues,
+    this.deniedValues,
+    this.inheritFromParent,
+    this.suggestedValue,
+  });
 
-  ListPolicy.fromJson(core.Map _json) {
-    if (_json.containsKey('allValues')) {
-      allValues = _json['allValues'] as core.String;
-    }
-    if (_json.containsKey('allowedValues')) {
-      allowedValues = (_json['allowedValues'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('deniedValues')) {
-      deniedValues = (_json['deniedValues'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('inheritFromParent')) {
-      inheritFromParent = _json['inheritFromParent'] as core.bool;
-    }
-    if (_json.containsKey('suggestedValue')) {
-      suggestedValue = _json['suggestedValue'] as core.String;
-    }
-  }
+  ListPolicy.fromJson(core.Map _json)
+      : this(
+          allValues: _json.containsKey('allValues')
+              ? _json['allValues'] as core.String
+              : null,
+          allowedValues: _json.containsKey('allowedValues')
+              ? (_json['allowedValues'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          deniedValues: _json.containsKey('deniedValues')
+              ? (_json['deniedValues'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          inheritFromParent: _json.containsKey('inheritFromParent')
+              ? _json['inheritFromParent'] as core.bool
+              : null,
+          suggestedValue: _json.containsKey('suggestedValue')
+              ? _json['suggestedValue'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allValues != null) 'allValues': allValues!,
@@ -3180,19 +3292,23 @@ class ListProjectsResponse {
   /// This list can be paginated.
   core.List<Project>? projects;
 
-  ListProjectsResponse();
+  ListProjectsResponse({
+    this.nextPageToken,
+    this.projects,
+  });
 
-  ListProjectsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('projects')) {
-      projects = (_json['projects'] as core.List)
-          .map<Project>((value) =>
-              Project.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListProjectsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          projects: _json.containsKey('projects')
+              ? (_json['projects'] as core.List)
+                  .map<Project>((value) => Project.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3212,19 +3328,24 @@ class MoveFolderMetadata {
   /// The resource name of the folder's parent.
   core.String? sourceParent;
 
-  MoveFolderMetadata();
+  MoveFolderMetadata({
+    this.destinationParent,
+    this.displayName,
+    this.sourceParent,
+  });
 
-  MoveFolderMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('destinationParent')) {
-      destinationParent = _json['destinationParent'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('sourceParent')) {
-      sourceParent = _json['sourceParent'] as core.String;
-    }
-  }
+  MoveFolderMetadata.fromJson(core.Map _json)
+      : this(
+          destinationParent: _json.containsKey('destinationParent')
+              ? _json['destinationParent'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          sourceParent: _json.containsKey('sourceParent')
+              ? _json['sourceParent'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (destinationParent != null) 'destinationParent': destinationParent!,
@@ -3288,36 +3409,39 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object>? response;
 
-  Operation();
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
-  Operation.fromJson(core.Map _json) {
-    if (_json.containsKey('done')) {
-      done = _json['done'] as core.bool;
-    }
-    if (_json.containsKey('error')) {
-      error = Status.fromJson(
-          _json['error'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('response')) {
-      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-  }
+  Operation.fromJson(core.Map _json)
+      : this(
+          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
+          error: _json.containsKey('error')
+              ? Status.fromJson(
+                  _json['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          response: _json.containsKey('response')
+              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
@@ -3381,34 +3505,41 @@ class OrgPolicy {
   /// Default version is 0;
   core.int? version;
 
-  OrgPolicy();
+  OrgPolicy({
+    this.booleanPolicy,
+    this.constraint,
+    this.etag,
+    this.listPolicy,
+    this.restoreDefault,
+    this.updateTime,
+    this.version,
+  });
 
-  OrgPolicy.fromJson(core.Map _json) {
-    if (_json.containsKey('booleanPolicy')) {
-      booleanPolicy = BooleanPolicy.fromJson(
-          _json['booleanPolicy'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('constraint')) {
-      constraint = _json['constraint'] as core.String;
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('listPolicy')) {
-      listPolicy = ListPolicy.fromJson(
-          _json['listPolicy'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('restoreDefault')) {
-      restoreDefault = RestoreDefault.fromJson(
-          _json['restoreDefault'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.int;
-    }
-  }
+  OrgPolicy.fromJson(core.Map _json)
+      : this(
+          booleanPolicy: _json.containsKey('booleanPolicy')
+              ? BooleanPolicy.fromJson(
+                  _json['booleanPolicy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          constraint: _json.containsKey('constraint')
+              ? _json['constraint'] as core.String
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          listPolicy: _json.containsKey('listPolicy')
+              ? ListPolicy.fromJson(
+                  _json['listPolicy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          restoreDefault: _json.containsKey('restoreDefault')
+              ? RestoreDefault.fromJson(_json['restoreDefault']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (booleanPolicy != null) 'booleanPolicy': booleanPolicy!.toJson(),
@@ -3462,26 +3593,31 @@ class Organization {
   /// This field is required.
   OrganizationOwner? owner;
 
-  Organization();
+  Organization({
+    this.creationTime,
+    this.displayName,
+    this.lifecycleState,
+    this.name,
+    this.owner,
+  });
 
-  Organization.fromJson(core.Map _json) {
-    if (_json.containsKey('creationTime')) {
-      creationTime = _json['creationTime'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('lifecycleState')) {
-      lifecycleState = _json['lifecycleState'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('owner')) {
-      owner = OrganizationOwner.fromJson(
-          _json['owner'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Organization.fromJson(core.Map _json)
+      : this(
+          creationTime: _json.containsKey('creationTime')
+              ? _json['creationTime'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          lifecycleState: _json.containsKey('lifecycleState')
+              ? _json['lifecycleState'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          owner: _json.containsKey('owner')
+              ? OrganizationOwner.fromJson(
+                  _json['owner'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (creationTime != null) 'creationTime': creationTime!,
@@ -3501,13 +3637,16 @@ class OrganizationOwner {
   /// The G Suite customer id used in the Directory API.
   core.String? directoryCustomerId;
 
-  OrganizationOwner();
+  OrganizationOwner({
+    this.directoryCustomerId,
+  });
 
-  OrganizationOwner.fromJson(core.Map _json) {
-    if (_json.containsKey('directoryCustomerId')) {
-      directoryCustomerId = _json['directoryCustomerId'] as core.String;
-    }
-  }
+  OrganizationOwner.fromJson(core.Map _json)
+      : this(
+          directoryCustomerId: _json.containsKey('directoryCustomerId')
+              ? _json['directoryCustomerId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (directoryCustomerId != null)
@@ -3596,28 +3735,32 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy();
+  Policy({
+    this.auditConfigs,
+    this.bindings,
+    this.etag,
+    this.version,
+  });
 
-  Policy.fromJson(core.Map _json) {
-    if (_json.containsKey('auditConfigs')) {
-      auditConfigs = (_json['auditConfigs'] as core.List)
-          .map<AuditConfig>((value) => AuditConfig.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('bindings')) {
-      bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) =>
-              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.int;
-    }
-  }
+  Policy.fromJson(core.Map _json)
+      : this(
+          auditConfigs: _json.containsKey('auditConfigs')
+              ? (_json['auditConfigs'] as core.List)
+                  .map<AuditConfig>((value) => AuditConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          bindings: _json.containsKey('bindings')
+              ? (_json['bindings'] as core.List)
+                  .map<Binding>((value) => Binding.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (auditConfigs != null)
@@ -3692,37 +3835,44 @@ class Project {
   /// Example: `415104041262` Read-only.
   core.String? projectNumber;
 
-  Project();
+  Project({
+    this.createTime,
+    this.labels,
+    this.lifecycleState,
+    this.name,
+    this.parent,
+    this.projectId,
+    this.projectNumber,
+  });
 
-  Project.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('lifecycleState')) {
-      lifecycleState = _json['lifecycleState'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('parent')) {
-      parent = ResourceId.fromJson(
-          _json['parent'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('projectNumber')) {
-      projectNumber = _json['projectNumber'] as core.String;
-    }
-  }
+  Project.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          lifecycleState: _json.containsKey('lifecycleState')
+              ? _json['lifecycleState'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          parent: _json.containsKey('parent')
+              ? ResourceId.fromJson(
+                  _json['parent'] as core.Map<core.String, core.dynamic>)
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          projectNumber: _json.containsKey('projectNumber')
+              ? _json['projectNumber'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -3753,19 +3903,23 @@ class ProjectCreationStatus {
   /// True if the project creation process is complete.
   core.bool? ready;
 
-  ProjectCreationStatus();
+  ProjectCreationStatus({
+    this.createTime,
+    this.gettable,
+    this.ready,
+  });
 
-  ProjectCreationStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('gettable')) {
-      gettable = _json['gettable'] as core.bool;
-    }
-    if (_json.containsKey('ready')) {
-      ready = _json['ready'] as core.bool;
-    }
-  }
+  ProjectCreationStatus.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          gettable: _json.containsKey('gettable')
+              ? _json['gettable'] as core.bool
+              : null,
+          ready:
+              _json.containsKey('ready') ? _json['ready'] as core.bool : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -3791,16 +3945,16 @@ class ResourceId {
   /// At present, the valid types are: "organization", "folder", and "project".
   core.String? type;
 
-  ResourceId();
+  ResourceId({
+    this.id,
+    this.type,
+  });
 
-  ResourceId.fromJson(core.Map _json) {
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  ResourceId.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
@@ -3854,19 +4008,24 @@ class SearchOrganizationsRequest {
   /// This field is optional.
   core.String? pageToken;
 
-  SearchOrganizationsRequest();
+  SearchOrganizationsRequest({
+    this.filter,
+    this.pageSize,
+    this.pageToken,
+  });
 
-  SearchOrganizationsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('filter')) {
-      filter = _json['filter'] as core.String;
-    }
-    if (_json.containsKey('pageSize')) {
-      pageSize = _json['pageSize'] as core.int;
-    }
-    if (_json.containsKey('pageToken')) {
-      pageToken = _json['pageToken'] as core.String;
-    }
-  }
+  SearchOrganizationsRequest.fromJson(core.Map _json)
+      : this(
+          filter: _json.containsKey('filter')
+              ? _json['filter'] as core.String
+              : null,
+          pageSize: _json.containsKey('pageSize')
+              ? _json['pageSize'] as core.int
+              : null,
+          pageToken: _json.containsKey('pageToken')
+              ? _json['pageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (filter != null) 'filter': filter!,
@@ -3889,19 +4048,23 @@ class SearchOrganizationsResponse {
   /// paginated.
   core.List<Organization>? organizations;
 
-  SearchOrganizationsResponse();
+  SearchOrganizationsResponse({
+    this.nextPageToken,
+    this.organizations,
+  });
 
-  SearchOrganizationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('organizations')) {
-      organizations = (_json['organizations'] as core.List)
-          .map<Organization>((value) => Organization.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  SearchOrganizationsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          organizations: _json.containsKey('organizations')
+              ? (_json['organizations'] as core.List)
+                  .map<Organization>((value) => Organization.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3926,17 +4089,21 @@ class SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  SetIamPolicyRequest();
+  SetIamPolicyRequest({
+    this.policy,
+    this.updateMask,
+  });
 
-  SetIamPolicyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(
-          _json['policy'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'] as core.String;
-    }
-  }
+  SetIamPolicyRequest.fromJson(core.Map _json)
+      : this(
+          policy: _json.containsKey('policy')
+              ? Policy.fromJson(
+                  _json['policy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: _json.containsKey('updateMask')
+              ? _json['updateMask'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (policy != null) 'policy': policy!.toJson(),
@@ -3949,14 +4116,17 @@ class SetOrgPolicyRequest {
   /// `Policy` to set on the resource.
   OrgPolicy? policy;
 
-  SetOrgPolicyRequest();
+  SetOrgPolicyRequest({
+    this.policy,
+  });
 
-  SetOrgPolicyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('policy')) {
-      policy = OrgPolicy.fromJson(
-          _json['policy'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  SetOrgPolicyRequest.fromJson(core.Map _json)
+      : this(
+          policy: _json.containsKey('policy')
+              ? OrgPolicy.fromJson(
+                  _json['policy'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (policy != null) 'policy': policy!.toJson(),
@@ -3988,27 +4158,30 @@ class Status {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  Status();
+  Status({
+    this.code,
+    this.details,
+    this.message,
+  });
 
-  Status.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.int;
-    }
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  Status.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -4026,15 +4199,18 @@ class TestIamPermissionsRequest {
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String>? permissions;
 
-  TestIamPermissionsRequest();
+  TestIamPermissionsRequest({
+    this.permissions,
+  });
 
-  TestIamPermissionsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  TestIamPermissionsRequest.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
@@ -4047,15 +4223,18 @@ class TestIamPermissionsResponse {
   /// allowed.
   core.List<core.String>? permissions;
 
-  TestIamPermissionsResponse();
+  TestIamPermissionsResponse({
+    this.permissions,
+  });
 
-  TestIamPermissionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  TestIamPermissionsResponse.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,

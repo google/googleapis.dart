@@ -625,17 +625,21 @@ class Arg {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object? exactValue;
 
-  Arg();
+  Arg({
+    this.anyValue,
+    this.exactValue,
+  });
 
-  Arg.fromJson(core.Map _json) {
-    if (_json.containsKey('anyValue')) {
-      anyValue = Empty.fromJson(
-          _json['anyValue'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('exactValue')) {
-      exactValue = _json['exactValue'] as core.Object;
-    }
-  }
+  Arg.fromJson(core.Map _json)
+      : this(
+          anyValue: _json.containsKey('anyValue')
+              ? Empty.fromJson(
+                  _json['anyValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+          exactValue: _json.containsKey('exactValue')
+              ? _json['exactValue'] as core.Object
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (anyValue != null) 'anyValue': anyValue!.toJson(),
@@ -672,26 +676,31 @@ class ExpressionReport {
   /// Values that this expression evaluated to when encountered.
   core.List<ValueCount>? values;
 
-  ExpressionReport();
+  ExpressionReport({
+    this.children,
+    this.sourcePosition,
+    this.values,
+  });
 
-  ExpressionReport.fromJson(core.Map _json) {
-    if (_json.containsKey('children')) {
-      children = (_json['children'] as core.List)
-          .map<ExpressionReport>((value) => ExpressionReport.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('sourcePosition')) {
-      sourcePosition = SourcePosition.fromJson(
-          _json['sourcePosition'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('values')) {
-      values = (_json['values'] as core.List)
-          .map<ValueCount>((value) =>
-              ValueCount.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ExpressionReport.fromJson(core.Map _json)
+      : this(
+          children: _json.containsKey('children')
+              ? (_json['children'] as core.List)
+                  .map<ExpressionReport>((value) => ExpressionReport.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          sourcePosition: _json.containsKey('sourcePosition')
+              ? SourcePosition.fromJson(_json['sourcePosition']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          values: _json.containsKey('values')
+              ? (_json['values'] as core.List)
+                  .map<ValueCount>((value) => ValueCount.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (children != null)
@@ -720,19 +729,22 @@ class File {
   /// File name.
   core.String? name;
 
-  File();
+  File({
+    this.content,
+    this.fingerprint,
+    this.name,
+  });
 
-  File.fromJson(core.Map _json) {
-    if (_json.containsKey('content')) {
-      content = _json['content'] as core.String;
-    }
-    if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  File.fromJson(core.Map _json)
+      : this(
+          content: _json.containsKey('content')
+              ? _json['content'] as core.String
+              : null,
+          fingerprint: _json.containsKey('fingerprint')
+              ? _json['fingerprint'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
@@ -753,18 +765,22 @@ class FunctionCall {
   /// Name of the function invoked.
   core.String? function;
 
-  FunctionCall();
+  FunctionCall({
+    this.args,
+    this.function,
+  });
 
-  FunctionCall.fromJson(core.Map _json) {
-    if (_json.containsKey('args')) {
-      args = (_json['args'] as core.List)
-          .map<core.Object>((value) => value as core.Object)
-          .toList();
-    }
-    if (_json.containsKey('function')) {
-      function = _json['function'] as core.String;
-    }
-  }
+  FunctionCall.fromJson(core.Map _json)
+      : this(
+          args: _json.containsKey('args')
+              ? (_json['args'] as core.List)
+                  .map<core.Object>((value) => value as core.Object)
+                  .toList()
+              : null,
+          function: _json.containsKey('function')
+              ? _json['function'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (args != null) 'args': args!,
@@ -796,23 +812,28 @@ class FunctionMock {
   /// The mock result of the function call.
   Result? result;
 
-  FunctionMock();
+  FunctionMock({
+    this.args,
+    this.function,
+    this.result,
+  });
 
-  FunctionMock.fromJson(core.Map _json) {
-    if (_json.containsKey('args')) {
-      args = (_json['args'] as core.List)
-          .map<Arg>((value) =>
-              Arg.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('function')) {
-      function = _json['function'] as core.String;
-    }
-    if (_json.containsKey('result')) {
-      result = Result.fromJson(
-          _json['result'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  FunctionMock.fromJson(core.Map _json)
+      : this(
+          args: _json.containsKey('args')
+              ? (_json['args'] as core.List)
+                  .map<Arg>((value) => Arg.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          function: _json.containsKey('function')
+              ? _json['function'] as core.String
+              : null,
+          result: _json.containsKey('result')
+              ? Result.fromJson(
+                  _json['result'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (args != null) 'args': args!.map((value) => value.toJson()).toList(),
@@ -863,28 +884,36 @@ class GetReleaseExecutableResponse {
   /// Timestamp for the most recent `Release.update_time`.
   core.String? updateTime;
 
-  GetReleaseExecutableResponse();
+  GetReleaseExecutableResponse({
+    this.executable,
+    this.executableVersion,
+    this.language,
+    this.rulesetName,
+    this.syncTime,
+    this.updateTime,
+  });
 
-  GetReleaseExecutableResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('executable')) {
-      executable = _json['executable'] as core.String;
-    }
-    if (_json.containsKey('executableVersion')) {
-      executableVersion = _json['executableVersion'] as core.String;
-    }
-    if (_json.containsKey('language')) {
-      language = _json['language'] as core.String;
-    }
-    if (_json.containsKey('rulesetName')) {
-      rulesetName = _json['rulesetName'] as core.String;
-    }
-    if (_json.containsKey('syncTime')) {
-      syncTime = _json['syncTime'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  GetReleaseExecutableResponse.fromJson(core.Map _json)
+      : this(
+          executable: _json.containsKey('executable')
+              ? _json['executable'] as core.String
+              : null,
+          executableVersion: _json.containsKey('executableVersion')
+              ? _json['executableVersion'] as core.String
+              : null,
+          language: _json.containsKey('language')
+              ? _json['language'] as core.String
+              : null,
+          rulesetName: _json.containsKey('rulesetName')
+              ? _json['rulesetName'] as core.String
+              : null,
+          syncTime: _json.containsKey('syncTime')
+              ? _json['syncTime'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (executable != null) 'executable': executable!,
@@ -914,20 +943,25 @@ class Issue {
   /// Position of the issue in the `Source`.
   SourcePosition? sourcePosition;
 
-  Issue();
+  Issue({
+    this.description,
+    this.severity,
+    this.sourcePosition,
+  });
 
-  Issue.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('severity')) {
-      severity = _json['severity'] as core.String;
-    }
-    if (_json.containsKey('sourcePosition')) {
-      sourcePosition = SourcePosition.fromJson(
-          _json['sourcePosition'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Issue.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          severity: _json.containsKey('severity')
+              ? _json['severity'] as core.String
+              : null,
+          sourcePosition: _json.containsKey('sourcePosition')
+              ? SourcePosition.fromJson(_json['sourcePosition']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -946,19 +980,23 @@ class ListReleasesResponse {
   /// List of `Release` instances.
   core.List<Release>? releases;
 
-  ListReleasesResponse();
+  ListReleasesResponse({
+    this.nextPageToken,
+    this.releases,
+  });
 
-  ListReleasesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('releases')) {
-      releases = (_json['releases'] as core.List)
-          .map<Release>((value) =>
-              Release.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListReleasesResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          releases: _json.containsKey('releases')
+              ? (_json['releases'] as core.List)
+                  .map<Release>((value) => Release.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -977,19 +1015,23 @@ class ListRulesetsResponse {
   /// List of `Ruleset` instances.
   core.List<Ruleset>? rulesets;
 
-  ListRulesetsResponse();
+  ListRulesetsResponse({
+    this.nextPageToken,
+    this.rulesets,
+  });
 
-  ListRulesetsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('rulesets')) {
-      rulesets = (_json['rulesets'] as core.List)
-          .map<Ruleset>((value) =>
-              Ruleset.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListRulesetsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          rulesets: _json.containsKey('rulesets')
+              ? (_json['rulesets'] as core.List)
+                  .map<Ruleset>((value) => Ruleset.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1005,15 +1047,18 @@ class Metadata {
   /// There may be 0+ of these.
   core.List<core.String>? services;
 
-  Metadata();
+  Metadata({
+    this.services,
+  });
 
-  Metadata.fromJson(core.Map _json) {
-    if (_json.containsKey('services')) {
-      services = (_json['services'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  Metadata.fromJson(core.Map _json)
+      : this(
+          services: _json.containsKey('services')
+              ? (_json['services'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (services != null) 'services': services!,
@@ -1043,22 +1088,26 @@ class Release {
   /// Output only.
   core.String? updateTime;
 
-  Release();
+  Release({
+    this.createTime,
+    this.name,
+    this.rulesetName,
+    this.updateTime,
+  });
 
-  Release.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('rulesetName')) {
-      rulesetName = _json['rulesetName'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  Release.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          rulesetName: _json.containsKey('rulesetName')
+              ? _json['rulesetName'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -1081,17 +1130,20 @@ class Result {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object? value;
 
-  Result();
+  Result({
+    this.undefined,
+    this.value,
+  });
 
-  Result.fromJson(core.Map _json) {
-    if (_json.containsKey('undefined')) {
-      undefined = Empty.fromJson(
-          _json['undefined'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.Object;
-    }
-  }
+  Result.fromJson(core.Map _json)
+      : this(
+          undefined: _json.containsKey('undefined')
+              ? Empty.fromJson(
+                  _json['undefined'] as core.Map<core.String, core.dynamic>)
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.Object : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (undefined != null) 'undefined': undefined!.toJson(),
@@ -1123,24 +1175,28 @@ class Ruleset {
   /// `Source` for the `Ruleset`.
   Source? source;
 
-  Ruleset();
+  Ruleset({
+    this.createTime,
+    this.metadata,
+    this.name,
+    this.source,
+  });
 
-  Ruleset.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = Metadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('source')) {
-      source = Source.fromJson(
-          _json['source'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Ruleset.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? Metadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          source: _json.containsKey('source')
+              ? Source.fromJson(
+                  _json['source'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -1155,16 +1211,19 @@ class Source {
   /// `File` set constituting the `Source` bundle.
   core.List<File>? files;
 
-  Source();
+  Source({
+    this.files,
+  });
 
-  Source.fromJson(core.Map _json) {
-    if (_json.containsKey('files')) {
-      files = (_json['files'] as core.List)
-          .map<File>((value) =>
-              File.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  Source.fromJson(core.Map _json)
+      : this(
+          files: _json.containsKey('files')
+              ? (_json['files'] as core.List)
+                  .map<File>((value) => File.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (files != null)
@@ -1194,25 +1253,29 @@ class SourcePosition {
   /// 1-based.
   core.int? line;
 
-  SourcePosition();
+  SourcePosition({
+    this.column,
+    this.currentOffset,
+    this.endOffset,
+    this.fileName,
+    this.line,
+  });
 
-  SourcePosition.fromJson(core.Map _json) {
-    if (_json.containsKey('column')) {
-      column = _json['column'] as core.int;
-    }
-    if (_json.containsKey('currentOffset')) {
-      currentOffset = _json['currentOffset'] as core.int;
-    }
-    if (_json.containsKey('endOffset')) {
-      endOffset = _json['endOffset'] as core.int;
-    }
-    if (_json.containsKey('fileName')) {
-      fileName = _json['fileName'] as core.String;
-    }
-    if (_json.containsKey('line')) {
-      line = _json['line'] as core.int;
-    }
-  }
+  SourcePosition.fromJson(core.Map _json)
+      : this(
+          column:
+              _json.containsKey('column') ? _json['column'] as core.int : null,
+          currentOffset: _json.containsKey('currentOffset')
+              ? _json['currentOffset'] as core.int
+              : null,
+          endOffset: _json.containsKey('endOffset')
+              ? _json['endOffset'] as core.int
+              : null,
+          fileName: _json.containsKey('fileName')
+              ? _json['fileName'] as core.String
+              : null,
+          line: _json.containsKey('line') ? _json['line'] as core.int : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (column != null) 'column': column!,
@@ -1288,31 +1351,39 @@ class TestCase {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object? resource;
 
-  TestCase();
+  TestCase({
+    this.expectation,
+    this.expressionReportLevel,
+    this.functionMocks,
+    this.pathEncoding,
+    this.request,
+    this.resource,
+  });
 
-  TestCase.fromJson(core.Map _json) {
-    if (_json.containsKey('expectation')) {
-      expectation = _json['expectation'] as core.String;
-    }
-    if (_json.containsKey('expressionReportLevel')) {
-      expressionReportLevel = _json['expressionReportLevel'] as core.String;
-    }
-    if (_json.containsKey('functionMocks')) {
-      functionMocks = (_json['functionMocks'] as core.List)
-          .map<FunctionMock>((value) => FunctionMock.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('pathEncoding')) {
-      pathEncoding = _json['pathEncoding'] as core.String;
-    }
-    if (_json.containsKey('request')) {
-      request = _json['request'] as core.Object;
-    }
-    if (_json.containsKey('resource')) {
-      resource = _json['resource'] as core.Object;
-    }
-  }
+  TestCase.fromJson(core.Map _json)
+      : this(
+          expectation: _json.containsKey('expectation')
+              ? _json['expectation'] as core.String
+              : null,
+          expressionReportLevel: _json.containsKey('expressionReportLevel')
+              ? _json['expressionReportLevel'] as core.String
+              : null,
+          functionMocks: _json.containsKey('functionMocks')
+              ? (_json['functionMocks'] as core.List)
+                  .map<FunctionMock>((value) => FunctionMock.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          pathEncoding: _json.containsKey('pathEncoding')
+              ? _json['pathEncoding'] as core.String
+              : null,
+          request: _json.containsKey('request')
+              ? _json['request'] as core.Object
+              : null,
+          resource: _json.containsKey('resource')
+              ? _json['resource'] as core.Object
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (expectation != null) 'expectation': expectation!,
@@ -1377,40 +1448,47 @@ class TestResult {
   /// intermediate evaluation states, see the `expression_reports` field
   core.List<VisitedExpression>? visitedExpressions;
 
-  TestResult();
+  TestResult({
+    this.debugMessages,
+    this.errorPosition,
+    this.expressionReports,
+    this.functionCalls,
+    this.state,
+    this.visitedExpressions,
+  });
 
-  TestResult.fromJson(core.Map _json) {
-    if (_json.containsKey('debugMessages')) {
-      debugMessages = (_json['debugMessages'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('errorPosition')) {
-      errorPosition = SourcePosition.fromJson(
-          _json['errorPosition'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('expressionReports')) {
-      expressionReports = (_json['expressionReports'] as core.List)
-          .map<ExpressionReport>((value) => ExpressionReport.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('functionCalls')) {
-      functionCalls = (_json['functionCalls'] as core.List)
-          .map<FunctionCall>((value) => FunctionCall.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('visitedExpressions')) {
-      visitedExpressions = (_json['visitedExpressions'] as core.List)
-          .map<VisitedExpression>((value) => VisitedExpression.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  TestResult.fromJson(core.Map _json)
+      : this(
+          debugMessages: _json.containsKey('debugMessages')
+              ? (_json['debugMessages'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          errorPosition: _json.containsKey('errorPosition')
+              ? SourcePosition.fromJson(
+                  _json['errorPosition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          expressionReports: _json.containsKey('expressionReports')
+              ? (_json['expressionReports'] as core.List)
+                  .map<ExpressionReport>((value) => ExpressionReport.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          functionCalls: _json.containsKey('functionCalls')
+              ? (_json['functionCalls'] as core.List)
+                  .map<FunctionCall>((value) => FunctionCall.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          visitedExpressions: _json.containsKey('visitedExpressions')
+              ? (_json['visitedExpressions'] as core.List)
+                  .map<VisitedExpression>((value) => VisitedExpression.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (debugMessages != null) 'debugMessages': debugMessages!,
@@ -1442,18 +1520,22 @@ class TestRulesetRequest {
   /// run.
   TestSuite? testSuite;
 
-  TestRulesetRequest();
+  TestRulesetRequest({
+    this.source,
+    this.testSuite,
+  });
 
-  TestRulesetRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('source')) {
-      source = Source.fromJson(
-          _json['source'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('testSuite')) {
-      testSuite = TestSuite.fromJson(
-          _json['testSuite'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  TestRulesetRequest.fromJson(core.Map _json)
+      : this(
+          source: _json.containsKey('source')
+              ? Source.fromJson(
+                  _json['source'] as core.Map<core.String, core.dynamic>)
+              : null,
+          testSuite: _json.containsKey('testSuite')
+              ? TestSuite.fromJson(
+                  _json['testSuite'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (source != null) 'source': source!.toJson(),
@@ -1474,22 +1556,26 @@ class TestRulesetResponse {
   /// `TestSuite`.
   core.List<TestResult>? testResults;
 
-  TestRulesetResponse();
+  TestRulesetResponse({
+    this.issues,
+    this.testResults,
+  });
 
-  TestRulesetResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('issues')) {
-      issues = (_json['issues'] as core.List)
-          .map<Issue>((value) =>
-              Issue.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('testResults')) {
-      testResults = (_json['testResults'] as core.List)
-          .map<TestResult>((value) =>
-              TestResult.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  TestRulesetResponse.fromJson(core.Map _json)
+      : this(
+          issues: _json.containsKey('issues')
+              ? (_json['issues'] as core.List)
+                  .map<Issue>((value) => Issue.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          testResults: _json.containsKey('testResults')
+              ? (_json['testResults'] as core.List)
+                  .map<TestResult>((value) => TestResult.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (issues != null)
@@ -1508,16 +1594,19 @@ class TestSuite {
   /// Collection of test cases associated with the `TestSuite`.
   core.List<TestCase>? testCases;
 
-  TestSuite();
+  TestSuite({
+    this.testCases,
+  });
 
-  TestSuite.fromJson(core.Map _json) {
-    if (_json.containsKey('testCases')) {
-      testCases = (_json['testCases'] as core.List)
-          .map<TestCase>((value) =>
-              TestCase.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  TestSuite.fromJson(core.Map _json)
+      : this(
+          testCases: _json.containsKey('testCases')
+              ? (_json['testCases'] as core.List)
+                  .map<TestCase>((value) => TestCase.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (testCases != null)
@@ -1533,17 +1622,21 @@ class UpdateReleaseRequest {
   /// Specifies which fields to update.
   core.String? updateMask;
 
-  UpdateReleaseRequest();
+  UpdateReleaseRequest({
+    this.release,
+    this.updateMask,
+  });
 
-  UpdateReleaseRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('release')) {
-      release = Release.fromJson(
-          _json['release'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'] as core.String;
-    }
-  }
+  UpdateReleaseRequest.fromJson(core.Map _json)
+      : this(
+          release: _json.containsKey('release')
+              ? Release.fromJson(
+                  _json['release'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: _json.containsKey('updateMask')
+              ? _json['updateMask'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (release != null) 'release': release!.toJson(),
@@ -1563,16 +1656,17 @@ class ValueCount {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object? value;
 
-  ValueCount();
+  ValueCount({
+    this.count,
+    this.value,
+  });
 
-  ValueCount.fromJson(core.Map _json) {
-    if (_json.containsKey('count')) {
-      count = _json['count'] as core.int;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.Object;
-    }
-  }
+  ValueCount.fromJson(core.Map _json)
+      : this(
+          count: _json.containsKey('count') ? _json['count'] as core.int : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.Object : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
@@ -1591,17 +1685,20 @@ class VisitedExpression {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object? value;
 
-  VisitedExpression();
+  VisitedExpression({
+    this.sourcePosition,
+    this.value,
+  });
 
-  VisitedExpression.fromJson(core.Map _json) {
-    if (_json.containsKey('sourcePosition')) {
-      sourcePosition = SourcePosition.fromJson(
-          _json['sourcePosition'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.Object;
-    }
-  }
+  VisitedExpression.fromJson(core.Map _json)
+      : this(
+          sourcePosition: _json.containsKey('sourcePosition')
+              ? SourcePosition.fromJson(_json['sourcePosition']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.Object : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sourcePosition != null) 'sourcePosition': sourcePosition!.toJson(),

@@ -3754,51 +3754,61 @@ class Announcement {
   /// Read-only.
   core.String? updateTime;
 
-  Announcement();
+  Announcement({
+    this.alternateLink,
+    this.assigneeMode,
+    this.courseId,
+    this.creationTime,
+    this.creatorUserId,
+    this.id,
+    this.individualStudentsOptions,
+    this.materials,
+    this.scheduledTime,
+    this.state,
+    this.text,
+    this.updateTime,
+  });
 
-  Announcement.fromJson(core.Map _json) {
-    if (_json.containsKey('alternateLink')) {
-      alternateLink = _json['alternateLink'] as core.String;
-    }
-    if (_json.containsKey('assigneeMode')) {
-      assigneeMode = _json['assigneeMode'] as core.String;
-    }
-    if (_json.containsKey('courseId')) {
-      courseId = _json['courseId'] as core.String;
-    }
-    if (_json.containsKey('creationTime')) {
-      creationTime = _json['creationTime'] as core.String;
-    }
-    if (_json.containsKey('creatorUserId')) {
-      creatorUserId = _json['creatorUserId'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('individualStudentsOptions')) {
-      individualStudentsOptions = IndividualStudentsOptions.fromJson(
-          _json['individualStudentsOptions']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('materials')) {
-      materials = (_json['materials'] as core.List)
-          .map<Material>((value) =>
-              Material.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('scheduledTime')) {
-      scheduledTime = _json['scheduledTime'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('text')) {
-      text = _json['text'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  Announcement.fromJson(core.Map _json)
+      : this(
+          alternateLink: _json.containsKey('alternateLink')
+              ? _json['alternateLink'] as core.String
+              : null,
+          assigneeMode: _json.containsKey('assigneeMode')
+              ? _json['assigneeMode'] as core.String
+              : null,
+          courseId: _json.containsKey('courseId')
+              ? _json['courseId'] as core.String
+              : null,
+          creationTime: _json.containsKey('creationTime')
+              ? _json['creationTime'] as core.String
+              : null,
+          creatorUserId: _json.containsKey('creatorUserId')
+              ? _json['creatorUserId'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          individualStudentsOptions:
+              _json.containsKey('individualStudentsOptions')
+                  ? IndividualStudentsOptions.fromJson(
+                      _json['individualStudentsOptions']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          materials: _json.containsKey('materials')
+              ? (_json['materials'] as core.List)
+                  .map<Material>((value) => Material.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          scheduledTime: _json.containsKey('scheduledTime')
+              ? _json['scheduledTime'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alternateLink != null) 'alternateLink': alternateLink!,
@@ -3825,14 +3835,17 @@ class Assignment {
   /// This is only populated for course teachers and administrators.
   DriveFolder? studentWorkFolder;
 
-  Assignment();
+  Assignment({
+    this.studentWorkFolder,
+  });
 
-  Assignment.fromJson(core.Map _json) {
-    if (_json.containsKey('studentWorkFolder')) {
-      studentWorkFolder = DriveFolder.fromJson(
-          _json['studentWorkFolder'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Assignment.fromJson(core.Map _json)
+      : this(
+          studentWorkFolder: _json.containsKey('studentWorkFolder')
+              ? DriveFolder.fromJson(_json['studentWorkFolder']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (studentWorkFolder != null)
@@ -3851,16 +3864,19 @@ class AssignmentSubmission {
   /// always available, but others (for example, title) may not be.
   core.List<Attachment>? attachments;
 
-  AssignmentSubmission();
+  AssignmentSubmission({
+    this.attachments,
+  });
 
-  AssignmentSubmission.fromJson(core.Map _json) {
-    if (_json.containsKey('attachments')) {
-      attachments = (_json['attachments'] as core.List)
-          .map<Attachment>((value) =>
-              Attachment.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  AssignmentSubmission.fromJson(core.Map _json)
+      : this(
+          attachments: _json.containsKey('attachments')
+              ? (_json['attachments'] as core.List)
+                  .map<Attachment>((value) => Attachment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attachments != null)
@@ -3884,26 +3900,32 @@ class Attachment {
   /// Youtube video attachment.
   YouTubeVideo? youTubeVideo;
 
-  Attachment();
+  Attachment({
+    this.driveFile,
+    this.form,
+    this.link,
+    this.youTubeVideo,
+  });
 
-  Attachment.fromJson(core.Map _json) {
-    if (_json.containsKey('driveFile')) {
-      driveFile = DriveFile.fromJson(
-          _json['driveFile'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('form')) {
-      form =
-          Form.fromJson(_json['form'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('link')) {
-      link =
-          Link.fromJson(_json['link'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('youTubeVideo')) {
-      youTubeVideo = YouTubeVideo.fromJson(
-          _json['youTubeVideo'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Attachment.fromJson(core.Map _json)
+      : this(
+          driveFile: _json.containsKey('driveFile')
+              ? DriveFile.fromJson(
+                  _json['driveFile'] as core.Map<core.String, core.dynamic>)
+              : null,
+          form: _json.containsKey('form')
+              ? Form.fromJson(
+                  _json['form'] as core.Map<core.String, core.dynamic>)
+              : null,
+          link: _json.containsKey('link')
+              ? Link.fromJson(
+                  _json['link'] as core.Map<core.String, core.dynamic>)
+              : null,
+          youTubeVideo: _json.containsKey('youTubeVideo')
+              ? YouTubeVideo.fromJson(
+                  _json['youTubeVideo'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (driveFile != null) 'driveFile': driveFile!.toJson(),
@@ -3923,13 +3945,16 @@ class CloudPubsubTopic {
   /// [Topic](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#Topic).
   core.String? topicName;
 
-  CloudPubsubTopic();
+  CloudPubsubTopic({
+    this.topicName,
+  });
 
-  CloudPubsubTopic.fromJson(core.Map _json) {
-    if (_json.containsKey('topicName')) {
-      topicName = _json['topicName'] as core.String;
-    }
-  }
+  CloudPubsubTopic.fromJson(core.Map _json)
+      : this(
+          topicName: _json.containsKey('topicName')
+              ? _json['topicName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (topicName != null) 'topicName': topicName!,
@@ -4070,68 +4095,82 @@ class Course {
   /// Read-only.
   core.String? updateTime;
 
-  Course();
+  Course({
+    this.alternateLink,
+    this.calendarId,
+    this.courseGroupEmail,
+    this.courseMaterialSets,
+    this.courseState,
+    this.creationTime,
+    this.description,
+    this.descriptionHeading,
+    this.enrollmentCode,
+    this.guardiansEnabled,
+    this.id,
+    this.name,
+    this.ownerId,
+    this.room,
+    this.section,
+    this.teacherFolder,
+    this.teacherGroupEmail,
+    this.updateTime,
+  });
 
-  Course.fromJson(core.Map _json) {
-    if (_json.containsKey('alternateLink')) {
-      alternateLink = _json['alternateLink'] as core.String;
-    }
-    if (_json.containsKey('calendarId')) {
-      calendarId = _json['calendarId'] as core.String;
-    }
-    if (_json.containsKey('courseGroupEmail')) {
-      courseGroupEmail = _json['courseGroupEmail'] as core.String;
-    }
-    if (_json.containsKey('courseMaterialSets')) {
-      courseMaterialSets = (_json['courseMaterialSets'] as core.List)
-          .map<CourseMaterialSet>((value) => CourseMaterialSet.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('courseState')) {
-      courseState = _json['courseState'] as core.String;
-    }
-    if (_json.containsKey('creationTime')) {
-      creationTime = _json['creationTime'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('descriptionHeading')) {
-      descriptionHeading = _json['descriptionHeading'] as core.String;
-    }
-    if (_json.containsKey('enrollmentCode')) {
-      enrollmentCode = _json['enrollmentCode'] as core.String;
-    }
-    if (_json.containsKey('guardiansEnabled')) {
-      guardiansEnabled = _json['guardiansEnabled'] as core.bool;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('ownerId')) {
-      ownerId = _json['ownerId'] as core.String;
-    }
-    if (_json.containsKey('room')) {
-      room = _json['room'] as core.String;
-    }
-    if (_json.containsKey('section')) {
-      section = _json['section'] as core.String;
-    }
-    if (_json.containsKey('teacherFolder')) {
-      teacherFolder = DriveFolder.fromJson(
-          _json['teacherFolder'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('teacherGroupEmail')) {
-      teacherGroupEmail = _json['teacherGroupEmail'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  Course.fromJson(core.Map _json)
+      : this(
+          alternateLink: _json.containsKey('alternateLink')
+              ? _json['alternateLink'] as core.String
+              : null,
+          calendarId: _json.containsKey('calendarId')
+              ? _json['calendarId'] as core.String
+              : null,
+          courseGroupEmail: _json.containsKey('courseGroupEmail')
+              ? _json['courseGroupEmail'] as core.String
+              : null,
+          courseMaterialSets: _json.containsKey('courseMaterialSets')
+              ? (_json['courseMaterialSets'] as core.List)
+                  .map<CourseMaterialSet>((value) => CourseMaterialSet.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          courseState: _json.containsKey('courseState')
+              ? _json['courseState'] as core.String
+              : null,
+          creationTime: _json.containsKey('creationTime')
+              ? _json['creationTime'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          descriptionHeading: _json.containsKey('descriptionHeading')
+              ? _json['descriptionHeading'] as core.String
+              : null,
+          enrollmentCode: _json.containsKey('enrollmentCode')
+              ? _json['enrollmentCode'] as core.String
+              : null,
+          guardiansEnabled: _json.containsKey('guardiansEnabled')
+              ? _json['guardiansEnabled'] as core.bool
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          ownerId: _json.containsKey('ownerId')
+              ? _json['ownerId'] as core.String
+              : null,
+          room: _json.containsKey('room') ? _json['room'] as core.String : null,
+          section: _json.containsKey('section')
+              ? _json['section'] as core.String
+              : null,
+          teacherFolder: _json.containsKey('teacherFolder')
+              ? DriveFolder.fromJson(
+                  _json['teacherFolder'] as core.Map<core.String, core.dynamic>)
+              : null,
+          teacherGroupEmail: _json.containsKey('teacherGroupEmail')
+              ? _json['teacherGroupEmail'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alternateLink != null) 'alternateLink': alternateLink!,
@@ -4180,13 +4219,15 @@ class CourseAlias {
   /// of 256 characters.
   core.String? alias;
 
-  CourseAlias();
+  CourseAlias({
+    this.alias,
+  });
 
-  CourseAlias.fromJson(core.Map _json) {
-    if (_json.containsKey('alias')) {
-      alias = _json['alias'] as core.String;
-    }
-  }
+  CourseAlias.fromJson(core.Map _json)
+      : this(
+          alias:
+              _json.containsKey('alias') ? _json['alias'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alias != null) 'alias': alias!,
@@ -4207,26 +4248,32 @@ class CourseMaterial {
   /// Youtube video attachment.
   YouTubeVideo? youTubeVideo;
 
-  CourseMaterial();
+  CourseMaterial({
+    this.driveFile,
+    this.form,
+    this.link,
+    this.youTubeVideo,
+  });
 
-  CourseMaterial.fromJson(core.Map _json) {
-    if (_json.containsKey('driveFile')) {
-      driveFile = DriveFile.fromJson(
-          _json['driveFile'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('form')) {
-      form =
-          Form.fromJson(_json['form'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('link')) {
-      link =
-          Link.fromJson(_json['link'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('youTubeVideo')) {
-      youTubeVideo = YouTubeVideo.fromJson(
-          _json['youTubeVideo'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  CourseMaterial.fromJson(core.Map _json)
+      : this(
+          driveFile: _json.containsKey('driveFile')
+              ? DriveFile.fromJson(
+                  _json['driveFile'] as core.Map<core.String, core.dynamic>)
+              : null,
+          form: _json.containsKey('form')
+              ? Form.fromJson(
+                  _json['form'] as core.Map<core.String, core.dynamic>)
+              : null,
+          link: _json.containsKey('link')
+              ? Link.fromJson(
+                  _json['link'] as core.Map<core.String, core.dynamic>)
+              : null,
+          youTubeVideo: _json.containsKey('youTubeVideo')
+              ? YouTubeVideo.fromJson(
+                  _json['youTubeVideo'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (driveFile != null) 'driveFile': driveFile!.toJson(),
@@ -4247,19 +4294,22 @@ class CourseMaterialSet {
   /// Title for this set.
   core.String? title;
 
-  CourseMaterialSet();
+  CourseMaterialSet({
+    this.materials,
+    this.title,
+  });
 
-  CourseMaterialSet.fromJson(core.Map _json) {
-    if (_json.containsKey('materials')) {
-      materials = (_json['materials'] as core.List)
-          .map<CourseMaterial>((value) => CourseMaterial.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  CourseMaterialSet.fromJson(core.Map _json)
+      : this(
+          materials: _json.containsKey('materials')
+              ? (_json['materials'] as core.List)
+                  .map<CourseMaterial>((value) => CourseMaterial.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (materials != null)
@@ -4273,13 +4323,16 @@ class CourseRosterChangesInfo {
   /// The `course_id` of the course to subscribe to roster changes for.
   core.String? courseId;
 
-  CourseRosterChangesInfo();
+  CourseRosterChangesInfo({
+    this.courseId,
+  });
 
-  CourseRosterChangesInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('courseId')) {
-      courseId = _json['courseId'] as core.String;
-    }
-  }
+  CourseRosterChangesInfo.fromJson(core.Map _json)
+      : this(
+          courseId: _json.containsKey('courseId')
+              ? _json['courseId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (courseId != null) 'courseId': courseId!,
@@ -4433,87 +4486,107 @@ class CourseWork {
   /// - "MULTIPLE_CHOICE_QUESTION" : A multiple-choice question.
   core.String? workType;
 
-  CourseWork();
+  CourseWork({
+    this.alternateLink,
+    this.assigneeMode,
+    this.assignment,
+    this.associatedWithDeveloper,
+    this.courseId,
+    this.creationTime,
+    this.creatorUserId,
+    this.description,
+    this.dueDate,
+    this.dueTime,
+    this.id,
+    this.individualStudentsOptions,
+    this.materials,
+    this.maxPoints,
+    this.multipleChoiceQuestion,
+    this.scheduledTime,
+    this.state,
+    this.submissionModificationMode,
+    this.title,
+    this.topicId,
+    this.updateTime,
+    this.workType,
+  });
 
-  CourseWork.fromJson(core.Map _json) {
-    if (_json.containsKey('alternateLink')) {
-      alternateLink = _json['alternateLink'] as core.String;
-    }
-    if (_json.containsKey('assigneeMode')) {
-      assigneeMode = _json['assigneeMode'] as core.String;
-    }
-    if (_json.containsKey('assignment')) {
-      assignment = Assignment.fromJson(
-          _json['assignment'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('associatedWithDeveloper')) {
-      associatedWithDeveloper = _json['associatedWithDeveloper'] as core.bool;
-    }
-    if (_json.containsKey('courseId')) {
-      courseId = _json['courseId'] as core.String;
-    }
-    if (_json.containsKey('creationTime')) {
-      creationTime = _json['creationTime'] as core.String;
-    }
-    if (_json.containsKey('creatorUserId')) {
-      creatorUserId = _json['creatorUserId'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('dueDate')) {
-      dueDate = Date.fromJson(
-          _json['dueDate'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('dueTime')) {
-      dueTime = TimeOfDay.fromJson(
-          _json['dueTime'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('individualStudentsOptions')) {
-      individualStudentsOptions = IndividualStudentsOptions.fromJson(
-          _json['individualStudentsOptions']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('materials')) {
-      materials = (_json['materials'] as core.List)
-          .map<Material>((value) =>
-              Material.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('maxPoints')) {
-      maxPoints = (_json['maxPoints'] as core.num).toDouble();
-    }
-    if (_json.containsKey('multipleChoiceQuestion')) {
-      multipleChoiceQuestion = MultipleChoiceQuestion.fromJson(
-          _json['multipleChoiceQuestion']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('scheduledTime')) {
-      scheduledTime = _json['scheduledTime'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('submissionModificationMode')) {
-      submissionModificationMode =
-          _json['submissionModificationMode'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-    if (_json.containsKey('topicId')) {
-      topicId = _json['topicId'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-    if (_json.containsKey('workType')) {
-      workType = _json['workType'] as core.String;
-    }
-  }
+  CourseWork.fromJson(core.Map _json)
+      : this(
+          alternateLink: _json.containsKey('alternateLink')
+              ? _json['alternateLink'] as core.String
+              : null,
+          assigneeMode: _json.containsKey('assigneeMode')
+              ? _json['assigneeMode'] as core.String
+              : null,
+          assignment: _json.containsKey('assignment')
+              ? Assignment.fromJson(
+                  _json['assignment'] as core.Map<core.String, core.dynamic>)
+              : null,
+          associatedWithDeveloper: _json.containsKey('associatedWithDeveloper')
+              ? _json['associatedWithDeveloper'] as core.bool
+              : null,
+          courseId: _json.containsKey('courseId')
+              ? _json['courseId'] as core.String
+              : null,
+          creationTime: _json.containsKey('creationTime')
+              ? _json['creationTime'] as core.String
+              : null,
+          creatorUserId: _json.containsKey('creatorUserId')
+              ? _json['creatorUserId'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          dueDate: _json.containsKey('dueDate')
+              ? Date.fromJson(
+                  _json['dueDate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          dueTime: _json.containsKey('dueTime')
+              ? TimeOfDay.fromJson(
+                  _json['dueTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          individualStudentsOptions:
+              _json.containsKey('individualStudentsOptions')
+                  ? IndividualStudentsOptions.fromJson(
+                      _json['individualStudentsOptions']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          materials: _json.containsKey('materials')
+              ? (_json['materials'] as core.List)
+                  .map<Material>((value) => Material.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          maxPoints: _json.containsKey('maxPoints')
+              ? (_json['maxPoints'] as core.num).toDouble()
+              : null,
+          multipleChoiceQuestion: _json.containsKey('multipleChoiceQuestion')
+              ? MultipleChoiceQuestion.fromJson(_json['multipleChoiceQuestion']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          scheduledTime: _json.containsKey('scheduledTime')
+              ? _json['scheduledTime'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          submissionModificationMode:
+              _json.containsKey('submissionModificationMode')
+                  ? _json['submissionModificationMode'] as core.String
+                  : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+          topicId: _json.containsKey('topicId')
+              ? _json['topicId'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+          workType: _json.containsKey('workType')
+              ? _json['workType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alternateLink != null) 'alternateLink': alternateLink!,
@@ -4551,13 +4624,16 @@ class CourseWorkChangesInfo {
   /// The `course_id` of the course to subscribe to work changes for.
   core.String? courseId;
 
-  CourseWorkChangesInfo();
+  CourseWorkChangesInfo({
+    this.courseId,
+  });
 
-  CourseWorkChangesInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('courseId')) {
-      courseId = _json['courseId'] as core.String;
-    }
-  }
+  CourseWorkChangesInfo.fromJson(core.Map _json)
+      : this(
+          courseId: _json.containsKey('courseId')
+              ? _json['courseId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (courseId != null) 'courseId': courseId!,
@@ -4658,57 +4734,70 @@ class CourseWorkMaterial {
   /// Read-only.
   core.String? updateTime;
 
-  CourseWorkMaterial();
+  CourseWorkMaterial({
+    this.alternateLink,
+    this.assigneeMode,
+    this.courseId,
+    this.creationTime,
+    this.creatorUserId,
+    this.description,
+    this.id,
+    this.individualStudentsOptions,
+    this.materials,
+    this.scheduledTime,
+    this.state,
+    this.title,
+    this.topicId,
+    this.updateTime,
+  });
 
-  CourseWorkMaterial.fromJson(core.Map _json) {
-    if (_json.containsKey('alternateLink')) {
-      alternateLink = _json['alternateLink'] as core.String;
-    }
-    if (_json.containsKey('assigneeMode')) {
-      assigneeMode = _json['assigneeMode'] as core.String;
-    }
-    if (_json.containsKey('courseId')) {
-      courseId = _json['courseId'] as core.String;
-    }
-    if (_json.containsKey('creationTime')) {
-      creationTime = _json['creationTime'] as core.String;
-    }
-    if (_json.containsKey('creatorUserId')) {
-      creatorUserId = _json['creatorUserId'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('individualStudentsOptions')) {
-      individualStudentsOptions = IndividualStudentsOptions.fromJson(
-          _json['individualStudentsOptions']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('materials')) {
-      materials = (_json['materials'] as core.List)
-          .map<Material>((value) =>
-              Material.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('scheduledTime')) {
-      scheduledTime = _json['scheduledTime'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-    if (_json.containsKey('topicId')) {
-      topicId = _json['topicId'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  CourseWorkMaterial.fromJson(core.Map _json)
+      : this(
+          alternateLink: _json.containsKey('alternateLink')
+              ? _json['alternateLink'] as core.String
+              : null,
+          assigneeMode: _json.containsKey('assigneeMode')
+              ? _json['assigneeMode'] as core.String
+              : null,
+          courseId: _json.containsKey('courseId')
+              ? _json['courseId'] as core.String
+              : null,
+          creationTime: _json.containsKey('creationTime')
+              ? _json['creationTime'] as core.String
+              : null,
+          creatorUserId: _json.containsKey('creatorUserId')
+              ? _json['creatorUserId'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          individualStudentsOptions:
+              _json.containsKey('individualStudentsOptions')
+                  ? IndividualStudentsOptions.fromJson(
+                      _json['individualStudentsOptions']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          materials: _json.containsKey('materials')
+              ? (_json['materials'] as core.List)
+                  .map<Material>((value) => Material.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          scheduledTime: _json.containsKey('scheduledTime')
+              ? _json['scheduledTime'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+          topicId: _json.containsKey('topicId')
+              ? _json['topicId'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alternateLink != null) 'alternateLink': alternateLink!,
@@ -4756,19 +4845,18 @@ class Date {
   /// Must be from 1 to 9999, or 0 to specify a date without a year.
   core.int? year;
 
-  Date();
+  Date({
+    this.day,
+    this.month,
+    this.year,
+  });
 
-  Date.fromJson(core.Map _json) {
-    if (_json.containsKey('day')) {
-      day = _json['day'] as core.int;
-    }
-    if (_json.containsKey('month')) {
-      month = _json['month'] as core.int;
-    }
-    if (_json.containsKey('year')) {
-      year = _json['year'] as core.int;
-    }
-  }
+  Date.fromJson(core.Map _json)
+      : this(
+          day: _json.containsKey('day') ? _json['day'] as core.int : null,
+          month: _json.containsKey('month') ? _json['month'] as core.int : null,
+          year: _json.containsKey('year') ? _json['year'] as core.int : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (day != null) 'day': day!,
@@ -4797,22 +4885,25 @@ class DriveFile {
   /// Read-only.
   core.String? title;
 
-  DriveFile();
+  DriveFile({
+    this.alternateLink,
+    this.id,
+    this.thumbnailUrl,
+    this.title,
+  });
 
-  DriveFile.fromJson(core.Map _json) {
-    if (_json.containsKey('alternateLink')) {
-      alternateLink = _json['alternateLink'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('thumbnailUrl')) {
-      thumbnailUrl = _json['thumbnailUrl'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  DriveFile.fromJson(core.Map _json)
+      : this(
+          alternateLink: _json.containsKey('alternateLink')
+              ? _json['alternateLink'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          thumbnailUrl: _json.containsKey('thumbnailUrl')
+              ? _json['thumbnailUrl'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alternateLink != null) 'alternateLink': alternateLink!,
@@ -4837,19 +4928,21 @@ class DriveFolder {
   /// Read-only.
   core.String? title;
 
-  DriveFolder();
+  DriveFolder({
+    this.alternateLink,
+    this.id,
+    this.title,
+  });
 
-  DriveFolder.fromJson(core.Map _json) {
-    if (_json.containsKey('alternateLink')) {
-      alternateLink = _json['alternateLink'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  DriveFolder.fromJson(core.Map _json)
+      : this(
+          alternateLink: _json.containsKey('alternateLink')
+              ? _json['alternateLink'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alternateLink != null) 'alternateLink': alternateLink!,
@@ -4911,23 +5004,27 @@ class Feed {
   /// modification).
   core.String? feedType;
 
-  Feed();
+  Feed({
+    this.courseRosterChangesInfo,
+    this.courseWorkChangesInfo,
+    this.feedType,
+  });
 
-  Feed.fromJson(core.Map _json) {
-    if (_json.containsKey('courseRosterChangesInfo')) {
-      courseRosterChangesInfo = CourseRosterChangesInfo.fromJson(
-          _json['courseRosterChangesInfo']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('courseWorkChangesInfo')) {
-      courseWorkChangesInfo = CourseWorkChangesInfo.fromJson(
-          _json['courseWorkChangesInfo']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('feedType')) {
-      feedType = _json['feedType'] as core.String;
-    }
-  }
+  Feed.fromJson(core.Map _json)
+      : this(
+          courseRosterChangesInfo: _json.containsKey('courseRosterChangesInfo')
+              ? CourseRosterChangesInfo.fromJson(
+                  _json['courseRosterChangesInfo']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          courseWorkChangesInfo: _json.containsKey('courseWorkChangesInfo')
+              ? CourseWorkChangesInfo.fromJson(_json['courseWorkChangesInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          feedType: _json.containsKey('feedType')
+              ? _json['feedType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (courseRosterChangesInfo != null)
@@ -4959,22 +5056,27 @@ class Form {
   /// Read-only.
   core.String? title;
 
-  Form();
+  Form({
+    this.formUrl,
+    this.responseUrl,
+    this.thumbnailUrl,
+    this.title,
+  });
 
-  Form.fromJson(core.Map _json) {
-    if (_json.containsKey('formUrl')) {
-      formUrl = _json['formUrl'] as core.String;
-    }
-    if (_json.containsKey('responseUrl')) {
-      responseUrl = _json['responseUrl'] as core.String;
-    }
-    if (_json.containsKey('thumbnailUrl')) {
-      thumbnailUrl = _json['thumbnailUrl'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  Form.fromJson(core.Map _json)
+      : this(
+          formUrl: _json.containsKey('formUrl')
+              ? _json['formUrl'] as core.String
+              : null,
+          responseUrl: _json.containsKey('responseUrl')
+              ? _json['responseUrl'] as core.String
+              : null,
+          thumbnailUrl: _json.containsKey('thumbnailUrl')
+              ? _json['thumbnailUrl'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (formUrl != null) 'formUrl': formUrl!,
@@ -4993,13 +5095,16 @@ class GlobalPermission {
   /// - "CREATE_COURSE" : User is permitted to create a course.
   core.String? permission;
 
-  GlobalPermission();
+  GlobalPermission({
+    this.permission,
+  });
 
-  GlobalPermission.fromJson(core.Map _json) {
-    if (_json.containsKey('permission')) {
-      permission = _json['permission'] as core.String;
-    }
-  }
+  GlobalPermission.fromJson(core.Map _json)
+      : this(
+          permission: _json.containsKey('permission')
+              ? _json['permission'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permission != null) 'permission': permission!,
@@ -5031,25 +5136,32 @@ class GradeHistory {
   /// The numerator of the grade at this time in the submission grade history.
   core.double? pointsEarned;
 
-  GradeHistory();
+  GradeHistory({
+    this.actorUserId,
+    this.gradeChangeType,
+    this.gradeTimestamp,
+    this.maxPoints,
+    this.pointsEarned,
+  });
 
-  GradeHistory.fromJson(core.Map _json) {
-    if (_json.containsKey('actorUserId')) {
-      actorUserId = _json['actorUserId'] as core.String;
-    }
-    if (_json.containsKey('gradeChangeType')) {
-      gradeChangeType = _json['gradeChangeType'] as core.String;
-    }
-    if (_json.containsKey('gradeTimestamp')) {
-      gradeTimestamp = _json['gradeTimestamp'] as core.String;
-    }
-    if (_json.containsKey('maxPoints')) {
-      maxPoints = (_json['maxPoints'] as core.num).toDouble();
-    }
-    if (_json.containsKey('pointsEarned')) {
-      pointsEarned = (_json['pointsEarned'] as core.num).toDouble();
-    }
-  }
+  GradeHistory.fromJson(core.Map _json)
+      : this(
+          actorUserId: _json.containsKey('actorUserId')
+              ? _json['actorUserId'] as core.String
+              : null,
+          gradeChangeType: _json.containsKey('gradeChangeType')
+              ? _json['gradeChangeType'] as core.String
+              : null,
+          gradeTimestamp: _json.containsKey('gradeTimestamp')
+              ? _json['gradeTimestamp'] as core.String
+              : null,
+          maxPoints: _json.containsKey('maxPoints')
+              ? (_json['maxPoints'] as core.num).toDouble()
+              : null,
+          pointsEarned: _json.containsKey('pointsEarned')
+              ? (_json['pointsEarned'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (actorUserId != null) 'actorUserId': actorUserId!,
@@ -5078,23 +5190,29 @@ class Guardian {
   /// Identifier for the student to whom the guardian relationship applies.
   core.String? studentId;
 
-  Guardian();
+  Guardian({
+    this.guardianId,
+    this.guardianProfile,
+    this.invitedEmailAddress,
+    this.studentId,
+  });
 
-  Guardian.fromJson(core.Map _json) {
-    if (_json.containsKey('guardianId')) {
-      guardianId = _json['guardianId'] as core.String;
-    }
-    if (_json.containsKey('guardianProfile')) {
-      guardianProfile = UserProfile.fromJson(
-          _json['guardianProfile'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('invitedEmailAddress')) {
-      invitedEmailAddress = _json['invitedEmailAddress'] as core.String;
-    }
-    if (_json.containsKey('studentId')) {
-      studentId = _json['studentId'] as core.String;
-    }
-  }
+  Guardian.fromJson(core.Map _json)
+      : this(
+          guardianId: _json.containsKey('guardianId')
+              ? _json['guardianId'] as core.String
+              : null,
+          guardianProfile: _json.containsKey('guardianProfile')
+              ? UserProfile.fromJson(_json['guardianProfile']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          invitedEmailAddress: _json.containsKey('invitedEmailAddress')
+              ? _json['invitedEmailAddress'] as core.String
+              : null,
+          studentId: _json.containsKey('studentId')
+              ? _json['studentId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (guardianId != null) 'guardianId': guardianId!,
@@ -5135,25 +5253,31 @@ class GuardianInvitation {
   /// ID of the student (in standard format)
   core.String? studentId;
 
-  GuardianInvitation();
+  GuardianInvitation({
+    this.creationTime,
+    this.invitationId,
+    this.invitedEmailAddress,
+    this.state,
+    this.studentId,
+  });
 
-  GuardianInvitation.fromJson(core.Map _json) {
-    if (_json.containsKey('creationTime')) {
-      creationTime = _json['creationTime'] as core.String;
-    }
-    if (_json.containsKey('invitationId')) {
-      invitationId = _json['invitationId'] as core.String;
-    }
-    if (_json.containsKey('invitedEmailAddress')) {
-      invitedEmailAddress = _json['invitedEmailAddress'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('studentId')) {
-      studentId = _json['studentId'] as core.String;
-    }
-  }
+  GuardianInvitation.fromJson(core.Map _json)
+      : this(
+          creationTime: _json.containsKey('creationTime')
+              ? _json['creationTime'] as core.String
+              : null,
+          invitationId: _json.containsKey('invitationId')
+              ? _json['invitationId'] as core.String
+              : null,
+          invitedEmailAddress: _json.containsKey('invitedEmailAddress')
+              ? _json['invitedEmailAddress'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          studentId: _json.containsKey('studentId')
+              ? _json['studentId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (creationTime != null) 'creationTime': creationTime!,
@@ -5173,15 +5297,18 @@ class IndividualStudentsOptions {
   /// coursework/announcement.
   core.List<core.String>? studentIds;
 
-  IndividualStudentsOptions();
+  IndividualStudentsOptions({
+    this.studentIds,
+  });
 
-  IndividualStudentsOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('studentIds')) {
-      studentIds = (_json['studentIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  IndividualStudentsOptions.fromJson(core.Map _json)
+      : this(
+          studentIds: _json.containsKey('studentIds')
+              ? (_json['studentIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (studentIds != null) 'studentIds': studentIds!,
@@ -5216,22 +5343,24 @@ class Invitation {
   /// user
   core.String? userId;
 
-  Invitation();
+  Invitation({
+    this.courseId,
+    this.id,
+    this.role,
+    this.userId,
+  });
 
-  Invitation.fromJson(core.Map _json) {
-    if (_json.containsKey('courseId')) {
-      courseId = _json['courseId'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('role')) {
-      role = _json['role'] as core.String;
-    }
-    if (_json.containsKey('userId')) {
-      userId = _json['userId'] as core.String;
-    }
-  }
+  Invitation.fromJson(core.Map _json)
+      : this(
+          courseId: _json.containsKey('courseId')
+              ? _json['courseId'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+          userId: _json.containsKey('userId')
+              ? _json['userId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (courseId != null) 'courseId': courseId!,
@@ -5259,19 +5388,21 @@ class Link {
   /// characters.
   core.String? url;
 
-  Link();
+  Link({
+    this.thumbnailUrl,
+    this.title,
+    this.url,
+  });
 
-  Link.fromJson(core.Map _json) {
-    if (_json.containsKey('thumbnailUrl')) {
-      thumbnailUrl = _json['thumbnailUrl'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  Link.fromJson(core.Map _json)
+      : this(
+          thumbnailUrl: _json.containsKey('thumbnailUrl')
+              ? _json['thumbnailUrl'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl!,
@@ -5290,19 +5421,23 @@ class ListAnnouncementsResponse {
   /// If empty, no further results are available.
   core.String? nextPageToken;
 
-  ListAnnouncementsResponse();
+  ListAnnouncementsResponse({
+    this.announcements,
+    this.nextPageToken,
+  });
 
-  ListAnnouncementsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('announcements')) {
-      announcements = (_json['announcements'] as core.List)
-          .map<Announcement>((value) => Announcement.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListAnnouncementsResponse.fromJson(core.Map _json)
+      : this(
+          announcements: _json.containsKey('announcements')
+              ? (_json['announcements'] as core.List)
+                  .map<Announcement>((value) => Announcement.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (announcements != null)
@@ -5322,19 +5457,23 @@ class ListCourseAliasesResponse {
   /// If empty, no further results are available.
   core.String? nextPageToken;
 
-  ListCourseAliasesResponse();
+  ListCourseAliasesResponse({
+    this.aliases,
+    this.nextPageToken,
+  });
 
-  ListCourseAliasesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('aliases')) {
-      aliases = (_json['aliases'] as core.List)
-          .map<CourseAlias>((value) => CourseAlias.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListCourseAliasesResponse.fromJson(core.Map _json)
+      : this(
+          aliases: _json.containsKey('aliases')
+              ? (_json['aliases'] as core.List)
+                  .map<CourseAlias>((value) => CourseAlias.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (aliases != null)
@@ -5353,19 +5492,24 @@ class ListCourseWorkMaterialResponse {
   /// If empty, no further results are available.
   core.String? nextPageToken;
 
-  ListCourseWorkMaterialResponse();
+  ListCourseWorkMaterialResponse({
+    this.courseWorkMaterial,
+    this.nextPageToken,
+  });
 
-  ListCourseWorkMaterialResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('courseWorkMaterial')) {
-      courseWorkMaterial = (_json['courseWorkMaterial'] as core.List)
-          .map<CourseWorkMaterial>((value) => CourseWorkMaterial.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListCourseWorkMaterialResponse.fromJson(core.Map _json)
+      : this(
+          courseWorkMaterial: _json.containsKey('courseWorkMaterial')
+              ? (_json['courseWorkMaterial'] as core.List)
+                  .map<CourseWorkMaterial>((value) =>
+                      CourseWorkMaterial.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (courseWorkMaterial != null)
@@ -5385,19 +5529,23 @@ class ListCourseWorkResponse {
   /// If empty, no further results are available.
   core.String? nextPageToken;
 
-  ListCourseWorkResponse();
+  ListCourseWorkResponse({
+    this.courseWork,
+    this.nextPageToken,
+  });
 
-  ListCourseWorkResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('courseWork')) {
-      courseWork = (_json['courseWork'] as core.List)
-          .map<CourseWork>((value) =>
-              CourseWork.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListCourseWorkResponse.fromJson(core.Map _json)
+      : this(
+          courseWork: _json.containsKey('courseWork')
+              ? (_json['courseWork'] as core.List)
+                  .map<CourseWork>((value) => CourseWork.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (courseWork != null)
@@ -5416,19 +5564,23 @@ class ListCoursesResponse {
   /// If empty, no further results are available.
   core.String? nextPageToken;
 
-  ListCoursesResponse();
+  ListCoursesResponse({
+    this.courses,
+    this.nextPageToken,
+  });
 
-  ListCoursesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('courses')) {
-      courses = (_json['courses'] as core.List)
-          .map<Course>((value) =>
-              Course.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListCoursesResponse.fromJson(core.Map _json)
+      : this(
+          courses: _json.containsKey('courses')
+              ? (_json['courses'] as core.List)
+                  .map<Course>((value) => Course.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (courses != null)
@@ -5447,19 +5599,24 @@ class ListGuardianInvitationsResponse {
   /// If empty, no further results are available.
   core.String? nextPageToken;
 
-  ListGuardianInvitationsResponse();
+  ListGuardianInvitationsResponse({
+    this.guardianInvitations,
+    this.nextPageToken,
+  });
 
-  ListGuardianInvitationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('guardianInvitations')) {
-      guardianInvitations = (_json['guardianInvitations'] as core.List)
-          .map<GuardianInvitation>((value) => GuardianInvitation.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListGuardianInvitationsResponse.fromJson(core.Map _json)
+      : this(
+          guardianInvitations: _json.containsKey('guardianInvitations')
+              ? (_json['guardianInvitations'] as core.List)
+                  .map<GuardianInvitation>((value) =>
+                      GuardianInvitation.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (guardianInvitations != null)
@@ -5480,19 +5637,23 @@ class ListGuardiansResponse {
   /// If empty, no further results are available.
   core.String? nextPageToken;
 
-  ListGuardiansResponse();
+  ListGuardiansResponse({
+    this.guardians,
+    this.nextPageToken,
+  });
 
-  ListGuardiansResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('guardians')) {
-      guardians = (_json['guardians'] as core.List)
-          .map<Guardian>((value) =>
-              Guardian.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListGuardiansResponse.fromJson(core.Map _json)
+      : this(
+          guardians: _json.containsKey('guardians')
+              ? (_json['guardians'] as core.List)
+                  .map<Guardian>((value) => Guardian.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (guardians != null)
@@ -5511,19 +5672,23 @@ class ListInvitationsResponse {
   /// If empty, no further results are available.
   core.String? nextPageToken;
 
-  ListInvitationsResponse();
+  ListInvitationsResponse({
+    this.invitations,
+    this.nextPageToken,
+  });
 
-  ListInvitationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('invitations')) {
-      invitations = (_json['invitations'] as core.List)
-          .map<Invitation>((value) =>
-              Invitation.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListInvitationsResponse.fromJson(core.Map _json)
+      : this(
+          invitations: _json.containsKey('invitations')
+              ? (_json['invitations'] as core.List)
+                  .map<Invitation>((value) => Invitation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (invitations != null)
@@ -5542,19 +5707,23 @@ class ListStudentSubmissionsResponse {
   /// Student work that matches the request.
   core.List<StudentSubmission>? studentSubmissions;
 
-  ListStudentSubmissionsResponse();
+  ListStudentSubmissionsResponse({
+    this.nextPageToken,
+    this.studentSubmissions,
+  });
 
-  ListStudentSubmissionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('studentSubmissions')) {
-      studentSubmissions = (_json['studentSubmissions'] as core.List)
-          .map<StudentSubmission>((value) => StudentSubmission.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListStudentSubmissionsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          studentSubmissions: _json.containsKey('studentSubmissions')
+              ? (_json['studentSubmissions'] as core.List)
+                  .map<StudentSubmission>((value) => StudentSubmission.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -5574,19 +5743,23 @@ class ListStudentsResponse {
   /// Students who match the list request.
   core.List<Student>? students;
 
-  ListStudentsResponse();
+  ListStudentsResponse({
+    this.nextPageToken,
+    this.students,
+  });
 
-  ListStudentsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('students')) {
-      students = (_json['students'] as core.List)
-          .map<Student>((value) =>
-              Student.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListStudentsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          students: _json.containsKey('students')
+              ? (_json['students'] as core.List)
+                  .map<Student>((value) => Student.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -5605,19 +5778,23 @@ class ListTeachersResponse {
   /// Teachers who match the list request.
   core.List<Teacher>? teachers;
 
-  ListTeachersResponse();
+  ListTeachersResponse({
+    this.nextPageToken,
+    this.teachers,
+  });
 
-  ListTeachersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('teachers')) {
-      teachers = (_json['teachers'] as core.List)
-          .map<Teacher>((value) =>
-              Teacher.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListTeachersResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          teachers: _json.containsKey('teachers')
+              ? (_json['teachers'] as core.List)
+                  .map<Teacher>((value) => Teacher.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -5636,19 +5813,23 @@ class ListTopicResponse {
   /// Topic items that match the request.
   core.List<Topic>? topic;
 
-  ListTopicResponse();
+  ListTopicResponse({
+    this.nextPageToken,
+    this.topic,
+  });
 
-  ListTopicResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('topic')) {
-      topic = (_json['topic'] as core.List)
-          .map<Topic>((value) =>
-              Topic.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListTopicResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          topic: _json.containsKey('topic')
+              ? (_json['topic'] as core.List)
+                  .map<Topic>((value) => Topic.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -5676,26 +5857,32 @@ class Material {
   /// YouTube video material.
   YouTubeVideo? youtubeVideo;
 
-  Material();
+  Material({
+    this.driveFile,
+    this.form,
+    this.link,
+    this.youtubeVideo,
+  });
 
-  Material.fromJson(core.Map _json) {
-    if (_json.containsKey('driveFile')) {
-      driveFile = SharedDriveFile.fromJson(
-          _json['driveFile'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('form')) {
-      form =
-          Form.fromJson(_json['form'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('link')) {
-      link =
-          Link.fromJson(_json['link'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('youtubeVideo')) {
-      youtubeVideo = YouTubeVideo.fromJson(
-          _json['youtubeVideo'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Material.fromJson(core.Map _json)
+      : this(
+          driveFile: _json.containsKey('driveFile')
+              ? SharedDriveFile.fromJson(
+                  _json['driveFile'] as core.Map<core.String, core.dynamic>)
+              : null,
+          form: _json.containsKey('form')
+              ? Form.fromJson(
+                  _json['form'] as core.Map<core.String, core.dynamic>)
+              : null,
+          link: _json.containsKey('link')
+              ? Link.fromJson(
+                  _json['link'] as core.Map<core.String, core.dynamic>)
+              : null,
+          youtubeVideo: _json.containsKey('youtubeVideo')
+              ? YouTubeVideo.fromJson(
+                  _json['youtubeVideo'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (driveFile != null) 'driveFile': driveFile!.toJson(),
@@ -5721,19 +5908,23 @@ class ModifyAnnouncementAssigneesRequest {
   /// Must be specified only when `assigneeMode` is `INDIVIDUAL_STUDENTS`.
   ModifyIndividualStudentsOptions? modifyIndividualStudentsOptions;
 
-  ModifyAnnouncementAssigneesRequest();
+  ModifyAnnouncementAssigneesRequest({
+    this.assigneeMode,
+    this.modifyIndividualStudentsOptions,
+  });
 
-  ModifyAnnouncementAssigneesRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('assigneeMode')) {
-      assigneeMode = _json['assigneeMode'] as core.String;
-    }
-    if (_json.containsKey('modifyIndividualStudentsOptions')) {
-      modifyIndividualStudentsOptions =
-          ModifyIndividualStudentsOptions.fromJson(
-              _json['modifyIndividualStudentsOptions']
-                  as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ModifyAnnouncementAssigneesRequest.fromJson(core.Map _json)
+      : this(
+          assigneeMode: _json.containsKey('assigneeMode')
+              ? _json['assigneeMode'] as core.String
+              : null,
+          modifyIndividualStudentsOptions:
+              _json.containsKey('modifyIndividualStudentsOptions')
+                  ? ModifyIndividualStudentsOptions.fromJson(
+                      _json['modifyIndividualStudentsOptions']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assigneeMode != null) 'assigneeMode': assigneeMode!,
@@ -5751,16 +5942,19 @@ class ModifyAttachmentsRequest {
   /// attachments are not supported.
   core.List<Attachment>? addAttachments;
 
-  ModifyAttachmentsRequest();
+  ModifyAttachmentsRequest({
+    this.addAttachments,
+  });
 
-  ModifyAttachmentsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('addAttachments')) {
-      addAttachments = (_json['addAttachments'] as core.List)
-          .map<Attachment>((value) =>
-              Attachment.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ModifyAttachmentsRequest.fromJson(core.Map _json)
+      : this(
+          addAttachments: _json.containsKey('addAttachments')
+              ? (_json['addAttachments'] as core.List)
+                  .map<Attachment>((value) => Attachment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (addAttachments != null)
@@ -5785,19 +5979,23 @@ class ModifyCourseWorkAssigneesRequest {
   /// Must be specified only when `assigneeMode` is `INDIVIDUAL_STUDENTS`.
   ModifyIndividualStudentsOptions? modifyIndividualStudentsOptions;
 
-  ModifyCourseWorkAssigneesRequest();
+  ModifyCourseWorkAssigneesRequest({
+    this.assigneeMode,
+    this.modifyIndividualStudentsOptions,
+  });
 
-  ModifyCourseWorkAssigneesRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('assigneeMode')) {
-      assigneeMode = _json['assigneeMode'] as core.String;
-    }
-    if (_json.containsKey('modifyIndividualStudentsOptions')) {
-      modifyIndividualStudentsOptions =
-          ModifyIndividualStudentsOptions.fromJson(
-              _json['modifyIndividualStudentsOptions']
-                  as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ModifyCourseWorkAssigneesRequest.fromJson(core.Map _json)
+      : this(
+          assigneeMode: _json.containsKey('assigneeMode')
+              ? _json['assigneeMode'] as core.String
+              : null,
+          modifyIndividualStudentsOptions:
+              _json.containsKey('modifyIndividualStudentsOptions')
+                  ? ModifyIndividualStudentsOptions.fromJson(
+                      _json['modifyIndividualStudentsOptions']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assigneeMode != null) 'assigneeMode': assigneeMode!,
@@ -5818,20 +6016,24 @@ class ModifyIndividualStudentsOptions {
   /// coursework/announcement.
   core.List<core.String>? removeStudentIds;
 
-  ModifyIndividualStudentsOptions();
+  ModifyIndividualStudentsOptions({
+    this.addStudentIds,
+    this.removeStudentIds,
+  });
 
-  ModifyIndividualStudentsOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('addStudentIds')) {
-      addStudentIds = (_json['addStudentIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('removeStudentIds')) {
-      removeStudentIds = (_json['removeStudentIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  ModifyIndividualStudentsOptions.fromJson(core.Map _json)
+      : this(
+          addStudentIds: _json.containsKey('addStudentIds')
+              ? (_json['addStudentIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          removeStudentIds: _json.containsKey('removeStudentIds')
+              ? (_json['removeStudentIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (addStudentIds != null) 'addStudentIds': addStudentIds!,
@@ -5844,15 +6046,18 @@ class MultipleChoiceQuestion {
   /// Possible choices.
   core.List<core.String>? choices;
 
-  MultipleChoiceQuestion();
+  MultipleChoiceQuestion({
+    this.choices,
+  });
 
-  MultipleChoiceQuestion.fromJson(core.Map _json) {
-    if (_json.containsKey('choices')) {
-      choices = (_json['choices'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  MultipleChoiceQuestion.fromJson(core.Map _json)
+      : this(
+          choices: _json.containsKey('choices')
+              ? (_json['choices'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (choices != null) 'choices': choices!,
@@ -5864,13 +6069,16 @@ class MultipleChoiceSubmission {
   /// Student's select choice.
   core.String? answer;
 
-  MultipleChoiceSubmission();
+  MultipleChoiceSubmission({
+    this.answer,
+  });
 
-  MultipleChoiceSubmission.fromJson(core.Map _json) {
-    if (_json.containsKey('answer')) {
-      answer = _json['answer'] as core.String;
-    }
-  }
+  MultipleChoiceSubmission.fromJson(core.Map _json)
+      : this(
+          answer: _json.containsKey('answer')
+              ? _json['answer'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (answer != null) 'answer': answer!,
@@ -5895,19 +6103,24 @@ class Name {
   /// Read-only.
   core.String? givenName;
 
-  Name();
+  Name({
+    this.familyName,
+    this.fullName,
+    this.givenName,
+  });
 
-  Name.fromJson(core.Map _json) {
-    if (_json.containsKey('familyName')) {
-      familyName = _json['familyName'] as core.String;
-    }
-    if (_json.containsKey('fullName')) {
-      fullName = _json['fullName'] as core.String;
-    }
-    if (_json.containsKey('givenName')) {
-      givenName = _json['givenName'] as core.String;
-    }
-  }
+  Name.fromJson(core.Map _json)
+      : this(
+          familyName: _json.containsKey('familyName')
+              ? _json['familyName'] as core.String
+              : null,
+          fullName: _json.containsKey('fullName')
+              ? _json['fullName'] as core.String
+              : null,
+          givenName: _json.containsKey('givenName')
+              ? _json['givenName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (familyName != null) 'familyName': familyName!,
@@ -5947,24 +6160,30 @@ class Registration {
   /// Read-only.
   core.String? registrationId;
 
-  Registration();
+  Registration({
+    this.cloudPubsubTopic,
+    this.expiryTime,
+    this.feed,
+    this.registrationId,
+  });
 
-  Registration.fromJson(core.Map _json) {
-    if (_json.containsKey('cloudPubsubTopic')) {
-      cloudPubsubTopic = CloudPubsubTopic.fromJson(
-          _json['cloudPubsubTopic'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('expiryTime')) {
-      expiryTime = _json['expiryTime'] as core.String;
-    }
-    if (_json.containsKey('feed')) {
-      feed =
-          Feed.fromJson(_json['feed'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('registrationId')) {
-      registrationId = _json['registrationId'] as core.String;
-    }
-  }
+  Registration.fromJson(core.Map _json)
+      : this(
+          cloudPubsubTopic: _json.containsKey('cloudPubsubTopic')
+              ? CloudPubsubTopic.fromJson(_json['cloudPubsubTopic']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          expiryTime: _json.containsKey('expiryTime')
+              ? _json['expiryTime'] as core.String
+              : null,
+          feed: _json.containsKey('feed')
+              ? Feed.fromJson(
+                  _json['feed'] as core.Map<core.String, core.dynamic>)
+              : null,
+          registrationId: _json.containsKey('registrationId')
+              ? _json['registrationId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cloudPubsubTopic != null)
@@ -6000,17 +6219,21 @@ class SharedDriveFile {
   /// - "STUDENT_COPY" : Students have a personal copy of the shared file.
   core.String? shareMode;
 
-  SharedDriveFile();
+  SharedDriveFile({
+    this.driveFile,
+    this.shareMode,
+  });
 
-  SharedDriveFile.fromJson(core.Map _json) {
-    if (_json.containsKey('driveFile')) {
-      driveFile = DriveFile.fromJson(
-          _json['driveFile'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('shareMode')) {
-      shareMode = _json['shareMode'] as core.String;
-    }
-  }
+  SharedDriveFile.fromJson(core.Map _json)
+      : this(
+          driveFile: _json.containsKey('driveFile')
+              ? DriveFile.fromJson(
+                  _json['driveFile'] as core.Map<core.String, core.dynamic>)
+              : null,
+          shareMode: _json.containsKey('shareMode')
+              ? _json['shareMode'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (driveFile != null) 'driveFile': driveFile!.toJson(),
@@ -6023,13 +6246,16 @@ class ShortAnswerSubmission {
   /// Student response to a short-answer question.
   core.String? answer;
 
-  ShortAnswerSubmission();
+  ShortAnswerSubmission({
+    this.answer,
+  });
 
-  ShortAnswerSubmission.fromJson(core.Map _json) {
-    if (_json.containsKey('answer')) {
-      answer = _json['answer'] as core.String;
-    }
-  }
+  ShortAnswerSubmission.fromJson(core.Map _json)
+      : this(
+          answer: _json.containsKey('answer')
+              ? _json['answer'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (answer != null) 'answer': answer!,
@@ -6060,19 +6286,23 @@ class StateHistory {
   /// When the submission entered this state.
   core.String? stateTimestamp;
 
-  StateHistory();
+  StateHistory({
+    this.actorUserId,
+    this.state,
+    this.stateTimestamp,
+  });
 
-  StateHistory.fromJson(core.Map _json) {
-    if (_json.containsKey('actorUserId')) {
-      actorUserId = _json['actorUserId'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('stateTimestamp')) {
-      stateTimestamp = _json['stateTimestamp'] as core.String;
-    }
-  }
+  StateHistory.fromJson(core.Map _json)
+      : this(
+          actorUserId: _json.containsKey('actorUserId')
+              ? _json['actorUserId'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          stateTimestamp: _json.containsKey('stateTimestamp')
+              ? _json['stateTimestamp'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (actorUserId != null) 'actorUserId': actorUserId!,
@@ -6105,24 +6335,30 @@ class Student {
   /// of the user * the string literal `"me"`, indicating the requesting user
   core.String? userId;
 
-  Student();
+  Student({
+    this.courseId,
+    this.profile,
+    this.studentWorkFolder,
+    this.userId,
+  });
 
-  Student.fromJson(core.Map _json) {
-    if (_json.containsKey('courseId')) {
-      courseId = _json['courseId'] as core.String;
-    }
-    if (_json.containsKey('profile')) {
-      profile = UserProfile.fromJson(
-          _json['profile'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('studentWorkFolder')) {
-      studentWorkFolder = DriveFolder.fromJson(
-          _json['studentWorkFolder'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('userId')) {
-      userId = _json['userId'] as core.String;
-    }
-  }
+  Student.fromJson(core.Map _json)
+      : this(
+          courseId: _json.containsKey('courseId')
+              ? _json['courseId'] as core.String
+              : null,
+          profile: _json.containsKey('profile')
+              ? UserProfile.fromJson(
+                  _json['profile'] as core.Map<core.String, core.dynamic>)
+              : null,
+          studentWorkFolder: _json.containsKey('studentWorkFolder')
+              ? DriveFolder.fromJson(_json['studentWorkFolder']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          userId: _json.containsKey('userId')
+              ? _json['userId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (courseId != null) 'courseId': courseId!,
@@ -6240,69 +6476,83 @@ class StudentSubmission {
   /// Read-only.
   core.String? userId;
 
-  StudentSubmission();
+  StudentSubmission({
+    this.alternateLink,
+    this.assignedGrade,
+    this.assignmentSubmission,
+    this.associatedWithDeveloper,
+    this.courseId,
+    this.courseWorkId,
+    this.courseWorkType,
+    this.creationTime,
+    this.draftGrade,
+    this.id,
+    this.late,
+    this.multipleChoiceSubmission,
+    this.shortAnswerSubmission,
+    this.state,
+    this.submissionHistory,
+    this.updateTime,
+    this.userId,
+  });
 
-  StudentSubmission.fromJson(core.Map _json) {
-    if (_json.containsKey('alternateLink')) {
-      alternateLink = _json['alternateLink'] as core.String;
-    }
-    if (_json.containsKey('assignedGrade')) {
-      assignedGrade = (_json['assignedGrade'] as core.num).toDouble();
-    }
-    if (_json.containsKey('assignmentSubmission')) {
-      assignmentSubmission = AssignmentSubmission.fromJson(
-          _json['assignmentSubmission'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('associatedWithDeveloper')) {
-      associatedWithDeveloper = _json['associatedWithDeveloper'] as core.bool;
-    }
-    if (_json.containsKey('courseId')) {
-      courseId = _json['courseId'] as core.String;
-    }
-    if (_json.containsKey('courseWorkId')) {
-      courseWorkId = _json['courseWorkId'] as core.String;
-    }
-    if (_json.containsKey('courseWorkType')) {
-      courseWorkType = _json['courseWorkType'] as core.String;
-    }
-    if (_json.containsKey('creationTime')) {
-      creationTime = _json['creationTime'] as core.String;
-    }
-    if (_json.containsKey('draftGrade')) {
-      draftGrade = (_json['draftGrade'] as core.num).toDouble();
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('late')) {
-      late = _json['late'] as core.bool;
-    }
-    if (_json.containsKey('multipleChoiceSubmission')) {
-      multipleChoiceSubmission = MultipleChoiceSubmission.fromJson(
-          _json['multipleChoiceSubmission']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('shortAnswerSubmission')) {
-      shortAnswerSubmission = ShortAnswerSubmission.fromJson(
-          _json['shortAnswerSubmission']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('submissionHistory')) {
-      submissionHistory = (_json['submissionHistory'] as core.List)
-          .map<SubmissionHistory>((value) => SubmissionHistory.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-    if (_json.containsKey('userId')) {
-      userId = _json['userId'] as core.String;
-    }
-  }
+  StudentSubmission.fromJson(core.Map _json)
+      : this(
+          alternateLink: _json.containsKey('alternateLink')
+              ? _json['alternateLink'] as core.String
+              : null,
+          assignedGrade: _json.containsKey('assignedGrade')
+              ? (_json['assignedGrade'] as core.num).toDouble()
+              : null,
+          assignmentSubmission: _json.containsKey('assignmentSubmission')
+              ? AssignmentSubmission.fromJson(_json['assignmentSubmission']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          associatedWithDeveloper: _json.containsKey('associatedWithDeveloper')
+              ? _json['associatedWithDeveloper'] as core.bool
+              : null,
+          courseId: _json.containsKey('courseId')
+              ? _json['courseId'] as core.String
+              : null,
+          courseWorkId: _json.containsKey('courseWorkId')
+              ? _json['courseWorkId'] as core.String
+              : null,
+          courseWorkType: _json.containsKey('courseWorkType')
+              ? _json['courseWorkType'] as core.String
+              : null,
+          creationTime: _json.containsKey('creationTime')
+              ? _json['creationTime'] as core.String
+              : null,
+          draftGrade: _json.containsKey('draftGrade')
+              ? (_json['draftGrade'] as core.num).toDouble()
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          late: _json.containsKey('late') ? _json['late'] as core.bool : null,
+          multipleChoiceSubmission:
+              _json.containsKey('multipleChoiceSubmission')
+                  ? MultipleChoiceSubmission.fromJson(
+                      _json['multipleChoiceSubmission']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          shortAnswerSubmission: _json.containsKey('shortAnswerSubmission')
+              ? ShortAnswerSubmission.fromJson(_json['shortAnswerSubmission']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          submissionHistory: _json.containsKey('submissionHistory')
+              ? (_json['submissionHistory'] as core.List)
+                  .map<SubmissionHistory>((value) => SubmissionHistory.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+          userId: _json.containsKey('userId')
+              ? _json['userId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alternateLink != null) 'alternateLink': alternateLink!,
@@ -6341,18 +6591,22 @@ class SubmissionHistory {
   /// The state history information of the submission, if present.
   StateHistory? stateHistory;
 
-  SubmissionHistory();
+  SubmissionHistory({
+    this.gradeHistory,
+    this.stateHistory,
+  });
 
-  SubmissionHistory.fromJson(core.Map _json) {
-    if (_json.containsKey('gradeHistory')) {
-      gradeHistory = GradeHistory.fromJson(
-          _json['gradeHistory'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('stateHistory')) {
-      stateHistory = StateHistory.fromJson(
-          _json['stateHistory'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  SubmissionHistory.fromJson(core.Map _json)
+      : this(
+          gradeHistory: _json.containsKey('gradeHistory')
+              ? GradeHistory.fromJson(
+                  _json['gradeHistory'] as core.Map<core.String, core.dynamic>)
+              : null,
+          stateHistory: _json.containsKey('stateHistory')
+              ? StateHistory.fromJson(
+                  _json['stateHistory'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gradeHistory != null) 'gradeHistory': gradeHistory!.toJson(),
@@ -6379,20 +6633,25 @@ class Teacher {
   /// of the user * the string literal `"me"`, indicating the requesting user
   core.String? userId;
 
-  Teacher();
+  Teacher({
+    this.courseId,
+    this.profile,
+    this.userId,
+  });
 
-  Teacher.fromJson(core.Map _json) {
-    if (_json.containsKey('courseId')) {
-      courseId = _json['courseId'] as core.String;
-    }
-    if (_json.containsKey('profile')) {
-      profile = UserProfile.fromJson(
-          _json['profile'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('userId')) {
-      userId = _json['userId'] as core.String;
-    }
-  }
+  Teacher.fromJson(core.Map _json)
+      : this(
+          courseId: _json.containsKey('courseId')
+              ? _json['courseId'] as core.String
+              : null,
+          profile: _json.containsKey('profile')
+              ? UserProfile.fromJson(
+                  _json['profile'] as core.Map<core.String, core.dynamic>)
+              : null,
+          userId: _json.containsKey('userId')
+              ? _json['userId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (courseId != null) 'courseId': courseId!,
@@ -6429,22 +6688,24 @@ class TimeOfDay {
   /// leap-seconds.
   core.int? seconds;
 
-  TimeOfDay();
+  TimeOfDay({
+    this.hours,
+    this.minutes,
+    this.nanos,
+    this.seconds,
+  });
 
-  TimeOfDay.fromJson(core.Map _json) {
-    if (_json.containsKey('hours')) {
-      hours = _json['hours'] as core.int;
-    }
-    if (_json.containsKey('minutes')) {
-      minutes = _json['minutes'] as core.int;
-    }
-    if (_json.containsKey('nanos')) {
-      nanos = _json['nanos'] as core.int;
-    }
-    if (_json.containsKey('seconds')) {
-      seconds = _json['seconds'] as core.int;
-    }
-  }
+  TimeOfDay.fromJson(core.Map _json)
+      : this(
+          hours: _json.containsKey('hours') ? _json['hours'] as core.int : null,
+          minutes: _json.containsKey('minutes')
+              ? _json['minutes'] as core.int
+              : null,
+          nanos: _json.containsKey('nanos') ? _json['nanos'] as core.int : null,
+          seconds: _json.containsKey('seconds')
+              ? _json['seconds'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (hours != null) 'hours': hours!,
@@ -6479,22 +6740,26 @@ class Topic {
   /// Read-only.
   core.String? updateTime;
 
-  Topic();
+  Topic({
+    this.courseId,
+    this.name,
+    this.topicId,
+    this.updateTime,
+  });
 
-  Topic.fromJson(core.Map _json) {
-    if (_json.containsKey('courseId')) {
-      courseId = _json['courseId'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('topicId')) {
-      topicId = _json['topicId'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  Topic.fromJson(core.Map _json)
+      : this(
+          courseId: _json.containsKey('courseId')
+              ? _json['courseId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          topicId: _json.containsKey('topicId')
+              ? _json['topicId'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (courseId != null) 'courseId': courseId!,
@@ -6549,32 +6814,38 @@ class UserProfile {
   /// field is always false. Read-only
   core.bool? verifiedTeacher;
 
-  UserProfile();
+  UserProfile({
+    this.emailAddress,
+    this.id,
+    this.name,
+    this.permissions,
+    this.photoUrl,
+    this.verifiedTeacher,
+  });
 
-  UserProfile.fromJson(core.Map _json) {
-    if (_json.containsKey('emailAddress')) {
-      emailAddress = _json['emailAddress'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name =
-          Name.fromJson(_json['name'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List)
-          .map<GlobalPermission>((value) => GlobalPermission.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('photoUrl')) {
-      photoUrl = _json['photoUrl'] as core.String;
-    }
-    if (_json.containsKey('verifiedTeacher')) {
-      verifiedTeacher = _json['verifiedTeacher'] as core.bool;
-    }
-  }
+  UserProfile.fromJson(core.Map _json)
+      : this(
+          emailAddress: _json.containsKey('emailAddress')
+              ? _json['emailAddress'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          name: _json.containsKey('name')
+              ? Name.fromJson(
+                  _json['name'] as core.Map<core.String, core.dynamic>)
+              : null,
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map<GlobalPermission>((value) => GlobalPermission.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          photoUrl: _json.containsKey('photoUrl')
+              ? _json['photoUrl'] as core.String
+              : null,
+          verifiedTeacher: _json.containsKey('verifiedTeacher')
+              ? _json['verifiedTeacher'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (emailAddress != null) 'emailAddress': emailAddress!,
@@ -6607,22 +6878,25 @@ class YouTubeVideo {
   /// Read-only.
   core.String? title;
 
-  YouTubeVideo();
+  YouTubeVideo({
+    this.alternateLink,
+    this.id,
+    this.thumbnailUrl,
+    this.title,
+  });
 
-  YouTubeVideo.fromJson(core.Map _json) {
-    if (_json.containsKey('alternateLink')) {
-      alternateLink = _json['alternateLink'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('thumbnailUrl')) {
-      thumbnailUrl = _json['thumbnailUrl'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  YouTubeVideo.fromJson(core.Map _json)
+      : this(
+          alternateLink: _json.containsKey('alternateLink')
+              ? _json['alternateLink'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          thumbnailUrl: _json.containsKey('thumbnailUrl')
+              ? _json['thumbnailUrl'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alternateLink != null) 'alternateLink': alternateLink!,

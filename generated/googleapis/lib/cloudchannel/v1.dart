@@ -2529,13 +2529,16 @@ class GoogleCloudChannelV1ActivateEntitlementRequest {
   /// Optional.
   core.String? requestId;
 
-  GoogleCloudChannelV1ActivateEntitlementRequest();
+  GoogleCloudChannelV1ActivateEntitlementRequest({
+    this.requestId,
+  });
 
-  GoogleCloudChannelV1ActivateEntitlementRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('requestId')) {
-      requestId = _json['requestId'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1ActivateEntitlementRequest.fromJson(core.Map _json)
+      : this(
+          requestId: _json.containsKey('requestId')
+              ? _json['requestId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestId != null) 'requestId': requestId!,
@@ -2553,19 +2556,23 @@ class GoogleCloudChannelV1AdminUser {
   /// Given name of the admin user.
   core.String? givenName;
 
-  GoogleCloudChannelV1AdminUser();
+  GoogleCloudChannelV1AdminUser({
+    this.email,
+    this.familyName,
+    this.givenName,
+  });
 
-  GoogleCloudChannelV1AdminUser.fromJson(core.Map _json) {
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('familyName')) {
-      familyName = _json['familyName'] as core.String;
-    }
-    if (_json.containsKey('givenName')) {
-      givenName = _json['givenName'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1AdminUser.fromJson(core.Map _json)
+      : this(
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          familyName: _json.containsKey('familyName')
+              ? _json['familyName'] as core.String
+              : null,
+          givenName: _json.containsKey('givenName')
+              ? _json['givenName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
@@ -2579,13 +2586,16 @@ class GoogleCloudChannelV1AssociationInfo {
   /// The name of the base entitlement, for which this entitlement is an add-on.
   core.String? baseEntitlement;
 
-  GoogleCloudChannelV1AssociationInfo();
+  GoogleCloudChannelV1AssociationInfo({
+    this.baseEntitlement,
+  });
 
-  GoogleCloudChannelV1AssociationInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('baseEntitlement')) {
-      baseEntitlement = _json['baseEntitlement'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1AssociationInfo.fromJson(core.Map _json)
+      : this(
+          baseEntitlement: _json.containsKey('baseEntitlement')
+              ? _json['baseEntitlement'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (baseEntitlement != null) 'baseEntitlement': baseEntitlement!,
@@ -2607,13 +2617,16 @@ class GoogleCloudChannelV1CancelEntitlementRequest {
   /// Optional.
   core.String? requestId;
 
-  GoogleCloudChannelV1CancelEntitlementRequest();
+  GoogleCloudChannelV1CancelEntitlementRequest({
+    this.requestId,
+  });
 
-  GoogleCloudChannelV1CancelEntitlementRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('requestId')) {
-      requestId = _json['requestId'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1CancelEntitlementRequest.fromJson(core.Map _json)
+      : this(
+          requestId: _json.containsKey('requestId')
+              ? _json['requestId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestId != null) 'requestId': requestId!,
@@ -2652,26 +2665,31 @@ class GoogleCloudChannelV1ChangeOfferRequest {
   /// Optional.
   core.String? requestId;
 
-  GoogleCloudChannelV1ChangeOfferRequest();
+  GoogleCloudChannelV1ChangeOfferRequest({
+    this.offer,
+    this.parameters,
+    this.purchaseOrderId,
+    this.requestId,
+  });
 
-  GoogleCloudChannelV1ChangeOfferRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('offer')) {
-      offer = _json['offer'] as core.String;
-    }
-    if (_json.containsKey('parameters')) {
-      parameters = (_json['parameters'] as core.List)
-          .map<GoogleCloudChannelV1Parameter>((value) =>
-              GoogleCloudChannelV1Parameter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('purchaseOrderId')) {
-      purchaseOrderId = _json['purchaseOrderId'] as core.String;
-    }
-    if (_json.containsKey('requestId')) {
-      requestId = _json['requestId'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1ChangeOfferRequest.fromJson(core.Map _json)
+      : this(
+          offer:
+              _json.containsKey('offer') ? _json['offer'] as core.String : null,
+          parameters: _json.containsKey('parameters')
+              ? (_json['parameters'] as core.List)
+                  .map<GoogleCloudChannelV1Parameter>((value) =>
+                      GoogleCloudChannelV1Parameter.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          purchaseOrderId: _json.containsKey('purchaseOrderId')
+              ? _json['purchaseOrderId'] as core.String
+              : null,
+          requestId: _json.containsKey('requestId')
+              ? _json['requestId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (offer != null) 'offer': offer!,
@@ -2709,23 +2727,28 @@ class GoogleCloudChannelV1ChangeParametersRequest {
   /// Optional.
   core.String? requestId;
 
-  GoogleCloudChannelV1ChangeParametersRequest();
+  GoogleCloudChannelV1ChangeParametersRequest({
+    this.parameters,
+    this.purchaseOrderId,
+    this.requestId,
+  });
 
-  GoogleCloudChannelV1ChangeParametersRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('parameters')) {
-      parameters = (_json['parameters'] as core.List)
-          .map<GoogleCloudChannelV1Parameter>((value) =>
-              GoogleCloudChannelV1Parameter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('purchaseOrderId')) {
-      purchaseOrderId = _json['purchaseOrderId'] as core.String;
-    }
-    if (_json.containsKey('requestId')) {
-      requestId = _json['requestId'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1ChangeParametersRequest.fromJson(core.Map _json)
+      : this(
+          parameters: _json.containsKey('parameters')
+              ? (_json['parameters'] as core.List)
+                  .map<GoogleCloudChannelV1Parameter>((value) =>
+                      GoogleCloudChannelV1Parameter.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          purchaseOrderId: _json.containsKey('purchaseOrderId')
+              ? _json['purchaseOrderId'] as core.String
+              : null,
+          requestId: _json.containsKey('requestId')
+              ? _json['requestId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (parameters != null)
@@ -2755,17 +2778,22 @@ class GoogleCloudChannelV1ChangeRenewalSettingsRequest {
   /// Optional.
   core.String? requestId;
 
-  GoogleCloudChannelV1ChangeRenewalSettingsRequest();
+  GoogleCloudChannelV1ChangeRenewalSettingsRequest({
+    this.renewalSettings,
+    this.requestId,
+  });
 
-  GoogleCloudChannelV1ChangeRenewalSettingsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('renewalSettings')) {
-      renewalSettings = GoogleCloudChannelV1RenewalSettings.fromJson(
-          _json['renewalSettings'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('requestId')) {
-      requestId = _json['requestId'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1ChangeRenewalSettingsRequest.fromJson(core.Map _json)
+      : this(
+          renewalSettings: _json.containsKey('renewalSettings')
+              ? GoogleCloudChannelV1RenewalSettings.fromJson(
+                  _json['renewalSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          requestId: _json.containsKey('requestId')
+              ? _json['requestId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (renewalSettings != null)
@@ -2828,37 +2856,45 @@ class GoogleCloudChannelV1ChannelPartnerLink {
   /// Output only.
   core.String? updateTime;
 
-  GoogleCloudChannelV1ChannelPartnerLink();
+  GoogleCloudChannelV1ChannelPartnerLink({
+    this.channelPartnerCloudIdentityInfo,
+    this.createTime,
+    this.inviteLinkUri,
+    this.linkState,
+    this.name,
+    this.publicId,
+    this.resellerCloudIdentityId,
+    this.updateTime,
+  });
 
-  GoogleCloudChannelV1ChannelPartnerLink.fromJson(core.Map _json) {
-    if (_json.containsKey('channelPartnerCloudIdentityInfo')) {
-      channelPartnerCloudIdentityInfo =
-          GoogleCloudChannelV1CloudIdentityInfo.fromJson(
-              _json['channelPartnerCloudIdentityInfo']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('inviteLinkUri')) {
-      inviteLinkUri = _json['inviteLinkUri'] as core.String;
-    }
-    if (_json.containsKey('linkState')) {
-      linkState = _json['linkState'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('publicId')) {
-      publicId = _json['publicId'] as core.String;
-    }
-    if (_json.containsKey('resellerCloudIdentityId')) {
-      resellerCloudIdentityId = _json['resellerCloudIdentityId'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1ChannelPartnerLink.fromJson(core.Map _json)
+      : this(
+          channelPartnerCloudIdentityInfo:
+              _json.containsKey('channelPartnerCloudIdentityInfo')
+                  ? GoogleCloudChannelV1CloudIdentityInfo.fromJson(
+                      _json['channelPartnerCloudIdentityInfo']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          inviteLinkUri: _json.containsKey('inviteLinkUri')
+              ? _json['inviteLinkUri'] as core.String
+              : null,
+          linkState: _json.containsKey('linkState')
+              ? _json['linkState'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          publicId: _json.containsKey('publicId')
+              ? _json['publicId'] as core.String
+              : null,
+          resellerCloudIdentityId: _json.containsKey('resellerCloudIdentityId')
+              ? _json['resellerCloudIdentityId'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channelPartnerCloudIdentityInfo != null)
@@ -2882,14 +2918,17 @@ class GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest {
   /// Required.
   core.String? domain;
 
-  GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest();
+  GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest({
+    this.domain,
+  });
 
   GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('domain')) {
-      domain = _json['domain'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          domain: _json.containsKey('domain')
+              ? _json['domain'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (domain != null) 'domain': domain!,
@@ -2902,18 +2941,23 @@ class GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse {
   core.List<GoogleCloudChannelV1CloudIdentityCustomerAccount>?
       cloudIdentityAccounts;
 
-  GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse();
+  GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse({
+    this.cloudIdentityAccounts,
+  });
 
   GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('cloudIdentityAccounts')) {
-      cloudIdentityAccounts = (_json['cloudIdentityAccounts'] as core.List)
-          .map<GoogleCloudChannelV1CloudIdentityCustomerAccount>((value) =>
-              GoogleCloudChannelV1CloudIdentityCustomerAccount.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+      core.Map _json)
+      : this(
+          cloudIdentityAccounts: _json.containsKey('cloudIdentityAccounts')
+              ? (_json['cloudIdentityAccounts'] as core.List)
+                  .map<GoogleCloudChannelV1CloudIdentityCustomerAccount>(
+                      (value) =>
+                          GoogleCloudChannelV1CloudIdentityCustomerAccount
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cloudIdentityAccounts != null)
@@ -2942,22 +2986,27 @@ class GoogleCloudChannelV1CloudIdentityCustomerAccount {
   /// of the Channel Services partner.
   core.bool? owned;
 
-  GoogleCloudChannelV1CloudIdentityCustomerAccount();
+  GoogleCloudChannelV1CloudIdentityCustomerAccount({
+    this.customerCloudIdentityId,
+    this.customerName,
+    this.existing,
+    this.owned,
+  });
 
-  GoogleCloudChannelV1CloudIdentityCustomerAccount.fromJson(core.Map _json) {
-    if (_json.containsKey('customerCloudIdentityId')) {
-      customerCloudIdentityId = _json['customerCloudIdentityId'] as core.String;
-    }
-    if (_json.containsKey('customerName')) {
-      customerName = _json['customerName'] as core.String;
-    }
-    if (_json.containsKey('existing')) {
-      existing = _json['existing'] as core.bool;
-    }
-    if (_json.containsKey('owned')) {
-      owned = _json['owned'] as core.bool;
-    }
-  }
+  GoogleCloudChannelV1CloudIdentityCustomerAccount.fromJson(core.Map _json)
+      : this(
+          customerCloudIdentityId: _json.containsKey('customerCloudIdentityId')
+              ? _json['customerCloudIdentityId'] as core.String
+              : null,
+          customerName: _json.containsKey('customerName')
+              ? _json['customerName'] as core.String
+              : null,
+          existing: _json.containsKey('existing')
+              ? _json['existing'] as core.bool
+              : null,
+          owned:
+              _json.containsKey('owned') ? _json['owned'] as core.bool : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customerCloudIdentityId != null)
@@ -3011,35 +3060,45 @@ class GoogleCloudChannelV1CloudIdentityInfo {
   /// Output only.
   core.String? primaryDomain;
 
-  GoogleCloudChannelV1CloudIdentityInfo();
+  GoogleCloudChannelV1CloudIdentityInfo({
+    this.adminConsoleUri,
+    this.alternateEmail,
+    this.customerType,
+    this.eduData,
+    this.isDomainVerified,
+    this.languageCode,
+    this.phoneNumber,
+    this.primaryDomain,
+  });
 
-  GoogleCloudChannelV1CloudIdentityInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('adminConsoleUri')) {
-      adminConsoleUri = _json['adminConsoleUri'] as core.String;
-    }
-    if (_json.containsKey('alternateEmail')) {
-      alternateEmail = _json['alternateEmail'] as core.String;
-    }
-    if (_json.containsKey('customerType')) {
-      customerType = _json['customerType'] as core.String;
-    }
-    if (_json.containsKey('eduData')) {
-      eduData = GoogleCloudChannelV1EduData.fromJson(
-          _json['eduData'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('isDomainVerified')) {
-      isDomainVerified = _json['isDomainVerified'] as core.bool;
-    }
-    if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'] as core.String;
-    }
-    if (_json.containsKey('phoneNumber')) {
-      phoneNumber = _json['phoneNumber'] as core.String;
-    }
-    if (_json.containsKey('primaryDomain')) {
-      primaryDomain = _json['primaryDomain'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1CloudIdentityInfo.fromJson(core.Map _json)
+      : this(
+          adminConsoleUri: _json.containsKey('adminConsoleUri')
+              ? _json['adminConsoleUri'] as core.String
+              : null,
+          alternateEmail: _json.containsKey('alternateEmail')
+              ? _json['alternateEmail'] as core.String
+              : null,
+          customerType: _json.containsKey('customerType')
+              ? _json['customerType'] as core.String
+              : null,
+          eduData: _json.containsKey('eduData')
+              ? GoogleCloudChannelV1EduData.fromJson(
+                  _json['eduData'] as core.Map<core.String, core.dynamic>)
+              : null,
+          isDomainVerified: _json.containsKey('isDomainVerified')
+              ? _json['isDomainVerified'] as core.bool
+              : null,
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
+          phoneNumber: _json.containsKey('phoneNumber')
+              ? _json['phoneNumber'] as core.String
+              : null,
+          primaryDomain: _json.containsKey('primaryDomain')
+              ? _json['primaryDomain'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (adminConsoleUri != null) 'adminConsoleUri': adminConsoleUri!,
@@ -3070,20 +3129,26 @@ class GoogleCloudChannelV1CommitmentSettings {
   /// Output only.
   core.String? startTime;
 
-  GoogleCloudChannelV1CommitmentSettings();
+  GoogleCloudChannelV1CommitmentSettings({
+    this.endTime,
+    this.renewalSettings,
+    this.startTime,
+  });
 
-  GoogleCloudChannelV1CommitmentSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('renewalSettings')) {
-      renewalSettings = GoogleCloudChannelV1RenewalSettings.fromJson(
-          _json['renewalSettings'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1CommitmentSettings.fromJson(core.Map _json)
+      : this(
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          renewalSettings: _json.containsKey('renewalSettings')
+              ? GoogleCloudChannelV1RenewalSettings.fromJson(
+                  _json['renewalSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
@@ -3098,14 +3163,18 @@ class GoogleCloudChannelV1Constraints {
   /// Represents constraints required to purchase the Offer for a customer.
   GoogleCloudChannelV1CustomerConstraints? customerConstraints;
 
-  GoogleCloudChannelV1Constraints();
+  GoogleCloudChannelV1Constraints({
+    this.customerConstraints,
+  });
 
-  GoogleCloudChannelV1Constraints.fromJson(core.Map _json) {
-    if (_json.containsKey('customerConstraints')) {
-      customerConstraints = GoogleCloudChannelV1CustomerConstraints.fromJson(
-          _json['customerConstraints'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudChannelV1Constraints.fromJson(core.Map _json)
+      : this(
+          customerConstraints: _json.containsKey('customerConstraints')
+              ? GoogleCloudChannelV1CustomerConstraints.fromJson(
+                  _json['customerConstraints']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customerConstraints != null)
@@ -3146,28 +3215,33 @@ class GoogleCloudChannelV1ContactInfo {
   /// Optional.
   core.String? title;
 
-  GoogleCloudChannelV1ContactInfo();
+  GoogleCloudChannelV1ContactInfo({
+    this.displayName,
+    this.email,
+    this.firstName,
+    this.lastName,
+    this.phone,
+    this.title,
+  });
 
-  GoogleCloudChannelV1ContactInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('firstName')) {
-      firstName = _json['firstName'] as core.String;
-    }
-    if (_json.containsKey('lastName')) {
-      lastName = _json['lastName'] as core.String;
-    }
-    if (_json.containsKey('phone')) {
-      phone = _json['phone'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1ContactInfo.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          firstName: _json.containsKey('firstName')
+              ? _json['firstName'] as core.String
+              : null,
+          lastName: _json.containsKey('lastName')
+              ? _json['lastName'] as core.String
+              : null,
+          phone:
+              _json.containsKey('phone') ? _json['phone'] as core.String : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -3199,17 +3273,21 @@ class GoogleCloudChannelV1CreateEntitlementRequest {
   /// Optional.
   core.String? requestId;
 
-  GoogleCloudChannelV1CreateEntitlementRequest();
+  GoogleCloudChannelV1CreateEntitlementRequest({
+    this.entitlement,
+    this.requestId,
+  });
 
-  GoogleCloudChannelV1CreateEntitlementRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('entitlement')) {
-      entitlement = GoogleCloudChannelV1Entitlement.fromJson(
-          _json['entitlement'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('requestId')) {
-      requestId = _json['requestId'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1CreateEntitlementRequest.fromJson(core.Map _json)
+      : this(
+          entitlement: _json.containsKey('entitlement')
+              ? GoogleCloudChannelV1Entitlement.fromJson(
+                  _json['entitlement'] as core.Map<core.String, core.dynamic>)
+              : null,
+          requestId: _json.containsKey('requestId')
+              ? _json['requestId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (entitlement != null) 'entitlement': entitlement!.toJson(),
@@ -3295,49 +3373,63 @@ class GoogleCloudChannelV1Customer {
   /// Output only.
   core.String? updateTime;
 
-  GoogleCloudChannelV1Customer();
+  GoogleCloudChannelV1Customer({
+    this.alternateEmail,
+    this.channelPartnerId,
+    this.cloudIdentityId,
+    this.cloudIdentityInfo,
+    this.createTime,
+    this.domain,
+    this.languageCode,
+    this.name,
+    this.orgDisplayName,
+    this.orgPostalAddress,
+    this.primaryContactInfo,
+    this.updateTime,
+  });
 
-  GoogleCloudChannelV1Customer.fromJson(core.Map _json) {
-    if (_json.containsKey('alternateEmail')) {
-      alternateEmail = _json['alternateEmail'] as core.String;
-    }
-    if (_json.containsKey('channelPartnerId')) {
-      channelPartnerId = _json['channelPartnerId'] as core.String;
-    }
-    if (_json.containsKey('cloudIdentityId')) {
-      cloudIdentityId = _json['cloudIdentityId'] as core.String;
-    }
-    if (_json.containsKey('cloudIdentityInfo')) {
-      cloudIdentityInfo = GoogleCloudChannelV1CloudIdentityInfo.fromJson(
-          _json['cloudIdentityInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('domain')) {
-      domain = _json['domain'] as core.String;
-    }
-    if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('orgDisplayName')) {
-      orgDisplayName = _json['orgDisplayName'] as core.String;
-    }
-    if (_json.containsKey('orgPostalAddress')) {
-      orgPostalAddress = GoogleTypePostalAddress.fromJson(
-          _json['orgPostalAddress'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('primaryContactInfo')) {
-      primaryContactInfo = GoogleCloudChannelV1ContactInfo.fromJson(
-          _json['primaryContactInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1Customer.fromJson(core.Map _json)
+      : this(
+          alternateEmail: _json.containsKey('alternateEmail')
+              ? _json['alternateEmail'] as core.String
+              : null,
+          channelPartnerId: _json.containsKey('channelPartnerId')
+              ? _json['channelPartnerId'] as core.String
+              : null,
+          cloudIdentityId: _json.containsKey('cloudIdentityId')
+              ? _json['cloudIdentityId'] as core.String
+              : null,
+          cloudIdentityInfo: _json.containsKey('cloudIdentityInfo')
+              ? GoogleCloudChannelV1CloudIdentityInfo.fromJson(
+                  _json['cloudIdentityInfo']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          domain: _json.containsKey('domain')
+              ? _json['domain'] as core.String
+              : null,
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          orgDisplayName: _json.containsKey('orgDisplayName')
+              ? _json['orgDisplayName'] as core.String
+              : null,
+          orgPostalAddress: _json.containsKey('orgPostalAddress')
+              ? GoogleTypePostalAddress.fromJson(_json['orgPostalAddress']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          primaryContactInfo: _json.containsKey('primaryContactInfo')
+              ? GoogleCloudChannelV1ContactInfo.fromJson(
+                  _json['primaryContactInfo']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alternateEmail != null) 'alternateEmail': alternateEmail!,
@@ -3371,25 +3463,30 @@ class GoogleCloudChannelV1CustomerConstraints {
   /// Present for Promotional offers.
   core.List<core.String>? promotionalOrderTypes;
 
-  GoogleCloudChannelV1CustomerConstraints();
+  GoogleCloudChannelV1CustomerConstraints({
+    this.allowedCustomerTypes,
+    this.allowedRegions,
+    this.promotionalOrderTypes,
+  });
 
-  GoogleCloudChannelV1CustomerConstraints.fromJson(core.Map _json) {
-    if (_json.containsKey('allowedCustomerTypes')) {
-      allowedCustomerTypes = (_json['allowedCustomerTypes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('allowedRegions')) {
-      allowedRegions = (_json['allowedRegions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('promotionalOrderTypes')) {
-      promotionalOrderTypes = (_json['promotionalOrderTypes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  GoogleCloudChannelV1CustomerConstraints.fromJson(core.Map _json)
+      : this(
+          allowedCustomerTypes: _json.containsKey('allowedCustomerTypes')
+              ? (_json['allowedCustomerTypes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          allowedRegions: _json.containsKey('allowedRegions')
+              ? (_json['allowedRegions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          promotionalOrderTypes: _json.containsKey('promotionalOrderTypes')
+              ? (_json['promotionalOrderTypes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedCustomerTypes != null)
@@ -3416,16 +3513,20 @@ class GoogleCloudChannelV1CustomerEvent {
   /// verified.
   core.String? eventType;
 
-  GoogleCloudChannelV1CustomerEvent();
+  GoogleCloudChannelV1CustomerEvent({
+    this.customer,
+    this.eventType,
+  });
 
-  GoogleCloudChannelV1CustomerEvent.fromJson(core.Map _json) {
-    if (_json.containsKey('customer')) {
-      customer = _json['customer'] as core.String;
-    }
-    if (_json.containsKey('eventType')) {
-      eventType = _json['eventType'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1CustomerEvent.fromJson(core.Map _json)
+      : this(
+          customer: _json.containsKey('customer')
+              ? _json['customer'] as core.String
+              : null,
+          eventType: _json.containsKey('eventType')
+              ? _json['eventType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customer != null) 'customer': customer!,
@@ -3459,19 +3560,24 @@ class GoogleCloudChannelV1EduData {
   /// Web address for the edu customer's institution.
   core.String? website;
 
-  GoogleCloudChannelV1EduData();
+  GoogleCloudChannelV1EduData({
+    this.instituteSize,
+    this.instituteType,
+    this.website,
+  });
 
-  GoogleCloudChannelV1EduData.fromJson(core.Map _json) {
-    if (_json.containsKey('instituteSize')) {
-      instituteSize = _json['instituteSize'] as core.String;
-    }
-    if (_json.containsKey('instituteType')) {
-      instituteType = _json['instituteType'] as core.String;
-    }
-    if (_json.containsKey('website')) {
-      website = _json['website'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1EduData.fromJson(core.Map _json)
+      : this(
+          instituteSize: _json.containsKey('instituteSize')
+              ? _json['instituteSize'] as core.String
+              : null,
+          instituteType: _json.containsKey('instituteType')
+              ? _json['instituteType'] as core.String
+              : null,
+          website: _json.containsKey('website')
+              ? _json['website'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (instituteSize != null) 'instituteSize': instituteSize!,
@@ -3554,56 +3660,70 @@ class GoogleCloudChannelV1Entitlement {
   /// Output only.
   core.String? updateTime;
 
-  GoogleCloudChannelV1Entitlement();
+  GoogleCloudChannelV1Entitlement({
+    this.associationInfo,
+    this.commitmentSettings,
+    this.createTime,
+    this.name,
+    this.offer,
+    this.parameters,
+    this.provisionedService,
+    this.provisioningState,
+    this.purchaseOrderId,
+    this.suspensionReasons,
+    this.trialSettings,
+    this.updateTime,
+  });
 
-  GoogleCloudChannelV1Entitlement.fromJson(core.Map _json) {
-    if (_json.containsKey('associationInfo')) {
-      associationInfo = GoogleCloudChannelV1AssociationInfo.fromJson(
-          _json['associationInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('commitmentSettings')) {
-      commitmentSettings = GoogleCloudChannelV1CommitmentSettings.fromJson(
-          _json['commitmentSettings'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('offer')) {
-      offer = _json['offer'] as core.String;
-    }
-    if (_json.containsKey('parameters')) {
-      parameters = (_json['parameters'] as core.List)
-          .map<GoogleCloudChannelV1Parameter>((value) =>
-              GoogleCloudChannelV1Parameter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('provisionedService')) {
-      provisionedService = GoogleCloudChannelV1ProvisionedService.fromJson(
-          _json['provisionedService'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('provisioningState')) {
-      provisioningState = _json['provisioningState'] as core.String;
-    }
-    if (_json.containsKey('purchaseOrderId')) {
-      purchaseOrderId = _json['purchaseOrderId'] as core.String;
-    }
-    if (_json.containsKey('suspensionReasons')) {
-      suspensionReasons = (_json['suspensionReasons'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('trialSettings')) {
-      trialSettings = GoogleCloudChannelV1TrialSettings.fromJson(
-          _json['trialSettings'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1Entitlement.fromJson(core.Map _json)
+      : this(
+          associationInfo: _json.containsKey('associationInfo')
+              ? GoogleCloudChannelV1AssociationInfo.fromJson(
+                  _json['associationInfo']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          commitmentSettings: _json.containsKey('commitmentSettings')
+              ? GoogleCloudChannelV1CommitmentSettings.fromJson(
+                  _json['commitmentSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          offer:
+              _json.containsKey('offer') ? _json['offer'] as core.String : null,
+          parameters: _json.containsKey('parameters')
+              ? (_json['parameters'] as core.List)
+                  .map<GoogleCloudChannelV1Parameter>((value) =>
+                      GoogleCloudChannelV1Parameter.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          provisionedService: _json.containsKey('provisionedService')
+              ? GoogleCloudChannelV1ProvisionedService.fromJson(
+                  _json['provisionedService']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          provisioningState: _json.containsKey('provisioningState')
+              ? _json['provisioningState'] as core.String
+              : null,
+          purchaseOrderId: _json.containsKey('purchaseOrderId')
+              ? _json['purchaseOrderId'] as core.String
+              : null,
+          suspensionReasons: _json.containsKey('suspensionReasons')
+              ? (_json['suspensionReasons'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          trialSettings: _json.containsKey('trialSettings')
+              ? GoogleCloudChannelV1TrialSettings.fromJson(
+                  _json['trialSettings'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (associationInfo != null)
@@ -3654,16 +3774,20 @@ class GoogleCloudChannelV1EntitlementEvent {
   /// - "LICENSE_CAP_CHANGED" : License cap was changed for the entitlement.
   core.String? eventType;
 
-  GoogleCloudChannelV1EntitlementEvent();
+  GoogleCloudChannelV1EntitlementEvent({
+    this.entitlement,
+    this.eventType,
+  });
 
-  GoogleCloudChannelV1EntitlementEvent.fromJson(core.Map _json) {
-    if (_json.containsKey('entitlement')) {
-      entitlement = _json['entitlement'] as core.String;
-    }
-    if (_json.containsKey('eventType')) {
-      eventType = _json['eventType'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1EntitlementEvent.fromJson(core.Map _json)
+      : this(
+          entitlement: _json.containsKey('entitlement')
+              ? _json['entitlement'] as core.String
+              : null,
+          eventType: _json.containsKey('eventType')
+              ? _json['eventType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (entitlement != null) 'entitlement': entitlement!,
@@ -3681,20 +3805,24 @@ class GoogleCloudChannelV1ListChannelPartnerLinksResponse {
   /// Pass to ListChannelPartnerLinksRequest.page_token to obtain that page.
   core.String? nextPageToken;
 
-  GoogleCloudChannelV1ListChannelPartnerLinksResponse();
+  GoogleCloudChannelV1ListChannelPartnerLinksResponse({
+    this.channelPartnerLinks,
+    this.nextPageToken,
+  });
 
-  GoogleCloudChannelV1ListChannelPartnerLinksResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('channelPartnerLinks')) {
-      channelPartnerLinks = (_json['channelPartnerLinks'] as core.List)
-          .map<GoogleCloudChannelV1ChannelPartnerLink>((value) =>
-              GoogleCloudChannelV1ChannelPartnerLink.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1ListChannelPartnerLinksResponse.fromJson(core.Map _json)
+      : this(
+          channelPartnerLinks: _json.containsKey('channelPartnerLinks')
+              ? (_json['channelPartnerLinks'] as core.List)
+                  .map<GoogleCloudChannelV1ChannelPartnerLink>((value) =>
+                      GoogleCloudChannelV1ChannelPartnerLink.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channelPartnerLinks != null)
@@ -3714,20 +3842,24 @@ class GoogleCloudChannelV1ListCustomersResponse {
   /// Pass to ListCustomersRequest.page_token to obtain that page.
   core.String? nextPageToken;
 
-  GoogleCloudChannelV1ListCustomersResponse();
+  GoogleCloudChannelV1ListCustomersResponse({
+    this.customers,
+    this.nextPageToken,
+  });
 
-  GoogleCloudChannelV1ListCustomersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('customers')) {
-      customers = (_json['customers'] as core.List)
-          .map<GoogleCloudChannelV1Customer>((value) =>
-              GoogleCloudChannelV1Customer.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1ListCustomersResponse.fromJson(core.Map _json)
+      : this(
+          customers: _json.containsKey('customers')
+              ? (_json['customers'] as core.List)
+                  .map<GoogleCloudChannelV1Customer>((value) =>
+                      GoogleCloudChannelV1Customer.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customers != null)
@@ -3746,20 +3878,24 @@ class GoogleCloudChannelV1ListEntitlementsResponse {
   /// Pass to ListEntitlementsRequest.page_token to obtain that page.
   core.String? nextPageToken;
 
-  GoogleCloudChannelV1ListEntitlementsResponse();
+  GoogleCloudChannelV1ListEntitlementsResponse({
+    this.entitlements,
+    this.nextPageToken,
+  });
 
-  GoogleCloudChannelV1ListEntitlementsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('entitlements')) {
-      entitlements = (_json['entitlements'] as core.List)
-          .map<GoogleCloudChannelV1Entitlement>((value) =>
-              GoogleCloudChannelV1Entitlement.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1ListEntitlementsResponse.fromJson(core.Map _json)
+      : this(
+          entitlements: _json.containsKey('entitlements')
+              ? (_json['entitlements'] as core.List)
+                  .map<GoogleCloudChannelV1Entitlement>((value) =>
+                      GoogleCloudChannelV1Entitlement.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (entitlements != null)
@@ -3776,20 +3912,24 @@ class GoogleCloudChannelV1ListOffersResponse {
   /// The list of Offers requested.
   core.List<GoogleCloudChannelV1Offer>? offers;
 
-  GoogleCloudChannelV1ListOffersResponse();
+  GoogleCloudChannelV1ListOffersResponse({
+    this.nextPageToken,
+    this.offers,
+  });
 
-  GoogleCloudChannelV1ListOffersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('offers')) {
-      offers = (_json['offers'] as core.List)
-          .map<GoogleCloudChannelV1Offer>((value) =>
-              GoogleCloudChannelV1Offer.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudChannelV1ListOffersResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          offers: _json.containsKey('offers')
+              ? (_json['offers'] as core.List)
+                  .map<GoogleCloudChannelV1Offer>((value) =>
+                      GoogleCloudChannelV1Offer.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3806,20 +3946,24 @@ class GoogleCloudChannelV1ListProductsResponse {
   /// List of Products requested.
   core.List<GoogleCloudChannelV1Product>? products;
 
-  GoogleCloudChannelV1ListProductsResponse();
+  GoogleCloudChannelV1ListProductsResponse({
+    this.nextPageToken,
+    this.products,
+  });
 
-  GoogleCloudChannelV1ListProductsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('products')) {
-      products = (_json['products'] as core.List)
-          .map<GoogleCloudChannelV1Product>((value) =>
-              GoogleCloudChannelV1Product.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudChannelV1ListProductsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          products: _json.containsKey('products')
+              ? (_json['products'] as core.List)
+                  .map<GoogleCloudChannelV1Product>((value) =>
+                      GoogleCloudChannelV1Product.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3836,20 +3980,24 @@ class GoogleCloudChannelV1ListPurchasableOffersResponse {
   /// The list of Offers requested.
   core.List<GoogleCloudChannelV1PurchasableOffer>? purchasableOffers;
 
-  GoogleCloudChannelV1ListPurchasableOffersResponse();
+  GoogleCloudChannelV1ListPurchasableOffersResponse({
+    this.nextPageToken,
+    this.purchasableOffers,
+  });
 
-  GoogleCloudChannelV1ListPurchasableOffersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('purchasableOffers')) {
-      purchasableOffers = (_json['purchasableOffers'] as core.List)
-          .map<GoogleCloudChannelV1PurchasableOffer>((value) =>
-              GoogleCloudChannelV1PurchasableOffer.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudChannelV1ListPurchasableOffersResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          purchasableOffers: _json.containsKey('purchasableOffers')
+              ? (_json['purchasableOffers'] as core.List)
+                  .map<GoogleCloudChannelV1PurchasableOffer>((value) =>
+                      GoogleCloudChannelV1PurchasableOffer.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3867,20 +4015,24 @@ class GoogleCloudChannelV1ListPurchasableSkusResponse {
   /// The list of SKUs requested.
   core.List<GoogleCloudChannelV1PurchasableSku>? purchasableSkus;
 
-  GoogleCloudChannelV1ListPurchasableSkusResponse();
+  GoogleCloudChannelV1ListPurchasableSkusResponse({
+    this.nextPageToken,
+    this.purchasableSkus,
+  });
 
-  GoogleCloudChannelV1ListPurchasableSkusResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('purchasableSkus')) {
-      purchasableSkus = (_json['purchasableSkus'] as core.List)
-          .map<GoogleCloudChannelV1PurchasableSku>((value) =>
-              GoogleCloudChannelV1PurchasableSku.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudChannelV1ListPurchasableSkusResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          purchasableSkus: _json.containsKey('purchasableSkus')
+              ? (_json['purchasableSkus'] as core.List)
+                  .map<GoogleCloudChannelV1PurchasableSku>((value) =>
+                      GoogleCloudChannelV1PurchasableSku.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3898,20 +4050,24 @@ class GoogleCloudChannelV1ListSkusResponse {
   /// The list of SKUs requested.
   core.List<GoogleCloudChannelV1Sku>? skus;
 
-  GoogleCloudChannelV1ListSkusResponse();
+  GoogleCloudChannelV1ListSkusResponse({
+    this.nextPageToken,
+    this.skus,
+  });
 
-  GoogleCloudChannelV1ListSkusResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('skus')) {
-      skus = (_json['skus'] as core.List)
-          .map<GoogleCloudChannelV1Sku>((value) =>
-              GoogleCloudChannelV1Sku.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudChannelV1ListSkusResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          skus: _json.containsKey('skus')
+              ? (_json['skus'] as core.List)
+                  .map<GoogleCloudChannelV1Sku>((value) =>
+                      GoogleCloudChannelV1Sku.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3932,21 +4088,25 @@ class GoogleCloudChannelV1ListSubscribersResponse {
   /// Name of the topic registered with the reseller.
   core.String? topic;
 
-  GoogleCloudChannelV1ListSubscribersResponse();
+  GoogleCloudChannelV1ListSubscribersResponse({
+    this.nextPageToken,
+    this.serviceAccounts,
+    this.topic,
+  });
 
-  GoogleCloudChannelV1ListSubscribersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('serviceAccounts')) {
-      serviceAccounts = (_json['serviceAccounts'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('topic')) {
-      topic = _json['topic'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1ListSubscribersResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          serviceAccounts: _json.containsKey('serviceAccounts')
+              ? (_json['serviceAccounts'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          topic:
+              _json.containsKey('topic') ? _json['topic'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3988,28 +4148,34 @@ class GoogleCloudChannelV1ListTransferableOffersRequest {
   /// Required.
   core.String? sku;
 
-  GoogleCloudChannelV1ListTransferableOffersRequest();
+  GoogleCloudChannelV1ListTransferableOffersRequest({
+    this.cloudIdentityId,
+    this.customerName,
+    this.languageCode,
+    this.pageSize,
+    this.pageToken,
+    this.sku,
+  });
 
-  GoogleCloudChannelV1ListTransferableOffersRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('cloudIdentityId')) {
-      cloudIdentityId = _json['cloudIdentityId'] as core.String;
-    }
-    if (_json.containsKey('customerName')) {
-      customerName = _json['customerName'] as core.String;
-    }
-    if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'] as core.String;
-    }
-    if (_json.containsKey('pageSize')) {
-      pageSize = _json['pageSize'] as core.int;
-    }
-    if (_json.containsKey('pageToken')) {
-      pageToken = _json['pageToken'] as core.String;
-    }
-    if (_json.containsKey('sku')) {
-      sku = _json['sku'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1ListTransferableOffersRequest.fromJson(core.Map _json)
+      : this(
+          cloudIdentityId: _json.containsKey('cloudIdentityId')
+              ? _json['cloudIdentityId'] as core.String
+              : null,
+          customerName: _json.containsKey('customerName')
+              ? _json['customerName'] as core.String
+              : null,
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
+          pageSize: _json.containsKey('pageSize')
+              ? _json['pageSize'] as core.int
+              : null,
+          pageToken: _json.containsKey('pageToken')
+              ? _json['pageToken'] as core.String
+              : null,
+          sku: _json.containsKey('sku') ? _json['sku'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cloudIdentityId != null) 'cloudIdentityId': cloudIdentityId!,
@@ -4031,20 +4197,24 @@ class GoogleCloudChannelV1ListTransferableOffersResponse {
   /// Information about Offers for a customer that can be used for transfer.
   core.List<GoogleCloudChannelV1TransferableOffer>? transferableOffers;
 
-  GoogleCloudChannelV1ListTransferableOffersResponse();
+  GoogleCloudChannelV1ListTransferableOffersResponse({
+    this.nextPageToken,
+    this.transferableOffers,
+  });
 
-  GoogleCloudChannelV1ListTransferableOffersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('transferableOffers')) {
-      transferableOffers = (_json['transferableOffers'] as core.List)
-          .map<GoogleCloudChannelV1TransferableOffer>((value) =>
-              GoogleCloudChannelV1TransferableOffer.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudChannelV1ListTransferableOffersResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          transferableOffers: _json.containsKey('transferableOffers')
+              ? (_json['transferableOffers'] as core.List)
+                  .map<GoogleCloudChannelV1TransferableOffer>((value) =>
+                      GoogleCloudChannelV1TransferableOffer.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -4093,28 +4263,36 @@ class GoogleCloudChannelV1ListTransferableSkusRequest {
   /// previous CloudChannelService.ListTransferableSkus call. Optional.
   core.String? pageToken;
 
-  GoogleCloudChannelV1ListTransferableSkusRequest();
+  GoogleCloudChannelV1ListTransferableSkusRequest({
+    this.authToken,
+    this.cloudIdentityId,
+    this.customerName,
+    this.languageCode,
+    this.pageSize,
+    this.pageToken,
+  });
 
-  GoogleCloudChannelV1ListTransferableSkusRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('authToken')) {
-      authToken = _json['authToken'] as core.String;
-    }
-    if (_json.containsKey('cloudIdentityId')) {
-      cloudIdentityId = _json['cloudIdentityId'] as core.String;
-    }
-    if (_json.containsKey('customerName')) {
-      customerName = _json['customerName'] as core.String;
-    }
-    if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'] as core.String;
-    }
-    if (_json.containsKey('pageSize')) {
-      pageSize = _json['pageSize'] as core.int;
-    }
-    if (_json.containsKey('pageToken')) {
-      pageToken = _json['pageToken'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1ListTransferableSkusRequest.fromJson(core.Map _json)
+      : this(
+          authToken: _json.containsKey('authToken')
+              ? _json['authToken'] as core.String
+              : null,
+          cloudIdentityId: _json.containsKey('cloudIdentityId')
+              ? _json['cloudIdentityId'] as core.String
+              : null,
+          customerName: _json.containsKey('customerName')
+              ? _json['customerName'] as core.String
+              : null,
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
+          pageSize: _json.containsKey('pageSize')
+              ? _json['pageSize'] as core.int
+              : null,
+          pageToken: _json.containsKey('pageToken')
+              ? _json['pageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authToken != null) 'authToken': authToken!,
@@ -4136,20 +4314,24 @@ class GoogleCloudChannelV1ListTransferableSkusResponse {
   /// Information about existing SKUs for a customer that needs a transfer.
   core.List<GoogleCloudChannelV1TransferableSku>? transferableSkus;
 
-  GoogleCloudChannelV1ListTransferableSkusResponse();
+  GoogleCloudChannelV1ListTransferableSkusResponse({
+    this.nextPageToken,
+    this.transferableSkus,
+  });
 
-  GoogleCloudChannelV1ListTransferableSkusResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('transferableSkus')) {
-      transferableSkus = (_json['transferableSkus'] as core.List)
-          .map<GoogleCloudChannelV1TransferableSku>((value) =>
-              GoogleCloudChannelV1TransferableSku.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudChannelV1ListTransferableSkusResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          transferableSkus: _json.containsKey('transferableSkus')
+              ? (_json['transferableSkus'] as core.List)
+                  .map<GoogleCloudChannelV1TransferableSku>((value) =>
+                      GoogleCloudChannelV1TransferableSku.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -4172,20 +4354,25 @@ class GoogleCloudChannelV1MarketingInfo {
   /// Human readable name.
   core.String? displayName;
 
-  GoogleCloudChannelV1MarketingInfo();
+  GoogleCloudChannelV1MarketingInfo({
+    this.defaultLogo,
+    this.description,
+    this.displayName,
+  });
 
-  GoogleCloudChannelV1MarketingInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('defaultLogo')) {
-      defaultLogo = GoogleCloudChannelV1Media.fromJson(
-          _json['defaultLogo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1MarketingInfo.fromJson(core.Map _json)
+      : this(
+          defaultLogo: _json.containsKey('defaultLogo')
+              ? GoogleCloudChannelV1Media.fromJson(
+                  _json['defaultLogo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (defaultLogo != null) 'defaultLogo': defaultLogo!.toJson(),
@@ -4208,19 +4395,21 @@ class GoogleCloudChannelV1Media {
   /// - "MEDIA_TYPE_IMAGE" : Type of image.
   core.String? type;
 
-  GoogleCloudChannelV1Media();
+  GoogleCloudChannelV1Media({
+    this.content,
+    this.title,
+    this.type,
+  });
 
-  GoogleCloudChannelV1Media.fromJson(core.Map _json) {
-    if (_json.containsKey('content')) {
-      content = _json['content'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1Media.fromJson(core.Map _json)
+      : this(
+          content: _json.containsKey('content')
+              ? _json['content'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
@@ -4265,49 +4454,58 @@ class GoogleCloudChannelV1Offer {
   /// Start of the Offer validity time.
   core.String? startTime;
 
-  GoogleCloudChannelV1Offer();
+  GoogleCloudChannelV1Offer({
+    this.constraints,
+    this.endTime,
+    this.marketingInfo,
+    this.name,
+    this.parameterDefinitions,
+    this.plan,
+    this.priceByResources,
+    this.sku,
+    this.startTime,
+  });
 
-  GoogleCloudChannelV1Offer.fromJson(core.Map _json) {
-    if (_json.containsKey('constraints')) {
-      constraints = GoogleCloudChannelV1Constraints.fromJson(
-          _json['constraints'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('marketingInfo')) {
-      marketingInfo = GoogleCloudChannelV1MarketingInfo.fromJson(
-          _json['marketingInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('parameterDefinitions')) {
-      parameterDefinitions = (_json['parameterDefinitions'] as core.List)
-          .map<GoogleCloudChannelV1ParameterDefinition>((value) =>
-              GoogleCloudChannelV1ParameterDefinition.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('plan')) {
-      plan = GoogleCloudChannelV1Plan.fromJson(
-          _json['plan'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('priceByResources')) {
-      priceByResources = (_json['priceByResources'] as core.List)
-          .map<GoogleCloudChannelV1PriceByResource>((value) =>
-              GoogleCloudChannelV1PriceByResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('sku')) {
-      sku = GoogleCloudChannelV1Sku.fromJson(
-          _json['sku'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1Offer.fromJson(core.Map _json)
+      : this(
+          constraints: _json.containsKey('constraints')
+              ? GoogleCloudChannelV1Constraints.fromJson(
+                  _json['constraints'] as core.Map<core.String, core.dynamic>)
+              : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          marketingInfo: _json.containsKey('marketingInfo')
+              ? GoogleCloudChannelV1MarketingInfo.fromJson(
+                  _json['marketingInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          parameterDefinitions: _json.containsKey('parameterDefinitions')
+              ? (_json['parameterDefinitions'] as core.List)
+                  .map<GoogleCloudChannelV1ParameterDefinition>((value) =>
+                      GoogleCloudChannelV1ParameterDefinition.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          plan: _json.containsKey('plan')
+              ? GoogleCloudChannelV1Plan.fromJson(
+                  _json['plan'] as core.Map<core.String, core.dynamic>)
+              : null,
+          priceByResources: _json.containsKey('priceByResources')
+              ? (_json['priceByResources'] as core.List)
+                  .map<GoogleCloudChannelV1PriceByResource>((value) =>
+                      GoogleCloudChannelV1PriceByResource.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          sku: _json.containsKey('sku')
+              ? GoogleCloudChannelV1Sku.fromJson(
+                  _json['sku'] as core.Map<core.String, core.dynamic>)
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (constraints != null) 'constraints': constraints!.toJson(),
@@ -4355,13 +4553,16 @@ class GoogleCloudChannelV1OperationMetadata {
   /// ProvisionCloudIdentity.
   core.String? operationType;
 
-  GoogleCloudChannelV1OperationMetadata();
+  GoogleCloudChannelV1OperationMetadata({
+    this.operationType,
+  });
 
-  GoogleCloudChannelV1OperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('operationType')) {
-      operationType = _json['operationType'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1OperationMetadata.fromJson(core.Map _json)
+      : this(
+          operationType: _json.containsKey('operationType')
+              ? _json['operationType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (operationType != null) 'operationType': operationType!,
@@ -4384,20 +4585,23 @@ class GoogleCloudChannelV1Parameter {
   /// Value of the parameter.
   GoogleCloudChannelV1Value? value;
 
-  GoogleCloudChannelV1Parameter();
+  GoogleCloudChannelV1Parameter({
+    this.editable,
+    this.name,
+    this.value,
+  });
 
-  GoogleCloudChannelV1Parameter.fromJson(core.Map _json) {
-    if (_json.containsKey('editable')) {
-      editable = _json['editable'] as core.bool;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = GoogleCloudChannelV1Value.fromJson(
-          _json['value'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudChannelV1Parameter.fromJson(core.Map _json)
+      : this(
+          editable: _json.containsKey('editable')
+              ? _json['editable'] as core.bool
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          value: _json.containsKey('value')
+              ? GoogleCloudChannelV1Value.fromJson(
+                  _json['value'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (editable != null) 'editable': editable!,
@@ -4445,34 +4649,40 @@ class GoogleCloudChannelV1ParameterDefinition {
   /// - "DOUBLE" : Double type.
   core.String? parameterType;
 
-  GoogleCloudChannelV1ParameterDefinition();
+  GoogleCloudChannelV1ParameterDefinition({
+    this.allowedValues,
+    this.maxValue,
+    this.minValue,
+    this.name,
+    this.optional,
+    this.parameterType,
+  });
 
-  GoogleCloudChannelV1ParameterDefinition.fromJson(core.Map _json) {
-    if (_json.containsKey('allowedValues')) {
-      allowedValues = (_json['allowedValues'] as core.List)
-          .map<GoogleCloudChannelV1Value>((value) =>
-              GoogleCloudChannelV1Value.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('maxValue')) {
-      maxValue = GoogleCloudChannelV1Value.fromJson(
-          _json['maxValue'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('minValue')) {
-      minValue = GoogleCloudChannelV1Value.fromJson(
-          _json['minValue'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('optional')) {
-      optional = _json['optional'] as core.bool;
-    }
-    if (_json.containsKey('parameterType')) {
-      parameterType = _json['parameterType'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1ParameterDefinition.fromJson(core.Map _json)
+      : this(
+          allowedValues: _json.containsKey('allowedValues')
+              ? (_json['allowedValues'] as core.List)
+                  .map<GoogleCloudChannelV1Value>((value) =>
+                      GoogleCloudChannelV1Value.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          maxValue: _json.containsKey('maxValue')
+              ? GoogleCloudChannelV1Value.fromJson(
+                  _json['maxValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+          minValue: _json.containsKey('minValue')
+              ? GoogleCloudChannelV1Value.fromJson(
+                  _json['minValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          optional: _json.containsKey('optional')
+              ? _json['optional'] as core.bool
+              : null,
+          parameterType: _json.containsKey('parameterType')
+              ? _json['parameterType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedValues != null)
@@ -4499,16 +4709,20 @@ class GoogleCloudChannelV1Period {
   /// - "YEAR" : Year.
   core.String? periodType;
 
-  GoogleCloudChannelV1Period();
+  GoogleCloudChannelV1Period({
+    this.duration,
+    this.periodType,
+  });
 
-  GoogleCloudChannelV1Period.fromJson(core.Map _json) {
-    if (_json.containsKey('duration')) {
-      duration = _json['duration'] as core.int;
-    }
-    if (_json.containsKey('periodType')) {
-      periodType = _json['periodType'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1Period.fromJson(core.Map _json)
+      : this(
+          duration: _json.containsKey('duration')
+              ? _json['duration'] as core.int
+              : null,
+          periodType: _json.containsKey('periodType')
+              ? _json['periodType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (duration != null) 'duration': duration!,
@@ -4555,27 +4769,34 @@ class GoogleCloudChannelV1Plan {
   /// service is started before the end of the trial period.
   GoogleCloudChannelV1Period? trialPeriod;
 
-  GoogleCloudChannelV1Plan();
+  GoogleCloudChannelV1Plan({
+    this.billingAccount,
+    this.paymentCycle,
+    this.paymentPlan,
+    this.paymentType,
+    this.trialPeriod,
+  });
 
-  GoogleCloudChannelV1Plan.fromJson(core.Map _json) {
-    if (_json.containsKey('billingAccount')) {
-      billingAccount = _json['billingAccount'] as core.String;
-    }
-    if (_json.containsKey('paymentCycle')) {
-      paymentCycle = GoogleCloudChannelV1Period.fromJson(
-          _json['paymentCycle'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('paymentPlan')) {
-      paymentPlan = _json['paymentPlan'] as core.String;
-    }
-    if (_json.containsKey('paymentType')) {
-      paymentType = _json['paymentType'] as core.String;
-    }
-    if (_json.containsKey('trialPeriod')) {
-      trialPeriod = GoogleCloudChannelV1Period.fromJson(
-          _json['trialPeriod'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudChannelV1Plan.fromJson(core.Map _json)
+      : this(
+          billingAccount: _json.containsKey('billingAccount')
+              ? _json['billingAccount'] as core.String
+              : null,
+          paymentCycle: _json.containsKey('paymentCycle')
+              ? GoogleCloudChannelV1Period.fromJson(
+                  _json['paymentCycle'] as core.Map<core.String, core.dynamic>)
+              : null,
+          paymentPlan: _json.containsKey('paymentPlan')
+              ? _json['paymentPlan'] as core.String
+              : null,
+          paymentType: _json.containsKey('paymentType')
+              ? _json['paymentType'] as core.String
+              : null,
+          trialPeriod: _json.containsKey('trialPeriod')
+              ? GoogleCloudChannelV1Period.fromJson(
+                  _json['trialPeriod'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (billingAccount != null) 'billingAccount': billingAccount!,
@@ -4602,24 +4823,30 @@ class GoogleCloudChannelV1Price {
   /// Link to external price list, such as link to Google Voice rate card.
   core.String? externalPriceUri;
 
-  GoogleCloudChannelV1Price();
+  GoogleCloudChannelV1Price({
+    this.basePrice,
+    this.discount,
+    this.effectivePrice,
+    this.externalPriceUri,
+  });
 
-  GoogleCloudChannelV1Price.fromJson(core.Map _json) {
-    if (_json.containsKey('basePrice')) {
-      basePrice = GoogleTypeMoney.fromJson(
-          _json['basePrice'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('discount')) {
-      discount = (_json['discount'] as core.num).toDouble();
-    }
-    if (_json.containsKey('effectivePrice')) {
-      effectivePrice = GoogleTypeMoney.fromJson(
-          _json['effectivePrice'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('externalPriceUri')) {
-      externalPriceUri = _json['externalPriceUri'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1Price.fromJson(core.Map _json)
+      : this(
+          basePrice: _json.containsKey('basePrice')
+              ? GoogleTypeMoney.fromJson(
+                  _json['basePrice'] as core.Map<core.String, core.dynamic>)
+              : null,
+          discount: _json.containsKey('discount')
+              ? (_json['discount'] as core.num).toDouble()
+              : null,
+          effectivePrice: _json.containsKey('effectivePrice')
+              ? GoogleTypeMoney.fromJson(_json['effectivePrice']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          externalPriceUri: _json.containsKey('externalPriceUri')
+              ? _json['externalPriceUri'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (basePrice != null) 'basePrice': basePrice!.toJson(),
@@ -4658,24 +4885,29 @@ class GoogleCloudChannelV1PriceByResource {
   /// SAP.
   core.String? resourceType;
 
-  GoogleCloudChannelV1PriceByResource();
+  GoogleCloudChannelV1PriceByResource({
+    this.price,
+    this.pricePhases,
+    this.resourceType,
+  });
 
-  GoogleCloudChannelV1PriceByResource.fromJson(core.Map _json) {
-    if (_json.containsKey('price')) {
-      price = GoogleCloudChannelV1Price.fromJson(
-          _json['price'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('pricePhases')) {
-      pricePhases = (_json['pricePhases'] as core.List)
-          .map<GoogleCloudChannelV1PricePhase>((value) =>
-              GoogleCloudChannelV1PricePhase.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('resourceType')) {
-      resourceType = _json['resourceType'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1PriceByResource.fromJson(core.Map _json)
+      : this(
+          price: _json.containsKey('price')
+              ? GoogleCloudChannelV1Price.fromJson(
+                  _json['price'] as core.Map<core.String, core.dynamic>)
+              : null,
+          pricePhases: _json.containsKey('pricePhases')
+              ? (_json['pricePhases'] as core.List)
+                  .map<GoogleCloudChannelV1PricePhase>((value) =>
+                      GoogleCloudChannelV1PricePhase.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          resourceType: _json.containsKey('resourceType')
+              ? _json['resourceType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (price != null) 'price': price!.toJson(),
@@ -4712,30 +4944,37 @@ class GoogleCloudChannelV1PricePhase {
   /// Price by the resource tiers.
   core.List<GoogleCloudChannelV1PriceTier>? priceTiers;
 
-  GoogleCloudChannelV1PricePhase();
+  GoogleCloudChannelV1PricePhase({
+    this.firstPeriod,
+    this.lastPeriod,
+    this.periodType,
+    this.price,
+    this.priceTiers,
+  });
 
-  GoogleCloudChannelV1PricePhase.fromJson(core.Map _json) {
-    if (_json.containsKey('firstPeriod')) {
-      firstPeriod = _json['firstPeriod'] as core.int;
-    }
-    if (_json.containsKey('lastPeriod')) {
-      lastPeriod = _json['lastPeriod'] as core.int;
-    }
-    if (_json.containsKey('periodType')) {
-      periodType = _json['periodType'] as core.String;
-    }
-    if (_json.containsKey('price')) {
-      price = GoogleCloudChannelV1Price.fromJson(
-          _json['price'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('priceTiers')) {
-      priceTiers = (_json['priceTiers'] as core.List)
-          .map<GoogleCloudChannelV1PriceTier>((value) =>
-              GoogleCloudChannelV1PriceTier.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudChannelV1PricePhase.fromJson(core.Map _json)
+      : this(
+          firstPeriod: _json.containsKey('firstPeriod')
+              ? _json['firstPeriod'] as core.int
+              : null,
+          lastPeriod: _json.containsKey('lastPeriod')
+              ? _json['lastPeriod'] as core.int
+              : null,
+          periodType: _json.containsKey('periodType')
+              ? _json['periodType'] as core.String
+              : null,
+          price: _json.containsKey('price')
+              ? GoogleCloudChannelV1Price.fromJson(
+                  _json['price'] as core.Map<core.String, core.dynamic>)
+              : null,
+          priceTiers: _json.containsKey('priceTiers')
+              ? (_json['priceTiers'] as core.List)
+                  .map<GoogleCloudChannelV1PriceTier>((value) =>
+                      GoogleCloudChannelV1PriceTier.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (firstPeriod != null) 'firstPeriod': firstPeriod!,
@@ -4763,20 +5002,25 @@ class GoogleCloudChannelV1PriceTier {
   /// Price of the tier.
   GoogleCloudChannelV1Price? price;
 
-  GoogleCloudChannelV1PriceTier();
+  GoogleCloudChannelV1PriceTier({
+    this.firstResource,
+    this.lastResource,
+    this.price,
+  });
 
-  GoogleCloudChannelV1PriceTier.fromJson(core.Map _json) {
-    if (_json.containsKey('firstResource')) {
-      firstResource = _json['firstResource'] as core.int;
-    }
-    if (_json.containsKey('lastResource')) {
-      lastResource = _json['lastResource'] as core.int;
-    }
-    if (_json.containsKey('price')) {
-      price = GoogleCloudChannelV1Price.fromJson(
-          _json['price'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudChannelV1PriceTier.fromJson(core.Map _json)
+      : this(
+          firstResource: _json.containsKey('firstResource')
+              ? _json['firstResource'] as core.int
+              : null,
+          lastResource: _json.containsKey('lastResource')
+              ? _json['lastResource'] as core.int
+              : null,
+          price: _json.containsKey('price')
+              ? GoogleCloudChannelV1Price.fromJson(
+                  _json['price'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (firstResource != null) 'firstResource': firstResource!,
@@ -4797,17 +5041,19 @@ class GoogleCloudChannelV1Product {
   /// Format: products/{product_id}
   core.String? name;
 
-  GoogleCloudChannelV1Product();
+  GoogleCloudChannelV1Product({
+    this.marketingInfo,
+    this.name,
+  });
 
-  GoogleCloudChannelV1Product.fromJson(core.Map _json) {
-    if (_json.containsKey('marketingInfo')) {
-      marketingInfo = GoogleCloudChannelV1MarketingInfo.fromJson(
-          _json['marketingInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1Product.fromJson(core.Map _json)
+      : this(
+          marketingInfo: _json.containsKey('marketingInfo')
+              ? GoogleCloudChannelV1MarketingInfo.fromJson(
+                  _json['marketingInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (marketingInfo != null) 'marketingInfo': marketingInfo!.toJson(),
@@ -4826,21 +5072,27 @@ class GoogleCloudChannelV1ProvisionCloudIdentityRequest {
   /// Validate the request and preview the review, but do not post it.
   core.bool? validateOnly;
 
-  GoogleCloudChannelV1ProvisionCloudIdentityRequest();
+  GoogleCloudChannelV1ProvisionCloudIdentityRequest({
+    this.cloudIdentityInfo,
+    this.user,
+    this.validateOnly,
+  });
 
-  GoogleCloudChannelV1ProvisionCloudIdentityRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('cloudIdentityInfo')) {
-      cloudIdentityInfo = GoogleCloudChannelV1CloudIdentityInfo.fromJson(
-          _json['cloudIdentityInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('user')) {
-      user = GoogleCloudChannelV1AdminUser.fromJson(
-          _json['user'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('validateOnly')) {
-      validateOnly = _json['validateOnly'] as core.bool;
-    }
-  }
+  GoogleCloudChannelV1ProvisionCloudIdentityRequest.fromJson(core.Map _json)
+      : this(
+          cloudIdentityInfo: _json.containsKey('cloudIdentityInfo')
+              ? GoogleCloudChannelV1CloudIdentityInfo.fromJson(
+                  _json['cloudIdentityInfo']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          user: _json.containsKey('user')
+              ? GoogleCloudChannelV1AdminUser.fromJson(
+                  _json['user'] as core.Map<core.String, core.dynamic>)
+              : null,
+          validateOnly: _json.containsKey('validateOnly')
+              ? _json['validateOnly'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cloudIdentityInfo != null)
@@ -4870,19 +5122,23 @@ class GoogleCloudChannelV1ProvisionedService {
   /// Output only.
   core.String? skuId;
 
-  GoogleCloudChannelV1ProvisionedService();
+  GoogleCloudChannelV1ProvisionedService({
+    this.productId,
+    this.provisioningId,
+    this.skuId,
+  });
 
-  GoogleCloudChannelV1ProvisionedService.fromJson(core.Map _json) {
-    if (_json.containsKey('productId')) {
-      productId = _json['productId'] as core.String;
-    }
-    if (_json.containsKey('provisioningId')) {
-      provisioningId = _json['provisioningId'] as core.String;
-    }
-    if (_json.containsKey('skuId')) {
-      skuId = _json['skuId'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1ProvisionedService.fromJson(core.Map _json)
+      : this(
+          productId: _json.containsKey('productId')
+              ? _json['productId'] as core.String
+              : null,
+          provisioningId: _json.containsKey('provisioningId')
+              ? _json['provisioningId'] as core.String
+              : null,
+          skuId:
+              _json.containsKey('skuId') ? _json['skuId'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (productId != null) 'productId': productId!,
@@ -4898,14 +5154,17 @@ class GoogleCloudChannelV1PurchasableOffer {
   /// Offer.
   GoogleCloudChannelV1Offer? offer;
 
-  GoogleCloudChannelV1PurchasableOffer();
+  GoogleCloudChannelV1PurchasableOffer({
+    this.offer,
+  });
 
-  GoogleCloudChannelV1PurchasableOffer.fromJson(core.Map _json) {
-    if (_json.containsKey('offer')) {
-      offer = GoogleCloudChannelV1Offer.fromJson(
-          _json['offer'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudChannelV1PurchasableOffer.fromJson(core.Map _json)
+      : this(
+          offer: _json.containsKey('offer')
+              ? GoogleCloudChannelV1Offer.fromJson(
+                  _json['offer'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (offer != null) 'offer': offer!.toJson(),
@@ -4919,14 +5178,17 @@ class GoogleCloudChannelV1PurchasableSku {
   /// SKU
   GoogleCloudChannelV1Sku? sku;
 
-  GoogleCloudChannelV1PurchasableSku();
+  GoogleCloudChannelV1PurchasableSku({
+    this.sku,
+  });
 
-  GoogleCloudChannelV1PurchasableSku.fromJson(core.Map _json) {
-    if (_json.containsKey('sku')) {
-      sku = GoogleCloudChannelV1Sku.fromJson(
-          _json['sku'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudChannelV1PurchasableSku.fromJson(core.Map _json)
+      : this(
+          sku: _json.containsKey('sku')
+              ? GoogleCloudChannelV1Sku.fromJson(
+                  _json['sku'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sku != null) 'sku': sku!.toJson(),
@@ -4940,13 +5202,16 @@ class GoogleCloudChannelV1RegisterSubscriberRequest {
   /// Required.
   core.String? serviceAccount;
 
-  GoogleCloudChannelV1RegisterSubscriberRequest();
+  GoogleCloudChannelV1RegisterSubscriberRequest({
+    this.serviceAccount,
+  });
 
-  GoogleCloudChannelV1RegisterSubscriberRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('serviceAccount')) {
-      serviceAccount = _json['serviceAccount'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1RegisterSubscriberRequest.fromJson(core.Map _json)
+      : this(
+          serviceAccount: _json.containsKey('serviceAccount')
+              ? _json['serviceAccount'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
@@ -4958,13 +5223,15 @@ class GoogleCloudChannelV1RegisterSubscriberResponse {
   /// Name of the topic the subscriber will listen to.
   core.String? topic;
 
-  GoogleCloudChannelV1RegisterSubscriberResponse();
+  GoogleCloudChannelV1RegisterSubscriberResponse({
+    this.topic,
+  });
 
-  GoogleCloudChannelV1RegisterSubscriberResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('topic')) {
-      topic = _json['topic'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1RegisterSubscriberResponse.fromJson(core.Map _json)
+      : this(
+          topic:
+              _json.containsKey('topic') ? _json['topic'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (topic != null) 'topic': topic!,
@@ -4994,23 +5261,29 @@ class GoogleCloudChannelV1RenewalSettings {
   /// licenses) will be set to the number of active units at renewal time.
   core.bool? resizeUnitCount;
 
-  GoogleCloudChannelV1RenewalSettings();
+  GoogleCloudChannelV1RenewalSettings({
+    this.enableRenewal,
+    this.paymentCycle,
+    this.paymentPlan,
+    this.resizeUnitCount,
+  });
 
-  GoogleCloudChannelV1RenewalSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('enableRenewal')) {
-      enableRenewal = _json['enableRenewal'] as core.bool;
-    }
-    if (_json.containsKey('paymentCycle')) {
-      paymentCycle = GoogleCloudChannelV1Period.fromJson(
-          _json['paymentCycle'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('paymentPlan')) {
-      paymentPlan = _json['paymentPlan'] as core.String;
-    }
-    if (_json.containsKey('resizeUnitCount')) {
-      resizeUnitCount = _json['resizeUnitCount'] as core.bool;
-    }
-  }
+  GoogleCloudChannelV1RenewalSettings.fromJson(core.Map _json)
+      : this(
+          enableRenewal: _json.containsKey('enableRenewal')
+              ? _json['enableRenewal'] as core.bool
+              : null,
+          paymentCycle: _json.containsKey('paymentCycle')
+              ? GoogleCloudChannelV1Period.fromJson(
+                  _json['paymentCycle'] as core.Map<core.String, core.dynamic>)
+              : null,
+          paymentPlan: _json.containsKey('paymentPlan')
+              ? _json['paymentPlan'] as core.String
+              : null,
+          resizeUnitCount: _json.containsKey('resizeUnitCount')
+              ? _json['resizeUnitCount'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enableRenewal != null) 'enableRenewal': enableRenewal!,
@@ -5037,21 +5310,24 @@ class GoogleCloudChannelV1Sku {
   /// Product the SKU is associated with.
   GoogleCloudChannelV1Product? product;
 
-  GoogleCloudChannelV1Sku();
+  GoogleCloudChannelV1Sku({
+    this.marketingInfo,
+    this.name,
+    this.product,
+  });
 
-  GoogleCloudChannelV1Sku.fromJson(core.Map _json) {
-    if (_json.containsKey('marketingInfo')) {
-      marketingInfo = GoogleCloudChannelV1MarketingInfo.fromJson(
-          _json['marketingInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('product')) {
-      product = GoogleCloudChannelV1Product.fromJson(
-          _json['product'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudChannelV1Sku.fromJson(core.Map _json)
+      : this(
+          marketingInfo: _json.containsKey('marketingInfo')
+              ? GoogleCloudChannelV1MarketingInfo.fromJson(
+                  _json['marketingInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          product: _json.containsKey('product')
+              ? GoogleCloudChannelV1Product.fromJson(
+                  _json['product'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (marketingInfo != null) 'marketingInfo': marketingInfo!.toJson(),
@@ -5075,13 +5351,16 @@ class GoogleCloudChannelV1StartPaidServiceRequest {
   /// Optional.
   core.String? requestId;
 
-  GoogleCloudChannelV1StartPaidServiceRequest();
+  GoogleCloudChannelV1StartPaidServiceRequest({
+    this.requestId,
+  });
 
-  GoogleCloudChannelV1StartPaidServiceRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('requestId')) {
-      requestId = _json['requestId'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1StartPaidServiceRequest.fromJson(core.Map _json)
+      : this(
+          requestId: _json.containsKey('requestId')
+              ? _json['requestId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestId != null) 'requestId': requestId!,
@@ -5097,18 +5376,23 @@ class GoogleCloudChannelV1SubscriberEvent {
   /// Entitlement event send as part of Pub/Sub event to partners.
   GoogleCloudChannelV1EntitlementEvent? entitlementEvent;
 
-  GoogleCloudChannelV1SubscriberEvent();
+  GoogleCloudChannelV1SubscriberEvent({
+    this.customerEvent,
+    this.entitlementEvent,
+  });
 
-  GoogleCloudChannelV1SubscriberEvent.fromJson(core.Map _json) {
-    if (_json.containsKey('customerEvent')) {
-      customerEvent = GoogleCloudChannelV1CustomerEvent.fromJson(
-          _json['customerEvent'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('entitlementEvent')) {
-      entitlementEvent = GoogleCloudChannelV1EntitlementEvent.fromJson(
-          _json['entitlementEvent'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudChannelV1SubscriberEvent.fromJson(core.Map _json)
+      : this(
+          customerEvent: _json.containsKey('customerEvent')
+              ? GoogleCloudChannelV1CustomerEvent.fromJson(
+                  _json['customerEvent'] as core.Map<core.String, core.dynamic>)
+              : null,
+          entitlementEvent: _json.containsKey('entitlementEvent')
+              ? GoogleCloudChannelV1EntitlementEvent.fromJson(
+                  _json['entitlementEvent']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customerEvent != null) 'customerEvent': customerEvent!.toJson(),
@@ -5132,13 +5416,16 @@ class GoogleCloudChannelV1SuspendEntitlementRequest {
   /// Optional.
   core.String? requestId;
 
-  GoogleCloudChannelV1SuspendEntitlementRequest();
+  GoogleCloudChannelV1SuspendEntitlementRequest({
+    this.requestId,
+  });
 
-  GoogleCloudChannelV1SuspendEntitlementRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('requestId')) {
-      requestId = _json['requestId'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1SuspendEntitlementRequest.fromJson(core.Map _json)
+      : this(
+          requestId: _json.containsKey('requestId')
+              ? _json['requestId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestId != null) 'requestId': requestId!,
@@ -5162,19 +5449,24 @@ class GoogleCloudChannelV1TransferEligibility {
   /// Whether reseller is eligible to transfer the SKU.
   core.bool? isEligible;
 
-  GoogleCloudChannelV1TransferEligibility();
+  GoogleCloudChannelV1TransferEligibility({
+    this.description,
+    this.ineligibilityReason,
+    this.isEligible,
+  });
 
-  GoogleCloudChannelV1TransferEligibility.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('ineligibilityReason')) {
-      ineligibilityReason = _json['ineligibilityReason'] as core.String;
-    }
-    if (_json.containsKey('isEligible')) {
-      isEligible = _json['isEligible'] as core.bool;
-    }
-  }
+  GoogleCloudChannelV1TransferEligibility.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          ineligibilityReason: _json.containsKey('ineligibilityReason')
+              ? _json['ineligibilityReason'] as core.String
+              : null,
+          isEligible: _json.containsKey('isEligible')
+              ? _json['isEligible'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -5212,23 +5504,28 @@ class GoogleCloudChannelV1TransferEntitlementsRequest {
   /// Optional.
   core.String? requestId;
 
-  GoogleCloudChannelV1TransferEntitlementsRequest();
+  GoogleCloudChannelV1TransferEntitlementsRequest({
+    this.authToken,
+    this.entitlements,
+    this.requestId,
+  });
 
-  GoogleCloudChannelV1TransferEntitlementsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('authToken')) {
-      authToken = _json['authToken'] as core.String;
-    }
-    if (_json.containsKey('entitlements')) {
-      entitlements = (_json['entitlements'] as core.List)
-          .map<GoogleCloudChannelV1Entitlement>((value) =>
-              GoogleCloudChannelV1Entitlement.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('requestId')) {
-      requestId = _json['requestId'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1TransferEntitlementsRequest.fromJson(core.Map _json)
+      : this(
+          authToken: _json.containsKey('authToken')
+              ? _json['authToken'] as core.String
+              : null,
+          entitlements: _json.containsKey('entitlements')
+              ? (_json['entitlements'] as core.List)
+                  .map<GoogleCloudChannelV1Entitlement>((value) =>
+                      GoogleCloudChannelV1Entitlement.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          requestId: _json.containsKey('requestId')
+              ? _json['requestId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authToken != null) 'authToken': authToken!,
@@ -5245,17 +5542,20 @@ class GoogleCloudChannelV1TransferEntitlementsResponse {
   /// The transferred entitlements.
   core.List<GoogleCloudChannelV1Entitlement>? entitlements;
 
-  GoogleCloudChannelV1TransferEntitlementsResponse();
+  GoogleCloudChannelV1TransferEntitlementsResponse({
+    this.entitlements,
+  });
 
-  GoogleCloudChannelV1TransferEntitlementsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('entitlements')) {
-      entitlements = (_json['entitlements'] as core.List)
-          .map<GoogleCloudChannelV1Entitlement>((value) =>
-              GoogleCloudChannelV1Entitlement.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudChannelV1TransferEntitlementsResponse.fromJson(core.Map _json)
+      : this(
+          entitlements: _json.containsKey('entitlements')
+              ? (_json['entitlements'] as core.List)
+                  .map<GoogleCloudChannelV1Entitlement>((value) =>
+                      GoogleCloudChannelV1Entitlement.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (entitlements != null)
@@ -5283,21 +5583,25 @@ class GoogleCloudChannelV1TransferEntitlementsToGoogleRequest {
   /// Optional.
   core.String? requestId;
 
-  GoogleCloudChannelV1TransferEntitlementsToGoogleRequest();
+  GoogleCloudChannelV1TransferEntitlementsToGoogleRequest({
+    this.entitlements,
+    this.requestId,
+  });
 
   GoogleCloudChannelV1TransferEntitlementsToGoogleRequest.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('entitlements')) {
-      entitlements = (_json['entitlements'] as core.List)
-          .map<GoogleCloudChannelV1Entitlement>((value) =>
-              GoogleCloudChannelV1Entitlement.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('requestId')) {
-      requestId = _json['requestId'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          entitlements: _json.containsKey('entitlements')
+              ? (_json['entitlements'] as core.List)
+                  .map<GoogleCloudChannelV1Entitlement>((value) =>
+                      GoogleCloudChannelV1Entitlement.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          requestId: _json.containsKey('requestId')
+              ? _json['requestId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (entitlements != null)
@@ -5313,14 +5617,17 @@ class GoogleCloudChannelV1TransferableOffer {
   /// Offer with parameter constraints updated to allow the Transfer.
   GoogleCloudChannelV1Offer? offer;
 
-  GoogleCloudChannelV1TransferableOffer();
+  GoogleCloudChannelV1TransferableOffer({
+    this.offer,
+  });
 
-  GoogleCloudChannelV1TransferableOffer.fromJson(core.Map _json) {
-    if (_json.containsKey('offer')) {
-      offer = GoogleCloudChannelV1Offer.fromJson(
-          _json['offer'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudChannelV1TransferableOffer.fromJson(core.Map _json)
+      : this(
+          offer: _json.containsKey('offer')
+              ? GoogleCloudChannelV1Offer.fromJson(
+                  _json['offer'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (offer != null) 'offer': offer!.toJson(),
@@ -5343,22 +5650,28 @@ class GoogleCloudChannelV1TransferableSku {
   /// Describes the transfer eligibility of a SKU.
   GoogleCloudChannelV1TransferEligibility? transferEligibility;
 
-  GoogleCloudChannelV1TransferableSku();
+  GoogleCloudChannelV1TransferableSku({
+    this.legacySku,
+    this.sku,
+    this.transferEligibility,
+  });
 
-  GoogleCloudChannelV1TransferableSku.fromJson(core.Map _json) {
-    if (_json.containsKey('legacySku')) {
-      legacySku = GoogleCloudChannelV1Sku.fromJson(
-          _json['legacySku'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('sku')) {
-      sku = GoogleCloudChannelV1Sku.fromJson(
-          _json['sku'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('transferEligibility')) {
-      transferEligibility = GoogleCloudChannelV1TransferEligibility.fromJson(
-          _json['transferEligibility'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudChannelV1TransferableSku.fromJson(core.Map _json)
+      : this(
+          legacySku: _json.containsKey('legacySku')
+              ? GoogleCloudChannelV1Sku.fromJson(
+                  _json['legacySku'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sku: _json.containsKey('sku')
+              ? GoogleCloudChannelV1Sku.fromJson(
+                  _json['sku'] as core.Map<core.String, core.dynamic>)
+              : null,
+          transferEligibility: _json.containsKey('transferEligibility')
+              ? GoogleCloudChannelV1TransferEligibility.fromJson(
+                  _json['transferEligibility']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (legacySku != null) 'legacySku': legacySku!.toJson(),
@@ -5382,16 +5695,19 @@ class GoogleCloudChannelV1TrialSettings {
   /// * `false` - The entitlement is not in trial.
   core.bool? trial;
 
-  GoogleCloudChannelV1TrialSettings();
+  GoogleCloudChannelV1TrialSettings({
+    this.endTime,
+    this.trial,
+  });
 
-  GoogleCloudChannelV1TrialSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('trial')) {
-      trial = _json['trial'] as core.bool;
-    }
-  }
+  GoogleCloudChannelV1TrialSettings.fromJson(core.Map _json)
+      : this(
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          trial:
+              _json.containsKey('trial') ? _json['trial'] as core.bool : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
@@ -5406,13 +5722,16 @@ class GoogleCloudChannelV1UnregisterSubscriberRequest {
   /// Required.
   core.String? serviceAccount;
 
-  GoogleCloudChannelV1UnregisterSubscriberRequest();
+  GoogleCloudChannelV1UnregisterSubscriberRequest({
+    this.serviceAccount,
+  });
 
-  GoogleCloudChannelV1UnregisterSubscriberRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('serviceAccount')) {
-      serviceAccount = _json['serviceAccount'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1UnregisterSubscriberRequest.fromJson(core.Map _json)
+      : this(
+          serviceAccount: _json.containsKey('serviceAccount')
+              ? _json['serviceAccount'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
@@ -5424,13 +5743,15 @@ class GoogleCloudChannelV1UnregisterSubscriberResponse {
   /// Name of the topic the service account subscriber access was removed from.
   core.String? topic;
 
-  GoogleCloudChannelV1UnregisterSubscriberResponse();
+  GoogleCloudChannelV1UnregisterSubscriberResponse({
+    this.topic,
+  });
 
-  GoogleCloudChannelV1UnregisterSubscriberResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('topic')) {
-      topic = _json['topic'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1UnregisterSubscriberResponse.fromJson(core.Map _json)
+      : this(
+          topic:
+              _json.containsKey('topic') ? _json['topic'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (topic != null) 'topic': topic!,
@@ -5454,17 +5775,22 @@ class GoogleCloudChannelV1UpdateChannelPartnerLinkRequest {
   /// Required.
   core.String? updateMask;
 
-  GoogleCloudChannelV1UpdateChannelPartnerLinkRequest();
+  GoogleCloudChannelV1UpdateChannelPartnerLinkRequest({
+    this.channelPartnerLink,
+    this.updateMask,
+  });
 
-  GoogleCloudChannelV1UpdateChannelPartnerLinkRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('channelPartnerLink')) {
-      channelPartnerLink = GoogleCloudChannelV1ChannelPartnerLink.fromJson(
-          _json['channelPartnerLink'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1UpdateChannelPartnerLinkRequest.fromJson(core.Map _json)
+      : this(
+          channelPartnerLink: _json.containsKey('channelPartnerLink')
+              ? GoogleCloudChannelV1ChannelPartnerLink.fromJson(
+                  _json['channelPartnerLink']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: _json.containsKey('updateMask')
+              ? _json['updateMask'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channelPartnerLink != null)
@@ -5493,31 +5819,38 @@ class GoogleCloudChannelV1Value {
   /// Represents a string value.
   core.String? stringValue;
 
-  GoogleCloudChannelV1Value();
+  GoogleCloudChannelV1Value({
+    this.boolValue,
+    this.doubleValue,
+    this.int64Value,
+    this.protoValue,
+    this.stringValue,
+  });
 
-  GoogleCloudChannelV1Value.fromJson(core.Map _json) {
-    if (_json.containsKey('boolValue')) {
-      boolValue = _json['boolValue'] as core.bool;
-    }
-    if (_json.containsKey('doubleValue')) {
-      doubleValue = (_json['doubleValue'] as core.num).toDouble();
-    }
-    if (_json.containsKey('int64Value')) {
-      int64Value = _json['int64Value'] as core.String;
-    }
-    if (_json.containsKey('protoValue')) {
-      protoValue =
-          (_json['protoValue'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('stringValue')) {
-      stringValue = _json['stringValue'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1Value.fromJson(core.Map _json)
+      : this(
+          boolValue: _json.containsKey('boolValue')
+              ? _json['boolValue'] as core.bool
+              : null,
+          doubleValue: _json.containsKey('doubleValue')
+              ? (_json['doubleValue'] as core.num).toDouble()
+              : null,
+          int64Value: _json.containsKey('int64Value')
+              ? _json['int64Value'] as core.String
+              : null,
+          protoValue: _json.containsKey('protoValue')
+              ? (_json['protoValue'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          stringValue: _json.containsKey('stringValue')
+              ? _json['stringValue'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (boolValue != null) 'boolValue': boolValue!,
@@ -5533,13 +5866,16 @@ class GoogleCloudChannelV1alpha1AssociationInfo {
   /// The name of the base entitlement, for which this entitlement is an add-on.
   core.String? baseEntitlement;
 
-  GoogleCloudChannelV1alpha1AssociationInfo();
+  GoogleCloudChannelV1alpha1AssociationInfo({
+    this.baseEntitlement,
+  });
 
-  GoogleCloudChannelV1alpha1AssociationInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('baseEntitlement')) {
-      baseEntitlement = _json['baseEntitlement'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1alpha1AssociationInfo.fromJson(core.Map _json)
+      : this(
+          baseEntitlement: _json.containsKey('baseEntitlement')
+              ? _json['baseEntitlement'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (baseEntitlement != null) 'baseEntitlement': baseEntitlement!,
@@ -5563,20 +5899,26 @@ class GoogleCloudChannelV1alpha1CommitmentSettings {
   /// Output only.
   core.String? startTime;
 
-  GoogleCloudChannelV1alpha1CommitmentSettings();
+  GoogleCloudChannelV1alpha1CommitmentSettings({
+    this.endTime,
+    this.renewalSettings,
+    this.startTime,
+  });
 
-  GoogleCloudChannelV1alpha1CommitmentSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('renewalSettings')) {
-      renewalSettings = GoogleCloudChannelV1alpha1RenewalSettings.fromJson(
-          _json['renewalSettings'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1alpha1CommitmentSettings.fromJson(core.Map _json)
+      : this(
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          renewalSettings: _json.containsKey('renewalSettings')
+              ? GoogleCloudChannelV1alpha1RenewalSettings.fromJson(
+                  _json['renewalSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
@@ -5602,16 +5944,20 @@ class GoogleCloudChannelV1alpha1CustomerEvent {
   /// verified.
   core.String? eventType;
 
-  GoogleCloudChannelV1alpha1CustomerEvent();
+  GoogleCloudChannelV1alpha1CustomerEvent({
+    this.customer,
+    this.eventType,
+  });
 
-  GoogleCloudChannelV1alpha1CustomerEvent.fromJson(core.Map _json) {
-    if (_json.containsKey('customer')) {
-      customer = _json['customer'] as core.String;
-    }
-    if (_json.containsKey('eventType')) {
-      eventType = _json['eventType'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1alpha1CustomerEvent.fromJson(core.Map _json)
+      : this(
+          customer: _json.containsKey('customer')
+              ? _json['customer'] as core.String
+              : null,
+          eventType: _json.containsKey('eventType')
+              ? _json['eventType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customer != null) 'customer': customer!,
@@ -5732,72 +6078,86 @@ class GoogleCloudChannelV1alpha1Entitlement {
   /// Output only.
   core.String? updateTime;
 
-  GoogleCloudChannelV1alpha1Entitlement();
+  GoogleCloudChannelV1alpha1Entitlement({
+    this.assignedUnits,
+    this.associationInfo,
+    this.channelPartnerId,
+    this.commitmentSettings,
+    this.createTime,
+    this.maxUnits,
+    this.name,
+    this.numUnits,
+    this.offer,
+    this.parameters,
+    this.provisionedService,
+    this.provisioningState,
+    this.purchaseOrderId,
+    this.suspensionReasons,
+    this.trialSettings,
+    this.updateTime,
+  });
 
-  GoogleCloudChannelV1alpha1Entitlement.fromJson(core.Map _json) {
-    if (_json.containsKey('assignedUnits')) {
-      assignedUnits = _json['assignedUnits'] as core.int;
-    }
-    if (_json.containsKey('associationInfo')) {
-      associationInfo = GoogleCloudChannelV1alpha1AssociationInfo.fromJson(
-          _json['associationInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('channelPartnerId')) {
-      channelPartnerId = _json['channelPartnerId'] as core.String;
-    }
-    if (_json.containsKey('commitmentSettings')) {
-      commitmentSettings =
-          GoogleCloudChannelV1alpha1CommitmentSettings.fromJson(
-              _json['commitmentSettings']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('maxUnits')) {
-      maxUnits = _json['maxUnits'] as core.int;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('numUnits')) {
-      numUnits = _json['numUnits'] as core.int;
-    }
-    if (_json.containsKey('offer')) {
-      offer = _json['offer'] as core.String;
-    }
-    if (_json.containsKey('parameters')) {
-      parameters = (_json['parameters'] as core.List)
-          .map<GoogleCloudChannelV1alpha1Parameter>((value) =>
-              GoogleCloudChannelV1alpha1Parameter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('provisionedService')) {
-      provisionedService =
-          GoogleCloudChannelV1alpha1ProvisionedService.fromJson(
-              _json['provisionedService']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('provisioningState')) {
-      provisioningState = _json['provisioningState'] as core.String;
-    }
-    if (_json.containsKey('purchaseOrderId')) {
-      purchaseOrderId = _json['purchaseOrderId'] as core.String;
-    }
-    if (_json.containsKey('suspensionReasons')) {
-      suspensionReasons = (_json['suspensionReasons'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('trialSettings')) {
-      trialSettings = GoogleCloudChannelV1alpha1TrialSettings.fromJson(
-          _json['trialSettings'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1alpha1Entitlement.fromJson(core.Map _json)
+      : this(
+          assignedUnits: _json.containsKey('assignedUnits')
+              ? _json['assignedUnits'] as core.int
+              : null,
+          associationInfo: _json.containsKey('associationInfo')
+              ? GoogleCloudChannelV1alpha1AssociationInfo.fromJson(
+                  _json['associationInfo']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          channelPartnerId: _json.containsKey('channelPartnerId')
+              ? _json['channelPartnerId'] as core.String
+              : null,
+          commitmentSettings: _json.containsKey('commitmentSettings')
+              ? GoogleCloudChannelV1alpha1CommitmentSettings.fromJson(
+                  _json['commitmentSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          maxUnits: _json.containsKey('maxUnits')
+              ? _json['maxUnits'] as core.int
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          numUnits: _json.containsKey('numUnits')
+              ? _json['numUnits'] as core.int
+              : null,
+          offer:
+              _json.containsKey('offer') ? _json['offer'] as core.String : null,
+          parameters: _json.containsKey('parameters')
+              ? (_json['parameters'] as core.List)
+                  .map<GoogleCloudChannelV1alpha1Parameter>((value) =>
+                      GoogleCloudChannelV1alpha1Parameter.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          provisionedService: _json.containsKey('provisionedService')
+              ? GoogleCloudChannelV1alpha1ProvisionedService.fromJson(
+                  _json['provisionedService']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          provisioningState: _json.containsKey('provisioningState')
+              ? _json['provisioningState'] as core.String
+              : null,
+          purchaseOrderId: _json.containsKey('purchaseOrderId')
+              ? _json['purchaseOrderId'] as core.String
+              : null,
+          suspensionReasons: _json.containsKey('suspensionReasons')
+              ? (_json['suspensionReasons'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          trialSettings: _json.containsKey('trialSettings')
+              ? GoogleCloudChannelV1alpha1TrialSettings.fromJson(
+                  _json['trialSettings'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedUnits != null) 'assignedUnits': assignedUnits!,
@@ -5852,16 +6212,20 @@ class GoogleCloudChannelV1alpha1EntitlementEvent {
   /// - "LICENSE_CAP_CHANGED" : License cap was changed for the entitlement.
   core.String? eventType;
 
-  GoogleCloudChannelV1alpha1EntitlementEvent();
+  GoogleCloudChannelV1alpha1EntitlementEvent({
+    this.entitlement,
+    this.eventType,
+  });
 
-  GoogleCloudChannelV1alpha1EntitlementEvent.fromJson(core.Map _json) {
-    if (_json.containsKey('entitlement')) {
-      entitlement = _json['entitlement'] as core.String;
-    }
-    if (_json.containsKey('eventType')) {
-      eventType = _json['eventType'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1alpha1EntitlementEvent.fromJson(core.Map _json)
+      : this(
+          entitlement: _json.containsKey('entitlement')
+              ? _json['entitlement'] as core.String
+              : null,
+          eventType: _json.containsKey('eventType')
+              ? _json['eventType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (entitlement != null) 'entitlement': entitlement!,
@@ -5902,13 +6266,16 @@ class GoogleCloudChannelV1alpha1OperationMetadata {
   /// ProvisionCloudIdentity.
   core.String? operationType;
 
-  GoogleCloudChannelV1alpha1OperationMetadata();
+  GoogleCloudChannelV1alpha1OperationMetadata({
+    this.operationType,
+  });
 
-  GoogleCloudChannelV1alpha1OperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('operationType')) {
-      operationType = _json['operationType'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1alpha1OperationMetadata.fromJson(core.Map _json)
+      : this(
+          operationType: _json.containsKey('operationType')
+              ? _json['operationType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (operationType != null) 'operationType': operationType!,
@@ -5931,20 +6298,23 @@ class GoogleCloudChannelV1alpha1Parameter {
   /// Value of the parameter.
   GoogleCloudChannelV1alpha1Value? value;
 
-  GoogleCloudChannelV1alpha1Parameter();
+  GoogleCloudChannelV1alpha1Parameter({
+    this.editable,
+    this.name,
+    this.value,
+  });
 
-  GoogleCloudChannelV1alpha1Parameter.fromJson(core.Map _json) {
-    if (_json.containsKey('editable')) {
-      editable = _json['editable'] as core.bool;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = GoogleCloudChannelV1alpha1Value.fromJson(
-          _json['value'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudChannelV1alpha1Parameter.fromJson(core.Map _json)
+      : this(
+          editable: _json.containsKey('editable')
+              ? _json['editable'] as core.bool
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          value: _json.containsKey('value')
+              ? GoogleCloudChannelV1alpha1Value.fromJson(
+                  _json['value'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (editable != null) 'editable': editable!,
@@ -5966,16 +6336,20 @@ class GoogleCloudChannelV1alpha1Period {
   /// - "YEAR" : Year.
   core.String? periodType;
 
-  GoogleCloudChannelV1alpha1Period();
+  GoogleCloudChannelV1alpha1Period({
+    this.duration,
+    this.periodType,
+  });
 
-  GoogleCloudChannelV1alpha1Period.fromJson(core.Map _json) {
-    if (_json.containsKey('duration')) {
-      duration = _json['duration'] as core.int;
-    }
-    if (_json.containsKey('periodType')) {
-      periodType = _json['periodType'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1alpha1Period.fromJson(core.Map _json)
+      : this(
+          duration: _json.containsKey('duration')
+              ? _json['duration'] as core.int
+              : null,
+          periodType: _json.containsKey('periodType')
+              ? _json['periodType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (duration != null) 'duration': duration!,
@@ -6003,19 +6377,23 @@ class GoogleCloudChannelV1alpha1ProvisionedService {
   /// Output only.
   core.String? skuId;
 
-  GoogleCloudChannelV1alpha1ProvisionedService();
+  GoogleCloudChannelV1alpha1ProvisionedService({
+    this.productId,
+    this.provisioningId,
+    this.skuId,
+  });
 
-  GoogleCloudChannelV1alpha1ProvisionedService.fromJson(core.Map _json) {
-    if (_json.containsKey('productId')) {
-      productId = _json['productId'] as core.String;
-    }
-    if (_json.containsKey('provisioningId')) {
-      provisioningId = _json['provisioningId'] as core.String;
-    }
-    if (_json.containsKey('skuId')) {
-      skuId = _json['skuId'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1alpha1ProvisionedService.fromJson(core.Map _json)
+      : this(
+          productId: _json.containsKey('productId')
+              ? _json['productId'] as core.String
+              : null,
+          provisioningId: _json.containsKey('provisioningId')
+              ? _json['provisioningId'] as core.String
+              : null,
+          skuId:
+              _json.containsKey('skuId') ? _json['skuId'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (productId != null) 'productId': productId!,
@@ -6063,29 +6441,37 @@ class GoogleCloudChannelV1alpha1RenewalSettings {
   /// licenses) will be set to the number of active units at renewal time.
   core.bool? resizeUnitCount;
 
-  GoogleCloudChannelV1alpha1RenewalSettings();
+  GoogleCloudChannelV1alpha1RenewalSettings({
+    this.disableCommitment,
+    this.enableRenewal,
+    this.paymentCycle,
+    this.paymentOption,
+    this.paymentPlan,
+    this.resizeUnitCount,
+  });
 
-  GoogleCloudChannelV1alpha1RenewalSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('disableCommitment')) {
-      disableCommitment = _json['disableCommitment'] as core.bool;
-    }
-    if (_json.containsKey('enableRenewal')) {
-      enableRenewal = _json['enableRenewal'] as core.bool;
-    }
-    if (_json.containsKey('paymentCycle')) {
-      paymentCycle = GoogleCloudChannelV1alpha1Period.fromJson(
-          _json['paymentCycle'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('paymentOption')) {
-      paymentOption = _json['paymentOption'] as core.String;
-    }
-    if (_json.containsKey('paymentPlan')) {
-      paymentPlan = _json['paymentPlan'] as core.String;
-    }
-    if (_json.containsKey('resizeUnitCount')) {
-      resizeUnitCount = _json['resizeUnitCount'] as core.bool;
-    }
-  }
+  GoogleCloudChannelV1alpha1RenewalSettings.fromJson(core.Map _json)
+      : this(
+          disableCommitment: _json.containsKey('disableCommitment')
+              ? _json['disableCommitment'] as core.bool
+              : null,
+          enableRenewal: _json.containsKey('enableRenewal')
+              ? _json['enableRenewal'] as core.bool
+              : null,
+          paymentCycle: _json.containsKey('paymentCycle')
+              ? GoogleCloudChannelV1alpha1Period.fromJson(
+                  _json['paymentCycle'] as core.Map<core.String, core.dynamic>)
+              : null,
+          paymentOption: _json.containsKey('paymentOption')
+              ? _json['paymentOption'] as core.String
+              : null,
+          paymentPlan: _json.containsKey('paymentPlan')
+              ? _json['paymentPlan'] as core.String
+              : null,
+          resizeUnitCount: _json.containsKey('resizeUnitCount')
+              ? _json['resizeUnitCount'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disableCommitment != null) 'disableCommitment': disableCommitment!,
@@ -6106,18 +6492,23 @@ class GoogleCloudChannelV1alpha1SubscriberEvent {
   /// Entitlement event send as part of Pub/Sub event to partners.
   GoogleCloudChannelV1alpha1EntitlementEvent? entitlementEvent;
 
-  GoogleCloudChannelV1alpha1SubscriberEvent();
+  GoogleCloudChannelV1alpha1SubscriberEvent({
+    this.customerEvent,
+    this.entitlementEvent,
+  });
 
-  GoogleCloudChannelV1alpha1SubscriberEvent.fromJson(core.Map _json) {
-    if (_json.containsKey('customerEvent')) {
-      customerEvent = GoogleCloudChannelV1alpha1CustomerEvent.fromJson(
-          _json['customerEvent'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('entitlementEvent')) {
-      entitlementEvent = GoogleCloudChannelV1alpha1EntitlementEvent.fromJson(
-          _json['entitlementEvent'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudChannelV1alpha1SubscriberEvent.fromJson(core.Map _json)
+      : this(
+          customerEvent: _json.containsKey('customerEvent')
+              ? GoogleCloudChannelV1alpha1CustomerEvent.fromJson(
+                  _json['customerEvent'] as core.Map<core.String, core.dynamic>)
+              : null,
+          entitlementEvent: _json.containsKey('entitlementEvent')
+              ? GoogleCloudChannelV1alpha1EntitlementEvent.fromJson(
+                  _json['entitlementEvent']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customerEvent != null) 'customerEvent': customerEvent!.toJson(),
@@ -6133,18 +6524,21 @@ class GoogleCloudChannelV1alpha1TransferEntitlementsResponse {
   /// The transferred entitlements.
   core.List<GoogleCloudChannelV1alpha1Entitlement>? entitlements;
 
-  GoogleCloudChannelV1alpha1TransferEntitlementsResponse();
+  GoogleCloudChannelV1alpha1TransferEntitlementsResponse({
+    this.entitlements,
+  });
 
   GoogleCloudChannelV1alpha1TransferEntitlementsResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('entitlements')) {
-      entitlements = (_json['entitlements'] as core.List)
-          .map<GoogleCloudChannelV1alpha1Entitlement>((value) =>
-              GoogleCloudChannelV1alpha1Entitlement.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+      core.Map _json)
+      : this(
+          entitlements: _json.containsKey('entitlements')
+              ? (_json['entitlements'] as core.List)
+                  .map<GoogleCloudChannelV1alpha1Entitlement>((value) =>
+                      GoogleCloudChannelV1alpha1Entitlement.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (entitlements != null)
@@ -6166,16 +6560,19 @@ class GoogleCloudChannelV1alpha1TrialSettings {
   /// * `false` - The entitlement is not in trial.
   core.bool? trial;
 
-  GoogleCloudChannelV1alpha1TrialSettings();
+  GoogleCloudChannelV1alpha1TrialSettings({
+    this.endTime,
+    this.trial,
+  });
 
-  GoogleCloudChannelV1alpha1TrialSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('trial')) {
-      trial = _json['trial'] as core.bool;
-    }
-  }
+  GoogleCloudChannelV1alpha1TrialSettings.fromJson(core.Map _json)
+      : this(
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          trial:
+              _json.containsKey('trial') ? _json['trial'] as core.bool : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
@@ -6203,31 +6600,38 @@ class GoogleCloudChannelV1alpha1Value {
   /// Represents a string value.
   core.String? stringValue;
 
-  GoogleCloudChannelV1alpha1Value();
+  GoogleCloudChannelV1alpha1Value({
+    this.boolValue,
+    this.doubleValue,
+    this.int64Value,
+    this.protoValue,
+    this.stringValue,
+  });
 
-  GoogleCloudChannelV1alpha1Value.fromJson(core.Map _json) {
-    if (_json.containsKey('boolValue')) {
-      boolValue = _json['boolValue'] as core.bool;
-    }
-    if (_json.containsKey('doubleValue')) {
-      doubleValue = (_json['doubleValue'] as core.num).toDouble();
-    }
-    if (_json.containsKey('int64Value')) {
-      int64Value = _json['int64Value'] as core.String;
-    }
-    if (_json.containsKey('protoValue')) {
-      protoValue =
-          (_json['protoValue'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('stringValue')) {
-      stringValue = _json['stringValue'] as core.String;
-    }
-  }
+  GoogleCloudChannelV1alpha1Value.fromJson(core.Map _json)
+      : this(
+          boolValue: _json.containsKey('boolValue')
+              ? _json['boolValue'] as core.bool
+              : null,
+          doubleValue: _json.containsKey('doubleValue')
+              ? (_json['doubleValue'] as core.num).toDouble()
+              : null,
+          int64Value: _json.containsKey('int64Value')
+              ? _json['int64Value'] as core.String
+              : null,
+          protoValue: _json.containsKey('protoValue')
+              ? (_json['protoValue'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          stringValue: _json.containsKey('stringValue')
+              ? _json['stringValue'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (boolValue != null) 'boolValue': boolValue!,
@@ -6257,20 +6661,24 @@ class GoogleLongrunningListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<GoogleLongrunningOperation>? operations;
 
-  GoogleLongrunningListOperationsResponse();
+  GoogleLongrunningListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
 
-  GoogleLongrunningListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('operations')) {
-      operations = (_json['operations'] as core.List)
-          .map<GoogleLongrunningOperation>((value) =>
-              GoogleLongrunningOperation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleLongrunningListOperationsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          operations: _json.containsKey('operations')
+              ? (_json['operations'] as core.List)
+                  .map<GoogleLongrunningOperation>((value) =>
+                      GoogleLongrunningOperation.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -6322,36 +6730,39 @@ class GoogleLongrunningOperation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object>? response;
 
-  GoogleLongrunningOperation();
+  GoogleLongrunningOperation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
-  GoogleLongrunningOperation.fromJson(core.Map _json) {
-    if (_json.containsKey('done')) {
-      done = _json['done'] as core.bool;
-    }
-    if (_json.containsKey('error')) {
-      error = GoogleRpcStatus.fromJson(
-          _json['error'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('response')) {
-      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-  }
+  GoogleLongrunningOperation.fromJson(core.Map _json)
+      : this(
+          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
+          error: _json.containsKey('error')
+              ? GoogleRpcStatus.fromJson(
+                  _json['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          response: _json.containsKey('response')
+              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
@@ -6404,27 +6815,30 @@ class GoogleRpcStatus {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  GoogleRpcStatus();
+  GoogleRpcStatus({
+    this.code,
+    this.details,
+    this.message,
+  });
 
-  GoogleRpcStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.int;
-    }
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  GoogleRpcStatus.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -6452,19 +6866,21 @@ class GoogleTypeMoney {
   /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
   core.String? units;
 
-  GoogleTypeMoney();
+  GoogleTypeMoney({
+    this.currencyCode,
+    this.nanos,
+    this.units,
+  });
 
-  GoogleTypeMoney.fromJson(core.Map _json) {
-    if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'] as core.String;
-    }
-    if (_json.containsKey('nanos')) {
-      nanos = _json['nanos'] as core.int;
-    }
-    if (_json.containsKey('units')) {
-      units = _json['units'] as core.String;
-    }
-  }
+  GoogleTypeMoney.fromJson(core.Map _json)
+      : this(
+          currencyCode: _json.containsKey('currencyCode')
+              ? _json['currencyCode'] as core.String
+              : null,
+          nanos: _json.containsKey('nanos') ? _json['nanos'] as core.int : null,
+          units:
+              _json.containsKey('units') ? _json['units'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (currencyCode != null) 'currencyCode': currencyCode!,
@@ -6594,47 +7010,60 @@ class GoogleTypePostalAddress {
   /// Optional.
   core.String? sublocality;
 
-  GoogleTypePostalAddress();
+  GoogleTypePostalAddress({
+    this.addressLines,
+    this.administrativeArea,
+    this.languageCode,
+    this.locality,
+    this.organization,
+    this.postalCode,
+    this.recipients,
+    this.regionCode,
+    this.revision,
+    this.sortingCode,
+    this.sublocality,
+  });
 
-  GoogleTypePostalAddress.fromJson(core.Map _json) {
-    if (_json.containsKey('addressLines')) {
-      addressLines = (_json['addressLines'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('administrativeArea')) {
-      administrativeArea = _json['administrativeArea'] as core.String;
-    }
-    if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'] as core.String;
-    }
-    if (_json.containsKey('locality')) {
-      locality = _json['locality'] as core.String;
-    }
-    if (_json.containsKey('organization')) {
-      organization = _json['organization'] as core.String;
-    }
-    if (_json.containsKey('postalCode')) {
-      postalCode = _json['postalCode'] as core.String;
-    }
-    if (_json.containsKey('recipients')) {
-      recipients = (_json['recipients'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('regionCode')) {
-      regionCode = _json['regionCode'] as core.String;
-    }
-    if (_json.containsKey('revision')) {
-      revision = _json['revision'] as core.int;
-    }
-    if (_json.containsKey('sortingCode')) {
-      sortingCode = _json['sortingCode'] as core.String;
-    }
-    if (_json.containsKey('sublocality')) {
-      sublocality = _json['sublocality'] as core.String;
-    }
-  }
+  GoogleTypePostalAddress.fromJson(core.Map _json)
+      : this(
+          addressLines: _json.containsKey('addressLines')
+              ? (_json['addressLines'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          administrativeArea: _json.containsKey('administrativeArea')
+              ? _json['administrativeArea'] as core.String
+              : null,
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
+          locality: _json.containsKey('locality')
+              ? _json['locality'] as core.String
+              : null,
+          organization: _json.containsKey('organization')
+              ? _json['organization'] as core.String
+              : null,
+          postalCode: _json.containsKey('postalCode')
+              ? _json['postalCode'] as core.String
+              : null,
+          recipients: _json.containsKey('recipients')
+              ? (_json['recipients'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          regionCode: _json.containsKey('regionCode')
+              ? _json['regionCode'] as core.String
+              : null,
+          revision: _json.containsKey('revision')
+              ? _json['revision'] as core.int
+              : null,
+          sortingCode: _json.containsKey('sortingCode')
+              ? _json['sortingCode'] as core.String
+              : null,
+          sublocality: _json.containsKey('sublocality')
+              ? _json['sublocality'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (addressLines != null) 'addressLines': addressLines!,
