@@ -1958,6 +1958,46 @@ class Notification {
       };
 }
 
+/// An alert that gets triggered when a user enables autoforwarding to an email
+/// which is outside of its domain
+class OutOfDomainForwarding {
+  /// Email of the actor who triggered the alert.
+  core.String? actorEmail;
+
+  /// The time the email forwarding was enabled
+  core.String? enableTime;
+
+  /// Email to which emails are being forwarded
+  core.String? forwardeeEmail;
+
+  /// IP address of the user while enabling forwarding
+  core.String? ipAddress;
+
+  OutOfDomainForwarding();
+
+  OutOfDomainForwarding.fromJson(core.Map _json) {
+    if (_json.containsKey('actorEmail')) {
+      actorEmail = _json['actorEmail'] as core.String;
+    }
+    if (_json.containsKey('enableTime')) {
+      enableTime = _json['enableTime'] as core.String;
+    }
+    if (_json.containsKey('forwardeeEmail')) {
+      forwardeeEmail = _json['forwardeeEmail'] as core.String;
+    }
+    if (_json.containsKey('ipAddress')) {
+      ipAddress = _json['ipAddress'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actorEmail != null) 'actorEmail': actorEmail!,
+        if (enableTime != null) 'enableTime': enableTime!,
+        if (forwardeeEmail != null) 'forwardeeEmail': forwardeeEmail!,
+        if (ipAddress != null) 'ipAddress': ipAddress!,
+      };
+}
+
 /// Alert for a spike in user reported phishing.
 ///
 /// *Warning*: This type has been deprecated. Use

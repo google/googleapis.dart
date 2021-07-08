@@ -117,14 +117,14 @@ void checkApksAddExternallyHostedResponse(
   buildCounterApksAddExternallyHostedResponse--;
 }
 
-core.List<api.Apk> buildUnnamed1667() {
+core.List<api.Apk> buildUnnamed1666() {
   var o = <api.Apk>[];
   o.add(buildApk());
   o.add(buildApk());
   return o;
 }
 
-void checkUnnamed1667(core.List<api.Apk> o) {
+void checkUnnamed1666(core.List<api.Apk> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApk(o[0] as api.Apk);
   checkApk(o[1] as api.Apk);
@@ -135,7 +135,7 @@ api.ApksListResponse buildApksListResponse() {
   var o = api.ApksListResponse();
   buildCounterApksListResponse++;
   if (buildCounterApksListResponse < 3) {
-    o.apks = buildUnnamed1667();
+    o.apks = buildUnnamed1666();
     o.kind = 'foo';
   }
   buildCounterApksListResponse--;
@@ -145,7 +145,7 @@ api.ApksListResponse buildApksListResponse() {
 void checkApksListResponse(api.ApksListResponse o) {
   buildCounterApksListResponse++;
   if (buildCounterApksListResponse < 3) {
-    checkUnnamed1667(o.apks!);
+    checkUnnamed1666(o.apks!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -250,14 +250,14 @@ void checkBundle(api.Bundle o) {
   buildCounterBundle--;
 }
 
-core.List<api.Bundle> buildUnnamed1668() {
+core.List<api.Bundle> buildUnnamed1667() {
   var o = <api.Bundle>[];
   o.add(buildBundle());
   o.add(buildBundle());
   return o;
 }
 
-void checkUnnamed1668(core.List<api.Bundle> o) {
+void checkUnnamed1667(core.List<api.Bundle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBundle(o[0] as api.Bundle);
   checkBundle(o[1] as api.Bundle);
@@ -268,7 +268,7 @@ api.BundlesListResponse buildBundlesListResponse() {
   var o = api.BundlesListResponse();
   buildCounterBundlesListResponse++;
   if (buildCounterBundlesListResponse < 3) {
-    o.bundles = buildUnnamed1668();
+    o.bundles = buildUnnamed1667();
     o.kind = 'foo';
   }
   buildCounterBundlesListResponse--;
@@ -278,7 +278,7 @@ api.BundlesListResponse buildBundlesListResponse() {
 void checkBundlesListResponse(api.BundlesListResponse o) {
   buildCounterBundlesListResponse++;
   if (buildCounterBundlesListResponse < 3) {
-    checkUnnamed1668(o.bundles!);
+    checkUnnamed1667(o.bundles!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -308,14 +308,14 @@ void checkComment(api.Comment o) {
   buildCounterComment--;
 }
 
-core.List<core.String> buildUnnamed1669() {
+core.List<core.String> buildUnnamed1668() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed1669(core.List<core.String> o) {
+void checkUnnamed1668(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -332,7 +332,7 @@ api.CountryTargeting buildCountryTargeting() {
   var o = api.CountryTargeting();
   buildCounterCountryTargeting++;
   if (buildCounterCountryTargeting < 3) {
-    o.countries = buildUnnamed1669();
+    o.countries = buildUnnamed1668();
     o.includeRestOfWorld = true;
   }
   buildCounterCountryTargeting--;
@@ -342,7 +342,7 @@ api.CountryTargeting buildCountryTargeting() {
 void checkCountryTargeting(api.CountryTargeting o) {
   buildCounterCountryTargeting++;
   if (buildCounterCountryTargeting < 3) {
-    checkUnnamed1669(o.countries!);
+    checkUnnamed1668(o.countries!);
     unittest.expect(o.includeRestOfWorld!, unittest.isTrue);
   }
   buildCounterCountryTargeting--;
@@ -486,6 +486,25 @@ void checkDeviceMetadata(api.DeviceMetadata o) {
   buildCounterDeviceMetadata--;
 }
 
+core.List<core.String> buildUnnamed1669() {
+  var o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed1669(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.List<core.String> buildUnnamed1670() {
   var o = <core.String>[];
   o.add('foo');
@@ -505,33 +524,14 @@ void checkUnnamed1670(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed1671() {
-  var o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
-
-void checkUnnamed1671(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.int buildCounterDeviceSpec = 0;
 api.DeviceSpec buildDeviceSpec() {
   var o = api.DeviceSpec();
   buildCounterDeviceSpec++;
   if (buildCounterDeviceSpec < 3) {
     o.screenDensity = 42;
-    o.supportedAbis = buildUnnamed1670();
-    o.supportedLocales = buildUnnamed1671();
+    o.supportedAbis = buildUnnamed1669();
+    o.supportedLocales = buildUnnamed1670();
   }
   buildCounterDeviceSpec--;
   return o;
@@ -544,8 +544,8 @@ void checkDeviceSpec(api.DeviceSpec o) {
       o.screenDensity!,
       unittest.equals(42),
     );
-    checkUnnamed1670(o.supportedAbis!);
-    checkUnnamed1671(o.supportedLocales!);
+    checkUnnamed1669(o.supportedAbis!);
+    checkUnnamed1670(o.supportedLocales!);
   }
   buildCounterDeviceSpec--;
 }
@@ -596,6 +596,25 @@ void checkExpansionFilesUploadResponse(api.ExpansionFilesUploadResponse o) {
   buildCounterExpansionFilesUploadResponse--;
 }
 
+core.List<core.String> buildUnnamed1671() {
+  var o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed1671(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.List<core.String> buildUnnamed1672() {
   var o = <core.String>[];
   o.add('foo');
@@ -634,33 +653,14 @@ void checkUnnamed1673(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed1674() {
-  var o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
-
-void checkUnnamed1674(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<api.UsesPermission> buildUnnamed1675() {
+core.List<api.UsesPermission> buildUnnamed1674() {
   var o = <api.UsesPermission>[];
   o.add(buildUsesPermission());
   o.add(buildUsesPermission());
   return o;
 }
 
-void checkUnnamed1675(core.List<api.UsesPermission> o) {
+void checkUnnamed1674(core.List<api.UsesPermission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUsesPermission(o[0] as api.UsesPermission);
   checkUsesPermission(o[1] as api.UsesPermission);
@@ -672,7 +672,7 @@ api.ExternallyHostedApk buildExternallyHostedApk() {
   buildCounterExternallyHostedApk++;
   if (buildCounterExternallyHostedApk < 3) {
     o.applicationLabel = 'foo';
-    o.certificateBase64s = buildUnnamed1672();
+    o.certificateBase64s = buildUnnamed1671();
     o.externallyHostedUrl = 'foo';
     o.fileSha1Base64 = 'foo';
     o.fileSha256Base64 = 'foo';
@@ -680,10 +680,10 @@ api.ExternallyHostedApk buildExternallyHostedApk() {
     o.iconBase64 = 'foo';
     o.maximumSdk = 42;
     o.minimumSdk = 42;
-    o.nativeCodes = buildUnnamed1673();
+    o.nativeCodes = buildUnnamed1672();
     o.packageName = 'foo';
-    o.usesFeatures = buildUnnamed1674();
-    o.usesPermissions = buildUnnamed1675();
+    o.usesFeatures = buildUnnamed1673();
+    o.usesPermissions = buildUnnamed1674();
     o.versionCode = 42;
     o.versionName = 'foo';
   }
@@ -698,7 +698,7 @@ void checkExternallyHostedApk(api.ExternallyHostedApk o) {
       o.applicationLabel!,
       unittest.equals('foo'),
     );
-    checkUnnamed1672(o.certificateBase64s!);
+    checkUnnamed1671(o.certificateBase64s!);
     unittest.expect(
       o.externallyHostedUrl!,
       unittest.equals('foo'),
@@ -727,13 +727,13 @@ void checkExternallyHostedApk(api.ExternallyHostedApk o) {
       o.minimumSdk!,
       unittest.equals(42),
     );
-    checkUnnamed1673(o.nativeCodes!);
+    checkUnnamed1672(o.nativeCodes!);
     unittest.expect(
       o.packageName!,
       unittest.equals('foo'),
     );
-    checkUnnamed1674(o.usesFeatures!);
-    checkUnnamed1675(o.usesPermissions!);
+    checkUnnamed1673(o.usesFeatures!);
+    checkUnnamed1674(o.usesPermissions!);
     unittest.expect(
       o.versionCode!,
       unittest.equals(42),
@@ -783,6 +783,38 @@ void checkImage(api.Image o) {
   buildCounterImage--;
 }
 
+core.List<api.Image> buildUnnamed1675() {
+  var o = <api.Image>[];
+  o.add(buildImage());
+  o.add(buildImage());
+  return o;
+}
+
+void checkUnnamed1675(core.List<api.Image> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkImage(o[0] as api.Image);
+  checkImage(o[1] as api.Image);
+}
+
+core.int buildCounterImagesDeleteAllResponse = 0;
+api.ImagesDeleteAllResponse buildImagesDeleteAllResponse() {
+  var o = api.ImagesDeleteAllResponse();
+  buildCounterImagesDeleteAllResponse++;
+  if (buildCounterImagesDeleteAllResponse < 3) {
+    o.deleted = buildUnnamed1675();
+  }
+  buildCounterImagesDeleteAllResponse--;
+  return o;
+}
+
+void checkImagesDeleteAllResponse(api.ImagesDeleteAllResponse o) {
+  buildCounterImagesDeleteAllResponse++;
+  if (buildCounterImagesDeleteAllResponse < 3) {
+    checkUnnamed1675(o.deleted!);
+  }
+  buildCounterImagesDeleteAllResponse--;
+}
+
 core.List<api.Image> buildUnnamed1676() {
   var o = <api.Image>[];
   o.add(buildImage());
@@ -796,44 +828,12 @@ void checkUnnamed1676(core.List<api.Image> o) {
   checkImage(o[1] as api.Image);
 }
 
-core.int buildCounterImagesDeleteAllResponse = 0;
-api.ImagesDeleteAllResponse buildImagesDeleteAllResponse() {
-  var o = api.ImagesDeleteAllResponse();
-  buildCounterImagesDeleteAllResponse++;
-  if (buildCounterImagesDeleteAllResponse < 3) {
-    o.deleted = buildUnnamed1676();
-  }
-  buildCounterImagesDeleteAllResponse--;
-  return o;
-}
-
-void checkImagesDeleteAllResponse(api.ImagesDeleteAllResponse o) {
-  buildCounterImagesDeleteAllResponse++;
-  if (buildCounterImagesDeleteAllResponse < 3) {
-    checkUnnamed1676(o.deleted!);
-  }
-  buildCounterImagesDeleteAllResponse--;
-}
-
-core.List<api.Image> buildUnnamed1677() {
-  var o = <api.Image>[];
-  o.add(buildImage());
-  o.add(buildImage());
-  return o;
-}
-
-void checkUnnamed1677(core.List<api.Image> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkImage(o[0] as api.Image);
-  checkImage(o[1] as api.Image);
-}
-
 core.int buildCounterImagesListResponse = 0;
 api.ImagesListResponse buildImagesListResponse() {
   var o = api.ImagesListResponse();
   buildCounterImagesListResponse++;
   if (buildCounterImagesListResponse < 3) {
-    o.images = buildUnnamed1677();
+    o.images = buildUnnamed1676();
   }
   buildCounterImagesListResponse--;
   return o;
@@ -842,7 +842,7 @@ api.ImagesListResponse buildImagesListResponse() {
 void checkImagesListResponse(api.ImagesListResponse o) {
   buildCounterImagesListResponse++;
   if (buildCounterImagesListResponse < 3) {
-    checkUnnamed1677(o.images!);
+    checkUnnamed1676(o.images!);
   }
   buildCounterImagesListResponse--;
 }
@@ -866,27 +866,27 @@ void checkImagesUploadResponse(api.ImagesUploadResponse o) {
   buildCounterImagesUploadResponse--;
 }
 
-core.Map<core.String, api.InAppProductListing> buildUnnamed1678() {
+core.Map<core.String, api.InAppProductListing> buildUnnamed1677() {
   var o = <core.String, api.InAppProductListing>{};
   o['x'] = buildInAppProductListing();
   o['y'] = buildInAppProductListing();
   return o;
 }
 
-void checkUnnamed1678(core.Map<core.String, api.InAppProductListing> o) {
+void checkUnnamed1677(core.Map<core.String, api.InAppProductListing> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInAppProductListing(o['x']! as api.InAppProductListing);
   checkInAppProductListing(o['y']! as api.InAppProductListing);
 }
 
-core.Map<core.String, api.Price> buildUnnamed1679() {
+core.Map<core.String, api.Price> buildUnnamed1678() {
   var o = <core.String, api.Price>{};
   o['x'] = buildPrice();
   o['y'] = buildPrice();
   return o;
 }
 
-void checkUnnamed1679(core.Map<core.String, api.Price> o) {
+void checkUnnamed1678(core.Map<core.String, api.Price> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPrice(o['x']! as api.Price);
   checkPrice(o['y']! as api.Price);
@@ -900,9 +900,9 @@ api.InAppProduct buildInAppProduct() {
     o.defaultLanguage = 'foo';
     o.defaultPrice = buildPrice();
     o.gracePeriod = 'foo';
-    o.listings = buildUnnamed1678();
+    o.listings = buildUnnamed1677();
     o.packageName = 'foo';
-    o.prices = buildUnnamed1679();
+    o.prices = buildUnnamed1678();
     o.purchaseType = 'foo';
     o.sku = 'foo';
     o.status = 'foo';
@@ -925,12 +925,12 @@ void checkInAppProduct(api.InAppProduct o) {
       o.gracePeriod!,
       unittest.equals('foo'),
     );
-    checkUnnamed1678(o.listings!);
+    checkUnnamed1677(o.listings!);
     unittest.expect(
       o.packageName!,
       unittest.equals('foo'),
     );
-    checkUnnamed1679(o.prices!);
+    checkUnnamed1678(o.prices!);
     unittest.expect(
       o.purchaseType!,
       unittest.equals('foo'),
@@ -955,14 +955,14 @@ void checkInAppProduct(api.InAppProduct o) {
   buildCounterInAppProduct--;
 }
 
-core.List<core.String> buildUnnamed1680() {
+core.List<core.String> buildUnnamed1679() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed1680(core.List<core.String> o) {
+void checkUnnamed1679(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -979,7 +979,7 @@ api.InAppProductListing buildInAppProductListing() {
   var o = api.InAppProductListing();
   buildCounterInAppProductListing++;
   if (buildCounterInAppProductListing < 3) {
-    o.benefits = buildUnnamed1680();
+    o.benefits = buildUnnamed1679();
     o.description = 'foo';
     o.title = 'foo';
   }
@@ -990,7 +990,7 @@ api.InAppProductListing buildInAppProductListing() {
 void checkInAppProductListing(api.InAppProductListing o) {
   buildCounterInAppProductListing++;
   if (buildCounterInAppProductListing < 3) {
-    checkUnnamed1680(o.benefits!);
+    checkUnnamed1679(o.benefits!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -1003,14 +1003,14 @@ void checkInAppProductListing(api.InAppProductListing o) {
   buildCounterInAppProductListing--;
 }
 
-core.List<api.InAppProduct> buildUnnamed1681() {
+core.List<api.InAppProduct> buildUnnamed1680() {
   var o = <api.InAppProduct>[];
   o.add(buildInAppProduct());
   o.add(buildInAppProduct());
   return o;
 }
 
-void checkUnnamed1681(core.List<api.InAppProduct> o) {
+void checkUnnamed1680(core.List<api.InAppProduct> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInAppProduct(o[0] as api.InAppProduct);
   checkInAppProduct(o[1] as api.InAppProduct);
@@ -1021,7 +1021,7 @@ api.InappproductsListResponse buildInappproductsListResponse() {
   var o = api.InappproductsListResponse();
   buildCounterInappproductsListResponse++;
   if (buildCounterInappproductsListResponse < 3) {
-    o.inappproduct = buildUnnamed1681();
+    o.inappproduct = buildUnnamed1680();
     o.kind = 'foo';
     o.pageInfo = buildPageInfo();
     o.tokenPagination = buildTokenPagination();
@@ -1033,7 +1033,7 @@ api.InappproductsListResponse buildInappproductsListResponse() {
 void checkInappproductsListResponse(api.InappproductsListResponse o) {
   buildCounterInappproductsListResponse++;
   if (buildCounterInappproductsListResponse < 3) {
-    checkUnnamed1681(o.inappproduct!);
+    checkUnnamed1680(o.inappproduct!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1155,14 +1155,14 @@ void checkListing(api.Listing o) {
   buildCounterListing--;
 }
 
-core.List<api.Listing> buildUnnamed1682() {
+core.List<api.Listing> buildUnnamed1681() {
   var o = <api.Listing>[];
   o.add(buildListing());
   o.add(buildListing());
   return o;
 }
 
-void checkUnnamed1682(core.List<api.Listing> o) {
+void checkUnnamed1681(core.List<api.Listing> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkListing(o[0] as api.Listing);
   checkListing(o[1] as api.Listing);
@@ -1174,7 +1174,7 @@ api.ListingsListResponse buildListingsListResponse() {
   buildCounterListingsListResponse++;
   if (buildCounterListingsListResponse < 3) {
     o.kind = 'foo';
-    o.listings = buildUnnamed1682();
+    o.listings = buildUnnamed1681();
   }
   buildCounterListingsListResponse--;
   return o;
@@ -1187,7 +1187,7 @@ void checkListingsListResponse(api.ListingsListResponse o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed1682(o.listings!);
+    checkUnnamed1681(o.listings!);
   }
   buildCounterListingsListResponse--;
 }
@@ -1389,14 +1389,14 @@ void checkProductPurchasesAcknowledgeRequest(
   buildCounterProductPurchasesAcknowledgeRequest--;
 }
 
-core.List<api.Comment> buildUnnamed1683() {
+core.List<api.Comment> buildUnnamed1682() {
   var o = <api.Comment>[];
   o.add(buildComment());
   o.add(buildComment());
   return o;
 }
 
-void checkUnnamed1683(core.List<api.Comment> o) {
+void checkUnnamed1682(core.List<api.Comment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkComment(o[0] as api.Comment);
   checkComment(o[1] as api.Comment);
@@ -1408,7 +1408,7 @@ api.Review buildReview() {
   buildCounterReview++;
   if (buildCounterReview < 3) {
     o.authorName = 'foo';
-    o.comments = buildUnnamed1683();
+    o.comments = buildUnnamed1682();
     o.reviewId = 'foo';
   }
   buildCounterReview--;
@@ -1422,7 +1422,7 @@ void checkReview(api.Review o) {
       o.authorName!,
       unittest.equals('foo'),
     );
-    checkUnnamed1683(o.comments!);
+    checkUnnamed1682(o.comments!);
     unittest.expect(
       o.reviewId!,
       unittest.equals('foo'),
@@ -1455,14 +1455,14 @@ void checkReviewReplyResult(api.ReviewReplyResult o) {
   buildCounterReviewReplyResult--;
 }
 
-core.List<api.Review> buildUnnamed1684() {
+core.List<api.Review> buildUnnamed1683() {
   var o = <api.Review>[];
   o.add(buildReview());
   o.add(buildReview());
   return o;
 }
 
-void checkUnnamed1684(core.List<api.Review> o) {
+void checkUnnamed1683(core.List<api.Review> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReview(o[0] as api.Review);
   checkReview(o[1] as api.Review);
@@ -1474,7 +1474,7 @@ api.ReviewsListResponse buildReviewsListResponse() {
   buildCounterReviewsListResponse++;
   if (buildCounterReviewsListResponse < 3) {
     o.pageInfo = buildPageInfo();
-    o.reviews = buildUnnamed1684();
+    o.reviews = buildUnnamed1683();
     o.tokenPagination = buildTokenPagination();
   }
   buildCounterReviewsListResponse--;
@@ -1485,7 +1485,7 @@ void checkReviewsListResponse(api.ReviewsListResponse o) {
   buildCounterReviewsListResponse++;
   if (buildCounterReviewsListResponse < 3) {
     checkPageInfo(o.pageInfo! as api.PageInfo);
-    checkUnnamed1684(o.reviews!);
+    checkUnnamed1683(o.reviews!);
     checkTokenPagination(o.tokenPagination! as api.TokenPagination);
   }
   buildCounterReviewsListResponse--;
@@ -1831,14 +1831,14 @@ void checkSubscriptionPurchasesDeferResponse(
   buildCounterSubscriptionPurchasesDeferResponse--;
 }
 
-core.List<api.Variant> buildUnnamed1685() {
+core.List<api.Variant> buildUnnamed1684() {
   var o = <api.Variant>[];
   o.add(buildVariant());
   o.add(buildVariant());
   return o;
 }
 
-void checkUnnamed1685(core.List<api.Variant> o) {
+void checkUnnamed1684(core.List<api.Variant> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVariant(o[0] as api.Variant);
   checkVariant(o[1] as api.Variant);
@@ -1849,7 +1849,7 @@ api.SystemApksListResponse buildSystemApksListResponse() {
   var o = api.SystemApksListResponse();
   buildCounterSystemApksListResponse++;
   if (buildCounterSystemApksListResponse < 3) {
-    o.variants = buildUnnamed1685();
+    o.variants = buildUnnamed1684();
   }
   buildCounterSystemApksListResponse--;
   return o;
@@ -1858,19 +1858,19 @@ api.SystemApksListResponse buildSystemApksListResponse() {
 void checkSystemApksListResponse(api.SystemApksListResponse o) {
   buildCounterSystemApksListResponse++;
   if (buildCounterSystemApksListResponse < 3) {
-    checkUnnamed1685(o.variants!);
+    checkUnnamed1684(o.variants!);
   }
   buildCounterSystemApksListResponse--;
 }
 
-core.List<core.String> buildUnnamed1686() {
+core.List<core.String> buildUnnamed1685() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed1686(core.List<core.String> o) {
+void checkUnnamed1685(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1887,7 +1887,7 @@ api.Testers buildTesters() {
   var o = api.Testers();
   buildCounterTesters++;
   if (buildCounterTesters < 3) {
-    o.googleGroups = buildUnnamed1686();
+    o.googleGroups = buildUnnamed1685();
   }
   buildCounterTesters--;
   return o;
@@ -1896,7 +1896,7 @@ api.Testers buildTesters() {
 void checkTesters(api.Testers o) {
   buildCounterTesters++;
   if (buildCounterTesters < 3) {
-    checkUnnamed1686(o.googleGroups!);
+    checkUnnamed1685(o.googleGroups!);
   }
   buildCounterTesters--;
 }
@@ -1955,14 +1955,14 @@ void checkTokenPagination(api.TokenPagination o) {
   buildCounterTokenPagination--;
 }
 
-core.List<api.TrackRelease> buildUnnamed1687() {
+core.List<api.TrackRelease> buildUnnamed1686() {
   var o = <api.TrackRelease>[];
   o.add(buildTrackRelease());
   o.add(buildTrackRelease());
   return o;
 }
 
-void checkUnnamed1687(core.List<api.TrackRelease> o) {
+void checkUnnamed1686(core.List<api.TrackRelease> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrackRelease(o[0] as api.TrackRelease);
   checkTrackRelease(o[1] as api.TrackRelease);
@@ -1973,7 +1973,7 @@ api.Track buildTrack() {
   var o = api.Track();
   buildCounterTrack++;
   if (buildCounterTrack < 3) {
-    o.releases = buildUnnamed1687();
+    o.releases = buildUnnamed1686();
     o.track = 'foo';
   }
   buildCounterTrack--;
@@ -1983,7 +1983,7 @@ api.Track buildTrack() {
 void checkTrack(api.Track o) {
   buildCounterTrack++;
   if (buildCounterTrack < 3) {
-    checkUnnamed1687(o.releases!);
+    checkUnnamed1686(o.releases!);
     unittest.expect(
       o.track!,
       unittest.equals('foo'),
@@ -1992,27 +1992,27 @@ void checkTrack(api.Track o) {
   buildCounterTrack--;
 }
 
-core.List<api.LocalizedText> buildUnnamed1688() {
+core.List<api.LocalizedText> buildUnnamed1687() {
   var o = <api.LocalizedText>[];
   o.add(buildLocalizedText());
   o.add(buildLocalizedText());
   return o;
 }
 
-void checkUnnamed1688(core.List<api.LocalizedText> o) {
+void checkUnnamed1687(core.List<api.LocalizedText> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocalizedText(o[0] as api.LocalizedText);
   checkLocalizedText(o[1] as api.LocalizedText);
 }
 
-core.List<core.String> buildUnnamed1689() {
+core.List<core.String> buildUnnamed1688() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed1689(core.List<core.String> o) {
+void checkUnnamed1688(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2032,10 +2032,10 @@ api.TrackRelease buildTrackRelease() {
     o.countryTargeting = buildCountryTargeting();
     o.inAppUpdatePriority = 42;
     o.name = 'foo';
-    o.releaseNotes = buildUnnamed1688();
+    o.releaseNotes = buildUnnamed1687();
     o.status = 'foo';
     o.userFraction = 42.0;
-    o.versionCodes = buildUnnamed1689();
+    o.versionCodes = buildUnnamed1688();
   }
   buildCounterTrackRelease--;
   return o;
@@ -2053,7 +2053,7 @@ void checkTrackRelease(api.TrackRelease o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed1688(o.releaseNotes!);
+    checkUnnamed1687(o.releaseNotes!);
     unittest.expect(
       o.status!,
       unittest.equals('foo'),
@@ -2062,19 +2062,19 @@ void checkTrackRelease(api.TrackRelease o) {
       o.userFraction!,
       unittest.equals(42.0),
     );
-    checkUnnamed1689(o.versionCodes!);
+    checkUnnamed1688(o.versionCodes!);
   }
   buildCounterTrackRelease--;
 }
 
-core.List<api.Track> buildUnnamed1690() {
+core.List<api.Track> buildUnnamed1689() {
   var o = <api.Track>[];
   o.add(buildTrack());
   o.add(buildTrack());
   return o;
 }
 
-void checkUnnamed1690(core.List<api.Track> o) {
+void checkUnnamed1689(core.List<api.Track> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrack(o[0] as api.Track);
   checkTrack(o[1] as api.Track);
@@ -2086,7 +2086,7 @@ api.TracksListResponse buildTracksListResponse() {
   buildCounterTracksListResponse++;
   if (buildCounterTracksListResponse < 3) {
     o.kind = 'foo';
-    o.tracks = buildUnnamed1690();
+    o.tracks = buildUnnamed1689();
   }
   buildCounterTracksListResponse--;
   return o;
@@ -2099,7 +2099,7 @@ void checkTracksListResponse(api.TracksListResponse o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed1690(o.tracks!);
+    checkUnnamed1689(o.tracks!);
   }
   buildCounterTracksListResponse--;
 }
@@ -2278,14 +2278,14 @@ void checkVoidedPurchase(api.VoidedPurchase o) {
   buildCounterVoidedPurchase--;
 }
 
-core.List<api.VoidedPurchase> buildUnnamed1691() {
+core.List<api.VoidedPurchase> buildUnnamed1690() {
   var o = <api.VoidedPurchase>[];
   o.add(buildVoidedPurchase());
   o.add(buildVoidedPurchase());
   return o;
 }
 
-void checkUnnamed1691(core.List<api.VoidedPurchase> o) {
+void checkUnnamed1690(core.List<api.VoidedPurchase> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVoidedPurchase(o[0] as api.VoidedPurchase);
   checkVoidedPurchase(o[1] as api.VoidedPurchase);
@@ -2298,7 +2298,7 @@ api.VoidedPurchasesListResponse buildVoidedPurchasesListResponse() {
   if (buildCounterVoidedPurchasesListResponse < 3) {
     o.pageInfo = buildPageInfo();
     o.tokenPagination = buildTokenPagination();
-    o.voidedPurchases = buildUnnamed1691();
+    o.voidedPurchases = buildUnnamed1690();
   }
   buildCounterVoidedPurchasesListResponse--;
   return o;
@@ -2309,7 +2309,7 @@ void checkVoidedPurchasesListResponse(api.VoidedPurchasesListResponse o) {
   if (buildCounterVoidedPurchasesListResponse < 3) {
     checkPageInfo(o.pageInfo! as api.PageInfo);
     checkTokenPagination(o.tokenPagination! as api.TokenPagination);
-    checkUnnamed1691(o.voidedPurchases!);
+    checkUnnamed1690(o.voidedPurchases!);
   }
   buildCounterVoidedPurchasesListResponse--;
 }

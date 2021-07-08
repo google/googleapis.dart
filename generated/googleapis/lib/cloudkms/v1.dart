@@ -2382,6 +2382,8 @@ class CryptoKeyVersion {
   /// digest.
   /// - "EC_SIGN_P384_SHA384" : ECDSA on the NIST P-384 curve with a SHA384
   /// digest.
+  /// - "EC_SIGN_SECP256K1_SHA256" : ECDSA on the non-NIST secp256k1 curve. This
+  /// curve is only supported for HSM protection level.
   /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
   /// encryption by an external key manager.
   core.String? algorithm;
@@ -2592,6 +2594,8 @@ class CryptoKeyVersionTemplate {
   /// digest.
   /// - "EC_SIGN_P384_SHA384" : ECDSA on the NIST P-384 curve with a SHA384
   /// digest.
+  /// - "EC_SIGN_SECP256K1_SHA256" : ECDSA on the non-NIST secp256k1 curve. This
+  /// curve is only supported for HSM protection level.
   /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
   /// encryption by an external key manager.
   core.String? algorithm;
@@ -3175,6 +3179,8 @@ class ImportCryptoKeyVersionRequest {
   /// digest.
   /// - "EC_SIGN_P384_SHA384" : ECDSA on the NIST P-384 curve with a SHA384
   /// digest.
+  /// - "EC_SIGN_SECP256K1_SHA256" : ECDSA on the non-NIST secp256k1 curve. This
+  /// curve is only supported for HSM protection level.
   /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
   /// encryption by an external key manager.
   core.String? algorithm;
@@ -3907,6 +3913,8 @@ class PublicKey {
   /// digest.
   /// - "EC_SIGN_P384_SHA384" : ECDSA on the NIST P-384 curve with a SHA384
   /// digest.
+  /// - "EC_SIGN_SECP256K1_SHA256" : ECDSA on the non-NIST secp256k1 curve. This
+  /// curve is only supported for HSM protection level.
   /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
   /// encryption by an external key manager.
   core.String? algorithm;

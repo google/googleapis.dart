@@ -200,8 +200,8 @@ class PartnersSubscriptionsResource {
   PartnersSubscriptionsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Used by partners to cancel a subscription service by the end of the
-  /// current billing cycle for their customers.
+  /// Used by partners to cancel a subscription service either immediately or by
+  /// the end of the current billing cycle for their customers.
   ///
   /// It should be called directly by the partner using service accounts.
   ///
@@ -1083,6 +1083,18 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
   /// Required.
   core.String? partnerUserToken;
 
+  /// Describes the processing state of the subscription.
+  ///
+  /// See more details at \[the lifecycle of a
+  /// subscription\](/payments/reseller/subscription/reference/index/Receive.Notifications#payments-subscription-lifecycle).
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PROCESSING_STATE_UNSPECIFIED" : The processing state is unspecified.
+  /// - "PROCESSING_STATE_CANCELLING" : The subscription is being cancelled.
+  /// - "PROCESSING_STATE_RECURRING" : The subscription is recurring.
+  core.String? processingState;
+
   /// Resource name that identifies one or more subscription products.
   ///
   /// The format will be 'partners/{partner_id}/products/{product_id}'.
@@ -1113,7 +1125,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
   /// Required.
   GoogleCloudPaymentsResellerSubscriptionV1Location? serviceLocation;
 
-  /// Descibes the state of the subscription.
+  /// Describes the state of the subscription.
   ///
   /// See more details at \[the lifecycle of a
   /// subscription\](/payments/reseller/subscription/reference/index/Receive.Notifications#payments-subscription-lifecycle).
@@ -1176,6 +1188,9 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
     if (_json.containsKey('partnerUserToken')) {
       partnerUserToken = _json['partnerUserToken'] as core.String;
     }
+    if (_json.containsKey('processingState')) {
+      processingState = _json['processingState'] as core.String;
+    }
     if (_json.containsKey('products')) {
       products = (_json['products'] as core.List)
           .map<core.String>((value) => value as core.String)
@@ -1217,6 +1232,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
         if (freeTrialEndTime != null) 'freeTrialEndTime': freeTrialEndTime!,
         if (name != null) 'name': name!,
         if (partnerUserToken != null) 'partnerUserToken': partnerUserToken!,
+        if (processingState != null) 'processingState': processingState!,
         if (products != null) 'products': products!,
         if (promotions != null) 'promotions': promotions!,
         if (redirectUri != null) 'redirectUri': redirectUri!,
@@ -1229,7 +1245,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
       };
 }
 
-/// Describes the details of a cancelled subscription.
+/// Describes the details of a cancelled or cancelling subscription.
 class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails {
   /// The reason of the cancellation.
   /// Possible string values are:

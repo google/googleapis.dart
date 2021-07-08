@@ -4,6 +4,9 @@
             "scopes": {
                 "https://www.googleapis.com/auth/keep": {
                     "description": "See, edit, create and permanently delete all your Google Keep data"
+                },
+                "https://www.googleapis.com/auth/keep.readonly": {
+                    "description": "View all your Google Keep data"
                 }
             }
         }
@@ -14,7 +17,7 @@
     "canonicalName": "Keep",
     "description": "This API is an enterprise-only API used to create and manage the Keep notes within your domain, including resolving issues identified by CASB software.",
     "discoveryVersion": "v1",
-    "documentationLink": "https://support.google.com/keep",
+    "documentationLink": "https://developers.google.com/keep/api",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -132,7 +135,8 @@
                         "$ref": "Attachment"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/keep"
+                        "https://www.googleapis.com/auth/keep",
+                        "https://www.googleapis.com/auth/keep.readonly"
                     ],
                     "supportsMediaDownload": true,
                     "useMediaDownloadService": true
@@ -206,7 +210,8 @@
                         "$ref": "Note"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/keep"
+                        "https://www.googleapis.com/auth/keep",
+                        "https://www.googleapis.com/auth/keep.readonly"
                     ]
                 },
                 "list": {
@@ -238,7 +243,8 @@
                         "$ref": "ListNotesResponse"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/keep"
+                        "https://www.googleapis.com/auth/keep",
+                        "https://www.googleapis.com/auth/keep.readonly"
                     ]
                 }
             },
@@ -306,7 +312,7 @@
             }
         }
     },
-    "revision": "20210621",
+    "revision": "20210629",
     "rootUrl": "https://keep.googleapis.com/",
     "schemas": {
         "Attachment": {

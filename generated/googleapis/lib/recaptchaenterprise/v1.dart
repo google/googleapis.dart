@@ -1001,8 +1001,8 @@ class GoogleCloudRecaptchaenterpriseV1TestingOptions {
   /// factors.
   /// - "NOCAPTCHA" : Challenge requests for this key will always return a
   /// nocaptcha, which does not require a solution.
-  /// - "CHALLENGE" : Challenge requests for this key will always return an
-  /// unsolvable challenge.
+  /// - "UNSOLVABLE_CHALLENGE" : Challenge requests for this key will always
+  /// return an unsolvable challenge.
   core.String? testingChallenge;
 
   /// All assessments for this Key will return this score.

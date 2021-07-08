@@ -233,9 +233,11 @@
                                 "highestCourtJudge",
                                 "judge",
                                 "schoolBoard",
-                                "specialPurposeOfficer"
+                                "specialPurposeOfficer",
+                                "otherRole"
                             ],
                             "enumDescriptions": [
+                                "",
                                 "",
                                 "",
                                 "",
@@ -319,9 +321,11 @@
                                 "highestCourtJudge",
                                 "judge",
                                 "schoolBoard",
-                                "specialPurposeOfficer"
+                                "specialPurposeOfficer",
+                                "otherRole"
                             ],
                             "enumDescriptions": [
+                                "",
                                 "",
                                 "",
                                 "",
@@ -347,7 +351,7 @@
             }
         }
     },
-    "revision": "20210616",
+    "revision": "20210629",
     "rootUrl": "https://civicinfo.googleapis.com/",
     "schemas": {
         "AdministrationRegion": {
@@ -646,9 +650,11 @@
                             "highestCourtJudge",
                             "judge",
                             "schoolBoard",
-                            "specialPurposeOfficer"
+                            "specialPurposeOfficer",
+                            "otherRole"
                         ],
                         "enumDescriptions": [
+                            "",
                             "",
                             "",
                             "",
@@ -933,9 +939,11 @@
                             "highestCourtJudge",
                             "judge",
                             "schoolBoard",
-                            "specialPurposeOfficer"
+                            "specialPurposeOfficer",
+                            "otherRole"
                         ],
                         "enumDescriptions": [
+                            "",
                             "",
                             "",
                             "",

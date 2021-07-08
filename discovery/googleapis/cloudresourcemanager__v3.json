@@ -1610,7 +1610,7 @@
             }
         }
     },
-    "revision": "20210620",
+    "revision": "20210704",
     "rootUrl": "https://cloudresourcemanager.googleapis.com/",
     "schemas": {
         "AuditConfig": {

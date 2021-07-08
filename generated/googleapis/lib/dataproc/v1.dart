@@ -1430,13 +1430,13 @@ class ProjectsRegionsClustersResource {
   ///
   /// [region] - Required. The Dataproc region in which to handle the request.
   ///
-  /// [requestId] - Optional. A unique id used to identify the request. If the
+  /// [requestId] - Optional. A unique ID used to identify the request. If the
   /// server receives two CreateClusterRequest
   /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateClusterRequest)s
   /// with the same id, then the second request will be ignored and the first
   /// google.longrunning.Operation created and stored in the backend is
   /// returned.It is recommended to always set this value to a UUID
-  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must
   /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
   /// hyphens (-). The maximum length is 40 characters.
   ///
@@ -1495,13 +1495,13 @@ class ProjectsRegionsClustersResource {
   /// [clusterUuid] - Optional. Specifying the cluster_uuid means the RPC should
   /// fail (with error NOT_FOUND) if cluster with specified UUID does not exist.
   ///
-  /// [requestId] - Optional. A unique id used to identify the request. If the
+  /// [requestId] - Optional. A unique ID used to identify the request. If the
   /// server receives two DeleteClusterRequest
   /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.DeleteClusterRequest)s
   /// with the same id, then the second request will be ignored and the first
   /// google.longrunning.Operation created and stored in the backend is
   /// returned.It is recommended to always set this value to a UUID
-  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must
   /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
   /// hyphens (-). The maximum length is 40 characters.
   ///
@@ -1822,6 +1822,7 @@ class ProjectsRegionsClustersResource {
   ///
   /// The returned Operation.metadata will be ClusterOperationMetadata
   /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
+  /// The cluster must be in a RUNNING state or an error is returned.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1844,13 +1845,13 @@ class ProjectsRegionsClustersResource {
   /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).Only
   /// supported on Dataproc image versions 1.2 and higher.
   ///
-  /// [requestId] - Optional. A unique id used to identify the request. If the
+  /// [requestId] - Optional. A unique ID used to identify the request. If the
   /// server receives two UpdateClusterRequest
   /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.UpdateClusterRequest)s
   /// with the same id, then the second request will be ignored and the first
   /// google.longrunning.Operation created and stored in the backend is
   /// returned.It is recommended to always set this value to a UUID
-  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must
   /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
   /// hyphens (-). The maximum length is 40 characters.
   ///
@@ -1909,6 +1910,58 @@ class ProjectsRegionsClustersResource {
     final _response = await _requester.request(
       _url,
       'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Repairs a cluster.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Required. The ID of the Google Cloud Platform project the
+  /// cluster belongs to.
+  ///
+  /// [region] - Required. The Dataproc region in which to handle the request.
+  ///
+  /// [clusterName] - Required. The cluster name.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> repair(
+    RepairClusterRequest request,
+    core.String projectId,
+    core.String region,
+    core.String clusterName, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/projects/' +
+        commons.escapeVariable('$projectId') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/clusters/' +
+        commons.escapeVariable('$clusterName') +
+        ':repair';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
       body: _body,
       queryParams: _queryParams,
     );
@@ -3657,7 +3710,7 @@ class BasicAutoscalingAlgorithm {
 
   /// YARN autoscaling configuration.
   ///
-  /// Required.
+  /// Optional.
   BasicYarnAutoscalingConfig? yarnConfig;
 
   BasicAutoscalingAlgorithm();
@@ -7568,6 +7621,44 @@ class RegexValidation {
       };
 }
 
+/// A request to repair a cluster.
+class RepairClusterRequest {
+  /// Specifying the cluster_uuid means the RPC will fail (with error NOT_FOUND)
+  /// if a cluster with the specified UUID does not exist.
+  ///
+  /// Optional.
+  core.String? clusterUuid;
+
+  /// A unique ID used to identify the request.
+  ///
+  /// If the server receives two RepairClusterRequests with the same ID, the
+  /// second request is ignored, and the first google.longrunning.Operation
+  /// created and stored in the backend is returned.Recommendation: Set this
+  /// value to a UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must
+  /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+  /// hyphens (-). The maximum length is 40 characters.
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  RepairClusterRequest();
+
+  RepairClusterRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('clusterUuid')) {
+      clusterUuid = _json['clusterUuid'] as core.String;
+    }
+    if (_json.containsKey('requestId')) {
+      requestId = _json['requestId'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clusterUuid != null) 'clusterUuid': clusterUuid!,
+        if (requestId != null) 'requestId': requestId!,
+      };
+}
+
 /// Reservation Affinity for consuming Zonal reservation.
 class ReservationAffinity {
   /// Type of reservation to consume
@@ -8070,14 +8161,14 @@ class StartClusterRequest {
   /// Optional.
   core.String? clusterUuid;
 
-  /// A unique id used to identify the request.
+  /// A unique ID used to identify the request.
   ///
   /// If the server receives two StartClusterRequest
   /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.StartClusterRequest)s
   /// with the same id, then the second request will be ignored and the first
   /// google.longrunning.Operation created and stored in the backend is
   /// returned.Recommendation: Set this value to a UUID
-  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must
   /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
   /// hyphens (-). The maximum length is 40 characters.
   ///
@@ -8163,14 +8254,14 @@ class StopClusterRequest {
   /// Optional.
   core.String? clusterUuid;
 
-  /// A unique id used to identify the request.
+  /// A unique ID used to identify the request.
   ///
   /// If the server receives two StopClusterRequest
   /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.StopClusterRequest)s
   /// with the same id, then the second request will be ignored and the first
   /// google.longrunning.Operation created and stored in the backend is
   /// returned.Recommendation: Set this value to a UUID
-  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must
   /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
   /// hyphens (-). The maximum length is 40 characters.
   ///

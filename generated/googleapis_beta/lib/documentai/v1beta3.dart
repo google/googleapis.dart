@@ -1104,6 +1104,38 @@ class GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionResponse {
       };
 }
 
+/// Metadata message associated with the ExportProcessorVersion operation.
+class GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionMetadata {
+  /// The common metadata about the operation.
+  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata? commonMetadata;
+
+  GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionMetadata();
+
+  GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionMetadata.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('commonMetadata')) {
+      commonMetadata =
+          GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata.fromJson(
+              _json['commonMetadata'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+      };
+}
+
+/// Response message associated with the ExportProcessorVersion operation.
+class GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionResponse {
+  GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionResponse();
+
+  GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionResponse.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
 /// The long running operation metadata for set default processor version
 /// method.
 class GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionMetadata {
@@ -8585,9 +8617,6 @@ class GoogleCloudDocumentaiV1beta3ProcessorType {
   /// Format: projects/{project}/processorTypes/{processor_type}
   core.String? name;
 
-  /// The schema of the default version of this processor type.
-  GoogleCloudDocumentaiV1beta3Schema? schema;
-
   /// The type of the processor, e.g, "invoice_parsing".
   core.String? type;
 
@@ -8610,10 +8639,6 @@ class GoogleCloudDocumentaiV1beta3ProcessorType {
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
-    if (_json.containsKey('schema')) {
-      schema = GoogleCloudDocumentaiV1beta3Schema.fromJson(
-          _json['schema'] as core.Map<core.String, core.dynamic>);
-    }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
     }
@@ -8626,7 +8651,6 @@ class GoogleCloudDocumentaiV1beta3ProcessorType {
               availableLocations!.map((value) => value.toJson()).toList(),
         if (category != null) 'category': category!,
         if (name != null) 'name': name!,
-        if (schema != null) 'schema': schema!.toJson(),
         if (type != null) 'type': type!,
       };
 }
@@ -8804,143 +8828,6 @@ class GoogleCloudDocumentaiV1beta3ReviewDocumentResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gcsDestination != null) 'gcsDestination': gcsDestination!,
-      };
-}
-
-/// The schema defines the output of the processed document by a processor.
-class GoogleCloudDocumentaiV1beta3Schema {
-  /// Description of the schema.
-  core.String? description;
-
-  /// Display name to show to users.
-  core.String? displayName;
-
-  /// Entity types of the schema.
-  core.List<GoogleCloudDocumentaiV1beta3SchemaEntityType>? entityTypes;
-
-  GoogleCloudDocumentaiV1beta3Schema();
-
-  GoogleCloudDocumentaiV1beta3Schema.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('entityTypes')) {
-      entityTypes = (_json['entityTypes'] as core.List)
-          .map<GoogleCloudDocumentaiV1beta3SchemaEntityType>((value) =>
-              GoogleCloudDocumentaiV1beta3SchemaEntityType.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (entityTypes != null)
-          'entityTypes': entityTypes!.map((value) => value.toJson()).toList(),
-      };
-}
-
-/// EntityType is the wrapper of a label of the corresponding model with
-/// detailed attributes and limitations for entity-based processors.
-///
-/// Multiple types can also compose a dependency tree to represent nested types.
-class GoogleCloudDocumentaiV1beta3SchemaEntityType {
-  /// Type of the entity.
-  ///
-  /// It must be one of the following: `document` - the entity represents a
-  /// classification of a logical document. `object` - if the entity has
-  /// properties it is likely an object (or or a document.) `datetime` - the
-  /// entity is a date or time value. `money` - the entity represents a money
-  /// value amount. `number` - the entity is a number - integer or floating
-  /// point. `string` - the entity is a string value. `boolean` - the entity is
-  /// a boolean value. `address` - the entity is a location address.
-  core.String? baseType;
-
-  /// Description of the entity type.
-  core.String? description;
-
-  /// If specified, lists all the possible values for this entity.
-  core.List<core.String>? enumValues;
-
-  /// Occurrence type limits the number of times an entity type appears in the
-  /// document.
-  /// Possible string values are:
-  /// - "OCCURRENCE_TYPE_UNSPECIFIED" : Unspecified occurrence type.
-  /// - "OPTIONAL_ONCE" : The entity type will appear zero times or once.
-  /// - "OPTIONAL_MULTIPLE" : The entity type will appear zero or multiple
-  /// times.
-  /// - "REQUIRED_ONCE" : The entity type will only appear exactly once.
-  /// - "REQUIRED_MULTIPLE" : The entity type will appear once or more times.
-  core.String? occurrenceType;
-
-  /// Describing the nested structure of an entity.
-  ///
-  /// An EntityType may consist of several other EntityTypes. For example, in a
-  /// document there can be an EntityType 'ID', which consists of EntityType
-  /// 'name' and 'address', with corresponding attributes, such as TEXT for both
-  /// types and ONCE for occurrence types.
-  core.List<GoogleCloudDocumentaiV1beta3SchemaEntityType>? properties;
-
-  /// Source of this entity type.
-  /// Possible string values are:
-  /// - "SOURCE_UNSPECIFIED" : Unspecified source.
-  /// - "PREDEFINED" : The entity type is in the predefined schema of a
-  /// pretrained version of a processor.
-  /// - "USER_INPUT" : The entity type is added by the users either: - during an
-  /// uptraining of an existing processor, or - during the process of creating a
-  /// customized processor.
-  core.String? source;
-
-  /// Name of the type.
-  ///
-  /// It must be unique within the set of same level types.
-  core.String? type;
-
-  GoogleCloudDocumentaiV1beta3SchemaEntityType();
-
-  GoogleCloudDocumentaiV1beta3SchemaEntityType.fromJson(core.Map _json) {
-    if (_json.containsKey('baseType')) {
-      baseType = _json['baseType'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('enumValues')) {
-      enumValues = (_json['enumValues'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('occurrenceType')) {
-      occurrenceType = _json['occurrenceType'] as core.String;
-    }
-    if (_json.containsKey('properties')) {
-      properties = (_json['properties'] as core.List)
-          .map<GoogleCloudDocumentaiV1beta3SchemaEntityType>((value) =>
-              GoogleCloudDocumentaiV1beta3SchemaEntityType.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('source')) {
-      source = _json['source'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (baseType != null) 'baseType': baseType!,
-        if (description != null) 'description': description!,
-        if (enumValues != null) 'enumValues': enumValues!,
-        if (occurrenceType != null) 'occurrenceType': occurrenceType!,
-        if (properties != null)
-          'properties': properties!.map((value) => value.toJson()).toList(),
-        if (source != null) 'source': source!,
-        if (type != null) 'type': type!,
       };
 }
 

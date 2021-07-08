@@ -30,7 +30,9 @@
 ///   - [BillingAccountsLocationsResource]
 ///     - [BillingAccountsLocationsBucketsResource]
 ///       - [BillingAccountsLocationsBucketsViewsResource]
+///     - [BillingAccountsLocationsOperationsResource]
 ///   - [BillingAccountsLogsResource]
+///   - [BillingAccountsOperationsResource]
 ///   - [BillingAccountsSinksResource]
 /// - [EntriesResource]
 /// - [ExclusionsResource]
@@ -39,11 +41,13 @@
 ///   - [FoldersLocationsResource]
 ///     - [FoldersLocationsBucketsResource]
 ///       - [FoldersLocationsBucketsViewsResource]
+///     - [FoldersLocationsOperationsResource]
 ///   - [FoldersLogsResource]
 ///   - [FoldersSinksResource]
 /// - [LocationsResource]
 ///   - [LocationsBucketsResource]
 ///     - [LocationsBucketsViewsResource]
+///   - [LocationsOperationsResource]
 /// - [LogsResource]
 /// - [MonitoredResourceDescriptorsResource]
 /// - [OrganizationsResource]
@@ -51,6 +55,7 @@
 ///   - [OrganizationsLocationsResource]
 ///     - [OrganizationsLocationsBucketsResource]
 ///       - [OrganizationsLocationsBucketsViewsResource]
+///     - [OrganizationsLocationsOperationsResource]
 ///   - [OrganizationsLogsResource]
 ///   - [OrganizationsSinksResource]
 /// - [ProjectsResource]
@@ -58,6 +63,7 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsBucketsResource]
 ///       - [ProjectsLocationsBucketsViewsResource]
+///     - [ProjectsLocationsOperationsResource]
 ///   - [ProjectsLogsResource]
 ///   - [ProjectsMetricsResource]
 ///   - [ProjectsSinksResource]
@@ -137,6 +143,8 @@ class BillingAccountsResource {
       BillingAccountsLocationsResource(_requester);
   BillingAccountsLogsResource get logs =>
       BillingAccountsLogsResource(_requester);
+  BillingAccountsOperationsResource get operations =>
+      BillingAccountsOperationsResource(_requester);
   BillingAccountsSinksResource get sinks =>
       BillingAccountsSinksResource(_requester);
 
@@ -486,6 +494,8 @@ class BillingAccountsLocationsResource {
 
   BillingAccountsLocationsBucketsResource get buckets =>
       BillingAccountsLocationsBucketsResource(_requester);
+  BillingAccountsLocationsOperationsResource get operations =>
+      BillingAccountsLocationsOperationsResource(_requester);
 
   BillingAccountsLocationsResource(commons.ApiRequester client)
       : _requester = client;
@@ -1056,6 +1066,120 @@ class BillingAccountsLocationsBucketsViewsResource {
   }
 }
 
+class BillingAccountsLocationsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  BillingAccountsLocationsOperationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or
+  /// other methods to check whether the cancellation succeeded or whether the
+  /// operation completed despite cancellation. On successful cancellation, the
+  /// operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// Code.CANCELLED.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(
+    CancelOperationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns UNIMPLEMENTED.NOTE:
+  /// the name binding allows API services to override the binding to use
+  /// different resource name schemes, such as users / * /operations. To
+  /// override the binding, API services can add a binding such as
+  /// "/v1/{name=users / * }/operations" to their service configuration. For
+  /// backwards compatibility, the default name includes the operations
+  /// collection id, however overriding users must ensure the name binding is
+  /// the parent resource, without the operations collection id.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern `^billingAccounts/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOperationsResponse> list(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/operations';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class BillingAccountsLogsResource {
   final commons.ApiRequester _requester;
 
@@ -1171,6 +1295,51 @@ class BillingAccountsLogsResource {
     );
     return ListLogsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class BillingAccountsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  BillingAccountsOperationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern `^billingAccounts/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1529,6 +1698,43 @@ class EntriesResource {
   final commons.ApiRequester _requester;
 
   EntriesResource(commons.ApiRequester client) : _requester = client;
+
+  /// Copies a set of log entries from a logging bucket to a Cloud Storage
+  /// bucket.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> copy(
+    CopyLogEntriesRequest request, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const _url = 'v2/entries:copy';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
 
   /// Lists log entries.
   ///
@@ -2153,6 +2359,8 @@ class FoldersLocationsResource {
 
   FoldersLocationsBucketsResource get buckets =>
       FoldersLocationsBucketsResource(_requester);
+  FoldersLocationsOperationsResource get operations =>
+      FoldersLocationsOperationsResource(_requester);
 
   FoldersLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -2803,6 +3011,159 @@ class FoldersLocationsBucketsViewsResource {
   }
 }
 
+class FoldersLocationsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsOperationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or
+  /// other methods to check whether the cancellation succeeded or whether the
+  /// operation completed despite cancellation. On successful cancellation, the
+  /// operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// Code.CANCELLED.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(
+    CancelOperationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns UNIMPLEMENTED.NOTE:
+  /// the name binding allows API services to override the binding to use
+  /// different resource name schemes, such as users / * /operations. To
+  /// override the binding, API services can add a binding such as
+  /// "/v1/{name=users / * }/operations" to their service configuration. For
+  /// backwards compatibility, the default name includes the operations
+  /// collection id, however overriding users must ensure the name binding is
+  /// the parent resource, without the operations collection id.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOperationsResponse> list(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/operations';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class FoldersLogsResource {
   final commons.ApiRequester _requester;
 
@@ -3274,6 +3635,8 @@ class LocationsResource {
   final commons.ApiRequester _requester;
 
   LocationsBucketsResource get buckets => LocationsBucketsResource(_requester);
+  LocationsOperationsResource get operations =>
+      LocationsOperationsResource(_requester);
 
   LocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -3923,6 +4286,159 @@ class LocationsBucketsViewsResource {
   }
 }
 
+class LocationsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  LocationsOperationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or
+  /// other methods to check whether the cancellation succeeded or whether the
+  /// operation completed despite cancellation. On successful cancellation, the
+  /// operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// Code.CANCELLED.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// `^\[^/\]+/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(
+    CancelOperationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^\[^/\]+/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns UNIMPLEMENTED.NOTE:
+  /// the name binding allows API services to override the binding to use
+  /// different resource name schemes, such as users / * /operations. To
+  /// override the binding, API services can add a binding such as
+  /// "/v1/{name=users / * }/operations" to their service configuration. For
+  /// backwards compatibility, the default name includes the operations
+  /// collection id, however overriding users must ensure the name binding is
+  /// the parent resource, without the operations collection id.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern `^\[^/\]+/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOperationsResponse> list(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/operations';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class LogsResource {
   final commons.ApiRequester _requester;
 
@@ -4466,6 +4982,8 @@ class OrganizationsLocationsResource {
 
   OrganizationsLocationsBucketsResource get buckets =>
       OrganizationsLocationsBucketsResource(_requester);
+  OrganizationsLocationsOperationsResource get operations =>
+      OrganizationsLocationsOperationsResource(_requester);
 
   OrganizationsLocationsResource(commons.ApiRequester client)
       : _requester = client;
@@ -5114,6 +5632,159 @@ class OrganizationsLocationsBucketsViewsResource {
       queryParams: _queryParams,
     );
     return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsLocationsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsOperationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or
+  /// other methods to check whether the cancellation succeeded or whether the
+  /// operation completed despite cancellation. On successful cancellation, the
+  /// operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// Code.CANCELLED.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(
+    CancelOperationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns UNIMPLEMENTED.NOTE:
+  /// the name binding allows API services to override the binding to use
+  /// different resource name schemes, such as users / * /operations. To
+  /// override the binding, API services can add a binding such as
+  /// "/v1/{name=users / * }/operations" to their service configuration. For
+  /// backwards compatibility, the default name includes the operations
+  /// collection id, however overriding users must ensure the name binding is
+  /// the parent resource, without the operations collection id.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOperationsResponse> list(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/operations';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5843,6 +6514,8 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsBucketsResource get buckets =>
       ProjectsLocationsBucketsResource(_requester);
+  ProjectsLocationsOperationsResource get operations =>
+      ProjectsLocationsOperationsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -6490,6 +7163,159 @@ class ProjectsLocationsBucketsViewsResource {
       queryParams: _queryParams,
     );
     return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsOperationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or
+  /// other methods to check whether the cancellation succeeded or whether the
+  /// operation completed despite cancellation. On successful cancellation, the
+  /// operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// Code.CANCELLED.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(
+    CancelOperationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns UNIMPLEMENTED.NOTE:
+  /// the name binding allows API services to override the binding to use
+  /// different resource name schemes, such as users / * /operations. To
+  /// override the binding, API services can add a binding such as
+  /// "/v1/{name=users / * }/operations" to their service configuration. For
+  /// backwards compatibility, the default name includes the operations
+  /// collection id, however overriding users must ensure the name binding is
+  /// the parent resource, without the operations collection id.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOperationsResponse> list(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/operations';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7667,6 +8493,17 @@ class BucketOptions {
       };
 }
 
+/// The request message for Operations.CancelOperation.
+class CancelOperationRequest {
+  CancelOperationRequest();
+
+  CancelOperationRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
 /// Describes the customer-managed encryption key (CMEK) settings associated
 /// with a project, folder, organization, billing account, or flexible
 /// resource.Note: CMEK for the Logs Router can currently only be configured for
@@ -7732,6 +8569,144 @@ class CmekSettings {
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
         if (name != null) 'name': name!,
         if (serviceAccountId != null) 'serviceAccountId': serviceAccountId!,
+      };
+}
+
+/// Metadata for CopyLogEntries long running operations.
+class CopyLogEntriesMetadata {
+  /// Identifies whether the user has requested cancellation of the operation.
+  core.bool? cancellationRequested;
+
+  /// The end time of an operation.
+  core.String? endTime;
+
+  /// Estimated progress of the operation (0 - 100%).
+  core.int? progress;
+
+  /// CopyLogEntries RPC request.
+  CopyLogEntriesRequest? request;
+
+  /// The create time of an operation.
+  core.String? startTime;
+
+  /// State of an operation.
+  /// Possible string values are:
+  /// - "OPERATION_STATE_UNSPECIFIED" : Should not be used.
+  /// - "OPERATION_STATE_SCHEDULED" : The operation is scheduled.
+  /// - "OPERATION_STATE_WAITING_FOR_PERMISSIONS" : Waiting for necessary
+  /// permissions.
+  /// - "OPERATION_STATE_RUNNING" : The operation is running.
+  /// - "OPERATION_STATE_SUCCEEDED" : The operation was completed successfully.
+  /// - "OPERATION_STATE_FAILED" : The operation failed.
+  /// - "OPERATION_STATE_CANCELLED" : The operation was cancelled by the user.
+  core.String? state;
+
+  /// The IAM identity of a service account that must be granted access to the
+  /// destination.
+  ///
+  /// If the service account is not granted permission to the destination within
+  /// an hour, the operation will be cancelled. Example:
+  /// "serviceAccount:foo@bar.com"
+  core.String? writerIdentity;
+
+  CopyLogEntriesMetadata();
+
+  CopyLogEntriesMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey('cancellationRequested')) {
+      cancellationRequested = _json['cancellationRequested'] as core.bool;
+    }
+    if (_json.containsKey('endTime')) {
+      endTime = _json['endTime'] as core.String;
+    }
+    if (_json.containsKey('progress')) {
+      progress = _json['progress'] as core.int;
+    }
+    if (_json.containsKey('request')) {
+      request = CopyLogEntriesRequest.fromJson(
+          _json['request'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'] as core.String;
+    }
+    if (_json.containsKey('state')) {
+      state = _json['state'] as core.String;
+    }
+    if (_json.containsKey('writerIdentity')) {
+      writerIdentity = _json['writerIdentity'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cancellationRequested != null)
+          'cancellationRequested': cancellationRequested!,
+        if (endTime != null) 'endTime': endTime!,
+        if (progress != null) 'progress': progress!,
+        if (request != null) 'request': request!.toJson(),
+        if (startTime != null) 'startTime': startTime!,
+        if (state != null) 'state': state!,
+        if (writerIdentity != null) 'writerIdentity': writerIdentity!,
+      };
+}
+
+/// The parameters to CopyLogEntries.
+class CopyLogEntriesRequest {
+  /// Destination to which to copy logs.
+  ///
+  /// Required.
+  core.String? destination;
+
+  /// A filter specifying which log entries to copy.
+  ///
+  /// The filter must be no more than 20k characters. An empty filter matches
+  /// all log entries.
+  ///
+  /// Optional.
+  core.String? filter;
+
+  /// Bucket from which to copy logs.
+  ///
+  /// e.g. "projects/my-project/locations/my-location/buckets/my-source-bucket
+  ///
+  /// Required.
+  core.String? name;
+
+  CopyLogEntriesRequest();
+
+  CopyLogEntriesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('destination')) {
+      destination = _json['destination'] as core.String;
+    }
+    if (_json.containsKey('filter')) {
+      filter = _json['filter'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (destination != null) 'destination': destination!,
+        if (filter != null) 'filter': filter!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Response type for CopyLogEntries long running operations.
+class CopyLogEntriesResponse {
+  /// Number of log entries copied.
+  core.String? logEntriesCopiedCount;
+
+  CopyLogEntriesResponse();
+
+  CopyLogEntriesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('logEntriesCopiedCount')) {
+      logEntriesCopiedCount = _json['logEntriesCopiedCount'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (logEntriesCopiedCount != null)
+          'logEntriesCopiedCount': logEntriesCopiedCount!,
       };
 }
 
@@ -8380,6 +9355,35 @@ class ListMonitoredResourceDescriptorsResponse {
         if (resourceDescriptors != null)
           'resourceDescriptors':
               resourceDescriptors!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// The response message for Operations.ListOperations.
+class ListOperationsResponse {
+  /// The standard List next-page token.
+  core.String? nextPageToken;
+
+  /// A list of operations that matches the specified filter in the request.
+  core.List<Operation>? operations;
+
+  ListOperationsResponse();
+
+  ListOperationsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+    if (_json.containsKey('operations')) {
+      operations = (_json['operations'] as core.List)
+          .map<Operation>((value) =>
+              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (operations != null)
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -10107,6 +11111,89 @@ class MonitoredResourceMetadata {
       };
 }
 
+/// This resource represents a long-running operation that is the result of a
+/// network API call.
+class Operation {
+  /// If the value is false, it means the operation is still in progress.
+  ///
+  /// If true, the operation is completed, and either error or response is
+  /// available.
+  core.bool? done;
+
+  /// The error result of the operation in case of failure or cancellation.
+  Status? error;
+
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object>? metadata;
+
+  /// The server-assigned name, which is only unique within the same service
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the name should be a resource name
+  /// ending with operations/{unique_id}.
+  core.String? name;
+
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as Delete, the
+  /// response is google.protobuf.Empty. If the original method is standard
+  /// Get/Create/Update, the response should be the resource. For other methods,
+  /// the response should have the type XxxResponse, where Xxx is the original
+  /// method name. For example, if the original method name is TakeSnapshot(),
+  /// the inferred response type is TakeSnapshotResponse.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object>? response;
+
+  Operation();
+
+  Operation.fromJson(core.Map _json) {
+    if (_json.containsKey('done')) {
+      done = _json['done'] as core.bool;
+    }
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('metadata')) {
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('response')) {
+      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
+      };
+}
+
 /// Complete log information about a single HTTP request to an App Engine
 /// application.
 class RequestLog {
@@ -10458,6 +11545,60 @@ class SourceReference {
   core.Map<core.String, core.dynamic> toJson() => {
         if (repository != null) 'repository': repository!,
         if (revisionId != null) 'revisionId': revisionId!,
+      };
+}
+
+/// The Status type defines a logical error model that is suitable for different
+/// programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by gRPC (https://github.com/grpc). Each Status message contains
+/// three pieces of data: error code, error message, and error details.You can
+/// find out more about this error model and how to work with it in the API
+/// Design Guide (https://cloud.google.com/apis/design/errors).
+class Status {
+  /// The status code, which should be an enum value of google.rpc.Code.
+  core.int? code;
+
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Map<core.String, core.Object>>? details;
+
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
+  /// google.rpc.Status.details field, or localized by the client.
+  core.String? message;
+
+  Status();
+
+  Status.fromJson(core.Map _json) {
+    if (_json.containsKey('code')) {
+      code = _json['code'] as core.int;
+    }
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.List)
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.Object,
+                    ),
+                  ))
+          .toList();
+    }
+    if (_json.containsKey('message')) {
+      message = _json['message'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 

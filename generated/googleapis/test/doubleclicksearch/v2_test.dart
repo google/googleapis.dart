@@ -74,27 +74,27 @@ void checkAvailability(api.Availability o) {
   buildCounterAvailability--;
 }
 
-core.List<api.CustomDimension> buildUnnamed1779() {
+core.List<api.CustomDimension> buildUnnamed1778() {
   var o = <api.CustomDimension>[];
   o.add(buildCustomDimension());
   o.add(buildCustomDimension());
   return o;
 }
 
-void checkUnnamed1779(core.List<api.CustomDimension> o) {
+void checkUnnamed1778(core.List<api.CustomDimension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCustomDimension(o[0] as api.CustomDimension);
   checkCustomDimension(o[1] as api.CustomDimension);
 }
 
-core.List<api.CustomMetric> buildUnnamed1780() {
+core.List<api.CustomMetric> buildUnnamed1779() {
   var o = <api.CustomMetric>[];
   o.add(buildCustomMetric());
   o.add(buildCustomMetric());
   return o;
 }
 
-void checkUnnamed1780(core.List<api.CustomMetric> o) {
+void checkUnnamed1779(core.List<api.CustomMetric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCustomMetric(o[0] as api.CustomMetric);
   checkCustomMetric(o[1] as api.CustomMetric);
@@ -119,8 +119,8 @@ api.Conversion buildConversion() {
     o.countMillis = 'foo';
     o.criterionId = 'foo';
     o.currencyCode = 'foo';
-    o.customDimension = buildUnnamed1779();
-    o.customMetric = buildUnnamed1780();
+    o.customDimension = buildUnnamed1778();
+    o.customMetric = buildUnnamed1779();
     o.deviceType = 'foo';
     o.dsConversionId = 'foo';
     o.engineAccountId = 'foo';
@@ -202,8 +202,8 @@ void checkConversion(api.Conversion o) {
       o.currencyCode!,
       unittest.equals('foo'),
     );
-    checkUnnamed1779(o.customDimension!);
-    checkUnnamed1780(o.customMetric!);
+    checkUnnamed1778(o.customDimension!);
+    checkUnnamed1779(o.customMetric!);
     unittest.expect(
       o.deviceType!,
       unittest.equals('foo'),
@@ -276,14 +276,14 @@ void checkConversion(api.Conversion o) {
   buildCounterConversion--;
 }
 
-core.List<api.Conversion> buildUnnamed1781() {
+core.List<api.Conversion> buildUnnamed1780() {
   var o = <api.Conversion>[];
   o.add(buildConversion());
   o.add(buildConversion());
   return o;
 }
 
-void checkUnnamed1781(core.List<api.Conversion> o) {
+void checkUnnamed1780(core.List<api.Conversion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkConversion(o[0] as api.Conversion);
   checkConversion(o[1] as api.Conversion);
@@ -294,7 +294,7 @@ api.ConversionList buildConversionList() {
   var o = api.ConversionList();
   buildCounterConversionList++;
   if (buildCounterConversionList < 3) {
-    o.conversion = buildUnnamed1781();
+    o.conversion = buildUnnamed1780();
     o.kind = 'foo';
   }
   buildCounterConversionList--;
@@ -304,7 +304,7 @@ api.ConversionList buildConversionList() {
 void checkConversionList(api.ConversionList o) {
   buildCounterConversionList++;
   if (buildCounterConversionList < 3) {
-    checkUnnamed1781(o.conversion!);
+    checkUnnamed1780(o.conversion!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -394,27 +394,27 @@ void checkReportFiles(api.ReportFiles o) {
   buildCounterReportFiles--;
 }
 
-core.List<api.ReportFiles> buildUnnamed1782() {
+core.List<api.ReportFiles> buildUnnamed1781() {
   var o = <api.ReportFiles>[];
   o.add(buildReportFiles());
   o.add(buildReportFiles());
   return o;
 }
 
-void checkUnnamed1782(core.List<api.ReportFiles> o) {
+void checkUnnamed1781(core.List<api.ReportFiles> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportFiles(o[0] as api.ReportFiles);
   checkReportFiles(o[1] as api.ReportFiles);
 }
 
-core.List<api.ReportRow> buildUnnamed1783() {
+core.List<api.ReportRow> buildUnnamed1782() {
   var o = <api.ReportRow>[];
   o.add(buildReportRow());
   o.add(buildReportRow());
   return o;
 }
 
-void checkUnnamed1783(core.List<api.ReportRow> o) {
+void checkUnnamed1782(core.List<api.ReportRow> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportRow(o[0] as api.ReportRow);
   checkReportRow(o[1] as api.ReportRow);
@@ -425,13 +425,13 @@ api.Report buildReport() {
   var o = api.Report();
   buildCounterReport++;
   if (buildCounterReport < 3) {
-    o.files = buildUnnamed1782();
+    o.files = buildUnnamed1781();
     o.id = 'foo';
     o.isReportReady = true;
     o.kind = 'foo';
     o.request = buildReportRequest();
     o.rowCount = 42;
-    o.rows = buildUnnamed1783();
+    o.rows = buildUnnamed1782();
     o.statisticsCurrencyCode = 'foo';
     o.statisticsTimeZone = 'foo';
   }
@@ -442,7 +442,7 @@ api.Report buildReport() {
 void checkReport(api.Report o) {
   buildCounterReport++;
   if (buildCounterReport < 3) {
-    checkUnnamed1782(o.files!);
+    checkUnnamed1781(o.files!);
     unittest.expect(
       o.id!,
       unittest.equals('foo'),
@@ -457,7 +457,7 @@ void checkReport(api.Report o) {
       o.rowCount!,
       unittest.equals(42),
     );
-    checkUnnamed1783(o.rows!);
+    checkUnnamed1782(o.rows!);
     unittest.expect(
       o.statisticsCurrencyCode!,
       unittest.equals('foo'),
@@ -534,20 +534,20 @@ void checkReportApiColumnSpec(api.ReportApiColumnSpec o) {
   buildCounterReportApiColumnSpec--;
 }
 
-core.List<api.ReportApiColumnSpec> buildUnnamed1784() {
+core.List<api.ReportApiColumnSpec> buildUnnamed1783() {
   var o = <api.ReportApiColumnSpec>[];
   o.add(buildReportApiColumnSpec());
   o.add(buildReportApiColumnSpec());
   return o;
 }
 
-void checkUnnamed1784(core.List<api.ReportApiColumnSpec> o) {
+void checkUnnamed1783(core.List<api.ReportApiColumnSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportApiColumnSpec(o[0] as api.ReportApiColumnSpec);
   checkReportApiColumnSpec(o[1] as api.ReportApiColumnSpec);
 }
 
-core.List<core.Object> buildUnnamed1785() {
+core.List<core.Object> buildUnnamed1784() {
   var o = <core.Object>[];
   o.add({
     'list': [1, 2, 3],
@@ -562,7 +562,7 @@ core.List<core.Object> buildUnnamed1785() {
   return o;
 }
 
-void checkUnnamed1785(core.List<core.Object> o) {
+void checkUnnamed1784(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -601,7 +601,7 @@ api.ReportRequestFilters buildReportRequestFilters() {
   if (buildCounterReportRequestFilters < 3) {
     o.column = buildReportApiColumnSpec();
     o.operator = 'foo';
-    o.values = buildUnnamed1785();
+    o.values = buildUnnamed1784();
   }
   buildCounterReportRequestFilters--;
   return o;
@@ -615,19 +615,19 @@ void checkReportRequestFilters(api.ReportRequestFilters o) {
       o.operator!,
       unittest.equals('foo'),
     );
-    checkUnnamed1785(o.values!);
+    checkUnnamed1784(o.values!);
   }
   buildCounterReportRequestFilters--;
 }
 
-core.List<api.ReportRequestFilters> buildUnnamed1786() {
+core.List<api.ReportRequestFilters> buildUnnamed1785() {
   var o = <api.ReportRequestFilters>[];
   o.add(buildReportRequestFilters());
   o.add(buildReportRequestFilters());
   return o;
 }
 
-void checkUnnamed1786(core.List<api.ReportRequestFilters> o) {
+void checkUnnamed1785(core.List<api.ReportRequestFilters> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportRequestFilters(o[0] as api.ReportRequestFilters);
   checkReportRequestFilters(o[1] as api.ReportRequestFilters);
@@ -657,14 +657,14 @@ void checkReportRequestOrderBy(api.ReportRequestOrderBy o) {
   buildCounterReportRequestOrderBy--;
 }
 
-core.List<api.ReportRequestOrderBy> buildUnnamed1787() {
+core.List<api.ReportRequestOrderBy> buildUnnamed1786() {
   var o = <api.ReportRequestOrderBy>[];
   o.add(buildReportRequestOrderBy());
   o.add(buildReportRequestOrderBy());
   return o;
 }
 
-void checkUnnamed1787(core.List<api.ReportRequestOrderBy> o) {
+void checkUnnamed1786(core.List<api.ReportRequestOrderBy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportRequestOrderBy(o[0] as api.ReportRequestOrderBy);
   checkReportRequestOrderBy(o[1] as api.ReportRequestOrderBy);
@@ -764,13 +764,13 @@ api.ReportRequest buildReportRequest() {
   var o = api.ReportRequest();
   buildCounterReportRequest++;
   if (buildCounterReportRequest < 3) {
-    o.columns = buildUnnamed1784();
+    o.columns = buildUnnamed1783();
     o.downloadFormat = 'foo';
-    o.filters = buildUnnamed1786();
+    o.filters = buildUnnamed1785();
     o.includeDeletedEntities = true;
     o.includeRemovedEntities = true;
     o.maxRowsPerFile = 42;
-    o.orderBy = buildUnnamed1787();
+    o.orderBy = buildUnnamed1786();
     o.reportScope = buildReportRequestReportScope();
     o.reportType = 'foo';
     o.rowCount = 42;
@@ -786,19 +786,19 @@ api.ReportRequest buildReportRequest() {
 void checkReportRequest(api.ReportRequest o) {
   buildCounterReportRequest++;
   if (buildCounterReportRequest < 3) {
-    checkUnnamed1784(o.columns!);
+    checkUnnamed1783(o.columns!);
     unittest.expect(
       o.downloadFormat!,
       unittest.equals('foo'),
     );
-    checkUnnamed1786(o.filters!);
+    checkUnnamed1785(o.filters!);
     unittest.expect(o.includeDeletedEntities!, unittest.isTrue);
     unittest.expect(o.includeRemovedEntities!, unittest.isTrue);
     unittest.expect(
       o.maxRowsPerFile!,
       unittest.equals(42),
     );
-    checkUnnamed1787(o.orderBy!);
+    checkUnnamed1786(o.orderBy!);
     checkReportRequestReportScope(
         o.reportScope! as api.ReportRequestReportScope);
     unittest.expect(
@@ -902,14 +902,14 @@ void checkSavedColumn(api.SavedColumn o) {
   buildCounterSavedColumn--;
 }
 
-core.List<api.SavedColumn> buildUnnamed1788() {
+core.List<api.SavedColumn> buildUnnamed1787() {
   var o = <api.SavedColumn>[];
   o.add(buildSavedColumn());
   o.add(buildSavedColumn());
   return o;
 }
 
-void checkUnnamed1788(core.List<api.SavedColumn> o) {
+void checkUnnamed1787(core.List<api.SavedColumn> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSavedColumn(o[0] as api.SavedColumn);
   checkSavedColumn(o[1] as api.SavedColumn);
@@ -920,7 +920,7 @@ api.SavedColumnList buildSavedColumnList() {
   var o = api.SavedColumnList();
   buildCounterSavedColumnList++;
   if (buildCounterSavedColumnList < 3) {
-    o.items = buildUnnamed1788();
+    o.items = buildUnnamed1787();
     o.kind = 'foo';
   }
   buildCounterSavedColumnList--;
@@ -930,13 +930,45 @@ api.SavedColumnList buildSavedColumnList() {
 void checkSavedColumnList(api.SavedColumnList o) {
   buildCounterSavedColumnList++;
   if (buildCounterSavedColumnList < 3) {
-    checkUnnamed1788(o.items!);
+    checkUnnamed1787(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
     );
   }
   buildCounterSavedColumnList--;
+}
+
+core.List<api.Availability> buildUnnamed1788() {
+  var o = <api.Availability>[];
+  o.add(buildAvailability());
+  o.add(buildAvailability());
+  return o;
+}
+
+void checkUnnamed1788(core.List<api.Availability> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAvailability(o[0] as api.Availability);
+  checkAvailability(o[1] as api.Availability);
+}
+
+core.int buildCounterUpdateAvailabilityRequest = 0;
+api.UpdateAvailabilityRequest buildUpdateAvailabilityRequest() {
+  var o = api.UpdateAvailabilityRequest();
+  buildCounterUpdateAvailabilityRequest++;
+  if (buildCounterUpdateAvailabilityRequest < 3) {
+    o.availabilities = buildUnnamed1788();
+  }
+  buildCounterUpdateAvailabilityRequest--;
+  return o;
+}
+
+void checkUpdateAvailabilityRequest(api.UpdateAvailabilityRequest o) {
+  buildCounterUpdateAvailabilityRequest++;
+  if (buildCounterUpdateAvailabilityRequest < 3) {
+    checkUnnamed1788(o.availabilities!);
+  }
+  buildCounterUpdateAvailabilityRequest--;
 }
 
 core.List<api.Availability> buildUnnamed1789() {
@@ -952,44 +984,12 @@ void checkUnnamed1789(core.List<api.Availability> o) {
   checkAvailability(o[1] as api.Availability);
 }
 
-core.int buildCounterUpdateAvailabilityRequest = 0;
-api.UpdateAvailabilityRequest buildUpdateAvailabilityRequest() {
-  var o = api.UpdateAvailabilityRequest();
-  buildCounterUpdateAvailabilityRequest++;
-  if (buildCounterUpdateAvailabilityRequest < 3) {
-    o.availabilities = buildUnnamed1789();
-  }
-  buildCounterUpdateAvailabilityRequest--;
-  return o;
-}
-
-void checkUpdateAvailabilityRequest(api.UpdateAvailabilityRequest o) {
-  buildCounterUpdateAvailabilityRequest++;
-  if (buildCounterUpdateAvailabilityRequest < 3) {
-    checkUnnamed1789(o.availabilities!);
-  }
-  buildCounterUpdateAvailabilityRequest--;
-}
-
-core.List<api.Availability> buildUnnamed1790() {
-  var o = <api.Availability>[];
-  o.add(buildAvailability());
-  o.add(buildAvailability());
-  return o;
-}
-
-void checkUnnamed1790(core.List<api.Availability> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkAvailability(o[0] as api.Availability);
-  checkAvailability(o[1] as api.Availability);
-}
-
 core.int buildCounterUpdateAvailabilityResponse = 0;
 api.UpdateAvailabilityResponse buildUpdateAvailabilityResponse() {
   var o = api.UpdateAvailabilityResponse();
   buildCounterUpdateAvailabilityResponse++;
   if (buildCounterUpdateAvailabilityResponse < 3) {
-    o.availabilities = buildUnnamed1790();
+    o.availabilities = buildUnnamed1789();
   }
   buildCounterUpdateAvailabilityResponse--;
   return o;
@@ -998,7 +998,7 @@ api.UpdateAvailabilityResponse buildUpdateAvailabilityResponse() {
 void checkUpdateAvailabilityResponse(api.UpdateAvailabilityResponse o) {
   buildCounterUpdateAvailabilityResponse++;
   if (buildCounterUpdateAvailabilityResponse < 3) {
-    checkUnnamed1790(o.availabilities!);
+    checkUnnamed1789(o.availabilities!);
   }
   buildCounterUpdateAvailabilityResponse--;
 }

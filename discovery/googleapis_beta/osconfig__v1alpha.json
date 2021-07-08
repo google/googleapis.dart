@@ -608,7 +608,7 @@
             }
         }
     },
-    "revision": "20210614",
+    "revision": "20210626",
     "rootUrl": "https://osconfig.googleapis.com/",
     "schemas": {
         "CVSSv3": {

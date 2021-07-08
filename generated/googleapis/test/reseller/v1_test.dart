@@ -142,9 +142,11 @@ api.Customer buildCustomer() {
     o.customerDomain = 'foo';
     o.customerDomainVerified = true;
     o.customerId = 'foo';
+    o.customerType = 'foo';
     o.kind = 'foo';
     o.phoneNumber = 'foo';
     o.postalAddress = buildAddress();
+    o.primaryAdmin = buildPrimaryAdmin();
     o.resourceUiUrl = 'foo';
   }
   buildCounterCustomer--;
@@ -168,6 +170,10 @@ void checkCustomer(api.Customer o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.customerType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.kind!,
       unittest.equals('foo'),
     );
@@ -176,12 +182,35 @@ void checkCustomer(api.Customer o) {
       unittest.equals('foo'),
     );
     checkAddress(o.postalAddress! as api.Address);
+    checkPrimaryAdmin(o.primaryAdmin! as api.PrimaryAdmin);
     unittest.expect(
       o.resourceUiUrl!,
       unittest.equals('foo'),
     );
   }
   buildCounterCustomer--;
+}
+
+core.int buildCounterPrimaryAdmin = 0;
+api.PrimaryAdmin buildPrimaryAdmin() {
+  var o = api.PrimaryAdmin();
+  buildCounterPrimaryAdmin++;
+  if (buildCounterPrimaryAdmin < 3) {
+    o.primaryEmail = 'foo';
+  }
+  buildCounterPrimaryAdmin--;
+  return o;
+}
+
+void checkPrimaryAdmin(api.PrimaryAdmin o) {
+  buildCounterPrimaryAdmin++;
+  if (buildCounterPrimaryAdmin < 3) {
+    unittest.expect(
+      o.primaryEmail!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPrimaryAdmin--;
 }
 
 core.int buildCounterRenewalSettings = 0;
@@ -211,14 +240,14 @@ void checkRenewalSettings(api.RenewalSettings o) {
   buildCounterRenewalSettings--;
 }
 
-core.List<core.String> buildUnnamed4629() {
+core.List<core.String> buildUnnamed4672() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed4629(core.List<core.String> o) {
+void checkUnnamed4672(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -236,7 +265,7 @@ api.ResellernotifyGetwatchdetailsResponse
   var o = api.ResellernotifyGetwatchdetailsResponse();
   buildCounterResellernotifyGetwatchdetailsResponse++;
   if (buildCounterResellernotifyGetwatchdetailsResponse < 3) {
-    o.serviceAccountEmailAddresses = buildUnnamed4629();
+    o.serviceAccountEmailAddresses = buildUnnamed4672();
     o.topicName = 'foo';
   }
   buildCounterResellernotifyGetwatchdetailsResponse--;
@@ -247,7 +276,7 @@ void checkResellernotifyGetwatchdetailsResponse(
     api.ResellernotifyGetwatchdetailsResponse o) {
   buildCounterResellernotifyGetwatchdetailsResponse++;
   if (buildCounterResellernotifyGetwatchdetailsResponse < 3) {
-    checkUnnamed4629(o.serviceAccountEmailAddresses!);
+    checkUnnamed4672(o.serviceAccountEmailAddresses!);
     unittest.expect(
       o.topicName!,
       unittest.equals('foo'),
@@ -371,14 +400,14 @@ void checkSubscriptionPlan(api.SubscriptionPlan o) {
   buildCounterSubscriptionPlan--;
 }
 
-core.List<core.String> buildUnnamed4630() {
+core.List<core.String> buildUnnamed4673() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed4630(core.List<core.String> o) {
+void checkUnnamed4673(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -466,7 +495,7 @@ api.Subscription buildSubscription() {
     o.skuName = 'foo';
     o.status = 'foo';
     o.subscriptionId = 'foo';
-    o.suspensionReasons = buildUnnamed4630();
+    o.suspensionReasons = buildUnnamed4673();
     o.transferInfo = buildSubscriptionTransferInfo();
     o.trialSettings = buildSubscriptionTrialSettings();
   }
@@ -528,7 +557,7 @@ void checkSubscription(api.Subscription o) {
       o.subscriptionId!,
       unittest.equals('foo'),
     );
-    checkUnnamed4630(o.suspensionReasons!);
+    checkUnnamed4673(o.suspensionReasons!);
     checkSubscriptionTransferInfo(
         o.transferInfo! as api.SubscriptionTransferInfo);
     checkSubscriptionTrialSettings(
@@ -537,14 +566,14 @@ void checkSubscription(api.Subscription o) {
   buildCounterSubscription--;
 }
 
-core.List<api.Subscription> buildUnnamed4631() {
+core.List<api.Subscription> buildUnnamed4674() {
   var o = <api.Subscription>[];
   o.add(buildSubscription());
   o.add(buildSubscription());
   return o;
 }
 
-void checkUnnamed4631(core.List<api.Subscription> o) {
+void checkUnnamed4674(core.List<api.Subscription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubscription(o[0] as api.Subscription);
   checkSubscription(o[1] as api.Subscription);
@@ -557,7 +586,7 @@ api.Subscriptions buildSubscriptions() {
   if (buildCounterSubscriptions < 3) {
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.subscriptions = buildUnnamed4631();
+    o.subscriptions = buildUnnamed4674();
   }
   buildCounterSubscriptions--;
   return o;
@@ -574,7 +603,7 @@ void checkSubscriptions(api.Subscriptions o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed4631(o.subscriptions!);
+    checkUnnamed4674(o.subscriptions!);
   }
   buildCounterSubscriptions--;
 }
@@ -607,6 +636,16 @@ void main() {
       var od =
           api.Customer.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkCustomer(od as api.Customer);
+    });
+  });
+
+  unittest.group('obj-schema-PrimaryAdmin', () {
+    unittest.test('to-json--from-json', () async {
+      var o = buildPrimaryAdmin();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PrimaryAdmin.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPrimaryAdmin(od as api.PrimaryAdmin);
     });
   });
 

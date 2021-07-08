@@ -125,6 +125,9 @@ class ProjectsLocationsAgentsResource {
 
   /// Creates an agent in the specified location.
   ///
+  /// Note: You should always train flows prior to sending them queries. See the
+  /// [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -378,6 +381,9 @@ class ProjectsLocationsAgentsResource {
 
   /// Updates the specified agent.
   ///
+  /// Note: You should always train flows prior to sending them queries. See the
+  /// [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -429,6 +435,8 @@ class ProjectsLocationsAgentsResource {
   ///
   /// Replaces the current agent with a new one. Note that all existing
   /// resources in agent (e.g. intents, entity types, flows) will be removed.
+  /// Note: You should always train flows prior to sending them queries. See the
+  /// [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
   ///
   /// [request] - The metadata request object.
   ///
@@ -526,6 +534,9 @@ class ProjectsLocationsAgentsEntityTypesResource {
 
   /// Creates an entity type in the specified agent.
   ///
+  /// Note: You should always train a flow prior to sending it queries. See the
+  /// [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -578,6 +589,9 @@ class ProjectsLocationsAgentsEntityTypesResource {
   }
 
   /// Deletes the specified entity type.
+  ///
+  /// Note: You should always train a flow prior to sending it queries. See the
+  /// [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
   ///
   /// Request parameters:
   ///
@@ -732,6 +746,9 @@ class ProjectsLocationsAgentsEntityTypesResource {
   }
 
   /// Updates the specified entity type.
+  ///
+  /// Note: You should always train a flow prior to sending it queries. See the
+  /// [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1909,6 +1926,9 @@ class ProjectsLocationsAgentsFlowsResource {
 
   /// Creates a flow in the specified agent.
   ///
+  /// Note: You should always train a flow prior to sending it queries. See the
+  /// [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -2153,6 +2173,9 @@ class ProjectsLocationsAgentsFlowsResource {
 
   /// Imports the specified flow to the specified agent from a binary file.
   ///
+  /// Note: You should always train a flow prior to sending it queries. See the
+  /// [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -2256,6 +2279,9 @@ class ProjectsLocationsAgentsFlowsResource {
 
   /// Updates the specified flow.
   ///
+  /// Note: You should always train a flow prior to sending it queries. See the
+  /// [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -2316,7 +2342,9 @@ class ProjectsLocationsAgentsFlowsResource {
 
   /// Trains the specified flow.
   ///
-  /// Note that only the flow in 'draft' environment is trained.
+  /// Note that only the flow in 'draft' environment is trained. Note: You
+  /// should always train a flow prior to sending it queries. See the
+  /// [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
   ///
   /// [request] - The metadata request object.
   ///
@@ -2414,6 +2442,9 @@ class ProjectsLocationsAgentsFlowsPagesResource {
 
   /// Creates a page in the specified flow.
   ///
+  /// Note: You should always train a flow prior to sending it queries. See the
+  /// [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -2474,6 +2505,9 @@ class ProjectsLocationsAgentsFlowsPagesResource {
   }
 
   /// Deletes the specified page.
+  ///
+  /// Note: You should always train a flow prior to sending it queries. See the
+  /// [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
   ///
   /// Request parameters:
   ///
@@ -2644,6 +2678,9 @@ class ProjectsLocationsAgentsFlowsPagesResource {
 
   /// Updates the specified page.
   ///
+  /// Note: You should always train a flow prior to sending it queries. See the
+  /// [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -2719,6 +2756,9 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
 
   /// Creates an TransitionRouteGroup in the specified flow.
   ///
+  /// Note: You should always train a flow prior to sending it queries. See the
+  /// [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -2773,6 +2813,9 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
   }
 
   /// Deletes the specified TransitionRouteGroup.
+  ///
+  /// Note: You should always train a flow prior to sending it queries. See the
+  /// [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
   ///
   /// Request parameters:
   ///
@@ -2930,6 +2973,9 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
   }
 
   /// Updates the specified TransitionRouteGroup.
+  ///
+  /// Note: You should always train a flow prior to sending it queries. See the
+  /// [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
   ///
   /// [request] - The metadata request object.
   ///
@@ -3263,6 +3309,9 @@ class ProjectsLocationsAgentsIntentsResource {
 
   /// Creates an intent in the specified agent.
   ///
+  /// Note: You should always train a flow prior to sending it queries. See the
+  /// [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -3314,6 +3363,9 @@ class ProjectsLocationsAgentsIntentsResource {
   }
 
   /// Deletes the specified intent.
+  ///
+  /// Note: You should always train a flow prior to sending it queries. See the
+  /// [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
   ///
   /// Request parameters:
   ///
@@ -3465,6 +3517,9 @@ class ProjectsLocationsAgentsIntentsResource {
   }
 
   /// Updates the specified intent.
+  ///
+  /// Note: You should always train a flow prior to sending it queries. See the
+  /// [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
   ///
   /// [request] - The metadata request object.
   ///
@@ -6482,10 +6537,12 @@ class GoogleCloudDialogflowCxV3Experiment {
   /// End time of this experiment.
   core.String? endTime;
 
-  /// Maximum number of days to run the experiment/rollout.
+  /// LINT.IfChange(default_experiment_length) Maximum number of days to run the
+  /// experiment/rollout.
   ///
   /// If auto-rollout is not enabled, default value and maximum will be 30 days.
   /// If auto-rollout is enabled, default value and maximum will be 6 days.
+  /// LINT.ThenChange(//depot/google3/cloud/ml/api/conversation/analytics/compute.cc:default_experiment_length)
   core.String? experimentLength;
 
   /// Last update time of this experiment.
@@ -6504,14 +6561,15 @@ class GoogleCloudDialogflowCxV3Experiment {
 
   /// The current state of the experiment.
   ///
-  /// Transition triggered by Expriments.StartExperiment: PENDING->RUNNING.
-  /// Transition triggered by Expriments.CancelExperiment: PENDING->CANCELLED or
-  /// RUNNING->CANCELLED.
+  /// Transition triggered by Experiments.StartExperiment: DRAFT->RUNNING.
+  /// Transition triggered by Experiments.CancelExperiment: DRAFT->DONE or
+  /// RUNNING->DONE.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : State unspecified.
   /// - "DRAFT" : The experiment is created but not started yet.
   /// - "RUNNING" : The experiment is running.
   /// - "DONE" : The experiment is done.
+  /// - "ROLLOUT_FAILED" : The experiment with auto-rollout enabled has failed.
   core.String? state;
 
   /// The history of updates to the experiment variants.
@@ -8100,10 +8158,10 @@ class GoogleCloudDialogflowCxV3Intent {
   /// Labels can contain lowercase letters, digits and the symbols '-' and '_'.
   /// International characters are allowed, including letters from unicase
   /// alphabets. Keys must start with a letter. Keys and values can be no longer
-  /// than 63 characters and no more than 128 bytes. Prefix "sys." is reserved
+  /// than 63 characters and no more than 128 bytes. Prefix "sys-" is reserved
   /// for Dialogflow defined labels. Currently allowed Dialogflow defined labels
-  /// include: * sys.head * sys.contextual The above labels do not require
-  /// value. "sys.head" means the intent is a head intent. "sys.contextual"
+  /// include: * sys-head * sys-contextual The above labels do not require
+  /// value. "sys-head" means the intent is a head intent. "sys.contextual"
   /// means the intent is a contextual intent.
   core.Map<core.String, core.String>? labels;
 
@@ -10581,7 +10639,7 @@ class GoogleCloudDialogflowCxV3SecuritySettings {
   /// Required.
   core.String? displayName;
 
-  /// DLP inspect template name.
+  /// [DLP](https://cloud.google.com/dlp/docs) inspect template name.
   ///
   /// Use this template to define inspect base settings. If empty, we use the
   /// default DLP inspect config. The template name will have one of the

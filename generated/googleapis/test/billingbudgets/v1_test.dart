@@ -27,14 +27,14 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.GoogleCloudBillingBudgetsV1ThresholdRule> buildUnnamed1692() {
+core.List<api.GoogleCloudBillingBudgetsV1ThresholdRule> buildUnnamed1691() {
   var o = <api.GoogleCloudBillingBudgetsV1ThresholdRule>[];
   o.add(buildGoogleCloudBillingBudgetsV1ThresholdRule());
   o.add(buildGoogleCloudBillingBudgetsV1ThresholdRule());
   return o;
 }
 
-void checkUnnamed1692(
+void checkUnnamed1691(
     core.List<api.GoogleCloudBillingBudgetsV1ThresholdRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudBillingBudgetsV1ThresholdRule(
@@ -54,7 +54,7 @@ api.GoogleCloudBillingBudgetsV1Budget buildGoogleCloudBillingBudgetsV1Budget() {
     o.etag = 'foo';
     o.name = 'foo';
     o.notificationsRule = buildGoogleCloudBillingBudgetsV1NotificationsRule();
-    o.thresholdRules = buildUnnamed1692();
+    o.thresholdRules = buildUnnamed1691();
   }
   buildCounterGoogleCloudBillingBudgetsV1Budget--;
   return o;
@@ -82,7 +82,7 @@ void checkGoogleCloudBillingBudgetsV1Budget(
     );
     checkGoogleCloudBillingBudgetsV1NotificationsRule(o.notificationsRule!
         as api.GoogleCloudBillingBudgetsV1NotificationsRule);
-    checkUnnamed1692(o.thresholdRules!);
+    checkUnnamed1691(o.thresholdRules!);
   }
   buildCounterGoogleCloudBillingBudgetsV1Budget--;
 }
@@ -134,14 +134,14 @@ void checkGoogleCloudBillingBudgetsV1CustomPeriod(
   buildCounterGoogleCloudBillingBudgetsV1CustomPeriod--;
 }
 
-core.List<core.String> buildUnnamed1693() {
+core.List<core.String> buildUnnamed1692() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed1693(core.List<core.String> o) {
+void checkUnnamed1692(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -153,7 +153,7 @@ void checkUnnamed1693(core.List<core.String> o) {
   );
 }
 
-core.List<core.Object> buildUnnamed1694() {
+core.List<core.Object> buildUnnamed1693() {
   var o = <core.Object>[];
   o.add({
     'list': [1, 2, 3],
@@ -168,7 +168,7 @@ core.List<core.Object> buildUnnamed1694() {
   return o;
 }
 
-void checkUnnamed1694(core.List<core.Object> o) {
+void checkUnnamed1693(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -200,17 +200,36 @@ void checkUnnamed1694(core.List<core.Object> o) {
   );
 }
 
-core.Map<core.String, core.List<core.Object>> buildUnnamed1695() {
+core.Map<core.String, core.List<core.Object>> buildUnnamed1694() {
   var o = <core.String, core.List<core.Object>>{};
-  o['x'] = buildUnnamed1694();
-  o['y'] = buildUnnamed1694();
+  o['x'] = buildUnnamed1693();
+  o['y'] = buildUnnamed1693();
   return o;
 }
 
-void checkUnnamed1695(core.Map<core.String, core.List<core.Object>> o) {
+void checkUnnamed1694(core.Map<core.String, core.List<core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed1694(o['x']!);
-  checkUnnamed1694(o['y']!);
+  checkUnnamed1693(o['x']!);
+  checkUnnamed1693(o['y']!);
+}
+
+core.List<core.String> buildUnnamed1695() {
+  var o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed1695(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed1696() {
@@ -251,38 +270,19 @@ void checkUnnamed1697(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed1698() {
-  var o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
-
-void checkUnnamed1698(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.int buildCounterGoogleCloudBillingBudgetsV1Filter = 0;
 api.GoogleCloudBillingBudgetsV1Filter buildGoogleCloudBillingBudgetsV1Filter() {
   var o = api.GoogleCloudBillingBudgetsV1Filter();
   buildCounterGoogleCloudBillingBudgetsV1Filter++;
   if (buildCounterGoogleCloudBillingBudgetsV1Filter < 3) {
     o.calendarPeriod = 'foo';
-    o.creditTypes = buildUnnamed1693();
+    o.creditTypes = buildUnnamed1692();
     o.creditTypesTreatment = 'foo';
     o.customPeriod = buildGoogleCloudBillingBudgetsV1CustomPeriod();
-    o.labels = buildUnnamed1695();
-    o.projects = buildUnnamed1696();
-    o.services = buildUnnamed1697();
-    o.subaccounts = buildUnnamed1698();
+    o.labels = buildUnnamed1694();
+    o.projects = buildUnnamed1695();
+    o.services = buildUnnamed1696();
+    o.subaccounts = buildUnnamed1697();
   }
   buildCounterGoogleCloudBillingBudgetsV1Filter--;
   return o;
@@ -296,17 +296,17 @@ void checkGoogleCloudBillingBudgetsV1Filter(
       o.calendarPeriod!,
       unittest.equals('foo'),
     );
-    checkUnnamed1693(o.creditTypes!);
+    checkUnnamed1692(o.creditTypes!);
     unittest.expect(
       o.creditTypesTreatment!,
       unittest.equals('foo'),
     );
     checkGoogleCloudBillingBudgetsV1CustomPeriod(
         o.customPeriod! as api.GoogleCloudBillingBudgetsV1CustomPeriod);
-    checkUnnamed1695(o.labels!);
-    checkUnnamed1696(o.projects!);
-    checkUnnamed1697(o.services!);
-    checkUnnamed1698(o.subaccounts!);
+    checkUnnamed1694(o.labels!);
+    checkUnnamed1695(o.projects!);
+    checkUnnamed1696(o.services!);
+    checkUnnamed1697(o.subaccounts!);
   }
   buildCounterGoogleCloudBillingBudgetsV1Filter--;
 }
@@ -328,14 +328,14 @@ void checkGoogleCloudBillingBudgetsV1LastPeriodAmount(
   buildCounterGoogleCloudBillingBudgetsV1LastPeriodAmount--;
 }
 
-core.List<api.GoogleCloudBillingBudgetsV1Budget> buildUnnamed1699() {
+core.List<api.GoogleCloudBillingBudgetsV1Budget> buildUnnamed1698() {
   var o = <api.GoogleCloudBillingBudgetsV1Budget>[];
   o.add(buildGoogleCloudBillingBudgetsV1Budget());
   o.add(buildGoogleCloudBillingBudgetsV1Budget());
   return o;
 }
 
-void checkUnnamed1699(core.List<api.GoogleCloudBillingBudgetsV1Budget> o) {
+void checkUnnamed1698(core.List<api.GoogleCloudBillingBudgetsV1Budget> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudBillingBudgetsV1Budget(
       o[0] as api.GoogleCloudBillingBudgetsV1Budget);
@@ -349,7 +349,7 @@ api.GoogleCloudBillingBudgetsV1ListBudgetsResponse
   var o = api.GoogleCloudBillingBudgetsV1ListBudgetsResponse();
   buildCounterGoogleCloudBillingBudgetsV1ListBudgetsResponse++;
   if (buildCounterGoogleCloudBillingBudgetsV1ListBudgetsResponse < 3) {
-    o.budgets = buildUnnamed1699();
+    o.budgets = buildUnnamed1698();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudBillingBudgetsV1ListBudgetsResponse--;
@@ -360,7 +360,7 @@ void checkGoogleCloudBillingBudgetsV1ListBudgetsResponse(
     api.GoogleCloudBillingBudgetsV1ListBudgetsResponse o) {
   buildCounterGoogleCloudBillingBudgetsV1ListBudgetsResponse++;
   if (buildCounterGoogleCloudBillingBudgetsV1ListBudgetsResponse < 3) {
-    checkUnnamed1699(o.budgets!);
+    checkUnnamed1698(o.budgets!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -369,14 +369,14 @@ void checkGoogleCloudBillingBudgetsV1ListBudgetsResponse(
   buildCounterGoogleCloudBillingBudgetsV1ListBudgetsResponse--;
 }
 
-core.List<core.String> buildUnnamed1700() {
+core.List<core.String> buildUnnamed1699() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed1700(core.List<core.String> o) {
+void checkUnnamed1699(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -395,7 +395,7 @@ api.GoogleCloudBillingBudgetsV1NotificationsRule
   buildCounterGoogleCloudBillingBudgetsV1NotificationsRule++;
   if (buildCounterGoogleCloudBillingBudgetsV1NotificationsRule < 3) {
     o.disableDefaultIamRecipients = true;
-    o.monitoringNotificationChannels = buildUnnamed1700();
+    o.monitoringNotificationChannels = buildUnnamed1699();
     o.pubsubTopic = 'foo';
     o.schemaVersion = 'foo';
   }
@@ -408,7 +408,7 @@ void checkGoogleCloudBillingBudgetsV1NotificationsRule(
   buildCounterGoogleCloudBillingBudgetsV1NotificationsRule++;
   if (buildCounterGoogleCloudBillingBudgetsV1NotificationsRule < 3) {
     unittest.expect(o.disableDefaultIamRecipients!, unittest.isTrue);
-    checkUnnamed1700(o.monitoringNotificationChannels!);
+    checkUnnamed1699(o.monitoringNotificationChannels!);
     unittest.expect(
       o.pubsubTopic!,
       unittest.equals('foo'),

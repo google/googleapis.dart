@@ -179,13 +179,13 @@ class GoogleIdentityStsV1ExchangeTokenRequest {
   /// pool provider, or a short-lived access token issued by Google. If the
   /// token is an OIDC JWT, it must use the JWT format defined in
   /// [RFC 7523](https://tools.ietf.org/html/rfc7523), and the
-  /// `subject_token_type` must be `urn:ietf:params:oauth:token-type:jwt`. The
-  /// following headers are required: - `kid`: The identifier of the signing key
-  /// securing the JWT. - `alg`: The cryptographic algorithm securing the JWT.
-  /// Must be `RS256` or `ES256`. The following payload fields are required. For
-  /// more information, see
-  /// [RFC 7523, Section 3](https://tools.ietf.org/html/rfc7523#section-3): -
-  /// `iss`: The issuer of the token. The issuer must provide a discovery
+  /// `subject_token_type` must be either `urn:ietf:params:oauth:token-type:jwt`
+  /// or `urn:ietf:params:oauth:token-type:id_token`. The following headers are
+  /// required: - `kid`: The identifier of the signing key securing the JWT. -
+  /// `alg`: The cryptographic algorithm securing the JWT. Must be `RS256` or
+  /// `ES256`. The following payload fields are required. For more information,
+  /// see [RFC 7523, Section 3](https://tools.ietf.org/html/rfc7523#section-3):
+  /// - `iss`: The issuer of the token. The issuer must provide a discovery
   /// document at the URL `/.well-known/openid-configuration`, where `` is the
   /// value of this field. The document must be formatted according to section
   /// 4.2 of the
@@ -255,6 +255,7 @@ class GoogleIdentityStsV1ExchangeTokenRequest {
   /// `subject_token` parameter.
   ///
   /// Supported values are `urn:ietf:params:oauth:token-type:jwt`,
+  /// `urn:ietf:params:oauth:token-type:id_token`,
   /// `urn:ietf:params:aws:token-type:aws4_request`, and
   /// `urn:ietf:params:oauth:token-type:access_token`.
   ///

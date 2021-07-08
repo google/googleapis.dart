@@ -2740,9 +2740,6 @@ class OrgunitsResource {
   /// [orgUnitPath] - The full path of the organizational unit or its unique ID.
   /// Value must have pattern `^.*$`.
   ///
-  /// [allowPlus] - Parses org unit path without url decode to allow for plus in
-  /// ou name
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2754,11 +2751,9 @@ class OrgunitsResource {
   async.Future<void> delete(
     core.String customerId,
     core.String orgUnitPath, {
-    core.bool? allowPlus,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
-      if (allowPlus != null) 'allowPlus': ['${allowPlus}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2788,9 +2783,6 @@ class OrgunitsResource {
   /// [orgUnitPath] - The full path of the organizational unit or its unique ID.
   /// Value must have pattern `^.*$`.
   ///
-  /// [allowPlus] - Parses org unit path without url decode to allow for plus in
-  /// ou name
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2804,11 +2796,9 @@ class OrgunitsResource {
   async.Future<OrgUnit> get(
     core.String customerId,
     core.String orgUnitPath, {
-    core.bool? allowPlus,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
-      if (allowPlus != null) 'allowPlus': ['${allowPlus}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2941,9 +2931,6 @@ class OrgunitsResource {
   /// [orgUnitPath] - The full path of the organizational unit or its unique ID.
   /// Value must have pattern `^.*$`.
   ///
-  /// [allowPlus] - Parses org unit path without url decode to allow for plus in
-  /// ou name
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2958,12 +2945,10 @@ class OrgunitsResource {
     OrgUnit request,
     core.String customerId,
     core.String orgUnitPath, {
-    core.bool? allowPlus,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
-      if (allowPlus != null) 'allowPlus': ['${allowPlus}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2996,9 +2981,6 @@ class OrgunitsResource {
   /// [orgUnitPath] - The full path of the organizational unit or its unique ID.
   /// Value must have pattern `^.*$`.
   ///
-  /// [allowPlus] - Parses org unit path without url decode to allow for plus in
-  /// ou name
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3013,12 +2995,10 @@ class OrgunitsResource {
     OrgUnit request,
     core.String customerId,
     core.String orgUnitPath, {
-    core.bool? allowPlus,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
-      if (allowPlus != null) 'allowPlus': ['${allowPlus}'],
       if ($fields != null) 'fields': [$fields],
     };
 

@@ -888,8 +888,6 @@ class GoogleCloudAssuredworkloadsV1beta1Workload {
   /// resources, the customer can change the assigned billing account. The
   /// resource name has the form `billingAccounts/{billing_account_id}`. For
   /// example, `billingAccounts/012345-567890-ABCDEF`.
-  ///
-  /// Required.
   core.String? billingAccount;
 
   /// Input only.
@@ -1254,7 +1252,10 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo {
   /// Indicates the type of resource.
   /// Possible string values are:
   /// - "RESOURCE_TYPE_UNSPECIFIED" : Unknown resource type.
-  /// - "CONSUMER_PROJECT" : Consumer project.
+  /// - "CONSUMER_PROJECT" : Deprecated. Existing workloads will continue to
+  /// support this, but new CreateWorkloadRequests should not specify this as an
+  /// input value.
+  /// - "CONSUMER_FOLDER" : Consumer Folder.
   /// - "ENCRYPTION_KEYS_PROJECT" : Consumer project containing encryption keys.
   /// - "KEYRING" : Keyring resource that hosts encryption keys.
   core.String? resourceType;
@@ -1296,7 +1297,10 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings {
   /// type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
   /// Possible string values are:
   /// - "RESOURCE_TYPE_UNSPECIFIED" : Unknown resource type.
-  /// - "CONSUMER_PROJECT" : Consumer project.
+  /// - "CONSUMER_PROJECT" : Deprecated. Existing workloads will continue to
+  /// support this, but new CreateWorkloadRequests should not specify this as an
+  /// input value.
+  /// - "CONSUMER_FOLDER" : Consumer Folder.
   /// - "ENCRYPTION_KEYS_PROJECT" : Consumer project containing encryption keys.
   /// - "KEYRING" : Keyring resource that hosts encryption keys.
   core.String? resourceType;

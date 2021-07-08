@@ -37,10 +37,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Reads and writes Google Docs documents.
 class DocsApi {
-  /// See, create, and edit all Google Docs documents you have access to
+  /// See, edit, create, and delete all your Google Docs documents
   static const documentsScope = 'https://www.googleapis.com/auth/documents';
 
-  /// View your Google Docs documents
+  /// See all your Google Docs documents
   static const documentsReadonlyScope =
       'https://www.googleapis.com/auth/documents.readonly';
 
@@ -4234,6 +4234,10 @@ class ParagraphElement {
   /// A paragraph element that links to a person or email address.
   Person? person;
 
+  /// A paragraph element that links to a Google resource (such as a file in
+  /// Drive, a Youtube video, a Calendar event, etc.)
+  RichLink? richLink;
+
   /// The zero-based start index of this paragraph element, in UTF-16 code
   /// units.
   core.int? startIndex;
@@ -4279,6 +4283,10 @@ class ParagraphElement {
       person = Person.fromJson(
           _json['person'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('richLink')) {
+      richLink = RichLink.fromJson(
+          _json['richLink'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('startIndex')) {
       startIndex = _json['startIndex'] as core.int;
     }
@@ -4300,6 +4308,7 @@ class ParagraphElement {
           'inlineObjectElement': inlineObjectElement!.toJson(),
         if (pageBreak != null) 'pageBreak': pageBreak!.toJson(),
         if (person != null) 'person': person!.toJson(),
+        if (richLink != null) 'richLink': richLink!.toJson(),
         if (startIndex != null) 'startIndex': startIndex!,
         if (textRun != null) 'textRun': textRun!.toJson(),
       };
@@ -5691,6 +5700,137 @@ class RgbColor {
         if (blue != null) 'blue': blue!,
         if (green != null) 'green': green!,
         if (red != null) 'red': red!,
+      };
+}
+
+/// A link to a Google resource (e.g., a file in Drive, a YouTube video, a
+/// Calendar event, etc.).
+class RichLink {
+  /// The ID of this link.
+  ///
+  /// Output only.
+  core.String? richLinkId;
+
+  /// The properties of this RichLink.
+  ///
+  /// This field is always present.
+  ///
+  /// Output only.
+  RichLinkProperties? richLinkProperties;
+
+  /// IDs for suggestions that remove this link from the document.
+  ///
+  /// A RichLink might have multiple deletion IDs if, for example, multiple
+  /// users suggest to delete it. If empty, then this person link isn't
+  /// suggested for deletion.
+  core.List<core.String>? suggestedDeletionIds;
+
+  /// IDs for suggestions that insert this link into the document.
+  ///
+  /// A RichLink might have multiple insertion IDs if it is a nested suggested
+  /// change (a suggestion within a suggestion made by a different user, for
+  /// example). If empty, then this person link isn't a suggested insertion.
+  core.List<core.String>? suggestedInsertionIds;
+
+  /// The suggested text style changes to this RichLink, keyed by suggestion ID.
+  core.Map<core.String, SuggestedTextStyle>? suggestedTextStyleChanges;
+
+  /// The text style of this RichLink.
+  TextStyle? textStyle;
+
+  RichLink();
+
+  RichLink.fromJson(core.Map _json) {
+    if (_json.containsKey('richLinkId')) {
+      richLinkId = _json['richLinkId'] as core.String;
+    }
+    if (_json.containsKey('richLinkProperties')) {
+      richLinkProperties = RichLinkProperties.fromJson(
+          _json['richLinkProperties'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('suggestedDeletionIds')) {
+      suggestedDeletionIds = (_json['suggestedDeletionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('suggestedInsertionIds')) {
+      suggestedInsertionIds = (_json['suggestedInsertionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('suggestedTextStyleChanges')) {
+      suggestedTextStyleChanges = (_json['suggestedTextStyleChanges']
+              as core.Map<core.String, core.dynamic>)
+          .map(
+        (key, item) => core.MapEntry(
+          key,
+          SuggestedTextStyle.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
+    }
+    if (_json.containsKey('textStyle')) {
+      textStyle = TextStyle.fromJson(
+          _json['textStyle'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (richLinkId != null) 'richLinkId': richLinkId!,
+        if (richLinkProperties != null)
+          'richLinkProperties': richLinkProperties!.toJson(),
+        if (suggestedDeletionIds != null)
+          'suggestedDeletionIds': suggestedDeletionIds!,
+        if (suggestedInsertionIds != null)
+          'suggestedInsertionIds': suggestedInsertionIds!,
+        if (suggestedTextStyleChanges != null)
+          'suggestedTextStyleChanges': suggestedTextStyleChanges!
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (textStyle != null) 'textStyle': textStyle!.toJson(),
+      };
+}
+
+/// Properties specific to a RichLink.
+class RichLinkProperties {
+  /// The [MIME type](https://developers.google.com/drive/api/v3/mime-types) of
+  /// the RichLink, if there is one (i.e., when it is a file in Drive).
+  ///
+  /// Output only.
+  core.String? mimeType;
+
+  /// The title of the RichLink as displayed in the link.
+  ///
+  /// This title matches the title of the linked resource at the time of the
+  /// insertion or last update of the link. This field is always present.
+  ///
+  /// Output only.
+  core.String? title;
+
+  /// The URI to the RichLink.
+  ///
+  /// This is always present.
+  ///
+  /// Output only.
+  core.String? uri;
+
+  RichLinkProperties();
+
+  RichLinkProperties.fromJson(core.Map _json) {
+    if (_json.containsKey('mimeType')) {
+      mimeType = _json['mimeType'] as core.String;
+    }
+    if (_json.containsKey('title')) {
+      title = _json['title'] as core.String;
+    }
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mimeType != null) 'mimeType': mimeType!,
+        if (title != null) 'title': title!,
+        if (uri != null) 'uri': uri!,
       };
 }
 

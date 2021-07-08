@@ -1914,7 +1914,7 @@
             }
         }
     },
-    "revision": "20210614",
+    "revision": "20210629",
     "rootUrl": "https://cloudsearch.googleapis.com/",
     "schemas": {
         "AuditLoggingSettings": {

@@ -417,6 +417,85 @@ class ProjectsLocationsRepositoriesDockerImagesResource {
   }
 }
 
+/// A detailed representation of an Apt artifact.
+///
+/// Information in the record is derived from the archive's control file. See
+/// https://www.debian.org/doc/debian-policy/ch-controlfields.html
+class AptArtifact {
+  /// Operating system architecture of the artifact.
+  ///
+  /// Output only.
+  core.String? architecture;
+
+  /// Repository component of the artifact.
+  ///
+  /// Output only.
+  core.String? component;
+
+  /// Contents of the artifact's control metadata file.
+  ///
+  /// Output only.
+  core.String? controlFile;
+  core.List<core.int> get controlFileAsBytes =>
+      convert.base64.decode(controlFile!);
+
+  set controlFileAsBytes(core.List<core.int> _bytes) {
+    controlFile =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// The Artifact Registry resource name of the artifact.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The Apt package name of the artifact.
+  ///
+  /// Output only.
+  core.String? packageName;
+
+  /// An artifact is a binary or source package.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PACKAGE_TYPE_UNSPECIFIED" : Package type is not specified.
+  /// - "BINARY" : Binary package.
+  /// - "SOURCE" : Source package.
+  core.String? packageType;
+
+  AptArtifact();
+
+  AptArtifact.fromJson(core.Map _json) {
+    if (_json.containsKey('architecture')) {
+      architecture = _json['architecture'] as core.String;
+    }
+    if (_json.containsKey('component')) {
+      component = _json['component'] as core.String;
+    }
+    if (_json.containsKey('controlFile')) {
+      controlFile = _json['controlFile'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('packageName')) {
+      packageName = _json['packageName'] as core.String;
+    }
+    if (_json.containsKey('packageType')) {
+      packageType = _json['packageType'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (architecture != null) 'architecture': architecture!,
+        if (component != null) 'component': component!,
+        if (controlFile != null) 'controlFile': controlFile!,
+        if (name != null) 'name': name!,
+        if (packageName != null) 'packageName': packageName!,
+        if (packageType != null) 'packageType': packageType!,
+      };
+}
+
 /// The request message for Operations.CancelOperation.
 class CancelOperationRequest {
   CancelOperationRequest();
@@ -538,6 +617,182 @@ class Empty {
       core.Map _json);
 
   core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Error information explaining why a package was not imported.
+class ImportAptArtifactsErrorInfo {
+  /// The detailed error status.
+  Status? error;
+
+  /// Google Cloud Storage location requested.
+  ImportAptArtifactsGcsSource? gcsSource;
+
+  ImportAptArtifactsErrorInfo();
+
+  ImportAptArtifactsErrorInfo.fromJson(core.Map _json) {
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('gcsSource')) {
+      gcsSource = ImportAptArtifactsGcsSource.fromJson(
+          _json['gcsSource'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (error != null) 'error': error!.toJson(),
+        if (gcsSource != null) 'gcsSource': gcsSource!.toJson(),
+      };
+}
+
+/// Google Cloud Storage location where the artifacts currently reside.
+class ImportAptArtifactsGcsSource {
+  /// Cloud Storage paths URI (e.g., gs://my_bucket//my_object).
+  core.List<core.String>? uris;
+
+  /// Supports URI wildcards for matching multiple objects from a single URI.
+  core.bool? useWildcards;
+
+  ImportAptArtifactsGcsSource();
+
+  ImportAptArtifactsGcsSource.fromJson(core.Map _json) {
+    if (_json.containsKey('uris')) {
+      uris = (_json['uris'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('useWildcards')) {
+      useWildcards = _json['useWildcards'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uris != null) 'uris': uris!,
+        if (useWildcards != null) 'useWildcards': useWildcards!,
+      };
+}
+
+/// The response message from importing artifacts.
+class ImportAptArtifactsResponse {
+  /// The Apt artifacts updated.
+  core.List<AptArtifact>? aptArtifacts;
+
+  /// Detailed error info for packages that were not imported.
+  core.List<ImportAptArtifactsErrorInfo>? errors;
+
+  ImportAptArtifactsResponse();
+
+  ImportAptArtifactsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('aptArtifacts')) {
+      aptArtifacts = (_json['aptArtifacts'] as core.List)
+          .map<AptArtifact>((value) => AptArtifact.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('errors')) {
+      errors = (_json['errors'] as core.List)
+          .map<ImportAptArtifactsErrorInfo>((value) =>
+              ImportAptArtifactsErrorInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aptArtifacts != null)
+          'aptArtifacts': aptArtifacts!.map((value) => value.toJson()).toList(),
+        if (errors != null)
+          'errors': errors!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// Error information explaining why a package was not imported.
+class ImportYumArtifactsErrorInfo {
+  /// The detailed error status.
+  Status? error;
+
+  /// Google Cloud Storage location requested.
+  ImportYumArtifactsGcsSource? gcsSource;
+
+  ImportYumArtifactsErrorInfo();
+
+  ImportYumArtifactsErrorInfo.fromJson(core.Map _json) {
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('gcsSource')) {
+      gcsSource = ImportYumArtifactsGcsSource.fromJson(
+          _json['gcsSource'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (error != null) 'error': error!.toJson(),
+        if (gcsSource != null) 'gcsSource': gcsSource!.toJson(),
+      };
+}
+
+/// Google Cloud Storage location where the artifacts currently reside.
+class ImportYumArtifactsGcsSource {
+  /// Cloud Storage paths URI (e.g., gs://my_bucket//my_object).
+  core.List<core.String>? uris;
+
+  /// Supports URI wildcards for matching multiple objects from a single URI.
+  core.bool? useWildcards;
+
+  ImportYumArtifactsGcsSource();
+
+  ImportYumArtifactsGcsSource.fromJson(core.Map _json) {
+    if (_json.containsKey('uris')) {
+      uris = (_json['uris'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('useWildcards')) {
+      useWildcards = _json['useWildcards'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uris != null) 'uris': uris!,
+        if (useWildcards != null) 'useWildcards': useWildcards!,
+      };
+}
+
+/// The response message from importing artifacts.
+class ImportYumArtifactsResponse {
+  /// Detailed error info for packages that were not imported.
+  core.List<ImportYumArtifactsErrorInfo>? errors;
+
+  /// The yum artifacts updated.
+  core.List<YumArtifact>? yumArtifacts;
+
+  ImportYumArtifactsResponse();
+
+  ImportYumArtifactsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('errors')) {
+      errors = (_json['errors'] as core.List)
+          .map<ImportYumArtifactsErrorInfo>((value) =>
+              ImportYumArtifactsErrorInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('yumArtifacts')) {
+      yumArtifacts = (_json['yumArtifacts'] as core.List)
+          .map<YumArtifact>((value) => YumArtifact.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (errors != null)
+          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (yumArtifacts != null)
+          'yumArtifacts': yumArtifacts!.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The response from listing docker images.
@@ -846,5 +1101,142 @@ class Status {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
+      };
+}
+
+/// The response to upload an artifact.
+class UploadAptArtifactMediaResponse {
+  /// Operation to be returned to the user.
+  Operation? operation;
+
+  UploadAptArtifactMediaResponse();
+
+  UploadAptArtifactMediaResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('operation')) {
+      operation = Operation.fromJson(
+          _json['operation'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (operation != null) 'operation': operation!.toJson(),
+      };
+}
+
+/// The response of the completed artifact upload operation.
+///
+/// This response is contained in the Operation and available to users.
+class UploadAptArtifactResponse {
+  /// The Apt artifacts updated.
+  core.List<AptArtifact>? aptArtifacts;
+
+  UploadAptArtifactResponse();
+
+  UploadAptArtifactResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('aptArtifacts')) {
+      aptArtifacts = (_json['aptArtifacts'] as core.List)
+          .map<AptArtifact>((value) => AptArtifact.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aptArtifacts != null)
+          'aptArtifacts': aptArtifacts!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// The response to upload an artifact.
+class UploadYumArtifactMediaResponse {
+  /// Operation to be returned to the user.
+  Operation? operation;
+
+  UploadYumArtifactMediaResponse();
+
+  UploadYumArtifactMediaResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('operation')) {
+      operation = Operation.fromJson(
+          _json['operation'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (operation != null) 'operation': operation!.toJson(),
+      };
+}
+
+/// The response of the completed artifact upload operation.
+///
+/// This response is contained in the Operation and available to users.
+class UploadYumArtifactResponse {
+  /// The Apt artifacts updated.
+  core.List<YumArtifact>? yumArtifacts;
+
+  UploadYumArtifactResponse();
+
+  UploadYumArtifactResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('yumArtifacts')) {
+      yumArtifacts = (_json['yumArtifacts'] as core.List)
+          .map<YumArtifact>((value) => YumArtifact.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (yumArtifacts != null)
+          'yumArtifacts': yumArtifacts!.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// A detailed representation of a Yum artifact.
+class YumArtifact {
+  /// Operating system architecture of the artifact.
+  ///
+  /// Output only.
+  core.String? architecture;
+
+  /// The Artifact Registry resource name of the artifact.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The yum package name of the artifact.
+  ///
+  /// Output only.
+  core.String? packageName;
+
+  /// An artifact is a binary or source package.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PACKAGE_TYPE_UNSPECIFIED" : Package type is not specified.
+  /// - "BINARY" : Binary package (.rpm). .rpm
+  /// - "SOURCE" : Source package (.srpm).
+  core.String? packageType;
+
+  YumArtifact();
+
+  YumArtifact.fromJson(core.Map _json) {
+    if (_json.containsKey('architecture')) {
+      architecture = _json['architecture'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('packageName')) {
+      packageName = _json['packageName'] as core.String;
+    }
+    if (_json.containsKey('packageType')) {
+      packageType = _json['packageType'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (architecture != null) 'architecture': architecture!,
+        if (name != null) 'name': name!,
+        if (packageName != null) 'packageName': packageName!,
+        if (packageType != null) 'packageType': packageType!,
       };
 }

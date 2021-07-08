@@ -4063,13 +4063,22 @@ class SasPortalDeviceGrant {
 
 /// Device data overridable by both SAS Portal and registration requests.
 class SasPortalDeviceMetadata {
+  /// If populated, the Antenna Model Pattern to use.
+  ///
+  /// Format is: RecordCreatorId:PatternId
+  core.String? antennaModel;
+
   SasPortalDeviceMetadata();
 
-  SasPortalDeviceMetadata.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
+  SasPortalDeviceMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey('antennaModel')) {
+      antennaModel = _json['antennaModel'] as core.String;
+    }
+  }
 
-  core.Map<core.String, core.dynamic> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (antennaModel != null) 'antennaModel': antennaModel!,
+      };
 }
 
 /// Information about the model of the device.

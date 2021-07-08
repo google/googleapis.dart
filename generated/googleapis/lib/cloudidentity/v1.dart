@@ -1314,9 +1314,8 @@ class GroupsResource {
   /// the `Group`. Shall be of the form `groups/{group_id}`.
   /// Value must have pattern `^groups/\[^/\]+$`.
   ///
-  /// [updateMask] - Required. The fully-qualified names of fields to update.
-  /// May only contain the following fields: `display_name`, `description`,
-  /// `labels`.
+  /// [updateMask] - Required. The names of fields to update. May only contain
+  /// the following fields: `display_name`, `description`, `labels`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

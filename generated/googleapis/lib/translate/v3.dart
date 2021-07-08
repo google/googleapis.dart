@@ -138,9 +138,8 @@ class ProjectsResource {
   /// `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}`
   /// - General (built-in) models:
   /// `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,
-  /// `projects/{project-number-or-id}/locations/{location-id}/models/general/base`
   /// Returns languages supported by the specified model. If missing, we get
-  /// supported languages of Google general base (PBMT) model.
+  /// supported languages of Google general NMT model.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -391,9 +390,8 @@ class ProjectsLocationsResource {
   /// `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}`
   /// - General (built-in) models:
   /// `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,
-  /// `projects/{project-number-or-id}/locations/{location-id}/models/general/base`
   /// Returns languages supported by the specified model. If missing, we get
-  /// supported languages of Google general base (PBMT) model.
+  /// supported languages of Google general NMT model.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1007,7 +1005,6 @@ class BatchTranslateTextRequest {
   /// `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}`
   /// - General (built-in) models:
   /// `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,
-  /// `projects/{project-number-or-id}/locations/{location-id}/models/general/base`
   /// If the map is empty or a specific model is not requested for a language
   /// pair, then default google model (nmt) is used.
   ///
@@ -2017,11 +2014,10 @@ class TranslateTextRequest {
   /// `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}`
   /// - General (built-in) models:
   /// `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,
-  /// `projects/{project-number-or-id}/locations/{location-id}/models/general/base`
   /// For global (non-regionalized) requests, use `location-id` `global`. For
   /// example,
   /// `projects/{project-number-or-id}/locations/global/models/general/nmt`. If
-  /// missing, the system decides which google base model to use.
+  /// not provided, the default Google model (NMT) will be used
   ///
   /// Optional.
   core.String? model;

@@ -4686,6 +4686,9 @@ class ClusterUpdate {
   /// Configurations for the various addons available to run in the cluster.
   AddonsConfig? desiredAddonsConfig;
 
+  /// The desired authenticator groups config for the cluster.
+  AuthenticatorGroupsConfig? desiredAuthenticatorGroupsConfig;
+
   /// The desired Autopilot configuration for the cluster.
   Autopilot? desiredAutopilot;
 
@@ -4830,6 +4833,11 @@ class ClusterUpdate {
       desiredAddonsConfig = AddonsConfig.fromJson(
           _json['desiredAddonsConfig'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('desiredAuthenticatorGroupsConfig')) {
+      desiredAuthenticatorGroupsConfig = AuthenticatorGroupsConfig.fromJson(
+          _json['desiredAuthenticatorGroupsConfig']
+              as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('desiredAutopilot')) {
       desiredAutopilot = Autopilot.fromJson(
           _json['desiredAutopilot'] as core.Map<core.String, core.dynamic>);
@@ -4945,6 +4953,9 @@ class ClusterUpdate {
   core.Map<core.String, core.dynamic> toJson() => {
         if (desiredAddonsConfig != null)
           'desiredAddonsConfig': desiredAddonsConfig!.toJson(),
+        if (desiredAuthenticatorGroupsConfig != null)
+          'desiredAuthenticatorGroupsConfig':
+              desiredAuthenticatorGroupsConfig!.toJson(),
         if (desiredAutopilot != null)
           'desiredAutopilot': desiredAutopilot!.toJson(),
         if (desiredBinaryAuthorization != null)

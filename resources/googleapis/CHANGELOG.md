@@ -1,11 +1,12 @@
 ## 4.0.0-dev
 
-- `baremetalsolution` - **REMOVED**
+- `datacatalog` - new!
 - `dfareporting` - added v3.5
-- `keep` - `v1` - new!
+- `keep` - new!
 - `paymentsresellersubscription` - new!
 - `privateca` - new!
 - `resourcesettings` - new!
+- `sqladmin` - new!
 
 ## 3.0.0
 

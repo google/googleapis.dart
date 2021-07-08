@@ -14,8 +14,7 @@
 
 /// Network Connectivity API - v1alpha1
 ///
-/// The Network Connectivity API will be home to various services which provide
-/// information pertaining to network connectivity.
+/// The Network Connectivity API provides access to Network Connectivity Center.
 ///
 /// For more information, see
 /// <https://cloud.google.com/network-connectivity/docs>
@@ -44,8 +43,7 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// The Network Connectivity API will be home to various services which provide
-/// information pertaining to network connectivity.
+/// The Network Connectivity API provides access to Network Connectivity Center.
 class NetworkconnectivityApi {
   /// See, edit, configure, and delete your Google Cloud Platform data
   static const cloudPlatformScope =

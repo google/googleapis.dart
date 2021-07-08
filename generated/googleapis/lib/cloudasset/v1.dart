@@ -1067,6 +1067,21 @@ class V1Resource {
   /// "Important" as a word in any of the searchable fields and are also located
   /// in the "us-west1" region or the "global" location.
   ///
+  /// [readMask] - Optional. A comma-separated list of fields specifying which
+  /// fields to be returned in ResourceSearchResult. Only '*' or combination of
+  /// top level fields can be specified. Field names of both snake_case and
+  /// camelCase are supported. Examples: `"*"`, `"name,location"`,
+  /// `"name,versionedResources"`. The read_mask paths must be valid field paths
+  /// listed but not limited to (both snake_case and camelCase are supported): *
+  /// name * asset_type or assetType * project * display_name or displayName *
+  /// description * location * labels * network_tags or networkTags * kms_key or
+  /// kmsKey * create_time or createTime * update_time or updateTime * state *
+  /// additional_attributes or additionalAttributes * versioned_resources or
+  /// versionedResources If read_mask is not specified, all fields except
+  /// versionedResources will be returned. If only '*' is specified, all fields
+  /// including versionedResources will be returned. Any invalid field path will
+  /// trigger INVALID_ARGUMENT error.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1084,6 +1099,7 @@ class V1Resource {
     core.int? pageSize,
     core.String? pageToken,
     core.String? query,
+    core.String? readMask,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
@@ -1092,6 +1108,7 @@ class V1Resource {
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (query != null) 'query': [query],
+      if (readMask != null) 'readMask': [readMask],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -5713,6 +5730,15 @@ class ResourceSearchResult {
   /// Example: `updateTime < "2021-01-01T00:00:00"`
   core.String? updateTime;
 
+  /// Versioned resource representations of this resource.
+  ///
+  /// This is repeated because there could be multiple versions of resource
+  /// representations during version migration. This `versioned_resources` field
+  /// is not searchable. Some attributes of the resource representations are
+  /// exposed in `additional_attributes` field, so as to allow users to search
+  /// on them.
+  core.List<VersionedResource>? versionedResources;
+
   ResourceSearchResult();
 
   ResourceSearchResult.fromJson(core.Map _json) {
@@ -5783,6 +5809,12 @@ class ResourceSearchResult {
     if (_json.containsKey('updateTime')) {
       updateTime = _json['updateTime'] as core.String;
     }
+    if (_json.containsKey('versionedResources')) {
+      versionedResources = (_json['versionedResources'] as core.List)
+          .map<VersionedResource>((value) => VersionedResource.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5805,6 +5837,9 @@ class ResourceSearchResult {
         if (project != null) 'project': project!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
+        if (versionedResources != null)
+          'versionedResources':
+              versionedResources!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -6209,6 +6244,54 @@ class VersionedPackage {
   core.Map<core.String, core.dynamic> toJson() => {
         if (architecture != null) 'architecture': architecture!,
         if (packageName != null) 'packageName': packageName!,
+        if (version != null) 'version': version!,
+      };
+}
+
+/// Resource representation as defined by the corresponding service providing
+/// the resource for a given API version.
+class VersionedResource {
+  /// JSON representation of the resource as defined by the corresponding
+  /// service providing this resource.
+  ///
+  /// Example: If the resource is an instance provided by Compute Engine, this
+  /// field will contain the JSON representation of the instance as defined by
+  /// Compute Engine:
+  /// `https://cloud.google.com/compute/docs/reference/rest/v1/instances`. You
+  /// can find the resource definition for each supported resource type in this
+  /// table:
+  /// `https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types`
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object>? resource;
+
+  /// API version of the resource.
+  ///
+  /// Example: If the resource is an instance provided by Compute Engine v1 API
+  /// as defined in
+  /// `https://cloud.google.com/compute/docs/reference/rest/v1/instances`,
+  /// version will be "v1".
+  core.String? version;
+
+  VersionedResource();
+
+  VersionedResource.fromJson(core.Map _json) {
+    if (_json.containsKey('resource')) {
+      resource = (_json['resource'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
+    }
+    if (_json.containsKey('version')) {
+      version = _json['version'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (resource != null) 'resource': resource!,
         if (version != null) 'version': version!,
       };
 }

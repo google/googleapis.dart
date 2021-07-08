@@ -48,11 +48,11 @@ class Area120TablesApi {
   static const driveReadonlyScope =
       'https://www.googleapis.com/auth/drive.readonly';
 
-  /// See, edit, create, and delete your spreadsheets in Google Drive
+  /// See, edit, create, and delete all your Google Sheets spreadsheets
   static const spreadsheetsScope =
       'https://www.googleapis.com/auth/spreadsheets';
 
-  /// View your Google Spreadsheets
+  /// See all your Google Sheets spreadsheets
   static const spreadsheetsReadonlyScope =
       'https://www.googleapis.com/auth/spreadsheets.readonly';
 

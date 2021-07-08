@@ -3144,7 +3144,7 @@ class ConferenceData {
   /// The ID of the conference.
   /// Can be used by developers to keep track of conferences, should not be
   /// displayed to users.
-  /// The ID value is formed differently for each conference solution type: \`
+  /// The ID value is formed differently for each conference solution type:
   /// - eventHangout: ID is not set.
   /// - eventNamedHangout: ID is the name of the Hangout.
   /// - hangoutsMeet: ID is the 10-letter meeting code, for example
@@ -3629,8 +3629,6 @@ class EventCreator {
   core.String? email;
 
   /// The creator's Profile ID, if available.
-  ///
-  /// It corresponds to the id field in the People collection of the Google+ API
   core.String? id;
 
   /// Whether the creator corresponds to the calendar on which this copy of the
@@ -3810,8 +3808,6 @@ class EventOrganizer {
   core.String? email;
 
   /// The organizer's Profile ID, if available.
-  ///
-  /// It corresponds to the id field in the People collection of the Google+ API
   core.String? id;
 
   /// Whether the organizer corresponds to the calendar on which this copy of
@@ -3911,8 +3907,7 @@ class EventSource {
 }
 
 class Event {
-  /// Whether anyone can invite themselves to the event (currently works for
-  /// Google+ events only).
+  /// Whether anyone can invite themselves to the event (deprecated).
   ///
   /// Optional. The default is False.
   core.bool? anyoneCanAddSelf;
@@ -4014,7 +4009,7 @@ class Event {
   /// Optional. The default is True.
   core.bool? guestsCanSeeOtherGuests;
 
-  /// An absolute link to the Google+ hangout associated with this event.
+  /// An absolute link to the Google Hangout associated with this event.
   ///
   /// Read-only.
   core.String? hangoutLink;
@@ -4452,8 +4447,6 @@ class EventAttendee {
   core.String? email;
 
   /// The attendee's Profile ID, if available.
-  ///
-  /// It corresponds to the id field in the People collection of the Google+ API
   core.String? id;
 
   /// Whether this is an optional attendee.

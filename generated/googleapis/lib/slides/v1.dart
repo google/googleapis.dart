@@ -49,19 +49,19 @@ class SlidesApi {
   static const driveReadonlyScope =
       'https://www.googleapis.com/auth/drive.readonly';
 
-  /// View and manage your Google Slides presentations
+  /// See, edit, create, and delete all your Google Slides presentations
   static const presentationsScope =
       'https://www.googleapis.com/auth/presentations';
 
-  /// View your Google Slides presentations
+  /// See all your Google Slides presentations
   static const presentationsReadonlyScope =
       'https://www.googleapis.com/auth/presentations.readonly';
 
-  /// See, edit, create, and delete your spreadsheets in Google Drive
+  /// See, edit, create, and delete all your Google Sheets spreadsheets
   static const spreadsheetsScope =
       'https://www.googleapis.com/auth/spreadsheets';
 
-  /// View your Google Spreadsheets
+  /// See all your Google Sheets spreadsheets
   static const spreadsheetsReadonlyScope =
       'https://www.googleapis.com/auth/spreadsheets.readonly';
 
@@ -1281,6 +1281,10 @@ class CreateSheetsChartRequest {
   core.String? objectId;
 
   /// The ID of the Google Sheets spreadsheet that contains the chart.
+  ///
+  /// You might need to add a resource key to the HTTP header for a subset of
+  /// old files. For more information, see \[Access link-shared files using
+  /// resource keys\](https://developers.google.com/drive/api/v3/resource-keys).
   core.String? spreadsheetId;
 
   CreateSheetsChartRequest();
@@ -1508,7 +1512,10 @@ class CreateVideoRequest {
   /// e.g. For YouTube video https://www.youtube.com/watch?v=7U3axjORYZ0, the ID
   /// is 7U3axjORYZ0. For a Google Drive video
   /// https://drive.google.com/file/d/1xCgQLFTJi5_Xl8DgW_lcUYq5e-q6Hi5Q the ID
-  /// is 1xCgQLFTJi5_Xl8DgW_lcUYq5e-q6Hi5Q.
+  /// is 1xCgQLFTJi5_Xl8DgW_lcUYq5e-q6Hi5Q. To access a Google Drive video file,
+  /// you might need to add a resource key to the HTTP header for a subset of
+  /// old files. For more information, see \[Access link-shared files using
+  /// resource keys\](https://developers.google.com/drive/api/v3/resource-keys).
   core.String? id;
 
   /// A user-supplied object ID.
@@ -1650,7 +1657,7 @@ class DeleteObjectRequest {
   ///
   /// If after a delete operation a group contains only 1 or no page elements,
   /// the group is also deleted. If a placeholder is deleted on a layout, any
-  /// empty inheriting shapes are also deleted.
+  /// empty inheriting placeholders are also deleted.
   core.String? objectId;
 
   DeleteObjectRequest();
@@ -1949,7 +1956,7 @@ class GroupObjectsRequest {
   ///
   /// Only page elements can be grouped. There should be at least two page
   /// elements on the same page that are not already in another group. Some page
-  /// elements, such as videos, tables and placeholder shapes cannot be grouped.
+  /// elements, such as videos, tables and placeholders cannot be grouped.
   core.List<core.String>? childrenObjectIds;
 
   /// A user-supplied object ID for the group to be created.
@@ -4897,8 +4904,8 @@ class Shadow {
 /// A PageElement kind representing a generic shape that does not have a more
 /// specific classification.
 class Shape {
-  /// Placeholders are shapes that are inherit from corresponding placeholders
-  /// on layouts and masters.
+  /// Placeholders are page elements that inherit from corresponding
+  /// placeholders on layouts and masters.
   ///
   /// If set, the shape is a placeholder shape and any inherited properties can
   /// be resolved by looking at the parent placeholder identified by the
@@ -5449,6 +5456,11 @@ class Size {
 /// The properties of Page that are only relevant for pages with page_type
 /// SLIDE.
 class SlideProperties {
+  /// Whether the slide is skipped in the presentation mode.
+  ///
+  /// Defaults to false.
+  core.bool? isSkipped;
+
   /// The object ID of the layout that this slide is based on.
   ///
   /// This property is read-only.
@@ -5473,6 +5485,9 @@ class SlideProperties {
   SlideProperties();
 
   SlideProperties.fromJson(core.Map _json) {
+    if (_json.containsKey('isSkipped')) {
+      isSkipped = _json['isSkipped'] as core.bool;
+    }
     if (_json.containsKey('layoutObjectId')) {
       layoutObjectId = _json['layoutObjectId'] as core.String;
     }
@@ -5486,6 +5501,7 @@ class SlideProperties {
   }
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (isSkipped != null) 'isSkipped': isSkipped!,
         if (layoutObjectId != null) 'layoutObjectId': layoutObjectId!,
         if (masterObjectId != null) 'masterObjectId': masterObjectId!,
         if (notesPage != null) 'notesPage': notesPage!.toJson(),
