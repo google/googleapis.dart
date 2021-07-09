@@ -1438,10 +1438,21 @@ class ToyAgeRequest {
 
 class ToyMapResponse {
   core.Map<core.String, NestedResponse>? mapResult;
+
+  /// A null value.
+  /// Possible string values are:
+  /// - "NULL_VALUE" : Null value.
+  core.String? nullValue;
+
+  /// A collection of arbitrary key-value pairs which are visible to all apps.
+  /// Entries with null values are cleared in update and copy requests.
+  core.Map<core.String, core.String?>? properties;
   core.String? result;
 
   ToyMapResponse({
     this.mapResult,
+    this.nullValue,
+    this.properties,
     this.result,
   });
 
@@ -1456,6 +1467,16 @@ class ToyMapResponse {
                   ),
                 )
               : null,
+          nullValue: _json['nullValue'] as core.String? ?? 'NULL_VALUE',
+          properties: _json.containsKey('properties')
+              ? (_json['properties'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String?,
+                  ),
+                )
+              : null,
           result: _json.containsKey('result')
               ? _json['result'] as core.String
               : null,
@@ -1465,6 +1486,8 @@ class ToyMapResponse {
         if (mapResult != null)
           'mapResult':
               mapResult!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (nullValue != null) 'nullValue': nullValue!,
+        if (properties != null) 'properties': properties!,
         if (result != null) 'result': result!,
       };
 }

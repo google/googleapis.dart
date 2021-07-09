@@ -969,6 +969,18 @@ class ToyMapResponseFactory {
         ),
       );
     }
+    if (_json.containsKey('nullValue')) {
+      message.nullValue = _json['nullValue'] as core.String;
+    }
+    if (_json.containsKey('properties')) {
+      message.properties =
+          (_json['properties'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
+    }
     if (_json.containsKey('result')) {
       message.result = _json['result'] as core.String;
     }
@@ -980,6 +992,12 @@ class ToyMapResponseFactory {
     if (message.mapResult != null) {
       _json['mapResult'] = message.mapResult!.map((key, item) =>
           core.MapEntry(key, NestedResponseFactory.toJson(item)));
+    }
+    if (message.nullValue != null) {
+      _json['nullValue'] = message.nullValue!;
+    }
+    if (message.properties != null) {
+      _json['properties'] = message.properties!;
     }
     if (message.result != null) {
       _json['result'] = message.result!;

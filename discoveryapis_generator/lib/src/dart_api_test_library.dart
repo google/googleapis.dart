@@ -64,6 +64,7 @@ class DartApiTestLibrary extends TestHelper {
     handleType(db.doubleType);
     handleType(db.booleanType);
     handleType(db.stringType);
+    handleType(db.nullableStringType);
     handleType(db.dateType);
     handleType(db.dateTimeType);
     handleType(db.anyType);
@@ -658,7 +659,8 @@ class StringSchemaTest extends PrimitiveSchemaTest<StringType> {
       : super(apiTestLibrary, schema);
 
   @override
-  String get declaration => 'core.String';
+  String get declaration =>
+      'core.String${schema is NullableStringType ? '?' : ''}';
 
   @override
   String get newSchemaExpr => "'foo'";

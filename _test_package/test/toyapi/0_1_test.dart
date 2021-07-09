@@ -470,12 +470,33 @@ void checkUnnamed13(core.Map<core.String, api.NestedResponse> o) {
   checkNestedResponse(o['y']! as api.NestedResponse);
 }
 
+core.Map<core.String, core.String?> buildUnnamed14() {
+  var o = <core.String, core.String?>{};
+  o['x'] = 'foo';
+  o['y'] = 'foo';
+  return o;
+}
+
+void checkUnnamed14(core.Map<core.String, core.String?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterToyMapResponse = 0;
 api.ToyMapResponse buildToyMapResponse() {
   var o = api.ToyMapResponse();
   buildCounterToyMapResponse++;
   if (buildCounterToyMapResponse < 3) {
     o.mapResult = buildUnnamed13();
+    o.nullValue = 'foo';
+    o.properties = buildUnnamed14();
     o.result = 'foo';
   }
   buildCounterToyMapResponse--;
@@ -486,6 +507,11 @@ void checkToyMapResponse(api.ToyMapResponse o) {
   buildCounterToyMapResponse++;
   if (buildCounterToyMapResponse < 3) {
     checkUnnamed13(o.mapResult!);
+    unittest.expect(
+      o.nullValue!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed14(o.properties!);
     unittest.expect(
       o.result!,
       unittest.equals('foo'),

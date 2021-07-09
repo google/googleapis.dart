@@ -892,14 +892,14 @@ void checkDriveList(api.DriveList o) {
   buildCounterDriveList--;
 }
 
-core.Map<core.String, core.String> buildUnnamed3447() {
-  var o = <core.String, core.String>{};
+core.Map<core.String, core.String?> buildUnnamed3447() {
+  var o = <core.String, core.String?>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed3447(core.Map<core.String, core.String> o) {
+void checkUnnamed3447(core.Map<core.String, core.String?> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1316,14 +1316,14 @@ void checkUnnamed3453(core.List<api.Permission> o) {
   checkPermission(o[1] as api.Permission);
 }
 
-core.Map<core.String, core.String> buildUnnamed3454() {
-  var o = <core.String, core.String>{};
+core.Map<core.String, core.String?> buildUnnamed3454() {
+  var o = <core.String, core.String?>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed3454(core.Map<core.String, core.String> o) {
+void checkUnnamed3454(core.Map<core.String, core.String?> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,

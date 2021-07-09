@@ -66,8 +66,8 @@ Future<T> withClientFromDefaultCredentials<T>(
 Future<AccessCredentials> _credentials(
     IOClient client, List<String> scopes) async {
   final clientId = ClientId.fromJson(
-    jsonDecode(File('client_id.json').readAsStringSync())
-        as Map<String, dynamic>,
+    (loadYamlNode(File('client_id.yaml').readAsStringSync()) as Map)
+        .cast<String, dynamic>(),
   );
 
   final credentialsFile = File('credentials.json');

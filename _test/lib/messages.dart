@@ -21,6 +21,12 @@ class ToyMapResponse {
   String? result;
   Map<String, NestedResponse>? mapResult;
 
+  // Exists to validate fix for https://github.com/google/googleapis.dart/issues/211
+  String? nullValue;
+
+  // Exists to validate fix for https://github.com/google/googleapis.dart/issues/200
+  Map<String, String?>? properties;
+
   ToyMapResponse();
 }
 

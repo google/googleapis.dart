@@ -75,6 +75,23 @@
    "id": "ToyMapResponse",
    "type": "object",
    "properties": {
+    "properties": {
+     "additionalProperties": {
+      "type": "string"
+     },
+     "description": "A collection of arbitrary key-value pairs which are visible to all apps.\nEntries with null values are cleared in update and copy requests.",
+     "type": "object"
+    },
+    "nullValue": {
+     "description": "A null value.",
+     "enum": [
+      "NULL_VALUE"
+     ],
+     "enumDescriptions": [
+      "Null value."
+     ],
+     "type": "string"
+    },
     "result": {
      "type": "string"
     },

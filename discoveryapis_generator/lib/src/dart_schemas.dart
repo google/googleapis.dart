@@ -19,6 +19,7 @@ import 'utils.dart';
 class DartSchemaTypeDB {
   // Builtin types
   final StringType stringType;
+  final NullableStringType nullableStringType;
   final IntegerType integerType;
   final StringIntegerType stringIntegerType;
   final DoubleType doubleType;
@@ -29,6 +30,7 @@ class DartSchemaTypeDB {
 
   DartSchemaTypeDB(DartApiImports imports)
       : stringType = StringType(imports),
+        nullableStringType = NullableStringType(imports),
         integerType = IntegerType(imports),
         stringIntegerType = StringIntegerType(imports),
         doubleType = DoubleType(imports),
@@ -213,6 +215,13 @@ abstract class DartSchemaType {
 
   String get coreMapJsonType =>
       '${imports.core.ref()}Map$coreMapJsonTypeArguments';
+
+  String decodeFromMap(String jsonName) {
+    final decodeString = jsonDecode("_json['${escapeString(jsonName)}']");
+
+    return '_json.containsKey'
+        "('${escapeString(jsonName)}') ? $decodeString : null";
+  }
 }
 
 /// Placeholder type for forward references.
@@ -360,23 +369,52 @@ class StringType extends PrimitiveDartSchemaType {
   String get declaration => '${imports.core.ref()}String';
 }
 
+/// Here to support the fix for https://github.com/google/googleapis.dart/issues/211
+class NullableStringType extends StringType {
+  NullableStringType(DartApiImports imports) : super(imports);
+
+  @override
+  String get declaration => '${super.declaration}?';
+}
+
 class EnumType extends StringType {
   final List<String> enumValues;
-  final List<String>? enumDescriptions;
+  final List<String> enumDescriptions;
 
-  factory EnumType(DartApiImports imports, List<String> enumValues,
-      List<String>? enumDescriptions) {
+  factory EnumType(
+    DartApiImports imports,
+    List<String> enumValues,
+    List<String>? enumDescriptions,
+  ) {
     enumDescriptions ??= enumValues.map((value) => 'A $value.').toList();
 
     if (enumValues.length != enumDescriptions.length) {
-      throw ArgumentError('Number of enum values does not match number of '
-          'enum descriptions.');
+      throw ArgumentError(
+        'Number of enum values does not match number of '
+        'enum descriptions.',
+      );
     }
     return EnumType._(imports, enumValues, enumDescriptions);
   }
 
   EnumType._(DartApiImports imports, this.enumValues, this.enumDescriptions)
       : super(imports);
+
+  /// Here to support https://github.com/google/googleapis.dart/issues/211
+  bool get _nullValue =>
+      enumValues.length == 1 &&
+      enumValues.single == 'NULL_VALUE' &&
+      enumDescriptions.single == 'Null value.';
+
+  @override
+  String decodeFromMap(String jsonName) {
+    if (_nullValue) {
+      return "_json['${escapeString(jsonName)}'] as $declaration? "
+          "?? 'NULL_VALUE'";
+    }
+
+    return super.decodeFromMap(jsonName);
+  }
 }
 
 class DateType extends StringType {
@@ -842,11 +880,9 @@ class ObjectType extends ComplexDartSchemaType {
         // The super variant fromJson() will call this subclass constructor
         // and the variant descriminator is final.
         if (!isVariantDiscriminator(property)) {
-          final decodeString = property.type!
-              .jsonDecode("_json['${escapeString(property.jsonName)}']");
           fromJsonString.writeln(
-            '${property.name}: _json.containsKey'
-            "('${escapeString(property.jsonName)}') ? $decodeString : null,",
+            '${property.name}:'
+            '${property.type!.decodeFromMap(property.jsonName)},',
           );
         }
       }
@@ -1041,11 +1077,16 @@ DartSchemaTypeDB parseSchemas(
       if (schema.additionalProperties != null) {
         final anonValueClassName = namer.schemaClassName('${className}Value');
         final anonClassScope = namer.newClassScope();
-        final valueType = parse(
+        final nullableValue = _forceNullableValueComments
+            .any((element) => comment.rawComment.contains(element));
+        var valueType = parse(
           anonValueClassName,
           anonClassScope,
           schema.additionalProperties!,
         );
+        if (valueType is StringType && nullableValue) {
+          valueType = db.nullableStringType;
+        }
         if (topLevel) {
           if (schema.additionalProperties!.description != null) {
             comment = Comment(
@@ -1166,7 +1207,10 @@ DartSchemaType parseResolved(
 }
 
 DartSchemaType parsePrimitive(
-    DartApiImports imports, DartSchemaTypeDB? db, JsonSchema schema) {
+  DartApiImports imports,
+  DartSchemaTypeDB? db,
+  JsonSchema schema,
+) {
   switch (schema.type) {
     case 'boolean':
       return db!.booleanType;
@@ -1188,7 +1232,8 @@ DartSchemaType parsePrimitive(
       }
       if (schema.enum_ != null) {
         return db!.register(
-            EnumType(imports, schema.enum_!, schema.enumDescriptions));
+          EnumType(imports, schema.enum_!, schema.enumDescriptions),
+        );
       }
       return db!.stringType;
     case 'number':
@@ -1226,7 +1271,7 @@ Comment extendEnumComment(Comment baseComment, DartSchemaType type) {
       ..writeln(baseComment.rawComment)
       ..writeln('Possible string values are:');
     for (var i = 0; i < type.enumValues.length; i++) {
-      final description = type.enumDescriptions![i];
+      final description = type.enumDescriptions[i];
       if (description.trim().isNotEmpty) {
         s.writeln('- "${type.enumValues[i]}" : $description');
       } else {
@@ -1272,3 +1317,8 @@ Comment extendAnyTypeComment(Comment baseComment, DartSchemaType type,
   }
   return baseComment;
 }
+
+const _forceNullableValueComments = {
+  // See https://github.com/google/googleapis.dart/issues/200
+  'Entries with null values are cleared',
+};

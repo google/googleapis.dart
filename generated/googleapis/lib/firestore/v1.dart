@@ -5055,9 +5055,7 @@ class Value {
               ? MapValue.fromJson(
                   _json['mapValue'] as core.Map<core.String, core.dynamic>)
               : null,
-          nullValue: _json.containsKey('nullValue')
-              ? _json['nullValue'] as core.String
-              : null,
+          nullValue: _json['nullValue'] as core.String? ?? 'NULL_VALUE',
           referenceValue: _json.containsKey('referenceValue')
               ? _json['referenceValue'] as core.String
               : null,

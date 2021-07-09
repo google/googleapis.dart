@@ -257,17 +257,23 @@ package.
         sb.write('![Logo](${item.icons!.x16}) ');
       }
       final libraryName = ApiLibraryNamer.libraryName(item.name, item.version);
-      sb..writeln('${item.title} - `$libraryName`')..writeln();
+      sb
+        ..writeln('${item.title} - `$libraryName`')
+        ..writeln();
 
       if (item.description != null && item.description!.isNotEmpty) {
-        sb..writeln(item.description)..writeln();
+        sb
+          ..writeln(item.description)
+          ..writeln();
       }
 
       if (item.documentationLink != null) {
         sb.writeln('- [Documentation](${item.documentationLink})');
       }
       final pubUri = '$basePubUri$libraryName/$libraryName-library.html';
-      sb..writeln('- [API details]($pubUri)')..writeln();
+      sb
+        ..writeln('- [API details]($pubUri)')
+        ..writeln();
     }
     return sb.toString();
   }

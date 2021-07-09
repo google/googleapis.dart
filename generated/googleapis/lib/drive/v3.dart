@@ -4871,7 +4871,7 @@ class File {
   /// These properties can only be retrieved using an authenticated request. An
   /// authenticated request uses an access token obtained with a OAuth 2 client
   /// ID. You cannot use an API key to retrieve private properties.
-  core.Map<core.String, core.String>? appProperties;
+  core.Map<core.String, core.String?>? appProperties;
 
   /// Capabilities the current user has on this file.
   ///
@@ -5043,7 +5043,7 @@ class File {
 
   /// A collection of arbitrary key-value pairs which are visible to all apps.
   /// Entries with null values are cleared in update and copy requests.
-  core.Map<core.String, core.String>? properties;
+  core.Map<core.String, core.String?>? properties;
 
   /// The number of storage quota bytes used by the file.
   ///
@@ -5223,7 +5223,7 @@ class File {
                   .map(
                   (key, item) => core.MapEntry(
                     key,
-                    item as core.String,
+                    item as core.String?,
                   ),
                 )
               : null,
@@ -5354,7 +5354,7 @@ class File {
                   .map(
                   (key, item) => core.MapEntry(
                     key,
-                    item as core.String,
+                    item as core.String?,
                   ),
                 )
               : null,

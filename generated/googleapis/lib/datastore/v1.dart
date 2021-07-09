@@ -3697,9 +3697,7 @@ class Value {
           meaning: _json.containsKey('meaning')
               ? _json['meaning'] as core.int
               : null,
-          nullValue: _json.containsKey('nullValue')
-              ? _json['nullValue'] as core.String
-              : null,
+          nullValue: _json['nullValue'] as core.String? ?? 'NULL_VALUE',
           stringValue: _json.containsKey('stringValue')
               ? _json['stringValue'] as core.String
               : null,
