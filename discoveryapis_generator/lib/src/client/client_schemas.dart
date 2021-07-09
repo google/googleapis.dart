@@ -6,6 +6,7 @@ library discoveryapis_generator.client_schemas;
 
 import '../dart_api_library.dart';
 import '../dart_comments.dart';
+import '../dart_schema_types.dart';
 import '../dart_schemas.dart';
 import '../generated_googleapis/discovery/v1.dart';
 import '../namer.dart';

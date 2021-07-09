@@ -8,7 +8,7 @@ library discoveryapis_generator.dart_api_test_library;
 
 import 'dart_api_library.dart';
 import 'dart_resources.dart';
-import 'dart_schemas.dart';
+import 'dart_schema_types.dart';
 import 'namer.dart';
 import 'uri_template.dart';
 import 'utils.dart';
