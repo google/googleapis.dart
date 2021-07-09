@@ -29,7 +29,7 @@ class ApisFilesGenerator {
   final String clientFolderPath;
   final bool updatePubspec;
   final bool? useCorePrefixes;
-  String? packageRoot;
+  late final String packageRoot;
   late File pubspecFile;
 
   /// [descriptions] is a list of API descriptions we want to generate code for.
@@ -39,15 +39,16 @@ class ApisFilesGenerator {
       {this.updatePubspec = false, this.useCorePrefixes = true}) {
     // Create the output directory.
     final clientDirectory = Directory(clientFolderPath);
-    packageRoot = findPackageRoot(path.absolute(clientDirectory.path));
-    if (packageRoot == null) {
+    final pkgRoot = findPackageRoot(path.absolute(clientDirectory.path));
+    if (pkgRoot == null) {
       throw Exception(
           'Client folder: \'$clientFolderPath\' must be in a package.');
     }
+    packageRoot = pkgRoot;
     if (!clientDirectory.existsSync()) {
       clientDirectory.createSync(recursive: true);
     }
-    pubspecFile = File(path.join(packageRoot!, 'pubspec.yaml'));
+    pubspecFile = File(path.join(packageRoot, 'pubspec.yaml'));
     assert(pubspecFile.existsSync());
   }
 

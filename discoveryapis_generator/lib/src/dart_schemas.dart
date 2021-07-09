@@ -1198,7 +1198,7 @@ DartSchemaTypeDB parseSchemas(
 
 // NOTE: This will be called for resolving parameter types in methods.
 DartSchemaType parseResolved(
-    DartApiImports imports, DartSchemaTypeDB? db, JsonSchema schema) {
+    DartApiImports imports, DartSchemaTypeDB db, JsonSchema schema) {
   if (schema.repeated != null && schema.repeated!) {
     final innerType = parsePrimitive(imports, db, schema);
     return UnnamedArrayType(imports, innerType);
@@ -1208,18 +1208,18 @@ DartSchemaType parseResolved(
 
 DartSchemaType parsePrimitive(
   DartApiImports imports,
-  DartSchemaTypeDB? db,
+  DartSchemaTypeDB db,
   JsonSchema schema,
 ) {
   switch (schema.type) {
     case 'boolean':
-      return db!.booleanType;
+      return db.booleanType;
     case 'string':
       switch (schema.format) {
         case 'date-time':
-          return db!.dateTimeType;
+          return db.dateTimeType;
         case 'date':
-          return db!.dateType;
+          return db.dateType;
         case 'int64':
           // 9007199254740991 == pow(2, 53) - 1; the maximum range for integers
           // in javascript (which uses doubles to store integers)
@@ -1227,27 +1227,27 @@ DartSchemaType parsePrimitive(
               int.parse(schema.maximum!) <= 9007199254740991 &&
               schema.minimum != null &&
               int.parse(schema.minimum!) >= -9007199254740991) {
-            return db!.stringIntegerType;
+            return db.stringIntegerType;
           }
       }
       if (schema.enum_ != null) {
-        return db!.register(
+        return db.register(
           EnumType(imports, schema.enum_!, schema.enumDescriptions),
         );
       }
-      return db!.stringType;
+      return db.stringType;
     case 'number':
       if (!['float', 'double', null].contains(schema.format)) {
         throw ArgumentError(
             'Only number types with float/double format are supported.');
       }
-      return db!.doubleType;
+      return db.doubleType;
     case 'integer':
       final format = schema.format;
       if (format != null && !['int16', 'int32', 'uint32'].contains(format)) {
         throw Exception('Integer format $format is not not supported.');
       }
-      return db!.integerType;
+      return db.integerType;
   }
   throw ArgumentError('Invalid JsonSchema.type (was: ${schema.type}).');
 }

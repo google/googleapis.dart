@@ -554,7 +554,7 @@ bool parseMediaUse(DartResourceClass resource) {
 
 DartResourceMethod _parseMethod(
   DartApiImports imports,
-  DartSchemaTypeDB? db,
+  DartSchemaTypeDB db,
   RestDescription description,
   Scope classScope,
   String jsonName,
@@ -631,7 +631,7 @@ DartResourceMethod _parseMethod(
   }
 
   DartSchemaType getValidReference(String? ref) =>
-      DartSchemaForwardRef(imports, ref).resolve(db!);
+      DartSchemaForwardRef(imports, ref).resolve(db);
 
   // Enqueue positional parameters with a given order first.
   if (method.parameterOrder != null) {
@@ -745,7 +745,7 @@ DartResourceMethod _parseMethod(
 
 DartResourceClass _parseResource(
   DartApiImports imports,
-  DartSchemaTypeDB? db,
+  DartSchemaTypeDB db,
   RestDescription description,
   String resourceName,
   String? resourceDescription,
@@ -886,7 +886,7 @@ DartResourceClass _parseResource(
 /// Parses all resources in [description] and returns the root [DartApiClass].
 DartApiClass parseResources(
   DartApiImports imports,
-  DartSchemaTypeDB? db,
+  DartSchemaTypeDB db,
   RestDescription description,
 ) {
   var resourceName =
