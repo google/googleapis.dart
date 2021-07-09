@@ -20,13 +20,13 @@ import 'client_schemas.dart' as client;
 /// as the server API. It will use the existing definitions of the API message
 /// classes instead of generating new client message classes.
 class ClientApiLibrary extends BaseApiLibrary {
-  DartSchemaTypeDB? schemaDB;
+  late final DartSchemaTypeDB schemaDB;
   late DartApiClass apiClass;
   late bool exposeMedia;
-  String? schemaImports;
-  String? libraryName;
-  String packageName;
-  String? packageRoot;
+  late final String schemaImports;
+  late final String libraryName;
+  final String packageName;
+  final String packageRoot;
 
   /// Generates a API library for [description].
   ClientApiLibrary.build(
@@ -47,7 +47,7 @@ class ClientApiLibrary extends BaseApiLibrary {
   List<String> _parseImports(Map<String, String>? importsMap) {
     // Remove duplicate imports.
     final imports = <String>{};
-    for (var schema in schemaDB!.dartClassTypes) {
+    for (var schema in schemaDB.dartClassTypes) {
       assert(importsMap!.containsKey(schema.className!.preferredName));
       final path = importsMap![schema.className!.preferredName!]!;
       if (path.startsWith('dart:')) {
@@ -60,7 +60,7 @@ class ClientApiLibrary extends BaseApiLibrary {
     final parsedImports = <String>[];
     for (var importPath in imports) {
       if (!importPath.startsWith('package:$packageName')) {
-        final pathPrefix = '${path.toUri(packageRoot!)}/lib';
+        final pathPrefix = '${path.toUri(packageRoot)}/lib';
         if (!importPath.startsWith(pathPrefix)) {
           throw GeneratorError(
               description.name,
@@ -79,7 +79,7 @@ class ClientApiLibrary extends BaseApiLibrary {
   @override
   String get librarySource {
     final sink = StringBuffer();
-    final schemas = generateSchemas(schemaDB!);
+    final schemas = generateSchemas(schemaDB);
     final resources = generateResources(apiClass);
     sink.write(libraryHeader());
     if (resources.isNotEmpty) {
