@@ -595,17 +595,20 @@ class AccountWarning {
   /// Optional.
   LoginDetails? loginDetails;
 
-  AccountWarning();
+  AccountWarning({
+    this.email,
+    this.loginDetails,
+  });
 
-  AccountWarning.fromJson(core.Map _json) {
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('loginDetails')) {
-      loginDetails = LoginDetails.fromJson(
-          _json['loginDetails'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  AccountWarning.fromJson(core.Map _json)
+      : this(
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          loginDetails: _json.containsKey('loginDetails')
+              ? LoginDetails.fromJson(
+                  _json['loginDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
@@ -674,50 +677,61 @@ class ActivityRule {
   /// Possible values are 1 hour or 24 hours.
   core.String? windowSize;
 
-  ActivityRule();
+  ActivityRule({
+    this.actionNames,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.name,
+    this.query,
+    this.supersededAlerts,
+    this.supersedingAlert,
+    this.threshold,
+    this.triggerSource,
+    this.updateTime,
+    this.windowSize,
+  });
 
-  ActivityRule.fromJson(core.Map _json) {
-    if (_json.containsKey('actionNames')) {
-      actionNames = (_json['actionNames'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('query')) {
-      query = _json['query'] as core.String;
-    }
-    if (_json.containsKey('supersededAlerts')) {
-      supersededAlerts = (_json['supersededAlerts'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('supersedingAlert')) {
-      supersedingAlert = _json['supersedingAlert'] as core.String;
-    }
-    if (_json.containsKey('threshold')) {
-      threshold = _json['threshold'] as core.String;
-    }
-    if (_json.containsKey('triggerSource')) {
-      triggerSource = _json['triggerSource'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-    if (_json.containsKey('windowSize')) {
-      windowSize = _json['windowSize'] as core.String;
-    }
-  }
+  ActivityRule.fromJson(core.Map _json)
+      : this(
+          actionNames: _json.containsKey('actionNames')
+              ? (_json['actionNames'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          query:
+              _json.containsKey('query') ? _json['query'] as core.String : null,
+          supersededAlerts: _json.containsKey('supersededAlerts')
+              ? (_json['supersededAlerts'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          supersedingAlert: _json.containsKey('supersedingAlert')
+              ? _json['supersedingAlert'] as core.String
+              : null,
+          threshold: _json.containsKey('threshold')
+              ? _json['threshold'] as core.String
+              : null,
+          triggerSource: _json.containsKey('triggerSource')
+              ? _json['triggerSource'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+          windowSize: _json.containsKey('windowSize')
+              ? _json['windowSize'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (actionNames != null) 'actionNames': actionNames!,
@@ -829,56 +843,67 @@ class Alert {
   /// Output only.
   core.String? updateTime;
 
-  Alert();
+  Alert({
+    this.alertId,
+    this.createTime,
+    this.customerId,
+    this.data,
+    this.deleted,
+    this.endTime,
+    this.etag,
+    this.metadata,
+    this.securityInvestigationToolLink,
+    this.source,
+    this.startTime,
+    this.type,
+    this.updateTime,
+  });
 
-  Alert.fromJson(core.Map _json) {
-    if (_json.containsKey('alertId')) {
-      alertId = _json['alertId'] as core.String;
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('customerId')) {
-      customerId = _json['customerId'] as core.String;
-    }
-    if (_json.containsKey('data')) {
-      data = (_json['data'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('deleted')) {
-      deleted = _json['deleted'] as core.bool;
-    }
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = AlertMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('securityInvestigationToolLink')) {
-      securityInvestigationToolLink =
-          _json['securityInvestigationToolLink'] as core.String;
-    }
-    if (_json.containsKey('source')) {
-      source = _json['source'] as core.String;
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  Alert.fromJson(core.Map _json)
+      : this(
+          alertId: _json.containsKey('alertId')
+              ? _json['alertId'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          customerId: _json.containsKey('customerId')
+              ? _json['customerId'] as core.String
+              : null,
+          data: _json.containsKey('data')
+              ? (_json['data'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          deleted: _json.containsKey('deleted')
+              ? _json['deleted'] as core.bool
+              : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          metadata: _json.containsKey('metadata')
+              ? AlertMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          securityInvestigationToolLink:
+              _json.containsKey('securityInvestigationToolLink')
+                  ? _json['securityInvestigationToolLink'] as core.String
+                  : null,
+          source: _json.containsKey('source')
+              ? _json['source'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alertId != null) 'alertId': alertId!,
@@ -935,28 +960,33 @@ class AlertFeedback {
   /// - "VERY_USEFUL" : The alert report is very useful.
   core.String? type;
 
-  AlertFeedback();
+  AlertFeedback({
+    this.alertId,
+    this.createTime,
+    this.customerId,
+    this.email,
+    this.feedbackId,
+    this.type,
+  });
 
-  AlertFeedback.fromJson(core.Map _json) {
-    if (_json.containsKey('alertId')) {
-      alertId = _json['alertId'] as core.String;
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('customerId')) {
-      customerId = _json['customerId'] as core.String;
-    }
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('feedbackId')) {
-      feedbackId = _json['feedbackId'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  AlertFeedback.fromJson(core.Map _json)
+      : this(
+          alertId: _json.containsKey('alertId')
+              ? _json['alertId'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          customerId: _json.containsKey('customerId')
+              ? _json['customerId'] as core.String
+              : null,
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          feedbackId: _json.containsKey('feedbackId')
+              ? _json['feedbackId'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alertId != null) 'alertId': alertId!,
@@ -1016,31 +1046,38 @@ class AlertMetadata {
   /// Output only.
   core.String? updateTime;
 
-  AlertMetadata();
+  AlertMetadata({
+    this.alertId,
+    this.assignee,
+    this.customerId,
+    this.etag,
+    this.severity,
+    this.status,
+    this.updateTime,
+  });
 
-  AlertMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('alertId')) {
-      alertId = _json['alertId'] as core.String;
-    }
-    if (_json.containsKey('assignee')) {
-      assignee = _json['assignee'] as core.String;
-    }
-    if (_json.containsKey('customerId')) {
-      customerId = _json['customerId'] as core.String;
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('severity')) {
-      severity = _json['severity'] as core.String;
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  AlertMetadata.fromJson(core.Map _json)
+      : this(
+          alertId: _json.containsKey('alertId')
+              ? _json['alertId'] as core.String
+              : null,
+          assignee: _json.containsKey('assignee')
+              ? _json['assignee'] as core.String
+              : null,
+          customerId: _json.containsKey('customerId')
+              ? _json['customerId'] as core.String
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          severity: _json.containsKey('severity')
+              ? _json['severity'] as core.String
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alertId != null) 'alertId': alertId!,
@@ -1058,16 +1095,19 @@ class AppMakerSqlSetupNotification {
   /// List of applications with requests for default SQL set up.
   core.List<RequestInfo>? requestInfo;
 
-  AppMakerSqlSetupNotification();
+  AppMakerSqlSetupNotification({
+    this.requestInfo,
+  });
 
-  AppMakerSqlSetupNotification.fromJson(core.Map _json) {
-    if (_json.containsKey('requestInfo')) {
-      requestInfo = (_json['requestInfo'] as core.List)
-          .map<RequestInfo>((value) => RequestInfo.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  AppMakerSqlSetupNotification.fromJson(core.Map _json)
+      : this(
+          requestInfo: _json.containsKey('requestInfo')
+              ? (_json['requestInfo'] as core.List)
+                  .map<RequestInfo>((value) => RequestInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestInfo != null)
@@ -1094,16 +1134,18 @@ class AppSettingsChanged {
   /// Rule name
   core.String? name;
 
-  AppSettingsChanged();
+  AppSettingsChanged({
+    this.alertDetails,
+    this.name,
+  });
 
-  AppSettingsChanged.fromJson(core.Map _json) {
-    if (_json.containsKey('alertDetails')) {
-      alertDetails = _json['alertDetails'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  AppSettingsChanged.fromJson(core.Map _json)
+      : this(
+          alertDetails: _json.containsKey('alertDetails')
+              ? _json['alertDetails'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alertDetails != null) 'alertDetails': alertDetails!,
@@ -1116,13 +1158,17 @@ class Attachment {
   /// A CSV file attachment.
   Csv? csv;
 
-  Attachment();
+  Attachment({
+    this.csv,
+  });
 
-  Attachment.fromJson(core.Map _json) {
-    if (_json.containsKey('csv')) {
-      csv = Csv.fromJson(_json['csv'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Attachment.fromJson(core.Map _json)
+      : this(
+          csv: _json.containsKey('csv')
+              ? Csv.fromJson(
+                  _json['csv'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (csv != null) 'csv': csv!.toJson(),
@@ -1144,27 +1190,33 @@ class BadWhitelist {
   /// The source IP address of the malicious email, for example, `127.0.0.1`.
   core.String? sourceIp;
 
-  BadWhitelist();
+  BadWhitelist({
+    this.domainId,
+    this.maliciousEntity,
+    this.messages,
+    this.sourceIp,
+  });
 
-  BadWhitelist.fromJson(core.Map _json) {
-    if (_json.containsKey('domainId')) {
-      domainId = DomainId.fromJson(
-          _json['domainId'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('maliciousEntity')) {
-      maliciousEntity = MaliciousEntity.fromJson(
-          _json['maliciousEntity'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('messages')) {
-      messages = (_json['messages'] as core.List)
-          .map<GmailMessageInfo>((value) => GmailMessageInfo.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('sourceIp')) {
-      sourceIp = _json['sourceIp'] as core.String;
-    }
-  }
+  BadWhitelist.fromJson(core.Map _json)
+      : this(
+          domainId: _json.containsKey('domainId')
+              ? DomainId.fromJson(
+                  _json['domainId'] as core.Map<core.String, core.dynamic>)
+              : null,
+          maliciousEntity: _json.containsKey('maliciousEntity')
+              ? MaliciousEntity.fromJson(_json['maliciousEntity']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          messages: _json.containsKey('messages')
+              ? (_json['messages'] as core.List)
+                  .map<GmailMessageInfo>((value) => GmailMessageInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          sourceIp: _json.containsKey('sourceIp')
+              ? _json['sourceIp'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (domainId != null) 'domainId': domainId!.toJson(),
@@ -1189,18 +1241,22 @@ class BatchDeleteAlertsRequest {
   /// Optional.
   core.String? customerId;
 
-  BatchDeleteAlertsRequest();
+  BatchDeleteAlertsRequest({
+    this.alertId,
+    this.customerId,
+  });
 
-  BatchDeleteAlertsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('alertId')) {
-      alertId = (_json['alertId'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('customerId')) {
-      customerId = _json['customerId'] as core.String;
-    }
-  }
+  BatchDeleteAlertsRequest.fromJson(core.Map _json)
+      : this(
+          alertId: _json.containsKey('alertId')
+              ? (_json['alertId'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          customerId: _json.containsKey('customerId')
+              ? _json['customerId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alertId != null) 'alertId': alertId!,
@@ -1216,25 +1272,30 @@ class BatchDeleteAlertsResponse {
   /// The successful list of alert IDs.
   core.List<core.String>? successAlertIds;
 
-  BatchDeleteAlertsResponse();
+  BatchDeleteAlertsResponse({
+    this.failedAlertStatus,
+    this.successAlertIds,
+  });
 
-  BatchDeleteAlertsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('failedAlertStatus')) {
-      failedAlertStatus =
-          (_json['failedAlertStatus'] as core.Map<core.String, core.dynamic>)
-              .map(
-        (key, item) => core.MapEntry(
-          key,
-          Status.fromJson(item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('successAlertIds')) {
-      successAlertIds = (_json['successAlertIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  BatchDeleteAlertsResponse.fromJson(core.Map _json)
+      : this(
+          failedAlertStatus: _json.containsKey('failedAlertStatus')
+              ? (_json['failedAlertStatus']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    Status.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          successAlertIds: _json.containsKey('successAlertIds')
+              ? (_json['successAlertIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (failedAlertStatus != null)
@@ -1257,18 +1318,22 @@ class BatchUndeleteAlertsRequest {
   /// Optional.
   core.String? customerId;
 
-  BatchUndeleteAlertsRequest();
+  BatchUndeleteAlertsRequest({
+    this.alertId,
+    this.customerId,
+  });
 
-  BatchUndeleteAlertsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('alertId')) {
-      alertId = (_json['alertId'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('customerId')) {
-      customerId = _json['customerId'] as core.String;
-    }
-  }
+  BatchUndeleteAlertsRequest.fromJson(core.Map _json)
+      : this(
+          alertId: _json.containsKey('alertId')
+              ? (_json['alertId'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          customerId: _json.containsKey('customerId')
+              ? _json['customerId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alertId != null) 'alertId': alertId!,
@@ -1284,25 +1349,30 @@ class BatchUndeleteAlertsResponse {
   /// The successful list of alert IDs.
   core.List<core.String>? successAlertIds;
 
-  BatchUndeleteAlertsResponse();
+  BatchUndeleteAlertsResponse({
+    this.failedAlertStatus,
+    this.successAlertIds,
+  });
 
-  BatchUndeleteAlertsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('failedAlertStatus')) {
-      failedAlertStatus =
-          (_json['failedAlertStatus'] as core.Map<core.String, core.dynamic>)
-              .map(
-        (key, item) => core.MapEntry(
-          key,
-          Status.fromJson(item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('successAlertIds')) {
-      successAlertIds = (_json['successAlertIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  BatchUndeleteAlertsResponse.fromJson(core.Map _json)
+      : this(
+          failedAlertStatus: _json.containsKey('failedAlertStatus')
+              ? (_json['failedAlertStatus']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    Status.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          successAlertIds: _json.containsKey('successAlertIds')
+              ? (_json['successAlertIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (failedAlertStatus != null)
@@ -1333,16 +1403,20 @@ class CloudPubsubTopic {
   /// [Topic](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#Topic).
   core.String? topicName;
 
-  CloudPubsubTopic();
+  CloudPubsubTopic({
+    this.payloadFormat,
+    this.topicName,
+  });
 
-  CloudPubsubTopic.fromJson(core.Map _json) {
-    if (_json.containsKey('payloadFormat')) {
-      payloadFormat = _json['payloadFormat'] as core.String;
-    }
-    if (_json.containsKey('topicName')) {
-      topicName = _json['topicName'] as core.String;
-    }
-  }
+  CloudPubsubTopic.fromJson(core.Map _json)
+      : this(
+          payloadFormat: _json.containsKey('payloadFormat')
+              ? _json['payloadFormat'] as core.String
+              : null,
+          topicName: _json.containsKey('topicName')
+              ? _json['topicName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (payloadFormat != null) 'payloadFormat': payloadFormat!,
@@ -1360,21 +1434,25 @@ class Csv {
   /// The list of headers for data columns in a CSV file.
   core.List<core.String>? headers;
 
-  Csv();
+  Csv({
+    this.dataRows,
+    this.headers,
+  });
 
-  Csv.fromJson(core.Map _json) {
-    if (_json.containsKey('dataRows')) {
-      dataRows = (_json['dataRows'] as core.List)
-          .map<CsvRow>((value) =>
-              CsvRow.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('headers')) {
-      headers = (_json['headers'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  Csv.fromJson(core.Map _json)
+      : this(
+          dataRows: _json.containsKey('dataRows')
+              ? (_json['dataRows'] as core.List)
+                  .map<CsvRow>((value) => CsvRow.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          headers: _json.containsKey('headers')
+              ? (_json['headers'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataRows != null)
@@ -1389,15 +1467,18 @@ class CsvRow {
   /// comma-separated string.
   core.List<core.String>? entries;
 
-  CsvRow();
+  CsvRow({
+    this.entries,
+  });
 
-  CsvRow.fromJson(core.Map _json) {
-    if (_json.containsKey('entries')) {
-      entries = (_json['entries'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  CsvRow.fromJson(core.Map _json)
+      : this(
+          entries: _json.containsKey('entries')
+              ? (_json['entries'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (entries != null) 'entries': entries!,
@@ -1416,20 +1497,23 @@ class DeviceCompromised {
   /// Required.
   core.List<DeviceCompromisedSecurityDetail>? events;
 
-  DeviceCompromised();
+  DeviceCompromised({
+    this.email,
+    this.events,
+  });
 
-  DeviceCompromised.fromJson(core.Map _json) {
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('events')) {
-      events = (_json['events'] as core.List)
-          .map<DeviceCompromisedSecurityDetail>((value) =>
-              DeviceCompromisedSecurityDetail.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  DeviceCompromised.fromJson(core.Map _json)
+      : this(
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          events: _json.containsKey('events')
+              ? (_json['events'] as core.List)
+                  .map<DeviceCompromisedSecurityDetail>((value) =>
+                      DeviceCompromisedSecurityDetail.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
@@ -1465,31 +1549,40 @@ class DeviceCompromisedSecurityDetail {
   /// The serial number of the device.
   core.String? serialNumber;
 
-  DeviceCompromisedSecurityDetail();
+  DeviceCompromisedSecurityDetail({
+    this.deviceCompromisedState,
+    this.deviceId,
+    this.deviceModel,
+    this.deviceType,
+    this.iosVendorId,
+    this.resourceId,
+    this.serialNumber,
+  });
 
-  DeviceCompromisedSecurityDetail.fromJson(core.Map _json) {
-    if (_json.containsKey('deviceCompromisedState')) {
-      deviceCompromisedState = _json['deviceCompromisedState'] as core.String;
-    }
-    if (_json.containsKey('deviceId')) {
-      deviceId = _json['deviceId'] as core.String;
-    }
-    if (_json.containsKey('deviceModel')) {
-      deviceModel = _json['deviceModel'] as core.String;
-    }
-    if (_json.containsKey('deviceType')) {
-      deviceType = _json['deviceType'] as core.String;
-    }
-    if (_json.containsKey('iosVendorId')) {
-      iosVendorId = _json['iosVendorId'] as core.String;
-    }
-    if (_json.containsKey('resourceId')) {
-      resourceId = _json['resourceId'] as core.String;
-    }
-    if (_json.containsKey('serialNumber')) {
-      serialNumber = _json['serialNumber'] as core.String;
-    }
-  }
+  DeviceCompromisedSecurityDetail.fromJson(core.Map _json)
+      : this(
+          deviceCompromisedState: _json.containsKey('deviceCompromisedState')
+              ? _json['deviceCompromisedState'] as core.String
+              : null,
+          deviceId: _json.containsKey('deviceId')
+              ? _json['deviceId'] as core.String
+              : null,
+          deviceModel: _json.containsKey('deviceModel')
+              ? _json['deviceModel'] as core.String
+              : null,
+          deviceType: _json.containsKey('deviceType')
+              ? _json['deviceType'] as core.String
+              : null,
+          iosVendorId: _json.containsKey('iosVendorId')
+              ? _json['iosVendorId'] as core.String
+              : null,
+          resourceId: _json.containsKey('resourceId')
+              ? _json['resourceId'] as core.String
+              : null,
+          serialNumber: _json.containsKey('serialNumber')
+              ? _json['serialNumber'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceCompromisedState != null)
@@ -1513,14 +1606,17 @@ class DlpRuleViolation {
   /// MatchInfo.predefined_detector.
   RuleViolationInfo? ruleViolationInfo;
 
-  DlpRuleViolation();
+  DlpRuleViolation({
+    this.ruleViolationInfo,
+  });
 
-  DlpRuleViolation.fromJson(core.Map _json) {
-    if (_json.containsKey('ruleViolationInfo')) {
-      ruleViolationInfo = RuleViolationInfo.fromJson(
-          _json['ruleViolationInfo'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  DlpRuleViolation.fromJson(core.Map _json)
+      : this(
+          ruleViolationInfo: _json.containsKey('ruleViolationInfo')
+              ? RuleViolationInfo.fromJson(_json['ruleViolationInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ruleViolationInfo != null)
@@ -1533,13 +1629,16 @@ class DomainId {
   /// The primary domain for the customer.
   core.String? customerPrimaryDomain;
 
-  DomainId();
+  DomainId({
+    this.customerPrimaryDomain,
+  });
 
-  DomainId.fromJson(core.Map _json) {
-    if (_json.containsKey('customerPrimaryDomain')) {
-      customerPrimaryDomain = _json['customerPrimaryDomain'] as core.String;
-    }
-  }
+  DomainId.fromJson(core.Map _json)
+      : this(
+          customerPrimaryDomain: _json.containsKey('customerPrimaryDomain')
+              ? _json['customerPrimaryDomain'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customerPrimaryDomain != null)
@@ -1557,16 +1656,19 @@ class DomainWideTakeoutInitiated {
   /// The takeout request ID.
   core.String? takeoutRequestId;
 
-  DomainWideTakeoutInitiated();
+  DomainWideTakeoutInitiated({
+    this.email,
+    this.takeoutRequestId,
+  });
 
-  DomainWideTakeoutInitiated.fromJson(core.Map _json) {
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('takeoutRequestId')) {
-      takeoutRequestId = _json['takeoutRequestId'] as core.String;
-    }
-  }
+  DomainWideTakeoutInitiated.fromJson(core.Map _json)
+      : this(
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          takeoutRequestId: _json.containsKey('takeoutRequestId')
+              ? _json['takeoutRequestId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
@@ -1617,36 +1719,44 @@ class GmailMessageInfo {
   /// The email subject text (only available for reported emails).
   core.String? subjectText;
 
-  GmailMessageInfo();
+  GmailMessageInfo({
+    this.attachmentsSha256Hash,
+    this.date,
+    this.md5HashMessageBody,
+    this.md5HashSubject,
+    this.messageBodySnippet,
+    this.messageId,
+    this.recipient,
+    this.subjectText,
+  });
 
-  GmailMessageInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('attachmentsSha256Hash')) {
-      attachmentsSha256Hash = (_json['attachmentsSha256Hash'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('date')) {
-      date = _json['date'] as core.String;
-    }
-    if (_json.containsKey('md5HashMessageBody')) {
-      md5HashMessageBody = _json['md5HashMessageBody'] as core.String;
-    }
-    if (_json.containsKey('md5HashSubject')) {
-      md5HashSubject = _json['md5HashSubject'] as core.String;
-    }
-    if (_json.containsKey('messageBodySnippet')) {
-      messageBodySnippet = _json['messageBodySnippet'] as core.String;
-    }
-    if (_json.containsKey('messageId')) {
-      messageId = _json['messageId'] as core.String;
-    }
-    if (_json.containsKey('recipient')) {
-      recipient = _json['recipient'] as core.String;
-    }
-    if (_json.containsKey('subjectText')) {
-      subjectText = _json['subjectText'] as core.String;
-    }
-  }
+  GmailMessageInfo.fromJson(core.Map _json)
+      : this(
+          attachmentsSha256Hash: _json.containsKey('attachmentsSha256Hash')
+              ? (_json['attachmentsSha256Hash'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          date: _json.containsKey('date') ? _json['date'] as core.String : null,
+          md5HashMessageBody: _json.containsKey('md5HashMessageBody')
+              ? _json['md5HashMessageBody'] as core.String
+              : null,
+          md5HashSubject: _json.containsKey('md5HashSubject')
+              ? _json['md5HashSubject'] as core.String
+              : null,
+          messageBodySnippet: _json.containsKey('messageBodySnippet')
+              ? _json['messageBodySnippet'] as core.String
+              : null,
+          messageId: _json.containsKey('messageId')
+              ? _json['messageId'] as core.String
+              : null,
+          recipient: _json.containsKey('recipient')
+              ? _json['recipient'] as core.String
+              : null,
+          subjectText: _json.containsKey('subjectText')
+              ? _json['subjectText'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attachmentsSha256Hash != null)
@@ -1689,28 +1799,34 @@ class GoogleOperations {
   /// A one-line incident description.
   core.String? title;
 
-  GoogleOperations();
+  GoogleOperations({
+    this.affectedUserEmails,
+    this.attachmentData,
+    this.description,
+    this.header,
+    this.title,
+  });
 
-  GoogleOperations.fromJson(core.Map _json) {
-    if (_json.containsKey('affectedUserEmails')) {
-      affectedUserEmails = (_json['affectedUserEmails'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('attachmentData')) {
-      attachmentData = Attachment.fromJson(
-          _json['attachmentData'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('header')) {
-      header = _json['header'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  GoogleOperations.fromJson(core.Map _json)
+      : this(
+          affectedUserEmails: _json.containsKey('affectedUserEmails')
+              ? (_json['affectedUserEmails'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          attachmentData: _json.containsKey('attachmentData')
+              ? Attachment.fromJson(_json['attachmentData']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          header: _json.containsKey('header')
+              ? _json['header'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (affectedUserEmails != null)
@@ -1729,16 +1845,19 @@ class ListAlertFeedbackResponse {
   /// Feedback entries for each alert are ordered by creation time descending.
   core.List<AlertFeedback>? feedback;
 
-  ListAlertFeedbackResponse();
+  ListAlertFeedbackResponse({
+    this.feedback,
+  });
 
-  ListAlertFeedbackResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('feedback')) {
-      feedback = (_json['feedback'] as core.List)
-          .map<AlertFeedback>((value) => AlertFeedback.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListAlertFeedbackResponse.fromJson(core.Map _json)
+      : this(
+          feedback: _json.containsKey('feedback')
+              ? (_json['feedback'] as core.List)
+                  .map<AlertFeedback>((value) => AlertFeedback.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (feedback != null)
@@ -1758,19 +1877,23 @@ class ListAlertsResponse {
   /// to get alerts continuing from last result of the current list call.
   core.String? nextPageToken;
 
-  ListAlertsResponse();
+  ListAlertsResponse({
+    this.alerts,
+    this.nextPageToken,
+  });
 
-  ListAlertsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('alerts')) {
-      alerts = (_json['alerts'] as core.List)
-          .map<Alert>((value) =>
-              Alert.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListAlertsResponse.fromJson(core.Map _json)
+      : this(
+          alerts: _json.containsKey('alerts')
+              ? (_json['alerts'] as core.List)
+                  .map<Alert>((value) => Alert.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alerts != null)
@@ -1794,16 +1917,20 @@ class LoginDetails {
   /// Optional.
   core.String? loginTime;
 
-  LoginDetails();
+  LoginDetails({
+    this.ipAddress,
+    this.loginTime,
+  });
 
-  LoginDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('ipAddress')) {
-      ipAddress = _json['ipAddress'] as core.String;
-    }
-    if (_json.containsKey('loginTime')) {
-      loginTime = _json['loginTime'] as core.String;
-    }
-  }
+  LoginDetails.fromJson(core.Map _json)
+      : this(
+          ipAddress: _json.containsKey('ipAddress')
+              ? _json['ipAddress'] as core.String
+              : null,
+          loginTime: _json.containsKey('loginTime')
+              ? _json['loginTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ipAddress != null) 'ipAddress': ipAddress!,
@@ -1837,30 +1964,37 @@ class MailPhishing {
   /// - "REMOVED_FROM_INBOX" : Messages were removed from the inbox.
   core.String? systemActionType;
 
-  MailPhishing();
+  MailPhishing({
+    this.domainId,
+    this.isInternal,
+    this.maliciousEntity,
+    this.messages,
+    this.systemActionType,
+  });
 
-  MailPhishing.fromJson(core.Map _json) {
-    if (_json.containsKey('domainId')) {
-      domainId = DomainId.fromJson(
-          _json['domainId'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('isInternal')) {
-      isInternal = _json['isInternal'] as core.bool;
-    }
-    if (_json.containsKey('maliciousEntity')) {
-      maliciousEntity = MaliciousEntity.fromJson(
-          _json['maliciousEntity'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('messages')) {
-      messages = (_json['messages'] as core.List)
-          .map<GmailMessageInfo>((value) => GmailMessageInfo.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('systemActionType')) {
-      systemActionType = _json['systemActionType'] as core.String;
-    }
-  }
+  MailPhishing.fromJson(core.Map _json)
+      : this(
+          domainId: _json.containsKey('domainId')
+              ? DomainId.fromJson(
+                  _json['domainId'] as core.Map<core.String, core.dynamic>)
+              : null,
+          isInternal: _json.containsKey('isInternal')
+              ? _json['isInternal'] as core.bool
+              : null,
+          maliciousEntity: _json.containsKey('maliciousEntity')
+              ? MaliciousEntity.fromJson(_json['maliciousEntity']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          messages: _json.containsKey('messages')
+              ? (_json['messages'] as core.List)
+                  .map<GmailMessageInfo>((value) => GmailMessageInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          systemActionType: _json.containsKey('systemActionType')
+              ? _json['systemActionType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (domainId != null) 'domainId': domainId!.toJson(),
@@ -1884,20 +2018,25 @@ class MaliciousEntity {
   /// The sender email address.
   core.String? fromHeader;
 
-  MaliciousEntity();
+  MaliciousEntity({
+    this.displayName,
+    this.entity,
+    this.fromHeader,
+  });
 
-  MaliciousEntity.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('entity')) {
-      entity =
-          User.fromJson(_json['entity'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('fromHeader')) {
-      fromHeader = _json['fromHeader'] as core.String;
-    }
-  }
+  MaliciousEntity.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          entity: _json.containsKey('entity')
+              ? User.fromJson(
+                  _json['entity'] as core.Map<core.String, core.dynamic>)
+              : null,
+          fromHeader: _json.containsKey('fromHeader')
+              ? _json['fromHeader'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -1914,18 +2053,22 @@ class MatchInfo {
   /// For matched detector defined by administrators.
   UserDefinedDetectorInfo? userDefinedDetector;
 
-  MatchInfo();
+  MatchInfo({
+    this.predefinedDetector,
+    this.userDefinedDetector,
+  });
 
-  MatchInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('predefinedDetector')) {
-      predefinedDetector = PredefinedDetectorInfo.fromJson(
-          _json['predefinedDetector'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('userDefinedDetector')) {
-      userDefinedDetector = UserDefinedDetectorInfo.fromJson(
-          _json['userDefinedDetector'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  MatchInfo.fromJson(core.Map _json)
+      : this(
+          predefinedDetector: _json.containsKey('predefinedDetector')
+              ? PredefinedDetectorInfo.fromJson(_json['predefinedDetector']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          userDefinedDetector: _json.containsKey('userDefinedDetector')
+              ? UserDefinedDetectorInfo.fromJson(_json['userDefinedDetector']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (predefinedDetector != null)
@@ -1943,14 +2086,17 @@ class Notification {
   /// A Google Cloud Pub/sub topic destination.
   CloudPubsubTopic? cloudPubsubTopic;
 
-  Notification();
+  Notification({
+    this.cloudPubsubTopic,
+  });
 
-  Notification.fromJson(core.Map _json) {
-    if (_json.containsKey('cloudPubsubTopic')) {
-      cloudPubsubTopic = CloudPubsubTopic.fromJson(
-          _json['cloudPubsubTopic'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Notification.fromJson(core.Map _json)
+      : this(
+          cloudPubsubTopic: _json.containsKey('cloudPubsubTopic')
+              ? CloudPubsubTopic.fromJson(_json['cloudPubsubTopic']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cloudPubsubTopic != null)
@@ -1973,22 +2119,28 @@ class OutOfDomainForwarding {
   /// IP address of the user while enabling forwarding
   core.String? ipAddress;
 
-  OutOfDomainForwarding();
+  OutOfDomainForwarding({
+    this.actorEmail,
+    this.enableTime,
+    this.forwardeeEmail,
+    this.ipAddress,
+  });
 
-  OutOfDomainForwarding.fromJson(core.Map _json) {
-    if (_json.containsKey('actorEmail')) {
-      actorEmail = _json['actorEmail'] as core.String;
-    }
-    if (_json.containsKey('enableTime')) {
-      enableTime = _json['enableTime'] as core.String;
-    }
-    if (_json.containsKey('forwardeeEmail')) {
-      forwardeeEmail = _json['forwardeeEmail'] as core.String;
-    }
-    if (_json.containsKey('ipAddress')) {
-      ipAddress = _json['ipAddress'] as core.String;
-    }
-  }
+  OutOfDomainForwarding.fromJson(core.Map _json)
+      : this(
+          actorEmail: _json.containsKey('actorEmail')
+              ? _json['actorEmail'] as core.String
+              : null,
+          enableTime: _json.containsKey('enableTime')
+              ? _json['enableTime'] as core.String
+              : null,
+          forwardeeEmail: _json.containsKey('forwardeeEmail')
+              ? _json['forwardeeEmail'] as core.String
+              : null,
+          ipAddress: _json.containsKey('ipAddress')
+              ? _json['ipAddress'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (actorEmail != null) 'actorEmail': actorEmail!,
@@ -2016,27 +2168,33 @@ class PhishingSpike {
   /// The list of messages contained by this alert.
   core.List<GmailMessageInfo>? messages;
 
-  PhishingSpike();
+  PhishingSpike({
+    this.domainId,
+    this.isInternal,
+    this.maliciousEntity,
+    this.messages,
+  });
 
-  PhishingSpike.fromJson(core.Map _json) {
-    if (_json.containsKey('domainId')) {
-      domainId = DomainId.fromJson(
-          _json['domainId'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('isInternal')) {
-      isInternal = _json['isInternal'] as core.bool;
-    }
-    if (_json.containsKey('maliciousEntity')) {
-      maliciousEntity = MaliciousEntity.fromJson(
-          _json['maliciousEntity'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('messages')) {
-      messages = (_json['messages'] as core.List)
-          .map<GmailMessageInfo>((value) => GmailMessageInfo.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  PhishingSpike.fromJson(core.Map _json)
+      : this(
+          domainId: _json.containsKey('domainId')
+              ? DomainId.fromJson(
+                  _json['domainId'] as core.Map<core.String, core.dynamic>)
+              : null,
+          isInternal: _json.containsKey('isInternal')
+              ? _json['isInternal'] as core.bool
+              : null,
+          maliciousEntity: _json.containsKey('maliciousEntity')
+              ? MaliciousEntity.fromJson(_json['maliciousEntity']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          messages: _json.containsKey('messages')
+              ? (_json['messages'] as core.List)
+                  .map<GmailMessageInfo>((value) => GmailMessageInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (domainId != null) 'domainId': domainId!.toJson(),
@@ -2053,13 +2211,16 @@ class PredefinedDetectorInfo {
   /// Name that uniquely identifies the detector.
   core.String? detectorName;
 
-  PredefinedDetectorInfo();
+  PredefinedDetectorInfo({
+    this.detectorName,
+  });
 
-  PredefinedDetectorInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('detectorName')) {
-      detectorName = _json['detectorName'] as core.String;
-    }
-  }
+  PredefinedDetectorInfo.fromJson(core.Map _json)
+      : this(
+          detectorName: _json.containsKey('detectorName')
+              ? _json['detectorName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (detectorName != null) 'detectorName': detectorName!,
@@ -2092,19 +2253,21 @@ class ReportingRule {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  ReportingRule();
+  ReportingRule({
+    this.alertDetails,
+    this.name,
+    this.query,
+  });
 
-  ReportingRule.fromJson(core.Map _json) {
-    if (_json.containsKey('alertDetails')) {
-      alertDetails = _json['alertDetails'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('query')) {
-      query = _json['query'] as core.String;
-    }
-  }
+  ReportingRule.fromJson(core.Map _json)
+      : this(
+          alertDetails: _json.containsKey('alertDetails')
+              ? _json['alertDetails'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          query:
+              _json.containsKey('query') ? _json['query'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alertDetails != null) 'alertDetails': alertDetails!,
@@ -2129,21 +2292,26 @@ class RequestInfo {
   /// Required.
   core.String? numberOfRequests;
 
-  RequestInfo();
+  RequestInfo({
+    this.appDeveloperEmail,
+    this.appKey,
+    this.numberOfRequests,
+  });
 
-  RequestInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('appDeveloperEmail')) {
-      appDeveloperEmail = (_json['appDeveloperEmail'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('appKey')) {
-      appKey = _json['appKey'] as core.String;
-    }
-    if (_json.containsKey('numberOfRequests')) {
-      numberOfRequests = _json['numberOfRequests'] as core.String;
-    }
-  }
+  RequestInfo.fromJson(core.Map _json)
+      : this(
+          appDeveloperEmail: _json.containsKey('appDeveloperEmail')
+              ? (_json['appDeveloperEmail'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          appKey: _json.containsKey('appKey')
+              ? _json['appKey'] as core.String
+              : null,
+          numberOfRequests: _json.containsKey('numberOfRequests')
+              ? _json['numberOfRequests'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appDeveloperEmail != null) 'appDeveloperEmail': appDeveloperEmail!,
@@ -2160,16 +2328,20 @@ class ResourceInfo {
   /// Title of the resource, for example email subject, or document title.
   core.String? resourceTitle;
 
-  ResourceInfo();
+  ResourceInfo({
+    this.documentId,
+    this.resourceTitle,
+  });
 
-  ResourceInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('documentId')) {
-      documentId = _json['documentId'] as core.String;
-    }
-    if (_json.containsKey('resourceTitle')) {
-      resourceTitle = _json['resourceTitle'] as core.String;
-    }
-  }
+  ResourceInfo.fromJson(core.Map _json)
+      : this(
+          documentId: _json.containsKey('documentId')
+              ? _json['documentId'] as core.String
+              : null,
+          resourceTitle: _json.containsKey('resourceTitle')
+              ? _json['resourceTitle'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (documentId != null) 'documentId': documentId!,
@@ -2185,16 +2357,20 @@ class RuleInfo {
   /// Resource name that uniquely identifies the rule.
   core.String? resourceName;
 
-  RuleInfo();
+  RuleInfo({
+    this.displayName,
+    this.resourceName,
+  });
 
-  RuleInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('resourceName')) {
-      resourceName = _json['resourceName'] as core.String;
-    }
-  }
+  RuleInfo.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          resourceName: _json.containsKey('resourceName')
+              ? _json['resourceName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -2250,54 +2426,66 @@ class RuleViolationInfo {
   /// drive continuous scan.
   core.String? triggeringUserEmail;
 
-  RuleViolationInfo();
+  RuleViolationInfo({
+    this.dataSource,
+    this.matchInfo,
+    this.recipients,
+    this.resourceInfo,
+    this.ruleInfo,
+    this.suppressedActionTypes,
+    this.trigger,
+    this.triggeredActionInfo,
+    this.triggeredActionTypes,
+    this.triggeringUserEmail,
+  });
 
-  RuleViolationInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('dataSource')) {
-      dataSource = _json['dataSource'] as core.String;
-    }
-    if (_json.containsKey('matchInfo')) {
-      matchInfo = (_json['matchInfo'] as core.List)
-          .map<MatchInfo>((value) =>
-              MatchInfo.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('recipients')) {
-      recipients = (_json['recipients'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('resourceInfo')) {
-      resourceInfo = ResourceInfo.fromJson(
-          _json['resourceInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('ruleInfo')) {
-      ruleInfo = RuleInfo.fromJson(
-          _json['ruleInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('suppressedActionTypes')) {
-      suppressedActionTypes = (_json['suppressedActionTypes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('trigger')) {
-      trigger = _json['trigger'] as core.String;
-    }
-    if (_json.containsKey('triggeredActionInfo')) {
-      triggeredActionInfo = (_json['triggeredActionInfo'] as core.List)
-          .map<ActionInfo>((value) =>
-              ActionInfo.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('triggeredActionTypes')) {
-      triggeredActionTypes = (_json['triggeredActionTypes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('triggeringUserEmail')) {
-      triggeringUserEmail = _json['triggeringUserEmail'] as core.String;
-    }
-  }
+  RuleViolationInfo.fromJson(core.Map _json)
+      : this(
+          dataSource: _json.containsKey('dataSource')
+              ? _json['dataSource'] as core.String
+              : null,
+          matchInfo: _json.containsKey('matchInfo')
+              ? (_json['matchInfo'] as core.List)
+                  .map<MatchInfo>((value) => MatchInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          recipients: _json.containsKey('recipients')
+              ? (_json['recipients'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          resourceInfo: _json.containsKey('resourceInfo')
+              ? ResourceInfo.fromJson(
+                  _json['resourceInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          ruleInfo: _json.containsKey('ruleInfo')
+              ? RuleInfo.fromJson(
+                  _json['ruleInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          suppressedActionTypes: _json.containsKey('suppressedActionTypes')
+              ? (_json['suppressedActionTypes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          trigger: _json.containsKey('trigger')
+              ? _json['trigger'] as core.String
+              : null,
+          triggeredActionInfo: _json.containsKey('triggeredActionInfo')
+              ? (_json['triggeredActionInfo'] as core.List)
+                  .map<ActionInfo>((value) => ActionInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          triggeredActionTypes: _json.containsKey('triggeredActionTypes')
+              ? (_json['triggeredActionTypes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          triggeringUserEmail: _json.containsKey('triggeringUserEmail')
+              ? _json['triggeringUserEmail'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataSource != null) 'dataSource': dataSource!,
@@ -2324,16 +2512,19 @@ class Settings {
   /// The list of notifications.
   core.List<Notification>? notifications;
 
-  Settings();
+  Settings({
+    this.notifications,
+  });
 
-  Settings.fromJson(core.Map _json) {
-    if (_json.containsKey('notifications')) {
-      notifications = (_json['notifications'] as core.List)
-          .map<Notification>((value) => Notification.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  Settings.fromJson(core.Map _json)
+      : this(
+          notifications: _json.containsKey('notifications')
+              ? (_json['notifications'] as core.List)
+                  .map<Notification>((value) => Notification.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (notifications != null)
@@ -2349,13 +2540,15 @@ class StateSponsoredAttack {
   /// The email of the user this incident was created for.
   core.String? email;
 
-  StateSponsoredAttack();
+  StateSponsoredAttack({
+    this.email,
+  });
 
-  StateSponsoredAttack.fromJson(core.Map _json) {
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-  }
+  StateSponsoredAttack.fromJson(core.Map _json)
+      : this(
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
@@ -2387,27 +2580,30 @@ class Status {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  Status();
+  Status({
+    this.code,
+    this.details,
+    this.message,
+  });
 
-  Status.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.int;
-    }
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  Status.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -2428,20 +2624,23 @@ class SuspiciousActivity {
   /// Required.
   core.List<SuspiciousActivitySecurityDetail>? events;
 
-  SuspiciousActivity();
+  SuspiciousActivity({
+    this.email,
+    this.events,
+  });
 
-  SuspiciousActivity.fromJson(core.Map _json) {
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('events')) {
-      events = (_json['events'] as core.List)
-          .map<SuspiciousActivitySecurityDetail>((value) =>
-              SuspiciousActivitySecurityDetail.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  SuspiciousActivity.fromJson(core.Map _json)
+      : this(
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          events: _json.containsKey('events')
+              ? (_json['events'] as core.List)
+                  .map<SuspiciousActivitySecurityDetail>((value) =>
+                      SuspiciousActivitySecurityDetail.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
@@ -2481,37 +2680,48 @@ class SuspiciousActivitySecurityDetail {
   /// The serial number of the device.
   core.String? serialNumber;
 
-  SuspiciousActivitySecurityDetail();
+  SuspiciousActivitySecurityDetail({
+    this.deviceId,
+    this.deviceModel,
+    this.deviceProperty,
+    this.deviceType,
+    this.iosVendorId,
+    this.newValue,
+    this.oldValue,
+    this.resourceId,
+    this.serialNumber,
+  });
 
-  SuspiciousActivitySecurityDetail.fromJson(core.Map _json) {
-    if (_json.containsKey('deviceId')) {
-      deviceId = _json['deviceId'] as core.String;
-    }
-    if (_json.containsKey('deviceModel')) {
-      deviceModel = _json['deviceModel'] as core.String;
-    }
-    if (_json.containsKey('deviceProperty')) {
-      deviceProperty = _json['deviceProperty'] as core.String;
-    }
-    if (_json.containsKey('deviceType')) {
-      deviceType = _json['deviceType'] as core.String;
-    }
-    if (_json.containsKey('iosVendorId')) {
-      iosVendorId = _json['iosVendorId'] as core.String;
-    }
-    if (_json.containsKey('newValue')) {
-      newValue = _json['newValue'] as core.String;
-    }
-    if (_json.containsKey('oldValue')) {
-      oldValue = _json['oldValue'] as core.String;
-    }
-    if (_json.containsKey('resourceId')) {
-      resourceId = _json['resourceId'] as core.String;
-    }
-    if (_json.containsKey('serialNumber')) {
-      serialNumber = _json['serialNumber'] as core.String;
-    }
-  }
+  SuspiciousActivitySecurityDetail.fromJson(core.Map _json)
+      : this(
+          deviceId: _json.containsKey('deviceId')
+              ? _json['deviceId'] as core.String
+              : null,
+          deviceModel: _json.containsKey('deviceModel')
+              ? _json['deviceModel'] as core.String
+              : null,
+          deviceProperty: _json.containsKey('deviceProperty')
+              ? _json['deviceProperty'] as core.String
+              : null,
+          deviceType: _json.containsKey('deviceType')
+              ? _json['deviceType'] as core.String
+              : null,
+          iosVendorId: _json.containsKey('iosVendorId')
+              ? _json['iosVendorId'] as core.String
+              : null,
+          newValue: _json.containsKey('newValue')
+              ? _json['newValue'] as core.String
+              : null,
+          oldValue: _json.containsKey('oldValue')
+              ? _json['oldValue'] as core.String
+              : null,
+          resourceId: _json.containsKey('resourceId')
+              ? _json['resourceId'] as core.String
+              : null,
+          serialNumber: _json.containsKey('serialNumber')
+              ? _json['serialNumber'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceId != null) 'deviceId': deviceId!,
@@ -2536,13 +2746,16 @@ class UndeleteAlertRequest {
   /// Optional.
   core.String? customerId;
 
-  UndeleteAlertRequest();
+  UndeleteAlertRequest({
+    this.customerId,
+  });
 
-  UndeleteAlertRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('customerId')) {
-      customerId = _json['customerId'] as core.String;
-    }
-  }
+  UndeleteAlertRequest.fromJson(core.Map _json)
+      : this(
+          customerId: _json.containsKey('customerId')
+              ? _json['customerId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customerId != null) 'customerId': customerId!,
@@ -2557,16 +2770,20 @@ class User {
   /// Email address of the user.
   core.String? emailAddress;
 
-  User();
+  User({
+    this.displayName,
+    this.emailAddress,
+  });
 
-  User.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('emailAddress')) {
-      emailAddress = _json['emailAddress'] as core.String;
-    }
-  }
+  User.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          emailAddress: _json.containsKey('emailAddress')
+              ? _json['emailAddress'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -2584,13 +2801,14 @@ class UserChanges {
   /// Rule name
   core.String? name;
 
-  UserChanges();
+  UserChanges({
+    this.name,
+  });
 
-  UserChanges.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  UserChanges.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -2605,16 +2823,20 @@ class UserDefinedDetectorInfo {
   /// Resource name that uniquely identifies the detector.
   core.String? resourceName;
 
-  UserDefinedDetectorInfo();
+  UserDefinedDetectorInfo({
+    this.displayName,
+    this.resourceName,
+  });
 
-  UserDefinedDetectorInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('resourceName')) {
-      resourceName = _json['resourceName'] as core.String;
-    }
-  }
+  UserDefinedDetectorInfo.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          resourceName: _json.containsKey('resourceName')
+              ? _json['resourceName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,

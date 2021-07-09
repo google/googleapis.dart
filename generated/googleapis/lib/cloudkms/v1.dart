@@ -1799,16 +1799,20 @@ class AsymmetricDecryptRequest {
   /// Optional.
   core.String? ciphertextCrc32c;
 
-  AsymmetricDecryptRequest();
+  AsymmetricDecryptRequest({
+    this.ciphertext,
+    this.ciphertextCrc32c,
+  });
 
-  AsymmetricDecryptRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('ciphertext')) {
-      ciphertext = _json['ciphertext'] as core.String;
-    }
-    if (_json.containsKey('ciphertextCrc32c')) {
-      ciphertextCrc32c = _json['ciphertextCrc32c'] as core.String;
-    }
-  }
+  AsymmetricDecryptRequest.fromJson(core.Map _json)
+      : this(
+          ciphertext: _json.containsKey('ciphertext')
+              ? _json['ciphertext'] as core.String
+              : null,
+          ciphertextCrc32c: _json.containsKey('ciphertextCrc32c')
+              ? _json['ciphertextCrc32c'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ciphertext != null) 'ciphertext': ciphertext!,
@@ -1862,22 +1866,29 @@ class AsymmetricDecryptResponse {
   /// field is in Beta.
   core.bool? verifiedCiphertextCrc32c;
 
-  AsymmetricDecryptResponse();
+  AsymmetricDecryptResponse({
+    this.plaintext,
+    this.plaintextCrc32c,
+    this.protectionLevel,
+    this.verifiedCiphertextCrc32c,
+  });
 
-  AsymmetricDecryptResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('plaintext')) {
-      plaintext = _json['plaintext'] as core.String;
-    }
-    if (_json.containsKey('plaintextCrc32c')) {
-      plaintextCrc32c = _json['plaintextCrc32c'] as core.String;
-    }
-    if (_json.containsKey('protectionLevel')) {
-      protectionLevel = _json['protectionLevel'] as core.String;
-    }
-    if (_json.containsKey('verifiedCiphertextCrc32c')) {
-      verifiedCiphertextCrc32c = _json['verifiedCiphertextCrc32c'] as core.bool;
-    }
-  }
+  AsymmetricDecryptResponse.fromJson(core.Map _json)
+      : this(
+          plaintext: _json.containsKey('plaintext')
+              ? _json['plaintext'] as core.String
+              : null,
+          plaintextCrc32c: _json.containsKey('plaintextCrc32c')
+              ? _json['plaintextCrc32c'] as core.String
+              : null,
+          protectionLevel: _json.containsKey('protectionLevel')
+              ? _json['protectionLevel'] as core.String
+              : null,
+          verifiedCiphertextCrc32c:
+              _json.containsKey('verifiedCiphertextCrc32c')
+                  ? _json['verifiedCiphertextCrc32c'] as core.bool
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (plaintext != null) 'plaintext': plaintext!,
@@ -1916,17 +1927,21 @@ class AsymmetricSignRequest {
   /// Optional.
   core.String? digestCrc32c;
 
-  AsymmetricSignRequest();
+  AsymmetricSignRequest({
+    this.digest,
+    this.digestCrc32c,
+  });
 
-  AsymmetricSignRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('digest')) {
-      digest = Digest.fromJson(
-          _json['digest'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('digestCrc32c')) {
-      digestCrc32c = _json['digestCrc32c'] as core.String;
-    }
-  }
+  AsymmetricSignRequest.fromJson(core.Map _json)
+      : this(
+          digest: _json.containsKey('digest')
+              ? Digest.fromJson(
+                  _json['digest'] as core.Map<core.String, core.dynamic>)
+              : null,
+          digestCrc32c: _json.containsKey('digestCrc32c')
+              ? _json['digestCrc32c'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (digest != null) 'digest': digest!.toJson(),
@@ -1986,25 +2001,30 @@ class AsymmetricSignResponse {
   /// in Beta.
   core.bool? verifiedDigestCrc32c;
 
-  AsymmetricSignResponse();
+  AsymmetricSignResponse({
+    this.name,
+    this.protectionLevel,
+    this.signature,
+    this.signatureCrc32c,
+    this.verifiedDigestCrc32c,
+  });
 
-  AsymmetricSignResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('protectionLevel')) {
-      protectionLevel = _json['protectionLevel'] as core.String;
-    }
-    if (_json.containsKey('signature')) {
-      signature = _json['signature'] as core.String;
-    }
-    if (_json.containsKey('signatureCrc32c')) {
-      signatureCrc32c = _json['signatureCrc32c'] as core.String;
-    }
-    if (_json.containsKey('verifiedDigestCrc32c')) {
-      verifiedDigestCrc32c = _json['verifiedDigestCrc32c'] as core.bool;
-    }
-  }
+  AsymmetricSignResponse.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          protectionLevel: _json.containsKey('protectionLevel')
+              ? _json['protectionLevel'] as core.String
+              : null,
+          signature: _json.containsKey('signature')
+              ? _json['signature'] as core.String
+              : null,
+          signatureCrc32c: _json.containsKey('signatureCrc32c')
+              ? _json['signatureCrc32c'] as core.String
+              : null,
+          verifiedDigestCrc32c: _json.containsKey('verifiedDigestCrc32c')
+              ? _json['verifiedDigestCrc32c'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -2043,19 +2063,23 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig();
+  AuditConfig({
+    this.auditLogConfigs,
+    this.service,
+  });
 
-  AuditConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('auditLogConfigs')) {
-      auditLogConfigs = (_json['auditLogConfigs'] as core.List)
-          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('service')) {
-      service = _json['service'] as core.String;
-    }
-  }
+  AuditConfig.fromJson(core.Map _json)
+      : this(
+          auditLogConfigs: _json.containsKey('auditLogConfigs')
+              ? (_json['auditLogConfigs'] as core.List)
+                  .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          service: _json.containsKey('service')
+              ? _json['service'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (auditLogConfigs != null)
@@ -2086,18 +2110,22 @@ class AuditLogConfig {
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
   core.String? logType;
 
-  AuditLogConfig();
+  AuditLogConfig({
+    this.exemptedMembers,
+    this.logType,
+  });
 
-  AuditLogConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('exemptedMembers')) {
-      exemptedMembers = (_json['exemptedMembers'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('logType')) {
-      logType = _json['logType'] as core.String;
-    }
-  }
+  AuditLogConfig.fromJson(core.Map _json)
+      : this(
+          exemptedMembers: _json.containsKey('exemptedMembers')
+              ? (_json['exemptedMembers'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          logType: _json.containsKey('logType')
+              ? _json['logType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
@@ -2154,22 +2182,25 @@ class Binding {
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String? role;
 
-  Binding();
+  Binding({
+    this.condition,
+    this.members,
+    this.role,
+  });
 
-  Binding.fromJson(core.Map _json) {
-    if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(
-          _json['condition'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('members')) {
-      members = (_json['members'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('role')) {
-      role = _json['role'] as core.String;
-    }
-  }
+  Binding.fromJson(core.Map _json)
+      : this(
+          condition: _json.containsKey('condition')
+              ? Expr.fromJson(
+                  _json['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          members: _json.containsKey('members')
+              ? (_json['members'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!.toJson(),
@@ -2192,25 +2223,30 @@ class CertificateChains {
   /// Google partition certificate chain corresponding to the attestation.
   core.List<core.String>? googlePartitionCerts;
 
-  CertificateChains();
+  CertificateChains({
+    this.caviumCerts,
+    this.googleCardCerts,
+    this.googlePartitionCerts,
+  });
 
-  CertificateChains.fromJson(core.Map _json) {
-    if (_json.containsKey('caviumCerts')) {
-      caviumCerts = (_json['caviumCerts'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('googleCardCerts')) {
-      googleCardCerts = (_json['googleCardCerts'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('googlePartitionCerts')) {
-      googlePartitionCerts = (_json['googlePartitionCerts'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  CertificateChains.fromJson(core.Map _json)
+      : this(
+          caviumCerts: _json.containsKey('caviumCerts')
+              ? (_json['caviumCerts'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          googleCardCerts: _json.containsKey('googleCardCerts')
+              ? (_json['googleCardCerts'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          googlePartitionCerts: _json.containsKey('googlePartitionCerts')
+              ? (_json['googlePartitionCerts'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (caviumCerts != null) 'caviumCerts': caviumCerts!,
@@ -2290,41 +2326,49 @@ class CryptoKey {
   /// CreateCryptoKeyVersion or auto-rotation are controlled by this template.
   CryptoKeyVersionTemplate? versionTemplate;
 
-  CryptoKey();
+  CryptoKey({
+    this.createTime,
+    this.labels,
+    this.name,
+    this.nextRotationTime,
+    this.primary,
+    this.purpose,
+    this.rotationPeriod,
+    this.versionTemplate,
+  });
 
-  CryptoKey.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('nextRotationTime')) {
-      nextRotationTime = _json['nextRotationTime'] as core.String;
-    }
-    if (_json.containsKey('primary')) {
-      primary = CryptoKeyVersion.fromJson(
-          _json['primary'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('purpose')) {
-      purpose = _json['purpose'] as core.String;
-    }
-    if (_json.containsKey('rotationPeriod')) {
-      rotationPeriod = _json['rotationPeriod'] as core.String;
-    }
-    if (_json.containsKey('versionTemplate')) {
-      versionTemplate = CryptoKeyVersionTemplate.fromJson(
-          _json['versionTemplate'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  CryptoKey.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          nextRotationTime: _json.containsKey('nextRotationTime')
+              ? _json['nextRotationTime'] as core.String
+              : null,
+          primary: _json.containsKey('primary')
+              ? CryptoKeyVersion.fromJson(
+                  _json['primary'] as core.Map<core.String, core.dynamic>)
+              : null,
+          purpose: _json.containsKey('purpose')
+              ? _json['purpose'] as core.String
+              : null,
+          rotationPeriod: _json.containsKey('rotationPeriod')
+              ? _json['rotationPeriod'] as core.String
+              : null,
+          versionTemplate: _json.containsKey('versionTemplate')
+              ? CryptoKeyVersionTemplate.fromJson(_json['versionTemplate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -2486,52 +2530,65 @@ class CryptoKeyVersion {
   /// CryptoKeyVersion.import_failure_reason.
   core.String? state;
 
-  CryptoKeyVersion();
+  CryptoKeyVersion({
+    this.algorithm,
+    this.attestation,
+    this.createTime,
+    this.destroyEventTime,
+    this.destroyTime,
+    this.externalProtectionLevelOptions,
+    this.generateTime,
+    this.importFailureReason,
+    this.importJob,
+    this.importTime,
+    this.name,
+    this.protectionLevel,
+    this.state,
+  });
 
-  CryptoKeyVersion.fromJson(core.Map _json) {
-    if (_json.containsKey('algorithm')) {
-      algorithm = _json['algorithm'] as core.String;
-    }
-    if (_json.containsKey('attestation')) {
-      attestation = KeyOperationAttestation.fromJson(
-          _json['attestation'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('destroyEventTime')) {
-      destroyEventTime = _json['destroyEventTime'] as core.String;
-    }
-    if (_json.containsKey('destroyTime')) {
-      destroyTime = _json['destroyTime'] as core.String;
-    }
-    if (_json.containsKey('externalProtectionLevelOptions')) {
-      externalProtectionLevelOptions = ExternalProtectionLevelOptions.fromJson(
-          _json['externalProtectionLevelOptions']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('generateTime')) {
-      generateTime = _json['generateTime'] as core.String;
-    }
-    if (_json.containsKey('importFailureReason')) {
-      importFailureReason = _json['importFailureReason'] as core.String;
-    }
-    if (_json.containsKey('importJob')) {
-      importJob = _json['importJob'] as core.String;
-    }
-    if (_json.containsKey('importTime')) {
-      importTime = _json['importTime'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('protectionLevel')) {
-      protectionLevel = _json['protectionLevel'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-  }
+  CryptoKeyVersion.fromJson(core.Map _json)
+      : this(
+          algorithm: _json.containsKey('algorithm')
+              ? _json['algorithm'] as core.String
+              : null,
+          attestation: _json.containsKey('attestation')
+              ? KeyOperationAttestation.fromJson(
+                  _json['attestation'] as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          destroyEventTime: _json.containsKey('destroyEventTime')
+              ? _json['destroyEventTime'] as core.String
+              : null,
+          destroyTime: _json.containsKey('destroyTime')
+              ? _json['destroyTime'] as core.String
+              : null,
+          externalProtectionLevelOptions:
+              _json.containsKey('externalProtectionLevelOptions')
+                  ? ExternalProtectionLevelOptions.fromJson(
+                      _json['externalProtectionLevelOptions']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          generateTime: _json.containsKey('generateTime')
+              ? _json['generateTime'] as core.String
+              : null,
+          importFailureReason: _json.containsKey('importFailureReason')
+              ? _json['importFailureReason'] as core.String
+              : null,
+          importJob: _json.containsKey('importJob')
+              ? _json['importJob'] as core.String
+              : null,
+          importTime: _json.containsKey('importTime')
+              ? _json['importTime'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          protectionLevel: _json.containsKey('protectionLevel')
+              ? _json['protectionLevel'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (algorithm != null) 'algorithm': algorithm!,
@@ -2611,16 +2668,20 @@ class CryptoKeyVersionTemplate {
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
   core.String? protectionLevel;
 
-  CryptoKeyVersionTemplate();
+  CryptoKeyVersionTemplate({
+    this.algorithm,
+    this.protectionLevel,
+  });
 
-  CryptoKeyVersionTemplate.fromJson(core.Map _json) {
-    if (_json.containsKey('algorithm')) {
-      algorithm = _json['algorithm'] as core.String;
-    }
-    if (_json.containsKey('protectionLevel')) {
-      protectionLevel = _json['protectionLevel'] as core.String;
-    }
-  }
+  CryptoKeyVersionTemplate.fromJson(core.Map _json)
+      : this(
+          algorithm: _json.containsKey('algorithm')
+              ? _json['algorithm'] as core.String
+              : null,
+          protectionLevel: _json.containsKey('protectionLevel')
+              ? _json['protectionLevel'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (algorithm != null) 'algorithm': algorithm!,
@@ -2692,24 +2753,30 @@ class DecryptRequest {
   /// Optional.
   core.String? ciphertextCrc32c;
 
-  DecryptRequest();
+  DecryptRequest({
+    this.additionalAuthenticatedData,
+    this.additionalAuthenticatedDataCrc32c,
+    this.ciphertext,
+    this.ciphertextCrc32c,
+  });
 
-  DecryptRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('additionalAuthenticatedData')) {
-      additionalAuthenticatedData =
-          _json['additionalAuthenticatedData'] as core.String;
-    }
-    if (_json.containsKey('additionalAuthenticatedDataCrc32c')) {
-      additionalAuthenticatedDataCrc32c =
-          _json['additionalAuthenticatedDataCrc32c'] as core.String;
-    }
-    if (_json.containsKey('ciphertext')) {
-      ciphertext = _json['ciphertext'] as core.String;
-    }
-    if (_json.containsKey('ciphertextCrc32c')) {
-      ciphertextCrc32c = _json['ciphertextCrc32c'] as core.String;
-    }
-  }
+  DecryptRequest.fromJson(core.Map _json)
+      : this(
+          additionalAuthenticatedData:
+              _json.containsKey('additionalAuthenticatedData')
+                  ? _json['additionalAuthenticatedData'] as core.String
+                  : null,
+          additionalAuthenticatedDataCrc32c:
+              _json.containsKey('additionalAuthenticatedDataCrc32c')
+                  ? _json['additionalAuthenticatedDataCrc32c'] as core.String
+                  : null,
+          ciphertext: _json.containsKey('ciphertext')
+              ? _json['ciphertext'] as core.String
+              : null,
+          ciphertextCrc32c: _json.containsKey('ciphertextCrc32c')
+              ? _json['ciphertextCrc32c'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (additionalAuthenticatedData != null)
@@ -2760,22 +2827,28 @@ class DecryptResponse {
   /// Whether the Decryption was performed using the primary key version.
   core.bool? usedPrimary;
 
-  DecryptResponse();
+  DecryptResponse({
+    this.plaintext,
+    this.plaintextCrc32c,
+    this.protectionLevel,
+    this.usedPrimary,
+  });
 
-  DecryptResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('plaintext')) {
-      plaintext = _json['plaintext'] as core.String;
-    }
-    if (_json.containsKey('plaintextCrc32c')) {
-      plaintextCrc32c = _json['plaintextCrc32c'] as core.String;
-    }
-    if (_json.containsKey('protectionLevel')) {
-      protectionLevel = _json['protectionLevel'] as core.String;
-    }
-    if (_json.containsKey('usedPrimary')) {
-      usedPrimary = _json['usedPrimary'] as core.bool;
-    }
-  }
+  DecryptResponse.fromJson(core.Map _json)
+      : this(
+          plaintext: _json.containsKey('plaintext')
+              ? _json['plaintext'] as core.String
+              : null,
+          plaintextCrc32c: _json.containsKey('plaintextCrc32c')
+              ? _json['plaintextCrc32c'] as core.String
+              : null,
+          protectionLevel: _json.containsKey('protectionLevel')
+              ? _json['protectionLevel'] as core.String
+              : null,
+          usedPrimary: _json.containsKey('usedPrimary')
+              ? _json['usedPrimary'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (plaintext != null) 'plaintext': plaintext!,
@@ -2825,19 +2898,24 @@ class Digest {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  Digest();
+  Digest({
+    this.sha256,
+    this.sha384,
+    this.sha512,
+  });
 
-  Digest.fromJson(core.Map _json) {
-    if (_json.containsKey('sha256')) {
-      sha256 = _json['sha256'] as core.String;
-    }
-    if (_json.containsKey('sha384')) {
-      sha384 = _json['sha384'] as core.String;
-    }
-    if (_json.containsKey('sha512')) {
-      sha512 = _json['sha512'] as core.String;
-    }
-  }
+  Digest.fromJson(core.Map _json)
+      : this(
+          sha256: _json.containsKey('sha256')
+              ? _json['sha256'] as core.String
+              : null,
+          sha384: _json.containsKey('sha384')
+              ? _json['sha384'] as core.String
+              : null,
+          sha512: _json.containsKey('sha512')
+              ? _json['sha512'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sha256 != null) 'sha256': sha256!,
@@ -2919,24 +2997,30 @@ class EncryptRequest {
   /// Optional.
   core.String? plaintextCrc32c;
 
-  EncryptRequest();
+  EncryptRequest({
+    this.additionalAuthenticatedData,
+    this.additionalAuthenticatedDataCrc32c,
+    this.plaintext,
+    this.plaintextCrc32c,
+  });
 
-  EncryptRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('additionalAuthenticatedData')) {
-      additionalAuthenticatedData =
-          _json['additionalAuthenticatedData'] as core.String;
-    }
-    if (_json.containsKey('additionalAuthenticatedDataCrc32c')) {
-      additionalAuthenticatedDataCrc32c =
-          _json['additionalAuthenticatedDataCrc32c'] as core.String;
-    }
-    if (_json.containsKey('plaintext')) {
-      plaintext = _json['plaintext'] as core.String;
-    }
-    if (_json.containsKey('plaintextCrc32c')) {
-      plaintextCrc32c = _json['plaintextCrc32c'] as core.String;
-    }
-  }
+  EncryptRequest.fromJson(core.Map _json)
+      : this(
+          additionalAuthenticatedData:
+              _json.containsKey('additionalAuthenticatedData')
+                  ? _json['additionalAuthenticatedData'] as core.String
+                  : null,
+          additionalAuthenticatedDataCrc32c:
+              _json.containsKey('additionalAuthenticatedDataCrc32c')
+                  ? _json['additionalAuthenticatedDataCrc32c'] as core.String
+                  : null,
+          plaintext: _json.containsKey('plaintext')
+              ? _json['plaintext'] as core.String
+              : null,
+          plaintextCrc32c: _json.containsKey('plaintextCrc32c')
+              ? _json['plaintextCrc32c'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (additionalAuthenticatedData != null)
@@ -3014,29 +3098,35 @@ class EncryptResponse {
   /// Beta.
   core.bool? verifiedPlaintextCrc32c;
 
-  EncryptResponse();
+  EncryptResponse({
+    this.ciphertext,
+    this.ciphertextCrc32c,
+    this.name,
+    this.protectionLevel,
+    this.verifiedAdditionalAuthenticatedDataCrc32c,
+    this.verifiedPlaintextCrc32c,
+  });
 
-  EncryptResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('ciphertext')) {
-      ciphertext = _json['ciphertext'] as core.String;
-    }
-    if (_json.containsKey('ciphertextCrc32c')) {
-      ciphertextCrc32c = _json['ciphertextCrc32c'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('protectionLevel')) {
-      protectionLevel = _json['protectionLevel'] as core.String;
-    }
-    if (_json.containsKey('verifiedAdditionalAuthenticatedDataCrc32c')) {
-      verifiedAdditionalAuthenticatedDataCrc32c =
-          _json['verifiedAdditionalAuthenticatedDataCrc32c'] as core.bool;
-    }
-    if (_json.containsKey('verifiedPlaintextCrc32c')) {
-      verifiedPlaintextCrc32c = _json['verifiedPlaintextCrc32c'] as core.bool;
-    }
-  }
+  EncryptResponse.fromJson(core.Map _json)
+      : this(
+          ciphertext: _json.containsKey('ciphertext')
+              ? _json['ciphertext'] as core.String
+              : null,
+          ciphertextCrc32c: _json.containsKey('ciphertextCrc32c')
+              ? _json['ciphertextCrc32c'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          protectionLevel: _json.containsKey('protectionLevel')
+              ? _json['protectionLevel'] as core.String
+              : null,
+          verifiedAdditionalAuthenticatedDataCrc32c: _json
+                  .containsKey('verifiedAdditionalAuthenticatedDataCrc32c')
+              ? _json['verifiedAdditionalAuthenticatedDataCrc32c'] as core.bool
+              : null,
+          verifiedPlaintextCrc32c: _json.containsKey('verifiedPlaintextCrc32c')
+              ? _json['verifiedPlaintextCrc32c'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ciphertext != null) 'ciphertext': ciphertext!,
@@ -3095,22 +3185,27 @@ class Expr {
   /// Optional.
   core.String? title;
 
-  Expr();
+  Expr({
+    this.description,
+    this.expression,
+    this.location,
+    this.title,
+  });
 
-  Expr.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('expression')) {
-      expression = _json['expression'] as core.String;
-    }
-    if (_json.containsKey('location')) {
-      location = _json['location'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  Expr.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          expression: _json.containsKey('expression')
+              ? _json['expression'] as core.String
+              : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -3127,13 +3222,16 @@ class ExternalProtectionLevelOptions {
   /// The URI for an external resource that this CryptoKeyVersion represents.
   core.String? externalKeyUri;
 
-  ExternalProtectionLevelOptions();
+  ExternalProtectionLevelOptions({
+    this.externalKeyUri,
+  });
 
-  ExternalProtectionLevelOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('externalKeyUri')) {
-      externalKeyUri = _json['externalKeyUri'] as core.String;
-    }
-  }
+  ExternalProtectionLevelOptions.fromJson(core.Map _json)
+      : this(
+          externalKeyUri: _json.containsKey('externalKeyUri')
+              ? _json['externalKeyUri'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (externalKeyUri != null) 'externalKeyUri': externalKeyUri!,
@@ -3211,19 +3309,24 @@ class ImportCryptoKeyVersionRequest {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  ImportCryptoKeyVersionRequest();
+  ImportCryptoKeyVersionRequest({
+    this.algorithm,
+    this.importJob,
+    this.rsaAesWrappedKey,
+  });
 
-  ImportCryptoKeyVersionRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('algorithm')) {
-      algorithm = _json['algorithm'] as core.String;
-    }
-    if (_json.containsKey('importJob')) {
-      importJob = _json['importJob'] as core.String;
-    }
-    if (_json.containsKey('rsaAesWrappedKey')) {
-      rsaAesWrappedKey = _json['rsaAesWrappedKey'] as core.String;
-    }
-  }
+  ImportCryptoKeyVersionRequest.fromJson(core.Map _json)
+      : this(
+          algorithm: _json.containsKey('algorithm')
+              ? _json['algorithm'] as core.String
+              : null,
+          importJob: _json.containsKey('importJob')
+              ? _json['importJob'] as core.String
+              : null,
+          rsaAesWrappedKey: _json.containsKey('rsaAesWrappedKey')
+              ? _json['rsaAesWrappedKey'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (algorithm != null) 'algorithm': algorithm!,
@@ -3344,42 +3447,51 @@ class ImportJob {
   /// once entered.
   core.String? state;
 
-  ImportJob();
+  ImportJob({
+    this.attestation,
+    this.createTime,
+    this.expireEventTime,
+    this.expireTime,
+    this.generateTime,
+    this.importMethod,
+    this.name,
+    this.protectionLevel,
+    this.publicKey,
+    this.state,
+  });
 
-  ImportJob.fromJson(core.Map _json) {
-    if (_json.containsKey('attestation')) {
-      attestation = KeyOperationAttestation.fromJson(
-          _json['attestation'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('expireEventTime')) {
-      expireEventTime = _json['expireEventTime'] as core.String;
-    }
-    if (_json.containsKey('expireTime')) {
-      expireTime = _json['expireTime'] as core.String;
-    }
-    if (_json.containsKey('generateTime')) {
-      generateTime = _json['generateTime'] as core.String;
-    }
-    if (_json.containsKey('importMethod')) {
-      importMethod = _json['importMethod'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('protectionLevel')) {
-      protectionLevel = _json['protectionLevel'] as core.String;
-    }
-    if (_json.containsKey('publicKey')) {
-      publicKey = WrappingPublicKey.fromJson(
-          _json['publicKey'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-  }
+  ImportJob.fromJson(core.Map _json)
+      : this(
+          attestation: _json.containsKey('attestation')
+              ? KeyOperationAttestation.fromJson(
+                  _json['attestation'] as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          expireEventTime: _json.containsKey('expireEventTime')
+              ? _json['expireEventTime'] as core.String
+              : null,
+          expireTime: _json.containsKey('expireTime')
+              ? _json['expireTime'] as core.String
+              : null,
+          generateTime: _json.containsKey('generateTime')
+              ? _json['generateTime'] as core.String
+              : null,
+          importMethod: _json.containsKey('importMethod')
+              ? _json['importMethod'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          protectionLevel: _json.containsKey('protectionLevel')
+              ? _json['protectionLevel'] as core.String
+              : null,
+          publicKey: _json.containsKey('publicKey')
+              ? WrappingPublicKey.fromJson(
+                  _json['publicKey'] as core.Map<core.String, core.dynamic>)
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attestation != null) 'attestation': attestation!.toJson(),
@@ -3429,20 +3541,25 @@ class KeyOperationAttestation {
   /// This is a new format introduced in Cavium's version 3.2-08.
   core.String? format;
 
-  KeyOperationAttestation();
+  KeyOperationAttestation({
+    this.certChains,
+    this.content,
+    this.format,
+  });
 
-  KeyOperationAttestation.fromJson(core.Map _json) {
-    if (_json.containsKey('certChains')) {
-      certChains = CertificateChains.fromJson(
-          _json['certChains'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('content')) {
-      content = _json['content'] as core.String;
-    }
-    if (_json.containsKey('format')) {
-      format = _json['format'] as core.String;
-    }
-  }
+  KeyOperationAttestation.fromJson(core.Map _json)
+      : this(
+          certChains: _json.containsKey('certChains')
+              ? CertificateChains.fromJson(
+                  _json['certChains'] as core.Map<core.String, core.dynamic>)
+              : null,
+          content: _json.containsKey('content')
+              ? _json['content'] as core.String
+              : null,
+          format: _json.containsKey('format')
+              ? _json['format'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (certChains != null) 'certChains': certChains!.toJson(),
@@ -3464,16 +3581,18 @@ class KeyRing {
   /// Output only.
   core.String? name;
 
-  KeyRing();
+  KeyRing({
+    this.createTime,
+    this.name,
+  });
 
-  KeyRing.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  KeyRing.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -3495,22 +3614,27 @@ class ListCryptoKeyVersionsResponse {
   /// The total number of CryptoKeyVersions that matched the query.
   core.int? totalSize;
 
-  ListCryptoKeyVersionsResponse();
+  ListCryptoKeyVersionsResponse({
+    this.cryptoKeyVersions,
+    this.nextPageToken,
+    this.totalSize,
+  });
 
-  ListCryptoKeyVersionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('cryptoKeyVersions')) {
-      cryptoKeyVersions = (_json['cryptoKeyVersions'] as core.List)
-          .map<CryptoKeyVersion>((value) => CryptoKeyVersion.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('totalSize')) {
-      totalSize = _json['totalSize'] as core.int;
-    }
-  }
+  ListCryptoKeyVersionsResponse.fromJson(core.Map _json)
+      : this(
+          cryptoKeyVersions: _json.containsKey('cryptoKeyVersions')
+              ? (_json['cryptoKeyVersions'] as core.List)
+                  .map<CryptoKeyVersion>((value) => CryptoKeyVersion.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          totalSize: _json.containsKey('totalSize')
+              ? _json['totalSize'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cryptoKeyVersions != null)
@@ -3535,22 +3659,27 @@ class ListCryptoKeysResponse {
   /// The total number of CryptoKeys that matched the query.
   core.int? totalSize;
 
-  ListCryptoKeysResponse();
+  ListCryptoKeysResponse({
+    this.cryptoKeys,
+    this.nextPageToken,
+    this.totalSize,
+  });
 
-  ListCryptoKeysResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('cryptoKeys')) {
-      cryptoKeys = (_json['cryptoKeys'] as core.List)
-          .map<CryptoKey>((value) =>
-              CryptoKey.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('totalSize')) {
-      totalSize = _json['totalSize'] as core.int;
-    }
-  }
+  ListCryptoKeysResponse.fromJson(core.Map _json)
+      : this(
+          cryptoKeys: _json.containsKey('cryptoKeys')
+              ? (_json['cryptoKeys'] as core.List)
+                  .map<CryptoKey>((value) => CryptoKey.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          totalSize: _json.containsKey('totalSize')
+              ? _json['totalSize'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cryptoKeys != null)
@@ -3574,22 +3703,27 @@ class ListImportJobsResponse {
   /// The total number of ImportJobs that matched the query.
   core.int? totalSize;
 
-  ListImportJobsResponse();
+  ListImportJobsResponse({
+    this.importJobs,
+    this.nextPageToken,
+    this.totalSize,
+  });
 
-  ListImportJobsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('importJobs')) {
-      importJobs = (_json['importJobs'] as core.List)
-          .map<ImportJob>((value) =>
-              ImportJob.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('totalSize')) {
-      totalSize = _json['totalSize'] as core.int;
-    }
-  }
+  ListImportJobsResponse.fromJson(core.Map _json)
+      : this(
+          importJobs: _json.containsKey('importJobs')
+              ? (_json['importJobs'] as core.List)
+                  .map<ImportJob>((value) => ImportJob.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          totalSize: _json.containsKey('totalSize')
+              ? _json['totalSize'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (importJobs != null)
@@ -3613,22 +3747,27 @@ class ListKeyRingsResponse {
   /// The total number of KeyRings that matched the query.
   core.int? totalSize;
 
-  ListKeyRingsResponse();
+  ListKeyRingsResponse({
+    this.keyRings,
+    this.nextPageToken,
+    this.totalSize,
+  });
 
-  ListKeyRingsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('keyRings')) {
-      keyRings = (_json['keyRings'] as core.List)
-          .map<KeyRing>((value) =>
-              KeyRing.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('totalSize')) {
-      totalSize = _json['totalSize'] as core.int;
-    }
-  }
+  ListKeyRingsResponse.fromJson(core.Map _json)
+      : this(
+          keyRings: _json.containsKey('keyRings')
+              ? (_json['keyRings'] as core.List)
+                  .map<KeyRing>((value) => KeyRing.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          totalSize: _json.containsKey('totalSize')
+              ? _json['totalSize'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (keyRings != null)
@@ -3646,19 +3785,23 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse();
+  ListLocationsResponse({
+    this.locations,
+    this.nextPageToken,
+  });
 
-  ListLocationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('locations')) {
-      locations = (_json['locations'] as core.List)
-          .map<Location>((value) =>
-              Location.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListLocationsResponse.fromJson(core.Map _json)
+      : this(
+          locations: _json.containsKey('locations')
+              ? (_json['locations'] as core.List)
+                  .map<Location>((value) => Location.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (locations != null)
@@ -3697,35 +3840,40 @@ class Location {
   /// For example: `"projects/example-project/locations/us-east1"`
   core.String? name;
 
-  Location();
+  Location({
+    this.displayName,
+    this.labels,
+    this.locationId,
+    this.metadata,
+    this.name,
+  });
 
-  Location.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('locationId')) {
-      locationId = _json['locationId'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  Location.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          locationId: _json.containsKey('locationId')
+              ? _json['locationId'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -3746,16 +3894,20 @@ class LocationMetadata {
   /// this location.
   core.bool? hsmAvailable;
 
-  LocationMetadata();
+  LocationMetadata({
+    this.ekmAvailable,
+    this.hsmAvailable,
+  });
 
-  LocationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('ekmAvailable')) {
-      ekmAvailable = _json['ekmAvailable'] as core.bool;
-    }
-    if (_json.containsKey('hsmAvailable')) {
-      hsmAvailable = _json['hsmAvailable'] as core.bool;
-    }
-  }
+  LocationMetadata.fromJson(core.Map _json)
+      : this(
+          ekmAvailable: _json.containsKey('ekmAvailable')
+              ? _json['ekmAvailable'] as core.bool
+              : null,
+          hsmAvailable: _json.containsKey('hsmAvailable')
+              ? _json['hsmAvailable'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ekmAvailable != null) 'ekmAvailable': ekmAvailable!,
@@ -3844,28 +3996,32 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy();
+  Policy({
+    this.auditConfigs,
+    this.bindings,
+    this.etag,
+    this.version,
+  });
 
-  Policy.fromJson(core.Map _json) {
-    if (_json.containsKey('auditConfigs')) {
-      auditConfigs = (_json['auditConfigs'] as core.List)
-          .map<AuditConfig>((value) => AuditConfig.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('bindings')) {
-      bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) =>
-              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.int;
-    }
-  }
+  Policy.fromJson(core.Map _json)
+      : this(
+          auditConfigs: _json.containsKey('auditConfigs')
+              ? (_json['auditConfigs'] as core.List)
+                  .map<AuditConfig>((value) => AuditConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          bindings: _json.containsKey('bindings')
+              ? (_json['bindings'] as core.List)
+                  .map<Binding>((value) => Binding.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (auditConfigs != null)
@@ -3955,25 +4111,28 @@ class PublicKey {
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
   core.String? protectionLevel;
 
-  PublicKey();
+  PublicKey({
+    this.algorithm,
+    this.name,
+    this.pem,
+    this.pemCrc32c,
+    this.protectionLevel,
+  });
 
-  PublicKey.fromJson(core.Map _json) {
-    if (_json.containsKey('algorithm')) {
-      algorithm = _json['algorithm'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('pem')) {
-      pem = _json['pem'] as core.String;
-    }
-    if (_json.containsKey('pemCrc32c')) {
-      pemCrc32c = _json['pemCrc32c'] as core.String;
-    }
-    if (_json.containsKey('protectionLevel')) {
-      protectionLevel = _json['protectionLevel'] as core.String;
-    }
-  }
+  PublicKey.fromJson(core.Map _json)
+      : this(
+          algorithm: _json.containsKey('algorithm')
+              ? _json['algorithm'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          pem: _json.containsKey('pem') ? _json['pem'] as core.String : null,
+          pemCrc32c: _json.containsKey('pemCrc32c')
+              ? _json['pemCrc32c'] as core.String
+              : null,
+          protectionLevel: _json.containsKey('protectionLevel')
+              ? _json['protectionLevel'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (algorithm != null) 'algorithm': algorithm!,
@@ -4010,17 +4169,21 @@ class SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  SetIamPolicyRequest();
+  SetIamPolicyRequest({
+    this.policy,
+    this.updateMask,
+  });
 
-  SetIamPolicyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(
-          _json['policy'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'] as core.String;
-    }
-  }
+  SetIamPolicyRequest.fromJson(core.Map _json)
+      : this(
+          policy: _json.containsKey('policy')
+              ? Policy.fromJson(
+                  _json['policy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: _json.containsKey('updateMask')
+              ? _json['updateMask'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (policy != null) 'policy': policy!.toJson(),
@@ -4037,15 +4200,18 @@ class TestIamPermissionsRequest {
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String>? permissions;
 
-  TestIamPermissionsRequest();
+  TestIamPermissionsRequest({
+    this.permissions,
+  });
 
-  TestIamPermissionsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  TestIamPermissionsRequest.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
@@ -4058,15 +4224,18 @@ class TestIamPermissionsResponse {
   /// allowed.
   core.List<core.String>? permissions;
 
-  TestIamPermissionsResponse();
+  TestIamPermissionsResponse({
+    this.permissions,
+  });
 
-  TestIamPermissionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  TestIamPermissionsResponse.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
@@ -4080,13 +4249,16 @@ class UpdateCryptoKeyPrimaryVersionRequest {
   /// Required.
   core.String? cryptoKeyVersionId;
 
-  UpdateCryptoKeyPrimaryVersionRequest();
+  UpdateCryptoKeyPrimaryVersionRequest({
+    this.cryptoKeyVersionId,
+  });
 
-  UpdateCryptoKeyPrimaryVersionRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('cryptoKeyVersionId')) {
-      cryptoKeyVersionId = _json['cryptoKeyVersionId'] as core.String;
-    }
-  }
+  UpdateCryptoKeyPrimaryVersionRequest.fromJson(core.Map _json)
+      : this(
+          cryptoKeyVersionId: _json.containsKey('cryptoKeyVersionId')
+              ? _json['cryptoKeyVersionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cryptoKeyVersionId != null)
@@ -4108,13 +4280,14 @@ class WrappingPublicKey {
   /// [Textual Encoding of Subject Public Key Info](https://tools.ietf.org/html/rfc7468#section-13).
   core.String? pem;
 
-  WrappingPublicKey();
+  WrappingPublicKey({
+    this.pem,
+  });
 
-  WrappingPublicKey.fromJson(core.Map _json) {
-    if (_json.containsKey('pem')) {
-      pem = _json['pem'] as core.String;
-    }
-  }
+  WrappingPublicKey.fromJson(core.Map _json)
+      : this(
+          pem: _json.containsKey('pem') ? _json['pem'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (pem != null) 'pem': pem!,

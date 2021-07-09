@@ -5379,29 +5379,35 @@ class AbuseReport {
   core.List<RelatedEntity>? relatedEntities;
   Entity? subject;
 
-  AbuseReport();
+  AbuseReport({
+    this.abuseTypes,
+    this.description,
+    this.relatedEntities,
+    this.subject,
+  });
 
-  AbuseReport.fromJson(core.Map _json) {
-    if (_json.containsKey('abuseTypes')) {
-      abuseTypes = (_json['abuseTypes'] as core.List)
-          .map<AbuseType>((value) =>
-              AbuseType.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('relatedEntities')) {
-      relatedEntities = (_json['relatedEntities'] as core.List)
-          .map<RelatedEntity>((value) => RelatedEntity.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('subject')) {
-      subject = Entity.fromJson(
-          _json['subject'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  AbuseReport.fromJson(core.Map _json)
+      : this(
+          abuseTypes: _json.containsKey('abuseTypes')
+              ? (_json['abuseTypes'] as core.List)
+                  .map<AbuseType>((value) => AbuseType.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          relatedEntities: _json.containsKey('relatedEntities')
+              ? (_json['relatedEntities'] as core.List)
+                  .map<RelatedEntity>((value) => RelatedEntity.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          subject: _json.containsKey('subject')
+              ? Entity.fromJson(
+                  _json['subject'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (abuseTypes != null)
@@ -5417,13 +5423,14 @@ class AbuseReport {
 class AbuseType {
   core.String? id;
 
-  AbuseType();
+  AbuseType({
+    this.id,
+  });
 
-  AbuseType.fromJson(core.Map _json) {
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-  }
+  AbuseType.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
@@ -5440,18 +5447,22 @@ class AccessPolicy {
   /// not apply.
   core.List<core.String>? exception;
 
-  AccessPolicy();
+  AccessPolicy({
+    this.allowed,
+    this.exception,
+  });
 
-  AccessPolicy.fromJson(core.Map _json) {
-    if (_json.containsKey('allowed')) {
-      allowed = _json['allowed'] as core.bool;
-    }
-    if (_json.containsKey('exception')) {
-      exception = (_json['exception'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  AccessPolicy.fromJson(core.Map _json)
+      : this(
+          allowed: _json.containsKey('allowed')
+              ? _json['allowed'] as core.bool
+              : null,
+          exception: _json.containsKey('exception')
+              ? (_json['exception'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowed != null) 'allowed': allowed!,
@@ -5490,27 +5501,28 @@ class Activity {
   /// the activity's type and group ID.
   ActivitySnippet? snippet;
 
-  Activity();
+  Activity({
+    this.contentDetails,
+    this.etag,
+    this.id,
+    this.kind,
+    this.snippet,
+  });
 
-  Activity.fromJson(core.Map _json) {
-    if (_json.containsKey('contentDetails')) {
-      contentDetails = ActivityContentDetails.fromJson(
-          _json['contentDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('snippet')) {
-      snippet = ActivitySnippet.fromJson(
-          _json['snippet'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Activity.fromJson(core.Map _json)
+      : this(
+          contentDetails: _json.containsKey('contentDetails')
+              ? ActivityContentDetails.fromJson(_json['contentDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          snippet: _json.containsKey('snippet')
+              ? ActivitySnippet.fromJson(
+                  _json['snippet'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentDetails != null) 'contentDetails': contentDetails!.toJson(),
@@ -5586,54 +5598,68 @@ class ActivityContentDetails {
   /// This property is only present if the snippet.type is upload.
   ActivityContentDetailsUpload? upload;
 
-  ActivityContentDetails();
+  ActivityContentDetails({
+    this.bulletin,
+    this.channelItem,
+    this.comment,
+    this.favorite,
+    this.like,
+    this.playlistItem,
+    this.promotedItem,
+    this.recommendation,
+    this.social,
+    this.subscription,
+    this.upload,
+  });
 
-  ActivityContentDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('bulletin')) {
-      bulletin = ActivityContentDetailsBulletin.fromJson(
-          _json['bulletin'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('channelItem')) {
-      channelItem = ActivityContentDetailsChannelItem.fromJson(
-          _json['channelItem'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('comment')) {
-      comment = ActivityContentDetailsComment.fromJson(
-          _json['comment'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('favorite')) {
-      favorite = ActivityContentDetailsFavorite.fromJson(
-          _json['favorite'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('like')) {
-      like = ActivityContentDetailsLike.fromJson(
-          _json['like'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('playlistItem')) {
-      playlistItem = ActivityContentDetailsPlaylistItem.fromJson(
-          _json['playlistItem'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('promotedItem')) {
-      promotedItem = ActivityContentDetailsPromotedItem.fromJson(
-          _json['promotedItem'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('recommendation')) {
-      recommendation = ActivityContentDetailsRecommendation.fromJson(
-          _json['recommendation'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('social')) {
-      social = ActivityContentDetailsSocial.fromJson(
-          _json['social'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('subscription')) {
-      subscription = ActivityContentDetailsSubscription.fromJson(
-          _json['subscription'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('upload')) {
-      upload = ActivityContentDetailsUpload.fromJson(
-          _json['upload'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ActivityContentDetails.fromJson(core.Map _json)
+      : this(
+          bulletin: _json.containsKey('bulletin')
+              ? ActivityContentDetailsBulletin.fromJson(
+                  _json['bulletin'] as core.Map<core.String, core.dynamic>)
+              : null,
+          channelItem: _json.containsKey('channelItem')
+              ? ActivityContentDetailsChannelItem.fromJson(
+                  _json['channelItem'] as core.Map<core.String, core.dynamic>)
+              : null,
+          comment: _json.containsKey('comment')
+              ? ActivityContentDetailsComment.fromJson(
+                  _json['comment'] as core.Map<core.String, core.dynamic>)
+              : null,
+          favorite: _json.containsKey('favorite')
+              ? ActivityContentDetailsFavorite.fromJson(
+                  _json['favorite'] as core.Map<core.String, core.dynamic>)
+              : null,
+          like: _json.containsKey('like')
+              ? ActivityContentDetailsLike.fromJson(
+                  _json['like'] as core.Map<core.String, core.dynamic>)
+              : null,
+          playlistItem: _json.containsKey('playlistItem')
+              ? ActivityContentDetailsPlaylistItem.fromJson(
+                  _json['playlistItem'] as core.Map<core.String, core.dynamic>)
+              : null,
+          promotedItem: _json.containsKey('promotedItem')
+              ? ActivityContentDetailsPromotedItem.fromJson(
+                  _json['promotedItem'] as core.Map<core.String, core.dynamic>)
+              : null,
+          recommendation: _json.containsKey('recommendation')
+              ? ActivityContentDetailsRecommendation.fromJson(
+                  _json['recommendation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          social: _json.containsKey('social')
+              ? ActivityContentDetailsSocial.fromJson(
+                  _json['social'] as core.Map<core.String, core.dynamic>)
+              : null,
+          subscription: _json.containsKey('subscription')
+              ? ActivityContentDetailsSubscription.fromJson(
+                  _json['subscription'] as core.Map<core.String, core.dynamic>)
+              : null,
+          upload: _json.containsKey('upload')
+              ? ActivityContentDetailsUpload.fromJson(
+                  _json['upload'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bulletin != null) 'bulletin': bulletin!.toJson(),
@@ -5658,14 +5684,17 @@ class ActivityContentDetailsBulletin {
   /// @mutable youtube.activities.insert
   ResourceId? resourceId;
 
-  ActivityContentDetailsBulletin();
+  ActivityContentDetailsBulletin({
+    this.resourceId,
+  });
 
-  ActivityContentDetailsBulletin.fromJson(core.Map _json) {
-    if (_json.containsKey('resourceId')) {
-      resourceId = ResourceId.fromJson(
-          _json['resourceId'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ActivityContentDetailsBulletin.fromJson(core.Map _json)
+      : this(
+          resourceId: _json.containsKey('resourceId')
+              ? ResourceId.fromJson(
+                  _json['resourceId'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceId != null) 'resourceId': resourceId!.toJson(),
@@ -5678,14 +5707,17 @@ class ActivityContentDetailsChannelItem {
   /// that was added to the channel.
   ResourceId? resourceId;
 
-  ActivityContentDetailsChannelItem();
+  ActivityContentDetailsChannelItem({
+    this.resourceId,
+  });
 
-  ActivityContentDetailsChannelItem.fromJson(core.Map _json) {
-    if (_json.containsKey('resourceId')) {
-      resourceId = ResourceId.fromJson(
-          _json['resourceId'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ActivityContentDetailsChannelItem.fromJson(core.Map _json)
+      : this(
+          resourceId: _json.containsKey('resourceId')
+              ? ResourceId.fromJson(
+                  _json['resourceId'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceId != null) 'resourceId': resourceId!.toJson(),
@@ -5698,14 +5730,17 @@ class ActivityContentDetailsComment {
   /// associated with the comment.
   ResourceId? resourceId;
 
-  ActivityContentDetailsComment();
+  ActivityContentDetailsComment({
+    this.resourceId,
+  });
 
-  ActivityContentDetailsComment.fromJson(core.Map _json) {
-    if (_json.containsKey('resourceId')) {
-      resourceId = ResourceId.fromJson(
-          _json['resourceId'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ActivityContentDetailsComment.fromJson(core.Map _json)
+      : this(
+          resourceId: _json.containsKey('resourceId')
+              ? ResourceId.fromJson(
+                  _json['resourceId'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceId != null) 'resourceId': resourceId!.toJson(),
@@ -5718,14 +5753,17 @@ class ActivityContentDetailsFavorite {
   /// that was marked as a favorite.
   ResourceId? resourceId;
 
-  ActivityContentDetailsFavorite();
+  ActivityContentDetailsFavorite({
+    this.resourceId,
+  });
 
-  ActivityContentDetailsFavorite.fromJson(core.Map _json) {
-    if (_json.containsKey('resourceId')) {
-      resourceId = ResourceId.fromJson(
-          _json['resourceId'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ActivityContentDetailsFavorite.fromJson(core.Map _json)
+      : this(
+          resourceId: _json.containsKey('resourceId')
+              ? ResourceId.fromJson(
+                  _json['resourceId'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceId != null) 'resourceId': resourceId!.toJson(),
@@ -5738,14 +5776,17 @@ class ActivityContentDetailsLike {
   /// resource.
   ResourceId? resourceId;
 
-  ActivityContentDetailsLike();
+  ActivityContentDetailsLike({
+    this.resourceId,
+  });
 
-  ActivityContentDetailsLike.fromJson(core.Map _json) {
-    if (_json.containsKey('resourceId')) {
-      resourceId = ResourceId.fromJson(
-          _json['resourceId'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ActivityContentDetailsLike.fromJson(core.Map _json)
+      : this(
+          resourceId: _json.containsKey('resourceId')
+              ? ResourceId.fromJson(
+                  _json['resourceId'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceId != null) 'resourceId': resourceId!.toJson(),
@@ -5764,20 +5805,25 @@ class ActivityContentDetailsPlaylistItem {
   /// added to the playlist.
   ResourceId? resourceId;
 
-  ActivityContentDetailsPlaylistItem();
+  ActivityContentDetailsPlaylistItem({
+    this.playlistId,
+    this.playlistItemId,
+    this.resourceId,
+  });
 
-  ActivityContentDetailsPlaylistItem.fromJson(core.Map _json) {
-    if (_json.containsKey('playlistId')) {
-      playlistId = _json['playlistId'] as core.String;
-    }
-    if (_json.containsKey('playlistItemId')) {
-      playlistItemId = _json['playlistItemId'] as core.String;
-    }
-    if (_json.containsKey('resourceId')) {
-      resourceId = ResourceId.fromJson(
-          _json['resourceId'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ActivityContentDetailsPlaylistItem.fromJson(core.Map _json)
+      : this(
+          playlistId: _json.containsKey('playlistId')
+              ? _json['playlistId'] as core.String
+              : null,
+          playlistItemId: _json.containsKey('playlistItemId')
+              ? _json['playlistItemId'] as core.String
+              : null,
+          resourceId: _json.containsKey('resourceId')
+              ? ResourceId.fromJson(
+                  _json['resourceId'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (playlistId != null) 'playlistId': playlistId!,
@@ -5833,44 +5879,55 @@ class ActivityContentDetailsPromotedItem {
   /// The ID that YouTube uses to uniquely identify the promoted video.
   core.String? videoId;
 
-  ActivityContentDetailsPromotedItem();
+  ActivityContentDetailsPromotedItem({
+    this.adTag,
+    this.clickTrackingUrl,
+    this.creativeViewUrl,
+    this.ctaType,
+    this.customCtaButtonText,
+    this.descriptionText,
+    this.destinationUrl,
+    this.forecastingUrl,
+    this.impressionUrl,
+    this.videoId,
+  });
 
-  ActivityContentDetailsPromotedItem.fromJson(core.Map _json) {
-    if (_json.containsKey('adTag')) {
-      adTag = _json['adTag'] as core.String;
-    }
-    if (_json.containsKey('clickTrackingUrl')) {
-      clickTrackingUrl = _json['clickTrackingUrl'] as core.String;
-    }
-    if (_json.containsKey('creativeViewUrl')) {
-      creativeViewUrl = _json['creativeViewUrl'] as core.String;
-    }
-    if (_json.containsKey('ctaType')) {
-      ctaType = _json['ctaType'] as core.String;
-    }
-    if (_json.containsKey('customCtaButtonText')) {
-      customCtaButtonText = _json['customCtaButtonText'] as core.String;
-    }
-    if (_json.containsKey('descriptionText')) {
-      descriptionText = _json['descriptionText'] as core.String;
-    }
-    if (_json.containsKey('destinationUrl')) {
-      destinationUrl = _json['destinationUrl'] as core.String;
-    }
-    if (_json.containsKey('forecastingUrl')) {
-      forecastingUrl = (_json['forecastingUrl'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('impressionUrl')) {
-      impressionUrl = (_json['impressionUrl'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('videoId')) {
-      videoId = _json['videoId'] as core.String;
-    }
-  }
+  ActivityContentDetailsPromotedItem.fromJson(core.Map _json)
+      : this(
+          adTag:
+              _json.containsKey('adTag') ? _json['adTag'] as core.String : null,
+          clickTrackingUrl: _json.containsKey('clickTrackingUrl')
+              ? _json['clickTrackingUrl'] as core.String
+              : null,
+          creativeViewUrl: _json.containsKey('creativeViewUrl')
+              ? _json['creativeViewUrl'] as core.String
+              : null,
+          ctaType: _json.containsKey('ctaType')
+              ? _json['ctaType'] as core.String
+              : null,
+          customCtaButtonText: _json.containsKey('customCtaButtonText')
+              ? _json['customCtaButtonText'] as core.String
+              : null,
+          descriptionText: _json.containsKey('descriptionText')
+              ? _json['descriptionText'] as core.String
+              : null,
+          destinationUrl: _json.containsKey('destinationUrl')
+              ? _json['destinationUrl'] as core.String
+              : null,
+          forecastingUrl: _json.containsKey('forecastingUrl')
+              ? (_json['forecastingUrl'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          impressionUrl: _json.containsKey('impressionUrl')
+              ? (_json['impressionUrl'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          videoId: _json.containsKey('videoId')
+              ? _json['videoId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (adTag != null) 'adTag': adTag!,
@@ -5905,21 +5962,26 @@ class ActivityContentDetailsRecommendation {
   /// caused the recommendation.
   ResourceId? seedResourceId;
 
-  ActivityContentDetailsRecommendation();
+  ActivityContentDetailsRecommendation({
+    this.reason,
+    this.resourceId,
+    this.seedResourceId,
+  });
 
-  ActivityContentDetailsRecommendation.fromJson(core.Map _json) {
-    if (_json.containsKey('reason')) {
-      reason = _json['reason'] as core.String;
-    }
-    if (_json.containsKey('resourceId')) {
-      resourceId = ResourceId.fromJson(
-          _json['resourceId'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('seedResourceId')) {
-      seedResourceId = ResourceId.fromJson(
-          _json['seedResourceId'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ActivityContentDetailsRecommendation.fromJson(core.Map _json)
+      : this(
+          reason: _json.containsKey('reason')
+              ? _json['reason'] as core.String
+              : null,
+          resourceId: _json.containsKey('resourceId')
+              ? ResourceId.fromJson(
+                  _json['resourceId'] as core.Map<core.String, core.dynamic>)
+              : null,
+          seedResourceId: _json.containsKey('seedResourceId')
+              ? ResourceId.fromJson(_json['seedResourceId']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (reason != null) 'reason': reason!,
@@ -5951,26 +6013,31 @@ class ActivityContentDetailsSocial {
   /// - "twitter"
   core.String? type;
 
-  ActivityContentDetailsSocial();
+  ActivityContentDetailsSocial({
+    this.author,
+    this.imageUrl,
+    this.referenceUrl,
+    this.resourceId,
+    this.type,
+  });
 
-  ActivityContentDetailsSocial.fromJson(core.Map _json) {
-    if (_json.containsKey('author')) {
-      author = _json['author'] as core.String;
-    }
-    if (_json.containsKey('imageUrl')) {
-      imageUrl = _json['imageUrl'] as core.String;
-    }
-    if (_json.containsKey('referenceUrl')) {
-      referenceUrl = _json['referenceUrl'] as core.String;
-    }
-    if (_json.containsKey('resourceId')) {
-      resourceId = ResourceId.fromJson(
-          _json['resourceId'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  ActivityContentDetailsSocial.fromJson(core.Map _json)
+      : this(
+          author: _json.containsKey('author')
+              ? _json['author'] as core.String
+              : null,
+          imageUrl: _json.containsKey('imageUrl')
+              ? _json['imageUrl'] as core.String
+              : null,
+          referenceUrl: _json.containsKey('referenceUrl')
+              ? _json['referenceUrl'] as core.String
+              : null,
+          resourceId: _json.containsKey('resourceId')
+              ? ResourceId.fromJson(
+                  _json['resourceId'] as core.Map<core.String, core.dynamic>)
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (author != null) 'author': author!,
@@ -5987,14 +6054,17 @@ class ActivityContentDetailsSubscription {
   /// that the user subscribed to.
   ResourceId? resourceId;
 
-  ActivityContentDetailsSubscription();
+  ActivityContentDetailsSubscription({
+    this.resourceId,
+  });
 
-  ActivityContentDetailsSubscription.fromJson(core.Map _json) {
-    if (_json.containsKey('resourceId')) {
-      resourceId = ResourceId.fromJson(
-          _json['resourceId'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ActivityContentDetailsSubscription.fromJson(core.Map _json)
+      : this(
+          resourceId: _json.containsKey('resourceId')
+              ? ResourceId.fromJson(
+                  _json['resourceId'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceId != null) 'resourceId': resourceId!.toJson(),
@@ -6006,13 +6076,16 @@ class ActivityContentDetailsUpload {
   /// The ID that YouTube uses to uniquely identify the uploaded video.
   core.String? videoId;
 
-  ActivityContentDetailsUpload();
+  ActivityContentDetailsUpload({
+    this.videoId,
+  });
 
-  ActivityContentDetailsUpload.fromJson(core.Map _json) {
-    if (_json.containsKey('videoId')) {
-      videoId = _json['videoId'] as core.String;
-    }
-  }
+  ActivityContentDetailsUpload.fromJson(core.Map _json)
+      : this(
+          videoId: _json.containsKey('videoId')
+              ? _json['videoId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (videoId != null) 'videoId': videoId!,
@@ -6047,42 +6120,49 @@ class ActivityListResponse {
   /// The visitorId identifies the visitor.
   core.String? visitorId;
 
-  ActivityListResponse();
+  ActivityListResponse({
+    this.etag,
+    this.eventId,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.pageInfo,
+    this.prevPageToken,
+    this.tokenPagination,
+    this.visitorId,
+  });
 
-  ActivityListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('eventId')) {
-      eventId = _json['eventId'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<Activity>((value) =>
-              Activity.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('pageInfo')) {
-      pageInfo = PageInfo.fromJson(
-          _json['pageInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('prevPageToken')) {
-      prevPageToken = _json['prevPageToken'] as core.String;
-    }
-    if (_json.containsKey('tokenPagination')) {
-      tokenPagination = TokenPagination.fromJson(
-          _json['tokenPagination'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('visitorId')) {
-      visitorId = _json['visitorId'] as core.String;
-    }
-  }
+  ActivityListResponse.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          eventId: _json.containsKey('eventId')
+              ? _json['eventId'] as core.String
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<Activity>((value) => Activity.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          pageInfo: _json.containsKey('pageInfo')
+              ? PageInfo.fromJson(
+                  _json['pageInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          prevPageToken: _json.containsKey('prevPageToken')
+              ? _json['prevPageToken'] as core.String
+              : null,
+          tokenPagination: _json.containsKey('tokenPagination')
+              ? TokenPagination.fromJson(_json['tokenPagination']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          visitorId: _json.containsKey('visitorId')
+              ? _json['visitorId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -6155,35 +6235,42 @@ class ActivitySnippet {
   /// - "promotedItem"
   core.String? type;
 
-  ActivitySnippet();
+  ActivitySnippet({
+    this.channelId,
+    this.channelTitle,
+    this.description,
+    this.groupId,
+    this.publishedAt,
+    this.thumbnails,
+    this.title,
+    this.type,
+  });
 
-  ActivitySnippet.fromJson(core.Map _json) {
-    if (_json.containsKey('channelId')) {
-      channelId = _json['channelId'] as core.String;
-    }
-    if (_json.containsKey('channelTitle')) {
-      channelTitle = _json['channelTitle'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('groupId')) {
-      groupId = _json['groupId'] as core.String;
-    }
-    if (_json.containsKey('publishedAt')) {
-      publishedAt = core.DateTime.parse(_json['publishedAt'] as core.String);
-    }
-    if (_json.containsKey('thumbnails')) {
-      thumbnails = ThumbnailDetails.fromJson(
-          _json['thumbnails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  ActivitySnippet.fromJson(core.Map _json)
+      : this(
+          channelId: _json.containsKey('channelId')
+              ? _json['channelId'] as core.String
+              : null,
+          channelTitle: _json.containsKey('channelTitle')
+              ? _json['channelTitle'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          groupId: _json.containsKey('groupId')
+              ? _json['groupId'] as core.String
+              : null,
+          publishedAt: _json.containsKey('publishedAt')
+              ? core.DateTime.parse(_json['publishedAt'] as core.String)
+              : null,
+          thumbnails: _json.containsKey('thumbnails')
+              ? ThumbnailDetails.fromJson(
+                  _json['thumbnails'] as core.Map<core.String, core.dynamic>)
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channelId != null) 'channelId': channelId!,
@@ -6215,23 +6302,23 @@ class Caption {
   /// The snippet object contains basic details about the caption.
   CaptionSnippet? snippet;
 
-  Caption();
+  Caption({
+    this.etag,
+    this.id,
+    this.kind,
+    this.snippet,
+  });
 
-  Caption.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('snippet')) {
-      snippet = CaptionSnippet.fromJson(
-          _json['snippet'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Caption.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          snippet: _json.containsKey('snippet')
+              ? CaptionSnippet.fromJson(
+                  _json['snippet'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -6259,28 +6346,31 @@ class CaptionListResponse {
   /// The visitorId identifies the visitor.
   core.String? visitorId;
 
-  CaptionListResponse();
+  CaptionListResponse({
+    this.etag,
+    this.eventId,
+    this.items,
+    this.kind,
+    this.visitorId,
+  });
 
-  CaptionListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('eventId')) {
-      eventId = _json['eventId'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<Caption>((value) =>
-              Caption.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('visitorId')) {
-      visitorId = _json['visitorId'] as core.String;
-    }
-  }
+  CaptionListResponse.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          eventId: _json.containsKey('eventId')
+              ? _json['eventId'] as core.String
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<Caption>((value) => Caption.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          visitorId: _json.containsKey('visitorId')
+              ? _json['visitorId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -6380,49 +6470,60 @@ class CaptionSnippet {
   /// @mutable youtube.captions.insert
   core.String? videoId;
 
-  CaptionSnippet();
+  CaptionSnippet({
+    this.audioTrackType,
+    this.failureReason,
+    this.isAutoSynced,
+    this.isCC,
+    this.isDraft,
+    this.isEasyReader,
+    this.isLarge,
+    this.language,
+    this.lastUpdated,
+    this.name,
+    this.status,
+    this.trackKind,
+    this.videoId,
+  });
 
-  CaptionSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey('audioTrackType')) {
-      audioTrackType = _json['audioTrackType'] as core.String;
-    }
-    if (_json.containsKey('failureReason')) {
-      failureReason = _json['failureReason'] as core.String;
-    }
-    if (_json.containsKey('isAutoSynced')) {
-      isAutoSynced = _json['isAutoSynced'] as core.bool;
-    }
-    if (_json.containsKey('isCC')) {
-      isCC = _json['isCC'] as core.bool;
-    }
-    if (_json.containsKey('isDraft')) {
-      isDraft = _json['isDraft'] as core.bool;
-    }
-    if (_json.containsKey('isEasyReader')) {
-      isEasyReader = _json['isEasyReader'] as core.bool;
-    }
-    if (_json.containsKey('isLarge')) {
-      isLarge = _json['isLarge'] as core.bool;
-    }
-    if (_json.containsKey('language')) {
-      language = _json['language'] as core.String;
-    }
-    if (_json.containsKey('lastUpdated')) {
-      lastUpdated = core.DateTime.parse(_json['lastUpdated'] as core.String);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-    if (_json.containsKey('trackKind')) {
-      trackKind = _json['trackKind'] as core.String;
-    }
-    if (_json.containsKey('videoId')) {
-      videoId = _json['videoId'] as core.String;
-    }
-  }
+  CaptionSnippet.fromJson(core.Map _json)
+      : this(
+          audioTrackType: _json.containsKey('audioTrackType')
+              ? _json['audioTrackType'] as core.String
+              : null,
+          failureReason: _json.containsKey('failureReason')
+              ? _json['failureReason'] as core.String
+              : null,
+          isAutoSynced: _json.containsKey('isAutoSynced')
+              ? _json['isAutoSynced'] as core.bool
+              : null,
+          isCC: _json.containsKey('isCC') ? _json['isCC'] as core.bool : null,
+          isDraft: _json.containsKey('isDraft')
+              ? _json['isDraft'] as core.bool
+              : null,
+          isEasyReader: _json.containsKey('isEasyReader')
+              ? _json['isEasyReader'] as core.bool
+              : null,
+          isLarge: _json.containsKey('isLarge')
+              ? _json['isLarge'] as core.bool
+              : null,
+          language: _json.containsKey('language')
+              ? _json['language'] as core.String
+              : null,
+          lastUpdated: _json.containsKey('lastUpdated')
+              ? core.DateTime.parse(_json['lastUpdated'] as core.String)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+          trackKind: _json.containsKey('trackKind')
+              ? _json['trackKind'] as core.String
+              : null,
+          videoId: _json.containsKey('videoId')
+              ? _json['videoId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (audioTrackType != null) 'audioTrackType': audioTrackType!,
@@ -6477,26 +6578,33 @@ class CdnSettings {
   /// - "variable"
   core.String? resolution;
 
-  CdnSettings();
+  CdnSettings({
+    this.format,
+    this.frameRate,
+    this.ingestionInfo,
+    this.ingestionType,
+    this.resolution,
+  });
 
-  CdnSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('format')) {
-      format = _json['format'] as core.String;
-    }
-    if (_json.containsKey('frameRate')) {
-      frameRate = _json['frameRate'] as core.String;
-    }
-    if (_json.containsKey('ingestionInfo')) {
-      ingestionInfo = IngestionInfo.fromJson(
-          _json['ingestionInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('ingestionType')) {
-      ingestionType = _json['ingestionType'] as core.String;
-    }
-    if (_json.containsKey('resolution')) {
-      resolution = _json['resolution'] as core.String;
-    }
-  }
+  CdnSettings.fromJson(core.Map _json)
+      : this(
+          format: _json.containsKey('format')
+              ? _json['format'] as core.String
+              : null,
+          frameRate: _json.containsKey('frameRate')
+              ? _json['frameRate'] as core.String
+              : null,
+          ingestionInfo: _json.containsKey('ingestionInfo')
+              ? IngestionInfo.fromJson(
+                  _json['ingestionInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          ingestionType: _json.containsKey('ingestionType')
+              ? _json['ingestionType'] as core.String
+              : null,
+          resolution: _json.containsKey('resolution')
+              ? _json['resolution'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (format != null) 'format': format!,
@@ -6558,65 +6666,74 @@ class Channel {
   /// associated with the channel.
   ChannelTopicDetails? topicDetails;
 
-  Channel();
+  Channel({
+    this.auditDetails,
+    this.brandingSettings,
+    this.contentDetails,
+    this.contentOwnerDetails,
+    this.conversionPings,
+    this.etag,
+    this.id,
+    this.kind,
+    this.localizations,
+    this.snippet,
+    this.statistics,
+    this.status,
+    this.topicDetails,
+  });
 
-  Channel.fromJson(core.Map _json) {
-    if (_json.containsKey('auditDetails')) {
-      auditDetails = ChannelAuditDetails.fromJson(
-          _json['auditDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('brandingSettings')) {
-      brandingSettings = ChannelBrandingSettings.fromJson(
-          _json['brandingSettings'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('contentDetails')) {
-      contentDetails = ChannelContentDetails.fromJson(
-          _json['contentDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('contentOwnerDetails')) {
-      contentOwnerDetails = ChannelContentOwnerDetails.fromJson(
-          _json['contentOwnerDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('conversionPings')) {
-      conversionPings = ChannelConversionPings.fromJson(
-          _json['conversionPings'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('localizations')) {
-      localizations =
-          (_json['localizations'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          ChannelLocalization.fromJson(
-              item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('snippet')) {
-      snippet = ChannelSnippet.fromJson(
-          _json['snippet'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('statistics')) {
-      statistics = ChannelStatistics.fromJson(
-          _json['statistics'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('status')) {
-      status = ChannelStatus.fromJson(
-          _json['status'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('topicDetails')) {
-      topicDetails = ChannelTopicDetails.fromJson(
-          _json['topicDetails'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Channel.fromJson(core.Map _json)
+      : this(
+          auditDetails: _json.containsKey('auditDetails')
+              ? ChannelAuditDetails.fromJson(
+                  _json['auditDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
+          brandingSettings: _json.containsKey('brandingSettings')
+              ? ChannelBrandingSettings.fromJson(_json['brandingSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          contentDetails: _json.containsKey('contentDetails')
+              ? ChannelContentDetails.fromJson(_json['contentDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          contentOwnerDetails: _json.containsKey('contentOwnerDetails')
+              ? ChannelContentOwnerDetails.fromJson(_json['contentOwnerDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          conversionPings: _json.containsKey('conversionPings')
+              ? ChannelConversionPings.fromJson(_json['conversionPings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          localizations: _json.containsKey('localizations')
+              ? (_json['localizations'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    ChannelLocalization.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          snippet: _json.containsKey('snippet')
+              ? ChannelSnippet.fromJson(
+                  _json['snippet'] as core.Map<core.String, core.dynamic>)
+              : null,
+          statistics: _json.containsKey('statistics')
+              ? ChannelStatistics.fromJson(
+                  _json['statistics'] as core.Map<core.String, core.dynamic>)
+              : null,
+          status: _json.containsKey('status')
+              ? ChannelStatus.fromJson(
+                  _json['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+          topicDetails: _json.containsKey('topicDetails')
+              ? ChannelTopicDetails.fromJson(
+                  _json['topicDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (auditDetails != null) 'auditDetails': auditDetails!.toJson(),
@@ -6652,22 +6769,27 @@ class ChannelAuditDetails {
   /// Whether or not the channel has any copyright strikes.
   core.bool? copyrightStrikesGoodStanding;
 
-  ChannelAuditDetails();
+  ChannelAuditDetails({
+    this.communityGuidelinesGoodStanding,
+    this.contentIdClaimsGoodStanding,
+    this.copyrightStrikesGoodStanding,
+  });
 
-  ChannelAuditDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('communityGuidelinesGoodStanding')) {
-      communityGuidelinesGoodStanding =
-          _json['communityGuidelinesGoodStanding'] as core.bool;
-    }
-    if (_json.containsKey('contentIdClaimsGoodStanding')) {
-      contentIdClaimsGoodStanding =
-          _json['contentIdClaimsGoodStanding'] as core.bool;
-    }
-    if (_json.containsKey('copyrightStrikesGoodStanding')) {
-      copyrightStrikesGoodStanding =
-          _json['copyrightStrikesGoodStanding'] as core.bool;
-    }
-  }
+  ChannelAuditDetails.fromJson(core.Map _json)
+      : this(
+          communityGuidelinesGoodStanding:
+              _json.containsKey('communityGuidelinesGoodStanding')
+                  ? _json['communityGuidelinesGoodStanding'] as core.bool
+                  : null,
+          contentIdClaimsGoodStanding:
+              _json.containsKey('contentIdClaimsGoodStanding')
+                  ? _json['contentIdClaimsGoodStanding'] as core.bool
+                  : null,
+          copyrightStrikesGoodStanding:
+              _json.containsKey('copyrightStrikesGoodStanding')
+                  ? _json['copyrightStrikesGoodStanding'] as core.bool
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (communityGuidelinesGoodStanding != null)
@@ -6691,19 +6813,18 @@ class ChannelBannerResource {
   /// The URL of this banner image.
   core.String? url;
 
-  ChannelBannerResource();
+  ChannelBannerResource({
+    this.etag,
+    this.kind,
+    this.url,
+  });
 
-  ChannelBannerResource.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  ChannelBannerResource.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -6726,28 +6847,34 @@ class ChannelBrandingSettings {
   /// Branding properties for the watch page.
   WatchSettings? watch;
 
-  ChannelBrandingSettings();
+  ChannelBrandingSettings({
+    this.channel,
+    this.hints,
+    this.image,
+    this.watch,
+  });
 
-  ChannelBrandingSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('channel')) {
-      channel = ChannelSettings.fromJson(
-          _json['channel'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('hints')) {
-      hints = (_json['hints'] as core.List)
-          .map<PropertyValue>((value) => PropertyValue.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('image')) {
-      image = ImageSettings.fromJson(
-          _json['image'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('watch')) {
-      watch = WatchSettings.fromJson(
-          _json['watch'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ChannelBrandingSettings.fromJson(core.Map _json)
+      : this(
+          channel: _json.containsKey('channel')
+              ? ChannelSettings.fromJson(
+                  _json['channel'] as core.Map<core.String, core.dynamic>)
+              : null,
+          hints: _json.containsKey('hints')
+              ? (_json['hints'] as core.List)
+                  .map<PropertyValue>((value) => PropertyValue.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          image: _json.containsKey('image')
+              ? ImageSettings.fromJson(
+                  _json['image'] as core.Map<core.String, core.dynamic>)
+              : null,
+          watch: _json.containsKey('watch')
+              ? WatchSettings.fromJson(
+                  _json['watch'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channel != null) 'channel': channel!.toJson(),
@@ -6789,25 +6916,31 @@ class ChannelContentDetailsRelatedPlaylists {
   /// items from that list.
   core.String? watchLater;
 
-  ChannelContentDetailsRelatedPlaylists();
+  ChannelContentDetailsRelatedPlaylists({
+    this.favorites,
+    this.likes,
+    this.uploads,
+    this.watchHistory,
+    this.watchLater,
+  });
 
-  ChannelContentDetailsRelatedPlaylists.fromJson(core.Map _json) {
-    if (_json.containsKey('favorites')) {
-      favorites = _json['favorites'] as core.String;
-    }
-    if (_json.containsKey('likes')) {
-      likes = _json['likes'] as core.String;
-    }
-    if (_json.containsKey('uploads')) {
-      uploads = _json['uploads'] as core.String;
-    }
-    if (_json.containsKey('watchHistory')) {
-      watchHistory = _json['watchHistory'] as core.String;
-    }
-    if (_json.containsKey('watchLater')) {
-      watchLater = _json['watchLater'] as core.String;
-    }
-  }
+  ChannelContentDetailsRelatedPlaylists.fromJson(core.Map _json)
+      : this(
+          favorites: _json.containsKey('favorites')
+              ? _json['favorites'] as core.String
+              : null,
+          likes:
+              _json.containsKey('likes') ? _json['likes'] as core.String : null,
+          uploads: _json.containsKey('uploads')
+              ? _json['uploads'] as core.String
+              : null,
+          watchHistory: _json.containsKey('watchHistory')
+              ? _json['watchHistory'] as core.String
+              : null,
+          watchLater: _json.containsKey('watchLater')
+              ? _json['watchLater'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (favorites != null) 'favorites': favorites!,
@@ -6822,14 +6955,18 @@ class ChannelContentDetailsRelatedPlaylists {
 class ChannelContentDetails {
   ChannelContentDetailsRelatedPlaylists? relatedPlaylists;
 
-  ChannelContentDetails();
+  ChannelContentDetails({
+    this.relatedPlaylists,
+  });
 
-  ChannelContentDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('relatedPlaylists')) {
-      relatedPlaylists = ChannelContentDetailsRelatedPlaylists.fromJson(
-          _json['relatedPlaylists'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ChannelContentDetails.fromJson(core.Map _json)
+      : this(
+          relatedPlaylists: _json.containsKey('relatedPlaylists')
+              ? ChannelContentDetailsRelatedPlaylists.fromJson(
+                  _json['relatedPlaylists']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (relatedPlaylists != null)
@@ -6846,16 +6983,20 @@ class ChannelContentOwnerDetails {
   /// The date and time when the channel was linked to the content owner.
   core.DateTime? timeLinked;
 
-  ChannelContentOwnerDetails();
+  ChannelContentOwnerDetails({
+    this.contentOwner,
+    this.timeLinked,
+  });
 
-  ChannelContentOwnerDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('contentOwner')) {
-      contentOwner = _json['contentOwner'] as core.String;
-    }
-    if (_json.containsKey('timeLinked')) {
-      timeLinked = core.DateTime.parse(_json['timeLinked'] as core.String);
-    }
-  }
+  ChannelContentOwnerDetails.fromJson(core.Map _json)
+      : this(
+          contentOwner: _json.containsKey('contentOwner')
+              ? _json['contentOwner'] as core.String
+              : null,
+          timeLinked: _json.containsKey('timeLinked')
+              ? core.DateTime.parse(_json['timeLinked'] as core.String)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentOwner != null) 'contentOwner': contentOwner!,
@@ -6885,16 +7026,20 @@ class ChannelConversionPing {
   /// ping.
   core.String? conversionUrl;
 
-  ChannelConversionPing();
+  ChannelConversionPing({
+    this.context,
+    this.conversionUrl,
+  });
 
-  ChannelConversionPing.fromJson(core.Map _json) {
-    if (_json.containsKey('context')) {
-      context = _json['context'] as core.String;
-    }
-    if (_json.containsKey('conversionUrl')) {
-      conversionUrl = _json['conversionUrl'] as core.String;
-    }
-  }
+  ChannelConversionPing.fromJson(core.Map _json)
+      : this(
+          context: _json.containsKey('context')
+              ? _json['context'] as core.String
+              : null,
+          conversionUrl: _json.containsKey('conversionUrl')
+              ? _json['conversionUrl'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (context != null) 'context': context!,
@@ -6911,16 +7056,20 @@ class ChannelConversionPings {
   /// identifying the ping.
   core.List<ChannelConversionPing>? pings;
 
-  ChannelConversionPings();
+  ChannelConversionPings({
+    this.pings,
+  });
 
-  ChannelConversionPings.fromJson(core.Map _json) {
-    if (_json.containsKey('pings')) {
-      pings = (_json['pings'] as core.List)
-          .map<ChannelConversionPing>((value) => ChannelConversionPing.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ChannelConversionPings.fromJson(core.Map _json)
+      : this(
+          pings: _json.containsKey('pings')
+              ? (_json['pings'] as core.List)
+                  .map<ChannelConversionPing>((value) =>
+                      ChannelConversionPing.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (pings != null)
@@ -6956,42 +7105,49 @@ class ChannelListResponse {
   /// The visitorId identifies the visitor.
   core.String? visitorId;
 
-  ChannelListResponse();
+  ChannelListResponse({
+    this.etag,
+    this.eventId,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.pageInfo,
+    this.prevPageToken,
+    this.tokenPagination,
+    this.visitorId,
+  });
 
-  ChannelListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('eventId')) {
-      eventId = _json['eventId'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<Channel>((value) =>
-              Channel.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('pageInfo')) {
-      pageInfo = PageInfo.fromJson(
-          _json['pageInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('prevPageToken')) {
-      prevPageToken = _json['prevPageToken'] as core.String;
-    }
-    if (_json.containsKey('tokenPagination')) {
-      tokenPagination = TokenPagination.fromJson(
-          _json['tokenPagination'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('visitorId')) {
-      visitorId = _json['visitorId'] as core.String;
-    }
-  }
+  ChannelListResponse.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          eventId: _json.containsKey('eventId')
+              ? _json['eventId'] as core.String
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<Channel>((value) => Channel.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          pageInfo: _json.containsKey('pageInfo')
+              ? PageInfo.fromJson(
+                  _json['pageInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          prevPageToken: _json.containsKey('prevPageToken')
+              ? _json['prevPageToken'] as core.String
+              : null,
+          tokenPagination: _json.containsKey('tokenPagination')
+              ? TokenPagination.fromJson(_json['tokenPagination']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          visitorId: _json.containsKey('visitorId')
+              ? _json['visitorId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -7016,16 +7172,19 @@ class ChannelLocalization {
   /// The localized strings for channel's title.
   core.String? title;
 
-  ChannelLocalization();
+  ChannelLocalization({
+    this.description,
+    this.title,
+  });
 
-  ChannelLocalization.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  ChannelLocalization.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -7046,22 +7205,28 @@ class ChannelProfileDetails {
   /// The channels's avatar URL.
   core.String? profileImageUrl;
 
-  ChannelProfileDetails();
+  ChannelProfileDetails({
+    this.channelId,
+    this.channelUrl,
+    this.displayName,
+    this.profileImageUrl,
+  });
 
-  ChannelProfileDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('channelId')) {
-      channelId = _json['channelId'] as core.String;
-    }
-    if (_json.containsKey('channelUrl')) {
-      channelUrl = _json['channelUrl'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('profileImageUrl')) {
-      profileImageUrl = _json['profileImageUrl'] as core.String;
-    }
-  }
+  ChannelProfileDetails.fromJson(core.Map _json)
+      : this(
+          channelId: _json.containsKey('channelId')
+              ? _json['channelId'] as core.String
+              : null,
+          channelUrl: _json.containsKey('channelUrl')
+              ? _json['channelUrl'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          profileImageUrl: _json.containsKey('profileImageUrl')
+              ? _json['profileImageUrl'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channelId != null) 'channelId': channelId!,
@@ -7098,41 +7263,44 @@ class ChannelSection {
   /// section.
   ChannelSectionTargeting? targeting;
 
-  ChannelSection();
+  ChannelSection({
+    this.contentDetails,
+    this.etag,
+    this.id,
+    this.kind,
+    this.localizations,
+    this.snippet,
+    this.targeting,
+  });
 
-  ChannelSection.fromJson(core.Map _json) {
-    if (_json.containsKey('contentDetails')) {
-      contentDetails = ChannelSectionContentDetails.fromJson(
-          _json['contentDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('localizations')) {
-      localizations =
-          (_json['localizations'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          ChannelSectionLocalization.fromJson(
-              item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('snippet')) {
-      snippet = ChannelSectionSnippet.fromJson(
-          _json['snippet'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('targeting')) {
-      targeting = ChannelSectionTargeting.fromJson(
-          _json['targeting'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ChannelSection.fromJson(core.Map _json)
+      : this(
+          contentDetails: _json.containsKey('contentDetails')
+              ? ChannelSectionContentDetails.fromJson(_json['contentDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          localizations: _json.containsKey('localizations')
+              ? (_json['localizations'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    ChannelSectionLocalization.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          snippet: _json.containsKey('snippet')
+              ? ChannelSectionSnippet.fromJson(
+                  _json['snippet'] as core.Map<core.String, core.dynamic>)
+              : null,
+          targeting: _json.containsKey('targeting')
+              ? ChannelSectionTargeting.fromJson(
+                  _json['targeting'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentDetails != null) 'contentDetails': contentDetails!.toJson(),
@@ -7157,20 +7325,24 @@ class ChannelSectionContentDetails {
   /// For singlePlaylist, only one playlistId is allowed.
   core.List<core.String>? playlists;
 
-  ChannelSectionContentDetails();
+  ChannelSectionContentDetails({
+    this.channels,
+    this.playlists,
+  });
 
-  ChannelSectionContentDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('channels')) {
-      channels = (_json['channels'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('playlists')) {
-      playlists = (_json['playlists'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  ChannelSectionContentDetails.fromJson(core.Map _json)
+      : this(
+          channels: _json.containsKey('channels')
+              ? (_json['channels'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          playlists: _json.containsKey('playlists')
+              ? (_json['playlists'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channels != null) 'channels': channels!,
@@ -7196,28 +7368,31 @@ class ChannelSectionListResponse {
   /// The visitorId identifies the visitor.
   core.String? visitorId;
 
-  ChannelSectionListResponse();
+  ChannelSectionListResponse({
+    this.etag,
+    this.eventId,
+    this.items,
+    this.kind,
+    this.visitorId,
+  });
 
-  ChannelSectionListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('eventId')) {
-      eventId = _json['eventId'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<ChannelSection>((value) => ChannelSection.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('visitorId')) {
-      visitorId = _json['visitorId'] as core.String;
-    }
-  }
+  ChannelSectionListResponse.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          eventId: _json.containsKey('eventId')
+              ? _json['eventId'] as core.String
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<ChannelSection>((value) => ChannelSection.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          visitorId: _json.containsKey('visitorId')
+              ? _json['visitorId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -7234,13 +7409,15 @@ class ChannelSectionLocalization {
   /// The localized strings for channel section's title.
   core.String? title;
 
-  ChannelSectionLocalization();
+  ChannelSectionLocalization({
+    this.title,
+  });
 
-  ChannelSectionLocalization.fromJson(core.Map _json) {
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  ChannelSectionLocalization.fromJson(core.Map _json)
+      : this(
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (title != null) 'title': title!,
@@ -7293,32 +7470,37 @@ class ChannelSectionSnippet {
   /// - "subscriptions"
   core.String? type;
 
-  ChannelSectionSnippet();
+  ChannelSectionSnippet({
+    this.channelId,
+    this.defaultLanguage,
+    this.localized,
+    this.position,
+    this.style,
+    this.title,
+    this.type,
+  });
 
-  ChannelSectionSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey('channelId')) {
-      channelId = _json['channelId'] as core.String;
-    }
-    if (_json.containsKey('defaultLanguage')) {
-      defaultLanguage = _json['defaultLanguage'] as core.String;
-    }
-    if (_json.containsKey('localized')) {
-      localized = ChannelSectionLocalization.fromJson(
-          _json['localized'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('position')) {
-      position = _json['position'] as core.int;
-    }
-    if (_json.containsKey('style')) {
-      style = _json['style'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  ChannelSectionSnippet.fromJson(core.Map _json)
+      : this(
+          channelId: _json.containsKey('channelId')
+              ? _json['channelId'] as core.String
+              : null,
+          defaultLanguage: _json.containsKey('defaultLanguage')
+              ? _json['defaultLanguage'] as core.String
+              : null,
+          localized: _json.containsKey('localized')
+              ? ChannelSectionLocalization.fromJson(
+                  _json['localized'] as core.Map<core.String, core.dynamic>)
+              : null,
+          position: _json.containsKey('position')
+              ? _json['position'] as core.int
+              : null,
+          style:
+              _json.containsKey('style') ? _json['style'] as core.String : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channelId != null) 'channelId': channelId!,
@@ -7342,25 +7524,30 @@ class ChannelSectionTargeting {
   /// The region the channel section is targeting.
   core.List<core.String>? regions;
 
-  ChannelSectionTargeting();
+  ChannelSectionTargeting({
+    this.countries,
+    this.languages,
+    this.regions,
+  });
 
-  ChannelSectionTargeting.fromJson(core.Map _json) {
-    if (_json.containsKey('countries')) {
-      countries = (_json['countries'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('languages')) {
-      languages = (_json['languages'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('regions')) {
-      regions = (_json['regions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  ChannelSectionTargeting.fromJson(core.Map _json)
+      : this(
+          countries: _json.containsKey('countries')
+              ? (_json['countries'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          languages: _json.containsKey('languages')
+              ? (_json['languages'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          regions: _json.containsKey('regions')
+              ? (_json['regions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (countries != null) 'countries': countries!,
@@ -7413,55 +7600,70 @@ class ChannelSettings {
   /// The trailer of the channel, for users that are not subscribers.
   core.String? unsubscribedTrailer;
 
-  ChannelSettings();
+  ChannelSettings({
+    this.country,
+    this.defaultLanguage,
+    this.defaultTab,
+    this.description,
+    this.featuredChannelsTitle,
+    this.featuredChannelsUrls,
+    this.keywords,
+    this.moderateComments,
+    this.profileColor,
+    this.showBrowseView,
+    this.showRelatedChannels,
+    this.title,
+    this.trackingAnalyticsAccountId,
+    this.unsubscribedTrailer,
+  });
 
-  ChannelSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('country')) {
-      country = _json['country'] as core.String;
-    }
-    if (_json.containsKey('defaultLanguage')) {
-      defaultLanguage = _json['defaultLanguage'] as core.String;
-    }
-    if (_json.containsKey('defaultTab')) {
-      defaultTab = _json['defaultTab'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('featuredChannelsTitle')) {
-      featuredChannelsTitle = _json['featuredChannelsTitle'] as core.String;
-    }
-    if (_json.containsKey('featuredChannelsUrls')) {
-      featuredChannelsUrls = (_json['featuredChannelsUrls'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('keywords')) {
-      keywords = _json['keywords'] as core.String;
-    }
-    if (_json.containsKey('moderateComments')) {
-      moderateComments = _json['moderateComments'] as core.bool;
-    }
-    if (_json.containsKey('profileColor')) {
-      profileColor = _json['profileColor'] as core.String;
-    }
-    if (_json.containsKey('showBrowseView')) {
-      showBrowseView = _json['showBrowseView'] as core.bool;
-    }
-    if (_json.containsKey('showRelatedChannels')) {
-      showRelatedChannels = _json['showRelatedChannels'] as core.bool;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-    if (_json.containsKey('trackingAnalyticsAccountId')) {
-      trackingAnalyticsAccountId =
-          _json['trackingAnalyticsAccountId'] as core.String;
-    }
-    if (_json.containsKey('unsubscribedTrailer')) {
-      unsubscribedTrailer = _json['unsubscribedTrailer'] as core.String;
-    }
-  }
+  ChannelSettings.fromJson(core.Map _json)
+      : this(
+          country: _json.containsKey('country')
+              ? _json['country'] as core.String
+              : null,
+          defaultLanguage: _json.containsKey('defaultLanguage')
+              ? _json['defaultLanguage'] as core.String
+              : null,
+          defaultTab: _json.containsKey('defaultTab')
+              ? _json['defaultTab'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          featuredChannelsTitle: _json.containsKey('featuredChannelsTitle')
+              ? _json['featuredChannelsTitle'] as core.String
+              : null,
+          featuredChannelsUrls: _json.containsKey('featuredChannelsUrls')
+              ? (_json['featuredChannelsUrls'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          keywords: _json.containsKey('keywords')
+              ? _json['keywords'] as core.String
+              : null,
+          moderateComments: _json.containsKey('moderateComments')
+              ? _json['moderateComments'] as core.bool
+              : null,
+          profileColor: _json.containsKey('profileColor')
+              ? _json['profileColor'] as core.String
+              : null,
+          showBrowseView: _json.containsKey('showBrowseView')
+              ? _json['showBrowseView'] as core.bool
+              : null,
+          showRelatedChannels: _json.containsKey('showRelatedChannels')
+              ? _json['showRelatedChannels'] as core.bool
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+          trackingAnalyticsAccountId:
+              _json.containsKey('trackingAnalyticsAccountId')
+                  ? _json['trackingAnalyticsAccountId'] as core.String
+                  : null,
+          unsubscribedTrailer: _json.containsKey('unsubscribedTrailer')
+              ? _json['unsubscribedTrailer'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (country != null) 'country': country!,
@@ -7524,36 +7726,45 @@ class ChannelSnippet {
   /// The channel's title.
   core.String? title;
 
-  ChannelSnippet();
+  ChannelSnippet({
+    this.country,
+    this.customUrl,
+    this.defaultLanguage,
+    this.description,
+    this.localized,
+    this.publishedAt,
+    this.thumbnails,
+    this.title,
+  });
 
-  ChannelSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey('country')) {
-      country = _json['country'] as core.String;
-    }
-    if (_json.containsKey('customUrl')) {
-      customUrl = _json['customUrl'] as core.String;
-    }
-    if (_json.containsKey('defaultLanguage')) {
-      defaultLanguage = _json['defaultLanguage'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('localized')) {
-      localized = ChannelLocalization.fromJson(
-          _json['localized'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('publishedAt')) {
-      publishedAt = core.DateTime.parse(_json['publishedAt'] as core.String);
-    }
-    if (_json.containsKey('thumbnails')) {
-      thumbnails = ThumbnailDetails.fromJson(
-          _json['thumbnails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  ChannelSnippet.fromJson(core.Map _json)
+      : this(
+          country: _json.containsKey('country')
+              ? _json['country'] as core.String
+              : null,
+          customUrl: _json.containsKey('customUrl')
+              ? _json['customUrl'] as core.String
+              : null,
+          defaultLanguage: _json.containsKey('defaultLanguage')
+              ? _json['defaultLanguage'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          localized: _json.containsKey('localized')
+              ? ChannelLocalization.fromJson(
+                  _json['localized'] as core.Map<core.String, core.dynamic>)
+              : null,
+          publishedAt: _json.containsKey('publishedAt')
+              ? core.DateTime.parse(_json['publishedAt'] as core.String)
+              : null,
+          thumbnails: _json.containsKey('thumbnails')
+              ? ThumbnailDetails.fromJson(
+                  _json['thumbnails'] as core.Map<core.String, core.dynamic>)
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (country != null) 'country': country!,
@@ -7585,25 +7796,32 @@ class ChannelStatistics {
   /// The number of times the channel has been viewed.
   core.String? viewCount;
 
-  ChannelStatistics();
+  ChannelStatistics({
+    this.commentCount,
+    this.hiddenSubscriberCount,
+    this.subscriberCount,
+    this.videoCount,
+    this.viewCount,
+  });
 
-  ChannelStatistics.fromJson(core.Map _json) {
-    if (_json.containsKey('commentCount')) {
-      commentCount = _json['commentCount'] as core.String;
-    }
-    if (_json.containsKey('hiddenSubscriberCount')) {
-      hiddenSubscriberCount = _json['hiddenSubscriberCount'] as core.bool;
-    }
-    if (_json.containsKey('subscriberCount')) {
-      subscriberCount = _json['subscriberCount'] as core.String;
-    }
-    if (_json.containsKey('videoCount')) {
-      videoCount = _json['videoCount'] as core.String;
-    }
-    if (_json.containsKey('viewCount')) {
-      viewCount = _json['viewCount'] as core.String;
-    }
-  }
+  ChannelStatistics.fromJson(core.Map _json)
+      : this(
+          commentCount: _json.containsKey('commentCount')
+              ? _json['commentCount'] as core.String
+              : null,
+          hiddenSubscriberCount: _json.containsKey('hiddenSubscriberCount')
+              ? _json['hiddenSubscriberCount'] as core.bool
+              : null,
+          subscriberCount: _json.containsKey('subscriberCount')
+              ? _json['subscriberCount'] as core.String
+              : null,
+          videoCount: _json.containsKey('videoCount')
+              ? _json['videoCount'] as core.String
+              : null,
+          viewCount: _json.containsKey('viewCount')
+              ? _json['viewCount'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (commentCount != null) 'commentCount': commentCount!,
@@ -7642,25 +7860,32 @@ class ChannelStatus {
   core.String? privacyStatus;
   core.bool? selfDeclaredMadeForKids;
 
-  ChannelStatus();
+  ChannelStatus({
+    this.isLinked,
+    this.longUploadsStatus,
+    this.madeForKids,
+    this.privacyStatus,
+    this.selfDeclaredMadeForKids,
+  });
 
-  ChannelStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('isLinked')) {
-      isLinked = _json['isLinked'] as core.bool;
-    }
-    if (_json.containsKey('longUploadsStatus')) {
-      longUploadsStatus = _json['longUploadsStatus'] as core.String;
-    }
-    if (_json.containsKey('madeForKids')) {
-      madeForKids = _json['madeForKids'] as core.bool;
-    }
-    if (_json.containsKey('privacyStatus')) {
-      privacyStatus = _json['privacyStatus'] as core.String;
-    }
-    if (_json.containsKey('selfDeclaredMadeForKids')) {
-      selfDeclaredMadeForKids = _json['selfDeclaredMadeForKids'] as core.bool;
-    }
-  }
+  ChannelStatus.fromJson(core.Map _json)
+      : this(
+          isLinked: _json.containsKey('isLinked')
+              ? _json['isLinked'] as core.bool
+              : null,
+          longUploadsStatus: _json.containsKey('longUploadsStatus')
+              ? _json['longUploadsStatus'] as core.String
+              : null,
+          madeForKids: _json.containsKey('madeForKids')
+              ? _json['madeForKids'] as core.bool
+              : null,
+          privacyStatus: _json.containsKey('privacyStatus')
+              ? _json['privacyStatus'] as core.String
+              : null,
+          selfDeclaredMadeForKids: _json.containsKey('selfDeclaredMadeForKids')
+              ? _json['selfDeclaredMadeForKids'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (isLinked != null) 'isLinked': isLinked!,
@@ -7681,16 +7906,20 @@ class ChannelToStoreLinkDetails {
   /// Landing page of the store.
   core.String? storeUrl;
 
-  ChannelToStoreLinkDetails();
+  ChannelToStoreLinkDetails({
+    this.storeName,
+    this.storeUrl,
+  });
 
-  ChannelToStoreLinkDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('storeName')) {
-      storeName = _json['storeName'] as core.String;
-    }
-    if (_json.containsKey('storeUrl')) {
-      storeUrl = _json['storeUrl'] as core.String;
-    }
-  }
+  ChannelToStoreLinkDetails.fromJson(core.Map _json)
+      : this(
+          storeName: _json.containsKey('storeName')
+              ? _json['storeName'] as core.String
+              : null,
+          storeUrl: _json.containsKey('storeUrl')
+              ? _json['storeUrl'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (storeName != null) 'storeName': storeName!,
@@ -7709,20 +7938,24 @@ class ChannelTopicDetails {
   /// API.
   core.List<core.String>? topicIds;
 
-  ChannelTopicDetails();
+  ChannelTopicDetails({
+    this.topicCategories,
+    this.topicIds,
+  });
 
-  ChannelTopicDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('topicCategories')) {
-      topicCategories = (_json['topicCategories'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('topicIds')) {
-      topicIds = (_json['topicIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  ChannelTopicDetails.fromJson(core.Map _json)
+      : this(
+          topicCategories: _json.containsKey('topicCategories')
+              ? (_json['topicCategories'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          topicIds: _json.containsKey('topicIds')
+              ? (_json['topicIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (topicCategories != null) 'topicCategories': topicCategories!,
@@ -7746,23 +7979,23 @@ class Comment {
   /// The snippet object contains basic details about the comment.
   CommentSnippet? snippet;
 
-  Comment();
+  Comment({
+    this.etag,
+    this.id,
+    this.kind,
+    this.snippet,
+  });
 
-  Comment.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('snippet')) {
-      snippet = CommentSnippet.fromJson(
-          _json['snippet'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Comment.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          snippet: _json.containsKey('snippet')
+              ? CommentSnippet.fromJson(
+                  _json['snippet'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -7798,39 +8031,45 @@ class CommentListResponse {
   /// The visitorId identifies the visitor.
   core.String? visitorId;
 
-  CommentListResponse();
+  CommentListResponse({
+    this.etag,
+    this.eventId,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.pageInfo,
+    this.tokenPagination,
+    this.visitorId,
+  });
 
-  CommentListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('eventId')) {
-      eventId = _json['eventId'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<Comment>((value) =>
-              Comment.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('pageInfo')) {
-      pageInfo = PageInfo.fromJson(
-          _json['pageInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('tokenPagination')) {
-      tokenPagination = TokenPagination.fromJson(
-          _json['tokenPagination'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('visitorId')) {
-      visitorId = _json['visitorId'] as core.String;
-    }
-  }
+  CommentListResponse.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          eventId: _json.containsKey('eventId')
+              ? _json['eventId'] as core.String
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<Comment>((value) => Comment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          pageInfo: _json.containsKey('pageInfo')
+              ? PageInfo.fromJson(
+                  _json['pageInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          tokenPagination: _json.containsKey('tokenPagination')
+              ? TokenPagination.fromJson(_json['tokenPagination']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          visitorId: _json.containsKey('visitorId')
+              ? _json['visitorId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -7917,56 +8156,73 @@ class CommentSnippet {
   /// - "dislike" : The entity is disliked.
   core.String? viewerRating;
 
-  CommentSnippet();
+  CommentSnippet({
+    this.authorChannelId,
+    this.authorChannelUrl,
+    this.authorDisplayName,
+    this.authorProfileImageUrl,
+    this.canRate,
+    this.channelId,
+    this.likeCount,
+    this.moderationStatus,
+    this.parentId,
+    this.publishedAt,
+    this.textDisplay,
+    this.textOriginal,
+    this.updatedAt,
+    this.videoId,
+    this.viewerRating,
+  });
 
-  CommentSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey('authorChannelId')) {
-      authorChannelId = CommentSnippetAuthorChannelId.fromJson(
-          _json['authorChannelId'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('authorChannelUrl')) {
-      authorChannelUrl = _json['authorChannelUrl'] as core.String;
-    }
-    if (_json.containsKey('authorDisplayName')) {
-      authorDisplayName = _json['authorDisplayName'] as core.String;
-    }
-    if (_json.containsKey('authorProfileImageUrl')) {
-      authorProfileImageUrl = _json['authorProfileImageUrl'] as core.String;
-    }
-    if (_json.containsKey('canRate')) {
-      canRate = _json['canRate'] as core.bool;
-    }
-    if (_json.containsKey('channelId')) {
-      channelId = _json['channelId'] as core.String;
-    }
-    if (_json.containsKey('likeCount')) {
-      likeCount = _json['likeCount'] as core.int;
-    }
-    if (_json.containsKey('moderationStatus')) {
-      moderationStatus = _json['moderationStatus'] as core.String;
-    }
-    if (_json.containsKey('parentId')) {
-      parentId = _json['parentId'] as core.String;
-    }
-    if (_json.containsKey('publishedAt')) {
-      publishedAt = core.DateTime.parse(_json['publishedAt'] as core.String);
-    }
-    if (_json.containsKey('textDisplay')) {
-      textDisplay = _json['textDisplay'] as core.String;
-    }
-    if (_json.containsKey('textOriginal')) {
-      textOriginal = _json['textOriginal'] as core.String;
-    }
-    if (_json.containsKey('updatedAt')) {
-      updatedAt = core.DateTime.parse(_json['updatedAt'] as core.String);
-    }
-    if (_json.containsKey('videoId')) {
-      videoId = _json['videoId'] as core.String;
-    }
-    if (_json.containsKey('viewerRating')) {
-      viewerRating = _json['viewerRating'] as core.String;
-    }
-  }
+  CommentSnippet.fromJson(core.Map _json)
+      : this(
+          authorChannelId: _json.containsKey('authorChannelId')
+              ? CommentSnippetAuthorChannelId.fromJson(_json['authorChannelId']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          authorChannelUrl: _json.containsKey('authorChannelUrl')
+              ? _json['authorChannelUrl'] as core.String
+              : null,
+          authorDisplayName: _json.containsKey('authorDisplayName')
+              ? _json['authorDisplayName'] as core.String
+              : null,
+          authorProfileImageUrl: _json.containsKey('authorProfileImageUrl')
+              ? _json['authorProfileImageUrl'] as core.String
+              : null,
+          canRate: _json.containsKey('canRate')
+              ? _json['canRate'] as core.bool
+              : null,
+          channelId: _json.containsKey('channelId')
+              ? _json['channelId'] as core.String
+              : null,
+          likeCount: _json.containsKey('likeCount')
+              ? _json['likeCount'] as core.int
+              : null,
+          moderationStatus: _json.containsKey('moderationStatus')
+              ? _json['moderationStatus'] as core.String
+              : null,
+          parentId: _json.containsKey('parentId')
+              ? _json['parentId'] as core.String
+              : null,
+          publishedAt: _json.containsKey('publishedAt')
+              ? core.DateTime.parse(_json['publishedAt'] as core.String)
+              : null,
+          textDisplay: _json.containsKey('textDisplay')
+              ? _json['textDisplay'] as core.String
+              : null,
+          textOriginal: _json.containsKey('textOriginal')
+              ? _json['textOriginal'] as core.String
+              : null,
+          updatedAt: _json.containsKey('updatedAt')
+              ? core.DateTime.parse(_json['updatedAt'] as core.String)
+              : null,
+          videoId: _json.containsKey('videoId')
+              ? _json['videoId'] as core.String
+              : null,
+          viewerRating: _json.containsKey('viewerRating')
+              ? _json['viewerRating'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authorChannelId != null)
@@ -7993,13 +8249,15 @@ class CommentSnippet {
 class CommentSnippetAuthorChannelId {
   core.String? value;
 
-  CommentSnippetAuthorChannelId();
+  CommentSnippetAuthorChannelId({
+    this.value,
+  });
 
-  CommentSnippetAuthorChannelId.fromJson(core.Map _json) {
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  CommentSnippetAuthorChannelId.fromJson(core.Map _json)
+      : this(
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (value != null) 'value': value!,
@@ -8030,27 +8288,28 @@ class CommentThread {
   /// also the top level comment.
   CommentThreadSnippet? snippet;
 
-  CommentThread();
+  CommentThread({
+    this.etag,
+    this.id,
+    this.kind,
+    this.replies,
+    this.snippet,
+  });
 
-  CommentThread.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('replies')) {
-      replies = CommentThreadReplies.fromJson(
-          _json['replies'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('snippet')) {
-      snippet = CommentThreadSnippet.fromJson(
-          _json['snippet'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  CommentThread.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          replies: _json.containsKey('replies')
+              ? CommentThreadReplies.fromJson(
+                  _json['replies'] as core.Map<core.String, core.dynamic>)
+              : null,
+          snippet: _json.containsKey('snippet')
+              ? CommentThreadSnippet.fromJson(
+                  _json['snippet'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -8087,39 +8346,45 @@ class CommentThreadListResponse {
   /// The visitorId identifies the visitor.
   core.String? visitorId;
 
-  CommentThreadListResponse();
+  CommentThreadListResponse({
+    this.etag,
+    this.eventId,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.pageInfo,
+    this.tokenPagination,
+    this.visitorId,
+  });
 
-  CommentThreadListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('eventId')) {
-      eventId = _json['eventId'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<CommentThread>((value) => CommentThread.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('pageInfo')) {
-      pageInfo = PageInfo.fromJson(
-          _json['pageInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('tokenPagination')) {
-      tokenPagination = TokenPagination.fromJson(
-          _json['tokenPagination'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('visitorId')) {
-      visitorId = _json['visitorId'] as core.String;
-    }
-  }
+  CommentThreadListResponse.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          eventId: _json.containsKey('eventId')
+              ? _json['eventId'] as core.String
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<CommentThread>((value) => CommentThread.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          pageInfo: _json.containsKey('pageInfo')
+              ? PageInfo.fromJson(
+                  _json['pageInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          tokenPagination: _json.containsKey('tokenPagination')
+              ? TokenPagination.fromJson(_json['tokenPagination']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          visitorId: _json.containsKey('visitorId')
+              ? _json['visitorId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -8144,16 +8409,19 @@ class CommentThreadReplies {
   /// replies.
   core.List<Comment>? comments;
 
-  CommentThreadReplies();
+  CommentThreadReplies({
+    this.comments,
+  });
 
-  CommentThreadReplies.fromJson(core.Map _json) {
-    if (_json.containsKey('comments')) {
-      comments = (_json['comments'] as core.List)
-          .map<Comment>((value) =>
-              Comment.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  CommentThreadReplies.fromJson(core.Map _json)
+      : this(
+          comments: _json.containsKey('comments')
+              ? (_json['comments'] as core.List)
+                  .map<Comment>((value) => Comment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (comments != null)
@@ -8190,29 +8458,37 @@ class CommentThreadSnippet {
   /// No video_id implies a channel discussion comment.
   core.String? videoId;
 
-  CommentThreadSnippet();
+  CommentThreadSnippet({
+    this.canReply,
+    this.channelId,
+    this.isPublic,
+    this.topLevelComment,
+    this.totalReplyCount,
+    this.videoId,
+  });
 
-  CommentThreadSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey('canReply')) {
-      canReply = _json['canReply'] as core.bool;
-    }
-    if (_json.containsKey('channelId')) {
-      channelId = _json['channelId'] as core.String;
-    }
-    if (_json.containsKey('isPublic')) {
-      isPublic = _json['isPublic'] as core.bool;
-    }
-    if (_json.containsKey('topLevelComment')) {
-      topLevelComment = Comment.fromJson(
-          _json['topLevelComment'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('totalReplyCount')) {
-      totalReplyCount = _json['totalReplyCount'] as core.int;
-    }
-    if (_json.containsKey('videoId')) {
-      videoId = _json['videoId'] as core.String;
-    }
-  }
+  CommentThreadSnippet.fromJson(core.Map _json)
+      : this(
+          canReply: _json.containsKey('canReply')
+              ? _json['canReply'] as core.bool
+              : null,
+          channelId: _json.containsKey('channelId')
+              ? _json['channelId'] as core.String
+              : null,
+          isPublic: _json.containsKey('isPublic')
+              ? _json['isPublic'] as core.bool
+              : null,
+          topLevelComment: _json.containsKey('topLevelComment')
+              ? Comment.fromJson(_json['topLevelComment']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          totalReplyCount: _json.containsKey('totalReplyCount')
+              ? _json['totalReplyCount'] as core.int
+              : null,
+          videoId: _json.containsKey('videoId')
+              ? _json['videoId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (canReply != null) 'canReply': canReply!,
@@ -9126,227 +9402,300 @@ class ContentRating {
   /// - "ytAgeRestricted"
   core.String? ytRating;
 
-  ContentRating();
+  ContentRating({
+    this.acbRating,
+    this.agcomRating,
+    this.anatelRating,
+    this.bbfcRating,
+    this.bfvcRating,
+    this.bmukkRating,
+    this.catvRating,
+    this.catvfrRating,
+    this.cbfcRating,
+    this.cccRating,
+    this.cceRating,
+    this.chfilmRating,
+    this.chvrsRating,
+    this.cicfRating,
+    this.cnaRating,
+    this.cncRating,
+    this.csaRating,
+    this.cscfRating,
+    this.czfilmRating,
+    this.djctqRating,
+    this.djctqRatingReasons,
+    this.ecbmctRating,
+    this.eefilmRating,
+    this.egfilmRating,
+    this.eirinRating,
+    this.fcbmRating,
+    this.fcoRating,
+    this.fmocRating,
+    this.fpbRating,
+    this.fpbRatingReasons,
+    this.fskRating,
+    this.grfilmRating,
+    this.icaaRating,
+    this.ifcoRating,
+    this.ilfilmRating,
+    this.incaaRating,
+    this.kfcbRating,
+    this.kijkwijzerRating,
+    this.kmrbRating,
+    this.lsfRating,
+    this.mccaaRating,
+    this.mccypRating,
+    this.mcstRating,
+    this.mdaRating,
+    this.medietilsynetRating,
+    this.mekuRating,
+    this.menaMpaaRating,
+    this.mibacRating,
+    this.mocRating,
+    this.moctwRating,
+    this.mpaaRating,
+    this.mpaatRating,
+    this.mtrcbRating,
+    this.nbcRating,
+    this.nbcplRating,
+    this.nfrcRating,
+    this.nfvcbRating,
+    this.nkclvRating,
+    this.nmcRating,
+    this.oflcRating,
+    this.pefilmRating,
+    this.rcnofRating,
+    this.resorteviolenciaRating,
+    this.rtcRating,
+    this.rteRating,
+    this.russiaRating,
+    this.skfilmRating,
+    this.smaisRating,
+    this.smsaRating,
+    this.tvpgRating,
+    this.ytRating,
+  });
 
-  ContentRating.fromJson(core.Map _json) {
-    if (_json.containsKey('acbRating')) {
-      acbRating = _json['acbRating'] as core.String;
-    }
-    if (_json.containsKey('agcomRating')) {
-      agcomRating = _json['agcomRating'] as core.String;
-    }
-    if (_json.containsKey('anatelRating')) {
-      anatelRating = _json['anatelRating'] as core.String;
-    }
-    if (_json.containsKey('bbfcRating')) {
-      bbfcRating = _json['bbfcRating'] as core.String;
-    }
-    if (_json.containsKey('bfvcRating')) {
-      bfvcRating = _json['bfvcRating'] as core.String;
-    }
-    if (_json.containsKey('bmukkRating')) {
-      bmukkRating = _json['bmukkRating'] as core.String;
-    }
-    if (_json.containsKey('catvRating')) {
-      catvRating = _json['catvRating'] as core.String;
-    }
-    if (_json.containsKey('catvfrRating')) {
-      catvfrRating = _json['catvfrRating'] as core.String;
-    }
-    if (_json.containsKey('cbfcRating')) {
-      cbfcRating = _json['cbfcRating'] as core.String;
-    }
-    if (_json.containsKey('cccRating')) {
-      cccRating = _json['cccRating'] as core.String;
-    }
-    if (_json.containsKey('cceRating')) {
-      cceRating = _json['cceRating'] as core.String;
-    }
-    if (_json.containsKey('chfilmRating')) {
-      chfilmRating = _json['chfilmRating'] as core.String;
-    }
-    if (_json.containsKey('chvrsRating')) {
-      chvrsRating = _json['chvrsRating'] as core.String;
-    }
-    if (_json.containsKey('cicfRating')) {
-      cicfRating = _json['cicfRating'] as core.String;
-    }
-    if (_json.containsKey('cnaRating')) {
-      cnaRating = _json['cnaRating'] as core.String;
-    }
-    if (_json.containsKey('cncRating')) {
-      cncRating = _json['cncRating'] as core.String;
-    }
-    if (_json.containsKey('csaRating')) {
-      csaRating = _json['csaRating'] as core.String;
-    }
-    if (_json.containsKey('cscfRating')) {
-      cscfRating = _json['cscfRating'] as core.String;
-    }
-    if (_json.containsKey('czfilmRating')) {
-      czfilmRating = _json['czfilmRating'] as core.String;
-    }
-    if (_json.containsKey('djctqRating')) {
-      djctqRating = _json['djctqRating'] as core.String;
-    }
-    if (_json.containsKey('djctqRatingReasons')) {
-      djctqRatingReasons = (_json['djctqRatingReasons'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('ecbmctRating')) {
-      ecbmctRating = _json['ecbmctRating'] as core.String;
-    }
-    if (_json.containsKey('eefilmRating')) {
-      eefilmRating = _json['eefilmRating'] as core.String;
-    }
-    if (_json.containsKey('egfilmRating')) {
-      egfilmRating = _json['egfilmRating'] as core.String;
-    }
-    if (_json.containsKey('eirinRating')) {
-      eirinRating = _json['eirinRating'] as core.String;
-    }
-    if (_json.containsKey('fcbmRating')) {
-      fcbmRating = _json['fcbmRating'] as core.String;
-    }
-    if (_json.containsKey('fcoRating')) {
-      fcoRating = _json['fcoRating'] as core.String;
-    }
-    if (_json.containsKey('fmocRating')) {
-      fmocRating = _json['fmocRating'] as core.String;
-    }
-    if (_json.containsKey('fpbRating')) {
-      fpbRating = _json['fpbRating'] as core.String;
-    }
-    if (_json.containsKey('fpbRatingReasons')) {
-      fpbRatingReasons = (_json['fpbRatingReasons'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('fskRating')) {
-      fskRating = _json['fskRating'] as core.String;
-    }
-    if (_json.containsKey('grfilmRating')) {
-      grfilmRating = _json['grfilmRating'] as core.String;
-    }
-    if (_json.containsKey('icaaRating')) {
-      icaaRating = _json['icaaRating'] as core.String;
-    }
-    if (_json.containsKey('ifcoRating')) {
-      ifcoRating = _json['ifcoRating'] as core.String;
-    }
-    if (_json.containsKey('ilfilmRating')) {
-      ilfilmRating = _json['ilfilmRating'] as core.String;
-    }
-    if (_json.containsKey('incaaRating')) {
-      incaaRating = _json['incaaRating'] as core.String;
-    }
-    if (_json.containsKey('kfcbRating')) {
-      kfcbRating = _json['kfcbRating'] as core.String;
-    }
-    if (_json.containsKey('kijkwijzerRating')) {
-      kijkwijzerRating = _json['kijkwijzerRating'] as core.String;
-    }
-    if (_json.containsKey('kmrbRating')) {
-      kmrbRating = _json['kmrbRating'] as core.String;
-    }
-    if (_json.containsKey('lsfRating')) {
-      lsfRating = _json['lsfRating'] as core.String;
-    }
-    if (_json.containsKey('mccaaRating')) {
-      mccaaRating = _json['mccaaRating'] as core.String;
-    }
-    if (_json.containsKey('mccypRating')) {
-      mccypRating = _json['mccypRating'] as core.String;
-    }
-    if (_json.containsKey('mcstRating')) {
-      mcstRating = _json['mcstRating'] as core.String;
-    }
-    if (_json.containsKey('mdaRating')) {
-      mdaRating = _json['mdaRating'] as core.String;
-    }
-    if (_json.containsKey('medietilsynetRating')) {
-      medietilsynetRating = _json['medietilsynetRating'] as core.String;
-    }
-    if (_json.containsKey('mekuRating')) {
-      mekuRating = _json['mekuRating'] as core.String;
-    }
-    if (_json.containsKey('menaMpaaRating')) {
-      menaMpaaRating = _json['menaMpaaRating'] as core.String;
-    }
-    if (_json.containsKey('mibacRating')) {
-      mibacRating = _json['mibacRating'] as core.String;
-    }
-    if (_json.containsKey('mocRating')) {
-      mocRating = _json['mocRating'] as core.String;
-    }
-    if (_json.containsKey('moctwRating')) {
-      moctwRating = _json['moctwRating'] as core.String;
-    }
-    if (_json.containsKey('mpaaRating')) {
-      mpaaRating = _json['mpaaRating'] as core.String;
-    }
-    if (_json.containsKey('mpaatRating')) {
-      mpaatRating = _json['mpaatRating'] as core.String;
-    }
-    if (_json.containsKey('mtrcbRating')) {
-      mtrcbRating = _json['mtrcbRating'] as core.String;
-    }
-    if (_json.containsKey('nbcRating')) {
-      nbcRating = _json['nbcRating'] as core.String;
-    }
-    if (_json.containsKey('nbcplRating')) {
-      nbcplRating = _json['nbcplRating'] as core.String;
-    }
-    if (_json.containsKey('nfrcRating')) {
-      nfrcRating = _json['nfrcRating'] as core.String;
-    }
-    if (_json.containsKey('nfvcbRating')) {
-      nfvcbRating = _json['nfvcbRating'] as core.String;
-    }
-    if (_json.containsKey('nkclvRating')) {
-      nkclvRating = _json['nkclvRating'] as core.String;
-    }
-    if (_json.containsKey('nmcRating')) {
-      nmcRating = _json['nmcRating'] as core.String;
-    }
-    if (_json.containsKey('oflcRating')) {
-      oflcRating = _json['oflcRating'] as core.String;
-    }
-    if (_json.containsKey('pefilmRating')) {
-      pefilmRating = _json['pefilmRating'] as core.String;
-    }
-    if (_json.containsKey('rcnofRating')) {
-      rcnofRating = _json['rcnofRating'] as core.String;
-    }
-    if (_json.containsKey('resorteviolenciaRating')) {
-      resorteviolenciaRating = _json['resorteviolenciaRating'] as core.String;
-    }
-    if (_json.containsKey('rtcRating')) {
-      rtcRating = _json['rtcRating'] as core.String;
-    }
-    if (_json.containsKey('rteRating')) {
-      rteRating = _json['rteRating'] as core.String;
-    }
-    if (_json.containsKey('russiaRating')) {
-      russiaRating = _json['russiaRating'] as core.String;
-    }
-    if (_json.containsKey('skfilmRating')) {
-      skfilmRating = _json['skfilmRating'] as core.String;
-    }
-    if (_json.containsKey('smaisRating')) {
-      smaisRating = _json['smaisRating'] as core.String;
-    }
-    if (_json.containsKey('smsaRating')) {
-      smsaRating = _json['smsaRating'] as core.String;
-    }
-    if (_json.containsKey('tvpgRating')) {
-      tvpgRating = _json['tvpgRating'] as core.String;
-    }
-    if (_json.containsKey('ytRating')) {
-      ytRating = _json['ytRating'] as core.String;
-    }
-  }
+  ContentRating.fromJson(core.Map _json)
+      : this(
+          acbRating: _json.containsKey('acbRating')
+              ? _json['acbRating'] as core.String
+              : null,
+          agcomRating: _json.containsKey('agcomRating')
+              ? _json['agcomRating'] as core.String
+              : null,
+          anatelRating: _json.containsKey('anatelRating')
+              ? _json['anatelRating'] as core.String
+              : null,
+          bbfcRating: _json.containsKey('bbfcRating')
+              ? _json['bbfcRating'] as core.String
+              : null,
+          bfvcRating: _json.containsKey('bfvcRating')
+              ? _json['bfvcRating'] as core.String
+              : null,
+          bmukkRating: _json.containsKey('bmukkRating')
+              ? _json['bmukkRating'] as core.String
+              : null,
+          catvRating: _json.containsKey('catvRating')
+              ? _json['catvRating'] as core.String
+              : null,
+          catvfrRating: _json.containsKey('catvfrRating')
+              ? _json['catvfrRating'] as core.String
+              : null,
+          cbfcRating: _json.containsKey('cbfcRating')
+              ? _json['cbfcRating'] as core.String
+              : null,
+          cccRating: _json.containsKey('cccRating')
+              ? _json['cccRating'] as core.String
+              : null,
+          cceRating: _json.containsKey('cceRating')
+              ? _json['cceRating'] as core.String
+              : null,
+          chfilmRating: _json.containsKey('chfilmRating')
+              ? _json['chfilmRating'] as core.String
+              : null,
+          chvrsRating: _json.containsKey('chvrsRating')
+              ? _json['chvrsRating'] as core.String
+              : null,
+          cicfRating: _json.containsKey('cicfRating')
+              ? _json['cicfRating'] as core.String
+              : null,
+          cnaRating: _json.containsKey('cnaRating')
+              ? _json['cnaRating'] as core.String
+              : null,
+          cncRating: _json.containsKey('cncRating')
+              ? _json['cncRating'] as core.String
+              : null,
+          csaRating: _json.containsKey('csaRating')
+              ? _json['csaRating'] as core.String
+              : null,
+          cscfRating: _json.containsKey('cscfRating')
+              ? _json['cscfRating'] as core.String
+              : null,
+          czfilmRating: _json.containsKey('czfilmRating')
+              ? _json['czfilmRating'] as core.String
+              : null,
+          djctqRating: _json.containsKey('djctqRating')
+              ? _json['djctqRating'] as core.String
+              : null,
+          djctqRatingReasons: _json.containsKey('djctqRatingReasons')
+              ? (_json['djctqRatingReasons'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          ecbmctRating: _json.containsKey('ecbmctRating')
+              ? _json['ecbmctRating'] as core.String
+              : null,
+          eefilmRating: _json.containsKey('eefilmRating')
+              ? _json['eefilmRating'] as core.String
+              : null,
+          egfilmRating: _json.containsKey('egfilmRating')
+              ? _json['egfilmRating'] as core.String
+              : null,
+          eirinRating: _json.containsKey('eirinRating')
+              ? _json['eirinRating'] as core.String
+              : null,
+          fcbmRating: _json.containsKey('fcbmRating')
+              ? _json['fcbmRating'] as core.String
+              : null,
+          fcoRating: _json.containsKey('fcoRating')
+              ? _json['fcoRating'] as core.String
+              : null,
+          fmocRating: _json.containsKey('fmocRating')
+              ? _json['fmocRating'] as core.String
+              : null,
+          fpbRating: _json.containsKey('fpbRating')
+              ? _json['fpbRating'] as core.String
+              : null,
+          fpbRatingReasons: _json.containsKey('fpbRatingReasons')
+              ? (_json['fpbRatingReasons'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          fskRating: _json.containsKey('fskRating')
+              ? _json['fskRating'] as core.String
+              : null,
+          grfilmRating: _json.containsKey('grfilmRating')
+              ? _json['grfilmRating'] as core.String
+              : null,
+          icaaRating: _json.containsKey('icaaRating')
+              ? _json['icaaRating'] as core.String
+              : null,
+          ifcoRating: _json.containsKey('ifcoRating')
+              ? _json['ifcoRating'] as core.String
+              : null,
+          ilfilmRating: _json.containsKey('ilfilmRating')
+              ? _json['ilfilmRating'] as core.String
+              : null,
+          incaaRating: _json.containsKey('incaaRating')
+              ? _json['incaaRating'] as core.String
+              : null,
+          kfcbRating: _json.containsKey('kfcbRating')
+              ? _json['kfcbRating'] as core.String
+              : null,
+          kijkwijzerRating: _json.containsKey('kijkwijzerRating')
+              ? _json['kijkwijzerRating'] as core.String
+              : null,
+          kmrbRating: _json.containsKey('kmrbRating')
+              ? _json['kmrbRating'] as core.String
+              : null,
+          lsfRating: _json.containsKey('lsfRating')
+              ? _json['lsfRating'] as core.String
+              : null,
+          mccaaRating: _json.containsKey('mccaaRating')
+              ? _json['mccaaRating'] as core.String
+              : null,
+          mccypRating: _json.containsKey('mccypRating')
+              ? _json['mccypRating'] as core.String
+              : null,
+          mcstRating: _json.containsKey('mcstRating')
+              ? _json['mcstRating'] as core.String
+              : null,
+          mdaRating: _json.containsKey('mdaRating')
+              ? _json['mdaRating'] as core.String
+              : null,
+          medietilsynetRating: _json.containsKey('medietilsynetRating')
+              ? _json['medietilsynetRating'] as core.String
+              : null,
+          mekuRating: _json.containsKey('mekuRating')
+              ? _json['mekuRating'] as core.String
+              : null,
+          menaMpaaRating: _json.containsKey('menaMpaaRating')
+              ? _json['menaMpaaRating'] as core.String
+              : null,
+          mibacRating: _json.containsKey('mibacRating')
+              ? _json['mibacRating'] as core.String
+              : null,
+          mocRating: _json.containsKey('mocRating')
+              ? _json['mocRating'] as core.String
+              : null,
+          moctwRating: _json.containsKey('moctwRating')
+              ? _json['moctwRating'] as core.String
+              : null,
+          mpaaRating: _json.containsKey('mpaaRating')
+              ? _json['mpaaRating'] as core.String
+              : null,
+          mpaatRating: _json.containsKey('mpaatRating')
+              ? _json['mpaatRating'] as core.String
+              : null,
+          mtrcbRating: _json.containsKey('mtrcbRating')
+              ? _json['mtrcbRating'] as core.String
+              : null,
+          nbcRating: _json.containsKey('nbcRating')
+              ? _json['nbcRating'] as core.String
+              : null,
+          nbcplRating: _json.containsKey('nbcplRating')
+              ? _json['nbcplRating'] as core.String
+              : null,
+          nfrcRating: _json.containsKey('nfrcRating')
+              ? _json['nfrcRating'] as core.String
+              : null,
+          nfvcbRating: _json.containsKey('nfvcbRating')
+              ? _json['nfvcbRating'] as core.String
+              : null,
+          nkclvRating: _json.containsKey('nkclvRating')
+              ? _json['nkclvRating'] as core.String
+              : null,
+          nmcRating: _json.containsKey('nmcRating')
+              ? _json['nmcRating'] as core.String
+              : null,
+          oflcRating: _json.containsKey('oflcRating')
+              ? _json['oflcRating'] as core.String
+              : null,
+          pefilmRating: _json.containsKey('pefilmRating')
+              ? _json['pefilmRating'] as core.String
+              : null,
+          rcnofRating: _json.containsKey('rcnofRating')
+              ? _json['rcnofRating'] as core.String
+              : null,
+          resorteviolenciaRating: _json.containsKey('resorteviolenciaRating')
+              ? _json['resorteviolenciaRating'] as core.String
+              : null,
+          rtcRating: _json.containsKey('rtcRating')
+              ? _json['rtcRating'] as core.String
+              : null,
+          rteRating: _json.containsKey('rteRating')
+              ? _json['rteRating'] as core.String
+              : null,
+          russiaRating: _json.containsKey('russiaRating')
+              ? _json['russiaRating'] as core.String
+              : null,
+          skfilmRating: _json.containsKey('skfilmRating')
+              ? _json['skfilmRating'] as core.String
+              : null,
+          smaisRating: _json.containsKey('smaisRating')
+              ? _json['smaisRating'] as core.String
+              : null,
+          smsaRating: _json.containsKey('smsaRating')
+              ? _json['smsaRating'] as core.String
+              : null,
+          tvpgRating: _json.containsKey('tvpgRating')
+              ? _json['tvpgRating'] as core.String
+              : null,
+          ytRating: _json.containsKey('ytRating')
+              ? _json['ytRating'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (acbRating != null) 'acbRating': acbRating!,
@@ -9431,19 +9780,20 @@ class Entity {
   core.String? typeId;
   core.String? url;
 
-  Entity();
+  Entity({
+    this.id,
+    this.typeId,
+    this.url,
+  });
 
-  Entity.fromJson(core.Map _json) {
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('typeId')) {
-      typeId = _json['typeId'] as core.String;
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  Entity.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          typeId: _json.containsKey('typeId')
+              ? _json['typeId'] as core.String
+              : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
@@ -9463,19 +9813,24 @@ class GeoPoint {
   /// Longitude in degrees.
   core.double? longitude;
 
-  GeoPoint();
+  GeoPoint({
+    this.altitude,
+    this.latitude,
+    this.longitude,
+  });
 
-  GeoPoint.fromJson(core.Map _json) {
-    if (_json.containsKey('altitude')) {
-      altitude = (_json['altitude'] as core.num).toDouble();
-    }
-    if (_json.containsKey('latitude')) {
-      latitude = (_json['latitude'] as core.num).toDouble();
-    }
-    if (_json.containsKey('longitude')) {
-      longitude = (_json['longitude'] as core.num).toDouble();
-    }
-  }
+  GeoPoint.fromJson(core.Map _json)
+      : this(
+          altitude: _json.containsKey('altitude')
+              ? (_json['altitude'] as core.num).toDouble()
+              : null,
+          latitude: _json.containsKey('latitude')
+              ? (_json['latitude'] as core.num).toDouble()
+              : null,
+          longitude: _json.containsKey('longitude')
+              ? (_json['longitude'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (altitude != null) 'altitude': altitude!,
@@ -9502,23 +9857,23 @@ class I18nLanguage {
   /// language code and human-readable name.
   I18nLanguageSnippet? snippet;
 
-  I18nLanguage();
+  I18nLanguage({
+    this.etag,
+    this.id,
+    this.kind,
+    this.snippet,
+  });
 
-  I18nLanguage.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('snippet')) {
-      snippet = I18nLanguageSnippet.fromJson(
-          _json['snippet'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  I18nLanguage.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          snippet: _json.containsKey('snippet')
+              ? I18nLanguageSnippet.fromJson(
+                  _json['snippet'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -9549,28 +9904,31 @@ class I18nLanguageListResponse {
   /// The visitorId identifies the visitor.
   core.String? visitorId;
 
-  I18nLanguageListResponse();
+  I18nLanguageListResponse({
+    this.etag,
+    this.eventId,
+    this.items,
+    this.kind,
+    this.visitorId,
+  });
 
-  I18nLanguageListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('eventId')) {
-      eventId = _json['eventId'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<I18nLanguage>((value) => I18nLanguage.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('visitorId')) {
-      visitorId = _json['visitorId'] as core.String;
-    }
-  }
+  I18nLanguageListResponse.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          eventId: _json.containsKey('eventId')
+              ? _json['eventId'] as core.String
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<I18nLanguage>((value) => I18nLanguage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          visitorId: _json.containsKey('visitorId')
+              ? _json['visitorId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -9591,16 +9949,16 @@ class I18nLanguageSnippet {
   /// The human-readable name of the language in the language itself.
   core.String? name;
 
-  I18nLanguageSnippet();
+  I18nLanguageSnippet({
+    this.hl,
+    this.name,
+  });
 
-  I18nLanguageSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey('hl')) {
-      hl = _json['hl'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  I18nLanguageSnippet.fromJson(core.Map _json)
+      : this(
+          hl: _json.containsKey('hl') ? _json['hl'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (hl != null) 'hl': hl!,
@@ -9625,23 +9983,23 @@ class I18nRegion {
   /// region code and human-readable name.
   I18nRegionSnippet? snippet;
 
-  I18nRegion();
+  I18nRegion({
+    this.etag,
+    this.id,
+    this.kind,
+    this.snippet,
+  });
 
-  I18nRegion.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('snippet')) {
-      snippet = I18nRegionSnippet.fromJson(
-          _json['snippet'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  I18nRegion.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          snippet: _json.containsKey('snippet')
+              ? I18nRegionSnippet.fromJson(
+                  _json['snippet'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -9672,28 +10030,31 @@ class I18nRegionListResponse {
   /// The visitorId identifies the visitor.
   core.String? visitorId;
 
-  I18nRegionListResponse();
+  I18nRegionListResponse({
+    this.etag,
+    this.eventId,
+    this.items,
+    this.kind,
+    this.visitorId,
+  });
 
-  I18nRegionListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('eventId')) {
-      eventId = _json['eventId'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<I18nRegion>((value) =>
-              I18nRegion.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('visitorId')) {
-      visitorId = _json['visitorId'] as core.String;
-    }
-  }
+  I18nRegionListResponse.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          eventId: _json.containsKey('eventId')
+              ? _json['eventId'] as core.String
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<I18nRegion>((value) => I18nRegion.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          visitorId: _json.containsKey('visitorId')
+              ? _json['visitorId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -9714,16 +10075,16 @@ class I18nRegionSnippet {
   /// The human-readable name of the region.
   core.String? name;
 
-  I18nRegionSnippet();
+  I18nRegionSnippet({
+    this.gl,
+    this.name,
+  });
 
-  I18nRegionSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey('gl')) {
-      gl = _json['gl'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  I18nRegionSnippet.fromJson(core.Map _json)
+      : this(
+          gl: _json.containsKey('gl') ? _json['gl'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gl != null) 'gl': gl!,
@@ -9835,88 +10196,114 @@ class ImageSettings {
   core.String? trackingImageUrl;
   core.String? watchIconImageUrl;
 
-  ImageSettings();
+  ImageSettings({
+    this.backgroundImageUrl,
+    this.bannerExternalUrl,
+    this.bannerImageUrl,
+    this.bannerMobileExtraHdImageUrl,
+    this.bannerMobileHdImageUrl,
+    this.bannerMobileImageUrl,
+    this.bannerMobileLowImageUrl,
+    this.bannerMobileMediumHdImageUrl,
+    this.bannerTabletExtraHdImageUrl,
+    this.bannerTabletHdImageUrl,
+    this.bannerTabletImageUrl,
+    this.bannerTabletLowImageUrl,
+    this.bannerTvHighImageUrl,
+    this.bannerTvImageUrl,
+    this.bannerTvLowImageUrl,
+    this.bannerTvMediumImageUrl,
+    this.largeBrandedBannerImageImapScript,
+    this.largeBrandedBannerImageUrl,
+    this.smallBrandedBannerImageImapScript,
+    this.smallBrandedBannerImageUrl,
+    this.trackingImageUrl,
+    this.watchIconImageUrl,
+  });
 
-  ImageSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('backgroundImageUrl')) {
-      backgroundImageUrl = LocalizedProperty.fromJson(
-          _json['backgroundImageUrl'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('bannerExternalUrl')) {
-      bannerExternalUrl = _json['bannerExternalUrl'] as core.String;
-    }
-    if (_json.containsKey('bannerImageUrl')) {
-      bannerImageUrl = _json['bannerImageUrl'] as core.String;
-    }
-    if (_json.containsKey('bannerMobileExtraHdImageUrl')) {
-      bannerMobileExtraHdImageUrl =
-          _json['bannerMobileExtraHdImageUrl'] as core.String;
-    }
-    if (_json.containsKey('bannerMobileHdImageUrl')) {
-      bannerMobileHdImageUrl = _json['bannerMobileHdImageUrl'] as core.String;
-    }
-    if (_json.containsKey('bannerMobileImageUrl')) {
-      bannerMobileImageUrl = _json['bannerMobileImageUrl'] as core.String;
-    }
-    if (_json.containsKey('bannerMobileLowImageUrl')) {
-      bannerMobileLowImageUrl = _json['bannerMobileLowImageUrl'] as core.String;
-    }
-    if (_json.containsKey('bannerMobileMediumHdImageUrl')) {
-      bannerMobileMediumHdImageUrl =
-          _json['bannerMobileMediumHdImageUrl'] as core.String;
-    }
-    if (_json.containsKey('bannerTabletExtraHdImageUrl')) {
-      bannerTabletExtraHdImageUrl =
-          _json['bannerTabletExtraHdImageUrl'] as core.String;
-    }
-    if (_json.containsKey('bannerTabletHdImageUrl')) {
-      bannerTabletHdImageUrl = _json['bannerTabletHdImageUrl'] as core.String;
-    }
-    if (_json.containsKey('bannerTabletImageUrl')) {
-      bannerTabletImageUrl = _json['bannerTabletImageUrl'] as core.String;
-    }
-    if (_json.containsKey('bannerTabletLowImageUrl')) {
-      bannerTabletLowImageUrl = _json['bannerTabletLowImageUrl'] as core.String;
-    }
-    if (_json.containsKey('bannerTvHighImageUrl')) {
-      bannerTvHighImageUrl = _json['bannerTvHighImageUrl'] as core.String;
-    }
-    if (_json.containsKey('bannerTvImageUrl')) {
-      bannerTvImageUrl = _json['bannerTvImageUrl'] as core.String;
-    }
-    if (_json.containsKey('bannerTvLowImageUrl')) {
-      bannerTvLowImageUrl = _json['bannerTvLowImageUrl'] as core.String;
-    }
-    if (_json.containsKey('bannerTvMediumImageUrl')) {
-      bannerTvMediumImageUrl = _json['bannerTvMediumImageUrl'] as core.String;
-    }
-    if (_json.containsKey('largeBrandedBannerImageImapScript')) {
-      largeBrandedBannerImageImapScript = LocalizedProperty.fromJson(
-          _json['largeBrandedBannerImageImapScript']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('largeBrandedBannerImageUrl')) {
-      largeBrandedBannerImageUrl = LocalizedProperty.fromJson(
-          _json['largeBrandedBannerImageUrl']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('smallBrandedBannerImageImapScript')) {
-      smallBrandedBannerImageImapScript = LocalizedProperty.fromJson(
-          _json['smallBrandedBannerImageImapScript']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('smallBrandedBannerImageUrl')) {
-      smallBrandedBannerImageUrl = LocalizedProperty.fromJson(
-          _json['smallBrandedBannerImageUrl']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('trackingImageUrl')) {
-      trackingImageUrl = _json['trackingImageUrl'] as core.String;
-    }
-    if (_json.containsKey('watchIconImageUrl')) {
-      watchIconImageUrl = _json['watchIconImageUrl'] as core.String;
-    }
-  }
+  ImageSettings.fromJson(core.Map _json)
+      : this(
+          backgroundImageUrl: _json.containsKey('backgroundImageUrl')
+              ? LocalizedProperty.fromJson(_json['backgroundImageUrl']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          bannerExternalUrl: _json.containsKey('bannerExternalUrl')
+              ? _json['bannerExternalUrl'] as core.String
+              : null,
+          bannerImageUrl: _json.containsKey('bannerImageUrl')
+              ? _json['bannerImageUrl'] as core.String
+              : null,
+          bannerMobileExtraHdImageUrl:
+              _json.containsKey('bannerMobileExtraHdImageUrl')
+                  ? _json['bannerMobileExtraHdImageUrl'] as core.String
+                  : null,
+          bannerMobileHdImageUrl: _json.containsKey('bannerMobileHdImageUrl')
+              ? _json['bannerMobileHdImageUrl'] as core.String
+              : null,
+          bannerMobileImageUrl: _json.containsKey('bannerMobileImageUrl')
+              ? _json['bannerMobileImageUrl'] as core.String
+              : null,
+          bannerMobileLowImageUrl: _json.containsKey('bannerMobileLowImageUrl')
+              ? _json['bannerMobileLowImageUrl'] as core.String
+              : null,
+          bannerMobileMediumHdImageUrl:
+              _json.containsKey('bannerMobileMediumHdImageUrl')
+                  ? _json['bannerMobileMediumHdImageUrl'] as core.String
+                  : null,
+          bannerTabletExtraHdImageUrl:
+              _json.containsKey('bannerTabletExtraHdImageUrl')
+                  ? _json['bannerTabletExtraHdImageUrl'] as core.String
+                  : null,
+          bannerTabletHdImageUrl: _json.containsKey('bannerTabletHdImageUrl')
+              ? _json['bannerTabletHdImageUrl'] as core.String
+              : null,
+          bannerTabletImageUrl: _json.containsKey('bannerTabletImageUrl')
+              ? _json['bannerTabletImageUrl'] as core.String
+              : null,
+          bannerTabletLowImageUrl: _json.containsKey('bannerTabletLowImageUrl')
+              ? _json['bannerTabletLowImageUrl'] as core.String
+              : null,
+          bannerTvHighImageUrl: _json.containsKey('bannerTvHighImageUrl')
+              ? _json['bannerTvHighImageUrl'] as core.String
+              : null,
+          bannerTvImageUrl: _json.containsKey('bannerTvImageUrl')
+              ? _json['bannerTvImageUrl'] as core.String
+              : null,
+          bannerTvLowImageUrl: _json.containsKey('bannerTvLowImageUrl')
+              ? _json['bannerTvLowImageUrl'] as core.String
+              : null,
+          bannerTvMediumImageUrl: _json.containsKey('bannerTvMediumImageUrl')
+              ? _json['bannerTvMediumImageUrl'] as core.String
+              : null,
+          largeBrandedBannerImageImapScript:
+              _json.containsKey('largeBrandedBannerImageImapScript')
+                  ? LocalizedProperty.fromJson(
+                      _json['largeBrandedBannerImageImapScript']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          largeBrandedBannerImageUrl: _json
+                  .containsKey('largeBrandedBannerImageUrl')
+              ? LocalizedProperty.fromJson(_json['largeBrandedBannerImageUrl']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          smallBrandedBannerImageImapScript:
+              _json.containsKey('smallBrandedBannerImageImapScript')
+                  ? LocalizedProperty.fromJson(
+                      _json['smallBrandedBannerImageImapScript']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          smallBrandedBannerImageUrl: _json
+                  .containsKey('smallBrandedBannerImageUrl')
+              ? LocalizedProperty.fromJson(_json['smallBrandedBannerImageUrl']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          trackingImageUrl: _json.containsKey('trackingImageUrl')
+              ? _json['trackingImageUrl'] as core.String
+              : null,
+          watchIconImageUrl: _json.containsKey('watchIconImageUrl')
+              ? _json['watchIconImageUrl'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backgroundImageUrl != null)
@@ -9994,26 +10381,33 @@ class IngestionInfo {
   /// The HTTP or RTMP stream name that YouTube assigns to the video stream.
   core.String? streamName;
 
-  IngestionInfo();
+  IngestionInfo({
+    this.backupIngestionAddress,
+    this.ingestionAddress,
+    this.rtmpsBackupIngestionAddress,
+    this.rtmpsIngestionAddress,
+    this.streamName,
+  });
 
-  IngestionInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('backupIngestionAddress')) {
-      backupIngestionAddress = _json['backupIngestionAddress'] as core.String;
-    }
-    if (_json.containsKey('ingestionAddress')) {
-      ingestionAddress = _json['ingestionAddress'] as core.String;
-    }
-    if (_json.containsKey('rtmpsBackupIngestionAddress')) {
-      rtmpsBackupIngestionAddress =
-          _json['rtmpsBackupIngestionAddress'] as core.String;
-    }
-    if (_json.containsKey('rtmpsIngestionAddress')) {
-      rtmpsIngestionAddress = _json['rtmpsIngestionAddress'] as core.String;
-    }
-    if (_json.containsKey('streamName')) {
-      streamName = _json['streamName'] as core.String;
-    }
-  }
+  IngestionInfo.fromJson(core.Map _json)
+      : this(
+          backupIngestionAddress: _json.containsKey('backupIngestionAddress')
+              ? _json['backupIngestionAddress'] as core.String
+              : null,
+          ingestionAddress: _json.containsKey('ingestionAddress')
+              ? _json['ingestionAddress'] as core.String
+              : null,
+          rtmpsBackupIngestionAddress:
+              _json.containsKey('rtmpsBackupIngestionAddress')
+                  ? _json['rtmpsBackupIngestionAddress'] as core.String
+                  : null,
+          rtmpsIngestionAddress: _json.containsKey('rtmpsIngestionAddress')
+              ? _json['rtmpsIngestionAddress'] as core.String
+              : null,
+          streamName: _json.containsKey('streamName')
+              ? _json['streamName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backupIngestionAddress != null)
@@ -10058,27 +10452,34 @@ class InvideoBranding {
   /// The temporal position within the video where watermark will be displayed.
   InvideoTiming? timing;
 
-  InvideoBranding();
+  InvideoBranding({
+    this.imageBytes,
+    this.imageUrl,
+    this.position,
+    this.targetChannelId,
+    this.timing,
+  });
 
-  InvideoBranding.fromJson(core.Map _json) {
-    if (_json.containsKey('imageBytes')) {
-      imageBytes = _json['imageBytes'] as core.String;
-    }
-    if (_json.containsKey('imageUrl')) {
-      imageUrl = _json['imageUrl'] as core.String;
-    }
-    if (_json.containsKey('position')) {
-      position = InvideoPosition.fromJson(
-          _json['position'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('targetChannelId')) {
-      targetChannelId = _json['targetChannelId'] as core.String;
-    }
-    if (_json.containsKey('timing')) {
-      timing = InvideoTiming.fromJson(
-          _json['timing'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  InvideoBranding.fromJson(core.Map _json)
+      : this(
+          imageBytes: _json.containsKey('imageBytes')
+              ? _json['imageBytes'] as core.String
+              : null,
+          imageUrl: _json.containsKey('imageUrl')
+              ? _json['imageUrl'] as core.String
+              : null,
+          position: _json.containsKey('position')
+              ? InvideoPosition.fromJson(
+                  _json['position'] as core.Map<core.String, core.dynamic>)
+              : null,
+          targetChannelId: _json.containsKey('targetChannelId')
+              ? _json['targetChannelId'] as core.String
+              : null,
+          timing: _json.containsKey('timing')
+              ? InvideoTiming.fromJson(
+                  _json['timing'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (imageBytes != null) 'imageBytes': imageBytes!,
@@ -10106,16 +10507,18 @@ class InvideoPosition {
   /// - "corner"
   core.String? type;
 
-  InvideoPosition();
+  InvideoPosition({
+    this.cornerPosition,
+    this.type,
+  });
 
-  InvideoPosition.fromJson(core.Map _json) {
-    if (_json.containsKey('cornerPosition')) {
-      cornerPosition = _json['cornerPosition'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  InvideoPosition.fromJson(core.Map _json)
+      : this(
+          cornerPosition: _json.containsKey('cornerPosition')
+              ? _json['cornerPosition'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cornerPosition != null) 'cornerPosition': cornerPosition!,
@@ -10148,19 +10551,22 @@ class InvideoTiming {
   /// - "offsetFromEnd"
   core.String? type;
 
-  InvideoTiming();
+  InvideoTiming({
+    this.durationMs,
+    this.offsetMs,
+    this.type,
+  });
 
-  InvideoTiming.fromJson(core.Map _json) {
-    if (_json.containsKey('durationMs')) {
-      durationMs = _json['durationMs'] as core.String;
-    }
-    if (_json.containsKey('offsetMs')) {
-      offsetMs = _json['offsetMs'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  InvideoTiming.fromJson(core.Map _json)
+      : this(
+          durationMs: _json.containsKey('durationMs')
+              ? _json['durationMs'] as core.String
+              : null,
+          offsetMs: _json.containsKey('offsetMs')
+              ? _json['offsetMs'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (durationMs != null) 'durationMs': durationMs!,
@@ -10172,13 +10578,15 @@ class InvideoTiming {
 class LanguageTag {
   core.String? value;
 
-  LanguageTag();
+  LanguageTag({
+    this.value,
+  });
 
-  LanguageTag.fromJson(core.Map _json) {
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  LanguageTag.fromJson(core.Map _json)
+      : this(
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (value != null) 'value': value!,
@@ -10189,13 +10597,16 @@ class LevelDetails {
   /// The name that should be used when referring to this level.
   core.String? displayName;
 
-  LevelDetails();
+  LevelDetails({
+    this.displayName,
+  });
 
-  LevelDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-  }
+  LevelDetails.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -10236,35 +10647,38 @@ class LiveBroadcast {
   /// The status object contains information about the event's status.
   LiveBroadcastStatus? status;
 
-  LiveBroadcast();
+  LiveBroadcast({
+    this.contentDetails,
+    this.etag,
+    this.id,
+    this.kind,
+    this.snippet,
+    this.statistics,
+    this.status,
+  });
 
-  LiveBroadcast.fromJson(core.Map _json) {
-    if (_json.containsKey('contentDetails')) {
-      contentDetails = LiveBroadcastContentDetails.fromJson(
-          _json['contentDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('snippet')) {
-      snippet = LiveBroadcastSnippet.fromJson(
-          _json['snippet'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('statistics')) {
-      statistics = LiveBroadcastStatistics.fromJson(
-          _json['statistics'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('status')) {
-      status = LiveBroadcastStatus.fromJson(
-          _json['status'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  LiveBroadcast.fromJson(core.Map _json)
+      : this(
+          contentDetails: _json.containsKey('contentDetails')
+              ? LiveBroadcastContentDetails.fromJson(_json['contentDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          snippet: _json.containsKey('snippet')
+              ? LiveBroadcastSnippet.fromJson(
+                  _json['snippet'] as core.Map<core.String, core.dynamic>)
+              : null,
+          statistics: _json.containsKey('statistics')
+              ? LiveBroadcastStatistics.fromJson(
+                  _json['statistics'] as core.Map<core.String, core.dynamic>)
+              : null,
+          status: _json.containsKey('status')
+              ? LiveBroadcastStatus.fromJson(
+                  _json['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentDetails != null) 'contentDetails': contentDetails!.toJson(),
@@ -10411,63 +10825,81 @@ class LiveBroadcastContentDetails {
   /// - "topBottom"
   core.String? stereoLayout;
 
-  LiveBroadcastContentDetails();
+  LiveBroadcastContentDetails({
+    this.boundStreamId,
+    this.boundStreamLastUpdateTimeMs,
+    this.closedCaptionsType,
+    this.enableAutoStart,
+    this.enableAutoStop,
+    this.enableClosedCaptions,
+    this.enableContentEncryption,
+    this.enableDvr,
+    this.enableEmbed,
+    this.enableLowLatency,
+    this.latencyPreference,
+    this.mesh,
+    this.monitorStream,
+    this.projection,
+    this.recordFromStart,
+    this.startWithSlate,
+    this.stereoLayout,
+  });
 
-  LiveBroadcastContentDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('boundStreamId')) {
-      boundStreamId = _json['boundStreamId'] as core.String;
-    }
-    if (_json.containsKey('boundStreamLastUpdateTimeMs')) {
-      boundStreamLastUpdateTimeMs = core.DateTime.parse(
-          _json['boundStreamLastUpdateTimeMs'] as core.String);
-    }
-    if (_json.containsKey('closedCaptionsType')) {
-      closedCaptionsType = _json['closedCaptionsType'] as core.String;
-    }
-    if (_json.containsKey('enableAutoStart')) {
-      enableAutoStart = _json['enableAutoStart'] as core.bool;
-    }
-    if (_json.containsKey('enableAutoStop')) {
-      enableAutoStop = _json['enableAutoStop'] as core.bool;
-    }
-    if (_json.containsKey('enableClosedCaptions')) {
-      enableClosedCaptions = _json['enableClosedCaptions'] as core.bool;
-    }
-    if (_json.containsKey('enableContentEncryption')) {
-      enableContentEncryption = _json['enableContentEncryption'] as core.bool;
-    }
-    if (_json.containsKey('enableDvr')) {
-      enableDvr = _json['enableDvr'] as core.bool;
-    }
-    if (_json.containsKey('enableEmbed')) {
-      enableEmbed = _json['enableEmbed'] as core.bool;
-    }
-    if (_json.containsKey('enableLowLatency')) {
-      enableLowLatency = _json['enableLowLatency'] as core.bool;
-    }
-    if (_json.containsKey('latencyPreference')) {
-      latencyPreference = _json['latencyPreference'] as core.String;
-    }
-    if (_json.containsKey('mesh')) {
-      mesh = _json['mesh'] as core.String;
-    }
-    if (_json.containsKey('monitorStream')) {
-      monitorStream = MonitorStreamInfo.fromJson(
-          _json['monitorStream'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('projection')) {
-      projection = _json['projection'] as core.String;
-    }
-    if (_json.containsKey('recordFromStart')) {
-      recordFromStart = _json['recordFromStart'] as core.bool;
-    }
-    if (_json.containsKey('startWithSlate')) {
-      startWithSlate = _json['startWithSlate'] as core.bool;
-    }
-    if (_json.containsKey('stereoLayout')) {
-      stereoLayout = _json['stereoLayout'] as core.String;
-    }
-  }
+  LiveBroadcastContentDetails.fromJson(core.Map _json)
+      : this(
+          boundStreamId: _json.containsKey('boundStreamId')
+              ? _json['boundStreamId'] as core.String
+              : null,
+          boundStreamLastUpdateTimeMs:
+              _json.containsKey('boundStreamLastUpdateTimeMs')
+                  ? core.DateTime.parse(
+                      _json['boundStreamLastUpdateTimeMs'] as core.String)
+                  : null,
+          closedCaptionsType: _json.containsKey('closedCaptionsType')
+              ? _json['closedCaptionsType'] as core.String
+              : null,
+          enableAutoStart: _json.containsKey('enableAutoStart')
+              ? _json['enableAutoStart'] as core.bool
+              : null,
+          enableAutoStop: _json.containsKey('enableAutoStop')
+              ? _json['enableAutoStop'] as core.bool
+              : null,
+          enableClosedCaptions: _json.containsKey('enableClosedCaptions')
+              ? _json['enableClosedCaptions'] as core.bool
+              : null,
+          enableContentEncryption: _json.containsKey('enableContentEncryption')
+              ? _json['enableContentEncryption'] as core.bool
+              : null,
+          enableDvr: _json.containsKey('enableDvr')
+              ? _json['enableDvr'] as core.bool
+              : null,
+          enableEmbed: _json.containsKey('enableEmbed')
+              ? _json['enableEmbed'] as core.bool
+              : null,
+          enableLowLatency: _json.containsKey('enableLowLatency')
+              ? _json['enableLowLatency'] as core.bool
+              : null,
+          latencyPreference: _json.containsKey('latencyPreference')
+              ? _json['latencyPreference'] as core.String
+              : null,
+          mesh: _json.containsKey('mesh') ? _json['mesh'] as core.String : null,
+          monitorStream: _json.containsKey('monitorStream')
+              ? MonitorStreamInfo.fromJson(
+                  _json['monitorStream'] as core.Map<core.String, core.dynamic>)
+              : null,
+          projection: _json.containsKey('projection')
+              ? _json['projection'] as core.String
+              : null,
+          recordFromStart: _json.containsKey('recordFromStart')
+              ? _json['recordFromStart'] as core.bool
+              : null,
+          startWithSlate: _json.containsKey('startWithSlate')
+              ? _json['startWithSlate'] as core.bool
+              : null,
+          stereoLayout: _json.containsKey('stereoLayout')
+              ? _json['stereoLayout'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (boundStreamId != null) 'boundStreamId': boundStreamId!,
@@ -10525,42 +10957,49 @@ class LiveBroadcastListResponse {
   /// The visitorId identifies the visitor.
   core.String? visitorId;
 
-  LiveBroadcastListResponse();
+  LiveBroadcastListResponse({
+    this.etag,
+    this.eventId,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.pageInfo,
+    this.prevPageToken,
+    this.tokenPagination,
+    this.visitorId,
+  });
 
-  LiveBroadcastListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('eventId')) {
-      eventId = _json['eventId'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<LiveBroadcast>((value) => LiveBroadcast.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('pageInfo')) {
-      pageInfo = PageInfo.fromJson(
-          _json['pageInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('prevPageToken')) {
-      prevPageToken = _json['prevPageToken'] as core.String;
-    }
-    if (_json.containsKey('tokenPagination')) {
-      tokenPagination = TokenPagination.fromJson(
-          _json['tokenPagination'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('visitorId')) {
-      visitorId = _json['visitorId'] as core.String;
-    }
-  }
+  LiveBroadcastListResponse.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          eventId: _json.containsKey('eventId')
+              ? _json['eventId'] as core.String
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<LiveBroadcast>((value) => LiveBroadcast.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          pageInfo: _json.containsKey('pageInfo')
+              ? PageInfo.fromJson(
+                  _json['pageInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          prevPageToken: _json.containsKey('prevPageToken')
+              ? _json['prevPageToken'] as core.String
+              : null,
+          tokenPagination: _json.containsKey('tokenPagination')
+              ? TokenPagination.fromJson(_json['tokenPagination']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          visitorId: _json.containsKey('visitorId')
+              ? _json['visitorId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -10632,48 +11071,56 @@ class LiveBroadcastSnippet {
   /// field of the corresponding video resource.
   core.String? title;
 
-  LiveBroadcastSnippet();
+  LiveBroadcastSnippet({
+    this.actualEndTime,
+    this.actualStartTime,
+    this.channelId,
+    this.description,
+    this.isDefaultBroadcast,
+    this.liveChatId,
+    this.publishedAt,
+    this.scheduledEndTime,
+    this.scheduledStartTime,
+    this.thumbnails,
+    this.title,
+  });
 
-  LiveBroadcastSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey('actualEndTime')) {
-      actualEndTime =
-          core.DateTime.parse(_json['actualEndTime'] as core.String);
-    }
-    if (_json.containsKey('actualStartTime')) {
-      actualStartTime =
-          core.DateTime.parse(_json['actualStartTime'] as core.String);
-    }
-    if (_json.containsKey('channelId')) {
-      channelId = _json['channelId'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('isDefaultBroadcast')) {
-      isDefaultBroadcast = _json['isDefaultBroadcast'] as core.bool;
-    }
-    if (_json.containsKey('liveChatId')) {
-      liveChatId = _json['liveChatId'] as core.String;
-    }
-    if (_json.containsKey('publishedAt')) {
-      publishedAt = core.DateTime.parse(_json['publishedAt'] as core.String);
-    }
-    if (_json.containsKey('scheduledEndTime')) {
-      scheduledEndTime =
-          core.DateTime.parse(_json['scheduledEndTime'] as core.String);
-    }
-    if (_json.containsKey('scheduledStartTime')) {
-      scheduledStartTime =
-          core.DateTime.parse(_json['scheduledStartTime'] as core.String);
-    }
-    if (_json.containsKey('thumbnails')) {
-      thumbnails = ThumbnailDetails.fromJson(
-          _json['thumbnails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  LiveBroadcastSnippet.fromJson(core.Map _json)
+      : this(
+          actualEndTime: _json.containsKey('actualEndTime')
+              ? core.DateTime.parse(_json['actualEndTime'] as core.String)
+              : null,
+          actualStartTime: _json.containsKey('actualStartTime')
+              ? core.DateTime.parse(_json['actualStartTime'] as core.String)
+              : null,
+          channelId: _json.containsKey('channelId')
+              ? _json['channelId'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          isDefaultBroadcast: _json.containsKey('isDefaultBroadcast')
+              ? _json['isDefaultBroadcast'] as core.bool
+              : null,
+          liveChatId: _json.containsKey('liveChatId')
+              ? _json['liveChatId'] as core.String
+              : null,
+          publishedAt: _json.containsKey('publishedAt')
+              ? core.DateTime.parse(_json['publishedAt'] as core.String)
+              : null,
+          scheduledEndTime: _json.containsKey('scheduledEndTime')
+              ? core.DateTime.parse(_json['scheduledEndTime'] as core.String)
+              : null,
+          scheduledStartTime: _json.containsKey('scheduledStartTime')
+              ? core.DateTime.parse(_json['scheduledStartTime'] as core.String)
+              : null,
+          thumbnails: _json.containsKey('thumbnails')
+              ? ThumbnailDetails.fromJson(
+                  _json['thumbnails'] as core.Map<core.String, core.dynamic>)
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (actualEndTime != null)
@@ -10709,13 +11156,16 @@ class LiveBroadcastStatistics {
   /// completed live broadcast.
   core.String? totalChatCount;
 
-  LiveBroadcastStatistics();
+  LiveBroadcastStatistics({
+    this.totalChatCount,
+  });
 
-  LiveBroadcastStatistics.fromJson(core.Map _json) {
-    if (_json.containsKey('totalChatCount')) {
-      totalChatCount = _json['totalChatCount'] as core.String;
-    }
-  }
+  LiveBroadcastStatistics.fromJson(core.Map _json)
+      : this(
+          totalChatCount: _json.containsKey('totalChatCount')
+              ? _json['totalChatCount'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (totalChatCount != null) 'totalChatCount': totalChatCount!,
@@ -10781,28 +11231,36 @@ class LiveBroadcastStatus {
   /// kids only: go/live-cw-work.
   core.bool? selfDeclaredMadeForKids;
 
-  LiveBroadcastStatus();
+  LiveBroadcastStatus({
+    this.lifeCycleStatus,
+    this.liveBroadcastPriority,
+    this.madeForKids,
+    this.privacyStatus,
+    this.recordingStatus,
+    this.selfDeclaredMadeForKids,
+  });
 
-  LiveBroadcastStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('lifeCycleStatus')) {
-      lifeCycleStatus = _json['lifeCycleStatus'] as core.String;
-    }
-    if (_json.containsKey('liveBroadcastPriority')) {
-      liveBroadcastPriority = _json['liveBroadcastPriority'] as core.String;
-    }
-    if (_json.containsKey('madeForKids')) {
-      madeForKids = _json['madeForKids'] as core.bool;
-    }
-    if (_json.containsKey('privacyStatus')) {
-      privacyStatus = _json['privacyStatus'] as core.String;
-    }
-    if (_json.containsKey('recordingStatus')) {
-      recordingStatus = _json['recordingStatus'] as core.String;
-    }
-    if (_json.containsKey('selfDeclaredMadeForKids')) {
-      selfDeclaredMadeForKids = _json['selfDeclaredMadeForKids'] as core.bool;
-    }
-  }
+  LiveBroadcastStatus.fromJson(core.Map _json)
+      : this(
+          lifeCycleStatus: _json.containsKey('lifeCycleStatus')
+              ? _json['lifeCycleStatus'] as core.String
+              : null,
+          liveBroadcastPriority: _json.containsKey('liveBroadcastPriority')
+              ? _json['liveBroadcastPriority'] as core.String
+              : null,
+          madeForKids: _json.containsKey('madeForKids')
+              ? _json['madeForKids'] as core.bool
+              : null,
+          privacyStatus: _json.containsKey('privacyStatus')
+              ? _json['privacyStatus'] as core.String
+              : null,
+          recordingStatus: _json.containsKey('recordingStatus')
+              ? _json['recordingStatus'] as core.String
+              : null,
+          selfDeclaredMadeForKids: _json.containsKey('selfDeclaredMadeForKids')
+              ? _json['selfDeclaredMadeForKids'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (lifeCycleStatus != null) 'lifeCycleStatus': lifeCycleStatus!,
@@ -10832,23 +11290,23 @@ class LiveChatBan {
   /// The `snippet` object contains basic details about the ban.
   LiveChatBanSnippet? snippet;
 
-  LiveChatBan();
+  LiveChatBan({
+    this.etag,
+    this.id,
+    this.kind,
+    this.snippet,
+  });
 
-  LiveChatBan.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('snippet')) {
-      snippet = LiveChatBanSnippet.fromJson(
-          _json['snippet'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  LiveChatBan.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          snippet: _json.containsKey('snippet')
+              ? LiveChatBanSnippet.fromJson(
+                  _json['snippet'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -10873,23 +11331,27 @@ class LiveChatBanSnippet {
   /// - "temporary" : A temporary ban.
   core.String? type;
 
-  LiveChatBanSnippet();
+  LiveChatBanSnippet({
+    this.banDurationSeconds,
+    this.bannedUserDetails,
+    this.liveChatId,
+    this.type,
+  });
 
-  LiveChatBanSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey('banDurationSeconds')) {
-      banDurationSeconds = _json['banDurationSeconds'] as core.String;
-    }
-    if (_json.containsKey('bannedUserDetails')) {
-      bannedUserDetails = ChannelProfileDetails.fromJson(
-          _json['bannedUserDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('liveChatId')) {
-      liveChatId = _json['liveChatId'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  LiveChatBanSnippet.fromJson(core.Map _json)
+      : this(
+          banDurationSeconds: _json.containsKey('banDurationSeconds')
+              ? _json['banDurationSeconds'] as core.String
+              : null,
+          bannedUserDetails: _json.containsKey('bannedUserDetails')
+              ? ChannelProfileDetails.fromJson(_json['bannedUserDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          liveChatId: _json.containsKey('liveChatId')
+              ? _json['liveChatId'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (banDurationSeconds != null)
@@ -10914,22 +11376,28 @@ class LiveChatFanFundingEventDetails {
   /// The comment added by the user to this fan funding event.
   core.String? userComment;
 
-  LiveChatFanFundingEventDetails();
+  LiveChatFanFundingEventDetails({
+    this.amountDisplayString,
+    this.amountMicros,
+    this.currency,
+    this.userComment,
+  });
 
-  LiveChatFanFundingEventDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('amountDisplayString')) {
-      amountDisplayString = _json['amountDisplayString'] as core.String;
-    }
-    if (_json.containsKey('amountMicros')) {
-      amountMicros = _json['amountMicros'] as core.String;
-    }
-    if (_json.containsKey('currency')) {
-      currency = _json['currency'] as core.String;
-    }
-    if (_json.containsKey('userComment')) {
-      userComment = _json['userComment'] as core.String;
-    }
-  }
+  LiveChatFanFundingEventDetails.fromJson(core.Map _json)
+      : this(
+          amountDisplayString: _json.containsKey('amountDisplayString')
+              ? _json['amountDisplayString'] as core.String
+              : null,
+          amountMicros: _json.containsKey('amountMicros')
+              ? _json['amountMicros'] as core.String
+              : null,
+          currency: _json.containsKey('currency')
+              ? _json['currency'] as core.String
+              : null,
+          userComment: _json.containsKey('userComment')
+              ? _json['userComment'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (amountDisplayString != null)
@@ -10961,27 +11429,28 @@ class LiveChatMessage {
   /// The snippet object contains basic details about the message.
   LiveChatMessageSnippet? snippet;
 
-  LiveChatMessage();
+  LiveChatMessage({
+    this.authorDetails,
+    this.etag,
+    this.id,
+    this.kind,
+    this.snippet,
+  });
 
-  LiveChatMessage.fromJson(core.Map _json) {
-    if (_json.containsKey('authorDetails')) {
-      authorDetails = LiveChatMessageAuthorDetails.fromJson(
-          _json['authorDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('snippet')) {
-      snippet = LiveChatMessageSnippet.fromJson(
-          _json['snippet'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  LiveChatMessage.fromJson(core.Map _json)
+      : this(
+          authorDetails: _json.containsKey('authorDetails')
+              ? LiveChatMessageAuthorDetails.fromJson(
+                  _json['authorDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          snippet: _json.containsKey('snippet')
+              ? LiveChatMessageSnippet.fromJson(
+                  _json['snippet'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authorDetails != null) 'authorDetails': authorDetails!.toJson(),
@@ -11017,34 +11486,44 @@ class LiveChatMessageAuthorDetails {
   /// The channels's avatar URL.
   core.String? profileImageUrl;
 
-  LiveChatMessageAuthorDetails();
+  LiveChatMessageAuthorDetails({
+    this.channelId,
+    this.channelUrl,
+    this.displayName,
+    this.isChatModerator,
+    this.isChatOwner,
+    this.isChatSponsor,
+    this.isVerified,
+    this.profileImageUrl,
+  });
 
-  LiveChatMessageAuthorDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('channelId')) {
-      channelId = _json['channelId'] as core.String;
-    }
-    if (_json.containsKey('channelUrl')) {
-      channelUrl = _json['channelUrl'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('isChatModerator')) {
-      isChatModerator = _json['isChatModerator'] as core.bool;
-    }
-    if (_json.containsKey('isChatOwner')) {
-      isChatOwner = _json['isChatOwner'] as core.bool;
-    }
-    if (_json.containsKey('isChatSponsor')) {
-      isChatSponsor = _json['isChatSponsor'] as core.bool;
-    }
-    if (_json.containsKey('isVerified')) {
-      isVerified = _json['isVerified'] as core.bool;
-    }
-    if (_json.containsKey('profileImageUrl')) {
-      profileImageUrl = _json['profileImageUrl'] as core.String;
-    }
-  }
+  LiveChatMessageAuthorDetails.fromJson(core.Map _json)
+      : this(
+          channelId: _json.containsKey('channelId')
+              ? _json['channelId'] as core.String
+              : null,
+          channelUrl: _json.containsKey('channelUrl')
+              ? _json['channelUrl'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          isChatModerator: _json.containsKey('isChatModerator')
+              ? _json['isChatModerator'] as core.bool
+              : null,
+          isChatOwner: _json.containsKey('isChatOwner')
+              ? _json['isChatOwner'] as core.bool
+              : null,
+          isChatSponsor: _json.containsKey('isChatSponsor')
+              ? _json['isChatSponsor'] as core.bool
+              : null,
+          isVerified: _json.containsKey('isVerified')
+              ? _json['isVerified'] as core.bool
+              : null,
+          profileImageUrl: _json.containsKey('profileImageUrl')
+              ? _json['profileImageUrl'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channelId != null) 'channelId': channelId!,
@@ -11061,13 +11540,16 @@ class LiveChatMessageAuthorDetails {
 class LiveChatMessageDeletedDetails {
   core.String? deletedMessageId;
 
-  LiveChatMessageDeletedDetails();
+  LiveChatMessageDeletedDetails({
+    this.deletedMessageId,
+  });
 
-  LiveChatMessageDeletedDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('deletedMessageId')) {
-      deletedMessageId = _json['deletedMessageId'] as core.String;
-    }
-  }
+  LiveChatMessageDeletedDetails.fromJson(core.Map _json)
+      : this(
+          deletedMessageId: _json.containsKey('deletedMessageId')
+              ? _json['deletedMessageId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deletedMessageId != null) 'deletedMessageId': deletedMessageId!,
@@ -11101,45 +11583,53 @@ class LiveChatMessageListResponse {
   /// The visitorId identifies the visitor.
   core.String? visitorId;
 
-  LiveChatMessageListResponse();
+  LiveChatMessageListResponse({
+    this.etag,
+    this.eventId,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.offlineAt,
+    this.pageInfo,
+    this.pollingIntervalMillis,
+    this.tokenPagination,
+    this.visitorId,
+  });
 
-  LiveChatMessageListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('eventId')) {
-      eventId = _json['eventId'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<LiveChatMessage>((value) => LiveChatMessage.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('offlineAt')) {
-      offlineAt = core.DateTime.parse(_json['offlineAt'] as core.String);
-    }
-    if (_json.containsKey('pageInfo')) {
-      pageInfo = PageInfo.fromJson(
-          _json['pageInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('pollingIntervalMillis')) {
-      pollingIntervalMillis = _json['pollingIntervalMillis'] as core.int;
-    }
-    if (_json.containsKey('tokenPagination')) {
-      tokenPagination = TokenPagination.fromJson(
-          _json['tokenPagination'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('visitorId')) {
-      visitorId = _json['visitorId'] as core.String;
-    }
-  }
+  LiveChatMessageListResponse.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          eventId: _json.containsKey('eventId')
+              ? _json['eventId'] as core.String
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<LiveChatMessage>((value) => LiveChatMessage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          offlineAt: _json.containsKey('offlineAt')
+              ? core.DateTime.parse(_json['offlineAt'] as core.String)
+              : null,
+          pageInfo: _json.containsKey('pageInfo')
+              ? PageInfo.fromJson(
+                  _json['pageInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          pollingIntervalMillis: _json.containsKey('pollingIntervalMillis')
+              ? _json['pollingIntervalMillis'] as core.int
+              : null,
+          tokenPagination: _json.containsKey('tokenPagination')
+              ? TokenPagination.fromJson(_json['tokenPagination']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          visitorId: _json.containsKey('visitorId')
+              ? _json['visitorId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -11161,13 +11651,16 @@ class LiveChatMessageListResponse {
 class LiveChatMessageRetractedDetails {
   core.String? retractedMessageId;
 
-  LiveChatMessageRetractedDetails();
+  LiveChatMessageRetractedDetails({
+    this.retractedMessageId,
+  });
 
-  LiveChatMessageRetractedDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('retractedMessageId')) {
-      retractedMessageId = _json['retractedMessageId'] as core.String;
-    }
-  }
+  LiveChatMessageRetractedDetails.fromJson(core.Map _json)
+      : this(
+          retractedMessageId: _json.containsKey('retractedMessageId')
+              ? _json['retractedMessageId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (retractedMessageId != null)
@@ -11237,59 +11730,74 @@ class LiveChatMessageSnippet {
   core.String? type;
   LiveChatUserBannedMessageDetails? userBannedDetails;
 
-  LiveChatMessageSnippet();
+  LiveChatMessageSnippet({
+    this.authorChannelId,
+    this.displayMessage,
+    this.fanFundingEventDetails,
+    this.hasDisplayContent,
+    this.liveChatId,
+    this.messageDeletedDetails,
+    this.messageRetractedDetails,
+    this.publishedAt,
+    this.superChatDetails,
+    this.superStickerDetails,
+    this.textMessageDetails,
+    this.type,
+    this.userBannedDetails,
+  });
 
-  LiveChatMessageSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey('authorChannelId')) {
-      authorChannelId = _json['authorChannelId'] as core.String;
-    }
-    if (_json.containsKey('displayMessage')) {
-      displayMessage = _json['displayMessage'] as core.String;
-    }
-    if (_json.containsKey('fanFundingEventDetails')) {
-      fanFundingEventDetails = LiveChatFanFundingEventDetails.fromJson(
-          _json['fanFundingEventDetails']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('hasDisplayContent')) {
-      hasDisplayContent = _json['hasDisplayContent'] as core.bool;
-    }
-    if (_json.containsKey('liveChatId')) {
-      liveChatId = _json['liveChatId'] as core.String;
-    }
-    if (_json.containsKey('messageDeletedDetails')) {
-      messageDeletedDetails = LiveChatMessageDeletedDetails.fromJson(
-          _json['messageDeletedDetails']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('messageRetractedDetails')) {
-      messageRetractedDetails = LiveChatMessageRetractedDetails.fromJson(
-          _json['messageRetractedDetails']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('publishedAt')) {
-      publishedAt = core.DateTime.parse(_json['publishedAt'] as core.String);
-    }
-    if (_json.containsKey('superChatDetails')) {
-      superChatDetails = LiveChatSuperChatDetails.fromJson(
-          _json['superChatDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('superStickerDetails')) {
-      superStickerDetails = LiveChatSuperStickerDetails.fromJson(
-          _json['superStickerDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('textMessageDetails')) {
-      textMessageDetails = LiveChatTextMessageDetails.fromJson(
-          _json['textMessageDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('userBannedDetails')) {
-      userBannedDetails = LiveChatUserBannedMessageDetails.fromJson(
-          _json['userBannedDetails'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  LiveChatMessageSnippet.fromJson(core.Map _json)
+      : this(
+          authorChannelId: _json.containsKey('authorChannelId')
+              ? _json['authorChannelId'] as core.String
+              : null,
+          displayMessage: _json.containsKey('displayMessage')
+              ? _json['displayMessage'] as core.String
+              : null,
+          fanFundingEventDetails: _json.containsKey('fanFundingEventDetails')
+              ? LiveChatFanFundingEventDetails.fromJson(
+                  _json['fanFundingEventDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          hasDisplayContent: _json.containsKey('hasDisplayContent')
+              ? _json['hasDisplayContent'] as core.bool
+              : null,
+          liveChatId: _json.containsKey('liveChatId')
+              ? _json['liveChatId'] as core.String
+              : null,
+          messageDeletedDetails: _json.containsKey('messageDeletedDetails')
+              ? LiveChatMessageDeletedDetails.fromJson(
+                  _json['messageDeletedDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          messageRetractedDetails: _json.containsKey('messageRetractedDetails')
+              ? LiveChatMessageRetractedDetails.fromJson(
+                  _json['messageRetractedDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          publishedAt: _json.containsKey('publishedAt')
+              ? core.DateTime.parse(_json['publishedAt'] as core.String)
+              : null,
+          superChatDetails: _json.containsKey('superChatDetails')
+              ? LiveChatSuperChatDetails.fromJson(_json['superChatDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          superStickerDetails: _json.containsKey('superStickerDetails')
+              ? LiveChatSuperStickerDetails.fromJson(
+                  _json['superStickerDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          textMessageDetails: _json.containsKey('textMessageDetails')
+              ? LiveChatTextMessageDetails.fromJson(_json['textMessageDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          userBannedDetails: _json.containsKey('userBannedDetails')
+              ? LiveChatUserBannedMessageDetails.fromJson(
+                  _json['userBannedDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authorChannelId != null) 'authorChannelId': authorChannelId!,
@@ -11335,23 +11843,23 @@ class LiveChatModerator {
   /// The snippet object contains basic details about the moderator.
   LiveChatModeratorSnippet? snippet;
 
-  LiveChatModerator();
+  LiveChatModerator({
+    this.etag,
+    this.id,
+    this.kind,
+    this.snippet,
+  });
 
-  LiveChatModerator.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('snippet')) {
-      snippet = LiveChatModeratorSnippet.fromJson(
-          _json['snippet'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  LiveChatModerator.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          snippet: _json.containsKey('snippet')
+              ? LiveChatModeratorSnippet.fromJson(
+                  _json['snippet'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -11391,42 +11899,49 @@ class LiveChatModeratorListResponse {
   /// The visitorId identifies the visitor.
   core.String? visitorId;
 
-  LiveChatModeratorListResponse();
+  LiveChatModeratorListResponse({
+    this.etag,
+    this.eventId,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.pageInfo,
+    this.prevPageToken,
+    this.tokenPagination,
+    this.visitorId,
+  });
 
-  LiveChatModeratorListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('eventId')) {
-      eventId = _json['eventId'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<LiveChatModerator>((value) => LiveChatModerator.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('pageInfo')) {
-      pageInfo = PageInfo.fromJson(
-          _json['pageInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('prevPageToken')) {
-      prevPageToken = _json['prevPageToken'] as core.String;
-    }
-    if (_json.containsKey('tokenPagination')) {
-      tokenPagination = TokenPagination.fromJson(
-          _json['tokenPagination'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('visitorId')) {
-      visitorId = _json['visitorId'] as core.String;
-    }
-  }
+  LiveChatModeratorListResponse.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          eventId: _json.containsKey('eventId')
+              ? _json['eventId'] as core.String
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<LiveChatModerator>((value) => LiveChatModerator.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          pageInfo: _json.containsKey('pageInfo')
+              ? PageInfo.fromJson(
+                  _json['pageInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          prevPageToken: _json.containsKey('prevPageToken')
+              ? _json['prevPageToken'] as core.String
+              : null,
+          tokenPagination: _json.containsKey('tokenPagination')
+              ? TokenPagination.fromJson(_json['tokenPagination']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          visitorId: _json.containsKey('visitorId')
+              ? _json['visitorId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -11450,17 +11965,21 @@ class LiveChatModeratorSnippet {
   /// Details about the moderator.
   ChannelProfileDetails? moderatorDetails;
 
-  LiveChatModeratorSnippet();
+  LiveChatModeratorSnippet({
+    this.liveChatId,
+    this.moderatorDetails,
+  });
 
-  LiveChatModeratorSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey('liveChatId')) {
-      liveChatId = _json['liveChatId'] as core.String;
-    }
-    if (_json.containsKey('moderatorDetails')) {
-      moderatorDetails = ChannelProfileDetails.fromJson(
-          _json['moderatorDetails'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  LiveChatModeratorSnippet.fromJson(core.Map _json)
+      : this(
+          liveChatId: _json.containsKey('liveChatId')
+              ? _json['liveChatId'] as core.String
+              : null,
+          moderatorDetails: _json.containsKey('moderatorDetails')
+              ? ChannelProfileDetails.fromJson(_json['moderatorDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (liveChatId != null) 'liveChatId': liveChatId!,
@@ -11487,25 +12006,30 @@ class LiveChatSuperChatDetails {
   /// The comment added by the user to this Super Chat event.
   core.String? userComment;
 
-  LiveChatSuperChatDetails();
+  LiveChatSuperChatDetails({
+    this.amountDisplayString,
+    this.amountMicros,
+    this.currency,
+    this.tier,
+    this.userComment,
+  });
 
-  LiveChatSuperChatDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('amountDisplayString')) {
-      amountDisplayString = _json['amountDisplayString'] as core.String;
-    }
-    if (_json.containsKey('amountMicros')) {
-      amountMicros = _json['amountMicros'] as core.String;
-    }
-    if (_json.containsKey('currency')) {
-      currency = _json['currency'] as core.String;
-    }
-    if (_json.containsKey('tier')) {
-      tier = _json['tier'] as core.int;
-    }
-    if (_json.containsKey('userComment')) {
-      userComment = _json['userComment'] as core.String;
-    }
-  }
+  LiveChatSuperChatDetails.fromJson(core.Map _json)
+      : this(
+          amountDisplayString: _json.containsKey('amountDisplayString')
+              ? _json['amountDisplayString'] as core.String
+              : null,
+          amountMicros: _json.containsKey('amountMicros')
+              ? _json['amountMicros'] as core.String
+              : null,
+          currency: _json.containsKey('currency')
+              ? _json['currency'] as core.String
+              : null,
+          tier: _json.containsKey('tier') ? _json['tier'] as core.int : null,
+          userComment: _json.containsKey('userComment')
+              ? _json['userComment'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (amountDisplayString != null)
@@ -11535,26 +12059,31 @@ class LiveChatSuperStickerDetails {
   /// Lower amounts belong to lower tiers. The lowest tier is 1.
   core.int? tier;
 
-  LiveChatSuperStickerDetails();
+  LiveChatSuperStickerDetails({
+    this.amountDisplayString,
+    this.amountMicros,
+    this.currency,
+    this.superStickerMetadata,
+    this.tier,
+  });
 
-  LiveChatSuperStickerDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('amountDisplayString')) {
-      amountDisplayString = _json['amountDisplayString'] as core.String;
-    }
-    if (_json.containsKey('amountMicros')) {
-      amountMicros = _json['amountMicros'] as core.String;
-    }
-    if (_json.containsKey('currency')) {
-      currency = _json['currency'] as core.String;
-    }
-    if (_json.containsKey('superStickerMetadata')) {
-      superStickerMetadata = SuperStickerMetadata.fromJson(
-          _json['superStickerMetadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('tier')) {
-      tier = _json['tier'] as core.int;
-    }
-  }
+  LiveChatSuperStickerDetails.fromJson(core.Map _json)
+      : this(
+          amountDisplayString: _json.containsKey('amountDisplayString')
+              ? _json['amountDisplayString'] as core.String
+              : null,
+          amountMicros: _json.containsKey('amountMicros')
+              ? _json['amountMicros'] as core.String
+              : null,
+          currency: _json.containsKey('currency')
+              ? _json['currency'] as core.String
+              : null,
+          superStickerMetadata: _json.containsKey('superStickerMetadata')
+              ? SuperStickerMetadata.fromJson(_json['superStickerMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          tier: _json.containsKey('tier') ? _json['tier'] as core.int : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (amountDisplayString != null)
@@ -11571,13 +12100,16 @@ class LiveChatTextMessageDetails {
   /// The user's message.
   core.String? messageText;
 
-  LiveChatTextMessageDetails();
+  LiveChatTextMessageDetails({
+    this.messageText,
+  });
 
-  LiveChatTextMessageDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('messageText')) {
-      messageText = _json['messageText'] as core.String;
-    }
-  }
+  LiveChatTextMessageDetails.fromJson(core.Map _json)
+      : this(
+          messageText: _json.containsKey('messageText')
+              ? _json['messageText'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (messageText != null) 'messageText': messageText!,
@@ -11599,20 +12131,25 @@ class LiveChatUserBannedMessageDetails {
   /// The details of the user that was banned.
   ChannelProfileDetails? bannedUserDetails;
 
-  LiveChatUserBannedMessageDetails();
+  LiveChatUserBannedMessageDetails({
+    this.banDurationSeconds,
+    this.banType,
+    this.bannedUserDetails,
+  });
 
-  LiveChatUserBannedMessageDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('banDurationSeconds')) {
-      banDurationSeconds = _json['banDurationSeconds'] as core.String;
-    }
-    if (_json.containsKey('banType')) {
-      banType = _json['banType'] as core.String;
-    }
-    if (_json.containsKey('bannedUserDetails')) {
-      bannedUserDetails = ChannelProfileDetails.fromJson(
-          _json['bannedUserDetails'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  LiveChatUserBannedMessageDetails.fromJson(core.Map _json)
+      : this(
+          banDurationSeconds: _json.containsKey('banDurationSeconds')
+              ? _json['banDurationSeconds'] as core.String
+              : null,
+          banType: _json.containsKey('banType')
+              ? _json['banType'] as core.String
+              : null,
+          bannedUserDetails: _json.containsKey('bannedUserDetails')
+              ? ChannelProfileDetails.fromJson(_json['bannedUserDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (banDurationSeconds != null)
@@ -11654,35 +12191,38 @@ class LiveStream {
   /// The status object contains information about live stream's status.
   LiveStreamStatus? status;
 
-  LiveStream();
+  LiveStream({
+    this.cdn,
+    this.contentDetails,
+    this.etag,
+    this.id,
+    this.kind,
+    this.snippet,
+    this.status,
+  });
 
-  LiveStream.fromJson(core.Map _json) {
-    if (_json.containsKey('cdn')) {
-      cdn = CdnSettings.fromJson(
-          _json['cdn'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('contentDetails')) {
-      contentDetails = LiveStreamContentDetails.fromJson(
-          _json['contentDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('snippet')) {
-      snippet = LiveStreamSnippet.fromJson(
-          _json['snippet'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('status')) {
-      status = LiveStreamStatus.fromJson(
-          _json['status'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  LiveStream.fromJson(core.Map _json)
+      : this(
+          cdn: _json.containsKey('cdn')
+              ? CdnSettings.fromJson(
+                  _json['cdn'] as core.Map<core.String, core.dynamic>)
+              : null,
+          contentDetails: _json.containsKey('contentDetails')
+              ? LiveStreamContentDetails.fromJson(_json['contentDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          snippet: _json.containsKey('snippet')
+              ? LiveStreamSnippet.fromJson(
+                  _json['snippet'] as core.Map<core.String, core.dynamic>)
+              : null,
+          status: _json.containsKey('status')
+              ? LiveStreamStatus.fromJson(
+                  _json['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cdn != null) 'cdn': cdn!.toJson(),
@@ -11747,22 +12287,26 @@ class LiveStreamConfigurationIssue {
   /// - "videoIngestionFasterThanRealtime"
   core.String? type;
 
-  LiveStreamConfigurationIssue();
+  LiveStreamConfigurationIssue({
+    this.description,
+    this.reason,
+    this.severity,
+    this.type,
+  });
 
-  LiveStreamConfigurationIssue.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('reason')) {
-      reason = _json['reason'] as core.String;
-    }
-    if (_json.containsKey('severity')) {
-      severity = _json['severity'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  LiveStreamConfigurationIssue.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          reason: _json.containsKey('reason')
+              ? _json['reason'] as core.String
+              : null,
+          severity: _json.containsKey('severity')
+              ? _json['severity'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -11793,17 +12337,21 @@ class LiveStreamContentDetails {
   /// the stream.
   core.bool? isReusable;
 
-  LiveStreamContentDetails();
+  LiveStreamContentDetails({
+    this.closedCaptionsIngestionUrl,
+    this.isReusable,
+  });
 
-  LiveStreamContentDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('closedCaptionsIngestionUrl')) {
-      closedCaptionsIngestionUrl =
-          _json['closedCaptionsIngestionUrl'] as core.String;
-    }
-    if (_json.containsKey('isReusable')) {
-      isReusable = _json['isReusable'] as core.bool;
-    }
-  }
+  LiveStreamContentDetails.fromJson(core.Map _json)
+      : this(
+          closedCaptionsIngestionUrl:
+              _json.containsKey('closedCaptionsIngestionUrl')
+                  ? _json['closedCaptionsIngestionUrl'] as core.String
+                  : null,
+          isReusable: _json.containsKey('isReusable')
+              ? _json['isReusable'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (closedCaptionsIngestionUrl != null)
@@ -11828,23 +12376,28 @@ class LiveStreamHealthStatus {
   /// - "revoked"
   core.String? status;
 
-  LiveStreamHealthStatus();
+  LiveStreamHealthStatus({
+    this.configurationIssues,
+    this.lastUpdateTimeSeconds,
+    this.status,
+  });
 
-  LiveStreamHealthStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('configurationIssues')) {
-      configurationIssues = (_json['configurationIssues'] as core.List)
-          .map<LiveStreamConfigurationIssue>((value) =>
-              LiveStreamConfigurationIssue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('lastUpdateTimeSeconds')) {
-      lastUpdateTimeSeconds = _json['lastUpdateTimeSeconds'] as core.String;
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-  }
+  LiveStreamHealthStatus.fromJson(core.Map _json)
+      : this(
+          configurationIssues: _json.containsKey('configurationIssues')
+              ? (_json['configurationIssues'] as core.List)
+                  .map<LiveStreamConfigurationIssue>((value) =>
+                      LiveStreamConfigurationIssue.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          lastUpdateTimeSeconds: _json.containsKey('lastUpdateTimeSeconds')
+              ? _json['lastUpdateTimeSeconds'] as core.String
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (configurationIssues != null)
@@ -11884,42 +12437,49 @@ class LiveStreamListResponse {
   /// The visitorId identifies the visitor.
   core.String? visitorId;
 
-  LiveStreamListResponse();
+  LiveStreamListResponse({
+    this.etag,
+    this.eventId,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.pageInfo,
+    this.prevPageToken,
+    this.tokenPagination,
+    this.visitorId,
+  });
 
-  LiveStreamListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('eventId')) {
-      eventId = _json['eventId'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<LiveStream>((value) =>
-              LiveStream.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('pageInfo')) {
-      pageInfo = PageInfo.fromJson(
-          _json['pageInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('prevPageToken')) {
-      prevPageToken = _json['prevPageToken'] as core.String;
-    }
-    if (_json.containsKey('tokenPagination')) {
-      tokenPagination = TokenPagination.fromJson(
-          _json['tokenPagination'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('visitorId')) {
-      visitorId = _json['visitorId'] as core.String;
-    }
-  }
+  LiveStreamListResponse.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          eventId: _json.containsKey('eventId')
+              ? _json['eventId'] as core.String
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<LiveStream>((value) => LiveStream.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          pageInfo: _json.containsKey('pageInfo')
+              ? PageInfo.fromJson(
+                  _json['pageInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          prevPageToken: _json.containsKey('prevPageToken')
+              ? _json['prevPageToken'] as core.String
+              : null,
+          tokenPagination: _json.containsKey('tokenPagination')
+              ? TokenPagination.fromJson(_json['tokenPagination']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          visitorId: _json.containsKey('visitorId')
+              ? _json['visitorId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -11955,25 +12515,31 @@ class LiveStreamSnippet {
   /// The value must be between 1 and 128 characters long.
   core.String? title;
 
-  LiveStreamSnippet();
+  LiveStreamSnippet({
+    this.channelId,
+    this.description,
+    this.isDefaultStream,
+    this.publishedAt,
+    this.title,
+  });
 
-  LiveStreamSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey('channelId')) {
-      channelId = _json['channelId'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('isDefaultStream')) {
-      isDefaultStream = _json['isDefaultStream'] as core.bool;
-    }
-    if (_json.containsKey('publishedAt')) {
-      publishedAt = core.DateTime.parse(_json['publishedAt'] as core.String);
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  LiveStreamSnippet.fromJson(core.Map _json)
+      : this(
+          channelId: _json.containsKey('channelId')
+              ? _json['channelId'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          isDefaultStream: _json.containsKey('isDefaultStream')
+              ? _json['isDefaultStream'] as core.bool
+              : null,
+          publishedAt: _json.containsKey('publishedAt')
+              ? core.DateTime.parse(_json['publishedAt'] as core.String)
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channelId != null) 'channelId': channelId!,
@@ -11998,17 +12564,21 @@ class LiveStreamStatus {
   /// - "error"
   core.String? streamStatus;
 
-  LiveStreamStatus();
+  LiveStreamStatus({
+    this.healthStatus,
+    this.streamStatus,
+  });
 
-  LiveStreamStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('healthStatus')) {
-      healthStatus = LiveStreamHealthStatus.fromJson(
-          _json['healthStatus'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('streamStatus')) {
-      streamStatus = _json['streamStatus'] as core.String;
-    }
-  }
+  LiveStreamStatus.fromJson(core.Map _json)
+      : this(
+          healthStatus: _json.containsKey('healthStatus')
+              ? LiveStreamHealthStatus.fromJson(
+                  _json['healthStatus'] as core.Map<core.String, core.dynamic>)
+              : null,
+          streamStatus: _json.containsKey('streamStatus')
+              ? _json['streamStatus'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (healthStatus != null) 'healthStatus': healthStatus!.toJson(),
@@ -12023,23 +12593,28 @@ class LocalizedProperty {
   LanguageTag? defaultLanguage;
   core.List<LocalizedString>? localized;
 
-  LocalizedProperty();
+  LocalizedProperty({
+    this.default_,
+    this.defaultLanguage,
+    this.localized,
+  });
 
-  LocalizedProperty.fromJson(core.Map _json) {
-    if (_json.containsKey('default')) {
-      default_ = _json['default'] as core.String;
-    }
-    if (_json.containsKey('defaultLanguage')) {
-      defaultLanguage = LanguageTag.fromJson(
-          _json['defaultLanguage'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('localized')) {
-      localized = (_json['localized'] as core.List)
-          .map<LocalizedString>((value) => LocalizedString.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  LocalizedProperty.fromJson(core.Map _json)
+      : this(
+          default_: _json.containsKey('default')
+              ? _json['default'] as core.String
+              : null,
+          defaultLanguage: _json.containsKey('defaultLanguage')
+              ? LanguageTag.fromJson(_json['defaultLanguage']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          localized: _json.containsKey('localized')
+              ? (_json['localized'] as core.List)
+                  .map<LocalizedString>((value) => LocalizedString.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (default_ != null) 'default': default_!,
@@ -12054,16 +12629,19 @@ class LocalizedString {
   core.String? language;
   core.String? value;
 
-  LocalizedString();
+  LocalizedString({
+    this.language,
+    this.value,
+  });
 
-  LocalizedString.fromJson(core.Map _json) {
-    if (_json.containsKey('language')) {
-      language = _json['language'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  LocalizedString.fromJson(core.Map _json)
+      : this(
+          language: _json.containsKey('language')
+              ? _json['language'] as core.String
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (language != null) 'language': language!,
@@ -12087,20 +12665,21 @@ class Member {
   /// The snippet object contains basic details about the member.
   MemberSnippet? snippet;
 
-  Member();
+  Member({
+    this.etag,
+    this.kind,
+    this.snippet,
+  });
 
-  Member.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('snippet')) {
-      snippet = MemberSnippet.fromJson(
-          _json['snippet'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Member.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          snippet: _json.containsKey('snippet')
+              ? MemberSnippet.fromJson(
+                  _json['snippet'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -12133,39 +12712,45 @@ class MemberListResponse {
   /// The visitorId identifies the visitor.
   core.String? visitorId;
 
-  MemberListResponse();
+  MemberListResponse({
+    this.etag,
+    this.eventId,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.pageInfo,
+    this.tokenPagination,
+    this.visitorId,
+  });
 
-  MemberListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('eventId')) {
-      eventId = _json['eventId'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<Member>((value) =>
-              Member.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('pageInfo')) {
-      pageInfo = PageInfo.fromJson(
-          _json['pageInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('tokenPagination')) {
-      tokenPagination = TokenPagination.fromJson(
-          _json['tokenPagination'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('visitorId')) {
-      visitorId = _json['visitorId'] as core.String;
-    }
-  }
+  MemberListResponse.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          eventId: _json.containsKey('eventId')
+              ? _json['eventId'] as core.String
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<Member>((value) => Member.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          pageInfo: _json.containsKey('pageInfo')
+              ? PageInfo.fromJson(
+                  _json['pageInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          tokenPagination: _json.containsKey('tokenPagination')
+              ? TokenPagination.fromJson(_json['tokenPagination']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          visitorId: _json.containsKey('visitorId')
+              ? _json['visitorId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -12191,21 +12776,26 @@ class MemberSnippet {
   /// Details about the user's membership.
   MembershipsDetails? membershipsDetails;
 
-  MemberSnippet();
+  MemberSnippet({
+    this.creatorChannelId,
+    this.memberDetails,
+    this.membershipsDetails,
+  });
 
-  MemberSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey('creatorChannelId')) {
-      creatorChannelId = _json['creatorChannelId'] as core.String;
-    }
-    if (_json.containsKey('memberDetails')) {
-      memberDetails = ChannelProfileDetails.fromJson(
-          _json['memberDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('membershipsDetails')) {
-      membershipsDetails = MembershipsDetails.fromJson(
-          _json['membershipsDetails'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  MemberSnippet.fromJson(core.Map _json)
+      : this(
+          creatorChannelId: _json.containsKey('creatorChannelId')
+              ? _json['creatorChannelId'] as core.String
+              : null,
+          memberDetails: _json.containsKey('memberDetails')
+              ? ChannelProfileDetails.fromJson(
+                  _json['memberDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
+          membershipsDetails: _json.containsKey('membershipsDetails')
+              ? MembershipsDetails.fromJson(_json['membershipsDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (creatorChannelId != null) 'creatorChannelId': creatorChannelId!,
@@ -12236,34 +12826,41 @@ class MembershipsDetails {
   /// Data about memberships duration on particular pricing levels.
   core.List<MembershipsDurationAtLevel>? membershipsDurationAtLevels;
 
-  MembershipsDetails();
+  MembershipsDetails({
+    this.accessibleLevels,
+    this.highestAccessibleLevel,
+    this.highestAccessibleLevelDisplayName,
+    this.membershipsDuration,
+    this.membershipsDurationAtLevels,
+  });
 
-  MembershipsDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('accessibleLevels')) {
-      accessibleLevels = (_json['accessibleLevels'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('highestAccessibleLevel')) {
-      highestAccessibleLevel = _json['highestAccessibleLevel'] as core.String;
-    }
-    if (_json.containsKey('highestAccessibleLevelDisplayName')) {
-      highestAccessibleLevelDisplayName =
-          _json['highestAccessibleLevelDisplayName'] as core.String;
-    }
-    if (_json.containsKey('membershipsDuration')) {
-      membershipsDuration = MembershipsDuration.fromJson(
-          _json['membershipsDuration'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('membershipsDurationAtLevels')) {
-      membershipsDurationAtLevels =
-          (_json['membershipsDurationAtLevels'] as core.List)
-              .map<MembershipsDurationAtLevel>((value) =>
-                  MembershipsDurationAtLevel.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList();
-    }
-  }
+  MembershipsDetails.fromJson(core.Map _json)
+      : this(
+          accessibleLevels: _json.containsKey('accessibleLevels')
+              ? (_json['accessibleLevels'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          highestAccessibleLevel: _json.containsKey('highestAccessibleLevel')
+              ? _json['highestAccessibleLevel'] as core.String
+              : null,
+          highestAccessibleLevelDisplayName:
+              _json.containsKey('highestAccessibleLevelDisplayName')
+                  ? _json['highestAccessibleLevelDisplayName'] as core.String
+                  : null,
+          membershipsDuration: _json.containsKey('membershipsDuration')
+              ? MembershipsDuration.fromJson(_json['membershipsDuration']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          membershipsDurationAtLevels:
+              _json.containsKey('membershipsDurationAtLevels')
+                  ? (_json['membershipsDurationAtLevels'] as core.List)
+                      .map<MembershipsDurationAtLevel>((value) =>
+                          MembershipsDurationAtLevel.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessibleLevels != null) 'accessibleLevels': accessibleLevels!,
@@ -12290,17 +12887,21 @@ class MembershipsDuration {
   /// complete months (the time is rounded down to the nearest integer).
   core.int? memberTotalDurationMonths;
 
-  MembershipsDuration();
+  MembershipsDuration({
+    this.memberSince,
+    this.memberTotalDurationMonths,
+  });
 
-  MembershipsDuration.fromJson(core.Map _json) {
-    if (_json.containsKey('memberSince')) {
-      memberSince = _json['memberSince'] as core.String;
-    }
-    if (_json.containsKey('memberTotalDurationMonths')) {
-      memberTotalDurationMonths =
-          _json['memberTotalDurationMonths'] as core.int;
-    }
-  }
+  MembershipsDuration.fromJson(core.Map _json)
+      : this(
+          memberSince: _json.containsKey('memberSince')
+              ? _json['memberSince'] as core.String
+              : null,
+          memberTotalDurationMonths:
+              _json.containsKey('memberTotalDurationMonths')
+                  ? _json['memberTotalDurationMonths'] as core.int
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (memberSince != null) 'memberSince': memberSince!,
@@ -12321,20 +12922,24 @@ class MembershipsDurationAtLevel {
   /// complete months (the time is rounded down to the nearest integer).
   core.int? memberTotalDurationMonths;
 
-  MembershipsDurationAtLevel();
+  MembershipsDurationAtLevel({
+    this.level,
+    this.memberSince,
+    this.memberTotalDurationMonths,
+  });
 
-  MembershipsDurationAtLevel.fromJson(core.Map _json) {
-    if (_json.containsKey('level')) {
-      level = _json['level'] as core.String;
-    }
-    if (_json.containsKey('memberSince')) {
-      memberSince = _json['memberSince'] as core.String;
-    }
-    if (_json.containsKey('memberTotalDurationMonths')) {
-      memberTotalDurationMonths =
-          _json['memberTotalDurationMonths'] as core.int;
-    }
-  }
+  MembershipsDurationAtLevel.fromJson(core.Map _json)
+      : this(
+          level:
+              _json.containsKey('level') ? _json['level'] as core.String : null,
+          memberSince: _json.containsKey('memberSince')
+              ? _json['memberSince'] as core.String
+              : null,
+          memberTotalDurationMonths:
+              _json.containsKey('memberTotalDurationMonths')
+                  ? _json['memberTotalDurationMonths'] as core.int
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (level != null) 'level': level!,
@@ -12365,23 +12970,23 @@ class MembershipsLevel {
   /// The snippet object contains basic details about the level.
   MembershipsLevelSnippet? snippet;
 
-  MembershipsLevel();
+  MembershipsLevel({
+    this.etag,
+    this.id,
+    this.kind,
+    this.snippet,
+  });
 
-  MembershipsLevel.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('snippet')) {
-      snippet = MembershipsLevelSnippet.fromJson(
-          _json['snippet'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  MembershipsLevel.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          snippet: _json.containsKey('snippet')
+              ? MembershipsLevelSnippet.fromJson(
+                  _json['snippet'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -12409,28 +13014,31 @@ class MembershipsLevelListResponse {
   /// The visitorId identifies the visitor.
   core.String? visitorId;
 
-  MembershipsLevelListResponse();
+  MembershipsLevelListResponse({
+    this.etag,
+    this.eventId,
+    this.items,
+    this.kind,
+    this.visitorId,
+  });
 
-  MembershipsLevelListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('eventId')) {
-      eventId = _json['eventId'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<MembershipsLevel>((value) => MembershipsLevel.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('visitorId')) {
-      visitorId = _json['visitorId'] as core.String;
-    }
-  }
+  MembershipsLevelListResponse.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          eventId: _json.containsKey('eventId')
+              ? _json['eventId'] as core.String
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<MembershipsLevel>((value) => MembershipsLevel.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          visitorId: _json.containsKey('visitorId')
+              ? _json['visitorId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -12449,17 +13057,21 @@ class MembershipsLevelSnippet {
   /// Details about the pricing level.
   LevelDetails? levelDetails;
 
-  MembershipsLevelSnippet();
+  MembershipsLevelSnippet({
+    this.creatorChannelId,
+    this.levelDetails,
+  });
 
-  MembershipsLevelSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey('creatorChannelId')) {
-      creatorChannelId = _json['creatorChannelId'] as core.String;
-    }
-    if (_json.containsKey('levelDetails')) {
-      levelDetails = LevelDetails.fromJson(
-          _json['levelDetails'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  MembershipsLevelSnippet.fromJson(core.Map _json)
+      : this(
+          creatorChannelId: _json.containsKey('creatorChannelId')
+              ? _json['creatorChannelId'] as core.String
+              : null,
+          levelDetails: _json.containsKey('levelDetails')
+              ? LevelDetails.fromJson(
+                  _json['levelDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (creatorChannelId != null) 'creatorChannelId': creatorChannelId!,
@@ -12488,19 +13100,24 @@ class MonitorStreamInfo {
   /// in the testing or live state.
   core.bool? enableMonitorStream;
 
-  MonitorStreamInfo();
+  MonitorStreamInfo({
+    this.broadcastStreamDelayMs,
+    this.embedHtml,
+    this.enableMonitorStream,
+  });
 
-  MonitorStreamInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('broadcastStreamDelayMs')) {
-      broadcastStreamDelayMs = _json['broadcastStreamDelayMs'] as core.int;
-    }
-    if (_json.containsKey('embedHtml')) {
-      embedHtml = _json['embedHtml'] as core.String;
-    }
-    if (_json.containsKey('enableMonitorStream')) {
-      enableMonitorStream = _json['enableMonitorStream'] as core.bool;
-    }
-  }
+  MonitorStreamInfo.fromJson(core.Map _json)
+      : this(
+          broadcastStreamDelayMs: _json.containsKey('broadcastStreamDelayMs')
+              ? _json['broadcastStreamDelayMs'] as core.int
+              : null,
+          embedHtml: _json.containsKey('embedHtml')
+              ? _json['embedHtml'] as core.String
+              : null,
+          enableMonitorStream: _json.containsKey('enableMonitorStream')
+              ? _json['enableMonitorStream'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (broadcastStreamDelayMs != null)
@@ -12520,16 +13137,20 @@ class PageInfo {
   /// The total number of results in the result set.
   core.int? totalResults;
 
-  PageInfo();
+  PageInfo({
+    this.resultsPerPage,
+    this.totalResults,
+  });
 
-  PageInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('resultsPerPage')) {
-      resultsPerPage = _json['resultsPerPage'] as core.int;
-    }
-    if (_json.containsKey('totalResults')) {
-      totalResults = _json['totalResults'] as core.int;
-    }
-  }
+  PageInfo.fromJson(core.Map _json)
+      : this(
+          resultsPerPage: _json.containsKey('resultsPerPage')
+              ? _json['resultsPerPage'] as core.int
+              : null,
+          totalResults: _json.containsKey('totalResults')
+              ? _json['totalResults'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resultsPerPage != null) 'resultsPerPage': resultsPerPage!,
@@ -12582,45 +13203,49 @@ class Playlist {
   /// The status object contains status information for the playlist.
   PlaylistStatus? status;
 
-  Playlist();
+  Playlist({
+    this.contentDetails,
+    this.etag,
+    this.id,
+    this.kind,
+    this.localizations,
+    this.player,
+    this.snippet,
+    this.status,
+  });
 
-  Playlist.fromJson(core.Map _json) {
-    if (_json.containsKey('contentDetails')) {
-      contentDetails = PlaylistContentDetails.fromJson(
-          _json['contentDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('localizations')) {
-      localizations =
-          (_json['localizations'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          PlaylistLocalization.fromJson(
-              item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('player')) {
-      player = PlaylistPlayer.fromJson(
-          _json['player'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('snippet')) {
-      snippet = PlaylistSnippet.fromJson(
-          _json['snippet'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('status')) {
-      status = PlaylistStatus.fromJson(
-          _json['status'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Playlist.fromJson(core.Map _json)
+      : this(
+          contentDetails: _json.containsKey('contentDetails')
+              ? PlaylistContentDetails.fromJson(_json['contentDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          localizations: _json.containsKey('localizations')
+              ? (_json['localizations'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    PlaylistLocalization.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          player: _json.containsKey('player')
+              ? PlaylistPlayer.fromJson(
+                  _json['player'] as core.Map<core.String, core.dynamic>)
+              : null,
+          snippet: _json.containsKey('snippet')
+              ? PlaylistSnippet.fromJson(
+                  _json['snippet'] as core.Map<core.String, core.dynamic>)
+              : null,
+          status: _json.containsKey('status')
+              ? PlaylistStatus.fromJson(
+                  _json['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentDetails != null) 'contentDetails': contentDetails!.toJson(),
@@ -12640,13 +13265,16 @@ class PlaylistContentDetails {
   /// The number of videos in the playlist.
   core.int? itemCount;
 
-  PlaylistContentDetails();
+  PlaylistContentDetails({
+    this.itemCount,
+  });
 
-  PlaylistContentDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('itemCount')) {
-      itemCount = _json['itemCount'] as core.int;
-    }
-  }
+  PlaylistContentDetails.fromJson(core.Map _json)
+      : this(
+          itemCount: _json.containsKey('itemCount')
+              ? _json['itemCount'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (itemCount != null) 'itemCount': itemCount!,
@@ -12696,31 +13324,33 @@ class PlaylistItem {
   /// status.
   PlaylistItemStatus? status;
 
-  PlaylistItem();
+  PlaylistItem({
+    this.contentDetails,
+    this.etag,
+    this.id,
+    this.kind,
+    this.snippet,
+    this.status,
+  });
 
-  PlaylistItem.fromJson(core.Map _json) {
-    if (_json.containsKey('contentDetails')) {
-      contentDetails = PlaylistItemContentDetails.fromJson(
-          _json['contentDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('snippet')) {
-      snippet = PlaylistItemSnippet.fromJson(
-          _json['snippet'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('status')) {
-      status = PlaylistItemStatus.fromJson(
-          _json['status'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  PlaylistItem.fromJson(core.Map _json)
+      : this(
+          contentDetails: _json.containsKey('contentDetails')
+              ? PlaylistItemContentDetails.fromJson(_json['contentDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          snippet: _json.containsKey('snippet')
+              ? PlaylistItemSnippet.fromJson(
+                  _json['snippet'] as core.Map<core.String, core.dynamic>)
+              : null,
+          status: _json.containsKey('status')
+              ? PlaylistItemStatus.fromJson(
+                  _json['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentDetails != null) 'contentDetails': contentDetails!.toJson(),
@@ -12761,26 +13391,29 @@ class PlaylistItemContentDetails {
   /// The date and time that the video was published to YouTube.
   core.DateTime? videoPublishedAt;
 
-  PlaylistItemContentDetails();
+  PlaylistItemContentDetails({
+    this.endAt,
+    this.note,
+    this.startAt,
+    this.videoId,
+    this.videoPublishedAt,
+  });
 
-  PlaylistItemContentDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('endAt')) {
-      endAt = _json['endAt'] as core.String;
-    }
-    if (_json.containsKey('note')) {
-      note = _json['note'] as core.String;
-    }
-    if (_json.containsKey('startAt')) {
-      startAt = _json['startAt'] as core.String;
-    }
-    if (_json.containsKey('videoId')) {
-      videoId = _json['videoId'] as core.String;
-    }
-    if (_json.containsKey('videoPublishedAt')) {
-      videoPublishedAt =
-          core.DateTime.parse(_json['videoPublishedAt'] as core.String);
-    }
-  }
+  PlaylistItemContentDetails.fromJson(core.Map _json)
+      : this(
+          endAt:
+              _json.containsKey('endAt') ? _json['endAt'] as core.String : null,
+          note: _json.containsKey('note') ? _json['note'] as core.String : null,
+          startAt: _json.containsKey('startAt')
+              ? _json['startAt'] as core.String
+              : null,
+          videoId: _json.containsKey('videoId')
+              ? _json['videoId'] as core.String
+              : null,
+          videoPublishedAt: _json.containsKey('videoPublishedAt')
+              ? core.DateTime.parse(_json['videoPublishedAt'] as core.String)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endAt != null) 'endAt': endAt!,
@@ -12822,42 +13455,49 @@ class PlaylistItemListResponse {
   /// The visitorId identifies the visitor.
   core.String? visitorId;
 
-  PlaylistItemListResponse();
+  PlaylistItemListResponse({
+    this.etag,
+    this.eventId,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.pageInfo,
+    this.prevPageToken,
+    this.tokenPagination,
+    this.visitorId,
+  });
 
-  PlaylistItemListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('eventId')) {
-      eventId = _json['eventId'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<PlaylistItem>((value) => PlaylistItem.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('pageInfo')) {
-      pageInfo = PageInfo.fromJson(
-          _json['pageInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('prevPageToken')) {
-      prevPageToken = _json['prevPageToken'] as core.String;
-    }
-    if (_json.containsKey('tokenPagination')) {
-      tokenPagination = TokenPagination.fromJson(
-          _json['tokenPagination'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('visitorId')) {
-      visitorId = _json['visitorId'] as core.String;
-    }
-  }
+  PlaylistItemListResponse.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          eventId: _json.containsKey('eventId')
+              ? _json['eventId'] as core.String
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<PlaylistItem>((value) => PlaylistItem.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          pageInfo: _json.containsKey('pageInfo')
+              ? PageInfo.fromJson(
+                  _json['pageInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          prevPageToken: _json.containsKey('prevPageToken')
+              ? _json['prevPageToken'] as core.String
+              : null,
+          tokenPagination: _json.containsKey('tokenPagination')
+              ? TokenPagination.fromJson(_json['tokenPagination']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          visitorId: _json.containsKey('visitorId')
+              ? _json['visitorId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -12921,45 +13561,57 @@ class PlaylistItemSnippet {
   /// Channel title for the channel this video belongs to.
   core.String? videoOwnerChannelTitle;
 
-  PlaylistItemSnippet();
+  PlaylistItemSnippet({
+    this.channelId,
+    this.channelTitle,
+    this.description,
+    this.playlistId,
+    this.position,
+    this.publishedAt,
+    this.resourceId,
+    this.thumbnails,
+    this.title,
+    this.videoOwnerChannelId,
+    this.videoOwnerChannelTitle,
+  });
 
-  PlaylistItemSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey('channelId')) {
-      channelId = _json['channelId'] as core.String;
-    }
-    if (_json.containsKey('channelTitle')) {
-      channelTitle = _json['channelTitle'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('playlistId')) {
-      playlistId = _json['playlistId'] as core.String;
-    }
-    if (_json.containsKey('position')) {
-      position = _json['position'] as core.int;
-    }
-    if (_json.containsKey('publishedAt')) {
-      publishedAt = core.DateTime.parse(_json['publishedAt'] as core.String);
-    }
-    if (_json.containsKey('resourceId')) {
-      resourceId = ResourceId.fromJson(
-          _json['resourceId'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('thumbnails')) {
-      thumbnails = ThumbnailDetails.fromJson(
-          _json['thumbnails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-    if (_json.containsKey('videoOwnerChannelId')) {
-      videoOwnerChannelId = _json['videoOwnerChannelId'] as core.String;
-    }
-    if (_json.containsKey('videoOwnerChannelTitle')) {
-      videoOwnerChannelTitle = _json['videoOwnerChannelTitle'] as core.String;
-    }
-  }
+  PlaylistItemSnippet.fromJson(core.Map _json)
+      : this(
+          channelId: _json.containsKey('channelId')
+              ? _json['channelId'] as core.String
+              : null,
+          channelTitle: _json.containsKey('channelTitle')
+              ? _json['channelTitle'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          playlistId: _json.containsKey('playlistId')
+              ? _json['playlistId'] as core.String
+              : null,
+          position: _json.containsKey('position')
+              ? _json['position'] as core.int
+              : null,
+          publishedAt: _json.containsKey('publishedAt')
+              ? core.DateTime.parse(_json['publishedAt'] as core.String)
+              : null,
+          resourceId: _json.containsKey('resourceId')
+              ? ResourceId.fromJson(
+                  _json['resourceId'] as core.Map<core.String, core.dynamic>)
+              : null,
+          thumbnails: _json.containsKey('thumbnails')
+              ? ThumbnailDetails.fromJson(
+                  _json['thumbnails'] as core.Map<core.String, core.dynamic>)
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+          videoOwnerChannelId: _json.containsKey('videoOwnerChannelId')
+              ? _json['videoOwnerChannelId'] as core.String
+              : null,
+          videoOwnerChannelTitle: _json.containsKey('videoOwnerChannelTitle')
+              ? _json['videoOwnerChannelTitle'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channelId != null) 'channelId': channelId!,
@@ -12987,13 +13639,16 @@ class PlaylistItemStatus {
   /// - "private"
   core.String? privacyStatus;
 
-  PlaylistItemStatus();
+  PlaylistItemStatus({
+    this.privacyStatus,
+  });
 
-  PlaylistItemStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('privacyStatus')) {
-      privacyStatus = _json['privacyStatus'] as core.String;
-    }
-  }
+  PlaylistItemStatus.fromJson(core.Map _json)
+      : this(
+          privacyStatus: _json.containsKey('privacyStatus')
+              ? _json['privacyStatus'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (privacyStatus != null) 'privacyStatus': privacyStatus!,
@@ -13030,42 +13685,49 @@ class PlaylistListResponse {
   /// The visitorId identifies the visitor.
   core.String? visitorId;
 
-  PlaylistListResponse();
+  PlaylistListResponse({
+    this.etag,
+    this.eventId,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.pageInfo,
+    this.prevPageToken,
+    this.tokenPagination,
+    this.visitorId,
+  });
 
-  PlaylistListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('eventId')) {
-      eventId = _json['eventId'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<Playlist>((value) =>
-              Playlist.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('pageInfo')) {
-      pageInfo = PageInfo.fromJson(
-          _json['pageInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('prevPageToken')) {
-      prevPageToken = _json['prevPageToken'] as core.String;
-    }
-    if (_json.containsKey('tokenPagination')) {
-      tokenPagination = TokenPagination.fromJson(
-          _json['tokenPagination'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('visitorId')) {
-      visitorId = _json['visitorId'] as core.String;
-    }
-  }
+  PlaylistListResponse.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          eventId: _json.containsKey('eventId')
+              ? _json['eventId'] as core.String
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<Playlist>((value) => Playlist.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          pageInfo: _json.containsKey('pageInfo')
+              ? PageInfo.fromJson(
+                  _json['pageInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          prevPageToken: _json.containsKey('prevPageToken')
+              ? _json['prevPageToken'] as core.String
+              : null,
+          tokenPagination: _json.containsKey('tokenPagination')
+              ? TokenPagination.fromJson(_json['tokenPagination']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          visitorId: _json.containsKey('visitorId')
+              ? _json['visitorId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -13090,16 +13752,19 @@ class PlaylistLocalization {
   /// The localized strings for playlist's title.
   core.String? title;
 
-  PlaylistLocalization();
+  PlaylistLocalization({
+    this.description,
+    this.title,
+  });
 
-  PlaylistLocalization.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  PlaylistLocalization.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -13111,13 +13776,16 @@ class PlaylistPlayer {
   /// An <iframe> tag that embeds a player that will play the playlist.
   core.String? embedHtml;
 
-  PlaylistPlayer();
+  PlaylistPlayer({
+    this.embedHtml,
+  });
 
-  PlaylistPlayer.fromJson(core.Map _json) {
-    if (_json.containsKey('embedHtml')) {
-      embedHtml = _json['embedHtml'] as core.String;
-    }
-  }
+  PlaylistPlayer.fromJson(core.Map _json)
+      : this(
+          embedHtml: _json.containsKey('embedHtml')
+              ? _json['embedHtml'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (embedHtml != null) 'embedHtml': embedHtml!,
@@ -13170,44 +13838,55 @@ class PlaylistSnippet {
   /// The playlist's title.
   core.String? title;
 
-  PlaylistSnippet();
+  PlaylistSnippet({
+    this.channelId,
+    this.channelTitle,
+    this.defaultLanguage,
+    this.description,
+    this.localized,
+    this.publishedAt,
+    this.tags,
+    this.thumbnailVideoId,
+    this.thumbnails,
+    this.title,
+  });
 
-  PlaylistSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey('channelId')) {
-      channelId = _json['channelId'] as core.String;
-    }
-    if (_json.containsKey('channelTitle')) {
-      channelTitle = _json['channelTitle'] as core.String;
-    }
-    if (_json.containsKey('defaultLanguage')) {
-      defaultLanguage = _json['defaultLanguage'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('localized')) {
-      localized = PlaylistLocalization.fromJson(
-          _json['localized'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('publishedAt')) {
-      publishedAt = core.DateTime.parse(_json['publishedAt'] as core.String);
-    }
-    if (_json.containsKey('tags')) {
-      tags = (_json['tags'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('thumbnailVideoId')) {
-      thumbnailVideoId = _json['thumbnailVideoId'] as core.String;
-    }
-    if (_json.containsKey('thumbnails')) {
-      thumbnails = ThumbnailDetails.fromJson(
-          _json['thumbnails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  PlaylistSnippet.fromJson(core.Map _json)
+      : this(
+          channelId: _json.containsKey('channelId')
+              ? _json['channelId'] as core.String
+              : null,
+          channelTitle: _json.containsKey('channelTitle')
+              ? _json['channelTitle'] as core.String
+              : null,
+          defaultLanguage: _json.containsKey('defaultLanguage')
+              ? _json['defaultLanguage'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          localized: _json.containsKey('localized')
+              ? PlaylistLocalization.fromJson(
+                  _json['localized'] as core.Map<core.String, core.dynamic>)
+              : null,
+          publishedAt: _json.containsKey('publishedAt')
+              ? core.DateTime.parse(_json['publishedAt'] as core.String)
+              : null,
+          tags: _json.containsKey('tags')
+              ? (_json['tags'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          thumbnailVideoId: _json.containsKey('thumbnailVideoId')
+              ? _json['thumbnailVideoId'] as core.String
+              : null,
+          thumbnails: _json.containsKey('thumbnails')
+              ? ThumbnailDetails.fromJson(
+                  _json['thumbnails'] as core.Map<core.String, core.dynamic>)
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channelId != null) 'channelId': channelId!,
@@ -13231,13 +13910,16 @@ class PlaylistStatus {
   /// - "private"
   core.String? privacyStatus;
 
-  PlaylistStatus();
+  PlaylistStatus({
+    this.privacyStatus,
+  });
 
-  PlaylistStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('privacyStatus')) {
-      privacyStatus = _json['privacyStatus'] as core.String;
-    }
-  }
+  PlaylistStatus.fromJson(core.Map _json)
+      : this(
+          privacyStatus: _json.containsKey('privacyStatus')
+              ? _json['privacyStatus'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (privacyStatus != null) 'privacyStatus': privacyStatus!,
@@ -13252,16 +13934,19 @@ class PropertyValue {
   /// The property's value.
   core.String? value;
 
-  PropertyValue();
+  PropertyValue({
+    this.property,
+    this.value,
+  });
 
-  PropertyValue.fromJson(core.Map _json) {
-    if (_json.containsKey('property')) {
-      property = _json['property'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  PropertyValue.fromJson(core.Map _json)
+      : this(
+          property: _json.containsKey('property')
+              ? _json['property'] as core.String
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (property != null) 'property': property!,
@@ -13272,14 +13957,17 @@ class PropertyValue {
 class RelatedEntity {
   Entity? entity;
 
-  RelatedEntity();
+  RelatedEntity({
+    this.entity,
+  });
 
-  RelatedEntity.fromJson(core.Map _json) {
-    if (_json.containsKey('entity')) {
-      entity = Entity.fromJson(
-          _json['entity'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  RelatedEntity.fromJson(core.Map _json)
+      : this(
+          entity: _json.containsKey('entity')
+              ? Entity.fromJson(
+                  _json['entity'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (entity != null) 'entity': entity!.toJson(),
@@ -13313,22 +14001,26 @@ class ResourceId {
   /// youtube#video.
   core.String? videoId;
 
-  ResourceId();
+  ResourceId({
+    this.channelId,
+    this.kind,
+    this.playlistId,
+    this.videoId,
+  });
 
-  ResourceId.fromJson(core.Map _json) {
-    if (_json.containsKey('channelId')) {
-      channelId = _json['channelId'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('playlistId')) {
-      playlistId = _json['playlistId'] as core.String;
-    }
-    if (_json.containsKey('videoId')) {
-      videoId = _json['videoId'] as core.String;
-    }
-  }
+  ResourceId.fromJson(core.Map _json)
+      : this(
+          channelId: _json.containsKey('channelId')
+              ? _json['channelId'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          playlistId: _json.containsKey('playlistId')
+              ? _json['playlistId'] as core.String
+              : null,
+          videoId: _json.containsKey('videoId')
+              ? _json['videoId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channelId != null) 'channelId': channelId!,
@@ -13369,45 +14061,53 @@ class SearchListResponse {
   /// The visitorId identifies the visitor.
   core.String? visitorId;
 
-  SearchListResponse();
+  SearchListResponse({
+    this.etag,
+    this.eventId,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.pageInfo,
+    this.prevPageToken,
+    this.regionCode,
+    this.tokenPagination,
+    this.visitorId,
+  });
 
-  SearchListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('eventId')) {
-      eventId = _json['eventId'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<SearchResult>((value) => SearchResult.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('pageInfo')) {
-      pageInfo = PageInfo.fromJson(
-          _json['pageInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('prevPageToken')) {
-      prevPageToken = _json['prevPageToken'] as core.String;
-    }
-    if (_json.containsKey('regionCode')) {
-      regionCode = _json['regionCode'] as core.String;
-    }
-    if (_json.containsKey('tokenPagination')) {
-      tokenPagination = TokenPagination.fromJson(
-          _json['tokenPagination'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('visitorId')) {
-      visitorId = _json['visitorId'] as core.String;
-    }
-  }
+  SearchListResponse.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          eventId: _json.containsKey('eventId')
+              ? _json['eventId'] as core.String
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<SearchResult>((value) => SearchResult.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          pageInfo: _json.containsKey('pageInfo')
+              ? PageInfo.fromJson(
+                  _json['pageInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          prevPageToken: _json.containsKey('prevPageToken')
+              ? _json['prevPageToken'] as core.String
+              : null,
+          regionCode: _json.containsKey('regionCode')
+              ? _json['regionCode'] as core.String
+              : null,
+          tokenPagination: _json.containsKey('tokenPagination')
+              ? TokenPagination.fromJson(_json['tokenPagination']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          visitorId: _json.containsKey('visitorId')
+              ? _json['visitorId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -13450,24 +14150,26 @@ class SearchResult {
   /// video's title and the description will be the video's description.
   SearchResultSnippet? snippet;
 
-  SearchResult();
+  SearchResult({
+    this.etag,
+    this.id,
+    this.kind,
+    this.snippet,
+  });
 
-  SearchResult.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = ResourceId.fromJson(
-          _json['id'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('snippet')) {
-      snippet = SearchResultSnippet.fromJson(
-          _json['snippet'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  SearchResult.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          id: _json.containsKey('id')
+              ? ResourceId.fromJson(
+                  _json['id'] as core.Map<core.String, core.dynamic>)
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          snippet: _json.containsKey('snippet')
+              ? SearchResultSnippet.fromJson(
+                  _json['snippet'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -13516,32 +14218,40 @@ class SearchResultSnippet {
   /// The title of the search result.
   core.String? title;
 
-  SearchResultSnippet();
+  SearchResultSnippet({
+    this.channelId,
+    this.channelTitle,
+    this.description,
+    this.liveBroadcastContent,
+    this.publishedAt,
+    this.thumbnails,
+    this.title,
+  });
 
-  SearchResultSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey('channelId')) {
-      channelId = _json['channelId'] as core.String;
-    }
-    if (_json.containsKey('channelTitle')) {
-      channelTitle = _json['channelTitle'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('liveBroadcastContent')) {
-      liveBroadcastContent = _json['liveBroadcastContent'] as core.String;
-    }
-    if (_json.containsKey('publishedAt')) {
-      publishedAt = core.DateTime.parse(_json['publishedAt'] as core.String);
-    }
-    if (_json.containsKey('thumbnails')) {
-      thumbnails = ThumbnailDetails.fromJson(
-          _json['thumbnails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  SearchResultSnippet.fromJson(core.Map _json)
+      : this(
+          channelId: _json.containsKey('channelId')
+              ? _json['channelId'] as core.String
+              : null,
+          channelTitle: _json.containsKey('channelTitle')
+              ? _json['channelTitle'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          liveBroadcastContent: _json.containsKey('liveBroadcastContent')
+              ? _json['liveBroadcastContent'] as core.String
+              : null,
+          publishedAt: _json.containsKey('publishedAt')
+              ? core.DateTime.parse(_json['publishedAt'] as core.String)
+              : null,
+          thumbnails: _json.containsKey('thumbnails')
+              ? ThumbnailDetails.fromJson(
+                  _json['thumbnails'] as core.Map<core.String, core.dynamic>)
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channelId != null) 'channelId': channelId!,
@@ -13584,31 +14294,34 @@ class Subscription {
   /// The subscriberSnippet object contains basic details about the subscriber.
   SubscriptionSubscriberSnippet? subscriberSnippet;
 
-  Subscription();
+  Subscription({
+    this.contentDetails,
+    this.etag,
+    this.id,
+    this.kind,
+    this.snippet,
+    this.subscriberSnippet,
+  });
 
-  Subscription.fromJson(core.Map _json) {
-    if (_json.containsKey('contentDetails')) {
-      contentDetails = SubscriptionContentDetails.fromJson(
-          _json['contentDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('snippet')) {
-      snippet = SubscriptionSnippet.fromJson(
-          _json['snippet'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('subscriberSnippet')) {
-      subscriberSnippet = SubscriptionSubscriberSnippet.fromJson(
-          _json['subscriberSnippet'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Subscription.fromJson(core.Map _json)
+      : this(
+          contentDetails: _json.containsKey('contentDetails')
+              ? SubscriptionContentDetails.fromJson(_json['contentDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          snippet: _json.containsKey('snippet')
+              ? SubscriptionSnippet.fromJson(
+                  _json['snippet'] as core.Map<core.String, core.dynamic>)
+              : null,
+          subscriberSnippet: _json.containsKey('subscriberSnippet')
+              ? SubscriptionSubscriberSnippet.fromJson(
+                  _json['subscriberSnippet']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentDetails != null) 'contentDetails': contentDetails!.toJson(),
@@ -13637,19 +14350,24 @@ class SubscriptionContentDetails {
   /// The approximate number of items that the subscription points to.
   core.int? totalItemCount;
 
-  SubscriptionContentDetails();
+  SubscriptionContentDetails({
+    this.activityType,
+    this.newItemCount,
+    this.totalItemCount,
+  });
 
-  SubscriptionContentDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('activityType')) {
-      activityType = _json['activityType'] as core.String;
-    }
-    if (_json.containsKey('newItemCount')) {
-      newItemCount = _json['newItemCount'] as core.int;
-    }
-    if (_json.containsKey('totalItemCount')) {
-      totalItemCount = _json['totalItemCount'] as core.int;
-    }
-  }
+  SubscriptionContentDetails.fromJson(core.Map _json)
+      : this(
+          activityType: _json.containsKey('activityType')
+              ? _json['activityType'] as core.String
+              : null,
+          newItemCount: _json.containsKey('newItemCount')
+              ? _json['newItemCount'] as core.int
+              : null,
+          totalItemCount: _json.containsKey('totalItemCount')
+              ? _json['totalItemCount'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (activityType != null) 'activityType': activityType!,
@@ -13686,42 +14404,49 @@ class SubscriptionListResponse {
   /// The visitorId identifies the visitor.
   core.String? visitorId;
 
-  SubscriptionListResponse();
+  SubscriptionListResponse({
+    this.etag,
+    this.eventId,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.pageInfo,
+    this.prevPageToken,
+    this.tokenPagination,
+    this.visitorId,
+  });
 
-  SubscriptionListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('eventId')) {
-      eventId = _json['eventId'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<Subscription>((value) => Subscription.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('pageInfo')) {
-      pageInfo = PageInfo.fromJson(
-          _json['pageInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('prevPageToken')) {
-      prevPageToken = _json['prevPageToken'] as core.String;
-    }
-    if (_json.containsKey('tokenPagination')) {
-      tokenPagination = TokenPagination.fromJson(
-          _json['tokenPagination'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('visitorId')) {
-      visitorId = _json['visitorId'] as core.String;
-    }
-  }
+  SubscriptionListResponse.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          eventId: _json.containsKey('eventId')
+              ? _json['eventId'] as core.String
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<Subscription>((value) => Subscription.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          pageInfo: _json.containsKey('pageInfo')
+              ? PageInfo.fromJson(
+                  _json['pageInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          prevPageToken: _json.containsKey('prevPageToken')
+              ? _json['prevPageToken'] as core.String
+              : null,
+          tokenPagination: _json.containsKey('tokenPagination')
+              ? TokenPagination.fromJson(_json['tokenPagination']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          visitorId: _json.containsKey('visitorId')
+              ? _json['visitorId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -13767,33 +14492,41 @@ class SubscriptionSnippet {
   /// The subscription's title.
   core.String? title;
 
-  SubscriptionSnippet();
+  SubscriptionSnippet({
+    this.channelId,
+    this.channelTitle,
+    this.description,
+    this.publishedAt,
+    this.resourceId,
+    this.thumbnails,
+    this.title,
+  });
 
-  SubscriptionSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey('channelId')) {
-      channelId = _json['channelId'] as core.String;
-    }
-    if (_json.containsKey('channelTitle')) {
-      channelTitle = _json['channelTitle'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('publishedAt')) {
-      publishedAt = core.DateTime.parse(_json['publishedAt'] as core.String);
-    }
-    if (_json.containsKey('resourceId')) {
-      resourceId = ResourceId.fromJson(
-          _json['resourceId'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('thumbnails')) {
-      thumbnails = ThumbnailDetails.fromJson(
-          _json['thumbnails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  SubscriptionSnippet.fromJson(core.Map _json)
+      : this(
+          channelId: _json.containsKey('channelId')
+              ? _json['channelId'] as core.String
+              : null,
+          channelTitle: _json.containsKey('channelTitle')
+              ? _json['channelTitle'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          publishedAt: _json.containsKey('publishedAt')
+              ? core.DateTime.parse(_json['publishedAt'] as core.String)
+              : null,
+          resourceId: _json.containsKey('resourceId')
+              ? ResourceId.fromJson(
+                  _json['resourceId'] as core.Map<core.String, core.dynamic>)
+              : null,
+          thumbnails: _json.containsKey('thumbnails')
+              ? ThumbnailDetails.fromJson(
+                  _json['thumbnails'] as core.Map<core.String, core.dynamic>)
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channelId != null) 'channelId': channelId!,
@@ -13821,23 +14554,28 @@ class SubscriptionSubscriberSnippet {
   /// The title of the subscriber.
   core.String? title;
 
-  SubscriptionSubscriberSnippet();
+  SubscriptionSubscriberSnippet({
+    this.channelId,
+    this.description,
+    this.thumbnails,
+    this.title,
+  });
 
-  SubscriptionSubscriberSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey('channelId')) {
-      channelId = _json['channelId'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('thumbnails')) {
-      thumbnails = ThumbnailDetails.fromJson(
-          _json['thumbnails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  SubscriptionSubscriberSnippet.fromJson(core.Map _json)
+      : this(
+          channelId: _json.containsKey('channelId')
+              ? _json['channelId'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          thumbnails: _json.containsKey('thumbnails')
+              ? ThumbnailDetails.fromJson(
+                  _json['thumbnails'] as core.Map<core.String, core.dynamic>)
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channelId != null) 'channelId': channelId!,
@@ -13864,23 +14602,23 @@ class SuperChatEvent {
   /// The `snippet` object contains basic details about the Super Chat event.
   SuperChatEventSnippet? snippet;
 
-  SuperChatEvent();
+  SuperChatEvent({
+    this.etag,
+    this.id,
+    this.kind,
+    this.snippet,
+  });
 
-  SuperChatEvent.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('snippet')) {
-      snippet = SuperChatEventSnippet.fromJson(
-          _json['snippet'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  SuperChatEvent.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          snippet: _json.containsKey('snippet')
+              ? SuperChatEventSnippet.fromJson(
+                  _json['snippet'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -13914,39 +14652,45 @@ class SuperChatEventListResponse {
   /// The visitorId identifies the visitor.
   core.String? visitorId;
 
-  SuperChatEventListResponse();
+  SuperChatEventListResponse({
+    this.etag,
+    this.eventId,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.pageInfo,
+    this.tokenPagination,
+    this.visitorId,
+  });
 
-  SuperChatEventListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('eventId')) {
-      eventId = _json['eventId'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<SuperChatEvent>((value) => SuperChatEvent.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('pageInfo')) {
-      pageInfo = PageInfo.fromJson(
-          _json['pageInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('tokenPagination')) {
-      tokenPagination = TokenPagination.fromJson(
-          _json['tokenPagination'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('visitorId')) {
-      visitorId = _json['visitorId'] as core.String;
-    }
-  }
+  SuperChatEventListResponse.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          eventId: _json.containsKey('eventId')
+              ? _json['eventId'] as core.String
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<SuperChatEvent>((value) => SuperChatEvent.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          pageInfo: _json.containsKey('pageInfo')
+              ? PageInfo.fromJson(
+                  _json['pageInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          tokenPagination: _json.containsKey('tokenPagination')
+              ? TokenPagination.fromJson(_json['tokenPagination']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          visitorId: _json.containsKey('visitorId')
+              ? _json['visitorId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -14002,42 +14746,54 @@ class SuperChatEventSnippet {
   /// Details about the supporter.
   ChannelProfileDetails? supporterDetails;
 
-  SuperChatEventSnippet();
+  SuperChatEventSnippet({
+    this.amountMicros,
+    this.channelId,
+    this.commentText,
+    this.createdAt,
+    this.currency,
+    this.displayString,
+    this.isSuperStickerEvent,
+    this.messageType,
+    this.superStickerMetadata,
+    this.supporterDetails,
+  });
 
-  SuperChatEventSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey('amountMicros')) {
-      amountMicros = _json['amountMicros'] as core.String;
-    }
-    if (_json.containsKey('channelId')) {
-      channelId = _json['channelId'] as core.String;
-    }
-    if (_json.containsKey('commentText')) {
-      commentText = _json['commentText'] as core.String;
-    }
-    if (_json.containsKey('createdAt')) {
-      createdAt = core.DateTime.parse(_json['createdAt'] as core.String);
-    }
-    if (_json.containsKey('currency')) {
-      currency = _json['currency'] as core.String;
-    }
-    if (_json.containsKey('displayString')) {
-      displayString = _json['displayString'] as core.String;
-    }
-    if (_json.containsKey('isSuperStickerEvent')) {
-      isSuperStickerEvent = _json['isSuperStickerEvent'] as core.bool;
-    }
-    if (_json.containsKey('messageType')) {
-      messageType = _json['messageType'] as core.int;
-    }
-    if (_json.containsKey('superStickerMetadata')) {
-      superStickerMetadata = SuperStickerMetadata.fromJson(
-          _json['superStickerMetadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('supporterDetails')) {
-      supporterDetails = ChannelProfileDetails.fromJson(
-          _json['supporterDetails'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  SuperChatEventSnippet.fromJson(core.Map _json)
+      : this(
+          amountMicros: _json.containsKey('amountMicros')
+              ? _json['amountMicros'] as core.String
+              : null,
+          channelId: _json.containsKey('channelId')
+              ? _json['channelId'] as core.String
+              : null,
+          commentText: _json.containsKey('commentText')
+              ? _json['commentText'] as core.String
+              : null,
+          createdAt: _json.containsKey('createdAt')
+              ? core.DateTime.parse(_json['createdAt'] as core.String)
+              : null,
+          currency: _json.containsKey('currency')
+              ? _json['currency'] as core.String
+              : null,
+          displayString: _json.containsKey('displayString')
+              ? _json['displayString'] as core.String
+              : null,
+          isSuperStickerEvent: _json.containsKey('isSuperStickerEvent')
+              ? _json['isSuperStickerEvent'] as core.bool
+              : null,
+          messageType: _json.containsKey('messageType')
+              ? _json['messageType'] as core.int
+              : null,
+          superStickerMetadata: _json.containsKey('superStickerMetadata')
+              ? SuperStickerMetadata.fromJson(_json['superStickerMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          supporterDetails: _json.containsKey('supporterDetails')
+              ? ChannelProfileDetails.fromJson(_json['supporterDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (amountMicros != null) 'amountMicros': amountMicros!,
@@ -14070,19 +14826,24 @@ class SuperStickerMetadata {
   /// recognizable characteristic of the sticker.
   core.String? stickerId;
 
-  SuperStickerMetadata();
+  SuperStickerMetadata({
+    this.altText,
+    this.altTextLanguage,
+    this.stickerId,
+  });
 
-  SuperStickerMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('altText')) {
-      altText = _json['altText'] as core.String;
-    }
-    if (_json.containsKey('altTextLanguage')) {
-      altTextLanguage = _json['altTextLanguage'] as core.String;
-    }
-    if (_json.containsKey('stickerId')) {
-      stickerId = _json['stickerId'] as core.String;
-    }
-  }
+  SuperStickerMetadata.fromJson(core.Map _json)
+      : this(
+          altText: _json.containsKey('altText')
+              ? _json['altText'] as core.String
+              : null,
+          altTextLanguage: _json.containsKey('altTextLanguage')
+              ? _json['altTextLanguage'] as core.String
+              : null,
+          stickerId: _json.containsKey('stickerId')
+              ? _json['stickerId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (altText != null) 'altText': altText!,
@@ -14097,23 +14858,25 @@ class TestItem {
   core.String? id;
   TestItemTestItemSnippet? snippet;
 
-  TestItem();
+  TestItem({
+    this.featuredPart,
+    this.gaia,
+    this.id,
+    this.snippet,
+  });
 
-  TestItem.fromJson(core.Map _json) {
-    if (_json.containsKey('featuredPart')) {
-      featuredPart = _json['featuredPart'] as core.bool;
-    }
-    if (_json.containsKey('gaia')) {
-      gaia = _json['gaia'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('snippet')) {
-      snippet = TestItemTestItemSnippet.fromJson(
-          _json['snippet'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  TestItem.fromJson(core.Map _json)
+      : this(
+          featuredPart: _json.containsKey('featuredPart')
+              ? _json['featuredPart'] as core.bool
+              : null,
+          gaia: _json.containsKey('gaia') ? _json['gaia'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          snippet: _json.containsKey('snippet')
+              ? TestItemTestItemSnippet.fromJson(
+                  _json['snippet'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (featuredPart != null) 'featuredPart': featuredPart!,
@@ -14155,27 +14918,30 @@ class ThirdPartyLink {
   /// The status object contains information about the status of the link.
   ThirdPartyLinkStatus? status;
 
-  ThirdPartyLink();
+  ThirdPartyLink({
+    this.etag,
+    this.kind,
+    this.linkingToken,
+    this.snippet,
+    this.status,
+  });
 
-  ThirdPartyLink.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('linkingToken')) {
-      linkingToken = _json['linkingToken'] as core.String;
-    }
-    if (_json.containsKey('snippet')) {
-      snippet = ThirdPartyLinkSnippet.fromJson(
-          _json['snippet'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('status')) {
-      status = ThirdPartyLinkStatus.fromJson(
-          _json['status'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ThirdPartyLink.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          linkingToken: _json.containsKey('linkingToken')
+              ? _json['linkingToken'] as core.String
+              : null,
+          snippet: _json.containsKey('snippet')
+              ? ThirdPartyLinkSnippet.fromJson(
+                  _json['snippet'] as core.Map<core.String, core.dynamic>)
+              : null,
+          status: _json.containsKey('status')
+              ? ThirdPartyLinkStatus.fromJson(
+                  _json['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -14201,17 +14967,19 @@ class ThirdPartyLinkSnippet {
   /// commerce capabilities for that channel on YouTube.
   core.String? type;
 
-  ThirdPartyLinkSnippet();
+  ThirdPartyLinkSnippet({
+    this.channelToStoreLink,
+    this.type,
+  });
 
-  ThirdPartyLinkSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey('channelToStoreLink')) {
-      channelToStoreLink = ChannelToStoreLinkDetails.fromJson(
-          _json['channelToStoreLink'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  ThirdPartyLinkSnippet.fromJson(core.Map _json)
+      : this(
+          channelToStoreLink: _json.containsKey('channelToStoreLink')
+              ? ChannelToStoreLinkDetails.fromJson(_json['channelToStoreLink']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channelToStoreLink != null)
@@ -14231,13 +14999,16 @@ class ThirdPartyLinkStatus {
   /// - "linked"
   core.String? linkStatus;
 
-  ThirdPartyLinkStatus();
+  ThirdPartyLinkStatus({
+    this.linkStatus,
+  });
 
-  ThirdPartyLinkStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('linkStatus')) {
-      linkStatus = _json['linkStatus'] as core.String;
-    }
-  }
+  ThirdPartyLinkStatus.fromJson(core.Map _json)
+      : this(
+          linkStatus: _json.containsKey('linkStatus')
+              ? _json['linkStatus'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (linkStatus != null) 'linkStatus': linkStatus!,
@@ -14255,19 +15026,19 @@ class Thumbnail {
   /// (Optional) Width of the thumbnail image.
   core.int? width;
 
-  Thumbnail();
+  Thumbnail({
+    this.height,
+    this.url,
+    this.width,
+  });
 
-  Thumbnail.fromJson(core.Map _json) {
-    if (_json.containsKey('height')) {
-      height = _json['height'] as core.int;
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-    if (_json.containsKey('width')) {
-      width = _json['width'] as core.int;
-    }
-  }
+  Thumbnail.fromJson(core.Map _json)
+      : this(
+          height:
+              _json.containsKey('height') ? _json['height'] as core.int : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          width: _json.containsKey('width') ? _json['width'] as core.int : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (height != null) 'height': height!,
@@ -14293,30 +15064,37 @@ class ThumbnailDetails {
   /// The standard quality image for this resource.
   Thumbnail? standard;
 
-  ThumbnailDetails();
+  ThumbnailDetails({
+    this.default_,
+    this.high,
+    this.maxres,
+    this.medium,
+    this.standard,
+  });
 
-  ThumbnailDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('default')) {
-      default_ = Thumbnail.fromJson(
-          _json['default'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('high')) {
-      high = Thumbnail.fromJson(
-          _json['high'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('maxres')) {
-      maxres = Thumbnail.fromJson(
-          _json['maxres'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('medium')) {
-      medium = Thumbnail.fromJson(
-          _json['medium'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('standard')) {
-      standard = Thumbnail.fromJson(
-          _json['standard'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ThumbnailDetails.fromJson(core.Map _json)
+      : this(
+          default_: _json.containsKey('default')
+              ? Thumbnail.fromJson(
+                  _json['default'] as core.Map<core.String, core.dynamic>)
+              : null,
+          high: _json.containsKey('high')
+              ? Thumbnail.fromJson(
+                  _json['high'] as core.Map<core.String, core.dynamic>)
+              : null,
+          maxres: _json.containsKey('maxres')
+              ? Thumbnail.fromJson(
+                  _json['maxres'] as core.Map<core.String, core.dynamic>)
+              : null,
+          medium: _json.containsKey('medium')
+              ? Thumbnail.fromJson(
+                  _json['medium'] as core.Map<core.String, core.dynamic>)
+              : null,
+          standard: _json.containsKey('standard')
+              ? Thumbnail.fromJson(
+                  _json['standard'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (default_ != null) 'default': default_!.toJson(),
@@ -14345,28 +15123,31 @@ class ThumbnailSetResponse {
   /// The visitorId identifies the visitor.
   core.String? visitorId;
 
-  ThumbnailSetResponse();
+  ThumbnailSetResponse({
+    this.etag,
+    this.eventId,
+    this.items,
+    this.kind,
+    this.visitorId,
+  });
 
-  ThumbnailSetResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('eventId')) {
-      eventId = _json['eventId'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<ThumbnailDetails>((value) => ThumbnailDetails.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('visitorId')) {
-      visitorId = _json['visitorId'] as core.String;
-    }
-  }
+  ThumbnailSetResponse.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          eventId: _json.containsKey('eventId')
+              ? _json['eventId'] as core.String
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<ThumbnailDetails>((value) => ThumbnailDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          visitorId: _json.containsKey('visitorId')
+              ? _json['visitorId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -14489,85 +15270,99 @@ class Video {
   /// associated with the video.
   VideoTopicDetails? topicDetails;
 
-  Video();
+  Video({
+    this.ageGating,
+    this.contentDetails,
+    this.etag,
+    this.fileDetails,
+    this.id,
+    this.kind,
+    this.liveStreamingDetails,
+    this.localizations,
+    this.monetizationDetails,
+    this.player,
+    this.processingDetails,
+    this.projectDetails,
+    this.recordingDetails,
+    this.snippet,
+    this.statistics,
+    this.status,
+    this.suggestions,
+    this.topicDetails,
+  });
 
-  Video.fromJson(core.Map _json) {
-    if (_json.containsKey('ageGating')) {
-      ageGating = VideoAgeGating.fromJson(
-          _json['ageGating'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('contentDetails')) {
-      contentDetails = VideoContentDetails.fromJson(
-          _json['contentDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('fileDetails')) {
-      fileDetails = VideoFileDetails.fromJson(
-          _json['fileDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('liveStreamingDetails')) {
-      liveStreamingDetails = VideoLiveStreamingDetails.fromJson(
-          _json['liveStreamingDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('localizations')) {
-      localizations =
-          (_json['localizations'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          VideoLocalization.fromJson(
-              item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('monetizationDetails')) {
-      monetizationDetails = VideoMonetizationDetails.fromJson(
-          _json['monetizationDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('player')) {
-      player = VideoPlayer.fromJson(
-          _json['player'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('processingDetails')) {
-      processingDetails = VideoProcessingDetails.fromJson(
-          _json['processingDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('projectDetails')) {
-      projectDetails = VideoProjectDetails.fromJson(
-          _json['projectDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('recordingDetails')) {
-      recordingDetails = VideoRecordingDetails.fromJson(
-          _json['recordingDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('snippet')) {
-      snippet = VideoSnippet.fromJson(
-          _json['snippet'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('statistics')) {
-      statistics = VideoStatistics.fromJson(
-          _json['statistics'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('status')) {
-      status = VideoStatus.fromJson(
-          _json['status'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('suggestions')) {
-      suggestions = VideoSuggestions.fromJson(
-          _json['suggestions'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('topicDetails')) {
-      topicDetails = VideoTopicDetails.fromJson(
-          _json['topicDetails'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Video.fromJson(core.Map _json)
+      : this(
+          ageGating: _json.containsKey('ageGating')
+              ? VideoAgeGating.fromJson(
+                  _json['ageGating'] as core.Map<core.String, core.dynamic>)
+              : null,
+          contentDetails: _json.containsKey('contentDetails')
+              ? VideoContentDetails.fromJson(_json['contentDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          fileDetails: _json.containsKey('fileDetails')
+              ? VideoFileDetails.fromJson(
+                  _json['fileDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          liveStreamingDetails: _json.containsKey('liveStreamingDetails')
+              ? VideoLiveStreamingDetails.fromJson(_json['liveStreamingDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          localizations: _json.containsKey('localizations')
+              ? (_json['localizations'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    VideoLocalization.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          monetizationDetails: _json.containsKey('monetizationDetails')
+              ? VideoMonetizationDetails.fromJson(_json['monetizationDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          player: _json.containsKey('player')
+              ? VideoPlayer.fromJson(
+                  _json['player'] as core.Map<core.String, core.dynamic>)
+              : null,
+          processingDetails: _json.containsKey('processingDetails')
+              ? VideoProcessingDetails.fromJson(_json['processingDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          projectDetails: _json.containsKey('projectDetails')
+              ? VideoProjectDetails.fromJson(_json['projectDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          recordingDetails: _json.containsKey('recordingDetails')
+              ? VideoRecordingDetails.fromJson(_json['recordingDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          snippet: _json.containsKey('snippet')
+              ? VideoSnippet.fromJson(
+                  _json['snippet'] as core.Map<core.String, core.dynamic>)
+              : null,
+          statistics: _json.containsKey('statistics')
+              ? VideoStatistics.fromJson(
+                  _json['statistics'] as core.Map<core.String, core.dynamic>)
+              : null,
+          status: _json.containsKey('status')
+              ? VideoStatus.fromJson(
+                  _json['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+          suggestions: _json.containsKey('suggestions')
+              ? VideoSuggestions.fromJson(
+                  _json['suggestions'] as core.Map<core.String, core.dynamic>)
+              : null,
+          topicDetails: _json.containsKey('topicDetails')
+              ? VideoTopicDetails.fromJson(
+                  _json['topicDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ageGating != null) 'ageGating': ageGating!.toJson(),
@@ -14619,25 +15414,32 @@ class VideoAbuseReport {
   /// The ID that YouTube uses to uniquely identify the video.
   core.String? videoId;
 
-  VideoAbuseReport();
+  VideoAbuseReport({
+    this.comments,
+    this.language,
+    this.reasonId,
+    this.secondaryReasonId,
+    this.videoId,
+  });
 
-  VideoAbuseReport.fromJson(core.Map _json) {
-    if (_json.containsKey('comments')) {
-      comments = _json['comments'] as core.String;
-    }
-    if (_json.containsKey('language')) {
-      language = _json['language'] as core.String;
-    }
-    if (_json.containsKey('reasonId')) {
-      reasonId = _json['reasonId'] as core.String;
-    }
-    if (_json.containsKey('secondaryReasonId')) {
-      secondaryReasonId = _json['secondaryReasonId'] as core.String;
-    }
-    if (_json.containsKey('videoId')) {
-      videoId = _json['videoId'] as core.String;
-    }
-  }
+  VideoAbuseReport.fromJson(core.Map _json)
+      : this(
+          comments: _json.containsKey('comments')
+              ? _json['comments'] as core.String
+              : null,
+          language: _json.containsKey('language')
+              ? _json['language'] as core.String
+              : null,
+          reasonId: _json.containsKey('reasonId')
+              ? _json['reasonId'] as core.String
+              : null,
+          secondaryReasonId: _json.containsKey('secondaryReasonId')
+              ? _json['secondaryReasonId'] as core.String
+              : null,
+          videoId: _json.containsKey('videoId')
+              ? _json['videoId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (comments != null) 'comments': comments!,
@@ -14667,23 +15469,23 @@ class VideoAbuseReportReason {
   /// The `snippet` object contains basic details about the abuse report reason.
   VideoAbuseReportReasonSnippet? snippet;
 
-  VideoAbuseReportReason();
+  VideoAbuseReportReason({
+    this.etag,
+    this.id,
+    this.kind,
+    this.snippet,
+  });
 
-  VideoAbuseReportReason.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('snippet')) {
-      snippet = VideoAbuseReportReasonSnippet.fromJson(
-          _json['snippet'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  VideoAbuseReportReason.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          snippet: _json.containsKey('snippet')
+              ? VideoAbuseReportReasonSnippet.fromJson(
+                  _json['snippet'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -14711,29 +15513,32 @@ class VideoAbuseReportReasonListResponse {
   /// The `visitorId` identifies the visitor.
   core.String? visitorId;
 
-  VideoAbuseReportReasonListResponse();
+  VideoAbuseReportReasonListResponse({
+    this.etag,
+    this.eventId,
+    this.items,
+    this.kind,
+    this.visitorId,
+  });
 
-  VideoAbuseReportReasonListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('eventId')) {
-      eventId = _json['eventId'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<VideoAbuseReportReason>((value) =>
-              VideoAbuseReportReason.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('visitorId')) {
-      visitorId = _json['visitorId'] as core.String;
-    }
-  }
+  VideoAbuseReportReasonListResponse.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          eventId: _json.containsKey('eventId')
+              ? _json['eventId'] as core.String
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<VideoAbuseReportReason>((value) =>
+                      VideoAbuseReportReason.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          visitorId: _json.containsKey('visitorId')
+              ? _json['visitorId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -14755,20 +15560,23 @@ class VideoAbuseReportReasonSnippet {
   /// (There might be 0 or more.)
   core.List<VideoAbuseReportSecondaryReason>? secondaryReasons;
 
-  VideoAbuseReportReasonSnippet();
+  VideoAbuseReportReasonSnippet({
+    this.label,
+    this.secondaryReasons,
+  });
 
-  VideoAbuseReportReasonSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey('label')) {
-      label = _json['label'] as core.String;
-    }
-    if (_json.containsKey('secondaryReasons')) {
-      secondaryReasons = (_json['secondaryReasons'] as core.List)
-          .map<VideoAbuseReportSecondaryReason>((value) =>
-              VideoAbuseReportSecondaryReason.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  VideoAbuseReportReasonSnippet.fromJson(core.Map _json)
+      : this(
+          label:
+              _json.containsKey('label') ? _json['label'] as core.String : null,
+          secondaryReasons: _json.containsKey('secondaryReasons')
+              ? (_json['secondaryReasons'] as core.List)
+                  .map<VideoAbuseReportSecondaryReason>((value) =>
+                      VideoAbuseReportSecondaryReason.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (label != null) 'label': label!,
@@ -14785,16 +15593,17 @@ class VideoAbuseReportSecondaryReason {
   /// The localized label for this abuse report secondary reason.
   core.String? label;
 
-  VideoAbuseReportSecondaryReason();
+  VideoAbuseReportSecondaryReason({
+    this.id,
+    this.label,
+  });
 
-  VideoAbuseReportSecondaryReason.fromJson(core.Map _json) {
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('label')) {
-      label = _json['label'] as core.String;
-    }
-  }
+  VideoAbuseReportSecondaryReason.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          label:
+              _json.containsKey('label') ? _json['label'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
@@ -14824,19 +15633,24 @@ class VideoAgeGating {
   /// - "m17Plus"
   core.String? videoGameRating;
 
-  VideoAgeGating();
+  VideoAgeGating({
+    this.alcoholContent,
+    this.restricted,
+    this.videoGameRating,
+  });
 
-  VideoAgeGating.fromJson(core.Map _json) {
-    if (_json.containsKey('alcoholContent')) {
-      alcoholContent = _json['alcoholContent'] as core.bool;
-    }
-    if (_json.containsKey('restricted')) {
-      restricted = _json['restricted'] as core.bool;
-    }
-    if (_json.containsKey('videoGameRating')) {
-      videoGameRating = _json['videoGameRating'] as core.String;
-    }
-  }
+  VideoAgeGating.fromJson(core.Map _json)
+      : this(
+          alcoholContent: _json.containsKey('alcoholContent')
+              ? _json['alcoholContent'] as core.bool
+              : null,
+          restricted: _json.containsKey('restricted')
+              ? _json['restricted'] as core.bool
+              : null,
+          videoGameRating: _json.containsKey('videoGameRating')
+              ? _json['videoGameRating'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alcoholContent != null) 'alcoholContent': alcoholContent!,
@@ -14863,23 +15677,23 @@ class VideoCategory {
   /// including its title.
   VideoCategorySnippet? snippet;
 
-  VideoCategory();
+  VideoCategory({
+    this.etag,
+    this.id,
+    this.kind,
+    this.snippet,
+  });
 
-  VideoCategory.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('snippet')) {
-      snippet = VideoCategorySnippet.fromJson(
-          _json['snippet'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  VideoCategory.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          snippet: _json.containsKey('snippet')
+              ? VideoCategorySnippet.fromJson(
+                  _json['snippet'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -14922,42 +15736,49 @@ class VideoCategoryListResponse {
   /// The visitorId identifies the visitor.
   core.String? visitorId;
 
-  VideoCategoryListResponse();
+  VideoCategoryListResponse({
+    this.etag,
+    this.eventId,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.pageInfo,
+    this.prevPageToken,
+    this.tokenPagination,
+    this.visitorId,
+  });
 
-  VideoCategoryListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('eventId')) {
-      eventId = _json['eventId'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<VideoCategory>((value) => VideoCategory.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('pageInfo')) {
-      pageInfo = PageInfo.fromJson(
-          _json['pageInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('prevPageToken')) {
-      prevPageToken = _json['prevPageToken'] as core.String;
-    }
-    if (_json.containsKey('tokenPagination')) {
-      tokenPagination = TokenPagination.fromJson(
-          _json['tokenPagination'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('visitorId')) {
-      visitorId = _json['visitorId'] as core.String;
-    }
-  }
+  VideoCategoryListResponse.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          eventId: _json.containsKey('eventId')
+              ? _json['eventId'] as core.String
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<VideoCategory>((value) => VideoCategory.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          pageInfo: _json.containsKey('pageInfo')
+              ? PageInfo.fromJson(
+                  _json['pageInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          prevPageToken: _json.containsKey('prevPageToken')
+              ? _json['prevPageToken'] as core.String
+              : null,
+          tokenPagination: _json.containsKey('tokenPagination')
+              ? TokenPagination.fromJson(_json['tokenPagination']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          visitorId: _json.containsKey('visitorId')
+              ? _json['visitorId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -14984,19 +15805,23 @@ class VideoCategorySnippet {
   /// The video category's title.
   core.String? title;
 
-  VideoCategorySnippet();
+  VideoCategorySnippet({
+    this.assignable,
+    this.channelId,
+    this.title,
+  });
 
-  VideoCategorySnippet.fromJson(core.Map _json) {
-    if (_json.containsKey('assignable')) {
-      assignable = _json['assignable'] as core.bool;
-    }
-    if (_json.containsKey('channelId')) {
-      channelId = _json['channelId'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  VideoCategorySnippet.fromJson(core.Map _json)
+      : this(
+          assignable: _json.containsKey('assignable')
+              ? _json['assignable'] as core.bool
+              : null,
+          channelId: _json.containsKey('channelId')
+              ? _json['channelId'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignable != null) 'assignable': assignable!,
@@ -15066,43 +15891,56 @@ class VideoContentDetails {
   /// contentDetails.regionRestriction.blocked property.
   VideoContentDetailsRegionRestriction? regionRestriction;
 
-  VideoContentDetails();
+  VideoContentDetails({
+    this.caption,
+    this.contentRating,
+    this.countryRestriction,
+    this.definition,
+    this.dimension,
+    this.duration,
+    this.hasCustomThumbnail,
+    this.licensedContent,
+    this.projection,
+    this.regionRestriction,
+  });
 
-  VideoContentDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('caption')) {
-      caption = _json['caption'] as core.String;
-    }
-    if (_json.containsKey('contentRating')) {
-      contentRating = ContentRating.fromJson(
-          _json['contentRating'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('countryRestriction')) {
-      countryRestriction = AccessPolicy.fromJson(
-          _json['countryRestriction'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('definition')) {
-      definition = _json['definition'] as core.String;
-    }
-    if (_json.containsKey('dimension')) {
-      dimension = _json['dimension'] as core.String;
-    }
-    if (_json.containsKey('duration')) {
-      duration = _json['duration'] as core.String;
-    }
-    if (_json.containsKey('hasCustomThumbnail')) {
-      hasCustomThumbnail = _json['hasCustomThumbnail'] as core.bool;
-    }
-    if (_json.containsKey('licensedContent')) {
-      licensedContent = _json['licensedContent'] as core.bool;
-    }
-    if (_json.containsKey('projection')) {
-      projection = _json['projection'] as core.String;
-    }
-    if (_json.containsKey('regionRestriction')) {
-      regionRestriction = VideoContentDetailsRegionRestriction.fromJson(
-          _json['regionRestriction'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  VideoContentDetails.fromJson(core.Map _json)
+      : this(
+          caption: _json.containsKey('caption')
+              ? _json['caption'] as core.String
+              : null,
+          contentRating: _json.containsKey('contentRating')
+              ? ContentRating.fromJson(
+                  _json['contentRating'] as core.Map<core.String, core.dynamic>)
+              : null,
+          countryRestriction: _json.containsKey('countryRestriction')
+              ? AccessPolicy.fromJson(_json['countryRestriction']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          definition: _json.containsKey('definition')
+              ? _json['definition'] as core.String
+              : null,
+          dimension: _json.containsKey('dimension')
+              ? _json['dimension'] as core.String
+              : null,
+          duration: _json.containsKey('duration')
+              ? _json['duration'] as core.String
+              : null,
+          hasCustomThumbnail: _json.containsKey('hasCustomThumbnail')
+              ? _json['hasCustomThumbnail'] as core.bool
+              : null,
+          licensedContent: _json.containsKey('licensedContent')
+              ? _json['licensedContent'] as core.bool
+              : null,
+          projection: _json.containsKey('projection')
+              ? _json['projection'] as core.String
+              : null,
+          regionRestriction: _json.containsKey('regionRestriction')
+              ? VideoContentDetailsRegionRestriction.fromJson(
+                  _json['regionRestriction']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (caption != null) 'caption': caption!,
@@ -15138,20 +15976,24 @@ class VideoContentDetailsRegionRestriction {
   /// contains an empty list, the video is viewable in all countries.
   core.List<core.String>? blocked;
 
-  VideoContentDetailsRegionRestriction();
+  VideoContentDetailsRegionRestriction({
+    this.allowed,
+    this.blocked,
+  });
 
-  VideoContentDetailsRegionRestriction.fromJson(core.Map _json) {
-    if (_json.containsKey('allowed')) {
-      allowed = (_json['allowed'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('blocked')) {
-      blocked = (_json['blocked'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  VideoContentDetailsRegionRestriction.fromJson(core.Map _json)
+      : this(
+          allowed: _json.containsKey('allowed')
+              ? (_json['allowed'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          blocked: _json.containsKey('blocked')
+              ? (_json['blocked'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowed != null) 'allowed': allowed!,
@@ -15217,45 +16059,56 @@ class VideoFileDetails {
   /// Each item in the list contains detailed metadata about a video stream.
   core.List<VideoFileDetailsVideoStream>? videoStreams;
 
-  VideoFileDetails();
+  VideoFileDetails({
+    this.audioStreams,
+    this.bitrateBps,
+    this.container,
+    this.creationTime,
+    this.durationMs,
+    this.fileName,
+    this.fileSize,
+    this.fileType,
+    this.videoStreams,
+  });
 
-  VideoFileDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('audioStreams')) {
-      audioStreams = (_json['audioStreams'] as core.List)
-          .map<VideoFileDetailsAudioStream>((value) =>
-              VideoFileDetailsAudioStream.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('bitrateBps')) {
-      bitrateBps = _json['bitrateBps'] as core.String;
-    }
-    if (_json.containsKey('container')) {
-      container = _json['container'] as core.String;
-    }
-    if (_json.containsKey('creationTime')) {
-      creationTime = _json['creationTime'] as core.String;
-    }
-    if (_json.containsKey('durationMs')) {
-      durationMs = _json['durationMs'] as core.String;
-    }
-    if (_json.containsKey('fileName')) {
-      fileName = _json['fileName'] as core.String;
-    }
-    if (_json.containsKey('fileSize')) {
-      fileSize = _json['fileSize'] as core.String;
-    }
-    if (_json.containsKey('fileType')) {
-      fileType = _json['fileType'] as core.String;
-    }
-    if (_json.containsKey('videoStreams')) {
-      videoStreams = (_json['videoStreams'] as core.List)
-          .map<VideoFileDetailsVideoStream>((value) =>
-              VideoFileDetailsVideoStream.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  VideoFileDetails.fromJson(core.Map _json)
+      : this(
+          audioStreams: _json.containsKey('audioStreams')
+              ? (_json['audioStreams'] as core.List)
+                  .map<VideoFileDetailsAudioStream>((value) =>
+                      VideoFileDetailsAudioStream.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          bitrateBps: _json.containsKey('bitrateBps')
+              ? _json['bitrateBps'] as core.String
+              : null,
+          container: _json.containsKey('container')
+              ? _json['container'] as core.String
+              : null,
+          creationTime: _json.containsKey('creationTime')
+              ? _json['creationTime'] as core.String
+              : null,
+          durationMs: _json.containsKey('durationMs')
+              ? _json['durationMs'] as core.String
+              : null,
+          fileName: _json.containsKey('fileName')
+              ? _json['fileName'] as core.String
+              : null,
+          fileSize: _json.containsKey('fileSize')
+              ? _json['fileSize'] as core.String
+              : null,
+          fileType: _json.containsKey('fileType')
+              ? _json['fileType'] as core.String
+              : null,
+          videoStreams: _json.containsKey('videoStreams')
+              ? (_json['videoStreams'] as core.List)
+                  .map<VideoFileDetailsVideoStream>((value) =>
+                      VideoFileDetailsVideoStream.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (audioStreams != null)
@@ -15288,22 +16141,27 @@ class VideoFileDetailsAudioStream {
   /// Typically, the value is a four-letter vendor code.
   core.String? vendor;
 
-  VideoFileDetailsAudioStream();
+  VideoFileDetailsAudioStream({
+    this.bitrateBps,
+    this.channelCount,
+    this.codec,
+    this.vendor,
+  });
 
-  VideoFileDetailsAudioStream.fromJson(core.Map _json) {
-    if (_json.containsKey('bitrateBps')) {
-      bitrateBps = _json['bitrateBps'] as core.String;
-    }
-    if (_json.containsKey('channelCount')) {
-      channelCount = _json['channelCount'] as core.int;
-    }
-    if (_json.containsKey('codec')) {
-      codec = _json['codec'] as core.String;
-    }
-    if (_json.containsKey('vendor')) {
-      vendor = _json['vendor'] as core.String;
-    }
-  }
+  VideoFileDetailsAudioStream.fromJson(core.Map _json)
+      : this(
+          bitrateBps: _json.containsKey('bitrateBps')
+              ? _json['bitrateBps'] as core.String
+              : null,
+          channelCount: _json.containsKey('channelCount')
+              ? _json['channelCount'] as core.int
+              : null,
+          codec:
+              _json.containsKey('codec') ? _json['codec'] as core.String : null,
+          vendor: _json.containsKey('vendor')
+              ? _json['vendor'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bitrateBps != null) 'bitrateBps': bitrateBps!,
@@ -15352,34 +16210,43 @@ class VideoFileDetailsVideoStream {
   /// height_pixels.
   core.int? widthPixels;
 
-  VideoFileDetailsVideoStream();
+  VideoFileDetailsVideoStream({
+    this.aspectRatio,
+    this.bitrateBps,
+    this.codec,
+    this.frameRateFps,
+    this.heightPixels,
+    this.rotation,
+    this.vendor,
+    this.widthPixels,
+  });
 
-  VideoFileDetailsVideoStream.fromJson(core.Map _json) {
-    if (_json.containsKey('aspectRatio')) {
-      aspectRatio = (_json['aspectRatio'] as core.num).toDouble();
-    }
-    if (_json.containsKey('bitrateBps')) {
-      bitrateBps = _json['bitrateBps'] as core.String;
-    }
-    if (_json.containsKey('codec')) {
-      codec = _json['codec'] as core.String;
-    }
-    if (_json.containsKey('frameRateFps')) {
-      frameRateFps = (_json['frameRateFps'] as core.num).toDouble();
-    }
-    if (_json.containsKey('heightPixels')) {
-      heightPixels = _json['heightPixels'] as core.int;
-    }
-    if (_json.containsKey('rotation')) {
-      rotation = _json['rotation'] as core.String;
-    }
-    if (_json.containsKey('vendor')) {
-      vendor = _json['vendor'] as core.String;
-    }
-    if (_json.containsKey('widthPixels')) {
-      widthPixels = _json['widthPixels'] as core.int;
-    }
-  }
+  VideoFileDetailsVideoStream.fromJson(core.Map _json)
+      : this(
+          aspectRatio: _json.containsKey('aspectRatio')
+              ? (_json['aspectRatio'] as core.num).toDouble()
+              : null,
+          bitrateBps: _json.containsKey('bitrateBps')
+              ? _json['bitrateBps'] as core.String
+              : null,
+          codec:
+              _json.containsKey('codec') ? _json['codec'] as core.String : null,
+          frameRateFps: _json.containsKey('frameRateFps')
+              ? (_json['frameRateFps'] as core.num).toDouble()
+              : null,
+          heightPixels: _json.containsKey('heightPixels')
+              ? _json['heightPixels'] as core.int
+              : null,
+          rotation: _json.containsKey('rotation')
+              ? _json['rotation'] as core.String
+              : null,
+          vendor: _json.containsKey('vendor')
+              ? _json['vendor'] as core.String
+              : null,
+          widthPixels: _json.containsKey('widthPixels')
+              ? _json['widthPixels'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (aspectRatio != null) 'aspectRatio': aspectRatio!,
@@ -15411,28 +16278,31 @@ class VideoGetRatingResponse {
   /// The visitorId identifies the visitor.
   core.String? visitorId;
 
-  VideoGetRatingResponse();
+  VideoGetRatingResponse({
+    this.etag,
+    this.eventId,
+    this.items,
+    this.kind,
+    this.visitorId,
+  });
 
-  VideoGetRatingResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('eventId')) {
-      eventId = _json['eventId'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<VideoRating>((value) => VideoRating.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('visitorId')) {
-      visitorId = _json['visitorId'] as core.String;
-    }
-  }
+  VideoGetRatingResponse.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          eventId: _json.containsKey('eventId')
+              ? _json['eventId'] as core.String
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<VideoRating>((value) => VideoRating.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          visitorId: _json.containsKey('visitorId')
+              ? _json['visitorId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -15472,42 +16342,49 @@ class VideoListResponse {
   /// The visitorId identifies the visitor.
   core.String? visitorId;
 
-  VideoListResponse();
+  VideoListResponse({
+    this.etag,
+    this.eventId,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.pageInfo,
+    this.prevPageToken,
+    this.tokenPagination,
+    this.visitorId,
+  });
 
-  VideoListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('eventId')) {
-      eventId = _json['eventId'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<Video>((value) =>
-              Video.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('pageInfo')) {
-      pageInfo = PageInfo.fromJson(
-          _json['pageInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('prevPageToken')) {
-      prevPageToken = _json['prevPageToken'] as core.String;
-    }
-    if (_json.containsKey('tokenPagination')) {
-      tokenPagination = TokenPagination.fromJson(
-          _json['tokenPagination'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('visitorId')) {
-      visitorId = _json['visitorId'] as core.String;
-    }
-  }
+  VideoListResponse.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          eventId: _json.containsKey('eventId')
+              ? _json['eventId'] as core.String
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<Video>((value) => Video.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          pageInfo: _json.containsKey('pageInfo')
+              ? PageInfo.fromJson(
+                  _json['pageInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          prevPageToken: _json.containsKey('prevPageToken')
+              ? _json['prevPageToken'] as core.String
+              : null,
+          tokenPagination: _json.containsKey('tokenPagination')
+              ? TokenPagination.fromJson(_json['tokenPagination']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          visitorId: _json.containsKey('visitorId')
+              ? _json['visitorId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -15564,32 +16441,36 @@ class VideoLiveStreamingDetails {
   /// The time that the broadcast is scheduled to begin.
   core.DateTime? scheduledStartTime;
 
-  VideoLiveStreamingDetails();
+  VideoLiveStreamingDetails({
+    this.activeLiveChatId,
+    this.actualEndTime,
+    this.actualStartTime,
+    this.concurrentViewers,
+    this.scheduledEndTime,
+    this.scheduledStartTime,
+  });
 
-  VideoLiveStreamingDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('activeLiveChatId')) {
-      activeLiveChatId = _json['activeLiveChatId'] as core.String;
-    }
-    if (_json.containsKey('actualEndTime')) {
-      actualEndTime =
-          core.DateTime.parse(_json['actualEndTime'] as core.String);
-    }
-    if (_json.containsKey('actualStartTime')) {
-      actualStartTime =
-          core.DateTime.parse(_json['actualStartTime'] as core.String);
-    }
-    if (_json.containsKey('concurrentViewers')) {
-      concurrentViewers = _json['concurrentViewers'] as core.String;
-    }
-    if (_json.containsKey('scheduledEndTime')) {
-      scheduledEndTime =
-          core.DateTime.parse(_json['scheduledEndTime'] as core.String);
-    }
-    if (_json.containsKey('scheduledStartTime')) {
-      scheduledStartTime =
-          core.DateTime.parse(_json['scheduledStartTime'] as core.String);
-    }
-  }
+  VideoLiveStreamingDetails.fromJson(core.Map _json)
+      : this(
+          activeLiveChatId: _json.containsKey('activeLiveChatId')
+              ? _json['activeLiveChatId'] as core.String
+              : null,
+          actualEndTime: _json.containsKey('actualEndTime')
+              ? core.DateTime.parse(_json['actualEndTime'] as core.String)
+              : null,
+          actualStartTime: _json.containsKey('actualStartTime')
+              ? core.DateTime.parse(_json['actualStartTime'] as core.String)
+              : null,
+          concurrentViewers: _json.containsKey('concurrentViewers')
+              ? _json['concurrentViewers'] as core.String
+              : null,
+          scheduledEndTime: _json.containsKey('scheduledEndTime')
+              ? core.DateTime.parse(_json['scheduledEndTime'] as core.String)
+              : null,
+          scheduledStartTime: _json.containsKey('scheduledStartTime')
+              ? core.DateTime.parse(_json['scheduledStartTime'] as core.String)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (activeLiveChatId != null) 'activeLiveChatId': activeLiveChatId!,
@@ -15613,16 +16494,19 @@ class VideoLocalization {
   /// Localized version of the video's title.
   core.String? title;
 
-  VideoLocalization();
+  VideoLocalization({
+    this.description,
+    this.title,
+  });
 
-  VideoLocalization.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  VideoLocalization.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -15635,14 +16519,17 @@ class VideoMonetizationDetails {
   /// The value of access indicates whether the video can be monetized or not.
   AccessPolicy? access;
 
-  VideoMonetizationDetails();
+  VideoMonetizationDetails({
+    this.access,
+  });
 
-  VideoMonetizationDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('access')) {
-      access = AccessPolicy.fromJson(
-          _json['access'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  VideoMonetizationDetails.fromJson(core.Map _json)
+      : this(
+          access: _json.containsKey('access')
+              ? AccessPolicy.fromJson(
+                  _json['access'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (access != null) 'access': access!.toJson(),
@@ -15659,19 +16546,24 @@ class VideoPlayer {
   /// The embed width
   core.String? embedWidth;
 
-  VideoPlayer();
+  VideoPlayer({
+    this.embedHeight,
+    this.embedHtml,
+    this.embedWidth,
+  });
 
-  VideoPlayer.fromJson(core.Map _json) {
-    if (_json.containsKey('embedHeight')) {
-      embedHeight = _json['embedHeight'] as core.String;
-    }
-    if (_json.containsKey('embedHtml')) {
-      embedHtml = _json['embedHtml'] as core.String;
-    }
-    if (_json.containsKey('embedWidth')) {
-      embedWidth = _json['embedWidth'] as core.String;
-    }
-  }
+  VideoPlayer.fromJson(core.Map _json)
+      : this(
+          embedHeight: _json.containsKey('embedHeight')
+              ? _json['embedHeight'] as core.String
+              : null,
+          embedHtml: _json.containsKey('embedHtml')
+              ? _json['embedHtml'] as core.String
+              : null,
+          embedWidth: _json.containsKey('embedWidth')
+              ? _json['embedWidth'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (embedHeight != null) 'embedHeight': embedHeight!,
@@ -15748,38 +16640,49 @@ class VideoProcessingDetails {
   /// video.
   core.String? thumbnailsAvailability;
 
-  VideoProcessingDetails();
+  VideoProcessingDetails({
+    this.editorSuggestionsAvailability,
+    this.fileDetailsAvailability,
+    this.processingFailureReason,
+    this.processingIssuesAvailability,
+    this.processingProgress,
+    this.processingStatus,
+    this.tagSuggestionsAvailability,
+    this.thumbnailsAvailability,
+  });
 
-  VideoProcessingDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('editorSuggestionsAvailability')) {
-      editorSuggestionsAvailability =
-          _json['editorSuggestionsAvailability'] as core.String;
-    }
-    if (_json.containsKey('fileDetailsAvailability')) {
-      fileDetailsAvailability = _json['fileDetailsAvailability'] as core.String;
-    }
-    if (_json.containsKey('processingFailureReason')) {
-      processingFailureReason = _json['processingFailureReason'] as core.String;
-    }
-    if (_json.containsKey('processingIssuesAvailability')) {
-      processingIssuesAvailability =
-          _json['processingIssuesAvailability'] as core.String;
-    }
-    if (_json.containsKey('processingProgress')) {
-      processingProgress = VideoProcessingDetailsProcessingProgress.fromJson(
-          _json['processingProgress'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('processingStatus')) {
-      processingStatus = _json['processingStatus'] as core.String;
-    }
-    if (_json.containsKey('tagSuggestionsAvailability')) {
-      tagSuggestionsAvailability =
-          _json['tagSuggestionsAvailability'] as core.String;
-    }
-    if (_json.containsKey('thumbnailsAvailability')) {
-      thumbnailsAvailability = _json['thumbnailsAvailability'] as core.String;
-    }
-  }
+  VideoProcessingDetails.fromJson(core.Map _json)
+      : this(
+          editorSuggestionsAvailability:
+              _json.containsKey('editorSuggestionsAvailability')
+                  ? _json['editorSuggestionsAvailability'] as core.String
+                  : null,
+          fileDetailsAvailability: _json.containsKey('fileDetailsAvailability')
+              ? _json['fileDetailsAvailability'] as core.String
+              : null,
+          processingFailureReason: _json.containsKey('processingFailureReason')
+              ? _json['processingFailureReason'] as core.String
+              : null,
+          processingIssuesAvailability:
+              _json.containsKey('processingIssuesAvailability')
+                  ? _json['processingIssuesAvailability'] as core.String
+                  : null,
+          processingProgress: _json.containsKey('processingProgress')
+              ? VideoProcessingDetailsProcessingProgress.fromJson(
+                  _json['processingProgress']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          processingStatus: _json.containsKey('processingStatus')
+              ? _json['processingStatus'] as core.String
+              : null,
+          tagSuggestionsAvailability:
+              _json.containsKey('tagSuggestionsAvailability')
+                  ? _json['tagSuggestionsAvailability'] as core.String
+                  : null,
+          thumbnailsAvailability: _json.containsKey('thumbnailsAvailability')
+              ? _json['thumbnailsAvailability'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (editorSuggestionsAvailability != null)
@@ -15823,19 +16726,24 @@ class VideoProcessingDetailsProcessingProgress {
   /// finish processing the video.
   core.String? timeLeftMs;
 
-  VideoProcessingDetailsProcessingProgress();
+  VideoProcessingDetailsProcessingProgress({
+    this.partsProcessed,
+    this.partsTotal,
+    this.timeLeftMs,
+  });
 
-  VideoProcessingDetailsProcessingProgress.fromJson(core.Map _json) {
-    if (_json.containsKey('partsProcessed')) {
-      partsProcessed = _json['partsProcessed'] as core.String;
-    }
-    if (_json.containsKey('partsTotal')) {
-      partsTotal = _json['partsTotal'] as core.String;
-    }
-    if (_json.containsKey('timeLeftMs')) {
-      timeLeftMs = _json['timeLeftMs'] as core.String;
-    }
-  }
+  VideoProcessingDetailsProcessingProgress.fromJson(core.Map _json)
+      : this(
+          partsProcessed: _json.containsKey('partsProcessed')
+              ? _json['partsProcessed'] as core.String
+              : null,
+          partsTotal: _json.containsKey('partsTotal')
+              ? _json['partsTotal'] as core.String
+              : null,
+          timeLeftMs: _json.containsKey('timeLeftMs')
+              ? _json['timeLeftMs'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (partsProcessed != null) 'partsProcessed': partsProcessed!,
@@ -15877,16 +16785,20 @@ class VideoRating {
   /// The ID that YouTube uses to uniquely identify the video.
   core.String? videoId;
 
-  VideoRating();
+  VideoRating({
+    this.rating,
+    this.videoId,
+  });
 
-  VideoRating.fromJson(core.Map _json) {
-    if (_json.containsKey('rating')) {
-      rating = _json['rating'] as core.String;
-    }
-    if (_json.containsKey('videoId')) {
-      videoId = _json['videoId'] as core.String;
-    }
-  }
+  VideoRating.fromJson(core.Map _json)
+      : this(
+          rating: _json.containsKey('rating')
+              ? _json['rating'] as core.String
+              : null,
+          videoId: _json.containsKey('videoId')
+              ? _json['videoId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (rating != null) 'rating': rating!,
@@ -15905,21 +16817,25 @@ class VideoRecordingDetails {
   /// The date and time when the video was recorded.
   core.DateTime? recordingDate;
 
-  VideoRecordingDetails();
+  VideoRecordingDetails({
+    this.location,
+    this.locationDescription,
+    this.recordingDate,
+  });
 
-  VideoRecordingDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('location')) {
-      location = GeoPoint.fromJson(
-          _json['location'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('locationDescription')) {
-      locationDescription = _json['locationDescription'] as core.String;
-    }
-    if (_json.containsKey('recordingDate')) {
-      recordingDate =
-          core.DateTime.parse(_json['recordingDate'] as core.String);
-    }
-  }
+  VideoRecordingDetails.fromJson(core.Map _json)
+      : this(
+          location: _json.containsKey('location')
+              ? GeoPoint.fromJson(
+                  _json['location'] as core.Map<core.String, core.dynamic>)
+              : null,
+          locationDescription: _json.containsKey('locationDescription')
+              ? _json['locationDescription'] as core.String
+              : null,
+          recordingDate: _json.containsKey('recordingDate')
+              ? core.DateTime.parse(_json['recordingDate'] as core.String)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (location != null) 'location': location!.toJson(),
@@ -15991,50 +16907,63 @@ class VideoSnippet {
   /// @mutable youtube.videos.insert youtube.videos.update
   core.String? title;
 
-  VideoSnippet();
+  VideoSnippet({
+    this.categoryId,
+    this.channelId,
+    this.channelTitle,
+    this.defaultAudioLanguage,
+    this.defaultLanguage,
+    this.description,
+    this.liveBroadcastContent,
+    this.localized,
+    this.publishedAt,
+    this.tags,
+    this.thumbnails,
+    this.title,
+  });
 
-  VideoSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey('categoryId')) {
-      categoryId = _json['categoryId'] as core.String;
-    }
-    if (_json.containsKey('channelId')) {
-      channelId = _json['channelId'] as core.String;
-    }
-    if (_json.containsKey('channelTitle')) {
-      channelTitle = _json['channelTitle'] as core.String;
-    }
-    if (_json.containsKey('defaultAudioLanguage')) {
-      defaultAudioLanguage = _json['defaultAudioLanguage'] as core.String;
-    }
-    if (_json.containsKey('defaultLanguage')) {
-      defaultLanguage = _json['defaultLanguage'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('liveBroadcastContent')) {
-      liveBroadcastContent = _json['liveBroadcastContent'] as core.String;
-    }
-    if (_json.containsKey('localized')) {
-      localized = VideoLocalization.fromJson(
-          _json['localized'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('publishedAt')) {
-      publishedAt = core.DateTime.parse(_json['publishedAt'] as core.String);
-    }
-    if (_json.containsKey('tags')) {
-      tags = (_json['tags'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('thumbnails')) {
-      thumbnails = ThumbnailDetails.fromJson(
-          _json['thumbnails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  VideoSnippet.fromJson(core.Map _json)
+      : this(
+          categoryId: _json.containsKey('categoryId')
+              ? _json['categoryId'] as core.String
+              : null,
+          channelId: _json.containsKey('channelId')
+              ? _json['channelId'] as core.String
+              : null,
+          channelTitle: _json.containsKey('channelTitle')
+              ? _json['channelTitle'] as core.String
+              : null,
+          defaultAudioLanguage: _json.containsKey('defaultAudioLanguage')
+              ? _json['defaultAudioLanguage'] as core.String
+              : null,
+          defaultLanguage: _json.containsKey('defaultLanguage')
+              ? _json['defaultLanguage'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          liveBroadcastContent: _json.containsKey('liveBroadcastContent')
+              ? _json['liveBroadcastContent'] as core.String
+              : null,
+          localized: _json.containsKey('localized')
+              ? VideoLocalization.fromJson(
+                  _json['localized'] as core.Map<core.String, core.dynamic>)
+              : null,
+          publishedAt: _json.containsKey('publishedAt')
+              ? core.DateTime.parse(_json['publishedAt'] as core.String)
+              : null,
+          tags: _json.containsKey('tags')
+              ? (_json['tags'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          thumbnails: _json.containsKey('thumbnails')
+              ? ThumbnailDetails.fromJson(
+                  _json['thumbnails'] as core.Map<core.String, core.dynamic>)
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (categoryId != null) 'categoryId': categoryId!,
@@ -16075,25 +17004,32 @@ class VideoStatistics {
   /// The number of times the video has been viewed.
   core.String? viewCount;
 
-  VideoStatistics();
+  VideoStatistics({
+    this.commentCount,
+    this.dislikeCount,
+    this.favoriteCount,
+    this.likeCount,
+    this.viewCount,
+  });
 
-  VideoStatistics.fromJson(core.Map _json) {
-    if (_json.containsKey('commentCount')) {
-      commentCount = _json['commentCount'] as core.String;
-    }
-    if (_json.containsKey('dislikeCount')) {
-      dislikeCount = _json['dislikeCount'] as core.String;
-    }
-    if (_json.containsKey('favoriteCount')) {
-      favoriteCount = _json['favoriteCount'] as core.String;
-    }
-    if (_json.containsKey('likeCount')) {
-      likeCount = _json['likeCount'] as core.String;
-    }
-    if (_json.containsKey('viewCount')) {
-      viewCount = _json['viewCount'] as core.String;
-    }
-  }
+  VideoStatistics.fromJson(core.Map _json)
+      : this(
+          commentCount: _json.containsKey('commentCount')
+              ? _json['commentCount'] as core.String
+              : null,
+          dislikeCount: _json.containsKey('dislikeCount')
+              ? _json['dislikeCount'] as core.String
+              : null,
+          favoriteCount: _json.containsKey('favoriteCount')
+              ? _json['favoriteCount'] as core.String
+              : null,
+          likeCount: _json.containsKey('likeCount')
+              ? _json['likeCount'] as core.String
+              : null,
+          viewCount: _json.containsKey('viewCount')
+              ? _json['viewCount'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (commentCount != null) 'commentCount': commentCount!,
@@ -16181,40 +17117,52 @@ class VideoStatus {
   /// - "deleted" : Video has been deleted.
   core.String? uploadStatus;
 
-  VideoStatus();
+  VideoStatus({
+    this.embeddable,
+    this.failureReason,
+    this.license,
+    this.madeForKids,
+    this.privacyStatus,
+    this.publicStatsViewable,
+    this.publishAt,
+    this.rejectionReason,
+    this.selfDeclaredMadeForKids,
+    this.uploadStatus,
+  });
 
-  VideoStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('embeddable')) {
-      embeddable = _json['embeddable'] as core.bool;
-    }
-    if (_json.containsKey('failureReason')) {
-      failureReason = _json['failureReason'] as core.String;
-    }
-    if (_json.containsKey('license')) {
-      license = _json['license'] as core.String;
-    }
-    if (_json.containsKey('madeForKids')) {
-      madeForKids = _json['madeForKids'] as core.bool;
-    }
-    if (_json.containsKey('privacyStatus')) {
-      privacyStatus = _json['privacyStatus'] as core.String;
-    }
-    if (_json.containsKey('publicStatsViewable')) {
-      publicStatsViewable = _json['publicStatsViewable'] as core.bool;
-    }
-    if (_json.containsKey('publishAt')) {
-      publishAt = core.DateTime.parse(_json['publishAt'] as core.String);
-    }
-    if (_json.containsKey('rejectionReason')) {
-      rejectionReason = _json['rejectionReason'] as core.String;
-    }
-    if (_json.containsKey('selfDeclaredMadeForKids')) {
-      selfDeclaredMadeForKids = _json['selfDeclaredMadeForKids'] as core.bool;
-    }
-    if (_json.containsKey('uploadStatus')) {
-      uploadStatus = _json['uploadStatus'] as core.String;
-    }
-  }
+  VideoStatus.fromJson(core.Map _json)
+      : this(
+          embeddable: _json.containsKey('embeddable')
+              ? _json['embeddable'] as core.bool
+              : null,
+          failureReason: _json.containsKey('failureReason')
+              ? _json['failureReason'] as core.String
+              : null,
+          license: _json.containsKey('license')
+              ? _json['license'] as core.String
+              : null,
+          madeForKids: _json.containsKey('madeForKids')
+              ? _json['madeForKids'] as core.bool
+              : null,
+          privacyStatus: _json.containsKey('privacyStatus')
+              ? _json['privacyStatus'] as core.String
+              : null,
+          publicStatsViewable: _json.containsKey('publicStatsViewable')
+              ? _json['publicStatsViewable'] as core.bool
+              : null,
+          publishAt: _json.containsKey('publishAt')
+              ? core.DateTime.parse(_json['publishAt'] as core.String)
+              : null,
+          rejectionReason: _json.containsKey('rejectionReason')
+              ? _json['rejectionReason'] as core.String
+              : null,
+          selfDeclaredMadeForKids: _json.containsKey('selfDeclaredMadeForKids')
+              ? _json['selfDeclaredMadeForKids'] as core.bool
+              : null,
+          uploadStatus: _json.containsKey('uploadStatus')
+              ? _json['uploadStatus'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (embeddable != null) 'embeddable': embeddable!,
@@ -16264,37 +17212,44 @@ class VideoSuggestions {
   /// or browsing on YouTube.
   core.List<VideoSuggestionsTagSuggestion>? tagSuggestions;
 
-  VideoSuggestions();
+  VideoSuggestions({
+    this.editorSuggestions,
+    this.processingErrors,
+    this.processingHints,
+    this.processingWarnings,
+    this.tagSuggestions,
+  });
 
-  VideoSuggestions.fromJson(core.Map _json) {
-    if (_json.containsKey('editorSuggestions')) {
-      editorSuggestions = (_json['editorSuggestions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('processingErrors')) {
-      processingErrors = (_json['processingErrors'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('processingHints')) {
-      processingHints = (_json['processingHints'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('processingWarnings')) {
-      processingWarnings = (_json['processingWarnings'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('tagSuggestions')) {
-      tagSuggestions = (_json['tagSuggestions'] as core.List)
-          .map<VideoSuggestionsTagSuggestion>((value) =>
-              VideoSuggestionsTagSuggestion.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  VideoSuggestions.fromJson(core.Map _json)
+      : this(
+          editorSuggestions: _json.containsKey('editorSuggestions')
+              ? (_json['editorSuggestions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          processingErrors: _json.containsKey('processingErrors')
+              ? (_json['processingErrors'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          processingHints: _json.containsKey('processingHints')
+              ? (_json['processingHints'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          processingWarnings: _json.containsKey('processingWarnings')
+              ? (_json['processingWarnings'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          tagSuggestions: _json.containsKey('tagSuggestions')
+              ? (_json['tagSuggestions'] as core.List)
+                  .map<VideoSuggestionsTagSuggestion>((value) =>
+                      VideoSuggestionsTagSuggestion.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (editorSuggestions != null) 'editorSuggestions': editorSuggestions!,
@@ -16321,18 +17276,20 @@ class VideoSuggestionsTagSuggestion {
   /// The keyword tag suggested for the video.
   core.String? tag;
 
-  VideoSuggestionsTagSuggestion();
+  VideoSuggestionsTagSuggestion({
+    this.categoryRestricts,
+    this.tag,
+  });
 
-  VideoSuggestionsTagSuggestion.fromJson(core.Map _json) {
-    if (_json.containsKey('categoryRestricts')) {
-      categoryRestricts = (_json['categoryRestricts'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('tag')) {
-      tag = _json['tag'] as core.String;
-    }
-  }
+  VideoSuggestionsTagSuggestion.fromJson(core.Map _json)
+      : this(
+          categoryRestricts: _json.containsKey('categoryRestricts')
+              ? (_json['categoryRestricts'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          tag: _json.containsKey('tag') ? _json['tag'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (categoryRestricts != null) 'categoryRestricts': categoryRestricts!,
@@ -16361,25 +17318,30 @@ class VideoTopicDetails {
   /// href="http://wiki.freebase.com/wiki/Topic_API">Freebase Topic API.
   core.List<core.String>? topicIds;
 
-  VideoTopicDetails();
+  VideoTopicDetails({
+    this.relevantTopicIds,
+    this.topicCategories,
+    this.topicIds,
+  });
 
-  VideoTopicDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('relevantTopicIds')) {
-      relevantTopicIds = (_json['relevantTopicIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('topicCategories')) {
-      topicCategories = (_json['topicCategories'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('topicIds')) {
-      topicIds = (_json['topicIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  VideoTopicDetails.fromJson(core.Map _json)
+      : this(
+          relevantTopicIds: _json.containsKey('relevantTopicIds')
+              ? (_json['relevantTopicIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          topicCategories: _json.containsKey('topicCategories')
+              ? (_json['topicCategories'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          topicIds: _json.containsKey('topicIds')
+              ? (_json['topicIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (relevantTopicIds != null) 'relevantTopicIds': relevantTopicIds!,
@@ -16402,19 +17364,24 @@ class WatchSettings {
   /// The background color for the video watch page's branded area.
   core.String? textColor;
 
-  WatchSettings();
+  WatchSettings({
+    this.backgroundColor,
+    this.featuredPlaylistId,
+    this.textColor,
+  });
 
-  WatchSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('backgroundColor')) {
-      backgroundColor = _json['backgroundColor'] as core.String;
-    }
-    if (_json.containsKey('featuredPlaylistId')) {
-      featuredPlaylistId = _json['featuredPlaylistId'] as core.String;
-    }
-    if (_json.containsKey('textColor')) {
-      textColor = _json['textColor'] as core.String;
-    }
-  }
+  WatchSettings.fromJson(core.Map _json)
+      : this(
+          backgroundColor: _json.containsKey('backgroundColor')
+              ? _json['backgroundColor'] as core.String
+              : null,
+          featuredPlaylistId: _json.containsKey('featuredPlaylistId')
+              ? _json['featuredPlaylistId'] as core.String
+              : null,
+          textColor: _json.containsKey('textColor')
+              ? _json['textColor'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backgroundColor != null) 'backgroundColor': backgroundColor!,

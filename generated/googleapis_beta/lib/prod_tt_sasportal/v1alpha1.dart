@@ -3505,18 +3505,20 @@ class SasPortalAssignment {
   /// Required.
   core.String? role;
 
-  SasPortalAssignment();
+  SasPortalAssignment({
+    this.members,
+    this.role,
+  });
 
-  SasPortalAssignment.fromJson(core.Map _json) {
-    if (_json.containsKey('members')) {
-      members = (_json['members'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('role')) {
-      role = _json['role'] as core.String;
-    }
-  }
+  SasPortalAssignment.fromJson(core.Map _json)
+      : this(
+          members: _json.containsKey('members')
+              ? (_json['members'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (members != null) 'members': members!,
@@ -3532,17 +3534,21 @@ class SasPortalChannelWithScore {
   /// The channel score, normalized to be in \[0,100\].
   core.double? score;
 
-  SasPortalChannelWithScore();
+  SasPortalChannelWithScore({
+    this.frequencyRange,
+    this.score,
+  });
 
-  SasPortalChannelWithScore.fromJson(core.Map _json) {
-    if (_json.containsKey('frequencyRange')) {
-      frequencyRange = SasPortalFrequencyRange.fromJson(
-          _json['frequencyRange'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('score')) {
-      score = (_json['score'] as core.num).toDouble();
-    }
-  }
+  SasPortalChannelWithScore.fromJson(core.Map _json)
+      : this(
+          frequencyRange: _json.containsKey('frequencyRange')
+              ? SasPortalFrequencyRange.fromJson(_json['frequencyRange']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          score: _json.containsKey('score')
+              ? (_json['score'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (frequencyRange != null) 'frequencyRange': frequencyRange!.toJson(),
@@ -3573,16 +3579,20 @@ class SasPortalCreateSignedDeviceRequest {
   /// Required.
   core.String? installerId;
 
-  SasPortalCreateSignedDeviceRequest();
+  SasPortalCreateSignedDeviceRequest({
+    this.encodedDevice,
+    this.installerId,
+  });
 
-  SasPortalCreateSignedDeviceRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('encodedDevice')) {
-      encodedDevice = _json['encodedDevice'] as core.String;
-    }
-    if (_json.containsKey('installerId')) {
-      installerId = _json['installerId'] as core.String;
-    }
-  }
+  SasPortalCreateSignedDeviceRequest.fromJson(core.Map _json)
+      : this(
+          encodedDevice: _json.containsKey('encodedDevice')
+              ? _json['encodedDevice'] as core.String
+              : null,
+          installerId: _json.containsKey('installerId')
+              ? _json['installerId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (encodedDevice != null) 'encodedDevice': encodedDevice!,
@@ -3605,21 +3615,24 @@ class SasPortalCustomer {
   /// User IDs used by the devices belonging to this customer.
   core.List<core.String>? sasUserIds;
 
-  SasPortalCustomer();
+  SasPortalCustomer({
+    this.displayName,
+    this.name,
+    this.sasUserIds,
+  });
 
-  SasPortalCustomer.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('sasUserIds')) {
-      sasUserIds = (_json['sasUserIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  SasPortalCustomer.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          sasUserIds: _json.containsKey('sasUserIds')
+              ? (_json['sasUserIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -3659,34 +3672,40 @@ class SasPortalDeployment {
   /// Each deployment should be associated with one unique user ID.
   core.List<core.String>? sasUserIds;
 
-  SasPortalDeployment();
+  SasPortalDeployment({
+    this.allowedBillingModes,
+    this.defaultBillingMode,
+    this.displayName,
+    this.frns,
+    this.name,
+    this.sasUserIds,
+  });
 
-  SasPortalDeployment.fromJson(core.Map _json) {
-    if (_json.containsKey('allowedBillingModes')) {
-      allowedBillingModes = (_json['allowedBillingModes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('defaultBillingMode')) {
-      defaultBillingMode = _json['defaultBillingMode'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('frns')) {
-      frns = (_json['frns'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('sasUserIds')) {
-      sasUserIds = (_json['sasUserIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  SasPortalDeployment.fromJson(core.Map _json)
+      : this(
+          allowedBillingModes: _json.containsKey('allowedBillingModes')
+              ? (_json['allowedBillingModes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          defaultBillingMode: _json.containsKey('defaultBillingMode')
+              ? _json['defaultBillingMode'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          frns: _json.containsKey('frns')
+              ? (_json['frns'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          sasUserIds: _json.containsKey('sasUserIds')
+              ? (_json['sasUserIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedBillingModes != null)
@@ -3751,57 +3770,67 @@ class SasPortalDevice {
   /// - "DEREGISTERED" : Device de-registered with SAS.
   core.String? state;
 
-  SasPortalDevice();
+  SasPortalDevice({
+    this.activeConfig,
+    this.currentChannels,
+    this.deviceMetadata,
+    this.displayName,
+    this.fccId,
+    this.grantRangeAllowlists,
+    this.grants,
+    this.name,
+    this.preloadedConfig,
+    this.serialNumber,
+    this.state,
+  });
 
-  SasPortalDevice.fromJson(core.Map _json) {
-    if (_json.containsKey('activeConfig')) {
-      activeConfig = SasPortalDeviceConfig.fromJson(
-          _json['activeConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('currentChannels')) {
-      currentChannels = (_json['currentChannels'] as core.List)
-          .map<SasPortalChannelWithScore>((value) =>
-              SasPortalChannelWithScore.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('deviceMetadata')) {
-      deviceMetadata = SasPortalDeviceMetadata.fromJson(
-          _json['deviceMetadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('fccId')) {
-      fccId = _json['fccId'] as core.String;
-    }
-    if (_json.containsKey('grantRangeAllowlists')) {
-      grantRangeAllowlists = (_json['grantRangeAllowlists'] as core.List)
-          .map<SasPortalFrequencyRange>((value) =>
-              SasPortalFrequencyRange.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('grants')) {
-      grants = (_json['grants'] as core.List)
-          .map<SasPortalDeviceGrant>((value) => SasPortalDeviceGrant.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('preloadedConfig')) {
-      preloadedConfig = SasPortalDeviceConfig.fromJson(
-          _json['preloadedConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('serialNumber')) {
-      serialNumber = _json['serialNumber'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-  }
+  SasPortalDevice.fromJson(core.Map _json)
+      : this(
+          activeConfig: _json.containsKey('activeConfig')
+              ? SasPortalDeviceConfig.fromJson(
+                  _json['activeConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          currentChannels: _json.containsKey('currentChannels')
+              ? (_json['currentChannels'] as core.List)
+                  .map<SasPortalChannelWithScore>((value) =>
+                      SasPortalChannelWithScore.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          deviceMetadata: _json.containsKey('deviceMetadata')
+              ? SasPortalDeviceMetadata.fromJson(_json['deviceMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          fccId:
+              _json.containsKey('fccId') ? _json['fccId'] as core.String : null,
+          grantRangeAllowlists: _json.containsKey('grantRangeAllowlists')
+              ? (_json['grantRangeAllowlists'] as core.List)
+                  .map<SasPortalFrequencyRange>((value) =>
+                      SasPortalFrequencyRange.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          grants: _json.containsKey('grants')
+              ? (_json['grants'] as core.List)
+                  .map<SasPortalDeviceGrant>((value) =>
+                      SasPortalDeviceGrant.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          preloadedConfig: _json.containsKey('preloadedConfig')
+              ? SasPortalDeviceConfig.fromJson(_json['preloadedConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          serialNumber: _json.containsKey('serialNumber')
+              ? _json['serialNumber'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (activeConfig != null) 'activeConfig': activeConfig!.toJson(),
@@ -3849,16 +3878,20 @@ class SasPortalDeviceAirInterface {
   /// Optional.
   core.String? supportedSpec;
 
-  SasPortalDeviceAirInterface();
+  SasPortalDeviceAirInterface({
+    this.radioTechnology,
+    this.supportedSpec,
+  });
 
-  SasPortalDeviceAirInterface.fromJson(core.Map _json) {
-    if (_json.containsKey('radioTechnology')) {
-      radioTechnology = _json['radioTechnology'] as core.String;
-    }
-    if (_json.containsKey('supportedSpec')) {
-      supportedSpec = _json['supportedSpec'] as core.String;
-    }
-  }
+  SasPortalDeviceAirInterface.fromJson(core.Map _json)
+      : this(
+          radioTechnology: _json.containsKey('radioTechnology')
+              ? _json['radioTechnology'] as core.String
+              : null,
+          supportedSpec: _json.containsKey('supportedSpec')
+              ? _json['supportedSpec'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (radioTechnology != null) 'radioTechnology': radioTechnology!,
@@ -3910,45 +3943,56 @@ class SasPortalDeviceConfig {
   /// The identifier of a device user.
   core.String? userId;
 
-  SasPortalDeviceConfig();
+  SasPortalDeviceConfig({
+    this.airInterface,
+    this.callSign,
+    this.category,
+    this.installationParams,
+    this.isSigned,
+    this.measurementCapabilities,
+    this.model,
+    this.state,
+    this.updateTime,
+    this.userId,
+  });
 
-  SasPortalDeviceConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('airInterface')) {
-      airInterface = SasPortalDeviceAirInterface.fromJson(
-          _json['airInterface'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('callSign')) {
-      callSign = _json['callSign'] as core.String;
-    }
-    if (_json.containsKey('category')) {
-      category = _json['category'] as core.String;
-    }
-    if (_json.containsKey('installationParams')) {
-      installationParams = SasPortalInstallationParams.fromJson(
-          _json['installationParams'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('isSigned')) {
-      isSigned = _json['isSigned'] as core.bool;
-    }
-    if (_json.containsKey('measurementCapabilities')) {
-      measurementCapabilities = (_json['measurementCapabilities'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('model')) {
-      model = SasPortalDeviceModel.fromJson(
-          _json['model'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-    if (_json.containsKey('userId')) {
-      userId = _json['userId'] as core.String;
-    }
-  }
+  SasPortalDeviceConfig.fromJson(core.Map _json)
+      : this(
+          airInterface: _json.containsKey('airInterface')
+              ? SasPortalDeviceAirInterface.fromJson(
+                  _json['airInterface'] as core.Map<core.String, core.dynamic>)
+              : null,
+          callSign: _json.containsKey('callSign')
+              ? _json['callSign'] as core.String
+              : null,
+          category: _json.containsKey('category')
+              ? _json['category'] as core.String
+              : null,
+          installationParams: _json.containsKey('installationParams')
+              ? SasPortalInstallationParams.fromJson(_json['installationParams']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          isSigned: _json.containsKey('isSigned')
+              ? _json['isSigned'] as core.bool
+              : null,
+          measurementCapabilities: _json.containsKey('measurementCapabilities')
+              ? (_json['measurementCapabilities'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          model: _json.containsKey('model')
+              ? SasPortalDeviceModel.fromJson(
+                  _json['model'] as core.Map<core.String, core.dynamic>)
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+          userId: _json.containsKey('userId')
+              ? _json['userId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (airInterface != null) 'airInterface': airInterface!.toJson(),
@@ -4013,40 +4057,50 @@ class SasPortalDeviceGrant {
   /// If the grant is suspended, the reason(s) for suspension.
   core.List<core.String>? suspensionReason;
 
-  SasPortalDeviceGrant();
+  SasPortalDeviceGrant({
+    this.channelType,
+    this.expireTime,
+    this.frequencyRange,
+    this.grantId,
+    this.maxEirp,
+    this.moveList,
+    this.state,
+    this.suspensionReason,
+  });
 
-  SasPortalDeviceGrant.fromJson(core.Map _json) {
-    if (_json.containsKey('channelType')) {
-      channelType = _json['channelType'] as core.String;
-    }
-    if (_json.containsKey('expireTime')) {
-      expireTime = _json['expireTime'] as core.String;
-    }
-    if (_json.containsKey('frequencyRange')) {
-      frequencyRange = SasPortalFrequencyRange.fromJson(
-          _json['frequencyRange'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('grantId')) {
-      grantId = _json['grantId'] as core.String;
-    }
-    if (_json.containsKey('maxEirp')) {
-      maxEirp = (_json['maxEirp'] as core.num).toDouble();
-    }
-    if (_json.containsKey('moveList')) {
-      moveList = (_json['moveList'] as core.List)
-          .map<SasPortalDpaMoveList>((value) => SasPortalDpaMoveList.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('suspensionReason')) {
-      suspensionReason = (_json['suspensionReason'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  SasPortalDeviceGrant.fromJson(core.Map _json)
+      : this(
+          channelType: _json.containsKey('channelType')
+              ? _json['channelType'] as core.String
+              : null,
+          expireTime: _json.containsKey('expireTime')
+              ? _json['expireTime'] as core.String
+              : null,
+          frequencyRange: _json.containsKey('frequencyRange')
+              ? SasPortalFrequencyRange.fromJson(_json['frequencyRange']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          grantId: _json.containsKey('grantId')
+              ? _json['grantId'] as core.String
+              : null,
+          maxEirp: _json.containsKey('maxEirp')
+              ? (_json['maxEirp'] as core.num).toDouble()
+              : null,
+          moveList: _json.containsKey('moveList')
+              ? (_json['moveList'] as core.List)
+                  .map<SasPortalDpaMoveList>((value) =>
+                      SasPortalDpaMoveList.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          suspensionReason: _json.containsKey('suspensionReason')
+              ? (_json['suspensionReason'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channelType != null) 'channelType': channelType!,
@@ -4068,13 +4122,16 @@ class SasPortalDeviceMetadata {
   /// Format is: RecordCreatorId:PatternId
   core.String? antennaModel;
 
-  SasPortalDeviceMetadata();
+  SasPortalDeviceMetadata({
+    this.antennaModel,
+  });
 
-  SasPortalDeviceMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('antennaModel')) {
-      antennaModel = _json['antennaModel'] as core.String;
-    }
-  }
+  SasPortalDeviceMetadata.fromJson(core.Map _json)
+      : this(
+          antennaModel: _json.containsKey('antennaModel')
+              ? _json['antennaModel'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (antennaModel != null) 'antennaModel': antennaModel!,
@@ -4098,25 +4155,30 @@ class SasPortalDeviceModel {
   /// The name of the device vendor.
   core.String? vendor;
 
-  SasPortalDeviceModel();
+  SasPortalDeviceModel({
+    this.firmwareVersion,
+    this.hardwareVersion,
+    this.name,
+    this.softwareVersion,
+    this.vendor,
+  });
 
-  SasPortalDeviceModel.fromJson(core.Map _json) {
-    if (_json.containsKey('firmwareVersion')) {
-      firmwareVersion = _json['firmwareVersion'] as core.String;
-    }
-    if (_json.containsKey('hardwareVersion')) {
-      hardwareVersion = _json['hardwareVersion'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('softwareVersion')) {
-      softwareVersion = _json['softwareVersion'] as core.String;
-    }
-    if (_json.containsKey('vendor')) {
-      vendor = _json['vendor'] as core.String;
-    }
-  }
+  SasPortalDeviceModel.fromJson(core.Map _json)
+      : this(
+          firmwareVersion: _json.containsKey('firmwareVersion')
+              ? _json['firmwareVersion'] as core.String
+              : null,
+          hardwareVersion: _json.containsKey('hardwareVersion')
+              ? _json['hardwareVersion'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          softwareVersion: _json.containsKey('softwareVersion')
+              ? _json['softwareVersion'] as core.String
+              : null,
+          vendor: _json.containsKey('vendor')
+              ? _json['vendor'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (firmwareVersion != null) 'firmwareVersion': firmwareVersion!,
@@ -4135,17 +4197,20 @@ class SasPortalDpaMoveList {
   /// The frequency range that the move list affects.
   SasPortalFrequencyRange? frequencyRange;
 
-  SasPortalDpaMoveList();
+  SasPortalDpaMoveList({
+    this.dpaId,
+    this.frequencyRange,
+  });
 
-  SasPortalDpaMoveList.fromJson(core.Map _json) {
-    if (_json.containsKey('dpaId')) {
-      dpaId = _json['dpaId'] as core.String;
-    }
-    if (_json.containsKey('frequencyRange')) {
-      frequencyRange = SasPortalFrequencyRange.fromJson(
-          _json['frequencyRange'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  SasPortalDpaMoveList.fromJson(core.Map _json)
+      : this(
+          dpaId:
+              _json.containsKey('dpaId') ? _json['dpaId'] as core.String : null,
+          frequencyRange: _json.containsKey('frequencyRange')
+              ? SasPortalFrequencyRange.fromJson(_json['frequencyRange']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dpaId != null) 'dpaId': dpaId!,
@@ -4178,16 +4243,20 @@ class SasPortalFrequencyRange {
   /// The lowest frequency of the frequency range in MHz.
   core.double? lowFrequencyMhz;
 
-  SasPortalFrequencyRange();
+  SasPortalFrequencyRange({
+    this.highFrequencyMhz,
+    this.lowFrequencyMhz,
+  });
 
-  SasPortalFrequencyRange.fromJson(core.Map _json) {
-    if (_json.containsKey('highFrequencyMhz')) {
-      highFrequencyMhz = (_json['highFrequencyMhz'] as core.num).toDouble();
-    }
-    if (_json.containsKey('lowFrequencyMhz')) {
-      lowFrequencyMhz = (_json['lowFrequencyMhz'] as core.num).toDouble();
-    }
-  }
+  SasPortalFrequencyRange.fromJson(core.Map _json)
+      : this(
+          highFrequencyMhz: _json.containsKey('highFrequencyMhz')
+              ? (_json['highFrequencyMhz'] as core.num).toDouble()
+              : null,
+          lowFrequencyMhz: _json.containsKey('lowFrequencyMhz')
+              ? (_json['lowFrequencyMhz'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (highFrequencyMhz != null) 'highFrequencyMhz': highFrequencyMhz!,
@@ -4211,13 +4280,16 @@ class SasPortalGenerateSecretResponse {
   /// The secret generated by the string and used by ValidateInstaller.
   core.String? secret;
 
-  SasPortalGenerateSecretResponse();
+  SasPortalGenerateSecretResponse({
+    this.secret,
+  });
 
-  SasPortalGenerateSecretResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('secret')) {
-      secret = _json['secret'] as core.String;
-    }
-  }
+  SasPortalGenerateSecretResponse.fromJson(core.Map _json)
+      : this(
+          secret: _json.containsKey('secret')
+              ? _json['secret'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (secret != null) 'secret': secret!,
@@ -4231,13 +4303,16 @@ class SasPortalGetPolicyRequest {
   /// Required.
   core.String? resource;
 
-  SasPortalGetPolicyRequest();
+  SasPortalGetPolicyRequest({
+    this.resource,
+  });
 
-  SasPortalGetPolicyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('resource')) {
-      resource = _json['resource'] as core.String;
-    }
-  }
+  SasPortalGetPolicyRequest.fromJson(core.Map _json)
+      : this(
+          resource: _json.containsKey('resource')
+              ? _json['resource'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resource != null) 'resource': resource!,
@@ -4343,52 +4418,68 @@ class SasPortalInstallationParams {
   /// the FCC requirement of 3 meters.
   core.double? verticalAccuracy;
 
-  SasPortalInstallationParams();
+  SasPortalInstallationParams({
+    this.antennaAzimuth,
+    this.antennaBeamwidth,
+    this.antennaDowntilt,
+    this.antennaGain,
+    this.antennaModel,
+    this.cpeCbsdIndication,
+    this.eirpCapability,
+    this.height,
+    this.heightType,
+    this.horizontalAccuracy,
+    this.indoorDeployment,
+    this.latitude,
+    this.longitude,
+    this.verticalAccuracy,
+  });
 
-  SasPortalInstallationParams.fromJson(core.Map _json) {
-    if (_json.containsKey('antennaAzimuth')) {
-      antennaAzimuth = _json['antennaAzimuth'] as core.int;
-    }
-    if (_json.containsKey('antennaBeamwidth')) {
-      antennaBeamwidth = _json['antennaBeamwidth'] as core.int;
-    }
-    if (_json.containsKey('antennaDowntilt')) {
-      antennaDowntilt = _json['antennaDowntilt'] as core.int;
-    }
-    if (_json.containsKey('antennaGain')) {
-      antennaGain = _json['antennaGain'] as core.int;
-    }
-    if (_json.containsKey('antennaModel')) {
-      antennaModel = _json['antennaModel'] as core.String;
-    }
-    if (_json.containsKey('cpeCbsdIndication')) {
-      cpeCbsdIndication = _json['cpeCbsdIndication'] as core.bool;
-    }
-    if (_json.containsKey('eirpCapability')) {
-      eirpCapability = _json['eirpCapability'] as core.int;
-    }
-    if (_json.containsKey('height')) {
-      height = (_json['height'] as core.num).toDouble();
-    }
-    if (_json.containsKey('heightType')) {
-      heightType = _json['heightType'] as core.String;
-    }
-    if (_json.containsKey('horizontalAccuracy')) {
-      horizontalAccuracy = (_json['horizontalAccuracy'] as core.num).toDouble();
-    }
-    if (_json.containsKey('indoorDeployment')) {
-      indoorDeployment = _json['indoorDeployment'] as core.bool;
-    }
-    if (_json.containsKey('latitude')) {
-      latitude = (_json['latitude'] as core.num).toDouble();
-    }
-    if (_json.containsKey('longitude')) {
-      longitude = (_json['longitude'] as core.num).toDouble();
-    }
-    if (_json.containsKey('verticalAccuracy')) {
-      verticalAccuracy = (_json['verticalAccuracy'] as core.num).toDouble();
-    }
-  }
+  SasPortalInstallationParams.fromJson(core.Map _json)
+      : this(
+          antennaAzimuth: _json.containsKey('antennaAzimuth')
+              ? _json['antennaAzimuth'] as core.int
+              : null,
+          antennaBeamwidth: _json.containsKey('antennaBeamwidth')
+              ? _json['antennaBeamwidth'] as core.int
+              : null,
+          antennaDowntilt: _json.containsKey('antennaDowntilt')
+              ? _json['antennaDowntilt'] as core.int
+              : null,
+          antennaGain: _json.containsKey('antennaGain')
+              ? _json['antennaGain'] as core.int
+              : null,
+          antennaModel: _json.containsKey('antennaModel')
+              ? _json['antennaModel'] as core.String
+              : null,
+          cpeCbsdIndication: _json.containsKey('cpeCbsdIndication')
+              ? _json['cpeCbsdIndication'] as core.bool
+              : null,
+          eirpCapability: _json.containsKey('eirpCapability')
+              ? _json['eirpCapability'] as core.int
+              : null,
+          height: _json.containsKey('height')
+              ? (_json['height'] as core.num).toDouble()
+              : null,
+          heightType: _json.containsKey('heightType')
+              ? _json['heightType'] as core.String
+              : null,
+          horizontalAccuracy: _json.containsKey('horizontalAccuracy')
+              ? (_json['horizontalAccuracy'] as core.num).toDouble()
+              : null,
+          indoorDeployment: _json.containsKey('indoorDeployment')
+              ? _json['indoorDeployment'] as core.bool
+              : null,
+          latitude: _json.containsKey('latitude')
+              ? (_json['latitude'] as core.num).toDouble()
+              : null,
+          longitude: _json.containsKey('longitude')
+              ? (_json['longitude'] as core.num).toDouble()
+              : null,
+          verticalAccuracy: _json.containsKey('verticalAccuracy')
+              ? (_json['verticalAccuracy'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (antennaAzimuth != null) 'antennaAzimuth': antennaAzimuth!,
@@ -4420,19 +4511,23 @@ class SasPortalListCustomersResponse {
   /// If the field is missing or empty, it means there are no more customers.
   core.String? nextPageToken;
 
-  SasPortalListCustomersResponse();
+  SasPortalListCustomersResponse({
+    this.customers,
+    this.nextPageToken,
+  });
 
-  SasPortalListCustomersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('customers')) {
-      customers = (_json['customers'] as core.List)
-          .map<SasPortalCustomer>((value) => SasPortalCustomer.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  SasPortalListCustomersResponse.fromJson(core.Map _json)
+      : this(
+          customers: _json.containsKey('customers')
+              ? (_json['customers'] as core.List)
+                  .map<SasPortalCustomer>((value) => SasPortalCustomer.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customers != null)
@@ -4452,19 +4547,24 @@ class SasPortalListDeploymentsResponse {
   /// If the field is missing or empty, it means there are no more deployments.
   core.String? nextPageToken;
 
-  SasPortalListDeploymentsResponse();
+  SasPortalListDeploymentsResponse({
+    this.deployments,
+    this.nextPageToken,
+  });
 
-  SasPortalListDeploymentsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('deployments')) {
-      deployments = (_json['deployments'] as core.List)
-          .map<SasPortalDeployment>((value) => SasPortalDeployment.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  SasPortalListDeploymentsResponse.fromJson(core.Map _json)
+      : this(
+          deployments: _json.containsKey('deployments')
+              ? (_json['deployments'] as core.List)
+                  .map<SasPortalDeployment>((value) =>
+                      SasPortalDeployment.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deployments != null)
@@ -4484,19 +4584,23 @@ class SasPortalListDevicesResponse {
   /// If the field is missing or empty, it means there is no more devices.
   core.String? nextPageToken;
 
-  SasPortalListDevicesResponse();
+  SasPortalListDevicesResponse({
+    this.devices,
+    this.nextPageToken,
+  });
 
-  SasPortalListDevicesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('devices')) {
-      devices = (_json['devices'] as core.List)
-          .map<SasPortalDevice>((value) => SasPortalDevice.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  SasPortalListDevicesResponse.fromJson(core.Map _json)
+      : this(
+          devices: _json.containsKey('devices')
+              ? (_json['devices'] as core.List)
+                  .map<SasPortalDevice>((value) => SasPortalDevice.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (devices != null)
@@ -4516,19 +4620,23 @@ class SasPortalListNodesResponse {
   /// The nodes that match the request.
   core.List<SasPortalNode>? nodes;
 
-  SasPortalListNodesResponse();
+  SasPortalListNodesResponse({
+    this.nextPageToken,
+    this.nodes,
+  });
 
-  SasPortalListNodesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('nodes')) {
-      nodes = (_json['nodes'] as core.List)
-          .map<SasPortalNode>((value) => SasPortalNode.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  SasPortalListNodesResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          nodes: _json.containsKey('nodes')
+              ? (_json['nodes'] as core.List)
+                  .map<SasPortalNode>((value) => SasPortalNode.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -4545,13 +4653,16 @@ class SasPortalMoveDeploymentRequest {
   /// Required.
   core.String? destination;
 
-  SasPortalMoveDeploymentRequest();
+  SasPortalMoveDeploymentRequest({
+    this.destination,
+  });
 
-  SasPortalMoveDeploymentRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('destination')) {
-      destination = _json['destination'] as core.String;
-    }
-  }
+  SasPortalMoveDeploymentRequest.fromJson(core.Map _json)
+      : this(
+          destination: _json.containsKey('destination')
+              ? _json['destination'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (destination != null) 'destination': destination!,
@@ -4566,13 +4677,16 @@ class SasPortalMoveDeviceRequest {
   /// Required.
   core.String? destination;
 
-  SasPortalMoveDeviceRequest();
+  SasPortalMoveDeviceRequest({
+    this.destination,
+  });
 
-  SasPortalMoveDeviceRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('destination')) {
-      destination = _json['destination'] as core.String;
-    }
-  }
+  SasPortalMoveDeviceRequest.fromJson(core.Map _json)
+      : this(
+          destination: _json.containsKey('destination')
+              ? _json['destination'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (destination != null) 'destination': destination!,
@@ -4587,13 +4701,16 @@ class SasPortalMoveNodeRequest {
   /// Required.
   core.String? destination;
 
-  SasPortalMoveNodeRequest();
+  SasPortalMoveNodeRequest({
+    this.destination,
+  });
 
-  SasPortalMoveNodeRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('destination')) {
-      destination = _json['destination'] as core.String;
-    }
-  }
+  SasPortalMoveNodeRequest.fromJson(core.Map _json)
+      : this(
+          destination: _json.containsKey('destination')
+              ? _json['destination'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (destination != null) 'destination': destination!,
@@ -4613,21 +4730,24 @@ class SasPortalNode {
   /// User ids used by the devices belonging to this node.
   core.List<core.String>? sasUserIds;
 
-  SasPortalNode();
+  SasPortalNode({
+    this.displayName,
+    this.name,
+    this.sasUserIds,
+  });
 
-  SasPortalNode.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('sasUserIds')) {
-      sasUserIds = (_json['sasUserIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  SasPortalNode.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          sasUserIds: _json.containsKey('sasUserIds')
+              ? (_json['sasUserIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -4679,36 +4799,39 @@ class SasPortalOperation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object>? response;
 
-  SasPortalOperation();
+  SasPortalOperation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
-  SasPortalOperation.fromJson(core.Map _json) {
-    if (_json.containsKey('done')) {
-      done = _json['done'] as core.bool;
-    }
-    if (_json.containsKey('error')) {
-      error = SasPortalStatus.fromJson(
-          _json['error'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('response')) {
-      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-  }
+  SasPortalOperation.fromJson(core.Map _json)
+      : this(
+          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
+          error: _json.containsKey('error')
+              ? SasPortalStatus.fromJson(
+                  _json['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          response: _json.containsKey('response')
+              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
@@ -4742,19 +4865,22 @@ class SasPortalPolicy {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  SasPortalPolicy();
+  SasPortalPolicy({
+    this.assignments,
+    this.etag,
+  });
 
-  SasPortalPolicy.fromJson(core.Map _json) {
-    if (_json.containsKey('assignments')) {
-      assignments = (_json['assignments'] as core.List)
-          .map<SasPortalAssignment>((value) => SasPortalAssignment.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-  }
+  SasPortalPolicy.fromJson(core.Map _json)
+      : this(
+          assignments: _json.containsKey('assignments')
+              ? (_json['assignments'] as core.List)
+                  .map<SasPortalAssignment>((value) =>
+                      SasPortalAssignment.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignments != null)
@@ -4783,20 +4909,25 @@ class SasPortalSetPolicyRequest {
   /// Required.
   core.String? resource;
 
-  SasPortalSetPolicyRequest();
+  SasPortalSetPolicyRequest({
+    this.disableNotification,
+    this.policy,
+    this.resource,
+  });
 
-  SasPortalSetPolicyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('disableNotification')) {
-      disableNotification = _json['disableNotification'] as core.bool;
-    }
-    if (_json.containsKey('policy')) {
-      policy = SasPortalPolicy.fromJson(
-          _json['policy'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('resource')) {
-      resource = _json['resource'] as core.String;
-    }
-  }
+  SasPortalSetPolicyRequest.fromJson(core.Map _json)
+      : this(
+          disableNotification: _json.containsKey('disableNotification')
+              ? _json['disableNotification'] as core.bool
+              : null,
+          policy: _json.containsKey('policy')
+              ? SasPortalPolicy.fromJson(
+                  _json['policy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          resource: _json.containsKey('resource')
+              ? _json['resource'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disableNotification != null)
@@ -4816,14 +4947,17 @@ class SasPortalSignDeviceRequest {
   /// Required.
   SasPortalDevice? device;
 
-  SasPortalSignDeviceRequest();
+  SasPortalSignDeviceRequest({
+    this.device,
+  });
 
-  SasPortalSignDeviceRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('device')) {
-      device = SasPortalDevice.fromJson(
-          _json['device'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  SasPortalSignDeviceRequest.fromJson(core.Map _json)
+      : this(
+          device: _json.containsKey('device')
+              ? SasPortalDevice.fromJson(
+                  _json['device'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (device != null) 'device': device!.toJson(),
@@ -4855,27 +4989,30 @@ class SasPortalStatus {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  SasPortalStatus();
+  SasPortalStatus({
+    this.code,
+    this.details,
+    this.message,
+  });
 
-  SasPortalStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.int;
-    }
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  SasPortalStatus.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -4894,18 +5031,22 @@ class SasPortalTestPermissionsRequest {
   /// Required.
   core.String? resource;
 
-  SasPortalTestPermissionsRequest();
+  SasPortalTestPermissionsRequest({
+    this.permissions,
+    this.resource,
+  });
 
-  SasPortalTestPermissionsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('resource')) {
-      resource = _json['resource'] as core.String;
-    }
-  }
+  SasPortalTestPermissionsRequest.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          resource: _json.containsKey('resource')
+              ? _json['resource'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
@@ -4918,15 +5059,18 @@ class SasPortalTestPermissionsResponse {
   /// A set of permissions that the caller is allowed.
   core.List<core.String>? permissions;
 
-  SasPortalTestPermissionsResponse();
+  SasPortalTestPermissionsResponse({
+    this.permissions,
+  });
 
-  SasPortalTestPermissionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  SasPortalTestPermissionsResponse.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
@@ -4956,16 +5100,20 @@ class SasPortalUpdateSignedDeviceRequest {
   /// Required.
   core.String? installerId;
 
-  SasPortalUpdateSignedDeviceRequest();
+  SasPortalUpdateSignedDeviceRequest({
+    this.encodedDevice,
+    this.installerId,
+  });
 
-  SasPortalUpdateSignedDeviceRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('encodedDevice')) {
-      encodedDevice = _json['encodedDevice'] as core.String;
-    }
-    if (_json.containsKey('installerId')) {
-      installerId = _json['installerId'] as core.String;
-    }
-  }
+  SasPortalUpdateSignedDeviceRequest.fromJson(core.Map _json)
+      : this(
+          encodedDevice: _json.containsKey('encodedDevice')
+              ? _json['encodedDevice'] as core.String
+              : null,
+          installerId: _json.containsKey('installerId')
+              ? _json['installerId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (encodedDevice != null) 'encodedDevice': encodedDevice!,
@@ -4993,19 +5141,24 @@ class SasPortalValidateInstallerRequest {
   /// Required.
   core.String? secret;
 
-  SasPortalValidateInstallerRequest();
+  SasPortalValidateInstallerRequest({
+    this.encodedSecret,
+    this.installerId,
+    this.secret,
+  });
 
-  SasPortalValidateInstallerRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('encodedSecret')) {
-      encodedSecret = _json['encodedSecret'] as core.String;
-    }
-    if (_json.containsKey('installerId')) {
-      installerId = _json['installerId'] as core.String;
-    }
-    if (_json.containsKey('secret')) {
-      secret = _json['secret'] as core.String;
-    }
-  }
+  SasPortalValidateInstallerRequest.fromJson(core.Map _json)
+      : this(
+          encodedSecret: _json.containsKey('encodedSecret')
+              ? _json['encodedSecret'] as core.String
+              : null,
+          installerId: _json.containsKey('installerId')
+              ? _json['installerId'] as core.String
+              : null,
+          secret: _json.containsKey('secret')
+              ? _json['secret'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (encodedSecret != null) 'encodedSecret': encodedSecret!,

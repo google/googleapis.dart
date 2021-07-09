@@ -270,19 +270,22 @@ class Bucket {
   /// Output only.
   core.bool? reconciling;
 
-  Bucket();
+  Bucket({
+    this.location,
+    this.name,
+    this.reconciling,
+  });
 
-  Bucket.fromJson(core.Map _json) {
-    if (_json.containsKey('location')) {
-      location = _json['location'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('reconciling')) {
-      reconciling = _json['reconciling'] as core.bool;
-    }
-  }
+  Bucket.fromJson(core.Map _json)
+      : this(
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          reconciling: _json.containsKey('reconciling')
+              ? _json['reconciling'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (location != null) 'location': location!,
@@ -318,19 +321,23 @@ class ListBucketsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListBucketsResponse();
+  ListBucketsResponse({
+    this.buckets,
+    this.nextPageToken,
+  });
 
-  ListBucketsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('buckets')) {
-      buckets = (_json['buckets'] as core.List)
-          .map<Bucket>((value) =>
-              Bucket.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListBucketsResponse.fromJson(core.Map _json)
+      : this(
+          buckets: _json.containsKey('buckets')
+              ? (_json['buckets'] as core.List)
+                  .map<Bucket>((value) => Bucket.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (buckets != null)

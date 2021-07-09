@@ -922,32 +922,38 @@ class AggregateBucket {
   /// of interest.
   core.String? type;
 
-  AggregateBucket();
+  AggregateBucket({
+    this.activity,
+    this.dataset,
+    this.endTimeMillis,
+    this.session,
+    this.startTimeMillis,
+    this.type,
+  });
 
-  AggregateBucket.fromJson(core.Map _json) {
-    if (_json.containsKey('activity')) {
-      activity = _json['activity'] as core.int;
-    }
-    if (_json.containsKey('dataset')) {
-      dataset = (_json['dataset'] as core.List)
-          .map<Dataset>((value) =>
-              Dataset.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('endTimeMillis')) {
-      endTimeMillis = _json['endTimeMillis'] as core.String;
-    }
-    if (_json.containsKey('session')) {
-      session = Session.fromJson(
-          _json['session'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('startTimeMillis')) {
-      startTimeMillis = _json['startTimeMillis'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  AggregateBucket.fromJson(core.Map _json)
+      : this(
+          activity: _json.containsKey('activity')
+              ? _json['activity'] as core.int
+              : null,
+          dataset: _json.containsKey('dataset')
+              ? (_json['dataset'] as core.List)
+                  .map<Dataset>((value) => Dataset.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          endTimeMillis: _json.containsKey('endTimeMillis')
+              ? _json['endTimeMillis'] as core.String
+              : null,
+          session: _json.containsKey('session')
+              ? Session.fromJson(
+                  _json['session'] as core.Map<core.String, core.dynamic>)
+              : null,
+          startTimeMillis: _json.containsKey('startTimeMillis')
+              ? _json['startTimeMillis'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (activity != null) 'activity': activity!,
@@ -981,16 +987,20 @@ class AggregateBy {
   /// aggregated by either the dataTypeName or the dataSourceId, not both.
   core.String? dataTypeName;
 
-  AggregateBy();
+  AggregateBy({
+    this.dataSourceId,
+    this.dataTypeName,
+  });
 
-  AggregateBy.fromJson(core.Map _json) {
-    if (_json.containsKey('dataSourceId')) {
-      dataSourceId = _json['dataSourceId'] as core.String;
-    }
-    if (_json.containsKey('dataTypeName')) {
-      dataTypeName = _json['dataTypeName'] as core.String;
-    }
-  }
+  AggregateBy.fromJson(core.Map _json)
+      : this(
+          dataSourceId: _json.containsKey('dataSourceId')
+              ? _json['dataSourceId'] as core.String
+              : null,
+          dataTypeName: _json.containsKey('dataTypeName')
+              ? _json['dataTypeName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataSourceId != null) 'dataSourceId': dataSourceId!,
@@ -1053,45 +1063,54 @@ class AggregateRequest {
   /// in milliseconds since epoch, inclusive.
   core.String? startTimeMillis;
 
-  AggregateRequest();
+  AggregateRequest({
+    this.aggregateBy,
+    this.bucketByActivitySegment,
+    this.bucketByActivityType,
+    this.bucketBySession,
+    this.bucketByTime,
+    this.endTimeMillis,
+    this.filteredDataQualityStandard,
+    this.startTimeMillis,
+  });
 
-  AggregateRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('aggregateBy')) {
-      aggregateBy = (_json['aggregateBy'] as core.List)
-          .map<AggregateBy>((value) => AggregateBy.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('bucketByActivitySegment')) {
-      bucketByActivitySegment = BucketByActivity.fromJson(
-          _json['bucketByActivitySegment']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('bucketByActivityType')) {
-      bucketByActivityType = BucketByActivity.fromJson(
-          _json['bucketByActivityType'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('bucketBySession')) {
-      bucketBySession = BucketBySession.fromJson(
-          _json['bucketBySession'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('bucketByTime')) {
-      bucketByTime = BucketByTime.fromJson(
-          _json['bucketByTime'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('endTimeMillis')) {
-      endTimeMillis = _json['endTimeMillis'] as core.String;
-    }
-    if (_json.containsKey('filteredDataQualityStandard')) {
-      filteredDataQualityStandard =
-          (_json['filteredDataQualityStandard'] as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList();
-    }
-    if (_json.containsKey('startTimeMillis')) {
-      startTimeMillis = _json['startTimeMillis'] as core.String;
-    }
-  }
+  AggregateRequest.fromJson(core.Map _json)
+      : this(
+          aggregateBy: _json.containsKey('aggregateBy')
+              ? (_json['aggregateBy'] as core.List)
+                  .map<AggregateBy>((value) => AggregateBy.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          bucketByActivitySegment: _json.containsKey('bucketByActivitySegment')
+              ? BucketByActivity.fromJson(_json['bucketByActivitySegment']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          bucketByActivityType: _json.containsKey('bucketByActivityType')
+              ? BucketByActivity.fromJson(_json['bucketByActivityType']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          bucketBySession: _json.containsKey('bucketBySession')
+              ? BucketBySession.fromJson(_json['bucketBySession']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          bucketByTime: _json.containsKey('bucketByTime')
+              ? BucketByTime.fromJson(
+                  _json['bucketByTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+          endTimeMillis: _json.containsKey('endTimeMillis')
+              ? _json['endTimeMillis'] as core.String
+              : null,
+          filteredDataQualityStandard:
+              _json.containsKey('filteredDataQualityStandard')
+                  ? (_json['filteredDataQualityStandard'] as core.List)
+                      .map<core.String>((value) => value as core.String)
+                      .toList()
+                  : null,
+          startTimeMillis: _json.containsKey('startTimeMillis')
+              ? _json['startTimeMillis'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (aggregateBy != null)
@@ -1114,16 +1133,19 @@ class AggregateResponse {
   /// A list of buckets containing the aggregated data.
   core.List<AggregateBucket>? bucket;
 
-  AggregateResponse();
+  AggregateResponse({
+    this.bucket,
+  });
 
-  AggregateResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('bucket')) {
-      bucket = (_json['bucket'] as core.List)
-          .map<AggregateBucket>((value) => AggregateBucket.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  AggregateResponse.fromJson(core.Map _json)
+      : this(
+          bucket: _json.containsKey('bucket')
+              ? (_json['bucket'] as core.List)
+                  .map<AggregateBucket>((value) => AggregateBucket.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bucket != null)
@@ -1157,22 +1179,26 @@ class Application {
   /// that affects the computation of the data.
   core.String? version;
 
-  Application();
+  Application({
+    this.detailsUrl,
+    this.name,
+    this.packageName,
+    this.version,
+  });
 
-  Application.fromJson(core.Map _json) {
-    if (_json.containsKey('detailsUrl')) {
-      detailsUrl = _json['detailsUrl'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('packageName')) {
-      packageName = _json['packageName'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.String;
-    }
-  }
+  Application.fromJson(core.Map _json)
+      : this(
+          detailsUrl: _json.containsKey('detailsUrl')
+              ? _json['detailsUrl'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          packageName: _json.containsKey('packageName')
+              ? _json['packageName'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (detailsUrl != null) 'detailsUrl': detailsUrl!,
@@ -1192,16 +1218,20 @@ class BucketByActivity {
   /// data.
   core.String? minDurationMillis;
 
-  BucketByActivity();
+  BucketByActivity({
+    this.activityDataSourceId,
+    this.minDurationMillis,
+  });
 
-  BucketByActivity.fromJson(core.Map _json) {
-    if (_json.containsKey('activityDataSourceId')) {
-      activityDataSourceId = _json['activityDataSourceId'] as core.String;
-    }
-    if (_json.containsKey('minDurationMillis')) {
-      minDurationMillis = _json['minDurationMillis'] as core.String;
-    }
-  }
+  BucketByActivity.fromJson(core.Map _json)
+      : this(
+          activityDataSourceId: _json.containsKey('activityDataSourceId')
+              ? _json['activityDataSourceId'] as core.String
+              : null,
+          minDurationMillis: _json.containsKey('minDurationMillis')
+              ? _json['minDurationMillis'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (activityDataSourceId != null)
@@ -1215,13 +1245,16 @@ class BucketBySession {
   /// considered and used as a container for aggregated data.
   core.String? minDurationMillis;
 
-  BucketBySession();
+  BucketBySession({
+    this.minDurationMillis,
+  });
 
-  BucketBySession.fromJson(core.Map _json) {
-    if (_json.containsKey('minDurationMillis')) {
-      minDurationMillis = _json['minDurationMillis'] as core.String;
-    }
-  }
+  BucketBySession.fromJson(core.Map _json)
+      : this(
+          minDurationMillis: _json.containsKey('minDurationMillis')
+              ? _json['minDurationMillis'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (minDurationMillis != null) 'minDurationMillis': minDurationMillis!,
@@ -1237,17 +1270,21 @@ class BucketByTime {
   core.String? durationMillis;
   BucketByTimePeriod? period;
 
-  BucketByTime();
+  BucketByTime({
+    this.durationMillis,
+    this.period,
+  });
 
-  BucketByTime.fromJson(core.Map _json) {
-    if (_json.containsKey('durationMillis')) {
-      durationMillis = _json['durationMillis'] as core.String;
-    }
-    if (_json.containsKey('period')) {
-      period = BucketByTimePeriod.fromJson(
-          _json['period'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  BucketByTime.fromJson(core.Map _json)
+      : this(
+          durationMillis: _json.containsKey('durationMillis')
+              ? _json['durationMillis'] as core.String
+              : null,
+          period: _json.containsKey('period')
+              ? BucketByTimePeriod.fromJson(
+                  _json['period'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (durationMillis != null) 'durationMillis': durationMillis!,
@@ -1267,19 +1304,20 @@ class BucketByTimePeriod {
   core.String? type;
   core.int? value;
 
-  BucketByTimePeriod();
+  BucketByTimePeriod({
+    this.timeZoneId,
+    this.type,
+    this.value,
+  });
 
-  BucketByTimePeriod.fromJson(core.Map _json) {
-    if (_json.containsKey('timeZoneId')) {
-      timeZoneId = _json['timeZoneId'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.int;
-    }
-  }
+  BucketByTimePeriod.fromJson(core.Map _json)
+      : this(
+          timeZoneId: _json.containsKey('timeZoneId')
+              ? _json['timeZoneId'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          value: _json.containsKey('value') ? _json['value'] as core.int : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (timeZoneId != null) 'timeZoneId': timeZoneId!,
@@ -1341,37 +1379,47 @@ class DataPoint {
   /// type field.
   core.List<Value>? value;
 
-  DataPoint();
+  DataPoint({
+    this.computationTimeMillis,
+    this.dataTypeName,
+    this.endTimeNanos,
+    this.modifiedTimeMillis,
+    this.originDataSourceId,
+    this.rawTimestampNanos,
+    this.startTimeNanos,
+    this.value,
+  });
 
-  DataPoint.fromJson(core.Map _json) {
-    if (_json.containsKey('computationTimeMillis')) {
-      computationTimeMillis = _json['computationTimeMillis'] as core.String;
-    }
-    if (_json.containsKey('dataTypeName')) {
-      dataTypeName = _json['dataTypeName'] as core.String;
-    }
-    if (_json.containsKey('endTimeNanos')) {
-      endTimeNanos = _json['endTimeNanos'] as core.String;
-    }
-    if (_json.containsKey('modifiedTimeMillis')) {
-      modifiedTimeMillis = _json['modifiedTimeMillis'] as core.String;
-    }
-    if (_json.containsKey('originDataSourceId')) {
-      originDataSourceId = _json['originDataSourceId'] as core.String;
-    }
-    if (_json.containsKey('rawTimestampNanos')) {
-      rawTimestampNanos = _json['rawTimestampNanos'] as core.String;
-    }
-    if (_json.containsKey('startTimeNanos')) {
-      startTimeNanos = _json['startTimeNanos'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = (_json['value'] as core.List)
-          .map<Value>((value) =>
-              Value.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  DataPoint.fromJson(core.Map _json)
+      : this(
+          computationTimeMillis: _json.containsKey('computationTimeMillis')
+              ? _json['computationTimeMillis'] as core.String
+              : null,
+          dataTypeName: _json.containsKey('dataTypeName')
+              ? _json['dataTypeName'] as core.String
+              : null,
+          endTimeNanos: _json.containsKey('endTimeNanos')
+              ? _json['endTimeNanos'] as core.String
+              : null,
+          modifiedTimeMillis: _json.containsKey('modifiedTimeMillis')
+              ? _json['modifiedTimeMillis'] as core.String
+              : null,
+          originDataSourceId: _json.containsKey('originDataSourceId')
+              ? _json['originDataSourceId'] as core.String
+              : null,
+          rawTimestampNanos: _json.containsKey('rawTimestampNanos')
+              ? _json['rawTimestampNanos'] as core.String
+              : null,
+          startTimeNanos: _json.containsKey('startTimeNanos')
+              ? _json['startTimeNanos'] as core.String
+              : null,
+          value: _json.containsKey('value')
+              ? (_json['value'] as core.List)
+                  .map<Value>((value) => Value.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (computationTimeMillis != null)
@@ -1469,39 +1517,45 @@ class DataSource {
   /// - "derived"
   core.String? type;
 
-  DataSource();
+  DataSource({
+    this.application,
+    this.dataQualityStandard,
+    this.dataStreamId,
+    this.dataStreamName,
+    this.dataType,
+    this.device,
+    this.name,
+    this.type,
+  });
 
-  DataSource.fromJson(core.Map _json) {
-    if (_json.containsKey('application')) {
-      application = Application.fromJson(
-          _json['application'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('dataQualityStandard')) {
-      dataQualityStandard = (_json['dataQualityStandard'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('dataStreamId')) {
-      dataStreamId = _json['dataStreamId'] as core.String;
-    }
-    if (_json.containsKey('dataStreamName')) {
-      dataStreamName = _json['dataStreamName'] as core.String;
-    }
-    if (_json.containsKey('dataType')) {
-      dataType = DataType.fromJson(
-          _json['dataType'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('device')) {
-      device = Device.fromJson(
-          _json['device'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  DataSource.fromJson(core.Map _json)
+      : this(
+          application: _json.containsKey('application')
+              ? Application.fromJson(
+                  _json['application'] as core.Map<core.String, core.dynamic>)
+              : null,
+          dataQualityStandard: _json.containsKey('dataQualityStandard')
+              ? (_json['dataQualityStandard'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          dataStreamId: _json.containsKey('dataStreamId')
+              ? _json['dataStreamId'] as core.String
+              : null,
+          dataStreamName: _json.containsKey('dataStreamName')
+              ? _json['dataStreamName'] as core.String
+              : null,
+          dataType: _json.containsKey('dataType')
+              ? DataType.fromJson(
+                  _json['dataType'] as core.Map<core.String, core.dynamic>)
+              : null,
+          device: _json.containsKey('device')
+              ? Device.fromJson(
+                  _json['device'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (application != null) 'application': application!.toJson(),
@@ -1526,19 +1580,21 @@ class DataType {
   /// platform.
   core.String? name;
 
-  DataType();
+  DataType({
+    this.field,
+    this.name,
+  });
 
-  DataType.fromJson(core.Map _json) {
-    if (_json.containsKey('field')) {
-      field = (_json['field'] as core.List)
-          .map<DataTypeField>((value) => DataTypeField.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  DataType.fromJson(core.Map _json)
+      : this(
+          field: _json.containsKey('field')
+              ? (_json['field'] as core.List)
+                  .map<DataTypeField>((value) => DataTypeField.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (field != null)
@@ -1572,19 +1628,22 @@ class DataTypeField {
   core.String? name;
   core.bool? optional;
 
-  DataTypeField();
+  DataTypeField({
+    this.format,
+    this.name,
+    this.optional,
+  });
 
-  DataTypeField.fromJson(core.Map _json) {
-    if (_json.containsKey('format')) {
-      format = _json['format'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('optional')) {
-      optional = _json['optional'] as core.bool;
-    }
-  }
+  DataTypeField.fromJson(core.Map _json)
+      : this(
+          format: _json.containsKey('format')
+              ? _json['format'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          optional: _json.containsKey('optional')
+              ? _json['optional'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (format != null) 'format': format!,
@@ -1632,28 +1691,35 @@ class Dataset {
   /// to include in a single response.
   core.List<DataPoint>? point;
 
-  Dataset();
+  Dataset({
+    this.dataSourceId,
+    this.maxEndTimeNs,
+    this.minStartTimeNs,
+    this.nextPageToken,
+    this.point,
+  });
 
-  Dataset.fromJson(core.Map _json) {
-    if (_json.containsKey('dataSourceId')) {
-      dataSourceId = _json['dataSourceId'] as core.String;
-    }
-    if (_json.containsKey('maxEndTimeNs')) {
-      maxEndTimeNs = _json['maxEndTimeNs'] as core.String;
-    }
-    if (_json.containsKey('minStartTimeNs')) {
-      minStartTimeNs = _json['minStartTimeNs'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('point')) {
-      point = (_json['point'] as core.List)
-          .map<DataPoint>((value) =>
-              DataPoint.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  Dataset.fromJson(core.Map _json)
+      : this(
+          dataSourceId: _json.containsKey('dataSourceId')
+              ? _json['dataSourceId'] as core.String
+              : null,
+          maxEndTimeNs: _json.containsKey('maxEndTimeNs')
+              ? _json['maxEndTimeNs'] as core.String
+              : null,
+          minStartTimeNs: _json.containsKey('minStartTimeNs')
+              ? _json['minStartTimeNs'] as core.String
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          point: _json.containsKey('point')
+              ? (_json['point'] as core.List)
+                  .map<DataPoint>((value) => DataPoint.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataSourceId != null) 'dataSourceId': dataSourceId!,
@@ -1706,25 +1772,27 @@ class Device {
   /// Version string for the device hardware/software.
   core.String? version;
 
-  Device();
+  Device({
+    this.manufacturer,
+    this.model,
+    this.type,
+    this.uid,
+    this.version,
+  });
 
-  Device.fromJson(core.Map _json) {
-    if (_json.containsKey('manufacturer')) {
-      manufacturer = _json['manufacturer'] as core.String;
-    }
-    if (_json.containsKey('model')) {
-      model = _json['model'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('uid')) {
-      uid = _json['uid'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.String;
-    }
-  }
+  Device.fromJson(core.Map _json)
+      : this(
+          manufacturer: _json.containsKey('manufacturer')
+              ? _json['manufacturer'] as core.String
+              : null,
+          model:
+              _json.containsKey('model') ? _json['model'] as core.String : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (manufacturer != null) 'manufacturer': manufacturer!,
@@ -1753,28 +1821,34 @@ class ListDataPointChangesResponse {
   /// results.
   core.String? nextPageToken;
 
-  ListDataPointChangesResponse();
+  ListDataPointChangesResponse({
+    this.dataSourceId,
+    this.deletedDataPoint,
+    this.insertedDataPoint,
+    this.nextPageToken,
+  });
 
-  ListDataPointChangesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('dataSourceId')) {
-      dataSourceId = _json['dataSourceId'] as core.String;
-    }
-    if (_json.containsKey('deletedDataPoint')) {
-      deletedDataPoint = (_json['deletedDataPoint'] as core.List)
-          .map<DataPoint>((value) =>
-              DataPoint.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('insertedDataPoint')) {
-      insertedDataPoint = (_json['insertedDataPoint'] as core.List)
-          .map<DataPoint>((value) =>
-              DataPoint.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListDataPointChangesResponse.fromJson(core.Map _json)
+      : this(
+          dataSourceId: _json.containsKey('dataSourceId')
+              ? _json['dataSourceId'] as core.String
+              : null,
+          deletedDataPoint: _json.containsKey('deletedDataPoint')
+              ? (_json['deletedDataPoint'] as core.List)
+                  .map<DataPoint>((value) => DataPoint.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          insertedDataPoint: _json.containsKey('insertedDataPoint')
+              ? (_json['insertedDataPoint'] as core.List)
+                  .map<DataPoint>((value) => DataPoint.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataSourceId != null) 'dataSourceId': dataSourceId!,
@@ -1792,16 +1866,19 @@ class ListDataSourcesResponse {
   /// A previously created data source.
   core.List<DataSource>? dataSource;
 
-  ListDataSourcesResponse();
+  ListDataSourcesResponse({
+    this.dataSource,
+  });
 
-  ListDataSourcesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('dataSource')) {
-      dataSource = (_json['dataSource'] as core.List)
-          .map<DataSource>((value) =>
-              DataSource.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListDataSourcesResponse.fromJson(core.Map _json)
+      : this(
+          dataSource: _json.containsKey('dataSource')
+              ? (_json['dataSource'] as core.List)
+                  .map<DataSource>((value) => DataSource.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataSource != null)
@@ -1830,28 +1907,34 @@ class ListSessionsResponse {
   /// request.
   core.List<Session>? session;
 
-  ListSessionsResponse();
+  ListSessionsResponse({
+    this.deletedSession,
+    this.hasMoreData,
+    this.nextPageToken,
+    this.session,
+  });
 
-  ListSessionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('deletedSession')) {
-      deletedSession = (_json['deletedSession'] as core.List)
-          .map<Session>((value) =>
-              Session.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('hasMoreData')) {
-      hasMoreData = _json['hasMoreData'] as core.bool;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('session')) {
-      session = (_json['session'] as core.List)
-          .map<Session>((value) =>
-              Session.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListSessionsResponse.fromJson(core.Map _json)
+      : this(
+          deletedSession: _json.containsKey('deletedSession')
+              ? (_json['deletedSession'] as core.List)
+                  .map<Session>((value) => Session.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          hasMoreData: _json.containsKey('hasMoreData')
+              ? _json['hasMoreData'] as core.bool
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          session: _json.containsKey('session')
+              ? (_json['session'] as core.List)
+                  .map<Session>((value) => Session.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deletedSession != null)
@@ -1872,13 +1955,16 @@ class MapValue {
   /// Floating point value.
   core.double? fpVal;
 
-  MapValue();
+  MapValue({
+    this.fpVal,
+  });
 
-  MapValue.fromJson(core.Map _json) {
-    if (_json.containsKey('fpVal')) {
-      fpVal = (_json['fpVal'] as core.num).toDouble();
-    }
-  }
+  MapValue.fromJson(core.Map _json)
+      : this(
+          fpVal: _json.containsKey('fpVal')
+              ? (_json['fpVal'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fpVal != null) 'fpVal': fpVal!,
@@ -1921,38 +2007,45 @@ class Session {
   /// A start time, in milliseconds since epoch, inclusive.
   core.String? startTimeMillis;
 
-  Session();
+  Session({
+    this.activeTimeMillis,
+    this.activityType,
+    this.application,
+    this.description,
+    this.endTimeMillis,
+    this.id,
+    this.modifiedTimeMillis,
+    this.name,
+    this.startTimeMillis,
+  });
 
-  Session.fromJson(core.Map _json) {
-    if (_json.containsKey('activeTimeMillis')) {
-      activeTimeMillis = _json['activeTimeMillis'] as core.String;
-    }
-    if (_json.containsKey('activityType')) {
-      activityType = _json['activityType'] as core.int;
-    }
-    if (_json.containsKey('application')) {
-      application = Application.fromJson(
-          _json['application'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('endTimeMillis')) {
-      endTimeMillis = _json['endTimeMillis'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('modifiedTimeMillis')) {
-      modifiedTimeMillis = _json['modifiedTimeMillis'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('startTimeMillis')) {
-      startTimeMillis = _json['startTimeMillis'] as core.String;
-    }
-  }
+  Session.fromJson(core.Map _json)
+      : this(
+          activeTimeMillis: _json.containsKey('activeTimeMillis')
+              ? _json['activeTimeMillis'] as core.String
+              : null,
+          activityType: _json.containsKey('activityType')
+              ? _json['activityType'] as core.int
+              : null,
+          application: _json.containsKey('application')
+              ? Application.fromJson(
+                  _json['application'] as core.Map<core.String, core.dynamic>)
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          endTimeMillis: _json.containsKey('endTimeMillis')
+              ? _json['endTimeMillis'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          modifiedTimeMillis: _json.containsKey('modifiedTimeMillis')
+              ? _json['modifiedTimeMillis'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          startTimeMillis: _json.containsKey('startTimeMillis')
+              ? _json['startTimeMillis'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (activeTimeMillis != null) 'activeTimeMillis': activeTimeMillis!,
@@ -1998,25 +2091,30 @@ class Value {
   /// data frequency may be down sampled.
   core.String? stringVal;
 
-  Value();
+  Value({
+    this.fpVal,
+    this.intVal,
+    this.mapVal,
+    this.stringVal,
+  });
 
-  Value.fromJson(core.Map _json) {
-    if (_json.containsKey('fpVal')) {
-      fpVal = (_json['fpVal'] as core.num).toDouble();
-    }
-    if (_json.containsKey('intVal')) {
-      intVal = _json['intVal'] as core.int;
-    }
-    if (_json.containsKey('mapVal')) {
-      mapVal = (_json['mapVal'] as core.List)
-          .map<ValueMapValEntry>((value) => ValueMapValEntry.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('stringVal')) {
-      stringVal = _json['stringVal'] as core.String;
-    }
-  }
+  Value.fromJson(core.Map _json)
+      : this(
+          fpVal: _json.containsKey('fpVal')
+              ? (_json['fpVal'] as core.num).toDouble()
+              : null,
+          intVal:
+              _json.containsKey('intVal') ? _json['intVal'] as core.int : null,
+          mapVal: _json.containsKey('mapVal')
+              ? (_json['mapVal'] as core.List)
+                  .map<ValueMapValEntry>((value) => ValueMapValEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          stringVal: _json.containsKey('stringVal')
+              ? _json['stringVal'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fpVal != null) 'fpVal': fpVal!,
@@ -2031,17 +2129,19 @@ class ValueMapValEntry {
   core.String? key;
   MapValue? value;
 
-  ValueMapValEntry();
+  ValueMapValEntry({
+    this.key,
+    this.value,
+  });
 
-  ValueMapValEntry.fromJson(core.Map _json) {
-    if (_json.containsKey('key')) {
-      key = _json['key'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = MapValue.fromJson(
-          _json['value'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ValueMapValEntry.fromJson(core.Map _json)
+      : this(
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          value: _json.containsKey('value')
+              ? MapValue.fromJson(
+                  _json['value'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,

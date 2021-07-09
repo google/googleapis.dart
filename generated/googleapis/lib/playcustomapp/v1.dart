@@ -154,19 +154,23 @@ class CustomApp {
   /// Title for the Android app.
   core.String? title;
 
-  CustomApp();
+  CustomApp({
+    this.languageCode,
+    this.packageName,
+    this.title,
+  });
 
-  CustomApp.fromJson(core.Map _json) {
-    if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'] as core.String;
-    }
-    if (_json.containsKey('packageName')) {
-      packageName = _json['packageName'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  CustomApp.fromJson(core.Map _json)
+      : this(
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
+          packageName: _json.containsKey('packageName')
+              ? _json['packageName'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (languageCode != null) 'languageCode': languageCode!,

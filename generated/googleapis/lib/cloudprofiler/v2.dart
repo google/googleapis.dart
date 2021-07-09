@@ -233,19 +233,23 @@ class CreateProfileRequest {
   /// One or more profile types that the agent is capable of providing.
   core.List<core.String>? profileType;
 
-  CreateProfileRequest();
+  CreateProfileRequest({
+    this.deployment,
+    this.profileType,
+  });
 
-  CreateProfileRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('deployment')) {
-      deployment = Deployment.fromJson(
-          _json['deployment'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('profileType')) {
-      profileType = (_json['profileType'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  CreateProfileRequest.fromJson(core.Map _json)
+      : this(
+          deployment: _json.containsKey('deployment')
+              ? Deployment.fromJson(
+                  _json['deployment'] as core.Map<core.String, core.dynamic>)
+              : null,
+          profileType: _json.containsKey('profileType')
+              ? (_json['profileType'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deployment != null) 'deployment': deployment!.toJson(),
@@ -281,24 +285,29 @@ class Deployment {
   /// `^[a-z]([-a-z0-9_.]{0,253}[a-z0-9])?$`.
   core.String? target;
 
-  Deployment();
+  Deployment({
+    this.labels,
+    this.projectId,
+    this.target,
+  });
 
-  Deployment.fromJson(core.Map _json) {
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('target')) {
-      target = _json['target'] as core.String;
-    }
-  }
+  Deployment.fromJson(core.Map _json)
+      : this(
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          target: _json.containsKey('target')
+              ? _json['target'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (labels != null) 'labels': labels!,
@@ -367,34 +376,40 @@ class Profile {
   /// the garbage collection pressure to see if those can be optimized.
   core.String? profileType;
 
-  Profile();
+  Profile({
+    this.deployment,
+    this.duration,
+    this.labels,
+    this.name,
+    this.profileBytes,
+    this.profileType,
+  });
 
-  Profile.fromJson(core.Map _json) {
-    if (_json.containsKey('deployment')) {
-      deployment = Deployment.fromJson(
-          _json['deployment'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('duration')) {
-      duration = _json['duration'] as core.String;
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('profileBytes')) {
-      profileBytes = _json['profileBytes'] as core.String;
-    }
-    if (_json.containsKey('profileType')) {
-      profileType = _json['profileType'] as core.String;
-    }
-  }
+  Profile.fromJson(core.Map _json)
+      : this(
+          deployment: _json.containsKey('deployment')
+              ? Deployment.fromJson(
+                  _json['deployment'] as core.Map<core.String, core.dynamic>)
+              : null,
+          duration: _json.containsKey('duration')
+              ? _json['duration'] as core.String
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          profileBytes: _json.containsKey('profileBytes')
+              ? _json['profileBytes'] as core.String
+              : null,
+          profileType: _json.containsKey('profileType')
+              ? _json['profileType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deployment != null) 'deployment': deployment!.toJson(),

@@ -958,16 +958,17 @@ class ActionParameter {
   /// The value of the parameter.
   core.String? value;
 
-  ActionParameter();
+  ActionParameter({
+    this.key,
+    this.value,
+  });
 
-  ActionParameter.fromJson(core.Map _json) {
-    if (_json.containsKey('key')) {
-      key = _json['key'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  ActionParameter.fromJson(core.Map _json)
+      : this(
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
@@ -993,16 +994,16 @@ class ActionResponse {
   /// (Only for REQUEST_CONFIG response types.)
   core.String? url;
 
-  ActionResponse();
+  ActionResponse({
+    this.type,
+    this.url,
+  });
 
-  ActionResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  ActionResponse.fromJson(core.Map _json)
+      : this(
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
@@ -1040,27 +1041,31 @@ class Annotation {
   /// The metadata of user mention.
   UserMentionMetadata? userMention;
 
-  Annotation();
+  Annotation({
+    this.length,
+    this.slashCommand,
+    this.startIndex,
+    this.type,
+    this.userMention,
+  });
 
-  Annotation.fromJson(core.Map _json) {
-    if (_json.containsKey('length')) {
-      length = _json['length'] as core.int;
-    }
-    if (_json.containsKey('slashCommand')) {
-      slashCommand = SlashCommandMetadata.fromJson(
-          _json['slashCommand'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('startIndex')) {
-      startIndex = _json['startIndex'] as core.int;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('userMention')) {
-      userMention = UserMentionMetadata.fromJson(
-          _json['userMention'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Annotation.fromJson(core.Map _json)
+      : this(
+          length:
+              _json.containsKey('length') ? _json['length'] as core.int : null,
+          slashCommand: _json.containsKey('slashCommand')
+              ? SlashCommandMetadata.fromJson(
+                  _json['slashCommand'] as core.Map<core.String, core.dynamic>)
+              : null,
+          startIndex: _json.containsKey('startIndex')
+              ? _json['startIndex'] as core.int
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          userMention: _json.containsKey('userMention')
+              ? UserMentionMetadata.fromJson(
+                  _json['userMention'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (length != null) 'length': length!,
@@ -1116,36 +1121,44 @@ class Attachment {
   /// Output only.
   core.String? thumbnailUri;
 
-  Attachment();
+  Attachment({
+    this.attachmentDataRef,
+    this.contentName,
+    this.contentType,
+    this.downloadUri,
+    this.driveDataRef,
+    this.name,
+    this.source,
+    this.thumbnailUri,
+  });
 
-  Attachment.fromJson(core.Map _json) {
-    if (_json.containsKey('attachmentDataRef')) {
-      attachmentDataRef = AttachmentDataRef.fromJson(
-          _json['attachmentDataRef'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('contentName')) {
-      contentName = _json['contentName'] as core.String;
-    }
-    if (_json.containsKey('contentType')) {
-      contentType = _json['contentType'] as core.String;
-    }
-    if (_json.containsKey('downloadUri')) {
-      downloadUri = _json['downloadUri'] as core.String;
-    }
-    if (_json.containsKey('driveDataRef')) {
-      driveDataRef = DriveDataRef.fromJson(
-          _json['driveDataRef'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('source')) {
-      source = _json['source'] as core.String;
-    }
-    if (_json.containsKey('thumbnailUri')) {
-      thumbnailUri = _json['thumbnailUri'] as core.String;
-    }
-  }
+  Attachment.fromJson(core.Map _json)
+      : this(
+          attachmentDataRef: _json.containsKey('attachmentDataRef')
+              ? AttachmentDataRef.fromJson(_json['attachmentDataRef']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          contentName: _json.containsKey('contentName')
+              ? _json['contentName'] as core.String
+              : null,
+          contentType: _json.containsKey('contentType')
+              ? _json['contentType'] as core.String
+              : null,
+          downloadUri: _json.containsKey('downloadUri')
+              ? _json['downloadUri'] as core.String
+              : null,
+          driveDataRef: _json.containsKey('driveDataRef')
+              ? DriveDataRef.fromJson(
+                  _json['driveDataRef'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          source: _json.containsKey('source')
+              ? _json['source'] as core.String
+              : null,
+          thumbnailUri: _json.containsKey('thumbnailUri')
+              ? _json['thumbnailUri'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attachmentDataRef != null)
@@ -1167,13 +1180,16 @@ class AttachmentDataRef {
   /// This is used with the media API to download the attachment data.
   core.String? resourceName;
 
-  AttachmentDataRef();
+  AttachmentDataRef({
+    this.resourceName,
+  });
 
-  AttachmentDataRef.fromJson(core.Map _json) {
-    if (_json.containsKey('resourceName')) {
-      resourceName = _json['resourceName'] as core.String;
-    }
-  }
+  AttachmentDataRef.fromJson(core.Map _json)
+      : this(
+          resourceName: _json.containsKey('resourceName')
+              ? _json['resourceName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceName != null) 'resourceName': resourceName!,
@@ -1190,18 +1206,22 @@ class Button {
   /// A button with text and onclick action.
   TextButton? textButton;
 
-  Button();
+  Button({
+    this.imageButton,
+    this.textButton,
+  });
 
-  Button.fromJson(core.Map _json) {
-    if (_json.containsKey('imageButton')) {
-      imageButton = ImageButton.fromJson(
-          _json['imageButton'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('textButton')) {
-      textButton = TextButton.fromJson(
-          _json['textButton'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Button.fromJson(core.Map _json)
+      : this(
+          imageButton: _json.containsKey('imageButton')
+              ? ImageButton.fromJson(
+                  _json['imageButton'] as core.Map<core.String, core.dynamic>)
+              : null,
+          textButton: _json.containsKey('textButton')
+              ? TextButton.fromJson(
+                  _json['textButton'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (imageButton != null) 'imageButton': imageButton!.toJson(),
@@ -1225,29 +1245,33 @@ class Card {
   /// Sections are separated by a line divider.
   core.List<Section>? sections;
 
-  Card();
+  Card({
+    this.cardActions,
+    this.header,
+    this.name,
+    this.sections,
+  });
 
-  Card.fromJson(core.Map _json) {
-    if (_json.containsKey('cardActions')) {
-      cardActions = (_json['cardActions'] as core.List)
-          .map<CardAction>((value) =>
-              CardAction.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('header')) {
-      header = CardHeader.fromJson(
-          _json['header'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('sections')) {
-      sections = (_json['sections'] as core.List)
-          .map<Section>((value) =>
-              Section.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  Card.fromJson(core.Map _json)
+      : this(
+          cardActions: _json.containsKey('cardActions')
+              ? (_json['cardActions'] as core.List)
+                  .map<CardAction>((value) => CardAction.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          header: _json.containsKey('header')
+              ? CardHeader.fromJson(
+                  _json['header'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          sections: _json.containsKey('sections')
+              ? (_json['sections'] as core.List)
+                  .map<Section>((value) => Section.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cardActions != null)
@@ -1270,17 +1294,21 @@ class CardAction {
   /// The onclick action for this action item.
   OnClick? onClick;
 
-  CardAction();
+  CardAction({
+    this.actionLabel,
+    this.onClick,
+  });
 
-  CardAction.fromJson(core.Map _json) {
-    if (_json.containsKey('actionLabel')) {
-      actionLabel = _json['actionLabel'] as core.String;
-    }
-    if (_json.containsKey('onClick')) {
-      onClick = OnClick.fromJson(
-          _json['onClick'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  CardAction.fromJson(core.Map _json)
+      : this(
+          actionLabel: _json.containsKey('actionLabel')
+              ? _json['actionLabel'] as core.String
+              : null,
+          onClick: _json.containsKey('onClick')
+              ? OnClick.fromJson(
+                  _json['onClick'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (actionLabel != null) 'actionLabel': actionLabel!,
@@ -1309,22 +1337,27 @@ class CardHeader {
   /// both lines.
   core.String? title;
 
-  CardHeader();
+  CardHeader({
+    this.imageStyle,
+    this.imageUrl,
+    this.subtitle,
+    this.title,
+  });
 
-  CardHeader.fromJson(core.Map _json) {
-    if (_json.containsKey('imageStyle')) {
-      imageStyle = _json['imageStyle'] as core.String;
-    }
-    if (_json.containsKey('imageUrl')) {
-      imageUrl = _json['imageUrl'] as core.String;
-    }
-    if (_json.containsKey('subtitle')) {
-      subtitle = _json['subtitle'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  CardHeader.fromJson(core.Map _json)
+      : this(
+          imageStyle: _json.containsKey('imageStyle')
+              ? _json['imageStyle'] as core.String
+              : null,
+          imageUrl: _json.containsKey('imageUrl')
+              ? _json['imageUrl'] as core.String
+              : null,
+          subtitle: _json.containsKey('subtitle')
+              ? _json['subtitle'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (imageStyle != null) 'imageStyle': imageStyle!,
@@ -1345,17 +1378,21 @@ class CardWithId {
   /// Scoped within a message.
   core.String? cardId;
 
-  CardWithId();
+  CardWithId({
+    this.card,
+    this.cardId,
+  });
 
-  CardWithId.fromJson(core.Map _json) {
-    if (_json.containsKey('card')) {
-      card = GoogleAppsCardV1Card.fromJson(
-          _json['card'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('cardId')) {
-      cardId = _json['cardId'] as core.String;
-    }
-  }
+  CardWithId.fromJson(core.Map _json)
+      : this(
+          card: _json.containsKey('card')
+              ? GoogleAppsCardV1Card.fromJson(
+                  _json['card'] as core.Map<core.String, core.dynamic>)
+              : null,
+          cardId: _json.containsKey('cardId')
+              ? _json['cardId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (card != null) 'card': card!.toJson(),
@@ -1434,22 +1471,28 @@ class Color {
   /// The amount of red in the color as a value in the interval \[0, 1\].
   core.double? red;
 
-  Color();
+  Color({
+    this.alpha,
+    this.blue,
+    this.green,
+    this.red,
+  });
 
-  Color.fromJson(core.Map _json) {
-    if (_json.containsKey('alpha')) {
-      alpha = (_json['alpha'] as core.num).toDouble();
-    }
-    if (_json.containsKey('blue')) {
-      blue = (_json['blue'] as core.num).toDouble();
-    }
-    if (_json.containsKey('green')) {
-      green = (_json['green'] as core.num).toDouble();
-    }
-    if (_json.containsKey('red')) {
-      red = (_json['red'] as core.num).toDouble();
-    }
-  }
+  Color.fromJson(core.Map _json)
+      : this(
+          alpha: _json.containsKey('alpha')
+              ? (_json['alpha'] as core.num).toDouble()
+              : null,
+          blue: _json.containsKey('blue')
+              ? (_json['blue'] as core.num).toDouble()
+              : null,
+          green: _json.containsKey('green')
+              ? (_json['green'] as core.num).toDouble()
+              : null,
+          red: _json.containsKey('red')
+              ? (_json['red'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alpha != null) 'alpha': alpha!,
@@ -1508,42 +1551,50 @@ class DeprecatedEvent {
   /// The user that triggered the event.
   User? user;
 
-  DeprecatedEvent();
+  DeprecatedEvent({
+    this.action,
+    this.configCompleteRedirectUrl,
+    this.eventTime,
+    this.message,
+    this.space,
+    this.threadKey,
+    this.token,
+    this.type,
+    this.user,
+  });
 
-  DeprecatedEvent.fromJson(core.Map _json) {
-    if (_json.containsKey('action')) {
-      action = FormAction.fromJson(
-          _json['action'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('configCompleteRedirectUrl')) {
-      configCompleteRedirectUrl =
-          _json['configCompleteRedirectUrl'] as core.String;
-    }
-    if (_json.containsKey('eventTime')) {
-      eventTime = _json['eventTime'] as core.String;
-    }
-    if (_json.containsKey('message')) {
-      message = Message.fromJson(
-          _json['message'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('space')) {
-      space =
-          Space.fromJson(_json['space'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('threadKey')) {
-      threadKey = _json['threadKey'] as core.String;
-    }
-    if (_json.containsKey('token')) {
-      token = _json['token'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('user')) {
-      user =
-          User.fromJson(_json['user'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  DeprecatedEvent.fromJson(core.Map _json)
+      : this(
+          action: _json.containsKey('action')
+              ? FormAction.fromJson(
+                  _json['action'] as core.Map<core.String, core.dynamic>)
+              : null,
+          configCompleteRedirectUrl:
+              _json.containsKey('configCompleteRedirectUrl')
+                  ? _json['configCompleteRedirectUrl'] as core.String
+                  : null,
+          eventTime: _json.containsKey('eventTime')
+              ? _json['eventTime'] as core.String
+              : null,
+          message: _json.containsKey('message')
+              ? Message.fromJson(
+                  _json['message'] as core.Map<core.String, core.dynamic>)
+              : null,
+          space: _json.containsKey('space')
+              ? Space.fromJson(
+                  _json['space'] as core.Map<core.String, core.dynamic>)
+              : null,
+          threadKey: _json.containsKey('threadKey')
+              ? _json['threadKey'] as core.String
+              : null,
+          token:
+              _json.containsKey('token') ? _json['token'] as core.String : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          user: _json.containsKey('user')
+              ? User.fromJson(
+                  _json['user'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!.toJson(),
@@ -1564,13 +1615,16 @@ class DriveDataRef {
   /// The id for the drive file, for use with the Drive API.
   core.String? driveFileId;
 
-  DriveDataRef();
+  DriveDataRef({
+    this.driveFileId,
+  });
 
-  DriveDataRef.fromJson(core.Map _json) {
-    if (_json.containsKey('driveFileId')) {
-      driveFileId = _json['driveFileId'] as core.String;
-    }
-  }
+  DriveDataRef.fromJson(core.Map _json)
+      : this(
+          driveFileId: _json.containsKey('driveFileId')
+              ? _json['driveFileId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (driveFileId != null) 'driveFileId': driveFileId!,
@@ -1609,19 +1663,23 @@ class FormAction {
   /// List of action parameters.
   core.List<ActionParameter>? parameters;
 
-  FormAction();
+  FormAction({
+    this.actionMethodName,
+    this.parameters,
+  });
 
-  FormAction.fromJson(core.Map _json) {
-    if (_json.containsKey('actionMethodName')) {
-      actionMethodName = _json['actionMethodName'] as core.String;
-    }
-    if (_json.containsKey('parameters')) {
-      parameters = (_json['parameters'] as core.List)
-          .map<ActionParameter>((value) => ActionParameter.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  FormAction.fromJson(core.Map _json)
+      : this(
+          actionMethodName: _json.containsKey('actionMethodName')
+              ? _json['actionMethodName'] as core.String
+              : null,
+          parameters: _json.containsKey('parameters')
+              ? (_json['parameters'] as core.List)
+                  .map<ActionParameter>((value) => ActionParameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (actionMethodName != null) 'actionMethodName': actionMethodName!,
@@ -1662,26 +1720,32 @@ class GoogleAppsCardV1Action {
   /// user while the action is being processed.
   core.bool? persistValues;
 
-  GoogleAppsCardV1Action();
+  GoogleAppsCardV1Action({
+    this.function,
+    this.loadIndicator,
+    this.parameters,
+    this.persistValues,
+  });
 
-  GoogleAppsCardV1Action.fromJson(core.Map _json) {
-    if (_json.containsKey('function')) {
-      function = _json['function'] as core.String;
-    }
-    if (_json.containsKey('loadIndicator')) {
-      loadIndicator = _json['loadIndicator'] as core.String;
-    }
-    if (_json.containsKey('parameters')) {
-      parameters = (_json['parameters'] as core.List)
-          .map<GoogleAppsCardV1ActionParameter>((value) =>
-              GoogleAppsCardV1ActionParameter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('persistValues')) {
-      persistValues = _json['persistValues'] as core.bool;
-    }
-  }
+  GoogleAppsCardV1Action.fromJson(core.Map _json)
+      : this(
+          function: _json.containsKey('function')
+              ? _json['function'] as core.String
+              : null,
+          loadIndicator: _json.containsKey('loadIndicator')
+              ? _json['loadIndicator'] as core.String
+              : null,
+          parameters: _json.containsKey('parameters')
+              ? (_json['parameters'] as core.List)
+                  .map<GoogleAppsCardV1ActionParameter>((value) =>
+                      GoogleAppsCardV1ActionParameter.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          persistValues: _json.containsKey('persistValues')
+              ? _json['persistValues'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (function != null) 'function': function!,
@@ -1704,16 +1768,17 @@ class GoogleAppsCardV1ActionParameter {
   /// The value of the parameter.
   core.String? value;
 
-  GoogleAppsCardV1ActionParameter();
+  GoogleAppsCardV1ActionParameter({
+    this.key,
+    this.value,
+  });
 
-  GoogleAppsCardV1ActionParameter.fromJson(core.Map _json) {
-    if (_json.containsKey('key')) {
-      key = _json['key'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  GoogleAppsCardV1ActionParameter.fromJson(core.Map _json)
+      : this(
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
@@ -1736,20 +1801,23 @@ class GoogleAppsCardV1BorderStyle {
   /// - "STROKE" : Outline.
   core.String? type;
 
-  GoogleAppsCardV1BorderStyle();
+  GoogleAppsCardV1BorderStyle({
+    this.cornerRadius,
+    this.strokeColor,
+    this.type,
+  });
 
-  GoogleAppsCardV1BorderStyle.fromJson(core.Map _json) {
-    if (_json.containsKey('cornerRadius')) {
-      cornerRadius = _json['cornerRadius'] as core.int;
-    }
-    if (_json.containsKey('strokeColor')) {
-      strokeColor = Color.fromJson(
-          _json['strokeColor'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  GoogleAppsCardV1BorderStyle.fromJson(core.Map _json)
+      : this(
+          cornerRadius: _json.containsKey('cornerRadius')
+              ? _json['cornerRadius'] as core.int
+              : null,
+          strokeColor: _json.containsKey('strokeColor')
+              ? Color.fromJson(
+                  _json['strokeColor'] as core.Map<core.String, core.dynamic>)
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cornerRadius != null) 'cornerRadius': cornerRadius!,
@@ -1783,31 +1851,37 @@ class GoogleAppsCardV1Button {
   /// The text of the button.
   core.String? text;
 
-  GoogleAppsCardV1Button();
+  GoogleAppsCardV1Button({
+    this.altText,
+    this.color,
+    this.disabled,
+    this.icon,
+    this.onClick,
+    this.text,
+  });
 
-  GoogleAppsCardV1Button.fromJson(core.Map _json) {
-    if (_json.containsKey('altText')) {
-      altText = _json['altText'] as core.String;
-    }
-    if (_json.containsKey('color')) {
-      color =
-          Color.fromJson(_json['color'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('disabled')) {
-      disabled = _json['disabled'] as core.bool;
-    }
-    if (_json.containsKey('icon')) {
-      icon = GoogleAppsCardV1Icon.fromJson(
-          _json['icon'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('onClick')) {
-      onClick = GoogleAppsCardV1OnClick.fromJson(
-          _json['onClick'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('text')) {
-      text = _json['text'] as core.String;
-    }
-  }
+  GoogleAppsCardV1Button.fromJson(core.Map _json)
+      : this(
+          altText: _json.containsKey('altText')
+              ? _json['altText'] as core.String
+              : null,
+          color: _json.containsKey('color')
+              ? Color.fromJson(
+                  _json['color'] as core.Map<core.String, core.dynamic>)
+              : null,
+          disabled: _json.containsKey('disabled')
+              ? _json['disabled'] as core.bool
+              : null,
+          icon: _json.containsKey('icon')
+              ? GoogleAppsCardV1Icon.fromJson(
+                  _json['icon'] as core.Map<core.String, core.dynamic>)
+              : null,
+          onClick: _json.containsKey('onClick')
+              ? GoogleAppsCardV1OnClick.fromJson(
+                  _json['onClick'] as core.Map<core.String, core.dynamic>)
+              : null,
+          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (altText != null) 'altText': altText!,
@@ -1823,17 +1897,20 @@ class GoogleAppsCardV1Button {
 class GoogleAppsCardV1ButtonList {
   core.List<GoogleAppsCardV1Button>? buttons;
 
-  GoogleAppsCardV1ButtonList();
+  GoogleAppsCardV1ButtonList({
+    this.buttons,
+  });
 
-  GoogleAppsCardV1ButtonList.fromJson(core.Map _json) {
-    if (_json.containsKey('buttons')) {
-      buttons = (_json['buttons'] as core.List)
-          .map<GoogleAppsCardV1Button>((value) =>
-              GoogleAppsCardV1Button.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleAppsCardV1ButtonList.fromJson(core.Map _json)
+      : this(
+          buttons: _json.containsKey('buttons')
+              ? (_json['buttons'] as core.List)
+                  .map<GoogleAppsCardV1Button>((value) =>
+                      GoogleAppsCardV1Button.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (buttons != null)
@@ -1906,42 +1983,49 @@ class GoogleAppsCardV1Card {
   /// Sections are separated by a line divider.
   core.List<GoogleAppsCardV1Section>? sections;
 
-  GoogleAppsCardV1Card();
+  GoogleAppsCardV1Card({
+    this.cardActions,
+    this.displayStyle,
+    this.fixedFooter,
+    this.header,
+    this.name,
+    this.peekCardHeader,
+    this.sections,
+  });
 
-  GoogleAppsCardV1Card.fromJson(core.Map _json) {
-    if (_json.containsKey('cardActions')) {
-      cardActions = (_json['cardActions'] as core.List)
-          .map<GoogleAppsCardV1CardAction>((value) =>
-              GoogleAppsCardV1CardAction.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('displayStyle')) {
-      displayStyle = _json['displayStyle'] as core.String;
-    }
-    if (_json.containsKey('fixedFooter')) {
-      fixedFooter = GoogleAppsCardV1CardFixedFooter.fromJson(
-          _json['fixedFooter'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('header')) {
-      header = GoogleAppsCardV1CardHeader.fromJson(
-          _json['header'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('peekCardHeader')) {
-      peekCardHeader = GoogleAppsCardV1CardHeader.fromJson(
-          _json['peekCardHeader'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('sections')) {
-      sections = (_json['sections'] as core.List)
-          .map<GoogleAppsCardV1Section>((value) =>
-              GoogleAppsCardV1Section.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleAppsCardV1Card.fromJson(core.Map _json)
+      : this(
+          cardActions: _json.containsKey('cardActions')
+              ? (_json['cardActions'] as core.List)
+                  .map<GoogleAppsCardV1CardAction>((value) =>
+                      GoogleAppsCardV1CardAction.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          displayStyle: _json.containsKey('displayStyle')
+              ? _json['displayStyle'] as core.String
+              : null,
+          fixedFooter: _json.containsKey('fixedFooter')
+              ? GoogleAppsCardV1CardFixedFooter.fromJson(
+                  _json['fixedFooter'] as core.Map<core.String, core.dynamic>)
+              : null,
+          header: _json.containsKey('header')
+              ? GoogleAppsCardV1CardHeader.fromJson(
+                  _json['header'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          peekCardHeader: _json.containsKey('peekCardHeader')
+              ? GoogleAppsCardV1CardHeader.fromJson(_json['peekCardHeader']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          sections: _json.containsKey('sections')
+              ? (_json['sections'] as core.List)
+                  .map<GoogleAppsCardV1Section>((value) =>
+                      GoogleAppsCardV1Section.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cardActions != null)
@@ -1967,17 +2051,21 @@ class GoogleAppsCardV1CardAction {
   /// The onclick action for this action item.
   GoogleAppsCardV1OnClick? onClick;
 
-  GoogleAppsCardV1CardAction();
+  GoogleAppsCardV1CardAction({
+    this.actionLabel,
+    this.onClick,
+  });
 
-  GoogleAppsCardV1CardAction.fromJson(core.Map _json) {
-    if (_json.containsKey('actionLabel')) {
-      actionLabel = _json['actionLabel'] as core.String;
-    }
-    if (_json.containsKey('onClick')) {
-      onClick = GoogleAppsCardV1OnClick.fromJson(
-          _json['onClick'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleAppsCardV1CardAction.fromJson(core.Map _json)
+      : this(
+          actionLabel: _json.containsKey('actionLabel')
+              ? _json['actionLabel'] as core.String
+              : null,
+          onClick: _json.containsKey('onClick')
+              ? GoogleAppsCardV1OnClick.fromJson(
+                  _json['onClick'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (actionLabel != null) 'actionLabel': actionLabel!,
@@ -1998,18 +2086,22 @@ class GoogleAppsCardV1CardFixedFooter {
   /// must be set if `secondaryButton` is set.
   GoogleAppsCardV1Button? secondaryButton;
 
-  GoogleAppsCardV1CardFixedFooter();
+  GoogleAppsCardV1CardFixedFooter({
+    this.primaryButton,
+    this.secondaryButton,
+  });
 
-  GoogleAppsCardV1CardFixedFooter.fromJson(core.Map _json) {
-    if (_json.containsKey('primaryButton')) {
-      primaryButton = GoogleAppsCardV1Button.fromJson(
-          _json['primaryButton'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('secondaryButton')) {
-      secondaryButton = GoogleAppsCardV1Button.fromJson(
-          _json['secondaryButton'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleAppsCardV1CardFixedFooter.fromJson(core.Map _json)
+      : this(
+          primaryButton: _json.containsKey('primaryButton')
+              ? GoogleAppsCardV1Button.fromJson(
+                  _json['primaryButton'] as core.Map<core.String, core.dynamic>)
+              : null,
+          secondaryButton: _json.containsKey('secondaryButton')
+              ? GoogleAppsCardV1Button.fromJson(_json['secondaryButton']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (primaryButton != null) 'primaryButton': primaryButton!.toJson(),
@@ -2041,25 +2133,31 @@ class GoogleAppsCardV1CardHeader {
   /// title is specified, it takes up both lines.
   core.String? title;
 
-  GoogleAppsCardV1CardHeader();
+  GoogleAppsCardV1CardHeader({
+    this.imageAltText,
+    this.imageType,
+    this.imageUrl,
+    this.subtitle,
+    this.title,
+  });
 
-  GoogleAppsCardV1CardHeader.fromJson(core.Map _json) {
-    if (_json.containsKey('imageAltText')) {
-      imageAltText = _json['imageAltText'] as core.String;
-    }
-    if (_json.containsKey('imageType')) {
-      imageType = _json['imageType'] as core.String;
-    }
-    if (_json.containsKey('imageUrl')) {
-      imageUrl = _json['imageUrl'] as core.String;
-    }
-    if (_json.containsKey('subtitle')) {
-      subtitle = _json['subtitle'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  GoogleAppsCardV1CardHeader.fromJson(core.Map _json)
+      : this(
+          imageAltText: _json.containsKey('imageAltText')
+              ? _json['imageAltText'] as core.String
+              : null,
+          imageType: _json.containsKey('imageType')
+              ? _json['imageType'] as core.String
+              : null,
+          imageUrl: _json.containsKey('imageUrl')
+              ? _json['imageUrl'] as core.String
+              : null,
+          subtitle: _json.containsKey('subtitle')
+              ? _json['subtitle'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (imageAltText != null) 'imageAltText': imageAltText!,
@@ -2109,29 +2207,32 @@ class GoogleAppsCardV1DateTimePicker {
   /// 3am.
   core.String? valueMsEpoch;
 
-  GoogleAppsCardV1DateTimePicker();
+  GoogleAppsCardV1DateTimePicker({
+    this.label,
+    this.name,
+    this.onChangeAction,
+    this.timezoneOffsetDate,
+    this.type,
+    this.valueMsEpoch,
+  });
 
-  GoogleAppsCardV1DateTimePicker.fromJson(core.Map _json) {
-    if (_json.containsKey('label')) {
-      label = _json['label'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('onChangeAction')) {
-      onChangeAction = GoogleAppsCardV1Action.fromJson(
-          _json['onChangeAction'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('timezoneOffsetDate')) {
-      timezoneOffsetDate = _json['timezoneOffsetDate'] as core.int;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('valueMsEpoch')) {
-      valueMsEpoch = _json['valueMsEpoch'] as core.String;
-    }
-  }
+  GoogleAppsCardV1DateTimePicker.fromJson(core.Map _json)
+      : this(
+          label:
+              _json.containsKey('label') ? _json['label'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          onChangeAction: _json.containsKey('onChangeAction')
+              ? GoogleAppsCardV1Action.fromJson(_json['onChangeAction']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          timezoneOffsetDate: _json.containsKey('timezoneOffsetDate')
+              ? _json['timezoneOffsetDate'] as core.int
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          valueMsEpoch: _json.containsKey('valueMsEpoch')
+              ? _json['valueMsEpoch'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (label != null) 'label': label!,
@@ -2185,46 +2286,56 @@ class GoogleAppsCardV1DecoratedText {
   /// text is truncated.
   core.bool? wrapText;
 
-  GoogleAppsCardV1DecoratedText();
+  GoogleAppsCardV1DecoratedText({
+    this.bottomLabel,
+    this.button,
+    this.endIcon,
+    this.icon,
+    this.onClick,
+    this.startIcon,
+    this.switchControl,
+    this.text,
+    this.topLabel,
+    this.wrapText,
+  });
 
-  GoogleAppsCardV1DecoratedText.fromJson(core.Map _json) {
-    if (_json.containsKey('bottomLabel')) {
-      bottomLabel = _json['bottomLabel'] as core.String;
-    }
-    if (_json.containsKey('button')) {
-      button = GoogleAppsCardV1Button.fromJson(
-          _json['button'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('endIcon')) {
-      endIcon = GoogleAppsCardV1Icon.fromJson(
-          _json['endIcon'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('icon')) {
-      icon = GoogleAppsCardV1Icon.fromJson(
-          _json['icon'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('onClick')) {
-      onClick = GoogleAppsCardV1OnClick.fromJson(
-          _json['onClick'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('startIcon')) {
-      startIcon = GoogleAppsCardV1Icon.fromJson(
-          _json['startIcon'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('switchControl')) {
-      switchControl = GoogleAppsCardV1SwitchControl.fromJson(
-          _json['switchControl'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('text')) {
-      text = _json['text'] as core.String;
-    }
-    if (_json.containsKey('topLabel')) {
-      topLabel = _json['topLabel'] as core.String;
-    }
-    if (_json.containsKey('wrapText')) {
-      wrapText = _json['wrapText'] as core.bool;
-    }
-  }
+  GoogleAppsCardV1DecoratedText.fromJson(core.Map _json)
+      : this(
+          bottomLabel: _json.containsKey('bottomLabel')
+              ? _json['bottomLabel'] as core.String
+              : null,
+          button: _json.containsKey('button')
+              ? GoogleAppsCardV1Button.fromJson(
+                  _json['button'] as core.Map<core.String, core.dynamic>)
+              : null,
+          endIcon: _json.containsKey('endIcon')
+              ? GoogleAppsCardV1Icon.fromJson(
+                  _json['endIcon'] as core.Map<core.String, core.dynamic>)
+              : null,
+          icon: _json.containsKey('icon')
+              ? GoogleAppsCardV1Icon.fromJson(
+                  _json['icon'] as core.Map<core.String, core.dynamic>)
+              : null,
+          onClick: _json.containsKey('onClick')
+              ? GoogleAppsCardV1OnClick.fromJson(
+                  _json['onClick'] as core.Map<core.String, core.dynamic>)
+              : null,
+          startIcon: _json.containsKey('startIcon')
+              ? GoogleAppsCardV1Icon.fromJson(
+                  _json['startIcon'] as core.Map<core.String, core.dynamic>)
+              : null,
+          switchControl: _json.containsKey('switchControl')
+              ? GoogleAppsCardV1SwitchControl.fromJson(
+                  _json['switchControl'] as core.Map<core.String, core.dynamic>)
+              : null,
+          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+          topLabel: _json.containsKey('topLabel')
+              ? _json['topLabel'] as core.String
+              : null,
+          wrapText: _json.containsKey('wrapText')
+              ? _json['wrapText'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bottomLabel != null) 'bottomLabel': bottomLabel!,
@@ -2273,31 +2384,37 @@ class GoogleAppsCardV1Grid {
   /// The text that displays in the grid header.
   core.String? title;
 
-  GoogleAppsCardV1Grid();
+  GoogleAppsCardV1Grid({
+    this.borderStyle,
+    this.columnCount,
+    this.items,
+    this.onClick,
+    this.title,
+  });
 
-  GoogleAppsCardV1Grid.fromJson(core.Map _json) {
-    if (_json.containsKey('borderStyle')) {
-      borderStyle = GoogleAppsCardV1BorderStyle.fromJson(
-          _json['borderStyle'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('columnCount')) {
-      columnCount = _json['columnCount'] as core.int;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<GoogleAppsCardV1GridItem>((value) =>
-              GoogleAppsCardV1GridItem.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('onClick')) {
-      onClick = GoogleAppsCardV1OnClick.fromJson(
-          _json['onClick'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  GoogleAppsCardV1Grid.fromJson(core.Map _json)
+      : this(
+          borderStyle: _json.containsKey('borderStyle')
+              ? GoogleAppsCardV1BorderStyle.fromJson(
+                  _json['borderStyle'] as core.Map<core.String, core.dynamic>)
+              : null,
+          columnCount: _json.containsKey('columnCount')
+              ? _json['columnCount'] as core.int
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<GoogleAppsCardV1GridItem>((value) =>
+                      GoogleAppsCardV1GridItem.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          onClick: _json.containsKey('onClick')
+              ? GoogleAppsCardV1OnClick.fromJson(
+                  _json['onClick'] as core.Map<core.String, core.dynamic>)
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (borderStyle != null) 'borderStyle': borderStyle!.toJson(),
@@ -2343,29 +2460,34 @@ class GoogleAppsCardV1GridItem {
   /// The grid item's title.
   core.String? title;
 
-  GoogleAppsCardV1GridItem();
+  GoogleAppsCardV1GridItem({
+    this.id,
+    this.image,
+    this.layout,
+    this.subtitle,
+    this.textAlignment,
+    this.title,
+  });
 
-  GoogleAppsCardV1GridItem.fromJson(core.Map _json) {
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('image')) {
-      image = GoogleAppsCardV1ImageComponent.fromJson(
-          _json['image'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('layout')) {
-      layout = _json['layout'] as core.String;
-    }
-    if (_json.containsKey('subtitle')) {
-      subtitle = _json['subtitle'] as core.String;
-    }
-    if (_json.containsKey('textAlignment')) {
-      textAlignment = _json['textAlignment'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  GoogleAppsCardV1GridItem.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          image: _json.containsKey('image')
+              ? GoogleAppsCardV1ImageComponent.fromJson(
+                  _json['image'] as core.Map<core.String, core.dynamic>)
+              : null,
+          layout: _json.containsKey('layout')
+              ? _json['layout'] as core.String
+              : null,
+          subtitle: _json.containsKey('subtitle')
+              ? _json['subtitle'] as core.String
+              : null,
+          textAlignment: _json.containsKey('textAlignment')
+              ? _json['textAlignment'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
@@ -2398,22 +2520,28 @@ class GoogleAppsCardV1Icon {
   /// The icon specified by the string name of a list of known icons
   core.String? knownIcon;
 
-  GoogleAppsCardV1Icon();
+  GoogleAppsCardV1Icon({
+    this.altText,
+    this.iconUrl,
+    this.imageType,
+    this.knownIcon,
+  });
 
-  GoogleAppsCardV1Icon.fromJson(core.Map _json) {
-    if (_json.containsKey('altText')) {
-      altText = _json['altText'] as core.String;
-    }
-    if (_json.containsKey('iconUrl')) {
-      iconUrl = _json['iconUrl'] as core.String;
-    }
-    if (_json.containsKey('imageType')) {
-      imageType = _json['imageType'] as core.String;
-    }
-    if (_json.containsKey('knownIcon')) {
-      knownIcon = _json['knownIcon'] as core.String;
-    }
-  }
+  GoogleAppsCardV1Icon.fromJson(core.Map _json)
+      : this(
+          altText: _json.containsKey('altText')
+              ? _json['altText'] as core.String
+              : null,
+          iconUrl: _json.containsKey('iconUrl')
+              ? _json['iconUrl'] as core.String
+              : null,
+          imageType: _json.containsKey('imageType')
+              ? _json['imageType'] as core.String
+              : null,
+          knownIcon: _json.containsKey('knownIcon')
+              ? _json['knownIcon'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (altText != null) 'altText': altText!,
@@ -2432,20 +2560,25 @@ class GoogleAppsCardV1Image {
   core.String? imageUrl;
   GoogleAppsCardV1OnClick? onClick;
 
-  GoogleAppsCardV1Image();
+  GoogleAppsCardV1Image({
+    this.altText,
+    this.imageUrl,
+    this.onClick,
+  });
 
-  GoogleAppsCardV1Image.fromJson(core.Map _json) {
-    if (_json.containsKey('altText')) {
-      altText = _json['altText'] as core.String;
-    }
-    if (_json.containsKey('imageUrl')) {
-      imageUrl = _json['imageUrl'] as core.String;
-    }
-    if (_json.containsKey('onClick')) {
-      onClick = GoogleAppsCardV1OnClick.fromJson(
-          _json['onClick'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleAppsCardV1Image.fromJson(core.Map _json)
+      : this(
+          altText: _json.containsKey('altText')
+              ? _json['altText'] as core.String
+              : null,
+          imageUrl: _json.containsKey('imageUrl')
+              ? _json['imageUrl'] as core.String
+              : null,
+          onClick: _json.containsKey('onClick')
+              ? GoogleAppsCardV1OnClick.fromJson(
+                  _json['onClick'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (altText != null) 'altText': altText!,
@@ -2467,24 +2600,30 @@ class GoogleAppsCardV1ImageComponent {
   /// The image URL.
   core.String? imageUri;
 
-  GoogleAppsCardV1ImageComponent();
+  GoogleAppsCardV1ImageComponent({
+    this.altText,
+    this.borderStyle,
+    this.cropStyle,
+    this.imageUri,
+  });
 
-  GoogleAppsCardV1ImageComponent.fromJson(core.Map _json) {
-    if (_json.containsKey('altText')) {
-      altText = _json['altText'] as core.String;
-    }
-    if (_json.containsKey('borderStyle')) {
-      borderStyle = GoogleAppsCardV1BorderStyle.fromJson(
-          _json['borderStyle'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('cropStyle')) {
-      cropStyle = GoogleAppsCardV1ImageCropStyle.fromJson(
-          _json['cropStyle'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('imageUri')) {
-      imageUri = _json['imageUri'] as core.String;
-    }
-  }
+  GoogleAppsCardV1ImageComponent.fromJson(core.Map _json)
+      : this(
+          altText: _json.containsKey('altText')
+              ? _json['altText'] as core.String
+              : null,
+          borderStyle: _json.containsKey('borderStyle')
+              ? GoogleAppsCardV1BorderStyle.fromJson(
+                  _json['borderStyle'] as core.Map<core.String, core.dynamic>)
+              : null,
+          cropStyle: _json.containsKey('cropStyle')
+              ? GoogleAppsCardV1ImageCropStyle.fromJson(
+                  _json['cropStyle'] as core.Map<core.String, core.dynamic>)
+              : null,
+          imageUri: _json.containsKey('imageUri')
+              ? _json['imageUri'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (altText != null) 'altText': altText!,
@@ -2509,16 +2648,18 @@ class GoogleAppsCardV1ImageCropStyle {
   /// - "RECTANGLE_4_3" : Applies a rectangular crop with a 4:3 aspect ratio.
   core.String? type;
 
-  GoogleAppsCardV1ImageCropStyle();
+  GoogleAppsCardV1ImageCropStyle({
+    this.aspectRatio,
+    this.type,
+  });
 
-  GoogleAppsCardV1ImageCropStyle.fromJson(core.Map _json) {
-    if (_json.containsKey('aspectRatio')) {
-      aspectRatio = (_json['aspectRatio'] as core.num).toDouble();
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  GoogleAppsCardV1ImageCropStyle.fromJson(core.Map _json)
+      : this(
+          aspectRatio: _json.containsKey('aspectRatio')
+              ? (_json['aspectRatio'] as core.num).toDouble()
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (aspectRatio != null) 'aspectRatio': aspectRatio!,
@@ -2543,27 +2684,32 @@ class GoogleAppsCardV1OnClick {
   /// If specified, this onClick triggers an open link action.
   GoogleAppsCardV1OpenLink? openLink;
 
-  GoogleAppsCardV1OnClick();
+  GoogleAppsCardV1OnClick({
+    this.action,
+    this.card,
+    this.openDynamicLinkAction,
+    this.openLink,
+  });
 
-  GoogleAppsCardV1OnClick.fromJson(core.Map _json) {
-    if (_json.containsKey('action')) {
-      action = GoogleAppsCardV1Action.fromJson(
-          _json['action'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('card')) {
-      card = GoogleAppsCardV1Card.fromJson(
-          _json['card'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('openDynamicLinkAction')) {
-      openDynamicLinkAction = GoogleAppsCardV1Action.fromJson(
-          _json['openDynamicLinkAction']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('openLink')) {
-      openLink = GoogleAppsCardV1OpenLink.fromJson(
-          _json['openLink'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleAppsCardV1OnClick.fromJson(core.Map _json)
+      : this(
+          action: _json.containsKey('action')
+              ? GoogleAppsCardV1Action.fromJson(
+                  _json['action'] as core.Map<core.String, core.dynamic>)
+              : null,
+          card: _json.containsKey('card')
+              ? GoogleAppsCardV1Card.fromJson(
+                  _json['card'] as core.Map<core.String, core.dynamic>)
+              : null,
+          openDynamicLinkAction: _json.containsKey('openDynamicLinkAction')
+              ? GoogleAppsCardV1Action.fromJson(_json['openDynamicLinkAction']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          openLink: _json.containsKey('openLink')
+              ? GoogleAppsCardV1OpenLink.fromJson(
+                  _json['openLink'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!.toJson(),
@@ -2596,19 +2742,22 @@ class GoogleAppsCardV1OpenLink {
   /// The URL to open.
   core.String? url;
 
-  GoogleAppsCardV1OpenLink();
+  GoogleAppsCardV1OpenLink({
+    this.onClose,
+    this.openAs,
+    this.url,
+  });
 
-  GoogleAppsCardV1OpenLink.fromJson(core.Map _json) {
-    if (_json.containsKey('onClose')) {
-      onClose = _json['onClose'] as core.String;
-    }
-    if (_json.containsKey('openAs')) {
-      openAs = _json['openAs'] as core.String;
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  GoogleAppsCardV1OpenLink.fromJson(core.Map _json)
+      : this(
+          onClose: _json.containsKey('onClose')
+              ? _json['onClose'] as core.String
+              : null,
+          openAs: _json.containsKey('openAs')
+              ? _json['openAs'] as core.String
+              : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (onClose != null) 'onClose': onClose!,
@@ -2645,27 +2794,33 @@ class GoogleAppsCardV1Section {
   /// A section must contain at least 1 widget.
   core.List<GoogleAppsCardV1Widget>? widgets;
 
-  GoogleAppsCardV1Section();
+  GoogleAppsCardV1Section({
+    this.collapsible,
+    this.header,
+    this.uncollapsibleWidgetsCount,
+    this.widgets,
+  });
 
-  GoogleAppsCardV1Section.fromJson(core.Map _json) {
-    if (_json.containsKey('collapsible')) {
-      collapsible = _json['collapsible'] as core.bool;
-    }
-    if (_json.containsKey('header')) {
-      header = _json['header'] as core.String;
-    }
-    if (_json.containsKey('uncollapsibleWidgetsCount')) {
-      uncollapsibleWidgetsCount =
-          _json['uncollapsibleWidgetsCount'] as core.int;
-    }
-    if (_json.containsKey('widgets')) {
-      widgets = (_json['widgets'] as core.List)
-          .map<GoogleAppsCardV1Widget>((value) =>
-              GoogleAppsCardV1Widget.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleAppsCardV1Section.fromJson(core.Map _json)
+      : this(
+          collapsible: _json.containsKey('collapsible')
+              ? _json['collapsible'] as core.bool
+              : null,
+          header: _json.containsKey('header')
+              ? _json['header'] as core.String
+              : null,
+          uncollapsibleWidgetsCount:
+              _json.containsKey('uncollapsibleWidgetsCount')
+                  ? _json['uncollapsibleWidgetsCount'] as core.int
+                  : null,
+          widgets: _json.containsKey('widgets')
+              ? (_json['widgets'] as core.List)
+                  .map<GoogleAppsCardV1Widget>((value) =>
+                      GoogleAppsCardV1Widget.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (collapsible != null) 'collapsible': collapsible!,
@@ -2701,30 +2856,32 @@ class GoogleAppsCardV1SelectionInput {
   /// - "DROPDOWN" : The selection type is a dropdown.
   core.String? type;
 
-  GoogleAppsCardV1SelectionInput();
+  GoogleAppsCardV1SelectionInput({
+    this.items,
+    this.label,
+    this.name,
+    this.onChangeAction,
+    this.type,
+  });
 
-  GoogleAppsCardV1SelectionInput.fromJson(core.Map _json) {
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<GoogleAppsCardV1SelectionItem>((value) =>
-              GoogleAppsCardV1SelectionItem.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('label')) {
-      label = _json['label'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('onChangeAction')) {
-      onChangeAction = GoogleAppsCardV1Action.fromJson(
-          _json['onChangeAction'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  GoogleAppsCardV1SelectionInput.fromJson(core.Map _json)
+      : this(
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<GoogleAppsCardV1SelectionItem>((value) =>
+                      GoogleAppsCardV1SelectionItem.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          label:
+              _json.containsKey('label') ? _json['label'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          onChangeAction: _json.containsKey('onChangeAction')
+              ? GoogleAppsCardV1Action.fromJson(_json['onChangeAction']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
@@ -2752,19 +2909,21 @@ class GoogleAppsCardV1SelectionItem {
   /// The client should use this as a form input value.
   core.String? value;
 
-  GoogleAppsCardV1SelectionItem();
+  GoogleAppsCardV1SelectionItem({
+    this.selected,
+    this.text,
+    this.value,
+  });
 
-  GoogleAppsCardV1SelectionItem.fromJson(core.Map _json) {
-    if (_json.containsKey('selected')) {
-      selected = _json['selected'] as core.bool;
-    }
-    if (_json.containsKey('text')) {
-      text = _json['text'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  GoogleAppsCardV1SelectionItem.fromJson(core.Map _json)
+      : this(
+          selected: _json.containsKey('selected')
+              ? _json['selected'] as core.bool
+              : null,
+          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (selected != null) 'selected': selected!,
@@ -2779,13 +2938,14 @@ class GoogleAppsCardV1SelectionItem {
 class GoogleAppsCardV1SuggestionItem {
   core.String? text;
 
-  GoogleAppsCardV1SuggestionItem();
+  GoogleAppsCardV1SuggestionItem({
+    this.text,
+  });
 
-  GoogleAppsCardV1SuggestionItem.fromJson(core.Map _json) {
-    if (_json.containsKey('text')) {
-      text = _json['text'] as core.String;
-    }
-  }
+  GoogleAppsCardV1SuggestionItem.fromJson(core.Map _json)
+      : this(
+          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (text != null) 'text': text!,
@@ -2799,17 +2959,20 @@ class GoogleAppsCardV1Suggestions {
   /// autocomplete.
   core.List<GoogleAppsCardV1SuggestionItem>? items;
 
-  GoogleAppsCardV1Suggestions();
+  GoogleAppsCardV1Suggestions({
+    this.items,
+  });
 
-  GoogleAppsCardV1Suggestions.fromJson(core.Map _json) {
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<GoogleAppsCardV1SuggestionItem>((value) =>
-              GoogleAppsCardV1SuggestionItem.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleAppsCardV1Suggestions.fromJson(core.Map _json)
+      : this(
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<GoogleAppsCardV1SuggestionItem>((value) =>
+                      GoogleAppsCardV1SuggestionItem.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
@@ -2837,26 +3000,30 @@ class GoogleAppsCardV1SwitchControl {
   /// The value is what is passed back in the callback.
   core.String? value;
 
-  GoogleAppsCardV1SwitchControl();
+  GoogleAppsCardV1SwitchControl({
+    this.controlType,
+    this.name,
+    this.onChangeAction,
+    this.selected,
+    this.value,
+  });
 
-  GoogleAppsCardV1SwitchControl.fromJson(core.Map _json) {
-    if (_json.containsKey('controlType')) {
-      controlType = _json['controlType'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('onChangeAction')) {
-      onChangeAction = GoogleAppsCardV1Action.fromJson(
-          _json['onChangeAction'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('selected')) {
-      selected = _json['selected'] as core.bool;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  GoogleAppsCardV1SwitchControl.fromJson(core.Map _json)
+      : this(
+          controlType: _json.containsKey('controlType')
+              ? _json['controlType'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          onChangeAction: _json.containsKey('onChangeAction')
+              ? GoogleAppsCardV1Action.fromJson(_json['onChangeAction']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          selected: _json.containsKey('selected')
+              ? _json['selected'] as core.bool
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (controlType != null) 'controlType': controlType!,
@@ -2902,37 +3069,41 @@ class GoogleAppsCardV1TextInput {
   /// The default value when there is no input from the user.
   core.String? value;
 
-  GoogleAppsCardV1TextInput();
+  GoogleAppsCardV1TextInput({
+    this.autoCompleteAction,
+    this.hintText,
+    this.initialSuggestions,
+    this.label,
+    this.name,
+    this.onChangeAction,
+    this.type,
+    this.value,
+  });
 
-  GoogleAppsCardV1TextInput.fromJson(core.Map _json) {
-    if (_json.containsKey('autoCompleteAction')) {
-      autoCompleteAction = GoogleAppsCardV1Action.fromJson(
-          _json['autoCompleteAction'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('hintText')) {
-      hintText = _json['hintText'] as core.String;
-    }
-    if (_json.containsKey('initialSuggestions')) {
-      initialSuggestions = GoogleAppsCardV1Suggestions.fromJson(
-          _json['initialSuggestions'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('label')) {
-      label = _json['label'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('onChangeAction')) {
-      onChangeAction = GoogleAppsCardV1Action.fromJson(
-          _json['onChangeAction'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  GoogleAppsCardV1TextInput.fromJson(core.Map _json)
+      : this(
+          autoCompleteAction: _json.containsKey('autoCompleteAction')
+              ? GoogleAppsCardV1Action.fromJson(_json['autoCompleteAction']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          hintText: _json.containsKey('hintText')
+              ? _json['hintText'] as core.String
+              : null,
+          initialSuggestions: _json.containsKey('initialSuggestions')
+              ? GoogleAppsCardV1Suggestions.fromJson(_json['initialSuggestions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          label:
+              _json.containsKey('label') ? _json['label'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          onChangeAction: _json.containsKey('onChangeAction')
+              ? GoogleAppsCardV1Action.fromJson(_json['onChangeAction']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoCompleteAction != null)
@@ -2956,13 +3127,14 @@ class GoogleAppsCardV1TextParagraph {
   /// The text that's shown in the widget.
   core.String? text;
 
-  GoogleAppsCardV1TextParagraph();
+  GoogleAppsCardV1TextParagraph({
+    this.text,
+  });
 
-  GoogleAppsCardV1TextParagraph.fromJson(core.Map _json) {
-    if (_json.containsKey('text')) {
-      text = _json['text'] as core.String;
-    }
-  }
+  GoogleAppsCardV1TextParagraph.fromJson(core.Map _json)
+      : this(
+          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (text != null) 'text': text!,
@@ -3057,49 +3229,61 @@ class GoogleAppsCardV1Widget {
   /// "textParagraph": { "text": " *bold text*" } ```
   GoogleAppsCardV1TextParagraph? textParagraph;
 
-  GoogleAppsCardV1Widget();
+  GoogleAppsCardV1Widget({
+    this.buttonList,
+    this.dateTimePicker,
+    this.decoratedText,
+    this.divider,
+    this.grid,
+    this.horizontalAlignment,
+    this.image,
+    this.selectionInput,
+    this.textInput,
+    this.textParagraph,
+  });
 
-  GoogleAppsCardV1Widget.fromJson(core.Map _json) {
-    if (_json.containsKey('buttonList')) {
-      buttonList = GoogleAppsCardV1ButtonList.fromJson(
-          _json['buttonList'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('dateTimePicker')) {
-      dateTimePicker = GoogleAppsCardV1DateTimePicker.fromJson(
-          _json['dateTimePicker'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('decoratedText')) {
-      decoratedText = GoogleAppsCardV1DecoratedText.fromJson(
-          _json['decoratedText'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('divider')) {
-      divider = GoogleAppsCardV1Divider.fromJson(
-          _json['divider'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('grid')) {
-      grid = GoogleAppsCardV1Grid.fromJson(
-          _json['grid'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('horizontalAlignment')) {
-      horizontalAlignment = _json['horizontalAlignment'] as core.String;
-    }
-    if (_json.containsKey('image')) {
-      image = GoogleAppsCardV1Image.fromJson(
-          _json['image'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('selectionInput')) {
-      selectionInput = GoogleAppsCardV1SelectionInput.fromJson(
-          _json['selectionInput'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('textInput')) {
-      textInput = GoogleAppsCardV1TextInput.fromJson(
-          _json['textInput'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('textParagraph')) {
-      textParagraph = GoogleAppsCardV1TextParagraph.fromJson(
-          _json['textParagraph'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleAppsCardV1Widget.fromJson(core.Map _json)
+      : this(
+          buttonList: _json.containsKey('buttonList')
+              ? GoogleAppsCardV1ButtonList.fromJson(
+                  _json['buttonList'] as core.Map<core.String, core.dynamic>)
+              : null,
+          dateTimePicker: _json.containsKey('dateTimePicker')
+              ? GoogleAppsCardV1DateTimePicker.fromJson(_json['dateTimePicker']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          decoratedText: _json.containsKey('decoratedText')
+              ? GoogleAppsCardV1DecoratedText.fromJson(
+                  _json['decoratedText'] as core.Map<core.String, core.dynamic>)
+              : null,
+          divider: _json.containsKey('divider')
+              ? GoogleAppsCardV1Divider.fromJson(
+                  _json['divider'] as core.Map<core.String, core.dynamic>)
+              : null,
+          grid: _json.containsKey('grid')
+              ? GoogleAppsCardV1Grid.fromJson(
+                  _json['grid'] as core.Map<core.String, core.dynamic>)
+              : null,
+          horizontalAlignment: _json.containsKey('horizontalAlignment')
+              ? _json['horizontalAlignment'] as core.String
+              : null,
+          image: _json.containsKey('image')
+              ? GoogleAppsCardV1Image.fromJson(
+                  _json['image'] as core.Map<core.String, core.dynamic>)
+              : null,
+          selectionInput: _json.containsKey('selectionInput')
+              ? GoogleAppsCardV1SelectionInput.fromJson(_json['selectionInput']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          textInput: _json.containsKey('textInput')
+              ? GoogleAppsCardV1TextInput.fromJson(
+                  _json['textInput'] as core.Map<core.String, core.dynamic>)
+              : null,
+          textParagraph: _json.containsKey('textParagraph')
+              ? GoogleAppsCardV1TextParagraph.fromJson(
+                  _json['textParagraph'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (buttonList != null) 'buttonList': buttonList!.toJson(),
@@ -3131,20 +3315,25 @@ class Image {
   /// The onclick action.
   OnClick? onClick;
 
-  Image();
+  Image({
+    this.aspectRatio,
+    this.imageUrl,
+    this.onClick,
+  });
 
-  Image.fromJson(core.Map _json) {
-    if (_json.containsKey('aspectRatio')) {
-      aspectRatio = (_json['aspectRatio'] as core.num).toDouble();
-    }
-    if (_json.containsKey('imageUrl')) {
-      imageUrl = _json['imageUrl'] as core.String;
-    }
-    if (_json.containsKey('onClick')) {
-      onClick = OnClick.fromJson(
-          _json['onClick'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Image.fromJson(core.Map _json)
+      : this(
+          aspectRatio: _json.containsKey('aspectRatio')
+              ? (_json['aspectRatio'] as core.num).toDouble()
+              : null,
+          imageUrl: _json.containsKey('imageUrl')
+              ? _json['imageUrl'] as core.String
+              : null,
+          onClick: _json.containsKey('onClick')
+              ? OnClick.fromJson(
+                  _json['onClick'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (aspectRatio != null) 'aspectRatio': aspectRatio!,
@@ -3202,23 +3391,25 @@ class ImageButton {
   /// The onclick action.
   OnClick? onClick;
 
-  ImageButton();
+  ImageButton({
+    this.icon,
+    this.iconUrl,
+    this.name,
+    this.onClick,
+  });
 
-  ImageButton.fromJson(core.Map _json) {
-    if (_json.containsKey('icon')) {
-      icon = _json['icon'] as core.String;
-    }
-    if (_json.containsKey('iconUrl')) {
-      iconUrl = _json['iconUrl'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('onClick')) {
-      onClick = OnClick.fromJson(
-          _json['onClick'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ImageButton.fromJson(core.Map _json)
+      : this(
+          icon: _json.containsKey('icon') ? _json['icon'] as core.String : null,
+          iconUrl: _json.containsKey('iconUrl')
+              ? _json['iconUrl'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          onClick: _json.containsKey('onClick')
+              ? OnClick.fromJson(
+                  _json['onClick'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (icon != null) 'icon': icon!,
@@ -3297,36 +3488,44 @@ class KeyValue {
   /// Formatted text supported.
   core.String? topLabel;
 
-  KeyValue();
+  KeyValue({
+    this.bottomLabel,
+    this.button,
+    this.content,
+    this.contentMultiline,
+    this.icon,
+    this.iconUrl,
+    this.onClick,
+    this.topLabel,
+  });
 
-  KeyValue.fromJson(core.Map _json) {
-    if (_json.containsKey('bottomLabel')) {
-      bottomLabel = _json['bottomLabel'] as core.String;
-    }
-    if (_json.containsKey('button')) {
-      button = Button.fromJson(
-          _json['button'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('content')) {
-      content = _json['content'] as core.String;
-    }
-    if (_json.containsKey('contentMultiline')) {
-      contentMultiline = _json['contentMultiline'] as core.bool;
-    }
-    if (_json.containsKey('icon')) {
-      icon = _json['icon'] as core.String;
-    }
-    if (_json.containsKey('iconUrl')) {
-      iconUrl = _json['iconUrl'] as core.String;
-    }
-    if (_json.containsKey('onClick')) {
-      onClick = OnClick.fromJson(
-          _json['onClick'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('topLabel')) {
-      topLabel = _json['topLabel'] as core.String;
-    }
-  }
+  KeyValue.fromJson(core.Map _json)
+      : this(
+          bottomLabel: _json.containsKey('bottomLabel')
+              ? _json['bottomLabel'] as core.String
+              : null,
+          button: _json.containsKey('button')
+              ? Button.fromJson(
+                  _json['button'] as core.Map<core.String, core.dynamic>)
+              : null,
+          content: _json.containsKey('content')
+              ? _json['content'] as core.String
+              : null,
+          contentMultiline: _json.containsKey('contentMultiline')
+              ? _json['contentMultiline'] as core.bool
+              : null,
+          icon: _json.containsKey('icon') ? _json['icon'] as core.String : null,
+          iconUrl: _json.containsKey('iconUrl')
+              ? _json['iconUrl'] as core.String
+              : null,
+          onClick: _json.containsKey('onClick')
+              ? OnClick.fromJson(
+                  _json['onClick'] as core.Map<core.String, core.dynamic>)
+              : null,
+          topLabel: _json.containsKey('topLabel')
+              ? _json['topLabel'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bottomLabel != null) 'bottomLabel': bottomLabel!,
@@ -3349,19 +3548,23 @@ class ListMembershipsResponse {
   /// It will be empty for the last page of results.
   core.String? nextPageToken;
 
-  ListMembershipsResponse();
+  ListMembershipsResponse({
+    this.memberships,
+    this.nextPageToken,
+  });
 
-  ListMembershipsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('memberships')) {
-      memberships = (_json['memberships'] as core.List)
-          .map<Membership>((value) =>
-              Membership.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListMembershipsResponse.fromJson(core.Map _json)
+      : this(
+          memberships: _json.containsKey('memberships')
+              ? (_json['memberships'] as core.List)
+                  .map<Membership>((value) => Membership.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (memberships != null)
@@ -3380,19 +3583,23 @@ class ListSpacesResponse {
   /// List of spaces in the requested (or first) page.
   core.List<Space>? spaces;
 
-  ListSpacesResponse();
+  ListSpacesResponse({
+    this.nextPageToken,
+    this.spaces,
+  });
 
-  ListSpacesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('spaces')) {
-      spaces = (_json['spaces'] as core.List)
-          .map<Space>((value) =>
-              Space.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListSpacesResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          spaces: _json.containsKey('spaces')
+              ? (_json['spaces'] as core.List)
+                  .map<Space>((value) => Space.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3406,13 +3613,16 @@ class Media {
   /// Name of the media resource.
   core.String? resourceName;
 
-  Media();
+  Media({
+    this.resourceName,
+  });
 
-  Media.fromJson(core.Map _json) {
-    if (_json.containsKey('resourceName')) {
-      resourceName = _json['resourceName'] as core.String;
-    }
-  }
+  Media.fromJson(core.Map _json)
+      : this(
+          resourceName: _json.containsKey('resourceName')
+              ? _json['resourceName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceName != null) 'resourceName': resourceName!,
@@ -3439,23 +3649,26 @@ class Membership {
   /// invited and is not able to join the space.
   core.String? state;
 
-  Membership();
+  Membership({
+    this.createTime,
+    this.member,
+    this.name,
+    this.state,
+  });
 
-  Membership.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('member')) {
-      member =
-          User.fromJson(_json['member'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-  }
+  Membership.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          member: _json.containsKey('member')
+              ? User.fromJson(
+                  _json['member'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -3529,72 +3742,85 @@ class Message {
   /// The thread the message belongs to.
   Thread? thread;
 
-  Message();
+  Message({
+    this.actionResponse,
+    this.annotations,
+    this.argumentText,
+    this.attachment,
+    this.cards,
+    this.cardsV2,
+    this.createTime,
+    this.fallbackText,
+    this.name,
+    this.previewText,
+    this.sender,
+    this.slashCommand,
+    this.space,
+    this.text,
+    this.thread,
+  });
 
-  Message.fromJson(core.Map _json) {
-    if (_json.containsKey('actionResponse')) {
-      actionResponse = ActionResponse.fromJson(
-          _json['actionResponse'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('annotations')) {
-      annotations = (_json['annotations'] as core.List)
-          .map<Annotation>((value) =>
-              Annotation.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('argumentText')) {
-      argumentText = _json['argumentText'] as core.String;
-    }
-    if (_json.containsKey('attachment')) {
-      attachment = (_json['attachment'] as core.List)
-          .map<Attachment>((value) =>
-              Attachment.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('cards')) {
-      cards = (_json['cards'] as core.List)
-          .map<Card>((value) =>
-              Card.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('cardsV2')) {
-      cardsV2 = (_json['cardsV2'] as core.List)
-          .map<CardWithId>((value) =>
-              CardWithId.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('fallbackText')) {
-      fallbackText = _json['fallbackText'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('previewText')) {
-      previewText = _json['previewText'] as core.String;
-    }
-    if (_json.containsKey('sender')) {
-      sender =
-          User.fromJson(_json['sender'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('slashCommand')) {
-      slashCommand = SlashCommand.fromJson(
-          _json['slashCommand'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('space')) {
-      space =
-          Space.fromJson(_json['space'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('text')) {
-      text = _json['text'] as core.String;
-    }
-    if (_json.containsKey('thread')) {
-      thread = Thread.fromJson(
-          _json['thread'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Message.fromJson(core.Map _json)
+      : this(
+          actionResponse: _json.containsKey('actionResponse')
+              ? ActionResponse.fromJson(_json['actionResponse']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          annotations: _json.containsKey('annotations')
+              ? (_json['annotations'] as core.List)
+                  .map<Annotation>((value) => Annotation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          argumentText: _json.containsKey('argumentText')
+              ? _json['argumentText'] as core.String
+              : null,
+          attachment: _json.containsKey('attachment')
+              ? (_json['attachment'] as core.List)
+                  .map<Attachment>((value) => Attachment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          cards: _json.containsKey('cards')
+              ? (_json['cards'] as core.List)
+                  .map<Card>((value) => Card.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          cardsV2: _json.containsKey('cardsV2')
+              ? (_json['cardsV2'] as core.List)
+                  .map<CardWithId>((value) => CardWithId.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          fallbackText: _json.containsKey('fallbackText')
+              ? _json['fallbackText'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          previewText: _json.containsKey('previewText')
+              ? _json['previewText'] as core.String
+              : null,
+          sender: _json.containsKey('sender')
+              ? User.fromJson(
+                  _json['sender'] as core.Map<core.String, core.dynamic>)
+              : null,
+          slashCommand: _json.containsKey('slashCommand')
+              ? SlashCommand.fromJson(
+                  _json['slashCommand'] as core.Map<core.String, core.dynamic>)
+              : null,
+          space: _json.containsKey('space')
+              ? Space.fromJson(
+                  _json['space'] as core.Map<core.String, core.dynamic>)
+              : null,
+          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+          thread: _json.containsKey('thread')
+              ? Thread.fromJson(
+                  _json['thread'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (actionResponse != null) 'actionResponse': actionResponse!.toJson(),
@@ -3627,18 +3853,22 @@ class OnClick {
   /// This onclick triggers an open link action if specified.
   OpenLink? openLink;
 
-  OnClick();
+  OnClick({
+    this.action,
+    this.openLink,
+  });
 
-  OnClick.fromJson(core.Map _json) {
-    if (_json.containsKey('action')) {
-      action = FormAction.fromJson(
-          _json['action'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('openLink')) {
-      openLink = OpenLink.fromJson(
-          _json['openLink'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  OnClick.fromJson(core.Map _json)
+      : this(
+          action: _json.containsKey('action')
+              ? FormAction.fromJson(
+                  _json['action'] as core.Map<core.String, core.dynamic>)
+              : null,
+          openLink: _json.containsKey('openLink')
+              ? OpenLink.fromJson(
+                  _json['openLink'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!.toJson(),
@@ -3651,13 +3881,14 @@ class OpenLink {
   /// The URL to open.
   core.String? url;
 
-  OpenLink();
+  OpenLink({
+    this.url,
+  });
 
-  OpenLink.fromJson(core.Map _json) {
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  OpenLink.fromJson(core.Map _json)
+      : this(
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (url != null) 'url': url!,
@@ -3676,19 +3907,23 @@ class Section {
   /// A section must contain at least 1 widget.
   core.List<WidgetMarkup>? widgets;
 
-  Section();
+  Section({
+    this.header,
+    this.widgets,
+  });
 
-  Section.fromJson(core.Map _json) {
-    if (_json.containsKey('header')) {
-      header = _json['header'] as core.String;
-    }
-    if (_json.containsKey('widgets')) {
-      widgets = (_json['widgets'] as core.List)
-          .map<WidgetMarkup>((value) => WidgetMarkup.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  Section.fromJson(core.Map _json)
+      : this(
+          header: _json.containsKey('header')
+              ? _json['header'] as core.String
+              : null,
+          widgets: _json.containsKey('widgets')
+              ? (_json['widgets'] as core.List)
+                  .map<WidgetMarkup>((value) => WidgetMarkup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (header != null) 'header': header!,
@@ -3702,13 +3937,16 @@ class SlashCommand {
   /// The id of the slash command invoked.
   core.String? commandId;
 
-  SlashCommand();
+  SlashCommand({
+    this.commandId,
+  });
 
-  SlashCommand.fromJson(core.Map _json) {
-    if (_json.containsKey('commandId')) {
-      commandId = _json['commandId'] as core.String;
-    }
-  }
+  SlashCommand.fromJson(core.Map _json)
+      : this(
+          commandId: _json.containsKey('commandId')
+              ? _json['commandId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (commandId != null) 'commandId': commandId!,
@@ -3736,25 +3974,31 @@ class SlashCommandMetadata {
   /// - "INVOKE" : Invoke slash command in space.
   core.String? type;
 
-  SlashCommandMetadata();
+  SlashCommandMetadata({
+    this.bot,
+    this.commandId,
+    this.commandName,
+    this.triggersDialog,
+    this.type,
+  });
 
-  SlashCommandMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('bot')) {
-      bot = User.fromJson(_json['bot'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('commandId')) {
-      commandId = _json['commandId'] as core.String;
-    }
-    if (_json.containsKey('commandName')) {
-      commandName = _json['commandName'] as core.String;
-    }
-    if (_json.containsKey('triggersDialog')) {
-      triggersDialog = _json['triggersDialog'] as core.bool;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  SlashCommandMetadata.fromJson(core.Map _json)
+      : this(
+          bot: _json.containsKey('bot')
+              ? User.fromJson(
+                  _json['bot'] as core.Map<core.String, core.dynamic>)
+              : null,
+          commandId: _json.containsKey('commandId')
+              ? _json['commandId'] as core.String
+              : null,
+          commandName: _json.containsKey('commandName')
+              ? _json['commandName'] as core.String
+              : null,
+          triggersDialog: _json.containsKey('triggersDialog')
+              ? _json['triggersDialog'] as core.bool
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bot != null) 'bot': bot!.toJson(),
@@ -3798,25 +4042,28 @@ class Space {
   /// are flat.
   core.String? type;
 
-  Space();
+  Space({
+    this.displayName,
+    this.name,
+    this.singleUserBotDm,
+    this.threaded,
+    this.type,
+  });
 
-  Space.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('singleUserBotDm')) {
-      singleUserBotDm = _json['singleUserBotDm'] as core.bool;
-    }
-    if (_json.containsKey('threaded')) {
-      threaded = _json['threaded'] as core.bool;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  Space.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          singleUserBotDm: _json.containsKey('singleUserBotDm')
+              ? _json['singleUserBotDm'] as core.bool
+              : null,
+          threaded: _json.containsKey('threaded')
+              ? _json['threaded'] as core.bool
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -3835,17 +4082,19 @@ class TextButton {
   /// The text of the button.
   core.String? text;
 
-  TextButton();
+  TextButton({
+    this.onClick,
+    this.text,
+  });
 
-  TextButton.fromJson(core.Map _json) {
-    if (_json.containsKey('onClick')) {
-      onClick = OnClick.fromJson(
-          _json['onClick'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('text')) {
-      text = _json['text'] as core.String;
-    }
-  }
+  TextButton.fromJson(core.Map _json)
+      : this(
+          onClick: _json.containsKey('onClick')
+              ? OnClick.fromJson(
+                  _json['onClick'] as core.Map<core.String, core.dynamic>)
+              : null,
+          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (onClick != null) 'onClick': onClick!.toJson(),
@@ -3859,13 +4108,14 @@ class TextButton {
 class TextParagraph {
   core.String? text;
 
-  TextParagraph();
+  TextParagraph({
+    this.text,
+  });
 
-  TextParagraph.fromJson(core.Map _json) {
-    if (_json.containsKey('text')) {
-      text = _json['text'] as core.String;
-    }
-  }
+  TextParagraph.fromJson(core.Map _json)
+      : this(
+          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (text != null) 'text': text!,
@@ -3879,13 +4129,14 @@ class Thread {
   /// Example: spaces/AAAAMpdlehY/threads/UMxbHmzDlr4
   core.String? name;
 
-  Thread();
+  Thread({
+    this.name,
+  });
 
-  Thread.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  Thread.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -3913,25 +4164,28 @@ class User {
   /// - "BOT" : Bot user.
   core.String? type;
 
-  User();
+  User({
+    this.displayName,
+    this.domainId,
+    this.isAnonymous,
+    this.name,
+    this.type,
+  });
 
-  User.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('domainId')) {
-      domainId = _json['domainId'] as core.String;
-    }
-    if (_json.containsKey('isAnonymous')) {
-      isAnonymous = _json['isAnonymous'] as core.bool;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  User.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          domainId: _json.containsKey('domainId')
+              ? _json['domainId'] as core.String
+              : null,
+          isAnonymous: _json.containsKey('isAnonymous')
+              ? _json['isAnonymous'] as core.bool
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -3954,17 +4208,19 @@ class UserMentionMetadata {
   /// The user mentioned.
   User? user;
 
-  UserMentionMetadata();
+  UserMentionMetadata({
+    this.type,
+    this.user,
+  });
 
-  UserMentionMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('user')) {
-      user =
-          User.fromJson(_json['user'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  UserMentionMetadata.fromJson(core.Map _json)
+      : this(
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          user: _json.containsKey('user')
+              ? User.fromJson(
+                  _json['user'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
@@ -3988,28 +4244,34 @@ class WidgetMarkup {
   /// Display a text paragraph in this widget.
   TextParagraph? textParagraph;
 
-  WidgetMarkup();
+  WidgetMarkup({
+    this.buttons,
+    this.image,
+    this.keyValue,
+    this.textParagraph,
+  });
 
-  WidgetMarkup.fromJson(core.Map _json) {
-    if (_json.containsKey('buttons')) {
-      buttons = (_json['buttons'] as core.List)
-          .map<Button>((value) =>
-              Button.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('image')) {
-      image =
-          Image.fromJson(_json['image'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('keyValue')) {
-      keyValue = KeyValue.fromJson(
-          _json['keyValue'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('textParagraph')) {
-      textParagraph = TextParagraph.fromJson(
-          _json['textParagraph'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  WidgetMarkup.fromJson(core.Map _json)
+      : this(
+          buttons: _json.containsKey('buttons')
+              ? (_json['buttons'] as core.List)
+                  .map<Button>((value) => Button.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          image: _json.containsKey('image')
+              ? Image.fromJson(
+                  _json['image'] as core.Map<core.String, core.dynamic>)
+              : null,
+          keyValue: _json.containsKey('keyValue')
+              ? KeyValue.fromJson(
+                  _json['keyValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+          textParagraph: _json.containsKey('textParagraph')
+              ? TextParagraph.fromJson(
+                  _json['textParagraph'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (buttons != null)

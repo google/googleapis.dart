@@ -1335,19 +1335,23 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig();
+  AuditConfig({
+    this.auditLogConfigs,
+    this.service,
+  });
 
-  AuditConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('auditLogConfigs')) {
-      auditLogConfigs = (_json['auditLogConfigs'] as core.List)
-          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('service')) {
-      service = _json['service'] as core.String;
-    }
-  }
+  AuditConfig.fromJson(core.Map _json)
+      : this(
+          auditLogConfigs: _json.containsKey('auditLogConfigs')
+              ? (_json['auditLogConfigs'] as core.List)
+                  .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          service: _json.containsKey('service')
+              ? _json['service'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (auditLogConfigs != null)
@@ -1378,18 +1382,22 @@ class AuditLogConfig {
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
   core.String? logType;
 
-  AuditLogConfig();
+  AuditLogConfig({
+    this.exemptedMembers,
+    this.logType,
+  });
 
-  AuditLogConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('exemptedMembers')) {
-      exemptedMembers = (_json['exemptedMembers'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('logType')) {
-      logType = _json['logType'] as core.String;
-    }
-  }
+  AuditLogConfig.fromJson(core.Map _json)
+      : this(
+          exemptedMembers: _json.containsKey('exemptedMembers')
+              ? (_json['exemptedMembers'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          logType: _json.containsKey('logType')
+              ? _json['logType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
@@ -1446,22 +1454,28 @@ class Authority {
   /// Output only.
   core.String? workloadIdentityPool;
 
-  Authority();
+  Authority({
+    this.identityProvider,
+    this.issuer,
+    this.oidcJwks,
+    this.workloadIdentityPool,
+  });
 
-  Authority.fromJson(core.Map _json) {
-    if (_json.containsKey('identityProvider')) {
-      identityProvider = _json['identityProvider'] as core.String;
-    }
-    if (_json.containsKey('issuer')) {
-      issuer = _json['issuer'] as core.String;
-    }
-    if (_json.containsKey('oidcJwks')) {
-      oidcJwks = _json['oidcJwks'] as core.String;
-    }
-    if (_json.containsKey('workloadIdentityPool')) {
-      workloadIdentityPool = _json['workloadIdentityPool'] as core.String;
-    }
-  }
+  Authority.fromJson(core.Map _json)
+      : this(
+          identityProvider: _json.containsKey('identityProvider')
+              ? _json['identityProvider'] as core.String
+              : null,
+          issuer: _json.containsKey('issuer')
+              ? _json['issuer'] as core.String
+              : null,
+          oidcJwks: _json.containsKey('oidcJwks')
+              ? _json['oidcJwks'] as core.String
+              : null,
+          workloadIdentityPool: _json.containsKey('workloadIdentityPool')
+              ? _json['workloadIdentityPool'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (identityProvider != null) 'identityProvider': identityProvider!,
@@ -1521,22 +1535,25 @@ class Binding {
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String? role;
 
-  Binding();
+  Binding({
+    this.condition,
+    this.members,
+    this.role,
+  });
 
-  Binding.fromJson(core.Map _json) {
-    if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(
-          _json['condition'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('members')) {
-      members = (_json['members'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('role')) {
-      role = _json['role'] as core.String;
-    }
-  }
+  Binding.fromJson(core.Map _json)
+      : this(
+          condition: _json.containsKey('condition')
+              ? Expr.fromJson(
+                  _json['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          members: _json.containsKey('members')
+              ? (_json['members'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!.toJson(),
@@ -1561,14 +1578,18 @@ class CommonFeatureSpec {
   /// Multicluster Ingress-specific spec.
   MultiClusterIngressFeatureSpec? multiclusteringress;
 
-  CommonFeatureSpec();
+  CommonFeatureSpec({
+    this.multiclusteringress,
+  });
 
-  CommonFeatureSpec.fromJson(core.Map _json) {
-    if (_json.containsKey('multiclusteringress')) {
-      multiclusteringress = MultiClusterIngressFeatureSpec.fromJson(
-          _json['multiclusteringress'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  CommonFeatureSpec.fromJson(core.Map _json)
+      : this(
+          multiclusteringress: _json.containsKey('multiclusteringress')
+              ? MultiClusterIngressFeatureSpec.fromJson(
+                  _json['multiclusteringress']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (multiclusteringress != null)
@@ -1583,14 +1604,17 @@ class CommonFeatureState {
   /// Output only.
   FeatureState? state;
 
-  CommonFeatureState();
+  CommonFeatureState({
+    this.state,
+  });
 
-  CommonFeatureState.fromJson(core.Map _json) {
-    if (_json.containsKey('state')) {
-      state = FeatureState.fromJson(
-          _json['state'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  CommonFeatureState.fromJson(core.Map _json)
+      : this(
+          state: _json.containsKey('state')
+              ? FeatureState.fromJson(
+                  _json['state'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (state != null) 'state': state!.toJson(),
@@ -1606,17 +1630,21 @@ class ConfigManagementConfigSync {
   /// “unstructured” mode.
   core.String? sourceFormat;
 
-  ConfigManagementConfigSync();
+  ConfigManagementConfigSync({
+    this.git,
+    this.sourceFormat,
+  });
 
-  ConfigManagementConfigSync.fromJson(core.Map _json) {
-    if (_json.containsKey('git')) {
-      git = ConfigManagementGitConfig.fromJson(
-          _json['git'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('sourceFormat')) {
-      sourceFormat = _json['sourceFormat'] as core.String;
-    }
-  }
+  ConfigManagementConfigSync.fromJson(core.Map _json)
+      : this(
+          git: _json.containsKey('git')
+              ? ConfigManagementGitConfig.fromJson(
+                  _json['git'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sourceFormat: _json.containsKey('sourceFormat')
+              ? _json['sourceFormat'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (git != null) 'git': git!.toJson(),
@@ -1674,28 +1702,36 @@ class ConfigManagementConfigSyncDeploymentState {
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
   core.String? syncer;
 
-  ConfigManagementConfigSyncDeploymentState();
+  ConfigManagementConfigSyncDeploymentState({
+    this.gitSync,
+    this.importer,
+    this.monitor,
+    this.reconcilerManager,
+    this.rootReconciler,
+    this.syncer,
+  });
 
-  ConfigManagementConfigSyncDeploymentState.fromJson(core.Map _json) {
-    if (_json.containsKey('gitSync')) {
-      gitSync = _json['gitSync'] as core.String;
-    }
-    if (_json.containsKey('importer')) {
-      importer = _json['importer'] as core.String;
-    }
-    if (_json.containsKey('monitor')) {
-      monitor = _json['monitor'] as core.String;
-    }
-    if (_json.containsKey('reconcilerManager')) {
-      reconcilerManager = _json['reconcilerManager'] as core.String;
-    }
-    if (_json.containsKey('rootReconciler')) {
-      rootReconciler = _json['rootReconciler'] as core.String;
-    }
-    if (_json.containsKey('syncer')) {
-      syncer = _json['syncer'] as core.String;
-    }
-  }
+  ConfigManagementConfigSyncDeploymentState.fromJson(core.Map _json)
+      : this(
+          gitSync: _json.containsKey('gitSync')
+              ? _json['gitSync'] as core.String
+              : null,
+          importer: _json.containsKey('importer')
+              ? _json['importer'] as core.String
+              : null,
+          monitor: _json.containsKey('monitor')
+              ? _json['monitor'] as core.String
+              : null,
+          reconcilerManager: _json.containsKey('reconcilerManager')
+              ? _json['reconcilerManager'] as core.String
+              : null,
+          rootReconciler: _json.containsKey('rootReconciler')
+              ? _json['rootReconciler'] as core.String
+              : null,
+          syncer: _json.containsKey('syncer')
+              ? _json['syncer'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gitSync != null) 'gitSync': gitSync!,
@@ -1719,22 +1755,28 @@ class ConfigManagementConfigSyncState {
   /// The version of ConfigSync deployed
   ConfigManagementConfigSyncVersion? version;
 
-  ConfigManagementConfigSyncState();
+  ConfigManagementConfigSyncState({
+    this.deploymentState,
+    this.syncState,
+    this.version,
+  });
 
-  ConfigManagementConfigSyncState.fromJson(core.Map _json) {
-    if (_json.containsKey('deploymentState')) {
-      deploymentState = ConfigManagementConfigSyncDeploymentState.fromJson(
-          _json['deploymentState'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('syncState')) {
-      syncState = ConfigManagementSyncState.fromJson(
-          _json['syncState'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('version')) {
-      version = ConfigManagementConfigSyncVersion.fromJson(
-          _json['version'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ConfigManagementConfigSyncState.fromJson(core.Map _json)
+      : this(
+          deploymentState: _json.containsKey('deploymentState')
+              ? ConfigManagementConfigSyncDeploymentState.fromJson(
+                  _json['deploymentState']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          syncState: _json.containsKey('syncState')
+              ? ConfigManagementSyncState.fromJson(
+                  _json['syncState'] as core.Map<core.String, core.dynamic>)
+              : null,
+          version: _json.containsKey('version')
+              ? ConfigManagementConfigSyncVersion.fromJson(
+                  _json['version'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deploymentState != null)
@@ -1764,28 +1806,36 @@ class ConfigManagementConfigSyncVersion {
   /// Version of the deployed syncer pod
   core.String? syncer;
 
-  ConfigManagementConfigSyncVersion();
+  ConfigManagementConfigSyncVersion({
+    this.gitSync,
+    this.importer,
+    this.monitor,
+    this.reconcilerManager,
+    this.rootReconciler,
+    this.syncer,
+  });
 
-  ConfigManagementConfigSyncVersion.fromJson(core.Map _json) {
-    if (_json.containsKey('gitSync')) {
-      gitSync = _json['gitSync'] as core.String;
-    }
-    if (_json.containsKey('importer')) {
-      importer = _json['importer'] as core.String;
-    }
-    if (_json.containsKey('monitor')) {
-      monitor = _json['monitor'] as core.String;
-    }
-    if (_json.containsKey('reconcilerManager')) {
-      reconcilerManager = _json['reconcilerManager'] as core.String;
-    }
-    if (_json.containsKey('rootReconciler')) {
-      rootReconciler = _json['rootReconciler'] as core.String;
-    }
-    if (_json.containsKey('syncer')) {
-      syncer = _json['syncer'] as core.String;
-    }
-  }
+  ConfigManagementConfigSyncVersion.fromJson(core.Map _json)
+      : this(
+          gitSync: _json.containsKey('gitSync')
+              ? _json['gitSync'] as core.String
+              : null,
+          importer: _json.containsKey('importer')
+              ? _json['importer'] as core.String
+              : null,
+          monitor: _json.containsKey('monitor')
+              ? _json['monitor'] as core.String
+              : null,
+          reconcilerManager: _json.containsKey('reconcilerManager')
+              ? _json['reconcilerManager'] as core.String
+              : null,
+          rootReconciler: _json.containsKey('rootReconciler')
+              ? _json['rootReconciler'] as core.String
+              : null,
+          syncer: _json.containsKey('syncer')
+              ? _json['syncer'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gitSync != null) 'gitSync': gitSync!,
@@ -1811,23 +1861,29 @@ class ConfigManagementErrorResource {
   /// Path in the git repo of the erroneous config
   core.String? sourcePath;
 
-  ConfigManagementErrorResource();
+  ConfigManagementErrorResource({
+    this.resourceGvk,
+    this.resourceName,
+    this.resourceNamespace,
+    this.sourcePath,
+  });
 
-  ConfigManagementErrorResource.fromJson(core.Map _json) {
-    if (_json.containsKey('resourceGvk')) {
-      resourceGvk = ConfigManagementGroupVersionKind.fromJson(
-          _json['resourceGvk'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('resourceName')) {
-      resourceName = _json['resourceName'] as core.String;
-    }
-    if (_json.containsKey('resourceNamespace')) {
-      resourceNamespace = _json['resourceNamespace'] as core.String;
-    }
-    if (_json.containsKey('sourcePath')) {
-      sourcePath = _json['sourcePath'] as core.String;
-    }
-  }
+  ConfigManagementErrorResource.fromJson(core.Map _json)
+      : this(
+          resourceGvk: _json.containsKey('resourceGvk')
+              ? ConfigManagementGroupVersionKind.fromJson(
+                  _json['resourceGvk'] as core.Map<core.String, core.dynamic>)
+              : null,
+          resourceName: _json.containsKey('resourceName')
+              ? _json['resourceName'] as core.String
+              : null,
+          resourceNamespace: _json.containsKey('resourceNamespace')
+              ? _json['resourceNamespace'] as core.String
+              : null,
+          sourcePath: _json.containsKey('sourcePath')
+              ? _json['sourcePath'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceGvk != null) 'resourceGvk': resourceGvk!.toJson(),
@@ -1855,17 +1911,21 @@ class ConfigManagementGatekeeperDeploymentState {
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
   core.String? gatekeeperControllerManagerState;
 
-  ConfigManagementGatekeeperDeploymentState();
+  ConfigManagementGatekeeperDeploymentState({
+    this.gatekeeperAudit,
+    this.gatekeeperControllerManagerState,
+  });
 
-  ConfigManagementGatekeeperDeploymentState.fromJson(core.Map _json) {
-    if (_json.containsKey('gatekeeperAudit')) {
-      gatekeeperAudit = _json['gatekeeperAudit'] as core.String;
-    }
-    if (_json.containsKey('gatekeeperControllerManagerState')) {
-      gatekeeperControllerManagerState =
-          _json['gatekeeperControllerManagerState'] as core.String;
-    }
-  }
+  ConfigManagementGatekeeperDeploymentState.fromJson(core.Map _json)
+      : this(
+          gatekeeperAudit: _json.containsKey('gatekeeperAudit')
+              ? _json['gatekeeperAudit'] as core.String
+              : null,
+          gatekeeperControllerManagerState:
+              _json.containsKey('gatekeeperControllerManagerState')
+                  ? _json['gatekeeperControllerManagerState'] as core.String
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gatekeeperAudit != null) 'gatekeeperAudit': gatekeeperAudit!,
@@ -1910,34 +1970,44 @@ class ConfigManagementGitConfig {
   /// Default: 15.
   core.String? syncWaitSecs;
 
-  ConfigManagementGitConfig();
+  ConfigManagementGitConfig({
+    this.gcpServiceAccountEmail,
+    this.httpsProxy,
+    this.policyDir,
+    this.secretType,
+    this.syncBranch,
+    this.syncRepo,
+    this.syncRev,
+    this.syncWaitSecs,
+  });
 
-  ConfigManagementGitConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('gcpServiceAccountEmail')) {
-      gcpServiceAccountEmail = _json['gcpServiceAccountEmail'] as core.String;
-    }
-    if (_json.containsKey('httpsProxy')) {
-      httpsProxy = _json['httpsProxy'] as core.String;
-    }
-    if (_json.containsKey('policyDir')) {
-      policyDir = _json['policyDir'] as core.String;
-    }
-    if (_json.containsKey('secretType')) {
-      secretType = _json['secretType'] as core.String;
-    }
-    if (_json.containsKey('syncBranch')) {
-      syncBranch = _json['syncBranch'] as core.String;
-    }
-    if (_json.containsKey('syncRepo')) {
-      syncRepo = _json['syncRepo'] as core.String;
-    }
-    if (_json.containsKey('syncRev')) {
-      syncRev = _json['syncRev'] as core.String;
-    }
-    if (_json.containsKey('syncWaitSecs')) {
-      syncWaitSecs = _json['syncWaitSecs'] as core.String;
-    }
-  }
+  ConfigManagementGitConfig.fromJson(core.Map _json)
+      : this(
+          gcpServiceAccountEmail: _json.containsKey('gcpServiceAccountEmail')
+              ? _json['gcpServiceAccountEmail'] as core.String
+              : null,
+          httpsProxy: _json.containsKey('httpsProxy')
+              ? _json['httpsProxy'] as core.String
+              : null,
+          policyDir: _json.containsKey('policyDir')
+              ? _json['policyDir'] as core.String
+              : null,
+          secretType: _json.containsKey('secretType')
+              ? _json['secretType'] as core.String
+              : null,
+          syncBranch: _json.containsKey('syncBranch')
+              ? _json['syncBranch'] as core.String
+              : null,
+          syncRepo: _json.containsKey('syncRepo')
+              ? _json['syncRepo'] as core.String
+              : null,
+          syncRev: _json.containsKey('syncRev')
+              ? _json['syncRev'] as core.String
+              : null,
+          syncWaitSecs: _json.containsKey('syncWaitSecs')
+              ? _json['syncWaitSecs'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gcpServiceAccountEmail != null)
@@ -1963,19 +2033,21 @@ class ConfigManagementGroupVersionKind {
   /// Kubernetes Version
   core.String? version;
 
-  ConfigManagementGroupVersionKind();
+  ConfigManagementGroupVersionKind({
+    this.group,
+    this.kind,
+    this.version,
+  });
 
-  ConfigManagementGroupVersionKind.fromJson(core.Map _json) {
-    if (_json.containsKey('group')) {
-      group = _json['group'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.String;
-    }
-  }
+  ConfigManagementGroupVersionKind.fromJson(core.Map _json)
+      : this(
+          group:
+              _json.containsKey('group') ? _json['group'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (group != null) 'group': group!,
@@ -1995,20 +2067,25 @@ class ConfigManagementHierarchyControllerConfig {
   /// Whether Hierarchy Controller is enabled in this cluster.
   core.bool? enabled;
 
-  ConfigManagementHierarchyControllerConfig();
+  ConfigManagementHierarchyControllerConfig({
+    this.enableHierarchicalResourceQuota,
+    this.enablePodTreeLabels,
+    this.enabled,
+  });
 
-  ConfigManagementHierarchyControllerConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('enableHierarchicalResourceQuota')) {
-      enableHierarchicalResourceQuota =
-          _json['enableHierarchicalResourceQuota'] as core.bool;
-    }
-    if (_json.containsKey('enablePodTreeLabels')) {
-      enablePodTreeLabels = _json['enablePodTreeLabels'] as core.bool;
-    }
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-  }
+  ConfigManagementHierarchyControllerConfig.fromJson(core.Map _json)
+      : this(
+          enableHierarchicalResourceQuota:
+              _json.containsKey('enableHierarchicalResourceQuota')
+                  ? _json['enableHierarchicalResourceQuota'] as core.bool
+                  : null,
+          enablePodTreeLabels: _json.containsKey('enablePodTreeLabels')
+              ? _json['enablePodTreeLabels'] as core.bool
+              : null,
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enableHierarchicalResourceQuota != null)
@@ -2037,16 +2114,18 @@ class ConfigManagementHierarchyControllerDeploymentState {
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
   core.String? hnc;
 
-  ConfigManagementHierarchyControllerDeploymentState();
+  ConfigManagementHierarchyControllerDeploymentState({
+    this.extension,
+    this.hnc,
+  });
 
-  ConfigManagementHierarchyControllerDeploymentState.fromJson(core.Map _json) {
-    if (_json.containsKey('extension')) {
-      extension = _json['extension'] as core.String;
-    }
-    if (_json.containsKey('hnc')) {
-      hnc = _json['hnc'] as core.String;
-    }
-  }
+  ConfigManagementHierarchyControllerDeploymentState.fromJson(core.Map _json)
+      : this(
+          extension: _json.containsKey('extension')
+              ? _json['extension'] as core.String
+              : null,
+          hnc: _json.containsKey('hnc') ? _json['hnc'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (extension != null) 'extension': extension!,
@@ -2062,18 +2141,22 @@ class ConfigManagementHierarchyControllerState {
   /// The version for Hierarchy Controller
   ConfigManagementHierarchyControllerVersion? version;
 
-  ConfigManagementHierarchyControllerState();
+  ConfigManagementHierarchyControllerState({
+    this.state,
+    this.version,
+  });
 
-  ConfigManagementHierarchyControllerState.fromJson(core.Map _json) {
-    if (_json.containsKey('state')) {
-      state = ConfigManagementHierarchyControllerDeploymentState.fromJson(
-          _json['state'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('version')) {
-      version = ConfigManagementHierarchyControllerVersion.fromJson(
-          _json['version'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ConfigManagementHierarchyControllerState.fromJson(core.Map _json)
+      : this(
+          state: _json.containsKey('state')
+              ? ConfigManagementHierarchyControllerDeploymentState.fromJson(
+                  _json['state'] as core.Map<core.String, core.dynamic>)
+              : null,
+          version: _json.containsKey('version')
+              ? ConfigManagementHierarchyControllerVersion.fromJson(
+                  _json['version'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (state != null) 'state': state!.toJson(),
@@ -2089,16 +2172,18 @@ class ConfigManagementHierarchyControllerVersion {
   /// Version for open source HNC
   core.String? hnc;
 
-  ConfigManagementHierarchyControllerVersion();
+  ConfigManagementHierarchyControllerVersion({
+    this.extension,
+    this.hnc,
+  });
 
-  ConfigManagementHierarchyControllerVersion.fromJson(core.Map _json) {
-    if (_json.containsKey('extension')) {
-      extension = _json['extension'] as core.String;
-    }
-    if (_json.containsKey('hnc')) {
-      hnc = _json['hnc'] as core.String;
-    }
-  }
+  ConfigManagementHierarchyControllerVersion.fromJson(core.Map _json)
+      : this(
+          extension: _json.containsKey('extension')
+              ? _json['extension'] as core.String
+              : null,
+          hnc: _json.containsKey('hnc') ? _json['hnc'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (extension != null) 'extension': extension!,
@@ -2111,13 +2196,16 @@ class ConfigManagementInstallError {
   /// A string representing the user facing error message
   core.String? errorMessage;
 
-  ConfigManagementInstallError();
+  ConfigManagementInstallError({
+    this.errorMessage,
+  });
 
-  ConfigManagementInstallError.fromJson(core.Map _json) {
-    if (_json.containsKey('errorMessage')) {
-      errorMessage = _json['errorMessage'] as core.String;
-    }
-  }
+  ConfigManagementInstallError.fromJson(core.Map _json)
+      : this(
+          errorMessage: _json.containsKey('errorMessage')
+              ? _json['errorMessage'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorMessage != null) 'errorMessage': errorMessage!,
@@ -2140,25 +2228,33 @@ class ConfigManagementMembershipSpec {
   /// Version of ACM installed.
   core.String? version;
 
-  ConfigManagementMembershipSpec();
+  ConfigManagementMembershipSpec({
+    this.configSync,
+    this.hierarchyController,
+    this.policyController,
+    this.version,
+  });
 
-  ConfigManagementMembershipSpec.fromJson(core.Map _json) {
-    if (_json.containsKey('configSync')) {
-      configSync = ConfigManagementConfigSync.fromJson(
-          _json['configSync'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('hierarchyController')) {
-      hierarchyController = ConfigManagementHierarchyControllerConfig.fromJson(
-          _json['hierarchyController'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('policyController')) {
-      policyController = ConfigManagementPolicyController.fromJson(
-          _json['policyController'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.String;
-    }
-  }
+  ConfigManagementMembershipSpec.fromJson(core.Map _json)
+      : this(
+          configSync: _json.containsKey('configSync')
+              ? ConfigManagementConfigSync.fromJson(
+                  _json['configSync'] as core.Map<core.String, core.dynamic>)
+              : null,
+          hierarchyController: _json.containsKey('hierarchyController')
+              ? ConfigManagementHierarchyControllerConfig.fromJson(
+                  _json['hierarchyController']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          policyController: _json.containsKey('policyController')
+              ? ConfigManagementPolicyController.fromJson(
+                  _json['policyController']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (configSync != null) 'configSync': configSync!.toJson(),
@@ -2198,36 +2294,45 @@ class ConfigManagementMembershipState {
   /// PolicyController status
   ConfigManagementPolicyControllerState? policyControllerState;
 
-  ConfigManagementMembershipState();
+  ConfigManagementMembershipState({
+    this.clusterName,
+    this.configSyncState,
+    this.hierarchyControllerState,
+    this.membershipSpec,
+    this.operatorState,
+    this.policyControllerState,
+  });
 
-  ConfigManagementMembershipState.fromJson(core.Map _json) {
-    if (_json.containsKey('clusterName')) {
-      clusterName = _json['clusterName'] as core.String;
-    }
-    if (_json.containsKey('configSyncState')) {
-      configSyncState = ConfigManagementConfigSyncState.fromJson(
-          _json['configSyncState'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('hierarchyControllerState')) {
-      hierarchyControllerState =
-          ConfigManagementHierarchyControllerState.fromJson(
-              _json['hierarchyControllerState']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('membershipSpec')) {
-      membershipSpec = ConfigManagementMembershipSpec.fromJson(
-          _json['membershipSpec'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('operatorState')) {
-      operatorState = ConfigManagementOperatorState.fromJson(
-          _json['operatorState'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('policyControllerState')) {
-      policyControllerState = ConfigManagementPolicyControllerState.fromJson(
-          _json['policyControllerState']
-              as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ConfigManagementMembershipState.fromJson(core.Map _json)
+      : this(
+          clusterName: _json.containsKey('clusterName')
+              ? _json['clusterName'] as core.String
+              : null,
+          configSyncState: _json.containsKey('configSyncState')
+              ? ConfigManagementConfigSyncState.fromJson(
+                  _json['configSyncState']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          hierarchyControllerState:
+              _json.containsKey('hierarchyControllerState')
+                  ? ConfigManagementHierarchyControllerState.fromJson(
+                      _json['hierarchyControllerState']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          membershipSpec: _json.containsKey('membershipSpec')
+              ? ConfigManagementMembershipSpec.fromJson(_json['membershipSpec']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          operatorState: _json.containsKey('operatorState')
+              ? ConfigManagementOperatorState.fromJson(
+                  _json['operatorState'] as core.Map<core.String, core.dynamic>)
+              : null,
+          policyControllerState: _json.containsKey('policyControllerState')
+              ? ConfigManagementPolicyControllerState.fromJson(
+                  _json['policyControllerState']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterName != null) 'clusterName': clusterName!,
@@ -2258,23 +2363,28 @@ class ConfigManagementOperatorState {
   /// The semenatic version number of the operator
   core.String? version;
 
-  ConfigManagementOperatorState();
+  ConfigManagementOperatorState({
+    this.deploymentState,
+    this.errors,
+    this.version,
+  });
 
-  ConfigManagementOperatorState.fromJson(core.Map _json) {
-    if (_json.containsKey('deploymentState')) {
-      deploymentState = _json['deploymentState'] as core.String;
-    }
-    if (_json.containsKey('errors')) {
-      errors = (_json['errors'] as core.List)
-          .map<ConfigManagementInstallError>((value) =>
-              ConfigManagementInstallError.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.String;
-    }
-  }
+  ConfigManagementOperatorState.fromJson(core.Map _json)
+      : this(
+          deploymentState: _json.containsKey('deploymentState')
+              ? _json['deploymentState'] as core.String
+              : null,
+          errors: _json.containsKey('errors')
+              ? (_json['errors'] as core.List)
+                  .map<ConfigManagementInstallError>((value) =>
+                      ConfigManagementInstallError.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deploymentState != null) 'deploymentState': deploymentState!,
@@ -2311,30 +2421,39 @@ class ConfigManagementPolicyController {
   /// Installs the default template library along with Policy Controller.
   core.bool? templateLibraryInstalled;
 
-  ConfigManagementPolicyController();
+  ConfigManagementPolicyController({
+    this.auditIntervalSeconds,
+    this.enabled,
+    this.exemptableNamespaces,
+    this.logDeniesEnabled,
+    this.referentialRulesEnabled,
+    this.templateLibraryInstalled,
+  });
 
-  ConfigManagementPolicyController.fromJson(core.Map _json) {
-    if (_json.containsKey('auditIntervalSeconds')) {
-      auditIntervalSeconds = _json['auditIntervalSeconds'] as core.String;
-    }
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-    if (_json.containsKey('exemptableNamespaces')) {
-      exemptableNamespaces = (_json['exemptableNamespaces'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('logDeniesEnabled')) {
-      logDeniesEnabled = _json['logDeniesEnabled'] as core.bool;
-    }
-    if (_json.containsKey('referentialRulesEnabled')) {
-      referentialRulesEnabled = _json['referentialRulesEnabled'] as core.bool;
-    }
-    if (_json.containsKey('templateLibraryInstalled')) {
-      templateLibraryInstalled = _json['templateLibraryInstalled'] as core.bool;
-    }
-  }
+  ConfigManagementPolicyController.fromJson(core.Map _json)
+      : this(
+          auditIntervalSeconds: _json.containsKey('auditIntervalSeconds')
+              ? _json['auditIntervalSeconds'] as core.String
+              : null,
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+          exemptableNamespaces: _json.containsKey('exemptableNamespaces')
+              ? (_json['exemptableNamespaces'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          logDeniesEnabled: _json.containsKey('logDeniesEnabled')
+              ? _json['logDeniesEnabled'] as core.bool
+              : null,
+          referentialRulesEnabled: _json.containsKey('referentialRulesEnabled')
+              ? _json['referentialRulesEnabled'] as core.bool
+              : null,
+          templateLibraryInstalled:
+              _json.containsKey('templateLibraryInstalled')
+                  ? _json['templateLibraryInstalled'] as core.bool
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (auditIntervalSeconds != null)
@@ -2358,18 +2477,23 @@ class ConfigManagementPolicyControllerState {
   /// The version of Gatekeeper Policy Controller deployed.
   ConfigManagementPolicyControllerVersion? version;
 
-  ConfigManagementPolicyControllerState();
+  ConfigManagementPolicyControllerState({
+    this.deploymentState,
+    this.version,
+  });
 
-  ConfigManagementPolicyControllerState.fromJson(core.Map _json) {
-    if (_json.containsKey('deploymentState')) {
-      deploymentState = ConfigManagementGatekeeperDeploymentState.fromJson(
-          _json['deploymentState'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('version')) {
-      version = ConfigManagementPolicyControllerVersion.fromJson(
-          _json['version'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ConfigManagementPolicyControllerState.fromJson(core.Map _json)
+      : this(
+          deploymentState: _json.containsKey('deploymentState')
+              ? ConfigManagementGatekeeperDeploymentState.fromJson(
+                  _json['deploymentState']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          version: _json.containsKey('version')
+              ? ConfigManagementPolicyControllerVersion.fromJson(
+                  _json['version'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deploymentState != null)
@@ -2384,13 +2508,16 @@ class ConfigManagementPolicyControllerVersion {
   /// number.
   core.String? version;
 
-  ConfigManagementPolicyControllerVersion();
+  ConfigManagementPolicyControllerVersion({
+    this.version,
+  });
 
-  ConfigManagementPolicyControllerVersion.fromJson(core.Map _json) {
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.String;
-    }
-  }
+  ConfigManagementPolicyControllerVersion.fromJson(core.Map _json)
+      : this(
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (version != null) 'version': version!,
@@ -2408,23 +2535,26 @@ class ConfigManagementSyncError {
   /// A list of config(s) associated with the error, if any
   core.List<ConfigManagementErrorResource>? errorResources;
 
-  ConfigManagementSyncError();
+  ConfigManagementSyncError({
+    this.code,
+    this.errorMessage,
+    this.errorResources,
+  });
 
-  ConfigManagementSyncError.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.String;
-    }
-    if (_json.containsKey('errorMessage')) {
-      errorMessage = _json['errorMessage'] as core.String;
-    }
-    if (_json.containsKey('errorResources')) {
-      errorResources = (_json['errorResources'] as core.List)
-          .map<ConfigManagementErrorResource>((value) =>
-              ConfigManagementErrorResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ConfigManagementSyncError.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.String : null,
+          errorMessage: _json.containsKey('errorMessage')
+              ? _json['errorMessage'] as core.String
+              : null,
+          errorResources: _json.containsKey('errorResources')
+              ? (_json['errorResources'] as core.List)
+                  .map<ConfigManagementErrorResource>((value) =>
+                      ConfigManagementErrorResource.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -2475,35 +2605,42 @@ class ConfigManagementSyncState {
   /// Token indicating the state of the syncer.
   core.String? syncToken;
 
-  ConfigManagementSyncState();
+  ConfigManagementSyncState({
+    this.code,
+    this.errors,
+    this.importToken,
+    this.lastSync,
+    this.lastSyncTime,
+    this.sourceToken,
+    this.syncToken,
+  });
 
-  ConfigManagementSyncState.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.String;
-    }
-    if (_json.containsKey('errors')) {
-      errors = (_json['errors'] as core.List)
-          .map<ConfigManagementSyncError>((value) =>
-              ConfigManagementSyncError.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('importToken')) {
-      importToken = _json['importToken'] as core.String;
-    }
-    if (_json.containsKey('lastSync')) {
-      lastSync = _json['lastSync'] as core.String;
-    }
-    if (_json.containsKey('lastSyncTime')) {
-      lastSyncTime = _json['lastSyncTime'] as core.String;
-    }
-    if (_json.containsKey('sourceToken')) {
-      sourceToken = _json['sourceToken'] as core.String;
-    }
-    if (_json.containsKey('syncToken')) {
-      syncToken = _json['syncToken'] as core.String;
-    }
-  }
+  ConfigManagementSyncState.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.String : null,
+          errors: _json.containsKey('errors')
+              ? (_json['errors'] as core.List)
+                  .map<ConfigManagementSyncError>((value) =>
+                      ConfigManagementSyncError.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          importToken: _json.containsKey('importToken')
+              ? _json['importToken'] as core.String
+              : null,
+          lastSync: _json.containsKey('lastSync')
+              ? _json['lastSync'] as core.String
+              : null,
+          lastSyncTime: _json.containsKey('lastSyncTime')
+              ? _json['lastSyncTime'] as core.String
+              : null,
+          sourceToken: _json.containsKey('sourceToken')
+              ? _json['sourceToken'] as core.String
+              : null,
+          syncToken: _json.containsKey('syncToken')
+              ? _json['syncToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -2526,17 +2663,21 @@ class ConnectAgentResource {
   /// Kubernetes type of the resource.
   TypeMeta? type;
 
-  ConnectAgentResource();
+  ConnectAgentResource({
+    this.manifest,
+    this.type,
+  });
 
-  ConnectAgentResource.fromJson(core.Map _json) {
-    if (_json.containsKey('manifest')) {
-      manifest = _json['manifest'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = TypeMeta.fromJson(
-          _json['type'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ConnectAgentResource.fromJson(core.Map _json)
+      : this(
+          manifest: _json.containsKey('manifest')
+              ? _json['manifest'] as core.String
+              : null,
+          type: _json.containsKey('type')
+              ? TypeMeta.fromJson(
+                  _json['type'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (manifest != null) 'manifest': manifest!,
@@ -2605,22 +2746,27 @@ class Expr {
   /// Optional.
   core.String? title;
 
-  Expr();
+  Expr({
+    this.description,
+    this.expression,
+    this.location,
+    this.title,
+  });
 
-  Expr.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('expression')) {
-      expression = _json['expression'] as core.String;
-    }
-    if (_json.containsKey('location')) {
-      location = _json['location'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  Expr.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          expression: _json.containsKey('expression')
+              ? _json['expression'] as core.String
+              : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -2702,63 +2848,74 @@ class Feature {
   /// Output only.
   core.String? updateTime;
 
-  Feature();
+  Feature({
+    this.createTime,
+    this.deleteTime,
+    this.labels,
+    this.membershipSpecs,
+    this.membershipStates,
+    this.name,
+    this.resourceState,
+    this.spec,
+    this.state,
+    this.updateTime,
+  });
 
-  Feature.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('deleteTime')) {
-      deleteTime = _json['deleteTime'] as core.String;
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('membershipSpecs')) {
-      membershipSpecs =
-          (_json['membershipSpecs'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          MembershipFeatureSpec.fromJson(
-              item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('membershipStates')) {
-      membershipStates =
-          (_json['membershipStates'] as core.Map<core.String, core.dynamic>)
-              .map(
-        (key, item) => core.MapEntry(
-          key,
-          MembershipFeatureState.fromJson(
-              item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('resourceState')) {
-      resourceState = FeatureResourceState.fromJson(
-          _json['resourceState'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('spec')) {
-      spec = CommonFeatureSpec.fromJson(
-          _json['spec'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('state')) {
-      state = CommonFeatureState.fromJson(
-          _json['state'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  Feature.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          deleteTime: _json.containsKey('deleteTime')
+              ? _json['deleteTime'] as core.String
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          membershipSpecs: _json.containsKey('membershipSpecs')
+              ? (_json['membershipSpecs']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    MembershipFeatureSpec.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          membershipStates: _json.containsKey('membershipStates')
+              ? (_json['membershipStates']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    MembershipFeatureState.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          resourceState: _json.containsKey('resourceState')
+              ? FeatureResourceState.fromJson(
+                  _json['resourceState'] as core.Map<core.String, core.dynamic>)
+              : null,
+          spec: _json.containsKey('spec')
+              ? CommonFeatureSpec.fromJson(
+                  _json['spec'] as core.Map<core.String, core.dynamic>)
+              : null,
+          state: _json.containsKey('state')
+              ? CommonFeatureState.fromJson(
+                  _json['state'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -2799,13 +2956,15 @@ class FeatureResourceState {
   /// Service.
   core.String? state;
 
-  FeatureResourceState();
+  FeatureResourceState({
+    this.state,
+  });
 
-  FeatureResourceState.fromJson(core.Map _json) {
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-  }
+  FeatureResourceState.fromJson(core.Map _json)
+      : this(
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (state != null) 'state': state!,
@@ -2838,19 +2997,22 @@ class FeatureState {
   /// updated.
   core.String? updateTime;
 
-  FeatureState();
+  FeatureState({
+    this.code,
+    this.description,
+    this.updateTime,
+  });
 
-  FeatureState.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  FeatureState.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.String : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -2866,16 +3028,20 @@ class GenerateConnectManifestResponse {
   /// cluster for GKE Connect agent installation/upgrade.
   core.List<ConnectAgentResource>? manifest;
 
-  GenerateConnectManifestResponse();
+  GenerateConnectManifestResponse({
+    this.manifest,
+  });
 
-  GenerateConnectManifestResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('manifest')) {
-      manifest = (_json['manifest'] as core.List)
-          .map<ConnectAgentResource>((value) => ConnectAgentResource.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GenerateConnectManifestResponse.fromJson(core.Map _json)
+      : this(
+          manifest: _json.containsKey('manifest')
+              ? (_json['manifest'] as core.List)
+                  .map<ConnectAgentResource>((value) =>
+                      ConnectAgentResource.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (manifest != null)
@@ -2894,13 +3060,16 @@ class GkeCluster {
   /// Immutable.
   core.String? resourceLink;
 
-  GkeCluster();
+  GkeCluster({
+    this.resourceLink,
+  });
 
-  GkeCluster.fromJson(core.Map _json) {
-    if (_json.containsKey('resourceLink')) {
-      resourceLink = _json['resourceLink'] as core.String;
-    }
-  }
+  GkeCluster.fromJson(core.Map _json)
+      : this(
+          resourceLink: _json.containsKey('resourceLink')
+              ? _json['resourceLink'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceLink != null) 'resourceLink': resourceLink!,
@@ -2932,27 +3101,30 @@ class GoogleRpcStatus {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  GoogleRpcStatus();
+  GoogleRpcStatus({
+    this.code,
+    this.details,
+    this.message,
+  });
 
-  GoogleRpcStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.int;
-    }
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  GoogleRpcStatus.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -3002,29 +3174,37 @@ class KubernetesMetadata {
   /// Output only.
   core.int? vcpuCount;
 
-  KubernetesMetadata();
+  KubernetesMetadata({
+    this.kubernetesApiServerVersion,
+    this.memoryMb,
+    this.nodeCount,
+    this.nodeProviderId,
+    this.updateTime,
+    this.vcpuCount,
+  });
 
-  KubernetesMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('kubernetesApiServerVersion')) {
-      kubernetesApiServerVersion =
-          _json['kubernetesApiServerVersion'] as core.String;
-    }
-    if (_json.containsKey('memoryMb')) {
-      memoryMb = _json['memoryMb'] as core.int;
-    }
-    if (_json.containsKey('nodeCount')) {
-      nodeCount = _json['nodeCount'] as core.int;
-    }
-    if (_json.containsKey('nodeProviderId')) {
-      nodeProviderId = _json['nodeProviderId'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-    if (_json.containsKey('vcpuCount')) {
-      vcpuCount = _json['vcpuCount'] as core.int;
-    }
-  }
+  KubernetesMetadata.fromJson(core.Map _json)
+      : this(
+          kubernetesApiServerVersion:
+              _json.containsKey('kubernetesApiServerVersion')
+                  ? _json['kubernetesApiServerVersion'] as core.String
+                  : null,
+          memoryMb: _json.containsKey('memoryMb')
+              ? _json['memoryMb'] as core.int
+              : null,
+          nodeCount: _json.containsKey('nodeCount')
+              ? _json['nodeCount'] as core.int
+              : null,
+          nodeProviderId: _json.containsKey('nodeProviderId')
+              ? _json['nodeProviderId'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+          vcpuCount: _json.containsKey('vcpuCount')
+              ? _json['vcpuCount'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kubernetesApiServerVersion != null)
@@ -3049,19 +3229,23 @@ class ListFeaturesResponse {
   /// The list of matching Features
   core.List<Feature>? resources;
 
-  ListFeaturesResponse();
+  ListFeaturesResponse({
+    this.nextPageToken,
+    this.resources,
+  });
 
-  ListFeaturesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('resources')) {
-      resources = (_json['resources'] as core.List)
-          .map<Feature>((value) =>
-              Feature.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListFeaturesResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          resources: _json.containsKey('resources')
+              ? (_json['resources'] as core.List)
+                  .map<Feature>((value) => Feature.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3078,19 +3262,23 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse();
+  ListLocationsResponse({
+    this.locations,
+    this.nextPageToken,
+  });
 
-  ListLocationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('locations')) {
-      locations = (_json['locations'] as core.List)
-          .map<Location>((value) =>
-              Location.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListLocationsResponse.fromJson(core.Map _json)
+      : this(
+          locations: _json.containsKey('locations')
+              ? (_json['locations'] as core.List)
+                  .map<Location>((value) => Location.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (locations != null)
@@ -3114,24 +3302,29 @@ class ListMembershipsResponse {
   /// List of locations that could not be reached while fetching this list.
   core.List<core.String>? unreachable;
 
-  ListMembershipsResponse();
+  ListMembershipsResponse({
+    this.nextPageToken,
+    this.resources,
+    this.unreachable,
+  });
 
-  ListMembershipsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('resources')) {
-      resources = (_json['resources'] as core.List)
-          .map<Membership>((value) =>
-              Membership.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('unreachable')) {
-      unreachable = (_json['unreachable'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  ListMembershipsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          resources: _json.containsKey('resources')
+              ? (_json['resources'] as core.List)
+                  .map<Membership>((value) => Membership.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          unreachable: _json.containsKey('unreachable')
+              ? (_json['unreachable'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3149,19 +3342,23 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse();
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
 
-  ListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('operations')) {
-      operations = (_json['operations'] as core.List)
-          .map<Operation>((value) =>
-              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListOperationsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          operations: _json.containsKey('operations')
+              ? (_json['operations'] as core.List)
+                  .map<Operation>((value) => Operation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3200,35 +3397,40 @@ class Location {
   /// For example: `"projects/example-project/locations/us-east1"`
   core.String? name;
 
-  Location();
+  Location({
+    this.displayName,
+    this.labels,
+    this.locationId,
+    this.metadata,
+    this.name,
+  });
 
-  Location.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('locationId')) {
-      locationId = _json['locationId'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  Location.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          locationId: _json.containsKey('locationId')
+              ? _json['locationId'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -3328,54 +3530,66 @@ class Membership {
   /// Output only.
   core.String? updateTime;
 
-  Membership();
+  Membership({
+    this.authority,
+    this.createTime,
+    this.deleteTime,
+    this.description,
+    this.endpoint,
+    this.externalId,
+    this.labels,
+    this.lastConnectionTime,
+    this.name,
+    this.state,
+    this.uniqueId,
+    this.updateTime,
+  });
 
-  Membership.fromJson(core.Map _json) {
-    if (_json.containsKey('authority')) {
-      authority = Authority.fromJson(
-          _json['authority'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('deleteTime')) {
-      deleteTime = _json['deleteTime'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('endpoint')) {
-      endpoint = MembershipEndpoint.fromJson(
-          _json['endpoint'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('externalId')) {
-      externalId = _json['externalId'] as core.String;
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('lastConnectionTime')) {
-      lastConnectionTime = _json['lastConnectionTime'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = MembershipState.fromJson(
-          _json['state'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('uniqueId')) {
-      uniqueId = _json['uniqueId'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  Membership.fromJson(core.Map _json)
+      : this(
+          authority: _json.containsKey('authority')
+              ? Authority.fromJson(
+                  _json['authority'] as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          deleteTime: _json.containsKey('deleteTime')
+              ? _json['deleteTime'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          endpoint: _json.containsKey('endpoint')
+              ? MembershipEndpoint.fromJson(
+                  _json['endpoint'] as core.Map<core.String, core.dynamic>)
+              : null,
+          externalId: _json.containsKey('externalId')
+              ? _json['externalId'] as core.String
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          lastConnectionTime: _json.containsKey('lastConnectionTime')
+              ? _json['lastConnectionTime'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          state: _json.containsKey('state')
+              ? MembershipState.fromJson(
+                  _json['state'] as core.Map<core.String, core.dynamic>)
+              : null,
+          uniqueId: _json.containsKey('uniqueId')
+              ? _json['uniqueId'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authority != null) 'authority': authority!.toJson(),
@@ -3409,18 +3623,22 @@ class MembershipEndpoint {
   /// Output only.
   KubernetesMetadata? kubernetesMetadata;
 
-  MembershipEndpoint();
+  MembershipEndpoint({
+    this.gkeCluster,
+    this.kubernetesMetadata,
+  });
 
-  MembershipEndpoint.fromJson(core.Map _json) {
-    if (_json.containsKey('gkeCluster')) {
-      gkeCluster = GkeCluster.fromJson(
-          _json['gkeCluster'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('kubernetesMetadata')) {
-      kubernetesMetadata = KubernetesMetadata.fromJson(
-          _json['kubernetesMetadata'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  MembershipEndpoint.fromJson(core.Map _json)
+      : this(
+          gkeCluster: _json.containsKey('gkeCluster')
+              ? GkeCluster.fromJson(
+                  _json['gkeCluster'] as core.Map<core.String, core.dynamic>)
+              : null,
+          kubernetesMetadata: _json.containsKey('kubernetesMetadata')
+              ? KubernetesMetadata.fromJson(_json['kubernetesMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gkeCluster != null) 'gkeCluster': gkeCluster!.toJson(),
@@ -3435,14 +3653,18 @@ class MembershipFeatureSpec {
   /// Config Management-specific spec.
   ConfigManagementMembershipSpec? configmanagement;
 
-  MembershipFeatureSpec();
+  MembershipFeatureSpec({
+    this.configmanagement,
+  });
 
-  MembershipFeatureSpec.fromJson(core.Map _json) {
-    if (_json.containsKey('configmanagement')) {
-      configmanagement = ConfigManagementMembershipSpec.fromJson(
-          _json['configmanagement'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  MembershipFeatureSpec.fromJson(core.Map _json)
+      : this(
+          configmanagement: _json.containsKey('configmanagement')
+              ? ConfigManagementMembershipSpec.fromJson(
+                  _json['configmanagement']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (configmanagement != null)
@@ -3459,18 +3681,23 @@ class MembershipFeatureState {
   /// The high-level state of this Feature for a single membership.
   FeatureState? state;
 
-  MembershipFeatureState();
+  MembershipFeatureState({
+    this.configmanagement,
+    this.state,
+  });
 
-  MembershipFeatureState.fromJson(core.Map _json) {
-    if (_json.containsKey('configmanagement')) {
-      configmanagement = ConfigManagementMembershipState.fromJson(
-          _json['configmanagement'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('state')) {
-      state = FeatureState.fromJson(
-          _json['state'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  MembershipFeatureState.fromJson(core.Map _json)
+      : this(
+          configmanagement: _json.containsKey('configmanagement')
+              ? ConfigManagementMembershipState.fromJson(
+                  _json['configmanagement']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          state: _json.containsKey('state')
+              ? FeatureState.fromJson(
+                  _json['state'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (configmanagement != null)
@@ -3493,13 +3720,14 @@ class MembershipState {
   /// - "SERVICE_UPDATING" : The Membership is being updated by the Hub Service.
   core.String? code;
 
-  MembershipState();
+  MembershipState({
+    this.code,
+  });
 
-  MembershipState.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.String;
-    }
-  }
+  MembershipState.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -3514,13 +3742,16 @@ class MultiClusterIngressFeatureSpec {
   /// Example: `projects/foo-proj/locations/global/memberships/bar`
   core.String? configMembership;
 
-  MultiClusterIngressFeatureSpec();
+  MultiClusterIngressFeatureSpec({
+    this.configMembership,
+  });
 
-  MultiClusterIngressFeatureSpec.fromJson(core.Map _json) {
-    if (_json.containsKey('configMembership')) {
-      configMembership = _json['configMembership'] as core.String;
-    }
-  }
+  MultiClusterIngressFeatureSpec.fromJson(core.Map _json)
+      : this(
+          configMembership: _json.containsKey('configMembership')
+              ? _json['configMembership'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (configMembership != null) 'configMembership': configMembership!,
@@ -3570,36 +3801,39 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object>? response;
 
-  Operation();
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
-  Operation.fromJson(core.Map _json) {
-    if (_json.containsKey('done')) {
-      done = _json['done'] as core.bool;
-    }
-    if (_json.containsKey('error')) {
-      error = GoogleRpcStatus.fromJson(
-          _json['error'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('response')) {
-      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-  }
+  Operation.fromJson(core.Map _json)
+      : this(
+          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
+          error: _json.containsKey('error')
+              ? GoogleRpcStatus.fromJson(
+                  _json['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          response: _json.containsKey('response')
+              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
@@ -3651,31 +3885,38 @@ class OperationMetadata {
   /// Output only.
   core.String? verb;
 
-  OperationMetadata();
+  OperationMetadata({
+    this.apiVersion,
+    this.cancelRequested,
+    this.createTime,
+    this.endTime,
+    this.statusDetail,
+    this.target,
+    this.verb,
+  });
 
-  OperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('apiVersion')) {
-      apiVersion = _json['apiVersion'] as core.String;
-    }
-    if (_json.containsKey('cancelRequested')) {
-      cancelRequested = _json['cancelRequested'] as core.bool;
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('statusDetail')) {
-      statusDetail = _json['statusDetail'] as core.String;
-    }
-    if (_json.containsKey('target')) {
-      target = _json['target'] as core.String;
-    }
-    if (_json.containsKey('verb')) {
-      verb = _json['verb'] as core.String;
-    }
-  }
+  OperationMetadata.fromJson(core.Map _json)
+      : this(
+          apiVersion: _json.containsKey('apiVersion')
+              ? _json['apiVersion'] as core.String
+              : null,
+          cancelRequested: _json.containsKey('cancelRequested')
+              ? _json['cancelRequested'] as core.bool
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          statusDetail: _json.containsKey('statusDetail')
+              ? _json['statusDetail'] as core.String
+              : null,
+          target: _json.containsKey('target')
+              ? _json['target'] as core.String
+              : null,
+          verb: _json.containsKey('verb') ? _json['verb'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiVersion != null) 'apiVersion': apiVersion!,
@@ -3769,28 +4010,32 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy();
+  Policy({
+    this.auditConfigs,
+    this.bindings,
+    this.etag,
+    this.version,
+  });
 
-  Policy.fromJson(core.Map _json) {
-    if (_json.containsKey('auditConfigs')) {
-      auditConfigs = (_json['auditConfigs'] as core.List)
-          .map<AuditConfig>((value) => AuditConfig.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('bindings')) {
-      bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) =>
-              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.int;
-    }
-  }
+  Policy.fromJson(core.Map _json)
+      : this(
+          auditConfigs: _json.containsKey('auditConfigs')
+              ? (_json['auditConfigs'] as core.List)
+                  .map<AuditConfig>((value) => AuditConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          bindings: _json.containsKey('bindings')
+              ? (_json['bindings'] as core.List)
+                  .map<Binding>((value) => Binding.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (auditConfigs != null)
@@ -3817,17 +4062,21 @@ class SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  SetIamPolicyRequest();
+  SetIamPolicyRequest({
+    this.policy,
+    this.updateMask,
+  });
 
-  SetIamPolicyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(
-          _json['policy'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'] as core.String;
-    }
-  }
+  SetIamPolicyRequest.fromJson(core.Map _json)
+      : this(
+          policy: _json.containsKey('policy')
+              ? Policy.fromJson(
+                  _json['policy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: _json.containsKey('updateMask')
+              ? _json['updateMask'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (policy != null) 'policy': policy!.toJson(),
@@ -3844,15 +4093,18 @@ class TestIamPermissionsRequest {
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String>? permissions;
 
-  TestIamPermissionsRequest();
+  TestIamPermissionsRequest({
+    this.permissions,
+  });
 
-  TestIamPermissionsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  TestIamPermissionsRequest.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
@@ -3865,15 +4117,18 @@ class TestIamPermissionsResponse {
   /// allowed.
   core.List<core.String>? permissions;
 
-  TestIamPermissionsResponse();
+  TestIamPermissionsResponse({
+    this.permissions,
+  });
 
-  TestIamPermissionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  TestIamPermissionsResponse.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
@@ -3889,16 +4144,18 @@ class TypeMeta {
   /// Kind of the resource (e.g. Deployment).
   core.String? kind;
 
-  TypeMeta();
+  TypeMeta({
+    this.apiVersion,
+    this.kind,
+  });
 
-  TypeMeta.fromJson(core.Map _json) {
-    if (_json.containsKey('apiVersion')) {
-      apiVersion = _json['apiVersion'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-  }
+  TypeMeta.fromJson(core.Map _json)
+      : this(
+          apiVersion: _json.containsKey('apiVersion')
+              ? _json['apiVersion'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiVersion != null) 'apiVersion': apiVersion!,

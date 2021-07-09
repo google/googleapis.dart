@@ -3661,28 +3661,32 @@ class Account {
   /// Auto generated link to the tag manager UI
   core.String? tagManagerUrl;
 
-  Account();
+  Account({
+    this.accountId,
+    this.fingerprint,
+    this.name,
+    this.path,
+    this.shareData,
+    this.tagManagerUrl,
+  });
 
-  Account.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('path')) {
-      path = _json['path'] as core.String;
-    }
-    if (_json.containsKey('shareData')) {
-      shareData = _json['shareData'] as core.bool;
-    }
-    if (_json.containsKey('tagManagerUrl')) {
-      tagManagerUrl = _json['tagManagerUrl'] as core.String;
-    }
-  }
+  Account.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          fingerprint: _json.containsKey('fingerprint')
+              ? _json['fingerprint'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+          shareData: _json.containsKey('shareData')
+              ? _json['shareData'] as core.bool
+              : null,
+          tagManagerUrl: _json.containsKey('tagManagerUrl')
+              ? _json['tagManagerUrl'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -3708,13 +3712,16 @@ class AccountAccess {
   /// - "admin"
   core.String? permission;
 
-  AccountAccess();
+  AccountAccess({
+    this.permission,
+  });
 
-  AccountAccess.fromJson(core.Map _json) {
-    if (_json.containsKey('permission')) {
-      permission = _json['permission'] as core.String;
-    }
-  }
+  AccountAccess.fromJson(core.Map _json)
+      : this(
+          permission: _json.containsKey('permission')
+              ? _json['permission'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permission != null) 'permission': permission!,
@@ -3861,28 +3868,30 @@ class BuiltInVariable {
   /// GTM Workspace ID.
   core.String? workspaceId;
 
-  BuiltInVariable();
+  BuiltInVariable({
+    this.accountId,
+    this.containerId,
+    this.name,
+    this.path,
+    this.type,
+    this.workspaceId,
+  });
 
-  BuiltInVariable.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('path')) {
-      path = _json['path'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('workspaceId')) {
-      workspaceId = _json['workspaceId'] as core.String;
-    }
-  }
+  BuiltInVariable.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          containerId: _json.containsKey('containerId')
+              ? _json['containerId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          workspaceId: _json.containsKey('workspaceId')
+              ? _json['workspaceId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -3951,52 +3960,60 @@ class Client {
   /// GTM Workspace ID.
   core.String? workspaceId;
 
-  Client();
+  Client({
+    this.accountId,
+    this.clientId,
+    this.containerId,
+    this.fingerprint,
+    this.name,
+    this.notes,
+    this.parameter,
+    this.parentFolderId,
+    this.path,
+    this.priority,
+    this.tagManagerUrl,
+    this.type,
+    this.workspaceId,
+  });
 
-  Client.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('clientId')) {
-      clientId = _json['clientId'] as core.String;
-    }
-    if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'] as core.String;
-    }
-    if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('notes')) {
-      notes = _json['notes'] as core.String;
-    }
-    if (_json.containsKey('parameter')) {
-      parameter = (_json['parameter'] as core.List)
-          .map<Parameter>((value) =>
-              Parameter.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('parentFolderId')) {
-      parentFolderId = _json['parentFolderId'] as core.String;
-    }
-    if (_json.containsKey('path')) {
-      path = _json['path'] as core.String;
-    }
-    if (_json.containsKey('priority')) {
-      priority = _json['priority'] as core.int;
-    }
-    if (_json.containsKey('tagManagerUrl')) {
-      tagManagerUrl = _json['tagManagerUrl'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('workspaceId')) {
-      workspaceId = _json['workspaceId'] as core.String;
-    }
-  }
+  Client.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          clientId: _json.containsKey('clientId')
+              ? _json['clientId'] as core.String
+              : null,
+          containerId: _json.containsKey('containerId')
+              ? _json['containerId'] as core.String
+              : null,
+          fingerprint: _json.containsKey('fingerprint')
+              ? _json['fingerprint'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          notes:
+              _json.containsKey('notes') ? _json['notes'] as core.String : null,
+          parameter: _json.containsKey('parameter')
+              ? (_json['parameter'] as core.List)
+                  .map<Parameter>((value) => Parameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          parentFolderId: _json.containsKey('parentFolderId')
+              ? _json['parentFolderId'] as core.String
+              : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+          priority: _json.containsKey('priority')
+              ? _json['priority'] as core.int
+              : null,
+          tagManagerUrl: _json.containsKey('tagManagerUrl')
+              ? _json['tagManagerUrl'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          workspaceId: _json.containsKey('workspaceId')
+              ? _json['workspaceId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -4051,19 +4068,21 @@ class Condition {
   /// forget to also define a matching PredicateType (in condition.proto).
   core.String? type;
 
-  Condition();
+  Condition({
+    this.parameter,
+    this.type,
+  });
 
-  Condition.fromJson(core.Map _json) {
-    if (_json.containsKey('parameter')) {
-      parameter = (_json['parameter'] as core.List)
-          .map<Parameter>((value) =>
-              Parameter.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  Condition.fromJson(core.Map _json)
+      : this(
+          parameter: _json.containsKey('parameter')
+              ? (_json['parameter'] as core.List)
+                  .map<Parameter>((value) => Parameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (parameter != null)
@@ -4120,44 +4139,51 @@ class Container {
   /// tagmanager.accounts.containers.update
   core.List<core.String>? usageContext;
 
-  Container();
+  Container({
+    this.accountId,
+    this.containerId,
+    this.domainName,
+    this.fingerprint,
+    this.name,
+    this.notes,
+    this.path,
+    this.publicId,
+    this.tagManagerUrl,
+    this.usageContext,
+  });
 
-  Container.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'] as core.String;
-    }
-    if (_json.containsKey('domainName')) {
-      domainName = (_json['domainName'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('notes')) {
-      notes = _json['notes'] as core.String;
-    }
-    if (_json.containsKey('path')) {
-      path = _json['path'] as core.String;
-    }
-    if (_json.containsKey('publicId')) {
-      publicId = _json['publicId'] as core.String;
-    }
-    if (_json.containsKey('tagManagerUrl')) {
-      tagManagerUrl = _json['tagManagerUrl'] as core.String;
-    }
-    if (_json.containsKey('usageContext')) {
-      usageContext = (_json['usageContext'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  Container.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          containerId: _json.containsKey('containerId')
+              ? _json['containerId'] as core.String
+              : null,
+          domainName: _json.containsKey('domainName')
+              ? (_json['domainName'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          fingerprint: _json.containsKey('fingerprint')
+              ? _json['fingerprint'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          notes:
+              _json.containsKey('notes') ? _json['notes'] as core.String : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+          publicId: _json.containsKey('publicId')
+              ? _json['publicId'] as core.String
+              : null,
+          tagManagerUrl: _json.containsKey('tagManagerUrl')
+              ? _json['tagManagerUrl'] as core.String
+              : null,
+          usageContext: _json.containsKey('usageContext')
+              ? (_json['usageContext'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -4194,16 +4220,20 @@ class ContainerAccess {
   /// - "publish"
   core.String? permission;
 
-  ContainerAccess();
+  ContainerAccess({
+    this.containerId,
+    this.permission,
+  });
 
-  ContainerAccess.fromJson(core.Map _json) {
-    if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'] as core.String;
-    }
-    if (_json.containsKey('permission')) {
-      permission = _json['permission'] as core.String;
-    }
-  }
+  ContainerAccess.fromJson(core.Map _json)
+      : this(
+          containerId: _json.containsKey('containerId')
+              ? _json['containerId'] as core.String
+              : null,
+          permission: _json.containsKey('permission')
+              ? _json['permission'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (containerId != null) 'containerId': containerId!,
@@ -4273,89 +4303,105 @@ class ContainerVersion {
   /// The zones in the container that this version was taken from.
   core.List<Zone>? zone;
 
-  ContainerVersion();
+  ContainerVersion({
+    this.accountId,
+    this.builtInVariable,
+    this.client,
+    this.container,
+    this.containerId,
+    this.containerVersionId,
+    this.customTemplate,
+    this.deleted,
+    this.description,
+    this.fingerprint,
+    this.folder,
+    this.name,
+    this.path,
+    this.tag,
+    this.tagManagerUrl,
+    this.trigger,
+    this.variable,
+    this.zone,
+  });
 
-  ContainerVersion.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('builtInVariable')) {
-      builtInVariable = (_json['builtInVariable'] as core.List)
-          .map<BuiltInVariable>((value) => BuiltInVariable.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('client')) {
-      client = (_json['client'] as core.List)
-          .map<Client>((value) =>
-              Client.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('container')) {
-      container = Container.fromJson(
-          _json['container'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'] as core.String;
-    }
-    if (_json.containsKey('containerVersionId')) {
-      containerVersionId = _json['containerVersionId'] as core.String;
-    }
-    if (_json.containsKey('customTemplate')) {
-      customTemplate = (_json['customTemplate'] as core.List)
-          .map<CustomTemplate>((value) => CustomTemplate.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('deleted')) {
-      deleted = _json['deleted'] as core.bool;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'] as core.String;
-    }
-    if (_json.containsKey('folder')) {
-      folder = (_json['folder'] as core.List)
-          .map<Folder>((value) =>
-              Folder.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('path')) {
-      path = _json['path'] as core.String;
-    }
-    if (_json.containsKey('tag')) {
-      tag = (_json['tag'] as core.List)
-          .map<Tag>((value) =>
-              Tag.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('tagManagerUrl')) {
-      tagManagerUrl = _json['tagManagerUrl'] as core.String;
-    }
-    if (_json.containsKey('trigger')) {
-      trigger = (_json['trigger'] as core.List)
-          .map<Trigger>((value) =>
-              Trigger.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('variable')) {
-      variable = (_json['variable'] as core.List)
-          .map<Variable>((value) =>
-              Variable.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('zone')) {
-      zone = (_json['zone'] as core.List)
-          .map<Zone>((value) =>
-              Zone.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ContainerVersion.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          builtInVariable: _json.containsKey('builtInVariable')
+              ? (_json['builtInVariable'] as core.List)
+                  .map<BuiltInVariable>((value) => BuiltInVariable.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          client: _json.containsKey('client')
+              ? (_json['client'] as core.List)
+                  .map<Client>((value) => Client.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          container: _json.containsKey('container')
+              ? Container.fromJson(
+                  _json['container'] as core.Map<core.String, core.dynamic>)
+              : null,
+          containerId: _json.containsKey('containerId')
+              ? _json['containerId'] as core.String
+              : null,
+          containerVersionId: _json.containsKey('containerVersionId')
+              ? _json['containerVersionId'] as core.String
+              : null,
+          customTemplate: _json.containsKey('customTemplate')
+              ? (_json['customTemplate'] as core.List)
+                  .map<CustomTemplate>((value) => CustomTemplate.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          deleted: _json.containsKey('deleted')
+              ? _json['deleted'] as core.bool
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          fingerprint: _json.containsKey('fingerprint')
+              ? _json['fingerprint'] as core.String
+              : null,
+          folder: _json.containsKey('folder')
+              ? (_json['folder'] as core.List)
+                  .map<Folder>((value) => Folder.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+          tag: _json.containsKey('tag')
+              ? (_json['tag'] as core.List)
+                  .map<Tag>((value) => Tag.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          tagManagerUrl: _json.containsKey('tagManagerUrl')
+              ? _json['tagManagerUrl'] as core.String
+              : null,
+          trigger: _json.containsKey('trigger')
+              ? (_json['trigger'] as core.List)
+                  .map<Trigger>((value) => Trigger.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          variable: _json.containsKey('variable')
+              ? (_json['variable'] as core.List)
+                  .map<Variable>((value) => Variable.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          zone: _json.containsKey('zone')
+              ? (_json['zone'] as core.List)
+                  .map<Zone>((value) => Zone.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -4432,52 +4478,64 @@ class ContainerVersionHeader {
   /// GTM Container Versions's API relative path.
   core.String? path;
 
-  ContainerVersionHeader();
+  ContainerVersionHeader({
+    this.accountId,
+    this.containerId,
+    this.containerVersionId,
+    this.deleted,
+    this.name,
+    this.numClients,
+    this.numCustomTemplates,
+    this.numMacros,
+    this.numRules,
+    this.numTags,
+    this.numTriggers,
+    this.numVariables,
+    this.numZones,
+    this.path,
+  });
 
-  ContainerVersionHeader.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'] as core.String;
-    }
-    if (_json.containsKey('containerVersionId')) {
-      containerVersionId = _json['containerVersionId'] as core.String;
-    }
-    if (_json.containsKey('deleted')) {
-      deleted = _json['deleted'] as core.bool;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('numClients')) {
-      numClients = _json['numClients'] as core.String;
-    }
-    if (_json.containsKey('numCustomTemplates')) {
-      numCustomTemplates = _json['numCustomTemplates'] as core.String;
-    }
-    if (_json.containsKey('numMacros')) {
-      numMacros = _json['numMacros'] as core.String;
-    }
-    if (_json.containsKey('numRules')) {
-      numRules = _json['numRules'] as core.String;
-    }
-    if (_json.containsKey('numTags')) {
-      numTags = _json['numTags'] as core.String;
-    }
-    if (_json.containsKey('numTriggers')) {
-      numTriggers = _json['numTriggers'] as core.String;
-    }
-    if (_json.containsKey('numVariables')) {
-      numVariables = _json['numVariables'] as core.String;
-    }
-    if (_json.containsKey('numZones')) {
-      numZones = _json['numZones'] as core.String;
-    }
-    if (_json.containsKey('path')) {
-      path = _json['path'] as core.String;
-    }
-  }
+  ContainerVersionHeader.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          containerId: _json.containsKey('containerId')
+              ? _json['containerId'] as core.String
+              : null,
+          containerVersionId: _json.containsKey('containerVersionId')
+              ? _json['containerVersionId'] as core.String
+              : null,
+          deleted: _json.containsKey('deleted')
+              ? _json['deleted'] as core.bool
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          numClients: _json.containsKey('numClients')
+              ? _json['numClients'] as core.String
+              : null,
+          numCustomTemplates: _json.containsKey('numCustomTemplates')
+              ? _json['numCustomTemplates'] as core.String
+              : null,
+          numMacros: _json.containsKey('numMacros')
+              ? _json['numMacros'] as core.String
+              : null,
+          numRules: _json.containsKey('numRules')
+              ? _json['numRules'] as core.String
+              : null,
+          numTags: _json.containsKey('numTags')
+              ? _json['numTags'] as core.String
+              : null,
+          numTriggers: _json.containsKey('numTriggers')
+              ? _json['numTriggers'] as core.String
+              : null,
+          numVariables: _json.containsKey('numVariables')
+              ? _json['numVariables'] as core.String
+              : null,
+          numZones: _json.containsKey('numZones')
+              ? _json['numZones'] as core.String
+              : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -4503,16 +4561,19 @@ class CreateBuiltInVariableResponse {
   /// List of created built-in variables.
   core.List<BuiltInVariable>? builtInVariable;
 
-  CreateBuiltInVariableResponse();
+  CreateBuiltInVariableResponse({
+    this.builtInVariable,
+  });
 
-  CreateBuiltInVariableResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('builtInVariable')) {
-      builtInVariable = (_json['builtInVariable'] as core.List)
-          .map<BuiltInVariable>((value) => BuiltInVariable.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  CreateBuiltInVariableResponse.fromJson(core.Map _json)
+      : this(
+          builtInVariable: _json.containsKey('builtInVariable')
+              ? (_json['builtInVariable'] as core.List)
+                  .map<BuiltInVariable>((value) => BuiltInVariable.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (builtInVariable != null)
@@ -4529,16 +4590,17 @@ class CreateContainerVersionRequestVersionOptions {
   /// The notes of the container version to be created.
   core.String? notes;
 
-  CreateContainerVersionRequestVersionOptions();
+  CreateContainerVersionRequestVersionOptions({
+    this.name,
+    this.notes,
+  });
 
-  CreateContainerVersionRequestVersionOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('notes')) {
-      notes = _json['notes'] as core.String;
-    }
-  }
+  CreateContainerVersionRequestVersionOptions.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          notes:
+              _json.containsKey('notes') ? _json['notes'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -4564,24 +4626,30 @@ class CreateContainerVersionResponse {
   /// container version.
   SyncStatus? syncStatus;
 
-  CreateContainerVersionResponse();
+  CreateContainerVersionResponse({
+    this.compilerError,
+    this.containerVersion,
+    this.newWorkspacePath,
+    this.syncStatus,
+  });
 
-  CreateContainerVersionResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('compilerError')) {
-      compilerError = _json['compilerError'] as core.bool;
-    }
-    if (_json.containsKey('containerVersion')) {
-      containerVersion = ContainerVersion.fromJson(
-          _json['containerVersion'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('newWorkspacePath')) {
-      newWorkspacePath = _json['newWorkspacePath'] as core.String;
-    }
-    if (_json.containsKey('syncStatus')) {
-      syncStatus = SyncStatus.fromJson(
-          _json['syncStatus'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  CreateContainerVersionResponse.fromJson(core.Map _json)
+      : this(
+          compilerError: _json.containsKey('compilerError')
+              ? _json['compilerError'] as core.bool
+              : null,
+          containerVersion: _json.containsKey('containerVersion')
+              ? ContainerVersion.fromJson(_json['containerVersion']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          newWorkspacePath: _json.containsKey('newWorkspacePath')
+              ? _json['newWorkspacePath'] as core.String
+              : null,
+          syncStatus: _json.containsKey('syncStatus')
+              ? SyncStatus.fromJson(
+                  _json['syncStatus'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (compilerError != null) 'compilerError': compilerError!,
@@ -4626,41 +4694,49 @@ class CustomTemplate {
   /// GTM Workspace ID.
   core.String? workspaceId;
 
-  CustomTemplate();
+  CustomTemplate({
+    this.accountId,
+    this.containerId,
+    this.fingerprint,
+    this.galleryReference,
+    this.name,
+    this.path,
+    this.tagManagerUrl,
+    this.templateData,
+    this.templateId,
+    this.workspaceId,
+  });
 
-  CustomTemplate.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'] as core.String;
-    }
-    if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'] as core.String;
-    }
-    if (_json.containsKey('galleryReference')) {
-      galleryReference = GalleryReference.fromJson(
-          _json['galleryReference'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('path')) {
-      path = _json['path'] as core.String;
-    }
-    if (_json.containsKey('tagManagerUrl')) {
-      tagManagerUrl = _json['tagManagerUrl'] as core.String;
-    }
-    if (_json.containsKey('templateData')) {
-      templateData = _json['templateData'] as core.String;
-    }
-    if (_json.containsKey('templateId')) {
-      templateId = _json['templateId'] as core.String;
-    }
-    if (_json.containsKey('workspaceId')) {
-      workspaceId = _json['workspaceId'] as core.String;
-    }
-  }
+  CustomTemplate.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          containerId: _json.containsKey('containerId')
+              ? _json['containerId'] as core.String
+              : null,
+          fingerprint: _json.containsKey('fingerprint')
+              ? _json['fingerprint'] as core.String
+              : null,
+          galleryReference: _json.containsKey('galleryReference')
+              ? GalleryReference.fromJson(_json['galleryReference']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+          tagManagerUrl: _json.containsKey('tagManagerUrl')
+              ? _json['tagManagerUrl'] as core.String
+              : null,
+          templateData: _json.containsKey('templateData')
+              ? _json['templateData'] as core.String
+              : null,
+          templateId: _json.containsKey('templateId')
+              ? _json['templateId'] as core.String
+              : null,
+          workspaceId: _json.containsKey('workspaceId')
+              ? _json['workspaceId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -4704,32 +4780,41 @@ class Entity {
   /// The variable being represented by the entity.
   Variable? variable;
 
-  Entity();
+  Entity({
+    this.changeStatus,
+    this.client,
+    this.folder,
+    this.tag,
+    this.trigger,
+    this.variable,
+  });
 
-  Entity.fromJson(core.Map _json) {
-    if (_json.containsKey('changeStatus')) {
-      changeStatus = _json['changeStatus'] as core.String;
-    }
-    if (_json.containsKey('client')) {
-      client = Client.fromJson(
-          _json['client'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('folder')) {
-      folder = Folder.fromJson(
-          _json['folder'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('tag')) {
-      tag = Tag.fromJson(_json['tag'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('trigger')) {
-      trigger = Trigger.fromJson(
-          _json['trigger'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('variable')) {
-      variable = Variable.fromJson(
-          _json['variable'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Entity.fromJson(core.Map _json)
+      : this(
+          changeStatus: _json.containsKey('changeStatus')
+              ? _json['changeStatus'] as core.String
+              : null,
+          client: _json.containsKey('client')
+              ? Client.fromJson(
+                  _json['client'] as core.Map<core.String, core.dynamic>)
+              : null,
+          folder: _json.containsKey('folder')
+              ? Folder.fromJson(
+                  _json['folder'] as core.Map<core.String, core.dynamic>)
+              : null,
+          tag: _json.containsKey('tag')
+              ? Tag.fromJson(
+                  _json['tag'] as core.Map<core.String, core.dynamic>)
+              : null,
+          trigger: _json.containsKey('trigger')
+              ? Trigger.fromJson(
+                  _json['trigger'] as core.Map<core.String, core.dynamic>)
+              : null,
+          variable: _json.containsKey('variable')
+              ? Variable.fromJson(
+                  _json['variable'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (changeStatus != null) 'changeStatus': changeStatus!,
@@ -4814,55 +4899,64 @@ class Environment {
   /// Represents a link to a quick preview of a workspace.
   core.String? workspaceId;
 
-  Environment();
+  Environment({
+    this.accountId,
+    this.authorizationCode,
+    this.authorizationTimestamp,
+    this.containerId,
+    this.containerVersionId,
+    this.description,
+    this.enableDebug,
+    this.environmentId,
+    this.fingerprint,
+    this.name,
+    this.path,
+    this.tagManagerUrl,
+    this.type,
+    this.url,
+    this.workspaceId,
+  });
 
-  Environment.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('authorizationCode')) {
-      authorizationCode = _json['authorizationCode'] as core.String;
-    }
-    if (_json.containsKey('authorizationTimestamp')) {
-      authorizationTimestamp = _json['authorizationTimestamp'] as core.String;
-    }
-    if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'] as core.String;
-    }
-    if (_json.containsKey('containerVersionId')) {
-      containerVersionId = _json['containerVersionId'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('enableDebug')) {
-      enableDebug = _json['enableDebug'] as core.bool;
-    }
-    if (_json.containsKey('environmentId')) {
-      environmentId = _json['environmentId'] as core.String;
-    }
-    if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('path')) {
-      path = _json['path'] as core.String;
-    }
-    if (_json.containsKey('tagManagerUrl')) {
-      tagManagerUrl = _json['tagManagerUrl'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-    if (_json.containsKey('workspaceId')) {
-      workspaceId = _json['workspaceId'] as core.String;
-    }
-  }
+  Environment.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          authorizationCode: _json.containsKey('authorizationCode')
+              ? _json['authorizationCode'] as core.String
+              : null,
+          authorizationTimestamp: _json.containsKey('authorizationTimestamp')
+              ? _json['authorizationTimestamp'] as core.String
+              : null,
+          containerId: _json.containsKey('containerId')
+              ? _json['containerId'] as core.String
+              : null,
+          containerVersionId: _json.containsKey('containerVersionId')
+              ? _json['containerVersionId'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          enableDebug: _json.containsKey('enableDebug')
+              ? _json['enableDebug'] as core.bool
+              : null,
+          environmentId: _json.containsKey('environmentId')
+              ? _json['environmentId'] as core.String
+              : null,
+          fingerprint: _json.containsKey('fingerprint')
+              ? _json['fingerprint'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+          tagManagerUrl: _json.containsKey('tagManagerUrl')
+              ? _json['tagManagerUrl'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          workspaceId: _json.containsKey('workspaceId')
+              ? _json['workspaceId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -4922,37 +5016,43 @@ class Folder {
   /// GTM Workspace ID.
   core.String? workspaceId;
 
-  Folder();
+  Folder({
+    this.accountId,
+    this.containerId,
+    this.fingerprint,
+    this.folderId,
+    this.name,
+    this.notes,
+    this.path,
+    this.tagManagerUrl,
+    this.workspaceId,
+  });
 
-  Folder.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'] as core.String;
-    }
-    if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'] as core.String;
-    }
-    if (_json.containsKey('folderId')) {
-      folderId = _json['folderId'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('notes')) {
-      notes = _json['notes'] as core.String;
-    }
-    if (_json.containsKey('path')) {
-      path = _json['path'] as core.String;
-    }
-    if (_json.containsKey('tagManagerUrl')) {
-      tagManagerUrl = _json['tagManagerUrl'] as core.String;
-    }
-    if (_json.containsKey('workspaceId')) {
-      workspaceId = _json['workspaceId'] as core.String;
-    }
-  }
+  Folder.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          containerId: _json.containsKey('containerId')
+              ? _json['containerId'] as core.String
+              : null,
+          fingerprint: _json.containsKey('fingerprint')
+              ? _json['fingerprint'] as core.String
+              : null,
+          folderId: _json.containsKey('folderId')
+              ? _json['folderId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          notes:
+              _json.containsKey('notes') ? _json['notes'] as core.String : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+          tagManagerUrl: _json.containsKey('tagManagerUrl')
+              ? _json['tagManagerUrl'] as core.String
+              : null,
+          workspaceId: _json.containsKey('workspaceId')
+              ? _json['workspaceId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -4981,31 +5081,37 @@ class FolderEntities {
   /// The list of variables inside the folder.
   core.List<Variable>? variable;
 
-  FolderEntities();
+  FolderEntities({
+    this.nextPageToken,
+    this.tag,
+    this.trigger,
+    this.variable,
+  });
 
-  FolderEntities.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('tag')) {
-      tag = (_json['tag'] as core.List)
-          .map<Tag>((value) =>
-              Tag.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('trigger')) {
-      trigger = (_json['trigger'] as core.List)
-          .map<Trigger>((value) =>
-              Trigger.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('variable')) {
-      variable = (_json['variable'] as core.List)
-          .map<Variable>((value) =>
-              Variable.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  FolderEntities.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          tag: _json.containsKey('tag')
+              ? (_json['tag'] as core.List)
+                  .map<Tag>((value) => Tag.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          trigger: _json.containsKey('trigger')
+              ? (_json['trigger'] as core.List)
+                  .map<Trigger>((value) => Trigger.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          variable: _json.containsKey('variable')
+              ? (_json['variable'] as core.List)
+                  .map<Variable>((value) => Variable.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -5042,28 +5148,33 @@ class GalleryReference {
   /// The version of the community gallery template.
   core.String? version;
 
-  GalleryReference();
+  GalleryReference({
+    this.host,
+    this.isModified,
+    this.owner,
+    this.repository,
+    this.signature,
+    this.version,
+  });
 
-  GalleryReference.fromJson(core.Map _json) {
-    if (_json.containsKey('host')) {
-      host = _json['host'] as core.String;
-    }
-    if (_json.containsKey('isModified')) {
-      isModified = _json['isModified'] as core.bool;
-    }
-    if (_json.containsKey('owner')) {
-      owner = _json['owner'] as core.String;
-    }
-    if (_json.containsKey('repository')) {
-      repository = _json['repository'] as core.String;
-    }
-    if (_json.containsKey('signature')) {
-      signature = _json['signature'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.String;
-    }
-  }
+  GalleryReference.fromJson(core.Map _json)
+      : this(
+          host: _json.containsKey('host') ? _json['host'] as core.String : null,
+          isModified: _json.containsKey('isModified')
+              ? _json['isModified'] as core.bool
+              : null,
+          owner:
+              _json.containsKey('owner') ? _json['owner'] as core.String : null,
+          repository: _json.containsKey('repository')
+              ? _json['repository'] as core.String
+              : null,
+          signature: _json.containsKey('signature')
+              ? _json['signature'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (host != null) 'host': host!,
@@ -5084,22 +5195,26 @@ class GetWorkspaceStatusResponse {
   /// Entities that have been changed in the workspace.
   core.List<Entity>? workspaceChange;
 
-  GetWorkspaceStatusResponse();
+  GetWorkspaceStatusResponse({
+    this.mergeConflict,
+    this.workspaceChange,
+  });
 
-  GetWorkspaceStatusResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('mergeConflict')) {
-      mergeConflict = (_json['mergeConflict'] as core.List)
-          .map<MergeConflict>((value) => MergeConflict.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('workspaceChange')) {
-      workspaceChange = (_json['workspaceChange'] as core.List)
-          .map<Entity>((value) =>
-              Entity.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GetWorkspaceStatusResponse.fromJson(core.Map _json)
+      : this(
+          mergeConflict: _json.containsKey('mergeConflict')
+              ? (_json['mergeConflict'] as core.List)
+                  .map<MergeConflict>((value) => MergeConflict.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          workspaceChange: _json.containsKey('workspaceChange')
+              ? (_json['workspaceChange'] as core.List)
+                  .map<Entity>((value) => Entity.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mergeConflict != null)
@@ -5119,19 +5234,23 @@ class ListAccountsResponse {
   /// Continuation token for fetching the next page of results.
   core.String? nextPageToken;
 
-  ListAccountsResponse();
+  ListAccountsResponse({
+    this.account,
+    this.nextPageToken,
+  });
 
-  ListAccountsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('account')) {
-      account = (_json['account'] as core.List)
-          .map<Account>((value) =>
-              Account.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListAccountsResponse.fromJson(core.Map _json)
+      : this(
+          account: _json.containsKey('account')
+              ? (_json['account'] as core.List)
+                  .map<Account>((value) => Account.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (account != null)
@@ -5148,20 +5267,24 @@ class ListContainerVersionsResponse {
   /// Continuation token for fetching the next page of results.
   core.String? nextPageToken;
 
-  ListContainerVersionsResponse();
+  ListContainerVersionsResponse({
+    this.containerVersionHeader,
+    this.nextPageToken,
+  });
 
-  ListContainerVersionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('containerVersionHeader')) {
-      containerVersionHeader = (_json['containerVersionHeader'] as core.List)
-          .map<ContainerVersionHeader>((value) =>
-              ContainerVersionHeader.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListContainerVersionsResponse.fromJson(core.Map _json)
+      : this(
+          containerVersionHeader: _json.containsKey('containerVersionHeader')
+              ? (_json['containerVersionHeader'] as core.List)
+                  .map<ContainerVersionHeader>((value) =>
+                      ContainerVersionHeader.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (containerVersionHeader != null)
@@ -5179,19 +5302,23 @@ class ListContainersResponse {
   /// Continuation token for fetching the next page of results.
   core.String? nextPageToken;
 
-  ListContainersResponse();
+  ListContainersResponse({
+    this.container,
+    this.nextPageToken,
+  });
 
-  ListContainersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('container')) {
-      container = (_json['container'] as core.List)
-          .map<Container>((value) =>
-              Container.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListContainersResponse.fromJson(core.Map _json)
+      : this(
+          container: _json.containsKey('container')
+              ? (_json['container'] as core.List)
+                  .map<Container>((value) => Container.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (container != null)
@@ -5208,19 +5335,23 @@ class ListEnabledBuiltInVariablesResponse {
   /// Continuation token for fetching the next page of results.
   core.String? nextPageToken;
 
-  ListEnabledBuiltInVariablesResponse();
+  ListEnabledBuiltInVariablesResponse({
+    this.builtInVariable,
+    this.nextPageToken,
+  });
 
-  ListEnabledBuiltInVariablesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('builtInVariable')) {
-      builtInVariable = (_json['builtInVariable'] as core.List)
-          .map<BuiltInVariable>((value) => BuiltInVariable.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListEnabledBuiltInVariablesResponse.fromJson(core.Map _json)
+      : this(
+          builtInVariable: _json.containsKey('builtInVariable')
+              ? (_json['builtInVariable'] as core.List)
+                  .map<BuiltInVariable>((value) => BuiltInVariable.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (builtInVariable != null)
@@ -5238,19 +5369,23 @@ class ListEnvironmentsResponse {
   /// Continuation token for fetching the next page of results.
   core.String? nextPageToken;
 
-  ListEnvironmentsResponse();
+  ListEnvironmentsResponse({
+    this.environment,
+    this.nextPageToken,
+  });
 
-  ListEnvironmentsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('environment')) {
-      environment = (_json['environment'] as core.List)
-          .map<Environment>((value) => Environment.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListEnvironmentsResponse.fromJson(core.Map _json)
+      : this(
+          environment: _json.containsKey('environment')
+              ? (_json['environment'] as core.List)
+                  .map<Environment>((value) => Environment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (environment != null)
@@ -5267,19 +5402,23 @@ class ListFoldersResponse {
   /// Continuation token for fetching the next page of results.
   core.String? nextPageToken;
 
-  ListFoldersResponse();
+  ListFoldersResponse({
+    this.folder,
+    this.nextPageToken,
+  });
 
-  ListFoldersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('folder')) {
-      folder = (_json['folder'] as core.List)
-          .map<Folder>((value) =>
-              Folder.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListFoldersResponse.fromJson(core.Map _json)
+      : this(
+          folder: _json.containsKey('folder')
+              ? (_json['folder'] as core.List)
+                  .map<Folder>((value) => Folder.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (folder != null)
@@ -5296,19 +5435,23 @@ class ListTagsResponse {
   /// All GTM Tags of a GTM Container.
   core.List<Tag>? tag;
 
-  ListTagsResponse();
+  ListTagsResponse({
+    this.nextPageToken,
+    this.tag,
+  });
 
-  ListTagsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('tag')) {
-      tag = (_json['tag'] as core.List)
-          .map<Tag>((value) =>
-              Tag.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListTagsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          tag: _json.containsKey('tag')
+              ? (_json['tag'] as core.List)
+                  .map<Tag>((value) => Tag.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -5323,19 +5466,23 @@ class ListTemplatesResponse {
   /// All GTM Custom Templates of a GTM Container.
   core.List<CustomTemplate>? template;
 
-  ListTemplatesResponse();
+  ListTemplatesResponse({
+    this.nextPageToken,
+    this.template,
+  });
 
-  ListTemplatesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('template')) {
-      template = (_json['template'] as core.List)
-          .map<CustomTemplate>((value) => CustomTemplate.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListTemplatesResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          template: _json.containsKey('template')
+              ? (_json['template'] as core.List)
+                  .map<CustomTemplate>((value) => CustomTemplate.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -5352,19 +5499,23 @@ class ListTriggersResponse {
   /// All GTM Triggers of a GTM Container.
   core.List<Trigger>? trigger;
 
-  ListTriggersResponse();
+  ListTriggersResponse({
+    this.nextPageToken,
+    this.trigger,
+  });
 
-  ListTriggersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('trigger')) {
-      trigger = (_json['trigger'] as core.List)
-          .map<Trigger>((value) =>
-              Trigger.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListTriggersResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          trigger: _json.containsKey('trigger')
+              ? (_json['trigger'] as core.List)
+                  .map<Trigger>((value) => Trigger.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -5381,19 +5532,23 @@ class ListUserPermissionsResponse {
   /// All GTM UserPermissions of a GTM Account.
   core.List<UserPermission>? userPermission;
 
-  ListUserPermissionsResponse();
+  ListUserPermissionsResponse({
+    this.nextPageToken,
+    this.userPermission,
+  });
 
-  ListUserPermissionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('userPermission')) {
-      userPermission = (_json['userPermission'] as core.List)
-          .map<UserPermission>((value) => UserPermission.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListUserPermissionsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          userPermission: _json.containsKey('userPermission')
+              ? (_json['userPermission'] as core.List)
+                  .map<UserPermission>((value) => UserPermission.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -5411,19 +5566,23 @@ class ListVariablesResponse {
   /// All GTM Variables of a GTM Container.
   core.List<Variable>? variable;
 
-  ListVariablesResponse();
+  ListVariablesResponse({
+    this.nextPageToken,
+    this.variable,
+  });
 
-  ListVariablesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('variable')) {
-      variable = (_json['variable'] as core.List)
-          .map<Variable>((value) =>
-              Variable.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListVariablesResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          variable: _json.containsKey('variable')
+              ? (_json['variable'] as core.List)
+                  .map<Variable>((value) => Variable.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -5440,19 +5599,23 @@ class ListWorkspacesResponse {
   /// All Workspaces of a GTM Container.
   core.List<Workspace>? workspace;
 
-  ListWorkspacesResponse();
+  ListWorkspacesResponse({
+    this.nextPageToken,
+    this.workspace,
+  });
 
-  ListWorkspacesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('workspace')) {
-      workspace = (_json['workspace'] as core.List)
-          .map<Workspace>((value) =>
-              Workspace.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListWorkspacesResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          workspace: _json.containsKey('workspace')
+              ? (_json['workspace'] as core.List)
+                  .map<Workspace>((value) => Workspace.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -5468,19 +5631,23 @@ class ListZonesResponse {
   /// All GTM Zones of a GTM Container.
   core.List<Zone>? zone;
 
-  ListZonesResponse();
+  ListZonesResponse({
+    this.nextPageToken,
+    this.zone,
+  });
 
-  ListZonesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('zone')) {
-      zone = (_json['zone'] as core.List)
-          .map<Zone>((value) =>
-              Zone.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListZonesResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          zone: _json.containsKey('zone')
+              ? (_json['zone'] as core.List)
+                  .map<Zone>((value) => Zone.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -5504,18 +5671,22 @@ class MergeConflict {
   /// deleted change status.
   Entity? entityInWorkspace;
 
-  MergeConflict();
+  MergeConflict({
+    this.entityInBaseVersion,
+    this.entityInWorkspace,
+  });
 
-  MergeConflict.fromJson(core.Map _json) {
-    if (_json.containsKey('entityInBaseVersion')) {
-      entityInBaseVersion = Entity.fromJson(
-          _json['entityInBaseVersion'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('entityInWorkspace')) {
-      entityInWorkspace = Entity.fromJson(
-          _json['entityInWorkspace'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  MergeConflict.fromJson(core.Map _json)
+      : this(
+          entityInBaseVersion: _json.containsKey('entityInBaseVersion')
+              ? Entity.fromJson(_json['entityInBaseVersion']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          entityInWorkspace: _json.containsKey('entityInWorkspace')
+              ? Entity.fromJson(_json['entityInWorkspace']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (entityInBaseVersion != null)
@@ -5597,31 +5768,33 @@ class Parameter {
   /// tagmanager.accounts.containers.workspaces.tags.update
   core.String? value;
 
-  Parameter();
+  Parameter({
+    this.key,
+    this.list,
+    this.map,
+    this.type,
+    this.value,
+  });
 
-  Parameter.fromJson(core.Map _json) {
-    if (_json.containsKey('key')) {
-      key = _json['key'] as core.String;
-    }
-    if (_json.containsKey('list')) {
-      list = (_json['list'] as core.List)
-          .map<Parameter>((value) =>
-              Parameter.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('map')) {
-      map = (_json['map'] as core.List)
-          .map<Parameter>((value) =>
-              Parameter.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  Parameter.fromJson(core.Map _json)
+      : this(
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          list: _json.containsKey('list')
+              ? (_json['list'] as core.List)
+                  .map<Parameter>((value) => Parameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          map: _json.containsKey('map')
+              ? (_json['map'] as core.List)
+                  .map<Parameter>((value) => Parameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
@@ -5640,17 +5813,21 @@ class PublishContainerVersionResponse {
   /// The container version created.
   ContainerVersion? containerVersion;
 
-  PublishContainerVersionResponse();
+  PublishContainerVersionResponse({
+    this.compilerError,
+    this.containerVersion,
+  });
 
-  PublishContainerVersionResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('compilerError')) {
-      compilerError = _json['compilerError'] as core.bool;
-    }
-    if (_json.containsKey('containerVersion')) {
-      containerVersion = ContainerVersion.fromJson(
-          _json['containerVersion'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  PublishContainerVersionResponse.fromJson(core.Map _json)
+      : this(
+          compilerError: _json.containsKey('compilerError')
+              ? _json['compilerError'] as core.bool
+              : null,
+          containerVersion: _json.containsKey('containerVersion')
+              ? ContainerVersion.fromJson(_json['containerVersion']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (compilerError != null) 'compilerError': compilerError!,
@@ -5671,21 +5848,26 @@ class QuickPreviewResponse {
   /// container version.
   SyncStatus? syncStatus;
 
-  QuickPreviewResponse();
+  QuickPreviewResponse({
+    this.compilerError,
+    this.containerVersion,
+    this.syncStatus,
+  });
 
-  QuickPreviewResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('compilerError')) {
-      compilerError = _json['compilerError'] as core.bool;
-    }
-    if (_json.containsKey('containerVersion')) {
-      containerVersion = ContainerVersion.fromJson(
-          _json['containerVersion'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('syncStatus')) {
-      syncStatus = SyncStatus.fromJson(
-          _json['syncStatus'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  QuickPreviewResponse.fromJson(core.Map _json)
+      : this(
+          compilerError: _json.containsKey('compilerError')
+              ? _json['compilerError'] as core.bool
+              : null,
+          containerVersion: _json.containsKey('containerVersion')
+              ? ContainerVersion.fromJson(_json['containerVersion']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          syncStatus: _json.containsKey('syncStatus')
+              ? SyncStatus.fromJson(
+                  _json['syncStatus'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (compilerError != null) 'compilerError': compilerError!,
@@ -5700,13 +5882,16 @@ class RevertBuiltInVariableResponse {
   /// Whether the built-in variable is enabled after reversion.
   core.bool? enabled;
 
-  RevertBuiltInVariableResponse();
+  RevertBuiltInVariableResponse({
+    this.enabled,
+  });
 
-  RevertBuiltInVariableResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-  }
+  RevertBuiltInVariableResponse.fromJson(core.Map _json)
+      : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
@@ -5722,14 +5907,17 @@ class RevertFolderResponse {
   /// container version.
   Folder? folder;
 
-  RevertFolderResponse();
+  RevertFolderResponse({
+    this.folder,
+  });
 
-  RevertFolderResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('folder')) {
-      folder = Folder.fromJson(
-          _json['folder'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  RevertFolderResponse.fromJson(core.Map _json)
+      : this(
+          folder: _json.containsKey('folder')
+              ? Folder.fromJson(
+                  _json['folder'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (folder != null) 'folder': folder!.toJson(),
@@ -5745,13 +5933,17 @@ class RevertTagResponse {
   /// container version.
   Tag? tag;
 
-  RevertTagResponse();
+  RevertTagResponse({
+    this.tag,
+  });
 
-  RevertTagResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('tag')) {
-      tag = Tag.fromJson(_json['tag'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  RevertTagResponse.fromJson(core.Map _json)
+      : this(
+          tag: _json.containsKey('tag')
+              ? Tag.fromJson(
+                  _json['tag'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (tag != null) 'tag': tag!.toJson(),
@@ -5767,14 +5959,17 @@ class RevertTemplateResponse {
   /// latest container version.
   CustomTemplate? template;
 
-  RevertTemplateResponse();
+  RevertTemplateResponse({
+    this.template,
+  });
 
-  RevertTemplateResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('template')) {
-      template = CustomTemplate.fromJson(
-          _json['template'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  RevertTemplateResponse.fromJson(core.Map _json)
+      : this(
+          template: _json.containsKey('template')
+              ? CustomTemplate.fromJson(
+                  _json['template'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (template != null) 'template': template!.toJson(),
@@ -5790,14 +5985,17 @@ class RevertTriggerResponse {
   /// container version.
   Trigger? trigger;
 
-  RevertTriggerResponse();
+  RevertTriggerResponse({
+    this.trigger,
+  });
 
-  RevertTriggerResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('trigger')) {
-      trigger = Trigger.fromJson(
-          _json['trigger'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  RevertTriggerResponse.fromJson(core.Map _json)
+      : this(
+          trigger: _json.containsKey('trigger')
+              ? Trigger.fromJson(
+                  _json['trigger'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (trigger != null) 'trigger': trigger!.toJson(),
@@ -5813,14 +6011,17 @@ class RevertVariableResponse {
   /// latest container version.
   Variable? variable;
 
-  RevertVariableResponse();
+  RevertVariableResponse({
+    this.variable,
+  });
 
-  RevertVariableResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('variable')) {
-      variable = Variable.fromJson(
-          _json['variable'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  RevertVariableResponse.fromJson(core.Map _json)
+      : this(
+          variable: _json.containsKey('variable')
+              ? Variable.fromJson(
+                  _json['variable'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (variable != null) 'variable': variable!.toJson(),
@@ -5836,14 +6037,17 @@ class RevertZoneResponse {
   /// container version.
   Zone? zone;
 
-  RevertZoneResponse();
+  RevertZoneResponse({
+    this.zone,
+  });
 
-  RevertZoneResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('zone')) {
-      zone =
-          Zone.fromJson(_json['zone'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  RevertZoneResponse.fromJson(core.Map _json)
+      : this(
+          zone: _json.containsKey('zone')
+              ? Zone.fromJson(
+                  _json['zone'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (zone != null) 'zone': zone!.toJson(),
@@ -5862,16 +6066,20 @@ class SetupTag {
   /// The name of the setup tag.
   core.String? tagName;
 
-  SetupTag();
+  SetupTag({
+    this.stopOnSetupFailure,
+    this.tagName,
+  });
 
-  SetupTag.fromJson(core.Map _json) {
-    if (_json.containsKey('stopOnSetupFailure')) {
-      stopOnSetupFailure = _json['stopOnSetupFailure'] as core.bool;
-    }
-    if (_json.containsKey('tagName')) {
-      tagName = _json['tagName'] as core.String;
-    }
-  }
+  SetupTag.fromJson(core.Map _json)
+      : this(
+          stopOnSetupFailure: _json.containsKey('stopOnSetupFailure')
+              ? _json['stopOnSetupFailure'] as core.bool
+              : null,
+          tagName: _json.containsKey('tagName')
+              ? _json['tagName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (stopOnSetupFailure != null)
@@ -5888,16 +6096,20 @@ class SyncStatus {
   /// An error occurred during the synchronization operation.
   core.bool? syncError;
 
-  SyncStatus();
+  SyncStatus({
+    this.mergeConflict,
+    this.syncError,
+  });
 
-  SyncStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('mergeConflict')) {
-      mergeConflict = _json['mergeConflict'] as core.bool;
-    }
-    if (_json.containsKey('syncError')) {
-      syncError = _json['syncError'] as core.bool;
-    }
-  }
+  SyncStatus.fromJson(core.Map _json)
+      : this(
+          mergeConflict: _json.containsKey('mergeConflict')
+              ? _json['mergeConflict'] as core.bool
+              : null,
+          syncError: _json.containsKey('syncError')
+              ? _json['syncError'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mergeConflict != null) 'mergeConflict': mergeConflict!,
@@ -5917,20 +6129,24 @@ class SyncWorkspaceResponse {
   /// Indicates whether synchronization caused a merge conflict or sync error.
   SyncStatus? syncStatus;
 
-  SyncWorkspaceResponse();
+  SyncWorkspaceResponse({
+    this.mergeConflict,
+    this.syncStatus,
+  });
 
-  SyncWorkspaceResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('mergeConflict')) {
-      mergeConflict = (_json['mergeConflict'] as core.List)
-          .map<MergeConflict>((value) => MergeConflict.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('syncStatus')) {
-      syncStatus = SyncStatus.fromJson(
-          _json['syncStatus'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  SyncWorkspaceResponse.fromJson(core.Map _json)
+      : this(
+          mergeConflict: _json.containsKey('mergeConflict')
+              ? (_json['mergeConflict'] as core.List)
+                  .map<MergeConflict>((value) => MergeConflict.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          syncStatus: _json.containsKey('syncStatus')
+              ? SyncStatus.fromJson(
+                  _json['syncStatus'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mergeConflict != null)
@@ -6092,108 +6308,127 @@ class Tag {
   /// GTM Workspace ID.
   core.String? workspaceId;
 
-  Tag();
+  Tag({
+    this.accountId,
+    this.blockingRuleId,
+    this.blockingTriggerId,
+    this.containerId,
+    this.fingerprint,
+    this.firingRuleId,
+    this.firingTriggerId,
+    this.liveOnly,
+    this.monitoringMetadata,
+    this.monitoringMetadataTagNameKey,
+    this.name,
+    this.notes,
+    this.parameter,
+    this.parentFolderId,
+    this.path,
+    this.paused,
+    this.priority,
+    this.scheduleEndMs,
+    this.scheduleStartMs,
+    this.setupTag,
+    this.tagFiringOption,
+    this.tagId,
+    this.tagManagerUrl,
+    this.teardownTag,
+    this.type,
+    this.workspaceId,
+  });
 
-  Tag.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('blockingRuleId')) {
-      blockingRuleId = (_json['blockingRuleId'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('blockingTriggerId')) {
-      blockingTriggerId = (_json['blockingTriggerId'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'] as core.String;
-    }
-    if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'] as core.String;
-    }
-    if (_json.containsKey('firingRuleId')) {
-      firingRuleId = (_json['firingRuleId'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('firingTriggerId')) {
-      firingTriggerId = (_json['firingTriggerId'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('liveOnly')) {
-      liveOnly = _json['liveOnly'] as core.bool;
-    }
-    if (_json.containsKey('monitoringMetadata')) {
-      monitoringMetadata = Parameter.fromJson(
-          _json['monitoringMetadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('monitoringMetadataTagNameKey')) {
-      monitoringMetadataTagNameKey =
-          _json['monitoringMetadataTagNameKey'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('notes')) {
-      notes = _json['notes'] as core.String;
-    }
-    if (_json.containsKey('parameter')) {
-      parameter = (_json['parameter'] as core.List)
-          .map<Parameter>((value) =>
-              Parameter.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('parentFolderId')) {
-      parentFolderId = _json['parentFolderId'] as core.String;
-    }
-    if (_json.containsKey('path')) {
-      path = _json['path'] as core.String;
-    }
-    if (_json.containsKey('paused')) {
-      paused = _json['paused'] as core.bool;
-    }
-    if (_json.containsKey('priority')) {
-      priority = Parameter.fromJson(
-          _json['priority'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('scheduleEndMs')) {
-      scheduleEndMs = _json['scheduleEndMs'] as core.String;
-    }
-    if (_json.containsKey('scheduleStartMs')) {
-      scheduleStartMs = _json['scheduleStartMs'] as core.String;
-    }
-    if (_json.containsKey('setupTag')) {
-      setupTag = (_json['setupTag'] as core.List)
-          .map<SetupTag>((value) =>
-              SetupTag.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('tagFiringOption')) {
-      tagFiringOption = _json['tagFiringOption'] as core.String;
-    }
-    if (_json.containsKey('tagId')) {
-      tagId = _json['tagId'] as core.String;
-    }
-    if (_json.containsKey('tagManagerUrl')) {
-      tagManagerUrl = _json['tagManagerUrl'] as core.String;
-    }
-    if (_json.containsKey('teardownTag')) {
-      teardownTag = (_json['teardownTag'] as core.List)
-          .map<TeardownTag>((value) => TeardownTag.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('workspaceId')) {
-      workspaceId = _json['workspaceId'] as core.String;
-    }
-  }
+  Tag.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          blockingRuleId: _json.containsKey('blockingRuleId')
+              ? (_json['blockingRuleId'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          blockingTriggerId: _json.containsKey('blockingTriggerId')
+              ? (_json['blockingTriggerId'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          containerId: _json.containsKey('containerId')
+              ? _json['containerId'] as core.String
+              : null,
+          fingerprint: _json.containsKey('fingerprint')
+              ? _json['fingerprint'] as core.String
+              : null,
+          firingRuleId: _json.containsKey('firingRuleId')
+              ? (_json['firingRuleId'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          firingTriggerId: _json.containsKey('firingTriggerId')
+              ? (_json['firingTriggerId'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          liveOnly: _json.containsKey('liveOnly')
+              ? _json['liveOnly'] as core.bool
+              : null,
+          monitoringMetadata: _json.containsKey('monitoringMetadata')
+              ? Parameter.fromJson(_json['monitoringMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          monitoringMetadataTagNameKey:
+              _json.containsKey('monitoringMetadataTagNameKey')
+                  ? _json['monitoringMetadataTagNameKey'] as core.String
+                  : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          notes:
+              _json.containsKey('notes') ? _json['notes'] as core.String : null,
+          parameter: _json.containsKey('parameter')
+              ? (_json['parameter'] as core.List)
+                  .map<Parameter>((value) => Parameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          parentFolderId: _json.containsKey('parentFolderId')
+              ? _json['parentFolderId'] as core.String
+              : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+          paused:
+              _json.containsKey('paused') ? _json['paused'] as core.bool : null,
+          priority: _json.containsKey('priority')
+              ? Parameter.fromJson(
+                  _json['priority'] as core.Map<core.String, core.dynamic>)
+              : null,
+          scheduleEndMs: _json.containsKey('scheduleEndMs')
+              ? _json['scheduleEndMs'] as core.String
+              : null,
+          scheduleStartMs: _json.containsKey('scheduleStartMs')
+              ? _json['scheduleStartMs'] as core.String
+              : null,
+          setupTag: _json.containsKey('setupTag')
+              ? (_json['setupTag'] as core.List)
+                  .map<SetupTag>((value) => SetupTag.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          tagFiringOption: _json.containsKey('tagFiringOption')
+              ? _json['tagFiringOption'] as core.String
+              : null,
+          tagId:
+              _json.containsKey('tagId') ? _json['tagId'] as core.String : null,
+          tagManagerUrl: _json.containsKey('tagManagerUrl')
+              ? _json['tagManagerUrl'] as core.String
+              : null,
+          teardownTag: _json.containsKey('teardownTag')
+              ? (_json['teardownTag'] as core.List)
+                  .map<TeardownTag>((value) => TeardownTag.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          workspaceId: _json.containsKey('workspaceId')
+              ? _json['workspaceId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -6242,16 +6477,20 @@ class TeardownTag {
   /// The name of the teardown tag.
   core.String? tagName;
 
-  TeardownTag();
+  TeardownTag({
+    this.stopTeardownOnFailure,
+    this.tagName,
+  });
 
-  TeardownTag.fromJson(core.Map _json) {
-    if (_json.containsKey('stopTeardownOnFailure')) {
-      stopTeardownOnFailure = _json['stopTeardownOnFailure'] as core.bool;
-    }
-    if (_json.containsKey('tagName')) {
-      tagName = _json['tagName'] as core.String;
-    }
-  }
+  TeardownTag.fromJson(core.Map _json)
+      : this(
+          stopTeardownOnFailure: _json.containsKey('stopTeardownOnFailure')
+              ? _json['stopTeardownOnFailure'] as core.bool
+              : null,
+          tagName: _json.containsKey('tagName')
+              ? _json['tagName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (stopTeardownOnFailure != null)
@@ -6498,139 +6737,166 @@ class Trigger {
   /// GTM Workspace ID.
   core.String? workspaceId;
 
-  Trigger();
+  Trigger({
+    this.accountId,
+    this.autoEventFilter,
+    this.checkValidation,
+    this.containerId,
+    this.continuousTimeMinMilliseconds,
+    this.customEventFilter,
+    this.eventName,
+    this.filter,
+    this.fingerprint,
+    this.horizontalScrollPercentageList,
+    this.interval,
+    this.intervalSeconds,
+    this.limit,
+    this.maxTimerLengthSeconds,
+    this.name,
+    this.notes,
+    this.parameter,
+    this.parentFolderId,
+    this.path,
+    this.selector,
+    this.tagManagerUrl,
+    this.totalTimeMinMilliseconds,
+    this.triggerId,
+    this.type,
+    this.uniqueTriggerId,
+    this.verticalScrollPercentageList,
+    this.visibilitySelector,
+    this.visiblePercentageMax,
+    this.visiblePercentageMin,
+    this.waitForTags,
+    this.waitForTagsTimeout,
+    this.workspaceId,
+  });
 
-  Trigger.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('autoEventFilter')) {
-      autoEventFilter = (_json['autoEventFilter'] as core.List)
-          .map<Condition>((value) =>
-              Condition.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('checkValidation')) {
-      checkValidation = Parameter.fromJson(
-          _json['checkValidation'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'] as core.String;
-    }
-    if (_json.containsKey('continuousTimeMinMilliseconds')) {
-      continuousTimeMinMilliseconds = Parameter.fromJson(
-          _json['continuousTimeMinMilliseconds']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('customEventFilter')) {
-      customEventFilter = (_json['customEventFilter'] as core.List)
-          .map<Condition>((value) =>
-              Condition.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('eventName')) {
-      eventName = Parameter.fromJson(
-          _json['eventName'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('filter')) {
-      filter = (_json['filter'] as core.List)
-          .map<Condition>((value) =>
-              Condition.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'] as core.String;
-    }
-    if (_json.containsKey('horizontalScrollPercentageList')) {
-      horizontalScrollPercentageList = Parameter.fromJson(
-          _json['horizontalScrollPercentageList']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('interval')) {
-      interval = Parameter.fromJson(
-          _json['interval'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('intervalSeconds')) {
-      intervalSeconds = Parameter.fromJson(
-          _json['intervalSeconds'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('limit')) {
-      limit = Parameter.fromJson(
-          _json['limit'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('maxTimerLengthSeconds')) {
-      maxTimerLengthSeconds = Parameter.fromJson(_json['maxTimerLengthSeconds']
-          as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('notes')) {
-      notes = _json['notes'] as core.String;
-    }
-    if (_json.containsKey('parameter')) {
-      parameter = (_json['parameter'] as core.List)
-          .map<Parameter>((value) =>
-              Parameter.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('parentFolderId')) {
-      parentFolderId = _json['parentFolderId'] as core.String;
-    }
-    if (_json.containsKey('path')) {
-      path = _json['path'] as core.String;
-    }
-    if (_json.containsKey('selector')) {
-      selector = Parameter.fromJson(
-          _json['selector'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('tagManagerUrl')) {
-      tagManagerUrl = _json['tagManagerUrl'] as core.String;
-    }
-    if (_json.containsKey('totalTimeMinMilliseconds')) {
-      totalTimeMinMilliseconds = Parameter.fromJson(
-          _json['totalTimeMinMilliseconds']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('triggerId')) {
-      triggerId = _json['triggerId'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('uniqueTriggerId')) {
-      uniqueTriggerId = Parameter.fromJson(
-          _json['uniqueTriggerId'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('verticalScrollPercentageList')) {
-      verticalScrollPercentageList = Parameter.fromJson(
-          _json['verticalScrollPercentageList']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('visibilitySelector')) {
-      visibilitySelector = Parameter.fromJson(
-          _json['visibilitySelector'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('visiblePercentageMax')) {
-      visiblePercentageMax = Parameter.fromJson(
-          _json['visiblePercentageMax'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('visiblePercentageMin')) {
-      visiblePercentageMin = Parameter.fromJson(
-          _json['visiblePercentageMin'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('waitForTags')) {
-      waitForTags = Parameter.fromJson(
-          _json['waitForTags'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('waitForTagsTimeout')) {
-      waitForTagsTimeout = Parameter.fromJson(
-          _json['waitForTagsTimeout'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('workspaceId')) {
-      workspaceId = _json['workspaceId'] as core.String;
-    }
-  }
+  Trigger.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          autoEventFilter: _json.containsKey('autoEventFilter')
+              ? (_json['autoEventFilter'] as core.List)
+                  .map<Condition>((value) => Condition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          checkValidation: _json.containsKey('checkValidation')
+              ? Parameter.fromJson(_json['checkValidation']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          containerId: _json.containsKey('containerId')
+              ? _json['containerId'] as core.String
+              : null,
+          continuousTimeMinMilliseconds:
+              _json.containsKey('continuousTimeMinMilliseconds')
+                  ? Parameter.fromJson(_json['continuousTimeMinMilliseconds']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          customEventFilter: _json.containsKey('customEventFilter')
+              ? (_json['customEventFilter'] as core.List)
+                  .map<Condition>((value) => Condition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          eventName: _json.containsKey('eventName')
+              ? Parameter.fromJson(
+                  _json['eventName'] as core.Map<core.String, core.dynamic>)
+              : null,
+          filter: _json.containsKey('filter')
+              ? (_json['filter'] as core.List)
+                  .map<Condition>((value) => Condition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          fingerprint: _json.containsKey('fingerprint')
+              ? _json['fingerprint'] as core.String
+              : null,
+          horizontalScrollPercentageList:
+              _json.containsKey('horizontalScrollPercentageList')
+                  ? Parameter.fromJson(_json['horizontalScrollPercentageList']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          interval: _json.containsKey('interval')
+              ? Parameter.fromJson(
+                  _json['interval'] as core.Map<core.String, core.dynamic>)
+              : null,
+          intervalSeconds: _json.containsKey('intervalSeconds')
+              ? Parameter.fromJson(_json['intervalSeconds']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          limit: _json.containsKey('limit')
+              ? Parameter.fromJson(
+                  _json['limit'] as core.Map<core.String, core.dynamic>)
+              : null,
+          maxTimerLengthSeconds: _json.containsKey('maxTimerLengthSeconds')
+              ? Parameter.fromJson(_json['maxTimerLengthSeconds']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          notes:
+              _json.containsKey('notes') ? _json['notes'] as core.String : null,
+          parameter: _json.containsKey('parameter')
+              ? (_json['parameter'] as core.List)
+                  .map<Parameter>((value) => Parameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          parentFolderId: _json.containsKey('parentFolderId')
+              ? _json['parentFolderId'] as core.String
+              : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+          selector: _json.containsKey('selector')
+              ? Parameter.fromJson(
+                  _json['selector'] as core.Map<core.String, core.dynamic>)
+              : null,
+          tagManagerUrl: _json.containsKey('tagManagerUrl')
+              ? _json['tagManagerUrl'] as core.String
+              : null,
+          totalTimeMinMilliseconds:
+              _json.containsKey('totalTimeMinMilliseconds')
+                  ? Parameter.fromJson(_json['totalTimeMinMilliseconds']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          triggerId: _json.containsKey('triggerId')
+              ? _json['triggerId'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          uniqueTriggerId: _json.containsKey('uniqueTriggerId')
+              ? Parameter.fromJson(_json['uniqueTriggerId']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          verticalScrollPercentageList:
+              _json.containsKey('verticalScrollPercentageList')
+                  ? Parameter.fromJson(_json['verticalScrollPercentageList']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          visibilitySelector: _json.containsKey('visibilitySelector')
+              ? Parameter.fromJson(_json['visibilitySelector']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          visiblePercentageMax: _json.containsKey('visiblePercentageMax')
+              ? Parameter.fromJson(_json['visiblePercentageMax']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          visiblePercentageMin: _json.containsKey('visiblePercentageMin')
+              ? Parameter.fromJson(_json['visiblePercentageMin']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          waitForTags: _json.containsKey('waitForTags')
+              ? Parameter.fromJson(
+                  _json['waitForTags'] as core.Map<core.String, core.dynamic>)
+              : null,
+          waitForTagsTimeout: _json.containsKey('waitForTagsTimeout')
+              ? Parameter.fromJson(_json['waitForTagsTimeout']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          workspaceId: _json.containsKey('workspaceId')
+              ? _json['workspaceId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -6714,29 +6980,34 @@ class UserPermission {
   /// GTM UserPermission's API relative path.
   core.String? path;
 
-  UserPermission();
+  UserPermission({
+    this.accountAccess,
+    this.accountId,
+    this.containerAccess,
+    this.emailAddress,
+    this.path,
+  });
 
-  UserPermission.fromJson(core.Map _json) {
-    if (_json.containsKey('accountAccess')) {
-      accountAccess = AccountAccess.fromJson(
-          _json['accountAccess'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('containerAccess')) {
-      containerAccess = (_json['containerAccess'] as core.List)
-          .map<ContainerAccess>((value) => ContainerAccess.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('emailAddress')) {
-      emailAddress = _json['emailAddress'] as core.String;
-    }
-    if (_json.containsKey('path')) {
-      path = _json['path'] as core.String;
-    }
-  }
+  UserPermission.fromJson(core.Map _json)
+      : this(
+          accountAccess: _json.containsKey('accountAccess')
+              ? AccountAccess.fromJson(
+                  _json['accountAccess'] as core.Map<core.String, core.dynamic>)
+              : null,
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          containerAccess: _json.containsKey('containerAccess')
+              ? (_json['containerAccess'] as core.List)
+                  .map<ContainerAccess>((value) => ContainerAccess.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          emailAddress: _json.containsKey('emailAddress')
+              ? _json['emailAddress'] as core.String
+              : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountAccess != null) 'accountAccess': accountAccess!.toJson(),
@@ -6834,69 +7105,81 @@ class Variable {
   /// GTM Workspace ID.
   core.String? workspaceId;
 
-  Variable();
+  Variable({
+    this.accountId,
+    this.containerId,
+    this.disablingTriggerId,
+    this.enablingTriggerId,
+    this.fingerprint,
+    this.formatValue,
+    this.name,
+    this.notes,
+    this.parameter,
+    this.parentFolderId,
+    this.path,
+    this.scheduleEndMs,
+    this.scheduleStartMs,
+    this.tagManagerUrl,
+    this.type,
+    this.variableId,
+    this.workspaceId,
+  });
 
-  Variable.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'] as core.String;
-    }
-    if (_json.containsKey('disablingTriggerId')) {
-      disablingTriggerId = (_json['disablingTriggerId'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('enablingTriggerId')) {
-      enablingTriggerId = (_json['enablingTriggerId'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'] as core.String;
-    }
-    if (_json.containsKey('formatValue')) {
-      formatValue = VariableFormatValue.fromJson(
-          _json['formatValue'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('notes')) {
-      notes = _json['notes'] as core.String;
-    }
-    if (_json.containsKey('parameter')) {
-      parameter = (_json['parameter'] as core.List)
-          .map<Parameter>((value) =>
-              Parameter.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('parentFolderId')) {
-      parentFolderId = _json['parentFolderId'] as core.String;
-    }
-    if (_json.containsKey('path')) {
-      path = _json['path'] as core.String;
-    }
-    if (_json.containsKey('scheduleEndMs')) {
-      scheduleEndMs = _json['scheduleEndMs'] as core.String;
-    }
-    if (_json.containsKey('scheduleStartMs')) {
-      scheduleStartMs = _json['scheduleStartMs'] as core.String;
-    }
-    if (_json.containsKey('tagManagerUrl')) {
-      tagManagerUrl = _json['tagManagerUrl'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('variableId')) {
-      variableId = _json['variableId'] as core.String;
-    }
-    if (_json.containsKey('workspaceId')) {
-      workspaceId = _json['workspaceId'] as core.String;
-    }
-  }
+  Variable.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          containerId: _json.containsKey('containerId')
+              ? _json['containerId'] as core.String
+              : null,
+          disablingTriggerId: _json.containsKey('disablingTriggerId')
+              ? (_json['disablingTriggerId'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          enablingTriggerId: _json.containsKey('enablingTriggerId')
+              ? (_json['enablingTriggerId'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          fingerprint: _json.containsKey('fingerprint')
+              ? _json['fingerprint'] as core.String
+              : null,
+          formatValue: _json.containsKey('formatValue')
+              ? VariableFormatValue.fromJson(
+                  _json['formatValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          notes:
+              _json.containsKey('notes') ? _json['notes'] as core.String : null,
+          parameter: _json.containsKey('parameter')
+              ? (_json['parameter'] as core.List)
+                  .map<Parameter>((value) => Parameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          parentFolderId: _json.containsKey('parentFolderId')
+              ? _json['parentFolderId'] as core.String
+              : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+          scheduleEndMs: _json.containsKey('scheduleEndMs')
+              ? _json['scheduleEndMs'] as core.String
+              : null,
+          scheduleStartMs: _json.containsKey('scheduleStartMs')
+              ? _json['scheduleStartMs'] as core.String
+              : null,
+          tagManagerUrl: _json.containsKey('tagManagerUrl')
+              ? _json['tagManagerUrl'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          variableId: _json.containsKey('variableId')
+              ? _json['variableId'] as core.String
+              : null,
+          workspaceId: _json.containsKey('workspaceId')
+              ? _json['workspaceId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -6942,30 +7225,36 @@ class VariableFormatValue {
   /// The value to convert if a variable value is undefined.
   Parameter? convertUndefinedToValue;
 
-  VariableFormatValue();
+  VariableFormatValue({
+    this.caseConversionType,
+    this.convertFalseToValue,
+    this.convertNullToValue,
+    this.convertTrueToValue,
+    this.convertUndefinedToValue,
+  });
 
-  VariableFormatValue.fromJson(core.Map _json) {
-    if (_json.containsKey('caseConversionType')) {
-      caseConversionType = _json['caseConversionType'] as core.String;
-    }
-    if (_json.containsKey('convertFalseToValue')) {
-      convertFalseToValue = Parameter.fromJson(
-          _json['convertFalseToValue'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('convertNullToValue')) {
-      convertNullToValue = Parameter.fromJson(
-          _json['convertNullToValue'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('convertTrueToValue')) {
-      convertTrueToValue = Parameter.fromJson(
-          _json['convertTrueToValue'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('convertUndefinedToValue')) {
-      convertUndefinedToValue = Parameter.fromJson(
-          _json['convertUndefinedToValue']
-              as core.Map<core.String, core.dynamic>);
-    }
-  }
+  VariableFormatValue.fromJson(core.Map _json)
+      : this(
+          caseConversionType: _json.containsKey('caseConversionType')
+              ? _json['caseConversionType'] as core.String
+              : null,
+          convertFalseToValue: _json.containsKey('convertFalseToValue')
+              ? Parameter.fromJson(_json['convertFalseToValue']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          convertNullToValue: _json.containsKey('convertNullToValue')
+              ? Parameter.fromJson(_json['convertNullToValue']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          convertTrueToValue: _json.containsKey('convertTrueToValue')
+              ? Parameter.fromJson(_json['convertTrueToValue']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          convertUndefinedToValue: _json.containsKey('convertUndefinedToValue')
+              ? Parameter.fromJson(_json['convertUndefinedToValue']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (caseConversionType != null)
@@ -7015,34 +7304,40 @@ class Workspace {
   /// The Workspace ID uniquely identifies the GTM Workspace.
   core.String? workspaceId;
 
-  Workspace();
+  Workspace({
+    this.accountId,
+    this.containerId,
+    this.description,
+    this.fingerprint,
+    this.name,
+    this.path,
+    this.tagManagerUrl,
+    this.workspaceId,
+  });
 
-  Workspace.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('path')) {
-      path = _json['path'] as core.String;
-    }
-    if (_json.containsKey('tagManagerUrl')) {
-      tagManagerUrl = _json['tagManagerUrl'] as core.String;
-    }
-    if (_json.containsKey('workspaceId')) {
-      workspaceId = _json['workspaceId'] as core.String;
-    }
-  }
+  Workspace.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          containerId: _json.containsKey('containerId')
+              ? _json['containerId'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          fingerprint: _json.containsKey('fingerprint')
+              ? _json['fingerprint'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+          tagManagerUrl: _json.containsKey('tagManagerUrl')
+              ? _json['tagManagerUrl'] as core.String
+              : null,
+          workspaceId: _json.containsKey('workspaceId')
+              ? _json['workspaceId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -7096,51 +7391,61 @@ class Zone {
   /// The Zone ID uniquely identifies the GTM Zone.
   core.String? zoneId;
 
-  Zone();
+  Zone({
+    this.accountId,
+    this.boundary,
+    this.childContainer,
+    this.containerId,
+    this.fingerprint,
+    this.name,
+    this.notes,
+    this.path,
+    this.tagManagerUrl,
+    this.typeRestriction,
+    this.workspaceId,
+    this.zoneId,
+  });
 
-  Zone.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('boundary')) {
-      boundary = ZoneBoundary.fromJson(
-          _json['boundary'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('childContainer')) {
-      childContainer = (_json['childContainer'] as core.List)
-          .map<ZoneChildContainer>((value) => ZoneChildContainer.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'] as core.String;
-    }
-    if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('notes')) {
-      notes = _json['notes'] as core.String;
-    }
-    if (_json.containsKey('path')) {
-      path = _json['path'] as core.String;
-    }
-    if (_json.containsKey('tagManagerUrl')) {
-      tagManagerUrl = _json['tagManagerUrl'] as core.String;
-    }
-    if (_json.containsKey('typeRestriction')) {
-      typeRestriction = ZoneTypeRestriction.fromJson(
-          _json['typeRestriction'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('workspaceId')) {
-      workspaceId = _json['workspaceId'] as core.String;
-    }
-    if (_json.containsKey('zoneId')) {
-      zoneId = _json['zoneId'] as core.String;
-    }
-  }
+  Zone.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          boundary: _json.containsKey('boundary')
+              ? ZoneBoundary.fromJson(
+                  _json['boundary'] as core.Map<core.String, core.dynamic>)
+              : null,
+          childContainer: _json.containsKey('childContainer')
+              ? (_json['childContainer'] as core.List)
+                  .map<ZoneChildContainer>((value) =>
+                      ZoneChildContainer.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          containerId: _json.containsKey('containerId')
+              ? _json['containerId'] as core.String
+              : null,
+          fingerprint: _json.containsKey('fingerprint')
+              ? _json['fingerprint'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          notes:
+              _json.containsKey('notes') ? _json['notes'] as core.String : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+          tagManagerUrl: _json.containsKey('tagManagerUrl')
+              ? _json['tagManagerUrl'] as core.String
+              : null,
+          typeRestriction: _json.containsKey('typeRestriction')
+              ? ZoneTypeRestriction.fromJson(_json['typeRestriction']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          workspaceId: _json.containsKey('workspaceId')
+              ? _json['workspaceId'] as core.String
+              : null,
+          zoneId: _json.containsKey('zoneId')
+              ? _json['zoneId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -7172,22 +7477,26 @@ class ZoneBoundary {
   /// triggers are true.
   core.List<core.String>? customEvaluationTriggerId;
 
-  ZoneBoundary();
+  ZoneBoundary({
+    this.condition,
+    this.customEvaluationTriggerId,
+  });
 
-  ZoneBoundary.fromJson(core.Map _json) {
-    if (_json.containsKey('condition')) {
-      condition = (_json['condition'] as core.List)
-          .map<Condition>((value) =>
-              Condition.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('customEvaluationTriggerId')) {
-      customEvaluationTriggerId =
-          (_json['customEvaluationTriggerId'] as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList();
-    }
-  }
+  ZoneBoundary.fromJson(core.Map _json)
+      : this(
+          condition: _json.containsKey('condition')
+              ? (_json['condition'] as core.List)
+                  .map<Condition>((value) => Condition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          customEvaluationTriggerId:
+              _json.containsKey('customEvaluationTriggerId')
+                  ? (_json['customEvaluationTriggerId'] as core.List)
+                      .map<core.String>((value) => value as core.String)
+                      .toList()
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null)
@@ -7205,16 +7514,20 @@ class ZoneChildContainer {
   /// The child container's public id.
   core.String? publicId;
 
-  ZoneChildContainer();
+  ZoneChildContainer({
+    this.nickname,
+    this.publicId,
+  });
 
-  ZoneChildContainer.fromJson(core.Map _json) {
-    if (_json.containsKey('nickname')) {
-      nickname = _json['nickname'] as core.String;
-    }
-    if (_json.containsKey('publicId')) {
-      publicId = _json['publicId'] as core.String;
-    }
-  }
+  ZoneChildContainer.fromJson(core.Map _json)
+      : this(
+          nickname: _json.containsKey('nickname')
+              ? _json['nickname'] as core.String
+              : null,
+          publicId: _json.containsKey('publicId')
+              ? _json['publicId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nickname != null) 'nickname': nickname!,
@@ -7230,18 +7543,21 @@ class ZoneTypeRestriction {
   /// List of type public ids that have been whitelisted for use in this Zone.
   core.List<core.String>? whitelistedTypeId;
 
-  ZoneTypeRestriction();
+  ZoneTypeRestriction({
+    this.enable,
+    this.whitelistedTypeId,
+  });
 
-  ZoneTypeRestriction.fromJson(core.Map _json) {
-    if (_json.containsKey('enable')) {
-      enable = _json['enable'] as core.bool;
-    }
-    if (_json.containsKey('whitelistedTypeId')) {
-      whitelistedTypeId = (_json['whitelistedTypeId'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  ZoneTypeRestriction.fromJson(core.Map _json)
+      : this(
+          enable:
+              _json.containsKey('enable') ? _json['enable'] as core.bool : null,
+          whitelistedTypeId: _json.containsKey('whitelistedTypeId')
+              ? (_json['whitelistedTypeId'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enable != null) 'enable': enable!,

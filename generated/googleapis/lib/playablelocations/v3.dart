@@ -205,19 +205,24 @@ class GoogleMapsPlayablelocationsV3Impression {
   /// Required.
   core.String? locationName;
 
-  GoogleMapsPlayablelocationsV3Impression();
+  GoogleMapsPlayablelocationsV3Impression({
+    this.gameObjectType,
+    this.impressionType,
+    this.locationName,
+  });
 
-  GoogleMapsPlayablelocationsV3Impression.fromJson(core.Map _json) {
-    if (_json.containsKey('gameObjectType')) {
-      gameObjectType = _json['gameObjectType'] as core.int;
-    }
-    if (_json.containsKey('impressionType')) {
-      impressionType = _json['impressionType'] as core.String;
-    }
-    if (_json.containsKey('locationName')) {
-      locationName = _json['locationName'] as core.String;
-    }
-  }
+  GoogleMapsPlayablelocationsV3Impression.fromJson(core.Map _json)
+      : this(
+          gameObjectType: _json.containsKey('gameObjectType')
+              ? _json['gameObjectType'] as core.int
+              : null,
+          impressionType: _json.containsKey('impressionType')
+              ? _json['impressionType'] as core.String
+              : null,
+          locationName: _json.containsKey('locationName')
+              ? _json['locationName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gameObjectType != null) 'gameObjectType': gameObjectType!,
@@ -252,24 +257,29 @@ class GoogleMapsPlayablelocationsV3LogImpressionsRequest {
   /// Required.
   core.String? requestId;
 
-  GoogleMapsPlayablelocationsV3LogImpressionsRequest();
+  GoogleMapsPlayablelocationsV3LogImpressionsRequest({
+    this.clientInfo,
+    this.impressions,
+    this.requestId,
+  });
 
-  GoogleMapsPlayablelocationsV3LogImpressionsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('clientInfo')) {
-      clientInfo = GoogleMapsUnityClientInfo.fromJson(
-          _json['clientInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('impressions')) {
-      impressions = (_json['impressions'] as core.List)
-          .map<GoogleMapsPlayablelocationsV3Impression>((value) =>
-              GoogleMapsPlayablelocationsV3Impression.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('requestId')) {
-      requestId = _json['requestId'] as core.String;
-    }
-  }
+  GoogleMapsPlayablelocationsV3LogImpressionsRequest.fromJson(core.Map _json)
+      : this(
+          clientInfo: _json.containsKey('clientInfo')
+              ? GoogleMapsUnityClientInfo.fromJson(
+                  _json['clientInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          impressions: _json.containsKey('impressions')
+              ? (_json['impressions'] as core.List)
+                  .map<GoogleMapsPlayablelocationsV3Impression>((value) =>
+                      GoogleMapsPlayablelocationsV3Impression.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          requestId: _json.containsKey('requestId')
+              ? _json['requestId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clientInfo != null) 'clientInfo': clientInfo!.toJson(),
@@ -318,25 +328,29 @@ class GoogleMapsPlayablelocationsV3LogPlayerReportsRequest {
   /// Required.
   core.String? requestId;
 
-  GoogleMapsPlayablelocationsV3LogPlayerReportsRequest();
+  GoogleMapsPlayablelocationsV3LogPlayerReportsRequest({
+    this.clientInfo,
+    this.playerReports,
+    this.requestId,
+  });
 
-  GoogleMapsPlayablelocationsV3LogPlayerReportsRequest.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('clientInfo')) {
-      clientInfo = GoogleMapsUnityClientInfo.fromJson(
-          _json['clientInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('playerReports')) {
-      playerReports = (_json['playerReports'] as core.List)
-          .map<GoogleMapsPlayablelocationsV3PlayerReport>((value) =>
-              GoogleMapsPlayablelocationsV3PlayerReport.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('requestId')) {
-      requestId = _json['requestId'] as core.String;
-    }
-  }
+  GoogleMapsPlayablelocationsV3LogPlayerReportsRequest.fromJson(core.Map _json)
+      : this(
+          clientInfo: _json.containsKey('clientInfo')
+              ? GoogleMapsUnityClientInfo.fromJson(
+                  _json['clientInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          playerReports: _json.containsKey('playerReports')
+              ? (_json['playerReports'] as core.List)
+                  .map<GoogleMapsPlayablelocationsV3PlayerReport>((value) =>
+                      GoogleMapsPlayablelocationsV3PlayerReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          requestId: _json.containsKey('requestId')
+              ? _json['requestId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clientInfo != null) 'clientInfo': clientInfo!.toJson(),
@@ -386,24 +400,30 @@ class GoogleMapsPlayablelocationsV3PlayerReport {
   /// Required.
   core.List<core.String>? reasons;
 
-  GoogleMapsPlayablelocationsV3PlayerReport();
+  GoogleMapsPlayablelocationsV3PlayerReport({
+    this.languageCode,
+    this.locationName,
+    this.reasonDetails,
+    this.reasons,
+  });
 
-  GoogleMapsPlayablelocationsV3PlayerReport.fromJson(core.Map _json) {
-    if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'] as core.String;
-    }
-    if (_json.containsKey('locationName')) {
-      locationName = _json['locationName'] as core.String;
-    }
-    if (_json.containsKey('reasonDetails')) {
-      reasonDetails = _json['reasonDetails'] as core.String;
-    }
-    if (_json.containsKey('reasons')) {
-      reasons = (_json['reasons'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  GoogleMapsPlayablelocationsV3PlayerReport.fromJson(core.Map _json)
+      : this(
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
+          locationName: _json.containsKey('locationName')
+              ? _json['locationName'] as core.String
+              : null,
+          reasonDetails: _json.containsKey('reasonDetails')
+              ? _json['reasonDetails'] as core.String
+              : null,
+          reasons: _json.containsKey('reasons')
+              ? (_json['reasons'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (languageCode != null) 'languageCode': languageCode!,
@@ -429,13 +449,16 @@ class GoogleMapsPlayablelocationsV3SampleAreaFilter {
   /// Required.
   core.String? s2CellId;
 
-  GoogleMapsPlayablelocationsV3SampleAreaFilter();
+  GoogleMapsPlayablelocationsV3SampleAreaFilter({
+    this.s2CellId,
+  });
 
-  GoogleMapsPlayablelocationsV3SampleAreaFilter.fromJson(core.Map _json) {
-    if (_json.containsKey('s2CellId')) {
-      s2CellId = _json['s2CellId'] as core.String;
-    }
-  }
+  GoogleMapsPlayablelocationsV3SampleAreaFilter.fromJson(core.Map _json)
+      : this(
+          s2CellId: _json.containsKey('s2CellId')
+              ? _json['s2CellId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (s2CellId != null) 's2CellId': s2CellId!,
@@ -470,20 +493,25 @@ class GoogleMapsPlayablelocationsV3SampleCriterion {
   /// Required.
   core.int? gameObjectType;
 
-  GoogleMapsPlayablelocationsV3SampleCriterion();
+  GoogleMapsPlayablelocationsV3SampleCriterion({
+    this.fieldsToReturn,
+    this.filter,
+    this.gameObjectType,
+  });
 
-  GoogleMapsPlayablelocationsV3SampleCriterion.fromJson(core.Map _json) {
-    if (_json.containsKey('fieldsToReturn')) {
-      fieldsToReturn = _json['fieldsToReturn'] as core.String;
-    }
-    if (_json.containsKey('filter')) {
-      filter = GoogleMapsPlayablelocationsV3SampleFilter.fromJson(
-          _json['filter'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('gameObjectType')) {
-      gameObjectType = _json['gameObjectType'] as core.int;
-    }
-  }
+  GoogleMapsPlayablelocationsV3SampleCriterion.fromJson(core.Map _json)
+      : this(
+          fieldsToReturn: _json.containsKey('fieldsToReturn')
+              ? _json['fieldsToReturn'] as core.String
+              : null,
+          filter: _json.containsKey('filter')
+              ? GoogleMapsPlayablelocationsV3SampleFilter.fromJson(
+                  _json['filter'] as core.Map<core.String, core.dynamic>)
+              : null,
+          gameObjectType: _json.containsKey('gameObjectType')
+              ? _json['gameObjectType'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fieldsToReturn != null) 'fieldsToReturn': fieldsToReturn!,
@@ -509,22 +537,27 @@ class GoogleMapsPlayablelocationsV3SampleFilter {
   /// By default the minimum distance between locations is 200m.
   GoogleMapsPlayablelocationsV3SampleSpacingOptions? spacing;
 
-  GoogleMapsPlayablelocationsV3SampleFilter();
+  GoogleMapsPlayablelocationsV3SampleFilter({
+    this.includedTypes,
+    this.maxLocationCount,
+    this.spacing,
+  });
 
-  GoogleMapsPlayablelocationsV3SampleFilter.fromJson(core.Map _json) {
-    if (_json.containsKey('includedTypes')) {
-      includedTypes = (_json['includedTypes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('maxLocationCount')) {
-      maxLocationCount = _json['maxLocationCount'] as core.int;
-    }
-    if (_json.containsKey('spacing')) {
-      spacing = GoogleMapsPlayablelocationsV3SampleSpacingOptions.fromJson(
-          _json['spacing'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleMapsPlayablelocationsV3SampleFilter.fromJson(core.Map _json)
+      : this(
+          includedTypes: _json.containsKey('includedTypes')
+              ? (_json['includedTypes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          maxLocationCount: _json.containsKey('maxLocationCount')
+              ? _json['maxLocationCount'] as core.int
+              : null,
+          spacing: _json.containsKey('spacing')
+              ? GoogleMapsPlayablelocationsV3SampleSpacingOptions.fromJson(
+                  _json['spacing'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (includedTypes != null) 'includedTypes': includedTypes!,
@@ -567,32 +600,38 @@ class GoogleMapsPlayablelocationsV3SamplePlayableLocation {
   /// might not be available for all playable locations.
   core.List<core.String>? types;
 
-  GoogleMapsPlayablelocationsV3SamplePlayableLocation();
+  GoogleMapsPlayablelocationsV3SamplePlayableLocation({
+    this.centerPoint,
+    this.name,
+    this.placeId,
+    this.plusCode,
+    this.snappedPoint,
+    this.types,
+  });
 
-  GoogleMapsPlayablelocationsV3SamplePlayableLocation.fromJson(core.Map _json) {
-    if (_json.containsKey('centerPoint')) {
-      centerPoint = GoogleTypeLatLng.fromJson(
-          _json['centerPoint'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('placeId')) {
-      placeId = _json['placeId'] as core.String;
-    }
-    if (_json.containsKey('plusCode')) {
-      plusCode = _json['plusCode'] as core.String;
-    }
-    if (_json.containsKey('snappedPoint')) {
-      snappedPoint = GoogleTypeLatLng.fromJson(
-          _json['snappedPoint'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('types')) {
-      types = (_json['types'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  GoogleMapsPlayablelocationsV3SamplePlayableLocation.fromJson(core.Map _json)
+      : this(
+          centerPoint: _json.containsKey('centerPoint')
+              ? GoogleTypeLatLng.fromJson(
+                  _json['centerPoint'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          placeId: _json.containsKey('placeId')
+              ? _json['placeId'] as core.String
+              : null,
+          plusCode: _json.containsKey('plusCode')
+              ? _json['plusCode'] as core.String
+              : null,
+          snappedPoint: _json.containsKey('snappedPoint')
+              ? GoogleTypeLatLng.fromJson(
+                  _json['snappedPoint'] as core.Map<core.String, core.dynamic>)
+              : null,
+          types: _json.containsKey('types')
+              ? (_json['types'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (centerPoint != null) 'centerPoint': centerPoint!.toJson(),
@@ -609,18 +648,23 @@ class GoogleMapsPlayablelocationsV3SamplePlayableLocationList {
   /// A list of playable locations for this game object type.
   core.List<GoogleMapsPlayablelocationsV3SamplePlayableLocation>? locations;
 
-  GoogleMapsPlayablelocationsV3SamplePlayableLocationList();
+  GoogleMapsPlayablelocationsV3SamplePlayableLocationList({
+    this.locations,
+  });
 
   GoogleMapsPlayablelocationsV3SamplePlayableLocationList.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('locations')) {
-      locations = (_json['locations'] as core.List)
-          .map<GoogleMapsPlayablelocationsV3SamplePlayableLocation>((value) =>
-              GoogleMapsPlayablelocationsV3SamplePlayableLocation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+      core.Map _json)
+      : this(
+          locations: _json.containsKey('locations')
+              ? (_json['locations'] as core.List)
+                  .map<GoogleMapsPlayablelocationsV3SamplePlayableLocation>(
+                      (value) =>
+                          GoogleMapsPlayablelocationsV3SamplePlayableLocation
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (locations != null)
@@ -655,22 +699,26 @@ class GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest {
   /// Required.
   core.List<GoogleMapsPlayablelocationsV3SampleCriterion>? criteria;
 
-  GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest();
+  GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest({
+    this.areaFilter,
+    this.criteria,
+  });
 
   GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('areaFilter')) {
-      areaFilter = GoogleMapsPlayablelocationsV3SampleAreaFilter.fromJson(
-          _json['areaFilter'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('criteria')) {
-      criteria = (_json['criteria'] as core.List)
-          .map<GoogleMapsPlayablelocationsV3SampleCriterion>((value) =>
-              GoogleMapsPlayablelocationsV3SampleCriterion.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+      core.Map _json)
+      : this(
+          areaFilter: _json.containsKey('areaFilter')
+              ? GoogleMapsPlayablelocationsV3SampleAreaFilter.fromJson(
+                  _json['areaFilter'] as core.Map<core.String, core.dynamic>)
+              : null,
+          criteria: _json.containsKey('criteria')
+              ? (_json['criteria'] as core.List)
+                  .map<GoogleMapsPlayablelocationsV3SampleCriterion>((value) =>
+                      GoogleMapsPlayablelocationsV3SampleCriterion.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (areaFilter != null) 'areaFilter': areaFilter!.toJson(),
@@ -698,25 +746,28 @@ class GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse {
   /// Required.
   core.String? ttl;
 
-  GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse();
+  GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse({
+    this.locationsPerGameObjectType,
+    this.ttl,
+  });
 
   GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('locationsPerGameObjectType')) {
-      locationsPerGameObjectType = (_json['locationsPerGameObjectType']
-              as core.Map<core.String, core.dynamic>)
-          .map(
-        (key, item) => core.MapEntry(
-          key,
-          GoogleMapsPlayablelocationsV3SamplePlayableLocationList.fromJson(
-              item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('ttl')) {
-      ttl = _json['ttl'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          locationsPerGameObjectType: _json
+                  .containsKey('locationsPerGameObjectType')
+              ? (_json['locationsPerGameObjectType']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    GoogleMapsPlayablelocationsV3SamplePlayableLocationList
+                        .fromJson(item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          ttl: _json.containsKey('ttl') ? _json['ttl'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (locationsPerGameObjectType != null)
@@ -765,16 +816,20 @@ class GoogleMapsPlayablelocationsV3SampleSpacingOptions {
   /// snapped to the sidewalk of the nearest road (when a nearby road exists).
   core.String? pointType;
 
-  GoogleMapsPlayablelocationsV3SampleSpacingOptions();
+  GoogleMapsPlayablelocationsV3SampleSpacingOptions({
+    this.minSpacingMeters,
+    this.pointType,
+  });
 
-  GoogleMapsPlayablelocationsV3SampleSpacingOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('minSpacingMeters')) {
-      minSpacingMeters = (_json['minSpacingMeters'] as core.num).toDouble();
-    }
-    if (_json.containsKey('pointType')) {
-      pointType = _json['pointType'] as core.String;
-    }
-  }
+  GoogleMapsPlayablelocationsV3SampleSpacingOptions.fromJson(core.Map _json)
+      : this(
+          minSpacingMeters: _json.containsKey('minSpacingMeters')
+              ? (_json['minSpacingMeters'] as core.num).toDouble()
+              : null,
+          pointType: _json.containsKey('pointType')
+              ? _json['pointType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (minSpacingMeters != null) 'minSpacingMeters': minSpacingMeters!,
@@ -833,34 +888,44 @@ class GoogleMapsUnityClientInfo {
   /// - "WEB_GL" : WebGL.
   core.String? platform;
 
-  GoogleMapsUnityClientInfo();
+  GoogleMapsUnityClientInfo({
+    this.apiClient,
+    this.applicationId,
+    this.applicationVersion,
+    this.deviceModel,
+    this.languageCode,
+    this.operatingSystem,
+    this.operatingSystemBuild,
+    this.platform,
+  });
 
-  GoogleMapsUnityClientInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('apiClient')) {
-      apiClient = _json['apiClient'] as core.String;
-    }
-    if (_json.containsKey('applicationId')) {
-      applicationId = _json['applicationId'] as core.String;
-    }
-    if (_json.containsKey('applicationVersion')) {
-      applicationVersion = _json['applicationVersion'] as core.String;
-    }
-    if (_json.containsKey('deviceModel')) {
-      deviceModel = _json['deviceModel'] as core.String;
-    }
-    if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'] as core.String;
-    }
-    if (_json.containsKey('operatingSystem')) {
-      operatingSystem = _json['operatingSystem'] as core.String;
-    }
-    if (_json.containsKey('operatingSystemBuild')) {
-      operatingSystemBuild = _json['operatingSystemBuild'] as core.String;
-    }
-    if (_json.containsKey('platform')) {
-      platform = _json['platform'] as core.String;
-    }
-  }
+  GoogleMapsUnityClientInfo.fromJson(core.Map _json)
+      : this(
+          apiClient: _json.containsKey('apiClient')
+              ? _json['apiClient'] as core.String
+              : null,
+          applicationId: _json.containsKey('applicationId')
+              ? _json['applicationId'] as core.String
+              : null,
+          applicationVersion: _json.containsKey('applicationVersion')
+              ? _json['applicationVersion'] as core.String
+              : null,
+          deviceModel: _json.containsKey('deviceModel')
+              ? _json['deviceModel'] as core.String
+              : null,
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
+          operatingSystem: _json.containsKey('operatingSystem')
+              ? _json['operatingSystem'] as core.String
+              : null,
+          operatingSystemBuild: _json.containsKey('operatingSystemBuild')
+              ? _json['operatingSystemBuild'] as core.String
+              : null,
+          platform: _json.containsKey('platform')
+              ? _json['platform'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiClient != null) 'apiClient': apiClient!,
@@ -892,16 +957,20 @@ class GoogleTypeLatLng {
   /// It must be in the range \[-180.0, +180.0\].
   core.double? longitude;
 
-  GoogleTypeLatLng();
+  GoogleTypeLatLng({
+    this.latitude,
+    this.longitude,
+  });
 
-  GoogleTypeLatLng.fromJson(core.Map _json) {
-    if (_json.containsKey('latitude')) {
-      latitude = (_json['latitude'] as core.num).toDouble();
-    }
-    if (_json.containsKey('longitude')) {
-      longitude = (_json['longitude'] as core.num).toDouble();
-    }
-  }
+  GoogleTypeLatLng.fromJson(core.Map _json)
+      : this(
+          latitude: _json.containsKey('latitude')
+              ? (_json['latitude'] as core.num).toDouble()
+              : null,
+          longitude: _json.containsKey('longitude')
+              ? (_json['longitude'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (latitude != null) 'latitude': latitude!,

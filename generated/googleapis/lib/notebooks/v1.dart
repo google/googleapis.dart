@@ -2279,16 +2279,18 @@ class AcceleratorConfig {
   /// - "TPU_V3" : (Coming soon) Accelerator type is TPU V3.
   core.String? type;
 
-  AcceleratorConfig();
+  AcceleratorConfig({
+    this.coreCount,
+    this.type,
+  });
 
-  AcceleratorConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('coreCount')) {
-      coreCount = _json['coreCount'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  AcceleratorConfig.fromJson(core.Map _json)
+      : this(
+          coreCount: _json.containsKey('coreCount')
+              ? _json['coreCount'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (coreCount != null) 'coreCount': coreCount!,
@@ -2345,22 +2347,25 @@ class Binding {
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String? role;
 
-  Binding();
+  Binding({
+    this.condition,
+    this.members,
+    this.role,
+  });
 
-  Binding.fromJson(core.Map _json) {
-    if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(
-          _json['condition'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('members')) {
-      members = (_json['members'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('role')) {
-      role = _json['role'] as core.String;
-    }
-  }
+  Binding.fromJson(core.Map _json)
+      : this(
+          condition: _json.containsKey('condition')
+              ? Expr.fromJson(
+                  _json['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          members: _json.containsKey('members')
+              ? (_json['members'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!.toJson(),
@@ -2395,16 +2400,18 @@ class ContainerImage {
   /// If not specified, this defaults to the latest tag.
   core.String? tag;
 
-  ContainerImage();
+  ContainerImage({
+    this.repository,
+    this.tag,
+  });
 
-  ContainerImage.fromJson(core.Map _json) {
-    if (_json.containsKey('repository')) {
-      repository = _json['repository'] as core.String;
-    }
-    if (_json.containsKey('tag')) {
-      tag = _json['tag'] as core.String;
-    }
-  }
+  ContainerImage.fromJson(core.Map _json)
+      : this(
+          repository: _json.containsKey('repository')
+              ? _json['repository'] as core.String
+              : null,
+          tag: _json.containsKey('tag') ? _json['tag'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (repository != null) 'repository': repository!,
@@ -2486,51 +2493,56 @@ class Disk {
   /// Valid values: PERSISTENT SCRATCH
   core.String? type;
 
-  Disk();
+  Disk({
+    this.autoDelete,
+    this.boot,
+    this.deviceName,
+    this.diskSizeGb,
+    this.guestOsFeatures,
+    this.index,
+    this.interface,
+    this.kind,
+    this.licenses,
+    this.mode,
+    this.source,
+    this.type,
+  });
 
-  Disk.fromJson(core.Map _json) {
-    if (_json.containsKey('autoDelete')) {
-      autoDelete = _json['autoDelete'] as core.bool;
-    }
-    if (_json.containsKey('boot')) {
-      boot = _json['boot'] as core.bool;
-    }
-    if (_json.containsKey('deviceName')) {
-      deviceName = _json['deviceName'] as core.String;
-    }
-    if (_json.containsKey('diskSizeGb')) {
-      diskSizeGb = _json['diskSizeGb'] as core.String;
-    }
-    if (_json.containsKey('guestOsFeatures')) {
-      guestOsFeatures = (_json['guestOsFeatures'] as core.List)
-          .map<GuestOsFeature>((value) => GuestOsFeature.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('index')) {
-      index = _json['index'] as core.String;
-    }
-    if (_json.containsKey('interface')) {
-      interface = _json['interface'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('licenses')) {
-      licenses = (_json['licenses'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('mode')) {
-      mode = _json['mode'] as core.String;
-    }
-    if (_json.containsKey('source')) {
-      source = _json['source'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  Disk.fromJson(core.Map _json)
+      : this(
+          autoDelete: _json.containsKey('autoDelete')
+              ? _json['autoDelete'] as core.bool
+              : null,
+          boot: _json.containsKey('boot') ? _json['boot'] as core.bool : null,
+          deviceName: _json.containsKey('deviceName')
+              ? _json['deviceName'] as core.String
+              : null,
+          diskSizeGb: _json.containsKey('diskSizeGb')
+              ? _json['diskSizeGb'] as core.String
+              : null,
+          guestOsFeatures: _json.containsKey('guestOsFeatures')
+              ? (_json['guestOsFeatures'] as core.List)
+                  .map<GuestOsFeature>((value) => GuestOsFeature.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          index:
+              _json.containsKey('index') ? _json['index'] as core.String : null,
+          interface: _json.containsKey('interface')
+              ? _json['interface'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          licenses: _json.containsKey('licenses')
+              ? (_json['licenses'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          mode: _json.containsKey('mode') ? _json['mode'] as core.String : null,
+          source: _json.containsKey('source')
+              ? _json['source'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoDelete != null) 'autoDelete': autoDelete!,
@@ -2579,13 +2591,16 @@ class EncryptionConfig {
   /// `projects/{PROJECT_ID}/locations/{REGION}/keyRings/{KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
   core.String? kmsKey;
 
-  EncryptionConfig();
+  EncryptionConfig({
+    this.kmsKey,
+  });
 
-  EncryptionConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('kmsKey')) {
-      kmsKey = _json['kmsKey'] as core.String;
-    }
-  }
+  EncryptionConfig.fromJson(core.Map _json)
+      : this(
+          kmsKey: _json.containsKey('kmsKey')
+              ? _json['kmsKey'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kmsKey != null) 'kmsKey': kmsKey!,
@@ -2627,33 +2642,40 @@ class Environment {
   /// Use a Compute Engine VM image to start the notebook instance.
   VmImage? vmImage;
 
-  Environment();
+  Environment({
+    this.containerImage,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.name,
+    this.postStartupScript,
+    this.vmImage,
+  });
 
-  Environment.fromJson(core.Map _json) {
-    if (_json.containsKey('containerImage')) {
-      containerImage = ContainerImage.fromJson(
-          _json['containerImage'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('postStartupScript')) {
-      postStartupScript = _json['postStartupScript'] as core.String;
-    }
-    if (_json.containsKey('vmImage')) {
-      vmImage = VmImage.fromJson(
-          _json['vmImage'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Environment.fromJson(core.Map _json)
+      : this(
+          containerImage: _json.containsKey('containerImage')
+              ? ContainerImage.fromJson(_json['containerImage']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          postStartupScript: _json.containsKey('postStartupScript')
+              ? _json['postStartupScript'] as core.String
+              : null,
+          vmImage: _json.containsKey('vmImage')
+              ? VmImage.fromJson(
+                  _json['vmImage'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (containerImage != null) 'containerImage': containerImage!.toJson(),
@@ -2722,35 +2744,42 @@ class Execution {
   /// Output only.
   core.String? updateTime;
 
-  Execution();
+  Execution({
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.executionTemplate,
+    this.name,
+    this.outputNotebookFile,
+    this.state,
+    this.updateTime,
+  });
 
-  Execution.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('executionTemplate')) {
-      executionTemplate = ExecutionTemplate.fromJson(
-          _json['executionTemplate'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('outputNotebookFile')) {
-      outputNotebookFile = _json['outputNotebookFile'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  Execution.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          executionTemplate: _json.containsKey('executionTemplate')
+              ? ExecutionTemplate.fromJson(_json['executionTemplate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          outputNotebookFile: _json.containsKey('outputNotebookFile')
+              ? _json['outputNotebookFile'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -2865,46 +2894,58 @@ class ExecutionTemplate {
   /// service account.
   core.String? serviceAccount;
 
-  ExecutionTemplate();
+  ExecutionTemplate({
+    this.acceleratorConfig,
+    this.containerImageUri,
+    this.inputNotebookFile,
+    this.labels,
+    this.masterType,
+    this.outputNotebookFolder,
+    this.parameters,
+    this.paramsYamlFile,
+    this.scaleTier,
+    this.serviceAccount,
+  });
 
-  ExecutionTemplate.fromJson(core.Map _json) {
-    if (_json.containsKey('acceleratorConfig')) {
-      acceleratorConfig = SchedulerAcceleratorConfig.fromJson(
-          _json['acceleratorConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('containerImageUri')) {
-      containerImageUri = _json['containerImageUri'] as core.String;
-    }
-    if (_json.containsKey('inputNotebookFile')) {
-      inputNotebookFile = _json['inputNotebookFile'] as core.String;
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('masterType')) {
-      masterType = _json['masterType'] as core.String;
-    }
-    if (_json.containsKey('outputNotebookFolder')) {
-      outputNotebookFolder = _json['outputNotebookFolder'] as core.String;
-    }
-    if (_json.containsKey('parameters')) {
-      parameters = _json['parameters'] as core.String;
-    }
-    if (_json.containsKey('paramsYamlFile')) {
-      paramsYamlFile = _json['paramsYamlFile'] as core.String;
-    }
-    if (_json.containsKey('scaleTier')) {
-      scaleTier = _json['scaleTier'] as core.String;
-    }
-    if (_json.containsKey('serviceAccount')) {
-      serviceAccount = _json['serviceAccount'] as core.String;
-    }
-  }
+  ExecutionTemplate.fromJson(core.Map _json)
+      : this(
+          acceleratorConfig: _json.containsKey('acceleratorConfig')
+              ? SchedulerAcceleratorConfig.fromJson(_json['acceleratorConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          containerImageUri: _json.containsKey('containerImageUri')
+              ? _json['containerImageUri'] as core.String
+              : null,
+          inputNotebookFile: _json.containsKey('inputNotebookFile')
+              ? _json['inputNotebookFile'] as core.String
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          masterType: _json.containsKey('masterType')
+              ? _json['masterType'] as core.String
+              : null,
+          outputNotebookFolder: _json.containsKey('outputNotebookFolder')
+              ? _json['outputNotebookFolder'] as core.String
+              : null,
+          parameters: _json.containsKey('parameters')
+              ? _json['parameters'] as core.String
+              : null,
+          paramsYamlFile: _json.containsKey('paramsYamlFile')
+              ? _json['paramsYamlFile'] as core.String
+              : null,
+          scaleTier: _json.containsKey('scaleTier')
+              ? _json['scaleTier'] as core.String
+              : null,
+          serviceAccount: _json.containsKey('serviceAccount')
+              ? _json['serviceAccount'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (acceleratorConfig != null)
@@ -2966,22 +3007,27 @@ class Expr {
   /// Optional.
   core.String? title;
 
-  Expr();
+  Expr({
+    this.description,
+    this.expression,
+    this.location,
+    this.title,
+  });
 
-  Expr.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('expression')) {
-      expression = _json['expression'] as core.String;
-    }
-    if (_json.containsKey('location')) {
-      location = _json['location'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  Expr.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          expression: _json.containsKey('expression')
+              ? _json['expression'] as core.String
+              : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -3017,22 +3063,26 @@ class GetInstanceHealthResponse {
   /// running. Applies to ACTIVE state.
   core.String? healthState;
 
-  GetInstanceHealthResponse();
+  GetInstanceHealthResponse({
+    this.healthInfo,
+    this.healthState,
+  });
 
-  GetInstanceHealthResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('healthInfo')) {
-      healthInfo =
-          (_json['healthInfo'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('healthState')) {
-      healthState = _json['healthState'] as core.String;
-    }
-  }
+  GetInstanceHealthResponse.fromJson(core.Map _json)
+      : this(
+          healthInfo: _json.containsKey('healthInfo')
+              ? (_json['healthInfo'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          healthState: _json.containsKey('healthState')
+              ? _json['healthState'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (healthInfo != null) 'healthInfo': healthInfo!,
@@ -3049,13 +3099,14 @@ class GuestOsFeature {
   /// SECURE_BOOT UEFI_COMPATIBLE VIRTIO_SCSI_MULTIQUEUE WINDOWS
   core.String? type;
 
-  GuestOsFeature();
+  GuestOsFeature({
+    this.type,
+  });
 
-  GuestOsFeature.fromJson(core.Map _json) {
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  GuestOsFeature.fromJson(core.Map _json)
+      : this(
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
@@ -3287,136 +3338,168 @@ class Instance {
   /// Use a Compute Engine VM image to start the notebook instance.
   VmImage? vmImage;
 
-  Instance();
+  Instance({
+    this.acceleratorConfig,
+    this.bootDiskSizeGb,
+    this.bootDiskType,
+    this.containerImage,
+    this.createTime,
+    this.customGpuDriverPath,
+    this.dataDiskSizeGb,
+    this.dataDiskType,
+    this.diskEncryption,
+    this.disks,
+    this.installGpuDriver,
+    this.instanceOwners,
+    this.kmsKey,
+    this.labels,
+    this.machineType,
+    this.metadata,
+    this.name,
+    this.network,
+    this.nicType,
+    this.noProxyAccess,
+    this.noPublicIp,
+    this.noRemoveDataDisk,
+    this.postStartupScript,
+    this.proxyUri,
+    this.serviceAccount,
+    this.serviceAccountScopes,
+    this.shieldedInstanceConfig,
+    this.state,
+    this.subnet,
+    this.tags,
+    this.updateTime,
+    this.upgradeHistory,
+    this.vmImage,
+  });
 
-  Instance.fromJson(core.Map _json) {
-    if (_json.containsKey('acceleratorConfig')) {
-      acceleratorConfig = AcceleratorConfig.fromJson(
-          _json['acceleratorConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('bootDiskSizeGb')) {
-      bootDiskSizeGb = _json['bootDiskSizeGb'] as core.String;
-    }
-    if (_json.containsKey('bootDiskType')) {
-      bootDiskType = _json['bootDiskType'] as core.String;
-    }
-    if (_json.containsKey('containerImage')) {
-      containerImage = ContainerImage.fromJson(
-          _json['containerImage'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('customGpuDriverPath')) {
-      customGpuDriverPath = _json['customGpuDriverPath'] as core.String;
-    }
-    if (_json.containsKey('dataDiskSizeGb')) {
-      dataDiskSizeGb = _json['dataDiskSizeGb'] as core.String;
-    }
-    if (_json.containsKey('dataDiskType')) {
-      dataDiskType = _json['dataDiskType'] as core.String;
-    }
-    if (_json.containsKey('diskEncryption')) {
-      diskEncryption = _json['diskEncryption'] as core.String;
-    }
-    if (_json.containsKey('disks')) {
-      disks = (_json['disks'] as core.List)
-          .map<Disk>((value) =>
-              Disk.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('installGpuDriver')) {
-      installGpuDriver = _json['installGpuDriver'] as core.bool;
-    }
-    if (_json.containsKey('instanceOwners')) {
-      instanceOwners = (_json['instanceOwners'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('kmsKey')) {
-      kmsKey = _json['kmsKey'] as core.String;
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('machineType')) {
-      machineType = _json['machineType'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('network')) {
-      network = _json['network'] as core.String;
-    }
-    if (_json.containsKey('nicType')) {
-      nicType = _json['nicType'] as core.String;
-    }
-    if (_json.containsKey('noProxyAccess')) {
-      noProxyAccess = _json['noProxyAccess'] as core.bool;
-    }
-    if (_json.containsKey('noPublicIp')) {
-      noPublicIp = _json['noPublicIp'] as core.bool;
-    }
-    if (_json.containsKey('noRemoveDataDisk')) {
-      noRemoveDataDisk = _json['noRemoveDataDisk'] as core.bool;
-    }
-    if (_json.containsKey('postStartupScript')) {
-      postStartupScript = _json['postStartupScript'] as core.String;
-    }
-    if (_json.containsKey('proxyUri')) {
-      proxyUri = _json['proxyUri'] as core.String;
-    }
-    if (_json.containsKey('serviceAccount')) {
-      serviceAccount = _json['serviceAccount'] as core.String;
-    }
-    if (_json.containsKey('serviceAccountScopes')) {
-      serviceAccountScopes = (_json['serviceAccountScopes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('shieldedInstanceConfig')) {
-      shieldedInstanceConfig = ShieldedInstanceConfig.fromJson(
-          _json['shieldedInstanceConfig']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('subnet')) {
-      subnet = _json['subnet'] as core.String;
-    }
-    if (_json.containsKey('tags')) {
-      tags = (_json['tags'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-    if (_json.containsKey('upgradeHistory')) {
-      upgradeHistory = (_json['upgradeHistory'] as core.List)
-          .map<UpgradeHistoryEntry>((value) => UpgradeHistoryEntry.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('vmImage')) {
-      vmImage = VmImage.fromJson(
-          _json['vmImage'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Instance.fromJson(core.Map _json)
+      : this(
+          acceleratorConfig: _json.containsKey('acceleratorConfig')
+              ? AcceleratorConfig.fromJson(_json['acceleratorConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          bootDiskSizeGb: _json.containsKey('bootDiskSizeGb')
+              ? _json['bootDiskSizeGb'] as core.String
+              : null,
+          bootDiskType: _json.containsKey('bootDiskType')
+              ? _json['bootDiskType'] as core.String
+              : null,
+          containerImage: _json.containsKey('containerImage')
+              ? ContainerImage.fromJson(_json['containerImage']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          customGpuDriverPath: _json.containsKey('customGpuDriverPath')
+              ? _json['customGpuDriverPath'] as core.String
+              : null,
+          dataDiskSizeGb: _json.containsKey('dataDiskSizeGb')
+              ? _json['dataDiskSizeGb'] as core.String
+              : null,
+          dataDiskType: _json.containsKey('dataDiskType')
+              ? _json['dataDiskType'] as core.String
+              : null,
+          diskEncryption: _json.containsKey('diskEncryption')
+              ? _json['diskEncryption'] as core.String
+              : null,
+          disks: _json.containsKey('disks')
+              ? (_json['disks'] as core.List)
+                  .map<Disk>((value) => Disk.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          installGpuDriver: _json.containsKey('installGpuDriver')
+              ? _json['installGpuDriver'] as core.bool
+              : null,
+          instanceOwners: _json.containsKey('instanceOwners')
+              ? (_json['instanceOwners'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          kmsKey: _json.containsKey('kmsKey')
+              ? _json['kmsKey'] as core.String
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          machineType: _json.containsKey('machineType')
+              ? _json['machineType'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          network: _json.containsKey('network')
+              ? _json['network'] as core.String
+              : null,
+          nicType: _json.containsKey('nicType')
+              ? _json['nicType'] as core.String
+              : null,
+          noProxyAccess: _json.containsKey('noProxyAccess')
+              ? _json['noProxyAccess'] as core.bool
+              : null,
+          noPublicIp: _json.containsKey('noPublicIp')
+              ? _json['noPublicIp'] as core.bool
+              : null,
+          noRemoveDataDisk: _json.containsKey('noRemoveDataDisk')
+              ? _json['noRemoveDataDisk'] as core.bool
+              : null,
+          postStartupScript: _json.containsKey('postStartupScript')
+              ? _json['postStartupScript'] as core.String
+              : null,
+          proxyUri: _json.containsKey('proxyUri')
+              ? _json['proxyUri'] as core.String
+              : null,
+          serviceAccount: _json.containsKey('serviceAccount')
+              ? _json['serviceAccount'] as core.String
+              : null,
+          serviceAccountScopes: _json.containsKey('serviceAccountScopes')
+              ? (_json['serviceAccountScopes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          shieldedInstanceConfig: _json.containsKey('shieldedInstanceConfig')
+              ? ShieldedInstanceConfig.fromJson(_json['shieldedInstanceConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          subnet: _json.containsKey('subnet')
+              ? _json['subnet'] as core.String
+              : null,
+          tags: _json.containsKey('tags')
+              ? (_json['tags'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+          upgradeHistory: _json.containsKey('upgradeHistory')
+              ? (_json['upgradeHistory'] as core.List)
+                  .map<UpgradeHistoryEntry>((value) =>
+                      UpgradeHistoryEntry.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          vmImage: _json.containsKey('vmImage')
+              ? VmImage.fromJson(
+                  _json['vmImage'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (acceleratorConfig != null)
@@ -3474,16 +3557,20 @@ class InstanceConfig {
   /// Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
   core.String? notebookUpgradeSchedule;
 
-  InstanceConfig();
+  InstanceConfig({
+    this.enableHealthMonitoring,
+    this.notebookUpgradeSchedule,
+  });
 
-  InstanceConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('enableHealthMonitoring')) {
-      enableHealthMonitoring = _json['enableHealthMonitoring'] as core.bool;
-    }
-    if (_json.containsKey('notebookUpgradeSchedule')) {
-      notebookUpgradeSchedule = _json['notebookUpgradeSchedule'] as core.String;
-    }
-  }
+  InstanceConfig.fromJson(core.Map _json)
+      : this(
+          enableHealthMonitoring: _json.containsKey('enableHealthMonitoring')
+              ? _json['enableHealthMonitoring'] as core.bool
+              : null,
+          notebookUpgradeSchedule: _json.containsKey('notebookUpgradeSchedule')
+              ? _json['notebookUpgradeSchedule'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enableHealthMonitoring != null)
@@ -3513,22 +3600,28 @@ class IsInstanceUpgradeableResponse {
   /// If an instance is upgradeable.
   core.bool? upgradeable;
 
-  IsInstanceUpgradeableResponse();
+  IsInstanceUpgradeableResponse({
+    this.upgradeImage,
+    this.upgradeInfo,
+    this.upgradeVersion,
+    this.upgradeable,
+  });
 
-  IsInstanceUpgradeableResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('upgradeImage')) {
-      upgradeImage = _json['upgradeImage'] as core.String;
-    }
-    if (_json.containsKey('upgradeInfo')) {
-      upgradeInfo = _json['upgradeInfo'] as core.String;
-    }
-    if (_json.containsKey('upgradeVersion')) {
-      upgradeVersion = _json['upgradeVersion'] as core.String;
-    }
-    if (_json.containsKey('upgradeable')) {
-      upgradeable = _json['upgradeable'] as core.bool;
-    }
-  }
+  IsInstanceUpgradeableResponse.fromJson(core.Map _json)
+      : this(
+          upgradeImage: _json.containsKey('upgradeImage')
+              ? _json['upgradeImage'] as core.String
+              : null,
+          upgradeInfo: _json.containsKey('upgradeInfo')
+              ? _json['upgradeInfo'] as core.String
+              : null,
+          upgradeVersion: _json.containsKey('upgradeVersion')
+              ? _json['upgradeVersion'] as core.String
+              : null,
+          upgradeable: _json.containsKey('upgradeable')
+              ? _json['upgradeable'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (upgradeImage != null) 'upgradeImage': upgradeImage!,
@@ -3550,24 +3643,29 @@ class ListEnvironmentsResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListEnvironmentsResponse();
+  ListEnvironmentsResponse({
+    this.environments,
+    this.nextPageToken,
+    this.unreachable,
+  });
 
-  ListEnvironmentsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('environments')) {
-      environments = (_json['environments'] as core.List)
-          .map<Environment>((value) => Environment.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('unreachable')) {
-      unreachable = (_json['unreachable'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  ListEnvironmentsResponse.fromJson(core.Map _json)
+      : this(
+          environments: _json.containsKey('environments')
+              ? (_json['environments'] as core.List)
+                  .map<Environment>((value) => Environment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          unreachable: _json.containsKey('unreachable')
+              ? (_json['unreachable'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (environments != null)
@@ -3593,24 +3691,29 @@ class ListExecutionsResponse {
   /// 'projects/{project_id}/location/{location}/executions/classifier_train1'\].
   core.List<core.String>? unreachable;
 
-  ListExecutionsResponse();
+  ListExecutionsResponse({
+    this.executions,
+    this.nextPageToken,
+    this.unreachable,
+  });
 
-  ListExecutionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('executions')) {
-      executions = (_json['executions'] as core.List)
-          .map<Execution>((value) =>
-              Execution.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('unreachable')) {
-      unreachable = (_json['unreachable'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  ListExecutionsResponse.fromJson(core.Map _json)
+      : this(
+          executions: _json.containsKey('executions')
+              ? (_json['executions'] as core.List)
+                  .map<Execution>((value) => Execution.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          unreachable: _json.containsKey('unreachable')
+              ? (_json['unreachable'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (executions != null)
@@ -3635,24 +3738,29 @@ class ListInstancesResponse {
   /// will only contain either instances or unreachables,
   core.List<core.String>? unreachable;
 
-  ListInstancesResponse();
+  ListInstancesResponse({
+    this.instances,
+    this.nextPageToken,
+    this.unreachable,
+  });
 
-  ListInstancesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('instances')) {
-      instances = (_json['instances'] as core.List)
-          .map<Instance>((value) =>
-              Instance.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('unreachable')) {
-      unreachable = (_json['unreachable'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  ListInstancesResponse.fromJson(core.Map _json)
+      : this(
+          instances: _json.containsKey('instances')
+              ? (_json['instances'] as core.List)
+                  .map<Instance>((value) => Instance.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          unreachable: _json.containsKey('unreachable')
+              ? (_json['unreachable'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (instances != null)
@@ -3670,19 +3778,23 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse();
+  ListLocationsResponse({
+    this.locations,
+    this.nextPageToken,
+  });
 
-  ListLocationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('locations')) {
-      locations = (_json['locations'] as core.List)
-          .map<Location>((value) =>
-              Location.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListLocationsResponse.fromJson(core.Map _json)
+      : this(
+          locations: _json.containsKey('locations')
+              ? (_json['locations'] as core.List)
+                  .map<Location>((value) => Location.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (locations != null)
@@ -3699,19 +3811,23 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse();
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
 
-  ListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('operations')) {
-      operations = (_json['operations'] as core.List)
-          .map<Operation>((value) =>
-              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListOperationsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          operations: _json.containsKey('operations')
+              ? (_json['operations'] as core.List)
+                  .map<Operation>((value) => Operation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3735,24 +3851,29 @@ class ListRuntimesResponse {
   /// only contain either runtimes or unreachables,
   core.List<core.String>? unreachable;
 
-  ListRuntimesResponse();
+  ListRuntimesResponse({
+    this.nextPageToken,
+    this.runtimes,
+    this.unreachable,
+  });
 
-  ListRuntimesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('runtimes')) {
-      runtimes = (_json['runtimes'] as core.List)
-          .map<Runtime>((value) =>
-              Runtime.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('unreachable')) {
-      unreachable = (_json['unreachable'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  ListRuntimesResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          runtimes: _json.containsKey('runtimes')
+              ? (_json['runtimes'] as core.List)
+                  .map<Runtime>((value) => Runtime.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          unreachable: _json.containsKey('unreachable')
+              ? (_json['unreachable'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3778,24 +3899,29 @@ class ListSchedulesResponse {
   /// 'projects/{project_id}/location/{location}/schedules/weekly_sentiment'\].
   core.List<core.String>? unreachable;
 
-  ListSchedulesResponse();
+  ListSchedulesResponse({
+    this.nextPageToken,
+    this.schedules,
+    this.unreachable,
+  });
 
-  ListSchedulesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('schedules')) {
-      schedules = (_json['schedules'] as core.List)
-          .map<Schedule>((value) =>
-              Schedule.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('unreachable')) {
-      unreachable = (_json['unreachable'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  ListSchedulesResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          schedules: _json.containsKey('schedules')
+              ? (_json['schedules'] as core.List)
+                  .map<Schedule>((value) => Schedule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          unreachable: _json.containsKey('unreachable')
+              ? (_json['unreachable'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3897,52 +4023,57 @@ class LocalDisk {
   /// SCRATCH
   core.String? type;
 
-  LocalDisk();
+  LocalDisk({
+    this.autoDelete,
+    this.boot,
+    this.deviceName,
+    this.guestOsFeatures,
+    this.index,
+    this.initializeParams,
+    this.interface,
+    this.kind,
+    this.licenses,
+    this.mode,
+    this.source,
+    this.type,
+  });
 
-  LocalDisk.fromJson(core.Map _json) {
-    if (_json.containsKey('autoDelete')) {
-      autoDelete = _json['autoDelete'] as core.bool;
-    }
-    if (_json.containsKey('boot')) {
-      boot = _json['boot'] as core.bool;
-    }
-    if (_json.containsKey('deviceName')) {
-      deviceName = _json['deviceName'] as core.String;
-    }
-    if (_json.containsKey('guestOsFeatures')) {
-      guestOsFeatures = (_json['guestOsFeatures'] as core.List)
-          .map<RuntimeGuestOsFeature>((value) => RuntimeGuestOsFeature.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('index')) {
-      index = _json['index'] as core.int;
-    }
-    if (_json.containsKey('initializeParams')) {
-      initializeParams = LocalDiskInitializeParams.fromJson(
-          _json['initializeParams'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('interface')) {
-      interface = _json['interface'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('licenses')) {
-      licenses = (_json['licenses'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('mode')) {
-      mode = _json['mode'] as core.String;
-    }
-    if (_json.containsKey('source')) {
-      source = _json['source'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  LocalDisk.fromJson(core.Map _json)
+      : this(
+          autoDelete: _json.containsKey('autoDelete')
+              ? _json['autoDelete'] as core.bool
+              : null,
+          boot: _json.containsKey('boot') ? _json['boot'] as core.bool : null,
+          deviceName: _json.containsKey('deviceName')
+              ? _json['deviceName'] as core.String
+              : null,
+          guestOsFeatures: _json.containsKey('guestOsFeatures')
+              ? (_json['guestOsFeatures'] as core.List)
+                  .map<RuntimeGuestOsFeature>((value) =>
+                      RuntimeGuestOsFeature.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          index: _json.containsKey('index') ? _json['index'] as core.int : null,
+          initializeParams: _json.containsKey('initializeParams')
+              ? LocalDiskInitializeParams.fromJson(_json['initializeParams']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          interface: _json.containsKey('interface')
+              ? _json['interface'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          licenses: _json.containsKey('licenses')
+              ? (_json['licenses'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          mode: _json.containsKey('mode') ? _json['mode'] as core.String : null,
+          source: _json.containsKey('source')
+              ? _json['source'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoDelete != null) 'autoDelete': autoDelete!,
@@ -4012,30 +4143,37 @@ class LocalDiskInitializeParams {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
-  LocalDiskInitializeParams();
+  LocalDiskInitializeParams({
+    this.description,
+    this.diskName,
+    this.diskSizeGb,
+    this.diskType,
+    this.labels,
+  });
 
-  LocalDiskInitializeParams.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('diskName')) {
-      diskName = _json['diskName'] as core.String;
-    }
-    if (_json.containsKey('diskSizeGb')) {
-      diskSizeGb = _json['diskSizeGb'] as core.String;
-    }
-    if (_json.containsKey('diskType')) {
-      diskType = _json['diskType'] as core.String;
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-  }
+  LocalDiskInitializeParams.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          diskName: _json.containsKey('diskName')
+              ? _json['diskName'] as core.String
+              : null,
+          diskSizeGb: _json.containsKey('diskSizeGb')
+              ? _json['diskSizeGb'] as core.String
+              : null,
+          diskType: _json.containsKey('diskType')
+              ? _json['diskType'] as core.String
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -4076,35 +4214,40 @@ class Location {
   /// For example: `"projects/example-project/locations/us-east1"`
   core.String? name;
 
-  Location();
+  Location({
+    this.displayName,
+    this.labels,
+    this.locationId,
+    this.metadata,
+    this.name,
+  });
 
-  Location.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('locationId')) {
-      locationId = _json['locationId'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  Location.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          locationId: _json.containsKey('locationId')
+              ? _json['locationId'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -4158,36 +4301,39 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object>? response;
 
-  Operation();
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
-  Operation.fromJson(core.Map _json) {
-    if (_json.containsKey('done')) {
-      done = _json['done'] as core.bool;
-    }
-    if (_json.containsKey('error')) {
-      error = Status.fromJson(
-          _json['error'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('response')) {
-      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-  }
+  Operation.fromJson(core.Map _json)
+      : this(
+          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
+          error: _json.containsKey('error')
+              ? Status.fromJson(
+                  _json['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          response: _json.containsKey('response')
+              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
@@ -4228,34 +4374,42 @@ class OperationMetadata {
   /// Name of the verb executed by the operation.
   core.String? verb;
 
-  OperationMetadata();
+  OperationMetadata({
+    this.apiVersion,
+    this.createTime,
+    this.endTime,
+    this.endpoint,
+    this.requestedCancellation,
+    this.statusMessage,
+    this.target,
+    this.verb,
+  });
 
-  OperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('apiVersion')) {
-      apiVersion = _json['apiVersion'] as core.String;
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('endpoint')) {
-      endpoint = _json['endpoint'] as core.String;
-    }
-    if (_json.containsKey('requestedCancellation')) {
-      requestedCancellation = _json['requestedCancellation'] as core.bool;
-    }
-    if (_json.containsKey('statusMessage')) {
-      statusMessage = _json['statusMessage'] as core.String;
-    }
-    if (_json.containsKey('target')) {
-      target = _json['target'] as core.String;
-    }
-    if (_json.containsKey('verb')) {
-      verb = _json['verb'] as core.String;
-    }
-  }
+  OperationMetadata.fromJson(core.Map _json)
+      : this(
+          apiVersion: _json.containsKey('apiVersion')
+              ? _json['apiVersion'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          endpoint: _json.containsKey('endpoint')
+              ? _json['endpoint'] as core.String
+              : null,
+          requestedCancellation: _json.containsKey('requestedCancellation')
+              ? _json['requestedCancellation'] as core.bool
+              : null,
+          statusMessage: _json.containsKey('statusMessage')
+              ? _json['statusMessage'] as core.String
+              : null,
+          target: _json.containsKey('target')
+              ? _json['target'] as core.String
+              : null,
+          verb: _json.containsKey('verb') ? _json['verb'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiVersion != null) 'apiVersion': apiVersion!,
@@ -4348,22 +4502,25 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy();
+  Policy({
+    this.bindings,
+    this.etag,
+    this.version,
+  });
 
-  Policy.fromJson(core.Map _json) {
-    if (_json.containsKey('bindings')) {
-      bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) =>
-              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.int;
-    }
-  }
+  Policy.fromJson(core.Map _json)
+      : this(
+          bindings: _json.containsKey('bindings')
+              ? (_json['bindings'] as core.List)
+                  .map<Binding>((value) => Binding.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bindings != null)
@@ -4384,13 +4541,16 @@ class RegisterInstanceRequest {
   /// Required.
   core.String? instanceId;
 
-  RegisterInstanceRequest();
+  RegisterInstanceRequest({
+    this.instanceId,
+  });
 
-  RegisterInstanceRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('instanceId')) {
-      instanceId = _json['instanceId'] as core.String;
-    }
-  }
+  RegisterInstanceRequest.fromJson(core.Map _json)
+      : this(
+          instanceId: _json.containsKey('instanceId')
+              ? _json['instanceId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (instanceId != null) 'instanceId': instanceId!,
@@ -4411,21 +4571,23 @@ class ReportInstanceInfoRequest {
   /// Required.
   core.String? vmId;
 
-  ReportInstanceInfoRequest();
+  ReportInstanceInfoRequest({
+    this.metadata,
+    this.vmId,
+  });
 
-  ReportInstanceInfoRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('vmId')) {
-      vmId = _json['vmId'] as core.String;
-    }
-  }
+  ReportInstanceInfoRequest.fromJson(core.Map _json)
+      : this(
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          vmId: _json.containsKey('vmId') ? _json['vmId'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (metadata != null) 'metadata': metadata!,
@@ -4464,13 +4626,16 @@ class RollbackInstanceRequest {
   /// Required.
   core.String? targetSnapshot;
 
-  RollbackInstanceRequest();
+  RollbackInstanceRequest({
+    this.targetSnapshot,
+  });
 
-  RollbackInstanceRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('targetSnapshot')) {
-      targetSnapshot = _json['targetSnapshot'] as core.String;
-    }
-  }
+  RollbackInstanceRequest.fromJson(core.Map _json)
+      : this(
+          targetSnapshot: _json.containsKey('targetSnapshot')
+              ? _json['targetSnapshot'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (targetSnapshot != null) 'targetSnapshot': targetSnapshot!,
@@ -4541,41 +4706,49 @@ class Runtime {
   /// Use a Compute Engine VM image to start the managed notebook instance.
   VirtualMachine? virtualMachine;
 
-  Runtime();
+  Runtime({
+    this.accessConfig,
+    this.createTime,
+    this.healthState,
+    this.metrics,
+    this.name,
+    this.softwareConfig,
+    this.state,
+    this.updateTime,
+    this.virtualMachine,
+  });
 
-  Runtime.fromJson(core.Map _json) {
-    if (_json.containsKey('accessConfig')) {
-      accessConfig = RuntimeAccessConfig.fromJson(
-          _json['accessConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('healthState')) {
-      healthState = _json['healthState'] as core.String;
-    }
-    if (_json.containsKey('metrics')) {
-      metrics = RuntimeMetrics.fromJson(
-          _json['metrics'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('softwareConfig')) {
-      softwareConfig = RuntimeSoftwareConfig.fromJson(
-          _json['softwareConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-    if (_json.containsKey('virtualMachine')) {
-      virtualMachine = VirtualMachine.fromJson(
-          _json['virtualMachine'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Runtime.fromJson(core.Map _json)
+      : this(
+          accessConfig: _json.containsKey('accessConfig')
+              ? RuntimeAccessConfig.fromJson(
+                  _json['accessConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          healthState: _json.containsKey('healthState')
+              ? _json['healthState'] as core.String
+              : null,
+          metrics: _json.containsKey('metrics')
+              ? RuntimeMetrics.fromJson(
+                  _json['metrics'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          softwareConfig: _json.containsKey('softwareConfig')
+              ? RuntimeSoftwareConfig.fromJson(_json['softwareConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+          virtualMachine: _json.containsKey('virtualMachine')
+              ? VirtualMachine.fromJson(_json['virtualMachine']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessConfig != null) 'accessConfig': accessConfig!.toJson(),
@@ -4619,16 +4792,18 @@ class RuntimeAcceleratorConfig {
   /// Workstations.
   core.String? type;
 
-  RuntimeAcceleratorConfig();
+  RuntimeAcceleratorConfig({
+    this.coreCount,
+    this.type,
+  });
 
-  RuntimeAcceleratorConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('coreCount')) {
-      coreCount = _json['coreCount'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  RuntimeAcceleratorConfig.fromJson(core.Map _json)
+      : this(
+          coreCount: _json.containsKey('coreCount')
+              ? _json['coreCount'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (coreCount != null) 'coreCount': coreCount!,
@@ -4654,19 +4829,24 @@ class RuntimeAccessConfig {
   /// Format: `alias@example.com` Currently supports one owner only.
   core.String? runtimeOwner;
 
-  RuntimeAccessConfig();
+  RuntimeAccessConfig({
+    this.accessType,
+    this.proxyUri,
+    this.runtimeOwner,
+  });
 
-  RuntimeAccessConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('accessType')) {
-      accessType = _json['accessType'] as core.String;
-    }
-    if (_json.containsKey('proxyUri')) {
-      proxyUri = _json['proxyUri'] as core.String;
-    }
-    if (_json.containsKey('runtimeOwner')) {
-      runtimeOwner = _json['runtimeOwner'] as core.String;
-    }
-  }
+  RuntimeAccessConfig.fromJson(core.Map _json)
+      : this(
+          accessType: _json.containsKey('accessType')
+              ? _json['accessType'] as core.String
+              : null,
+          proxyUri: _json.containsKey('proxyUri')
+              ? _json['proxyUri'] as core.String
+              : null,
+          runtimeOwner: _json.containsKey('runtimeOwner')
+              ? _json['runtimeOwner'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessType != null) 'accessType': accessType!,
@@ -4688,13 +4868,14 @@ class RuntimeGuestOsFeature {
   /// SECURE_BOOT UEFI_COMPATIBLE VIRTIO_SCSI_MULTIQUEUE WINDOWS
   core.String? type;
 
-  RuntimeGuestOsFeature();
+  RuntimeGuestOsFeature({
+    this.type,
+  });
 
-  RuntimeGuestOsFeature.fromJson(core.Map _json) {
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  RuntimeGuestOsFeature.fromJson(core.Map _json)
+      : this(
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
@@ -4708,19 +4889,22 @@ class RuntimeMetrics {
   /// Output only.
   core.Map<core.String, core.String>? systemMetrics;
 
-  RuntimeMetrics();
+  RuntimeMetrics({
+    this.systemMetrics,
+  });
 
-  RuntimeMetrics.fromJson(core.Map _json) {
-    if (_json.containsKey('systemMetrics')) {
-      systemMetrics =
-          (_json['systemMetrics'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-  }
+  RuntimeMetrics.fromJson(core.Map _json)
+      : this(
+          systemMetrics: _json.containsKey('systemMetrics')
+              ? (_json['systemMetrics'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (systemMetrics != null) 'systemMetrics': systemMetrics!,
@@ -4752,20 +4936,25 @@ class RuntimeShieldedInstanceConfig {
   /// Enabled by default.
   core.bool? enableVtpm;
 
-  RuntimeShieldedInstanceConfig();
+  RuntimeShieldedInstanceConfig({
+    this.enableIntegrityMonitoring,
+    this.enableSecureBoot,
+    this.enableVtpm,
+  });
 
-  RuntimeShieldedInstanceConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('enableIntegrityMonitoring')) {
-      enableIntegrityMonitoring =
-          _json['enableIntegrityMonitoring'] as core.bool;
-    }
-    if (_json.containsKey('enableSecureBoot')) {
-      enableSecureBoot = _json['enableSecureBoot'] as core.bool;
-    }
-    if (_json.containsKey('enableVtpm')) {
-      enableVtpm = _json['enableVtpm'] as core.bool;
-    }
-  }
+  RuntimeShieldedInstanceConfig.fromJson(core.Map _json)
+      : this(
+          enableIntegrityMonitoring:
+              _json.containsKey('enableIntegrityMonitoring')
+                  ? _json['enableIntegrityMonitoring'] as core.bool
+                  : null,
+          enableSecureBoot: _json.containsKey('enableSecureBoot')
+              ? _json['enableSecureBoot'] as core.bool
+              : null,
+          enableVtpm: _json.containsKey('enableVtpm')
+              ? _json['enableVtpm'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enableIntegrityMonitoring != null)
@@ -4817,31 +5006,40 @@ class RuntimeSoftwareConfig {
   /// (gs://path-to-file/file-name).
   core.String? postStartupScript;
 
-  RuntimeSoftwareConfig();
+  RuntimeSoftwareConfig({
+    this.customGpuDriverPath,
+    this.enableHealthMonitoring,
+    this.idleShutdown,
+    this.idleShutdownTimeout,
+    this.installGpuDriver,
+    this.notebookUpgradeSchedule,
+    this.postStartupScript,
+  });
 
-  RuntimeSoftwareConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('customGpuDriverPath')) {
-      customGpuDriverPath = _json['customGpuDriverPath'] as core.String;
-    }
-    if (_json.containsKey('enableHealthMonitoring')) {
-      enableHealthMonitoring = _json['enableHealthMonitoring'] as core.bool;
-    }
-    if (_json.containsKey('idleShutdown')) {
-      idleShutdown = _json['idleShutdown'] as core.bool;
-    }
-    if (_json.containsKey('idleShutdownTimeout')) {
-      idleShutdownTimeout = _json['idleShutdownTimeout'] as core.int;
-    }
-    if (_json.containsKey('installGpuDriver')) {
-      installGpuDriver = _json['installGpuDriver'] as core.bool;
-    }
-    if (_json.containsKey('notebookUpgradeSchedule')) {
-      notebookUpgradeSchedule = _json['notebookUpgradeSchedule'] as core.String;
-    }
-    if (_json.containsKey('postStartupScript')) {
-      postStartupScript = _json['postStartupScript'] as core.String;
-    }
-  }
+  RuntimeSoftwareConfig.fromJson(core.Map _json)
+      : this(
+          customGpuDriverPath: _json.containsKey('customGpuDriverPath')
+              ? _json['customGpuDriverPath'] as core.String
+              : null,
+          enableHealthMonitoring: _json.containsKey('enableHealthMonitoring')
+              ? _json['enableHealthMonitoring'] as core.bool
+              : null,
+          idleShutdown: _json.containsKey('idleShutdown')
+              ? _json['idleShutdown'] as core.bool
+              : null,
+          idleShutdownTimeout: _json.containsKey('idleShutdownTimeout')
+              ? _json['idleShutdownTimeout'] as core.int
+              : null,
+          installGpuDriver: _json.containsKey('installGpuDriver')
+              ? _json['installGpuDriver'] as core.bool
+              : null,
+          notebookUpgradeSchedule: _json.containsKey('notebookUpgradeSchedule')
+              ? _json['notebookUpgradeSchedule'] as core.String
+              : null,
+          postStartupScript: _json.containsKey('postStartupScript')
+              ? _json['postStartupScript'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customGpuDriverPath != null)
@@ -4926,44 +5124,53 @@ class Schedule {
   /// Output only.
   core.String? updateTime;
 
-  Schedule();
+  Schedule({
+    this.createTime,
+    this.cronSchedule,
+    this.description,
+    this.displayName,
+    this.executionTemplate,
+    this.name,
+    this.recentExecutions,
+    this.state,
+    this.timeZone,
+    this.updateTime,
+  });
 
-  Schedule.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('cronSchedule')) {
-      cronSchedule = _json['cronSchedule'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('executionTemplate')) {
-      executionTemplate = ExecutionTemplate.fromJson(
-          _json['executionTemplate'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('recentExecutions')) {
-      recentExecutions = (_json['recentExecutions'] as core.List)
-          .map<Execution>((value) =>
-              Execution.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('timeZone')) {
-      timeZone = _json['timeZone'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  Schedule.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          cronSchedule: _json.containsKey('cronSchedule')
+              ? _json['cronSchedule'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          executionTemplate: _json.containsKey('executionTemplate')
+              ? ExecutionTemplate.fromJson(_json['executionTemplate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          recentExecutions: _json.containsKey('recentExecutions')
+              ? (_json['recentExecutions'] as core.List)
+                  .map<Execution>((value) => Execution.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          timeZone: _json.containsKey('timeZone')
+              ? _json['timeZone'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -5003,16 +5210,18 @@ class SchedulerAcceleratorConfig {
   /// - "TPU_V3" : TPU v3.
   core.String? type;
 
-  SchedulerAcceleratorConfig();
+  SchedulerAcceleratorConfig({
+    this.coreCount,
+    this.type,
+  });
 
-  SchedulerAcceleratorConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('coreCount')) {
-      coreCount = _json['coreCount'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  SchedulerAcceleratorConfig.fromJson(core.Map _json)
+      : this(
+          coreCount: _json.containsKey('coreCount')
+              ? _json['coreCount'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (coreCount != null) 'coreCount': coreCount!,
@@ -5029,14 +5238,17 @@ class SetIamPolicyRequest {
   /// reject them.
   Policy? policy;
 
-  SetIamPolicyRequest();
+  SetIamPolicyRequest({
+    this.policy,
+  });
 
-  SetIamPolicyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(
-          _json['policy'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  SetIamPolicyRequest.fromJson(core.Map _json)
+      : this(
+          policy: _json.containsKey('policy')
+              ? Policy.fromJson(
+                  _json['policy'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (policy != null) 'policy': policy!.toJson(),
@@ -5075,16 +5287,18 @@ class SetInstanceAcceleratorRequest {
   /// - "TPU_V3" : (Coming soon) Accelerator type is TPU V3.
   core.String? type;
 
-  SetInstanceAcceleratorRequest();
+  SetInstanceAcceleratorRequest({
+    this.coreCount,
+    this.type,
+  });
 
-  SetInstanceAcceleratorRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('coreCount')) {
-      coreCount = _json['coreCount'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  SetInstanceAcceleratorRequest.fromJson(core.Map _json)
+      : this(
+          coreCount: _json.containsKey('coreCount')
+              ? _json['coreCount'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (coreCount != null) 'coreCount': coreCount!,
@@ -5099,18 +5313,21 @@ class SetInstanceLabelsRequest {
   /// These can be later modified by the setLabels method
   core.Map<core.String, core.String>? labels;
 
-  SetInstanceLabelsRequest();
+  SetInstanceLabelsRequest({
+    this.labels,
+  });
 
-  SetInstanceLabelsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-  }
+  SetInstanceLabelsRequest.fromJson(core.Map _json)
+      : this(
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (labels != null) 'labels': labels!,
@@ -5125,13 +5342,16 @@ class SetInstanceMachineTypeRequest {
   /// Required.
   core.String? machineType;
 
-  SetInstanceMachineTypeRequest();
+  SetInstanceMachineTypeRequest({
+    this.machineType,
+  });
 
-  SetInstanceMachineTypeRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('machineType')) {
-      machineType = _json['machineType'] as core.String;
-    }
-  }
+  SetInstanceMachineTypeRequest.fromJson(core.Map _json)
+      : this(
+          machineType: _json.containsKey('machineType')
+              ? _json['machineType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (machineType != null) 'machineType': machineType!,
@@ -5163,20 +5383,25 @@ class ShieldedInstanceConfig {
   /// Enabled by default.
   core.bool? enableVtpm;
 
-  ShieldedInstanceConfig();
+  ShieldedInstanceConfig({
+    this.enableIntegrityMonitoring,
+    this.enableSecureBoot,
+    this.enableVtpm,
+  });
 
-  ShieldedInstanceConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('enableIntegrityMonitoring')) {
-      enableIntegrityMonitoring =
-          _json['enableIntegrityMonitoring'] as core.bool;
-    }
-    if (_json.containsKey('enableSecureBoot')) {
-      enableSecureBoot = _json['enableSecureBoot'] as core.bool;
-    }
-    if (_json.containsKey('enableVtpm')) {
-      enableVtpm = _json['enableVtpm'] as core.bool;
-    }
-  }
+  ShieldedInstanceConfig.fromJson(core.Map _json)
+      : this(
+          enableIntegrityMonitoring:
+              _json.containsKey('enableIntegrityMonitoring')
+                  ? _json['enableIntegrityMonitoring'] as core.bool
+                  : null,
+          enableSecureBoot: _json.containsKey('enableSecureBoot')
+              ? _json['enableSecureBoot'] as core.bool
+              : null,
+          enableVtpm: _json.containsKey('enableVtpm')
+              ? _json['enableVtpm'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enableIntegrityMonitoring != null)
@@ -5233,27 +5458,30 @@ class Status {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  Status();
+  Status({
+    this.code,
+    this.details,
+    this.message,
+  });
 
-  Status.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.int;
-    }
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  Status.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -5292,17 +5520,21 @@ class SwitchRuntimeRequest {
   /// machine type.
   core.String? machineType;
 
-  SwitchRuntimeRequest();
+  SwitchRuntimeRequest({
+    this.acceleratorConfig,
+    this.machineType,
+  });
 
-  SwitchRuntimeRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('acceleratorConfig')) {
-      acceleratorConfig = RuntimeAcceleratorConfig.fromJson(
-          _json['acceleratorConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('machineType')) {
-      machineType = _json['machineType'] as core.String;
-    }
-  }
+  SwitchRuntimeRequest.fromJson(core.Map _json)
+      : this(
+          acceleratorConfig: _json.containsKey('acceleratorConfig')
+              ? RuntimeAcceleratorConfig.fromJson(_json['acceleratorConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          machineType: _json.containsKey('machineType')
+              ? _json['machineType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (acceleratorConfig != null)
@@ -5320,15 +5552,18 @@ class TestIamPermissionsRequest {
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String>? permissions;
 
-  TestIamPermissionsRequest();
+  TestIamPermissionsRequest({
+    this.permissions,
+  });
 
-  TestIamPermissionsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  TestIamPermissionsRequest.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
@@ -5341,15 +5576,18 @@ class TestIamPermissionsResponse {
   /// allowed.
   core.List<core.String>? permissions;
 
-  TestIamPermissionsResponse();
+  TestIamPermissionsResponse({
+    this.permissions,
+  });
 
-  TestIamPermissionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  TestIamPermissionsResponse.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
@@ -5372,14 +5610,17 @@ class UpdateInstanceConfigRequest {
   /// The instance configurations to be updated.
   InstanceConfig? config;
 
-  UpdateInstanceConfigRequest();
+  UpdateInstanceConfigRequest({
+    this.config,
+  });
 
-  UpdateInstanceConfigRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('config')) {
-      config = InstanceConfig.fromJson(
-          _json['config'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  UpdateInstanceConfigRequest.fromJson(core.Map _json)
+      : this(
+          config: _json.containsKey('config')
+              ? InstanceConfig.fromJson(
+                  _json['config'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (config != null) 'config': config!.toJson(),
@@ -5393,15 +5634,17 @@ class UpdateShieldedInstanceConfigRequest {
   /// ShieldedInstance configuration to be updated.
   ShieldedInstanceConfig? shieldedInstanceConfig;
 
-  UpdateShieldedInstanceConfigRequest();
+  UpdateShieldedInstanceConfigRequest({
+    this.shieldedInstanceConfig,
+  });
 
-  UpdateShieldedInstanceConfigRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('shieldedInstanceConfig')) {
-      shieldedInstanceConfig = ShieldedInstanceConfig.fromJson(
-          _json['shieldedInstanceConfig']
-              as core.Map<core.String, core.dynamic>);
-    }
-  }
+  UpdateShieldedInstanceConfigRequest.fromJson(core.Map _json)
+      : this(
+          shieldedInstanceConfig: _json.containsKey('shieldedInstanceConfig')
+              ? ShieldedInstanceConfig.fromJson(_json['shieldedInstanceConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (shieldedInstanceConfig != null)
@@ -5454,40 +5697,51 @@ class UpgradeHistoryEntry {
   /// The VM image before this instance upgrade.
   core.String? vmImage;
 
-  UpgradeHistoryEntry();
+  UpgradeHistoryEntry({
+    this.action,
+    this.containerImage,
+    this.createTime,
+    this.framework,
+    this.snapshot,
+    this.state,
+    this.targetImage,
+    this.targetVersion,
+    this.version,
+    this.vmImage,
+  });
 
-  UpgradeHistoryEntry.fromJson(core.Map _json) {
-    if (_json.containsKey('action')) {
-      action = _json['action'] as core.String;
-    }
-    if (_json.containsKey('containerImage')) {
-      containerImage = _json['containerImage'] as core.String;
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('framework')) {
-      framework = _json['framework'] as core.String;
-    }
-    if (_json.containsKey('snapshot')) {
-      snapshot = _json['snapshot'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('targetImage')) {
-      targetImage = _json['targetImage'] as core.String;
-    }
-    if (_json.containsKey('targetVersion')) {
-      targetVersion = _json['targetVersion'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.String;
-    }
-    if (_json.containsKey('vmImage')) {
-      vmImage = _json['vmImage'] as core.String;
-    }
-  }
+  UpgradeHistoryEntry.fromJson(core.Map _json)
+      : this(
+          action: _json.containsKey('action')
+              ? _json['action'] as core.String
+              : null,
+          containerImage: _json.containsKey('containerImage')
+              ? _json['containerImage'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          framework: _json.containsKey('framework')
+              ? _json['framework'] as core.String
+              : null,
+          snapshot: _json.containsKey('snapshot')
+              ? _json['snapshot'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          targetImage: _json.containsKey('targetImage')
+              ? _json['targetImage'] as core.String
+              : null,
+          targetVersion: _json.containsKey('targetVersion')
+              ? _json['targetVersion'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+          vmImage: _json.containsKey('vmImage')
+              ? _json['vmImage'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
@@ -5512,13 +5766,14 @@ class UpgradeInstanceInternalRequest {
   /// Required.
   core.String? vmId;
 
-  UpgradeInstanceInternalRequest();
+  UpgradeInstanceInternalRequest({
+    this.vmId,
+  });
 
-  UpgradeInstanceInternalRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('vmId')) {
-      vmId = _json['vmId'] as core.String;
-    }
-  }
+  UpgradeInstanceInternalRequest.fromJson(core.Map _json)
+      : this(
+          vmId: _json.containsKey('vmId') ? _json['vmId'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (vmId != null) 'vmId': vmId!,
@@ -5551,20 +5806,25 @@ class VirtualMachine {
   /// Virtual Machine configuration settings.
   VirtualMachineConfig? virtualMachineConfig;
 
-  VirtualMachine();
+  VirtualMachine({
+    this.instanceId,
+    this.instanceName,
+    this.virtualMachineConfig,
+  });
 
-  VirtualMachine.fromJson(core.Map _json) {
-    if (_json.containsKey('instanceId')) {
-      instanceId = _json['instanceId'] as core.String;
-    }
-    if (_json.containsKey('instanceName')) {
-      instanceName = _json['instanceName'] as core.String;
-    }
-    if (_json.containsKey('virtualMachineConfig')) {
-      virtualMachineConfig = VirtualMachineConfig.fromJson(
-          _json['virtualMachineConfig'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  VirtualMachine.fromJson(core.Map _json)
+      : this(
+          instanceId: _json.containsKey('instanceId')
+              ? _json['instanceId'] as core.String
+              : null,
+          instanceName: _json.containsKey('instanceName')
+              ? _json['instanceName'] as core.String
+              : null,
+          virtualMachineConfig: _json.containsKey('virtualMachineConfig')
+              ? VirtualMachineConfig.fromJson(_json['virtualMachineConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (instanceId != null) 'instanceId': instanceId!,
@@ -5698,81 +5958,97 @@ class VirtualMachineConfig {
   /// Output only.
   core.String? zone;
 
-  VirtualMachineConfig();
+  VirtualMachineConfig({
+    this.acceleratorConfig,
+    this.containerImages,
+    this.dataDisk,
+    this.encryptionConfig,
+    this.guestAttributes,
+    this.internalIpOnly,
+    this.labels,
+    this.machineType,
+    this.metadata,
+    this.network,
+    this.nicType,
+    this.shieldedInstanceConfig,
+    this.subnet,
+    this.tags,
+    this.zone,
+  });
 
-  VirtualMachineConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('acceleratorConfig')) {
-      acceleratorConfig = RuntimeAcceleratorConfig.fromJson(
-          _json['acceleratorConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('containerImages')) {
-      containerImages = (_json['containerImages'] as core.List)
-          .map<ContainerImage>((value) => ContainerImage.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('dataDisk')) {
-      dataDisk = LocalDisk.fromJson(
-          _json['dataDisk'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('encryptionConfig')) {
-      encryptionConfig = EncryptionConfig.fromJson(
-          _json['encryptionConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('guestAttributes')) {
-      guestAttributes =
-          (_json['guestAttributes'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('internalIpOnly')) {
-      internalIpOnly = _json['internalIpOnly'] as core.bool;
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('machineType')) {
-      machineType = _json['machineType'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('network')) {
-      network = _json['network'] as core.String;
-    }
-    if (_json.containsKey('nicType')) {
-      nicType = _json['nicType'] as core.String;
-    }
-    if (_json.containsKey('shieldedInstanceConfig')) {
-      shieldedInstanceConfig = RuntimeShieldedInstanceConfig.fromJson(
-          _json['shieldedInstanceConfig']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('subnet')) {
-      subnet = _json['subnet'] as core.String;
-    }
-    if (_json.containsKey('tags')) {
-      tags = (_json['tags'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('zone')) {
-      zone = _json['zone'] as core.String;
-    }
-  }
+  VirtualMachineConfig.fromJson(core.Map _json)
+      : this(
+          acceleratorConfig: _json.containsKey('acceleratorConfig')
+              ? RuntimeAcceleratorConfig.fromJson(_json['acceleratorConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          containerImages: _json.containsKey('containerImages')
+              ? (_json['containerImages'] as core.List)
+                  .map<ContainerImage>((value) => ContainerImage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          dataDisk: _json.containsKey('dataDisk')
+              ? LocalDisk.fromJson(
+                  _json['dataDisk'] as core.Map<core.String, core.dynamic>)
+              : null,
+          encryptionConfig: _json.containsKey('encryptionConfig')
+              ? EncryptionConfig.fromJson(_json['encryptionConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          guestAttributes: _json.containsKey('guestAttributes')
+              ? (_json['guestAttributes']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          internalIpOnly: _json.containsKey('internalIpOnly')
+              ? _json['internalIpOnly'] as core.bool
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          machineType: _json.containsKey('machineType')
+              ? _json['machineType'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          network: _json.containsKey('network')
+              ? _json['network'] as core.String
+              : null,
+          nicType: _json.containsKey('nicType')
+              ? _json['nicType'] as core.String
+              : null,
+          shieldedInstanceConfig: _json.containsKey('shieldedInstanceConfig')
+              ? RuntimeShieldedInstanceConfig.fromJson(
+                  _json['shieldedInstanceConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          subnet: _json.containsKey('subnet')
+              ? _json['subnet'] as core.String
+              : null,
+          tags: _json.containsKey('tags')
+              ? (_json['tags'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (acceleratorConfig != null)
@@ -5815,19 +6091,24 @@ class VmImage {
   /// Required.
   core.String? project;
 
-  VmImage();
+  VmImage({
+    this.imageFamily,
+    this.imageName,
+    this.project,
+  });
 
-  VmImage.fromJson(core.Map _json) {
-    if (_json.containsKey('imageFamily')) {
-      imageFamily = _json['imageFamily'] as core.String;
-    }
-    if (_json.containsKey('imageName')) {
-      imageName = _json['imageName'] as core.String;
-    }
-    if (_json.containsKey('project')) {
-      project = _json['project'] as core.String;
-    }
-  }
+  VmImage.fromJson(core.Map _json)
+      : this(
+          imageFamily: _json.containsKey('imageFamily')
+              ? _json['imageFamily'] as core.String
+              : null,
+          imageName: _json.containsKey('imageName')
+              ? _json['imageName'] as core.String
+              : null,
+          project: _json.containsKey('project')
+              ? _json['project'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (imageFamily != null) 'imageFamily': imageFamily!,

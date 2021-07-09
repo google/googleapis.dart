@@ -580,16 +580,19 @@ class AllowedIpRange {
   /// `2001:db8::/32`.
   core.String? value;
 
-  AllowedIpRange();
+  AllowedIpRange({
+    this.description,
+    this.value,
+  });
 
-  AllowedIpRange.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  AllowedIpRange.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -628,34 +631,41 @@ class CheckUpgradeResponse {
   /// when the build was triggered.
   core.Map<core.String, core.String>? pypiDependencies;
 
-  CheckUpgradeResponse();
+  CheckUpgradeResponse({
+    this.buildLogUri,
+    this.containsPypiModulesConflict,
+    this.imageVersion,
+    this.pypiConflictBuildLogExtract,
+    this.pypiDependencies,
+  });
 
-  CheckUpgradeResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('buildLogUri')) {
-      buildLogUri = _json['buildLogUri'] as core.String;
-    }
-    if (_json.containsKey('containsPypiModulesConflict')) {
-      containsPypiModulesConflict =
-          _json['containsPypiModulesConflict'] as core.String;
-    }
-    if (_json.containsKey('imageVersion')) {
-      imageVersion = _json['imageVersion'] as core.String;
-    }
-    if (_json.containsKey('pypiConflictBuildLogExtract')) {
-      pypiConflictBuildLogExtract =
-          _json['pypiConflictBuildLogExtract'] as core.String;
-    }
-    if (_json.containsKey('pypiDependencies')) {
-      pypiDependencies =
-          (_json['pypiDependencies'] as core.Map<core.String, core.dynamic>)
-              .map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-  }
+  CheckUpgradeResponse.fromJson(core.Map _json)
+      : this(
+          buildLogUri: _json.containsKey('buildLogUri')
+              ? _json['buildLogUri'] as core.String
+              : null,
+          containsPypiModulesConflict:
+              _json.containsKey('containsPypiModulesConflict')
+                  ? _json['containsPypiModulesConflict'] as core.String
+                  : null,
+          imageVersion: _json.containsKey('imageVersion')
+              ? _json['imageVersion'] as core.String
+              : null,
+          pypiConflictBuildLogExtract:
+              _json.containsKey('pypiConflictBuildLogExtract')
+                  ? _json['pypiConflictBuildLogExtract'] as core.String
+                  : null,
+          pypiDependencies: _json.containsKey('pypiDependencies')
+              ? (_json['pypiDependencies']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (buildLogUri != null) 'buildLogUri': buildLogUri!,
@@ -679,13 +689,16 @@ class DatabaseConfig {
   /// Optional.
   core.String? machineType;
 
-  DatabaseConfig();
+  DatabaseConfig({
+    this.machineType,
+  });
 
-  DatabaseConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('machineType')) {
-      machineType = _json['machineType'] as core.String;
-    }
-  }
+  DatabaseConfig.fromJson(core.Map _json)
+      : this(
+          machineType: _json.containsKey('machineType')
+              ? _json['machineType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (machineType != null) 'machineType': machineType!,
@@ -718,19 +731,18 @@ class Date {
   /// Must be from 1 to 9999, or 0 to specify a date without a year.
   core.int? year;
 
-  Date();
+  Date({
+    this.day,
+    this.month,
+    this.year,
+  });
 
-  Date.fromJson(core.Map _json) {
-    if (_json.containsKey('day')) {
-      day = _json['day'] as core.int;
-    }
-    if (_json.containsKey('month')) {
-      month = _json['month'] as core.int;
-    }
-    if (_json.containsKey('year')) {
-      year = _json['year'] as core.int;
-    }
-  }
+  Date.fromJson(core.Map _json)
+      : this(
+          day: _json.containsKey('day') ? _json['day'] as core.int : null,
+          month: _json.containsKey('month') ? _json['month'] as core.int : null,
+          year: _json.containsKey('year') ? _json['year'] as core.int : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (day != null) 'day': day!,
@@ -767,13 +779,16 @@ class EncryptionConfig {
   /// Optional.
   core.String? kmsKeyName;
 
-  EncryptionConfig();
+  EncryptionConfig({
+    this.kmsKeyName,
+  });
 
-  EncryptionConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('kmsKeyName')) {
-      kmsKeyName = _json['kmsKeyName'] as core.String;
-    }
-  }
+  EncryptionConfig.fromJson(core.Map _json)
+      : this(
+          kmsKeyName: _json.containsKey('kmsKeyName')
+              ? _json['kmsKeyName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
@@ -831,37 +846,41 @@ class Environment {
   /// Output only.
   core.String? uuid;
 
-  Environment();
+  Environment({
+    this.config,
+    this.createTime,
+    this.labels,
+    this.name,
+    this.state,
+    this.updateTime,
+    this.uuid,
+  });
 
-  Environment.fromJson(core.Map _json) {
-    if (_json.containsKey('config')) {
-      config = EnvironmentConfig.fromJson(
-          _json['config'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-    if (_json.containsKey('uuid')) {
-      uuid = _json['uuid'] as core.String;
-    }
-  }
+  Environment.fromJson(core.Map _json)
+      : this(
+          config: _json.containsKey('config')
+              ? EnvironmentConfig.fromJson(
+                  _json['config'] as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+          uuid: _json.containsKey('uuid') ? _json['uuid'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (config != null) 'config': config!.toJson(),
@@ -937,52 +956,67 @@ class EnvironmentConfig {
   /// Optional.
   WebServerNetworkAccessControl? webServerNetworkAccessControl;
 
-  EnvironmentConfig();
+  EnvironmentConfig({
+    this.airflowUri,
+    this.dagGcsPrefix,
+    this.databaseConfig,
+    this.encryptionConfig,
+    this.gkeCluster,
+    this.nodeConfig,
+    this.nodeCount,
+    this.privateEnvironmentConfig,
+    this.softwareConfig,
+    this.webServerConfig,
+    this.webServerNetworkAccessControl,
+  });
 
-  EnvironmentConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('airflowUri')) {
-      airflowUri = _json['airflowUri'] as core.String;
-    }
-    if (_json.containsKey('dagGcsPrefix')) {
-      dagGcsPrefix = _json['dagGcsPrefix'] as core.String;
-    }
-    if (_json.containsKey('databaseConfig')) {
-      databaseConfig = DatabaseConfig.fromJson(
-          _json['databaseConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('encryptionConfig')) {
-      encryptionConfig = EncryptionConfig.fromJson(
-          _json['encryptionConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('gkeCluster')) {
-      gkeCluster = _json['gkeCluster'] as core.String;
-    }
-    if (_json.containsKey('nodeConfig')) {
-      nodeConfig = NodeConfig.fromJson(
-          _json['nodeConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('nodeCount')) {
-      nodeCount = _json['nodeCount'] as core.int;
-    }
-    if (_json.containsKey('privateEnvironmentConfig')) {
-      privateEnvironmentConfig = PrivateEnvironmentConfig.fromJson(
-          _json['privateEnvironmentConfig']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('softwareConfig')) {
-      softwareConfig = SoftwareConfig.fromJson(
-          _json['softwareConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('webServerConfig')) {
-      webServerConfig = WebServerConfig.fromJson(
-          _json['webServerConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('webServerNetworkAccessControl')) {
-      webServerNetworkAccessControl = WebServerNetworkAccessControl.fromJson(
-          _json['webServerNetworkAccessControl']
-              as core.Map<core.String, core.dynamic>);
-    }
-  }
+  EnvironmentConfig.fromJson(core.Map _json)
+      : this(
+          airflowUri: _json.containsKey('airflowUri')
+              ? _json['airflowUri'] as core.String
+              : null,
+          dagGcsPrefix: _json.containsKey('dagGcsPrefix')
+              ? _json['dagGcsPrefix'] as core.String
+              : null,
+          databaseConfig: _json.containsKey('databaseConfig')
+              ? DatabaseConfig.fromJson(_json['databaseConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          encryptionConfig: _json.containsKey('encryptionConfig')
+              ? EncryptionConfig.fromJson(_json['encryptionConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          gkeCluster: _json.containsKey('gkeCluster')
+              ? _json['gkeCluster'] as core.String
+              : null,
+          nodeConfig: _json.containsKey('nodeConfig')
+              ? NodeConfig.fromJson(
+                  _json['nodeConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          nodeCount: _json.containsKey('nodeCount')
+              ? _json['nodeCount'] as core.int
+              : null,
+          privateEnvironmentConfig:
+              _json.containsKey('privateEnvironmentConfig')
+                  ? PrivateEnvironmentConfig.fromJson(
+                      _json['privateEnvironmentConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          softwareConfig: _json.containsKey('softwareConfig')
+              ? SoftwareConfig.fromJson(_json['softwareConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          webServerConfig: _json.containsKey('webServerConfig')
+              ? WebServerConfig.fromJson(_json['webServerConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          webServerNetworkAccessControl:
+              _json.containsKey('webServerNetworkAccessControl')
+                  ? WebServerNetworkAccessControl.fromJson(
+                      _json['webServerNetworkAccessControl']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (airflowUri != null) 'airflowUri': airflowUri!,
@@ -1057,27 +1091,34 @@ class IPAllocationPolicy {
   /// Optional.
   core.bool? useIpAliases;
 
-  IPAllocationPolicy();
+  IPAllocationPolicy({
+    this.clusterIpv4CidrBlock,
+    this.clusterSecondaryRangeName,
+    this.servicesIpv4CidrBlock,
+    this.servicesSecondaryRangeName,
+    this.useIpAliases,
+  });
 
-  IPAllocationPolicy.fromJson(core.Map _json) {
-    if (_json.containsKey('clusterIpv4CidrBlock')) {
-      clusterIpv4CidrBlock = _json['clusterIpv4CidrBlock'] as core.String;
-    }
-    if (_json.containsKey('clusterSecondaryRangeName')) {
-      clusterSecondaryRangeName =
-          _json['clusterSecondaryRangeName'] as core.String;
-    }
-    if (_json.containsKey('servicesIpv4CidrBlock')) {
-      servicesIpv4CidrBlock = _json['servicesIpv4CidrBlock'] as core.String;
-    }
-    if (_json.containsKey('servicesSecondaryRangeName')) {
-      servicesSecondaryRangeName =
-          _json['servicesSecondaryRangeName'] as core.String;
-    }
-    if (_json.containsKey('useIpAliases')) {
-      useIpAliases = _json['useIpAliases'] as core.bool;
-    }
-  }
+  IPAllocationPolicy.fromJson(core.Map _json)
+      : this(
+          clusterIpv4CidrBlock: _json.containsKey('clusterIpv4CidrBlock')
+              ? _json['clusterIpv4CidrBlock'] as core.String
+              : null,
+          clusterSecondaryRangeName:
+              _json.containsKey('clusterSecondaryRangeName')
+                  ? _json['clusterSecondaryRangeName'] as core.String
+                  : null,
+          servicesIpv4CidrBlock: _json.containsKey('servicesIpv4CidrBlock')
+              ? _json['servicesIpv4CidrBlock'] as core.String
+              : null,
+          servicesSecondaryRangeName:
+              _json.containsKey('servicesSecondaryRangeName')
+                  ? _json['servicesSecondaryRangeName'] as core.String
+                  : null,
+          useIpAliases: _json.containsKey('useIpAliases')
+              ? _json['useIpAliases'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterIpv4CidrBlock != null)
@@ -1115,31 +1156,39 @@ class ImageVersion {
   /// version.
   core.bool? upgradeDisabled;
 
-  ImageVersion();
+  ImageVersion({
+    this.creationDisabled,
+    this.imageVersionId,
+    this.isDefault,
+    this.releaseDate,
+    this.supportedPythonVersions,
+    this.upgradeDisabled,
+  });
 
-  ImageVersion.fromJson(core.Map _json) {
-    if (_json.containsKey('creationDisabled')) {
-      creationDisabled = _json['creationDisabled'] as core.bool;
-    }
-    if (_json.containsKey('imageVersionId')) {
-      imageVersionId = _json['imageVersionId'] as core.String;
-    }
-    if (_json.containsKey('isDefault')) {
-      isDefault = _json['isDefault'] as core.bool;
-    }
-    if (_json.containsKey('releaseDate')) {
-      releaseDate = Date.fromJson(
-          _json['releaseDate'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('supportedPythonVersions')) {
-      supportedPythonVersions = (_json['supportedPythonVersions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('upgradeDisabled')) {
-      upgradeDisabled = _json['upgradeDisabled'] as core.bool;
-    }
-  }
+  ImageVersion.fromJson(core.Map _json)
+      : this(
+          creationDisabled: _json.containsKey('creationDisabled')
+              ? _json['creationDisabled'] as core.bool
+              : null,
+          imageVersionId: _json.containsKey('imageVersionId')
+              ? _json['imageVersionId'] as core.String
+              : null,
+          isDefault: _json.containsKey('isDefault')
+              ? _json['isDefault'] as core.bool
+              : null,
+          releaseDate: _json.containsKey('releaseDate')
+              ? Date.fromJson(
+                  _json['releaseDate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          supportedPythonVersions: _json.containsKey('supportedPythonVersions')
+              ? (_json['supportedPythonVersions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          upgradeDisabled: _json.containsKey('upgradeDisabled')
+              ? _json['upgradeDisabled'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (creationDisabled != null) 'creationDisabled': creationDisabled!,
@@ -1160,19 +1209,23 @@ class ListEnvironmentsResponse {
   /// The page token used to query for the next page if one exists.
   core.String? nextPageToken;
 
-  ListEnvironmentsResponse();
+  ListEnvironmentsResponse({
+    this.environments,
+    this.nextPageToken,
+  });
 
-  ListEnvironmentsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('environments')) {
-      environments = (_json['environments'] as core.List)
-          .map<Environment>((value) => Environment.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListEnvironmentsResponse.fromJson(core.Map _json)
+      : this(
+          environments: _json.containsKey('environments')
+              ? (_json['environments'] as core.List)
+                  .map<Environment>((value) => Environment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (environments != null)
@@ -1189,19 +1242,23 @@ class ListImageVersionsResponse {
   /// The page token used to query for the next page if one exists.
   core.String? nextPageToken;
 
-  ListImageVersionsResponse();
+  ListImageVersionsResponse({
+    this.imageVersions,
+    this.nextPageToken,
+  });
 
-  ListImageVersionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('imageVersions')) {
-      imageVersions = (_json['imageVersions'] as core.List)
-          .map<ImageVersion>((value) => ImageVersion.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListImageVersionsResponse.fromJson(core.Map _json)
+      : this(
+          imageVersions: _json.containsKey('imageVersions')
+              ? (_json['imageVersions'] as core.List)
+                  .map<ImageVersion>((value) => ImageVersion.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (imageVersions != null)
@@ -1219,19 +1276,23 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse();
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
 
-  ListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('operations')) {
-      operations = (_json['operations'] as core.List)
-          .map<Operation>((value) =>
-              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListOperationsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          operations: _json.containsKey('operations')
+              ? (_json['operations'] as core.List)
+                  .map<Operation>((value) => Operation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1349,42 +1410,53 @@ class NodeConfig {
   /// Optional.
   core.List<core.String>? tags;
 
-  NodeConfig();
+  NodeConfig({
+    this.diskSizeGb,
+    this.ipAllocationPolicy,
+    this.location,
+    this.machineType,
+    this.network,
+    this.oauthScopes,
+    this.serviceAccount,
+    this.subnetwork,
+    this.tags,
+  });
 
-  NodeConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('diskSizeGb')) {
-      diskSizeGb = _json['diskSizeGb'] as core.int;
-    }
-    if (_json.containsKey('ipAllocationPolicy')) {
-      ipAllocationPolicy = IPAllocationPolicy.fromJson(
-          _json['ipAllocationPolicy'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('location')) {
-      location = _json['location'] as core.String;
-    }
-    if (_json.containsKey('machineType')) {
-      machineType = _json['machineType'] as core.String;
-    }
-    if (_json.containsKey('network')) {
-      network = _json['network'] as core.String;
-    }
-    if (_json.containsKey('oauthScopes')) {
-      oauthScopes = (_json['oauthScopes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('serviceAccount')) {
-      serviceAccount = _json['serviceAccount'] as core.String;
-    }
-    if (_json.containsKey('subnetwork')) {
-      subnetwork = _json['subnetwork'] as core.String;
-    }
-    if (_json.containsKey('tags')) {
-      tags = (_json['tags'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  NodeConfig.fromJson(core.Map _json)
+      : this(
+          diskSizeGb: _json.containsKey('diskSizeGb')
+              ? _json['diskSizeGb'] as core.int
+              : null,
+          ipAllocationPolicy: _json.containsKey('ipAllocationPolicy')
+              ? IPAllocationPolicy.fromJson(_json['ipAllocationPolicy']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          machineType: _json.containsKey('machineType')
+              ? _json['machineType'] as core.String
+              : null,
+          network: _json.containsKey('network')
+              ? _json['network'] as core.String
+              : null,
+          oauthScopes: _json.containsKey('oauthScopes')
+              ? (_json['oauthScopes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          serviceAccount: _json.containsKey('serviceAccount')
+              ? _json['serviceAccount'] as core.String
+              : null,
+          subnetwork: _json.containsKey('subnetwork')
+              ? _json['subnetwork'] as core.String
+              : null,
+          tags: _json.containsKey('tags')
+              ? (_json['tags'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
@@ -1443,36 +1515,39 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object>? response;
 
-  Operation();
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
-  Operation.fromJson(core.Map _json) {
-    if (_json.containsKey('done')) {
-      done = _json['done'] as core.bool;
-    }
-    if (_json.containsKey('error')) {
-      error = Status.fromJson(
-          _json['error'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('response')) {
-      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-  }
+  Operation.fromJson(core.Map _json)
+      : this(
+          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
+          error: _json.containsKey('error')
+              ? Status.fromJson(
+                  _json['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          response: _json.containsKey('response')
+              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
@@ -1531,28 +1606,35 @@ class OperationMetadata {
   /// - "FAILED" : The operation is no longer running but did not succeed.
   core.String? state;
 
-  OperationMetadata();
+  OperationMetadata({
+    this.createTime,
+    this.endTime,
+    this.operationType,
+    this.resource,
+    this.resourceUuid,
+    this.state,
+  });
 
-  OperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('operationType')) {
-      operationType = _json['operationType'] as core.String;
-    }
-    if (_json.containsKey('resource')) {
-      resource = _json['resource'] as core.String;
-    }
-    if (_json.containsKey('resourceUuid')) {
-      resourceUuid = _json['resourceUuid'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-  }
+  OperationMetadata.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          operationType: _json.containsKey('operationType')
+              ? _json['operationType'] as core.String
+              : null,
+          resource: _json.containsKey('resource')
+              ? _json['resource'] as core.String
+              : null,
+          resourceUuid: _json.containsKey('resourceUuid')
+              ? _json['resourceUuid'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -1589,19 +1671,24 @@ class PrivateClusterConfig {
   /// Output only.
   core.String? masterIpv4ReservedRange;
 
-  PrivateClusterConfig();
+  PrivateClusterConfig({
+    this.enablePrivateEndpoint,
+    this.masterIpv4CidrBlock,
+    this.masterIpv4ReservedRange,
+  });
 
-  PrivateClusterConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('enablePrivateEndpoint')) {
-      enablePrivateEndpoint = _json['enablePrivateEndpoint'] as core.bool;
-    }
-    if (_json.containsKey('masterIpv4CidrBlock')) {
-      masterIpv4CidrBlock = _json['masterIpv4CidrBlock'] as core.String;
-    }
-    if (_json.containsKey('masterIpv4ReservedRange')) {
-      masterIpv4ReservedRange = _json['masterIpv4ReservedRange'] as core.String;
-    }
-  }
+  PrivateClusterConfig.fromJson(core.Map _json)
+      : this(
+          enablePrivateEndpoint: _json.containsKey('enablePrivateEndpoint')
+              ? _json['enablePrivateEndpoint'] as core.bool
+              : null,
+          masterIpv4CidrBlock: _json.containsKey('masterIpv4CidrBlock')
+              ? _json['masterIpv4CidrBlock'] as core.String
+              : null,
+          masterIpv4ReservedRange: _json.containsKey('masterIpv4ReservedRange')
+              ? _json['masterIpv4ReservedRange'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enablePrivateEndpoint != null)
@@ -1651,27 +1738,35 @@ class PrivateEnvironmentConfig {
   /// Output only.
   core.String? webServerIpv4ReservedRange;
 
-  PrivateEnvironmentConfig();
+  PrivateEnvironmentConfig({
+    this.cloudSqlIpv4CidrBlock,
+    this.enablePrivateEnvironment,
+    this.privateClusterConfig,
+    this.webServerIpv4CidrBlock,
+    this.webServerIpv4ReservedRange,
+  });
 
-  PrivateEnvironmentConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('cloudSqlIpv4CidrBlock')) {
-      cloudSqlIpv4CidrBlock = _json['cloudSqlIpv4CidrBlock'] as core.String;
-    }
-    if (_json.containsKey('enablePrivateEnvironment')) {
-      enablePrivateEnvironment = _json['enablePrivateEnvironment'] as core.bool;
-    }
-    if (_json.containsKey('privateClusterConfig')) {
-      privateClusterConfig = PrivateClusterConfig.fromJson(
-          _json['privateClusterConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('webServerIpv4CidrBlock')) {
-      webServerIpv4CidrBlock = _json['webServerIpv4CidrBlock'] as core.String;
-    }
-    if (_json.containsKey('webServerIpv4ReservedRange')) {
-      webServerIpv4ReservedRange =
-          _json['webServerIpv4ReservedRange'] as core.String;
-    }
-  }
+  PrivateEnvironmentConfig.fromJson(core.Map _json)
+      : this(
+          cloudSqlIpv4CidrBlock: _json.containsKey('cloudSqlIpv4CidrBlock')
+              ? _json['cloudSqlIpv4CidrBlock'] as core.String
+              : null,
+          enablePrivateEnvironment:
+              _json.containsKey('enablePrivateEnvironment')
+                  ? _json['enablePrivateEnvironment'] as core.bool
+                  : null,
+          privateClusterConfig: _json.containsKey('privateClusterConfig')
+              ? PrivateClusterConfig.fromJson(_json['privateClusterConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          webServerIpv4CidrBlock: _json.containsKey('webServerIpv4CidrBlock')
+              ? _json['webServerIpv4CidrBlock'] as core.String
+              : null,
+          webServerIpv4ReservedRange:
+              _json.containsKey('webServerIpv4ReservedRange')
+                  ? _json['webServerIpv4ReservedRange'] as core.String
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cloudSqlIpv4CidrBlock != null)
@@ -1763,44 +1858,51 @@ class SoftwareConfig {
   /// Optional.
   core.String? pythonVersion;
 
-  SoftwareConfig();
+  SoftwareConfig({
+    this.airflowConfigOverrides,
+    this.envVariables,
+    this.imageVersion,
+    this.pypiPackages,
+    this.pythonVersion,
+  });
 
-  SoftwareConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('airflowConfigOverrides')) {
-      airflowConfigOverrides = (_json['airflowConfigOverrides']
-              as core.Map<core.String, core.dynamic>)
-          .map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('envVariables')) {
-      envVariables =
-          (_json['envVariables'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('imageVersion')) {
-      imageVersion = _json['imageVersion'] as core.String;
-    }
-    if (_json.containsKey('pypiPackages')) {
-      pypiPackages =
-          (_json['pypiPackages'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('pythonVersion')) {
-      pythonVersion = _json['pythonVersion'] as core.String;
-    }
-  }
+  SoftwareConfig.fromJson(core.Map _json)
+      : this(
+          airflowConfigOverrides: _json.containsKey('airflowConfigOverrides')
+              ? (_json['airflowConfigOverrides']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          envVariables: _json.containsKey('envVariables')
+              ? (_json['envVariables'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          imageVersion: _json.containsKey('imageVersion')
+              ? _json['imageVersion'] as core.String
+              : null,
+          pypiPackages: _json.containsKey('pypiPackages')
+              ? (_json['pypiPackages'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          pythonVersion: _json.containsKey('pythonVersion')
+              ? _json['pythonVersion'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (airflowConfigOverrides != null)
@@ -1837,27 +1939,30 @@ class Status {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  Status();
+  Status({
+    this.code,
+    this.details,
+    this.message,
+  });
 
-  Status.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.int;
-    }
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  Status.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -1878,13 +1983,16 @@ class WebServerConfig {
   /// Optional.
   core.String? machineType;
 
-  WebServerConfig();
+  WebServerConfig({
+    this.machineType,
+  });
 
-  WebServerConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('machineType')) {
-      machineType = _json['machineType'] as core.String;
-    }
-  }
+  WebServerConfig.fromJson(core.Map _json)
+      : this(
+          machineType: _json.containsKey('machineType')
+              ? _json['machineType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (machineType != null) 'machineType': machineType!,
@@ -1896,16 +2004,19 @@ class WebServerNetworkAccessControl {
   /// A collection of allowed IP ranges with descriptions.
   core.List<AllowedIpRange>? allowedIpRanges;
 
-  WebServerNetworkAccessControl();
+  WebServerNetworkAccessControl({
+    this.allowedIpRanges,
+  });
 
-  WebServerNetworkAccessControl.fromJson(core.Map _json) {
-    if (_json.containsKey('allowedIpRanges')) {
-      allowedIpRanges = (_json['allowedIpRanges'] as core.List)
-          .map<AllowedIpRange>((value) => AllowedIpRange.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  WebServerNetworkAccessControl.fromJson(core.Map _json)
+      : this(
+          allowedIpRanges: _json.containsKey('allowedIpRanges')
+              ? (_json['allowedIpRanges'] as core.List)
+                  .map<AllowedIpRange>((value) => AllowedIpRange.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedIpRanges != null)

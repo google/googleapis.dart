@@ -975,16 +975,20 @@ class Capacity {
   /// Must be >= 4 and <= 32.
   core.int? subscribeMibPerSec;
 
-  Capacity();
+  Capacity({
+    this.publishMibPerSec,
+    this.subscribeMibPerSec,
+  });
 
-  Capacity.fromJson(core.Map _json) {
-    if (_json.containsKey('publishMibPerSec')) {
-      publishMibPerSec = _json['publishMibPerSec'] as core.int;
-    }
-    if (_json.containsKey('subscribeMibPerSec')) {
-      subscribeMibPerSec = _json['subscribeMibPerSec'] as core.int;
-    }
-  }
+  Capacity.fromJson(core.Map _json)
+      : this(
+          publishMibPerSec: _json.containsKey('publishMibPerSec')
+              ? _json['publishMibPerSec'] as core.int
+              : null,
+          subscribeMibPerSec: _json.containsKey('subscribeMibPerSec')
+              ? _json['subscribeMibPerSec'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (publishMibPerSec != null) 'publishMibPerSec': publishMibPerSec!,
@@ -1004,17 +1008,21 @@ class CommitCursorRequest {
   /// topic.num_partitions).
   core.String? partition;
 
-  CommitCursorRequest();
+  CommitCursorRequest({
+    this.cursor,
+    this.partition,
+  });
 
-  CommitCursorRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('cursor')) {
-      cursor = Cursor.fromJson(
-          _json['cursor'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('partition')) {
-      partition = _json['partition'] as core.String;
-    }
-  }
+  CommitCursorRequest.fromJson(core.Map _json)
+      : this(
+          cursor: _json.containsKey('cursor')
+              ? Cursor.fromJson(
+                  _json['cursor'] as core.Map<core.String, core.dynamic>)
+              : null,
+          partition: _json.containsKey('partition')
+              ? _json['partition'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cursor != null) 'cursor': cursor!.toJson(),
@@ -1040,13 +1048,16 @@ class ComputeHeadCursorRequest {
   /// Required.
   core.String? partition;
 
-  ComputeHeadCursorRequest();
+  ComputeHeadCursorRequest({
+    this.partition,
+  });
 
-  ComputeHeadCursorRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('partition')) {
-      partition = _json['partition'] as core.String;
-    }
-  }
+  ComputeHeadCursorRequest.fromJson(core.Map _json)
+      : this(
+          partition: _json.containsKey('partition')
+              ? _json['partition'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (partition != null) 'partition': partition!,
@@ -1058,14 +1069,17 @@ class ComputeHeadCursorResponse {
   /// The head cursor.
   Cursor? headCursor;
 
-  ComputeHeadCursorResponse();
+  ComputeHeadCursorResponse({
+    this.headCursor,
+  });
 
-  ComputeHeadCursorResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('headCursor')) {
-      headCursor = Cursor.fromJson(
-          _json['headCursor'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ComputeHeadCursorResponse.fromJson(core.Map _json)
+      : this(
+          headCursor: _json.containsKey('headCursor')
+              ? Cursor.fromJson(
+                  _json['headCursor'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (headCursor != null) 'headCursor': headCursor!.toJson(),
@@ -1089,21 +1103,26 @@ class ComputeMessageStatsRequest {
   /// The inclusive start of the range.
   Cursor? startCursor;
 
-  ComputeMessageStatsRequest();
+  ComputeMessageStatsRequest({
+    this.endCursor,
+    this.partition,
+    this.startCursor,
+  });
 
-  ComputeMessageStatsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('endCursor')) {
-      endCursor = Cursor.fromJson(
-          _json['endCursor'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('partition')) {
-      partition = _json['partition'] as core.String;
-    }
-    if (_json.containsKey('startCursor')) {
-      startCursor = Cursor.fromJson(
-          _json['startCursor'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ComputeMessageStatsRequest.fromJson(core.Map _json)
+      : this(
+          endCursor: _json.containsKey('endCursor')
+              ? Cursor.fromJson(
+                  _json['endCursor'] as core.Map<core.String, core.dynamic>)
+              : null,
+          partition: _json.containsKey('partition')
+              ? _json['partition'] as core.String
+              : null,
+          startCursor: _json.containsKey('startCursor')
+              ? Cursor.fromJson(
+                  _json['startCursor'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endCursor != null) 'endCursor': endCursor!.toJson(),
@@ -1133,22 +1152,28 @@ class ComputeMessageStatsResponse {
   /// non-decreasing. The timestamp will be unset if there are no messages.
   core.String? minimumPublishTime;
 
-  ComputeMessageStatsResponse();
+  ComputeMessageStatsResponse({
+    this.messageBytes,
+    this.messageCount,
+    this.minimumEventTime,
+    this.minimumPublishTime,
+  });
 
-  ComputeMessageStatsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('messageBytes')) {
-      messageBytes = _json['messageBytes'] as core.String;
-    }
-    if (_json.containsKey('messageCount')) {
-      messageCount = _json['messageCount'] as core.String;
-    }
-    if (_json.containsKey('minimumEventTime')) {
-      minimumEventTime = _json['minimumEventTime'] as core.String;
-    }
-    if (_json.containsKey('minimumPublishTime')) {
-      minimumPublishTime = _json['minimumPublishTime'] as core.String;
-    }
-  }
+  ComputeMessageStatsResponse.fromJson(core.Map _json)
+      : this(
+          messageBytes: _json.containsKey('messageBytes')
+              ? _json['messageBytes'] as core.String
+              : null,
+          messageCount: _json.containsKey('messageCount')
+              ? _json['messageCount'] as core.String
+              : null,
+          minimumEventTime: _json.containsKey('minimumEventTime')
+              ? _json['minimumEventTime'] as core.String
+              : null,
+          minimumPublishTime: _json.containsKey('minimumPublishTime')
+              ? _json['minimumPublishTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (messageBytes != null) 'messageBytes': messageBytes!,
@@ -1174,17 +1199,21 @@ class ComputeTimeCursorRequest {
   /// Required.
   TimeTarget? target;
 
-  ComputeTimeCursorRequest();
+  ComputeTimeCursorRequest({
+    this.partition,
+    this.target,
+  });
 
-  ComputeTimeCursorRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('partition')) {
-      partition = _json['partition'] as core.String;
-    }
-    if (_json.containsKey('target')) {
-      target = TimeTarget.fromJson(
-          _json['target'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ComputeTimeCursorRequest.fromJson(core.Map _json)
+      : this(
+          partition: _json.containsKey('partition')
+              ? _json['partition'] as core.String
+              : null,
+          target: _json.containsKey('target')
+              ? TimeTarget.fromJson(
+                  _json['target'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (partition != null) 'partition': partition!,
@@ -1202,14 +1231,17 @@ class ComputeTimeCursorResponse {
   /// is not present).
   Cursor? cursor;
 
-  ComputeTimeCursorResponse();
+  ComputeTimeCursorResponse({
+    this.cursor,
+  });
 
-  ComputeTimeCursorResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('cursor')) {
-      cursor = Cursor.fromJson(
-          _json['cursor'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ComputeTimeCursorResponse.fromJson(core.Map _json)
+      : this(
+          cursor: _json.containsKey('cursor')
+              ? Cursor.fromJson(
+                  _json['cursor'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cursor != null) 'cursor': cursor!.toJson(),
@@ -1223,13 +1255,16 @@ class Cursor {
   /// Must be greater than or equal 0.
   core.String? offset;
 
-  Cursor();
+  Cursor({
+    this.offset,
+  });
 
-  Cursor.fromJson(core.Map _json) {
-    if (_json.containsKey('offset')) {
-      offset = _json['offset'] as core.String;
-    }
-  }
+  Cursor.fromJson(core.Map _json)
+      : this(
+          offset: _json.containsKey('offset')
+              ? _json['offset'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (offset != null) 'offset': offset!,
@@ -1249,13 +1284,16 @@ class DeliveryConfig {
   /// This will result in higher end-to-end latency, but consistent delivery.
   core.String? deliveryRequirement;
 
-  DeliveryConfig();
+  DeliveryConfig({
+    this.deliveryRequirement,
+  });
 
-  DeliveryConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('deliveryRequirement')) {
-      deliveryRequirement = _json['deliveryRequirement'] as core.String;
-    }
-  }
+  DeliveryConfig.fromJson(core.Map _json)
+      : this(
+          deliveryRequirement: _json.containsKey('deliveryRequirement')
+              ? _json['deliveryRequirement'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deliveryRequirement != null)
@@ -1290,19 +1328,23 @@ class ListPartitionCursorsResponse {
   /// The partition cursors from this request.
   core.List<PartitionCursor>? partitionCursors;
 
-  ListPartitionCursorsResponse();
+  ListPartitionCursorsResponse({
+    this.nextPageToken,
+    this.partitionCursors,
+  });
 
-  ListPartitionCursorsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('partitionCursors')) {
-      partitionCursors = (_json['partitionCursors'] as core.List)
-          .map<PartitionCursor>((value) => PartitionCursor.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListPartitionCursorsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          partitionCursors: _json.containsKey('partitionCursors')
+              ? (_json['partitionCursors'] as core.List)
+                  .map<PartitionCursor>((value) => PartitionCursor.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1325,19 +1367,23 @@ class ListSubscriptionsResponse {
   /// The order of the subscriptions is unspecified.
   core.List<Subscription>? subscriptions;
 
-  ListSubscriptionsResponse();
+  ListSubscriptionsResponse({
+    this.nextPageToken,
+    this.subscriptions,
+  });
 
-  ListSubscriptionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('subscriptions')) {
-      subscriptions = (_json['subscriptions'] as core.List)
-          .map<Subscription>((value) => Subscription.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListSubscriptionsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          subscriptions: _json.containsKey('subscriptions')
+              ? (_json['subscriptions'] as core.List)
+                  .map<Subscription>((value) => Subscription.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1360,18 +1406,22 @@ class ListTopicSubscriptionsResponse {
   /// The order of the subscriptions is unspecified.
   core.List<core.String>? subscriptions;
 
-  ListTopicSubscriptionsResponse();
+  ListTopicSubscriptionsResponse({
+    this.nextPageToken,
+    this.subscriptions,
+  });
 
-  ListTopicSubscriptionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('subscriptions')) {
-      subscriptions = (_json['subscriptions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  ListTopicSubscriptionsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          subscriptions: _json.containsKey('subscriptions')
+              ? (_json['subscriptions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1392,19 +1442,23 @@ class ListTopicsResponse {
   /// The order of the topics is unspecified.
   core.List<Topic>? topics;
 
-  ListTopicsResponse();
+  ListTopicsResponse({
+    this.nextPageToken,
+    this.topics,
+  });
 
-  ListTopicsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('topics')) {
-      topics = (_json['topics'] as core.List)
-          .map<Topic>((value) =>
-              Topic.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListTopicsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          topics: _json.containsKey('topics')
+              ? (_json['topics'] as core.List)
+                  .map<Topic>((value) => Topic.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1435,20 +1489,22 @@ class PartitionConfig {
   /// charged for 20 partitions. This value must be in the range \[1,4\].
   core.int? scale;
 
-  PartitionConfig();
+  PartitionConfig({
+    this.capacity,
+    this.count,
+    this.scale,
+  });
 
-  PartitionConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('capacity')) {
-      capacity = Capacity.fromJson(
-          _json['capacity'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('count')) {
-      count = _json['count'] as core.String;
-    }
-    if (_json.containsKey('scale')) {
-      scale = _json['scale'] as core.int;
-    }
-  }
+  PartitionConfig.fromJson(core.Map _json)
+      : this(
+          capacity: _json.containsKey('capacity')
+              ? Capacity.fromJson(
+                  _json['capacity'] as core.Map<core.String, core.dynamic>)
+              : null,
+          count:
+              _json.containsKey('count') ? _json['count'] as core.String : null,
+          scale: _json.containsKey('scale') ? _json['scale'] as core.int : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (capacity != null) 'capacity': capacity!.toJson(),
@@ -1465,17 +1521,21 @@ class PartitionCursor {
   /// The partition this is for.
   core.String? partition;
 
-  PartitionCursor();
+  PartitionCursor({
+    this.cursor,
+    this.partition,
+  });
 
-  PartitionCursor.fromJson(core.Map _json) {
-    if (_json.containsKey('cursor')) {
-      cursor = Cursor.fromJson(
-          _json['cursor'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('partition')) {
-      partition = _json['partition'] as core.String;
-    }
-  }
+  PartitionCursor.fromJson(core.Map _json)
+      : this(
+          cursor: _json.containsKey('cursor')
+              ? Cursor.fromJson(
+                  _json['cursor'] as core.Map<core.String, core.dynamic>)
+              : null,
+          partition: _json.containsKey('partition')
+              ? _json['partition'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cursor != null) 'cursor': cursor!.toJson(),
@@ -1498,16 +1558,20 @@ class RetentionConfig {
   /// partition is below `per_partition_bytes`.
   core.String? period;
 
-  RetentionConfig();
+  RetentionConfig({
+    this.perPartitionBytes,
+    this.period,
+  });
 
-  RetentionConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('perPartitionBytes')) {
-      perPartitionBytes = _json['perPartitionBytes'] as core.String;
-    }
-    if (_json.containsKey('period')) {
-      period = _json['period'] as core.String;
-    }
-  }
+  RetentionConfig.fromJson(core.Map _json)
+      : this(
+          perPartitionBytes: _json.containsKey('perPartitionBytes')
+              ? _json['perPartitionBytes'] as core.String
+              : null,
+          period: _json.containsKey('period')
+              ? _json['period'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (perPartitionBytes != null) 'perPartitionBytes': perPartitionBytes!,
@@ -1532,20 +1596,22 @@ class Subscription {
   /// projects/{project_number}/locations/{location}/topics/{topic_id}
   core.String? topic;
 
-  Subscription();
+  Subscription({
+    this.deliveryConfig,
+    this.name,
+    this.topic,
+  });
 
-  Subscription.fromJson(core.Map _json) {
-    if (_json.containsKey('deliveryConfig')) {
-      deliveryConfig = DeliveryConfig.fromJson(
-          _json['deliveryConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('topic')) {
-      topic = _json['topic'] as core.String;
-    }
-  }
+  Subscription.fromJson(core.Map _json)
+      : this(
+          deliveryConfig: _json.containsKey('deliveryConfig')
+              ? DeliveryConfig.fromJson(_json['deliveryConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          topic:
+              _json.containsKey('topic') ? _json['topic'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deliveryConfig != null) 'deliveryConfig': deliveryConfig!.toJson(),
@@ -1574,16 +1640,20 @@ class TimeTarget {
   /// `publish_time`.
   core.String? publishTime;
 
-  TimeTarget();
+  TimeTarget({
+    this.eventTime,
+    this.publishTime,
+  });
 
-  TimeTarget.fromJson(core.Map _json) {
-    if (_json.containsKey('eventTime')) {
-      eventTime = _json['eventTime'] as core.String;
-    }
-    if (_json.containsKey('publishTime')) {
-      publishTime = _json['publishTime'] as core.String;
-    }
-  }
+  TimeTarget.fromJson(core.Map _json)
+      : this(
+          eventTime: _json.containsKey('eventTime')
+              ? _json['eventTime'] as core.String
+              : null,
+          publishTime: _json.containsKey('publishTime')
+              ? _json['publishTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (eventTime != null) 'eventTime': eventTime!,
@@ -1605,21 +1675,24 @@ class Topic {
   /// The settings for this topic's message retention.
   RetentionConfig? retentionConfig;
 
-  Topic();
+  Topic({
+    this.name,
+    this.partitionConfig,
+    this.retentionConfig,
+  });
 
-  Topic.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('partitionConfig')) {
-      partitionConfig = PartitionConfig.fromJson(
-          _json['partitionConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('retentionConfig')) {
-      retentionConfig = RetentionConfig.fromJson(
-          _json['retentionConfig'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Topic.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          partitionConfig: _json.containsKey('partitionConfig')
+              ? PartitionConfig.fromJson(_json['partitionConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          retentionConfig: _json.containsKey('retentionConfig')
+              ? RetentionConfig.fromJson(_json['retentionConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -1635,13 +1708,16 @@ class TopicPartitions {
   /// The number of partitions in the topic.
   core.String? partitionCount;
 
-  TopicPartitions();
+  TopicPartitions({
+    this.partitionCount,
+  });
 
-  TopicPartitions.fromJson(core.Map _json) {
-    if (_json.containsKey('partitionCount')) {
-      partitionCount = _json['partitionCount'] as core.String;
-    }
-  }
+  TopicPartitions.fromJson(core.Map _json)
+      : this(
+          partitionCount: _json.containsKey('partitionCount')
+              ? _json['partitionCount'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (partitionCount != null) 'partitionCount': partitionCount!,

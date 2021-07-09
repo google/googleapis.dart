@@ -392,26 +392,32 @@ class GoogleFactcheckingFactchecktoolsV1alpha1Claim {
   /// For instance, "Crime has doubled in the last 2 years."
   core.String? text;
 
-  GoogleFactcheckingFactchecktoolsV1alpha1Claim();
+  GoogleFactcheckingFactchecktoolsV1alpha1Claim({
+    this.claimDate,
+    this.claimReview,
+    this.claimant,
+    this.text,
+  });
 
-  GoogleFactcheckingFactchecktoolsV1alpha1Claim.fromJson(core.Map _json) {
-    if (_json.containsKey('claimDate')) {
-      claimDate = _json['claimDate'] as core.String;
-    }
-    if (_json.containsKey('claimReview')) {
-      claimReview = (_json['claimReview'] as core.List)
-          .map<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview>((value) =>
-              GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('claimant')) {
-      claimant = _json['claimant'] as core.String;
-    }
-    if (_json.containsKey('text')) {
-      text = _json['text'] as core.String;
-    }
-  }
+  GoogleFactcheckingFactchecktoolsV1alpha1Claim.fromJson(core.Map _json)
+      : this(
+          claimDate: _json.containsKey('claimDate')
+              ? _json['claimDate'] as core.String
+              : null,
+          claimReview: _json.containsKey('claimReview')
+              ? (_json['claimReview'] as core.List)
+                  .map<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview>(
+                      (value) =>
+                          GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          claimant: _json.containsKey('claimant')
+              ? _json['claimant'] as core.String
+              : null,
+          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (claimDate != null) 'claimDate': claimDate!,
@@ -439,22 +445,26 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor {
   /// Corresponds to `ClaimReview.itemReviewed.author.sameAs`.
   core.String? sameAs;
 
-  GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor();
+  GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor({
+    this.imageUrl,
+    this.jobTitle,
+    this.name,
+    this.sameAs,
+  });
 
-  GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor.fromJson(core.Map _json) {
-    if (_json.containsKey('imageUrl')) {
-      imageUrl = _json['imageUrl'] as core.String;
-    }
-    if (_json.containsKey('jobTitle')) {
-      jobTitle = _json['jobTitle'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('sameAs')) {
-      sameAs = _json['sameAs'] as core.String;
-    }
-  }
+  GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor.fromJson(core.Map _json)
+      : this(
+          imageUrl: _json.containsKey('imageUrl')
+              ? _json['imageUrl'] as core.String
+              : null,
+          jobTitle: _json.containsKey('jobTitle')
+              ? _json['jobTitle'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          sameAs: _json.containsKey('sameAs')
+              ? _json['sameAs'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (imageUrl != null) 'imageUrl': imageUrl!,
@@ -495,28 +505,36 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating {
   /// Corresponds to `ClaimReview.reviewRating.worstRating`.
   core.int? worstRating;
 
-  GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating();
+  GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating({
+    this.bestRating,
+    this.imageUrl,
+    this.ratingExplanation,
+    this.ratingValue,
+    this.textualRating,
+    this.worstRating,
+  });
 
-  GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating.fromJson(core.Map _json) {
-    if (_json.containsKey('bestRating')) {
-      bestRating = _json['bestRating'] as core.int;
-    }
-    if (_json.containsKey('imageUrl')) {
-      imageUrl = _json['imageUrl'] as core.String;
-    }
-    if (_json.containsKey('ratingExplanation')) {
-      ratingExplanation = _json['ratingExplanation'] as core.String;
-    }
-    if (_json.containsKey('ratingValue')) {
-      ratingValue = _json['ratingValue'] as core.int;
-    }
-    if (_json.containsKey('textualRating')) {
-      textualRating = _json['textualRating'] as core.String;
-    }
-    if (_json.containsKey('worstRating')) {
-      worstRating = _json['worstRating'] as core.int;
-    }
-  }
+  GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating.fromJson(core.Map _json)
+      : this(
+          bestRating: _json.containsKey('bestRating')
+              ? _json['bestRating'] as core.int
+              : null,
+          imageUrl: _json.containsKey('imageUrl')
+              ? _json['imageUrl'] as core.String
+              : null,
+          ratingExplanation: _json.containsKey('ratingExplanation')
+              ? _json['ratingExplanation'] as core.String
+              : null,
+          ratingValue: _json.containsKey('ratingValue')
+              ? _json['ratingValue'] as core.int
+              : null,
+          textualRating: _json.containsKey('textualRating')
+              ? _json['textualRating'] as core.String
+              : null,
+          worstRating: _json.containsKey('worstRating')
+              ? _json['worstRating'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bestRating != null) 'bestRating': bestRating!,
@@ -552,29 +570,34 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview {
   /// The URL of this claim review.
   core.String? url;
 
-  GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview();
+  GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview({
+    this.languageCode,
+    this.publisher,
+    this.reviewDate,
+    this.textualRating,
+    this.title,
+    this.url,
+  });
 
-  GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview.fromJson(core.Map _json) {
-    if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'] as core.String;
-    }
-    if (_json.containsKey('publisher')) {
-      publisher = GoogleFactcheckingFactchecktoolsV1alpha1Publisher.fromJson(
-          _json['publisher'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('reviewDate')) {
-      reviewDate = _json['reviewDate'] as core.String;
-    }
-    if (_json.containsKey('textualRating')) {
-      textualRating = _json['textualRating'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview.fromJson(core.Map _json)
+      : this(
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
+          publisher: _json.containsKey('publisher')
+              ? GoogleFactcheckingFactchecktoolsV1alpha1Publisher.fromJson(
+                  _json['publisher'] as core.Map<core.String, core.dynamic>)
+              : null,
+          reviewDate: _json.containsKey('reviewDate')
+              ? _json['reviewDate'] as core.String
+              : null,
+          textualRating: _json.containsKey('textualRating')
+              ? _json['textualRating'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (languageCode != null) 'languageCode': languageCode!,
@@ -596,17 +619,19 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor {
   /// Corresponds to `ClaimReview.author.name`.
   core.String? name;
 
-  GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor();
+  GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor({
+    this.imageUrl,
+    this.name,
+  });
 
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('imageUrl')) {
-      imageUrl = _json['imageUrl'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          imageUrl: _json.containsKey('imageUrl')
+              ? _json['imageUrl'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (imageUrl != null) 'imageUrl': imageUrl!,
@@ -660,40 +685,47 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup {
   /// ("page jump"). Corresponds to `ClaimReview.url`
   core.String? url;
 
-  GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup();
+  GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup({
+    this.claimAppearances,
+    this.claimAuthor,
+    this.claimDate,
+    this.claimFirstAppearance,
+    this.claimLocation,
+    this.claimReviewed,
+    this.rating,
+    this.url,
+  });
 
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('claimAppearances')) {
-      claimAppearances = (_json['claimAppearances'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('claimAuthor')) {
-      claimAuthor =
-          GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor.fromJson(
-              _json['claimAuthor'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('claimDate')) {
-      claimDate = _json['claimDate'] as core.String;
-    }
-    if (_json.containsKey('claimFirstAppearance')) {
-      claimFirstAppearance = _json['claimFirstAppearance'] as core.String;
-    }
-    if (_json.containsKey('claimLocation')) {
-      claimLocation = _json['claimLocation'] as core.String;
-    }
-    if (_json.containsKey('claimReviewed')) {
-      claimReviewed = _json['claimReviewed'] as core.String;
-    }
-    if (_json.containsKey('rating')) {
-      rating = GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating.fromJson(
-          _json['rating'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          claimAppearances: _json.containsKey('claimAppearances')
+              ? (_json['claimAppearances'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          claimAuthor: _json.containsKey('claimAuthor')
+              ? GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor.fromJson(
+                  _json['claimAuthor'] as core.Map<core.String, core.dynamic>)
+              : null,
+          claimDate: _json.containsKey('claimDate')
+              ? _json['claimDate'] as core.String
+              : null,
+          claimFirstAppearance: _json.containsKey('claimFirstAppearance')
+              ? _json['claimFirstAppearance'] as core.String
+              : null,
+          claimLocation: _json.containsKey('claimLocation')
+              ? _json['claimLocation'] as core.String
+              : null,
+          claimReviewed: _json.containsKey('claimReviewed')
+              ? _json['claimReviewed'] as core.String
+              : null,
+          rating: _json.containsKey('rating')
+              ? GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating.fromJson(
+                  _json['rating'] as core.Map<core.String, core.dynamic>)
+              : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (claimAppearances != null) 'claimAppearances': claimAppearances!,
@@ -750,37 +782,43 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage {
   /// set by the user.
   core.String? versionId;
 
-  GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage();
+  GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage({
+    this.claimReviewAuthor,
+    this.claimReviewMarkups,
+    this.name,
+    this.pageUrl,
+    this.publishDate,
+    this.versionId,
+  });
 
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('claimReviewAuthor')) {
-      claimReviewAuthor =
-          GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor.fromJson(
-              _json['claimReviewAuthor']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('claimReviewMarkups')) {
-      claimReviewMarkups = (_json['claimReviewMarkups'] as core.List)
-          .map<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup>(
-              (value) =>
-                  GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('pageUrl')) {
-      pageUrl = _json['pageUrl'] as core.String;
-    }
-    if (_json.containsKey('publishDate')) {
-      publishDate = _json['publishDate'] as core.String;
-    }
-    if (_json.containsKey('versionId')) {
-      versionId = _json['versionId'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          claimReviewAuthor: _json.containsKey('claimReviewAuthor')
+              ? GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor
+                  .fromJson(_json['claimReviewAuthor']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          claimReviewMarkups: _json.containsKey('claimReviewMarkups')
+              ? (_json['claimReviewMarkups'] as core.List)
+                  .map<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup>(
+                      (value) =>
+                          GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          pageUrl: _json.containsKey('pageUrl')
+              ? _json['pageUrl'] as core.String
+              : null,
+          publishDate: _json.containsKey('publishDate')
+              ? _json['publishDate'] as core.String
+              : null,
+          versionId: _json.containsKey('versionId')
+              ? _json['versionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (claimReviewAuthor != null)
@@ -806,21 +844,25 @@ class GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse {
   /// value means no more results.
   core.String? nextPageToken;
 
-  GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse();
+  GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse({
+    this.claims,
+    this.nextPageToken,
+  });
 
   GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('claims')) {
-      claims = (_json['claims'] as core.List)
-          .map<GoogleFactcheckingFactchecktoolsV1alpha1Claim>((value) =>
-              GoogleFactcheckingFactchecktoolsV1alpha1Claim.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          claims: _json.containsKey('claims')
+              ? (_json['claims'] as core.List)
+                  .map<GoogleFactcheckingFactchecktoolsV1alpha1Claim>((value) =>
+                      GoogleFactcheckingFactchecktoolsV1alpha1Claim.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (claims != null)
@@ -841,22 +883,27 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse
   /// value means no more results.
   core.String? nextPageToken;
 
-  GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse();
+  GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse({
+    this.claimReviewMarkupPages,
+    this.nextPageToken,
+  });
 
   GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('claimReviewMarkupPages')) {
-      claimReviewMarkupPages = (_json['claimReviewMarkupPages'] as core.List)
-          .map<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>(
-              (value) =>
-                  GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          claimReviewMarkupPages: _json.containsKey('claimReviewMarkupPages')
+              ? (_json['claimReviewMarkupPages'] as core.List)
+                  .map<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>(
+                      (value) =>
+                          GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (claimReviewMarkupPages != null)
@@ -879,16 +926,16 @@ class GoogleFactcheckingFactchecktoolsV1alpha1Publisher {
   /// purely on the claim review URL.
   core.String? site;
 
-  GoogleFactcheckingFactchecktoolsV1alpha1Publisher();
+  GoogleFactcheckingFactchecktoolsV1alpha1Publisher({
+    this.name,
+    this.site,
+  });
 
-  GoogleFactcheckingFactchecktoolsV1alpha1Publisher.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('site')) {
-      site = _json['site'] as core.String;
-    }
-  }
+  GoogleFactcheckingFactchecktoolsV1alpha1Publisher.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          site: _json.containsKey('site') ? _json['site'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,

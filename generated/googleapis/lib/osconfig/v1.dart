@@ -618,23 +618,26 @@ class AptSettings {
   /// - "UPGRADE" : Runs `apt-get upgrade`.
   core.String? type;
 
-  AptSettings();
+  AptSettings({
+    this.excludes,
+    this.exclusivePackages,
+    this.type,
+  });
 
-  AptSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('excludes')) {
-      excludes = (_json['excludes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('exclusivePackages')) {
-      exclusivePackages = (_json['exclusivePackages'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  AptSettings.fromJson(core.Map _json)
+      : this(
+          excludes: _json.containsKey('excludes')
+              ? (_json['excludes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          exclusivePackages: _json.containsKey('exclusivePackages')
+              ? (_json['exclusivePackages'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (excludes != null) 'excludes': excludes!,
@@ -679,19 +682,22 @@ class ExecStep {
   /// The ExecStepConfig for all Windows VMs targeted by the PatchJob.
   ExecStepConfig? windowsExecStepConfig;
 
-  ExecStep();
+  ExecStep({
+    this.linuxExecStepConfig,
+    this.windowsExecStepConfig,
+  });
 
-  ExecStep.fromJson(core.Map _json) {
-    if (_json.containsKey('linuxExecStepConfig')) {
-      linuxExecStepConfig = ExecStepConfig.fromJson(
-          _json['linuxExecStepConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('windowsExecStepConfig')) {
-      windowsExecStepConfig = ExecStepConfig.fromJson(
-          _json['windowsExecStepConfig']
-              as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ExecStep.fromJson(core.Map _json)
+      : this(
+          linuxExecStepConfig: _json.containsKey('linuxExecStepConfig')
+              ? ExecStepConfig.fromJson(_json['linuxExecStepConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          windowsExecStepConfig: _json.containsKey('windowsExecStepConfig')
+              ? ExecStepConfig.fromJson(_json['windowsExecStepConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (linuxExecStepConfig != null)
@@ -730,25 +736,31 @@ class ExecStepConfig {
   /// An absolute path to the executable on the VM.
   core.String? localPath;
 
-  ExecStepConfig();
+  ExecStepConfig({
+    this.allowedSuccessCodes,
+    this.gcsObject,
+    this.interpreter,
+    this.localPath,
+  });
 
-  ExecStepConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('allowedSuccessCodes')) {
-      allowedSuccessCodes = (_json['allowedSuccessCodes'] as core.List)
-          .map<core.int>((value) => value as core.int)
-          .toList();
-    }
-    if (_json.containsKey('gcsObject')) {
-      gcsObject = GcsObject.fromJson(
-          _json['gcsObject'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('interpreter')) {
-      interpreter = _json['interpreter'] as core.String;
-    }
-    if (_json.containsKey('localPath')) {
-      localPath = _json['localPath'] as core.String;
-    }
-  }
+  ExecStepConfig.fromJson(core.Map _json)
+      : this(
+          allowedSuccessCodes: _json.containsKey('allowedSuccessCodes')
+              ? (_json['allowedSuccessCodes'] as core.List)
+                  .map<core.int>((value) => value as core.int)
+                  .toList()
+              : null,
+          gcsObject: _json.containsKey('gcsObject')
+              ? GcsObject.fromJson(
+                  _json['gcsObject'] as core.Map<core.String, core.dynamic>)
+              : null,
+          interpreter: _json.containsKey('interpreter')
+              ? _json['interpreter'] as core.String
+              : null,
+          localPath: _json.containsKey('localPath')
+              ? _json['localPath'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedSuccessCodes != null)
@@ -794,34 +806,42 @@ class ExecutePatchJobRequest {
   /// Rollout strategy of the patch job.
   PatchRollout? rollout;
 
-  ExecutePatchJobRequest();
+  ExecutePatchJobRequest({
+    this.description,
+    this.displayName,
+    this.dryRun,
+    this.duration,
+    this.instanceFilter,
+    this.patchConfig,
+    this.rollout,
+  });
 
-  ExecutePatchJobRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('dryRun')) {
-      dryRun = _json['dryRun'] as core.bool;
-    }
-    if (_json.containsKey('duration')) {
-      duration = _json['duration'] as core.String;
-    }
-    if (_json.containsKey('instanceFilter')) {
-      instanceFilter = PatchInstanceFilter.fromJson(
-          _json['instanceFilter'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('patchConfig')) {
-      patchConfig = PatchConfig.fromJson(
-          _json['patchConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('rollout')) {
-      rollout = PatchRollout.fromJson(
-          _json['rollout'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ExecutePatchJobRequest.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          dryRun:
+              _json.containsKey('dryRun') ? _json['dryRun'] as core.bool : null,
+          duration: _json.containsKey('duration')
+              ? _json['duration'] as core.String
+              : null,
+          instanceFilter: _json.containsKey('instanceFilter')
+              ? PatchInstanceFilter.fromJson(_json['instanceFilter']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          patchConfig: _json.containsKey('patchConfig')
+              ? PatchConfig.fromJson(
+                  _json['patchConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          rollout: _json.containsKey('rollout')
+              ? PatchRollout.fromJson(
+                  _json['rollout'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -844,16 +864,18 @@ class FixedOrPercent {
   /// multiplied by a reference value.
   core.int? percent;
 
-  FixedOrPercent();
+  FixedOrPercent({
+    this.fixed,
+    this.percent,
+  });
 
-  FixedOrPercent.fromJson(core.Map _json) {
-    if (_json.containsKey('fixed')) {
-      fixed = _json['fixed'] as core.int;
-    }
-    if (_json.containsKey('percent')) {
-      percent = _json['percent'] as core.int;
-    }
-  }
+  FixedOrPercent.fromJson(core.Map _json)
+      : this(
+          fixed: _json.containsKey('fixed') ? _json['fixed'] as core.int : null,
+          percent: _json.containsKey('percent')
+              ? _json['percent'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fixed != null) 'fixed': fixed!,
@@ -881,19 +903,24 @@ class GcsObject {
   /// Required.
   core.String? object;
 
-  GcsObject();
+  GcsObject({
+    this.bucket,
+    this.generationNumber,
+    this.object,
+  });
 
-  GcsObject.fromJson(core.Map _json) {
-    if (_json.containsKey('bucket')) {
-      bucket = _json['bucket'] as core.String;
-    }
-    if (_json.containsKey('generationNumber')) {
-      generationNumber = _json['generationNumber'] as core.String;
-    }
-    if (_json.containsKey('object')) {
-      object = _json['object'] as core.String;
-    }
-  }
+  GcsObject.fromJson(core.Map _json)
+      : this(
+          bucket: _json.containsKey('bucket')
+              ? _json['bucket'] as core.String
+              : null,
+          generationNumber: _json.containsKey('generationNumber')
+              ? _json['generationNumber'] as core.String
+              : null,
+          object: _json.containsKey('object')
+              ? _json['object'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bucket != null) 'bucket': bucket!,
@@ -925,22 +952,27 @@ class Inventory {
   /// Base level operating system information for the VM.
   InventoryOsInfo? osInfo;
 
-  Inventory();
+  Inventory({
+    this.items,
+    this.osInfo,
+  });
 
-  Inventory.fromJson(core.Map _json) {
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          InventoryItem.fromJson(item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('osInfo')) {
-      osInfo = InventoryOsInfo.fromJson(
-          _json['osInfo'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Inventory.fromJson(core.Map _json)
+      : this(
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    InventoryItem.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          osInfo: _json.containsKey('osInfo')
+              ? InventoryOsInfo.fromJson(
+                  _json['osInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
@@ -982,33 +1014,38 @@ class InventoryItem {
   /// When this inventory item was last modified.
   core.String? updateTime;
 
-  InventoryItem();
+  InventoryItem({
+    this.availablePackage,
+    this.createTime,
+    this.id,
+    this.installedPackage,
+    this.originType,
+    this.type,
+    this.updateTime,
+  });
 
-  InventoryItem.fromJson(core.Map _json) {
-    if (_json.containsKey('availablePackage')) {
-      availablePackage = InventorySoftwarePackage.fromJson(
-          _json['availablePackage'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('installedPackage')) {
-      installedPackage = InventorySoftwarePackage.fromJson(
-          _json['installedPackage'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('originType')) {
-      originType = _json['originType'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  InventoryItem.fromJson(core.Map _json)
+      : this(
+          availablePackage: _json.containsKey('availablePackage')
+              ? InventorySoftwarePackage.fromJson(_json['availablePackage']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          installedPackage: _json.containsKey('installedPackage')
+              ? InventorySoftwarePackage.fromJson(_json['installedPackage']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          originType: _json.containsKey('originType')
+              ? _json['originType'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (availablePackage != null)
@@ -1054,34 +1091,44 @@ class InventoryOsInfo {
   /// The version of the operating system.
   core.String? version;
 
-  InventoryOsInfo();
+  InventoryOsInfo({
+    this.architecture,
+    this.hostname,
+    this.kernelRelease,
+    this.kernelVersion,
+    this.longName,
+    this.osconfigAgentVersion,
+    this.shortName,
+    this.version,
+  });
 
-  InventoryOsInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('architecture')) {
-      architecture = _json['architecture'] as core.String;
-    }
-    if (_json.containsKey('hostname')) {
-      hostname = _json['hostname'] as core.String;
-    }
-    if (_json.containsKey('kernelRelease')) {
-      kernelRelease = _json['kernelRelease'] as core.String;
-    }
-    if (_json.containsKey('kernelVersion')) {
-      kernelVersion = _json['kernelVersion'] as core.String;
-    }
-    if (_json.containsKey('longName')) {
-      longName = _json['longName'] as core.String;
-    }
-    if (_json.containsKey('osconfigAgentVersion')) {
-      osconfigAgentVersion = _json['osconfigAgentVersion'] as core.String;
-    }
-    if (_json.containsKey('shortName')) {
-      shortName = _json['shortName'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.String;
-    }
-  }
+  InventoryOsInfo.fromJson(core.Map _json)
+      : this(
+          architecture: _json.containsKey('architecture')
+              ? _json['architecture'] as core.String
+              : null,
+          hostname: _json.containsKey('hostname')
+              ? _json['hostname'] as core.String
+              : null,
+          kernelRelease: _json.containsKey('kernelRelease')
+              ? _json['kernelRelease'] as core.String
+              : null,
+          kernelVersion: _json.containsKey('kernelVersion')
+              ? _json['kernelVersion'] as core.String
+              : null,
+          longName: _json.containsKey('longName')
+              ? _json['longName'] as core.String
+              : null,
+          osconfigAgentVersion: _json.containsKey('osconfigAgentVersion')
+              ? _json['osconfigAgentVersion'] as core.String
+              : null,
+          shortName: _json.containsKey('shortName')
+              ? _json['shortName'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (architecture != null) 'architecture': architecture!,
@@ -1144,42 +1191,52 @@ class InventorySoftwarePackage {
   /// https://en.opensuse.org/SDB:Zypper_manual.
   InventoryZypperPatch? zypperPatch;
 
-  InventorySoftwarePackage();
+  InventorySoftwarePackage({
+    this.aptPackage,
+    this.cosPackage,
+    this.googetPackage,
+    this.qfePackage,
+    this.wuaPackage,
+    this.yumPackage,
+    this.zypperPackage,
+    this.zypperPatch,
+  });
 
-  InventorySoftwarePackage.fromJson(core.Map _json) {
-    if (_json.containsKey('aptPackage')) {
-      aptPackage = InventoryVersionedPackage.fromJson(
-          _json['aptPackage'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('cosPackage')) {
-      cosPackage = InventoryVersionedPackage.fromJson(
-          _json['cosPackage'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('googetPackage')) {
-      googetPackage = InventoryVersionedPackage.fromJson(
-          _json['googetPackage'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('qfePackage')) {
-      qfePackage = InventoryWindowsQuickFixEngineeringPackage.fromJson(
-          _json['qfePackage'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('wuaPackage')) {
-      wuaPackage = InventoryWindowsUpdatePackage.fromJson(
-          _json['wuaPackage'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('yumPackage')) {
-      yumPackage = InventoryVersionedPackage.fromJson(
-          _json['yumPackage'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('zypperPackage')) {
-      zypperPackage = InventoryVersionedPackage.fromJson(
-          _json['zypperPackage'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('zypperPatch')) {
-      zypperPatch = InventoryZypperPatch.fromJson(
-          _json['zypperPatch'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  InventorySoftwarePackage.fromJson(core.Map _json)
+      : this(
+          aptPackage: _json.containsKey('aptPackage')
+              ? InventoryVersionedPackage.fromJson(
+                  _json['aptPackage'] as core.Map<core.String, core.dynamic>)
+              : null,
+          cosPackage: _json.containsKey('cosPackage')
+              ? InventoryVersionedPackage.fromJson(
+                  _json['cosPackage'] as core.Map<core.String, core.dynamic>)
+              : null,
+          googetPackage: _json.containsKey('googetPackage')
+              ? InventoryVersionedPackage.fromJson(
+                  _json['googetPackage'] as core.Map<core.String, core.dynamic>)
+              : null,
+          qfePackage: _json.containsKey('qfePackage')
+              ? InventoryWindowsQuickFixEngineeringPackage.fromJson(
+                  _json['qfePackage'] as core.Map<core.String, core.dynamic>)
+              : null,
+          wuaPackage: _json.containsKey('wuaPackage')
+              ? InventoryWindowsUpdatePackage.fromJson(
+                  _json['wuaPackage'] as core.Map<core.String, core.dynamic>)
+              : null,
+          yumPackage: _json.containsKey('yumPackage')
+              ? InventoryVersionedPackage.fromJson(
+                  _json['yumPackage'] as core.Map<core.String, core.dynamic>)
+              : null,
+          zypperPackage: _json.containsKey('zypperPackage')
+              ? InventoryVersionedPackage.fromJson(
+                  _json['zypperPackage'] as core.Map<core.String, core.dynamic>)
+              : null,
+          zypperPatch: _json.containsKey('zypperPatch')
+              ? InventoryZypperPatch.fromJson(
+                  _json['zypperPatch'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (aptPackage != null) 'aptPackage': aptPackage!.toJson(),
@@ -1207,19 +1264,24 @@ class InventoryVersionedPackage {
   /// The version of the package.
   core.String? version;
 
-  InventoryVersionedPackage();
+  InventoryVersionedPackage({
+    this.architecture,
+    this.packageName,
+    this.version,
+  });
 
-  InventoryVersionedPackage.fromJson(core.Map _json) {
-    if (_json.containsKey('architecture')) {
-      architecture = _json['architecture'] as core.String;
-    }
-    if (_json.containsKey('packageName')) {
-      packageName = _json['packageName'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.String;
-    }
-  }
+  InventoryVersionedPackage.fromJson(core.Map _json)
+      : this(
+          architecture: _json.containsKey('architecture')
+              ? _json['architecture'] as core.String
+              : null,
+          packageName: _json.containsKey('packageName')
+              ? _json['packageName'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (architecture != null) 'architecture': architecture!,
@@ -1248,22 +1310,28 @@ class InventoryWindowsQuickFixEngineeringPackage {
   /// Mapped from installed_on field.
   core.String? installTime;
 
-  InventoryWindowsQuickFixEngineeringPackage();
+  InventoryWindowsQuickFixEngineeringPackage({
+    this.caption,
+    this.description,
+    this.hotFixId,
+    this.installTime,
+  });
 
-  InventoryWindowsQuickFixEngineeringPackage.fromJson(core.Map _json) {
-    if (_json.containsKey('caption')) {
-      caption = _json['caption'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('hotFixId')) {
-      hotFixId = _json['hotFixId'] as core.String;
-    }
-    if (_json.containsKey('installTime')) {
-      installTime = _json['installTime'] as core.String;
-    }
-  }
+  InventoryWindowsQuickFixEngineeringPackage.fromJson(core.Map _json)
+      : this(
+          caption: _json.containsKey('caption')
+              ? _json['caption'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          hotFixId: _json.containsKey('hotFixId')
+              ? _json['hotFixId'] as core.String
+              : null,
+          installTime: _json.containsKey('installTime')
+              ? _json['installTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (caption != null) 'caption': caption!,
@@ -1311,46 +1379,58 @@ class InventoryWindowsUpdatePackage {
   /// Stays the same across revisions.
   core.String? updateId;
 
-  InventoryWindowsUpdatePackage();
+  InventoryWindowsUpdatePackage({
+    this.categories,
+    this.description,
+    this.kbArticleIds,
+    this.lastDeploymentChangeTime,
+    this.moreInfoUrls,
+    this.revisionNumber,
+    this.supportUrl,
+    this.title,
+    this.updateId,
+  });
 
-  InventoryWindowsUpdatePackage.fromJson(core.Map _json) {
-    if (_json.containsKey('categories')) {
-      categories = (_json['categories'] as core.List)
-          .map<InventoryWindowsUpdatePackageWindowsUpdateCategory>((value) =>
-              InventoryWindowsUpdatePackageWindowsUpdateCategory.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('kbArticleIds')) {
-      kbArticleIds = (_json['kbArticleIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('lastDeploymentChangeTime')) {
-      lastDeploymentChangeTime =
-          _json['lastDeploymentChangeTime'] as core.String;
-    }
-    if (_json.containsKey('moreInfoUrls')) {
-      moreInfoUrls = (_json['moreInfoUrls'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('revisionNumber')) {
-      revisionNumber = _json['revisionNumber'] as core.int;
-    }
-    if (_json.containsKey('supportUrl')) {
-      supportUrl = _json['supportUrl'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-    if (_json.containsKey('updateId')) {
-      updateId = _json['updateId'] as core.String;
-    }
-  }
+  InventoryWindowsUpdatePackage.fromJson(core.Map _json)
+      : this(
+          categories: _json.containsKey('categories')
+              ? (_json['categories'] as core.List)
+                  .map<InventoryWindowsUpdatePackageWindowsUpdateCategory>(
+                      (value) =>
+                          InventoryWindowsUpdatePackageWindowsUpdateCategory
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          kbArticleIds: _json.containsKey('kbArticleIds')
+              ? (_json['kbArticleIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          lastDeploymentChangeTime:
+              _json.containsKey('lastDeploymentChangeTime')
+                  ? _json['lastDeploymentChangeTime'] as core.String
+                  : null,
+          moreInfoUrls: _json.containsKey('moreInfoUrls')
+              ? (_json['moreInfoUrls'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          revisionNumber: _json.containsKey('revisionNumber')
+              ? _json['revisionNumber'] as core.int
+              : null,
+          supportUrl: _json.containsKey('supportUrl')
+              ? _json['supportUrl'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+          updateId: _json.containsKey('updateId')
+              ? _json['updateId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (categories != null)
@@ -1375,16 +1455,16 @@ class InventoryWindowsUpdatePackageWindowsUpdateCategory {
   /// The name of the windows update category.
   core.String? name;
 
-  InventoryWindowsUpdatePackageWindowsUpdateCategory();
+  InventoryWindowsUpdatePackageWindowsUpdateCategory({
+    this.id,
+    this.name,
+  });
 
-  InventoryWindowsUpdatePackageWindowsUpdateCategory.fromJson(core.Map _json) {
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  InventoryWindowsUpdatePackageWindowsUpdateCategory.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
@@ -1406,22 +1486,28 @@ class InventoryZypperPatch {
   /// Any summary information provided about this patch.
   core.String? summary;
 
-  InventoryZypperPatch();
+  InventoryZypperPatch({
+    this.category,
+    this.patchName,
+    this.severity,
+    this.summary,
+  });
 
-  InventoryZypperPatch.fromJson(core.Map _json) {
-    if (_json.containsKey('category')) {
-      category = _json['category'] as core.String;
-    }
-    if (_json.containsKey('patchName')) {
-      patchName = _json['patchName'] as core.String;
-    }
-    if (_json.containsKey('severity')) {
-      severity = _json['severity'] as core.String;
-    }
-    if (_json.containsKey('summary')) {
-      summary = _json['summary'] as core.String;
-    }
-  }
+  InventoryZypperPatch.fromJson(core.Map _json)
+      : this(
+          category: _json.containsKey('category')
+              ? _json['category'] as core.String
+              : null,
+          patchName: _json.containsKey('patchName')
+              ? _json['patchName'] as core.String
+              : null,
+          severity: _json.containsKey('severity')
+              ? _json['severity'] as core.String
+              : null,
+          summary: _json.containsKey('summary')
+              ? _json['summary'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (category != null) 'category': category!,
@@ -1439,19 +1525,23 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse();
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
 
-  ListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('operations')) {
-      operations = (_json['operations'] as core.List)
-          .map<Operation>((value) =>
-              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListOperationsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          operations: _json.containsKey('operations')
+              ? (_json['operations'] as core.List)
+                  .map<Operation>((value) => Operation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1469,19 +1559,23 @@ class ListPatchDeploymentsResponse {
   /// The list of patch deployments.
   core.List<PatchDeployment>? patchDeployments;
 
-  ListPatchDeploymentsResponse();
+  ListPatchDeploymentsResponse({
+    this.nextPageToken,
+    this.patchDeployments,
+  });
 
-  ListPatchDeploymentsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('patchDeployments')) {
-      patchDeployments = (_json['patchDeployments'] as core.List)
-          .map<PatchDeployment>((value) => PatchDeployment.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListPatchDeploymentsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          patchDeployments: _json.containsKey('patchDeployments')
+              ? (_json['patchDeployments'] as core.List)
+                  .map<PatchDeployment>((value) => PatchDeployment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1499,20 +1593,24 @@ class ListPatchJobInstanceDetailsResponse {
   /// A list of instance status.
   core.List<PatchJobInstanceDetails>? patchJobInstanceDetails;
 
-  ListPatchJobInstanceDetailsResponse();
+  ListPatchJobInstanceDetailsResponse({
+    this.nextPageToken,
+    this.patchJobInstanceDetails,
+  });
 
-  ListPatchJobInstanceDetailsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('patchJobInstanceDetails')) {
-      patchJobInstanceDetails = (_json['patchJobInstanceDetails'] as core.List)
-          .map<PatchJobInstanceDetails>((value) =>
-              PatchJobInstanceDetails.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListPatchJobInstanceDetailsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          patchJobInstanceDetails: _json.containsKey('patchJobInstanceDetails')
+              ? (_json['patchJobInstanceDetails'] as core.List)
+                  .map<PatchJobInstanceDetails>((value) =>
+                      PatchJobInstanceDetails.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1530,19 +1628,23 @@ class ListPatchJobsResponse {
   /// The list of patch jobs.
   core.List<PatchJob>? patchJobs;
 
-  ListPatchJobsResponse();
+  ListPatchJobsResponse({
+    this.nextPageToken,
+    this.patchJobs,
+  });
 
-  ListPatchJobsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('patchJobs')) {
-      patchJobs = (_json['patchJobs'] as core.List)
-          .map<PatchJob>((value) =>
-              PatchJob.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListPatchJobsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          patchJobs: _json.containsKey('patchJobs')
+              ? (_json['patchJobs'] as core.List)
+                  .map<PatchJob>((value) => PatchJob.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1571,17 +1673,21 @@ class MonthlySchedule {
   /// Required.
   WeekDayOfMonth? weekDayOfMonth;
 
-  MonthlySchedule();
+  MonthlySchedule({
+    this.monthDay,
+    this.weekDayOfMonth,
+  });
 
-  MonthlySchedule.fromJson(core.Map _json) {
-    if (_json.containsKey('monthDay')) {
-      monthDay = _json['monthDay'] as core.int;
-    }
-    if (_json.containsKey('weekDayOfMonth')) {
-      weekDayOfMonth = WeekDayOfMonth.fromJson(
-          _json['weekDayOfMonth'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  MonthlySchedule.fromJson(core.Map _json)
+      : this(
+          monthDay: _json.containsKey('monthDay')
+              ? _json['monthDay'] as core.int
+              : null,
+          weekDayOfMonth: _json.containsKey('weekDayOfMonth')
+              ? WeekDayOfMonth.fromJson(_json['weekDayOfMonth']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (monthDay != null) 'monthDay': monthDay!,
@@ -1621,25 +1727,32 @@ class OSPolicyAssignmentOperationMetadata {
   /// Rollout update time
   core.String? rolloutUpdateTime;
 
-  OSPolicyAssignmentOperationMetadata();
+  OSPolicyAssignmentOperationMetadata({
+    this.apiMethod,
+    this.osPolicyAssignment,
+    this.rolloutStartTime,
+    this.rolloutState,
+    this.rolloutUpdateTime,
+  });
 
-  OSPolicyAssignmentOperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('apiMethod')) {
-      apiMethod = _json['apiMethod'] as core.String;
-    }
-    if (_json.containsKey('osPolicyAssignment')) {
-      osPolicyAssignment = _json['osPolicyAssignment'] as core.String;
-    }
-    if (_json.containsKey('rolloutStartTime')) {
-      rolloutStartTime = _json['rolloutStartTime'] as core.String;
-    }
-    if (_json.containsKey('rolloutState')) {
-      rolloutState = _json['rolloutState'] as core.String;
-    }
-    if (_json.containsKey('rolloutUpdateTime')) {
-      rolloutUpdateTime = _json['rolloutUpdateTime'] as core.String;
-    }
-  }
+  OSPolicyAssignmentOperationMetadata.fromJson(core.Map _json)
+      : this(
+          apiMethod: _json.containsKey('apiMethod')
+              ? _json['apiMethod'] as core.String
+              : null,
+          osPolicyAssignment: _json.containsKey('osPolicyAssignment')
+              ? _json['osPolicyAssignment'] as core.String
+              : null,
+          rolloutStartTime: _json.containsKey('rolloutStartTime')
+              ? _json['rolloutStartTime'] as core.String
+              : null,
+          rolloutState: _json.containsKey('rolloutState')
+              ? _json['rolloutState'] as core.String
+              : null,
+          rolloutUpdateTime: _json.containsKey('rolloutUpdateTime')
+              ? _json['rolloutUpdateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiMethod != null) 'apiMethod': apiMethod!,
@@ -1660,13 +1773,16 @@ class OneTimeSchedule {
   /// Required.
   core.String? executeTime;
 
-  OneTimeSchedule();
+  OneTimeSchedule({
+    this.executeTime,
+  });
 
-  OneTimeSchedule.fromJson(core.Map _json) {
-    if (_json.containsKey('executeTime')) {
-      executeTime = _json['executeTime'] as core.String;
-    }
-  }
+  OneTimeSchedule.fromJson(core.Map _json)
+      : this(
+          executeTime: _json.containsKey('executeTime')
+              ? _json['executeTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (executeTime != null) 'executeTime': executeTime!,
@@ -1716,36 +1832,39 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object>? response;
 
-  Operation();
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
-  Operation.fromJson(core.Map _json) {
-    if (_json.containsKey('done')) {
-      done = _json['done'] as core.bool;
-    }
-    if (_json.containsKey('error')) {
-      error = Status.fromJson(
-          _json['error'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('response')) {
-      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-  }
+  Operation.fromJson(core.Map _json)
+      : this(
+          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
+          error: _json.containsKey('error')
+              ? Status.fromJson(
+                  _json['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          response: _json.containsKey('response')
+              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
@@ -1802,41 +1921,51 @@ class PatchConfig {
   /// Use this setting to override the default `zypper` patch rules.
   ZypperSettings? zypper;
 
-  PatchConfig();
+  PatchConfig({
+    this.apt,
+    this.goo,
+    this.postStep,
+    this.preStep,
+    this.rebootConfig,
+    this.windowsUpdate,
+    this.yum,
+    this.zypper,
+  });
 
-  PatchConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('apt')) {
-      apt = AptSettings.fromJson(
-          _json['apt'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('goo')) {
-      goo = GooSettings.fromJson(
-          _json['goo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('postStep')) {
-      postStep = ExecStep.fromJson(
-          _json['postStep'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('preStep')) {
-      preStep = ExecStep.fromJson(
-          _json['preStep'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('rebootConfig')) {
-      rebootConfig = _json['rebootConfig'] as core.String;
-    }
-    if (_json.containsKey('windowsUpdate')) {
-      windowsUpdate = WindowsUpdateSettings.fromJson(
-          _json['windowsUpdate'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('yum')) {
-      yum = YumSettings.fromJson(
-          _json['yum'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('zypper')) {
-      zypper = ZypperSettings.fromJson(
-          _json['zypper'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  PatchConfig.fromJson(core.Map _json)
+      : this(
+          apt: _json.containsKey('apt')
+              ? AptSettings.fromJson(
+                  _json['apt'] as core.Map<core.String, core.dynamic>)
+              : null,
+          goo: _json.containsKey('goo')
+              ? GooSettings.fromJson(
+                  _json['goo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          postStep: _json.containsKey('postStep')
+              ? ExecStep.fromJson(
+                  _json['postStep'] as core.Map<core.String, core.dynamic>)
+              : null,
+          preStep: _json.containsKey('preStep')
+              ? ExecStep.fromJson(
+                  _json['preStep'] as core.Map<core.String, core.dynamic>)
+              : null,
+          rebootConfig: _json.containsKey('rebootConfig')
+              ? _json['rebootConfig'] as core.String
+              : null,
+          windowsUpdate: _json.containsKey('windowsUpdate')
+              ? WindowsUpdateSettings.fromJson(
+                  _json['windowsUpdate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          yum: _json.containsKey('yum')
+              ? YumSettings.fromJson(
+                  _json['yum'] as core.Map<core.String, core.dynamic>)
+              : null,
+          zypper: _json.containsKey('zypper')
+              ? ZypperSettings.fromJson(
+                  _json['zypper'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apt != null) 'apt': apt!.toJson(),
@@ -1928,48 +2057,59 @@ class PatchDeployment {
   /// Output only.
   core.String? updateTime;
 
-  PatchDeployment();
+  PatchDeployment({
+    this.createTime,
+    this.description,
+    this.duration,
+    this.instanceFilter,
+    this.lastExecuteTime,
+    this.name,
+    this.oneTimeSchedule,
+    this.patchConfig,
+    this.recurringSchedule,
+    this.rollout,
+    this.updateTime,
+  });
 
-  PatchDeployment.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('duration')) {
-      duration = _json['duration'] as core.String;
-    }
-    if (_json.containsKey('instanceFilter')) {
-      instanceFilter = PatchInstanceFilter.fromJson(
-          _json['instanceFilter'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('lastExecuteTime')) {
-      lastExecuteTime = _json['lastExecuteTime'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('oneTimeSchedule')) {
-      oneTimeSchedule = OneTimeSchedule.fromJson(
-          _json['oneTimeSchedule'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('patchConfig')) {
-      patchConfig = PatchConfig.fromJson(
-          _json['patchConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('recurringSchedule')) {
-      recurringSchedule = RecurringSchedule.fromJson(
-          _json['recurringSchedule'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('rollout')) {
-      rollout = PatchRollout.fromJson(
-          _json['rollout'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  PatchDeployment.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          duration: _json.containsKey('duration')
+              ? _json['duration'] as core.String
+              : null,
+          instanceFilter: _json.containsKey('instanceFilter')
+              ? PatchInstanceFilter.fromJson(_json['instanceFilter']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          lastExecuteTime: _json.containsKey('lastExecuteTime')
+              ? _json['lastExecuteTime'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          oneTimeSchedule: _json.containsKey('oneTimeSchedule')
+              ? OneTimeSchedule.fromJson(_json['oneTimeSchedule']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          patchConfig: _json.containsKey('patchConfig')
+              ? PatchConfig.fromJson(
+                  _json['patchConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          recurringSchedule: _json.containsKey('recurringSchedule')
+              ? RecurringSchedule.fromJson(_json['recurringSchedule']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          rollout: _json.containsKey('rollout')
+              ? PatchRollout.fromJson(
+                  _json['rollout'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -2023,35 +2163,40 @@ class PatchInstanceFilter {
   /// Leave empty to target VM instances in any zone.
   core.List<core.String>? zones;
 
-  PatchInstanceFilter();
+  PatchInstanceFilter({
+    this.all,
+    this.groupLabels,
+    this.instanceNamePrefixes,
+    this.instances,
+    this.zones,
+  });
 
-  PatchInstanceFilter.fromJson(core.Map _json) {
-    if (_json.containsKey('all')) {
-      all = _json['all'] as core.bool;
-    }
-    if (_json.containsKey('groupLabels')) {
-      groupLabels = (_json['groupLabels'] as core.List)
-          .map<PatchInstanceFilterGroupLabel>((value) =>
-              PatchInstanceFilterGroupLabel.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('instanceNamePrefixes')) {
-      instanceNamePrefixes = (_json['instanceNamePrefixes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('instances')) {
-      instances = (_json['instances'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('zones')) {
-      zones = (_json['zones'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  PatchInstanceFilter.fromJson(core.Map _json)
+      : this(
+          all: _json.containsKey('all') ? _json['all'] as core.bool : null,
+          groupLabels: _json.containsKey('groupLabels')
+              ? (_json['groupLabels'] as core.List)
+                  .map<PatchInstanceFilterGroupLabel>((value) =>
+                      PatchInstanceFilterGroupLabel.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          instanceNamePrefixes: _json.containsKey('instanceNamePrefixes')
+              ? (_json['instanceNamePrefixes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          instances: _json.containsKey('instances')
+              ? (_json['instances'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          zones: _json.containsKey('zones')
+              ? (_json['zones'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (all != null) 'all': all!,
@@ -2077,18 +2222,21 @@ class PatchInstanceFilterGroupLabel {
   /// be targeted by this filter.
   core.Map<core.String, core.String>? labels;
 
-  PatchInstanceFilterGroupLabel();
+  PatchInstanceFilterGroupLabel({
+    this.labels,
+  });
 
-  PatchInstanceFilterGroupLabel.fromJson(core.Map _json) {
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-  }
+  PatchInstanceFilterGroupLabel.fromJson(core.Map _json)
+      : this(
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (labels != null) 'labels': labels!,
@@ -2170,60 +2318,73 @@ class PatchJob {
   /// Last time this patch job was updated.
   core.String? updateTime;
 
-  PatchJob();
+  PatchJob({
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.dryRun,
+    this.duration,
+    this.errorMessage,
+    this.instanceDetailsSummary,
+    this.instanceFilter,
+    this.name,
+    this.patchConfig,
+    this.patchDeployment,
+    this.percentComplete,
+    this.rollout,
+    this.state,
+    this.updateTime,
+  });
 
-  PatchJob.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('dryRun')) {
-      dryRun = _json['dryRun'] as core.bool;
-    }
-    if (_json.containsKey('duration')) {
-      duration = _json['duration'] as core.String;
-    }
-    if (_json.containsKey('errorMessage')) {
-      errorMessage = _json['errorMessage'] as core.String;
-    }
-    if (_json.containsKey('instanceDetailsSummary')) {
-      instanceDetailsSummary = PatchJobInstanceDetailsSummary.fromJson(
-          _json['instanceDetailsSummary']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('instanceFilter')) {
-      instanceFilter = PatchInstanceFilter.fromJson(
-          _json['instanceFilter'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('patchConfig')) {
-      patchConfig = PatchConfig.fromJson(
-          _json['patchConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('patchDeployment')) {
-      patchDeployment = _json['patchDeployment'] as core.String;
-    }
-    if (_json.containsKey('percentComplete')) {
-      percentComplete = (_json['percentComplete'] as core.num).toDouble();
-    }
-    if (_json.containsKey('rollout')) {
-      rollout = PatchRollout.fromJson(
-          _json['rollout'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  PatchJob.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          dryRun:
+              _json.containsKey('dryRun') ? _json['dryRun'] as core.bool : null,
+          duration: _json.containsKey('duration')
+              ? _json['duration'] as core.String
+              : null,
+          errorMessage: _json.containsKey('errorMessage')
+              ? _json['errorMessage'] as core.String
+              : null,
+          instanceDetailsSummary: _json.containsKey('instanceDetailsSummary')
+              ? PatchJobInstanceDetailsSummary.fromJson(
+                  _json['instanceDetailsSummary']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          instanceFilter: _json.containsKey('instanceFilter')
+              ? PatchInstanceFilter.fromJson(_json['instanceFilter']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          patchConfig: _json.containsKey('patchConfig')
+              ? PatchConfig.fromJson(
+                  _json['patchConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          patchDeployment: _json.containsKey('patchDeployment')
+              ? _json['patchDeployment'] as core.String
+              : null,
+          percentComplete: _json.containsKey('percentComplete')
+              ? (_json['percentComplete'] as core.num).toDouble()
+              : null,
+          rollout: _json.containsKey('rollout')
+              ? PatchRollout.fromJson(
+                  _json['rollout'] as core.Map<core.String, core.dynamic>)
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -2288,25 +2449,29 @@ class PatchJobInstanceDetails {
   /// communicate with the service.
   core.String? state;
 
-  PatchJobInstanceDetails();
+  PatchJobInstanceDetails({
+    this.attemptCount,
+    this.failureReason,
+    this.instanceSystemId,
+    this.name,
+    this.state,
+  });
 
-  PatchJobInstanceDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('attemptCount')) {
-      attemptCount = _json['attemptCount'] as core.String;
-    }
-    if (_json.containsKey('failureReason')) {
-      failureReason = _json['failureReason'] as core.String;
-    }
-    if (_json.containsKey('instanceSystemId')) {
-      instanceSystemId = _json['instanceSystemId'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-  }
+  PatchJobInstanceDetails.fromJson(core.Map _json)
+      : this(
+          attemptCount: _json.containsKey('attemptCount')
+              ? _json['attemptCount'] as core.String
+              : null,
+          failureReason: _json.containsKey('failureReason')
+              ? _json['failureReason'] as core.String
+              : null,
+          instanceSystemId: _json.containsKey('instanceSystemId')
+              ? _json['instanceSystemId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attemptCount != null) 'attemptCount': attemptCount!,
@@ -2372,61 +2537,78 @@ class PatchJobInstanceDetailsSummary {
   /// Number of instances that exceeded the time out while applying the patch.
   core.String? timedOutInstanceCount;
 
-  PatchJobInstanceDetailsSummary();
+  PatchJobInstanceDetailsSummary({
+    this.ackedInstanceCount,
+    this.applyingPatchesInstanceCount,
+    this.downloadingPatchesInstanceCount,
+    this.failedInstanceCount,
+    this.inactiveInstanceCount,
+    this.noAgentDetectedInstanceCount,
+    this.notifiedInstanceCount,
+    this.pendingInstanceCount,
+    this.postPatchStepInstanceCount,
+    this.prePatchStepInstanceCount,
+    this.rebootingInstanceCount,
+    this.startedInstanceCount,
+    this.succeededInstanceCount,
+    this.succeededRebootRequiredInstanceCount,
+    this.timedOutInstanceCount,
+  });
 
-  PatchJobInstanceDetailsSummary.fromJson(core.Map _json) {
-    if (_json.containsKey('ackedInstanceCount')) {
-      ackedInstanceCount = _json['ackedInstanceCount'] as core.String;
-    }
-    if (_json.containsKey('applyingPatchesInstanceCount')) {
-      applyingPatchesInstanceCount =
-          _json['applyingPatchesInstanceCount'] as core.String;
-    }
-    if (_json.containsKey('downloadingPatchesInstanceCount')) {
-      downloadingPatchesInstanceCount =
-          _json['downloadingPatchesInstanceCount'] as core.String;
-    }
-    if (_json.containsKey('failedInstanceCount')) {
-      failedInstanceCount = _json['failedInstanceCount'] as core.String;
-    }
-    if (_json.containsKey('inactiveInstanceCount')) {
-      inactiveInstanceCount = _json['inactiveInstanceCount'] as core.String;
-    }
-    if (_json.containsKey('noAgentDetectedInstanceCount')) {
-      noAgentDetectedInstanceCount =
-          _json['noAgentDetectedInstanceCount'] as core.String;
-    }
-    if (_json.containsKey('notifiedInstanceCount')) {
-      notifiedInstanceCount = _json['notifiedInstanceCount'] as core.String;
-    }
-    if (_json.containsKey('pendingInstanceCount')) {
-      pendingInstanceCount = _json['pendingInstanceCount'] as core.String;
-    }
-    if (_json.containsKey('postPatchStepInstanceCount')) {
-      postPatchStepInstanceCount =
-          _json['postPatchStepInstanceCount'] as core.String;
-    }
-    if (_json.containsKey('prePatchStepInstanceCount')) {
-      prePatchStepInstanceCount =
-          _json['prePatchStepInstanceCount'] as core.String;
-    }
-    if (_json.containsKey('rebootingInstanceCount')) {
-      rebootingInstanceCount = _json['rebootingInstanceCount'] as core.String;
-    }
-    if (_json.containsKey('startedInstanceCount')) {
-      startedInstanceCount = _json['startedInstanceCount'] as core.String;
-    }
-    if (_json.containsKey('succeededInstanceCount')) {
-      succeededInstanceCount = _json['succeededInstanceCount'] as core.String;
-    }
-    if (_json.containsKey('succeededRebootRequiredInstanceCount')) {
-      succeededRebootRequiredInstanceCount =
-          _json['succeededRebootRequiredInstanceCount'] as core.String;
-    }
-    if (_json.containsKey('timedOutInstanceCount')) {
-      timedOutInstanceCount = _json['timedOutInstanceCount'] as core.String;
-    }
-  }
+  PatchJobInstanceDetailsSummary.fromJson(core.Map _json)
+      : this(
+          ackedInstanceCount: _json.containsKey('ackedInstanceCount')
+              ? _json['ackedInstanceCount'] as core.String
+              : null,
+          applyingPatchesInstanceCount:
+              _json.containsKey('applyingPatchesInstanceCount')
+                  ? _json['applyingPatchesInstanceCount'] as core.String
+                  : null,
+          downloadingPatchesInstanceCount:
+              _json.containsKey('downloadingPatchesInstanceCount')
+                  ? _json['downloadingPatchesInstanceCount'] as core.String
+                  : null,
+          failedInstanceCount: _json.containsKey('failedInstanceCount')
+              ? _json['failedInstanceCount'] as core.String
+              : null,
+          inactiveInstanceCount: _json.containsKey('inactiveInstanceCount')
+              ? _json['inactiveInstanceCount'] as core.String
+              : null,
+          noAgentDetectedInstanceCount:
+              _json.containsKey('noAgentDetectedInstanceCount')
+                  ? _json['noAgentDetectedInstanceCount'] as core.String
+                  : null,
+          notifiedInstanceCount: _json.containsKey('notifiedInstanceCount')
+              ? _json['notifiedInstanceCount'] as core.String
+              : null,
+          pendingInstanceCount: _json.containsKey('pendingInstanceCount')
+              ? _json['pendingInstanceCount'] as core.String
+              : null,
+          postPatchStepInstanceCount:
+              _json.containsKey('postPatchStepInstanceCount')
+                  ? _json['postPatchStepInstanceCount'] as core.String
+                  : null,
+          prePatchStepInstanceCount:
+              _json.containsKey('prePatchStepInstanceCount')
+                  ? _json['prePatchStepInstanceCount'] as core.String
+                  : null,
+          rebootingInstanceCount: _json.containsKey('rebootingInstanceCount')
+              ? _json['rebootingInstanceCount'] as core.String
+              : null,
+          startedInstanceCount: _json.containsKey('startedInstanceCount')
+              ? _json['startedInstanceCount'] as core.String
+              : null,
+          succeededInstanceCount: _json.containsKey('succeededInstanceCount')
+              ? _json['succeededInstanceCount'] as core.String
+              : null,
+          succeededRebootRequiredInstanceCount:
+              _json.containsKey('succeededRebootRequiredInstanceCount')
+                  ? _json['succeededRebootRequiredInstanceCount'] as core.String
+                  : null,
+          timedOutInstanceCount: _json.containsKey('timedOutInstanceCount')
+              ? _json['timedOutInstanceCount'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ackedInstanceCount != null)
@@ -2503,17 +2685,19 @@ class PatchRollout {
   /// time.
   core.String? mode;
 
-  PatchRollout();
+  PatchRollout({
+    this.disruptionBudget,
+    this.mode,
+  });
 
-  PatchRollout.fromJson(core.Map _json) {
-    if (_json.containsKey('disruptionBudget')) {
-      disruptionBudget = FixedOrPercent.fromJson(
-          _json['disruptionBudget'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('mode')) {
-      mode = _json['mode'] as core.String;
-    }
-  }
+  PatchRollout.fromJson(core.Map _json)
+      : this(
+          disruptionBudget: _json.containsKey('disruptionBudget')
+              ? FixedOrPercent.fromJson(_json['disruptionBudget']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          mode: _json.containsKey('mode') ? _json['mode'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disruptionBudget != null)
@@ -2580,41 +2764,52 @@ class RecurringSchedule {
   /// Required.
   WeeklySchedule? weekly;
 
-  RecurringSchedule();
+  RecurringSchedule({
+    this.endTime,
+    this.frequency,
+    this.lastExecuteTime,
+    this.monthly,
+    this.nextExecuteTime,
+    this.startTime,
+    this.timeOfDay,
+    this.timeZone,
+    this.weekly,
+  });
 
-  RecurringSchedule.fromJson(core.Map _json) {
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('frequency')) {
-      frequency = _json['frequency'] as core.String;
-    }
-    if (_json.containsKey('lastExecuteTime')) {
-      lastExecuteTime = _json['lastExecuteTime'] as core.String;
-    }
-    if (_json.containsKey('monthly')) {
-      monthly = MonthlySchedule.fromJson(
-          _json['monthly'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('nextExecuteTime')) {
-      nextExecuteTime = _json['nextExecuteTime'] as core.String;
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-    if (_json.containsKey('timeOfDay')) {
-      timeOfDay = TimeOfDay.fromJson(
-          _json['timeOfDay'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('timeZone')) {
-      timeZone = TimeZone.fromJson(
-          _json['timeZone'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('weekly')) {
-      weekly = WeeklySchedule.fromJson(
-          _json['weekly'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  RecurringSchedule.fromJson(core.Map _json)
+      : this(
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          frequency: _json.containsKey('frequency')
+              ? _json['frequency'] as core.String
+              : null,
+          lastExecuteTime: _json.containsKey('lastExecuteTime')
+              ? _json['lastExecuteTime'] as core.String
+              : null,
+          monthly: _json.containsKey('monthly')
+              ? MonthlySchedule.fromJson(
+                  _json['monthly'] as core.Map<core.String, core.dynamic>)
+              : null,
+          nextExecuteTime: _json.containsKey('nextExecuteTime')
+              ? _json['nextExecuteTime'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+          timeOfDay: _json.containsKey('timeOfDay')
+              ? TimeOfDay.fromJson(
+                  _json['timeOfDay'] as core.Map<core.String, core.dynamic>)
+              : null,
+          timeZone: _json.containsKey('timeZone')
+              ? TimeZone.fromJson(
+                  _json['timeZone'] as core.Map<core.String, core.dynamic>)
+              : null,
+          weekly: _json.containsKey('weekly')
+              ? WeeklySchedule.fromJson(
+                  _json['weekly'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
@@ -2654,27 +2849,30 @@ class Status {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  Status();
+  Status({
+    this.code,
+    this.details,
+    this.message,
+  });
 
-  Status.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.int;
-    }
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  Status.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -2711,22 +2909,24 @@ class TimeOfDay {
   /// leap-seconds.
   core.int? seconds;
 
-  TimeOfDay();
+  TimeOfDay({
+    this.hours,
+    this.minutes,
+    this.nanos,
+    this.seconds,
+  });
 
-  TimeOfDay.fromJson(core.Map _json) {
-    if (_json.containsKey('hours')) {
-      hours = _json['hours'] as core.int;
-    }
-    if (_json.containsKey('minutes')) {
-      minutes = _json['minutes'] as core.int;
-    }
-    if (_json.containsKey('nanos')) {
-      nanos = _json['nanos'] as core.int;
-    }
-    if (_json.containsKey('seconds')) {
-      seconds = _json['seconds'] as core.int;
-    }
-  }
+  TimeOfDay.fromJson(core.Map _json)
+      : this(
+          hours: _json.containsKey('hours') ? _json['hours'] as core.int : null,
+          minutes: _json.containsKey('minutes')
+              ? _json['minutes'] as core.int
+              : null,
+          nanos: _json.containsKey('nanos') ? _json['nanos'] as core.int : null,
+          seconds: _json.containsKey('seconds')
+              ? _json['seconds'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (hours != null) 'hours': hours!,
@@ -2747,16 +2947,18 @@ class TimeZone {
   /// Optional.
   core.String? version;
 
-  TimeZone();
+  TimeZone({
+    this.id,
+    this.version,
+  });
 
-  TimeZone.fromJson(core.Map _json) {
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.String;
-    }
-  }
+  TimeZone.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
@@ -2790,16 +2992,20 @@ class WeekDayOfMonth {
   /// Required.
   core.int? weekOrdinal;
 
-  WeekDayOfMonth();
+  WeekDayOfMonth({
+    this.dayOfWeek,
+    this.weekOrdinal,
+  });
 
-  WeekDayOfMonth.fromJson(core.Map _json) {
-    if (_json.containsKey('dayOfWeek')) {
-      dayOfWeek = _json['dayOfWeek'] as core.String;
-    }
-    if (_json.containsKey('weekOrdinal')) {
-      weekOrdinal = _json['weekOrdinal'] as core.int;
-    }
-  }
+  WeekDayOfMonth.fromJson(core.Map _json)
+      : this(
+          dayOfWeek: _json.containsKey('dayOfWeek')
+              ? _json['dayOfWeek'] as core.String
+              : null,
+          weekOrdinal: _json.containsKey('weekOrdinal')
+              ? _json['weekOrdinal'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dayOfWeek != null) 'dayOfWeek': dayOfWeek!,
@@ -2823,13 +3029,16 @@ class WeeklySchedule {
   /// - "SUNDAY" : Sunday
   core.String? dayOfWeek;
 
-  WeeklySchedule();
+  WeeklySchedule({
+    this.dayOfWeek,
+  });
 
-  WeeklySchedule.fromJson(core.Map _json) {
-    if (_json.containsKey('dayOfWeek')) {
-      dayOfWeek = _json['dayOfWeek'] as core.String;
-    }
-  }
+  WeeklySchedule.fromJson(core.Map _json)
+      : this(
+          dayOfWeek: _json.containsKey('dayOfWeek')
+              ? _json['dayOfWeek'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dayOfWeek != null) 'dayOfWeek': dayOfWeek!,
@@ -2852,25 +3061,30 @@ class WindowsUpdateSettings {
   /// used with other patch configurations.
   core.List<core.String>? exclusivePatches;
 
-  WindowsUpdateSettings();
+  WindowsUpdateSettings({
+    this.classifications,
+    this.excludes,
+    this.exclusivePatches,
+  });
 
-  WindowsUpdateSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('classifications')) {
-      classifications = (_json['classifications'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('excludes')) {
-      excludes = (_json['excludes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('exclusivePatches')) {
-      exclusivePatches = (_json['exclusivePatches'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  WindowsUpdateSettings.fromJson(core.Map _json)
+      : this(
+          classifications: _json.containsKey('classifications')
+              ? (_json['classifications'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          excludes: _json.containsKey('excludes')
+              ? (_json['excludes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          exclusivePatches: _json.containsKey('exclusivePatches')
+              ? (_json['exclusivePatches'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (classifications != null) 'classifications': classifications!,
@@ -2904,26 +3118,32 @@ class YumSettings {
   /// Not supported on all platforms.
   core.bool? security;
 
-  YumSettings();
+  YumSettings({
+    this.excludes,
+    this.exclusivePackages,
+    this.minimal,
+    this.security,
+  });
 
-  YumSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('excludes')) {
-      excludes = (_json['excludes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('exclusivePackages')) {
-      exclusivePackages = (_json['exclusivePackages'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('minimal')) {
-      minimal = _json['minimal'] as core.bool;
-    }
-    if (_json.containsKey('security')) {
-      security = _json['security'] as core.bool;
-    }
-  }
+  YumSettings.fromJson(core.Map _json)
+      : this(
+          excludes: _json.containsKey('excludes')
+              ? (_json['excludes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          exclusivePackages: _json.containsKey('exclusivePackages')
+              ? (_json['exclusivePackages'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          minimal: _json.containsKey('minimal')
+              ? _json['minimal'] as core.bool
+              : null,
+          security: _json.containsKey('security')
+              ? _json['security'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (excludes != null) 'excludes': excludes!,
@@ -2963,36 +3183,44 @@ class ZypperSettings {
   /// Adds the `--with-update` flag, to `zypper patch`.
   core.bool? withUpdate;
 
-  ZypperSettings();
+  ZypperSettings({
+    this.categories,
+    this.excludes,
+    this.exclusivePatches,
+    this.severities,
+    this.withOptional,
+    this.withUpdate,
+  });
 
-  ZypperSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('categories')) {
-      categories = (_json['categories'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('excludes')) {
-      excludes = (_json['excludes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('exclusivePatches')) {
-      exclusivePatches = (_json['exclusivePatches'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('severities')) {
-      severities = (_json['severities'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('withOptional')) {
-      withOptional = _json['withOptional'] as core.bool;
-    }
-    if (_json.containsKey('withUpdate')) {
-      withUpdate = _json['withUpdate'] as core.bool;
-    }
-  }
+  ZypperSettings.fromJson(core.Map _json)
+      : this(
+          categories: _json.containsKey('categories')
+              ? (_json['categories'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          excludes: _json.containsKey('excludes')
+              ? (_json['excludes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          exclusivePatches: _json.containsKey('exclusivePatches')
+              ? (_json['exclusivePatches'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          severities: _json.containsKey('severities')
+              ? (_json['severities'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          withOptional: _json.containsKey('withOptional')
+              ? _json['withOptional'] as core.bool
+              : null,
+          withUpdate: _json.containsKey('withUpdate')
+              ? _json['withUpdate'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (categories != null) 'categories': categories!,

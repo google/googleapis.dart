@@ -1136,22 +1136,25 @@ class Assignment {
   /// - "ACTIVE" : Assignment is ready.
   core.String? state;
 
-  Assignment();
+  Assignment({
+    this.assignee,
+    this.jobType,
+    this.name,
+    this.state,
+  });
 
-  Assignment.fromJson(core.Map _json) {
-    if (_json.containsKey('assignee')) {
-      assignee = _json['assignee'] as core.String;
-    }
-    if (_json.containsKey('jobType')) {
-      jobType = _json['jobType'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-  }
+  Assignment.fromJson(core.Map _json)
+      : this(
+          assignee: _json.containsKey('assignee')
+              ? _json['assignee'] as core.String
+              : null,
+          jobType: _json.containsKey('jobType')
+              ? _json['jobType'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignee != null) 'assignee': assignee!,
@@ -1177,19 +1180,20 @@ class BiReservation {
   /// Output only.
   core.String? updateTime;
 
-  BiReservation();
+  BiReservation({
+    this.name,
+    this.size,
+    this.updateTime,
+  });
 
-  BiReservation.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('size')) {
-      size = _json['size'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  BiReservation.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          size: _json.containsKey('size') ? _json['size'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -1288,35 +1292,40 @@ class CapacityCommitment {
   /// - "FAILED" : Capacity commitment is failed to be activated by the backend.
   core.String? state;
 
-  CapacityCommitment();
+  CapacityCommitment({
+    this.commitmentEndTime,
+    this.commitmentStartTime,
+    this.failureStatus,
+    this.name,
+    this.plan,
+    this.renewalPlan,
+    this.slotCount,
+    this.state,
+  });
 
-  CapacityCommitment.fromJson(core.Map _json) {
-    if (_json.containsKey('commitmentEndTime')) {
-      commitmentEndTime = _json['commitmentEndTime'] as core.String;
-    }
-    if (_json.containsKey('commitmentStartTime')) {
-      commitmentStartTime = _json['commitmentStartTime'] as core.String;
-    }
-    if (_json.containsKey('failureStatus')) {
-      failureStatus = Status.fromJson(
-          _json['failureStatus'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('plan')) {
-      plan = _json['plan'] as core.String;
-    }
-    if (_json.containsKey('renewalPlan')) {
-      renewalPlan = _json['renewalPlan'] as core.String;
-    }
-    if (_json.containsKey('slotCount')) {
-      slotCount = _json['slotCount'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-  }
+  CapacityCommitment.fromJson(core.Map _json)
+      : this(
+          commitmentEndTime: _json.containsKey('commitmentEndTime')
+              ? _json['commitmentEndTime'] as core.String
+              : null,
+          commitmentStartTime: _json.containsKey('commitmentStartTime')
+              ? _json['commitmentStartTime'] as core.String
+              : null,
+          failureStatus: _json.containsKey('failureStatus')
+              ? Status.fromJson(
+                  _json['failureStatus'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          plan: _json.containsKey('plan') ? _json['plan'] as core.String : null,
+          renewalPlan: _json.containsKey('renewalPlan')
+              ? _json['renewalPlan'] as core.String
+              : null,
+          slotCount: _json.containsKey('slotCount')
+              ? _json['slotCount'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (commitmentEndTime != null) 'commitmentEndTime': commitmentEndTime!,
@@ -1357,19 +1366,23 @@ class ListAssignmentsResponse {
   /// results in the list.
   core.String? nextPageToken;
 
-  ListAssignmentsResponse();
+  ListAssignmentsResponse({
+    this.assignments,
+    this.nextPageToken,
+  });
 
-  ListAssignmentsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('assignments')) {
-      assignments = (_json['assignments'] as core.List)
-          .map<Assignment>((value) =>
-              Assignment.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListAssignmentsResponse.fromJson(core.Map _json)
+      : this(
+          assignments: _json.containsKey('assignments')
+              ? (_json['assignments'] as core.List)
+                  .map<Assignment>((value) => Assignment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignments != null)
@@ -1387,19 +1400,24 @@ class ListCapacityCommitmentsResponse {
   /// results in the list.
   core.String? nextPageToken;
 
-  ListCapacityCommitmentsResponse();
+  ListCapacityCommitmentsResponse({
+    this.capacityCommitments,
+    this.nextPageToken,
+  });
 
-  ListCapacityCommitmentsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('capacityCommitments')) {
-      capacityCommitments = (_json['capacityCommitments'] as core.List)
-          .map<CapacityCommitment>((value) => CapacityCommitment.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListCapacityCommitmentsResponse.fromJson(core.Map _json)
+      : this(
+          capacityCommitments: _json.containsKey('capacityCommitments')
+              ? (_json['capacityCommitments'] as core.List)
+                  .map<CapacityCommitment>((value) =>
+                      CapacityCommitment.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (capacityCommitments != null)
@@ -1418,19 +1436,23 @@ class ListReservationsResponse {
   /// List of reservations visible to the user.
   core.List<Reservation>? reservations;
 
-  ListReservationsResponse();
+  ListReservationsResponse({
+    this.nextPageToken,
+    this.reservations,
+  });
 
-  ListReservationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('reservations')) {
-      reservations = (_json['reservations'] as core.List)
-          .map<Reservation>((value) => Reservation.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListReservationsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          reservations: _json.containsKey('reservations')
+              ? (_json['reservations'] as core.List)
+                  .map<Reservation>((value) => Reservation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1449,15 +1471,18 @@ class MergeCapacityCommitmentsRequest {
   /// projects/myproject/locations/US/capacityCommitments/abc
   core.List<core.String>? capacityCommitmentIds;
 
-  MergeCapacityCommitmentsRequest();
+  MergeCapacityCommitmentsRequest({
+    this.capacityCommitmentIds,
+  });
 
-  MergeCapacityCommitmentsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('capacityCommitmentIds')) {
-      capacityCommitmentIds = (_json['capacityCommitmentIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  MergeCapacityCommitmentsRequest.fromJson(core.Map _json)
+      : this(
+          capacityCommitmentIds: _json.containsKey('capacityCommitmentIds')
+              ? (_json['capacityCommitmentIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (capacityCommitmentIds != null)
@@ -1476,13 +1501,16 @@ class MoveAssignmentRequest {
   /// `projects/myotherproject/locations/US/reservations/team2-prod`
   core.String? destinationId;
 
-  MoveAssignmentRequest();
+  MoveAssignmentRequest({
+    this.destinationId,
+  });
 
-  MoveAssignmentRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('destinationId')) {
-      destinationId = _json['destinationId'] as core.String;
-    }
-  }
+  MoveAssignmentRequest.fromJson(core.Map _json)
+      : this(
+          destinationId: _json.containsKey('destinationId')
+              ? _json['destinationId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (destinationId != null) 'destinationId': destinationId!,
@@ -1523,25 +1551,30 @@ class Reservation {
   /// Output only.
   core.String? updateTime;
 
-  Reservation();
+  Reservation({
+    this.creationTime,
+    this.ignoreIdleSlots,
+    this.name,
+    this.slotCapacity,
+    this.updateTime,
+  });
 
-  Reservation.fromJson(core.Map _json) {
-    if (_json.containsKey('creationTime')) {
-      creationTime = _json['creationTime'] as core.String;
-    }
-    if (_json.containsKey('ignoreIdleSlots')) {
-      ignoreIdleSlots = _json['ignoreIdleSlots'] as core.bool;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('slotCapacity')) {
-      slotCapacity = _json['slotCapacity'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  Reservation.fromJson(core.Map _json)
+      : this(
+          creationTime: _json.containsKey('creationTime')
+              ? _json['creationTime'] as core.String
+              : null,
+          ignoreIdleSlots: _json.containsKey('ignoreIdleSlots')
+              ? _json['ignoreIdleSlots'] as core.bool
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          slotCapacity: _json.containsKey('slotCapacity')
+              ? _json['slotCapacity'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (creationTime != null) 'creationTime': creationTime!,
@@ -1561,19 +1594,23 @@ class SearchAllAssignmentsResponse {
   /// results in the list.
   core.String? nextPageToken;
 
-  SearchAllAssignmentsResponse();
+  SearchAllAssignmentsResponse({
+    this.assignments,
+    this.nextPageToken,
+  });
 
-  SearchAllAssignmentsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('assignments')) {
-      assignments = (_json['assignments'] as core.List)
-          .map<Assignment>((value) =>
-              Assignment.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  SearchAllAssignmentsResponse.fromJson(core.Map _json)
+      : this(
+          assignments: _json.containsKey('assignments')
+              ? (_json['assignments'] as core.List)
+                  .map<Assignment>((value) => Assignment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignments != null)
@@ -1591,19 +1628,23 @@ class SearchAssignmentsResponse {
   /// results in the list.
   core.String? nextPageToken;
 
-  SearchAssignmentsResponse();
+  SearchAssignmentsResponse({
+    this.assignments,
+    this.nextPageToken,
+  });
 
-  SearchAssignmentsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('assignments')) {
-      assignments = (_json['assignments'] as core.List)
-          .map<Assignment>((value) =>
-              Assignment.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  SearchAssignmentsResponse.fromJson(core.Map _json)
+      : this(
+          assignments: _json.containsKey('assignments')
+              ? (_json['assignments'] as core.List)
+                  .map<Assignment>((value) => Assignment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignments != null)
@@ -1617,13 +1658,16 @@ class SplitCapacityCommitmentRequest {
   /// Number of slots in the capacity commitment after the split.
   core.String? slotCount;
 
-  SplitCapacityCommitmentRequest();
+  SplitCapacityCommitmentRequest({
+    this.slotCount,
+  });
 
-  SplitCapacityCommitmentRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('slotCount')) {
-      slotCount = _json['slotCount'] as core.String;
-    }
-  }
+  SplitCapacityCommitmentRequest.fromJson(core.Map _json)
+      : this(
+          slotCount: _json.containsKey('slotCount')
+              ? _json['slotCount'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (slotCount != null) 'slotCount': slotCount!,
@@ -1638,18 +1682,22 @@ class SplitCapacityCommitmentResponse {
   /// Second capacity commitment, result of a split.
   CapacityCommitment? second;
 
-  SplitCapacityCommitmentResponse();
+  SplitCapacityCommitmentResponse({
+    this.first,
+    this.second,
+  });
 
-  SplitCapacityCommitmentResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('first')) {
-      first = CapacityCommitment.fromJson(
-          _json['first'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('second')) {
-      second = CapacityCommitment.fromJson(
-          _json['second'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  SplitCapacityCommitmentResponse.fromJson(core.Map _json)
+      : this(
+          first: _json.containsKey('first')
+              ? CapacityCommitment.fromJson(
+                  _json['first'] as core.Map<core.String, core.dynamic>)
+              : null,
+          second: _json.containsKey('second')
+              ? CapacityCommitment.fromJson(
+                  _json['second'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (first != null) 'first': first!.toJson(),
@@ -1682,27 +1730,30 @@ class Status {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  Status();
+  Status({
+    this.code,
+    this.details,
+    this.message,
+  });
 
-  Status.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.int;
-    }
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  Status.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,

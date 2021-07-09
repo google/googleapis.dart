@@ -1886,14 +1886,17 @@ class ANR {
   /// Optional.
   StackTrace? stackTrace;
 
-  ANR();
+  ANR({
+    this.stackTrace,
+  });
 
-  ANR.fromJson(core.Map _json) {
-    if (_json.containsKey('stackTrace')) {
-      stackTrace = StackTrace.fromJson(
-          _json['stackTrace'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ANR.fromJson(core.Map _json)
+      : this(
+          stackTrace: _json.containsKey('stackTrace')
+              ? StackTrace.fromJson(
+                  _json['stackTrace'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (stackTrace != null) 'stackTrace': stackTrace!.toJson(),
@@ -1922,22 +1925,26 @@ class AndroidAppInfo {
   /// Optional.
   core.String? versionName;
 
-  AndroidAppInfo();
+  AndroidAppInfo({
+    this.name,
+    this.packageName,
+    this.versionCode,
+    this.versionName,
+  });
 
-  AndroidAppInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('packageName')) {
-      packageName = _json['packageName'] as core.String;
-    }
-    if (_json.containsKey('versionCode')) {
-      versionCode = _json['versionCode'] as core.String;
-    }
-    if (_json.containsKey('versionName')) {
-      versionName = _json['versionName'] as core.String;
-    }
-  }
+  AndroidAppInfo.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          packageName: _json.containsKey('packageName')
+              ? _json['packageName'] as core.String
+              : null,
+          versionCode: _json.containsKey('versionCode')
+              ? _json['versionCode'] as core.String
+              : null,
+          versionName: _json.containsKey('versionName')
+              ? _json['versionName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -1972,24 +1979,30 @@ class AndroidInstrumentationTest {
   /// test or not.
   core.bool? useOrchestrator;
 
-  AndroidInstrumentationTest();
+  AndroidInstrumentationTest({
+    this.testPackageId,
+    this.testRunnerClass,
+    this.testTargets,
+    this.useOrchestrator,
+  });
 
-  AndroidInstrumentationTest.fromJson(core.Map _json) {
-    if (_json.containsKey('testPackageId')) {
-      testPackageId = _json['testPackageId'] as core.String;
-    }
-    if (_json.containsKey('testRunnerClass')) {
-      testRunnerClass = _json['testRunnerClass'] as core.String;
-    }
-    if (_json.containsKey('testTargets')) {
-      testTargets = (_json['testTargets'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('useOrchestrator')) {
-      useOrchestrator = _json['useOrchestrator'] as core.bool;
-    }
-  }
+  AndroidInstrumentationTest.fromJson(core.Map _json)
+      : this(
+          testPackageId: _json.containsKey('testPackageId')
+              ? _json['testPackageId'] as core.String
+              : null,
+          testRunnerClass: _json.containsKey('testRunnerClass')
+              ? _json['testRunnerClass'] as core.String
+              : null,
+          testTargets: _json.containsKey('testTargets')
+              ? (_json['testTargets'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          useOrchestrator: _json.containsKey('useOrchestrator')
+              ? _json['useOrchestrator'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (testPackageId != null) 'testPackageId': testPackageId!,
@@ -2027,25 +2040,32 @@ class AndroidRoboTest {
   /// Default is no limit (0). Optional
   core.int? maxSteps;
 
-  AndroidRoboTest();
+  AndroidRoboTest({
+    this.appInitialActivity,
+    this.bootstrapPackageId,
+    this.bootstrapRunnerClass,
+    this.maxDepth,
+    this.maxSteps,
+  });
 
-  AndroidRoboTest.fromJson(core.Map _json) {
-    if (_json.containsKey('appInitialActivity')) {
-      appInitialActivity = _json['appInitialActivity'] as core.String;
-    }
-    if (_json.containsKey('bootstrapPackageId')) {
-      bootstrapPackageId = _json['bootstrapPackageId'] as core.String;
-    }
-    if (_json.containsKey('bootstrapRunnerClass')) {
-      bootstrapRunnerClass = _json['bootstrapRunnerClass'] as core.String;
-    }
-    if (_json.containsKey('maxDepth')) {
-      maxDepth = _json['maxDepth'] as core.int;
-    }
-    if (_json.containsKey('maxSteps')) {
-      maxSteps = _json['maxSteps'] as core.int;
-    }
-  }
+  AndroidRoboTest.fromJson(core.Map _json)
+      : this(
+          appInitialActivity: _json.containsKey('appInitialActivity')
+              ? _json['appInitialActivity'] as core.String
+              : null,
+          bootstrapPackageId: _json.containsKey('bootstrapPackageId')
+              ? _json['bootstrapPackageId'] as core.String
+              : null,
+          bootstrapRunnerClass: _json.containsKey('bootstrapRunnerClass')
+              ? _json['bootstrapRunnerClass'] as core.String
+              : null,
+          maxDepth: _json.containsKey('maxDepth')
+              ? _json['maxDepth'] as core.int
+              : null,
+          maxSteps: _json.containsKey('maxSteps')
+              ? _json['maxSteps'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appInitialActivity != null)
@@ -2076,31 +2096,39 @@ class AndroidTest {
   /// Max time a test is allowed to run before it is automatically cancelled.
   Duration? testTimeout;
 
-  AndroidTest();
+  AndroidTest({
+    this.androidAppInfo,
+    this.androidInstrumentationTest,
+    this.androidRoboTest,
+    this.androidTestLoop,
+    this.testTimeout,
+  });
 
-  AndroidTest.fromJson(core.Map _json) {
-    if (_json.containsKey('androidAppInfo')) {
-      androidAppInfo = AndroidAppInfo.fromJson(
-          _json['androidAppInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('androidInstrumentationTest')) {
-      androidInstrumentationTest = AndroidInstrumentationTest.fromJson(
-          _json['androidInstrumentationTest']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('androidRoboTest')) {
-      androidRoboTest = AndroidRoboTest.fromJson(
-          _json['androidRoboTest'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('androidTestLoop')) {
-      androidTestLoop = AndroidTestLoop.fromJson(
-          _json['androidTestLoop'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('testTimeout')) {
-      testTimeout = Duration.fromJson(
-          _json['testTimeout'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  AndroidTest.fromJson(core.Map _json)
+      : this(
+          androidAppInfo: _json.containsKey('androidAppInfo')
+              ? AndroidAppInfo.fromJson(_json['androidAppInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          androidInstrumentationTest:
+              _json.containsKey('androidInstrumentationTest')
+                  ? AndroidInstrumentationTest.fromJson(
+                      _json['androidInstrumentationTest']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          androidRoboTest: _json.containsKey('androidRoboTest')
+              ? AndroidRoboTest.fromJson(_json['androidRoboTest']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          androidTestLoop: _json.containsKey('androidTestLoop')
+              ? AndroidTestLoop.fromJson(_json['androidTestLoop']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          testTimeout: _json.containsKey('testTimeout')
+              ? Duration.fromJson(
+                  _json['testTimeout'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (androidAppInfo != null) 'androidAppInfo': androidAppInfo!.toJson(),
@@ -2185,16 +2213,19 @@ class Any {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  Any();
+  Any({
+    this.typeUrl,
+    this.value,
+  });
 
-  Any.fromJson(core.Map _json) {
-    if (_json.containsKey('typeUrl')) {
-      typeUrl = _json['typeUrl'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  Any.fromJson(core.Map _json)
+      : this(
+          typeUrl: _json.containsKey('typeUrl')
+              ? _json['typeUrl'] as core.String
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (typeUrl != null) 'typeUrl': typeUrl!,
@@ -2220,18 +2251,22 @@ class AppStartTime {
   /// https://developer.android.com/topic/performance/launch-time.html#time-initial
   Duration? initialDisplayTime;
 
-  AppStartTime();
+  AppStartTime({
+    this.fullyDrawnTime,
+    this.initialDisplayTime,
+  });
 
-  AppStartTime.fromJson(core.Map _json) {
-    if (_json.containsKey('fullyDrawnTime')) {
-      fullyDrawnTime = Duration.fromJson(
-          _json['fullyDrawnTime'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('initialDisplayTime')) {
-      initialDisplayTime = Duration.fromJson(
-          _json['initialDisplayTime'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  AppStartTime.fromJson(core.Map _json)
+      : this(
+          fullyDrawnTime: _json.containsKey('fullyDrawnTime')
+              ? Duration.fromJson(_json['fullyDrawnTime']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          initialDisplayTime: _json.containsKey('initialDisplayTime')
+              ? Duration.fromJson(_json['initialDisplayTime']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fullyDrawnTime != null) 'fullyDrawnTime': fullyDrawnTime!.toJson(),
@@ -2290,19 +2325,24 @@ class BasicPerfSampleSeries {
   /// - "graphicsFrameRate" : Graphics sample series
   core.String? sampleSeriesLabel;
 
-  BasicPerfSampleSeries();
+  BasicPerfSampleSeries({
+    this.perfMetricType,
+    this.perfUnit,
+    this.sampleSeriesLabel,
+  });
 
-  BasicPerfSampleSeries.fromJson(core.Map _json) {
-    if (_json.containsKey('perfMetricType')) {
-      perfMetricType = _json['perfMetricType'] as core.String;
-    }
-    if (_json.containsKey('perfUnit')) {
-      perfUnit = _json['perfUnit'] as core.String;
-    }
-    if (_json.containsKey('sampleSeriesLabel')) {
-      sampleSeriesLabel = _json['sampleSeriesLabel'] as core.String;
-    }
-  }
+  BasicPerfSampleSeries.fromJson(core.Map _json)
+      : this(
+          perfMetricType: _json.containsKey('perfMetricType')
+              ? _json['perfMetricType'] as core.String
+              : null,
+          perfUnit: _json.containsKey('perfUnit')
+              ? _json['perfUnit'] as core.String
+              : null,
+          sampleSeriesLabel: _json.containsKey('sampleSeriesLabel')
+              ? _json['sampleSeriesLabel'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (perfMetricType != null) 'perfMetricType': perfMetricType!,
@@ -2317,16 +2357,19 @@ class BatchCreatePerfSamplesRequest {
   /// The set of PerfSamples to create should not include existing timestamps
   core.List<PerfSample>? perfSamples;
 
-  BatchCreatePerfSamplesRequest();
+  BatchCreatePerfSamplesRequest({
+    this.perfSamples,
+  });
 
-  BatchCreatePerfSamplesRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('perfSamples')) {
-      perfSamples = (_json['perfSamples'] as core.List)
-          .map<PerfSample>((value) =>
-              PerfSample.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  BatchCreatePerfSamplesRequest.fromJson(core.Map _json)
+      : this(
+          perfSamples: _json.containsKey('perfSamples')
+              ? (_json['perfSamples'] as core.List)
+                  .map<PerfSample>((value) => PerfSample.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (perfSamples != null)
@@ -2337,16 +2380,19 @@ class BatchCreatePerfSamplesRequest {
 class BatchCreatePerfSamplesResponse {
   core.List<PerfSample>? perfSamples;
 
-  BatchCreatePerfSamplesResponse();
+  BatchCreatePerfSamplesResponse({
+    this.perfSamples,
+  });
 
-  BatchCreatePerfSamplesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('perfSamples')) {
-      perfSamples = (_json['perfSamples'] as core.List)
-          .map<PerfSample>((value) =>
-              PerfSample.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  BatchCreatePerfSamplesResponse.fromJson(core.Map _json)
+      : this(
+          perfSamples: _json.containsKey('perfSamples')
+              ? (_json['perfSamples'] as core.List)
+                  .map<PerfSample>((value) => PerfSample.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (perfSamples != null)
@@ -2360,13 +2406,16 @@ class BlankScreen {
   /// The screen id of the element
   core.String? screenId;
 
-  BlankScreen();
+  BlankScreen({
+    this.screenId,
+  });
 
-  BlankScreen.fromJson(core.Map _json) {
-    if (_json.containsKey('screenId')) {
-      screenId = _json['screenId'] as core.String;
-    }
-  }
+  BlankScreen.fromJson(core.Map _json)
+      : this(
+          screenId: _json.containsKey('screenId')
+              ? _json['screenId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (screenId != null) 'screenId': screenId!,
@@ -2383,19 +2432,24 @@ class CPUInfo {
   /// the number of CPU cores
   core.int? numberOfCores;
 
-  CPUInfo();
+  CPUInfo({
+    this.cpuProcessor,
+    this.cpuSpeedInGhz,
+    this.numberOfCores,
+  });
 
-  CPUInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('cpuProcessor')) {
-      cpuProcessor = _json['cpuProcessor'] as core.String;
-    }
-    if (_json.containsKey('cpuSpeedInGhz')) {
-      cpuSpeedInGhz = (_json['cpuSpeedInGhz'] as core.num).toDouble();
-    }
-    if (_json.containsKey('numberOfCores')) {
-      numberOfCores = _json['numberOfCores'] as core.int;
-    }
-  }
+  CPUInfo.fromJson(core.Map _json)
+      : this(
+          cpuProcessor: _json.containsKey('cpuProcessor')
+              ? _json['cpuProcessor'] as core.String
+              : null,
+          cpuSpeedInGhz: _json.containsKey('cpuSpeedInGhz')
+              ? (_json['cpuSpeedInGhz'] as core.num).toDouble()
+              : null,
+          numberOfCores: _json.containsKey('numberOfCores')
+              ? _json['numberOfCores'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cpuProcessor != null) 'cpuProcessor': cpuProcessor!,
@@ -2409,13 +2463,16 @@ class CrashDialogError {
   /// The name of the package that caused the dialog.
   core.String? crashPackage;
 
-  CrashDialogError();
+  CrashDialogError({
+    this.crashPackage,
+  });
 
-  CrashDialogError.fromJson(core.Map _json) {
-    if (_json.containsKey('crashPackage')) {
-      crashPackage = _json['crashPackage'] as core.String;
-    }
-  }
+  CrashDialogError.fromJson(core.Map _json)
+      : this(
+          crashPackage: _json.containsKey('crashPackage')
+              ? _json['crashPackage'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (crashPackage != null) 'crashPackage': crashPackage!,
@@ -2456,16 +2513,18 @@ class Duration {
   /// days/year * 10000 years
   core.String? seconds;
 
-  Duration();
+  Duration({
+    this.nanos,
+    this.seconds,
+  });
 
-  Duration.fromJson(core.Map _json) {
-    if (_json.containsKey('nanos')) {
-      nanos = _json['nanos'] as core.int;
-    }
-    if (_json.containsKey('seconds')) {
-      seconds = _json['seconds'] as core.String;
-    }
-  }
+  Duration.fromJson(core.Map _json)
+      : this(
+          nanos: _json.containsKey('nanos') ? _json['nanos'] as core.int : null,
+          seconds: _json.containsKey('seconds')
+              ? _json['seconds'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nanos != null) 'nanos': nanos!,
@@ -2481,18 +2540,22 @@ class EncounteredLoginScreen {
   /// Subset of login screens.
   core.List<core.String>? screenIds;
 
-  EncounteredLoginScreen();
+  EncounteredLoginScreen({
+    this.distinctScreens,
+    this.screenIds,
+  });
 
-  EncounteredLoginScreen.fromJson(core.Map _json) {
-    if (_json.containsKey('distinctScreens')) {
-      distinctScreens = _json['distinctScreens'] as core.int;
-    }
-    if (_json.containsKey('screenIds')) {
-      screenIds = (_json['screenIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  EncounteredLoginScreen.fromJson(core.Map _json)
+      : this(
+          distinctScreens: _json.containsKey('distinctScreens')
+              ? _json['distinctScreens'] as core.int
+              : null,
+          screenIds: _json.containsKey('screenIds')
+              ? (_json['screenIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (distinctScreens != null) 'distinctScreens': distinctScreens!,
@@ -2509,18 +2572,22 @@ class EncounteredNonAndroidUiWidgetScreen {
   /// Subset of screens which contain non Android UI widgets.
   core.List<core.String>? screenIds;
 
-  EncounteredNonAndroidUiWidgetScreen();
+  EncounteredNonAndroidUiWidgetScreen({
+    this.distinctScreens,
+    this.screenIds,
+  });
 
-  EncounteredNonAndroidUiWidgetScreen.fromJson(core.Map _json) {
-    if (_json.containsKey('distinctScreens')) {
-      distinctScreens = _json['distinctScreens'] as core.int;
-    }
-    if (_json.containsKey('screenIds')) {
-      screenIds = (_json['screenIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  EncounteredNonAndroidUiWidgetScreen.fromJson(core.Map _json)
+      : this(
+          distinctScreens: _json.containsKey('distinctScreens')
+              ? _json['distinctScreens'] as core.int
+              : null,
+          screenIds: _json.containsKey('screenIds')
+              ? (_json['screenIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (distinctScreens != null) 'distinctScreens': distinctScreens!,
@@ -2594,54 +2661,67 @@ class Environment {
   /// Output only.
   core.List<ShardSummary>? shardSummaries;
 
-  Environment();
+  Environment({
+    this.completionTime,
+    this.creationTime,
+    this.dimensionValue,
+    this.displayName,
+    this.environmentId,
+    this.environmentResult,
+    this.executionId,
+    this.historyId,
+    this.projectId,
+    this.resultsStorage,
+    this.shardSummaries,
+  });
 
-  Environment.fromJson(core.Map _json) {
-    if (_json.containsKey('completionTime')) {
-      completionTime = Timestamp.fromJson(
-          _json['completionTime'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('creationTime')) {
-      creationTime = Timestamp.fromJson(
-          _json['creationTime'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('dimensionValue')) {
-      dimensionValue = (_json['dimensionValue'] as core.List)
-          .map<EnvironmentDimensionValueEntry>((value) =>
-              EnvironmentDimensionValueEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('environmentId')) {
-      environmentId = _json['environmentId'] as core.String;
-    }
-    if (_json.containsKey('environmentResult')) {
-      environmentResult = MergedResult.fromJson(
-          _json['environmentResult'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('executionId')) {
-      executionId = _json['executionId'] as core.String;
-    }
-    if (_json.containsKey('historyId')) {
-      historyId = _json['historyId'] as core.String;
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('resultsStorage')) {
-      resultsStorage = ResultsStorage.fromJson(
-          _json['resultsStorage'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('shardSummaries')) {
-      shardSummaries = (_json['shardSummaries'] as core.List)
-          .map<ShardSummary>((value) => ShardSummary.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  Environment.fromJson(core.Map _json)
+      : this(
+          completionTime: _json.containsKey('completionTime')
+              ? Timestamp.fromJson(_json['completionTime']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          creationTime: _json.containsKey('creationTime')
+              ? Timestamp.fromJson(
+                  _json['creationTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+          dimensionValue: _json.containsKey('dimensionValue')
+              ? (_json['dimensionValue'] as core.List)
+                  .map<EnvironmentDimensionValueEntry>((value) =>
+                      EnvironmentDimensionValueEntry.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          environmentId: _json.containsKey('environmentId')
+              ? _json['environmentId'] as core.String
+              : null,
+          environmentResult: _json.containsKey('environmentResult')
+              ? MergedResult.fromJson(_json['environmentResult']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          executionId: _json.containsKey('executionId')
+              ? _json['executionId'] as core.String
+              : null,
+          historyId: _json.containsKey('historyId')
+              ? _json['historyId'] as core.String
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          resultsStorage: _json.containsKey('resultsStorage')
+              ? ResultsStorage.fromJson(_json['resultsStorage']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          shardSummaries: _json.containsKey('shardSummaries')
+              ? (_json['shardSummaries'] as core.List)
+                  .map<ShardSummary>((value) => ShardSummary.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (completionTime != null) 'completionTime': completionTime!.toJson(),
@@ -2667,16 +2747,17 @@ class EnvironmentDimensionValueEntry {
   core.String? key;
   core.String? value;
 
-  EnvironmentDimensionValueEntry();
+  EnvironmentDimensionValueEntry({
+    this.key,
+    this.value,
+  });
 
-  EnvironmentDimensionValueEntry.fromJson(core.Map _json) {
-    if (_json.containsKey('key')) {
-      key = _json['key'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  EnvironmentDimensionValueEntry.fromJson(core.Map _json)
+      : this(
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
@@ -2759,42 +2840,51 @@ class Execution {
   /// never set
   core.String? testExecutionMatrixId;
 
-  Execution();
+  Execution({
+    this.completionTime,
+    this.creationTime,
+    this.dimensionDefinitions,
+    this.executionId,
+    this.outcome,
+    this.specification,
+    this.state,
+    this.testExecutionMatrixId,
+  });
 
-  Execution.fromJson(core.Map _json) {
-    if (_json.containsKey('completionTime')) {
-      completionTime = Timestamp.fromJson(
-          _json['completionTime'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('creationTime')) {
-      creationTime = Timestamp.fromJson(
-          _json['creationTime'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('dimensionDefinitions')) {
-      dimensionDefinitions = (_json['dimensionDefinitions'] as core.List)
-          .map<MatrixDimensionDefinition>((value) =>
-              MatrixDimensionDefinition.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('executionId')) {
-      executionId = _json['executionId'] as core.String;
-    }
-    if (_json.containsKey('outcome')) {
-      outcome = Outcome.fromJson(
-          _json['outcome'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('specification')) {
-      specification = Specification.fromJson(
-          _json['specification'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('testExecutionMatrixId')) {
-      testExecutionMatrixId = _json['testExecutionMatrixId'] as core.String;
-    }
-  }
+  Execution.fromJson(core.Map _json)
+      : this(
+          completionTime: _json.containsKey('completionTime')
+              ? Timestamp.fromJson(_json['completionTime']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          creationTime: _json.containsKey('creationTime')
+              ? Timestamp.fromJson(
+                  _json['creationTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+          dimensionDefinitions: _json.containsKey('dimensionDefinitions')
+              ? (_json['dimensionDefinitions'] as core.List)
+                  .map<MatrixDimensionDefinition>((value) =>
+                      MatrixDimensionDefinition.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          executionId: _json.containsKey('executionId')
+              ? _json['executionId'] as core.String
+              : null,
+          outcome: _json.containsKey('outcome')
+              ? Outcome.fromJson(
+                  _json['outcome'] as core.Map<core.String, core.dynamic>)
+              : null,
+          specification: _json.containsKey('specification')
+              ? Specification.fromJson(
+                  _json['specification'] as core.Map<core.String, core.dynamic>)
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          testExecutionMatrixId: _json.containsKey('testExecutionMatrixId')
+              ? _json['testExecutionMatrixId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (completionTime != null) 'completionTime': completionTime!.toJson(),
@@ -2850,31 +2940,40 @@ class FailureDetail {
   /// start.
   core.bool? unableToCrawl;
 
-  FailureDetail();
+  FailureDetail({
+    this.crashed,
+    this.deviceOutOfMemory,
+    this.failedRoboscript,
+    this.notInstalled,
+    this.otherNativeCrash,
+    this.timedOut,
+    this.unableToCrawl,
+  });
 
-  FailureDetail.fromJson(core.Map _json) {
-    if (_json.containsKey('crashed')) {
-      crashed = _json['crashed'] as core.bool;
-    }
-    if (_json.containsKey('deviceOutOfMemory')) {
-      deviceOutOfMemory = _json['deviceOutOfMemory'] as core.bool;
-    }
-    if (_json.containsKey('failedRoboscript')) {
-      failedRoboscript = _json['failedRoboscript'] as core.bool;
-    }
-    if (_json.containsKey('notInstalled')) {
-      notInstalled = _json['notInstalled'] as core.bool;
-    }
-    if (_json.containsKey('otherNativeCrash')) {
-      otherNativeCrash = _json['otherNativeCrash'] as core.bool;
-    }
-    if (_json.containsKey('timedOut')) {
-      timedOut = _json['timedOut'] as core.bool;
-    }
-    if (_json.containsKey('unableToCrawl')) {
-      unableToCrawl = _json['unableToCrawl'] as core.bool;
-    }
-  }
+  FailureDetail.fromJson(core.Map _json)
+      : this(
+          crashed: _json.containsKey('crashed')
+              ? _json['crashed'] as core.bool
+              : null,
+          deviceOutOfMemory: _json.containsKey('deviceOutOfMemory')
+              ? _json['deviceOutOfMemory'] as core.bool
+              : null,
+          failedRoboscript: _json.containsKey('failedRoboscript')
+              ? _json['failedRoboscript'] as core.bool
+              : null,
+          notInstalled: _json.containsKey('notInstalled')
+              ? _json['notInstalled'] as core.bool
+              : null,
+          otherNativeCrash: _json.containsKey('otherNativeCrash')
+              ? _json['otherNativeCrash'] as core.bool
+              : null,
+          timedOut: _json.containsKey('timedOut')
+              ? _json['timedOut'] as core.bool
+              : null,
+          unableToCrawl: _json.containsKey('unableToCrawl')
+              ? _json['unableToCrawl'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (crashed != null) 'crashed': crashed!,
@@ -2894,14 +2993,17 @@ class FatalException {
   /// Optional.
   StackTrace? stackTrace;
 
-  FatalException();
+  FatalException({
+    this.stackTrace,
+  });
 
-  FatalException.fromJson(core.Map _json) {
-    if (_json.containsKey('stackTrace')) {
-      stackTrace = StackTrace.fromJson(
-          _json['stackTrace'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  FatalException.fromJson(core.Map _json)
+      : this(
+          stackTrace: _json.containsKey('stackTrace')
+              ? StackTrace.fromJson(
+                  _json['stackTrace'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (stackTrace != null) 'stackTrace': stackTrace!.toJson(),
@@ -2919,13 +3021,16 @@ class FileReference {
   /// set - In create/update request: always set
   core.String? fileUri;
 
-  FileReference();
+  FileReference({
+    this.fileUri,
+  });
 
-  FileReference.fromJson(core.Map _json) {
-    if (_json.containsKey('fileUri')) {
-      fileUri = _json['fileUri'] as core.String;
-    }
-  }
+  FileReference.fromJson(core.Map _json)
+      : this(
+          fileUri: _json.containsKey('fileUri')
+              ? _json['fileUri'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fileUri != null) 'fileUri': fileUri!,
@@ -2980,49 +3085,64 @@ class GraphicsStats {
   /// Total frames rendered by package.
   core.String? totalFrames;
 
-  GraphicsStats();
+  GraphicsStats({
+    this.buckets,
+    this.highInputLatencyCount,
+    this.jankyFrames,
+    this.missedVsyncCount,
+    this.p50Millis,
+    this.p90Millis,
+    this.p95Millis,
+    this.p99Millis,
+    this.slowBitmapUploadCount,
+    this.slowDrawCount,
+    this.slowUiThreadCount,
+    this.totalFrames,
+  });
 
-  GraphicsStats.fromJson(core.Map _json) {
-    if (_json.containsKey('buckets')) {
-      buckets = (_json['buckets'] as core.List)
-          .map<GraphicsStatsBucket>((value) => GraphicsStatsBucket.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('highInputLatencyCount')) {
-      highInputLatencyCount = _json['highInputLatencyCount'] as core.String;
-    }
-    if (_json.containsKey('jankyFrames')) {
-      jankyFrames = _json['jankyFrames'] as core.String;
-    }
-    if (_json.containsKey('missedVsyncCount')) {
-      missedVsyncCount = _json['missedVsyncCount'] as core.String;
-    }
-    if (_json.containsKey('p50Millis')) {
-      p50Millis = _json['p50Millis'] as core.String;
-    }
-    if (_json.containsKey('p90Millis')) {
-      p90Millis = _json['p90Millis'] as core.String;
-    }
-    if (_json.containsKey('p95Millis')) {
-      p95Millis = _json['p95Millis'] as core.String;
-    }
-    if (_json.containsKey('p99Millis')) {
-      p99Millis = _json['p99Millis'] as core.String;
-    }
-    if (_json.containsKey('slowBitmapUploadCount')) {
-      slowBitmapUploadCount = _json['slowBitmapUploadCount'] as core.String;
-    }
-    if (_json.containsKey('slowDrawCount')) {
-      slowDrawCount = _json['slowDrawCount'] as core.String;
-    }
-    if (_json.containsKey('slowUiThreadCount')) {
-      slowUiThreadCount = _json['slowUiThreadCount'] as core.String;
-    }
-    if (_json.containsKey('totalFrames')) {
-      totalFrames = _json['totalFrames'] as core.String;
-    }
-  }
+  GraphicsStats.fromJson(core.Map _json)
+      : this(
+          buckets: _json.containsKey('buckets')
+              ? (_json['buckets'] as core.List)
+                  .map<GraphicsStatsBucket>((value) =>
+                      GraphicsStatsBucket.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          highInputLatencyCount: _json.containsKey('highInputLatencyCount')
+              ? _json['highInputLatencyCount'] as core.String
+              : null,
+          jankyFrames: _json.containsKey('jankyFrames')
+              ? _json['jankyFrames'] as core.String
+              : null,
+          missedVsyncCount: _json.containsKey('missedVsyncCount')
+              ? _json['missedVsyncCount'] as core.String
+              : null,
+          p50Millis: _json.containsKey('p50Millis')
+              ? _json['p50Millis'] as core.String
+              : null,
+          p90Millis: _json.containsKey('p90Millis')
+              ? _json['p90Millis'] as core.String
+              : null,
+          p95Millis: _json.containsKey('p95Millis')
+              ? _json['p95Millis'] as core.String
+              : null,
+          p99Millis: _json.containsKey('p99Millis')
+              ? _json['p99Millis'] as core.String
+              : null,
+          slowBitmapUploadCount: _json.containsKey('slowBitmapUploadCount')
+              ? _json['slowBitmapUploadCount'] as core.String
+              : null,
+          slowDrawCount: _json.containsKey('slowDrawCount')
+              ? _json['slowDrawCount'] as core.String
+              : null,
+          slowUiThreadCount: _json.containsKey('slowUiThreadCount')
+              ? _json['slowUiThreadCount'] as core.String
+              : null,
+          totalFrames: _json.containsKey('totalFrames')
+              ? _json['totalFrames'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (buckets != null)
@@ -3050,16 +3170,20 @@ class GraphicsStatsBucket {
   /// Lower bound of render time in milliseconds.
   core.String? renderMillis;
 
-  GraphicsStatsBucket();
+  GraphicsStatsBucket({
+    this.frameCount,
+    this.renderMillis,
+  });
 
-  GraphicsStatsBucket.fromJson(core.Map _json) {
-    if (_json.containsKey('frameCount')) {
-      frameCount = _json['frameCount'] as core.String;
-    }
-    if (_json.containsKey('renderMillis')) {
-      renderMillis = _json['renderMillis'] as core.String;
-    }
-  }
+  GraphicsStatsBucket.fromJson(core.Map _json)
+      : this(
+          frameCount: _json.containsKey('frameCount')
+              ? _json['frameCount'] as core.String
+              : null,
+          renderMillis: _json.containsKey('renderMillis')
+              ? _json['renderMillis'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (frameCount != null) 'frameCount': frameCount!,
@@ -3103,22 +3227,26 @@ class History {
   /// - "ios"
   core.String? testPlatform;
 
-  History();
+  History({
+    this.displayName,
+    this.historyId,
+    this.name,
+    this.testPlatform,
+  });
 
-  History.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('historyId')) {
-      historyId = _json['historyId'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('testPlatform')) {
-      testPlatform = _json['testPlatform'] as core.String;
-    }
-  }
+  History.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          historyId: _json.containsKey('historyId')
+              ? _json['historyId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          testPlatform: _json.containsKey('testPlatform')
+              ? _json['testPlatform'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -3147,25 +3275,31 @@ class Image {
   /// The thumbnail.
   Thumbnail? thumbnail;
 
-  Image();
+  Image({
+    this.error,
+    this.sourceImage,
+    this.stepId,
+    this.thumbnail,
+  });
 
-  Image.fromJson(core.Map _json) {
-    if (_json.containsKey('error')) {
-      error = Status.fromJson(
-          _json['error'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('sourceImage')) {
-      sourceImage = ToolOutputReference.fromJson(
-          _json['sourceImage'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('stepId')) {
-      stepId = _json['stepId'] as core.String;
-    }
-    if (_json.containsKey('thumbnail')) {
-      thumbnail = Thumbnail.fromJson(
-          _json['thumbnail'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Image.fromJson(core.Map _json)
+      : this(
+          error: _json.containsKey('error')
+              ? Status.fromJson(
+                  _json['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sourceImage: _json.containsKey('sourceImage')
+              ? ToolOutputReference.fromJson(
+                  _json['sourceImage'] as core.Map<core.String, core.dynamic>)
+              : null,
+          stepId: _json.containsKey('stepId')
+              ? _json['stepId'] as core.String
+              : null,
+          thumbnail: _json.containsKey('thumbnail')
+              ? Thumbnail.fromJson(
+                  _json['thumbnail'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (error != null) 'error': error!.toJson(),
@@ -3184,18 +3318,22 @@ class InAppPurchasesFound {
   /// The total number of in-app purchases flows started.
   core.int? inAppPurchasesFlowsStarted;
 
-  InAppPurchasesFound();
+  InAppPurchasesFound({
+    this.inAppPurchasesFlowsExplored,
+    this.inAppPurchasesFlowsStarted,
+  });
 
-  InAppPurchasesFound.fromJson(core.Map _json) {
-    if (_json.containsKey('inAppPurchasesFlowsExplored')) {
-      inAppPurchasesFlowsExplored =
-          _json['inAppPurchasesFlowsExplored'] as core.int;
-    }
-    if (_json.containsKey('inAppPurchasesFlowsStarted')) {
-      inAppPurchasesFlowsStarted =
-          _json['inAppPurchasesFlowsStarted'] as core.int;
-    }
-  }
+  InAppPurchasesFound.fromJson(core.Map _json)
+      : this(
+          inAppPurchasesFlowsExplored:
+              _json.containsKey('inAppPurchasesFlowsExplored')
+                  ? _json['inAppPurchasesFlowsExplored'] as core.int
+                  : null,
+          inAppPurchasesFlowsStarted:
+              _json.containsKey('inAppPurchasesFlowsStarted')
+                  ? _json['inAppPurchasesFlowsStarted'] as core.int
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (inAppPurchasesFlowsExplored != null)
@@ -3225,19 +3363,24 @@ class InconclusiveDetail {
   /// executes, and that provisioning can fail.
   core.bool? infrastructureFailure;
 
-  InconclusiveDetail();
+  InconclusiveDetail({
+    this.abortedByUser,
+    this.hasErrorLogs,
+    this.infrastructureFailure,
+  });
 
-  InconclusiveDetail.fromJson(core.Map _json) {
-    if (_json.containsKey('abortedByUser')) {
-      abortedByUser = _json['abortedByUser'] as core.bool;
-    }
-    if (_json.containsKey('hasErrorLogs')) {
-      hasErrorLogs = _json['hasErrorLogs'] as core.bool;
-    }
-    if (_json.containsKey('infrastructureFailure')) {
-      infrastructureFailure = _json['infrastructureFailure'] as core.bool;
-    }
-  }
+  InconclusiveDetail.fromJson(core.Map _json)
+      : this(
+          abortedByUser: _json.containsKey('abortedByUser')
+              ? _json['abortedByUser'] as core.bool
+              : null,
+          hasErrorLogs: _json.containsKey('hasErrorLogs')
+              ? _json['hasErrorLogs'] as core.bool
+              : null,
+          infrastructureFailure: _json.containsKey('infrastructureFailure')
+              ? _json['infrastructureFailure'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (abortedByUser != null) 'abortedByUser': abortedByUser!,
@@ -3277,23 +3420,29 @@ class IndividualOutcome {
   Duration? runDuration;
   core.String? stepId;
 
-  IndividualOutcome();
+  IndividualOutcome({
+    this.multistepNumber,
+    this.outcomeSummary,
+    this.runDuration,
+    this.stepId,
+  });
 
-  IndividualOutcome.fromJson(core.Map _json) {
-    if (_json.containsKey('multistepNumber')) {
-      multistepNumber = _json['multistepNumber'] as core.int;
-    }
-    if (_json.containsKey('outcomeSummary')) {
-      outcomeSummary = _json['outcomeSummary'] as core.String;
-    }
-    if (_json.containsKey('runDuration')) {
-      runDuration = Duration.fromJson(
-          _json['runDuration'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('stepId')) {
-      stepId = _json['stepId'] as core.String;
-    }
-  }
+  IndividualOutcome.fromJson(core.Map _json)
+      : this(
+          multistepNumber: _json.containsKey('multistepNumber')
+              ? _json['multistepNumber'] as core.int
+              : null,
+          outcomeSummary: _json.containsKey('outcomeSummary')
+              ? _json['outcomeSummary'] as core.String
+              : null,
+          runDuration: _json.containsKey('runDuration')
+              ? Duration.fromJson(
+                  _json['runDuration'] as core.Map<core.String, core.dynamic>)
+              : null,
+          stepId: _json.containsKey('stepId')
+              ? _json['stepId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (multistepNumber != null) 'multistepNumber': multistepNumber!,
@@ -3321,14 +3470,17 @@ class IosAppCrashed {
   /// Optional.
   StackTrace? stackTrace;
 
-  IosAppCrashed();
+  IosAppCrashed({
+    this.stackTrace,
+  });
 
-  IosAppCrashed.fromJson(core.Map _json) {
-    if (_json.containsKey('stackTrace')) {
-      stackTrace = StackTrace.fromJson(
-          _json['stackTrace'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  IosAppCrashed.fromJson(core.Map _json)
+      : this(
+          stackTrace: _json.containsKey('stackTrace')
+              ? StackTrace.fromJson(
+                  _json['stackTrace'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (stackTrace != null) 'stackTrace': stackTrace!.toJson(),
@@ -3342,13 +3494,14 @@ class IosAppInfo {
   /// Required
   core.String? name;
 
-  IosAppInfo();
+  IosAppInfo({
+    this.name,
+  });
 
-  IosAppInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  IosAppInfo.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -3383,30 +3536,37 @@ class IosTest {
   /// Max time a test is allowed to run before it is automatically cancelled.
   Duration? testTimeout;
 
-  IosTest();
+  IosTest({
+    this.iosAppInfo,
+    this.iosRoboTest,
+    this.iosTestLoop,
+    this.iosXcTest,
+    this.testTimeout,
+  });
 
-  IosTest.fromJson(core.Map _json) {
-    if (_json.containsKey('iosAppInfo')) {
-      iosAppInfo = IosAppInfo.fromJson(
-          _json['iosAppInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('iosRoboTest')) {
-      iosRoboTest = IosRoboTest.fromJson(
-          _json['iosRoboTest'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('iosTestLoop')) {
-      iosTestLoop = IosTestLoop.fromJson(
-          _json['iosTestLoop'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('iosXcTest')) {
-      iosXcTest = IosXcTest.fromJson(
-          _json['iosXcTest'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('testTimeout')) {
-      testTimeout = Duration.fromJson(
-          _json['testTimeout'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  IosTest.fromJson(core.Map _json)
+      : this(
+          iosAppInfo: _json.containsKey('iosAppInfo')
+              ? IosAppInfo.fromJson(
+                  _json['iosAppInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          iosRoboTest: _json.containsKey('iosRoboTest')
+              ? IosRoboTest.fromJson(
+                  _json['iosRoboTest'] as core.Map<core.String, core.dynamic>)
+              : null,
+          iosTestLoop: _json.containsKey('iosTestLoop')
+              ? IosTestLoop.fromJson(
+                  _json['iosTestLoop'] as core.Map<core.String, core.dynamic>)
+              : null,
+          iosXcTest: _json.containsKey('iosXcTest')
+              ? IosXcTest.fromJson(
+                  _json['iosXcTest'] as core.Map<core.String, core.dynamic>)
+              : null,
+          testTimeout: _json.containsKey('testTimeout')
+              ? Duration.fromJson(
+                  _json['testTimeout'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (iosAppInfo != null) 'iosAppInfo': iosAppInfo!.toJson(),
@@ -3422,13 +3582,16 @@ class IosTestLoop {
   /// Bundle ID of the app.
   core.String? bundleId;
 
-  IosTestLoop();
+  IosTestLoop({
+    this.bundleId,
+  });
 
-  IosTestLoop.fromJson(core.Map _json) {
-    if (_json.containsKey('bundleId')) {
-      bundleId = _json['bundleId'] as core.String;
-    }
-  }
+  IosTestLoop.fromJson(core.Map _json)
+      : this(
+          bundleId: _json.containsKey('bundleId')
+              ? _json['bundleId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bundleId != null) 'bundleId': bundleId!,
@@ -3443,16 +3606,20 @@ class IosXcTest {
   /// Xcode version that the test was run with.
   core.String? xcodeVersion;
 
-  IosXcTest();
+  IosXcTest({
+    this.bundleId,
+    this.xcodeVersion,
+  });
 
-  IosXcTest.fromJson(core.Map _json) {
-    if (_json.containsKey('bundleId')) {
-      bundleId = _json['bundleId'] as core.String;
-    }
-    if (_json.containsKey('xcodeVersion')) {
-      xcodeVersion = _json['xcodeVersion'] as core.String;
-    }
-  }
+  IosXcTest.fromJson(core.Map _json)
+      : this(
+          bundleId: _json.containsKey('bundleId')
+              ? _json['bundleId'] as core.String
+              : null,
+          xcodeVersion: _json.containsKey('xcodeVersion')
+              ? _json['xcodeVersion'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bundleId != null) 'bundleId': bundleId!,
@@ -3496,28 +3663,35 @@ class ListEnvironmentsResponse {
   /// Always set.
   core.String? projectId;
 
-  ListEnvironmentsResponse();
+  ListEnvironmentsResponse({
+    this.environments,
+    this.executionId,
+    this.historyId,
+    this.nextPageToken,
+    this.projectId,
+  });
 
-  ListEnvironmentsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('environments')) {
-      environments = (_json['environments'] as core.List)
-          .map<Environment>((value) => Environment.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('executionId')) {
-      executionId = _json['executionId'] as core.String;
-    }
-    if (_json.containsKey('historyId')) {
-      historyId = _json['historyId'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-  }
+  ListEnvironmentsResponse.fromJson(core.Map _json)
+      : this(
+          environments: _json.containsKey('environments')
+              ? (_json['environments'] as core.List)
+                  .map<Environment>((value) => Environment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          executionId: _json.containsKey('executionId')
+              ? _json['executionId'] as core.String
+              : null,
+          historyId: _json.containsKey('historyId')
+              ? _json['historyId'] as core.String
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (environments != null)
@@ -3540,19 +3714,23 @@ class ListExecutionsResponse {
   /// Will only be set if there are more Executions to fetch.
   core.String? nextPageToken;
 
-  ListExecutionsResponse();
+  ListExecutionsResponse({
+    this.executions,
+    this.nextPageToken,
+  });
 
-  ListExecutionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('executions')) {
-      executions = (_json['executions'] as core.List)
-          .map<Execution>((value) =>
-              Execution.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListExecutionsResponse.fromJson(core.Map _json)
+      : this(
+          executions: _json.containsKey('executions')
+              ? (_json['executions'] as core.List)
+                  .map<Execution>((value) => Execution.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (executions != null)
@@ -3575,19 +3753,23 @@ class ListHistoriesResponse {
   /// valid for 50 minutes.
   core.String? nextPageToken;
 
-  ListHistoriesResponse();
+  ListHistoriesResponse({
+    this.histories,
+    this.nextPageToken,
+  });
 
-  ListHistoriesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('histories')) {
-      histories = (_json['histories'] as core.List)
-          .map<History>((value) =>
-              History.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListHistoriesResponse.fromJson(core.Map _json)
+      : this(
+          histories: _json.containsKey('histories')
+              ? (_json['histories'] as core.List)
+                  .map<History>((value) => History.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (histories != null)
@@ -3600,16 +3782,19 @@ class ListPerfSampleSeriesResponse {
   /// The resulting PerfSampleSeries sorted by id
   core.List<PerfSampleSeries>? perfSampleSeries;
 
-  ListPerfSampleSeriesResponse();
+  ListPerfSampleSeriesResponse({
+    this.perfSampleSeries,
+  });
 
-  ListPerfSampleSeriesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('perfSampleSeries')) {
-      perfSampleSeries = (_json['perfSampleSeries'] as core.List)
-          .map<PerfSampleSeries>((value) => PerfSampleSeries.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListPerfSampleSeriesResponse.fromJson(core.Map _json)
+      : this(
+          perfSampleSeries: _json.containsKey('perfSampleSeries')
+              ? (_json['perfSampleSeries'] as core.List)
+                  .map<PerfSampleSeries>((value) => PerfSampleSeries.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (perfSampleSeries != null)
@@ -3627,19 +3812,23 @@ class ListPerfSamplesResponse {
   core.String? nextPageToken;
   core.List<PerfSample>? perfSamples;
 
-  ListPerfSamplesResponse();
+  ListPerfSamplesResponse({
+    this.nextPageToken,
+    this.perfSamples,
+  });
 
-  ListPerfSamplesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('perfSamples')) {
-      perfSamples = (_json['perfSamples'] as core.List)
-          .map<PerfSample>((value) =>
-              PerfSample.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListPerfSamplesResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          perfSamples: _json.containsKey('perfSamples')
+              ? (_json['perfSamples'] as core.List)
+                  .map<PerfSample>((value) => PerfSample.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3652,16 +3841,19 @@ class ListScreenshotClustersResponse {
   /// The set of clusters associated with an execution Always set
   core.List<ScreenshotCluster>? clusters;
 
-  ListScreenshotClustersResponse();
+  ListScreenshotClustersResponse({
+    this.clusters,
+  });
 
-  ListScreenshotClustersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('clusters')) {
-      clusters = (_json['clusters'] as core.List)
-          .map<ScreenshotCluster>((value) => ScreenshotCluster.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListScreenshotClustersResponse.fromJson(core.Map _json)
+      : this(
+          clusters: _json.containsKey('clusters')
+              ? (_json['clusters'] as core.List)
+                  .map<ScreenshotCluster>((value) => ScreenshotCluster.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusters != null)
@@ -3685,20 +3877,22 @@ class ListStepAccessibilityClustersResponse {
   /// 1234567890123456789/steps/bs.1234567890abcdef Always presents.
   core.String? name;
 
-  ListStepAccessibilityClustersResponse();
+  ListStepAccessibilityClustersResponse({
+    this.clusters,
+    this.name,
+  });
 
-  ListStepAccessibilityClustersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('clusters')) {
-      clusters = (_json['clusters'] as core.List)
-          .map<SuggestionClusterProto>((value) =>
-              SuggestionClusterProto.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  ListStepAccessibilityClustersResponse.fromJson(core.Map _json)
+      : this(
+          clusters: _json.containsKey('clusters')
+              ? (_json['clusters'] as core.List)
+                  .map<SuggestionClusterProto>((value) =>
+                      SuggestionClusterProto.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusters != null)
@@ -3725,19 +3919,23 @@ class ListStepThumbnailsResponse {
   /// the step (by calls to CreateStep or UpdateStep).
   core.List<Image>? thumbnails;
 
-  ListStepThumbnailsResponse();
+  ListStepThumbnailsResponse({
+    this.nextPageToken,
+    this.thumbnails,
+  });
 
-  ListStepThumbnailsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('thumbnails')) {
-      thumbnails = (_json['thumbnails'] as core.List)
-          .map<Image>((value) =>
-              Image.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListStepThumbnailsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          thumbnails: _json.containsKey('thumbnails')
+              ? (_json['thumbnails'] as core.List)
+                  .map<Image>((value) => Image.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3757,19 +3955,23 @@ class ListStepsResponse {
   /// Steps.
   core.List<Step>? steps;
 
-  ListStepsResponse();
+  ListStepsResponse({
+    this.nextPageToken,
+    this.steps,
+  });
 
-  ListStepsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('steps')) {
-      steps = (_json['steps'] as core.List)
-          .map<Step>((value) =>
-              Step.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListStepsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          steps: _json.containsKey('steps')
+              ? (_json['steps'] as core.List)
+                  .map<Step>((value) => Step.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3785,19 +3987,23 @@ class ListTestCasesResponse {
   /// List of test cases.
   core.List<TestCase>? testCases;
 
-  ListTestCasesResponse();
+  ListTestCasesResponse({
+    this.nextPageToken,
+    this.testCases,
+  });
 
-  ListTestCasesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('testCases')) {
-      testCases = (_json['testCases'] as core.List)
-          .map<TestCase>((value) =>
-              TestCase.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListTestCasesResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          testCases: _json.containsKey('testCases')
+              ? (_json['testCases'] as core.List)
+                  .map<TestCase>((value) => TestCase.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3835,16 +4041,20 @@ class MemoryInfo {
   /// Total memory available on the device in KiB
   core.String? memoryTotalInKibibyte;
 
-  MemoryInfo();
+  MemoryInfo({
+    this.memoryCapInKibibyte,
+    this.memoryTotalInKibibyte,
+  });
 
-  MemoryInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('memoryCapInKibibyte')) {
-      memoryCapInKibibyte = _json['memoryCapInKibibyte'] as core.String;
-    }
-    if (_json.containsKey('memoryTotalInKibibyte')) {
-      memoryTotalInKibibyte = _json['memoryTotalInKibibyte'] as core.String;
-    }
-  }
+  MemoryInfo.fromJson(core.Map _json)
+      : this(
+          memoryCapInKibibyte: _json.containsKey('memoryCapInKibibyte')
+              ? _json['memoryCapInKibibyte'] as core.String
+              : null,
+          memoryTotalInKibibyte: _json.containsKey('memoryTotalInKibibyte')
+              ? _json['memoryTotalInKibibyte'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (memoryCapInKibibyte != null)
@@ -3888,23 +4098,27 @@ class MergedResult {
   /// fail then the overview flaky_count = 1 and failure_count = 1).
   core.List<TestSuiteOverview>? testSuiteOverviews;
 
-  MergedResult();
+  MergedResult({
+    this.outcome,
+    this.state,
+    this.testSuiteOverviews,
+  });
 
-  MergedResult.fromJson(core.Map _json) {
-    if (_json.containsKey('outcome')) {
-      outcome = Outcome.fromJson(
-          _json['outcome'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('testSuiteOverviews')) {
-      testSuiteOverviews = (_json['testSuiteOverviews'] as core.List)
-          .map<TestSuiteOverview>((value) => TestSuiteOverview.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  MergedResult.fromJson(core.Map _json)
+      : this(
+          outcome: _json.containsKey('outcome')
+              ? Outcome.fromJson(
+                  _json['outcome'] as core.Map<core.String, core.dynamic>)
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          testSuiteOverviews: _json.containsKey('testSuiteOverviews')
+              ? (_json['testSuiteOverviews'] as core.List)
+                  .map<TestSuiteOverview>((value) => TestSuiteOverview.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (outcome != null) 'outcome': outcome!.toJson(),
@@ -3929,20 +4143,25 @@ class MultiStep {
   /// Step Id of the primary (original) step, which might be this step.
   core.String? primaryStepId;
 
-  MultiStep();
+  MultiStep({
+    this.multistepNumber,
+    this.primaryStep,
+    this.primaryStepId,
+  });
 
-  MultiStep.fromJson(core.Map _json) {
-    if (_json.containsKey('multistepNumber')) {
-      multistepNumber = _json['multistepNumber'] as core.int;
-    }
-    if (_json.containsKey('primaryStep')) {
-      primaryStep = PrimaryStep.fromJson(
-          _json['primaryStep'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('primaryStepId')) {
-      primaryStepId = _json['primaryStepId'] as core.String;
-    }
-  }
+  MultiStep.fromJson(core.Map _json)
+      : this(
+          multistepNumber: _json.containsKey('multistepNumber')
+              ? _json['multistepNumber'] as core.int
+              : null,
+          primaryStep: _json.containsKey('primaryStep')
+              ? PrimaryStep.fromJson(
+                  _json['primaryStep'] as core.Map<core.String, core.dynamic>)
+              : null,
+          primaryStepId: _json.containsKey('primaryStepId')
+              ? _json['primaryStepId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (multistepNumber != null) 'multistepNumber': multistepNumber!,
@@ -3958,14 +4177,17 @@ class NativeCrash {
   /// Optional.
   StackTrace? stackTrace;
 
-  NativeCrash();
+  NativeCrash({
+    this.stackTrace,
+  });
 
-  NativeCrash.fromJson(core.Map _json) {
-    if (_json.containsKey('stackTrace')) {
-      stackTrace = StackTrace.fromJson(
-          _json['stackTrace'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  NativeCrash.fromJson(core.Map _json)
+      : this(
+          stackTrace: _json.containsKey('stackTrace')
+              ? StackTrace.fromJson(
+                  _json['stackTrace'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (stackTrace != null) 'stackTrace': stackTrace!.toJson(),
@@ -3999,30 +4221,35 @@ class NonSdkApi {
   /// - "GREY_MAX_R"
   core.String? list;
 
-  NonSdkApi();
+  NonSdkApi({
+    this.apiSignature,
+    this.exampleStackTraces,
+    this.insights,
+    this.invocationCount,
+    this.list,
+  });
 
-  NonSdkApi.fromJson(core.Map _json) {
-    if (_json.containsKey('apiSignature')) {
-      apiSignature = _json['apiSignature'] as core.String;
-    }
-    if (_json.containsKey('exampleStackTraces')) {
-      exampleStackTraces = (_json['exampleStackTraces'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('insights')) {
-      insights = (_json['insights'] as core.List)
-          .map<NonSdkApiInsight>((value) => NonSdkApiInsight.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('invocationCount')) {
-      invocationCount = _json['invocationCount'] as core.int;
-    }
-    if (_json.containsKey('list')) {
-      list = _json['list'] as core.String;
-    }
-  }
+  NonSdkApi.fromJson(core.Map _json)
+      : this(
+          apiSignature: _json.containsKey('apiSignature')
+              ? _json['apiSignature'] as core.String
+              : null,
+          exampleStackTraces: _json.containsKey('exampleStackTraces')
+              ? (_json['exampleStackTraces'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          insights: _json.containsKey('insights')
+              ? (_json['insights'] as core.List)
+                  .map<NonSdkApiInsight>((value) => NonSdkApiInsight.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          invocationCount: _json.containsKey('invocationCount')
+              ? _json['invocationCount'] as core.int
+              : null,
+          list: _json.containsKey('list') ? _json['list'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiSignature != null) 'apiSignature': apiSignature!,
@@ -4055,27 +4282,34 @@ class NonSdkApiInsight {
   /// a library that needs to be upgraded.
   UpgradeInsight? upgradeInsight;
 
-  NonSdkApiInsight();
+  NonSdkApiInsight({
+    this.exampleTraceMessages,
+    this.matcherId,
+    this.pendingGoogleUpdateInsight,
+    this.upgradeInsight,
+  });
 
-  NonSdkApiInsight.fromJson(core.Map _json) {
-    if (_json.containsKey('exampleTraceMessages')) {
-      exampleTraceMessages = (_json['exampleTraceMessages'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('matcherId')) {
-      matcherId = _json['matcherId'] as core.String;
-    }
-    if (_json.containsKey('pendingGoogleUpdateInsight')) {
-      pendingGoogleUpdateInsight = PendingGoogleUpdateInsight.fromJson(
-          _json['pendingGoogleUpdateInsight']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('upgradeInsight')) {
-      upgradeInsight = UpgradeInsight.fromJson(
-          _json['upgradeInsight'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  NonSdkApiInsight.fromJson(core.Map _json)
+      : this(
+          exampleTraceMessages: _json.containsKey('exampleTraceMessages')
+              ? (_json['exampleTraceMessages'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          matcherId: _json.containsKey('matcherId')
+              ? _json['matcherId'] as core.String
+              : null,
+          pendingGoogleUpdateInsight:
+              _json.containsKey('pendingGoogleUpdateInsight')
+                  ? PendingGoogleUpdateInsight.fromJson(
+                      _json['pendingGoogleUpdateInsight']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          upgradeInsight: _json.containsKey('upgradeInsight')
+              ? UpgradeInsight.fromJson(_json['upgradeInsight']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exampleTraceMessages != null)
@@ -4095,18 +4329,22 @@ class NonSdkApiUsageViolation {
   /// Total number of unique hidden API's accessed.
   core.int? uniqueApis;
 
-  NonSdkApiUsageViolation();
+  NonSdkApiUsageViolation({
+    this.apiSignatures,
+    this.uniqueApis,
+  });
 
-  NonSdkApiUsageViolation.fromJson(core.Map _json) {
-    if (_json.containsKey('apiSignatures')) {
-      apiSignatures = (_json['apiSignatures'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('uniqueApis')) {
-      uniqueApis = _json['uniqueApis'] as core.int;
-    }
-  }
+  NonSdkApiUsageViolation.fromJson(core.Map _json)
+      : this(
+          apiSignatures: _json.containsKey('apiSignatures')
+              ? (_json['apiSignatures'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          uniqueApis: _json.containsKey('uniqueApis')
+              ? _json['uniqueApis'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiSignatures != null) 'apiSignatures': apiSignatures!,
@@ -4128,25 +4366,31 @@ class NonSdkApiUsageViolationReport {
   /// Total number of unique Non-SDK API's accessed.
   core.int? uniqueApis;
 
-  NonSdkApiUsageViolationReport();
+  NonSdkApiUsageViolationReport({
+    this.exampleApis,
+    this.minSdkVersion,
+    this.targetSdkVersion,
+    this.uniqueApis,
+  });
 
-  NonSdkApiUsageViolationReport.fromJson(core.Map _json) {
-    if (_json.containsKey('exampleApis')) {
-      exampleApis = (_json['exampleApis'] as core.List)
-          .map<NonSdkApi>((value) =>
-              NonSdkApi.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('minSdkVersion')) {
-      minSdkVersion = _json['minSdkVersion'] as core.int;
-    }
-    if (_json.containsKey('targetSdkVersion')) {
-      targetSdkVersion = _json['targetSdkVersion'] as core.int;
-    }
-    if (_json.containsKey('uniqueApis')) {
-      uniqueApis = _json['uniqueApis'] as core.int;
-    }
-  }
+  NonSdkApiUsageViolationReport.fromJson(core.Map _json)
+      : this(
+          exampleApis: _json.containsKey('exampleApis')
+              ? (_json['exampleApis'] as core.List)
+                  .map<NonSdkApi>((value) => NonSdkApi.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          minSdkVersion: _json.containsKey('minSdkVersion')
+              ? _json['minSdkVersion'] as core.int
+              : null,
+          targetSdkVersion: _json.containsKey('targetSdkVersion')
+              ? _json['targetSdkVersion'] as core.int
+              : null,
+          uniqueApis: _json.containsKey('uniqueApis')
+              ? _json['uniqueApis'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exampleApis != null)
@@ -4202,29 +4446,36 @@ class Outcome {
   /// both failure and success outcomes.
   core.String? summary;
 
-  Outcome();
+  Outcome({
+    this.failureDetail,
+    this.inconclusiveDetail,
+    this.skippedDetail,
+    this.successDetail,
+    this.summary,
+  });
 
-  Outcome.fromJson(core.Map _json) {
-    if (_json.containsKey('failureDetail')) {
-      failureDetail = FailureDetail.fromJson(
-          _json['failureDetail'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('inconclusiveDetail')) {
-      inconclusiveDetail = InconclusiveDetail.fromJson(
-          _json['inconclusiveDetail'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('skippedDetail')) {
-      skippedDetail = SkippedDetail.fromJson(
-          _json['skippedDetail'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('successDetail')) {
-      successDetail = SuccessDetail.fromJson(
-          _json['successDetail'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('summary')) {
-      summary = _json['summary'] as core.String;
-    }
-  }
+  Outcome.fromJson(core.Map _json)
+      : this(
+          failureDetail: _json.containsKey('failureDetail')
+              ? FailureDetail.fromJson(
+                  _json['failureDetail'] as core.Map<core.String, core.dynamic>)
+              : null,
+          inconclusiveDetail: _json.containsKey('inconclusiveDetail')
+              ? InconclusiveDetail.fromJson(_json['inconclusiveDetail']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          skippedDetail: _json.containsKey('skippedDetail')
+              ? SkippedDetail.fromJson(
+                  _json['skippedDetail'] as core.Map<core.String, core.dynamic>)
+              : null,
+          successDetail: _json.containsKey('successDetail')
+              ? SuccessDetail.fromJson(
+                  _json['successDetail'] as core.Map<core.String, core.dynamic>)
+              : null,
+          summary: _json.containsKey('summary')
+              ? _json['summary'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (failureDetail != null) 'failureDetail': failureDetail!.toJson(),
@@ -4245,18 +4496,22 @@ class OverlappingUIElements {
   /// The screen id of the elements
   core.String? screenId;
 
-  OverlappingUIElements();
+  OverlappingUIElements({
+    this.resourceName,
+    this.screenId,
+  });
 
-  OverlappingUIElements.fromJson(core.Map _json) {
-    if (_json.containsKey('resourceName')) {
-      resourceName = (_json['resourceName'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('screenId')) {
-      screenId = _json['screenId'] as core.String;
-    }
-  }
+  OverlappingUIElements.fromJson(core.Map _json)
+      : this(
+          resourceName: _json.containsKey('resourceName')
+              ? (_json['resourceName'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          screenId: _json.containsKey('screenId')
+              ? _json['screenId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceName != null) 'resourceName': resourceName!,
@@ -4272,13 +4527,16 @@ class PendingGoogleUpdateInsight {
   /// The name of the Google-provided library with the non-SDK API dependency.
   core.String? nameOfGoogleLibrary;
 
-  PendingGoogleUpdateInsight();
+  PendingGoogleUpdateInsight({
+    this.nameOfGoogleLibrary,
+  });
 
-  PendingGoogleUpdateInsight.fromJson(core.Map _json) {
-    if (_json.containsKey('nameOfGoogleLibrary')) {
-      nameOfGoogleLibrary = _json['nameOfGoogleLibrary'] as core.String;
-    }
-  }
+  PendingGoogleUpdateInsight.fromJson(core.Map _json)
+      : this(
+          nameOfGoogleLibrary: _json.containsKey('nameOfGoogleLibrary')
+              ? _json['nameOfGoogleLibrary'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nameOfGoogleLibrary != null)
@@ -4294,18 +4552,22 @@ class PerfEnvironment {
   /// Memory related environment info
   MemoryInfo? memoryInfo;
 
-  PerfEnvironment();
+  PerfEnvironment({
+    this.cpuInfo,
+    this.memoryInfo,
+  });
 
-  PerfEnvironment.fromJson(core.Map _json) {
-    if (_json.containsKey('cpuInfo')) {
-      cpuInfo = CPUInfo.fromJson(
-          _json['cpuInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('memoryInfo')) {
-      memoryInfo = MemoryInfo.fromJson(
-          _json['memoryInfo'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  PerfEnvironment.fromJson(core.Map _json)
+      : this(
+          cpuInfo: _json.containsKey('cpuInfo')
+              ? CPUInfo.fromJson(
+                  _json['cpuInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          memoryInfo: _json.containsKey('memoryInfo')
+              ? MemoryInfo.fromJson(
+                  _json['memoryInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cpuInfo != null) 'cpuInfo': cpuInfo!.toJson(),
@@ -4347,39 +4609,49 @@ class PerfMetricsSummary {
   /// @OutputOnly
   core.String? stepId;
 
-  PerfMetricsSummary();
+  PerfMetricsSummary({
+    this.appStartTime,
+    this.executionId,
+    this.graphicsStats,
+    this.historyId,
+    this.perfEnvironment,
+    this.perfMetrics,
+    this.projectId,
+    this.stepId,
+  });
 
-  PerfMetricsSummary.fromJson(core.Map _json) {
-    if (_json.containsKey('appStartTime')) {
-      appStartTime = AppStartTime.fromJson(
-          _json['appStartTime'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('executionId')) {
-      executionId = _json['executionId'] as core.String;
-    }
-    if (_json.containsKey('graphicsStats')) {
-      graphicsStats = GraphicsStats.fromJson(
-          _json['graphicsStats'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('historyId')) {
-      historyId = _json['historyId'] as core.String;
-    }
-    if (_json.containsKey('perfEnvironment')) {
-      perfEnvironment = PerfEnvironment.fromJson(
-          _json['perfEnvironment'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('perfMetrics')) {
-      perfMetrics = (_json['perfMetrics'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('stepId')) {
-      stepId = _json['stepId'] as core.String;
-    }
-  }
+  PerfMetricsSummary.fromJson(core.Map _json)
+      : this(
+          appStartTime: _json.containsKey('appStartTime')
+              ? AppStartTime.fromJson(
+                  _json['appStartTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+          executionId: _json.containsKey('executionId')
+              ? _json['executionId'] as core.String
+              : null,
+          graphicsStats: _json.containsKey('graphicsStats')
+              ? GraphicsStats.fromJson(
+                  _json['graphicsStats'] as core.Map<core.String, core.dynamic>)
+              : null,
+          historyId: _json.containsKey('historyId')
+              ? _json['historyId'] as core.String
+              : null,
+          perfEnvironment: _json.containsKey('perfEnvironment')
+              ? PerfEnvironment.fromJson(_json['perfEnvironment']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          perfMetrics: _json.containsKey('perfMetrics')
+              ? (_json['perfMetrics'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          stepId: _json.containsKey('stepId')
+              ? _json['stepId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appStartTime != null) 'appStartTime': appStartTime!.toJson(),
@@ -4402,17 +4674,21 @@ class PerfSample {
   /// Value observed
   core.double? value;
 
-  PerfSample();
+  PerfSample({
+    this.sampleTime,
+    this.value,
+  });
 
-  PerfSample.fromJson(core.Map _json) {
-    if (_json.containsKey('sampleTime')) {
-      sampleTime = Timestamp.fromJson(
-          _json['sampleTime'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('value')) {
-      value = (_json['value'] as core.num).toDouble();
-    }
-  }
+  PerfSample.fromJson(core.Map _json)
+      : this(
+          sampleTime: _json.containsKey('sampleTime')
+              ? Timestamp.fromJson(
+                  _json['sampleTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+          value: _json.containsKey('value')
+              ? (_json['value'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sampleTime != null) 'sampleTime': sampleTime!.toJson(),
@@ -4446,30 +4722,37 @@ class PerfSampleSeries {
   /// @OutputOnly
   core.String? stepId;
 
-  PerfSampleSeries();
+  PerfSampleSeries({
+    this.basicPerfSampleSeries,
+    this.executionId,
+    this.historyId,
+    this.projectId,
+    this.sampleSeriesId,
+    this.stepId,
+  });
 
-  PerfSampleSeries.fromJson(core.Map _json) {
-    if (_json.containsKey('basicPerfSampleSeries')) {
-      basicPerfSampleSeries = BasicPerfSampleSeries.fromJson(
-          _json['basicPerfSampleSeries']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('executionId')) {
-      executionId = _json['executionId'] as core.String;
-    }
-    if (_json.containsKey('historyId')) {
-      historyId = _json['historyId'] as core.String;
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('sampleSeriesId')) {
-      sampleSeriesId = _json['sampleSeriesId'] as core.String;
-    }
-    if (_json.containsKey('stepId')) {
-      stepId = _json['stepId'] as core.String;
-    }
-  }
+  PerfSampleSeries.fromJson(core.Map _json)
+      : this(
+          basicPerfSampleSeries: _json.containsKey('basicPerfSampleSeries')
+              ? BasicPerfSampleSeries.fromJson(_json['basicPerfSampleSeries']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          executionId: _json.containsKey('executionId')
+              ? _json['executionId'] as core.String
+              : null,
+          historyId: _json.containsKey('historyId')
+              ? _json['historyId'] as core.String
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          sampleSeriesId: _json.containsKey('sampleSeriesId')
+              ? _json['sampleSeriesId'] as core.String
+              : null,
+          stepId: _json.containsKey('stepId')
+              ? _json['stepId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (basicPerfSampleSeries != null)
@@ -4498,13 +4781,16 @@ class PerformedMonkeyActions {
   /// The total number of monkey actions performed during the crawl.
   core.int? totalActions;
 
-  PerformedMonkeyActions();
+  PerformedMonkeyActions({
+    this.totalActions,
+  });
 
-  PerformedMonkeyActions.fromJson(core.Map _json) {
-    if (_json.containsKey('totalActions')) {
-      totalActions = _json['totalActions'] as core.int;
-    }
-  }
+  PerformedMonkeyActions.fromJson(core.Map _json)
+      : this(
+          totalActions: _json.containsKey('totalActions')
+              ? _json['totalActions'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (totalActions != null) 'totalActions': totalActions!,
@@ -4535,19 +4821,23 @@ class PrimaryStep {
   /// both failure and success outcomes.
   core.String? rollUp;
 
-  PrimaryStep();
+  PrimaryStep({
+    this.individualOutcome,
+    this.rollUp,
+  });
 
-  PrimaryStep.fromJson(core.Map _json) {
-    if (_json.containsKey('individualOutcome')) {
-      individualOutcome = (_json['individualOutcome'] as core.List)
-          .map<IndividualOutcome>((value) => IndividualOutcome.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('rollUp')) {
-      rollUp = _json['rollUp'] as core.String;
-    }
-  }
+  PrimaryStep.fromJson(core.Map _json)
+      : this(
+          individualOutcome: _json.containsKey('individualOutcome')
+              ? (_json['individualOutcome'] as core.List)
+                  .map<IndividualOutcome>((value) => IndividualOutcome.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          rollUp: _json.containsKey('rollUp')
+              ? _json['rollUp'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (individualOutcome != null)
@@ -4571,16 +4861,18 @@ class ProjectSettings {
   /// never set In response: always set
   core.String? name;
 
-  ProjectSettings();
+  ProjectSettings({
+    this.defaultBucket,
+    this.name,
+  });
 
-  ProjectSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('defaultBucket')) {
-      defaultBucket = _json['defaultBucket'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  ProjectSettings.fromJson(core.Map _json)
+      : this(
+          defaultBucket: _json.containsKey('defaultBucket')
+              ? _json['defaultBucket'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (defaultBucket != null) 'defaultBucket': defaultBucket!,
@@ -4596,16 +4888,19 @@ class PublishXunitXmlFilesRequest {
   /// Required.
   core.List<FileReference>? xunitXmlFiles;
 
-  PublishXunitXmlFilesRequest();
+  PublishXunitXmlFilesRequest({
+    this.xunitXmlFiles,
+  });
 
-  PublishXunitXmlFilesRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('xunitXmlFiles')) {
-      xunitXmlFiles = (_json['xunitXmlFiles'] as core.List)
-          .map<FileReference>((value) => FileReference.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  PublishXunitXmlFilesRequest.fromJson(core.Map _json)
+      : this(
+          xunitXmlFiles: _json.containsKey('xunitXmlFiles')
+              ? (_json['xunitXmlFiles'] as core.List)
+                  .map<FileReference>((value) => FileReference.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (xunitXmlFiles != null)
@@ -4636,22 +4931,25 @@ class RegionProto {
   /// Always set.
   core.int? widthPx;
 
-  RegionProto();
+  RegionProto({
+    this.heightPx,
+    this.leftPx,
+    this.topPx,
+    this.widthPx,
+  });
 
-  RegionProto.fromJson(core.Map _json) {
-    if (_json.containsKey('heightPx')) {
-      heightPx = _json['heightPx'] as core.int;
-    }
-    if (_json.containsKey('leftPx')) {
-      leftPx = _json['leftPx'] as core.int;
-    }
-    if (_json.containsKey('topPx')) {
-      topPx = _json['topPx'] as core.int;
-    }
-    if (_json.containsKey('widthPx')) {
-      widthPx = _json['widthPx'] as core.int;
-    }
-  }
+  RegionProto.fromJson(core.Map _json)
+      : this(
+          heightPx: _json.containsKey('heightPx')
+              ? _json['heightPx'] as core.int
+              : null,
+          leftPx:
+              _json.containsKey('leftPx') ? _json['leftPx'] as core.int : null,
+          topPx: _json.containsKey('topPx') ? _json['topPx'] as core.int : null,
+          widthPx: _json.containsKey('widthPx')
+              ? _json['widthPx'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (heightPx != null) 'heightPx': heightPx!,
@@ -4669,18 +4967,22 @@ class ResultsStorage {
   /// The path to the Xunit XML file.
   FileReference? xunitXmlFile;
 
-  ResultsStorage();
+  ResultsStorage({
+    this.resultsStoragePath,
+    this.xunitXmlFile,
+  });
 
-  ResultsStorage.fromJson(core.Map _json) {
-    if (_json.containsKey('resultsStoragePath')) {
-      resultsStoragePath = FileReference.fromJson(
-          _json['resultsStoragePath'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('xunitXmlFile')) {
-      xunitXmlFile = FileReference.fromJson(
-          _json['xunitXmlFile'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ResultsStorage.fromJson(core.Map _json)
+      : this(
+          resultsStoragePath: _json.containsKey('resultsStoragePath')
+              ? FileReference.fromJson(_json['resultsStoragePath']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          xunitXmlFile: _json.containsKey('xunitXmlFile')
+              ? FileReference.fromJson(
+                  _json['xunitXmlFile'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resultsStoragePath != null)
@@ -4697,16 +4999,20 @@ class RoboScriptExecution {
   /// The total number of actions in the Robo script.
   core.int? totalActions;
 
-  RoboScriptExecution();
+  RoboScriptExecution({
+    this.successfulActions,
+    this.totalActions,
+  });
 
-  RoboScriptExecution.fromJson(core.Map _json) {
-    if (_json.containsKey('successfulActions')) {
-      successfulActions = _json['successfulActions'] as core.int;
-    }
-    if (_json.containsKey('totalActions')) {
-      totalActions = _json['totalActions'] as core.int;
-    }
-  }
+  RoboScriptExecution.fromJson(core.Map _json)
+      : this(
+          successfulActions: _json.containsKey('successfulActions')
+              ? _json['successfulActions'] as core.int
+              : null,
+          totalActions: _json.containsKey('totalActions')
+              ? _json['totalActions'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (successfulActions != null) 'successfulActions': successfulActions!,
@@ -4729,14 +5035,18 @@ class SafeHtmlProto {
   /// packages with which to create or read this message.
   core.String? privateDoNotAccessOrElseSafeHtmlWrappedValue;
 
-  SafeHtmlProto();
+  SafeHtmlProto({
+    this.privateDoNotAccessOrElseSafeHtmlWrappedValue,
+  });
 
-  SafeHtmlProto.fromJson(core.Map _json) {
-    if (_json.containsKey('privateDoNotAccessOrElseSafeHtmlWrappedValue')) {
-      privateDoNotAccessOrElseSafeHtmlWrappedValue =
-          _json['privateDoNotAccessOrElseSafeHtmlWrappedValue'] as core.String;
-    }
-  }
+  SafeHtmlProto.fromJson(core.Map _json)
+      : this(
+          privateDoNotAccessOrElseSafeHtmlWrappedValue:
+              _json.containsKey('privateDoNotAccessOrElseSafeHtmlWrappedValue')
+                  ? _json['privateDoNotAccessOrElseSafeHtmlWrappedValue']
+                      as core.String
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (privateDoNotAccessOrElseSafeHtmlWrappedValue != null)
@@ -4766,22 +5076,27 @@ class Screen {
   /// Required.
   core.String? version;
 
-  Screen();
+  Screen({
+    this.fileReference,
+    this.locale,
+    this.model,
+    this.version,
+  });
 
-  Screen.fromJson(core.Map _json) {
-    if (_json.containsKey('fileReference')) {
-      fileReference = _json['fileReference'] as core.String;
-    }
-    if (_json.containsKey('locale')) {
-      locale = _json['locale'] as core.String;
-    }
-    if (_json.containsKey('model')) {
-      model = _json['model'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.String;
-    }
-  }
+  Screen.fromJson(core.Map _json)
+      : this(
+          fileReference: _json.containsKey('fileReference')
+              ? _json['fileReference'] as core.String
+              : null,
+          locale: _json.containsKey('locale')
+              ? _json['locale'] as core.String
+              : null,
+          model:
+              _json.containsKey('model') ? _json['model'] as core.String : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fileReference != null) 'fileReference': fileReference!,
@@ -4810,26 +5125,32 @@ class ScreenshotCluster {
   /// Full list of screens.
   core.List<Screen>? screens;
 
-  ScreenshotCluster();
+  ScreenshotCluster({
+    this.activity,
+    this.clusterId,
+    this.keyScreen,
+    this.screens,
+  });
 
-  ScreenshotCluster.fromJson(core.Map _json) {
-    if (_json.containsKey('activity')) {
-      activity = _json['activity'] as core.String;
-    }
-    if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'] as core.String;
-    }
-    if (_json.containsKey('keyScreen')) {
-      keyScreen = Screen.fromJson(
-          _json['keyScreen'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('screens')) {
-      screens = (_json['screens'] as core.List)
-          .map<Screen>((value) =>
-              Screen.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ScreenshotCluster.fromJson(core.Map _json)
+      : this(
+          activity: _json.containsKey('activity')
+              ? _json['activity'] as core.String
+              : null,
+          clusterId: _json.containsKey('clusterId')
+              ? _json['clusterId'] as core.String
+              : null,
+          keyScreen: _json.containsKey('keyScreen')
+              ? Screen.fromJson(
+                  _json['keyScreen'] as core.Map<core.String, core.dynamic>)
+              : null,
+          screens: _json.containsKey('screens')
+              ? (_json['screens'] as core.List)
+                  .map<Screen>((value) => Screen.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (activity != null) 'activity': activity!,
@@ -4851,20 +5172,24 @@ class ShardSummary {
   /// Merged result of the shard.
   MergedResult? shardResult;
 
-  ShardSummary();
+  ShardSummary({
+    this.runs,
+    this.shardResult,
+  });
 
-  ShardSummary.fromJson(core.Map _json) {
-    if (_json.containsKey('runs')) {
-      runs = (_json['runs'] as core.List)
-          .map<StepSummary>((value) => StepSummary.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('shardResult')) {
-      shardResult = MergedResult.fromJson(
-          _json['shardResult'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ShardSummary.fromJson(core.Map _json)
+      : this(
+          runs: _json.containsKey('runs')
+              ? (_json['runs'] as core.List)
+                  .map<StepSummary>((value) => StepSummary.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          shardResult: _json.containsKey('shardResult')
+              ? MergedResult.fromJson(
+                  _json['shardResult'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (runs != null) 'runs': runs!.map((value) => value.toJson()).toList(),
@@ -4883,19 +5208,25 @@ class SkippedDetail {
   /// If the requested OS version doesn't run on the specific device model.
   core.bool? incompatibleDevice;
 
-  SkippedDetail();
+  SkippedDetail({
+    this.incompatibleAppVersion,
+    this.incompatibleArchitecture,
+    this.incompatibleDevice,
+  });
 
-  SkippedDetail.fromJson(core.Map _json) {
-    if (_json.containsKey('incompatibleAppVersion')) {
-      incompatibleAppVersion = _json['incompatibleAppVersion'] as core.bool;
-    }
-    if (_json.containsKey('incompatibleArchitecture')) {
-      incompatibleArchitecture = _json['incompatibleArchitecture'] as core.bool;
-    }
-    if (_json.containsKey('incompatibleDevice')) {
-      incompatibleDevice = _json['incompatibleDevice'] as core.bool;
-    }
-  }
+  SkippedDetail.fromJson(core.Map _json)
+      : this(
+          incompatibleAppVersion: _json.containsKey('incompatibleAppVersion')
+              ? _json['incompatibleAppVersion'] as core.bool
+              : null,
+          incompatibleArchitecture:
+              _json.containsKey('incompatibleArchitecture')
+                  ? _json['incompatibleArchitecture'] as core.bool
+                  : null,
+          incompatibleDevice: _json.containsKey('incompatibleDevice')
+              ? _json['incompatibleDevice'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (incompatibleAppVersion != null)
@@ -4915,18 +5246,22 @@ class Specification {
   /// An iOS mobile test execution specification.
   IosTest? iosTest;
 
-  Specification();
+  Specification({
+    this.androidTest,
+    this.iosTest,
+  });
 
-  Specification.fromJson(core.Map _json) {
-    if (_json.containsKey('androidTest')) {
-      androidTest = AndroidTest.fromJson(
-          _json['androidTest'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('iosTest')) {
-      iosTest = IosTest.fromJson(
-          _json['iosTest'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Specification.fromJson(core.Map _json)
+      : this(
+          androidTest: _json.containsKey('androidTest')
+              ? AndroidTest.fromJson(
+                  _json['androidTest'] as core.Map<core.String, core.dynamic>)
+              : null,
+          iosTest: _json.containsKey('iosTest')
+              ? IosTest.fromJson(
+                  _json['iosTest'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (androidTest != null) 'androidTest': androidTest!.toJson(),
@@ -4941,13 +5276,16 @@ class StackTrace {
   /// Required
   core.String? exception;
 
-  StackTrace();
+  StackTrace({
+    this.exception,
+  });
 
-  StackTrace.fromJson(core.Map _json) {
-    if (_json.containsKey('exception')) {
-      exception = _json['exception'] as core.String;
-    }
-  }
+  StackTrace.fromJson(core.Map _json)
+      : this(
+          exception: _json.containsKey('exception')
+              ? _json['exception'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exception != null) 'exception': exception!,
@@ -4959,16 +5297,18 @@ class StartActivityNotFound {
   core.String? action;
   core.String? uri;
 
-  StartActivityNotFound();
+  StartActivityNotFound({
+    this.action,
+    this.uri,
+  });
 
-  StartActivityNotFound.fromJson(core.Map _json) {
-    if (_json.containsKey('action')) {
-      action = _json['action'] as core.String;
-    }
-    if (_json.containsKey('uri')) {
-      uri = _json['uri'] as core.String;
-    }
-  }
+  StartActivityNotFound.fromJson(core.Map _json)
+      : this(
+          action: _json.containsKey('action')
+              ? _json['action'] as core.String
+              : null,
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
@@ -5001,27 +5341,30 @@ class Status {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  Status();
+  Status({
+    this.code,
+    this.details,
+    this.message,
+  });
 
-  Status.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.int;
-    }
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  Status.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -5182,70 +5525,84 @@ class Step {
   /// An execution of a tool (used for steps we don't explicitly support).
   ToolExecutionStep? toolExecutionStep;
 
-  Step();
+  Step({
+    this.completionTime,
+    this.creationTime,
+    this.description,
+    this.deviceUsageDuration,
+    this.dimensionValue,
+    this.hasImages,
+    this.labels,
+    this.multiStep,
+    this.name,
+    this.outcome,
+    this.runDuration,
+    this.state,
+    this.stepId,
+    this.testExecutionStep,
+    this.toolExecutionStep,
+  });
 
-  Step.fromJson(core.Map _json) {
-    if (_json.containsKey('completionTime')) {
-      completionTime = Timestamp.fromJson(
-          _json['completionTime'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('creationTime')) {
-      creationTime = Timestamp.fromJson(
-          _json['creationTime'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('deviceUsageDuration')) {
-      deviceUsageDuration = Duration.fromJson(
-          _json['deviceUsageDuration'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('dimensionValue')) {
-      dimensionValue = (_json['dimensionValue'] as core.List)
-          .map<StepDimensionValueEntry>((value) =>
-              StepDimensionValueEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('hasImages')) {
-      hasImages = _json['hasImages'] as core.bool;
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.List)
-          .map<StepLabelsEntry>((value) => StepLabelsEntry.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('multiStep')) {
-      multiStep = MultiStep.fromJson(
-          _json['multiStep'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('outcome')) {
-      outcome = Outcome.fromJson(
-          _json['outcome'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('runDuration')) {
-      runDuration = Duration.fromJson(
-          _json['runDuration'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('stepId')) {
-      stepId = _json['stepId'] as core.String;
-    }
-    if (_json.containsKey('testExecutionStep')) {
-      testExecutionStep = TestExecutionStep.fromJson(
-          _json['testExecutionStep'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('toolExecutionStep')) {
-      toolExecutionStep = ToolExecutionStep.fromJson(
-          _json['toolExecutionStep'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Step.fromJson(core.Map _json)
+      : this(
+          completionTime: _json.containsKey('completionTime')
+              ? Timestamp.fromJson(_json['completionTime']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          creationTime: _json.containsKey('creationTime')
+              ? Timestamp.fromJson(
+                  _json['creationTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          deviceUsageDuration: _json.containsKey('deviceUsageDuration')
+              ? Duration.fromJson(_json['deviceUsageDuration']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          dimensionValue: _json.containsKey('dimensionValue')
+              ? (_json['dimensionValue'] as core.List)
+                  .map<StepDimensionValueEntry>((value) =>
+                      StepDimensionValueEntry.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          hasImages: _json.containsKey('hasImages')
+              ? _json['hasImages'] as core.bool
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.List)
+                  .map<StepLabelsEntry>((value) => StepLabelsEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          multiStep: _json.containsKey('multiStep')
+              ? MultiStep.fromJson(
+                  _json['multiStep'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          outcome: _json.containsKey('outcome')
+              ? Outcome.fromJson(
+                  _json['outcome'] as core.Map<core.String, core.dynamic>)
+              : null,
+          runDuration: _json.containsKey('runDuration')
+              ? Duration.fromJson(
+                  _json['runDuration'] as core.Map<core.String, core.dynamic>)
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          stepId: _json.containsKey('stepId')
+              ? _json['stepId'] as core.String
+              : null,
+          testExecutionStep: _json.containsKey('testExecutionStep')
+              ? TestExecutionStep.fromJson(_json['testExecutionStep']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          toolExecutionStep: _json.containsKey('toolExecutionStep')
+              ? ToolExecutionStep.fromJson(_json['toolExecutionStep']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (completionTime != null) 'completionTime': completionTime!.toJson(),
@@ -5276,16 +5633,17 @@ class StepDimensionValueEntry {
   core.String? key;
   core.String? value;
 
-  StepDimensionValueEntry();
+  StepDimensionValueEntry({
+    this.key,
+    this.value,
+  });
 
-  StepDimensionValueEntry.fromJson(core.Map _json) {
-    if (_json.containsKey('key')) {
-      key = _json['key'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  StepDimensionValueEntry.fromJson(core.Map _json)
+      : this(
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
@@ -5297,16 +5655,17 @@ class StepLabelsEntry {
   core.String? key;
   core.String? value;
 
-  StepLabelsEntry();
+  StepLabelsEntry({
+    this.key,
+    this.value,
+  });
 
-  StepLabelsEntry.fromJson(core.Map _json) {
-    if (_json.containsKey('key')) {
-      key = _json['key'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  StepLabelsEntry.fromJson(core.Map _json)
+      : this(
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
@@ -5332,13 +5691,16 @@ class SuccessDetail {
   /// If a native process other than the app crashed.
   core.bool? otherNativeCrash;
 
-  SuccessDetail();
+  SuccessDetail({
+    this.otherNativeCrash,
+  });
 
-  SuccessDetail.fromJson(core.Map _json) {
-    if (_json.containsKey('otherNativeCrash')) {
-      otherNativeCrash = _json['otherNativeCrash'] as core.bool;
-    }
-  }
+  SuccessDetail.fromJson(core.Map _json)
+      : this(
+          otherNativeCrash: _json.containsKey('otherNativeCrash')
+              ? _json['otherNativeCrash'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (otherNativeCrash != null) 'otherNativeCrash': otherNativeCrash!,
@@ -5369,19 +5731,23 @@ class SuggestionClusterProto {
   /// with the same screenshot URL should be adjacent.
   core.List<SuggestionProto>? suggestions;
 
-  SuggestionClusterProto();
+  SuggestionClusterProto({
+    this.category,
+    this.suggestions,
+  });
 
-  SuggestionClusterProto.fromJson(core.Map _json) {
-    if (_json.containsKey('category')) {
-      category = _json['category'] as core.String;
-    }
-    if (_json.containsKey('suggestions')) {
-      suggestions = (_json['suggestions'] as core.List)
-          .map<SuggestionProto>((value) => SuggestionProto.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  SuggestionClusterProto.fromJson(core.Map _json)
+      : this(
+          category: _json.containsKey('category')
+              ? _json['category'] as core.String
+              : null,
+          suggestions: _json.containsKey('suggestions')
+              ? (_json['suggestions'] as core.List)
+                  .map<SuggestionProto>((value) => SuggestionProto.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (category != null) 'category': category!,
@@ -5453,43 +5819,54 @@ class SuggestionProto {
   /// Always set.
   core.String? title;
 
-  SuggestionProto();
+  SuggestionProto({
+    this.helpUrl,
+    this.longMessage,
+    this.priority,
+    this.pseudoResourceId,
+    this.region,
+    this.resourceName,
+    this.screenId,
+    this.secondaryPriority,
+    this.shortMessage,
+    this.title,
+  });
 
-  SuggestionProto.fromJson(core.Map _json) {
-    if (_json.containsKey('helpUrl')) {
-      helpUrl = _json['helpUrl'] as core.String;
-    }
-    if (_json.containsKey('longMessage')) {
-      longMessage = SafeHtmlProto.fromJson(
-          _json['longMessage'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('priority')) {
-      priority = _json['priority'] as core.String;
-    }
-    if (_json.containsKey('pseudoResourceId')) {
-      pseudoResourceId = _json['pseudoResourceId'] as core.String;
-    }
-    if (_json.containsKey('region')) {
-      region = RegionProto.fromJson(
-          _json['region'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('resourceName')) {
-      resourceName = _json['resourceName'] as core.String;
-    }
-    if (_json.containsKey('screenId')) {
-      screenId = _json['screenId'] as core.String;
-    }
-    if (_json.containsKey('secondaryPriority')) {
-      secondaryPriority = (_json['secondaryPriority'] as core.num).toDouble();
-    }
-    if (_json.containsKey('shortMessage')) {
-      shortMessage = SafeHtmlProto.fromJson(
-          _json['shortMessage'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  SuggestionProto.fromJson(core.Map _json)
+      : this(
+          helpUrl: _json.containsKey('helpUrl')
+              ? _json['helpUrl'] as core.String
+              : null,
+          longMessage: _json.containsKey('longMessage')
+              ? SafeHtmlProto.fromJson(
+                  _json['longMessage'] as core.Map<core.String, core.dynamic>)
+              : null,
+          priority: _json.containsKey('priority')
+              ? _json['priority'] as core.String
+              : null,
+          pseudoResourceId: _json.containsKey('pseudoResourceId')
+              ? _json['pseudoResourceId'] as core.String
+              : null,
+          region: _json.containsKey('region')
+              ? RegionProto.fromJson(
+                  _json['region'] as core.Map<core.String, core.dynamic>)
+              : null,
+          resourceName: _json.containsKey('resourceName')
+              ? _json['resourceName'] as core.String
+              : null,
+          screenId: _json.containsKey('screenId')
+              ? _json['screenId'] as core.String
+              : null,
+          secondaryPriority: _json.containsKey('secondaryPriority')
+              ? (_json['secondaryPriority'] as core.num).toDouble()
+              : null,
+          shortMessage: _json.containsKey('shortMessage')
+              ? SafeHtmlProto.fromJson(
+                  _json['shortMessage'] as core.Map<core.String, core.dynamic>)
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (helpUrl != null) 'helpUrl': helpUrl!,
@@ -5554,47 +5931,59 @@ class TestCase {
   /// @OutputOnly
   core.List<ToolOutputReference>? toolOutputs;
 
-  TestCase();
+  TestCase({
+    this.elapsedTime,
+    this.endTime,
+    this.skippedMessage,
+    this.stackTraces,
+    this.startTime,
+    this.status,
+    this.testCaseId,
+    this.testCaseReference,
+    this.toolOutputs,
+  });
 
-  TestCase.fromJson(core.Map _json) {
-    if (_json.containsKey('elapsedTime')) {
-      elapsedTime = Duration.fromJson(
-          _json['elapsedTime'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('endTime')) {
-      endTime = Timestamp.fromJson(
-          _json['endTime'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('skippedMessage')) {
-      skippedMessage = _json['skippedMessage'] as core.String;
-    }
-    if (_json.containsKey('stackTraces')) {
-      stackTraces = (_json['stackTraces'] as core.List)
-          .map<StackTrace>((value) =>
-              StackTrace.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = Timestamp.fromJson(
-          _json['startTime'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-    if (_json.containsKey('testCaseId')) {
-      testCaseId = _json['testCaseId'] as core.String;
-    }
-    if (_json.containsKey('testCaseReference')) {
-      testCaseReference = TestCaseReference.fromJson(
-          _json['testCaseReference'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('toolOutputs')) {
-      toolOutputs = (_json['toolOutputs'] as core.List)
-          .map<ToolOutputReference>((value) => ToolOutputReference.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  TestCase.fromJson(core.Map _json)
+      : this(
+          elapsedTime: _json.containsKey('elapsedTime')
+              ? Duration.fromJson(
+                  _json['elapsedTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+          endTime: _json.containsKey('endTime')
+              ? Timestamp.fromJson(
+                  _json['endTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+          skippedMessage: _json.containsKey('skippedMessage')
+              ? _json['skippedMessage'] as core.String
+              : null,
+          stackTraces: _json.containsKey('stackTraces')
+              ? (_json['stackTraces'] as core.List)
+                  .map<StackTrace>((value) => StackTrace.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? Timestamp.fromJson(
+                  _json['startTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+          testCaseId: _json.containsKey('testCaseId')
+              ? _json['testCaseId'] as core.String
+              : null,
+          testCaseReference: _json.containsKey('testCaseReference')
+              ? TestCaseReference.fromJson(_json['testCaseReference']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          toolOutputs: _json.containsKey('toolOutputs')
+              ? (_json['toolOutputs'] as core.List)
+                  .map<ToolOutputReference>((value) =>
+                      ToolOutputReference.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (elapsedTime != null) 'elapsedTime': elapsedTime!.toJson(),
@@ -5629,19 +6018,22 @@ class TestCaseReference {
   /// The name of the test suite to which this test case belongs.
   core.String? testSuiteName;
 
-  TestCaseReference();
+  TestCaseReference({
+    this.className,
+    this.name,
+    this.testSuiteName,
+  });
 
-  TestCaseReference.fromJson(core.Map _json) {
-    if (_json.containsKey('className')) {
-      className = _json['className'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('testSuiteName')) {
-      testSuiteName = _json['testSuiteName'] as core.String;
-    }
-  }
+  TestCaseReference.fromJson(core.Map _json)
+      : this(
+          className: _json.containsKey('className')
+              ? _json['className'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          testSuiteName: _json.containsKey('testSuiteName')
+              ? _json['testSuiteName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (className != null) 'className': className!,
@@ -5686,30 +6078,36 @@ class TestExecutionStep {
   /// In response: always set - In create/update request: optional
   ToolExecution? toolExecution;
 
-  TestExecutionStep();
+  TestExecutionStep({
+    this.testIssues,
+    this.testSuiteOverviews,
+    this.testTiming,
+    this.toolExecution,
+  });
 
-  TestExecutionStep.fromJson(core.Map _json) {
-    if (_json.containsKey('testIssues')) {
-      testIssues = (_json['testIssues'] as core.List)
-          .map<TestIssue>((value) =>
-              TestIssue.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('testSuiteOverviews')) {
-      testSuiteOverviews = (_json['testSuiteOverviews'] as core.List)
-          .map<TestSuiteOverview>((value) => TestSuiteOverview.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('testTiming')) {
-      testTiming = TestTiming.fromJson(
-          _json['testTiming'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('toolExecution')) {
-      toolExecution = ToolExecution.fromJson(
-          _json['toolExecution'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  TestExecutionStep.fromJson(core.Map _json)
+      : this(
+          testIssues: _json.containsKey('testIssues')
+              ? (_json['testIssues'] as core.List)
+                  .map<TestIssue>((value) => TestIssue.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          testSuiteOverviews: _json.containsKey('testSuiteOverviews')
+              ? (_json['testSuiteOverviews'] as core.List)
+                  .map<TestSuiteOverview>((value) => TestSuiteOverview.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          testTiming: _json.containsKey('testTiming')
+              ? TestTiming.fromJson(
+                  _json['testTiming'] as core.Map<core.String, core.dynamic>)
+              : null,
+          toolExecution: _json.containsKey('toolExecution')
+              ? ToolExecution.fromJson(
+                  _json['toolExecution'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (testIssues != null)
@@ -5813,30 +6211,36 @@ class TestIssue {
   /// com.google.devtools.toolresults.v1.warnings
   Any? warning;
 
-  TestIssue();
+  TestIssue({
+    this.category,
+    this.errorMessage,
+    this.severity,
+    this.stackTrace,
+    this.type,
+    this.warning,
+  });
 
-  TestIssue.fromJson(core.Map _json) {
-    if (_json.containsKey('category')) {
-      category = _json['category'] as core.String;
-    }
-    if (_json.containsKey('errorMessage')) {
-      errorMessage = _json['errorMessage'] as core.String;
-    }
-    if (_json.containsKey('severity')) {
-      severity = _json['severity'] as core.String;
-    }
-    if (_json.containsKey('stackTrace')) {
-      stackTrace = StackTrace.fromJson(
-          _json['stackTrace'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('warning')) {
-      warning =
-          Any.fromJson(_json['warning'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  TestIssue.fromJson(core.Map _json)
+      : this(
+          category: _json.containsKey('category')
+              ? _json['category'] as core.String
+              : null,
+          errorMessage: _json.containsKey('errorMessage')
+              ? _json['errorMessage'] as core.String
+              : null,
+          severity: _json.containsKey('severity')
+              ? _json['severity'] as core.String
+              : null,
+          stackTrace: _json.containsKey('stackTrace')
+              ? StackTrace.fromJson(
+                  _json['stackTrace'] as core.Map<core.String, core.dynamic>)
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          warning: _json.containsKey('warning')
+              ? Any.fromJson(
+                  _json['warning'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (category != null) 'category': category!,
@@ -5903,36 +6307,44 @@ class TestSuiteOverview {
   /// optional - In update request: never
   FileReference? xmlSource;
 
-  TestSuiteOverview();
+  TestSuiteOverview({
+    this.elapsedTime,
+    this.errorCount,
+    this.failureCount,
+    this.flakyCount,
+    this.name,
+    this.skippedCount,
+    this.totalCount,
+    this.xmlSource,
+  });
 
-  TestSuiteOverview.fromJson(core.Map _json) {
-    if (_json.containsKey('elapsedTime')) {
-      elapsedTime = Duration.fromJson(
-          _json['elapsedTime'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('errorCount')) {
-      errorCount = _json['errorCount'] as core.int;
-    }
-    if (_json.containsKey('failureCount')) {
-      failureCount = _json['failureCount'] as core.int;
-    }
-    if (_json.containsKey('flakyCount')) {
-      flakyCount = _json['flakyCount'] as core.int;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('skippedCount')) {
-      skippedCount = _json['skippedCount'] as core.int;
-    }
-    if (_json.containsKey('totalCount')) {
-      totalCount = _json['totalCount'] as core.int;
-    }
-    if (_json.containsKey('xmlSource')) {
-      xmlSource = FileReference.fromJson(
-          _json['xmlSource'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  TestSuiteOverview.fromJson(core.Map _json)
+      : this(
+          elapsedTime: _json.containsKey('elapsedTime')
+              ? Duration.fromJson(
+                  _json['elapsedTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+          errorCount: _json.containsKey('errorCount')
+              ? _json['errorCount'] as core.int
+              : null,
+          failureCount: _json.containsKey('failureCount')
+              ? _json['failureCount'] as core.int
+              : null,
+          flakyCount: _json.containsKey('flakyCount')
+              ? _json['flakyCount'] as core.int
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          skippedCount: _json.containsKey('skippedCount')
+              ? _json['skippedCount'] as core.int
+              : null,
+          totalCount: _json.containsKey('totalCount')
+              ? _json['totalCount'] as core.int
+              : null,
+          xmlSource: _json.containsKey('xmlSource')
+              ? FileReference.fromJson(
+                  _json['xmlSource'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (elapsedTime != null) 'elapsedTime': elapsedTime!.toJson(),
@@ -5954,14 +6366,17 @@ class TestTiming {
   /// optional
   Duration? testProcessDuration;
 
-  TestTiming();
+  TestTiming({
+    this.testProcessDuration,
+  });
 
-  TestTiming.fromJson(core.Map _json) {
-    if (_json.containsKey('testProcessDuration')) {
-      testProcessDuration = Duration.fromJson(
-          _json['testProcessDuration'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  TestTiming.fromJson(core.Map _json)
+      : this(
+          testProcessDuration: _json.containsKey('testProcessDuration')
+              ? Duration.fromJson(_json['testProcessDuration']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (testProcessDuration != null)
@@ -5999,22 +6414,26 @@ class Thumbnail {
   /// Always set.
   core.int? widthPx;
 
-  Thumbnail();
+  Thumbnail({
+    this.contentType,
+    this.data,
+    this.heightPx,
+    this.widthPx,
+  });
 
-  Thumbnail.fromJson(core.Map _json) {
-    if (_json.containsKey('contentType')) {
-      contentType = _json['contentType'] as core.String;
-    }
-    if (_json.containsKey('data')) {
-      data = _json['data'] as core.String;
-    }
-    if (_json.containsKey('heightPx')) {
-      heightPx = _json['heightPx'] as core.int;
-    }
-    if (_json.containsKey('widthPx')) {
-      widthPx = _json['widthPx'] as core.int;
-    }
-  }
+  Thumbnail.fromJson(core.Map _json)
+      : this(
+          contentType: _json.containsKey('contentType')
+              ? _json['contentType'] as core.String
+              : null,
+          data: _json.containsKey('data') ? _json['data'] as core.String : null,
+          heightPx: _json.containsKey('heightPx')
+              ? _json['heightPx'] as core.int
+              : null,
+          widthPx: _json.containsKey('widthPx')
+              ? _json['widthPx'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentType != null) 'contentType': contentType!,
@@ -6049,16 +6468,18 @@ class Timestamp {
   /// Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.
   core.String? seconds;
 
-  Timestamp();
+  Timestamp({
+    this.nanos,
+    this.seconds,
+  });
 
-  Timestamp.fromJson(core.Map _json) {
-    if (_json.containsKey('nanos')) {
-      nanos = _json['nanos'] as core.int;
-    }
-    if (_json.containsKey('seconds')) {
-      seconds = _json['seconds'] as core.String;
-    }
-  }
+  Timestamp.fromJson(core.Map _json)
+      : this(
+          nanos: _json.containsKey('nanos') ? _json['nanos'] as core.int : null,
+          seconds: _json.containsKey('seconds')
+              ? _json['seconds'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nanos != null) 'nanos': nanos!,
@@ -6103,31 +6524,38 @@ class ToolExecution {
   /// appended to the existing list
   core.List<ToolOutputReference>? toolOutputs;
 
-  ToolExecution();
+  ToolExecution({
+    this.commandLineArguments,
+    this.exitCode,
+    this.toolLogs,
+    this.toolOutputs,
+  });
 
-  ToolExecution.fromJson(core.Map _json) {
-    if (_json.containsKey('commandLineArguments')) {
-      commandLineArguments = (_json['commandLineArguments'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('exitCode')) {
-      exitCode = ToolExitCode.fromJson(
-          _json['exitCode'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('toolLogs')) {
-      toolLogs = (_json['toolLogs'] as core.List)
-          .map<FileReference>((value) => FileReference.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('toolOutputs')) {
-      toolOutputs = (_json['toolOutputs'] as core.List)
-          .map<ToolOutputReference>((value) => ToolOutputReference.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ToolExecution.fromJson(core.Map _json)
+      : this(
+          commandLineArguments: _json.containsKey('commandLineArguments')
+              ? (_json['commandLineArguments'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          exitCode: _json.containsKey('exitCode')
+              ? ToolExitCode.fromJson(
+                  _json['exitCode'] as core.Map<core.String, core.dynamic>)
+              : null,
+          toolLogs: _json.containsKey('toolLogs')
+              ? (_json['toolLogs'] as core.List)
+                  .map<FileReference>((value) => FileReference.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          toolOutputs: _json.containsKey('toolOutputs')
+              ? (_json['toolOutputs'] as core.List)
+                  .map<ToolOutputReference>((value) =>
+                      ToolOutputReference.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (commandLineArguments != null)
@@ -6150,14 +6578,17 @@ class ToolExecutionStep {
   /// request: optional
   ToolExecution? toolExecution;
 
-  ToolExecutionStep();
+  ToolExecutionStep({
+    this.toolExecution,
+  });
 
-  ToolExecutionStep.fromJson(core.Map _json) {
-    if (_json.containsKey('toolExecution')) {
-      toolExecution = ToolExecution.fromJson(
-          _json['toolExecution'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ToolExecutionStep.fromJson(core.Map _json)
+      : this(
+          toolExecution: _json.containsKey('toolExecution')
+              ? ToolExecution.fromJson(
+                  _json['toolExecution'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (toolExecution != null) 'toolExecution': toolExecution!.toJson(),
@@ -6172,13 +6603,15 @@ class ToolExitCode {
   /// always set - In create/update request: always set
   core.int? number;
 
-  ToolExitCode();
+  ToolExitCode({
+    this.number,
+  });
 
-  ToolExitCode.fromJson(core.Map _json) {
-    if (_json.containsKey('number')) {
-      number = _json['number'] as core.int;
-    }
-  }
+  ToolExitCode.fromJson(core.Map _json)
+      : this(
+          number:
+              _json.containsKey('number') ? _json['number'] as core.int : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (number != null) 'number': number!,
@@ -6204,22 +6637,27 @@ class ToolOutputReference {
   /// request: optional
   TestCaseReference? testCase;
 
-  ToolOutputReference();
+  ToolOutputReference({
+    this.creationTime,
+    this.output,
+    this.testCase,
+  });
 
-  ToolOutputReference.fromJson(core.Map _json) {
-    if (_json.containsKey('creationTime')) {
-      creationTime = Timestamp.fromJson(
-          _json['creationTime'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('output')) {
-      output = FileReference.fromJson(
-          _json['output'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('testCase')) {
-      testCase = TestCaseReference.fromJson(
-          _json['testCase'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ToolOutputReference.fromJson(core.Map _json)
+      : this(
+          creationTime: _json.containsKey('creationTime')
+              ? Timestamp.fromJson(
+                  _json['creationTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+          output: _json.containsKey('output')
+              ? FileReference.fromJson(
+                  _json['output'] as core.Map<core.String, core.dynamic>)
+              : null,
+          testCase: _json.containsKey('testCase')
+              ? TestCaseReference.fromJson(
+                  _json['testCase'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (creationTime != null) 'creationTime': creationTime!.toJson(),
@@ -6240,19 +6678,22 @@ class UIElementTooDeep {
   /// The screen state id of the element
   core.String? screenStateId;
 
-  UIElementTooDeep();
+  UIElementTooDeep({
+    this.depth,
+    this.screenId,
+    this.screenStateId,
+  });
 
-  UIElementTooDeep.fromJson(core.Map _json) {
-    if (_json.containsKey('depth')) {
-      depth = _json['depth'] as core.int;
-    }
-    if (_json.containsKey('screenId')) {
-      screenId = _json['screenId'] as core.String;
-    }
-    if (_json.containsKey('screenStateId')) {
-      screenStateId = _json['screenStateId'] as core.String;
-    }
-  }
+  UIElementTooDeep.fromJson(core.Map _json)
+      : this(
+          depth: _json.containsKey('depth') ? _json['depth'] as core.int : null,
+          screenId: _json.containsKey('screenId')
+              ? _json['screenId'] as core.String
+              : null,
+          screenStateId: _json.containsKey('screenStateId')
+              ? _json['screenStateId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (depth != null) 'depth': depth!,
@@ -6277,13 +6718,16 @@ class UnusedRoboDirective {
   /// The name of the resource that was unused.
   core.String? resourceName;
 
-  UnusedRoboDirective();
+  UnusedRoboDirective({
+    this.resourceName,
+  });
 
-  UnusedRoboDirective.fromJson(core.Map _json) {
-    if (_json.containsKey('resourceName')) {
-      resourceName = _json['resourceName'] as core.String;
-    }
-  }
+  UnusedRoboDirective.fromJson(core.Map _json)
+      : this(
+          resourceName: _json.containsKey('resourceName')
+              ? _json['resourceName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceName != null) 'resourceName': resourceName!,
@@ -6301,16 +6745,20 @@ class UpgradeInsight {
   /// Optional: In case we are not sure which version solves this problem
   core.String? upgradeToVersion;
 
-  UpgradeInsight();
+  UpgradeInsight({
+    this.packageName,
+    this.upgradeToVersion,
+  });
 
-  UpgradeInsight.fromJson(core.Map _json) {
-    if (_json.containsKey('packageName')) {
-      packageName = _json['packageName'] as core.String;
-    }
-    if (_json.containsKey('upgradeToVersion')) {
-      upgradeToVersion = _json['upgradeToVersion'] as core.String;
-    }
-  }
+  UpgradeInsight.fromJson(core.Map _json)
+      : this(
+          packageName: _json.containsKey('packageName')
+              ? _json['packageName'] as core.String
+              : null,
+          upgradeToVersion: _json.containsKey('upgradeToVersion')
+              ? _json['upgradeToVersion'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (packageName != null) 'packageName': packageName!,
@@ -6323,13 +6771,16 @@ class UsedRoboDirective {
   /// The name of the resource that was used.
   core.String? resourceName;
 
-  UsedRoboDirective();
+  UsedRoboDirective({
+    this.resourceName,
+  });
 
-  UsedRoboDirective.fromJson(core.Map _json) {
-    if (_json.containsKey('resourceName')) {
-      resourceName = _json['resourceName'] as core.String;
-    }
-  }
+  UsedRoboDirective.fromJson(core.Map _json)
+      : this(
+          resourceName: _json.containsKey('resourceName')
+              ? _json['resourceName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceName != null) 'resourceName': resourceName!,
@@ -6343,13 +6794,16 @@ class UsedRoboIgnoreDirective {
   /// The name of the resource that was ignored.
   core.String? resourceName;
 
-  UsedRoboIgnoreDirective();
+  UsedRoboIgnoreDirective({
+    this.resourceName,
+  });
 
-  UsedRoboIgnoreDirective.fromJson(core.Map _json) {
-    if (_json.containsKey('resourceName')) {
-      resourceName = _json['resourceName'] as core.String;
-    }
-  }
+  UsedRoboIgnoreDirective.fromJson(core.Map _json)
+      : this(
+          resourceName: _json.containsKey('resourceName')
+              ? _json['resourceName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceName != null) 'resourceName': resourceName!,

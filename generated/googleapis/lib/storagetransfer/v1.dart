@@ -598,16 +598,20 @@ class AwsAccessKey {
   /// Required.
   core.String? secretAccessKey;
 
-  AwsAccessKey();
+  AwsAccessKey({
+    this.accessKeyId,
+    this.secretAccessKey,
+  });
 
-  AwsAccessKey.fromJson(core.Map _json) {
-    if (_json.containsKey('accessKeyId')) {
-      accessKeyId = _json['accessKeyId'] as core.String;
-    }
-    if (_json.containsKey('secretAccessKey')) {
-      secretAccessKey = _json['secretAccessKey'] as core.String;
-    }
-  }
+  AwsAccessKey.fromJson(core.Map _json)
+      : this(
+          accessKeyId: _json.containsKey('accessKeyId')
+              ? _json['accessKeyId'] as core.String
+              : null,
+          secretAccessKey: _json.containsKey('secretAccessKey')
+              ? _json['secretAccessKey'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessKeyId != null) 'accessKeyId': accessKeyId!,
@@ -649,23 +653,27 @@ class AwsS3Data {
   /// provided role using the \[GoogleServiceAccount\] for this project.
   core.String? roleArn;
 
-  AwsS3Data();
+  AwsS3Data({
+    this.awsAccessKey,
+    this.bucketName,
+    this.path,
+    this.roleArn,
+  });
 
-  AwsS3Data.fromJson(core.Map _json) {
-    if (_json.containsKey('awsAccessKey')) {
-      awsAccessKey = AwsAccessKey.fromJson(
-          _json['awsAccessKey'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('bucketName')) {
-      bucketName = _json['bucketName'] as core.String;
-    }
-    if (_json.containsKey('path')) {
-      path = _json['path'] as core.String;
-    }
-    if (_json.containsKey('roleArn')) {
-      roleArn = _json['roleArn'] as core.String;
-    }
-  }
+  AwsS3Data.fromJson(core.Map _json)
+      : this(
+          awsAccessKey: _json.containsKey('awsAccessKey')
+              ? AwsAccessKey.fromJson(
+                  _json['awsAccessKey'] as core.Map<core.String, core.dynamic>)
+              : null,
+          bucketName: _json.containsKey('bucketName')
+              ? _json['bucketName'] as core.String
+              : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+          roleArn: _json.containsKey('roleArn')
+              ? _json['roleArn'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (awsAccessKey != null) 'awsAccessKey': awsAccessKey!.toJson(),
@@ -709,23 +717,27 @@ class AzureBlobStorageData {
   /// Required.
   core.String? storageAccount;
 
-  AzureBlobStorageData();
+  AzureBlobStorageData({
+    this.azureCredentials,
+    this.container,
+    this.path,
+    this.storageAccount,
+  });
 
-  AzureBlobStorageData.fromJson(core.Map _json) {
-    if (_json.containsKey('azureCredentials')) {
-      azureCredentials = AzureCredentials.fromJson(
-          _json['azureCredentials'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('container')) {
-      container = _json['container'] as core.String;
-    }
-    if (_json.containsKey('path')) {
-      path = _json['path'] as core.String;
-    }
-    if (_json.containsKey('storageAccount')) {
-      storageAccount = _json['storageAccount'] as core.String;
-    }
-  }
+  AzureBlobStorageData.fromJson(core.Map _json)
+      : this(
+          azureCredentials: _json.containsKey('azureCredentials')
+              ? AzureCredentials.fromJson(_json['azureCredentials']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          container: _json.containsKey('container')
+              ? _json['container'] as core.String
+              : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+          storageAccount: _json.containsKey('storageAccount')
+              ? _json['storageAccount'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (azureCredentials != null)
@@ -752,13 +764,16 @@ class AzureCredentials {
   /// Required.
   core.String? sasToken;
 
-  AzureCredentials();
+  AzureCredentials({
+    this.sasToken,
+  });
 
-  AzureCredentials.fromJson(core.Map _json) {
-    if (_json.containsKey('sasToken')) {
-      sasToken = _json['sasToken'] as core.String;
-    }
-  }
+  AzureCredentials.fromJson(core.Map _json)
+      : this(
+          sasToken: _json.containsKey('sasToken')
+              ? _json['sasToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sasToken != null) 'sasToken': sasToken!,
@@ -802,19 +817,18 @@ class Date {
   /// Must be from 1 to 9999, or 0 to specify a date without a year.
   core.int? year;
 
-  Date();
+  Date({
+    this.day,
+    this.month,
+    this.year,
+  });
 
-  Date.fromJson(core.Map _json) {
-    if (_json.containsKey('day')) {
-      day = _json['day'] as core.int;
-    }
-    if (_json.containsKey('month')) {
-      month = _json['month'] as core.int;
-    }
-    if (_json.containsKey('year')) {
-      year = _json['year'] as core.int;
-    }
-  }
+  Date.fromJson(core.Map _json)
+      : this(
+          day: _json.containsKey('day') ? _json['day'] as core.int : null,
+          month: _json.containsKey('month') ? _json['month'] as core.int : null,
+          year: _json.containsKey('year') ? _json['year'] as core.int : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (day != null) 'day': day!,
@@ -851,18 +865,20 @@ class ErrorLogEntry {
   /// Required.
   core.String? url;
 
-  ErrorLogEntry();
+  ErrorLogEntry({
+    this.errorDetails,
+    this.url,
+  });
 
-  ErrorLogEntry.fromJson(core.Map _json) {
-    if (_json.containsKey('errorDetails')) {
-      errorDetails = (_json['errorDetails'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  ErrorLogEntry.fromJson(core.Map _json)
+      : this(
+          errorDetails: _json.containsKey('errorDetails')
+              ? (_json['errorDetails'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorDetails != null) 'errorDetails': errorDetails!,
@@ -967,22 +983,27 @@ class ErrorSummary {
   /// single transfer operation.
   core.List<ErrorLogEntry>? errorLogEntries;
 
-  ErrorSummary();
+  ErrorSummary({
+    this.errorCode,
+    this.errorCount,
+    this.errorLogEntries,
+  });
 
-  ErrorSummary.fromJson(core.Map _json) {
-    if (_json.containsKey('errorCode')) {
-      errorCode = _json['errorCode'] as core.String;
-    }
-    if (_json.containsKey('errorCount')) {
-      errorCount = _json['errorCount'] as core.String;
-    }
-    if (_json.containsKey('errorLogEntries')) {
-      errorLogEntries = (_json['errorLogEntries'] as core.List)
-          .map<ErrorLogEntry>((value) => ErrorLogEntry.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ErrorSummary.fromJson(core.Map _json)
+      : this(
+          errorCode: _json.containsKey('errorCode')
+              ? _json['errorCode'] as core.String
+              : null,
+          errorCount: _json.containsKey('errorCount')
+              ? _json['errorCount'] as core.String
+              : null,
+          errorLogEntries: _json.containsKey('errorLogEntries')
+              ? (_json['errorLogEntries'] as core.List)
+                  .map<ErrorLogEntry>((value) => ErrorLogEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorCode != null) 'errorCode': errorCode!,
@@ -1013,16 +1034,18 @@ class GcsData {
   /// Requirements\](/storage/docs/naming#objectnames).
   core.String? path;
 
-  GcsData();
+  GcsData({
+    this.bucketName,
+    this.path,
+  });
 
-  GcsData.fromJson(core.Map _json) {
-    if (_json.containsKey('bucketName')) {
-      bucketName = _json['bucketName'] as core.String;
-    }
-    if (_json.containsKey('path')) {
-      path = _json['path'] as core.String;
-    }
-  }
+  GcsData.fromJson(core.Map _json)
+      : this(
+          bucketName: _json.containsKey('bucketName')
+              ? _json['bucketName'] as core.String
+              : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bucketName != null) 'bucketName': bucketName!,
@@ -1038,16 +1061,20 @@ class GoogleServiceAccount {
   /// Unique identifier for the service account.
   core.String? subjectId;
 
-  GoogleServiceAccount();
+  GoogleServiceAccount({
+    this.accountEmail,
+    this.subjectId,
+  });
 
-  GoogleServiceAccount.fromJson(core.Map _json) {
-    if (_json.containsKey('accountEmail')) {
-      accountEmail = _json['accountEmail'] as core.String;
-    }
-    if (_json.containsKey('subjectId')) {
-      subjectId = _json['subjectId'] as core.String;
-    }
-  }
+  GoogleServiceAccount.fromJson(core.Map _json)
+      : this(
+          accountEmail: _json.containsKey('accountEmail')
+              ? _json['accountEmail'] as core.String
+              : null,
+          subjectId: _json.containsKey('subjectId')
+              ? _json['subjectId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountEmail != null) 'accountEmail': accountEmail!,
@@ -1089,13 +1116,16 @@ class HttpData {
   /// Required.
   core.String? listUrl;
 
-  HttpData();
+  HttpData({
+    this.listUrl,
+  });
 
-  HttpData.fromJson(core.Map _json) {
-    if (_json.containsKey('listUrl')) {
-      listUrl = _json['listUrl'] as core.String;
-    }
-  }
+  HttpData.fromJson(core.Map _json)
+      : this(
+          listUrl: _json.containsKey('listUrl')
+              ? _json['listUrl'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (listUrl != null) 'listUrl': listUrl!,
@@ -1110,19 +1140,23 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse();
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
 
-  ListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('operations')) {
-      operations = (_json['operations'] as core.List)
-          .map<Operation>((value) =>
-              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListOperationsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          operations: _json.containsKey('operations')
+              ? (_json['operations'] as core.List)
+                  .map<Operation>((value) => Operation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1139,19 +1173,23 @@ class ListTransferJobsResponse {
   /// A list of transfer jobs.
   core.List<TransferJob>? transferJobs;
 
-  ListTransferJobsResponse();
+  ListTransferJobsResponse({
+    this.nextPageToken,
+    this.transferJobs,
+  });
 
-  ListTransferJobsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('transferJobs')) {
-      transferJobs = (_json['transferJobs'] as core.List)
-          .map<TransferJob>((value) => TransferJob.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListTransferJobsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          transferJobs: _json.containsKey('transferJobs')
+              ? (_json['transferJobs'] as core.List)
+                  .map<TransferJob>((value) => TransferJob.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1197,21 +1235,26 @@ class NotificationConfig {
   /// Required.
   core.String? pubsubTopic;
 
-  NotificationConfig();
+  NotificationConfig({
+    this.eventTypes,
+    this.payloadFormat,
+    this.pubsubTopic,
+  });
 
-  NotificationConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('eventTypes')) {
-      eventTypes = (_json['eventTypes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('payloadFormat')) {
-      payloadFormat = _json['payloadFormat'] as core.String;
-    }
-    if (_json.containsKey('pubsubTopic')) {
-      pubsubTopic = _json['pubsubTopic'] as core.String;
-    }
-  }
+  NotificationConfig.fromJson(core.Map _json)
+      : this(
+          eventTypes: _json.containsKey('eventTypes')
+              ? (_json['eventTypes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          payloadFormat: _json.containsKey('payloadFormat')
+              ? _json['payloadFormat'] as core.String
+              : null,
+          pubsubTopic: _json.containsKey('pubsubTopic')
+              ? _json['pubsubTopic'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (eventTypes != null) 'eventTypes': eventTypes!,
@@ -1304,34 +1347,42 @@ class ObjectConditions {
   /// the start_time of the `TransferOperation`.
   core.String? minTimeElapsedSinceLastModification;
 
-  ObjectConditions();
+  ObjectConditions({
+    this.excludePrefixes,
+    this.includePrefixes,
+    this.lastModifiedBefore,
+    this.lastModifiedSince,
+    this.maxTimeElapsedSinceLastModification,
+    this.minTimeElapsedSinceLastModification,
+  });
 
-  ObjectConditions.fromJson(core.Map _json) {
-    if (_json.containsKey('excludePrefixes')) {
-      excludePrefixes = (_json['excludePrefixes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('includePrefixes')) {
-      includePrefixes = (_json['includePrefixes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('lastModifiedBefore')) {
-      lastModifiedBefore = _json['lastModifiedBefore'] as core.String;
-    }
-    if (_json.containsKey('lastModifiedSince')) {
-      lastModifiedSince = _json['lastModifiedSince'] as core.String;
-    }
-    if (_json.containsKey('maxTimeElapsedSinceLastModification')) {
-      maxTimeElapsedSinceLastModification =
-          _json['maxTimeElapsedSinceLastModification'] as core.String;
-    }
-    if (_json.containsKey('minTimeElapsedSinceLastModification')) {
-      minTimeElapsedSinceLastModification =
-          _json['minTimeElapsedSinceLastModification'] as core.String;
-    }
-  }
+  ObjectConditions.fromJson(core.Map _json)
+      : this(
+          excludePrefixes: _json.containsKey('excludePrefixes')
+              ? (_json['excludePrefixes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          includePrefixes: _json.containsKey('includePrefixes')
+              ? (_json['includePrefixes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          lastModifiedBefore: _json.containsKey('lastModifiedBefore')
+              ? _json['lastModifiedBefore'] as core.String
+              : null,
+          lastModifiedSince: _json.containsKey('lastModifiedSince')
+              ? _json['lastModifiedSince'] as core.String
+              : null,
+          maxTimeElapsedSinceLastModification:
+              _json.containsKey('maxTimeElapsedSinceLastModification')
+                  ? _json['maxTimeElapsedSinceLastModification'] as core.String
+                  : null,
+          minTimeElapsedSinceLastModification:
+              _json.containsKey('minTimeElapsedSinceLastModification')
+                  ? _json['minTimeElapsedSinceLastModification'] as core.String
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (excludePrefixes != null) 'excludePrefixes': excludePrefixes!,
@@ -1386,36 +1437,39 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object>? response;
 
-  Operation();
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
-  Operation.fromJson(core.Map _json) {
-    if (_json.containsKey('done')) {
-      done = _json['done'] as core.bool;
-    }
-    if (_json.containsKey('error')) {
-      error = Status.fromJson(
-          _json['error'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('response')) {
-      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-  }
+  Operation.fromJson(core.Map _json)
+      : this(
+          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
+          error: _json.containsKey('error')
+              ? Status.fromJson(
+                  _json['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          response: _json.containsKey('response')
+              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
@@ -1456,13 +1510,16 @@ class RunTransferJobRequest {
   /// Required.
   core.String? projectId;
 
-  RunTransferJobRequest();
+  RunTransferJobRequest({
+    this.projectId,
+  });
 
-  RunTransferJobRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-  }
+  RunTransferJobRequest.fromJson(core.Map _json)
+      : this(
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (projectId != null) 'projectId': projectId!,
@@ -1526,29 +1583,36 @@ class Schedule {
   /// through `schedule_end_date`.
   TimeOfDay? startTimeOfDay;
 
-  Schedule();
+  Schedule({
+    this.endTimeOfDay,
+    this.repeatInterval,
+    this.scheduleEndDate,
+    this.scheduleStartDate,
+    this.startTimeOfDay,
+  });
 
-  Schedule.fromJson(core.Map _json) {
-    if (_json.containsKey('endTimeOfDay')) {
-      endTimeOfDay = TimeOfDay.fromJson(
-          _json['endTimeOfDay'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('repeatInterval')) {
-      repeatInterval = _json['repeatInterval'] as core.String;
-    }
-    if (_json.containsKey('scheduleEndDate')) {
-      scheduleEndDate = Date.fromJson(
-          _json['scheduleEndDate'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('scheduleStartDate')) {
-      scheduleStartDate = Date.fromJson(
-          _json['scheduleStartDate'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('startTimeOfDay')) {
-      startTimeOfDay = TimeOfDay.fromJson(
-          _json['startTimeOfDay'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Schedule.fromJson(core.Map _json)
+      : this(
+          endTimeOfDay: _json.containsKey('endTimeOfDay')
+              ? TimeOfDay.fromJson(
+                  _json['endTimeOfDay'] as core.Map<core.String, core.dynamic>)
+              : null,
+          repeatInterval: _json.containsKey('repeatInterval')
+              ? _json['repeatInterval'] as core.String
+              : null,
+          scheduleEndDate: _json.containsKey('scheduleEndDate')
+              ? Date.fromJson(_json['scheduleEndDate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          scheduleStartDate: _json.containsKey('scheduleStartDate')
+              ? Date.fromJson(_json['scheduleStartDate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          startTimeOfDay: _json.containsKey('startTimeOfDay')
+              ? TimeOfDay.fromJson(_json['startTimeOfDay']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTimeOfDay != null) 'endTimeOfDay': endTimeOfDay!.toJson(),
@@ -1586,27 +1650,30 @@ class Status {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  Status();
+  Status({
+    this.code,
+    this.details,
+    this.message,
+  });
 
-  Status.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.int;
-    }
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  Status.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -1643,22 +1710,24 @@ class TimeOfDay {
   /// leap-seconds.
   core.int? seconds;
 
-  TimeOfDay();
+  TimeOfDay({
+    this.hours,
+    this.minutes,
+    this.nanos,
+    this.seconds,
+  });
 
-  TimeOfDay.fromJson(core.Map _json) {
-    if (_json.containsKey('hours')) {
-      hours = _json['hours'] as core.int;
-    }
-    if (_json.containsKey('minutes')) {
-      minutes = _json['minutes'] as core.int;
-    }
-    if (_json.containsKey('nanos')) {
-      nanos = _json['nanos'] as core.int;
-    }
-    if (_json.containsKey('seconds')) {
-      seconds = _json['seconds'] as core.int;
-    }
-  }
+  TimeOfDay.fromJson(core.Map _json)
+      : this(
+          hours: _json.containsKey('hours') ? _json['hours'] as core.int : null,
+          minutes: _json.containsKey('minutes')
+              ? _json['minutes'] as core.int
+              : null,
+          nanos: _json.containsKey('nanos') ? _json['nanos'] as core.int : null,
+          seconds: _json.containsKey('seconds')
+              ? _json['seconds'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (hours != null) 'hours': hours!,
@@ -1726,64 +1795,82 @@ class TransferCounters {
   /// exist in the data sink.
   core.String? objectsFromSourceSkippedBySync;
 
-  TransferCounters();
+  TransferCounters({
+    this.bytesCopiedToSink,
+    this.bytesDeletedFromSink,
+    this.bytesDeletedFromSource,
+    this.bytesFailedToDeleteFromSink,
+    this.bytesFoundFromSource,
+    this.bytesFoundOnlyFromSink,
+    this.bytesFromSourceFailed,
+    this.bytesFromSourceSkippedBySync,
+    this.objectsCopiedToSink,
+    this.objectsDeletedFromSink,
+    this.objectsDeletedFromSource,
+    this.objectsFailedToDeleteFromSink,
+    this.objectsFoundFromSource,
+    this.objectsFoundOnlyFromSink,
+    this.objectsFromSourceFailed,
+    this.objectsFromSourceSkippedBySync,
+  });
 
-  TransferCounters.fromJson(core.Map _json) {
-    if (_json.containsKey('bytesCopiedToSink')) {
-      bytesCopiedToSink = _json['bytesCopiedToSink'] as core.String;
-    }
-    if (_json.containsKey('bytesDeletedFromSink')) {
-      bytesDeletedFromSink = _json['bytesDeletedFromSink'] as core.String;
-    }
-    if (_json.containsKey('bytesDeletedFromSource')) {
-      bytesDeletedFromSource = _json['bytesDeletedFromSource'] as core.String;
-    }
-    if (_json.containsKey('bytesFailedToDeleteFromSink')) {
-      bytesFailedToDeleteFromSink =
-          _json['bytesFailedToDeleteFromSink'] as core.String;
-    }
-    if (_json.containsKey('bytesFoundFromSource')) {
-      bytesFoundFromSource = _json['bytesFoundFromSource'] as core.String;
-    }
-    if (_json.containsKey('bytesFoundOnlyFromSink')) {
-      bytesFoundOnlyFromSink = _json['bytesFoundOnlyFromSink'] as core.String;
-    }
-    if (_json.containsKey('bytesFromSourceFailed')) {
-      bytesFromSourceFailed = _json['bytesFromSourceFailed'] as core.String;
-    }
-    if (_json.containsKey('bytesFromSourceSkippedBySync')) {
-      bytesFromSourceSkippedBySync =
-          _json['bytesFromSourceSkippedBySync'] as core.String;
-    }
-    if (_json.containsKey('objectsCopiedToSink')) {
-      objectsCopiedToSink = _json['objectsCopiedToSink'] as core.String;
-    }
-    if (_json.containsKey('objectsDeletedFromSink')) {
-      objectsDeletedFromSink = _json['objectsDeletedFromSink'] as core.String;
-    }
-    if (_json.containsKey('objectsDeletedFromSource')) {
-      objectsDeletedFromSource =
-          _json['objectsDeletedFromSource'] as core.String;
-    }
-    if (_json.containsKey('objectsFailedToDeleteFromSink')) {
-      objectsFailedToDeleteFromSink =
-          _json['objectsFailedToDeleteFromSink'] as core.String;
-    }
-    if (_json.containsKey('objectsFoundFromSource')) {
-      objectsFoundFromSource = _json['objectsFoundFromSource'] as core.String;
-    }
-    if (_json.containsKey('objectsFoundOnlyFromSink')) {
-      objectsFoundOnlyFromSink =
-          _json['objectsFoundOnlyFromSink'] as core.String;
-    }
-    if (_json.containsKey('objectsFromSourceFailed')) {
-      objectsFromSourceFailed = _json['objectsFromSourceFailed'] as core.String;
-    }
-    if (_json.containsKey('objectsFromSourceSkippedBySync')) {
-      objectsFromSourceSkippedBySync =
-          _json['objectsFromSourceSkippedBySync'] as core.String;
-    }
-  }
+  TransferCounters.fromJson(core.Map _json)
+      : this(
+          bytesCopiedToSink: _json.containsKey('bytesCopiedToSink')
+              ? _json['bytesCopiedToSink'] as core.String
+              : null,
+          bytesDeletedFromSink: _json.containsKey('bytesDeletedFromSink')
+              ? _json['bytesDeletedFromSink'] as core.String
+              : null,
+          bytesDeletedFromSource: _json.containsKey('bytesDeletedFromSource')
+              ? _json['bytesDeletedFromSource'] as core.String
+              : null,
+          bytesFailedToDeleteFromSink:
+              _json.containsKey('bytesFailedToDeleteFromSink')
+                  ? _json['bytesFailedToDeleteFromSink'] as core.String
+                  : null,
+          bytesFoundFromSource: _json.containsKey('bytesFoundFromSource')
+              ? _json['bytesFoundFromSource'] as core.String
+              : null,
+          bytesFoundOnlyFromSink: _json.containsKey('bytesFoundOnlyFromSink')
+              ? _json['bytesFoundOnlyFromSink'] as core.String
+              : null,
+          bytesFromSourceFailed: _json.containsKey('bytesFromSourceFailed')
+              ? _json['bytesFromSourceFailed'] as core.String
+              : null,
+          bytesFromSourceSkippedBySync:
+              _json.containsKey('bytesFromSourceSkippedBySync')
+                  ? _json['bytesFromSourceSkippedBySync'] as core.String
+                  : null,
+          objectsCopiedToSink: _json.containsKey('objectsCopiedToSink')
+              ? _json['objectsCopiedToSink'] as core.String
+              : null,
+          objectsDeletedFromSink: _json.containsKey('objectsDeletedFromSink')
+              ? _json['objectsDeletedFromSink'] as core.String
+              : null,
+          objectsDeletedFromSource:
+              _json.containsKey('objectsDeletedFromSource')
+                  ? _json['objectsDeletedFromSource'] as core.String
+                  : null,
+          objectsFailedToDeleteFromSink:
+              _json.containsKey('objectsFailedToDeleteFromSink')
+                  ? _json['objectsFailedToDeleteFromSink'] as core.String
+                  : null,
+          objectsFoundFromSource: _json.containsKey('objectsFoundFromSource')
+              ? _json['objectsFoundFromSource'] as core.String
+              : null,
+          objectsFoundOnlyFromSink:
+              _json.containsKey('objectsFoundOnlyFromSink')
+                  ? _json['objectsFoundOnlyFromSink'] as core.String
+                  : null,
+          objectsFromSourceFailed: _json.containsKey('objectsFromSourceFailed')
+              ? _json['objectsFromSourceFailed'] as core.String
+              : null,
+          objectsFromSourceSkippedBySync:
+              _json.containsKey('objectsFromSourceSkippedBySync')
+                  ? _json['objectsFromSourceSkippedBySync'] as core.String
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bytesCopiedToSink != null) 'bytesCopiedToSink': bytesCopiedToSink!,
@@ -1895,46 +1982,57 @@ class TransferJob {
   /// Transfer specification.
   TransferSpec? transferSpec;
 
-  TransferJob();
+  TransferJob({
+    this.creationTime,
+    this.deletionTime,
+    this.description,
+    this.lastModificationTime,
+    this.latestOperationName,
+    this.name,
+    this.notificationConfig,
+    this.projectId,
+    this.schedule,
+    this.status,
+    this.transferSpec,
+  });
 
-  TransferJob.fromJson(core.Map _json) {
-    if (_json.containsKey('creationTime')) {
-      creationTime = _json['creationTime'] as core.String;
-    }
-    if (_json.containsKey('deletionTime')) {
-      deletionTime = _json['deletionTime'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('lastModificationTime')) {
-      lastModificationTime = _json['lastModificationTime'] as core.String;
-    }
-    if (_json.containsKey('latestOperationName')) {
-      latestOperationName = _json['latestOperationName'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('notificationConfig')) {
-      notificationConfig = NotificationConfig.fromJson(
-          _json['notificationConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('schedule')) {
-      schedule = Schedule.fromJson(
-          _json['schedule'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-    if (_json.containsKey('transferSpec')) {
-      transferSpec = TransferSpec.fromJson(
-          _json['transferSpec'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  TransferJob.fromJson(core.Map _json)
+      : this(
+          creationTime: _json.containsKey('creationTime')
+              ? _json['creationTime'] as core.String
+              : null,
+          deletionTime: _json.containsKey('deletionTime')
+              ? _json['deletionTime'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          lastModificationTime: _json.containsKey('lastModificationTime')
+              ? _json['lastModificationTime'] as core.String
+              : null,
+          latestOperationName: _json.containsKey('latestOperationName')
+              ? _json['latestOperationName'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          notificationConfig: _json.containsKey('notificationConfig')
+              ? NotificationConfig.fromJson(_json['notificationConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          schedule: _json.containsKey('schedule')
+              ? Schedule.fromJson(
+                  _json['schedule'] as core.Map<core.String, core.dynamic>)
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+          transferSpec: _json.containsKey('transferSpec')
+              ? TransferSpec.fromJson(
+                  _json['transferSpec'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (creationTime != null) 'creationTime': creationTime!,
@@ -1995,46 +2093,56 @@ class TransferOperation {
   /// Transfer specification.
   TransferSpec? transferSpec;
 
-  TransferOperation();
+  TransferOperation({
+    this.counters,
+    this.endTime,
+    this.errorBreakdowns,
+    this.name,
+    this.notificationConfig,
+    this.projectId,
+    this.startTime,
+    this.status,
+    this.transferJobName,
+    this.transferSpec,
+  });
 
-  TransferOperation.fromJson(core.Map _json) {
-    if (_json.containsKey('counters')) {
-      counters = TransferCounters.fromJson(
-          _json['counters'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('errorBreakdowns')) {
-      errorBreakdowns = (_json['errorBreakdowns'] as core.List)
-          .map<ErrorSummary>((value) => ErrorSummary.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('notificationConfig')) {
-      notificationConfig = NotificationConfig.fromJson(
-          _json['notificationConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-    if (_json.containsKey('transferJobName')) {
-      transferJobName = _json['transferJobName'] as core.String;
-    }
-    if (_json.containsKey('transferSpec')) {
-      transferSpec = TransferSpec.fromJson(
-          _json['transferSpec'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  TransferOperation.fromJson(core.Map _json)
+      : this(
+          counters: _json.containsKey('counters')
+              ? TransferCounters.fromJson(
+                  _json['counters'] as core.Map<core.String, core.dynamic>)
+              : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          errorBreakdowns: _json.containsKey('errorBreakdowns')
+              ? (_json['errorBreakdowns'] as core.List)
+                  .map<ErrorSummary>((value) => ErrorSummary.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          notificationConfig: _json.containsKey('notificationConfig')
+              ? NotificationConfig.fromJson(_json['notificationConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+          transferJobName: _json.containsKey('transferJobName')
+              ? _json['transferJobName'] as core.String
+              : null,
+          transferSpec: _json.containsKey('transferSpec')
+              ? TransferSpec.fromJson(
+                  _json['transferSpec'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (counters != null) 'counters': counters!.toJson(),
@@ -2075,22 +2183,27 @@ class TransferOptions {
   /// in the source will be overwritten with the source object.
   core.bool? overwriteObjectsAlreadyExistingInSink;
 
-  TransferOptions();
+  TransferOptions({
+    this.deleteObjectsFromSourceAfterTransfer,
+    this.deleteObjectsUniqueInSink,
+    this.overwriteObjectsAlreadyExistingInSink,
+  });
 
-  TransferOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('deleteObjectsFromSourceAfterTransfer')) {
-      deleteObjectsFromSourceAfterTransfer =
-          _json['deleteObjectsFromSourceAfterTransfer'] as core.bool;
-    }
-    if (_json.containsKey('deleteObjectsUniqueInSink')) {
-      deleteObjectsUniqueInSink =
-          _json['deleteObjectsUniqueInSink'] as core.bool;
-    }
-    if (_json.containsKey('overwriteObjectsAlreadyExistingInSink')) {
-      overwriteObjectsAlreadyExistingInSink =
-          _json['overwriteObjectsAlreadyExistingInSink'] as core.bool;
-    }
-  }
+  TransferOptions.fromJson(core.Map _json)
+      : this(
+          deleteObjectsFromSourceAfterTransfer:
+              _json.containsKey('deleteObjectsFromSourceAfterTransfer')
+                  ? _json['deleteObjectsFromSourceAfterTransfer'] as core.bool
+                  : null,
+          deleteObjectsUniqueInSink:
+              _json.containsKey('deleteObjectsUniqueInSink')
+                  ? _json['deleteObjectsUniqueInSink'] as core.bool
+                  : null,
+          overwriteObjectsAlreadyExistingInSink:
+              _json.containsKey('overwriteObjectsAlreadyExistingInSink')
+                  ? _json['overwriteObjectsAlreadyExistingInSink'] as core.bool
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deleteObjectsFromSourceAfterTransfer != null)
@@ -2133,39 +2246,49 @@ class TransferSpec {
   /// request fails with an INVALID_ARGUMENT error.
   TransferOptions? transferOptions;
 
-  TransferSpec();
+  TransferSpec({
+    this.awsS3DataSource,
+    this.azureBlobStorageDataSource,
+    this.gcsDataSink,
+    this.gcsDataSource,
+    this.httpDataSource,
+    this.objectConditions,
+    this.transferOptions,
+  });
 
-  TransferSpec.fromJson(core.Map _json) {
-    if (_json.containsKey('awsS3DataSource')) {
-      awsS3DataSource = AwsS3Data.fromJson(
-          _json['awsS3DataSource'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('azureBlobStorageDataSource')) {
-      azureBlobStorageDataSource = AzureBlobStorageData.fromJson(
-          _json['azureBlobStorageDataSource']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('gcsDataSink')) {
-      gcsDataSink = GcsData.fromJson(
-          _json['gcsDataSink'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('gcsDataSource')) {
-      gcsDataSource = GcsData.fromJson(
-          _json['gcsDataSource'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('httpDataSource')) {
-      httpDataSource = HttpData.fromJson(
-          _json['httpDataSource'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('objectConditions')) {
-      objectConditions = ObjectConditions.fromJson(
-          _json['objectConditions'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('transferOptions')) {
-      transferOptions = TransferOptions.fromJson(
-          _json['transferOptions'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  TransferSpec.fromJson(core.Map _json)
+      : this(
+          awsS3DataSource: _json.containsKey('awsS3DataSource')
+              ? AwsS3Data.fromJson(_json['awsS3DataSource']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          azureBlobStorageDataSource:
+              _json.containsKey('azureBlobStorageDataSource')
+                  ? AzureBlobStorageData.fromJson(
+                      _json['azureBlobStorageDataSource']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          gcsDataSink: _json.containsKey('gcsDataSink')
+              ? GcsData.fromJson(
+                  _json['gcsDataSink'] as core.Map<core.String, core.dynamic>)
+              : null,
+          gcsDataSource: _json.containsKey('gcsDataSource')
+              ? GcsData.fromJson(
+                  _json['gcsDataSource'] as core.Map<core.String, core.dynamic>)
+              : null,
+          httpDataSource: _json.containsKey('httpDataSource')
+              ? HttpData.fromJson(_json['httpDataSource']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          objectConditions: _json.containsKey('objectConditions')
+              ? ObjectConditions.fromJson(_json['objectConditions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          transferOptions: _json.containsKey('transferOptions')
+              ? TransferOptions.fromJson(_json['transferOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (awsS3DataSource != null)
@@ -2210,21 +2333,26 @@ class UpdateTransferJobRequest {
   /// rejected with the error INVALID_ARGUMENT.
   core.String? updateTransferJobFieldMask;
 
-  UpdateTransferJobRequest();
+  UpdateTransferJobRequest({
+    this.projectId,
+    this.transferJob,
+    this.updateTransferJobFieldMask,
+  });
 
-  UpdateTransferJobRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('transferJob')) {
-      transferJob = TransferJob.fromJson(
-          _json['transferJob'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('updateTransferJobFieldMask')) {
-      updateTransferJobFieldMask =
-          _json['updateTransferJobFieldMask'] as core.String;
-    }
-  }
+  UpdateTransferJobRequest.fromJson(core.Map _json)
+      : this(
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          transferJob: _json.containsKey('transferJob')
+              ? TransferJob.fromJson(
+                  _json['transferJob'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTransferJobFieldMask:
+              _json.containsKey('updateTransferJobFieldMask')
+                  ? _json['updateTransferJobFieldMask'] as core.String
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (projectId != null) 'projectId': projectId!,

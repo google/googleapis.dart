@@ -420,18 +420,20 @@ class Attachment {
   /// The resource name;
   core.String? name;
 
-  Attachment();
+  Attachment({
+    this.mimeType,
+    this.name,
+  });
 
-  Attachment.fromJson(core.Map _json) {
-    if (_json.containsKey('mimeType')) {
-      mimeType = (_json['mimeType'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  Attachment.fromJson(core.Map _json)
+      : this(
+          mimeType: _json.containsKey('mimeType')
+              ? (_json['mimeType'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mimeType != null) 'mimeType': mimeType!,
@@ -447,17 +449,20 @@ class BatchCreatePermissionsRequest {
   /// The request message specifying the resources to create.
   core.List<CreatePermissionRequest>? requests;
 
-  BatchCreatePermissionsRequest();
+  BatchCreatePermissionsRequest({
+    this.requests,
+  });
 
-  BatchCreatePermissionsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('requests')) {
-      requests = (_json['requests'] as core.List)
-          .map<CreatePermissionRequest>((value) =>
-              CreatePermissionRequest.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  BatchCreatePermissionsRequest.fromJson(core.Map _json)
+      : this(
+          requests: _json.containsKey('requests')
+              ? (_json['requests'] as core.List)
+                  .map<CreatePermissionRequest>((value) =>
+                      CreatePermissionRequest.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requests != null)
@@ -470,16 +475,19 @@ class BatchCreatePermissionsResponse {
   /// Permissions created.
   core.List<Permission>? permissions;
 
-  BatchCreatePermissionsResponse();
+  BatchCreatePermissionsResponse({
+    this.permissions,
+  });
 
-  BatchCreatePermissionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List)
-          .map<Permission>((value) =>
-              Permission.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  BatchCreatePermissionsResponse.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map<Permission>((value) => Permission.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null)
@@ -501,15 +509,18 @@ class BatchDeletePermissionsRequest {
   /// Required.
   core.List<core.String>? names;
 
-  BatchDeletePermissionsRequest();
+  BatchDeletePermissionsRequest({
+    this.names,
+  });
 
-  BatchDeletePermissionsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('names')) {
-      names = (_json['names'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  BatchDeletePermissionsRequest.fromJson(core.Map _json)
+      : this(
+          names: _json.containsKey('names')
+              ? (_json['names'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (names != null) 'names': names!,
@@ -532,17 +543,21 @@ class CreatePermissionRequest {
   /// Required.
   Permission? permission;
 
-  CreatePermissionRequest();
+  CreatePermissionRequest({
+    this.parent,
+    this.permission,
+  });
 
-  CreatePermissionRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('parent')) {
-      parent = _json['parent'] as core.String;
-    }
-    if (_json.containsKey('permission')) {
-      permission = Permission.fromJson(
-          _json['permission'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  CreatePermissionRequest.fromJson(core.Map _json)
+      : this(
+          parent: _json.containsKey('parent')
+              ? _json['parent'] as core.String
+              : null,
+          permission: _json.containsKey('permission')
+              ? Permission.fromJson(
+                  _json['permission'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (parent != null) 'parent': parent!,
@@ -583,13 +598,15 @@ class Group {
   /// The group email.
   core.String? email;
 
-  Group();
+  Group({
+    this.email,
+  });
 
-  Group.fromJson(core.Map _json) {
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-  }
+  Group.fromJson(core.Map _json)
+      : this(
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
@@ -603,16 +620,19 @@ class ListContent {
   /// The number of items must be less than 1,000.
   core.List<ListItem>? listItems;
 
-  ListContent();
+  ListContent({
+    this.listItems,
+  });
 
-  ListContent.fromJson(core.Map _json) {
-    if (_json.containsKey('listItems')) {
-      listItems = (_json['listItems'] as core.List)
-          .map<ListItem>((value) =>
-              ListItem.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListContent.fromJson(core.Map _json)
+      : this(
+          listItems: _json.containsKey('listItems')
+              ? (_json['listItems'] as core.List)
+                  .map<ListItem>((value) => ListItem.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (listItems != null)
@@ -635,23 +655,28 @@ class ListItem {
   /// Length must be less than 1,000 characters.
   TextContent? text;
 
-  ListItem();
+  ListItem({
+    this.checked,
+    this.childListItems,
+    this.text,
+  });
 
-  ListItem.fromJson(core.Map _json) {
-    if (_json.containsKey('checked')) {
-      checked = _json['checked'] as core.bool;
-    }
-    if (_json.containsKey('childListItems')) {
-      childListItems = (_json['childListItems'] as core.List)
-          .map<ListItem>((value) =>
-              ListItem.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('text')) {
-      text = TextContent.fromJson(
-          _json['text'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ListItem.fromJson(core.Map _json)
+      : this(
+          checked: _json.containsKey('checked')
+              ? _json['checked'] as core.bool
+              : null,
+          childListItems: _json.containsKey('childListItems')
+              ? (_json['childListItems'] as core.List)
+                  .map<ListItem>((value) => ListItem.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          text: _json.containsKey('text')
+              ? TextContent.fromJson(
+                  _json['text'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (checked != null) 'checked': checked!,
@@ -670,19 +695,23 @@ class ListNotesResponse {
   /// A page of notes.
   core.List<Note>? notes;
 
-  ListNotesResponse();
+  ListNotesResponse({
+    this.nextPageToken,
+    this.notes,
+  });
 
-  ListNotesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('notes')) {
-      notes = (_json['notes'] as core.List)
-          .map<Note>((value) =>
-              Note.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListNotesResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          notes: _json.containsKey('notes')
+              ? (_json['notes'] as core.List)
+                  .map<Note>((value) => Note.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -745,44 +774,52 @@ class Note {
   /// Output only.
   core.String? updateTime;
 
-  Note();
+  Note({
+    this.attachments,
+    this.body,
+    this.createTime,
+    this.name,
+    this.permissions,
+    this.title,
+    this.trashTime,
+    this.trashed,
+    this.updateTime,
+  });
 
-  Note.fromJson(core.Map _json) {
-    if (_json.containsKey('attachments')) {
-      attachments = (_json['attachments'] as core.List)
-          .map<Attachment>((value) =>
-              Attachment.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('body')) {
-      body = Section.fromJson(
-          _json['body'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List)
-          .map<Permission>((value) =>
-              Permission.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-    if (_json.containsKey('trashTime')) {
-      trashTime = _json['trashTime'] as core.String;
-    }
-    if (_json.containsKey('trashed')) {
-      trashed = _json['trashed'] as core.bool;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  Note.fromJson(core.Map _json)
+      : this(
+          attachments: _json.containsKey('attachments')
+              ? (_json['attachments'] as core.List)
+                  .map<Attachment>((value) => Attachment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          body: _json.containsKey('body')
+              ? Section.fromJson(
+                  _json['body'] as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map<Permission>((value) => Permission.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+          trashTime: _json.containsKey('trashTime')
+              ? _json['trashTime'] as core.String
+              : null,
+          trashed: _json.containsKey('trashed')
+              ? _json['trashed'] as core.bool
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attachments != null)
@@ -849,34 +886,38 @@ class Permission {
   /// Output only.
   User? user;
 
-  Permission();
+  Permission({
+    this.deleted,
+    this.email,
+    this.family,
+    this.group,
+    this.name,
+    this.role,
+    this.user,
+  });
 
-  Permission.fromJson(core.Map _json) {
-    if (_json.containsKey('deleted')) {
-      deleted = _json['deleted'] as core.bool;
-    }
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('family')) {
-      family = Family.fromJson(
-          _json['family'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('group')) {
-      group =
-          Group.fromJson(_json['group'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('role')) {
-      role = _json['role'] as core.String;
-    }
-    if (_json.containsKey('user')) {
-      user =
-          User.fromJson(_json['user'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Permission.fromJson(core.Map _json)
+      : this(
+          deleted: _json.containsKey('deleted')
+              ? _json['deleted'] as core.bool
+              : null,
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          family: _json.containsKey('family')
+              ? Family.fromJson(
+                  _json['family'] as core.Map<core.String, core.dynamic>)
+              : null,
+          group: _json.containsKey('group')
+              ? Group.fromJson(
+                  _json['group'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+          user: _json.containsKey('user')
+              ? User.fromJson(
+                  _json['user'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deleted != null) 'deleted': deleted!,
@@ -899,18 +940,22 @@ class Section {
   /// The length of the text content must be less than 20,000 characters.
   TextContent? text;
 
-  Section();
+  Section({
+    this.list,
+    this.text,
+  });
 
-  Section.fromJson(core.Map _json) {
-    if (_json.containsKey('list')) {
-      list = ListContent.fromJson(
-          _json['list'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('text')) {
-      text = TextContent.fromJson(
-          _json['text'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Section.fromJson(core.Map _json)
+      : this(
+          list: _json.containsKey('list')
+              ? ListContent.fromJson(
+                  _json['list'] as core.Map<core.String, core.dynamic>)
+              : null,
+          text: _json.containsKey('text')
+              ? TextContent.fromJson(
+                  _json['text'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (list != null) 'list': list!.toJson(),
@@ -925,13 +970,14 @@ class TextContent {
   /// The limits on this vary with the specific field using this type.
   core.String? text;
 
-  TextContent();
+  TextContent({
+    this.text,
+  });
 
-  TextContent.fromJson(core.Map _json) {
-    if (_json.containsKey('text')) {
-      text = _json['text'] as core.String;
-    }
-  }
+  TextContent.fromJson(core.Map _json)
+      : this(
+          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (text != null) 'text': text!,
@@ -943,13 +989,15 @@ class User {
   /// The user's email.
   core.String? email;
 
-  User();
+  User({
+    this.email,
+  });
 
-  User.fromJson(core.Map _json) {
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-  }
+  User.fromJson(core.Map _json)
+      : this(
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,

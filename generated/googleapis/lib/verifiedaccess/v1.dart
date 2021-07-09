@@ -143,18 +143,22 @@ class Challenge {
   /// Generated challenge
   SignedData? challenge;
 
-  Challenge();
+  Challenge({
+    this.alternativeChallenge,
+    this.challenge,
+  });
 
-  Challenge.fromJson(core.Map _json) {
-    if (_json.containsKey('alternativeChallenge')) {
-      alternativeChallenge = SignedData.fromJson(
-          _json['alternativeChallenge'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('challenge')) {
-      challenge = SignedData.fromJson(
-          _json['challenge'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Challenge.fromJson(core.Map _json)
+      : this(
+          alternativeChallenge: _json.containsKey('alternativeChallenge')
+              ? SignedData.fromJson(_json['alternativeChallenge']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          challenge: _json.containsKey('challenge')
+              ? SignedData.fromJson(
+                  _json['challenge'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alternativeChallenge != null)
@@ -200,16 +204,18 @@ class SignedData {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  SignedData();
+  SignedData({
+    this.data,
+    this.signature,
+  });
 
-  SignedData.fromJson(core.Map _json) {
-    if (_json.containsKey('data')) {
-      data = _json['data'] as core.String;
-    }
-    if (_json.containsKey('signature')) {
-      signature = _json['signature'] as core.String;
-    }
-  }
+  SignedData.fromJson(core.Map _json)
+      : this(
+          data: _json.containsKey('data') ? _json['data'] as core.String : null,
+          signature: _json.containsKey('signature')
+              ? _json['signature'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (data != null) 'data': data!,
@@ -230,17 +236,21 @@ class VerifyChallengeResponseRequest {
   /// contents of the response, and verification will fail if there is no match.
   core.String? expectedIdentity;
 
-  VerifyChallengeResponseRequest();
+  VerifyChallengeResponseRequest({
+    this.challengeResponse,
+    this.expectedIdentity,
+  });
 
-  VerifyChallengeResponseRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('challengeResponse')) {
-      challengeResponse = SignedData.fromJson(
-          _json['challengeResponse'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('expectedIdentity')) {
-      expectedIdentity = _json['expectedIdentity'] as core.String;
-    }
-  }
+  VerifyChallengeResponseRequest.fromJson(core.Map _json)
+      : this(
+          challengeResponse: _json.containsKey('challengeResponse')
+              ? SignedData.fromJson(_json['challengeResponse']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          expectedIdentity: _json.containsKey('expectedIdentity')
+              ? _json['expectedIdentity'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (challengeResponse != null)
@@ -275,23 +285,29 @@ class VerifyChallengeResponseResult {
   /// signed_public_key_and_challenge fields.
   core.String? verificationOutput;
 
-  VerifyChallengeResponseResult();
+  VerifyChallengeResponseResult({
+    this.deviceEnrollmentId,
+    this.devicePermanentId,
+    this.signedPublicKeyAndChallenge,
+    this.verificationOutput,
+  });
 
-  VerifyChallengeResponseResult.fromJson(core.Map _json) {
-    if (_json.containsKey('deviceEnrollmentId')) {
-      deviceEnrollmentId = _json['deviceEnrollmentId'] as core.String;
-    }
-    if (_json.containsKey('devicePermanentId')) {
-      devicePermanentId = _json['devicePermanentId'] as core.String;
-    }
-    if (_json.containsKey('signedPublicKeyAndChallenge')) {
-      signedPublicKeyAndChallenge =
-          _json['signedPublicKeyAndChallenge'] as core.String;
-    }
-    if (_json.containsKey('verificationOutput')) {
-      verificationOutput = _json['verificationOutput'] as core.String;
-    }
-  }
+  VerifyChallengeResponseResult.fromJson(core.Map _json)
+      : this(
+          deviceEnrollmentId: _json.containsKey('deviceEnrollmentId')
+              ? _json['deviceEnrollmentId'] as core.String
+              : null,
+          devicePermanentId: _json.containsKey('devicePermanentId')
+              ? _json['devicePermanentId'] as core.String
+              : null,
+          signedPublicKeyAndChallenge:
+              _json.containsKey('signedPublicKeyAndChallenge')
+                  ? _json['signedPublicKeyAndChallenge'] as core.String
+                  : null,
+          verificationOutput: _json.containsKey('verificationOutput')
+              ? _json['verificationOutput'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceEnrollmentId != null)

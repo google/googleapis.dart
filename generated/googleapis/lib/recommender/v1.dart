@@ -2038,17 +2038,21 @@ class GoogleCloudRecommenderV1CostProjection {
   /// Duration for which this cost applies.
   core.String? duration;
 
-  GoogleCloudRecommenderV1CostProjection();
+  GoogleCloudRecommenderV1CostProjection({
+    this.cost,
+    this.duration,
+  });
 
-  GoogleCloudRecommenderV1CostProjection.fromJson(core.Map _json) {
-    if (_json.containsKey('cost')) {
-      cost = GoogleTypeMoney.fromJson(
-          _json['cost'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('duration')) {
-      duration = _json['duration'] as core.String;
-    }
-  }
+  GoogleCloudRecommenderV1CostProjection.fromJson(core.Map _json)
+      : this(
+          cost: _json.containsKey('cost')
+              ? GoogleTypeMoney.fromJson(
+                  _json['cost'] as core.Map<core.String, core.dynamic>)
+              : null,
+          duration: _json.containsKey('duration')
+              ? _json['duration'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cost != null) 'cost': cost!.toJson(),
@@ -2076,21 +2080,28 @@ class GoogleCloudRecommenderV1Impact {
   /// Use with CategoryType.SECURITY
   GoogleCloudRecommenderV1SecurityProjection? securityProjection;
 
-  GoogleCloudRecommenderV1Impact();
+  GoogleCloudRecommenderV1Impact({
+    this.category,
+    this.costProjection,
+    this.securityProjection,
+  });
 
-  GoogleCloudRecommenderV1Impact.fromJson(core.Map _json) {
-    if (_json.containsKey('category')) {
-      category = _json['category'] as core.String;
-    }
-    if (_json.containsKey('costProjection')) {
-      costProjection = GoogleCloudRecommenderV1CostProjection.fromJson(
-          _json['costProjection'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('securityProjection')) {
-      securityProjection = GoogleCloudRecommenderV1SecurityProjection.fromJson(
-          _json['securityProjection'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudRecommenderV1Impact.fromJson(core.Map _json)
+      : this(
+          category: _json.containsKey('category')
+              ? _json['category'] as core.String
+              : null,
+          costProjection: _json.containsKey('costProjection')
+              ? GoogleCloudRecommenderV1CostProjection.fromJson(
+                  _json['costProjection']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          securityProjection: _json.containsKey('securityProjection')
+              ? GoogleCloudRecommenderV1SecurityProjection.fromJson(
+                  _json['securityProjection']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (category != null) 'category': category!,
@@ -2167,59 +2178,71 @@ class GoogleCloudRecommenderV1Insight {
   /// Fully qualified resource names that this insight is targeting.
   core.List<core.String>? targetResources;
 
-  GoogleCloudRecommenderV1Insight();
+  GoogleCloudRecommenderV1Insight({
+    this.associatedRecommendations,
+    this.category,
+    this.content,
+    this.description,
+    this.etag,
+    this.insightSubtype,
+    this.lastRefreshTime,
+    this.name,
+    this.observationPeriod,
+    this.severity,
+    this.stateInfo,
+    this.targetResources,
+  });
 
-  GoogleCloudRecommenderV1Insight.fromJson(core.Map _json) {
-    if (_json.containsKey('associatedRecommendations')) {
-      associatedRecommendations = (_json['associatedRecommendations']
-              as core.List)
-          .map<GoogleCloudRecommenderV1InsightRecommendationReference>(
-              (value) => GoogleCloudRecommenderV1InsightRecommendationReference
-                  .fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('category')) {
-      category = _json['category'] as core.String;
-    }
-    if (_json.containsKey('content')) {
-      content = (_json['content'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('insightSubtype')) {
-      insightSubtype = _json['insightSubtype'] as core.String;
-    }
-    if (_json.containsKey('lastRefreshTime')) {
-      lastRefreshTime = _json['lastRefreshTime'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('observationPeriod')) {
-      observationPeriod = _json['observationPeriod'] as core.String;
-    }
-    if (_json.containsKey('severity')) {
-      severity = _json['severity'] as core.String;
-    }
-    if (_json.containsKey('stateInfo')) {
-      stateInfo = GoogleCloudRecommenderV1InsightStateInfo.fromJson(
-          _json['stateInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('targetResources')) {
-      targetResources = (_json['targetResources'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  GoogleCloudRecommenderV1Insight.fromJson(core.Map _json)
+      : this(
+          associatedRecommendations: _json
+                  .containsKey('associatedRecommendations')
+              ? (_json['associatedRecommendations'] as core.List)
+                  .map<GoogleCloudRecommenderV1InsightRecommendationReference>(
+                      (value) =>
+                          GoogleCloudRecommenderV1InsightRecommendationReference
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          category: _json.containsKey('category')
+              ? _json['category'] as core.String
+              : null,
+          content: _json.containsKey('content')
+              ? (_json['content'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          insightSubtype: _json.containsKey('insightSubtype')
+              ? _json['insightSubtype'] as core.String
+              : null,
+          lastRefreshTime: _json.containsKey('lastRefreshTime')
+              ? _json['lastRefreshTime'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          observationPeriod: _json.containsKey('observationPeriod')
+              ? _json['observationPeriod'] as core.String
+              : null,
+          severity: _json.containsKey('severity')
+              ? _json['severity'] as core.String
+              : null,
+          stateInfo: _json.containsKey('stateInfo')
+              ? GoogleCloudRecommenderV1InsightStateInfo.fromJson(
+                  _json['stateInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          targetResources: _json.containsKey('targetResources')
+              ? (_json['targetResources'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (associatedRecommendations != null)
@@ -2246,14 +2269,17 @@ class GoogleCloudRecommenderV1InsightRecommendationReference {
   /// projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/recommenders/\[RECOMMENDER_ID\]/recommendations/\[RECOMMENDATION_ID\]
   core.String? recommendation;
 
-  GoogleCloudRecommenderV1InsightRecommendationReference();
+  GoogleCloudRecommenderV1InsightRecommendationReference({
+    this.recommendation,
+  });
 
   GoogleCloudRecommenderV1InsightRecommendationReference.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('recommendation')) {
-      recommendation = _json['recommendation'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          recommendation: _json.containsKey('recommendation')
+              ? _json['recommendation'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (recommendation != null) 'recommendation': recommendation!,
@@ -2279,22 +2305,25 @@ class GoogleCloudRecommenderV1InsightStateInfo {
   /// A map of metadata for the state, provided by user or automations systems.
   core.Map<core.String, core.String>? stateMetadata;
 
-  GoogleCloudRecommenderV1InsightStateInfo();
+  GoogleCloudRecommenderV1InsightStateInfo({
+    this.state,
+    this.stateMetadata,
+  });
 
-  GoogleCloudRecommenderV1InsightStateInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('stateMetadata')) {
-      stateMetadata =
-          (_json['stateMetadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-  }
+  GoogleCloudRecommenderV1InsightStateInfo.fromJson(core.Map _json)
+      : this(
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          stateMetadata: _json.containsKey('stateMetadata')
+              ? (_json['stateMetadata'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (state != null) 'state': state!,
@@ -2312,20 +2341,24 @@ class GoogleCloudRecommenderV1ListInsightsResponse {
   /// This field is empty if there are no additional results.
   core.String? nextPageToken;
 
-  GoogleCloudRecommenderV1ListInsightsResponse();
+  GoogleCloudRecommenderV1ListInsightsResponse({
+    this.insights,
+    this.nextPageToken,
+  });
 
-  GoogleCloudRecommenderV1ListInsightsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('insights')) {
-      insights = (_json['insights'] as core.List)
-          .map<GoogleCloudRecommenderV1Insight>((value) =>
-              GoogleCloudRecommenderV1Insight.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  GoogleCloudRecommenderV1ListInsightsResponse.fromJson(core.Map _json)
+      : this(
+          insights: _json.containsKey('insights')
+              ? (_json['insights'] as core.List)
+                  .map<GoogleCloudRecommenderV1Insight>((value) =>
+                      GoogleCloudRecommenderV1Insight.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (insights != null)
@@ -2344,20 +2377,24 @@ class GoogleCloudRecommenderV1ListRecommendationsResponse {
   /// The set of recommendations for the `parent` resource.
   core.List<GoogleCloudRecommenderV1Recommendation>? recommendations;
 
-  GoogleCloudRecommenderV1ListRecommendationsResponse();
+  GoogleCloudRecommenderV1ListRecommendationsResponse({
+    this.nextPageToken,
+    this.recommendations,
+  });
 
-  GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('recommendations')) {
-      recommendations = (_json['recommendations'] as core.List)
-          .map<GoogleCloudRecommenderV1Recommendation>((value) =>
-              GoogleCloudRecommenderV1Recommendation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          recommendations: _json.containsKey('recommendations')
+              ? (_json['recommendations'] as core.List)
+                  .map<GoogleCloudRecommenderV1Recommendation>((value) =>
+                      GoogleCloudRecommenderV1Recommendation.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -2383,22 +2420,24 @@ class GoogleCloudRecommenderV1MarkInsightAcceptedRequest {
   /// Optional.
   core.Map<core.String, core.String>? stateMetadata;
 
-  GoogleCloudRecommenderV1MarkInsightAcceptedRequest();
+  GoogleCloudRecommenderV1MarkInsightAcceptedRequest({
+    this.etag,
+    this.stateMetadata,
+  });
 
-  GoogleCloudRecommenderV1MarkInsightAcceptedRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('stateMetadata')) {
-      stateMetadata =
-          (_json['stateMetadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-  }
+  GoogleCloudRecommenderV1MarkInsightAcceptedRequest.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          stateMetadata: _json.containsKey('stateMetadata')
+              ? (_json['stateMetadata'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -2422,23 +2461,25 @@ class GoogleCloudRecommenderV1MarkRecommendationClaimedRequest {
   /// /^\[a-zA-Z0-9_./-\]{0,255}$/.
   core.Map<core.String, core.String>? stateMetadata;
 
-  GoogleCloudRecommenderV1MarkRecommendationClaimedRequest();
+  GoogleCloudRecommenderV1MarkRecommendationClaimedRequest({
+    this.etag,
+    this.stateMetadata,
+  });
 
   GoogleCloudRecommenderV1MarkRecommendationClaimedRequest.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('stateMetadata')) {
-      stateMetadata =
-          (_json['stateMetadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-  }
+      core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          stateMetadata: _json.containsKey('stateMetadata')
+              ? (_json['stateMetadata'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -2462,23 +2503,25 @@ class GoogleCloudRecommenderV1MarkRecommendationFailedRequest {
   /// /^\[a-zA-Z0-9_./-\]{0,255}$/.
   core.Map<core.String, core.String>? stateMetadata;
 
-  GoogleCloudRecommenderV1MarkRecommendationFailedRequest();
+  GoogleCloudRecommenderV1MarkRecommendationFailedRequest({
+    this.etag,
+    this.stateMetadata,
+  });
 
   GoogleCloudRecommenderV1MarkRecommendationFailedRequest.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('stateMetadata')) {
-      stateMetadata =
-          (_json['stateMetadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-  }
+      core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          stateMetadata: _json.containsKey('stateMetadata')
+              ? (_json['stateMetadata'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -2502,23 +2545,25 @@ class GoogleCloudRecommenderV1MarkRecommendationSucceededRequest {
   /// /^\[a-zA-Z0-9_./-\]{0,255}$/.
   core.Map<core.String, core.String>? stateMetadata;
 
-  GoogleCloudRecommenderV1MarkRecommendationSucceededRequest();
+  GoogleCloudRecommenderV1MarkRecommendationSucceededRequest({
+    this.etag,
+    this.stateMetadata,
+  });
 
   GoogleCloudRecommenderV1MarkRecommendationSucceededRequest.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('stateMetadata')) {
-      stateMetadata =
-          (_json['stateMetadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-  }
+      core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          stateMetadata: _json.containsKey('stateMetadata')
+              ? (_json['stateMetadata'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -2613,55 +2658,64 @@ class GoogleCloudRecommenderV1Operation {
   /// Either this or `value` will be set for 'test' operation.
   GoogleCloudRecommenderV1ValueMatcher? valueMatcher;
 
-  GoogleCloudRecommenderV1Operation();
+  GoogleCloudRecommenderV1Operation({
+    this.action,
+    this.path,
+    this.pathFilters,
+    this.pathValueMatchers,
+    this.resource,
+    this.resourceType,
+    this.sourcePath,
+    this.sourceResource,
+    this.value,
+    this.valueMatcher,
+  });
 
-  GoogleCloudRecommenderV1Operation.fromJson(core.Map _json) {
-    if (_json.containsKey('action')) {
-      action = _json['action'] as core.String;
-    }
-    if (_json.containsKey('path')) {
-      path = _json['path'] as core.String;
-    }
-    if (_json.containsKey('pathFilters')) {
-      pathFilters =
-          (_json['pathFilters'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('pathValueMatchers')) {
-      pathValueMatchers =
-          (_json['pathValueMatchers'] as core.Map<core.String, core.dynamic>)
-              .map(
-        (key, item) => core.MapEntry(
-          key,
-          GoogleCloudRecommenderV1ValueMatcher.fromJson(
-              item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('resource')) {
-      resource = _json['resource'] as core.String;
-    }
-    if (_json.containsKey('resourceType')) {
-      resourceType = _json['resourceType'] as core.String;
-    }
-    if (_json.containsKey('sourcePath')) {
-      sourcePath = _json['sourcePath'] as core.String;
-    }
-    if (_json.containsKey('sourceResource')) {
-      sourceResource = _json['sourceResource'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.Object;
-    }
-    if (_json.containsKey('valueMatcher')) {
-      valueMatcher = GoogleCloudRecommenderV1ValueMatcher.fromJson(
-          _json['valueMatcher'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudRecommenderV1Operation.fromJson(core.Map _json)
+      : this(
+          action: _json.containsKey('action')
+              ? _json['action'] as core.String
+              : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+          pathFilters: _json.containsKey('pathFilters')
+              ? (_json['pathFilters'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          pathValueMatchers: _json.containsKey('pathValueMatchers')
+              ? (_json['pathValueMatchers']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    GoogleCloudRecommenderV1ValueMatcher.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          resource: _json.containsKey('resource')
+              ? _json['resource'] as core.String
+              : null,
+          resourceType: _json.containsKey('resourceType')
+              ? _json['resourceType'] as core.String
+              : null,
+          sourcePath: _json.containsKey('sourcePath')
+              ? _json['sourcePath'] as core.String
+              : null,
+          sourceResource: _json.containsKey('sourceResource')
+              ? _json['sourceResource'] as core.String
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.Object : null,
+          valueMatcher: _json.containsKey('valueMatcher')
+              ? GoogleCloudRecommenderV1ValueMatcher.fromJson(
+                  _json['valueMatcher'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
@@ -2686,17 +2740,20 @@ class GoogleCloudRecommenderV1OperationGroup {
   /// Loosely based on RFC6902 and should be performed in the order they appear.
   core.List<GoogleCloudRecommenderV1Operation>? operations;
 
-  GoogleCloudRecommenderV1OperationGroup();
+  GoogleCloudRecommenderV1OperationGroup({
+    this.operations,
+  });
 
-  GoogleCloudRecommenderV1OperationGroup.fromJson(core.Map _json) {
-    if (_json.containsKey('operations')) {
-      operations = (_json['operations'] as core.List)
-          .map<GoogleCloudRecommenderV1Operation>((value) =>
-              GoogleCloudRecommenderV1Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudRecommenderV1OperationGroup.fromJson(core.Map _json)
+      : this(
+          operations: _json.containsKey('operations')
+              ? (_json['operations'] as core.List)
+                  .map<GoogleCloudRecommenderV1Operation>((value) =>
+                      GoogleCloudRecommenderV1Operation.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (operations != null)
@@ -2768,54 +2825,65 @@ class GoogleCloudRecommenderV1Recommendation {
   /// Contains state and metadata.
   GoogleCloudRecommenderV1RecommendationStateInfo? stateInfo;
 
-  GoogleCloudRecommenderV1Recommendation();
+  GoogleCloudRecommenderV1Recommendation({
+    this.additionalImpact,
+    this.associatedInsights,
+    this.content,
+    this.description,
+    this.etag,
+    this.lastRefreshTime,
+    this.name,
+    this.primaryImpact,
+    this.priority,
+    this.recommenderSubtype,
+    this.stateInfo,
+  });
 
-  GoogleCloudRecommenderV1Recommendation.fromJson(core.Map _json) {
-    if (_json.containsKey('additionalImpact')) {
-      additionalImpact = (_json['additionalImpact'] as core.List)
-          .map<GoogleCloudRecommenderV1Impact>((value) =>
-              GoogleCloudRecommenderV1Impact.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('associatedInsights')) {
-      associatedInsights = (_json['associatedInsights'] as core.List)
-          .map<GoogleCloudRecommenderV1RecommendationInsightReference>(
-              (value) => GoogleCloudRecommenderV1RecommendationInsightReference
-                  .fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('content')) {
-      content = GoogleCloudRecommenderV1RecommendationContent.fromJson(
-          _json['content'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('lastRefreshTime')) {
-      lastRefreshTime = _json['lastRefreshTime'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('primaryImpact')) {
-      primaryImpact = GoogleCloudRecommenderV1Impact.fromJson(
-          _json['primaryImpact'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('priority')) {
-      priority = _json['priority'] as core.String;
-    }
-    if (_json.containsKey('recommenderSubtype')) {
-      recommenderSubtype = _json['recommenderSubtype'] as core.String;
-    }
-    if (_json.containsKey('stateInfo')) {
-      stateInfo = GoogleCloudRecommenderV1RecommendationStateInfo.fromJson(
-          _json['stateInfo'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudRecommenderV1Recommendation.fromJson(core.Map _json)
+      : this(
+          additionalImpact: _json.containsKey('additionalImpact')
+              ? (_json['additionalImpact'] as core.List)
+                  .map<GoogleCloudRecommenderV1Impact>((value) =>
+                      GoogleCloudRecommenderV1Impact.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          associatedInsights: _json.containsKey('associatedInsights')
+              ? (_json['associatedInsights'] as core.List)
+                  .map<GoogleCloudRecommenderV1RecommendationInsightReference>(
+                      (value) =>
+                          GoogleCloudRecommenderV1RecommendationInsightReference
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          content: _json.containsKey('content')
+              ? GoogleCloudRecommenderV1RecommendationContent.fromJson(
+                  _json['content'] as core.Map<core.String, core.dynamic>)
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          lastRefreshTime: _json.containsKey('lastRefreshTime')
+              ? _json['lastRefreshTime'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          primaryImpact: _json.containsKey('primaryImpact')
+              ? GoogleCloudRecommenderV1Impact.fromJson(
+                  _json['primaryImpact'] as core.Map<core.String, core.dynamic>)
+              : null,
+          priority: _json.containsKey('priority')
+              ? _json['priority'] as core.String
+              : null,
+          recommenderSubtype: _json.containsKey('recommenderSubtype')
+              ? _json['recommenderSubtype'] as core.String
+              : null,
+          stateInfo: _json.containsKey('stateInfo')
+              ? GoogleCloudRecommenderV1RecommendationStateInfo.fromJson(
+                  _json['stateInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (additionalImpact != null)
@@ -2844,17 +2912,20 @@ class GoogleCloudRecommenderV1RecommendationContent {
   /// atomically and in an order.
   core.List<GoogleCloudRecommenderV1OperationGroup>? operationGroups;
 
-  GoogleCloudRecommenderV1RecommendationContent();
+  GoogleCloudRecommenderV1RecommendationContent({
+    this.operationGroups,
+  });
 
-  GoogleCloudRecommenderV1RecommendationContent.fromJson(core.Map _json) {
-    if (_json.containsKey('operationGroups')) {
-      operationGroups = (_json['operationGroups'] as core.List)
-          .map<GoogleCloudRecommenderV1OperationGroup>((value) =>
-              GoogleCloudRecommenderV1OperationGroup.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudRecommenderV1RecommendationContent.fromJson(core.Map _json)
+      : this(
+          operationGroups: _json.containsKey('operationGroups')
+              ? (_json['operationGroups'] as core.List)
+                  .map<GoogleCloudRecommenderV1OperationGroup>((value) =>
+                      GoogleCloudRecommenderV1OperationGroup.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (operationGroups != null)
@@ -2869,14 +2940,17 @@ class GoogleCloudRecommenderV1RecommendationInsightReference {
   /// projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/insightTypes/\[INSIGHT_TYPE_ID\]/insights/\[INSIGHT_ID\]
   core.String? insight;
 
-  GoogleCloudRecommenderV1RecommendationInsightReference();
+  GoogleCloudRecommenderV1RecommendationInsightReference({
+    this.insight,
+  });
 
   GoogleCloudRecommenderV1RecommendationInsightReference.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('insight')) {
-      insight = _json['insight'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          insight: _json.containsKey('insight')
+              ? _json['insight'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (insight != null) 'insight': insight!,
@@ -2910,22 +2984,25 @@ class GoogleCloudRecommenderV1RecommendationStateInfo {
   /// A map of metadata for the state, provided by user or automations systems.
   core.Map<core.String, core.String>? stateMetadata;
 
-  GoogleCloudRecommenderV1RecommendationStateInfo();
+  GoogleCloudRecommenderV1RecommendationStateInfo({
+    this.state,
+    this.stateMetadata,
+  });
 
-  GoogleCloudRecommenderV1RecommendationStateInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('stateMetadata')) {
-      stateMetadata =
-          (_json['stateMetadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-  }
+  GoogleCloudRecommenderV1RecommendationStateInfo.fromJson(core.Map _json)
+      : this(
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          stateMetadata: _json.containsKey('stateMetadata')
+              ? (_json['stateMetadata'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (state != null) 'state': state!,
@@ -2941,18 +3018,21 @@ class GoogleCloudRecommenderV1SecurityProjection {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object>? details;
 
-  GoogleCloudRecommenderV1SecurityProjection();
+  GoogleCloudRecommenderV1SecurityProjection({
+    this.details,
+  });
 
-  GoogleCloudRecommenderV1SecurityProjection.fromJson(core.Map _json) {
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-  }
+  GoogleCloudRecommenderV1SecurityProjection.fromJson(core.Map _json)
+      : this(
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (details != null) 'details': details!,
@@ -2968,13 +3048,16 @@ class GoogleCloudRecommenderV1ValueMatcher {
   /// RE2::FullMatch
   core.String? matchesPattern;
 
-  GoogleCloudRecommenderV1ValueMatcher();
+  GoogleCloudRecommenderV1ValueMatcher({
+    this.matchesPattern,
+  });
 
-  GoogleCloudRecommenderV1ValueMatcher.fromJson(core.Map _json) {
-    if (_json.containsKey('matchesPattern')) {
-      matchesPattern = _json['matchesPattern'] as core.String;
-    }
-  }
+  GoogleCloudRecommenderV1ValueMatcher.fromJson(core.Map _json)
+      : this(
+          matchesPattern: _json.containsKey('matchesPattern')
+              ? _json['matchesPattern'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (matchesPattern != null) 'matchesPattern': matchesPattern!,
@@ -3000,19 +3083,21 @@ class GoogleTypeMoney {
   /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
   core.String? units;
 
-  GoogleTypeMoney();
+  GoogleTypeMoney({
+    this.currencyCode,
+    this.nanos,
+    this.units,
+  });
 
-  GoogleTypeMoney.fromJson(core.Map _json) {
-    if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'] as core.String;
-    }
-    if (_json.containsKey('nanos')) {
-      nanos = _json['nanos'] as core.int;
-    }
-    if (_json.containsKey('units')) {
-      units = _json['units'] as core.String;
-    }
-  }
+  GoogleTypeMoney.fromJson(core.Map _json)
+      : this(
+          currencyCode: _json.containsKey('currencyCode')
+              ? _json['currencyCode'] as core.String
+              : null,
+          nanos: _json.containsKey('nanos') ? _json['nanos'] as core.int : null,
+          units:
+              _json.containsKey('units') ? _json['units'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (currencyCode != null) 'currencyCode': currencyCode!,

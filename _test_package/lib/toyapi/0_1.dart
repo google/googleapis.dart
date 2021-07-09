@@ -1399,13 +1399,16 @@ class MapOfint extends collection.MapBase<core.String, core.int> {
 class NestedResponse {
   core.String? nestedResult;
 
-  NestedResponse();
+  NestedResponse({
+    this.nestedResult,
+  });
 
-  NestedResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nestedResult')) {
-      nestedResult = _json['nestedResult'] as core.String;
-    }
-  }
+  NestedResponse.fromJson(core.Map _json)
+      : this(
+          nestedResult: _json.containsKey('nestedResult')
+              ? _json['nestedResult'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nestedResult != null) 'nestedResult': nestedResult!,
@@ -1415,13 +1418,14 @@ class NestedResponse {
 class ToyAgeRequest {
   core.int? age;
 
-  ToyAgeRequest();
+  ToyAgeRequest({
+    this.age,
+  });
 
-  ToyAgeRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('age')) {
-      age = _json['age'] as core.int;
-    }
-  }
+  ToyAgeRequest.fromJson(core.Map _json)
+      : this(
+          age: _json.containsKey('age') ? _json['age'] as core.int : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (age != null) 'age': age!,
@@ -1432,22 +1436,26 @@ class ToyMapResponse {
   core.Map<core.String, NestedResponse>? mapResult;
   core.String? result;
 
-  ToyMapResponse();
+  ToyMapResponse({
+    this.mapResult,
+    this.result,
+  });
 
-  ToyMapResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('mapResult')) {
-      mapResult =
-          (_json['mapResult'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          NestedResponse.fromJson(item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('result')) {
-      result = _json['result'] as core.String;
-    }
-  }
+  ToyMapResponse.fromJson(core.Map _json)
+      : this(
+          mapResult: _json.containsKey('mapResult')
+              ? (_json['mapResult'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    NestedResponse.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          result: _json.containsKey('result')
+              ? _json['result'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mapResult != null)
@@ -1461,16 +1469,16 @@ class ToyRequest {
   core.int? age;
   core.String? name;
 
-  ToyRequest();
+  ToyRequest({
+    this.age,
+    this.name,
+  });
 
-  ToyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('age')) {
-      age = _json['age'] as core.int;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  ToyRequest.fromJson(core.Map _json)
+      : this(
+          age: _json.containsKey('age') ? _json['age'] as core.int : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (age != null) 'age': age!,
@@ -1481,13 +1489,16 @@ class ToyRequest {
 class ToyResourceResponse {
   core.String? result;
 
-  ToyResourceResponse();
+  ToyResourceResponse({
+    this.result,
+  });
 
-  ToyResourceResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('result')) {
-      result = _json['result'] as core.String;
-    }
-  }
+  ToyResourceResponse.fromJson(core.Map _json)
+      : this(
+          result: _json.containsKey('result')
+              ? _json['result'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (result != null) 'result': result!,
@@ -1497,13 +1508,16 @@ class ToyResourceResponse {
 class ToyResponse {
   core.String? result;
 
-  ToyResponse();
+  ToyResponse({
+    this.result,
+  });
 
-  ToyResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('result')) {
-      result = _json['result'] as core.String;
-    }
-  }
+  ToyResponse.fromJson(core.Map _json)
+      : this(
+          result: _json.containsKey('result')
+              ? _json['result'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (result != null) 'result': result!,

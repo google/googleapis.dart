@@ -508,13 +508,14 @@ class AddPublicKeyRequest {
   /// <format> <content>, where <content> part is encoded with Base64.
   core.String? key;
 
-  AddPublicKeyRequest();
+  AddPublicKeyRequest({
+    this.key,
+  });
 
-  AddPublicKeyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('key')) {
-      key = _json['key'] as core.String;
-    }
-  }
+  AddPublicKeyRequest.fromJson(core.Map _json)
+      : this(
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
@@ -526,13 +527,14 @@ class AddPublicKeyResponse {
   /// Key that was added to the environment.
   core.String? key;
 
-  AddPublicKeyResponse();
+  AddPublicKeyResponse({
+    this.key,
+  });
 
-  AddPublicKeyResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('key')) {
-      key = _json['key'] as core.String;
-    }
-  }
+  AddPublicKeyResponse.fromJson(core.Map _json)
+      : this(
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
@@ -565,19 +567,24 @@ class AuthorizeEnvironmentRequest {
   /// The OAuth ID token that should be sent to the environment.
   core.String? idToken;
 
-  AuthorizeEnvironmentRequest();
+  AuthorizeEnvironmentRequest({
+    this.accessToken,
+    this.expireTime,
+    this.idToken,
+  });
 
-  AuthorizeEnvironmentRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('accessToken')) {
-      accessToken = _json['accessToken'] as core.String;
-    }
-    if (_json.containsKey('expireTime')) {
-      expireTime = _json['expireTime'] as core.String;
-    }
-    if (_json.containsKey('idToken')) {
-      idToken = _json['idToken'] as core.String;
-    }
-  }
+  AuthorizeEnvironmentRequest.fromJson(core.Map _json)
+      : this(
+          accessToken: _json.containsKey('accessToken')
+              ? _json['accessToken'] as core.String
+              : null,
+          expireTime: _json.containsKey('expireTime')
+              ? _json['expireTime'] as core.String
+              : null,
+          idToken: _json.containsKey('idToken')
+              ? _json['idToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessToken != null) 'accessToken': accessToken!,
@@ -725,39 +732,45 @@ class Environment {
   /// Output only.
   core.String? webHost;
 
-  Environment();
+  Environment({
+    this.dockerImage,
+    this.id,
+    this.name,
+    this.publicKeys,
+    this.sshHost,
+    this.sshPort,
+    this.sshUsername,
+    this.state,
+    this.webHost,
+  });
 
-  Environment.fromJson(core.Map _json) {
-    if (_json.containsKey('dockerImage')) {
-      dockerImage = _json['dockerImage'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('publicKeys')) {
-      publicKeys = (_json['publicKeys'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('sshHost')) {
-      sshHost = _json['sshHost'] as core.String;
-    }
-    if (_json.containsKey('sshPort')) {
-      sshPort = _json['sshPort'] as core.int;
-    }
-    if (_json.containsKey('sshUsername')) {
-      sshUsername = _json['sshUsername'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('webHost')) {
-      webHost = _json['webHost'] as core.String;
-    }
-  }
+  Environment.fromJson(core.Map _json)
+      : this(
+          dockerImage: _json.containsKey('dockerImage')
+              ? _json['dockerImage'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          publicKeys: _json.containsKey('publicKeys')
+              ? (_json['publicKeys'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          sshHost: _json.containsKey('sshHost')
+              ? _json['sshHost'] as core.String
+              : null,
+          sshPort: _json.containsKey('sshPort')
+              ? _json['sshPort'] as core.int
+              : null,
+          sshUsername: _json.containsKey('sshUsername')
+              ? _json['sshUsername'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          webHost: _json.containsKey('webHost')
+              ? _json['webHost'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dockerImage != null) 'dockerImage': dockerImage!,
@@ -780,19 +793,23 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse();
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
 
-  ListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('operations')) {
-      operations = (_json['operations'] as core.List)
-          .map<Operation>((value) =>
-              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListOperationsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          operations: _json.containsKey('operations')
+              ? (_json['operations'] as core.List)
+                  .map<Operation>((value) => Operation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -844,36 +861,39 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object>? response;
 
-  Operation();
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
-  Operation.fromJson(core.Map _json) {
-    if (_json.containsKey('done')) {
-      done = _json['done'] as core.bool;
-    }
-    if (_json.containsKey('error')) {
-      error = Status.fromJson(
-          _json['error'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('response')) {
-      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-  }
+  Operation.fromJson(core.Map _json)
+      : this(
+          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
+          error: _json.containsKey('error')
+              ? Status.fromJson(
+                  _json['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          response: _json.containsKey('response')
+              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
@@ -901,13 +921,14 @@ class RemovePublicKeyRequest {
   /// Key that should be removed from the environment.
   core.String? key;
 
-  RemovePublicKeyRequest();
+  RemovePublicKeyRequest({
+    this.key,
+  });
 
-  RemovePublicKeyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('key')) {
-      key = _json['key'] as core.String;
-    }
-  }
+  RemovePublicKeyRequest.fromJson(core.Map _json)
+      : this(
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
@@ -947,13 +968,15 @@ class StartEnvironmentMetadata {
   /// failure.
   core.String? state;
 
-  StartEnvironmentMetadata();
+  StartEnvironmentMetadata({
+    this.state,
+  });
 
-  StartEnvironmentMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-  }
+  StartEnvironmentMetadata.fromJson(core.Map _json)
+      : this(
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (state != null) 'state': state!,
@@ -973,18 +996,22 @@ class StartEnvironmentRequest {
   /// Public keys that should be added to the environment before it is started.
   core.List<core.String>? publicKeys;
 
-  StartEnvironmentRequest();
+  StartEnvironmentRequest({
+    this.accessToken,
+    this.publicKeys,
+  });
 
-  StartEnvironmentRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('accessToken')) {
-      accessToken = _json['accessToken'] as core.String;
-    }
-    if (_json.containsKey('publicKeys')) {
-      publicKeys = (_json['publicKeys'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  StartEnvironmentRequest.fromJson(core.Map _json)
+      : this(
+          accessToken: _json.containsKey('accessToken')
+              ? _json['accessToken'] as core.String
+              : null,
+          publicKeys: _json.containsKey('publicKeys')
+              ? (_json['publicKeys'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessToken != null) 'accessToken': accessToken!,
@@ -998,14 +1025,17 @@ class StartEnvironmentResponse {
   /// Environment that was started.
   Environment? environment;
 
-  StartEnvironmentResponse();
+  StartEnvironmentResponse({
+    this.environment,
+  });
 
-  StartEnvironmentResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('environment')) {
-      environment = Environment.fromJson(
-          _json['environment'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  StartEnvironmentResponse.fromJson(core.Map _json)
+      : this(
+          environment: _json.containsKey('environment')
+              ? Environment.fromJson(
+                  _json['environment'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (environment != null) 'environment': environment!.toJson(),
@@ -1037,27 +1067,30 @@ class Status {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  Status();
+  Status({
+    this.code,
+    this.details,
+    this.message,
+  });
 
-  Status.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.int;
-    }
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  Status.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,

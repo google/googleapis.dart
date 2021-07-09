@@ -209,31 +209,38 @@ class Tokeninfo {
   /// Present only if the email scope is present in the request.
   core.bool? verifiedEmail;
 
-  Tokeninfo();
+  Tokeninfo({
+    this.audience,
+    this.email,
+    this.expiresIn,
+    this.issuedTo,
+    this.scope,
+    this.userId,
+    this.verifiedEmail,
+  });
 
-  Tokeninfo.fromJson(core.Map _json) {
-    if (_json.containsKey('audience')) {
-      audience = _json['audience'] as core.String;
-    }
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('expires_in')) {
-      expiresIn = _json['expires_in'] as core.int;
-    }
-    if (_json.containsKey('issued_to')) {
-      issuedTo = _json['issued_to'] as core.String;
-    }
-    if (_json.containsKey('scope')) {
-      scope = _json['scope'] as core.String;
-    }
-    if (_json.containsKey('user_id')) {
-      userId = _json['user_id'] as core.String;
-    }
-    if (_json.containsKey('verified_email')) {
-      verifiedEmail = _json['verified_email'] as core.bool;
-    }
-  }
+  Tokeninfo.fromJson(core.Map _json)
+      : this(
+          audience: _json.containsKey('audience')
+              ? _json['audience'] as core.String
+              : null,
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          expiresIn: _json.containsKey('expires_in')
+              ? _json['expires_in'] as core.int
+              : null,
+          issuedTo: _json.containsKey('issued_to')
+              ? _json['issued_to'] as core.String
+              : null,
+          scope:
+              _json.containsKey('scope') ? _json['scope'] as core.String : null,
+          userId: _json.containsKey('user_id')
+              ? _json['user_id'] as core.String
+              : null,
+          verifiedEmail: _json.containsKey('verified_email')
+              ? _json['verified_email'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (audience != null) 'audience': audience!,
@@ -282,43 +289,47 @@ class Userinfo {
   /// Always verified because we only return the user's primary email address.
   core.bool? verifiedEmail;
 
-  Userinfo();
+  Userinfo({
+    this.email,
+    this.familyName,
+    this.gender,
+    this.givenName,
+    this.hd,
+    this.id,
+    this.link,
+    this.locale,
+    this.name,
+    this.picture,
+    this.verifiedEmail,
+  });
 
-  Userinfo.fromJson(core.Map _json) {
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('family_name')) {
-      familyName = _json['family_name'] as core.String;
-    }
-    if (_json.containsKey('gender')) {
-      gender = _json['gender'] as core.String;
-    }
-    if (_json.containsKey('given_name')) {
-      givenName = _json['given_name'] as core.String;
-    }
-    if (_json.containsKey('hd')) {
-      hd = _json['hd'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('link')) {
-      link = _json['link'] as core.String;
-    }
-    if (_json.containsKey('locale')) {
-      locale = _json['locale'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('picture')) {
-      picture = _json['picture'] as core.String;
-    }
-    if (_json.containsKey('verified_email')) {
-      verifiedEmail = _json['verified_email'] as core.bool;
-    }
-  }
+  Userinfo.fromJson(core.Map _json)
+      : this(
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          familyName: _json.containsKey('family_name')
+              ? _json['family_name'] as core.String
+              : null,
+          gender: _json.containsKey('gender')
+              ? _json['gender'] as core.String
+              : null,
+          givenName: _json.containsKey('given_name')
+              ? _json['given_name'] as core.String
+              : null,
+          hd: _json.containsKey('hd') ? _json['hd'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          link: _json.containsKey('link') ? _json['link'] as core.String : null,
+          locale: _json.containsKey('locale')
+              ? _json['locale'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          picture: _json.containsKey('picture')
+              ? _json['picture'] as core.String
+              : null,
+          verifiedEmail: _json.containsKey('verified_email')
+              ? _json['verified_email'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,

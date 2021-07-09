@@ -935,25 +935,27 @@ class Activities {
   /// string.
   core.String? nextPageToken;
 
-  Activities();
+  Activities({
+    this.etag,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+  });
 
-  Activities.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<Activity>((value) =>
-              Activity.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  Activities.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<Activity>((value) => Activity.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -985,22 +987,25 @@ class ActivityActor {
   /// May be absent if the actor is not a Google Workspace user.
   core.String? profileId;
 
-  ActivityActor();
+  ActivityActor({
+    this.callerType,
+    this.email,
+    this.key,
+    this.profileId,
+  });
 
-  ActivityActor.fromJson(core.Map _json) {
-    if (_json.containsKey('callerType')) {
-      callerType = _json['callerType'] as core.String;
-    }
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('key')) {
-      key = _json['key'] as core.String;
-    }
-    if (_json.containsKey('profileId')) {
-      profileId = _json['profileId'] as core.String;
-    }
-  }
+  ActivityActor.fromJson(core.Map _json)
+      : this(
+          callerType: _json.containsKey('callerType')
+              ? _json['callerType'] as core.String
+              : null,
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          profileId: _json.containsKey('profileId')
+              ? _json['profileId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (callerType != null) 'callerType': callerType!,
@@ -1019,16 +1024,19 @@ class ActivityEventsParametersMessageValue {
   /// Parameter values
   core.List<NestedParameter>? parameter;
 
-  ActivityEventsParametersMessageValue();
+  ActivityEventsParametersMessageValue({
+    this.parameter,
+  });
 
-  ActivityEventsParametersMessageValue.fromJson(core.Map _json) {
-    if (_json.containsKey('parameter')) {
-      parameter = (_json['parameter'] as core.List)
-          .map<NestedParameter>((value) => NestedParameter.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ActivityEventsParametersMessageValue.fromJson(core.Map _json)
+      : this(
+          parameter: _json.containsKey('parameter')
+              ? (_json['parameter'] as core.List)
+                  .map<NestedParameter>((value) => NestedParameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (parameter != null)
@@ -1040,16 +1048,19 @@ class ActivityEventsParametersMultiMessageValue {
   /// Parameter values
   core.List<NestedParameter>? parameter;
 
-  ActivityEventsParametersMultiMessageValue();
+  ActivityEventsParametersMultiMessageValue({
+    this.parameter,
+  });
 
-  ActivityEventsParametersMultiMessageValue.fromJson(core.Map _json) {
-    if (_json.containsKey('parameter')) {
-      parameter = (_json['parameter'] as core.List)
-          .map<NestedParameter>((value) => NestedParameter.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ActivityEventsParametersMultiMessageValue.fromJson(core.Map _json)
+      : this(
+          parameter: _json.containsKey('parameter')
+              ? (_json['parameter'] as core.List)
+                  .map<NestedParameter>((value) => NestedParameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (parameter != null)
@@ -1086,43 +1097,50 @@ class ActivityEventsParameters {
   /// String value of the parameter.
   core.String? value;
 
-  ActivityEventsParameters();
+  ActivityEventsParameters({
+    this.boolValue,
+    this.intValue,
+    this.messageValue,
+    this.multiIntValue,
+    this.multiMessageValue,
+    this.multiValue,
+    this.name,
+    this.value,
+  });
 
-  ActivityEventsParameters.fromJson(core.Map _json) {
-    if (_json.containsKey('boolValue')) {
-      boolValue = _json['boolValue'] as core.bool;
-    }
-    if (_json.containsKey('intValue')) {
-      intValue = _json['intValue'] as core.String;
-    }
-    if (_json.containsKey('messageValue')) {
-      messageValue = ActivityEventsParametersMessageValue.fromJson(
-          _json['messageValue'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('multiIntValue')) {
-      multiIntValue = (_json['multiIntValue'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('multiMessageValue')) {
-      multiMessageValue = (_json['multiMessageValue'] as core.List)
-          .map<ActivityEventsParametersMultiMessageValue>((value) =>
-              ActivityEventsParametersMultiMessageValue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('multiValue')) {
-      multiValue = (_json['multiValue'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  ActivityEventsParameters.fromJson(core.Map _json)
+      : this(
+          boolValue: _json.containsKey('boolValue')
+              ? _json['boolValue'] as core.bool
+              : null,
+          intValue: _json.containsKey('intValue')
+              ? _json['intValue'] as core.String
+              : null,
+          messageValue: _json.containsKey('messageValue')
+              ? ActivityEventsParametersMessageValue.fromJson(
+                  _json['messageValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+          multiIntValue: _json.containsKey('multiIntValue')
+              ? (_json['multiIntValue'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          multiMessageValue: _json.containsKey('multiMessageValue')
+              ? (_json['multiMessageValue'] as core.List)
+                  .map<ActivityEventsParametersMultiMessageValue>((value) =>
+                      ActivityEventsParametersMultiMessageValue.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          multiValue: _json.containsKey('multiValue')
+              ? (_json['multiValue'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (boolValue != null) 'boolValue': boolValue!,
@@ -1168,23 +1186,24 @@ class ActivityEvents {
   /// `applicationName`.
   core.String? type;
 
-  ActivityEvents();
+  ActivityEvents({
+    this.name,
+    this.parameters,
+    this.type,
+  });
 
-  ActivityEvents.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('parameters')) {
-      parameters = (_json['parameters'] as core.List)
-          .map<ActivityEventsParameters>((value) =>
-              ActivityEventsParameters.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  ActivityEvents.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          parameters: _json.containsKey('parameters')
+              ? (_json['parameters'] as core.List)
+                  .map<ActivityEventsParameters>((value) =>
+                      ActivityEventsParameters.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -1213,22 +1232,28 @@ class ActivityId {
   /// Unique qualifier if multiple events have the same time.
   core.String? uniqueQualifier;
 
-  ActivityId();
+  ActivityId({
+    this.applicationName,
+    this.customerId,
+    this.time,
+    this.uniqueQualifier,
+  });
 
-  ActivityId.fromJson(core.Map _json) {
-    if (_json.containsKey('applicationName')) {
-      applicationName = _json['applicationName'] as core.String;
-    }
-    if (_json.containsKey('customerId')) {
-      customerId = _json['customerId'] as core.String;
-    }
-    if (_json.containsKey('time')) {
-      time = core.DateTime.parse(_json['time'] as core.String);
-    }
-    if (_json.containsKey('uniqueQualifier')) {
-      uniqueQualifier = _json['uniqueQualifier'] as core.String;
-    }
-  }
+  ActivityId.fromJson(core.Map _json)
+      : this(
+          applicationName: _json.containsKey('applicationName')
+              ? _json['applicationName'] as core.String
+              : null,
+          customerId: _json.containsKey('customerId')
+              ? _json['customerId'] as core.String
+              : null,
+          time: _json.containsKey('time')
+              ? core.DateTime.parse(_json['time'] as core.String)
+              : null,
+          uniqueQualifier: _json.containsKey('uniqueQualifier')
+              ? _json['uniqueQualifier'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (applicationName != null) 'applicationName': applicationName!,
@@ -1272,36 +1297,41 @@ class Activity {
   /// owner.
   core.String? ownerDomain;
 
-  Activity();
+  Activity({
+    this.actor,
+    this.etag,
+    this.events,
+    this.id,
+    this.ipAddress,
+    this.kind,
+    this.ownerDomain,
+  });
 
-  Activity.fromJson(core.Map _json) {
-    if (_json.containsKey('actor')) {
-      actor = ActivityActor.fromJson(
-          _json['actor'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('events')) {
-      events = (_json['events'] as core.List)
-          .map<ActivityEvents>((value) => ActivityEvents.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('id')) {
-      id = ActivityId.fromJson(
-          _json['id'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('ipAddress')) {
-      ipAddress = _json['ipAddress'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('ownerDomain')) {
-      ownerDomain = _json['ownerDomain'] as core.String;
-    }
-  }
+  Activity.fromJson(core.Map _json)
+      : this(
+          actor: _json.containsKey('actor')
+              ? ActivityActor.fromJson(
+                  _json['actor'] as core.Map<core.String, core.dynamic>)
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          events: _json.containsKey('events')
+              ? (_json['events'] as core.List)
+                  .map<ActivityEvents>((value) => ActivityEvents.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          id: _json.containsKey('id')
+              ? ActivityId.fromJson(
+                  _json['id'] as core.Map<core.String, core.dynamic>)
+              : null,
+          ipAddress: _json.containsKey('ipAddress')
+              ? _json['ipAddress'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          ownerDomain: _json.containsKey('ownerDomain')
+              ? _json['ownerDomain'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (actor != null) 'actor': actor!.toJson(),
@@ -1362,45 +1392,50 @@ class Channel {
   /// The value should be set to `"web_hook"`.
   core.String? type;
 
-  Channel();
+  Channel({
+    this.address,
+    this.expiration,
+    this.id,
+    this.kind,
+    this.params,
+    this.payload,
+    this.resourceId,
+    this.resourceUri,
+    this.token,
+    this.type,
+  });
 
-  Channel.fromJson(core.Map _json) {
-    if (_json.containsKey('address')) {
-      address = _json['address'] as core.String;
-    }
-    if (_json.containsKey('expiration')) {
-      expiration = _json['expiration'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('params')) {
-      params = (_json['params'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('payload')) {
-      payload = _json['payload'] as core.bool;
-    }
-    if (_json.containsKey('resourceId')) {
-      resourceId = _json['resourceId'] as core.String;
-    }
-    if (_json.containsKey('resourceUri')) {
-      resourceUri = _json['resourceUri'] as core.String;
-    }
-    if (_json.containsKey('token')) {
-      token = _json['token'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  Channel.fromJson(core.Map _json)
+      : this(
+          address: _json.containsKey('address')
+              ? _json['address'] as core.String
+              : null,
+          expiration: _json.containsKey('expiration')
+              ? _json['expiration'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          params: _json.containsKey('params')
+              ? (_json['params'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          payload: _json.containsKey('payload')
+              ? _json['payload'] as core.bool
+              : null,
+          resourceId: _json.containsKey('resourceId')
+              ? _json['resourceId'] as core.String
+              : null,
+          resourceUri: _json.containsKey('resourceUri')
+              ? _json['resourceUri'] as core.String
+              : null,
+          token:
+              _json.containsKey('token') ? _json['token'] as core.String : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (address != null) 'address': address!,
@@ -1439,37 +1474,43 @@ class NestedParameter {
   /// String value of the parameter.
   core.String? value;
 
-  NestedParameter();
+  NestedParameter({
+    this.boolValue,
+    this.intValue,
+    this.multiBoolValue,
+    this.multiIntValue,
+    this.multiValue,
+    this.name,
+    this.value,
+  });
 
-  NestedParameter.fromJson(core.Map _json) {
-    if (_json.containsKey('boolValue')) {
-      boolValue = _json['boolValue'] as core.bool;
-    }
-    if (_json.containsKey('intValue')) {
-      intValue = _json['intValue'] as core.String;
-    }
-    if (_json.containsKey('multiBoolValue')) {
-      multiBoolValue = (_json['multiBoolValue'] as core.List)
-          .map<core.bool>((value) => value as core.bool)
-          .toList();
-    }
-    if (_json.containsKey('multiIntValue')) {
-      multiIntValue = (_json['multiIntValue'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('multiValue')) {
-      multiValue = (_json['multiValue'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  NestedParameter.fromJson(core.Map _json)
+      : this(
+          boolValue: _json.containsKey('boolValue')
+              ? _json['boolValue'] as core.bool
+              : null,
+          intValue: _json.containsKey('intValue')
+              ? _json['intValue'] as core.String
+              : null,
+          multiBoolValue: _json.containsKey('multiBoolValue')
+              ? (_json['multiBoolValue'] as core.List)
+                  .map<core.bool>((value) => value as core.bool)
+                  .toList()
+              : null,
+          multiIntValue: _json.containsKey('multiIntValue')
+              ? (_json['multiIntValue'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          multiValue: _json.containsKey('multiValue')
+              ? (_json['multiValue'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (boolValue != null) 'boolValue': boolValue!,
@@ -1518,25 +1559,30 @@ class UsageReportEntity {
   /// Output only.
   core.String? userEmail;
 
-  UsageReportEntity();
+  UsageReportEntity({
+    this.customerId,
+    this.entityId,
+    this.profileId,
+    this.type,
+    this.userEmail,
+  });
 
-  UsageReportEntity.fromJson(core.Map _json) {
-    if (_json.containsKey('customerId')) {
-      customerId = _json['customerId'] as core.String;
-    }
-    if (_json.containsKey('entityId')) {
-      entityId = _json['entityId'] as core.String;
-    }
-    if (_json.containsKey('profileId')) {
-      profileId = _json['profileId'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('userEmail')) {
-      userEmail = _json['userEmail'] as core.String;
-    }
-  }
+  UsageReportEntity.fromJson(core.Map _json)
+      : this(
+          customerId: _json.containsKey('customerId')
+              ? _json['customerId'] as core.String
+              : null,
+          entityId: _json.containsKey('entityId')
+              ? _json['entityId'] as core.String
+              : null,
+          profileId: _json.containsKey('profileId')
+              ? _json['profileId'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          userEmail: _json.containsKey('userEmail')
+              ? _json['userEmail'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customerId != null) 'customerId': customerId!,
@@ -1581,37 +1627,42 @@ class UsageReportParameters {
   /// Output only.
   core.String? stringValue;
 
-  UsageReportParameters();
+  UsageReportParameters({
+    this.boolValue,
+    this.datetimeValue,
+    this.intValue,
+    this.msgValue,
+    this.name,
+    this.stringValue,
+  });
 
-  UsageReportParameters.fromJson(core.Map _json) {
-    if (_json.containsKey('boolValue')) {
-      boolValue = _json['boolValue'] as core.bool;
-    }
-    if (_json.containsKey('datetimeValue')) {
-      datetimeValue =
-          core.DateTime.parse(_json['datetimeValue'] as core.String);
-    }
-    if (_json.containsKey('intValue')) {
-      intValue = _json['intValue'] as core.String;
-    }
-    if (_json.containsKey('msgValue')) {
-      msgValue = (_json['msgValue'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('stringValue')) {
-      stringValue = _json['stringValue'] as core.String;
-    }
-  }
+  UsageReportParameters.fromJson(core.Map _json)
+      : this(
+          boolValue: _json.containsKey('boolValue')
+              ? _json['boolValue'] as core.bool
+              : null,
+          datetimeValue: _json.containsKey('datetimeValue')
+              ? core.DateTime.parse(_json['datetimeValue'] as core.String)
+              : null,
+          intValue: _json.containsKey('intValue')
+              ? _json['intValue'] as core.String
+              : null,
+          msgValue: _json.containsKey('msgValue')
+              ? (_json['msgValue'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          stringValue: _json.containsKey('stringValue')
+              ? _json['stringValue'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (boolValue != null) 'boolValue': boolValue!,
@@ -1653,29 +1704,31 @@ class UsageReport {
   /// Output only.
   core.List<UsageReportParameters>? parameters;
 
-  UsageReport();
+  UsageReport({
+    this.date,
+    this.entity,
+    this.etag,
+    this.kind,
+    this.parameters,
+  });
 
-  UsageReport.fromJson(core.Map _json) {
-    if (_json.containsKey('date')) {
-      date = _json['date'] as core.String;
-    }
-    if (_json.containsKey('entity')) {
-      entity = UsageReportEntity.fromJson(
-          _json['entity'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('parameters')) {
-      parameters = (_json['parameters'] as core.List)
-          .map<UsageReportParameters>((value) => UsageReportParameters.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  UsageReport.fromJson(core.Map _json)
+      : this(
+          date: _json.containsKey('date') ? _json['date'] as core.String : null,
+          entity: _json.containsKey('entity')
+              ? UsageReportEntity.fromJson(
+                  _json['entity'] as core.Map<core.String, core.dynamic>)
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          parameters: _json.containsKey('parameters')
+              ? (_json['parameters'] as core.List)
+                  .map<UsageReportParameters>((value) =>
+                      UsageReportParameters.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (date != null) 'date': date!,
@@ -1696,16 +1749,17 @@ class UsageReportsWarningsData {
   /// warning.
   core.String? value;
 
-  UsageReportsWarningsData();
+  UsageReportsWarningsData({
+    this.key,
+    this.value,
+  });
 
-  UsageReportsWarningsData.fromJson(core.Map _json) {
-    if (_json.containsKey('key')) {
-      key = _json['key'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  UsageReportsWarningsData.fromJson(core.Map _json)
+      : this(
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
@@ -1731,23 +1785,26 @@ class UsageReportsWarnings {
   /// again after a few hours.
   core.String? message;
 
-  UsageReportsWarnings();
+  UsageReportsWarnings({
+    this.code,
+    this.data,
+    this.message,
+  });
 
-  UsageReportsWarnings.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.String;
-    }
-    if (_json.containsKey('data')) {
-      data = (_json['data'] as core.List)
-          .map<UsageReportsWarningsData>((value) =>
-              UsageReportsWarningsData.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  UsageReportsWarnings.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.String : null,
+          data: _json.containsKey('data')
+              ? (_json['data'] as core.List)
+                  .map<UsageReportsWarningsData>((value) =>
+                      UsageReportsWarningsData.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -1778,31 +1835,35 @@ class UsageReports {
   /// Warnings, if any.
   core.List<UsageReportsWarnings>? warnings;
 
-  UsageReports();
+  UsageReports({
+    this.etag,
+    this.kind,
+    this.nextPageToken,
+    this.usageReports,
+    this.warnings,
+  });
 
-  UsageReports.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('usageReports')) {
-      usageReports = (_json['usageReports'] as core.List)
-          .map<UsageReport>((value) => UsageReport.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('warnings')) {
-      warnings = (_json['warnings'] as core.List)
-          .map<UsageReportsWarnings>((value) => UsageReportsWarnings.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  UsageReports.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          usageReports: _json.containsKey('usageReports')
+              ? (_json['usageReports'] as core.List)
+                  .map<UsageReport>((value) => UsageReport.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          warnings: _json.containsKey('warnings')
+              ? (_json['warnings'] as core.List)
+                  .map<UsageReportsWarnings>((value) =>
+                      UsageReportsWarnings.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,

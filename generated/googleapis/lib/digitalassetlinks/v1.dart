@@ -343,17 +343,21 @@ class AndroidAppAsset {
   /// `com.google.android.apps.maps`. REQUIRED
   core.String? packageName;
 
-  AndroidAppAsset();
+  AndroidAppAsset({
+    this.certificate,
+    this.packageName,
+  });
 
-  AndroidAppAsset.fromJson(core.Map _json) {
-    if (_json.containsKey('certificate')) {
-      certificate = CertificateInfo.fromJson(
-          _json['certificate'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('packageName')) {
-      packageName = _json['packageName'] as core.String;
-    }
-  }
+  AndroidAppAsset.fromJson(core.Map _json)
+      : this(
+          certificate: _json.containsKey('certificate')
+              ? CertificateInfo.fromJson(
+                  _json['certificate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          packageName: _json.containsKey('packageName')
+              ? _json['packageName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (certificate != null) 'certificate': certificate!.toJson(),
@@ -373,18 +377,22 @@ class Asset {
   /// Set if this is a web asset.
   WebAsset? web;
 
-  Asset();
+  Asset({
+    this.androidApp,
+    this.web,
+  });
 
-  Asset.fromJson(core.Map _json) {
-    if (_json.containsKey('androidApp')) {
-      androidApp = AndroidAppAsset.fromJson(
-          _json['androidApp'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('web')) {
-      web = WebAsset.fromJson(
-          _json['web'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Asset.fromJson(core.Map _json)
+      : this(
+          androidApp: _json.containsKey('androidApp')
+              ? AndroidAppAsset.fromJson(
+                  _json['androidApp'] as core.Map<core.String, core.dynamic>)
+              : null,
+          web: _json.containsKey('web')
+              ? WebAsset.fromJson(
+                  _json['web'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (androidApp != null) 'androidApp': androidApp!.toJson(),
@@ -411,13 +419,16 @@ class CertificateInfo {
   /// representations of each octet, separated by colons).
   core.String? sha256Fingerprint;
 
-  CertificateInfo();
+  CertificateInfo({
+    this.sha256Fingerprint,
+  });
 
-  CertificateInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('sha256Fingerprint')) {
-      sha256Fingerprint = _json['sha256Fingerprint'] as core.String;
-    }
-  }
+  CertificateInfo.fromJson(core.Map _json)
+      : this(
+          sha256Fingerprint: _json.containsKey('sha256Fingerprint')
+              ? _json['sha256Fingerprint'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sha256Fingerprint != null) 'sha256Fingerprint': sha256Fingerprint!,
@@ -449,24 +460,29 @@ class CheckResponse {
   /// REQUIRED
   core.String? maxAge;
 
-  CheckResponse();
+  CheckResponse({
+    this.debugString,
+    this.errorCode,
+    this.linked,
+    this.maxAge,
+  });
 
-  CheckResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('debugString')) {
-      debugString = _json['debugString'] as core.String;
-    }
-    if (_json.containsKey('errorCode')) {
-      errorCode = (_json['errorCode'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('linked')) {
-      linked = _json['linked'] as core.bool;
-    }
-    if (_json.containsKey('maxAge')) {
-      maxAge = _json['maxAge'] as core.String;
-    }
-  }
+  CheckResponse.fromJson(core.Map _json)
+      : this(
+          debugString: _json.containsKey('debugString')
+              ? _json['debugString'] as core.String
+              : null,
+          errorCode: _json.containsKey('errorCode')
+              ? (_json['errorCode'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          linked:
+              _json.containsKey('linked') ? _json['linked'] as core.bool : null,
+          maxAge: _json.containsKey('maxAge')
+              ? _json['maxAge'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (debugString != null) 'debugString': debugString!,
@@ -500,27 +516,33 @@ class ListResponse {
   /// A list of all the matching statements that have been found.
   core.List<Statement>? statements;
 
-  ListResponse();
+  ListResponse({
+    this.debugString,
+    this.errorCode,
+    this.maxAge,
+    this.statements,
+  });
 
-  ListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('debugString')) {
-      debugString = _json['debugString'] as core.String;
-    }
-    if (_json.containsKey('errorCode')) {
-      errorCode = (_json['errorCode'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('maxAge')) {
-      maxAge = _json['maxAge'] as core.String;
-    }
-    if (_json.containsKey('statements')) {
-      statements = (_json['statements'] as core.List)
-          .map<Statement>((value) =>
-              Statement.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListResponse.fromJson(core.Map _json)
+      : this(
+          debugString: _json.containsKey('debugString')
+              ? _json['debugString'] as core.String
+              : null,
+          errorCode: _json.containsKey('errorCode')
+              ? (_json['errorCode'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          maxAge: _json.containsKey('maxAge')
+              ? _json['maxAge'] as core.String
+              : null,
+          statements: _json.containsKey('statements')
+              ? (_json['statements'] as core.List)
+                  .map<Statement>((value) => Statement.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (debugString != null) 'debugString': debugString!,
@@ -561,21 +583,26 @@ class Statement {
   /// REQUIRED
   Asset? target;
 
-  Statement();
+  Statement({
+    this.relation,
+    this.source,
+    this.target,
+  });
 
-  Statement.fromJson(core.Map _json) {
-    if (_json.containsKey('relation')) {
-      relation = _json['relation'] as core.String;
-    }
-    if (_json.containsKey('source')) {
-      source = Asset.fromJson(
-          _json['source'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('target')) {
-      target = Asset.fromJson(
-          _json['target'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Statement.fromJson(core.Map _json)
+      : this(
+          relation: _json.containsKey('relation')
+              ? _json['relation'] as core.String
+              : null,
+          source: _json.containsKey('source')
+              ? Asset.fromJson(
+                  _json['source'] as core.Map<core.String, core.dynamic>)
+              : null,
+          target: _json.containsKey('target')
+              ? Asset.fromJson(
+                  _json['target'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (relation != null) 'relation': relation!,
@@ -605,13 +632,14 @@ class WebAsset {
   /// `https://www.google.com:444/` (port does not match) REQUIRED
   core.String? site;
 
-  WebAsset();
+  WebAsset({
+    this.site,
+  });
 
-  WebAsset.fromJson(core.Map _json) {
-    if (_json.containsKey('site')) {
-      site = _json['site'] as core.String;
-    }
-  }
+  WebAsset.fromJson(core.Map _json)
+      : this(
+          site: _json.containsKey('site') ? _json['site'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (site != null) 'site': site!,

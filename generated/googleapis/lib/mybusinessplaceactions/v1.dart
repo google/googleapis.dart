@@ -391,19 +391,23 @@ class ListPlaceActionLinksResponse {
   /// The returned list of place action links.
   core.List<PlaceActionLink>? placeActionLinks;
 
-  ListPlaceActionLinksResponse();
+  ListPlaceActionLinksResponse({
+    this.nextPageToken,
+    this.placeActionLinks,
+  });
 
-  ListPlaceActionLinksResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('placeActionLinks')) {
-      placeActionLinks = (_json['placeActionLinks'] as core.List)
-          .map<PlaceActionLink>((value) => PlaceActionLink.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListPlaceActionLinksResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          placeActionLinks: _json.containsKey('placeActionLinks')
+              ? (_json['placeActionLinks'] as core.List)
+                  .map<PlaceActionLink>((value) => PlaceActionLink.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -426,20 +430,24 @@ class ListPlaceActionTypeMetadataResponse {
   /// A collection of metadata for the available place action types.
   core.List<PlaceActionTypeMetadata>? placeActionTypeMetadata;
 
-  ListPlaceActionTypeMetadataResponse();
+  ListPlaceActionTypeMetadataResponse({
+    this.nextPageToken,
+    this.placeActionTypeMetadata,
+  });
 
-  ListPlaceActionTypeMetadataResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('placeActionTypeMetadata')) {
-      placeActionTypeMetadata = (_json['placeActionTypeMetadata'] as core.List)
-          .map<PlaceActionTypeMetadata>((value) =>
-              PlaceActionTypeMetadata.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListPlaceActionTypeMetadataResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          placeActionTypeMetadata: _json.containsKey('placeActionTypeMetadata')
+              ? (_json['placeActionTypeMetadata'] as core.List)
+                  .map<PlaceActionTypeMetadata>((value) =>
+                      PlaceActionTypeMetadata.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -522,34 +530,40 @@ class PlaceActionLink {
   /// Required.
   core.String? uri;
 
-  PlaceActionLink();
+  PlaceActionLink({
+    this.createTime,
+    this.isEditable,
+    this.isPreferred,
+    this.name,
+    this.placeActionType,
+    this.providerType,
+    this.updateTime,
+    this.uri,
+  });
 
-  PlaceActionLink.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('isEditable')) {
-      isEditable = _json['isEditable'] as core.bool;
-    }
-    if (_json.containsKey('isPreferred')) {
-      isPreferred = _json['isPreferred'] as core.bool;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('placeActionType')) {
-      placeActionType = _json['placeActionType'] as core.String;
-    }
-    if (_json.containsKey('providerType')) {
-      providerType = _json['providerType'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-    if (_json.containsKey('uri')) {
-      uri = _json['uri'] as core.String;
-    }
-  }
+  PlaceActionLink.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          isEditable: _json.containsKey('isEditable')
+              ? _json['isEditable'] as core.bool
+              : null,
+          isPreferred: _json.containsKey('isPreferred')
+              ? _json['isPreferred'] as core.bool
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          placeActionType: _json.containsKey('placeActionType')
+              ? _json['placeActionType'] as core.String
+              : null,
+          providerType: _json.containsKey('providerType')
+              ? _json['providerType'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -581,16 +595,20 @@ class PlaceActionTypeMetadata {
   /// - "FOOD_TAKEOUT" : The action type is ordering food for takeout.
   core.String? placeActionType;
 
-  PlaceActionTypeMetadata();
+  PlaceActionTypeMetadata({
+    this.displayName,
+    this.placeActionType,
+  });
 
-  PlaceActionTypeMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('placeActionType')) {
-      placeActionType = _json['placeActionType'] as core.String;
-    }
-  }
+  PlaceActionTypeMetadata.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          placeActionType: _json.containsKey('placeActionType')
+              ? _json['placeActionType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,

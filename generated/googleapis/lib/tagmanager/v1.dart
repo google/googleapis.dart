@@ -2451,22 +2451,26 @@ class Account {
   /// @mutable tagmanager.accounts.create @mutable tagmanager.accounts.update
   core.bool? shareData;
 
-  Account();
+  Account({
+    this.accountId,
+    this.fingerprint,
+    this.name,
+    this.shareData,
+  });
 
-  Account.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('shareData')) {
-      shareData = _json['shareData'] as core.bool;
-    }
-  }
+  Account.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          fingerprint: _json.containsKey('fingerprint')
+              ? _json['fingerprint'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          shareData: _json.containsKey('shareData')
+              ? _json['shareData'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -2485,15 +2489,18 @@ class AccountAccess {
   /// tagmanager.accounts.permissions.update
   core.List<core.String>? permission;
 
-  AccountAccess();
+  AccountAccess({
+    this.permission,
+  });
 
-  AccountAccess.fromJson(core.Map _json) {
-    if (_json.containsKey('permission')) {
-      permission = (_json['permission'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  AccountAccess.fromJson(core.Map _json)
+      : this(
+          permission: _json.containsKey('permission')
+              ? (_json['permission'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permission != null) 'permission': permission!,
@@ -2533,19 +2540,21 @@ class Condition {
   /// - "urlMatches"
   core.String? type;
 
-  Condition();
+  Condition({
+    this.parameter,
+    this.type,
+  });
 
-  Condition.fromJson(core.Map _json) {
-    if (_json.containsKey('parameter')) {
-      parameter = (_json['parameter'] as core.List)
-          .map<Parameter>((value) =>
-              Parameter.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  Condition.fromJson(core.Map _json)
+      : this(
+          parameter: _json.containsKey('parameter')
+              ? (_json['parameter'] as core.List)
+                  .map<Parameter>((value) => Parameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (parameter != null)
@@ -2619,49 +2628,59 @@ class Container {
   /// tagmanager.accounts.containers.update
   core.List<core.String>? usageContext;
 
-  Container();
+  Container({
+    this.accountId,
+    this.containerId,
+    this.domainName,
+    this.enabledBuiltInVariable,
+    this.fingerprint,
+    this.name,
+    this.notes,
+    this.publicId,
+    this.timeZoneCountryId,
+    this.timeZoneId,
+    this.usageContext,
+  });
 
-  Container.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'] as core.String;
-    }
-    if (_json.containsKey('domainName')) {
-      domainName = (_json['domainName'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('enabledBuiltInVariable')) {
-      enabledBuiltInVariable = (_json['enabledBuiltInVariable'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('notes')) {
-      notes = _json['notes'] as core.String;
-    }
-    if (_json.containsKey('publicId')) {
-      publicId = _json['publicId'] as core.String;
-    }
-    if (_json.containsKey('timeZoneCountryId')) {
-      timeZoneCountryId = _json['timeZoneCountryId'] as core.String;
-    }
-    if (_json.containsKey('timeZoneId')) {
-      timeZoneId = _json['timeZoneId'] as core.String;
-    }
-    if (_json.containsKey('usageContext')) {
-      usageContext = (_json['usageContext'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  Container.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          containerId: _json.containsKey('containerId')
+              ? _json['containerId'] as core.String
+              : null,
+          domainName: _json.containsKey('domainName')
+              ? (_json['domainName'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          enabledBuiltInVariable: _json.containsKey('enabledBuiltInVariable')
+              ? (_json['enabledBuiltInVariable'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          fingerprint: _json.containsKey('fingerprint')
+              ? _json['fingerprint'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          notes:
+              _json.containsKey('notes') ? _json['notes'] as core.String : null,
+          publicId: _json.containsKey('publicId')
+              ? _json['publicId'] as core.String
+              : null,
+          timeZoneCountryId: _json.containsKey('timeZoneCountryId')
+              ? _json['timeZoneCountryId'] as core.String
+              : null,
+          timeZoneId: _json.containsKey('timeZoneId')
+              ? _json['timeZoneId'] as core.String
+              : null,
+          usageContext: _json.containsKey('usageContext')
+              ? (_json['usageContext'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -2694,18 +2713,22 @@ class ContainerAccess {
   /// tagmanager.accounts.permissions.update
   core.List<core.String>? permission;
 
-  ContainerAccess();
+  ContainerAccess({
+    this.containerId,
+    this.permission,
+  });
 
-  ContainerAccess.fromJson(core.Map _json) {
-    if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'] as core.String;
-    }
-    if (_json.containsKey('permission')) {
-      permission = (_json['permission'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  ContainerAccess.fromJson(core.Map _json)
+      : this(
+          containerId: _json.containsKey('containerId')
+              ? _json['containerId'] as core.String
+              : null,
+          permission: _json.containsKey('permission')
+              ? (_json['permission'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (containerId != null) 'containerId': containerId!,
@@ -2763,71 +2786,84 @@ class ContainerVersion {
   /// The variables in the container that this version was taken from.
   core.List<Variable>? variable;
 
-  ContainerVersion();
+  ContainerVersion({
+    this.accountId,
+    this.container,
+    this.containerId,
+    this.containerVersionId,
+    this.deleted,
+    this.fingerprint,
+    this.folder,
+    this.macro,
+    this.name,
+    this.notes,
+    this.rule,
+    this.tag,
+    this.trigger,
+    this.variable,
+  });
 
-  ContainerVersion.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('container')) {
-      container = Container.fromJson(
-          _json['container'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'] as core.String;
-    }
-    if (_json.containsKey('containerVersionId')) {
-      containerVersionId = _json['containerVersionId'] as core.String;
-    }
-    if (_json.containsKey('deleted')) {
-      deleted = _json['deleted'] as core.bool;
-    }
-    if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'] as core.String;
-    }
-    if (_json.containsKey('folder')) {
-      folder = (_json['folder'] as core.List)
-          .map<Folder>((value) =>
-              Folder.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('macro')) {
-      macro = (_json['macro'] as core.List)
-          .map<Macro>((value) =>
-              Macro.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('notes')) {
-      notes = _json['notes'] as core.String;
-    }
-    if (_json.containsKey('rule')) {
-      rule = (_json['rule'] as core.List)
-          .map<Rule>((value) =>
-              Rule.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('tag')) {
-      tag = (_json['tag'] as core.List)
-          .map<Tag>((value) =>
-              Tag.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('trigger')) {
-      trigger = (_json['trigger'] as core.List)
-          .map<Trigger>((value) =>
-              Trigger.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('variable')) {
-      variable = (_json['variable'] as core.List)
-          .map<Variable>((value) =>
-              Variable.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ContainerVersion.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          container: _json.containsKey('container')
+              ? Container.fromJson(
+                  _json['container'] as core.Map<core.String, core.dynamic>)
+              : null,
+          containerId: _json.containsKey('containerId')
+              ? _json['containerId'] as core.String
+              : null,
+          containerVersionId: _json.containsKey('containerVersionId')
+              ? _json['containerVersionId'] as core.String
+              : null,
+          deleted: _json.containsKey('deleted')
+              ? _json['deleted'] as core.bool
+              : null,
+          fingerprint: _json.containsKey('fingerprint')
+              ? _json['fingerprint'] as core.String
+              : null,
+          folder: _json.containsKey('folder')
+              ? (_json['folder'] as core.List)
+                  .map<Folder>((value) => Folder.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          macro: _json.containsKey('macro')
+              ? (_json['macro'] as core.List)
+                  .map<Macro>((value) => Macro.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          notes:
+              _json.containsKey('notes') ? _json['notes'] as core.String : null,
+          rule: _json.containsKey('rule')
+              ? (_json['rule'] as core.List)
+                  .map<Rule>((value) => Rule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          tag: _json.containsKey('tag')
+              ? (_json['tag'] as core.List)
+                  .map<Tag>((value) => Tag.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          trigger: _json.containsKey('trigger')
+              ? (_json['trigger'] as core.List)
+                  .map<Trigger>((value) => Trigger.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          variable: _json.containsKey('variable')
+              ? (_json['variable'] as core.List)
+                  .map<Variable>((value) => Variable.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -2884,40 +2920,50 @@ class ContainerVersionHeader {
   /// Number of variables in the container version.
   core.String? numVariables;
 
-  ContainerVersionHeader();
+  ContainerVersionHeader({
+    this.accountId,
+    this.containerId,
+    this.containerVersionId,
+    this.deleted,
+    this.name,
+    this.numMacros,
+    this.numRules,
+    this.numTags,
+    this.numTriggers,
+    this.numVariables,
+  });
 
-  ContainerVersionHeader.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'] as core.String;
-    }
-    if (_json.containsKey('containerVersionId')) {
-      containerVersionId = _json['containerVersionId'] as core.String;
-    }
-    if (_json.containsKey('deleted')) {
-      deleted = _json['deleted'] as core.bool;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('numMacros')) {
-      numMacros = _json['numMacros'] as core.String;
-    }
-    if (_json.containsKey('numRules')) {
-      numRules = _json['numRules'] as core.String;
-    }
-    if (_json.containsKey('numTags')) {
-      numTags = _json['numTags'] as core.String;
-    }
-    if (_json.containsKey('numTriggers')) {
-      numTriggers = _json['numTriggers'] as core.String;
-    }
-    if (_json.containsKey('numVariables')) {
-      numVariables = _json['numVariables'] as core.String;
-    }
-  }
+  ContainerVersionHeader.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          containerId: _json.containsKey('containerId')
+              ? _json['containerId'] as core.String
+              : null,
+          containerVersionId: _json.containsKey('containerVersionId')
+              ? _json['containerVersionId'] as core.String
+              : null,
+          deleted: _json.containsKey('deleted')
+              ? _json['deleted'] as core.bool
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          numMacros: _json.containsKey('numMacros')
+              ? _json['numMacros'] as core.String
+              : null,
+          numRules: _json.containsKey('numRules')
+              ? _json['numRules'] as core.String
+              : null,
+          numTags: _json.containsKey('numTags')
+              ? _json['numTags'] as core.String
+              : null,
+          numTriggers: _json.containsKey('numTriggers')
+              ? _json['numTriggers'] as core.String
+              : null,
+          numVariables: _json.containsKey('numVariables')
+              ? _json['numVariables'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -2946,19 +2992,21 @@ class CreateContainerVersionRequestVersionOptions {
   /// saved.
   core.bool? quickPreview;
 
-  CreateContainerVersionRequestVersionOptions();
+  CreateContainerVersionRequestVersionOptions({
+    this.name,
+    this.notes,
+    this.quickPreview,
+  });
 
-  CreateContainerVersionRequestVersionOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('notes')) {
-      notes = _json['notes'] as core.String;
-    }
-    if (_json.containsKey('quickPreview')) {
-      quickPreview = _json['quickPreview'] as core.bool;
-    }
-  }
+  CreateContainerVersionRequestVersionOptions.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          notes:
+              _json.containsKey('notes') ? _json['notes'] as core.String : null,
+          quickPreview: _json.containsKey('quickPreview')
+              ? _json['quickPreview'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -2975,17 +3023,21 @@ class CreateContainerVersionResponse {
   /// The container version created.
   ContainerVersion? containerVersion;
 
-  CreateContainerVersionResponse();
+  CreateContainerVersionResponse({
+    this.compilerError,
+    this.containerVersion,
+  });
 
-  CreateContainerVersionResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('compilerError')) {
-      compilerError = _json['compilerError'] as core.bool;
-    }
-    if (_json.containsKey('containerVersion')) {
-      containerVersion = ContainerVersion.fromJson(
-          _json['containerVersion'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  CreateContainerVersionResponse.fromJson(core.Map _json)
+      : this(
+          compilerError: _json.containsKey('compilerError')
+              ? _json['compilerError'] as core.bool
+              : null,
+          containerVersion: _json.containsKey('containerVersion')
+              ? ContainerVersion.fromJson(_json['containerVersion']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (compilerError != null) 'compilerError': compilerError!,
@@ -3058,47 +3110,55 @@ class Environment {
   /// tagmanager.accounts.containers.environments.update
   core.String? url;
 
-  Environment();
+  Environment({
+    this.accountId,
+    this.authorizationCode,
+    this.authorizationTimestampMs,
+    this.containerId,
+    this.containerVersionId,
+    this.description,
+    this.enableDebug,
+    this.environmentId,
+    this.fingerprint,
+    this.name,
+    this.type,
+    this.url,
+  });
 
-  Environment.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('authorizationCode')) {
-      authorizationCode = _json['authorizationCode'] as core.String;
-    }
-    if (_json.containsKey('authorizationTimestampMs')) {
-      authorizationTimestampMs =
-          _json['authorizationTimestampMs'] as core.String;
-    }
-    if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'] as core.String;
-    }
-    if (_json.containsKey('containerVersionId')) {
-      containerVersionId = _json['containerVersionId'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('enableDebug')) {
-      enableDebug = _json['enableDebug'] as core.bool;
-    }
-    if (_json.containsKey('environmentId')) {
-      environmentId = _json['environmentId'] as core.String;
-    }
-    if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  Environment.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          authorizationCode: _json.containsKey('authorizationCode')
+              ? _json['authorizationCode'] as core.String
+              : null,
+          authorizationTimestampMs:
+              _json.containsKey('authorizationTimestampMs')
+                  ? _json['authorizationTimestampMs'] as core.String
+                  : null,
+          containerId: _json.containsKey('containerId')
+              ? _json['containerId'] as core.String
+              : null,
+          containerVersionId: _json.containsKey('containerVersionId')
+              ? _json['containerVersionId'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          enableDebug: _json.containsKey('enableDebug')
+              ? _json['enableDebug'] as core.bool
+              : null,
+          environmentId: _json.containsKey('environmentId')
+              ? _json['environmentId'] as core.String
+              : null,
+          fingerprint: _json.containsKey('fingerprint')
+              ? _json['fingerprint'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -3140,25 +3200,30 @@ class Folder {
   /// tagmanager.accounts.containers.folders.update
   core.String? name;
 
-  Folder();
+  Folder({
+    this.accountId,
+    this.containerId,
+    this.fingerprint,
+    this.folderId,
+    this.name,
+  });
 
-  Folder.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'] as core.String;
-    }
-    if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'] as core.String;
-    }
-    if (_json.containsKey('folderId')) {
-      folderId = _json['folderId'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  Folder.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          containerId: _json.containsKey('containerId')
+              ? _json['containerId'] as core.String
+              : null,
+          fingerprint: _json.containsKey('fingerprint')
+              ? _json['fingerprint'] as core.String
+              : null,
+          folderId: _json.containsKey('folderId')
+              ? _json['folderId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -3180,28 +3245,33 @@ class FolderEntities {
   /// The list of variables inside the folder.
   core.List<Variable>? variable;
 
-  FolderEntities();
+  FolderEntities({
+    this.tag,
+    this.trigger,
+    this.variable,
+  });
 
-  FolderEntities.fromJson(core.Map _json) {
-    if (_json.containsKey('tag')) {
-      tag = (_json['tag'] as core.List)
-          .map<Tag>((value) =>
-              Tag.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('trigger')) {
-      trigger = (_json['trigger'] as core.List)
-          .map<Trigger>((value) =>
-              Trigger.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('variable')) {
-      variable = (_json['variable'] as core.List)
-          .map<Variable>((value) =>
-              Variable.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  FolderEntities.fromJson(core.Map _json)
+      : this(
+          tag: _json.containsKey('tag')
+              ? (_json['tag'] as core.List)
+                  .map<Tag>((value) => Tag.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          trigger: _json.containsKey('trigger')
+              ? (_json['trigger'] as core.List)
+                  .map<Trigger>((value) => Trigger.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          variable: _json.containsKey('variable')
+              ? (_json['variable'] as core.List)
+                  .map<Variable>((value) => Variable.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (tag != null) 'tag': tag!.map((value) => value.toJson()).toList(),
@@ -3217,16 +3287,19 @@ class ListAccountUsersResponse {
   /// All GTM AccountUsers of a GTM Account.
   core.List<UserAccess>? userAccess;
 
-  ListAccountUsersResponse();
+  ListAccountUsersResponse({
+    this.userAccess,
+  });
 
-  ListAccountUsersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('userAccess')) {
-      userAccess = (_json['userAccess'] as core.List)
-          .map<UserAccess>((value) =>
-              UserAccess.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListAccountUsersResponse.fromJson(core.Map _json)
+      : this(
+          userAccess: _json.containsKey('userAccess')
+              ? (_json['userAccess'] as core.List)
+                  .map<UserAccess>((value) => UserAccess.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (userAccess != null)
@@ -3239,16 +3312,19 @@ class ListAccountsResponse {
   /// List of GTM Accounts that a user has access to.
   core.List<Account>? accounts;
 
-  ListAccountsResponse();
+  ListAccountsResponse({
+    this.accounts,
+  });
 
-  ListAccountsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('accounts')) {
-      accounts = (_json['accounts'] as core.List)
-          .map<Account>((value) =>
-              Account.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListAccountsResponse.fromJson(core.Map _json)
+      : this(
+          accounts: _json.containsKey('accounts')
+              ? (_json['accounts'] as core.List)
+                  .map<Account>((value) => Account.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accounts != null)
@@ -3264,23 +3340,27 @@ class ListContainerVersionsResponse {
   /// All container version headers of a GTM Container.
   core.List<ContainerVersionHeader>? containerVersionHeader;
 
-  ListContainerVersionsResponse();
+  ListContainerVersionsResponse({
+    this.containerVersion,
+    this.containerVersionHeader,
+  });
 
-  ListContainerVersionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('containerVersion')) {
-      containerVersion = (_json['containerVersion'] as core.List)
-          .map<ContainerVersion>((value) => ContainerVersion.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('containerVersionHeader')) {
-      containerVersionHeader = (_json['containerVersionHeader'] as core.List)
-          .map<ContainerVersionHeader>((value) =>
-              ContainerVersionHeader.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListContainerVersionsResponse.fromJson(core.Map _json)
+      : this(
+          containerVersion: _json.containsKey('containerVersion')
+              ? (_json['containerVersion'] as core.List)
+                  .map<ContainerVersion>((value) => ContainerVersion.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          containerVersionHeader: _json.containsKey('containerVersionHeader')
+              ? (_json['containerVersionHeader'] as core.List)
+                  .map<ContainerVersionHeader>((value) =>
+                      ContainerVersionHeader.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (containerVersion != null)
@@ -3297,16 +3377,19 @@ class ListContainersResponse {
   /// All Containers of a GTM Account.
   core.List<Container>? containers;
 
-  ListContainersResponse();
+  ListContainersResponse({
+    this.containers,
+  });
 
-  ListContainersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('containers')) {
-      containers = (_json['containers'] as core.List)
-          .map<Container>((value) =>
-              Container.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListContainersResponse.fromJson(core.Map _json)
+      : this(
+          containers: _json.containsKey('containers')
+              ? (_json['containers'] as core.List)
+                  .map<Container>((value) => Container.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (containers != null)
@@ -3319,16 +3402,19 @@ class ListEnvironmentsResponse {
   /// All Environments of a GTM Container.
   core.List<Environment>? environments;
 
-  ListEnvironmentsResponse();
+  ListEnvironmentsResponse({
+    this.environments,
+  });
 
-  ListEnvironmentsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('environments')) {
-      environments = (_json['environments'] as core.List)
-          .map<Environment>((value) => Environment.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListEnvironmentsResponse.fromJson(core.Map _json)
+      : this(
+          environments: _json.containsKey('environments')
+              ? (_json['environments'] as core.List)
+                  .map<Environment>((value) => Environment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (environments != null)
@@ -3341,16 +3427,19 @@ class ListFoldersResponse {
   /// All GTM Folders of a GTM Container.
   core.List<Folder>? folders;
 
-  ListFoldersResponse();
+  ListFoldersResponse({
+    this.folders,
+  });
 
-  ListFoldersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('folders')) {
-      folders = (_json['folders'] as core.List)
-          .map<Folder>((value) =>
-              Folder.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListFoldersResponse.fromJson(core.Map _json)
+      : this(
+          folders: _json.containsKey('folders')
+              ? (_json['folders'] as core.List)
+                  .map<Folder>((value) => Folder.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (folders != null)
@@ -3363,16 +3452,19 @@ class ListTagsResponse {
   /// All GTM Tags of a GTM Container.
   core.List<Tag>? tags;
 
-  ListTagsResponse();
+  ListTagsResponse({
+    this.tags,
+  });
 
-  ListTagsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('tags')) {
-      tags = (_json['tags'] as core.List)
-          .map<Tag>((value) =>
-              Tag.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListTagsResponse.fromJson(core.Map _json)
+      : this(
+          tags: _json.containsKey('tags')
+              ? (_json['tags'] as core.List)
+                  .map<Tag>((value) => Tag.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (tags != null) 'tags': tags!.map((value) => value.toJson()).toList(),
@@ -3384,16 +3476,19 @@ class ListTriggersResponse {
   /// All GTM Triggers of a GTM Container.
   core.List<Trigger>? triggers;
 
-  ListTriggersResponse();
+  ListTriggersResponse({
+    this.triggers,
+  });
 
-  ListTriggersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('triggers')) {
-      triggers = (_json['triggers'] as core.List)
-          .map<Trigger>((value) =>
-              Trigger.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListTriggersResponse.fromJson(core.Map _json)
+      : this(
+          triggers: _json.containsKey('triggers')
+              ? (_json['triggers'] as core.List)
+                  .map<Trigger>((value) => Trigger.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (triggers != null)
@@ -3406,16 +3501,19 @@ class ListVariablesResponse {
   /// All GTM Variables of a GTM Container.
   core.List<Variable>? variables;
 
-  ListVariablesResponse();
+  ListVariablesResponse({
+    this.variables,
+  });
 
-  ListVariablesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('variables')) {
-      variables = (_json['variables'] as core.List)
-          .map<Variable>((value) =>
-              Variable.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListVariablesResponse.fromJson(core.Map _json)
+      : this(
+          variables: _json.containsKey('variables')
+              ? (_json['variables'] as core.List)
+                  .map<Variable>((value) => Variable.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (variables != null)
@@ -3496,56 +3594,66 @@ class Macro {
   /// tagmanager.accounts.containers.macros.update
   core.String? type;
 
-  Macro();
+  Macro({
+    this.accountId,
+    this.containerId,
+    this.disablingRuleId,
+    this.enablingRuleId,
+    this.fingerprint,
+    this.macroId,
+    this.name,
+    this.notes,
+    this.parameter,
+    this.parentFolderId,
+    this.scheduleEndMs,
+    this.scheduleStartMs,
+    this.type,
+  });
 
-  Macro.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'] as core.String;
-    }
-    if (_json.containsKey('disablingRuleId')) {
-      disablingRuleId = (_json['disablingRuleId'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('enablingRuleId')) {
-      enablingRuleId = (_json['enablingRuleId'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'] as core.String;
-    }
-    if (_json.containsKey('macroId')) {
-      macroId = _json['macroId'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('notes')) {
-      notes = _json['notes'] as core.String;
-    }
-    if (_json.containsKey('parameter')) {
-      parameter = (_json['parameter'] as core.List)
-          .map<Parameter>((value) =>
-              Parameter.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('parentFolderId')) {
-      parentFolderId = _json['parentFolderId'] as core.String;
-    }
-    if (_json.containsKey('scheduleEndMs')) {
-      scheduleEndMs = _json['scheduleEndMs'] as core.String;
-    }
-    if (_json.containsKey('scheduleStartMs')) {
-      scheduleStartMs = _json['scheduleStartMs'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  Macro.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          containerId: _json.containsKey('containerId')
+              ? _json['containerId'] as core.String
+              : null,
+          disablingRuleId: _json.containsKey('disablingRuleId')
+              ? (_json['disablingRuleId'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          enablingRuleId: _json.containsKey('enablingRuleId')
+              ? (_json['enablingRuleId'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          fingerprint: _json.containsKey('fingerprint')
+              ? _json['fingerprint'] as core.String
+              : null,
+          macroId: _json.containsKey('macroId')
+              ? _json['macroId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          notes:
+              _json.containsKey('notes') ? _json['notes'] as core.String : null,
+          parameter: _json.containsKey('parameter')
+              ? (_json['parameter'] as core.List)
+                  .map<Parameter>((value) => Parameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          parentFolderId: _json.containsKey('parentFolderId')
+              ? _json['parentFolderId'] as core.String
+              : null,
+          scheduleEndMs: _json.containsKey('scheduleEndMs')
+              ? _json['scheduleEndMs'] as core.String
+              : null,
+          scheduleStartMs: _json.containsKey('scheduleStartMs')
+              ? _json['scheduleStartMs'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -3635,31 +3743,33 @@ class Parameter {
   /// tagmanager.accounts.containers.tags.update
   core.String? value;
 
-  Parameter();
+  Parameter({
+    this.key,
+    this.list,
+    this.map,
+    this.type,
+    this.value,
+  });
 
-  Parameter.fromJson(core.Map _json) {
-    if (_json.containsKey('key')) {
-      key = _json['key'] as core.String;
-    }
-    if (_json.containsKey('list')) {
-      list = (_json['list'] as core.List)
-          .map<Parameter>((value) =>
-              Parameter.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('map')) {
-      map = (_json['map'] as core.List)
-          .map<Parameter>((value) =>
-              Parameter.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  Parameter.fromJson(core.Map _json)
+      : this(
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          list: _json.containsKey('list')
+              ? (_json['list'] as core.List)
+                  .map<Parameter>((value) => Parameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          map: _json.containsKey('map')
+              ? (_json['map'] as core.List)
+                  .map<Parameter>((value) => Parameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
@@ -3678,17 +3788,21 @@ class PublishContainerVersionResponse {
   /// The container version created.
   ContainerVersion? containerVersion;
 
-  PublishContainerVersionResponse();
+  PublishContainerVersionResponse({
+    this.compilerError,
+    this.containerVersion,
+  });
 
-  PublishContainerVersionResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('compilerError')) {
-      compilerError = _json['compilerError'] as core.bool;
-    }
-    if (_json.containsKey('containerVersion')) {
-      containerVersion = ContainerVersion.fromJson(
-          _json['containerVersion'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  PublishContainerVersionResponse.fromJson(core.Map _json)
+      : this(
+          compilerError: _json.containsKey('compilerError')
+              ? _json['compilerError'] as core.bool
+              : null,
+          containerVersion: _json.containsKey('containerVersion')
+              ? ContainerVersion.fromJson(_json['containerVersion']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (compilerError != null) 'compilerError': compilerError!,
@@ -3731,34 +3845,40 @@ class Rule {
   /// The Rule ID uniquely identifies the GTM Rule.
   core.String? ruleId;
 
-  Rule();
+  Rule({
+    this.accountId,
+    this.condition,
+    this.containerId,
+    this.fingerprint,
+    this.name,
+    this.notes,
+    this.ruleId,
+  });
 
-  Rule.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('condition')) {
-      condition = (_json['condition'] as core.List)
-          .map<Condition>((value) =>
-              Condition.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'] as core.String;
-    }
-    if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('notes')) {
-      notes = _json['notes'] as core.String;
-    }
-    if (_json.containsKey('ruleId')) {
-      ruleId = _json['ruleId'] as core.String;
-    }
-  }
+  Rule.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          condition: _json.containsKey('condition')
+              ? (_json['condition'] as core.List)
+                  .map<Condition>((value) => Condition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          containerId: _json.containsKey('containerId')
+              ? _json['containerId'] as core.String
+              : null,
+          fingerprint: _json.containsKey('fingerprint')
+              ? _json['fingerprint'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          notes:
+              _json.containsKey('notes') ? _json['notes'] as core.String : null,
+          ruleId: _json.containsKey('ruleId')
+              ? _json['ruleId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -3782,16 +3902,20 @@ class SetupTag {
   /// The name of the setup tag.
   core.String? tagName;
 
-  SetupTag();
+  SetupTag({
+    this.stopOnSetupFailure,
+    this.tagName,
+  });
 
-  SetupTag.fromJson(core.Map _json) {
-    if (_json.containsKey('stopOnSetupFailure')) {
-      stopOnSetupFailure = _json['stopOnSetupFailure'] as core.bool;
-    }
-    if (_json.containsKey('tagName')) {
-      tagName = _json['tagName'] as core.String;
-    }
-  }
+  SetupTag.fromJson(core.Map _json)
+      : this(
+          stopOnSetupFailure: _json.containsKey('stopOnSetupFailure')
+              ? _json['stopOnSetupFailure'] as core.bool
+              : null,
+          tagName: _json.containsKey('tagName')
+              ? _json['tagName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (stopOnSetupFailure != null)
@@ -3926,91 +4050,107 @@ class Tag {
   /// tagmanager.accounts.containers.tags.update
   core.String? type;
 
-  Tag();
+  Tag({
+    this.accountId,
+    this.blockingRuleId,
+    this.blockingTriggerId,
+    this.containerId,
+    this.fingerprint,
+    this.firingRuleId,
+    this.firingTriggerId,
+    this.liveOnly,
+    this.name,
+    this.notes,
+    this.parameter,
+    this.parentFolderId,
+    this.paused,
+    this.priority,
+    this.scheduleEndMs,
+    this.scheduleStartMs,
+    this.setupTag,
+    this.tagFiringOption,
+    this.tagId,
+    this.teardownTag,
+    this.type,
+  });
 
-  Tag.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('blockingRuleId')) {
-      blockingRuleId = (_json['blockingRuleId'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('blockingTriggerId')) {
-      blockingTriggerId = (_json['blockingTriggerId'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'] as core.String;
-    }
-    if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'] as core.String;
-    }
-    if (_json.containsKey('firingRuleId')) {
-      firingRuleId = (_json['firingRuleId'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('firingTriggerId')) {
-      firingTriggerId = (_json['firingTriggerId'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('liveOnly')) {
-      liveOnly = _json['liveOnly'] as core.bool;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('notes')) {
-      notes = _json['notes'] as core.String;
-    }
-    if (_json.containsKey('parameter')) {
-      parameter = (_json['parameter'] as core.List)
-          .map<Parameter>((value) =>
-              Parameter.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('parentFolderId')) {
-      parentFolderId = _json['parentFolderId'] as core.String;
-    }
-    if (_json.containsKey('paused')) {
-      paused = _json['paused'] as core.bool;
-    }
-    if (_json.containsKey('priority')) {
-      priority = Parameter.fromJson(
-          _json['priority'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('scheduleEndMs')) {
-      scheduleEndMs = _json['scheduleEndMs'] as core.String;
-    }
-    if (_json.containsKey('scheduleStartMs')) {
-      scheduleStartMs = _json['scheduleStartMs'] as core.String;
-    }
-    if (_json.containsKey('setupTag')) {
-      setupTag = (_json['setupTag'] as core.List)
-          .map<SetupTag>((value) =>
-              SetupTag.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('tagFiringOption')) {
-      tagFiringOption = _json['tagFiringOption'] as core.String;
-    }
-    if (_json.containsKey('tagId')) {
-      tagId = _json['tagId'] as core.String;
-    }
-    if (_json.containsKey('teardownTag')) {
-      teardownTag = (_json['teardownTag'] as core.List)
-          .map<TeardownTag>((value) => TeardownTag.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  Tag.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          blockingRuleId: _json.containsKey('blockingRuleId')
+              ? (_json['blockingRuleId'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          blockingTriggerId: _json.containsKey('blockingTriggerId')
+              ? (_json['blockingTriggerId'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          containerId: _json.containsKey('containerId')
+              ? _json['containerId'] as core.String
+              : null,
+          fingerprint: _json.containsKey('fingerprint')
+              ? _json['fingerprint'] as core.String
+              : null,
+          firingRuleId: _json.containsKey('firingRuleId')
+              ? (_json['firingRuleId'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          firingTriggerId: _json.containsKey('firingTriggerId')
+              ? (_json['firingTriggerId'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          liveOnly: _json.containsKey('liveOnly')
+              ? _json['liveOnly'] as core.bool
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          notes:
+              _json.containsKey('notes') ? _json['notes'] as core.String : null,
+          parameter: _json.containsKey('parameter')
+              ? (_json['parameter'] as core.List)
+                  .map<Parameter>((value) => Parameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          parentFolderId: _json.containsKey('parentFolderId')
+              ? _json['parentFolderId'] as core.String
+              : null,
+          paused:
+              _json.containsKey('paused') ? _json['paused'] as core.bool : null,
+          priority: _json.containsKey('priority')
+              ? Parameter.fromJson(
+                  _json['priority'] as core.Map<core.String, core.dynamic>)
+              : null,
+          scheduleEndMs: _json.containsKey('scheduleEndMs')
+              ? _json['scheduleEndMs'] as core.String
+              : null,
+          scheduleStartMs: _json.containsKey('scheduleStartMs')
+              ? _json['scheduleStartMs'] as core.String
+              : null,
+          setupTag: _json.containsKey('setupTag')
+              ? (_json['setupTag'] as core.List)
+                  .map<SetupTag>((value) => SetupTag.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          tagFiringOption: _json.containsKey('tagFiringOption')
+              ? _json['tagFiringOption'] as core.String
+              : null,
+          tagId:
+              _json.containsKey('tagId') ? _json['tagId'] as core.String : null,
+          teardownTag: _json.containsKey('teardownTag')
+              ? (_json['teardownTag'] as core.List)
+                  .map<TeardownTag>((value) => TeardownTag.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -4050,16 +4190,20 @@ class TeardownTag {
   /// The name of the teardown tag.
   core.String? tagName;
 
-  TeardownTag();
+  TeardownTag({
+    this.stopTeardownOnFailure,
+    this.tagName,
+  });
 
-  TeardownTag.fromJson(core.Map _json) {
-    if (_json.containsKey('stopTeardownOnFailure')) {
-      stopTeardownOnFailure = _json['stopTeardownOnFailure'] as core.bool;
-    }
-    if (_json.containsKey('tagName')) {
-      tagName = _json['tagName'] as core.String;
-    }
-  }
+  TeardownTag.fromJson(core.Map _json)
+      : this(
+          stopTeardownOnFailure: _json.containsKey('stopTeardownOnFailure')
+              ? _json['stopTeardownOnFailure'] as core.bool
+              : null,
+          tagName: _json.containsKey('tagName')
+              ? _json['tagName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (stopTeardownOnFailure != null)
@@ -4275,127 +4419,153 @@ class Trigger {
   /// tagmanager.accounts.containers.triggers.update
   Parameter? waitForTagsTimeout;
 
-  Trigger();
+  Trigger({
+    this.accountId,
+    this.autoEventFilter,
+    this.checkValidation,
+    this.containerId,
+    this.continuousTimeMinMilliseconds,
+    this.customEventFilter,
+    this.eventName,
+    this.filter,
+    this.fingerprint,
+    this.horizontalScrollPercentageList,
+    this.interval,
+    this.intervalSeconds,
+    this.limit,
+    this.maxTimerLengthSeconds,
+    this.name,
+    this.parameter,
+    this.parentFolderId,
+    this.selector,
+    this.totalTimeMinMilliseconds,
+    this.triggerId,
+    this.type,
+    this.uniqueTriggerId,
+    this.verticalScrollPercentageList,
+    this.visibilitySelector,
+    this.visiblePercentageMax,
+    this.visiblePercentageMin,
+    this.waitForTags,
+    this.waitForTagsTimeout,
+  });
 
-  Trigger.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('autoEventFilter')) {
-      autoEventFilter = (_json['autoEventFilter'] as core.List)
-          .map<Condition>((value) =>
-              Condition.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('checkValidation')) {
-      checkValidation = Parameter.fromJson(
-          _json['checkValidation'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'] as core.String;
-    }
-    if (_json.containsKey('continuousTimeMinMilliseconds')) {
-      continuousTimeMinMilliseconds = Parameter.fromJson(
-          _json['continuousTimeMinMilliseconds']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('customEventFilter')) {
-      customEventFilter = (_json['customEventFilter'] as core.List)
-          .map<Condition>((value) =>
-              Condition.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('eventName')) {
-      eventName = Parameter.fromJson(
-          _json['eventName'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('filter')) {
-      filter = (_json['filter'] as core.List)
-          .map<Condition>((value) =>
-              Condition.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'] as core.String;
-    }
-    if (_json.containsKey('horizontalScrollPercentageList')) {
-      horizontalScrollPercentageList = Parameter.fromJson(
-          _json['horizontalScrollPercentageList']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('interval')) {
-      interval = Parameter.fromJson(
-          _json['interval'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('intervalSeconds')) {
-      intervalSeconds = Parameter.fromJson(
-          _json['intervalSeconds'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('limit')) {
-      limit = Parameter.fromJson(
-          _json['limit'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('maxTimerLengthSeconds')) {
-      maxTimerLengthSeconds = Parameter.fromJson(_json['maxTimerLengthSeconds']
-          as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('parameter')) {
-      parameter = (_json['parameter'] as core.List)
-          .map<Parameter>((value) =>
-              Parameter.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('parentFolderId')) {
-      parentFolderId = _json['parentFolderId'] as core.String;
-    }
-    if (_json.containsKey('selector')) {
-      selector = Parameter.fromJson(
-          _json['selector'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('totalTimeMinMilliseconds')) {
-      totalTimeMinMilliseconds = Parameter.fromJson(
-          _json['totalTimeMinMilliseconds']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('triggerId')) {
-      triggerId = _json['triggerId'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('uniqueTriggerId')) {
-      uniqueTriggerId = Parameter.fromJson(
-          _json['uniqueTriggerId'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('verticalScrollPercentageList')) {
-      verticalScrollPercentageList = Parameter.fromJson(
-          _json['verticalScrollPercentageList']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('visibilitySelector')) {
-      visibilitySelector = Parameter.fromJson(
-          _json['visibilitySelector'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('visiblePercentageMax')) {
-      visiblePercentageMax = Parameter.fromJson(
-          _json['visiblePercentageMax'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('visiblePercentageMin')) {
-      visiblePercentageMin = Parameter.fromJson(
-          _json['visiblePercentageMin'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('waitForTags')) {
-      waitForTags = Parameter.fromJson(
-          _json['waitForTags'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('waitForTagsTimeout')) {
-      waitForTagsTimeout = Parameter.fromJson(
-          _json['waitForTagsTimeout'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Trigger.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          autoEventFilter: _json.containsKey('autoEventFilter')
+              ? (_json['autoEventFilter'] as core.List)
+                  .map<Condition>((value) => Condition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          checkValidation: _json.containsKey('checkValidation')
+              ? Parameter.fromJson(_json['checkValidation']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          containerId: _json.containsKey('containerId')
+              ? _json['containerId'] as core.String
+              : null,
+          continuousTimeMinMilliseconds:
+              _json.containsKey('continuousTimeMinMilliseconds')
+                  ? Parameter.fromJson(_json['continuousTimeMinMilliseconds']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          customEventFilter: _json.containsKey('customEventFilter')
+              ? (_json['customEventFilter'] as core.List)
+                  .map<Condition>((value) => Condition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          eventName: _json.containsKey('eventName')
+              ? Parameter.fromJson(
+                  _json['eventName'] as core.Map<core.String, core.dynamic>)
+              : null,
+          filter: _json.containsKey('filter')
+              ? (_json['filter'] as core.List)
+                  .map<Condition>((value) => Condition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          fingerprint: _json.containsKey('fingerprint')
+              ? _json['fingerprint'] as core.String
+              : null,
+          horizontalScrollPercentageList:
+              _json.containsKey('horizontalScrollPercentageList')
+                  ? Parameter.fromJson(_json['horizontalScrollPercentageList']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          interval: _json.containsKey('interval')
+              ? Parameter.fromJson(
+                  _json['interval'] as core.Map<core.String, core.dynamic>)
+              : null,
+          intervalSeconds: _json.containsKey('intervalSeconds')
+              ? Parameter.fromJson(_json['intervalSeconds']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          limit: _json.containsKey('limit')
+              ? Parameter.fromJson(
+                  _json['limit'] as core.Map<core.String, core.dynamic>)
+              : null,
+          maxTimerLengthSeconds: _json.containsKey('maxTimerLengthSeconds')
+              ? Parameter.fromJson(_json['maxTimerLengthSeconds']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          parameter: _json.containsKey('parameter')
+              ? (_json['parameter'] as core.List)
+                  .map<Parameter>((value) => Parameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          parentFolderId: _json.containsKey('parentFolderId')
+              ? _json['parentFolderId'] as core.String
+              : null,
+          selector: _json.containsKey('selector')
+              ? Parameter.fromJson(
+                  _json['selector'] as core.Map<core.String, core.dynamic>)
+              : null,
+          totalTimeMinMilliseconds:
+              _json.containsKey('totalTimeMinMilliseconds')
+                  ? Parameter.fromJson(_json['totalTimeMinMilliseconds']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          triggerId: _json.containsKey('triggerId')
+              ? _json['triggerId'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          uniqueTriggerId: _json.containsKey('uniqueTriggerId')
+              ? Parameter.fromJson(_json['uniqueTriggerId']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          verticalScrollPercentageList:
+              _json.containsKey('verticalScrollPercentageList')
+                  ? Parameter.fromJson(_json['verticalScrollPercentageList']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          visibilitySelector: _json.containsKey('visibilitySelector')
+              ? Parameter.fromJson(_json['visibilitySelector']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          visiblePercentageMax: _json.containsKey('visiblePercentageMax')
+              ? Parameter.fromJson(_json['visiblePercentageMax']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          visiblePercentageMin: _json.containsKey('visiblePercentageMin')
+              ? Parameter.fromJson(_json['visiblePercentageMin']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          waitForTags: _json.containsKey('waitForTags')
+              ? Parameter.fromJson(
+                  _json['waitForTags'] as core.Map<core.String, core.dynamic>)
+              : null,
+          waitForTagsTimeout: _json.containsKey('waitForTagsTimeout')
+              ? Parameter.fromJson(_json['waitForTagsTimeout']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
@@ -4475,29 +4645,36 @@ class UserAccess {
   /// Account Permission ID.
   core.String? permissionId;
 
-  UserAccess();
+  UserAccess({
+    this.accountAccess,
+    this.accountId,
+    this.containerAccess,
+    this.emailAddress,
+    this.permissionId,
+  });
 
-  UserAccess.fromJson(core.Map _json) {
-    if (_json.containsKey('accountAccess')) {
-      accountAccess = AccountAccess.fromJson(
-          _json['accountAccess'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('containerAccess')) {
-      containerAccess = (_json['containerAccess'] as core.List)
-          .map<ContainerAccess>((value) => ContainerAccess.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('emailAddress')) {
-      emailAddress = _json['emailAddress'] as core.String;
-    }
-    if (_json.containsKey('permissionId')) {
-      permissionId = _json['permissionId'] as core.String;
-    }
-  }
+  UserAccess.fromJson(core.Map _json)
+      : this(
+          accountAccess: _json.containsKey('accountAccess')
+              ? AccountAccess.fromJson(
+                  _json['accountAccess'] as core.Map<core.String, core.dynamic>)
+              : null,
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          containerAccess: _json.containsKey('containerAccess')
+              ? (_json['containerAccess'] as core.List)
+                  .map<ContainerAccess>((value) => ContainerAccess.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          emailAddress: _json.containsKey('emailAddress')
+              ? _json['emailAddress'] as core.String
+              : null,
+          permissionId: _json.containsKey('permissionId')
+              ? _json['permissionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountAccess != null) 'accountAccess': accountAccess!.toJson(),
@@ -4583,56 +4760,66 @@ class Variable {
   /// The Variable ID uniquely identifies the GTM Variable.
   core.String? variableId;
 
-  Variable();
+  Variable({
+    this.accountId,
+    this.containerId,
+    this.disablingTriggerId,
+    this.enablingTriggerId,
+    this.fingerprint,
+    this.name,
+    this.notes,
+    this.parameter,
+    this.parentFolderId,
+    this.scheduleEndMs,
+    this.scheduleStartMs,
+    this.type,
+    this.variableId,
+  });
 
-  Variable.fromJson(core.Map _json) {
-    if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'] as core.String;
-    }
-    if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'] as core.String;
-    }
-    if (_json.containsKey('disablingTriggerId')) {
-      disablingTriggerId = (_json['disablingTriggerId'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('enablingTriggerId')) {
-      enablingTriggerId = (_json['enablingTriggerId'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('notes')) {
-      notes = _json['notes'] as core.String;
-    }
-    if (_json.containsKey('parameter')) {
-      parameter = (_json['parameter'] as core.List)
-          .map<Parameter>((value) =>
-              Parameter.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('parentFolderId')) {
-      parentFolderId = _json['parentFolderId'] as core.String;
-    }
-    if (_json.containsKey('scheduleEndMs')) {
-      scheduleEndMs = _json['scheduleEndMs'] as core.String;
-    }
-    if (_json.containsKey('scheduleStartMs')) {
-      scheduleStartMs = _json['scheduleStartMs'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('variableId')) {
-      variableId = _json['variableId'] as core.String;
-    }
-  }
+  Variable.fromJson(core.Map _json)
+      : this(
+          accountId: _json.containsKey('accountId')
+              ? _json['accountId'] as core.String
+              : null,
+          containerId: _json.containsKey('containerId')
+              ? _json['containerId'] as core.String
+              : null,
+          disablingTriggerId: _json.containsKey('disablingTriggerId')
+              ? (_json['disablingTriggerId'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          enablingTriggerId: _json.containsKey('enablingTriggerId')
+              ? (_json['enablingTriggerId'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          fingerprint: _json.containsKey('fingerprint')
+              ? _json['fingerprint'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          notes:
+              _json.containsKey('notes') ? _json['notes'] as core.String : null,
+          parameter: _json.containsKey('parameter')
+              ? (_json['parameter'] as core.List)
+                  .map<Parameter>((value) => Parameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          parentFolderId: _json.containsKey('parentFolderId')
+              ? _json['parentFolderId'] as core.String
+              : null,
+          scheduleEndMs: _json.containsKey('scheduleEndMs')
+              ? _json['scheduleEndMs'] as core.String
+              : null,
+          scheduleStartMs: _json.containsKey('scheduleStartMs')
+              ? _json['scheduleStartMs'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          variableId: _json.containsKey('variableId')
+              ? _json['variableId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,

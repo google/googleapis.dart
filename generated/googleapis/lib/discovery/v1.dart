@@ -145,16 +145,16 @@ class DirectoryListItemsIcons {
   /// The URL of the 32x32 icon.
   core.String? x32;
 
-  DirectoryListItemsIcons();
+  DirectoryListItemsIcons({
+    this.x16,
+    this.x32,
+  });
 
-  DirectoryListItemsIcons.fromJson(core.Map _json) {
-    if (_json.containsKey('x16')) {
-      x16 = _json['x16'] as core.String;
-    }
-    if (_json.containsKey('x32')) {
-      x32 = _json['x32'] as core.String;
-    }
-  }
+  DirectoryListItemsIcons.fromJson(core.Map _json)
+      : this(
+          x16: _json.containsKey('x16') ? _json['x16'] as core.String : null,
+          x32: _json.containsKey('x32') ? _json['x32'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (x16 != null) 'x16': x16!,
@@ -199,49 +199,56 @@ class DirectoryListItems {
   /// The version of the API.
   core.String? version;
 
-  DirectoryListItems();
+  DirectoryListItems({
+    this.description,
+    this.discoveryLink,
+    this.discoveryRestUrl,
+    this.documentationLink,
+    this.icons,
+    this.id,
+    this.kind,
+    this.labels,
+    this.name,
+    this.preferred,
+    this.title,
+    this.version,
+  });
 
-  DirectoryListItems.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('discoveryLink')) {
-      discoveryLink = _json['discoveryLink'] as core.String;
-    }
-    if (_json.containsKey('discoveryRestUrl')) {
-      discoveryRestUrl = _json['discoveryRestUrl'] as core.String;
-    }
-    if (_json.containsKey('documentationLink')) {
-      documentationLink = _json['documentationLink'] as core.String;
-    }
-    if (_json.containsKey('icons')) {
-      icons = DirectoryListItemsIcons.fromJson(
-          _json['icons'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('preferred')) {
-      preferred = _json['preferred'] as core.bool;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.String;
-    }
-  }
+  DirectoryListItems.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          discoveryLink: _json.containsKey('discoveryLink')
+              ? _json['discoveryLink'] as core.String
+              : null,
+          discoveryRestUrl: _json.containsKey('discoveryRestUrl')
+              ? _json['discoveryRestUrl'] as core.String
+              : null,
+          documentationLink: _json.containsKey('documentationLink')
+              ? _json['documentationLink'] as core.String
+              : null,
+          icons: _json.containsKey('icons')
+              ? DirectoryListItemsIcons.fromJson(
+                  _json['icons'] as core.Map<core.String, core.dynamic>)
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          preferred: _json.containsKey('preferred')
+              ? _json['preferred'] as core.bool
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -271,22 +278,26 @@ class DirectoryList {
   /// The kind for this response.
   core.String? kind;
 
-  DirectoryList();
+  DirectoryList({
+    this.discoveryVersion,
+    this.items,
+    this.kind,
+  });
 
-  DirectoryList.fromJson(core.Map _json) {
-    if (_json.containsKey('discoveryVersion')) {
-      discoveryVersion = _json['discoveryVersion'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<DirectoryListItems>((value) => DirectoryListItems.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-  }
+  DirectoryList.fromJson(core.Map _json)
+      : this(
+          discoveryVersion: _json.containsKey('discoveryVersion')
+              ? _json['discoveryVersion'] as core.String
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<DirectoryListItems>((value) =>
+                      DirectoryListItems.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (discoveryVersion != null) 'discoveryVersion': discoveryVersion!,
@@ -301,15 +312,18 @@ class JsonSchemaAnnotations {
   /// A list of methods for which this property is required on requests.
   core.List<core.String>? required;
 
-  JsonSchemaAnnotations();
+  JsonSchemaAnnotations({
+    this.required,
+  });
 
-  JsonSchemaAnnotations.fromJson(core.Map _json) {
-    if (_json.containsKey('required')) {
-      required = (_json['required'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  JsonSchemaAnnotations.fromJson(core.Map _json)
+      : this(
+          required: _json.containsKey('required')
+              ? (_json['required'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (required != null) 'required': required!,
@@ -320,16 +334,19 @@ class JsonSchemaVariantMap {
   core.String? P_ref;
   core.String? typeValue;
 
-  JsonSchemaVariantMap();
+  JsonSchemaVariantMap({
+    this.P_ref,
+    this.typeValue,
+  });
 
-  JsonSchemaVariantMap.fromJson(core.Map _json) {
-    if (_json.containsKey('\$ref')) {
-      P_ref = _json['\$ref'] as core.String;
-    }
-    if (_json.containsKey('type_value')) {
-      typeValue = _json['type_value'] as core.String;
-    }
-  }
+  JsonSchemaVariantMap.fromJson(core.Map _json)
+      : this(
+          P_ref:
+              _json.containsKey('\$ref') ? _json['\$ref'] as core.String : null,
+          typeValue: _json.containsKey('type_value')
+              ? _json['type_value'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (P_ref != null) '\$ref': P_ref!,
@@ -348,19 +365,24 @@ class JsonSchemaVariant {
   /// The map of discriminant value to schema to use for parsing..
   core.List<JsonSchemaVariantMap>? map;
 
-  JsonSchemaVariant();
+  JsonSchemaVariant({
+    this.discriminant,
+    this.map,
+  });
 
-  JsonSchemaVariant.fromJson(core.Map _json) {
-    if (_json.containsKey('discriminant')) {
-      discriminant = _json['discriminant'] as core.String;
-    }
-    if (_json.containsKey('map')) {
-      map = (_json['map'] as core.List)
-          .map<JsonSchemaVariantMap>((value) => JsonSchemaVariantMap.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  JsonSchemaVariant.fromJson(core.Map _json)
+      : this(
+          discriminant: _json.containsKey('discriminant')
+              ? _json['discriminant'] as core.String
+              : null,
+          map: _json.containsKey('map')
+              ? (_json['map'] as core.List)
+                  .map<JsonSchemaVariantMap>((value) =>
+                      JsonSchemaVariantMap.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (discriminant != null) 'discriminant': discriminant!,
@@ -451,84 +473,102 @@ class JsonSchema {
   /// Its value must exist in a map of descriminant values to schema names.
   JsonSchemaVariant? variant;
 
-  JsonSchema();
+  JsonSchema({
+    this.P_ref,
+    this.additionalProperties,
+    this.annotations,
+    this.default_,
+    this.description,
+    this.enum_,
+    this.enumDescriptions,
+    this.format,
+    this.id,
+    this.items,
+    this.location,
+    this.maximum,
+    this.minimum,
+    this.pattern,
+    this.properties,
+    this.readOnly,
+    this.repeated,
+    this.required,
+    this.type,
+    this.variant,
+  });
 
-  JsonSchema.fromJson(core.Map _json) {
-    if (_json.containsKey('\$ref')) {
-      P_ref = _json['\$ref'] as core.String;
-    }
-    if (_json.containsKey('additionalProperties')) {
-      additionalProperties = JsonSchema.fromJson(
-          _json['additionalProperties'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('annotations')) {
-      annotations = JsonSchemaAnnotations.fromJson(
-          _json['annotations'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('default')) {
-      default_ = _json['default'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('enum')) {
-      enum_ = (_json['enum'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('enumDescriptions')) {
-      enumDescriptions = (_json['enumDescriptions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('format')) {
-      format = _json['format'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = JsonSchema.fromJson(
-          _json['items'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('location')) {
-      location = _json['location'] as core.String;
-    }
-    if (_json.containsKey('maximum')) {
-      maximum = _json['maximum'] as core.String;
-    }
-    if (_json.containsKey('minimum')) {
-      minimum = _json['minimum'] as core.String;
-    }
-    if (_json.containsKey('pattern')) {
-      pattern = _json['pattern'] as core.String;
-    }
-    if (_json.containsKey('properties')) {
-      properties =
-          (_json['properties'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          JsonSchema.fromJson(item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('readOnly')) {
-      readOnly = _json['readOnly'] as core.bool;
-    }
-    if (_json.containsKey('repeated')) {
-      repeated = _json['repeated'] as core.bool;
-    }
-    if (_json.containsKey('required')) {
-      required = _json['required'] as core.bool;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('variant')) {
-      variant = JsonSchemaVariant.fromJson(
-          _json['variant'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  JsonSchema.fromJson(core.Map _json)
+      : this(
+          P_ref:
+              _json.containsKey('\$ref') ? _json['\$ref'] as core.String : null,
+          additionalProperties: _json.containsKey('additionalProperties')
+              ? JsonSchema.fromJson(_json['additionalProperties']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          annotations: _json.containsKey('annotations')
+              ? JsonSchemaAnnotations.fromJson(
+                  _json['annotations'] as core.Map<core.String, core.dynamic>)
+              : null,
+          default_: _json.containsKey('default')
+              ? _json['default'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          enum_: _json.containsKey('enum')
+              ? (_json['enum'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          enumDescriptions: _json.containsKey('enumDescriptions')
+              ? (_json['enumDescriptions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          format: _json.containsKey('format')
+              ? _json['format'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          items: _json.containsKey('items')
+              ? JsonSchema.fromJson(
+                  _json['items'] as core.Map<core.String, core.dynamic>)
+              : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          maximum: _json.containsKey('maximum')
+              ? _json['maximum'] as core.String
+              : null,
+          minimum: _json.containsKey('minimum')
+              ? _json['minimum'] as core.String
+              : null,
+          pattern: _json.containsKey('pattern')
+              ? _json['pattern'] as core.String
+              : null,
+          properties: _json.containsKey('properties')
+              ? (_json['properties'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    JsonSchema.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          readOnly: _json.containsKey('readOnly')
+              ? _json['readOnly'] as core.bool
+              : null,
+          repeated: _json.containsKey('repeated')
+              ? _json['repeated'] as core.bool
+              : null,
+          required: _json.containsKey('required')
+              ? _json['required'] as core.bool
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          variant: _json.containsKey('variant')
+              ? JsonSchemaVariant.fromJson(
+                  _json['variant'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (P_ref != null) '\$ref': P_ref!,
@@ -562,13 +602,16 @@ class RestDescriptionAuthOauth2ScopesValue {
   /// Description of scope.
   core.String? description;
 
-  RestDescriptionAuthOauth2ScopesValue();
+  RestDescriptionAuthOauth2ScopesValue({
+    this.description,
+  });
 
-  RestDescriptionAuthOauth2ScopesValue.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-  }
+  RestDescriptionAuthOauth2ScopesValue.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -580,19 +623,22 @@ class RestDescriptionAuthOauth2 {
   /// Available OAuth 2.0 scopes.
   core.Map<core.String, RestDescriptionAuthOauth2ScopesValue>? scopes;
 
-  RestDescriptionAuthOauth2();
+  RestDescriptionAuthOauth2({
+    this.scopes,
+  });
 
-  RestDescriptionAuthOauth2.fromJson(core.Map _json) {
-    if (_json.containsKey('scopes')) {
-      scopes = (_json['scopes'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          RestDescriptionAuthOauth2ScopesValue.fromJson(
-              item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-  }
+  RestDescriptionAuthOauth2.fromJson(core.Map _json)
+      : this(
+          scopes: _json.containsKey('scopes')
+              ? (_json['scopes'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    RestDescriptionAuthOauth2ScopesValue.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (scopes != null)
@@ -606,14 +652,17 @@ class RestDescriptionAuth {
   /// OAuth 2.0 authentication information.
   RestDescriptionAuthOauth2? oauth2;
 
-  RestDescriptionAuth();
+  RestDescriptionAuth({
+    this.oauth2,
+  });
 
-  RestDescriptionAuth.fromJson(core.Map _json) {
-    if (_json.containsKey('oauth2')) {
-      oauth2 = RestDescriptionAuthOauth2.fromJson(
-          _json['oauth2'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  RestDescriptionAuth.fromJson(core.Map _json)
+      : this(
+          oauth2: _json.containsKey('oauth2')
+              ? RestDescriptionAuthOauth2.fromJson(
+                  _json['oauth2'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (oauth2 != null) 'oauth2': oauth2!.toJson(),
@@ -628,16 +677,16 @@ class RestDescriptionIcons {
   /// The URL of the 32x32 icon.
   core.String? x32;
 
-  RestDescriptionIcons();
+  RestDescriptionIcons({
+    this.x16,
+    this.x32,
+  });
 
-  RestDescriptionIcons.fromJson(core.Map _json) {
-    if (_json.containsKey('x16')) {
-      x16 = _json['x16'] as core.String;
-    }
-    if (_json.containsKey('x32')) {
-      x32 = _json['x32'] as core.String;
-    }
-  }
+  RestDescriptionIcons.fromJson(core.Map _json)
+      : this(
+          x16: _json.containsKey('x16') ? _json['x16'] as core.String : null,
+          x32: _json.containsKey('x32') ? _json['x32'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (x16 != null) 'x16': x16!,
@@ -749,129 +798,155 @@ class RestDescription {
   core.String? version;
   core.bool? versionModule;
 
-  RestDescription();
+  RestDescription({
+    this.auth,
+    this.basePath,
+    this.baseUrl,
+    this.batchPath,
+    this.canonicalName,
+    this.description,
+    this.discoveryVersion,
+    this.documentationLink,
+    this.etag,
+    this.exponentialBackoffDefault,
+    this.features,
+    this.icons,
+    this.id,
+    this.kind,
+    this.labels,
+    this.methods,
+    this.name,
+    this.ownerDomain,
+    this.ownerName,
+    this.packagePath,
+    this.parameters,
+    this.protocol,
+    this.resources,
+    this.revision,
+    this.rootUrl,
+    this.schemas,
+    this.servicePath,
+    this.title,
+    this.version,
+    this.versionModule,
+  });
 
-  RestDescription.fromJson(core.Map _json) {
-    if (_json.containsKey('auth')) {
-      auth = RestDescriptionAuth.fromJson(
-          _json['auth'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('basePath')) {
-      basePath = _json['basePath'] as core.String;
-    }
-    if (_json.containsKey('baseUrl')) {
-      baseUrl = _json['baseUrl'] as core.String;
-    }
-    if (_json.containsKey('batchPath')) {
-      batchPath = _json['batchPath'] as core.String;
-    }
-    if (_json.containsKey('canonicalName')) {
-      canonicalName = _json['canonicalName'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('discoveryVersion')) {
-      discoveryVersion = _json['discoveryVersion'] as core.String;
-    }
-    if (_json.containsKey('documentationLink')) {
-      documentationLink = _json['documentationLink'] as core.String;
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('exponentialBackoffDefault')) {
-      exponentialBackoffDefault =
-          _json['exponentialBackoffDefault'] as core.bool;
-    }
-    if (_json.containsKey('features')) {
-      features = (_json['features'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('icons')) {
-      icons = RestDescriptionIcons.fromJson(
-          _json['icons'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('methods')) {
-      methods = (_json['methods'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          RestMethod.fromJson(item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('ownerDomain')) {
-      ownerDomain = _json['ownerDomain'] as core.String;
-    }
-    if (_json.containsKey('ownerName')) {
-      ownerName = _json['ownerName'] as core.String;
-    }
-    if (_json.containsKey('packagePath')) {
-      packagePath = _json['packagePath'] as core.String;
-    }
-    if (_json.containsKey('parameters')) {
-      parameters =
-          (_json['parameters'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          JsonSchema.fromJson(item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('protocol')) {
-      protocol = _json['protocol'] as core.String;
-    }
-    if (_json.containsKey('resources')) {
-      resources =
-          (_json['resources'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          RestResource.fromJson(item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('revision')) {
-      revision = _json['revision'] as core.String;
-    }
-    if (_json.containsKey('rootUrl')) {
-      rootUrl = _json['rootUrl'] as core.String;
-    }
-    if (_json.containsKey('schemas')) {
-      schemas = (_json['schemas'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          JsonSchema.fromJson(item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('servicePath')) {
-      servicePath = _json['servicePath'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.String;
-    }
-    if (_json.containsKey('version_module')) {
-      versionModule = _json['version_module'] as core.bool;
-    }
-  }
+  RestDescription.fromJson(core.Map _json)
+      : this(
+          auth: _json.containsKey('auth')
+              ? RestDescriptionAuth.fromJson(
+                  _json['auth'] as core.Map<core.String, core.dynamic>)
+              : null,
+          basePath: _json.containsKey('basePath')
+              ? _json['basePath'] as core.String
+              : null,
+          baseUrl: _json.containsKey('baseUrl')
+              ? _json['baseUrl'] as core.String
+              : null,
+          batchPath: _json.containsKey('batchPath')
+              ? _json['batchPath'] as core.String
+              : null,
+          canonicalName: _json.containsKey('canonicalName')
+              ? _json['canonicalName'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          discoveryVersion: _json.containsKey('discoveryVersion')
+              ? _json['discoveryVersion'] as core.String
+              : null,
+          documentationLink: _json.containsKey('documentationLink')
+              ? _json['documentationLink'] as core.String
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          exponentialBackoffDefault:
+              _json.containsKey('exponentialBackoffDefault')
+                  ? _json['exponentialBackoffDefault'] as core.bool
+                  : null,
+          features: _json.containsKey('features')
+              ? (_json['features'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          icons: _json.containsKey('icons')
+              ? RestDescriptionIcons.fromJson(
+                  _json['icons'] as core.Map<core.String, core.dynamic>)
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          methods: _json.containsKey('methods')
+              ? (_json['methods'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    RestMethod.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          ownerDomain: _json.containsKey('ownerDomain')
+              ? _json['ownerDomain'] as core.String
+              : null,
+          ownerName: _json.containsKey('ownerName')
+              ? _json['ownerName'] as core.String
+              : null,
+          packagePath: _json.containsKey('packagePath')
+              ? _json['packagePath'] as core.String
+              : null,
+          parameters: _json.containsKey('parameters')
+              ? (_json['parameters'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    JsonSchema.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          protocol: _json.containsKey('protocol')
+              ? _json['protocol'] as core.String
+              : null,
+          resources: _json.containsKey('resources')
+              ? (_json['resources'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    RestResource.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          revision: _json.containsKey('revision')
+              ? _json['revision'] as core.String
+              : null,
+          rootUrl: _json.containsKey('rootUrl')
+              ? _json['rootUrl'] as core.String
+              : null,
+          schemas: _json.containsKey('schemas')
+              ? (_json['schemas'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    JsonSchema.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          servicePath: _json.containsKey('servicePath')
+              ? _json['servicePath'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+          versionModule: _json.containsKey('version_module')
+              ? _json['version_module'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (auth != null) 'auth': auth!.toJson(),
@@ -926,16 +1001,18 @@ class RestMethodMediaUploadProtocolsResumable {
   /// Should be used in conjunction with the basePath property at the api-level.
   core.String? path;
 
-  RestMethodMediaUploadProtocolsResumable();
+  RestMethodMediaUploadProtocolsResumable({
+    this.multipart,
+    this.path,
+  });
 
-  RestMethodMediaUploadProtocolsResumable.fromJson(core.Map _json) {
-    if (_json.containsKey('multipart')) {
-      multipart = _json['multipart'] as core.bool;
-    }
-    if (_json.containsKey('path')) {
-      path = _json['path'] as core.String;
-    }
-  }
+  RestMethodMediaUploadProtocolsResumable.fromJson(core.Map _json)
+      : this(
+          multipart: _json.containsKey('multipart')
+              ? _json['multipart'] as core.bool
+              : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (multipart != null) 'multipart': multipart!,
@@ -953,16 +1030,18 @@ class RestMethodMediaUploadProtocolsSimple {
   /// Should be used in conjunction with the basePath property at the api-level.
   core.String? path;
 
-  RestMethodMediaUploadProtocolsSimple();
+  RestMethodMediaUploadProtocolsSimple({
+    this.multipart,
+    this.path,
+  });
 
-  RestMethodMediaUploadProtocolsSimple.fromJson(core.Map _json) {
-    if (_json.containsKey('multipart')) {
-      multipart = _json['multipart'] as core.bool;
-    }
-    if (_json.containsKey('path')) {
-      path = _json['path'] as core.String;
-    }
-  }
+  RestMethodMediaUploadProtocolsSimple.fromJson(core.Map _json)
+      : this(
+          multipart: _json.containsKey('multipart')
+              ? _json['multipart'] as core.bool
+              : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (multipart != null) 'multipart': multipart!,
@@ -978,18 +1057,22 @@ class RestMethodMediaUploadProtocols {
   /// Supports uploading as a single HTTP request.
   RestMethodMediaUploadProtocolsSimple? simple;
 
-  RestMethodMediaUploadProtocols();
+  RestMethodMediaUploadProtocols({
+    this.resumable,
+    this.simple,
+  });
 
-  RestMethodMediaUploadProtocols.fromJson(core.Map _json) {
-    if (_json.containsKey('resumable')) {
-      resumable = RestMethodMediaUploadProtocolsResumable.fromJson(
-          _json['resumable'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('simple')) {
-      simple = RestMethodMediaUploadProtocolsSimple.fromJson(
-          _json['simple'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  RestMethodMediaUploadProtocols.fromJson(core.Map _json)
+      : this(
+          resumable: _json.containsKey('resumable')
+              ? RestMethodMediaUploadProtocolsResumable.fromJson(
+                  _json['resumable'] as core.Map<core.String, core.dynamic>)
+              : null,
+          simple: _json.containsKey('simple')
+              ? RestMethodMediaUploadProtocolsSimple.fromJson(
+                  _json['simple'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resumable != null) 'resumable': resumable!.toJson(),
@@ -1008,22 +1091,27 @@ class RestMethodMediaUpload {
   /// Supported upload protocols.
   RestMethodMediaUploadProtocols? protocols;
 
-  RestMethodMediaUpload();
+  RestMethodMediaUpload({
+    this.accept,
+    this.maxSize,
+    this.protocols,
+  });
 
-  RestMethodMediaUpload.fromJson(core.Map _json) {
-    if (_json.containsKey('accept')) {
-      accept = (_json['accept'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('maxSize')) {
-      maxSize = _json['maxSize'] as core.String;
-    }
-    if (_json.containsKey('protocols')) {
-      protocols = RestMethodMediaUploadProtocols.fromJson(
-          _json['protocols'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  RestMethodMediaUpload.fromJson(core.Map _json)
+      : this(
+          accept: _json.containsKey('accept')
+              ? (_json['accept'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          maxSize: _json.containsKey('maxSize')
+              ? _json['maxSize'] as core.String
+              : null,
+          protocols: _json.containsKey('protocols')
+              ? RestMethodMediaUploadProtocols.fromJson(
+                  _json['protocols'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accept != null) 'accept': accept!,
@@ -1040,16 +1128,19 @@ class RestMethodRequest {
   /// parameter name.
   core.String? parameterName;
 
-  RestMethodRequest();
+  RestMethodRequest({
+    this.P_ref,
+    this.parameterName,
+  });
 
-  RestMethodRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('\$ref')) {
-      P_ref = _json['\$ref'] as core.String;
-    }
-    if (_json.containsKey('parameterName')) {
-      parameterName = _json['parameterName'] as core.String;
-    }
-  }
+  RestMethodRequest.fromJson(core.Map _json)
+      : this(
+          P_ref:
+              _json.containsKey('\$ref') ? _json['\$ref'] as core.String : null,
+          parameterName: _json.containsKey('parameterName')
+              ? _json['parameterName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (P_ref != null) '\$ref': P_ref!,
@@ -1062,13 +1153,15 @@ class RestMethodResponse {
   /// Schema ID for the response schema.
   core.String? P_ref;
 
-  RestMethodResponse();
+  RestMethodResponse({
+    this.P_ref,
+  });
 
-  RestMethodResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('\$ref')) {
-      P_ref = _json['\$ref'] as core.String;
-    }
-  }
+  RestMethodResponse.fromJson(core.Map _json)
+      : this(
+          P_ref:
+              _json.containsKey('\$ref') ? _json['\$ref'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (P_ref != null) '\$ref': P_ref!,
@@ -1141,71 +1234,86 @@ class RestMethod {
   /// Only applies if the method supports media download.
   core.bool? useMediaDownloadService;
 
-  RestMethod();
+  RestMethod({
+    this.description,
+    this.etagRequired,
+    this.flatPath,
+    this.httpMethod,
+    this.id,
+    this.mediaUpload,
+    this.parameterOrder,
+    this.parameters,
+    this.path,
+    this.request,
+    this.response,
+    this.scopes,
+    this.supportsMediaDownload,
+    this.supportsMediaUpload,
+    this.supportsSubscription,
+    this.useMediaDownloadService,
+  });
 
-  RestMethod.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('etagRequired')) {
-      etagRequired = _json['etagRequired'] as core.bool;
-    }
-    if (_json.containsKey('flatPath')) {
-      flatPath = _json['flatPath'] as core.String;
-    }
-    if (_json.containsKey('httpMethod')) {
-      httpMethod = _json['httpMethod'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('mediaUpload')) {
-      mediaUpload = RestMethodMediaUpload.fromJson(
-          _json['mediaUpload'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('parameterOrder')) {
-      parameterOrder = (_json['parameterOrder'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('parameters')) {
-      parameters =
-          (_json['parameters'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          JsonSchema.fromJson(item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('path')) {
-      path = _json['path'] as core.String;
-    }
-    if (_json.containsKey('request')) {
-      request = RestMethodRequest.fromJson(
-          _json['request'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('response')) {
-      response = RestMethodResponse.fromJson(
-          _json['response'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('scopes')) {
-      scopes = (_json['scopes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('supportsMediaDownload')) {
-      supportsMediaDownload = _json['supportsMediaDownload'] as core.bool;
-    }
-    if (_json.containsKey('supportsMediaUpload')) {
-      supportsMediaUpload = _json['supportsMediaUpload'] as core.bool;
-    }
-    if (_json.containsKey('supportsSubscription')) {
-      supportsSubscription = _json['supportsSubscription'] as core.bool;
-    }
-    if (_json.containsKey('useMediaDownloadService')) {
-      useMediaDownloadService = _json['useMediaDownloadService'] as core.bool;
-    }
-  }
+  RestMethod.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          etagRequired: _json.containsKey('etagRequired')
+              ? _json['etagRequired'] as core.bool
+              : null,
+          flatPath: _json.containsKey('flatPath')
+              ? _json['flatPath'] as core.String
+              : null,
+          httpMethod: _json.containsKey('httpMethod')
+              ? _json['httpMethod'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          mediaUpload: _json.containsKey('mediaUpload')
+              ? RestMethodMediaUpload.fromJson(
+                  _json['mediaUpload'] as core.Map<core.String, core.dynamic>)
+              : null,
+          parameterOrder: _json.containsKey('parameterOrder')
+              ? (_json['parameterOrder'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          parameters: _json.containsKey('parameters')
+              ? (_json['parameters'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    JsonSchema.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+          request: _json.containsKey('request')
+              ? RestMethodRequest.fromJson(
+                  _json['request'] as core.Map<core.String, core.dynamic>)
+              : null,
+          response: _json.containsKey('response')
+              ? RestMethodResponse.fromJson(
+                  _json['response'] as core.Map<core.String, core.dynamic>)
+              : null,
+          scopes: _json.containsKey('scopes')
+              ? (_json['scopes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          supportsMediaDownload: _json.containsKey('supportsMediaDownload')
+              ? _json['supportsMediaDownload'] as core.bool
+              : null,
+          supportsMediaUpload: _json.containsKey('supportsMediaUpload')
+              ? _json['supportsMediaUpload'] as core.bool
+              : null,
+          supportsSubscription: _json.containsKey('supportsSubscription')
+              ? _json['supportsSubscription'] as core.bool
+              : null,
+          useMediaDownloadService: _json.containsKey('useMediaDownloadService')
+              ? _json['useMediaDownloadService'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -1240,27 +1348,32 @@ class RestResource {
   /// Sub-resources on this resource.
   core.Map<core.String, RestResource>? resources;
 
-  RestResource();
+  RestResource({
+    this.methods,
+    this.resources,
+  });
 
-  RestResource.fromJson(core.Map _json) {
-    if (_json.containsKey('methods')) {
-      methods = (_json['methods'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          RestMethod.fromJson(item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('resources')) {
-      resources =
-          (_json['resources'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          RestResource.fromJson(item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-  }
+  RestResource.fromJson(core.Map _json)
+      : this(
+          methods: _json.containsKey('methods')
+              ? (_json['methods'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    RestMethod.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          resources: _json.containsKey('resources')
+              ? (_json['resources'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    RestResource.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (methods != null)

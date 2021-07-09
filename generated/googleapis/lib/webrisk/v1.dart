@@ -619,32 +619,40 @@ class GoogleCloudWebriskV1ComputeThreatListDiffResponse {
   /// the client is believed to be corrupt.
   core.String? responseType;
 
-  GoogleCloudWebriskV1ComputeThreatListDiffResponse();
+  GoogleCloudWebriskV1ComputeThreatListDiffResponse({
+    this.additions,
+    this.checksum,
+    this.newVersionToken,
+    this.recommendedNextDiff,
+    this.removals,
+    this.responseType,
+  });
 
-  GoogleCloudWebriskV1ComputeThreatListDiffResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('additions')) {
-      additions = GoogleCloudWebriskV1ThreatEntryAdditions.fromJson(
-          _json['additions'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('checksum')) {
-      checksum =
-          GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum.fromJson(
-              _json['checksum'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('newVersionToken')) {
-      newVersionToken = _json['newVersionToken'] as core.String;
-    }
-    if (_json.containsKey('recommendedNextDiff')) {
-      recommendedNextDiff = _json['recommendedNextDiff'] as core.String;
-    }
-    if (_json.containsKey('removals')) {
-      removals = GoogleCloudWebriskV1ThreatEntryRemovals.fromJson(
-          _json['removals'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('responseType')) {
-      responseType = _json['responseType'] as core.String;
-    }
-  }
+  GoogleCloudWebriskV1ComputeThreatListDiffResponse.fromJson(core.Map _json)
+      : this(
+          additions: _json.containsKey('additions')
+              ? GoogleCloudWebriskV1ThreatEntryAdditions.fromJson(
+                  _json['additions'] as core.Map<core.String, core.dynamic>)
+              : null,
+          checksum: _json.containsKey('checksum')
+              ? GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum
+                  .fromJson(
+                      _json['checksum'] as core.Map<core.String, core.dynamic>)
+              : null,
+          newVersionToken: _json.containsKey('newVersionToken')
+              ? _json['newVersionToken'] as core.String
+              : null,
+          recommendedNextDiff: _json.containsKey('recommendedNextDiff')
+              ? _json['recommendedNextDiff'] as core.String
+              : null,
+          removals: _json.containsKey('removals')
+              ? GoogleCloudWebriskV1ThreatEntryRemovals.fromJson(
+                  _json['removals'] as core.Map<core.String, core.dynamic>)
+              : null,
+          responseType: _json.containsKey('responseType')
+              ? _json['responseType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (additions != null) 'additions': additions!.toJson(),
@@ -669,14 +677,17 @@ class GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum();
+  GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum({
+    this.sha256,
+  });
 
   GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('sha256')) {
-      sha256 = _json['sha256'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          sha256: _json.containsKey('sha256')
+              ? _json['sha256'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sha256 != null) 'sha256': sha256!,
@@ -710,16 +721,20 @@ class GoogleCloudWebriskV1RawHashes {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  GoogleCloudWebriskV1RawHashes();
+  GoogleCloudWebriskV1RawHashes({
+    this.prefixSize,
+    this.rawHashes,
+  });
 
-  GoogleCloudWebriskV1RawHashes.fromJson(core.Map _json) {
-    if (_json.containsKey('prefixSize')) {
-      prefixSize = _json['prefixSize'] as core.int;
-    }
-    if (_json.containsKey('rawHashes')) {
-      rawHashes = _json['rawHashes'] as core.String;
-    }
-  }
+  GoogleCloudWebriskV1RawHashes.fromJson(core.Map _json)
+      : this(
+          prefixSize: _json.containsKey('prefixSize')
+              ? _json['prefixSize'] as core.int
+              : null,
+          rawHashes: _json.containsKey('rawHashes')
+              ? _json['rawHashes'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (prefixSize != null) 'prefixSize': prefixSize!,
@@ -732,15 +747,18 @@ class GoogleCloudWebriskV1RawIndices {
   /// The indices to remove from a lexicographically-sorted local list.
   core.List<core.int>? indices;
 
-  GoogleCloudWebriskV1RawIndices();
+  GoogleCloudWebriskV1RawIndices({
+    this.indices,
+  });
 
-  GoogleCloudWebriskV1RawIndices.fromJson(core.Map _json) {
-    if (_json.containsKey('indices')) {
-      indices = (_json['indices'] as core.List)
-          .map<core.int>((value) => value as core.int)
-          .toList();
-    }
-  }
+  GoogleCloudWebriskV1RawIndices.fromJson(core.Map _json)
+      : this(
+          indices: _json.containsKey('indices')
+              ? (_json['indices'] as core.List)
+                  .map<core.int>((value) => value as core.int)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (indices != null) 'indices': indices!,
@@ -778,22 +796,28 @@ class GoogleCloudWebriskV1RiceDeltaEncoding {
   /// This field is missing (that is, zero) if `num_entries` is zero.
   core.int? riceParameter;
 
-  GoogleCloudWebriskV1RiceDeltaEncoding();
+  GoogleCloudWebriskV1RiceDeltaEncoding({
+    this.encodedData,
+    this.entryCount,
+    this.firstValue,
+    this.riceParameter,
+  });
 
-  GoogleCloudWebriskV1RiceDeltaEncoding.fromJson(core.Map _json) {
-    if (_json.containsKey('encodedData')) {
-      encodedData = _json['encodedData'] as core.String;
-    }
-    if (_json.containsKey('entryCount')) {
-      entryCount = _json['entryCount'] as core.int;
-    }
-    if (_json.containsKey('firstValue')) {
-      firstValue = _json['firstValue'] as core.String;
-    }
-    if (_json.containsKey('riceParameter')) {
-      riceParameter = _json['riceParameter'] as core.int;
-    }
-  }
+  GoogleCloudWebriskV1RiceDeltaEncoding.fromJson(core.Map _json)
+      : this(
+          encodedData: _json.containsKey('encodedData')
+              ? _json['encodedData'] as core.String
+              : null,
+          entryCount: _json.containsKey('entryCount')
+              ? _json['entryCount'] as core.int
+              : null,
+          firstValue: _json.containsKey('firstValue')
+              ? _json['firstValue'] as core.String
+              : null,
+          riceParameter: _json.containsKey('riceParameter')
+              ? _json['riceParameter'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (encodedData != null) 'encodedData': encodedData!,
@@ -813,20 +837,26 @@ class GoogleCloudWebriskV1SearchHashesResponse {
   /// The hash will be populated in the key.
   core.List<GoogleCloudWebriskV1SearchHashesResponseThreatHash>? threats;
 
-  GoogleCloudWebriskV1SearchHashesResponse();
+  GoogleCloudWebriskV1SearchHashesResponse({
+    this.negativeExpireTime,
+    this.threats,
+  });
 
-  GoogleCloudWebriskV1SearchHashesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('negativeExpireTime')) {
-      negativeExpireTime = _json['negativeExpireTime'] as core.String;
-    }
-    if (_json.containsKey('threats')) {
-      threats = (_json['threats'] as core.List)
-          .map<GoogleCloudWebriskV1SearchHashesResponseThreatHash>((value) =>
-              GoogleCloudWebriskV1SearchHashesResponseThreatHash.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudWebriskV1SearchHashesResponse.fromJson(core.Map _json)
+      : this(
+          negativeExpireTime: _json.containsKey('negativeExpireTime')
+              ? _json['negativeExpireTime'] as core.String
+              : null,
+          threats: _json.containsKey('threats')
+              ? (_json['threats'] as core.List)
+                  .map<GoogleCloudWebriskV1SearchHashesResponseThreatHash>(
+                      (value) =>
+                          GoogleCloudWebriskV1SearchHashesResponseThreatHash
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (negativeExpireTime != null)
@@ -861,21 +891,24 @@ class GoogleCloudWebriskV1SearchHashesResponseThreatHash {
   /// This must contain at least one entry.
   core.List<core.String>? threatTypes;
 
-  GoogleCloudWebriskV1SearchHashesResponseThreatHash();
+  GoogleCloudWebriskV1SearchHashesResponseThreatHash({
+    this.expireTime,
+    this.hash,
+    this.threatTypes,
+  });
 
-  GoogleCloudWebriskV1SearchHashesResponseThreatHash.fromJson(core.Map _json) {
-    if (_json.containsKey('expireTime')) {
-      expireTime = _json['expireTime'] as core.String;
-    }
-    if (_json.containsKey('hash')) {
-      hash = _json['hash'] as core.String;
-    }
-    if (_json.containsKey('threatTypes')) {
-      threatTypes = (_json['threatTypes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  GoogleCloudWebriskV1SearchHashesResponseThreatHash.fromJson(core.Map _json)
+      : this(
+          expireTime: _json.containsKey('expireTime')
+              ? _json['expireTime'] as core.String
+              : null,
+          hash: _json.containsKey('hash') ? _json['hash'] as core.String : null,
+          threatTypes: _json.containsKey('threatTypes')
+              ? (_json['threatTypes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (expireTime != null) 'expireTime': expireTime!,
@@ -890,14 +923,17 @@ class GoogleCloudWebriskV1SearchUrisResponse {
   /// This may be empty if the URI is on no list.
   GoogleCloudWebriskV1SearchUrisResponseThreatUri? threat;
 
-  GoogleCloudWebriskV1SearchUrisResponse();
+  GoogleCloudWebriskV1SearchUrisResponse({
+    this.threat,
+  });
 
-  GoogleCloudWebriskV1SearchUrisResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('threat')) {
-      threat = GoogleCloudWebriskV1SearchUrisResponseThreatUri.fromJson(
-          _json['threat'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudWebriskV1SearchUrisResponse.fromJson(core.Map _json)
+      : this(
+          threat: _json.containsKey('threat')
+              ? GoogleCloudWebriskV1SearchUrisResponseThreatUri.fromJson(
+                  _json['threat'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (threat != null) 'threat': threat!.toJson(),
@@ -915,18 +951,22 @@ class GoogleCloudWebriskV1SearchUrisResponseThreatUri {
   /// The ThreatList this threat belongs to.
   core.List<core.String>? threatTypes;
 
-  GoogleCloudWebriskV1SearchUrisResponseThreatUri();
+  GoogleCloudWebriskV1SearchUrisResponseThreatUri({
+    this.expireTime,
+    this.threatTypes,
+  });
 
-  GoogleCloudWebriskV1SearchUrisResponseThreatUri.fromJson(core.Map _json) {
-    if (_json.containsKey('expireTime')) {
-      expireTime = _json['expireTime'] as core.String;
-    }
-    if (_json.containsKey('threatTypes')) {
-      threatTypes = (_json['threatTypes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  GoogleCloudWebriskV1SearchUrisResponseThreatUri.fromJson(core.Map _json)
+      : this(
+          expireTime: _json.containsKey('expireTime')
+              ? _json['expireTime'] as core.String
+              : null,
+          threatTypes: _json.containsKey('threatTypes')
+              ? (_json['threatTypes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (expireTime != null) 'expireTime': expireTime!,
@@ -947,18 +987,20 @@ class GoogleCloudWebriskV1Submission {
   /// Required.
   core.String? uri;
 
-  GoogleCloudWebriskV1Submission();
+  GoogleCloudWebriskV1Submission({
+    this.threatTypes,
+    this.uri,
+  });
 
-  GoogleCloudWebriskV1Submission.fromJson(core.Map _json) {
-    if (_json.containsKey('threatTypes')) {
-      threatTypes = (_json['threatTypes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('uri')) {
-      uri = _json['uri'] as core.String;
-    }
-  }
+  GoogleCloudWebriskV1Submission.fromJson(core.Map _json)
+      : this(
+          threatTypes: _json.containsKey('threatTypes')
+              ? (_json['threatTypes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (threatTypes != null) 'threatTypes': threatTypes!,
@@ -983,19 +1025,23 @@ class GoogleCloudWebriskV1SubmitUriMetadata {
   /// Latest update time of the operation.
   core.String? updateTime;
 
-  GoogleCloudWebriskV1SubmitUriMetadata();
+  GoogleCloudWebriskV1SubmitUriMetadata({
+    this.createTime,
+    this.state,
+    this.updateTime,
+  });
 
-  GoogleCloudWebriskV1SubmitUriMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  GoogleCloudWebriskV1SubmitUriMetadata.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -1011,14 +1057,17 @@ class GoogleCloudWebriskV1SubmitUriRequest {
   /// Required.
   GoogleCloudWebriskV1Submission? submission;
 
-  GoogleCloudWebriskV1SubmitUriRequest();
+  GoogleCloudWebriskV1SubmitUriRequest({
+    this.submission,
+  });
 
-  GoogleCloudWebriskV1SubmitUriRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('submission')) {
-      submission = GoogleCloudWebriskV1Submission.fromJson(
-          _json['submission'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudWebriskV1SubmitUriRequest.fromJson(core.Map _json)
+      : this(
+          submission: _json.containsKey('submission')
+              ? GoogleCloudWebriskV1Submission.fromJson(
+                  _json['submission'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (submission != null) 'submission': submission!.toJson(),
@@ -1041,21 +1090,25 @@ class GoogleCloudWebriskV1ThreatEntryAdditions {
   /// encoded and stored as encoded_data.
   GoogleCloudWebriskV1RiceDeltaEncoding? riceHashes;
 
-  GoogleCloudWebriskV1ThreatEntryAdditions();
+  GoogleCloudWebriskV1ThreatEntryAdditions({
+    this.rawHashes,
+    this.riceHashes,
+  });
 
-  GoogleCloudWebriskV1ThreatEntryAdditions.fromJson(core.Map _json) {
-    if (_json.containsKey('rawHashes')) {
-      rawHashes = (_json['rawHashes'] as core.List)
-          .map<GoogleCloudWebriskV1RawHashes>((value) =>
-              GoogleCloudWebriskV1RawHashes.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('riceHashes')) {
-      riceHashes = GoogleCloudWebriskV1RiceDeltaEncoding.fromJson(
-          _json['riceHashes'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudWebriskV1ThreatEntryAdditions.fromJson(core.Map _json)
+      : this(
+          rawHashes: _json.containsKey('rawHashes')
+              ? (_json['rawHashes'] as core.List)
+                  .map<GoogleCloudWebriskV1RawHashes>((value) =>
+                      GoogleCloudWebriskV1RawHashes.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          riceHashes: _json.containsKey('riceHashes')
+              ? GoogleCloudWebriskV1RiceDeltaEncoding.fromJson(
+                  _json['riceHashes'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (rawHashes != null)
@@ -1077,18 +1130,22 @@ class GoogleCloudWebriskV1ThreatEntryRemovals {
   /// encoded_data.
   GoogleCloudWebriskV1RiceDeltaEncoding? riceIndices;
 
-  GoogleCloudWebriskV1ThreatEntryRemovals();
+  GoogleCloudWebriskV1ThreatEntryRemovals({
+    this.rawIndices,
+    this.riceIndices,
+  });
 
-  GoogleCloudWebriskV1ThreatEntryRemovals.fromJson(core.Map _json) {
-    if (_json.containsKey('rawIndices')) {
-      rawIndices = GoogleCloudWebriskV1RawIndices.fromJson(
-          _json['rawIndices'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('riceIndices')) {
-      riceIndices = GoogleCloudWebriskV1RiceDeltaEncoding.fromJson(
-          _json['riceIndices'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudWebriskV1ThreatEntryRemovals.fromJson(core.Map _json)
+      : this(
+          rawIndices: _json.containsKey('rawIndices')
+              ? GoogleCloudWebriskV1RawIndices.fromJson(
+                  _json['rawIndices'] as core.Map<core.String, core.dynamic>)
+              : null,
+          riceIndices: _json.containsKey('riceIndices')
+              ? GoogleCloudWebriskV1RiceDeltaEncoding.fromJson(
+                  _json['riceIndices'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (rawIndices != null) 'rawIndices': rawIndices!.toJson(),
@@ -1115,20 +1172,24 @@ class GoogleLongrunningListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<GoogleLongrunningOperation>? operations;
 
-  GoogleLongrunningListOperationsResponse();
+  GoogleLongrunningListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
 
-  GoogleLongrunningListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('operations')) {
-      operations = (_json['operations'] as core.List)
-          .map<GoogleLongrunningOperation>((value) =>
-              GoogleLongrunningOperation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleLongrunningListOperationsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          operations: _json.containsKey('operations')
+              ? (_json['operations'] as core.List)
+                  .map<GoogleLongrunningOperation>((value) =>
+                      GoogleLongrunningOperation.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1180,36 +1241,39 @@ class GoogleLongrunningOperation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object>? response;
 
-  GoogleLongrunningOperation();
+  GoogleLongrunningOperation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
-  GoogleLongrunningOperation.fromJson(core.Map _json) {
-    if (_json.containsKey('done')) {
-      done = _json['done'] as core.bool;
-    }
-    if (_json.containsKey('error')) {
-      error = GoogleRpcStatus.fromJson(
-          _json['error'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('response')) {
-      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-  }
+  GoogleLongrunningOperation.fromJson(core.Map _json)
+      : this(
+          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
+          error: _json.containsKey('error')
+              ? GoogleRpcStatus.fromJson(
+                  _json['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          response: _json.containsKey('response')
+              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
@@ -1262,27 +1326,30 @@ class GoogleRpcStatus {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  GoogleRpcStatus();
+  GoogleRpcStatus({
+    this.code,
+    this.details,
+    this.message,
+  });
 
-  GoogleRpcStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.int;
-    }
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  GoogleRpcStatus.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,

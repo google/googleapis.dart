@@ -423,58 +423,72 @@ class Asset {
   /// available to anyone.
   core.String? visibility;
 
-  Asset();
+  Asset({
+    this.authorName,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.formats,
+    this.isCurated,
+    this.license,
+    this.metadata,
+    this.name,
+    this.presentationParams,
+    this.remixInfo,
+    this.thumbnail,
+    this.updateTime,
+    this.visibility,
+  });
 
-  Asset.fromJson(core.Map _json) {
-    if (_json.containsKey('authorName')) {
-      authorName = _json['authorName'] as core.String;
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('formats')) {
-      formats = (_json['formats'] as core.List)
-          .map<Format>((value) =>
-              Format.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('isCurated')) {
-      isCurated = _json['isCurated'] as core.bool;
-    }
-    if (_json.containsKey('license')) {
-      license = _json['license'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = _json['metadata'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('presentationParams')) {
-      presentationParams = PresentationParams.fromJson(
-          _json['presentationParams'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('remixInfo')) {
-      remixInfo = RemixInfo.fromJson(
-          _json['remixInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('thumbnail')) {
-      thumbnail = File.fromJson(
-          _json['thumbnail'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-    if (_json.containsKey('visibility')) {
-      visibility = _json['visibility'] as core.String;
-    }
-  }
+  Asset.fromJson(core.Map _json)
+      : this(
+          authorName: _json.containsKey('authorName')
+              ? _json['authorName'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          formats: _json.containsKey('formats')
+              ? (_json['formats'] as core.List)
+                  .map<Format>((value) => Format.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          isCurated: _json.containsKey('isCurated')
+              ? _json['isCurated'] as core.bool
+              : null,
+          license: _json.containsKey('license')
+              ? _json['license'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? _json['metadata'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          presentationParams: _json.containsKey('presentationParams')
+              ? PresentationParams.fromJson(_json['presentationParams']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          remixInfo: _json.containsKey('remixInfo')
+              ? RemixInfo.fromJson(
+                  _json['remixInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          thumbnail: _json.containsKey('thumbnail')
+              ? File.fromJson(
+                  _json['thumbnail'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+          visibility: _json.containsKey('visibility')
+              ? _json['visibility'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authorName != null) 'authorName': authorName!,
@@ -541,24 +555,28 @@ class AssetImportMessage {
   /// Only present for OBJ_PARSE_ERROR.
   ObjParseError? objParseError;
 
-  AssetImportMessage();
+  AssetImportMessage({
+    this.code,
+    this.filePath,
+    this.imageError,
+    this.objParseError,
+  });
 
-  AssetImportMessage.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.String;
-    }
-    if (_json.containsKey('filePath')) {
-      filePath = _json['filePath'] as core.String;
-    }
-    if (_json.containsKey('imageError')) {
-      imageError = ImageError.fromJson(
-          _json['imageError'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('objParseError')) {
-      objParseError = ObjParseError.fromJson(
-          _json['objParseError'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  AssetImportMessage.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.String : null,
+          filePath: _json.containsKey('filePath')
+              ? _json['filePath'] as core.String
+              : null,
+          imageError: _json.containsKey('imageError')
+              ? ImageError.fromJson(
+                  _json['imageError'] as core.Map<core.String, core.dynamic>)
+              : null,
+          objParseError: _json.containsKey('objParseError')
+              ? ObjParseError.fromJson(
+                  _json['objParseError'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -584,19 +602,22 @@ class File {
   /// The URL where the file data can be retrieved.
   core.String? url;
 
-  File();
+  File({
+    this.contentType,
+    this.relativePath,
+    this.url,
+  });
 
-  File.fromJson(core.Map _json) {
-    if (_json.containsKey('contentType')) {
-      contentType = _json['contentType'] as core.String;
-    }
-    if (_json.containsKey('relativePath')) {
-      relativePath = _json['relativePath'] as core.String;
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  File.fromJson(core.Map _json)
+      : this(
+          contentType: _json.containsKey('contentType')
+              ? _json['contentType'] as core.String
+              : null,
+          relativePath: _json.containsKey('relativePath')
+              ? _json['relativePath'] as core.String
+              : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentType != null) 'contentType': contentType!,
@@ -635,27 +656,33 @@ class Format {
   /// resources field.
   File? root;
 
-  Format();
+  Format({
+    this.formatComplexity,
+    this.formatType,
+    this.resources,
+    this.root,
+  });
 
-  Format.fromJson(core.Map _json) {
-    if (_json.containsKey('formatComplexity')) {
-      formatComplexity = FormatComplexity.fromJson(
-          _json['formatComplexity'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('formatType')) {
-      formatType = _json['formatType'] as core.String;
-    }
-    if (_json.containsKey('resources')) {
-      resources = (_json['resources'] as core.List)
-          .map<File>((value) =>
-              File.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('root')) {
-      root =
-          File.fromJson(_json['root'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Format.fromJson(core.Map _json)
+      : this(
+          formatComplexity: _json.containsKey('formatComplexity')
+              ? FormatComplexity.fromJson(_json['formatComplexity']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          formatType: _json.containsKey('formatType')
+              ? _json['formatType'] as core.String
+              : null,
+          resources: _json.containsKey('resources')
+              ? (_json['resources'] as core.List)
+                  .map<File>((value) => File.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          root: _json.containsKey('root')
+              ? File.fromJson(
+                  _json['root'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (formatComplexity != null)
@@ -680,16 +707,20 @@ class FormatComplexity {
   /// The estimated number of triangles.
   core.String? triangleCount;
 
-  FormatComplexity();
+  FormatComplexity({
+    this.lodHint,
+    this.triangleCount,
+  });
 
-  FormatComplexity.fromJson(core.Map _json) {
-    if (_json.containsKey('lodHint')) {
-      lodHint = _json['lodHint'] as core.int;
-    }
-    if (_json.containsKey('triangleCount')) {
-      triangleCount = _json['triangleCount'] as core.String;
-    }
-  }
+  FormatComplexity.fromJson(core.Map _json)
+      : this(
+          lodHint: _json.containsKey('lodHint')
+              ? _json['lodHint'] as core.int
+              : null,
+          triangleCount: _json.containsKey('triangleCount')
+              ? _json['triangleCount'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (lodHint != null) 'lodHint': lodHint!,
@@ -713,16 +744,18 @@ class ImageError {
   /// The file path in the import of the image that was rejected.
   core.String? filePath;
 
-  ImageError();
+  ImageError({
+    this.code,
+    this.filePath,
+  });
 
-  ImageError.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.String;
-    }
-    if (_json.containsKey('filePath')) {
-      filePath = _json['filePath'] as core.String;
-    }
-  }
+  ImageError.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.String : null,
+          filePath: _json.containsKey('filePath')
+              ? _json['filePath'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -744,22 +777,27 @@ class ListAssetsResponse {
   /// The total number of assets in the list, without pagination.
   core.int? totalSize;
 
-  ListAssetsResponse();
+  ListAssetsResponse({
+    this.assets,
+    this.nextPageToken,
+    this.totalSize,
+  });
 
-  ListAssetsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('assets')) {
-      assets = (_json['assets'] as core.List)
-          .map<Asset>((value) =>
-              Asset.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('totalSize')) {
-      totalSize = _json['totalSize'] as core.int;
-    }
-  }
+  ListAssetsResponse.fromJson(core.Map _json)
+      : this(
+          assets: _json.containsKey('assets')
+              ? (_json['assets'] as core.List)
+                  .map<Asset>((value) => Asset.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          totalSize: _json.containsKey('totalSize')
+              ? _json['totalSize'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assets != null)
@@ -783,22 +821,27 @@ class ListLikedAssetsResponse {
   /// The total number of assets in the list, without pagination.
   core.int? totalSize;
 
-  ListLikedAssetsResponse();
+  ListLikedAssetsResponse({
+    this.assets,
+    this.nextPageToken,
+    this.totalSize,
+  });
 
-  ListLikedAssetsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('assets')) {
-      assets = (_json['assets'] as core.List)
-          .map<Asset>((value) =>
-              Asset.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('totalSize')) {
-      totalSize = _json['totalSize'] as core.int;
-    }
-  }
+  ListLikedAssetsResponse.fromJson(core.Map _json)
+      : this(
+          assets: _json.containsKey('assets')
+              ? (_json['assets'] as core.List)
+                  .map<Asset>((value) => Asset.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          totalSize: _json.containsKey('totalSize')
+              ? _json['totalSize'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assets != null)
@@ -822,22 +865,27 @@ class ListUserAssetsResponse {
   /// A list of UserAssets matching the request.
   core.List<UserAsset>? userAssets;
 
-  ListUserAssetsResponse();
+  ListUserAssetsResponse({
+    this.nextPageToken,
+    this.totalSize,
+    this.userAssets,
+  });
 
-  ListUserAssetsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('totalSize')) {
-      totalSize = _json['totalSize'] as core.int;
-    }
-    if (_json.containsKey('userAssets')) {
-      userAssets = (_json['userAssets'] as core.List)
-          .map<UserAsset>((value) =>
-              UserAsset.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListUserAssetsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          totalSize: _json.containsKey('totalSize')
+              ? _json['totalSize'] as core.int
+              : null,
+          userAssets: _json.containsKey('userAssets')
+              ? (_json['userAssets'] as core.List)
+                  .map<UserAsset>((value) => UserAsset.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -911,28 +959,32 @@ class ObjParseError {
   /// The starting character index at which the problem was found.
   core.int? startIndex;
 
-  ObjParseError();
+  ObjParseError({
+    this.code,
+    this.endIndex,
+    this.filePath,
+    this.line,
+    this.lineNumber,
+    this.startIndex,
+  });
 
-  ObjParseError.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.String;
-    }
-    if (_json.containsKey('endIndex')) {
-      endIndex = _json['endIndex'] as core.int;
-    }
-    if (_json.containsKey('filePath')) {
-      filePath = _json['filePath'] as core.String;
-    }
-    if (_json.containsKey('line')) {
-      line = _json['line'] as core.String;
-    }
-    if (_json.containsKey('lineNumber')) {
-      lineNumber = _json['lineNumber'] as core.int;
-    }
-    if (_json.containsKey('startIndex')) {
-      startIndex = _json['startIndex'] as core.int;
-    }
-  }
+  ObjParseError.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.String : null,
+          endIndex: _json.containsKey('endIndex')
+              ? _json['endIndex'] as core.int
+              : null,
+          filePath: _json.containsKey('filePath')
+              ? _json['filePath'] as core.String
+              : null,
+          line: _json.containsKey('line') ? _json['line'] as core.String : null,
+          lineNumber: _json.containsKey('lineNumber')
+              ? _json['lineNumber'] as core.int
+              : null,
+          startIndex: _json.containsKey('startIndex')
+              ? _json['startIndex'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -981,20 +1033,25 @@ class PresentationParams {
   /// only to the gLTF.
   Quaternion? orientingRotation;
 
-  PresentationParams();
+  PresentationParams({
+    this.backgroundColor,
+    this.colorSpace,
+    this.orientingRotation,
+  });
 
-  PresentationParams.fromJson(core.Map _json) {
-    if (_json.containsKey('backgroundColor')) {
-      backgroundColor = _json['backgroundColor'] as core.String;
-    }
-    if (_json.containsKey('colorSpace')) {
-      colorSpace = _json['colorSpace'] as core.String;
-    }
-    if (_json.containsKey('orientingRotation')) {
-      orientingRotation = Quaternion.fromJson(
-          _json['orientingRotation'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  PresentationParams.fromJson(core.Map _json)
+      : this(
+          backgroundColor: _json.containsKey('backgroundColor')
+              ? _json['backgroundColor'] as core.String
+              : null,
+          colorSpace: _json.containsKey('colorSpace')
+              ? _json['colorSpace'] as core.String
+              : null,
+          orientingRotation: _json.containsKey('orientingRotation')
+              ? Quaternion.fromJson(_json['orientingRotation']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backgroundColor != null) 'backgroundColor': backgroundColor!,
@@ -1021,22 +1078,28 @@ class Quaternion {
   /// The z component.
   core.double? z;
 
-  Quaternion();
+  Quaternion({
+    this.w,
+    this.x,
+    this.y,
+    this.z,
+  });
 
-  Quaternion.fromJson(core.Map _json) {
-    if (_json.containsKey('w')) {
-      w = (_json['w'] as core.num).toDouble();
-    }
-    if (_json.containsKey('x')) {
-      x = (_json['x'] as core.num).toDouble();
-    }
-    if (_json.containsKey('y')) {
-      y = (_json['y'] as core.num).toDouble();
-    }
-    if (_json.containsKey('z')) {
-      z = (_json['z'] as core.num).toDouble();
-    }
-  }
+  Quaternion.fromJson(core.Map _json)
+      : this(
+          w: _json.containsKey('w')
+              ? (_json['w'] as core.num).toDouble()
+              : null,
+          x: _json.containsKey('x')
+              ? (_json['x'] as core.num).toDouble()
+              : null,
+          y: _json.containsKey('y')
+              ? (_json['y'] as core.num).toDouble()
+              : null,
+          z: _json.containsKey('z')
+              ? (_json['z'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (w != null) 'w': w!,
@@ -1053,15 +1116,18 @@ class RemixInfo {
   /// `assets/{ASSET_ID}`
   core.List<core.String>? sourceAsset;
 
-  RemixInfo();
+  RemixInfo({
+    this.sourceAsset,
+  });
 
-  RemixInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('sourceAsset')) {
-      sourceAsset = (_json['sourceAsset'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  RemixInfo.fromJson(core.Map _json)
+      : this(
+          sourceAsset: _json.containsKey('sourceAsset')
+              ? (_json['sourceAsset'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sourceAsset != null) 'sourceAsset': sourceAsset!,
@@ -1091,25 +1157,32 @@ class StartAssetImportResponse {
   /// The publish URL for the asset.
   core.String? publishUrl;
 
-  StartAssetImportResponse();
+  StartAssetImportResponse({
+    this.assetId,
+    this.assetImportId,
+    this.assetImportMessages,
+    this.publishUrl,
+  });
 
-  StartAssetImportResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('assetId')) {
-      assetId = _json['assetId'] as core.String;
-    }
-    if (_json.containsKey('assetImportId')) {
-      assetImportId = _json['assetImportId'] as core.String;
-    }
-    if (_json.containsKey('assetImportMessages')) {
-      assetImportMessages = (_json['assetImportMessages'] as core.List)
-          .map<AssetImportMessage>((value) => AssetImportMessage.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('publishUrl')) {
-      publishUrl = _json['publishUrl'] as core.String;
-    }
-  }
+  StartAssetImportResponse.fromJson(core.Map _json)
+      : this(
+          assetId: _json.containsKey('assetId')
+              ? _json['assetId'] as core.String
+              : null,
+          assetImportId: _json.containsKey('assetImportId')
+              ? _json['assetImportId'] as core.String
+              : null,
+          assetImportMessages: _json.containsKey('assetImportMessages')
+              ? (_json['assetImportMessages'] as core.List)
+                  .map<AssetImportMessage>((value) =>
+                      AssetImportMessage.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          publishUrl: _json.containsKey('publishUrl')
+              ? _json['publishUrl'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assetId != null) 'assetId': assetId!,
@@ -1126,14 +1199,17 @@ class UserAsset {
   /// An Asset.
   Asset? asset;
 
-  UserAsset();
+  UserAsset({
+    this.asset,
+  });
 
-  UserAsset.fromJson(core.Map _json) {
-    if (_json.containsKey('asset')) {
-      asset =
-          Asset.fromJson(_json['asset'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  UserAsset.fromJson(core.Map _json)
+      : this(
+          asset: _json.containsKey('asset')
+              ? Asset.fromJson(
+                  _json['asset'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (asset != null) 'asset': asset!.toJson(),

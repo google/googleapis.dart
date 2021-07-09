@@ -917,41 +917,47 @@ class Account {
   /// will behave like an unvetted account.
   core.String? vettedState;
 
-  Account();
+  Account({
+    this.accountName,
+    this.accountNumber,
+    this.name,
+    this.organizationInfo,
+    this.permissionLevel,
+    this.primaryOwner,
+    this.role,
+    this.type,
+    this.verificationState,
+    this.vettedState,
+  });
 
-  Account.fromJson(core.Map _json) {
-    if (_json.containsKey('accountName')) {
-      accountName = _json['accountName'] as core.String;
-    }
-    if (_json.containsKey('accountNumber')) {
-      accountNumber = _json['accountNumber'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('organizationInfo')) {
-      organizationInfo = OrganizationInfo.fromJson(
-          _json['organizationInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('permissionLevel')) {
-      permissionLevel = _json['permissionLevel'] as core.String;
-    }
-    if (_json.containsKey('primaryOwner')) {
-      primaryOwner = _json['primaryOwner'] as core.String;
-    }
-    if (_json.containsKey('role')) {
-      role = _json['role'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('verificationState')) {
-      verificationState = _json['verificationState'] as core.String;
-    }
-    if (_json.containsKey('vettedState')) {
-      vettedState = _json['vettedState'] as core.String;
-    }
-  }
+  Account.fromJson(core.Map _json)
+      : this(
+          accountName: _json.containsKey('accountName')
+              ? _json['accountName'] as core.String
+              : null,
+          accountNumber: _json.containsKey('accountNumber')
+              ? _json['accountNumber'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          organizationInfo: _json.containsKey('organizationInfo')
+              ? OrganizationInfo.fromJson(_json['organizationInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          permissionLevel: _json.containsKey('permissionLevel')
+              ? _json['permissionLevel'] as core.String
+              : null,
+          primaryOwner: _json.containsKey('primaryOwner')
+              ? _json['primaryOwner'] as core.String
+              : null,
+          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          verificationState: _json.containsKey('verificationState')
+              ? _json['verificationState'] as core.String
+              : null,
+          vettedState: _json.containsKey('vettedState')
+              ? _json['vettedState'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountName != null) 'accountName': accountName!,
@@ -1011,22 +1017,23 @@ class Admin {
   /// with a SITE_MANAGER role.
   core.String? role;
 
-  Admin();
+  Admin({
+    this.admin,
+    this.name,
+    this.pendingInvitation,
+    this.role,
+  });
 
-  Admin.fromJson(core.Map _json) {
-    if (_json.containsKey('admin')) {
-      admin = _json['admin'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('pendingInvitation')) {
-      pendingInvitation = _json['pendingInvitation'] as core.bool;
-    }
-    if (_json.containsKey('role')) {
-      role = _json['role'] as core.String;
-    }
-  }
+  Admin.fromJson(core.Map _json)
+      : this(
+          admin:
+              _json.containsKey('admin') ? _json['admin'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          pendingInvitation: _json.containsKey('pendingInvitation')
+              ? _json['pendingInvitation'] as core.bool
+              : null,
+          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (admin != null) 'admin': admin!,
@@ -1102,27 +1109,30 @@ class Invitation {
   /// - "LOCATIONS_ONLY" : List invitations only for targets of type Location.
   core.String? targetType;
 
-  Invitation();
+  Invitation({
+    this.name,
+    this.role,
+    this.targetAccount,
+    this.targetLocation,
+    this.targetType,
+  });
 
-  Invitation.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('role')) {
-      role = _json['role'] as core.String;
-    }
-    if (_json.containsKey('targetAccount')) {
-      targetAccount = Account.fromJson(
-          _json['targetAccount'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('targetLocation')) {
-      targetLocation = TargetLocation.fromJson(
-          _json['targetLocation'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('targetType')) {
-      targetType = _json['targetType'] as core.String;
-    }
-  }
+  Invitation.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+          targetAccount: _json.containsKey('targetAccount')
+              ? Account.fromJson(
+                  _json['targetAccount'] as core.Map<core.String, core.dynamic>)
+              : null,
+          targetLocation: _json.containsKey('targetLocation')
+              ? TargetLocation.fromJson(_json['targetLocation']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          targetType: _json.containsKey('targetType')
+              ? _json['targetType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -1138,16 +1148,19 @@ class ListAccountAdminsResponse {
   /// A collection of Admin instances.
   core.List<Admin>? accountAdmins;
 
-  ListAccountAdminsResponse();
+  ListAccountAdminsResponse({
+    this.accountAdmins,
+  });
 
-  ListAccountAdminsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('accountAdmins')) {
-      accountAdmins = (_json['accountAdmins'] as core.List)
-          .map<Admin>((value) =>
-              Admin.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListAccountAdminsResponse.fromJson(core.Map _json)
+      : this(
+          accountAdmins: _json.containsKey('accountAdmins')
+              ? (_json['accountAdmins'] as core.List)
+                  .map<Admin>((value) => Admin.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountAdmins != null)
@@ -1171,19 +1184,23 @@ class ListAccountsResponse {
   /// If there are no more accounts, this field is not present in the response.
   core.String? nextPageToken;
 
-  ListAccountsResponse();
+  ListAccountsResponse({
+    this.accounts,
+    this.nextPageToken,
+  });
 
-  ListAccountsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('accounts')) {
-      accounts = (_json['accounts'] as core.List)
-          .map<Account>((value) =>
-              Account.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListAccountsResponse.fromJson(core.Map _json)
+      : this(
+          accounts: _json.containsKey('accounts')
+              ? (_json['accounts'] as core.List)
+                  .map<Account>((value) => Account.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accounts != null)
@@ -1199,16 +1216,19 @@ class ListInvitationsResponse {
   /// The number of invitations listed here cannot exceed 1000.
   core.List<Invitation>? invitations;
 
-  ListInvitationsResponse();
+  ListInvitationsResponse({
+    this.invitations,
+  });
 
-  ListInvitationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('invitations')) {
-      invitations = (_json['invitations'] as core.List)
-          .map<Invitation>((value) =>
-              Invitation.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListInvitationsResponse.fromJson(core.Map _json)
+      : this(
+          invitations: _json.containsKey('invitations')
+              ? (_json['invitations'] as core.List)
+                  .map<Invitation>((value) => Invitation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (invitations != null)
@@ -1221,16 +1241,19 @@ class ListLocationAdminsResponse {
   /// A collection of Admins.
   core.List<Admin>? admins;
 
-  ListLocationAdminsResponse();
+  ListLocationAdminsResponse({
+    this.admins,
+  });
 
-  ListLocationAdminsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('admins')) {
-      admins = (_json['admins'] as core.List)
-          .map<Admin>((value) =>
-              Admin.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListLocationAdminsResponse.fromJson(core.Map _json)
+      : this(
+          admins: _json.containsKey('admins')
+              ? (_json['admins'] as core.List)
+                  .map<Admin>((value) => Admin.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (admins != null)
@@ -1255,20 +1278,25 @@ class OrganizationInfo {
   /// Output only.
   core.String? registeredDomain;
 
-  OrganizationInfo();
+  OrganizationInfo({
+    this.address,
+    this.phoneNumber,
+    this.registeredDomain,
+  });
 
-  OrganizationInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('address')) {
-      address = PostalAddress.fromJson(
-          _json['address'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('phoneNumber')) {
-      phoneNumber = _json['phoneNumber'] as core.String;
-    }
-    if (_json.containsKey('registeredDomain')) {
-      registeredDomain = _json['registeredDomain'] as core.String;
-    }
-  }
+  OrganizationInfo.fromJson(core.Map _json)
+      : this(
+          address: _json.containsKey('address')
+              ? PostalAddress.fromJson(
+                  _json['address'] as core.Map<core.String, core.dynamic>)
+              : null,
+          phoneNumber: _json.containsKey('phoneNumber')
+              ? _json['phoneNumber'] as core.String
+              : null,
+          registeredDomain: _json.containsKey('registeredDomain')
+              ? _json['registeredDomain'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (address != null) 'address': address!.toJson(),
@@ -1398,47 +1426,60 @@ class PostalAddress {
   /// Optional.
   core.String? sublocality;
 
-  PostalAddress();
+  PostalAddress({
+    this.addressLines,
+    this.administrativeArea,
+    this.languageCode,
+    this.locality,
+    this.organization,
+    this.postalCode,
+    this.recipients,
+    this.regionCode,
+    this.revision,
+    this.sortingCode,
+    this.sublocality,
+  });
 
-  PostalAddress.fromJson(core.Map _json) {
-    if (_json.containsKey('addressLines')) {
-      addressLines = (_json['addressLines'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('administrativeArea')) {
-      administrativeArea = _json['administrativeArea'] as core.String;
-    }
-    if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'] as core.String;
-    }
-    if (_json.containsKey('locality')) {
-      locality = _json['locality'] as core.String;
-    }
-    if (_json.containsKey('organization')) {
-      organization = _json['organization'] as core.String;
-    }
-    if (_json.containsKey('postalCode')) {
-      postalCode = _json['postalCode'] as core.String;
-    }
-    if (_json.containsKey('recipients')) {
-      recipients = (_json['recipients'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('regionCode')) {
-      regionCode = _json['regionCode'] as core.String;
-    }
-    if (_json.containsKey('revision')) {
-      revision = _json['revision'] as core.int;
-    }
-    if (_json.containsKey('sortingCode')) {
-      sortingCode = _json['sortingCode'] as core.String;
-    }
-    if (_json.containsKey('sublocality')) {
-      sublocality = _json['sublocality'] as core.String;
-    }
-  }
+  PostalAddress.fromJson(core.Map _json)
+      : this(
+          addressLines: _json.containsKey('addressLines')
+              ? (_json['addressLines'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          administrativeArea: _json.containsKey('administrativeArea')
+              ? _json['administrativeArea'] as core.String
+              : null,
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
+          locality: _json.containsKey('locality')
+              ? _json['locality'] as core.String
+              : null,
+          organization: _json.containsKey('organization')
+              ? _json['organization'] as core.String
+              : null,
+          postalCode: _json.containsKey('postalCode')
+              ? _json['postalCode'] as core.String
+              : null,
+          recipients: _json.containsKey('recipients')
+              ? (_json['recipients'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          regionCode: _json.containsKey('regionCode')
+              ? _json['regionCode'] as core.String
+              : null,
+          revision: _json.containsKey('revision')
+              ? _json['revision'] as core.int
+              : null,
+          sortingCode: _json.containsKey('sortingCode')
+              ? _json['sortingCode'] as core.String
+              : null,
+          sublocality: _json.containsKey('sublocality')
+              ? _json['sublocality'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (addressLines != null) 'addressLines': addressLines!,
@@ -1464,16 +1505,20 @@ class TargetLocation {
   /// The name of the location to which the user is invited.
   core.String? locationName;
 
-  TargetLocation();
+  TargetLocation({
+    this.address,
+    this.locationName,
+  });
 
-  TargetLocation.fromJson(core.Map _json) {
-    if (_json.containsKey('address')) {
-      address = _json['address'] as core.String;
-    }
-    if (_json.containsKey('locationName')) {
-      locationName = _json['locationName'] as core.String;
-    }
-  }
+  TargetLocation.fromJson(core.Map _json)
+      : this(
+          address: _json.containsKey('address')
+              ? _json['address'] as core.String
+              : null,
+          locationName: _json.containsKey('locationName')
+              ? _json['locationName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (address != null) 'address': address!,
@@ -1489,13 +1534,16 @@ class TransferLocationRequest {
   /// Required.
   core.String? destinationAccount;
 
-  TransferLocationRequest();
+  TransferLocationRequest({
+    this.destinationAccount,
+  });
 
-  TransferLocationRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('destinationAccount')) {
-      destinationAccount = _json['destinationAccount'] as core.String;
-    }
-  }
+  TransferLocationRequest.fromJson(core.Map _json)
+      : this(
+          destinationAccount: _json.containsKey('destinationAccount')
+              ? _json['destinationAccount'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (destinationAccount != null)

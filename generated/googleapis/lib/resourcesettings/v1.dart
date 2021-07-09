@@ -622,20 +622,24 @@ class GoogleCloudResourcesettingsV1ListSettingsResponse {
   /// A list of settings that are available at the specified Cloud resource.
   core.List<GoogleCloudResourcesettingsV1Setting>? settings;
 
-  GoogleCloudResourcesettingsV1ListSettingsResponse();
+  GoogleCloudResourcesettingsV1ListSettingsResponse({
+    this.nextPageToken,
+    this.settings,
+  });
 
-  GoogleCloudResourcesettingsV1ListSettingsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('settings')) {
-      settings = (_json['settings'] as core.List)
-          .map<GoogleCloudResourcesettingsV1Setting>((value) =>
-              GoogleCloudResourcesettingsV1Setting.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudResourcesettingsV1ListSettingsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          settings: _json.containsKey('settings')
+              ? (_json['settings'] as core.List)
+                  .map<GoogleCloudResourcesettingsV1Setting>((value) =>
+                      GoogleCloudResourcesettingsV1Setting.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -687,28 +691,32 @@ class GoogleCloudResourcesettingsV1Setting {
   /// "/projects/123/settings/gcp-enableMyFeature"
   core.String? name;
 
-  GoogleCloudResourcesettingsV1Setting();
+  GoogleCloudResourcesettingsV1Setting({
+    this.effectiveValue,
+    this.etag,
+    this.localValue,
+    this.metadata,
+    this.name,
+  });
 
-  GoogleCloudResourcesettingsV1Setting.fromJson(core.Map _json) {
-    if (_json.containsKey('effectiveValue')) {
-      effectiveValue = GoogleCloudResourcesettingsV1Value.fromJson(
-          _json['effectiveValue'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('localValue')) {
-      localValue = GoogleCloudResourcesettingsV1Value.fromJson(
-          _json['localValue'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = GoogleCloudResourcesettingsV1SettingMetadata.fromJson(
-          _json['metadata'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  GoogleCloudResourcesettingsV1Setting.fromJson(core.Map _json)
+      : this(
+          effectiveValue: _json.containsKey('effectiveValue')
+              ? GoogleCloudResourcesettingsV1Value.fromJson(
+                  _json['effectiveValue']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          localValue: _json.containsKey('localValue')
+              ? GoogleCloudResourcesettingsV1Value.fromJson(
+                  _json['localValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? GoogleCloudResourcesettingsV1SettingMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (effectiveValue != null) 'effectiveValue': effectiveValue!.toJson(),
@@ -749,26 +757,33 @@ class GoogleCloudResourcesettingsV1SettingMetadata {
   /// See documentation for the specific setting for updates and reasons.
   core.bool? readOnly;
 
-  GoogleCloudResourcesettingsV1SettingMetadata();
+  GoogleCloudResourcesettingsV1SettingMetadata({
+    this.dataType,
+    this.defaultValue,
+    this.description,
+    this.displayName,
+    this.readOnly,
+  });
 
-  GoogleCloudResourcesettingsV1SettingMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('dataType')) {
-      dataType = _json['dataType'] as core.String;
-    }
-    if (_json.containsKey('defaultValue')) {
-      defaultValue = GoogleCloudResourcesettingsV1Value.fromJson(
-          _json['defaultValue'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('readOnly')) {
-      readOnly = _json['readOnly'] as core.bool;
-    }
-  }
+  GoogleCloudResourcesettingsV1SettingMetadata.fromJson(core.Map _json)
+      : this(
+          dataType: _json.containsKey('dataType')
+              ? _json['dataType'] as core.String
+              : null,
+          defaultValue: _json.containsKey('defaultValue')
+              ? GoogleCloudResourcesettingsV1Value.fromJson(
+                  _json['defaultValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          readOnly: _json.containsKey('readOnly')
+              ? _json['readOnly'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataType != null) 'dataType': dataType!,
@@ -799,31 +814,41 @@ class GoogleCloudResourcesettingsV1Value {
   /// Defines this value as being a string value.
   core.String? stringValue;
 
-  GoogleCloudResourcesettingsV1Value();
+  GoogleCloudResourcesettingsV1Value({
+    this.booleanValue,
+    this.durationValue,
+    this.enumValue,
+    this.stringMapValue,
+    this.stringSetValue,
+    this.stringValue,
+  });
 
-  GoogleCloudResourcesettingsV1Value.fromJson(core.Map _json) {
-    if (_json.containsKey('booleanValue')) {
-      booleanValue = _json['booleanValue'] as core.bool;
-    }
-    if (_json.containsKey('durationValue')) {
-      durationValue = _json['durationValue'] as core.String;
-    }
-    if (_json.containsKey('enumValue')) {
-      enumValue = GoogleCloudResourcesettingsV1ValueEnumValue.fromJson(
-          _json['enumValue'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('stringMapValue')) {
-      stringMapValue = GoogleCloudResourcesettingsV1ValueStringMap.fromJson(
-          _json['stringMapValue'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('stringSetValue')) {
-      stringSetValue = GoogleCloudResourcesettingsV1ValueStringSet.fromJson(
-          _json['stringSetValue'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('stringValue')) {
-      stringValue = _json['stringValue'] as core.String;
-    }
-  }
+  GoogleCloudResourcesettingsV1Value.fromJson(core.Map _json)
+      : this(
+          booleanValue: _json.containsKey('booleanValue')
+              ? _json['booleanValue'] as core.bool
+              : null,
+          durationValue: _json.containsKey('durationValue')
+              ? _json['durationValue'] as core.String
+              : null,
+          enumValue: _json.containsKey('enumValue')
+              ? GoogleCloudResourcesettingsV1ValueEnumValue.fromJson(
+                  _json['enumValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+          stringMapValue: _json.containsKey('stringMapValue')
+              ? GoogleCloudResourcesettingsV1ValueStringMap.fromJson(
+                  _json['stringMapValue']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          stringSetValue: _json.containsKey('stringSetValue')
+              ? GoogleCloudResourcesettingsV1ValueStringSet.fromJson(
+                  _json['stringSetValue']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          stringValue: _json.containsKey('stringValue')
+              ? _json['stringValue'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (booleanValue != null) 'booleanValue': booleanValue!,
@@ -843,13 +868,15 @@ class GoogleCloudResourcesettingsV1ValueEnumValue {
   /// The value of this enum
   core.String? value;
 
-  GoogleCloudResourcesettingsV1ValueEnumValue();
+  GoogleCloudResourcesettingsV1ValueEnumValue({
+    this.value,
+  });
 
-  GoogleCloudResourcesettingsV1ValueEnumValue.fromJson(core.Map _json) {
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  GoogleCloudResourcesettingsV1ValueEnumValue.fromJson(core.Map _json)
+      : this(
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (value != null) 'value': value!,
@@ -865,18 +892,21 @@ class GoogleCloudResourcesettingsV1ValueStringMap {
   /// The key-value pairs in the map
   core.Map<core.String, core.String>? mappings;
 
-  GoogleCloudResourcesettingsV1ValueStringMap();
+  GoogleCloudResourcesettingsV1ValueStringMap({
+    this.mappings,
+  });
 
-  GoogleCloudResourcesettingsV1ValueStringMap.fromJson(core.Map _json) {
-    if (_json.containsKey('mappings')) {
-      mappings = (_json['mappings'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-  }
+  GoogleCloudResourcesettingsV1ValueStringMap.fromJson(core.Map _json)
+      : this(
+          mappings: _json.containsKey('mappings')
+              ? (_json['mappings'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mappings != null) 'mappings': mappings!,
@@ -891,15 +921,18 @@ class GoogleCloudResourcesettingsV1ValueStringSet {
   /// The strings in the set
   core.List<core.String>? values;
 
-  GoogleCloudResourcesettingsV1ValueStringSet();
+  GoogleCloudResourcesettingsV1ValueStringSet({
+    this.values,
+  });
 
-  GoogleCloudResourcesettingsV1ValueStringSet.fromJson(core.Map _json) {
-    if (_json.containsKey('values')) {
-      values = (_json['values'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  GoogleCloudResourcesettingsV1ValueStringSet.fromJson(core.Map _json)
+      : this(
+          values: _json.containsKey('values')
+              ? (_json['values'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (values != null) 'values': values!,

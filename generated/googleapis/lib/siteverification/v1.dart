@@ -334,16 +334,18 @@ class SiteVerificationWebResourceGettokenRequestSite {
   /// Can be SITE or INET_DOMAIN (domain name).
   core.String? type;
 
-  SiteVerificationWebResourceGettokenRequestSite();
+  SiteVerificationWebResourceGettokenRequestSite({
+    this.identifier,
+    this.type,
+  });
 
-  SiteVerificationWebResourceGettokenRequestSite.fromJson(core.Map _json) {
-    if (_json.containsKey('identifier')) {
-      identifier = _json['identifier'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  SiteVerificationWebResourceGettokenRequestSite.fromJson(core.Map _json)
+      : this(
+          identifier: _json.containsKey('identifier')
+              ? _json['identifier'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (identifier != null) 'identifier': identifier!,
@@ -361,17 +363,21 @@ class SiteVerificationWebResourceGettokenRequest {
   /// may be used.
   core.String? verificationMethod;
 
-  SiteVerificationWebResourceGettokenRequest();
+  SiteVerificationWebResourceGettokenRequest({
+    this.site,
+    this.verificationMethod,
+  });
 
-  SiteVerificationWebResourceGettokenRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('site')) {
-      site = SiteVerificationWebResourceGettokenRequestSite.fromJson(
-          _json['site'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('verificationMethod')) {
-      verificationMethod = _json['verificationMethod'] as core.String;
-    }
-  }
+  SiteVerificationWebResourceGettokenRequest.fromJson(core.Map _json)
+      : this(
+          site: _json.containsKey('site')
+              ? SiteVerificationWebResourceGettokenRequestSite.fromJson(
+                  _json['site'] as core.Map<core.String, core.dynamic>)
+              : null,
+          verificationMethod: _json.containsKey('verificationMethod')
+              ? _json['verificationMethod'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (site != null) 'site': site!.toJson(),
@@ -395,16 +401,19 @@ class SiteVerificationWebResourceGettokenResponse {
   /// succeed.
   core.String? token;
 
-  SiteVerificationWebResourceGettokenResponse();
+  SiteVerificationWebResourceGettokenResponse({
+    this.method,
+    this.token,
+  });
 
-  SiteVerificationWebResourceGettokenResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('method')) {
-      method = _json['method'] as core.String;
-    }
-    if (_json.containsKey('token')) {
-      token = _json['token'] as core.String;
-    }
-  }
+  SiteVerificationWebResourceGettokenResponse.fromJson(core.Map _json)
+      : this(
+          method: _json.containsKey('method')
+              ? _json['method'] as core.String
+              : null,
+          token:
+              _json.containsKey('token') ? _json['token'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (method != null) 'method': method!,
@@ -416,17 +425,20 @@ class SiteVerificationWebResourceListResponse {
   /// The list of sites that are owned by the authenticated user.
   core.List<SiteVerificationWebResourceResource>? items;
 
-  SiteVerificationWebResourceListResponse();
+  SiteVerificationWebResourceListResponse({
+    this.items,
+  });
 
-  SiteVerificationWebResourceListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<SiteVerificationWebResourceResource>((value) =>
-              SiteVerificationWebResourceResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  SiteVerificationWebResourceListResponse.fromJson(core.Map _json)
+      : this(
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<SiteVerificationWebResourceResource>((value) =>
+                      SiteVerificationWebResourceResource.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
@@ -447,16 +459,18 @@ class SiteVerificationWebResourceResourceSite {
   /// Can be SITE or INET_DOMAIN (domain name).
   core.String? type;
 
-  SiteVerificationWebResourceResourceSite();
+  SiteVerificationWebResourceResourceSite({
+    this.identifier,
+    this.type,
+  });
 
-  SiteVerificationWebResourceResourceSite.fromJson(core.Map _json) {
-    if (_json.containsKey('identifier')) {
-      identifier = _json['identifier'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  SiteVerificationWebResourceResourceSite.fromJson(core.Map _json)
+      : this(
+          identifier: _json.containsKey('identifier')
+              ? _json['identifier'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (identifier != null) 'identifier': identifier!,
@@ -477,22 +491,25 @@ class SiteVerificationWebResourceResource {
   /// The address and type of a site that is verified or will be verified.
   SiteVerificationWebResourceResourceSite? site;
 
-  SiteVerificationWebResourceResource();
+  SiteVerificationWebResourceResource({
+    this.id,
+    this.owners,
+    this.site,
+  });
 
-  SiteVerificationWebResourceResource.fromJson(core.Map _json) {
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('owners')) {
-      owners = (_json['owners'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('site')) {
-      site = SiteVerificationWebResourceResourceSite.fromJson(
-          _json['site'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  SiteVerificationWebResourceResource.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          owners: _json.containsKey('owners')
+              ? (_json['owners'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          site: _json.containsKey('site')
+              ? SiteVerificationWebResourceResourceSite.fromJson(
+                  _json['site'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,

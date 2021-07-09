@@ -748,19 +748,24 @@ class AggregationInfo {
   /// - "PROJECT"
   core.String? aggregationLevel;
 
-  AggregationInfo();
+  AggregationInfo({
+    this.aggregationCount,
+    this.aggregationInterval,
+    this.aggregationLevel,
+  });
 
-  AggregationInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('aggregationCount')) {
-      aggregationCount = _json['aggregationCount'] as core.int;
-    }
-    if (_json.containsKey('aggregationInterval')) {
-      aggregationInterval = _json['aggregationInterval'] as core.String;
-    }
-    if (_json.containsKey('aggregationLevel')) {
-      aggregationLevel = _json['aggregationLevel'] as core.String;
-    }
-  }
+  AggregationInfo.fromJson(core.Map _json)
+      : this(
+          aggregationCount: _json.containsKey('aggregationCount')
+              ? _json['aggregationCount'] as core.int
+              : null,
+          aggregationInterval: _json.containsKey('aggregationInterval')
+              ? _json['aggregationInterval'] as core.String
+              : null,
+          aggregationLevel: _json.containsKey('aggregationLevel')
+              ? _json['aggregationLevel'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (aggregationCount != null) 'aggregationCount': aggregationCount!,
@@ -797,19 +802,23 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig();
+  AuditConfig({
+    this.auditLogConfigs,
+    this.service,
+  });
 
-  AuditConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('auditLogConfigs')) {
-      auditLogConfigs = (_json['auditLogConfigs'] as core.List)
-          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('service')) {
-      service = _json['service'] as core.String;
-    }
-  }
+  AuditConfig.fromJson(core.Map _json)
+      : this(
+          auditLogConfigs: _json.containsKey('auditLogConfigs')
+              ? (_json['auditLogConfigs'] as core.List)
+                  .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          service: _json.containsKey('service')
+              ? _json['service'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (auditLogConfigs != null)
@@ -840,18 +849,22 @@ class AuditLogConfig {
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
   core.String? logType;
 
-  AuditLogConfig();
+  AuditLogConfig({
+    this.exemptedMembers,
+    this.logType,
+  });
 
-  AuditLogConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('exemptedMembers')) {
-      exemptedMembers = (_json['exemptedMembers'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('logType')) {
-      logType = _json['logType'] as core.String;
-    }
-  }
+  AuditLogConfig.fromJson(core.Map _json)
+      : this(
+          exemptedMembers: _json.containsKey('exemptedMembers')
+              ? (_json['exemptedMembers'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          logType: _json.containsKey('logType')
+              ? _json['logType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
@@ -896,22 +909,24 @@ class BillingAccount {
   /// Output only.
   core.bool? open;
 
-  BillingAccount();
+  BillingAccount({
+    this.displayName,
+    this.masterBillingAccount,
+    this.name,
+    this.open,
+  });
 
-  BillingAccount.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('masterBillingAccount')) {
-      masterBillingAccount = _json['masterBillingAccount'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('open')) {
-      open = _json['open'] as core.bool;
-    }
-  }
+  BillingAccount.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          masterBillingAccount: _json.containsKey('masterBillingAccount')
+              ? _json['masterBillingAccount'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          open: _json.containsKey('open') ? _json['open'] as core.bool : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -971,22 +986,25 @@ class Binding {
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String? role;
 
-  Binding();
+  Binding({
+    this.condition,
+    this.members,
+    this.role,
+  });
 
-  Binding.fromJson(core.Map _json) {
-    if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(
-          _json['condition'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('members')) {
-      members = (_json['members'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('role')) {
-      role = _json['role'] as core.String;
-    }
-  }
+  Binding.fromJson(core.Map _json)
+      : this(
+          condition: _json.containsKey('condition')
+              ? Expr.fromJson(
+                  _json['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          members: _json.containsKey('members')
+              ? (_json['members'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!.toJson(),
@@ -1015,22 +1033,28 @@ class Category {
   /// Example: "OnDemand", "Preemptible", "Commit1Mo", "Commit1Yr" etc.
   core.String? usageType;
 
-  Category();
+  Category({
+    this.resourceFamily,
+    this.resourceGroup,
+    this.serviceDisplayName,
+    this.usageType,
+  });
 
-  Category.fromJson(core.Map _json) {
-    if (_json.containsKey('resourceFamily')) {
-      resourceFamily = _json['resourceFamily'] as core.String;
-    }
-    if (_json.containsKey('resourceGroup')) {
-      resourceGroup = _json['resourceGroup'] as core.String;
-    }
-    if (_json.containsKey('serviceDisplayName')) {
-      serviceDisplayName = _json['serviceDisplayName'] as core.String;
-    }
-    if (_json.containsKey('usageType')) {
-      usageType = _json['usageType'] as core.String;
-    }
-  }
+  Category.fromJson(core.Map _json)
+      : this(
+          resourceFamily: _json.containsKey('resourceFamily')
+              ? _json['resourceFamily'] as core.String
+              : null,
+          resourceGroup: _json.containsKey('resourceGroup')
+              ? _json['resourceGroup'] as core.String
+              : null,
+          serviceDisplayName: _json.containsKey('serviceDisplayName')
+              ? _json['serviceDisplayName'] as core.String
+              : null,
+          usageType: _json.containsKey('usageType')
+              ? _json['usageType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceFamily != null) 'resourceFamily': resourceFamily!,
@@ -1085,22 +1109,27 @@ class Expr {
   /// Optional.
   core.String? title;
 
-  Expr();
+  Expr({
+    this.description,
+    this.expression,
+    this.location,
+    this.title,
+  });
 
-  Expr.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('expression')) {
-      expression = _json['expression'] as core.String;
-    }
-    if (_json.containsKey('location')) {
-      location = _json['location'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  Expr.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          expression: _json.containsKey('expression')
+              ? _json['expression'] as core.String
+              : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
@@ -1127,18 +1156,20 @@ class GeoTaxonomy {
   /// "us-west2" and "us-east1".
   core.String? type;
 
-  GeoTaxonomy();
+  GeoTaxonomy({
+    this.regions,
+    this.type,
+  });
 
-  GeoTaxonomy.fromJson(core.Map _json) {
-    if (_json.containsKey('regions')) {
-      regions = (_json['regions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  GeoTaxonomy.fromJson(core.Map _json)
+      : this(
+          regions: _json.containsKey('regions')
+              ? (_json['regions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (regions != null) 'regions': regions!,
@@ -1158,19 +1189,23 @@ class ListBillingAccountsResponse {
   /// more results to retrieve.
   core.String? nextPageToken;
 
-  ListBillingAccountsResponse();
+  ListBillingAccountsResponse({
+    this.billingAccounts,
+    this.nextPageToken,
+  });
 
-  ListBillingAccountsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('billingAccounts')) {
-      billingAccounts = (_json['billingAccounts'] as core.List)
-          .map<BillingAccount>((value) => BillingAccount.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListBillingAccountsResponse.fromJson(core.Map _json)
+      : this(
+          billingAccounts: _json.containsKey('billingAccounts')
+              ? (_json['billingAccounts'] as core.List)
+                  .map<BillingAccount>((value) => BillingAccount.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (billingAccounts != null)
@@ -1193,19 +1228,24 @@ class ListProjectBillingInfoResponse {
   /// associated with the billing account.
   core.List<ProjectBillingInfo>? projectBillingInfo;
 
-  ListProjectBillingInfoResponse();
+  ListProjectBillingInfoResponse({
+    this.nextPageToken,
+    this.projectBillingInfo,
+  });
 
-  ListProjectBillingInfoResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('projectBillingInfo')) {
-      projectBillingInfo = (_json['projectBillingInfo'] as core.List)
-          .map<ProjectBillingInfo>((value) => ProjectBillingInfo.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListProjectBillingInfoResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          projectBillingInfo: _json.containsKey('projectBillingInfo')
+              ? (_json['projectBillingInfo'] as core.List)
+                  .map<ProjectBillingInfo>((value) =>
+                      ProjectBillingInfo.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1227,19 +1267,23 @@ class ListServicesResponse {
   /// A list of services.
   core.List<Service>? services;
 
-  ListServicesResponse();
+  ListServicesResponse({
+    this.nextPageToken,
+    this.services,
+  });
 
-  ListServicesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('services')) {
-      services = (_json['services'] as core.List)
-          .map<Service>((value) =>
-              Service.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListServicesResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          services: _json.containsKey('services')
+              ? (_json['services'] as core.List)
+                  .map<Service>((value) => Service.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1260,19 +1304,23 @@ class ListSkusResponse {
   /// The list of public SKUs of the given service.
   core.List<Sku>? skus;
 
-  ListSkusResponse();
+  ListSkusResponse({
+    this.nextPageToken,
+    this.skus,
+  });
 
-  ListSkusResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('skus')) {
-      skus = (_json['skus'] as core.List)
-          .map<Sku>((value) =>
-              Sku.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListSkusResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          skus: _json.containsKey('skus')
+              ? (_json['skus'] as core.List)
+                  .map<Sku>((value) => Sku.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1299,19 +1347,21 @@ class Money {
   /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
   core.String? units;
 
-  Money();
+  Money({
+    this.currencyCode,
+    this.nanos,
+    this.units,
+  });
 
-  Money.fromJson(core.Map _json) {
-    if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'] as core.String;
-    }
-    if (_json.containsKey('nanos')) {
-      nanos = _json['nanos'] as core.int;
-    }
-    if (_json.containsKey('units')) {
-      units = _json['units'] as core.String;
-    }
-  }
+  Money.fromJson(core.Map _json)
+      : this(
+          currencyCode: _json.containsKey('currencyCode')
+              ? _json['currencyCode'] as core.String
+              : null,
+          nanos: _json.containsKey('nanos') ? _json['nanos'] as core.int : null,
+          units:
+              _json.containsKey('units') ? _json['units'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (currencyCode != null) 'currencyCode': currencyCode!,
@@ -1401,28 +1451,32 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy();
+  Policy({
+    this.auditConfigs,
+    this.bindings,
+    this.etag,
+    this.version,
+  });
 
-  Policy.fromJson(core.Map _json) {
-    if (_json.containsKey('auditConfigs')) {
-      auditConfigs = (_json['auditConfigs'] as core.List)
-          .map<AuditConfig>((value) => AuditConfig.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('bindings')) {
-      bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) =>
-              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.int;
-    }
-  }
+  Policy.fromJson(core.Map _json)
+      : this(
+          auditConfigs: _json.containsKey('auditConfigs')
+              ? (_json['auditConfigs'] as core.List)
+                  .map<AuditConfig>((value) => AuditConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          bindings: _json.containsKey('bindings')
+              ? (_json['bindings'] as core.List)
+                  .map<Binding>((value) => Binding.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (auditConfigs != null)
@@ -1486,35 +1540,44 @@ class PricingExpression {
   /// Example: "gibi byte".
   core.String? usageUnitDescription;
 
-  PricingExpression();
+  PricingExpression({
+    this.baseUnit,
+    this.baseUnitConversionFactor,
+    this.baseUnitDescription,
+    this.displayQuantity,
+    this.tieredRates,
+    this.usageUnit,
+    this.usageUnitDescription,
+  });
 
-  PricingExpression.fromJson(core.Map _json) {
-    if (_json.containsKey('baseUnit')) {
-      baseUnit = _json['baseUnit'] as core.String;
-    }
-    if (_json.containsKey('baseUnitConversionFactor')) {
-      baseUnitConversionFactor =
-          (_json['baseUnitConversionFactor'] as core.num).toDouble();
-    }
-    if (_json.containsKey('baseUnitDescription')) {
-      baseUnitDescription = _json['baseUnitDescription'] as core.String;
-    }
-    if (_json.containsKey('displayQuantity')) {
-      displayQuantity = (_json['displayQuantity'] as core.num).toDouble();
-    }
-    if (_json.containsKey('tieredRates')) {
-      tieredRates = (_json['tieredRates'] as core.List)
-          .map<TierRate>((value) =>
-              TierRate.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('usageUnit')) {
-      usageUnit = _json['usageUnit'] as core.String;
-    }
-    if (_json.containsKey('usageUnitDescription')) {
-      usageUnitDescription = _json['usageUnitDescription'] as core.String;
-    }
-  }
+  PricingExpression.fromJson(core.Map _json)
+      : this(
+          baseUnit: _json.containsKey('baseUnit')
+              ? _json['baseUnit'] as core.String
+              : null,
+          baseUnitConversionFactor:
+              _json.containsKey('baseUnitConversionFactor')
+                  ? (_json['baseUnitConversionFactor'] as core.num).toDouble()
+                  : null,
+          baseUnitDescription: _json.containsKey('baseUnitDescription')
+              ? _json['baseUnitDescription'] as core.String
+              : null,
+          displayQuantity: _json.containsKey('displayQuantity')
+              ? (_json['displayQuantity'] as core.num).toDouble()
+              : null,
+          tieredRates: _json.containsKey('tieredRates')
+              ? (_json['tieredRates'] as core.List)
+                  .map<TierRate>((value) => TierRate.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          usageUnit: _json.containsKey('usageUnit')
+              ? _json['usageUnit'] as core.String
+              : null,
+          usageUnitDescription: _json.containsKey('usageUnitDescription')
+              ? _json['usageUnitDescription'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (baseUnit != null) 'baseUnit': baseUnit!,
@@ -1565,28 +1628,34 @@ class PricingInfo {
   /// maximum length of 256 characters.
   core.String? summary;
 
-  PricingInfo();
+  PricingInfo({
+    this.aggregationInfo,
+    this.currencyConversionRate,
+    this.effectiveTime,
+    this.pricingExpression,
+    this.summary,
+  });
 
-  PricingInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('aggregationInfo')) {
-      aggregationInfo = AggregationInfo.fromJson(
-          _json['aggregationInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('currencyConversionRate')) {
-      currencyConversionRate =
-          (_json['currencyConversionRate'] as core.num).toDouble();
-    }
-    if (_json.containsKey('effectiveTime')) {
-      effectiveTime = _json['effectiveTime'] as core.String;
-    }
-    if (_json.containsKey('pricingExpression')) {
-      pricingExpression = PricingExpression.fromJson(
-          _json['pricingExpression'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('summary')) {
-      summary = _json['summary'] as core.String;
-    }
-  }
+  PricingInfo.fromJson(core.Map _json)
+      : this(
+          aggregationInfo: _json.containsKey('aggregationInfo')
+              ? AggregationInfo.fromJson(_json['aggregationInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          currencyConversionRate: _json.containsKey('currencyConversionRate')
+              ? (_json['currencyConversionRate'] as core.num).toDouble()
+              : null,
+          effectiveTime: _json.containsKey('effectiveTime')
+              ? _json['effectiveTime'] as core.String
+              : null,
+          pricingExpression: _json.containsKey('pricingExpression')
+              ? PricingExpression.fromJson(_json['pricingExpression']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          summary: _json.containsKey('summary')
+              ? _json['summary'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (aggregationInfo != null)
@@ -1634,22 +1703,26 @@ class ProjectBillingInfo {
   /// field to obtain a project ID. This field is read-only.
   core.String? projectId;
 
-  ProjectBillingInfo();
+  ProjectBillingInfo({
+    this.billingAccountName,
+    this.billingEnabled,
+    this.name,
+    this.projectId,
+  });
 
-  ProjectBillingInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('billingAccountName')) {
-      billingAccountName = _json['billingAccountName'] as core.String;
-    }
-    if (_json.containsKey('billingEnabled')) {
-      billingEnabled = _json['billingEnabled'] as core.bool;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-  }
+  ProjectBillingInfo.fromJson(core.Map _json)
+      : this(
+          billingAccountName: _json.containsKey('billingAccountName')
+              ? _json['billingAccountName'] as core.String
+              : null,
+          billingEnabled: _json.containsKey('billingEnabled')
+              ? _json['billingEnabled'] as core.bool
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (billingAccountName != null)
@@ -1680,22 +1753,26 @@ class Service {
   /// Example: "DA34-426B-A397"
   core.String? serviceId;
 
-  Service();
+  Service({
+    this.businessEntityName,
+    this.displayName,
+    this.name,
+    this.serviceId,
+  });
 
-  Service.fromJson(core.Map _json) {
-    if (_json.containsKey('businessEntityName')) {
-      businessEntityName = _json['businessEntityName'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('serviceId')) {
-      serviceId = _json['serviceId'] as core.String;
-    }
-  }
+  Service.fromJson(core.Map _json)
+      : this(
+          businessEntityName: _json.containsKey('businessEntityName')
+              ? _json['businessEntityName'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          serviceId: _json.containsKey('serviceId')
+              ? _json['serviceId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (businessEntityName != null)
@@ -1721,17 +1798,21 @@ class SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  SetIamPolicyRequest();
+  SetIamPolicyRequest({
+    this.policy,
+    this.updateMask,
+  });
 
-  SetIamPolicyRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(
-          _json['policy'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'] as core.String;
-    }
-  }
+  SetIamPolicyRequest.fromJson(core.Map _json)
+      : this(
+          policy: _json.containsKey('policy')
+              ? Policy.fromJson(
+                  _json['policy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: _json.containsKey('updateMask')
+              ? _json['updateMask'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (policy != null) 'policy': policy!.toJson(),
@@ -1775,41 +1856,48 @@ class Sku {
   /// Example: "AA95-CD31-42FE"
   core.String? skuId;
 
-  Sku();
+  Sku({
+    this.category,
+    this.description,
+    this.geoTaxonomy,
+    this.name,
+    this.pricingInfo,
+    this.serviceProviderName,
+    this.serviceRegions,
+    this.skuId,
+  });
 
-  Sku.fromJson(core.Map _json) {
-    if (_json.containsKey('category')) {
-      category = Category.fromJson(
-          _json['category'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('geoTaxonomy')) {
-      geoTaxonomy = GeoTaxonomy.fromJson(
-          _json['geoTaxonomy'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('pricingInfo')) {
-      pricingInfo = (_json['pricingInfo'] as core.List)
-          .map<PricingInfo>((value) => PricingInfo.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('serviceProviderName')) {
-      serviceProviderName = _json['serviceProviderName'] as core.String;
-    }
-    if (_json.containsKey('serviceRegions')) {
-      serviceRegions = (_json['serviceRegions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('skuId')) {
-      skuId = _json['skuId'] as core.String;
-    }
-  }
+  Sku.fromJson(core.Map _json)
+      : this(
+          category: _json.containsKey('category')
+              ? Category.fromJson(
+                  _json['category'] as core.Map<core.String, core.dynamic>)
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          geoTaxonomy: _json.containsKey('geoTaxonomy')
+              ? GeoTaxonomy.fromJson(
+                  _json['geoTaxonomy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          pricingInfo: _json.containsKey('pricingInfo')
+              ? (_json['pricingInfo'] as core.List)
+                  .map<PricingInfo>((value) => PricingInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          serviceProviderName: _json.containsKey('serviceProviderName')
+              ? _json['serviceProviderName'] as core.String
+              : null,
+          serviceRegions: _json.containsKey('serviceRegions')
+              ? (_json['serviceRegions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          skuId:
+              _json.containsKey('skuId') ? _json['skuId'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (category != null) 'category': category!.toJson(),
@@ -1834,15 +1922,18 @@ class TestIamPermissionsRequest {
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String>? permissions;
 
-  TestIamPermissionsRequest();
+  TestIamPermissionsRequest({
+    this.permissions,
+  });
 
-  TestIamPermissionsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  TestIamPermissionsRequest.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
@@ -1855,15 +1946,18 @@ class TestIamPermissionsResponse {
   /// allowed.
   core.List<core.String>? permissions;
 
-  TestIamPermissionsResponse();
+  TestIamPermissionsResponse({
+    this.permissions,
+  });
 
-  TestIamPermissionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  TestIamPermissionsResponse.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
@@ -1883,17 +1977,21 @@ class TierRate {
   /// Example: unit_price of amount $10 indicates that each unit will cost $10.
   Money? unitPrice;
 
-  TierRate();
+  TierRate({
+    this.startUsageAmount,
+    this.unitPrice,
+  });
 
-  TierRate.fromJson(core.Map _json) {
-    if (_json.containsKey('startUsageAmount')) {
-      startUsageAmount = (_json['startUsageAmount'] as core.num).toDouble();
-    }
-    if (_json.containsKey('unitPrice')) {
-      unitPrice = Money.fromJson(
-          _json['unitPrice'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  TierRate.fromJson(core.Map _json)
+      : this(
+          startUsageAmount: _json.containsKey('startUsageAmount')
+              ? (_json['startUsageAmount'] as core.num).toDouble()
+              : null,
+          unitPrice: _json.containsKey('unitPrice')
+              ? Money.fromJson(
+                  _json['unitPrice'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (startUsageAmount != null) 'startUsageAmount': startUsageAmount!,

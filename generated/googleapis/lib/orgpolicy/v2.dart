@@ -1184,32 +1184,38 @@ class GoogleCloudOrgpolicyV2Constraint {
   /// Immutable.
   core.String? name;
 
-  GoogleCloudOrgpolicyV2Constraint();
+  GoogleCloudOrgpolicyV2Constraint({
+    this.booleanConstraint,
+    this.constraintDefault,
+    this.description,
+    this.displayName,
+    this.listConstraint,
+    this.name,
+  });
 
-  GoogleCloudOrgpolicyV2Constraint.fromJson(core.Map _json) {
-    if (_json.containsKey('booleanConstraint')) {
-      booleanConstraint =
-          GoogleCloudOrgpolicyV2ConstraintBooleanConstraint.fromJson(
-              _json['booleanConstraint']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('constraintDefault')) {
-      constraintDefault = _json['constraintDefault'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('listConstraint')) {
-      listConstraint = GoogleCloudOrgpolicyV2ConstraintListConstraint.fromJson(
-          _json['listConstraint'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  GoogleCloudOrgpolicyV2Constraint.fromJson(core.Map _json)
+      : this(
+          booleanConstraint: _json.containsKey('booleanConstraint')
+              ? GoogleCloudOrgpolicyV2ConstraintBooleanConstraint.fromJson(
+                  _json['booleanConstraint']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          constraintDefault: _json.containsKey('constraintDefault')
+              ? _json['constraintDefault'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          listConstraint: _json.containsKey('listConstraint')
+              ? GoogleCloudOrgpolicyV2ConstraintListConstraint.fromJson(
+                  _json['listConstraint']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (booleanConstraint != null)
@@ -1253,16 +1259,20 @@ class GoogleCloudOrgpolicyV2ConstraintListConstraint {
   /// 'folders/123' folder.
   core.bool? supportsUnder;
 
-  GoogleCloudOrgpolicyV2ConstraintListConstraint();
+  GoogleCloudOrgpolicyV2ConstraintListConstraint({
+    this.supportsIn,
+    this.supportsUnder,
+  });
 
-  GoogleCloudOrgpolicyV2ConstraintListConstraint.fromJson(core.Map _json) {
-    if (_json.containsKey('supportsIn')) {
-      supportsIn = _json['supportsIn'] as core.bool;
-    }
-    if (_json.containsKey('supportsUnder')) {
-      supportsUnder = _json['supportsUnder'] as core.bool;
-    }
-  }
+  GoogleCloudOrgpolicyV2ConstraintListConstraint.fromJson(core.Map _json)
+      : this(
+          supportsIn: _json.containsKey('supportsIn')
+              ? _json['supportsIn'] as core.bool
+              : null,
+          supportsUnder: _json.containsKey('supportsUnder')
+              ? _json['supportsUnder'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (supportsIn != null) 'supportsIn': supportsIn!,
@@ -1280,20 +1290,24 @@ class GoogleCloudOrgpolicyV2ListConstraintsResponse {
   /// This is currently not used.
   core.String? nextPageToken;
 
-  GoogleCloudOrgpolicyV2ListConstraintsResponse();
+  GoogleCloudOrgpolicyV2ListConstraintsResponse({
+    this.constraints,
+    this.nextPageToken,
+  });
 
-  GoogleCloudOrgpolicyV2ListConstraintsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('constraints')) {
-      constraints = (_json['constraints'] as core.List)
-          .map<GoogleCloudOrgpolicyV2Constraint>((value) =>
-              GoogleCloudOrgpolicyV2Constraint.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  GoogleCloudOrgpolicyV2ListConstraintsResponse.fromJson(core.Map _json)
+      : this(
+          constraints: _json.containsKey('constraints')
+              ? (_json['constraints'] as core.List)
+                  .map<GoogleCloudOrgpolicyV2Constraint>((value) =>
+                      GoogleCloudOrgpolicyV2Constraint.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (constraints != null)
@@ -1317,20 +1331,24 @@ class GoogleCloudOrgpolicyV2ListPoliciesResponse {
   /// It will be empty if no `Policies` are set.
   core.List<GoogleCloudOrgpolicyV2Policy>? policies;
 
-  GoogleCloudOrgpolicyV2ListPoliciesResponse();
+  GoogleCloudOrgpolicyV2ListPoliciesResponse({
+    this.nextPageToken,
+    this.policies,
+  });
 
-  GoogleCloudOrgpolicyV2ListPoliciesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('policies')) {
-      policies = (_json['policies'] as core.List)
-          .map<GoogleCloudOrgpolicyV2Policy>((value) =>
-              GoogleCloudOrgpolicyV2Policy.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudOrgpolicyV2ListPoliciesResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          policies: _json.containsKey('policies')
+              ? (_json['policies'] as core.List)
+                  .map<GoogleCloudOrgpolicyV2Policy>((value) =>
+                      GoogleCloudOrgpolicyV2Policy.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1360,17 +1378,19 @@ class GoogleCloudOrgpolicyV2Policy {
   /// Basic information about the Organization Policy.
   GoogleCloudOrgpolicyV2PolicySpec? spec;
 
-  GoogleCloudOrgpolicyV2Policy();
+  GoogleCloudOrgpolicyV2Policy({
+    this.name,
+    this.spec,
+  });
 
-  GoogleCloudOrgpolicyV2Policy.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('spec')) {
-      spec = GoogleCloudOrgpolicyV2PolicySpec.fromJson(
-          _json['spec'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudOrgpolicyV2Policy.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          spec: _json.containsKey('spec')
+              ? GoogleCloudOrgpolicyV2PolicySpec.fromJson(
+                  _json['spec'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -1427,29 +1447,33 @@ class GoogleCloudOrgpolicyV2PolicySpec {
   /// Output only.
   core.String? updateTime;
 
-  GoogleCloudOrgpolicyV2PolicySpec();
+  GoogleCloudOrgpolicyV2PolicySpec({
+    this.etag,
+    this.inheritFromParent,
+    this.reset,
+    this.rules,
+    this.updateTime,
+  });
 
-  GoogleCloudOrgpolicyV2PolicySpec.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('inheritFromParent')) {
-      inheritFromParent = _json['inheritFromParent'] as core.bool;
-    }
-    if (_json.containsKey('reset')) {
-      reset = _json['reset'] as core.bool;
-    }
-    if (_json.containsKey('rules')) {
-      rules = (_json['rules'] as core.List)
-          .map<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>((value) =>
-              GoogleCloudOrgpolicyV2PolicySpecPolicyRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  GoogleCloudOrgpolicyV2PolicySpec.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          inheritFromParent: _json.containsKey('inheritFromParent')
+              ? _json['inheritFromParent'] as core.bool
+              : null,
+          reset:
+              _json.containsKey('reset') ? _json['reset'] as core.bool : null,
+          rules: _json.containsKey('rules')
+              ? (_json['rules'] as core.List)
+                  .map<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>((value) =>
+                      GoogleCloudOrgpolicyV2PolicySpecPolicyRule.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -1498,27 +1522,34 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
   /// This field can be set only in Policies for list constraints.
   GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues? values;
 
-  GoogleCloudOrgpolicyV2PolicySpecPolicyRule();
+  GoogleCloudOrgpolicyV2PolicySpecPolicyRule({
+    this.allowAll,
+    this.condition,
+    this.denyAll,
+    this.enforce,
+    this.values,
+  });
 
-  GoogleCloudOrgpolicyV2PolicySpecPolicyRule.fromJson(core.Map _json) {
-    if (_json.containsKey('allowAll')) {
-      allowAll = _json['allowAll'] as core.bool;
-    }
-    if (_json.containsKey('condition')) {
-      condition = GoogleTypeExpr.fromJson(
-          _json['condition'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('denyAll')) {
-      denyAll = _json['denyAll'] as core.bool;
-    }
-    if (_json.containsKey('enforce')) {
-      enforce = _json['enforce'] as core.bool;
-    }
-    if (_json.containsKey('values')) {
-      values = GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues.fromJson(
-          _json['values'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudOrgpolicyV2PolicySpecPolicyRule.fromJson(core.Map _json)
+      : this(
+          allowAll: _json.containsKey('allowAll')
+              ? _json['allowAll'] as core.bool
+              : null,
+          condition: _json.containsKey('condition')
+              ? GoogleTypeExpr.fromJson(
+                  _json['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          denyAll: _json.containsKey('denyAll')
+              ? _json['denyAll'] as core.bool
+              : null,
+          enforce: _json.containsKey('enforce')
+              ? _json['enforce'] as core.bool
+              : null,
+          values: _json.containsKey('values')
+              ? GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues.fromJson(
+                  _json['values'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowAll != null) 'allowAll': allowAll!,
@@ -1549,21 +1580,25 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues {
   /// List of values denied at this resource.
   core.List<core.String>? deniedValues;
 
-  GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues();
+  GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues({
+    this.allowedValues,
+    this.deniedValues,
+  });
 
   GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('allowedValues')) {
-      allowedValues = (_json['allowedValues'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('deniedValues')) {
-      deniedValues = (_json['deniedValues'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+      core.Map _json)
+      : this(
+          allowedValues: _json.containsKey('allowedValues')
+              ? (_json['allowedValues'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          deniedValues: _json.containsKey('deniedValues')
+              ? (_json['deniedValues'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedValues != null) 'allowedValues': allowedValues!,
@@ -1632,22 +1667,27 @@ class GoogleTypeExpr {
   /// Optional.
   core.String? title;
 
-  GoogleTypeExpr();
+  GoogleTypeExpr({
+    this.description,
+    this.expression,
+    this.location,
+    this.title,
+  });
 
-  GoogleTypeExpr.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('expression')) {
-      expression = _json['expression'] as core.String;
-    }
-    if (_json.containsKey('location')) {
-      location = _json['location'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  GoogleTypeExpr.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          expression: _json.containsKey('expression')
+              ? _json['expression'] as core.String
+              : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,

@@ -458,23 +458,29 @@ class GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata {
   /// Optional.
   core.String? parent;
 
-  GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata();
+  GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata({
+    this.complianceRegime,
+    this.createTime,
+    this.displayName,
+    this.parent,
+  });
 
   GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('complianceRegime')) {
-      complianceRegime = _json['complianceRegime'] as core.String;
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('parent')) {
-      parent = _json['parent'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          complianceRegime: _json.containsKey('complianceRegime')
+              ? _json['complianceRegime'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          parent: _json.containsKey('parent')
+              ? _json['parent'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (complianceRegime != null) 'complianceRegime': complianceRegime!,
@@ -494,20 +500,24 @@ class GoogleCloudAssuredworkloadsV1ListWorkloadsResponse {
   /// List of Workloads under a given parent.
   core.List<GoogleCloudAssuredworkloadsV1Workload>? workloads;
 
-  GoogleCloudAssuredworkloadsV1ListWorkloadsResponse();
+  GoogleCloudAssuredworkloadsV1ListWorkloadsResponse({
+    this.nextPageToken,
+    this.workloads,
+  });
 
-  GoogleCloudAssuredworkloadsV1ListWorkloadsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('workloads')) {
-      workloads = (_json['workloads'] as core.List)
-          .map<GoogleCloudAssuredworkloadsV1Workload>((value) =>
-              GoogleCloudAssuredworkloadsV1Workload.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudAssuredworkloadsV1ListWorkloadsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          workloads: _json.containsKey('workloads')
+              ? (_json['workloads'] as core.List)
+                  .map<GoogleCloudAssuredworkloadsV1Workload>((value) =>
+                      GoogleCloudAssuredworkloadsV1Workload.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -614,58 +624,71 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// Output only.
   core.List<GoogleCloudAssuredworkloadsV1WorkloadResourceInfo>? resources;
 
-  GoogleCloudAssuredworkloadsV1Workload();
+  GoogleCloudAssuredworkloadsV1Workload({
+    this.billingAccount,
+    this.complianceRegime,
+    this.createTime,
+    this.displayName,
+    this.etag,
+    this.kmsSettings,
+    this.labels,
+    this.name,
+    this.provisionedResourcesParent,
+    this.resourceSettings,
+    this.resources,
+  });
 
-  GoogleCloudAssuredworkloadsV1Workload.fromJson(core.Map _json) {
-    if (_json.containsKey('billingAccount')) {
-      billingAccount = _json['billingAccount'] as core.String;
-    }
-    if (_json.containsKey('complianceRegime')) {
-      complianceRegime = _json['complianceRegime'] as core.String;
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('kmsSettings')) {
-      kmsSettings = GoogleCloudAssuredworkloadsV1WorkloadKMSSettings.fromJson(
-          _json['kmsSettings'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('provisionedResourcesParent')) {
-      provisionedResourcesParent =
-          _json['provisionedResourcesParent'] as core.String;
-    }
-    if (_json.containsKey('resourceSettings')) {
-      resourceSettings = (_json['resourceSettings'] as core.List)
-          .map<GoogleCloudAssuredworkloadsV1WorkloadResourceSettings>((value) =>
-              GoogleCloudAssuredworkloadsV1WorkloadResourceSettings.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('resources')) {
-      resources = (_json['resources'] as core.List)
-          .map<GoogleCloudAssuredworkloadsV1WorkloadResourceInfo>((value) =>
-              GoogleCloudAssuredworkloadsV1WorkloadResourceInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudAssuredworkloadsV1Workload.fromJson(core.Map _json)
+      : this(
+          billingAccount: _json.containsKey('billingAccount')
+              ? _json['billingAccount'] as core.String
+              : null,
+          complianceRegime: _json.containsKey('complianceRegime')
+              ? _json['complianceRegime'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          kmsSettings: _json.containsKey('kmsSettings')
+              ? GoogleCloudAssuredworkloadsV1WorkloadKMSSettings.fromJson(
+                  _json['kmsSettings'] as core.Map<core.String, core.dynamic>)
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          provisionedResourcesParent:
+              _json.containsKey('provisionedResourcesParent')
+                  ? _json['provisionedResourcesParent'] as core.String
+                  : null,
+          resourceSettings: _json.containsKey('resourceSettings')
+              ? (_json['resourceSettings'] as core.List)
+                  .map<GoogleCloudAssuredworkloadsV1WorkloadResourceSettings>(
+                      (value) =>
+                          GoogleCloudAssuredworkloadsV1WorkloadResourceSettings
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          resources: _json.containsKey('resources')
+              ? (_json['resources'] as core.List)
+                  .map<GoogleCloudAssuredworkloadsV1WorkloadResourceInfo>(
+                      (value) =>
+                          GoogleCloudAssuredworkloadsV1WorkloadResourceInfo
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (billingAccount != null) 'billingAccount': billingAccount!,
@@ -705,16 +728,20 @@ class GoogleCloudAssuredworkloadsV1WorkloadKMSSettings {
   /// Required.
   core.String? rotationPeriod;
 
-  GoogleCloudAssuredworkloadsV1WorkloadKMSSettings();
+  GoogleCloudAssuredworkloadsV1WorkloadKMSSettings({
+    this.nextRotationTime,
+    this.rotationPeriod,
+  });
 
-  GoogleCloudAssuredworkloadsV1WorkloadKMSSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('nextRotationTime')) {
-      nextRotationTime = _json['nextRotationTime'] as core.String;
-    }
-    if (_json.containsKey('rotationPeriod')) {
-      rotationPeriod = _json['rotationPeriod'] as core.String;
-    }
-  }
+  GoogleCloudAssuredworkloadsV1WorkloadKMSSettings.fromJson(core.Map _json)
+      : this(
+          nextRotationTime: _json.containsKey('nextRotationTime')
+              ? _json['nextRotationTime'] as core.String
+              : null,
+          rotationPeriod: _json.containsKey('rotationPeriod')
+              ? _json['rotationPeriod'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextRotationTime != null) 'nextRotationTime': nextRotationTime!,
@@ -737,16 +764,20 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceInfo {
   /// - "KEYRING" : Keyring resource that hosts encryption keys.
   core.String? resourceType;
 
-  GoogleCloudAssuredworkloadsV1WorkloadResourceInfo();
+  GoogleCloudAssuredworkloadsV1WorkloadResourceInfo({
+    this.resourceId,
+    this.resourceType,
+  });
 
-  GoogleCloudAssuredworkloadsV1WorkloadResourceInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('resourceId')) {
-      resourceId = _json['resourceId'] as core.String;
-    }
-    if (_json.containsKey('resourceType')) {
-      resourceType = _json['resourceType'] as core.String;
-    }
-  }
+  GoogleCloudAssuredworkloadsV1WorkloadResourceInfo.fromJson(core.Map _json)
+      : this(
+          resourceId: _json.containsKey('resourceId')
+              ? _json['resourceId'] as core.String
+              : null,
+          resourceType: _json.containsKey('resourceType')
+              ? _json['resourceType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceId != null) 'resourceId': resourceId!,
@@ -778,20 +809,24 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceSettings {
   /// - "KEYRING" : Keyring resource that hosts encryption keys.
   core.String? resourceType;
 
-  GoogleCloudAssuredworkloadsV1WorkloadResourceSettings();
+  GoogleCloudAssuredworkloadsV1WorkloadResourceSettings({
+    this.displayName,
+    this.resourceId,
+    this.resourceType,
+  });
 
-  GoogleCloudAssuredworkloadsV1WorkloadResourceSettings.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('resourceId')) {
-      resourceId = _json['resourceId'] as core.String;
-    }
-    if (_json.containsKey('resourceType')) {
-      resourceType = _json['resourceType'] as core.String;
-    }
-  }
+  GoogleCloudAssuredworkloadsV1WorkloadResourceSettings.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          resourceId: _json.containsKey('resourceId')
+              ? _json['resourceId'] as core.String
+              : null,
+          resourceType: _json.containsKey('resourceType')
+              ? _json['resourceType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -840,31 +875,39 @@ class GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata {
   core.List<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings>?
       resourceSettings;
 
-  GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata();
+  GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata({
+    this.complianceRegime,
+    this.createTime,
+    this.displayName,
+    this.parent,
+    this.resourceSettings,
+  });
 
   GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('complianceRegime')) {
-      complianceRegime = _json['complianceRegime'] as core.String;
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('parent')) {
-      parent = _json['parent'] as core.String;
-    }
-    if (_json.containsKey('resourceSettings')) {
-      resourceSettings = (_json['resourceSettings'] as core.List)
-          .map<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings>(
-              (value) =>
-                  GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+      core.Map _json)
+      : this(
+          complianceRegime: _json.containsKey('complianceRegime')
+              ? _json['complianceRegime'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          parent: _json.containsKey('parent')
+              ? _json['parent'] as core.String
+              : null,
+          resourceSettings: _json.containsKey('resourceSettings')
+              ? (_json['resourceSettings'] as core.List)
+                  .map<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings>(
+                      (value) =>
+                          GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (complianceRegime != null) 'complianceRegime': complianceRegime!,
@@ -1003,82 +1046,93 @@ class GoogleCloudAssuredworkloadsV1beta1Workload {
   /// Output only.
   core.List<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo>? resources;
 
-  GoogleCloudAssuredworkloadsV1beta1Workload();
+  GoogleCloudAssuredworkloadsV1beta1Workload({
+    this.billingAccount,
+    this.cjisSettings,
+    this.complianceRegime,
+    this.createTime,
+    this.displayName,
+    this.etag,
+    this.fedrampHighSettings,
+    this.fedrampModerateSettings,
+    this.il4Settings,
+    this.kmsSettings,
+    this.labels,
+    this.name,
+    this.provisionedResourcesParent,
+    this.resourceSettings,
+    this.resources,
+  });
 
-  GoogleCloudAssuredworkloadsV1beta1Workload.fromJson(core.Map _json) {
-    if (_json.containsKey('billingAccount')) {
-      billingAccount = _json['billingAccount'] as core.String;
-    }
-    if (_json.containsKey('cjisSettings')) {
-      cjisSettings =
-          GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings.fromJson(
-              _json['cjisSettings'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('complianceRegime')) {
-      complianceRegime = _json['complianceRegime'] as core.String;
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('fedrampHighSettings')) {
-      fedrampHighSettings =
-          GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings
-              .fromJson(_json['fedrampHighSettings']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('fedrampModerateSettings')) {
-      fedrampModerateSettings =
-          GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings
-              .fromJson(_json['fedrampModerateSettings']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('il4Settings')) {
-      il4Settings =
-          GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings.fromJson(
-              _json['il4Settings'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('kmsSettings')) {
-      kmsSettings =
-          GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings.fromJson(
-              _json['kmsSettings'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('provisionedResourcesParent')) {
-      provisionedResourcesParent =
-          _json['provisionedResourcesParent'] as core.String;
-    }
-    if (_json.containsKey('resourceSettings')) {
-      resourceSettings = (_json['resourceSettings'] as core.List)
-          .map<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings>(
-              (value) =>
-                  GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('resources')) {
-      resources = (_json['resources'] as core.List)
-          .map<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo>(
-              (value) => GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo
-                  .fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudAssuredworkloadsV1beta1Workload.fromJson(core.Map _json)
+      : this(
+          billingAccount: _json.containsKey('billingAccount')
+              ? _json['billingAccount'] as core.String
+              : null,
+          cjisSettings: _json.containsKey('cjisSettings')
+              ? GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings.fromJson(
+                  _json['cjisSettings'] as core.Map<core.String, core.dynamic>)
+              : null,
+          complianceRegime: _json.containsKey('complianceRegime')
+              ? _json['complianceRegime'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          fedrampHighSettings: _json.containsKey('fedrampHighSettings')
+              ? GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings
+                  .fromJson(_json['fedrampHighSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          fedrampModerateSettings: _json.containsKey('fedrampModerateSettings')
+              ? GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings
+                  .fromJson(_json['fedrampModerateSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          il4Settings: _json.containsKey('il4Settings')
+              ? GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings.fromJson(
+                  _json['il4Settings'] as core.Map<core.String, core.dynamic>)
+              : null,
+          kmsSettings: _json.containsKey('kmsSettings')
+              ? GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings.fromJson(
+                  _json['kmsSettings'] as core.Map<core.String, core.dynamic>)
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          provisionedResourcesParent:
+              _json.containsKey('provisionedResourcesParent')
+                  ? _json['provisionedResourcesParent'] as core.String
+                  : null,
+          resourceSettings: _json.containsKey('resourceSettings')
+              ? (_json['resourceSettings'] as core.List)
+                  .map<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings>(
+                      (value) =>
+                          GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          resources: _json.containsKey('resources')
+              ? (_json['resources'] as core.List)
+                  .map<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo>(
+                      (value) =>
+                          GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (billingAccount != null) 'billingAccount': billingAccount!,
@@ -1114,16 +1168,18 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings {
   /// Required.
   GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings? kmsSettings;
 
-  GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings();
+  GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings({
+    this.kmsSettings,
+  });
 
   GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('kmsSettings')) {
-      kmsSettings =
-          GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings.fromJson(
-              _json['kmsSettings'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+      core.Map _json)
+      : this(
+          kmsSettings: _json.containsKey('kmsSettings')
+              ? GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings.fromJson(
+                  _json['kmsSettings'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kmsSettings != null) 'kmsSettings': kmsSettings!.toJson(),
@@ -1139,16 +1195,18 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings {
   /// Required.
   GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings? kmsSettings;
 
-  GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings();
+  GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings({
+    this.kmsSettings,
+  });
 
   GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('kmsSettings')) {
-      kmsSettings =
-          GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings.fromJson(
-              _json['kmsSettings'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+      core.Map _json)
+      : this(
+          kmsSettings: _json.containsKey('kmsSettings')
+              ? GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings.fromJson(
+                  _json['kmsSettings'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kmsSettings != null) 'kmsSettings': kmsSettings!.toJson(),
@@ -1164,16 +1222,18 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings {
   /// Required.
   GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings? kmsSettings;
 
-  GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings();
+  GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings({
+    this.kmsSettings,
+  });
 
   GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('kmsSettings')) {
-      kmsSettings =
-          GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings.fromJson(
-              _json['kmsSettings'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+      core.Map _json)
+      : this(
+          kmsSettings: _json.containsKey('kmsSettings')
+              ? GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings.fromJson(
+                  _json['kmsSettings'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kmsSettings != null) 'kmsSettings': kmsSettings!.toJson(),
@@ -1189,16 +1249,17 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings {
   /// Required.
   GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings? kmsSettings;
 
-  GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings();
+  GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings({
+    this.kmsSettings,
+  });
 
-  GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('kmsSettings')) {
-      kmsSettings =
-          GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings.fromJson(
-              _json['kmsSettings'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings.fromJson(core.Map _json)
+      : this(
+          kmsSettings: _json.containsKey('kmsSettings')
+              ? GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings.fromJson(
+                  _json['kmsSettings'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kmsSettings != null) 'kmsSettings': kmsSettings!.toJson(),
@@ -1224,17 +1285,20 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings {
   /// Required.
   core.String? rotationPeriod;
 
-  GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings();
+  GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings({
+    this.nextRotationTime,
+    this.rotationPeriod,
+  });
 
-  GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('nextRotationTime')) {
-      nextRotationTime = _json['nextRotationTime'] as core.String;
-    }
-    if (_json.containsKey('rotationPeriod')) {
-      rotationPeriod = _json['rotationPeriod'] as core.String;
-    }
-  }
+  GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings.fromJson(core.Map _json)
+      : this(
+          nextRotationTime: _json.containsKey('nextRotationTime')
+              ? _json['nextRotationTime'] as core.String
+              : null,
+          rotationPeriod: _json.containsKey('rotationPeriod')
+              ? _json['rotationPeriod'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextRotationTime != null) 'nextRotationTime': nextRotationTime!,
@@ -1260,17 +1324,21 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo {
   /// - "KEYRING" : Keyring resource that hosts encryption keys.
   core.String? resourceType;
 
-  GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo();
+  GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo({
+    this.resourceId,
+    this.resourceType,
+  });
 
   GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('resourceId')) {
-      resourceId = _json['resourceId'] as core.String;
-    }
-    if (_json.containsKey('resourceType')) {
-      resourceType = _json['resourceType'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          resourceId: _json.containsKey('resourceId')
+              ? _json['resourceId'] as core.String
+              : null,
+          resourceType: _json.containsKey('resourceType')
+              ? _json['resourceType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceId != null) 'resourceId': resourceId!,
@@ -1305,20 +1373,25 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings {
   /// - "KEYRING" : Keyring resource that hosts encryption keys.
   core.String? resourceType;
 
-  GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings();
+  GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings({
+    this.displayName,
+    this.resourceId,
+    this.resourceType,
+  });
 
   GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('resourceId')) {
-      resourceId = _json['resourceId'] as core.String;
-    }
-    if (_json.containsKey('resourceType')) {
-      resourceType = _json['resourceType'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          resourceId: _json.containsKey('resourceId')
+              ? _json['resourceId'] as core.String
+              : null,
+          resourceType: _json.containsKey('resourceType')
+              ? _json['resourceType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -1335,20 +1408,24 @@ class GoogleLongrunningListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<GoogleLongrunningOperation>? operations;
 
-  GoogleLongrunningListOperationsResponse();
+  GoogleLongrunningListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
 
-  GoogleLongrunningListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('operations')) {
-      operations = (_json['operations'] as core.List)
-          .map<GoogleLongrunningOperation>((value) =>
-              GoogleLongrunningOperation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleLongrunningListOperationsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          operations: _json.containsKey('operations')
+              ? (_json['operations'] as core.List)
+                  .map<GoogleLongrunningOperation>((value) =>
+                      GoogleLongrunningOperation.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1400,36 +1477,39 @@ class GoogleLongrunningOperation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object>? response;
 
-  GoogleLongrunningOperation();
+  GoogleLongrunningOperation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
-  GoogleLongrunningOperation.fromJson(core.Map _json) {
-    if (_json.containsKey('done')) {
-      done = _json['done'] as core.bool;
-    }
-    if (_json.containsKey('error')) {
-      error = GoogleRpcStatus.fromJson(
-          _json['error'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('response')) {
-      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-  }
+  GoogleLongrunningOperation.fromJson(core.Map _json)
+      : this(
+          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
+          error: _json.containsKey('error')
+              ? GoogleRpcStatus.fromJson(
+                  _json['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          response: _json.containsKey('response')
+              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
@@ -1482,27 +1562,30 @@ class GoogleRpcStatus {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  GoogleRpcStatus();
+  GoogleRpcStatus({
+    this.code,
+    this.details,
+    this.message,
+  });
 
-  GoogleRpcStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.int;
-    }
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  GoogleRpcStatus.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,

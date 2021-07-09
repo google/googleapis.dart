@@ -1834,19 +1834,24 @@ class BlogLocale {
   /// The language variant this blog is authored in.
   core.String? variant;
 
-  BlogLocale();
+  BlogLocale({
+    this.country,
+    this.language,
+    this.variant,
+  });
 
-  BlogLocale.fromJson(core.Map _json) {
-    if (_json.containsKey('country')) {
-      country = _json['country'] as core.String;
-    }
-    if (_json.containsKey('language')) {
-      language = _json['language'] as core.String;
-    }
-    if (_json.containsKey('variant')) {
-      variant = _json['variant'] as core.String;
-    }
-  }
+  BlogLocale.fromJson(core.Map _json)
+      : this(
+          country: _json.containsKey('country')
+              ? _json['country'] as core.String
+              : null,
+          language: _json.containsKey('language')
+              ? _json['language'] as core.String
+              : null,
+          variant: _json.containsKey('variant')
+              ? _json['variant'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (country != null) 'country': country!,
@@ -1863,16 +1868,20 @@ class BlogPages {
   /// The count of pages in this blog.
   core.int? totalItems;
 
-  BlogPages();
+  BlogPages({
+    this.selfLink,
+    this.totalItems,
+  });
 
-  BlogPages.fromJson(core.Map _json) {
-    if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'] as core.String;
-    }
-    if (_json.containsKey('totalItems')) {
-      totalItems = _json['totalItems'] as core.int;
-    }
-  }
+  BlogPages.fromJson(core.Map _json)
+      : this(
+          selfLink: _json.containsKey('selfLink')
+              ? _json['selfLink'] as core.String
+              : null,
+          totalItems: _json.containsKey('totalItems')
+              ? _json['totalItems'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (selfLink != null) 'selfLink': selfLink!,
@@ -1891,22 +1900,27 @@ class BlogPosts {
   /// The count of posts in this blog.
   core.int? totalItems;
 
-  BlogPosts();
+  BlogPosts({
+    this.items,
+    this.selfLink,
+    this.totalItems,
+  });
 
-  BlogPosts.fromJson(core.Map _json) {
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<Post>((value) =>
-              Post.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'] as core.String;
-    }
-    if (_json.containsKey('totalItems')) {
-      totalItems = _json['totalItems'] as core.int;
-    }
-  }
+  BlogPosts.fromJson(core.Map _json)
+      : this(
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<Post>((value) => Post.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          selfLink: _json.containsKey('selfLink')
+              ? _json['selfLink'] as core.String
+              : null,
+          totalItems: _json.containsKey('totalItems')
+              ? _json['totalItems'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
@@ -1965,52 +1979,59 @@ class Blog {
   /// The URL where this blog is published.
   core.String? url;
 
-  Blog();
+  Blog({
+    this.customMetaData,
+    this.description,
+    this.id,
+    this.kind,
+    this.locale,
+    this.name,
+    this.pages,
+    this.posts,
+    this.published,
+    this.selfLink,
+    this.status,
+    this.updated,
+    this.url,
+  });
 
-  Blog.fromJson(core.Map _json) {
-    if (_json.containsKey('customMetaData')) {
-      customMetaData = _json['customMetaData'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('locale')) {
-      locale = BlogLocale.fromJson(
-          _json['locale'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('pages')) {
-      pages = BlogPages.fromJson(
-          _json['pages'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('posts')) {
-      posts = BlogPosts.fromJson(
-          _json['posts'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('published')) {
-      published = _json['published'] as core.String;
-    }
-    if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'] as core.String;
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-    if (_json.containsKey('updated')) {
-      updated = _json['updated'] as core.String;
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  Blog.fromJson(core.Map _json)
+      : this(
+          customMetaData: _json.containsKey('customMetaData')
+              ? _json['customMetaData'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          locale: _json.containsKey('locale')
+              ? BlogLocale.fromJson(
+                  _json['locale'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          pages: _json.containsKey('pages')
+              ? BlogPages.fromJson(
+                  _json['pages'] as core.Map<core.String, core.dynamic>)
+              : null,
+          posts: _json.containsKey('posts')
+              ? BlogPosts.fromJson(
+                  _json['posts'] as core.Map<core.String, core.dynamic>)
+              : null,
+          published: _json.containsKey('published')
+              ? _json['published'] as core.String
+              : null,
+          selfLink: _json.containsKey('selfLink')
+              ? _json['selfLink'] as core.String
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+          updated: _json.containsKey('updated')
+              ? _json['updated'] as core.String
+              : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customMetaData != null) 'customMetaData': customMetaData!,
@@ -2041,25 +2062,28 @@ class BlogList {
   /// Always blogger#blogList.
   core.String? kind;
 
-  BlogList();
+  BlogList({
+    this.blogUserInfos,
+    this.items,
+    this.kind,
+  });
 
-  BlogList.fromJson(core.Map _json) {
-    if (_json.containsKey('blogUserInfos')) {
-      blogUserInfos = (_json['blogUserInfos'] as core.List)
-          .map<BlogUserInfo>((value) => BlogUserInfo.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<Blog>((value) =>
-              Blog.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-  }
+  BlogList.fromJson(core.Map _json)
+      : this(
+          blogUserInfos: _json.containsKey('blogUserInfos')
+              ? (_json['blogUserInfos'] as core.List)
+                  .map<BlogUserInfo>((value) => BlogUserInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<Blog>((value) => Blog.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (blogUserInfos != null)
@@ -2098,28 +2122,32 @@ class BlogPerUserInfo {
   /// ID of the User.
   core.String? userId;
 
-  BlogPerUserInfo();
+  BlogPerUserInfo({
+    this.blogId,
+    this.hasAdminAccess,
+    this.kind,
+    this.photosAlbumKey,
+    this.role,
+    this.userId,
+  });
 
-  BlogPerUserInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('blogId')) {
-      blogId = _json['blogId'] as core.String;
-    }
-    if (_json.containsKey('hasAdminAccess')) {
-      hasAdminAccess = _json['hasAdminAccess'] as core.bool;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('photosAlbumKey')) {
-      photosAlbumKey = _json['photosAlbumKey'] as core.String;
-    }
-    if (_json.containsKey('role')) {
-      role = _json['role'] as core.String;
-    }
-    if (_json.containsKey('userId')) {
-      userId = _json['userId'] as core.String;
-    }
-  }
+  BlogPerUserInfo.fromJson(core.Map _json)
+      : this(
+          blogId: _json.containsKey('blogId')
+              ? _json['blogId'] as core.String
+              : null,
+          hasAdminAccess: _json.containsKey('hasAdminAccess')
+              ? _json['hasAdminAccess'] as core.bool
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          photosAlbumKey: _json.containsKey('photosAlbumKey')
+              ? _json['photosAlbumKey'] as core.String
+              : null,
+          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+          userId: _json.containsKey('userId')
+              ? _json['userId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (blogId != null) 'blogId': blogId!,
@@ -2143,21 +2171,24 @@ class BlogUserInfo {
   /// Always blogger#blogUserInfo.
   core.String? kind;
 
-  BlogUserInfo();
+  BlogUserInfo({
+    this.blog,
+    this.blogUserInfo,
+    this.kind,
+  });
 
-  BlogUserInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('blog')) {
-      blog =
-          Blog.fromJson(_json['blog'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('blog_user_info')) {
-      blogUserInfo = BlogPerUserInfo.fromJson(
-          _json['blog_user_info'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-  }
+  BlogUserInfo.fromJson(core.Map _json)
+      : this(
+          blog: _json.containsKey('blog')
+              ? Blog.fromJson(
+                  _json['blog'] as core.Map<core.String, core.dynamic>)
+              : null,
+          blogUserInfo: _json.containsKey('blog_user_info')
+              ? BlogPerUserInfo.fromJson(_json['blog_user_info']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (blog != null) 'blog': blog!.toJson(),
@@ -2171,13 +2202,14 @@ class CommentAuthorImage {
   /// The creator's avatar URL.
   core.String? url;
 
-  CommentAuthorImage();
+  CommentAuthorImage({
+    this.url,
+  });
 
-  CommentAuthorImage.fromJson(core.Map _json) {
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  CommentAuthorImage.fromJson(core.Map _json)
+      : this(
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (url != null) 'url': url!,
@@ -2198,23 +2230,25 @@ class CommentAuthor {
   /// The URL of the creator's Profile page.
   core.String? url;
 
-  CommentAuthor();
+  CommentAuthor({
+    this.displayName,
+    this.id,
+    this.image,
+    this.url,
+  });
 
-  CommentAuthor.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('image')) {
-      image = CommentAuthorImage.fromJson(
-          _json['image'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  CommentAuthor.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          image: _json.containsKey('image')
+              ? CommentAuthorImage.fromJson(
+                  _json['image'] as core.Map<core.String, core.dynamic>)
+              : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -2229,13 +2263,14 @@ class CommentBlog {
   /// The identifier of the blog containing this comment.
   core.String? id;
 
-  CommentBlog();
+  CommentBlog({
+    this.id,
+  });
 
-  CommentBlog.fromJson(core.Map _json) {
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-  }
+  CommentBlog.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
@@ -2247,13 +2282,14 @@ class CommentInReplyTo {
   /// The identified of the parent of this comment.
   core.String? id;
 
-  CommentInReplyTo();
+  CommentInReplyTo({
+    this.id,
+  });
 
-  CommentInReplyTo.fromJson(core.Map _json) {
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-  }
+  CommentInReplyTo.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
@@ -2265,13 +2301,14 @@ class CommentPost {
   /// The identifier of the post containing this comment.
   core.String? id;
 
-  CommentPost();
+  CommentPost({
+    this.id,
+  });
 
-  CommentPost.fromJson(core.Map _json) {
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-  }
+  CommentPost.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
@@ -2321,47 +2358,56 @@ class Comment {
   /// RFC 3339 date-time when this comment was last updated.
   core.String? updated;
 
-  Comment();
+  Comment({
+    this.author,
+    this.blog,
+    this.content,
+    this.id,
+    this.inReplyTo,
+    this.kind,
+    this.post,
+    this.published,
+    this.selfLink,
+    this.status,
+    this.updated,
+  });
 
-  Comment.fromJson(core.Map _json) {
-    if (_json.containsKey('author')) {
-      author = CommentAuthor.fromJson(
-          _json['author'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('blog')) {
-      blog = CommentBlog.fromJson(
-          _json['blog'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('content')) {
-      content = _json['content'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('inReplyTo')) {
-      inReplyTo = CommentInReplyTo.fromJson(
-          _json['inReplyTo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('post')) {
-      post = CommentPost.fromJson(
-          _json['post'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('published')) {
-      published = _json['published'] as core.String;
-    }
-    if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'] as core.String;
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-    if (_json.containsKey('updated')) {
-      updated = _json['updated'] as core.String;
-    }
-  }
+  Comment.fromJson(core.Map _json)
+      : this(
+          author: _json.containsKey('author')
+              ? CommentAuthor.fromJson(
+                  _json['author'] as core.Map<core.String, core.dynamic>)
+              : null,
+          blog: _json.containsKey('blog')
+              ? CommentBlog.fromJson(
+                  _json['blog'] as core.Map<core.String, core.dynamic>)
+              : null,
+          content: _json.containsKey('content')
+              ? _json['content'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          inReplyTo: _json.containsKey('inReplyTo')
+              ? CommentInReplyTo.fromJson(
+                  _json['inReplyTo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          post: _json.containsKey('post')
+              ? CommentPost.fromJson(
+                  _json['post'] as core.Map<core.String, core.dynamic>)
+              : null,
+          published: _json.containsKey('published')
+              ? _json['published'] as core.String
+              : null,
+          selfLink: _json.containsKey('selfLink')
+              ? _json['selfLink'] as core.String
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+          updated: _json.containsKey('updated')
+              ? _json['updated'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (author != null) 'author': author!.toJson(),
@@ -2396,28 +2442,31 @@ class CommentList {
   /// Pagination token to fetch the previous page, if one exists.
   core.String? prevPageToken;
 
-  CommentList();
+  CommentList({
+    this.etag,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.prevPageToken,
+  });
 
-  CommentList.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<Comment>((value) =>
-              Comment.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('prevPageToken')) {
-      prevPageToken = _json['prevPageToken'] as core.String;
-    }
-  }
+  CommentList.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<Comment>((value) => Comment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          prevPageToken: _json.containsKey('prevPageToken')
+              ? _json['prevPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -2434,13 +2483,14 @@ class PageAuthorImage {
   /// The creator's avatar URL.
   core.String? url;
 
-  PageAuthorImage();
+  PageAuthorImage({
+    this.url,
+  });
 
-  PageAuthorImage.fromJson(core.Map _json) {
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  PageAuthorImage.fromJson(core.Map _json)
+      : this(
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (url != null) 'url': url!,
@@ -2461,23 +2511,25 @@ class PageAuthor {
   /// The URL of the creator's Profile page.
   core.String? url;
 
-  PageAuthor();
+  PageAuthor({
+    this.displayName,
+    this.id,
+    this.image,
+    this.url,
+  });
 
-  PageAuthor.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('image')) {
-      image = PageAuthorImage.fromJson(
-          _json['image'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  PageAuthor.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          image: _json.containsKey('image')
+              ? PageAuthorImage.fromJson(
+                  _json['image'] as core.Map<core.String, core.dynamic>)
+              : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -2492,13 +2544,14 @@ class PageBlog {
   /// The identifier of the blog containing this page.
   core.String? id;
 
-  PageBlog();
+  PageBlog({
+    this.id,
+  });
 
-  PageBlog.fromJson(core.Map _json) {
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-  }
+  PageBlog.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
@@ -2549,48 +2602,53 @@ class Page {
   /// The URL that this Page is displayed at.
   core.String? url;
 
-  Page();
+  Page({
+    this.author,
+    this.blog,
+    this.content,
+    this.etag,
+    this.id,
+    this.kind,
+    this.published,
+    this.selfLink,
+    this.status,
+    this.title,
+    this.updated,
+    this.url,
+  });
 
-  Page.fromJson(core.Map _json) {
-    if (_json.containsKey('author')) {
-      author = PageAuthor.fromJson(
-          _json['author'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('blog')) {
-      blog = PageBlog.fromJson(
-          _json['blog'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('content')) {
-      content = _json['content'] as core.String;
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('published')) {
-      published = _json['published'] as core.String;
-    }
-    if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'] as core.String;
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-    if (_json.containsKey('updated')) {
-      updated = _json['updated'] as core.String;
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  Page.fromJson(core.Map _json)
+      : this(
+          author: _json.containsKey('author')
+              ? PageAuthor.fromJson(
+                  _json['author'] as core.Map<core.String, core.dynamic>)
+              : null,
+          blog: _json.containsKey('blog')
+              ? PageBlog.fromJson(
+                  _json['blog'] as core.Map<core.String, core.dynamic>)
+              : null,
+          content: _json.containsKey('content')
+              ? _json['content'] as core.String
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          published: _json.containsKey('published')
+              ? _json['published'] as core.String
+              : null,
+          selfLink: _json.containsKey('selfLink')
+              ? _json['selfLink'] as core.String
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+          updated: _json.containsKey('updated')
+              ? _json['updated'] as core.String
+              : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (author != null) 'author': author!.toJson(),
@@ -2623,25 +2681,27 @@ class PageList {
   /// Pagination token to fetch the next page, if one exists.
   core.String? nextPageToken;
 
-  PageList();
+  PageList({
+    this.etag,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+  });
 
-  PageList.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<Page>((value) =>
-              Page.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  PageList.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<Page>((value) => Page.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -2663,16 +2723,19 @@ class PageviewsCounts {
   /// - "SEVEN_DAYS"
   core.String? timeRange;
 
-  PageviewsCounts();
+  PageviewsCounts({
+    this.count,
+    this.timeRange,
+  });
 
-  PageviewsCounts.fromJson(core.Map _json) {
-    if (_json.containsKey('count')) {
-      count = _json['count'] as core.String;
-    }
-    if (_json.containsKey('timeRange')) {
-      timeRange = _json['timeRange'] as core.String;
-    }
-  }
+  PageviewsCounts.fromJson(core.Map _json)
+      : this(
+          count:
+              _json.containsKey('count') ? _json['count'] as core.String : null,
+          timeRange: _json.containsKey('timeRange')
+              ? _json['timeRange'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
@@ -2692,22 +2755,25 @@ class Pageviews {
   /// Always blogger#page_views.
   core.String? kind;
 
-  Pageviews();
+  Pageviews({
+    this.blogId,
+    this.counts,
+    this.kind,
+  });
 
-  Pageviews.fromJson(core.Map _json) {
-    if (_json.containsKey('blogId')) {
-      blogId = _json['blogId'] as core.String;
-    }
-    if (_json.containsKey('counts')) {
-      counts = (_json['counts'] as core.List)
-          .map<PageviewsCounts>((value) => PageviewsCounts.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-  }
+  Pageviews.fromJson(core.Map _json)
+      : this(
+          blogId: _json.containsKey('blogId')
+              ? _json['blogId'] as core.String
+              : null,
+          counts: _json.containsKey('counts')
+              ? (_json['counts'] as core.List)
+                  .map<PageviewsCounts>((value) => PageviewsCounts.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (blogId != null) 'blogId': blogId!,
@@ -2722,13 +2788,14 @@ class PostAuthorImage {
   /// The creator's avatar URL.
   core.String? url;
 
-  PostAuthorImage();
+  PostAuthorImage({
+    this.url,
+  });
 
-  PostAuthorImage.fromJson(core.Map _json) {
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  PostAuthorImage.fromJson(core.Map _json)
+      : this(
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (url != null) 'url': url!,
@@ -2749,23 +2816,25 @@ class PostAuthor {
   /// The URL of the creator's Profile page.
   core.String? url;
 
-  PostAuthor();
+  PostAuthor({
+    this.displayName,
+    this.id,
+    this.image,
+    this.url,
+  });
 
-  PostAuthor.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('image')) {
-      image = PostAuthorImage.fromJson(
-          _json['image'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  PostAuthor.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          image: _json.containsKey('image')
+              ? PostAuthorImage.fromJson(
+                  _json['image'] as core.Map<core.String, core.dynamic>)
+              : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -2780,13 +2849,14 @@ class PostBlog {
   /// The identifier of the Blog that contains this Post.
   core.String? id;
 
-  PostBlog();
+  PostBlog({
+    this.id,
+  });
 
-  PostBlog.fromJson(core.Map _json) {
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-  }
+  PostBlog.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
@@ -2796,13 +2866,14 @@ class PostBlog {
 class PostImages {
   core.String? url;
 
-  PostImages();
+  PostImages({
+    this.url,
+  });
 
-  PostImages.fromJson(core.Map _json) {
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  PostImages.fromJson(core.Map _json)
+      : this(
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (url != null) 'url': url!,
@@ -2825,22 +2896,24 @@ class PostLocation {
   /// Can be used when rendering a map preview.
   core.String? span;
 
-  PostLocation();
+  PostLocation({
+    this.lat,
+    this.lng,
+    this.name,
+    this.span,
+  });
 
-  PostLocation.fromJson(core.Map _json) {
-    if (_json.containsKey('lat')) {
-      lat = (_json['lat'] as core.num).toDouble();
-    }
-    if (_json.containsKey('lng')) {
-      lng = (_json['lng'] as core.num).toDouble();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('span')) {
-      span = _json['span'] as core.String;
-    }
-  }
+  PostLocation.fromJson(core.Map _json)
+      : this(
+          lat: _json.containsKey('lat')
+              ? (_json['lat'] as core.num).toDouble()
+              : null,
+          lng: _json.containsKey('lng')
+              ? (_json['lng'] as core.num).toDouble()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          span: _json.containsKey('span') ? _json['span'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (lat != null) 'lat': lat!,
@@ -2861,22 +2934,27 @@ class PostReplies {
   /// The count of comments on this post.
   core.String? totalItems;
 
-  PostReplies();
+  PostReplies({
+    this.items,
+    this.selfLink,
+    this.totalItems,
+  });
 
-  PostReplies.fromJson(core.Map _json) {
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<Comment>((value) =>
-              Comment.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'] as core.String;
-    }
-    if (_json.containsKey('totalItems')) {
-      totalItems = _json['totalItems'] as core.String;
-    }
-  }
+  PostReplies.fromJson(core.Map _json)
+      : this(
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<Comment>((value) => Comment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          selfLink: _json.containsKey('selfLink')
+              ? _json['selfLink'] as core.String
+              : null,
+          totalItems: _json.containsKey('totalItems')
+              ? _json['totalItems'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
@@ -2958,76 +3036,88 @@ class Post {
   /// The URL where this Post is displayed.
   core.String? url;
 
-  Post();
+  Post({
+    this.author,
+    this.blog,
+    this.content,
+    this.customMetaData,
+    this.etag,
+    this.id,
+    this.images,
+    this.kind,
+    this.labels,
+    this.location,
+    this.published,
+    this.readerComments,
+    this.replies,
+    this.selfLink,
+    this.status,
+    this.title,
+    this.titleLink,
+    this.updated,
+    this.url,
+  });
 
-  Post.fromJson(core.Map _json) {
-    if (_json.containsKey('author')) {
-      author = PostAuthor.fromJson(
-          _json['author'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('blog')) {
-      blog = PostBlog.fromJson(
-          _json['blog'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('content')) {
-      content = _json['content'] as core.String;
-    }
-    if (_json.containsKey('customMetaData')) {
-      customMetaData = _json['customMetaData'] as core.String;
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('images')) {
-      images = (_json['images'] as core.List)
-          .map<PostImages>((value) =>
-              PostImages.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('location')) {
-      location = PostLocation.fromJson(
-          _json['location'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('published')) {
-      published = _json['published'] as core.String;
-    }
-    if (_json.containsKey('readerComments')) {
-      readerComments = _json['readerComments'] as core.String;
-    }
-    if (_json.containsKey('replies')) {
-      replies = PostReplies.fromJson(
-          _json['replies'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'] as core.String;
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-    if (_json.containsKey('titleLink')) {
-      titleLink = _json['titleLink'] as core.String;
-    }
-    if (_json.containsKey('updated')) {
-      updated = _json['updated'] as core.String;
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  Post.fromJson(core.Map _json)
+      : this(
+          author: _json.containsKey('author')
+              ? PostAuthor.fromJson(
+                  _json['author'] as core.Map<core.String, core.dynamic>)
+              : null,
+          blog: _json.containsKey('blog')
+              ? PostBlog.fromJson(
+                  _json['blog'] as core.Map<core.String, core.dynamic>)
+              : null,
+          content: _json.containsKey('content')
+              ? _json['content'] as core.String
+              : null,
+          customMetaData: _json.containsKey('customMetaData')
+              ? _json['customMetaData'] as core.String
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          images: _json.containsKey('images')
+              ? (_json['images'] as core.List)
+                  .map<PostImages>((value) => PostImages.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          location: _json.containsKey('location')
+              ? PostLocation.fromJson(
+                  _json['location'] as core.Map<core.String, core.dynamic>)
+              : null,
+          published: _json.containsKey('published')
+              ? _json['published'] as core.String
+              : null,
+          readerComments: _json.containsKey('readerComments')
+              ? _json['readerComments'] as core.String
+              : null,
+          replies: _json.containsKey('replies')
+              ? PostReplies.fromJson(
+                  _json['replies'] as core.Map<core.String, core.dynamic>)
+              : null,
+          selfLink: _json.containsKey('selfLink')
+              ? _json['selfLink'] as core.String
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+          titleLink: _json.containsKey('titleLink')
+              ? _json['titleLink'] as core.String
+              : null,
+          updated: _json.containsKey('updated')
+              ? _json['updated'] as core.String
+              : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (author != null) 'author': author!.toJson(),
@@ -3071,28 +3161,31 @@ class PostList {
   /// Pagination token to fetch the previous page, if one exists.
   core.String? prevPageToken;
 
-  PostList();
+  PostList({
+    this.etag,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.prevPageToken,
+  });
 
-  PostList.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<Post>((value) =>
-              Post.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('prevPageToken')) {
-      prevPageToken = _json['prevPageToken'] as core.String;
-    }
-  }
+  PostList.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<Post>((value) => Post.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          prevPageToken: _json.containsKey('prevPageToken')
+              ? _json['prevPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
@@ -3122,25 +3215,30 @@ class PostPerUserInfo {
   /// ID of the User.
   core.String? userId;
 
-  PostPerUserInfo();
+  PostPerUserInfo({
+    this.blogId,
+    this.hasEditAccess,
+    this.kind,
+    this.postId,
+    this.userId,
+  });
 
-  PostPerUserInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('blogId')) {
-      blogId = _json['blogId'] as core.String;
-    }
-    if (_json.containsKey('hasEditAccess')) {
-      hasEditAccess = _json['hasEditAccess'] as core.bool;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('postId')) {
-      postId = _json['postId'] as core.String;
-    }
-    if (_json.containsKey('userId')) {
-      userId = _json['userId'] as core.String;
-    }
-  }
+  PostPerUserInfo.fromJson(core.Map _json)
+      : this(
+          blogId: _json.containsKey('blogId')
+              ? _json['blogId'] as core.String
+              : null,
+          hasEditAccess: _json.containsKey('hasEditAccess')
+              ? _json['hasEditAccess'] as core.bool
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          postId: _json.containsKey('postId')
+              ? _json['postId'] as core.String
+              : null,
+          userId: _json.containsKey('userId')
+              ? _json['userId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (blogId != null) 'blogId': blogId!,
@@ -3163,21 +3261,24 @@ class PostUserInfo {
   /// Information about a User for the Post.
   PostPerUserInfo? postUserInfo;
 
-  PostUserInfo();
+  PostUserInfo({
+    this.kind,
+    this.post,
+    this.postUserInfo,
+  });
 
-  PostUserInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('post')) {
-      post =
-          Post.fromJson(_json['post'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('post_user_info')) {
-      postUserInfo = PostPerUserInfo.fromJson(
-          _json['post_user_info'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  PostUserInfo.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          post: _json.containsKey('post')
+              ? Post.fromJson(
+                  _json['post'] as core.Map<core.String, core.dynamic>)
+              : null,
+          postUserInfo: _json.containsKey('post_user_info')
+              ? PostPerUserInfo.fromJson(_json['post_user_info']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
@@ -3198,22 +3299,25 @@ class PostUserInfosList {
   /// Pagination token to fetch the next page, if one exists.
   core.String? nextPageToken;
 
-  PostUserInfosList();
+  PostUserInfosList({
+    this.items,
+    this.kind,
+    this.nextPageToken,
+  });
 
-  PostUserInfosList.fromJson(core.Map _json) {
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<PostUserInfo>((value) => PostUserInfo.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  PostUserInfosList.fromJson(core.Map _json)
+      : this(
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<PostUserInfo>((value) => PostUserInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
@@ -3228,13 +3332,16 @@ class UserBlogs {
   /// The URL of the Blogs for this user.
   core.String? selfLink;
 
-  UserBlogs();
+  UserBlogs({
+    this.selfLink,
+  });
 
-  UserBlogs.fromJson(core.Map _json) {
-    if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'] as core.String;
-    }
-  }
+  UserBlogs.fromJson(core.Map _json)
+      : this(
+          selfLink: _json.containsKey('selfLink')
+              ? _json['selfLink'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (selfLink != null) 'selfLink': selfLink!,
@@ -3252,19 +3359,24 @@ class UserLocale {
   /// The language variant this blog is authored in.
   core.String? variant;
 
-  UserLocale();
+  UserLocale({
+    this.country,
+    this.language,
+    this.variant,
+  });
 
-  UserLocale.fromJson(core.Map _json) {
-    if (_json.containsKey('country')) {
-      country = _json['country'] as core.String;
-    }
-    if (_json.containsKey('language')) {
-      language = _json['language'] as core.String;
-    }
-    if (_json.containsKey('variant')) {
-      variant = _json['variant'] as core.String;
-    }
-  }
+  UserLocale.fromJson(core.Map _json)
+      : this(
+          country: _json.containsKey('country')
+              ? _json['country'] as core.String
+              : null,
+          language: _json.containsKey('language')
+              ? _json['language'] as core.String
+              : null,
+          variant: _json.containsKey('variant')
+              ? _json['variant'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (country != null) 'country': country!,
@@ -3303,39 +3415,43 @@ class User {
   /// The user's profile page.
   core.String? url;
 
-  User();
+  User({
+    this.about,
+    this.blogs,
+    this.created,
+    this.displayName,
+    this.id,
+    this.kind,
+    this.locale,
+    this.selfLink,
+    this.url,
+  });
 
-  User.fromJson(core.Map _json) {
-    if (_json.containsKey('about')) {
-      about = _json['about'] as core.String;
-    }
-    if (_json.containsKey('blogs')) {
-      blogs = UserBlogs.fromJson(
-          _json['blogs'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('created')) {
-      created = _json['created'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('locale')) {
-      locale = UserLocale.fromJson(
-          _json['locale'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'] as core.String;
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  User.fromJson(core.Map _json)
+      : this(
+          about:
+              _json.containsKey('about') ? _json['about'] as core.String : null,
+          blogs: _json.containsKey('blogs')
+              ? UserBlogs.fromJson(
+                  _json['blogs'] as core.Map<core.String, core.dynamic>)
+              : null,
+          created: _json.containsKey('created')
+              ? _json['created'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          locale: _json.containsKey('locale')
+              ? UserLocale.fromJson(
+                  _json['locale'] as core.Map<core.String, core.dynamic>)
+              : null,
+          selfLink: _json.containsKey('selfLink')
+              ? _json['selfLink'] as core.String
+              : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (about != null) 'about': about!,

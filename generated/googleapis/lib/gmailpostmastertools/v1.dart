@@ -327,19 +327,24 @@ class DeliveryError {
   /// [PTR record](https://support.google.com/domains/answer/3251147#ptr).
   core.String? errorType;
 
-  DeliveryError();
+  DeliveryError({
+    this.errorClass,
+    this.errorRatio,
+    this.errorType,
+  });
 
-  DeliveryError.fromJson(core.Map _json) {
-    if (_json.containsKey('errorClass')) {
-      errorClass = _json['errorClass'] as core.String;
-    }
-    if (_json.containsKey('errorRatio')) {
-      errorRatio = (_json['errorRatio'] as core.num).toDouble();
-    }
-    if (_json.containsKey('errorType')) {
-      errorType = _json['errorType'] as core.String;
-    }
-  }
+  DeliveryError.fromJson(core.Map _json)
+      : this(
+          errorClass: _json.containsKey('errorClass')
+              ? _json['errorClass'] as core.String
+              : null,
+          errorRatio: _json.containsKey('errorRatio')
+              ? (_json['errorRatio'] as core.num).toDouble()
+              : null,
+          errorType: _json.containsKey('errorType')
+              ? _json['errorType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorClass != null) 'errorClass': errorClass!,
@@ -375,19 +380,22 @@ class Domain {
   /// other domain owners.
   core.String? permission;
 
-  Domain();
+  Domain({
+    this.createTime,
+    this.name,
+    this.permission,
+  });
 
-  Domain.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('permission')) {
-      permission = _json['permission'] as core.String;
-    }
-  }
+  Domain.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          permission: _json.containsKey('permission')
+              ? _json['permission'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -406,16 +414,18 @@ class FeedbackLoop {
   /// number of inboxed messages with that identifier.
   core.double? spamRatio;
 
-  FeedbackLoop();
+  FeedbackLoop({
+    this.id,
+    this.spamRatio,
+  });
 
-  FeedbackLoop.fromJson(core.Map _json) {
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('spamRatio')) {
-      spamRatio = (_json['spamRatio'] as core.num).toDouble();
-    }
-  }
+  FeedbackLoop.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          spamRatio: _json.containsKey('spamRatio')
+              ? (_json['spamRatio'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
@@ -454,21 +464,26 @@ class IpReputation {
   /// A sample of IPs in this reputation category.
   core.List<core.String>? sampleIps;
 
-  IpReputation();
+  IpReputation({
+    this.ipCount,
+    this.reputation,
+    this.sampleIps,
+  });
 
-  IpReputation.fromJson(core.Map _json) {
-    if (_json.containsKey('ipCount')) {
-      ipCount = _json['ipCount'] as core.String;
-    }
-    if (_json.containsKey('reputation')) {
-      reputation = _json['reputation'] as core.String;
-    }
-    if (_json.containsKey('sampleIps')) {
-      sampleIps = (_json['sampleIps'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  IpReputation.fromJson(core.Map _json)
+      : this(
+          ipCount: _json.containsKey('ipCount')
+              ? _json['ipCount'] as core.String
+              : null,
+          reputation: _json.containsKey('reputation')
+              ? _json['reputation'] as core.String
+              : null,
+          sampleIps: _json.containsKey('sampleIps')
+              ? (_json['sampleIps'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ipCount != null) 'ipCount': ipCount!,
@@ -486,19 +501,23 @@ class ListDomainsResponse {
   /// results in the list.
   core.String? nextPageToken;
 
-  ListDomainsResponse();
+  ListDomainsResponse({
+    this.domains,
+    this.nextPageToken,
+  });
 
-  ListDomainsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('domains')) {
-      domains = (_json['domains'] as core.List)
-          .map<Domain>((value) =>
-              Domain.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListDomainsResponse.fromJson(core.Map _json)
+      : this(
+          domains: _json.containsKey('domains')
+              ? (_json['domains'] as core.List)
+                  .map<Domain>((value) => Domain.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (domains != null)
@@ -516,19 +535,23 @@ class ListTrafficStatsResponse {
   /// The list of TrafficStats.
   core.List<TrafficStats>? trafficStats;
 
-  ListTrafficStatsResponse();
+  ListTrafficStatsResponse({
+    this.nextPageToken,
+    this.trafficStats,
+  });
 
-  ListTrafficStatsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('trafficStats')) {
-      trafficStats = (_json['trafficStats'] as core.List)
-          .map<TrafficStats>((value) => TrafficStats.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListTrafficStatsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          trafficStats: _json.containsKey('trafficStats')
+              ? (_json['trafficStats'] as core.List)
+                  .map<TrafficStats>((value) => TrafficStats.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -623,55 +646,63 @@ class TrafficStats {
   /// authenticated by [DKIM](http://www.dkim.org/).
   core.double? userReportedSpamRatio;
 
-  TrafficStats();
+  TrafficStats({
+    this.deliveryErrors,
+    this.dkimSuccessRatio,
+    this.dmarcSuccessRatio,
+    this.domainReputation,
+    this.inboundEncryptionRatio,
+    this.ipReputations,
+    this.name,
+    this.outboundEncryptionRatio,
+    this.spammyFeedbackLoops,
+    this.spfSuccessRatio,
+    this.userReportedSpamRatio,
+  });
 
-  TrafficStats.fromJson(core.Map _json) {
-    if (_json.containsKey('deliveryErrors')) {
-      deliveryErrors = (_json['deliveryErrors'] as core.List)
-          .map<DeliveryError>((value) => DeliveryError.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('dkimSuccessRatio')) {
-      dkimSuccessRatio = (_json['dkimSuccessRatio'] as core.num).toDouble();
-    }
-    if (_json.containsKey('dmarcSuccessRatio')) {
-      dmarcSuccessRatio = (_json['dmarcSuccessRatio'] as core.num).toDouble();
-    }
-    if (_json.containsKey('domainReputation')) {
-      domainReputation = _json['domainReputation'] as core.String;
-    }
-    if (_json.containsKey('inboundEncryptionRatio')) {
-      inboundEncryptionRatio =
-          (_json['inboundEncryptionRatio'] as core.num).toDouble();
-    }
-    if (_json.containsKey('ipReputations')) {
-      ipReputations = (_json['ipReputations'] as core.List)
-          .map<IpReputation>((value) => IpReputation.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('outboundEncryptionRatio')) {
-      outboundEncryptionRatio =
-          (_json['outboundEncryptionRatio'] as core.num).toDouble();
-    }
-    if (_json.containsKey('spammyFeedbackLoops')) {
-      spammyFeedbackLoops = (_json['spammyFeedbackLoops'] as core.List)
-          .map<FeedbackLoop>((value) => FeedbackLoop.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('spfSuccessRatio')) {
-      spfSuccessRatio = (_json['spfSuccessRatio'] as core.num).toDouble();
-    }
-    if (_json.containsKey('userReportedSpamRatio')) {
-      userReportedSpamRatio =
-          (_json['userReportedSpamRatio'] as core.num).toDouble();
-    }
-  }
+  TrafficStats.fromJson(core.Map _json)
+      : this(
+          deliveryErrors: _json.containsKey('deliveryErrors')
+              ? (_json['deliveryErrors'] as core.List)
+                  .map<DeliveryError>((value) => DeliveryError.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          dkimSuccessRatio: _json.containsKey('dkimSuccessRatio')
+              ? (_json['dkimSuccessRatio'] as core.num).toDouble()
+              : null,
+          dmarcSuccessRatio: _json.containsKey('dmarcSuccessRatio')
+              ? (_json['dmarcSuccessRatio'] as core.num).toDouble()
+              : null,
+          domainReputation: _json.containsKey('domainReputation')
+              ? _json['domainReputation'] as core.String
+              : null,
+          inboundEncryptionRatio: _json.containsKey('inboundEncryptionRatio')
+              ? (_json['inboundEncryptionRatio'] as core.num).toDouble()
+              : null,
+          ipReputations: _json.containsKey('ipReputations')
+              ? (_json['ipReputations'] as core.List)
+                  .map<IpReputation>((value) => IpReputation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          outboundEncryptionRatio: _json.containsKey('outboundEncryptionRatio')
+              ? (_json['outboundEncryptionRatio'] as core.num).toDouble()
+              : null,
+          spammyFeedbackLoops: _json.containsKey('spammyFeedbackLoops')
+              ? (_json['spammyFeedbackLoops'] as core.List)
+                  .map<FeedbackLoop>((value) => FeedbackLoop.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          spfSuccessRatio: _json.containsKey('spfSuccessRatio')
+              ? (_json['spfSuccessRatio'] as core.num).toDouble()
+              : null,
+          userReportedSpamRatio: _json.containsKey('userReportedSpamRatio')
+              ? (_json['userReportedSpamRatio'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deliveryErrors != null)

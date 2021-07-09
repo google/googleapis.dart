@@ -529,27 +529,31 @@ class ErrorContext {
   /// `ErrorGroupStats`.
   core.String? user;
 
-  ErrorContext();
+  ErrorContext({
+    this.httpRequest,
+    this.reportLocation,
+    this.sourceReferences,
+    this.user,
+  });
 
-  ErrorContext.fromJson(core.Map _json) {
-    if (_json.containsKey('httpRequest')) {
-      httpRequest = HttpRequestContext.fromJson(
-          _json['httpRequest'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('reportLocation')) {
-      reportLocation = SourceLocation.fromJson(
-          _json['reportLocation'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('sourceReferences')) {
-      sourceReferences = (_json['sourceReferences'] as core.List)
-          .map<SourceReference>((value) => SourceReference.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('user')) {
-      user = _json['user'] as core.String;
-    }
-  }
+  ErrorContext.fromJson(core.Map _json)
+      : this(
+          httpRequest: _json.containsKey('httpRequest')
+              ? HttpRequestContext.fromJson(
+                  _json['httpRequest'] as core.Map<core.String, core.dynamic>)
+              : null,
+          reportLocation: _json.containsKey('reportLocation')
+              ? SourceLocation.fromJson(_json['reportLocation']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          sourceReferences: _json.containsKey('sourceReferences')
+              ? (_json['sourceReferences'] as core.List)
+                  .map<SourceReference>((value) => SourceReference.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          user: _json.containsKey('user') ? _json['user'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (httpRequest != null) 'httpRequest': httpRequest!.toJson(),
@@ -578,24 +582,30 @@ class ErrorEvent {
   /// The `ServiceContext` for which this error was reported.
   ServiceContext? serviceContext;
 
-  ErrorEvent();
+  ErrorEvent({
+    this.context,
+    this.eventTime,
+    this.message,
+    this.serviceContext,
+  });
 
-  ErrorEvent.fromJson(core.Map _json) {
-    if (_json.containsKey('context')) {
-      context = ErrorContext.fromJson(
-          _json['context'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('eventTime')) {
-      eventTime = _json['eventTime'] as core.String;
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-    if (_json.containsKey('serviceContext')) {
-      serviceContext = ServiceContext.fromJson(
-          _json['serviceContext'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ErrorEvent.fromJson(core.Map _json)
+      : this(
+          context: _json.containsKey('context')
+              ? ErrorContext.fromJson(
+                  _json['context'] as core.Map<core.String, core.dynamic>)
+              : null,
+          eventTime: _json.containsKey('eventTime')
+              ? _json['eventTime'] as core.String
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+          serviceContext: _json.containsKey('serviceContext')
+              ? ServiceContext.fromJson(_json['serviceContext']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (context != null) 'context': context!.toJson(),
@@ -637,25 +647,29 @@ class ErrorGroup {
   /// Associated tracking issues.
   core.List<TrackingIssue>? trackingIssues;
 
-  ErrorGroup();
+  ErrorGroup({
+    this.groupId,
+    this.name,
+    this.resolutionStatus,
+    this.trackingIssues,
+  });
 
-  ErrorGroup.fromJson(core.Map _json) {
-    if (_json.containsKey('groupId')) {
-      groupId = _json['groupId'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('resolutionStatus')) {
-      resolutionStatus = _json['resolutionStatus'] as core.String;
-    }
-    if (_json.containsKey('trackingIssues')) {
-      trackingIssues = (_json['trackingIssues'] as core.List)
-          .map<TrackingIssue>((value) => TrackingIssue.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ErrorGroup.fromJson(core.Map _json)
+      : this(
+          groupId: _json.containsKey('groupId')
+              ? _json['groupId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          resolutionStatus: _json.containsKey('resolutionStatus')
+              ? _json['resolutionStatus'] as core.String
+              : null,
+          trackingIssues: _json.containsKey('trackingIssues')
+              ? (_json['trackingIssues'] as core.List)
+                  .map<TrackingIssue>((value) => TrackingIssue.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (groupId != null) 'groupId': groupId!,
@@ -726,45 +740,55 @@ class ErrorGroupStats {
   /// time.
   core.List<TimedCount>? timedCounts;
 
-  ErrorGroupStats();
+  ErrorGroupStats({
+    this.affectedServices,
+    this.affectedUsersCount,
+    this.count,
+    this.firstSeenTime,
+    this.group,
+    this.lastSeenTime,
+    this.numAffectedServices,
+    this.representative,
+    this.timedCounts,
+  });
 
-  ErrorGroupStats.fromJson(core.Map _json) {
-    if (_json.containsKey('affectedServices')) {
-      affectedServices = (_json['affectedServices'] as core.List)
-          .map<ServiceContext>((value) => ServiceContext.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('affectedUsersCount')) {
-      affectedUsersCount = _json['affectedUsersCount'] as core.String;
-    }
-    if (_json.containsKey('count')) {
-      count = _json['count'] as core.String;
-    }
-    if (_json.containsKey('firstSeenTime')) {
-      firstSeenTime = _json['firstSeenTime'] as core.String;
-    }
-    if (_json.containsKey('group')) {
-      group = ErrorGroup.fromJson(
-          _json['group'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('lastSeenTime')) {
-      lastSeenTime = _json['lastSeenTime'] as core.String;
-    }
-    if (_json.containsKey('numAffectedServices')) {
-      numAffectedServices = _json['numAffectedServices'] as core.int;
-    }
-    if (_json.containsKey('representative')) {
-      representative = ErrorEvent.fromJson(
-          _json['representative'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('timedCounts')) {
-      timedCounts = (_json['timedCounts'] as core.List)
-          .map<TimedCount>((value) =>
-              TimedCount.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ErrorGroupStats.fromJson(core.Map _json)
+      : this(
+          affectedServices: _json.containsKey('affectedServices')
+              ? (_json['affectedServices'] as core.List)
+                  .map<ServiceContext>((value) => ServiceContext.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          affectedUsersCount: _json.containsKey('affectedUsersCount')
+              ? _json['affectedUsersCount'] as core.String
+              : null,
+          count:
+              _json.containsKey('count') ? _json['count'] as core.String : null,
+          firstSeenTime: _json.containsKey('firstSeenTime')
+              ? _json['firstSeenTime'] as core.String
+              : null,
+          group: _json.containsKey('group')
+              ? ErrorGroup.fromJson(
+                  _json['group'] as core.Map<core.String, core.dynamic>)
+              : null,
+          lastSeenTime: _json.containsKey('lastSeenTime')
+              ? _json['lastSeenTime'] as core.String
+              : null,
+          numAffectedServices: _json.containsKey('numAffectedServices')
+              ? _json['numAffectedServices'] as core.int
+              : null,
+          representative: _json.containsKey('representative')
+              ? ErrorEvent.fromJson(_json['representative']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          timedCounts: _json.containsKey('timedCounts')
+              ? (_json['timedCounts'] as core.List)
+                  .map<TimedCount>((value) => TimedCount.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (affectedServices != null)
@@ -811,28 +835,34 @@ class HttpRequestContext {
   /// The user agent information that is provided with the request.
   core.String? userAgent;
 
-  HttpRequestContext();
+  HttpRequestContext({
+    this.method,
+    this.referrer,
+    this.remoteIp,
+    this.responseStatusCode,
+    this.url,
+    this.userAgent,
+  });
 
-  HttpRequestContext.fromJson(core.Map _json) {
-    if (_json.containsKey('method')) {
-      method = _json['method'] as core.String;
-    }
-    if (_json.containsKey('referrer')) {
-      referrer = _json['referrer'] as core.String;
-    }
-    if (_json.containsKey('remoteIp')) {
-      remoteIp = _json['remoteIp'] as core.String;
-    }
-    if (_json.containsKey('responseStatusCode')) {
-      responseStatusCode = _json['responseStatusCode'] as core.int;
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-    if (_json.containsKey('userAgent')) {
-      userAgent = _json['userAgent'] as core.String;
-    }
-  }
+  HttpRequestContext.fromJson(core.Map _json)
+      : this(
+          method: _json.containsKey('method')
+              ? _json['method'] as core.String
+              : null,
+          referrer: _json.containsKey('referrer')
+              ? _json['referrer'] as core.String
+              : null,
+          remoteIp: _json.containsKey('remoteIp')
+              ? _json['remoteIp'] as core.String
+              : null,
+          responseStatusCode: _json.containsKey('responseStatusCode')
+              ? _json['responseStatusCode'] as core.int
+              : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+          userAgent: _json.containsKey('userAgent')
+              ? _json['userAgent'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (method != null) 'method': method!,
@@ -860,22 +890,27 @@ class ListEventsResponse {
   /// restricted.
   core.String? timeRangeBegin;
 
-  ListEventsResponse();
+  ListEventsResponse({
+    this.errorEvents,
+    this.nextPageToken,
+    this.timeRangeBegin,
+  });
 
-  ListEventsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('errorEvents')) {
-      errorEvents = (_json['errorEvents'] as core.List)
-          .map<ErrorEvent>((value) =>
-              ErrorEvent.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('timeRangeBegin')) {
-      timeRangeBegin = _json['timeRangeBegin'] as core.String;
-    }
-  }
+  ListEventsResponse.fromJson(core.Map _json)
+      : this(
+          errorEvents: _json.containsKey('errorEvents')
+              ? (_json['errorEvents'] as core.List)
+                  .map<ErrorEvent>((value) => ErrorEvent.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          timeRangeBegin: _json.containsKey('timeRangeBegin')
+              ? _json['timeRangeBegin'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorEvents != null)
@@ -904,22 +939,27 @@ class ListGroupStatsResponse {
   /// older data has been deleted.
   core.String? timeRangeBegin;
 
-  ListGroupStatsResponse();
+  ListGroupStatsResponse({
+    this.errorGroupStats,
+    this.nextPageToken,
+    this.timeRangeBegin,
+  });
 
-  ListGroupStatsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('errorGroupStats')) {
-      errorGroupStats = (_json['errorGroupStats'] as core.List)
-          .map<ErrorGroupStats>((value) => ErrorGroupStats.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('timeRangeBegin')) {
-      timeRangeBegin = _json['timeRangeBegin'] as core.String;
-    }
-  }
+  ListGroupStatsResponse.fromJson(core.Map _json)
+      : this(
+          errorGroupStats: _json.containsKey('errorGroupStats')
+              ? (_json['errorGroupStats'] as core.List)
+                  .map<ErrorGroupStats>((value) => ErrorGroupStats.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          timeRangeBegin: _json.containsKey('timeRangeBegin')
+              ? _json['timeRangeBegin'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorGroupStats != null)
@@ -989,24 +1029,30 @@ class ReportedErrorEvent {
   /// Required.
   ServiceContext? serviceContext;
 
-  ReportedErrorEvent();
+  ReportedErrorEvent({
+    this.context,
+    this.eventTime,
+    this.message,
+    this.serviceContext,
+  });
 
-  ReportedErrorEvent.fromJson(core.Map _json) {
-    if (_json.containsKey('context')) {
-      context = ErrorContext.fromJson(
-          _json['context'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('eventTime')) {
-      eventTime = _json['eventTime'] as core.String;
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-    if (_json.containsKey('serviceContext')) {
-      serviceContext = ServiceContext.fromJson(
-          _json['serviceContext'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ReportedErrorEvent.fromJson(core.Map _json)
+      : this(
+          context: _json.containsKey('context')
+              ? ErrorContext.fromJson(
+                  _json['context'] as core.Map<core.String, core.dynamic>)
+              : null,
+          eventTime: _json.containsKey('eventTime')
+              ? _json['eventTime'] as core.String
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+          serviceContext: _json.containsKey('serviceContext')
+              ? ServiceContext.fromJson(_json['serviceContext']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (context != null) 'context': context!.toJson(),
@@ -1044,19 +1090,24 @@ class ServiceContext {
   /// the app.
   core.String? version;
 
-  ServiceContext();
+  ServiceContext({
+    this.resourceType,
+    this.service,
+    this.version,
+  });
 
-  ServiceContext.fromJson(core.Map _json) {
-    if (_json.containsKey('resourceType')) {
-      resourceType = _json['resourceType'] as core.String;
-    }
-    if (_json.containsKey('service')) {
-      service = _json['service'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.String;
-    }
-  }
+  ServiceContext.fromJson(core.Map _json)
+      : this(
+          resourceType: _json.containsKey('resourceType')
+              ? _json['resourceType'] as core.String
+              : null,
+          service: _json.containsKey('service')
+              ? _json['service'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceType != null) 'resourceType': resourceType!,
@@ -1087,19 +1138,24 @@ class SourceLocation {
   /// 0 indicates that the line number is unknown.
   core.int? lineNumber;
 
-  SourceLocation();
+  SourceLocation({
+    this.filePath,
+    this.functionName,
+    this.lineNumber,
+  });
 
-  SourceLocation.fromJson(core.Map _json) {
-    if (_json.containsKey('filePath')) {
-      filePath = _json['filePath'] as core.String;
-    }
-    if (_json.containsKey('functionName')) {
-      functionName = _json['functionName'] as core.String;
-    }
-    if (_json.containsKey('lineNumber')) {
-      lineNumber = _json['lineNumber'] as core.int;
-    }
-  }
+  SourceLocation.fromJson(core.Map _json)
+      : this(
+          filePath: _json.containsKey('filePath')
+              ? _json['filePath'] as core.String
+              : null,
+          functionName: _json.containsKey('functionName')
+              ? _json['functionName'] as core.String
+              : null,
+          lineNumber: _json.containsKey('lineNumber')
+              ? _json['lineNumber'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (filePath != null) 'filePath': filePath!,
@@ -1123,16 +1179,20 @@ class SourceReference {
   /// Example (git): "0035781c50ec7aa23385dc841529ce8a4b70db1b"
   core.String? revisionId;
 
-  SourceReference();
+  SourceReference({
+    this.repository,
+    this.revisionId,
+  });
 
-  SourceReference.fromJson(core.Map _json) {
-    if (_json.containsKey('repository')) {
-      repository = _json['repository'] as core.String;
-    }
-    if (_json.containsKey('revisionId')) {
-      revisionId = _json['revisionId'] as core.String;
-    }
-  }
+  SourceReference.fromJson(core.Map _json)
+      : this(
+          repository: _json.containsKey('repository')
+              ? _json['repository'] as core.String
+              : null,
+          revisionId: _json.containsKey('revisionId')
+              ? _json['revisionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (repository != null) 'repository': repository!,
@@ -1154,19 +1214,23 @@ class TimedCount {
   /// Start of the time period to which `count` refers (included).
   core.String? startTime;
 
-  TimedCount();
+  TimedCount({
+    this.count,
+    this.endTime,
+    this.startTime,
+  });
 
-  TimedCount.fromJson(core.Map _json) {
-    if (_json.containsKey('count')) {
-      count = _json['count'] as core.String;
-    }
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-  }
+  TimedCount.fromJson(core.Map _json)
+      : this(
+          count:
+              _json.containsKey('count') ? _json['count'] as core.String : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
@@ -1182,13 +1246,14 @@ class TrackingIssue {
   /// Example: `https://github.com/user/project/issues/4`
   core.String? url;
 
-  TrackingIssue();
+  TrackingIssue({
+    this.url,
+  });
 
-  TrackingIssue.fromJson(core.Map _json) {
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  TrackingIssue.fromJson(core.Map _json)
+      : this(
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (url != null) 'url': url!,

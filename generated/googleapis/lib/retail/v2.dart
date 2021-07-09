@@ -1079,27 +1079,30 @@ class GoogleApiHttpBody {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>>? extensions;
 
-  GoogleApiHttpBody();
+  GoogleApiHttpBody({
+    this.contentType,
+    this.data,
+    this.extensions,
+  });
 
-  GoogleApiHttpBody.fromJson(core.Map _json) {
-    if (_json.containsKey('contentType')) {
-      contentType = _json['contentType'] as core.String;
-    }
-    if (_json.containsKey('data')) {
-      data = _json['data'] as core.String;
-    }
-    if (_json.containsKey('extensions')) {
-      extensions = (_json['extensions'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-  }
+  GoogleApiHttpBody.fromJson(core.Map _json)
+      : this(
+          contentType: _json.containsKey('contentType')
+              ? _json['contentType'] as core.String
+              : null,
+          data: _json.containsKey('data') ? _json['data'] as core.String : null,
+          extensions: _json.containsKey('extensions')
+              ? (_json['extensions'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentType != null) 'contentType': contentType!,
@@ -1117,18 +1120,23 @@ class GoogleCloudRetailLoggingErrorContext {
   /// error, usually the place where it was logged.
   GoogleCloudRetailLoggingSourceLocation? reportLocation;
 
-  GoogleCloudRetailLoggingErrorContext();
+  GoogleCloudRetailLoggingErrorContext({
+    this.httpRequest,
+    this.reportLocation,
+  });
 
-  GoogleCloudRetailLoggingErrorContext.fromJson(core.Map _json) {
-    if (_json.containsKey('httpRequest')) {
-      httpRequest = GoogleCloudRetailLoggingHttpRequestContext.fromJson(
-          _json['httpRequest'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('reportLocation')) {
-      reportLocation = GoogleCloudRetailLoggingSourceLocation.fromJson(
-          _json['reportLocation'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudRetailLoggingErrorContext.fromJson(core.Map _json)
+      : this(
+          httpRequest: _json.containsKey('httpRequest')
+              ? GoogleCloudRetailLoggingHttpRequestContext.fromJson(
+                  _json['httpRequest'] as core.Map<core.String, core.dynamic>)
+              : null,
+          reportLocation: _json.containsKey('reportLocation')
+              ? GoogleCloudRetailLoggingSourceLocation.fromJson(
+                  _json['reportLocation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (httpRequest != null) 'httpRequest': httpRequest!.toJson(),
@@ -1179,47 +1187,58 @@ class GoogleCloudRetailLoggingErrorLog {
   /// The RPC status associated with the error log.
   GoogleRpcStatus? status;
 
-  GoogleCloudRetailLoggingErrorLog();
+  GoogleCloudRetailLoggingErrorLog({
+    this.context,
+    this.importPayload,
+    this.message,
+    this.requestPayload,
+    this.responsePayload,
+    this.serviceContext,
+    this.status,
+  });
 
-  GoogleCloudRetailLoggingErrorLog.fromJson(core.Map _json) {
-    if (_json.containsKey('context')) {
-      context = GoogleCloudRetailLoggingErrorContext.fromJson(
-          _json['context'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('importPayload')) {
-      importPayload = GoogleCloudRetailLoggingImportErrorContext.fromJson(
-          _json['importPayload'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-    if (_json.containsKey('requestPayload')) {
-      requestPayload =
-          (_json['requestPayload'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('responsePayload')) {
-      responsePayload =
-          (_json['responsePayload'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('serviceContext')) {
-      serviceContext = GoogleCloudRetailLoggingServiceContext.fromJson(
-          _json['serviceContext'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('status')) {
-      status = GoogleRpcStatus.fromJson(
-          _json['status'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudRetailLoggingErrorLog.fromJson(core.Map _json)
+      : this(
+          context: _json.containsKey('context')
+              ? GoogleCloudRetailLoggingErrorContext.fromJson(
+                  _json['context'] as core.Map<core.String, core.dynamic>)
+              : null,
+          importPayload: _json.containsKey('importPayload')
+              ? GoogleCloudRetailLoggingImportErrorContext.fromJson(
+                  _json['importPayload'] as core.Map<core.String, core.dynamic>)
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+          requestPayload: _json.containsKey('requestPayload')
+              ? (_json['requestPayload'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          responsePayload: _json.containsKey('responsePayload')
+              ? (_json['responsePayload']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          serviceContext: _json.containsKey('serviceContext')
+              ? GoogleCloudRetailLoggingServiceContext.fromJson(
+                  _json['serviceContext']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          status: _json.containsKey('status')
+              ? GoogleRpcStatus.fromJson(
+                  _json['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (context != null) 'context': context!.toJson(),
@@ -1237,13 +1256,16 @@ class GoogleCloudRetailLoggingHttpRequestContext {
   /// The HTTP response status code for the request.
   core.int? responseStatusCode;
 
-  GoogleCloudRetailLoggingHttpRequestContext();
+  GoogleCloudRetailLoggingHttpRequestContext({
+    this.responseStatusCode,
+  });
 
-  GoogleCloudRetailLoggingHttpRequestContext.fromJson(core.Map _json) {
-    if (_json.containsKey('responseStatusCode')) {
-      responseStatusCode = _json['responseStatusCode'] as core.int;
-    }
-  }
+  GoogleCloudRetailLoggingHttpRequestContext.fromJson(core.Map _json)
+      : this(
+          responseStatusCode: _json.containsKey('responseStatusCode')
+              ? _json['responseStatusCode'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (responseStatusCode != null)
@@ -1278,28 +1300,36 @@ class GoogleCloudRetailLoggingImportErrorContext {
   /// The detailed content which caused the error on importing a user event.
   core.String? userEvent;
 
-  GoogleCloudRetailLoggingImportErrorContext();
+  GoogleCloudRetailLoggingImportErrorContext({
+    this.catalogItem,
+    this.gcsPath,
+    this.lineNumber,
+    this.operationName,
+    this.product,
+    this.userEvent,
+  });
 
-  GoogleCloudRetailLoggingImportErrorContext.fromJson(core.Map _json) {
-    if (_json.containsKey('catalogItem')) {
-      catalogItem = _json['catalogItem'] as core.String;
-    }
-    if (_json.containsKey('gcsPath')) {
-      gcsPath = _json['gcsPath'] as core.String;
-    }
-    if (_json.containsKey('lineNumber')) {
-      lineNumber = _json['lineNumber'] as core.String;
-    }
-    if (_json.containsKey('operationName')) {
-      operationName = _json['operationName'] as core.String;
-    }
-    if (_json.containsKey('product')) {
-      product = _json['product'] as core.String;
-    }
-    if (_json.containsKey('userEvent')) {
-      userEvent = _json['userEvent'] as core.String;
-    }
-  }
+  GoogleCloudRetailLoggingImportErrorContext.fromJson(core.Map _json)
+      : this(
+          catalogItem: _json.containsKey('catalogItem')
+              ? _json['catalogItem'] as core.String
+              : null,
+          gcsPath: _json.containsKey('gcsPath')
+              ? _json['gcsPath'] as core.String
+              : null,
+          lineNumber: _json.containsKey('lineNumber')
+              ? _json['lineNumber'] as core.String
+              : null,
+          operationName: _json.containsKey('operationName')
+              ? _json['operationName'] as core.String
+              : null,
+          product: _json.containsKey('product')
+              ? _json['product'] as core.String
+              : null,
+          userEvent: _json.containsKey('userEvent')
+              ? _json['userEvent'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (catalogItem != null) 'catalogItem': catalogItem!,
@@ -1318,13 +1348,16 @@ class GoogleCloudRetailLoggingServiceContext {
   /// For example, "retail.googleapis.com".
   core.String? service;
 
-  GoogleCloudRetailLoggingServiceContext();
+  GoogleCloudRetailLoggingServiceContext({
+    this.service,
+  });
 
-  GoogleCloudRetailLoggingServiceContext.fromJson(core.Map _json) {
-    if (_json.containsKey('service')) {
-      service = _json['service'] as core.String;
-    }
-  }
+  GoogleCloudRetailLoggingServiceContext.fromJson(core.Map _json)
+      : this(
+          service: _json.containsKey('service')
+              ? _json['service'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (service != null) 'service': service!,
@@ -1339,13 +1372,16 @@ class GoogleCloudRetailLoggingSourceLocation {
   /// For example, "google.cloud.retail.v2.UserEventService.ImportUserEvents".
   core.String? functionName;
 
-  GoogleCloudRetailLoggingSourceLocation();
+  GoogleCloudRetailLoggingSourceLocation({
+    this.functionName,
+  });
 
-  GoogleCloudRetailLoggingSourceLocation.fromJson(core.Map _json) {
-    if (_json.containsKey('functionName')) {
-      functionName = _json['functionName'] as core.String;
-    }
-  }
+  GoogleCloudRetailLoggingSourceLocation.fromJson(core.Map _json)
+      : this(
+          functionName: _json.containsKey('functionName')
+              ? _json['functionName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (functionName != null) 'functionName': functionName!,
@@ -1390,25 +1426,32 @@ class GoogleCloudRetailV2BigQuerySource {
   /// Required.
   core.String? tableId;
 
-  GoogleCloudRetailV2BigQuerySource();
+  GoogleCloudRetailV2BigQuerySource({
+    this.dataSchema,
+    this.datasetId,
+    this.gcsStagingDir,
+    this.projectId,
+    this.tableId,
+  });
 
-  GoogleCloudRetailV2BigQuerySource.fromJson(core.Map _json) {
-    if (_json.containsKey('dataSchema')) {
-      dataSchema = _json['dataSchema'] as core.String;
-    }
-    if (_json.containsKey('datasetId')) {
-      datasetId = _json['datasetId'] as core.String;
-    }
-    if (_json.containsKey('gcsStagingDir')) {
-      gcsStagingDir = _json['gcsStagingDir'] as core.String;
-    }
-    if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'] as core.String;
-    }
-    if (_json.containsKey('tableId')) {
-      tableId = _json['tableId'] as core.String;
-    }
-  }
+  GoogleCloudRetailV2BigQuerySource.fromJson(core.Map _json)
+      : this(
+          dataSchema: _json.containsKey('dataSchema')
+              ? _json['dataSchema'] as core.String
+              : null,
+          datasetId: _json.containsKey('datasetId')
+              ? _json['datasetId'] as core.String
+              : null,
+          gcsStagingDir: _json.containsKey('gcsStagingDir')
+              ? _json['gcsStagingDir'] as core.String
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          tableId: _json.containsKey('tableId')
+              ? _json['tableId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataSchema != null) 'dataSchema': dataSchema!,
@@ -1439,20 +1482,24 @@ class GoogleCloudRetailV2Catalog {
   /// Required.
   GoogleCloudRetailV2ProductLevelConfig? productLevelConfig;
 
-  GoogleCloudRetailV2Catalog();
+  GoogleCloudRetailV2Catalog({
+    this.displayName,
+    this.name,
+    this.productLevelConfig,
+  });
 
-  GoogleCloudRetailV2Catalog.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('productLevelConfig')) {
-      productLevelConfig = GoogleCloudRetailV2ProductLevelConfig.fromJson(
-          _json['productLevelConfig'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudRetailV2Catalog.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          productLevelConfig: _json.containsKey('productLevelConfig')
+              ? GoogleCloudRetailV2ProductLevelConfig.fromJson(
+                  _json['productLevelConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -1481,20 +1528,24 @@ class GoogleCloudRetailV2CustomAttribute {
   /// be set. Otherwise, an INVALID_ARGUMENT error is returned.
   core.List<core.String>? text;
 
-  GoogleCloudRetailV2CustomAttribute();
+  GoogleCloudRetailV2CustomAttribute({
+    this.numbers,
+    this.text,
+  });
 
-  GoogleCloudRetailV2CustomAttribute.fromJson(core.Map _json) {
-    if (_json.containsKey('numbers')) {
-      numbers = (_json['numbers'] as core.List)
-          .map<core.double>((value) => (value as core.num).toDouble())
-          .toList();
-    }
-    if (_json.containsKey('text')) {
-      text = (_json['text'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  GoogleCloudRetailV2CustomAttribute.fromJson(core.Map _json)
+      : this(
+          numbers: _json.containsKey('numbers')
+              ? (_json['numbers'] as core.List)
+                  .map<core.double>((value) => (value as core.num).toDouble())
+                  .toList()
+              : null,
+          text: _json.containsKey('text')
+              ? (_json['text'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (numbers != null) 'numbers': numbers!,
@@ -1529,18 +1580,22 @@ class GoogleCloudRetailV2GcsSource {
   /// Required.
   core.List<core.String>? inputUris;
 
-  GoogleCloudRetailV2GcsSource();
+  GoogleCloudRetailV2GcsSource({
+    this.dataSchema,
+    this.inputUris,
+  });
 
-  GoogleCloudRetailV2GcsSource.fromJson(core.Map _json) {
-    if (_json.containsKey('dataSchema')) {
-      dataSchema = _json['dataSchema'] as core.String;
-    }
-    if (_json.containsKey('inputUris')) {
-      inputUris = (_json['inputUris'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  GoogleCloudRetailV2GcsSource.fromJson(core.Map _json)
+      : this(
+          dataSchema: _json.containsKey('dataSchema')
+              ? _json['dataSchema'] as core.String
+              : null,
+          inputUris: _json.containsKey('inputUris')
+              ? (_json['inputUris'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataSchema != null) 'dataSchema': dataSchema!,
@@ -1573,19 +1628,19 @@ class GoogleCloudRetailV2Image {
   /// returned.
   core.int? width;
 
-  GoogleCloudRetailV2Image();
+  GoogleCloudRetailV2Image({
+    this.height,
+    this.uri,
+    this.width,
+  });
 
-  GoogleCloudRetailV2Image.fromJson(core.Map _json) {
-    if (_json.containsKey('height')) {
-      height = _json['height'] as core.int;
-    }
-    if (_json.containsKey('uri')) {
-      uri = _json['uri'] as core.String;
-    }
-    if (_json.containsKey('width')) {
-      width = _json['width'] as core.int;
-    }
-  }
+  GoogleCloudRetailV2Image.fromJson(core.Map _json)
+      : this(
+          height:
+              _json.containsKey('height') ? _json['height'] as core.int : null,
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+          width: _json.containsKey('width') ? _json['width'] as core.int : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (height != null) 'height': height!,
@@ -1603,13 +1658,16 @@ class GoogleCloudRetailV2ImportErrorsConfig {
   /// `google.rpc.Status` message.
   core.String? gcsPrefix;
 
-  GoogleCloudRetailV2ImportErrorsConfig();
+  GoogleCloudRetailV2ImportErrorsConfig({
+    this.gcsPrefix,
+  });
 
-  GoogleCloudRetailV2ImportErrorsConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('gcsPrefix')) {
-      gcsPrefix = _json['gcsPrefix'] as core.String;
-    }
-  }
+  GoogleCloudRetailV2ImportErrorsConfig.fromJson(core.Map _json)
+      : this(
+          gcsPrefix: _json.containsKey('gcsPrefix')
+              ? _json['gcsPrefix'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
@@ -1634,22 +1692,28 @@ class GoogleCloudRetailV2ImportMetadata {
   /// If the operation is done, this is also the finish time.
   core.String? updateTime;
 
-  GoogleCloudRetailV2ImportMetadata();
+  GoogleCloudRetailV2ImportMetadata({
+    this.createTime,
+    this.failureCount,
+    this.successCount,
+    this.updateTime,
+  });
 
-  GoogleCloudRetailV2ImportMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('failureCount')) {
-      failureCount = _json['failureCount'] as core.String;
-    }
-    if (_json.containsKey('successCount')) {
-      successCount = _json['successCount'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  GoogleCloudRetailV2ImportMetadata.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          failureCount: _json.containsKey('failureCount')
+              ? _json['failureCount'] as core.String
+              : null,
+          successCount: _json.containsKey('successCount')
+              ? _json['successCount'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -1674,21 +1738,26 @@ class GoogleCloudRetailV2ImportProductsRequest {
   /// If not set, will by default update all fields.
   core.String? updateMask;
 
-  GoogleCloudRetailV2ImportProductsRequest();
+  GoogleCloudRetailV2ImportProductsRequest({
+    this.errorsConfig,
+    this.inputConfig,
+    this.updateMask,
+  });
 
-  GoogleCloudRetailV2ImportProductsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('errorsConfig')) {
-      errorsConfig = GoogleCloudRetailV2ImportErrorsConfig.fromJson(
-          _json['errorsConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('inputConfig')) {
-      inputConfig = GoogleCloudRetailV2ProductInputConfig.fromJson(
-          _json['inputConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'] as core.String;
-    }
-  }
+  GoogleCloudRetailV2ImportProductsRequest.fromJson(core.Map _json)
+      : this(
+          errorsConfig: _json.containsKey('errorsConfig')
+              ? GoogleCloudRetailV2ImportErrorsConfig.fromJson(
+                  _json['errorsConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          inputConfig: _json.containsKey('inputConfig')
+              ? GoogleCloudRetailV2ProductInputConfig.fromJson(
+                  _json['inputConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: _json.containsKey('updateMask')
+              ? _json['updateMask'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
@@ -1709,20 +1778,24 @@ class GoogleCloudRetailV2ImportProductsResponse {
   /// Echoes the destination for the complete errors in the request if set.
   GoogleCloudRetailV2ImportErrorsConfig? errorsConfig;
 
-  GoogleCloudRetailV2ImportProductsResponse();
+  GoogleCloudRetailV2ImportProductsResponse({
+    this.errorSamples,
+    this.errorsConfig,
+  });
 
-  GoogleCloudRetailV2ImportProductsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('errorSamples')) {
-      errorSamples = (_json['errorSamples'] as core.List)
-          .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('errorsConfig')) {
-      errorsConfig = GoogleCloudRetailV2ImportErrorsConfig.fromJson(
-          _json['errorsConfig'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudRetailV2ImportProductsResponse.fromJson(core.Map _json)
+      : this(
+          errorSamples: _json.containsKey('errorSamples')
+              ? (_json['errorSamples'] as core.List)
+                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          errorsConfig: _json.containsKey('errorsConfig')
+              ? GoogleCloudRetailV2ImportErrorsConfig.fromJson(
+                  _json['errorsConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorSamples != null)
@@ -1743,18 +1816,22 @@ class GoogleCloudRetailV2ImportUserEventsRequest {
   /// Required.
   GoogleCloudRetailV2UserEventInputConfig? inputConfig;
 
-  GoogleCloudRetailV2ImportUserEventsRequest();
+  GoogleCloudRetailV2ImportUserEventsRequest({
+    this.errorsConfig,
+    this.inputConfig,
+  });
 
-  GoogleCloudRetailV2ImportUserEventsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('errorsConfig')) {
-      errorsConfig = GoogleCloudRetailV2ImportErrorsConfig.fromJson(
-          _json['errorsConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('inputConfig')) {
-      inputConfig = GoogleCloudRetailV2UserEventInputConfig.fromJson(
-          _json['inputConfig'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudRetailV2ImportUserEventsRequest.fromJson(core.Map _json)
+      : this(
+          errorsConfig: _json.containsKey('errorsConfig')
+              ? GoogleCloudRetailV2ImportErrorsConfig.fromJson(
+                  _json['errorsConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          inputConfig: _json.containsKey('inputConfig')
+              ? GoogleCloudRetailV2UserEventInputConfig.fromJson(
+                  _json['inputConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
@@ -1778,24 +1855,29 @@ class GoogleCloudRetailV2ImportUserEventsResponse {
   /// Aggregated statistics of user event import status.
   GoogleCloudRetailV2UserEventImportSummary? importSummary;
 
-  GoogleCloudRetailV2ImportUserEventsResponse();
+  GoogleCloudRetailV2ImportUserEventsResponse({
+    this.errorSamples,
+    this.errorsConfig,
+    this.importSummary,
+  });
 
-  GoogleCloudRetailV2ImportUserEventsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('errorSamples')) {
-      errorSamples = (_json['errorSamples'] as core.List)
-          .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('errorsConfig')) {
-      errorsConfig = GoogleCloudRetailV2ImportErrorsConfig.fromJson(
-          _json['errorsConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('importSummary')) {
-      importSummary = GoogleCloudRetailV2UserEventImportSummary.fromJson(
-          _json['importSummary'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudRetailV2ImportUserEventsResponse.fromJson(core.Map _json)
+      : this(
+          errorSamples: _json.containsKey('errorSamples')
+              ? (_json['errorSamples'] as core.List)
+                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          errorsConfig: _json.containsKey('errorsConfig')
+              ? GoogleCloudRetailV2ImportErrorsConfig.fromJson(
+                  _json['errorsConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          importSummary: _json.containsKey('importSummary')
+              ? GoogleCloudRetailV2UserEventImportSummary.fromJson(
+                  _json['importSummary'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorSamples != null)
@@ -1816,20 +1898,24 @@ class GoogleCloudRetailV2ListCatalogsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  GoogleCloudRetailV2ListCatalogsResponse();
+  GoogleCloudRetailV2ListCatalogsResponse({
+    this.catalogs,
+    this.nextPageToken,
+  });
 
-  GoogleCloudRetailV2ListCatalogsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('catalogs')) {
-      catalogs = (_json['catalogs'] as core.List)
-          .map<GoogleCloudRetailV2Catalog>((value) =>
-              GoogleCloudRetailV2Catalog.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  GoogleCloudRetailV2ListCatalogsResponse.fromJson(core.Map _json)
+      : this(
+          catalogs: _json.containsKey('catalogs')
+              ? (_json['catalogs'] as core.List)
+                  .map<GoogleCloudRetailV2Catalog>((value) =>
+                      GoogleCloudRetailV2Catalog.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (catalogs != null)
@@ -1926,42 +2012,51 @@ class GoogleCloudRetailV2PredictRequest {
   /// the API, or if the model is not ready.
   core.bool? validateOnly;
 
-  GoogleCloudRetailV2PredictRequest();
+  GoogleCloudRetailV2PredictRequest({
+    this.filter,
+    this.labels,
+    this.pageSize,
+    this.pageToken,
+    this.params,
+    this.userEvent,
+    this.validateOnly,
+  });
 
-  GoogleCloudRetailV2PredictRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('filter')) {
-      filter = _json['filter'] as core.String;
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.String,
-        ),
-      );
-    }
-    if (_json.containsKey('pageSize')) {
-      pageSize = _json['pageSize'] as core.int;
-    }
-    if (_json.containsKey('pageToken')) {
-      pageToken = _json['pageToken'] as core.String;
-    }
-    if (_json.containsKey('params')) {
-      params = (_json['params'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('userEvent')) {
-      userEvent = GoogleCloudRetailV2UserEvent.fromJson(
-          _json['userEvent'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('validateOnly')) {
-      validateOnly = _json['validateOnly'] as core.bool;
-    }
-  }
+  GoogleCloudRetailV2PredictRequest.fromJson(core.Map _json)
+      : this(
+          filter: _json.containsKey('filter')
+              ? _json['filter'] as core.String
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          pageSize: _json.containsKey('pageSize')
+              ? _json['pageSize'] as core.int
+              : null,
+          pageToken: _json.containsKey('pageToken')
+              ? _json['pageToken'] as core.String
+              : null,
+          params: _json.containsKey('params')
+              ? (_json['params'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          userEvent: _json.containsKey('userEvent')
+              ? GoogleCloudRetailV2UserEvent.fromJson(
+                  _json['userEvent'] as core.Map<core.String, core.dynamic>)
+              : null,
+          validateOnly: _json.containsKey('validateOnly')
+              ? _json['validateOnly'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (filter != null) 'filter': filter!,
@@ -1995,28 +2090,36 @@ class GoogleCloudRetailV2PredictResponse {
   /// True if the validateOnly property was set in the request.
   core.bool? validateOnly;
 
-  GoogleCloudRetailV2PredictResponse();
+  GoogleCloudRetailV2PredictResponse({
+    this.attributionToken,
+    this.missingIds,
+    this.results,
+    this.validateOnly,
+  });
 
-  GoogleCloudRetailV2PredictResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('attributionToken')) {
-      attributionToken = _json['attributionToken'] as core.String;
-    }
-    if (_json.containsKey('missingIds')) {
-      missingIds = (_json['missingIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('results')) {
-      results = (_json['results'] as core.List)
-          .map<GoogleCloudRetailV2PredictResponsePredictionResult>((value) =>
-              GoogleCloudRetailV2PredictResponsePredictionResult.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('validateOnly')) {
-      validateOnly = _json['validateOnly'] as core.bool;
-    }
-  }
+  GoogleCloudRetailV2PredictResponse.fromJson(core.Map _json)
+      : this(
+          attributionToken: _json.containsKey('attributionToken')
+              ? _json['attributionToken'] as core.String
+              : null,
+          missingIds: _json.containsKey('missingIds')
+              ? (_json['missingIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          results: _json.containsKey('results')
+              ? (_json['results'] as core.List)
+                  .map<GoogleCloudRetailV2PredictResponsePredictionResult>(
+                      (value) =>
+                          GoogleCloudRetailV2PredictResponsePredictionResult
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          validateOnly: _json.containsKey('validateOnly')
+              ? _json['validateOnly'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attributionToken != null) 'attributionToken': attributionToken!,
@@ -2043,21 +2146,23 @@ class GoogleCloudRetailV2PredictResponsePredictionResult {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object>? metadata;
 
-  GoogleCloudRetailV2PredictResponsePredictionResult();
+  GoogleCloudRetailV2PredictResponsePredictionResult({
+    this.id,
+    this.metadata,
+  });
 
-  GoogleCloudRetailV2PredictResponsePredictionResult.fromJson(core.Map _json) {
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-  }
+  GoogleCloudRetailV2PredictResponsePredictionResult.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
@@ -2094,22 +2199,28 @@ class GoogleCloudRetailV2PriceInfo {
   /// [Offer.priceSpecification](https://schema.org/priceSpecification).
   core.double? price;
 
-  GoogleCloudRetailV2PriceInfo();
+  GoogleCloudRetailV2PriceInfo({
+    this.cost,
+    this.currencyCode,
+    this.originalPrice,
+    this.price,
+  });
 
-  GoogleCloudRetailV2PriceInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('cost')) {
-      cost = (_json['cost'] as core.num).toDouble();
-    }
-    if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'] as core.String;
-    }
-    if (_json.containsKey('originalPrice')) {
-      originalPrice = (_json['originalPrice'] as core.num).toDouble();
-    }
-    if (_json.containsKey('price')) {
-      price = (_json['price'] as core.num).toDouble();
-    }
-  }
+  GoogleCloudRetailV2PriceInfo.fromJson(core.Map _json)
+      : this(
+          cost: _json.containsKey('cost')
+              ? (_json['cost'] as core.num).toDouble()
+              : null,
+          currencyCode: _json.containsKey('currencyCode')
+              ? _json['currencyCode'] as core.String
+              : null,
+          originalPrice: _json.containsKey('originalPrice')
+              ? (_json['originalPrice'] as core.num).toDouble()
+              : null,
+          price: _json.containsKey('price')
+              ? (_json['price'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cost != null) 'cost': cost!,
@@ -2292,71 +2403,79 @@ class GoogleCloudRetailV2Product {
   /// property [Offer.url](https://schema.org/url).
   core.String? uri;
 
-  GoogleCloudRetailV2Product();
+  GoogleCloudRetailV2Product({
+    this.attributes,
+    this.availability,
+    this.availableQuantity,
+    this.availableTime,
+    this.categories,
+    this.description,
+    this.id,
+    this.images,
+    this.name,
+    this.priceInfo,
+    this.primaryProductId,
+    this.tags,
+    this.title,
+    this.type,
+    this.uri,
+  });
 
-  GoogleCloudRetailV2Product.fromJson(core.Map _json) {
-    if (_json.containsKey('attributes')) {
-      attributes =
-          (_json['attributes'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          GoogleCloudRetailV2CustomAttribute.fromJson(
-              item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('availability')) {
-      availability = _json['availability'] as core.String;
-    }
-    if (_json.containsKey('availableQuantity')) {
-      availableQuantity = _json['availableQuantity'] as core.int;
-    }
-    if (_json.containsKey('availableTime')) {
-      availableTime = _json['availableTime'] as core.String;
-    }
-    if (_json.containsKey('categories')) {
-      categories = (_json['categories'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('images')) {
-      images = (_json['images'] as core.List)
-          .map<GoogleCloudRetailV2Image>((value) =>
-              GoogleCloudRetailV2Image.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('priceInfo')) {
-      priceInfo = GoogleCloudRetailV2PriceInfo.fromJson(
-          _json['priceInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('primaryProductId')) {
-      primaryProductId = _json['primaryProductId'] as core.String;
-    }
-    if (_json.containsKey('tags')) {
-      tags = (_json['tags'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('uri')) {
-      uri = _json['uri'] as core.String;
-    }
-  }
+  GoogleCloudRetailV2Product.fromJson(core.Map _json)
+      : this(
+          attributes: _json.containsKey('attributes')
+              ? (_json['attributes'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    GoogleCloudRetailV2CustomAttribute.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          availability: _json.containsKey('availability')
+              ? _json['availability'] as core.String
+              : null,
+          availableQuantity: _json.containsKey('availableQuantity')
+              ? _json['availableQuantity'] as core.int
+              : null,
+          availableTime: _json.containsKey('availableTime')
+              ? _json['availableTime'] as core.String
+              : null,
+          categories: _json.containsKey('categories')
+              ? (_json['categories'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          images: _json.containsKey('images')
+              ? (_json['images'] as core.List)
+                  .map<GoogleCloudRetailV2Image>((value) =>
+                      GoogleCloudRetailV2Image.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          priceInfo: _json.containsKey('priceInfo')
+              ? GoogleCloudRetailV2PriceInfo.fromJson(
+                  _json['priceInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          primaryProductId: _json.containsKey('primaryProductId')
+              ? _json['primaryProductId'] as core.String
+              : null,
+          tags: _json.containsKey('tags')
+              ? (_json['tags'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null)
@@ -2397,17 +2516,21 @@ class GoogleCloudRetailV2ProductDetail {
   /// and `purchase-complete` event types.
   core.int? quantity;
 
-  GoogleCloudRetailV2ProductDetail();
+  GoogleCloudRetailV2ProductDetail({
+    this.product,
+    this.quantity,
+  });
 
-  GoogleCloudRetailV2ProductDetail.fromJson(core.Map _json) {
-    if (_json.containsKey('product')) {
-      product = GoogleCloudRetailV2Product.fromJson(
-          _json['product'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('quantity')) {
-      quantity = _json['quantity'] as core.int;
-    }
-  }
+  GoogleCloudRetailV2ProductDetail.fromJson(core.Map _json)
+      : this(
+          product: _json.containsKey('product')
+              ? GoogleCloudRetailV2Product.fromJson(
+                  _json['product'] as core.Map<core.String, core.dynamic>)
+              : null,
+          quantity: _json.containsKey('quantity')
+              ? _json['quantity'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (product != null) 'product': product!.toJson(),
@@ -2424,17 +2547,20 @@ class GoogleCloudRetailV2ProductInlineSource {
   /// Required.
   core.List<GoogleCloudRetailV2Product>? products;
 
-  GoogleCloudRetailV2ProductInlineSource();
+  GoogleCloudRetailV2ProductInlineSource({
+    this.products,
+  });
 
-  GoogleCloudRetailV2ProductInlineSource.fromJson(core.Map _json) {
-    if (_json.containsKey('products')) {
-      products = (_json['products'] as core.List)
-          .map<GoogleCloudRetailV2Product>((value) =>
-              GoogleCloudRetailV2Product.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudRetailV2ProductInlineSource.fromJson(core.Map _json)
+      : this(
+          products: _json.containsKey('products')
+              ? (_json['products'] as core.List)
+                  .map<GoogleCloudRetailV2Product>((value) =>
+                      GoogleCloudRetailV2Product.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (products != null)
@@ -2453,22 +2579,29 @@ class GoogleCloudRetailV2ProductInputConfig {
   /// The Inline source for the input content for products.
   GoogleCloudRetailV2ProductInlineSource? productInlineSource;
 
-  GoogleCloudRetailV2ProductInputConfig();
+  GoogleCloudRetailV2ProductInputConfig({
+    this.bigQuerySource,
+    this.gcsSource,
+    this.productInlineSource,
+  });
 
-  GoogleCloudRetailV2ProductInputConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('bigQuerySource')) {
-      bigQuerySource = GoogleCloudRetailV2BigQuerySource.fromJson(
-          _json['bigQuerySource'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('gcsSource')) {
-      gcsSource = GoogleCloudRetailV2GcsSource.fromJson(
-          _json['gcsSource'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('productInlineSource')) {
-      productInlineSource = GoogleCloudRetailV2ProductInlineSource.fromJson(
-          _json['productInlineSource'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudRetailV2ProductInputConfig.fromJson(core.Map _json)
+      : this(
+          bigQuerySource: _json.containsKey('bigQuerySource')
+              ? GoogleCloudRetailV2BigQuerySource.fromJson(
+                  _json['bigQuerySource']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          gcsSource: _json.containsKey('gcsSource')
+              ? GoogleCloudRetailV2GcsSource.fromJson(
+                  _json['gcsSource'] as core.Map<core.String, core.dynamic>)
+              : null,
+          productInlineSource: _json.containsKey('productInlineSource')
+              ? GoogleCloudRetailV2ProductInlineSource.fromJson(
+                  _json['productInlineSource']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bigQuerySource != null) 'bigQuerySource': bigQuerySource!.toJson(),
@@ -2510,17 +2643,21 @@ class GoogleCloudRetailV2ProductLevelConfig {
   /// for more details.
   core.String? merchantCenterProductIdField;
 
-  GoogleCloudRetailV2ProductLevelConfig();
+  GoogleCloudRetailV2ProductLevelConfig({
+    this.ingestionProductType,
+    this.merchantCenterProductIdField,
+  });
 
-  GoogleCloudRetailV2ProductLevelConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('ingestionProductType')) {
-      ingestionProductType = _json['ingestionProductType'] as core.String;
-    }
-    if (_json.containsKey('merchantCenterProductIdField')) {
-      merchantCenterProductIdField =
-          _json['merchantCenterProductIdField'] as core.String;
-    }
-  }
+  GoogleCloudRetailV2ProductLevelConfig.fromJson(core.Map _json)
+      : this(
+          ingestionProductType: _json.containsKey('ingestionProductType')
+              ? _json['ingestionProductType'] as core.String
+              : null,
+          merchantCenterProductIdField:
+              _json.containsKey('merchantCenterProductIdField')
+                  ? _json['merchantCenterProductIdField'] as core.String
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ingestionProductType != null)
@@ -2559,25 +2696,30 @@ class GoogleCloudRetailV2PurchaseTransaction {
   /// All the taxes associated with the transaction.
   core.double? tax;
 
-  GoogleCloudRetailV2PurchaseTransaction();
+  GoogleCloudRetailV2PurchaseTransaction({
+    this.cost,
+    this.currencyCode,
+    this.id,
+    this.revenue,
+    this.tax,
+  });
 
-  GoogleCloudRetailV2PurchaseTransaction.fromJson(core.Map _json) {
-    if (_json.containsKey('cost')) {
-      cost = (_json['cost'] as core.num).toDouble();
-    }
-    if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('revenue')) {
-      revenue = (_json['revenue'] as core.num).toDouble();
-    }
-    if (_json.containsKey('tax')) {
-      tax = (_json['tax'] as core.num).toDouble();
-    }
-  }
+  GoogleCloudRetailV2PurchaseTransaction.fromJson(core.Map _json)
+      : this(
+          cost: _json.containsKey('cost')
+              ? (_json['cost'] as core.num).toDouble()
+              : null,
+          currencyCode: _json.containsKey('currencyCode')
+              ? _json['currencyCode'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          revenue: _json.containsKey('revenue')
+              ? (_json['revenue'] as core.num).toDouble()
+              : null,
+          tax: _json.containsKey('tax')
+              ? (_json['tax'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cost != null) 'cost': cost!,
@@ -2627,16 +2769,19 @@ class GoogleCloudRetailV2PurgeUserEventsRequest {
   /// count without deleting any user events.
   core.bool? force;
 
-  GoogleCloudRetailV2PurgeUserEventsRequest();
+  GoogleCloudRetailV2PurgeUserEventsRequest({
+    this.filter,
+    this.force,
+  });
 
-  GoogleCloudRetailV2PurgeUserEventsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('filter')) {
-      filter = _json['filter'] as core.String;
-    }
-    if (_json.containsKey('force')) {
-      force = _json['force'] as core.bool;
-    }
-  }
+  GoogleCloudRetailV2PurgeUserEventsRequest.fromJson(core.Map _json)
+      : this(
+          filter: _json.containsKey('filter')
+              ? _json['filter'] as core.String
+              : null,
+          force:
+              _json.containsKey('force') ? _json['force'] as core.bool : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (filter != null) 'filter': filter!,
@@ -2652,13 +2797,16 @@ class GoogleCloudRetailV2PurgeUserEventsResponse {
   /// The total count of events purged as a result of the operation.
   core.String? purgedEventsCount;
 
-  GoogleCloudRetailV2PurgeUserEventsResponse();
+  GoogleCloudRetailV2PurgeUserEventsResponse({
+    this.purgedEventsCount,
+  });
 
-  GoogleCloudRetailV2PurgeUserEventsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('purgedEventsCount')) {
-      purgedEventsCount = _json['purgedEventsCount'] as core.String;
-    }
-  }
+  GoogleCloudRetailV2PurgeUserEventsResponse.fromJson(core.Map _json)
+      : this(
+          purgedEventsCount: _json.containsKey('purgedEventsCount')
+              ? _json['purgedEventsCount'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (purgedEventsCount != null) 'purgedEventsCount': purgedEventsCount!,
@@ -2692,13 +2840,16 @@ class GoogleCloudRetailV2RejoinUserEventsRequest {
   /// catalog.
   core.String? userEventRejoinScope;
 
-  GoogleCloudRetailV2RejoinUserEventsRequest();
+  GoogleCloudRetailV2RejoinUserEventsRequest({
+    this.userEventRejoinScope,
+  });
 
-  GoogleCloudRetailV2RejoinUserEventsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('userEventRejoinScope')) {
-      userEventRejoinScope = _json['userEventRejoinScope'] as core.String;
-    }
-  }
+  GoogleCloudRetailV2RejoinUserEventsRequest.fromJson(core.Map _json)
+      : this(
+          userEventRejoinScope: _json.containsKey('userEventRejoinScope')
+              ? _json['userEventRejoinScope'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (userEventRejoinScope != null)
@@ -2711,13 +2862,16 @@ class GoogleCloudRetailV2RejoinUserEventsResponse {
   /// Number of user events that were joined with latest product catalog.
   core.String? rejoinedUserEventsCount;
 
-  GoogleCloudRetailV2RejoinUserEventsResponse();
+  GoogleCloudRetailV2RejoinUserEventsResponse({
+    this.rejoinedUserEventsCount,
+  });
 
-  GoogleCloudRetailV2RejoinUserEventsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('rejoinedUserEventsCount')) {
-      rejoinedUserEventsCount = _json['rejoinedUserEventsCount'] as core.String;
-    }
-  }
+  GoogleCloudRetailV2RejoinUserEventsResponse.fromJson(core.Map _json)
+      : this(
+          rejoinedUserEventsCount: _json.containsKey('rejoinedUserEventsCount')
+              ? _json['rejoinedUserEventsCount'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (rejoinedUserEventsCount != null)
@@ -2863,72 +3017,88 @@ class GoogleCloudRetailV2UserEvent {
   /// Required.
   core.String? visitorId;
 
-  GoogleCloudRetailV2UserEvent();
+  GoogleCloudRetailV2UserEvent({
+    this.attributes,
+    this.attributionToken,
+    this.cartId,
+    this.eventTime,
+    this.eventType,
+    this.experimentIds,
+    this.pageCategories,
+    this.pageViewId,
+    this.productDetails,
+    this.purchaseTransaction,
+    this.referrerUri,
+    this.searchQuery,
+    this.uri,
+    this.userInfo,
+    this.visitorId,
+  });
 
-  GoogleCloudRetailV2UserEvent.fromJson(core.Map _json) {
-    if (_json.containsKey('attributes')) {
-      attributes =
-          (_json['attributes'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          GoogleCloudRetailV2CustomAttribute.fromJson(
-              item as core.Map<core.String, core.dynamic>),
-        ),
-      );
-    }
-    if (_json.containsKey('attributionToken')) {
-      attributionToken = _json['attributionToken'] as core.String;
-    }
-    if (_json.containsKey('cartId')) {
-      cartId = _json['cartId'] as core.String;
-    }
-    if (_json.containsKey('eventTime')) {
-      eventTime = _json['eventTime'] as core.String;
-    }
-    if (_json.containsKey('eventType')) {
-      eventType = _json['eventType'] as core.String;
-    }
-    if (_json.containsKey('experimentIds')) {
-      experimentIds = (_json['experimentIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('pageCategories')) {
-      pageCategories = (_json['pageCategories'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('pageViewId')) {
-      pageViewId = _json['pageViewId'] as core.String;
-    }
-    if (_json.containsKey('productDetails')) {
-      productDetails = (_json['productDetails'] as core.List)
-          .map<GoogleCloudRetailV2ProductDetail>((value) =>
-              GoogleCloudRetailV2ProductDetail.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('purchaseTransaction')) {
-      purchaseTransaction = GoogleCloudRetailV2PurchaseTransaction.fromJson(
-          _json['purchaseTransaction'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('referrerUri')) {
-      referrerUri = _json['referrerUri'] as core.String;
-    }
-    if (_json.containsKey('searchQuery')) {
-      searchQuery = _json['searchQuery'] as core.String;
-    }
-    if (_json.containsKey('uri')) {
-      uri = _json['uri'] as core.String;
-    }
-    if (_json.containsKey('userInfo')) {
-      userInfo = GoogleCloudRetailV2UserInfo.fromJson(
-          _json['userInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('visitorId')) {
-      visitorId = _json['visitorId'] as core.String;
-    }
-  }
+  GoogleCloudRetailV2UserEvent.fromJson(core.Map _json)
+      : this(
+          attributes: _json.containsKey('attributes')
+              ? (_json['attributes'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    GoogleCloudRetailV2CustomAttribute.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          attributionToken: _json.containsKey('attributionToken')
+              ? _json['attributionToken'] as core.String
+              : null,
+          cartId: _json.containsKey('cartId')
+              ? _json['cartId'] as core.String
+              : null,
+          eventTime: _json.containsKey('eventTime')
+              ? _json['eventTime'] as core.String
+              : null,
+          eventType: _json.containsKey('eventType')
+              ? _json['eventType'] as core.String
+              : null,
+          experimentIds: _json.containsKey('experimentIds')
+              ? (_json['experimentIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          pageCategories: _json.containsKey('pageCategories')
+              ? (_json['pageCategories'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          pageViewId: _json.containsKey('pageViewId')
+              ? _json['pageViewId'] as core.String
+              : null,
+          productDetails: _json.containsKey('productDetails')
+              ? (_json['productDetails'] as core.List)
+                  .map<GoogleCloudRetailV2ProductDetail>((value) =>
+                      GoogleCloudRetailV2ProductDetail.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          purchaseTransaction: _json.containsKey('purchaseTransaction')
+              ? GoogleCloudRetailV2PurchaseTransaction.fromJson(
+                  _json['purchaseTransaction']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          referrerUri: _json.containsKey('referrerUri')
+              ? _json['referrerUri'] as core.String
+              : null,
+          searchQuery: _json.containsKey('searchQuery')
+              ? _json['searchQuery'] as core.String
+              : null,
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+          userInfo: _json.containsKey('userInfo')
+              ? GoogleCloudRetailV2UserInfo.fromJson(
+                  _json['userInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          visitorId: _json.containsKey('visitorId')
+              ? _json['visitorId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null)
@@ -2965,16 +3135,20 @@ class GoogleCloudRetailV2UserEventImportSummary {
   /// the imported catalog.
   core.String? unjoinedEventsCount;
 
-  GoogleCloudRetailV2UserEventImportSummary();
+  GoogleCloudRetailV2UserEventImportSummary({
+    this.joinedEventsCount,
+    this.unjoinedEventsCount,
+  });
 
-  GoogleCloudRetailV2UserEventImportSummary.fromJson(core.Map _json) {
-    if (_json.containsKey('joinedEventsCount')) {
-      joinedEventsCount = _json['joinedEventsCount'] as core.String;
-    }
-    if (_json.containsKey('unjoinedEventsCount')) {
-      unjoinedEventsCount = _json['unjoinedEventsCount'] as core.String;
-    }
-  }
+  GoogleCloudRetailV2UserEventImportSummary.fromJson(core.Map _json)
+      : this(
+          joinedEventsCount: _json.containsKey('joinedEventsCount')
+              ? _json['joinedEventsCount'] as core.String
+              : null,
+          unjoinedEventsCount: _json.containsKey('unjoinedEventsCount')
+              ? _json['unjoinedEventsCount'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (joinedEventsCount != null) 'joinedEventsCount': joinedEventsCount!,
@@ -2992,17 +3166,20 @@ class GoogleCloudRetailV2UserEventInlineSource {
   /// Required.
   core.List<GoogleCloudRetailV2UserEvent>? userEvents;
 
-  GoogleCloudRetailV2UserEventInlineSource();
+  GoogleCloudRetailV2UserEventInlineSource({
+    this.userEvents,
+  });
 
-  GoogleCloudRetailV2UserEventInlineSource.fromJson(core.Map _json) {
-    if (_json.containsKey('userEvents')) {
-      userEvents = (_json['userEvents'] as core.List)
-          .map<GoogleCloudRetailV2UserEvent>((value) =>
-              GoogleCloudRetailV2UserEvent.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudRetailV2UserEventInlineSource.fromJson(core.Map _json)
+      : this(
+          userEvents: _json.containsKey('userEvents')
+              ? (_json['userEvents'] as core.List)
+                  .map<GoogleCloudRetailV2UserEvent>((value) =>
+                      GoogleCloudRetailV2UserEvent.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (userEvents != null)
@@ -3027,23 +3204,29 @@ class GoogleCloudRetailV2UserEventInputConfig {
   /// Required.
   GoogleCloudRetailV2UserEventInlineSource? userEventInlineSource;
 
-  GoogleCloudRetailV2UserEventInputConfig();
+  GoogleCloudRetailV2UserEventInputConfig({
+    this.bigQuerySource,
+    this.gcsSource,
+    this.userEventInlineSource,
+  });
 
-  GoogleCloudRetailV2UserEventInputConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('bigQuerySource')) {
-      bigQuerySource = GoogleCloudRetailV2BigQuerySource.fromJson(
-          _json['bigQuerySource'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('gcsSource')) {
-      gcsSource = GoogleCloudRetailV2GcsSource.fromJson(
-          _json['gcsSource'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('userEventInlineSource')) {
-      userEventInlineSource = GoogleCloudRetailV2UserEventInlineSource.fromJson(
-          _json['userEventInlineSource']
-              as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudRetailV2UserEventInputConfig.fromJson(core.Map _json)
+      : this(
+          bigQuerySource: _json.containsKey('bigQuerySource')
+              ? GoogleCloudRetailV2BigQuerySource.fromJson(
+                  _json['bigQuerySource']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          gcsSource: _json.containsKey('gcsSource')
+              ? GoogleCloudRetailV2GcsSource.fromJson(
+                  _json['gcsSource'] as core.Map<core.String, core.dynamic>)
+              : null,
+          userEventInlineSource: _json.containsKey('userEventInlineSource')
+              ? GoogleCloudRetailV2UserEventInlineSource.fromJson(
+                  _json['userEventInlineSource']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bigQuerySource != null) 'bigQuerySource': bigQuerySource!.toJson(),
@@ -3090,22 +3273,28 @@ class GoogleCloudRetailV2UserInfo {
   /// Otherwise, an INVALID_ARGUMENT error is returned.
   core.String? userId;
 
-  GoogleCloudRetailV2UserInfo();
+  GoogleCloudRetailV2UserInfo({
+    this.directUserRequest,
+    this.ipAddress,
+    this.userAgent,
+    this.userId,
+  });
 
-  GoogleCloudRetailV2UserInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('directUserRequest')) {
-      directUserRequest = _json['directUserRequest'] as core.bool;
-    }
-    if (_json.containsKey('ipAddress')) {
-      ipAddress = _json['ipAddress'] as core.String;
-    }
-    if (_json.containsKey('userAgent')) {
-      userAgent = _json['userAgent'] as core.String;
-    }
-    if (_json.containsKey('userId')) {
-      userId = _json['userId'] as core.String;
-    }
-  }
+  GoogleCloudRetailV2UserInfo.fromJson(core.Map _json)
+      : this(
+          directUserRequest: _json.containsKey('directUserRequest')
+              ? _json['directUserRequest'] as core.bool
+              : null,
+          ipAddress: _json.containsKey('ipAddress')
+              ? _json['ipAddress'] as core.String
+              : null,
+          userAgent: _json.containsKey('userAgent')
+              ? _json['userAgent'] as core.String
+              : null,
+          userId: _json.containsKey('userId')
+              ? _json['userId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (directUserRequest != null) 'directUserRequest': directUserRequest!,
@@ -3124,13 +3313,16 @@ class GoogleCloudRetailV2alphaExportErrorsConfig {
   /// `google.rpc.Status` message.
   core.String? gcsPrefix;
 
-  GoogleCloudRetailV2alphaExportErrorsConfig();
+  GoogleCloudRetailV2alphaExportErrorsConfig({
+    this.gcsPrefix,
+  });
 
-  GoogleCloudRetailV2alphaExportErrorsConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('gcsPrefix')) {
-      gcsPrefix = _json['gcsPrefix'] as core.String;
-    }
-  }
+  GoogleCloudRetailV2alphaExportErrorsConfig.fromJson(core.Map _json)
+      : this(
+          gcsPrefix: _json.containsKey('gcsPrefix')
+              ? _json['gcsPrefix'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
@@ -3149,16 +3341,20 @@ class GoogleCloudRetailV2alphaExportMetadata {
   /// If the operation is done, this is also the finish time.
   core.String? updateTime;
 
-  GoogleCloudRetailV2alphaExportMetadata();
+  GoogleCloudRetailV2alphaExportMetadata({
+    this.createTime,
+    this.updateTime,
+  });
 
-  GoogleCloudRetailV2alphaExportMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  GoogleCloudRetailV2alphaExportMetadata.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -3178,20 +3374,24 @@ class GoogleCloudRetailV2alphaExportProductsResponse {
   /// Echoes the destination for the complete errors in the request if set.
   GoogleCloudRetailV2alphaExportErrorsConfig? errorsConfig;
 
-  GoogleCloudRetailV2alphaExportProductsResponse();
+  GoogleCloudRetailV2alphaExportProductsResponse({
+    this.errorSamples,
+    this.errorsConfig,
+  });
 
-  GoogleCloudRetailV2alphaExportProductsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('errorSamples')) {
-      errorSamples = (_json['errorSamples'] as core.List)
-          .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('errorsConfig')) {
-      errorsConfig = GoogleCloudRetailV2alphaExportErrorsConfig.fromJson(
-          _json['errorsConfig'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudRetailV2alphaExportProductsResponse.fromJson(core.Map _json)
+      : this(
+          errorSamples: _json.containsKey('errorSamples')
+              ? (_json['errorSamples'] as core.List)
+                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          errorsConfig: _json.containsKey('errorsConfig')
+              ? GoogleCloudRetailV2alphaExportErrorsConfig.fromJson(
+                  _json['errorsConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorSamples != null)
@@ -3213,20 +3413,24 @@ class GoogleCloudRetailV2alphaExportUserEventsResponse {
   /// the request.
   GoogleCloudRetailV2alphaExportErrorsConfig? errorsConfig;
 
-  GoogleCloudRetailV2alphaExportUserEventsResponse();
+  GoogleCloudRetailV2alphaExportUserEventsResponse({
+    this.errorSamples,
+    this.errorsConfig,
+  });
 
-  GoogleCloudRetailV2alphaExportUserEventsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('errorSamples')) {
-      errorSamples = (_json['errorSamples'] as core.List)
-          .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('errorsConfig')) {
-      errorsConfig = GoogleCloudRetailV2alphaExportErrorsConfig.fromJson(
-          _json['errorsConfig'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudRetailV2alphaExportUserEventsResponse.fromJson(core.Map _json)
+      : this(
+          errorSamples: _json.containsKey('errorSamples')
+              ? (_json['errorSamples'] as core.List)
+                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          errorsConfig: _json.containsKey('errorsConfig')
+              ? GoogleCloudRetailV2alphaExportErrorsConfig.fromJson(
+                  _json['errorsConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorSamples != null)
@@ -3244,13 +3448,16 @@ class GoogleCloudRetailV2alphaImportErrorsConfig {
   /// `google.rpc.Status` message.
   core.String? gcsPrefix;
 
-  GoogleCloudRetailV2alphaImportErrorsConfig();
+  GoogleCloudRetailV2alphaImportErrorsConfig({
+    this.gcsPrefix,
+  });
 
-  GoogleCloudRetailV2alphaImportErrorsConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('gcsPrefix')) {
-      gcsPrefix = _json['gcsPrefix'] as core.String;
-    }
-  }
+  GoogleCloudRetailV2alphaImportErrorsConfig.fromJson(core.Map _json)
+      : this(
+          gcsPrefix: _json.containsKey('gcsPrefix')
+              ? _json['gcsPrefix'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
@@ -3275,22 +3482,28 @@ class GoogleCloudRetailV2alphaImportMetadata {
   /// If the operation is done, this is also the finish time.
   core.String? updateTime;
 
-  GoogleCloudRetailV2alphaImportMetadata();
+  GoogleCloudRetailV2alphaImportMetadata({
+    this.createTime,
+    this.failureCount,
+    this.successCount,
+    this.updateTime,
+  });
 
-  GoogleCloudRetailV2alphaImportMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('failureCount')) {
-      failureCount = _json['failureCount'] as core.String;
-    }
-    if (_json.containsKey('successCount')) {
-      successCount = _json['successCount'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  GoogleCloudRetailV2alphaImportMetadata.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          failureCount: _json.containsKey('failureCount')
+              ? _json['failureCount'] as core.String
+              : null,
+          successCount: _json.containsKey('successCount')
+              ? _json['successCount'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -3312,20 +3525,24 @@ class GoogleCloudRetailV2alphaImportProductsResponse {
   /// Echoes the destination for the complete errors in the request if set.
   GoogleCloudRetailV2alphaImportErrorsConfig? errorsConfig;
 
-  GoogleCloudRetailV2alphaImportProductsResponse();
+  GoogleCloudRetailV2alphaImportProductsResponse({
+    this.errorSamples,
+    this.errorsConfig,
+  });
 
-  GoogleCloudRetailV2alphaImportProductsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('errorSamples')) {
-      errorSamples = (_json['errorSamples'] as core.List)
-          .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('errorsConfig')) {
-      errorsConfig = GoogleCloudRetailV2alphaImportErrorsConfig.fromJson(
-          _json['errorsConfig'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudRetailV2alphaImportProductsResponse.fromJson(core.Map _json)
+      : this(
+          errorSamples: _json.containsKey('errorSamples')
+              ? (_json['errorSamples'] as core.List)
+                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          errorsConfig: _json.containsKey('errorsConfig')
+              ? GoogleCloudRetailV2alphaImportErrorsConfig.fromJson(
+                  _json['errorsConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorSamples != null)
@@ -3350,24 +3567,29 @@ class GoogleCloudRetailV2alphaImportUserEventsResponse {
   /// Aggregated statistics of user event import status.
   GoogleCloudRetailV2alphaUserEventImportSummary? importSummary;
 
-  GoogleCloudRetailV2alphaImportUserEventsResponse();
+  GoogleCloudRetailV2alphaImportUserEventsResponse({
+    this.errorSamples,
+    this.errorsConfig,
+    this.importSummary,
+  });
 
-  GoogleCloudRetailV2alphaImportUserEventsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('errorSamples')) {
-      errorSamples = (_json['errorSamples'] as core.List)
-          .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('errorsConfig')) {
-      errorsConfig = GoogleCloudRetailV2alphaImportErrorsConfig.fromJson(
-          _json['errorsConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('importSummary')) {
-      importSummary = GoogleCloudRetailV2alphaUserEventImportSummary.fromJson(
-          _json['importSummary'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudRetailV2alphaImportUserEventsResponse.fromJson(core.Map _json)
+      : this(
+          errorSamples: _json.containsKey('errorSamples')
+              ? (_json['errorSamples'] as core.List)
+                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          errorsConfig: _json.containsKey('errorsConfig')
+              ? GoogleCloudRetailV2alphaImportErrorsConfig.fromJson(
+                  _json['errorsConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          importSummary: _json.containsKey('importSummary')
+              ? GoogleCloudRetailV2alphaUserEventImportSummary.fromJson(
+                  _json['importSummary'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorSamples != null)
@@ -3398,13 +3620,16 @@ class GoogleCloudRetailV2alphaPurgeUserEventsResponse {
   /// The total count of events purged as a result of the operation.
   core.String? purgedEventsCount;
 
-  GoogleCloudRetailV2alphaPurgeUserEventsResponse();
+  GoogleCloudRetailV2alphaPurgeUserEventsResponse({
+    this.purgedEventsCount,
+  });
 
-  GoogleCloudRetailV2alphaPurgeUserEventsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('purgedEventsCount')) {
-      purgedEventsCount = _json['purgedEventsCount'] as core.String;
-    }
-  }
+  GoogleCloudRetailV2alphaPurgeUserEventsResponse.fromJson(core.Map _json)
+      : this(
+          purgedEventsCount: _json.containsKey('purgedEventsCount')
+              ? _json['purgedEventsCount'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (purgedEventsCount != null) 'purgedEventsCount': purgedEventsCount!,
@@ -3427,13 +3652,16 @@ class GoogleCloudRetailV2alphaRejoinUserEventsResponse {
   /// Number of user events that were joined with latest product catalog.
   core.String? rejoinedUserEventsCount;
 
-  GoogleCloudRetailV2alphaRejoinUserEventsResponse();
+  GoogleCloudRetailV2alphaRejoinUserEventsResponse({
+    this.rejoinedUserEventsCount,
+  });
 
-  GoogleCloudRetailV2alphaRejoinUserEventsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('rejoinedUserEventsCount')) {
-      rejoinedUserEventsCount = _json['rejoinedUserEventsCount'] as core.String;
-    }
-  }
+  GoogleCloudRetailV2alphaRejoinUserEventsResponse.fromJson(core.Map _json)
+      : this(
+          rejoinedUserEventsCount: _json.containsKey('rejoinedUserEventsCount')
+              ? _json['rejoinedUserEventsCount'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (rejoinedUserEventsCount != null)
@@ -3452,16 +3680,20 @@ class GoogleCloudRetailV2alphaUserEventImportSummary {
   /// the imported catalog.
   core.String? unjoinedEventsCount;
 
-  GoogleCloudRetailV2alphaUserEventImportSummary();
+  GoogleCloudRetailV2alphaUserEventImportSummary({
+    this.joinedEventsCount,
+    this.unjoinedEventsCount,
+  });
 
-  GoogleCloudRetailV2alphaUserEventImportSummary.fromJson(core.Map _json) {
-    if (_json.containsKey('joinedEventsCount')) {
-      joinedEventsCount = _json['joinedEventsCount'] as core.String;
-    }
-    if (_json.containsKey('unjoinedEventsCount')) {
-      unjoinedEventsCount = _json['unjoinedEventsCount'] as core.String;
-    }
-  }
+  GoogleCloudRetailV2alphaUserEventImportSummary.fromJson(core.Map _json)
+      : this(
+          joinedEventsCount: _json.containsKey('joinedEventsCount')
+              ? _json['joinedEventsCount'] as core.String
+              : null,
+          unjoinedEventsCount: _json.containsKey('unjoinedEventsCount')
+              ? _json['unjoinedEventsCount'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (joinedEventsCount != null) 'joinedEventsCount': joinedEventsCount!,
@@ -3479,13 +3711,16 @@ class GoogleCloudRetailV2betaExportErrorsConfig {
   /// `google.rpc.Status` message.
   core.String? gcsPrefix;
 
-  GoogleCloudRetailV2betaExportErrorsConfig();
+  GoogleCloudRetailV2betaExportErrorsConfig({
+    this.gcsPrefix,
+  });
 
-  GoogleCloudRetailV2betaExportErrorsConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('gcsPrefix')) {
-      gcsPrefix = _json['gcsPrefix'] as core.String;
-    }
-  }
+  GoogleCloudRetailV2betaExportErrorsConfig.fromJson(core.Map _json)
+      : this(
+          gcsPrefix: _json.containsKey('gcsPrefix')
+              ? _json['gcsPrefix'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
@@ -3504,16 +3739,20 @@ class GoogleCloudRetailV2betaExportMetadata {
   /// If the operation is done, this is also the finish time.
   core.String? updateTime;
 
-  GoogleCloudRetailV2betaExportMetadata();
+  GoogleCloudRetailV2betaExportMetadata({
+    this.createTime,
+    this.updateTime,
+  });
 
-  GoogleCloudRetailV2betaExportMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  GoogleCloudRetailV2betaExportMetadata.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -3533,20 +3772,24 @@ class GoogleCloudRetailV2betaExportProductsResponse {
   /// Echoes the destination for the complete errors in the request if set.
   GoogleCloudRetailV2betaExportErrorsConfig? errorsConfig;
 
-  GoogleCloudRetailV2betaExportProductsResponse();
+  GoogleCloudRetailV2betaExportProductsResponse({
+    this.errorSamples,
+    this.errorsConfig,
+  });
 
-  GoogleCloudRetailV2betaExportProductsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('errorSamples')) {
-      errorSamples = (_json['errorSamples'] as core.List)
-          .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('errorsConfig')) {
-      errorsConfig = GoogleCloudRetailV2betaExportErrorsConfig.fromJson(
-          _json['errorsConfig'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudRetailV2betaExportProductsResponse.fromJson(core.Map _json)
+      : this(
+          errorSamples: _json.containsKey('errorSamples')
+              ? (_json['errorSamples'] as core.List)
+                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          errorsConfig: _json.containsKey('errorsConfig')
+              ? GoogleCloudRetailV2betaExportErrorsConfig.fromJson(
+                  _json['errorsConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorSamples != null)
@@ -3568,20 +3811,24 @@ class GoogleCloudRetailV2betaExportUserEventsResponse {
   /// the request.
   GoogleCloudRetailV2betaExportErrorsConfig? errorsConfig;
 
-  GoogleCloudRetailV2betaExportUserEventsResponse();
+  GoogleCloudRetailV2betaExportUserEventsResponse({
+    this.errorSamples,
+    this.errorsConfig,
+  });
 
-  GoogleCloudRetailV2betaExportUserEventsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('errorSamples')) {
-      errorSamples = (_json['errorSamples'] as core.List)
-          .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('errorsConfig')) {
-      errorsConfig = GoogleCloudRetailV2betaExportErrorsConfig.fromJson(
-          _json['errorsConfig'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudRetailV2betaExportUserEventsResponse.fromJson(core.Map _json)
+      : this(
+          errorSamples: _json.containsKey('errorSamples')
+              ? (_json['errorSamples'] as core.List)
+                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          errorsConfig: _json.containsKey('errorsConfig')
+              ? GoogleCloudRetailV2betaExportErrorsConfig.fromJson(
+                  _json['errorsConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorSamples != null)
@@ -3599,13 +3846,16 @@ class GoogleCloudRetailV2betaImportErrorsConfig {
   /// `google.rpc.Status` message.
   core.String? gcsPrefix;
 
-  GoogleCloudRetailV2betaImportErrorsConfig();
+  GoogleCloudRetailV2betaImportErrorsConfig({
+    this.gcsPrefix,
+  });
 
-  GoogleCloudRetailV2betaImportErrorsConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('gcsPrefix')) {
-      gcsPrefix = _json['gcsPrefix'] as core.String;
-    }
-  }
+  GoogleCloudRetailV2betaImportErrorsConfig.fromJson(core.Map _json)
+      : this(
+          gcsPrefix: _json.containsKey('gcsPrefix')
+              ? _json['gcsPrefix'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
@@ -3630,22 +3880,28 @@ class GoogleCloudRetailV2betaImportMetadata {
   /// If the operation is done, this is also the finish time.
   core.String? updateTime;
 
-  GoogleCloudRetailV2betaImportMetadata();
+  GoogleCloudRetailV2betaImportMetadata({
+    this.createTime,
+    this.failureCount,
+    this.successCount,
+    this.updateTime,
+  });
 
-  GoogleCloudRetailV2betaImportMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('failureCount')) {
-      failureCount = _json['failureCount'] as core.String;
-    }
-    if (_json.containsKey('successCount')) {
-      successCount = _json['successCount'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  GoogleCloudRetailV2betaImportMetadata.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          failureCount: _json.containsKey('failureCount')
+              ? _json['failureCount'] as core.String
+              : null,
+          successCount: _json.containsKey('successCount')
+              ? _json['successCount'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -3667,20 +3923,24 @@ class GoogleCloudRetailV2betaImportProductsResponse {
   /// Echoes the destination for the complete errors in the request if set.
   GoogleCloudRetailV2betaImportErrorsConfig? errorsConfig;
 
-  GoogleCloudRetailV2betaImportProductsResponse();
+  GoogleCloudRetailV2betaImportProductsResponse({
+    this.errorSamples,
+    this.errorsConfig,
+  });
 
-  GoogleCloudRetailV2betaImportProductsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('errorSamples')) {
-      errorSamples = (_json['errorSamples'] as core.List)
-          .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('errorsConfig')) {
-      errorsConfig = GoogleCloudRetailV2betaImportErrorsConfig.fromJson(
-          _json['errorsConfig'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudRetailV2betaImportProductsResponse.fromJson(core.Map _json)
+      : this(
+          errorSamples: _json.containsKey('errorSamples')
+              ? (_json['errorSamples'] as core.List)
+                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          errorsConfig: _json.containsKey('errorsConfig')
+              ? GoogleCloudRetailV2betaImportErrorsConfig.fromJson(
+                  _json['errorsConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorSamples != null)
@@ -3705,24 +3965,29 @@ class GoogleCloudRetailV2betaImportUserEventsResponse {
   /// Aggregated statistics of user event import status.
   GoogleCloudRetailV2betaUserEventImportSummary? importSummary;
 
-  GoogleCloudRetailV2betaImportUserEventsResponse();
+  GoogleCloudRetailV2betaImportUserEventsResponse({
+    this.errorSamples,
+    this.errorsConfig,
+    this.importSummary,
+  });
 
-  GoogleCloudRetailV2betaImportUserEventsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('errorSamples')) {
-      errorSamples = (_json['errorSamples'] as core.List)
-          .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('errorsConfig')) {
-      errorsConfig = GoogleCloudRetailV2betaImportErrorsConfig.fromJson(
-          _json['errorsConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('importSummary')) {
-      importSummary = GoogleCloudRetailV2betaUserEventImportSummary.fromJson(
-          _json['importSummary'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudRetailV2betaImportUserEventsResponse.fromJson(core.Map _json)
+      : this(
+          errorSamples: _json.containsKey('errorSamples')
+              ? (_json['errorSamples'] as core.List)
+                  .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          errorsConfig: _json.containsKey('errorsConfig')
+              ? GoogleCloudRetailV2betaImportErrorsConfig.fromJson(
+                  _json['errorsConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          importSummary: _json.containsKey('importSummary')
+              ? GoogleCloudRetailV2betaUserEventImportSummary.fromJson(
+                  _json['importSummary'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorSamples != null)
@@ -3753,13 +4018,16 @@ class GoogleCloudRetailV2betaPurgeUserEventsResponse {
   /// The total count of events purged as a result of the operation.
   core.String? purgedEventsCount;
 
-  GoogleCloudRetailV2betaPurgeUserEventsResponse();
+  GoogleCloudRetailV2betaPurgeUserEventsResponse({
+    this.purgedEventsCount,
+  });
 
-  GoogleCloudRetailV2betaPurgeUserEventsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('purgedEventsCount')) {
-      purgedEventsCount = _json['purgedEventsCount'] as core.String;
-    }
-  }
+  GoogleCloudRetailV2betaPurgeUserEventsResponse.fromJson(core.Map _json)
+      : this(
+          purgedEventsCount: _json.containsKey('purgedEventsCount')
+              ? _json['purgedEventsCount'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (purgedEventsCount != null) 'purgedEventsCount': purgedEventsCount!,
@@ -3782,13 +4050,16 @@ class GoogleCloudRetailV2betaRejoinUserEventsResponse {
   /// Number of user events that were joined with latest product catalog.
   core.String? rejoinedUserEventsCount;
 
-  GoogleCloudRetailV2betaRejoinUserEventsResponse();
+  GoogleCloudRetailV2betaRejoinUserEventsResponse({
+    this.rejoinedUserEventsCount,
+  });
 
-  GoogleCloudRetailV2betaRejoinUserEventsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('rejoinedUserEventsCount')) {
-      rejoinedUserEventsCount = _json['rejoinedUserEventsCount'] as core.String;
-    }
-  }
+  GoogleCloudRetailV2betaRejoinUserEventsResponse.fromJson(core.Map _json)
+      : this(
+          rejoinedUserEventsCount: _json.containsKey('rejoinedUserEventsCount')
+              ? _json['rejoinedUserEventsCount'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (rejoinedUserEventsCount != null)
@@ -3807,16 +4078,20 @@ class GoogleCloudRetailV2betaUserEventImportSummary {
   /// the imported catalog.
   core.String? unjoinedEventsCount;
 
-  GoogleCloudRetailV2betaUserEventImportSummary();
+  GoogleCloudRetailV2betaUserEventImportSummary({
+    this.joinedEventsCount,
+    this.unjoinedEventsCount,
+  });
 
-  GoogleCloudRetailV2betaUserEventImportSummary.fromJson(core.Map _json) {
-    if (_json.containsKey('joinedEventsCount')) {
-      joinedEventsCount = _json['joinedEventsCount'] as core.String;
-    }
-    if (_json.containsKey('unjoinedEventsCount')) {
-      unjoinedEventsCount = _json['unjoinedEventsCount'] as core.String;
-    }
-  }
+  GoogleCloudRetailV2betaUserEventImportSummary.fromJson(core.Map _json)
+      : this(
+          joinedEventsCount: _json.containsKey('joinedEventsCount')
+              ? _json['joinedEventsCount'] as core.String
+              : null,
+          unjoinedEventsCount: _json.containsKey('unjoinedEventsCount')
+              ? _json['unjoinedEventsCount'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (joinedEventsCount != null) 'joinedEventsCount': joinedEventsCount!,
@@ -3833,20 +4108,24 @@ class GoogleLongrunningListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<GoogleLongrunningOperation>? operations;
 
-  GoogleLongrunningListOperationsResponse();
+  GoogleLongrunningListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
 
-  GoogleLongrunningListOperationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('operations')) {
-      operations = (_json['operations'] as core.List)
-          .map<GoogleLongrunningOperation>((value) =>
-              GoogleLongrunningOperation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleLongrunningListOperationsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          operations: _json.containsKey('operations')
+              ? (_json['operations'] as core.List)
+                  .map<GoogleLongrunningOperation>((value) =>
+                      GoogleLongrunningOperation.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3898,36 +4177,39 @@ class GoogleLongrunningOperation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object>? response;
 
-  GoogleLongrunningOperation();
+  GoogleLongrunningOperation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
-  GoogleLongrunningOperation.fromJson(core.Map _json) {
-    if (_json.containsKey('done')) {
-      done = _json['done'] as core.bool;
-    }
-    if (_json.containsKey('error')) {
-      error = GoogleRpcStatus.fromJson(
-          _json['error'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('response')) {
-      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-  }
+  GoogleLongrunningOperation.fromJson(core.Map _json)
+      : this(
+          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
+          error: _json.containsKey('error')
+              ? GoogleRpcStatus.fromJson(
+                  _json['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          response: _json.containsKey('response')
+              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
@@ -3980,27 +4262,30 @@ class GoogleRpcStatus {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  GoogleRpcStatus();
+  GoogleRpcStatus({
+    this.code,
+    this.details,
+    this.message,
+  });
 
-  GoogleRpcStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.int;
-    }
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  GoogleRpcStatus.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,

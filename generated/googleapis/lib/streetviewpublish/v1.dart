@@ -566,15 +566,18 @@ class BatchDeletePhotosRequest {
   /// Required.
   core.List<core.String>? photoIds;
 
-  BatchDeletePhotosRequest();
+  BatchDeletePhotosRequest({
+    this.photoIds,
+  });
 
-  BatchDeletePhotosRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('photoIds')) {
-      photoIds = (_json['photoIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  BatchDeletePhotosRequest.fromJson(core.Map _json)
+      : this(
+          photoIds: _json.containsKey('photoIds')
+              ? (_json['photoIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (photoIds != null) 'photoIds': photoIds!,
@@ -587,16 +590,19 @@ class BatchDeletePhotosResponse {
   /// request.
   core.List<Status>? status;
 
-  BatchDeletePhotosResponse();
+  BatchDeletePhotosResponse({
+    this.status,
+  });
 
-  BatchDeletePhotosResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('status')) {
-      status = (_json['status'] as core.List)
-          .map<Status>((value) =>
-              Status.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  BatchDeletePhotosResponse.fromJson(core.Map _json)
+      : this(
+          status: _json.containsKey('status')
+              ? (_json['status'] as core.List)
+                  .map<Status>((value) => Status.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (status != null)
@@ -610,16 +616,19 @@ class BatchGetPhotosResponse {
   /// the requests in BatchGetPhotos.
   core.List<PhotoResponse>? results;
 
-  BatchGetPhotosResponse();
+  BatchGetPhotosResponse({
+    this.results,
+  });
 
-  BatchGetPhotosResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('results')) {
-      results = (_json['results'] as core.List)
-          .map<PhotoResponse>((value) => PhotoResponse.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  BatchGetPhotosResponse.fromJson(core.Map _json)
+      : this(
+          results: _json.containsKey('results')
+              ? (_json['results'] as core.List)
+                  .map<PhotoResponse>((value) => PhotoResponse.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (results != null)
@@ -636,16 +645,20 @@ class BatchUpdatePhotosRequest {
   /// Required.
   core.List<UpdatePhotoRequest>? updatePhotoRequests;
 
-  BatchUpdatePhotosRequest();
+  BatchUpdatePhotosRequest({
+    this.updatePhotoRequests,
+  });
 
-  BatchUpdatePhotosRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('updatePhotoRequests')) {
-      updatePhotoRequests = (_json['updatePhotoRequests'] as core.List)
-          .map<UpdatePhotoRequest>((value) => UpdatePhotoRequest.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  BatchUpdatePhotosRequest.fromJson(core.Map _json)
+      : this(
+          updatePhotoRequests: _json.containsKey('updatePhotoRequests')
+              ? (_json['updatePhotoRequests'] as core.List)
+                  .map<UpdatePhotoRequest>((value) =>
+                      UpdatePhotoRequest.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (updatePhotoRequests != null)
@@ -660,16 +673,19 @@ class BatchUpdatePhotosResponse {
   /// the request.
   core.List<PhotoResponse>? results;
 
-  BatchUpdatePhotosResponse();
+  BatchUpdatePhotosResponse({
+    this.results,
+  });
 
-  BatchUpdatePhotosResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('results')) {
-      results = (_json['results'] as core.List)
-          .map<PhotoResponse>((value) => PhotoResponse.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  BatchUpdatePhotosResponse.fromJson(core.Map _json)
+      : this(
+          results: _json.containsKey('results')
+              ? (_json['results'] as core.List)
+                  .map<PhotoResponse>((value) => PhotoResponse.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (results != null)
@@ -685,14 +701,17 @@ class Connection {
   /// Required.
   PhotoId? target;
 
-  Connection();
+  Connection({
+    this.target,
+  });
 
-  Connection.fromJson(core.Map _json) {
-    if (_json.containsKey('target')) {
-      target = PhotoId.fromJson(
-          _json['target'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Connection.fromJson(core.Map _json)
+      : this(
+          target: _json.containsKey('target')
+              ? PhotoId.fromJson(
+                  _json['target'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (target != null) 'target': target!.toJson(),
@@ -732,16 +751,20 @@ class LatLng {
   /// It must be in the range \[-180.0, +180.0\].
   core.double? longitude;
 
-  LatLng();
+  LatLng({
+    this.latitude,
+    this.longitude,
+  });
 
-  LatLng.fromJson(core.Map _json) {
-    if (_json.containsKey('latitude')) {
-      latitude = (_json['latitude'] as core.num).toDouble();
-    }
-    if (_json.containsKey('longitude')) {
-      longitude = (_json['longitude'] as core.num).toDouble();
-    }
-  }
+  LatLng.fromJson(core.Map _json)
+      : this(
+          latitude: _json.containsKey('latitude')
+              ? (_json['latitude'] as core.num).toDouble()
+              : null,
+          longitude: _json.containsKey('longitude')
+              ? (_json['longitude'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (latitude != null) 'latitude': latitude!,
@@ -766,16 +789,18 @@ class Level {
   /// are OK.
   core.double? number;
 
-  Level();
+  Level({
+    this.name,
+    this.number,
+  });
 
-  Level.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('number')) {
-      number = (_json['number'] as core.num).toDouble();
-    }
-  }
+  Level.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          number: _json.containsKey('number')
+              ? (_json['number'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -794,19 +819,23 @@ class ListPhotosResponse {
   /// The pageSize field in the request determines the number of items returned.
   core.List<Photo>? photos;
 
-  ListPhotosResponse();
+  ListPhotosResponse({
+    this.nextPageToken,
+    this.photos,
+  });
 
-  ListPhotosResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('photos')) {
-      photos = (_json['photos'] as core.List)
-          .map<Photo>((value) =>
-              Photo.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListPhotosResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          photos: _json.containsKey('photos')
+              ? (_json['photos'] as core.List)
+                  .map<Photo>((value) => Photo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -858,36 +887,39 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object>? response;
 
-  Operation();
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
-  Operation.fromJson(core.Map _json) {
-    if (_json.containsKey('done')) {
-      done = _json['done'] as core.bool;
-    }
-    if (_json.containsKey('error')) {
-      error = Status.fromJson(
-          _json['error'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('response')) {
-      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-  }
+  Operation.fromJson(core.Map _json)
+      : this(
+          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
+          error: _json.containsKey('error')
+              ? Status.fromJson(
+                  _json['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          response: _json.containsKey('response')
+              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
@@ -980,55 +1012,69 @@ class Photo {
   /// Output only.
   core.String? viewCount;
 
-  Photo();
+  Photo({
+    this.captureTime,
+    this.connections,
+    this.downloadUrl,
+    this.mapsPublishStatus,
+    this.photoId,
+    this.places,
+    this.pose,
+    this.shareLink,
+    this.thumbnailUrl,
+    this.transferStatus,
+    this.uploadReference,
+    this.viewCount,
+  });
 
-  Photo.fromJson(core.Map _json) {
-    if (_json.containsKey('captureTime')) {
-      captureTime = _json['captureTime'] as core.String;
-    }
-    if (_json.containsKey('connections')) {
-      connections = (_json['connections'] as core.List)
-          .map<Connection>((value) =>
-              Connection.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('downloadUrl')) {
-      downloadUrl = _json['downloadUrl'] as core.String;
-    }
-    if (_json.containsKey('mapsPublishStatus')) {
-      mapsPublishStatus = _json['mapsPublishStatus'] as core.String;
-    }
-    if (_json.containsKey('photoId')) {
-      photoId = PhotoId.fromJson(
-          _json['photoId'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('places')) {
-      places = (_json['places'] as core.List)
-          .map<Place>((value) =>
-              Place.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('pose')) {
-      pose =
-          Pose.fromJson(_json['pose'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('shareLink')) {
-      shareLink = _json['shareLink'] as core.String;
-    }
-    if (_json.containsKey('thumbnailUrl')) {
-      thumbnailUrl = _json['thumbnailUrl'] as core.String;
-    }
-    if (_json.containsKey('transferStatus')) {
-      transferStatus = _json['transferStatus'] as core.String;
-    }
-    if (_json.containsKey('uploadReference')) {
-      uploadReference = UploadRef.fromJson(
-          _json['uploadReference'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('viewCount')) {
-      viewCount = _json['viewCount'] as core.String;
-    }
-  }
+  Photo.fromJson(core.Map _json)
+      : this(
+          captureTime: _json.containsKey('captureTime')
+              ? _json['captureTime'] as core.String
+              : null,
+          connections: _json.containsKey('connections')
+              ? (_json['connections'] as core.List)
+                  .map<Connection>((value) => Connection.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          downloadUrl: _json.containsKey('downloadUrl')
+              ? _json['downloadUrl'] as core.String
+              : null,
+          mapsPublishStatus: _json.containsKey('mapsPublishStatus')
+              ? _json['mapsPublishStatus'] as core.String
+              : null,
+          photoId: _json.containsKey('photoId')
+              ? PhotoId.fromJson(
+                  _json['photoId'] as core.Map<core.String, core.dynamic>)
+              : null,
+          places: _json.containsKey('places')
+              ? (_json['places'] as core.List)
+                  .map<Place>((value) => Place.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          pose: _json.containsKey('pose')
+              ? Pose.fromJson(
+                  _json['pose'] as core.Map<core.String, core.dynamic>)
+              : null,
+          shareLink: _json.containsKey('shareLink')
+              ? _json['shareLink'] as core.String
+              : null,
+          thumbnailUrl: _json.containsKey('thumbnailUrl')
+              ? _json['thumbnailUrl'] as core.String
+              : null,
+          transferStatus: _json.containsKey('transferStatus')
+              ? _json['transferStatus'] as core.String
+              : null,
+          uploadReference: _json.containsKey('uploadReference')
+              ? UploadRef.fromJson(_json['uploadReference']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          viewCount: _json.containsKey('viewCount')
+              ? _json['viewCount'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (captureTime != null) 'captureTime': captureTime!,
@@ -1056,13 +1102,14 @@ class PhotoId {
   /// Required.
   core.String? id;
 
-  PhotoId();
+  PhotoId({
+    this.id,
+  });
 
-  PhotoId.fromJson(core.Map _json) {
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-  }
+  PhotoId.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
@@ -1079,18 +1126,22 @@ class PhotoResponse {
   /// request.
   Status? status;
 
-  PhotoResponse();
+  PhotoResponse({
+    this.photo,
+    this.status,
+  });
 
-  PhotoResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('photo')) {
-      photo =
-          Photo.fromJson(_json['photo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('status')) {
-      status = Status.fromJson(
-          _json['status'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  PhotoResponse.fromJson(core.Map _json)
+      : this(
+          photo: _json.containsKey('photo')
+              ? Photo.fromJson(
+                  _json['photo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          status: _json.containsKey('status')
+              ? Status.fromJson(
+                  _json['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (photo != null) 'photo': photo!.toJson(),
@@ -1115,19 +1166,22 @@ class Place {
   /// https://developers.google.com/places/place-id.
   core.String? placeId;
 
-  Place();
+  Place({
+    this.languageCode,
+    this.name,
+    this.placeId,
+  });
 
-  Place.fromJson(core.Map _json) {
-    if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('placeId')) {
-      placeId = _json['placeId'] as core.String;
-    }
-  }
+  Place.fromJson(core.Map _json)
+      : this(
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          placeId: _json.containsKey('placeId')
+              ? _json['placeId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (languageCode != null) 'languageCode': languageCode!,
@@ -1183,33 +1237,42 @@ class Pose {
   /// NaN indicates an unmeasured quantity.
   core.double? roll;
 
-  Pose();
+  Pose({
+    this.accuracyMeters,
+    this.altitude,
+    this.heading,
+    this.latLngPair,
+    this.level,
+    this.pitch,
+    this.roll,
+  });
 
-  Pose.fromJson(core.Map _json) {
-    if (_json.containsKey('accuracyMeters')) {
-      accuracyMeters = (_json['accuracyMeters'] as core.num).toDouble();
-    }
-    if (_json.containsKey('altitude')) {
-      altitude = (_json['altitude'] as core.num).toDouble();
-    }
-    if (_json.containsKey('heading')) {
-      heading = (_json['heading'] as core.num).toDouble();
-    }
-    if (_json.containsKey('latLngPair')) {
-      latLngPair = LatLng.fromJson(
-          _json['latLngPair'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('level')) {
-      level =
-          Level.fromJson(_json['level'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('pitch')) {
-      pitch = (_json['pitch'] as core.num).toDouble();
-    }
-    if (_json.containsKey('roll')) {
-      roll = (_json['roll'] as core.num).toDouble();
-    }
-  }
+  Pose.fromJson(core.Map _json)
+      : this(
+          accuracyMeters: _json.containsKey('accuracyMeters')
+              ? (_json['accuracyMeters'] as core.num).toDouble()
+              : null,
+          altitude: _json.containsKey('altitude')
+              ? (_json['altitude'] as core.num).toDouble()
+              : null,
+          heading: _json.containsKey('heading')
+              ? (_json['heading'] as core.num).toDouble()
+              : null,
+          latLngPair: _json.containsKey('latLngPair')
+              ? LatLng.fromJson(
+                  _json['latLngPair'] as core.Map<core.String, core.dynamic>)
+              : null,
+          level: _json.containsKey('level')
+              ? Level.fromJson(
+                  _json['level'] as core.Map<core.String, core.dynamic>)
+              : null,
+          pitch: _json.containsKey('pitch')
+              ? (_json['pitch'] as core.num).toDouble()
+              : null,
+          roll: _json.containsKey('roll')
+              ? (_json['roll'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accuracyMeters != null) 'accuracyMeters': accuracyMeters!,
@@ -1247,27 +1310,30 @@ class Status {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  Status();
+  Status({
+    this.code,
+    this.details,
+    this.message,
+  });
 
-  Status.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.int;
-    }
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  Status.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -1301,17 +1367,21 @@ class UpdatePhotoRequest {
   /// Required.
   core.String? updateMask;
 
-  UpdatePhotoRequest();
+  UpdatePhotoRequest({
+    this.photo,
+    this.updateMask,
+  });
 
-  UpdatePhotoRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('photo')) {
-      photo =
-          Photo.fromJson(_json['photo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'] as core.String;
-    }
-  }
+  UpdatePhotoRequest.fromJson(core.Map _json)
+      : this(
+          photo: _json.containsKey('photo')
+              ? Photo.fromJson(
+                  _json['photo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: _json.containsKey('updateMask')
+              ? _json['updateMask'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (photo != null) 'photo': photo!.toJson(),
@@ -1327,13 +1397,16 @@ class UploadRef {
   /// "https://streetviewpublish.googleapis.com/media/user/{account_id}/photo/{upload_reference}"
   core.String? uploadUrl;
 
-  UploadRef();
+  UploadRef({
+    this.uploadUrl,
+  });
 
-  UploadRef.fromJson(core.Map _json) {
-    if (_json.containsKey('uploadUrl')) {
-      uploadUrl = _json['uploadUrl'] as core.String;
-    }
-  }
+  UploadRef.fromJson(core.Map _json)
+      : this(
+          uploadUrl: _json.containsKey('uploadUrl')
+              ? _json['uploadUrl'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (uploadUrl != null) 'uploadUrl': uploadUrl!,

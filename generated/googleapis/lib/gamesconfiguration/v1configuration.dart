@@ -589,36 +589,41 @@ class AchievementConfiguration {
   /// The token for this resource.
   core.String? token;
 
-  AchievementConfiguration();
+  AchievementConfiguration({
+    this.achievementType,
+    this.draft,
+    this.id,
+    this.initialState,
+    this.kind,
+    this.published,
+    this.stepsToUnlock,
+    this.token,
+  });
 
-  AchievementConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey('achievementType')) {
-      achievementType = _json['achievementType'] as core.String;
-    }
-    if (_json.containsKey('draft')) {
-      draft = AchievementConfigurationDetail.fromJson(
-          _json['draft'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('initialState')) {
-      initialState = _json['initialState'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('published')) {
-      published = AchievementConfigurationDetail.fromJson(
-          _json['published'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('stepsToUnlock')) {
-      stepsToUnlock = _json['stepsToUnlock'] as core.int;
-    }
-    if (_json.containsKey('token')) {
-      token = _json['token'] as core.String;
-    }
-  }
+  AchievementConfiguration.fromJson(core.Map _json)
+      : this(
+          achievementType: _json.containsKey('achievementType')
+              ? _json['achievementType'] as core.String
+              : null,
+          draft: _json.containsKey('draft')
+              ? AchievementConfigurationDetail.fromJson(
+                  _json['draft'] as core.Map<core.String, core.dynamic>)
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          initialState: _json.containsKey('initialState')
+              ? _json['initialState'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          published: _json.containsKey('published')
+              ? AchievementConfigurationDetail.fromJson(
+                  _json['published'] as core.Map<core.String, core.dynamic>)
+              : null,
+          stepsToUnlock: _json.containsKey('stepsToUnlock')
+              ? _json['stepsToUnlock'] as core.int
+              : null,
+          token:
+              _json.containsKey('token') ? _json['token'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (achievementType != null) 'achievementType': achievementType!,
@@ -659,30 +664,36 @@ class AchievementConfigurationDetail {
   /// Writes to this field are ignored.
   core.int? sortRank;
 
-  AchievementConfigurationDetail();
+  AchievementConfigurationDetail({
+    this.description,
+    this.iconUrl,
+    this.kind,
+    this.name,
+    this.pointValue,
+    this.sortRank,
+  });
 
-  AchievementConfigurationDetail.fromJson(core.Map _json) {
-    if (_json.containsKey('description')) {
-      description = LocalizedStringBundle.fromJson(
-          _json['description'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('iconUrl')) {
-      iconUrl = _json['iconUrl'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = LocalizedStringBundle.fromJson(
-          _json['name'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('pointValue')) {
-      pointValue = _json['pointValue'] as core.int;
-    }
-    if (_json.containsKey('sortRank')) {
-      sortRank = _json['sortRank'] as core.int;
-    }
-  }
+  AchievementConfigurationDetail.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? LocalizedStringBundle.fromJson(
+                  _json['description'] as core.Map<core.String, core.dynamic>)
+              : null,
+          iconUrl: _json.containsKey('iconUrl')
+              ? _json['iconUrl'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          name: _json.containsKey('name')
+              ? LocalizedStringBundle.fromJson(
+                  _json['name'] as core.Map<core.String, core.dynamic>)
+              : null,
+          pointValue: _json.containsKey('pointValue')
+              ? _json['pointValue'] as core.int
+              : null,
+          sortRank: _json.containsKey('sortRank')
+              ? _json['sortRank'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!.toJson(),
@@ -708,23 +719,26 @@ class AchievementConfigurationListResponse {
   /// The pagination token for the next page of results.
   core.String? nextPageToken;
 
-  AchievementConfigurationListResponse();
+  AchievementConfigurationListResponse({
+    this.items,
+    this.kind,
+    this.nextPageToken,
+  });
 
-  AchievementConfigurationListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<AchievementConfiguration>((value) =>
-              AchievementConfiguration.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  AchievementConfigurationListResponse.fromJson(core.Map _json)
+      : this(
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<AchievementConfiguration>((value) =>
+                      AchievementConfiguration.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
@@ -762,34 +776,42 @@ class GamesNumberAffixConfiguration {
   /// Arabic).
   LocalizedStringBundle? zero;
 
-  GamesNumberAffixConfiguration();
+  GamesNumberAffixConfiguration({
+    this.few,
+    this.many,
+    this.one,
+    this.other,
+    this.two,
+    this.zero,
+  });
 
-  GamesNumberAffixConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey('few')) {
-      few = LocalizedStringBundle.fromJson(
-          _json['few'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('many')) {
-      many = LocalizedStringBundle.fromJson(
-          _json['many'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('one')) {
-      one = LocalizedStringBundle.fromJson(
-          _json['one'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('other')) {
-      other = LocalizedStringBundle.fromJson(
-          _json['other'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('two')) {
-      two = LocalizedStringBundle.fromJson(
-          _json['two'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('zero')) {
-      zero = LocalizedStringBundle.fromJson(
-          _json['zero'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GamesNumberAffixConfiguration.fromJson(core.Map _json)
+      : this(
+          few: _json.containsKey('few')
+              ? LocalizedStringBundle.fromJson(
+                  _json['few'] as core.Map<core.String, core.dynamic>)
+              : null,
+          many: _json.containsKey('many')
+              ? LocalizedStringBundle.fromJson(
+                  _json['many'] as core.Map<core.String, core.dynamic>)
+              : null,
+          one: _json.containsKey('one')
+              ? LocalizedStringBundle.fromJson(
+                  _json['one'] as core.Map<core.String, core.dynamic>)
+              : null,
+          other: _json.containsKey('other')
+              ? LocalizedStringBundle.fromJson(
+                  _json['other'] as core.Map<core.String, core.dynamic>)
+              : null,
+          two: _json.containsKey('two')
+              ? LocalizedStringBundle.fromJson(
+                  _json['two'] as core.Map<core.String, core.dynamic>)
+              : null,
+          zero: _json.containsKey('zero')
+              ? LocalizedStringBundle.fromJson(
+                  _json['zero'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (few != null) 'few': few!.toJson(),
@@ -829,23 +851,29 @@ class GamesNumberFormatConfiguration {
   /// resources.
   GamesNumberAffixConfiguration? suffix;
 
-  GamesNumberFormatConfiguration();
+  GamesNumberFormatConfiguration({
+    this.currencyCode,
+    this.numDecimalPlaces,
+    this.numberFormatType,
+    this.suffix,
+  });
 
-  GamesNumberFormatConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'] as core.String;
-    }
-    if (_json.containsKey('numDecimalPlaces')) {
-      numDecimalPlaces = _json['numDecimalPlaces'] as core.int;
-    }
-    if (_json.containsKey('numberFormatType')) {
-      numberFormatType = _json['numberFormatType'] as core.String;
-    }
-    if (_json.containsKey('suffix')) {
-      suffix = GamesNumberAffixConfiguration.fromJson(
-          _json['suffix'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GamesNumberFormatConfiguration.fromJson(core.Map _json)
+      : this(
+          currencyCode: _json.containsKey('currencyCode')
+              ? _json['currencyCode'] as core.String
+              : null,
+          numDecimalPlaces: _json.containsKey('numDecimalPlaces')
+              ? _json['numDecimalPlaces'] as core.int
+              : null,
+          numberFormatType: _json.containsKey('numberFormatType')
+              ? _json['numberFormatType'] as core.String
+              : null,
+          suffix: _json.containsKey('suffix')
+              ? GamesNumberAffixConfiguration.fromJson(
+                  _json['suffix'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (currencyCode != null) 'currencyCode': currencyCode!,
@@ -875,22 +903,24 @@ class ImageConfiguration {
   /// The url for this image.
   core.String? url;
 
-  ImageConfiguration();
+  ImageConfiguration({
+    this.imageType,
+    this.kind,
+    this.resourceId,
+    this.url,
+  });
 
-  ImageConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey('imageType')) {
-      imageType = _json['imageType'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('resourceId')) {
-      resourceId = _json['resourceId'] as core.String;
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  ImageConfiguration.fromJson(core.Map _json)
+      : this(
+          imageType: _json.containsKey('imageType')
+              ? _json['imageType'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          resourceId: _json.containsKey('resourceId')
+              ? _json['resourceId'] as core.String
+              : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (imageType != null) 'imageType': imageType!,
@@ -933,36 +963,41 @@ class LeaderboardConfiguration {
   /// The token for this resource.
   core.String? token;
 
-  LeaderboardConfiguration();
+  LeaderboardConfiguration({
+    this.draft,
+    this.id,
+    this.kind,
+    this.published,
+    this.scoreMax,
+    this.scoreMin,
+    this.scoreOrder,
+    this.token,
+  });
 
-  LeaderboardConfiguration.fromJson(core.Map _json) {
-    if (_json.containsKey('draft')) {
-      draft = LeaderboardConfigurationDetail.fromJson(
-          _json['draft'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('published')) {
-      published = LeaderboardConfigurationDetail.fromJson(
-          _json['published'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('scoreMax')) {
-      scoreMax = _json['scoreMax'] as core.String;
-    }
-    if (_json.containsKey('scoreMin')) {
-      scoreMin = _json['scoreMin'] as core.String;
-    }
-    if (_json.containsKey('scoreOrder')) {
-      scoreOrder = _json['scoreOrder'] as core.String;
-    }
-    if (_json.containsKey('token')) {
-      token = _json['token'] as core.String;
-    }
-  }
+  LeaderboardConfiguration.fromJson(core.Map _json)
+      : this(
+          draft: _json.containsKey('draft')
+              ? LeaderboardConfigurationDetail.fromJson(
+                  _json['draft'] as core.Map<core.String, core.dynamic>)
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          published: _json.containsKey('published')
+              ? LeaderboardConfigurationDetail.fromJson(
+                  _json['published'] as core.Map<core.String, core.dynamic>)
+              : null,
+          scoreMax: _json.containsKey('scoreMax')
+              ? _json['scoreMax'] as core.String
+              : null,
+          scoreMin: _json.containsKey('scoreMin')
+              ? _json['scoreMin'] as core.String
+              : null,
+          scoreOrder: _json.containsKey('scoreOrder')
+              ? _json['scoreOrder'] as core.String
+              : null,
+          token:
+              _json.containsKey('token') ? _json['token'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (draft != null) 'draft': draft!.toJson(),
@@ -1000,27 +1035,32 @@ class LeaderboardConfigurationDetail {
   /// Writes to this field are ignored.
   core.int? sortRank;
 
-  LeaderboardConfigurationDetail();
+  LeaderboardConfigurationDetail({
+    this.iconUrl,
+    this.kind,
+    this.name,
+    this.scoreFormat,
+    this.sortRank,
+  });
 
-  LeaderboardConfigurationDetail.fromJson(core.Map _json) {
-    if (_json.containsKey('iconUrl')) {
-      iconUrl = _json['iconUrl'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = LocalizedStringBundle.fromJson(
-          _json['name'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('scoreFormat')) {
-      scoreFormat = GamesNumberFormatConfiguration.fromJson(
-          _json['scoreFormat'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('sortRank')) {
-      sortRank = _json['sortRank'] as core.int;
-    }
-  }
+  LeaderboardConfigurationDetail.fromJson(core.Map _json)
+      : this(
+          iconUrl: _json.containsKey('iconUrl')
+              ? _json['iconUrl'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          name: _json.containsKey('name')
+              ? LocalizedStringBundle.fromJson(
+                  _json['name'] as core.Map<core.String, core.dynamic>)
+              : null,
+          scoreFormat: _json.containsKey('scoreFormat')
+              ? GamesNumberFormatConfiguration.fromJson(
+                  _json['scoreFormat'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sortRank: _json.containsKey('sortRank')
+              ? _json['sortRank'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (iconUrl != null) 'iconUrl': iconUrl!,
@@ -1045,23 +1085,26 @@ class LeaderboardConfigurationListResponse {
   /// The pagination token for the next page of results.
   core.String? nextPageToken;
 
-  LeaderboardConfigurationListResponse();
+  LeaderboardConfigurationListResponse({
+    this.items,
+    this.kind,
+    this.nextPageToken,
+  });
 
-  LeaderboardConfigurationListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<LeaderboardConfiguration>((value) =>
-              LeaderboardConfiguration.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  LeaderboardConfigurationListResponse.fromJson(core.Map _json)
+      : this(
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<LeaderboardConfiguration>((value) =>
+                      LeaderboardConfiguration.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
@@ -1084,19 +1127,21 @@ class LocalizedString {
   /// The string value.
   core.String? value;
 
-  LocalizedString();
+  LocalizedString({
+    this.kind,
+    this.locale,
+    this.value,
+  });
 
-  LocalizedString.fromJson(core.Map _json) {
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('locale')) {
-      locale = _json['locale'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  LocalizedString.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          locale: _json.containsKey('locale')
+              ? _json['locale'] as core.String
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
@@ -1116,19 +1161,21 @@ class LocalizedStringBundle {
   /// The locale strings.
   core.List<LocalizedString>? translations;
 
-  LocalizedStringBundle();
+  LocalizedStringBundle({
+    this.kind,
+    this.translations,
+  });
 
-  LocalizedStringBundle.fromJson(core.Map _json) {
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('translations')) {
-      translations = (_json['translations'] as core.List)
-          .map<LocalizedString>((value) => LocalizedString.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  LocalizedStringBundle.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          translations: _json.containsKey('translations')
+              ? (_json['translations'] as core.List)
+                  .map<LocalizedString>((value) => LocalizedString.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,

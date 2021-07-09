@@ -337,22 +337,23 @@ class GoogleExampleLibraryagentV1Book {
   /// The title of the book.
   core.String? title;
 
-  GoogleExampleLibraryagentV1Book();
+  GoogleExampleLibraryagentV1Book({
+    this.author,
+    this.name,
+    this.read,
+    this.title,
+  });
 
-  GoogleExampleLibraryagentV1Book.fromJson(core.Map _json) {
-    if (_json.containsKey('author')) {
-      author = _json['author'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('read')) {
-      read = _json['read'] as core.bool;
-    }
-    if (_json.containsKey('title')) {
-      title = _json['title'] as core.String;
-    }
-  }
+  GoogleExampleLibraryagentV1Book.fromJson(core.Map _json)
+      : this(
+          author: _json.containsKey('author')
+              ? _json['author'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          read: _json.containsKey('read') ? _json['read'] as core.bool : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (author != null) 'author': author!,
@@ -373,20 +374,24 @@ class GoogleExampleLibraryagentV1ListBooksResponse {
   /// call to `ListBooks` method to retrieve the next page of results.
   core.String? nextPageToken;
 
-  GoogleExampleLibraryagentV1ListBooksResponse();
+  GoogleExampleLibraryagentV1ListBooksResponse({
+    this.books,
+    this.nextPageToken,
+  });
 
-  GoogleExampleLibraryagentV1ListBooksResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('books')) {
-      books = (_json['books'] as core.List)
-          .map<GoogleExampleLibraryagentV1Book>((value) =>
-              GoogleExampleLibraryagentV1Book.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  GoogleExampleLibraryagentV1ListBooksResponse.fromJson(core.Map _json)
+      : this(
+          books: _json.containsKey('books')
+              ? (_json['books'] as core.List)
+                  .map<GoogleExampleLibraryagentV1Book>((value) =>
+                      GoogleExampleLibraryagentV1Book.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (books != null)
@@ -407,20 +412,24 @@ class GoogleExampleLibraryagentV1ListShelvesResponse {
   /// The list of shelves.
   core.List<GoogleExampleLibraryagentV1Shelf>? shelves;
 
-  GoogleExampleLibraryagentV1ListShelvesResponse();
+  GoogleExampleLibraryagentV1ListShelvesResponse({
+    this.nextPageToken,
+    this.shelves,
+  });
 
-  GoogleExampleLibraryagentV1ListShelvesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('shelves')) {
-      shelves = (_json['shelves'] as core.List)
-          .map<GoogleExampleLibraryagentV1Shelf>((value) =>
-              GoogleExampleLibraryagentV1Shelf.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleExampleLibraryagentV1ListShelvesResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          shelves: _json.containsKey('shelves')
+              ? (_json['shelves'] as core.List)
+                  .map<GoogleExampleLibraryagentV1Shelf>((value) =>
+                      GoogleExampleLibraryagentV1Shelf.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -442,16 +451,17 @@ class GoogleExampleLibraryagentV1Shelf {
   /// The theme of the shelf
   core.String? theme;
 
-  GoogleExampleLibraryagentV1Shelf();
+  GoogleExampleLibraryagentV1Shelf({
+    this.name,
+    this.theme,
+  });
 
-  GoogleExampleLibraryagentV1Shelf.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('theme')) {
-      theme = _json['theme'] as core.String;
-    }
-  }
+  GoogleExampleLibraryagentV1Shelf.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          theme:
+              _json.containsKey('theme') ? _json['theme'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,

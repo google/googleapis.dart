@@ -3481,19 +3481,24 @@ class AutoForwarding {
   /// Whether all incoming mail is automatically forwarded to another address.
   core.bool? enabled;
 
-  AutoForwarding();
+  AutoForwarding({
+    this.disposition,
+    this.emailAddress,
+    this.enabled,
+  });
 
-  AutoForwarding.fromJson(core.Map _json) {
-    if (_json.containsKey('disposition')) {
-      disposition = _json['disposition'] as core.String;
-    }
-    if (_json.containsKey('emailAddress')) {
-      emailAddress = _json['emailAddress'] as core.String;
-    }
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-  }
+  AutoForwarding.fromJson(core.Map _json)
+      : this(
+          disposition: _json.containsKey('disposition')
+              ? _json['disposition'] as core.String
+              : null,
+          emailAddress: _json.containsKey('emailAddress')
+              ? _json['emailAddress'] as core.String
+              : null,
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disposition != null) 'disposition': disposition!,
@@ -3506,15 +3511,18 @@ class BatchDeleteMessagesRequest {
   /// The IDs of the messages to delete.
   core.List<core.String>? ids;
 
-  BatchDeleteMessagesRequest();
+  BatchDeleteMessagesRequest({
+    this.ids,
+  });
 
-  BatchDeleteMessagesRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('ids')) {
-      ids = (_json['ids'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  BatchDeleteMessagesRequest.fromJson(core.Map _json)
+      : this(
+          ids: _json.containsKey('ids')
+              ? (_json['ids'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ids != null) 'ids': ids!,
@@ -3533,25 +3541,30 @@ class BatchModifyMessagesRequest {
   /// A list of label IDs to remove from messages.
   core.List<core.String>? removeLabelIds;
 
-  BatchModifyMessagesRequest();
+  BatchModifyMessagesRequest({
+    this.addLabelIds,
+    this.ids,
+    this.removeLabelIds,
+  });
 
-  BatchModifyMessagesRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('addLabelIds')) {
-      addLabelIds = (_json['addLabelIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('ids')) {
-      ids = (_json['ids'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('removeLabelIds')) {
-      removeLabelIds = (_json['removeLabelIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  BatchModifyMessagesRequest.fromJson(core.Map _json)
+      : this(
+          addLabelIds: _json.containsKey('addLabelIds')
+              ? (_json['addLabelIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          ids: _json.containsKey('ids')
+              ? (_json['ids'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          removeLabelIds: _json.containsKey('removeLabelIds')
+              ? (_json['removeLabelIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (addLabelIds != null) 'addLabelIds': addLabelIds!,
@@ -3584,16 +3597,20 @@ class Delegate {
   /// expired without verification.
   core.String? verificationStatus;
 
-  Delegate();
+  Delegate({
+    this.delegateEmail,
+    this.verificationStatus,
+  });
 
-  Delegate.fromJson(core.Map _json) {
-    if (_json.containsKey('delegateEmail')) {
-      delegateEmail = _json['delegateEmail'] as core.String;
-    }
-    if (_json.containsKey('verificationStatus')) {
-      verificationStatus = _json['verificationStatus'] as core.String;
-    }
-  }
+  Delegate.fromJson(core.Map _json)
+      : this(
+          delegateEmail: _json.containsKey('delegateEmail')
+              ? _json['delegateEmail'] as core.String
+              : null,
+          verificationStatus: _json.containsKey('verificationStatus')
+              ? _json['verificationStatus'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (delegateEmail != null) 'delegateEmail': delegateEmail!,
@@ -3610,17 +3627,19 @@ class Draft {
   /// The message content of the draft.
   Message? message;
 
-  Draft();
+  Draft({
+    this.id,
+    this.message,
+  });
 
-  Draft.fromJson(core.Map _json) {
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('message')) {
-      message = Message.fromJson(
-          _json['message'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  Draft.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          message: _json.containsKey('message')
+              ? Message.fromJson(
+                  _json['message'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
@@ -3641,21 +3660,24 @@ class Filter {
   /// The server assigned ID of the filter.
   core.String? id;
 
-  Filter();
+  Filter({
+    this.action,
+    this.criteria,
+    this.id,
+  });
 
-  Filter.fromJson(core.Map _json) {
-    if (_json.containsKey('action')) {
-      action = FilterAction.fromJson(
-          _json['action'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('criteria')) {
-      criteria = FilterCriteria.fromJson(
-          _json['criteria'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-  }
+  Filter.fromJson(core.Map _json)
+      : this(
+          action: _json.containsKey('action')
+              ? FilterAction.fromJson(
+                  _json['action'] as core.Map<core.String, core.dynamic>)
+              : null,
+          criteria: _json.containsKey('criteria')
+              ? FilterCriteria.fromJson(
+                  _json['criteria'] as core.Map<core.String, core.dynamic>)
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!.toJson(),
@@ -3675,23 +3697,28 @@ class FilterAction {
   /// List of labels to remove from the message.
   core.List<core.String>? removeLabelIds;
 
-  FilterAction();
+  FilterAction({
+    this.addLabelIds,
+    this.forward,
+    this.removeLabelIds,
+  });
 
-  FilterAction.fromJson(core.Map _json) {
-    if (_json.containsKey('addLabelIds')) {
-      addLabelIds = (_json['addLabelIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('forward')) {
-      forward = _json['forward'] as core.String;
-    }
-    if (_json.containsKey('removeLabelIds')) {
-      removeLabelIds = (_json['removeLabelIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  FilterAction.fromJson(core.Map _json)
+      : this(
+          addLabelIds: _json.containsKey('addLabelIds')
+              ? (_json['addLabelIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          forward: _json.containsKey('forward')
+              ? _json['forward'] as core.String
+              : null,
+          removeLabelIds: _json.containsKey('removeLabelIds')
+              ? (_json['removeLabelIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (addLabelIds != null) 'addLabelIds': addLabelIds!,
@@ -3747,37 +3774,41 @@ class FilterCriteria {
   /// "example@" both match "example@gmail.com". This field is case-insensitive.
   core.String? to;
 
-  FilterCriteria();
+  FilterCriteria({
+    this.excludeChats,
+    this.from,
+    this.hasAttachment,
+    this.negatedQuery,
+    this.query,
+    this.size,
+    this.sizeComparison,
+    this.subject,
+    this.to,
+  });
 
-  FilterCriteria.fromJson(core.Map _json) {
-    if (_json.containsKey('excludeChats')) {
-      excludeChats = _json['excludeChats'] as core.bool;
-    }
-    if (_json.containsKey('from')) {
-      from = _json['from'] as core.String;
-    }
-    if (_json.containsKey('hasAttachment')) {
-      hasAttachment = _json['hasAttachment'] as core.bool;
-    }
-    if (_json.containsKey('negatedQuery')) {
-      negatedQuery = _json['negatedQuery'] as core.String;
-    }
-    if (_json.containsKey('query')) {
-      query = _json['query'] as core.String;
-    }
-    if (_json.containsKey('size')) {
-      size = _json['size'] as core.int;
-    }
-    if (_json.containsKey('sizeComparison')) {
-      sizeComparison = _json['sizeComparison'] as core.String;
-    }
-    if (_json.containsKey('subject')) {
-      subject = _json['subject'] as core.String;
-    }
-    if (_json.containsKey('to')) {
-      to = _json['to'] as core.String;
-    }
-  }
+  FilterCriteria.fromJson(core.Map _json)
+      : this(
+          excludeChats: _json.containsKey('excludeChats')
+              ? _json['excludeChats'] as core.bool
+              : null,
+          from: _json.containsKey('from') ? _json['from'] as core.String : null,
+          hasAttachment: _json.containsKey('hasAttachment')
+              ? _json['hasAttachment'] as core.bool
+              : null,
+          negatedQuery: _json.containsKey('negatedQuery')
+              ? _json['negatedQuery'] as core.String
+              : null,
+          query:
+              _json.containsKey('query') ? _json['query'] as core.String : null,
+          size: _json.containsKey('size') ? _json['size'] as core.int : null,
+          sizeComparison: _json.containsKey('sizeComparison')
+              ? _json['sizeComparison'] as core.String
+              : null,
+          subject: _json.containsKey('subject')
+              ? _json['subject'] as core.String
+              : null,
+          to: _json.containsKey('to') ? _json['to'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (excludeChats != null) 'excludeChats': excludeChats!,
@@ -3807,16 +3838,20 @@ class ForwardingAddress {
   /// - "pending" : The address is awaiting verification by the owner.
   core.String? verificationStatus;
 
-  ForwardingAddress();
+  ForwardingAddress({
+    this.forwardingEmail,
+    this.verificationStatus,
+  });
 
-  ForwardingAddress.fromJson(core.Map _json) {
-    if (_json.containsKey('forwardingEmail')) {
-      forwardingEmail = _json['forwardingEmail'] as core.String;
-    }
-    if (_json.containsKey('verificationStatus')) {
-      verificationStatus = _json['verificationStatus'] as core.String;
-    }
-  }
+  ForwardingAddress.fromJson(core.Map _json)
+      : this(
+          forwardingEmail: _json.containsKey('forwardingEmail')
+              ? _json['forwardingEmail'] as core.String
+              : null,
+          verificationStatus: _json.containsKey('verificationStatus')
+              ? _json['verificationStatus'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (forwardingEmail != null) 'forwardingEmail': forwardingEmail!,
@@ -3851,43 +3886,52 @@ class History {
   /// Messages deleted (not Trashed) from the mailbox in this history record.
   core.List<HistoryMessageDeleted>? messagesDeleted;
 
-  History();
+  History({
+    this.id,
+    this.labelsAdded,
+    this.labelsRemoved,
+    this.messages,
+    this.messagesAdded,
+    this.messagesDeleted,
+  });
 
-  History.fromJson(core.Map _json) {
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('labelsAdded')) {
-      labelsAdded = (_json['labelsAdded'] as core.List)
-          .map<HistoryLabelAdded>((value) => HistoryLabelAdded.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('labelsRemoved')) {
-      labelsRemoved = (_json['labelsRemoved'] as core.List)
-          .map<HistoryLabelRemoved>((value) => HistoryLabelRemoved.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('messages')) {
-      messages = (_json['messages'] as core.List)
-          .map<Message>((value) =>
-              Message.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('messagesAdded')) {
-      messagesAdded = (_json['messagesAdded'] as core.List)
-          .map<HistoryMessageAdded>((value) => HistoryMessageAdded.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('messagesDeleted')) {
-      messagesDeleted = (_json['messagesDeleted'] as core.List)
-          .map<HistoryMessageDeleted>((value) => HistoryMessageDeleted.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  History.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          labelsAdded: _json.containsKey('labelsAdded')
+              ? (_json['labelsAdded'] as core.List)
+                  .map<HistoryLabelAdded>((value) => HistoryLabelAdded.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          labelsRemoved: _json.containsKey('labelsRemoved')
+              ? (_json['labelsRemoved'] as core.List)
+                  .map<HistoryLabelRemoved>((value) =>
+                      HistoryLabelRemoved.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          messages: _json.containsKey('messages')
+              ? (_json['messages'] as core.List)
+                  .map<Message>((value) => Message.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          messagesAdded: _json.containsKey('messagesAdded')
+              ? (_json['messagesAdded'] as core.List)
+                  .map<HistoryMessageAdded>((value) =>
+                      HistoryMessageAdded.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          messagesDeleted: _json.containsKey('messagesDeleted')
+              ? (_json['messagesDeleted'] as core.List)
+                  .map<HistoryMessageDeleted>((value) =>
+                      HistoryMessageDeleted.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
@@ -3912,19 +3956,23 @@ class HistoryLabelAdded {
   core.List<core.String>? labelIds;
   Message? message;
 
-  HistoryLabelAdded();
+  HistoryLabelAdded({
+    this.labelIds,
+    this.message,
+  });
 
-  HistoryLabelAdded.fromJson(core.Map _json) {
-    if (_json.containsKey('labelIds')) {
-      labelIds = (_json['labelIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = Message.fromJson(
-          _json['message'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  HistoryLabelAdded.fromJson(core.Map _json)
+      : this(
+          labelIds: _json.containsKey('labelIds')
+              ? (_json['labelIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? Message.fromJson(
+                  _json['message'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (labelIds != null) 'labelIds': labelIds!,
@@ -3937,19 +3985,23 @@ class HistoryLabelRemoved {
   core.List<core.String>? labelIds;
   Message? message;
 
-  HistoryLabelRemoved();
+  HistoryLabelRemoved({
+    this.labelIds,
+    this.message,
+  });
 
-  HistoryLabelRemoved.fromJson(core.Map _json) {
-    if (_json.containsKey('labelIds')) {
-      labelIds = (_json['labelIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = Message.fromJson(
-          _json['message'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  HistoryLabelRemoved.fromJson(core.Map _json)
+      : this(
+          labelIds: _json.containsKey('labelIds')
+              ? (_json['labelIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? Message.fromJson(
+                  _json['message'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (labelIds != null) 'labelIds': labelIds!,
@@ -3960,14 +4012,17 @@ class HistoryLabelRemoved {
 class HistoryMessageAdded {
   Message? message;
 
-  HistoryMessageAdded();
+  HistoryMessageAdded({
+    this.message,
+  });
 
-  HistoryMessageAdded.fromJson(core.Map _json) {
-    if (_json.containsKey('message')) {
-      message = Message.fromJson(
-          _json['message'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  HistoryMessageAdded.fromJson(core.Map _json)
+      : this(
+          message: _json.containsKey('message')
+              ? Message.fromJson(
+                  _json['message'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (message != null) 'message': message!.toJson(),
@@ -3977,14 +4032,17 @@ class HistoryMessageAdded {
 class HistoryMessageDeleted {
   Message? message;
 
-  HistoryMessageDeleted();
+  HistoryMessageDeleted({
+    this.message,
+  });
 
-  HistoryMessageDeleted.fromJson(core.Map _json) {
-    if (_json.containsKey('message')) {
-      message = Message.fromJson(
-          _json['message'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  HistoryMessageDeleted.fromJson(core.Map _json)
+      : this(
+          message: _json.containsKey('message')
+              ? Message.fromJson(
+                  _json['message'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (message != null) 'message': message!.toJson(),
@@ -4020,22 +4078,28 @@ class ImapSettings {
   /// interpreted to mean that there is no limit.
   core.int? maxFolderSize;
 
-  ImapSettings();
+  ImapSettings({
+    this.autoExpunge,
+    this.enabled,
+    this.expungeBehavior,
+    this.maxFolderSize,
+  });
 
-  ImapSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('autoExpunge')) {
-      autoExpunge = _json['autoExpunge'] as core.bool;
-    }
-    if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'] as core.bool;
-    }
-    if (_json.containsKey('expungeBehavior')) {
-      expungeBehavior = _json['expungeBehavior'] as core.String;
-    }
-    if (_json.containsKey('maxFolderSize')) {
-      maxFolderSize = _json['maxFolderSize'] as core.int;
-    }
-  }
+  ImapSettings.fromJson(core.Map _json)
+      : this(
+          autoExpunge: _json.containsKey('autoExpunge')
+              ? _json['autoExpunge'] as core.bool
+              : null,
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+          expungeBehavior: _json.containsKey('expungeBehavior')
+              ? _json['expungeBehavior'] as core.String
+              : null,
+          maxFolderSize: _json.containsKey('maxFolderSize')
+              ? _json['maxFolderSize'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoExpunge != null) 'autoExpunge': autoExpunge!,
@@ -4103,41 +4167,47 @@ class Label {
   /// - "user" : Custom labels created by the user or application.
   core.String? type;
 
-  Label();
+  Label({
+    this.color,
+    this.id,
+    this.labelListVisibility,
+    this.messageListVisibility,
+    this.messagesTotal,
+    this.messagesUnread,
+    this.name,
+    this.threadsTotal,
+    this.threadsUnread,
+    this.type,
+  });
 
-  Label.fromJson(core.Map _json) {
-    if (_json.containsKey('color')) {
-      color = LabelColor.fromJson(
-          _json['color'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('labelListVisibility')) {
-      labelListVisibility = _json['labelListVisibility'] as core.String;
-    }
-    if (_json.containsKey('messageListVisibility')) {
-      messageListVisibility = _json['messageListVisibility'] as core.String;
-    }
-    if (_json.containsKey('messagesTotal')) {
-      messagesTotal = _json['messagesTotal'] as core.int;
-    }
-    if (_json.containsKey('messagesUnread')) {
-      messagesUnread = _json['messagesUnread'] as core.int;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('threadsTotal')) {
-      threadsTotal = _json['threadsTotal'] as core.int;
-    }
-    if (_json.containsKey('threadsUnread')) {
-      threadsUnread = _json['threadsUnread'] as core.int;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  Label.fromJson(core.Map _json)
+      : this(
+          color: _json.containsKey('color')
+              ? LabelColor.fromJson(
+                  _json['color'] as core.Map<core.String, core.dynamic>)
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          labelListVisibility: _json.containsKey('labelListVisibility')
+              ? _json['labelListVisibility'] as core.String
+              : null,
+          messageListVisibility: _json.containsKey('messageListVisibility')
+              ? _json['messageListVisibility'] as core.String
+              : null,
+          messagesTotal: _json.containsKey('messagesTotal')
+              ? _json['messagesTotal'] as core.int
+              : null,
+          messagesUnread: _json.containsKey('messagesUnread')
+              ? _json['messagesUnread'] as core.int
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          threadsTotal: _json.containsKey('threadsTotal')
+              ? _json['threadsTotal'] as core.int
+              : null,
+          threadsUnread: _json.containsKey('threadsUnread')
+              ? _json['threadsUnread'] as core.int
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (color != null) 'color': color!.toJson(),
@@ -4194,16 +4264,20 @@ class LabelColor {
   /// #cca6ac, #094228, #42d692, #16a765
   core.String? textColor;
 
-  LabelColor();
+  LabelColor({
+    this.backgroundColor,
+    this.textColor,
+  });
 
-  LabelColor.fromJson(core.Map _json) {
-    if (_json.containsKey('backgroundColor')) {
-      backgroundColor = _json['backgroundColor'] as core.String;
-    }
-    if (_json.containsKey('textColor')) {
-      textColor = _json['textColor'] as core.String;
-    }
-  }
+  LabelColor.fromJson(core.Map _json)
+      : this(
+          backgroundColor: _json.containsKey('backgroundColor')
+              ? _json['backgroundColor'] as core.String
+              : null,
+          textColor: _json.containsKey('textColor')
+              ? _json['textColor'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backgroundColor != null) 'backgroundColor': backgroundColor!,
@@ -4230,13 +4304,16 @@ class LanguageSettings {
   /// variant (or a reasonable default).
   core.String? displayLanguage;
 
-  LanguageSettings();
+  LanguageSettings({
+    this.displayLanguage,
+  });
 
-  LanguageSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('displayLanguage')) {
-      displayLanguage = _json['displayLanguage'] as core.String;
-    }
-  }
+  LanguageSettings.fromJson(core.Map _json)
+      : this(
+          displayLanguage: _json.containsKey('displayLanguage')
+              ? _json['displayLanguage'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayLanguage != null) 'displayLanguage': displayLanguage!,
@@ -4250,16 +4327,19 @@ class ListDelegatesResponse {
   /// If an account doesn't have delegates, this field doesn't appear.
   core.List<Delegate>? delegates;
 
-  ListDelegatesResponse();
+  ListDelegatesResponse({
+    this.delegates,
+  });
 
-  ListDelegatesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('delegates')) {
-      delegates = (_json['delegates'] as core.List)
-          .map<Delegate>((value) =>
-              Delegate.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListDelegatesResponse.fromJson(core.Map _json)
+      : this(
+          delegates: _json.containsKey('delegates')
+              ? (_json['delegates'] as core.List)
+                  .map<Delegate>((value) => Delegate.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (delegates != null)
@@ -4281,22 +4361,27 @@ class ListDraftsResponse {
   /// Estimated total number of results.
   core.int? resultSizeEstimate;
 
-  ListDraftsResponse();
+  ListDraftsResponse({
+    this.drafts,
+    this.nextPageToken,
+    this.resultSizeEstimate,
+  });
 
-  ListDraftsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('drafts')) {
-      drafts = (_json['drafts'] as core.List)
-          .map<Draft>((value) =>
-              Draft.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('resultSizeEstimate')) {
-      resultSizeEstimate = _json['resultSizeEstimate'] as core.int;
-    }
-  }
+  ListDraftsResponse.fromJson(core.Map _json)
+      : this(
+          drafts: _json.containsKey('drafts')
+              ? (_json['drafts'] as core.List)
+                  .map<Draft>((value) => Draft.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          resultSizeEstimate: _json.containsKey('resultSizeEstimate')
+              ? _json['resultSizeEstimate'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (drafts != null)
@@ -4312,16 +4397,19 @@ class ListFiltersResponse {
   /// List of a user's filters.
   core.List<Filter>? filter;
 
-  ListFiltersResponse();
+  ListFiltersResponse({
+    this.filter,
+  });
 
-  ListFiltersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('filter')) {
-      filter = (_json['filter'] as core.List)
-          .map<Filter>((value) =>
-              Filter.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListFiltersResponse.fromJson(core.Map _json)
+      : this(
+          filter: _json.containsKey('filter')
+              ? (_json['filter'] as core.List)
+                  .map<Filter>((value) => Filter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (filter != null)
@@ -4334,16 +4422,19 @@ class ListForwardingAddressesResponse {
   /// List of addresses that may be used for forwarding.
   core.List<ForwardingAddress>? forwardingAddresses;
 
-  ListForwardingAddressesResponse();
+  ListForwardingAddressesResponse({
+    this.forwardingAddresses,
+  });
 
-  ListForwardingAddressesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('forwardingAddresses')) {
-      forwardingAddresses = (_json['forwardingAddresses'] as core.List)
-          .map<ForwardingAddress>((value) => ForwardingAddress.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListForwardingAddressesResponse.fromJson(core.Map _json)
+      : this(
+          forwardingAddresses: _json.containsKey('forwardingAddresses')
+              ? (_json['forwardingAddresses'] as core.List)
+                  .map<ForwardingAddress>((value) => ForwardingAddress.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (forwardingAddresses != null)
@@ -4365,22 +4456,27 @@ class ListHistoryResponse {
   /// Page token to retrieve the next page of results in the list.
   core.String? nextPageToken;
 
-  ListHistoryResponse();
+  ListHistoryResponse({
+    this.history,
+    this.historyId,
+    this.nextPageToken,
+  });
 
-  ListHistoryResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('history')) {
-      history = (_json['history'] as core.List)
-          .map<History>((value) =>
-              History.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('historyId')) {
-      historyId = _json['historyId'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListHistoryResponse.fromJson(core.Map _json)
+      : this(
+          history: _json.containsKey('history')
+              ? (_json['history'] as core.List)
+                  .map<History>((value) => History.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          historyId: _json.containsKey('historyId')
+              ? _json['historyId'] as core.String
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (history != null)
@@ -4398,16 +4494,19 @@ class ListLabelsResponse {
   /// method can fetch additional label details.
   core.List<Label>? labels;
 
-  ListLabelsResponse();
+  ListLabelsResponse({
+    this.labels,
+  });
 
-  ListLabelsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.List)
-          .map<Label>((value) =>
-              Label.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListLabelsResponse.fromJson(core.Map _json)
+      : this(
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.List)
+                  .map<Label>((value) => Label.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (labels != null)
@@ -4428,22 +4527,27 @@ class ListMessagesResponse {
   /// Estimated total number of results.
   core.int? resultSizeEstimate;
 
-  ListMessagesResponse();
+  ListMessagesResponse({
+    this.messages,
+    this.nextPageToken,
+    this.resultSizeEstimate,
+  });
 
-  ListMessagesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('messages')) {
-      messages = (_json['messages'] as core.List)
-          .map<Message>((value) =>
-              Message.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('resultSizeEstimate')) {
-      resultSizeEstimate = _json['resultSizeEstimate'] as core.int;
-    }
-  }
+  ListMessagesResponse.fromJson(core.Map _json)
+      : this(
+          messages: _json.containsKey('messages')
+              ? (_json['messages'] as core.List)
+                  .map<Message>((value) => Message.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          resultSizeEstimate: _json.containsKey('resultSizeEstimate')
+              ? _json['resultSizeEstimate'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (messages != null)
@@ -4459,16 +4563,19 @@ class ListSendAsResponse {
   /// List of send-as aliases.
   core.List<SendAs>? sendAs;
 
-  ListSendAsResponse();
+  ListSendAsResponse({
+    this.sendAs,
+  });
 
-  ListSendAsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('sendAs')) {
-      sendAs = (_json['sendAs'] as core.List)
-          .map<SendAs>((value) =>
-              SendAs.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListSendAsResponse.fromJson(core.Map _json)
+      : this(
+          sendAs: _json.containsKey('sendAs')
+              ? (_json['sendAs'] as core.List)
+                  .map<SendAs>((value) => SendAs.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sendAs != null)
@@ -4480,16 +4587,19 @@ class ListSmimeInfoResponse {
   /// List of SmimeInfo.
   core.List<SmimeInfo>? smimeInfo;
 
-  ListSmimeInfoResponse();
+  ListSmimeInfoResponse({
+    this.smimeInfo,
+  });
 
-  ListSmimeInfoResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('smimeInfo')) {
-      smimeInfo = (_json['smimeInfo'] as core.List)
-          .map<SmimeInfo>((value) =>
-              SmimeInfo.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListSmimeInfoResponse.fromJson(core.Map _json)
+      : this(
+          smimeInfo: _json.containsKey('smimeInfo')
+              ? (_json['smimeInfo'] as core.List)
+                  .map<SmimeInfo>((value) => SmimeInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (smimeInfo != null)
@@ -4511,22 +4621,27 @@ class ListThreadsResponse {
   /// method.
   core.List<Thread>? threads;
 
-  ListThreadsResponse();
+  ListThreadsResponse({
+    this.nextPageToken,
+    this.resultSizeEstimate,
+    this.threads,
+  });
 
-  ListThreadsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('resultSizeEstimate')) {
-      resultSizeEstimate = _json['resultSizeEstimate'] as core.int;
-    }
-    if (_json.containsKey('threads')) {
-      threads = (_json['threads'] as core.List)
-          .map<Thread>((value) =>
-              Thread.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListThreadsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          resultSizeEstimate: _json.containsKey('resultSizeEstimate')
+              ? _json['resultSizeEstimate'] as core.int
+              : null,
+          threads: _json.containsKey('threads')
+              ? (_json['threads'] as core.List)
+                  .map<Thread>((value) => Thread.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -4589,40 +4704,47 @@ class Message {
   /// headers must match.
   core.String? threadId;
 
-  Message();
+  Message({
+    this.historyId,
+    this.id,
+    this.internalDate,
+    this.labelIds,
+    this.payload,
+    this.raw,
+    this.sizeEstimate,
+    this.snippet,
+    this.threadId,
+  });
 
-  Message.fromJson(core.Map _json) {
-    if (_json.containsKey('historyId')) {
-      historyId = _json['historyId'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('internalDate')) {
-      internalDate = _json['internalDate'] as core.String;
-    }
-    if (_json.containsKey('labelIds')) {
-      labelIds = (_json['labelIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('payload')) {
-      payload = MessagePart.fromJson(
-          _json['payload'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('raw')) {
-      raw = _json['raw'] as core.String;
-    }
-    if (_json.containsKey('sizeEstimate')) {
-      sizeEstimate = _json['sizeEstimate'] as core.int;
-    }
-    if (_json.containsKey('snippet')) {
-      snippet = _json['snippet'] as core.String;
-    }
-    if (_json.containsKey('threadId')) {
-      threadId = _json['threadId'] as core.String;
-    }
-  }
+  Message.fromJson(core.Map _json)
+      : this(
+          historyId: _json.containsKey('historyId')
+              ? _json['historyId'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          internalDate: _json.containsKey('internalDate')
+              ? _json['internalDate'] as core.String
+              : null,
+          labelIds: _json.containsKey('labelIds')
+              ? (_json['labelIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          payload: _json.containsKey('payload')
+              ? MessagePart.fromJson(
+                  _json['payload'] as core.Map<core.String, core.dynamic>)
+              : null,
+          raw: _json.containsKey('raw') ? _json['raw'] as core.String : null,
+          sizeEstimate: _json.containsKey('sizeEstimate')
+              ? _json['sizeEstimate'] as core.int
+              : null,
+          snippet: _json.containsKey('snippet')
+              ? _json['snippet'] as core.String
+              : null,
+          threadId: _json.containsKey('threadId')
+              ? _json['threadId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (historyId != null) 'historyId': historyId!,
@@ -4668,35 +4790,43 @@ class MessagePart {
   /// this field is empty. For more information, see RFC 1521.
   core.List<MessagePart>? parts;
 
-  MessagePart();
+  MessagePart({
+    this.body,
+    this.filename,
+    this.headers,
+    this.mimeType,
+    this.partId,
+    this.parts,
+  });
 
-  MessagePart.fromJson(core.Map _json) {
-    if (_json.containsKey('body')) {
-      body = MessagePartBody.fromJson(
-          _json['body'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('filename')) {
-      filename = _json['filename'] as core.String;
-    }
-    if (_json.containsKey('headers')) {
-      headers = (_json['headers'] as core.List)
-          .map<MessagePartHeader>((value) => MessagePartHeader.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('mimeType')) {
-      mimeType = _json['mimeType'] as core.String;
-    }
-    if (_json.containsKey('partId')) {
-      partId = _json['partId'] as core.String;
-    }
-    if (_json.containsKey('parts')) {
-      parts = (_json['parts'] as core.List)
-          .map<MessagePart>((value) => MessagePart.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  MessagePart.fromJson(core.Map _json)
+      : this(
+          body: _json.containsKey('body')
+              ? MessagePartBody.fromJson(
+                  _json['body'] as core.Map<core.String, core.dynamic>)
+              : null,
+          filename: _json.containsKey('filename')
+              ? _json['filename'] as core.String
+              : null,
+          headers: _json.containsKey('headers')
+              ? (_json['headers'] as core.List)
+                  .map<MessagePartHeader>((value) => MessagePartHeader.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          mimeType: _json.containsKey('mimeType')
+              ? _json['mimeType'] as core.String
+              : null,
+          partId: _json.containsKey('partId')
+              ? _json['partId'] as core.String
+              : null,
+          parts: _json.containsKey('parts')
+              ? (_json['parts'] as core.List)
+                  .map<MessagePart>((value) => MessagePart.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (body != null) 'body': body!.toJson(),
@@ -4735,19 +4865,20 @@ class MessagePartBody {
   /// Number of bytes for the message part data (encoding notwithstanding).
   core.int? size;
 
-  MessagePartBody();
+  MessagePartBody({
+    this.attachmentId,
+    this.data,
+    this.size,
+  });
 
-  MessagePartBody.fromJson(core.Map _json) {
-    if (_json.containsKey('attachmentId')) {
-      attachmentId = _json['attachmentId'] as core.String;
-    }
-    if (_json.containsKey('data')) {
-      data = _json['data'] as core.String;
-    }
-    if (_json.containsKey('size')) {
-      size = _json['size'] as core.int;
-    }
-  }
+  MessagePartBody.fromJson(core.Map _json)
+      : this(
+          attachmentId: _json.containsKey('attachmentId')
+              ? _json['attachmentId'] as core.String
+              : null,
+          data: _json.containsKey('data') ? _json['data'] as core.String : null,
+          size: _json.containsKey('size') ? _json['size'] as core.int : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attachmentId != null) 'attachmentId': attachmentId!,
@@ -4767,16 +4898,17 @@ class MessagePartHeader {
   /// For example, `someuser@example.com`.
   core.String? value;
 
-  MessagePartHeader();
+  MessagePartHeader({
+    this.name,
+    this.value,
+  });
 
-  MessagePartHeader.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
+  MessagePartHeader.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -4791,20 +4923,24 @@ class ModifyMessageRequest {
   /// A list IDs of labels to remove from this message.
   core.List<core.String>? removeLabelIds;
 
-  ModifyMessageRequest();
+  ModifyMessageRequest({
+    this.addLabelIds,
+    this.removeLabelIds,
+  });
 
-  ModifyMessageRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('addLabelIds')) {
-      addLabelIds = (_json['addLabelIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('removeLabelIds')) {
-      removeLabelIds = (_json['removeLabelIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  ModifyMessageRequest.fromJson(core.Map _json)
+      : this(
+          addLabelIds: _json.containsKey('addLabelIds')
+              ? (_json['addLabelIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          removeLabelIds: _json.containsKey('removeLabelIds')
+              ? (_json['removeLabelIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (addLabelIds != null) 'addLabelIds': addLabelIds!,
@@ -4819,20 +4955,24 @@ class ModifyThreadRequest {
   /// A list of IDs of labels to remove from this thread.
   core.List<core.String>? removeLabelIds;
 
-  ModifyThreadRequest();
+  ModifyThreadRequest({
+    this.addLabelIds,
+    this.removeLabelIds,
+  });
 
-  ModifyThreadRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('addLabelIds')) {
-      addLabelIds = (_json['addLabelIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('removeLabelIds')) {
-      removeLabelIds = (_json['removeLabelIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  ModifyThreadRequest.fromJson(core.Map _json)
+      : this(
+          addLabelIds: _json.containsKey('addLabelIds')
+              ? (_json['addLabelIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          removeLabelIds: _json.containsKey('removeLabelIds')
+              ? (_json['removeLabelIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (addLabelIds != null) 'addLabelIds': addLabelIds!,
@@ -4862,16 +5002,20 @@ class PopSettings {
   /// - "markRead" : Leave the message in the `INBOX` and mark it as read.
   core.String? disposition;
 
-  PopSettings();
+  PopSettings({
+    this.accessWindow,
+    this.disposition,
+  });
 
-  PopSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('accessWindow')) {
-      accessWindow = _json['accessWindow'] as core.String;
-    }
-    if (_json.containsKey('disposition')) {
-      disposition = _json['disposition'] as core.String;
-    }
-  }
+  PopSettings.fromJson(core.Map _json)
+      : this(
+          accessWindow: _json.containsKey('accessWindow')
+              ? _json['accessWindow'] as core.String
+              : null,
+          disposition: _json.containsKey('disposition')
+              ? _json['disposition'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessWindow != null) 'accessWindow': accessWindow!,
@@ -4893,22 +5037,28 @@ class Profile {
   /// The total number of threads in the mailbox.
   core.int? threadsTotal;
 
-  Profile();
+  Profile({
+    this.emailAddress,
+    this.historyId,
+    this.messagesTotal,
+    this.threadsTotal,
+  });
 
-  Profile.fromJson(core.Map _json) {
-    if (_json.containsKey('emailAddress')) {
-      emailAddress = _json['emailAddress'] as core.String;
-    }
-    if (_json.containsKey('historyId')) {
-      historyId = _json['historyId'] as core.String;
-    }
-    if (_json.containsKey('messagesTotal')) {
-      messagesTotal = _json['messagesTotal'] as core.int;
-    }
-    if (_json.containsKey('threadsTotal')) {
-      threadsTotal = _json['threadsTotal'] as core.int;
-    }
-  }
+  Profile.fromJson(core.Map _json)
+      : this(
+          emailAddress: _json.containsKey('emailAddress')
+              ? _json['emailAddress'] as core.String
+              : null,
+          historyId: _json.containsKey('historyId')
+              ? _json['historyId'] as core.String
+              : null,
+          messagesTotal: _json.containsKey('messagesTotal')
+              ? _json['messagesTotal'] as core.int
+              : null,
+          threadsTotal: _json.containsKey('threadsTotal')
+              ? _json['threadsTotal'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (emailAddress != null) 'emailAddress': emailAddress!,
@@ -4991,38 +5141,49 @@ class SendAs {
   /// - "pending" : The address is awaiting verification by the owner.
   core.String? verificationStatus;
 
-  SendAs();
+  SendAs({
+    this.displayName,
+    this.isDefault,
+    this.isPrimary,
+    this.replyToAddress,
+    this.sendAsEmail,
+    this.signature,
+    this.smtpMsa,
+    this.treatAsAlias,
+    this.verificationStatus,
+  });
 
-  SendAs.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('isDefault')) {
-      isDefault = _json['isDefault'] as core.bool;
-    }
-    if (_json.containsKey('isPrimary')) {
-      isPrimary = _json['isPrimary'] as core.bool;
-    }
-    if (_json.containsKey('replyToAddress')) {
-      replyToAddress = _json['replyToAddress'] as core.String;
-    }
-    if (_json.containsKey('sendAsEmail')) {
-      sendAsEmail = _json['sendAsEmail'] as core.String;
-    }
-    if (_json.containsKey('signature')) {
-      signature = _json['signature'] as core.String;
-    }
-    if (_json.containsKey('smtpMsa')) {
-      smtpMsa = SmtpMsa.fromJson(
-          _json['smtpMsa'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('treatAsAlias')) {
-      treatAsAlias = _json['treatAsAlias'] as core.bool;
-    }
-    if (_json.containsKey('verificationStatus')) {
-      verificationStatus = _json['verificationStatus'] as core.String;
-    }
-  }
+  SendAs.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          isDefault: _json.containsKey('isDefault')
+              ? _json['isDefault'] as core.bool
+              : null,
+          isPrimary: _json.containsKey('isPrimary')
+              ? _json['isPrimary'] as core.bool
+              : null,
+          replyToAddress: _json.containsKey('replyToAddress')
+              ? _json['replyToAddress'] as core.String
+              : null,
+          sendAsEmail: _json.containsKey('sendAsEmail')
+              ? _json['sendAsEmail'] as core.String
+              : null,
+          signature: _json.containsKey('signature')
+              ? _json['signature'] as core.String
+              : null,
+          smtpMsa: _json.containsKey('smtpMsa')
+              ? SmtpMsa.fromJson(
+                  _json['smtpMsa'] as core.Map<core.String, core.dynamic>)
+              : null,
+          treatAsAlias: _json.containsKey('treatAsAlias')
+              ? _json['treatAsAlias'] as core.bool
+              : null,
+          verificationStatus: _json.containsKey('verificationStatus')
+              ? _json['verificationStatus'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -5077,31 +5238,36 @@ class SmimeInfo {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  SmimeInfo();
+  SmimeInfo({
+    this.encryptedKeyPassword,
+    this.expiration,
+    this.id,
+    this.isDefault,
+    this.issuerCn,
+    this.pem,
+    this.pkcs12,
+  });
 
-  SmimeInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('encryptedKeyPassword')) {
-      encryptedKeyPassword = _json['encryptedKeyPassword'] as core.String;
-    }
-    if (_json.containsKey('expiration')) {
-      expiration = _json['expiration'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('isDefault')) {
-      isDefault = _json['isDefault'] as core.bool;
-    }
-    if (_json.containsKey('issuerCn')) {
-      issuerCn = _json['issuerCn'] as core.String;
-    }
-    if (_json.containsKey('pem')) {
-      pem = _json['pem'] as core.String;
-    }
-    if (_json.containsKey('pkcs12')) {
-      pkcs12 = _json['pkcs12'] as core.String;
-    }
-  }
+  SmimeInfo.fromJson(core.Map _json)
+      : this(
+          encryptedKeyPassword: _json.containsKey('encryptedKeyPassword')
+              ? _json['encryptedKeyPassword'] as core.String
+              : null,
+          expiration: _json.containsKey('expiration')
+              ? _json['expiration'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          isDefault: _json.containsKey('isDefault')
+              ? _json['isDefault'] as core.bool
+              : null,
+          issuerCn: _json.containsKey('issuerCn')
+              ? _json['issuerCn'] as core.String
+              : null,
+          pem: _json.containsKey('pem') ? _json['pem'] as core.String : null,
+          pkcs12: _json.containsKey('pkcs12')
+              ? _json['pkcs12'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (encryptedKeyPassword != null)
@@ -5152,25 +5318,28 @@ class SmtpMsa {
   /// update SendAs settings; it is never populated in responses.
   core.String? username;
 
-  SmtpMsa();
+  SmtpMsa({
+    this.host,
+    this.password,
+    this.port,
+    this.securityMode,
+    this.username,
+  });
 
-  SmtpMsa.fromJson(core.Map _json) {
-    if (_json.containsKey('host')) {
-      host = _json['host'] as core.String;
-    }
-    if (_json.containsKey('password')) {
-      password = _json['password'] as core.String;
-    }
-    if (_json.containsKey('port')) {
-      port = _json['port'] as core.int;
-    }
-    if (_json.containsKey('securityMode')) {
-      securityMode = _json['securityMode'] as core.String;
-    }
-    if (_json.containsKey('username')) {
-      username = _json['username'] as core.String;
-    }
-  }
+  SmtpMsa.fromJson(core.Map _json)
+      : this(
+          host: _json.containsKey('host') ? _json['host'] as core.String : null,
+          password: _json.containsKey('password')
+              ? _json['password'] as core.String
+              : null,
+          port: _json.containsKey('port') ? _json['port'] as core.int : null,
+          securityMode: _json.containsKey('securityMode')
+              ? _json['securityMode'] as core.String
+              : null,
+          username: _json.containsKey('username')
+              ? _json['username'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (host != null) 'host': host!,
@@ -5195,25 +5364,29 @@ class Thread {
   /// A short part of the message text.
   core.String? snippet;
 
-  Thread();
+  Thread({
+    this.historyId,
+    this.id,
+    this.messages,
+    this.snippet,
+  });
 
-  Thread.fromJson(core.Map _json) {
-    if (_json.containsKey('historyId')) {
-      historyId = _json['historyId'] as core.String;
-    }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('messages')) {
-      messages = (_json['messages'] as core.List)
-          .map<Message>((value) =>
-              Message.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('snippet')) {
-      snippet = _json['snippet'] as core.String;
-    }
-  }
+  Thread.fromJson(core.Map _json)
+      : this(
+          historyId: _json.containsKey('historyId')
+              ? _json['historyId'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          messages: _json.containsKey('messages')
+              ? (_json['messages'] as core.List)
+                  .map<Message>((value) => Message.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          snippet: _json.containsKey('snippet')
+              ? _json['snippet'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (historyId != null) 'historyId': historyId!,
@@ -5275,34 +5448,44 @@ class VacationSettings {
   /// are specified, `startTime` must precede `endTime`.
   core.String? startTime;
 
-  VacationSettings();
+  VacationSettings({
+    this.enableAutoReply,
+    this.endTime,
+    this.responseBodyHtml,
+    this.responseBodyPlainText,
+    this.responseSubject,
+    this.restrictToContacts,
+    this.restrictToDomain,
+    this.startTime,
+  });
 
-  VacationSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('enableAutoReply')) {
-      enableAutoReply = _json['enableAutoReply'] as core.bool;
-    }
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('responseBodyHtml')) {
-      responseBodyHtml = _json['responseBodyHtml'] as core.String;
-    }
-    if (_json.containsKey('responseBodyPlainText')) {
-      responseBodyPlainText = _json['responseBodyPlainText'] as core.String;
-    }
-    if (_json.containsKey('responseSubject')) {
-      responseSubject = _json['responseSubject'] as core.String;
-    }
-    if (_json.containsKey('restrictToContacts')) {
-      restrictToContacts = _json['restrictToContacts'] as core.bool;
-    }
-    if (_json.containsKey('restrictToDomain')) {
-      restrictToDomain = _json['restrictToDomain'] as core.bool;
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-  }
+  VacationSettings.fromJson(core.Map _json)
+      : this(
+          enableAutoReply: _json.containsKey('enableAutoReply')
+              ? _json['enableAutoReply'] as core.bool
+              : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          responseBodyHtml: _json.containsKey('responseBodyHtml')
+              ? _json['responseBodyHtml'] as core.String
+              : null,
+          responseBodyPlainText: _json.containsKey('responseBodyPlainText')
+              ? _json['responseBodyPlainText'] as core.String
+              : null,
+          responseSubject: _json.containsKey('responseSubject')
+              ? _json['responseSubject'] as core.String
+              : null,
+          restrictToContacts: _json.containsKey('restrictToContacts')
+              ? _json['restrictToContacts'] as core.bool
+              : null,
+          restrictToDomain: _json.containsKey('restrictToDomain')
+              ? _json['restrictToDomain'] as core.bool
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enableAutoReply != null) 'enableAutoReply': enableAutoReply!,
@@ -5346,21 +5529,26 @@ class WatchRequest {
   /// executing this watch request).
   core.String? topicName;
 
-  WatchRequest();
+  WatchRequest({
+    this.labelFilterAction,
+    this.labelIds,
+    this.topicName,
+  });
 
-  WatchRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('labelFilterAction')) {
-      labelFilterAction = _json['labelFilterAction'] as core.String;
-    }
-    if (_json.containsKey('labelIds')) {
-      labelIds = (_json['labelIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('topicName')) {
-      topicName = _json['topicName'] as core.String;
-    }
-  }
+  WatchRequest.fromJson(core.Map _json)
+      : this(
+          labelFilterAction: _json.containsKey('labelFilterAction')
+              ? _json['labelFilterAction'] as core.String
+              : null,
+          labelIds: _json.containsKey('labelIds')
+              ? (_json['labelIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          topicName: _json.containsKey('topicName')
+              ? _json['topicName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (labelFilterAction != null) 'labelFilterAction': labelFilterAction!,
@@ -5380,16 +5568,20 @@ class WatchResponse {
   /// The ID of the mailbox's current history record.
   core.String? historyId;
 
-  WatchResponse();
+  WatchResponse({
+    this.expiration,
+    this.historyId,
+  });
 
-  WatchResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('expiration')) {
-      expiration = _json['expiration'] as core.String;
-    }
-    if (_json.containsKey('historyId')) {
-      historyId = _json['historyId'] as core.String;
-    }
-  }
+  WatchResponse.fromJson(core.Map _json)
+      : this(
+          expiration: _json.containsKey('expiration')
+              ? _json['expiration'] as core.String
+              : null,
+          historyId: _json.containsKey('historyId')
+              ? _json['historyId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (expiration != null) 'expiration': expiration!,

@@ -837,20 +837,20 @@ class ObjectType extends ComplexDartSchemaType {
     if (properties.isEmpty) {
       fromJsonString.writeln(';');
     } else {
-      fromJsonString.write('{');
+      fromJsonString.write(' : this(');
       for (var property in properties) {
         // The super variant fromJson() will call this subclass constructor
         // and the variant descriminator is final.
         if (!isVariantDiscriminator(property)) {
           final decodeString = property.type!
               .jsonDecode("_json['${escapeString(property.jsonName)}']");
-          fromJsonString.writeln('    if (_json.containsKey'
-              "('${escapeString(property.jsonName)}')) {");
-          fromJsonString.writeln('      ${property.name} = $decodeString;');
-          fromJsonString.writeln('    }');
+          fromJsonString.writeln(
+            '${property.name}: _json.containsKey'
+            "('${escapeString(property.jsonName)}') ? $decodeString : null,",
+          );
         }
       }
-      fromJsonString.writeln('  }');
+      fromJsonString.writeln(');');
     }
 
     final toJsonString = StringBuffer();
@@ -863,10 +863,17 @@ class ObjectType extends ComplexDartSchemaType {
     }
     toJsonString.write('};');
 
+    var positionalConstructorParams =
+        properties.map((e) => 'this.${e.name},').join(' ');
+
+    if (positionalConstructorParams.isNotEmpty) {
+      positionalConstructorParams = '{$positionalConstructorParams}';
+    }
+
     return '''
 ${comment.asDartDoc(0)}class $className $superClassString{
 $propertyString
-  $className();
+  $className($positionalConstructorParams);
 
 $fromJsonString
 $toJsonString

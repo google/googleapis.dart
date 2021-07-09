@@ -367,38 +367,44 @@ class GoogleCloudBillingBudgetsV1Budget {
   /// Optional.
   core.List<GoogleCloudBillingBudgetsV1ThresholdRule>? thresholdRules;
 
-  GoogleCloudBillingBudgetsV1Budget();
+  GoogleCloudBillingBudgetsV1Budget({
+    this.amount,
+    this.budgetFilter,
+    this.displayName,
+    this.etag,
+    this.name,
+    this.notificationsRule,
+    this.thresholdRules,
+  });
 
-  GoogleCloudBillingBudgetsV1Budget.fromJson(core.Map _json) {
-    if (_json.containsKey('amount')) {
-      amount = GoogleCloudBillingBudgetsV1BudgetAmount.fromJson(
-          _json['amount'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('budgetFilter')) {
-      budgetFilter = GoogleCloudBillingBudgetsV1Filter.fromJson(
-          _json['budgetFilter'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('notificationsRule')) {
-      notificationsRule = GoogleCloudBillingBudgetsV1NotificationsRule.fromJson(
-          _json['notificationsRule'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('thresholdRules')) {
-      thresholdRules = (_json['thresholdRules'] as core.List)
-          .map<GoogleCloudBillingBudgetsV1ThresholdRule>((value) =>
-              GoogleCloudBillingBudgetsV1ThresholdRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleCloudBillingBudgetsV1Budget.fromJson(core.Map _json)
+      : this(
+          amount: _json.containsKey('amount')
+              ? GoogleCloudBillingBudgetsV1BudgetAmount.fromJson(
+                  _json['amount'] as core.Map<core.String, core.dynamic>)
+              : null,
+          budgetFilter: _json.containsKey('budgetFilter')
+              ? GoogleCloudBillingBudgetsV1Filter.fromJson(
+                  _json['budgetFilter'] as core.Map<core.String, core.dynamic>)
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          notificationsRule: _json.containsKey('notificationsRule')
+              ? GoogleCloudBillingBudgetsV1NotificationsRule.fromJson(
+                  _json['notificationsRule']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          thresholdRules: _json.containsKey('thresholdRules')
+              ? (_json['thresholdRules'] as core.List)
+                  .map<GoogleCloudBillingBudgetsV1ThresholdRule>((value) =>
+                      GoogleCloudBillingBudgetsV1ThresholdRule.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (amount != null) 'amount': amount!.toJson(),
@@ -431,18 +437,23 @@ class GoogleCloudBillingBudgetsV1BudgetAmount {
   /// `currency_code` is provided on output.
   GoogleTypeMoney? specifiedAmount;
 
-  GoogleCloudBillingBudgetsV1BudgetAmount();
+  GoogleCloudBillingBudgetsV1BudgetAmount({
+    this.lastPeriodAmount,
+    this.specifiedAmount,
+  });
 
-  GoogleCloudBillingBudgetsV1BudgetAmount.fromJson(core.Map _json) {
-    if (_json.containsKey('lastPeriodAmount')) {
-      lastPeriodAmount = GoogleCloudBillingBudgetsV1LastPeriodAmount.fromJson(
-          _json['lastPeriodAmount'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('specifiedAmount')) {
-      specifiedAmount = GoogleTypeMoney.fromJson(
-          _json['specifiedAmount'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudBillingBudgetsV1BudgetAmount.fromJson(core.Map _json)
+      : this(
+          lastPeriodAmount: _json.containsKey('lastPeriodAmount')
+              ? GoogleCloudBillingBudgetsV1LastPeriodAmount.fromJson(
+                  _json['lastPeriodAmount']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          specifiedAmount: _json.containsKey('specifiedAmount')
+              ? GoogleTypeMoney.fromJson(_json['specifiedAmount']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (lastPeriodAmount != null)
@@ -467,18 +478,22 @@ class GoogleCloudBillingBudgetsV1CustomPeriod {
   /// Required.
   GoogleTypeDate? startDate;
 
-  GoogleCloudBillingBudgetsV1CustomPeriod();
+  GoogleCloudBillingBudgetsV1CustomPeriod({
+    this.endDate,
+    this.startDate,
+  });
 
-  GoogleCloudBillingBudgetsV1CustomPeriod.fromJson(core.Map _json) {
-    if (_json.containsKey('endDate')) {
-      endDate = GoogleTypeDate.fromJson(
-          _json['endDate'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('startDate')) {
-      startDate = GoogleTypeDate.fromJson(
-          _json['startDate'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GoogleCloudBillingBudgetsV1CustomPeriod.fromJson(core.Map _json)
+      : this(
+          endDate: _json.containsKey('endDate')
+              ? GoogleTypeDate.fromJson(
+                  _json['endDate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          startDate: _json.containsKey('startDate')
+              ? GoogleTypeDate.fromJson(
+                  _json['startDate'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endDate != null) 'endDate': endDate!.toJson(),
@@ -583,50 +598,60 @@ class GoogleCloudBillingBudgetsV1Filter {
   /// Optional.
   core.List<core.String>? subaccounts;
 
-  GoogleCloudBillingBudgetsV1Filter();
+  GoogleCloudBillingBudgetsV1Filter({
+    this.calendarPeriod,
+    this.creditTypes,
+    this.creditTypesTreatment,
+    this.customPeriod,
+    this.labels,
+    this.projects,
+    this.services,
+    this.subaccounts,
+  });
 
-  GoogleCloudBillingBudgetsV1Filter.fromJson(core.Map _json) {
-    if (_json.containsKey('calendarPeriod')) {
-      calendarPeriod = _json['calendarPeriod'] as core.String;
-    }
-    if (_json.containsKey('creditTypes')) {
-      creditTypes = (_json['creditTypes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('creditTypesTreatment')) {
-      creditTypesTreatment = _json['creditTypesTreatment'] as core.String;
-    }
-    if (_json.containsKey('customPeriod')) {
-      customPeriod = GoogleCloudBillingBudgetsV1CustomPeriod.fromJson(
-          _json['customPeriod'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          (item as core.List)
-              .map<core.Object>((value) => value as core.Object)
-              .toList(),
-        ),
-      );
-    }
-    if (_json.containsKey('projects')) {
-      projects = (_json['projects'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('services')) {
-      services = (_json['services'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('subaccounts')) {
-      subaccounts = (_json['subaccounts'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  GoogleCloudBillingBudgetsV1Filter.fromJson(core.Map _json)
+      : this(
+          calendarPeriod: _json.containsKey('calendarPeriod')
+              ? _json['calendarPeriod'] as core.String
+              : null,
+          creditTypes: _json.containsKey('creditTypes')
+              ? (_json['creditTypes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          creditTypesTreatment: _json.containsKey('creditTypesTreatment')
+              ? _json['creditTypesTreatment'] as core.String
+              : null,
+          customPeriod: _json.containsKey('customPeriod')
+              ? GoogleCloudBillingBudgetsV1CustomPeriod.fromJson(
+                  _json['customPeriod'] as core.Map<core.String, core.dynamic>)
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    (item as core.List)
+                        .map<core.Object>((value) => value as core.Object)
+                        .toList(),
+                  ),
+                )
+              : null,
+          projects: _json.containsKey('projects')
+              ? (_json['projects'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          services: _json.containsKey('services')
+              ? (_json['services'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          subaccounts: _json.containsKey('subaccounts')
+              ? (_json['subaccounts'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (calendarPeriod != null) 'calendarPeriod': calendarPeriod!,
@@ -667,20 +692,24 @@ class GoogleCloudBillingBudgetsV1ListBudgetsResponse {
   /// request; this value should be passed in a new `ListBudgetsRequest`.
   core.String? nextPageToken;
 
-  GoogleCloudBillingBudgetsV1ListBudgetsResponse();
+  GoogleCloudBillingBudgetsV1ListBudgetsResponse({
+    this.budgets,
+    this.nextPageToken,
+  });
 
-  GoogleCloudBillingBudgetsV1ListBudgetsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('budgets')) {
-      budgets = (_json['budgets'] as core.List)
-          .map<GoogleCloudBillingBudgetsV1Budget>((value) =>
-              GoogleCloudBillingBudgetsV1Budget.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  GoogleCloudBillingBudgetsV1ListBudgetsResponse.fromJson(core.Map _json)
+      : this(
+          budgets: _json.containsKey('budgets')
+              ? (_json['budgets'] as core.List)
+                  .map<GoogleCloudBillingBudgetsV1Budget>((value) =>
+                      GoogleCloudBillingBudgetsV1Budget.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (budgets != null)
@@ -739,26 +768,32 @@ class GoogleCloudBillingBudgetsV1NotificationsRule {
   /// Optional.
   core.String? schemaVersion;
 
-  GoogleCloudBillingBudgetsV1NotificationsRule();
+  GoogleCloudBillingBudgetsV1NotificationsRule({
+    this.disableDefaultIamRecipients,
+    this.monitoringNotificationChannels,
+    this.pubsubTopic,
+    this.schemaVersion,
+  });
 
-  GoogleCloudBillingBudgetsV1NotificationsRule.fromJson(core.Map _json) {
-    if (_json.containsKey('disableDefaultIamRecipients')) {
-      disableDefaultIamRecipients =
-          _json['disableDefaultIamRecipients'] as core.bool;
-    }
-    if (_json.containsKey('monitoringNotificationChannels')) {
-      monitoringNotificationChannels =
-          (_json['monitoringNotificationChannels'] as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList();
-    }
-    if (_json.containsKey('pubsubTopic')) {
-      pubsubTopic = _json['pubsubTopic'] as core.String;
-    }
-    if (_json.containsKey('schemaVersion')) {
-      schemaVersion = _json['schemaVersion'] as core.String;
-    }
-  }
+  GoogleCloudBillingBudgetsV1NotificationsRule.fromJson(core.Map _json)
+      : this(
+          disableDefaultIamRecipients:
+              _json.containsKey('disableDefaultIamRecipients')
+                  ? _json['disableDefaultIamRecipients'] as core.bool
+                  : null,
+          monitoringNotificationChannels:
+              _json.containsKey('monitoringNotificationChannels')
+                  ? (_json['monitoringNotificationChannels'] as core.List)
+                      .map<core.String>((value) => value as core.String)
+                      .toList()
+                  : null,
+          pubsubTopic: _json.containsKey('pubsubTopic')
+              ? _json['pubsubTopic'] as core.String
+              : null,
+          schemaVersion: _json.containsKey('schemaVersion')
+              ? _json['schemaVersion'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disableDefaultIamRecipients != null)
@@ -808,16 +843,20 @@ class GoogleCloudBillingBudgetsV1ThresholdRule {
   /// Required.
   core.double? thresholdPercent;
 
-  GoogleCloudBillingBudgetsV1ThresholdRule();
+  GoogleCloudBillingBudgetsV1ThresholdRule({
+    this.spendBasis,
+    this.thresholdPercent,
+  });
 
-  GoogleCloudBillingBudgetsV1ThresholdRule.fromJson(core.Map _json) {
-    if (_json.containsKey('spendBasis')) {
-      spendBasis = _json['spendBasis'] as core.String;
-    }
-    if (_json.containsKey('thresholdPercent')) {
-      thresholdPercent = (_json['thresholdPercent'] as core.num).toDouble();
-    }
-  }
+  GoogleCloudBillingBudgetsV1ThresholdRule.fromJson(core.Map _json)
+      : this(
+          spendBasis: _json.containsKey('spendBasis')
+              ? _json['spendBasis'] as core.String
+              : null,
+          thresholdPercent: _json.containsKey('thresholdPercent')
+              ? (_json['thresholdPercent'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (spendBasis != null) 'spendBasis': spendBasis!,
@@ -868,19 +907,18 @@ class GoogleTypeDate {
   /// Must be from 1 to 9999, or 0 to specify a date without a year.
   core.int? year;
 
-  GoogleTypeDate();
+  GoogleTypeDate({
+    this.day,
+    this.month,
+    this.year,
+  });
 
-  GoogleTypeDate.fromJson(core.Map _json) {
-    if (_json.containsKey('day')) {
-      day = _json['day'] as core.int;
-    }
-    if (_json.containsKey('month')) {
-      month = _json['month'] as core.int;
-    }
-    if (_json.containsKey('year')) {
-      year = _json['year'] as core.int;
-    }
-  }
+  GoogleTypeDate.fromJson(core.Map _json)
+      : this(
+          day: _json.containsKey('day') ? _json['day'] as core.int : null,
+          month: _json.containsKey('month') ? _json['month'] as core.int : null,
+          year: _json.containsKey('year') ? _json['year'] as core.int : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (day != null) 'day': day!,
@@ -908,19 +946,21 @@ class GoogleTypeMoney {
   /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
   core.String? units;
 
-  GoogleTypeMoney();
+  GoogleTypeMoney({
+    this.currencyCode,
+    this.nanos,
+    this.units,
+  });
 
-  GoogleTypeMoney.fromJson(core.Map _json) {
-    if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'] as core.String;
-    }
-    if (_json.containsKey('nanos')) {
-      nanos = _json['nanos'] as core.int;
-    }
-    if (_json.containsKey('units')) {
-      units = _json['units'] as core.String;
-    }
-  }
+  GoogleTypeMoney.fromJson(core.Map _json)
+      : this(
+          currencyCode: _json.containsKey('currencyCode')
+              ? _json['currencyCode'] as core.String
+              : null,
+          nanos: _json.containsKey('nanos') ? _json['nanos'] as core.int : null,
+          units:
+              _json.containsKey('units') ? _json['units'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (currencyCode != null) 'currencyCode': currencyCode!,

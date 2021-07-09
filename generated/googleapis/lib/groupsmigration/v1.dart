@@ -123,16 +123,18 @@ class Groups {
   /// The status of the insert request.
   core.String? responseCode;
 
-  Groups();
+  Groups({
+    this.kind,
+    this.responseCode,
+  });
 
-  Groups.fromJson(core.Map _json) {
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('responseCode')) {
-      responseCode = _json['responseCode'] as core.String;
-    }
-  }
+  Groups.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          responseCode: _json.containsKey('responseCode')
+              ? _json['responseCode'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,

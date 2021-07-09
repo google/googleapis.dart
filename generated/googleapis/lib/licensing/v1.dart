@@ -508,34 +508,40 @@ class LicenseAssignment {
   /// status changes.
   core.String? userId;
 
-  LicenseAssignment();
+  LicenseAssignment({
+    this.etags,
+    this.kind,
+    this.productId,
+    this.productName,
+    this.selfLink,
+    this.skuId,
+    this.skuName,
+    this.userId,
+  });
 
-  LicenseAssignment.fromJson(core.Map _json) {
-    if (_json.containsKey('etags')) {
-      etags = _json['etags'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('productId')) {
-      productId = _json['productId'] as core.String;
-    }
-    if (_json.containsKey('productName')) {
-      productName = _json['productName'] as core.String;
-    }
-    if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'] as core.String;
-    }
-    if (_json.containsKey('skuId')) {
-      skuId = _json['skuId'] as core.String;
-    }
-    if (_json.containsKey('skuName')) {
-      skuName = _json['skuName'] as core.String;
-    }
-    if (_json.containsKey('userId')) {
-      userId = _json['userId'] as core.String;
-    }
-  }
+  LicenseAssignment.fromJson(core.Map _json)
+      : this(
+          etags:
+              _json.containsKey('etags') ? _json['etags'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          productId: _json.containsKey('productId')
+              ? _json['productId'] as core.String
+              : null,
+          productName: _json.containsKey('productName')
+              ? _json['productName'] as core.String
+              : null,
+          selfLink: _json.containsKey('selfLink')
+              ? _json['selfLink'] as core.String
+              : null,
+          skuId:
+              _json.containsKey('skuId') ? _json['skuId'] as core.String : null,
+          skuName: _json.containsKey('skuName')
+              ? _json['skuName'] as core.String
+              : null,
+          userId: _json.containsKey('userId')
+              ? _json['userId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etags != null) 'etags': etags!,
@@ -554,13 +560,16 @@ class LicenseAssignmentInsert {
   /// Email id of the user
   core.String? userId;
 
-  LicenseAssignmentInsert();
+  LicenseAssignmentInsert({
+    this.userId,
+  });
 
-  LicenseAssignmentInsert.fromJson(core.Map _json) {
-    if (_json.containsKey('userId')) {
-      userId = _json['userId'] as core.String;
-    }
-  }
+  LicenseAssignmentInsert.fromJson(core.Map _json)
+      : this(
+          userId: _json.containsKey('userId')
+              ? _json['userId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (userId != null) 'userId': userId!,
@@ -584,25 +593,27 @@ class LicenseAssignmentList {
   /// `maxResults` determines how many entries are returned on each next page.
   core.String? nextPageToken;
 
-  LicenseAssignmentList();
+  LicenseAssignmentList({
+    this.etag,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+  });
 
-  LicenseAssignmentList.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<LicenseAssignment>((value) => LicenseAssignment.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  LicenseAssignmentList.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map<LicenseAssignment>((value) => LicenseAssignment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,

@@ -9651,25 +9651,32 @@ class ActiveViewVideoViewabilityMetricConfig {
   /// - "VIDEO_VOLUME_PERCENT_10" : 10% volume.
   core.String? minimumVolume;
 
-  ActiveViewVideoViewabilityMetricConfig();
+  ActiveViewVideoViewabilityMetricConfig({
+    this.displayName,
+    this.minimumDuration,
+    this.minimumQuartile,
+    this.minimumViewability,
+    this.minimumVolume,
+  });
 
-  ActiveViewVideoViewabilityMetricConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('minimumDuration')) {
-      minimumDuration = _json['minimumDuration'] as core.String;
-    }
-    if (_json.containsKey('minimumQuartile')) {
-      minimumQuartile = _json['minimumQuartile'] as core.String;
-    }
-    if (_json.containsKey('minimumViewability')) {
-      minimumViewability = _json['minimumViewability'] as core.String;
-    }
-    if (_json.containsKey('minimumVolume')) {
-      minimumVolume = _json['minimumVolume'] as core.String;
-    }
-  }
+  ActiveViewVideoViewabilityMetricConfig.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          minimumDuration: _json.containsKey('minimumDuration')
+              ? _json['minimumDuration'] as core.String
+              : null,
+          minimumQuartile: _json.containsKey('minimumQuartile')
+              ? _json['minimumQuartile'] as core.String
+              : null,
+          minimumViewability: _json.containsKey('minimumViewability')
+              ? _json['minimumViewability'] as core.String
+              : null,
+          minimumVolume: _json.containsKey('minimumVolume')
+              ? _json['minimumVolume'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -9686,16 +9693,19 @@ class Adloox {
   /// Adloox's brand safety settings.
   core.List<core.String>? excludedAdlooxCategories;
 
-  Adloox();
+  Adloox({
+    this.excludedAdlooxCategories,
+  });
 
-  Adloox.fromJson(core.Map _json) {
-    if (_json.containsKey('excludedAdlooxCategories')) {
-      excludedAdlooxCategories =
-          (_json['excludedAdlooxCategories'] as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList();
-    }
-  }
+  Adloox.fromJson(core.Map _json)
+      : this(
+          excludedAdlooxCategories:
+              _json.containsKey('excludedAdlooxCategories')
+                  ? (_json['excludedAdlooxCategories'] as core.List)
+                      .map<core.String>((value) => value as core.String)
+                      .toList()
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (excludedAdlooxCategories != null)
@@ -9796,55 +9806,68 @@ class Advertiser {
   /// Output only.
   core.String? updateTime;
 
-  Advertiser();
+  Advertiser({
+    this.adServerConfig,
+    this.advertiserId,
+    this.creativeConfig,
+    this.dataAccessConfig,
+    this.displayName,
+    this.entityStatus,
+    this.generalConfig,
+    this.integrationDetails,
+    this.name,
+    this.partnerId,
+    this.prismaEnabled,
+    this.servingConfig,
+    this.updateTime,
+  });
 
-  Advertiser.fromJson(core.Map _json) {
-    if (_json.containsKey('adServerConfig')) {
-      adServerConfig = AdvertiserAdServerConfig.fromJson(
-          _json['adServerConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('advertiserId')) {
-      advertiserId = _json['advertiserId'] as core.String;
-    }
-    if (_json.containsKey('creativeConfig')) {
-      creativeConfig = AdvertiserCreativeConfig.fromJson(
-          _json['creativeConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('dataAccessConfig')) {
-      dataAccessConfig = AdvertiserDataAccessConfig.fromJson(
-          _json['dataAccessConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('entityStatus')) {
-      entityStatus = _json['entityStatus'] as core.String;
-    }
-    if (_json.containsKey('generalConfig')) {
-      generalConfig = AdvertiserGeneralConfig.fromJson(
-          _json['generalConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('integrationDetails')) {
-      integrationDetails = IntegrationDetails.fromJson(
-          _json['integrationDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('partnerId')) {
-      partnerId = _json['partnerId'] as core.String;
-    }
-    if (_json.containsKey('prismaEnabled')) {
-      prismaEnabled = _json['prismaEnabled'] as core.bool;
-    }
-    if (_json.containsKey('servingConfig')) {
-      servingConfig = AdvertiserTargetingConfig.fromJson(
-          _json['servingConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  Advertiser.fromJson(core.Map _json)
+      : this(
+          adServerConfig: _json.containsKey('adServerConfig')
+              ? AdvertiserAdServerConfig.fromJson(_json['adServerConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          advertiserId: _json.containsKey('advertiserId')
+              ? _json['advertiserId'] as core.String
+              : null,
+          creativeConfig: _json.containsKey('creativeConfig')
+              ? AdvertiserCreativeConfig.fromJson(_json['creativeConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          dataAccessConfig: _json.containsKey('dataAccessConfig')
+              ? AdvertiserDataAccessConfig.fromJson(_json['dataAccessConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          entityStatus: _json.containsKey('entityStatus')
+              ? _json['entityStatus'] as core.String
+              : null,
+          generalConfig: _json.containsKey('generalConfig')
+              ? AdvertiserGeneralConfig.fromJson(
+                  _json['generalConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          integrationDetails: _json.containsKey('integrationDetails')
+              ? IntegrationDetails.fromJson(_json['integrationDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          partnerId: _json.containsKey('partnerId')
+              ? _json['partnerId'] as core.String
+              : null,
+          prismaEnabled: _json.containsKey('prismaEnabled')
+              ? _json['prismaEnabled'] as core.bool
+              : null,
+          servingConfig: _json.containsKey('servingConfig')
+              ? AdvertiserTargetingConfig.fromJson(
+                  _json['servingConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (adServerConfig != null) 'adServerConfig': adServerConfig!.toJson(),
@@ -9874,18 +9897,22 @@ class AdvertiserAdServerConfig {
   /// The configuration for advertisers that use third-party ad servers only.
   ThirdPartyOnlyConfig? thirdPartyOnlyConfig;
 
-  AdvertiserAdServerConfig();
+  AdvertiserAdServerConfig({
+    this.cmHybridConfig,
+    this.thirdPartyOnlyConfig,
+  });
 
-  AdvertiserAdServerConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('cmHybridConfig')) {
-      cmHybridConfig = CmHybridConfig.fromJson(
-          _json['cmHybridConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('thirdPartyOnlyConfig')) {
-      thirdPartyOnlyConfig = ThirdPartyOnlyConfig.fromJson(
-          _json['thirdPartyOnlyConfig'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  AdvertiserAdServerConfig.fromJson(core.Map _json)
+      : this(
+          cmHybridConfig: _json.containsKey('cmHybridConfig')
+              ? CmHybridConfig.fromJson(_json['cmHybridConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          thirdPartyOnlyConfig: _json.containsKey('thirdPartyOnlyConfig')
+              ? ThirdPartyOnlyConfig.fromJson(_json['thirdPartyOnlyConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cmHybridConfig != null) 'cmHybridConfig': cmHybridConfig!.toJson(),
@@ -9923,23 +9950,29 @@ class AdvertiserCreativeConfig {
   /// configuration.
   core.bool? videoCreativeDataSharingAuthorized;
 
-  AdvertiserCreativeConfig();
+  AdvertiserCreativeConfig({
+    this.dynamicCreativeEnabled,
+    this.iasClientId,
+    this.obaComplianceDisabled,
+    this.videoCreativeDataSharingAuthorized,
+  });
 
-  AdvertiserCreativeConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('dynamicCreativeEnabled')) {
-      dynamicCreativeEnabled = _json['dynamicCreativeEnabled'] as core.bool;
-    }
-    if (_json.containsKey('iasClientId')) {
-      iasClientId = _json['iasClientId'] as core.String;
-    }
-    if (_json.containsKey('obaComplianceDisabled')) {
-      obaComplianceDisabled = _json['obaComplianceDisabled'] as core.bool;
-    }
-    if (_json.containsKey('videoCreativeDataSharingAuthorized')) {
-      videoCreativeDataSharingAuthorized =
-          _json['videoCreativeDataSharingAuthorized'] as core.bool;
-    }
-  }
+  AdvertiserCreativeConfig.fromJson(core.Map _json)
+      : this(
+          dynamicCreativeEnabled: _json.containsKey('dynamicCreativeEnabled')
+              ? _json['dynamicCreativeEnabled'] as core.bool
+              : null,
+          iasClientId: _json.containsKey('iasClientId')
+              ? _json['iasClientId'] as core.String
+              : null,
+          obaComplianceDisabled: _json.containsKey('obaComplianceDisabled')
+              ? _json['obaComplianceDisabled'] as core.bool
+              : null,
+          videoCreativeDataSharingAuthorized:
+              _json.containsKey('videoCreativeDataSharingAuthorized')
+                  ? _json['videoCreativeDataSharingAuthorized'] as core.bool
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dynamicCreativeEnabled != null)
@@ -9960,14 +9993,17 @@ class AdvertiserDataAccessConfig {
   /// If not specified, the SDF settings of the parent partner are used.
   AdvertiserSdfConfig? sdfConfig;
 
-  AdvertiserDataAccessConfig();
+  AdvertiserDataAccessConfig({
+    this.sdfConfig,
+  });
 
-  AdvertiserDataAccessConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('sdfConfig')) {
-      sdfConfig = AdvertiserSdfConfig.fromJson(
-          _json['sdfConfig'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  AdvertiserDataAccessConfig.fromJson(core.Map _json)
+      : this(
+          sdfConfig: _json.containsKey('sdfConfig')
+              ? AdvertiserSdfConfig.fromJson(
+                  _json['sdfConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sdfConfig != null) 'sdfConfig': sdfConfig!.toJson(),
@@ -10016,19 +10052,24 @@ class AdvertiserGeneralConfig {
   /// Output only.
   core.String? timeZone;
 
-  AdvertiserGeneralConfig();
+  AdvertiserGeneralConfig({
+    this.currencyCode,
+    this.domainUrl,
+    this.timeZone,
+  });
 
-  AdvertiserGeneralConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'] as core.String;
-    }
-    if (_json.containsKey('domainUrl')) {
-      domainUrl = _json['domainUrl'] as core.String;
-    }
-    if (_json.containsKey('timeZone')) {
-      timeZone = _json['timeZone'] as core.String;
-    }
-  }
+  AdvertiserGeneralConfig.fromJson(core.Map _json)
+      : this(
+          currencyCode: _json.containsKey('currencyCode')
+              ? _json['currencyCode'] as core.String
+              : null,
+          domainUrl: _json.containsKey('domainUrl')
+              ? _json['domainUrl'] as core.String
+              : null,
+          timeZone: _json.containsKey('timeZone')
+              ? _json['timeZone'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (currencyCode != null) 'currencyCode': currencyCode!,
@@ -10053,17 +10094,22 @@ class AdvertiserSdfConfig {
   /// overridePartnerSdfConfig is `false`.
   SdfConfig? sdfConfig;
 
-  AdvertiserSdfConfig();
+  AdvertiserSdfConfig({
+    this.overridePartnerSdfConfig,
+    this.sdfConfig,
+  });
 
-  AdvertiserSdfConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('overridePartnerSdfConfig')) {
-      overridePartnerSdfConfig = _json['overridePartnerSdfConfig'] as core.bool;
-    }
-    if (_json.containsKey('sdfConfig')) {
-      sdfConfig = SdfConfig.fromJson(
-          _json['sdfConfig'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  AdvertiserSdfConfig.fromJson(core.Map _json)
+      : this(
+          overridePartnerSdfConfig:
+              _json.containsKey('overridePartnerSdfConfig')
+                  ? _json['overridePartnerSdfConfig'] as core.bool
+                  : null,
+          sdfConfig: _json.containsKey('sdfConfig')
+              ? SdfConfig.fromJson(
+                  _json['sdfConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (overridePartnerSdfConfig != null)
@@ -10078,14 +10124,17 @@ class AdvertiserTargetingConfig {
   /// for all video line items under the advertiser.
   core.bool? exemptTvFromViewabilityTargeting;
 
-  AdvertiserTargetingConfig();
+  AdvertiserTargetingConfig({
+    this.exemptTvFromViewabilityTargeting,
+  });
 
-  AdvertiserTargetingConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('exemptTvFromViewabilityTargeting')) {
-      exemptTvFromViewabilityTargeting =
-          _json['exemptTvFromViewabilityTargeting'] as core.bool;
-    }
-  }
+  AdvertiserTargetingConfig.fromJson(core.Map _json)
+      : this(
+          exemptTvFromViewabilityTargeting:
+              _json.containsKey('exemptTvFromViewabilityTargeting')
+                  ? _json['exemptTvFromViewabilityTargeting'] as core.bool
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exemptTvFromViewabilityTargeting != null)
@@ -10125,16 +10174,20 @@ class AgeRangeAssignedTargetingOptionDetails {
   /// Required.
   core.String? targetingOptionId;
 
-  AgeRangeAssignedTargetingOptionDetails();
+  AgeRangeAssignedTargetingOptionDetails({
+    this.ageRange,
+    this.targetingOptionId,
+  });
 
-  AgeRangeAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('ageRange')) {
-      ageRange = _json['ageRange'] as core.String;
-    }
-    if (_json.containsKey('targetingOptionId')) {
-      targetingOptionId = _json['targetingOptionId'] as core.String;
-    }
-  }
+  AgeRangeAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          ageRange: _json.containsKey('ageRange')
+              ? _json['ageRange'] as core.String
+              : null,
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ageRange != null) 'ageRange': ageRange!,
@@ -10163,13 +10216,16 @@ class AgeRangeTargetingOptionDetails {
   /// - "AGE_RANGE_UNKNOWN" : The age range of the audience is unknown.
   core.String? ageRange;
 
-  AgeRangeTargetingOptionDetails();
+  AgeRangeTargetingOptionDetails({
+    this.ageRange,
+  });
 
-  AgeRangeTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('ageRange')) {
-      ageRange = _json['ageRange'] as core.String;
-    }
-  }
+  AgeRangeTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          ageRange: _json.containsKey('ageRange')
+              ? _json['ageRange'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ageRange != null) 'ageRange': ageRange!,
@@ -10220,22 +10276,27 @@ class AppAssignedTargetingOptionDetails {
   /// Indicates if this option is being negatively targeted.
   core.bool? negative;
 
-  AppAssignedTargetingOptionDetails();
+  AppAssignedTargetingOptionDetails({
+    this.appId,
+    this.appPlatform,
+    this.displayName,
+    this.negative,
+  });
 
-  AppAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('appId')) {
-      appId = _json['appId'] as core.String;
-    }
-    if (_json.containsKey('appPlatform')) {
-      appPlatform = _json['appPlatform'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('negative')) {
-      negative = _json['negative'] as core.bool;
-    }
-  }
+  AppAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          appId:
+              _json.containsKey('appId') ? _json['appId'] as core.String : null,
+          appPlatform: _json.containsKey('appPlatform')
+              ? _json['appPlatform'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          negative: _json.containsKey('negative')
+              ? _json['negative'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appId != null) 'appId': appId!,
@@ -10265,19 +10326,24 @@ class AppCategoryAssignedTargetingOptionDetails {
   /// Required.
   core.String? targetingOptionId;
 
-  AppCategoryAssignedTargetingOptionDetails();
+  AppCategoryAssignedTargetingOptionDetails({
+    this.displayName,
+    this.negative,
+    this.targetingOptionId,
+  });
 
-  AppCategoryAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('negative')) {
-      negative = _json['negative'] as core.bool;
-    }
-    if (_json.containsKey('targetingOptionId')) {
-      targetingOptionId = _json['targetingOptionId'] as core.String;
-    }
-  }
+  AppCategoryAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          negative: _json.containsKey('negative')
+              ? _json['negative'] as core.bool
+              : null,
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -10298,13 +10364,16 @@ class AppCategoryTargetingOptionDetails {
   /// Output only.
   core.String? displayName;
 
-  AppCategoryTargetingOptionDetails();
+  AppCategoryTargetingOptionDetails({
+    this.displayName,
+  });
 
-  AppCategoryTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-  }
+  AppCategoryTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -10324,16 +10393,20 @@ class Asset {
   /// API calls, e.g. CreateCreative to associate the asset with a creative.
   core.String? mediaId;
 
-  Asset();
+  Asset({
+    this.content,
+    this.mediaId,
+  });
 
-  Asset.fromJson(core.Map _json) {
-    if (_json.containsKey('content')) {
-      content = _json['content'] as core.String;
-    }
-    if (_json.containsKey('mediaId')) {
-      mediaId = _json['mediaId'] as core.String;
-    }
-  }
+  Asset.fromJson(core.Map _json)
+      : this(
+          content: _json.containsKey('content')
+              ? _json['content'] as core.String
+              : null,
+          mediaId: _json.containsKey('mediaId')
+              ? _json['mediaId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
@@ -10435,17 +10508,19 @@ class AssetAssociation {
   /// `CREATIVE_TYPE_VIDEO`
   core.String? role;
 
-  AssetAssociation();
+  AssetAssociation({
+    this.asset,
+    this.role,
+  });
 
-  AssetAssociation.fromJson(core.Map _json) {
-    if (_json.containsKey('asset')) {
-      asset =
-          Asset.fromJson(_json['asset'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('role')) {
-      role = _json['role'] as core.String;
-    }
-  }
+  AssetAssociation.fromJson(core.Map _json)
+      : this(
+          asset: _json.containsKey('asset')
+              ? Asset.fromJson(
+                  _json['asset'] as core.Map<core.String, core.dynamic>)
+              : null,
+          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (asset != null) 'asset': asset!.toJson(),
@@ -10474,20 +10549,23 @@ class AssignedInventorySource {
   /// Output only.
   core.String? name;
 
-  AssignedInventorySource();
+  AssignedInventorySource({
+    this.assignedInventorySourceId,
+    this.inventorySourceId,
+    this.name,
+  });
 
-  AssignedInventorySource.fromJson(core.Map _json) {
-    if (_json.containsKey('assignedInventorySourceId')) {
-      assignedInventorySourceId =
-          _json['assignedInventorySourceId'] as core.String;
-    }
-    if (_json.containsKey('inventorySourceId')) {
-      inventorySourceId = _json['inventorySourceId'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  AssignedInventorySource.fromJson(core.Map _json)
+      : this(
+          assignedInventorySourceId:
+              _json.containsKey('assignedInventorySourceId')
+                  ? _json['assignedInventorySourceId'] as core.String
+                  : null,
+          inventorySourceId: _json.containsKey('inventorySourceId')
+              ? _json['inventorySourceId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedInventorySourceId != null)
@@ -10522,19 +10600,22 @@ class AssignedLocation {
   /// Required.
   core.String? targetingOptionId;
 
-  AssignedLocation();
+  AssignedLocation({
+    this.assignedLocationId,
+    this.name,
+    this.targetingOptionId,
+  });
 
-  AssignedLocation.fromJson(core.Map _json) {
-    if (_json.containsKey('assignedLocationId')) {
-      assignedLocationId = _json['assignedLocationId'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('targetingOptionId')) {
-      targetingOptionId = _json['targetingOptionId'] as core.String;
-    }
-  }
+  AssignedLocation.fromJson(core.Map _json)
+      : this(
+          assignedLocationId: _json.containsKey('assignedLocationId')
+              ? _json['assignedLocationId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedLocationId != null)
@@ -10915,217 +10996,264 @@ class AssignedTargetingOption {
   /// per resource.
   ViewabilityAssignedTargetingOptionDetails? viewabilityDetails;
 
-  AssignedTargetingOption();
+  AssignedTargetingOption({
+    this.ageRangeDetails,
+    this.appCategoryDetails,
+    this.appDetails,
+    this.assignedTargetingOptionId,
+    this.audienceGroupDetails,
+    this.authorizedSellerStatusDetails,
+    this.browserDetails,
+    this.carrierAndIspDetails,
+    this.categoryDetails,
+    this.channelDetails,
+    this.contentInstreamPositionDetails,
+    this.contentOutstreamPositionDetails,
+    this.dayAndTimeDetails,
+    this.deviceMakeModelDetails,
+    this.deviceTypeDetails,
+    this.digitalContentLabelExclusionDetails,
+    this.environmentDetails,
+    this.exchangeDetails,
+    this.genderDetails,
+    this.geoRegionDetails,
+    this.householdIncomeDetails,
+    this.inheritance,
+    this.inventorySourceDetails,
+    this.inventorySourceGroupDetails,
+    this.keywordDetails,
+    this.languageDetails,
+    this.name,
+    this.nativeContentPositionDetails,
+    this.negativeKeywordListDetails,
+    this.onScreenPositionDetails,
+    this.operatingSystemDetails,
+    this.parentalStatusDetails,
+    this.proximityLocationListDetails,
+    this.regionalLocationListDetails,
+    this.sensitiveCategoryExclusionDetails,
+    this.subExchangeDetails,
+    this.targetingType,
+    this.thirdPartyVerifierDetails,
+    this.urlDetails,
+    this.userRewardedContentDetails,
+    this.videoPlayerSizeDetails,
+    this.viewabilityDetails,
+  });
 
-  AssignedTargetingOption.fromJson(core.Map _json) {
-    if (_json.containsKey('ageRangeDetails')) {
-      ageRangeDetails = AgeRangeAssignedTargetingOptionDetails.fromJson(
-          _json['ageRangeDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('appCategoryDetails')) {
-      appCategoryDetails = AppCategoryAssignedTargetingOptionDetails.fromJson(
-          _json['appCategoryDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('appDetails')) {
-      appDetails = AppAssignedTargetingOptionDetails.fromJson(
-          _json['appDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('assignedTargetingOptionId')) {
-      assignedTargetingOptionId =
-          _json['assignedTargetingOptionId'] as core.String;
-    }
-    if (_json.containsKey('audienceGroupDetails')) {
-      audienceGroupDetails =
-          AudienceGroupAssignedTargetingOptionDetails.fromJson(
-              _json['audienceGroupDetails']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('authorizedSellerStatusDetails')) {
-      authorizedSellerStatusDetails =
-          AuthorizedSellerStatusAssignedTargetingOptionDetails.fromJson(
-              _json['authorizedSellerStatusDetails']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('browserDetails')) {
-      browserDetails = BrowserAssignedTargetingOptionDetails.fromJson(
-          _json['browserDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('carrierAndIspDetails')) {
-      carrierAndIspDetails =
-          CarrierAndIspAssignedTargetingOptionDetails.fromJson(
-              _json['carrierAndIspDetails']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('categoryDetails')) {
-      categoryDetails = CategoryAssignedTargetingOptionDetails.fromJson(
-          _json['categoryDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('channelDetails')) {
-      channelDetails = ChannelAssignedTargetingOptionDetails.fromJson(
-          _json['channelDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('contentInstreamPositionDetails')) {
-      contentInstreamPositionDetails =
-          ContentInstreamPositionAssignedTargetingOptionDetails.fromJson(
-              _json['contentInstreamPositionDetails']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('contentOutstreamPositionDetails')) {
-      contentOutstreamPositionDetails =
-          ContentOutstreamPositionAssignedTargetingOptionDetails.fromJson(
-              _json['contentOutstreamPositionDetails']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('dayAndTimeDetails')) {
-      dayAndTimeDetails = DayAndTimeAssignedTargetingOptionDetails.fromJson(
-          _json['dayAndTimeDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('deviceMakeModelDetails')) {
-      deviceMakeModelDetails =
-          DeviceMakeModelAssignedTargetingOptionDetails.fromJson(
-              _json['deviceMakeModelDetails']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('deviceTypeDetails')) {
-      deviceTypeDetails = DeviceTypeAssignedTargetingOptionDetails.fromJson(
-          _json['deviceTypeDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('digitalContentLabelExclusionDetails')) {
-      digitalContentLabelExclusionDetails =
-          DigitalContentLabelAssignedTargetingOptionDetails.fromJson(
-              _json['digitalContentLabelExclusionDetails']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('environmentDetails')) {
-      environmentDetails = EnvironmentAssignedTargetingOptionDetails.fromJson(
-          _json['environmentDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('exchangeDetails')) {
-      exchangeDetails = ExchangeAssignedTargetingOptionDetails.fromJson(
-          _json['exchangeDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('genderDetails')) {
-      genderDetails = GenderAssignedTargetingOptionDetails.fromJson(
-          _json['genderDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('geoRegionDetails')) {
-      geoRegionDetails = GeoRegionAssignedTargetingOptionDetails.fromJson(
-          _json['geoRegionDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('householdIncomeDetails')) {
-      householdIncomeDetails =
-          HouseholdIncomeAssignedTargetingOptionDetails.fromJson(
-              _json['householdIncomeDetails']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('inheritance')) {
-      inheritance = _json['inheritance'] as core.String;
-    }
-    if (_json.containsKey('inventorySourceDetails')) {
-      inventorySourceDetails =
-          InventorySourceAssignedTargetingOptionDetails.fromJson(
-              _json['inventorySourceDetails']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('inventorySourceGroupDetails')) {
-      inventorySourceGroupDetails =
-          InventorySourceGroupAssignedTargetingOptionDetails.fromJson(
-              _json['inventorySourceGroupDetails']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('keywordDetails')) {
-      keywordDetails = KeywordAssignedTargetingOptionDetails.fromJson(
-          _json['keywordDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('languageDetails')) {
-      languageDetails = LanguageAssignedTargetingOptionDetails.fromJson(
-          _json['languageDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('nativeContentPositionDetails')) {
-      nativeContentPositionDetails =
-          NativeContentPositionAssignedTargetingOptionDetails.fromJson(
-              _json['nativeContentPositionDetails']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('negativeKeywordListDetails')) {
-      negativeKeywordListDetails =
-          NegativeKeywordListAssignedTargetingOptionDetails.fromJson(
-              _json['negativeKeywordListDetails']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('onScreenPositionDetails')) {
-      onScreenPositionDetails =
-          OnScreenPositionAssignedTargetingOptionDetails.fromJson(
-              _json['onScreenPositionDetails']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('operatingSystemDetails')) {
-      operatingSystemDetails =
-          OperatingSystemAssignedTargetingOptionDetails.fromJson(
-              _json['operatingSystemDetails']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('parentalStatusDetails')) {
-      parentalStatusDetails =
-          ParentalStatusAssignedTargetingOptionDetails.fromJson(
-              _json['parentalStatusDetails']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('proximityLocationListDetails')) {
-      proximityLocationListDetails =
-          ProximityLocationListAssignedTargetingOptionDetails.fromJson(
-              _json['proximityLocationListDetails']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('regionalLocationListDetails')) {
-      regionalLocationListDetails =
-          RegionalLocationListAssignedTargetingOptionDetails.fromJson(
-              _json['regionalLocationListDetails']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('sensitiveCategoryExclusionDetails')) {
-      sensitiveCategoryExclusionDetails =
-          SensitiveCategoryAssignedTargetingOptionDetails.fromJson(
-              _json['sensitiveCategoryExclusionDetails']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('subExchangeDetails')) {
-      subExchangeDetails = SubExchangeAssignedTargetingOptionDetails.fromJson(
-          _json['subExchangeDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('targetingType')) {
-      targetingType = _json['targetingType'] as core.String;
-    }
-    if (_json.containsKey('thirdPartyVerifierDetails')) {
-      thirdPartyVerifierDetails =
-          ThirdPartyVerifierAssignedTargetingOptionDetails.fromJson(
-              _json['thirdPartyVerifierDetails']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('urlDetails')) {
-      urlDetails = UrlAssignedTargetingOptionDetails.fromJson(
-          _json['urlDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('userRewardedContentDetails')) {
-      userRewardedContentDetails =
-          UserRewardedContentAssignedTargetingOptionDetails.fromJson(
-              _json['userRewardedContentDetails']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('videoPlayerSizeDetails')) {
-      videoPlayerSizeDetails =
-          VideoPlayerSizeAssignedTargetingOptionDetails.fromJson(
-              _json['videoPlayerSizeDetails']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('viewabilityDetails')) {
-      viewabilityDetails = ViewabilityAssignedTargetingOptionDetails.fromJson(
-          _json['viewabilityDetails'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  AssignedTargetingOption.fromJson(core.Map _json)
+      : this(
+          ageRangeDetails: _json.containsKey('ageRangeDetails')
+              ? AgeRangeAssignedTargetingOptionDetails.fromJson(
+                  _json['ageRangeDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          appCategoryDetails: _json.containsKey('appCategoryDetails')
+              ? AppCategoryAssignedTargetingOptionDetails.fromJson(
+                  _json['appCategoryDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          appDetails: _json.containsKey('appDetails')
+              ? AppAssignedTargetingOptionDetails.fromJson(
+                  _json['appDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
+          assignedTargetingOptionId:
+              _json.containsKey('assignedTargetingOptionId')
+                  ? _json['assignedTargetingOptionId'] as core.String
+                  : null,
+          audienceGroupDetails: _json.containsKey('audienceGroupDetails')
+              ? AudienceGroupAssignedTargetingOptionDetails.fromJson(
+                  _json['audienceGroupDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          authorizedSellerStatusDetails: _json
+                  .containsKey('authorizedSellerStatusDetails')
+              ? AuthorizedSellerStatusAssignedTargetingOptionDetails.fromJson(
+                  _json['authorizedSellerStatusDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          browserDetails: _json.containsKey('browserDetails')
+              ? BrowserAssignedTargetingOptionDetails.fromJson(
+                  _json['browserDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          carrierAndIspDetails: _json.containsKey('carrierAndIspDetails')
+              ? CarrierAndIspAssignedTargetingOptionDetails.fromJson(
+                  _json['carrierAndIspDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          categoryDetails: _json.containsKey('categoryDetails')
+              ? CategoryAssignedTargetingOptionDetails.fromJson(
+                  _json['categoryDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          channelDetails: _json.containsKey('channelDetails')
+              ? ChannelAssignedTargetingOptionDetails.fromJson(
+                  _json['channelDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          contentInstreamPositionDetails: _json
+                  .containsKey('contentInstreamPositionDetails')
+              ? ContentInstreamPositionAssignedTargetingOptionDetails.fromJson(
+                  _json['contentInstreamPositionDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          contentOutstreamPositionDetails: _json
+                  .containsKey('contentOutstreamPositionDetails')
+              ? ContentOutstreamPositionAssignedTargetingOptionDetails.fromJson(
+                  _json['contentOutstreamPositionDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          dayAndTimeDetails: _json.containsKey('dayAndTimeDetails')
+              ? DayAndTimeAssignedTargetingOptionDetails.fromJson(
+                  _json['dayAndTimeDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          deviceMakeModelDetails: _json.containsKey('deviceMakeModelDetails')
+              ? DeviceMakeModelAssignedTargetingOptionDetails.fromJson(
+                  _json['deviceMakeModelDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          deviceTypeDetails: _json.containsKey('deviceTypeDetails')
+              ? DeviceTypeAssignedTargetingOptionDetails.fromJson(
+                  _json['deviceTypeDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          digitalContentLabelExclusionDetails:
+              _json.containsKey('digitalContentLabelExclusionDetails')
+                  ? DigitalContentLabelAssignedTargetingOptionDetails.fromJson(
+                      _json['digitalContentLabelExclusionDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          environmentDetails: _json.containsKey('environmentDetails')
+              ? EnvironmentAssignedTargetingOptionDetails.fromJson(
+                  _json['environmentDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          exchangeDetails: _json.containsKey('exchangeDetails')
+              ? ExchangeAssignedTargetingOptionDetails.fromJson(
+                  _json['exchangeDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          genderDetails: _json.containsKey('genderDetails')
+              ? GenderAssignedTargetingOptionDetails.fromJson(
+                  _json['genderDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
+          geoRegionDetails: _json.containsKey('geoRegionDetails')
+              ? GeoRegionAssignedTargetingOptionDetails.fromJson(
+                  _json['geoRegionDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          householdIncomeDetails: _json.containsKey('householdIncomeDetails')
+              ? HouseholdIncomeAssignedTargetingOptionDetails.fromJson(
+                  _json['householdIncomeDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          inheritance: _json.containsKey('inheritance')
+              ? _json['inheritance'] as core.String
+              : null,
+          inventorySourceDetails: _json.containsKey('inventorySourceDetails')
+              ? InventorySourceAssignedTargetingOptionDetails.fromJson(
+                  _json['inventorySourceDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          inventorySourceGroupDetails:
+              _json.containsKey('inventorySourceGroupDetails')
+                  ? InventorySourceGroupAssignedTargetingOptionDetails.fromJson(
+                      _json['inventorySourceGroupDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          keywordDetails: _json.containsKey('keywordDetails')
+              ? KeywordAssignedTargetingOptionDetails.fromJson(
+                  _json['keywordDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          languageDetails: _json.containsKey('languageDetails')
+              ? LanguageAssignedTargetingOptionDetails.fromJson(
+                  _json['languageDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          nativeContentPositionDetails: _json
+                  .containsKey('nativeContentPositionDetails')
+              ? NativeContentPositionAssignedTargetingOptionDetails.fromJson(
+                  _json['nativeContentPositionDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          negativeKeywordListDetails:
+              _json.containsKey('negativeKeywordListDetails')
+                  ? NegativeKeywordListAssignedTargetingOptionDetails.fromJson(
+                      _json['negativeKeywordListDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          onScreenPositionDetails: _json.containsKey('onScreenPositionDetails')
+              ? OnScreenPositionAssignedTargetingOptionDetails.fromJson(
+                  _json['onScreenPositionDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          operatingSystemDetails: _json.containsKey('operatingSystemDetails')
+              ? OperatingSystemAssignedTargetingOptionDetails.fromJson(
+                  _json['operatingSystemDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          parentalStatusDetails: _json.containsKey('parentalStatusDetails')
+              ? ParentalStatusAssignedTargetingOptionDetails.fromJson(
+                  _json['parentalStatusDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          proximityLocationListDetails: _json
+                  .containsKey('proximityLocationListDetails')
+              ? ProximityLocationListAssignedTargetingOptionDetails.fromJson(
+                  _json['proximityLocationListDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          regionalLocationListDetails:
+              _json.containsKey('regionalLocationListDetails')
+                  ? RegionalLocationListAssignedTargetingOptionDetails.fromJson(
+                      _json['regionalLocationListDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          sensitiveCategoryExclusionDetails:
+              _json.containsKey('sensitiveCategoryExclusionDetails')
+                  ? SensitiveCategoryAssignedTargetingOptionDetails.fromJson(
+                      _json['sensitiveCategoryExclusionDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          subExchangeDetails: _json.containsKey('subExchangeDetails')
+              ? SubExchangeAssignedTargetingOptionDetails.fromJson(
+                  _json['subExchangeDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          targetingType: _json.containsKey('targetingType')
+              ? _json['targetingType'] as core.String
+              : null,
+          thirdPartyVerifierDetails:
+              _json.containsKey('thirdPartyVerifierDetails')
+                  ? ThirdPartyVerifierAssignedTargetingOptionDetails.fromJson(
+                      _json['thirdPartyVerifierDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          urlDetails: _json.containsKey('urlDetails')
+              ? UrlAssignedTargetingOptionDetails.fromJson(
+                  _json['urlDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
+          userRewardedContentDetails:
+              _json.containsKey('userRewardedContentDetails')
+                  ? UserRewardedContentAssignedTargetingOptionDetails.fromJson(
+                      _json['userRewardedContentDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          videoPlayerSizeDetails: _json.containsKey('videoPlayerSizeDetails')
+              ? VideoPlayerSizeAssignedTargetingOptionDetails.fromJson(
+                  _json['videoPlayerSizeDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          viewabilityDetails: _json.containsKey('viewabilityDetails')
+              ? ViewabilityAssignedTargetingOptionDetails.fromJson(
+                  _json['viewabilityDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ageRangeDetails != null)
@@ -11272,22 +11400,28 @@ class AssignedUserRole {
   /// they can add other creative admins or creative users to the entity.
   core.String? userRole;
 
-  AssignedUserRole();
+  AssignedUserRole({
+    this.advertiserId,
+    this.assignedUserRoleId,
+    this.partnerId,
+    this.userRole,
+  });
 
-  AssignedUserRole.fromJson(core.Map _json) {
-    if (_json.containsKey('advertiserId')) {
-      advertiserId = _json['advertiserId'] as core.String;
-    }
-    if (_json.containsKey('assignedUserRoleId')) {
-      assignedUserRoleId = _json['assignedUserRoleId'] as core.String;
-    }
-    if (_json.containsKey('partnerId')) {
-      partnerId = _json['partnerId'] as core.String;
-    }
-    if (_json.containsKey('userRole')) {
-      userRole = _json['userRole'] as core.String;
-    }
-  }
+  AssignedUserRole.fromJson(core.Map _json)
+      : this(
+          advertiserId: _json.containsKey('advertiserId')
+              ? _json['advertiserId'] as core.String
+              : null,
+          assignedUserRoleId: _json.containsKey('assignedUserRoleId')
+              ? _json['assignedUserRoleId'] as core.String
+              : null,
+          partnerId: _json.containsKey('partnerId')
+              ? _json['partnerId'] as core.String
+              : null,
+          userRole: _json.containsKey('userRole')
+              ? _json['userRole'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advertiserId != null) 'advertiserId': advertiserId!,
@@ -11346,44 +11480,54 @@ class AudienceGroupAssignedTargetingOptionDetails {
   /// Contains Google audience ids only.
   GoogleAudienceGroup? includedGoogleAudienceGroup;
 
-  AudienceGroupAssignedTargetingOptionDetails();
+  AudienceGroupAssignedTargetingOptionDetails({
+    this.excludedFirstAndThirdPartyAudienceGroup,
+    this.excludedGoogleAudienceGroup,
+    this.includedCombinedAudienceGroup,
+    this.includedCustomListGroup,
+    this.includedFirstAndThirdPartyAudienceGroups,
+    this.includedGoogleAudienceGroup,
+  });
 
-  AudienceGroupAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('excludedFirstAndThirdPartyAudienceGroup')) {
-      excludedFirstAndThirdPartyAudienceGroup =
-          FirstAndThirdPartyAudienceGroup.fromJson(
-              _json['excludedFirstAndThirdPartyAudienceGroup']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('excludedGoogleAudienceGroup')) {
-      excludedGoogleAudienceGroup = GoogleAudienceGroup.fromJson(
-          _json['excludedGoogleAudienceGroup']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('includedCombinedAudienceGroup')) {
-      includedCombinedAudienceGroup = CombinedAudienceGroup.fromJson(
-          _json['includedCombinedAudienceGroup']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('includedCustomListGroup')) {
-      includedCustomListGroup = CustomListGroup.fromJson(
-          _json['includedCustomListGroup']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('includedFirstAndThirdPartyAudienceGroups')) {
-      includedFirstAndThirdPartyAudienceGroups =
-          (_json['includedFirstAndThirdPartyAudienceGroups'] as core.List)
-              .map<FirstAndThirdPartyAudienceGroup>((value) =>
-                  FirstAndThirdPartyAudienceGroup.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList();
-    }
-    if (_json.containsKey('includedGoogleAudienceGroup')) {
-      includedGoogleAudienceGroup = GoogleAudienceGroup.fromJson(
-          _json['includedGoogleAudienceGroup']
-              as core.Map<core.String, core.dynamic>);
-    }
-  }
+  AudienceGroupAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          excludedFirstAndThirdPartyAudienceGroup:
+              _json.containsKey('excludedFirstAndThirdPartyAudienceGroup')
+                  ? FirstAndThirdPartyAudienceGroup.fromJson(
+                      _json['excludedFirstAndThirdPartyAudienceGroup']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          excludedGoogleAudienceGroup:
+              _json.containsKey('excludedGoogleAudienceGroup')
+                  ? GoogleAudienceGroup.fromJson(
+                      _json['excludedGoogleAudienceGroup']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          includedCombinedAudienceGroup:
+              _json.containsKey('includedCombinedAudienceGroup')
+                  ? CombinedAudienceGroup.fromJson(
+                      _json['includedCombinedAudienceGroup']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          includedCustomListGroup: _json.containsKey('includedCustomListGroup')
+              ? CustomListGroup.fromJson(_json['includedCustomListGroup']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          includedFirstAndThirdPartyAudienceGroups: _json
+                  .containsKey('includedFirstAndThirdPartyAudienceGroups')
+              ? (_json['includedFirstAndThirdPartyAudienceGroups'] as core.List)
+                  .map<FirstAndThirdPartyAudienceGroup>((value) =>
+                      FirstAndThirdPartyAudienceGroup.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          includedGoogleAudienceGroup:
+              _json.containsKey('includedGoogleAudienceGroup')
+                  ? GoogleAudienceGroup.fromJson(
+                      _json['includedGoogleAudienceGroup']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (excludedFirstAndThirdPartyAudienceGroup != null)
@@ -11414,16 +11558,20 @@ class AudioVideoOffset {
   /// The offset in seconds from the start of the audio or video.
   core.String? seconds;
 
-  AudioVideoOffset();
+  AudioVideoOffset({
+    this.percentage,
+    this.seconds,
+  });
 
-  AudioVideoOffset.fromJson(core.Map _json) {
-    if (_json.containsKey('percentage')) {
-      percentage = _json['percentage'] as core.String;
-    }
-    if (_json.containsKey('seconds')) {
-      seconds = _json['seconds'] as core.String;
-    }
-  }
+  AudioVideoOffset.fromJson(core.Map _json)
+      : this(
+          percentage: _json.containsKey('percentage')
+              ? _json['percentage'] as core.String
+              : null,
+          seconds: _json.containsKey('seconds')
+              ? _json['seconds'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (percentage != null) 'percentage': percentage!,
@@ -11490,37 +11638,47 @@ class AuditAdvertiserResponse {
   /// advertiser.
   core.String? usedLineItemsCount;
 
-  AuditAdvertiserResponse();
+  AuditAdvertiserResponse({
+    this.adGroupCriteriaCount,
+    this.campaignCriteriaCount,
+    this.channelsCount,
+    this.negativeKeywordListsCount,
+    this.negativelyTargetedChannelsCount,
+    this.usedCampaignsCount,
+    this.usedInsertionOrdersCount,
+    this.usedLineItemsCount,
+  });
 
-  AuditAdvertiserResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('adGroupCriteriaCount')) {
-      adGroupCriteriaCount = _json['adGroupCriteriaCount'] as core.String;
-    }
-    if (_json.containsKey('campaignCriteriaCount')) {
-      campaignCriteriaCount = _json['campaignCriteriaCount'] as core.String;
-    }
-    if (_json.containsKey('channelsCount')) {
-      channelsCount = _json['channelsCount'] as core.String;
-    }
-    if (_json.containsKey('negativeKeywordListsCount')) {
-      negativeKeywordListsCount =
-          _json['negativeKeywordListsCount'] as core.String;
-    }
-    if (_json.containsKey('negativelyTargetedChannelsCount')) {
-      negativelyTargetedChannelsCount =
-          _json['negativelyTargetedChannelsCount'] as core.String;
-    }
-    if (_json.containsKey('usedCampaignsCount')) {
-      usedCampaignsCount = _json['usedCampaignsCount'] as core.String;
-    }
-    if (_json.containsKey('usedInsertionOrdersCount')) {
-      usedInsertionOrdersCount =
-          _json['usedInsertionOrdersCount'] as core.String;
-    }
-    if (_json.containsKey('usedLineItemsCount')) {
-      usedLineItemsCount = _json['usedLineItemsCount'] as core.String;
-    }
-  }
+  AuditAdvertiserResponse.fromJson(core.Map _json)
+      : this(
+          adGroupCriteriaCount: _json.containsKey('adGroupCriteriaCount')
+              ? _json['adGroupCriteriaCount'] as core.String
+              : null,
+          campaignCriteriaCount: _json.containsKey('campaignCriteriaCount')
+              ? _json['campaignCriteriaCount'] as core.String
+              : null,
+          channelsCount: _json.containsKey('channelsCount')
+              ? _json['channelsCount'] as core.String
+              : null,
+          negativeKeywordListsCount:
+              _json.containsKey('negativeKeywordListsCount')
+                  ? _json['negativeKeywordListsCount'] as core.String
+                  : null,
+          negativelyTargetedChannelsCount:
+              _json.containsKey('negativelyTargetedChannelsCount')
+                  ? _json['negativelyTargetedChannelsCount'] as core.String
+                  : null,
+          usedCampaignsCount: _json.containsKey('usedCampaignsCount')
+              ? _json['usedCampaignsCount'] as core.String
+              : null,
+          usedInsertionOrdersCount:
+              _json.containsKey('usedInsertionOrdersCount')
+                  ? _json['usedInsertionOrdersCount'] as core.String
+                  : null,
+          usedLineItemsCount: _json.containsKey('usedLineItemsCount')
+              ? _json['usedLineItemsCount'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (adGroupCriteriaCount != null)
@@ -11569,17 +11727,20 @@ class AuthorizedSellerStatusAssignedTargetingOptionDetails {
   /// Required.
   core.String? targetingOptionId;
 
-  AuthorizedSellerStatusAssignedTargetingOptionDetails();
+  AuthorizedSellerStatusAssignedTargetingOptionDetails({
+    this.authorizedSellerStatus,
+    this.targetingOptionId,
+  });
 
-  AuthorizedSellerStatusAssignedTargetingOptionDetails.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('authorizedSellerStatus')) {
-      authorizedSellerStatus = _json['authorizedSellerStatus'] as core.String;
-    }
-    if (_json.containsKey('targetingOptionId')) {
-      targetingOptionId = _json['targetingOptionId'] as core.String;
-    }
-  }
+  AuthorizedSellerStatusAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          authorizedSellerStatus: _json.containsKey('authorizedSellerStatus')
+              ? _json['authorizedSellerStatus'] as core.String
+              : null,
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authorizedSellerStatus != null)
@@ -11610,13 +11771,16 @@ class AuthorizedSellerStatusTargetingOptionDetails {
   /// sellers.
   core.String? authorizedSellerStatus;
 
-  AuthorizedSellerStatusTargetingOptionDetails();
+  AuthorizedSellerStatusTargetingOptionDetails({
+    this.authorizedSellerStatus,
+  });
 
-  AuthorizedSellerStatusTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('authorizedSellerStatus')) {
-      authorizedSellerStatus = _json['authorizedSellerStatus'] as core.String;
-    }
-  }
+  AuthorizedSellerStatusTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          authorizedSellerStatus: _json.containsKey('authorizedSellerStatus')
+              ? _json['authorizedSellerStatus'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authorizedSellerStatus != null)
@@ -11654,23 +11818,28 @@ class BiddingStrategy {
   /// It is to be used only for a line item entity.
   PerformanceGoalBidStrategy? performanceGoalAutoBid;
 
-  BiddingStrategy();
+  BiddingStrategy({
+    this.fixedBid,
+    this.maximizeSpendAutoBid,
+    this.performanceGoalAutoBid,
+  });
 
-  BiddingStrategy.fromJson(core.Map _json) {
-    if (_json.containsKey('fixedBid')) {
-      fixedBid = FixedBidStrategy.fromJson(
-          _json['fixedBid'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('maximizeSpendAutoBid')) {
-      maximizeSpendAutoBid = MaximizeSpendBidStrategy.fromJson(
-          _json['maximizeSpendAutoBid'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('performanceGoalAutoBid')) {
-      performanceGoalAutoBid = PerformanceGoalBidStrategy.fromJson(
-          _json['performanceGoalAutoBid']
-              as core.Map<core.String, core.dynamic>);
-    }
-  }
+  BiddingStrategy.fromJson(core.Map _json)
+      : this(
+          fixedBid: _json.containsKey('fixedBid')
+              ? FixedBidStrategy.fromJson(
+                  _json['fixedBid'] as core.Map<core.String, core.dynamic>)
+              : null,
+          maximizeSpendAutoBid: _json.containsKey('maximizeSpendAutoBid')
+              ? MaximizeSpendBidStrategy.fromJson(_json['maximizeSpendAutoBid']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          performanceGoalAutoBid: _json.containsKey('performanceGoalAutoBid')
+              ? PerformanceGoalBidStrategy.fromJson(
+                  _json['performanceGoalAutoBid']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fixedBid != null) 'fixedBid': fixedBid!.toJson(),
@@ -11703,19 +11872,24 @@ class BrowserAssignedTargetingOptionDetails {
   /// Required.
   core.String? targetingOptionId;
 
-  BrowserAssignedTargetingOptionDetails();
+  BrowserAssignedTargetingOptionDetails({
+    this.displayName,
+    this.negative,
+    this.targetingOptionId,
+  });
 
-  BrowserAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('negative')) {
-      negative = _json['negative'] as core.bool;
-    }
-    if (_json.containsKey('targetingOptionId')) {
-      targetingOptionId = _json['targetingOptionId'] as core.String;
-    }
-  }
+  BrowserAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          negative: _json.containsKey('negative')
+              ? _json['negative'] as core.bool
+              : null,
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -11734,13 +11908,16 @@ class BrowserTargetingOptionDetails {
   /// Output only.
   core.String? displayName;
 
-  BrowserTargetingOptionDetails();
+  BrowserTargetingOptionDetails({
+    this.displayName,
+  });
 
-  BrowserTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-  }
+  BrowserTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -11782,26 +11959,33 @@ class BudgetSummary {
   /// dollar.
   core.String? totalAmountMicros;
 
-  BudgetSummary();
+  BudgetSummary({
+    this.externalBudgetId,
+    this.preTaxAmountMicros,
+    this.prismaCpeCode,
+    this.taxAmountMicros,
+    this.totalAmountMicros,
+  });
 
-  BudgetSummary.fromJson(core.Map _json) {
-    if (_json.containsKey('externalBudgetId')) {
-      externalBudgetId = _json['externalBudgetId'] as core.String;
-    }
-    if (_json.containsKey('preTaxAmountMicros')) {
-      preTaxAmountMicros = _json['preTaxAmountMicros'] as core.String;
-    }
-    if (_json.containsKey('prismaCpeCode')) {
-      prismaCpeCode = PrismaCpeCode.fromJson(
-          _json['prismaCpeCode'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('taxAmountMicros')) {
-      taxAmountMicros = _json['taxAmountMicros'] as core.String;
-    }
-    if (_json.containsKey('totalAmountMicros')) {
-      totalAmountMicros = _json['totalAmountMicros'] as core.String;
-    }
-  }
+  BudgetSummary.fromJson(core.Map _json)
+      : this(
+          externalBudgetId: _json.containsKey('externalBudgetId')
+              ? _json['externalBudgetId'] as core.String
+              : null,
+          preTaxAmountMicros: _json.containsKey('preTaxAmountMicros')
+              ? _json['preTaxAmountMicros'] as core.String
+              : null,
+          prismaCpeCode: _json.containsKey('prismaCpeCode')
+              ? PrismaCpeCode.fromJson(
+                  _json['prismaCpeCode'] as core.Map<core.String, core.dynamic>)
+              : null,
+          taxAmountMicros: _json.containsKey('taxAmountMicros')
+              ? _json['taxAmountMicros'] as core.String
+              : null,
+          totalAmountMicros: _json.containsKey('totalAmountMicros')
+              ? _json['totalAmountMicros'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (externalBudgetId != null) 'externalBudgetId': externalBudgetId!,
@@ -11831,24 +12015,28 @@ class BulkEditAdvertiserAssignedTargetingOptionsRequest {
   /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
   core.List<DeleteAssignedTargetingOptionsRequest>? deleteRequests;
 
-  BulkEditAdvertiserAssignedTargetingOptionsRequest();
+  BulkEditAdvertiserAssignedTargetingOptionsRequest({
+    this.createRequests,
+    this.deleteRequests,
+  });
 
-  BulkEditAdvertiserAssignedTargetingOptionsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('createRequests')) {
-      createRequests = (_json['createRequests'] as core.List)
-          .map<CreateAssignedTargetingOptionsRequest>((value) =>
-              CreateAssignedTargetingOptionsRequest.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('deleteRequests')) {
-      deleteRequests = (_json['deleteRequests'] as core.List)
-          .map<DeleteAssignedTargetingOptionsRequest>((value) =>
-              DeleteAssignedTargetingOptionsRequest.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  BulkEditAdvertiserAssignedTargetingOptionsRequest.fromJson(core.Map _json)
+      : this(
+          createRequests: _json.containsKey('createRequests')
+              ? (_json['createRequests'] as core.List)
+                  .map<CreateAssignedTargetingOptionsRequest>((value) =>
+                      CreateAssignedTargetingOptionsRequest.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          deleteRequests: _json.containsKey('deleteRequests')
+              ? (_json['deleteRequests'] as core.List)
+                  .map<DeleteAssignedTargetingOptionsRequest>((value) =>
+                      DeleteAssignedTargetingOptionsRequest.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createRequests != null)
@@ -11867,18 +12055,21 @@ class BulkEditAdvertiserAssignedTargetingOptionsResponse {
   /// This list will be absent if empty.
   core.List<AssignedTargetingOption>? createdAssignedTargetingOptions;
 
-  BulkEditAdvertiserAssignedTargetingOptionsResponse();
+  BulkEditAdvertiserAssignedTargetingOptionsResponse({
+    this.createdAssignedTargetingOptions,
+  });
 
-  BulkEditAdvertiserAssignedTargetingOptionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('createdAssignedTargetingOptions')) {
-      createdAssignedTargetingOptions =
-          (_json['createdAssignedTargetingOptions'] as core.List)
-              .map<AssignedTargetingOption>((value) =>
-                  AssignedTargetingOption.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList();
-    }
-  }
+  BulkEditAdvertiserAssignedTargetingOptionsResponse.fromJson(core.Map _json)
+      : this(
+          createdAssignedTargetingOptions:
+              _json.containsKey('createdAssignedTargetingOptions')
+                  ? (_json['createdAssignedTargetingOptions'] as core.List)
+                      .map<AssignedTargetingOption>((value) =>
+                          AssignedTargetingOption.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createdAssignedTargetingOptions != null)
@@ -11909,30 +12100,36 @@ class BulkEditAssignedInventorySourcesRequest {
   /// Only this partner has write access to these assigned inventory sources.
   core.String? partnerId;
 
-  BulkEditAssignedInventorySourcesRequest();
+  BulkEditAssignedInventorySourcesRequest({
+    this.advertiserId,
+    this.createdAssignedInventorySources,
+    this.deletedAssignedInventorySources,
+    this.partnerId,
+  });
 
-  BulkEditAssignedInventorySourcesRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('advertiserId')) {
-      advertiserId = _json['advertiserId'] as core.String;
-    }
-    if (_json.containsKey('createdAssignedInventorySources')) {
-      createdAssignedInventorySources =
-          (_json['createdAssignedInventorySources'] as core.List)
-              .map<AssignedInventorySource>((value) =>
-                  AssignedInventorySource.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList();
-    }
-    if (_json.containsKey('deletedAssignedInventorySources')) {
-      deletedAssignedInventorySources =
-          (_json['deletedAssignedInventorySources'] as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList();
-    }
-    if (_json.containsKey('partnerId')) {
-      partnerId = _json['partnerId'] as core.String;
-    }
-  }
+  BulkEditAssignedInventorySourcesRequest.fromJson(core.Map _json)
+      : this(
+          advertiserId: _json.containsKey('advertiserId')
+              ? _json['advertiserId'] as core.String
+              : null,
+          createdAssignedInventorySources:
+              _json.containsKey('createdAssignedInventorySources')
+                  ? (_json['createdAssignedInventorySources'] as core.List)
+                      .map<AssignedInventorySource>((value) =>
+                          AssignedInventorySource.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          deletedAssignedInventorySources:
+              _json.containsKey('deletedAssignedInventorySources')
+                  ? (_json['deletedAssignedInventorySources'] as core.List)
+                      .map<core.String>((value) => value as core.String)
+                      .toList()
+                  : null,
+          partnerId: _json.containsKey('partnerId')
+              ? _json['partnerId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advertiserId != null) 'advertiserId': advertiserId!,
@@ -11954,18 +12151,21 @@ class BulkEditAssignedInventorySourcesResponse {
   /// This list will be absent if empty.
   core.List<AssignedInventorySource>? assignedInventorySources;
 
-  BulkEditAssignedInventorySourcesResponse();
+  BulkEditAssignedInventorySourcesResponse({
+    this.assignedInventorySources,
+  });
 
-  BulkEditAssignedInventorySourcesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('assignedInventorySources')) {
-      assignedInventorySources =
-          (_json['assignedInventorySources'] as core.List)
-              .map<AssignedInventorySource>((value) =>
-                  AssignedInventorySource.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList();
-    }
-  }
+  BulkEditAssignedInventorySourcesResponse.fromJson(core.Map _json)
+      : this(
+          assignedInventorySources:
+              _json.containsKey('assignedInventorySources')
+                  ? (_json['assignedInventorySources'] as core.List)
+                      .map<AssignedInventorySource>((value) =>
+                          AssignedInventorySource.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedInventorySources != null)
@@ -11984,23 +12184,27 @@ class BulkEditAssignedLocationsRequest {
   /// of assigned_location_ids.
   core.List<core.String>? deletedAssignedLocations;
 
-  BulkEditAssignedLocationsRequest();
+  BulkEditAssignedLocationsRequest({
+    this.createdAssignedLocations,
+    this.deletedAssignedLocations,
+  });
 
-  BulkEditAssignedLocationsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('createdAssignedLocations')) {
-      createdAssignedLocations =
-          (_json['createdAssignedLocations'] as core.List)
-              .map<AssignedLocation>((value) => AssignedLocation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList();
-    }
-    if (_json.containsKey('deletedAssignedLocations')) {
-      deletedAssignedLocations =
-          (_json['deletedAssignedLocations'] as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList();
-    }
-  }
+  BulkEditAssignedLocationsRequest.fromJson(core.Map _json)
+      : this(
+          createdAssignedLocations: _json
+                  .containsKey('createdAssignedLocations')
+              ? (_json['createdAssignedLocations'] as core.List)
+                  .map<AssignedLocation>((value) => AssignedLocation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          deletedAssignedLocations:
+              _json.containsKey('deletedAssignedLocations')
+                  ? (_json['deletedAssignedLocations'] as core.List)
+                      .map<core.String>((value) => value as core.String)
+                      .toList()
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createdAssignedLocations != null)
@@ -12018,16 +12222,19 @@ class BulkEditAssignedLocationsResponse {
   /// This list will be absent if empty.
   core.List<AssignedLocation>? assignedLocations;
 
-  BulkEditAssignedLocationsResponse();
+  BulkEditAssignedLocationsResponse({
+    this.assignedLocations,
+  });
 
-  BulkEditAssignedLocationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('assignedLocations')) {
-      assignedLocations = (_json['assignedLocations'] as core.List)
-          .map<AssignedLocation>((value) => AssignedLocation.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  BulkEditAssignedLocationsResponse.fromJson(core.Map _json)
+      : this(
+          assignedLocations: _json.containsKey('assignedLocations')
+              ? (_json['assignedLocations'] as core.List)
+                  .map<AssignedLocation>((value) => AssignedLocation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedLocations != null)
@@ -12049,23 +12256,27 @@ class BulkEditAssignedUserRolesRequest {
   /// `partner-123`.
   core.List<core.String>? deletedAssignedUserRoles;
 
-  BulkEditAssignedUserRolesRequest();
+  BulkEditAssignedUserRolesRequest({
+    this.createdAssignedUserRoles,
+    this.deletedAssignedUserRoles,
+  });
 
-  BulkEditAssignedUserRolesRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('createdAssignedUserRoles')) {
-      createdAssignedUserRoles =
-          (_json['createdAssignedUserRoles'] as core.List)
-              .map<AssignedUserRole>((value) => AssignedUserRole.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList();
-    }
-    if (_json.containsKey('deletedAssignedUserRoles')) {
-      deletedAssignedUserRoles =
-          (_json['deletedAssignedUserRoles'] as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList();
-    }
-  }
+  BulkEditAssignedUserRolesRequest.fromJson(core.Map _json)
+      : this(
+          createdAssignedUserRoles: _json
+                  .containsKey('createdAssignedUserRoles')
+              ? (_json['createdAssignedUserRoles'] as core.List)
+                  .map<AssignedUserRole>((value) => AssignedUserRole.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          deletedAssignedUserRoles:
+              _json.containsKey('deletedAssignedUserRoles')
+                  ? (_json['deletedAssignedUserRoles'] as core.List)
+                      .map<core.String>((value) => value as core.String)
+                      .toList()
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createdAssignedUserRoles != null)
@@ -12082,17 +12293,20 @@ class BulkEditAssignedUserRolesResponse {
   /// This list will be absent if empty.
   core.List<AssignedUserRole>? createdAssignedUserRoles;
 
-  BulkEditAssignedUserRolesResponse();
+  BulkEditAssignedUserRolesResponse({
+    this.createdAssignedUserRoles,
+  });
 
-  BulkEditAssignedUserRolesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('createdAssignedUserRoles')) {
-      createdAssignedUserRoles =
-          (_json['createdAssignedUserRoles'] as core.List)
-              .map<AssignedUserRole>((value) => AssignedUserRole.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList();
-    }
-  }
+  BulkEditAssignedUserRolesResponse.fromJson(core.Map _json)
+      : this(
+          createdAssignedUserRoles: _json
+                  .containsKey('createdAssignedUserRoles')
+              ? (_json['createdAssignedUserRoles'] as core.List)
+                  .map<AssignedUserRole>((value) => AssignedUserRole.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createdAssignedUserRoles != null)
@@ -12111,24 +12325,28 @@ class BulkEditLineItemAssignedTargetingOptionsRequest {
   /// `DeleteAssignedTargetingOptionsRequest`.
   core.List<DeleteAssignedTargetingOptionsRequest>? deleteRequests;
 
-  BulkEditLineItemAssignedTargetingOptionsRequest();
+  BulkEditLineItemAssignedTargetingOptionsRequest({
+    this.createRequests,
+    this.deleteRequests,
+  });
 
-  BulkEditLineItemAssignedTargetingOptionsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('createRequests')) {
-      createRequests = (_json['createRequests'] as core.List)
-          .map<CreateAssignedTargetingOptionsRequest>((value) =>
-              CreateAssignedTargetingOptionsRequest.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('deleteRequests')) {
-      deleteRequests = (_json['deleteRequests'] as core.List)
-          .map<DeleteAssignedTargetingOptionsRequest>((value) =>
-              DeleteAssignedTargetingOptionsRequest.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  BulkEditLineItemAssignedTargetingOptionsRequest.fromJson(core.Map _json)
+      : this(
+          createRequests: _json.containsKey('createRequests')
+              ? (_json['createRequests'] as core.List)
+                  .map<CreateAssignedTargetingOptionsRequest>((value) =>
+                      CreateAssignedTargetingOptionsRequest.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          deleteRequests: _json.containsKey('deleteRequests')
+              ? (_json['deleteRequests'] as core.List)
+                  .map<DeleteAssignedTargetingOptionsRequest>((value) =>
+                      DeleteAssignedTargetingOptionsRequest.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createRequests != null)
@@ -12147,18 +12365,21 @@ class BulkEditLineItemAssignedTargetingOptionsResponse {
   /// This list will be absent if empty.
   core.List<AssignedTargetingOption>? createdAssignedTargetingOptions;
 
-  BulkEditLineItemAssignedTargetingOptionsResponse();
+  BulkEditLineItemAssignedTargetingOptionsResponse({
+    this.createdAssignedTargetingOptions,
+  });
 
-  BulkEditLineItemAssignedTargetingOptionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('createdAssignedTargetingOptions')) {
-      createdAssignedTargetingOptions =
-          (_json['createdAssignedTargetingOptions'] as core.List)
-              .map<AssignedTargetingOption>((value) =>
-                  AssignedTargetingOption.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList();
-    }
-  }
+  BulkEditLineItemAssignedTargetingOptionsResponse.fromJson(core.Map _json)
+      : this(
+          createdAssignedTargetingOptions:
+              _json.containsKey('createdAssignedTargetingOptions')
+                  ? (_json['createdAssignedTargetingOptions'] as core.List)
+                      .map<AssignedTargetingOption>((value) =>
+                          AssignedTargetingOption.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createdAssignedTargetingOptions != null)
@@ -12178,21 +12399,25 @@ class BulkEditNegativeKeywordsRequest {
   /// keyword_values.
   core.List<core.String>? deletedNegativeKeywords;
 
-  BulkEditNegativeKeywordsRequest();
+  BulkEditNegativeKeywordsRequest({
+    this.createdNegativeKeywords,
+    this.deletedNegativeKeywords,
+  });
 
-  BulkEditNegativeKeywordsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('createdNegativeKeywords')) {
-      createdNegativeKeywords = (_json['createdNegativeKeywords'] as core.List)
-          .map<NegativeKeyword>((value) => NegativeKeyword.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('deletedNegativeKeywords')) {
-      deletedNegativeKeywords = (_json['deletedNegativeKeywords'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  BulkEditNegativeKeywordsRequest.fromJson(core.Map _json)
+      : this(
+          createdNegativeKeywords: _json.containsKey('createdNegativeKeywords')
+              ? (_json['createdNegativeKeywords'] as core.List)
+                  .map<NegativeKeyword>((value) => NegativeKeyword.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          deletedNegativeKeywords: _json.containsKey('deletedNegativeKeywords')
+              ? (_json['deletedNegativeKeywords'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createdNegativeKeywords != null)
@@ -12210,16 +12435,19 @@ class BulkEditNegativeKeywordsResponse {
   /// This list will be absent if empty.
   core.List<NegativeKeyword>? negativeKeywords;
 
-  BulkEditNegativeKeywordsResponse();
+  BulkEditNegativeKeywordsResponse({
+    this.negativeKeywords,
+  });
 
-  BulkEditNegativeKeywordsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('negativeKeywords')) {
-      negativeKeywords = (_json['negativeKeywords'] as core.List)
-          .map<NegativeKeyword>((value) => NegativeKeyword.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  BulkEditNegativeKeywordsResponse.fromJson(core.Map _json)
+      : this(
+          negativeKeywords: _json.containsKey('negativeKeywords')
+              ? (_json['negativeKeywords'] as core.List)
+                  .map<NegativeKeyword>((value) => NegativeKeyword.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (negativeKeywords != null)
@@ -12242,24 +12470,28 @@ class BulkEditPartnerAssignedTargetingOptionsRequest {
   /// Supported targeting types: * `TARGETING_TYPE_CHANNEL`
   core.List<DeleteAssignedTargetingOptionsRequest>? deleteRequests;
 
-  BulkEditPartnerAssignedTargetingOptionsRequest();
+  BulkEditPartnerAssignedTargetingOptionsRequest({
+    this.createRequests,
+    this.deleteRequests,
+  });
 
-  BulkEditPartnerAssignedTargetingOptionsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('createRequests')) {
-      createRequests = (_json['createRequests'] as core.List)
-          .map<CreateAssignedTargetingOptionsRequest>((value) =>
-              CreateAssignedTargetingOptionsRequest.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('deleteRequests')) {
-      deleteRequests = (_json['deleteRequests'] as core.List)
-          .map<DeleteAssignedTargetingOptionsRequest>((value) =>
-              DeleteAssignedTargetingOptionsRequest.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  BulkEditPartnerAssignedTargetingOptionsRequest.fromJson(core.Map _json)
+      : this(
+          createRequests: _json.containsKey('createRequests')
+              ? (_json['createRequests'] as core.List)
+                  .map<CreateAssignedTargetingOptionsRequest>((value) =>
+                      CreateAssignedTargetingOptionsRequest.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          deleteRequests: _json.containsKey('deleteRequests')
+              ? (_json['deleteRequests'] as core.List)
+                  .map<DeleteAssignedTargetingOptionsRequest>((value) =>
+                      DeleteAssignedTargetingOptionsRequest.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createRequests != null)
@@ -12278,18 +12510,21 @@ class BulkEditPartnerAssignedTargetingOptionsResponse {
   /// This list will be absent if empty.
   core.List<AssignedTargetingOption>? createdAssignedTargetingOptions;
 
-  BulkEditPartnerAssignedTargetingOptionsResponse();
+  BulkEditPartnerAssignedTargetingOptionsResponse({
+    this.createdAssignedTargetingOptions,
+  });
 
-  BulkEditPartnerAssignedTargetingOptionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('createdAssignedTargetingOptions')) {
-      createdAssignedTargetingOptions =
-          (_json['createdAssignedTargetingOptions'] as core.List)
-              .map<AssignedTargetingOption>((value) =>
-                  AssignedTargetingOption.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList();
-    }
-  }
+  BulkEditPartnerAssignedTargetingOptionsResponse.fromJson(core.Map _json)
+      : this(
+          createdAssignedTargetingOptions:
+              _json.containsKey('createdAssignedTargetingOptions')
+                  ? (_json['createdAssignedTargetingOptions'] as core.List)
+                      .map<AssignedTargetingOption>((value) =>
+                          AssignedTargetingOption.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createdAssignedTargetingOptions != null)
@@ -12313,27 +12548,33 @@ class BulkEditSitesRequest {
   /// The ID of the partner that owns the parent channel.
   core.String? partnerId;
 
-  BulkEditSitesRequest();
+  BulkEditSitesRequest({
+    this.advertiserId,
+    this.createdSites,
+    this.deletedSites,
+    this.partnerId,
+  });
 
-  BulkEditSitesRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('advertiserId')) {
-      advertiserId = _json['advertiserId'] as core.String;
-    }
-    if (_json.containsKey('createdSites')) {
-      createdSites = (_json['createdSites'] as core.List)
-          .map<Site>((value) =>
-              Site.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('deletedSites')) {
-      deletedSites = (_json['deletedSites'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('partnerId')) {
-      partnerId = _json['partnerId'] as core.String;
-    }
-  }
+  BulkEditSitesRequest.fromJson(core.Map _json)
+      : this(
+          advertiserId: _json.containsKey('advertiserId')
+              ? _json['advertiserId'] as core.String
+              : null,
+          createdSites: _json.containsKey('createdSites')
+              ? (_json['createdSites'] as core.List)
+                  .map<Site>((value) => Site.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          deletedSites: _json.containsKey('deletedSites')
+              ? (_json['deletedSites'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          partnerId: _json.containsKey('partnerId')
+              ? _json['partnerId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advertiserId != null) 'advertiserId': advertiserId!,
@@ -12351,16 +12592,19 @@ class BulkEditSitesResponse {
   /// This list will be absent if empty.
   core.List<Site>? sites;
 
-  BulkEditSitesResponse();
+  BulkEditSitesResponse({
+    this.sites,
+  });
 
-  BulkEditSitesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('sites')) {
-      sites = (_json['sites'] as core.List)
-          .map<Site>((value) =>
-              Site.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  BulkEditSitesResponse.fromJson(core.Map _json)
+      : this(
+          sites: _json.containsKey('sites')
+              ? (_json['sites'] as core.List)
+                  .map<Site>((value) => Site.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sites != null)
@@ -12382,21 +12626,25 @@ class BulkListAdvertiserAssignedTargetingOptionsResponse {
   /// assigned_targeting_options to return.
   core.String? nextPageToken;
 
-  BulkListAdvertiserAssignedTargetingOptionsResponse();
+  BulkListAdvertiserAssignedTargetingOptionsResponse({
+    this.assignedTargetingOptions,
+    this.nextPageToken,
+  });
 
-  BulkListAdvertiserAssignedTargetingOptionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('assignedTargetingOptions')) {
-      assignedTargetingOptions =
-          (_json['assignedTargetingOptions'] as core.List)
-              .map<AssignedTargetingOption>((value) =>
-                  AssignedTargetingOption.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  BulkListAdvertiserAssignedTargetingOptionsResponse.fromJson(core.Map _json)
+      : this(
+          assignedTargetingOptions:
+              _json.containsKey('assignedTargetingOptions')
+                  ? (_json['assignedTargetingOptions'] as core.List)
+                      .map<AssignedTargetingOption>((value) =>
+                          AssignedTargetingOption.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedTargetingOptions != null)
@@ -12421,21 +12669,25 @@ class BulkListCampaignAssignedTargetingOptionsResponse {
   /// assigned_targeting_options to return.
   core.String? nextPageToken;
 
-  BulkListCampaignAssignedTargetingOptionsResponse();
+  BulkListCampaignAssignedTargetingOptionsResponse({
+    this.assignedTargetingOptions,
+    this.nextPageToken,
+  });
 
-  BulkListCampaignAssignedTargetingOptionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('assignedTargetingOptions')) {
-      assignedTargetingOptions =
-          (_json['assignedTargetingOptions'] as core.List)
-              .map<AssignedTargetingOption>((value) =>
-                  AssignedTargetingOption.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  BulkListCampaignAssignedTargetingOptionsResponse.fromJson(core.Map _json)
+      : this(
+          assignedTargetingOptions:
+              _json.containsKey('assignedTargetingOptions')
+                  ? (_json['assignedTargetingOptions'] as core.List)
+                      .map<AssignedTargetingOption>((value) =>
+                          AssignedTargetingOption.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedTargetingOptions != null)
@@ -12460,22 +12712,26 @@ class BulkListInsertionOrderAssignedTargetingOptionsResponse {
   /// assigned_targeting_options to return.
   core.String? nextPageToken;
 
-  BulkListInsertionOrderAssignedTargetingOptionsResponse();
+  BulkListInsertionOrderAssignedTargetingOptionsResponse({
+    this.assignedTargetingOptions,
+    this.nextPageToken,
+  });
 
   BulkListInsertionOrderAssignedTargetingOptionsResponse.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('assignedTargetingOptions')) {
-      assignedTargetingOptions =
-          (_json['assignedTargetingOptions'] as core.List)
-              .map<AssignedTargetingOption>((value) =>
-                  AssignedTargetingOption.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          assignedTargetingOptions:
+              _json.containsKey('assignedTargetingOptions')
+                  ? (_json['assignedTargetingOptions'] as core.List)
+                      .map<AssignedTargetingOption>((value) =>
+                          AssignedTargetingOption.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedTargetingOptions != null)
@@ -12499,21 +12755,25 @@ class BulkListLineItemAssignedTargetingOptionsResponse {
   /// assigned_targeting_options to return.
   core.String? nextPageToken;
 
-  BulkListLineItemAssignedTargetingOptionsResponse();
+  BulkListLineItemAssignedTargetingOptionsResponse({
+    this.assignedTargetingOptions,
+    this.nextPageToken,
+  });
 
-  BulkListLineItemAssignedTargetingOptionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('assignedTargetingOptions')) {
-      assignedTargetingOptions =
-          (_json['assignedTargetingOptions'] as core.List)
-              .map<AssignedTargetingOption>((value) =>
-                  AssignedTargetingOption.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  BulkListLineItemAssignedTargetingOptionsResponse.fromJson(core.Map _json)
+      : this(
+          assignedTargetingOptions:
+              _json.containsKey('assignedTargetingOptions')
+                  ? (_json['assignedTargetingOptions'] as core.List)
+                      .map<AssignedTargetingOption>((value) =>
+                          AssignedTargetingOption.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedTargetingOptions != null)
@@ -12599,46 +12859,56 @@ class Campaign {
   /// Output only.
   core.String? updateTime;
 
-  Campaign();
+  Campaign({
+    this.advertiserId,
+    this.campaignBudgets,
+    this.campaignFlight,
+    this.campaignGoal,
+    this.campaignId,
+    this.displayName,
+    this.entityStatus,
+    this.frequencyCap,
+    this.name,
+    this.updateTime,
+  });
 
-  Campaign.fromJson(core.Map _json) {
-    if (_json.containsKey('advertiserId')) {
-      advertiserId = _json['advertiserId'] as core.String;
-    }
-    if (_json.containsKey('campaignBudgets')) {
-      campaignBudgets = (_json['campaignBudgets'] as core.List)
-          .map<CampaignBudget>((value) => CampaignBudget.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('campaignFlight')) {
-      campaignFlight = CampaignFlight.fromJson(
-          _json['campaignFlight'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('campaignGoal')) {
-      campaignGoal = CampaignGoal.fromJson(
-          _json['campaignGoal'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('campaignId')) {
-      campaignId = _json['campaignId'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('entityStatus')) {
-      entityStatus = _json['entityStatus'] as core.String;
-    }
-    if (_json.containsKey('frequencyCap')) {
-      frequencyCap = FrequencyCap.fromJson(
-          _json['frequencyCap'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  Campaign.fromJson(core.Map _json)
+      : this(
+          advertiserId: _json.containsKey('advertiserId')
+              ? _json['advertiserId'] as core.String
+              : null,
+          campaignBudgets: _json.containsKey('campaignBudgets')
+              ? (_json['campaignBudgets'] as core.List)
+                  .map<CampaignBudget>((value) => CampaignBudget.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          campaignFlight: _json.containsKey('campaignFlight')
+              ? CampaignFlight.fromJson(_json['campaignFlight']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          campaignGoal: _json.containsKey('campaignGoal')
+              ? CampaignGoal.fromJson(
+                  _json['campaignGoal'] as core.Map<core.String, core.dynamic>)
+              : null,
+          campaignId: _json.containsKey('campaignId')
+              ? _json['campaignId'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          entityStatus: _json.containsKey('entityStatus')
+              ? _json['entityStatus'] as core.String
+              : null,
+          frequencyCap: _json.containsKey('frequencyCap')
+              ? FrequencyCap.fromJson(
+                  _json['frequencyCap'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advertiserId != null) 'advertiserId': advertiserId!,
@@ -12734,39 +13004,50 @@ class CampaignBudget {
   /// advertisers.
   PrismaConfig? prismaConfig;
 
-  CampaignBudget();
+  CampaignBudget({
+    this.budgetAmountMicros,
+    this.budgetId,
+    this.budgetUnit,
+    this.dateRange,
+    this.displayName,
+    this.externalBudgetId,
+    this.externalBudgetSource,
+    this.invoiceGroupingId,
+    this.prismaConfig,
+  });
 
-  CampaignBudget.fromJson(core.Map _json) {
-    if (_json.containsKey('budgetAmountMicros')) {
-      budgetAmountMicros = _json['budgetAmountMicros'] as core.String;
-    }
-    if (_json.containsKey('budgetId')) {
-      budgetId = _json['budgetId'] as core.String;
-    }
-    if (_json.containsKey('budgetUnit')) {
-      budgetUnit = _json['budgetUnit'] as core.String;
-    }
-    if (_json.containsKey('dateRange')) {
-      dateRange = DateRange.fromJson(
-          _json['dateRange'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('externalBudgetId')) {
-      externalBudgetId = _json['externalBudgetId'] as core.String;
-    }
-    if (_json.containsKey('externalBudgetSource')) {
-      externalBudgetSource = _json['externalBudgetSource'] as core.String;
-    }
-    if (_json.containsKey('invoiceGroupingId')) {
-      invoiceGroupingId = _json['invoiceGroupingId'] as core.String;
-    }
-    if (_json.containsKey('prismaConfig')) {
-      prismaConfig = PrismaConfig.fromJson(
-          _json['prismaConfig'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  CampaignBudget.fromJson(core.Map _json)
+      : this(
+          budgetAmountMicros: _json.containsKey('budgetAmountMicros')
+              ? _json['budgetAmountMicros'] as core.String
+              : null,
+          budgetId: _json.containsKey('budgetId')
+              ? _json['budgetId'] as core.String
+              : null,
+          budgetUnit: _json.containsKey('budgetUnit')
+              ? _json['budgetUnit'] as core.String
+              : null,
+          dateRange: _json.containsKey('dateRange')
+              ? DateRange.fromJson(
+                  _json['dateRange'] as core.Map<core.String, core.dynamic>)
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          externalBudgetId: _json.containsKey('externalBudgetId')
+              ? _json['externalBudgetId'] as core.String
+              : null,
+          externalBudgetSource: _json.containsKey('externalBudgetSource')
+              ? _json['externalBudgetSource'] as core.String
+              : null,
+          invoiceGroupingId: _json.containsKey('invoiceGroupingId')
+              ? _json['invoiceGroupingId'] as core.String
+              : null,
+          prismaConfig: _json.containsKey('prismaConfig')
+              ? PrismaConfig.fromJson(
+                  _json['prismaConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (budgetAmountMicros != null)
@@ -12805,18 +13086,22 @@ class CampaignFlight {
   /// example, 500000000 represents 500 standard units of the currency.
   core.String? plannedSpendAmountMicros;
 
-  CampaignFlight();
+  CampaignFlight({
+    this.plannedDates,
+    this.plannedSpendAmountMicros,
+  });
 
-  CampaignFlight.fromJson(core.Map _json) {
-    if (_json.containsKey('plannedDates')) {
-      plannedDates = DateRange.fromJson(
-          _json['plannedDates'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('plannedSpendAmountMicros')) {
-      plannedSpendAmountMicros =
-          _json['plannedSpendAmountMicros'] as core.String;
-    }
-  }
+  CampaignFlight.fromJson(core.Map _json)
+      : this(
+          plannedDates: _json.containsKey('plannedDates')
+              ? DateRange.fromJson(
+                  _json['plannedDates'] as core.Map<core.String, core.dynamic>)
+              : null,
+          plannedSpendAmountMicros:
+              _json.containsKey('plannedSpendAmountMicros')
+                  ? _json['plannedSpendAmountMicros'] as core.String
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (plannedDates != null) 'plannedDates': plannedDates!.toJson(),
@@ -12851,17 +13136,21 @@ class CampaignGoal {
   /// Required.
   PerformanceGoal? performanceGoal;
 
-  CampaignGoal();
+  CampaignGoal({
+    this.campaignGoalType,
+    this.performanceGoal,
+  });
 
-  CampaignGoal.fromJson(core.Map _json) {
-    if (_json.containsKey('campaignGoalType')) {
-      campaignGoalType = _json['campaignGoalType'] as core.String;
-    }
-    if (_json.containsKey('performanceGoal')) {
-      performanceGoal = PerformanceGoal.fromJson(
-          _json['performanceGoal'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  CampaignGoal.fromJson(core.Map _json)
+      : this(
+          campaignGoalType: _json.containsKey('campaignGoalType')
+              ? _json['campaignGoalType'] as core.String
+              : null,
+          performanceGoal: _json.containsKey('performanceGoal')
+              ? PerformanceGoal.fromJson(_json['performanceGoal']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (campaignGoalType != null) 'campaignGoalType': campaignGoalType!,
@@ -12892,19 +13181,24 @@ class CarrierAndIspAssignedTargetingOptionDetails {
   /// Required.
   core.String? targetingOptionId;
 
-  CarrierAndIspAssignedTargetingOptionDetails();
+  CarrierAndIspAssignedTargetingOptionDetails({
+    this.displayName,
+    this.negative,
+    this.targetingOptionId,
+  });
 
-  CarrierAndIspAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('negative')) {
-      negative = _json['negative'] as core.bool;
-    }
-    if (_json.containsKey('targetingOptionId')) {
-      targetingOptionId = _json['targetingOptionId'] as core.String;
-    }
-  }
+  CarrierAndIspAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          negative: _json.containsKey('negative')
+              ? _json['negative'] as core.bool
+              : null,
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -12935,16 +13229,18 @@ class CarrierAndIspTargetingOptionDetails {
   /// refers to a mobile carrier.
   core.String? type;
 
-  CarrierAndIspTargetingOptionDetails();
+  CarrierAndIspTargetingOptionDetails({
+    this.displayName,
+    this.type,
+  });
 
-  CarrierAndIspTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  CarrierAndIspTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -12971,19 +13267,24 @@ class CategoryAssignedTargetingOptionDetails {
   /// Required.
   core.String? targetingOptionId;
 
-  CategoryAssignedTargetingOptionDetails();
+  CategoryAssignedTargetingOptionDetails({
+    this.displayName,
+    this.negative,
+    this.targetingOptionId,
+  });
 
-  CategoryAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('negative')) {
-      negative = _json['negative'] as core.bool;
-    }
-    if (_json.containsKey('targetingOptionId')) {
-      targetingOptionId = _json['targetingOptionId'] as core.String;
-    }
-  }
+  CategoryAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          negative: _json.containsKey('negative')
+              ? _json['negative'] as core.bool
+              : null,
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -13002,13 +13303,16 @@ class CategoryTargetingOptionDetails {
   /// Output only.
   core.String? displayName;
 
-  CategoryTargetingOptionDetails();
+  CategoryTargetingOptionDetails({
+    this.displayName,
+  });
 
-  CategoryTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-  }
+  CategoryTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -13054,33 +13358,40 @@ class Channel {
   /// Output only.
   core.String? positivelyTargetedLineItemCount;
 
-  Channel();
+  Channel({
+    this.advertiserId,
+    this.channelId,
+    this.displayName,
+    this.name,
+    this.negativelyTargetedLineItemCount,
+    this.partnerId,
+    this.positivelyTargetedLineItemCount,
+  });
 
-  Channel.fromJson(core.Map _json) {
-    if (_json.containsKey('advertiserId')) {
-      advertiserId = _json['advertiserId'] as core.String;
-    }
-    if (_json.containsKey('channelId')) {
-      channelId = _json['channelId'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('negativelyTargetedLineItemCount')) {
-      negativelyTargetedLineItemCount =
-          _json['negativelyTargetedLineItemCount'] as core.String;
-    }
-    if (_json.containsKey('partnerId')) {
-      partnerId = _json['partnerId'] as core.String;
-    }
-    if (_json.containsKey('positivelyTargetedLineItemCount')) {
-      positivelyTargetedLineItemCount =
-          _json['positivelyTargetedLineItemCount'] as core.String;
-    }
-  }
+  Channel.fromJson(core.Map _json)
+      : this(
+          advertiserId: _json.containsKey('advertiserId')
+              ? _json['advertiserId'] as core.String
+              : null,
+          channelId: _json.containsKey('channelId')
+              ? _json['channelId'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          negativelyTargetedLineItemCount:
+              _json.containsKey('negativelyTargetedLineItemCount')
+                  ? _json['negativelyTargetedLineItemCount'] as core.String
+                  : null,
+          partnerId: _json.containsKey('partnerId')
+              ? _json['partnerId'] as core.String
+              : null,
+          positivelyTargetedLineItemCount:
+              _json.containsKey('positivelyTargetedLineItemCount')
+                  ? _json['positivelyTargetedLineItemCount'] as core.String
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advertiserId != null) 'advertiserId': advertiserId!,
@@ -13115,16 +13426,20 @@ class ChannelAssignedTargetingOptionDetails {
   /// For advertiser level assigned targeting option, this field must be true.
   core.bool? negative;
 
-  ChannelAssignedTargetingOptionDetails();
+  ChannelAssignedTargetingOptionDetails({
+    this.channelId,
+    this.negative,
+  });
 
-  ChannelAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('channelId')) {
-      channelId = _json['channelId'] as core.String;
-    }
-    if (_json.containsKey('negative')) {
-      negative = _json['negative'] as core.bool;
-    }
-  }
+  ChannelAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          channelId: _json.containsKey('channelId')
+              ? _json['channelId'] as core.String
+              : null,
+          negative: _json.containsKey('negative')
+              ? _json['negative'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channelId != null) 'channelId': channelId!,
@@ -13168,33 +13483,41 @@ class CmHybridConfig {
   /// Whether or not to include DV360 data in CM360 data transfer reports.
   core.bool? dv360ToCmDataSharingEnabled;
 
-  CmHybridConfig();
+  CmHybridConfig({
+    this.cmAccountId,
+    this.cmFloodlightConfigId,
+    this.cmFloodlightLinkingAuthorized,
+    this.cmSyncableSiteIds,
+    this.dv360ToCmCostReportingEnabled,
+    this.dv360ToCmDataSharingEnabled,
+  });
 
-  CmHybridConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('cmAccountId')) {
-      cmAccountId = _json['cmAccountId'] as core.String;
-    }
-    if (_json.containsKey('cmFloodlightConfigId')) {
-      cmFloodlightConfigId = _json['cmFloodlightConfigId'] as core.String;
-    }
-    if (_json.containsKey('cmFloodlightLinkingAuthorized')) {
-      cmFloodlightLinkingAuthorized =
-          _json['cmFloodlightLinkingAuthorized'] as core.bool;
-    }
-    if (_json.containsKey('cmSyncableSiteIds')) {
-      cmSyncableSiteIds = (_json['cmSyncableSiteIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('dv360ToCmCostReportingEnabled')) {
-      dv360ToCmCostReportingEnabled =
-          _json['dv360ToCmCostReportingEnabled'] as core.bool;
-    }
-    if (_json.containsKey('dv360ToCmDataSharingEnabled')) {
-      dv360ToCmDataSharingEnabled =
-          _json['dv360ToCmDataSharingEnabled'] as core.bool;
-    }
-  }
+  CmHybridConfig.fromJson(core.Map _json)
+      : this(
+          cmAccountId: _json.containsKey('cmAccountId')
+              ? _json['cmAccountId'] as core.String
+              : null,
+          cmFloodlightConfigId: _json.containsKey('cmFloodlightConfigId')
+              ? _json['cmFloodlightConfigId'] as core.String
+              : null,
+          cmFloodlightLinkingAuthorized:
+              _json.containsKey('cmFloodlightLinkingAuthorized')
+                  ? _json['cmFloodlightLinkingAuthorized'] as core.bool
+                  : null,
+          cmSyncableSiteIds: _json.containsKey('cmSyncableSiteIds')
+              ? (_json['cmSyncableSiteIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          dv360ToCmCostReportingEnabled:
+              _json.containsKey('dv360ToCmCostReportingEnabled')
+                  ? _json['dv360ToCmCostReportingEnabled'] as core.bool
+                  : null,
+          dv360ToCmDataSharingEnabled:
+              _json.containsKey('dv360ToCmDataSharingEnabled')
+                  ? _json['dv360ToCmDataSharingEnabled'] as core.bool
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cmAccountId != null) 'cmAccountId': cmAccountId!,
@@ -13221,19 +13544,24 @@ class CmTrackingAd {
   /// The placement ID of the campaign manager 360 tracking Ad.
   core.String? cmPlacementId;
 
-  CmTrackingAd();
+  CmTrackingAd({
+    this.cmAdId,
+    this.cmCreativeId,
+    this.cmPlacementId,
+  });
 
-  CmTrackingAd.fromJson(core.Map _json) {
-    if (_json.containsKey('cmAdId')) {
-      cmAdId = _json['cmAdId'] as core.String;
-    }
-    if (_json.containsKey('cmCreativeId')) {
-      cmCreativeId = _json['cmCreativeId'] as core.String;
-    }
-    if (_json.containsKey('cmPlacementId')) {
-      cmPlacementId = _json['cmPlacementId'] as core.String;
-    }
-  }
+  CmTrackingAd.fromJson(core.Map _json)
+      : this(
+          cmAdId: _json.containsKey('cmAdId')
+              ? _json['cmAdId'] as core.String
+              : null,
+          cmCreativeId: _json.containsKey('cmCreativeId')
+              ? _json['cmCreativeId'] as core.String
+              : null,
+          cmPlacementId: _json.containsKey('cmPlacementId')
+              ? _json['cmPlacementId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cmAdId != null) 'cmAdId': cmAdId!,
@@ -13263,19 +13591,22 @@ class CombinedAudience {
   /// Output only.
   core.String? name;
 
-  CombinedAudience();
+  CombinedAudience({
+    this.combinedAudienceId,
+    this.displayName,
+    this.name,
+  });
 
-  CombinedAudience.fromJson(core.Map _json) {
-    if (_json.containsKey('combinedAudienceId')) {
-      combinedAudienceId = _json['combinedAudienceId'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  CombinedAudience.fromJson(core.Map _json)
+      : this(
+          combinedAudienceId: _json.containsKey('combinedAudienceId')
+              ? _json['combinedAudienceId'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (combinedAudienceId != null)
@@ -13298,17 +13629,20 @@ class CombinedAudienceGroup {
   /// Required.
   core.List<CombinedAudienceTargetingSetting>? settings;
 
-  CombinedAudienceGroup();
+  CombinedAudienceGroup({
+    this.settings,
+  });
 
-  CombinedAudienceGroup.fromJson(core.Map _json) {
-    if (_json.containsKey('settings')) {
-      settings = (_json['settings'] as core.List)
-          .map<CombinedAudienceTargetingSetting>((value) =>
-              CombinedAudienceTargetingSetting.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  CombinedAudienceGroup.fromJson(core.Map _json)
+      : this(
+          settings: _json.containsKey('settings')
+              ? (_json['settings'] as core.List)
+                  .map<CombinedAudienceTargetingSetting>((value) =>
+                      CombinedAudienceTargetingSetting.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (settings != null)
@@ -13325,13 +13659,16 @@ class CombinedAudienceTargetingSetting {
   /// Required.
   core.String? combinedAudienceId;
 
-  CombinedAudienceTargetingSetting();
+  CombinedAudienceTargetingSetting({
+    this.combinedAudienceId,
+  });
 
-  CombinedAudienceTargetingSetting.fromJson(core.Map _json) {
-    if (_json.containsKey('combinedAudienceId')) {
-      combinedAudienceId = _json['combinedAudienceId'] as core.String;
-    }
-  }
+  CombinedAudienceTargetingSetting.fromJson(core.Map _json)
+      : this(
+          combinedAudienceId: _json.containsKey('combinedAudienceId')
+              ? _json['combinedAudienceId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (combinedAudienceId != null)
@@ -13386,20 +13723,24 @@ class ContentInstreamPositionAssignedTargetingOptionDetails {
   /// Required.
   core.String? targetingOptionId;
 
-  ContentInstreamPositionAssignedTargetingOptionDetails();
+  ContentInstreamPositionAssignedTargetingOptionDetails({
+    this.adType,
+    this.contentInstreamPosition,
+    this.targetingOptionId,
+  });
 
-  ContentInstreamPositionAssignedTargetingOptionDetails.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('adType')) {
-      adType = _json['adType'] as core.String;
-    }
-    if (_json.containsKey('contentInstreamPosition')) {
-      contentInstreamPosition = _json['contentInstreamPosition'] as core.String;
-    }
-    if (_json.containsKey('targetingOptionId')) {
-      targetingOptionId = _json['targetingOptionId'] as core.String;
-    }
-  }
+  ContentInstreamPositionAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          adType: _json.containsKey('adType')
+              ? _json['adType'] as core.String
+              : null,
+          contentInstreamPosition: _json.containsKey('contentInstreamPosition')
+              ? _json['contentInstreamPosition'] as core.String
+              : null,
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (adType != null) 'adType': adType!,
@@ -13431,13 +13772,16 @@ class ContentInstreamPositionTargetingOptionDetails {
   /// - "CONTENT_INSTREAM_POSITION_UNKNOWN" : Ads instream position is unknown.
   core.String? contentInstreamPosition;
 
-  ContentInstreamPositionTargetingOptionDetails();
+  ContentInstreamPositionTargetingOptionDetails({
+    this.contentInstreamPosition,
+  });
 
-  ContentInstreamPositionTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('contentInstreamPosition')) {
-      contentInstreamPosition = _json['contentInstreamPosition'] as core.String;
-    }
-  }
+  ContentInstreamPositionTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          contentInstreamPosition: _json.containsKey('contentInstreamPosition')
+              ? _json['contentInstreamPosition'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentInstreamPosition != null)
@@ -13496,21 +13840,26 @@ class ContentOutstreamPositionAssignedTargetingOptionDetails {
   /// Required.
   core.String? targetingOptionId;
 
-  ContentOutstreamPositionAssignedTargetingOptionDetails();
+  ContentOutstreamPositionAssignedTargetingOptionDetails({
+    this.adType,
+    this.contentOutstreamPosition,
+    this.targetingOptionId,
+  });
 
   ContentOutstreamPositionAssignedTargetingOptionDetails.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('adType')) {
-      adType = _json['adType'] as core.String;
-    }
-    if (_json.containsKey('contentOutstreamPosition')) {
-      contentOutstreamPosition =
-          _json['contentOutstreamPosition'] as core.String;
-    }
-    if (_json.containsKey('targetingOptionId')) {
-      targetingOptionId = _json['targetingOptionId'] as core.String;
-    }
-  }
+      core.Map _json)
+      : this(
+          adType: _json.containsKey('adType')
+              ? _json['adType'] as core.String
+              : null,
+          contentOutstreamPosition:
+              _json.containsKey('contentOutstreamPosition')
+                  ? _json['contentOutstreamPosition'] as core.String
+                  : null,
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (adType != null) 'adType': adType!,
@@ -13546,14 +13895,17 @@ class ContentOutstreamPositionTargetingOptionDetails {
   /// content loads.
   core.String? contentOutstreamPosition;
 
-  ContentOutstreamPositionTargetingOptionDetails();
+  ContentOutstreamPositionTargetingOptionDetails({
+    this.contentOutstreamPosition,
+  });
 
-  ContentOutstreamPositionTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('contentOutstreamPosition')) {
-      contentOutstreamPosition =
-          _json['contentOutstreamPosition'] as core.String;
-    }
-  }
+  ContentOutstreamPositionTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          contentOutstreamPosition:
+              _json.containsKey('contentOutstreamPosition')
+                  ? _json['contentOutstreamPosition'] as core.String
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentOutstreamPosition != null)
@@ -13579,22 +13931,26 @@ class ConversionCountingConfig {
   /// post-click conversions, set a value of 50000.
   core.String? postViewCountPercentageMillis;
 
-  ConversionCountingConfig();
+  ConversionCountingConfig({
+    this.floodlightActivityConfigs,
+    this.postViewCountPercentageMillis,
+  });
 
-  ConversionCountingConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('floodlightActivityConfigs')) {
-      floodlightActivityConfigs =
-          (_json['floodlightActivityConfigs'] as core.List)
-              .map<TrackingFloodlightActivityConfig>((value) =>
-                  TrackingFloodlightActivityConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList();
-    }
-    if (_json.containsKey('postViewCountPercentageMillis')) {
-      postViewCountPercentageMillis =
-          _json['postViewCountPercentageMillis'] as core.String;
-    }
-  }
+  ConversionCountingConfig.fromJson(core.Map _json)
+      : this(
+          floodlightActivityConfigs:
+              _json.containsKey('floodlightActivityConfigs')
+                  ? (_json['floodlightActivityConfigs'] as core.List)
+                      .map<TrackingFloodlightActivityConfig>((value) =>
+                          TrackingFloodlightActivityConfig.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          postViewCountPercentageMillis:
+              _json.containsKey('postViewCountPercentageMillis')
+                  ? _json['postViewCountPercentageMillis'] as core.String
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (floodlightActivityConfigs != null)
@@ -13618,16 +13974,18 @@ class CounterEvent {
   /// Required.
   core.String? reportingName;
 
-  CounterEvent();
+  CounterEvent({
+    this.name,
+    this.reportingName,
+  });
 
-  CounterEvent.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('reportingName')) {
-      reportingName = _json['reportingName'] as core.String;
-    }
-  }
+  CounterEvent.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          reportingName: _json.containsKey('reportingName')
+              ? _json['reportingName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -13644,13 +14002,16 @@ class CreateAssetRequest {
   /// Required.
   core.String? filename;
 
-  CreateAssetRequest();
+  CreateAssetRequest({
+    this.filename,
+  });
 
-  CreateAssetRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('filename')) {
-      filename = _json['filename'] as core.String;
-    }
-  }
+  CreateAssetRequest.fromJson(core.Map _json)
+      : this(
+          filename: _json.containsKey('filename')
+              ? _json['filename'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (filename != null) 'filename': filename!,
@@ -13662,14 +14023,17 @@ class CreateAssetResponse {
   /// The uploaded asset, if successful.
   Asset? asset;
 
-  CreateAssetResponse();
+  CreateAssetResponse({
+    this.asset,
+  });
 
-  CreateAssetResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('asset')) {
-      asset =
-          Asset.fromJson(_json['asset'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  CreateAssetResponse.fromJson(core.Map _json)
+      : this(
+          asset: _json.containsKey('asset')
+              ? Asset.fromJson(
+                  _json['asset'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (asset != null) 'asset': asset!.toJson(),
@@ -13770,21 +14134,25 @@ class CreateAssignedTargetingOptionsRequest {
   /// native content position.
   core.String? targetingType;
 
-  CreateAssignedTargetingOptionsRequest();
+  CreateAssignedTargetingOptionsRequest({
+    this.assignedTargetingOptions,
+    this.targetingType,
+  });
 
-  CreateAssignedTargetingOptionsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('assignedTargetingOptions')) {
-      assignedTargetingOptions =
-          (_json['assignedTargetingOptions'] as core.List)
-              .map<AssignedTargetingOption>((value) =>
-                  AssignedTargetingOption.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList();
-    }
-    if (_json.containsKey('targetingType')) {
-      targetingType = _json['targetingType'] as core.String;
-    }
-  }
+  CreateAssignedTargetingOptionsRequest.fromJson(core.Map _json)
+      : this(
+          assignedTargetingOptions:
+              _json.containsKey('assignedTargetingOptions')
+                  ? (_json['assignedTargetingOptions'] as core.List)
+                      .map<AssignedTargetingOption>((value) =>
+                          AssignedTargetingOption.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          targetingType: _json.containsKey('targetingType')
+              ? _json['targetingType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedTargetingOptions != null)
@@ -13836,32 +14204,39 @@ class CreateSdfDownloadTaskRequest {
   /// - "SDF_VERSION_5_3" : SDF version 5.3
   core.String? version;
 
-  CreateSdfDownloadTaskRequest();
+  CreateSdfDownloadTaskRequest({
+    this.advertiserId,
+    this.idFilter,
+    this.inventorySourceFilter,
+    this.parentEntityFilter,
+    this.partnerId,
+    this.version,
+  });
 
-  CreateSdfDownloadTaskRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('advertiserId')) {
-      advertiserId = _json['advertiserId'] as core.String;
-    }
-    if (_json.containsKey('idFilter')) {
-      idFilter = IdFilter.fromJson(
-          _json['idFilter'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('inventorySourceFilter')) {
-      inventorySourceFilter = InventorySourceFilter.fromJson(
-          _json['inventorySourceFilter']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('parentEntityFilter')) {
-      parentEntityFilter = ParentEntityFilter.fromJson(
-          _json['parentEntityFilter'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('partnerId')) {
-      partnerId = _json['partnerId'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.String;
-    }
-  }
+  CreateSdfDownloadTaskRequest.fromJson(core.Map _json)
+      : this(
+          advertiserId: _json.containsKey('advertiserId')
+              ? _json['advertiserId'] as core.String
+              : null,
+          idFilter: _json.containsKey('idFilter')
+              ? IdFilter.fromJson(
+                  _json['idFilter'] as core.Map<core.String, core.dynamic>)
+              : null,
+          inventorySourceFilter: _json.containsKey('inventorySourceFilter')
+              ? InventorySourceFilter.fromJson(_json['inventorySourceFilter']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          parentEntityFilter: _json.containsKey('parentEntityFilter')
+              ? ParentEntityFilter.fromJson(_json['parentEntityFilter']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          partnerId: _json.containsKey('partnerId')
+              ? _json['partnerId'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advertiserId != null) 'advertiserId': advertiserId!,
@@ -14364,188 +14739,233 @@ class Creative {
   /// Output only.
   core.bool? vpaid;
 
-  Creative();
+  Creative({
+    this.additionalDimensions,
+    this.advertiserId,
+    this.appendedTag,
+    this.assets,
+    this.cmPlacementId,
+    this.cmTrackingAd,
+    this.companionCreativeIds,
+    this.counterEvents,
+    this.createTime,
+    this.creativeAttributes,
+    this.creativeId,
+    this.creativeType,
+    this.dimensions,
+    this.displayName,
+    this.dynamic,
+    this.entityStatus,
+    this.exitEvents,
+    this.expandOnHover,
+    this.expandingDirection,
+    this.hostingSource,
+    this.html5Video,
+    this.iasCampaignMonitoring,
+    this.integrationCode,
+    this.jsTrackerUrl,
+    this.lineItemIds,
+    this.mediaDuration,
+    this.mp3Audio,
+    this.name,
+    this.notes,
+    this.obaIcon,
+    this.oggAudio,
+    this.progressOffset,
+    this.requireHtml5,
+    this.requireMraid,
+    this.requirePingForAttribution,
+    this.reviewStatus,
+    this.skipOffset,
+    this.skippable,
+    this.thirdPartyTag,
+    this.thirdPartyUrls,
+    this.timerEvents,
+    this.trackerUrls,
+    this.transcodes,
+    this.universalAdId,
+    this.updateTime,
+    this.vastTagUrl,
+    this.vpaid,
+  });
 
-  Creative.fromJson(core.Map _json) {
-    if (_json.containsKey('additionalDimensions')) {
-      additionalDimensions = (_json['additionalDimensions'] as core.List)
-          .map<Dimensions>((value) =>
-              Dimensions.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('advertiserId')) {
-      advertiserId = _json['advertiserId'] as core.String;
-    }
-    if (_json.containsKey('appendedTag')) {
-      appendedTag = _json['appendedTag'] as core.String;
-    }
-    if (_json.containsKey('assets')) {
-      assets = (_json['assets'] as core.List)
-          .map<AssetAssociation>((value) => AssetAssociation.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('cmPlacementId')) {
-      cmPlacementId = _json['cmPlacementId'] as core.String;
-    }
-    if (_json.containsKey('cmTrackingAd')) {
-      cmTrackingAd = CmTrackingAd.fromJson(
-          _json['cmTrackingAd'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('companionCreativeIds')) {
-      companionCreativeIds = (_json['companionCreativeIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('counterEvents')) {
-      counterEvents = (_json['counterEvents'] as core.List)
-          .map<CounterEvent>((value) => CounterEvent.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('creativeAttributes')) {
-      creativeAttributes = (_json['creativeAttributes'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('creativeId')) {
-      creativeId = _json['creativeId'] as core.String;
-    }
-    if (_json.containsKey('creativeType')) {
-      creativeType = _json['creativeType'] as core.String;
-    }
-    if (_json.containsKey('dimensions')) {
-      dimensions = Dimensions.fromJson(
-          _json['dimensions'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('dynamic')) {
-      dynamic = _json['dynamic'] as core.bool;
-    }
-    if (_json.containsKey('entityStatus')) {
-      entityStatus = _json['entityStatus'] as core.String;
-    }
-    if (_json.containsKey('exitEvents')) {
-      exitEvents = (_json['exitEvents'] as core.List)
-          .map<ExitEvent>((value) =>
-              ExitEvent.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('expandOnHover')) {
-      expandOnHover = _json['expandOnHover'] as core.bool;
-    }
-    if (_json.containsKey('expandingDirection')) {
-      expandingDirection = _json['expandingDirection'] as core.String;
-    }
-    if (_json.containsKey('hostingSource')) {
-      hostingSource = _json['hostingSource'] as core.String;
-    }
-    if (_json.containsKey('html5Video')) {
-      html5Video = _json['html5Video'] as core.bool;
-    }
-    if (_json.containsKey('iasCampaignMonitoring')) {
-      iasCampaignMonitoring = _json['iasCampaignMonitoring'] as core.bool;
-    }
-    if (_json.containsKey('integrationCode')) {
-      integrationCode = _json['integrationCode'] as core.String;
-    }
-    if (_json.containsKey('jsTrackerUrl')) {
-      jsTrackerUrl = _json['jsTrackerUrl'] as core.String;
-    }
-    if (_json.containsKey('lineItemIds')) {
-      lineItemIds = (_json['lineItemIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('mediaDuration')) {
-      mediaDuration = _json['mediaDuration'] as core.String;
-    }
-    if (_json.containsKey('mp3Audio')) {
-      mp3Audio = _json['mp3Audio'] as core.bool;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('notes')) {
-      notes = _json['notes'] as core.String;
-    }
-    if (_json.containsKey('obaIcon')) {
-      obaIcon = ObaIcon.fromJson(
-          _json['obaIcon'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('oggAudio')) {
-      oggAudio = _json['oggAudio'] as core.bool;
-    }
-    if (_json.containsKey('progressOffset')) {
-      progressOffset = AudioVideoOffset.fromJson(
-          _json['progressOffset'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('requireHtml5')) {
-      requireHtml5 = _json['requireHtml5'] as core.bool;
-    }
-    if (_json.containsKey('requireMraid')) {
-      requireMraid = _json['requireMraid'] as core.bool;
-    }
-    if (_json.containsKey('requirePingForAttribution')) {
-      requirePingForAttribution =
-          _json['requirePingForAttribution'] as core.bool;
-    }
-    if (_json.containsKey('reviewStatus')) {
-      reviewStatus = ReviewStatusInfo.fromJson(
-          _json['reviewStatus'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('skipOffset')) {
-      skipOffset = AudioVideoOffset.fromJson(
-          _json['skipOffset'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('skippable')) {
-      skippable = _json['skippable'] as core.bool;
-    }
-    if (_json.containsKey('thirdPartyTag')) {
-      thirdPartyTag = _json['thirdPartyTag'] as core.String;
-    }
-    if (_json.containsKey('thirdPartyUrls')) {
-      thirdPartyUrls = (_json['thirdPartyUrls'] as core.List)
-          .map<ThirdPartyUrl>((value) => ThirdPartyUrl.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('timerEvents')) {
-      timerEvents = (_json['timerEvents'] as core.List)
-          .map<TimerEvent>((value) =>
-              TimerEvent.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('trackerUrls')) {
-      trackerUrls = (_json['trackerUrls'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('transcodes')) {
-      transcodes = (_json['transcodes'] as core.List)
-          .map<Transcode>((value) =>
-              Transcode.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('universalAdId')) {
-      universalAdId = UniversalAdId.fromJson(
-          _json['universalAdId'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-    if (_json.containsKey('vastTagUrl')) {
-      vastTagUrl = _json['vastTagUrl'] as core.String;
-    }
-    if (_json.containsKey('vpaid')) {
-      vpaid = _json['vpaid'] as core.bool;
-    }
-  }
+  Creative.fromJson(core.Map _json)
+      : this(
+          additionalDimensions: _json.containsKey('additionalDimensions')
+              ? (_json['additionalDimensions'] as core.List)
+                  .map<Dimensions>((value) => Dimensions.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          advertiserId: _json.containsKey('advertiserId')
+              ? _json['advertiserId'] as core.String
+              : null,
+          appendedTag: _json.containsKey('appendedTag')
+              ? _json['appendedTag'] as core.String
+              : null,
+          assets: _json.containsKey('assets')
+              ? (_json['assets'] as core.List)
+                  .map<AssetAssociation>((value) => AssetAssociation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          cmPlacementId: _json.containsKey('cmPlacementId')
+              ? _json['cmPlacementId'] as core.String
+              : null,
+          cmTrackingAd: _json.containsKey('cmTrackingAd')
+              ? CmTrackingAd.fromJson(
+                  _json['cmTrackingAd'] as core.Map<core.String, core.dynamic>)
+              : null,
+          companionCreativeIds: _json.containsKey('companionCreativeIds')
+              ? (_json['companionCreativeIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          counterEvents: _json.containsKey('counterEvents')
+              ? (_json['counterEvents'] as core.List)
+                  .map<CounterEvent>((value) => CounterEvent.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          creativeAttributes: _json.containsKey('creativeAttributes')
+              ? (_json['creativeAttributes'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          creativeId: _json.containsKey('creativeId')
+              ? _json['creativeId'] as core.String
+              : null,
+          creativeType: _json.containsKey('creativeType')
+              ? _json['creativeType'] as core.String
+              : null,
+          dimensions: _json.containsKey('dimensions')
+              ? Dimensions.fromJson(
+                  _json['dimensions'] as core.Map<core.String, core.dynamic>)
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          dynamic: _json.containsKey('dynamic')
+              ? _json['dynamic'] as core.bool
+              : null,
+          entityStatus: _json.containsKey('entityStatus')
+              ? _json['entityStatus'] as core.String
+              : null,
+          exitEvents: _json.containsKey('exitEvents')
+              ? (_json['exitEvents'] as core.List)
+                  .map<ExitEvent>((value) => ExitEvent.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          expandOnHover: _json.containsKey('expandOnHover')
+              ? _json['expandOnHover'] as core.bool
+              : null,
+          expandingDirection: _json.containsKey('expandingDirection')
+              ? _json['expandingDirection'] as core.String
+              : null,
+          hostingSource: _json.containsKey('hostingSource')
+              ? _json['hostingSource'] as core.String
+              : null,
+          html5Video: _json.containsKey('html5Video')
+              ? _json['html5Video'] as core.bool
+              : null,
+          iasCampaignMonitoring: _json.containsKey('iasCampaignMonitoring')
+              ? _json['iasCampaignMonitoring'] as core.bool
+              : null,
+          integrationCode: _json.containsKey('integrationCode')
+              ? _json['integrationCode'] as core.String
+              : null,
+          jsTrackerUrl: _json.containsKey('jsTrackerUrl')
+              ? _json['jsTrackerUrl'] as core.String
+              : null,
+          lineItemIds: _json.containsKey('lineItemIds')
+              ? (_json['lineItemIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          mediaDuration: _json.containsKey('mediaDuration')
+              ? _json['mediaDuration'] as core.String
+              : null,
+          mp3Audio: _json.containsKey('mp3Audio')
+              ? _json['mp3Audio'] as core.bool
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          notes:
+              _json.containsKey('notes') ? _json['notes'] as core.String : null,
+          obaIcon: _json.containsKey('obaIcon')
+              ? ObaIcon.fromJson(
+                  _json['obaIcon'] as core.Map<core.String, core.dynamic>)
+              : null,
+          oggAudio: _json.containsKey('oggAudio')
+              ? _json['oggAudio'] as core.bool
+              : null,
+          progressOffset: _json.containsKey('progressOffset')
+              ? AudioVideoOffset.fromJson(_json['progressOffset']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          requireHtml5: _json.containsKey('requireHtml5')
+              ? _json['requireHtml5'] as core.bool
+              : null,
+          requireMraid: _json.containsKey('requireMraid')
+              ? _json['requireMraid'] as core.bool
+              : null,
+          requirePingForAttribution:
+              _json.containsKey('requirePingForAttribution')
+                  ? _json['requirePingForAttribution'] as core.bool
+                  : null,
+          reviewStatus: _json.containsKey('reviewStatus')
+              ? ReviewStatusInfo.fromJson(
+                  _json['reviewStatus'] as core.Map<core.String, core.dynamic>)
+              : null,
+          skipOffset: _json.containsKey('skipOffset')
+              ? AudioVideoOffset.fromJson(
+                  _json['skipOffset'] as core.Map<core.String, core.dynamic>)
+              : null,
+          skippable: _json.containsKey('skippable')
+              ? _json['skippable'] as core.bool
+              : null,
+          thirdPartyTag: _json.containsKey('thirdPartyTag')
+              ? _json['thirdPartyTag'] as core.String
+              : null,
+          thirdPartyUrls: _json.containsKey('thirdPartyUrls')
+              ? (_json['thirdPartyUrls'] as core.List)
+                  .map<ThirdPartyUrl>((value) => ThirdPartyUrl.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          timerEvents: _json.containsKey('timerEvents')
+              ? (_json['timerEvents'] as core.List)
+                  .map<TimerEvent>((value) => TimerEvent.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          trackerUrls: _json.containsKey('trackerUrls')
+              ? (_json['trackerUrls'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          transcodes: _json.containsKey('transcodes')
+              ? (_json['transcodes'] as core.List)
+                  .map<Transcode>((value) => Transcode.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          universalAdId: _json.containsKey('universalAdId')
+              ? UniversalAdId.fromJson(
+                  _json['universalAdId'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+          vastTagUrl: _json.containsKey('vastTagUrl')
+              ? _json['vastTagUrl'] as core.String
+              : null,
+          vpaid:
+              _json.containsKey('vpaid') ? _json['vpaid'] as core.bool : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (additionalDimensions != null)
@@ -14671,22 +15091,28 @@ class CreativeConfig {
   /// Applicable when creative_type is `CREATIVE_TYPE_VIDEO`.
   InventorySourceVideoCreativeConfig? videoCreativeConfig;
 
-  CreativeConfig();
+  CreativeConfig({
+    this.creativeType,
+    this.displayCreativeConfig,
+    this.videoCreativeConfig,
+  });
 
-  CreativeConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('creativeType')) {
-      creativeType = _json['creativeType'] as core.String;
-    }
-    if (_json.containsKey('displayCreativeConfig')) {
-      displayCreativeConfig = InventorySourceDisplayCreativeConfig.fromJson(
-          _json['displayCreativeConfig']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('videoCreativeConfig')) {
-      videoCreativeConfig = InventorySourceVideoCreativeConfig.fromJson(
-          _json['videoCreativeConfig'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  CreativeConfig.fromJson(core.Map _json)
+      : this(
+          creativeType: _json.containsKey('creativeType')
+              ? _json['creativeType'] as core.String
+              : null,
+          displayCreativeConfig: _json.containsKey('displayCreativeConfig')
+              ? InventorySourceDisplayCreativeConfig.fromJson(
+                  _json['displayCreativeConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          videoCreativeConfig: _json.containsKey('videoCreativeConfig')
+              ? InventorySourceVideoCreativeConfig.fromJson(
+                  _json['videoCreativeConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (creativeType != null) 'creativeType': creativeType!,
@@ -14758,33 +15184,40 @@ class CustomBiddingAlgorithm {
   /// Immutable.
   core.String? partnerId;
 
-  CustomBiddingAlgorithm();
+  CustomBiddingAlgorithm({
+    this.advertiserId,
+    this.customBiddingAlgorithmId,
+    this.customBiddingAlgorithmType,
+    this.displayName,
+    this.entityStatus,
+    this.name,
+    this.partnerId,
+  });
 
-  CustomBiddingAlgorithm.fromJson(core.Map _json) {
-    if (_json.containsKey('advertiserId')) {
-      advertiserId = _json['advertiserId'] as core.String;
-    }
-    if (_json.containsKey('customBiddingAlgorithmId')) {
-      customBiddingAlgorithmId =
-          _json['customBiddingAlgorithmId'] as core.String;
-    }
-    if (_json.containsKey('customBiddingAlgorithmType')) {
-      customBiddingAlgorithmType =
-          _json['customBiddingAlgorithmType'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('entityStatus')) {
-      entityStatus = _json['entityStatus'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('partnerId')) {
-      partnerId = _json['partnerId'] as core.String;
-    }
-  }
+  CustomBiddingAlgorithm.fromJson(core.Map _json)
+      : this(
+          advertiserId: _json.containsKey('advertiserId')
+              ? _json['advertiserId'] as core.String
+              : null,
+          customBiddingAlgorithmId:
+              _json.containsKey('customBiddingAlgorithmId')
+                  ? _json['customBiddingAlgorithmId'] as core.String
+                  : null,
+          customBiddingAlgorithmType:
+              _json.containsKey('customBiddingAlgorithmType')
+                  ? _json['customBiddingAlgorithmType'] as core.String
+                  : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          entityStatus: _json.containsKey('entityStatus')
+              ? _json['entityStatus'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          partnerId: _json.containsKey('partnerId')
+              ? _json['partnerId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advertiserId != null) 'advertiserId': advertiserId!,
@@ -14821,19 +15254,22 @@ class CustomList {
   /// Output only.
   core.String? name;
 
-  CustomList();
+  CustomList({
+    this.customListId,
+    this.displayName,
+    this.name,
+  });
 
-  CustomList.fromJson(core.Map _json) {
-    if (_json.containsKey('customListId')) {
-      customListId = _json['customListId'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  CustomList.fromJson(core.Map _json)
+      : this(
+          customListId: _json.containsKey('customListId')
+              ? _json['customListId'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customListId != null) 'customListId': customListId!,
@@ -14853,17 +15289,20 @@ class CustomListGroup {
   /// Required.
   core.List<CustomListTargetingSetting>? settings;
 
-  CustomListGroup();
+  CustomListGroup({
+    this.settings,
+  });
 
-  CustomListGroup.fromJson(core.Map _json) {
-    if (_json.containsKey('settings')) {
-      settings = (_json['settings'] as core.List)
-          .map<CustomListTargetingSetting>((value) =>
-              CustomListTargetingSetting.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  CustomListGroup.fromJson(core.Map _json)
+      : this(
+          settings: _json.containsKey('settings')
+              ? (_json['settings'] as core.List)
+                  .map<CustomListTargetingSetting>((value) =>
+                      CustomListTargetingSetting.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (settings != null)
@@ -14880,13 +15319,16 @@ class CustomListTargetingSetting {
   /// Required.
   core.String? customListId;
 
-  CustomListTargetingSetting();
+  CustomListTargetingSetting({
+    this.customListId,
+  });
 
-  CustomListTargetingSetting.fromJson(core.Map _json) {
-    if (_json.containsKey('customListId')) {
-      customListId = _json['customListId'] as core.String;
-    }
-  }
+  CustomListTargetingSetting.fromJson(core.Map _json)
+      : this(
+          customListId: _json.containsKey('customListId')
+              ? _json['customListId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customListId != null) 'customListId': customListId!,
@@ -14919,19 +15361,18 @@ class Date {
   /// Must be from 1 to 9999, or 0 to specify a date without a year.
   core.int? year;
 
-  Date();
+  Date({
+    this.day,
+    this.month,
+    this.year,
+  });
 
-  Date.fromJson(core.Map _json) {
-    if (_json.containsKey('day')) {
-      day = _json['day'] as core.int;
-    }
-    if (_json.containsKey('month')) {
-      month = _json['month'] as core.int;
-    }
-    if (_json.containsKey('year')) {
-      year = _json['year'] as core.int;
-    }
-  }
+  Date.fromJson(core.Map _json)
+      : this(
+          day: _json.containsKey('day') ? _json['day'] as core.int : null,
+          month: _json.containsKey('month') ? _json['month'] as core.int : null,
+          year: _json.containsKey('year') ? _json['year'] as core.int : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (day != null) 'day': day!,
@@ -14952,18 +15393,22 @@ class DateRange {
   /// Must specify a positive value for `year`, `month`, and `day`.
   Date? startDate;
 
-  DateRange();
+  DateRange({
+    this.endDate,
+    this.startDate,
+  });
 
-  DateRange.fromJson(core.Map _json) {
-    if (_json.containsKey('endDate')) {
-      endDate = Date.fromJson(
-          _json['endDate'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('startDate')) {
-      startDate = Date.fromJson(
-          _json['startDate'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  DateRange.fromJson(core.Map _json)
+      : this(
+          endDate: _json.containsKey('endDate')
+              ? Date.fromJson(
+                  _json['endDate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          startDate: _json.containsKey('startDate')
+              ? Date.fromJson(
+                  _json['startDate'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endDate != null) 'endDate': endDate!.toJson(),
@@ -15018,22 +15463,28 @@ class DayAndTimeAssignedTargetingOptionDetails {
   /// of the advertiser that served the ad.
   core.String? timeZoneResolution;
 
-  DayAndTimeAssignedTargetingOptionDetails();
+  DayAndTimeAssignedTargetingOptionDetails({
+    this.dayOfWeek,
+    this.endHour,
+    this.startHour,
+    this.timeZoneResolution,
+  });
 
-  DayAndTimeAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('dayOfWeek')) {
-      dayOfWeek = _json['dayOfWeek'] as core.String;
-    }
-    if (_json.containsKey('endHour')) {
-      endHour = _json['endHour'] as core.int;
-    }
-    if (_json.containsKey('startHour')) {
-      startHour = _json['startHour'] as core.int;
-    }
-    if (_json.containsKey('timeZoneResolution')) {
-      timeZoneResolution = _json['timeZoneResolution'] as core.String;
-    }
-  }
+  DayAndTimeAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          dayOfWeek: _json.containsKey('dayOfWeek')
+              ? _json['dayOfWeek'] as core.String
+              : null,
+          endHour: _json.containsKey('endHour')
+              ? _json['endHour'] as core.int
+              : null,
+          startHour: _json.containsKey('startHour')
+              ? _json['startHour'] as core.int
+              : null,
+          timeZoneResolution: _json.containsKey('timeZoneResolution')
+              ? _json['timeZoneResolution'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dayOfWeek != null) 'dayOfWeek': dayOfWeek!,
@@ -15149,19 +15600,23 @@ class DeleteAssignedTargetingOptionsRequest {
   /// native content position.
   core.String? targetingType;
 
-  DeleteAssignedTargetingOptionsRequest();
+  DeleteAssignedTargetingOptionsRequest({
+    this.assignedTargetingOptionIds,
+    this.targetingType,
+  });
 
-  DeleteAssignedTargetingOptionsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('assignedTargetingOptionIds')) {
-      assignedTargetingOptionIds =
-          (_json['assignedTargetingOptionIds'] as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList();
-    }
-    if (_json.containsKey('targetingType')) {
-      targetingType = _json['targetingType'] as core.String;
-    }
-  }
+  DeleteAssignedTargetingOptionsRequest.fromJson(core.Map _json)
+      : this(
+          assignedTargetingOptionIds:
+              _json.containsKey('assignedTargetingOptionIds')
+                  ? (_json['assignedTargetingOptionIds'] as core.List)
+                      .map<core.String>((value) => value as core.String)
+                      .toList()
+                  : null,
+          targetingType: _json.containsKey('targetingType')
+              ? _json['targetingType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedTargetingOptionIds != null)
@@ -15189,19 +15644,24 @@ class DeviceMakeModelAssignedTargetingOptionDetails {
   /// Required.
   core.String? targetingOptionId;
 
-  DeviceMakeModelAssignedTargetingOptionDetails();
+  DeviceMakeModelAssignedTargetingOptionDetails({
+    this.displayName,
+    this.negative,
+    this.targetingOptionId,
+  });
 
-  DeviceMakeModelAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('negative')) {
-      negative = _json['negative'] as core.bool;
-    }
-    if (_json.containsKey('targetingOptionId')) {
-      targetingOptionId = _json['targetingOptionId'] as core.String;
-    }
-  }
+  DeviceMakeModelAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          negative: _json.containsKey('negative')
+              ? _json['negative'] as core.bool
+              : null,
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -15220,13 +15680,16 @@ class DeviceMakeModelTargetingOptionDetails {
   /// Output only.
   core.String? displayName;
 
-  DeviceMakeModelTargetingOptionDetails();
+  DeviceMakeModelTargetingOptionDetails({
+    this.displayName,
+  });
 
-  DeviceMakeModelTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-  }
+  DeviceMakeModelTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -15256,16 +15719,20 @@ class DeviceTypeAssignedTargetingOptionDetails {
   /// Required.
   core.String? targetingOptionId;
 
-  DeviceTypeAssignedTargetingOptionDetails();
+  DeviceTypeAssignedTargetingOptionDetails({
+    this.deviceType,
+    this.targetingOptionId,
+  });
 
-  DeviceTypeAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('deviceType')) {
-      deviceType = _json['deviceType'] as core.String;
-    }
-    if (_json.containsKey('targetingOptionId')) {
-      targetingOptionId = _json['targetingOptionId'] as core.String;
-    }
-  }
+  DeviceTypeAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          deviceType: _json.containsKey('deviceType')
+              ? _json['deviceType'] as core.String
+              : null,
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceType != null) 'deviceType': deviceType!,
@@ -15291,13 +15758,16 @@ class DeviceTypeTargetingOptionDetails {
   /// - "DEVICE_TYPE_TABLET" : The device type is tablet.
   core.String? deviceType;
 
-  DeviceTypeTargetingOptionDetails();
+  DeviceTypeTargetingOptionDetails({
+    this.deviceType,
+  });
 
-  DeviceTypeTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('deviceType')) {
-      deviceType = _json['deviceType'] as core.String;
-    }
-  }
+  DeviceTypeTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          deviceType: _json.containsKey('deviceType')
+              ? _json['deviceType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceType != null) 'deviceType': deviceType!,
@@ -15331,17 +15801,21 @@ class DigitalContentLabelAssignedTargetingOptionDetails {
   /// Required.
   core.String? excludedTargetingOptionId;
 
-  DigitalContentLabelAssignedTargetingOptionDetails();
+  DigitalContentLabelAssignedTargetingOptionDetails({
+    this.contentRatingTier,
+    this.excludedTargetingOptionId,
+  });
 
-  DigitalContentLabelAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('contentRatingTier')) {
-      contentRatingTier = _json['contentRatingTier'] as core.String;
-    }
-    if (_json.containsKey('excludedTargetingOptionId')) {
-      excludedTargetingOptionId =
-          _json['excludedTargetingOptionId'] as core.String;
-    }
-  }
+  DigitalContentLabelAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          contentRatingTier: _json.containsKey('contentRatingTier')
+              ? _json['contentRatingTier'] as core.String
+              : null,
+          excludedTargetingOptionId:
+              _json.containsKey('excludedTargetingOptionId')
+                  ? _json['excludedTargetingOptionId'] as core.String
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentRatingTier != null) 'contentRatingTier': contentRatingTier!,
@@ -15373,13 +15847,16 @@ class DigitalContentLabelTargetingOptionDetails {
   /// audiences.
   core.String? contentRatingTier;
 
-  DigitalContentLabelTargetingOptionDetails();
+  DigitalContentLabelTargetingOptionDetails({
+    this.contentRatingTier,
+  });
 
-  DigitalContentLabelTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('contentRatingTier')) {
-      contentRatingTier = _json['contentRatingTier'] as core.String;
-    }
-  }
+  DigitalContentLabelTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          contentRatingTier: _json.containsKey('contentRatingTier')
+              ? _json['contentRatingTier'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentRatingTier != null) 'contentRatingTier': contentRatingTier!,
@@ -15394,16 +15871,20 @@ class Dimensions {
   /// The width in pixels.
   core.int? widthPixels;
 
-  Dimensions();
+  Dimensions({
+    this.heightPixels,
+    this.widthPixels,
+  });
 
-  Dimensions.fromJson(core.Map _json) {
-    if (_json.containsKey('heightPixels')) {
-      heightPixels = _json['heightPixels'] as core.int;
-    }
-    if (_json.containsKey('widthPixels')) {
-      widthPixels = _json['widthPixels'] as core.int;
-    }
-  }
+  Dimensions.fromJson(core.Map _json)
+      : this(
+          heightPixels: _json.containsKey('heightPixels')
+              ? _json['heightPixels'] as core.int
+              : null,
+          widthPixels: _json.containsKey('widthPixels')
+              ? _json['widthPixels'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (heightPixels != null) 'heightPixels': heightPixels!,
@@ -15439,39 +15920,50 @@ class DoubleVerify {
   /// Video viewability settings (applicable to video line items only).
   DoubleVerifyVideoViewability? videoViewability;
 
-  DoubleVerify();
+  DoubleVerify({
+    this.appStarRating,
+    this.avoidedAgeRatings,
+    this.brandSafetyCategories,
+    this.customSegmentId,
+    this.displayViewability,
+    this.fraudInvalidTraffic,
+    this.videoViewability,
+  });
 
-  DoubleVerify.fromJson(core.Map _json) {
-    if (_json.containsKey('appStarRating')) {
-      appStarRating = DoubleVerifyAppStarRating.fromJson(
-          _json['appStarRating'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('avoidedAgeRatings')) {
-      avoidedAgeRatings = (_json['avoidedAgeRatings'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('brandSafetyCategories')) {
-      brandSafetyCategories = DoubleVerifyBrandSafetyCategories.fromJson(
-          _json['brandSafetyCategories']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('customSegmentId')) {
-      customSegmentId = _json['customSegmentId'] as core.String;
-    }
-    if (_json.containsKey('displayViewability')) {
-      displayViewability = DoubleVerifyDisplayViewability.fromJson(
-          _json['displayViewability'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('fraudInvalidTraffic')) {
-      fraudInvalidTraffic = DoubleVerifyFraudInvalidTraffic.fromJson(
-          _json['fraudInvalidTraffic'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('videoViewability')) {
-      videoViewability = DoubleVerifyVideoViewability.fromJson(
-          _json['videoViewability'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  DoubleVerify.fromJson(core.Map _json)
+      : this(
+          appStarRating: _json.containsKey('appStarRating')
+              ? DoubleVerifyAppStarRating.fromJson(
+                  _json['appStarRating'] as core.Map<core.String, core.dynamic>)
+              : null,
+          avoidedAgeRatings: _json.containsKey('avoidedAgeRatings')
+              ? (_json['avoidedAgeRatings'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          brandSafetyCategories: _json.containsKey('brandSafetyCategories')
+              ? DoubleVerifyBrandSafetyCategories.fromJson(
+                  _json['brandSafetyCategories']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          customSegmentId: _json.containsKey('customSegmentId')
+              ? _json['customSegmentId'] as core.String
+              : null,
+          displayViewability: _json.containsKey('displayViewability')
+              ? DoubleVerifyDisplayViewability.fromJson(
+                  _json['displayViewability']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          fraudInvalidTraffic: _json.containsKey('fraudInvalidTraffic')
+              ? DoubleVerifyFraudInvalidTraffic.fromJson(
+                  _json['fraudInvalidTraffic']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          videoViewability: _json.containsKey('videoViewability')
+              ? DoubleVerifyVideoViewability.fromJson(_json['videoViewability']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appStarRating != null) 'appStarRating': appStarRating!.toJson(),
@@ -15506,17 +15998,21 @@ class DoubleVerifyAppStarRating {
   /// - "APP_STAR_RATE_4_POINT_5_LESS" : Official Apps with rating < 4.5 Stars.
   core.String? avoidedStarRating;
 
-  DoubleVerifyAppStarRating();
+  DoubleVerifyAppStarRating({
+    this.avoidInsufficientStarRating,
+    this.avoidedStarRating,
+  });
 
-  DoubleVerifyAppStarRating.fromJson(core.Map _json) {
-    if (_json.containsKey('avoidInsufficientStarRating')) {
-      avoidInsufficientStarRating =
-          _json['avoidInsufficientStarRating'] as core.bool;
-    }
-    if (_json.containsKey('avoidedStarRating')) {
-      avoidedStarRating = _json['avoidedStarRating'] as core.String;
-    }
-  }
+  DoubleVerifyAppStarRating.fromJson(core.Map _json)
+      : this(
+          avoidInsufficientStarRating:
+              _json.containsKey('avoidInsufficientStarRating')
+                  ? _json['avoidInsufficientStarRating'] as core.bool
+                  : null,
+          avoidedStarRating: _json.containsKey('avoidedStarRating')
+              ? _json['avoidedStarRating'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (avoidInsufficientStarRating != null)
@@ -15536,26 +16032,31 @@ class DoubleVerifyBrandSafetyCategories {
   /// Brand safety medium severity avoidance categories.
   core.List<core.String>? avoidedMediumSeverityCategories;
 
-  DoubleVerifyBrandSafetyCategories();
+  DoubleVerifyBrandSafetyCategories({
+    this.avoidUnknownBrandSafetyCategory,
+    this.avoidedHighSeverityCategories,
+    this.avoidedMediumSeverityCategories,
+  });
 
-  DoubleVerifyBrandSafetyCategories.fromJson(core.Map _json) {
-    if (_json.containsKey('avoidUnknownBrandSafetyCategory')) {
-      avoidUnknownBrandSafetyCategory =
-          _json['avoidUnknownBrandSafetyCategory'] as core.bool;
-    }
-    if (_json.containsKey('avoidedHighSeverityCategories')) {
-      avoidedHighSeverityCategories =
-          (_json['avoidedHighSeverityCategories'] as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList();
-    }
-    if (_json.containsKey('avoidedMediumSeverityCategories')) {
-      avoidedMediumSeverityCategories =
-          (_json['avoidedMediumSeverityCategories'] as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList();
-    }
-  }
+  DoubleVerifyBrandSafetyCategories.fromJson(core.Map _json)
+      : this(
+          avoidUnknownBrandSafetyCategory:
+              _json.containsKey('avoidUnknownBrandSafetyCategory')
+                  ? _json['avoidUnknownBrandSafetyCategory'] as core.bool
+                  : null,
+          avoidedHighSeverityCategories:
+              _json.containsKey('avoidedHighSeverityCategories')
+                  ? (_json['avoidedHighSeverityCategories'] as core.List)
+                      .map<core.String>((value) => value as core.String)
+                      .toList()
+                  : null,
+          avoidedMediumSeverityCategories:
+              _json.containsKey('avoidedMediumSeverityCategories')
+                  ? (_json['avoidedMediumSeverityCategories'] as core.List)
+                      .map<core.String>((value) => value as core.String)
+                      .toList()
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (avoidUnknownBrandSafetyCategory != null)
@@ -15605,16 +16106,18 @@ class DoubleVerifyDisplayViewability {
   /// maximize 100% viewable duration 15 seconds or more.
   core.String? viewableDuring;
 
-  DoubleVerifyDisplayViewability();
+  DoubleVerifyDisplayViewability({
+    this.iab,
+    this.viewableDuring,
+  });
 
-  DoubleVerifyDisplayViewability.fromJson(core.Map _json) {
-    if (_json.containsKey('iab')) {
-      iab = _json['iab'] as core.String;
-    }
-    if (_json.containsKey('viewableDuring')) {
-      viewableDuring = _json['viewableDuring'] as core.String;
-    }
-  }
+  DoubleVerifyDisplayViewability.fromJson(core.Map _json)
+      : this(
+          iab: _json.containsKey('iab') ? _json['iab'] as core.String : null,
+          viewableDuring: _json.containsKey('viewableDuring')
+              ? _json['viewableDuring'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (iab != null) 'iab': iab!,
@@ -15641,16 +16144,20 @@ class DoubleVerifyFraudInvalidTraffic {
   /// - "AD_IMPRESSION_FRAUD_2" : 2% or Higher Fraud & IVT.
   core.String? avoidedFraudOption;
 
-  DoubleVerifyFraudInvalidTraffic();
+  DoubleVerifyFraudInvalidTraffic({
+    this.avoidInsufficientOption,
+    this.avoidedFraudOption,
+  });
 
-  DoubleVerifyFraudInvalidTraffic.fromJson(core.Map _json) {
-    if (_json.containsKey('avoidInsufficientOption')) {
-      avoidInsufficientOption = _json['avoidInsufficientOption'] as core.bool;
-    }
-    if (_json.containsKey('avoidedFraudOption')) {
-      avoidedFraudOption = _json['avoidedFraudOption'] as core.String;
-    }
-  }
+  DoubleVerifyFraudInvalidTraffic.fromJson(core.Map _json)
+      : this(
+          avoidInsufficientOption: _json.containsKey('avoidInsufficientOption')
+              ? _json['avoidInsufficientOption'] as core.bool
+              : null,
+          avoidedFraudOption: _json.containsKey('avoidedFraudOption')
+              ? _json['avoidedFraudOption'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (avoidInsufficientOption != null)
@@ -15715,19 +16222,24 @@ class DoubleVerifyVideoViewability {
   /// maximize fully viewable rate 10% or higher.
   core.String? videoViewableRate;
 
-  DoubleVerifyVideoViewability();
+  DoubleVerifyVideoViewability({
+    this.playerImpressionRate,
+    this.videoIab,
+    this.videoViewableRate,
+  });
 
-  DoubleVerifyVideoViewability.fromJson(core.Map _json) {
-    if (_json.containsKey('playerImpressionRate')) {
-      playerImpressionRate = _json['playerImpressionRate'] as core.String;
-    }
-    if (_json.containsKey('videoIab')) {
-      videoIab = _json['videoIab'] as core.String;
-    }
-    if (_json.containsKey('videoViewableRate')) {
-      videoViewableRate = _json['videoViewableRate'] as core.String;
-    }
-  }
+  DoubleVerifyVideoViewability.fromJson(core.Map _json)
+      : this(
+          playerImpressionRate: _json.containsKey('playerImpressionRate')
+              ? _json['playerImpressionRate'] as core.String
+              : null,
+          videoIab: _json.containsKey('videoIab')
+              ? _json['videoIab'] as core.String
+              : null,
+          videoViewableRate: _json.containsKey('videoViewableRate')
+              ? _json['videoViewableRate'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (playerImpressionRate != null)
@@ -15786,16 +16298,20 @@ class EnvironmentAssignedTargetingOptionDetails {
   /// Required.
   core.String? targetingOptionId;
 
-  EnvironmentAssignedTargetingOptionDetails();
+  EnvironmentAssignedTargetingOptionDetails({
+    this.environment,
+    this.targetingOptionId,
+  });
 
-  EnvironmentAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('environment')) {
-      environment = _json['environment'] as core.String;
-    }
-    if (_json.containsKey('targetingOptionId')) {
-      targetingOptionId = _json['targetingOptionId'] as core.String;
-    }
-  }
+  EnvironmentAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          environment: _json.containsKey('environment')
+              ? _json['environment'] as core.String
+              : null,
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (environment != null) 'environment': environment!,
@@ -15828,13 +16344,16 @@ class EnvironmentTargetingOptionDetails {
   /// - "ENVIRONMENT_APP" : Target inventory displayed in apps.
   core.String? environment;
 
-  EnvironmentTargetingOptionDetails();
+  EnvironmentTargetingOptionDetails({
+    this.environment,
+  });
 
-  EnvironmentTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('environment')) {
-      environment = _json['environment'] as core.String;
-    }
-  }
+  EnvironmentTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          environment: _json.containsKey('environment')
+              ? _json['environment'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (environment != null) 'environment': environment!,
@@ -15852,13 +16371,16 @@ class ExchangeAssignedTargetingOptionDetails {
   /// Required.
   core.String? targetingOptionId;
 
-  ExchangeAssignedTargetingOptionDetails();
+  ExchangeAssignedTargetingOptionDetails({
+    this.targetingOptionId,
+  });
 
-  ExchangeAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('targetingOptionId')) {
-      targetingOptionId = _json['targetingOptionId'] as core.String;
-    }
-  }
+  ExchangeAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
@@ -15872,17 +16394,20 @@ class ExchangeConfig {
   /// Duplicate enabled exchanges will be ignored.
   core.List<ExchangeConfigEnabledExchange>? enabledExchanges;
 
-  ExchangeConfig();
+  ExchangeConfig({
+    this.enabledExchanges,
+  });
 
-  ExchangeConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('enabledExchanges')) {
-      enabledExchanges = (_json['enabledExchanges'] as core.List)
-          .map<ExchangeConfigEnabledExchange>((value) =>
-              ExchangeConfigEnabledExchange.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ExchangeConfig.fromJson(core.Map _json)
+      : this(
+          enabledExchanges: _json.containsKey('enabledExchanges')
+              ? (_json['enabledExchanges'] as core.List)
+                  .map<ExchangeConfigEnabledExchange>((value) =>
+                      ExchangeConfigEnabledExchange.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabledExchanges != null)
@@ -15982,23 +16507,29 @@ class ExchangeConfigEnabledExchange {
   /// Output only.
   core.String? seatId;
 
-  ExchangeConfigEnabledExchange();
+  ExchangeConfigEnabledExchange({
+    this.exchange,
+    this.googleAdManagerAgencyId,
+    this.googleAdManagerBuyerNetworkId,
+    this.seatId,
+  });
 
-  ExchangeConfigEnabledExchange.fromJson(core.Map _json) {
-    if (_json.containsKey('exchange')) {
-      exchange = _json['exchange'] as core.String;
-    }
-    if (_json.containsKey('googleAdManagerAgencyId')) {
-      googleAdManagerAgencyId = _json['googleAdManagerAgencyId'] as core.String;
-    }
-    if (_json.containsKey('googleAdManagerBuyerNetworkId')) {
-      googleAdManagerBuyerNetworkId =
-          _json['googleAdManagerBuyerNetworkId'] as core.String;
-    }
-    if (_json.containsKey('seatId')) {
-      seatId = _json['seatId'] as core.String;
-    }
-  }
+  ExchangeConfigEnabledExchange.fromJson(core.Map _json)
+      : this(
+          exchange: _json.containsKey('exchange')
+              ? _json['exchange'] as core.String
+              : null,
+          googleAdManagerAgencyId: _json.containsKey('googleAdManagerAgencyId')
+              ? _json['googleAdManagerAgencyId'] as core.String
+              : null,
+          googleAdManagerBuyerNetworkId:
+              _json.containsKey('googleAdManagerBuyerNetworkId')
+                  ? _json['googleAdManagerBuyerNetworkId'] as core.String
+                  : null,
+          seatId: _json.containsKey('seatId')
+              ? _json['seatId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exchange != null) 'exchange': exchange!,
@@ -16091,16 +16622,20 @@ class ExchangeReviewStatus {
   /// - "REVIEW_STATUS_PENDING" : The creative is pending review.
   core.String? status;
 
-  ExchangeReviewStatus();
+  ExchangeReviewStatus({
+    this.exchange,
+    this.status,
+  });
 
-  ExchangeReviewStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('exchange')) {
-      exchange = _json['exchange'] as core.String;
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-  }
+  ExchangeReviewStatus.fromJson(core.Map _json)
+      : this(
+          exchange: _json.containsKey('exchange')
+              ? _json['exchange'] as core.String
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exchange != null) 'exchange': exchange!,
@@ -16185,13 +16720,16 @@ class ExchangeTargetingOptionDetails {
   /// - "EXCHANGE_MEDIANET" : Media.net.
   core.String? exchange;
 
-  ExchangeTargetingOptionDetails();
+  ExchangeTargetingOptionDetails({
+    this.exchange,
+  });
 
-  ExchangeTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('exchange')) {
-      exchange = _json['exchange'] as core.String;
-    }
-  }
+  ExchangeTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          exchange: _json.containsKey('exchange')
+              ? _json['exchange'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exchange != null) 'exchange': exchange!,
@@ -16230,22 +16768,22 @@ class ExitEvent {
   /// Required.
   core.String? url;
 
-  ExitEvent();
+  ExitEvent({
+    this.name,
+    this.reportingName,
+    this.type,
+    this.url,
+  });
 
-  ExitEvent.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('reportingName')) {
-      reportingName = _json['reportingName'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  ExitEvent.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          reportingName: _json.containsKey('reportingName')
+              ? _json['reportingName'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -16403,61 +16941,76 @@ class FirstAndThirdPartyAudience {
   /// Output only.
   core.String? youtubeAudienceSize;
 
-  FirstAndThirdPartyAudience();
+  FirstAndThirdPartyAudience({
+    this.activeDisplayAudienceSize,
+    this.audienceSource,
+    this.audienceType,
+    this.description,
+    this.displayAudienceSize,
+    this.displayDesktopAudienceSize,
+    this.displayMobileAppAudienceSize,
+    this.displayMobileWebAudienceSize,
+    this.displayName,
+    this.firstAndThirdPartyAudienceId,
+    this.firstAndThirdPartyAudienceType,
+    this.gmailAudienceSize,
+    this.membershipDurationDays,
+    this.name,
+    this.youtubeAudienceSize,
+  });
 
-  FirstAndThirdPartyAudience.fromJson(core.Map _json) {
-    if (_json.containsKey('activeDisplayAudienceSize')) {
-      activeDisplayAudienceSize =
-          _json['activeDisplayAudienceSize'] as core.String;
-    }
-    if (_json.containsKey('audienceSource')) {
-      audienceSource = _json['audienceSource'] as core.String;
-    }
-    if (_json.containsKey('audienceType')) {
-      audienceType = _json['audienceType'] as core.String;
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('displayAudienceSize')) {
-      displayAudienceSize = _json['displayAudienceSize'] as core.String;
-    }
-    if (_json.containsKey('displayDesktopAudienceSize')) {
-      displayDesktopAudienceSize =
-          _json['displayDesktopAudienceSize'] as core.String;
-    }
-    if (_json.containsKey('displayMobileAppAudienceSize')) {
-      displayMobileAppAudienceSize =
-          _json['displayMobileAppAudienceSize'] as core.String;
-    }
-    if (_json.containsKey('displayMobileWebAudienceSize')) {
-      displayMobileWebAudienceSize =
-          _json['displayMobileWebAudienceSize'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('firstAndThirdPartyAudienceId')) {
-      firstAndThirdPartyAudienceId =
-          _json['firstAndThirdPartyAudienceId'] as core.String;
-    }
-    if (_json.containsKey('firstAndThirdPartyAudienceType')) {
-      firstAndThirdPartyAudienceType =
-          _json['firstAndThirdPartyAudienceType'] as core.String;
-    }
-    if (_json.containsKey('gmailAudienceSize')) {
-      gmailAudienceSize = _json['gmailAudienceSize'] as core.String;
-    }
-    if (_json.containsKey('membershipDurationDays')) {
-      membershipDurationDays = _json['membershipDurationDays'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('youtubeAudienceSize')) {
-      youtubeAudienceSize = _json['youtubeAudienceSize'] as core.String;
-    }
-  }
+  FirstAndThirdPartyAudience.fromJson(core.Map _json)
+      : this(
+          activeDisplayAudienceSize:
+              _json.containsKey('activeDisplayAudienceSize')
+                  ? _json['activeDisplayAudienceSize'] as core.String
+                  : null,
+          audienceSource: _json.containsKey('audienceSource')
+              ? _json['audienceSource'] as core.String
+              : null,
+          audienceType: _json.containsKey('audienceType')
+              ? _json['audienceType'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          displayAudienceSize: _json.containsKey('displayAudienceSize')
+              ? _json['displayAudienceSize'] as core.String
+              : null,
+          displayDesktopAudienceSize:
+              _json.containsKey('displayDesktopAudienceSize')
+                  ? _json['displayDesktopAudienceSize'] as core.String
+                  : null,
+          displayMobileAppAudienceSize:
+              _json.containsKey('displayMobileAppAudienceSize')
+                  ? _json['displayMobileAppAudienceSize'] as core.String
+                  : null,
+          displayMobileWebAudienceSize:
+              _json.containsKey('displayMobileWebAudienceSize')
+                  ? _json['displayMobileWebAudienceSize'] as core.String
+                  : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          firstAndThirdPartyAudienceId:
+              _json.containsKey('firstAndThirdPartyAudienceId')
+                  ? _json['firstAndThirdPartyAudienceId'] as core.String
+                  : null,
+          firstAndThirdPartyAudienceType:
+              _json.containsKey('firstAndThirdPartyAudienceType')
+                  ? _json['firstAndThirdPartyAudienceType'] as core.String
+                  : null,
+          gmailAudienceSize: _json.containsKey('gmailAudienceSize')
+              ? _json['gmailAudienceSize'] as core.String
+              : null,
+          membershipDurationDays: _json.containsKey('membershipDurationDays')
+              ? _json['membershipDurationDays'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          youtubeAudienceSize: _json.containsKey('youtubeAudienceSize')
+              ? _json['youtubeAudienceSize'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (activeDisplayAudienceSize != null)
@@ -16500,17 +17053,20 @@ class FirstAndThirdPartyAudienceGroup {
   /// Required.
   core.List<FirstAndThirdPartyAudienceTargetingSetting>? settings;
 
-  FirstAndThirdPartyAudienceGroup();
+  FirstAndThirdPartyAudienceGroup({
+    this.settings,
+  });
 
-  FirstAndThirdPartyAudienceGroup.fromJson(core.Map _json) {
-    if (_json.containsKey('settings')) {
-      settings = (_json['settings'] as core.List)
-          .map<FirstAndThirdPartyAudienceTargetingSetting>((value) =>
-              FirstAndThirdPartyAudienceTargetingSetting.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  FirstAndThirdPartyAudienceGroup.fromJson(core.Map _json)
+      : this(
+          settings: _json.containsKey('settings')
+              ? (_json['settings'] as core.List)
+                  .map<FirstAndThirdPartyAudienceTargetingSetting>((value) =>
+                      FirstAndThirdPartyAudienceTargetingSetting.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (settings != null)
@@ -16567,17 +17123,21 @@ class FirstAndThirdPartyAudienceTargetingSetting {
   /// - "RECENCY_365_DAYS" : Recency is 365 days.
   core.String? recency;
 
-  FirstAndThirdPartyAudienceTargetingSetting();
+  FirstAndThirdPartyAudienceTargetingSetting({
+    this.firstAndThirdPartyAudienceId,
+    this.recency,
+  });
 
-  FirstAndThirdPartyAudienceTargetingSetting.fromJson(core.Map _json) {
-    if (_json.containsKey('firstAndThirdPartyAudienceId')) {
-      firstAndThirdPartyAudienceId =
-          _json['firstAndThirdPartyAudienceId'] as core.String;
-    }
-    if (_json.containsKey('recency')) {
-      recency = _json['recency'] as core.String;
-    }
-  }
+  FirstAndThirdPartyAudienceTargetingSetting.fromJson(core.Map _json)
+      : this(
+          firstAndThirdPartyAudienceId:
+              _json.containsKey('firstAndThirdPartyAudienceId')
+                  ? _json['firstAndThirdPartyAudienceId'] as core.String
+                  : null,
+          recency: _json.containsKey('recency')
+              ? _json['recency'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (firstAndThirdPartyAudienceId != null)
@@ -16597,13 +17157,16 @@ class FixedBidStrategy {
   /// currency.
   core.String? bidAmountMicros;
 
-  FixedBidStrategy();
+  FixedBidStrategy({
+    this.bidAmountMicros,
+  });
 
-  FixedBidStrategy.fromJson(core.Map _json) {
-    if (_json.containsKey('bidAmountMicros')) {
-      bidAmountMicros = _json['bidAmountMicros'] as core.String;
-    }
-  }
+  FixedBidStrategy.fromJson(core.Map _json)
+      : this(
+          bidAmountMicros: _json.containsKey('bidAmountMicros')
+              ? _json['bidAmountMicros'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bidAmountMicros != null) 'bidAmountMicros': bidAmountMicros!,
@@ -16672,39 +17235,48 @@ class FloodlightGroup {
   /// - "WEB_TAG_TYPE_DYNAMIC" : Dynamic tag.
   core.String? webTagType;
 
-  FloodlightGroup();
+  FloodlightGroup({
+    this.activeViewConfig,
+    this.customVariables,
+    this.displayName,
+    this.floodlightGroupId,
+    this.lookbackWindow,
+    this.name,
+    this.webTagType,
+  });
 
-  FloodlightGroup.fromJson(core.Map _json) {
-    if (_json.containsKey('activeViewConfig')) {
-      activeViewConfig = ActiveViewVideoViewabilityMetricConfig.fromJson(
-          _json['activeViewConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('customVariables')) {
-      customVariables =
-          (_json['customVariables'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('floodlightGroupId')) {
-      floodlightGroupId = _json['floodlightGroupId'] as core.String;
-    }
-    if (_json.containsKey('lookbackWindow')) {
-      lookbackWindow = LookbackWindow.fromJson(
-          _json['lookbackWindow'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('webTagType')) {
-      webTagType = _json['webTagType'] as core.String;
-    }
-  }
+  FloodlightGroup.fromJson(core.Map _json)
+      : this(
+          activeViewConfig: _json.containsKey('activeViewConfig')
+              ? ActiveViewVideoViewabilityMetricConfig.fromJson(
+                  _json['activeViewConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          customVariables: _json.containsKey('customVariables')
+              ? (_json['customVariables']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          floodlightGroupId: _json.containsKey('floodlightGroupId')
+              ? _json['floodlightGroupId'] as core.String
+              : null,
+          lookbackWindow: _json.containsKey('lookbackWindow')
+              ? LookbackWindow.fromJson(_json['lookbackWindow']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          webTagType: _json.containsKey('webTagType')
+              ? _json['webTagType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (activeViewConfig != null)
@@ -16763,22 +17335,28 @@ class FrequencyCap {
   /// not applicable.
   core.bool? unlimited;
 
-  FrequencyCap();
+  FrequencyCap({
+    this.maxImpressions,
+    this.timeUnit,
+    this.timeUnitCount,
+    this.unlimited,
+  });
 
-  FrequencyCap.fromJson(core.Map _json) {
-    if (_json.containsKey('maxImpressions')) {
-      maxImpressions = _json['maxImpressions'] as core.int;
-    }
-    if (_json.containsKey('timeUnit')) {
-      timeUnit = _json['timeUnit'] as core.String;
-    }
-    if (_json.containsKey('timeUnitCount')) {
-      timeUnitCount = _json['timeUnitCount'] as core.int;
-    }
-    if (_json.containsKey('unlimited')) {
-      unlimited = _json['unlimited'] as core.bool;
-    }
-  }
+  FrequencyCap.fromJson(core.Map _json)
+      : this(
+          maxImpressions: _json.containsKey('maxImpressions')
+              ? _json['maxImpressions'] as core.int
+              : null,
+          timeUnit: _json.containsKey('timeUnit')
+              ? _json['timeUnit'] as core.String
+              : null,
+          timeUnitCount: _json.containsKey('timeUnitCount')
+              ? _json['timeUnitCount'] as core.int
+              : null,
+          unlimited: _json.containsKey('unlimited')
+              ? _json['unlimited'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (maxImpressions != null) 'maxImpressions': maxImpressions!,
@@ -16811,16 +17389,20 @@ class GenderAssignedTargetingOptionDetails {
   /// Required.
   core.String? targetingOptionId;
 
-  GenderAssignedTargetingOptionDetails();
+  GenderAssignedTargetingOptionDetails({
+    this.gender,
+    this.targetingOptionId,
+  });
 
-  GenderAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('gender')) {
-      gender = _json['gender'] as core.String;
-    }
-    if (_json.containsKey('targetingOptionId')) {
-      targetingOptionId = _json['targetingOptionId'] as core.String;
-    }
-  }
+  GenderAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          gender: _json.containsKey('gender')
+              ? _json['gender'] as core.String
+              : null,
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gender != null) 'gender': gender!,
@@ -16845,13 +17427,16 @@ class GenderTargetingOptionDetails {
   /// - "GENDER_UNKNOWN" : The audience gender is unknown.
   core.String? gender;
 
-  GenderTargetingOptionDetails();
+  GenderTargetingOptionDetails({
+    this.gender,
+  });
 
-  GenderTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('gender')) {
-      gender = _json['gender'] as core.String;
-    }
-  }
+  GenderTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          gender: _json.containsKey('gender')
+              ? _json['gender'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gender != null) 'gender': gender!,
@@ -16904,23 +17489,29 @@ class GenerateDefaultLineItemRequest {
   /// `LINE_ITEM_TYPE_VIDEO_MOBILE_APP_INSTALL`.
   MobileApp? mobileApp;
 
-  GenerateDefaultLineItemRequest();
+  GenerateDefaultLineItemRequest({
+    this.displayName,
+    this.insertionOrderId,
+    this.lineItemType,
+    this.mobileApp,
+  });
 
-  GenerateDefaultLineItemRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('insertionOrderId')) {
-      insertionOrderId = _json['insertionOrderId'] as core.String;
-    }
-    if (_json.containsKey('lineItemType')) {
-      lineItemType = _json['lineItemType'] as core.String;
-    }
-    if (_json.containsKey('mobileApp')) {
-      mobileApp = MobileApp.fromJson(
-          _json['mobileApp'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  GenerateDefaultLineItemRequest.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          insertionOrderId: _json.containsKey('insertionOrderId')
+              ? _json['insertionOrderId'] as core.String
+              : null,
+          lineItemType: _json.containsKey('lineItemType')
+              ? _json['lineItemType'] as core.String
+              : null,
+          mobileApp: _json.containsKey('mobileApp')
+              ? MobileApp.fromJson(
+                  _json['mobileApp'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -16993,22 +17584,28 @@ class GeoRegionAssignedTargetingOptionDetails {
   /// Required.
   core.String? targetingOptionId;
 
-  GeoRegionAssignedTargetingOptionDetails();
+  GeoRegionAssignedTargetingOptionDetails({
+    this.displayName,
+    this.geoRegionType,
+    this.negative,
+    this.targetingOptionId,
+  });
 
-  GeoRegionAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('geoRegionType')) {
-      geoRegionType = _json['geoRegionType'] as core.String;
-    }
-    if (_json.containsKey('negative')) {
-      negative = _json['negative'] as core.bool;
-    }
-    if (_json.containsKey('targetingOptionId')) {
-      targetingOptionId = _json['targetingOptionId'] as core.String;
-    }
-  }
+  GeoRegionAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          geoRegionType: _json.containsKey('geoRegionType')
+              ? _json['geoRegionType'] as core.String
+              : null,
+          negative: _json.containsKey('negative')
+              ? _json['negative'] as core.bool
+              : null,
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -17025,13 +17622,16 @@ class GeoRegionSearchTerms {
   /// The query can be a prefix, e.g. "New Yor", "Seattle", "USA", etc.
   core.String? geoRegionQuery;
 
-  GeoRegionSearchTerms();
+  GeoRegionSearchTerms({
+    this.geoRegionQuery,
+  });
 
-  GeoRegionSearchTerms.fromJson(core.Map _json) {
-    if (_json.containsKey('geoRegionQuery')) {
-      geoRegionQuery = _json['geoRegionQuery'] as core.String;
-    }
-  }
+  GeoRegionSearchTerms.fromJson(core.Map _json)
+      : this(
+          geoRegionQuery: _json.containsKey('geoRegionQuery')
+              ? _json['geoRegionQuery'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (geoRegionQuery != null) 'geoRegionQuery': geoRegionQuery!,
@@ -17092,16 +17692,20 @@ class GeoRegionTargetingOptionDetails {
   /// - "GEO_REGION_TYPE_DISTRICT" : The geographic region is a district.
   core.String? geoRegionType;
 
-  GeoRegionTargetingOptionDetails();
+  GeoRegionTargetingOptionDetails({
+    this.displayName,
+    this.geoRegionType,
+  });
 
-  GeoRegionTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('geoRegionType')) {
-      geoRegionType = _json['geoRegionType'] as core.String;
-    }
-  }
+  GeoRegionTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          geoRegionType: _json.containsKey('geoRegionType')
+              ? _json['geoRegionType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -17151,22 +17755,26 @@ class GoogleAudience {
   /// Output only.
   core.String? name;
 
-  GoogleAudience();
+  GoogleAudience({
+    this.displayName,
+    this.googleAudienceId,
+    this.googleAudienceType,
+    this.name,
+  });
 
-  GoogleAudience.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('googleAudienceId')) {
-      googleAudienceId = _json['googleAudienceId'] as core.String;
-    }
-    if (_json.containsKey('googleAudienceType')) {
-      googleAudienceType = _json['googleAudienceType'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  GoogleAudience.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          googleAudienceId: _json.containsKey('googleAudienceId')
+              ? _json['googleAudienceId'] as core.String
+              : null,
+          googleAudienceType: _json.containsKey('googleAudienceType')
+              ? _json['googleAudienceType'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -17188,17 +17796,20 @@ class GoogleAudienceGroup {
   /// Required.
   core.List<GoogleAudienceTargetingSetting>? settings;
 
-  GoogleAudienceGroup();
+  GoogleAudienceGroup({
+    this.settings,
+  });
 
-  GoogleAudienceGroup.fromJson(core.Map _json) {
-    if (_json.containsKey('settings')) {
-      settings = (_json['settings'] as core.List)
-          .map<GoogleAudienceTargetingSetting>((value) =>
-              GoogleAudienceTargetingSetting.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  GoogleAudienceGroup.fromJson(core.Map _json)
+      : this(
+          settings: _json.containsKey('settings')
+              ? (_json['settings'] as core.List)
+                  .map<GoogleAudienceTargetingSetting>((value) =>
+                      GoogleAudienceTargetingSetting.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (settings != null)
@@ -17215,13 +17826,16 @@ class GoogleAudienceTargetingSetting {
   /// Required.
   core.String? googleAudienceId;
 
-  GoogleAudienceTargetingSetting();
+  GoogleAudienceTargetingSetting({
+    this.googleAudienceId,
+  });
 
-  GoogleAudienceTargetingSetting.fromJson(core.Map _json) {
-    if (_json.containsKey('googleAudienceId')) {
-      googleAudienceId = _json['googleAudienceId'] as core.String;
-    }
-  }
+  GoogleAudienceTargetingSetting.fromJson(core.Map _json)
+      : this(
+          googleAudienceId: _json.containsKey('googleAudienceId')
+              ? _json['googleAudienceId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (googleAudienceId != null) 'googleAudienceId': googleAudienceId!,
@@ -17233,13 +17847,16 @@ class GoogleBytestreamMedia {
   /// Name of the media resource.
   core.String? resourceName;
 
-  GoogleBytestreamMedia();
+  GoogleBytestreamMedia({
+    this.resourceName,
+  });
 
-  GoogleBytestreamMedia.fromJson(core.Map _json) {
-    if (_json.containsKey('resourceName')) {
-      resourceName = _json['resourceName'] as core.String;
-    }
-  }
+  GoogleBytestreamMedia.fromJson(core.Map _json)
+      : this(
+          resourceName: _json.containsKey('resourceName')
+              ? _json['resourceName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceName != null) 'resourceName': resourceName!,
@@ -17280,16 +17897,20 @@ class HouseholdIncomeAssignedTargetingOptionDetails {
   /// Required.
   core.String? targetingOptionId;
 
-  HouseholdIncomeAssignedTargetingOptionDetails();
+  HouseholdIncomeAssignedTargetingOptionDetails({
+    this.householdIncome,
+    this.targetingOptionId,
+  });
 
-  HouseholdIncomeAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('householdIncome')) {
-      householdIncome = _json['householdIncome'] as core.String;
-    }
-    if (_json.containsKey('targetingOptionId')) {
-      targetingOptionId = _json['targetingOptionId'] as core.String;
-    }
-  }
+  HouseholdIncomeAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          householdIncome: _json.containsKey('householdIncome')
+              ? _json['householdIncome'] as core.String
+              : null,
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (householdIncome != null) 'householdIncome': householdIncome!,
@@ -17325,13 +17946,16 @@ class HouseholdIncomeTargetingOptionDetails {
   /// U.S. household incomes.
   core.String? householdIncome;
 
-  HouseholdIncomeTargetingOptionDetails();
+  HouseholdIncomeTargetingOptionDetails({
+    this.householdIncome,
+  });
 
-  HouseholdIncomeTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('householdIncome')) {
-      householdIncome = _json['householdIncome'] as core.String;
-    }
-  }
+  HouseholdIncomeTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          householdIncome: _json.containsKey('householdIncome')
+              ? _json['householdIncome'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (householdIncome != null) 'householdIncome': householdIncome!,
@@ -17376,40 +18000,48 @@ class IdFilter {
   /// CreateSdfDownloadTaskRequest.
   core.List<core.String>? mediaProductIds;
 
-  IdFilter();
+  IdFilter({
+    this.adGroupAdIds,
+    this.adGroupIds,
+    this.campaignIds,
+    this.insertionOrderIds,
+    this.lineItemIds,
+    this.mediaProductIds,
+  });
 
-  IdFilter.fromJson(core.Map _json) {
-    if (_json.containsKey('adGroupAdIds')) {
-      adGroupAdIds = (_json['adGroupAdIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('adGroupIds')) {
-      adGroupIds = (_json['adGroupIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('campaignIds')) {
-      campaignIds = (_json['campaignIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('insertionOrderIds')) {
-      insertionOrderIds = (_json['insertionOrderIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('lineItemIds')) {
-      lineItemIds = (_json['lineItemIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('mediaProductIds')) {
-      mediaProductIds = (_json['mediaProductIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  IdFilter.fromJson(core.Map _json)
+      : this(
+          adGroupAdIds: _json.containsKey('adGroupAdIds')
+              ? (_json['adGroupAdIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          adGroupIds: _json.containsKey('adGroupIds')
+              ? (_json['adGroupIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          campaignIds: _json.containsKey('campaignIds')
+              ? (_json['campaignIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          insertionOrderIds: _json.containsKey('insertionOrderIds')
+              ? (_json['insertionOrderIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          lineItemIds: _json.containsKey('lineItemIds')
+              ? (_json['lineItemIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          mediaProductIds: _json.containsKey('mediaProductIds')
+              ? (_json['mediaProductIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (adGroupAdIds != null) 'adGroupAdIds': adGroupAdIds!,
@@ -17529,64 +18161,79 @@ class InsertionOrder {
   /// Output only.
   core.String? updateTime;
 
-  InsertionOrder();
+  InsertionOrder({
+    this.advertiserId,
+    this.bidStrategy,
+    this.budget,
+    this.campaignId,
+    this.displayName,
+    this.entityStatus,
+    this.frequencyCap,
+    this.insertionOrderId,
+    this.insertionOrderType,
+    this.integrationDetails,
+    this.name,
+    this.pacing,
+    this.partnerCosts,
+    this.performanceGoal,
+    this.updateTime,
+  });
 
-  InsertionOrder.fromJson(core.Map _json) {
-    if (_json.containsKey('advertiserId')) {
-      advertiserId = _json['advertiserId'] as core.String;
-    }
-    if (_json.containsKey('bidStrategy')) {
-      bidStrategy = BiddingStrategy.fromJson(
-          _json['bidStrategy'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('budget')) {
-      budget = InsertionOrderBudget.fromJson(
-          _json['budget'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('campaignId')) {
-      campaignId = _json['campaignId'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('entityStatus')) {
-      entityStatus = _json['entityStatus'] as core.String;
-    }
-    if (_json.containsKey('frequencyCap')) {
-      frequencyCap = FrequencyCap.fromJson(
-          _json['frequencyCap'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('insertionOrderId')) {
-      insertionOrderId = _json['insertionOrderId'] as core.String;
-    }
-    if (_json.containsKey('insertionOrderType')) {
-      insertionOrderType = _json['insertionOrderType'] as core.String;
-    }
-    if (_json.containsKey('integrationDetails')) {
-      integrationDetails = IntegrationDetails.fromJson(
-          _json['integrationDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('pacing')) {
-      pacing = Pacing.fromJson(
-          _json['pacing'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('partnerCosts')) {
-      partnerCosts = (_json['partnerCosts'] as core.List)
-          .map<PartnerCost>((value) => PartnerCost.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('performanceGoal')) {
-      performanceGoal = PerformanceGoal.fromJson(
-          _json['performanceGoal'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  InsertionOrder.fromJson(core.Map _json)
+      : this(
+          advertiserId: _json.containsKey('advertiserId')
+              ? _json['advertiserId'] as core.String
+              : null,
+          bidStrategy: _json.containsKey('bidStrategy')
+              ? BiddingStrategy.fromJson(
+                  _json['bidStrategy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          budget: _json.containsKey('budget')
+              ? InsertionOrderBudget.fromJson(
+                  _json['budget'] as core.Map<core.String, core.dynamic>)
+              : null,
+          campaignId: _json.containsKey('campaignId')
+              ? _json['campaignId'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          entityStatus: _json.containsKey('entityStatus')
+              ? _json['entityStatus'] as core.String
+              : null,
+          frequencyCap: _json.containsKey('frequencyCap')
+              ? FrequencyCap.fromJson(
+                  _json['frequencyCap'] as core.Map<core.String, core.dynamic>)
+              : null,
+          insertionOrderId: _json.containsKey('insertionOrderId')
+              ? _json['insertionOrderId'] as core.String
+              : null,
+          insertionOrderType: _json.containsKey('insertionOrderType')
+              ? _json['insertionOrderType'] as core.String
+              : null,
+          integrationDetails: _json.containsKey('integrationDetails')
+              ? IntegrationDetails.fromJson(_json['integrationDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          pacing: _json.containsKey('pacing')
+              ? Pacing.fromJson(
+                  _json['pacing'] as core.Map<core.String, core.dynamic>)
+              : null,
+          partnerCosts: _json.containsKey('partnerCosts')
+              ? (_json['partnerCosts'] as core.List)
+                  .map<PartnerCost>((value) => PartnerCost.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          performanceGoal: _json.containsKey('performanceGoal')
+              ? PerformanceGoal.fromJson(_json['performanceGoal']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advertiserId != null) 'advertiserId': advertiserId!,
@@ -17652,23 +18299,28 @@ class InsertionOrderBudget {
   /// - "BUDGET_UNIT_IMPRESSIONS" : Budgeting in impression amounts.
   core.String? budgetUnit;
 
-  InsertionOrderBudget();
+  InsertionOrderBudget({
+    this.automationType,
+    this.budgetSegments,
+    this.budgetUnit,
+  });
 
-  InsertionOrderBudget.fromJson(core.Map _json) {
-    if (_json.containsKey('automationType')) {
-      automationType = _json['automationType'] as core.String;
-    }
-    if (_json.containsKey('budgetSegments')) {
-      budgetSegments = (_json['budgetSegments'] as core.List)
-          .map<InsertionOrderBudgetSegment>((value) =>
-              InsertionOrderBudgetSegment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('budgetUnit')) {
-      budgetUnit = _json['budgetUnit'] as core.String;
-    }
-  }
+  InsertionOrderBudget.fromJson(core.Map _json)
+      : this(
+          automationType: _json.containsKey('automationType')
+              ? _json['automationType'] as core.String
+              : null,
+          budgetSegments: _json.containsKey('budgetSegments')
+              ? (_json['budgetSegments'] as core.List)
+                  .map<InsertionOrderBudgetSegment>((value) =>
+                      InsertionOrderBudgetSegment.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          budgetUnit: _json.containsKey('budgetUnit')
+              ? _json['budgetUnit'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (automationType != null) 'automationType': automationType!,
@@ -17711,23 +18363,29 @@ class InsertionOrderBudgetSegment {
   /// with a length of no more than 80 characters.
   core.String? description;
 
-  InsertionOrderBudgetSegment();
+  InsertionOrderBudgetSegment({
+    this.budgetAmountMicros,
+    this.campaignBudgetId,
+    this.dateRange,
+    this.description,
+  });
 
-  InsertionOrderBudgetSegment.fromJson(core.Map _json) {
-    if (_json.containsKey('budgetAmountMicros')) {
-      budgetAmountMicros = _json['budgetAmountMicros'] as core.String;
-    }
-    if (_json.containsKey('campaignBudgetId')) {
-      campaignBudgetId = _json['campaignBudgetId'] as core.String;
-    }
-    if (_json.containsKey('dateRange')) {
-      dateRange = DateRange.fromJson(
-          _json['dateRange'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-  }
+  InsertionOrderBudgetSegment.fromJson(core.Map _json)
+      : this(
+          budgetAmountMicros: _json.containsKey('budgetAmountMicros')
+              ? _json['budgetAmountMicros'] as core.String
+              : null,
+          campaignBudgetId: _json.containsKey('campaignBudgetId')
+              ? _json['campaignBudgetId'] as core.String
+              : null,
+          dateRange: _json.containsKey('dateRange')
+              ? DateRange.fromJson(
+                  _json['dateRange'] as core.Map<core.String, core.dynamic>)
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (budgetAmountMicros != null)
@@ -17855,56 +18513,72 @@ class IntegralAdScience {
   /// - "VIDEO_VIEWABILITY_70" : 70%+ in view (IAB video viewability standard).
   core.String? videoViewability;
 
-  IntegralAdScience();
+  IntegralAdScience({
+    this.customSegmentId,
+    this.displayViewability,
+    this.excludeUnrateable,
+    this.excludedAdFraudRisk,
+    this.excludedAdultRisk,
+    this.excludedAlcoholRisk,
+    this.excludedDrugsRisk,
+    this.excludedGamblingRisk,
+    this.excludedHateSpeechRisk,
+    this.excludedIllegalDownloadsRisk,
+    this.excludedOffensiveLanguageRisk,
+    this.excludedViolenceRisk,
+    this.traqScoreOption,
+    this.videoViewability,
+  });
 
-  IntegralAdScience.fromJson(core.Map _json) {
-    if (_json.containsKey('customSegmentId')) {
-      customSegmentId = (_json['customSegmentId'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('displayViewability')) {
-      displayViewability = _json['displayViewability'] as core.String;
-    }
-    if (_json.containsKey('excludeUnrateable')) {
-      excludeUnrateable = _json['excludeUnrateable'] as core.bool;
-    }
-    if (_json.containsKey('excludedAdFraudRisk')) {
-      excludedAdFraudRisk = _json['excludedAdFraudRisk'] as core.String;
-    }
-    if (_json.containsKey('excludedAdultRisk')) {
-      excludedAdultRisk = _json['excludedAdultRisk'] as core.String;
-    }
-    if (_json.containsKey('excludedAlcoholRisk')) {
-      excludedAlcoholRisk = _json['excludedAlcoholRisk'] as core.String;
-    }
-    if (_json.containsKey('excludedDrugsRisk')) {
-      excludedDrugsRisk = _json['excludedDrugsRisk'] as core.String;
-    }
-    if (_json.containsKey('excludedGamblingRisk')) {
-      excludedGamblingRisk = _json['excludedGamblingRisk'] as core.String;
-    }
-    if (_json.containsKey('excludedHateSpeechRisk')) {
-      excludedHateSpeechRisk = _json['excludedHateSpeechRisk'] as core.String;
-    }
-    if (_json.containsKey('excludedIllegalDownloadsRisk')) {
-      excludedIllegalDownloadsRisk =
-          _json['excludedIllegalDownloadsRisk'] as core.String;
-    }
-    if (_json.containsKey('excludedOffensiveLanguageRisk')) {
-      excludedOffensiveLanguageRisk =
-          _json['excludedOffensiveLanguageRisk'] as core.String;
-    }
-    if (_json.containsKey('excludedViolenceRisk')) {
-      excludedViolenceRisk = _json['excludedViolenceRisk'] as core.String;
-    }
-    if (_json.containsKey('traqScoreOption')) {
-      traqScoreOption = _json['traqScoreOption'] as core.String;
-    }
-    if (_json.containsKey('videoViewability')) {
-      videoViewability = _json['videoViewability'] as core.String;
-    }
-  }
+  IntegralAdScience.fromJson(core.Map _json)
+      : this(
+          customSegmentId: _json.containsKey('customSegmentId')
+              ? (_json['customSegmentId'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          displayViewability: _json.containsKey('displayViewability')
+              ? _json['displayViewability'] as core.String
+              : null,
+          excludeUnrateable: _json.containsKey('excludeUnrateable')
+              ? _json['excludeUnrateable'] as core.bool
+              : null,
+          excludedAdFraudRisk: _json.containsKey('excludedAdFraudRisk')
+              ? _json['excludedAdFraudRisk'] as core.String
+              : null,
+          excludedAdultRisk: _json.containsKey('excludedAdultRisk')
+              ? _json['excludedAdultRisk'] as core.String
+              : null,
+          excludedAlcoholRisk: _json.containsKey('excludedAlcoholRisk')
+              ? _json['excludedAlcoholRisk'] as core.String
+              : null,
+          excludedDrugsRisk: _json.containsKey('excludedDrugsRisk')
+              ? _json['excludedDrugsRisk'] as core.String
+              : null,
+          excludedGamblingRisk: _json.containsKey('excludedGamblingRisk')
+              ? _json['excludedGamblingRisk'] as core.String
+              : null,
+          excludedHateSpeechRisk: _json.containsKey('excludedHateSpeechRisk')
+              ? _json['excludedHateSpeechRisk'] as core.String
+              : null,
+          excludedIllegalDownloadsRisk:
+              _json.containsKey('excludedIllegalDownloadsRisk')
+                  ? _json['excludedIllegalDownloadsRisk'] as core.String
+                  : null,
+          excludedOffensiveLanguageRisk:
+              _json.containsKey('excludedOffensiveLanguageRisk')
+                  ? _json['excludedOffensiveLanguageRisk'] as core.String
+                  : null,
+          excludedViolenceRisk: _json.containsKey('excludedViolenceRisk')
+              ? _json['excludedViolenceRisk'] as core.String
+              : null,
+          traqScoreOption: _json.containsKey('traqScoreOption')
+              ? _json['traqScoreOption'] as core.String
+              : null,
+          videoViewability: _json.containsKey('videoViewability')
+              ? _json['videoViewability'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customSegmentId != null) 'customSegmentId': customSegmentId!,
@@ -17946,16 +18620,20 @@ class IntegrationDetails {
   /// of no more than 500 characters.
   core.String? integrationCode;
 
-  IntegrationDetails();
+  IntegrationDetails({
+    this.details,
+    this.integrationCode,
+  });
 
-  IntegrationDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('details')) {
-      details = _json['details'] as core.String;
-    }
-    if (_json.containsKey('integrationCode')) {
-      integrationCode = _json['integrationCode'] as core.String;
-    }
-  }
+  IntegrationDetails.fromJson(core.Map _json)
+      : this(
+          details: _json.containsKey('details')
+              ? _json['details'] as core.String
+              : null,
+          integrationCode: _json.containsKey('integrationCode')
+              ? _json['integrationCode'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (details != null) 'details': details!,
@@ -18118,58 +18796,72 @@ class InventorySource {
   /// Output only.
   core.String? updateTime;
 
-  InventorySource();
+  InventorySource({
+    this.commitment,
+    this.creativeConfigs,
+    this.dealId,
+    this.deliveryMethod,
+    this.displayName,
+    this.exchange,
+    this.inventorySourceId,
+    this.inventorySourceType,
+    this.name,
+    this.publisherName,
+    this.rateDetails,
+    this.status,
+    this.timeRange,
+    this.updateTime,
+  });
 
-  InventorySource.fromJson(core.Map _json) {
-    if (_json.containsKey('commitment')) {
-      commitment = _json['commitment'] as core.String;
-    }
-    if (_json.containsKey('creativeConfigs')) {
-      creativeConfigs = (_json['creativeConfigs'] as core.List)
-          .map<CreativeConfig>((value) => CreativeConfig.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('dealId')) {
-      dealId = _json['dealId'] as core.String;
-    }
-    if (_json.containsKey('deliveryMethod')) {
-      deliveryMethod = _json['deliveryMethod'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('exchange')) {
-      exchange = _json['exchange'] as core.String;
-    }
-    if (_json.containsKey('inventorySourceId')) {
-      inventorySourceId = _json['inventorySourceId'] as core.String;
-    }
-    if (_json.containsKey('inventorySourceType')) {
-      inventorySourceType = _json['inventorySourceType'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('publisherName')) {
-      publisherName = _json['publisherName'] as core.String;
-    }
-    if (_json.containsKey('rateDetails')) {
-      rateDetails = RateDetails.fromJson(
-          _json['rateDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('status')) {
-      status = InventorySourceStatus.fromJson(
-          _json['status'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('timeRange')) {
-      timeRange = TimeRange.fromJson(
-          _json['timeRange'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  InventorySource.fromJson(core.Map _json)
+      : this(
+          commitment: _json.containsKey('commitment')
+              ? _json['commitment'] as core.String
+              : null,
+          creativeConfigs: _json.containsKey('creativeConfigs')
+              ? (_json['creativeConfigs'] as core.List)
+                  .map<CreativeConfig>((value) => CreativeConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          dealId: _json.containsKey('dealId')
+              ? _json['dealId'] as core.String
+              : null,
+          deliveryMethod: _json.containsKey('deliveryMethod')
+              ? _json['deliveryMethod'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          exchange: _json.containsKey('exchange')
+              ? _json['exchange'] as core.String
+              : null,
+          inventorySourceId: _json.containsKey('inventorySourceId')
+              ? _json['inventorySourceId'] as core.String
+              : null,
+          inventorySourceType: _json.containsKey('inventorySourceType')
+              ? _json['inventorySourceType'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          publisherName: _json.containsKey('publisherName')
+              ? _json['publisherName'] as core.String
+              : null,
+          rateDetails: _json.containsKey('rateDetails')
+              ? RateDetails.fromJson(
+                  _json['rateDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
+          status: _json.containsKey('status')
+              ? InventorySourceStatus.fromJson(
+                  _json['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+          timeRange: _json.containsKey('timeRange')
+              ? TimeRange.fromJson(
+                  _json['timeRange'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (commitment != null) 'commitment': commitment!,
@@ -18205,13 +18897,16 @@ class InventorySourceAssignedTargetingOptionDetails {
   /// Required.
   core.String? inventorySourceId;
 
-  InventorySourceAssignedTargetingOptionDetails();
+  InventorySourceAssignedTargetingOptionDetails({
+    this.inventorySourceId,
+  });
 
-  InventorySourceAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('inventorySourceId')) {
-      inventorySourceId = _json['inventorySourceId'] as core.String;
-    }
-  }
+  InventorySourceAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          inventorySourceId: _json.containsKey('inventorySourceId')
+              ? _json['inventorySourceId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (inventorySourceId != null) 'inventorySourceId': inventorySourceId!,
@@ -18224,14 +18919,17 @@ class InventorySourceDisplayCreativeConfig {
   /// inventory source.
   Dimensions? creativeSize;
 
-  InventorySourceDisplayCreativeConfig();
+  InventorySourceDisplayCreativeConfig({
+    this.creativeSize,
+  });
 
-  InventorySourceDisplayCreativeConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('creativeSize')) {
-      creativeSize = Dimensions.fromJson(
-          _json['creativeSize'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  InventorySourceDisplayCreativeConfig.fromJson(core.Map _json)
+      : this(
+          creativeSize: _json.containsKey('creativeSize')
+              ? Dimensions.fromJson(
+                  _json['creativeSize'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (creativeSize != null) 'creativeSize': creativeSize!.toJson(),
@@ -18247,15 +18945,18 @@ class InventorySourceFilter {
   /// Sources for the selected Advertiser or Partner.
   core.List<core.String>? inventorySourceIds;
 
-  InventorySourceFilter();
+  InventorySourceFilter({
+    this.inventorySourceIds,
+  });
 
-  InventorySourceFilter.fromJson(core.Map _json) {
-    if (_json.containsKey('inventorySourceIds')) {
-      inventorySourceIds = (_json['inventorySourceIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  InventorySourceFilter.fromJson(core.Map _json)
+      : this(
+          inventorySourceIds: _json.containsKey('inventorySourceIds')
+              ? (_json['inventorySourceIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (inventorySourceIds != null)
@@ -18284,19 +18985,22 @@ class InventorySourceGroup {
   /// Output only.
   core.String? name;
 
-  InventorySourceGroup();
+  InventorySourceGroup({
+    this.displayName,
+    this.inventorySourceGroupId,
+    this.name,
+  });
 
-  InventorySourceGroup.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('inventorySourceGroupId')) {
-      inventorySourceGroupId = _json['inventorySourceGroupId'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  InventorySourceGroup.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          inventorySourceGroupId: _json.containsKey('inventorySourceGroupId')
+              ? _json['inventorySourceGroupId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -18319,13 +19023,16 @@ class InventorySourceGroupAssignedTargetingOptionDetails {
   /// Required.
   core.String? inventorySourceGroupId;
 
-  InventorySourceGroupAssignedTargetingOptionDetails();
+  InventorySourceGroupAssignedTargetingOptionDetails({
+    this.inventorySourceGroupId,
+  });
 
-  InventorySourceGroupAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('inventorySourceGroupId')) {
-      inventorySourceGroupId = _json['inventorySourceGroupId'] as core.String;
-    }
-  }
+  InventorySourceGroupAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          inventorySourceGroupId: _json.containsKey('inventorySourceGroupId')
+              ? _json['inventorySourceGroupId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (inventorySourceGroupId != null)
@@ -18408,25 +19115,32 @@ class InventorySourceStatus {
   /// deletion.
   core.String? sellerStatus;
 
-  InventorySourceStatus();
+  InventorySourceStatus({
+    this.configStatus,
+    this.entityPauseReason,
+    this.entityStatus,
+    this.sellerPauseReason,
+    this.sellerStatus,
+  });
 
-  InventorySourceStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('configStatus')) {
-      configStatus = _json['configStatus'] as core.String;
-    }
-    if (_json.containsKey('entityPauseReason')) {
-      entityPauseReason = _json['entityPauseReason'] as core.String;
-    }
-    if (_json.containsKey('entityStatus')) {
-      entityStatus = _json['entityStatus'] as core.String;
-    }
-    if (_json.containsKey('sellerPauseReason')) {
-      sellerPauseReason = _json['sellerPauseReason'] as core.String;
-    }
-    if (_json.containsKey('sellerStatus')) {
-      sellerStatus = _json['sellerStatus'] as core.String;
-    }
-  }
+  InventorySourceStatus.fromJson(core.Map _json)
+      : this(
+          configStatus: _json.containsKey('configStatus')
+              ? _json['configStatus'] as core.String
+              : null,
+          entityPauseReason: _json.containsKey('entityPauseReason')
+              ? _json['entityPauseReason'] as core.String
+              : null,
+          entityStatus: _json.containsKey('entityStatus')
+              ? _json['entityStatus'] as core.String
+              : null,
+          sellerPauseReason: _json.containsKey('sellerPauseReason')
+              ? _json['sellerPauseReason'] as core.String
+              : null,
+          sellerStatus: _json.containsKey('sellerStatus')
+              ? _json['sellerStatus'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (configStatus != null) 'configStatus': configStatus!,
@@ -18443,13 +19157,16 @@ class InventorySourceVideoCreativeConfig {
   /// the inventory source.
   core.String? duration;
 
-  InventorySourceVideoCreativeConfig();
+  InventorySourceVideoCreativeConfig({
+    this.duration,
+  });
 
-  InventorySourceVideoCreativeConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('duration')) {
-      duration = _json['duration'] as core.String;
-    }
-  }
+  InventorySourceVideoCreativeConfig.fromJson(core.Map _json)
+      : this(
+          duration: _json.containsKey('duration')
+              ? _json['duration'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (duration != null) 'duration': duration!,
@@ -18564,78 +19281,98 @@ class Invoice {
   /// dollar.
   core.String? totalTaxAmountMicros;
 
-  Invoice();
+  Invoice({
+    this.budgetInvoiceGroupingId,
+    this.budgetSummaries,
+    this.correctedInvoiceId,
+    this.currencyCode,
+    this.displayName,
+    this.dueDate,
+    this.invoiceId,
+    this.invoiceType,
+    this.issueDate,
+    this.name,
+    this.nonBudgetMicros,
+    this.paymentsAccountId,
+    this.paymentsProfileId,
+    this.pdfUrl,
+    this.purchaseOrderNumber,
+    this.replacedInvoiceIds,
+    this.serviceDateRange,
+    this.subtotalAmountMicros,
+    this.totalAmountMicros,
+    this.totalTaxAmountMicros,
+  });
 
-  Invoice.fromJson(core.Map _json) {
-    if (_json.containsKey('budgetInvoiceGroupingId')) {
-      budgetInvoiceGroupingId = _json['budgetInvoiceGroupingId'] as core.String;
-    }
-    if (_json.containsKey('budgetSummaries')) {
-      budgetSummaries = (_json['budgetSummaries'] as core.List)
-          .map<BudgetSummary>((value) => BudgetSummary.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('correctedInvoiceId')) {
-      correctedInvoiceId = _json['correctedInvoiceId'] as core.String;
-    }
-    if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('dueDate')) {
-      dueDate = Date.fromJson(
-          _json['dueDate'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('invoiceId')) {
-      invoiceId = _json['invoiceId'] as core.String;
-    }
-    if (_json.containsKey('invoiceType')) {
-      invoiceType = _json['invoiceType'] as core.String;
-    }
-    if (_json.containsKey('issueDate')) {
-      issueDate = Date.fromJson(
-          _json['issueDate'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('nonBudgetMicros')) {
-      nonBudgetMicros = _json['nonBudgetMicros'] as core.String;
-    }
-    if (_json.containsKey('paymentsAccountId')) {
-      paymentsAccountId = _json['paymentsAccountId'] as core.String;
-    }
-    if (_json.containsKey('paymentsProfileId')) {
-      paymentsProfileId = _json['paymentsProfileId'] as core.String;
-    }
-    if (_json.containsKey('pdfUrl')) {
-      pdfUrl = _json['pdfUrl'] as core.String;
-    }
-    if (_json.containsKey('purchaseOrderNumber')) {
-      purchaseOrderNumber = _json['purchaseOrderNumber'] as core.String;
-    }
-    if (_json.containsKey('replacedInvoiceIds')) {
-      replacedInvoiceIds = (_json['replacedInvoiceIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('serviceDateRange')) {
-      serviceDateRange = DateRange.fromJson(
-          _json['serviceDateRange'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('subtotalAmountMicros')) {
-      subtotalAmountMicros = _json['subtotalAmountMicros'] as core.String;
-    }
-    if (_json.containsKey('totalAmountMicros')) {
-      totalAmountMicros = _json['totalAmountMicros'] as core.String;
-    }
-    if (_json.containsKey('totalTaxAmountMicros')) {
-      totalTaxAmountMicros = _json['totalTaxAmountMicros'] as core.String;
-    }
-  }
+  Invoice.fromJson(core.Map _json)
+      : this(
+          budgetInvoiceGroupingId: _json.containsKey('budgetInvoiceGroupingId')
+              ? _json['budgetInvoiceGroupingId'] as core.String
+              : null,
+          budgetSummaries: _json.containsKey('budgetSummaries')
+              ? (_json['budgetSummaries'] as core.List)
+                  .map<BudgetSummary>((value) => BudgetSummary.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          correctedInvoiceId: _json.containsKey('correctedInvoiceId')
+              ? _json['correctedInvoiceId'] as core.String
+              : null,
+          currencyCode: _json.containsKey('currencyCode')
+              ? _json['currencyCode'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          dueDate: _json.containsKey('dueDate')
+              ? Date.fromJson(
+                  _json['dueDate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          invoiceId: _json.containsKey('invoiceId')
+              ? _json['invoiceId'] as core.String
+              : null,
+          invoiceType: _json.containsKey('invoiceType')
+              ? _json['invoiceType'] as core.String
+              : null,
+          issueDate: _json.containsKey('issueDate')
+              ? Date.fromJson(
+                  _json['issueDate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          nonBudgetMicros: _json.containsKey('nonBudgetMicros')
+              ? _json['nonBudgetMicros'] as core.String
+              : null,
+          paymentsAccountId: _json.containsKey('paymentsAccountId')
+              ? _json['paymentsAccountId'] as core.String
+              : null,
+          paymentsProfileId: _json.containsKey('paymentsProfileId')
+              ? _json['paymentsProfileId'] as core.String
+              : null,
+          pdfUrl: _json.containsKey('pdfUrl')
+              ? _json['pdfUrl'] as core.String
+              : null,
+          purchaseOrderNumber: _json.containsKey('purchaseOrderNumber')
+              ? _json['purchaseOrderNumber'] as core.String
+              : null,
+          replacedInvoiceIds: _json.containsKey('replacedInvoiceIds')
+              ? (_json['replacedInvoiceIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          serviceDateRange: _json.containsKey('serviceDateRange')
+              ? DateRange.fromJson(_json['serviceDateRange']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          subtotalAmountMicros: _json.containsKey('subtotalAmountMicros')
+              ? _json['subtotalAmountMicros'] as core.String
+              : null,
+          totalAmountMicros: _json.containsKey('totalAmountMicros')
+              ? _json['totalAmountMicros'] as core.String
+              : null,
+          totalTaxAmountMicros: _json.containsKey('totalTaxAmountMicros')
+              ? _json['totalTaxAmountMicros'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (budgetInvoiceGroupingId != null)
@@ -18687,16 +19424,20 @@ class KeywordAssignedTargetingOptionDetails {
   /// Indicates if this option is being negatively targeted.
   core.bool? negative;
 
-  KeywordAssignedTargetingOptionDetails();
+  KeywordAssignedTargetingOptionDetails({
+    this.keyword,
+    this.negative,
+  });
 
-  KeywordAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('keyword')) {
-      keyword = _json['keyword'] as core.String;
-    }
-    if (_json.containsKey('negative')) {
-      negative = _json['negative'] as core.bool;
-    }
-  }
+  KeywordAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          keyword: _json.containsKey('keyword')
+              ? _json['keyword'] as core.String
+              : null,
+          negative: _json.containsKey('negative')
+              ? _json['negative'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (keyword != null) 'keyword': keyword!,
@@ -18726,19 +19467,24 @@ class LanguageAssignedTargetingOptionDetails {
   /// Required.
   core.String? targetingOptionId;
 
-  LanguageAssignedTargetingOptionDetails();
+  LanguageAssignedTargetingOptionDetails({
+    this.displayName,
+    this.negative,
+    this.targetingOptionId,
+  });
 
-  LanguageAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('negative')) {
-      negative = _json['negative'] as core.bool;
-    }
-    if (_json.containsKey('targetingOptionId')) {
-      targetingOptionId = _json['targetingOptionId'] as core.String;
-    }
-  }
+  LanguageAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          negative: _json.containsKey('negative')
+              ? _json['negative'] as core.bool
+              : null,
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -18757,13 +19503,16 @@ class LanguageTargetingOptionDetails {
   /// Output only.
   core.String? displayName;
 
-  LanguageTargetingOptionDetails();
+  LanguageTargetingOptionDetails({
+    this.displayName,
+  });
 
-  LanguageTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-  }
+  LanguageTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -18935,98 +19684,121 @@ class LineItem {
   /// Output only.
   core.List<core.String>? warningMessages;
 
-  LineItem();
+  LineItem({
+    this.advertiserId,
+    this.bidStrategy,
+    this.budget,
+    this.campaignId,
+    this.conversionCounting,
+    this.creativeIds,
+    this.displayName,
+    this.entityStatus,
+    this.flight,
+    this.frequencyCap,
+    this.insertionOrderId,
+    this.integrationDetails,
+    this.inventorySourceIds,
+    this.lineItemId,
+    this.lineItemType,
+    this.mobileApp,
+    this.name,
+    this.pacing,
+    this.partnerCosts,
+    this.partnerRevenueModel,
+    this.targetingExpansion,
+    this.updateTime,
+    this.warningMessages,
+  });
 
-  LineItem.fromJson(core.Map _json) {
-    if (_json.containsKey('advertiserId')) {
-      advertiserId = _json['advertiserId'] as core.String;
-    }
-    if (_json.containsKey('bidStrategy')) {
-      bidStrategy = BiddingStrategy.fromJson(
-          _json['bidStrategy'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('budget')) {
-      budget = LineItemBudget.fromJson(
-          _json['budget'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('campaignId')) {
-      campaignId = _json['campaignId'] as core.String;
-    }
-    if (_json.containsKey('conversionCounting')) {
-      conversionCounting = ConversionCountingConfig.fromJson(
-          _json['conversionCounting'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('creativeIds')) {
-      creativeIds = (_json['creativeIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('entityStatus')) {
-      entityStatus = _json['entityStatus'] as core.String;
-    }
-    if (_json.containsKey('flight')) {
-      flight = LineItemFlight.fromJson(
-          _json['flight'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('frequencyCap')) {
-      frequencyCap = FrequencyCap.fromJson(
-          _json['frequencyCap'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('insertionOrderId')) {
-      insertionOrderId = _json['insertionOrderId'] as core.String;
-    }
-    if (_json.containsKey('integrationDetails')) {
-      integrationDetails = IntegrationDetails.fromJson(
-          _json['integrationDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('inventorySourceIds')) {
-      inventorySourceIds = (_json['inventorySourceIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('lineItemId')) {
-      lineItemId = _json['lineItemId'] as core.String;
-    }
-    if (_json.containsKey('lineItemType')) {
-      lineItemType = _json['lineItemType'] as core.String;
-    }
-    if (_json.containsKey('mobileApp')) {
-      mobileApp = MobileApp.fromJson(
-          _json['mobileApp'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('pacing')) {
-      pacing = Pacing.fromJson(
-          _json['pacing'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('partnerCosts')) {
-      partnerCosts = (_json['partnerCosts'] as core.List)
-          .map<PartnerCost>((value) => PartnerCost.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('partnerRevenueModel')) {
-      partnerRevenueModel = PartnerRevenueModel.fromJson(
-          _json['partnerRevenueModel'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('targetingExpansion')) {
-      targetingExpansion = TargetingExpansionConfig.fromJson(
-          _json['targetingExpansion'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-    if (_json.containsKey('warningMessages')) {
-      warningMessages = (_json['warningMessages'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  LineItem.fromJson(core.Map _json)
+      : this(
+          advertiserId: _json.containsKey('advertiserId')
+              ? _json['advertiserId'] as core.String
+              : null,
+          bidStrategy: _json.containsKey('bidStrategy')
+              ? BiddingStrategy.fromJson(
+                  _json['bidStrategy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          budget: _json.containsKey('budget')
+              ? LineItemBudget.fromJson(
+                  _json['budget'] as core.Map<core.String, core.dynamic>)
+              : null,
+          campaignId: _json.containsKey('campaignId')
+              ? _json['campaignId'] as core.String
+              : null,
+          conversionCounting: _json.containsKey('conversionCounting')
+              ? ConversionCountingConfig.fromJson(_json['conversionCounting']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          creativeIds: _json.containsKey('creativeIds')
+              ? (_json['creativeIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          entityStatus: _json.containsKey('entityStatus')
+              ? _json['entityStatus'] as core.String
+              : null,
+          flight: _json.containsKey('flight')
+              ? LineItemFlight.fromJson(
+                  _json['flight'] as core.Map<core.String, core.dynamic>)
+              : null,
+          frequencyCap: _json.containsKey('frequencyCap')
+              ? FrequencyCap.fromJson(
+                  _json['frequencyCap'] as core.Map<core.String, core.dynamic>)
+              : null,
+          insertionOrderId: _json.containsKey('insertionOrderId')
+              ? _json['insertionOrderId'] as core.String
+              : null,
+          integrationDetails: _json.containsKey('integrationDetails')
+              ? IntegrationDetails.fromJson(_json['integrationDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          inventorySourceIds: _json.containsKey('inventorySourceIds')
+              ? (_json['inventorySourceIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          lineItemId: _json.containsKey('lineItemId')
+              ? _json['lineItemId'] as core.String
+              : null,
+          lineItemType: _json.containsKey('lineItemType')
+              ? _json['lineItemType'] as core.String
+              : null,
+          mobileApp: _json.containsKey('mobileApp')
+              ? MobileApp.fromJson(
+                  _json['mobileApp'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          pacing: _json.containsKey('pacing')
+              ? Pacing.fromJson(
+                  _json['pacing'] as core.Map<core.String, core.dynamic>)
+              : null,
+          partnerCosts: _json.containsKey('partnerCosts')
+              ? (_json['partnerCosts'] as core.List)
+                  .map<PartnerCost>((value) => PartnerCost.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          partnerRevenueModel: _json.containsKey('partnerRevenueModel')
+              ? PartnerRevenueModel.fromJson(_json['partnerRevenueModel']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          targetingExpansion: _json.containsKey('targetingExpansion')
+              ? TargetingExpansionConfig.fromJson(_json['targetingExpansion']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+          warningMessages: _json.containsKey('warningMessages')
+              ? (_json['warningMessages'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advertiserId != null) 'advertiserId': advertiserId!,
@@ -19106,19 +19878,24 @@ class LineItemBudget {
   /// field is not applicable and will be ignored by the system.
   core.String? maxAmount;
 
-  LineItemBudget();
+  LineItemBudget({
+    this.budgetAllocationType,
+    this.budgetUnit,
+    this.maxAmount,
+  });
 
-  LineItemBudget.fromJson(core.Map _json) {
-    if (_json.containsKey('budgetAllocationType')) {
-      budgetAllocationType = _json['budgetAllocationType'] as core.String;
-    }
-    if (_json.containsKey('budgetUnit')) {
-      budgetUnit = _json['budgetUnit'] as core.String;
-    }
-    if (_json.containsKey('maxAmount')) {
-      maxAmount = _json['maxAmount'] as core.String;
-    }
-  }
+  LineItemBudget.fromJson(core.Map _json)
+      : this(
+          budgetAllocationType: _json.containsKey('budgetAllocationType')
+              ? _json['budgetAllocationType'] as core.String
+              : null,
+          budgetUnit: _json.containsKey('budgetUnit')
+              ? _json['budgetUnit'] as core.String
+              : null,
+          maxAmount: _json.containsKey('maxAmount')
+              ? _json['maxAmount'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (budgetAllocationType != null)
@@ -19162,20 +19939,25 @@ class LineItemFlight {
   /// flight dates.
   core.String? triggerId;
 
-  LineItemFlight();
+  LineItemFlight({
+    this.dateRange,
+    this.flightDateType,
+    this.triggerId,
+  });
 
-  LineItemFlight.fromJson(core.Map _json) {
-    if (_json.containsKey('dateRange')) {
-      dateRange = DateRange.fromJson(
-          _json['dateRange'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('flightDateType')) {
-      flightDateType = _json['flightDateType'] as core.String;
-    }
-    if (_json.containsKey('triggerId')) {
-      triggerId = _json['triggerId'] as core.String;
-    }
-  }
+  LineItemFlight.fromJson(core.Map _json)
+      : this(
+          dateRange: _json.containsKey('dateRange')
+              ? DateRange.fromJson(
+                  _json['dateRange'] as core.Map<core.String, core.dynamic>)
+              : null,
+          flightDateType: _json.containsKey('flightDateType')
+              ? _json['flightDateType'] as core.String
+              : null,
+          triggerId: _json.containsKey('triggerId')
+              ? _json['triggerId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dateRange != null) 'dateRange': dateRange!.toJson(),
@@ -19199,21 +19981,25 @@ class ListAdvertiserAssignedTargetingOptionsResponse {
   /// assigned_targeting_options to return.
   core.String? nextPageToken;
 
-  ListAdvertiserAssignedTargetingOptionsResponse();
+  ListAdvertiserAssignedTargetingOptionsResponse({
+    this.assignedTargetingOptions,
+    this.nextPageToken,
+  });
 
-  ListAdvertiserAssignedTargetingOptionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('assignedTargetingOptions')) {
-      assignedTargetingOptions =
-          (_json['assignedTargetingOptions'] as core.List)
-              .map<AssignedTargetingOption>((value) =>
-                  AssignedTargetingOption.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListAdvertiserAssignedTargetingOptionsResponse.fromJson(core.Map _json)
+      : this(
+          assignedTargetingOptions:
+              _json.containsKey('assignedTargetingOptions')
+                  ? (_json['assignedTargetingOptions'] as core.List)
+                      .map<AssignedTargetingOption>((value) =>
+                          AssignedTargetingOption.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedTargetingOptions != null)
@@ -19235,19 +20021,23 @@ class ListAdvertisersResponse {
   /// `ListAdvertisers` method to retrieve the next page of results.
   core.String? nextPageToken;
 
-  ListAdvertisersResponse();
+  ListAdvertisersResponse({
+    this.advertisers,
+    this.nextPageToken,
+  });
 
-  ListAdvertisersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('advertisers')) {
-      advertisers = (_json['advertisers'] as core.List)
-          .map<Advertiser>((value) =>
-              Advertiser.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListAdvertisersResponse.fromJson(core.Map _json)
+      : this(
+          advertisers: _json.containsKey('advertisers')
+              ? (_json['advertisers'] as core.List)
+                  .map<Advertiser>((value) => Advertiser.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advertisers != null)
@@ -19271,21 +20061,25 @@ class ListAssignedInventorySourcesResponse {
   /// results.
   core.String? nextPageToken;
 
-  ListAssignedInventorySourcesResponse();
+  ListAssignedInventorySourcesResponse({
+    this.assignedInventorySources,
+    this.nextPageToken,
+  });
 
-  ListAssignedInventorySourcesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('assignedInventorySources')) {
-      assignedInventorySources =
-          (_json['assignedInventorySources'] as core.List)
-              .map<AssignedInventorySource>((value) =>
-                  AssignedInventorySource.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListAssignedInventorySourcesResponse.fromJson(core.Map _json)
+      : this(
+          assignedInventorySources:
+              _json.containsKey('assignedInventorySources')
+                  ? (_json['assignedInventorySources'] as core.List)
+                      .map<AssignedInventorySource>((value) =>
+                          AssignedInventorySource.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedInventorySources != null)
@@ -19308,19 +20102,23 @@ class ListAssignedLocationsResponse {
   /// `ListAssignedLocations` method to retrieve the next page of results.
   core.String? nextPageToken;
 
-  ListAssignedLocationsResponse();
+  ListAssignedLocationsResponse({
+    this.assignedLocations,
+    this.nextPageToken,
+  });
 
-  ListAssignedLocationsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('assignedLocations')) {
-      assignedLocations = (_json['assignedLocations'] as core.List)
-          .map<AssignedLocation>((value) => AssignedLocation.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListAssignedLocationsResponse.fromJson(core.Map _json)
+      : this(
+          assignedLocations: _json.containsKey('assignedLocations')
+              ? (_json['assignedLocations'] as core.List)
+                  .map<AssignedLocation>((value) => AssignedLocation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedLocations != null)
@@ -19345,21 +20143,25 @@ class ListCampaignAssignedTargetingOptionsResponse {
   /// assigned_targeting_options to return.
   core.String? nextPageToken;
 
-  ListCampaignAssignedTargetingOptionsResponse();
+  ListCampaignAssignedTargetingOptionsResponse({
+    this.assignedTargetingOptions,
+    this.nextPageToken,
+  });
 
-  ListCampaignAssignedTargetingOptionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('assignedTargetingOptions')) {
-      assignedTargetingOptions =
-          (_json['assignedTargetingOptions'] as core.List)
-              .map<AssignedTargetingOption>((value) =>
-                  AssignedTargetingOption.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListCampaignAssignedTargetingOptionsResponse.fromJson(core.Map _json)
+      : this(
+          assignedTargetingOptions:
+              _json.containsKey('assignedTargetingOptions')
+                  ? (_json['assignedTargetingOptions'] as core.List)
+                      .map<AssignedTargetingOption>((value) =>
+                          AssignedTargetingOption.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedTargetingOptions != null)
@@ -19381,19 +20183,23 @@ class ListCampaignsResponse {
   /// `ListCampaigns` method to retrieve the next page of results.
   core.String? nextPageToken;
 
-  ListCampaignsResponse();
+  ListCampaignsResponse({
+    this.campaigns,
+    this.nextPageToken,
+  });
 
-  ListCampaignsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('campaigns')) {
-      campaigns = (_json['campaigns'] as core.List)
-          .map<Campaign>((value) =>
-              Campaign.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListCampaignsResponse.fromJson(core.Map _json)
+      : this(
+          campaigns: _json.containsKey('campaigns')
+              ? (_json['campaigns'] as core.List)
+                  .map<Campaign>((value) => Campaign.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (campaigns != null)
@@ -19414,19 +20220,23 @@ class ListChannelsResponse {
   /// `ListChannels` method to retrieve the next page of results.
   core.String? nextPageToken;
 
-  ListChannelsResponse();
+  ListChannelsResponse({
+    this.channels,
+    this.nextPageToken,
+  });
 
-  ListChannelsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('channels')) {
-      channels = (_json['channels'] as core.List)
-          .map<Channel>((value) =>
-              Channel.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListChannelsResponse.fromJson(core.Map _json)
+      : this(
+          channels: _json.containsKey('channels')
+              ? (_json['channels'] as core.List)
+                  .map<Channel>((value) => Channel.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channels != null)
@@ -19447,19 +20257,23 @@ class ListCombinedAudiencesResponse {
   /// `ListCombinedAudiences` method to retrieve the next page of results.
   core.String? nextPageToken;
 
-  ListCombinedAudiencesResponse();
+  ListCombinedAudiencesResponse({
+    this.combinedAudiences,
+    this.nextPageToken,
+  });
 
-  ListCombinedAudiencesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('combinedAudiences')) {
-      combinedAudiences = (_json['combinedAudiences'] as core.List)
-          .map<CombinedAudience>((value) => CombinedAudience.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListCombinedAudiencesResponse.fromJson(core.Map _json)
+      : this(
+          combinedAudiences: _json.containsKey('combinedAudiences')
+              ? (_json['combinedAudiences'] as core.List)
+                  .map<CombinedAudience>((value) => CombinedAudience.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (combinedAudiences != null)
@@ -19482,19 +20296,23 @@ class ListCreativesResponse {
   /// this field is null, it means this is the last page.
   core.String? nextPageToken;
 
-  ListCreativesResponse();
+  ListCreativesResponse({
+    this.creatives,
+    this.nextPageToken,
+  });
 
-  ListCreativesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('creatives')) {
-      creatives = (_json['creatives'] as core.List)
-          .map<Creative>((value) =>
-              Creative.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListCreativesResponse.fromJson(core.Map _json)
+      : this(
+          creatives: _json.containsKey('creatives')
+              ? (_json['creatives'] as core.List)
+                  .map<Creative>((value) => Creative.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (creatives != null)
@@ -19516,20 +20334,24 @@ class ListCustomBiddingAlgorithmsResponse {
   /// results. If this field is null, it means this is the last page.
   core.String? nextPageToken;
 
-  ListCustomBiddingAlgorithmsResponse();
+  ListCustomBiddingAlgorithmsResponse({
+    this.customBiddingAlgorithms,
+    this.nextPageToken,
+  });
 
-  ListCustomBiddingAlgorithmsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('customBiddingAlgorithms')) {
-      customBiddingAlgorithms = (_json['customBiddingAlgorithms'] as core.List)
-          .map<CustomBiddingAlgorithm>((value) =>
-              CustomBiddingAlgorithm.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListCustomBiddingAlgorithmsResponse.fromJson(core.Map _json)
+      : this(
+          customBiddingAlgorithms: _json.containsKey('customBiddingAlgorithms')
+              ? (_json['customBiddingAlgorithms'] as core.List)
+                  .map<CustomBiddingAlgorithm>((value) =>
+                      CustomBiddingAlgorithm.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customBiddingAlgorithms != null)
@@ -19551,19 +20373,23 @@ class ListCustomListsResponse {
   /// `ListCustomLists` method to retrieve the next page of results.
   core.String? nextPageToken;
 
-  ListCustomListsResponse();
+  ListCustomListsResponse({
+    this.customLists,
+    this.nextPageToken,
+  });
 
-  ListCustomListsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('customLists')) {
-      customLists = (_json['customLists'] as core.List)
-          .map<CustomList>((value) =>
-              CustomList.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListCustomListsResponse.fromJson(core.Map _json)
+      : this(
+          customLists: _json.containsKey('customLists')
+              ? (_json['customLists'] as core.List)
+                  .map<CustomList>((value) => CustomList.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customLists != null)
@@ -19586,21 +20412,25 @@ class ListFirstAndThirdPartyAudiencesResponse {
   /// results.
   core.String? nextPageToken;
 
-  ListFirstAndThirdPartyAudiencesResponse();
+  ListFirstAndThirdPartyAudiencesResponse({
+    this.firstAndThirdPartyAudiences,
+    this.nextPageToken,
+  });
 
-  ListFirstAndThirdPartyAudiencesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('firstAndThirdPartyAudiences')) {
-      firstAndThirdPartyAudiences =
-          (_json['firstAndThirdPartyAudiences'] as core.List)
-              .map<FirstAndThirdPartyAudience>((value) =>
-                  FirstAndThirdPartyAudience.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListFirstAndThirdPartyAudiencesResponse.fromJson(core.Map _json)
+      : this(
+          firstAndThirdPartyAudiences:
+              _json.containsKey('firstAndThirdPartyAudiences')
+                  ? (_json['firstAndThirdPartyAudiences'] as core.List)
+                      .map<FirstAndThirdPartyAudience>((value) =>
+                          FirstAndThirdPartyAudience.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (firstAndThirdPartyAudiences != null)
@@ -19623,19 +20453,23 @@ class ListGoogleAudiencesResponse {
   /// `ListGoogleAudiences` method to retrieve the next page of results.
   core.String? nextPageToken;
 
-  ListGoogleAudiencesResponse();
+  ListGoogleAudiencesResponse({
+    this.googleAudiences,
+    this.nextPageToken,
+  });
 
-  ListGoogleAudiencesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('googleAudiences')) {
-      googleAudiences = (_json['googleAudiences'] as core.List)
-          .map<GoogleAudience>((value) => GoogleAudience.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListGoogleAudiencesResponse.fromJson(core.Map _json)
+      : this(
+          googleAudiences: _json.containsKey('googleAudiences')
+              ? (_json['googleAudiences'] as core.List)
+                  .map<GoogleAudience>((value) => GoogleAudience.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (googleAudiences != null)
@@ -19660,21 +20494,25 @@ class ListInsertionOrderAssignedTargetingOptionsResponse {
   /// assigned_targeting_options to return.
   core.String? nextPageToken;
 
-  ListInsertionOrderAssignedTargetingOptionsResponse();
+  ListInsertionOrderAssignedTargetingOptionsResponse({
+    this.assignedTargetingOptions,
+    this.nextPageToken,
+  });
 
-  ListInsertionOrderAssignedTargetingOptionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('assignedTargetingOptions')) {
-      assignedTargetingOptions =
-          (_json['assignedTargetingOptions'] as core.List)
-              .map<AssignedTargetingOption>((value) =>
-                  AssignedTargetingOption.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListInsertionOrderAssignedTargetingOptionsResponse.fromJson(core.Map _json)
+      : this(
+          assignedTargetingOptions:
+              _json.containsKey('assignedTargetingOptions')
+                  ? (_json['assignedTargetingOptions'] as core.List)
+                      .map<AssignedTargetingOption>((value) =>
+                          AssignedTargetingOption.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedTargetingOptions != null)
@@ -19696,19 +20534,23 @@ class ListInsertionOrdersResponse {
   /// `ListInsertionOrders` method to retrieve the next page of results.
   core.String? nextPageToken;
 
-  ListInsertionOrdersResponse();
+  ListInsertionOrdersResponse({
+    this.insertionOrders,
+    this.nextPageToken,
+  });
 
-  ListInsertionOrdersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('insertionOrders')) {
-      insertionOrders = (_json['insertionOrders'] as core.List)
-          .map<InsertionOrder>((value) => InsertionOrder.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListInsertionOrdersResponse.fromJson(core.Map _json)
+      : this(
+          insertionOrders: _json.containsKey('insertionOrders')
+              ? (_json['insertionOrders'] as core.List)
+                  .map<InsertionOrder>((value) => InsertionOrder.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (insertionOrders != null)
@@ -19731,19 +20573,24 @@ class ListInventorySourceGroupsResponse {
   /// `ListInventorySourceGroups` method to retrieve the next page of results.
   core.String? nextPageToken;
 
-  ListInventorySourceGroupsResponse();
+  ListInventorySourceGroupsResponse({
+    this.inventorySourceGroups,
+    this.nextPageToken,
+  });
 
-  ListInventorySourceGroupsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('inventorySourceGroups')) {
-      inventorySourceGroups = (_json['inventorySourceGroups'] as core.List)
-          .map<InventorySourceGroup>((value) => InventorySourceGroup.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListInventorySourceGroupsResponse.fromJson(core.Map _json)
+      : this(
+          inventorySourceGroups: _json.containsKey('inventorySourceGroups')
+              ? (_json['inventorySourceGroups'] as core.List)
+                  .map<InventorySourceGroup>((value) =>
+                      InventorySourceGroup.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (inventorySourceGroups != null)
@@ -19765,19 +20612,23 @@ class ListInventorySourcesResponse {
   /// `ListInventorySources` method to retrieve the next page of results.
   core.String? nextPageToken;
 
-  ListInventorySourcesResponse();
+  ListInventorySourcesResponse({
+    this.inventorySources,
+    this.nextPageToken,
+  });
 
-  ListInventorySourcesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('inventorySources')) {
-      inventorySources = (_json['inventorySources'] as core.List)
-          .map<InventorySource>((value) => InventorySource.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListInventorySourcesResponse.fromJson(core.Map _json)
+      : this(
+          inventorySources: _json.containsKey('inventorySources')
+              ? (_json['inventorySources'] as core.List)
+                  .map<InventorySource>((value) => InventorySource.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (inventorySources != null)
@@ -19800,19 +20651,23 @@ class ListInvoicesResponse {
   /// will be absent if there are no more invoices to return.
   core.String? nextPageToken;
 
-  ListInvoicesResponse();
+  ListInvoicesResponse({
+    this.invoices,
+    this.nextPageToken,
+  });
 
-  ListInvoicesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('invoices')) {
-      invoices = (_json['invoices'] as core.List)
-          .map<Invoice>((value) =>
-              Invoice.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListInvoicesResponse.fromJson(core.Map _json)
+      : this(
+          invoices: _json.containsKey('invoices')
+              ? (_json['invoices'] as core.List)
+                  .map<Invoice>((value) => Invoice.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (invoices != null)
@@ -19836,21 +20691,25 @@ class ListLineItemAssignedTargetingOptionsResponse {
   /// assigned_targeting_options to return.
   core.String? nextPageToken;
 
-  ListLineItemAssignedTargetingOptionsResponse();
+  ListLineItemAssignedTargetingOptionsResponse({
+    this.assignedTargetingOptions,
+    this.nextPageToken,
+  });
 
-  ListLineItemAssignedTargetingOptionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('assignedTargetingOptions')) {
-      assignedTargetingOptions =
-          (_json['assignedTargetingOptions'] as core.List)
-              .map<AssignedTargetingOption>((value) =>
-                  AssignedTargetingOption.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListLineItemAssignedTargetingOptionsResponse.fromJson(core.Map _json)
+      : this(
+          assignedTargetingOptions:
+              _json.containsKey('assignedTargetingOptions')
+                  ? (_json['assignedTargetingOptions'] as core.List)
+                      .map<AssignedTargetingOption>((value) =>
+                          AssignedTargetingOption.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedTargetingOptions != null)
@@ -19872,19 +20731,23 @@ class ListLineItemsResponse {
   /// `ListLineItems` method to retrieve the next page of results.
   core.String? nextPageToken;
 
-  ListLineItemsResponse();
+  ListLineItemsResponse({
+    this.lineItems,
+    this.nextPageToken,
+  });
 
-  ListLineItemsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('lineItems')) {
-      lineItems = (_json['lineItems'] as core.List)
-          .map<LineItem>((value) =>
-              LineItem.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListLineItemsResponse.fromJson(core.Map _json)
+      : this(
+          lineItems: _json.containsKey('lineItems')
+              ? (_json['lineItems'] as core.List)
+                  .map<LineItem>((value) => LineItem.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (lineItems != null)
@@ -19905,19 +20768,23 @@ class ListLocationListsResponse {
   /// `ListLocationLists` method to retrieve the next page of results.
   core.String? nextPageToken;
 
-  ListLocationListsResponse();
+  ListLocationListsResponse({
+    this.locationLists,
+    this.nextPageToken,
+  });
 
-  ListLocationListsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('locationLists')) {
-      locationLists = (_json['locationLists'] as core.List)
-          .map<LocationList>((value) => LocationList.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListLocationListsResponse.fromJson(core.Map _json)
+      : this(
+          locationLists: _json.containsKey('locationLists')
+              ? (_json['locationLists'] as core.List)
+                  .map<LocationList>((value) => LocationList.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (locationLists != null)
@@ -19939,19 +20806,23 @@ class ListManualTriggersResponse {
   /// `ListManualTriggers` method to retrieve the next page of results.
   core.String? nextPageToken;
 
-  ListManualTriggersResponse();
+  ListManualTriggersResponse({
+    this.manualTriggers,
+    this.nextPageToken,
+  });
 
-  ListManualTriggersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('manualTriggers')) {
-      manualTriggers = (_json['manualTriggers'] as core.List)
-          .map<ManualTrigger>((value) => ManualTrigger.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListManualTriggersResponse.fromJson(core.Map _json)
+      : this(
+          manualTriggers: _json.containsKey('manualTriggers')
+              ? (_json['manualTriggers'] as core.List)
+                  .map<ManualTrigger>((value) => ManualTrigger.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (manualTriggers != null)
@@ -19974,19 +20845,24 @@ class ListNegativeKeywordListsResponse {
   /// `ListNegativeKeywordLists` method to retrieve the next page of results.
   core.String? nextPageToken;
 
-  ListNegativeKeywordListsResponse();
+  ListNegativeKeywordListsResponse({
+    this.negativeKeywordLists,
+    this.nextPageToken,
+  });
 
-  ListNegativeKeywordListsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('negativeKeywordLists')) {
-      negativeKeywordLists = (_json['negativeKeywordLists'] as core.List)
-          .map<NegativeKeywordList>((value) => NegativeKeywordList.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListNegativeKeywordListsResponse.fromJson(core.Map _json)
+      : this(
+          negativeKeywordLists: _json.containsKey('negativeKeywordLists')
+              ? (_json['negativeKeywordLists'] as core.List)
+                  .map<NegativeKeywordList>((value) =>
+                      NegativeKeywordList.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (negativeKeywordLists != null)
@@ -20009,19 +20885,23 @@ class ListNegativeKeywordsResponse {
   /// `ListNegativeKeywords` method to retrieve the next page of results.
   core.String? nextPageToken;
 
-  ListNegativeKeywordsResponse();
+  ListNegativeKeywordsResponse({
+    this.negativeKeywords,
+    this.nextPageToken,
+  });
 
-  ListNegativeKeywordsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('negativeKeywords')) {
-      negativeKeywords = (_json['negativeKeywords'] as core.List)
-          .map<NegativeKeyword>((value) => NegativeKeyword.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListNegativeKeywordsResponse.fromJson(core.Map _json)
+      : this(
+          negativeKeywords: _json.containsKey('negativeKeywords')
+              ? (_json['negativeKeywords'] as core.List)
+                  .map<NegativeKeyword>((value) => NegativeKeyword.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (negativeKeywords != null)
@@ -20045,21 +20925,25 @@ class ListPartnerAssignedTargetingOptionsResponse {
   /// assigned_targeting_options to return.
   core.String? nextPageToken;
 
-  ListPartnerAssignedTargetingOptionsResponse();
+  ListPartnerAssignedTargetingOptionsResponse({
+    this.assignedTargetingOptions,
+    this.nextPageToken,
+  });
 
-  ListPartnerAssignedTargetingOptionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('assignedTargetingOptions')) {
-      assignedTargetingOptions =
-          (_json['assignedTargetingOptions'] as core.List)
-              .map<AssignedTargetingOption>((value) =>
-                  AssignedTargetingOption.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList();
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-  }
+  ListPartnerAssignedTargetingOptionsResponse.fromJson(core.Map _json)
+      : this(
+          assignedTargetingOptions:
+              _json.containsKey('assignedTargetingOptions')
+                  ? (_json['assignedTargetingOptions'] as core.List)
+                      .map<AssignedTargetingOption>((value) =>
+                          AssignedTargetingOption.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedTargetingOptions != null)
@@ -20081,19 +20965,23 @@ class ListPartnersResponse {
   /// This list will be absent if empty.
   core.List<Partner>? partners;
 
-  ListPartnersResponse();
+  ListPartnersResponse({
+    this.nextPageToken,
+    this.partners,
+  });
 
-  ListPartnersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('partners')) {
-      partners = (_json['partners'] as core.List)
-          .map<Partner>((value) =>
-              Partner.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListPartnersResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          partners: _json.containsKey('partners')
+              ? (_json['partners'] as core.List)
+                  .map<Partner>((value) => Partner.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -20115,19 +21003,23 @@ class ListSitesResponse {
   /// This list will be absent if empty.
   core.List<Site>? sites;
 
-  ListSitesResponse();
+  ListSitesResponse({
+    this.nextPageToken,
+    this.sites,
+  });
 
-  ListSitesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('sites')) {
-      sites = (_json['sites'] as core.List)
-          .map<Site>((value) =>
-              Site.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListSitesResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          sites: _json.containsKey('sites')
+              ? (_json['sites'] as core.List)
+                  .map<Site>((value) => Site.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -20149,19 +21041,23 @@ class ListTargetingOptionsResponse {
   /// This list will be absent if empty.
   core.List<TargetingOption>? targetingOptions;
 
-  ListTargetingOptionsResponse();
+  ListTargetingOptionsResponse({
+    this.nextPageToken,
+    this.targetingOptions,
+  });
 
-  ListTargetingOptionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('targetingOptions')) {
-      targetingOptions = (_json['targetingOptions'] as core.List)
-          .map<TargetingOption>((value) => TargetingOption.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListTargetingOptionsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          targetingOptions: _json.containsKey('targetingOptions')
+              ? (_json['targetingOptions'] as core.List)
+                  .map<TargetingOption>((value) => TargetingOption.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -20184,19 +21080,23 @@ class ListUsersResponse {
   /// This list will be absent if empty.
   core.List<User>? users;
 
-  ListUsersResponse();
+  ListUsersResponse({
+    this.nextPageToken,
+    this.users,
+  });
 
-  ListUsersResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('users')) {
-      users = (_json['users'] as core.List)
-          .map<User>((value) =>
-              User.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ListUsersResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          users: _json.containsKey('users')
+              ? (_json['users'] as core.List)
+                  .map<User>((value) => User.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -20244,25 +21144,30 @@ class LocationList {
   /// Output only.
   core.String? name;
 
-  LocationList();
+  LocationList({
+    this.advertiserId,
+    this.displayName,
+    this.locationListId,
+    this.locationType,
+    this.name,
+  });
 
-  LocationList.fromJson(core.Map _json) {
-    if (_json.containsKey('advertiserId')) {
-      advertiserId = _json['advertiserId'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('locationListId')) {
-      locationListId = _json['locationListId'] as core.String;
-    }
-    if (_json.containsKey('locationType')) {
-      locationType = _json['locationType'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  LocationList.fromJson(core.Map _json)
+      : this(
+          advertiserId: _json.containsKey('advertiserId')
+              ? _json['advertiserId'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          locationListId: _json.containsKey('locationListId')
+              ? _json['locationListId'] as core.String
+              : null,
+          locationType: _json.containsKey('locationType')
+              ? _json['locationType'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advertiserId != null) 'advertiserId': advertiserId!,
@@ -20284,16 +21189,20 @@ class LookbackWindow {
   /// your ads.
   core.int? impressionDays;
 
-  LookbackWindow();
+  LookbackWindow({
+    this.clickDays,
+    this.impressionDays,
+  });
 
-  LookbackWindow.fromJson(core.Map _json) {
-    if (_json.containsKey('clickDays')) {
-      clickDays = _json['clickDays'] as core.int;
-    }
-    if (_json.containsKey('impressionDays')) {
-      impressionDays = _json['impressionDays'] as core.int;
-    }
-  }
+  LookbackWindow.fromJson(core.Map _json)
+      : this(
+          clickDays: _json.containsKey('clickDays')
+              ? _json['clickDays'] as core.int
+              : null,
+          impressionDays: _json.containsKey('impressionDays')
+              ? _json['impressionDays'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clickDays != null) 'clickDays': clickDays!,
@@ -20305,13 +21214,16 @@ class LookupInvoiceCurrencyResponse {
   /// Currency used by the advertiser in ISO 4217 format.
   core.String? currencyCode;
 
-  LookupInvoiceCurrencyResponse();
+  LookupInvoiceCurrencyResponse({
+    this.currencyCode,
+  });
 
-  LookupInvoiceCurrencyResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'] as core.String;
-    }
-  }
+  LookupInvoiceCurrencyResponse.fromJson(core.Map _json)
+      : this(
+          currencyCode: _json.containsKey('currencyCode')
+              ? _json['currencyCode'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (currencyCode != null) 'currencyCode': currencyCode!,
@@ -20368,32 +21280,38 @@ class ManualTrigger {
   /// Output only.
   core.String? triggerId;
 
-  ManualTrigger();
+  ManualTrigger({
+    this.activationDurationMinutes,
+    this.advertiserId,
+    this.displayName,
+    this.latestActivationTime,
+    this.name,
+    this.state,
+    this.triggerId,
+  });
 
-  ManualTrigger.fromJson(core.Map _json) {
-    if (_json.containsKey('activationDurationMinutes')) {
-      activationDurationMinutes =
-          _json['activationDurationMinutes'] as core.String;
-    }
-    if (_json.containsKey('advertiserId')) {
-      advertiserId = _json['advertiserId'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('latestActivationTime')) {
-      latestActivationTime = _json['latestActivationTime'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('state')) {
-      state = _json['state'] as core.String;
-    }
-    if (_json.containsKey('triggerId')) {
-      triggerId = _json['triggerId'] as core.String;
-    }
-  }
+  ManualTrigger.fromJson(core.Map _json)
+      : this(
+          activationDurationMinutes:
+              _json.containsKey('activationDurationMinutes')
+                  ? _json['activationDurationMinutes'] as core.String
+                  : null,
+          advertiserId: _json.containsKey('advertiserId')
+              ? _json['advertiserId'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          latestActivationTime: _json.containsKey('latestActivationTime')
+              ? _json['latestActivationTime'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          triggerId: _json.containsKey('triggerId')
+              ? _json['triggerId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (activationDurationMinutes != null)
@@ -20447,21 +21365,26 @@ class MaximizeSpendBidStrategy {
   /// impressions.
   core.String? performanceGoalType;
 
-  MaximizeSpendBidStrategy();
+  MaximizeSpendBidStrategy({
+    this.customBiddingAlgorithmId,
+    this.maxAverageCpmBidAmountMicros,
+    this.performanceGoalType,
+  });
 
-  MaximizeSpendBidStrategy.fromJson(core.Map _json) {
-    if (_json.containsKey('customBiddingAlgorithmId')) {
-      customBiddingAlgorithmId =
-          _json['customBiddingAlgorithmId'] as core.String;
-    }
-    if (_json.containsKey('maxAverageCpmBidAmountMicros')) {
-      maxAverageCpmBidAmountMicros =
-          _json['maxAverageCpmBidAmountMicros'] as core.String;
-    }
-    if (_json.containsKey('performanceGoalType')) {
-      performanceGoalType = _json['performanceGoalType'] as core.String;
-    }
-  }
+  MaximizeSpendBidStrategy.fromJson(core.Map _json)
+      : this(
+          customBiddingAlgorithmId:
+              _json.containsKey('customBiddingAlgorithmId')
+                  ? _json['customBiddingAlgorithmId'] as core.String
+                  : null,
+          maxAverageCpmBidAmountMicros:
+              _json.containsKey('maxAverageCpmBidAmountMicros')
+                  ? _json['maxAverageCpmBidAmountMicros'] as core.String
+                  : null,
+          performanceGoalType: _json.containsKey('performanceGoalType')
+              ? _json['performanceGoalType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customBiddingAlgorithmId != null)
@@ -20481,18 +21404,22 @@ class MeasurementConfig {
   /// Whether or not to include DV360 data in CM360 data transfer reports.
   core.bool? dv360ToCmDataSharingEnabled;
 
-  MeasurementConfig();
+  MeasurementConfig({
+    this.dv360ToCmCostReportingEnabled,
+    this.dv360ToCmDataSharingEnabled,
+  });
 
-  MeasurementConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('dv360ToCmCostReportingEnabled')) {
-      dv360ToCmCostReportingEnabled =
-          _json['dv360ToCmCostReportingEnabled'] as core.bool;
-    }
-    if (_json.containsKey('dv360ToCmDataSharingEnabled')) {
-      dv360ToCmDataSharingEnabled =
-          _json['dv360ToCmDataSharingEnabled'] as core.bool;
-    }
-  }
+  MeasurementConfig.fromJson(core.Map _json)
+      : this(
+          dv360ToCmCostReportingEnabled:
+              _json.containsKey('dv360ToCmCostReportingEnabled')
+                  ? _json['dv360ToCmCostReportingEnabled'] as core.bool
+                  : null,
+          dv360ToCmDataSharingEnabled:
+              _json.containsKey('dv360ToCmDataSharingEnabled')
+                  ? _json['dv360ToCmDataSharingEnabled'] as core.bool
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dv360ToCmCostReportingEnabled != null)
@@ -20532,22 +21459,27 @@ class MobileApp {
   /// Output only.
   core.String? publisher;
 
-  MobileApp();
+  MobileApp({
+    this.appId,
+    this.displayName,
+    this.platform,
+    this.publisher,
+  });
 
-  MobileApp.fromJson(core.Map _json) {
-    if (_json.containsKey('appId')) {
-      appId = _json['appId'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('platform')) {
-      platform = _json['platform'] as core.String;
-    }
-    if (_json.containsKey('publisher')) {
-      publisher = _json['publisher'] as core.String;
-    }
-  }
+  MobileApp.fromJson(core.Map _json)
+      : this(
+          appId:
+              _json.containsKey('appId') ? _json['appId'] as core.String : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          platform: _json.containsKey('platform')
+              ? _json['platform'] as core.String
+              : null,
+          publisher: _json.containsKey('publisher')
+              ? _json['publisher'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appId != null) 'appId': appId!,
@@ -20576,19 +21508,21 @@ class Money {
   /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
   core.String? units;
 
-  Money();
+  Money({
+    this.currencyCode,
+    this.nanos,
+    this.units,
+  });
 
-  Money.fromJson(core.Map _json) {
-    if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'] as core.String;
-    }
-    if (_json.containsKey('nanos')) {
-      nanos = _json['nanos'] as core.int;
-    }
-    if (_json.containsKey('units')) {
-      units = _json['units'] as core.String;
-    }
-  }
+  Money.fromJson(core.Map _json)
+      : this(
+          currencyCode: _json.containsKey('currencyCode')
+              ? _json['currencyCode'] as core.String
+              : null,
+          nanos: _json.containsKey('nanos') ? _json['nanos'] as core.int : null,
+          units:
+              _json.containsKey('units') ? _json['units'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (currencyCode != null) 'currencyCode': currencyCode!,
@@ -20632,16 +21566,20 @@ class NativeContentPositionAssignedTargetingOptionDetails {
   /// Required.
   core.String? targetingOptionId;
 
-  NativeContentPositionAssignedTargetingOptionDetails();
+  NativeContentPositionAssignedTargetingOptionDetails({
+    this.contentPosition,
+    this.targetingOptionId,
+  });
 
-  NativeContentPositionAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('contentPosition')) {
-      contentPosition = _json['contentPosition'] as core.String;
-    }
-    if (_json.containsKey('targetingOptionId')) {
-      targetingOptionId = _json['targetingOptionId'] as core.String;
-    }
-  }
+  NativeContentPositionAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          contentPosition: _json.containsKey('contentPosition')
+              ? _json['contentPosition'] as core.String
+              : null,
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentPosition != null) 'contentPosition': contentPosition!,
@@ -20676,13 +21614,16 @@ class NativeContentPositionTargetingOptionDetails {
   /// recommendation, i.e., ads appear in sections for recommended content.
   core.String? contentPosition;
 
-  NativeContentPositionTargetingOptionDetails();
+  NativeContentPositionTargetingOptionDetails({
+    this.contentPosition,
+  });
 
-  NativeContentPositionTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('contentPosition')) {
-      contentPosition = _json['contentPosition'] as core.String;
-    }
-  }
+  NativeContentPositionTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          contentPosition: _json.containsKey('contentPosition')
+              ? _json['contentPosition'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentPosition != null) 'contentPosition': contentPosition!,
@@ -20707,16 +21648,18 @@ class NegativeKeyword {
   /// Output only.
   core.String? name;
 
-  NegativeKeyword();
+  NegativeKeyword({
+    this.keywordValue,
+    this.name,
+  });
 
-  NegativeKeyword.fromJson(core.Map _json) {
-    if (_json.containsKey('keywordValue')) {
-      keywordValue = _json['keywordValue'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  NegativeKeyword.fromJson(core.Map _json)
+      : this(
+          keywordValue: _json.containsKey('keywordValue')
+              ? _json['keywordValue'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (keywordValue != null) 'keywordValue': keywordValue!,
@@ -20756,25 +21699,30 @@ class NegativeKeywordList {
   /// Output only.
   core.String? targetedLineItemCount;
 
-  NegativeKeywordList();
+  NegativeKeywordList({
+    this.advertiserId,
+    this.displayName,
+    this.name,
+    this.negativeKeywordListId,
+    this.targetedLineItemCount,
+  });
 
-  NegativeKeywordList.fromJson(core.Map _json) {
-    if (_json.containsKey('advertiserId')) {
-      advertiserId = _json['advertiserId'] as core.String;
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('negativeKeywordListId')) {
-      negativeKeywordListId = _json['negativeKeywordListId'] as core.String;
-    }
-    if (_json.containsKey('targetedLineItemCount')) {
-      targetedLineItemCount = _json['targetedLineItemCount'] as core.String;
-    }
-  }
+  NegativeKeywordList.fromJson(core.Map _json)
+      : this(
+          advertiserId: _json.containsKey('advertiserId')
+              ? _json['advertiserId'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          negativeKeywordListId: _json.containsKey('negativeKeywordListId')
+              ? _json['negativeKeywordListId'] as core.String
+              : null,
+          targetedLineItemCount: _json.containsKey('targetedLineItemCount')
+              ? _json['targetedLineItemCount'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advertiserId != null) 'advertiserId': advertiserId!,
@@ -20800,13 +21748,16 @@ class NegativeKeywordListAssignedTargetingOptionDetails {
   /// Required.
   core.String? negativeKeywordListId;
 
-  NegativeKeywordListAssignedTargetingOptionDetails();
+  NegativeKeywordListAssignedTargetingOptionDetails({
+    this.negativeKeywordListId,
+  });
 
-  NegativeKeywordListAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('negativeKeywordListId')) {
-      negativeKeywordListId = _json['negativeKeywordListId'] as core.String;
-    }
-  }
+  NegativeKeywordListAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          negativeKeywordListId: _json.containsKey('negativeKeywordListId')
+              ? _json['negativeKeywordListId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (negativeKeywordListId != null)
@@ -20866,35 +21817,45 @@ class ObaIcon {
   /// Required.
   core.String? viewTrackingUrl;
 
-  ObaIcon();
+  ObaIcon({
+    this.clickTrackingUrl,
+    this.dimensions,
+    this.landingPageUrl,
+    this.position,
+    this.program,
+    this.resourceMimeType,
+    this.resourceUrl,
+    this.viewTrackingUrl,
+  });
 
-  ObaIcon.fromJson(core.Map _json) {
-    if (_json.containsKey('clickTrackingUrl')) {
-      clickTrackingUrl = _json['clickTrackingUrl'] as core.String;
-    }
-    if (_json.containsKey('dimensions')) {
-      dimensions = Dimensions.fromJson(
-          _json['dimensions'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('landingPageUrl')) {
-      landingPageUrl = _json['landingPageUrl'] as core.String;
-    }
-    if (_json.containsKey('position')) {
-      position = _json['position'] as core.String;
-    }
-    if (_json.containsKey('program')) {
-      program = _json['program'] as core.String;
-    }
-    if (_json.containsKey('resourceMimeType')) {
-      resourceMimeType = _json['resourceMimeType'] as core.String;
-    }
-    if (_json.containsKey('resourceUrl')) {
-      resourceUrl = _json['resourceUrl'] as core.String;
-    }
-    if (_json.containsKey('viewTrackingUrl')) {
-      viewTrackingUrl = _json['viewTrackingUrl'] as core.String;
-    }
-  }
+  ObaIcon.fromJson(core.Map _json)
+      : this(
+          clickTrackingUrl: _json.containsKey('clickTrackingUrl')
+              ? _json['clickTrackingUrl'] as core.String
+              : null,
+          dimensions: _json.containsKey('dimensions')
+              ? Dimensions.fromJson(
+                  _json['dimensions'] as core.Map<core.String, core.dynamic>)
+              : null,
+          landingPageUrl: _json.containsKey('landingPageUrl')
+              ? _json['landingPageUrl'] as core.String
+              : null,
+          position: _json.containsKey('position')
+              ? _json['position'] as core.String
+              : null,
+          program: _json.containsKey('program')
+              ? _json['program'] as core.String
+              : null,
+          resourceMimeType: _json.containsKey('resourceMimeType')
+              ? _json['resourceMimeType'] as core.String
+              : null,
+          resourceUrl: _json.containsKey('resourceUrl')
+              ? _json['resourceUrl'] as core.String
+              : null,
+          viewTrackingUrl: _json.containsKey('viewTrackingUrl')
+              ? _json['viewTrackingUrl'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clickTrackingUrl != null) 'clickTrackingUrl': clickTrackingUrl!,
@@ -20951,19 +21912,24 @@ class OnScreenPositionAssignedTargetingOptionDetails {
   /// Required.
   core.String? targetingOptionId;
 
-  OnScreenPositionAssignedTargetingOptionDetails();
+  OnScreenPositionAssignedTargetingOptionDetails({
+    this.adType,
+    this.onScreenPosition,
+    this.targetingOptionId,
+  });
 
-  OnScreenPositionAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('adType')) {
-      adType = _json['adType'] as core.String;
-    }
-    if (_json.containsKey('onScreenPosition')) {
-      onScreenPosition = _json['onScreenPosition'] as core.String;
-    }
-    if (_json.containsKey('targetingOptionId')) {
-      targetingOptionId = _json['targetingOptionId'] as core.String;
-    }
-  }
+  OnScreenPositionAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          adType: _json.containsKey('adType')
+              ? _json['adType'] as core.String
+              : null,
+          onScreenPosition: _json.containsKey('onScreenPosition')
+              ? _json['onScreenPosition'] as core.String
+              : null,
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (adType != null) 'adType': adType!,
@@ -20990,13 +21956,16 @@ class OnScreenPositionTargetingOptionDetails {
   /// - "ON_SCREEN_POSITION_BELOW_THE_FOLD" : The ad is located below the fold.
   core.String? onScreenPosition;
 
-  OnScreenPositionTargetingOptionDetails();
+  OnScreenPositionTargetingOptionDetails({
+    this.onScreenPosition,
+  });
 
-  OnScreenPositionTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('onScreenPosition')) {
-      onScreenPosition = _json['onScreenPosition'] as core.String;
-    }
-  }
+  OnScreenPositionTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          onScreenPosition: _json.containsKey('onScreenPosition')
+              ? _json['onScreenPosition'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (onScreenPosition != null) 'onScreenPosition': onScreenPosition!,
@@ -21022,19 +21991,24 @@ class OperatingSystemAssignedTargetingOptionDetails {
   /// Required.
   core.String? targetingOptionId;
 
-  OperatingSystemAssignedTargetingOptionDetails();
+  OperatingSystemAssignedTargetingOptionDetails({
+    this.displayName,
+    this.negative,
+    this.targetingOptionId,
+  });
 
-  OperatingSystemAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('negative')) {
-      negative = _json['negative'] as core.bool;
-    }
-    if (_json.containsKey('targetingOptionId')) {
-      targetingOptionId = _json['targetingOptionId'] as core.String;
-    }
-  }
+  OperatingSystemAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          negative: _json.containsKey('negative')
+              ? _json['negative'] as core.bool
+              : null,
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -21053,13 +22027,16 @@ class OperatingSystemTargetingOptionDetails {
   /// Output only.
   core.String? displayName;
 
-  OperatingSystemTargetingOptionDetails();
+  OperatingSystemTargetingOptionDetails({
+    this.displayName,
+  });
 
-  OperatingSystemTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-  }
+  OperatingSystemTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -21109,36 +22086,39 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object>? response;
 
-  Operation();
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
 
-  Operation.fromJson(core.Map _json) {
-    if (_json.containsKey('done')) {
-      done = _json['done'] as core.bool;
-    }
-    if (_json.containsKey('error')) {
-      error = Status.fromJson(
-          _json['error'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('metadata')) {
-      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('response')) {
-      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
-        (key, item) => core.MapEntry(
-          key,
-          item as core.Object,
-        ),
-      );
-    }
-  }
+  Operation.fromJson(core.Map _json)
+      : this(
+          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
+          error: _json.containsKey('error')
+              ? Status.fromJson(
+                  _json['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          response: _json.containsKey('response')
+              ? (_json['response'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.Object,
+                  ),
+                )
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
@@ -21202,22 +22182,28 @@ class Pacing {
   /// time.
   core.String? pacingType;
 
-  Pacing();
+  Pacing({
+    this.dailyMaxImpressions,
+    this.dailyMaxMicros,
+    this.pacingPeriod,
+    this.pacingType,
+  });
 
-  Pacing.fromJson(core.Map _json) {
-    if (_json.containsKey('dailyMaxImpressions')) {
-      dailyMaxImpressions = _json['dailyMaxImpressions'] as core.String;
-    }
-    if (_json.containsKey('dailyMaxMicros')) {
-      dailyMaxMicros = _json['dailyMaxMicros'] as core.String;
-    }
-    if (_json.containsKey('pacingPeriod')) {
-      pacingPeriod = _json['pacingPeriod'] as core.String;
-    }
-    if (_json.containsKey('pacingType')) {
-      pacingType = _json['pacingType'] as core.String;
-    }
-  }
+  Pacing.fromJson(core.Map _json)
+      : this(
+          dailyMaxImpressions: _json.containsKey('dailyMaxImpressions')
+              ? _json['dailyMaxImpressions'] as core.String
+              : null,
+          dailyMaxMicros: _json.containsKey('dailyMaxMicros')
+              ? _json['dailyMaxMicros'] as core.String
+              : null,
+          pacingPeriod: _json.containsKey('pacingPeriod')
+              ? _json['pacingPeriod'] as core.String
+              : null,
+          pacingType: _json.containsKey('pacingType')
+              ? _json['pacingType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dailyMaxImpressions != null)
@@ -21272,23 +22258,28 @@ class ParentEntityFilter {
   /// `FILE_TYPE_LINE_ITEM`, `FILE_TYPE_AD_GROUP`, and `FILE_TYPE_AD`.
   core.String? filterType;
 
-  ParentEntityFilter();
+  ParentEntityFilter({
+    this.fileType,
+    this.filterIds,
+    this.filterType,
+  });
 
-  ParentEntityFilter.fromJson(core.Map _json) {
-    if (_json.containsKey('fileType')) {
-      fileType = (_json['fileType'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('filterIds')) {
-      filterIds = (_json['filterIds'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('filterType')) {
-      filterType = _json['filterType'] as core.String;
-    }
-  }
+  ParentEntityFilter.fromJson(core.Map _json)
+      : this(
+          fileType: _json.containsKey('fileType')
+              ? (_json['fileType'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          filterIds: _json.containsKey('filterIds')
+              ? (_json['filterIds'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          filterType: _json.containsKey('filterType')
+              ? _json['filterType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fileType != null) 'fileType': fileType!,
@@ -21321,16 +22312,20 @@ class ParentalStatusAssignedTargetingOptionDetails {
   /// Required.
   core.String? targetingOptionId;
 
-  ParentalStatusAssignedTargetingOptionDetails();
+  ParentalStatusAssignedTargetingOptionDetails({
+    this.parentalStatus,
+    this.targetingOptionId,
+  });
 
-  ParentalStatusAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('parentalStatus')) {
-      parentalStatus = _json['parentalStatus'] as core.String;
-    }
-    if (_json.containsKey('targetingOptionId')) {
-      targetingOptionId = _json['targetingOptionId'] as core.String;
-    }
-  }
+  ParentalStatusAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          parentalStatus: _json.containsKey('parentalStatus')
+              ? _json['parentalStatus'] as core.String
+              : null,
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (parentalStatus != null) 'parentalStatus': parentalStatus!,
@@ -21356,13 +22351,16 @@ class ParentalStatusTargetingOptionDetails {
   /// unknown.
   core.String? parentalStatus;
 
-  ParentalStatusTargetingOptionDetails();
+  ParentalStatusTargetingOptionDetails({
+    this.parentalStatus,
+  });
 
-  ParentalStatusTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('parentalStatus')) {
-      parentalStatus = _json['parentalStatus'] as core.String;
-    }
-  }
+  ParentalStatusTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          parentalStatus: _json.containsKey('parentalStatus')
+              ? _json['parentalStatus'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (parentalStatus != null) 'parentalStatus': parentalStatus!,
@@ -21425,41 +22423,50 @@ class Partner {
   /// Output only.
   core.String? updateTime;
 
-  Partner();
+  Partner({
+    this.adServerConfig,
+    this.dataAccessConfig,
+    this.displayName,
+    this.entityStatus,
+    this.exchangeConfig,
+    this.generalConfig,
+    this.name,
+    this.partnerId,
+    this.updateTime,
+  });
 
-  Partner.fromJson(core.Map _json) {
-    if (_json.containsKey('adServerConfig')) {
-      adServerConfig = PartnerAdServerConfig.fromJson(
-          _json['adServerConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('dataAccessConfig')) {
-      dataAccessConfig = PartnerDataAccessConfig.fromJson(
-          _json['dataAccessConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('entityStatus')) {
-      entityStatus = _json['entityStatus'] as core.String;
-    }
-    if (_json.containsKey('exchangeConfig')) {
-      exchangeConfig = ExchangeConfig.fromJson(
-          _json['exchangeConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('generalConfig')) {
-      generalConfig = PartnerGeneralConfig.fromJson(
-          _json['generalConfig'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('partnerId')) {
-      partnerId = _json['partnerId'] as core.String;
-    }
-    if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'] as core.String;
-    }
-  }
+  Partner.fromJson(core.Map _json)
+      : this(
+          adServerConfig: _json.containsKey('adServerConfig')
+              ? PartnerAdServerConfig.fromJson(_json['adServerConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          dataAccessConfig: _json.containsKey('dataAccessConfig')
+              ? PartnerDataAccessConfig.fromJson(_json['dataAccessConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          entityStatus: _json.containsKey('entityStatus')
+              ? _json['entityStatus'] as core.String
+              : null,
+          exchangeConfig: _json.containsKey('exchangeConfig')
+              ? ExchangeConfig.fromJson(_json['exchangeConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          generalConfig: _json.containsKey('generalConfig')
+              ? PartnerGeneralConfig.fromJson(
+                  _json['generalConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          partnerId: _json.containsKey('partnerId')
+              ? _json['partnerId'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (adServerConfig != null) 'adServerConfig': adServerConfig!.toJson(),
@@ -21480,14 +22487,17 @@ class PartnerAdServerConfig {
   /// Measurement settings of a partner.
   MeasurementConfig? measurementConfig;
 
-  PartnerAdServerConfig();
+  PartnerAdServerConfig({
+    this.measurementConfig,
+  });
 
-  PartnerAdServerConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('measurementConfig')) {
-      measurementConfig = MeasurementConfig.fromJson(
-          _json['measurementConfig'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  PartnerAdServerConfig.fromJson(core.Map _json)
+      : this(
+          measurementConfig: _json.containsKey('measurementConfig')
+              ? MeasurementConfig.fromJson(_json['measurementConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (measurementConfig != null)
@@ -21599,25 +22609,32 @@ class PartnerCost {
   /// partner.
   core.String? invoiceType;
 
-  PartnerCost();
+  PartnerCost({
+    this.costType,
+    this.feeAmount,
+    this.feePercentageMillis,
+    this.feeType,
+    this.invoiceType,
+  });
 
-  PartnerCost.fromJson(core.Map _json) {
-    if (_json.containsKey('costType')) {
-      costType = _json['costType'] as core.String;
-    }
-    if (_json.containsKey('feeAmount')) {
-      feeAmount = _json['feeAmount'] as core.String;
-    }
-    if (_json.containsKey('feePercentageMillis')) {
-      feePercentageMillis = _json['feePercentageMillis'] as core.String;
-    }
-    if (_json.containsKey('feeType')) {
-      feeType = _json['feeType'] as core.String;
-    }
-    if (_json.containsKey('invoiceType')) {
-      invoiceType = _json['invoiceType'] as core.String;
-    }
-  }
+  PartnerCost.fromJson(core.Map _json)
+      : this(
+          costType: _json.containsKey('costType')
+              ? _json['costType'] as core.String
+              : null,
+          feeAmount: _json.containsKey('feeAmount')
+              ? _json['feeAmount'] as core.String
+              : null,
+          feePercentageMillis: _json.containsKey('feePercentageMillis')
+              ? _json['feePercentageMillis'] as core.String
+              : null,
+          feeType: _json.containsKey('feeType')
+              ? _json['feeType'] as core.String
+              : null,
+          invoiceType: _json.containsKey('invoiceType')
+              ? _json['invoiceType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (costType != null) 'costType': costType!,
@@ -21636,14 +22653,17 @@ class PartnerDataAccessConfig {
   /// The SDF configuration for the partner.
   SdfConfig? sdfConfig;
 
-  PartnerDataAccessConfig();
+  PartnerDataAccessConfig({
+    this.sdfConfig,
+  });
 
-  PartnerDataAccessConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('sdfConfig')) {
-      sdfConfig = SdfConfig.fromJson(
-          _json['sdfConfig'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  PartnerDataAccessConfig.fromJson(core.Map _json)
+      : this(
+          sdfConfig: _json.containsKey('sdfConfig')
+              ? SdfConfig.fromJson(
+                  _json['sdfConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sdfConfig != null) 'sdfConfig': sdfConfig!.toJson(),
@@ -21665,16 +22685,20 @@ class PartnerGeneralConfig {
   /// Immutable.
   core.String? timeZone;
 
-  PartnerGeneralConfig();
+  PartnerGeneralConfig({
+    this.currencyCode,
+    this.timeZone,
+  });
 
-  PartnerGeneralConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'] as core.String;
-    }
-    if (_json.containsKey('timeZone')) {
-      timeZone = _json['timeZone'] as core.String;
-    }
-  }
+  PartnerGeneralConfig.fromJson(core.Map _json)
+      : this(
+          currencyCode: _json.containsKey('currencyCode')
+              ? _json['currencyCode'] as core.String
+              : null,
+          timeZone: _json.containsKey('timeZone')
+              ? _json['timeZone'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (currencyCode != null) 'currencyCode': currencyCode!,
@@ -21715,16 +22739,20 @@ class PartnerRevenueModel {
   /// cost, which includes all partner costs and data costs.
   core.String? markupType;
 
-  PartnerRevenueModel();
+  PartnerRevenueModel({
+    this.markupAmount,
+    this.markupType,
+  });
 
-  PartnerRevenueModel.fromJson(core.Map _json) {
-    if (_json.containsKey('markupAmount')) {
-      markupAmount = _json['markupAmount'] as core.String;
-    }
-    if (_json.containsKey('markupType')) {
-      markupType = _json['markupType'] as core.String;
-    }
-  }
+  PartnerRevenueModel.fromJson(core.Map _json)
+      : this(
+          markupAmount: _json.containsKey('markupAmount')
+              ? _json['markupAmount'] as core.String
+              : null,
+          markupType: _json.containsKey('markupType')
+              ? _json['markupType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (markupAmount != null) 'markupAmount': markupAmount!,
@@ -21798,24 +22826,30 @@ class PerformanceGoal {
   /// - "PERFORMANCE_GOAL_TYPE_OTHER" : The performance goal is set to Other.
   core.String? performanceGoalType;
 
-  PerformanceGoal();
+  PerformanceGoal({
+    this.performanceGoalAmountMicros,
+    this.performanceGoalPercentageMicros,
+    this.performanceGoalString,
+    this.performanceGoalType,
+  });
 
-  PerformanceGoal.fromJson(core.Map _json) {
-    if (_json.containsKey('performanceGoalAmountMicros')) {
-      performanceGoalAmountMicros =
-          _json['performanceGoalAmountMicros'] as core.String;
-    }
-    if (_json.containsKey('performanceGoalPercentageMicros')) {
-      performanceGoalPercentageMicros =
-          _json['performanceGoalPercentageMicros'] as core.String;
-    }
-    if (_json.containsKey('performanceGoalString')) {
-      performanceGoalString = _json['performanceGoalString'] as core.String;
-    }
-    if (_json.containsKey('performanceGoalType')) {
-      performanceGoalType = _json['performanceGoalType'] as core.String;
-    }
-  }
+  PerformanceGoal.fromJson(core.Map _json)
+      : this(
+          performanceGoalAmountMicros:
+              _json.containsKey('performanceGoalAmountMicros')
+                  ? _json['performanceGoalAmountMicros'] as core.String
+                  : null,
+          performanceGoalPercentageMicros:
+              _json.containsKey('performanceGoalPercentageMicros')
+                  ? _json['performanceGoalPercentageMicros'] as core.String
+                  : null,
+          performanceGoalString: _json.containsKey('performanceGoalString')
+              ? _json['performanceGoalString'] as core.String
+              : null,
+          performanceGoalType: _json.containsKey('performanceGoalType')
+              ? _json['performanceGoalType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (performanceGoalAmountMicros != null)
@@ -21898,25 +22932,31 @@ class PerformanceGoalBidStrategy {
   /// impressions.
   core.String? performanceGoalType;
 
-  PerformanceGoalBidStrategy();
+  PerformanceGoalBidStrategy({
+    this.customBiddingAlgorithmId,
+    this.maxAverageCpmBidAmountMicros,
+    this.performanceGoalAmountMicros,
+    this.performanceGoalType,
+  });
 
-  PerformanceGoalBidStrategy.fromJson(core.Map _json) {
-    if (_json.containsKey('customBiddingAlgorithmId')) {
-      customBiddingAlgorithmId =
-          _json['customBiddingAlgorithmId'] as core.String;
-    }
-    if (_json.containsKey('maxAverageCpmBidAmountMicros')) {
-      maxAverageCpmBidAmountMicros =
-          _json['maxAverageCpmBidAmountMicros'] as core.String;
-    }
-    if (_json.containsKey('performanceGoalAmountMicros')) {
-      performanceGoalAmountMicros =
-          _json['performanceGoalAmountMicros'] as core.String;
-    }
-    if (_json.containsKey('performanceGoalType')) {
-      performanceGoalType = _json['performanceGoalType'] as core.String;
-    }
-  }
+  PerformanceGoalBidStrategy.fromJson(core.Map _json)
+      : this(
+          customBiddingAlgorithmId:
+              _json.containsKey('customBiddingAlgorithmId')
+                  ? _json['customBiddingAlgorithmId'] as core.String
+                  : null,
+          maxAverageCpmBidAmountMicros:
+              _json.containsKey('maxAverageCpmBidAmountMicros')
+                  ? _json['maxAverageCpmBidAmountMicros'] as core.String
+                  : null,
+          performanceGoalAmountMicros:
+              _json.containsKey('performanceGoalAmountMicros')
+                  ? _json['performanceGoalAmountMicros'] as core.String
+                  : null,
+          performanceGoalType: _json.containsKey('performanceGoalType')
+              ? _json['performanceGoalType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customBiddingAlgorithmId != null)
@@ -21957,20 +22997,25 @@ class PrismaConfig {
   /// Required.
   core.String? supplier;
 
-  PrismaConfig();
+  PrismaConfig({
+    this.prismaCpeCode,
+    this.prismaType,
+    this.supplier,
+  });
 
-  PrismaConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('prismaCpeCode')) {
-      prismaCpeCode = PrismaCpeCode.fromJson(
-          _json['prismaCpeCode'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('prismaType')) {
-      prismaType = _json['prismaType'] as core.String;
-    }
-    if (_json.containsKey('supplier')) {
-      supplier = _json['supplier'] as core.String;
-    }
-  }
+  PrismaConfig.fromJson(core.Map _json)
+      : this(
+          prismaCpeCode: _json.containsKey('prismaCpeCode')
+              ? PrismaCpeCode.fromJson(
+                  _json['prismaCpeCode'] as core.Map<core.String, core.dynamic>)
+              : null,
+          prismaType: _json.containsKey('prismaType')
+              ? _json['prismaType'] as core.String
+              : null,
+          supplier: _json.containsKey('supplier')
+              ? _json['supplier'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (prismaCpeCode != null) 'prismaCpeCode': prismaCpeCode!.toJson(),
@@ -21991,19 +23036,24 @@ class PrismaCpeCode {
   /// The Prisma product code.
   core.String? prismaProductCode;
 
-  PrismaCpeCode();
+  PrismaCpeCode({
+    this.prismaClientCode,
+    this.prismaEstimateCode,
+    this.prismaProductCode,
+  });
 
-  PrismaCpeCode.fromJson(core.Map _json) {
-    if (_json.containsKey('prismaClientCode')) {
-      prismaClientCode = _json['prismaClientCode'] as core.String;
-    }
-    if (_json.containsKey('prismaEstimateCode')) {
-      prismaEstimateCode = _json['prismaEstimateCode'] as core.String;
-    }
-    if (_json.containsKey('prismaProductCode')) {
-      prismaProductCode = _json['prismaProductCode'] as core.String;
-    }
-  }
+  PrismaCpeCode.fromJson(core.Map _json)
+      : this(
+          prismaClientCode: _json.containsKey('prismaClientCode')
+              ? _json['prismaClientCode'] as core.String
+              : null,
+          prismaEstimateCode: _json.containsKey('prismaEstimateCode')
+              ? _json['prismaEstimateCode'] as core.String
+              : null,
+          prismaProductCode: _json.containsKey('prismaProductCode')
+              ? _json['prismaProductCode'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (prismaClientCode != null) 'prismaClientCode': prismaClientCode!,
@@ -22045,16 +23095,20 @@ class ProximityLocationListAssignedTargetingOptionDetails {
   /// - "PROXIMITY_RADIUS_RANGE_LARGE" : The targeted radius range is large.
   core.String? proximityRadiusRange;
 
-  ProximityLocationListAssignedTargetingOptionDetails();
+  ProximityLocationListAssignedTargetingOptionDetails({
+    this.proximityLocationListId,
+    this.proximityRadiusRange,
+  });
 
-  ProximityLocationListAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('proximityLocationListId')) {
-      proximityLocationListId = _json['proximityLocationListId'] as core.String;
-    }
-    if (_json.containsKey('proximityRadiusRange')) {
-      proximityRadiusRange = _json['proximityRadiusRange'] as core.String;
-    }
-  }
+  ProximityLocationListAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          proximityLocationListId: _json.containsKey('proximityLocationListId')
+              ? _json['proximityLocationListId'] as core.String
+              : null,
+          proximityRadiusRange: _json.containsKey('proximityRadiusRange')
+              ? _json['proximityRadiusRange'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (proximityLocationListId != null)
@@ -22078,16 +23132,20 @@ class PublisherReviewStatus {
   /// - "REVIEW_STATUS_PENDING" : The creative is pending review.
   core.String? status;
 
-  PublisherReviewStatus();
+  PublisherReviewStatus({
+    this.publisherName,
+    this.status,
+  });
 
-  PublisherReviewStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('publisherName')) {
-      publisherName = _json['publisherName'] as core.String;
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-  }
+  PublisherReviewStatus.fromJson(core.Map _json)
+      : this(
+          publisherName: _json.containsKey('publisherName')
+              ? _json['publisherName'] as core.String
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (publisherName != null) 'publisherName': publisherName!,
@@ -22127,24 +23185,30 @@ class RateDetails {
   /// The number of impressions guaranteed by the seller.
   core.String? unitsPurchased;
 
-  RateDetails();
+  RateDetails({
+    this.inventorySourceRateType,
+    this.minimumSpend,
+    this.rate,
+    this.unitsPurchased,
+  });
 
-  RateDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('inventorySourceRateType')) {
-      inventorySourceRateType = _json['inventorySourceRateType'] as core.String;
-    }
-    if (_json.containsKey('minimumSpend')) {
-      minimumSpend = Money.fromJson(
-          _json['minimumSpend'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('rate')) {
-      rate =
-          Money.fromJson(_json['rate'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('unitsPurchased')) {
-      unitsPurchased = _json['unitsPurchased'] as core.String;
-    }
-  }
+  RateDetails.fromJson(core.Map _json)
+      : this(
+          inventorySourceRateType: _json.containsKey('inventorySourceRateType')
+              ? _json['inventorySourceRateType'] as core.String
+              : null,
+          minimumSpend: _json.containsKey('minimumSpend')
+              ? Money.fromJson(
+                  _json['minimumSpend'] as core.Map<core.String, core.dynamic>)
+              : null,
+          rate: _json.containsKey('rate')
+              ? Money.fromJson(
+                  _json['rate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          unitsPurchased: _json.containsKey('unitsPurchased')
+              ? _json['unitsPurchased'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (inventorySourceRateType != null)
@@ -22171,16 +23235,20 @@ class RegionalLocationListAssignedTargetingOptionDetails {
   /// Required.
   core.String? regionalLocationListId;
 
-  RegionalLocationListAssignedTargetingOptionDetails();
+  RegionalLocationListAssignedTargetingOptionDetails({
+    this.negative,
+    this.regionalLocationListId,
+  });
 
-  RegionalLocationListAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('negative')) {
-      negative = _json['negative'] as core.bool;
-    }
-    if (_json.containsKey('regionalLocationListId')) {
-      regionalLocationListId = _json['regionalLocationListId'] as core.String;
-    }
-  }
+  RegionalLocationListAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          negative: _json.containsKey('negative')
+              ? _json['negative'] as core.bool
+              : null,
+          regionalLocationListId: _json.containsKey('regionalLocationListId')
+              ? _json['regionalLocationListId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (negative != null) 'negative': negative!,
@@ -22195,16 +23263,19 @@ class ReplaceNegativeKeywordsRequest {
   /// negative keyword list, specified as a list of NegativeKeywords.
   core.List<NegativeKeyword>? newNegativeKeywords;
 
-  ReplaceNegativeKeywordsRequest();
+  ReplaceNegativeKeywordsRequest({
+    this.newNegativeKeywords,
+  });
 
-  ReplaceNegativeKeywordsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('newNegativeKeywords')) {
-      newNegativeKeywords = (_json['newNegativeKeywords'] as core.List)
-          .map<NegativeKeyword>((value) => NegativeKeyword.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ReplaceNegativeKeywordsRequest.fromJson(core.Map _json)
+      : this(
+          newNegativeKeywords: _json.containsKey('newNegativeKeywords')
+              ? (_json['newNegativeKeywords'] as core.List)
+                  .map<NegativeKeyword>((value) => NegativeKeyword.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (newNegativeKeywords != null)
@@ -22219,16 +23290,19 @@ class ReplaceNegativeKeywordsResponse {
   /// list.
   core.List<NegativeKeyword>? negativeKeywords;
 
-  ReplaceNegativeKeywordsResponse();
+  ReplaceNegativeKeywordsResponse({
+    this.negativeKeywords,
+  });
 
-  ReplaceNegativeKeywordsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('negativeKeywords')) {
-      negativeKeywords = (_json['negativeKeywords'] as core.List)
-          .map<NegativeKeyword>((value) => NegativeKeyword.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ReplaceNegativeKeywordsResponse.fromJson(core.Map _json)
+      : this(
+          negativeKeywords: _json.containsKey('negativeKeywords')
+              ? (_json['negativeKeywords'] as core.List)
+                  .map<NegativeKeyword>((value) => NegativeKeyword.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (negativeKeywords != null)
@@ -22249,22 +23323,27 @@ class ReplaceSitesRequest {
   /// The ID of the partner that owns the parent channel.
   core.String? partnerId;
 
-  ReplaceSitesRequest();
+  ReplaceSitesRequest({
+    this.advertiserId,
+    this.newSites,
+    this.partnerId,
+  });
 
-  ReplaceSitesRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('advertiserId')) {
-      advertiserId = _json['advertiserId'] as core.String;
-    }
-    if (_json.containsKey('newSites')) {
-      newSites = (_json['newSites'] as core.List)
-          .map<Site>((value) =>
-              Site.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('partnerId')) {
-      partnerId = _json['partnerId'] as core.String;
-    }
-  }
+  ReplaceSitesRequest.fromJson(core.Map _json)
+      : this(
+          advertiserId: _json.containsKey('advertiserId')
+              ? _json['advertiserId'] as core.String
+              : null,
+          newSites: _json.containsKey('newSites')
+              ? (_json['newSites'] as core.List)
+                  .map<Site>((value) => Site.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          partnerId: _json.containsKey('partnerId')
+              ? _json['partnerId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advertiserId != null) 'advertiserId': advertiserId!,
@@ -22279,16 +23358,19 @@ class ReplaceSitesResponse {
   /// The list of sites in the channel after replacing.
   core.List<Site>? sites;
 
-  ReplaceSitesResponse();
+  ReplaceSitesResponse({
+    this.sites,
+  });
 
-  ReplaceSitesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('sites')) {
-      sites = (_json['sites'] as core.List)
-          .map<Site>((value) =>
-              Site.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ReplaceSitesResponse.fromJson(core.Map _json)
+      : this(
+          sites: _json.containsKey('sites')
+              ? (_json['sites'] as core.List)
+                  .map<Site>((value) => Site.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sites != null)
@@ -22340,33 +23422,42 @@ class ReviewStatusInfo {
   /// Publisher review statuses for the creative.
   core.List<PublisherReviewStatus>? publisherReviewStatuses;
 
-  ReviewStatusInfo();
+  ReviewStatusInfo({
+    this.approvalStatus,
+    this.contentAndPolicyReviewStatus,
+    this.creativeAndLandingPageReviewStatus,
+    this.exchangeReviewStatuses,
+    this.publisherReviewStatuses,
+  });
 
-  ReviewStatusInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('approvalStatus')) {
-      approvalStatus = _json['approvalStatus'] as core.String;
-    }
-    if (_json.containsKey('contentAndPolicyReviewStatus')) {
-      contentAndPolicyReviewStatus =
-          _json['contentAndPolicyReviewStatus'] as core.String;
-    }
-    if (_json.containsKey('creativeAndLandingPageReviewStatus')) {
-      creativeAndLandingPageReviewStatus =
-          _json['creativeAndLandingPageReviewStatus'] as core.String;
-    }
-    if (_json.containsKey('exchangeReviewStatuses')) {
-      exchangeReviewStatuses = (_json['exchangeReviewStatuses'] as core.List)
-          .map<ExchangeReviewStatus>((value) => ExchangeReviewStatus.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('publisherReviewStatuses')) {
-      publisherReviewStatuses = (_json['publisherReviewStatuses'] as core.List)
-          .map<PublisherReviewStatus>((value) => PublisherReviewStatus.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  ReviewStatusInfo.fromJson(core.Map _json)
+      : this(
+          approvalStatus: _json.containsKey('approvalStatus')
+              ? _json['approvalStatus'] as core.String
+              : null,
+          contentAndPolicyReviewStatus:
+              _json.containsKey('contentAndPolicyReviewStatus')
+                  ? _json['contentAndPolicyReviewStatus'] as core.String
+                  : null,
+          creativeAndLandingPageReviewStatus:
+              _json.containsKey('creativeAndLandingPageReviewStatus')
+                  ? _json['creativeAndLandingPageReviewStatus'] as core.String
+                  : null,
+          exchangeReviewStatuses: _json.containsKey('exchangeReviewStatuses')
+              ? (_json['exchangeReviewStatuses'] as core.List)
+                  .map<ExchangeReviewStatus>((value) =>
+                      ExchangeReviewStatus.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          publisherReviewStatuses: _json.containsKey('publisherReviewStatuses')
+              ? (_json['publisherReviewStatuses'] as core.List)
+                  .map<PublisherReviewStatus>((value) =>
+                      PublisherReviewStatus.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (approvalStatus != null) 'approvalStatus': approvalStatus!,
@@ -22406,16 +23497,20 @@ class SdfConfig {
   /// - "SDF_VERSION_5_3" : SDF version 5.3
   core.String? version;
 
-  SdfConfig();
+  SdfConfig({
+    this.adminEmail,
+    this.version,
+  });
 
-  SdfConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('adminEmail')) {
-      adminEmail = _json['adminEmail'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.String;
-    }
-  }
+  SdfConfig.fromJson(core.Map _json)
+      : this(
+          adminEmail: _json.containsKey('adminEmail')
+              ? _json['adminEmail'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (adminEmail != null) 'adminEmail': adminEmail!,
@@ -22435,13 +23530,16 @@ class SdfDownloadTask {
   /// done.
   core.String? resourceName;
 
-  SdfDownloadTask();
+  SdfDownloadTask({
+    this.resourceName,
+  });
 
-  SdfDownloadTask.fromJson(core.Map _json) {
-    if (_json.containsKey('resourceName')) {
-      resourceName = _json['resourceName'] as core.String;
-    }
-  }
+  SdfDownloadTask.fromJson(core.Map _json)
+      : this(
+          resourceName: _json.containsKey('resourceName')
+              ? _json['resourceName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceName != null) 'resourceName': resourceName!,
@@ -22471,19 +23569,24 @@ class SdfDownloadTaskMetadata {
   /// - "SDF_VERSION_5_3" : SDF version 5.3
   core.String? version;
 
-  SdfDownloadTaskMetadata();
+  SdfDownloadTaskMetadata({
+    this.createTime,
+    this.endTime,
+    this.version,
+  });
 
-  SdfDownloadTaskMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'] as core.String;
-    }
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('version')) {
-      version = _json['version'] as core.String;
-    }
-  }
+  SdfDownloadTaskMetadata.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
@@ -22517,23 +23620,29 @@ class SearchTargetingOptionsRequest {
   /// of results will be returned.
   core.String? pageToken;
 
-  SearchTargetingOptionsRequest();
+  SearchTargetingOptionsRequest({
+    this.advertiserId,
+    this.geoRegionSearchTerms,
+    this.pageSize,
+    this.pageToken,
+  });
 
-  SearchTargetingOptionsRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('advertiserId')) {
-      advertiserId = _json['advertiserId'] as core.String;
-    }
-    if (_json.containsKey('geoRegionSearchTerms')) {
-      geoRegionSearchTerms = GeoRegionSearchTerms.fromJson(
-          _json['geoRegionSearchTerms'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('pageSize')) {
-      pageSize = _json['pageSize'] as core.int;
-    }
-    if (_json.containsKey('pageToken')) {
-      pageToken = _json['pageToken'] as core.String;
-    }
-  }
+  SearchTargetingOptionsRequest.fromJson(core.Map _json)
+      : this(
+          advertiserId: _json.containsKey('advertiserId')
+              ? _json['advertiserId'] as core.String
+              : null,
+          geoRegionSearchTerms: _json.containsKey('geoRegionSearchTerms')
+              ? GeoRegionSearchTerms.fromJson(_json['geoRegionSearchTerms']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          pageSize: _json.containsKey('pageSize')
+              ? _json['pageSize'] as core.int
+              : null,
+          pageToken: _json.containsKey('pageToken')
+              ? _json['pageToken'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advertiserId != null) 'advertiserId': advertiserId!,
@@ -22557,19 +23666,23 @@ class SearchTargetingOptionsResponse {
   /// This list will be absent if empty.
   core.List<TargetingOption>? targetingOptions;
 
-  SearchTargetingOptionsResponse();
+  SearchTargetingOptionsResponse({
+    this.nextPageToken,
+    this.targetingOptions,
+  });
 
-  SearchTargetingOptionsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('targetingOptions')) {
-      targetingOptions = (_json['targetingOptions'] as core.List)
-          .map<TargetingOption>((value) => TargetingOption.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  SearchTargetingOptionsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          targetingOptions: _json.containsKey('targetingOptions')
+              ? (_json['targetingOptions'] as core.List)
+                  .map<TargetingOption>((value) => TargetingOption.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -22645,17 +23758,21 @@ class SensitiveCategoryAssignedTargetingOptionDetails {
   /// or disturbing, such as violent news stories, stunts, or toilet humor.
   core.String? sensitiveCategory;
 
-  SensitiveCategoryAssignedTargetingOptionDetails();
+  SensitiveCategoryAssignedTargetingOptionDetails({
+    this.excludedTargetingOptionId,
+    this.sensitiveCategory,
+  });
 
-  SensitiveCategoryAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('excludedTargetingOptionId')) {
-      excludedTargetingOptionId =
-          _json['excludedTargetingOptionId'] as core.String;
-    }
-    if (_json.containsKey('sensitiveCategory')) {
-      sensitiveCategory = _json['sensitiveCategory'] as core.String;
-    }
-  }
+  SensitiveCategoryAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          excludedTargetingOptionId:
+              _json.containsKey('excludedTargetingOptionId')
+                  ? _json['excludedTargetingOptionId'] as core.String
+                  : null,
+          sensitiveCategory: _json.containsKey('sensitiveCategory')
+              ? _json['sensitiveCategory'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (excludedTargetingOptionId != null)
@@ -22726,13 +23843,16 @@ class SensitiveCategoryTargetingOptionDetails {
   /// or disturbing, such as violent news stories, stunts, or toilet humor.
   core.String? sensitiveCategory;
 
-  SensitiveCategoryTargetingOptionDetails();
+  SensitiveCategoryTargetingOptionDetails({
+    this.sensitiveCategory,
+  });
 
-  SensitiveCategoryTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('sensitiveCategory')) {
-      sensitiveCategory = _json['sensitiveCategory'] as core.String;
-    }
-  }
+  SensitiveCategoryTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          sensitiveCategory: _json.containsKey('sensitiveCategory')
+              ? _json['sensitiveCategory'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sensitiveCategory != null) 'sensitiveCategory': sensitiveCategory!,
@@ -22755,16 +23875,18 @@ class Site {
   /// Required.
   core.String? urlOrAppId;
 
-  Site();
+  Site({
+    this.name,
+    this.urlOrAppId,
+  });
 
-  Site.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('urlOrAppId')) {
-      urlOrAppId = _json['urlOrAppId'] as core.String;
-    }
-  }
+  Site.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          urlOrAppId: _json.containsKey('urlOrAppId')
+              ? _json['urlOrAppId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -22797,27 +23919,30 @@ class Status {
   /// google.rpc.Status.details field, or localized by the client.
   core.String? message;
 
-  Status();
+  Status({
+    this.code,
+    this.details,
+    this.message,
+  });
 
-  Status.fromJson(core.Map _json) {
-    if (_json.containsKey('code')) {
-      code = _json['code'] as core.int;
-    }
-    if (_json.containsKey('details')) {
-      details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map<core.String, core.dynamic>).map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ))
-          .toList();
-    }
-    if (_json.containsKey('message')) {
-      message = _json['message'] as core.String;
-    }
-  }
+  Status.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.int : null,
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.List)
+                  .map<core.Map<core.String, core.Object>>((value) =>
+                      (value as core.Map<core.String, core.dynamic>).map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
@@ -22837,13 +23962,16 @@ class SubExchangeAssignedTargetingOptionDetails {
   /// Required.
   core.String? targetingOptionId;
 
-  SubExchangeAssignedTargetingOptionDetails();
+  SubExchangeAssignedTargetingOptionDetails({
+    this.targetingOptionId,
+  });
 
-  SubExchangeAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('targetingOptionId')) {
-      targetingOptionId = _json['targetingOptionId'] as core.String;
-    }
-  }
+  SubExchangeAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
@@ -22860,13 +23988,16 @@ class SubExchangeTargetingOptionDetails {
   /// Output only.
   core.String? displayName;
 
-  SubExchangeTargetingOptionDetails();
+  SubExchangeTargetingOptionDetails({
+    this.displayName,
+  });
 
-  SubExchangeTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-  }
+  SubExchangeTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
@@ -22904,17 +24035,21 @@ class TargetingExpansionConfig {
   /// - "MOST_EXPANSION" : Aggressive targeting expansion, highest reach.
   core.String? targetingExpansionLevel;
 
-  TargetingExpansionConfig();
+  TargetingExpansionConfig({
+    this.excludeFirstPartyAudience,
+    this.targetingExpansionLevel,
+  });
 
-  TargetingExpansionConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('excludeFirstPartyAudience')) {
-      excludeFirstPartyAudience =
-          _json['excludeFirstPartyAudience'] as core.bool;
-    }
-    if (_json.containsKey('targetingExpansionLevel')) {
-      targetingExpansionLevel = _json['targetingExpansionLevel'] as core.String;
-    }
-  }
+  TargetingExpansionConfig.fromJson(core.Map _json)
+      : this(
+          excludeFirstPartyAudience:
+              _json.containsKey('excludeFirstPartyAudience')
+                  ? _json['excludeFirstPartyAudience'] as core.bool
+                  : null,
+          targetingExpansionLevel: _json.containsKey('targetingExpansionLevel')
+              ? _json['targetingExpansionLevel'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (excludeFirstPartyAudience != null)
@@ -23104,143 +24239,179 @@ class TargetingOption {
   /// Viewability resource details.
   ViewabilityTargetingOptionDetails? viewabilityDetails;
 
-  TargetingOption();
+  TargetingOption({
+    this.ageRangeDetails,
+    this.appCategoryDetails,
+    this.authorizedSellerStatusDetails,
+    this.browserDetails,
+    this.carrierAndIspDetails,
+    this.categoryDetails,
+    this.contentInstreamPositionDetails,
+    this.contentOutstreamPositionDetails,
+    this.deviceMakeModelDetails,
+    this.deviceTypeDetails,
+    this.digitalContentLabelDetails,
+    this.environmentDetails,
+    this.exchangeDetails,
+    this.genderDetails,
+    this.geoRegionDetails,
+    this.householdIncomeDetails,
+    this.languageDetails,
+    this.name,
+    this.nativeContentPositionDetails,
+    this.onScreenPositionDetails,
+    this.operatingSystemDetails,
+    this.parentalStatusDetails,
+    this.sensitiveCategoryDetails,
+    this.subExchangeDetails,
+    this.targetingOptionId,
+    this.targetingType,
+    this.userRewardedContentDetails,
+    this.videoPlayerSizeDetails,
+    this.viewabilityDetails,
+  });
 
-  TargetingOption.fromJson(core.Map _json) {
-    if (_json.containsKey('ageRangeDetails')) {
-      ageRangeDetails = AgeRangeTargetingOptionDetails.fromJson(
-          _json['ageRangeDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('appCategoryDetails')) {
-      appCategoryDetails = AppCategoryTargetingOptionDetails.fromJson(
-          _json['appCategoryDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('authorizedSellerStatusDetails')) {
-      authorizedSellerStatusDetails =
-          AuthorizedSellerStatusTargetingOptionDetails.fromJson(
-              _json['authorizedSellerStatusDetails']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('browserDetails')) {
-      browserDetails = BrowserTargetingOptionDetails.fromJson(
-          _json['browserDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('carrierAndIspDetails')) {
-      carrierAndIspDetails = CarrierAndIspTargetingOptionDetails.fromJson(
-          _json['carrierAndIspDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('categoryDetails')) {
-      categoryDetails = CategoryTargetingOptionDetails.fromJson(
-          _json['categoryDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('contentInstreamPositionDetails')) {
-      contentInstreamPositionDetails =
-          ContentInstreamPositionTargetingOptionDetails.fromJson(
-              _json['contentInstreamPositionDetails']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('contentOutstreamPositionDetails')) {
-      contentOutstreamPositionDetails =
-          ContentOutstreamPositionTargetingOptionDetails.fromJson(
-              _json['contentOutstreamPositionDetails']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('deviceMakeModelDetails')) {
-      deviceMakeModelDetails = DeviceMakeModelTargetingOptionDetails.fromJson(
-          _json['deviceMakeModelDetails']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('deviceTypeDetails')) {
-      deviceTypeDetails = DeviceTypeTargetingOptionDetails.fromJson(
-          _json['deviceTypeDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('digitalContentLabelDetails')) {
-      digitalContentLabelDetails =
-          DigitalContentLabelTargetingOptionDetails.fromJson(
-              _json['digitalContentLabelDetails']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('environmentDetails')) {
-      environmentDetails = EnvironmentTargetingOptionDetails.fromJson(
-          _json['environmentDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('exchangeDetails')) {
-      exchangeDetails = ExchangeTargetingOptionDetails.fromJson(
-          _json['exchangeDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('genderDetails')) {
-      genderDetails = GenderTargetingOptionDetails.fromJson(
-          _json['genderDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('geoRegionDetails')) {
-      geoRegionDetails = GeoRegionTargetingOptionDetails.fromJson(
-          _json['geoRegionDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('householdIncomeDetails')) {
-      householdIncomeDetails = HouseholdIncomeTargetingOptionDetails.fromJson(
-          _json['householdIncomeDetails']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('languageDetails')) {
-      languageDetails = LanguageTargetingOptionDetails.fromJson(
-          _json['languageDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('nativeContentPositionDetails')) {
-      nativeContentPositionDetails =
-          NativeContentPositionTargetingOptionDetails.fromJson(
-              _json['nativeContentPositionDetails']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('onScreenPositionDetails')) {
-      onScreenPositionDetails = OnScreenPositionTargetingOptionDetails.fromJson(
-          _json['onScreenPositionDetails']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('operatingSystemDetails')) {
-      operatingSystemDetails = OperatingSystemTargetingOptionDetails.fromJson(
-          _json['operatingSystemDetails']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('parentalStatusDetails')) {
-      parentalStatusDetails = ParentalStatusTargetingOptionDetails.fromJson(
-          _json['parentalStatusDetails']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('sensitiveCategoryDetails')) {
-      sensitiveCategoryDetails =
-          SensitiveCategoryTargetingOptionDetails.fromJson(
-              _json['sensitiveCategoryDetails']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('subExchangeDetails')) {
-      subExchangeDetails = SubExchangeTargetingOptionDetails.fromJson(
-          _json['subExchangeDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('targetingOptionId')) {
-      targetingOptionId = _json['targetingOptionId'] as core.String;
-    }
-    if (_json.containsKey('targetingType')) {
-      targetingType = _json['targetingType'] as core.String;
-    }
-    if (_json.containsKey('userRewardedContentDetails')) {
-      userRewardedContentDetails =
-          UserRewardedContentTargetingOptionDetails.fromJson(
-              _json['userRewardedContentDetails']
-                  as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('videoPlayerSizeDetails')) {
-      videoPlayerSizeDetails = VideoPlayerSizeTargetingOptionDetails.fromJson(
-          _json['videoPlayerSizeDetails']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('viewabilityDetails')) {
-      viewabilityDetails = ViewabilityTargetingOptionDetails.fromJson(
-          _json['viewabilityDetails'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  TargetingOption.fromJson(core.Map _json)
+      : this(
+          ageRangeDetails: _json.containsKey('ageRangeDetails')
+              ? AgeRangeTargetingOptionDetails.fromJson(_json['ageRangeDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          appCategoryDetails: _json.containsKey('appCategoryDetails')
+              ? AppCategoryTargetingOptionDetails.fromJson(
+                  _json['appCategoryDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          authorizedSellerStatusDetails:
+              _json.containsKey('authorizedSellerStatusDetails')
+                  ? AuthorizedSellerStatusTargetingOptionDetails.fromJson(
+                      _json['authorizedSellerStatusDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          browserDetails: _json.containsKey('browserDetails')
+              ? BrowserTargetingOptionDetails.fromJson(_json['browserDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          carrierAndIspDetails: _json.containsKey('carrierAndIspDetails')
+              ? CarrierAndIspTargetingOptionDetails.fromJson(
+                  _json['carrierAndIspDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          categoryDetails: _json.containsKey('categoryDetails')
+              ? CategoryTargetingOptionDetails.fromJson(_json['categoryDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          contentInstreamPositionDetails:
+              _json.containsKey('contentInstreamPositionDetails')
+                  ? ContentInstreamPositionTargetingOptionDetails.fromJson(
+                      _json['contentInstreamPositionDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          contentOutstreamPositionDetails:
+              _json.containsKey('contentOutstreamPositionDetails')
+                  ? ContentOutstreamPositionTargetingOptionDetails.fromJson(
+                      _json['contentOutstreamPositionDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          deviceMakeModelDetails: _json.containsKey('deviceMakeModelDetails')
+              ? DeviceMakeModelTargetingOptionDetails.fromJson(
+                  _json['deviceMakeModelDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          deviceTypeDetails: _json.containsKey('deviceTypeDetails')
+              ? DeviceTypeTargetingOptionDetails.fromJson(
+                  _json['deviceTypeDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          digitalContentLabelDetails:
+              _json.containsKey('digitalContentLabelDetails')
+                  ? DigitalContentLabelTargetingOptionDetails.fromJson(
+                      _json['digitalContentLabelDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          environmentDetails: _json.containsKey('environmentDetails')
+              ? EnvironmentTargetingOptionDetails.fromJson(
+                  _json['environmentDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          exchangeDetails: _json.containsKey('exchangeDetails')
+              ? ExchangeTargetingOptionDetails.fromJson(_json['exchangeDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          genderDetails: _json.containsKey('genderDetails')
+              ? GenderTargetingOptionDetails.fromJson(
+                  _json['genderDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
+          geoRegionDetails: _json.containsKey('geoRegionDetails')
+              ? GeoRegionTargetingOptionDetails.fromJson(
+                  _json['geoRegionDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          householdIncomeDetails: _json.containsKey('householdIncomeDetails')
+              ? HouseholdIncomeTargetingOptionDetails.fromJson(
+                  _json['householdIncomeDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          languageDetails: _json.containsKey('languageDetails')
+              ? LanguageTargetingOptionDetails.fromJson(_json['languageDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          nativeContentPositionDetails:
+              _json.containsKey('nativeContentPositionDetails')
+                  ? NativeContentPositionTargetingOptionDetails.fromJson(
+                      _json['nativeContentPositionDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          onScreenPositionDetails: _json.containsKey('onScreenPositionDetails')
+              ? OnScreenPositionTargetingOptionDetails.fromJson(
+                  _json['onScreenPositionDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          operatingSystemDetails: _json.containsKey('operatingSystemDetails')
+              ? OperatingSystemTargetingOptionDetails.fromJson(
+                  _json['operatingSystemDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          parentalStatusDetails: _json.containsKey('parentalStatusDetails')
+              ? ParentalStatusTargetingOptionDetails.fromJson(
+                  _json['parentalStatusDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          sensitiveCategoryDetails:
+              _json.containsKey('sensitiveCategoryDetails')
+                  ? SensitiveCategoryTargetingOptionDetails.fromJson(
+                      _json['sensitiveCategoryDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          subExchangeDetails: _json.containsKey('subExchangeDetails')
+              ? SubExchangeTargetingOptionDetails.fromJson(
+                  _json['subExchangeDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+          targetingType: _json.containsKey('targetingType')
+              ? _json['targetingType'] as core.String
+              : null,
+          userRewardedContentDetails:
+              _json.containsKey('userRewardedContentDetails')
+                  ? UserRewardedContentTargetingOptionDetails.fromJson(
+                      _json['userRewardedContentDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          videoPlayerSizeDetails: _json.containsKey('videoPlayerSizeDetails')
+              ? VideoPlayerSizeTargetingOptionDetails.fromJson(
+                  _json['videoPlayerSizeDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          viewabilityDetails: _json.containsKey('viewabilityDetails')
+              ? ViewabilityTargetingOptionDetails.fromJson(
+                  _json['viewabilityDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ageRangeDetails != null)
@@ -23310,14 +24481,17 @@ class ThirdPartyOnlyConfig {
   /// This value cannot be changed once set to `true`.
   core.bool? pixelOrderIdReportingEnabled;
 
-  ThirdPartyOnlyConfig();
+  ThirdPartyOnlyConfig({
+    this.pixelOrderIdReportingEnabled,
+  });
 
-  ThirdPartyOnlyConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('pixelOrderIdReportingEnabled')) {
-      pixelOrderIdReportingEnabled =
-          _json['pixelOrderIdReportingEnabled'] as core.bool;
-    }
-  }
+  ThirdPartyOnlyConfig.fromJson(core.Map _json)
+      : this(
+          pixelOrderIdReportingEnabled:
+              _json.containsKey('pixelOrderIdReportingEnabled')
+                  ? _json['pixelOrderIdReportingEnabled'] as core.bool
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (pixelOrderIdReportingEnabled != null)
@@ -23372,16 +24546,16 @@ class ThirdPartyUrl {
   /// For example, https://www.example.com/path
   core.String? url;
 
-  ThirdPartyUrl();
+  ThirdPartyUrl({
+    this.type,
+    this.url,
+  });
 
-  ThirdPartyUrl.fromJson(core.Map _json) {
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  ThirdPartyUrl.fromJson(core.Map _json)
+      : this(
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
@@ -23403,22 +24577,27 @@ class ThirdPartyVerifierAssignedTargetingOptionDetails {
   /// Third party brand verifier -- Integral Ad Science.
   IntegralAdScience? integralAdScience;
 
-  ThirdPartyVerifierAssignedTargetingOptionDetails();
+  ThirdPartyVerifierAssignedTargetingOptionDetails({
+    this.adloox,
+    this.doubleVerify,
+    this.integralAdScience,
+  });
 
-  ThirdPartyVerifierAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('adloox')) {
-      adloox = Adloox.fromJson(
-          _json['adloox'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('doubleVerify')) {
-      doubleVerify = DoubleVerify.fromJson(
-          _json['doubleVerify'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('integralAdScience')) {
-      integralAdScience = IntegralAdScience.fromJson(
-          _json['integralAdScience'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ThirdPartyVerifierAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          adloox: _json.containsKey('adloox')
+              ? Adloox.fromJson(
+                  _json['adloox'] as core.Map<core.String, core.dynamic>)
+              : null,
+          doubleVerify: _json.containsKey('doubleVerify')
+              ? DoubleVerify.fromJson(
+                  _json['doubleVerify'] as core.Map<core.String, core.dynamic>)
+              : null,
+          integralAdScience: _json.containsKey('integralAdScience')
+              ? IntegralAdScience.fromJson(_json['integralAdScience']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (adloox != null) 'adloox': adloox!.toJson(),
@@ -23440,16 +24619,20 @@ class TimeRange {
   /// Required.
   core.String? startTime;
 
-  TimeRange();
+  TimeRange({
+    this.endTime,
+    this.startTime,
+  });
 
-  TimeRange.fromJson(core.Map _json) {
-    if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'] as core.String;
-    }
-    if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'] as core.String;
-    }
-  }
+  TimeRange.fromJson(core.Map _json)
+      : this(
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
@@ -23469,16 +24652,18 @@ class TimerEvent {
   /// Required.
   core.String? reportingName;
 
-  TimerEvent();
+  TimerEvent({
+    this.name,
+    this.reportingName,
+  });
 
-  TimerEvent.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('reportingName')) {
-      reportingName = _json['reportingName'] as core.String;
-    }
-  }
+  TimerEvent.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          reportingName: _json.containsKey('reportingName')
+              ? _json['reportingName'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
@@ -23509,21 +24694,26 @@ class TrackingFloodlightActivityConfig {
   /// Required.
   core.int? postViewLookbackWindowDays;
 
-  TrackingFloodlightActivityConfig();
+  TrackingFloodlightActivityConfig({
+    this.floodlightActivityId,
+    this.postClickLookbackWindowDays,
+    this.postViewLookbackWindowDays,
+  });
 
-  TrackingFloodlightActivityConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('floodlightActivityId')) {
-      floodlightActivityId = _json['floodlightActivityId'] as core.String;
-    }
-    if (_json.containsKey('postClickLookbackWindowDays')) {
-      postClickLookbackWindowDays =
-          _json['postClickLookbackWindowDays'] as core.int;
-    }
-    if (_json.containsKey('postViewLookbackWindowDays')) {
-      postViewLookbackWindowDays =
-          _json['postViewLookbackWindowDays'] as core.int;
-    }
-  }
+  TrackingFloodlightActivityConfig.fromJson(core.Map _json)
+      : this(
+          floodlightActivityId: _json.containsKey('floodlightActivityId')
+              ? _json['floodlightActivityId'] as core.String
+              : null,
+          postClickLookbackWindowDays:
+              _json.containsKey('postClickLookbackWindowDays')
+                  ? _json['postClickLookbackWindowDays'] as core.int
+                  : null,
+          postViewLookbackWindowDays:
+              _json.containsKey('postViewLookbackWindowDays')
+                  ? _json['postViewLookbackWindowDays'] as core.int
+                  : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (floodlightActivityId != null)
@@ -23566,38 +24756,47 @@ class Transcode {
   /// Indicates if the transcoding was successful.
   core.bool? transcoded;
 
-  Transcode();
+  Transcode({
+    this.audioBitRateKbps,
+    this.audioSampleRateHz,
+    this.bitRateKbps,
+    this.dimensions,
+    this.fileSizeBytes,
+    this.frameRate,
+    this.mimeType,
+    this.name,
+    this.transcoded,
+  });
 
-  Transcode.fromJson(core.Map _json) {
-    if (_json.containsKey('audioBitRateKbps')) {
-      audioBitRateKbps = _json['audioBitRateKbps'] as core.String;
-    }
-    if (_json.containsKey('audioSampleRateHz')) {
-      audioSampleRateHz = _json['audioSampleRateHz'] as core.String;
-    }
-    if (_json.containsKey('bitRateKbps')) {
-      bitRateKbps = _json['bitRateKbps'] as core.String;
-    }
-    if (_json.containsKey('dimensions')) {
-      dimensions = Dimensions.fromJson(
-          _json['dimensions'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('fileSizeBytes')) {
-      fileSizeBytes = _json['fileSizeBytes'] as core.String;
-    }
-    if (_json.containsKey('frameRate')) {
-      frameRate = (_json['frameRate'] as core.num).toDouble();
-    }
-    if (_json.containsKey('mimeType')) {
-      mimeType = _json['mimeType'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('transcoded')) {
-      transcoded = _json['transcoded'] as core.bool;
-    }
-  }
+  Transcode.fromJson(core.Map _json)
+      : this(
+          audioBitRateKbps: _json.containsKey('audioBitRateKbps')
+              ? _json['audioBitRateKbps'] as core.String
+              : null,
+          audioSampleRateHz: _json.containsKey('audioSampleRateHz')
+              ? _json['audioSampleRateHz'] as core.String
+              : null,
+          bitRateKbps: _json.containsKey('bitRateKbps')
+              ? _json['bitRateKbps'] as core.String
+              : null,
+          dimensions: _json.containsKey('dimensions')
+              ? Dimensions.fromJson(
+                  _json['dimensions'] as core.Map<core.String, core.dynamic>)
+              : null,
+          fileSizeBytes: _json.containsKey('fileSizeBytes')
+              ? _json['fileSizeBytes'] as core.String
+              : null,
+          frameRate: _json.containsKey('frameRate')
+              ? (_json['frameRate'] as core.num).toDouble()
+              : null,
+          mimeType: _json.containsKey('mimeType')
+              ? _json['mimeType'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          transcoded: _json.containsKey('transcoded')
+              ? _json['transcoded'] as core.bool
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (audioBitRateKbps != null) 'audioBitRateKbps': audioBitRateKbps!,
@@ -23636,16 +24835,18 @@ class UniversalAdId {
   /// Universal Ad ID.
   core.String? registry;
 
-  UniversalAdId();
+  UniversalAdId({
+    this.id,
+    this.registry,
+  });
 
-  UniversalAdId.fromJson(core.Map _json) {
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
-    if (_json.containsKey('registry')) {
-      registry = _json['registry'] as core.String;
-    }
-  }
+  UniversalAdId.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          registry: _json.containsKey('registry')
+              ? _json['registry'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
@@ -23670,16 +24871,18 @@ class UrlAssignedTargetingOptionDetails {
   /// Required.
   core.String? url;
 
-  UrlAssignedTargetingOptionDetails();
+  UrlAssignedTargetingOptionDetails({
+    this.negative,
+    this.url,
+  });
 
-  UrlAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('negative')) {
-      negative = _json['negative'] as core.bool;
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  UrlAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          negative: _json.containsKey('negative')
+              ? _json['negative'] as core.bool
+              : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (negative != null) 'negative': negative!,
@@ -23719,28 +24922,32 @@ class User {
   /// Output only.
   core.String? userId;
 
-  User();
+  User({
+    this.assignedUserRoles,
+    this.displayName,
+    this.email,
+    this.name,
+    this.userId,
+  });
 
-  User.fromJson(core.Map _json) {
-    if (_json.containsKey('assignedUserRoles')) {
-      assignedUserRoles = (_json['assignedUserRoles'] as core.List)
-          .map<AssignedUserRole>((value) => AssignedUserRole.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'] as core.String;
-    }
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('userId')) {
-      userId = _json['userId'] as core.String;
-    }
-  }
+  User.fromJson(core.Map _json)
+      : this(
+          assignedUserRoles: _json.containsKey('assignedUserRoles')
+              ? (_json['assignedUserRoles'] as core.List)
+                  .map<AssignedUserRole>((value) => AssignedUserRole.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          userId: _json.containsKey('userId')
+              ? _json['userId'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedUserRoles != null)
@@ -23776,16 +24983,20 @@ class UserRewardedContentAssignedTargetingOptionDetails {
   /// besides user-rewarded.
   core.String? userRewardedContent;
 
-  UserRewardedContentAssignedTargetingOptionDetails();
+  UserRewardedContentAssignedTargetingOptionDetails({
+    this.targetingOptionId,
+    this.userRewardedContent,
+  });
 
-  UserRewardedContentAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('targetingOptionId')) {
-      targetingOptionId = _json['targetingOptionId'] as core.String;
-    }
-    if (_json.containsKey('userRewardedContent')) {
-      userRewardedContent = _json['userRewardedContent'] as core.String;
-    }
-  }
+  UserRewardedContentAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+          userRewardedContent: _json.containsKey('userRewardedContent')
+              ? _json['userRewardedContent'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
@@ -23811,13 +25022,16 @@ class UserRewardedContentTargetingOptionDetails {
   /// besides user-rewarded.
   core.String? userRewardedContent;
 
-  UserRewardedContentTargetingOptionDetails();
+  UserRewardedContentTargetingOptionDetails({
+    this.userRewardedContent,
+  });
 
-  UserRewardedContentTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('userRewardedContent')) {
-      userRewardedContent = _json['userRewardedContent'] as core.String;
-    }
-  }
+  UserRewardedContentTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          userRewardedContent: _json.containsKey('userRewardedContent')
+              ? _json['userRewardedContent'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (userRewardedContent != null)
@@ -23856,16 +25070,20 @@ class VideoPlayerSizeAssignedTargetingOptionDetails {
   /// unknown.
   core.String? videoPlayerSize;
 
-  VideoPlayerSizeAssignedTargetingOptionDetails();
+  VideoPlayerSizeAssignedTargetingOptionDetails({
+    this.targetingOptionId,
+    this.videoPlayerSize,
+  });
 
-  VideoPlayerSizeAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('targetingOptionId')) {
-      targetingOptionId = _json['targetingOptionId'] as core.String;
-    }
-    if (_json.containsKey('videoPlayerSize')) {
-      videoPlayerSize = _json['videoPlayerSize'] as core.String;
-    }
-  }
+  VideoPlayerSizeAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+          videoPlayerSize: _json.containsKey('videoPlayerSize')
+              ? _json['videoPlayerSize'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
@@ -23896,13 +25114,16 @@ class VideoPlayerSizeTargetingOptionDetails {
   /// unknown.
   core.String? videoPlayerSize;
 
-  VideoPlayerSizeTargetingOptionDetails();
+  VideoPlayerSizeTargetingOptionDetails({
+    this.videoPlayerSize,
+  });
 
-  VideoPlayerSizeTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('videoPlayerSize')) {
-      videoPlayerSize = _json['videoPlayerSize'] as core.String;
-    }
-  }
+  VideoPlayerSizeTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          videoPlayerSize: _json.containsKey('videoPlayerSize')
+              ? _json['videoPlayerSize'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (videoPlayerSize != null) 'videoPlayerSize': videoPlayerSize!,
@@ -23948,16 +25169,20 @@ class ViewabilityAssignedTargetingOptionDetails {
   /// least 90% likely to be viewable.
   core.String? viewability;
 
-  ViewabilityAssignedTargetingOptionDetails();
+  ViewabilityAssignedTargetingOptionDetails({
+    this.targetingOptionId,
+    this.viewability,
+  });
 
-  ViewabilityAssignedTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('targetingOptionId')) {
-      targetingOptionId = _json['targetingOptionId'] as core.String;
-    }
-    if (_json.containsKey('viewability')) {
-      viewability = _json['viewability'] as core.String;
-    }
-  }
+  ViewabilityAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+          viewability: _json.containsKey('viewability')
+              ? _json['viewability'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
@@ -23997,13 +25222,16 @@ class ViewabilityTargetingOptionDetails {
   /// least 90% likely to be viewable.
   core.String? viewability;
 
-  ViewabilityTargetingOptionDetails();
+  ViewabilityTargetingOptionDetails({
+    this.viewability,
+  });
 
-  ViewabilityTargetingOptionDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('viewability')) {
-      viewability = _json['viewability'] as core.String;
-    }
-  }
+  ViewabilityTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          viewability: _json.containsKey('viewability')
+              ? _json['viewability'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (viewability != null) 'viewability': viewability!,

@@ -494,27 +494,34 @@ class ApiDataRow {
   core.List<core.String>? keys;
   core.double? position;
 
-  ApiDataRow();
+  ApiDataRow({
+    this.clicks,
+    this.ctr,
+    this.impressions,
+    this.keys,
+    this.position,
+  });
 
-  ApiDataRow.fromJson(core.Map _json) {
-    if (_json.containsKey('clicks')) {
-      clicks = (_json['clicks'] as core.num).toDouble();
-    }
-    if (_json.containsKey('ctr')) {
-      ctr = (_json['ctr'] as core.num).toDouble();
-    }
-    if (_json.containsKey('impressions')) {
-      impressions = (_json['impressions'] as core.num).toDouble();
-    }
-    if (_json.containsKey('keys')) {
-      keys = (_json['keys'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('position')) {
-      position = (_json['position'] as core.num).toDouble();
-    }
-  }
+  ApiDataRow.fromJson(core.Map _json)
+      : this(
+          clicks: _json.containsKey('clicks')
+              ? (_json['clicks'] as core.num).toDouble()
+              : null,
+          ctr: _json.containsKey('ctr')
+              ? (_json['ctr'] as core.num).toDouble()
+              : null,
+          impressions: _json.containsKey('impressions')
+              ? (_json['impressions'] as core.num).toDouble()
+              : null,
+          keys: _json.containsKey('keys')
+              ? (_json['keys'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          position: _json.containsKey('position')
+              ? (_json['position'] as core.num).toDouble()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clicks != null) 'clicks': clicks!,
@@ -551,19 +558,24 @@ class ApiDimensionFilter {
   /// - "NOT_CONTAINS"
   core.String? operator;
 
-  ApiDimensionFilter();
+  ApiDimensionFilter({
+    this.dimension,
+    this.expression,
+    this.operator,
+  });
 
-  ApiDimensionFilter.fromJson(core.Map _json) {
-    if (_json.containsKey('dimension')) {
-      dimension = _json['dimension'] as core.String;
-    }
-    if (_json.containsKey('expression')) {
-      expression = _json['expression'] as core.String;
-    }
-    if (_json.containsKey('operator')) {
-      operator = _json['operator'] as core.String;
-    }
-  }
+  ApiDimensionFilter.fromJson(core.Map _json)
+      : this(
+          dimension: _json.containsKey('dimension')
+              ? _json['dimension'] as core.String
+              : null,
+          expression: _json.containsKey('expression')
+              ? _json['expression'] as core.String
+              : null,
+          operator: _json.containsKey('operator')
+              ? _json['operator'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dimension != null) 'dimension': dimension!,
@@ -585,19 +597,24 @@ class ApiDimensionFilterGroup {
   /// - "AND"
   core.String? groupType;
 
-  ApiDimensionFilterGroup();
+  ApiDimensionFilterGroup({
+    this.filters,
+    this.groupType,
+  });
 
-  ApiDimensionFilterGroup.fromJson(core.Map _json) {
-    if (_json.containsKey('filters')) {
-      filters = (_json['filters'] as core.List)
-          .map<ApiDimensionFilter>((value) => ApiDimensionFilter.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('groupType')) {
-      groupType = _json['groupType'] as core.String;
-    }
-  }
+  ApiDimensionFilterGroup.fromJson(core.Map _json)
+      : this(
+          filters: _json.containsKey('filters')
+              ? (_json['filters'] as core.List)
+                  .map<ApiDimensionFilter>((value) =>
+                      ApiDimensionFilter.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          groupType: _json.containsKey('groupType')
+              ? _json['groupType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (filters != null)
@@ -611,13 +628,14 @@ class BlockedResource {
   /// URL of the blocked resource.
   core.String? url;
 
-  BlockedResource();
+  BlockedResource({
+    this.url,
+  });
 
-  BlockedResource.fromJson(core.Map _json) {
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  BlockedResource.fromJson(core.Map _json)
+      : this(
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (url != null) 'url': url!,
@@ -641,16 +659,18 @@ class Image {
   /// The mime-type of the image data.
   core.String? mimeType;
 
-  Image();
+  Image({
+    this.data,
+    this.mimeType,
+  });
 
-  Image.fromJson(core.Map _json) {
-    if (_json.containsKey('data')) {
-      data = _json['data'] as core.String;
-    }
-    if (_json.containsKey('mimeType')) {
-      mimeType = _json['mimeType'] as core.String;
-    }
-  }
+  Image.fromJson(core.Map _json)
+      : this(
+          data: _json.containsKey('data') ? _json['data'] as core.String : null,
+          mimeType: _json.containsKey('mimeType')
+              ? _json['mimeType'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (data != null) 'data': data!,
@@ -681,13 +701,14 @@ class MobileFriendlyIssue {
   /// [Learn more](https://support.google.com/webmasters/answer/6352293#touch_elements_too_close).
   core.String? rule;
 
-  MobileFriendlyIssue();
+  MobileFriendlyIssue({
+    this.rule,
+  });
 
-  MobileFriendlyIssue.fromJson(core.Map _json) {
-    if (_json.containsKey('rule')) {
-      rule = _json['rule'] as core.String;
-    }
-  }
+  MobileFriendlyIssue.fromJson(core.Map _json)
+      : this(
+          rule: _json.containsKey('rule') ? _json['rule'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (rule != null) 'rule': rule!,
@@ -699,14 +720,17 @@ class ResourceIssue {
   /// Describes a blocked resource issue.
   BlockedResource? blockedResource;
 
-  ResourceIssue();
+  ResourceIssue({
+    this.blockedResource,
+  });
 
-  ResourceIssue.fromJson(core.Map _json) {
-    if (_json.containsKey('blockedResource')) {
-      blockedResource = BlockedResource.fromJson(
-          _json['blockedResource'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  ResourceIssue.fromJson(core.Map _json)
+      : this(
+          blockedResource: _json.containsKey('blockedResource')
+              ? BlockedResource.fromJson(_json['blockedResource']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (blockedResource != null)
@@ -724,16 +748,18 @@ class RunMobileFriendlyTestRequest {
   /// URL for inspection.
   core.String? url;
 
-  RunMobileFriendlyTestRequest();
+  RunMobileFriendlyTestRequest({
+    this.requestScreenshot,
+    this.url,
+  });
 
-  RunMobileFriendlyTestRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('requestScreenshot')) {
-      requestScreenshot = _json['requestScreenshot'] as core.bool;
-    }
-    if (_json.containsKey('url')) {
-      url = _json['url'] as core.String;
-    }
-  }
+  RunMobileFriendlyTestRequest.fromJson(core.Map _json)
+      : this(
+          requestScreenshot: _json.containsKey('requestScreenshot')
+              ? _json['requestScreenshot'] as core.bool
+              : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestScreenshot != null) 'requestScreenshot': requestScreenshot!,
@@ -764,33 +790,41 @@ class RunMobileFriendlyTestResponse {
   /// Final state of the test, can be either complete or an error.
   TestStatus? testStatus;
 
-  RunMobileFriendlyTestResponse();
+  RunMobileFriendlyTestResponse({
+    this.mobileFriendliness,
+    this.mobileFriendlyIssues,
+    this.resourceIssues,
+    this.screenshot,
+    this.testStatus,
+  });
 
-  RunMobileFriendlyTestResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('mobileFriendliness')) {
-      mobileFriendliness = _json['mobileFriendliness'] as core.String;
-    }
-    if (_json.containsKey('mobileFriendlyIssues')) {
-      mobileFriendlyIssues = (_json['mobileFriendlyIssues'] as core.List)
-          .map<MobileFriendlyIssue>((value) => MobileFriendlyIssue.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('resourceIssues')) {
-      resourceIssues = (_json['resourceIssues'] as core.List)
-          .map<ResourceIssue>((value) => ResourceIssue.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('screenshot')) {
-      screenshot = Image.fromJson(
-          _json['screenshot'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('testStatus')) {
-      testStatus = TestStatus.fromJson(
-          _json['testStatus'] as core.Map<core.String, core.dynamic>);
-    }
-  }
+  RunMobileFriendlyTestResponse.fromJson(core.Map _json)
+      : this(
+          mobileFriendliness: _json.containsKey('mobileFriendliness')
+              ? _json['mobileFriendliness'] as core.String
+              : null,
+          mobileFriendlyIssues: _json.containsKey('mobileFriendlyIssues')
+              ? (_json['mobileFriendlyIssues'] as core.List)
+                  .map<MobileFriendlyIssue>((value) =>
+                      MobileFriendlyIssue.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          resourceIssues: _json.containsKey('resourceIssues')
+              ? (_json['resourceIssues'] as core.List)
+                  .map<ResourceIssue>((value) => ResourceIssue.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          screenshot: _json.containsKey('screenshot')
+              ? Image.fromJson(
+                  _json['screenshot'] as core.Map<core.String, core.dynamic>)
+              : null,
+          testStatus: _json.containsKey('testStatus')
+              ? TestStatus.fromJson(
+                  _json['testStatus'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mobileFriendliness != null)
@@ -886,43 +920,54 @@ class SearchAnalyticsQueryRequest {
   /// Must be a non-negative number.
   core.int? startRow;
 
-  SearchAnalyticsQueryRequest();
+  SearchAnalyticsQueryRequest({
+    this.aggregationType,
+    this.dataState,
+    this.dimensionFilterGroups,
+    this.dimensions,
+    this.endDate,
+    this.rowLimit,
+    this.searchType,
+    this.startDate,
+    this.startRow,
+  });
 
-  SearchAnalyticsQueryRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('aggregationType')) {
-      aggregationType = _json['aggregationType'] as core.String;
-    }
-    if (_json.containsKey('dataState')) {
-      dataState = _json['dataState'] as core.String;
-    }
-    if (_json.containsKey('dimensionFilterGroups')) {
-      dimensionFilterGroups = (_json['dimensionFilterGroups'] as core.List)
-          .map<ApiDimensionFilterGroup>((value) =>
-              ApiDimensionFilterGroup.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('dimensions')) {
-      dimensions = (_json['dimensions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('endDate')) {
-      endDate = _json['endDate'] as core.String;
-    }
-    if (_json.containsKey('rowLimit')) {
-      rowLimit = _json['rowLimit'] as core.int;
-    }
-    if (_json.containsKey('searchType')) {
-      searchType = _json['searchType'] as core.String;
-    }
-    if (_json.containsKey('startDate')) {
-      startDate = _json['startDate'] as core.String;
-    }
-    if (_json.containsKey('startRow')) {
-      startRow = _json['startRow'] as core.int;
-    }
-  }
+  SearchAnalyticsQueryRequest.fromJson(core.Map _json)
+      : this(
+          aggregationType: _json.containsKey('aggregationType')
+              ? _json['aggregationType'] as core.String
+              : null,
+          dataState: _json.containsKey('dataState')
+              ? _json['dataState'] as core.String
+              : null,
+          dimensionFilterGroups: _json.containsKey('dimensionFilterGroups')
+              ? (_json['dimensionFilterGroups'] as core.List)
+                  .map<ApiDimensionFilterGroup>((value) =>
+                      ApiDimensionFilterGroup.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          dimensions: _json.containsKey('dimensions')
+              ? (_json['dimensions'] as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList()
+              : null,
+          endDate: _json.containsKey('endDate')
+              ? _json['endDate'] as core.String
+              : null,
+          rowLimit: _json.containsKey('rowLimit')
+              ? _json['rowLimit'] as core.int
+              : null,
+          searchType: _json.containsKey('searchType')
+              ? _json['searchType'] as core.String
+              : null,
+          startDate: _json.containsKey('startDate')
+              ? _json['startDate'] as core.String
+              : null,
+          startRow: _json.containsKey('startRow')
+              ? _json['startRow'] as core.int
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (aggregationType != null) 'aggregationType': aggregationType!,
@@ -954,19 +999,23 @@ class SearchAnalyticsQueryResponse {
   /// A list of rows grouped by the key values in the order given in the query.
   core.List<ApiDataRow>? rows;
 
-  SearchAnalyticsQueryResponse();
+  SearchAnalyticsQueryResponse({
+    this.responseAggregationType,
+    this.rows,
+  });
 
-  SearchAnalyticsQueryResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('responseAggregationType')) {
-      responseAggregationType = _json['responseAggregationType'] as core.String;
-    }
-    if (_json.containsKey('rows')) {
-      rows = (_json['rows'] as core.List)
-          .map<ApiDataRow>((value) =>
-              ApiDataRow.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  SearchAnalyticsQueryResponse.fromJson(core.Map _json)
+      : this(
+          responseAggregationType: _json.containsKey('responseAggregationType')
+              ? _json['responseAggregationType'] as core.String
+              : null,
+          rows: _json.containsKey('rows')
+              ? (_json['rows'] as core.List)
+                  .map<ApiDataRow>((value) => ApiDataRow.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (responseAggregationType != null)
@@ -981,16 +1030,19 @@ class SitemapsListResponse {
   /// [sitemap](https://support.google.com/webmasters/answer/156184).
   core.List<WmxSitemap>? sitemap;
 
-  SitemapsListResponse();
+  SitemapsListResponse({
+    this.sitemap,
+  });
 
-  SitemapsListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('sitemap')) {
-      sitemap = (_json['sitemap'] as core.List)
-          .map<WmxSitemap>((value) =>
-              WmxSitemap.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  SitemapsListResponse.fromJson(core.Map _json)
+      : this(
+          sitemap: _json.containsKey('sitemap')
+              ? (_json['sitemap'] as core.List)
+                  .map<WmxSitemap>((value) => WmxSitemap.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sitemap != null)
@@ -1006,16 +1058,19 @@ class SitesListResponse {
   /// [Permissions in Search Console](https://support.google.com/webmasters/answer/2451999).
   core.List<WmxSite>? siteEntry;
 
-  SitesListResponse();
+  SitesListResponse({
+    this.siteEntry,
+  });
 
-  SitesListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('siteEntry')) {
-      siteEntry = (_json['siteEntry'] as core.List)
-          .map<WmxSite>((value) =>
-              WmxSite.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-  }
+  SitesListResponse.fromJson(core.Map _json)
+      : this(
+          siteEntry: _json.containsKey('siteEntry')
+              ? (_json['siteEntry'] as core.List)
+                  .map<WmxSite>((value) => WmxSite.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (siteEntry != null)
@@ -1042,16 +1097,20 @@ class TestStatus {
   /// protected.
   core.String? status;
 
-  TestStatus();
+  TestStatus({
+    this.details,
+    this.status,
+  });
 
-  TestStatus.fromJson(core.Map _json) {
-    if (_json.containsKey('details')) {
-      details = _json['details'] as core.String;
-    }
-    if (_json.containsKey('status')) {
-      status = _json['status'] as core.String;
-    }
-  }
+  TestStatus.fromJson(core.Map _json)
+      : this(
+          details: _json.containsKey('details')
+              ? _json['details'] as core.String
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (details != null) 'details': details!,
@@ -1078,16 +1137,20 @@ class WmxSite {
   /// The URL of the site.
   core.String? siteUrl;
 
-  WmxSite();
+  WmxSite({
+    this.permissionLevel,
+    this.siteUrl,
+  });
 
-  WmxSite.fromJson(core.Map _json) {
-    if (_json.containsKey('permissionLevel')) {
-      permissionLevel = _json['permissionLevel'] as core.String;
-    }
-    if (_json.containsKey('siteUrl')) {
-      siteUrl = _json['siteUrl'] as core.String;
-    }
-  }
+  WmxSite.fromJson(core.Map _json)
+      : this(
+          permissionLevel: _json.containsKey('permissionLevel')
+              ? _json['permissionLevel'] as core.String
+              : null,
+          siteUrl: _json.containsKey('siteUrl')
+              ? _json['siteUrl'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permissionLevel != null) 'permissionLevel': permissionLevel!,
@@ -1144,40 +1207,47 @@ class WmxSitemap {
   /// These are generally non-critical issues with URLs in the sitemaps.
   core.String? warnings;
 
-  WmxSitemap();
+  WmxSitemap({
+    this.contents,
+    this.errors,
+    this.isPending,
+    this.isSitemapsIndex,
+    this.lastDownloaded,
+    this.lastSubmitted,
+    this.path,
+    this.type,
+    this.warnings,
+  });
 
-  WmxSitemap.fromJson(core.Map _json) {
-    if (_json.containsKey('contents')) {
-      contents = (_json['contents'] as core.List)
-          .map<WmxSitemapContent>((value) => WmxSitemapContent.fromJson(
-              value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('errors')) {
-      errors = _json['errors'] as core.String;
-    }
-    if (_json.containsKey('isPending')) {
-      isPending = _json['isPending'] as core.bool;
-    }
-    if (_json.containsKey('isSitemapsIndex')) {
-      isSitemapsIndex = _json['isSitemapsIndex'] as core.bool;
-    }
-    if (_json.containsKey('lastDownloaded')) {
-      lastDownloaded = _json['lastDownloaded'] as core.String;
-    }
-    if (_json.containsKey('lastSubmitted')) {
-      lastSubmitted = _json['lastSubmitted'] as core.String;
-    }
-    if (_json.containsKey('path')) {
-      path = _json['path'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-    if (_json.containsKey('warnings')) {
-      warnings = _json['warnings'] as core.String;
-    }
-  }
+  WmxSitemap.fromJson(core.Map _json)
+      : this(
+          contents: _json.containsKey('contents')
+              ? (_json['contents'] as core.List)
+                  .map<WmxSitemapContent>((value) => WmxSitemapContent.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          errors: _json.containsKey('errors')
+              ? _json['errors'] as core.String
+              : null,
+          isPending: _json.containsKey('isPending')
+              ? _json['isPending'] as core.bool
+              : null,
+          isSitemapsIndex: _json.containsKey('isSitemapsIndex')
+              ? _json['isSitemapsIndex'] as core.bool
+              : null,
+          lastDownloaded: _json.containsKey('lastDownloaded')
+              ? _json['lastDownloaded'] as core.String
+              : null,
+          lastSubmitted: _json.containsKey('lastSubmitted')
+              ? _json['lastSubmitted'] as core.String
+              : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          warnings: _json.containsKey('warnings')
+              ? _json['warnings'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contents != null)
@@ -1217,19 +1287,22 @@ class WmxSitemapContent {
   /// - "DATA_FEED_ELEMENT" : Unsupported content type.
   core.String? type;
 
-  WmxSitemapContent();
+  WmxSitemapContent({
+    this.indexed,
+    this.submitted,
+    this.type,
+  });
 
-  WmxSitemapContent.fromJson(core.Map _json) {
-    if (_json.containsKey('indexed')) {
-      indexed = _json['indexed'] as core.String;
-    }
-    if (_json.containsKey('submitted')) {
-      submitted = _json['submitted'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
+  WmxSitemapContent.fromJson(core.Map _json)
+      : this(
+          indexed: _json.containsKey('indexed')
+              ? _json['indexed'] as core.String
+              : null,
+          submitted: _json.containsKey('submitted')
+              ? _json['submitted'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (indexed != null) 'indexed': indexed!,

@@ -85,16 +85,16 @@ class WrapRequest {
   core.int? age;
   core.String? name;
 
-  WrapRequest();
+  WrapRequest({
+    this.age,
+    this.name,
+  });
 
-  WrapRequest.fromJson(core.Map _json) {
-    if (_json.containsKey('age')) {
-      age = _json['age'] as core.int;
-    }
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-  }
+  WrapRequest.fromJson(core.Map _json)
+      : this(
+          age: _json.containsKey('age') ? _json['age'] as core.int : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (age != null) 'age': age!,
@@ -105,13 +105,16 @@ class WrapRequest {
 class WrapResponse {
   core.String? result;
 
-  WrapResponse();
+  WrapResponse({
+    this.result,
+  });
 
-  WrapResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('result')) {
-      result = _json['result'] as core.String;
-    }
-  }
+  WrapResponse.fromJson(core.Map _json)
+      : this(
+          result: _json.containsKey('result')
+              ? _json['result'] as core.String
+              : null,
+        );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (result != null) 'result': result!,
