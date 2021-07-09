@@ -7,6 +7,7 @@
 import 'dart_api_library.dart';
 import 'dart_comments.dart';
 import 'dart_schemas.dart';
+import 'json_type.dart';
 import 'namer.dart';
 import 'utils.dart';
 
