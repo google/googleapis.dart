@@ -78,7 +78,9 @@ class DartClassProperty {
 
 /// Parses all schemas in [description] and returns a [DartSchemaTypeDB].
 DartSchemaTypeDB parseSchemas(
-    DartApiImports imports, RestDescription description) {
+  DartApiImports imports,
+  RestDescription description,
+) {
   final namer = imports.namer;
   final db = DartSchemaTypeDB(imports);
 
@@ -253,16 +255,6 @@ DartSchemaTypeDB parseSchemas(
   }
 
   return db;
-}
-
-// NOTE: This will be called for resolving parameter types in methods.
-DartSchemaType parseResolved(
-    DartApiImports imports, DartSchemaTypeDB db, JsonSchema schema) {
-  if (schema.repeated != null && schema.repeated!) {
-    final innerType = parsePrimitive(imports, db, schema);
-    return UnnamedArrayType(imports, innerType);
-  }
-  return parsePrimitive(imports, db, schema);
 }
 
 DartSchemaType parsePrimitive(

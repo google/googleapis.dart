@@ -9,31 +9,8 @@ import 'dart:io';
 import 'package:dart_style/dart_style.dart';
 import 'package:path/path.dart';
 
-const keywords = {
-  'assert', 'break', 'case', 'catch', 'class', 'const', 'continue', 'default',
-  'do', 'else', 'enum', 'extends', 'false', 'final', 'finally', 'for', 'if',
-  'in', 'is', 'new', 'null', 'rethrow', 'return', 'super', 'switch', 'this',
-  'throw', 'true', 'try', 'var', 'void', 'while', 'with',
-
-  // This is not in the dart language specification 1.2 but is reserved
-  // in dart2js and the dart VM.
-  // See: http://dartbug.com/19515
-  'external',
-
-  // Can't override "runtimeType" from [Object.runtimeType]
-  'runtimeType',
-};
-
 final _cleanRegEx = RegExp(r'[^\w$]');
-
-String fileDate(DateTime date) =>
-    "${date.year}${(date.month < 10) ? 0 : ""}${date.month}"
-    "${(date.day < 10) ? 0 : ""}${date.day}_"
-    "${(date.hour < 10) ? 0 : ""}${date.hour}"
-    "${(date.minute < 10) ? 0 : ""}${date.minute}"
-    "${(date.second < 10) ? 0 : ""}${date.second}";
-
-String cleanName(String name) => name.replaceAll(_cleanRegEx, '_');
+String _cleanName(String name) => name.replaceAll(_cleanRegEx, '_');
 
 final _formatter = DartFormatter(lineEnding: '\n', pageWidth: 80);
 
@@ -44,10 +21,6 @@ String escapeString(String string) => string
     .replaceAll(r'$', r'\$')
     .replaceAll("'", "\\'")
     .replaceAll('"', '\\"');
-
-/// Escapes [comment] to ensure it can safely be used inside a /* ... */ block.
-String escapeComment(String comment) =>
-    comment.replaceAll('/*', ' / * ').replaceAll('*/', ' * / ').trimRight();
 
 void orderedForEach<K extends Comparable<K>, V>(
   Map<K, V> map,
@@ -71,16 +44,6 @@ void writeString(String path, String content) {
   file.writeAsStringSync(content);
 }
 
-void writeFile(String path, void Function(StringSink sink) writer) {
-  final file = File(path);
-  if (!file.existsSync()) {
-    file.createSync(recursive: true);
-  }
-  final sink = file.openWrite();
-  writer(sink);
-  sink.flush().then((value) => sink.close());
-}
-
 String? findPackageRoot(String path) {
   if (path.startsWith('file:')) {
     path = fromUri(path);
@@ -95,11 +58,6 @@ String? findPackageRoot(String path) {
   }
   return null;
 }
-
-const String gitIgnore = '''
-packages
-pubspec.lock
-''';
 
 class GenerateResult {
   final String? apiName;
@@ -125,7 +83,7 @@ class GenerateResult {
       : success = false;
 
   String get shortName =>
-      cleanName('${apiName}_${apiVersion}_api').toLowerCase();
+      _cleanName('${apiName}_${apiVersion}_api').toLowerCase();
 
   @override
   String toString() {

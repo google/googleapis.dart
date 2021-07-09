@@ -4,8 +4,6 @@
 
 library discoveryapis_generator.namer;
 
-import 'utils.dart';
-
 /// Represents an identifier that can be given a name.
 class Identifier {
   String? _name;
@@ -118,7 +116,7 @@ class Scope {
       preferredName = 'P$preferredName';
     }
 
-    if (keywords.contains(preferredName)) {
+    if (_keywords.contains(preferredName)) {
       preferredName = '${preferredName}_';
     }
     if (global) {
@@ -360,3 +358,18 @@ class ApiLibraryNamer {
     importScope.identifiers.forEach(resolver.nameIdentifier);
   }
 }
+
+const _keywords = {
+  'assert', 'break', 'case', 'catch', 'class', 'const', 'continue', 'default',
+  'do', 'else', 'enum', 'extends', 'false', 'final', 'finally', 'for', 'if',
+  'in', 'is', 'new', 'null', 'rethrow', 'return', 'super', 'switch', 'this',
+  'throw', 'true', 'try', 'var', 'void', 'while', 'with',
+
+  // This is not in the dart language specification 1.2 but is reserved
+  // in dart2js and the dart VM.
+  // See: http://dartbug.com/19515
+  'external',
+
+  // Can't override "runtimeType" from [Object.runtimeType]
+  'runtimeType',
+};
