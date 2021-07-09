@@ -4,8 +4,6 @@
 
 library discoveryapis_generator.dart_comments;
 
-import 'utils.dart';
-
 final _markdownToEscape =
     {'[', ']', '`'}.map((e) => RegExp('([\\\\]*)(\\$e)')).toSet();
 
@@ -155,12 +153,12 @@ class Comment {
   String asDartDoc(int indentationLevel) {
     if (rawComment.isEmpty) return '';
 
-    final commentString = escapeComment(rawComment);
+    final commentString = _escapeComment(rawComment);
     final spaces = ' ' * indentationLevel;
 
     if (!commentString.contains('\n')) {
       final onelineComment =
-          '$spaces${'/// ${escapeComment(commentString)}\n'}';
+          '$spaces${'/// ${_escapeComment(commentString)}\n'}';
       if (onelineComment.length <= 80) {
         return onelineComment;
       }
@@ -222,3 +220,7 @@ List<String> urlSplit(String input) {
 
   return result;
 }
+
+/// Escapes [comment] to ensure it can safely be used inside a /* ... */ block.
+String _escapeComment(String comment) =>
+    comment.replaceAll('/*', ' / * ').replaceAll('*/', ' * / ').trimRight();

@@ -17,16 +17,16 @@ import 'namer.dart';
 import 'uri_template.dart';
 import 'utils.dart';
 
-const reservedMethodParameterNames = [
+const reservedMethodParameterNames = {
   'uploadMedia',
   'uploadOptions',
   'downloadOptions',
-  'callOptions'
-];
+  'callOptions',
+};
 
-const whitelistedGlobalParameterNames = [
+const _whitelistedGlobalParameterNames = {
   'fields',
-];
+};
 
 /// Represents a oauth2 authentication scope.
 class OAuth2Scope {
@@ -585,7 +585,7 @@ DartResourceMethod _parseMethod(
     if (parameter.required == true) {
       final name = parameterScope.newIdentifier(jsonName);
       pendingParameterNames.remove(jsonName);
-      final type = parseResolved(imports, db, parameter);
+      final type = _parseResolved(imports, db, parameter);
       comment = extendEnumComment(comment, type);
       comment = extendAnyTypeComment(comment, type);
       positionalParameters.add(MethodParameter(
@@ -601,7 +601,7 @@ DartResourceMethod _parseMethod(
     bool global = false,
   }) {
     final name = parameterScope.newIdentifier(jsonName, global: global);
-    final type = parseResolved(imports, db, schema);
+    final type = _parseResolved(imports, db, schema);
     comment = extendEnumComment(comment, type);
     comment = extendAnyTypeComment(comment, type);
     optionalParameters.add(MethodParameter(
@@ -670,7 +670,7 @@ DartResourceMethod _parseMethod(
     for (var jsonName in description.parameters!.keys) {
       final jsonSchema = description.parameters![jsonName]!;
       final comment = parameterComment(jsonSchema);
-      if (whitelistedGlobalParameterNames.contains(jsonName)) {
+      if (_whitelistedGlobalParameterNames.contains(jsonName)) {
         enqueueOptionalParameter(jsonName, comment, jsonSchema, global: true);
       }
     }
@@ -926,4 +926,14 @@ String generateResources(DartApiClass apiClass) {
 
   writeResourceClass(apiClass);
   return '$sb';
+}
+
+// NOTE: This will be called for resolving parameter types in methods.
+DartSchemaType _parseResolved(
+    DartApiImports imports, DartSchemaTypeDB db, JsonSchema schema) {
+  if (schema.repeated != null && schema.repeated!) {
+    final innerType = parsePrimitive(imports, db, schema);
+    return UnnamedArrayType(imports, innerType);
+  }
+  return parsePrimitive(imports, db, schema);
 }

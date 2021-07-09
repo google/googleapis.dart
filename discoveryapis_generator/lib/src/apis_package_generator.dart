@@ -71,8 +71,8 @@ class ApisPackageGenerator {
       }
     }
 
-    writeFile(pubspecYamlPath, _writePubspec);
-    writeString(gitIgnorePath, gitIgnore);
+    _writeFile(pubspecYamlPath, _writePubspec);
+    writeString(gitIgnorePath, _gitIgnore);
 
     writeDartSource(
       '$libFolderPath/$userAgentDartFilePath',
@@ -220,4 +220,19 @@ ${requestHeadersField(pubspec.version)}
       from: outputPackageDir.path,
     );
   }
+}
+
+const _gitIgnore = '''
+packages
+pubspec.lock
+''';
+
+void _writeFile(String path, void Function(StringSink sink) writer) {
+  final file = File(path);
+  if (!file.existsSync()) {
+    file.createSync(recursive: true);
+  }
+  final sink = file.openWrite();
+  writer(sink);
+  sink.flush().then((value) => sink.close());
 }
