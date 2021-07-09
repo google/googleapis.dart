@@ -3,6 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:discoveryapis_generator/src/dart_api_library.dart';
+import 'package:discoveryapis_generator/src/dart_schema_types.dart';
 import 'package:discoveryapis_generator/src/dart_schemas.dart';
 import 'package:discoveryapis_generator/src'
     '/generated_googleapis/discovery/v1.dart';
