@@ -731,13 +731,13 @@ class UnnamedMapTest extends UnnamedSchemaTest<UnnamedMapType> {
 
   @override
   String get buildSchemaFunction {
-    final innerTest = apiTestLibrary.schemaTests[schema.toType];
+    final innerTest = apiTestLibrary.schemaTests[schema.toType]!;
     final toType = apiTestLibrary.schemaTests[schema.toType]!.declaration;
 
     final sb = StringBuffer();
     withFunc(0, sb, '$declaration buildUnnamed$_id', '', () {
       sb.writeln('  var o = <core.String, $toType>{};');
-      sb.writeln("  o['x'] = ${innerTest!.newSchemaExpr};");
+      sb.writeln("  o['x'] = ${innerTest.newSchemaExpr};");
       sb.writeln("  o['y'] = ${innerTest.newSchemaExpr};");
       sb.writeln('  return o;');
     });
