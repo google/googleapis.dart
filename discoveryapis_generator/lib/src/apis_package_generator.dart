@@ -223,7 +223,9 @@ ${requestHeadersField(pubspec.version)}
 }
 
 const _gitIgnore = '''
-packages
+# See https://dart.dev/guides/libraries/private-files
+.dart_tool/
+.packages
 pubspec.lock
 ''';
 
