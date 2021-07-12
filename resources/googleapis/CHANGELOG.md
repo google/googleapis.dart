@@ -1,4 +1,4 @@
-## 4.0.0-dev
+## 4.0.0
 
 - All schema types now have positional constructor parameters.
 - Addressed handling of `null` values in `datastore`, `drive`, `firestore`, and
