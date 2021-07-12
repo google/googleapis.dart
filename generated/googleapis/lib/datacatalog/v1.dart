@@ -3115,6 +3115,48 @@ class GetPolicyOptions {
       };
 }
 
+/// Specification for the BigQuery connection.
+class GoogleCloudDatacatalogV1BigQueryConnectionSpec {
+  /// Specification for the BigQuery connection to a Cloud SQL instance.
+  GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec? cloudSql;
+
+  /// The type of the BigQuery connection.
+  /// Possible string values are:
+  /// - "CONNECTION_TYPE_UNSPECIFIED" : Unspecified type.
+  /// - "CLOUD_SQL" : Cloud SQL connection.
+  core.String? connectionType;
+
+  /// True if there are credentials attached to the BigQuery connection; false
+  /// otherwise.
+  core.bool? hasCredential;
+
+  GoogleCloudDatacatalogV1BigQueryConnectionSpec({
+    this.cloudSql,
+    this.connectionType,
+    this.hasCredential,
+  });
+
+  GoogleCloudDatacatalogV1BigQueryConnectionSpec.fromJson(core.Map _json)
+      : this(
+          cloudSql: _json.containsKey('cloudSql')
+              ? GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec.fromJson(
+                  _json['cloudSql'] as core.Map<core.String, core.dynamic>)
+              : null,
+          connectionType: _json.containsKey('connectionType')
+              ? _json['connectionType'] as core.String
+              : null,
+          hasCredential: _json.containsKey('hasCredential')
+              ? _json['hasCredential'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudSql != null) 'cloudSql': cloudSql!.toJson(),
+        if (connectionType != null) 'connectionType': connectionType!,
+        if (hasCredential != null) 'hasCredential': hasCredential!,
+      };
+}
+
 /// Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD`
 /// name pattern.
 ///
@@ -3239,6 +3281,46 @@ class GoogleCloudDatacatalogV1BigQueryTableSpec {
         if (tableSourceType != null) 'tableSourceType': tableSourceType!,
         if (tableSpec != null) 'tableSpec': tableSpec!.toJson(),
         if (viewSpec != null) 'viewSpec': viewSpec!.toJson(),
+      };
+}
+
+/// Specification for the BigQuery connection to a Cloud SQL instance.
+class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec {
+  /// Database name.
+  core.String? database;
+
+  /// Cloud SQL instance ID in the format of `project:location:instance`.
+  core.String? instanceId;
+
+  /// Type of the Cloud SQL database.
+  /// Possible string values are:
+  /// - "DATABASE_TYPE_UNSPECIFIED" : Unspecified database type.
+  /// - "POSTGRES" : Cloud SQL for PostgreSQL.
+  /// - "MYSQL" : Cloud SQL for MySQL.
+  core.String? type;
+
+  GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec({
+    this.database,
+    this.instanceId,
+    this.type,
+  });
+
+  GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec.fromJson(
+      core.Map _json)
+      : this(
+          database: _json.containsKey('database')
+              ? _json['database'] as core.String
+              : null,
+          instanceId: _json.containsKey('instanceId')
+              ? _json['instanceId'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (database != null) 'database': database!,
+        if (instanceId != null) 'instanceId': instanceId!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -3381,6 +3463,32 @@ class GoogleCloudDatacatalogV1DataSource {
       };
 }
 
+/// Specification that applies to a data source connection.
+///
+/// Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
+class GoogleCloudDatacatalogV1DataSourceConnectionSpec {
+  /// Fields specific to BigQuery connections.
+  GoogleCloudDatacatalogV1BigQueryConnectionSpec? bigqueryConnectionSpec;
+
+  GoogleCloudDatacatalogV1DataSourceConnectionSpec({
+    this.bigqueryConnectionSpec,
+  });
+
+  GoogleCloudDatacatalogV1DataSourceConnectionSpec.fromJson(core.Map _json)
+      : this(
+          bigqueryConnectionSpec: _json.containsKey('bigqueryConnectionSpec')
+              ? GoogleCloudDatacatalogV1BigQueryConnectionSpec.fromJson(
+                  _json['bigqueryConnectionSpec']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bigqueryConnectionSpec != null)
+          'bigqueryConnectionSpec': bigqueryConnectionSpec!.toJson(),
+      };
+}
+
 /// Specification that applies to a table resource.
 ///
 /// Valid only for entries with the `TABLE` type.
@@ -3432,6 +3540,11 @@ class GoogleCloudDatacatalogV1Entry {
   /// Output only.
   GoogleCloudDatacatalogV1DataSource? dataSource;
 
+  /// Specification that applies to a data source connection.
+  ///
+  /// Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
+  GoogleCloudDatacatalogV1DataSourceConnectionSpec? dataSourceConnectionSpec;
+
   /// Specification that applies to a table resource.
   ///
   /// Valid only for entries with the `TABLE` type.
@@ -3482,6 +3595,13 @@ class GoogleCloudDatacatalogV1Entry {
   /// - "CLOUD_PUBSUB" : Cloud Pub/Sub.
   /// - "DATAPROC_METASTORE" : Dataproc Metastore.
   core.String? integratedSystem;
+
+  /// Cloud labels attached to the entry.
+  ///
+  /// In Data Catalog, you can create and modify labels attached only to custom
+  /// entries. Synced entries have unmodifiable labels that come from the source
+  /// system.
+  core.Map<core.String, core.String>? labels;
 
   /// The resource this metadata entry refers to.
   ///
@@ -3540,6 +3660,8 @@ class GoogleCloudDatacatalogV1Entry {
   /// - "CLUSTER" : A group of servers that work together. For example, a Kafka
   /// cluster.
   /// - "DATABASE" : A database.
+  /// - "DATA_SOURCE_CONNECTION" : Output only. Connection to a data source. For
+  /// example, a BigQuery connection.
   /// - "ROUTINE" : Output only. Routine, for example, a BigQuery routine.
   /// - "SERVICE" : A service, for example, a Dataproc Metastore service.
   core.String? type;
@@ -3573,12 +3695,14 @@ class GoogleCloudDatacatalogV1Entry {
     this.bigqueryDateShardedSpec,
     this.bigqueryTableSpec,
     this.dataSource,
+    this.dataSourceConnectionSpec,
     this.databaseTableSpec,
     this.description,
     this.displayName,
     this.fullyQualifiedName,
     this.gcsFilesetSpec,
     this.integratedSystem,
+    this.labels,
     this.linkedResource,
     this.name,
     this.routineSpec,
@@ -3606,6 +3730,12 @@ class GoogleCloudDatacatalogV1Entry {
               ? GoogleCloudDatacatalogV1DataSource.fromJson(
                   _json['dataSource'] as core.Map<core.String, core.dynamic>)
               : null,
+          dataSourceConnectionSpec:
+              _json.containsKey('dataSourceConnectionSpec')
+                  ? GoogleCloudDatacatalogV1DataSourceConnectionSpec.fromJson(
+                      _json['dataSourceConnectionSpec']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           databaseTableSpec: _json.containsKey('databaseTableSpec')
               ? GoogleCloudDatacatalogV1DatabaseTableSpec.fromJson(
                   _json['databaseTableSpec']
@@ -3627,6 +3757,14 @@ class GoogleCloudDatacatalogV1Entry {
               : null,
           integratedSystem: _json.containsKey('integratedSystem')
               ? _json['integratedSystem'] as core.String
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
               : null,
           linkedResource: _json.containsKey('linkedResource')
               ? _json['linkedResource'] as core.String
@@ -3664,6 +3802,8 @@ class GoogleCloudDatacatalogV1Entry {
         if (bigqueryTableSpec != null)
           'bigqueryTableSpec': bigqueryTableSpec!.toJson(),
         if (dataSource != null) 'dataSource': dataSource!.toJson(),
+        if (dataSourceConnectionSpec != null)
+          'dataSourceConnectionSpec': dataSourceConnectionSpec!.toJson(),
         if (databaseTableSpec != null)
           'databaseTableSpec': databaseTableSpec!.toJson(),
         if (description != null) 'description': description!,
@@ -3672,6 +3812,7 @@ class GoogleCloudDatacatalogV1Entry {
           'fullyQualifiedName': fullyQualifiedName!,
         if (gcsFilesetSpec != null) 'gcsFilesetSpec': gcsFilesetSpec!.toJson(),
         if (integratedSystem != null) 'integratedSystem': integratedSystem!,
+        if (labels != null) 'labels': labels!,
         if (linkedResource != null) 'linkedResource': linkedResource!,
         if (name != null) 'name': name!,
         if (routineSpec != null) 'routineSpec': routineSpec!.toJson(),
@@ -4654,6 +4795,16 @@ class GoogleCloudDatacatalogV1SearchCatalogRequestScope {
   /// numbers, see \[Projects\](/docs/overview/#projects).
   core.List<core.String>? includeProjectIds;
 
+  /// If `true`, include public tag templates in the search results.
+  ///
+  /// By default, they are included only if you have explicit permissions on
+  /// them to view them. For example, if you are the owner. Other scope fields,
+  /// for example, ``include_org_ids``, still restrict the returned public tag
+  /// templates and at least one of them is required.
+  ///
+  /// Optional.
+  core.bool? includePublicTagTemplates;
+
   /// The list of locations to search within.
   ///
   /// If empty, all locations are searched. Returns an error if any location in
@@ -4671,6 +4822,7 @@ class GoogleCloudDatacatalogV1SearchCatalogRequestScope {
     this.includeGcpPublicDatasets,
     this.includeOrgIds,
     this.includeProjectIds,
+    this.includePublicTagTemplates,
     this.restrictedLocations,
   });
 
@@ -4690,6 +4842,10 @@ class GoogleCloudDatacatalogV1SearchCatalogRequestScope {
                   .map<core.String>((value) => value as core.String)
                   .toList()
               : null,
+          includePublicTagTemplates:
+              _json.containsKey('includePublicTagTemplates')
+                  ? _json['includePublicTagTemplates'] as core.bool
+                  : null,
           restrictedLocations: _json.containsKey('restrictedLocations')
               ? (_json['restrictedLocations'] as core.List)
                   .map<core.String>((value) => value as core.String)
@@ -4702,6 +4858,8 @@ class GoogleCloudDatacatalogV1SearchCatalogRequestScope {
           'includeGcpPublicDatasets': includeGcpPublicDatasets!,
         if (includeOrgIds != null) 'includeOrgIds': includeOrgIds!,
         if (includeProjectIds != null) 'includeProjectIds': includeProjectIds!,
+        if (includePublicTagTemplates != null)
+          'includePublicTagTemplates': includePublicTagTemplates!,
         if (restrictedLocations != null)
           'restrictedLocations': restrictedLocations!,
       };
@@ -5289,6 +5447,22 @@ class GoogleCloudDatacatalogV1TagTemplate {
   /// Required.
   core.Map<core.String, GoogleCloudDatacatalogV1TagTemplateField>? fields;
 
+  /// Indicates whether this is a public tag template.
+  ///
+  /// Every user has view access to a *public* tag template by default. This
+  /// means that: * Every user can use this tag template to tag an entry. * If
+  /// an entry is tagged using the tag template, the tag is always shown in the
+  /// response to ``ListTags`` called on the entry. * To get the template using
+  /// the GetTagTemplate method, you need view access either on the project or
+  /// the organization the tag template resides in but no other permission is
+  /// needed. * Operations on the tag template other than viewing (for example,
+  /// editing IAM policies) follow standard IAM structures. Tags created with a
+  /// public tag template are referred to as public tags. You can search for a
+  /// public tag by value with a simple search query instead of using a ``tag:``
+  /// predicate. Public tag templates may not appear in search results depending
+  /// on scope, see: include_public_tag_templates
+  core.bool? isPubliclyReadable;
+
   /// The resource name of the tag template in URL format.
   ///
   /// Note: The tag template itself and its child resources might not be stored
@@ -5298,6 +5472,7 @@ class GoogleCloudDatacatalogV1TagTemplate {
   GoogleCloudDatacatalogV1TagTemplate({
     this.displayName,
     this.fields,
+    this.isPubliclyReadable,
     this.name,
   });
 
@@ -5315,6 +5490,9 @@ class GoogleCloudDatacatalogV1TagTemplate {
                   ),
                 )
               : null,
+          isPubliclyReadable: _json.containsKey('isPubliclyReadable')
+              ? _json['isPubliclyReadable'] as core.bool
+              : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
         );
 
@@ -5323,6 +5501,8 @@ class GoogleCloudDatacatalogV1TagTemplate {
         if (fields != null)
           'fields':
               fields!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (isPubliclyReadable != null)
+          'isPubliclyReadable': isPubliclyReadable!,
         if (name != null) 'name': name!,
       };
 }

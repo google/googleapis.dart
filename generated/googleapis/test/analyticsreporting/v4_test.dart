@@ -26,14 +26,14 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.CustomDimension> buildUnnamed7582() {
+core.List<api.CustomDimension> buildUnnamed7594() {
   final o = <api.CustomDimension>[];
   o.add(buildCustomDimension());
   o.add(buildCustomDimension());
   return o;
 }
 
-void checkUnnamed7582(core.List<api.CustomDimension> o) {
+void checkUnnamed7594(core.List<api.CustomDimension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCustomDimension(o[0]);
   checkCustomDimension(o[1]);
@@ -49,7 +49,7 @@ api.Activity buildActivity() {
     o.appview = buildScreenviewData();
     o.campaign = 'foo';
     o.channelGrouping = 'foo';
-    o.customDimension = buildUnnamed7582();
+    o.customDimension = buildUnnamed7594();
     o.ecommerce = buildEcommerceData();
     o.event = buildEventData();
     o.goals = buildGoalSetData();
@@ -84,7 +84,7 @@ void checkActivity(api.Activity o) {
       o.channelGrouping!,
       unittest.equals('foo'),
     );
-    checkUnnamed7582(o.customDimension!);
+    checkUnnamed7594(o.customDimension!);
     checkEcommerceData(o.ecommerce!);
     checkEventData(o.event!);
     checkGoalSetData(o.goals!);
@@ -142,14 +142,14 @@ void checkCohort(api.Cohort o) {
   buildCounterCohort--;
 }
 
-core.List<api.Cohort> buildUnnamed7583() {
+core.List<api.Cohort> buildUnnamed7595() {
   final o = <api.Cohort>[];
   o.add(buildCohort());
   o.add(buildCohort());
   return o;
 }
 
-void checkUnnamed7583(core.List<api.Cohort> o) {
+void checkUnnamed7595(core.List<api.Cohort> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCohort(o[0]);
   checkCohort(o[1]);
@@ -160,7 +160,7 @@ api.CohortGroup buildCohortGroup() {
   final o = api.CohortGroup();
   buildCounterCohortGroup++;
   if (buildCounterCohortGroup < 3) {
-    o.cohorts = buildUnnamed7583();
+    o.cohorts = buildUnnamed7595();
     o.lifetimeValue = true;
   }
   buildCounterCohortGroup--;
@@ -170,20 +170,20 @@ api.CohortGroup buildCohortGroup() {
 void checkCohortGroup(api.CohortGroup o) {
   buildCounterCohortGroup++;
   if (buildCounterCohortGroup < 3) {
-    checkUnnamed7583(o.cohorts!);
+    checkUnnamed7595(o.cohorts!);
     unittest.expect(o.lifetimeValue!, unittest.isTrue);
   }
   buildCounterCohortGroup--;
 }
 
-core.List<core.String> buildUnnamed7584() {
+core.List<core.String> buildUnnamed7596() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7584(core.List<core.String> o) {
+void checkUnnamed7596(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -200,7 +200,7 @@ api.ColumnHeader buildColumnHeader() {
   final o = api.ColumnHeader();
   buildCounterColumnHeader++;
   if (buildCounterColumnHeader < 3) {
-    o.dimensions = buildUnnamed7584();
+    o.dimensions = buildUnnamed7596();
     o.metricHeader = buildMetricHeader();
   }
   buildCounterColumnHeader--;
@@ -210,7 +210,7 @@ api.ColumnHeader buildColumnHeader() {
 void checkColumnHeader(api.ColumnHeader o) {
   buildCounterColumnHeader++;
   if (buildCounterColumnHeader < 3) {
-    checkUnnamed7584(o.dimensions!);
+    checkUnnamed7596(o.dimensions!);
     checkMetricHeader(o.metricHeader!);
   }
   buildCounterColumnHeader--;
@@ -270,27 +270,27 @@ void checkDateRange(api.DateRange o) {
   buildCounterDateRange--;
 }
 
-core.List<api.PivotValueRegion> buildUnnamed7585() {
+core.List<api.PivotValueRegion> buildUnnamed7597() {
   final o = <api.PivotValueRegion>[];
   o.add(buildPivotValueRegion());
   o.add(buildPivotValueRegion());
   return o;
 }
 
-void checkUnnamed7585(core.List<api.PivotValueRegion> o) {
+void checkUnnamed7597(core.List<api.PivotValueRegion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPivotValueRegion(o[0]);
   checkPivotValueRegion(o[1]);
 }
 
-core.List<core.String> buildUnnamed7586() {
+core.List<core.String> buildUnnamed7598() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7586(core.List<core.String> o) {
+void checkUnnamed7598(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -307,8 +307,8 @@ api.DateRangeValues buildDateRangeValues() {
   final o = api.DateRangeValues();
   buildCounterDateRangeValues++;
   if (buildCounterDateRangeValues < 3) {
-    o.pivotValueRegions = buildUnnamed7585();
-    o.values = buildUnnamed7586();
+    o.pivotValueRegions = buildUnnamed7597();
+    o.values = buildUnnamed7598();
   }
   buildCounterDateRangeValues--;
   return o;
@@ -317,20 +317,20 @@ api.DateRangeValues buildDateRangeValues() {
 void checkDateRangeValues(api.DateRangeValues o) {
   buildCounterDateRangeValues++;
   if (buildCounterDateRangeValues < 3) {
-    checkUnnamed7585(o.pivotValueRegions!);
-    checkUnnamed7586(o.values!);
+    checkUnnamed7597(o.pivotValueRegions!);
+    checkUnnamed7598(o.values!);
   }
   buildCounterDateRangeValues--;
 }
 
-core.List<core.String> buildUnnamed7587() {
+core.List<core.String> buildUnnamed7599() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7587(core.List<core.String> o) {
+void checkUnnamed7599(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -347,7 +347,7 @@ api.Dimension buildDimension() {
   final o = api.Dimension();
   buildCounterDimension++;
   if (buildCounterDimension < 3) {
-    o.histogramBuckets = buildUnnamed7587();
+    o.histogramBuckets = buildUnnamed7599();
     o.name = 'foo';
   }
   buildCounterDimension--;
@@ -357,7 +357,7 @@ api.Dimension buildDimension() {
 void checkDimension(api.Dimension o) {
   buildCounterDimension++;
   if (buildCounterDimension < 3) {
-    checkUnnamed7587(o.histogramBuckets!);
+    checkUnnamed7599(o.histogramBuckets!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -366,14 +366,14 @@ void checkDimension(api.Dimension o) {
   buildCounterDimension--;
 }
 
-core.List<core.String> buildUnnamed7588() {
+core.List<core.String> buildUnnamed7600() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7588(core.List<core.String> o) {
+void checkUnnamed7600(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -392,7 +392,7 @@ api.DimensionFilter buildDimensionFilter() {
   if (buildCounterDimensionFilter < 3) {
     o.caseSensitive = true;
     o.dimensionName = 'foo';
-    o.expressions = buildUnnamed7588();
+    o.expressions = buildUnnamed7600();
     o.not = true;
     o.operator = 'foo';
   }
@@ -408,7 +408,7 @@ void checkDimensionFilter(api.DimensionFilter o) {
       o.dimensionName!,
       unittest.equals('foo'),
     );
-    checkUnnamed7588(o.expressions!);
+    checkUnnamed7600(o.expressions!);
     unittest.expect(o.not!, unittest.isTrue);
     unittest.expect(
       o.operator!,
@@ -418,14 +418,14 @@ void checkDimensionFilter(api.DimensionFilter o) {
   buildCounterDimensionFilter--;
 }
 
-core.List<api.DimensionFilter> buildUnnamed7589() {
+core.List<api.DimensionFilter> buildUnnamed7601() {
   final o = <api.DimensionFilter>[];
   o.add(buildDimensionFilter());
   o.add(buildDimensionFilter());
   return o;
 }
 
-void checkUnnamed7589(core.List<api.DimensionFilter> o) {
+void checkUnnamed7601(core.List<api.DimensionFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDimensionFilter(o[0]);
   checkDimensionFilter(o[1]);
@@ -436,7 +436,7 @@ api.DimensionFilterClause buildDimensionFilterClause() {
   final o = api.DimensionFilterClause();
   buildCounterDimensionFilterClause++;
   if (buildCounterDimensionFilterClause < 3) {
-    o.filters = buildUnnamed7589();
+    o.filters = buildUnnamed7601();
     o.operator = 'foo';
   }
   buildCounterDimensionFilterClause--;
@@ -446,7 +446,7 @@ api.DimensionFilterClause buildDimensionFilterClause() {
 void checkDimensionFilterClause(api.DimensionFilterClause o) {
   buildCounterDimensionFilterClause++;
   if (buildCounterDimensionFilterClause < 3) {
-    checkUnnamed7589(o.filters!);
+    checkUnnamed7601(o.filters!);
     unittest.expect(
       o.operator!,
       unittest.equals('foo'),
@@ -481,14 +481,14 @@ void checkDynamicSegment(api.DynamicSegment o) {
   buildCounterDynamicSegment--;
 }
 
-core.List<api.ProductData> buildUnnamed7590() {
+core.List<api.ProductData> buildUnnamed7602() {
   final o = <api.ProductData>[];
   o.add(buildProductData());
   o.add(buildProductData());
   return o;
 }
 
-void checkUnnamed7590(core.List<api.ProductData> o) {
+void checkUnnamed7602(core.List<api.ProductData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProductData(o[0]);
   checkProductData(o[1]);
@@ -501,7 +501,7 @@ api.EcommerceData buildEcommerceData() {
   if (buildCounterEcommerceData < 3) {
     o.actionType = 'foo';
     o.ecommerceType = 'foo';
-    o.products = buildUnnamed7590();
+    o.products = buildUnnamed7602();
     o.transaction = buildTransactionData();
   }
   buildCounterEcommerceData--;
@@ -519,7 +519,7 @@ void checkEcommerceData(api.EcommerceData o) {
       o.ecommerceType!,
       unittest.equals('foo'),
     );
-    checkUnnamed7590(o.products!);
+    checkUnnamed7602(o.products!);
     checkTransactionData(o.transaction!);
   }
   buildCounterEcommerceData--;
@@ -567,14 +567,14 @@ void checkEventData(api.EventData o) {
   buildCounterEventData--;
 }
 
-core.List<api.ReportRequest> buildUnnamed7591() {
+core.List<api.ReportRequest> buildUnnamed7603() {
   final o = <api.ReportRequest>[];
   o.add(buildReportRequest());
   o.add(buildReportRequest());
   return o;
 }
 
-void checkUnnamed7591(core.List<api.ReportRequest> o) {
+void checkUnnamed7603(core.List<api.ReportRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportRequest(o[0]);
   checkReportRequest(o[1]);
@@ -585,7 +585,7 @@ api.GetReportsRequest buildGetReportsRequest() {
   final o = api.GetReportsRequest();
   buildCounterGetReportsRequest++;
   if (buildCounterGetReportsRequest < 3) {
-    o.reportRequests = buildUnnamed7591();
+    o.reportRequests = buildUnnamed7603();
     o.useResourceQuotas = true;
   }
   buildCounterGetReportsRequest--;
@@ -595,20 +595,20 @@ api.GetReportsRequest buildGetReportsRequest() {
 void checkGetReportsRequest(api.GetReportsRequest o) {
   buildCounterGetReportsRequest++;
   if (buildCounterGetReportsRequest < 3) {
-    checkUnnamed7591(o.reportRequests!);
+    checkUnnamed7603(o.reportRequests!);
     unittest.expect(o.useResourceQuotas!, unittest.isTrue);
   }
   buildCounterGetReportsRequest--;
 }
 
-core.List<api.Report> buildUnnamed7592() {
+core.List<api.Report> buildUnnamed7604() {
   final o = <api.Report>[];
   o.add(buildReport());
   o.add(buildReport());
   return o;
 }
 
-void checkUnnamed7592(core.List<api.Report> o) {
+void checkUnnamed7604(core.List<api.Report> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReport(o[0]);
   checkReport(o[1]);
@@ -620,7 +620,7 @@ api.GetReportsResponse buildGetReportsResponse() {
   buildCounterGetReportsResponse++;
   if (buildCounterGetReportsResponse < 3) {
     o.queryCost = 42;
-    o.reports = buildUnnamed7592();
+    o.reports = buildUnnamed7604();
     o.resourceQuotasRemaining = buildResourceQuotasRemaining();
   }
   buildCounterGetReportsResponse--;
@@ -634,7 +634,7 @@ void checkGetReportsResponse(api.GetReportsResponse o) {
       o.queryCost!,
       unittest.equals(42),
     );
-    checkUnnamed7592(o.reports!);
+    checkUnnamed7604(o.reports!);
     checkResourceQuotasRemaining(o.resourceQuotasRemaining!);
   }
   buildCounterGetReportsResponse--;
@@ -697,14 +697,14 @@ void checkGoalData(api.GoalData o) {
   buildCounterGoalData--;
 }
 
-core.List<api.GoalData> buildUnnamed7593() {
+core.List<api.GoalData> buildUnnamed7605() {
   final o = <api.GoalData>[];
   o.add(buildGoalData());
   o.add(buildGoalData());
   return o;
 }
 
-void checkUnnamed7593(core.List<api.GoalData> o) {
+void checkUnnamed7605(core.List<api.GoalData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoalData(o[0]);
   checkGoalData(o[1]);
@@ -715,7 +715,7 @@ api.GoalSetData buildGoalSetData() {
   final o = api.GoalSetData();
   buildCounterGoalSetData++;
   if (buildCounterGoalSetData < 3) {
-    o.goals = buildUnnamed7593();
+    o.goals = buildUnnamed7605();
   }
   buildCounterGoalSetData--;
   return o;
@@ -724,7 +724,7 @@ api.GoalSetData buildGoalSetData() {
 void checkGoalSetData(api.GoalSetData o) {
   buildCounterGoalSetData++;
   if (buildCounterGoalSetData < 3) {
-    checkUnnamed7593(o.goals!);
+    checkUnnamed7605(o.goals!);
   }
   buildCounterGoalSetData--;
 }
@@ -795,14 +795,14 @@ void checkMetricFilter(api.MetricFilter o) {
   buildCounterMetricFilter--;
 }
 
-core.List<api.MetricFilter> buildUnnamed7594() {
+core.List<api.MetricFilter> buildUnnamed7606() {
   final o = <api.MetricFilter>[];
   o.add(buildMetricFilter());
   o.add(buildMetricFilter());
   return o;
 }
 
-void checkUnnamed7594(core.List<api.MetricFilter> o) {
+void checkUnnamed7606(core.List<api.MetricFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetricFilter(o[0]);
   checkMetricFilter(o[1]);
@@ -813,7 +813,7 @@ api.MetricFilterClause buildMetricFilterClause() {
   final o = api.MetricFilterClause();
   buildCounterMetricFilterClause++;
   if (buildCounterMetricFilterClause < 3) {
-    o.filters = buildUnnamed7594();
+    o.filters = buildUnnamed7606();
     o.operator = 'foo';
   }
   buildCounterMetricFilterClause--;
@@ -823,7 +823,7 @@ api.MetricFilterClause buildMetricFilterClause() {
 void checkMetricFilterClause(api.MetricFilterClause o) {
   buildCounterMetricFilterClause++;
   if (buildCounterMetricFilterClause < 3) {
-    checkUnnamed7594(o.filters!);
+    checkUnnamed7606(o.filters!);
     unittest.expect(
       o.operator!,
       unittest.equals('foo'),
@@ -832,27 +832,27 @@ void checkMetricFilterClause(api.MetricFilterClause o) {
   buildCounterMetricFilterClause--;
 }
 
-core.List<api.MetricHeaderEntry> buildUnnamed7595() {
+core.List<api.MetricHeaderEntry> buildUnnamed7607() {
   final o = <api.MetricHeaderEntry>[];
   o.add(buildMetricHeaderEntry());
   o.add(buildMetricHeaderEntry());
   return o;
 }
 
-void checkUnnamed7595(core.List<api.MetricHeaderEntry> o) {
+void checkUnnamed7607(core.List<api.MetricHeaderEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetricHeaderEntry(o[0]);
   checkMetricHeaderEntry(o[1]);
 }
 
-core.List<api.PivotHeader> buildUnnamed7596() {
+core.List<api.PivotHeader> buildUnnamed7608() {
   final o = <api.PivotHeader>[];
   o.add(buildPivotHeader());
   o.add(buildPivotHeader());
   return o;
 }
 
-void checkUnnamed7596(core.List<api.PivotHeader> o) {
+void checkUnnamed7608(core.List<api.PivotHeader> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPivotHeader(o[0]);
   checkPivotHeader(o[1]);
@@ -863,8 +863,8 @@ api.MetricHeader buildMetricHeader() {
   final o = api.MetricHeader();
   buildCounterMetricHeader++;
   if (buildCounterMetricHeader < 3) {
-    o.metricHeaderEntries = buildUnnamed7595();
-    o.pivotHeaders = buildUnnamed7596();
+    o.metricHeaderEntries = buildUnnamed7607();
+    o.pivotHeaders = buildUnnamed7608();
   }
   buildCounterMetricHeader--;
   return o;
@@ -873,8 +873,8 @@ api.MetricHeader buildMetricHeader() {
 void checkMetricHeader(api.MetricHeader o) {
   buildCounterMetricHeader++;
   if (buildCounterMetricHeader < 3) {
-    checkUnnamed7595(o.metricHeaderEntries!);
-    checkUnnamed7596(o.pivotHeaders!);
+    checkUnnamed7607(o.metricHeaderEntries!);
+    checkUnnamed7608(o.pivotHeaders!);
   }
   buildCounterMetricHeader--;
 }
@@ -906,14 +906,14 @@ void checkMetricHeaderEntry(api.MetricHeaderEntry o) {
   buildCounterMetricHeaderEntry--;
 }
 
-core.List<api.SegmentFilterClause> buildUnnamed7597() {
+core.List<api.SegmentFilterClause> buildUnnamed7609() {
   final o = <api.SegmentFilterClause>[];
   o.add(buildSegmentFilterClause());
   o.add(buildSegmentFilterClause());
   return o;
 }
 
-void checkUnnamed7597(core.List<api.SegmentFilterClause> o) {
+void checkUnnamed7609(core.List<api.SegmentFilterClause> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSegmentFilterClause(o[0]);
   checkSegmentFilterClause(o[1]);
@@ -924,7 +924,7 @@ api.OrFiltersForSegment buildOrFiltersForSegment() {
   final o = api.OrFiltersForSegment();
   buildCounterOrFiltersForSegment++;
   if (buildCounterOrFiltersForSegment < 3) {
-    o.segmentFilterClauses = buildUnnamed7597();
+    o.segmentFilterClauses = buildUnnamed7609();
   }
   buildCounterOrFiltersForSegment--;
   return o;
@@ -933,7 +933,7 @@ api.OrFiltersForSegment buildOrFiltersForSegment() {
 void checkOrFiltersForSegment(api.OrFiltersForSegment o) {
   buildCounterOrFiltersForSegment++;
   if (buildCounterOrFiltersForSegment < 3) {
-    checkUnnamed7597(o.segmentFilterClauses!);
+    checkUnnamed7609(o.segmentFilterClauses!);
   }
   buildCounterOrFiltersForSegment--;
 }
@@ -997,40 +997,40 @@ void checkPageviewData(api.PageviewData o) {
   buildCounterPageviewData--;
 }
 
-core.List<api.DimensionFilterClause> buildUnnamed7598() {
+core.List<api.DimensionFilterClause> buildUnnamed7610() {
   final o = <api.DimensionFilterClause>[];
   o.add(buildDimensionFilterClause());
   o.add(buildDimensionFilterClause());
   return o;
 }
 
-void checkUnnamed7598(core.List<api.DimensionFilterClause> o) {
+void checkUnnamed7610(core.List<api.DimensionFilterClause> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDimensionFilterClause(o[0]);
   checkDimensionFilterClause(o[1]);
 }
 
-core.List<api.Dimension> buildUnnamed7599() {
+core.List<api.Dimension> buildUnnamed7611() {
   final o = <api.Dimension>[];
   o.add(buildDimension());
   o.add(buildDimension());
   return o;
 }
 
-void checkUnnamed7599(core.List<api.Dimension> o) {
+void checkUnnamed7611(core.List<api.Dimension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDimension(o[0]);
   checkDimension(o[1]);
 }
 
-core.List<api.Metric> buildUnnamed7600() {
+core.List<api.Metric> buildUnnamed7612() {
   final o = <api.Metric>[];
   o.add(buildMetric());
   o.add(buildMetric());
   return o;
 }
 
-void checkUnnamed7600(core.List<api.Metric> o) {
+void checkUnnamed7612(core.List<api.Metric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetric(o[0]);
   checkMetric(o[1]);
@@ -1041,10 +1041,10 @@ api.Pivot buildPivot() {
   final o = api.Pivot();
   buildCounterPivot++;
   if (buildCounterPivot < 3) {
-    o.dimensionFilterClauses = buildUnnamed7598();
-    o.dimensions = buildUnnamed7599();
+    o.dimensionFilterClauses = buildUnnamed7610();
+    o.dimensions = buildUnnamed7611();
     o.maxGroupCount = 42;
-    o.metrics = buildUnnamed7600();
+    o.metrics = buildUnnamed7612();
     o.startGroup = 42;
   }
   buildCounterPivot--;
@@ -1054,13 +1054,13 @@ api.Pivot buildPivot() {
 void checkPivot(api.Pivot o) {
   buildCounterPivot++;
   if (buildCounterPivot < 3) {
-    checkUnnamed7598(o.dimensionFilterClauses!);
-    checkUnnamed7599(o.dimensions!);
+    checkUnnamed7610(o.dimensionFilterClauses!);
+    checkUnnamed7611(o.dimensions!);
     unittest.expect(
       o.maxGroupCount!,
       unittest.equals(42),
     );
-    checkUnnamed7600(o.metrics!);
+    checkUnnamed7612(o.metrics!);
     unittest.expect(
       o.startGroup!,
       unittest.equals(42),
@@ -1069,14 +1069,14 @@ void checkPivot(api.Pivot o) {
   buildCounterPivot--;
 }
 
-core.List<api.PivotHeaderEntry> buildUnnamed7601() {
+core.List<api.PivotHeaderEntry> buildUnnamed7613() {
   final o = <api.PivotHeaderEntry>[];
   o.add(buildPivotHeaderEntry());
   o.add(buildPivotHeaderEntry());
   return o;
 }
 
-void checkUnnamed7601(core.List<api.PivotHeaderEntry> o) {
+void checkUnnamed7613(core.List<api.PivotHeaderEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPivotHeaderEntry(o[0]);
   checkPivotHeaderEntry(o[1]);
@@ -1087,7 +1087,7 @@ api.PivotHeader buildPivotHeader() {
   final o = api.PivotHeader();
   buildCounterPivotHeader++;
   if (buildCounterPivotHeader < 3) {
-    o.pivotHeaderEntries = buildUnnamed7601();
+    o.pivotHeaderEntries = buildUnnamed7613();
     o.totalPivotGroupsCount = 42;
   }
   buildCounterPivotHeader--;
@@ -1097,7 +1097,7 @@ api.PivotHeader buildPivotHeader() {
 void checkPivotHeader(api.PivotHeader o) {
   buildCounterPivotHeader++;
   if (buildCounterPivotHeader < 3) {
-    checkUnnamed7601(o.pivotHeaderEntries!);
+    checkUnnamed7613(o.pivotHeaderEntries!);
     unittest.expect(
       o.totalPivotGroupsCount!,
       unittest.equals(42),
@@ -1106,14 +1106,14 @@ void checkPivotHeader(api.PivotHeader o) {
   buildCounterPivotHeader--;
 }
 
-core.List<core.String> buildUnnamed7602() {
+core.List<core.String> buildUnnamed7614() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7602(core.List<core.String> o) {
+void checkUnnamed7614(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1125,14 +1125,14 @@ void checkUnnamed7602(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed7603() {
+core.List<core.String> buildUnnamed7615() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7603(core.List<core.String> o) {
+void checkUnnamed7615(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1149,8 +1149,8 @@ api.PivotHeaderEntry buildPivotHeaderEntry() {
   final o = api.PivotHeaderEntry();
   buildCounterPivotHeaderEntry++;
   if (buildCounterPivotHeaderEntry < 3) {
-    o.dimensionNames = buildUnnamed7602();
-    o.dimensionValues = buildUnnamed7603();
+    o.dimensionNames = buildUnnamed7614();
+    o.dimensionValues = buildUnnamed7615();
     o.metric = buildMetricHeaderEntry();
   }
   buildCounterPivotHeaderEntry--;
@@ -1160,21 +1160,21 @@ api.PivotHeaderEntry buildPivotHeaderEntry() {
 void checkPivotHeaderEntry(api.PivotHeaderEntry o) {
   buildCounterPivotHeaderEntry++;
   if (buildCounterPivotHeaderEntry < 3) {
-    checkUnnamed7602(o.dimensionNames!);
-    checkUnnamed7603(o.dimensionValues!);
+    checkUnnamed7614(o.dimensionNames!);
+    checkUnnamed7615(o.dimensionValues!);
     checkMetricHeaderEntry(o.metric!);
   }
   buildCounterPivotHeaderEntry--;
 }
 
-core.List<core.String> buildUnnamed7604() {
+core.List<core.String> buildUnnamed7616() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7604(core.List<core.String> o) {
+void checkUnnamed7616(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1191,7 +1191,7 @@ api.PivotValueRegion buildPivotValueRegion() {
   final o = api.PivotValueRegion();
   buildCounterPivotValueRegion++;
   if (buildCounterPivotValueRegion < 3) {
-    o.values = buildUnnamed7604();
+    o.values = buildUnnamed7616();
   }
   buildCounterPivotValueRegion--;
   return o;
@@ -1200,7 +1200,7 @@ api.PivotValueRegion buildPivotValueRegion() {
 void checkPivotValueRegion(api.PivotValueRegion o) {
   buildCounterPivotValueRegion++;
   if (buildCounterPivotValueRegion < 3) {
-    checkUnnamed7604(o.values!);
+    checkUnnamed7616(o.values!);
   }
   buildCounterPivotValueRegion--;
 }
@@ -1268,53 +1268,53 @@ void checkReport(api.Report o) {
   buildCounterReport--;
 }
 
-core.List<api.DateRangeValues> buildUnnamed7605() {
+core.List<api.DateRangeValues> buildUnnamed7617() {
   final o = <api.DateRangeValues>[];
   o.add(buildDateRangeValues());
   o.add(buildDateRangeValues());
   return o;
 }
 
-void checkUnnamed7605(core.List<api.DateRangeValues> o) {
+void checkUnnamed7617(core.List<api.DateRangeValues> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDateRangeValues(o[0]);
   checkDateRangeValues(o[1]);
 }
 
-core.List<api.DateRangeValues> buildUnnamed7606() {
+core.List<api.DateRangeValues> buildUnnamed7618() {
   final o = <api.DateRangeValues>[];
   o.add(buildDateRangeValues());
   o.add(buildDateRangeValues());
   return o;
 }
 
-void checkUnnamed7606(core.List<api.DateRangeValues> o) {
+void checkUnnamed7618(core.List<api.DateRangeValues> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDateRangeValues(o[0]);
   checkDateRangeValues(o[1]);
 }
 
-core.List<api.ReportRow> buildUnnamed7607() {
+core.List<api.ReportRow> buildUnnamed7619() {
   final o = <api.ReportRow>[];
   o.add(buildReportRow());
   o.add(buildReportRow());
   return o;
 }
 
-void checkUnnamed7607(core.List<api.ReportRow> o) {
+void checkUnnamed7619(core.List<api.ReportRow> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportRow(o[0]);
   checkReportRow(o[1]);
 }
 
-core.List<core.String> buildUnnamed7608() {
+core.List<core.String> buildUnnamed7620() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7608(core.List<core.String> o) {
+void checkUnnamed7620(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1326,14 +1326,14 @@ void checkUnnamed7608(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed7609() {
+core.List<core.String> buildUnnamed7621() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7609(core.List<core.String> o) {
+void checkUnnamed7621(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1345,14 +1345,14 @@ void checkUnnamed7609(core.List<core.String> o) {
   );
 }
 
-core.List<api.DateRangeValues> buildUnnamed7610() {
+core.List<api.DateRangeValues> buildUnnamed7622() {
   final o = <api.DateRangeValues>[];
   o.add(buildDateRangeValues());
   o.add(buildDateRangeValues());
   return o;
 }
 
-void checkUnnamed7610(core.List<api.DateRangeValues> o) {
+void checkUnnamed7622(core.List<api.DateRangeValues> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDateRangeValues(o[0]);
   checkDateRangeValues(o[1]);
@@ -1365,13 +1365,13 @@ api.ReportData buildReportData() {
   if (buildCounterReportData < 3) {
     o.dataLastRefreshed = 'foo';
     o.isDataGolden = true;
-    o.maximums = buildUnnamed7605();
-    o.minimums = buildUnnamed7606();
+    o.maximums = buildUnnamed7617();
+    o.minimums = buildUnnamed7618();
     o.rowCount = 42;
-    o.rows = buildUnnamed7607();
-    o.samplesReadCounts = buildUnnamed7608();
-    o.samplingSpaceSizes = buildUnnamed7609();
-    o.totals = buildUnnamed7610();
+    o.rows = buildUnnamed7619();
+    o.samplesReadCounts = buildUnnamed7620();
+    o.samplingSpaceSizes = buildUnnamed7621();
+    o.totals = buildUnnamed7622();
   }
   buildCounterReportData--;
   return o;
@@ -1385,119 +1385,119 @@ void checkReportData(api.ReportData o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.isDataGolden!, unittest.isTrue);
-    checkUnnamed7605(o.maximums!);
-    checkUnnamed7606(o.minimums!);
+    checkUnnamed7617(o.maximums!);
+    checkUnnamed7618(o.minimums!);
     unittest.expect(
       o.rowCount!,
       unittest.equals(42),
     );
-    checkUnnamed7607(o.rows!);
-    checkUnnamed7608(o.samplesReadCounts!);
-    checkUnnamed7609(o.samplingSpaceSizes!);
-    checkUnnamed7610(o.totals!);
+    checkUnnamed7619(o.rows!);
+    checkUnnamed7620(o.samplesReadCounts!);
+    checkUnnamed7621(o.samplingSpaceSizes!);
+    checkUnnamed7622(o.totals!);
   }
   buildCounterReportData--;
 }
 
-core.List<api.DateRange> buildUnnamed7611() {
+core.List<api.DateRange> buildUnnamed7623() {
   final o = <api.DateRange>[];
   o.add(buildDateRange());
   o.add(buildDateRange());
   return o;
 }
 
-void checkUnnamed7611(core.List<api.DateRange> o) {
+void checkUnnamed7623(core.List<api.DateRange> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDateRange(o[0]);
   checkDateRange(o[1]);
 }
 
-core.List<api.DimensionFilterClause> buildUnnamed7612() {
+core.List<api.DimensionFilterClause> buildUnnamed7624() {
   final o = <api.DimensionFilterClause>[];
   o.add(buildDimensionFilterClause());
   o.add(buildDimensionFilterClause());
   return o;
 }
 
-void checkUnnamed7612(core.List<api.DimensionFilterClause> o) {
+void checkUnnamed7624(core.List<api.DimensionFilterClause> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDimensionFilterClause(o[0]);
   checkDimensionFilterClause(o[1]);
 }
 
-core.List<api.Dimension> buildUnnamed7613() {
+core.List<api.Dimension> buildUnnamed7625() {
   final o = <api.Dimension>[];
   o.add(buildDimension());
   o.add(buildDimension());
   return o;
 }
 
-void checkUnnamed7613(core.List<api.Dimension> o) {
+void checkUnnamed7625(core.List<api.Dimension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDimension(o[0]);
   checkDimension(o[1]);
 }
 
-core.List<api.MetricFilterClause> buildUnnamed7614() {
+core.List<api.MetricFilterClause> buildUnnamed7626() {
   final o = <api.MetricFilterClause>[];
   o.add(buildMetricFilterClause());
   o.add(buildMetricFilterClause());
   return o;
 }
 
-void checkUnnamed7614(core.List<api.MetricFilterClause> o) {
+void checkUnnamed7626(core.List<api.MetricFilterClause> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetricFilterClause(o[0]);
   checkMetricFilterClause(o[1]);
 }
 
-core.List<api.Metric> buildUnnamed7615() {
+core.List<api.Metric> buildUnnamed7627() {
   final o = <api.Metric>[];
   o.add(buildMetric());
   o.add(buildMetric());
   return o;
 }
 
-void checkUnnamed7615(core.List<api.Metric> o) {
+void checkUnnamed7627(core.List<api.Metric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetric(o[0]);
   checkMetric(o[1]);
 }
 
-core.List<api.OrderBy> buildUnnamed7616() {
+core.List<api.OrderBy> buildUnnamed7628() {
   final o = <api.OrderBy>[];
   o.add(buildOrderBy());
   o.add(buildOrderBy());
   return o;
 }
 
-void checkUnnamed7616(core.List<api.OrderBy> o) {
+void checkUnnamed7628(core.List<api.OrderBy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrderBy(o[0]);
   checkOrderBy(o[1]);
 }
 
-core.List<api.Pivot> buildUnnamed7617() {
+core.List<api.Pivot> buildUnnamed7629() {
   final o = <api.Pivot>[];
   o.add(buildPivot());
   o.add(buildPivot());
   return o;
 }
 
-void checkUnnamed7617(core.List<api.Pivot> o) {
+void checkUnnamed7629(core.List<api.Pivot> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPivot(o[0]);
   checkPivot(o[1]);
 }
 
-core.List<api.Segment> buildUnnamed7618() {
+core.List<api.Segment> buildUnnamed7630() {
   final o = <api.Segment>[];
   o.add(buildSegment());
   o.add(buildSegment());
   return o;
 }
 
-void checkUnnamed7618(core.List<api.Segment> o) {
+void checkUnnamed7630(core.List<api.Segment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSegment(o[0]);
   checkSegment(o[1]);
@@ -1509,21 +1509,21 @@ api.ReportRequest buildReportRequest() {
   buildCounterReportRequest++;
   if (buildCounterReportRequest < 3) {
     o.cohortGroup = buildCohortGroup();
-    o.dateRanges = buildUnnamed7611();
-    o.dimensionFilterClauses = buildUnnamed7612();
-    o.dimensions = buildUnnamed7613();
+    o.dateRanges = buildUnnamed7623();
+    o.dimensionFilterClauses = buildUnnamed7624();
+    o.dimensions = buildUnnamed7625();
     o.filtersExpression = 'foo';
     o.hideTotals = true;
     o.hideValueRanges = true;
     o.includeEmptyRows = true;
-    o.metricFilterClauses = buildUnnamed7614();
-    o.metrics = buildUnnamed7615();
-    o.orderBys = buildUnnamed7616();
+    o.metricFilterClauses = buildUnnamed7626();
+    o.metrics = buildUnnamed7627();
+    o.orderBys = buildUnnamed7628();
     o.pageSize = 42;
     o.pageToken = 'foo';
-    o.pivots = buildUnnamed7617();
+    o.pivots = buildUnnamed7629();
     o.samplingLevel = 'foo';
-    o.segments = buildUnnamed7618();
+    o.segments = buildUnnamed7630();
     o.viewId = 'foo';
   }
   buildCounterReportRequest--;
@@ -1534,9 +1534,9 @@ void checkReportRequest(api.ReportRequest o) {
   buildCounterReportRequest++;
   if (buildCounterReportRequest < 3) {
     checkCohortGroup(o.cohortGroup!);
-    checkUnnamed7611(o.dateRanges!);
-    checkUnnamed7612(o.dimensionFilterClauses!);
-    checkUnnamed7613(o.dimensions!);
+    checkUnnamed7623(o.dateRanges!);
+    checkUnnamed7624(o.dimensionFilterClauses!);
+    checkUnnamed7625(o.dimensions!);
     unittest.expect(
       o.filtersExpression!,
       unittest.equals('foo'),
@@ -1544,9 +1544,9 @@ void checkReportRequest(api.ReportRequest o) {
     unittest.expect(o.hideTotals!, unittest.isTrue);
     unittest.expect(o.hideValueRanges!, unittest.isTrue);
     unittest.expect(o.includeEmptyRows!, unittest.isTrue);
-    checkUnnamed7614(o.metricFilterClauses!);
-    checkUnnamed7615(o.metrics!);
-    checkUnnamed7616(o.orderBys!);
+    checkUnnamed7626(o.metricFilterClauses!);
+    checkUnnamed7627(o.metrics!);
+    checkUnnamed7628(o.orderBys!);
     unittest.expect(
       o.pageSize!,
       unittest.equals(42),
@@ -1555,12 +1555,12 @@ void checkReportRequest(api.ReportRequest o) {
       o.pageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed7617(o.pivots!);
+    checkUnnamed7629(o.pivots!);
     unittest.expect(
       o.samplingLevel!,
       unittest.equals('foo'),
     );
-    checkUnnamed7618(o.segments!);
+    checkUnnamed7630(o.segments!);
     unittest.expect(
       o.viewId!,
       unittest.equals('foo'),
@@ -1569,14 +1569,14 @@ void checkReportRequest(api.ReportRequest o) {
   buildCounterReportRequest--;
 }
 
-core.List<core.String> buildUnnamed7619() {
+core.List<core.String> buildUnnamed7631() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7619(core.List<core.String> o) {
+void checkUnnamed7631(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1588,14 +1588,14 @@ void checkUnnamed7619(core.List<core.String> o) {
   );
 }
 
-core.List<api.DateRangeValues> buildUnnamed7620() {
+core.List<api.DateRangeValues> buildUnnamed7632() {
   final o = <api.DateRangeValues>[];
   o.add(buildDateRangeValues());
   o.add(buildDateRangeValues());
   return o;
 }
 
-void checkUnnamed7620(core.List<api.DateRangeValues> o) {
+void checkUnnamed7632(core.List<api.DateRangeValues> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDateRangeValues(o[0]);
   checkDateRangeValues(o[1]);
@@ -1606,8 +1606,8 @@ api.ReportRow buildReportRow() {
   final o = api.ReportRow();
   buildCounterReportRow++;
   if (buildCounterReportRow < 3) {
-    o.dimensions = buildUnnamed7619();
-    o.metrics = buildUnnamed7620();
+    o.dimensions = buildUnnamed7631();
+    o.metrics = buildUnnamed7632();
   }
   buildCounterReportRow--;
   return o;
@@ -1616,8 +1616,8 @@ api.ReportRow buildReportRow() {
 void checkReportRow(api.ReportRow o) {
   buildCounterReportRow++;
   if (buildCounterReportRow < 3) {
-    checkUnnamed7619(o.dimensions!);
-    checkUnnamed7620(o.metrics!);
+    checkUnnamed7631(o.dimensions!);
+    checkUnnamed7632(o.metrics!);
   }
   buildCounterReportRow--;
 }
@@ -1686,14 +1686,14 @@ void checkScreenviewData(api.ScreenviewData o) {
   buildCounterScreenviewData--;
 }
 
-core.List<core.String> buildUnnamed7621() {
+core.List<core.String> buildUnnamed7633() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7621(core.List<core.String> o) {
+void checkUnnamed7633(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1710,7 +1710,7 @@ api.SearchUserActivityRequest buildSearchUserActivityRequest() {
   final o = api.SearchUserActivityRequest();
   buildCounterSearchUserActivityRequest++;
   if (buildCounterSearchUserActivityRequest < 3) {
-    o.activityTypes = buildUnnamed7621();
+    o.activityTypes = buildUnnamed7633();
     o.dateRange = buildDateRange();
     o.pageSize = 42;
     o.pageToken = 'foo';
@@ -1724,7 +1724,7 @@ api.SearchUserActivityRequest buildSearchUserActivityRequest() {
 void checkSearchUserActivityRequest(api.SearchUserActivityRequest o) {
   buildCounterSearchUserActivityRequest++;
   if (buildCounterSearchUserActivityRequest < 3) {
-    checkUnnamed7621(o.activityTypes!);
+    checkUnnamed7633(o.activityTypes!);
     checkDateRange(o.dateRange!);
     unittest.expect(
       o.pageSize!,
@@ -1743,14 +1743,14 @@ void checkSearchUserActivityRequest(api.SearchUserActivityRequest o) {
   buildCounterSearchUserActivityRequest--;
 }
 
-core.List<api.UserActivitySession> buildUnnamed7622() {
+core.List<api.UserActivitySession> buildUnnamed7634() {
   final o = <api.UserActivitySession>[];
   o.add(buildUserActivitySession());
   o.add(buildUserActivitySession());
   return o;
 }
 
-void checkUnnamed7622(core.List<api.UserActivitySession> o) {
+void checkUnnamed7634(core.List<api.UserActivitySession> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserActivitySession(o[0]);
   checkUserActivitySession(o[1]);
@@ -1763,7 +1763,7 @@ api.SearchUserActivityResponse buildSearchUserActivityResponse() {
   if (buildCounterSearchUserActivityResponse < 3) {
     o.nextPageToken = 'foo';
     o.sampleRate = 42.0;
-    o.sessions = buildUnnamed7622();
+    o.sessions = buildUnnamed7634();
     o.totalRows = 42;
   }
   buildCounterSearchUserActivityResponse--;
@@ -1781,7 +1781,7 @@ void checkSearchUserActivityResponse(api.SearchUserActivityResponse o) {
       o.sampleRate!,
       unittest.equals(42.0),
     );
-    checkUnnamed7622(o.sessions!);
+    checkUnnamed7634(o.sessions!);
     unittest.expect(
       o.totalRows!,
       unittest.equals(42),
@@ -1814,14 +1814,14 @@ void checkSegment(api.Segment o) {
   buildCounterSegment--;
 }
 
-core.List<api.SegmentFilter> buildUnnamed7623() {
+core.List<api.SegmentFilter> buildUnnamed7635() {
   final o = <api.SegmentFilter>[];
   o.add(buildSegmentFilter());
   o.add(buildSegmentFilter());
   return o;
 }
 
-void checkUnnamed7623(core.List<api.SegmentFilter> o) {
+void checkUnnamed7635(core.List<api.SegmentFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSegmentFilter(o[0]);
   checkSegmentFilter(o[1]);
@@ -1832,7 +1832,7 @@ api.SegmentDefinition buildSegmentDefinition() {
   final o = api.SegmentDefinition();
   buildCounterSegmentDefinition++;
   if (buildCounterSegmentDefinition < 3) {
-    o.segmentFilters = buildUnnamed7623();
+    o.segmentFilters = buildUnnamed7635();
   }
   buildCounterSegmentDefinition--;
   return o;
@@ -1841,19 +1841,19 @@ api.SegmentDefinition buildSegmentDefinition() {
 void checkSegmentDefinition(api.SegmentDefinition o) {
   buildCounterSegmentDefinition++;
   if (buildCounterSegmentDefinition < 3) {
-    checkUnnamed7623(o.segmentFilters!);
+    checkUnnamed7635(o.segmentFilters!);
   }
   buildCounterSegmentDefinition--;
 }
 
-core.List<core.String> buildUnnamed7624() {
+core.List<core.String> buildUnnamed7636() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7624(core.List<core.String> o) {
+void checkUnnamed7636(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1872,7 +1872,7 @@ api.SegmentDimensionFilter buildSegmentDimensionFilter() {
   if (buildCounterSegmentDimensionFilter < 3) {
     o.caseSensitive = true;
     o.dimensionName = 'foo';
-    o.expressions = buildUnnamed7624();
+    o.expressions = buildUnnamed7636();
     o.maxComparisonValue = 'foo';
     o.minComparisonValue = 'foo';
     o.operator = 'foo';
@@ -1889,7 +1889,7 @@ void checkSegmentDimensionFilter(api.SegmentDimensionFilter o) {
       o.dimensionName!,
       unittest.equals('foo'),
     );
-    checkUnnamed7624(o.expressions!);
+    checkUnnamed7636(o.expressions!);
     unittest.expect(
       o.maxComparisonValue!,
       unittest.equals('foo'),
@@ -1994,14 +1994,14 @@ void checkSegmentMetricFilter(api.SegmentMetricFilter o) {
   buildCounterSegmentMetricFilter--;
 }
 
-core.List<api.OrFiltersForSegment> buildUnnamed7625() {
+core.List<api.OrFiltersForSegment> buildUnnamed7637() {
   final o = <api.OrFiltersForSegment>[];
   o.add(buildOrFiltersForSegment());
   o.add(buildOrFiltersForSegment());
   return o;
 }
 
-void checkUnnamed7625(core.List<api.OrFiltersForSegment> o) {
+void checkUnnamed7637(core.List<api.OrFiltersForSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrFiltersForSegment(o[0]);
   checkOrFiltersForSegment(o[1]);
@@ -2013,7 +2013,7 @@ api.SegmentSequenceStep buildSegmentSequenceStep() {
   buildCounterSegmentSequenceStep++;
   if (buildCounterSegmentSequenceStep < 3) {
     o.matchType = 'foo';
-    o.orFiltersForSegment = buildUnnamed7625();
+    o.orFiltersForSegment = buildUnnamed7637();
   }
   buildCounterSegmentSequenceStep--;
   return o;
@@ -2026,19 +2026,19 @@ void checkSegmentSequenceStep(api.SegmentSequenceStep o) {
       o.matchType!,
       unittest.equals('foo'),
     );
-    checkUnnamed7625(o.orFiltersForSegment!);
+    checkUnnamed7637(o.orFiltersForSegment!);
   }
   buildCounterSegmentSequenceStep--;
 }
 
-core.List<api.SegmentSequenceStep> buildUnnamed7626() {
+core.List<api.SegmentSequenceStep> buildUnnamed7638() {
   final o = <api.SegmentSequenceStep>[];
   o.add(buildSegmentSequenceStep());
   o.add(buildSegmentSequenceStep());
   return o;
 }
 
-void checkUnnamed7626(core.List<api.SegmentSequenceStep> o) {
+void checkUnnamed7638(core.List<api.SegmentSequenceStep> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSegmentSequenceStep(o[0]);
   checkSegmentSequenceStep(o[1]);
@@ -2050,7 +2050,7 @@ api.SequenceSegment buildSequenceSegment() {
   buildCounterSequenceSegment++;
   if (buildCounterSequenceSegment < 3) {
     o.firstStepShouldMatchFirstHit = true;
-    o.segmentSequenceSteps = buildUnnamed7626();
+    o.segmentSequenceSteps = buildUnnamed7638();
   }
   buildCounterSequenceSegment--;
   return o;
@@ -2060,19 +2060,19 @@ void checkSequenceSegment(api.SequenceSegment o) {
   buildCounterSequenceSegment++;
   if (buildCounterSequenceSegment < 3) {
     unittest.expect(o.firstStepShouldMatchFirstHit!, unittest.isTrue);
-    checkUnnamed7626(o.segmentSequenceSteps!);
+    checkUnnamed7638(o.segmentSequenceSteps!);
   }
   buildCounterSequenceSegment--;
 }
 
-core.List<api.OrFiltersForSegment> buildUnnamed7627() {
+core.List<api.OrFiltersForSegment> buildUnnamed7639() {
   final o = <api.OrFiltersForSegment>[];
   o.add(buildOrFiltersForSegment());
   o.add(buildOrFiltersForSegment());
   return o;
 }
 
-void checkUnnamed7627(core.List<api.OrFiltersForSegment> o) {
+void checkUnnamed7639(core.List<api.OrFiltersForSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrFiltersForSegment(o[0]);
   checkOrFiltersForSegment(o[1]);
@@ -2083,7 +2083,7 @@ api.SimpleSegment buildSimpleSegment() {
   final o = api.SimpleSegment();
   buildCounterSimpleSegment++;
   if (buildCounterSimpleSegment < 3) {
-    o.orFiltersForSegment = buildUnnamed7627();
+    o.orFiltersForSegment = buildUnnamed7639();
   }
   buildCounterSimpleSegment--;
   return o;
@@ -2092,7 +2092,7 @@ api.SimpleSegment buildSimpleSegment() {
 void checkSimpleSegment(api.SimpleSegment o) {
   buildCounterSimpleSegment++;
   if (buildCounterSimpleSegment < 3) {
-    checkUnnamed7627(o.orFiltersForSegment!);
+    checkUnnamed7639(o.orFiltersForSegment!);
   }
   buildCounterSimpleSegment--;
 }
@@ -2161,14 +2161,14 @@ void checkUser(api.User o) {
   buildCounterUser--;
 }
 
-core.List<api.Activity> buildUnnamed7628() {
+core.List<api.Activity> buildUnnamed7640() {
   final o = <api.Activity>[];
   o.add(buildActivity());
   o.add(buildActivity());
   return o;
 }
 
-void checkUnnamed7628(core.List<api.Activity> o) {
+void checkUnnamed7640(core.List<api.Activity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActivity(o[0]);
   checkActivity(o[1]);
@@ -2179,7 +2179,7 @@ api.UserActivitySession buildUserActivitySession() {
   final o = api.UserActivitySession();
   buildCounterUserActivitySession++;
   if (buildCounterUserActivitySession < 3) {
-    o.activities = buildUnnamed7628();
+    o.activities = buildUnnamed7640();
     o.dataSource = 'foo';
     o.deviceCategory = 'foo';
     o.platform = 'foo';
@@ -2193,7 +2193,7 @@ api.UserActivitySession buildUserActivitySession() {
 void checkUserActivitySession(api.UserActivitySession o) {
   buildCounterUserActivitySession++;
   if (buildCounterUserActivitySession < 3) {
-    checkUnnamed7628(o.activities!);
+    checkUnnamed7640(o.activities!);
     unittest.expect(
       o.dataSource!,
       unittest.equals('foo'),

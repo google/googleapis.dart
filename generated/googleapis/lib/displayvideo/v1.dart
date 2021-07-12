@@ -1303,7 +1303,7 @@ class AdvertisersCampaignsTargetingTypesAssignedTargetingOptionsResource {
   /// ascending. To specify descending order for a field, a suffix "desc" should
   /// be added to the field name. Example: `assignedTargetingOptionId desc`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// [pageSize] - Requested page size. Must be between `1` and `5000`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
   /// if an invalid value is specified.
   ///
@@ -2826,7 +2826,7 @@ class AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource {
   /// ascending. To specify descending order for a field, a suffix "desc" should
   /// be added to the field name. Example: `assignedTargetingOptionId desc`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// [pageSize] - Requested page size. Must be between `1` and `5000`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
   /// if an invalid value is specified.
   ///
@@ -4041,7 +4041,7 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// ascending. To specify descending order for a field, a suffix "desc" should
   /// be added to the field name. Example: `assignedTargetingOptionId desc`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// [pageSize] - Requested page size. Must be between `1` and `5000`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
   /// if an invalid value is specified.
   ///
@@ -5960,7 +5960,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// ascending. To specify descending order for a field, a suffix "desc" should
   /// be added to the field name. Example: `assignedTargetingOptionId desc`.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// [pageSize] - Requested page size. Must be between `1` and `5000`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
   /// if an invalid value is specified.
   ///

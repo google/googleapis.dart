@@ -26,27 +26,27 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.AbuseType> buildUnnamed3040() {
+core.List<api.AbuseType> buildUnnamed3051() {
   final o = <api.AbuseType>[];
   o.add(buildAbuseType());
   o.add(buildAbuseType());
   return o;
 }
 
-void checkUnnamed3040(core.List<api.AbuseType> o) {
+void checkUnnamed3051(core.List<api.AbuseType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAbuseType(o[0]);
   checkAbuseType(o[1]);
 }
 
-core.List<api.RelatedEntity> buildUnnamed3041() {
+core.List<api.RelatedEntity> buildUnnamed3052() {
   final o = <api.RelatedEntity>[];
   o.add(buildRelatedEntity());
   o.add(buildRelatedEntity());
   return o;
 }
 
-void checkUnnamed3041(core.List<api.RelatedEntity> o) {
+void checkUnnamed3052(core.List<api.RelatedEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRelatedEntity(o[0]);
   checkRelatedEntity(o[1]);
@@ -57,9 +57,9 @@ api.AbuseReport buildAbuseReport() {
   final o = api.AbuseReport();
   buildCounterAbuseReport++;
   if (buildCounterAbuseReport < 3) {
-    o.abuseTypes = buildUnnamed3040();
+    o.abuseTypes = buildUnnamed3051();
     o.description = 'foo';
-    o.relatedEntities = buildUnnamed3041();
+    o.relatedEntities = buildUnnamed3052();
     o.subject = buildEntity();
   }
   buildCounterAbuseReport--;
@@ -69,12 +69,12 @@ api.AbuseReport buildAbuseReport() {
 void checkAbuseReport(api.AbuseReport o) {
   buildCounterAbuseReport++;
   if (buildCounterAbuseReport < 3) {
-    checkUnnamed3040(o.abuseTypes!);
+    checkUnnamed3051(o.abuseTypes!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
     );
-    checkUnnamed3041(o.relatedEntities!);
+    checkUnnamed3052(o.relatedEntities!);
     checkEntity(o.subject!);
   }
   buildCounterAbuseReport--;
@@ -102,14 +102,14 @@ void checkAbuseType(api.AbuseType o) {
   buildCounterAbuseType--;
 }
 
-core.List<core.String> buildUnnamed3042() {
+core.List<core.String> buildUnnamed3053() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3042(core.List<core.String> o) {
+void checkUnnamed3053(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -127,7 +127,7 @@ api.AccessPolicy buildAccessPolicy() {
   buildCounterAccessPolicy++;
   if (buildCounterAccessPolicy < 3) {
     o.allowed = true;
-    o.exception = buildUnnamed3042();
+    o.exception = buildUnnamed3053();
   }
   buildCounterAccessPolicy--;
   return o;
@@ -137,7 +137,7 @@ void checkAccessPolicy(api.AccessPolicy o) {
   buildCounterAccessPolicy++;
   if (buildCounterAccessPolicy < 3) {
     unittest.expect(o.allowed!, unittest.isTrue);
-    checkUnnamed3042(o.exception!);
+    checkUnnamed3053(o.exception!);
   }
   buildCounterAccessPolicy--;
 }
@@ -344,14 +344,14 @@ void checkActivityContentDetailsPlaylistItem(
   buildCounterActivityContentDetailsPlaylistItem--;
 }
 
-core.List<core.String> buildUnnamed3043() {
+core.List<core.String> buildUnnamed3054() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3043(core.List<core.String> o) {
+void checkUnnamed3054(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -363,14 +363,14 @@ void checkUnnamed3043(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed3044() {
+core.List<core.String> buildUnnamed3055() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3044(core.List<core.String> o) {
+void checkUnnamed3055(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -395,8 +395,8 @@ api.ActivityContentDetailsPromotedItem
     o.customCtaButtonText = 'foo';
     o.descriptionText = 'foo';
     o.destinationUrl = 'foo';
-    o.forecastingUrl = buildUnnamed3043();
-    o.impressionUrl = buildUnnamed3044();
+    o.forecastingUrl = buildUnnamed3054();
+    o.impressionUrl = buildUnnamed3055();
     o.videoId = 'foo';
   }
   buildCounterActivityContentDetailsPromotedItem--;
@@ -435,8 +435,8 @@ void checkActivityContentDetailsPromotedItem(
       o.destinationUrl!,
       unittest.equals('foo'),
     );
-    checkUnnamed3043(o.forecastingUrl!);
-    checkUnnamed3044(o.impressionUrl!);
+    checkUnnamed3054(o.forecastingUrl!);
+    checkUnnamed3055(o.impressionUrl!);
     unittest.expect(
       o.videoId!,
       unittest.equals('foo'),
@@ -555,14 +555,14 @@ void checkActivityContentDetailsUpload(api.ActivityContentDetailsUpload o) {
   buildCounterActivityContentDetailsUpload--;
 }
 
-core.List<api.Activity> buildUnnamed3045() {
+core.List<api.Activity> buildUnnamed3056() {
   final o = <api.Activity>[];
   o.add(buildActivity());
   o.add(buildActivity());
   return o;
 }
 
-void checkUnnamed3045(core.List<api.Activity> o) {
+void checkUnnamed3056(core.List<api.Activity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActivity(o[0]);
   checkActivity(o[1]);
@@ -575,7 +575,7 @@ api.ActivityListResponse buildActivityListResponse() {
   if (buildCounterActivityListResponse < 3) {
     o.etag = 'foo';
     o.eventId = 'foo';
-    o.items = buildUnnamed3045();
+    o.items = buildUnnamed3056();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.pageInfo = buildPageInfo();
@@ -598,7 +598,7 @@ void checkActivityListResponse(api.ActivityListResponse o) {
       o.eventId!,
       unittest.equals('foo'),
     );
-    checkUnnamed3045(o.items!);
+    checkUnnamed3056(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -709,14 +709,14 @@ void checkCaption(api.Caption o) {
   buildCounterCaption--;
 }
 
-core.List<api.Caption> buildUnnamed3046() {
+core.List<api.Caption> buildUnnamed3057() {
   final o = <api.Caption>[];
   o.add(buildCaption());
   o.add(buildCaption());
   return o;
 }
 
-void checkUnnamed3046(core.List<api.Caption> o) {
+void checkUnnamed3057(core.List<api.Caption> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCaption(o[0]);
   checkCaption(o[1]);
@@ -729,7 +729,7 @@ api.CaptionListResponse buildCaptionListResponse() {
   if (buildCounterCaptionListResponse < 3) {
     o.etag = 'foo';
     o.eventId = 'foo';
-    o.items = buildUnnamed3046();
+    o.items = buildUnnamed3057();
     o.kind = 'foo';
     o.visitorId = 'foo';
   }
@@ -748,7 +748,7 @@ void checkCaptionListResponse(api.CaptionListResponse o) {
       o.eventId!,
       unittest.equals('foo'),
     );
-    checkUnnamed3046(o.items!);
+    checkUnnamed3057(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -867,14 +867,14 @@ void checkCdnSettings(api.CdnSettings o) {
   buildCounterCdnSettings--;
 }
 
-core.Map<core.String, api.ChannelLocalization> buildUnnamed3047() {
+core.Map<core.String, api.ChannelLocalization> buildUnnamed3058() {
   final o = <core.String, api.ChannelLocalization>{};
   o['x'] = buildChannelLocalization();
   o['y'] = buildChannelLocalization();
   return o;
 }
 
-void checkUnnamed3047(core.Map<core.String, api.ChannelLocalization> o) {
+void checkUnnamed3058(core.Map<core.String, api.ChannelLocalization> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkChannelLocalization(o['x']!);
   checkChannelLocalization(o['y']!);
@@ -893,7 +893,7 @@ api.Channel buildChannel() {
     o.etag = 'foo';
     o.id = 'foo';
     o.kind = 'foo';
-    o.localizations = buildUnnamed3047();
+    o.localizations = buildUnnamed3058();
     o.snippet = buildChannelSnippet();
     o.statistics = buildChannelStatistics();
     o.status = buildChannelStatus();
@@ -923,7 +923,7 @@ void checkChannel(api.Channel o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed3047(o.localizations!);
+    checkUnnamed3058(o.localizations!);
     checkChannelSnippet(o.snippet!);
     checkChannelStatistics(o.statistics!);
     checkChannelStatus(o.status!);
@@ -987,14 +987,14 @@ void checkChannelBannerResource(api.ChannelBannerResource o) {
   buildCounterChannelBannerResource--;
 }
 
-core.List<api.PropertyValue> buildUnnamed3048() {
+core.List<api.PropertyValue> buildUnnamed3059() {
   final o = <api.PropertyValue>[];
   o.add(buildPropertyValue());
   o.add(buildPropertyValue());
   return o;
 }
 
-void checkUnnamed3048(core.List<api.PropertyValue> o) {
+void checkUnnamed3059(core.List<api.PropertyValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPropertyValue(o[0]);
   checkPropertyValue(o[1]);
@@ -1006,7 +1006,7 @@ api.ChannelBrandingSettings buildChannelBrandingSettings() {
   buildCounterChannelBrandingSettings++;
   if (buildCounterChannelBrandingSettings < 3) {
     o.channel = buildChannelSettings();
-    o.hints = buildUnnamed3048();
+    o.hints = buildUnnamed3059();
     o.image = buildImageSettings();
     o.watch = buildWatchSettings();
   }
@@ -1018,7 +1018,7 @@ void checkChannelBrandingSettings(api.ChannelBrandingSettings o) {
   buildCounterChannelBrandingSettings++;
   if (buildCounterChannelBrandingSettings < 3) {
     checkChannelSettings(o.channel!);
-    checkUnnamed3048(o.hints!);
+    checkUnnamed3059(o.hints!);
     checkImageSettings(o.image!);
     checkWatchSettings(o.watch!);
   }
@@ -1142,14 +1142,14 @@ void checkChannelConversionPing(api.ChannelConversionPing o) {
   buildCounterChannelConversionPing--;
 }
 
-core.List<api.ChannelConversionPing> buildUnnamed3049() {
+core.List<api.ChannelConversionPing> buildUnnamed3060() {
   final o = <api.ChannelConversionPing>[];
   o.add(buildChannelConversionPing());
   o.add(buildChannelConversionPing());
   return o;
 }
 
-void checkUnnamed3049(core.List<api.ChannelConversionPing> o) {
+void checkUnnamed3060(core.List<api.ChannelConversionPing> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkChannelConversionPing(o[0]);
   checkChannelConversionPing(o[1]);
@@ -1160,7 +1160,7 @@ api.ChannelConversionPings buildChannelConversionPings() {
   final o = api.ChannelConversionPings();
   buildCounterChannelConversionPings++;
   if (buildCounterChannelConversionPings < 3) {
-    o.pings = buildUnnamed3049();
+    o.pings = buildUnnamed3060();
   }
   buildCounterChannelConversionPings--;
   return o;
@@ -1169,19 +1169,19 @@ api.ChannelConversionPings buildChannelConversionPings() {
 void checkChannelConversionPings(api.ChannelConversionPings o) {
   buildCounterChannelConversionPings++;
   if (buildCounterChannelConversionPings < 3) {
-    checkUnnamed3049(o.pings!);
+    checkUnnamed3060(o.pings!);
   }
   buildCounterChannelConversionPings--;
 }
 
-core.List<api.Channel> buildUnnamed3050() {
+core.List<api.Channel> buildUnnamed3061() {
   final o = <api.Channel>[];
   o.add(buildChannel());
   o.add(buildChannel());
   return o;
 }
 
-void checkUnnamed3050(core.List<api.Channel> o) {
+void checkUnnamed3061(core.List<api.Channel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkChannel(o[0]);
   checkChannel(o[1]);
@@ -1194,7 +1194,7 @@ api.ChannelListResponse buildChannelListResponse() {
   if (buildCounterChannelListResponse < 3) {
     o.etag = 'foo';
     o.eventId = 'foo';
-    o.items = buildUnnamed3050();
+    o.items = buildUnnamed3061();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.pageInfo = buildPageInfo();
@@ -1217,7 +1217,7 @@ void checkChannelListResponse(api.ChannelListResponse o) {
       o.eventId!,
       unittest.equals('foo'),
     );
-    checkUnnamed3050(o.items!);
+    checkUnnamed3061(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1304,14 +1304,14 @@ void checkChannelProfileDetails(api.ChannelProfileDetails o) {
   buildCounterChannelProfileDetails--;
 }
 
-core.Map<core.String, api.ChannelSectionLocalization> buildUnnamed3051() {
+core.Map<core.String, api.ChannelSectionLocalization> buildUnnamed3062() {
   final o = <core.String, api.ChannelSectionLocalization>{};
   o['x'] = buildChannelSectionLocalization();
   o['y'] = buildChannelSectionLocalization();
   return o;
 }
 
-void checkUnnamed3051(core.Map<core.String, api.ChannelSectionLocalization> o) {
+void checkUnnamed3062(core.Map<core.String, api.ChannelSectionLocalization> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkChannelSectionLocalization(o['x']!);
   checkChannelSectionLocalization(o['y']!);
@@ -1326,7 +1326,7 @@ api.ChannelSection buildChannelSection() {
     o.etag = 'foo';
     o.id = 'foo';
     o.kind = 'foo';
-    o.localizations = buildUnnamed3051();
+    o.localizations = buildUnnamed3062();
     o.snippet = buildChannelSectionSnippet();
     o.targeting = buildChannelSectionTargeting();
   }
@@ -1350,21 +1350,21 @@ void checkChannelSection(api.ChannelSection o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed3051(o.localizations!);
+    checkUnnamed3062(o.localizations!);
     checkChannelSectionSnippet(o.snippet!);
     checkChannelSectionTargeting(o.targeting!);
   }
   buildCounterChannelSection--;
 }
 
-core.List<core.String> buildUnnamed3052() {
+core.List<core.String> buildUnnamed3063() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3052(core.List<core.String> o) {
+void checkUnnamed3063(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1376,14 +1376,14 @@ void checkUnnamed3052(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed3053() {
+core.List<core.String> buildUnnamed3064() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3053(core.List<core.String> o) {
+void checkUnnamed3064(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1400,8 +1400,8 @@ api.ChannelSectionContentDetails buildChannelSectionContentDetails() {
   final o = api.ChannelSectionContentDetails();
   buildCounterChannelSectionContentDetails++;
   if (buildCounterChannelSectionContentDetails < 3) {
-    o.channels = buildUnnamed3052();
-    o.playlists = buildUnnamed3053();
+    o.channels = buildUnnamed3063();
+    o.playlists = buildUnnamed3064();
   }
   buildCounterChannelSectionContentDetails--;
   return o;
@@ -1410,20 +1410,20 @@ api.ChannelSectionContentDetails buildChannelSectionContentDetails() {
 void checkChannelSectionContentDetails(api.ChannelSectionContentDetails o) {
   buildCounterChannelSectionContentDetails++;
   if (buildCounterChannelSectionContentDetails < 3) {
-    checkUnnamed3052(o.channels!);
-    checkUnnamed3053(o.playlists!);
+    checkUnnamed3063(o.channels!);
+    checkUnnamed3064(o.playlists!);
   }
   buildCounterChannelSectionContentDetails--;
 }
 
-core.List<api.ChannelSection> buildUnnamed3054() {
+core.List<api.ChannelSection> buildUnnamed3065() {
   final o = <api.ChannelSection>[];
   o.add(buildChannelSection());
   o.add(buildChannelSection());
   return o;
 }
 
-void checkUnnamed3054(core.List<api.ChannelSection> o) {
+void checkUnnamed3065(core.List<api.ChannelSection> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkChannelSection(o[0]);
   checkChannelSection(o[1]);
@@ -1436,7 +1436,7 @@ api.ChannelSectionListResponse buildChannelSectionListResponse() {
   if (buildCounterChannelSectionListResponse < 3) {
     o.etag = 'foo';
     o.eventId = 'foo';
-    o.items = buildUnnamed3054();
+    o.items = buildUnnamed3065();
     o.kind = 'foo';
     o.visitorId = 'foo';
   }
@@ -1455,7 +1455,7 @@ void checkChannelSectionListResponse(api.ChannelSectionListResponse o) {
       o.eventId!,
       unittest.equals('foo'),
     );
-    checkUnnamed3054(o.items!);
+    checkUnnamed3065(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1539,14 +1539,14 @@ void checkChannelSectionSnippet(api.ChannelSectionSnippet o) {
   buildCounterChannelSectionSnippet--;
 }
 
-core.List<core.String> buildUnnamed3055() {
+core.List<core.String> buildUnnamed3066() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3055(core.List<core.String> o) {
+void checkUnnamed3066(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1558,14 +1558,14 @@ void checkUnnamed3055(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed3056() {
+core.List<core.String> buildUnnamed3067() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3056(core.List<core.String> o) {
+void checkUnnamed3067(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1577,14 +1577,14 @@ void checkUnnamed3056(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed3057() {
+core.List<core.String> buildUnnamed3068() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3057(core.List<core.String> o) {
+void checkUnnamed3068(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1601,9 +1601,9 @@ api.ChannelSectionTargeting buildChannelSectionTargeting() {
   final o = api.ChannelSectionTargeting();
   buildCounterChannelSectionTargeting++;
   if (buildCounterChannelSectionTargeting < 3) {
-    o.countries = buildUnnamed3055();
-    o.languages = buildUnnamed3056();
-    o.regions = buildUnnamed3057();
+    o.countries = buildUnnamed3066();
+    o.languages = buildUnnamed3067();
+    o.regions = buildUnnamed3068();
   }
   buildCounterChannelSectionTargeting--;
   return o;
@@ -1612,21 +1612,21 @@ api.ChannelSectionTargeting buildChannelSectionTargeting() {
 void checkChannelSectionTargeting(api.ChannelSectionTargeting o) {
   buildCounterChannelSectionTargeting++;
   if (buildCounterChannelSectionTargeting < 3) {
-    checkUnnamed3055(o.countries!);
-    checkUnnamed3056(o.languages!);
-    checkUnnamed3057(o.regions!);
+    checkUnnamed3066(o.countries!);
+    checkUnnamed3067(o.languages!);
+    checkUnnamed3068(o.regions!);
   }
   buildCounterChannelSectionTargeting--;
 }
 
-core.List<core.String> buildUnnamed3058() {
+core.List<core.String> buildUnnamed3069() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3058(core.List<core.String> o) {
+void checkUnnamed3069(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1648,7 +1648,7 @@ api.ChannelSettings buildChannelSettings() {
     o.defaultTab = 'foo';
     o.description = 'foo';
     o.featuredChannelsTitle = 'foo';
-    o.featuredChannelsUrls = buildUnnamed3058();
+    o.featuredChannelsUrls = buildUnnamed3069();
     o.keywords = 'foo';
     o.moderateComments = true;
     o.profileColor = 'foo';
@@ -1685,7 +1685,7 @@ void checkChannelSettings(api.ChannelSettings o) {
       o.featuredChannelsTitle!,
       unittest.equals('foo'),
     );
-    checkUnnamed3058(o.featuredChannelsUrls!);
+    checkUnnamed3069(o.featuredChannelsUrls!);
     unittest.expect(
       o.keywords!,
       unittest.equals('foo'),
@@ -1863,14 +1863,14 @@ void checkChannelToStoreLinkDetails(api.ChannelToStoreLinkDetails o) {
   buildCounterChannelToStoreLinkDetails--;
 }
 
-core.List<core.String> buildUnnamed3059() {
+core.List<core.String> buildUnnamed3070() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3059(core.List<core.String> o) {
+void checkUnnamed3070(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1882,14 +1882,14 @@ void checkUnnamed3059(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed3060() {
+core.List<core.String> buildUnnamed3071() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3060(core.List<core.String> o) {
+void checkUnnamed3071(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1906,8 +1906,8 @@ api.ChannelTopicDetails buildChannelTopicDetails() {
   final o = api.ChannelTopicDetails();
   buildCounterChannelTopicDetails++;
   if (buildCounterChannelTopicDetails < 3) {
-    o.topicCategories = buildUnnamed3059();
-    o.topicIds = buildUnnamed3060();
+    o.topicCategories = buildUnnamed3070();
+    o.topicIds = buildUnnamed3071();
   }
   buildCounterChannelTopicDetails--;
   return o;
@@ -1916,8 +1916,8 @@ api.ChannelTopicDetails buildChannelTopicDetails() {
 void checkChannelTopicDetails(api.ChannelTopicDetails o) {
   buildCounterChannelTopicDetails++;
   if (buildCounterChannelTopicDetails < 3) {
-    checkUnnamed3059(o.topicCategories!);
-    checkUnnamed3060(o.topicIds!);
+    checkUnnamed3070(o.topicCategories!);
+    checkUnnamed3071(o.topicIds!);
   }
   buildCounterChannelTopicDetails--;
 }
@@ -1956,14 +1956,14 @@ void checkComment(api.Comment o) {
   buildCounterComment--;
 }
 
-core.List<api.Comment> buildUnnamed3061() {
+core.List<api.Comment> buildUnnamed3072() {
   final o = <api.Comment>[];
   o.add(buildComment());
   o.add(buildComment());
   return o;
 }
 
-void checkUnnamed3061(core.List<api.Comment> o) {
+void checkUnnamed3072(core.List<api.Comment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkComment(o[0]);
   checkComment(o[1]);
@@ -1976,7 +1976,7 @@ api.CommentListResponse buildCommentListResponse() {
   if (buildCounterCommentListResponse < 3) {
     o.etag = 'foo';
     o.eventId = 'foo';
-    o.items = buildUnnamed3061();
+    o.items = buildUnnamed3072();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.pageInfo = buildPageInfo();
@@ -1998,7 +1998,7 @@ void checkCommentListResponse(api.CommentListResponse o) {
       o.eventId!,
       unittest.equals('foo'),
     );
-    checkUnnamed3061(o.items!);
+    checkUnnamed3072(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -2161,14 +2161,14 @@ void checkCommentThread(api.CommentThread o) {
   buildCounterCommentThread--;
 }
 
-core.List<api.CommentThread> buildUnnamed3062() {
+core.List<api.CommentThread> buildUnnamed3073() {
   final o = <api.CommentThread>[];
   o.add(buildCommentThread());
   o.add(buildCommentThread());
   return o;
 }
 
-void checkUnnamed3062(core.List<api.CommentThread> o) {
+void checkUnnamed3073(core.List<api.CommentThread> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCommentThread(o[0]);
   checkCommentThread(o[1]);
@@ -2181,7 +2181,7 @@ api.CommentThreadListResponse buildCommentThreadListResponse() {
   if (buildCounterCommentThreadListResponse < 3) {
     o.etag = 'foo';
     o.eventId = 'foo';
-    o.items = buildUnnamed3062();
+    o.items = buildUnnamed3073();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.pageInfo = buildPageInfo();
@@ -2203,7 +2203,7 @@ void checkCommentThreadListResponse(api.CommentThreadListResponse o) {
       o.eventId!,
       unittest.equals('foo'),
     );
-    checkUnnamed3062(o.items!);
+    checkUnnamed3073(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -2222,14 +2222,14 @@ void checkCommentThreadListResponse(api.CommentThreadListResponse o) {
   buildCounterCommentThreadListResponse--;
 }
 
-core.List<api.Comment> buildUnnamed3063() {
+core.List<api.Comment> buildUnnamed3074() {
   final o = <api.Comment>[];
   o.add(buildComment());
   o.add(buildComment());
   return o;
 }
 
-void checkUnnamed3063(core.List<api.Comment> o) {
+void checkUnnamed3074(core.List<api.Comment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkComment(o[0]);
   checkComment(o[1]);
@@ -2240,7 +2240,7 @@ api.CommentThreadReplies buildCommentThreadReplies() {
   final o = api.CommentThreadReplies();
   buildCounterCommentThreadReplies++;
   if (buildCounterCommentThreadReplies < 3) {
-    o.comments = buildUnnamed3063();
+    o.comments = buildUnnamed3074();
   }
   buildCounterCommentThreadReplies--;
   return o;
@@ -2249,7 +2249,7 @@ api.CommentThreadReplies buildCommentThreadReplies() {
 void checkCommentThreadReplies(api.CommentThreadReplies o) {
   buildCounterCommentThreadReplies++;
   if (buildCounterCommentThreadReplies < 3) {
-    checkUnnamed3063(o.comments!);
+    checkUnnamed3074(o.comments!);
   }
   buildCounterCommentThreadReplies--;
 }
@@ -2292,14 +2292,14 @@ void checkCommentThreadSnippet(api.CommentThreadSnippet o) {
   buildCounterCommentThreadSnippet--;
 }
 
-core.List<core.String> buildUnnamed3064() {
+core.List<core.String> buildUnnamed3075() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3064(core.List<core.String> o) {
+void checkUnnamed3075(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2311,14 +2311,14 @@ void checkUnnamed3064(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed3065() {
+core.List<core.String> buildUnnamed3076() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3065(core.List<core.String> o) {
+void checkUnnamed3076(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2355,7 +2355,7 @@ api.ContentRating buildContentRating() {
     o.cscfRating = 'foo';
     o.czfilmRating = 'foo';
     o.djctqRating = 'foo';
-    o.djctqRatingReasons = buildUnnamed3064();
+    o.djctqRatingReasons = buildUnnamed3075();
     o.ecbmctRating = 'foo';
     o.eefilmRating = 'foo';
     o.egfilmRating = 'foo';
@@ -2364,7 +2364,7 @@ api.ContentRating buildContentRating() {
     o.fcoRating = 'foo';
     o.fmocRating = 'foo';
     o.fpbRating = 'foo';
-    o.fpbRatingReasons = buildUnnamed3065();
+    o.fpbRatingReasons = buildUnnamed3076();
     o.fskRating = 'foo';
     o.grfilmRating = 'foo';
     o.icaaRating = 'foo';
@@ -2494,7 +2494,7 @@ void checkContentRating(api.ContentRating o) {
       o.djctqRating!,
       unittest.equals('foo'),
     );
-    checkUnnamed3064(o.djctqRatingReasons!);
+    checkUnnamed3075(o.djctqRatingReasons!);
     unittest.expect(
       o.ecbmctRating!,
       unittest.equals('foo'),
@@ -2527,7 +2527,7 @@ void checkContentRating(api.ContentRating o) {
       o.fpbRating!,
       unittest.equals('foo'),
     );
-    checkUnnamed3065(o.fpbRatingReasons!);
+    checkUnnamed3076(o.fpbRatingReasons!);
     unittest.expect(
       o.fskRating!,
       unittest.equals('foo'),
@@ -2794,14 +2794,14 @@ void checkI18nLanguage(api.I18nLanguage o) {
   buildCounterI18nLanguage--;
 }
 
-core.List<api.I18nLanguage> buildUnnamed3066() {
+core.List<api.I18nLanguage> buildUnnamed3077() {
   final o = <api.I18nLanguage>[];
   o.add(buildI18nLanguage());
   o.add(buildI18nLanguage());
   return o;
 }
 
-void checkUnnamed3066(core.List<api.I18nLanguage> o) {
+void checkUnnamed3077(core.List<api.I18nLanguage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkI18nLanguage(o[0]);
   checkI18nLanguage(o[1]);
@@ -2814,7 +2814,7 @@ api.I18nLanguageListResponse buildI18nLanguageListResponse() {
   if (buildCounterI18nLanguageListResponse < 3) {
     o.etag = 'foo';
     o.eventId = 'foo';
-    o.items = buildUnnamed3066();
+    o.items = buildUnnamed3077();
     o.kind = 'foo';
     o.visitorId = 'foo';
   }
@@ -2833,7 +2833,7 @@ void checkI18nLanguageListResponse(api.I18nLanguageListResponse o) {
       o.eventId!,
       unittest.equals('foo'),
     );
-    checkUnnamed3066(o.items!);
+    checkUnnamed3077(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -2907,14 +2907,14 @@ void checkI18nRegion(api.I18nRegion o) {
   buildCounterI18nRegion--;
 }
 
-core.List<api.I18nRegion> buildUnnamed3067() {
+core.List<api.I18nRegion> buildUnnamed3078() {
   final o = <api.I18nRegion>[];
   o.add(buildI18nRegion());
   o.add(buildI18nRegion());
   return o;
 }
 
-void checkUnnamed3067(core.List<api.I18nRegion> o) {
+void checkUnnamed3078(core.List<api.I18nRegion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkI18nRegion(o[0]);
   checkI18nRegion(o[1]);
@@ -2927,7 +2927,7 @@ api.I18nRegionListResponse buildI18nRegionListResponse() {
   if (buildCounterI18nRegionListResponse < 3) {
     o.etag = 'foo';
     o.eventId = 'foo';
-    o.items = buildUnnamed3067();
+    o.items = buildUnnamed3078();
     o.kind = 'foo';
     o.visitorId = 'foo';
   }
@@ -2946,7 +2946,7 @@ void checkI18nRegionListResponse(api.I18nRegionListResponse o) {
       o.eventId!,
       unittest.equals('foo'),
     );
-    checkUnnamed3067(o.items!);
+    checkUnnamed3078(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -3391,14 +3391,14 @@ void checkLiveBroadcastContentDetails(api.LiveBroadcastContentDetails o) {
   buildCounterLiveBroadcastContentDetails--;
 }
 
-core.List<api.LiveBroadcast> buildUnnamed3068() {
+core.List<api.LiveBroadcast> buildUnnamed3079() {
   final o = <api.LiveBroadcast>[];
   o.add(buildLiveBroadcast());
   o.add(buildLiveBroadcast());
   return o;
 }
 
-void checkUnnamed3068(core.List<api.LiveBroadcast> o) {
+void checkUnnamed3079(core.List<api.LiveBroadcast> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLiveBroadcast(o[0]);
   checkLiveBroadcast(o[1]);
@@ -3411,7 +3411,7 @@ api.LiveBroadcastListResponse buildLiveBroadcastListResponse() {
   if (buildCounterLiveBroadcastListResponse < 3) {
     o.etag = 'foo';
     o.eventId = 'foo';
-    o.items = buildUnnamed3068();
+    o.items = buildUnnamed3079();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.pageInfo = buildPageInfo();
@@ -3434,7 +3434,7 @@ void checkLiveBroadcastListResponse(api.LiveBroadcastListResponse o) {
       o.eventId!,
       unittest.equals('foo'),
     );
-    checkUnnamed3068(o.items!);
+    checkUnnamed3079(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -3794,14 +3794,14 @@ void checkLiveChatMessageDeletedDetails(api.LiveChatMessageDeletedDetails o) {
   buildCounterLiveChatMessageDeletedDetails--;
 }
 
-core.List<api.LiveChatMessage> buildUnnamed3069() {
+core.List<api.LiveChatMessage> buildUnnamed3080() {
   final o = <api.LiveChatMessage>[];
   o.add(buildLiveChatMessage());
   o.add(buildLiveChatMessage());
   return o;
 }
 
-void checkUnnamed3069(core.List<api.LiveChatMessage> o) {
+void checkUnnamed3080(core.List<api.LiveChatMessage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLiveChatMessage(o[0]);
   checkLiveChatMessage(o[1]);
@@ -3814,7 +3814,7 @@ api.LiveChatMessageListResponse buildLiveChatMessageListResponse() {
   if (buildCounterLiveChatMessageListResponse < 3) {
     o.etag = 'foo';
     o.eventId = 'foo';
-    o.items = buildUnnamed3069();
+    o.items = buildUnnamed3080();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.offlineAt = core.DateTime.parse('2002-02-27T14:01:02');
@@ -3838,7 +3838,7 @@ void checkLiveChatMessageListResponse(api.LiveChatMessageListResponse o) {
       o.eventId!,
       unittest.equals('foo'),
     );
-    checkUnnamed3069(o.items!);
+    checkUnnamed3080(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -3980,14 +3980,14 @@ void checkLiveChatModerator(api.LiveChatModerator o) {
   buildCounterLiveChatModerator--;
 }
 
-core.List<api.LiveChatModerator> buildUnnamed3070() {
+core.List<api.LiveChatModerator> buildUnnamed3081() {
   final o = <api.LiveChatModerator>[];
   o.add(buildLiveChatModerator());
   o.add(buildLiveChatModerator());
   return o;
 }
 
-void checkUnnamed3070(core.List<api.LiveChatModerator> o) {
+void checkUnnamed3081(core.List<api.LiveChatModerator> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLiveChatModerator(o[0]);
   checkLiveChatModerator(o[1]);
@@ -4000,7 +4000,7 @@ api.LiveChatModeratorListResponse buildLiveChatModeratorListResponse() {
   if (buildCounterLiveChatModeratorListResponse < 3) {
     o.etag = 'foo';
     o.eventId = 'foo';
-    o.items = buildUnnamed3070();
+    o.items = buildUnnamed3081();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.pageInfo = buildPageInfo();
@@ -4023,7 +4023,7 @@ void checkLiveChatModeratorListResponse(api.LiveChatModeratorListResponse o) {
       o.eventId!,
       unittest.equals('foo'),
     );
-    checkUnnamed3070(o.items!);
+    checkUnnamed3081(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -4304,14 +4304,14 @@ void checkLiveStreamContentDetails(api.LiveStreamContentDetails o) {
   buildCounterLiveStreamContentDetails--;
 }
 
-core.List<api.LiveStreamConfigurationIssue> buildUnnamed3071() {
+core.List<api.LiveStreamConfigurationIssue> buildUnnamed3082() {
   final o = <api.LiveStreamConfigurationIssue>[];
   o.add(buildLiveStreamConfigurationIssue());
   o.add(buildLiveStreamConfigurationIssue());
   return o;
 }
 
-void checkUnnamed3071(core.List<api.LiveStreamConfigurationIssue> o) {
+void checkUnnamed3082(core.List<api.LiveStreamConfigurationIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLiveStreamConfigurationIssue(o[0]);
   checkLiveStreamConfigurationIssue(o[1]);
@@ -4322,7 +4322,7 @@ api.LiveStreamHealthStatus buildLiveStreamHealthStatus() {
   final o = api.LiveStreamHealthStatus();
   buildCounterLiveStreamHealthStatus++;
   if (buildCounterLiveStreamHealthStatus < 3) {
-    o.configurationIssues = buildUnnamed3071();
+    o.configurationIssues = buildUnnamed3082();
     o.lastUpdateTimeSeconds = 'foo';
     o.status = 'foo';
   }
@@ -4333,7 +4333,7 @@ api.LiveStreamHealthStatus buildLiveStreamHealthStatus() {
 void checkLiveStreamHealthStatus(api.LiveStreamHealthStatus o) {
   buildCounterLiveStreamHealthStatus++;
   if (buildCounterLiveStreamHealthStatus < 3) {
-    checkUnnamed3071(o.configurationIssues!);
+    checkUnnamed3082(o.configurationIssues!);
     unittest.expect(
       o.lastUpdateTimeSeconds!,
       unittest.equals('foo'),
@@ -4346,14 +4346,14 @@ void checkLiveStreamHealthStatus(api.LiveStreamHealthStatus o) {
   buildCounterLiveStreamHealthStatus--;
 }
 
-core.List<api.LiveStream> buildUnnamed3072() {
+core.List<api.LiveStream> buildUnnamed3083() {
   final o = <api.LiveStream>[];
   o.add(buildLiveStream());
   o.add(buildLiveStream());
   return o;
 }
 
-void checkUnnamed3072(core.List<api.LiveStream> o) {
+void checkUnnamed3083(core.List<api.LiveStream> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLiveStream(o[0]);
   checkLiveStream(o[1]);
@@ -4366,7 +4366,7 @@ api.LiveStreamListResponse buildLiveStreamListResponse() {
   if (buildCounterLiveStreamListResponse < 3) {
     o.etag = 'foo';
     o.eventId = 'foo';
-    o.items = buildUnnamed3072();
+    o.items = buildUnnamed3083();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.pageInfo = buildPageInfo();
@@ -4389,7 +4389,7 @@ void checkLiveStreamListResponse(api.LiveStreamListResponse o) {
       o.eventId!,
       unittest.equals('foo'),
     );
-    checkUnnamed3072(o.items!);
+    checkUnnamed3083(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -4475,14 +4475,14 @@ void checkLiveStreamStatus(api.LiveStreamStatus o) {
   buildCounterLiveStreamStatus--;
 }
 
-core.List<api.LocalizedString> buildUnnamed3073() {
+core.List<api.LocalizedString> buildUnnamed3084() {
   final o = <api.LocalizedString>[];
   o.add(buildLocalizedString());
   o.add(buildLocalizedString());
   return o;
 }
 
-void checkUnnamed3073(core.List<api.LocalizedString> o) {
+void checkUnnamed3084(core.List<api.LocalizedString> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocalizedString(o[0]);
   checkLocalizedString(o[1]);
@@ -4495,7 +4495,7 @@ api.LocalizedProperty buildLocalizedProperty() {
   if (buildCounterLocalizedProperty < 3) {
     o.default_ = 'foo';
     o.defaultLanguage = buildLanguageTag();
-    o.localized = buildUnnamed3073();
+    o.localized = buildUnnamed3084();
   }
   buildCounterLocalizedProperty--;
   return o;
@@ -4509,7 +4509,7 @@ void checkLocalizedProperty(api.LocalizedProperty o) {
       unittest.equals('foo'),
     );
     checkLanguageTag(o.defaultLanguage!);
-    checkUnnamed3073(o.localized!);
+    checkUnnamed3084(o.localized!);
   }
   buildCounterLocalizedProperty--;
 }
@@ -4570,14 +4570,14 @@ void checkMember(api.Member o) {
   buildCounterMember--;
 }
 
-core.List<api.Member> buildUnnamed3074() {
+core.List<api.Member> buildUnnamed3085() {
   final o = <api.Member>[];
   o.add(buildMember());
   o.add(buildMember());
   return o;
 }
 
-void checkUnnamed3074(core.List<api.Member> o) {
+void checkUnnamed3085(core.List<api.Member> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMember(o[0]);
   checkMember(o[1]);
@@ -4590,7 +4590,7 @@ api.MemberListResponse buildMemberListResponse() {
   if (buildCounterMemberListResponse < 3) {
     o.etag = 'foo';
     o.eventId = 'foo';
-    o.items = buildUnnamed3074();
+    o.items = buildUnnamed3085();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.pageInfo = buildPageInfo();
@@ -4612,7 +4612,7 @@ void checkMemberListResponse(api.MemberListResponse o) {
       o.eventId!,
       unittest.equals('foo'),
     );
-    checkUnnamed3074(o.items!);
+    checkUnnamed3085(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -4657,14 +4657,14 @@ void checkMemberSnippet(api.MemberSnippet o) {
   buildCounterMemberSnippet--;
 }
 
-core.List<core.String> buildUnnamed3075() {
+core.List<core.String> buildUnnamed3086() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3075(core.List<core.String> o) {
+void checkUnnamed3086(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4676,14 +4676,14 @@ void checkUnnamed3075(core.List<core.String> o) {
   );
 }
 
-core.List<api.MembershipsDurationAtLevel> buildUnnamed3076() {
+core.List<api.MembershipsDurationAtLevel> buildUnnamed3087() {
   final o = <api.MembershipsDurationAtLevel>[];
   o.add(buildMembershipsDurationAtLevel());
   o.add(buildMembershipsDurationAtLevel());
   return o;
 }
 
-void checkUnnamed3076(core.List<api.MembershipsDurationAtLevel> o) {
+void checkUnnamed3087(core.List<api.MembershipsDurationAtLevel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembershipsDurationAtLevel(o[0]);
   checkMembershipsDurationAtLevel(o[1]);
@@ -4694,11 +4694,11 @@ api.MembershipsDetails buildMembershipsDetails() {
   final o = api.MembershipsDetails();
   buildCounterMembershipsDetails++;
   if (buildCounterMembershipsDetails < 3) {
-    o.accessibleLevels = buildUnnamed3075();
+    o.accessibleLevels = buildUnnamed3086();
     o.highestAccessibleLevel = 'foo';
     o.highestAccessibleLevelDisplayName = 'foo';
     o.membershipsDuration = buildMembershipsDuration();
-    o.membershipsDurationAtLevels = buildUnnamed3076();
+    o.membershipsDurationAtLevels = buildUnnamed3087();
   }
   buildCounterMembershipsDetails--;
   return o;
@@ -4707,7 +4707,7 @@ api.MembershipsDetails buildMembershipsDetails() {
 void checkMembershipsDetails(api.MembershipsDetails o) {
   buildCounterMembershipsDetails++;
   if (buildCounterMembershipsDetails < 3) {
-    checkUnnamed3075(o.accessibleLevels!);
+    checkUnnamed3086(o.accessibleLevels!);
     unittest.expect(
       o.highestAccessibleLevel!,
       unittest.equals('foo'),
@@ -4717,7 +4717,7 @@ void checkMembershipsDetails(api.MembershipsDetails o) {
       unittest.equals('foo'),
     );
     checkMembershipsDuration(o.membershipsDuration!);
-    checkUnnamed3076(o.membershipsDurationAtLevels!);
+    checkUnnamed3087(o.membershipsDurationAtLevels!);
   }
   buildCounterMembershipsDetails--;
 }
@@ -4815,14 +4815,14 @@ void checkMembershipsLevel(api.MembershipsLevel o) {
   buildCounterMembershipsLevel--;
 }
 
-core.List<api.MembershipsLevel> buildUnnamed3077() {
+core.List<api.MembershipsLevel> buildUnnamed3088() {
   final o = <api.MembershipsLevel>[];
   o.add(buildMembershipsLevel());
   o.add(buildMembershipsLevel());
   return o;
 }
 
-void checkUnnamed3077(core.List<api.MembershipsLevel> o) {
+void checkUnnamed3088(core.List<api.MembershipsLevel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembershipsLevel(o[0]);
   checkMembershipsLevel(o[1]);
@@ -4835,7 +4835,7 @@ api.MembershipsLevelListResponse buildMembershipsLevelListResponse() {
   if (buildCounterMembershipsLevelListResponse < 3) {
     o.etag = 'foo';
     o.eventId = 'foo';
-    o.items = buildUnnamed3077();
+    o.items = buildUnnamed3088();
     o.kind = 'foo';
     o.visitorId = 'foo';
   }
@@ -4854,7 +4854,7 @@ void checkMembershipsLevelListResponse(api.MembershipsLevelListResponse o) {
       o.eventId!,
       unittest.equals('foo'),
     );
-    checkUnnamed3077(o.items!);
+    checkUnnamed3088(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -4947,14 +4947,14 @@ void checkPageInfo(api.PageInfo o) {
   buildCounterPageInfo--;
 }
 
-core.Map<core.String, api.PlaylistLocalization> buildUnnamed3078() {
+core.Map<core.String, api.PlaylistLocalization> buildUnnamed3089() {
   final o = <core.String, api.PlaylistLocalization>{};
   o['x'] = buildPlaylistLocalization();
   o['y'] = buildPlaylistLocalization();
   return o;
 }
 
-void checkUnnamed3078(core.Map<core.String, api.PlaylistLocalization> o) {
+void checkUnnamed3089(core.Map<core.String, api.PlaylistLocalization> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlaylistLocalization(o['x']!);
   checkPlaylistLocalization(o['y']!);
@@ -4969,7 +4969,7 @@ api.Playlist buildPlaylist() {
     o.etag = 'foo';
     o.id = 'foo';
     o.kind = 'foo';
-    o.localizations = buildUnnamed3078();
+    o.localizations = buildUnnamed3089();
     o.player = buildPlaylistPlayer();
     o.snippet = buildPlaylistSnippet();
     o.status = buildPlaylistStatus();
@@ -4994,7 +4994,7 @@ void checkPlaylist(api.Playlist o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed3078(o.localizations!);
+    checkUnnamed3089(o.localizations!);
     checkPlaylistPlayer(o.player!);
     checkPlaylistSnippet(o.snippet!);
     checkPlaylistStatus(o.status!);
@@ -5104,14 +5104,14 @@ void checkPlaylistItemContentDetails(api.PlaylistItemContentDetails o) {
   buildCounterPlaylistItemContentDetails--;
 }
 
-core.List<api.PlaylistItem> buildUnnamed3079() {
+core.List<api.PlaylistItem> buildUnnamed3090() {
   final o = <api.PlaylistItem>[];
   o.add(buildPlaylistItem());
   o.add(buildPlaylistItem());
   return o;
 }
 
-void checkUnnamed3079(core.List<api.PlaylistItem> o) {
+void checkUnnamed3090(core.List<api.PlaylistItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlaylistItem(o[0]);
   checkPlaylistItem(o[1]);
@@ -5124,7 +5124,7 @@ api.PlaylistItemListResponse buildPlaylistItemListResponse() {
   if (buildCounterPlaylistItemListResponse < 3) {
     o.etag = 'foo';
     o.eventId = 'foo';
-    o.items = buildUnnamed3079();
+    o.items = buildUnnamed3090();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.pageInfo = buildPageInfo();
@@ -5147,7 +5147,7 @@ void checkPlaylistItemListResponse(api.PlaylistItemListResponse o) {
       o.eventId!,
       unittest.equals('foo'),
     );
-    checkUnnamed3079(o.items!);
+    checkUnnamed3090(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -5258,14 +5258,14 @@ void checkPlaylistItemStatus(api.PlaylistItemStatus o) {
   buildCounterPlaylistItemStatus--;
 }
 
-core.List<api.Playlist> buildUnnamed3080() {
+core.List<api.Playlist> buildUnnamed3091() {
   final o = <api.Playlist>[];
   o.add(buildPlaylist());
   o.add(buildPlaylist());
   return o;
 }
 
-void checkUnnamed3080(core.List<api.Playlist> o) {
+void checkUnnamed3091(core.List<api.Playlist> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlaylist(o[0]);
   checkPlaylist(o[1]);
@@ -5278,7 +5278,7 @@ api.PlaylistListResponse buildPlaylistListResponse() {
   if (buildCounterPlaylistListResponse < 3) {
     o.etag = 'foo';
     o.eventId = 'foo';
-    o.items = buildUnnamed3080();
+    o.items = buildUnnamed3091();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.pageInfo = buildPageInfo();
@@ -5301,7 +5301,7 @@ void checkPlaylistListResponse(api.PlaylistListResponse o) {
       o.eventId!,
       unittest.equals('foo'),
     );
-    checkUnnamed3080(o.items!);
+    checkUnnamed3091(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -5373,14 +5373,14 @@ void checkPlaylistPlayer(api.PlaylistPlayer o) {
   buildCounterPlaylistPlayer--;
 }
 
-core.List<core.String> buildUnnamed3081() {
+core.List<core.String> buildUnnamed3092() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3081(core.List<core.String> o) {
+void checkUnnamed3092(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -5403,7 +5403,7 @@ api.PlaylistSnippet buildPlaylistSnippet() {
     o.description = 'foo';
     o.localized = buildPlaylistLocalization();
     o.publishedAt = core.DateTime.parse('2002-02-27T14:01:02');
-    o.tags = buildUnnamed3081();
+    o.tags = buildUnnamed3092();
     o.thumbnailVideoId = 'foo';
     o.thumbnails = buildThumbnailDetails();
     o.title = 'foo';
@@ -5436,7 +5436,7 @@ void checkPlaylistSnippet(api.PlaylistSnippet o) {
       o.publishedAt!,
       unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
     );
-    checkUnnamed3081(o.tags!);
+    checkUnnamed3092(o.tags!);
     unittest.expect(
       o.thumbnailVideoId!,
       unittest.equals('foo'),
@@ -5555,14 +5555,14 @@ void checkResourceId(api.ResourceId o) {
   buildCounterResourceId--;
 }
 
-core.List<api.SearchResult> buildUnnamed3082() {
+core.List<api.SearchResult> buildUnnamed3093() {
   final o = <api.SearchResult>[];
   o.add(buildSearchResult());
   o.add(buildSearchResult());
   return o;
 }
 
-void checkUnnamed3082(core.List<api.SearchResult> o) {
+void checkUnnamed3093(core.List<api.SearchResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSearchResult(o[0]);
   checkSearchResult(o[1]);
@@ -5575,7 +5575,7 @@ api.SearchListResponse buildSearchListResponse() {
   if (buildCounterSearchListResponse < 3) {
     o.etag = 'foo';
     o.eventId = 'foo';
-    o.items = buildUnnamed3082();
+    o.items = buildUnnamed3093();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.pageInfo = buildPageInfo();
@@ -5599,7 +5599,7 @@ void checkSearchListResponse(api.SearchListResponse o) {
       o.eventId!,
       unittest.equals('foo'),
     );
-    checkUnnamed3082(o.items!);
+    checkUnnamed3093(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -5776,14 +5776,14 @@ void checkSubscriptionContentDetails(api.SubscriptionContentDetails o) {
   buildCounterSubscriptionContentDetails--;
 }
 
-core.List<api.Subscription> buildUnnamed3083() {
+core.List<api.Subscription> buildUnnamed3094() {
   final o = <api.Subscription>[];
   o.add(buildSubscription());
   o.add(buildSubscription());
   return o;
 }
 
-void checkUnnamed3083(core.List<api.Subscription> o) {
+void checkUnnamed3094(core.List<api.Subscription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubscription(o[0]);
   checkSubscription(o[1]);
@@ -5796,7 +5796,7 @@ api.SubscriptionListResponse buildSubscriptionListResponse() {
   if (buildCounterSubscriptionListResponse < 3) {
     o.etag = 'foo';
     o.eventId = 'foo';
-    o.items = buildUnnamed3083();
+    o.items = buildUnnamed3094();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.pageInfo = buildPageInfo();
@@ -5819,7 +5819,7 @@ void checkSubscriptionListResponse(api.SubscriptionListResponse o) {
       o.eventId!,
       unittest.equals('foo'),
     );
-    checkUnnamed3083(o.items!);
+    checkUnnamed3094(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -5956,14 +5956,14 @@ void checkSuperChatEvent(api.SuperChatEvent o) {
   buildCounterSuperChatEvent--;
 }
 
-core.List<api.SuperChatEvent> buildUnnamed3084() {
+core.List<api.SuperChatEvent> buildUnnamed3095() {
   final o = <api.SuperChatEvent>[];
   o.add(buildSuperChatEvent());
   o.add(buildSuperChatEvent());
   return o;
 }
 
-void checkUnnamed3084(core.List<api.SuperChatEvent> o) {
+void checkUnnamed3095(core.List<api.SuperChatEvent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuperChatEvent(o[0]);
   checkSuperChatEvent(o[1]);
@@ -5976,7 +5976,7 @@ api.SuperChatEventListResponse buildSuperChatEventListResponse() {
   if (buildCounterSuperChatEventListResponse < 3) {
     o.etag = 'foo';
     o.eventId = 'foo';
-    o.items = buildUnnamed3084();
+    o.items = buildUnnamed3095();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.pageInfo = buildPageInfo();
@@ -5998,7 +5998,7 @@ void checkSuperChatEventListResponse(api.SuperChatEventListResponse o) {
       o.eventId!,
       unittest.equals('foo'),
     );
-    checkUnnamed3084(o.items!);
+    checkUnnamed3095(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -6294,14 +6294,14 @@ void checkThumbnailDetails(api.ThumbnailDetails o) {
   buildCounterThumbnailDetails--;
 }
 
-core.List<api.ThumbnailDetails> buildUnnamed3085() {
+core.List<api.ThumbnailDetails> buildUnnamed3096() {
   final o = <api.ThumbnailDetails>[];
   o.add(buildThumbnailDetails());
   o.add(buildThumbnailDetails());
   return o;
 }
 
-void checkUnnamed3085(core.List<api.ThumbnailDetails> o) {
+void checkUnnamed3096(core.List<api.ThumbnailDetails> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkThumbnailDetails(o[0]);
   checkThumbnailDetails(o[1]);
@@ -6314,7 +6314,7 @@ api.ThumbnailSetResponse buildThumbnailSetResponse() {
   if (buildCounterThumbnailSetResponse < 3) {
     o.etag = 'foo';
     o.eventId = 'foo';
-    o.items = buildUnnamed3085();
+    o.items = buildUnnamed3096();
     o.kind = 'foo';
     o.visitorId = 'foo';
   }
@@ -6333,7 +6333,7 @@ void checkThumbnailSetResponse(api.ThumbnailSetResponse o) {
       o.eventId!,
       unittest.equals('foo'),
     );
-    checkUnnamed3085(o.items!);
+    checkUnnamed3096(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -6361,14 +6361,14 @@ void checkTokenPagination(api.TokenPagination o) {
   buildCounterTokenPagination--;
 }
 
-core.Map<core.String, api.VideoLocalization> buildUnnamed3086() {
+core.Map<core.String, api.VideoLocalization> buildUnnamed3097() {
   final o = <core.String, api.VideoLocalization>{};
   o['x'] = buildVideoLocalization();
   o['y'] = buildVideoLocalization();
   return o;
 }
 
-void checkUnnamed3086(core.Map<core.String, api.VideoLocalization> o) {
+void checkUnnamed3097(core.Map<core.String, api.VideoLocalization> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVideoLocalization(o['x']!);
   checkVideoLocalization(o['y']!);
@@ -6386,7 +6386,7 @@ api.Video buildVideo() {
     o.id = 'foo';
     o.kind = 'foo';
     o.liveStreamingDetails = buildVideoLiveStreamingDetails();
-    o.localizations = buildUnnamed3086();
+    o.localizations = buildUnnamed3097();
     o.monetizationDetails = buildVideoMonetizationDetails();
     o.player = buildVideoPlayer();
     o.processingDetails = buildVideoProcessingDetails();
@@ -6421,7 +6421,7 @@ void checkVideo(api.Video o) {
       unittest.equals('foo'),
     );
     checkVideoLiveStreamingDetails(o.liveStreamingDetails!);
-    checkUnnamed3086(o.localizations!);
+    checkUnnamed3097(o.localizations!);
     checkVideoMonetizationDetails(o.monetizationDetails!);
     checkVideoPlayer(o.player!);
     checkVideoProcessingDetails(o.processingDetails!);
@@ -6512,14 +6512,14 @@ void checkVideoAbuseReportReason(api.VideoAbuseReportReason o) {
   buildCounterVideoAbuseReportReason--;
 }
 
-core.List<api.VideoAbuseReportReason> buildUnnamed3087() {
+core.List<api.VideoAbuseReportReason> buildUnnamed3098() {
   final o = <api.VideoAbuseReportReason>[];
   o.add(buildVideoAbuseReportReason());
   o.add(buildVideoAbuseReportReason());
   return o;
 }
 
-void checkUnnamed3087(core.List<api.VideoAbuseReportReason> o) {
+void checkUnnamed3098(core.List<api.VideoAbuseReportReason> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVideoAbuseReportReason(o[0]);
   checkVideoAbuseReportReason(o[1]);
@@ -6533,7 +6533,7 @@ api.VideoAbuseReportReasonListResponse
   if (buildCounterVideoAbuseReportReasonListResponse < 3) {
     o.etag = 'foo';
     o.eventId = 'foo';
-    o.items = buildUnnamed3087();
+    o.items = buildUnnamed3098();
     o.kind = 'foo';
     o.visitorId = 'foo';
   }
@@ -6553,7 +6553,7 @@ void checkVideoAbuseReportReasonListResponse(
       o.eventId!,
       unittest.equals('foo'),
     );
-    checkUnnamed3087(o.items!);
+    checkUnnamed3098(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -6566,14 +6566,14 @@ void checkVideoAbuseReportReasonListResponse(
   buildCounterVideoAbuseReportReasonListResponse--;
 }
 
-core.List<api.VideoAbuseReportSecondaryReason> buildUnnamed3088() {
+core.List<api.VideoAbuseReportSecondaryReason> buildUnnamed3099() {
   final o = <api.VideoAbuseReportSecondaryReason>[];
   o.add(buildVideoAbuseReportSecondaryReason());
   o.add(buildVideoAbuseReportSecondaryReason());
   return o;
 }
 
-void checkUnnamed3088(core.List<api.VideoAbuseReportSecondaryReason> o) {
+void checkUnnamed3099(core.List<api.VideoAbuseReportSecondaryReason> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVideoAbuseReportSecondaryReason(o[0]);
   checkVideoAbuseReportSecondaryReason(o[1]);
@@ -6585,7 +6585,7 @@ api.VideoAbuseReportReasonSnippet buildVideoAbuseReportReasonSnippet() {
   buildCounterVideoAbuseReportReasonSnippet++;
   if (buildCounterVideoAbuseReportReasonSnippet < 3) {
     o.label = 'foo';
-    o.secondaryReasons = buildUnnamed3088();
+    o.secondaryReasons = buildUnnamed3099();
   }
   buildCounterVideoAbuseReportReasonSnippet--;
   return o;
@@ -6598,7 +6598,7 @@ void checkVideoAbuseReportReasonSnippet(api.VideoAbuseReportReasonSnippet o) {
       o.label!,
       unittest.equals('foo'),
     );
-    checkUnnamed3088(o.secondaryReasons!);
+    checkUnnamed3099(o.secondaryReasons!);
   }
   buildCounterVideoAbuseReportReasonSnippet--;
 }
@@ -6691,14 +6691,14 @@ void checkVideoCategory(api.VideoCategory o) {
   buildCounterVideoCategory--;
 }
 
-core.List<api.VideoCategory> buildUnnamed3089() {
+core.List<api.VideoCategory> buildUnnamed3100() {
   final o = <api.VideoCategory>[];
   o.add(buildVideoCategory());
   o.add(buildVideoCategory());
   return o;
 }
 
-void checkUnnamed3089(core.List<api.VideoCategory> o) {
+void checkUnnamed3100(core.List<api.VideoCategory> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVideoCategory(o[0]);
   checkVideoCategory(o[1]);
@@ -6711,7 +6711,7 @@ api.VideoCategoryListResponse buildVideoCategoryListResponse() {
   if (buildCounterVideoCategoryListResponse < 3) {
     o.etag = 'foo';
     o.eventId = 'foo';
-    o.items = buildUnnamed3089();
+    o.items = buildUnnamed3100();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.pageInfo = buildPageInfo();
@@ -6734,7 +6734,7 @@ void checkVideoCategoryListResponse(api.VideoCategoryListResponse o) {
       o.eventId!,
       unittest.equals('foo'),
     );
-    checkUnnamed3089(o.items!);
+    checkUnnamed3100(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -6838,14 +6838,14 @@ void checkVideoContentDetails(api.VideoContentDetails o) {
   buildCounterVideoContentDetails--;
 }
 
-core.List<core.String> buildUnnamed3090() {
+core.List<core.String> buildUnnamed3101() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3090(core.List<core.String> o) {
+void checkUnnamed3101(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6857,14 +6857,14 @@ void checkUnnamed3090(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed3091() {
+core.List<core.String> buildUnnamed3102() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3091(core.List<core.String> o) {
+void checkUnnamed3102(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6882,8 +6882,8 @@ api.VideoContentDetailsRegionRestriction
   final o = api.VideoContentDetailsRegionRestriction();
   buildCounterVideoContentDetailsRegionRestriction++;
   if (buildCounterVideoContentDetailsRegionRestriction < 3) {
-    o.allowed = buildUnnamed3090();
-    o.blocked = buildUnnamed3091();
+    o.allowed = buildUnnamed3101();
+    o.blocked = buildUnnamed3102();
   }
   buildCounterVideoContentDetailsRegionRestriction--;
   return o;
@@ -6893,33 +6893,33 @@ void checkVideoContentDetailsRegionRestriction(
     api.VideoContentDetailsRegionRestriction o) {
   buildCounterVideoContentDetailsRegionRestriction++;
   if (buildCounterVideoContentDetailsRegionRestriction < 3) {
-    checkUnnamed3090(o.allowed!);
-    checkUnnamed3091(o.blocked!);
+    checkUnnamed3101(o.allowed!);
+    checkUnnamed3102(o.blocked!);
   }
   buildCounterVideoContentDetailsRegionRestriction--;
 }
 
-core.List<api.VideoFileDetailsAudioStream> buildUnnamed3092() {
+core.List<api.VideoFileDetailsAudioStream> buildUnnamed3103() {
   final o = <api.VideoFileDetailsAudioStream>[];
   o.add(buildVideoFileDetailsAudioStream());
   o.add(buildVideoFileDetailsAudioStream());
   return o;
 }
 
-void checkUnnamed3092(core.List<api.VideoFileDetailsAudioStream> o) {
+void checkUnnamed3103(core.List<api.VideoFileDetailsAudioStream> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVideoFileDetailsAudioStream(o[0]);
   checkVideoFileDetailsAudioStream(o[1]);
 }
 
-core.List<api.VideoFileDetailsVideoStream> buildUnnamed3093() {
+core.List<api.VideoFileDetailsVideoStream> buildUnnamed3104() {
   final o = <api.VideoFileDetailsVideoStream>[];
   o.add(buildVideoFileDetailsVideoStream());
   o.add(buildVideoFileDetailsVideoStream());
   return o;
 }
 
-void checkUnnamed3093(core.List<api.VideoFileDetailsVideoStream> o) {
+void checkUnnamed3104(core.List<api.VideoFileDetailsVideoStream> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVideoFileDetailsVideoStream(o[0]);
   checkVideoFileDetailsVideoStream(o[1]);
@@ -6930,7 +6930,7 @@ api.VideoFileDetails buildVideoFileDetails() {
   final o = api.VideoFileDetails();
   buildCounterVideoFileDetails++;
   if (buildCounterVideoFileDetails < 3) {
-    o.audioStreams = buildUnnamed3092();
+    o.audioStreams = buildUnnamed3103();
     o.bitrateBps = 'foo';
     o.container = 'foo';
     o.creationTime = 'foo';
@@ -6938,7 +6938,7 @@ api.VideoFileDetails buildVideoFileDetails() {
     o.fileName = 'foo';
     o.fileSize = 'foo';
     o.fileType = 'foo';
-    o.videoStreams = buildUnnamed3093();
+    o.videoStreams = buildUnnamed3104();
   }
   buildCounterVideoFileDetails--;
   return o;
@@ -6947,7 +6947,7 @@ api.VideoFileDetails buildVideoFileDetails() {
 void checkVideoFileDetails(api.VideoFileDetails o) {
   buildCounterVideoFileDetails++;
   if (buildCounterVideoFileDetails < 3) {
-    checkUnnamed3092(o.audioStreams!);
+    checkUnnamed3103(o.audioStreams!);
     unittest.expect(
       o.bitrateBps!,
       unittest.equals('foo'),
@@ -6976,7 +6976,7 @@ void checkVideoFileDetails(api.VideoFileDetails o) {
       o.fileType!,
       unittest.equals('foo'),
     );
-    checkUnnamed3093(o.videoStreams!);
+    checkUnnamed3104(o.videoStreams!);
   }
   buildCounterVideoFileDetails--;
 }
@@ -7075,14 +7075,14 @@ void checkVideoFileDetailsVideoStream(api.VideoFileDetailsVideoStream o) {
   buildCounterVideoFileDetailsVideoStream--;
 }
 
-core.List<api.VideoRating> buildUnnamed3094() {
+core.List<api.VideoRating> buildUnnamed3105() {
   final o = <api.VideoRating>[];
   o.add(buildVideoRating());
   o.add(buildVideoRating());
   return o;
 }
 
-void checkUnnamed3094(core.List<api.VideoRating> o) {
+void checkUnnamed3105(core.List<api.VideoRating> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVideoRating(o[0]);
   checkVideoRating(o[1]);
@@ -7095,7 +7095,7 @@ api.VideoGetRatingResponse buildVideoGetRatingResponse() {
   if (buildCounterVideoGetRatingResponse < 3) {
     o.etag = 'foo';
     o.eventId = 'foo';
-    o.items = buildUnnamed3094();
+    o.items = buildUnnamed3105();
     o.kind = 'foo';
     o.visitorId = 'foo';
   }
@@ -7114,7 +7114,7 @@ void checkVideoGetRatingResponse(api.VideoGetRatingResponse o) {
       o.eventId!,
       unittest.equals('foo'),
     );
-    checkUnnamed3094(o.items!);
+    checkUnnamed3105(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -7127,14 +7127,14 @@ void checkVideoGetRatingResponse(api.VideoGetRatingResponse o) {
   buildCounterVideoGetRatingResponse--;
 }
 
-core.List<api.Video> buildUnnamed3095() {
+core.List<api.Video> buildUnnamed3106() {
   final o = <api.Video>[];
   o.add(buildVideo());
   o.add(buildVideo());
   return o;
 }
 
-void checkUnnamed3095(core.List<api.Video> o) {
+void checkUnnamed3106(core.List<api.Video> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVideo(o[0]);
   checkVideo(o[1]);
@@ -7147,7 +7147,7 @@ api.VideoListResponse buildVideoListResponse() {
   if (buildCounterVideoListResponse < 3) {
     o.etag = 'foo';
     o.eventId = 'foo';
-    o.items = buildUnnamed3095();
+    o.items = buildUnnamed3106();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.pageInfo = buildPageInfo();
@@ -7170,7 +7170,7 @@ void checkVideoListResponse(api.VideoListResponse o) {
       o.eventId!,
       unittest.equals('foo'),
     );
-    checkUnnamed3095(o.items!);
+    checkUnnamed3106(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -7477,14 +7477,14 @@ void checkVideoRecordingDetails(api.VideoRecordingDetails o) {
   buildCounterVideoRecordingDetails--;
 }
 
-core.List<core.String> buildUnnamed3096() {
+core.List<core.String> buildUnnamed3107() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3096(core.List<core.String> o) {
+void checkUnnamed3107(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -7510,7 +7510,7 @@ api.VideoSnippet buildVideoSnippet() {
     o.liveBroadcastContent = 'foo';
     o.localized = buildVideoLocalization();
     o.publishedAt = core.DateTime.parse('2002-02-27T14:01:02');
-    o.tags = buildUnnamed3096();
+    o.tags = buildUnnamed3107();
     o.thumbnails = buildThumbnailDetails();
     o.title = 'foo';
   }
@@ -7554,7 +7554,7 @@ void checkVideoSnippet(api.VideoSnippet o) {
       o.publishedAt!,
       unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
     );
-    checkUnnamed3096(o.tags!);
+    checkUnnamed3107(o.tags!);
     checkThumbnailDetails(o.thumbnails!);
     unittest.expect(
       o.title!,
@@ -7661,315 +7661,6 @@ void checkVideoStatus(api.VideoStatus o) {
   buildCounterVideoStatus--;
 }
 
-core.List<core.String> buildUnnamed3097() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
-
-void checkUnnamed3097(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed3098() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
-
-void checkUnnamed3098(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed3099() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
-
-void checkUnnamed3099(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed3100() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
-
-void checkUnnamed3100(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<api.VideoSuggestionsTagSuggestion> buildUnnamed3101() {
-  final o = <api.VideoSuggestionsTagSuggestion>[];
-  o.add(buildVideoSuggestionsTagSuggestion());
-  o.add(buildVideoSuggestionsTagSuggestion());
-  return o;
-}
-
-void checkUnnamed3101(core.List<api.VideoSuggestionsTagSuggestion> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkVideoSuggestionsTagSuggestion(o[0]);
-  checkVideoSuggestionsTagSuggestion(o[1]);
-}
-
-core.int buildCounterVideoSuggestions = 0;
-api.VideoSuggestions buildVideoSuggestions() {
-  final o = api.VideoSuggestions();
-  buildCounterVideoSuggestions++;
-  if (buildCounterVideoSuggestions < 3) {
-    o.editorSuggestions = buildUnnamed3097();
-    o.processingErrors = buildUnnamed3098();
-    o.processingHints = buildUnnamed3099();
-    o.processingWarnings = buildUnnamed3100();
-    o.tagSuggestions = buildUnnamed3101();
-  }
-  buildCounterVideoSuggestions--;
-  return o;
-}
-
-void checkVideoSuggestions(api.VideoSuggestions o) {
-  buildCounterVideoSuggestions++;
-  if (buildCounterVideoSuggestions < 3) {
-    checkUnnamed3097(o.editorSuggestions!);
-    checkUnnamed3098(o.processingErrors!);
-    checkUnnamed3099(o.processingHints!);
-    checkUnnamed3100(o.processingWarnings!);
-    checkUnnamed3101(o.tagSuggestions!);
-  }
-  buildCounterVideoSuggestions--;
-}
-
-core.List<core.String> buildUnnamed3102() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
-
-void checkUnnamed3102(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterVideoSuggestionsTagSuggestion = 0;
-api.VideoSuggestionsTagSuggestion buildVideoSuggestionsTagSuggestion() {
-  final o = api.VideoSuggestionsTagSuggestion();
-  buildCounterVideoSuggestionsTagSuggestion++;
-  if (buildCounterVideoSuggestionsTagSuggestion < 3) {
-    o.categoryRestricts = buildUnnamed3102();
-    o.tag = 'foo';
-  }
-  buildCounterVideoSuggestionsTagSuggestion--;
-  return o;
-}
-
-void checkVideoSuggestionsTagSuggestion(api.VideoSuggestionsTagSuggestion o) {
-  buildCounterVideoSuggestionsTagSuggestion++;
-  if (buildCounterVideoSuggestionsTagSuggestion < 3) {
-    checkUnnamed3102(o.categoryRestricts!);
-    unittest.expect(
-      o.tag!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterVideoSuggestionsTagSuggestion--;
-}
-
-core.List<core.String> buildUnnamed3103() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
-
-void checkUnnamed3103(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed3104() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
-
-void checkUnnamed3104(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed3105() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
-
-void checkUnnamed3105(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterVideoTopicDetails = 0;
-api.VideoTopicDetails buildVideoTopicDetails() {
-  final o = api.VideoTopicDetails();
-  buildCounterVideoTopicDetails++;
-  if (buildCounterVideoTopicDetails < 3) {
-    o.relevantTopicIds = buildUnnamed3103();
-    o.topicCategories = buildUnnamed3104();
-    o.topicIds = buildUnnamed3105();
-  }
-  buildCounterVideoTopicDetails--;
-  return o;
-}
-
-void checkVideoTopicDetails(api.VideoTopicDetails o) {
-  buildCounterVideoTopicDetails++;
-  if (buildCounterVideoTopicDetails < 3) {
-    checkUnnamed3103(o.relevantTopicIds!);
-    checkUnnamed3104(o.topicCategories!);
-    checkUnnamed3105(o.topicIds!);
-  }
-  buildCounterVideoTopicDetails--;
-}
-
-core.int buildCounterWatchSettings = 0;
-api.WatchSettings buildWatchSettings() {
-  final o = api.WatchSettings();
-  buildCounterWatchSettings++;
-  if (buildCounterWatchSettings < 3) {
-    o.backgroundColor = 'foo';
-    o.featuredPlaylistId = 'foo';
-    o.textColor = 'foo';
-  }
-  buildCounterWatchSettings--;
-  return o;
-}
-
-void checkWatchSettings(api.WatchSettings o) {
-  buildCounterWatchSettings++;
-  if (buildCounterWatchSettings < 3) {
-    unittest.expect(
-      o.backgroundColor!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.featuredPlaylistId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.textColor!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterWatchSettings--;
-}
-
-core.List<core.String> buildUnnamed3106() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
-
-void checkUnnamed3106(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed3107() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
-
-void checkUnnamed3107(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.List<core.String> buildUnnamed3108() {
   final o = <core.String>[];
   o.add('foo');
@@ -8046,23 +7737,44 @@ void checkUnnamed3111(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed3112() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
+core.List<api.VideoSuggestionsTagSuggestion> buildUnnamed3112() {
+  final o = <api.VideoSuggestionsTagSuggestion>[];
+  o.add(buildVideoSuggestionsTagSuggestion());
+  o.add(buildVideoSuggestionsTagSuggestion());
   return o;
 }
 
-void checkUnnamed3112(core.List<core.String> o) {
+void checkUnnamed3112(core.List<api.VideoSuggestionsTagSuggestion> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  checkVideoSuggestionsTagSuggestion(o[0]);
+  checkVideoSuggestionsTagSuggestion(o[1]);
+}
+
+core.int buildCounterVideoSuggestions = 0;
+api.VideoSuggestions buildVideoSuggestions() {
+  final o = api.VideoSuggestions();
+  buildCounterVideoSuggestions++;
+  if (buildCounterVideoSuggestions < 3) {
+    o.editorSuggestions = buildUnnamed3108();
+    o.processingErrors = buildUnnamed3109();
+    o.processingHints = buildUnnamed3110();
+    o.processingWarnings = buildUnnamed3111();
+    o.tagSuggestions = buildUnnamed3112();
+  }
+  buildCounterVideoSuggestions--;
+  return o;
+}
+
+void checkVideoSuggestions(api.VideoSuggestions o) {
+  buildCounterVideoSuggestions++;
+  if (buildCounterVideoSuggestions < 3) {
+    checkUnnamed3108(o.editorSuggestions!);
+    checkUnnamed3109(o.processingErrors!);
+    checkUnnamed3110(o.processingHints!);
+    checkUnnamed3111(o.processingWarnings!);
+    checkUnnamed3112(o.tagSuggestions!);
+  }
+  buildCounterVideoSuggestions--;
 }
 
 core.List<core.String> buildUnnamed3113() {
@@ -8082,6 +7794,30 @@ void checkUnnamed3113(core.List<core.String> o) {
     o[1],
     unittest.equals('foo'),
   );
+}
+
+core.int buildCounterVideoSuggestionsTagSuggestion = 0;
+api.VideoSuggestionsTagSuggestion buildVideoSuggestionsTagSuggestion() {
+  final o = api.VideoSuggestionsTagSuggestion();
+  buildCounterVideoSuggestionsTagSuggestion++;
+  if (buildCounterVideoSuggestionsTagSuggestion < 3) {
+    o.categoryRestricts = buildUnnamed3113();
+    o.tag = 'foo';
+  }
+  buildCounterVideoSuggestionsTagSuggestion--;
+  return o;
+}
+
+void checkVideoSuggestionsTagSuggestion(api.VideoSuggestionsTagSuggestion o) {
+  buildCounterVideoSuggestionsTagSuggestion++;
+  if (buildCounterVideoSuggestionsTagSuggestion < 3) {
+    checkUnnamed3113(o.categoryRestricts!);
+    unittest.expect(
+      o.tag!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterVideoSuggestionsTagSuggestion--;
 }
 
 core.List<core.String> buildUnnamed3114() {
@@ -8139,6 +7875,61 @@ void checkUnnamed3116(core.List<core.String> o) {
     o[1],
     unittest.equals('foo'),
   );
+}
+
+core.int buildCounterVideoTopicDetails = 0;
+api.VideoTopicDetails buildVideoTopicDetails() {
+  final o = api.VideoTopicDetails();
+  buildCounterVideoTopicDetails++;
+  if (buildCounterVideoTopicDetails < 3) {
+    o.relevantTopicIds = buildUnnamed3114();
+    o.topicCategories = buildUnnamed3115();
+    o.topicIds = buildUnnamed3116();
+  }
+  buildCounterVideoTopicDetails--;
+  return o;
+}
+
+void checkVideoTopicDetails(api.VideoTopicDetails o) {
+  buildCounterVideoTopicDetails++;
+  if (buildCounterVideoTopicDetails < 3) {
+    checkUnnamed3114(o.relevantTopicIds!);
+    checkUnnamed3115(o.topicCategories!);
+    checkUnnamed3116(o.topicIds!);
+  }
+  buildCounterVideoTopicDetails--;
+}
+
+core.int buildCounterWatchSettings = 0;
+api.WatchSettings buildWatchSettings() {
+  final o = api.WatchSettings();
+  buildCounterWatchSettings++;
+  if (buildCounterWatchSettings < 3) {
+    o.backgroundColor = 'foo';
+    o.featuredPlaylistId = 'foo';
+    o.textColor = 'foo';
+  }
+  buildCounterWatchSettings--;
+  return o;
+}
+
+void checkWatchSettings(api.WatchSettings o) {
+  buildCounterWatchSettings++;
+  if (buildCounterWatchSettings < 3) {
+    unittest.expect(
+      o.backgroundColor!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.featuredPlaylistId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.textColor!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterWatchSettings--;
 }
 
 core.List<core.String> buildUnnamed3117() {
@@ -9232,6 +9023,215 @@ core.List<core.String> buildUnnamed3174() {
 }
 
 void checkUnnamed3174(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed3175() {
+  final o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed3175(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed3176() {
+  final o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed3176(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed3177() {
+  final o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed3177(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed3178() {
+  final o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed3178(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed3179() {
+  final o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed3179(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed3180() {
+  final o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed3180(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed3181() {
+  final o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed3181(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed3182() {
+  final o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed3182(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed3183() {
+  final o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed3183(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed3184() {
+  final o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed3184(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed3185() {
+  final o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed3185(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -11059,7 +11059,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).abuseReports;
       final arg_request = buildAbuseReport();
-      final arg_part = buildUnnamed3106();
+      final arg_part = buildUnnamed3117();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.AbuseReport.fromJson(
@@ -11121,7 +11121,7 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).activities;
-      final arg_part = buildUnnamed3107();
+      final arg_part = buildUnnamed3118();
       final arg_channelId = 'foo';
       final arg_home = true;
       final arg_maxResults = 42;
@@ -11382,7 +11382,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).captions;
       final arg_request = buildCaption();
-      final arg_part = buildUnnamed3108();
+      final arg_part = buildUnnamed3119();
       final arg_onBehalfOf = 'foo';
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_sync = true;
@@ -11460,9 +11460,9 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).captions;
-      final arg_part = buildUnnamed3109();
+      final arg_part = buildUnnamed3120();
       final arg_videoId = 'foo';
-      final arg_id = buildUnnamed3110();
+      final arg_id = buildUnnamed3121();
       final arg_onBehalfOf = 'foo';
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_$fields = 'foo';
@@ -11543,7 +11543,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).captions;
       final arg_request = buildCaption();
-      final arg_part = buildUnnamed3111();
+      final arg_part = buildUnnamed3122();
       final arg_onBehalfOf = 'foo';
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_sync = true;
@@ -11764,7 +11764,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).channelSections;
       final arg_request = buildChannelSection();
-      final arg_part = buildUnnamed3112();
+      final arg_part = buildUnnamed3123();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_onBehalfOfContentOwnerChannel = 'foo';
       final arg_$fields = 'foo';
@@ -11836,10 +11836,10 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).channelSections;
-      final arg_part = buildUnnamed3113();
+      final arg_part = buildUnnamed3124();
       final arg_channelId = 'foo';
       final arg_hl = 'foo';
-      final arg_id = buildUnnamed3114();
+      final arg_id = buildUnnamed3125();
       final arg_mine = true;
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_$fields = 'foo';
@@ -11924,7 +11924,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).channelSections;
       final arg_request = buildChannelSection();
-      final arg_part = buildUnnamed3115();
+      final arg_part = buildUnnamed3126();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11992,11 +11992,11 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).channels;
-      final arg_part = buildUnnamed3116();
+      final arg_part = buildUnnamed3127();
       final arg_categoryId = 'foo';
       final arg_forUsername = 'foo';
       final arg_hl = 'foo';
-      final arg_id = buildUnnamed3117();
+      final arg_id = buildUnnamed3128();
       final arg_managedByMe = true;
       final arg_maxResults = 42;
       final arg_mine = true;
@@ -12109,7 +12109,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).channels;
       final arg_request = buildChannel();
-      final arg_part = buildUnnamed3118();
+      final arg_part = buildUnnamed3129();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -12178,7 +12178,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).commentThreads;
       final arg_request = buildCommentThread();
-      final arg_part = buildUnnamed3119();
+      final arg_part = buildUnnamed3130();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.CommentThread.fromJson(
@@ -12238,10 +12238,10 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).commentThreads;
-      final arg_part = buildUnnamed3120();
+      final arg_part = buildUnnamed3131();
       final arg_allThreadsRelatedToChannelId = 'foo';
       final arg_channelId = 'foo';
-      final arg_id = buildUnnamed3121();
+      final arg_id = buildUnnamed3132();
       final arg_maxResults = 42;
       final arg_moderationStatus = 'foo';
       final arg_order = 'foo';
@@ -12411,7 +12411,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).comments;
       final arg_request = buildComment();
-      final arg_part = buildUnnamed3122();
+      final arg_part = buildUnnamed3133();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj =
@@ -12471,8 +12471,8 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).comments;
-      final arg_part = buildUnnamed3123();
-      final arg_id = buildUnnamed3124();
+      final arg_part = buildUnnamed3134();
+      final arg_id = buildUnnamed3135();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_parentId = 'foo';
@@ -12557,7 +12557,7 @@ void main() {
     unittest.test('method--markAsSpam', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).comments;
-      final arg_id = buildUnnamed3125();
+      final arg_id = buildUnnamed3136();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -12611,7 +12611,7 @@ void main() {
     unittest.test('method--setModerationStatus', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).comments;
-      final arg_id = buildUnnamed3126();
+      final arg_id = buildUnnamed3137();
       final arg_moderationStatus = 'foo';
       final arg_banAuthor = true;
       final arg_$fields = 'foo';
@@ -12677,7 +12677,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).comments;
       final arg_request = buildComment();
-      final arg_part = buildUnnamed3127();
+      final arg_part = buildUnnamed3138();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj =
@@ -12739,7 +12739,7 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).i18nLanguages;
-      final arg_part = buildUnnamed3128();
+      final arg_part = buildUnnamed3139();
       final arg_hl = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -12802,7 +12802,7 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).i18nRegions;
-      final arg_part = buildUnnamed3129();
+      final arg_part = buildUnnamed3140();
       final arg_hl = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -12866,7 +12866,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).liveBroadcasts;
       final arg_id = 'foo';
-      final arg_part = buildUnnamed3130();
+      final arg_part = buildUnnamed3141();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_onBehalfOfContentOwnerChannel = 'foo';
       final arg_streamId = 'foo';
@@ -13012,7 +13012,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).liveBroadcasts;
       final arg_request = buildLiveBroadcast();
-      final arg_part = buildUnnamed3131();
+      final arg_part = buildUnnamed3142();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_onBehalfOfContentOwnerChannel = 'foo';
       final arg_$fields = 'foo';
@@ -13084,10 +13084,10 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).liveBroadcasts;
-      final arg_part = buildUnnamed3132();
+      final arg_part = buildUnnamed3143();
       final arg_broadcastStatus = 'foo';
       final arg_broadcastType = 'foo';
-      final arg_id = buildUnnamed3133();
+      final arg_id = buildUnnamed3144();
       final arg_maxResults = 42;
       final arg_mine = true;
       final arg_onBehalfOfContentOwner = 'foo';
@@ -13190,7 +13190,7 @@ void main() {
       final res = api.YouTubeApi(mock).liveBroadcasts;
       final arg_broadcastStatus = 'foo';
       final arg_id = 'foo';
-      final arg_part = buildUnnamed3134();
+      final arg_part = buildUnnamed3145();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_onBehalfOfContentOwnerChannel = 'foo';
       final arg_$fields = 'foo';
@@ -13268,7 +13268,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).liveBroadcasts;
       final arg_request = buildLiveBroadcast();
-      final arg_part = buildUnnamed3135();
+      final arg_part = buildUnnamed3146();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_onBehalfOfContentOwnerChannel = 'foo';
       final arg_$fields = 'foo';
@@ -13397,7 +13397,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).liveChatBans;
       final arg_request = buildLiveChatBan();
-      final arg_part = buildUnnamed3136();
+      final arg_part = buildUnnamed3147();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.LiveChatBan.fromJson(
@@ -13514,7 +13514,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).liveChatMessages;
       final arg_request = buildLiveChatMessage();
-      final arg_part = buildUnnamed3137();
+      final arg_part = buildUnnamed3148();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.LiveChatMessage.fromJson(
@@ -13575,7 +13575,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).liveChatMessages;
       final arg_liveChatId = 'foo';
-      final arg_part = buildUnnamed3138();
+      final arg_part = buildUnnamed3149();
       final arg_hl = 'foo';
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
@@ -13717,7 +13717,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).liveChatModerators;
       final arg_request = buildLiveChatModerator();
-      final arg_part = buildUnnamed3139();
+      final arg_part = buildUnnamed3150();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.LiveChatModerator.fromJson(
@@ -13778,7 +13778,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).liveChatModerators;
       final arg_liveChatId = 'foo';
-      final arg_part = buildUnnamed3140();
+      final arg_part = buildUnnamed3151();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -13921,7 +13921,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).liveStreams;
       final arg_request = buildLiveStream();
-      final arg_part = buildUnnamed3141();
+      final arg_part = buildUnnamed3152();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_onBehalfOfContentOwnerChannel = 'foo';
       final arg_$fields = 'foo';
@@ -13993,8 +13993,8 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).liveStreams;
-      final arg_part = buildUnnamed3142();
-      final arg_id = buildUnnamed3143();
+      final arg_part = buildUnnamed3153();
+      final arg_id = buildUnnamed3154();
       final arg_maxResults = 42;
       final arg_mine = true;
       final arg_onBehalfOfContentOwner = 'foo';
@@ -14086,7 +14086,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).liveStreams;
       final arg_request = buildLiveStream();
-      final arg_part = buildUnnamed3144();
+      final arg_part = buildUnnamed3155();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_onBehalfOfContentOwnerChannel = 'foo';
       final arg_$fields = 'foo';
@@ -14160,7 +14160,7 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).members;
-      final arg_part = buildUnnamed3145();
+      final arg_part = buildUnnamed3156();
       final arg_filterByMemberChannelId = 'foo';
       final arg_hasAccessToLevel = 'foo';
       final arg_maxResults = 42;
@@ -14248,7 +14248,7 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).membershipsLevels;
-      final arg_part = buildUnnamed3146();
+      final arg_part = buildUnnamed3157();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -14368,7 +14368,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).playlistItems;
       final arg_request = buildPlaylistItem();
-      final arg_part = buildUnnamed3147();
+      final arg_part = buildUnnamed3158();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -14434,8 +14434,8 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).playlistItems;
-      final arg_part = buildUnnamed3148();
-      final arg_id = buildUnnamed3149();
+      final arg_part = buildUnnamed3159();
+      final arg_id = buildUnnamed3160();
       final arg_maxResults = 42;
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_pageToken = 'foo';
@@ -14527,7 +14527,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).playlistItems;
       final arg_request = buildPlaylistItem();
-      final arg_part = buildUnnamed3150();
+      final arg_part = buildUnnamed3161();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -14657,7 +14657,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).playlists;
       final arg_request = buildPlaylist();
-      final arg_part = buildUnnamed3151();
+      final arg_part = buildUnnamed3162();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_onBehalfOfContentOwnerChannel = 'foo';
       final arg_$fields = 'foo';
@@ -14729,10 +14729,10 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).playlists;
-      final arg_part = buildUnnamed3152();
+      final arg_part = buildUnnamed3163();
       final arg_channelId = 'foo';
       final arg_hl = 'foo';
-      final arg_id = buildUnnamed3153();
+      final arg_id = buildUnnamed3164();
       final arg_maxResults = 42;
       final arg_mine = true;
       final arg_onBehalfOfContentOwner = 'foo';
@@ -14834,7 +14834,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).playlists;
       final arg_request = buildPlaylist();
-      final arg_part = buildUnnamed3154();
+      final arg_part = buildUnnamed3165();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -14902,7 +14902,7 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).search;
-      final arg_part = buildUnnamed3155();
+      final arg_part = buildUnnamed3166();
       final arg_channelId = 'foo';
       final arg_channelType = 'foo';
       final arg_eventType = 'foo';
@@ -14923,7 +14923,7 @@ void main() {
       final arg_relevanceLanguage = 'foo';
       final arg_safeSearch = 'foo';
       final arg_topicId = 'foo';
-      final arg_type = buildUnnamed3156();
+      final arg_type = buildUnnamed3167();
       final arg_videoCaption = 'foo';
       final arg_videoCategoryId = 'foo';
       final arg_videoDefinition = 'foo';
@@ -15195,7 +15195,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).subscriptions;
       final arg_request = buildSubscription();
-      final arg_part = buildUnnamed3157();
+      final arg_part = buildUnnamed3168();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.Subscription.fromJson(
@@ -15255,10 +15255,10 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).subscriptions;
-      final arg_part = buildUnnamed3158();
+      final arg_part = buildUnnamed3169();
       final arg_channelId = 'foo';
       final arg_forChannelId = 'foo';
-      final arg_id = buildUnnamed3159();
+      final arg_id = buildUnnamed3170();
       final arg_maxResults = 42;
       final arg_mine = true;
       final arg_myRecentSubscribers = true;
@@ -15379,7 +15379,7 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).superChatEvents;
-      final arg_part = buildUnnamed3160();
+      final arg_part = buildUnnamed3171();
       final arg_hl = 'foo';
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
@@ -15457,7 +15457,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).tests;
       final arg_request = buildTestItem();
-      final arg_part = buildUnnamed3161();
+      final arg_part = buildUnnamed3172();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj =
@@ -15521,7 +15521,7 @@ void main() {
       final res = api.YouTubeApi(mock).thirdPartyLinks;
       final arg_linkingToken = 'foo';
       final arg_type = 'foo';
-      final arg_part = buildUnnamed3162();
+      final arg_part = buildUnnamed3173();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -15585,7 +15585,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).thirdPartyLinks;
       final arg_request = buildThirdPartyLink();
-      final arg_part = buildUnnamed3163();
+      final arg_part = buildUnnamed3174();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.ThirdPartyLink.fromJson(
@@ -15645,7 +15645,7 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).thirdPartyLinks;
-      final arg_part = buildUnnamed3164();
+      final arg_part = buildUnnamed3175();
       final arg_linkingToken = 'foo';
       final arg_type = 'foo';
       final arg_$fields = 'foo';
@@ -15712,7 +15712,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).thirdPartyLinks;
       final arg_request = buildThirdPartyLink();
-      final arg_part = buildUnnamed3165();
+      final arg_part = buildUnnamed3176();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.ThirdPartyLink.fromJson(
@@ -15841,7 +15841,7 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).videoAbuseReportReasons;
-      final arg_part = buildUnnamed3166();
+      final arg_part = buildUnnamed3177();
       final arg_hl = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -15906,9 +15906,9 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).videoCategories;
-      final arg_part = buildUnnamed3167();
+      final arg_part = buildUnnamed3178();
       final arg_hl = 'foo';
-      final arg_id = buildUnnamed3168();
+      final arg_id = buildUnnamed3179();
       final arg_regionCode = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -16043,7 +16043,7 @@ void main() {
     unittest.test('method--getRating', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).videos;
-      final arg_id = buildUnnamed3169();
+      final arg_id = buildUnnamed3180();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -16109,7 +16109,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).videos;
       final arg_request = buildVideo();
-      final arg_part = buildUnnamed3170();
+      final arg_part = buildUnnamed3181();
       final arg_autoLevels = true;
       final arg_notifySubscribers = true;
       final arg_onBehalfOfContentOwner = 'foo';
@@ -16199,10 +16199,10 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).videos;
-      final arg_part = buildUnnamed3171();
+      final arg_part = buildUnnamed3182();
       final arg_chart = 'foo';
       final arg_hl = 'foo';
-      final arg_id = buildUnnamed3172();
+      final arg_id = buildUnnamed3183();
       final arg_locale = 'foo';
       final arg_maxHeight = 42;
       final arg_maxResults = 42;
@@ -16448,7 +16448,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).videos;
       final arg_request = buildVideo();
-      final arg_part = buildUnnamed3173();
+      final arg_part = buildUnnamed3184();
       final arg_onBehalfOfContentOwner = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -16649,7 +16649,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.YouTubeApi(mock).youtube.v3;
       final arg_request = buildCommentThread();
-      final arg_part = buildUnnamed3174();
+      final arg_part = buildUnnamed3185();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.CommentThread.fromJson(

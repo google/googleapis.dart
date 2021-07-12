@@ -59,14 +59,14 @@ void checkGoogleCloudPolicysimulatorV1Replay(
   buildCounterGoogleCloudPolicysimulatorV1Replay--;
 }
 
-core.Map<core.String, api.GoogleIamV1Policy> buildUnnamed8376() {
+core.Map<core.String, api.GoogleIamV1Policy> buildUnnamed8389() {
   final o = <core.String, api.GoogleIamV1Policy>{};
   o['x'] = buildGoogleIamV1Policy();
   o['y'] = buildGoogleIamV1Policy();
   return o;
 }
 
-void checkUnnamed8376(core.Map<core.String, api.GoogleIamV1Policy> o) {
+void checkUnnamed8389(core.Map<core.String, api.GoogleIamV1Policy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1Policy(o['x']!);
   checkGoogleIamV1Policy(o['y']!);
@@ -79,7 +79,7 @@ api.GoogleCloudPolicysimulatorV1ReplayConfig
   buildCounterGoogleCloudPolicysimulatorV1ReplayConfig++;
   if (buildCounterGoogleCloudPolicysimulatorV1ReplayConfig < 3) {
     o.logSource = 'foo';
-    o.policyOverlay = buildUnnamed8376();
+    o.policyOverlay = buildUnnamed8389();
   }
   buildCounterGoogleCloudPolicysimulatorV1ReplayConfig--;
   return o;
@@ -93,7 +93,7 @@ void checkGoogleCloudPolicysimulatorV1ReplayConfig(
       o.logSource!,
       unittest.equals('foo'),
     );
-    checkUnnamed8376(o.policyOverlay!);
+    checkUnnamed8389(o.policyOverlay!);
   }
   buildCounterGoogleCloudPolicysimulatorV1ReplayConfig--;
 }
@@ -229,7 +229,7 @@ void checkGoogleCloudPolicysimulatorV1beta1AccessTuple(
 
 core.Map<core.String,
         api.GoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership>
-    buildUnnamed8377() {
+    buildUnnamed8390() {
   final o = <core.String,
       api.GoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership>{};
   o['x'] =
@@ -239,7 +239,7 @@ core.Map<core.String,
   return o;
 }
 
-void checkUnnamed8377(
+void checkUnnamed8390(
     core.Map<core.String,
             api.GoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership>
         o) {
@@ -258,7 +258,7 @@ api.GoogleCloudPolicysimulatorV1beta1BindingExplanation
   if (buildCounterGoogleCloudPolicysimulatorV1beta1BindingExplanation < 3) {
     o.access = 'foo';
     o.condition = buildGoogleTypeExpr();
-    o.memberships = buildUnnamed8377();
+    o.memberships = buildUnnamed8390();
     o.relevance = 'foo';
     o.role = 'foo';
     o.rolePermission = 'foo';
@@ -277,7 +277,7 @@ void checkGoogleCloudPolicysimulatorV1beta1BindingExplanation(
       unittest.equals('foo'),
     );
     checkGoogleTypeExpr(o.condition!);
-    checkUnnamed8377(o.memberships!);
+    checkUnnamed8390(o.memberships!);
     unittest.expect(
       o.relevance!,
       unittest.equals('foo'),
@@ -333,28 +333,28 @@ void checkGoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership
   buildCounterGoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed8378() {
+core.List<api.GoogleRpcStatus> buildUnnamed8391() {
   final o = <api.GoogleRpcStatus>[];
   o.add(buildGoogleRpcStatus());
   o.add(buildGoogleRpcStatus());
   return o;
 }
 
-void checkUnnamed8378(core.List<api.GoogleRpcStatus> o) {
+void checkUnnamed8391(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleRpcStatus(o[0]);
   checkGoogleRpcStatus(o[1]);
 }
 
 core.List<api.GoogleCloudPolicysimulatorV1beta1ExplainedPolicy>
-    buildUnnamed8379() {
+    buildUnnamed8392() {
   final o = <api.GoogleCloudPolicysimulatorV1beta1ExplainedPolicy>[];
   o.add(buildGoogleCloudPolicysimulatorV1beta1ExplainedPolicy());
   o.add(buildGoogleCloudPolicysimulatorV1beta1ExplainedPolicy());
   return o;
 }
 
-void checkUnnamed8379(
+void checkUnnamed8392(
     core.List<api.GoogleCloudPolicysimulatorV1beta1ExplainedPolicy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudPolicysimulatorV1beta1ExplainedPolicy(o[0]);
@@ -368,8 +368,8 @@ api.GoogleCloudPolicysimulatorV1beta1ExplainedAccess
   buildCounterGoogleCloudPolicysimulatorV1beta1ExplainedAccess++;
   if (buildCounterGoogleCloudPolicysimulatorV1beta1ExplainedAccess < 3) {
     o.accessState = 'foo';
-    o.errors = buildUnnamed8378();
-    o.policies = buildUnnamed8379();
+    o.errors = buildUnnamed8391();
+    o.policies = buildUnnamed8392();
   }
   buildCounterGoogleCloudPolicysimulatorV1beta1ExplainedAccess--;
   return o;
@@ -383,21 +383,21 @@ void checkGoogleCloudPolicysimulatorV1beta1ExplainedAccess(
       o.accessState!,
       unittest.equals('foo'),
     );
-    checkUnnamed8378(o.errors!);
-    checkUnnamed8379(o.policies!);
+    checkUnnamed8391(o.errors!);
+    checkUnnamed8392(o.policies!);
   }
   buildCounterGoogleCloudPolicysimulatorV1beta1ExplainedAccess--;
 }
 
 core.List<api.GoogleCloudPolicysimulatorV1beta1BindingExplanation>
-    buildUnnamed8380() {
+    buildUnnamed8393() {
   final o = <api.GoogleCloudPolicysimulatorV1beta1BindingExplanation>[];
   o.add(buildGoogleCloudPolicysimulatorV1beta1BindingExplanation());
   o.add(buildGoogleCloudPolicysimulatorV1beta1BindingExplanation());
   return o;
 }
 
-void checkUnnamed8380(
+void checkUnnamed8393(
     core.List<api.GoogleCloudPolicysimulatorV1beta1BindingExplanation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudPolicysimulatorV1beta1BindingExplanation(o[0]);
@@ -411,7 +411,7 @@ api.GoogleCloudPolicysimulatorV1beta1ExplainedPolicy
   buildCounterGoogleCloudPolicysimulatorV1beta1ExplainedPolicy++;
   if (buildCounterGoogleCloudPolicysimulatorV1beta1ExplainedPolicy < 3) {
     o.access = 'foo';
-    o.bindingExplanations = buildUnnamed8380();
+    o.bindingExplanations = buildUnnamed8393();
     o.fullResourceName = 'foo';
     o.policy = buildGoogleIamV1Policy();
     o.relevance = 'foo';
@@ -428,7 +428,7 @@ void checkGoogleCloudPolicysimulatorV1beta1ExplainedPolicy(
       o.access!,
       unittest.equals('foo'),
     );
-    checkUnnamed8380(o.bindingExplanations!);
+    checkUnnamed8393(o.bindingExplanations!);
     unittest.expect(
       o.fullResourceName!,
       unittest.equals('foo'),
@@ -443,14 +443,14 @@ void checkGoogleCloudPolicysimulatorV1beta1ExplainedPolicy(
 }
 
 core.List<api.GoogleCloudPolicysimulatorV1beta1ReplayResult>
-    buildUnnamed8381() {
+    buildUnnamed8394() {
   final o = <api.GoogleCloudPolicysimulatorV1beta1ReplayResult>[];
   o.add(buildGoogleCloudPolicysimulatorV1beta1ReplayResult());
   o.add(buildGoogleCloudPolicysimulatorV1beta1ReplayResult());
   return o;
 }
 
-void checkUnnamed8381(
+void checkUnnamed8394(
     core.List<api.GoogleCloudPolicysimulatorV1beta1ReplayResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudPolicysimulatorV1beta1ReplayResult(o[0]);
@@ -466,7 +466,7 @@ api.GoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse
   if (buildCounterGoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse <
       3) {
     o.nextPageToken = 'foo';
-    o.replayResults = buildUnnamed8381();
+    o.replayResults = buildUnnamed8394();
   }
   buildCounterGoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse--;
   return o;
@@ -481,7 +481,7 @@ void checkGoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed8381(o.replayResults!);
+    checkUnnamed8394(o.replayResults!);
   }
   buildCounterGoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse--;
 }
@@ -521,14 +521,14 @@ void checkGoogleCloudPolicysimulatorV1beta1Replay(
   buildCounterGoogleCloudPolicysimulatorV1beta1Replay--;
 }
 
-core.Map<core.String, api.GoogleIamV1Policy> buildUnnamed8382() {
+core.Map<core.String, api.GoogleIamV1Policy> buildUnnamed8395() {
   final o = <core.String, api.GoogleIamV1Policy>{};
   o['x'] = buildGoogleIamV1Policy();
   o['y'] = buildGoogleIamV1Policy();
   return o;
 }
 
-void checkUnnamed8382(core.Map<core.String, api.GoogleIamV1Policy> o) {
+void checkUnnamed8395(core.Map<core.String, api.GoogleIamV1Policy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1Policy(o['x']!);
   checkGoogleIamV1Policy(o['y']!);
@@ -541,7 +541,7 @@ api.GoogleCloudPolicysimulatorV1beta1ReplayConfig
   buildCounterGoogleCloudPolicysimulatorV1beta1ReplayConfig++;
   if (buildCounterGoogleCloudPolicysimulatorV1beta1ReplayConfig < 3) {
     o.logSource = 'foo';
-    o.policyOverlay = buildUnnamed8382();
+    o.policyOverlay = buildUnnamed8395();
   }
   buildCounterGoogleCloudPolicysimulatorV1beta1ReplayConfig--;
   return o;
@@ -555,7 +555,7 @@ void checkGoogleCloudPolicysimulatorV1beta1ReplayConfig(
       o.logSource!,
       unittest.equals('foo'),
     );
-    checkUnnamed8382(o.policyOverlay!);
+    checkUnnamed8395(o.policyOverlay!);
   }
   buildCounterGoogleCloudPolicysimulatorV1beta1ReplayConfig--;
 }
@@ -688,14 +688,14 @@ void checkGoogleCloudPolicysimulatorV1beta1ReplayResultsSummary(
   buildCounterGoogleCloudPolicysimulatorV1beta1ReplayResultsSummary--;
 }
 
-core.List<api.GoogleIamV1AuditLogConfig> buildUnnamed8383() {
+core.List<api.GoogleIamV1AuditLogConfig> buildUnnamed8396() {
   final o = <api.GoogleIamV1AuditLogConfig>[];
   o.add(buildGoogleIamV1AuditLogConfig());
   o.add(buildGoogleIamV1AuditLogConfig());
   return o;
 }
 
-void checkUnnamed8383(core.List<api.GoogleIamV1AuditLogConfig> o) {
+void checkUnnamed8396(core.List<api.GoogleIamV1AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1AuditLogConfig(o[0]);
   checkGoogleIamV1AuditLogConfig(o[1]);
@@ -706,7 +706,7 @@ api.GoogleIamV1AuditConfig buildGoogleIamV1AuditConfig() {
   final o = api.GoogleIamV1AuditConfig();
   buildCounterGoogleIamV1AuditConfig++;
   if (buildCounterGoogleIamV1AuditConfig < 3) {
-    o.auditLogConfigs = buildUnnamed8383();
+    o.auditLogConfigs = buildUnnamed8396();
     o.service = 'foo';
   }
   buildCounterGoogleIamV1AuditConfig--;
@@ -716,7 +716,7 @@ api.GoogleIamV1AuditConfig buildGoogleIamV1AuditConfig() {
 void checkGoogleIamV1AuditConfig(api.GoogleIamV1AuditConfig o) {
   buildCounterGoogleIamV1AuditConfig++;
   if (buildCounterGoogleIamV1AuditConfig < 3) {
-    checkUnnamed8383(o.auditLogConfigs!);
+    checkUnnamed8396(o.auditLogConfigs!);
     unittest.expect(
       o.service!,
       unittest.equals('foo'),
@@ -725,14 +725,14 @@ void checkGoogleIamV1AuditConfig(api.GoogleIamV1AuditConfig o) {
   buildCounterGoogleIamV1AuditConfig--;
 }
 
-core.List<core.String> buildUnnamed8384() {
+core.List<core.String> buildUnnamed8397() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed8384(core.List<core.String> o) {
+void checkUnnamed8397(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -749,7 +749,7 @@ api.GoogleIamV1AuditLogConfig buildGoogleIamV1AuditLogConfig() {
   final o = api.GoogleIamV1AuditLogConfig();
   buildCounterGoogleIamV1AuditLogConfig++;
   if (buildCounterGoogleIamV1AuditLogConfig < 3) {
-    o.exemptedMembers = buildUnnamed8384();
+    o.exemptedMembers = buildUnnamed8397();
     o.logType = 'foo';
   }
   buildCounterGoogleIamV1AuditLogConfig--;
@@ -759,7 +759,7 @@ api.GoogleIamV1AuditLogConfig buildGoogleIamV1AuditLogConfig() {
 void checkGoogleIamV1AuditLogConfig(api.GoogleIamV1AuditLogConfig o) {
   buildCounterGoogleIamV1AuditLogConfig++;
   if (buildCounterGoogleIamV1AuditLogConfig < 3) {
-    checkUnnamed8384(o.exemptedMembers!);
+    checkUnnamed8397(o.exemptedMembers!);
     unittest.expect(
       o.logType!,
       unittest.equals('foo'),
@@ -768,14 +768,14 @@ void checkGoogleIamV1AuditLogConfig(api.GoogleIamV1AuditLogConfig o) {
   buildCounterGoogleIamV1AuditLogConfig--;
 }
 
-core.List<core.String> buildUnnamed8385() {
+core.List<core.String> buildUnnamed8398() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed8385(core.List<core.String> o) {
+void checkUnnamed8398(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -793,7 +793,7 @@ api.GoogleIamV1Binding buildGoogleIamV1Binding() {
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
     o.condition = buildGoogleTypeExpr();
-    o.members = buildUnnamed8385();
+    o.members = buildUnnamed8398();
     o.role = 'foo';
   }
   buildCounterGoogleIamV1Binding--;
@@ -804,7 +804,7 @@ void checkGoogleIamV1Binding(api.GoogleIamV1Binding o) {
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
     checkGoogleTypeExpr(o.condition!);
-    checkUnnamed8385(o.members!);
+    checkUnnamed8398(o.members!);
     unittest.expect(
       o.role!,
       unittest.equals('foo'),
@@ -813,27 +813,27 @@ void checkGoogleIamV1Binding(api.GoogleIamV1Binding o) {
   buildCounterGoogleIamV1Binding--;
 }
 
-core.List<api.GoogleIamV1AuditConfig> buildUnnamed8386() {
+core.List<api.GoogleIamV1AuditConfig> buildUnnamed8399() {
   final o = <api.GoogleIamV1AuditConfig>[];
   o.add(buildGoogleIamV1AuditConfig());
   o.add(buildGoogleIamV1AuditConfig());
   return o;
 }
 
-void checkUnnamed8386(core.List<api.GoogleIamV1AuditConfig> o) {
+void checkUnnamed8399(core.List<api.GoogleIamV1AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1AuditConfig(o[0]);
   checkGoogleIamV1AuditConfig(o[1]);
 }
 
-core.List<api.GoogleIamV1Binding> buildUnnamed8387() {
+core.List<api.GoogleIamV1Binding> buildUnnamed8400() {
   final o = <api.GoogleIamV1Binding>[];
   o.add(buildGoogleIamV1Binding());
   o.add(buildGoogleIamV1Binding());
   return o;
 }
 
-void checkUnnamed8387(core.List<api.GoogleIamV1Binding> o) {
+void checkUnnamed8400(core.List<api.GoogleIamV1Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1Binding(o[0]);
   checkGoogleIamV1Binding(o[1]);
@@ -844,8 +844,8 @@ api.GoogleIamV1Policy buildGoogleIamV1Policy() {
   final o = api.GoogleIamV1Policy();
   buildCounterGoogleIamV1Policy++;
   if (buildCounterGoogleIamV1Policy < 3) {
-    o.auditConfigs = buildUnnamed8386();
-    o.bindings = buildUnnamed8387();
+    o.auditConfigs = buildUnnamed8399();
+    o.bindings = buildUnnamed8400();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -856,8 +856,8 @@ api.GoogleIamV1Policy buildGoogleIamV1Policy() {
 void checkGoogleIamV1Policy(api.GoogleIamV1Policy o) {
   buildCounterGoogleIamV1Policy++;
   if (buildCounterGoogleIamV1Policy < 3) {
-    checkUnnamed8386(o.auditConfigs!);
-    checkUnnamed8387(o.bindings!);
+    checkUnnamed8399(o.auditConfigs!);
+    checkUnnamed8400(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -870,14 +870,14 @@ void checkGoogleIamV1Policy(api.GoogleIamV1Policy o) {
   buildCounterGoogleIamV1Policy--;
 }
 
-core.List<api.GoogleLongrunningOperation> buildUnnamed8388() {
+core.List<api.GoogleLongrunningOperation> buildUnnamed8401() {
   final o = <api.GoogleLongrunningOperation>[];
   o.add(buildGoogleLongrunningOperation());
   o.add(buildGoogleLongrunningOperation());
   return o;
 }
 
-void checkUnnamed8388(core.List<api.GoogleLongrunningOperation> o) {
+void checkUnnamed8401(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleLongrunningOperation(o[0]);
   checkGoogleLongrunningOperation(o[1]);
@@ -890,7 +890,7 @@ api.GoogleLongrunningListOperationsResponse
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed8388();
+    o.operations = buildUnnamed8401();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
@@ -904,12 +904,12 @@ void checkGoogleLongrunningListOperationsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed8388(o.operations!);
+    checkUnnamed8401(o.operations!);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed8389() {
+core.Map<core.String, core.Object> buildUnnamed8402() {
   final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -924,7 +924,7 @@ core.Map<core.String, core.Object> buildUnnamed8389() {
   return o;
 }
 
-void checkUnnamed8389(core.Map<core.String, core.Object> o) {
+void checkUnnamed8402(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -956,7 +956,7 @@ void checkUnnamed8389(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed8390() {
+core.Map<core.String, core.Object> buildUnnamed8403() {
   final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -971,7 +971,7 @@ core.Map<core.String, core.Object> buildUnnamed8390() {
   return o;
 }
 
-void checkUnnamed8390(core.Map<core.String, core.Object> o) {
+void checkUnnamed8403(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -1010,9 +1010,9 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed8389();
+    o.metadata = buildUnnamed8402();
     o.name = 'foo';
-    o.response = buildUnnamed8390();
+    o.response = buildUnnamed8403();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -1023,17 +1023,17 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkGoogleRpcStatus(o.error!);
-    checkUnnamed8389(o.metadata!);
+    checkUnnamed8402(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed8390(o.response!);
+    checkUnnamed8403(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed8391() {
+core.Map<core.String, core.Object> buildUnnamed8404() {
   final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -1048,7 +1048,7 @@ core.Map<core.String, core.Object> buildUnnamed8391() {
   return o;
 }
 
-void checkUnnamed8391(core.Map<core.String, core.Object> o) {
+void checkUnnamed8404(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -1080,17 +1080,17 @@ void checkUnnamed8391(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed8392() {
+core.List<core.Map<core.String, core.Object>> buildUnnamed8405() {
   final o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed8391());
-  o.add(buildUnnamed8391());
+  o.add(buildUnnamed8404());
+  o.add(buildUnnamed8404());
   return o;
 }
 
-void checkUnnamed8392(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed8405(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed8391(o[0]);
-  checkUnnamed8391(o[1]);
+  checkUnnamed8404(o[0]);
+  checkUnnamed8404(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -1099,7 +1099,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed8392();
+    o.details = buildUnnamed8405();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -1113,7 +1113,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed8392(o.details!);
+    checkUnnamed8405(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),

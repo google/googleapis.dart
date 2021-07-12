@@ -1515,6 +1515,14 @@ class Domain {
   /// Optional.
   core.String? admin;
 
+  /// Configuration for audit logs.
+  ///
+  /// True if audit logs are enabled, else false. Default is audit logs
+  /// disabled.
+  ///
+  /// Optional.
+  core.bool? auditLogsEnabled;
+
   /// The full names of the Google Compute Engine
   /// \[networks\](/compute/docs/networks-and-firewalls#networks) the domain
   /// instance is connected to.
@@ -1601,6 +1609,7 @@ class Domain {
 
   Domain({
     this.admin,
+    this.auditLogsEnabled,
     this.authorizedNetworks,
     this.createTime,
     this.fqdn,
@@ -1618,6 +1627,9 @@ class Domain {
       : this(
           admin:
               _json.containsKey('admin') ? _json['admin'] as core.String : null,
+          auditLogsEnabled: _json.containsKey('auditLogsEnabled')
+              ? _json['auditLogsEnabled'] as core.bool
+              : null,
           authorizedNetworks: _json.containsKey('authorizedNetworks')
               ? (_json['authorizedNetworks'] as core.List)
                   .map<core.String>((value) => value as core.String)
@@ -1662,6 +1674,7 @@ class Domain {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (admin != null) 'admin': admin!,
+        if (auditLogsEnabled != null) 'auditLogsEnabled': auditLogsEnabled!,
         if (authorizedNetworks != null)
           'authorizedNetworks': authorizedNetworks!,
         if (createTime != null) 'createTime': createTime!,
@@ -2745,7 +2758,7 @@ class LDAPSSettings {
 
   /// Input only.
   ///
-  /// The password used to encrypt the uploaded pfx certificate.
+  /// The password used to encrypt the uploaded PFX certificate.
   core.String? certificatePassword;
 
   /// Input only.
@@ -3618,35 +3631,31 @@ class SetIamPolicyRequest {
       };
 }
 
-/// Represents the Sql instance integrated with AD.
+/// Represents the SQL instance integrated with Managed AD.
 class SqlIntegration {
-  /// The time sql integration was created.
-  ///
-  /// Synthetic field is populated automatically by CCFE.
+  /// The time the SQL integration was created.
   ///
   /// Output only.
   core.String? createTime;
 
-  /// The unique name of the sql integration in the form of
+  /// The unique name of the SQL integration in the form of
   /// `projects/{project_id}/locations/global/domains/{domain_name}/sqlIntegrations/{sql_integration}`
   core.String? name;
 
-  /// The full resource name of an integrated sql instance
+  /// The full resource name of an integrated SQL instance
   core.String? sqlInstance;
 
-  /// The current state of the sql integration.
+  /// The current state of the SQL integration.
   ///
   /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Not Set
-  /// - "CREATING" : The sqlIntegration is being created.
-  /// - "DELETING" : The sqlIntegration is being deleted.
-  /// - "READY" : The sqlIntegration is ready.
+  /// - "CREATING" : The SQL integration is being created.
+  /// - "DELETING" : The SQL integration is being deleted.
+  /// - "READY" : The SQL integration is ready.
   core.String? state;
 
-  /// The time sql integration was updated.
-  ///
-  /// Synthetic field is populated automatically by CCFE.
+  /// The time the SQL integration was updated.
   ///
   /// Output only.
   core.String? updateTime;

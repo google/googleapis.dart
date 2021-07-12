@@ -26,14 +26,14 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<core.String> buildUnnamed6897() {
+core.List<core.String> buildUnnamed6909() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6897(core.List<core.String> o) {
+void checkUnnamed6909(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -45,14 +45,14 @@ void checkUnnamed6897(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed6898() {
+core.List<core.String> buildUnnamed6910() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6898(core.List<core.String> o) {
+void checkUnnamed6910(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -69,9 +69,9 @@ api.GenerateAccessTokenRequest buildGenerateAccessTokenRequest() {
   final o = api.GenerateAccessTokenRequest();
   buildCounterGenerateAccessTokenRequest++;
   if (buildCounterGenerateAccessTokenRequest < 3) {
-    o.delegates = buildUnnamed6897();
+    o.delegates = buildUnnamed6909();
     o.lifetime = 'foo';
-    o.scope = buildUnnamed6898();
+    o.scope = buildUnnamed6910();
   }
   buildCounterGenerateAccessTokenRequest--;
   return o;
@@ -80,12 +80,12 @@ api.GenerateAccessTokenRequest buildGenerateAccessTokenRequest() {
 void checkGenerateAccessTokenRequest(api.GenerateAccessTokenRequest o) {
   buildCounterGenerateAccessTokenRequest++;
   if (buildCounterGenerateAccessTokenRequest < 3) {
-    checkUnnamed6897(o.delegates!);
+    checkUnnamed6909(o.delegates!);
     unittest.expect(
       o.lifetime!,
       unittest.equals('foo'),
     );
-    checkUnnamed6898(o.scope!);
+    checkUnnamed6910(o.scope!);
   }
   buildCounterGenerateAccessTokenRequest--;
 }
@@ -117,14 +117,14 @@ void checkGenerateAccessTokenResponse(api.GenerateAccessTokenResponse o) {
   buildCounterGenerateAccessTokenResponse--;
 }
 
-core.List<core.String> buildUnnamed6899() {
+core.List<core.String> buildUnnamed6911() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6899(core.List<core.String> o) {
+void checkUnnamed6911(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -142,7 +142,7 @@ api.GenerateIdTokenRequest buildGenerateIdTokenRequest() {
   buildCounterGenerateIdTokenRequest++;
   if (buildCounterGenerateIdTokenRequest < 3) {
     o.audience = 'foo';
-    o.delegates = buildUnnamed6899();
+    o.delegates = buildUnnamed6911();
     o.includeEmail = true;
   }
   buildCounterGenerateIdTokenRequest--;
@@ -156,7 +156,7 @@ void checkGenerateIdTokenRequest(api.GenerateIdTokenRequest o) {
       o.audience!,
       unittest.equals('foo'),
     );
-    checkUnnamed6899(o.delegates!);
+    checkUnnamed6911(o.delegates!);
     unittest.expect(o.includeEmail!, unittest.isTrue);
   }
   buildCounterGenerateIdTokenRequest--;
@@ -184,14 +184,14 @@ void checkGenerateIdTokenResponse(api.GenerateIdTokenResponse o) {
   buildCounterGenerateIdTokenResponse--;
 }
 
-core.List<core.String> buildUnnamed6900() {
+core.List<core.String> buildUnnamed6912() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6900(core.List<core.String> o) {
+void checkUnnamed6912(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -208,7 +208,7 @@ api.SignBlobRequest buildSignBlobRequest() {
   final o = api.SignBlobRequest();
   buildCounterSignBlobRequest++;
   if (buildCounterSignBlobRequest < 3) {
-    o.delegates = buildUnnamed6900();
+    o.delegates = buildUnnamed6912();
     o.payload = 'foo';
   }
   buildCounterSignBlobRequest--;
@@ -218,7 +218,7 @@ api.SignBlobRequest buildSignBlobRequest() {
 void checkSignBlobRequest(api.SignBlobRequest o) {
   buildCounterSignBlobRequest++;
   if (buildCounterSignBlobRequest < 3) {
-    checkUnnamed6900(o.delegates!);
+    checkUnnamed6912(o.delegates!);
     unittest.expect(
       o.payload!,
       unittest.equals('foo'),
@@ -254,14 +254,14 @@ void checkSignBlobResponse(api.SignBlobResponse o) {
   buildCounterSignBlobResponse--;
 }
 
-core.List<core.String> buildUnnamed6901() {
+core.List<core.String> buildUnnamed6913() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6901(core.List<core.String> o) {
+void checkUnnamed6913(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -278,7 +278,7 @@ api.SignJwtRequest buildSignJwtRequest() {
   final o = api.SignJwtRequest();
   buildCounterSignJwtRequest++;
   if (buildCounterSignJwtRequest < 3) {
-    o.delegates = buildUnnamed6901();
+    o.delegates = buildUnnamed6913();
     o.payload = 'foo';
   }
   buildCounterSignJwtRequest--;
@@ -288,7 +288,7 @@ api.SignJwtRequest buildSignJwtRequest() {
 void checkSignJwtRequest(api.SignJwtRequest o) {
   buildCounterSignJwtRequest++;
   if (buildCounterSignJwtRequest < 3) {
-    checkUnnamed6901(o.delegates!);
+    checkUnnamed6913(o.delegates!);
     unittest.expect(
       o.payload!,
       unittest.equals('foo'),

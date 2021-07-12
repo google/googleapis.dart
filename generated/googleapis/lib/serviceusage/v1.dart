@@ -1794,9 +1794,11 @@ class Documentation {
   /// that show a base that other urls are relative to.
   core.String? serviceRootUrl;
 
-  /// A short summary of what the service does.
+  /// A short description of what the service does.
   ///
-  /// Can only be provided by plain text.
+  /// The summary must be plain text. It becomes the overview of the service
+  /// displayed in Google Cloud Console. NOTE: This field is equivalent to the
+  /// standard field `description`.
   core.String? summary;
 
   Documentation({
@@ -1856,10 +1858,12 @@ class DocumentationRule {
   /// It can be provided if an element is marked as `deprecated`.
   core.String? deprecationDescription;
 
-  /// Description of the selected API(s).
+  /// The description is the comment in front of the selected proto element,
+  /// such as a message, a method, a 'service' definition, or a field.
   core.String? description;
 
-  /// The selector is a comma-separated list of patterns.
+  /// The selector is a comma-separated list of patterns for any element such as
+  /// a method, a field, an enum value.
   ///
   /// Each pattern is a qualified name of the element which may end in "*",
   /// indicating a wildcard. Wildcards are only allowed at the end and for a
@@ -2371,7 +2375,8 @@ class GoogleApiService {
   ///
   /// Enums referenced directly or indirectly by the `apis` are automatically
   /// included. Enums which are not referenced but shall be included should be
-  /// listed here by name. Example: enums: - name: google.someapi.v1.SomeEnum
+  /// listed here by name by the configuration author. Example: enums: - name:
+  /// google.someapi.v1.SomeEnum
   core.List<Enum>? enums;
 
   /// HTTP configuration.
@@ -2432,7 +2437,8 @@ class GoogleApiService {
   /// define system APIs in ESF.
   core.List<Type>? systemTypes;
 
-  /// The product title for this service.
+  /// The product title for this service, it is the name displayed in Google
+  /// Cloud Console.
   core.String? title;
 
   /// A list of all proto message types included in this API service.
@@ -2440,7 +2446,8 @@ class GoogleApiService {
   /// Types referenced directly or indirectly by the `apis` are automatically
   /// included. Messages which are not referenced but shall be included, such as
   /// types used by the `google.protobuf.Any` type, should be listed here by
-  /// name. Example: types: - name: google.protobuf.Int32
+  /// name by the configuration author. Example: types: - name:
+  /// google.protobuf.Int32
   core.List<Type>? types;
 
   /// Configuration controlling usage of this service.
@@ -4579,7 +4586,8 @@ class Page {
   /// The Markdown content of the page.
   ///
   /// You can use (== include {path} ==) to include content from a Markdown
-  /// file.
+  /// file. The content can be used to produce the documentation page such as
+  /// HTML format page.
   core.String? content;
 
   /// The name of the page.

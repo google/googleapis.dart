@@ -1793,8 +1793,7 @@ class AsymmetricDecryptRequest {
   /// computation of the CRC32C checksum. Note: This field is defined as int64
   /// for reasons of compatibility across different languages. However, it is a
   /// non-negative integer, which will never exceed 2^32-1, and can be safely
-  /// downconverted to uint32 in languages that support this type. NOTE: This
-  /// field is in Beta.
+  /// downconverted to uint32 in languages that support this type.
   ///
   /// Optional.
   core.String? ciphertextCrc32c;
@@ -1842,8 +1841,7 @@ class AsymmetricDecryptResponse {
   /// CRC32C checksum. Note: This field is defined as int64 for reasons of
   /// compatibility across different languages. However, it is a non-negative
   /// integer, which will never exceed 2^32-1, and can be safely downconverted
-  /// to uint32 in languages that support this type. NOTE: This field is in
-  /// Beta.
+  /// to uint32 in languages that support this type.
   core.String? plaintextCrc32c;
 
   /// The ProtectionLevel of the CryptoKeyVersion used in decryption.
@@ -1862,8 +1860,7 @@ class AsymmetricDecryptResponse {
   /// AsymmetricDecryptRequest.ciphertext_crc32c was left unset or that it was
   /// not delivered to KeyManagementService. If you've set
   /// AsymmetricDecryptRequest.ciphertext_crc32c but this field is still false,
-  /// discard the response and perform a limited number of retries. NOTE: This
-  /// field is in Beta.
+  /// discard the response and perform a limited number of retries.
   core.bool? verifiedCiphertextCrc32c;
 
   AsymmetricDecryptResponse({
@@ -1921,8 +1918,7 @@ class AsymmetricSignRequest {
   /// computation of the CRC32C checksum. Note: This field is defined as int64
   /// for reasons of compatibility across different languages. However, it is a
   /// non-negative integer, which will never exceed 2^32-1, and can be safely
-  /// downconverted to uint32 in languages that support this type. NOTE: This
-  /// field is in Beta.
+  /// downconverted to uint32 in languages that support this type.
   ///
   /// Optional.
   core.String? digestCrc32c;
@@ -1954,7 +1950,7 @@ class AsymmetricSignResponse {
   /// The resource name of the CryptoKeyVersion used for signing.
   ///
   /// Check this field to verify that the intended resource was used for
-  /// signing. NOTE: This field is in Beta.
+  /// signing.
   core.String? name;
 
   /// The ProtectionLevel of the CryptoKeyVersion used for signing.
@@ -1985,8 +1981,7 @@ class AsymmetricSignResponse {
   /// CRC32C checksum. Note: This field is defined as int64 for reasons of
   /// compatibility across different languages. However, it is a non-negative
   /// integer, which will never exceed 2^32-1, and can be safely downconverted
-  /// to uint32 in languages that support this type. NOTE: This field is in
-  /// Beta.
+  /// to uint32 in languages that support this type.
   core.String? signatureCrc32c;
 
   /// Integrity verification field.
@@ -1997,8 +1992,7 @@ class AsymmetricSignResponse {
   /// AsymmetricSignRequest.digest_crc32c was left unset or that it was not
   /// delivered to KeyManagementService. If you've set
   /// AsymmetricSignRequest.digest_crc32c but this field is still false, discard
-  /// the response and perform a limited number of retries. NOTE: This field is
-  /// in Beta.
+  /// the response and perform a limited number of retries.
   core.bool? verifiedDigestCrc32c;
 
   AsymmetricSignResponse({
@@ -2717,8 +2711,7 @@ class DecryptRequest {
   /// your computation of the CRC32C checksum. Note: This field is defined as
   /// int64 for reasons of compatibility across different languages. However, it
   /// is a non-negative integer, which will never exceed 2^32-1, and can be
-  /// safely downconverted to uint32 in languages that support this type. NOTE:
-  /// This field is in Beta.
+  /// safely downconverted to uint32 in languages that support this type.
   ///
   /// Optional.
   core.String? additionalAuthenticatedDataCrc32c;
@@ -2747,8 +2740,7 @@ class DecryptRequest {
   /// of the CRC32C checksum. Note: This field is defined as int64 for reasons
   /// of compatibility across different languages. However, it is a non-negative
   /// integer, which will never exceed 2^32-1, and can be safely downconverted
-  /// to uint32 in languages that support this type. NOTE: This field is in
-  /// Beta.
+  /// to uint32 in languages that support this type.
   ///
   /// Optional.
   core.String? ciphertextCrc32c;
@@ -2812,8 +2804,7 @@ class DecryptResponse {
   /// able to successfully decrypt the ciphertext. Note: This field is defined
   /// as int64 for reasons of compatibility across different languages. However,
   /// it is a non-negative integer, which will never exceed 2^32-1, and can be
-  /// safely downconverted to uint32 in languages that support this type. NOTE:
-  /// This field is in Beta.
+  /// safely downconverted to uint32 in languages that support this type.
   core.String? plaintextCrc32c;
 
   /// The ProtectionLevel of the CryptoKeyVersion used in decryption.
@@ -2957,8 +2948,7 @@ class EncryptRequest {
   /// your computation of the CRC32C checksum. Note: This field is defined as
   /// int64 for reasons of compatibility across different languages. However, it
   /// is a non-negative integer, which will never exceed 2^32-1, and can be
-  /// safely downconverted to uint32 in languages that support this type. NOTE:
-  /// This field is in Beta.
+  /// safely downconverted to uint32 in languages that support this type.
   ///
   /// Optional.
   core.String? additionalAuthenticatedDataCrc32c;
@@ -2991,8 +2981,7 @@ class EncryptRequest {
   /// of the CRC32C checksum. Note: This field is defined as int64 for reasons
   /// of compatibility across different languages. However, it is a non-negative
   /// integer, which will never exceed 2^32-1, and can be safely downconverted
-  /// to uint32 in languages that support this type. NOTE: This field is in
-  /// Beta.
+  /// to uint32 in languages that support this type.
   ///
   /// Optional.
   core.String? plaintextCrc32c;
@@ -3056,7 +3045,7 @@ class EncryptResponse {
   /// field is defined as int64 for reasons of compatibility across different
   /// languages. However, it is a non-negative integer, which will never exceed
   /// 2^32-1, and can be safely downconverted to uint32 in languages that
-  /// support this type. NOTE: This field is in Beta.
+  /// support this type.
   core.String? ciphertextCrc32c;
 
   /// The resource name of the CryptoKeyVersion used in encryption.
@@ -3083,7 +3072,6 @@ class EncryptResponse {
   /// it was not delivered to KeyManagementService. If you've set
   /// EncryptRequest.additional_authenticated_data_crc32c but this field is
   /// still false, discard the response and perform a limited number of retries.
-  /// NOTE: This field is in Beta.
   core.bool? verifiedAdditionalAuthenticatedDataCrc32c;
 
   /// Integrity verification field.
@@ -3094,8 +3082,7 @@ class EncryptResponse {
   /// EncryptRequest.plaintext_crc32c was left unset or that it was not
   /// delivered to KeyManagementService. If you've set
   /// EncryptRequest.plaintext_crc32c but this field is still false, discard the
-  /// response and perform a limited number of retries. NOTE: This field is in
-  /// Beta.
+  /// response and perform a limited number of retries.
   core.bool? verifiedPlaintextCrc32c;
 
   EncryptResponse({

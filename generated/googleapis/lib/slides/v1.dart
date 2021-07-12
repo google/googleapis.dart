@@ -4669,6 +4669,9 @@ class Request {
   /// Updates the properties of a Shape.
   UpdateShapePropertiesRequest? updateShapeProperties;
 
+  /// Updates the properties of a Slide
+  UpdateSlidePropertiesRequest? updateSlideProperties;
+
   /// Updates the position of a set of slides in the presentation.
   UpdateSlidesPositionRequest? updateSlidesPosition;
 
@@ -4727,6 +4730,7 @@ class Request {
     this.updatePageProperties,
     this.updateParagraphStyle,
     this.updateShapeProperties,
+    this.updateSlideProperties,
     this.updateSlidesPosition,
     this.updateTableBorderProperties,
     this.updateTableCellProperties,
@@ -4899,6 +4903,11 @@ class Request {
                   _json['updateShapeProperties']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          updateSlideProperties: _json.containsKey('updateSlideProperties')
+              ? UpdateSlidePropertiesRequest.fromJson(
+                  _json['updateSlideProperties']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           updateSlidesPosition: _json.containsKey('updateSlidesPosition')
               ? UpdateSlidesPositionRequest.fromJson(
                   _json['updateSlidesPosition']
@@ -4998,6 +5007,8 @@ class Request {
           'updateParagraphStyle': updateParagraphStyle!.toJson(),
         if (updateShapeProperties != null)
           'updateShapeProperties': updateShapeProperties!.toJson(),
+        if (updateSlideProperties != null)
+          'updateSlideProperties': updateSlideProperties!.toJson(),
         if (updateSlidesPosition != null)
           'updateSlidesPosition': updateSlidesPosition!.toJson(),
         if (updateTableBorderProperties != null)
@@ -7563,6 +7574,52 @@ class UpdateShapePropertiesRequest {
         if (objectId != null) 'objectId': objectId!,
         if (shapeProperties != null)
           'shapeProperties': shapeProperties!.toJson(),
+      };
+}
+
+/// Updates the properties of a Slide.
+class UpdateSlidePropertiesRequest {
+  /// The fields that should be updated.
+  ///
+  /// At least one field must be specified. The root 'slideProperties' is
+  /// implied and should not be specified. A single `"*"` can be used as
+  /// short-hand for listing every field. For example to update whether a slide
+  /// is skipped, set `fields` to `"isSkipped"`. To reset a property to its
+  /// default value, include its field name in the field mask but leave the
+  /// field itself unset.
+  core.String? fields;
+
+  /// The object ID of the slide the update is applied to.
+  core.String? objectId;
+
+  /// The slide properties to update.
+  SlideProperties? slideProperties;
+
+  UpdateSlidePropertiesRequest({
+    this.fields,
+    this.objectId,
+    this.slideProperties,
+  });
+
+  UpdateSlidePropertiesRequest.fromJson(core.Map _json)
+      : this(
+          fields: _json.containsKey('fields')
+              ? _json['fields'] as core.String
+              : null,
+          objectId: _json.containsKey('objectId')
+              ? _json['objectId'] as core.String
+              : null,
+          slideProperties: _json.containsKey('slideProperties')
+              ? SlideProperties.fromJson(_json['slideProperties']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fields != null) 'fields': fields!,
+        if (objectId != null) 'objectId': objectId!,
+        if (slideProperties != null)
+          'slideProperties': slideProperties!.toJson(),
       };
 }
 

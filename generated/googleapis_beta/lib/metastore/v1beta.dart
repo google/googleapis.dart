@@ -1797,6 +1797,29 @@ class Empty {
   core.Map<core.String, core.dynamic> toJson() => {};
 }
 
+/// Encryption settings for the service.
+class EncryptionConfig {
+  /// The fully qualified customer provided Cloud KMS key name to use for
+  /// customer data encryption, in the following
+  /// form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
+  core.String? kmsKey;
+
+  EncryptionConfig({
+    this.kmsKey,
+  });
+
+  EncryptionConfig.fromJson(core.Map _json)
+      : this(
+          kmsKey: _json.containsKey('kmsKey')
+              ? _json['kmsKey'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kmsKey != null) 'kmsKey': kmsKey!,
+      };
+}
+
 /// Request message for DataprocMetastore.ExportMetadata.
 class ExportMetadataRequest {
   /// The type of the database dump.
@@ -3104,6 +3127,14 @@ class Service {
   /// Output only.
   core.String? createTime;
 
+  /// Information used to configure the Dataproc Metastore service to encrypt
+  /// customer data at rest.
+  ///
+  /// Cannot be updated.
+  ///
+  /// Immutable.
+  EncryptionConfig? encryptionConfig;
+
   /// The URI of the endpoint used to access the metastore service.
   ///
   /// Output only.
@@ -3214,6 +3245,7 @@ class Service {
   Service({
     this.artifactGcsUri,
     this.createTime,
+    this.encryptionConfig,
     this.endpointUri,
     this.hiveMetastoreConfig,
     this.labels,
@@ -3238,6 +3270,10 @@ class Service {
               : null,
           createTime: _json.containsKey('createTime')
               ? _json['createTime'] as core.String
+              : null,
+          encryptionConfig: _json.containsKey('encryptionConfig')
+              ? EncryptionConfig.fromJson(_json['encryptionConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           endpointUri: _json.containsKey('endpointUri')
               ? _json['endpointUri'] as core.String
@@ -3291,6 +3327,8 @@ class Service {
   core.Map<core.String, core.dynamic> toJson() => {
         if (artifactGcsUri != null) 'artifactGcsUri': artifactGcsUri!,
         if (createTime != null) 'createTime': createTime!,
+        if (encryptionConfig != null)
+          'encryptionConfig': encryptionConfig!.toJson(),
         if (endpointUri != null) 'endpointUri': endpointUri!,
         if (hiveMetastoreConfig != null)
           'hiveMetastoreConfig': hiveMetastoreConfig!.toJson(),

@@ -26,14 +26,14 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.Dataset> buildUnnamed1572() {
+core.List<api.Dataset> buildUnnamed1583() {
   final o = <api.Dataset>[];
   o.add(buildDataset());
   o.add(buildDataset());
   return o;
 }
 
-void checkUnnamed1572(core.List<api.Dataset> o) {
+void checkUnnamed1583(core.List<api.Dataset> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDataset(o[0]);
   checkDataset(o[1]);
@@ -45,7 +45,7 @@ api.AggregateBucket buildAggregateBucket() {
   buildCounterAggregateBucket++;
   if (buildCounterAggregateBucket < 3) {
     o.activity = 42;
-    o.dataset = buildUnnamed1572();
+    o.dataset = buildUnnamed1583();
     o.endTimeMillis = 'foo';
     o.session = buildSession();
     o.startTimeMillis = 'foo';
@@ -62,7 +62,7 @@ void checkAggregateBucket(api.AggregateBucket o) {
       o.activity!,
       unittest.equals(42),
     );
-    checkUnnamed1572(o.dataset!);
+    checkUnnamed1583(o.dataset!);
     unittest.expect(
       o.endTimeMillis!,
       unittest.equals('foo'),
@@ -107,27 +107,27 @@ void checkAggregateBy(api.AggregateBy o) {
   buildCounterAggregateBy--;
 }
 
-core.List<api.AggregateBy> buildUnnamed1573() {
+core.List<api.AggregateBy> buildUnnamed1584() {
   final o = <api.AggregateBy>[];
   o.add(buildAggregateBy());
   o.add(buildAggregateBy());
   return o;
 }
 
-void checkUnnamed1573(core.List<api.AggregateBy> o) {
+void checkUnnamed1584(core.List<api.AggregateBy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAggregateBy(o[0]);
   checkAggregateBy(o[1]);
 }
 
-core.List<core.String> buildUnnamed1574() {
+core.List<core.String> buildUnnamed1585() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed1574(core.List<core.String> o) {
+void checkUnnamed1585(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -144,13 +144,13 @@ api.AggregateRequest buildAggregateRequest() {
   final o = api.AggregateRequest();
   buildCounterAggregateRequest++;
   if (buildCounterAggregateRequest < 3) {
-    o.aggregateBy = buildUnnamed1573();
+    o.aggregateBy = buildUnnamed1584();
     o.bucketByActivitySegment = buildBucketByActivity();
     o.bucketByActivityType = buildBucketByActivity();
     o.bucketBySession = buildBucketBySession();
     o.bucketByTime = buildBucketByTime();
     o.endTimeMillis = 'foo';
-    o.filteredDataQualityStandard = buildUnnamed1574();
+    o.filteredDataQualityStandard = buildUnnamed1585();
     o.startTimeMillis = 'foo';
   }
   buildCounterAggregateRequest--;
@@ -160,7 +160,7 @@ api.AggregateRequest buildAggregateRequest() {
 void checkAggregateRequest(api.AggregateRequest o) {
   buildCounterAggregateRequest++;
   if (buildCounterAggregateRequest < 3) {
-    checkUnnamed1573(o.aggregateBy!);
+    checkUnnamed1584(o.aggregateBy!);
     checkBucketByActivity(o.bucketByActivitySegment!);
     checkBucketByActivity(o.bucketByActivityType!);
     checkBucketBySession(o.bucketBySession!);
@@ -169,7 +169,7 @@ void checkAggregateRequest(api.AggregateRequest o) {
       o.endTimeMillis!,
       unittest.equals('foo'),
     );
-    checkUnnamed1574(o.filteredDataQualityStandard!);
+    checkUnnamed1585(o.filteredDataQualityStandard!);
     unittest.expect(
       o.startTimeMillis!,
       unittest.equals('foo'),
@@ -178,14 +178,14 @@ void checkAggregateRequest(api.AggregateRequest o) {
   buildCounterAggregateRequest--;
 }
 
-core.List<api.AggregateBucket> buildUnnamed1575() {
+core.List<api.AggregateBucket> buildUnnamed1586() {
   final o = <api.AggregateBucket>[];
   o.add(buildAggregateBucket());
   o.add(buildAggregateBucket());
   return o;
 }
 
-void checkUnnamed1575(core.List<api.AggregateBucket> o) {
+void checkUnnamed1586(core.List<api.AggregateBucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAggregateBucket(o[0]);
   checkAggregateBucket(o[1]);
@@ -196,7 +196,7 @@ api.AggregateResponse buildAggregateResponse() {
   final o = api.AggregateResponse();
   buildCounterAggregateResponse++;
   if (buildCounterAggregateResponse < 3) {
-    o.bucket = buildUnnamed1575();
+    o.bucket = buildUnnamed1586();
   }
   buildCounterAggregateResponse--;
   return o;
@@ -205,7 +205,7 @@ api.AggregateResponse buildAggregateResponse() {
 void checkAggregateResponse(api.AggregateResponse o) {
   buildCounterAggregateResponse++;
   if (buildCounterAggregateResponse < 3) {
-    checkUnnamed1575(o.bucket!);
+    checkUnnamed1586(o.bucket!);
   }
   buildCounterAggregateResponse--;
 }
@@ -352,14 +352,14 @@ void checkBucketByTimePeriod(api.BucketByTimePeriod o) {
   buildCounterBucketByTimePeriod--;
 }
 
-core.List<api.Value> buildUnnamed1576() {
+core.List<api.Value> buildUnnamed1587() {
   final o = <api.Value>[];
   o.add(buildValue());
   o.add(buildValue());
   return o;
 }
 
-void checkUnnamed1576(core.List<api.Value> o) {
+void checkUnnamed1587(core.List<api.Value> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkValue(o[0]);
   checkValue(o[1]);
@@ -377,7 +377,7 @@ api.DataPoint buildDataPoint() {
     o.originDataSourceId = 'foo';
     o.rawTimestampNanos = 'foo';
     o.startTimeNanos = 'foo';
-    o.value = buildUnnamed1576();
+    o.value = buildUnnamed1587();
   }
   buildCounterDataPoint--;
   return o;
@@ -414,19 +414,19 @@ void checkDataPoint(api.DataPoint o) {
       o.startTimeNanos!,
       unittest.equals('foo'),
     );
-    checkUnnamed1576(o.value!);
+    checkUnnamed1587(o.value!);
   }
   buildCounterDataPoint--;
 }
 
-core.List<core.String> buildUnnamed1577() {
+core.List<core.String> buildUnnamed1588() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed1577(core.List<core.String> o) {
+void checkUnnamed1588(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -444,7 +444,7 @@ api.DataSource buildDataSource() {
   buildCounterDataSource++;
   if (buildCounterDataSource < 3) {
     o.application = buildApplication();
-    o.dataQualityStandard = buildUnnamed1577();
+    o.dataQualityStandard = buildUnnamed1588();
     o.dataStreamId = 'foo';
     o.dataStreamName = 'foo';
     o.dataType = buildDataType();
@@ -460,7 +460,7 @@ void checkDataSource(api.DataSource o) {
   buildCounterDataSource++;
   if (buildCounterDataSource < 3) {
     checkApplication(o.application!);
-    checkUnnamed1577(o.dataQualityStandard!);
+    checkUnnamed1588(o.dataQualityStandard!);
     unittest.expect(
       o.dataStreamId!,
       unittest.equals('foo'),
@@ -483,14 +483,14 @@ void checkDataSource(api.DataSource o) {
   buildCounterDataSource--;
 }
 
-core.List<api.DataTypeField> buildUnnamed1578() {
+core.List<api.DataTypeField> buildUnnamed1589() {
   final o = <api.DataTypeField>[];
   o.add(buildDataTypeField());
   o.add(buildDataTypeField());
   return o;
 }
 
-void checkUnnamed1578(core.List<api.DataTypeField> o) {
+void checkUnnamed1589(core.List<api.DataTypeField> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDataTypeField(o[0]);
   checkDataTypeField(o[1]);
@@ -501,7 +501,7 @@ api.DataType buildDataType() {
   final o = api.DataType();
   buildCounterDataType++;
   if (buildCounterDataType < 3) {
-    o.field = buildUnnamed1578();
+    o.field = buildUnnamed1589();
     o.name = 'foo';
   }
   buildCounterDataType--;
@@ -511,7 +511,7 @@ api.DataType buildDataType() {
 void checkDataType(api.DataType o) {
   buildCounterDataType++;
   if (buildCounterDataType < 3) {
-    checkUnnamed1578(o.field!);
+    checkUnnamed1589(o.field!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -549,14 +549,14 @@ void checkDataTypeField(api.DataTypeField o) {
   buildCounterDataTypeField--;
 }
 
-core.List<api.DataPoint> buildUnnamed1579() {
+core.List<api.DataPoint> buildUnnamed1590() {
   final o = <api.DataPoint>[];
   o.add(buildDataPoint());
   o.add(buildDataPoint());
   return o;
 }
 
-void checkUnnamed1579(core.List<api.DataPoint> o) {
+void checkUnnamed1590(core.List<api.DataPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDataPoint(o[0]);
   checkDataPoint(o[1]);
@@ -571,7 +571,7 @@ api.Dataset buildDataset() {
     o.maxEndTimeNs = 'foo';
     o.minStartTimeNs = 'foo';
     o.nextPageToken = 'foo';
-    o.point = buildUnnamed1579();
+    o.point = buildUnnamed1590();
   }
   buildCounterDataset--;
   return o;
@@ -596,7 +596,7 @@ void checkDataset(api.Dataset o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed1579(o.point!);
+    checkUnnamed1590(o.point!);
   }
   buildCounterDataset--;
 }
@@ -643,27 +643,27 @@ void checkDevice(api.Device o) {
   buildCounterDevice--;
 }
 
-core.List<api.DataPoint> buildUnnamed1580() {
+core.List<api.DataPoint> buildUnnamed1591() {
   final o = <api.DataPoint>[];
   o.add(buildDataPoint());
   o.add(buildDataPoint());
   return o;
 }
 
-void checkUnnamed1580(core.List<api.DataPoint> o) {
+void checkUnnamed1591(core.List<api.DataPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDataPoint(o[0]);
   checkDataPoint(o[1]);
 }
 
-core.List<api.DataPoint> buildUnnamed1581() {
+core.List<api.DataPoint> buildUnnamed1592() {
   final o = <api.DataPoint>[];
   o.add(buildDataPoint());
   o.add(buildDataPoint());
   return o;
 }
 
-void checkUnnamed1581(core.List<api.DataPoint> o) {
+void checkUnnamed1592(core.List<api.DataPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDataPoint(o[0]);
   checkDataPoint(o[1]);
@@ -675,8 +675,8 @@ api.ListDataPointChangesResponse buildListDataPointChangesResponse() {
   buildCounterListDataPointChangesResponse++;
   if (buildCounterListDataPointChangesResponse < 3) {
     o.dataSourceId = 'foo';
-    o.deletedDataPoint = buildUnnamed1580();
-    o.insertedDataPoint = buildUnnamed1581();
+    o.deletedDataPoint = buildUnnamed1591();
+    o.insertedDataPoint = buildUnnamed1592();
     o.nextPageToken = 'foo';
   }
   buildCounterListDataPointChangesResponse--;
@@ -690,8 +690,8 @@ void checkListDataPointChangesResponse(api.ListDataPointChangesResponse o) {
       o.dataSourceId!,
       unittest.equals('foo'),
     );
-    checkUnnamed1580(o.deletedDataPoint!);
-    checkUnnamed1581(o.insertedDataPoint!);
+    checkUnnamed1591(o.deletedDataPoint!);
+    checkUnnamed1592(o.insertedDataPoint!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -700,14 +700,14 @@ void checkListDataPointChangesResponse(api.ListDataPointChangesResponse o) {
   buildCounterListDataPointChangesResponse--;
 }
 
-core.List<api.DataSource> buildUnnamed1582() {
+core.List<api.DataSource> buildUnnamed1593() {
   final o = <api.DataSource>[];
   o.add(buildDataSource());
   o.add(buildDataSource());
   return o;
 }
 
-void checkUnnamed1582(core.List<api.DataSource> o) {
+void checkUnnamed1593(core.List<api.DataSource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDataSource(o[0]);
   checkDataSource(o[1]);
@@ -718,7 +718,7 @@ api.ListDataSourcesResponse buildListDataSourcesResponse() {
   final o = api.ListDataSourcesResponse();
   buildCounterListDataSourcesResponse++;
   if (buildCounterListDataSourcesResponse < 3) {
-    o.dataSource = buildUnnamed1582();
+    o.dataSource = buildUnnamed1593();
   }
   buildCounterListDataSourcesResponse--;
   return o;
@@ -727,32 +727,32 @@ api.ListDataSourcesResponse buildListDataSourcesResponse() {
 void checkListDataSourcesResponse(api.ListDataSourcesResponse o) {
   buildCounterListDataSourcesResponse++;
   if (buildCounterListDataSourcesResponse < 3) {
-    checkUnnamed1582(o.dataSource!);
+    checkUnnamed1593(o.dataSource!);
   }
   buildCounterListDataSourcesResponse--;
 }
 
-core.List<api.Session> buildUnnamed1583() {
+core.List<api.Session> buildUnnamed1594() {
   final o = <api.Session>[];
   o.add(buildSession());
   o.add(buildSession());
   return o;
 }
 
-void checkUnnamed1583(core.List<api.Session> o) {
+void checkUnnamed1594(core.List<api.Session> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSession(o[0]);
   checkSession(o[1]);
 }
 
-core.List<api.Session> buildUnnamed1584() {
+core.List<api.Session> buildUnnamed1595() {
   final o = <api.Session>[];
   o.add(buildSession());
   o.add(buildSession());
   return o;
 }
 
-void checkUnnamed1584(core.List<api.Session> o) {
+void checkUnnamed1595(core.List<api.Session> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSession(o[0]);
   checkSession(o[1]);
@@ -763,10 +763,10 @@ api.ListSessionsResponse buildListSessionsResponse() {
   final o = api.ListSessionsResponse();
   buildCounterListSessionsResponse++;
   if (buildCounterListSessionsResponse < 3) {
-    o.deletedSession = buildUnnamed1583();
+    o.deletedSession = buildUnnamed1594();
     o.hasMoreData = true;
     o.nextPageToken = 'foo';
-    o.session = buildUnnamed1584();
+    o.session = buildUnnamed1595();
   }
   buildCounterListSessionsResponse--;
   return o;
@@ -775,13 +775,13 @@ api.ListSessionsResponse buildListSessionsResponse() {
 void checkListSessionsResponse(api.ListSessionsResponse o) {
   buildCounterListSessionsResponse++;
   if (buildCounterListSessionsResponse < 3) {
-    checkUnnamed1583(o.deletedSession!);
+    checkUnnamed1594(o.deletedSession!);
     unittest.expect(o.hasMoreData!, unittest.isTrue);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed1584(o.session!);
+    checkUnnamed1595(o.session!);
   }
   buildCounterListSessionsResponse--;
 }
@@ -867,14 +867,14 @@ void checkSession(api.Session o) {
   buildCounterSession--;
 }
 
-core.List<api.ValueMapValEntry> buildUnnamed1585() {
+core.List<api.ValueMapValEntry> buildUnnamed1596() {
   final o = <api.ValueMapValEntry>[];
   o.add(buildValueMapValEntry());
   o.add(buildValueMapValEntry());
   return o;
 }
 
-void checkUnnamed1585(core.List<api.ValueMapValEntry> o) {
+void checkUnnamed1596(core.List<api.ValueMapValEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkValueMapValEntry(o[0]);
   checkValueMapValEntry(o[1]);
@@ -887,7 +887,7 @@ api.Value buildValue() {
   if (buildCounterValue < 3) {
     o.fpVal = 42.0;
     o.intVal = 42;
-    o.mapVal = buildUnnamed1585();
+    o.mapVal = buildUnnamed1596();
     o.stringVal = 'foo';
   }
   buildCounterValue--;
@@ -905,7 +905,7 @@ void checkValue(api.Value o) {
       o.intVal!,
       unittest.equals(42),
     );
-    checkUnnamed1585(o.mapVal!);
+    checkUnnamed1596(o.mapVal!);
     unittest.expect(
       o.stringVal!,
       unittest.equals('foo'),
@@ -938,14 +938,14 @@ void checkValueMapValEntry(api.ValueMapValEntry o) {
   buildCounterValueMapValEntry--;
 }
 
-core.List<core.String> buildUnnamed1586() {
+core.List<core.String> buildUnnamed1597() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed1586(core.List<core.String> o) {
+void checkUnnamed1597(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -957,14 +957,14 @@ void checkUnnamed1586(core.List<core.String> o) {
   );
 }
 
-core.List<core.int> buildUnnamed1587() {
+core.List<core.int> buildUnnamed1598() {
   final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
 }
 
-void checkUnnamed1587(core.List<core.int> o) {
+void checkUnnamed1598(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1350,7 +1350,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.FitnessApi(mock).users.dataSources;
       final arg_userId = 'foo';
-      final arg_dataTypeName = buildUnnamed1586();
+      final arg_dataTypeName = buildUnnamed1597();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -1784,7 +1784,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.FitnessApi(mock).users.sessions;
       final arg_userId = 'foo';
-      final arg_activityType = buildUnnamed1587();
+      final arg_activityType = buildUnnamed1598();
       final arg_endTime = 'foo';
       final arg_includeDeleted = true;
       final arg_pageToken = 'foo';
