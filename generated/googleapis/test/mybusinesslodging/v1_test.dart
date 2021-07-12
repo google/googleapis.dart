@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -29,7 +28,7 @@ import '../test_shared.dart';
 
 core.int buildCounterAccessibility = 0;
 api.Accessibility buildAccessibility() {
-  var o = api.Accessibility();
+  final o = api.Accessibility();
   buildCounterAccessibility++;
   if (buildCounterAccessibility < 3) {
     o.mobilityAccessible = true;
@@ -74,7 +73,7 @@ void checkAccessibility(api.Accessibility o) {
 
 core.int buildCounterActivities = 0;
 api.Activities buildActivities() {
-  var o = api.Activities();
+  final o = api.Activities();
   buildCounterActivities++;
   if (buildCounterActivities < 3) {
     o.beachAccess = true;
@@ -210,7 +209,7 @@ void checkActivities(api.Activities o) {
 
 core.int buildCounterBusiness = 0;
 api.Business buildBusiness() {
-  var o = api.Business();
+  final o = api.Business();
   buildCounterBusiness++;
   if (buildCounterBusiness < 3) {
     o.businessCenter = true;
@@ -251,7 +250,7 @@ void checkBusiness(api.Business o) {
 
 core.int buildCounterConnectivity = 0;
 api.Connectivity buildConnectivity() {
-  var o = api.Connectivity();
+  final o = api.Connectivity();
   buildCounterConnectivity++;
   if (buildCounterConnectivity < 3) {
     o.freeWifi = true;
@@ -296,7 +295,7 @@ void checkConnectivity(api.Connectivity o) {
 
 core.int buildCounterEnhancedCleaning = 0;
 api.EnhancedCleaning buildEnhancedCleaning() {
-  var o = api.EnhancedCleaning();
+  final o = api.EnhancedCleaning();
   buildCounterEnhancedCleaning++;
   if (buildCounterEnhancedCleaning < 3) {
     o.commercialGradeDisinfectantCleaning = true;
@@ -355,7 +354,7 @@ void checkEnhancedCleaning(api.EnhancedCleaning o) {
 
 core.int buildCounterFamilies = 0;
 api.Families buildFamilies() {
-  var o = api.Families();
+  final o = api.Families();
   buildCounterFamilies++;
   if (buildCounterFamilies < 3) {
     o.babysitting = true;
@@ -393,7 +392,7 @@ void checkFamilies(api.Families o) {
 
 core.int buildCounterFoodAndDrink = 0;
 api.FoodAndDrink buildFoodAndDrink() {
-  var o = api.FoodAndDrink();
+  final o = api.FoodAndDrink();
   buildCounterFoodAndDrink++;
   if (buildCounterFoodAndDrink < 3) {
     o.bar = true;
@@ -497,7 +496,7 @@ void checkFoodAndDrink(api.FoodAndDrink o) {
 
 core.int buildCounterGetGoogleUpdatedLodgingResponse = 0;
 api.GetGoogleUpdatedLodgingResponse buildGetGoogleUpdatedLodgingResponse() {
-  var o = api.GetGoogleUpdatedLodgingResponse();
+  final o = api.GetGoogleUpdatedLodgingResponse();
   buildCounterGetGoogleUpdatedLodgingResponse++;
   if (buildCounterGetGoogleUpdatedLodgingResponse < 3) {
     o.diffMask = 'foo';
@@ -515,14 +514,14 @@ void checkGetGoogleUpdatedLodgingResponse(
       o.diffMask!,
       unittest.equals('foo'),
     );
-    checkLodging(o.lodging! as api.Lodging);
+    checkLodging(o.lodging!);
   }
   buildCounterGetGoogleUpdatedLodgingResponse--;
 }
 
 core.int buildCounterGuestUnitFeatures = 0;
 api.GuestUnitFeatures buildGuestUnitFeatures() {
-  var o = api.GuestUnitFeatures();
+  final o = api.GuestUnitFeatures();
   buildCounterGuestUnitFeatures++;
   if (buildCounterGuestUnitFeatures < 3) {
     o.bungalowOrVilla = true;
@@ -610,14 +609,14 @@ void checkGuestUnitFeatures(api.GuestUnitFeatures o) {
       o.tierException!,
       unittest.equals('foo'),
     );
-    checkLivingArea(o.totalLivingAreas! as api.LivingArea);
-    checkViewsFromUnit(o.views! as api.ViewsFromUnit);
+    checkLivingArea(o.totalLivingAreas!);
+    checkViewsFromUnit(o.views!);
   }
   buildCounterGuestUnitFeatures--;
 }
 
 core.List<core.String> buildUnnamed5252() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -637,7 +636,7 @@ void checkUnnamed5252(core.List<core.String> o) {
 
 core.int buildCounterGuestUnitType = 0;
 api.GuestUnitType buildGuestUnitType() {
-  var o = api.GuestUnitType();
+  final o = api.GuestUnitType();
   buildCounterGuestUnitType++;
   if (buildCounterGuestUnitType < 3) {
     o.codes = buildUnnamed5252();
@@ -652,7 +651,7 @@ void checkGuestUnitType(api.GuestUnitType o) {
   buildCounterGuestUnitType++;
   if (buildCounterGuestUnitType < 3) {
     checkUnnamed5252(o.codes!);
-    checkGuestUnitFeatures(o.features! as api.GuestUnitFeatures);
+    checkGuestUnitFeatures(o.features!);
     unittest.expect(
       o.label!,
       unittest.equals('foo'),
@@ -663,7 +662,7 @@ void checkGuestUnitType(api.GuestUnitType o) {
 
 core.int buildCounterHealthAndSafety = 0;
 api.HealthAndSafety buildHealthAndSafety() {
-  var o = api.HealthAndSafety();
+  final o = api.HealthAndSafety();
   buildCounterHealthAndSafety++;
   if (buildCounterHealthAndSafety < 3) {
     o.enhancedCleaning = buildEnhancedCleaning();
@@ -679,18 +678,18 @@ api.HealthAndSafety buildHealthAndSafety() {
 void checkHealthAndSafety(api.HealthAndSafety o) {
   buildCounterHealthAndSafety++;
   if (buildCounterHealthAndSafety < 3) {
-    checkEnhancedCleaning(o.enhancedCleaning! as api.EnhancedCleaning);
-    checkIncreasedFoodSafety(o.increasedFoodSafety! as api.IncreasedFoodSafety);
-    checkMinimizedContact(o.minimizedContact! as api.MinimizedContact);
-    checkPersonalProtection(o.personalProtection! as api.PersonalProtection);
-    checkPhysicalDistancing(o.physicalDistancing! as api.PhysicalDistancing);
+    checkEnhancedCleaning(o.enhancedCleaning!);
+    checkIncreasedFoodSafety(o.increasedFoodSafety!);
+    checkMinimizedContact(o.minimizedContact!);
+    checkPersonalProtection(o.personalProtection!);
+    checkPhysicalDistancing(o.physicalDistancing!);
   }
   buildCounterHealthAndSafety--;
 }
 
 core.int buildCounterHousekeeping = 0;
 api.Housekeeping buildHousekeeping() {
-  var o = api.Housekeeping();
+  final o = api.Housekeeping();
   buildCounterHousekeeping++;
   if (buildCounterHousekeeping < 3) {
     o.dailyHousekeeping = true;
@@ -728,7 +727,7 @@ void checkHousekeeping(api.Housekeeping o) {
 
 core.int buildCounterIncreasedFoodSafety = 0;
 api.IncreasedFoodSafety buildIncreasedFoodSafety() {
-  var o = api.IncreasedFoodSafety();
+  final o = api.IncreasedFoodSafety();
   buildCounterIncreasedFoodSafety++;
   if (buildCounterIncreasedFoodSafety < 3) {
     o.diningAreasAdditionalSanitation = true;
@@ -781,7 +780,7 @@ void checkIncreasedFoodSafety(api.IncreasedFoodSafety o) {
 
 core.int buildCounterLanguageSpoken = 0;
 api.LanguageSpoken buildLanguageSpoken() {
-  var o = api.LanguageSpoken();
+  final o = api.LanguageSpoken();
   buildCounterLanguageSpoken++;
   if (buildCounterLanguageSpoken < 3) {
     o.languageCode = 'foo';
@@ -810,7 +809,7 @@ void checkLanguageSpoken(api.LanguageSpoken o) {
 
 core.int buildCounterLivingArea = 0;
 api.LivingArea buildLivingArea() {
-  var o = api.LivingArea();
+  final o = api.LivingArea();
   buildCounterLivingArea++;
   if (buildCounterLivingArea < 3) {
     o.accessibility = buildLivingAreaAccessibility();
@@ -826,19 +825,18 @@ api.LivingArea buildLivingArea() {
 void checkLivingArea(api.LivingArea o) {
   buildCounterLivingArea++;
   if (buildCounterLivingArea < 3) {
-    checkLivingAreaAccessibility(
-        o.accessibility! as api.LivingAreaAccessibility);
-    checkLivingAreaEating(o.eating! as api.LivingAreaEating);
-    checkLivingAreaFeatures(o.features! as api.LivingAreaFeatures);
-    checkLivingAreaLayout(o.layout! as api.LivingAreaLayout);
-    checkLivingAreaSleeping(o.sleeping! as api.LivingAreaSleeping);
+    checkLivingAreaAccessibility(o.accessibility!);
+    checkLivingAreaEating(o.eating!);
+    checkLivingAreaFeatures(o.features!);
+    checkLivingAreaLayout(o.layout!);
+    checkLivingAreaSleeping(o.sleeping!);
   }
   buildCounterLivingArea--;
 }
 
 core.int buildCounterLivingAreaAccessibility = 0;
 api.LivingAreaAccessibility buildLivingAreaAccessibility() {
-  var o = api.LivingAreaAccessibility();
+  final o = api.LivingAreaAccessibility();
   buildCounterLivingAreaAccessibility++;
   if (buildCounterLivingAreaAccessibility < 3) {
     o.adaCompliantUnit = true;
@@ -911,7 +909,7 @@ void checkLivingAreaAccessibility(api.LivingAreaAccessibility o) {
 
 core.int buildCounterLivingAreaEating = 0;
 api.LivingAreaEating buildLivingAreaEating() {
-  var o = api.LivingAreaEating();
+  final o = api.LivingAreaEating();
   buildCounterLivingAreaEating++;
   if (buildCounterLivingAreaEating < 3) {
     o.coffeeMaker = true;
@@ -1040,7 +1038,7 @@ void checkLivingAreaEating(api.LivingAreaEating o) {
 
 core.int buildCounterLivingAreaFeatures = 0;
 api.LivingAreaFeatures buildLivingAreaFeatures() {
-  var o = api.LivingAreaFeatures();
+  final o = api.LivingAreaFeatures();
   buildCounterLivingAreaFeatures++;
   if (buildCounterLivingAreaFeatures < 3) {
     o.airConditioning = true;
@@ -1197,7 +1195,7 @@ void checkLivingAreaFeatures(api.LivingAreaFeatures o) {
 
 core.int buildCounterLivingAreaLayout = 0;
 api.LivingAreaLayout buildLivingAreaLayout() {
-  var o = api.LivingAreaLayout();
+  final o = api.LivingAreaLayout();
   buildCounterLivingAreaLayout++;
   if (buildCounterLivingAreaLayout < 3) {
     o.balcony = true;
@@ -1259,7 +1257,7 @@ void checkLivingAreaLayout(api.LivingAreaLayout o) {
 
 core.int buildCounterLivingAreaSleeping = 0;
 api.LivingAreaSleeping buildLivingAreaSleeping() {
-  var o = api.LivingAreaSleeping();
+  final o = api.LivingAreaSleeping();
   buildCounterLivingAreaSleeping++;
   if (buildCounterLivingAreaSleeping < 3) {
     o.bedsCount = 42;
@@ -1403,7 +1401,7 @@ void checkLivingAreaSleeping(api.LivingAreaSleeping o) {
 }
 
 core.List<api.GuestUnitType> buildUnnamed5253() {
-  var o = <api.GuestUnitType>[];
+  final o = <api.GuestUnitType>[];
   o.add(buildGuestUnitType());
   o.add(buildGuestUnitType());
   return o;
@@ -1411,13 +1409,13 @@ core.List<api.GuestUnitType> buildUnnamed5253() {
 
 void checkUnnamed5253(core.List<api.GuestUnitType> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGuestUnitType(o[0] as api.GuestUnitType);
-  checkGuestUnitType(o[1] as api.GuestUnitType);
+  checkGuestUnitType(o[0]);
+  checkGuestUnitType(o[1]);
 }
 
 core.int buildCounterLodging = 0;
 api.Lodging buildLodging() {
-  var o = api.Lodging();
+  final o = api.Lodging();
   buildCounterLodging++;
   if (buildCounterLodging < 3) {
     o.accessibility = buildAccessibility();
@@ -1450,38 +1448,38 @@ api.Lodging buildLodging() {
 void checkLodging(api.Lodging o) {
   buildCounterLodging++;
   if (buildCounterLodging < 3) {
-    checkAccessibility(o.accessibility! as api.Accessibility);
-    checkActivities(o.activities! as api.Activities);
-    checkGuestUnitFeatures(o.allUnits! as api.GuestUnitFeatures);
-    checkBusiness(o.business! as api.Business);
-    checkLivingArea(o.commonLivingArea! as api.LivingArea);
-    checkConnectivity(o.connectivity! as api.Connectivity);
-    checkFamilies(o.families! as api.Families);
-    checkFoodAndDrink(o.foodAndDrink! as api.FoodAndDrink);
+    checkAccessibility(o.accessibility!);
+    checkActivities(o.activities!);
+    checkGuestUnitFeatures(o.allUnits!);
+    checkBusiness(o.business!);
+    checkLivingArea(o.commonLivingArea!);
+    checkConnectivity(o.connectivity!);
+    checkFamilies(o.families!);
+    checkFoodAndDrink(o.foodAndDrink!);
     checkUnnamed5253(o.guestUnits!);
-    checkHealthAndSafety(o.healthAndSafety! as api.HealthAndSafety);
-    checkHousekeeping(o.housekeeping! as api.Housekeeping);
-    checkLodgingMetadata(o.metadata! as api.LodgingMetadata);
+    checkHealthAndSafety(o.healthAndSafety!);
+    checkHousekeeping(o.housekeeping!);
+    checkLodgingMetadata(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkParking(o.parking! as api.Parking);
-    checkPets(o.pets! as api.Pets);
-    checkPolicies(o.policies! as api.Policies);
-    checkPools(o.pools! as api.Pools);
-    checkProperty(o.property! as api.Property);
-    checkServices(o.services! as api.Services);
-    checkGuestUnitFeatures(o.someUnits! as api.GuestUnitFeatures);
-    checkTransportation(o.transportation! as api.Transportation);
-    checkWellness(o.wellness! as api.Wellness);
+    checkParking(o.parking!);
+    checkPets(o.pets!);
+    checkPolicies(o.policies!);
+    checkPools(o.pools!);
+    checkProperty(o.property!);
+    checkServices(o.services!);
+    checkGuestUnitFeatures(o.someUnits!);
+    checkTransportation(o.transportation!);
+    checkWellness(o.wellness!);
   }
   buildCounterLodging--;
 }
 
 core.int buildCounterLodgingMetadata = 0;
 api.LodgingMetadata buildLodgingMetadata() {
-  var o = api.LodgingMetadata();
+  final o = api.LodgingMetadata();
   buildCounterLodgingMetadata++;
   if (buildCounterLodgingMetadata < 3) {
     o.updateTime = 'foo';
@@ -1503,7 +1501,7 @@ void checkLodgingMetadata(api.LodgingMetadata o) {
 
 core.int buildCounterMinimizedContact = 0;
 api.MinimizedContact buildMinimizedContact() {
-  var o = api.MinimizedContact();
+  final o = api.MinimizedContact();
   buildCounterMinimizedContact++;
   if (buildCounterMinimizedContact < 3) {
     o.contactlessCheckinCheckout = true;
@@ -1569,7 +1567,7 @@ void checkMinimizedContact(api.MinimizedContact o) {
 
 core.int buildCounterParking = 0;
 api.Parking buildParking() {
-  var o = api.Parking();
+  final o = api.Parking();
   buildCounterParking++;
   if (buildCounterParking < 3) {
     o.electricCarChargingStations = true;
@@ -1635,7 +1633,7 @@ void checkParking(api.Parking o) {
 
 core.int buildCounterPaymentOptions = 0;
 api.PaymentOptions buildPaymentOptions() {
-  var o = api.PaymentOptions();
+  final o = api.PaymentOptions();
   buildCounterPaymentOptions++;
   if (buildCounterPaymentOptions < 3) {
     o.cash = true;
@@ -1687,7 +1685,7 @@ void checkPaymentOptions(api.PaymentOptions o) {
 
 core.int buildCounterPersonalProtection = 0;
 api.PersonalProtection buildPersonalProtection() {
-  var o = api.PersonalProtection();
+  final o = api.PersonalProtection();
   buildCounterPersonalProtection++;
   if (buildCounterPersonalProtection < 3) {
     o.commonAreasOfferSanitizingItems = true;
@@ -1732,7 +1730,7 @@ void checkPersonalProtection(api.PersonalProtection o) {
 
 core.int buildCounterPets = 0;
 api.Pets buildPets() {
-  var o = api.Pets();
+  final o = api.Pets();
   buildCounterPets++;
   if (buildCounterPets < 3) {
     o.catsAllowed = true;
@@ -1777,7 +1775,7 @@ void checkPets(api.Pets o) {
 
 core.int buildCounterPhysicalDistancing = 0;
 api.PhysicalDistancing buildPhysicalDistancing() {
-  var o = api.PhysicalDistancing();
+  final o = api.PhysicalDistancing();
   buildCounterPhysicalDistancing++;
   if (buildCounterPhysicalDistancing < 3) {
     o.commonAreasPhysicalDistancingArranged = true;
@@ -1829,7 +1827,7 @@ void checkPhysicalDistancing(api.PhysicalDistancing o) {
 
 core.int buildCounterPolicies = 0;
 api.Policies buildPolicies() {
-  var o = api.Policies();
+  final o = api.Policies();
   buildCounterPolicies++;
   if (buildCounterPolicies < 3) {
     o.allInclusiveAvailable = true;
@@ -1867,12 +1865,12 @@ void checkPolicies(api.Policies o) {
       o.allInclusiveOnlyException!,
       unittest.equals('foo'),
     );
-    checkTimeOfDay(o.checkinTime! as api.TimeOfDay);
+    checkTimeOfDay(o.checkinTime!);
     unittest.expect(
       o.checkinTimeException!,
       unittest.equals('foo'),
     );
-    checkTimeOfDay(o.checkoutTime! as api.TimeOfDay);
+    checkTimeOfDay(o.checkoutTime!);
     unittest.expect(
       o.checkoutTimeException!,
       unittest.equals('foo'),
@@ -1898,7 +1896,7 @@ void checkPolicies(api.Policies o) {
       o.maxKidsStayFreeCountException!,
       unittest.equals('foo'),
     );
-    checkPaymentOptions(o.paymentOptions! as api.PaymentOptions);
+    checkPaymentOptions(o.paymentOptions!);
     unittest.expect(o.smokeFreeProperty!, unittest.isTrue);
     unittest.expect(
       o.smokeFreePropertyException!,
@@ -1910,7 +1908,7 @@ void checkPolicies(api.Policies o) {
 
 core.int buildCounterPools = 0;
 api.Pools buildPools() {
-  var o = api.Pools();
+  final o = api.Pools();
   buildCounterPools++;
   if (buildCounterPools < 3) {
     o.adultPool = true;
@@ -2034,7 +2032,7 @@ void checkPools(api.Pools o) {
 
 core.int buildCounterProperty = 0;
 api.Property buildProperty() {
-  var o = api.Property();
+  final o = api.Property();
   buildCounterProperty++;
   if (buildCounterProperty < 3) {
     o.builtYear = 42;
@@ -2090,7 +2088,7 @@ void checkProperty(api.Property o) {
 }
 
 core.List<api.LanguageSpoken> buildUnnamed5254() {
-  var o = <api.LanguageSpoken>[];
+  final o = <api.LanguageSpoken>[];
   o.add(buildLanguageSpoken());
   o.add(buildLanguageSpoken());
   return o;
@@ -2098,13 +2096,13 @@ core.List<api.LanguageSpoken> buildUnnamed5254() {
 
 void checkUnnamed5254(core.List<api.LanguageSpoken> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLanguageSpoken(o[0] as api.LanguageSpoken);
-  checkLanguageSpoken(o[1] as api.LanguageSpoken);
+  checkLanguageSpoken(o[0]);
+  checkLanguageSpoken(o[1]);
 }
 
 core.int buildCounterServices = 0;
 api.Services buildServices() {
-  var o = api.Services();
+  final o = api.Services();
   buildCounterServices++;
   if (buildCounterServices < 3) {
     o.baggageStorage = true;
@@ -2207,7 +2205,7 @@ void checkServices(api.Services o) {
 
 core.int buildCounterTimeOfDay = 0;
 api.TimeOfDay buildTimeOfDay() {
-  var o = api.TimeOfDay();
+  final o = api.TimeOfDay();
   buildCounterTimeOfDay++;
   if (buildCounterTimeOfDay < 3) {
     o.hours = 42;
@@ -2244,7 +2242,7 @@ void checkTimeOfDay(api.TimeOfDay o) {
 
 core.int buildCounterTransportation = 0;
 api.Transportation buildTransportation() {
-  var o = api.Transportation();
+  final o = api.Transportation();
   buildCounterTransportation++;
   if (buildCounterTransportation < 3) {
     o.airportShuttle = true;
@@ -2310,7 +2308,7 @@ void checkTransportation(api.Transportation o) {
 
 core.int buildCounterViewsFromUnit = 0;
 api.ViewsFromUnit buildViewsFromUnit() {
-  var o = api.ViewsFromUnit();
+  final o = api.ViewsFromUnit();
   buildCounterViewsFromUnit++;
   if (buildCounterViewsFromUnit < 3) {
     o.beachView = true;
@@ -2383,7 +2381,7 @@ void checkViewsFromUnit(api.ViewsFromUnit o) {
 
 core.int buildCounterWellness = 0;
 api.Wellness buildWellness() {
-  var o = api.Wellness();
+  final o = api.Wellness();
   buildCounterWellness++;
   if (buildCounterWellness < 3) {
     o.doctorOnCall = true;
@@ -2478,396 +2476,397 @@ void checkWellness(api.Wellness o) {
 void main() {
   unittest.group('obj-schema-Accessibility', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccessibility();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Accessibility.fromJson(
+      final o = buildAccessibility();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Accessibility.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccessibility(od as api.Accessibility);
+      checkAccessibility(od);
     });
   });
 
   unittest.group('obj-schema-Activities', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildActivities();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildActivities();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Activities.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkActivities(od as api.Activities);
+      checkActivities(od);
     });
   });
 
   unittest.group('obj-schema-Business', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBusiness();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildBusiness();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Business.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkBusiness(od as api.Business);
+      checkBusiness(od);
     });
   });
 
   unittest.group('obj-schema-Connectivity', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildConnectivity();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Connectivity.fromJson(
+      final o = buildConnectivity();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Connectivity.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkConnectivity(od as api.Connectivity);
+      checkConnectivity(od);
     });
   });
 
   unittest.group('obj-schema-EnhancedCleaning', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildEnhancedCleaning();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.EnhancedCleaning.fromJson(
+      final o = buildEnhancedCleaning();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EnhancedCleaning.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkEnhancedCleaning(od as api.EnhancedCleaning);
+      checkEnhancedCleaning(od);
     });
   });
 
   unittest.group('obj-schema-Families', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildFamilies();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildFamilies();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Families.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkFamilies(od as api.Families);
+      checkFamilies(od);
     });
   });
 
   unittest.group('obj-schema-FoodAndDrink', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildFoodAndDrink();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.FoodAndDrink.fromJson(
+      final o = buildFoodAndDrink();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FoodAndDrink.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkFoodAndDrink(od as api.FoodAndDrink);
+      checkFoodAndDrink(od);
     });
   });
 
   unittest.group('obj-schema-GetGoogleUpdatedLodgingResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGetGoogleUpdatedLodgingResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GetGoogleUpdatedLodgingResponse.fromJson(
+      final o = buildGetGoogleUpdatedLodgingResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GetGoogleUpdatedLodgingResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGetGoogleUpdatedLodgingResponse(
-          od as api.GetGoogleUpdatedLodgingResponse);
+      checkGetGoogleUpdatedLodgingResponse(od);
     });
   });
 
   unittest.group('obj-schema-GuestUnitFeatures', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGuestUnitFeatures();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GuestUnitFeatures.fromJson(
+      final o = buildGuestUnitFeatures();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GuestUnitFeatures.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGuestUnitFeatures(od as api.GuestUnitFeatures);
+      checkGuestUnitFeatures(od);
     });
   });
 
   unittest.group('obj-schema-GuestUnitType', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGuestUnitType();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GuestUnitType.fromJson(
+      final o = buildGuestUnitType();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GuestUnitType.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGuestUnitType(od as api.GuestUnitType);
+      checkGuestUnitType(od);
     });
   });
 
   unittest.group('obj-schema-HealthAndSafety', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildHealthAndSafety();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.HealthAndSafety.fromJson(
+      final o = buildHealthAndSafety();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.HealthAndSafety.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkHealthAndSafety(od as api.HealthAndSafety);
+      checkHealthAndSafety(od);
     });
   });
 
   unittest.group('obj-schema-Housekeeping', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildHousekeeping();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Housekeeping.fromJson(
+      final o = buildHousekeeping();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Housekeeping.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkHousekeeping(od as api.Housekeeping);
+      checkHousekeeping(od);
     });
   });
 
   unittest.group('obj-schema-IncreasedFoodSafety', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildIncreasedFoodSafety();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.IncreasedFoodSafety.fromJson(
+      final o = buildIncreasedFoodSafety();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.IncreasedFoodSafety.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkIncreasedFoodSafety(od as api.IncreasedFoodSafety);
+      checkIncreasedFoodSafety(od);
     });
   });
 
   unittest.group('obj-schema-LanguageSpoken', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLanguageSpoken();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LanguageSpoken.fromJson(
+      final o = buildLanguageSpoken();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LanguageSpoken.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLanguageSpoken(od as api.LanguageSpoken);
+      checkLanguageSpoken(od);
     });
   });
 
   unittest.group('obj-schema-LivingArea', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLivingArea();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildLivingArea();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.LivingArea.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkLivingArea(od as api.LivingArea);
+      checkLivingArea(od);
     });
   });
 
   unittest.group('obj-schema-LivingAreaAccessibility', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLivingAreaAccessibility();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LivingAreaAccessibility.fromJson(
+      final o = buildLivingAreaAccessibility();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LivingAreaAccessibility.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLivingAreaAccessibility(od as api.LivingAreaAccessibility);
+      checkLivingAreaAccessibility(od);
     });
   });
 
   unittest.group('obj-schema-LivingAreaEating', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLivingAreaEating();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LivingAreaEating.fromJson(
+      final o = buildLivingAreaEating();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LivingAreaEating.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLivingAreaEating(od as api.LivingAreaEating);
+      checkLivingAreaEating(od);
     });
   });
 
   unittest.group('obj-schema-LivingAreaFeatures', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLivingAreaFeatures();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LivingAreaFeatures.fromJson(
+      final o = buildLivingAreaFeatures();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LivingAreaFeatures.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLivingAreaFeatures(od as api.LivingAreaFeatures);
+      checkLivingAreaFeatures(od);
     });
   });
 
   unittest.group('obj-schema-LivingAreaLayout', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLivingAreaLayout();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LivingAreaLayout.fromJson(
+      final o = buildLivingAreaLayout();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LivingAreaLayout.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLivingAreaLayout(od as api.LivingAreaLayout);
+      checkLivingAreaLayout(od);
     });
   });
 
   unittest.group('obj-schema-LivingAreaSleeping', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLivingAreaSleeping();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LivingAreaSleeping.fromJson(
+      final o = buildLivingAreaSleeping();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LivingAreaSleeping.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLivingAreaSleeping(od as api.LivingAreaSleeping);
+      checkLivingAreaSleeping(od);
     });
   });
 
   unittest.group('obj-schema-Lodging', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLodging();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildLodging();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Lodging.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkLodging(od as api.Lodging);
+      checkLodging(od);
     });
   });
 
   unittest.group('obj-schema-LodgingMetadata', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLodgingMetadata();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LodgingMetadata.fromJson(
+      final o = buildLodgingMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LodgingMetadata.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLodgingMetadata(od as api.LodgingMetadata);
+      checkLodgingMetadata(od);
     });
   });
 
   unittest.group('obj-schema-MinimizedContact', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildMinimizedContact();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.MinimizedContact.fromJson(
+      final o = buildMinimizedContact();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MinimizedContact.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkMinimizedContact(od as api.MinimizedContact);
+      checkMinimizedContact(od);
     });
   });
 
   unittest.group('obj-schema-Parking', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildParking();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildParking();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Parking.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkParking(od as api.Parking);
+      checkParking(od);
     });
   });
 
   unittest.group('obj-schema-PaymentOptions', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPaymentOptions();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PaymentOptions.fromJson(
+      final o = buildPaymentOptions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PaymentOptions.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPaymentOptions(od as api.PaymentOptions);
+      checkPaymentOptions(od);
     });
   });
 
   unittest.group('obj-schema-PersonalProtection', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPersonalProtection();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PersonalProtection.fromJson(
+      final o = buildPersonalProtection();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PersonalProtection.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPersonalProtection(od as api.PersonalProtection);
+      checkPersonalProtection(od);
     });
   });
 
   unittest.group('obj-schema-Pets', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPets();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Pets.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkPets(od as api.Pets);
+      final o = buildPets();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Pets.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkPets(od);
     });
   });
 
   unittest.group('obj-schema-PhysicalDistancing', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPhysicalDistancing();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PhysicalDistancing.fromJson(
+      final o = buildPhysicalDistancing();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PhysicalDistancing.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPhysicalDistancing(od as api.PhysicalDistancing);
+      checkPhysicalDistancing(od);
     });
   });
 
   unittest.group('obj-schema-Policies', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPolicies();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildPolicies();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Policies.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkPolicies(od as api.Policies);
+      checkPolicies(od);
     });
   });
 
   unittest.group('obj-schema-Pools', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPools();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Pools.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkPools(od as api.Pools);
+      final o = buildPools();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Pools.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkPools(od);
     });
   });
 
   unittest.group('obj-schema-Property', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProperty();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildProperty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Property.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkProperty(od as api.Property);
+      checkProperty(od);
     });
   });
 
   unittest.group('obj-schema-Services', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildServices();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildServices();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Services.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkServices(od as api.Services);
+      checkServices(od);
     });
   });
 
   unittest.group('obj-schema-TimeOfDay', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTimeOfDay();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildTimeOfDay();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.TimeOfDay.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkTimeOfDay(od as api.TimeOfDay);
+      checkTimeOfDay(od);
     });
   });
 
   unittest.group('obj-schema-Transportation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTransportation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Transportation.fromJson(
+      final o = buildTransportation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Transportation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTransportation(od as api.Transportation);
+      checkTransportation(od);
     });
   });
 
   unittest.group('obj-schema-ViewsFromUnit', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildViewsFromUnit();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ViewsFromUnit.fromJson(
+      final o = buildViewsFromUnit();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ViewsFromUnit.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkViewsFromUnit(od as api.ViewsFromUnit);
+      checkViewsFromUnit(od);
     });
   });
 
   unittest.group('obj-schema-Wellness', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildWellness();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildWellness();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Wellness.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkWellness(od as api.Wellness);
+      checkWellness(od);
     });
   });
 
   unittest.group('resource-LocationsResource', () {
     unittest.test('method--getLodging', () async {
-      var mock = HttpServerMock();
-      var res = api.MyBusinessLodgingApi(mock).locations;
-      var arg_name = 'foo';
-      var arg_readMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.MyBusinessLodgingApi(mock).locations;
+      final arg_name = 'foo';
+      final arg_readMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2875,18 +2874,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["readMask"]!.first,
+          queryMap['readMask']!.first,
           unittest.equals(arg_readMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildLodging());
+        final resp = convert.json.encode(buildLodging());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.getLodging(arg_name,
@@ -2895,42 +2894,42 @@ void main() {
     });
 
     unittest.test('method--updateLodging', () async {
-      var mock = HttpServerMock();
-      var res = api.MyBusinessLodgingApi(mock).locations;
-      var arg_request = buildLodging();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.MyBusinessLodgingApi(mock).locations;
+      final arg_request = buildLodging();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Lodging.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkLodging(obj as api.Lodging);
+        checkLodging(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2938,18 +2937,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildLodging());
+        final resp = convert.json.encode(buildLodging());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.updateLodging(arg_request, arg_name,
@@ -2960,37 +2959,37 @@ void main() {
 
   unittest.group('resource-LocationsLodgingResource', () {
     unittest.test('method--getGoogleUpdated', () async {
-      var mock = HttpServerMock();
-      var res = api.MyBusinessLodgingApi(mock).locations.lodging;
-      var arg_name = 'foo';
-      var arg_readMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.MyBusinessLodgingApi(mock).locations.lodging;
+      final arg_name = 'foo';
+      final arg_readMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2998,18 +2997,19 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["readMask"]!.first,
+          queryMap['readMask']!.first,
           unittest.equals(arg_readMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGetGoogleUpdatedLodgingResponse());
+        final resp =
+            convert.json.encode(buildGetGoogleUpdatedLodgingResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.getGoogleUpdated(arg_name,

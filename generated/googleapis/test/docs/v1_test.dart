@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -28,7 +27,7 @@ import 'package:test/test.dart' as unittest;
 import '../test_shared.dart';
 
 core.List<core.String> buildUnnamed7269() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -47,7 +46,7 @@ void checkUnnamed7269(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed7270() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -66,7 +65,7 @@ void checkUnnamed7270(core.List<core.String> o) {
 }
 
 core.Map<core.String, api.SuggestedTextStyle> buildUnnamed7271() {
-  var o = <core.String, api.SuggestedTextStyle>{};
+  final o = <core.String, api.SuggestedTextStyle>{};
   o['x'] = buildSuggestedTextStyle();
   o['y'] = buildSuggestedTextStyle();
   return o;
@@ -74,13 +73,13 @@ core.Map<core.String, api.SuggestedTextStyle> buildUnnamed7271() {
 
 void checkUnnamed7271(core.Map<core.String, api.SuggestedTextStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedTextStyle(o['x']! as api.SuggestedTextStyle);
-  checkSuggestedTextStyle(o['y']! as api.SuggestedTextStyle);
+  checkSuggestedTextStyle(o['x']!);
+  checkSuggestedTextStyle(o['y']!);
 }
 
 core.int buildCounterAutoText = 0;
 api.AutoText buildAutoText() {
-  var o = api.AutoText();
+  final o = api.AutoText();
   buildCounterAutoText++;
   if (buildCounterAutoText < 3) {
     o.suggestedDeletionIds = buildUnnamed7269();
@@ -99,7 +98,7 @@ void checkAutoText(api.AutoText o) {
     checkUnnamed7269(o.suggestedDeletionIds!);
     checkUnnamed7270(o.suggestedInsertionIds!);
     checkUnnamed7271(o.suggestedTextStyleChanges!);
-    checkTextStyle(o.textStyle! as api.TextStyle);
+    checkTextStyle(o.textStyle!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -110,7 +109,7 @@ void checkAutoText(api.AutoText o) {
 
 core.int buildCounterBackground = 0;
 api.Background buildBackground() {
-  var o = api.Background();
+  final o = api.Background();
   buildCounterBackground++;
   if (buildCounterBackground < 3) {
     o.color = buildOptionalColor();
@@ -122,14 +121,14 @@ api.Background buildBackground() {
 void checkBackground(api.Background o) {
   buildCounterBackground++;
   if (buildCounterBackground < 3) {
-    checkOptionalColor(o.color! as api.OptionalColor);
+    checkOptionalColor(o.color!);
   }
   buildCounterBackground--;
 }
 
 core.int buildCounterBackgroundSuggestionState = 0;
 api.BackgroundSuggestionState buildBackgroundSuggestionState() {
-  var o = api.BackgroundSuggestionState();
+  final o = api.BackgroundSuggestionState();
   buildCounterBackgroundSuggestionState++;
   if (buildCounterBackgroundSuggestionState < 3) {
     o.backgroundColorSuggested = true;
@@ -147,7 +146,7 @@ void checkBackgroundSuggestionState(api.BackgroundSuggestionState o) {
 }
 
 core.List<api.Request> buildUnnamed7272() {
-  var o = <api.Request>[];
+  final o = <api.Request>[];
   o.add(buildRequest());
   o.add(buildRequest());
   return o;
@@ -155,13 +154,13 @@ core.List<api.Request> buildUnnamed7272() {
 
 void checkUnnamed7272(core.List<api.Request> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRequest(o[0] as api.Request);
-  checkRequest(o[1] as api.Request);
+  checkRequest(o[0]);
+  checkRequest(o[1]);
 }
 
 core.int buildCounterBatchUpdateDocumentRequest = 0;
 api.BatchUpdateDocumentRequest buildBatchUpdateDocumentRequest() {
-  var o = api.BatchUpdateDocumentRequest();
+  final o = api.BatchUpdateDocumentRequest();
   buildCounterBatchUpdateDocumentRequest++;
   if (buildCounterBatchUpdateDocumentRequest < 3) {
     o.requests = buildUnnamed7272();
@@ -175,13 +174,13 @@ void checkBatchUpdateDocumentRequest(api.BatchUpdateDocumentRequest o) {
   buildCounterBatchUpdateDocumentRequest++;
   if (buildCounterBatchUpdateDocumentRequest < 3) {
     checkUnnamed7272(o.requests!);
-    checkWriteControl(o.writeControl! as api.WriteControl);
+    checkWriteControl(o.writeControl!);
   }
   buildCounterBatchUpdateDocumentRequest--;
 }
 
 core.List<api.Response> buildUnnamed7273() {
-  var o = <api.Response>[];
+  final o = <api.Response>[];
   o.add(buildResponse());
   o.add(buildResponse());
   return o;
@@ -189,13 +188,13 @@ core.List<api.Response> buildUnnamed7273() {
 
 void checkUnnamed7273(core.List<api.Response> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkResponse(o[0] as api.Response);
-  checkResponse(o[1] as api.Response);
+  checkResponse(o[0]);
+  checkResponse(o[1]);
 }
 
 core.int buildCounterBatchUpdateDocumentResponse = 0;
 api.BatchUpdateDocumentResponse buildBatchUpdateDocumentResponse() {
-  var o = api.BatchUpdateDocumentResponse();
+  final o = api.BatchUpdateDocumentResponse();
   buildCounterBatchUpdateDocumentResponse++;
   if (buildCounterBatchUpdateDocumentResponse < 3) {
     o.documentId = 'foo';
@@ -214,13 +213,13 @@ void checkBatchUpdateDocumentResponse(api.BatchUpdateDocumentResponse o) {
       unittest.equals('foo'),
     );
     checkUnnamed7273(o.replies!);
-    checkWriteControl(o.writeControl! as api.WriteControl);
+    checkWriteControl(o.writeControl!);
   }
   buildCounterBatchUpdateDocumentResponse--;
 }
 
 core.List<api.StructuralElement> buildUnnamed7274() {
-  var o = <api.StructuralElement>[];
+  final o = <api.StructuralElement>[];
   o.add(buildStructuralElement());
   o.add(buildStructuralElement());
   return o;
@@ -228,13 +227,13 @@ core.List<api.StructuralElement> buildUnnamed7274() {
 
 void checkUnnamed7274(core.List<api.StructuralElement> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkStructuralElement(o[0] as api.StructuralElement);
-  checkStructuralElement(o[1] as api.StructuralElement);
+  checkStructuralElement(o[0]);
+  checkStructuralElement(o[1]);
 }
 
 core.int buildCounterBody = 0;
 api.Body buildBody() {
-  var o = api.Body();
+  final o = api.Body();
   buildCounterBody++;
   if (buildCounterBody < 3) {
     o.content = buildUnnamed7274();
@@ -253,7 +252,7 @@ void checkBody(api.Body o) {
 
 core.int buildCounterBullet = 0;
 api.Bullet buildBullet() {
-  var o = api.Bullet();
+  final o = api.Bullet();
   buildCounterBullet++;
   if (buildCounterBullet < 3) {
     o.listId = 'foo';
@@ -275,14 +274,14 @@ void checkBullet(api.Bullet o) {
       o.nestingLevel!,
       unittest.equals(42),
     );
-    checkTextStyle(o.textStyle! as api.TextStyle);
+    checkTextStyle(o.textStyle!);
   }
   buildCounterBullet--;
 }
 
 core.int buildCounterBulletSuggestionState = 0;
 api.BulletSuggestionState buildBulletSuggestionState() {
-  var o = api.BulletSuggestionState();
+  final o = api.BulletSuggestionState();
   buildCounterBulletSuggestionState++;
   if (buildCounterBulletSuggestionState < 3) {
     o.listIdSuggested = true;
@@ -298,15 +297,14 @@ void checkBulletSuggestionState(api.BulletSuggestionState o) {
   if (buildCounterBulletSuggestionState < 3) {
     unittest.expect(o.listIdSuggested!, unittest.isTrue);
     unittest.expect(o.nestingLevelSuggested!, unittest.isTrue);
-    checkTextStyleSuggestionState(
-        o.textStyleSuggestionState! as api.TextStyleSuggestionState);
+    checkTextStyleSuggestionState(o.textStyleSuggestionState!);
   }
   buildCounterBulletSuggestionState--;
 }
 
 core.int buildCounterColor = 0;
 api.Color buildColor() {
-  var o = api.Color();
+  final o = api.Color();
   buildCounterColor++;
   if (buildCounterColor < 3) {
     o.rgbColor = buildRgbColor();
@@ -318,13 +316,13 @@ api.Color buildColor() {
 void checkColor(api.Color o) {
   buildCounterColor++;
   if (buildCounterColor < 3) {
-    checkRgbColor(o.rgbColor! as api.RgbColor);
+    checkRgbColor(o.rgbColor!);
   }
   buildCounterColor--;
 }
 
 core.List<core.String> buildUnnamed7275() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -343,7 +341,7 @@ void checkUnnamed7275(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed7276() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -362,7 +360,7 @@ void checkUnnamed7276(core.List<core.String> o) {
 }
 
 core.Map<core.String, api.SuggestedTextStyle> buildUnnamed7277() {
-  var o = <core.String, api.SuggestedTextStyle>{};
+  final o = <core.String, api.SuggestedTextStyle>{};
   o['x'] = buildSuggestedTextStyle();
   o['y'] = buildSuggestedTextStyle();
   return o;
@@ -370,13 +368,13 @@ core.Map<core.String, api.SuggestedTextStyle> buildUnnamed7277() {
 
 void checkUnnamed7277(core.Map<core.String, api.SuggestedTextStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedTextStyle(o['x']! as api.SuggestedTextStyle);
-  checkSuggestedTextStyle(o['y']! as api.SuggestedTextStyle);
+  checkSuggestedTextStyle(o['x']!);
+  checkSuggestedTextStyle(o['y']!);
 }
 
 core.int buildCounterColumnBreak = 0;
 api.ColumnBreak buildColumnBreak() {
-  var o = api.ColumnBreak();
+  final o = api.ColumnBreak();
   buildCounterColumnBreak++;
   if (buildCounterColumnBreak < 3) {
     o.suggestedDeletionIds = buildUnnamed7275();
@@ -394,14 +392,14 @@ void checkColumnBreak(api.ColumnBreak o) {
     checkUnnamed7275(o.suggestedDeletionIds!);
     checkUnnamed7276(o.suggestedInsertionIds!);
     checkUnnamed7277(o.suggestedTextStyleChanges!);
-    checkTextStyle(o.textStyle! as api.TextStyle);
+    checkTextStyle(o.textStyle!);
   }
   buildCounterColumnBreak--;
 }
 
 core.int buildCounterCreateFooterRequest = 0;
 api.CreateFooterRequest buildCreateFooterRequest() {
-  var o = api.CreateFooterRequest();
+  final o = api.CreateFooterRequest();
   buildCounterCreateFooterRequest++;
   if (buildCounterCreateFooterRequest < 3) {
     o.sectionBreakLocation = buildLocation();
@@ -414,7 +412,7 @@ api.CreateFooterRequest buildCreateFooterRequest() {
 void checkCreateFooterRequest(api.CreateFooterRequest o) {
   buildCounterCreateFooterRequest++;
   if (buildCounterCreateFooterRequest < 3) {
-    checkLocation(o.sectionBreakLocation! as api.Location);
+    checkLocation(o.sectionBreakLocation!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -425,7 +423,7 @@ void checkCreateFooterRequest(api.CreateFooterRequest o) {
 
 core.int buildCounterCreateFooterResponse = 0;
 api.CreateFooterResponse buildCreateFooterResponse() {
-  var o = api.CreateFooterResponse();
+  final o = api.CreateFooterResponse();
   buildCounterCreateFooterResponse++;
   if (buildCounterCreateFooterResponse < 3) {
     o.footerId = 'foo';
@@ -447,7 +445,7 @@ void checkCreateFooterResponse(api.CreateFooterResponse o) {
 
 core.int buildCounterCreateFootnoteRequest = 0;
 api.CreateFootnoteRequest buildCreateFootnoteRequest() {
-  var o = api.CreateFootnoteRequest();
+  final o = api.CreateFootnoteRequest();
   buildCounterCreateFootnoteRequest++;
   if (buildCounterCreateFootnoteRequest < 3) {
     o.endOfSegmentLocation = buildEndOfSegmentLocation();
@@ -460,16 +458,15 @@ api.CreateFootnoteRequest buildCreateFootnoteRequest() {
 void checkCreateFootnoteRequest(api.CreateFootnoteRequest o) {
   buildCounterCreateFootnoteRequest++;
   if (buildCounterCreateFootnoteRequest < 3) {
-    checkEndOfSegmentLocation(
-        o.endOfSegmentLocation! as api.EndOfSegmentLocation);
-    checkLocation(o.location! as api.Location);
+    checkEndOfSegmentLocation(o.endOfSegmentLocation!);
+    checkLocation(o.location!);
   }
   buildCounterCreateFootnoteRequest--;
 }
 
 core.int buildCounterCreateFootnoteResponse = 0;
 api.CreateFootnoteResponse buildCreateFootnoteResponse() {
-  var o = api.CreateFootnoteResponse();
+  final o = api.CreateFootnoteResponse();
   buildCounterCreateFootnoteResponse++;
   if (buildCounterCreateFootnoteResponse < 3) {
     o.footnoteId = 'foo';
@@ -491,7 +488,7 @@ void checkCreateFootnoteResponse(api.CreateFootnoteResponse o) {
 
 core.int buildCounterCreateHeaderRequest = 0;
 api.CreateHeaderRequest buildCreateHeaderRequest() {
-  var o = api.CreateHeaderRequest();
+  final o = api.CreateHeaderRequest();
   buildCounterCreateHeaderRequest++;
   if (buildCounterCreateHeaderRequest < 3) {
     o.sectionBreakLocation = buildLocation();
@@ -504,7 +501,7 @@ api.CreateHeaderRequest buildCreateHeaderRequest() {
 void checkCreateHeaderRequest(api.CreateHeaderRequest o) {
   buildCounterCreateHeaderRequest++;
   if (buildCounterCreateHeaderRequest < 3) {
-    checkLocation(o.sectionBreakLocation! as api.Location);
+    checkLocation(o.sectionBreakLocation!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -515,7 +512,7 @@ void checkCreateHeaderRequest(api.CreateHeaderRequest o) {
 
 core.int buildCounterCreateHeaderResponse = 0;
 api.CreateHeaderResponse buildCreateHeaderResponse() {
-  var o = api.CreateHeaderResponse();
+  final o = api.CreateHeaderResponse();
   buildCounterCreateHeaderResponse++;
   if (buildCounterCreateHeaderResponse < 3) {
     o.headerId = 'foo';
@@ -537,7 +534,7 @@ void checkCreateHeaderResponse(api.CreateHeaderResponse o) {
 
 core.int buildCounterCreateNamedRangeRequest = 0;
 api.CreateNamedRangeRequest buildCreateNamedRangeRequest() {
-  var o = api.CreateNamedRangeRequest();
+  final o = api.CreateNamedRangeRequest();
   buildCounterCreateNamedRangeRequest++;
   if (buildCounterCreateNamedRangeRequest < 3) {
     o.name = 'foo';
@@ -554,14 +551,14 @@ void checkCreateNamedRangeRequest(api.CreateNamedRangeRequest o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkRange(o.range! as api.Range);
+    checkRange(o.range!);
   }
   buildCounterCreateNamedRangeRequest--;
 }
 
 core.int buildCounterCreateNamedRangeResponse = 0;
 api.CreateNamedRangeResponse buildCreateNamedRangeResponse() {
-  var o = api.CreateNamedRangeResponse();
+  final o = api.CreateNamedRangeResponse();
   buildCounterCreateNamedRangeResponse++;
   if (buildCounterCreateNamedRangeResponse < 3) {
     o.namedRangeId = 'foo';
@@ -583,7 +580,7 @@ void checkCreateNamedRangeResponse(api.CreateNamedRangeResponse o) {
 
 core.int buildCounterCreateParagraphBulletsRequest = 0;
 api.CreateParagraphBulletsRequest buildCreateParagraphBulletsRequest() {
-  var o = api.CreateParagraphBulletsRequest();
+  final o = api.CreateParagraphBulletsRequest();
   buildCounterCreateParagraphBulletsRequest++;
   if (buildCounterCreateParagraphBulletsRequest < 3) {
     o.bulletPreset = 'foo';
@@ -600,14 +597,14 @@ void checkCreateParagraphBulletsRequest(api.CreateParagraphBulletsRequest o) {
       o.bulletPreset!,
       unittest.equals('foo'),
     );
-    checkRange(o.range! as api.Range);
+    checkRange(o.range!);
   }
   buildCounterCreateParagraphBulletsRequest--;
 }
 
 core.int buildCounterCropProperties = 0;
 api.CropProperties buildCropProperties() {
-  var o = api.CropProperties();
+  final o = api.CropProperties();
   buildCounterCropProperties++;
   if (buildCounterCropProperties < 3) {
     o.angle = 42.0;
@@ -649,7 +646,7 @@ void checkCropProperties(api.CropProperties o) {
 
 core.int buildCounterCropPropertiesSuggestionState = 0;
 api.CropPropertiesSuggestionState buildCropPropertiesSuggestionState() {
-  var o = api.CropPropertiesSuggestionState();
+  final o = api.CropPropertiesSuggestionState();
   buildCounterCropPropertiesSuggestionState++;
   if (buildCounterCropPropertiesSuggestionState < 3) {
     o.angleSuggested = true;
@@ -676,7 +673,7 @@ void checkCropPropertiesSuggestionState(api.CropPropertiesSuggestionState o) {
 
 core.int buildCounterDeleteContentRangeRequest = 0;
 api.DeleteContentRangeRequest buildDeleteContentRangeRequest() {
-  var o = api.DeleteContentRangeRequest();
+  final o = api.DeleteContentRangeRequest();
   buildCounterDeleteContentRangeRequest++;
   if (buildCounterDeleteContentRangeRequest < 3) {
     o.range = buildRange();
@@ -688,14 +685,14 @@ api.DeleteContentRangeRequest buildDeleteContentRangeRequest() {
 void checkDeleteContentRangeRequest(api.DeleteContentRangeRequest o) {
   buildCounterDeleteContentRangeRequest++;
   if (buildCounterDeleteContentRangeRequest < 3) {
-    checkRange(o.range! as api.Range);
+    checkRange(o.range!);
   }
   buildCounterDeleteContentRangeRequest--;
 }
 
 core.int buildCounterDeleteFooterRequest = 0;
 api.DeleteFooterRequest buildDeleteFooterRequest() {
-  var o = api.DeleteFooterRequest();
+  final o = api.DeleteFooterRequest();
   buildCounterDeleteFooterRequest++;
   if (buildCounterDeleteFooterRequest < 3) {
     o.footerId = 'foo';
@@ -717,7 +714,7 @@ void checkDeleteFooterRequest(api.DeleteFooterRequest o) {
 
 core.int buildCounterDeleteHeaderRequest = 0;
 api.DeleteHeaderRequest buildDeleteHeaderRequest() {
-  var o = api.DeleteHeaderRequest();
+  final o = api.DeleteHeaderRequest();
   buildCounterDeleteHeaderRequest++;
   if (buildCounterDeleteHeaderRequest < 3) {
     o.headerId = 'foo';
@@ -739,7 +736,7 @@ void checkDeleteHeaderRequest(api.DeleteHeaderRequest o) {
 
 core.int buildCounterDeleteNamedRangeRequest = 0;
 api.DeleteNamedRangeRequest buildDeleteNamedRangeRequest() {
-  var o = api.DeleteNamedRangeRequest();
+  final o = api.DeleteNamedRangeRequest();
   buildCounterDeleteNamedRangeRequest++;
   if (buildCounterDeleteNamedRangeRequest < 3) {
     o.name = 'foo';
@@ -766,7 +763,7 @@ void checkDeleteNamedRangeRequest(api.DeleteNamedRangeRequest o) {
 
 core.int buildCounterDeleteParagraphBulletsRequest = 0;
 api.DeleteParagraphBulletsRequest buildDeleteParagraphBulletsRequest() {
-  var o = api.DeleteParagraphBulletsRequest();
+  final o = api.DeleteParagraphBulletsRequest();
   buildCounterDeleteParagraphBulletsRequest++;
   if (buildCounterDeleteParagraphBulletsRequest < 3) {
     o.range = buildRange();
@@ -778,14 +775,14 @@ api.DeleteParagraphBulletsRequest buildDeleteParagraphBulletsRequest() {
 void checkDeleteParagraphBulletsRequest(api.DeleteParagraphBulletsRequest o) {
   buildCounterDeleteParagraphBulletsRequest++;
   if (buildCounterDeleteParagraphBulletsRequest < 3) {
-    checkRange(o.range! as api.Range);
+    checkRange(o.range!);
   }
   buildCounterDeleteParagraphBulletsRequest--;
 }
 
 core.int buildCounterDeletePositionedObjectRequest = 0;
 api.DeletePositionedObjectRequest buildDeletePositionedObjectRequest() {
-  var o = api.DeletePositionedObjectRequest();
+  final o = api.DeletePositionedObjectRequest();
   buildCounterDeletePositionedObjectRequest++;
   if (buildCounterDeletePositionedObjectRequest < 3) {
     o.objectId = 'foo';
@@ -807,7 +804,7 @@ void checkDeletePositionedObjectRequest(api.DeletePositionedObjectRequest o) {
 
 core.int buildCounterDeleteTableColumnRequest = 0;
 api.DeleteTableColumnRequest buildDeleteTableColumnRequest() {
-  var o = api.DeleteTableColumnRequest();
+  final o = api.DeleteTableColumnRequest();
   buildCounterDeleteTableColumnRequest++;
   if (buildCounterDeleteTableColumnRequest < 3) {
     o.tableCellLocation = buildTableCellLocation();
@@ -819,14 +816,14 @@ api.DeleteTableColumnRequest buildDeleteTableColumnRequest() {
 void checkDeleteTableColumnRequest(api.DeleteTableColumnRequest o) {
   buildCounterDeleteTableColumnRequest++;
   if (buildCounterDeleteTableColumnRequest < 3) {
-    checkTableCellLocation(o.tableCellLocation! as api.TableCellLocation);
+    checkTableCellLocation(o.tableCellLocation!);
   }
   buildCounterDeleteTableColumnRequest--;
 }
 
 core.int buildCounterDeleteTableRowRequest = 0;
 api.DeleteTableRowRequest buildDeleteTableRowRequest() {
-  var o = api.DeleteTableRowRequest();
+  final o = api.DeleteTableRowRequest();
   buildCounterDeleteTableRowRequest++;
   if (buildCounterDeleteTableRowRequest < 3) {
     o.tableCellLocation = buildTableCellLocation();
@@ -838,14 +835,14 @@ api.DeleteTableRowRequest buildDeleteTableRowRequest() {
 void checkDeleteTableRowRequest(api.DeleteTableRowRequest o) {
   buildCounterDeleteTableRowRequest++;
   if (buildCounterDeleteTableRowRequest < 3) {
-    checkTableCellLocation(o.tableCellLocation! as api.TableCellLocation);
+    checkTableCellLocation(o.tableCellLocation!);
   }
   buildCounterDeleteTableRowRequest--;
 }
 
 core.int buildCounterDimension = 0;
 api.Dimension buildDimension() {
-  var o = api.Dimension();
+  final o = api.Dimension();
   buildCounterDimension++;
   if (buildCounterDimension < 3) {
     o.magnitude = 42.0;
@@ -871,7 +868,7 @@ void checkDimension(api.Dimension o) {
 }
 
 core.Map<core.String, api.Footer> buildUnnamed7278() {
-  var o = <core.String, api.Footer>{};
+  final o = <core.String, api.Footer>{};
   o['x'] = buildFooter();
   o['y'] = buildFooter();
   return o;
@@ -879,12 +876,12 @@ core.Map<core.String, api.Footer> buildUnnamed7278() {
 
 void checkUnnamed7278(core.Map<core.String, api.Footer> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFooter(o['x']! as api.Footer);
-  checkFooter(o['y']! as api.Footer);
+  checkFooter(o['x']!);
+  checkFooter(o['y']!);
 }
 
 core.Map<core.String, api.Footnote> buildUnnamed7279() {
-  var o = <core.String, api.Footnote>{};
+  final o = <core.String, api.Footnote>{};
   o['x'] = buildFootnote();
   o['y'] = buildFootnote();
   return o;
@@ -892,12 +889,12 @@ core.Map<core.String, api.Footnote> buildUnnamed7279() {
 
 void checkUnnamed7279(core.Map<core.String, api.Footnote> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFootnote(o['x']! as api.Footnote);
-  checkFootnote(o['y']! as api.Footnote);
+  checkFootnote(o['x']!);
+  checkFootnote(o['y']!);
 }
 
 core.Map<core.String, api.Header> buildUnnamed7280() {
-  var o = <core.String, api.Header>{};
+  final o = <core.String, api.Header>{};
   o['x'] = buildHeader();
   o['y'] = buildHeader();
   return o;
@@ -905,12 +902,12 @@ core.Map<core.String, api.Header> buildUnnamed7280() {
 
 void checkUnnamed7280(core.Map<core.String, api.Header> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkHeader(o['x']! as api.Header);
-  checkHeader(o['y']! as api.Header);
+  checkHeader(o['x']!);
+  checkHeader(o['y']!);
 }
 
 core.Map<core.String, api.InlineObject> buildUnnamed7281() {
-  var o = <core.String, api.InlineObject>{};
+  final o = <core.String, api.InlineObject>{};
   o['x'] = buildInlineObject();
   o['y'] = buildInlineObject();
   return o;
@@ -918,12 +915,12 @@ core.Map<core.String, api.InlineObject> buildUnnamed7281() {
 
 void checkUnnamed7281(core.Map<core.String, api.InlineObject> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkInlineObject(o['x']! as api.InlineObject);
-  checkInlineObject(o['y']! as api.InlineObject);
+  checkInlineObject(o['x']!);
+  checkInlineObject(o['y']!);
 }
 
 core.Map<core.String, api.List> buildUnnamed7282() {
-  var o = <core.String, api.List>{};
+  final o = <core.String, api.List>{};
   o['x'] = buildList();
   o['y'] = buildList();
   return o;
@@ -931,12 +928,12 @@ core.Map<core.String, api.List> buildUnnamed7282() {
 
 void checkUnnamed7282(core.Map<core.String, api.List> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkList(o['x']! as api.List);
-  checkList(o['y']! as api.List);
+  checkList(o['x']!);
+  checkList(o['y']!);
 }
 
 core.Map<core.String, api.NamedRanges> buildUnnamed7283() {
-  var o = <core.String, api.NamedRanges>{};
+  final o = <core.String, api.NamedRanges>{};
   o['x'] = buildNamedRanges();
   o['y'] = buildNamedRanges();
   return o;
@@ -944,12 +941,12 @@ core.Map<core.String, api.NamedRanges> buildUnnamed7283() {
 
 void checkUnnamed7283(core.Map<core.String, api.NamedRanges> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNamedRanges(o['x']! as api.NamedRanges);
-  checkNamedRanges(o['y']! as api.NamedRanges);
+  checkNamedRanges(o['x']!);
+  checkNamedRanges(o['y']!);
 }
 
 core.Map<core.String, api.PositionedObject> buildUnnamed7284() {
-  var o = <core.String, api.PositionedObject>{};
+  final o = <core.String, api.PositionedObject>{};
   o['x'] = buildPositionedObject();
   o['y'] = buildPositionedObject();
   return o;
@@ -957,12 +954,12 @@ core.Map<core.String, api.PositionedObject> buildUnnamed7284() {
 
 void checkUnnamed7284(core.Map<core.String, api.PositionedObject> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPositionedObject(o['x']! as api.PositionedObject);
-  checkPositionedObject(o['y']! as api.PositionedObject);
+  checkPositionedObject(o['x']!);
+  checkPositionedObject(o['y']!);
 }
 
 core.Map<core.String, api.SuggestedDocumentStyle> buildUnnamed7285() {
-  var o = <core.String, api.SuggestedDocumentStyle>{};
+  final o = <core.String, api.SuggestedDocumentStyle>{};
   o['x'] = buildSuggestedDocumentStyle();
   o['y'] = buildSuggestedDocumentStyle();
   return o;
@@ -970,12 +967,12 @@ core.Map<core.String, api.SuggestedDocumentStyle> buildUnnamed7285() {
 
 void checkUnnamed7285(core.Map<core.String, api.SuggestedDocumentStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedDocumentStyle(o['x']! as api.SuggestedDocumentStyle);
-  checkSuggestedDocumentStyle(o['y']! as api.SuggestedDocumentStyle);
+  checkSuggestedDocumentStyle(o['x']!);
+  checkSuggestedDocumentStyle(o['y']!);
 }
 
 core.Map<core.String, api.SuggestedNamedStyles> buildUnnamed7286() {
-  var o = <core.String, api.SuggestedNamedStyles>{};
+  final o = <core.String, api.SuggestedNamedStyles>{};
   o['x'] = buildSuggestedNamedStyles();
   o['y'] = buildSuggestedNamedStyles();
   return o;
@@ -983,13 +980,13 @@ core.Map<core.String, api.SuggestedNamedStyles> buildUnnamed7286() {
 
 void checkUnnamed7286(core.Map<core.String, api.SuggestedNamedStyles> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedNamedStyles(o['x']! as api.SuggestedNamedStyles);
-  checkSuggestedNamedStyles(o['y']! as api.SuggestedNamedStyles);
+  checkSuggestedNamedStyles(o['x']!);
+  checkSuggestedNamedStyles(o['y']!);
 }
 
 core.int buildCounterDocument = 0;
 api.Document buildDocument() {
-  var o = api.Document();
+  final o = api.Document();
   buildCounterDocument++;
   if (buildCounterDocument < 3) {
     o.body = buildBody();
@@ -1016,19 +1013,19 @@ api.Document buildDocument() {
 void checkDocument(api.Document o) {
   buildCounterDocument++;
   if (buildCounterDocument < 3) {
-    checkBody(o.body! as api.Body);
+    checkBody(o.body!);
     unittest.expect(
       o.documentId!,
       unittest.equals('foo'),
     );
-    checkDocumentStyle(o.documentStyle! as api.DocumentStyle);
+    checkDocumentStyle(o.documentStyle!);
     checkUnnamed7278(o.footers!);
     checkUnnamed7279(o.footnotes!);
     checkUnnamed7280(o.headers!);
     checkUnnamed7281(o.inlineObjects!);
     checkUnnamed7282(o.lists!);
     checkUnnamed7283(o.namedRanges!);
-    checkNamedStyles(o.namedStyles! as api.NamedStyles);
+    checkNamedStyles(o.namedStyles!);
     checkUnnamed7284(o.positionedObjects!);
     unittest.expect(
       o.revisionId!,
@@ -1050,7 +1047,7 @@ void checkDocument(api.Document o) {
 
 core.int buildCounterDocumentStyle = 0;
 api.DocumentStyle buildDocumentStyle() {
-  var o = api.DocumentStyle();
+  final o = api.DocumentStyle();
   buildCounterDocumentStyle++;
   if (buildCounterDocumentStyle < 3) {
     o.background = buildBackground();
@@ -1079,7 +1076,7 @@ api.DocumentStyle buildDocumentStyle() {
 void checkDocumentStyle(api.DocumentStyle o) {
   buildCounterDocumentStyle++;
   if (buildCounterDocumentStyle < 3) {
-    checkBackground(o.background! as api.Background);
+    checkBackground(o.background!);
     unittest.expect(
       o.defaultFooterId!,
       unittest.equals('foo'),
@@ -1104,17 +1101,17 @@ void checkDocumentStyle(api.DocumentStyle o) {
       o.firstPageHeaderId!,
       unittest.equals('foo'),
     );
-    checkDimension(o.marginBottom! as api.Dimension);
-    checkDimension(o.marginFooter! as api.Dimension);
-    checkDimension(o.marginHeader! as api.Dimension);
-    checkDimension(o.marginLeft! as api.Dimension);
-    checkDimension(o.marginRight! as api.Dimension);
-    checkDimension(o.marginTop! as api.Dimension);
+    checkDimension(o.marginBottom!);
+    checkDimension(o.marginFooter!);
+    checkDimension(o.marginHeader!);
+    checkDimension(o.marginLeft!);
+    checkDimension(o.marginRight!);
+    checkDimension(o.marginTop!);
     unittest.expect(
       o.pageNumberStart!,
       unittest.equals(42),
     );
-    checkSize(o.pageSize! as api.Size);
+    checkSize(o.pageSize!);
     unittest.expect(o.useCustomHeaderFooterMargins!, unittest.isTrue);
     unittest.expect(o.useEvenPageHeaderFooter!, unittest.isTrue);
     unittest.expect(o.useFirstPageHeaderFooter!, unittest.isTrue);
@@ -1124,7 +1121,7 @@ void checkDocumentStyle(api.DocumentStyle o) {
 
 core.int buildCounterDocumentStyleSuggestionState = 0;
 api.DocumentStyleSuggestionState buildDocumentStyleSuggestionState() {
-  var o = api.DocumentStyleSuggestionState();
+  final o = api.DocumentStyleSuggestionState();
   buildCounterDocumentStyleSuggestionState++;
   if (buildCounterDocumentStyleSuggestionState < 3) {
     o.backgroundSuggestionState = buildBackgroundSuggestionState();
@@ -1153,8 +1150,7 @@ api.DocumentStyleSuggestionState buildDocumentStyleSuggestionState() {
 void checkDocumentStyleSuggestionState(api.DocumentStyleSuggestionState o) {
   buildCounterDocumentStyleSuggestionState++;
   if (buildCounterDocumentStyleSuggestionState < 3) {
-    checkBackgroundSuggestionState(
-        o.backgroundSuggestionState! as api.BackgroundSuggestionState);
+    checkBackgroundSuggestionState(o.backgroundSuggestionState!);
     unittest.expect(o.defaultFooterIdSuggested!, unittest.isTrue);
     unittest.expect(o.defaultHeaderIdSuggested!, unittest.isTrue);
     unittest.expect(o.evenPageFooterIdSuggested!, unittest.isTrue);
@@ -1168,8 +1164,7 @@ void checkDocumentStyleSuggestionState(api.DocumentStyleSuggestionState o) {
     unittest.expect(o.marginRightSuggested!, unittest.isTrue);
     unittest.expect(o.marginTopSuggested!, unittest.isTrue);
     unittest.expect(o.pageNumberStartSuggested!, unittest.isTrue);
-    checkSizeSuggestionState(
-        o.pageSizeSuggestionState! as api.SizeSuggestionState);
+    checkSizeSuggestionState(o.pageSizeSuggestionState!);
     unittest.expect(o.useCustomHeaderFooterMarginsSuggested!, unittest.isTrue);
     unittest.expect(o.useEvenPageHeaderFooterSuggested!, unittest.isTrue);
     unittest.expect(o.useFirstPageHeaderFooterSuggested!, unittest.isTrue);
@@ -1179,7 +1174,7 @@ void checkDocumentStyleSuggestionState(api.DocumentStyleSuggestionState o) {
 
 core.int buildCounterEmbeddedDrawingProperties = 0;
 api.EmbeddedDrawingProperties buildEmbeddedDrawingProperties() {
-  var o = api.EmbeddedDrawingProperties();
+  final o = api.EmbeddedDrawingProperties();
   buildCounterEmbeddedDrawingProperties++;
   if (buildCounterEmbeddedDrawingProperties < 3) {}
   buildCounterEmbeddedDrawingProperties--;
@@ -1195,7 +1190,7 @@ void checkEmbeddedDrawingProperties(api.EmbeddedDrawingProperties o) {
 core.int buildCounterEmbeddedDrawingPropertiesSuggestionState = 0;
 api.EmbeddedDrawingPropertiesSuggestionState
     buildEmbeddedDrawingPropertiesSuggestionState() {
-  var o = api.EmbeddedDrawingPropertiesSuggestionState();
+  final o = api.EmbeddedDrawingPropertiesSuggestionState();
   buildCounterEmbeddedDrawingPropertiesSuggestionState++;
   if (buildCounterEmbeddedDrawingPropertiesSuggestionState < 3) {}
   buildCounterEmbeddedDrawingPropertiesSuggestionState--;
@@ -1211,7 +1206,7 @@ void checkEmbeddedDrawingPropertiesSuggestionState(
 
 core.int buildCounterEmbeddedObject = 0;
 api.EmbeddedObject buildEmbeddedObject() {
-  var o = api.EmbeddedObject();
+  final o = api.EmbeddedObject();
   buildCounterEmbeddedObject++;
   if (buildCounterEmbeddedObject < 3) {
     o.description = 'foo';
@@ -1237,18 +1232,15 @@ void checkEmbeddedObject(api.EmbeddedObject o) {
       o.description!,
       unittest.equals('foo'),
     );
-    checkEmbeddedDrawingProperties(
-        o.embeddedDrawingProperties! as api.EmbeddedDrawingProperties);
-    checkEmbeddedObjectBorder(
-        o.embeddedObjectBorder! as api.EmbeddedObjectBorder);
-    checkImageProperties(o.imageProperties! as api.ImageProperties);
-    checkLinkedContentReference(
-        o.linkedContentReference! as api.LinkedContentReference);
-    checkDimension(o.marginBottom! as api.Dimension);
-    checkDimension(o.marginLeft! as api.Dimension);
-    checkDimension(o.marginRight! as api.Dimension);
-    checkDimension(o.marginTop! as api.Dimension);
-    checkSize(o.size! as api.Size);
+    checkEmbeddedDrawingProperties(o.embeddedDrawingProperties!);
+    checkEmbeddedObjectBorder(o.embeddedObjectBorder!);
+    checkImageProperties(o.imageProperties!);
+    checkLinkedContentReference(o.linkedContentReference!);
+    checkDimension(o.marginBottom!);
+    checkDimension(o.marginLeft!);
+    checkDimension(o.marginRight!);
+    checkDimension(o.marginTop!);
+    checkSize(o.size!);
     unittest.expect(
       o.title!,
       unittest.equals('foo'),
@@ -1259,7 +1251,7 @@ void checkEmbeddedObject(api.EmbeddedObject o) {
 
 core.int buildCounterEmbeddedObjectBorder = 0;
 api.EmbeddedObjectBorder buildEmbeddedObjectBorder() {
-  var o = api.EmbeddedObjectBorder();
+  final o = api.EmbeddedObjectBorder();
   buildCounterEmbeddedObjectBorder++;
   if (buildCounterEmbeddedObjectBorder < 3) {
     o.color = buildOptionalColor();
@@ -1274,7 +1266,7 @@ api.EmbeddedObjectBorder buildEmbeddedObjectBorder() {
 void checkEmbeddedObjectBorder(api.EmbeddedObjectBorder o) {
   buildCounterEmbeddedObjectBorder++;
   if (buildCounterEmbeddedObjectBorder < 3) {
-    checkOptionalColor(o.color! as api.OptionalColor);
+    checkOptionalColor(o.color!);
     unittest.expect(
       o.dashStyle!,
       unittest.equals('foo'),
@@ -1283,7 +1275,7 @@ void checkEmbeddedObjectBorder(api.EmbeddedObjectBorder o) {
       o.propertyState!,
       unittest.equals('foo'),
     );
-    checkDimension(o.width! as api.Dimension);
+    checkDimension(o.width!);
   }
   buildCounterEmbeddedObjectBorder--;
 }
@@ -1291,7 +1283,7 @@ void checkEmbeddedObjectBorder(api.EmbeddedObjectBorder o) {
 core.int buildCounterEmbeddedObjectBorderSuggestionState = 0;
 api.EmbeddedObjectBorderSuggestionState
     buildEmbeddedObjectBorderSuggestionState() {
-  var o = api.EmbeddedObjectBorderSuggestionState();
+  final o = api.EmbeddedObjectBorderSuggestionState();
   buildCounterEmbeddedObjectBorderSuggestionState++;
   if (buildCounterEmbeddedObjectBorderSuggestionState < 3) {
     o.colorSuggested = true;
@@ -1317,7 +1309,7 @@ void checkEmbeddedObjectBorderSuggestionState(
 
 core.int buildCounterEmbeddedObjectSuggestionState = 0;
 api.EmbeddedObjectSuggestionState buildEmbeddedObjectSuggestionState() {
-  var o = api.EmbeddedObjectSuggestionState();
+  final o = api.EmbeddedObjectSuggestionState();
   buildCounterEmbeddedObjectSuggestionState++;
   if (buildCounterEmbeddedObjectSuggestionState < 3) {
     o.descriptionSuggested = true;
@@ -1344,21 +1336,17 @@ void checkEmbeddedObjectSuggestionState(api.EmbeddedObjectSuggestionState o) {
   if (buildCounterEmbeddedObjectSuggestionState < 3) {
     unittest.expect(o.descriptionSuggested!, unittest.isTrue);
     checkEmbeddedDrawingPropertiesSuggestionState(
-        o.embeddedDrawingPropertiesSuggestionState!
-            as api.EmbeddedDrawingPropertiesSuggestionState);
+        o.embeddedDrawingPropertiesSuggestionState!);
     checkEmbeddedObjectBorderSuggestionState(
-        o.embeddedObjectBorderSuggestionState!
-            as api.EmbeddedObjectBorderSuggestionState);
-    checkImagePropertiesSuggestionState(o.imagePropertiesSuggestionState!
-        as api.ImagePropertiesSuggestionState);
+        o.embeddedObjectBorderSuggestionState!);
+    checkImagePropertiesSuggestionState(o.imagePropertiesSuggestionState!);
     checkLinkedContentReferenceSuggestionState(
-        o.linkedContentReferenceSuggestionState!
-            as api.LinkedContentReferenceSuggestionState);
+        o.linkedContentReferenceSuggestionState!);
     unittest.expect(o.marginBottomSuggested!, unittest.isTrue);
     unittest.expect(o.marginLeftSuggested!, unittest.isTrue);
     unittest.expect(o.marginRightSuggested!, unittest.isTrue);
     unittest.expect(o.marginTopSuggested!, unittest.isTrue);
-    checkSizeSuggestionState(o.sizeSuggestionState! as api.SizeSuggestionState);
+    checkSizeSuggestionState(o.sizeSuggestionState!);
     unittest.expect(o.titleSuggested!, unittest.isTrue);
   }
   buildCounterEmbeddedObjectSuggestionState--;
@@ -1366,7 +1354,7 @@ void checkEmbeddedObjectSuggestionState(api.EmbeddedObjectSuggestionState o) {
 
 core.int buildCounterEndOfSegmentLocation = 0;
 api.EndOfSegmentLocation buildEndOfSegmentLocation() {
-  var o = api.EndOfSegmentLocation();
+  final o = api.EndOfSegmentLocation();
   buildCounterEndOfSegmentLocation++;
   if (buildCounterEndOfSegmentLocation < 3) {
     o.segmentId = 'foo';
@@ -1387,7 +1375,7 @@ void checkEndOfSegmentLocation(api.EndOfSegmentLocation o) {
 }
 
 core.List<core.String> buildUnnamed7287() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1406,7 +1394,7 @@ void checkUnnamed7287(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed7288() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1426,7 +1414,7 @@ void checkUnnamed7288(core.List<core.String> o) {
 
 core.int buildCounterEquation = 0;
 api.Equation buildEquation() {
-  var o = api.Equation();
+  final o = api.Equation();
   buildCounterEquation++;
   if (buildCounterEquation < 3) {
     o.suggestedDeletionIds = buildUnnamed7287();
@@ -1446,7 +1434,7 @@ void checkEquation(api.Equation o) {
 }
 
 core.List<api.StructuralElement> buildUnnamed7289() {
-  var o = <api.StructuralElement>[];
+  final o = <api.StructuralElement>[];
   o.add(buildStructuralElement());
   o.add(buildStructuralElement());
   return o;
@@ -1454,13 +1442,13 @@ core.List<api.StructuralElement> buildUnnamed7289() {
 
 void checkUnnamed7289(core.List<api.StructuralElement> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkStructuralElement(o[0] as api.StructuralElement);
-  checkStructuralElement(o[1] as api.StructuralElement);
+  checkStructuralElement(o[0]);
+  checkStructuralElement(o[1]);
 }
 
 core.int buildCounterFooter = 0;
 api.Footer buildFooter() {
-  var o = api.Footer();
+  final o = api.Footer();
   buildCounterFooter++;
   if (buildCounterFooter < 3) {
     o.content = buildUnnamed7289();
@@ -1483,7 +1471,7 @@ void checkFooter(api.Footer o) {
 }
 
 core.List<api.StructuralElement> buildUnnamed7290() {
-  var o = <api.StructuralElement>[];
+  final o = <api.StructuralElement>[];
   o.add(buildStructuralElement());
   o.add(buildStructuralElement());
   return o;
@@ -1491,13 +1479,13 @@ core.List<api.StructuralElement> buildUnnamed7290() {
 
 void checkUnnamed7290(core.List<api.StructuralElement> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkStructuralElement(o[0] as api.StructuralElement);
-  checkStructuralElement(o[1] as api.StructuralElement);
+  checkStructuralElement(o[0]);
+  checkStructuralElement(o[1]);
 }
 
 core.int buildCounterFootnote = 0;
 api.Footnote buildFootnote() {
-  var o = api.Footnote();
+  final o = api.Footnote();
   buildCounterFootnote++;
   if (buildCounterFootnote < 3) {
     o.content = buildUnnamed7290();
@@ -1520,7 +1508,7 @@ void checkFootnote(api.Footnote o) {
 }
 
 core.List<core.String> buildUnnamed7291() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1539,7 +1527,7 @@ void checkUnnamed7291(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed7292() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1558,7 +1546,7 @@ void checkUnnamed7292(core.List<core.String> o) {
 }
 
 core.Map<core.String, api.SuggestedTextStyle> buildUnnamed7293() {
-  var o = <core.String, api.SuggestedTextStyle>{};
+  final o = <core.String, api.SuggestedTextStyle>{};
   o['x'] = buildSuggestedTextStyle();
   o['y'] = buildSuggestedTextStyle();
   return o;
@@ -1566,13 +1554,13 @@ core.Map<core.String, api.SuggestedTextStyle> buildUnnamed7293() {
 
 void checkUnnamed7293(core.Map<core.String, api.SuggestedTextStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedTextStyle(o['x']! as api.SuggestedTextStyle);
-  checkSuggestedTextStyle(o['y']! as api.SuggestedTextStyle);
+  checkSuggestedTextStyle(o['x']!);
+  checkSuggestedTextStyle(o['y']!);
 }
 
 core.int buildCounterFootnoteReference = 0;
 api.FootnoteReference buildFootnoteReference() {
-  var o = api.FootnoteReference();
+  final o = api.FootnoteReference();
   buildCounterFootnoteReference++;
   if (buildCounterFootnoteReference < 3) {
     o.footnoteId = 'foo';
@@ -1600,13 +1588,13 @@ void checkFootnoteReference(api.FootnoteReference o) {
     checkUnnamed7291(o.suggestedDeletionIds!);
     checkUnnamed7292(o.suggestedInsertionIds!);
     checkUnnamed7293(o.suggestedTextStyleChanges!);
-    checkTextStyle(o.textStyle! as api.TextStyle);
+    checkTextStyle(o.textStyle!);
   }
   buildCounterFootnoteReference--;
 }
 
 core.List<api.StructuralElement> buildUnnamed7294() {
-  var o = <api.StructuralElement>[];
+  final o = <api.StructuralElement>[];
   o.add(buildStructuralElement());
   o.add(buildStructuralElement());
   return o;
@@ -1614,13 +1602,13 @@ core.List<api.StructuralElement> buildUnnamed7294() {
 
 void checkUnnamed7294(core.List<api.StructuralElement> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkStructuralElement(o[0] as api.StructuralElement);
-  checkStructuralElement(o[1] as api.StructuralElement);
+  checkStructuralElement(o[0]);
+  checkStructuralElement(o[1]);
 }
 
 core.int buildCounterHeader = 0;
 api.Header buildHeader() {
-  var o = api.Header();
+  final o = api.Header();
   buildCounterHeader++;
   if (buildCounterHeader < 3) {
     o.content = buildUnnamed7294();
@@ -1643,7 +1631,7 @@ void checkHeader(api.Header o) {
 }
 
 core.List<core.String> buildUnnamed7295() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1662,7 +1650,7 @@ void checkUnnamed7295(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed7296() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1681,7 +1669,7 @@ void checkUnnamed7296(core.List<core.String> o) {
 }
 
 core.Map<core.String, api.SuggestedTextStyle> buildUnnamed7297() {
-  var o = <core.String, api.SuggestedTextStyle>{};
+  final o = <core.String, api.SuggestedTextStyle>{};
   o['x'] = buildSuggestedTextStyle();
   o['y'] = buildSuggestedTextStyle();
   return o;
@@ -1689,13 +1677,13 @@ core.Map<core.String, api.SuggestedTextStyle> buildUnnamed7297() {
 
 void checkUnnamed7297(core.Map<core.String, api.SuggestedTextStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedTextStyle(o['x']! as api.SuggestedTextStyle);
-  checkSuggestedTextStyle(o['y']! as api.SuggestedTextStyle);
+  checkSuggestedTextStyle(o['x']!);
+  checkSuggestedTextStyle(o['y']!);
 }
 
 core.int buildCounterHorizontalRule = 0;
 api.HorizontalRule buildHorizontalRule() {
-  var o = api.HorizontalRule();
+  final o = api.HorizontalRule();
   buildCounterHorizontalRule++;
   if (buildCounterHorizontalRule < 3) {
     o.suggestedDeletionIds = buildUnnamed7295();
@@ -1713,14 +1701,14 @@ void checkHorizontalRule(api.HorizontalRule o) {
     checkUnnamed7295(o.suggestedDeletionIds!);
     checkUnnamed7296(o.suggestedInsertionIds!);
     checkUnnamed7297(o.suggestedTextStyleChanges!);
-    checkTextStyle(o.textStyle! as api.TextStyle);
+    checkTextStyle(o.textStyle!);
   }
   buildCounterHorizontalRule--;
 }
 
 core.int buildCounterImageProperties = 0;
 api.ImageProperties buildImageProperties() {
-  var o = api.ImageProperties();
+  final o = api.ImageProperties();
   buildCounterImageProperties++;
   if (buildCounterImageProperties < 3) {
     o.angle = 42.0;
@@ -1754,7 +1742,7 @@ void checkImageProperties(api.ImageProperties o) {
       o.contrast!,
       unittest.equals(42.0),
     );
-    checkCropProperties(o.cropProperties! as api.CropProperties);
+    checkCropProperties(o.cropProperties!);
     unittest.expect(
       o.sourceUri!,
       unittest.equals('foo'),
@@ -1769,7 +1757,7 @@ void checkImageProperties(api.ImageProperties o) {
 
 core.int buildCounterImagePropertiesSuggestionState = 0;
 api.ImagePropertiesSuggestionState buildImagePropertiesSuggestionState() {
-  var o = api.ImagePropertiesSuggestionState();
+  final o = api.ImagePropertiesSuggestionState();
   buildCounterImagePropertiesSuggestionState++;
   if (buildCounterImagePropertiesSuggestionState < 3) {
     o.angleSuggested = true;
@@ -1791,8 +1779,7 @@ void checkImagePropertiesSuggestionState(api.ImagePropertiesSuggestionState o) {
     unittest.expect(o.brightnessSuggested!, unittest.isTrue);
     unittest.expect(o.contentUriSuggested!, unittest.isTrue);
     unittest.expect(o.contrastSuggested!, unittest.isTrue);
-    checkCropPropertiesSuggestionState(
-        o.cropPropertiesSuggestionState! as api.CropPropertiesSuggestionState);
+    checkCropPropertiesSuggestionState(o.cropPropertiesSuggestionState!);
     unittest.expect(o.sourceUriSuggested!, unittest.isTrue);
     unittest.expect(o.transparencySuggested!, unittest.isTrue);
   }
@@ -1800,7 +1787,7 @@ void checkImagePropertiesSuggestionState(api.ImagePropertiesSuggestionState o) {
 }
 
 core.List<core.String> buildUnnamed7298() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1819,7 +1806,7 @@ void checkUnnamed7298(core.List<core.String> o) {
 }
 
 core.Map<core.String, api.SuggestedInlineObjectProperties> buildUnnamed7299() {
-  var o = <core.String, api.SuggestedInlineObjectProperties>{};
+  final o = <core.String, api.SuggestedInlineObjectProperties>{};
   o['x'] = buildSuggestedInlineObjectProperties();
   o['y'] = buildSuggestedInlineObjectProperties();
   return o;
@@ -1828,15 +1815,13 @@ core.Map<core.String, api.SuggestedInlineObjectProperties> buildUnnamed7299() {
 void checkUnnamed7299(
     core.Map<core.String, api.SuggestedInlineObjectProperties> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedInlineObjectProperties(
-      o['x']! as api.SuggestedInlineObjectProperties);
-  checkSuggestedInlineObjectProperties(
-      o['y']! as api.SuggestedInlineObjectProperties);
+  checkSuggestedInlineObjectProperties(o['x']!);
+  checkSuggestedInlineObjectProperties(o['y']!);
 }
 
 core.int buildCounterInlineObject = 0;
 api.InlineObject buildInlineObject() {
-  var o = api.InlineObject();
+  final o = api.InlineObject();
   buildCounterInlineObject++;
   if (buildCounterInlineObject < 3) {
     o.inlineObjectProperties = buildInlineObjectProperties();
@@ -1852,8 +1837,7 @@ api.InlineObject buildInlineObject() {
 void checkInlineObject(api.InlineObject o) {
   buildCounterInlineObject++;
   if (buildCounterInlineObject < 3) {
-    checkInlineObjectProperties(
-        o.inlineObjectProperties! as api.InlineObjectProperties);
+    checkInlineObjectProperties(o.inlineObjectProperties!);
     unittest.expect(
       o.objectId!,
       unittest.equals('foo'),
@@ -1869,7 +1853,7 @@ void checkInlineObject(api.InlineObject o) {
 }
 
 core.List<core.String> buildUnnamed7300() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1888,7 +1872,7 @@ void checkUnnamed7300(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed7301() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1907,7 +1891,7 @@ void checkUnnamed7301(core.List<core.String> o) {
 }
 
 core.Map<core.String, api.SuggestedTextStyle> buildUnnamed7302() {
-  var o = <core.String, api.SuggestedTextStyle>{};
+  final o = <core.String, api.SuggestedTextStyle>{};
   o['x'] = buildSuggestedTextStyle();
   o['y'] = buildSuggestedTextStyle();
   return o;
@@ -1915,13 +1899,13 @@ core.Map<core.String, api.SuggestedTextStyle> buildUnnamed7302() {
 
 void checkUnnamed7302(core.Map<core.String, api.SuggestedTextStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedTextStyle(o['x']! as api.SuggestedTextStyle);
-  checkSuggestedTextStyle(o['y']! as api.SuggestedTextStyle);
+  checkSuggestedTextStyle(o['x']!);
+  checkSuggestedTextStyle(o['y']!);
 }
 
 core.int buildCounterInlineObjectElement = 0;
 api.InlineObjectElement buildInlineObjectElement() {
-  var o = api.InlineObjectElement();
+  final o = api.InlineObjectElement();
   buildCounterInlineObjectElement++;
   if (buildCounterInlineObjectElement < 3) {
     o.inlineObjectId = 'foo';
@@ -1944,14 +1928,14 @@ void checkInlineObjectElement(api.InlineObjectElement o) {
     checkUnnamed7300(o.suggestedDeletionIds!);
     checkUnnamed7301(o.suggestedInsertionIds!);
     checkUnnamed7302(o.suggestedTextStyleChanges!);
-    checkTextStyle(o.textStyle! as api.TextStyle);
+    checkTextStyle(o.textStyle!);
   }
   buildCounterInlineObjectElement--;
 }
 
 core.int buildCounterInlineObjectProperties = 0;
 api.InlineObjectProperties buildInlineObjectProperties() {
-  var o = api.InlineObjectProperties();
+  final o = api.InlineObjectProperties();
   buildCounterInlineObjectProperties++;
   if (buildCounterInlineObjectProperties < 3) {
     o.embeddedObject = buildEmbeddedObject();
@@ -1963,7 +1947,7 @@ api.InlineObjectProperties buildInlineObjectProperties() {
 void checkInlineObjectProperties(api.InlineObjectProperties o) {
   buildCounterInlineObjectProperties++;
   if (buildCounterInlineObjectProperties < 3) {
-    checkEmbeddedObject(o.embeddedObject! as api.EmbeddedObject);
+    checkEmbeddedObject(o.embeddedObject!);
   }
   buildCounterInlineObjectProperties--;
 }
@@ -1971,7 +1955,7 @@ void checkInlineObjectProperties(api.InlineObjectProperties o) {
 core.int buildCounterInlineObjectPropertiesSuggestionState = 0;
 api.InlineObjectPropertiesSuggestionState
     buildInlineObjectPropertiesSuggestionState() {
-  var o = api.InlineObjectPropertiesSuggestionState();
+  final o = api.InlineObjectPropertiesSuggestionState();
   buildCounterInlineObjectPropertiesSuggestionState++;
   if (buildCounterInlineObjectPropertiesSuggestionState < 3) {
     o.embeddedObjectSuggestionState = buildEmbeddedObjectSuggestionState();
@@ -1984,15 +1968,14 @@ void checkInlineObjectPropertiesSuggestionState(
     api.InlineObjectPropertiesSuggestionState o) {
   buildCounterInlineObjectPropertiesSuggestionState++;
   if (buildCounterInlineObjectPropertiesSuggestionState < 3) {
-    checkEmbeddedObjectSuggestionState(
-        o.embeddedObjectSuggestionState! as api.EmbeddedObjectSuggestionState);
+    checkEmbeddedObjectSuggestionState(o.embeddedObjectSuggestionState!);
   }
   buildCounterInlineObjectPropertiesSuggestionState--;
 }
 
 core.int buildCounterInsertInlineImageRequest = 0;
 api.InsertInlineImageRequest buildInsertInlineImageRequest() {
-  var o = api.InsertInlineImageRequest();
+  final o = api.InsertInlineImageRequest();
   buildCounterInsertInlineImageRequest++;
   if (buildCounterInsertInlineImageRequest < 3) {
     o.endOfSegmentLocation = buildEndOfSegmentLocation();
@@ -2007,10 +1990,9 @@ api.InsertInlineImageRequest buildInsertInlineImageRequest() {
 void checkInsertInlineImageRequest(api.InsertInlineImageRequest o) {
   buildCounterInsertInlineImageRequest++;
   if (buildCounterInsertInlineImageRequest < 3) {
-    checkEndOfSegmentLocation(
-        o.endOfSegmentLocation! as api.EndOfSegmentLocation);
-    checkLocation(o.location! as api.Location);
-    checkSize(o.objectSize! as api.Size);
+    checkEndOfSegmentLocation(o.endOfSegmentLocation!);
+    checkLocation(o.location!);
+    checkSize(o.objectSize!);
     unittest.expect(
       o.uri!,
       unittest.equals('foo'),
@@ -2021,7 +2003,7 @@ void checkInsertInlineImageRequest(api.InsertInlineImageRequest o) {
 
 core.int buildCounterInsertInlineImageResponse = 0;
 api.InsertInlineImageResponse buildInsertInlineImageResponse() {
-  var o = api.InsertInlineImageResponse();
+  final o = api.InsertInlineImageResponse();
   buildCounterInsertInlineImageResponse++;
   if (buildCounterInsertInlineImageResponse < 3) {
     o.objectId = 'foo';
@@ -2043,7 +2025,7 @@ void checkInsertInlineImageResponse(api.InsertInlineImageResponse o) {
 
 core.int buildCounterInsertInlineSheetsChartResponse = 0;
 api.InsertInlineSheetsChartResponse buildInsertInlineSheetsChartResponse() {
-  var o = api.InsertInlineSheetsChartResponse();
+  final o = api.InsertInlineSheetsChartResponse();
   buildCounterInsertInlineSheetsChartResponse++;
   if (buildCounterInsertInlineSheetsChartResponse < 3) {
     o.objectId = 'foo';
@@ -2066,7 +2048,7 @@ void checkInsertInlineSheetsChartResponse(
 
 core.int buildCounterInsertPageBreakRequest = 0;
 api.InsertPageBreakRequest buildInsertPageBreakRequest() {
-  var o = api.InsertPageBreakRequest();
+  final o = api.InsertPageBreakRequest();
   buildCounterInsertPageBreakRequest++;
   if (buildCounterInsertPageBreakRequest < 3) {
     o.endOfSegmentLocation = buildEndOfSegmentLocation();
@@ -2079,16 +2061,15 @@ api.InsertPageBreakRequest buildInsertPageBreakRequest() {
 void checkInsertPageBreakRequest(api.InsertPageBreakRequest o) {
   buildCounterInsertPageBreakRequest++;
   if (buildCounterInsertPageBreakRequest < 3) {
-    checkEndOfSegmentLocation(
-        o.endOfSegmentLocation! as api.EndOfSegmentLocation);
-    checkLocation(o.location! as api.Location);
+    checkEndOfSegmentLocation(o.endOfSegmentLocation!);
+    checkLocation(o.location!);
   }
   buildCounterInsertPageBreakRequest--;
 }
 
 core.int buildCounterInsertSectionBreakRequest = 0;
 api.InsertSectionBreakRequest buildInsertSectionBreakRequest() {
-  var o = api.InsertSectionBreakRequest();
+  final o = api.InsertSectionBreakRequest();
   buildCounterInsertSectionBreakRequest++;
   if (buildCounterInsertSectionBreakRequest < 3) {
     o.endOfSegmentLocation = buildEndOfSegmentLocation();
@@ -2102,9 +2083,8 @@ api.InsertSectionBreakRequest buildInsertSectionBreakRequest() {
 void checkInsertSectionBreakRequest(api.InsertSectionBreakRequest o) {
   buildCounterInsertSectionBreakRequest++;
   if (buildCounterInsertSectionBreakRequest < 3) {
-    checkEndOfSegmentLocation(
-        o.endOfSegmentLocation! as api.EndOfSegmentLocation);
-    checkLocation(o.location! as api.Location);
+    checkEndOfSegmentLocation(o.endOfSegmentLocation!);
+    checkLocation(o.location!);
     unittest.expect(
       o.sectionType!,
       unittest.equals('foo'),
@@ -2115,7 +2095,7 @@ void checkInsertSectionBreakRequest(api.InsertSectionBreakRequest o) {
 
 core.int buildCounterInsertTableColumnRequest = 0;
 api.InsertTableColumnRequest buildInsertTableColumnRequest() {
-  var o = api.InsertTableColumnRequest();
+  final o = api.InsertTableColumnRequest();
   buildCounterInsertTableColumnRequest++;
   if (buildCounterInsertTableColumnRequest < 3) {
     o.insertRight = true;
@@ -2129,14 +2109,14 @@ void checkInsertTableColumnRequest(api.InsertTableColumnRequest o) {
   buildCounterInsertTableColumnRequest++;
   if (buildCounterInsertTableColumnRequest < 3) {
     unittest.expect(o.insertRight!, unittest.isTrue);
-    checkTableCellLocation(o.tableCellLocation! as api.TableCellLocation);
+    checkTableCellLocation(o.tableCellLocation!);
   }
   buildCounterInsertTableColumnRequest--;
 }
 
 core.int buildCounterInsertTableRequest = 0;
 api.InsertTableRequest buildInsertTableRequest() {
-  var o = api.InsertTableRequest();
+  final o = api.InsertTableRequest();
   buildCounterInsertTableRequest++;
   if (buildCounterInsertTableRequest < 3) {
     o.columns = 42;
@@ -2155,9 +2135,8 @@ void checkInsertTableRequest(api.InsertTableRequest o) {
       o.columns!,
       unittest.equals(42),
     );
-    checkEndOfSegmentLocation(
-        o.endOfSegmentLocation! as api.EndOfSegmentLocation);
-    checkLocation(o.location! as api.Location);
+    checkEndOfSegmentLocation(o.endOfSegmentLocation!);
+    checkLocation(o.location!);
     unittest.expect(
       o.rows!,
       unittest.equals(42),
@@ -2168,7 +2147,7 @@ void checkInsertTableRequest(api.InsertTableRequest o) {
 
 core.int buildCounterInsertTableRowRequest = 0;
 api.InsertTableRowRequest buildInsertTableRowRequest() {
-  var o = api.InsertTableRowRequest();
+  final o = api.InsertTableRowRequest();
   buildCounterInsertTableRowRequest++;
   if (buildCounterInsertTableRowRequest < 3) {
     o.insertBelow = true;
@@ -2182,14 +2161,14 @@ void checkInsertTableRowRequest(api.InsertTableRowRequest o) {
   buildCounterInsertTableRowRequest++;
   if (buildCounterInsertTableRowRequest < 3) {
     unittest.expect(o.insertBelow!, unittest.isTrue);
-    checkTableCellLocation(o.tableCellLocation! as api.TableCellLocation);
+    checkTableCellLocation(o.tableCellLocation!);
   }
   buildCounterInsertTableRowRequest--;
 }
 
 core.int buildCounterInsertTextRequest = 0;
 api.InsertTextRequest buildInsertTextRequest() {
-  var o = api.InsertTextRequest();
+  final o = api.InsertTextRequest();
   buildCounterInsertTextRequest++;
   if (buildCounterInsertTextRequest < 3) {
     o.endOfSegmentLocation = buildEndOfSegmentLocation();
@@ -2203,9 +2182,8 @@ api.InsertTextRequest buildInsertTextRequest() {
 void checkInsertTextRequest(api.InsertTextRequest o) {
   buildCounterInsertTextRequest++;
   if (buildCounterInsertTextRequest < 3) {
-    checkEndOfSegmentLocation(
-        o.endOfSegmentLocation! as api.EndOfSegmentLocation);
-    checkLocation(o.location! as api.Location);
+    checkEndOfSegmentLocation(o.endOfSegmentLocation!);
+    checkLocation(o.location!);
     unittest.expect(
       o.text!,
       unittest.equals('foo'),
@@ -2216,7 +2194,7 @@ void checkInsertTextRequest(api.InsertTextRequest o) {
 
 core.int buildCounterLink = 0;
 api.Link buildLink() {
-  var o = api.Link();
+  final o = api.Link();
   buildCounterLink++;
   if (buildCounterLink < 3) {
     o.bookmarkId = 'foo';
@@ -2248,7 +2226,7 @@ void checkLink(api.Link o) {
 
 core.int buildCounterLinkedContentReference = 0;
 api.LinkedContentReference buildLinkedContentReference() {
-  var o = api.LinkedContentReference();
+  final o = api.LinkedContentReference();
   buildCounterLinkedContentReference++;
   if (buildCounterLinkedContentReference < 3) {
     o.sheetsChartReference = buildSheetsChartReference();
@@ -2260,8 +2238,7 @@ api.LinkedContentReference buildLinkedContentReference() {
 void checkLinkedContentReference(api.LinkedContentReference o) {
   buildCounterLinkedContentReference++;
   if (buildCounterLinkedContentReference < 3) {
-    checkSheetsChartReference(
-        o.sheetsChartReference! as api.SheetsChartReference);
+    checkSheetsChartReference(o.sheetsChartReference!);
   }
   buildCounterLinkedContentReference--;
 }
@@ -2269,7 +2246,7 @@ void checkLinkedContentReference(api.LinkedContentReference o) {
 core.int buildCounterLinkedContentReferenceSuggestionState = 0;
 api.LinkedContentReferenceSuggestionState
     buildLinkedContentReferenceSuggestionState() {
-  var o = api.LinkedContentReferenceSuggestionState();
+  final o = api.LinkedContentReferenceSuggestionState();
   buildCounterLinkedContentReferenceSuggestionState++;
   if (buildCounterLinkedContentReferenceSuggestionState < 3) {
     o.sheetsChartReferenceSuggestionState =
@@ -2284,14 +2261,13 @@ void checkLinkedContentReferenceSuggestionState(
   buildCounterLinkedContentReferenceSuggestionState++;
   if (buildCounterLinkedContentReferenceSuggestionState < 3) {
     checkSheetsChartReferenceSuggestionState(
-        o.sheetsChartReferenceSuggestionState!
-            as api.SheetsChartReferenceSuggestionState);
+        o.sheetsChartReferenceSuggestionState!);
   }
   buildCounterLinkedContentReferenceSuggestionState--;
 }
 
 core.List<core.String> buildUnnamed7303() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -2310,7 +2286,7 @@ void checkUnnamed7303(core.List<core.String> o) {
 }
 
 core.Map<core.String, api.SuggestedListProperties> buildUnnamed7304() {
-  var o = <core.String, api.SuggestedListProperties>{};
+  final o = <core.String, api.SuggestedListProperties>{};
   o['x'] = buildSuggestedListProperties();
   o['y'] = buildSuggestedListProperties();
   return o;
@@ -2318,13 +2294,13 @@ core.Map<core.String, api.SuggestedListProperties> buildUnnamed7304() {
 
 void checkUnnamed7304(core.Map<core.String, api.SuggestedListProperties> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedListProperties(o['x']! as api.SuggestedListProperties);
-  checkSuggestedListProperties(o['y']! as api.SuggestedListProperties);
+  checkSuggestedListProperties(o['x']!);
+  checkSuggestedListProperties(o['y']!);
 }
 
 core.int buildCounterList = 0;
 api.List buildList() {
-  var o = api.List();
+  final o = api.List();
   buildCounterList++;
   if (buildCounterList < 3) {
     o.listProperties = buildListProperties();
@@ -2339,7 +2315,7 @@ api.List buildList() {
 void checkList(api.List o) {
   buildCounterList++;
   if (buildCounterList < 3) {
-    checkListProperties(o.listProperties! as api.ListProperties);
+    checkListProperties(o.listProperties!);
     checkUnnamed7303(o.suggestedDeletionIds!);
     unittest.expect(
       o.suggestedInsertionId!,
@@ -2351,7 +2327,7 @@ void checkList(api.List o) {
 }
 
 core.List<api.NestingLevel> buildUnnamed7305() {
-  var o = <api.NestingLevel>[];
+  final o = <api.NestingLevel>[];
   o.add(buildNestingLevel());
   o.add(buildNestingLevel());
   return o;
@@ -2359,13 +2335,13 @@ core.List<api.NestingLevel> buildUnnamed7305() {
 
 void checkUnnamed7305(core.List<api.NestingLevel> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNestingLevel(o[0] as api.NestingLevel);
-  checkNestingLevel(o[1] as api.NestingLevel);
+  checkNestingLevel(o[0]);
+  checkNestingLevel(o[1]);
 }
 
 core.int buildCounterListProperties = 0;
 api.ListProperties buildListProperties() {
-  var o = api.ListProperties();
+  final o = api.ListProperties();
   buildCounterListProperties++;
   if (buildCounterListProperties < 3) {
     o.nestingLevels = buildUnnamed7305();
@@ -2383,7 +2359,7 @@ void checkListProperties(api.ListProperties o) {
 }
 
 core.List<api.NestingLevelSuggestionState> buildUnnamed7306() {
-  var o = <api.NestingLevelSuggestionState>[];
+  final o = <api.NestingLevelSuggestionState>[];
   o.add(buildNestingLevelSuggestionState());
   o.add(buildNestingLevelSuggestionState());
   return o;
@@ -2391,13 +2367,13 @@ core.List<api.NestingLevelSuggestionState> buildUnnamed7306() {
 
 void checkUnnamed7306(core.List<api.NestingLevelSuggestionState> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNestingLevelSuggestionState(o[0] as api.NestingLevelSuggestionState);
-  checkNestingLevelSuggestionState(o[1] as api.NestingLevelSuggestionState);
+  checkNestingLevelSuggestionState(o[0]);
+  checkNestingLevelSuggestionState(o[1]);
 }
 
 core.int buildCounterListPropertiesSuggestionState = 0;
 api.ListPropertiesSuggestionState buildListPropertiesSuggestionState() {
-  var o = api.ListPropertiesSuggestionState();
+  final o = api.ListPropertiesSuggestionState();
   buildCounterListPropertiesSuggestionState++;
   if (buildCounterListPropertiesSuggestionState < 3) {
     o.nestingLevelsSuggestionStates = buildUnnamed7306();
@@ -2416,7 +2392,7 @@ void checkListPropertiesSuggestionState(api.ListPropertiesSuggestionState o) {
 
 core.int buildCounterLocation = 0;
 api.Location buildLocation() {
-  var o = api.Location();
+  final o = api.Location();
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     o.index = 42;
@@ -2443,7 +2419,7 @@ void checkLocation(api.Location o) {
 
 core.int buildCounterMergeTableCellsRequest = 0;
 api.MergeTableCellsRequest buildMergeTableCellsRequest() {
-  var o = api.MergeTableCellsRequest();
+  final o = api.MergeTableCellsRequest();
   buildCounterMergeTableCellsRequest++;
   if (buildCounterMergeTableCellsRequest < 3) {
     o.tableRange = buildTableRange();
@@ -2455,13 +2431,13 @@ api.MergeTableCellsRequest buildMergeTableCellsRequest() {
 void checkMergeTableCellsRequest(api.MergeTableCellsRequest o) {
   buildCounterMergeTableCellsRequest++;
   if (buildCounterMergeTableCellsRequest < 3) {
-    checkTableRange(o.tableRange! as api.TableRange);
+    checkTableRange(o.tableRange!);
   }
   buildCounterMergeTableCellsRequest--;
 }
 
 core.List<api.Range> buildUnnamed7307() {
-  var o = <api.Range>[];
+  final o = <api.Range>[];
   o.add(buildRange());
   o.add(buildRange());
   return o;
@@ -2469,13 +2445,13 @@ core.List<api.Range> buildUnnamed7307() {
 
 void checkUnnamed7307(core.List<api.Range> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRange(o[0] as api.Range);
-  checkRange(o[1] as api.Range);
+  checkRange(o[0]);
+  checkRange(o[1]);
 }
 
 core.int buildCounterNamedRange = 0;
 api.NamedRange buildNamedRange() {
-  var o = api.NamedRange();
+  final o = api.NamedRange();
   buildCounterNamedRange++;
   if (buildCounterNamedRange < 3) {
     o.name = 'foo';
@@ -2503,7 +2479,7 @@ void checkNamedRange(api.NamedRange o) {
 }
 
 core.List<api.NamedRange> buildUnnamed7308() {
-  var o = <api.NamedRange>[];
+  final o = <api.NamedRange>[];
   o.add(buildNamedRange());
   o.add(buildNamedRange());
   return o;
@@ -2511,13 +2487,13 @@ core.List<api.NamedRange> buildUnnamed7308() {
 
 void checkUnnamed7308(core.List<api.NamedRange> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNamedRange(o[0] as api.NamedRange);
-  checkNamedRange(o[1] as api.NamedRange);
+  checkNamedRange(o[0]);
+  checkNamedRange(o[1]);
 }
 
 core.int buildCounterNamedRanges = 0;
 api.NamedRanges buildNamedRanges() {
-  var o = api.NamedRanges();
+  final o = api.NamedRanges();
   buildCounterNamedRanges++;
   if (buildCounterNamedRanges < 3) {
     o.name = 'foo';
@@ -2541,7 +2517,7 @@ void checkNamedRanges(api.NamedRanges o) {
 
 core.int buildCounterNamedStyle = 0;
 api.NamedStyle buildNamedStyle() {
-  var o = api.NamedStyle();
+  final o = api.NamedStyle();
   buildCounterNamedStyle++;
   if (buildCounterNamedStyle < 3) {
     o.namedStyleType = 'foo';
@@ -2559,15 +2535,15 @@ void checkNamedStyle(api.NamedStyle o) {
       o.namedStyleType!,
       unittest.equals('foo'),
     );
-    checkParagraphStyle(o.paragraphStyle! as api.ParagraphStyle);
-    checkTextStyle(o.textStyle! as api.TextStyle);
+    checkParagraphStyle(o.paragraphStyle!);
+    checkTextStyle(o.textStyle!);
   }
   buildCounterNamedStyle--;
 }
 
 core.int buildCounterNamedStyleSuggestionState = 0;
 api.NamedStyleSuggestionState buildNamedStyleSuggestionState() {
-  var o = api.NamedStyleSuggestionState();
+  final o = api.NamedStyleSuggestionState();
   buildCounterNamedStyleSuggestionState++;
   if (buildCounterNamedStyleSuggestionState < 3) {
     o.namedStyleType = 'foo';
@@ -2585,16 +2561,14 @@ void checkNamedStyleSuggestionState(api.NamedStyleSuggestionState o) {
       o.namedStyleType!,
       unittest.equals('foo'),
     );
-    checkParagraphStyleSuggestionState(
-        o.paragraphStyleSuggestionState! as api.ParagraphStyleSuggestionState);
-    checkTextStyleSuggestionState(
-        o.textStyleSuggestionState! as api.TextStyleSuggestionState);
+    checkParagraphStyleSuggestionState(o.paragraphStyleSuggestionState!);
+    checkTextStyleSuggestionState(o.textStyleSuggestionState!);
   }
   buildCounterNamedStyleSuggestionState--;
 }
 
 core.List<api.NamedStyle> buildUnnamed7309() {
-  var o = <api.NamedStyle>[];
+  final o = <api.NamedStyle>[];
   o.add(buildNamedStyle());
   o.add(buildNamedStyle());
   return o;
@@ -2602,13 +2576,13 @@ core.List<api.NamedStyle> buildUnnamed7309() {
 
 void checkUnnamed7309(core.List<api.NamedStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNamedStyle(o[0] as api.NamedStyle);
-  checkNamedStyle(o[1] as api.NamedStyle);
+  checkNamedStyle(o[0]);
+  checkNamedStyle(o[1]);
 }
 
 core.int buildCounterNamedStyles = 0;
 api.NamedStyles buildNamedStyles() {
-  var o = api.NamedStyles();
+  final o = api.NamedStyles();
   buildCounterNamedStyles++;
   if (buildCounterNamedStyles < 3) {
     o.styles = buildUnnamed7309();
@@ -2626,7 +2600,7 @@ void checkNamedStyles(api.NamedStyles o) {
 }
 
 core.List<api.NamedStyleSuggestionState> buildUnnamed7310() {
-  var o = <api.NamedStyleSuggestionState>[];
+  final o = <api.NamedStyleSuggestionState>[];
   o.add(buildNamedStyleSuggestionState());
   o.add(buildNamedStyleSuggestionState());
   return o;
@@ -2634,13 +2608,13 @@ core.List<api.NamedStyleSuggestionState> buildUnnamed7310() {
 
 void checkUnnamed7310(core.List<api.NamedStyleSuggestionState> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNamedStyleSuggestionState(o[0] as api.NamedStyleSuggestionState);
-  checkNamedStyleSuggestionState(o[1] as api.NamedStyleSuggestionState);
+  checkNamedStyleSuggestionState(o[0]);
+  checkNamedStyleSuggestionState(o[1]);
 }
 
 core.int buildCounterNamedStylesSuggestionState = 0;
 api.NamedStylesSuggestionState buildNamedStylesSuggestionState() {
-  var o = api.NamedStylesSuggestionState();
+  final o = api.NamedStylesSuggestionState();
   buildCounterNamedStylesSuggestionState++;
   if (buildCounterNamedStylesSuggestionState < 3) {
     o.stylesSuggestionStates = buildUnnamed7310();
@@ -2659,7 +2633,7 @@ void checkNamedStylesSuggestionState(api.NamedStylesSuggestionState o) {
 
 core.int buildCounterNestingLevel = 0;
 api.NestingLevel buildNestingLevel() {
-  var o = api.NestingLevel();
+  final o = api.NestingLevel();
   buildCounterNestingLevel++;
   if (buildCounterNestingLevel < 3) {
     o.bulletAlignment = 'foo';
@@ -2694,20 +2668,20 @@ void checkNestingLevel(api.NestingLevel o) {
       o.glyphType!,
       unittest.equals('foo'),
     );
-    checkDimension(o.indentFirstLine! as api.Dimension);
-    checkDimension(o.indentStart! as api.Dimension);
+    checkDimension(o.indentFirstLine!);
+    checkDimension(o.indentStart!);
     unittest.expect(
       o.startNumber!,
       unittest.equals(42),
     );
-    checkTextStyle(o.textStyle! as api.TextStyle);
+    checkTextStyle(o.textStyle!);
   }
   buildCounterNestingLevel--;
 }
 
 core.int buildCounterNestingLevelSuggestionState = 0;
 api.NestingLevelSuggestionState buildNestingLevelSuggestionState() {
-  var o = api.NestingLevelSuggestionState();
+  final o = api.NestingLevelSuggestionState();
   buildCounterNestingLevelSuggestionState++;
   if (buildCounterNestingLevelSuggestionState < 3) {
     o.bulletAlignmentSuggested = true;
@@ -2733,14 +2707,13 @@ void checkNestingLevelSuggestionState(api.NestingLevelSuggestionState o) {
     unittest.expect(o.indentFirstLineSuggested!, unittest.isTrue);
     unittest.expect(o.indentStartSuggested!, unittest.isTrue);
     unittest.expect(o.startNumberSuggested!, unittest.isTrue);
-    checkTextStyleSuggestionState(
-        o.textStyleSuggestionState! as api.TextStyleSuggestionState);
+    checkTextStyleSuggestionState(o.textStyleSuggestionState!);
   }
   buildCounterNestingLevelSuggestionState--;
 }
 
 core.List<core.String> buildUnnamed7311() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -2760,7 +2733,7 @@ void checkUnnamed7311(core.List<core.String> o) {
 
 core.int buildCounterObjectReferences = 0;
 api.ObjectReferences buildObjectReferences() {
-  var o = api.ObjectReferences();
+  final o = api.ObjectReferences();
   buildCounterObjectReferences++;
   if (buildCounterObjectReferences < 3) {
     o.objectIds = buildUnnamed7311();
@@ -2779,7 +2752,7 @@ void checkObjectReferences(api.ObjectReferences o) {
 
 core.int buildCounterOptionalColor = 0;
 api.OptionalColor buildOptionalColor() {
-  var o = api.OptionalColor();
+  final o = api.OptionalColor();
   buildCounterOptionalColor++;
   if (buildCounterOptionalColor < 3) {
     o.color = buildColor();
@@ -2791,13 +2764,13 @@ api.OptionalColor buildOptionalColor() {
 void checkOptionalColor(api.OptionalColor o) {
   buildCounterOptionalColor++;
   if (buildCounterOptionalColor < 3) {
-    checkColor(o.color! as api.Color);
+    checkColor(o.color!);
   }
   buildCounterOptionalColor--;
 }
 
 core.List<core.String> buildUnnamed7312() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -2816,7 +2789,7 @@ void checkUnnamed7312(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed7313() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -2835,7 +2808,7 @@ void checkUnnamed7313(core.List<core.String> o) {
 }
 
 core.Map<core.String, api.SuggestedTextStyle> buildUnnamed7314() {
-  var o = <core.String, api.SuggestedTextStyle>{};
+  final o = <core.String, api.SuggestedTextStyle>{};
   o['x'] = buildSuggestedTextStyle();
   o['y'] = buildSuggestedTextStyle();
   return o;
@@ -2843,13 +2816,13 @@ core.Map<core.String, api.SuggestedTextStyle> buildUnnamed7314() {
 
 void checkUnnamed7314(core.Map<core.String, api.SuggestedTextStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedTextStyle(o['x']! as api.SuggestedTextStyle);
-  checkSuggestedTextStyle(o['y']! as api.SuggestedTextStyle);
+  checkSuggestedTextStyle(o['x']!);
+  checkSuggestedTextStyle(o['y']!);
 }
 
 core.int buildCounterPageBreak = 0;
 api.PageBreak buildPageBreak() {
-  var o = api.PageBreak();
+  final o = api.PageBreak();
   buildCounterPageBreak++;
   if (buildCounterPageBreak < 3) {
     o.suggestedDeletionIds = buildUnnamed7312();
@@ -2867,13 +2840,13 @@ void checkPageBreak(api.PageBreak o) {
     checkUnnamed7312(o.suggestedDeletionIds!);
     checkUnnamed7313(o.suggestedInsertionIds!);
     checkUnnamed7314(o.suggestedTextStyleChanges!);
-    checkTextStyle(o.textStyle! as api.TextStyle);
+    checkTextStyle(o.textStyle!);
   }
   buildCounterPageBreak--;
 }
 
 core.List<api.ParagraphElement> buildUnnamed7315() {
-  var o = <api.ParagraphElement>[];
+  final o = <api.ParagraphElement>[];
   o.add(buildParagraphElement());
   o.add(buildParagraphElement());
   return o;
@@ -2881,12 +2854,12 @@ core.List<api.ParagraphElement> buildUnnamed7315() {
 
 void checkUnnamed7315(core.List<api.ParagraphElement> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkParagraphElement(o[0] as api.ParagraphElement);
-  checkParagraphElement(o[1] as api.ParagraphElement);
+  checkParagraphElement(o[0]);
+  checkParagraphElement(o[1]);
 }
 
 core.List<core.String> buildUnnamed7316() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -2905,7 +2878,7 @@ void checkUnnamed7316(core.List<core.String> o) {
 }
 
 core.Map<core.String, api.SuggestedBullet> buildUnnamed7317() {
-  var o = <core.String, api.SuggestedBullet>{};
+  final o = <core.String, api.SuggestedBullet>{};
   o['x'] = buildSuggestedBullet();
   o['y'] = buildSuggestedBullet();
   return o;
@@ -2913,12 +2886,12 @@ core.Map<core.String, api.SuggestedBullet> buildUnnamed7317() {
 
 void checkUnnamed7317(core.Map<core.String, api.SuggestedBullet> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedBullet(o['x']! as api.SuggestedBullet);
-  checkSuggestedBullet(o['y']! as api.SuggestedBullet);
+  checkSuggestedBullet(o['x']!);
+  checkSuggestedBullet(o['y']!);
 }
 
 core.Map<core.String, api.SuggestedParagraphStyle> buildUnnamed7318() {
-  var o = <core.String, api.SuggestedParagraphStyle>{};
+  final o = <core.String, api.SuggestedParagraphStyle>{};
   o['x'] = buildSuggestedParagraphStyle();
   o['y'] = buildSuggestedParagraphStyle();
   return o;
@@ -2926,12 +2899,12 @@ core.Map<core.String, api.SuggestedParagraphStyle> buildUnnamed7318() {
 
 void checkUnnamed7318(core.Map<core.String, api.SuggestedParagraphStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedParagraphStyle(o['x']! as api.SuggestedParagraphStyle);
-  checkSuggestedParagraphStyle(o['y']! as api.SuggestedParagraphStyle);
+  checkSuggestedParagraphStyle(o['x']!);
+  checkSuggestedParagraphStyle(o['y']!);
 }
 
 core.Map<core.String, api.ObjectReferences> buildUnnamed7319() {
-  var o = <core.String, api.ObjectReferences>{};
+  final o = <core.String, api.ObjectReferences>{};
   o['x'] = buildObjectReferences();
   o['y'] = buildObjectReferences();
   return o;
@@ -2939,13 +2912,13 @@ core.Map<core.String, api.ObjectReferences> buildUnnamed7319() {
 
 void checkUnnamed7319(core.Map<core.String, api.ObjectReferences> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkObjectReferences(o['x']! as api.ObjectReferences);
-  checkObjectReferences(o['y']! as api.ObjectReferences);
+  checkObjectReferences(o['x']!);
+  checkObjectReferences(o['y']!);
 }
 
 core.int buildCounterParagraph = 0;
 api.Paragraph buildParagraph() {
-  var o = api.Paragraph();
+  final o = api.Paragraph();
   buildCounterParagraph++;
   if (buildCounterParagraph < 3) {
     o.bullet = buildBullet();
@@ -2963,9 +2936,9 @@ api.Paragraph buildParagraph() {
 void checkParagraph(api.Paragraph o) {
   buildCounterParagraph++;
   if (buildCounterParagraph < 3) {
-    checkBullet(o.bullet! as api.Bullet);
+    checkBullet(o.bullet!);
     checkUnnamed7315(o.elements!);
-    checkParagraphStyle(o.paragraphStyle! as api.ParagraphStyle);
+    checkParagraphStyle(o.paragraphStyle!);
     checkUnnamed7316(o.positionedObjectIds!);
     checkUnnamed7317(o.suggestedBulletChanges!);
     checkUnnamed7318(o.suggestedParagraphStyleChanges!);
@@ -2976,7 +2949,7 @@ void checkParagraph(api.Paragraph o) {
 
 core.int buildCounterParagraphBorder = 0;
 api.ParagraphBorder buildParagraphBorder() {
-  var o = api.ParagraphBorder();
+  final o = api.ParagraphBorder();
   buildCounterParagraphBorder++;
   if (buildCounterParagraphBorder < 3) {
     o.color = buildOptionalColor();
@@ -2991,20 +2964,20 @@ api.ParagraphBorder buildParagraphBorder() {
 void checkParagraphBorder(api.ParagraphBorder o) {
   buildCounterParagraphBorder++;
   if (buildCounterParagraphBorder < 3) {
-    checkOptionalColor(o.color! as api.OptionalColor);
+    checkOptionalColor(o.color!);
     unittest.expect(
       o.dashStyle!,
       unittest.equals('foo'),
     );
-    checkDimension(o.padding! as api.Dimension);
-    checkDimension(o.width! as api.Dimension);
+    checkDimension(o.padding!);
+    checkDimension(o.width!);
   }
   buildCounterParagraphBorder--;
 }
 
 core.int buildCounterParagraphElement = 0;
 api.ParagraphElement buildParagraphElement() {
-  var o = api.ParagraphElement();
+  final o = api.ParagraphElement();
   buildCounterParagraphElement++;
   if (buildCounterParagraphElement < 3) {
     o.autoText = buildAutoText();
@@ -3027,30 +3000,30 @@ api.ParagraphElement buildParagraphElement() {
 void checkParagraphElement(api.ParagraphElement o) {
   buildCounterParagraphElement++;
   if (buildCounterParagraphElement < 3) {
-    checkAutoText(o.autoText! as api.AutoText);
-    checkColumnBreak(o.columnBreak! as api.ColumnBreak);
+    checkAutoText(o.autoText!);
+    checkColumnBreak(o.columnBreak!);
     unittest.expect(
       o.endIndex!,
       unittest.equals(42),
     );
-    checkEquation(o.equation! as api.Equation);
-    checkFootnoteReference(o.footnoteReference! as api.FootnoteReference);
-    checkHorizontalRule(o.horizontalRule! as api.HorizontalRule);
-    checkInlineObjectElement(o.inlineObjectElement! as api.InlineObjectElement);
-    checkPageBreak(o.pageBreak! as api.PageBreak);
-    checkPerson(o.person! as api.Person);
-    checkRichLink(o.richLink! as api.RichLink);
+    checkEquation(o.equation!);
+    checkFootnoteReference(o.footnoteReference!);
+    checkHorizontalRule(o.horizontalRule!);
+    checkInlineObjectElement(o.inlineObjectElement!);
+    checkPageBreak(o.pageBreak!);
+    checkPerson(o.person!);
+    checkRichLink(o.richLink!);
     unittest.expect(
       o.startIndex!,
       unittest.equals(42),
     );
-    checkTextRun(o.textRun! as api.TextRun);
+    checkTextRun(o.textRun!);
   }
   buildCounterParagraphElement--;
 }
 
 core.List<api.TabStop> buildUnnamed7320() {
-  var o = <api.TabStop>[];
+  final o = <api.TabStop>[];
   o.add(buildTabStop());
   o.add(buildTabStop());
   return o;
@@ -3058,13 +3031,13 @@ core.List<api.TabStop> buildUnnamed7320() {
 
 void checkUnnamed7320(core.List<api.TabStop> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTabStop(o[0] as api.TabStop);
-  checkTabStop(o[1] as api.TabStop);
+  checkTabStop(o[0]);
+  checkTabStop(o[1]);
 }
 
 core.int buildCounterParagraphStyle = 0;
 api.ParagraphStyle buildParagraphStyle() {
-  var o = api.ParagraphStyle();
+  final o = api.ParagraphStyle();
   buildCounterParagraphStyle++;
   if (buildCounterParagraphStyle < 3) {
     o.alignment = 'foo';
@@ -3101,11 +3074,11 @@ void checkParagraphStyle(api.ParagraphStyle o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.avoidWidowAndOrphan!, unittest.isTrue);
-    checkParagraphBorder(o.borderBetween! as api.ParagraphBorder);
-    checkParagraphBorder(o.borderBottom! as api.ParagraphBorder);
-    checkParagraphBorder(o.borderLeft! as api.ParagraphBorder);
-    checkParagraphBorder(o.borderRight! as api.ParagraphBorder);
-    checkParagraphBorder(o.borderTop! as api.ParagraphBorder);
+    checkParagraphBorder(o.borderBetween!);
+    checkParagraphBorder(o.borderBottom!);
+    checkParagraphBorder(o.borderLeft!);
+    checkParagraphBorder(o.borderRight!);
+    checkParagraphBorder(o.borderTop!);
     unittest.expect(
       o.direction!,
       unittest.equals('foo'),
@@ -3114,9 +3087,9 @@ void checkParagraphStyle(api.ParagraphStyle o) {
       o.headingId!,
       unittest.equals('foo'),
     );
-    checkDimension(o.indentEnd! as api.Dimension);
-    checkDimension(o.indentFirstLine! as api.Dimension);
-    checkDimension(o.indentStart! as api.Dimension);
+    checkDimension(o.indentEnd!);
+    checkDimension(o.indentFirstLine!);
+    checkDimension(o.indentStart!);
     unittest.expect(o.keepLinesTogether!, unittest.isTrue);
     unittest.expect(o.keepWithNext!, unittest.isTrue);
     unittest.expect(
@@ -3127,9 +3100,9 @@ void checkParagraphStyle(api.ParagraphStyle o) {
       o.namedStyleType!,
       unittest.equals('foo'),
     );
-    checkShading(o.shading! as api.Shading);
-    checkDimension(o.spaceAbove! as api.Dimension);
-    checkDimension(o.spaceBelow! as api.Dimension);
+    checkShading(o.shading!);
+    checkDimension(o.spaceAbove!);
+    checkDimension(o.spaceBelow!);
     unittest.expect(
       o.spacingMode!,
       unittest.equals('foo'),
@@ -3141,7 +3114,7 @@ void checkParagraphStyle(api.ParagraphStyle o) {
 
 core.int buildCounterParagraphStyleSuggestionState = 0;
 api.ParagraphStyleSuggestionState buildParagraphStyleSuggestionState() {
-  var o = api.ParagraphStyleSuggestionState();
+  final o = api.ParagraphStyleSuggestionState();
   buildCounterParagraphStyleSuggestionState++;
   if (buildCounterParagraphStyleSuggestionState < 3) {
     o.alignmentSuggested = true;
@@ -3188,8 +3161,7 @@ void checkParagraphStyleSuggestionState(api.ParagraphStyleSuggestionState o) {
     unittest.expect(o.keepWithNextSuggested!, unittest.isTrue);
     unittest.expect(o.lineSpacingSuggested!, unittest.isTrue);
     unittest.expect(o.namedStyleTypeSuggested!, unittest.isTrue);
-    checkShadingSuggestionState(
-        o.shadingSuggestionState! as api.ShadingSuggestionState);
+    checkShadingSuggestionState(o.shadingSuggestionState!);
     unittest.expect(o.spaceAboveSuggested!, unittest.isTrue);
     unittest.expect(o.spaceBelowSuggested!, unittest.isTrue);
     unittest.expect(o.spacingModeSuggested!, unittest.isTrue);
@@ -3198,7 +3170,7 @@ void checkParagraphStyleSuggestionState(api.ParagraphStyleSuggestionState o) {
 }
 
 core.List<core.String> buildUnnamed7321() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -3217,7 +3189,7 @@ void checkUnnamed7321(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed7322() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -3236,7 +3208,7 @@ void checkUnnamed7322(core.List<core.String> o) {
 }
 
 core.Map<core.String, api.SuggestedTextStyle> buildUnnamed7323() {
-  var o = <core.String, api.SuggestedTextStyle>{};
+  final o = <core.String, api.SuggestedTextStyle>{};
   o['x'] = buildSuggestedTextStyle();
   o['y'] = buildSuggestedTextStyle();
   return o;
@@ -3244,13 +3216,13 @@ core.Map<core.String, api.SuggestedTextStyle> buildUnnamed7323() {
 
 void checkUnnamed7323(core.Map<core.String, api.SuggestedTextStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedTextStyle(o['x']! as api.SuggestedTextStyle);
-  checkSuggestedTextStyle(o['y']! as api.SuggestedTextStyle);
+  checkSuggestedTextStyle(o['x']!);
+  checkSuggestedTextStyle(o['y']!);
 }
 
 core.int buildCounterPerson = 0;
 api.Person buildPerson() {
-  var o = api.Person();
+  final o = api.Person();
   buildCounterPerson++;
   if (buildCounterPerson < 3) {
     o.personId = 'foo';
@@ -3271,18 +3243,18 @@ void checkPerson(api.Person o) {
       o.personId!,
       unittest.equals('foo'),
     );
-    checkPersonProperties(o.personProperties! as api.PersonProperties);
+    checkPersonProperties(o.personProperties!);
     checkUnnamed7321(o.suggestedDeletionIds!);
     checkUnnamed7322(o.suggestedInsertionIds!);
     checkUnnamed7323(o.suggestedTextStyleChanges!);
-    checkTextStyle(o.textStyle! as api.TextStyle);
+    checkTextStyle(o.textStyle!);
   }
   buildCounterPerson--;
 }
 
 core.int buildCounterPersonProperties = 0;
 api.PersonProperties buildPersonProperties() {
-  var o = api.PersonProperties();
+  final o = api.PersonProperties();
   buildCounterPersonProperties++;
   if (buildCounterPersonProperties < 3) {
     o.email = 'foo';
@@ -3308,7 +3280,7 @@ void checkPersonProperties(api.PersonProperties o) {
 }
 
 core.List<core.String> buildUnnamed7324() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -3328,7 +3300,7 @@ void checkUnnamed7324(core.List<core.String> o) {
 
 core.Map<core.String, api.SuggestedPositionedObjectProperties>
     buildUnnamed7325() {
-  var o = <core.String, api.SuggestedPositionedObjectProperties>{};
+  final o = <core.String, api.SuggestedPositionedObjectProperties>{};
   o['x'] = buildSuggestedPositionedObjectProperties();
   o['y'] = buildSuggestedPositionedObjectProperties();
   return o;
@@ -3337,15 +3309,13 @@ core.Map<core.String, api.SuggestedPositionedObjectProperties>
 void checkUnnamed7325(
     core.Map<core.String, api.SuggestedPositionedObjectProperties> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedPositionedObjectProperties(
-      o['x']! as api.SuggestedPositionedObjectProperties);
-  checkSuggestedPositionedObjectProperties(
-      o['y']! as api.SuggestedPositionedObjectProperties);
+  checkSuggestedPositionedObjectProperties(o['x']!);
+  checkSuggestedPositionedObjectProperties(o['y']!);
 }
 
 core.int buildCounterPositionedObject = 0;
 api.PositionedObject buildPositionedObject() {
-  var o = api.PositionedObject();
+  final o = api.PositionedObject();
   buildCounterPositionedObject++;
   if (buildCounterPositionedObject < 3) {
     o.objectId = 'foo';
@@ -3365,8 +3335,7 @@ void checkPositionedObject(api.PositionedObject o) {
       o.objectId!,
       unittest.equals('foo'),
     );
-    checkPositionedObjectProperties(
-        o.positionedObjectProperties! as api.PositionedObjectProperties);
+    checkPositionedObjectProperties(o.positionedObjectProperties!);
     checkUnnamed7324(o.suggestedDeletionIds!);
     unittest.expect(
       o.suggestedInsertionId!,
@@ -3379,7 +3348,7 @@ void checkPositionedObject(api.PositionedObject o) {
 
 core.int buildCounterPositionedObjectPositioning = 0;
 api.PositionedObjectPositioning buildPositionedObjectPositioning() {
-  var o = api.PositionedObjectPositioning();
+  final o = api.PositionedObjectPositioning();
   buildCounterPositionedObjectPositioning++;
   if (buildCounterPositionedObjectPositioning < 3) {
     o.layout = 'foo';
@@ -3397,8 +3366,8 @@ void checkPositionedObjectPositioning(api.PositionedObjectPositioning o) {
       o.layout!,
       unittest.equals('foo'),
     );
-    checkDimension(o.leftOffset! as api.Dimension);
-    checkDimension(o.topOffset! as api.Dimension);
+    checkDimension(o.leftOffset!);
+    checkDimension(o.topOffset!);
   }
   buildCounterPositionedObjectPositioning--;
 }
@@ -3406,7 +3375,7 @@ void checkPositionedObjectPositioning(api.PositionedObjectPositioning o) {
 core.int buildCounterPositionedObjectPositioningSuggestionState = 0;
 api.PositionedObjectPositioningSuggestionState
     buildPositionedObjectPositioningSuggestionState() {
-  var o = api.PositionedObjectPositioningSuggestionState();
+  final o = api.PositionedObjectPositioningSuggestionState();
   buildCounterPositionedObjectPositioningSuggestionState++;
   if (buildCounterPositionedObjectPositioningSuggestionState < 3) {
     o.layoutSuggested = true;
@@ -3430,7 +3399,7 @@ void checkPositionedObjectPositioningSuggestionState(
 
 core.int buildCounterPositionedObjectProperties = 0;
 api.PositionedObjectProperties buildPositionedObjectProperties() {
-  var o = api.PositionedObjectProperties();
+  final o = api.PositionedObjectProperties();
   buildCounterPositionedObjectProperties++;
   if (buildCounterPositionedObjectProperties < 3) {
     o.embeddedObject = buildEmbeddedObject();
@@ -3443,9 +3412,8 @@ api.PositionedObjectProperties buildPositionedObjectProperties() {
 void checkPositionedObjectProperties(api.PositionedObjectProperties o) {
   buildCounterPositionedObjectProperties++;
   if (buildCounterPositionedObjectProperties < 3) {
-    checkEmbeddedObject(o.embeddedObject! as api.EmbeddedObject);
-    checkPositionedObjectPositioning(
-        o.positioning! as api.PositionedObjectPositioning);
+    checkEmbeddedObject(o.embeddedObject!);
+    checkPositionedObjectPositioning(o.positioning!);
   }
   buildCounterPositionedObjectProperties--;
 }
@@ -3453,7 +3421,7 @@ void checkPositionedObjectProperties(api.PositionedObjectProperties o) {
 core.int buildCounterPositionedObjectPropertiesSuggestionState = 0;
 api.PositionedObjectPropertiesSuggestionState
     buildPositionedObjectPropertiesSuggestionState() {
-  var o = api.PositionedObjectPropertiesSuggestionState();
+  final o = api.PositionedObjectPropertiesSuggestionState();
   buildCounterPositionedObjectPropertiesSuggestionState++;
   if (buildCounterPositionedObjectPropertiesSuggestionState < 3) {
     o.embeddedObjectSuggestionState = buildEmbeddedObjectSuggestionState();
@@ -3468,18 +3436,16 @@ void checkPositionedObjectPropertiesSuggestionState(
     api.PositionedObjectPropertiesSuggestionState o) {
   buildCounterPositionedObjectPropertiesSuggestionState++;
   if (buildCounterPositionedObjectPropertiesSuggestionState < 3) {
-    checkEmbeddedObjectSuggestionState(
-        o.embeddedObjectSuggestionState! as api.EmbeddedObjectSuggestionState);
+    checkEmbeddedObjectSuggestionState(o.embeddedObjectSuggestionState!);
     checkPositionedObjectPositioningSuggestionState(
-        o.positioningSuggestionState!
-            as api.PositionedObjectPositioningSuggestionState);
+        o.positioningSuggestionState!);
   }
   buildCounterPositionedObjectPropertiesSuggestionState--;
 }
 
 core.int buildCounterRange = 0;
 api.Range buildRange() {
-  var o = api.Range();
+  final o = api.Range();
   buildCounterRange++;
   if (buildCounterRange < 3) {
     o.endIndex = 42;
@@ -3511,7 +3477,7 @@ void checkRange(api.Range o) {
 
 core.int buildCounterReplaceAllTextRequest = 0;
 api.ReplaceAllTextRequest buildReplaceAllTextRequest() {
-  var o = api.ReplaceAllTextRequest();
+  final o = api.ReplaceAllTextRequest();
   buildCounterReplaceAllTextRequest++;
   if (buildCounterReplaceAllTextRequest < 3) {
     o.containsText = buildSubstringMatchCriteria();
@@ -3524,7 +3490,7 @@ api.ReplaceAllTextRequest buildReplaceAllTextRequest() {
 void checkReplaceAllTextRequest(api.ReplaceAllTextRequest o) {
   buildCounterReplaceAllTextRequest++;
   if (buildCounterReplaceAllTextRequest < 3) {
-    checkSubstringMatchCriteria(o.containsText! as api.SubstringMatchCriteria);
+    checkSubstringMatchCriteria(o.containsText!);
     unittest.expect(
       o.replaceText!,
       unittest.equals('foo'),
@@ -3535,7 +3501,7 @@ void checkReplaceAllTextRequest(api.ReplaceAllTextRequest o) {
 
 core.int buildCounterReplaceAllTextResponse = 0;
 api.ReplaceAllTextResponse buildReplaceAllTextResponse() {
-  var o = api.ReplaceAllTextResponse();
+  final o = api.ReplaceAllTextResponse();
   buildCounterReplaceAllTextResponse++;
   if (buildCounterReplaceAllTextResponse < 3) {
     o.occurrencesChanged = 42;
@@ -3557,7 +3523,7 @@ void checkReplaceAllTextResponse(api.ReplaceAllTextResponse o) {
 
 core.int buildCounterReplaceImageRequest = 0;
 api.ReplaceImageRequest buildReplaceImageRequest() {
-  var o = api.ReplaceImageRequest();
+  final o = api.ReplaceImageRequest();
   buildCounterReplaceImageRequest++;
   if (buildCounterReplaceImageRequest < 3) {
     o.imageObjectId = 'foo';
@@ -3589,7 +3555,7 @@ void checkReplaceImageRequest(api.ReplaceImageRequest o) {
 
 core.int buildCounterReplaceNamedRangeContentRequest = 0;
 api.ReplaceNamedRangeContentRequest buildReplaceNamedRangeContentRequest() {
-  var o = api.ReplaceNamedRangeContentRequest();
+  final o = api.ReplaceNamedRangeContentRequest();
   buildCounterReplaceNamedRangeContentRequest++;
   if (buildCounterReplaceNamedRangeContentRequest < 3) {
     o.namedRangeId = 'foo';
@@ -3622,7 +3588,7 @@ void checkReplaceNamedRangeContentRequest(
 
 core.int buildCounterRequest = 0;
 api.Request buildRequest() {
-  var o = api.Request();
+  final o = api.Request();
   buildCounterRequest++;
   if (buildCounterRequest < 3) {
     o.createFooter = buildCreateFooterRequest();
@@ -3665,66 +3631,45 @@ api.Request buildRequest() {
 void checkRequest(api.Request o) {
   buildCounterRequest++;
   if (buildCounterRequest < 3) {
-    checkCreateFooterRequest(o.createFooter! as api.CreateFooterRequest);
-    checkCreateFootnoteRequest(o.createFootnote! as api.CreateFootnoteRequest);
-    checkCreateHeaderRequest(o.createHeader! as api.CreateHeaderRequest);
-    checkCreateNamedRangeRequest(
-        o.createNamedRange! as api.CreateNamedRangeRequest);
-    checkCreateParagraphBulletsRequest(
-        o.createParagraphBullets! as api.CreateParagraphBulletsRequest);
-    checkDeleteContentRangeRequest(
-        o.deleteContentRange! as api.DeleteContentRangeRequest);
-    checkDeleteFooterRequest(o.deleteFooter! as api.DeleteFooterRequest);
-    checkDeleteHeaderRequest(o.deleteHeader! as api.DeleteHeaderRequest);
-    checkDeleteNamedRangeRequest(
-        o.deleteNamedRange! as api.DeleteNamedRangeRequest);
-    checkDeleteParagraphBulletsRequest(
-        o.deleteParagraphBullets! as api.DeleteParagraphBulletsRequest);
-    checkDeletePositionedObjectRequest(
-        o.deletePositionedObject! as api.DeletePositionedObjectRequest);
-    checkDeleteTableColumnRequest(
-        o.deleteTableColumn! as api.DeleteTableColumnRequest);
-    checkDeleteTableRowRequest(o.deleteTableRow! as api.DeleteTableRowRequest);
-    checkInsertInlineImageRequest(
-        o.insertInlineImage! as api.InsertInlineImageRequest);
-    checkInsertPageBreakRequest(
-        o.insertPageBreak! as api.InsertPageBreakRequest);
-    checkInsertSectionBreakRequest(
-        o.insertSectionBreak! as api.InsertSectionBreakRequest);
-    checkInsertTableRequest(o.insertTable! as api.InsertTableRequest);
-    checkInsertTableColumnRequest(
-        o.insertTableColumn! as api.InsertTableColumnRequest);
-    checkInsertTableRowRequest(o.insertTableRow! as api.InsertTableRowRequest);
-    checkInsertTextRequest(o.insertText! as api.InsertTextRequest);
-    checkMergeTableCellsRequest(
-        o.mergeTableCells! as api.MergeTableCellsRequest);
-    checkReplaceAllTextRequest(o.replaceAllText! as api.ReplaceAllTextRequest);
-    checkReplaceImageRequest(o.replaceImage! as api.ReplaceImageRequest);
-    checkReplaceNamedRangeContentRequest(
-        o.replaceNamedRangeContent! as api.ReplaceNamedRangeContentRequest);
-    checkUnmergeTableCellsRequest(
-        o.unmergeTableCells! as api.UnmergeTableCellsRequest);
-    checkUpdateDocumentStyleRequest(
-        o.updateDocumentStyle! as api.UpdateDocumentStyleRequest);
-    checkUpdateParagraphStyleRequest(
-        o.updateParagraphStyle! as api.UpdateParagraphStyleRequest);
-    checkUpdateSectionStyleRequest(
-        o.updateSectionStyle! as api.UpdateSectionStyleRequest);
-    checkUpdateTableCellStyleRequest(
-        o.updateTableCellStyle! as api.UpdateTableCellStyleRequest);
-    checkUpdateTableColumnPropertiesRequest(o.updateTableColumnProperties!
-        as api.UpdateTableColumnPropertiesRequest);
-    checkUpdateTableRowStyleRequest(
-        o.updateTableRowStyle! as api.UpdateTableRowStyleRequest);
-    checkUpdateTextStyleRequest(
-        o.updateTextStyle! as api.UpdateTextStyleRequest);
+    checkCreateFooterRequest(o.createFooter!);
+    checkCreateFootnoteRequest(o.createFootnote!);
+    checkCreateHeaderRequest(o.createHeader!);
+    checkCreateNamedRangeRequest(o.createNamedRange!);
+    checkCreateParagraphBulletsRequest(o.createParagraphBullets!);
+    checkDeleteContentRangeRequest(o.deleteContentRange!);
+    checkDeleteFooterRequest(o.deleteFooter!);
+    checkDeleteHeaderRequest(o.deleteHeader!);
+    checkDeleteNamedRangeRequest(o.deleteNamedRange!);
+    checkDeleteParagraphBulletsRequest(o.deleteParagraphBullets!);
+    checkDeletePositionedObjectRequest(o.deletePositionedObject!);
+    checkDeleteTableColumnRequest(o.deleteTableColumn!);
+    checkDeleteTableRowRequest(o.deleteTableRow!);
+    checkInsertInlineImageRequest(o.insertInlineImage!);
+    checkInsertPageBreakRequest(o.insertPageBreak!);
+    checkInsertSectionBreakRequest(o.insertSectionBreak!);
+    checkInsertTableRequest(o.insertTable!);
+    checkInsertTableColumnRequest(o.insertTableColumn!);
+    checkInsertTableRowRequest(o.insertTableRow!);
+    checkInsertTextRequest(o.insertText!);
+    checkMergeTableCellsRequest(o.mergeTableCells!);
+    checkReplaceAllTextRequest(o.replaceAllText!);
+    checkReplaceImageRequest(o.replaceImage!);
+    checkReplaceNamedRangeContentRequest(o.replaceNamedRangeContent!);
+    checkUnmergeTableCellsRequest(o.unmergeTableCells!);
+    checkUpdateDocumentStyleRequest(o.updateDocumentStyle!);
+    checkUpdateParagraphStyleRequest(o.updateParagraphStyle!);
+    checkUpdateSectionStyleRequest(o.updateSectionStyle!);
+    checkUpdateTableCellStyleRequest(o.updateTableCellStyle!);
+    checkUpdateTableColumnPropertiesRequest(o.updateTableColumnProperties!);
+    checkUpdateTableRowStyleRequest(o.updateTableRowStyle!);
+    checkUpdateTextStyleRequest(o.updateTextStyle!);
   }
   buildCounterRequest--;
 }
 
 core.int buildCounterResponse = 0;
 api.Response buildResponse() {
-  var o = api.Response();
+  final o = api.Response();
   buildCounterResponse++;
   if (buildCounterResponse < 3) {
     o.createFooter = buildCreateFooterResponse();
@@ -3742,25 +3687,20 @@ api.Response buildResponse() {
 void checkResponse(api.Response o) {
   buildCounterResponse++;
   if (buildCounterResponse < 3) {
-    checkCreateFooterResponse(o.createFooter! as api.CreateFooterResponse);
-    checkCreateFootnoteResponse(
-        o.createFootnote! as api.CreateFootnoteResponse);
-    checkCreateHeaderResponse(o.createHeader! as api.CreateHeaderResponse);
-    checkCreateNamedRangeResponse(
-        o.createNamedRange! as api.CreateNamedRangeResponse);
-    checkInsertInlineImageResponse(
-        o.insertInlineImage! as api.InsertInlineImageResponse);
-    checkInsertInlineSheetsChartResponse(
-        o.insertInlineSheetsChart! as api.InsertInlineSheetsChartResponse);
-    checkReplaceAllTextResponse(
-        o.replaceAllText! as api.ReplaceAllTextResponse);
+    checkCreateFooterResponse(o.createFooter!);
+    checkCreateFootnoteResponse(o.createFootnote!);
+    checkCreateHeaderResponse(o.createHeader!);
+    checkCreateNamedRangeResponse(o.createNamedRange!);
+    checkInsertInlineImageResponse(o.insertInlineImage!);
+    checkInsertInlineSheetsChartResponse(o.insertInlineSheetsChart!);
+    checkReplaceAllTextResponse(o.replaceAllText!);
   }
   buildCounterResponse--;
 }
 
 core.int buildCounterRgbColor = 0;
 api.RgbColor buildRgbColor() {
-  var o = api.RgbColor();
+  final o = api.RgbColor();
   buildCounterRgbColor++;
   if (buildCounterRgbColor < 3) {
     o.blue = 42.0;
@@ -3791,7 +3731,7 @@ void checkRgbColor(api.RgbColor o) {
 }
 
 core.List<core.String> buildUnnamed7326() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -3810,7 +3750,7 @@ void checkUnnamed7326(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed7327() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -3829,7 +3769,7 @@ void checkUnnamed7327(core.List<core.String> o) {
 }
 
 core.Map<core.String, api.SuggestedTextStyle> buildUnnamed7328() {
-  var o = <core.String, api.SuggestedTextStyle>{};
+  final o = <core.String, api.SuggestedTextStyle>{};
   o['x'] = buildSuggestedTextStyle();
   o['y'] = buildSuggestedTextStyle();
   return o;
@@ -3837,13 +3777,13 @@ core.Map<core.String, api.SuggestedTextStyle> buildUnnamed7328() {
 
 void checkUnnamed7328(core.Map<core.String, api.SuggestedTextStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedTextStyle(o['x']! as api.SuggestedTextStyle);
-  checkSuggestedTextStyle(o['y']! as api.SuggestedTextStyle);
+  checkSuggestedTextStyle(o['x']!);
+  checkSuggestedTextStyle(o['y']!);
 }
 
 core.int buildCounterRichLink = 0;
 api.RichLink buildRichLink() {
-  var o = api.RichLink();
+  final o = api.RichLink();
   buildCounterRichLink++;
   if (buildCounterRichLink < 3) {
     o.richLinkId = 'foo';
@@ -3864,18 +3804,18 @@ void checkRichLink(api.RichLink o) {
       o.richLinkId!,
       unittest.equals('foo'),
     );
-    checkRichLinkProperties(o.richLinkProperties! as api.RichLinkProperties);
+    checkRichLinkProperties(o.richLinkProperties!);
     checkUnnamed7326(o.suggestedDeletionIds!);
     checkUnnamed7327(o.suggestedInsertionIds!);
     checkUnnamed7328(o.suggestedTextStyleChanges!);
-    checkTextStyle(o.textStyle! as api.TextStyle);
+    checkTextStyle(o.textStyle!);
   }
   buildCounterRichLink--;
 }
 
 core.int buildCounterRichLinkProperties = 0;
 api.RichLinkProperties buildRichLinkProperties() {
-  var o = api.RichLinkProperties();
+  final o = api.RichLinkProperties();
   buildCounterRichLinkProperties++;
   if (buildCounterRichLinkProperties < 3) {
     o.mimeType = 'foo';
@@ -3906,7 +3846,7 @@ void checkRichLinkProperties(api.RichLinkProperties o) {
 }
 
 core.List<core.String> buildUnnamed7329() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -3925,7 +3865,7 @@ void checkUnnamed7329(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed7330() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -3945,7 +3885,7 @@ void checkUnnamed7330(core.List<core.String> o) {
 
 core.int buildCounterSectionBreak = 0;
 api.SectionBreak buildSectionBreak() {
-  var o = api.SectionBreak();
+  final o = api.SectionBreak();
   buildCounterSectionBreak++;
   if (buildCounterSectionBreak < 3) {
     o.sectionStyle = buildSectionStyle();
@@ -3959,7 +3899,7 @@ api.SectionBreak buildSectionBreak() {
 void checkSectionBreak(api.SectionBreak o) {
   buildCounterSectionBreak++;
   if (buildCounterSectionBreak < 3) {
-    checkSectionStyle(o.sectionStyle! as api.SectionStyle);
+    checkSectionStyle(o.sectionStyle!);
     checkUnnamed7329(o.suggestedDeletionIds!);
     checkUnnamed7330(o.suggestedInsertionIds!);
   }
@@ -3968,7 +3908,7 @@ void checkSectionBreak(api.SectionBreak o) {
 
 core.int buildCounterSectionColumnProperties = 0;
 api.SectionColumnProperties buildSectionColumnProperties() {
-  var o = api.SectionColumnProperties();
+  final o = api.SectionColumnProperties();
   buildCounterSectionColumnProperties++;
   if (buildCounterSectionColumnProperties < 3) {
     o.paddingEnd = buildDimension();
@@ -3981,14 +3921,14 @@ api.SectionColumnProperties buildSectionColumnProperties() {
 void checkSectionColumnProperties(api.SectionColumnProperties o) {
   buildCounterSectionColumnProperties++;
   if (buildCounterSectionColumnProperties < 3) {
-    checkDimension(o.paddingEnd! as api.Dimension);
-    checkDimension(o.width! as api.Dimension);
+    checkDimension(o.paddingEnd!);
+    checkDimension(o.width!);
   }
   buildCounterSectionColumnProperties--;
 }
 
 core.List<api.SectionColumnProperties> buildUnnamed7331() {
-  var o = <api.SectionColumnProperties>[];
+  final o = <api.SectionColumnProperties>[];
   o.add(buildSectionColumnProperties());
   o.add(buildSectionColumnProperties());
   return o;
@@ -3996,13 +3936,13 @@ core.List<api.SectionColumnProperties> buildUnnamed7331() {
 
 void checkUnnamed7331(core.List<api.SectionColumnProperties> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSectionColumnProperties(o[0] as api.SectionColumnProperties);
-  checkSectionColumnProperties(o[1] as api.SectionColumnProperties);
+  checkSectionColumnProperties(o[0]);
+  checkSectionColumnProperties(o[1]);
 }
 
 core.int buildCounterSectionStyle = 0;
 api.SectionStyle buildSectionStyle() {
-  var o = api.SectionStyle();
+  final o = api.SectionStyle();
   buildCounterSectionStyle++;
   if (buildCounterSectionStyle < 3) {
     o.columnProperties = buildUnnamed7331();
@@ -4064,12 +4004,12 @@ void checkSectionStyle(api.SectionStyle o) {
       o.firstPageHeaderId!,
       unittest.equals('foo'),
     );
-    checkDimension(o.marginBottom! as api.Dimension);
-    checkDimension(o.marginFooter! as api.Dimension);
-    checkDimension(o.marginHeader! as api.Dimension);
-    checkDimension(o.marginLeft! as api.Dimension);
-    checkDimension(o.marginRight! as api.Dimension);
-    checkDimension(o.marginTop! as api.Dimension);
+    checkDimension(o.marginBottom!);
+    checkDimension(o.marginFooter!);
+    checkDimension(o.marginHeader!);
+    checkDimension(o.marginLeft!);
+    checkDimension(o.marginRight!);
+    checkDimension(o.marginTop!);
     unittest.expect(
       o.pageNumberStart!,
       unittest.equals(42),
@@ -4085,7 +4025,7 @@ void checkSectionStyle(api.SectionStyle o) {
 
 core.int buildCounterShading = 0;
 api.Shading buildShading() {
-  var o = api.Shading();
+  final o = api.Shading();
   buildCounterShading++;
   if (buildCounterShading < 3) {
     o.backgroundColor = buildOptionalColor();
@@ -4097,14 +4037,14 @@ api.Shading buildShading() {
 void checkShading(api.Shading o) {
   buildCounterShading++;
   if (buildCounterShading < 3) {
-    checkOptionalColor(o.backgroundColor! as api.OptionalColor);
+    checkOptionalColor(o.backgroundColor!);
   }
   buildCounterShading--;
 }
 
 core.int buildCounterShadingSuggestionState = 0;
 api.ShadingSuggestionState buildShadingSuggestionState() {
-  var o = api.ShadingSuggestionState();
+  final o = api.ShadingSuggestionState();
   buildCounterShadingSuggestionState++;
   if (buildCounterShadingSuggestionState < 3) {
     o.backgroundColorSuggested = true;
@@ -4123,7 +4063,7 @@ void checkShadingSuggestionState(api.ShadingSuggestionState o) {
 
 core.int buildCounterSheetsChartReference = 0;
 api.SheetsChartReference buildSheetsChartReference() {
-  var o = api.SheetsChartReference();
+  final o = api.SheetsChartReference();
   buildCounterSheetsChartReference++;
   if (buildCounterSheetsChartReference < 3) {
     o.chartId = 42;
@@ -4151,7 +4091,7 @@ void checkSheetsChartReference(api.SheetsChartReference o) {
 core.int buildCounterSheetsChartReferenceSuggestionState = 0;
 api.SheetsChartReferenceSuggestionState
     buildSheetsChartReferenceSuggestionState() {
-  var o = api.SheetsChartReferenceSuggestionState();
+  final o = api.SheetsChartReferenceSuggestionState();
   buildCounterSheetsChartReferenceSuggestionState++;
   if (buildCounterSheetsChartReferenceSuggestionState < 3) {
     o.chartIdSuggested = true;
@@ -4173,7 +4113,7 @@ void checkSheetsChartReferenceSuggestionState(
 
 core.int buildCounterSize = 0;
 api.Size buildSize() {
-  var o = api.Size();
+  final o = api.Size();
   buildCounterSize++;
   if (buildCounterSize < 3) {
     o.height = buildDimension();
@@ -4186,15 +4126,15 @@ api.Size buildSize() {
 void checkSize(api.Size o) {
   buildCounterSize++;
   if (buildCounterSize < 3) {
-    checkDimension(o.height! as api.Dimension);
-    checkDimension(o.width! as api.Dimension);
+    checkDimension(o.height!);
+    checkDimension(o.width!);
   }
   buildCounterSize--;
 }
 
 core.int buildCounterSizeSuggestionState = 0;
 api.SizeSuggestionState buildSizeSuggestionState() {
-  var o = api.SizeSuggestionState();
+  final o = api.SizeSuggestionState();
   buildCounterSizeSuggestionState++;
   if (buildCounterSizeSuggestionState < 3) {
     o.heightSuggested = true;
@@ -4215,7 +4155,7 @@ void checkSizeSuggestionState(api.SizeSuggestionState o) {
 
 core.int buildCounterStructuralElement = 0;
 api.StructuralElement buildStructuralElement() {
-  var o = api.StructuralElement();
+  final o = api.StructuralElement();
   buildCounterStructuralElement++;
   if (buildCounterStructuralElement < 3) {
     o.endIndex = 42;
@@ -4236,21 +4176,21 @@ void checkStructuralElement(api.StructuralElement o) {
       o.endIndex!,
       unittest.equals(42),
     );
-    checkParagraph(o.paragraph! as api.Paragraph);
-    checkSectionBreak(o.sectionBreak! as api.SectionBreak);
+    checkParagraph(o.paragraph!);
+    checkSectionBreak(o.sectionBreak!);
     unittest.expect(
       o.startIndex!,
       unittest.equals(42),
     );
-    checkTable(o.table! as api.Table);
-    checkTableOfContents(o.tableOfContents! as api.TableOfContents);
+    checkTable(o.table!);
+    checkTableOfContents(o.tableOfContents!);
   }
   buildCounterStructuralElement--;
 }
 
 core.int buildCounterSubstringMatchCriteria = 0;
 api.SubstringMatchCriteria buildSubstringMatchCriteria() {
-  var o = api.SubstringMatchCriteria();
+  final o = api.SubstringMatchCriteria();
   buildCounterSubstringMatchCriteria++;
   if (buildCounterSubstringMatchCriteria < 3) {
     o.matchCase = true;
@@ -4274,7 +4214,7 @@ void checkSubstringMatchCriteria(api.SubstringMatchCriteria o) {
 
 core.int buildCounterSuggestedBullet = 0;
 api.SuggestedBullet buildSuggestedBullet() {
-  var o = api.SuggestedBullet();
+  final o = api.SuggestedBullet();
   buildCounterSuggestedBullet++;
   if (buildCounterSuggestedBullet < 3) {
     o.bullet = buildBullet();
@@ -4287,16 +4227,15 @@ api.SuggestedBullet buildSuggestedBullet() {
 void checkSuggestedBullet(api.SuggestedBullet o) {
   buildCounterSuggestedBullet++;
   if (buildCounterSuggestedBullet < 3) {
-    checkBullet(o.bullet! as api.Bullet);
-    checkBulletSuggestionState(
-        o.bulletSuggestionState! as api.BulletSuggestionState);
+    checkBullet(o.bullet!);
+    checkBulletSuggestionState(o.bulletSuggestionState!);
   }
   buildCounterSuggestedBullet--;
 }
 
 core.int buildCounterSuggestedDocumentStyle = 0;
 api.SuggestedDocumentStyle buildSuggestedDocumentStyle() {
-  var o = api.SuggestedDocumentStyle();
+  final o = api.SuggestedDocumentStyle();
   buildCounterSuggestedDocumentStyle++;
   if (buildCounterSuggestedDocumentStyle < 3) {
     o.documentStyle = buildDocumentStyle();
@@ -4309,16 +4248,15 @@ api.SuggestedDocumentStyle buildSuggestedDocumentStyle() {
 void checkSuggestedDocumentStyle(api.SuggestedDocumentStyle o) {
   buildCounterSuggestedDocumentStyle++;
   if (buildCounterSuggestedDocumentStyle < 3) {
-    checkDocumentStyle(o.documentStyle! as api.DocumentStyle);
-    checkDocumentStyleSuggestionState(
-        o.documentStyleSuggestionState! as api.DocumentStyleSuggestionState);
+    checkDocumentStyle(o.documentStyle!);
+    checkDocumentStyleSuggestionState(o.documentStyleSuggestionState!);
   }
   buildCounterSuggestedDocumentStyle--;
 }
 
 core.int buildCounterSuggestedInlineObjectProperties = 0;
 api.SuggestedInlineObjectProperties buildSuggestedInlineObjectProperties() {
-  var o = api.SuggestedInlineObjectProperties();
+  final o = api.SuggestedInlineObjectProperties();
   buildCounterSuggestedInlineObjectProperties++;
   if (buildCounterSuggestedInlineObjectProperties < 3) {
     o.inlineObjectProperties = buildInlineObjectProperties();
@@ -4333,18 +4271,16 @@ void checkSuggestedInlineObjectProperties(
     api.SuggestedInlineObjectProperties o) {
   buildCounterSuggestedInlineObjectProperties++;
   if (buildCounterSuggestedInlineObjectProperties < 3) {
-    checkInlineObjectProperties(
-        o.inlineObjectProperties! as api.InlineObjectProperties);
+    checkInlineObjectProperties(o.inlineObjectProperties!);
     checkInlineObjectPropertiesSuggestionState(
-        o.inlineObjectPropertiesSuggestionState!
-            as api.InlineObjectPropertiesSuggestionState);
+        o.inlineObjectPropertiesSuggestionState!);
   }
   buildCounterSuggestedInlineObjectProperties--;
 }
 
 core.int buildCounterSuggestedListProperties = 0;
 api.SuggestedListProperties buildSuggestedListProperties() {
-  var o = api.SuggestedListProperties();
+  final o = api.SuggestedListProperties();
   buildCounterSuggestedListProperties++;
   if (buildCounterSuggestedListProperties < 3) {
     o.listProperties = buildListProperties();
@@ -4357,16 +4293,15 @@ api.SuggestedListProperties buildSuggestedListProperties() {
 void checkSuggestedListProperties(api.SuggestedListProperties o) {
   buildCounterSuggestedListProperties++;
   if (buildCounterSuggestedListProperties < 3) {
-    checkListProperties(o.listProperties! as api.ListProperties);
-    checkListPropertiesSuggestionState(
-        o.listPropertiesSuggestionState! as api.ListPropertiesSuggestionState);
+    checkListProperties(o.listProperties!);
+    checkListPropertiesSuggestionState(o.listPropertiesSuggestionState!);
   }
   buildCounterSuggestedListProperties--;
 }
 
 core.int buildCounterSuggestedNamedStyles = 0;
 api.SuggestedNamedStyles buildSuggestedNamedStyles() {
-  var o = api.SuggestedNamedStyles();
+  final o = api.SuggestedNamedStyles();
   buildCounterSuggestedNamedStyles++;
   if (buildCounterSuggestedNamedStyles < 3) {
     o.namedStyles = buildNamedStyles();
@@ -4379,16 +4314,15 @@ api.SuggestedNamedStyles buildSuggestedNamedStyles() {
 void checkSuggestedNamedStyles(api.SuggestedNamedStyles o) {
   buildCounterSuggestedNamedStyles++;
   if (buildCounterSuggestedNamedStyles < 3) {
-    checkNamedStyles(o.namedStyles! as api.NamedStyles);
-    checkNamedStylesSuggestionState(
-        o.namedStylesSuggestionState! as api.NamedStylesSuggestionState);
+    checkNamedStyles(o.namedStyles!);
+    checkNamedStylesSuggestionState(o.namedStylesSuggestionState!);
   }
   buildCounterSuggestedNamedStyles--;
 }
 
 core.int buildCounterSuggestedParagraphStyle = 0;
 api.SuggestedParagraphStyle buildSuggestedParagraphStyle() {
-  var o = api.SuggestedParagraphStyle();
+  final o = api.SuggestedParagraphStyle();
   buildCounterSuggestedParagraphStyle++;
   if (buildCounterSuggestedParagraphStyle < 3) {
     o.paragraphStyle = buildParagraphStyle();
@@ -4401,9 +4335,8 @@ api.SuggestedParagraphStyle buildSuggestedParagraphStyle() {
 void checkSuggestedParagraphStyle(api.SuggestedParagraphStyle o) {
   buildCounterSuggestedParagraphStyle++;
   if (buildCounterSuggestedParagraphStyle < 3) {
-    checkParagraphStyle(o.paragraphStyle! as api.ParagraphStyle);
-    checkParagraphStyleSuggestionState(
-        o.paragraphStyleSuggestionState! as api.ParagraphStyleSuggestionState);
+    checkParagraphStyle(o.paragraphStyle!);
+    checkParagraphStyleSuggestionState(o.paragraphStyleSuggestionState!);
   }
   buildCounterSuggestedParagraphStyle--;
 }
@@ -4411,7 +4344,7 @@ void checkSuggestedParagraphStyle(api.SuggestedParagraphStyle o) {
 core.int buildCounterSuggestedPositionedObjectProperties = 0;
 api.SuggestedPositionedObjectProperties
     buildSuggestedPositionedObjectProperties() {
-  var o = api.SuggestedPositionedObjectProperties();
+  final o = api.SuggestedPositionedObjectProperties();
   buildCounterSuggestedPositionedObjectProperties++;
   if (buildCounterSuggestedPositionedObjectProperties < 3) {
     o.positionedObjectProperties = buildPositionedObjectProperties();
@@ -4426,18 +4359,16 @@ void checkSuggestedPositionedObjectProperties(
     api.SuggestedPositionedObjectProperties o) {
   buildCounterSuggestedPositionedObjectProperties++;
   if (buildCounterSuggestedPositionedObjectProperties < 3) {
-    checkPositionedObjectProperties(
-        o.positionedObjectProperties! as api.PositionedObjectProperties);
+    checkPositionedObjectProperties(o.positionedObjectProperties!);
     checkPositionedObjectPropertiesSuggestionState(
-        o.positionedObjectPropertiesSuggestionState!
-            as api.PositionedObjectPropertiesSuggestionState);
+        o.positionedObjectPropertiesSuggestionState!);
   }
   buildCounterSuggestedPositionedObjectProperties--;
 }
 
 core.int buildCounterSuggestedTableCellStyle = 0;
 api.SuggestedTableCellStyle buildSuggestedTableCellStyle() {
-  var o = api.SuggestedTableCellStyle();
+  final o = api.SuggestedTableCellStyle();
   buildCounterSuggestedTableCellStyle++;
   if (buildCounterSuggestedTableCellStyle < 3) {
     o.tableCellStyle = buildTableCellStyle();
@@ -4450,16 +4381,15 @@ api.SuggestedTableCellStyle buildSuggestedTableCellStyle() {
 void checkSuggestedTableCellStyle(api.SuggestedTableCellStyle o) {
   buildCounterSuggestedTableCellStyle++;
   if (buildCounterSuggestedTableCellStyle < 3) {
-    checkTableCellStyle(o.tableCellStyle! as api.TableCellStyle);
-    checkTableCellStyleSuggestionState(
-        o.tableCellStyleSuggestionState! as api.TableCellStyleSuggestionState);
+    checkTableCellStyle(o.tableCellStyle!);
+    checkTableCellStyleSuggestionState(o.tableCellStyleSuggestionState!);
   }
   buildCounterSuggestedTableCellStyle--;
 }
 
 core.int buildCounterSuggestedTableRowStyle = 0;
 api.SuggestedTableRowStyle buildSuggestedTableRowStyle() {
-  var o = api.SuggestedTableRowStyle();
+  final o = api.SuggestedTableRowStyle();
   buildCounterSuggestedTableRowStyle++;
   if (buildCounterSuggestedTableRowStyle < 3) {
     o.tableRowStyle = buildTableRowStyle();
@@ -4472,16 +4402,15 @@ api.SuggestedTableRowStyle buildSuggestedTableRowStyle() {
 void checkSuggestedTableRowStyle(api.SuggestedTableRowStyle o) {
   buildCounterSuggestedTableRowStyle++;
   if (buildCounterSuggestedTableRowStyle < 3) {
-    checkTableRowStyle(o.tableRowStyle! as api.TableRowStyle);
-    checkTableRowStyleSuggestionState(
-        o.tableRowStyleSuggestionState! as api.TableRowStyleSuggestionState);
+    checkTableRowStyle(o.tableRowStyle!);
+    checkTableRowStyleSuggestionState(o.tableRowStyleSuggestionState!);
   }
   buildCounterSuggestedTableRowStyle--;
 }
 
 core.int buildCounterSuggestedTextStyle = 0;
 api.SuggestedTextStyle buildSuggestedTextStyle() {
-  var o = api.SuggestedTextStyle();
+  final o = api.SuggestedTextStyle();
   buildCounterSuggestedTextStyle++;
   if (buildCounterSuggestedTextStyle < 3) {
     o.textStyle = buildTextStyle();
@@ -4494,16 +4423,15 @@ api.SuggestedTextStyle buildSuggestedTextStyle() {
 void checkSuggestedTextStyle(api.SuggestedTextStyle o) {
   buildCounterSuggestedTextStyle++;
   if (buildCounterSuggestedTextStyle < 3) {
-    checkTextStyle(o.textStyle! as api.TextStyle);
-    checkTextStyleSuggestionState(
-        o.textStyleSuggestionState! as api.TextStyleSuggestionState);
+    checkTextStyle(o.textStyle!);
+    checkTextStyleSuggestionState(o.textStyleSuggestionState!);
   }
   buildCounterSuggestedTextStyle--;
 }
 
 core.int buildCounterTabStop = 0;
 api.TabStop buildTabStop() {
-  var o = api.TabStop();
+  final o = api.TabStop();
   buildCounterTabStop++;
   if (buildCounterTabStop < 3) {
     o.alignment = 'foo';
@@ -4520,13 +4448,13 @@ void checkTabStop(api.TabStop o) {
       o.alignment!,
       unittest.equals('foo'),
     );
-    checkDimension(o.offset! as api.Dimension);
+    checkDimension(o.offset!);
   }
   buildCounterTabStop--;
 }
 
 core.List<core.String> buildUnnamed7332() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -4545,7 +4473,7 @@ void checkUnnamed7332(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed7333() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -4564,7 +4492,7 @@ void checkUnnamed7333(core.List<core.String> o) {
 }
 
 core.List<api.TableRow> buildUnnamed7334() {
-  var o = <api.TableRow>[];
+  final o = <api.TableRow>[];
   o.add(buildTableRow());
   o.add(buildTableRow());
   return o;
@@ -4572,13 +4500,13 @@ core.List<api.TableRow> buildUnnamed7334() {
 
 void checkUnnamed7334(core.List<api.TableRow> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTableRow(o[0] as api.TableRow);
-  checkTableRow(o[1] as api.TableRow);
+  checkTableRow(o[0]);
+  checkTableRow(o[1]);
 }
 
 core.int buildCounterTable = 0;
 api.Table buildTable() {
-  var o = api.Table();
+  final o = api.Table();
   buildCounterTable++;
   if (buildCounterTable < 3) {
     o.columns = 42;
@@ -4606,13 +4534,13 @@ void checkTable(api.Table o) {
     checkUnnamed7332(o.suggestedDeletionIds!);
     checkUnnamed7333(o.suggestedInsertionIds!);
     checkUnnamed7334(o.tableRows!);
-    checkTableStyle(o.tableStyle! as api.TableStyle);
+    checkTableStyle(o.tableStyle!);
   }
   buildCounterTable--;
 }
 
 core.List<api.StructuralElement> buildUnnamed7335() {
-  var o = <api.StructuralElement>[];
+  final o = <api.StructuralElement>[];
   o.add(buildStructuralElement());
   o.add(buildStructuralElement());
   return o;
@@ -4620,12 +4548,12 @@ core.List<api.StructuralElement> buildUnnamed7335() {
 
 void checkUnnamed7335(core.List<api.StructuralElement> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkStructuralElement(o[0] as api.StructuralElement);
-  checkStructuralElement(o[1] as api.StructuralElement);
+  checkStructuralElement(o[0]);
+  checkStructuralElement(o[1]);
 }
 
 core.List<core.String> buildUnnamed7336() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -4644,7 +4572,7 @@ void checkUnnamed7336(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed7337() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -4663,7 +4591,7 @@ void checkUnnamed7337(core.List<core.String> o) {
 }
 
 core.Map<core.String, api.SuggestedTableCellStyle> buildUnnamed7338() {
-  var o = <core.String, api.SuggestedTableCellStyle>{};
+  final o = <core.String, api.SuggestedTableCellStyle>{};
   o['x'] = buildSuggestedTableCellStyle();
   o['y'] = buildSuggestedTableCellStyle();
   return o;
@@ -4671,13 +4599,13 @@ core.Map<core.String, api.SuggestedTableCellStyle> buildUnnamed7338() {
 
 void checkUnnamed7338(core.Map<core.String, api.SuggestedTableCellStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedTableCellStyle(o['x']! as api.SuggestedTableCellStyle);
-  checkSuggestedTableCellStyle(o['y']! as api.SuggestedTableCellStyle);
+  checkSuggestedTableCellStyle(o['x']!);
+  checkSuggestedTableCellStyle(o['y']!);
 }
 
 core.int buildCounterTableCell = 0;
 api.TableCell buildTableCell() {
-  var o = api.TableCell();
+  final o = api.TableCell();
   buildCounterTableCell++;
   if (buildCounterTableCell < 3) {
     o.content = buildUnnamed7335();
@@ -4707,14 +4635,14 @@ void checkTableCell(api.TableCell o) {
     checkUnnamed7336(o.suggestedDeletionIds!);
     checkUnnamed7337(o.suggestedInsertionIds!);
     checkUnnamed7338(o.suggestedTableCellStyleChanges!);
-    checkTableCellStyle(o.tableCellStyle! as api.TableCellStyle);
+    checkTableCellStyle(o.tableCellStyle!);
   }
   buildCounterTableCell--;
 }
 
 core.int buildCounterTableCellBorder = 0;
 api.TableCellBorder buildTableCellBorder() {
-  var o = api.TableCellBorder();
+  final o = api.TableCellBorder();
   buildCounterTableCellBorder++;
   if (buildCounterTableCellBorder < 3) {
     o.color = buildOptionalColor();
@@ -4728,19 +4656,19 @@ api.TableCellBorder buildTableCellBorder() {
 void checkTableCellBorder(api.TableCellBorder o) {
   buildCounterTableCellBorder++;
   if (buildCounterTableCellBorder < 3) {
-    checkOptionalColor(o.color! as api.OptionalColor);
+    checkOptionalColor(o.color!);
     unittest.expect(
       o.dashStyle!,
       unittest.equals('foo'),
     );
-    checkDimension(o.width! as api.Dimension);
+    checkDimension(o.width!);
   }
   buildCounterTableCellBorder--;
 }
 
 core.int buildCounterTableCellLocation = 0;
 api.TableCellLocation buildTableCellLocation() {
-  var o = api.TableCellLocation();
+  final o = api.TableCellLocation();
   buildCounterTableCellLocation++;
   if (buildCounterTableCellLocation < 3) {
     o.columnIndex = 42;
@@ -4762,14 +4690,14 @@ void checkTableCellLocation(api.TableCellLocation o) {
       o.rowIndex!,
       unittest.equals(42),
     );
-    checkLocation(o.tableStartLocation! as api.Location);
+    checkLocation(o.tableStartLocation!);
   }
   buildCounterTableCellLocation--;
 }
 
 core.int buildCounterTableCellStyle = 0;
 api.TableCellStyle buildTableCellStyle() {
-  var o = api.TableCellStyle();
+  final o = api.TableCellStyle();
   buildCounterTableCellStyle++;
   if (buildCounterTableCellStyle < 3) {
     o.backgroundColor = buildOptionalColor();
@@ -4792,11 +4720,11 @@ api.TableCellStyle buildTableCellStyle() {
 void checkTableCellStyle(api.TableCellStyle o) {
   buildCounterTableCellStyle++;
   if (buildCounterTableCellStyle < 3) {
-    checkOptionalColor(o.backgroundColor! as api.OptionalColor);
-    checkTableCellBorder(o.borderBottom! as api.TableCellBorder);
-    checkTableCellBorder(o.borderLeft! as api.TableCellBorder);
-    checkTableCellBorder(o.borderRight! as api.TableCellBorder);
-    checkTableCellBorder(o.borderTop! as api.TableCellBorder);
+    checkOptionalColor(o.backgroundColor!);
+    checkTableCellBorder(o.borderBottom!);
+    checkTableCellBorder(o.borderLeft!);
+    checkTableCellBorder(o.borderRight!);
+    checkTableCellBorder(o.borderTop!);
     unittest.expect(
       o.columnSpan!,
       unittest.equals(42),
@@ -4805,10 +4733,10 @@ void checkTableCellStyle(api.TableCellStyle o) {
       o.contentAlignment!,
       unittest.equals('foo'),
     );
-    checkDimension(o.paddingBottom! as api.Dimension);
-    checkDimension(o.paddingLeft! as api.Dimension);
-    checkDimension(o.paddingRight! as api.Dimension);
-    checkDimension(o.paddingTop! as api.Dimension);
+    checkDimension(o.paddingBottom!);
+    checkDimension(o.paddingLeft!);
+    checkDimension(o.paddingRight!);
+    checkDimension(o.paddingTop!);
     unittest.expect(
       o.rowSpan!,
       unittest.equals(42),
@@ -4819,7 +4747,7 @@ void checkTableCellStyle(api.TableCellStyle o) {
 
 core.int buildCounterTableCellStyleSuggestionState = 0;
 api.TableCellStyleSuggestionState buildTableCellStyleSuggestionState() {
-  var o = api.TableCellStyleSuggestionState();
+  final o = api.TableCellStyleSuggestionState();
   buildCounterTableCellStyleSuggestionState++;
   if (buildCounterTableCellStyleSuggestionState < 3) {
     o.backgroundColorSuggested = true;
@@ -4860,7 +4788,7 @@ void checkTableCellStyleSuggestionState(api.TableCellStyleSuggestionState o) {
 
 core.int buildCounterTableColumnProperties = 0;
 api.TableColumnProperties buildTableColumnProperties() {
-  var o = api.TableColumnProperties();
+  final o = api.TableColumnProperties();
   buildCounterTableColumnProperties++;
   if (buildCounterTableColumnProperties < 3) {
     o.width = buildDimension();
@@ -4873,7 +4801,7 @@ api.TableColumnProperties buildTableColumnProperties() {
 void checkTableColumnProperties(api.TableColumnProperties o) {
   buildCounterTableColumnProperties++;
   if (buildCounterTableColumnProperties < 3) {
-    checkDimension(o.width! as api.Dimension);
+    checkDimension(o.width!);
     unittest.expect(
       o.widthType!,
       unittest.equals('foo'),
@@ -4883,7 +4811,7 @@ void checkTableColumnProperties(api.TableColumnProperties o) {
 }
 
 core.List<api.StructuralElement> buildUnnamed7339() {
-  var o = <api.StructuralElement>[];
+  final o = <api.StructuralElement>[];
   o.add(buildStructuralElement());
   o.add(buildStructuralElement());
   return o;
@@ -4891,12 +4819,12 @@ core.List<api.StructuralElement> buildUnnamed7339() {
 
 void checkUnnamed7339(core.List<api.StructuralElement> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkStructuralElement(o[0] as api.StructuralElement);
-  checkStructuralElement(o[1] as api.StructuralElement);
+  checkStructuralElement(o[0]);
+  checkStructuralElement(o[1]);
 }
 
 core.List<core.String> buildUnnamed7340() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -4915,7 +4843,7 @@ void checkUnnamed7340(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed7341() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -4935,7 +4863,7 @@ void checkUnnamed7341(core.List<core.String> o) {
 
 core.int buildCounterTableOfContents = 0;
 api.TableOfContents buildTableOfContents() {
-  var o = api.TableOfContents();
+  final o = api.TableOfContents();
   buildCounterTableOfContents++;
   if (buildCounterTableOfContents < 3) {
     o.content = buildUnnamed7339();
@@ -4958,7 +4886,7 @@ void checkTableOfContents(api.TableOfContents o) {
 
 core.int buildCounterTableRange = 0;
 api.TableRange buildTableRange() {
-  var o = api.TableRange();
+  final o = api.TableRange();
   buildCounterTableRange++;
   if (buildCounterTableRange < 3) {
     o.columnSpan = 42;
@@ -4980,13 +4908,13 @@ void checkTableRange(api.TableRange o) {
       o.rowSpan!,
       unittest.equals(42),
     );
-    checkTableCellLocation(o.tableCellLocation! as api.TableCellLocation);
+    checkTableCellLocation(o.tableCellLocation!);
   }
   buildCounterTableRange--;
 }
 
 core.List<core.String> buildUnnamed7342() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -5005,7 +4933,7 @@ void checkUnnamed7342(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed7343() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -5024,7 +4952,7 @@ void checkUnnamed7343(core.List<core.String> o) {
 }
 
 core.Map<core.String, api.SuggestedTableRowStyle> buildUnnamed7344() {
-  var o = <core.String, api.SuggestedTableRowStyle>{};
+  final o = <core.String, api.SuggestedTableRowStyle>{};
   o['x'] = buildSuggestedTableRowStyle();
   o['y'] = buildSuggestedTableRowStyle();
   return o;
@@ -5032,12 +4960,12 @@ core.Map<core.String, api.SuggestedTableRowStyle> buildUnnamed7344() {
 
 void checkUnnamed7344(core.Map<core.String, api.SuggestedTableRowStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedTableRowStyle(o['x']! as api.SuggestedTableRowStyle);
-  checkSuggestedTableRowStyle(o['y']! as api.SuggestedTableRowStyle);
+  checkSuggestedTableRowStyle(o['x']!);
+  checkSuggestedTableRowStyle(o['y']!);
 }
 
 core.List<api.TableCell> buildUnnamed7345() {
-  var o = <api.TableCell>[];
+  final o = <api.TableCell>[];
   o.add(buildTableCell());
   o.add(buildTableCell());
   return o;
@@ -5045,13 +4973,13 @@ core.List<api.TableCell> buildUnnamed7345() {
 
 void checkUnnamed7345(core.List<api.TableCell> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTableCell(o[0] as api.TableCell);
-  checkTableCell(o[1] as api.TableCell);
+  checkTableCell(o[0]);
+  checkTableCell(o[1]);
 }
 
 core.int buildCounterTableRow = 0;
 api.TableRow buildTableRow() {
-  var o = api.TableRow();
+  final o = api.TableRow();
   buildCounterTableRow++;
   if (buildCounterTableRow < 3) {
     o.endIndex = 42;
@@ -5081,14 +5009,14 @@ void checkTableRow(api.TableRow o) {
     checkUnnamed7343(o.suggestedInsertionIds!);
     checkUnnamed7344(o.suggestedTableRowStyleChanges!);
     checkUnnamed7345(o.tableCells!);
-    checkTableRowStyle(o.tableRowStyle! as api.TableRowStyle);
+    checkTableRowStyle(o.tableRowStyle!);
   }
   buildCounterTableRow--;
 }
 
 core.int buildCounterTableRowStyle = 0;
 api.TableRowStyle buildTableRowStyle() {
-  var o = api.TableRowStyle();
+  final o = api.TableRowStyle();
   buildCounterTableRowStyle++;
   if (buildCounterTableRowStyle < 3) {
     o.minRowHeight = buildDimension();
@@ -5100,14 +5028,14 @@ api.TableRowStyle buildTableRowStyle() {
 void checkTableRowStyle(api.TableRowStyle o) {
   buildCounterTableRowStyle++;
   if (buildCounterTableRowStyle < 3) {
-    checkDimension(o.minRowHeight! as api.Dimension);
+    checkDimension(o.minRowHeight!);
   }
   buildCounterTableRowStyle--;
 }
 
 core.int buildCounterTableRowStyleSuggestionState = 0;
 api.TableRowStyleSuggestionState buildTableRowStyleSuggestionState() {
-  var o = api.TableRowStyleSuggestionState();
+  final o = api.TableRowStyleSuggestionState();
   buildCounterTableRowStyleSuggestionState++;
   if (buildCounterTableRowStyleSuggestionState < 3) {
     o.minRowHeightSuggested = true;
@@ -5125,7 +5053,7 @@ void checkTableRowStyleSuggestionState(api.TableRowStyleSuggestionState o) {
 }
 
 core.List<api.TableColumnProperties> buildUnnamed7346() {
-  var o = <api.TableColumnProperties>[];
+  final o = <api.TableColumnProperties>[];
   o.add(buildTableColumnProperties());
   o.add(buildTableColumnProperties());
   return o;
@@ -5133,13 +5061,13 @@ core.List<api.TableColumnProperties> buildUnnamed7346() {
 
 void checkUnnamed7346(core.List<api.TableColumnProperties> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTableColumnProperties(o[0] as api.TableColumnProperties);
-  checkTableColumnProperties(o[1] as api.TableColumnProperties);
+  checkTableColumnProperties(o[0]);
+  checkTableColumnProperties(o[1]);
 }
 
 core.int buildCounterTableStyle = 0;
 api.TableStyle buildTableStyle() {
-  var o = api.TableStyle();
+  final o = api.TableStyle();
   buildCounterTableStyle++;
   if (buildCounterTableStyle < 3) {
     o.tableColumnProperties = buildUnnamed7346();
@@ -5157,7 +5085,7 @@ void checkTableStyle(api.TableStyle o) {
 }
 
 core.List<core.String> buildUnnamed7347() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -5176,7 +5104,7 @@ void checkUnnamed7347(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed7348() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -5195,7 +5123,7 @@ void checkUnnamed7348(core.List<core.String> o) {
 }
 
 core.Map<core.String, api.SuggestedTextStyle> buildUnnamed7349() {
-  var o = <core.String, api.SuggestedTextStyle>{};
+  final o = <core.String, api.SuggestedTextStyle>{};
   o['x'] = buildSuggestedTextStyle();
   o['y'] = buildSuggestedTextStyle();
   return o;
@@ -5203,13 +5131,13 @@ core.Map<core.String, api.SuggestedTextStyle> buildUnnamed7349() {
 
 void checkUnnamed7349(core.Map<core.String, api.SuggestedTextStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuggestedTextStyle(o['x']! as api.SuggestedTextStyle);
-  checkSuggestedTextStyle(o['y']! as api.SuggestedTextStyle);
+  checkSuggestedTextStyle(o['x']!);
+  checkSuggestedTextStyle(o['y']!);
 }
 
 core.int buildCounterTextRun = 0;
 api.TextRun buildTextRun() {
-  var o = api.TextRun();
+  final o = api.TextRun();
   buildCounterTextRun++;
   if (buildCounterTextRun < 3) {
     o.content = 'foo';
@@ -5232,14 +5160,14 @@ void checkTextRun(api.TextRun o) {
     checkUnnamed7347(o.suggestedDeletionIds!);
     checkUnnamed7348(o.suggestedInsertionIds!);
     checkUnnamed7349(o.suggestedTextStyleChanges!);
-    checkTextStyle(o.textStyle! as api.TextStyle);
+    checkTextStyle(o.textStyle!);
   }
   buildCounterTextRun--;
 }
 
 core.int buildCounterTextStyle = 0;
 api.TextStyle buildTextStyle() {
-  var o = api.TextStyle();
+  final o = api.TextStyle();
   buildCounterTextStyle++;
   if (buildCounterTextStyle < 3) {
     o.backgroundColor = buildOptionalColor();
@@ -5261,27 +5189,27 @@ api.TextStyle buildTextStyle() {
 void checkTextStyle(api.TextStyle o) {
   buildCounterTextStyle++;
   if (buildCounterTextStyle < 3) {
-    checkOptionalColor(o.backgroundColor! as api.OptionalColor);
+    checkOptionalColor(o.backgroundColor!);
     unittest.expect(
       o.baselineOffset!,
       unittest.equals('foo'),
     );
     unittest.expect(o.bold!, unittest.isTrue);
-    checkDimension(o.fontSize! as api.Dimension);
-    checkOptionalColor(o.foregroundColor! as api.OptionalColor);
+    checkDimension(o.fontSize!);
+    checkOptionalColor(o.foregroundColor!);
     unittest.expect(o.italic!, unittest.isTrue);
-    checkLink(o.link! as api.Link);
+    checkLink(o.link!);
     unittest.expect(o.smallCaps!, unittest.isTrue);
     unittest.expect(o.strikethrough!, unittest.isTrue);
     unittest.expect(o.underline!, unittest.isTrue);
-    checkWeightedFontFamily(o.weightedFontFamily! as api.WeightedFontFamily);
+    checkWeightedFontFamily(o.weightedFontFamily!);
   }
   buildCounterTextStyle--;
 }
 
 core.int buildCounterTextStyleSuggestionState = 0;
 api.TextStyleSuggestionState buildTextStyleSuggestionState() {
-  var o = api.TextStyleSuggestionState();
+  final o = api.TextStyleSuggestionState();
   buildCounterTextStyleSuggestionState++;
   if (buildCounterTextStyleSuggestionState < 3) {
     o.backgroundColorSuggested = true;
@@ -5320,7 +5248,7 @@ void checkTextStyleSuggestionState(api.TextStyleSuggestionState o) {
 
 core.int buildCounterUnmergeTableCellsRequest = 0;
 api.UnmergeTableCellsRequest buildUnmergeTableCellsRequest() {
-  var o = api.UnmergeTableCellsRequest();
+  final o = api.UnmergeTableCellsRequest();
   buildCounterUnmergeTableCellsRequest++;
   if (buildCounterUnmergeTableCellsRequest < 3) {
     o.tableRange = buildTableRange();
@@ -5332,14 +5260,14 @@ api.UnmergeTableCellsRequest buildUnmergeTableCellsRequest() {
 void checkUnmergeTableCellsRequest(api.UnmergeTableCellsRequest o) {
   buildCounterUnmergeTableCellsRequest++;
   if (buildCounterUnmergeTableCellsRequest < 3) {
-    checkTableRange(o.tableRange! as api.TableRange);
+    checkTableRange(o.tableRange!);
   }
   buildCounterUnmergeTableCellsRequest--;
 }
 
 core.int buildCounterUpdateDocumentStyleRequest = 0;
 api.UpdateDocumentStyleRequest buildUpdateDocumentStyleRequest() {
-  var o = api.UpdateDocumentStyleRequest();
+  final o = api.UpdateDocumentStyleRequest();
   buildCounterUpdateDocumentStyleRequest++;
   if (buildCounterUpdateDocumentStyleRequest < 3) {
     o.documentStyle = buildDocumentStyle();
@@ -5352,7 +5280,7 @@ api.UpdateDocumentStyleRequest buildUpdateDocumentStyleRequest() {
 void checkUpdateDocumentStyleRequest(api.UpdateDocumentStyleRequest o) {
   buildCounterUpdateDocumentStyleRequest++;
   if (buildCounterUpdateDocumentStyleRequest < 3) {
-    checkDocumentStyle(o.documentStyle! as api.DocumentStyle);
+    checkDocumentStyle(o.documentStyle!);
     unittest.expect(
       o.fields!,
       unittest.equals('foo'),
@@ -5363,7 +5291,7 @@ void checkUpdateDocumentStyleRequest(api.UpdateDocumentStyleRequest o) {
 
 core.int buildCounterUpdateParagraphStyleRequest = 0;
 api.UpdateParagraphStyleRequest buildUpdateParagraphStyleRequest() {
-  var o = api.UpdateParagraphStyleRequest();
+  final o = api.UpdateParagraphStyleRequest();
   buildCounterUpdateParagraphStyleRequest++;
   if (buildCounterUpdateParagraphStyleRequest < 3) {
     o.fields = 'foo';
@@ -5381,15 +5309,15 @@ void checkUpdateParagraphStyleRequest(api.UpdateParagraphStyleRequest o) {
       o.fields!,
       unittest.equals('foo'),
     );
-    checkParagraphStyle(o.paragraphStyle! as api.ParagraphStyle);
-    checkRange(o.range! as api.Range);
+    checkParagraphStyle(o.paragraphStyle!);
+    checkRange(o.range!);
   }
   buildCounterUpdateParagraphStyleRequest--;
 }
 
 core.int buildCounterUpdateSectionStyleRequest = 0;
 api.UpdateSectionStyleRequest buildUpdateSectionStyleRequest() {
-  var o = api.UpdateSectionStyleRequest();
+  final o = api.UpdateSectionStyleRequest();
   buildCounterUpdateSectionStyleRequest++;
   if (buildCounterUpdateSectionStyleRequest < 3) {
     o.fields = 'foo';
@@ -5407,15 +5335,15 @@ void checkUpdateSectionStyleRequest(api.UpdateSectionStyleRequest o) {
       o.fields!,
       unittest.equals('foo'),
     );
-    checkRange(o.range! as api.Range);
-    checkSectionStyle(o.sectionStyle! as api.SectionStyle);
+    checkRange(o.range!);
+    checkSectionStyle(o.sectionStyle!);
   }
   buildCounterUpdateSectionStyleRequest--;
 }
 
 core.int buildCounterUpdateTableCellStyleRequest = 0;
 api.UpdateTableCellStyleRequest buildUpdateTableCellStyleRequest() {
-  var o = api.UpdateTableCellStyleRequest();
+  final o = api.UpdateTableCellStyleRequest();
   buildCounterUpdateTableCellStyleRequest++;
   if (buildCounterUpdateTableCellStyleRequest < 3) {
     o.fields = 'foo';
@@ -5434,15 +5362,15 @@ void checkUpdateTableCellStyleRequest(api.UpdateTableCellStyleRequest o) {
       o.fields!,
       unittest.equals('foo'),
     );
-    checkTableCellStyle(o.tableCellStyle! as api.TableCellStyle);
-    checkTableRange(o.tableRange! as api.TableRange);
-    checkLocation(o.tableStartLocation! as api.Location);
+    checkTableCellStyle(o.tableCellStyle!);
+    checkTableRange(o.tableRange!);
+    checkLocation(o.tableStartLocation!);
   }
   buildCounterUpdateTableCellStyleRequest--;
 }
 
 core.List<core.int> buildUnnamed7350() {
-  var o = <core.int>[];
+  final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
@@ -5463,7 +5391,7 @@ void checkUnnamed7350(core.List<core.int> o) {
 core.int buildCounterUpdateTableColumnPropertiesRequest = 0;
 api.UpdateTableColumnPropertiesRequest
     buildUpdateTableColumnPropertiesRequest() {
-  var o = api.UpdateTableColumnPropertiesRequest();
+  final o = api.UpdateTableColumnPropertiesRequest();
   buildCounterUpdateTableColumnPropertiesRequest++;
   if (buildCounterUpdateTableColumnPropertiesRequest < 3) {
     o.columnIndices = buildUnnamed7350();
@@ -5484,15 +5412,14 @@ void checkUpdateTableColumnPropertiesRequest(
       o.fields!,
       unittest.equals('foo'),
     );
-    checkTableColumnProperties(
-        o.tableColumnProperties! as api.TableColumnProperties);
-    checkLocation(o.tableStartLocation! as api.Location);
+    checkTableColumnProperties(o.tableColumnProperties!);
+    checkLocation(o.tableStartLocation!);
   }
   buildCounterUpdateTableColumnPropertiesRequest--;
 }
 
 core.List<core.int> buildUnnamed7351() {
-  var o = <core.int>[];
+  final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
@@ -5512,7 +5439,7 @@ void checkUnnamed7351(core.List<core.int> o) {
 
 core.int buildCounterUpdateTableRowStyleRequest = 0;
 api.UpdateTableRowStyleRequest buildUpdateTableRowStyleRequest() {
-  var o = api.UpdateTableRowStyleRequest();
+  final o = api.UpdateTableRowStyleRequest();
   buildCounterUpdateTableRowStyleRequest++;
   if (buildCounterUpdateTableRowStyleRequest < 3) {
     o.fields = 'foo';
@@ -5532,15 +5459,15 @@ void checkUpdateTableRowStyleRequest(api.UpdateTableRowStyleRequest o) {
       unittest.equals('foo'),
     );
     checkUnnamed7351(o.rowIndices!);
-    checkTableRowStyle(o.tableRowStyle! as api.TableRowStyle);
-    checkLocation(o.tableStartLocation! as api.Location);
+    checkTableRowStyle(o.tableRowStyle!);
+    checkLocation(o.tableStartLocation!);
   }
   buildCounterUpdateTableRowStyleRequest--;
 }
 
 core.int buildCounterUpdateTextStyleRequest = 0;
 api.UpdateTextStyleRequest buildUpdateTextStyleRequest() {
-  var o = api.UpdateTextStyleRequest();
+  final o = api.UpdateTextStyleRequest();
   buildCounterUpdateTextStyleRequest++;
   if (buildCounterUpdateTextStyleRequest < 3) {
     o.fields = 'foo';
@@ -5558,15 +5485,15 @@ void checkUpdateTextStyleRequest(api.UpdateTextStyleRequest o) {
       o.fields!,
       unittest.equals('foo'),
     );
-    checkRange(o.range! as api.Range);
-    checkTextStyle(o.textStyle! as api.TextStyle);
+    checkRange(o.range!);
+    checkTextStyle(o.textStyle!);
   }
   buildCounterUpdateTextStyleRequest--;
 }
 
 core.int buildCounterWeightedFontFamily = 0;
 api.WeightedFontFamily buildWeightedFontFamily() {
-  var o = api.WeightedFontFamily();
+  final o = api.WeightedFontFamily();
   buildCounterWeightedFontFamily++;
   if (buildCounterWeightedFontFamily < 3) {
     o.fontFamily = 'foo';
@@ -5593,7 +5520,7 @@ void checkWeightedFontFamily(api.WeightedFontFamily o) {
 
 core.int buildCounterWriteControl = 0;
 api.WriteControl buildWriteControl() {
-  var o = api.WriteControl();
+  final o = api.WriteControl();
   buildCounterWriteControl++;
   if (buildCounterWriteControl < 3) {
     o.requiredRevisionId = 'foo';
@@ -5621,1542 +5548,1528 @@ void checkWriteControl(api.WriteControl o) {
 void main() {
   unittest.group('obj-schema-AutoText', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAutoText();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildAutoText();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.AutoText.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkAutoText(od as api.AutoText);
+      checkAutoText(od);
     });
   });
 
   unittest.group('obj-schema-Background', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBackground();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildBackground();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Background.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkBackground(od as api.Background);
+      checkBackground(od);
     });
   });
 
   unittest.group('obj-schema-BackgroundSuggestionState', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBackgroundSuggestionState();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.BackgroundSuggestionState.fromJson(
+      final o = buildBackgroundSuggestionState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BackgroundSuggestionState.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkBackgroundSuggestionState(od as api.BackgroundSuggestionState);
+      checkBackgroundSuggestionState(od);
     });
   });
 
   unittest.group('obj-schema-BatchUpdateDocumentRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBatchUpdateDocumentRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.BatchUpdateDocumentRequest.fromJson(
+      final o = buildBatchUpdateDocumentRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BatchUpdateDocumentRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkBatchUpdateDocumentRequest(od as api.BatchUpdateDocumentRequest);
+      checkBatchUpdateDocumentRequest(od);
     });
   });
 
   unittest.group('obj-schema-BatchUpdateDocumentResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBatchUpdateDocumentResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.BatchUpdateDocumentResponse.fromJson(
+      final o = buildBatchUpdateDocumentResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BatchUpdateDocumentResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkBatchUpdateDocumentResponse(od as api.BatchUpdateDocumentResponse);
+      checkBatchUpdateDocumentResponse(od);
     });
   });
 
   unittest.group('obj-schema-Body', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBody();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Body.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkBody(od as api.Body);
+      final o = buildBody();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Body.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkBody(od);
     });
   });
 
   unittest.group('obj-schema-Bullet', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBullet();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildBullet();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Bullet.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkBullet(od as api.Bullet);
+      checkBullet(od);
     });
   });
 
   unittest.group('obj-schema-BulletSuggestionState', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBulletSuggestionState();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.BulletSuggestionState.fromJson(
+      final o = buildBulletSuggestionState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BulletSuggestionState.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkBulletSuggestionState(od as api.BulletSuggestionState);
+      checkBulletSuggestionState(od);
     });
   });
 
   unittest.group('obj-schema-Color', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildColor();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Color.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkColor(od as api.Color);
+      final o = buildColor();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Color.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkColor(od);
     });
   });
 
   unittest.group('obj-schema-ColumnBreak', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildColumnBreak();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ColumnBreak.fromJson(
+      final o = buildColumnBreak();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ColumnBreak.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkColumnBreak(od as api.ColumnBreak);
+      checkColumnBreak(od);
     });
   });
 
   unittest.group('obj-schema-CreateFooterRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCreateFooterRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CreateFooterRequest.fromJson(
+      final o = buildCreateFooterRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CreateFooterRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCreateFooterRequest(od as api.CreateFooterRequest);
+      checkCreateFooterRequest(od);
     });
   });
 
   unittest.group('obj-schema-CreateFooterResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCreateFooterResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CreateFooterResponse.fromJson(
+      final o = buildCreateFooterResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CreateFooterResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCreateFooterResponse(od as api.CreateFooterResponse);
+      checkCreateFooterResponse(od);
     });
   });
 
   unittest.group('obj-schema-CreateFootnoteRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCreateFootnoteRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CreateFootnoteRequest.fromJson(
+      final o = buildCreateFootnoteRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CreateFootnoteRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCreateFootnoteRequest(od as api.CreateFootnoteRequest);
+      checkCreateFootnoteRequest(od);
     });
   });
 
   unittest.group('obj-schema-CreateFootnoteResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCreateFootnoteResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CreateFootnoteResponse.fromJson(
+      final o = buildCreateFootnoteResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CreateFootnoteResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCreateFootnoteResponse(od as api.CreateFootnoteResponse);
+      checkCreateFootnoteResponse(od);
     });
   });
 
   unittest.group('obj-schema-CreateHeaderRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCreateHeaderRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CreateHeaderRequest.fromJson(
+      final o = buildCreateHeaderRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CreateHeaderRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCreateHeaderRequest(od as api.CreateHeaderRequest);
+      checkCreateHeaderRequest(od);
     });
   });
 
   unittest.group('obj-schema-CreateHeaderResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCreateHeaderResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CreateHeaderResponse.fromJson(
+      final o = buildCreateHeaderResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CreateHeaderResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCreateHeaderResponse(od as api.CreateHeaderResponse);
+      checkCreateHeaderResponse(od);
     });
   });
 
   unittest.group('obj-schema-CreateNamedRangeRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCreateNamedRangeRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CreateNamedRangeRequest.fromJson(
+      final o = buildCreateNamedRangeRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CreateNamedRangeRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCreateNamedRangeRequest(od as api.CreateNamedRangeRequest);
+      checkCreateNamedRangeRequest(od);
     });
   });
 
   unittest.group('obj-schema-CreateNamedRangeResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCreateNamedRangeResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CreateNamedRangeResponse.fromJson(
+      final o = buildCreateNamedRangeResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CreateNamedRangeResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCreateNamedRangeResponse(od as api.CreateNamedRangeResponse);
+      checkCreateNamedRangeResponse(od);
     });
   });
 
   unittest.group('obj-schema-CreateParagraphBulletsRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCreateParagraphBulletsRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CreateParagraphBulletsRequest.fromJson(
+      final o = buildCreateParagraphBulletsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CreateParagraphBulletsRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCreateParagraphBulletsRequest(
-          od as api.CreateParagraphBulletsRequest);
+      checkCreateParagraphBulletsRequest(od);
     });
   });
 
   unittest.group('obj-schema-CropProperties', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCropProperties();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CropProperties.fromJson(
+      final o = buildCropProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CropProperties.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCropProperties(od as api.CropProperties);
+      checkCropProperties(od);
     });
   });
 
   unittest.group('obj-schema-CropPropertiesSuggestionState', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCropPropertiesSuggestionState();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CropPropertiesSuggestionState.fromJson(
+      final o = buildCropPropertiesSuggestionState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CropPropertiesSuggestionState.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCropPropertiesSuggestionState(
-          od as api.CropPropertiesSuggestionState);
+      checkCropPropertiesSuggestionState(od);
     });
   });
 
   unittest.group('obj-schema-DeleteContentRangeRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDeleteContentRangeRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DeleteContentRangeRequest.fromJson(
+      final o = buildDeleteContentRangeRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DeleteContentRangeRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDeleteContentRangeRequest(od as api.DeleteContentRangeRequest);
+      checkDeleteContentRangeRequest(od);
     });
   });
 
   unittest.group('obj-schema-DeleteFooterRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDeleteFooterRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DeleteFooterRequest.fromJson(
+      final o = buildDeleteFooterRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DeleteFooterRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDeleteFooterRequest(od as api.DeleteFooterRequest);
+      checkDeleteFooterRequest(od);
     });
   });
 
   unittest.group('obj-schema-DeleteHeaderRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDeleteHeaderRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DeleteHeaderRequest.fromJson(
+      final o = buildDeleteHeaderRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DeleteHeaderRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDeleteHeaderRequest(od as api.DeleteHeaderRequest);
+      checkDeleteHeaderRequest(od);
     });
   });
 
   unittest.group('obj-schema-DeleteNamedRangeRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDeleteNamedRangeRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DeleteNamedRangeRequest.fromJson(
+      final o = buildDeleteNamedRangeRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DeleteNamedRangeRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDeleteNamedRangeRequest(od as api.DeleteNamedRangeRequest);
+      checkDeleteNamedRangeRequest(od);
     });
   });
 
   unittest.group('obj-schema-DeleteParagraphBulletsRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDeleteParagraphBulletsRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DeleteParagraphBulletsRequest.fromJson(
+      final o = buildDeleteParagraphBulletsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DeleteParagraphBulletsRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDeleteParagraphBulletsRequest(
-          od as api.DeleteParagraphBulletsRequest);
+      checkDeleteParagraphBulletsRequest(od);
     });
   });
 
   unittest.group('obj-schema-DeletePositionedObjectRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDeletePositionedObjectRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DeletePositionedObjectRequest.fromJson(
+      final o = buildDeletePositionedObjectRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DeletePositionedObjectRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDeletePositionedObjectRequest(
-          od as api.DeletePositionedObjectRequest);
+      checkDeletePositionedObjectRequest(od);
     });
   });
 
   unittest.group('obj-schema-DeleteTableColumnRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDeleteTableColumnRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DeleteTableColumnRequest.fromJson(
+      final o = buildDeleteTableColumnRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DeleteTableColumnRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDeleteTableColumnRequest(od as api.DeleteTableColumnRequest);
+      checkDeleteTableColumnRequest(od);
     });
   });
 
   unittest.group('obj-schema-DeleteTableRowRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDeleteTableRowRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DeleteTableRowRequest.fromJson(
+      final o = buildDeleteTableRowRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DeleteTableRowRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDeleteTableRowRequest(od as api.DeleteTableRowRequest);
+      checkDeleteTableRowRequest(od);
     });
   });
 
   unittest.group('obj-schema-Dimension', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDimension();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildDimension();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Dimension.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkDimension(od as api.Dimension);
+      checkDimension(od);
     });
   });
 
   unittest.group('obj-schema-Document', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDocument();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildDocument();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Document.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkDocument(od as api.Document);
+      checkDocument(od);
     });
   });
 
   unittest.group('obj-schema-DocumentStyle', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDocumentStyle();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DocumentStyle.fromJson(
+      final o = buildDocumentStyle();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DocumentStyle.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDocumentStyle(od as api.DocumentStyle);
+      checkDocumentStyle(od);
     });
   });
 
   unittest.group('obj-schema-DocumentStyleSuggestionState', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDocumentStyleSuggestionState();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DocumentStyleSuggestionState.fromJson(
+      final o = buildDocumentStyleSuggestionState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DocumentStyleSuggestionState.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDocumentStyleSuggestionState(od as api.DocumentStyleSuggestionState);
+      checkDocumentStyleSuggestionState(od);
     });
   });
 
   unittest.group('obj-schema-EmbeddedDrawingProperties', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildEmbeddedDrawingProperties();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.EmbeddedDrawingProperties.fromJson(
+      final o = buildEmbeddedDrawingProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EmbeddedDrawingProperties.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkEmbeddedDrawingProperties(od as api.EmbeddedDrawingProperties);
+      checkEmbeddedDrawingProperties(od);
     });
   });
 
   unittest.group('obj-schema-EmbeddedDrawingPropertiesSuggestionState', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildEmbeddedDrawingPropertiesSuggestionState();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.EmbeddedDrawingPropertiesSuggestionState.fromJson(
+      final o = buildEmbeddedDrawingPropertiesSuggestionState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EmbeddedDrawingPropertiesSuggestionState.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkEmbeddedDrawingPropertiesSuggestionState(
-          od as api.EmbeddedDrawingPropertiesSuggestionState);
+      checkEmbeddedDrawingPropertiesSuggestionState(od);
     });
   });
 
   unittest.group('obj-schema-EmbeddedObject', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildEmbeddedObject();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.EmbeddedObject.fromJson(
+      final o = buildEmbeddedObject();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EmbeddedObject.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkEmbeddedObject(od as api.EmbeddedObject);
+      checkEmbeddedObject(od);
     });
   });
 
   unittest.group('obj-schema-EmbeddedObjectBorder', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildEmbeddedObjectBorder();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.EmbeddedObjectBorder.fromJson(
+      final o = buildEmbeddedObjectBorder();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EmbeddedObjectBorder.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkEmbeddedObjectBorder(od as api.EmbeddedObjectBorder);
+      checkEmbeddedObjectBorder(od);
     });
   });
 
   unittest.group('obj-schema-EmbeddedObjectBorderSuggestionState', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildEmbeddedObjectBorderSuggestionState();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.EmbeddedObjectBorderSuggestionState.fromJson(
+      final o = buildEmbeddedObjectBorderSuggestionState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EmbeddedObjectBorderSuggestionState.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkEmbeddedObjectBorderSuggestionState(
-          od as api.EmbeddedObjectBorderSuggestionState);
+      checkEmbeddedObjectBorderSuggestionState(od);
     });
   });
 
   unittest.group('obj-schema-EmbeddedObjectSuggestionState', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildEmbeddedObjectSuggestionState();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.EmbeddedObjectSuggestionState.fromJson(
+      final o = buildEmbeddedObjectSuggestionState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EmbeddedObjectSuggestionState.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkEmbeddedObjectSuggestionState(
-          od as api.EmbeddedObjectSuggestionState);
+      checkEmbeddedObjectSuggestionState(od);
     });
   });
 
   unittest.group('obj-schema-EndOfSegmentLocation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildEndOfSegmentLocation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.EndOfSegmentLocation.fromJson(
+      final o = buildEndOfSegmentLocation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EndOfSegmentLocation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkEndOfSegmentLocation(od as api.EndOfSegmentLocation);
+      checkEndOfSegmentLocation(od);
     });
   });
 
   unittest.group('obj-schema-Equation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildEquation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildEquation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Equation.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkEquation(od as api.Equation);
+      checkEquation(od);
     });
   });
 
   unittest.group('obj-schema-Footer', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildFooter();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildFooter();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Footer.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkFooter(od as api.Footer);
+      checkFooter(od);
     });
   });
 
   unittest.group('obj-schema-Footnote', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildFootnote();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildFootnote();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Footnote.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkFootnote(od as api.Footnote);
+      checkFootnote(od);
     });
   });
 
   unittest.group('obj-schema-FootnoteReference', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildFootnoteReference();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.FootnoteReference.fromJson(
+      final o = buildFootnoteReference();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FootnoteReference.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkFootnoteReference(od as api.FootnoteReference);
+      checkFootnoteReference(od);
     });
   });
 
   unittest.group('obj-schema-Header', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildHeader();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildHeader();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Header.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkHeader(od as api.Header);
+      checkHeader(od);
     });
   });
 
   unittest.group('obj-schema-HorizontalRule', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildHorizontalRule();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.HorizontalRule.fromJson(
+      final o = buildHorizontalRule();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.HorizontalRule.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkHorizontalRule(od as api.HorizontalRule);
+      checkHorizontalRule(od);
     });
   });
 
   unittest.group('obj-schema-ImageProperties', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildImageProperties();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ImageProperties.fromJson(
+      final o = buildImageProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ImageProperties.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkImageProperties(od as api.ImageProperties);
+      checkImageProperties(od);
     });
   });
 
   unittest.group('obj-schema-ImagePropertiesSuggestionState', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildImagePropertiesSuggestionState();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ImagePropertiesSuggestionState.fromJson(
+      final o = buildImagePropertiesSuggestionState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ImagePropertiesSuggestionState.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkImagePropertiesSuggestionState(
-          od as api.ImagePropertiesSuggestionState);
+      checkImagePropertiesSuggestionState(od);
     });
   });
 
   unittest.group('obj-schema-InlineObject', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildInlineObject();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.InlineObject.fromJson(
+      final o = buildInlineObject();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InlineObject.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkInlineObject(od as api.InlineObject);
+      checkInlineObject(od);
     });
   });
 
   unittest.group('obj-schema-InlineObjectElement', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildInlineObjectElement();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.InlineObjectElement.fromJson(
+      final o = buildInlineObjectElement();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InlineObjectElement.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkInlineObjectElement(od as api.InlineObjectElement);
+      checkInlineObjectElement(od);
     });
   });
 
   unittest.group('obj-schema-InlineObjectProperties', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildInlineObjectProperties();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.InlineObjectProperties.fromJson(
+      final o = buildInlineObjectProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InlineObjectProperties.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkInlineObjectProperties(od as api.InlineObjectProperties);
+      checkInlineObjectProperties(od);
     });
   });
 
   unittest.group('obj-schema-InlineObjectPropertiesSuggestionState', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildInlineObjectPropertiesSuggestionState();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.InlineObjectPropertiesSuggestionState.fromJson(
+      final o = buildInlineObjectPropertiesSuggestionState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InlineObjectPropertiesSuggestionState.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkInlineObjectPropertiesSuggestionState(
-          od as api.InlineObjectPropertiesSuggestionState);
+      checkInlineObjectPropertiesSuggestionState(od);
     });
   });
 
   unittest.group('obj-schema-InsertInlineImageRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildInsertInlineImageRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.InsertInlineImageRequest.fromJson(
+      final o = buildInsertInlineImageRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InsertInlineImageRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkInsertInlineImageRequest(od as api.InsertInlineImageRequest);
+      checkInsertInlineImageRequest(od);
     });
   });
 
   unittest.group('obj-schema-InsertInlineImageResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildInsertInlineImageResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.InsertInlineImageResponse.fromJson(
+      final o = buildInsertInlineImageResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InsertInlineImageResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkInsertInlineImageResponse(od as api.InsertInlineImageResponse);
+      checkInsertInlineImageResponse(od);
     });
   });
 
   unittest.group('obj-schema-InsertInlineSheetsChartResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildInsertInlineSheetsChartResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.InsertInlineSheetsChartResponse.fromJson(
+      final o = buildInsertInlineSheetsChartResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InsertInlineSheetsChartResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkInsertInlineSheetsChartResponse(
-          od as api.InsertInlineSheetsChartResponse);
+      checkInsertInlineSheetsChartResponse(od);
     });
   });
 
   unittest.group('obj-schema-InsertPageBreakRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildInsertPageBreakRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.InsertPageBreakRequest.fromJson(
+      final o = buildInsertPageBreakRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InsertPageBreakRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkInsertPageBreakRequest(od as api.InsertPageBreakRequest);
+      checkInsertPageBreakRequest(od);
     });
   });
 
   unittest.group('obj-schema-InsertSectionBreakRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildInsertSectionBreakRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.InsertSectionBreakRequest.fromJson(
+      final o = buildInsertSectionBreakRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InsertSectionBreakRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkInsertSectionBreakRequest(od as api.InsertSectionBreakRequest);
+      checkInsertSectionBreakRequest(od);
     });
   });
 
   unittest.group('obj-schema-InsertTableColumnRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildInsertTableColumnRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.InsertTableColumnRequest.fromJson(
+      final o = buildInsertTableColumnRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InsertTableColumnRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkInsertTableColumnRequest(od as api.InsertTableColumnRequest);
+      checkInsertTableColumnRequest(od);
     });
   });
 
   unittest.group('obj-schema-InsertTableRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildInsertTableRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.InsertTableRequest.fromJson(
+      final o = buildInsertTableRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InsertTableRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkInsertTableRequest(od as api.InsertTableRequest);
+      checkInsertTableRequest(od);
     });
   });
 
   unittest.group('obj-schema-InsertTableRowRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildInsertTableRowRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.InsertTableRowRequest.fromJson(
+      final o = buildInsertTableRowRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InsertTableRowRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkInsertTableRowRequest(od as api.InsertTableRowRequest);
+      checkInsertTableRowRequest(od);
     });
   });
 
   unittest.group('obj-schema-InsertTextRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildInsertTextRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.InsertTextRequest.fromJson(
+      final o = buildInsertTextRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InsertTextRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkInsertTextRequest(od as api.InsertTextRequest);
+      checkInsertTextRequest(od);
     });
   });
 
   unittest.group('obj-schema-Link', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLink();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Link.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkLink(od as api.Link);
+      final o = buildLink();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Link.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkLink(od);
     });
   });
 
   unittest.group('obj-schema-LinkedContentReference', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLinkedContentReference();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LinkedContentReference.fromJson(
+      final o = buildLinkedContentReference();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LinkedContentReference.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLinkedContentReference(od as api.LinkedContentReference);
+      checkLinkedContentReference(od);
     });
   });
 
   unittest.group('obj-schema-LinkedContentReferenceSuggestionState', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLinkedContentReferenceSuggestionState();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LinkedContentReferenceSuggestionState.fromJson(
+      final o = buildLinkedContentReferenceSuggestionState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LinkedContentReferenceSuggestionState.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLinkedContentReferenceSuggestionState(
-          od as api.LinkedContentReferenceSuggestionState);
+      checkLinkedContentReferenceSuggestionState(od);
     });
   });
 
   unittest.group('obj-schema-List', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildList();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.List.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkList(od as api.List);
+      final o = buildList();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.List.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkList(od);
     });
   });
 
   unittest.group('obj-schema-ListProperties', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListProperties();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListProperties.fromJson(
+      final o = buildListProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListProperties.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListProperties(od as api.ListProperties);
+      checkListProperties(od);
     });
   });
 
   unittest.group('obj-schema-ListPropertiesSuggestionState', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListPropertiesSuggestionState();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListPropertiesSuggestionState.fromJson(
+      final o = buildListPropertiesSuggestionState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListPropertiesSuggestionState.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListPropertiesSuggestionState(
-          od as api.ListPropertiesSuggestionState);
+      checkListPropertiesSuggestionState(od);
     });
   });
 
   unittest.group('obj-schema-Location', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLocation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildLocation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Location.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkLocation(od as api.Location);
+      checkLocation(od);
     });
   });
 
   unittest.group('obj-schema-MergeTableCellsRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildMergeTableCellsRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.MergeTableCellsRequest.fromJson(
+      final o = buildMergeTableCellsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MergeTableCellsRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkMergeTableCellsRequest(od as api.MergeTableCellsRequest);
+      checkMergeTableCellsRequest(od);
     });
   });
 
   unittest.group('obj-schema-NamedRange', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildNamedRange();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildNamedRange();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.NamedRange.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkNamedRange(od as api.NamedRange);
+      checkNamedRange(od);
     });
   });
 
   unittest.group('obj-schema-NamedRanges', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildNamedRanges();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.NamedRanges.fromJson(
+      final o = buildNamedRanges();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NamedRanges.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkNamedRanges(od as api.NamedRanges);
+      checkNamedRanges(od);
     });
   });
 
   unittest.group('obj-schema-NamedStyle', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildNamedStyle();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildNamedStyle();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.NamedStyle.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkNamedStyle(od as api.NamedStyle);
+      checkNamedStyle(od);
     });
   });
 
   unittest.group('obj-schema-NamedStyleSuggestionState', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildNamedStyleSuggestionState();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.NamedStyleSuggestionState.fromJson(
+      final o = buildNamedStyleSuggestionState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NamedStyleSuggestionState.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkNamedStyleSuggestionState(od as api.NamedStyleSuggestionState);
+      checkNamedStyleSuggestionState(od);
     });
   });
 
   unittest.group('obj-schema-NamedStyles', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildNamedStyles();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.NamedStyles.fromJson(
+      final o = buildNamedStyles();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NamedStyles.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkNamedStyles(od as api.NamedStyles);
+      checkNamedStyles(od);
     });
   });
 
   unittest.group('obj-schema-NamedStylesSuggestionState', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildNamedStylesSuggestionState();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.NamedStylesSuggestionState.fromJson(
+      final o = buildNamedStylesSuggestionState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NamedStylesSuggestionState.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkNamedStylesSuggestionState(od as api.NamedStylesSuggestionState);
+      checkNamedStylesSuggestionState(od);
     });
   });
 
   unittest.group('obj-schema-NestingLevel', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildNestingLevel();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.NestingLevel.fromJson(
+      final o = buildNestingLevel();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NestingLevel.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkNestingLevel(od as api.NestingLevel);
+      checkNestingLevel(od);
     });
   });
 
   unittest.group('obj-schema-NestingLevelSuggestionState', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildNestingLevelSuggestionState();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.NestingLevelSuggestionState.fromJson(
+      final o = buildNestingLevelSuggestionState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NestingLevelSuggestionState.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkNestingLevelSuggestionState(od as api.NestingLevelSuggestionState);
+      checkNestingLevelSuggestionState(od);
     });
   });
 
   unittest.group('obj-schema-ObjectReferences', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildObjectReferences();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ObjectReferences.fromJson(
+      final o = buildObjectReferences();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ObjectReferences.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkObjectReferences(od as api.ObjectReferences);
+      checkObjectReferences(od);
     });
   });
 
   unittest.group('obj-schema-OptionalColor', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOptionalColor();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OptionalColor.fromJson(
+      final o = buildOptionalColor();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OptionalColor.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOptionalColor(od as api.OptionalColor);
+      checkOptionalColor(od);
     });
   });
 
   unittest.group('obj-schema-PageBreak', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPageBreak();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildPageBreak();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.PageBreak.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkPageBreak(od as api.PageBreak);
+      checkPageBreak(od);
     });
   });
 
   unittest.group('obj-schema-Paragraph', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildParagraph();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildParagraph();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Paragraph.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkParagraph(od as api.Paragraph);
+      checkParagraph(od);
     });
   });
 
   unittest.group('obj-schema-ParagraphBorder', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildParagraphBorder();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ParagraphBorder.fromJson(
+      final o = buildParagraphBorder();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ParagraphBorder.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkParagraphBorder(od as api.ParagraphBorder);
+      checkParagraphBorder(od);
     });
   });
 
   unittest.group('obj-schema-ParagraphElement', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildParagraphElement();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ParagraphElement.fromJson(
+      final o = buildParagraphElement();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ParagraphElement.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkParagraphElement(od as api.ParagraphElement);
+      checkParagraphElement(od);
     });
   });
 
   unittest.group('obj-schema-ParagraphStyle', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildParagraphStyle();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ParagraphStyle.fromJson(
+      final o = buildParagraphStyle();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ParagraphStyle.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkParagraphStyle(od as api.ParagraphStyle);
+      checkParagraphStyle(od);
     });
   });
 
   unittest.group('obj-schema-ParagraphStyleSuggestionState', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildParagraphStyleSuggestionState();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ParagraphStyleSuggestionState.fromJson(
+      final o = buildParagraphStyleSuggestionState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ParagraphStyleSuggestionState.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkParagraphStyleSuggestionState(
-          od as api.ParagraphStyleSuggestionState);
+      checkParagraphStyleSuggestionState(od);
     });
   });
 
   unittest.group('obj-schema-Person', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPerson();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildPerson();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Person.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkPerson(od as api.Person);
+      checkPerson(od);
     });
   });
 
   unittest.group('obj-schema-PersonProperties', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPersonProperties();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PersonProperties.fromJson(
+      final o = buildPersonProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PersonProperties.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPersonProperties(od as api.PersonProperties);
+      checkPersonProperties(od);
     });
   });
 
   unittest.group('obj-schema-PositionedObject', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPositionedObject();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PositionedObject.fromJson(
+      final o = buildPositionedObject();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PositionedObject.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPositionedObject(od as api.PositionedObject);
+      checkPositionedObject(od);
     });
   });
 
   unittest.group('obj-schema-PositionedObjectPositioning', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPositionedObjectPositioning();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PositionedObjectPositioning.fromJson(
+      final o = buildPositionedObjectPositioning();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PositionedObjectPositioning.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPositionedObjectPositioning(od as api.PositionedObjectPositioning);
+      checkPositionedObjectPositioning(od);
     });
   });
 
   unittest.group('obj-schema-PositionedObjectPositioningSuggestionState', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPositionedObjectPositioningSuggestionState();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PositionedObjectPositioningSuggestionState.fromJson(
+      final o = buildPositionedObjectPositioningSuggestionState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PositionedObjectPositioningSuggestionState.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPositionedObjectPositioningSuggestionState(
-          od as api.PositionedObjectPositioningSuggestionState);
+      checkPositionedObjectPositioningSuggestionState(od);
     });
   });
 
   unittest.group('obj-schema-PositionedObjectProperties', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPositionedObjectProperties();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PositionedObjectProperties.fromJson(
+      final o = buildPositionedObjectProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PositionedObjectProperties.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPositionedObjectProperties(od as api.PositionedObjectProperties);
+      checkPositionedObjectProperties(od);
     });
   });
 
   unittest.group('obj-schema-PositionedObjectPropertiesSuggestionState', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPositionedObjectPropertiesSuggestionState();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PositionedObjectPropertiesSuggestionState.fromJson(
+      final o = buildPositionedObjectPropertiesSuggestionState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PositionedObjectPropertiesSuggestionState.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPositionedObjectPropertiesSuggestionState(
-          od as api.PositionedObjectPropertiesSuggestionState);
+      checkPositionedObjectPropertiesSuggestionState(od);
     });
   });
 
   unittest.group('obj-schema-Range', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRange();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Range.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkRange(od as api.Range);
+      final o = buildRange();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Range.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkRange(od);
     });
   });
 
   unittest.group('obj-schema-ReplaceAllTextRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReplaceAllTextRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReplaceAllTextRequest.fromJson(
+      final o = buildReplaceAllTextRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReplaceAllTextRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReplaceAllTextRequest(od as api.ReplaceAllTextRequest);
+      checkReplaceAllTextRequest(od);
     });
   });
 
   unittest.group('obj-schema-ReplaceAllTextResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReplaceAllTextResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReplaceAllTextResponse.fromJson(
+      final o = buildReplaceAllTextResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReplaceAllTextResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReplaceAllTextResponse(od as api.ReplaceAllTextResponse);
+      checkReplaceAllTextResponse(od);
     });
   });
 
   unittest.group('obj-schema-ReplaceImageRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReplaceImageRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReplaceImageRequest.fromJson(
+      final o = buildReplaceImageRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReplaceImageRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReplaceImageRequest(od as api.ReplaceImageRequest);
+      checkReplaceImageRequest(od);
     });
   });
 
   unittest.group('obj-schema-ReplaceNamedRangeContentRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReplaceNamedRangeContentRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReplaceNamedRangeContentRequest.fromJson(
+      final o = buildReplaceNamedRangeContentRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReplaceNamedRangeContentRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReplaceNamedRangeContentRequest(
-          od as api.ReplaceNamedRangeContentRequest);
+      checkReplaceNamedRangeContentRequest(od);
     });
   });
 
   unittest.group('obj-schema-Request', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Request.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkRequest(od as api.Request);
+      checkRequest(od);
     });
   });
 
   unittest.group('obj-schema-Response', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Response.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkResponse(od as api.Response);
+      checkResponse(od);
     });
   });
 
   unittest.group('obj-schema-RgbColor', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRgbColor();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildRgbColor();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.RgbColor.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkRgbColor(od as api.RgbColor);
+      checkRgbColor(od);
     });
   });
 
   unittest.group('obj-schema-RichLink', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRichLink();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildRichLink();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.RichLink.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkRichLink(od as api.RichLink);
+      checkRichLink(od);
     });
   });
 
   unittest.group('obj-schema-RichLinkProperties', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRichLinkProperties();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RichLinkProperties.fromJson(
+      final o = buildRichLinkProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RichLinkProperties.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRichLinkProperties(od as api.RichLinkProperties);
+      checkRichLinkProperties(od);
     });
   });
 
   unittest.group('obj-schema-SectionBreak', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSectionBreak();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SectionBreak.fromJson(
+      final o = buildSectionBreak();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SectionBreak.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSectionBreak(od as api.SectionBreak);
+      checkSectionBreak(od);
     });
   });
 
   unittest.group('obj-schema-SectionColumnProperties', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSectionColumnProperties();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SectionColumnProperties.fromJson(
+      final o = buildSectionColumnProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SectionColumnProperties.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSectionColumnProperties(od as api.SectionColumnProperties);
+      checkSectionColumnProperties(od);
     });
   });
 
   unittest.group('obj-schema-SectionStyle', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSectionStyle();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SectionStyle.fromJson(
+      final o = buildSectionStyle();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SectionStyle.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSectionStyle(od as api.SectionStyle);
+      checkSectionStyle(od);
     });
   });
 
   unittest.group('obj-schema-Shading', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildShading();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildShading();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Shading.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkShading(od as api.Shading);
+      checkShading(od);
     });
   });
 
   unittest.group('obj-schema-ShadingSuggestionState', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildShadingSuggestionState();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ShadingSuggestionState.fromJson(
+      final o = buildShadingSuggestionState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ShadingSuggestionState.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkShadingSuggestionState(od as api.ShadingSuggestionState);
+      checkShadingSuggestionState(od);
     });
   });
 
   unittest.group('obj-schema-SheetsChartReference', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSheetsChartReference();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SheetsChartReference.fromJson(
+      final o = buildSheetsChartReference();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SheetsChartReference.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSheetsChartReference(od as api.SheetsChartReference);
+      checkSheetsChartReference(od);
     });
   });
 
   unittest.group('obj-schema-SheetsChartReferenceSuggestionState', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSheetsChartReferenceSuggestionState();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SheetsChartReferenceSuggestionState.fromJson(
+      final o = buildSheetsChartReferenceSuggestionState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SheetsChartReferenceSuggestionState.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSheetsChartReferenceSuggestionState(
-          od as api.SheetsChartReferenceSuggestionState);
+      checkSheetsChartReferenceSuggestionState(od);
     });
   });
 
   unittest.group('obj-schema-Size', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSize();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Size.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkSize(od as api.Size);
+      final o = buildSize();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Size.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkSize(od);
     });
   });
 
   unittest.group('obj-schema-SizeSuggestionState', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSizeSuggestionState();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SizeSuggestionState.fromJson(
+      final o = buildSizeSuggestionState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SizeSuggestionState.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSizeSuggestionState(od as api.SizeSuggestionState);
+      checkSizeSuggestionState(od);
     });
   });
 
   unittest.group('obj-schema-StructuralElement', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildStructuralElement();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.StructuralElement.fromJson(
+      final o = buildStructuralElement();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.StructuralElement.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkStructuralElement(od as api.StructuralElement);
+      checkStructuralElement(od);
     });
   });
 
   unittest.group('obj-schema-SubstringMatchCriteria', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSubstringMatchCriteria();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SubstringMatchCriteria.fromJson(
+      final o = buildSubstringMatchCriteria();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SubstringMatchCriteria.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSubstringMatchCriteria(od as api.SubstringMatchCriteria);
+      checkSubstringMatchCriteria(od);
     });
   });
 
   unittest.group('obj-schema-SuggestedBullet', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSuggestedBullet();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SuggestedBullet.fromJson(
+      final o = buildSuggestedBullet();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SuggestedBullet.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSuggestedBullet(od as api.SuggestedBullet);
+      checkSuggestedBullet(od);
     });
   });
 
   unittest.group('obj-schema-SuggestedDocumentStyle', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSuggestedDocumentStyle();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SuggestedDocumentStyle.fromJson(
+      final o = buildSuggestedDocumentStyle();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SuggestedDocumentStyle.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSuggestedDocumentStyle(od as api.SuggestedDocumentStyle);
+      checkSuggestedDocumentStyle(od);
     });
   });
 
   unittest.group('obj-schema-SuggestedInlineObjectProperties', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSuggestedInlineObjectProperties();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SuggestedInlineObjectProperties.fromJson(
+      final o = buildSuggestedInlineObjectProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SuggestedInlineObjectProperties.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSuggestedInlineObjectProperties(
-          od as api.SuggestedInlineObjectProperties);
+      checkSuggestedInlineObjectProperties(od);
     });
   });
 
   unittest.group('obj-schema-SuggestedListProperties', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSuggestedListProperties();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SuggestedListProperties.fromJson(
+      final o = buildSuggestedListProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SuggestedListProperties.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSuggestedListProperties(od as api.SuggestedListProperties);
+      checkSuggestedListProperties(od);
     });
   });
 
   unittest.group('obj-schema-SuggestedNamedStyles', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSuggestedNamedStyles();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SuggestedNamedStyles.fromJson(
+      final o = buildSuggestedNamedStyles();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SuggestedNamedStyles.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSuggestedNamedStyles(od as api.SuggestedNamedStyles);
+      checkSuggestedNamedStyles(od);
     });
   });
 
   unittest.group('obj-schema-SuggestedParagraphStyle', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSuggestedParagraphStyle();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SuggestedParagraphStyle.fromJson(
+      final o = buildSuggestedParagraphStyle();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SuggestedParagraphStyle.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSuggestedParagraphStyle(od as api.SuggestedParagraphStyle);
+      checkSuggestedParagraphStyle(od);
     });
   });
 
   unittest.group('obj-schema-SuggestedPositionedObjectProperties', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSuggestedPositionedObjectProperties();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SuggestedPositionedObjectProperties.fromJson(
+      final o = buildSuggestedPositionedObjectProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SuggestedPositionedObjectProperties.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSuggestedPositionedObjectProperties(
-          od as api.SuggestedPositionedObjectProperties);
+      checkSuggestedPositionedObjectProperties(od);
     });
   });
 
   unittest.group('obj-schema-SuggestedTableCellStyle', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSuggestedTableCellStyle();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SuggestedTableCellStyle.fromJson(
+      final o = buildSuggestedTableCellStyle();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SuggestedTableCellStyle.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSuggestedTableCellStyle(od as api.SuggestedTableCellStyle);
+      checkSuggestedTableCellStyle(od);
     });
   });
 
   unittest.group('obj-schema-SuggestedTableRowStyle', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSuggestedTableRowStyle();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SuggestedTableRowStyle.fromJson(
+      final o = buildSuggestedTableRowStyle();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SuggestedTableRowStyle.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSuggestedTableRowStyle(od as api.SuggestedTableRowStyle);
+      checkSuggestedTableRowStyle(od);
     });
   });
 
   unittest.group('obj-schema-SuggestedTextStyle', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSuggestedTextStyle();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SuggestedTextStyle.fromJson(
+      final o = buildSuggestedTextStyle();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SuggestedTextStyle.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSuggestedTextStyle(od as api.SuggestedTextStyle);
+      checkSuggestedTextStyle(od);
     });
   });
 
   unittest.group('obj-schema-TabStop', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTabStop();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildTabStop();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.TabStop.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkTabStop(od as api.TabStop);
+      checkTabStop(od);
     });
   });
 
   unittest.group('obj-schema-Table', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTable();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Table.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkTable(od as api.Table);
+      final o = buildTable();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Table.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkTable(od);
     });
   });
 
   unittest.group('obj-schema-TableCell', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTableCell();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildTableCell();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.TableCell.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkTableCell(od as api.TableCell);
+      checkTableCell(od);
     });
   });
 
   unittest.group('obj-schema-TableCellBorder', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTableCellBorder();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TableCellBorder.fromJson(
+      final o = buildTableCellBorder();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TableCellBorder.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTableCellBorder(od as api.TableCellBorder);
+      checkTableCellBorder(od);
     });
   });
 
   unittest.group('obj-schema-TableCellLocation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTableCellLocation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TableCellLocation.fromJson(
+      final o = buildTableCellLocation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TableCellLocation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTableCellLocation(od as api.TableCellLocation);
+      checkTableCellLocation(od);
     });
   });
 
   unittest.group('obj-schema-TableCellStyle', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTableCellStyle();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TableCellStyle.fromJson(
+      final o = buildTableCellStyle();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TableCellStyle.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTableCellStyle(od as api.TableCellStyle);
+      checkTableCellStyle(od);
     });
   });
 
   unittest.group('obj-schema-TableCellStyleSuggestionState', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTableCellStyleSuggestionState();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TableCellStyleSuggestionState.fromJson(
+      final o = buildTableCellStyleSuggestionState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TableCellStyleSuggestionState.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTableCellStyleSuggestionState(
-          od as api.TableCellStyleSuggestionState);
+      checkTableCellStyleSuggestionState(od);
     });
   });
 
   unittest.group('obj-schema-TableColumnProperties', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTableColumnProperties();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TableColumnProperties.fromJson(
+      final o = buildTableColumnProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TableColumnProperties.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTableColumnProperties(od as api.TableColumnProperties);
+      checkTableColumnProperties(od);
     });
   });
 
   unittest.group('obj-schema-TableOfContents', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTableOfContents();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TableOfContents.fromJson(
+      final o = buildTableOfContents();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TableOfContents.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTableOfContents(od as api.TableOfContents);
+      checkTableOfContents(od);
     });
   });
 
   unittest.group('obj-schema-TableRange', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTableRange();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildTableRange();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.TableRange.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkTableRange(od as api.TableRange);
+      checkTableRange(od);
     });
   });
 
   unittest.group('obj-schema-TableRow', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTableRow();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildTableRow();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.TableRow.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkTableRow(od as api.TableRow);
+      checkTableRow(od);
     });
   });
 
   unittest.group('obj-schema-TableRowStyle', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTableRowStyle();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TableRowStyle.fromJson(
+      final o = buildTableRowStyle();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TableRowStyle.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTableRowStyle(od as api.TableRowStyle);
+      checkTableRowStyle(od);
     });
   });
 
   unittest.group('obj-schema-TableRowStyleSuggestionState', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTableRowStyleSuggestionState();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TableRowStyleSuggestionState.fromJson(
+      final o = buildTableRowStyleSuggestionState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TableRowStyleSuggestionState.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTableRowStyleSuggestionState(od as api.TableRowStyleSuggestionState);
+      checkTableRowStyleSuggestionState(od);
     });
   });
 
   unittest.group('obj-schema-TableStyle', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTableStyle();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildTableStyle();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.TableStyle.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkTableStyle(od as api.TableStyle);
+      checkTableStyle(od);
     });
   });
 
   unittest.group('obj-schema-TextRun', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTextRun();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildTextRun();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.TextRun.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkTextRun(od as api.TextRun);
+      checkTextRun(od);
     });
   });
 
   unittest.group('obj-schema-TextStyle', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTextStyle();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildTextStyle();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.TextStyle.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkTextStyle(od as api.TextStyle);
+      checkTextStyle(od);
     });
   });
 
   unittest.group('obj-schema-TextStyleSuggestionState', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTextStyleSuggestionState();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TextStyleSuggestionState.fromJson(
+      final o = buildTextStyleSuggestionState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TextStyleSuggestionState.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTextStyleSuggestionState(od as api.TextStyleSuggestionState);
+      checkTextStyleSuggestionState(od);
     });
   });
 
   unittest.group('obj-schema-UnmergeTableCellsRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildUnmergeTableCellsRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.UnmergeTableCellsRequest.fromJson(
+      final o = buildUnmergeTableCellsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UnmergeTableCellsRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkUnmergeTableCellsRequest(od as api.UnmergeTableCellsRequest);
+      checkUnmergeTableCellsRequest(od);
     });
   });
 
   unittest.group('obj-schema-UpdateDocumentStyleRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildUpdateDocumentStyleRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.UpdateDocumentStyleRequest.fromJson(
+      final o = buildUpdateDocumentStyleRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UpdateDocumentStyleRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkUpdateDocumentStyleRequest(od as api.UpdateDocumentStyleRequest);
+      checkUpdateDocumentStyleRequest(od);
     });
   });
 
   unittest.group('obj-schema-UpdateParagraphStyleRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildUpdateParagraphStyleRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.UpdateParagraphStyleRequest.fromJson(
+      final o = buildUpdateParagraphStyleRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UpdateParagraphStyleRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkUpdateParagraphStyleRequest(od as api.UpdateParagraphStyleRequest);
+      checkUpdateParagraphStyleRequest(od);
     });
   });
 
   unittest.group('obj-schema-UpdateSectionStyleRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildUpdateSectionStyleRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.UpdateSectionStyleRequest.fromJson(
+      final o = buildUpdateSectionStyleRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UpdateSectionStyleRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkUpdateSectionStyleRequest(od as api.UpdateSectionStyleRequest);
+      checkUpdateSectionStyleRequest(od);
     });
   });
 
   unittest.group('obj-schema-UpdateTableCellStyleRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildUpdateTableCellStyleRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.UpdateTableCellStyleRequest.fromJson(
+      final o = buildUpdateTableCellStyleRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UpdateTableCellStyleRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkUpdateTableCellStyleRequest(od as api.UpdateTableCellStyleRequest);
+      checkUpdateTableCellStyleRequest(od);
     });
   });
 
   unittest.group('obj-schema-UpdateTableColumnPropertiesRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildUpdateTableColumnPropertiesRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.UpdateTableColumnPropertiesRequest.fromJson(
+      final o = buildUpdateTableColumnPropertiesRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UpdateTableColumnPropertiesRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkUpdateTableColumnPropertiesRequest(
-          od as api.UpdateTableColumnPropertiesRequest);
+      checkUpdateTableColumnPropertiesRequest(od);
     });
   });
 
   unittest.group('obj-schema-UpdateTableRowStyleRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildUpdateTableRowStyleRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.UpdateTableRowStyleRequest.fromJson(
+      final o = buildUpdateTableRowStyleRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UpdateTableRowStyleRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkUpdateTableRowStyleRequest(od as api.UpdateTableRowStyleRequest);
+      checkUpdateTableRowStyleRequest(od);
     });
   });
 
   unittest.group('obj-schema-UpdateTextStyleRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildUpdateTextStyleRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.UpdateTextStyleRequest.fromJson(
+      final o = buildUpdateTextStyleRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UpdateTextStyleRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkUpdateTextStyleRequest(od as api.UpdateTextStyleRequest);
+      checkUpdateTextStyleRequest(od);
     });
   });
 
   unittest.group('obj-schema-WeightedFontFamily', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildWeightedFontFamily();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.WeightedFontFamily.fromJson(
+      final o = buildWeightedFontFamily();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WeightedFontFamily.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkWeightedFontFamily(od as api.WeightedFontFamily);
+      checkWeightedFontFamily(od);
     });
   });
 
   unittest.group('obj-schema-WriteControl', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildWriteControl();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.WriteControl.fromJson(
+      final o = buildWriteControl();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WriteControl.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkWriteControl(od as api.WriteControl);
+      checkWriteControl(od);
     });
   });
 
   unittest.group('resource-DocumentsResource', () {
     unittest.test('method--batchUpdate', () async {
-      var mock = HttpServerMock();
-      var res = api.DocsApi(mock).documents;
-      var arg_request = buildBatchUpdateDocumentRequest();
-      var arg_documentId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DocsApi(mock).documents;
+      final arg_request = buildBatchUpdateDocumentRequest();
+      final arg_documentId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BatchUpdateDocumentRequest.fromJson(
+        final obj = api.BatchUpdateDocumentRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkBatchUpdateDocumentRequest(obj as api.BatchUpdateDocumentRequest);
+        checkBatchUpdateDocumentRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("v1/documents/"),
+          unittest.equals('v1/documents/'),
         );
         pathOffset += 13;
         index = path.indexOf(':batchUpdate', pathOffset);
@@ -7170,19 +7083,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 12),
-          unittest.equals(":batchUpdate"),
+          unittest.equals(':batchUpdate'),
         );
         pathOffset += 12;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7190,14 +7103,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildBatchUpdateDocumentResponse());
+        final resp = convert.json.encode(buildBatchUpdateDocumentResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.batchUpdate(arg_request, arg_documentId,
@@ -7207,39 +7120,39 @@ void main() {
     });
 
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.DocsApi(mock).documents;
-      var arg_request = buildDocument();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DocsApi(mock).documents;
+      final arg_request = buildDocument();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Document.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkDocument(obj as api.Document);
+        checkDocument(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 12),
-          unittest.equals("v1/documents"),
+          unittest.equals('v1/documents'),
         );
         pathOffset += 12;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7247,14 +7160,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildDocument());
+        final resp = convert.json.encode(buildDocument());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, $fields: arg_$fields);
@@ -7262,24 +7175,24 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.DocsApi(mock).documents;
-      var arg_documentId = 'foo';
-      var arg_suggestionsViewMode = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DocsApi(mock).documents;
+      final arg_documentId = 'foo';
+      final arg_suggestionsViewMode = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("v1/documents/"),
+          unittest.equals('v1/documents/'),
         );
         pathOffset += 13;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -7289,15 +7202,15 @@ void main() {
           unittest.equals('$arg_documentId'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -7305,18 +7218,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["suggestionsViewMode"]!.first,
+          queryMap['suggestionsViewMode']!.first,
           unittest.equals(arg_suggestionsViewMode),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildDocument());
+        final resp = convert.json.encode(buildDocument());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_documentId,

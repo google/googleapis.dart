@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -29,7 +28,7 @@ import '../test_shared.dart';
 
 core.int buildCounterAndroidAppAsset = 0;
 api.AndroidAppAsset buildAndroidAppAsset() {
-  var o = api.AndroidAppAsset();
+  final o = api.AndroidAppAsset();
   buildCounterAndroidAppAsset++;
   if (buildCounterAndroidAppAsset < 3) {
     o.certificate = buildCertificateInfo();
@@ -42,7 +41,7 @@ api.AndroidAppAsset buildAndroidAppAsset() {
 void checkAndroidAppAsset(api.AndroidAppAsset o) {
   buildCounterAndroidAppAsset++;
   if (buildCounterAndroidAppAsset < 3) {
-    checkCertificateInfo(o.certificate! as api.CertificateInfo);
+    checkCertificateInfo(o.certificate!);
     unittest.expect(
       o.packageName!,
       unittest.equals('foo'),
@@ -53,7 +52,7 @@ void checkAndroidAppAsset(api.AndroidAppAsset o) {
 
 core.int buildCounterAsset = 0;
 api.Asset buildAsset() {
-  var o = api.Asset();
+  final o = api.Asset();
   buildCounterAsset++;
   if (buildCounterAsset < 3) {
     o.androidApp = buildAndroidAppAsset();
@@ -66,15 +65,15 @@ api.Asset buildAsset() {
 void checkAsset(api.Asset o) {
   buildCounterAsset++;
   if (buildCounterAsset < 3) {
-    checkAndroidAppAsset(o.androidApp! as api.AndroidAppAsset);
-    checkWebAsset(o.web! as api.WebAsset);
+    checkAndroidAppAsset(o.androidApp!);
+    checkWebAsset(o.web!);
   }
   buildCounterAsset--;
 }
 
 core.int buildCounterCertificateInfo = 0;
 api.CertificateInfo buildCertificateInfo() {
-  var o = api.CertificateInfo();
+  final o = api.CertificateInfo();
   buildCounterCertificateInfo++;
   if (buildCounterCertificateInfo < 3) {
     o.sha256Fingerprint = 'foo';
@@ -95,7 +94,7 @@ void checkCertificateInfo(api.CertificateInfo o) {
 }
 
 core.List<core.String> buildUnnamed3648() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -115,7 +114,7 @@ void checkUnnamed3648(core.List<core.String> o) {
 
 core.int buildCounterCheckResponse = 0;
 api.CheckResponse buildCheckResponse() {
-  var o = api.CheckResponse();
+  final o = api.CheckResponse();
   buildCounterCheckResponse++;
   if (buildCounterCheckResponse < 3) {
     o.debugString = 'foo';
@@ -145,7 +144,7 @@ void checkCheckResponse(api.CheckResponse o) {
 }
 
 core.List<core.String> buildUnnamed3649() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -164,7 +163,7 @@ void checkUnnamed3649(core.List<core.String> o) {
 }
 
 core.List<api.Statement> buildUnnamed3650() {
-  var o = <api.Statement>[];
+  final o = <api.Statement>[];
   o.add(buildStatement());
   o.add(buildStatement());
   return o;
@@ -172,13 +171,13 @@ core.List<api.Statement> buildUnnamed3650() {
 
 void checkUnnamed3650(core.List<api.Statement> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkStatement(o[0] as api.Statement);
-  checkStatement(o[1] as api.Statement);
+  checkStatement(o[0]);
+  checkStatement(o[1]);
 }
 
 core.int buildCounterListResponse = 0;
 api.ListResponse buildListResponse() {
-  var o = api.ListResponse();
+  final o = api.ListResponse();
   buildCounterListResponse++;
   if (buildCounterListResponse < 3) {
     o.debugString = 'foo';
@@ -209,7 +208,7 @@ void checkListResponse(api.ListResponse o) {
 
 core.int buildCounterStatement = 0;
 api.Statement buildStatement() {
-  var o = api.Statement();
+  final o = api.Statement();
   buildCounterStatement++;
   if (buildCounterStatement < 3) {
     o.relation = 'foo';
@@ -227,15 +226,15 @@ void checkStatement(api.Statement o) {
       o.relation!,
       unittest.equals('foo'),
     );
-    checkAsset(o.source! as api.Asset);
-    checkAsset(o.target! as api.Asset);
+    checkAsset(o.source!);
+    checkAsset(o.target!);
   }
   buildCounterStatement--;
 }
 
 core.int buildCounterWebAsset = 0;
 api.WebAsset buildWebAsset() {
-  var o = api.WebAsset();
+  final o = api.WebAsset();
   buildCounterWebAsset++;
   if (buildCounterWebAsset < 3) {
     o.site = 'foo';
@@ -258,110 +257,111 @@ void checkWebAsset(api.WebAsset o) {
 void main() {
   unittest.group('obj-schema-AndroidAppAsset', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAndroidAppAsset();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AndroidAppAsset.fromJson(
+      final o = buildAndroidAppAsset();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AndroidAppAsset.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAndroidAppAsset(od as api.AndroidAppAsset);
+      checkAndroidAppAsset(od);
     });
   });
 
   unittest.group('obj-schema-Asset', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAsset();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Asset.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkAsset(od as api.Asset);
+      final o = buildAsset();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Asset.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkAsset(od);
     });
   });
 
   unittest.group('obj-schema-CertificateInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCertificateInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CertificateInfo.fromJson(
+      final o = buildCertificateInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CertificateInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCertificateInfo(od as api.CertificateInfo);
+      checkCertificateInfo(od);
     });
   });
 
   unittest.group('obj-schema-CheckResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCheckResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CheckResponse.fromJson(
+      final o = buildCheckResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CheckResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCheckResponse(od as api.CheckResponse);
+      checkCheckResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListResponse.fromJson(
+      final o = buildListResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListResponse(od as api.ListResponse);
+      checkListResponse(od);
     });
   });
 
   unittest.group('obj-schema-Statement', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildStatement();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildStatement();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Statement.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkStatement(od as api.Statement);
+      checkStatement(od);
     });
   });
 
   unittest.group('obj-schema-WebAsset', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildWebAsset();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildWebAsset();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.WebAsset.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkWebAsset(od as api.WebAsset);
+      checkWebAsset(od);
     });
   });
 
   unittest.group('resource-AssetlinksResource', () {
     unittest.test('method--check', () async {
-      var mock = HttpServerMock();
-      var res = api.DigitalassetlinksApi(mock).assetlinks;
-      var arg_relation = 'foo';
-      var arg_source_androidApp_certificate_sha256Fingerprint = 'foo';
-      var arg_source_androidApp_packageName = 'foo';
-      var arg_source_web_site = 'foo';
-      var arg_target_androidApp_certificate_sha256Fingerprint = 'foo';
-      var arg_target_androidApp_packageName = 'foo';
-      var arg_target_web_site = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DigitalassetlinksApi(mock).assetlinks;
+      final arg_relation = 'foo';
+      final arg_source_androidApp_certificate_sha256Fingerprint = 'foo';
+      final arg_source_androidApp_packageName = 'foo';
+      final arg_source_web_site = 'foo';
+      final arg_target_androidApp_certificate_sha256Fingerprint = 'foo';
+      final arg_target_androidApp_packageName = 'foo';
+      final arg_target_web_site = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 19),
-          unittest.equals("v1/assetlinks:check"),
+          unittest.equals('v1/assetlinks:check'),
         );
         pathOffset += 19;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -369,42 +369,42 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["relation"]!.first,
+          queryMap['relation']!.first,
           unittest.equals(arg_relation),
         );
         unittest.expect(
-          queryMap["source.androidApp.certificate.sha256Fingerprint"]!.first,
+          queryMap['source.androidApp.certificate.sha256Fingerprint']!.first,
           unittest.equals(arg_source_androidApp_certificate_sha256Fingerprint),
         );
         unittest.expect(
-          queryMap["source.androidApp.packageName"]!.first,
+          queryMap['source.androidApp.packageName']!.first,
           unittest.equals(arg_source_androidApp_packageName),
         );
         unittest.expect(
-          queryMap["source.web.site"]!.first,
+          queryMap['source.web.site']!.first,
           unittest.equals(arg_source_web_site),
         );
         unittest.expect(
-          queryMap["target.androidApp.certificate.sha256Fingerprint"]!.first,
+          queryMap['target.androidApp.certificate.sha256Fingerprint']!.first,
           unittest.equals(arg_target_androidApp_certificate_sha256Fingerprint),
         );
         unittest.expect(
-          queryMap["target.androidApp.packageName"]!.first,
+          queryMap['target.androidApp.packageName']!.first,
           unittest.equals(arg_target_androidApp_packageName),
         );
         unittest.expect(
-          queryMap["target.web.site"]!.first,
+          queryMap['target.web.site']!.first,
           unittest.equals(arg_target_web_site),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildCheckResponse());
+        final resp = convert.json.encode(buildCheckResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.check(
@@ -424,38 +424,38 @@ void main() {
 
   unittest.group('resource-StatementsResource', () {
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.DigitalassetlinksApi(mock).statements;
-      var arg_relation = 'foo';
-      var arg_source_androidApp_certificate_sha256Fingerprint = 'foo';
-      var arg_source_androidApp_packageName = 'foo';
-      var arg_source_web_site = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DigitalassetlinksApi(mock).statements;
+      final arg_relation = 'foo';
+      final arg_source_androidApp_certificate_sha256Fingerprint = 'foo';
+      final arg_source_androidApp_packageName = 'foo';
+      final arg_source_web_site = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 18),
-          unittest.equals("v1/statements:list"),
+          unittest.equals('v1/statements:list'),
         );
         pathOffset += 18;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -463,30 +463,30 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["relation"]!.first,
+          queryMap['relation']!.first,
           unittest.equals(arg_relation),
         );
         unittest.expect(
-          queryMap["source.androidApp.certificate.sha256Fingerprint"]!.first,
+          queryMap['source.androidApp.certificate.sha256Fingerprint']!.first,
           unittest.equals(arg_source_androidApp_certificate_sha256Fingerprint),
         );
         unittest.expect(
-          queryMap["source.androidApp.packageName"]!.first,
+          queryMap['source.androidApp.packageName']!.first,
           unittest.equals(arg_source_androidApp_packageName),
         );
         unittest.expect(
-          queryMap["source.web.site"]!.first,
+          queryMap['source.web.site']!.first,
           unittest.equals(arg_source_web_site),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListResponse());
+        final resp = convert.json.encode(buildListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(

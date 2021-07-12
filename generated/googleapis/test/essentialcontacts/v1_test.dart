@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -28,7 +27,7 @@ import 'package:test/test.dart' as unittest;
 import '../test_shared.dart';
 
 core.List<api.GoogleCloudEssentialcontactsV1Contact> buildUnnamed640() {
-  var o = <api.GoogleCloudEssentialcontactsV1Contact>[];
+  final o = <api.GoogleCloudEssentialcontactsV1Contact>[];
   o.add(buildGoogleCloudEssentialcontactsV1Contact());
   o.add(buildGoogleCloudEssentialcontactsV1Contact());
   return o;
@@ -36,16 +35,14 @@ core.List<api.GoogleCloudEssentialcontactsV1Contact> buildUnnamed640() {
 
 void checkUnnamed640(core.List<api.GoogleCloudEssentialcontactsV1Contact> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudEssentialcontactsV1Contact(
-      o[0] as api.GoogleCloudEssentialcontactsV1Contact);
-  checkGoogleCloudEssentialcontactsV1Contact(
-      o[1] as api.GoogleCloudEssentialcontactsV1Contact);
+  checkGoogleCloudEssentialcontactsV1Contact(o[0]);
+  checkGoogleCloudEssentialcontactsV1Contact(o[1]);
 }
 
 core.int buildCounterGoogleCloudEssentialcontactsV1ComputeContactsResponse = 0;
 api.GoogleCloudEssentialcontactsV1ComputeContactsResponse
     buildGoogleCloudEssentialcontactsV1ComputeContactsResponse() {
-  var o = api.GoogleCloudEssentialcontactsV1ComputeContactsResponse();
+  final o = api.GoogleCloudEssentialcontactsV1ComputeContactsResponse();
   buildCounterGoogleCloudEssentialcontactsV1ComputeContactsResponse++;
   if (buildCounterGoogleCloudEssentialcontactsV1ComputeContactsResponse < 3) {
     o.contacts = buildUnnamed640();
@@ -69,7 +66,7 @@ void checkGoogleCloudEssentialcontactsV1ComputeContactsResponse(
 }
 
 core.List<core.String> buildUnnamed641() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -90,7 +87,7 @@ void checkUnnamed641(core.List<core.String> o) {
 core.int buildCounterGoogleCloudEssentialcontactsV1Contact = 0;
 api.GoogleCloudEssentialcontactsV1Contact
     buildGoogleCloudEssentialcontactsV1Contact() {
-  var o = api.GoogleCloudEssentialcontactsV1Contact();
+  final o = api.GoogleCloudEssentialcontactsV1Contact();
   buildCounterGoogleCloudEssentialcontactsV1Contact++;
   if (buildCounterGoogleCloudEssentialcontactsV1Contact < 3) {
     o.email = 'foo';
@@ -134,7 +131,7 @@ void checkGoogleCloudEssentialcontactsV1Contact(
 }
 
 core.List<api.GoogleCloudEssentialcontactsV1Contact> buildUnnamed642() {
-  var o = <api.GoogleCloudEssentialcontactsV1Contact>[];
+  final o = <api.GoogleCloudEssentialcontactsV1Contact>[];
   o.add(buildGoogleCloudEssentialcontactsV1Contact());
   o.add(buildGoogleCloudEssentialcontactsV1Contact());
   return o;
@@ -142,16 +139,14 @@ core.List<api.GoogleCloudEssentialcontactsV1Contact> buildUnnamed642() {
 
 void checkUnnamed642(core.List<api.GoogleCloudEssentialcontactsV1Contact> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudEssentialcontactsV1Contact(
-      o[0] as api.GoogleCloudEssentialcontactsV1Contact);
-  checkGoogleCloudEssentialcontactsV1Contact(
-      o[1] as api.GoogleCloudEssentialcontactsV1Contact);
+  checkGoogleCloudEssentialcontactsV1Contact(o[0]);
+  checkGoogleCloudEssentialcontactsV1Contact(o[1]);
 }
 
 core.int buildCounterGoogleCloudEssentialcontactsV1ListContactsResponse = 0;
 api.GoogleCloudEssentialcontactsV1ListContactsResponse
     buildGoogleCloudEssentialcontactsV1ListContactsResponse() {
-  var o = api.GoogleCloudEssentialcontactsV1ListContactsResponse();
+  final o = api.GoogleCloudEssentialcontactsV1ListContactsResponse();
   buildCounterGoogleCloudEssentialcontactsV1ListContactsResponse++;
   if (buildCounterGoogleCloudEssentialcontactsV1ListContactsResponse < 3) {
     o.contacts = buildUnnamed642();
@@ -175,7 +170,7 @@ void checkGoogleCloudEssentialcontactsV1ListContactsResponse(
 }
 
 core.List<core.String> buildUnnamed643() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -196,7 +191,7 @@ void checkUnnamed643(core.List<core.String> o) {
 core.int buildCounterGoogleCloudEssentialcontactsV1SendTestMessageRequest = 0;
 api.GoogleCloudEssentialcontactsV1SendTestMessageRequest
     buildGoogleCloudEssentialcontactsV1SendTestMessageRequest() {
-  var o = api.GoogleCloudEssentialcontactsV1SendTestMessageRequest();
+  final o = api.GoogleCloudEssentialcontactsV1SendTestMessageRequest();
   buildCounterGoogleCloudEssentialcontactsV1SendTestMessageRequest++;
   if (buildCounterGoogleCloudEssentialcontactsV1SendTestMessageRequest < 3) {
     o.contacts = buildUnnamed643();
@@ -221,7 +216,7 @@ void checkGoogleCloudEssentialcontactsV1SendTestMessageRequest(
 
 core.int buildCounterGoogleProtobufEmpty = 0;
 api.GoogleProtobufEmpty buildGoogleProtobufEmpty() {
-  var o = api.GoogleProtobufEmpty();
+  final o = api.GoogleProtobufEmpty();
   buildCounterGoogleProtobufEmpty++;
   if (buildCounterGoogleProtobufEmpty < 3) {}
   buildCounterGoogleProtobufEmpty--;
@@ -235,7 +230,7 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
 }
 
 core.List<core.String> buildUnnamed644() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -254,7 +249,7 @@ void checkUnnamed644(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed645() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -273,7 +268,7 @@ void checkUnnamed645(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed646() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -295,97 +290,94 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudEssentialcontactsV1ComputeContactsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudEssentialcontactsV1ComputeContactsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudEssentialcontactsV1ComputeContactsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudEssentialcontactsV1ComputeContactsResponse.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudEssentialcontactsV1ComputeContactsResponse(
-          od as api.GoogleCloudEssentialcontactsV1ComputeContactsResponse);
+      checkGoogleCloudEssentialcontactsV1ComputeContactsResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudEssentialcontactsV1Contact', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudEssentialcontactsV1Contact();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudEssentialcontactsV1Contact.fromJson(
+      final o = buildGoogleCloudEssentialcontactsV1Contact();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudEssentialcontactsV1Contact.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudEssentialcontactsV1Contact(
-          od as api.GoogleCloudEssentialcontactsV1Contact);
+      checkGoogleCloudEssentialcontactsV1Contact(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudEssentialcontactsV1ListContactsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudEssentialcontactsV1ListContactsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudEssentialcontactsV1ListContactsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudEssentialcontactsV1ListContactsResponse(
-          od as api.GoogleCloudEssentialcontactsV1ListContactsResponse);
+      final o = buildGoogleCloudEssentialcontactsV1ListContactsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudEssentialcontactsV1ListContactsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudEssentialcontactsV1ListContactsResponse(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudEssentialcontactsV1SendTestMessageRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudEssentialcontactsV1SendTestMessageRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudEssentialcontactsV1SendTestMessageRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudEssentialcontactsV1SendTestMessageRequest.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudEssentialcontactsV1SendTestMessageRequest(
-          od as api.GoogleCloudEssentialcontactsV1SendTestMessageRequest);
+      checkGoogleCloudEssentialcontactsV1SendTestMessageRequest(od);
     });
   });
 
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleProtobufEmpty();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleProtobufEmpty.fromJson(
+      final o = buildGoogleProtobufEmpty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleProtobufEmpty.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleProtobufEmpty(od as api.GoogleProtobufEmpty);
+      checkGoogleProtobufEmpty(od);
     });
   });
 
   unittest.group('resource-FoldersContactsResource', () {
     unittest.test('method--compute', () async {
-      var mock = HttpServerMock();
-      var res = api.EssentialcontactsApi(mock).folders.contacts;
-      var arg_parent = 'foo';
-      var arg_notificationCategories = buildUnnamed644();
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.EssentialcontactsApi(mock).folders.contacts;
+      final arg_parent = 'foo';
+      final arg_notificationCategories = buildUnnamed644();
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -393,26 +385,26 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["notificationCategories"]!,
+          queryMap['notificationCategories']!,
           unittest.equals(arg_notificationCategories),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(
+        final resp = convert.json.encode(
             buildGoogleCloudEssentialcontactsV1ComputeContactsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -426,42 +418,41 @@ void main() {
     });
 
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.EssentialcontactsApi(mock).folders.contacts;
-      var arg_request = buildGoogleCloudEssentialcontactsV1Contact();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.EssentialcontactsApi(mock).folders.contacts;
+      final arg_request = buildGoogleCloudEssentialcontactsV1Contact();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudEssentialcontactsV1Contact.fromJson(
+        final obj = api.GoogleCloudEssentialcontactsV1Contact.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudEssentialcontactsV1Contact(
-            obj as api.GoogleCloudEssentialcontactsV1Contact);
+        checkGoogleCloudEssentialcontactsV1Contact(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -469,14 +460,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudEssentialcontactsV1Contact());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -487,36 +478,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.EssentialcontactsApi(mock).folders.contacts;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.EssentialcontactsApi(mock).folders.contacts;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -524,14 +515,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleProtobufEmpty());
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -539,36 +530,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.EssentialcontactsApi(mock).folders.contacts;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.EssentialcontactsApi(mock).folders.contacts;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -576,14 +567,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudEssentialcontactsV1Contact());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -593,38 +584,38 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.EssentialcontactsApi(mock).folders.contacts;
-      var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.EssentialcontactsApi(mock).folders.contacts;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -632,22 +623,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudEssentialcontactsV1ListContactsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -660,43 +651,42 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.EssentialcontactsApi(mock).folders.contacts;
-      var arg_request = buildGoogleCloudEssentialcontactsV1Contact();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.EssentialcontactsApi(mock).folders.contacts;
+      final arg_request = buildGoogleCloudEssentialcontactsV1Contact();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudEssentialcontactsV1Contact.fromJson(
+        final obj = api.GoogleCloudEssentialcontactsV1Contact.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudEssentialcontactsV1Contact(
-            obj as api.GoogleCloudEssentialcontactsV1Contact);
+        checkGoogleCloudEssentialcontactsV1Contact(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -704,18 +694,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudEssentialcontactsV1Contact());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -726,44 +716,43 @@ void main() {
     });
 
     unittest.test('method--sendTestMessage', () async {
-      var mock = HttpServerMock();
-      var res = api.EssentialcontactsApi(mock).folders.contacts;
-      var arg_request =
+      final mock = HttpServerMock();
+      final res = api.EssentialcontactsApi(mock).folders.contacts;
+      final arg_request =
           buildGoogleCloudEssentialcontactsV1SendTestMessageRequest();
-      var arg_resource = 'foo';
-      var arg_$fields = 'foo';
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.GoogleCloudEssentialcontactsV1SendTestMessageRequest.fromJson(
                 json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudEssentialcontactsV1SendTestMessageRequest(
-            obj as api.GoogleCloudEssentialcontactsV1SendTestMessageRequest);
+        checkGoogleCloudEssentialcontactsV1SendTestMessageRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -771,14 +760,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleProtobufEmpty());
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.sendTestMessage(arg_request, arg_resource,
@@ -789,39 +778,39 @@ void main() {
 
   unittest.group('resource-OrganizationsContactsResource', () {
     unittest.test('method--compute', () async {
-      var mock = HttpServerMock();
-      var res = api.EssentialcontactsApi(mock).organizations.contacts;
-      var arg_parent = 'foo';
-      var arg_notificationCategories = buildUnnamed645();
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.EssentialcontactsApi(mock).organizations.contacts;
+      final arg_parent = 'foo';
+      final arg_notificationCategories = buildUnnamed645();
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -829,26 +818,26 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["notificationCategories"]!,
+          queryMap['notificationCategories']!,
           unittest.equals(arg_notificationCategories),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(
+        final resp = convert.json.encode(
             buildGoogleCloudEssentialcontactsV1ComputeContactsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -862,42 +851,41 @@ void main() {
     });
 
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.EssentialcontactsApi(mock).organizations.contacts;
-      var arg_request = buildGoogleCloudEssentialcontactsV1Contact();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.EssentialcontactsApi(mock).organizations.contacts;
+      final arg_request = buildGoogleCloudEssentialcontactsV1Contact();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudEssentialcontactsV1Contact.fromJson(
+        final obj = api.GoogleCloudEssentialcontactsV1Contact.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudEssentialcontactsV1Contact(
-            obj as api.GoogleCloudEssentialcontactsV1Contact);
+        checkGoogleCloudEssentialcontactsV1Contact(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -905,14 +893,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudEssentialcontactsV1Contact());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -923,36 +911,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.EssentialcontactsApi(mock).organizations.contacts;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.EssentialcontactsApi(mock).organizations.contacts;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -960,14 +948,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleProtobufEmpty());
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -975,36 +963,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.EssentialcontactsApi(mock).organizations.contacts;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.EssentialcontactsApi(mock).organizations.contacts;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1012,14 +1000,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudEssentialcontactsV1Contact());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -1029,38 +1017,38 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.EssentialcontactsApi(mock).organizations.contacts;
-      var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.EssentialcontactsApi(mock).organizations.contacts;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1068,22 +1056,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudEssentialcontactsV1ListContactsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -1096,43 +1084,42 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.EssentialcontactsApi(mock).organizations.contacts;
-      var arg_request = buildGoogleCloudEssentialcontactsV1Contact();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.EssentialcontactsApi(mock).organizations.contacts;
+      final arg_request = buildGoogleCloudEssentialcontactsV1Contact();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudEssentialcontactsV1Contact.fromJson(
+        final obj = api.GoogleCloudEssentialcontactsV1Contact.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudEssentialcontactsV1Contact(
-            obj as api.GoogleCloudEssentialcontactsV1Contact);
+        checkGoogleCloudEssentialcontactsV1Contact(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1140,18 +1127,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudEssentialcontactsV1Contact());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -1162,44 +1149,43 @@ void main() {
     });
 
     unittest.test('method--sendTestMessage', () async {
-      var mock = HttpServerMock();
-      var res = api.EssentialcontactsApi(mock).organizations.contacts;
-      var arg_request =
+      final mock = HttpServerMock();
+      final res = api.EssentialcontactsApi(mock).organizations.contacts;
+      final arg_request =
           buildGoogleCloudEssentialcontactsV1SendTestMessageRequest();
-      var arg_resource = 'foo';
-      var arg_$fields = 'foo';
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.GoogleCloudEssentialcontactsV1SendTestMessageRequest.fromJson(
                 json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudEssentialcontactsV1SendTestMessageRequest(
-            obj as api.GoogleCloudEssentialcontactsV1SendTestMessageRequest);
+        checkGoogleCloudEssentialcontactsV1SendTestMessageRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1207,14 +1193,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleProtobufEmpty());
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.sendTestMessage(arg_request, arg_resource,
@@ -1225,39 +1211,39 @@ void main() {
 
   unittest.group('resource-ProjectsContactsResource', () {
     unittest.test('method--compute', () async {
-      var mock = HttpServerMock();
-      var res = api.EssentialcontactsApi(mock).projects.contacts;
-      var arg_parent = 'foo';
-      var arg_notificationCategories = buildUnnamed646();
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.EssentialcontactsApi(mock).projects.contacts;
+      final arg_parent = 'foo';
+      final arg_notificationCategories = buildUnnamed646();
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1265,26 +1251,26 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["notificationCategories"]!,
+          queryMap['notificationCategories']!,
           unittest.equals(arg_notificationCategories),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(
+        final resp = convert.json.encode(
             buildGoogleCloudEssentialcontactsV1ComputeContactsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -1298,42 +1284,41 @@ void main() {
     });
 
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.EssentialcontactsApi(mock).projects.contacts;
-      var arg_request = buildGoogleCloudEssentialcontactsV1Contact();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.EssentialcontactsApi(mock).projects.contacts;
+      final arg_request = buildGoogleCloudEssentialcontactsV1Contact();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudEssentialcontactsV1Contact.fromJson(
+        final obj = api.GoogleCloudEssentialcontactsV1Contact.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudEssentialcontactsV1Contact(
-            obj as api.GoogleCloudEssentialcontactsV1Contact);
+        checkGoogleCloudEssentialcontactsV1Contact(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1341,14 +1326,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudEssentialcontactsV1Contact());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -1359,36 +1344,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.EssentialcontactsApi(mock).projects.contacts;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.EssentialcontactsApi(mock).projects.contacts;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1396,14 +1381,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleProtobufEmpty());
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -1411,36 +1396,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.EssentialcontactsApi(mock).projects.contacts;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.EssentialcontactsApi(mock).projects.contacts;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1448,14 +1433,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudEssentialcontactsV1Contact());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -1465,38 +1450,38 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.EssentialcontactsApi(mock).projects.contacts;
-      var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.EssentialcontactsApi(mock).projects.contacts;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1504,22 +1489,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudEssentialcontactsV1ListContactsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -1532,43 +1517,42 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.EssentialcontactsApi(mock).projects.contacts;
-      var arg_request = buildGoogleCloudEssentialcontactsV1Contact();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.EssentialcontactsApi(mock).projects.contacts;
+      final arg_request = buildGoogleCloudEssentialcontactsV1Contact();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudEssentialcontactsV1Contact.fromJson(
+        final obj = api.GoogleCloudEssentialcontactsV1Contact.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudEssentialcontactsV1Contact(
-            obj as api.GoogleCloudEssentialcontactsV1Contact);
+        checkGoogleCloudEssentialcontactsV1Contact(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1576,18 +1560,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudEssentialcontactsV1Contact());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -1598,44 +1582,43 @@ void main() {
     });
 
     unittest.test('method--sendTestMessage', () async {
-      var mock = HttpServerMock();
-      var res = api.EssentialcontactsApi(mock).projects.contacts;
-      var arg_request =
+      final mock = HttpServerMock();
+      final res = api.EssentialcontactsApi(mock).projects.contacts;
+      final arg_request =
           buildGoogleCloudEssentialcontactsV1SendTestMessageRequest();
-      var arg_resource = 'foo';
-      var arg_$fields = 'foo';
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.GoogleCloudEssentialcontactsV1SendTestMessageRequest.fromJson(
                 json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudEssentialcontactsV1SendTestMessageRequest(
-            obj as api.GoogleCloudEssentialcontactsV1SendTestMessageRequest);
+        checkGoogleCloudEssentialcontactsV1SendTestMessageRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1643,14 +1626,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleProtobufEmpty());
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.sendTestMessage(arg_request, arg_resource,

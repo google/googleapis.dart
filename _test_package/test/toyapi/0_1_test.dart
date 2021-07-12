@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -28,7 +27,7 @@ import 'package:test_package/toyapi/0_1.dart' as api;
 import '../test_shared.dart';
 
 core.List<core.String> buildUnnamed0() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -47,7 +46,7 @@ void checkUnnamed0(core.List<core.String> o) {
 }
 
 api.ListOfListOfString buildListOfListOfString() {
-  var o = api.ListOfListOfString();
+  final o = api.ListOfListOfString();
   o.add(buildUnnamed0());
   o.add(buildUnnamed0());
   return o;
@@ -60,7 +59,7 @@ void checkListOfListOfString(api.ListOfListOfString o) {
 }
 
 core.List<api.ToyRequest> buildUnnamed1() {
-  var o = <api.ToyRequest>[];
+  final o = <api.ToyRequest>[];
   o.add(buildToyRequest());
   o.add(buildToyRequest());
   return o;
@@ -68,12 +67,12 @@ core.List<api.ToyRequest> buildUnnamed1() {
 
 void checkUnnamed1(core.List<api.ToyRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkToyRequest(o[0] as api.ToyRequest);
-  checkToyRequest(o[1] as api.ToyRequest);
+  checkToyRequest(o[0]);
+  checkToyRequest(o[1]);
 }
 
 api.ListOfListOfToyRequest buildListOfListOfToyRequest() {
-  var o = api.ListOfListOfToyRequest();
+  final o = api.ListOfListOfToyRequest();
   o.add(buildUnnamed1());
   o.add(buildUnnamed1());
   return o;
@@ -86,7 +85,7 @@ void checkListOfListOfToyRequest(api.ListOfListOfToyRequest o) {
 }
 
 core.List<core.int> buildUnnamed2() {
-  var o = <core.int>[];
+  final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
@@ -105,7 +104,7 @@ void checkUnnamed2(core.List<core.int> o) {
 }
 
 api.ListOfListOfint buildListOfListOfint() {
-  var o = api.ListOfListOfint();
+  final o = api.ListOfListOfint();
   o.add(buildUnnamed2());
   o.add(buildUnnamed2());
   return o;
@@ -118,7 +117,7 @@ void checkListOfListOfint(api.ListOfListOfint o) {
 }
 
 core.List<core.String> buildUnnamed3() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -137,7 +136,7 @@ void checkUnnamed3(core.List<core.String> o) {
 }
 
 core.Map<core.String, core.List<core.String>> buildUnnamed4() {
-  var o = <core.String, core.List<core.String>>{};
+  final o = <core.String, core.List<core.String>>{};
   o['x'] = buildUnnamed3();
   o['y'] = buildUnnamed3();
   return o;
@@ -150,7 +149,7 @@ void checkUnnamed4(core.Map<core.String, core.List<core.String>> o) {
 }
 
 api.ListOfMapOfListOfString buildListOfMapOfListOfString() {
-  var o = api.ListOfMapOfListOfString();
+  final o = api.ListOfMapOfListOfString();
   o.add(buildUnnamed4());
   o.add(buildUnnamed4());
   return o;
@@ -163,7 +162,7 @@ void checkListOfMapOfListOfString(api.ListOfMapOfListOfString o) {
 }
 
 core.List<core.int> buildUnnamed5() {
-  var o = <core.int>[];
+  final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
@@ -182,7 +181,7 @@ void checkUnnamed5(core.List<core.int> o) {
 }
 
 core.Map<core.String, core.List<core.int>> buildUnnamed6() {
-  var o = <core.String, core.List<core.int>>{};
+  final o = <core.String, core.List<core.int>>{};
   o['x'] = buildUnnamed5();
   o['y'] = buildUnnamed5();
   return o;
@@ -195,7 +194,7 @@ void checkUnnamed6(core.Map<core.String, core.List<core.int>> o) {
 }
 
 api.ListOfMapOfListOfint buildListOfMapOfListOfint() {
-  var o = api.ListOfMapOfListOfint();
+  final o = api.ListOfMapOfListOfint();
   o.add(buildUnnamed6());
   o.add(buildUnnamed6());
   return o;
@@ -208,7 +207,7 @@ void checkListOfMapOfListOfint(api.ListOfMapOfListOfint o) {
 }
 
 api.ListOfString buildListOfString() {
-  var o = api.ListOfString();
+  final o = api.ListOfString();
   o.add('foo');
   o.add('foo');
   return o;
@@ -227,7 +226,7 @@ void checkListOfString(api.ListOfString o) {
 }
 
 api.ListOfToyRequest buildListOfToyRequest() {
-  var o = api.ListOfToyRequest();
+  final o = api.ListOfToyRequest();
   o.add(buildToyRequest());
   o.add(buildToyRequest());
   return o;
@@ -235,12 +234,12 @@ api.ListOfToyRequest buildListOfToyRequest() {
 
 void checkListOfToyRequest(api.ListOfToyRequest o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkToyRequest(o[0] as api.ToyRequest);
-  checkToyRequest(o[1] as api.ToyRequest);
+  checkToyRequest(o[0]);
+  checkToyRequest(o[1]);
 }
 
 core.Map<core.String, core.bool> buildUnnamed7() {
-  var o = <core.String, core.bool>{};
+  final o = <core.String, core.bool>{};
   o['x'] = true;
   o['y'] = true;
   return o;
@@ -253,7 +252,7 @@ void checkUnnamed7(core.Map<core.String, core.bool> o) {
 }
 
 core.List<core.Map<core.String, core.bool>> buildUnnamed8() {
-  var o = <core.Map<core.String, core.bool>>[];
+  final o = <core.Map<core.String, core.bool>>[];
   o.add(buildUnnamed7());
   o.add(buildUnnamed7());
   return o;
@@ -266,20 +265,20 @@ void checkUnnamed8(core.List<core.Map<core.String, core.bool>> o) {
 }
 
 api.MapOfListOfMapOfbool buildMapOfListOfMapOfbool() {
-  var o = api.MapOfListOfMapOfbool();
-  o["a"] = buildUnnamed8();
-  o["b"] = buildUnnamed8();
+  final o = api.MapOfListOfMapOfbool();
+  o['a'] = buildUnnamed8();
+  o['b'] = buildUnnamed8();
   return o;
 }
 
 void checkMapOfListOfMapOfbool(api.MapOfListOfMapOfbool o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed8(o["a"]!);
-  checkUnnamed8(o["b"]!);
+  checkUnnamed8(o['a']!);
+  checkUnnamed8(o['b']!);
 }
 
 core.Map<core.String, core.int> buildUnnamed9() {
-  var o = <core.String, core.int>{};
+  final o = <core.String, core.int>{};
   o['x'] = 42;
   o['y'] = 42;
   return o;
@@ -298,7 +297,7 @@ void checkUnnamed9(core.Map<core.String, core.int> o) {
 }
 
 core.List<core.Map<core.String, core.int>> buildUnnamed10() {
-  var o = <core.Map<core.String, core.int>>[];
+  final o = <core.Map<core.String, core.int>>[];
   o.add(buildUnnamed9());
   o.add(buildUnnamed9());
   return o;
@@ -311,20 +310,20 @@ void checkUnnamed10(core.List<core.Map<core.String, core.int>> o) {
 }
 
 api.MapOfListOfMapOfint buildMapOfListOfMapOfint() {
-  var o = api.MapOfListOfMapOfint();
-  o["a"] = buildUnnamed10();
-  o["b"] = buildUnnamed10();
+  final o = api.MapOfListOfMapOfint();
+  o['a'] = buildUnnamed10();
+  o['b'] = buildUnnamed10();
   return o;
 }
 
 void checkMapOfListOfMapOfint(api.MapOfListOfMapOfint o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed10(o["a"]!);
-  checkUnnamed10(o["b"]!);
+  checkUnnamed10(o['a']!);
+  checkUnnamed10(o['b']!);
 }
 
 core.Map<core.String, core.bool> buildUnnamed11() {
-  var o = <core.String, core.bool>{};
+  final o = <core.String, core.bool>{};
   o['x'] = true;
   o['y'] = true;
   return o;
@@ -337,20 +336,20 @@ void checkUnnamed11(core.Map<core.String, core.bool> o) {
 }
 
 api.MapOfMapOfbool buildMapOfMapOfbool() {
-  var o = api.MapOfMapOfbool();
-  o["a"] = buildUnnamed11();
-  o["b"] = buildUnnamed11();
+  final o = api.MapOfMapOfbool();
+  o['a'] = buildUnnamed11();
+  o['b'] = buildUnnamed11();
   return o;
 }
 
 void checkMapOfMapOfbool(api.MapOfMapOfbool o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed11(o["a"]!);
-  checkUnnamed11(o["b"]!);
+  checkUnnamed11(o['a']!);
+  checkUnnamed11(o['b']!);
 }
 
 core.Map<core.String, core.int> buildUnnamed12() {
-  var o = <core.String, core.int>{};
+  final o = <core.String, core.int>{};
   o['x'] = 42;
   o['y'] = 42;
   return o;
@@ -369,53 +368,53 @@ void checkUnnamed12(core.Map<core.String, core.int> o) {
 }
 
 api.MapOfMapOfint buildMapOfMapOfint() {
-  var o = api.MapOfMapOfint();
-  o["a"] = buildUnnamed12();
-  o["b"] = buildUnnamed12();
+  final o = api.MapOfMapOfint();
+  o['a'] = buildUnnamed12();
+  o['b'] = buildUnnamed12();
   return o;
 }
 
 void checkMapOfMapOfint(api.MapOfMapOfint o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed12(o["a"]!);
-  checkUnnamed12(o["b"]!);
+  checkUnnamed12(o['a']!);
+  checkUnnamed12(o['b']!);
 }
 
 api.MapOfToyResponse buildMapOfToyResponse() {
-  var o = api.MapOfToyResponse();
-  o["a"] = buildToyResponse();
-  o["b"] = buildToyResponse();
+  final o = api.MapOfToyResponse();
+  o['a'] = buildToyResponse();
+  o['b'] = buildToyResponse();
   return o;
 }
 
 void checkMapOfToyResponse(api.MapOfToyResponse o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkToyResponse(o["a"]! as api.ToyResponse);
-  checkToyResponse(o["b"]! as api.ToyResponse);
+  checkToyResponse(o['a']!);
+  checkToyResponse(o['b']!);
 }
 
 api.MapOfint buildMapOfint() {
-  var o = api.MapOfint();
-  o["a"] = 42;
-  o["b"] = 42;
+  final o = api.MapOfint();
+  o['a'] = 42;
+  o['b'] = 42;
   return o;
 }
 
 void checkMapOfint(api.MapOfint o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
-    o["a"]!,
+    o['a']!,
     unittest.equals(42),
   );
   unittest.expect(
-    o["b"]!,
+    o['b']!,
     unittest.equals(42),
   );
 }
 
 core.int buildCounterNestedResponse = 0;
 api.NestedResponse buildNestedResponse() {
-  var o = api.NestedResponse();
+  final o = api.NestedResponse();
   buildCounterNestedResponse++;
   if (buildCounterNestedResponse < 3) {
     o.nestedResult = 'foo';
@@ -437,7 +436,7 @@ void checkNestedResponse(api.NestedResponse o) {
 
 core.int buildCounterToyAgeRequest = 0;
 api.ToyAgeRequest buildToyAgeRequest() {
-  var o = api.ToyAgeRequest();
+  final o = api.ToyAgeRequest();
   buildCounterToyAgeRequest++;
   if (buildCounterToyAgeRequest < 3) {
     o.age = 42;
@@ -458,7 +457,7 @@ void checkToyAgeRequest(api.ToyAgeRequest o) {
 }
 
 core.Map<core.String, api.NestedResponse> buildUnnamed13() {
-  var o = <core.String, api.NestedResponse>{};
+  final o = <core.String, api.NestedResponse>{};
   o['x'] = buildNestedResponse();
   o['y'] = buildNestedResponse();
   return o;
@@ -466,12 +465,12 @@ core.Map<core.String, api.NestedResponse> buildUnnamed13() {
 
 void checkUnnamed13(core.Map<core.String, api.NestedResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNestedResponse(o['x']! as api.NestedResponse);
-  checkNestedResponse(o['y']! as api.NestedResponse);
+  checkNestedResponse(o['x']!);
+  checkNestedResponse(o['y']!);
 }
 
 core.Map<core.String, core.String?> buildUnnamed14() {
-  var o = <core.String, core.String?>{};
+  final o = <core.String, core.String?>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
@@ -491,7 +490,7 @@ void checkUnnamed14(core.Map<core.String, core.String?> o) {
 
 core.int buildCounterToyMapResponse = 0;
 api.ToyMapResponse buildToyMapResponse() {
-  var o = api.ToyMapResponse();
+  final o = api.ToyMapResponse();
   buildCounterToyMapResponse++;
   if (buildCounterToyMapResponse < 3) {
     o.mapResult = buildUnnamed13();
@@ -522,7 +521,7 @@ void checkToyMapResponse(api.ToyMapResponse o) {
 
 core.int buildCounterToyRequest = 0;
 api.ToyRequest buildToyRequest() {
-  var o = api.ToyRequest();
+  final o = api.ToyRequest();
   buildCounterToyRequest++;
   if (buildCounterToyRequest < 3) {
     o.age = 42;
@@ -549,7 +548,7 @@ void checkToyRequest(api.ToyRequest o) {
 
 core.int buildCounterToyResourceResponse = 0;
 api.ToyResourceResponse buildToyResourceResponse() {
-  var o = api.ToyResourceResponse();
+  final o = api.ToyResourceResponse();
   buildCounterToyResourceResponse++;
   if (buildCounterToyResourceResponse < 3) {
     o.result = 'foo';
@@ -571,7 +570,7 @@ void checkToyResourceResponse(api.ToyResourceResponse o) {
 
 core.int buildCounterToyResponse = 0;
 api.ToyResponse buildToyResponse() {
-  var o = api.ToyResponse();
+  final o = api.ToyResponse();
   buildCounterToyResponse++;
   if (buildCounterToyResponse < 3) {
     o.result = 'foo';
@@ -594,222 +593,222 @@ void checkToyResponse(api.ToyResponse o) {
 void main() {
   unittest.group('obj-schema-ListOfListOfString', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListOfListOfString();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListOfListOfString.fromJson(oJson as core.List);
-      checkListOfListOfString(od as api.ListOfListOfString);
+      final o = buildListOfListOfString();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListOfListOfString.fromJson(oJson as core.List);
+      checkListOfListOfString(od);
     });
   });
 
   unittest.group('obj-schema-ListOfListOfToyRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListOfListOfToyRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListOfListOfToyRequest.fromJson(oJson as core.List);
-      checkListOfListOfToyRequest(od as api.ListOfListOfToyRequest);
+      final o = buildListOfListOfToyRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListOfListOfToyRequest.fromJson(oJson as core.List);
+      checkListOfListOfToyRequest(od);
     });
   });
 
   unittest.group('obj-schema-ListOfListOfint', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListOfListOfint();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListOfListOfint.fromJson(oJson as core.List);
-      checkListOfListOfint(od as api.ListOfListOfint);
+      final o = buildListOfListOfint();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListOfListOfint.fromJson(oJson as core.List);
+      checkListOfListOfint(od);
     });
   });
 
   unittest.group('obj-schema-ListOfMapOfListOfString', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListOfMapOfListOfString();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListOfMapOfListOfString.fromJson(oJson as core.List);
-      checkListOfMapOfListOfString(od as api.ListOfMapOfListOfString);
+      final o = buildListOfMapOfListOfString();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListOfMapOfListOfString.fromJson(oJson as core.List);
+      checkListOfMapOfListOfString(od);
     });
   });
 
   unittest.group('obj-schema-ListOfMapOfListOfint', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListOfMapOfListOfint();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListOfMapOfListOfint.fromJson(oJson as core.List);
-      checkListOfMapOfListOfint(od as api.ListOfMapOfListOfint);
+      final o = buildListOfMapOfListOfint();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListOfMapOfListOfint.fromJson(oJson as core.List);
+      checkListOfMapOfListOfint(od);
     });
   });
 
   unittest.group('obj-schema-ListOfString', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListOfString();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListOfString.fromJson(oJson as core.List);
-      checkListOfString(od as api.ListOfString);
+      final o = buildListOfString();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListOfString.fromJson(oJson as core.List);
+      checkListOfString(od);
     });
   });
 
   unittest.group('obj-schema-ListOfToyRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListOfToyRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListOfToyRequest.fromJson(oJson as core.List);
-      checkListOfToyRequest(od as api.ListOfToyRequest);
+      final o = buildListOfToyRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListOfToyRequest.fromJson(oJson as core.List);
+      checkListOfToyRequest(od);
     });
   });
 
   unittest.group('obj-schema-MapOfListOfMapOfbool', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildMapOfListOfMapOfbool();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.MapOfListOfMapOfbool.fromJson(
+      final o = buildMapOfListOfMapOfbool();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MapOfListOfMapOfbool.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkMapOfListOfMapOfbool(od as api.MapOfListOfMapOfbool);
+      checkMapOfListOfMapOfbool(od);
     });
   });
 
   unittest.group('obj-schema-MapOfListOfMapOfint', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildMapOfListOfMapOfint();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.MapOfListOfMapOfint.fromJson(
+      final o = buildMapOfListOfMapOfint();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MapOfListOfMapOfint.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkMapOfListOfMapOfint(od as api.MapOfListOfMapOfint);
+      checkMapOfListOfMapOfint(od);
     });
   });
 
   unittest.group('obj-schema-MapOfMapOfbool', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildMapOfMapOfbool();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.MapOfMapOfbool.fromJson(
+      final o = buildMapOfMapOfbool();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MapOfMapOfbool.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkMapOfMapOfbool(od as api.MapOfMapOfbool);
+      checkMapOfMapOfbool(od);
     });
   });
 
   unittest.group('obj-schema-MapOfMapOfint', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildMapOfMapOfint();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.MapOfMapOfint.fromJson(
+      final o = buildMapOfMapOfint();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MapOfMapOfint.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkMapOfMapOfint(od as api.MapOfMapOfint);
+      checkMapOfMapOfint(od);
     });
   });
 
   unittest.group('obj-schema-MapOfToyResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildMapOfToyResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.MapOfToyResponse.fromJson(
+      final o = buildMapOfToyResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MapOfToyResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkMapOfToyResponse(od as api.MapOfToyResponse);
+      checkMapOfToyResponse(od);
     });
   });
 
   unittest.group('obj-schema-MapOfint', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildMapOfint();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildMapOfint();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.MapOfint.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkMapOfint(od as api.MapOfint);
+      checkMapOfint(od);
     });
   });
 
   unittest.group('obj-schema-NestedResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildNestedResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.NestedResponse.fromJson(
+      final o = buildNestedResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NestedResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkNestedResponse(od as api.NestedResponse);
+      checkNestedResponse(od);
     });
   });
 
   unittest.group('obj-schema-ToyAgeRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildToyAgeRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ToyAgeRequest.fromJson(
+      final o = buildToyAgeRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ToyAgeRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkToyAgeRequest(od as api.ToyAgeRequest);
+      checkToyAgeRequest(od);
     });
   });
 
   unittest.group('obj-schema-ToyMapResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildToyMapResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ToyMapResponse.fromJson(
+      final o = buildToyMapResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ToyMapResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkToyMapResponse(od as api.ToyMapResponse);
+      checkToyMapResponse(od);
     });
   });
 
   unittest.group('obj-schema-ToyRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildToyRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildToyRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.ToyRequest.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkToyRequest(od as api.ToyRequest);
+      checkToyRequest(od);
     });
   });
 
   unittest.group('obj-schema-ToyResourceResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildToyResourceResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ToyResourceResponse.fromJson(
+      final o = buildToyResourceResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ToyResourceResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkToyResourceResponse(od as api.ToyResourceResponse);
+      checkToyResourceResponse(od);
     });
   });
 
   unittest.group('obj-schema-ToyResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildToyResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ToyResponse.fromJson(
+      final o = buildToyResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ToyResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkToyResponse(od as api.ToyResponse);
+      checkToyResponse(od);
     });
   });
 
   unittest.group('resource-ToyApi', () {
     unittest.test('method--failing', () async {
-      var mock = HttpServerMock();
-      var res = api.ToyApi(mock);
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ToyApi(mock);
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("api/toyApi/0.1/"),
+          unittest.equals('api/toyApi/0.1/'),
         );
         pathOffset += 15;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 7),
-          unittest.equals("failing"),
+          unittest.equals('failing'),
         );
         pathOffset += 7;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -817,53 +816,53 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.failing($fields: arg_$fields);
     });
 
     unittest.test('method--hello', () async {
-      var mock = HttpServerMock();
-      var res = api.ToyApi(mock);
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ToyApi(mock);
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("api/toyApi/0.1/"),
+          unittest.equals('api/toyApi/0.1/'),
         );
         pathOffset += 15;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 5),
-          unittest.equals("hello"),
+          unittest.equals('hello'),
         );
         pathOffset += 5;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -871,14 +870,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildToyResponse());
+        final resp = convert.json.encode(buildToyResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.hello($fields: arg_$fields);
@@ -886,43 +885,43 @@ void main() {
     });
 
     unittest.test('method--helloListOfClass', () async {
-      var mock = HttpServerMock();
-      var res = api.ToyApi(mock);
-      var arg_request = buildListOfToyRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ToyApi(mock);
+      final arg_request = buildListOfToyRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ListOfToyRequest.fromJson(json as core.List);
-        checkListOfToyRequest(obj as api.ListOfToyRequest);
+        final obj = api.ListOfToyRequest.fromJson(json as core.List);
+        checkListOfToyRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("api/toyApi/0.1/"),
+          unittest.equals('api/toyApi/0.1/'),
         );
         pathOffset += 15;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 16),
-          unittest.equals("helloListOfClass"),
+          unittest.equals('helloListOfClass'),
         );
         pathOffset += 16;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -930,14 +929,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildMapOfToyResponse());
+        final resp = convert.json.encode(buildMapOfToyResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -946,43 +945,43 @@ void main() {
     });
 
     unittest.test('method--helloListOfListOfClass', () async {
-      var mock = HttpServerMock();
-      var res = api.ToyApi(mock);
-      var arg_request = buildListOfListOfToyRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ToyApi(mock);
+      final arg_request = buildListOfListOfToyRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ListOfListOfToyRequest.fromJson(json as core.List);
-        checkListOfListOfToyRequest(obj as api.ListOfListOfToyRequest);
+        final obj = api.ListOfListOfToyRequest.fromJson(json as core.List);
+        checkListOfListOfToyRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("api/toyApi/0.1/"),
+          unittest.equals('api/toyApi/0.1/'),
         );
         pathOffset += 15;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 22),
-          unittest.equals("helloListOfListOfClass"),
+          unittest.equals('helloListOfListOfClass'),
         );
         pathOffset += 22;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -990,14 +989,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildMapOfToyResponse());
+        final resp = convert.json.encode(buildMapOfToyResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -1006,44 +1005,44 @@ void main() {
     });
 
     unittest.test('method--helloMap', () async {
-      var mock = HttpServerMock();
-      var res = api.ToyApi(mock);
-      var arg_request = buildMapOfint();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ToyApi(mock);
+      final arg_request = buildMapOfint();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.MapOfint.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkMapOfint(obj as api.MapOfint);
+        checkMapOfint(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("api/toyApi/0.1/"),
+          unittest.equals('api/toyApi/0.1/'),
         );
         pathOffset += 15;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("helloMap"),
+          unittest.equals('helloMap'),
         );
         pathOffset += 8;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1051,14 +1050,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildMapOfint());
+        final resp = convert.json.encode(buildMapOfint());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.helloMap(arg_request, $fields: arg_$fields);
@@ -1066,29 +1065,29 @@ void main() {
     });
 
     unittest.test('method--helloNameAge', () async {
-      var mock = HttpServerMock();
-      var res = api.ToyApi(mock);
-      var arg_name = 'foo';
-      var arg_age = 42;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ToyApi(mock);
+      final arg_name = 'foo';
+      final arg_age = 42;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("api/toyApi/0.1/"),
+          unittest.equals('api/toyApi/0.1/'),
         );
         pathOffset += 15;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 6),
-          unittest.equals("hello/"),
+          unittest.equals('hello/'),
         );
         pathOffset += 6;
         index = path.indexOf('/age/', pathOffset);
@@ -1102,7 +1101,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 5),
-          unittest.equals("/age/"),
+          unittest.equals('/age/'),
         );
         pathOffset += 5;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -1112,15 +1111,15 @@ void main() {
           unittest.equals('$arg_age'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1128,14 +1127,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildToyResponse());
+        final resp = convert.json.encode(buildToyResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -1144,33 +1143,33 @@ void main() {
     });
 
     unittest.test('method--helloNamePostAge', () async {
-      var mock = HttpServerMock();
-      var res = api.ToyApi(mock);
-      var arg_request = buildToyAgeRequest();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ToyApi(mock);
+      final arg_request = buildToyAgeRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ToyAgeRequest.fromJson(
+        final obj = api.ToyAgeRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkToyAgeRequest(obj as api.ToyAgeRequest);
+        checkToyAgeRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("api/toyApi/0.1/"),
+          unittest.equals('api/toyApi/0.1/'),
         );
         pathOffset += 15;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 10),
-          unittest.equals("helloPost/"),
+          unittest.equals('helloPost/'),
         );
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -1180,15 +1179,15 @@ void main() {
           unittest.equals('$arg_name'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1196,14 +1195,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildToyResponse());
+        final resp = convert.json.encode(buildToyResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.helloNamePostAge(arg_request, arg_name,
@@ -1212,30 +1211,30 @@ void main() {
     });
 
     unittest.test('method--helloNameQueryAgeFoo', () async {
-      var mock = HttpServerMock();
-      var res = api.ToyApi(mock);
-      var arg_foo = 'foo';
-      var arg_name = 'foo';
-      var arg_age = 42;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ToyApi(mock);
+      final arg_foo = 'foo';
+      final arg_name = 'foo';
+      final arg_age = 42;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("api/toyApi/0.1/"),
+          unittest.equals('api/toyApi/0.1/'),
         );
         pathOffset += 15;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 11),
-          unittest.equals("helloQuery/"),
+          unittest.equals('helloQuery/'),
         );
         pathOffset += 11;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -1245,15 +1244,15 @@ void main() {
           unittest.equals('$arg_name'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1261,22 +1260,22 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["foo"]!.first,
+          queryMap['foo']!.first,
           unittest.equals(arg_foo),
         );
         unittest.expect(
-          core.int.parse(queryMap["age"]!.first),
+          core.int.parse(queryMap['age']!.first),
           unittest.equals(arg_age),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildToyResponse());
+        final resp = convert.json.encode(buildToyResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.helloNameQueryAgeFoo(arg_foo, arg_name,
@@ -1285,43 +1284,43 @@ void main() {
     });
 
     unittest.test('method--helloNestedListList', () async {
-      var mock = HttpServerMock();
-      var res = api.ToyApi(mock);
-      var arg_request = buildListOfListOfint();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ToyApi(mock);
+      final arg_request = buildListOfListOfint();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ListOfListOfint.fromJson(json as core.List);
-        checkListOfListOfint(obj as api.ListOfListOfint);
+        final obj = api.ListOfListOfint.fromJson(json as core.List);
+        checkListOfListOfint(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("api/toyApi/0.1/"),
+          unittest.equals('api/toyApi/0.1/'),
         );
         pathOffset += 15;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 19),
-          unittest.equals("helloNestedListList"),
+          unittest.equals('helloNestedListList'),
         );
         pathOffset += 19;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1329,14 +1328,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListOfListOfString());
+        final resp = convert.json.encode(buildListOfListOfString());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -1345,43 +1344,43 @@ void main() {
     });
 
     unittest.test('method--helloNestedListMapList', () async {
-      var mock = HttpServerMock();
-      var res = api.ToyApi(mock);
-      var arg_request = buildListOfMapOfListOfint();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ToyApi(mock);
+      final arg_request = buildListOfMapOfListOfint();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ListOfMapOfListOfint.fromJson(json as core.List);
-        checkListOfMapOfListOfint(obj as api.ListOfMapOfListOfint);
+        final obj = api.ListOfMapOfListOfint.fromJson(json as core.List);
+        checkListOfMapOfListOfint(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("api/toyApi/0.1/"),
+          unittest.equals('api/toyApi/0.1/'),
         );
         pathOffset += 15;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 22),
-          unittest.equals("helloNestedListMapList"),
+          unittest.equals('helloNestedListMapList'),
         );
         pathOffset += 22;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1389,14 +1388,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListOfMapOfListOfString());
+        final resp = convert.json.encode(buildListOfMapOfListOfString());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -1405,39 +1404,39 @@ void main() {
     });
 
     unittest.test('method--helloNestedMap', () async {
-      var mock = HttpServerMock();
-      var res = api.ToyApi(mock);
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ToyApi(mock);
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("api/toyApi/0.1/"),
+          unittest.equals('api/toyApi/0.1/'),
         );
         pathOffset += 15;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 14),
-          unittest.equals("helloNestedMap"),
+          unittest.equals('helloNestedMap'),
         );
         pathOffset += 14;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1445,14 +1444,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildToyMapResponse());
+        final resp = convert.json.encode(buildToyMapResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.helloNestedMap($fields: arg_$fields);
@@ -1460,44 +1459,44 @@ void main() {
     });
 
     unittest.test('method--helloNestedMapListMap', () async {
-      var mock = HttpServerMock();
-      var res = api.ToyApi(mock);
-      var arg_request = buildMapOfListOfMapOfint();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ToyApi(mock);
+      final arg_request = buildMapOfListOfMapOfint();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.MapOfListOfMapOfint.fromJson(
+        final obj = api.MapOfListOfMapOfint.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkMapOfListOfMapOfint(obj as api.MapOfListOfMapOfint);
+        checkMapOfListOfMapOfint(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("api/toyApi/0.1/"),
+          unittest.equals('api/toyApi/0.1/'),
         );
         pathOffset += 15;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 21),
-          unittest.equals("helloNestedMapListMap"),
+          unittest.equals('helloNestedMapListMap'),
         );
         pathOffset += 21;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1505,14 +1504,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildMapOfListOfMapOfbool());
+        final resp = convert.json.encode(buildMapOfListOfMapOfbool());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -1521,44 +1520,44 @@ void main() {
     });
 
     unittest.test('method--helloNestedMapMap', () async {
-      var mock = HttpServerMock();
-      var res = api.ToyApi(mock);
-      var arg_request = buildMapOfMapOfint();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ToyApi(mock);
+      final arg_request = buildMapOfMapOfint();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.MapOfMapOfint.fromJson(
+        final obj = api.MapOfMapOfint.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkMapOfMapOfint(obj as api.MapOfMapOfint);
+        checkMapOfMapOfint(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("api/toyApi/0.1/"),
+          unittest.equals('api/toyApi/0.1/'),
         );
         pathOffset += 15;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 17),
-          unittest.equals("helloNestedMapMap"),
+          unittest.equals('helloNestedMapMap'),
         );
         pathOffset += 17;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1566,14 +1565,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildMapOfMapOfbool());
+        final resp = convert.json.encode(buildMapOfMapOfbool());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -1582,44 +1581,44 @@ void main() {
     });
 
     unittest.test('method--helloPost', () async {
-      var mock = HttpServerMock();
-      var res = api.ToyApi(mock);
-      var arg_request = buildToyRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ToyApi(mock);
+      final arg_request = buildToyRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ToyRequest.fromJson(
+        final obj = api.ToyRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkToyRequest(obj as api.ToyRequest);
+        checkToyRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("api/toyApi/0.1/"),
+          unittest.equals('api/toyApi/0.1/'),
         );
         pathOffset += 15;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("helloPost"),
+          unittest.equals('helloPost'),
         );
         pathOffset += 9;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1627,14 +1626,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildToyResponse());
+        final resp = convert.json.encode(buildToyResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.helloPost(arg_request, $fields: arg_$fields);
@@ -1642,39 +1641,39 @@ void main() {
     });
 
     unittest.test('method--helloReturnNull', () async {
-      var mock = HttpServerMock();
-      var res = api.ToyApi(mock);
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ToyApi(mock);
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("api/toyApi/0.1/"),
+          unittest.equals('api/toyApi/0.1/'),
         );
         pathOffset += 15;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("helloReturnNull"),
+          unittest.equals('helloReturnNull'),
         );
         pathOffset += 15;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1682,14 +1681,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildToyResponse());
+        final resp = convert.json.encode(buildToyResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.helloReturnNull($fields: arg_$fields);
@@ -1697,39 +1696,39 @@ void main() {
     });
 
     unittest.test('method--helloVoid', () async {
-      var mock = HttpServerMock();
-      var res = api.ToyApi(mock);
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ToyApi(mock);
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("api/toyApi/0.1/"),
+          unittest.equals('api/toyApi/0.1/'),
         );
         pathOffset += 15;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("helloVoid"),
+          unittest.equals('helloVoid'),
         );
         pathOffset += 9;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1737,14 +1736,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildToyResponse());
+        final resp = convert.json.encode(buildToyResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.helloVoid($fields: arg_$fields);
@@ -1752,39 +1751,39 @@ void main() {
     });
 
     unittest.test('method--noop', () async {
-      var mock = HttpServerMock();
-      var res = api.ToyApi(mock);
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ToyApi(mock);
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("api/toyApi/0.1/"),
+          unittest.equals('api/toyApi/0.1/'),
         );
         pathOffset += 15;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 4),
-          unittest.equals("noop"),
+          unittest.equals('noop'),
         );
         pathOffset += 4;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1792,57 +1791,57 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.noop($fields: arg_$fields);
     });
 
     unittest.test('method--reverseList', () async {
-      var mock = HttpServerMock();
-      var res = api.ToyApi(mock);
-      var arg_request = buildListOfString();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ToyApi(mock);
+      final arg_request = buildListOfString();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ListOfString.fromJson(json as core.List);
-        checkListOfString(obj as api.ListOfString);
+        final obj = api.ListOfString.fromJson(json as core.List);
+        checkListOfString(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("api/toyApi/0.1/"),
+          unittest.equals('api/toyApi/0.1/'),
         );
         pathOffset += 15;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 11),
-          unittest.equals("reverseList"),
+          unittest.equals('reverseList'),
         );
         pathOffset += 11;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1850,14 +1849,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListOfString());
+        final resp = convert.json.encode(buildListOfString());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.reverseList(arg_request, $fields: arg_$fields);
@@ -1870,41 +1869,41 @@ void main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = HttpServerMock();
-      var res = api.ToyApi(mock).compute;
-      var arg_resourceName = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ToyApi(mock).compute;
+      final arg_resourceName = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("api/toyApi/0.1/"),
+          unittest.equals('api/toyApi/0.1/'),
         );
         pathOffset += 15;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1/media/"),
+          unittest.equals('v1/media/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1912,14 +1911,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildToyResourceResponse());
+        final resp = convert.json.encode(buildToyResourceResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -1931,29 +1930,29 @@ void main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = HttpServerMock();
-      var res = api.ToyApi(mock).compute;
-      var arg_fileId = 'foo';
-      var arg_mimeType = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ToyApi(mock).compute;
+      final arg_fileId = 'foo';
+      final arg_mimeType = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("api/toyApi/0.1/"),
+          unittest.equals('api/toyApi/0.1/'),
         );
         pathOffset += 15;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 6),
-          unittest.equals("files/"),
+          unittest.equals('files/'),
         );
         pathOffset += 6;
         index = path.indexOf('/export', pathOffset);
@@ -1967,19 +1966,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 7),
-          unittest.equals("/export"),
+          unittest.equals('/export'),
         );
         pathOffset += 7;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1987,47 +1986,47 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["mimeType"]!.first,
+          queryMap['mimeType']!.first,
           unittest.equals(arg_mimeType),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.export(arg_fileId, arg_mimeType, $fields: arg_$fields);
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ToyApi(mock).compute;
-      var arg_resource = 'foo';
-      var arg_compute = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ToyApi(mock).compute;
+      final arg_resource = 'foo';
+      final arg_compute = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("api/toyApi/0.1/"),
+          unittest.equals('api/toyApi/0.1/'),
         );
         pathOffset += 15;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 12),
-          unittest.equals("toyresource/"),
+          unittest.equals('toyresource/'),
         );
         pathOffset += 12;
         index = path.indexOf('/compute/', pathOffset);
@@ -2041,7 +2040,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("/compute/"),
+          unittest.equals('/compute/'),
         );
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -2051,15 +2050,15 @@ void main() {
           unittest.equals('$arg_compute'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2067,14 +2066,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildToyResourceResponse());
+        final resp = convert.json.encode(buildToyResourceResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -2085,29 +2084,29 @@ void main() {
 
   unittest.group('resource-StorageResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ToyApi(mock).storage;
-      var arg_resource = 'foo';
-      var arg_storage = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ToyApi(mock).storage;
+      final arg_resource = 'foo';
+      final arg_storage = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("api/toyApi/0.1/"),
+          unittest.equals('api/toyApi/0.1/'),
         );
         pathOffset += 15;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 12),
-          unittest.equals("toyresource/"),
+          unittest.equals('toyresource/'),
         );
         pathOffset += 12;
         index = path.indexOf('/storage/', pathOffset);
@@ -2121,7 +2120,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("/storage/"),
+          unittest.equals('/storage/'),
         );
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -2131,15 +2130,15 @@ void main() {
           unittest.equals('$arg_storage'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2147,14 +2146,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildToyResourceResponse());
+        final resp = convert.json.encode(buildToyResourceResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =

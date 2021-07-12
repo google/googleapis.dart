@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -28,7 +27,7 @@ import 'package:test/test.dart' as unittest;
 import '../test_shared.dart';
 
 core.List<core.String> buildUnnamed8302() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -48,7 +47,7 @@ void checkUnnamed8302(core.List<core.String> o) {
 
 core.int buildCounterSasPortalAssignment = 0;
 api.SasPortalAssignment buildSasPortalAssignment() {
-  var o = api.SasPortalAssignment();
+  final o = api.SasPortalAssignment();
   buildCounterSasPortalAssignment++;
   if (buildCounterSasPortalAssignment < 3) {
     o.members = buildUnnamed8302();
@@ -72,7 +71,7 @@ void checkSasPortalAssignment(api.SasPortalAssignment o) {
 
 core.int buildCounterSasPortalChannelWithScore = 0;
 api.SasPortalChannelWithScore buildSasPortalChannelWithScore() {
-  var o = api.SasPortalChannelWithScore();
+  final o = api.SasPortalChannelWithScore();
   buildCounterSasPortalChannelWithScore++;
   if (buildCounterSasPortalChannelWithScore < 3) {
     o.frequencyRange = buildSasPortalFrequencyRange();
@@ -85,8 +84,7 @@ api.SasPortalChannelWithScore buildSasPortalChannelWithScore() {
 void checkSasPortalChannelWithScore(api.SasPortalChannelWithScore o) {
   buildCounterSasPortalChannelWithScore++;
   if (buildCounterSasPortalChannelWithScore < 3) {
-    checkSasPortalFrequencyRange(
-        o.frequencyRange! as api.SasPortalFrequencyRange);
+    checkSasPortalFrequencyRange(o.frequencyRange!);
     unittest.expect(
       o.score!,
       unittest.equals(42.0),
@@ -98,7 +96,7 @@ void checkSasPortalChannelWithScore(api.SasPortalChannelWithScore o) {
 core.int buildCounterSasPortalCreateSignedDeviceRequest = 0;
 api.SasPortalCreateSignedDeviceRequest
     buildSasPortalCreateSignedDeviceRequest() {
-  var o = api.SasPortalCreateSignedDeviceRequest();
+  final o = api.SasPortalCreateSignedDeviceRequest();
   buildCounterSasPortalCreateSignedDeviceRequest++;
   if (buildCounterSasPortalCreateSignedDeviceRequest < 3) {
     o.encodedDevice = 'foo';
@@ -125,7 +123,7 @@ void checkSasPortalCreateSignedDeviceRequest(
 }
 
 core.List<core.String> buildUnnamed8303() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -145,7 +143,7 @@ void checkUnnamed8303(core.List<core.String> o) {
 
 core.int buildCounterSasPortalCustomer = 0;
 api.SasPortalCustomer buildSasPortalCustomer() {
-  var o = api.SasPortalCustomer();
+  final o = api.SasPortalCustomer();
   buildCounterSasPortalCustomer++;
   if (buildCounterSasPortalCustomer < 3) {
     o.displayName = 'foo';
@@ -173,7 +171,7 @@ void checkSasPortalCustomer(api.SasPortalCustomer o) {
 }
 
 core.List<core.String> buildUnnamed8304() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -192,7 +190,7 @@ void checkUnnamed8304(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed8305() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -211,7 +209,7 @@ void checkUnnamed8305(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed8306() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -231,7 +229,7 @@ void checkUnnamed8306(core.List<core.String> o) {
 
 core.int buildCounterSasPortalDeployment = 0;
 api.SasPortalDeployment buildSasPortalDeployment() {
-  var o = api.SasPortalDeployment();
+  final o = api.SasPortalDeployment();
   buildCounterSasPortalDeployment++;
   if (buildCounterSasPortalDeployment < 3) {
     o.allowedBillingModes = buildUnnamed8304();
@@ -268,7 +266,7 @@ void checkSasPortalDeployment(api.SasPortalDeployment o) {
 }
 
 core.List<api.SasPortalChannelWithScore> buildUnnamed8307() {
-  var o = <api.SasPortalChannelWithScore>[];
+  final o = <api.SasPortalChannelWithScore>[];
   o.add(buildSasPortalChannelWithScore());
   o.add(buildSasPortalChannelWithScore());
   return o;
@@ -276,12 +274,12 @@ core.List<api.SasPortalChannelWithScore> buildUnnamed8307() {
 
 void checkUnnamed8307(core.List<api.SasPortalChannelWithScore> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSasPortalChannelWithScore(o[0] as api.SasPortalChannelWithScore);
-  checkSasPortalChannelWithScore(o[1] as api.SasPortalChannelWithScore);
+  checkSasPortalChannelWithScore(o[0]);
+  checkSasPortalChannelWithScore(o[1]);
 }
 
 core.List<api.SasPortalFrequencyRange> buildUnnamed8308() {
-  var o = <api.SasPortalFrequencyRange>[];
+  final o = <api.SasPortalFrequencyRange>[];
   o.add(buildSasPortalFrequencyRange());
   o.add(buildSasPortalFrequencyRange());
   return o;
@@ -289,12 +287,12 @@ core.List<api.SasPortalFrequencyRange> buildUnnamed8308() {
 
 void checkUnnamed8308(core.List<api.SasPortalFrequencyRange> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSasPortalFrequencyRange(o[0] as api.SasPortalFrequencyRange);
-  checkSasPortalFrequencyRange(o[1] as api.SasPortalFrequencyRange);
+  checkSasPortalFrequencyRange(o[0]);
+  checkSasPortalFrequencyRange(o[1]);
 }
 
 core.List<api.SasPortalDeviceGrant> buildUnnamed8309() {
-  var o = <api.SasPortalDeviceGrant>[];
+  final o = <api.SasPortalDeviceGrant>[];
   o.add(buildSasPortalDeviceGrant());
   o.add(buildSasPortalDeviceGrant());
   return o;
@@ -302,13 +300,13 @@ core.List<api.SasPortalDeviceGrant> buildUnnamed8309() {
 
 void checkUnnamed8309(core.List<api.SasPortalDeviceGrant> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSasPortalDeviceGrant(o[0] as api.SasPortalDeviceGrant);
-  checkSasPortalDeviceGrant(o[1] as api.SasPortalDeviceGrant);
+  checkSasPortalDeviceGrant(o[0]);
+  checkSasPortalDeviceGrant(o[1]);
 }
 
 core.int buildCounterSasPortalDevice = 0;
 api.SasPortalDevice buildSasPortalDevice() {
-  var o = api.SasPortalDevice();
+  final o = api.SasPortalDevice();
   buildCounterSasPortalDevice++;
   if (buildCounterSasPortalDevice < 3) {
     o.activeConfig = buildSasPortalDeviceConfig();
@@ -330,10 +328,9 @@ api.SasPortalDevice buildSasPortalDevice() {
 void checkSasPortalDevice(api.SasPortalDevice o) {
   buildCounterSasPortalDevice++;
   if (buildCounterSasPortalDevice < 3) {
-    checkSasPortalDeviceConfig(o.activeConfig! as api.SasPortalDeviceConfig);
+    checkSasPortalDeviceConfig(o.activeConfig!);
     checkUnnamed8307(o.currentChannels!);
-    checkSasPortalDeviceMetadata(
-        o.deviceMetadata! as api.SasPortalDeviceMetadata);
+    checkSasPortalDeviceMetadata(o.deviceMetadata!);
     unittest.expect(
       o.displayName!,
       unittest.equals('foo'),
@@ -348,7 +345,7 @@ void checkSasPortalDevice(api.SasPortalDevice o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkSasPortalDeviceConfig(o.preloadedConfig! as api.SasPortalDeviceConfig);
+    checkSasPortalDeviceConfig(o.preloadedConfig!);
     unittest.expect(
       o.serialNumber!,
       unittest.equals('foo'),
@@ -363,7 +360,7 @@ void checkSasPortalDevice(api.SasPortalDevice o) {
 
 core.int buildCounterSasPortalDeviceAirInterface = 0;
 api.SasPortalDeviceAirInterface buildSasPortalDeviceAirInterface() {
-  var o = api.SasPortalDeviceAirInterface();
+  final o = api.SasPortalDeviceAirInterface();
   buildCounterSasPortalDeviceAirInterface++;
   if (buildCounterSasPortalDeviceAirInterface < 3) {
     o.radioTechnology = 'foo';
@@ -389,7 +386,7 @@ void checkSasPortalDeviceAirInterface(api.SasPortalDeviceAirInterface o) {
 }
 
 core.List<core.String> buildUnnamed8310() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -409,7 +406,7 @@ void checkUnnamed8310(core.List<core.String> o) {
 
 core.int buildCounterSasPortalDeviceConfig = 0;
 api.SasPortalDeviceConfig buildSasPortalDeviceConfig() {
-  var o = api.SasPortalDeviceConfig();
+  final o = api.SasPortalDeviceConfig();
   buildCounterSasPortalDeviceConfig++;
   if (buildCounterSasPortalDeviceConfig < 3) {
     o.airInterface = buildSasPortalDeviceAirInterface();
@@ -430,8 +427,7 @@ api.SasPortalDeviceConfig buildSasPortalDeviceConfig() {
 void checkSasPortalDeviceConfig(api.SasPortalDeviceConfig o) {
   buildCounterSasPortalDeviceConfig++;
   if (buildCounterSasPortalDeviceConfig < 3) {
-    checkSasPortalDeviceAirInterface(
-        o.airInterface! as api.SasPortalDeviceAirInterface);
+    checkSasPortalDeviceAirInterface(o.airInterface!);
     unittest.expect(
       o.callSign!,
       unittest.equals('foo'),
@@ -440,11 +436,10 @@ void checkSasPortalDeviceConfig(api.SasPortalDeviceConfig o) {
       o.category!,
       unittest.equals('foo'),
     );
-    checkSasPortalInstallationParams(
-        o.installationParams! as api.SasPortalInstallationParams);
+    checkSasPortalInstallationParams(o.installationParams!);
     unittest.expect(o.isSigned!, unittest.isTrue);
     checkUnnamed8310(o.measurementCapabilities!);
-    checkSasPortalDeviceModel(o.model! as api.SasPortalDeviceModel);
+    checkSasPortalDeviceModel(o.model!);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -462,7 +457,7 @@ void checkSasPortalDeviceConfig(api.SasPortalDeviceConfig o) {
 }
 
 core.List<api.SasPortalDpaMoveList> buildUnnamed8311() {
-  var o = <api.SasPortalDpaMoveList>[];
+  final o = <api.SasPortalDpaMoveList>[];
   o.add(buildSasPortalDpaMoveList());
   o.add(buildSasPortalDpaMoveList());
   return o;
@@ -470,12 +465,12 @@ core.List<api.SasPortalDpaMoveList> buildUnnamed8311() {
 
 void checkUnnamed8311(core.List<api.SasPortalDpaMoveList> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSasPortalDpaMoveList(o[0] as api.SasPortalDpaMoveList);
-  checkSasPortalDpaMoveList(o[1] as api.SasPortalDpaMoveList);
+  checkSasPortalDpaMoveList(o[0]);
+  checkSasPortalDpaMoveList(o[1]);
 }
 
 core.List<core.String> buildUnnamed8312() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -495,7 +490,7 @@ void checkUnnamed8312(core.List<core.String> o) {
 
 core.int buildCounterSasPortalDeviceGrant = 0;
 api.SasPortalDeviceGrant buildSasPortalDeviceGrant() {
-  var o = api.SasPortalDeviceGrant();
+  final o = api.SasPortalDeviceGrant();
   buildCounterSasPortalDeviceGrant++;
   if (buildCounterSasPortalDeviceGrant < 3) {
     o.channelType = 'foo';
@@ -522,8 +517,7 @@ void checkSasPortalDeviceGrant(api.SasPortalDeviceGrant o) {
       o.expireTime!,
       unittest.equals('foo'),
     );
-    checkSasPortalFrequencyRange(
-        o.frequencyRange! as api.SasPortalFrequencyRange);
+    checkSasPortalFrequencyRange(o.frequencyRange!);
     unittest.expect(
       o.grantId!,
       unittest.equals('foo'),
@@ -544,7 +538,7 @@ void checkSasPortalDeviceGrant(api.SasPortalDeviceGrant o) {
 
 core.int buildCounterSasPortalDeviceMetadata = 0;
 api.SasPortalDeviceMetadata buildSasPortalDeviceMetadata() {
-  var o = api.SasPortalDeviceMetadata();
+  final o = api.SasPortalDeviceMetadata();
   buildCounterSasPortalDeviceMetadata++;
   if (buildCounterSasPortalDeviceMetadata < 3) {
     o.antennaModel = 'foo';
@@ -566,7 +560,7 @@ void checkSasPortalDeviceMetadata(api.SasPortalDeviceMetadata o) {
 
 core.int buildCounterSasPortalDeviceModel = 0;
 api.SasPortalDeviceModel buildSasPortalDeviceModel() {
-  var o = api.SasPortalDeviceModel();
+  final o = api.SasPortalDeviceModel();
   buildCounterSasPortalDeviceModel++;
   if (buildCounterSasPortalDeviceModel < 3) {
     o.firmwareVersion = 'foo';
@@ -608,7 +602,7 @@ void checkSasPortalDeviceModel(api.SasPortalDeviceModel o) {
 
 core.int buildCounterSasPortalDpaMoveList = 0;
 api.SasPortalDpaMoveList buildSasPortalDpaMoveList() {
-  var o = api.SasPortalDpaMoveList();
+  final o = api.SasPortalDpaMoveList();
   buildCounterSasPortalDpaMoveList++;
   if (buildCounterSasPortalDpaMoveList < 3) {
     o.dpaId = 'foo';
@@ -625,15 +619,14 @@ void checkSasPortalDpaMoveList(api.SasPortalDpaMoveList o) {
       o.dpaId!,
       unittest.equals('foo'),
     );
-    checkSasPortalFrequencyRange(
-        o.frequencyRange! as api.SasPortalFrequencyRange);
+    checkSasPortalFrequencyRange(o.frequencyRange!);
   }
   buildCounterSasPortalDpaMoveList--;
 }
 
 core.int buildCounterSasPortalEmpty = 0;
 api.SasPortalEmpty buildSasPortalEmpty() {
-  var o = api.SasPortalEmpty();
+  final o = api.SasPortalEmpty();
   buildCounterSasPortalEmpty++;
   if (buildCounterSasPortalEmpty < 3) {}
   buildCounterSasPortalEmpty--;
@@ -648,7 +641,7 @@ void checkSasPortalEmpty(api.SasPortalEmpty o) {
 
 core.int buildCounterSasPortalFrequencyRange = 0;
 api.SasPortalFrequencyRange buildSasPortalFrequencyRange() {
-  var o = api.SasPortalFrequencyRange();
+  final o = api.SasPortalFrequencyRange();
   buildCounterSasPortalFrequencyRange++;
   if (buildCounterSasPortalFrequencyRange < 3) {
     o.highFrequencyMhz = 42.0;
@@ -675,7 +668,7 @@ void checkSasPortalFrequencyRange(api.SasPortalFrequencyRange o) {
 
 core.int buildCounterSasPortalGenerateSecretRequest = 0;
 api.SasPortalGenerateSecretRequest buildSasPortalGenerateSecretRequest() {
-  var o = api.SasPortalGenerateSecretRequest();
+  final o = api.SasPortalGenerateSecretRequest();
   buildCounterSasPortalGenerateSecretRequest++;
   if (buildCounterSasPortalGenerateSecretRequest < 3) {}
   buildCounterSasPortalGenerateSecretRequest--;
@@ -690,7 +683,7 @@ void checkSasPortalGenerateSecretRequest(api.SasPortalGenerateSecretRequest o) {
 
 core.int buildCounterSasPortalGenerateSecretResponse = 0;
 api.SasPortalGenerateSecretResponse buildSasPortalGenerateSecretResponse() {
-  var o = api.SasPortalGenerateSecretResponse();
+  final o = api.SasPortalGenerateSecretResponse();
   buildCounterSasPortalGenerateSecretResponse++;
   if (buildCounterSasPortalGenerateSecretResponse < 3) {
     o.secret = 'foo';
@@ -713,7 +706,7 @@ void checkSasPortalGenerateSecretResponse(
 
 core.int buildCounterSasPortalGetPolicyRequest = 0;
 api.SasPortalGetPolicyRequest buildSasPortalGetPolicyRequest() {
-  var o = api.SasPortalGetPolicyRequest();
+  final o = api.SasPortalGetPolicyRequest();
   buildCounterSasPortalGetPolicyRequest++;
   if (buildCounterSasPortalGetPolicyRequest < 3) {
     o.resource = 'foo';
@@ -735,7 +728,7 @@ void checkSasPortalGetPolicyRequest(api.SasPortalGetPolicyRequest o) {
 
 core.int buildCounterSasPortalInstallationParams = 0;
 api.SasPortalInstallationParams buildSasPortalInstallationParams() {
-  var o = api.SasPortalInstallationParams();
+  final o = api.SasPortalInstallationParams();
   buildCounterSasPortalInstallationParams++;
   if (buildCounterSasPortalInstallationParams < 3) {
     o.antennaAzimuth = 42;
@@ -815,7 +808,7 @@ void checkSasPortalInstallationParams(api.SasPortalInstallationParams o) {
 }
 
 core.List<api.SasPortalCustomer> buildUnnamed8313() {
-  var o = <api.SasPortalCustomer>[];
+  final o = <api.SasPortalCustomer>[];
   o.add(buildSasPortalCustomer());
   o.add(buildSasPortalCustomer());
   return o;
@@ -823,13 +816,13 @@ core.List<api.SasPortalCustomer> buildUnnamed8313() {
 
 void checkUnnamed8313(core.List<api.SasPortalCustomer> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSasPortalCustomer(o[0] as api.SasPortalCustomer);
-  checkSasPortalCustomer(o[1] as api.SasPortalCustomer);
+  checkSasPortalCustomer(o[0]);
+  checkSasPortalCustomer(o[1]);
 }
 
 core.int buildCounterSasPortalListCustomersResponse = 0;
 api.SasPortalListCustomersResponse buildSasPortalListCustomersResponse() {
-  var o = api.SasPortalListCustomersResponse();
+  final o = api.SasPortalListCustomersResponse();
   buildCounterSasPortalListCustomersResponse++;
   if (buildCounterSasPortalListCustomersResponse < 3) {
     o.customers = buildUnnamed8313();
@@ -852,7 +845,7 @@ void checkSasPortalListCustomersResponse(api.SasPortalListCustomersResponse o) {
 }
 
 core.List<api.SasPortalDeployment> buildUnnamed8314() {
-  var o = <api.SasPortalDeployment>[];
+  final o = <api.SasPortalDeployment>[];
   o.add(buildSasPortalDeployment());
   o.add(buildSasPortalDeployment());
   return o;
@@ -860,13 +853,13 @@ core.List<api.SasPortalDeployment> buildUnnamed8314() {
 
 void checkUnnamed8314(core.List<api.SasPortalDeployment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSasPortalDeployment(o[0] as api.SasPortalDeployment);
-  checkSasPortalDeployment(o[1] as api.SasPortalDeployment);
+  checkSasPortalDeployment(o[0]);
+  checkSasPortalDeployment(o[1]);
 }
 
 core.int buildCounterSasPortalListDeploymentsResponse = 0;
 api.SasPortalListDeploymentsResponse buildSasPortalListDeploymentsResponse() {
-  var o = api.SasPortalListDeploymentsResponse();
+  final o = api.SasPortalListDeploymentsResponse();
   buildCounterSasPortalListDeploymentsResponse++;
   if (buildCounterSasPortalListDeploymentsResponse < 3) {
     o.deployments = buildUnnamed8314();
@@ -890,7 +883,7 @@ void checkSasPortalListDeploymentsResponse(
 }
 
 core.List<api.SasPortalDevice> buildUnnamed8315() {
-  var o = <api.SasPortalDevice>[];
+  final o = <api.SasPortalDevice>[];
   o.add(buildSasPortalDevice());
   o.add(buildSasPortalDevice());
   return o;
@@ -898,13 +891,13 @@ core.List<api.SasPortalDevice> buildUnnamed8315() {
 
 void checkUnnamed8315(core.List<api.SasPortalDevice> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSasPortalDevice(o[0] as api.SasPortalDevice);
-  checkSasPortalDevice(o[1] as api.SasPortalDevice);
+  checkSasPortalDevice(o[0]);
+  checkSasPortalDevice(o[1]);
 }
 
 core.int buildCounterSasPortalListDevicesResponse = 0;
 api.SasPortalListDevicesResponse buildSasPortalListDevicesResponse() {
-  var o = api.SasPortalListDevicesResponse();
+  final o = api.SasPortalListDevicesResponse();
   buildCounterSasPortalListDevicesResponse++;
   if (buildCounterSasPortalListDevicesResponse < 3) {
     o.devices = buildUnnamed8315();
@@ -927,7 +920,7 @@ void checkSasPortalListDevicesResponse(api.SasPortalListDevicesResponse o) {
 }
 
 core.List<api.SasPortalNode> buildUnnamed8316() {
-  var o = <api.SasPortalNode>[];
+  final o = <api.SasPortalNode>[];
   o.add(buildSasPortalNode());
   o.add(buildSasPortalNode());
   return o;
@@ -935,13 +928,13 @@ core.List<api.SasPortalNode> buildUnnamed8316() {
 
 void checkUnnamed8316(core.List<api.SasPortalNode> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSasPortalNode(o[0] as api.SasPortalNode);
-  checkSasPortalNode(o[1] as api.SasPortalNode);
+  checkSasPortalNode(o[0]);
+  checkSasPortalNode(o[1]);
 }
 
 core.int buildCounterSasPortalListNodesResponse = 0;
 api.SasPortalListNodesResponse buildSasPortalListNodesResponse() {
-  var o = api.SasPortalListNodesResponse();
+  final o = api.SasPortalListNodesResponse();
   buildCounterSasPortalListNodesResponse++;
   if (buildCounterSasPortalListNodesResponse < 3) {
     o.nextPageToken = 'foo';
@@ -965,7 +958,7 @@ void checkSasPortalListNodesResponse(api.SasPortalListNodesResponse o) {
 
 core.int buildCounterSasPortalMoveDeploymentRequest = 0;
 api.SasPortalMoveDeploymentRequest buildSasPortalMoveDeploymentRequest() {
-  var o = api.SasPortalMoveDeploymentRequest();
+  final o = api.SasPortalMoveDeploymentRequest();
   buildCounterSasPortalMoveDeploymentRequest++;
   if (buildCounterSasPortalMoveDeploymentRequest < 3) {
     o.destination = 'foo';
@@ -987,7 +980,7 @@ void checkSasPortalMoveDeploymentRequest(api.SasPortalMoveDeploymentRequest o) {
 
 core.int buildCounterSasPortalMoveDeviceRequest = 0;
 api.SasPortalMoveDeviceRequest buildSasPortalMoveDeviceRequest() {
-  var o = api.SasPortalMoveDeviceRequest();
+  final o = api.SasPortalMoveDeviceRequest();
   buildCounterSasPortalMoveDeviceRequest++;
   if (buildCounterSasPortalMoveDeviceRequest < 3) {
     o.destination = 'foo';
@@ -1009,7 +1002,7 @@ void checkSasPortalMoveDeviceRequest(api.SasPortalMoveDeviceRequest o) {
 
 core.int buildCounterSasPortalMoveNodeRequest = 0;
 api.SasPortalMoveNodeRequest buildSasPortalMoveNodeRequest() {
-  var o = api.SasPortalMoveNodeRequest();
+  final o = api.SasPortalMoveNodeRequest();
   buildCounterSasPortalMoveNodeRequest++;
   if (buildCounterSasPortalMoveNodeRequest < 3) {
     o.destination = 'foo';
@@ -1030,7 +1023,7 @@ void checkSasPortalMoveNodeRequest(api.SasPortalMoveNodeRequest o) {
 }
 
 core.List<core.String> buildUnnamed8317() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1050,7 +1043,7 @@ void checkUnnamed8317(core.List<core.String> o) {
 
 core.int buildCounterSasPortalNode = 0;
 api.SasPortalNode buildSasPortalNode() {
-  var o = api.SasPortalNode();
+  final o = api.SasPortalNode();
   buildCounterSasPortalNode++;
   if (buildCounterSasPortalNode < 3) {
     o.displayName = 'foo';
@@ -1078,7 +1071,7 @@ void checkSasPortalNode(api.SasPortalNode o) {
 }
 
 core.Map<core.String, core.Object> buildUnnamed8318() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -1125,7 +1118,7 @@ void checkUnnamed8318(core.Map<core.String, core.Object> o) {
 }
 
 core.Map<core.String, core.Object> buildUnnamed8319() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -1173,7 +1166,7 @@ void checkUnnamed8319(core.Map<core.String, core.Object> o) {
 
 core.int buildCounterSasPortalOperation = 0;
 api.SasPortalOperation buildSasPortalOperation() {
-  var o = api.SasPortalOperation();
+  final o = api.SasPortalOperation();
   buildCounterSasPortalOperation++;
   if (buildCounterSasPortalOperation < 3) {
     o.done = true;
@@ -1190,7 +1183,7 @@ void checkSasPortalOperation(api.SasPortalOperation o) {
   buildCounterSasPortalOperation++;
   if (buildCounterSasPortalOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
-    checkSasPortalStatus(o.error! as api.SasPortalStatus);
+    checkSasPortalStatus(o.error!);
     checkUnnamed8318(o.metadata!);
     unittest.expect(
       o.name!,
@@ -1202,7 +1195,7 @@ void checkSasPortalOperation(api.SasPortalOperation o) {
 }
 
 core.List<api.SasPortalAssignment> buildUnnamed8320() {
-  var o = <api.SasPortalAssignment>[];
+  final o = <api.SasPortalAssignment>[];
   o.add(buildSasPortalAssignment());
   o.add(buildSasPortalAssignment());
   return o;
@@ -1210,13 +1203,13 @@ core.List<api.SasPortalAssignment> buildUnnamed8320() {
 
 void checkUnnamed8320(core.List<api.SasPortalAssignment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSasPortalAssignment(o[0] as api.SasPortalAssignment);
-  checkSasPortalAssignment(o[1] as api.SasPortalAssignment);
+  checkSasPortalAssignment(o[0]);
+  checkSasPortalAssignment(o[1]);
 }
 
 core.int buildCounterSasPortalPolicy = 0;
 api.SasPortalPolicy buildSasPortalPolicy() {
-  var o = api.SasPortalPolicy();
+  final o = api.SasPortalPolicy();
   buildCounterSasPortalPolicy++;
   if (buildCounterSasPortalPolicy < 3) {
     o.assignments = buildUnnamed8320();
@@ -1240,7 +1233,7 @@ void checkSasPortalPolicy(api.SasPortalPolicy o) {
 
 core.int buildCounterSasPortalSetPolicyRequest = 0;
 api.SasPortalSetPolicyRequest buildSasPortalSetPolicyRequest() {
-  var o = api.SasPortalSetPolicyRequest();
+  final o = api.SasPortalSetPolicyRequest();
   buildCounterSasPortalSetPolicyRequest++;
   if (buildCounterSasPortalSetPolicyRequest < 3) {
     o.disableNotification = true;
@@ -1255,7 +1248,7 @@ void checkSasPortalSetPolicyRequest(api.SasPortalSetPolicyRequest o) {
   buildCounterSasPortalSetPolicyRequest++;
   if (buildCounterSasPortalSetPolicyRequest < 3) {
     unittest.expect(o.disableNotification!, unittest.isTrue);
-    checkSasPortalPolicy(o.policy! as api.SasPortalPolicy);
+    checkSasPortalPolicy(o.policy!);
     unittest.expect(
       o.resource!,
       unittest.equals('foo'),
@@ -1266,7 +1259,7 @@ void checkSasPortalSetPolicyRequest(api.SasPortalSetPolicyRequest o) {
 
 core.int buildCounterSasPortalSignDeviceRequest = 0;
 api.SasPortalSignDeviceRequest buildSasPortalSignDeviceRequest() {
-  var o = api.SasPortalSignDeviceRequest();
+  final o = api.SasPortalSignDeviceRequest();
   buildCounterSasPortalSignDeviceRequest++;
   if (buildCounterSasPortalSignDeviceRequest < 3) {
     o.device = buildSasPortalDevice();
@@ -1278,13 +1271,13 @@ api.SasPortalSignDeviceRequest buildSasPortalSignDeviceRequest() {
 void checkSasPortalSignDeviceRequest(api.SasPortalSignDeviceRequest o) {
   buildCounterSasPortalSignDeviceRequest++;
   if (buildCounterSasPortalSignDeviceRequest < 3) {
-    checkSasPortalDevice(o.device! as api.SasPortalDevice);
+    checkSasPortalDevice(o.device!);
   }
   buildCounterSasPortalSignDeviceRequest--;
 }
 
 core.Map<core.String, core.Object> buildUnnamed8321() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -1331,7 +1324,7 @@ void checkUnnamed8321(core.Map<core.String, core.Object> o) {
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed8322() {
-  var o = <core.Map<core.String, core.Object>>[];
+  final o = <core.Map<core.String, core.Object>>[];
   o.add(buildUnnamed8321());
   o.add(buildUnnamed8321());
   return o;
@@ -1345,7 +1338,7 @@ void checkUnnamed8322(core.List<core.Map<core.String, core.Object>> o) {
 
 core.int buildCounterSasPortalStatus = 0;
 api.SasPortalStatus buildSasPortalStatus() {
-  var o = api.SasPortalStatus();
+  final o = api.SasPortalStatus();
   buildCounterSasPortalStatus++;
   if (buildCounterSasPortalStatus < 3) {
     o.code = 42;
@@ -1373,7 +1366,7 @@ void checkSasPortalStatus(api.SasPortalStatus o) {
 }
 
 core.List<core.String> buildUnnamed8323() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1393,7 +1386,7 @@ void checkUnnamed8323(core.List<core.String> o) {
 
 core.int buildCounterSasPortalTestPermissionsRequest = 0;
 api.SasPortalTestPermissionsRequest buildSasPortalTestPermissionsRequest() {
-  var o = api.SasPortalTestPermissionsRequest();
+  final o = api.SasPortalTestPermissionsRequest();
   buildCounterSasPortalTestPermissionsRequest++;
   if (buildCounterSasPortalTestPermissionsRequest < 3) {
     o.permissions = buildUnnamed8323();
@@ -1417,7 +1410,7 @@ void checkSasPortalTestPermissionsRequest(
 }
 
 core.List<core.String> buildUnnamed8324() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1437,7 +1430,7 @@ void checkUnnamed8324(core.List<core.String> o) {
 
 core.int buildCounterSasPortalTestPermissionsResponse = 0;
 api.SasPortalTestPermissionsResponse buildSasPortalTestPermissionsResponse() {
-  var o = api.SasPortalTestPermissionsResponse();
+  final o = api.SasPortalTestPermissionsResponse();
   buildCounterSasPortalTestPermissionsResponse++;
   if (buildCounterSasPortalTestPermissionsResponse < 3) {
     o.permissions = buildUnnamed8324();
@@ -1458,7 +1451,7 @@ void checkSasPortalTestPermissionsResponse(
 core.int buildCounterSasPortalUpdateSignedDeviceRequest = 0;
 api.SasPortalUpdateSignedDeviceRequest
     buildSasPortalUpdateSignedDeviceRequest() {
-  var o = api.SasPortalUpdateSignedDeviceRequest();
+  final o = api.SasPortalUpdateSignedDeviceRequest();
   buildCounterSasPortalUpdateSignedDeviceRequest++;
   if (buildCounterSasPortalUpdateSignedDeviceRequest < 3) {
     o.encodedDevice = 'foo';
@@ -1486,7 +1479,7 @@ void checkSasPortalUpdateSignedDeviceRequest(
 
 core.int buildCounterSasPortalValidateInstallerRequest = 0;
 api.SasPortalValidateInstallerRequest buildSasPortalValidateInstallerRequest() {
-  var o = api.SasPortalValidateInstallerRequest();
+  final o = api.SasPortalValidateInstallerRequest();
   buildCounterSasPortalValidateInstallerRequest++;
   if (buildCounterSasPortalValidateInstallerRequest < 3) {
     o.encodedSecret = 'foo';
@@ -1520,7 +1513,7 @@ void checkSasPortalValidateInstallerRequest(
 core.int buildCounterSasPortalValidateInstallerResponse = 0;
 api.SasPortalValidateInstallerResponse
     buildSasPortalValidateInstallerResponse() {
-  var o = api.SasPortalValidateInstallerResponse();
+  final o = api.SasPortalValidateInstallerResponse();
   buildCounterSasPortalValidateInstallerResponse++;
   if (buildCounterSasPortalValidateInstallerResponse < 3) {}
   buildCounterSasPortalValidateInstallerResponse--;
@@ -1537,407 +1530,396 @@ void checkSasPortalValidateInstallerResponse(
 void main() {
   unittest.group('obj-schema-SasPortalAssignment', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalAssignment();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalAssignment.fromJson(
+      final o = buildSasPortalAssignment();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalAssignment.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalAssignment(od as api.SasPortalAssignment);
+      checkSasPortalAssignment(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalChannelWithScore', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalChannelWithScore();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalChannelWithScore.fromJson(
+      final o = buildSasPortalChannelWithScore();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalChannelWithScore.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalChannelWithScore(od as api.SasPortalChannelWithScore);
+      checkSasPortalChannelWithScore(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalCreateSignedDeviceRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalCreateSignedDeviceRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalCreateSignedDeviceRequest.fromJson(
+      final o = buildSasPortalCreateSignedDeviceRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalCreateSignedDeviceRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalCreateSignedDeviceRequest(
-          od as api.SasPortalCreateSignedDeviceRequest);
+      checkSasPortalCreateSignedDeviceRequest(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalCustomer', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalCustomer();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalCustomer.fromJson(
+      final o = buildSasPortalCustomer();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalCustomer.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalCustomer(od as api.SasPortalCustomer);
+      checkSasPortalCustomer(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalDeployment', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalDeployment();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalDeployment.fromJson(
+      final o = buildSasPortalDeployment();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalDeployment.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalDeployment(od as api.SasPortalDeployment);
+      checkSasPortalDeployment(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalDevice', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalDevice();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalDevice.fromJson(
+      final o = buildSasPortalDevice();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalDevice.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalDevice(od as api.SasPortalDevice);
+      checkSasPortalDevice(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalDeviceAirInterface', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalDeviceAirInterface();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalDeviceAirInterface.fromJson(
+      final o = buildSasPortalDeviceAirInterface();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalDeviceAirInterface.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalDeviceAirInterface(od as api.SasPortalDeviceAirInterface);
+      checkSasPortalDeviceAirInterface(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalDeviceConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalDeviceConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalDeviceConfig.fromJson(
+      final o = buildSasPortalDeviceConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalDeviceConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalDeviceConfig(od as api.SasPortalDeviceConfig);
+      checkSasPortalDeviceConfig(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalDeviceGrant', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalDeviceGrant();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalDeviceGrant.fromJson(
+      final o = buildSasPortalDeviceGrant();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalDeviceGrant.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalDeviceGrant(od as api.SasPortalDeviceGrant);
+      checkSasPortalDeviceGrant(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalDeviceMetadata', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalDeviceMetadata();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalDeviceMetadata.fromJson(
+      final o = buildSasPortalDeviceMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalDeviceMetadata.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalDeviceMetadata(od as api.SasPortalDeviceMetadata);
+      checkSasPortalDeviceMetadata(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalDeviceModel', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalDeviceModel();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalDeviceModel.fromJson(
+      final o = buildSasPortalDeviceModel();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalDeviceModel.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalDeviceModel(od as api.SasPortalDeviceModel);
+      checkSasPortalDeviceModel(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalDpaMoveList', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalDpaMoveList();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalDpaMoveList.fromJson(
+      final o = buildSasPortalDpaMoveList();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalDpaMoveList.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalDpaMoveList(od as api.SasPortalDpaMoveList);
+      checkSasPortalDpaMoveList(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalEmpty', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalEmpty();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalEmpty.fromJson(
+      final o = buildSasPortalEmpty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalEmpty.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalEmpty(od as api.SasPortalEmpty);
+      checkSasPortalEmpty(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalFrequencyRange', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalFrequencyRange();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalFrequencyRange.fromJson(
+      final o = buildSasPortalFrequencyRange();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalFrequencyRange.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalFrequencyRange(od as api.SasPortalFrequencyRange);
+      checkSasPortalFrequencyRange(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalGenerateSecretRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalGenerateSecretRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalGenerateSecretRequest.fromJson(
+      final o = buildSasPortalGenerateSecretRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalGenerateSecretRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalGenerateSecretRequest(
-          od as api.SasPortalGenerateSecretRequest);
+      checkSasPortalGenerateSecretRequest(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalGenerateSecretResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalGenerateSecretResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalGenerateSecretResponse.fromJson(
+      final o = buildSasPortalGenerateSecretResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalGenerateSecretResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalGenerateSecretResponse(
-          od as api.SasPortalGenerateSecretResponse);
+      checkSasPortalGenerateSecretResponse(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalGetPolicyRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalGetPolicyRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalGetPolicyRequest.fromJson(
+      final o = buildSasPortalGetPolicyRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalGetPolicyRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalGetPolicyRequest(od as api.SasPortalGetPolicyRequest);
+      checkSasPortalGetPolicyRequest(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalInstallationParams', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalInstallationParams();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalInstallationParams.fromJson(
+      final o = buildSasPortalInstallationParams();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalInstallationParams.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalInstallationParams(od as api.SasPortalInstallationParams);
+      checkSasPortalInstallationParams(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalListCustomersResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalListCustomersResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalListCustomersResponse.fromJson(
+      final o = buildSasPortalListCustomersResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalListCustomersResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalListCustomersResponse(
-          od as api.SasPortalListCustomersResponse);
+      checkSasPortalListCustomersResponse(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalListDeploymentsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalListDeploymentsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalListDeploymentsResponse.fromJson(
+      final o = buildSasPortalListDeploymentsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalListDeploymentsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalListDeploymentsResponse(
-          od as api.SasPortalListDeploymentsResponse);
+      checkSasPortalListDeploymentsResponse(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalListDevicesResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalListDevicesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalListDevicesResponse.fromJson(
+      final o = buildSasPortalListDevicesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalListDevicesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalListDevicesResponse(od as api.SasPortalListDevicesResponse);
+      checkSasPortalListDevicesResponse(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalListNodesResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalListNodesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalListNodesResponse.fromJson(
+      final o = buildSasPortalListNodesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalListNodesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalListNodesResponse(od as api.SasPortalListNodesResponse);
+      checkSasPortalListNodesResponse(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalMoveDeploymentRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalMoveDeploymentRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalMoveDeploymentRequest.fromJson(
+      final o = buildSasPortalMoveDeploymentRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalMoveDeploymentRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalMoveDeploymentRequest(
-          od as api.SasPortalMoveDeploymentRequest);
+      checkSasPortalMoveDeploymentRequest(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalMoveDeviceRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalMoveDeviceRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalMoveDeviceRequest.fromJson(
+      final o = buildSasPortalMoveDeviceRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalMoveDeviceRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalMoveDeviceRequest(od as api.SasPortalMoveDeviceRequest);
+      checkSasPortalMoveDeviceRequest(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalMoveNodeRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalMoveNodeRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalMoveNodeRequest.fromJson(
+      final o = buildSasPortalMoveNodeRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalMoveNodeRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalMoveNodeRequest(od as api.SasPortalMoveNodeRequest);
+      checkSasPortalMoveNodeRequest(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalNode', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalNode();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalNode.fromJson(
+      final o = buildSasPortalNode();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalNode.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalNode(od as api.SasPortalNode);
+      checkSasPortalNode(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalOperation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalOperation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalOperation.fromJson(
+      final o = buildSasPortalOperation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalOperation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalOperation(od as api.SasPortalOperation);
+      checkSasPortalOperation(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalPolicy', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalPolicy();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalPolicy.fromJson(
+      final o = buildSasPortalPolicy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalPolicy.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalPolicy(od as api.SasPortalPolicy);
+      checkSasPortalPolicy(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalSetPolicyRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalSetPolicyRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalSetPolicyRequest.fromJson(
+      final o = buildSasPortalSetPolicyRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalSetPolicyRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalSetPolicyRequest(od as api.SasPortalSetPolicyRequest);
+      checkSasPortalSetPolicyRequest(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalSignDeviceRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalSignDeviceRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalSignDeviceRequest.fromJson(
+      final o = buildSasPortalSignDeviceRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalSignDeviceRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalSignDeviceRequest(od as api.SasPortalSignDeviceRequest);
+      checkSasPortalSignDeviceRequest(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalStatus', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalStatus();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalStatus.fromJson(
+      final o = buildSasPortalStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalStatus.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalStatus(od as api.SasPortalStatus);
+      checkSasPortalStatus(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalTestPermissionsRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalTestPermissionsRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalTestPermissionsRequest.fromJson(
+      final o = buildSasPortalTestPermissionsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalTestPermissionsRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalTestPermissionsRequest(
-          od as api.SasPortalTestPermissionsRequest);
+      checkSasPortalTestPermissionsRequest(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalTestPermissionsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalTestPermissionsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalTestPermissionsResponse.fromJson(
+      final o = buildSasPortalTestPermissionsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalTestPermissionsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalTestPermissionsResponse(
-          od as api.SasPortalTestPermissionsResponse);
+      checkSasPortalTestPermissionsResponse(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalUpdateSignedDeviceRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalUpdateSignedDeviceRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalUpdateSignedDeviceRequest.fromJson(
+      final o = buildSasPortalUpdateSignedDeviceRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalUpdateSignedDeviceRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalUpdateSignedDeviceRequest(
-          od as api.SasPortalUpdateSignedDeviceRequest);
+      checkSasPortalUpdateSignedDeviceRequest(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalValidateInstallerRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalValidateInstallerRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalValidateInstallerRequest.fromJson(
+      final o = buildSasPortalValidateInstallerRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalValidateInstallerRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalValidateInstallerRequest(
-          od as api.SasPortalValidateInstallerRequest);
+      checkSasPortalValidateInstallerRequest(od);
     });
   });
 
   unittest.group('obj-schema-SasPortalValidateInstallerResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSasPortalValidateInstallerResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SasPortalValidateInstallerResponse.fromJson(
+      final o = buildSasPortalValidateInstallerResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalValidateInstallerResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalValidateInstallerResponse(
-          od as api.SasPortalValidateInstallerResponse);
+      checkSasPortalValidateInstallerResponse(od);
     });
   });
 
   unittest.group('resource-CustomersResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1945,14 +1927,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalCustomer());
+        final resp = convert.json.encode(buildSasPortalCustomer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -1960,36 +1942,36 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers;
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers;
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 18),
-          unittest.equals("v1alpha1/customers"),
+          unittest.equals('v1alpha1/customers'),
         );
         pathOffset += 18;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1997,22 +1979,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalListCustomersResponse());
+        final resp = convert.json.encode(buildSasPortalListCustomersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(
@@ -2024,42 +2006,42 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers;
-      var arg_request = buildSasPortalCustomer();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers;
+      final arg_request = buildSasPortalCustomer();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalCustomer.fromJson(
+        final obj = api.SasPortalCustomer.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalCustomer(obj as api.SasPortalCustomer);
+        checkSasPortalCustomer(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2067,18 +2049,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalCustomer());
+        final resp = convert.json.encode(buildSasPortalCustomer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_name,
@@ -2089,41 +2071,41 @@ void main() {
 
   unittest.group('resource-CustomersDeploymentsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.deployments;
-      var arg_request = buildSasPortalDeployment();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.deployments;
+      final arg_request = buildSasPortalDeployment();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalDeployment.fromJson(
+        final obj = api.SasPortalDeployment.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalDeployment(obj as api.SasPortalDeployment);
+        checkSasPortalDeployment(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2131,14 +2113,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalDeployment());
+        final resp = convert.json.encode(buildSasPortalDeployment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -2147,36 +2129,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.deployments;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.deployments;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2184,14 +2166,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalEmpty());
+        final resp = convert.json.encode(buildSasPortalEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -2199,36 +2181,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.deployments;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.deployments;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2236,14 +2218,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalDeployment());
+        final resp = convert.json.encode(buildSasPortalDeployment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -2251,39 +2233,39 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.deployments;
-      var arg_parent = 'foo';
-      var arg_filter = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.deployments;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2291,26 +2273,27 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["filter"]!.first,
+          queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalListDeploymentsResponse());
+        final resp =
+            convert.json.encode(buildSasPortalListDeploymentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
@@ -2323,42 +2306,41 @@ void main() {
     });
 
     unittest.test('method--move', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.deployments;
-      var arg_request = buildSasPortalMoveDeploymentRequest();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.deployments;
+      final arg_request = buildSasPortalMoveDeploymentRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalMoveDeploymentRequest.fromJson(
+        final obj = api.SasPortalMoveDeploymentRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalMoveDeploymentRequest(
-            obj as api.SasPortalMoveDeploymentRequest);
+        checkSasPortalMoveDeploymentRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2366,14 +2348,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalOperation());
+        final resp = convert.json.encode(buildSasPortalOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -2382,42 +2364,42 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.deployments;
-      var arg_request = buildSasPortalDeployment();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.deployments;
+      final arg_request = buildSasPortalDeployment();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalDeployment.fromJson(
+        final obj = api.SasPortalDeployment.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalDeployment(obj as api.SasPortalDeployment);
+        checkSasPortalDeployment(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2425,18 +2407,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalDeployment());
+        final resp = convert.json.encode(buildSasPortalDeployment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_name,
@@ -2447,41 +2429,41 @@ void main() {
 
   unittest.group('resource-CustomersDeploymentsDevicesResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.deployments.devices;
-      var arg_request = buildSasPortalDevice();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.deployments.devices;
+      final arg_request = buildSasPortalDevice();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalDevice.fromJson(
+        final obj = api.SasPortalDevice.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalDevice(obj as api.SasPortalDevice);
+        checkSasPortalDevice(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2489,14 +2471,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalDevice());
+        final resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -2505,42 +2487,41 @@ void main() {
     });
 
     unittest.test('method--createSigned', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.deployments.devices;
-      var arg_request = buildSasPortalCreateSignedDeviceRequest();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.deployments.devices;
+      final arg_request = buildSasPortalCreateSignedDeviceRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalCreateSignedDeviceRequest.fromJson(
+        final obj = api.SasPortalCreateSignedDeviceRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalCreateSignedDeviceRequest(
-            obj as api.SasPortalCreateSignedDeviceRequest);
+        checkSasPortalCreateSignedDeviceRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2548,14 +2529,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalDevice());
+        final resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -2564,39 +2545,39 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.deployments.devices;
-      var arg_parent = 'foo';
-      var arg_filter = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.deployments.devices;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2604,26 +2585,26 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["filter"]!.first,
+          queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalListDevicesResponse());
+        final resp = convert.json.encode(buildSasPortalListDevicesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
@@ -2638,41 +2619,41 @@ void main() {
 
   unittest.group('resource-CustomersDevicesResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.devices;
-      var arg_request = buildSasPortalDevice();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.devices;
+      final arg_request = buildSasPortalDevice();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalDevice.fromJson(
+        final obj = api.SasPortalDevice.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalDevice(obj as api.SasPortalDevice);
+        checkSasPortalDevice(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2680,14 +2661,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalDevice());
+        final resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -2696,42 +2677,41 @@ void main() {
     });
 
     unittest.test('method--createSigned', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.devices;
-      var arg_request = buildSasPortalCreateSignedDeviceRequest();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.devices;
+      final arg_request = buildSasPortalCreateSignedDeviceRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalCreateSignedDeviceRequest.fromJson(
+        final obj = api.SasPortalCreateSignedDeviceRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalCreateSignedDeviceRequest(
-            obj as api.SasPortalCreateSignedDeviceRequest);
+        checkSasPortalCreateSignedDeviceRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2739,14 +2719,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalDevice());
+        final resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -2755,36 +2735,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.devices;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.devices;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2792,14 +2772,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalEmpty());
+        final resp = convert.json.encode(buildSasPortalEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -2807,36 +2787,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.devices;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.devices;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2844,14 +2824,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalDevice());
+        final resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -2859,39 +2839,39 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.devices;
-      var arg_parent = 'foo';
-      var arg_filter = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.devices;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2899,26 +2879,26 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["filter"]!.first,
+          queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalListDevicesResponse());
+        final resp = convert.json.encode(buildSasPortalListDevicesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
@@ -2931,41 +2911,41 @@ void main() {
     });
 
     unittest.test('method--move', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.devices;
-      var arg_request = buildSasPortalMoveDeviceRequest();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.devices;
+      final arg_request = buildSasPortalMoveDeviceRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalMoveDeviceRequest.fromJson(
+        final obj = api.SasPortalMoveDeviceRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalMoveDeviceRequest(obj as api.SasPortalMoveDeviceRequest);
+        checkSasPortalMoveDeviceRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2973,14 +2953,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalOperation());
+        final resp = convert.json.encode(buildSasPortalOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -2989,42 +2969,42 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.devices;
-      var arg_request = buildSasPortalDevice();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.devices;
+      final arg_request = buildSasPortalDevice();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalDevice.fromJson(
+        final obj = api.SasPortalDevice.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalDevice(obj as api.SasPortalDevice);
+        checkSasPortalDevice(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3032,18 +3012,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalDevice());
+        final resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_name,
@@ -3052,41 +3032,41 @@ void main() {
     });
 
     unittest.test('method--signDevice', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.devices;
-      var arg_request = buildSasPortalSignDeviceRequest();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.devices;
+      final arg_request = buildSasPortalSignDeviceRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalSignDeviceRequest.fromJson(
+        final obj = api.SasPortalSignDeviceRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalSignDeviceRequest(obj as api.SasPortalSignDeviceRequest);
+        checkSasPortalSignDeviceRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3094,14 +3074,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalEmpty());
+        final resp = convert.json.encode(buildSasPortalEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -3110,42 +3090,41 @@ void main() {
     });
 
     unittest.test('method--updateSigned', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.devices;
-      var arg_request = buildSasPortalUpdateSignedDeviceRequest();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.devices;
+      final arg_request = buildSasPortalUpdateSignedDeviceRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalUpdateSignedDeviceRequest.fromJson(
+        final obj = api.SasPortalUpdateSignedDeviceRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalUpdateSignedDeviceRequest(
-            obj as api.SasPortalUpdateSignedDeviceRequest);
+        checkSasPortalUpdateSignedDeviceRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3153,14 +3132,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalDevice());
+        final resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -3171,41 +3150,41 @@ void main() {
 
   unittest.group('resource-CustomersNodesResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.nodes;
-      var arg_request = buildSasPortalNode();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.nodes;
+      final arg_request = buildSasPortalNode();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalNode.fromJson(
+        final obj = api.SasPortalNode.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalNode(obj as api.SasPortalNode);
+        checkSasPortalNode(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3213,14 +3192,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalNode());
+        final resp = convert.json.encode(buildSasPortalNode());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -3229,36 +3208,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.nodes;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.nodes;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3266,14 +3245,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalEmpty());
+        final resp = convert.json.encode(buildSasPortalEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -3281,36 +3260,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.nodes;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.nodes;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3318,14 +3297,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalNode());
+        final resp = convert.json.encode(buildSasPortalNode());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -3333,39 +3312,39 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.nodes;
-      var arg_parent = 'foo';
-      var arg_filter = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.nodes;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3373,26 +3352,26 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["filter"]!.first,
+          queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalListNodesResponse());
+        final resp = convert.json.encode(buildSasPortalListNodesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
@@ -3405,41 +3384,41 @@ void main() {
     });
 
     unittest.test('method--move', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.nodes;
-      var arg_request = buildSasPortalMoveNodeRequest();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.nodes;
+      final arg_request = buildSasPortalMoveNodeRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalMoveNodeRequest.fromJson(
+        final obj = api.SasPortalMoveNodeRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalMoveNodeRequest(obj as api.SasPortalMoveNodeRequest);
+        checkSasPortalMoveNodeRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3447,14 +3426,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalOperation());
+        final resp = convert.json.encode(buildSasPortalOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -3463,42 +3442,42 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.nodes;
-      var arg_request = buildSasPortalNode();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.nodes;
+      final arg_request = buildSasPortalNode();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalNode.fromJson(
+        final obj = api.SasPortalNode.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalNode(obj as api.SasPortalNode);
+        checkSasPortalNode(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3506,18 +3485,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalNode());
+        final resp = convert.json.encode(buildSasPortalNode());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_name,
@@ -3528,41 +3507,41 @@ void main() {
 
   unittest.group('resource-CustomersNodesDeploymentsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.nodes.deployments;
-      var arg_request = buildSasPortalDeployment();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.nodes.deployments;
+      final arg_request = buildSasPortalDeployment();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalDeployment.fromJson(
+        final obj = api.SasPortalDeployment.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalDeployment(obj as api.SasPortalDeployment);
+        checkSasPortalDeployment(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3570,14 +3549,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalDeployment());
+        final resp = convert.json.encode(buildSasPortalDeployment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -3586,39 +3565,39 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.nodes.deployments;
-      var arg_parent = 'foo';
-      var arg_filter = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.nodes.deployments;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3626,26 +3605,27 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["filter"]!.first,
+          queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalListDeploymentsResponse());
+        final resp =
+            convert.json.encode(buildSasPortalListDeploymentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
@@ -3660,41 +3640,41 @@ void main() {
 
   unittest.group('resource-CustomersNodesDevicesResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.nodes.devices;
-      var arg_request = buildSasPortalDevice();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.nodes.devices;
+      final arg_request = buildSasPortalDevice();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalDevice.fromJson(
+        final obj = api.SasPortalDevice.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalDevice(obj as api.SasPortalDevice);
+        checkSasPortalDevice(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3702,14 +3682,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalDevice());
+        final resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -3718,42 +3698,41 @@ void main() {
     });
 
     unittest.test('method--createSigned', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.nodes.devices;
-      var arg_request = buildSasPortalCreateSignedDeviceRequest();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.nodes.devices;
+      final arg_request = buildSasPortalCreateSignedDeviceRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalCreateSignedDeviceRequest.fromJson(
+        final obj = api.SasPortalCreateSignedDeviceRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalCreateSignedDeviceRequest(
-            obj as api.SasPortalCreateSignedDeviceRequest);
+        checkSasPortalCreateSignedDeviceRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3761,14 +3740,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalDevice());
+        final resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -3777,39 +3756,39 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.nodes.devices;
-      var arg_parent = 'foo';
-      var arg_filter = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.nodes.devices;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3817,26 +3796,26 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["filter"]!.first,
+          queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalListDevicesResponse());
+        final resp = convert.json.encode(buildSasPortalListDevicesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
@@ -3851,41 +3830,41 @@ void main() {
 
   unittest.group('resource-CustomersNodesNodesResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.nodes.nodes;
-      var arg_request = buildSasPortalNode();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.nodes.nodes;
+      final arg_request = buildSasPortalNode();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalNode.fromJson(
+        final obj = api.SasPortalNode.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalNode(obj as api.SasPortalNode);
+        checkSasPortalNode(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3893,14 +3872,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalNode());
+        final resp = convert.json.encode(buildSasPortalNode());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -3909,39 +3888,39 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).customers.nodes.nodes;
-      var arg_parent = 'foo';
-      var arg_filter = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers.nodes.nodes;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3949,26 +3928,26 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["filter"]!.first,
+          queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalListNodesResponse());
+        final resp = convert.json.encode(buildSasPortalListNodesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
@@ -3983,36 +3962,36 @@ void main() {
 
   unittest.group('resource-DeploymentsResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).deployments;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).deployments;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4020,14 +3999,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalDeployment());
+        final resp = convert.json.encode(buildSasPortalDeployment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -4037,36 +4016,36 @@ void main() {
 
   unittest.group('resource-DeploymentsDevicesResource', () {
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).deployments.devices;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).deployments.devices;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4074,14 +4053,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalEmpty());
+        final resp = convert.json.encode(buildSasPortalEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -4089,36 +4068,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).deployments.devices;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).deployments.devices;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4126,14 +4105,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalDevice());
+        final resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -4141,41 +4120,41 @@ void main() {
     });
 
     unittest.test('method--move', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).deployments.devices;
-      var arg_request = buildSasPortalMoveDeviceRequest();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).deployments.devices;
+      final arg_request = buildSasPortalMoveDeviceRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalMoveDeviceRequest.fromJson(
+        final obj = api.SasPortalMoveDeviceRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalMoveDeviceRequest(obj as api.SasPortalMoveDeviceRequest);
+        checkSasPortalMoveDeviceRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4183,14 +4162,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalOperation());
+        final resp = convert.json.encode(buildSasPortalOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -4199,42 +4178,42 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).deployments.devices;
-      var arg_request = buildSasPortalDevice();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).deployments.devices;
+      final arg_request = buildSasPortalDevice();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalDevice.fromJson(
+        final obj = api.SasPortalDevice.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalDevice(obj as api.SasPortalDevice);
+        checkSasPortalDevice(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4242,18 +4221,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalDevice());
+        final resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_name,
@@ -4262,41 +4241,41 @@ void main() {
     });
 
     unittest.test('method--signDevice', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).deployments.devices;
-      var arg_request = buildSasPortalSignDeviceRequest();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).deployments.devices;
+      final arg_request = buildSasPortalSignDeviceRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalSignDeviceRequest.fromJson(
+        final obj = api.SasPortalSignDeviceRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalSignDeviceRequest(obj as api.SasPortalSignDeviceRequest);
+        checkSasPortalSignDeviceRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4304,14 +4283,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalEmpty());
+        final resp = convert.json.encode(buildSasPortalEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -4320,42 +4299,41 @@ void main() {
     });
 
     unittest.test('method--updateSigned', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).deployments.devices;
-      var arg_request = buildSasPortalUpdateSignedDeviceRequest();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).deployments.devices;
+      final arg_request = buildSasPortalUpdateSignedDeviceRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalUpdateSignedDeviceRequest.fromJson(
+        final obj = api.SasPortalUpdateSignedDeviceRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalUpdateSignedDeviceRequest(
-            obj as api.SasPortalUpdateSignedDeviceRequest);
+        checkSasPortalUpdateSignedDeviceRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4363,14 +4341,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalDevice());
+        final resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -4381,40 +4359,39 @@ void main() {
 
   unittest.group('resource-InstallerResource', () {
     unittest.test('method--generateSecret', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).installer;
-      var arg_request = buildSasPortalGenerateSecretRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).installer;
+      final arg_request = buildSasPortalGenerateSecretRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalGenerateSecretRequest.fromJson(
+        final obj = api.SasPortalGenerateSecretRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalGenerateSecretRequest(
-            obj as api.SasPortalGenerateSecretRequest);
+        checkSasPortalGenerateSecretRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 33),
-          unittest.equals("v1alpha1/installer:generateSecret"),
+          unittest.equals('v1alpha1/installer:generateSecret'),
         );
         pathOffset += 33;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4422,14 +4399,15 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalGenerateSecretResponse());
+        final resp =
+            convert.json.encode(buildSasPortalGenerateSecretResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -4439,40 +4417,39 @@ void main() {
     });
 
     unittest.test('method--validate', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).installer;
-      var arg_request = buildSasPortalValidateInstallerRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).installer;
+      final arg_request = buildSasPortalValidateInstallerRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalValidateInstallerRequest.fromJson(
+        final obj = api.SasPortalValidateInstallerRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalValidateInstallerRequest(
-            obj as api.SasPortalValidateInstallerRequest);
+        checkSasPortalValidateInstallerRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 27),
-          unittest.equals("v1alpha1/installer:validate"),
+          unittest.equals('v1alpha1/installer:validate'),
         );
         pathOffset += 27;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4480,14 +4457,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildSasPortalValidateInstallerResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -4499,36 +4476,36 @@ void main() {
 
   unittest.group('resource-NodesResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4536,14 +4513,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalNode());
+        final resp = convert.json.encode(buildSasPortalNode());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -4553,36 +4530,36 @@ void main() {
 
   unittest.group('resource-NodesDeploymentsResource', () {
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes.deployments;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes.deployments;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4590,14 +4567,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalEmpty());
+        final resp = convert.json.encode(buildSasPortalEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -4605,36 +4582,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes.deployments;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes.deployments;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4642,14 +4619,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalDeployment());
+        final resp = convert.json.encode(buildSasPortalDeployment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -4657,39 +4634,39 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes.deployments;
-      var arg_parent = 'foo';
-      var arg_filter = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes.deployments;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4697,26 +4674,27 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["filter"]!.first,
+          queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalListDeploymentsResponse());
+        final resp =
+            convert.json.encode(buildSasPortalListDeploymentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
@@ -4729,42 +4707,41 @@ void main() {
     });
 
     unittest.test('method--move', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes.deployments;
-      var arg_request = buildSasPortalMoveDeploymentRequest();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes.deployments;
+      final arg_request = buildSasPortalMoveDeploymentRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalMoveDeploymentRequest.fromJson(
+        final obj = api.SasPortalMoveDeploymentRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalMoveDeploymentRequest(
-            obj as api.SasPortalMoveDeploymentRequest);
+        checkSasPortalMoveDeploymentRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4772,14 +4749,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalOperation());
+        final resp = convert.json.encode(buildSasPortalOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -4788,42 +4765,42 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes.deployments;
-      var arg_request = buildSasPortalDeployment();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes.deployments;
+      final arg_request = buildSasPortalDeployment();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalDeployment.fromJson(
+        final obj = api.SasPortalDeployment.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalDeployment(obj as api.SasPortalDeployment);
+        checkSasPortalDeployment(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4831,18 +4808,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalDeployment());
+        final resp = convert.json.encode(buildSasPortalDeployment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_name,
@@ -4853,41 +4830,41 @@ void main() {
 
   unittest.group('resource-NodesDeploymentsDevicesResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes.deployments.devices;
-      var arg_request = buildSasPortalDevice();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes.deployments.devices;
+      final arg_request = buildSasPortalDevice();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalDevice.fromJson(
+        final obj = api.SasPortalDevice.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalDevice(obj as api.SasPortalDevice);
+        checkSasPortalDevice(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4895,14 +4872,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalDevice());
+        final resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -4911,42 +4888,41 @@ void main() {
     });
 
     unittest.test('method--createSigned', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes.deployments.devices;
-      var arg_request = buildSasPortalCreateSignedDeviceRequest();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes.deployments.devices;
+      final arg_request = buildSasPortalCreateSignedDeviceRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalCreateSignedDeviceRequest.fromJson(
+        final obj = api.SasPortalCreateSignedDeviceRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalCreateSignedDeviceRequest(
-            obj as api.SasPortalCreateSignedDeviceRequest);
+        checkSasPortalCreateSignedDeviceRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4954,14 +4930,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalDevice());
+        final resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -4970,39 +4946,39 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes.deployments.devices;
-      var arg_parent = 'foo';
-      var arg_filter = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes.deployments.devices;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5010,26 +4986,26 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["filter"]!.first,
+          queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalListDevicesResponse());
+        final resp = convert.json.encode(buildSasPortalListDevicesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
@@ -5044,41 +5020,41 @@ void main() {
 
   unittest.group('resource-NodesDevicesResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes.devices;
-      var arg_request = buildSasPortalDevice();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes.devices;
+      final arg_request = buildSasPortalDevice();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalDevice.fromJson(
+        final obj = api.SasPortalDevice.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalDevice(obj as api.SasPortalDevice);
+        checkSasPortalDevice(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5086,14 +5062,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalDevice());
+        final resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -5102,42 +5078,41 @@ void main() {
     });
 
     unittest.test('method--createSigned', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes.devices;
-      var arg_request = buildSasPortalCreateSignedDeviceRequest();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes.devices;
+      final arg_request = buildSasPortalCreateSignedDeviceRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalCreateSignedDeviceRequest.fromJson(
+        final obj = api.SasPortalCreateSignedDeviceRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalCreateSignedDeviceRequest(
-            obj as api.SasPortalCreateSignedDeviceRequest);
+        checkSasPortalCreateSignedDeviceRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5145,14 +5120,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalDevice());
+        final resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -5161,36 +5136,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes.devices;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes.devices;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5198,14 +5173,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalEmpty());
+        final resp = convert.json.encode(buildSasPortalEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -5213,36 +5188,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes.devices;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes.devices;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5250,14 +5225,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalDevice());
+        final resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -5265,39 +5240,39 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes.devices;
-      var arg_parent = 'foo';
-      var arg_filter = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes.devices;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5305,26 +5280,26 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["filter"]!.first,
+          queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalListDevicesResponse());
+        final resp = convert.json.encode(buildSasPortalListDevicesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
@@ -5337,41 +5312,41 @@ void main() {
     });
 
     unittest.test('method--move', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes.devices;
-      var arg_request = buildSasPortalMoveDeviceRequest();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes.devices;
+      final arg_request = buildSasPortalMoveDeviceRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalMoveDeviceRequest.fromJson(
+        final obj = api.SasPortalMoveDeviceRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalMoveDeviceRequest(obj as api.SasPortalMoveDeviceRequest);
+        checkSasPortalMoveDeviceRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5379,14 +5354,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalOperation());
+        final resp = convert.json.encode(buildSasPortalOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -5395,42 +5370,42 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes.devices;
-      var arg_request = buildSasPortalDevice();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes.devices;
+      final arg_request = buildSasPortalDevice();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalDevice.fromJson(
+        final obj = api.SasPortalDevice.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalDevice(obj as api.SasPortalDevice);
+        checkSasPortalDevice(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5438,18 +5413,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalDevice());
+        final resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_name,
@@ -5458,41 +5433,41 @@ void main() {
     });
 
     unittest.test('method--signDevice', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes.devices;
-      var arg_request = buildSasPortalSignDeviceRequest();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes.devices;
+      final arg_request = buildSasPortalSignDeviceRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalSignDeviceRequest.fromJson(
+        final obj = api.SasPortalSignDeviceRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalSignDeviceRequest(obj as api.SasPortalSignDeviceRequest);
+        checkSasPortalSignDeviceRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5500,14 +5475,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalEmpty());
+        final resp = convert.json.encode(buildSasPortalEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -5516,42 +5491,41 @@ void main() {
     });
 
     unittest.test('method--updateSigned', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes.devices;
-      var arg_request = buildSasPortalUpdateSignedDeviceRequest();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes.devices;
+      final arg_request = buildSasPortalUpdateSignedDeviceRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalUpdateSignedDeviceRequest.fromJson(
+        final obj = api.SasPortalUpdateSignedDeviceRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalUpdateSignedDeviceRequest(
-            obj as api.SasPortalUpdateSignedDeviceRequest);
+        checkSasPortalUpdateSignedDeviceRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5559,14 +5533,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalDevice());
+        final resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -5577,41 +5551,41 @@ void main() {
 
   unittest.group('resource-NodesNodesResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes.nodes;
-      var arg_request = buildSasPortalNode();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes.nodes;
+      final arg_request = buildSasPortalNode();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalNode.fromJson(
+        final obj = api.SasPortalNode.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalNode(obj as api.SasPortalNode);
+        checkSasPortalNode(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5619,14 +5593,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalNode());
+        final resp = convert.json.encode(buildSasPortalNode());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -5635,36 +5609,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes.nodes;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes.nodes;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5672,14 +5646,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalEmpty());
+        final resp = convert.json.encode(buildSasPortalEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -5687,36 +5661,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes.nodes;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes.nodes;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5724,14 +5698,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalNode());
+        final resp = convert.json.encode(buildSasPortalNode());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -5739,39 +5713,39 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes.nodes;
-      var arg_parent = 'foo';
-      var arg_filter = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes.nodes;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5779,26 +5753,26 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["filter"]!.first,
+          queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalListNodesResponse());
+        final resp = convert.json.encode(buildSasPortalListNodesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
@@ -5811,41 +5785,41 @@ void main() {
     });
 
     unittest.test('method--move', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes.nodes;
-      var arg_request = buildSasPortalMoveNodeRequest();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes.nodes;
+      final arg_request = buildSasPortalMoveNodeRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalMoveNodeRequest.fromJson(
+        final obj = api.SasPortalMoveNodeRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalMoveNodeRequest(obj as api.SasPortalMoveNodeRequest);
+        checkSasPortalMoveNodeRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5853,14 +5827,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalOperation());
+        final resp = convert.json.encode(buildSasPortalOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -5869,42 +5843,42 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes.nodes;
-      var arg_request = buildSasPortalNode();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes.nodes;
+      final arg_request = buildSasPortalNode();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalNode.fromJson(
+        final obj = api.SasPortalNode.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalNode(obj as api.SasPortalNode);
+        checkSasPortalNode(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5912,18 +5886,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalNode());
+        final resp = convert.json.encode(buildSasPortalNode());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_name,
@@ -5934,41 +5908,41 @@ void main() {
 
   unittest.group('resource-NodesNodesDeploymentsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes.nodes.deployments;
-      var arg_request = buildSasPortalDeployment();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes.nodes.deployments;
+      final arg_request = buildSasPortalDeployment();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalDeployment.fromJson(
+        final obj = api.SasPortalDeployment.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalDeployment(obj as api.SasPortalDeployment);
+        checkSasPortalDeployment(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5976,14 +5950,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalDeployment());
+        final resp = convert.json.encode(buildSasPortalDeployment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -5992,39 +5966,39 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes.nodes.deployments;
-      var arg_parent = 'foo';
-      var arg_filter = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes.nodes.deployments;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6032,26 +6006,27 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["filter"]!.first,
+          queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalListDeploymentsResponse());
+        final resp =
+            convert.json.encode(buildSasPortalListDeploymentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
@@ -6066,41 +6041,41 @@ void main() {
 
   unittest.group('resource-NodesNodesDevicesResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes.nodes.devices;
-      var arg_request = buildSasPortalDevice();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes.nodes.devices;
+      final arg_request = buildSasPortalDevice();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalDevice.fromJson(
+        final obj = api.SasPortalDevice.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalDevice(obj as api.SasPortalDevice);
+        checkSasPortalDevice(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6108,14 +6083,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalDevice());
+        final resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -6124,42 +6099,41 @@ void main() {
     });
 
     unittest.test('method--createSigned', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes.nodes.devices;
-      var arg_request = buildSasPortalCreateSignedDeviceRequest();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes.nodes.devices;
+      final arg_request = buildSasPortalCreateSignedDeviceRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalCreateSignedDeviceRequest.fromJson(
+        final obj = api.SasPortalCreateSignedDeviceRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalCreateSignedDeviceRequest(
-            obj as api.SasPortalCreateSignedDeviceRequest);
+        checkSasPortalCreateSignedDeviceRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6167,14 +6141,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalDevice());
+        final resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -6183,39 +6157,39 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes.nodes.devices;
-      var arg_parent = 'foo';
-      var arg_filter = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes.nodes.devices;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6223,26 +6197,26 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["filter"]!.first,
+          queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalListDevicesResponse());
+        final resp = convert.json.encode(buildSasPortalListDevicesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
@@ -6257,41 +6231,41 @@ void main() {
 
   unittest.group('resource-NodesNodesNodesResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes.nodes.nodes;
-      var arg_request = buildSasPortalNode();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes.nodes.nodes;
+      final arg_request = buildSasPortalNode();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalNode.fromJson(
+        final obj = api.SasPortalNode.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalNode(obj as api.SasPortalNode);
+        checkSasPortalNode(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6299,14 +6273,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalNode());
+        final resp = convert.json.encode(buildSasPortalNode());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -6315,39 +6289,39 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).nodes.nodes.nodes;
-      var arg_parent = 'foo';
-      var arg_filter = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).nodes.nodes.nodes;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("v1alpha1/"),
+          unittest.equals('v1alpha1/'),
         );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6355,26 +6329,26 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["filter"]!.first,
+          queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalListNodesResponse());
+        final resp = convert.json.encode(buildSasPortalListNodesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
@@ -6389,39 +6363,39 @@ void main() {
 
   unittest.group('resource-PoliciesResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).policies;
-      var arg_request = buildSasPortalGetPolicyRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).policies;
+      final arg_request = buildSasPortalGetPolicyRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalGetPolicyRequest.fromJson(
+        final obj = api.SasPortalGetPolicyRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalGetPolicyRequest(obj as api.SasPortalGetPolicyRequest);
+        checkSasPortalGetPolicyRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 21),
-          unittest.equals("v1alpha1/policies:get"),
+          unittest.equals('v1alpha1/policies:get'),
         );
         pathOffset += 21;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6429,14 +6403,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalPolicy());
+        final resp = convert.json.encode(buildSasPortalPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_request, $fields: arg_$fields);
@@ -6444,39 +6418,39 @@ void main() {
     });
 
     unittest.test('method--set', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).policies;
-      var arg_request = buildSasPortalSetPolicyRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).policies;
+      final arg_request = buildSasPortalSetPolicyRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalSetPolicyRequest.fromJson(
+        final obj = api.SasPortalSetPolicyRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalSetPolicyRequest(obj as api.SasPortalSetPolicyRequest);
+        checkSasPortalSetPolicyRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 21),
-          unittest.equals("v1alpha1/policies:set"),
+          unittest.equals('v1alpha1/policies:set'),
         );
         pathOffset += 21;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6484,14 +6458,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalPolicy());
+        final resp = convert.json.encode(buildSasPortalPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.set(arg_request, $fields: arg_$fields);
@@ -6499,40 +6473,39 @@ void main() {
     });
 
     unittest.test('method--test', () async {
-      var mock = HttpServerMock();
-      var res = api.SasportalApi(mock).policies;
-      var arg_request = buildSasPortalTestPermissionsRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).policies;
+      final arg_request = buildSasPortalTestPermissionsRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalTestPermissionsRequest.fromJson(
+        final obj = api.SasPortalTestPermissionsRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSasPortalTestPermissionsRequest(
-            obj as api.SasPortalTestPermissionsRequest);
+        checkSasPortalTestPermissionsRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 22),
-          unittest.equals("v1alpha1/policies:test"),
+          unittest.equals('v1alpha1/policies:test'),
         );
         pathOffset += 22;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -6540,14 +6513,15 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSasPortalTestPermissionsResponse());
+        final resp =
+            convert.json.encode(buildSasPortalTestPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.test(arg_request, $fields: arg_$fields);

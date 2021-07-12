@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -30,7 +29,7 @@ import '../test_shared.dart';
 core.int buildCounterGoogleMapsPlayablelocationsV3Impression = 0;
 api.GoogleMapsPlayablelocationsV3Impression
     buildGoogleMapsPlayablelocationsV3Impression() {
-  var o = api.GoogleMapsPlayablelocationsV3Impression();
+  final o = api.GoogleMapsPlayablelocationsV3Impression();
   buildCounterGoogleMapsPlayablelocationsV3Impression++;
   if (buildCounterGoogleMapsPlayablelocationsV3Impression < 3) {
     o.gameObjectType = 42;
@@ -62,7 +61,7 @@ void checkGoogleMapsPlayablelocationsV3Impression(
 }
 
 core.List<api.GoogleMapsPlayablelocationsV3Impression> buildUnnamed4834() {
-  var o = <api.GoogleMapsPlayablelocationsV3Impression>[];
+  final o = <api.GoogleMapsPlayablelocationsV3Impression>[];
   o.add(buildGoogleMapsPlayablelocationsV3Impression());
   o.add(buildGoogleMapsPlayablelocationsV3Impression());
   return o;
@@ -71,16 +70,14 @@ core.List<api.GoogleMapsPlayablelocationsV3Impression> buildUnnamed4834() {
 void checkUnnamed4834(
     core.List<api.GoogleMapsPlayablelocationsV3Impression> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleMapsPlayablelocationsV3Impression(
-      o[0] as api.GoogleMapsPlayablelocationsV3Impression);
-  checkGoogleMapsPlayablelocationsV3Impression(
-      o[1] as api.GoogleMapsPlayablelocationsV3Impression);
+  checkGoogleMapsPlayablelocationsV3Impression(o[0]);
+  checkGoogleMapsPlayablelocationsV3Impression(o[1]);
 }
 
 core.int buildCounterGoogleMapsPlayablelocationsV3LogImpressionsRequest = 0;
 api.GoogleMapsPlayablelocationsV3LogImpressionsRequest
     buildGoogleMapsPlayablelocationsV3LogImpressionsRequest() {
-  var o = api.GoogleMapsPlayablelocationsV3LogImpressionsRequest();
+  final o = api.GoogleMapsPlayablelocationsV3LogImpressionsRequest();
   buildCounterGoogleMapsPlayablelocationsV3LogImpressionsRequest++;
   if (buildCounterGoogleMapsPlayablelocationsV3LogImpressionsRequest < 3) {
     o.clientInfo = buildGoogleMapsUnityClientInfo();
@@ -95,8 +92,7 @@ void checkGoogleMapsPlayablelocationsV3LogImpressionsRequest(
     api.GoogleMapsPlayablelocationsV3LogImpressionsRequest o) {
   buildCounterGoogleMapsPlayablelocationsV3LogImpressionsRequest++;
   if (buildCounterGoogleMapsPlayablelocationsV3LogImpressionsRequest < 3) {
-    checkGoogleMapsUnityClientInfo(
-        o.clientInfo! as api.GoogleMapsUnityClientInfo);
+    checkGoogleMapsUnityClientInfo(o.clientInfo!);
     checkUnnamed4834(o.impressions!);
     unittest.expect(
       o.requestId!,
@@ -109,7 +105,7 @@ void checkGoogleMapsPlayablelocationsV3LogImpressionsRequest(
 core.int buildCounterGoogleMapsPlayablelocationsV3LogImpressionsResponse = 0;
 api.GoogleMapsPlayablelocationsV3LogImpressionsResponse
     buildGoogleMapsPlayablelocationsV3LogImpressionsResponse() {
-  var o = api.GoogleMapsPlayablelocationsV3LogImpressionsResponse();
+  final o = api.GoogleMapsPlayablelocationsV3LogImpressionsResponse();
   buildCounterGoogleMapsPlayablelocationsV3LogImpressionsResponse++;
   if (buildCounterGoogleMapsPlayablelocationsV3LogImpressionsResponse < 3) {}
   buildCounterGoogleMapsPlayablelocationsV3LogImpressionsResponse--;
@@ -124,7 +120,7 @@ void checkGoogleMapsPlayablelocationsV3LogImpressionsResponse(
 }
 
 core.List<api.GoogleMapsPlayablelocationsV3PlayerReport> buildUnnamed4835() {
-  var o = <api.GoogleMapsPlayablelocationsV3PlayerReport>[];
+  final o = <api.GoogleMapsPlayablelocationsV3PlayerReport>[];
   o.add(buildGoogleMapsPlayablelocationsV3PlayerReport());
   o.add(buildGoogleMapsPlayablelocationsV3PlayerReport());
   return o;
@@ -133,16 +129,14 @@ core.List<api.GoogleMapsPlayablelocationsV3PlayerReport> buildUnnamed4835() {
 void checkUnnamed4835(
     core.List<api.GoogleMapsPlayablelocationsV3PlayerReport> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleMapsPlayablelocationsV3PlayerReport(
-      o[0] as api.GoogleMapsPlayablelocationsV3PlayerReport);
-  checkGoogleMapsPlayablelocationsV3PlayerReport(
-      o[1] as api.GoogleMapsPlayablelocationsV3PlayerReport);
+  checkGoogleMapsPlayablelocationsV3PlayerReport(o[0]);
+  checkGoogleMapsPlayablelocationsV3PlayerReport(o[1]);
 }
 
 core.int buildCounterGoogleMapsPlayablelocationsV3LogPlayerReportsRequest = 0;
 api.GoogleMapsPlayablelocationsV3LogPlayerReportsRequest
     buildGoogleMapsPlayablelocationsV3LogPlayerReportsRequest() {
-  var o = api.GoogleMapsPlayablelocationsV3LogPlayerReportsRequest();
+  final o = api.GoogleMapsPlayablelocationsV3LogPlayerReportsRequest();
   buildCounterGoogleMapsPlayablelocationsV3LogPlayerReportsRequest++;
   if (buildCounterGoogleMapsPlayablelocationsV3LogPlayerReportsRequest < 3) {
     o.clientInfo = buildGoogleMapsUnityClientInfo();
@@ -157,8 +151,7 @@ void checkGoogleMapsPlayablelocationsV3LogPlayerReportsRequest(
     api.GoogleMapsPlayablelocationsV3LogPlayerReportsRequest o) {
   buildCounterGoogleMapsPlayablelocationsV3LogPlayerReportsRequest++;
   if (buildCounterGoogleMapsPlayablelocationsV3LogPlayerReportsRequest < 3) {
-    checkGoogleMapsUnityClientInfo(
-        o.clientInfo! as api.GoogleMapsUnityClientInfo);
+    checkGoogleMapsUnityClientInfo(o.clientInfo!);
     checkUnnamed4835(o.playerReports!);
     unittest.expect(
       o.requestId!,
@@ -171,7 +164,7 @@ void checkGoogleMapsPlayablelocationsV3LogPlayerReportsRequest(
 core.int buildCounterGoogleMapsPlayablelocationsV3LogPlayerReportsResponse = 0;
 api.GoogleMapsPlayablelocationsV3LogPlayerReportsResponse
     buildGoogleMapsPlayablelocationsV3LogPlayerReportsResponse() {
-  var o = api.GoogleMapsPlayablelocationsV3LogPlayerReportsResponse();
+  final o = api.GoogleMapsPlayablelocationsV3LogPlayerReportsResponse();
   buildCounterGoogleMapsPlayablelocationsV3LogPlayerReportsResponse++;
   if (buildCounterGoogleMapsPlayablelocationsV3LogPlayerReportsResponse < 3) {}
   buildCounterGoogleMapsPlayablelocationsV3LogPlayerReportsResponse--;
@@ -186,7 +179,7 @@ void checkGoogleMapsPlayablelocationsV3LogPlayerReportsResponse(
 }
 
 core.List<core.String> buildUnnamed4836() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -207,7 +200,7 @@ void checkUnnamed4836(core.List<core.String> o) {
 core.int buildCounterGoogleMapsPlayablelocationsV3PlayerReport = 0;
 api.GoogleMapsPlayablelocationsV3PlayerReport
     buildGoogleMapsPlayablelocationsV3PlayerReport() {
-  var o = api.GoogleMapsPlayablelocationsV3PlayerReport();
+  final o = api.GoogleMapsPlayablelocationsV3PlayerReport();
   buildCounterGoogleMapsPlayablelocationsV3PlayerReport++;
   if (buildCounterGoogleMapsPlayablelocationsV3PlayerReport < 3) {
     o.languageCode = 'foo';
@@ -243,7 +236,7 @@ void checkGoogleMapsPlayablelocationsV3PlayerReport(
 core.int buildCounterGoogleMapsPlayablelocationsV3SampleAreaFilter = 0;
 api.GoogleMapsPlayablelocationsV3SampleAreaFilter
     buildGoogleMapsPlayablelocationsV3SampleAreaFilter() {
-  var o = api.GoogleMapsPlayablelocationsV3SampleAreaFilter();
+  final o = api.GoogleMapsPlayablelocationsV3SampleAreaFilter();
   buildCounterGoogleMapsPlayablelocationsV3SampleAreaFilter++;
   if (buildCounterGoogleMapsPlayablelocationsV3SampleAreaFilter < 3) {
     o.s2CellId = 'foo';
@@ -267,7 +260,7 @@ void checkGoogleMapsPlayablelocationsV3SampleAreaFilter(
 core.int buildCounterGoogleMapsPlayablelocationsV3SampleCriterion = 0;
 api.GoogleMapsPlayablelocationsV3SampleCriterion
     buildGoogleMapsPlayablelocationsV3SampleCriterion() {
-  var o = api.GoogleMapsPlayablelocationsV3SampleCriterion();
+  final o = api.GoogleMapsPlayablelocationsV3SampleCriterion();
   buildCounterGoogleMapsPlayablelocationsV3SampleCriterion++;
   if (buildCounterGoogleMapsPlayablelocationsV3SampleCriterion < 3) {
     o.fieldsToReturn = 'foo';
@@ -286,8 +279,7 @@ void checkGoogleMapsPlayablelocationsV3SampleCriterion(
       o.fieldsToReturn!,
       unittest.equals('foo'),
     );
-    checkGoogleMapsPlayablelocationsV3SampleFilter(
-        o.filter! as api.GoogleMapsPlayablelocationsV3SampleFilter);
+    checkGoogleMapsPlayablelocationsV3SampleFilter(o.filter!);
     unittest.expect(
       o.gameObjectType!,
       unittest.equals(42),
@@ -297,7 +289,7 @@ void checkGoogleMapsPlayablelocationsV3SampleCriterion(
 }
 
 core.List<core.String> buildUnnamed4837() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -318,7 +310,7 @@ void checkUnnamed4837(core.List<core.String> o) {
 core.int buildCounterGoogleMapsPlayablelocationsV3SampleFilter = 0;
 api.GoogleMapsPlayablelocationsV3SampleFilter
     buildGoogleMapsPlayablelocationsV3SampleFilter() {
-  var o = api.GoogleMapsPlayablelocationsV3SampleFilter();
+  final o = api.GoogleMapsPlayablelocationsV3SampleFilter();
   buildCounterGoogleMapsPlayablelocationsV3SampleFilter++;
   if (buildCounterGoogleMapsPlayablelocationsV3SampleFilter < 3) {
     o.includedTypes = buildUnnamed4837();
@@ -338,14 +330,13 @@ void checkGoogleMapsPlayablelocationsV3SampleFilter(
       o.maxLocationCount!,
       unittest.equals(42),
     );
-    checkGoogleMapsPlayablelocationsV3SampleSpacingOptions(
-        o.spacing! as api.GoogleMapsPlayablelocationsV3SampleSpacingOptions);
+    checkGoogleMapsPlayablelocationsV3SampleSpacingOptions(o.spacing!);
   }
   buildCounterGoogleMapsPlayablelocationsV3SampleFilter--;
 }
 
 core.List<core.String> buildUnnamed4838() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -366,7 +357,7 @@ void checkUnnamed4838(core.List<core.String> o) {
 core.int buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocation = 0;
 api.GoogleMapsPlayablelocationsV3SamplePlayableLocation
     buildGoogleMapsPlayablelocationsV3SamplePlayableLocation() {
-  var o = api.GoogleMapsPlayablelocationsV3SamplePlayableLocation();
+  final o = api.GoogleMapsPlayablelocationsV3SamplePlayableLocation();
   buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocation++;
   if (buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocation < 3) {
     o.centerPoint = buildGoogleTypeLatLng();
@@ -384,7 +375,7 @@ void checkGoogleMapsPlayablelocationsV3SamplePlayableLocation(
     api.GoogleMapsPlayablelocationsV3SamplePlayableLocation o) {
   buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocation++;
   if (buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocation < 3) {
-    checkGoogleTypeLatLng(o.centerPoint! as api.GoogleTypeLatLng);
+    checkGoogleTypeLatLng(o.centerPoint!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -397,7 +388,7 @@ void checkGoogleMapsPlayablelocationsV3SamplePlayableLocation(
       o.plusCode!,
       unittest.equals('foo'),
     );
-    checkGoogleTypeLatLng(o.snappedPoint! as api.GoogleTypeLatLng);
+    checkGoogleTypeLatLng(o.snappedPoint!);
     checkUnnamed4838(o.types!);
   }
   buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocation--;
@@ -405,7 +396,7 @@ void checkGoogleMapsPlayablelocationsV3SamplePlayableLocation(
 
 core.List<api.GoogleMapsPlayablelocationsV3SamplePlayableLocation>
     buildUnnamed4839() {
-  var o = <api.GoogleMapsPlayablelocationsV3SamplePlayableLocation>[];
+  final o = <api.GoogleMapsPlayablelocationsV3SamplePlayableLocation>[];
   o.add(buildGoogleMapsPlayablelocationsV3SamplePlayableLocation());
   o.add(buildGoogleMapsPlayablelocationsV3SamplePlayableLocation());
   return o;
@@ -414,17 +405,15 @@ core.List<api.GoogleMapsPlayablelocationsV3SamplePlayableLocation>
 void checkUnnamed4839(
     core.List<api.GoogleMapsPlayablelocationsV3SamplePlayableLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleMapsPlayablelocationsV3SamplePlayableLocation(
-      o[0] as api.GoogleMapsPlayablelocationsV3SamplePlayableLocation);
-  checkGoogleMapsPlayablelocationsV3SamplePlayableLocation(
-      o[1] as api.GoogleMapsPlayablelocationsV3SamplePlayableLocation);
+  checkGoogleMapsPlayablelocationsV3SamplePlayableLocation(o[0]);
+  checkGoogleMapsPlayablelocationsV3SamplePlayableLocation(o[1]);
 }
 
 core.int buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationList =
     0;
 api.GoogleMapsPlayablelocationsV3SamplePlayableLocationList
     buildGoogleMapsPlayablelocationsV3SamplePlayableLocationList() {
-  var o = api.GoogleMapsPlayablelocationsV3SamplePlayableLocationList();
+  final o = api.GoogleMapsPlayablelocationsV3SamplePlayableLocationList();
   buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationList++;
   if (buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationList < 3) {
     o.locations = buildUnnamed4839();
@@ -443,7 +432,7 @@ void checkGoogleMapsPlayablelocationsV3SamplePlayableLocationList(
 }
 
 core.List<api.GoogleMapsPlayablelocationsV3SampleCriterion> buildUnnamed4840() {
-  var o = <api.GoogleMapsPlayablelocationsV3SampleCriterion>[];
+  final o = <api.GoogleMapsPlayablelocationsV3SampleCriterion>[];
   o.add(buildGoogleMapsPlayablelocationsV3SampleCriterion());
   o.add(buildGoogleMapsPlayablelocationsV3SampleCriterion());
   return o;
@@ -452,17 +441,15 @@ core.List<api.GoogleMapsPlayablelocationsV3SampleCriterion> buildUnnamed4840() {
 void checkUnnamed4840(
     core.List<api.GoogleMapsPlayablelocationsV3SampleCriterion> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleMapsPlayablelocationsV3SampleCriterion(
-      o[0] as api.GoogleMapsPlayablelocationsV3SampleCriterion);
-  checkGoogleMapsPlayablelocationsV3SampleCriterion(
-      o[1] as api.GoogleMapsPlayablelocationsV3SampleCriterion);
+  checkGoogleMapsPlayablelocationsV3SampleCriterion(o[0]);
+  checkGoogleMapsPlayablelocationsV3SampleCriterion(o[1]);
 }
 
 core.int
     buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest = 0;
 api.GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest
     buildGoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest() {
-  var o = api.GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest();
+  final o = api.GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest();
   buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest++;
   if (buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest <
       3) {
@@ -478,8 +465,7 @@ void checkGoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest(
   buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest++;
   if (buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest <
       3) {
-    checkGoogleMapsPlayablelocationsV3SampleAreaFilter(
-        o.areaFilter! as api.GoogleMapsPlayablelocationsV3SampleAreaFilter);
+    checkGoogleMapsPlayablelocationsV3SampleAreaFilter(o.areaFilter!);
     checkUnnamed4840(o.criteria!);
   }
   buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest--;
@@ -488,7 +474,7 @@ void checkGoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest(
 core.Map<core.String,
         api.GoogleMapsPlayablelocationsV3SamplePlayableLocationList>
     buildUnnamed4841() {
-  var o = <core.String,
+  final o = <core.String,
       api.GoogleMapsPlayablelocationsV3SamplePlayableLocationList>{};
   o['x'] = buildGoogleMapsPlayablelocationsV3SamplePlayableLocationList();
   o['y'] = buildGoogleMapsPlayablelocationsV3SamplePlayableLocationList();
@@ -500,10 +486,8 @@ void checkUnnamed4841(
             api.GoogleMapsPlayablelocationsV3SamplePlayableLocationList>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleMapsPlayablelocationsV3SamplePlayableLocationList(
-      o['x']! as api.GoogleMapsPlayablelocationsV3SamplePlayableLocationList);
-  checkGoogleMapsPlayablelocationsV3SamplePlayableLocationList(
-      o['y']! as api.GoogleMapsPlayablelocationsV3SamplePlayableLocationList);
+  checkGoogleMapsPlayablelocationsV3SamplePlayableLocationList(o['x']!);
+  checkGoogleMapsPlayablelocationsV3SamplePlayableLocationList(o['y']!);
 }
 
 core.int
@@ -511,7 +495,7 @@ core.int
     0;
 api.GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse
     buildGoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse() {
-  var o = api.GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse();
+  final o = api.GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse();
   buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse++;
   if (buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse <
       3) {
@@ -539,7 +523,7 @@ void checkGoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse(
 core.int buildCounterGoogleMapsPlayablelocationsV3SampleSpacingOptions = 0;
 api.GoogleMapsPlayablelocationsV3SampleSpacingOptions
     buildGoogleMapsPlayablelocationsV3SampleSpacingOptions() {
-  var o = api.GoogleMapsPlayablelocationsV3SampleSpacingOptions();
+  final o = api.GoogleMapsPlayablelocationsV3SampleSpacingOptions();
   buildCounterGoogleMapsPlayablelocationsV3SampleSpacingOptions++;
   if (buildCounterGoogleMapsPlayablelocationsV3SampleSpacingOptions < 3) {
     o.minSpacingMeters = 42.0;
@@ -567,7 +551,7 @@ void checkGoogleMapsPlayablelocationsV3SampleSpacingOptions(
 
 core.int buildCounterGoogleMapsUnityClientInfo = 0;
 api.GoogleMapsUnityClientInfo buildGoogleMapsUnityClientInfo() {
-  var o = api.GoogleMapsUnityClientInfo();
+  final o = api.GoogleMapsUnityClientInfo();
   buildCounterGoogleMapsUnityClientInfo++;
   if (buildCounterGoogleMapsUnityClientInfo < 3) {
     o.apiClient = 'foo';
@@ -624,7 +608,7 @@ void checkGoogleMapsUnityClientInfo(api.GoogleMapsUnityClientInfo o) {
 
 core.int buildCounterGoogleTypeLatLng = 0;
 api.GoogleTypeLatLng buildGoogleTypeLatLng() {
-  var o = api.GoogleTypeLatLng();
+  final o = api.GoogleTypeLatLng();
   buildCounterGoogleTypeLatLng++;
   if (buildCounterGoogleTypeLatLng < 3) {
     o.latitude = 42.0;
@@ -652,132 +636,124 @@ void checkGoogleTypeLatLng(api.GoogleTypeLatLng o) {
 void main() {
   unittest.group('obj-schema-GoogleMapsPlayablelocationsV3Impression', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleMapsPlayablelocationsV3Impression();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleMapsPlayablelocationsV3Impression.fromJson(
+      final o = buildGoogleMapsPlayablelocationsV3Impression();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleMapsPlayablelocationsV3Impression.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleMapsPlayablelocationsV3Impression(
-          od as api.GoogleMapsPlayablelocationsV3Impression);
+      checkGoogleMapsPlayablelocationsV3Impression(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleMapsPlayablelocationsV3LogImpressionsRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleMapsPlayablelocationsV3LogImpressionsRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleMapsPlayablelocationsV3LogImpressionsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleMapsPlayablelocationsV3LogImpressionsRequest(
-          od as api.GoogleMapsPlayablelocationsV3LogImpressionsRequest);
+      final o = buildGoogleMapsPlayablelocationsV3LogImpressionsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleMapsPlayablelocationsV3LogImpressionsRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleMapsPlayablelocationsV3LogImpressionsRequest(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleMapsPlayablelocationsV3LogImpressionsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleMapsPlayablelocationsV3LogImpressionsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleMapsPlayablelocationsV3LogImpressionsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleMapsPlayablelocationsV3LogImpressionsResponse(
-          od as api.GoogleMapsPlayablelocationsV3LogImpressionsResponse);
+      final o = buildGoogleMapsPlayablelocationsV3LogImpressionsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleMapsPlayablelocationsV3LogImpressionsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleMapsPlayablelocationsV3LogImpressionsResponse(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleMapsPlayablelocationsV3LogPlayerReportsRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleMapsPlayablelocationsV3LogPlayerReportsRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleMapsPlayablelocationsV3LogPlayerReportsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleMapsPlayablelocationsV3LogPlayerReportsRequest.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleMapsPlayablelocationsV3LogPlayerReportsRequest(
-          od as api.GoogleMapsPlayablelocationsV3LogPlayerReportsRequest);
+      checkGoogleMapsPlayablelocationsV3LogPlayerReportsRequest(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleMapsPlayablelocationsV3LogPlayerReportsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleMapsPlayablelocationsV3LogPlayerReportsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleMapsPlayablelocationsV3LogPlayerReportsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleMapsPlayablelocationsV3LogPlayerReportsResponse.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleMapsPlayablelocationsV3LogPlayerReportsResponse(
-          od as api.GoogleMapsPlayablelocationsV3LogPlayerReportsResponse);
+      checkGoogleMapsPlayablelocationsV3LogPlayerReportsResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleMapsPlayablelocationsV3PlayerReport', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleMapsPlayablelocationsV3PlayerReport();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleMapsPlayablelocationsV3PlayerReport.fromJson(
+      final o = buildGoogleMapsPlayablelocationsV3PlayerReport();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleMapsPlayablelocationsV3PlayerReport.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleMapsPlayablelocationsV3PlayerReport(
-          od as api.GoogleMapsPlayablelocationsV3PlayerReport);
+      checkGoogleMapsPlayablelocationsV3PlayerReport(od);
     });
   });
 
   unittest.group('obj-schema-GoogleMapsPlayablelocationsV3SampleAreaFilter',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleMapsPlayablelocationsV3SampleAreaFilter();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleMapsPlayablelocationsV3SampleAreaFilter.fromJson(
+      final o = buildGoogleMapsPlayablelocationsV3SampleAreaFilter();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleMapsPlayablelocationsV3SampleAreaFilter.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleMapsPlayablelocationsV3SampleAreaFilter(
-          od as api.GoogleMapsPlayablelocationsV3SampleAreaFilter);
+      checkGoogleMapsPlayablelocationsV3SampleAreaFilter(od);
     });
   });
 
   unittest.group('obj-schema-GoogleMapsPlayablelocationsV3SampleCriterion', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleMapsPlayablelocationsV3SampleCriterion();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleMapsPlayablelocationsV3SampleCriterion.fromJson(
+      final o = buildGoogleMapsPlayablelocationsV3SampleCriterion();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleMapsPlayablelocationsV3SampleCriterion.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleMapsPlayablelocationsV3SampleCriterion(
-          od as api.GoogleMapsPlayablelocationsV3SampleCriterion);
+      checkGoogleMapsPlayablelocationsV3SampleCriterion(od);
     });
   });
 
   unittest.group('obj-schema-GoogleMapsPlayablelocationsV3SampleFilter', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleMapsPlayablelocationsV3SampleFilter();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleMapsPlayablelocationsV3SampleFilter.fromJson(
+      final o = buildGoogleMapsPlayablelocationsV3SampleFilter();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleMapsPlayablelocationsV3SampleFilter.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleMapsPlayablelocationsV3SampleFilter(
-          od as api.GoogleMapsPlayablelocationsV3SampleFilter);
+      checkGoogleMapsPlayablelocationsV3SampleFilter(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleMapsPlayablelocationsV3SamplePlayableLocation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleMapsPlayablelocationsV3SamplePlayableLocation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleMapsPlayablelocationsV3SamplePlayableLocation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleMapsPlayablelocationsV3SamplePlayableLocation(
-          od as api.GoogleMapsPlayablelocationsV3SamplePlayableLocation);
+      final o = buildGoogleMapsPlayablelocationsV3SamplePlayableLocation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleMapsPlayablelocationsV3SamplePlayableLocation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleMapsPlayablelocationsV3SamplePlayableLocation(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleMapsPlayablelocationsV3SamplePlayableLocationList', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleMapsPlayablelocationsV3SamplePlayableLocationList();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleMapsPlayablelocationsV3SamplePlayableLocationList();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleMapsPlayablelocationsV3SamplePlayableLocationList.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleMapsPlayablelocationsV3SamplePlayableLocationList(
-          od as api.GoogleMapsPlayablelocationsV3SamplePlayableLocationList);
+      checkGoogleMapsPlayablelocationsV3SamplePlayableLocationList(od);
     });
   });
 
@@ -785,13 +761,12 @@ void main() {
       'obj-schema-GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest',
       () {
     unittest.test('to-json--from-json', () async {
-      var o =
+      final o =
           buildGoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest
           .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest(od
-          as api.GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest);
+      checkGoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest(od);
     });
   });
 
@@ -799,86 +774,84 @@ void main() {
       'obj-schema-GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse',
       () {
     unittest.test('to-json--from-json', () async {
-      var o =
+      final o =
           buildGoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse
-          .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse(od
-          as api.GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse);
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleMapsPlayablelocationsV3SampleSpacingOptions',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleMapsPlayablelocationsV3SampleSpacingOptions();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleMapsPlayablelocationsV3SampleSpacingOptions.fromJson(
+      final o = buildGoogleMapsPlayablelocationsV3SampleSpacingOptions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleMapsPlayablelocationsV3SampleSpacingOptions.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleMapsPlayablelocationsV3SampleSpacingOptions(
-          od as api.GoogleMapsPlayablelocationsV3SampleSpacingOptions);
+      checkGoogleMapsPlayablelocationsV3SampleSpacingOptions(od);
     });
   });
 
   unittest.group('obj-schema-GoogleMapsUnityClientInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleMapsUnityClientInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleMapsUnityClientInfo.fromJson(
+      final o = buildGoogleMapsUnityClientInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleMapsUnityClientInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleMapsUnityClientInfo(od as api.GoogleMapsUnityClientInfo);
+      checkGoogleMapsUnityClientInfo(od);
     });
   });
 
   unittest.group('obj-schema-GoogleTypeLatLng', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleTypeLatLng();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleTypeLatLng.fromJson(
+      final o = buildGoogleTypeLatLng();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleTypeLatLng.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleTypeLatLng(od as api.GoogleTypeLatLng);
+      checkGoogleTypeLatLng(od);
     });
   });
 
   unittest.group('resource-V3Resource', () {
     unittest.test('method--logImpressions', () async {
-      var mock = HttpServerMock();
-      var res = api.PlayableLocationsApi(mock).v3;
-      var arg_request =
+      final mock = HttpServerMock();
+      final res = api.PlayableLocationsApi(mock).v3;
+      final arg_request =
           buildGoogleMapsPlayablelocationsV3LogImpressionsRequest();
-      var arg_$fields = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.GoogleMapsPlayablelocationsV3LogImpressionsRequest.fromJson(
                 json as core.Map<core.String, core.dynamic>);
-        checkGoogleMapsPlayablelocationsV3LogImpressionsRequest(
-            obj as api.GoogleMapsPlayablelocationsV3LogImpressionsRequest);
+        checkGoogleMapsPlayablelocationsV3LogImpressionsRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 17),
-          unittest.equals("v3:logImpressions"),
+          unittest.equals('v3:logImpressions'),
         );
         pathOffset += 17;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -886,14 +859,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleMapsPlayablelocationsV3LogImpressionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -904,42 +877,41 @@ void main() {
     });
 
     unittest.test('method--logPlayerReports', () async {
-      var mock = HttpServerMock();
-      var res = api.PlayableLocationsApi(mock).v3;
-      var arg_request =
+      final mock = HttpServerMock();
+      final res = api.PlayableLocationsApi(mock).v3;
+      final arg_request =
           buildGoogleMapsPlayablelocationsV3LogPlayerReportsRequest();
-      var arg_$fields = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.GoogleMapsPlayablelocationsV3LogPlayerReportsRequest.fromJson(
                 json as core.Map<core.String, core.dynamic>);
-        checkGoogleMapsPlayablelocationsV3LogPlayerReportsRequest(
-            obj as api.GoogleMapsPlayablelocationsV3LogPlayerReportsRequest);
+        checkGoogleMapsPlayablelocationsV3LogPlayerReportsRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 19),
-          unittest.equals("v3:logPlayerReports"),
+          unittest.equals('v3:logPlayerReports'),
         );
         pathOffset += 19;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -947,14 +919,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(
+        final resp = convert.json.encode(
             buildGoogleMapsPlayablelocationsV3LogPlayerReportsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -965,42 +937,41 @@ void main() {
     });
 
     unittest.test('method--samplePlayableLocations', () async {
-      var mock = HttpServerMock();
-      var res = api.PlayableLocationsApi(mock).v3;
-      var arg_request =
+      final mock = HttpServerMock();
+      final res = api.PlayableLocationsApi(mock).v3;
+      final arg_request =
           buildGoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest();
-      var arg_$fields = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest
                 .fromJson(json as core.Map<core.String, core.dynamic>);
-        checkGoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest(obj
-            as api.GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest);
+        checkGoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 26),
-          unittest.equals("v3:samplePlayableLocations"),
+          unittest.equals('v3:samplePlayableLocations'),
         );
         pathOffset += 26;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1008,14 +979,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(
+        final resp = convert.json.encode(
             buildGoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);

@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -28,7 +27,7 @@ import 'package:test/test.dart' as unittest;
 import '../test_shared.dart';
 
 core.List<core.String> buildUnnamed7656() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -48,7 +47,7 @@ void checkUnnamed7656(core.List<core.String> o) {
 
 core.int buildCounterAdUnit = 0;
 api.AdUnit buildAdUnit() {
-  var o = api.AdUnit();
+  final o = api.AdUnit();
   buildCounterAdUnit++;
   if (buildCounterAdUnit < 3) {
     o.adFormat = 'foo';
@@ -92,7 +91,7 @@ void checkAdUnit(api.AdUnit o) {
 
 core.int buildCounterApp = 0;
 api.App buildApp() {
-  var o = api.App();
+  final o = api.App();
   buildCounterApp++;
   if (buildCounterApp < 3) {
     o.appId = 'foo';
@@ -112,8 +111,8 @@ void checkApp(api.App o) {
       o.appId!,
       unittest.equals('foo'),
     );
-    checkAppLinkedAppInfo(o.linkedAppInfo! as api.AppLinkedAppInfo);
-    checkAppManualAppInfo(o.manualAppInfo! as api.AppManualAppInfo);
+    checkAppLinkedAppInfo(o.linkedAppInfo!);
+    checkAppManualAppInfo(o.manualAppInfo!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -128,7 +127,7 @@ void checkApp(api.App o) {
 
 core.int buildCounterAppLinkedAppInfo = 0;
 api.AppLinkedAppInfo buildAppLinkedAppInfo() {
-  var o = api.AppLinkedAppInfo();
+  final o = api.AppLinkedAppInfo();
   buildCounterAppLinkedAppInfo++;
   if (buildCounterAppLinkedAppInfo < 3) {
     o.appStoreId = 'foo';
@@ -155,7 +154,7 @@ void checkAppLinkedAppInfo(api.AppLinkedAppInfo o) {
 
 core.int buildCounterAppManualAppInfo = 0;
 api.AppManualAppInfo buildAppManualAppInfo() {
-  var o = api.AppManualAppInfo();
+  final o = api.AppManualAppInfo();
   buildCounterAppManualAppInfo++;
   if (buildCounterAppManualAppInfo < 3) {
     o.displayName = 'foo';
@@ -177,7 +176,7 @@ void checkAppManualAppInfo(api.AppManualAppInfo o) {
 
 core.int buildCounterDate = 0;
 api.Date buildDate() {
-  var o = api.Date();
+  final o = api.Date();
   buildCounterDate++;
   if (buildCounterDate < 3) {
     o.day = 42;
@@ -209,7 +208,7 @@ void checkDate(api.Date o) {
 
 core.int buildCounterDateRange = 0;
 api.DateRange buildDateRange() {
-  var o = api.DateRange();
+  final o = api.DateRange();
   buildCounterDateRange++;
   if (buildCounterDateRange < 3) {
     o.endDate = buildDate();
@@ -222,15 +221,15 @@ api.DateRange buildDateRange() {
 void checkDateRange(api.DateRange o) {
   buildCounterDateRange++;
   if (buildCounterDateRange < 3) {
-    checkDate(o.endDate! as api.Date);
-    checkDate(o.startDate! as api.Date);
+    checkDate(o.endDate!);
+    checkDate(o.startDate!);
   }
   buildCounterDateRange--;
 }
 
 core.int buildCounterGenerateMediationReportRequest = 0;
 api.GenerateMediationReportRequest buildGenerateMediationReportRequest() {
-  var o = api.GenerateMediationReportRequest();
+  final o = api.GenerateMediationReportRequest();
   buildCounterGenerateMediationReportRequest++;
   if (buildCounterGenerateMediationReportRequest < 3) {
     o.reportSpec = buildMediationReportSpec();
@@ -242,14 +241,14 @@ api.GenerateMediationReportRequest buildGenerateMediationReportRequest() {
 void checkGenerateMediationReportRequest(api.GenerateMediationReportRequest o) {
   buildCounterGenerateMediationReportRequest++;
   if (buildCounterGenerateMediationReportRequest < 3) {
-    checkMediationReportSpec(o.reportSpec! as api.MediationReportSpec);
+    checkMediationReportSpec(o.reportSpec!);
   }
   buildCounterGenerateMediationReportRequest--;
 }
 
 core.int buildCounterGenerateMediationReportResponse = 0;
 api.GenerateMediationReportResponse buildGenerateMediationReportResponse() {
-  var o = api.GenerateMediationReportResponse();
+  final o = api.GenerateMediationReportResponse();
   buildCounterGenerateMediationReportResponse++;
   if (buildCounterGenerateMediationReportResponse < 3) {
     o.footer = buildReportFooter();
@@ -264,16 +263,16 @@ void checkGenerateMediationReportResponse(
     api.GenerateMediationReportResponse o) {
   buildCounterGenerateMediationReportResponse++;
   if (buildCounterGenerateMediationReportResponse < 3) {
-    checkReportFooter(o.footer! as api.ReportFooter);
-    checkReportHeader(o.header! as api.ReportHeader);
-    checkReportRow(o.row! as api.ReportRow);
+    checkReportFooter(o.footer!);
+    checkReportHeader(o.header!);
+    checkReportRow(o.row!);
   }
   buildCounterGenerateMediationReportResponse--;
 }
 
 core.int buildCounterGenerateNetworkReportRequest = 0;
 api.GenerateNetworkReportRequest buildGenerateNetworkReportRequest() {
-  var o = api.GenerateNetworkReportRequest();
+  final o = api.GenerateNetworkReportRequest();
   buildCounterGenerateNetworkReportRequest++;
   if (buildCounterGenerateNetworkReportRequest < 3) {
     o.reportSpec = buildNetworkReportSpec();
@@ -285,14 +284,14 @@ api.GenerateNetworkReportRequest buildGenerateNetworkReportRequest() {
 void checkGenerateNetworkReportRequest(api.GenerateNetworkReportRequest o) {
   buildCounterGenerateNetworkReportRequest++;
   if (buildCounterGenerateNetworkReportRequest < 3) {
-    checkNetworkReportSpec(o.reportSpec! as api.NetworkReportSpec);
+    checkNetworkReportSpec(o.reportSpec!);
   }
   buildCounterGenerateNetworkReportRequest--;
 }
 
 core.int buildCounterGenerateNetworkReportResponse = 0;
 api.GenerateNetworkReportResponse buildGenerateNetworkReportResponse() {
-  var o = api.GenerateNetworkReportResponse();
+  final o = api.GenerateNetworkReportResponse();
   buildCounterGenerateNetworkReportResponse++;
   if (buildCounterGenerateNetworkReportResponse < 3) {
     o.footer = buildReportFooter();
@@ -306,15 +305,15 @@ api.GenerateNetworkReportResponse buildGenerateNetworkReportResponse() {
 void checkGenerateNetworkReportResponse(api.GenerateNetworkReportResponse o) {
   buildCounterGenerateNetworkReportResponse++;
   if (buildCounterGenerateNetworkReportResponse < 3) {
-    checkReportFooter(o.footer! as api.ReportFooter);
-    checkReportHeader(o.header! as api.ReportHeader);
-    checkReportRow(o.row! as api.ReportRow);
+    checkReportFooter(o.footer!);
+    checkReportHeader(o.header!);
+    checkReportRow(o.row!);
   }
   buildCounterGenerateNetworkReportResponse--;
 }
 
 core.List<api.AdUnit> buildUnnamed7657() {
-  var o = <api.AdUnit>[];
+  final o = <api.AdUnit>[];
   o.add(buildAdUnit());
   o.add(buildAdUnit());
   return o;
@@ -322,13 +321,13 @@ core.List<api.AdUnit> buildUnnamed7657() {
 
 void checkUnnamed7657(core.List<api.AdUnit> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAdUnit(o[0] as api.AdUnit);
-  checkAdUnit(o[1] as api.AdUnit);
+  checkAdUnit(o[0]);
+  checkAdUnit(o[1]);
 }
 
 core.int buildCounterListAdUnitsResponse = 0;
 api.ListAdUnitsResponse buildListAdUnitsResponse() {
-  var o = api.ListAdUnitsResponse();
+  final o = api.ListAdUnitsResponse();
   buildCounterListAdUnitsResponse++;
   if (buildCounterListAdUnitsResponse < 3) {
     o.adUnits = buildUnnamed7657();
@@ -351,7 +350,7 @@ void checkListAdUnitsResponse(api.ListAdUnitsResponse o) {
 }
 
 core.List<api.App> buildUnnamed7658() {
-  var o = <api.App>[];
+  final o = <api.App>[];
   o.add(buildApp());
   o.add(buildApp());
   return o;
@@ -359,13 +358,13 @@ core.List<api.App> buildUnnamed7658() {
 
 void checkUnnamed7658(core.List<api.App> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkApp(o[0] as api.App);
-  checkApp(o[1] as api.App);
+  checkApp(o[0]);
+  checkApp(o[1]);
 }
 
 core.int buildCounterListAppsResponse = 0;
 api.ListAppsResponse buildListAppsResponse() {
-  var o = api.ListAppsResponse();
+  final o = api.ListAppsResponse();
   buildCounterListAppsResponse++;
   if (buildCounterListAppsResponse < 3) {
     o.apps = buildUnnamed7658();
@@ -388,7 +387,7 @@ void checkListAppsResponse(api.ListAppsResponse o) {
 }
 
 core.List<api.PublisherAccount> buildUnnamed7659() {
-  var o = <api.PublisherAccount>[];
+  final o = <api.PublisherAccount>[];
   o.add(buildPublisherAccount());
   o.add(buildPublisherAccount());
   return o;
@@ -396,13 +395,13 @@ core.List<api.PublisherAccount> buildUnnamed7659() {
 
 void checkUnnamed7659(core.List<api.PublisherAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPublisherAccount(o[0] as api.PublisherAccount);
-  checkPublisherAccount(o[1] as api.PublisherAccount);
+  checkPublisherAccount(o[0]);
+  checkPublisherAccount(o[1]);
 }
 
 core.int buildCounterListPublisherAccountsResponse = 0;
 api.ListPublisherAccountsResponse buildListPublisherAccountsResponse() {
-  var o = api.ListPublisherAccountsResponse();
+  final o = api.ListPublisherAccountsResponse();
   buildCounterListPublisherAccountsResponse++;
   if (buildCounterListPublisherAccountsResponse < 3) {
     o.account = buildUnnamed7659();
@@ -426,7 +425,7 @@ void checkListPublisherAccountsResponse(api.ListPublisherAccountsResponse o) {
 
 core.int buildCounterLocalizationSettings = 0;
 api.LocalizationSettings buildLocalizationSettings() {
-  var o = api.LocalizationSettings();
+  final o = api.LocalizationSettings();
   buildCounterLocalizationSettings++;
   if (buildCounterLocalizationSettings < 3) {
     o.currencyCode = 'foo';
@@ -452,7 +451,7 @@ void checkLocalizationSettings(api.LocalizationSettings o) {
 }
 
 core.List<api.MediationReportSpecDimensionFilter> buildUnnamed7660() {
-  var o = <api.MediationReportSpecDimensionFilter>[];
+  final o = <api.MediationReportSpecDimensionFilter>[];
   o.add(buildMediationReportSpecDimensionFilter());
   o.add(buildMediationReportSpecDimensionFilter());
   return o;
@@ -460,14 +459,12 @@ core.List<api.MediationReportSpecDimensionFilter> buildUnnamed7660() {
 
 void checkUnnamed7660(core.List<api.MediationReportSpecDimensionFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMediationReportSpecDimensionFilter(
-      o[0] as api.MediationReportSpecDimensionFilter);
-  checkMediationReportSpecDimensionFilter(
-      o[1] as api.MediationReportSpecDimensionFilter);
+  checkMediationReportSpecDimensionFilter(o[0]);
+  checkMediationReportSpecDimensionFilter(o[1]);
 }
 
 core.List<core.String> buildUnnamed7661() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -486,7 +483,7 @@ void checkUnnamed7661(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed7662() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -505,7 +502,7 @@ void checkUnnamed7662(core.List<core.String> o) {
 }
 
 core.List<api.MediationReportSpecSortCondition> buildUnnamed7663() {
-  var o = <api.MediationReportSpecSortCondition>[];
+  final o = <api.MediationReportSpecSortCondition>[];
   o.add(buildMediationReportSpecSortCondition());
   o.add(buildMediationReportSpecSortCondition());
   return o;
@@ -513,15 +510,13 @@ core.List<api.MediationReportSpecSortCondition> buildUnnamed7663() {
 
 void checkUnnamed7663(core.List<api.MediationReportSpecSortCondition> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMediationReportSpecSortCondition(
-      o[0] as api.MediationReportSpecSortCondition);
-  checkMediationReportSpecSortCondition(
-      o[1] as api.MediationReportSpecSortCondition);
+  checkMediationReportSpecSortCondition(o[0]);
+  checkMediationReportSpecSortCondition(o[1]);
 }
 
 core.int buildCounterMediationReportSpec = 0;
 api.MediationReportSpec buildMediationReportSpec() {
-  var o = api.MediationReportSpec();
+  final o = api.MediationReportSpec();
   buildCounterMediationReportSpec++;
   if (buildCounterMediationReportSpec < 3) {
     o.dateRange = buildDateRange();
@@ -540,11 +535,10 @@ api.MediationReportSpec buildMediationReportSpec() {
 void checkMediationReportSpec(api.MediationReportSpec o) {
   buildCounterMediationReportSpec++;
   if (buildCounterMediationReportSpec < 3) {
-    checkDateRange(o.dateRange! as api.DateRange);
+    checkDateRange(o.dateRange!);
     checkUnnamed7660(o.dimensionFilters!);
     checkUnnamed7661(o.dimensions!);
-    checkLocalizationSettings(
-        o.localizationSettings! as api.LocalizationSettings);
+    checkLocalizationSettings(o.localizationSettings!);
     unittest.expect(
       o.maxReportRows!,
       unittest.equals(42),
@@ -562,7 +556,7 @@ void checkMediationReportSpec(api.MediationReportSpec o) {
 core.int buildCounterMediationReportSpecDimensionFilter = 0;
 api.MediationReportSpecDimensionFilter
     buildMediationReportSpecDimensionFilter() {
-  var o = api.MediationReportSpecDimensionFilter();
+  final o = api.MediationReportSpecDimensionFilter();
   buildCounterMediationReportSpecDimensionFilter++;
   if (buildCounterMediationReportSpecDimensionFilter < 3) {
     o.dimension = 'foo';
@@ -580,14 +574,14 @@ void checkMediationReportSpecDimensionFilter(
       o.dimension!,
       unittest.equals('foo'),
     );
-    checkStringList(o.matchesAny! as api.StringList);
+    checkStringList(o.matchesAny!);
   }
   buildCounterMediationReportSpecDimensionFilter--;
 }
 
 core.int buildCounterMediationReportSpecSortCondition = 0;
 api.MediationReportSpecSortCondition buildMediationReportSpecSortCondition() {
-  var o = api.MediationReportSpecSortCondition();
+  final o = api.MediationReportSpecSortCondition();
   buildCounterMediationReportSpecSortCondition++;
   if (buildCounterMediationReportSpecSortCondition < 3) {
     o.dimension = 'foo';
@@ -619,7 +613,7 @@ void checkMediationReportSpecSortCondition(
 }
 
 core.List<api.NetworkReportSpecDimensionFilter> buildUnnamed7664() {
-  var o = <api.NetworkReportSpecDimensionFilter>[];
+  final o = <api.NetworkReportSpecDimensionFilter>[];
   o.add(buildNetworkReportSpecDimensionFilter());
   o.add(buildNetworkReportSpecDimensionFilter());
   return o;
@@ -627,14 +621,12 @@ core.List<api.NetworkReportSpecDimensionFilter> buildUnnamed7664() {
 
 void checkUnnamed7664(core.List<api.NetworkReportSpecDimensionFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNetworkReportSpecDimensionFilter(
-      o[0] as api.NetworkReportSpecDimensionFilter);
-  checkNetworkReportSpecDimensionFilter(
-      o[1] as api.NetworkReportSpecDimensionFilter);
+  checkNetworkReportSpecDimensionFilter(o[0]);
+  checkNetworkReportSpecDimensionFilter(o[1]);
 }
 
 core.List<core.String> buildUnnamed7665() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -653,7 +645,7 @@ void checkUnnamed7665(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed7666() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -672,7 +664,7 @@ void checkUnnamed7666(core.List<core.String> o) {
 }
 
 core.List<api.NetworkReportSpecSortCondition> buildUnnamed7667() {
-  var o = <api.NetworkReportSpecSortCondition>[];
+  final o = <api.NetworkReportSpecSortCondition>[];
   o.add(buildNetworkReportSpecSortCondition());
   o.add(buildNetworkReportSpecSortCondition());
   return o;
@@ -680,15 +672,13 @@ core.List<api.NetworkReportSpecSortCondition> buildUnnamed7667() {
 
 void checkUnnamed7667(core.List<api.NetworkReportSpecSortCondition> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNetworkReportSpecSortCondition(
-      o[0] as api.NetworkReportSpecSortCondition);
-  checkNetworkReportSpecSortCondition(
-      o[1] as api.NetworkReportSpecSortCondition);
+  checkNetworkReportSpecSortCondition(o[0]);
+  checkNetworkReportSpecSortCondition(o[1]);
 }
 
 core.int buildCounterNetworkReportSpec = 0;
 api.NetworkReportSpec buildNetworkReportSpec() {
-  var o = api.NetworkReportSpec();
+  final o = api.NetworkReportSpec();
   buildCounterNetworkReportSpec++;
   if (buildCounterNetworkReportSpec < 3) {
     o.dateRange = buildDateRange();
@@ -707,11 +697,10 @@ api.NetworkReportSpec buildNetworkReportSpec() {
 void checkNetworkReportSpec(api.NetworkReportSpec o) {
   buildCounterNetworkReportSpec++;
   if (buildCounterNetworkReportSpec < 3) {
-    checkDateRange(o.dateRange! as api.DateRange);
+    checkDateRange(o.dateRange!);
     checkUnnamed7664(o.dimensionFilters!);
     checkUnnamed7665(o.dimensions!);
-    checkLocalizationSettings(
-        o.localizationSettings! as api.LocalizationSettings);
+    checkLocalizationSettings(o.localizationSettings!);
     unittest.expect(
       o.maxReportRows!,
       unittest.equals(42),
@@ -728,7 +717,7 @@ void checkNetworkReportSpec(api.NetworkReportSpec o) {
 
 core.int buildCounterNetworkReportSpecDimensionFilter = 0;
 api.NetworkReportSpecDimensionFilter buildNetworkReportSpecDimensionFilter() {
-  var o = api.NetworkReportSpecDimensionFilter();
+  final o = api.NetworkReportSpecDimensionFilter();
   buildCounterNetworkReportSpecDimensionFilter++;
   if (buildCounterNetworkReportSpecDimensionFilter < 3) {
     o.dimension = 'foo';
@@ -746,14 +735,14 @@ void checkNetworkReportSpecDimensionFilter(
       o.dimension!,
       unittest.equals('foo'),
     );
-    checkStringList(o.matchesAny! as api.StringList);
+    checkStringList(o.matchesAny!);
   }
   buildCounterNetworkReportSpecDimensionFilter--;
 }
 
 core.int buildCounterNetworkReportSpecSortCondition = 0;
 api.NetworkReportSpecSortCondition buildNetworkReportSpecSortCondition() {
-  var o = api.NetworkReportSpecSortCondition();
+  final o = api.NetworkReportSpecSortCondition();
   buildCounterNetworkReportSpecSortCondition++;
   if (buildCounterNetworkReportSpecSortCondition < 3) {
     o.dimension = 'foo';
@@ -785,7 +774,7 @@ void checkNetworkReportSpecSortCondition(api.NetworkReportSpecSortCondition o) {
 
 core.int buildCounterPublisherAccount = 0;
 api.PublisherAccount buildPublisherAccount() {
-  var o = api.PublisherAccount();
+  final o = api.PublisherAccount();
   buildCounterPublisherAccount++;
   if (buildCounterPublisherAccount < 3) {
     o.currencyCode = 'foo';
@@ -821,7 +810,7 @@ void checkPublisherAccount(api.PublisherAccount o) {
 }
 
 core.List<api.ReportWarning> buildUnnamed7668() {
-  var o = <api.ReportWarning>[];
+  final o = <api.ReportWarning>[];
   o.add(buildReportWarning());
   o.add(buildReportWarning());
   return o;
@@ -829,13 +818,13 @@ core.List<api.ReportWarning> buildUnnamed7668() {
 
 void checkUnnamed7668(core.List<api.ReportWarning> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReportWarning(o[0] as api.ReportWarning);
-  checkReportWarning(o[1] as api.ReportWarning);
+  checkReportWarning(o[0]);
+  checkReportWarning(o[1]);
 }
 
 core.int buildCounterReportFooter = 0;
 api.ReportFooter buildReportFooter() {
-  var o = api.ReportFooter();
+  final o = api.ReportFooter();
   buildCounterReportFooter++;
   if (buildCounterReportFooter < 3) {
     o.matchingRowCount = 'foo';
@@ -859,7 +848,7 @@ void checkReportFooter(api.ReportFooter o) {
 
 core.int buildCounterReportHeader = 0;
 api.ReportHeader buildReportHeader() {
-  var o = api.ReportHeader();
+  final o = api.ReportHeader();
   buildCounterReportHeader++;
   if (buildCounterReportHeader < 3) {
     o.dateRange = buildDateRange();
@@ -873,9 +862,8 @@ api.ReportHeader buildReportHeader() {
 void checkReportHeader(api.ReportHeader o) {
   buildCounterReportHeader++;
   if (buildCounterReportHeader < 3) {
-    checkDateRange(o.dateRange! as api.DateRange);
-    checkLocalizationSettings(
-        o.localizationSettings! as api.LocalizationSettings);
+    checkDateRange(o.dateRange!);
+    checkLocalizationSettings(o.localizationSettings!);
     unittest.expect(
       o.reportingTimeZone!,
       unittest.equals('foo'),
@@ -885,7 +873,7 @@ void checkReportHeader(api.ReportHeader o) {
 }
 
 core.Map<core.String, api.ReportRowDimensionValue> buildUnnamed7669() {
-  var o = <core.String, api.ReportRowDimensionValue>{};
+  final o = <core.String, api.ReportRowDimensionValue>{};
   o['x'] = buildReportRowDimensionValue();
   o['y'] = buildReportRowDimensionValue();
   return o;
@@ -893,12 +881,12 @@ core.Map<core.String, api.ReportRowDimensionValue> buildUnnamed7669() {
 
 void checkUnnamed7669(core.Map<core.String, api.ReportRowDimensionValue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReportRowDimensionValue(o['x']! as api.ReportRowDimensionValue);
-  checkReportRowDimensionValue(o['y']! as api.ReportRowDimensionValue);
+  checkReportRowDimensionValue(o['x']!);
+  checkReportRowDimensionValue(o['y']!);
 }
 
 core.Map<core.String, api.ReportRowMetricValue> buildUnnamed7670() {
-  var o = <core.String, api.ReportRowMetricValue>{};
+  final o = <core.String, api.ReportRowMetricValue>{};
   o['x'] = buildReportRowMetricValue();
   o['y'] = buildReportRowMetricValue();
   return o;
@@ -906,13 +894,13 @@ core.Map<core.String, api.ReportRowMetricValue> buildUnnamed7670() {
 
 void checkUnnamed7670(core.Map<core.String, api.ReportRowMetricValue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReportRowMetricValue(o['x']! as api.ReportRowMetricValue);
-  checkReportRowMetricValue(o['y']! as api.ReportRowMetricValue);
+  checkReportRowMetricValue(o['x']!);
+  checkReportRowMetricValue(o['y']!);
 }
 
 core.int buildCounterReportRow = 0;
 api.ReportRow buildReportRow() {
-  var o = api.ReportRow();
+  final o = api.ReportRow();
   buildCounterReportRow++;
   if (buildCounterReportRow < 3) {
     o.dimensionValues = buildUnnamed7669();
@@ -933,7 +921,7 @@ void checkReportRow(api.ReportRow o) {
 
 core.int buildCounterReportRowDimensionValue = 0;
 api.ReportRowDimensionValue buildReportRowDimensionValue() {
-  var o = api.ReportRowDimensionValue();
+  final o = api.ReportRowDimensionValue();
   buildCounterReportRowDimensionValue++;
   if (buildCounterReportRowDimensionValue < 3) {
     o.displayLabel = 'foo';
@@ -960,7 +948,7 @@ void checkReportRowDimensionValue(api.ReportRowDimensionValue o) {
 
 core.int buildCounterReportRowMetricValue = 0;
 api.ReportRowMetricValue buildReportRowMetricValue() {
-  var o = api.ReportRowMetricValue();
+  final o = api.ReportRowMetricValue();
   buildCounterReportRowMetricValue++;
   if (buildCounterReportRowMetricValue < 3) {
     o.doubleValue = 42.0;
@@ -992,7 +980,7 @@ void checkReportRowMetricValue(api.ReportRowMetricValue o) {
 
 core.int buildCounterReportWarning = 0;
 api.ReportWarning buildReportWarning() {
-  var o = api.ReportWarning();
+  final o = api.ReportWarning();
   buildCounterReportWarning++;
   if (buildCounterReportWarning < 3) {
     o.description = 'foo';
@@ -1018,7 +1006,7 @@ void checkReportWarning(api.ReportWarning o) {
 }
 
 core.List<core.String> buildUnnamed7671() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1038,7 +1026,7 @@ void checkUnnamed7671(core.List<core.String> o) {
 
 core.int buildCounterStringList = 0;
 api.StringList buildStringList() {
-  var o = api.StringList();
+  final o = api.StringList();
   buildCounterStringList++;
   if (buildCounterStringList < 3) {
     o.values = buildUnnamed7671();
@@ -1058,322 +1046,315 @@ void checkStringList(api.StringList o) {
 void main() {
   unittest.group('obj-schema-AdUnit', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAdUnit();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildAdUnit();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.AdUnit.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkAdUnit(od as api.AdUnit);
+      checkAdUnit(od);
     });
   });
 
   unittest.group('obj-schema-App', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildApp();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.App.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkApp(od as api.App);
+      final o = buildApp();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.App.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkApp(od);
     });
   });
 
   unittest.group('obj-schema-AppLinkedAppInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAppLinkedAppInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AppLinkedAppInfo.fromJson(
+      final o = buildAppLinkedAppInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AppLinkedAppInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAppLinkedAppInfo(od as api.AppLinkedAppInfo);
+      checkAppLinkedAppInfo(od);
     });
   });
 
   unittest.group('obj-schema-AppManualAppInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAppManualAppInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AppManualAppInfo.fromJson(
+      final o = buildAppManualAppInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AppManualAppInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAppManualAppInfo(od as api.AppManualAppInfo);
+      checkAppManualAppInfo(od);
     });
   });
 
   unittest.group('obj-schema-Date', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDate();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Date.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkDate(od as api.Date);
+      final o = buildDate();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Date.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkDate(od);
     });
   });
 
   unittest.group('obj-schema-DateRange', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDateRange();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildDateRange();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.DateRange.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkDateRange(od as api.DateRange);
+      checkDateRange(od);
     });
   });
 
   unittest.group('obj-schema-GenerateMediationReportRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGenerateMediationReportRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GenerateMediationReportRequest.fromJson(
+      final o = buildGenerateMediationReportRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GenerateMediationReportRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGenerateMediationReportRequest(
-          od as api.GenerateMediationReportRequest);
+      checkGenerateMediationReportRequest(od);
     });
   });
 
   unittest.group('obj-schema-GenerateMediationReportResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGenerateMediationReportResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GenerateMediationReportResponse.fromJson(
+      final o = buildGenerateMediationReportResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GenerateMediationReportResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGenerateMediationReportResponse(
-          od as api.GenerateMediationReportResponse);
+      checkGenerateMediationReportResponse(od);
     });
   });
 
   unittest.group('obj-schema-GenerateNetworkReportRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGenerateNetworkReportRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GenerateNetworkReportRequest.fromJson(
+      final o = buildGenerateNetworkReportRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GenerateNetworkReportRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGenerateNetworkReportRequest(od as api.GenerateNetworkReportRequest);
+      checkGenerateNetworkReportRequest(od);
     });
   });
 
   unittest.group('obj-schema-GenerateNetworkReportResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGenerateNetworkReportResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GenerateNetworkReportResponse.fromJson(
+      final o = buildGenerateNetworkReportResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GenerateNetworkReportResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGenerateNetworkReportResponse(
-          od as api.GenerateNetworkReportResponse);
+      checkGenerateNetworkReportResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListAdUnitsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListAdUnitsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListAdUnitsResponse.fromJson(
+      final o = buildListAdUnitsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListAdUnitsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListAdUnitsResponse(od as api.ListAdUnitsResponse);
+      checkListAdUnitsResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListAppsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListAppsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListAppsResponse.fromJson(
+      final o = buildListAppsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListAppsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListAppsResponse(od as api.ListAppsResponse);
+      checkListAppsResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListPublisherAccountsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListPublisherAccountsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListPublisherAccountsResponse.fromJson(
+      final o = buildListPublisherAccountsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListPublisherAccountsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListPublisherAccountsResponse(
-          od as api.ListPublisherAccountsResponse);
+      checkListPublisherAccountsResponse(od);
     });
   });
 
   unittest.group('obj-schema-LocalizationSettings', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLocalizationSettings();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LocalizationSettings.fromJson(
+      final o = buildLocalizationSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LocalizationSettings.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLocalizationSettings(od as api.LocalizationSettings);
+      checkLocalizationSettings(od);
     });
   });
 
   unittest.group('obj-schema-MediationReportSpec', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildMediationReportSpec();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.MediationReportSpec.fromJson(
+      final o = buildMediationReportSpec();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MediationReportSpec.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkMediationReportSpec(od as api.MediationReportSpec);
+      checkMediationReportSpec(od);
     });
   });
 
   unittest.group('obj-schema-MediationReportSpecDimensionFilter', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildMediationReportSpecDimensionFilter();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.MediationReportSpecDimensionFilter.fromJson(
+      final o = buildMediationReportSpecDimensionFilter();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MediationReportSpecDimensionFilter.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkMediationReportSpecDimensionFilter(
-          od as api.MediationReportSpecDimensionFilter);
+      checkMediationReportSpecDimensionFilter(od);
     });
   });
 
   unittest.group('obj-schema-MediationReportSpecSortCondition', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildMediationReportSpecSortCondition();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.MediationReportSpecSortCondition.fromJson(
+      final o = buildMediationReportSpecSortCondition();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MediationReportSpecSortCondition.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkMediationReportSpecSortCondition(
-          od as api.MediationReportSpecSortCondition);
+      checkMediationReportSpecSortCondition(od);
     });
   });
 
   unittest.group('obj-schema-NetworkReportSpec', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildNetworkReportSpec();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.NetworkReportSpec.fromJson(
+      final o = buildNetworkReportSpec();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NetworkReportSpec.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkNetworkReportSpec(od as api.NetworkReportSpec);
+      checkNetworkReportSpec(od);
     });
   });
 
   unittest.group('obj-schema-NetworkReportSpecDimensionFilter', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildNetworkReportSpecDimensionFilter();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.NetworkReportSpecDimensionFilter.fromJson(
+      final o = buildNetworkReportSpecDimensionFilter();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NetworkReportSpecDimensionFilter.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkNetworkReportSpecDimensionFilter(
-          od as api.NetworkReportSpecDimensionFilter);
+      checkNetworkReportSpecDimensionFilter(od);
     });
   });
 
   unittest.group('obj-schema-NetworkReportSpecSortCondition', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildNetworkReportSpecSortCondition();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.NetworkReportSpecSortCondition.fromJson(
+      final o = buildNetworkReportSpecSortCondition();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NetworkReportSpecSortCondition.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkNetworkReportSpecSortCondition(
-          od as api.NetworkReportSpecSortCondition);
+      checkNetworkReportSpecSortCondition(od);
     });
   });
 
   unittest.group('obj-schema-PublisherAccount', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPublisherAccount();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PublisherAccount.fromJson(
+      final o = buildPublisherAccount();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PublisherAccount.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPublisherAccount(od as api.PublisherAccount);
+      checkPublisherAccount(od);
     });
   });
 
   unittest.group('obj-schema-ReportFooter', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReportFooter();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReportFooter.fromJson(
+      final o = buildReportFooter();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReportFooter.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReportFooter(od as api.ReportFooter);
+      checkReportFooter(od);
     });
   });
 
   unittest.group('obj-schema-ReportHeader', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReportHeader();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReportHeader.fromJson(
+      final o = buildReportHeader();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReportHeader.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReportHeader(od as api.ReportHeader);
+      checkReportHeader(od);
     });
   });
 
   unittest.group('obj-schema-ReportRow', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReportRow();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildReportRow();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.ReportRow.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkReportRow(od as api.ReportRow);
+      checkReportRow(od);
     });
   });
 
   unittest.group('obj-schema-ReportRowDimensionValue', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReportRowDimensionValue();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReportRowDimensionValue.fromJson(
+      final o = buildReportRowDimensionValue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReportRowDimensionValue.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReportRowDimensionValue(od as api.ReportRowDimensionValue);
+      checkReportRowDimensionValue(od);
     });
   });
 
   unittest.group('obj-schema-ReportRowMetricValue', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReportRowMetricValue();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReportRowMetricValue.fromJson(
+      final o = buildReportRowMetricValue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReportRowMetricValue.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReportRowMetricValue(od as api.ReportRowMetricValue);
+      checkReportRowMetricValue(od);
     });
   });
 
   unittest.group('obj-schema-ReportWarning', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReportWarning();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReportWarning.fromJson(
+      final o = buildReportWarning();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReportWarning.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReportWarning(od as api.ReportWarning);
+      checkReportWarning(od);
     });
   });
 
   unittest.group('obj-schema-StringList', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildStringList();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildStringList();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.StringList.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkStringList(od as api.StringList);
+      checkStringList(od);
     });
   });
 
   unittest.group('resource-AccountsResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.AdMobApi(mock).accounts;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AdMobApi(mock).accounts;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1381,14 +1362,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildPublisherAccount());
+        final resp = convert.json.encode(buildPublisherAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -1396,36 +1377,36 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.AdMobApi(mock).accounts;
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AdMobApi(mock).accounts;
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 11),
-          unittest.equals("v1/accounts"),
+          unittest.equals('v1/accounts'),
         );
         pathOffset += 11;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1433,22 +1414,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListPublisherAccountsResponse());
+        final resp = convert.json.encode(buildListPublisherAccountsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(
@@ -1462,38 +1443,38 @@ void main() {
 
   unittest.group('resource-AccountsAdUnitsResource', () {
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.AdMobApi(mock).accounts.adUnits;
-      var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AdMobApi(mock).accounts.adUnits;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1501,22 +1482,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListAdUnitsResponse());
+        final resp = convert.json.encode(buildListAdUnitsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
@@ -1529,38 +1510,38 @@ void main() {
 
   unittest.group('resource-AccountsAppsResource', () {
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.AdMobApi(mock).accounts.apps;
-      var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AdMobApi(mock).accounts.apps;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1568,22 +1549,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListAppsResponse());
+        final resp = convert.json.encode(buildListAppsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
@@ -1596,42 +1577,41 @@ void main() {
 
   unittest.group('resource-AccountsMediationReportResource', () {
     unittest.test('method--generate', () async {
-      var mock = HttpServerMock();
-      var res = api.AdMobApi(mock).accounts.mediationReport;
-      var arg_request = buildGenerateMediationReportRequest();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AdMobApi(mock).accounts.mediationReport;
+      final arg_request = buildGenerateMediationReportRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GenerateMediationReportRequest.fromJson(
+        final obj = api.GenerateMediationReportRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGenerateMediationReportRequest(
-            obj as api.GenerateMediationReportRequest);
+        checkGenerateMediationReportRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1639,14 +1619,15 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGenerateMediationReportResponse());
+        final resp =
+            convert.json.encode(buildGenerateMediationReportResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -1658,42 +1639,41 @@ void main() {
 
   unittest.group('resource-AccountsNetworkReportResource', () {
     unittest.test('method--generate', () async {
-      var mock = HttpServerMock();
-      var res = api.AdMobApi(mock).accounts.networkReport;
-      var arg_request = buildGenerateNetworkReportRequest();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AdMobApi(mock).accounts.networkReport;
+      final arg_request = buildGenerateNetworkReportRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GenerateNetworkReportRequest.fromJson(
+        final obj = api.GenerateNetworkReportRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGenerateNetworkReportRequest(
-            obj as api.GenerateNetworkReportRequest);
+        checkGenerateNetworkReportRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1701,14 +1681,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGenerateNetworkReportResponse());
+        final resp = convert.json.encode(buildGenerateNetworkReportResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =

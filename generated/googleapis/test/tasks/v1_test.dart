@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -29,7 +28,7 @@ import '../test_shared.dart';
 
 core.int buildCounterTaskLinks = 0;
 api.TaskLinks buildTaskLinks() {
-  var o = api.TaskLinks();
+  final o = api.TaskLinks();
   buildCounterTaskLinks++;
   if (buildCounterTaskLinks < 3) {
     o.description = 'foo';
@@ -60,7 +59,7 @@ void checkTaskLinks(api.TaskLinks o) {
 }
 
 core.List<api.TaskLinks> buildUnnamed7789() {
-  var o = <api.TaskLinks>[];
+  final o = <api.TaskLinks>[];
   o.add(buildTaskLinks());
   o.add(buildTaskLinks());
   return o;
@@ -68,13 +67,13 @@ core.List<api.TaskLinks> buildUnnamed7789() {
 
 void checkUnnamed7789(core.List<api.TaskLinks> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTaskLinks(o[0] as api.TaskLinks);
-  checkTaskLinks(o[1] as api.TaskLinks);
+  checkTaskLinks(o[0]);
+  checkTaskLinks(o[1]);
 }
 
 core.int buildCounterTask = 0;
 api.Task buildTask() {
-  var o = api.Task();
+  final o = api.Task();
   buildCounterTask++;
   if (buildCounterTask < 3) {
     o.completed = 'foo';
@@ -157,7 +156,7 @@ void checkTask(api.Task o) {
 
 core.int buildCounterTaskList = 0;
 api.TaskList buildTaskList() {
-  var o = api.TaskList();
+  final o = api.TaskList();
   buildCounterTaskList++;
   if (buildCounterTaskList < 3) {
     o.etag = 'foo';
@@ -203,7 +202,7 @@ void checkTaskList(api.TaskList o) {
 }
 
 core.List<api.TaskList> buildUnnamed7790() {
-  var o = <api.TaskList>[];
+  final o = <api.TaskList>[];
   o.add(buildTaskList());
   o.add(buildTaskList());
   return o;
@@ -211,13 +210,13 @@ core.List<api.TaskList> buildUnnamed7790() {
 
 void checkUnnamed7790(core.List<api.TaskList> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTaskList(o[0] as api.TaskList);
-  checkTaskList(o[1] as api.TaskList);
+  checkTaskList(o[0]);
+  checkTaskList(o[1]);
 }
 
 core.int buildCounterTaskLists = 0;
 api.TaskLists buildTaskLists() {
-  var o = api.TaskLists();
+  final o = api.TaskLists();
   buildCounterTaskLists++;
   if (buildCounterTaskLists < 3) {
     o.etag = 'foo';
@@ -250,7 +249,7 @@ void checkTaskLists(api.TaskLists o) {
 }
 
 core.List<api.Task> buildUnnamed7791() {
-  var o = <api.Task>[];
+  final o = <api.Task>[];
   o.add(buildTask());
   o.add(buildTask());
   return o;
@@ -258,13 +257,13 @@ core.List<api.Task> buildUnnamed7791() {
 
 void checkUnnamed7791(core.List<api.Task> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTask(o[0] as api.Task);
-  checkTask(o[1] as api.Task);
+  checkTask(o[0]);
+  checkTask(o[1]);
 }
 
 core.int buildCounterTasks = 0;
 api.Tasks buildTasks() {
-  var o = api.Tasks();
+  final o = api.Tasks();
   buildCounterTasks++;
   if (buildCounterTasks < 3) {
     o.etag = 'foo';
@@ -299,71 +298,73 @@ void checkTasks(api.Tasks o) {
 void main() {
   unittest.group('obj-schema-TaskLinks', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTaskLinks();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildTaskLinks();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.TaskLinks.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkTaskLinks(od as api.TaskLinks);
+      checkTaskLinks(od);
     });
   });
 
   unittest.group('obj-schema-Task', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTask();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Task.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkTask(od as api.Task);
+      final o = buildTask();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Task.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkTask(od);
     });
   });
 
   unittest.group('obj-schema-TaskList', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTaskList();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildTaskList();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.TaskList.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkTaskList(od as api.TaskList);
+      checkTaskList(od);
     });
   });
 
   unittest.group('obj-schema-TaskLists', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTaskLists();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildTaskLists();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.TaskLists.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkTaskLists(od as api.TaskLists);
+      checkTaskLists(od);
     });
   });
 
   unittest.group('obj-schema-Tasks', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTasks();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Tasks.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkTasks(od as api.Tasks);
+      final o = buildTasks();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Tasks.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkTasks(od);
     });
   });
 
   unittest.group('resource-TasklistsResource', () {
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.TasksApi(mock).tasklists;
-      var arg_tasklist = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.TasksApi(mock).tasklists;
+      final arg_tasklist = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 25),
-          unittest.equals("tasks/v1/users/@me/lists/"),
+          unittest.equals('tasks/v1/users/@me/lists/'),
         );
         pathOffset += 25;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -373,15 +374,15 @@ void main() {
           unittest.equals('$arg_tasklist'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -389,37 +390,37 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_tasklist, $fields: arg_$fields);
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.TasksApi(mock).tasklists;
-      var arg_tasklist = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.TasksApi(mock).tasklists;
+      final arg_tasklist = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 25),
-          unittest.equals("tasks/v1/users/@me/lists/"),
+          unittest.equals('tasks/v1/users/@me/lists/'),
         );
         pathOffset += 25;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -429,15 +430,15 @@ void main() {
           unittest.equals('$arg_tasklist'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -445,14 +446,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildTaskList());
+        final resp = convert.json.encode(buildTaskList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_tasklist, $fields: arg_$fields);
@@ -460,39 +461,39 @@ void main() {
     });
 
     unittest.test('method--insert', () async {
-      var mock = HttpServerMock();
-      var res = api.TasksApi(mock).tasklists;
-      var arg_request = buildTaskList();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.TasksApi(mock).tasklists;
+      final arg_request = buildTaskList();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.TaskList.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkTaskList(obj as api.TaskList);
+        checkTaskList(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 24),
-          unittest.equals("tasks/v1/users/@me/lists"),
+          unittest.equals('tasks/v1/users/@me/lists'),
         );
         pathOffset += 24;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -500,14 +501,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildTaskList());
+        final resp = convert.json.encode(buildTaskList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.insert(arg_request, $fields: arg_$fields);
@@ -515,36 +516,36 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.TasksApi(mock).tasklists;
-      var arg_maxResults = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.TasksApi(mock).tasklists;
+      final arg_maxResults = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 24),
-          unittest.equals("tasks/v1/users/@me/lists"),
+          unittest.equals('tasks/v1/users/@me/lists'),
         );
         pathOffset += 24;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -552,22 +553,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["maxResults"]!.first),
+          core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildTaskLists());
+        final resp = convert.json.encode(buildTaskLists());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(
@@ -578,28 +579,28 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.TasksApi(mock).tasklists;
-      var arg_request = buildTaskList();
-      var arg_tasklist = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.TasksApi(mock).tasklists;
+      final arg_request = buildTaskList();
+      final arg_tasklist = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.TaskList.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkTaskList(obj as api.TaskList);
+        checkTaskList(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 25),
-          unittest.equals("tasks/v1/users/@me/lists/"),
+          unittest.equals('tasks/v1/users/@me/lists/'),
         );
         pathOffset += 25;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -609,15 +610,15 @@ void main() {
           unittest.equals('$arg_tasklist'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -625,14 +626,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildTaskList());
+        final resp = convert.json.encode(buildTaskList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -641,28 +642,28 @@ void main() {
     });
 
     unittest.test('method--update', () async {
-      var mock = HttpServerMock();
-      var res = api.TasksApi(mock).tasklists;
-      var arg_request = buildTaskList();
-      var arg_tasklist = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.TasksApi(mock).tasklists;
+      final arg_request = buildTaskList();
+      final arg_tasklist = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.TaskList.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkTaskList(obj as api.TaskList);
+        checkTaskList(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 25),
-          unittest.equals("tasks/v1/users/@me/lists/"),
+          unittest.equals('tasks/v1/users/@me/lists/'),
         );
         pathOffset += 25;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -672,15 +673,15 @@ void main() {
           unittest.equals('$arg_tasklist'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -688,14 +689,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildTaskList());
+        final resp = convert.json.encode(buildTaskList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -706,23 +707,23 @@ void main() {
 
   unittest.group('resource-TasksResource', () {
     unittest.test('method--clear', () async {
-      var mock = HttpServerMock();
-      var res = api.TasksApi(mock).tasks;
-      var arg_tasklist = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.TasksApi(mock).tasks;
+      final arg_tasklist = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("tasks/v1/lists/"),
+          unittest.equals('tasks/v1/lists/'),
         );
         pathOffset += 15;
         index = path.indexOf('/clear', pathOffset);
@@ -736,19 +737,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 6),
-          unittest.equals("/clear"),
+          unittest.equals('/clear'),
         );
         pathOffset += 6;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -756,38 +757,38 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.clear(arg_tasklist, $fields: arg_$fields);
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.TasksApi(mock).tasks;
-      var arg_tasklist = 'foo';
-      var arg_task = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.TasksApi(mock).tasks;
+      final arg_tasklist = 'foo';
+      final arg_task = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("tasks/v1/lists/"),
+          unittest.equals('tasks/v1/lists/'),
         );
         pathOffset += 15;
         index = path.indexOf('/tasks/', pathOffset);
@@ -801,7 +802,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 7),
-          unittest.equals("/tasks/"),
+          unittest.equals('/tasks/'),
         );
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -811,15 +812,15 @@ void main() {
           unittest.equals('$arg_task'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -827,38 +828,38 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_tasklist, arg_task, $fields: arg_$fields);
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.TasksApi(mock).tasks;
-      var arg_tasklist = 'foo';
-      var arg_task = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.TasksApi(mock).tasks;
+      final arg_tasklist = 'foo';
+      final arg_task = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("tasks/v1/lists/"),
+          unittest.equals('tasks/v1/lists/'),
         );
         pathOffset += 15;
         index = path.indexOf('/tasks/', pathOffset);
@@ -872,7 +873,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 7),
-          unittest.equals("/tasks/"),
+          unittest.equals('/tasks/'),
         );
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -882,15 +883,15 @@ void main() {
           unittest.equals('$arg_task'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -898,14 +899,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildTask());
+        final resp = convert.json.encode(buildTask());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -914,30 +915,30 @@ void main() {
     });
 
     unittest.test('method--insert', () async {
-      var mock = HttpServerMock();
-      var res = api.TasksApi(mock).tasks;
-      var arg_request = buildTask();
-      var arg_tasklist = 'foo';
-      var arg_parent = 'foo';
-      var arg_previous = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.TasksApi(mock).tasks;
+      final arg_request = buildTask();
+      final arg_tasklist = 'foo';
+      final arg_parent = 'foo';
+      final arg_previous = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Task.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkTask(obj as api.Task);
+        checkTask(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("tasks/v1/lists/"),
+          unittest.equals('tasks/v1/lists/'),
         );
         pathOffset += 15;
         index = path.indexOf('/tasks', pathOffset);
@@ -951,19 +952,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 6),
-          unittest.equals("/tasks"),
+          unittest.equals('/tasks'),
         );
         pathOffset += 6;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -971,22 +972,22 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["parent"]!.first,
+          queryMap['parent']!.first,
           unittest.equals(arg_parent),
         );
         unittest.expect(
-          queryMap["previous"]!.first,
+          queryMap['previous']!.first,
           unittest.equals(arg_previous),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildTask());
+        final resp = convert.json.encode(buildTask());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.insert(arg_request, arg_tasklist,
@@ -995,33 +996,33 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.TasksApi(mock).tasks;
-      var arg_tasklist = 'foo';
-      var arg_completedMax = 'foo';
-      var arg_completedMin = 'foo';
-      var arg_dueMax = 'foo';
-      var arg_dueMin = 'foo';
-      var arg_maxResults = 42;
-      var arg_pageToken = 'foo';
-      var arg_showCompleted = true;
-      var arg_showDeleted = true;
-      var arg_showHidden = true;
-      var arg_updatedMin = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.TasksApi(mock).tasks;
+      final arg_tasklist = 'foo';
+      final arg_completedMax = 'foo';
+      final arg_completedMin = 'foo';
+      final arg_dueMax = 'foo';
+      final arg_dueMin = 'foo';
+      final arg_maxResults = 42;
+      final arg_pageToken = 'foo';
+      final arg_showCompleted = true;
+      final arg_showDeleted = true;
+      final arg_showHidden = true;
+      final arg_updatedMin = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("tasks/v1/lists/"),
+          unittest.equals('tasks/v1/lists/'),
         );
         pathOffset += 15;
         index = path.indexOf('/tasks', pathOffset);
@@ -1035,19 +1036,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 6),
-          unittest.equals("/tasks"),
+          unittest.equals('/tasks'),
         );
         pathOffset += 6;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1055,54 +1056,54 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["completedMax"]!.first,
+          queryMap['completedMax']!.first,
           unittest.equals(arg_completedMax),
         );
         unittest.expect(
-          queryMap["completedMin"]!.first,
+          queryMap['completedMin']!.first,
           unittest.equals(arg_completedMin),
         );
         unittest.expect(
-          queryMap["dueMax"]!.first,
+          queryMap['dueMax']!.first,
           unittest.equals(arg_dueMax),
         );
         unittest.expect(
-          queryMap["dueMin"]!.first,
+          queryMap['dueMin']!.first,
           unittest.equals(arg_dueMin),
         );
         unittest.expect(
-          core.int.parse(queryMap["maxResults"]!.first),
+          core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["showCompleted"]!.first,
-          unittest.equals("$arg_showCompleted"),
+          queryMap['showCompleted']!.first,
+          unittest.equals('$arg_showCompleted'),
         );
         unittest.expect(
-          queryMap["showDeleted"]!.first,
-          unittest.equals("$arg_showDeleted"),
+          queryMap['showDeleted']!.first,
+          unittest.equals('$arg_showDeleted'),
         );
         unittest.expect(
-          queryMap["showHidden"]!.first,
-          unittest.equals("$arg_showHidden"),
+          queryMap['showHidden']!.first,
+          unittest.equals('$arg_showHidden'),
         );
         unittest.expect(
-          queryMap["updatedMin"]!.first,
+          queryMap['updatedMin']!.first,
           unittest.equals(arg_updatedMin),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildTasks());
+        final resp = convert.json.encode(buildTasks());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_tasklist,
@@ -1121,26 +1122,26 @@ void main() {
     });
 
     unittest.test('method--move', () async {
-      var mock = HttpServerMock();
-      var res = api.TasksApi(mock).tasks;
-      var arg_tasklist = 'foo';
-      var arg_task = 'foo';
-      var arg_parent = 'foo';
-      var arg_previous = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.TasksApi(mock).tasks;
+      final arg_tasklist = 'foo';
+      final arg_task = 'foo';
+      final arg_parent = 'foo';
+      final arg_previous = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("tasks/v1/lists/"),
+          unittest.equals('tasks/v1/lists/'),
         );
         pathOffset += 15;
         index = path.indexOf('/tasks/', pathOffset);
@@ -1154,7 +1155,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 7),
-          unittest.equals("/tasks/"),
+          unittest.equals('/tasks/'),
         );
         pathOffset += 7;
         index = path.indexOf('/move', pathOffset);
@@ -1168,19 +1169,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 5),
-          unittest.equals("/move"),
+          unittest.equals('/move'),
         );
         pathOffset += 5;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1188,22 +1189,22 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["parent"]!.first,
+          queryMap['parent']!.first,
           unittest.equals(arg_parent),
         );
         unittest.expect(
-          queryMap["previous"]!.first,
+          queryMap['previous']!.first,
           unittest.equals(arg_previous),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildTask());
+        final resp = convert.json.encode(buildTask());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.move(arg_tasklist, arg_task,
@@ -1212,29 +1213,29 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.TasksApi(mock).tasks;
-      var arg_request = buildTask();
-      var arg_tasklist = 'foo';
-      var arg_task = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.TasksApi(mock).tasks;
+      final arg_request = buildTask();
+      final arg_tasklist = 'foo';
+      final arg_task = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Task.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkTask(obj as api.Task);
+        checkTask(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("tasks/v1/lists/"),
+          unittest.equals('tasks/v1/lists/'),
         );
         pathOffset += 15;
         index = path.indexOf('/tasks/', pathOffset);
@@ -1248,7 +1249,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 7),
-          unittest.equals("/tasks/"),
+          unittest.equals('/tasks/'),
         );
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -1258,15 +1259,15 @@ void main() {
           unittest.equals('$arg_task'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1274,14 +1275,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildTask());
+        final resp = convert.json.encode(buildTask());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_tasklist, arg_task,
@@ -1290,29 +1291,29 @@ void main() {
     });
 
     unittest.test('method--update', () async {
-      var mock = HttpServerMock();
-      var res = api.TasksApi(mock).tasks;
-      var arg_request = buildTask();
-      var arg_tasklist = 'foo';
-      var arg_task = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.TasksApi(mock).tasks;
+      final arg_request = buildTask();
+      final arg_tasklist = 'foo';
+      final arg_task = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Task.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkTask(obj as api.Task);
+        checkTask(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("tasks/v1/lists/"),
+          unittest.equals('tasks/v1/lists/'),
         );
         pathOffset += 15;
         index = path.indexOf('/tasks/', pathOffset);
@@ -1326,7 +1327,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 7),
-          unittest.equals("/tasks/"),
+          unittest.equals('/tasks/'),
         );
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -1336,15 +1337,15 @@ void main() {
           unittest.equals('$arg_task'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1352,14 +1353,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildTask());
+        final resp = convert.json.encode(buildTask());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.update(arg_request, arg_tasklist, arg_task,

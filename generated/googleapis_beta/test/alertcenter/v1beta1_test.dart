@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -29,7 +28,7 @@ import '../test_shared.dart';
 
 core.int buildCounterAccountWarning = 0;
 api.AccountWarning buildAccountWarning() {
-  var o = api.AccountWarning();
+  final o = api.AccountWarning();
   buildCounterAccountWarning++;
   if (buildCounterAccountWarning < 3) {
     o.email = 'foo';
@@ -46,14 +45,14 @@ void checkAccountWarning(api.AccountWarning o) {
       o.email!,
       unittest.equals('foo'),
     );
-    checkLoginDetails(o.loginDetails! as api.LoginDetails);
+    checkLoginDetails(o.loginDetails!);
   }
   buildCounterAccountWarning--;
 }
 
 core.int buildCounterActionInfo = 0;
 api.ActionInfo buildActionInfo() {
-  var o = api.ActionInfo();
+  final o = api.ActionInfo();
   buildCounterActionInfo++;
   if (buildCounterActionInfo < 3) {}
   buildCounterActionInfo--;
@@ -67,7 +66,7 @@ void checkActionInfo(api.ActionInfo o) {
 }
 
 core.List<core.String> buildUnnamed8781() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -86,7 +85,7 @@ void checkUnnamed8781(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed8782() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -106,7 +105,7 @@ void checkUnnamed8782(core.List<core.String> o) {
 
 core.int buildCounterActivityRule = 0;
 api.ActivityRule buildActivityRule() {
-  var o = api.ActivityRule();
+  final o = api.ActivityRule();
   buildCounterActivityRule++;
   if (buildCounterActivityRule < 3) {
     o.actionNames = buildUnnamed8781();
@@ -176,7 +175,7 @@ void checkActivityRule(api.ActivityRule o) {
 }
 
 core.Map<core.String, core.Object> buildUnnamed8783() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -224,7 +223,7 @@ void checkUnnamed8783(core.Map<core.String, core.Object> o) {
 
 core.int buildCounterAlert = 0;
 api.Alert buildAlert() {
-  var o = api.Alert();
+  final o = api.Alert();
   buildCounterAlert++;
   if (buildCounterAlert < 3) {
     o.alertId = 'foo';
@@ -270,7 +269,7 @@ void checkAlert(api.Alert o) {
       o.etag!,
       unittest.equals('foo'),
     );
-    checkAlertMetadata(o.metadata! as api.AlertMetadata);
+    checkAlertMetadata(o.metadata!);
     unittest.expect(
       o.securityInvestigationToolLink!,
       unittest.equals('foo'),
@@ -297,7 +296,7 @@ void checkAlert(api.Alert o) {
 
 core.int buildCounterAlertFeedback = 0;
 api.AlertFeedback buildAlertFeedback() {
-  var o = api.AlertFeedback();
+  final o = api.AlertFeedback();
   buildCounterAlertFeedback++;
   if (buildCounterAlertFeedback < 3) {
     o.alertId = 'foo';
@@ -344,7 +343,7 @@ void checkAlertFeedback(api.AlertFeedback o) {
 
 core.int buildCounterAlertMetadata = 0;
 api.AlertMetadata buildAlertMetadata() {
-  var o = api.AlertMetadata();
+  final o = api.AlertMetadata();
   buildCounterAlertMetadata++;
   if (buildCounterAlertMetadata < 3) {
     o.alertId = 'foo';
@@ -395,7 +394,7 @@ void checkAlertMetadata(api.AlertMetadata o) {
 }
 
 core.List<api.RequestInfo> buildUnnamed8784() {
-  var o = <api.RequestInfo>[];
+  final o = <api.RequestInfo>[];
   o.add(buildRequestInfo());
   o.add(buildRequestInfo());
   return o;
@@ -403,13 +402,13 @@ core.List<api.RequestInfo> buildUnnamed8784() {
 
 void checkUnnamed8784(core.List<api.RequestInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRequestInfo(o[0] as api.RequestInfo);
-  checkRequestInfo(o[1] as api.RequestInfo);
+  checkRequestInfo(o[0]);
+  checkRequestInfo(o[1]);
 }
 
 core.int buildCounterAppMakerSqlSetupNotification = 0;
 api.AppMakerSqlSetupNotification buildAppMakerSqlSetupNotification() {
-  var o = api.AppMakerSqlSetupNotification();
+  final o = api.AppMakerSqlSetupNotification();
   buildCounterAppMakerSqlSetupNotification++;
   if (buildCounterAppMakerSqlSetupNotification < 3) {
     o.requestInfo = buildUnnamed8784();
@@ -428,7 +427,7 @@ void checkAppMakerSqlSetupNotification(api.AppMakerSqlSetupNotification o) {
 
 core.int buildCounterAppSettingsChanged = 0;
 api.AppSettingsChanged buildAppSettingsChanged() {
-  var o = api.AppSettingsChanged();
+  final o = api.AppSettingsChanged();
   buildCounterAppSettingsChanged++;
   if (buildCounterAppSettingsChanged < 3) {
     o.alertDetails = 'foo';
@@ -455,7 +454,7 @@ void checkAppSettingsChanged(api.AppSettingsChanged o) {
 
 core.int buildCounterAttachment = 0;
 api.Attachment buildAttachment() {
-  var o = api.Attachment();
+  final o = api.Attachment();
   buildCounterAttachment++;
   if (buildCounterAttachment < 3) {
     o.csv = buildCsv();
@@ -467,13 +466,13 @@ api.Attachment buildAttachment() {
 void checkAttachment(api.Attachment o) {
   buildCounterAttachment++;
   if (buildCounterAttachment < 3) {
-    checkCsv(o.csv! as api.Csv);
+    checkCsv(o.csv!);
   }
   buildCounterAttachment--;
 }
 
 core.List<api.GmailMessageInfo> buildUnnamed8785() {
-  var o = <api.GmailMessageInfo>[];
+  final o = <api.GmailMessageInfo>[];
   o.add(buildGmailMessageInfo());
   o.add(buildGmailMessageInfo());
   return o;
@@ -481,13 +480,13 @@ core.List<api.GmailMessageInfo> buildUnnamed8785() {
 
 void checkUnnamed8785(core.List<api.GmailMessageInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGmailMessageInfo(o[0] as api.GmailMessageInfo);
-  checkGmailMessageInfo(o[1] as api.GmailMessageInfo);
+  checkGmailMessageInfo(o[0]);
+  checkGmailMessageInfo(o[1]);
 }
 
 core.int buildCounterBadWhitelist = 0;
 api.BadWhitelist buildBadWhitelist() {
-  var o = api.BadWhitelist();
+  final o = api.BadWhitelist();
   buildCounterBadWhitelist++;
   if (buildCounterBadWhitelist < 3) {
     o.domainId = buildDomainId();
@@ -502,8 +501,8 @@ api.BadWhitelist buildBadWhitelist() {
 void checkBadWhitelist(api.BadWhitelist o) {
   buildCounterBadWhitelist++;
   if (buildCounterBadWhitelist < 3) {
-    checkDomainId(o.domainId! as api.DomainId);
-    checkMaliciousEntity(o.maliciousEntity! as api.MaliciousEntity);
+    checkDomainId(o.domainId!);
+    checkMaliciousEntity(o.maliciousEntity!);
     checkUnnamed8785(o.messages!);
     unittest.expect(
       o.sourceIp!,
@@ -514,7 +513,7 @@ void checkBadWhitelist(api.BadWhitelist o) {
 }
 
 core.List<core.String> buildUnnamed8786() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -534,7 +533,7 @@ void checkUnnamed8786(core.List<core.String> o) {
 
 core.int buildCounterBatchDeleteAlertsRequest = 0;
 api.BatchDeleteAlertsRequest buildBatchDeleteAlertsRequest() {
-  var o = api.BatchDeleteAlertsRequest();
+  final o = api.BatchDeleteAlertsRequest();
   buildCounterBatchDeleteAlertsRequest++;
   if (buildCounterBatchDeleteAlertsRequest < 3) {
     o.alertId = buildUnnamed8786();
@@ -557,7 +556,7 @@ void checkBatchDeleteAlertsRequest(api.BatchDeleteAlertsRequest o) {
 }
 
 core.Map<core.String, api.Status> buildUnnamed8787() {
-  var o = <core.String, api.Status>{};
+  final o = <core.String, api.Status>{};
   o['x'] = buildStatus();
   o['y'] = buildStatus();
   return o;
@@ -565,12 +564,12 @@ core.Map<core.String, api.Status> buildUnnamed8787() {
 
 void checkUnnamed8787(core.Map<core.String, api.Status> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkStatus(o['x']! as api.Status);
-  checkStatus(o['y']! as api.Status);
+  checkStatus(o['x']!);
+  checkStatus(o['y']!);
 }
 
 core.List<core.String> buildUnnamed8788() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -590,7 +589,7 @@ void checkUnnamed8788(core.List<core.String> o) {
 
 core.int buildCounterBatchDeleteAlertsResponse = 0;
 api.BatchDeleteAlertsResponse buildBatchDeleteAlertsResponse() {
-  var o = api.BatchDeleteAlertsResponse();
+  final o = api.BatchDeleteAlertsResponse();
   buildCounterBatchDeleteAlertsResponse++;
   if (buildCounterBatchDeleteAlertsResponse < 3) {
     o.failedAlertStatus = buildUnnamed8787();
@@ -610,7 +609,7 @@ void checkBatchDeleteAlertsResponse(api.BatchDeleteAlertsResponse o) {
 }
 
 core.List<core.String> buildUnnamed8789() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -630,7 +629,7 @@ void checkUnnamed8789(core.List<core.String> o) {
 
 core.int buildCounterBatchUndeleteAlertsRequest = 0;
 api.BatchUndeleteAlertsRequest buildBatchUndeleteAlertsRequest() {
-  var o = api.BatchUndeleteAlertsRequest();
+  final o = api.BatchUndeleteAlertsRequest();
   buildCounterBatchUndeleteAlertsRequest++;
   if (buildCounterBatchUndeleteAlertsRequest < 3) {
     o.alertId = buildUnnamed8789();
@@ -653,7 +652,7 @@ void checkBatchUndeleteAlertsRequest(api.BatchUndeleteAlertsRequest o) {
 }
 
 core.Map<core.String, api.Status> buildUnnamed8790() {
-  var o = <core.String, api.Status>{};
+  final o = <core.String, api.Status>{};
   o['x'] = buildStatus();
   o['y'] = buildStatus();
   return o;
@@ -661,12 +660,12 @@ core.Map<core.String, api.Status> buildUnnamed8790() {
 
 void checkUnnamed8790(core.Map<core.String, api.Status> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkStatus(o['x']! as api.Status);
-  checkStatus(o['y']! as api.Status);
+  checkStatus(o['x']!);
+  checkStatus(o['y']!);
 }
 
 core.List<core.String> buildUnnamed8791() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -686,7 +685,7 @@ void checkUnnamed8791(core.List<core.String> o) {
 
 core.int buildCounterBatchUndeleteAlertsResponse = 0;
 api.BatchUndeleteAlertsResponse buildBatchUndeleteAlertsResponse() {
-  var o = api.BatchUndeleteAlertsResponse();
+  final o = api.BatchUndeleteAlertsResponse();
   buildCounterBatchUndeleteAlertsResponse++;
   if (buildCounterBatchUndeleteAlertsResponse < 3) {
     o.failedAlertStatus = buildUnnamed8790();
@@ -707,7 +706,7 @@ void checkBatchUndeleteAlertsResponse(api.BatchUndeleteAlertsResponse o) {
 
 core.int buildCounterCloudPubsubTopic = 0;
 api.CloudPubsubTopic buildCloudPubsubTopic() {
-  var o = api.CloudPubsubTopic();
+  final o = api.CloudPubsubTopic();
   buildCounterCloudPubsubTopic++;
   if (buildCounterCloudPubsubTopic < 3) {
     o.payloadFormat = 'foo';
@@ -733,7 +732,7 @@ void checkCloudPubsubTopic(api.CloudPubsubTopic o) {
 }
 
 core.List<api.CsvRow> buildUnnamed8792() {
-  var o = <api.CsvRow>[];
+  final o = <api.CsvRow>[];
   o.add(buildCsvRow());
   o.add(buildCsvRow());
   return o;
@@ -741,12 +740,12 @@ core.List<api.CsvRow> buildUnnamed8792() {
 
 void checkUnnamed8792(core.List<api.CsvRow> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCsvRow(o[0] as api.CsvRow);
-  checkCsvRow(o[1] as api.CsvRow);
+  checkCsvRow(o[0]);
+  checkCsvRow(o[1]);
 }
 
 core.List<core.String> buildUnnamed8793() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -766,7 +765,7 @@ void checkUnnamed8793(core.List<core.String> o) {
 
 core.int buildCounterCsv = 0;
 api.Csv buildCsv() {
-  var o = api.Csv();
+  final o = api.Csv();
   buildCounterCsv++;
   if (buildCounterCsv < 3) {
     o.dataRows = buildUnnamed8792();
@@ -786,7 +785,7 @@ void checkCsv(api.Csv o) {
 }
 
 core.List<core.String> buildUnnamed8794() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -806,7 +805,7 @@ void checkUnnamed8794(core.List<core.String> o) {
 
 core.int buildCounterCsvRow = 0;
 api.CsvRow buildCsvRow() {
-  var o = api.CsvRow();
+  final o = api.CsvRow();
   buildCounterCsvRow++;
   if (buildCounterCsvRow < 3) {
     o.entries = buildUnnamed8794();
@@ -824,7 +823,7 @@ void checkCsvRow(api.CsvRow o) {
 }
 
 core.List<api.DeviceCompromisedSecurityDetail> buildUnnamed8795() {
-  var o = <api.DeviceCompromisedSecurityDetail>[];
+  final o = <api.DeviceCompromisedSecurityDetail>[];
   o.add(buildDeviceCompromisedSecurityDetail());
   o.add(buildDeviceCompromisedSecurityDetail());
   return o;
@@ -832,15 +831,13 @@ core.List<api.DeviceCompromisedSecurityDetail> buildUnnamed8795() {
 
 void checkUnnamed8795(core.List<api.DeviceCompromisedSecurityDetail> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDeviceCompromisedSecurityDetail(
-      o[0] as api.DeviceCompromisedSecurityDetail);
-  checkDeviceCompromisedSecurityDetail(
-      o[1] as api.DeviceCompromisedSecurityDetail);
+  checkDeviceCompromisedSecurityDetail(o[0]);
+  checkDeviceCompromisedSecurityDetail(o[1]);
 }
 
 core.int buildCounterDeviceCompromised = 0;
 api.DeviceCompromised buildDeviceCompromised() {
-  var o = api.DeviceCompromised();
+  final o = api.DeviceCompromised();
   buildCounterDeviceCompromised++;
   if (buildCounterDeviceCompromised < 3) {
     o.email = 'foo';
@@ -864,7 +861,7 @@ void checkDeviceCompromised(api.DeviceCompromised o) {
 
 core.int buildCounterDeviceCompromisedSecurityDetail = 0;
 api.DeviceCompromisedSecurityDetail buildDeviceCompromisedSecurityDetail() {
-  var o = api.DeviceCompromisedSecurityDetail();
+  final o = api.DeviceCompromisedSecurityDetail();
   buildCounterDeviceCompromisedSecurityDetail++;
   if (buildCounterDeviceCompromisedSecurityDetail < 3) {
     o.deviceCompromisedState = 'foo';
@@ -917,7 +914,7 @@ void checkDeviceCompromisedSecurityDetail(
 
 core.int buildCounterDlpRuleViolation = 0;
 api.DlpRuleViolation buildDlpRuleViolation() {
-  var o = api.DlpRuleViolation();
+  final o = api.DlpRuleViolation();
   buildCounterDlpRuleViolation++;
   if (buildCounterDlpRuleViolation < 3) {
     o.ruleViolationInfo = buildRuleViolationInfo();
@@ -929,14 +926,14 @@ api.DlpRuleViolation buildDlpRuleViolation() {
 void checkDlpRuleViolation(api.DlpRuleViolation o) {
   buildCounterDlpRuleViolation++;
   if (buildCounterDlpRuleViolation < 3) {
-    checkRuleViolationInfo(o.ruleViolationInfo! as api.RuleViolationInfo);
+    checkRuleViolationInfo(o.ruleViolationInfo!);
   }
   buildCounterDlpRuleViolation--;
 }
 
 core.int buildCounterDomainId = 0;
 api.DomainId buildDomainId() {
-  var o = api.DomainId();
+  final o = api.DomainId();
   buildCounterDomainId++;
   if (buildCounterDomainId < 3) {
     o.customerPrimaryDomain = 'foo';
@@ -958,7 +955,7 @@ void checkDomainId(api.DomainId o) {
 
 core.int buildCounterDomainWideTakeoutInitiated = 0;
 api.DomainWideTakeoutInitiated buildDomainWideTakeoutInitiated() {
-  var o = api.DomainWideTakeoutInitiated();
+  final o = api.DomainWideTakeoutInitiated();
   buildCounterDomainWideTakeoutInitiated++;
   if (buildCounterDomainWideTakeoutInitiated < 3) {
     o.email = 'foo';
@@ -985,7 +982,7 @@ void checkDomainWideTakeoutInitiated(api.DomainWideTakeoutInitiated o) {
 
 core.int buildCounterEmpty = 0;
 api.Empty buildEmpty() {
-  var o = api.Empty();
+  final o = api.Empty();
   buildCounterEmpty++;
   if (buildCounterEmpty < 3) {}
   buildCounterEmpty--;
@@ -999,7 +996,7 @@ void checkEmpty(api.Empty o) {
 }
 
 core.List<core.String> buildUnnamed8796() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1019,7 +1016,7 @@ void checkUnnamed8796(core.List<core.String> o) {
 
 core.int buildCounterGmailMessageInfo = 0;
 api.GmailMessageInfo buildGmailMessageInfo() {
-  var o = api.GmailMessageInfo();
+  final o = api.GmailMessageInfo();
   buildCounterGmailMessageInfo++;
   if (buildCounterGmailMessageInfo < 3) {
     o.attachmentsSha256Hash = buildUnnamed8796();
@@ -1072,7 +1069,7 @@ void checkGmailMessageInfo(api.GmailMessageInfo o) {
 }
 
 core.List<core.String> buildUnnamed8797() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1092,7 +1089,7 @@ void checkUnnamed8797(core.List<core.String> o) {
 
 core.int buildCounterGoogleOperations = 0;
 api.GoogleOperations buildGoogleOperations() {
-  var o = api.GoogleOperations();
+  final o = api.GoogleOperations();
   buildCounterGoogleOperations++;
   if (buildCounterGoogleOperations < 3) {
     o.affectedUserEmails = buildUnnamed8797();
@@ -1109,7 +1106,7 @@ void checkGoogleOperations(api.GoogleOperations o) {
   buildCounterGoogleOperations++;
   if (buildCounterGoogleOperations < 3) {
     checkUnnamed8797(o.affectedUserEmails!);
-    checkAttachment(o.attachmentData! as api.Attachment);
+    checkAttachment(o.attachmentData!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -1127,7 +1124,7 @@ void checkGoogleOperations(api.GoogleOperations o) {
 }
 
 core.List<api.AlertFeedback> buildUnnamed8798() {
-  var o = <api.AlertFeedback>[];
+  final o = <api.AlertFeedback>[];
   o.add(buildAlertFeedback());
   o.add(buildAlertFeedback());
   return o;
@@ -1135,13 +1132,13 @@ core.List<api.AlertFeedback> buildUnnamed8798() {
 
 void checkUnnamed8798(core.List<api.AlertFeedback> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAlertFeedback(o[0] as api.AlertFeedback);
-  checkAlertFeedback(o[1] as api.AlertFeedback);
+  checkAlertFeedback(o[0]);
+  checkAlertFeedback(o[1]);
 }
 
 core.int buildCounterListAlertFeedbackResponse = 0;
 api.ListAlertFeedbackResponse buildListAlertFeedbackResponse() {
-  var o = api.ListAlertFeedbackResponse();
+  final o = api.ListAlertFeedbackResponse();
   buildCounterListAlertFeedbackResponse++;
   if (buildCounterListAlertFeedbackResponse < 3) {
     o.feedback = buildUnnamed8798();
@@ -1159,7 +1156,7 @@ void checkListAlertFeedbackResponse(api.ListAlertFeedbackResponse o) {
 }
 
 core.List<api.Alert> buildUnnamed8799() {
-  var o = <api.Alert>[];
+  final o = <api.Alert>[];
   o.add(buildAlert());
   o.add(buildAlert());
   return o;
@@ -1167,13 +1164,13 @@ core.List<api.Alert> buildUnnamed8799() {
 
 void checkUnnamed8799(core.List<api.Alert> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAlert(o[0] as api.Alert);
-  checkAlert(o[1] as api.Alert);
+  checkAlert(o[0]);
+  checkAlert(o[1]);
 }
 
 core.int buildCounterListAlertsResponse = 0;
 api.ListAlertsResponse buildListAlertsResponse() {
-  var o = api.ListAlertsResponse();
+  final o = api.ListAlertsResponse();
   buildCounterListAlertsResponse++;
   if (buildCounterListAlertsResponse < 3) {
     o.alerts = buildUnnamed8799();
@@ -1197,7 +1194,7 @@ void checkListAlertsResponse(api.ListAlertsResponse o) {
 
 core.int buildCounterLoginDetails = 0;
 api.LoginDetails buildLoginDetails() {
-  var o = api.LoginDetails();
+  final o = api.LoginDetails();
   buildCounterLoginDetails++;
   if (buildCounterLoginDetails < 3) {
     o.ipAddress = 'foo';
@@ -1223,7 +1220,7 @@ void checkLoginDetails(api.LoginDetails o) {
 }
 
 core.List<api.GmailMessageInfo> buildUnnamed8800() {
-  var o = <api.GmailMessageInfo>[];
+  final o = <api.GmailMessageInfo>[];
   o.add(buildGmailMessageInfo());
   o.add(buildGmailMessageInfo());
   return o;
@@ -1231,13 +1228,13 @@ core.List<api.GmailMessageInfo> buildUnnamed8800() {
 
 void checkUnnamed8800(core.List<api.GmailMessageInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGmailMessageInfo(o[0] as api.GmailMessageInfo);
-  checkGmailMessageInfo(o[1] as api.GmailMessageInfo);
+  checkGmailMessageInfo(o[0]);
+  checkGmailMessageInfo(o[1]);
 }
 
 core.int buildCounterMailPhishing = 0;
 api.MailPhishing buildMailPhishing() {
-  var o = api.MailPhishing();
+  final o = api.MailPhishing();
   buildCounterMailPhishing++;
   if (buildCounterMailPhishing < 3) {
     o.domainId = buildDomainId();
@@ -1253,9 +1250,9 @@ api.MailPhishing buildMailPhishing() {
 void checkMailPhishing(api.MailPhishing o) {
   buildCounterMailPhishing++;
   if (buildCounterMailPhishing < 3) {
-    checkDomainId(o.domainId! as api.DomainId);
+    checkDomainId(o.domainId!);
     unittest.expect(o.isInternal!, unittest.isTrue);
-    checkMaliciousEntity(o.maliciousEntity! as api.MaliciousEntity);
+    checkMaliciousEntity(o.maliciousEntity!);
     checkUnnamed8800(o.messages!);
     unittest.expect(
       o.systemActionType!,
@@ -1267,7 +1264,7 @@ void checkMailPhishing(api.MailPhishing o) {
 
 core.int buildCounterMaliciousEntity = 0;
 api.MaliciousEntity buildMaliciousEntity() {
-  var o = api.MaliciousEntity();
+  final o = api.MaliciousEntity();
   buildCounterMaliciousEntity++;
   if (buildCounterMaliciousEntity < 3) {
     o.displayName = 'foo';
@@ -1285,7 +1282,7 @@ void checkMaliciousEntity(api.MaliciousEntity o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUser(o.entity! as api.User);
+    checkUser(o.entity!);
     unittest.expect(
       o.fromHeader!,
       unittest.equals('foo'),
@@ -1296,7 +1293,7 @@ void checkMaliciousEntity(api.MaliciousEntity o) {
 
 core.int buildCounterMatchInfo = 0;
 api.MatchInfo buildMatchInfo() {
-  var o = api.MatchInfo();
+  final o = api.MatchInfo();
   buildCounterMatchInfo++;
   if (buildCounterMatchInfo < 3) {
     o.predefinedDetector = buildPredefinedDetectorInfo();
@@ -1309,17 +1306,15 @@ api.MatchInfo buildMatchInfo() {
 void checkMatchInfo(api.MatchInfo o) {
   buildCounterMatchInfo++;
   if (buildCounterMatchInfo < 3) {
-    checkPredefinedDetectorInfo(
-        o.predefinedDetector! as api.PredefinedDetectorInfo);
-    checkUserDefinedDetectorInfo(
-        o.userDefinedDetector! as api.UserDefinedDetectorInfo);
+    checkPredefinedDetectorInfo(o.predefinedDetector!);
+    checkUserDefinedDetectorInfo(o.userDefinedDetector!);
   }
   buildCounterMatchInfo--;
 }
 
 core.int buildCounterNotification = 0;
 api.Notification buildNotification() {
-  var o = api.Notification();
+  final o = api.Notification();
   buildCounterNotification++;
   if (buildCounterNotification < 3) {
     o.cloudPubsubTopic = buildCloudPubsubTopic();
@@ -1331,14 +1326,14 @@ api.Notification buildNotification() {
 void checkNotification(api.Notification o) {
   buildCounterNotification++;
   if (buildCounterNotification < 3) {
-    checkCloudPubsubTopic(o.cloudPubsubTopic! as api.CloudPubsubTopic);
+    checkCloudPubsubTopic(o.cloudPubsubTopic!);
   }
   buildCounterNotification--;
 }
 
 core.int buildCounterOutOfDomainForwarding = 0;
 api.OutOfDomainForwarding buildOutOfDomainForwarding() {
-  var o = api.OutOfDomainForwarding();
+  final o = api.OutOfDomainForwarding();
   buildCounterOutOfDomainForwarding++;
   if (buildCounterOutOfDomainForwarding < 3) {
     o.actorEmail = 'foo';
@@ -1374,7 +1369,7 @@ void checkOutOfDomainForwarding(api.OutOfDomainForwarding o) {
 }
 
 core.List<api.GmailMessageInfo> buildUnnamed8801() {
-  var o = <api.GmailMessageInfo>[];
+  final o = <api.GmailMessageInfo>[];
   o.add(buildGmailMessageInfo());
   o.add(buildGmailMessageInfo());
   return o;
@@ -1382,13 +1377,13 @@ core.List<api.GmailMessageInfo> buildUnnamed8801() {
 
 void checkUnnamed8801(core.List<api.GmailMessageInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGmailMessageInfo(o[0] as api.GmailMessageInfo);
-  checkGmailMessageInfo(o[1] as api.GmailMessageInfo);
+  checkGmailMessageInfo(o[0]);
+  checkGmailMessageInfo(o[1]);
 }
 
 core.int buildCounterPhishingSpike = 0;
 api.PhishingSpike buildPhishingSpike() {
-  var o = api.PhishingSpike();
+  final o = api.PhishingSpike();
   buildCounterPhishingSpike++;
   if (buildCounterPhishingSpike < 3) {
     o.domainId = buildDomainId();
@@ -1403,9 +1398,9 @@ api.PhishingSpike buildPhishingSpike() {
 void checkPhishingSpike(api.PhishingSpike o) {
   buildCounterPhishingSpike++;
   if (buildCounterPhishingSpike < 3) {
-    checkDomainId(o.domainId! as api.DomainId);
+    checkDomainId(o.domainId!);
     unittest.expect(o.isInternal!, unittest.isTrue);
-    checkMaliciousEntity(o.maliciousEntity! as api.MaliciousEntity);
+    checkMaliciousEntity(o.maliciousEntity!);
     checkUnnamed8801(o.messages!);
   }
   buildCounterPhishingSpike--;
@@ -1413,7 +1408,7 @@ void checkPhishingSpike(api.PhishingSpike o) {
 
 core.int buildCounterPredefinedDetectorInfo = 0;
 api.PredefinedDetectorInfo buildPredefinedDetectorInfo() {
-  var o = api.PredefinedDetectorInfo();
+  final o = api.PredefinedDetectorInfo();
   buildCounterPredefinedDetectorInfo++;
   if (buildCounterPredefinedDetectorInfo < 3) {
     o.detectorName = 'foo';
@@ -1435,7 +1430,7 @@ void checkPredefinedDetectorInfo(api.PredefinedDetectorInfo o) {
 
 core.int buildCounterReportingRule = 0;
 api.ReportingRule buildReportingRule() {
-  var o = api.ReportingRule();
+  final o = api.ReportingRule();
   buildCounterReportingRule++;
   if (buildCounterReportingRule < 3) {
     o.alertDetails = 'foo';
@@ -1466,7 +1461,7 @@ void checkReportingRule(api.ReportingRule o) {
 }
 
 core.List<core.String> buildUnnamed8802() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1486,7 +1481,7 @@ void checkUnnamed8802(core.List<core.String> o) {
 
 core.int buildCounterRequestInfo = 0;
 api.RequestInfo buildRequestInfo() {
-  var o = api.RequestInfo();
+  final o = api.RequestInfo();
   buildCounterRequestInfo++;
   if (buildCounterRequestInfo < 3) {
     o.appDeveloperEmail = buildUnnamed8802();
@@ -1515,7 +1510,7 @@ void checkRequestInfo(api.RequestInfo o) {
 
 core.int buildCounterResourceInfo = 0;
 api.ResourceInfo buildResourceInfo() {
-  var o = api.ResourceInfo();
+  final o = api.ResourceInfo();
   buildCounterResourceInfo++;
   if (buildCounterResourceInfo < 3) {
     o.documentId = 'foo';
@@ -1542,7 +1537,7 @@ void checkResourceInfo(api.ResourceInfo o) {
 
 core.int buildCounterRuleInfo = 0;
 api.RuleInfo buildRuleInfo() {
-  var o = api.RuleInfo();
+  final o = api.RuleInfo();
   buildCounterRuleInfo++;
   if (buildCounterRuleInfo < 3) {
     o.displayName = 'foo';
@@ -1568,7 +1563,7 @@ void checkRuleInfo(api.RuleInfo o) {
 }
 
 core.List<api.MatchInfo> buildUnnamed8803() {
-  var o = <api.MatchInfo>[];
+  final o = <api.MatchInfo>[];
   o.add(buildMatchInfo());
   o.add(buildMatchInfo());
   return o;
@@ -1576,12 +1571,12 @@ core.List<api.MatchInfo> buildUnnamed8803() {
 
 void checkUnnamed8803(core.List<api.MatchInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMatchInfo(o[0] as api.MatchInfo);
-  checkMatchInfo(o[1] as api.MatchInfo);
+  checkMatchInfo(o[0]);
+  checkMatchInfo(o[1]);
 }
 
 core.List<core.String> buildUnnamed8804() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1600,7 +1595,7 @@ void checkUnnamed8804(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed8805() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1619,7 +1614,7 @@ void checkUnnamed8805(core.List<core.String> o) {
 }
 
 core.List<api.ActionInfo> buildUnnamed8806() {
-  var o = <api.ActionInfo>[];
+  final o = <api.ActionInfo>[];
   o.add(buildActionInfo());
   o.add(buildActionInfo());
   return o;
@@ -1627,12 +1622,12 @@ core.List<api.ActionInfo> buildUnnamed8806() {
 
 void checkUnnamed8806(core.List<api.ActionInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkActionInfo(o[0] as api.ActionInfo);
-  checkActionInfo(o[1] as api.ActionInfo);
+  checkActionInfo(o[0]);
+  checkActionInfo(o[1]);
 }
 
 core.List<core.String> buildUnnamed8807() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1652,7 +1647,7 @@ void checkUnnamed8807(core.List<core.String> o) {
 
 core.int buildCounterRuleViolationInfo = 0;
 api.RuleViolationInfo buildRuleViolationInfo() {
-  var o = api.RuleViolationInfo();
+  final o = api.RuleViolationInfo();
   buildCounterRuleViolationInfo++;
   if (buildCounterRuleViolationInfo < 3) {
     o.dataSource = 'foo';
@@ -1679,8 +1674,8 @@ void checkRuleViolationInfo(api.RuleViolationInfo o) {
     );
     checkUnnamed8803(o.matchInfo!);
     checkUnnamed8804(o.recipients!);
-    checkResourceInfo(o.resourceInfo! as api.ResourceInfo);
-    checkRuleInfo(o.ruleInfo! as api.RuleInfo);
+    checkResourceInfo(o.resourceInfo!);
+    checkRuleInfo(o.ruleInfo!);
     checkUnnamed8805(o.suppressedActionTypes!);
     unittest.expect(
       o.trigger!,
@@ -1697,7 +1692,7 @@ void checkRuleViolationInfo(api.RuleViolationInfo o) {
 }
 
 core.List<api.Notification> buildUnnamed8808() {
-  var o = <api.Notification>[];
+  final o = <api.Notification>[];
   o.add(buildNotification());
   o.add(buildNotification());
   return o;
@@ -1705,13 +1700,13 @@ core.List<api.Notification> buildUnnamed8808() {
 
 void checkUnnamed8808(core.List<api.Notification> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNotification(o[0] as api.Notification);
-  checkNotification(o[1] as api.Notification);
+  checkNotification(o[0]);
+  checkNotification(o[1]);
 }
 
 core.int buildCounterSettings = 0;
 api.Settings buildSettings() {
-  var o = api.Settings();
+  final o = api.Settings();
   buildCounterSettings++;
   if (buildCounterSettings < 3) {
     o.notifications = buildUnnamed8808();
@@ -1730,7 +1725,7 @@ void checkSettings(api.Settings o) {
 
 core.int buildCounterStateSponsoredAttack = 0;
 api.StateSponsoredAttack buildStateSponsoredAttack() {
-  var o = api.StateSponsoredAttack();
+  final o = api.StateSponsoredAttack();
   buildCounterStateSponsoredAttack++;
   if (buildCounterStateSponsoredAttack < 3) {
     o.email = 'foo';
@@ -1751,7 +1746,7 @@ void checkStateSponsoredAttack(api.StateSponsoredAttack o) {
 }
 
 core.Map<core.String, core.Object> buildUnnamed8809() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -1798,7 +1793,7 @@ void checkUnnamed8809(core.Map<core.String, core.Object> o) {
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed8810() {
-  var o = <core.Map<core.String, core.Object>>[];
+  final o = <core.Map<core.String, core.Object>>[];
   o.add(buildUnnamed8809());
   o.add(buildUnnamed8809());
   return o;
@@ -1812,7 +1807,7 @@ void checkUnnamed8810(core.List<core.Map<core.String, core.Object>> o) {
 
 core.int buildCounterStatus = 0;
 api.Status buildStatus() {
-  var o = api.Status();
+  final o = api.Status();
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
@@ -1840,7 +1835,7 @@ void checkStatus(api.Status o) {
 }
 
 core.List<api.SuspiciousActivitySecurityDetail> buildUnnamed8811() {
-  var o = <api.SuspiciousActivitySecurityDetail>[];
+  final o = <api.SuspiciousActivitySecurityDetail>[];
   o.add(buildSuspiciousActivitySecurityDetail());
   o.add(buildSuspiciousActivitySecurityDetail());
   return o;
@@ -1848,15 +1843,13 @@ core.List<api.SuspiciousActivitySecurityDetail> buildUnnamed8811() {
 
 void checkUnnamed8811(core.List<api.SuspiciousActivitySecurityDetail> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuspiciousActivitySecurityDetail(
-      o[0] as api.SuspiciousActivitySecurityDetail);
-  checkSuspiciousActivitySecurityDetail(
-      o[1] as api.SuspiciousActivitySecurityDetail);
+  checkSuspiciousActivitySecurityDetail(o[0]);
+  checkSuspiciousActivitySecurityDetail(o[1]);
 }
 
 core.int buildCounterSuspiciousActivity = 0;
 api.SuspiciousActivity buildSuspiciousActivity() {
-  var o = api.SuspiciousActivity();
+  final o = api.SuspiciousActivity();
   buildCounterSuspiciousActivity++;
   if (buildCounterSuspiciousActivity < 3) {
     o.email = 'foo';
@@ -1880,7 +1873,7 @@ void checkSuspiciousActivity(api.SuspiciousActivity o) {
 
 core.int buildCounterSuspiciousActivitySecurityDetail = 0;
 api.SuspiciousActivitySecurityDetail buildSuspiciousActivitySecurityDetail() {
-  var o = api.SuspiciousActivitySecurityDetail();
+  final o = api.SuspiciousActivitySecurityDetail();
   buildCounterSuspiciousActivitySecurityDetail++;
   if (buildCounterSuspiciousActivitySecurityDetail < 3) {
     o.deviceId = 'foo';
@@ -1943,7 +1936,7 @@ void checkSuspiciousActivitySecurityDetail(
 
 core.int buildCounterUndeleteAlertRequest = 0;
 api.UndeleteAlertRequest buildUndeleteAlertRequest() {
-  var o = api.UndeleteAlertRequest();
+  final o = api.UndeleteAlertRequest();
   buildCounterUndeleteAlertRequest++;
   if (buildCounterUndeleteAlertRequest < 3) {
     o.customerId = 'foo';
@@ -1965,7 +1958,7 @@ void checkUndeleteAlertRequest(api.UndeleteAlertRequest o) {
 
 core.int buildCounterUser = 0;
 api.User buildUser() {
-  var o = api.User();
+  final o = api.User();
   buildCounterUser++;
   if (buildCounterUser < 3) {
     o.displayName = 'foo';
@@ -1992,7 +1985,7 @@ void checkUser(api.User o) {
 
 core.int buildCounterUserChanges = 0;
 api.UserChanges buildUserChanges() {
-  var o = api.UserChanges();
+  final o = api.UserChanges();
   buildCounterUserChanges++;
   if (buildCounterUserChanges < 3) {
     o.name = 'foo';
@@ -2014,7 +2007,7 @@ void checkUserChanges(api.UserChanges o) {
 
 core.int buildCounterUserDefinedDetectorInfo = 0;
 api.UserDefinedDetectorInfo buildUserDefinedDetectorInfo() {
-  var o = api.UserDefinedDetectorInfo();
+  final o = api.UserDefinedDetectorInfo();
   buildCounterUserDefinedDetectorInfo++;
   if (buildCounterUserDefinedDetectorInfo < 3) {
     o.displayName = 'foo';
@@ -2042,527 +2035,528 @@ void checkUserDefinedDetectorInfo(api.UserDefinedDetectorInfo o) {
 void main() {
   unittest.group('obj-schema-AccountWarning', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountWarning();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountWarning.fromJson(
+      final o = buildAccountWarning();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountWarning.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountWarning(od as api.AccountWarning);
+      checkAccountWarning(od);
     });
   });
 
   unittest.group('obj-schema-ActionInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildActionInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildActionInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.ActionInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkActionInfo(od as api.ActionInfo);
+      checkActionInfo(od);
     });
   });
 
   unittest.group('obj-schema-ActivityRule', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildActivityRule();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ActivityRule.fromJson(
+      final o = buildActivityRule();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ActivityRule.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkActivityRule(od as api.ActivityRule);
+      checkActivityRule(od);
     });
   });
 
   unittest.group('obj-schema-Alert', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAlert();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Alert.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkAlert(od as api.Alert);
+      final o = buildAlert();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Alert.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkAlert(od);
     });
   });
 
   unittest.group('obj-schema-AlertFeedback', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAlertFeedback();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AlertFeedback.fromJson(
+      final o = buildAlertFeedback();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AlertFeedback.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAlertFeedback(od as api.AlertFeedback);
+      checkAlertFeedback(od);
     });
   });
 
   unittest.group('obj-schema-AlertMetadata', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAlertMetadata();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AlertMetadata.fromJson(
+      final o = buildAlertMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AlertMetadata.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAlertMetadata(od as api.AlertMetadata);
+      checkAlertMetadata(od);
     });
   });
 
   unittest.group('obj-schema-AppMakerSqlSetupNotification', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAppMakerSqlSetupNotification();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AppMakerSqlSetupNotification.fromJson(
+      final o = buildAppMakerSqlSetupNotification();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AppMakerSqlSetupNotification.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAppMakerSqlSetupNotification(od as api.AppMakerSqlSetupNotification);
+      checkAppMakerSqlSetupNotification(od);
     });
   });
 
   unittest.group('obj-schema-AppSettingsChanged', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAppSettingsChanged();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AppSettingsChanged.fromJson(
+      final o = buildAppSettingsChanged();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AppSettingsChanged.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAppSettingsChanged(od as api.AppSettingsChanged);
+      checkAppSettingsChanged(od);
     });
   });
 
   unittest.group('obj-schema-Attachment', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAttachment();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildAttachment();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Attachment.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkAttachment(od as api.Attachment);
+      checkAttachment(od);
     });
   });
 
   unittest.group('obj-schema-BadWhitelist', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBadWhitelist();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.BadWhitelist.fromJson(
+      final o = buildBadWhitelist();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BadWhitelist.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkBadWhitelist(od as api.BadWhitelist);
+      checkBadWhitelist(od);
     });
   });
 
   unittest.group('obj-schema-BatchDeleteAlertsRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBatchDeleteAlertsRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.BatchDeleteAlertsRequest.fromJson(
+      final o = buildBatchDeleteAlertsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BatchDeleteAlertsRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkBatchDeleteAlertsRequest(od as api.BatchDeleteAlertsRequest);
+      checkBatchDeleteAlertsRequest(od);
     });
   });
 
   unittest.group('obj-schema-BatchDeleteAlertsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBatchDeleteAlertsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.BatchDeleteAlertsResponse.fromJson(
+      final o = buildBatchDeleteAlertsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BatchDeleteAlertsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkBatchDeleteAlertsResponse(od as api.BatchDeleteAlertsResponse);
+      checkBatchDeleteAlertsResponse(od);
     });
   });
 
   unittest.group('obj-schema-BatchUndeleteAlertsRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBatchUndeleteAlertsRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.BatchUndeleteAlertsRequest.fromJson(
+      final o = buildBatchUndeleteAlertsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BatchUndeleteAlertsRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkBatchUndeleteAlertsRequest(od as api.BatchUndeleteAlertsRequest);
+      checkBatchUndeleteAlertsRequest(od);
     });
   });
 
   unittest.group('obj-schema-BatchUndeleteAlertsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBatchUndeleteAlertsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.BatchUndeleteAlertsResponse.fromJson(
+      final o = buildBatchUndeleteAlertsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BatchUndeleteAlertsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkBatchUndeleteAlertsResponse(od as api.BatchUndeleteAlertsResponse);
+      checkBatchUndeleteAlertsResponse(od);
     });
   });
 
   unittest.group('obj-schema-CloudPubsubTopic', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCloudPubsubTopic();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CloudPubsubTopic.fromJson(
+      final o = buildCloudPubsubTopic();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CloudPubsubTopic.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCloudPubsubTopic(od as api.CloudPubsubTopic);
+      checkCloudPubsubTopic(od);
     });
   });
 
   unittest.group('obj-schema-Csv', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCsv();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Csv.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkCsv(od as api.Csv);
+      final o = buildCsv();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Csv.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkCsv(od);
     });
   });
 
   unittest.group('obj-schema-CsvRow', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCsvRow();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildCsvRow();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.CsvRow.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkCsvRow(od as api.CsvRow);
+      checkCsvRow(od);
     });
   });
 
   unittest.group('obj-schema-DeviceCompromised', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDeviceCompromised();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DeviceCompromised.fromJson(
+      final o = buildDeviceCompromised();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DeviceCompromised.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDeviceCompromised(od as api.DeviceCompromised);
+      checkDeviceCompromised(od);
     });
   });
 
   unittest.group('obj-schema-DeviceCompromisedSecurityDetail', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDeviceCompromisedSecurityDetail();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DeviceCompromisedSecurityDetail.fromJson(
+      final o = buildDeviceCompromisedSecurityDetail();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DeviceCompromisedSecurityDetail.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDeviceCompromisedSecurityDetail(
-          od as api.DeviceCompromisedSecurityDetail);
+      checkDeviceCompromisedSecurityDetail(od);
     });
   });
 
   unittest.group('obj-schema-DlpRuleViolation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDlpRuleViolation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DlpRuleViolation.fromJson(
+      final o = buildDlpRuleViolation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DlpRuleViolation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDlpRuleViolation(od as api.DlpRuleViolation);
+      checkDlpRuleViolation(od);
     });
   });
 
   unittest.group('obj-schema-DomainId', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDomainId();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildDomainId();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.DomainId.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkDomainId(od as api.DomainId);
+      checkDomainId(od);
     });
   });
 
   unittest.group('obj-schema-DomainWideTakeoutInitiated', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDomainWideTakeoutInitiated();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DomainWideTakeoutInitiated.fromJson(
+      final o = buildDomainWideTakeoutInitiated();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DomainWideTakeoutInitiated.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDomainWideTakeoutInitiated(od as api.DomainWideTakeoutInitiated);
+      checkDomainWideTakeoutInitiated(od);
     });
   });
 
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildEmpty();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkEmpty(od as api.Empty);
+      final o = buildEmpty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkEmpty(od);
     });
   });
 
   unittest.group('obj-schema-GmailMessageInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGmailMessageInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GmailMessageInfo.fromJson(
+      final o = buildGmailMessageInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GmailMessageInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGmailMessageInfo(od as api.GmailMessageInfo);
+      checkGmailMessageInfo(od);
     });
   });
 
   unittest.group('obj-schema-GoogleOperations', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleOperations();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleOperations.fromJson(
+      final o = buildGoogleOperations();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleOperations.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleOperations(od as api.GoogleOperations);
+      checkGoogleOperations(od);
     });
   });
 
   unittest.group('obj-schema-ListAlertFeedbackResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListAlertFeedbackResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListAlertFeedbackResponse.fromJson(
+      final o = buildListAlertFeedbackResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListAlertFeedbackResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListAlertFeedbackResponse(od as api.ListAlertFeedbackResponse);
+      checkListAlertFeedbackResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListAlertsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListAlertsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListAlertsResponse.fromJson(
+      final o = buildListAlertsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListAlertsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListAlertsResponse(od as api.ListAlertsResponse);
+      checkListAlertsResponse(od);
     });
   });
 
   unittest.group('obj-schema-LoginDetails', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLoginDetails();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LoginDetails.fromJson(
+      final o = buildLoginDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LoginDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLoginDetails(od as api.LoginDetails);
+      checkLoginDetails(od);
     });
   });
 
   unittest.group('obj-schema-MailPhishing', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildMailPhishing();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.MailPhishing.fromJson(
+      final o = buildMailPhishing();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MailPhishing.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkMailPhishing(od as api.MailPhishing);
+      checkMailPhishing(od);
     });
   });
 
   unittest.group('obj-schema-MaliciousEntity', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildMaliciousEntity();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.MaliciousEntity.fromJson(
+      final o = buildMaliciousEntity();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MaliciousEntity.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkMaliciousEntity(od as api.MaliciousEntity);
+      checkMaliciousEntity(od);
     });
   });
 
   unittest.group('obj-schema-MatchInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildMatchInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildMatchInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.MatchInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkMatchInfo(od as api.MatchInfo);
+      checkMatchInfo(od);
     });
   });
 
   unittest.group('obj-schema-Notification', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildNotification();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Notification.fromJson(
+      final o = buildNotification();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Notification.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkNotification(od as api.Notification);
+      checkNotification(od);
     });
   });
 
   unittest.group('obj-schema-OutOfDomainForwarding', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOutOfDomainForwarding();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OutOfDomainForwarding.fromJson(
+      final o = buildOutOfDomainForwarding();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OutOfDomainForwarding.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOutOfDomainForwarding(od as api.OutOfDomainForwarding);
+      checkOutOfDomainForwarding(od);
     });
   });
 
   unittest.group('obj-schema-PhishingSpike', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPhishingSpike();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PhishingSpike.fromJson(
+      final o = buildPhishingSpike();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PhishingSpike.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPhishingSpike(od as api.PhishingSpike);
+      checkPhishingSpike(od);
     });
   });
 
   unittest.group('obj-schema-PredefinedDetectorInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPredefinedDetectorInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PredefinedDetectorInfo.fromJson(
+      final o = buildPredefinedDetectorInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PredefinedDetectorInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPredefinedDetectorInfo(od as api.PredefinedDetectorInfo);
+      checkPredefinedDetectorInfo(od);
     });
   });
 
   unittest.group('obj-schema-ReportingRule', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReportingRule();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReportingRule.fromJson(
+      final o = buildReportingRule();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReportingRule.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReportingRule(od as api.ReportingRule);
+      checkReportingRule(od);
     });
   });
 
   unittest.group('obj-schema-RequestInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRequestInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RequestInfo.fromJson(
+      final o = buildRequestInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RequestInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRequestInfo(od as api.RequestInfo);
+      checkRequestInfo(od);
     });
   });
 
   unittest.group('obj-schema-ResourceInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildResourceInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ResourceInfo.fromJson(
+      final o = buildResourceInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ResourceInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkResourceInfo(od as api.ResourceInfo);
+      checkResourceInfo(od);
     });
   });
 
   unittest.group('obj-schema-RuleInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRuleInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildRuleInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.RuleInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkRuleInfo(od as api.RuleInfo);
+      checkRuleInfo(od);
     });
   });
 
   unittest.group('obj-schema-RuleViolationInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRuleViolationInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RuleViolationInfo.fromJson(
+      final o = buildRuleViolationInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RuleViolationInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRuleViolationInfo(od as api.RuleViolationInfo);
+      checkRuleViolationInfo(od);
     });
   });
 
   unittest.group('obj-schema-Settings', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSettings();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Settings.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkSettings(od as api.Settings);
+      checkSettings(od);
     });
   });
 
   unittest.group('obj-schema-StateSponsoredAttack', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildStateSponsoredAttack();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.StateSponsoredAttack.fromJson(
+      final o = buildStateSponsoredAttack();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.StateSponsoredAttack.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkStateSponsoredAttack(od as api.StateSponsoredAttack);
+      checkStateSponsoredAttack(od);
     });
   });
 
   unittest.group('obj-schema-Status', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildStatus();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkStatus(od as api.Status);
+      checkStatus(od);
     });
   });
 
   unittest.group('obj-schema-SuspiciousActivity', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSuspiciousActivity();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SuspiciousActivity.fromJson(
+      final o = buildSuspiciousActivity();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SuspiciousActivity.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSuspiciousActivity(od as api.SuspiciousActivity);
+      checkSuspiciousActivity(od);
     });
   });
 
   unittest.group('obj-schema-SuspiciousActivitySecurityDetail', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSuspiciousActivitySecurityDetail();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SuspiciousActivitySecurityDetail.fromJson(
+      final o = buildSuspiciousActivitySecurityDetail();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SuspiciousActivitySecurityDetail.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSuspiciousActivitySecurityDetail(
-          od as api.SuspiciousActivitySecurityDetail);
+      checkSuspiciousActivitySecurityDetail(od);
     });
   });
 
   unittest.group('obj-schema-UndeleteAlertRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildUndeleteAlertRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.UndeleteAlertRequest.fromJson(
+      final o = buildUndeleteAlertRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UndeleteAlertRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkUndeleteAlertRequest(od as api.UndeleteAlertRequest);
+      checkUndeleteAlertRequest(od);
     });
   });
 
   unittest.group('obj-schema-User', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildUser();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.User.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkUser(od as api.User);
+      final o = buildUser();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.User.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkUser(od);
     });
   });
 
   unittest.group('obj-schema-UserChanges', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildUserChanges();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.UserChanges.fromJson(
+      final o = buildUserChanges();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UserChanges.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkUserChanges(od as api.UserChanges);
+      checkUserChanges(od);
     });
   });
 
   unittest.group('obj-schema-UserDefinedDetectorInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildUserDefinedDetectorInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.UserDefinedDetectorInfo.fromJson(
+      final o = buildUserDefinedDetectorInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UserDefinedDetectorInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkUserDefinedDetectorInfo(od as api.UserDefinedDetectorInfo);
+      checkUserDefinedDetectorInfo(od);
     });
   });
 
   unittest.group('resource-AlertsResource', () {
     unittest.test('method--batchDelete', () async {
-      var mock = HttpServerMock();
-      var res = api.AlertCenterApi(mock).alerts;
-      var arg_request = buildBatchDeleteAlertsRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AlertCenterApi(mock).alerts;
+      final arg_request = buildBatchDeleteAlertsRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BatchDeleteAlertsRequest.fromJson(
+        final obj = api.BatchDeleteAlertsRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkBatchDeleteAlertsRequest(obj as api.BatchDeleteAlertsRequest);
+        checkBatchDeleteAlertsRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 26),
-          unittest.equals("v1beta1/alerts:batchDelete"),
+          unittest.equals('v1beta1/alerts:batchDelete'),
         );
         pathOffset += 26;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2570,14 +2564,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildBatchDeleteAlertsResponse());
+        final resp = convert.json.encode(buildBatchDeleteAlertsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.batchDelete(arg_request, $fields: arg_$fields);
@@ -2585,39 +2579,39 @@ void main() {
     });
 
     unittest.test('method--batchUndelete', () async {
-      var mock = HttpServerMock();
-      var res = api.AlertCenterApi(mock).alerts;
-      var arg_request = buildBatchUndeleteAlertsRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AlertCenterApi(mock).alerts;
+      final arg_request = buildBatchUndeleteAlertsRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BatchUndeleteAlertsRequest.fromJson(
+        final obj = api.BatchUndeleteAlertsRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkBatchUndeleteAlertsRequest(obj as api.BatchUndeleteAlertsRequest);
+        checkBatchUndeleteAlertsRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 28),
-          unittest.equals("v1beta1/alerts:batchUndelete"),
+          unittest.equals('v1beta1/alerts:batchUndelete'),
         );
         pathOffset += 28;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2625,14 +2619,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildBatchUndeleteAlertsResponse());
+        final resp = convert.json.encode(buildBatchUndeleteAlertsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -2642,24 +2636,24 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.AlertCenterApi(mock).alerts;
-      var arg_alertId = 'foo';
-      var arg_customerId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AlertCenterApi(mock).alerts;
+      final arg_alertId = 'foo';
+      final arg_customerId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("v1beta1/alerts/"),
+          unittest.equals('v1beta1/alerts/'),
         );
         pathOffset += 15;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -2669,15 +2663,15 @@ void main() {
           unittest.equals('$arg_alertId'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2685,18 +2679,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["customerId"]!.first,
+          queryMap['customerId']!.first,
           unittest.equals(arg_customerId),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildEmpty());
+        final resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_alertId,
@@ -2705,24 +2699,24 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.AlertCenterApi(mock).alerts;
-      var arg_alertId = 'foo';
-      var arg_customerId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AlertCenterApi(mock).alerts;
+      final arg_alertId = 'foo';
+      final arg_customerId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("v1beta1/alerts/"),
+          unittest.equals('v1beta1/alerts/'),
         );
         pathOffset += 15;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -2732,15 +2726,15 @@ void main() {
           unittest.equals('$arg_alertId'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2748,18 +2742,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["customerId"]!.first,
+          queryMap['customerId']!.first,
           unittest.equals(arg_customerId),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAlert());
+        final resp = convert.json.encode(buildAlert());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_alertId,
@@ -2768,24 +2762,24 @@ void main() {
     });
 
     unittest.test('method--getMetadata', () async {
-      var mock = HttpServerMock();
-      var res = api.AlertCenterApi(mock).alerts;
-      var arg_alertId = 'foo';
-      var arg_customerId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AlertCenterApi(mock).alerts;
+      final arg_alertId = 'foo';
+      final arg_customerId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("v1beta1/alerts/"),
+          unittest.equals('v1beta1/alerts/'),
         );
         pathOffset += 15;
         index = path.indexOf('/metadata', pathOffset);
@@ -2799,19 +2793,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("/metadata"),
+          unittest.equals('/metadata'),
         );
         pathOffset += 9;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2819,18 +2813,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["customerId"]!.first,
+          queryMap['customerId']!.first,
           unittest.equals(arg_customerId),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAlertMetadata());
+        final resp = convert.json.encode(buildAlertMetadata());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.getMetadata(arg_alertId,
@@ -2839,39 +2833,39 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.AlertCenterApi(mock).alerts;
-      var arg_customerId = 'foo';
-      var arg_filter = 'foo';
-      var arg_orderBy = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AlertCenterApi(mock).alerts;
+      final arg_customerId = 'foo';
+      final arg_filter = 'foo';
+      final arg_orderBy = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 14),
-          unittest.equals("v1beta1/alerts"),
+          unittest.equals('v1beta1/alerts'),
         );
         pathOffset += 14;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2879,34 +2873,34 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["customerId"]!.first,
+          queryMap['customerId']!.first,
           unittest.equals(arg_customerId),
         );
         unittest.expect(
-          queryMap["filter"]!.first,
+          queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          queryMap["orderBy"]!.first,
+          queryMap['orderBy']!.first,
           unittest.equals(arg_orderBy),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListAlertsResponse());
+        final resp = convert.json.encode(buildListAlertsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(
@@ -2920,28 +2914,28 @@ void main() {
     });
 
     unittest.test('method--undelete', () async {
-      var mock = HttpServerMock();
-      var res = api.AlertCenterApi(mock).alerts;
-      var arg_request = buildUndeleteAlertRequest();
-      var arg_alertId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AlertCenterApi(mock).alerts;
+      final arg_request = buildUndeleteAlertRequest();
+      final arg_alertId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.UndeleteAlertRequest.fromJson(
+        final obj = api.UndeleteAlertRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkUndeleteAlertRequest(obj as api.UndeleteAlertRequest);
+        checkUndeleteAlertRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("v1beta1/alerts/"),
+          unittest.equals('v1beta1/alerts/'),
         );
         pathOffset += 15;
         index = path.indexOf(':undelete', pathOffset);
@@ -2955,19 +2949,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals(":undelete"),
+          unittest.equals(':undelete'),
         );
         pathOffset += 9;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2975,14 +2969,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAlert());
+        final resp = convert.json.encode(buildAlert());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -2993,29 +2987,29 @@ void main() {
 
   unittest.group('resource-AlertsFeedbackResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.AlertCenterApi(mock).alerts.feedback;
-      var arg_request = buildAlertFeedback();
-      var arg_alertId = 'foo';
-      var arg_customerId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AlertCenterApi(mock).alerts.feedback;
+      final arg_request = buildAlertFeedback();
+      final arg_alertId = 'foo';
+      final arg_customerId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AlertFeedback.fromJson(
+        final obj = api.AlertFeedback.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkAlertFeedback(obj as api.AlertFeedback);
+        checkAlertFeedback(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("v1beta1/alerts/"),
+          unittest.equals('v1beta1/alerts/'),
         );
         pathOffset += 15;
         index = path.indexOf('/feedback', pathOffset);
@@ -3029,19 +3023,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("/feedback"),
+          unittest.equals('/feedback'),
         );
         pathOffset += 9;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3049,18 +3043,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["customerId"]!.first,
+          queryMap['customerId']!.first,
           unittest.equals(arg_customerId),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAlertFeedback());
+        final resp = convert.json.encode(buildAlertFeedback());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_alertId,
@@ -3069,25 +3063,25 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.AlertCenterApi(mock).alerts.feedback;
-      var arg_alertId = 'foo';
-      var arg_customerId = 'foo';
-      var arg_filter = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AlertCenterApi(mock).alerts.feedback;
+      final arg_alertId = 'foo';
+      final arg_customerId = 'foo';
+      final arg_filter = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("v1beta1/alerts/"),
+          unittest.equals('v1beta1/alerts/'),
         );
         pathOffset += 15;
         index = path.indexOf('/feedback', pathOffset);
@@ -3101,19 +3095,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("/feedback"),
+          unittest.equals('/feedback'),
         );
         pathOffset += 9;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3121,22 +3115,22 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["customerId"]!.first,
+          queryMap['customerId']!.first,
           unittest.equals(arg_customerId),
         );
         unittest.expect(
-          queryMap["filter"]!.first,
+          queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListAlertFeedbackResponse());
+        final resp = convert.json.encode(buildListAlertFeedbackResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_alertId,
@@ -3147,35 +3141,35 @@ void main() {
 
   unittest.group('resource-V1beta1Resource', () {
     unittest.test('method--getSettings', () async {
-      var mock = HttpServerMock();
-      var res = api.AlertCenterApi(mock).v1beta1;
-      var arg_customerId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AlertCenterApi(mock).v1beta1;
+      final arg_customerId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 16),
-          unittest.equals("v1beta1/settings"),
+          unittest.equals('v1beta1/settings'),
         );
         pathOffset += 16;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3183,18 +3177,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["customerId"]!.first,
+          queryMap['customerId']!.first,
           unittest.equals(arg_customerId),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSettings());
+        final resp = convert.json.encode(buildSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.getSettings(
@@ -3203,40 +3197,40 @@ void main() {
     });
 
     unittest.test('method--updateSettings', () async {
-      var mock = HttpServerMock();
-      var res = api.AlertCenterApi(mock).v1beta1;
-      var arg_request = buildSettings();
-      var arg_customerId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AlertCenterApi(mock).v1beta1;
+      final arg_request = buildSettings();
+      final arg_customerId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Settings.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkSettings(obj as api.Settings);
+        checkSettings(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 16),
-          unittest.equals("v1beta1/settings"),
+          unittest.equals('v1beta1/settings'),
         );
         pathOffset += 16;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3244,18 +3238,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["customerId"]!.first,
+          queryMap['customerId']!.first,
           unittest.equals(arg_customerId),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSettings());
+        final resp = convert.json.encode(buildSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.updateSettings(arg_request,

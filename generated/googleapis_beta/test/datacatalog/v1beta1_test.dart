@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -28,7 +27,7 @@ import 'package:test/test.dart' as unittest;
 import '../test_shared.dart';
 
 core.List<core.String> buildUnnamed7792() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -48,7 +47,7 @@ void checkUnnamed7792(core.List<core.String> o) {
 
 core.int buildCounterBinding = 0;
 api.Binding buildBinding() {
-  var o = api.Binding();
+  final o = api.Binding();
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     o.condition = buildExpr();
@@ -62,7 +61,7 @@ api.Binding buildBinding() {
 void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    checkExpr(o.condition! as api.Expr);
+    checkExpr(o.condition!);
     checkUnnamed7792(o.members!);
     unittest.expect(
       o.role!,
@@ -74,7 +73,7 @@ void checkBinding(api.Binding o) {
 
 core.int buildCounterEmpty = 0;
 api.Empty buildEmpty() {
-  var o = api.Empty();
+  final o = api.Empty();
   buildCounterEmpty++;
   if (buildCounterEmpty < 3) {}
   buildCounterEmpty--;
@@ -89,7 +88,7 @@ void checkEmpty(api.Empty o) {
 
 core.int buildCounterExpr = 0;
 api.Expr buildExpr() {
-  var o = api.Expr();
+  final o = api.Expr();
   buildCounterExpr++;
   if (buildCounterExpr < 3) {
     o.description = 'foo';
@@ -126,7 +125,7 @@ void checkExpr(api.Expr o) {
 
 core.int buildCounterGetIamPolicyRequest = 0;
 api.GetIamPolicyRequest buildGetIamPolicyRequest() {
-  var o = api.GetIamPolicyRequest();
+  final o = api.GetIamPolicyRequest();
   buildCounterGetIamPolicyRequest++;
   if (buildCounterGetIamPolicyRequest < 3) {
     o.options = buildGetPolicyOptions();
@@ -138,14 +137,14 @@ api.GetIamPolicyRequest buildGetIamPolicyRequest() {
 void checkGetIamPolicyRequest(api.GetIamPolicyRequest o) {
   buildCounterGetIamPolicyRequest++;
   if (buildCounterGetIamPolicyRequest < 3) {
-    checkGetPolicyOptions(o.options! as api.GetPolicyOptions);
+    checkGetPolicyOptions(o.options!);
   }
   buildCounterGetIamPolicyRequest--;
 }
 
 core.int buildCounterGetPolicyOptions = 0;
 api.GetPolicyOptions buildGetPolicyOptions() {
-  var o = api.GetPolicyOptions();
+  final o = api.GetPolicyOptions();
   buildCounterGetPolicyOptions++;
   if (buildCounterGetPolicyOptions < 3) {
     o.requestedPolicyVersion = 42;
@@ -168,7 +167,7 @@ void checkGetPolicyOptions(api.GetPolicyOptions o) {
 core.int buildCounterGoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec = 0;
 api.GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec
     buildGoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec() {
-  var o = api.GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec();
+  final o = api.GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec();
   buildCounterGoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec++;
   if (buildCounterGoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec < 3) {
     o.dataset = 'foo';
@@ -202,7 +201,7 @@ void checkGoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec(
 core.int buildCounterGoogleCloudDatacatalogV1beta1BigQueryTableSpec = 0;
 api.GoogleCloudDatacatalogV1beta1BigQueryTableSpec
     buildGoogleCloudDatacatalogV1beta1BigQueryTableSpec() {
-  var o = api.GoogleCloudDatacatalogV1beta1BigQueryTableSpec();
+  final o = api.GoogleCloudDatacatalogV1beta1BigQueryTableSpec();
   buildCounterGoogleCloudDatacatalogV1beta1BigQueryTableSpec++;
   if (buildCounterGoogleCloudDatacatalogV1beta1BigQueryTableSpec < 3) {
     o.tableSourceType = 'foo';
@@ -221,16 +220,14 @@ void checkGoogleCloudDatacatalogV1beta1BigQueryTableSpec(
       o.tableSourceType!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudDatacatalogV1beta1TableSpec(
-        o.tableSpec! as api.GoogleCloudDatacatalogV1beta1TableSpec);
-    checkGoogleCloudDatacatalogV1beta1ViewSpec(
-        o.viewSpec! as api.GoogleCloudDatacatalogV1beta1ViewSpec);
+    checkGoogleCloudDatacatalogV1beta1TableSpec(o.tableSpec!);
+    checkGoogleCloudDatacatalogV1beta1ViewSpec(o.viewSpec!);
   }
   buildCounterGoogleCloudDatacatalogV1beta1BigQueryTableSpec--;
 }
 
 core.List<api.GoogleCloudDatacatalogV1beta1ColumnSchema> buildUnnamed7793() {
-  var o = <api.GoogleCloudDatacatalogV1beta1ColumnSchema>[];
+  final o = <api.GoogleCloudDatacatalogV1beta1ColumnSchema>[];
   o.add(buildGoogleCloudDatacatalogV1beta1ColumnSchema());
   o.add(buildGoogleCloudDatacatalogV1beta1ColumnSchema());
   return o;
@@ -239,16 +236,14 @@ core.List<api.GoogleCloudDatacatalogV1beta1ColumnSchema> buildUnnamed7793() {
 void checkUnnamed7793(
     core.List<api.GoogleCloudDatacatalogV1beta1ColumnSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudDatacatalogV1beta1ColumnSchema(
-      o[0] as api.GoogleCloudDatacatalogV1beta1ColumnSchema);
-  checkGoogleCloudDatacatalogV1beta1ColumnSchema(
-      o[1] as api.GoogleCloudDatacatalogV1beta1ColumnSchema);
+  checkGoogleCloudDatacatalogV1beta1ColumnSchema(o[0]);
+  checkGoogleCloudDatacatalogV1beta1ColumnSchema(o[1]);
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1ColumnSchema = 0;
 api.GoogleCloudDatacatalogV1beta1ColumnSchema
     buildGoogleCloudDatacatalogV1beta1ColumnSchema() {
-  var o = api.GoogleCloudDatacatalogV1beta1ColumnSchema();
+  final o = api.GoogleCloudDatacatalogV1beta1ColumnSchema();
   buildCounterGoogleCloudDatacatalogV1beta1ColumnSchema++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ColumnSchema < 3) {
     o.column = 'foo';
@@ -289,7 +284,7 @@ void checkGoogleCloudDatacatalogV1beta1ColumnSchema(
 core.int buildCounterGoogleCloudDatacatalogV1beta1Entry = 0;
 api.GoogleCloudDatacatalogV1beta1Entry
     buildGoogleCloudDatacatalogV1beta1Entry() {
-  var o = api.GoogleCloudDatacatalogV1beta1Entry();
+  final o = api.GoogleCloudDatacatalogV1beta1Entry();
   buildCounterGoogleCloudDatacatalogV1beta1Entry++;
   if (buildCounterGoogleCloudDatacatalogV1beta1Entry < 3) {
     o.bigqueryDateShardedSpec =
@@ -318,10 +313,8 @@ void checkGoogleCloudDatacatalogV1beta1Entry(
   buildCounterGoogleCloudDatacatalogV1beta1Entry++;
   if (buildCounterGoogleCloudDatacatalogV1beta1Entry < 3) {
     checkGoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec(
-        o.bigqueryDateShardedSpec!
-            as api.GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec);
-    checkGoogleCloudDatacatalogV1beta1BigQueryTableSpec(o.bigqueryTableSpec!
-        as api.GoogleCloudDatacatalogV1beta1BigQueryTableSpec);
+        o.bigqueryDateShardedSpec!);
+    checkGoogleCloudDatacatalogV1beta1BigQueryTableSpec(o.bigqueryTableSpec!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -330,8 +323,7 @@ void checkGoogleCloudDatacatalogV1beta1Entry(
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudDatacatalogV1beta1GcsFilesetSpec(
-        o.gcsFilesetSpec! as api.GoogleCloudDatacatalogV1beta1GcsFilesetSpec);
+    checkGoogleCloudDatacatalogV1beta1GcsFilesetSpec(o.gcsFilesetSpec!);
     unittest.expect(
       o.integratedSystem!,
       unittest.equals('foo'),
@@ -344,16 +336,14 @@ void checkGoogleCloudDatacatalogV1beta1Entry(
       o.name!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudDatacatalogV1beta1Schema(
-        o.schema! as api.GoogleCloudDatacatalogV1beta1Schema);
-    checkGoogleCloudDatacatalogV1beta1SystemTimestamps(o.sourceSystemTimestamps!
-        as api.GoogleCloudDatacatalogV1beta1SystemTimestamps);
+    checkGoogleCloudDatacatalogV1beta1Schema(o.schema!);
+    checkGoogleCloudDatacatalogV1beta1SystemTimestamps(
+        o.sourceSystemTimestamps!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudDatacatalogV1beta1UsageSignal(
-        o.usageSignal! as api.GoogleCloudDatacatalogV1beta1UsageSignal);
+    checkGoogleCloudDatacatalogV1beta1UsageSignal(o.usageSignal!);
     unittest.expect(
       o.userSpecifiedSystem!,
       unittest.equals('foo'),
@@ -369,7 +359,7 @@ void checkGoogleCloudDatacatalogV1beta1Entry(
 core.int buildCounterGoogleCloudDatacatalogV1beta1EntryGroup = 0;
 api.GoogleCloudDatacatalogV1beta1EntryGroup
     buildGoogleCloudDatacatalogV1beta1EntryGroup() {
-  var o = api.GoogleCloudDatacatalogV1beta1EntryGroup();
+  final o = api.GoogleCloudDatacatalogV1beta1EntryGroup();
   buildCounterGoogleCloudDatacatalogV1beta1EntryGroup++;
   if (buildCounterGoogleCloudDatacatalogV1beta1EntryGroup < 3) {
     o.dataCatalogTimestamps =
@@ -386,8 +376,8 @@ void checkGoogleCloudDatacatalogV1beta1EntryGroup(
     api.GoogleCloudDatacatalogV1beta1EntryGroup o) {
   buildCounterGoogleCloudDatacatalogV1beta1EntryGroup++;
   if (buildCounterGoogleCloudDatacatalogV1beta1EntryGroup < 3) {
-    checkGoogleCloudDatacatalogV1beta1SystemTimestamps(o.dataCatalogTimestamps!
-        as api.GoogleCloudDatacatalogV1beta1SystemTimestamps);
+    checkGoogleCloudDatacatalogV1beta1SystemTimestamps(
+        o.dataCatalogTimestamps!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -406,7 +396,7 @@ void checkGoogleCloudDatacatalogV1beta1EntryGroup(
 
 core.List<api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy>
     buildUnnamed7794() {
-  var o = <api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy>[];
+  final o = <api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy>[];
   o.add(buildGoogleCloudDatacatalogV1beta1SerializedTaxonomy());
   o.add(buildGoogleCloudDatacatalogV1beta1SerializedTaxonomy());
   return o;
@@ -415,16 +405,14 @@ core.List<api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy>
 void checkUnnamed7794(
     core.List<api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudDatacatalogV1beta1SerializedTaxonomy(
-      o[0] as api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy);
-  checkGoogleCloudDatacatalogV1beta1SerializedTaxonomy(
-      o[1] as api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy);
+  checkGoogleCloudDatacatalogV1beta1SerializedTaxonomy(o[0]);
+  checkGoogleCloudDatacatalogV1beta1SerializedTaxonomy(o[1]);
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse = 0;
 api.GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse
     buildGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse() {
-  var o = api.GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse();
+  final o = api.GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse();
   buildCounterGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse < 3) {
     o.taxonomies = buildUnnamed7794();
@@ -445,7 +433,7 @@ void checkGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse(
 core.int buildCounterGoogleCloudDatacatalogV1beta1FieldType = 0;
 api.GoogleCloudDatacatalogV1beta1FieldType
     buildGoogleCloudDatacatalogV1beta1FieldType() {
-  var o = api.GoogleCloudDatacatalogV1beta1FieldType();
+  final o = api.GoogleCloudDatacatalogV1beta1FieldType();
   buildCounterGoogleCloudDatacatalogV1beta1FieldType++;
   if (buildCounterGoogleCloudDatacatalogV1beta1FieldType < 3) {
     o.enumType = buildGoogleCloudDatacatalogV1beta1FieldTypeEnumType();
@@ -459,8 +447,7 @@ void checkGoogleCloudDatacatalogV1beta1FieldType(
     api.GoogleCloudDatacatalogV1beta1FieldType o) {
   buildCounterGoogleCloudDatacatalogV1beta1FieldType++;
   if (buildCounterGoogleCloudDatacatalogV1beta1FieldType < 3) {
-    checkGoogleCloudDatacatalogV1beta1FieldTypeEnumType(
-        o.enumType! as api.GoogleCloudDatacatalogV1beta1FieldTypeEnumType);
+    checkGoogleCloudDatacatalogV1beta1FieldTypeEnumType(o.enumType!);
     unittest.expect(
       o.primitiveType!,
       unittest.equals('foo'),
@@ -471,7 +458,7 @@ void checkGoogleCloudDatacatalogV1beta1FieldType(
 
 core.List<api.GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>
     buildUnnamed7795() {
-  var o = <api.GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>[];
+  final o = <api.GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>[];
   o.add(buildGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue());
   o.add(buildGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue());
   return o;
@@ -480,16 +467,14 @@ core.List<api.GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>
 void checkUnnamed7795(
     core.List<api.GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue(
-      o[0] as api.GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue);
-  checkGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue(
-      o[1] as api.GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue);
+  checkGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue(o[0]);
+  checkGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue(o[1]);
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1FieldTypeEnumType = 0;
 api.GoogleCloudDatacatalogV1beta1FieldTypeEnumType
     buildGoogleCloudDatacatalogV1beta1FieldTypeEnumType() {
-  var o = api.GoogleCloudDatacatalogV1beta1FieldTypeEnumType();
+  final o = api.GoogleCloudDatacatalogV1beta1FieldTypeEnumType();
   buildCounterGoogleCloudDatacatalogV1beta1FieldTypeEnumType++;
   if (buildCounterGoogleCloudDatacatalogV1beta1FieldTypeEnumType < 3) {
     o.allowedValues = buildUnnamed7795();
@@ -511,7 +496,7 @@ core.int buildCounterGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue =
     0;
 api.GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue
     buildGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue() {
-  var o = api.GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue();
+  final o = api.GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue();
   buildCounterGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue++;
   if (buildCounterGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue < 3) {
     o.displayName = 'foo';
@@ -535,7 +520,7 @@ void checkGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue(
 core.int buildCounterGoogleCloudDatacatalogV1beta1GcsFileSpec = 0;
 api.GoogleCloudDatacatalogV1beta1GcsFileSpec
     buildGoogleCloudDatacatalogV1beta1GcsFileSpec() {
-  var o = api.GoogleCloudDatacatalogV1beta1GcsFileSpec();
+  final o = api.GoogleCloudDatacatalogV1beta1GcsFileSpec();
   buildCounterGoogleCloudDatacatalogV1beta1GcsFileSpec++;
   if (buildCounterGoogleCloudDatacatalogV1beta1GcsFileSpec < 3) {
     o.filePath = 'foo';
@@ -554,8 +539,7 @@ void checkGoogleCloudDatacatalogV1beta1GcsFileSpec(
       o.filePath!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudDatacatalogV1beta1SystemTimestamps(
-        o.gcsTimestamps! as api.GoogleCloudDatacatalogV1beta1SystemTimestamps);
+    checkGoogleCloudDatacatalogV1beta1SystemTimestamps(o.gcsTimestamps!);
     unittest.expect(
       o.sizeBytes!,
       unittest.equals('foo'),
@@ -565,7 +549,7 @@ void checkGoogleCloudDatacatalogV1beta1GcsFileSpec(
 }
 
 core.List<core.String> buildUnnamed7796() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -584,7 +568,7 @@ void checkUnnamed7796(core.List<core.String> o) {
 }
 
 core.List<api.GoogleCloudDatacatalogV1beta1GcsFileSpec> buildUnnamed7797() {
-  var o = <api.GoogleCloudDatacatalogV1beta1GcsFileSpec>[];
+  final o = <api.GoogleCloudDatacatalogV1beta1GcsFileSpec>[];
   o.add(buildGoogleCloudDatacatalogV1beta1GcsFileSpec());
   o.add(buildGoogleCloudDatacatalogV1beta1GcsFileSpec());
   return o;
@@ -593,16 +577,14 @@ core.List<api.GoogleCloudDatacatalogV1beta1GcsFileSpec> buildUnnamed7797() {
 void checkUnnamed7797(
     core.List<api.GoogleCloudDatacatalogV1beta1GcsFileSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudDatacatalogV1beta1GcsFileSpec(
-      o[0] as api.GoogleCloudDatacatalogV1beta1GcsFileSpec);
-  checkGoogleCloudDatacatalogV1beta1GcsFileSpec(
-      o[1] as api.GoogleCloudDatacatalogV1beta1GcsFileSpec);
+  checkGoogleCloudDatacatalogV1beta1GcsFileSpec(o[0]);
+  checkGoogleCloudDatacatalogV1beta1GcsFileSpec(o[1]);
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1GcsFilesetSpec = 0;
 api.GoogleCloudDatacatalogV1beta1GcsFilesetSpec
     buildGoogleCloudDatacatalogV1beta1GcsFilesetSpec() {
-  var o = api.GoogleCloudDatacatalogV1beta1GcsFilesetSpec();
+  final o = api.GoogleCloudDatacatalogV1beta1GcsFilesetSpec();
   buildCounterGoogleCloudDatacatalogV1beta1GcsFilesetSpec++;
   if (buildCounterGoogleCloudDatacatalogV1beta1GcsFilesetSpec < 3) {
     o.filePatterns = buildUnnamed7796();
@@ -625,7 +607,7 @@ void checkGoogleCloudDatacatalogV1beta1GcsFilesetSpec(
 core.int buildCounterGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest = 0;
 api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest
     buildGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest() {
-  var o = api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest();
+  final o = api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest();
   buildCounterGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest < 3) {
     o.inlineSource = buildGoogleCloudDatacatalogV1beta1InlineSource();
@@ -638,14 +620,13 @@ void checkGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest(
     api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest o) {
   buildCounterGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest < 3) {
-    checkGoogleCloudDatacatalogV1beta1InlineSource(
-        o.inlineSource! as api.GoogleCloudDatacatalogV1beta1InlineSource);
+    checkGoogleCloudDatacatalogV1beta1InlineSource(o.inlineSource!);
   }
   buildCounterGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest--;
 }
 
 core.List<api.GoogleCloudDatacatalogV1beta1Taxonomy> buildUnnamed7798() {
-  var o = <api.GoogleCloudDatacatalogV1beta1Taxonomy>[];
+  final o = <api.GoogleCloudDatacatalogV1beta1Taxonomy>[];
   o.add(buildGoogleCloudDatacatalogV1beta1Taxonomy());
   o.add(buildGoogleCloudDatacatalogV1beta1Taxonomy());
   return o;
@@ -653,16 +634,14 @@ core.List<api.GoogleCloudDatacatalogV1beta1Taxonomy> buildUnnamed7798() {
 
 void checkUnnamed7798(core.List<api.GoogleCloudDatacatalogV1beta1Taxonomy> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudDatacatalogV1beta1Taxonomy(
-      o[0] as api.GoogleCloudDatacatalogV1beta1Taxonomy);
-  checkGoogleCloudDatacatalogV1beta1Taxonomy(
-      o[1] as api.GoogleCloudDatacatalogV1beta1Taxonomy);
+  checkGoogleCloudDatacatalogV1beta1Taxonomy(o[0]);
+  checkGoogleCloudDatacatalogV1beta1Taxonomy(o[1]);
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse = 0;
 api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse
     buildGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse() {
-  var o = api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse();
+  final o = api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse();
   buildCounterGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse < 3) {
     o.taxonomies = buildUnnamed7798();
@@ -682,7 +661,7 @@ void checkGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse(
 
 core.List<api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy>
     buildUnnamed7799() {
-  var o = <api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy>[];
+  final o = <api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy>[];
   o.add(buildGoogleCloudDatacatalogV1beta1SerializedTaxonomy());
   o.add(buildGoogleCloudDatacatalogV1beta1SerializedTaxonomy());
   return o;
@@ -691,16 +670,14 @@ core.List<api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy>
 void checkUnnamed7799(
     core.List<api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudDatacatalogV1beta1SerializedTaxonomy(
-      o[0] as api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy);
-  checkGoogleCloudDatacatalogV1beta1SerializedTaxonomy(
-      o[1] as api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy);
+  checkGoogleCloudDatacatalogV1beta1SerializedTaxonomy(o[0]);
+  checkGoogleCloudDatacatalogV1beta1SerializedTaxonomy(o[1]);
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1InlineSource = 0;
 api.GoogleCloudDatacatalogV1beta1InlineSource
     buildGoogleCloudDatacatalogV1beta1InlineSource() {
-  var o = api.GoogleCloudDatacatalogV1beta1InlineSource();
+  final o = api.GoogleCloudDatacatalogV1beta1InlineSource();
   buildCounterGoogleCloudDatacatalogV1beta1InlineSource++;
   if (buildCounterGoogleCloudDatacatalogV1beta1InlineSource < 3) {
     o.taxonomies = buildUnnamed7799();
@@ -719,7 +696,7 @@ void checkGoogleCloudDatacatalogV1beta1InlineSource(
 }
 
 core.List<api.GoogleCloudDatacatalogV1beta1Entry> buildUnnamed7800() {
-  var o = <api.GoogleCloudDatacatalogV1beta1Entry>[];
+  final o = <api.GoogleCloudDatacatalogV1beta1Entry>[];
   o.add(buildGoogleCloudDatacatalogV1beta1Entry());
   o.add(buildGoogleCloudDatacatalogV1beta1Entry());
   return o;
@@ -727,16 +704,14 @@ core.List<api.GoogleCloudDatacatalogV1beta1Entry> buildUnnamed7800() {
 
 void checkUnnamed7800(core.List<api.GoogleCloudDatacatalogV1beta1Entry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudDatacatalogV1beta1Entry(
-      o[0] as api.GoogleCloudDatacatalogV1beta1Entry);
-  checkGoogleCloudDatacatalogV1beta1Entry(
-      o[1] as api.GoogleCloudDatacatalogV1beta1Entry);
+  checkGoogleCloudDatacatalogV1beta1Entry(o[0]);
+  checkGoogleCloudDatacatalogV1beta1Entry(o[1]);
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1ListEntriesResponse = 0;
 api.GoogleCloudDatacatalogV1beta1ListEntriesResponse
     buildGoogleCloudDatacatalogV1beta1ListEntriesResponse() {
-  var o = api.GoogleCloudDatacatalogV1beta1ListEntriesResponse();
+  final o = api.GoogleCloudDatacatalogV1beta1ListEntriesResponse();
   buildCounterGoogleCloudDatacatalogV1beta1ListEntriesResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ListEntriesResponse < 3) {
     o.entries = buildUnnamed7800();
@@ -760,7 +735,7 @@ void checkGoogleCloudDatacatalogV1beta1ListEntriesResponse(
 }
 
 core.List<api.GoogleCloudDatacatalogV1beta1EntryGroup> buildUnnamed7801() {
-  var o = <api.GoogleCloudDatacatalogV1beta1EntryGroup>[];
+  final o = <api.GoogleCloudDatacatalogV1beta1EntryGroup>[];
   o.add(buildGoogleCloudDatacatalogV1beta1EntryGroup());
   o.add(buildGoogleCloudDatacatalogV1beta1EntryGroup());
   return o;
@@ -769,16 +744,14 @@ core.List<api.GoogleCloudDatacatalogV1beta1EntryGroup> buildUnnamed7801() {
 void checkUnnamed7801(
     core.List<api.GoogleCloudDatacatalogV1beta1EntryGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudDatacatalogV1beta1EntryGroup(
-      o[0] as api.GoogleCloudDatacatalogV1beta1EntryGroup);
-  checkGoogleCloudDatacatalogV1beta1EntryGroup(
-      o[1] as api.GoogleCloudDatacatalogV1beta1EntryGroup);
+  checkGoogleCloudDatacatalogV1beta1EntryGroup(o[0]);
+  checkGoogleCloudDatacatalogV1beta1EntryGroup(o[1]);
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse = 0;
 api.GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse
     buildGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse() {
-  var o = api.GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse();
+  final o = api.GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse();
   buildCounterGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse < 3) {
     o.entryGroups = buildUnnamed7801();
@@ -802,7 +775,7 @@ void checkGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse(
 }
 
 core.List<api.GoogleCloudDatacatalogV1beta1PolicyTag> buildUnnamed7802() {
-  var o = <api.GoogleCloudDatacatalogV1beta1PolicyTag>[];
+  final o = <api.GoogleCloudDatacatalogV1beta1PolicyTag>[];
   o.add(buildGoogleCloudDatacatalogV1beta1PolicyTag());
   o.add(buildGoogleCloudDatacatalogV1beta1PolicyTag());
   return o;
@@ -810,16 +783,14 @@ core.List<api.GoogleCloudDatacatalogV1beta1PolicyTag> buildUnnamed7802() {
 
 void checkUnnamed7802(core.List<api.GoogleCloudDatacatalogV1beta1PolicyTag> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudDatacatalogV1beta1PolicyTag(
-      o[0] as api.GoogleCloudDatacatalogV1beta1PolicyTag);
-  checkGoogleCloudDatacatalogV1beta1PolicyTag(
-      o[1] as api.GoogleCloudDatacatalogV1beta1PolicyTag);
+  checkGoogleCloudDatacatalogV1beta1PolicyTag(o[0]);
+  checkGoogleCloudDatacatalogV1beta1PolicyTag(o[1]);
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse = 0;
 api.GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse
     buildGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse() {
-  var o = api.GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse();
+  final o = api.GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse();
   buildCounterGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse < 3) {
     o.nextPageToken = 'foo';
@@ -843,7 +814,7 @@ void checkGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse(
 }
 
 core.List<api.GoogleCloudDatacatalogV1beta1Tag> buildUnnamed7803() {
-  var o = <api.GoogleCloudDatacatalogV1beta1Tag>[];
+  final o = <api.GoogleCloudDatacatalogV1beta1Tag>[];
   o.add(buildGoogleCloudDatacatalogV1beta1Tag());
   o.add(buildGoogleCloudDatacatalogV1beta1Tag());
   return o;
@@ -851,16 +822,14 @@ core.List<api.GoogleCloudDatacatalogV1beta1Tag> buildUnnamed7803() {
 
 void checkUnnamed7803(core.List<api.GoogleCloudDatacatalogV1beta1Tag> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudDatacatalogV1beta1Tag(
-      o[0] as api.GoogleCloudDatacatalogV1beta1Tag);
-  checkGoogleCloudDatacatalogV1beta1Tag(
-      o[1] as api.GoogleCloudDatacatalogV1beta1Tag);
+  checkGoogleCloudDatacatalogV1beta1Tag(o[0]);
+  checkGoogleCloudDatacatalogV1beta1Tag(o[1]);
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1ListTagsResponse = 0;
 api.GoogleCloudDatacatalogV1beta1ListTagsResponse
     buildGoogleCloudDatacatalogV1beta1ListTagsResponse() {
-  var o = api.GoogleCloudDatacatalogV1beta1ListTagsResponse();
+  final o = api.GoogleCloudDatacatalogV1beta1ListTagsResponse();
   buildCounterGoogleCloudDatacatalogV1beta1ListTagsResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ListTagsResponse < 3) {
     o.nextPageToken = 'foo';
@@ -884,7 +853,7 @@ void checkGoogleCloudDatacatalogV1beta1ListTagsResponse(
 }
 
 core.List<api.GoogleCloudDatacatalogV1beta1Taxonomy> buildUnnamed7804() {
-  var o = <api.GoogleCloudDatacatalogV1beta1Taxonomy>[];
+  final o = <api.GoogleCloudDatacatalogV1beta1Taxonomy>[];
   o.add(buildGoogleCloudDatacatalogV1beta1Taxonomy());
   o.add(buildGoogleCloudDatacatalogV1beta1Taxonomy());
   return o;
@@ -892,16 +861,14 @@ core.List<api.GoogleCloudDatacatalogV1beta1Taxonomy> buildUnnamed7804() {
 
 void checkUnnamed7804(core.List<api.GoogleCloudDatacatalogV1beta1Taxonomy> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudDatacatalogV1beta1Taxonomy(
-      o[0] as api.GoogleCloudDatacatalogV1beta1Taxonomy);
-  checkGoogleCloudDatacatalogV1beta1Taxonomy(
-      o[1] as api.GoogleCloudDatacatalogV1beta1Taxonomy);
+  checkGoogleCloudDatacatalogV1beta1Taxonomy(o[0]);
+  checkGoogleCloudDatacatalogV1beta1Taxonomy(o[1]);
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse = 0;
 api.GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse
     buildGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse() {
-  var o = api.GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse();
+  final o = api.GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse();
   buildCounterGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse < 3) {
     o.nextPageToken = 'foo';
@@ -925,7 +892,7 @@ void checkGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse(
 }
 
 core.List<core.String> buildUnnamed7805() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -946,7 +913,7 @@ void checkUnnamed7805(core.List<core.String> o) {
 core.int buildCounterGoogleCloudDatacatalogV1beta1PolicyTag = 0;
 api.GoogleCloudDatacatalogV1beta1PolicyTag
     buildGoogleCloudDatacatalogV1beta1PolicyTag() {
-  var o = api.GoogleCloudDatacatalogV1beta1PolicyTag();
+  final o = api.GoogleCloudDatacatalogV1beta1PolicyTag();
   buildCounterGoogleCloudDatacatalogV1beta1PolicyTag++;
   if (buildCounterGoogleCloudDatacatalogV1beta1PolicyTag < 3) {
     o.childPolicyTags = buildUnnamed7805();
@@ -989,7 +956,7 @@ core.int
     0;
 api.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest
     buildGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest() {
-  var o =
+  final o =
       api.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest();
   buildCounterGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest++;
   if (buildCounterGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest <
@@ -1017,7 +984,7 @@ core.int
     buildCounterGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest = 0;
 api.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest
     buildGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest() {
-  var o = api.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest();
+  final o = api.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest();
   buildCounterGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest++;
   if (buildCounterGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest <
       3) {
@@ -1041,7 +1008,7 @@ void checkGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest(
 }
 
 core.List<api.GoogleCloudDatacatalogV1beta1ColumnSchema> buildUnnamed7806() {
-  var o = <api.GoogleCloudDatacatalogV1beta1ColumnSchema>[];
+  final o = <api.GoogleCloudDatacatalogV1beta1ColumnSchema>[];
   o.add(buildGoogleCloudDatacatalogV1beta1ColumnSchema());
   o.add(buildGoogleCloudDatacatalogV1beta1ColumnSchema());
   return o;
@@ -1050,16 +1017,14 @@ core.List<api.GoogleCloudDatacatalogV1beta1ColumnSchema> buildUnnamed7806() {
 void checkUnnamed7806(
     core.List<api.GoogleCloudDatacatalogV1beta1ColumnSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudDatacatalogV1beta1ColumnSchema(
-      o[0] as api.GoogleCloudDatacatalogV1beta1ColumnSchema);
-  checkGoogleCloudDatacatalogV1beta1ColumnSchema(
-      o[1] as api.GoogleCloudDatacatalogV1beta1ColumnSchema);
+  checkGoogleCloudDatacatalogV1beta1ColumnSchema(o[0]);
+  checkGoogleCloudDatacatalogV1beta1ColumnSchema(o[1]);
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1Schema = 0;
 api.GoogleCloudDatacatalogV1beta1Schema
     buildGoogleCloudDatacatalogV1beta1Schema() {
-  var o = api.GoogleCloudDatacatalogV1beta1Schema();
+  final o = api.GoogleCloudDatacatalogV1beta1Schema();
   buildCounterGoogleCloudDatacatalogV1beta1Schema++;
   if (buildCounterGoogleCloudDatacatalogV1beta1Schema < 3) {
     o.columns = buildUnnamed7806();
@@ -1080,7 +1045,7 @@ void checkGoogleCloudDatacatalogV1beta1Schema(
 core.int buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogRequest = 0;
 api.GoogleCloudDatacatalogV1beta1SearchCatalogRequest
     buildGoogleCloudDatacatalogV1beta1SearchCatalogRequest() {
-  var o = api.GoogleCloudDatacatalogV1beta1SearchCatalogRequest();
+  final o = api.GoogleCloudDatacatalogV1beta1SearchCatalogRequest();
   buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogRequest++;
   if (buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogRequest < 3) {
     o.orderBy = 'foo';
@@ -1113,14 +1078,13 @@ void checkGoogleCloudDatacatalogV1beta1SearchCatalogRequest(
       o.query!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope(
-        o.scope! as api.GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope);
+    checkGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope(o.scope!);
   }
   buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogRequest--;
 }
 
 core.List<core.String> buildUnnamed7807() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1139,7 +1103,7 @@ void checkUnnamed7807(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed7808() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1158,7 +1122,7 @@ void checkUnnamed7808(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed7809() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1179,7 +1143,7 @@ void checkUnnamed7809(core.List<core.String> o) {
 core.int buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope = 0;
 api.GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope
     buildGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope() {
-  var o = api.GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope();
+  final o = api.GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope();
   buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope++;
   if (buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope < 3) {
     o.includeGcpPublicDatasets = true;
@@ -1205,7 +1169,7 @@ void checkGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope(
 
 core.List<api.GoogleCloudDatacatalogV1beta1SearchCatalogResult>
     buildUnnamed7810() {
-  var o = <api.GoogleCloudDatacatalogV1beta1SearchCatalogResult>[];
+  final o = <api.GoogleCloudDatacatalogV1beta1SearchCatalogResult>[];
   o.add(buildGoogleCloudDatacatalogV1beta1SearchCatalogResult());
   o.add(buildGoogleCloudDatacatalogV1beta1SearchCatalogResult());
   return o;
@@ -1214,14 +1178,12 @@ core.List<api.GoogleCloudDatacatalogV1beta1SearchCatalogResult>
 void checkUnnamed7810(
     core.List<api.GoogleCloudDatacatalogV1beta1SearchCatalogResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudDatacatalogV1beta1SearchCatalogResult(
-      o[0] as api.GoogleCloudDatacatalogV1beta1SearchCatalogResult);
-  checkGoogleCloudDatacatalogV1beta1SearchCatalogResult(
-      o[1] as api.GoogleCloudDatacatalogV1beta1SearchCatalogResult);
+  checkGoogleCloudDatacatalogV1beta1SearchCatalogResult(o[0]);
+  checkGoogleCloudDatacatalogV1beta1SearchCatalogResult(o[1]);
 }
 
 core.List<core.String> buildUnnamed7811() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1242,7 +1204,7 @@ void checkUnnamed7811(core.List<core.String> o) {
 core.int buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogResponse = 0;
 api.GoogleCloudDatacatalogV1beta1SearchCatalogResponse
     buildGoogleCloudDatacatalogV1beta1SearchCatalogResponse() {
-  var o = api.GoogleCloudDatacatalogV1beta1SearchCatalogResponse();
+  final o = api.GoogleCloudDatacatalogV1beta1SearchCatalogResponse();
   buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogResponse < 3) {
     o.nextPageToken = 'foo';
@@ -1270,7 +1232,7 @@ void checkGoogleCloudDatacatalogV1beta1SearchCatalogResponse(
 core.int buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogResult = 0;
 api.GoogleCloudDatacatalogV1beta1SearchCatalogResult
     buildGoogleCloudDatacatalogV1beta1SearchCatalogResult() {
-  var o = api.GoogleCloudDatacatalogV1beta1SearchCatalogResult();
+  final o = api.GoogleCloudDatacatalogV1beta1SearchCatalogResult();
   buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogResult++;
   if (buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogResult < 3) {
     o.linkedResource = 'foo';
@@ -1313,7 +1275,7 @@ void checkGoogleCloudDatacatalogV1beta1SearchCatalogResult(
 
 core.List<api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag>
     buildUnnamed7812() {
-  var o = <api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag>[];
+  final o = <api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag>[];
   o.add(buildGoogleCloudDatacatalogV1beta1SerializedPolicyTag());
   o.add(buildGoogleCloudDatacatalogV1beta1SerializedPolicyTag());
   return o;
@@ -1322,16 +1284,14 @@ core.List<api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag>
 void checkUnnamed7812(
     core.List<api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudDatacatalogV1beta1SerializedPolicyTag(
-      o[0] as api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag);
-  checkGoogleCloudDatacatalogV1beta1SerializedPolicyTag(
-      o[1] as api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag);
+  checkGoogleCloudDatacatalogV1beta1SerializedPolicyTag(o[0]);
+  checkGoogleCloudDatacatalogV1beta1SerializedPolicyTag(o[1]);
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1SerializedPolicyTag = 0;
 api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag
     buildGoogleCloudDatacatalogV1beta1SerializedPolicyTag() {
-  var o = api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag();
+  final o = api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag();
   buildCounterGoogleCloudDatacatalogV1beta1SerializedPolicyTag++;
   if (buildCounterGoogleCloudDatacatalogV1beta1SerializedPolicyTag < 3) {
     o.childPolicyTags = buildUnnamed7812();
@@ -1365,7 +1325,7 @@ void checkGoogleCloudDatacatalogV1beta1SerializedPolicyTag(
 }
 
 core.List<core.String> buildUnnamed7813() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1385,7 +1345,7 @@ void checkUnnamed7813(core.List<core.String> o) {
 
 core.List<api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag>
     buildUnnamed7814() {
-  var o = <api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag>[];
+  final o = <api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag>[];
   o.add(buildGoogleCloudDatacatalogV1beta1SerializedPolicyTag());
   o.add(buildGoogleCloudDatacatalogV1beta1SerializedPolicyTag());
   return o;
@@ -1394,16 +1354,14 @@ core.List<api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag>
 void checkUnnamed7814(
     core.List<api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudDatacatalogV1beta1SerializedPolicyTag(
-      o[0] as api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag);
-  checkGoogleCloudDatacatalogV1beta1SerializedPolicyTag(
-      o[1] as api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag);
+  checkGoogleCloudDatacatalogV1beta1SerializedPolicyTag(o[0]);
+  checkGoogleCloudDatacatalogV1beta1SerializedPolicyTag(o[1]);
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1SerializedTaxonomy = 0;
 api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy
     buildGoogleCloudDatacatalogV1beta1SerializedTaxonomy() {
-  var o = api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy();
+  final o = api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy();
   buildCounterGoogleCloudDatacatalogV1beta1SerializedTaxonomy++;
   if (buildCounterGoogleCloudDatacatalogV1beta1SerializedTaxonomy < 3) {
     o.activatedPolicyTypes = buildUnnamed7813();
@@ -1436,7 +1394,7 @@ void checkGoogleCloudDatacatalogV1beta1SerializedTaxonomy(
 core.int buildCounterGoogleCloudDatacatalogV1beta1SystemTimestamps = 0;
 api.GoogleCloudDatacatalogV1beta1SystemTimestamps
     buildGoogleCloudDatacatalogV1beta1SystemTimestamps() {
-  var o = api.GoogleCloudDatacatalogV1beta1SystemTimestamps();
+  final o = api.GoogleCloudDatacatalogV1beta1SystemTimestamps();
   buildCounterGoogleCloudDatacatalogV1beta1SystemTimestamps++;
   if (buildCounterGoogleCloudDatacatalogV1beta1SystemTimestamps < 3) {
     o.createTime = 'foo';
@@ -1470,7 +1428,7 @@ void checkGoogleCloudDatacatalogV1beta1SystemTimestamps(
 core.int buildCounterGoogleCloudDatacatalogV1beta1TableSpec = 0;
 api.GoogleCloudDatacatalogV1beta1TableSpec
     buildGoogleCloudDatacatalogV1beta1TableSpec() {
-  var o = api.GoogleCloudDatacatalogV1beta1TableSpec();
+  final o = api.GoogleCloudDatacatalogV1beta1TableSpec();
   buildCounterGoogleCloudDatacatalogV1beta1TableSpec++;
   if (buildCounterGoogleCloudDatacatalogV1beta1TableSpec < 3) {
     o.groupedEntry = 'foo';
@@ -1493,7 +1451,7 @@ void checkGoogleCloudDatacatalogV1beta1TableSpec(
 
 core.Map<core.String, api.GoogleCloudDatacatalogV1beta1TagField>
     buildUnnamed7815() {
-  var o = <core.String, api.GoogleCloudDatacatalogV1beta1TagField>{};
+  final o = <core.String, api.GoogleCloudDatacatalogV1beta1TagField>{};
   o['x'] = buildGoogleCloudDatacatalogV1beta1TagField();
   o['y'] = buildGoogleCloudDatacatalogV1beta1TagField();
   return o;
@@ -1502,15 +1460,13 @@ core.Map<core.String, api.GoogleCloudDatacatalogV1beta1TagField>
 void checkUnnamed7815(
     core.Map<core.String, api.GoogleCloudDatacatalogV1beta1TagField> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudDatacatalogV1beta1TagField(
-      o['x']! as api.GoogleCloudDatacatalogV1beta1TagField);
-  checkGoogleCloudDatacatalogV1beta1TagField(
-      o['y']! as api.GoogleCloudDatacatalogV1beta1TagField);
+  checkGoogleCloudDatacatalogV1beta1TagField(o['x']!);
+  checkGoogleCloudDatacatalogV1beta1TagField(o['y']!);
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1Tag = 0;
 api.GoogleCloudDatacatalogV1beta1Tag buildGoogleCloudDatacatalogV1beta1Tag() {
-  var o = api.GoogleCloudDatacatalogV1beta1Tag();
+  final o = api.GoogleCloudDatacatalogV1beta1Tag();
   buildCounterGoogleCloudDatacatalogV1beta1Tag++;
   if (buildCounterGoogleCloudDatacatalogV1beta1Tag < 3) {
     o.column = 'foo';
@@ -1551,7 +1507,7 @@ void checkGoogleCloudDatacatalogV1beta1Tag(
 core.int buildCounterGoogleCloudDatacatalogV1beta1TagField = 0;
 api.GoogleCloudDatacatalogV1beta1TagField
     buildGoogleCloudDatacatalogV1beta1TagField() {
-  var o = api.GoogleCloudDatacatalogV1beta1TagField();
+  final o = api.GoogleCloudDatacatalogV1beta1TagField();
   buildCounterGoogleCloudDatacatalogV1beta1TagField++;
   if (buildCounterGoogleCloudDatacatalogV1beta1TagField < 3) {
     o.boolValue = true;
@@ -1579,8 +1535,7 @@ void checkGoogleCloudDatacatalogV1beta1TagField(
       o.doubleValue!,
       unittest.equals(42.0),
     );
-    checkGoogleCloudDatacatalogV1beta1TagFieldEnumValue(
-        o.enumValue! as api.GoogleCloudDatacatalogV1beta1TagFieldEnumValue);
+    checkGoogleCloudDatacatalogV1beta1TagFieldEnumValue(o.enumValue!);
     unittest.expect(
       o.order!,
       unittest.equals(42),
@@ -1600,7 +1555,7 @@ void checkGoogleCloudDatacatalogV1beta1TagField(
 core.int buildCounterGoogleCloudDatacatalogV1beta1TagFieldEnumValue = 0;
 api.GoogleCloudDatacatalogV1beta1TagFieldEnumValue
     buildGoogleCloudDatacatalogV1beta1TagFieldEnumValue() {
-  var o = api.GoogleCloudDatacatalogV1beta1TagFieldEnumValue();
+  final o = api.GoogleCloudDatacatalogV1beta1TagFieldEnumValue();
   buildCounterGoogleCloudDatacatalogV1beta1TagFieldEnumValue++;
   if (buildCounterGoogleCloudDatacatalogV1beta1TagFieldEnumValue < 3) {
     o.displayName = 'foo';
@@ -1623,7 +1578,7 @@ void checkGoogleCloudDatacatalogV1beta1TagFieldEnumValue(
 
 core.Map<core.String, api.GoogleCloudDatacatalogV1beta1TagTemplateField>
     buildUnnamed7816() {
-  var o = <core.String, api.GoogleCloudDatacatalogV1beta1TagTemplateField>{};
+  final o = <core.String, api.GoogleCloudDatacatalogV1beta1TagTemplateField>{};
   o['x'] = buildGoogleCloudDatacatalogV1beta1TagTemplateField();
   o['y'] = buildGoogleCloudDatacatalogV1beta1TagTemplateField();
   return o;
@@ -1633,16 +1588,14 @@ void checkUnnamed7816(
     core.Map<core.String, api.GoogleCloudDatacatalogV1beta1TagTemplateField>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudDatacatalogV1beta1TagTemplateField(
-      o['x']! as api.GoogleCloudDatacatalogV1beta1TagTemplateField);
-  checkGoogleCloudDatacatalogV1beta1TagTemplateField(
-      o['y']! as api.GoogleCloudDatacatalogV1beta1TagTemplateField);
+  checkGoogleCloudDatacatalogV1beta1TagTemplateField(o['x']!);
+  checkGoogleCloudDatacatalogV1beta1TagTemplateField(o['y']!);
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1TagTemplate = 0;
 api.GoogleCloudDatacatalogV1beta1TagTemplate
     buildGoogleCloudDatacatalogV1beta1TagTemplate() {
-  var o = api.GoogleCloudDatacatalogV1beta1TagTemplate();
+  final o = api.GoogleCloudDatacatalogV1beta1TagTemplate();
   buildCounterGoogleCloudDatacatalogV1beta1TagTemplate++;
   if (buildCounterGoogleCloudDatacatalogV1beta1TagTemplate < 3) {
     o.displayName = 'foo';
@@ -1673,7 +1626,7 @@ void checkGoogleCloudDatacatalogV1beta1TagTemplate(
 core.int buildCounterGoogleCloudDatacatalogV1beta1TagTemplateField = 0;
 api.GoogleCloudDatacatalogV1beta1TagTemplateField
     buildGoogleCloudDatacatalogV1beta1TagTemplateField() {
-  var o = api.GoogleCloudDatacatalogV1beta1TagTemplateField();
+  final o = api.GoogleCloudDatacatalogV1beta1TagTemplateField();
   buildCounterGoogleCloudDatacatalogV1beta1TagTemplateField++;
   if (buildCounterGoogleCloudDatacatalogV1beta1TagTemplateField < 3) {
     o.description = 'foo';
@@ -1708,14 +1661,13 @@ void checkGoogleCloudDatacatalogV1beta1TagTemplateField(
       o.order!,
       unittest.equals(42),
     );
-    checkGoogleCloudDatacatalogV1beta1FieldType(
-        o.type! as api.GoogleCloudDatacatalogV1beta1FieldType);
+    checkGoogleCloudDatacatalogV1beta1FieldType(o.type!);
   }
   buildCounterGoogleCloudDatacatalogV1beta1TagTemplateField--;
 }
 
 core.List<core.String> buildUnnamed7817() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1736,7 +1688,7 @@ void checkUnnamed7817(core.List<core.String> o) {
 core.int buildCounterGoogleCloudDatacatalogV1beta1Taxonomy = 0;
 api.GoogleCloudDatacatalogV1beta1Taxonomy
     buildGoogleCloudDatacatalogV1beta1Taxonomy() {
-  var o = api.GoogleCloudDatacatalogV1beta1Taxonomy();
+  final o = api.GoogleCloudDatacatalogV1beta1Taxonomy();
   buildCounterGoogleCloudDatacatalogV1beta1Taxonomy++;
   if (buildCounterGoogleCloudDatacatalogV1beta1Taxonomy < 3) {
     o.activatedPolicyTypes = buildUnnamed7817();
@@ -1771,15 +1723,14 @@ void checkGoogleCloudDatacatalogV1beta1Taxonomy(
       o.policyTagCount!,
       unittest.equals(42),
     );
-    checkGoogleCloudDatacatalogV1beta1SystemTimestamps(o.taxonomyTimestamps!
-        as api.GoogleCloudDatacatalogV1beta1SystemTimestamps);
+    checkGoogleCloudDatacatalogV1beta1SystemTimestamps(o.taxonomyTimestamps!);
   }
   buildCounterGoogleCloudDatacatalogV1beta1Taxonomy--;
 }
 
 core.Map<core.String, api.GoogleCloudDatacatalogV1beta1UsageStats>
     buildUnnamed7818() {
-  var o = <core.String, api.GoogleCloudDatacatalogV1beta1UsageStats>{};
+  final o = <core.String, api.GoogleCloudDatacatalogV1beta1UsageStats>{};
   o['x'] = buildGoogleCloudDatacatalogV1beta1UsageStats();
   o['y'] = buildGoogleCloudDatacatalogV1beta1UsageStats();
   return o;
@@ -1788,16 +1739,14 @@ core.Map<core.String, api.GoogleCloudDatacatalogV1beta1UsageStats>
 void checkUnnamed7818(
     core.Map<core.String, api.GoogleCloudDatacatalogV1beta1UsageStats> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudDatacatalogV1beta1UsageStats(
-      o['x']! as api.GoogleCloudDatacatalogV1beta1UsageStats);
-  checkGoogleCloudDatacatalogV1beta1UsageStats(
-      o['y']! as api.GoogleCloudDatacatalogV1beta1UsageStats);
+  checkGoogleCloudDatacatalogV1beta1UsageStats(o['x']!);
+  checkGoogleCloudDatacatalogV1beta1UsageStats(o['y']!);
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1UsageSignal = 0;
 api.GoogleCloudDatacatalogV1beta1UsageSignal
     buildGoogleCloudDatacatalogV1beta1UsageSignal() {
-  var o = api.GoogleCloudDatacatalogV1beta1UsageSignal();
+  final o = api.GoogleCloudDatacatalogV1beta1UsageSignal();
   buildCounterGoogleCloudDatacatalogV1beta1UsageSignal++;
   if (buildCounterGoogleCloudDatacatalogV1beta1UsageSignal < 3) {
     o.updateTime = 'foo';
@@ -1823,7 +1772,7 @@ void checkGoogleCloudDatacatalogV1beta1UsageSignal(
 core.int buildCounterGoogleCloudDatacatalogV1beta1UsageStats = 0;
 api.GoogleCloudDatacatalogV1beta1UsageStats
     buildGoogleCloudDatacatalogV1beta1UsageStats() {
-  var o = api.GoogleCloudDatacatalogV1beta1UsageStats();
+  final o = api.GoogleCloudDatacatalogV1beta1UsageStats();
   buildCounterGoogleCloudDatacatalogV1beta1UsageStats++;
   if (buildCounterGoogleCloudDatacatalogV1beta1UsageStats < 3) {
     o.totalCancellations = 42.0;
@@ -1862,7 +1811,7 @@ void checkGoogleCloudDatacatalogV1beta1UsageStats(
 core.int buildCounterGoogleCloudDatacatalogV1beta1ViewSpec = 0;
 api.GoogleCloudDatacatalogV1beta1ViewSpec
     buildGoogleCloudDatacatalogV1beta1ViewSpec() {
-  var o = api.GoogleCloudDatacatalogV1beta1ViewSpec();
+  final o = api.GoogleCloudDatacatalogV1beta1ViewSpec();
   buildCounterGoogleCloudDatacatalogV1beta1ViewSpec++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ViewSpec < 3) {
     o.viewQuery = 'foo';
@@ -1884,7 +1833,7 @@ void checkGoogleCloudDatacatalogV1beta1ViewSpec(
 }
 
 core.List<api.Binding> buildUnnamed7819() {
-  var o = <api.Binding>[];
+  final o = <api.Binding>[];
   o.add(buildBinding());
   o.add(buildBinding());
   return o;
@@ -1892,13 +1841,13 @@ core.List<api.Binding> buildUnnamed7819() {
 
 void checkUnnamed7819(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBinding(o[0] as api.Binding);
-  checkBinding(o[1] as api.Binding);
+  checkBinding(o[0]);
+  checkBinding(o[1]);
 }
 
 core.int buildCounterPolicy = 0;
 api.Policy buildPolicy() {
-  var o = api.Policy();
+  final o = api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
     o.bindings = buildUnnamed7819();
@@ -1927,7 +1876,7 @@ void checkPolicy(api.Policy o) {
 
 core.int buildCounterSetIamPolicyRequest = 0;
 api.SetIamPolicyRequest buildSetIamPolicyRequest() {
-  var o = api.SetIamPolicyRequest();
+  final o = api.SetIamPolicyRequest();
   buildCounterSetIamPolicyRequest++;
   if (buildCounterSetIamPolicyRequest < 3) {
     o.policy = buildPolicy();
@@ -1939,13 +1888,13 @@ api.SetIamPolicyRequest buildSetIamPolicyRequest() {
 void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest++;
   if (buildCounterSetIamPolicyRequest < 3) {
-    checkPolicy(o.policy! as api.Policy);
+    checkPolicy(o.policy!);
   }
   buildCounterSetIamPolicyRequest--;
 }
 
 core.List<core.String> buildUnnamed7820() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1965,7 +1914,7 @@ void checkUnnamed7820(core.List<core.String> o) {
 
 core.int buildCounterTestIamPermissionsRequest = 0;
 api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
-  var o = api.TestIamPermissionsRequest();
+  final o = api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
     o.permissions = buildUnnamed7820();
@@ -1983,7 +1932,7 @@ void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
 }
 
 core.List<core.String> buildUnnamed7821() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -2003,7 +1952,7 @@ void checkUnnamed7821(core.List<core.String> o) {
 
 core.int buildCounterTestIamPermissionsResponse = 0;
 api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
-  var o = api.TestIamPermissionsResponse();
+  final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
     o.permissions = buildUnnamed7821();
@@ -2021,7 +1970,7 @@ void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
 }
 
 core.List<core.String> buildUnnamed7822() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -2042,287 +1991,271 @@ void checkUnnamed7822(core.List<core.String> o) {
 void main() {
   unittest.group('obj-schema-Binding', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBinding();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildBinding();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Binding.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkBinding(od as api.Binding);
+      checkBinding(od);
     });
   });
 
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildEmpty();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkEmpty(od as api.Empty);
+      final o = buildEmpty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkEmpty(od);
     });
   });
 
   unittest.group('obj-schema-Expr', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildExpr();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Expr.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkExpr(od as api.Expr);
+      final o = buildExpr();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Expr.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkExpr(od);
     });
   });
 
   unittest.group('obj-schema-GetIamPolicyRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGetIamPolicyRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GetIamPolicyRequest.fromJson(
+      final o = buildGetIamPolicyRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GetIamPolicyRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGetIamPolicyRequest(od as api.GetIamPolicyRequest);
+      checkGetIamPolicyRequest(od);
     });
   });
 
   unittest.group('obj-schema-GetPolicyOptions', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGetPolicyOptions();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GetPolicyOptions.fromJson(
+      final o = buildGetPolicyOptions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GetPolicyOptions.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGetPolicyOptions(od as api.GetPolicyOptions);
+      checkGetPolicyOptions(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec(
-          od as api.GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec);
+      checkGoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1BigQueryTableSpec',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1BigQueryTableSpec();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1BigQueryTableSpec.fromJson(
+      final o = buildGoogleCloudDatacatalogV1beta1BigQueryTableSpec();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1beta1BigQueryTableSpec.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1BigQueryTableSpec(
-          od as api.GoogleCloudDatacatalogV1beta1BigQueryTableSpec);
+      checkGoogleCloudDatacatalogV1beta1BigQueryTableSpec(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1ColumnSchema', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1ColumnSchema();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1ColumnSchema.fromJson(
+      final o = buildGoogleCloudDatacatalogV1beta1ColumnSchema();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1beta1ColumnSchema.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1ColumnSchema(
-          od as api.GoogleCloudDatacatalogV1beta1ColumnSchema);
+      checkGoogleCloudDatacatalogV1beta1ColumnSchema(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1Entry', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1Entry();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1Entry.fromJson(
+      final o = buildGoogleCloudDatacatalogV1beta1Entry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1beta1Entry.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1Entry(
-          od as api.GoogleCloudDatacatalogV1beta1Entry);
+      checkGoogleCloudDatacatalogV1beta1Entry(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1EntryGroup', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1EntryGroup();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(
+      final o = buildGoogleCloudDatacatalogV1beta1EntryGroup();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1EntryGroup(
-          od as api.GoogleCloudDatacatalogV1beta1EntryGroup);
+      checkGoogleCloudDatacatalogV1beta1EntryGroup(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse(
-          od as api.GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse);
+      checkGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1FieldType', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1FieldType();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1FieldType.fromJson(
+      final o = buildGoogleCloudDatacatalogV1beta1FieldType();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1beta1FieldType.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1FieldType(
-          od as api.GoogleCloudDatacatalogV1beta1FieldType);
+      checkGoogleCloudDatacatalogV1beta1FieldType(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1FieldTypeEnumType',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1FieldTypeEnumType();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1FieldTypeEnumType.fromJson(
+      final o = buildGoogleCloudDatacatalogV1beta1FieldTypeEnumType();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1beta1FieldTypeEnumType.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1FieldTypeEnumType(
-          od as api.GoogleCloudDatacatalogV1beta1FieldTypeEnumType);
+      checkGoogleCloudDatacatalogV1beta1FieldTypeEnumType(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue(
-          od as api.GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue);
+      checkGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1GcsFileSpec', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1GcsFileSpec();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1GcsFileSpec.fromJson(
+      final o = buildGoogleCloudDatacatalogV1beta1GcsFileSpec();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1beta1GcsFileSpec.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1GcsFileSpec(
-          od as api.GoogleCloudDatacatalogV1beta1GcsFileSpec);
+      checkGoogleCloudDatacatalogV1beta1GcsFileSpec(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1GcsFilesetSpec', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1GcsFilesetSpec();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1GcsFilesetSpec.fromJson(
+      final o = buildGoogleCloudDatacatalogV1beta1GcsFilesetSpec();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1beta1GcsFilesetSpec.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1GcsFilesetSpec(
-          od as api.GoogleCloudDatacatalogV1beta1GcsFilesetSpec);
+      checkGoogleCloudDatacatalogV1beta1GcsFilesetSpec(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest(
-          od as api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest);
+      checkGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse(
-          od as api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse);
+      checkGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1InlineSource', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1InlineSource();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1InlineSource.fromJson(
+      final o = buildGoogleCloudDatacatalogV1beta1InlineSource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1beta1InlineSource.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1InlineSource(
-          od as api.GoogleCloudDatacatalogV1beta1InlineSource);
+      checkGoogleCloudDatacatalogV1beta1InlineSource(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1ListEntriesResponse',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1ListEntriesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1ListEntriesResponse.fromJson(
+      final o = buildGoogleCloudDatacatalogV1beta1ListEntriesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1beta1ListEntriesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1ListEntriesResponse(
-          od as api.GoogleCloudDatacatalogV1beta1ListEntriesResponse);
+      checkGoogleCloudDatacatalogV1beta1ListEntriesResponse(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse(
-          od as api.GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse);
+      checkGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse(
-          od as api.GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse);
+      final o = buildGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1ListTagsResponse',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1ListTagsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1ListTagsResponse.fromJson(
+      final o = buildGoogleCloudDatacatalogV1beta1ListTagsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1beta1ListTagsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1ListTagsResponse(
-          od as api.GoogleCloudDatacatalogV1beta1ListTagsResponse);
+      checkGoogleCloudDatacatalogV1beta1ListTagsResponse(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse(
-          od as api.GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse);
+      final o = buildGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1PolicyTag', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1PolicyTag();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(
+      final o = buildGoogleCloudDatacatalogV1beta1PolicyTag();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1PolicyTag(
-          od as api.GoogleCloudDatacatalogV1beta1PolicyTag);
+      checkGoogleCloudDatacatalogV1beta1PolicyTag(od);
     });
   });
 
@@ -2330,15 +2263,14 @@ void main() {
       'obj-schema-GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest',
       () {
     unittest.test('to-json--from-json', () async {
-      var o =
+      final o =
           buildGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest
               .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest(
-          od as api
-              .GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest);
+          od);
     });
   });
 
@@ -2346,301 +2278,283 @@ void main() {
       'obj-schema-GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest
+      final o =
+          buildGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest
           .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest(
-          od as api.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest);
+      checkGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1Schema', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1Schema();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1Schema.fromJson(
+      final o = buildGoogleCloudDatacatalogV1beta1Schema();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1beta1Schema.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1Schema(
-          od as api.GoogleCloudDatacatalogV1beta1Schema);
+      checkGoogleCloudDatacatalogV1beta1Schema(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1SearchCatalogRequest',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1SearchCatalogRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1SearchCatalogRequest.fromJson(
+      final o = buildGoogleCloudDatacatalogV1beta1SearchCatalogRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1beta1SearchCatalogRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1SearchCatalogRequest(
-          od as api.GoogleCloudDatacatalogV1beta1SearchCatalogRequest);
+      checkGoogleCloudDatacatalogV1beta1SearchCatalogRequest(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope(
-          od as api.GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope);
+      checkGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudDatacatalogV1beta1SearchCatalogResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1SearchCatalogResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1SearchCatalogResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1SearchCatalogResponse(
-          od as api.GoogleCloudDatacatalogV1beta1SearchCatalogResponse);
+      final o = buildGoogleCloudDatacatalogV1beta1SearchCatalogResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudDatacatalogV1beta1SearchCatalogResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDatacatalogV1beta1SearchCatalogResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1SearchCatalogResult',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1SearchCatalogResult();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1SearchCatalogResult.fromJson(
+      final o = buildGoogleCloudDatacatalogV1beta1SearchCatalogResult();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1beta1SearchCatalogResult.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1SearchCatalogResult(
-          od as api.GoogleCloudDatacatalogV1beta1SearchCatalogResult);
+      checkGoogleCloudDatacatalogV1beta1SearchCatalogResult(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1SerializedPolicyTag',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1SerializedPolicyTag();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag.fromJson(
+      final o = buildGoogleCloudDatacatalogV1beta1SerializedPolicyTag();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1SerializedPolicyTag(
-          od as api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag);
+      checkGoogleCloudDatacatalogV1beta1SerializedPolicyTag(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1SerializedTaxonomy',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1SerializedTaxonomy();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy.fromJson(
+      final o = buildGoogleCloudDatacatalogV1beta1SerializedTaxonomy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1SerializedTaxonomy(
-          od as api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy);
+      checkGoogleCloudDatacatalogV1beta1SerializedTaxonomy(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1SystemTimestamps',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1SystemTimestamps();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1SystemTimestamps.fromJson(
+      final o = buildGoogleCloudDatacatalogV1beta1SystemTimestamps();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1beta1SystemTimestamps.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1SystemTimestamps(
-          od as api.GoogleCloudDatacatalogV1beta1SystemTimestamps);
+      checkGoogleCloudDatacatalogV1beta1SystemTimestamps(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1TableSpec', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1TableSpec();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1TableSpec.fromJson(
+      final o = buildGoogleCloudDatacatalogV1beta1TableSpec();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1beta1TableSpec.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1TableSpec(
-          od as api.GoogleCloudDatacatalogV1beta1TableSpec);
+      checkGoogleCloudDatacatalogV1beta1TableSpec(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1Tag', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1Tag();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1Tag.fromJson(
+      final o = buildGoogleCloudDatacatalogV1beta1Tag();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1beta1Tag.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1Tag(
-          od as api.GoogleCloudDatacatalogV1beta1Tag);
+      checkGoogleCloudDatacatalogV1beta1Tag(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1TagField', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1TagField();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1TagField.fromJson(
+      final o = buildGoogleCloudDatacatalogV1beta1TagField();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1beta1TagField.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1TagField(
-          od as api.GoogleCloudDatacatalogV1beta1TagField);
+      checkGoogleCloudDatacatalogV1beta1TagField(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1TagFieldEnumValue',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1TagFieldEnumValue();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1TagFieldEnumValue.fromJson(
+      final o = buildGoogleCloudDatacatalogV1beta1TagFieldEnumValue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1beta1TagFieldEnumValue.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1TagFieldEnumValue(
-          od as api.GoogleCloudDatacatalogV1beta1TagFieldEnumValue);
+      checkGoogleCloudDatacatalogV1beta1TagFieldEnumValue(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1TagTemplate', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1TagTemplate();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(
+      final o = buildGoogleCloudDatacatalogV1beta1TagTemplate();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1TagTemplate(
-          od as api.GoogleCloudDatacatalogV1beta1TagTemplate);
+      checkGoogleCloudDatacatalogV1beta1TagTemplate(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1TagTemplateField',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1TagTemplateField();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
+      final o = buildGoogleCloudDatacatalogV1beta1TagTemplateField();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1TagTemplateField(
-          od as api.GoogleCloudDatacatalogV1beta1TagTemplateField);
+      checkGoogleCloudDatacatalogV1beta1TagTemplateField(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1Taxonomy', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1Taxonomy();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(
+      final o = buildGoogleCloudDatacatalogV1beta1Taxonomy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1Taxonomy(
-          od as api.GoogleCloudDatacatalogV1beta1Taxonomy);
+      checkGoogleCloudDatacatalogV1beta1Taxonomy(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1UsageSignal', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1UsageSignal();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1UsageSignal.fromJson(
+      final o = buildGoogleCloudDatacatalogV1beta1UsageSignal();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1beta1UsageSignal.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1UsageSignal(
-          od as api.GoogleCloudDatacatalogV1beta1UsageSignal);
+      checkGoogleCloudDatacatalogV1beta1UsageSignal(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1UsageStats', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1UsageStats();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1UsageStats.fromJson(
+      final o = buildGoogleCloudDatacatalogV1beta1UsageStats();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1beta1UsageStats.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1UsageStats(
-          od as api.GoogleCloudDatacatalogV1beta1UsageStats);
+      checkGoogleCloudDatacatalogV1beta1UsageStats(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1ViewSpec', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudDatacatalogV1beta1ViewSpec();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudDatacatalogV1beta1ViewSpec.fromJson(
+      final o = buildGoogleCloudDatacatalogV1beta1ViewSpec();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1beta1ViewSpec.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudDatacatalogV1beta1ViewSpec(
-          od as api.GoogleCloudDatacatalogV1beta1ViewSpec);
+      checkGoogleCloudDatacatalogV1beta1ViewSpec(od);
     });
   });
 
   unittest.group('obj-schema-Policy', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPolicy();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildPolicy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Policy.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkPolicy(od as api.Policy);
+      checkPolicy(od);
     });
   });
 
   unittest.group('obj-schema-SetIamPolicyRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSetIamPolicyRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SetIamPolicyRequest.fromJson(
+      final o = buildSetIamPolicyRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SetIamPolicyRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
+      checkSetIamPolicyRequest(od);
     });
   });
 
   unittest.group('obj-schema-TestIamPermissionsRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTestIamPermissionsRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TestIamPermissionsRequest.fromJson(
+      final o = buildTestIamPermissionsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TestIamPermissionsRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
+      checkTestIamPermissionsRequest(od);
     });
   });
 
   unittest.group('obj-schema-TestIamPermissionsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTestIamPermissionsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TestIamPermissionsResponse.fromJson(
+      final o = buildTestIamPermissionsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TestIamPermissionsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
+      checkTestIamPermissionsResponse(od);
     });
   });
 
   unittest.group('resource-CatalogResource', () {
     unittest.test('method--search', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).catalog;
-      var arg_request =
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).catalog;
+      final arg_request =
           buildGoogleCloudDatacatalogV1beta1SearchCatalogRequest();
-      var arg_$fields = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.GoogleCloudDatacatalogV1beta1SearchCatalogRequest.fromJson(
                 json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudDatacatalogV1beta1SearchCatalogRequest(
-            obj as api.GoogleCloudDatacatalogV1beta1SearchCatalogRequest);
+        checkGoogleCloudDatacatalogV1beta1SearchCatalogRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 22),
-          unittest.equals("v1beta1/catalog:search"),
+          unittest.equals('v1beta1/catalog:search'),
         );
         pathOffset += 22;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2648,14 +2562,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudDatacatalogV1beta1SearchCatalogResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -2667,36 +2581,36 @@ void main() {
 
   unittest.group('resource-EntriesResource', () {
     unittest.test('method--lookup', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).entries;
-      var arg_linkedResource = 'foo';
-      var arg_sqlResource = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).entries;
+      final arg_linkedResource = 'foo';
+      final arg_sqlResource = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 22),
-          unittest.equals("v1beta1/entries:lookup"),
+          unittest.equals('v1beta1/entries:lookup'),
         );
         pathOffset += 22;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2704,22 +2618,22 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["linkedResource"]!.first,
+          queryMap['linkedResource']!.first,
           unittest.equals(arg_linkedResource),
         );
         unittest.expect(
-          queryMap["sqlResource"]!.first,
+          queryMap['sqlResource']!.first,
           unittest.equals(arg_sqlResource),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1Entry());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -2734,43 +2648,42 @@ void main() {
 
   unittest.group('resource-ProjectsLocationsEntryGroupsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.entryGroups;
-      var arg_request = buildGoogleCloudDatacatalogV1beta1EntryGroup();
-      var arg_parent = 'foo';
-      var arg_entryGroupId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).projects.locations.entryGroups;
+      final arg_request = buildGoogleCloudDatacatalogV1beta1EntryGroup();
+      final arg_parent = 'foo';
+      final arg_entryGroupId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(
+        final obj = api.GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudDatacatalogV1beta1EntryGroup(
-            obj as api.GoogleCloudDatacatalogV1beta1EntryGroup);
+        checkGoogleCloudDatacatalogV1beta1EntryGroup(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2778,18 +2691,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["entryGroupId"]!.first,
+          queryMap['entryGroupId']!.first,
           unittest.equals(arg_entryGroupId),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1EntryGroup());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -2800,37 +2713,37 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.entryGroups;
-      var arg_name = 'foo';
-      var arg_force = true;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).projects.locations.entryGroups;
+      final arg_name = 'foo';
+      final arg_force = true;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2838,18 +2751,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["force"]!.first,
-          unittest.equals("$arg_force"),
+          queryMap['force']!.first,
+          unittest.equals('$arg_force'),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildEmpty());
+        final resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -2858,37 +2771,37 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.entryGroups;
-      var arg_name = 'foo';
-      var arg_readMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).projects.locations.entryGroups;
+      final arg_name = 'foo';
+      final arg_readMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2896,18 +2809,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["readMask"]!.first,
+          queryMap['readMask']!.first,
           unittest.equals(arg_readMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1EntryGroup());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -2918,41 +2831,41 @@ void main() {
     });
 
     unittest.test('method--getIamPolicy', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.entryGroups;
-      var arg_request = buildGetIamPolicyRequest();
-      var arg_resource = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).projects.locations.entryGroups;
+      final arg_request = buildGetIamPolicyRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GetIamPolicyRequest.fromJson(
+        final obj = api.GetIamPolicyRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGetIamPolicyRequest(obj as api.GetIamPolicyRequest);
+        checkGetIamPolicyRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -2960,14 +2873,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildPolicy());
+        final resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.getIamPolicy(arg_request, arg_resource,
@@ -2976,38 +2889,38 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.entryGroups;
-      var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).projects.locations.entryGroups;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3015,22 +2928,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(
+        final resp = convert.json.encode(
             buildGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -3043,43 +2956,42 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.entryGroups;
-      var arg_request = buildGoogleCloudDatacatalogV1beta1EntryGroup();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).projects.locations.entryGroups;
+      final arg_request = buildGoogleCloudDatacatalogV1beta1EntryGroup();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(
+        final obj = api.GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudDatacatalogV1beta1EntryGroup(
-            obj as api.GoogleCloudDatacatalogV1beta1EntryGroup);
+        checkGoogleCloudDatacatalogV1beta1EntryGroup(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3087,18 +2999,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1EntryGroup());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -3109,41 +3021,41 @@ void main() {
     });
 
     unittest.test('method--setIamPolicy', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.entryGroups;
-      var arg_request = buildSetIamPolicyRequest();
-      var arg_resource = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).projects.locations.entryGroups;
+      final arg_request = buildSetIamPolicyRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetIamPolicyRequest.fromJson(
+        final obj = api.SetIamPolicyRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSetIamPolicyRequest(obj as api.SetIamPolicyRequest);
+        checkSetIamPolicyRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3151,14 +3063,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildPolicy());
+        final resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.setIamPolicy(arg_request, arg_resource,
@@ -3167,41 +3079,41 @@ void main() {
     });
 
     unittest.test('method--testIamPermissions', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.entryGroups;
-      var arg_request = buildTestIamPermissionsRequest();
-      var arg_resource = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).projects.locations.entryGroups;
+      final arg_request = buildTestIamPermissionsRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestIamPermissionsRequest.fromJson(
+        final obj = api.TestIamPermissionsRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
+        checkTestIamPermissionsRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3209,14 +3121,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildTestIamPermissionsResponse());
+        final resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.testIamPermissions(arg_request, arg_resource,
@@ -3228,43 +3140,43 @@ void main() {
 
   unittest.group('resource-ProjectsLocationsEntryGroupsEntriesResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
-      var arg_request = buildGoogleCloudDatacatalogV1beta1Entry();
-      var arg_parent = 'foo';
-      var arg_entryId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res =
+          api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
+      final arg_request = buildGoogleCloudDatacatalogV1beta1Entry();
+      final arg_parent = 'foo';
+      final arg_entryId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudDatacatalogV1beta1Entry.fromJson(
+        final obj = api.GoogleCloudDatacatalogV1beta1Entry.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudDatacatalogV1beta1Entry(
-            obj as api.GoogleCloudDatacatalogV1beta1Entry);
+        checkGoogleCloudDatacatalogV1beta1Entry(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3272,18 +3184,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["entryId"]!.first,
+          queryMap['entryId']!.first,
           unittest.equals(arg_entryId),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1Entry());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -3294,36 +3206,37 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res =
+          api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3331,14 +3244,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildEmpty());
+        final resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -3346,36 +3259,37 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res =
+          api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3383,14 +3297,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1Entry());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -3400,41 +3314,42 @@ void main() {
     });
 
     unittest.test('method--getIamPolicy', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
-      var arg_request = buildGetIamPolicyRequest();
-      var arg_resource = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res =
+          api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
+      final arg_request = buildGetIamPolicyRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GetIamPolicyRequest.fromJson(
+        final obj = api.GetIamPolicyRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGetIamPolicyRequest(obj as api.GetIamPolicyRequest);
+        checkGetIamPolicyRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3442,14 +3357,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildPolicy());
+        final resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.getIamPolicy(arg_request, arg_resource,
@@ -3458,39 +3373,40 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
-      var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_readMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res =
+          api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_readMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3498,26 +3414,26 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["readMask"]!.first,
+          queryMap['readMask']!.first,
           unittest.equals(arg_readMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudDatacatalogV1beta1ListEntriesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -3531,43 +3447,43 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
-      var arg_request = buildGoogleCloudDatacatalogV1beta1Entry();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res =
+          api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
+      final arg_request = buildGoogleCloudDatacatalogV1beta1Entry();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudDatacatalogV1beta1Entry.fromJson(
+        final obj = api.GoogleCloudDatacatalogV1beta1Entry.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudDatacatalogV1beta1Entry(
-            obj as api.GoogleCloudDatacatalogV1beta1Entry);
+        checkGoogleCloudDatacatalogV1beta1Entry(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3575,18 +3491,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1Entry());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -3597,41 +3513,42 @@ void main() {
     });
 
     unittest.test('method--testIamPermissions', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
-      var arg_request = buildTestIamPermissionsRequest();
-      var arg_resource = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res =
+          api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
+      final arg_request = buildTestIamPermissionsRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestIamPermissionsRequest.fromJson(
+        final obj = api.TestIamPermissionsRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
+        checkTestIamPermissionsRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3639,14 +3556,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildTestIamPermissionsResponse());
+        final resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.testIamPermissions(arg_request, arg_resource,
@@ -3659,43 +3576,42 @@ void main() {
   unittest.group('resource-ProjectsLocationsEntryGroupsEntriesTagsResource',
       () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.DataCatalogApi(mock).projects.locations.entryGroups.entries.tags;
-      var arg_request = buildGoogleCloudDatacatalogV1beta1Tag();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final arg_request = buildGoogleCloudDatacatalogV1beta1Tag();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudDatacatalogV1beta1Tag.fromJson(
+        final obj = api.GoogleCloudDatacatalogV1beta1Tag.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudDatacatalogV1beta1Tag(
-            obj as api.GoogleCloudDatacatalogV1beta1Tag);
+        checkGoogleCloudDatacatalogV1beta1Tag(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3703,14 +3619,15 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudDatacatalogV1beta1Tag());
+        final resp =
+            convert.json.encode(buildGoogleCloudDatacatalogV1beta1Tag());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -3720,37 +3637,37 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.DataCatalogApi(mock).projects.locations.entryGroups.entries.tags;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3758,14 +3675,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildEmpty());
+        final resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -3773,39 +3690,39 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.DataCatalogApi(mock).projects.locations.entryGroups.entries.tags;
-      var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3813,22 +3730,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudDatacatalogV1beta1ListTagsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -3841,44 +3758,43 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.DataCatalogApi(mock).projects.locations.entryGroups.entries.tags;
-      var arg_request = buildGoogleCloudDatacatalogV1beta1Tag();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final arg_request = buildGoogleCloudDatacatalogV1beta1Tag();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudDatacatalogV1beta1Tag.fromJson(
+        final obj = api.GoogleCloudDatacatalogV1beta1Tag.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudDatacatalogV1beta1Tag(
-            obj as api.GoogleCloudDatacatalogV1beta1Tag);
+        checkGoogleCloudDatacatalogV1beta1Tag(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3886,18 +3802,19 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudDatacatalogV1beta1Tag());
+        final resp =
+            convert.json.encode(buildGoogleCloudDatacatalogV1beta1Tag());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_name,
@@ -3909,42 +3826,41 @@ void main() {
 
   unittest.group('resource-ProjectsLocationsEntryGroupsTagsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.entryGroups.tags;
-      var arg_request = buildGoogleCloudDatacatalogV1beta1Tag();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).projects.locations.entryGroups.tags;
+      final arg_request = buildGoogleCloudDatacatalogV1beta1Tag();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudDatacatalogV1beta1Tag.fromJson(
+        final obj = api.GoogleCloudDatacatalogV1beta1Tag.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudDatacatalogV1beta1Tag(
-            obj as api.GoogleCloudDatacatalogV1beta1Tag);
+        checkGoogleCloudDatacatalogV1beta1Tag(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -3952,14 +3868,15 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudDatacatalogV1beta1Tag());
+        final resp =
+            convert.json.encode(buildGoogleCloudDatacatalogV1beta1Tag());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -3969,36 +3886,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.entryGroups.tags;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).projects.locations.entryGroups.tags;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4006,14 +3923,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildEmpty());
+        final resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -4021,38 +3938,38 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.entryGroups.tags;
-      var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).projects.locations.entryGroups.tags;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4060,22 +3977,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudDatacatalogV1beta1ListTagsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -4088,43 +4005,42 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.entryGroups.tags;
-      var arg_request = buildGoogleCloudDatacatalogV1beta1Tag();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).projects.locations.entryGroups.tags;
+      final arg_request = buildGoogleCloudDatacatalogV1beta1Tag();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudDatacatalogV1beta1Tag.fromJson(
+        final obj = api.GoogleCloudDatacatalogV1beta1Tag.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudDatacatalogV1beta1Tag(
-            obj as api.GoogleCloudDatacatalogV1beta1Tag);
+        checkGoogleCloudDatacatalogV1beta1Tag(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4132,18 +4048,19 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleCloudDatacatalogV1beta1Tag());
+        final resp =
+            convert.json.encode(buildGoogleCloudDatacatalogV1beta1Tag());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_name,
@@ -4155,43 +4072,42 @@ void main() {
 
   unittest.group('resource-ProjectsLocationsTagTemplatesResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.tagTemplates;
-      var arg_request = buildGoogleCloudDatacatalogV1beta1TagTemplate();
-      var arg_parent = 'foo';
-      var arg_tagTemplateId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).projects.locations.tagTemplates;
+      final arg_request = buildGoogleCloudDatacatalogV1beta1TagTemplate();
+      final arg_parent = 'foo';
+      final arg_tagTemplateId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(
+        final obj = api.GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudDatacatalogV1beta1TagTemplate(
-            obj as api.GoogleCloudDatacatalogV1beta1TagTemplate);
+        checkGoogleCloudDatacatalogV1beta1TagTemplate(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4199,18 +4115,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["tagTemplateId"]!.first,
+          queryMap['tagTemplateId']!.first,
           unittest.equals(arg_tagTemplateId),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudDatacatalogV1beta1TagTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -4221,37 +4137,37 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.tagTemplates;
-      var arg_name = 'foo';
-      var arg_force = true;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).projects.locations.tagTemplates;
+      final arg_name = 'foo';
+      final arg_force = true;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4259,18 +4175,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["force"]!.first,
-          unittest.equals("$arg_force"),
+          queryMap['force']!.first,
+          unittest.equals('$arg_force'),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildEmpty());
+        final resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -4279,36 +4195,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.tagTemplates;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).projects.locations.tagTemplates;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4316,14 +4232,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudDatacatalogV1beta1TagTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -4333,41 +4249,41 @@ void main() {
     });
 
     unittest.test('method--getIamPolicy', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.tagTemplates;
-      var arg_request = buildGetIamPolicyRequest();
-      var arg_resource = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).projects.locations.tagTemplates;
+      final arg_request = buildGetIamPolicyRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GetIamPolicyRequest.fromJson(
+        final obj = api.GetIamPolicyRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGetIamPolicyRequest(obj as api.GetIamPolicyRequest);
+        checkGetIamPolicyRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4375,14 +4291,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildPolicy());
+        final resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.getIamPolicy(arg_request, arg_resource,
@@ -4391,43 +4307,42 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.tagTemplates;
-      var arg_request = buildGoogleCloudDatacatalogV1beta1TagTemplate();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).projects.locations.tagTemplates;
+      final arg_request = buildGoogleCloudDatacatalogV1beta1TagTemplate();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(
+        final obj = api.GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudDatacatalogV1beta1TagTemplate(
-            obj as api.GoogleCloudDatacatalogV1beta1TagTemplate);
+        checkGoogleCloudDatacatalogV1beta1TagTemplate(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4435,18 +4350,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudDatacatalogV1beta1TagTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -4457,41 +4372,41 @@ void main() {
     });
 
     unittest.test('method--setIamPolicy', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.tagTemplates;
-      var arg_request = buildSetIamPolicyRequest();
-      var arg_resource = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).projects.locations.tagTemplates;
+      final arg_request = buildSetIamPolicyRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetIamPolicyRequest.fromJson(
+        final obj = api.SetIamPolicyRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSetIamPolicyRequest(obj as api.SetIamPolicyRequest);
+        checkSetIamPolicyRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4499,14 +4414,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildPolicy());
+        final resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.setIamPolicy(arg_request, arg_resource,
@@ -4515,41 +4430,41 @@ void main() {
     });
 
     unittest.test('method--testIamPermissions', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.tagTemplates;
-      var arg_request = buildTestIamPermissionsRequest();
-      var arg_resource = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).projects.locations.tagTemplates;
+      final arg_request = buildTestIamPermissionsRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestIamPermissionsRequest.fromJson(
+        final obj = api.TestIamPermissionsRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
+        checkTestIamPermissionsRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4557,14 +4472,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildTestIamPermissionsResponse());
+        final resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.testIamPermissions(arg_request, arg_resource,
@@ -4576,43 +4491,43 @@ void main() {
 
   unittest.group('resource-ProjectsLocationsTagTemplatesFieldsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.tagTemplates.fields;
-      var arg_request = buildGoogleCloudDatacatalogV1beta1TagTemplateField();
-      var arg_parent = 'foo';
-      var arg_tagTemplateFieldId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res =
+          api.DataCatalogApi(mock).projects.locations.tagTemplates.fields;
+      final arg_request = buildGoogleCloudDatacatalogV1beta1TagTemplateField();
+      final arg_parent = 'foo';
+      final arg_tagTemplateFieldId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
+        final obj = api.GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudDatacatalogV1beta1TagTemplateField(
-            obj as api.GoogleCloudDatacatalogV1beta1TagTemplateField);
+        checkGoogleCloudDatacatalogV1beta1TagTemplateField(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4620,18 +4535,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["tagTemplateFieldId"]!.first,
+          queryMap['tagTemplateFieldId']!.first,
           unittest.equals(arg_tagTemplateFieldId),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudDatacatalogV1beta1TagTemplateField());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -4642,37 +4557,38 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.tagTemplates.fields;
-      var arg_name = 'foo';
-      var arg_force = true;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res =
+          api.DataCatalogApi(mock).projects.locations.tagTemplates.fields;
+      final arg_name = 'foo';
+      final arg_force = true;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4680,18 +4596,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["force"]!.first,
-          unittest.equals("$arg_force"),
+          queryMap['force']!.first,
+          unittest.equals('$arg_force'),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildEmpty());
+        final resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -4700,43 +4616,43 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.tagTemplates.fields;
-      var arg_request = buildGoogleCloudDatacatalogV1beta1TagTemplateField();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res =
+          api.DataCatalogApi(mock).projects.locations.tagTemplates.fields;
+      final arg_request = buildGoogleCloudDatacatalogV1beta1TagTemplateField();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
+        final obj = api.GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudDatacatalogV1beta1TagTemplateField(
-            obj as api.GoogleCloudDatacatalogV1beta1TagTemplateField);
+        checkGoogleCloudDatacatalogV1beta1TagTemplateField(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4744,18 +4660,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudDatacatalogV1beta1TagTemplateField());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -4766,43 +4682,44 @@ void main() {
     });
 
     unittest.test('method--rename', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.tagTemplates.fields;
-      var arg_request =
+      final mock = HttpServerMock();
+      final res =
+          api.DataCatalogApi(mock).projects.locations.tagTemplates.fields;
+      final arg_request =
           buildGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest
-            .fromJson(json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest(obj
-            as api.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest);
+        final obj =
+            api.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest
+                .fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4810,14 +4727,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudDatacatalogV1beta1TagTemplateField());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -4831,50 +4748,49 @@ void main() {
   unittest.group(
       'resource-ProjectsLocationsTagTemplatesFieldsEnumValuesResource', () {
     unittest.test('method--rename', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock)
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock)
           .projects
           .locations
           .tagTemplates
           .fields
           .enumValues;
-      var arg_request =
+      final arg_request =
           buildGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest
                 .fromJson(json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest(
-            obj as api
-                .GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest);
+            obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4882,14 +4798,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudDatacatalogV1beta1TagTemplateField());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -4902,42 +4818,41 @@ void main() {
 
   unittest.group('resource-ProjectsLocationsTaxonomiesResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.taxonomies;
-      var arg_request = buildGoogleCloudDatacatalogV1beta1Taxonomy();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).projects.locations.taxonomies;
+      final arg_request = buildGoogleCloudDatacatalogV1beta1Taxonomy();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(
+        final obj = api.GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudDatacatalogV1beta1Taxonomy(
-            obj as api.GoogleCloudDatacatalogV1beta1Taxonomy);
+        checkGoogleCloudDatacatalogV1beta1Taxonomy(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -4945,14 +4860,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1Taxonomy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -4963,36 +4878,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.taxonomies;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).projects.locations.taxonomies;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5000,14 +4915,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildEmpty());
+        final resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -5015,38 +4930,38 @@ void main() {
     });
 
     unittest.test('method--export', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.taxonomies;
-      var arg_parent = 'foo';
-      var arg_serializedTaxonomies = true;
-      var arg_taxonomies = buildUnnamed7822();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).projects.locations.taxonomies;
+      final arg_parent = 'foo';
+      final arg_serializedTaxonomies = true;
+      final arg_taxonomies = buildUnnamed7822();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5054,22 +4969,22 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["serializedTaxonomies"]!.first,
-          unittest.equals("$arg_serializedTaxonomies"),
+          queryMap['serializedTaxonomies']!.first,
+          unittest.equals('$arg_serializedTaxonomies'),
         );
         unittest.expect(
-          queryMap["taxonomies"]!,
+          queryMap['taxonomies']!,
           unittest.equals(arg_taxonomies),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(
+        final resp = convert.json.encode(
             buildGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -5082,36 +4997,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.taxonomies;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).projects.locations.taxonomies;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5119,14 +5034,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1Taxonomy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -5136,41 +5051,41 @@ void main() {
     });
 
     unittest.test('method--getIamPolicy', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.taxonomies;
-      var arg_request = buildGetIamPolicyRequest();
-      var arg_resource = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).projects.locations.taxonomies;
+      final arg_request = buildGetIamPolicyRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GetIamPolicyRequest.fromJson(
+        final obj = api.GetIamPolicyRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGetIamPolicyRequest(obj as api.GetIamPolicyRequest);
+        checkGetIamPolicyRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5178,14 +5093,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildPolicy());
+        final resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.getIamPolicy(arg_request, arg_resource,
@@ -5194,44 +5109,43 @@ void main() {
     });
 
     unittest.test('method--import', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.taxonomies;
-      var arg_request =
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).projects.locations.taxonomies;
+      final arg_request =
           buildGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest.fromJson(
                 json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest(
-            obj as api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest);
+        checkGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5239,14 +5153,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(
+        final resp = convert.json.encode(
             buildGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -5257,38 +5171,38 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.taxonomies;
-      var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).projects.locations.taxonomies;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5296,22 +5210,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -5324,43 +5238,42 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.taxonomies;
-      var arg_request = buildGoogleCloudDatacatalogV1beta1Taxonomy();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).projects.locations.taxonomies;
+      final arg_request = buildGoogleCloudDatacatalogV1beta1Taxonomy();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(
+        final obj = api.GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudDatacatalogV1beta1Taxonomy(
-            obj as api.GoogleCloudDatacatalogV1beta1Taxonomy);
+        checkGoogleCloudDatacatalogV1beta1Taxonomy(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5368,18 +5281,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1Taxonomy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -5390,41 +5303,41 @@ void main() {
     });
 
     unittest.test('method--setIamPolicy', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.taxonomies;
-      var arg_request = buildSetIamPolicyRequest();
-      var arg_resource = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).projects.locations.taxonomies;
+      final arg_request = buildSetIamPolicyRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetIamPolicyRequest.fromJson(
+        final obj = api.SetIamPolicyRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSetIamPolicyRequest(obj as api.SetIamPolicyRequest);
+        checkSetIamPolicyRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5432,14 +5345,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildPolicy());
+        final resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.setIamPolicy(arg_request, arg_resource,
@@ -5448,41 +5361,41 @@ void main() {
     });
 
     unittest.test('method--testIamPermissions', () async {
-      var mock = HttpServerMock();
-      var res = api.DataCatalogApi(mock).projects.locations.taxonomies;
-      var arg_request = buildTestIamPermissionsRequest();
-      var arg_resource = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.DataCatalogApi(mock).projects.locations.taxonomies;
+      final arg_request = buildTestIamPermissionsRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestIamPermissionsRequest.fromJson(
+        final obj = api.TestIamPermissionsRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
+        checkTestIamPermissionsRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5490,14 +5403,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildTestIamPermissionsResponse());
+        final resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.testIamPermissions(arg_request, arg_resource,
@@ -5509,43 +5422,42 @@ void main() {
 
   unittest.group('resource-ProjectsLocationsTaxonomiesPolicyTagsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.DataCatalogApi(mock).projects.locations.taxonomies.policyTags;
-      var arg_request = buildGoogleCloudDatacatalogV1beta1PolicyTag();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final arg_request = buildGoogleCloudDatacatalogV1beta1PolicyTag();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(
+        final obj = api.GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudDatacatalogV1beta1PolicyTag(
-            obj as api.GoogleCloudDatacatalogV1beta1PolicyTag);
+        checkGoogleCloudDatacatalogV1beta1PolicyTag(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5553,14 +5465,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1PolicyTag());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -5571,37 +5483,37 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.DataCatalogApi(mock).projects.locations.taxonomies.policyTags;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5609,14 +5521,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildEmpty());
+        final resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -5624,37 +5536,37 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.DataCatalogApi(mock).projects.locations.taxonomies.policyTags;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5662,14 +5574,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1PolicyTag());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -5679,42 +5591,42 @@ void main() {
     });
 
     unittest.test('method--getIamPolicy', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.DataCatalogApi(mock).projects.locations.taxonomies.policyTags;
-      var arg_request = buildGetIamPolicyRequest();
-      var arg_resource = 'foo';
-      var arg_$fields = 'foo';
+      final arg_request = buildGetIamPolicyRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GetIamPolicyRequest.fromJson(
+        final obj = api.GetIamPolicyRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGetIamPolicyRequest(obj as api.GetIamPolicyRequest);
+        checkGetIamPolicyRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5722,14 +5634,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildPolicy());
+        final resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.getIamPolicy(arg_request, arg_resource,
@@ -5738,39 +5650,39 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.DataCatalogApi(mock).projects.locations.taxonomies.policyTags;
-      var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5778,22 +5690,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -5806,44 +5718,43 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.DataCatalogApi(mock).projects.locations.taxonomies.policyTags;
-      var arg_request = buildGoogleCloudDatacatalogV1beta1PolicyTag();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final arg_request = buildGoogleCloudDatacatalogV1beta1PolicyTag();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(
+        final obj = api.GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudDatacatalogV1beta1PolicyTag(
-            obj as api.GoogleCloudDatacatalogV1beta1PolicyTag);
+        checkGoogleCloudDatacatalogV1beta1PolicyTag(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5851,18 +5762,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1PolicyTag());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -5873,42 +5784,42 @@ void main() {
     });
 
     unittest.test('method--setIamPolicy', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.DataCatalogApi(mock).projects.locations.taxonomies.policyTags;
-      var arg_request = buildSetIamPolicyRequest();
-      var arg_resource = 'foo';
-      var arg_$fields = 'foo';
+      final arg_request = buildSetIamPolicyRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetIamPolicyRequest.fromJson(
+        final obj = api.SetIamPolicyRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSetIamPolicyRequest(obj as api.SetIamPolicyRequest);
+        checkSetIamPolicyRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5916,14 +5827,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildPolicy());
+        final resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.setIamPolicy(arg_request, arg_resource,
@@ -5932,42 +5843,42 @@ void main() {
     });
 
     unittest.test('method--testIamPermissions', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.DataCatalogApi(mock).projects.locations.taxonomies.policyTags;
-      var arg_request = buildTestIamPermissionsRequest();
-      var arg_resource = 'foo';
-      var arg_$fields = 'foo';
+      final arg_request = buildTestIamPermissionsRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestIamPermissionsRequest.fromJson(
+        final obj = api.TestIamPermissionsRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
+        checkTestIamPermissionsRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("v1beta1/"),
+          unittest.equals('v1beta1/'),
         );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -5975,14 +5886,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildTestIamPermissionsResponse());
+        final resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.testIamPermissions(arg_request, arg_resource,

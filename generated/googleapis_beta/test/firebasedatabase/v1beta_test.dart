@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -29,7 +28,7 @@ import '../test_shared.dart';
 
 core.int buildCounterDatabaseInstance = 0;
 api.DatabaseInstance buildDatabaseInstance() {
-  var o = api.DatabaseInstance();
+  final o = api.DatabaseInstance();
   buildCounterDatabaseInstance++;
   if (buildCounterDatabaseInstance < 3) {
     o.databaseUrl = 'foo';
@@ -71,7 +70,7 @@ void checkDatabaseInstance(api.DatabaseInstance o) {
 
 core.int buildCounterDisableDatabaseInstanceRequest = 0;
 api.DisableDatabaseInstanceRequest buildDisableDatabaseInstanceRequest() {
-  var o = api.DisableDatabaseInstanceRequest();
+  final o = api.DisableDatabaseInstanceRequest();
   buildCounterDisableDatabaseInstanceRequest++;
   if (buildCounterDisableDatabaseInstanceRequest < 3) {}
   buildCounterDisableDatabaseInstanceRequest--;
@@ -85,7 +84,7 @@ void checkDisableDatabaseInstanceRequest(api.DisableDatabaseInstanceRequest o) {
 }
 
 core.List<api.DatabaseInstance> buildUnnamed8780() {
-  var o = <api.DatabaseInstance>[];
+  final o = <api.DatabaseInstance>[];
   o.add(buildDatabaseInstance());
   o.add(buildDatabaseInstance());
   return o;
@@ -93,13 +92,13 @@ core.List<api.DatabaseInstance> buildUnnamed8780() {
 
 void checkUnnamed8780(core.List<api.DatabaseInstance> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDatabaseInstance(o[0] as api.DatabaseInstance);
-  checkDatabaseInstance(o[1] as api.DatabaseInstance);
+  checkDatabaseInstance(o[0]);
+  checkDatabaseInstance(o[1]);
 }
 
 core.int buildCounterListDatabaseInstancesResponse = 0;
 api.ListDatabaseInstancesResponse buildListDatabaseInstancesResponse() {
-  var o = api.ListDatabaseInstancesResponse();
+  final o = api.ListDatabaseInstancesResponse();
   buildCounterListDatabaseInstancesResponse++;
   if (buildCounterListDatabaseInstancesResponse < 3) {
     o.instances = buildUnnamed8780();
@@ -123,7 +122,7 @@ void checkListDatabaseInstancesResponse(api.ListDatabaseInstancesResponse o) {
 
 core.int buildCounterReenableDatabaseInstanceRequest = 0;
 api.ReenableDatabaseInstanceRequest buildReenableDatabaseInstanceRequest() {
-  var o = api.ReenableDatabaseInstanceRequest();
+  final o = api.ReenableDatabaseInstanceRequest();
   buildCounterReenableDatabaseInstanceRequest++;
   if (buildCounterReenableDatabaseInstanceRequest < 3) {}
   buildCounterReenableDatabaseInstanceRequest--;
@@ -140,87 +139,84 @@ void checkReenableDatabaseInstanceRequest(
 void main() {
   unittest.group('obj-schema-DatabaseInstance', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDatabaseInstance();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DatabaseInstance.fromJson(
+      final o = buildDatabaseInstance();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DatabaseInstance.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDatabaseInstance(od as api.DatabaseInstance);
+      checkDatabaseInstance(od);
     });
   });
 
   unittest.group('obj-schema-DisableDatabaseInstanceRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDisableDatabaseInstanceRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DisableDatabaseInstanceRequest.fromJson(
+      final o = buildDisableDatabaseInstanceRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DisableDatabaseInstanceRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDisableDatabaseInstanceRequest(
-          od as api.DisableDatabaseInstanceRequest);
+      checkDisableDatabaseInstanceRequest(od);
     });
   });
 
   unittest.group('obj-schema-ListDatabaseInstancesResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListDatabaseInstancesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListDatabaseInstancesResponse.fromJson(
+      final o = buildListDatabaseInstancesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListDatabaseInstancesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListDatabaseInstancesResponse(
-          od as api.ListDatabaseInstancesResponse);
+      checkListDatabaseInstancesResponse(od);
     });
   });
 
   unittest.group('obj-schema-ReenableDatabaseInstanceRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReenableDatabaseInstanceRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReenableDatabaseInstanceRequest.fromJson(
+      final o = buildReenableDatabaseInstanceRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReenableDatabaseInstanceRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReenableDatabaseInstanceRequest(
-          od as api.ReenableDatabaseInstanceRequest);
+      checkReenableDatabaseInstanceRequest(od);
     });
   });
 
   unittest.group('resource-ProjectsLocationsInstancesResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.FirebaseRealtimeDatabaseApi(mock).projects.locations.instances;
-      var arg_request = buildDatabaseInstance();
-      var arg_parent = 'foo';
-      var arg_databaseId = 'foo';
-      var arg_validateOnly = true;
-      var arg_$fields = 'foo';
+      final arg_request = buildDatabaseInstance();
+      final arg_parent = 'foo';
+      final arg_databaseId = 'foo';
+      final arg_validateOnly = true;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DatabaseInstance.fromJson(
+        final obj = api.DatabaseInstance.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkDatabaseInstance(obj as api.DatabaseInstance);
+        checkDatabaseInstance(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 7),
-          unittest.equals("v1beta/"),
+          unittest.equals('v1beta/'),
         );
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -228,22 +224,22 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["databaseId"]!.first,
+          queryMap['databaseId']!.first,
           unittest.equals(arg_databaseId),
         );
         unittest.expect(
-          queryMap["validateOnly"]!.first,
-          unittest.equals("$arg_validateOnly"),
+          queryMap['validateOnly']!.first,
+          unittest.equals('$arg_validateOnly'),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildDatabaseInstance());
+        final resp = convert.json.encode(buildDatabaseInstance());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
@@ -254,37 +250,37 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.FirebaseRealtimeDatabaseApi(mock).projects.locations.instances;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 7),
-          unittest.equals("v1beta/"),
+          unittest.equals('v1beta/'),
         );
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -292,14 +288,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildDatabaseInstance());
+        final resp = convert.json.encode(buildDatabaseInstance());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -307,43 +303,42 @@ void main() {
     });
 
     unittest.test('method--disable', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.FirebaseRealtimeDatabaseApi(mock).projects.locations.instances;
-      var arg_request = buildDisableDatabaseInstanceRequest();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final arg_request = buildDisableDatabaseInstanceRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DisableDatabaseInstanceRequest.fromJson(
+        final obj = api.DisableDatabaseInstanceRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkDisableDatabaseInstanceRequest(
-            obj as api.DisableDatabaseInstanceRequest);
+        checkDisableDatabaseInstanceRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 7),
-          unittest.equals("v1beta/"),
+          unittest.equals('v1beta/'),
         );
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -351,14 +346,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildDatabaseInstance());
+        final resp = convert.json.encode(buildDatabaseInstance());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -367,37 +362,37 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.FirebaseRealtimeDatabaseApi(mock).projects.locations.instances;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 7),
-          unittest.equals("v1beta/"),
+          unittest.equals('v1beta/'),
         );
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -405,14 +400,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildDatabaseInstance());
+        final resp = convert.json.encode(buildDatabaseInstance());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -420,39 +415,39 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.FirebaseRealtimeDatabaseApi(mock).projects.locations.instances;
-      var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 7),
-          unittest.equals("v1beta/"),
+          unittest.equals('v1beta/'),
         );
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -460,22 +455,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListDatabaseInstancesResponse());
+        final resp = convert.json.encode(buildListDatabaseInstancesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
@@ -487,43 +482,42 @@ void main() {
     });
 
     unittest.test('method--reenable', () async {
-      var mock = HttpServerMock();
-      var res =
+      final mock = HttpServerMock();
+      final res =
           api.FirebaseRealtimeDatabaseApi(mock).projects.locations.instances;
-      var arg_request = buildReenableDatabaseInstanceRequest();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final arg_request = buildReenableDatabaseInstanceRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ReenableDatabaseInstanceRequest.fromJson(
+        final obj = api.ReenableDatabaseInstanceRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkReenableDatabaseInstanceRequest(
-            obj as api.ReenableDatabaseInstanceRequest);
+        checkReenableDatabaseInstanceRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 7),
-          unittest.equals("v1beta/"),
+          unittest.equals('v1beta/'),
         );
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -531,14 +525,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildDatabaseInstance());
+        final resp = convert.json.encode(buildDatabaseInstance());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =

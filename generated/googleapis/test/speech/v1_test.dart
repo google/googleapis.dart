@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -28,7 +27,7 @@ import 'package:test/test.dart' as unittest;
 import '../test_shared.dart';
 
 core.List<api.Operation> buildUnnamed6050() {
-  var o = <api.Operation>[];
+  final o = <api.Operation>[];
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
@@ -36,13 +35,13 @@ core.List<api.Operation> buildUnnamed6050() {
 
 void checkUnnamed6050(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOperation(o[0] as api.Operation);
-  checkOperation(o[1] as api.Operation);
+  checkOperation(o[0]);
+  checkOperation(o[1]);
 }
 
 core.int buildCounterListOperationsResponse = 0;
 api.ListOperationsResponse buildListOperationsResponse() {
-  var o = api.ListOperationsResponse();
+  final o = api.ListOperationsResponse();
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
@@ -66,7 +65,7 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
 
 core.int buildCounterLongRunningRecognizeMetadata = 0;
 api.LongRunningRecognizeMetadata buildLongRunningRecognizeMetadata() {
-  var o = api.LongRunningRecognizeMetadata();
+  final o = api.LongRunningRecognizeMetadata();
   buildCounterLongRunningRecognizeMetadata++;
   if (buildCounterLongRunningRecognizeMetadata < 3) {
     o.lastUpdateTime = 'foo';
@@ -103,7 +102,7 @@ void checkLongRunningRecognizeMetadata(api.LongRunningRecognizeMetadata o) {
 
 core.int buildCounterLongRunningRecognizeRequest = 0;
 api.LongRunningRecognizeRequest buildLongRunningRecognizeRequest() {
-  var o = api.LongRunningRecognizeRequest();
+  final o = api.LongRunningRecognizeRequest();
   buildCounterLongRunningRecognizeRequest++;
   if (buildCounterLongRunningRecognizeRequest < 3) {
     o.audio = buildRecognitionAudio();
@@ -116,14 +115,14 @@ api.LongRunningRecognizeRequest buildLongRunningRecognizeRequest() {
 void checkLongRunningRecognizeRequest(api.LongRunningRecognizeRequest o) {
   buildCounterLongRunningRecognizeRequest++;
   if (buildCounterLongRunningRecognizeRequest < 3) {
-    checkRecognitionAudio(o.audio! as api.RecognitionAudio);
-    checkRecognitionConfig(o.config! as api.RecognitionConfig);
+    checkRecognitionAudio(o.audio!);
+    checkRecognitionConfig(o.config!);
   }
   buildCounterLongRunningRecognizeRequest--;
 }
 
 core.List<api.SpeechRecognitionResult> buildUnnamed6051() {
-  var o = <api.SpeechRecognitionResult>[];
+  final o = <api.SpeechRecognitionResult>[];
   o.add(buildSpeechRecognitionResult());
   o.add(buildSpeechRecognitionResult());
   return o;
@@ -131,13 +130,13 @@ core.List<api.SpeechRecognitionResult> buildUnnamed6051() {
 
 void checkUnnamed6051(core.List<api.SpeechRecognitionResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSpeechRecognitionResult(o[0] as api.SpeechRecognitionResult);
-  checkSpeechRecognitionResult(o[1] as api.SpeechRecognitionResult);
+  checkSpeechRecognitionResult(o[0]);
+  checkSpeechRecognitionResult(o[1]);
 }
 
 core.int buildCounterLongRunningRecognizeResponse = 0;
 api.LongRunningRecognizeResponse buildLongRunningRecognizeResponse() {
-  var o = api.LongRunningRecognizeResponse();
+  final o = api.LongRunningRecognizeResponse();
   buildCounterLongRunningRecognizeResponse++;
   if (buildCounterLongRunningRecognizeResponse < 3) {
     o.results = buildUnnamed6051();
@@ -155,7 +154,7 @@ void checkLongRunningRecognizeResponse(api.LongRunningRecognizeResponse o) {
 }
 
 core.Map<core.String, core.Object> buildUnnamed6052() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -202,7 +201,7 @@ void checkUnnamed6052(core.Map<core.String, core.Object> o) {
 }
 
 core.Map<core.String, core.Object> buildUnnamed6053() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -250,7 +249,7 @@ void checkUnnamed6053(core.Map<core.String, core.Object> o) {
 
 core.int buildCounterOperation = 0;
 api.Operation buildOperation() {
-  var o = api.Operation();
+  final o = api.Operation();
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     o.done = true;
@@ -267,7 +266,7 @@ void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
-    checkStatus(o.error! as api.Status);
+    checkStatus(o.error!);
     checkUnnamed6052(o.metadata!);
     unittest.expect(
       o.name!,
@@ -280,7 +279,7 @@ void checkOperation(api.Operation o) {
 
 core.int buildCounterRecognitionAudio = 0;
 api.RecognitionAudio buildRecognitionAudio() {
-  var o = api.RecognitionAudio();
+  final o = api.RecognitionAudio();
   buildCounterRecognitionAudio++;
   if (buildCounterRecognitionAudio < 3) {
     o.content = 'foo';
@@ -306,7 +305,7 @@ void checkRecognitionAudio(api.RecognitionAudio o) {
 }
 
 core.List<api.SpeechContext> buildUnnamed6054() {
-  var o = <api.SpeechContext>[];
+  final o = <api.SpeechContext>[];
   o.add(buildSpeechContext());
   o.add(buildSpeechContext());
   return o;
@@ -314,13 +313,13 @@ core.List<api.SpeechContext> buildUnnamed6054() {
 
 void checkUnnamed6054(core.List<api.SpeechContext> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSpeechContext(o[0] as api.SpeechContext);
-  checkSpeechContext(o[1] as api.SpeechContext);
+  checkSpeechContext(o[0]);
+  checkSpeechContext(o[1]);
 }
 
 core.int buildCounterRecognitionConfig = 0;
 api.RecognitionConfig buildRecognitionConfig() {
-  var o = api.RecognitionConfig();
+  final o = api.RecognitionConfig();
   buildCounterRecognitionConfig++;
   if (buildCounterRecognitionConfig < 3) {
     o.audioChannelCount = 42;
@@ -349,8 +348,7 @@ void checkRecognitionConfig(api.RecognitionConfig o) {
       o.audioChannelCount!,
       unittest.equals(42),
     );
-    checkSpeakerDiarizationConfig(
-        o.diarizationConfig! as api.SpeakerDiarizationConfig);
+    checkSpeakerDiarizationConfig(o.diarizationConfig!);
     unittest.expect(o.enableAutomaticPunctuation!, unittest.isTrue);
     unittest.expect(o.enableSeparateRecognitionPerChannel!, unittest.isTrue);
     unittest.expect(o.enableWordTimeOffsets!, unittest.isTrue);
@@ -366,7 +364,7 @@ void checkRecognitionConfig(api.RecognitionConfig o) {
       o.maxAlternatives!,
       unittest.equals(42),
     );
-    checkRecognitionMetadata(o.metadata! as api.RecognitionMetadata);
+    checkRecognitionMetadata(o.metadata!);
     unittest.expect(
       o.model!,
       unittest.equals('foo'),
@@ -384,7 +382,7 @@ void checkRecognitionConfig(api.RecognitionConfig o) {
 
 core.int buildCounterRecognitionMetadata = 0;
 api.RecognitionMetadata buildRecognitionMetadata() {
-  var o = api.RecognitionMetadata();
+  final o = api.RecognitionMetadata();
   buildCounterRecognitionMetadata++;
   if (buildCounterRecognitionMetadata < 3) {
     o.audioTopic = 'foo';
@@ -441,7 +439,7 @@ void checkRecognitionMetadata(api.RecognitionMetadata o) {
 
 core.int buildCounterRecognizeRequest = 0;
 api.RecognizeRequest buildRecognizeRequest() {
-  var o = api.RecognizeRequest();
+  final o = api.RecognizeRequest();
   buildCounterRecognizeRequest++;
   if (buildCounterRecognizeRequest < 3) {
     o.audio = buildRecognitionAudio();
@@ -454,14 +452,14 @@ api.RecognizeRequest buildRecognizeRequest() {
 void checkRecognizeRequest(api.RecognizeRequest o) {
   buildCounterRecognizeRequest++;
   if (buildCounterRecognizeRequest < 3) {
-    checkRecognitionAudio(o.audio! as api.RecognitionAudio);
-    checkRecognitionConfig(o.config! as api.RecognitionConfig);
+    checkRecognitionAudio(o.audio!);
+    checkRecognitionConfig(o.config!);
   }
   buildCounterRecognizeRequest--;
 }
 
 core.List<api.SpeechRecognitionResult> buildUnnamed6055() {
-  var o = <api.SpeechRecognitionResult>[];
+  final o = <api.SpeechRecognitionResult>[];
   o.add(buildSpeechRecognitionResult());
   o.add(buildSpeechRecognitionResult());
   return o;
@@ -469,13 +467,13 @@ core.List<api.SpeechRecognitionResult> buildUnnamed6055() {
 
 void checkUnnamed6055(core.List<api.SpeechRecognitionResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSpeechRecognitionResult(o[0] as api.SpeechRecognitionResult);
-  checkSpeechRecognitionResult(o[1] as api.SpeechRecognitionResult);
+  checkSpeechRecognitionResult(o[0]);
+  checkSpeechRecognitionResult(o[1]);
 }
 
 core.int buildCounterRecognizeResponse = 0;
 api.RecognizeResponse buildRecognizeResponse() {
-  var o = api.RecognizeResponse();
+  final o = api.RecognizeResponse();
   buildCounterRecognizeResponse++;
   if (buildCounterRecognizeResponse < 3) {
     o.results = buildUnnamed6055();
@@ -494,7 +492,7 @@ void checkRecognizeResponse(api.RecognizeResponse o) {
 
 core.int buildCounterSpeakerDiarizationConfig = 0;
 api.SpeakerDiarizationConfig buildSpeakerDiarizationConfig() {
-  var o = api.SpeakerDiarizationConfig();
+  final o = api.SpeakerDiarizationConfig();
   buildCounterSpeakerDiarizationConfig++;
   if (buildCounterSpeakerDiarizationConfig < 3) {
     o.enableSpeakerDiarization = true;
@@ -527,7 +525,7 @@ void checkSpeakerDiarizationConfig(api.SpeakerDiarizationConfig o) {
 }
 
 core.List<core.String> buildUnnamed6056() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -547,7 +545,7 @@ void checkUnnamed6056(core.List<core.String> o) {
 
 core.int buildCounterSpeechContext = 0;
 api.SpeechContext buildSpeechContext() {
-  var o = api.SpeechContext();
+  final o = api.SpeechContext();
   buildCounterSpeechContext++;
   if (buildCounterSpeechContext < 3) {
     o.phrases = buildUnnamed6056();
@@ -565,7 +563,7 @@ void checkSpeechContext(api.SpeechContext o) {
 }
 
 core.List<api.WordInfo> buildUnnamed6057() {
-  var o = <api.WordInfo>[];
+  final o = <api.WordInfo>[];
   o.add(buildWordInfo());
   o.add(buildWordInfo());
   return o;
@@ -573,13 +571,13 @@ core.List<api.WordInfo> buildUnnamed6057() {
 
 void checkUnnamed6057(core.List<api.WordInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkWordInfo(o[0] as api.WordInfo);
-  checkWordInfo(o[1] as api.WordInfo);
+  checkWordInfo(o[0]);
+  checkWordInfo(o[1]);
 }
 
 core.int buildCounterSpeechRecognitionAlternative = 0;
 api.SpeechRecognitionAlternative buildSpeechRecognitionAlternative() {
-  var o = api.SpeechRecognitionAlternative();
+  final o = api.SpeechRecognitionAlternative();
   buildCounterSpeechRecognitionAlternative++;
   if (buildCounterSpeechRecognitionAlternative < 3) {
     o.confidence = 42.0;
@@ -607,7 +605,7 @@ void checkSpeechRecognitionAlternative(api.SpeechRecognitionAlternative o) {
 }
 
 core.List<api.SpeechRecognitionAlternative> buildUnnamed6058() {
-  var o = <api.SpeechRecognitionAlternative>[];
+  final o = <api.SpeechRecognitionAlternative>[];
   o.add(buildSpeechRecognitionAlternative());
   o.add(buildSpeechRecognitionAlternative());
   return o;
@@ -615,13 +613,13 @@ core.List<api.SpeechRecognitionAlternative> buildUnnamed6058() {
 
 void checkUnnamed6058(core.List<api.SpeechRecognitionAlternative> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSpeechRecognitionAlternative(o[0] as api.SpeechRecognitionAlternative);
-  checkSpeechRecognitionAlternative(o[1] as api.SpeechRecognitionAlternative);
+  checkSpeechRecognitionAlternative(o[0]);
+  checkSpeechRecognitionAlternative(o[1]);
 }
 
 core.int buildCounterSpeechRecognitionResult = 0;
 api.SpeechRecognitionResult buildSpeechRecognitionResult() {
-  var o = api.SpeechRecognitionResult();
+  final o = api.SpeechRecognitionResult();
   buildCounterSpeechRecognitionResult++;
   if (buildCounterSpeechRecognitionResult < 3) {
     o.alternatives = buildUnnamed6058();
@@ -644,7 +642,7 @@ void checkSpeechRecognitionResult(api.SpeechRecognitionResult o) {
 }
 
 core.Map<core.String, core.Object> buildUnnamed6059() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -691,7 +689,7 @@ void checkUnnamed6059(core.Map<core.String, core.Object> o) {
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed6060() {
-  var o = <core.Map<core.String, core.Object>>[];
+  final o = <core.Map<core.String, core.Object>>[];
   o.add(buildUnnamed6059());
   o.add(buildUnnamed6059());
   return o;
@@ -705,7 +703,7 @@ void checkUnnamed6060(core.List<core.Map<core.String, core.Object>> o) {
 
 core.int buildCounterStatus = 0;
 api.Status buildStatus() {
-  var o = api.Status();
+  final o = api.Status();
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
@@ -734,7 +732,7 @@ void checkStatus(api.Status o) {
 
 core.int buildCounterWordInfo = 0;
 api.WordInfo buildWordInfo() {
-  var o = api.WordInfo();
+  final o = api.WordInfo();
   buildCounterWordInfo++;
   if (buildCounterWordInfo < 3) {
     o.endTime = 'foo';
@@ -772,196 +770,196 @@ void checkWordInfo(api.WordInfo o) {
 void main() {
   unittest.group('obj-schema-ListOperationsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListOperationsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListOperationsResponse.fromJson(
+      final o = buildListOperationsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListOperationsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListOperationsResponse(od as api.ListOperationsResponse);
+      checkListOperationsResponse(od);
     });
   });
 
   unittest.group('obj-schema-LongRunningRecognizeMetadata', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLongRunningRecognizeMetadata();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LongRunningRecognizeMetadata.fromJson(
+      final o = buildLongRunningRecognizeMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LongRunningRecognizeMetadata.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLongRunningRecognizeMetadata(od as api.LongRunningRecognizeMetadata);
+      checkLongRunningRecognizeMetadata(od);
     });
   });
 
   unittest.group('obj-schema-LongRunningRecognizeRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLongRunningRecognizeRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LongRunningRecognizeRequest.fromJson(
+      final o = buildLongRunningRecognizeRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LongRunningRecognizeRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLongRunningRecognizeRequest(od as api.LongRunningRecognizeRequest);
+      checkLongRunningRecognizeRequest(od);
     });
   });
 
   unittest.group('obj-schema-LongRunningRecognizeResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLongRunningRecognizeResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LongRunningRecognizeResponse.fromJson(
+      final o = buildLongRunningRecognizeResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LongRunningRecognizeResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLongRunningRecognizeResponse(od as api.LongRunningRecognizeResponse);
+      checkLongRunningRecognizeResponse(od);
     });
   });
 
   unittest.group('obj-schema-Operation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOperation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildOperation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Operation.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkOperation(od as api.Operation);
+      checkOperation(od);
     });
   });
 
   unittest.group('obj-schema-RecognitionAudio', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRecognitionAudio();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RecognitionAudio.fromJson(
+      final o = buildRecognitionAudio();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RecognitionAudio.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRecognitionAudio(od as api.RecognitionAudio);
+      checkRecognitionAudio(od);
     });
   });
 
   unittest.group('obj-schema-RecognitionConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRecognitionConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RecognitionConfig.fromJson(
+      final o = buildRecognitionConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RecognitionConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRecognitionConfig(od as api.RecognitionConfig);
+      checkRecognitionConfig(od);
     });
   });
 
   unittest.group('obj-schema-RecognitionMetadata', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRecognitionMetadata();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RecognitionMetadata.fromJson(
+      final o = buildRecognitionMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RecognitionMetadata.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRecognitionMetadata(od as api.RecognitionMetadata);
+      checkRecognitionMetadata(od);
     });
   });
 
   unittest.group('obj-schema-RecognizeRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRecognizeRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RecognizeRequest.fromJson(
+      final o = buildRecognizeRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RecognizeRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRecognizeRequest(od as api.RecognizeRequest);
+      checkRecognizeRequest(od);
     });
   });
 
   unittest.group('obj-schema-RecognizeResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRecognizeResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RecognizeResponse.fromJson(
+      final o = buildRecognizeResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RecognizeResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRecognizeResponse(od as api.RecognizeResponse);
+      checkRecognizeResponse(od);
     });
   });
 
   unittest.group('obj-schema-SpeakerDiarizationConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSpeakerDiarizationConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SpeakerDiarizationConfig.fromJson(
+      final o = buildSpeakerDiarizationConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SpeakerDiarizationConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSpeakerDiarizationConfig(od as api.SpeakerDiarizationConfig);
+      checkSpeakerDiarizationConfig(od);
     });
   });
 
   unittest.group('obj-schema-SpeechContext', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSpeechContext();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SpeechContext.fromJson(
+      final o = buildSpeechContext();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SpeechContext.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSpeechContext(od as api.SpeechContext);
+      checkSpeechContext(od);
     });
   });
 
   unittest.group('obj-schema-SpeechRecognitionAlternative', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSpeechRecognitionAlternative();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SpeechRecognitionAlternative.fromJson(
+      final o = buildSpeechRecognitionAlternative();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SpeechRecognitionAlternative.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSpeechRecognitionAlternative(od as api.SpeechRecognitionAlternative);
+      checkSpeechRecognitionAlternative(od);
     });
   });
 
   unittest.group('obj-schema-SpeechRecognitionResult', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSpeechRecognitionResult();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SpeechRecognitionResult.fromJson(
+      final o = buildSpeechRecognitionResult();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SpeechRecognitionResult.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSpeechRecognitionResult(od as api.SpeechRecognitionResult);
+      checkSpeechRecognitionResult(od);
     });
   });
 
   unittest.group('obj-schema-Status', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildStatus();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkStatus(od as api.Status);
+      checkStatus(od);
     });
   });
 
   unittest.group('obj-schema-WordInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildWordInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildWordInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.WordInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkWordInfo(od as api.WordInfo);
+      checkWordInfo(od);
     });
   });
 
   unittest.group('resource-OperationsResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.SpeechApi(mock).operations;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SpeechApi(mock).operations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 14),
-          unittest.equals("v1/operations/"),
+          unittest.equals('v1/operations/'),
         );
         pathOffset += 14;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -969,14 +967,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOperation());
+        final resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -984,38 +982,38 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.SpeechApi(mock).operations;
-      var arg_filter = 'foo';
-      var arg_name = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SpeechApi(mock).operations;
+      final arg_filter = 'foo';
+      final arg_name = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("v1/operations"),
+          unittest.equals('v1/operations'),
         );
         pathOffset += 13;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1023,30 +1021,30 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["filter"]!.first,
+          queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          queryMap["name"]!.first,
+          queryMap['name']!.first,
           unittest.equals(arg_name),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListOperationsResponse());
+        final resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(
@@ -1061,40 +1059,39 @@ void main() {
 
   unittest.group('resource-SpeechResource', () {
     unittest.test('method--longrunningrecognize', () async {
-      var mock = HttpServerMock();
-      var res = api.SpeechApi(mock).speech;
-      var arg_request = buildLongRunningRecognizeRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SpeechApi(mock).speech;
+      final arg_request = buildLongRunningRecognizeRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LongRunningRecognizeRequest.fromJson(
+        final obj = api.LongRunningRecognizeRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkLongRunningRecognizeRequest(
-            obj as api.LongRunningRecognizeRequest);
+        checkLongRunningRecognizeRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 30),
-          unittest.equals("v1/speech:longrunningrecognize"),
+          unittest.equals('v1/speech:longrunningrecognize'),
         );
         pathOffset += 30;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1102,14 +1099,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOperation());
+        final resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -1118,39 +1115,39 @@ void main() {
     });
 
     unittest.test('method--recognize', () async {
-      var mock = HttpServerMock();
-      var res = api.SpeechApi(mock).speech;
-      var arg_request = buildRecognizeRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.SpeechApi(mock).speech;
+      final arg_request = buildRecognizeRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.RecognizeRequest.fromJson(
+        final obj = api.RecognizeRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkRecognizeRequest(obj as api.RecognizeRequest);
+        checkRecognizeRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 19),
-          unittest.equals("v1/speech:recognize"),
+          unittest.equals('v1/speech:recognize'),
         );
         pathOffset += 19;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1158,14 +1155,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildRecognizeResponse());
+        final resp = convert.json.encode(buildRecognizeResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.recognize(arg_request, $fields: arg_$fields);

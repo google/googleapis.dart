@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -29,7 +28,7 @@ import '../test_shared.dart';
 
 core.int buildCounterAddProductToProductSetRequest = 0;
 api.AddProductToProductSetRequest buildAddProductToProductSetRequest() {
-  var o = api.AddProductToProductSetRequest();
+  final o = api.AddProductToProductSetRequest();
   buildCounterAddProductToProductSetRequest++;
   if (buildCounterAddProductToProductSetRequest < 3) {
     o.product = 'foo';
@@ -50,7 +49,7 @@ void checkAddProductToProductSetRequest(api.AddProductToProductSetRequest o) {
 }
 
 core.List<api.Feature> buildUnnamed4191() {
-  var o = <api.Feature>[];
+  final o = <api.Feature>[];
   o.add(buildFeature());
   o.add(buildFeature());
   return o;
@@ -58,12 +57,12 @@ core.List<api.Feature> buildUnnamed4191() {
 
 void checkUnnamed4191(core.List<api.Feature> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFeature(o[0] as api.Feature);
-  checkFeature(o[1] as api.Feature);
+  checkFeature(o[0]);
+  checkFeature(o[1]);
 }
 
 core.List<core.int> buildUnnamed4192() {
-  var o = <core.int>[];
+  final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
@@ -83,7 +82,7 @@ void checkUnnamed4192(core.List<core.int> o) {
 
 core.int buildCounterAnnotateFileRequest = 0;
 api.AnnotateFileRequest buildAnnotateFileRequest() {
-  var o = api.AnnotateFileRequest();
+  final o = api.AnnotateFileRequest();
   buildCounterAnnotateFileRequest++;
   if (buildCounterAnnotateFileRequest < 3) {
     o.features = buildUnnamed4191();
@@ -99,15 +98,15 @@ void checkAnnotateFileRequest(api.AnnotateFileRequest o) {
   buildCounterAnnotateFileRequest++;
   if (buildCounterAnnotateFileRequest < 3) {
     checkUnnamed4191(o.features!);
-    checkImageContext(o.imageContext! as api.ImageContext);
-    checkInputConfig(o.inputConfig! as api.InputConfig);
+    checkImageContext(o.imageContext!);
+    checkInputConfig(o.inputConfig!);
     checkUnnamed4192(o.pages!);
   }
   buildCounterAnnotateFileRequest--;
 }
 
 core.List<api.AnnotateImageResponse> buildUnnamed4193() {
-  var o = <api.AnnotateImageResponse>[];
+  final o = <api.AnnotateImageResponse>[];
   o.add(buildAnnotateImageResponse());
   o.add(buildAnnotateImageResponse());
   return o;
@@ -115,13 +114,13 @@ core.List<api.AnnotateImageResponse> buildUnnamed4193() {
 
 void checkUnnamed4193(core.List<api.AnnotateImageResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAnnotateImageResponse(o[0] as api.AnnotateImageResponse);
-  checkAnnotateImageResponse(o[1] as api.AnnotateImageResponse);
+  checkAnnotateImageResponse(o[0]);
+  checkAnnotateImageResponse(o[1]);
 }
 
 core.int buildCounterAnnotateFileResponse = 0;
 api.AnnotateFileResponse buildAnnotateFileResponse() {
-  var o = api.AnnotateFileResponse();
+  final o = api.AnnotateFileResponse();
   buildCounterAnnotateFileResponse++;
   if (buildCounterAnnotateFileResponse < 3) {
     o.error = buildStatus();
@@ -136,8 +135,8 @@ api.AnnotateFileResponse buildAnnotateFileResponse() {
 void checkAnnotateFileResponse(api.AnnotateFileResponse o) {
   buildCounterAnnotateFileResponse++;
   if (buildCounterAnnotateFileResponse < 3) {
-    checkStatus(o.error! as api.Status);
-    checkInputConfig(o.inputConfig! as api.InputConfig);
+    checkStatus(o.error!);
+    checkInputConfig(o.inputConfig!);
     checkUnnamed4193(o.responses!);
     unittest.expect(
       o.totalPages!,
@@ -148,7 +147,7 @@ void checkAnnotateFileResponse(api.AnnotateFileResponse o) {
 }
 
 core.List<api.Feature> buildUnnamed4194() {
-  var o = <api.Feature>[];
+  final o = <api.Feature>[];
   o.add(buildFeature());
   o.add(buildFeature());
   return o;
@@ -156,13 +155,13 @@ core.List<api.Feature> buildUnnamed4194() {
 
 void checkUnnamed4194(core.List<api.Feature> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFeature(o[0] as api.Feature);
-  checkFeature(o[1] as api.Feature);
+  checkFeature(o[0]);
+  checkFeature(o[1]);
 }
 
 core.int buildCounterAnnotateImageRequest = 0;
 api.AnnotateImageRequest buildAnnotateImageRequest() {
-  var o = api.AnnotateImageRequest();
+  final o = api.AnnotateImageRequest();
   buildCounterAnnotateImageRequest++;
   if (buildCounterAnnotateImageRequest < 3) {
     o.features = buildUnnamed4194();
@@ -177,14 +176,14 @@ void checkAnnotateImageRequest(api.AnnotateImageRequest o) {
   buildCounterAnnotateImageRequest++;
   if (buildCounterAnnotateImageRequest < 3) {
     checkUnnamed4194(o.features!);
-    checkImage(o.image! as api.Image);
-    checkImageContext(o.imageContext! as api.ImageContext);
+    checkImage(o.image!);
+    checkImageContext(o.imageContext!);
   }
   buildCounterAnnotateImageRequest--;
 }
 
 core.List<api.FaceAnnotation> buildUnnamed4195() {
-  var o = <api.FaceAnnotation>[];
+  final o = <api.FaceAnnotation>[];
   o.add(buildFaceAnnotation());
   o.add(buildFaceAnnotation());
   return o;
@@ -192,12 +191,12 @@ core.List<api.FaceAnnotation> buildUnnamed4195() {
 
 void checkUnnamed4195(core.List<api.FaceAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFaceAnnotation(o[0] as api.FaceAnnotation);
-  checkFaceAnnotation(o[1] as api.FaceAnnotation);
+  checkFaceAnnotation(o[0]);
+  checkFaceAnnotation(o[1]);
 }
 
 core.List<api.EntityAnnotation> buildUnnamed4196() {
-  var o = <api.EntityAnnotation>[];
+  final o = <api.EntityAnnotation>[];
   o.add(buildEntityAnnotation());
   o.add(buildEntityAnnotation());
   return o;
@@ -205,12 +204,12 @@ core.List<api.EntityAnnotation> buildUnnamed4196() {
 
 void checkUnnamed4196(core.List<api.EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEntityAnnotation(o[0] as api.EntityAnnotation);
-  checkEntityAnnotation(o[1] as api.EntityAnnotation);
+  checkEntityAnnotation(o[0]);
+  checkEntityAnnotation(o[1]);
 }
 
 core.List<api.EntityAnnotation> buildUnnamed4197() {
-  var o = <api.EntityAnnotation>[];
+  final o = <api.EntityAnnotation>[];
   o.add(buildEntityAnnotation());
   o.add(buildEntityAnnotation());
   return o;
@@ -218,12 +217,12 @@ core.List<api.EntityAnnotation> buildUnnamed4197() {
 
 void checkUnnamed4197(core.List<api.EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEntityAnnotation(o[0] as api.EntityAnnotation);
-  checkEntityAnnotation(o[1] as api.EntityAnnotation);
+  checkEntityAnnotation(o[0]);
+  checkEntityAnnotation(o[1]);
 }
 
 core.List<api.LocalizedObjectAnnotation> buildUnnamed4198() {
-  var o = <api.LocalizedObjectAnnotation>[];
+  final o = <api.LocalizedObjectAnnotation>[];
   o.add(buildLocalizedObjectAnnotation());
   o.add(buildLocalizedObjectAnnotation());
   return o;
@@ -231,12 +230,12 @@ core.List<api.LocalizedObjectAnnotation> buildUnnamed4198() {
 
 void checkUnnamed4198(core.List<api.LocalizedObjectAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocalizedObjectAnnotation(o[0] as api.LocalizedObjectAnnotation);
-  checkLocalizedObjectAnnotation(o[1] as api.LocalizedObjectAnnotation);
+  checkLocalizedObjectAnnotation(o[0]);
+  checkLocalizedObjectAnnotation(o[1]);
 }
 
 core.List<api.EntityAnnotation> buildUnnamed4199() {
-  var o = <api.EntityAnnotation>[];
+  final o = <api.EntityAnnotation>[];
   o.add(buildEntityAnnotation());
   o.add(buildEntityAnnotation());
   return o;
@@ -244,12 +243,12 @@ core.List<api.EntityAnnotation> buildUnnamed4199() {
 
 void checkUnnamed4199(core.List<api.EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEntityAnnotation(o[0] as api.EntityAnnotation);
-  checkEntityAnnotation(o[1] as api.EntityAnnotation);
+  checkEntityAnnotation(o[0]);
+  checkEntityAnnotation(o[1]);
 }
 
 core.List<api.EntityAnnotation> buildUnnamed4200() {
-  var o = <api.EntityAnnotation>[];
+  final o = <api.EntityAnnotation>[];
   o.add(buildEntityAnnotation());
   o.add(buildEntityAnnotation());
   return o;
@@ -257,13 +256,13 @@ core.List<api.EntityAnnotation> buildUnnamed4200() {
 
 void checkUnnamed4200(core.List<api.EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEntityAnnotation(o[0] as api.EntityAnnotation);
-  checkEntityAnnotation(o[1] as api.EntityAnnotation);
+  checkEntityAnnotation(o[0]);
+  checkEntityAnnotation(o[1]);
 }
 
 core.int buildCounterAnnotateImageResponse = 0;
 api.AnnotateImageResponse buildAnnotateImageResponse() {
-  var o = api.AnnotateImageResponse();
+  final o = api.AnnotateImageResponse();
   buildCounterAnnotateImageResponse++;
   if (buildCounterAnnotateImageResponse < 3) {
     o.context = buildImageAnnotationContext();
@@ -288,28 +287,26 @@ api.AnnotateImageResponse buildAnnotateImageResponse() {
 void checkAnnotateImageResponse(api.AnnotateImageResponse o) {
   buildCounterAnnotateImageResponse++;
   if (buildCounterAnnotateImageResponse < 3) {
-    checkImageAnnotationContext(o.context! as api.ImageAnnotationContext);
-    checkCropHintsAnnotation(o.cropHintsAnnotation! as api.CropHintsAnnotation);
-    checkStatus(o.error! as api.Status);
+    checkImageAnnotationContext(o.context!);
+    checkCropHintsAnnotation(o.cropHintsAnnotation!);
+    checkStatus(o.error!);
     checkUnnamed4195(o.faceAnnotations!);
-    checkTextAnnotation(o.fullTextAnnotation! as api.TextAnnotation);
-    checkImageProperties(o.imagePropertiesAnnotation! as api.ImageProperties);
+    checkTextAnnotation(o.fullTextAnnotation!);
+    checkImageProperties(o.imagePropertiesAnnotation!);
     checkUnnamed4196(o.labelAnnotations!);
     checkUnnamed4197(o.landmarkAnnotations!);
     checkUnnamed4198(o.localizedObjectAnnotations!);
     checkUnnamed4199(o.logoAnnotations!);
-    checkProductSearchResults(
-        o.productSearchResults! as api.ProductSearchResults);
-    checkSafeSearchAnnotation(
-        o.safeSearchAnnotation! as api.SafeSearchAnnotation);
+    checkProductSearchResults(o.productSearchResults!);
+    checkSafeSearchAnnotation(o.safeSearchAnnotation!);
     checkUnnamed4200(o.textAnnotations!);
-    checkWebDetection(o.webDetection! as api.WebDetection);
+    checkWebDetection(o.webDetection!);
   }
   buildCounterAnnotateImageResponse--;
 }
 
 core.List<api.Feature> buildUnnamed4201() {
-  var o = <api.Feature>[];
+  final o = <api.Feature>[];
   o.add(buildFeature());
   o.add(buildFeature());
   return o;
@@ -317,13 +314,13 @@ core.List<api.Feature> buildUnnamed4201() {
 
 void checkUnnamed4201(core.List<api.Feature> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFeature(o[0] as api.Feature);
-  checkFeature(o[1] as api.Feature);
+  checkFeature(o[0]);
+  checkFeature(o[1]);
 }
 
 core.int buildCounterAsyncAnnotateFileRequest = 0;
 api.AsyncAnnotateFileRequest buildAsyncAnnotateFileRequest() {
-  var o = api.AsyncAnnotateFileRequest();
+  final o = api.AsyncAnnotateFileRequest();
   buildCounterAsyncAnnotateFileRequest++;
   if (buildCounterAsyncAnnotateFileRequest < 3) {
     o.features = buildUnnamed4201();
@@ -339,16 +336,16 @@ void checkAsyncAnnotateFileRequest(api.AsyncAnnotateFileRequest o) {
   buildCounterAsyncAnnotateFileRequest++;
   if (buildCounterAsyncAnnotateFileRequest < 3) {
     checkUnnamed4201(o.features!);
-    checkImageContext(o.imageContext! as api.ImageContext);
-    checkInputConfig(o.inputConfig! as api.InputConfig);
-    checkOutputConfig(o.outputConfig! as api.OutputConfig);
+    checkImageContext(o.imageContext!);
+    checkInputConfig(o.inputConfig!);
+    checkOutputConfig(o.outputConfig!);
   }
   buildCounterAsyncAnnotateFileRequest--;
 }
 
 core.int buildCounterAsyncAnnotateFileResponse = 0;
 api.AsyncAnnotateFileResponse buildAsyncAnnotateFileResponse() {
-  var o = api.AsyncAnnotateFileResponse();
+  final o = api.AsyncAnnotateFileResponse();
   buildCounterAsyncAnnotateFileResponse++;
   if (buildCounterAsyncAnnotateFileResponse < 3) {
     o.outputConfig = buildOutputConfig();
@@ -360,13 +357,13 @@ api.AsyncAnnotateFileResponse buildAsyncAnnotateFileResponse() {
 void checkAsyncAnnotateFileResponse(api.AsyncAnnotateFileResponse o) {
   buildCounterAsyncAnnotateFileResponse++;
   if (buildCounterAsyncAnnotateFileResponse < 3) {
-    checkOutputConfig(o.outputConfig! as api.OutputConfig);
+    checkOutputConfig(o.outputConfig!);
   }
   buildCounterAsyncAnnotateFileResponse--;
 }
 
 core.List<api.AsyncAnnotateFileRequest> buildUnnamed4202() {
-  var o = <api.AsyncAnnotateFileRequest>[];
+  final o = <api.AsyncAnnotateFileRequest>[];
   o.add(buildAsyncAnnotateFileRequest());
   o.add(buildAsyncAnnotateFileRequest());
   return o;
@@ -374,13 +371,13 @@ core.List<api.AsyncAnnotateFileRequest> buildUnnamed4202() {
 
 void checkUnnamed4202(core.List<api.AsyncAnnotateFileRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAsyncAnnotateFileRequest(o[0] as api.AsyncAnnotateFileRequest);
-  checkAsyncAnnotateFileRequest(o[1] as api.AsyncAnnotateFileRequest);
+  checkAsyncAnnotateFileRequest(o[0]);
+  checkAsyncAnnotateFileRequest(o[1]);
 }
 
 core.int buildCounterAsyncBatchAnnotateFilesRequest = 0;
 api.AsyncBatchAnnotateFilesRequest buildAsyncBatchAnnotateFilesRequest() {
-  var o = api.AsyncBatchAnnotateFilesRequest();
+  final o = api.AsyncBatchAnnotateFilesRequest();
   buildCounterAsyncBatchAnnotateFilesRequest++;
   if (buildCounterAsyncBatchAnnotateFilesRequest < 3) {
     o.parent = 'foo';
@@ -403,7 +400,7 @@ void checkAsyncBatchAnnotateFilesRequest(api.AsyncBatchAnnotateFilesRequest o) {
 }
 
 core.List<api.AsyncAnnotateFileResponse> buildUnnamed4203() {
-  var o = <api.AsyncAnnotateFileResponse>[];
+  final o = <api.AsyncAnnotateFileResponse>[];
   o.add(buildAsyncAnnotateFileResponse());
   o.add(buildAsyncAnnotateFileResponse());
   return o;
@@ -411,13 +408,13 @@ core.List<api.AsyncAnnotateFileResponse> buildUnnamed4203() {
 
 void checkUnnamed4203(core.List<api.AsyncAnnotateFileResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAsyncAnnotateFileResponse(o[0] as api.AsyncAnnotateFileResponse);
-  checkAsyncAnnotateFileResponse(o[1] as api.AsyncAnnotateFileResponse);
+  checkAsyncAnnotateFileResponse(o[0]);
+  checkAsyncAnnotateFileResponse(o[1]);
 }
 
 core.int buildCounterAsyncBatchAnnotateFilesResponse = 0;
 api.AsyncBatchAnnotateFilesResponse buildAsyncBatchAnnotateFilesResponse() {
-  var o = api.AsyncBatchAnnotateFilesResponse();
+  final o = api.AsyncBatchAnnotateFilesResponse();
   buildCounterAsyncBatchAnnotateFilesResponse++;
   if (buildCounterAsyncBatchAnnotateFilesResponse < 3) {
     o.responses = buildUnnamed4203();
@@ -436,7 +433,7 @@ void checkAsyncBatchAnnotateFilesResponse(
 }
 
 core.List<api.AnnotateImageRequest> buildUnnamed4204() {
-  var o = <api.AnnotateImageRequest>[];
+  final o = <api.AnnotateImageRequest>[];
   o.add(buildAnnotateImageRequest());
   o.add(buildAnnotateImageRequest());
   return o;
@@ -444,13 +441,13 @@ core.List<api.AnnotateImageRequest> buildUnnamed4204() {
 
 void checkUnnamed4204(core.List<api.AnnotateImageRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAnnotateImageRequest(o[0] as api.AnnotateImageRequest);
-  checkAnnotateImageRequest(o[1] as api.AnnotateImageRequest);
+  checkAnnotateImageRequest(o[0]);
+  checkAnnotateImageRequest(o[1]);
 }
 
 core.int buildCounterAsyncBatchAnnotateImagesRequest = 0;
 api.AsyncBatchAnnotateImagesRequest buildAsyncBatchAnnotateImagesRequest() {
-  var o = api.AsyncBatchAnnotateImagesRequest();
+  final o = api.AsyncBatchAnnotateImagesRequest();
   buildCounterAsyncBatchAnnotateImagesRequest++;
   if (buildCounterAsyncBatchAnnotateImagesRequest < 3) {
     o.outputConfig = buildOutputConfig();
@@ -465,7 +462,7 @@ void checkAsyncBatchAnnotateImagesRequest(
     api.AsyncBatchAnnotateImagesRequest o) {
   buildCounterAsyncBatchAnnotateImagesRequest++;
   if (buildCounterAsyncBatchAnnotateImagesRequest < 3) {
-    checkOutputConfig(o.outputConfig! as api.OutputConfig);
+    checkOutputConfig(o.outputConfig!);
     unittest.expect(
       o.parent!,
       unittest.equals('foo'),
@@ -477,7 +474,7 @@ void checkAsyncBatchAnnotateImagesRequest(
 
 core.int buildCounterAsyncBatchAnnotateImagesResponse = 0;
 api.AsyncBatchAnnotateImagesResponse buildAsyncBatchAnnotateImagesResponse() {
-  var o = api.AsyncBatchAnnotateImagesResponse();
+  final o = api.AsyncBatchAnnotateImagesResponse();
   buildCounterAsyncBatchAnnotateImagesResponse++;
   if (buildCounterAsyncBatchAnnotateImagesResponse < 3) {
     o.outputConfig = buildOutputConfig();
@@ -490,13 +487,13 @@ void checkAsyncBatchAnnotateImagesResponse(
     api.AsyncBatchAnnotateImagesResponse o) {
   buildCounterAsyncBatchAnnotateImagesResponse++;
   if (buildCounterAsyncBatchAnnotateImagesResponse < 3) {
-    checkOutputConfig(o.outputConfig! as api.OutputConfig);
+    checkOutputConfig(o.outputConfig!);
   }
   buildCounterAsyncBatchAnnotateImagesResponse--;
 }
 
 core.List<api.AnnotateFileRequest> buildUnnamed4205() {
-  var o = <api.AnnotateFileRequest>[];
+  final o = <api.AnnotateFileRequest>[];
   o.add(buildAnnotateFileRequest());
   o.add(buildAnnotateFileRequest());
   return o;
@@ -504,13 +501,13 @@ core.List<api.AnnotateFileRequest> buildUnnamed4205() {
 
 void checkUnnamed4205(core.List<api.AnnotateFileRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAnnotateFileRequest(o[0] as api.AnnotateFileRequest);
-  checkAnnotateFileRequest(o[1] as api.AnnotateFileRequest);
+  checkAnnotateFileRequest(o[0]);
+  checkAnnotateFileRequest(o[1]);
 }
 
 core.int buildCounterBatchAnnotateFilesRequest = 0;
 api.BatchAnnotateFilesRequest buildBatchAnnotateFilesRequest() {
-  var o = api.BatchAnnotateFilesRequest();
+  final o = api.BatchAnnotateFilesRequest();
   buildCounterBatchAnnotateFilesRequest++;
   if (buildCounterBatchAnnotateFilesRequest < 3) {
     o.parent = 'foo';
@@ -533,7 +530,7 @@ void checkBatchAnnotateFilesRequest(api.BatchAnnotateFilesRequest o) {
 }
 
 core.List<api.AnnotateFileResponse> buildUnnamed4206() {
-  var o = <api.AnnotateFileResponse>[];
+  final o = <api.AnnotateFileResponse>[];
   o.add(buildAnnotateFileResponse());
   o.add(buildAnnotateFileResponse());
   return o;
@@ -541,13 +538,13 @@ core.List<api.AnnotateFileResponse> buildUnnamed4206() {
 
 void checkUnnamed4206(core.List<api.AnnotateFileResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAnnotateFileResponse(o[0] as api.AnnotateFileResponse);
-  checkAnnotateFileResponse(o[1] as api.AnnotateFileResponse);
+  checkAnnotateFileResponse(o[0]);
+  checkAnnotateFileResponse(o[1]);
 }
 
 core.int buildCounterBatchAnnotateFilesResponse = 0;
 api.BatchAnnotateFilesResponse buildBatchAnnotateFilesResponse() {
-  var o = api.BatchAnnotateFilesResponse();
+  final o = api.BatchAnnotateFilesResponse();
   buildCounterBatchAnnotateFilesResponse++;
   if (buildCounterBatchAnnotateFilesResponse < 3) {
     o.responses = buildUnnamed4206();
@@ -565,7 +562,7 @@ void checkBatchAnnotateFilesResponse(api.BatchAnnotateFilesResponse o) {
 }
 
 core.List<api.AnnotateImageRequest> buildUnnamed4207() {
-  var o = <api.AnnotateImageRequest>[];
+  final o = <api.AnnotateImageRequest>[];
   o.add(buildAnnotateImageRequest());
   o.add(buildAnnotateImageRequest());
   return o;
@@ -573,13 +570,13 @@ core.List<api.AnnotateImageRequest> buildUnnamed4207() {
 
 void checkUnnamed4207(core.List<api.AnnotateImageRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAnnotateImageRequest(o[0] as api.AnnotateImageRequest);
-  checkAnnotateImageRequest(o[1] as api.AnnotateImageRequest);
+  checkAnnotateImageRequest(o[0]);
+  checkAnnotateImageRequest(o[1]);
 }
 
 core.int buildCounterBatchAnnotateImagesRequest = 0;
 api.BatchAnnotateImagesRequest buildBatchAnnotateImagesRequest() {
-  var o = api.BatchAnnotateImagesRequest();
+  final o = api.BatchAnnotateImagesRequest();
   buildCounterBatchAnnotateImagesRequest++;
   if (buildCounterBatchAnnotateImagesRequest < 3) {
     o.parent = 'foo';
@@ -602,7 +599,7 @@ void checkBatchAnnotateImagesRequest(api.BatchAnnotateImagesRequest o) {
 }
 
 core.List<api.AnnotateImageResponse> buildUnnamed4208() {
-  var o = <api.AnnotateImageResponse>[];
+  final o = <api.AnnotateImageResponse>[];
   o.add(buildAnnotateImageResponse());
   o.add(buildAnnotateImageResponse());
   return o;
@@ -610,13 +607,13 @@ core.List<api.AnnotateImageResponse> buildUnnamed4208() {
 
 void checkUnnamed4208(core.List<api.AnnotateImageResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAnnotateImageResponse(o[0] as api.AnnotateImageResponse);
-  checkAnnotateImageResponse(o[1] as api.AnnotateImageResponse);
+  checkAnnotateImageResponse(o[0]);
+  checkAnnotateImageResponse(o[1]);
 }
 
 core.int buildCounterBatchAnnotateImagesResponse = 0;
 api.BatchAnnotateImagesResponse buildBatchAnnotateImagesResponse() {
-  var o = api.BatchAnnotateImagesResponse();
+  final o = api.BatchAnnotateImagesResponse();
   buildCounterBatchAnnotateImagesResponse++;
   if (buildCounterBatchAnnotateImagesResponse < 3) {
     o.responses = buildUnnamed4208();
@@ -635,7 +632,7 @@ void checkBatchAnnotateImagesResponse(api.BatchAnnotateImagesResponse o) {
 
 core.int buildCounterBatchOperationMetadata = 0;
 api.BatchOperationMetadata buildBatchOperationMetadata() {
-  var o = api.BatchOperationMetadata();
+  final o = api.BatchOperationMetadata();
   buildCounterBatchOperationMetadata++;
   if (buildCounterBatchOperationMetadata < 3) {
     o.endTime = 'foo';
@@ -666,7 +663,7 @@ void checkBatchOperationMetadata(api.BatchOperationMetadata o) {
 }
 
 core.List<api.Paragraph> buildUnnamed4209() {
-  var o = <api.Paragraph>[];
+  final o = <api.Paragraph>[];
   o.add(buildParagraph());
   o.add(buildParagraph());
   return o;
@@ -674,13 +671,13 @@ core.List<api.Paragraph> buildUnnamed4209() {
 
 void checkUnnamed4209(core.List<api.Paragraph> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkParagraph(o[0] as api.Paragraph);
-  checkParagraph(o[1] as api.Paragraph);
+  checkParagraph(o[0]);
+  checkParagraph(o[1]);
 }
 
 core.int buildCounterBlock = 0;
 api.Block buildBlock() {
-  var o = api.Block();
+  final o = api.Block();
   buildCounterBlock++;
   if (buildCounterBlock < 3) {
     o.blockType = 'foo';
@@ -700,19 +697,19 @@ void checkBlock(api.Block o) {
       o.blockType!,
       unittest.equals('foo'),
     );
-    checkBoundingPoly(o.boundingBox! as api.BoundingPoly);
+    checkBoundingPoly(o.boundingBox!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
     );
     checkUnnamed4209(o.paragraphs!);
-    checkTextProperty(o.property! as api.TextProperty);
+    checkTextProperty(o.property!);
   }
   buildCounterBlock--;
 }
 
 core.List<api.NormalizedVertex> buildUnnamed4210() {
-  var o = <api.NormalizedVertex>[];
+  final o = <api.NormalizedVertex>[];
   o.add(buildNormalizedVertex());
   o.add(buildNormalizedVertex());
   return o;
@@ -720,12 +717,12 @@ core.List<api.NormalizedVertex> buildUnnamed4210() {
 
 void checkUnnamed4210(core.List<api.NormalizedVertex> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNormalizedVertex(o[0] as api.NormalizedVertex);
-  checkNormalizedVertex(o[1] as api.NormalizedVertex);
+  checkNormalizedVertex(o[0]);
+  checkNormalizedVertex(o[1]);
 }
 
 core.List<api.Vertex> buildUnnamed4211() {
-  var o = <api.Vertex>[];
+  final o = <api.Vertex>[];
   o.add(buildVertex());
   o.add(buildVertex());
   return o;
@@ -733,13 +730,13 @@ core.List<api.Vertex> buildUnnamed4211() {
 
 void checkUnnamed4211(core.List<api.Vertex> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVertex(o[0] as api.Vertex);
-  checkVertex(o[1] as api.Vertex);
+  checkVertex(o[0]);
+  checkVertex(o[1]);
 }
 
 core.int buildCounterBoundingPoly = 0;
 api.BoundingPoly buildBoundingPoly() {
-  var o = api.BoundingPoly();
+  final o = api.BoundingPoly();
   buildCounterBoundingPoly++;
   if (buildCounterBoundingPoly < 3) {
     o.normalizedVertices = buildUnnamed4210();
@@ -760,7 +757,7 @@ void checkBoundingPoly(api.BoundingPoly o) {
 
 core.int buildCounterCancelOperationRequest = 0;
 api.CancelOperationRequest buildCancelOperationRequest() {
-  var o = api.CancelOperationRequest();
+  final o = api.CancelOperationRequest();
   buildCounterCancelOperationRequest++;
   if (buildCounterCancelOperationRequest < 3) {}
   buildCounterCancelOperationRequest--;
@@ -775,7 +772,7 @@ void checkCancelOperationRequest(api.CancelOperationRequest o) {
 
 core.int buildCounterColor = 0;
 api.Color buildColor() {
-  var o = api.Color();
+  final o = api.Color();
   buildCounterColor++;
   if (buildCounterColor < 3) {
     o.alpha = 42.0;
@@ -812,7 +809,7 @@ void checkColor(api.Color o) {
 
 core.int buildCounterColorInfo = 0;
 api.ColorInfo buildColorInfo() {
-  var o = api.ColorInfo();
+  final o = api.ColorInfo();
   buildCounterColorInfo++;
   if (buildCounterColorInfo < 3) {
     o.color = buildColor();
@@ -826,7 +823,7 @@ api.ColorInfo buildColorInfo() {
 void checkColorInfo(api.ColorInfo o) {
   buildCounterColorInfo++;
   if (buildCounterColorInfo < 3) {
-    checkColor(o.color! as api.Color);
+    checkColor(o.color!);
     unittest.expect(
       o.pixelFraction!,
       unittest.equals(42.0),
@@ -841,7 +838,7 @@ void checkColorInfo(api.ColorInfo o) {
 
 core.int buildCounterCropHint = 0;
 api.CropHint buildCropHint() {
-  var o = api.CropHint();
+  final o = api.CropHint();
   buildCounterCropHint++;
   if (buildCounterCropHint < 3) {
     o.boundingPoly = buildBoundingPoly();
@@ -855,7 +852,7 @@ api.CropHint buildCropHint() {
 void checkCropHint(api.CropHint o) {
   buildCounterCropHint++;
   if (buildCounterCropHint < 3) {
-    checkBoundingPoly(o.boundingPoly! as api.BoundingPoly);
+    checkBoundingPoly(o.boundingPoly!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
@@ -869,7 +866,7 @@ void checkCropHint(api.CropHint o) {
 }
 
 core.List<api.CropHint> buildUnnamed4212() {
-  var o = <api.CropHint>[];
+  final o = <api.CropHint>[];
   o.add(buildCropHint());
   o.add(buildCropHint());
   return o;
@@ -877,13 +874,13 @@ core.List<api.CropHint> buildUnnamed4212() {
 
 void checkUnnamed4212(core.List<api.CropHint> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCropHint(o[0] as api.CropHint);
-  checkCropHint(o[1] as api.CropHint);
+  checkCropHint(o[0]);
+  checkCropHint(o[1]);
 }
 
 core.int buildCounterCropHintsAnnotation = 0;
 api.CropHintsAnnotation buildCropHintsAnnotation() {
-  var o = api.CropHintsAnnotation();
+  final o = api.CropHintsAnnotation();
   buildCounterCropHintsAnnotation++;
   if (buildCounterCropHintsAnnotation < 3) {
     o.cropHints = buildUnnamed4212();
@@ -901,7 +898,7 @@ void checkCropHintsAnnotation(api.CropHintsAnnotation o) {
 }
 
 core.List<core.double> buildUnnamed4213() {
-  var o = <core.double>[];
+  final o = <core.double>[];
   o.add(42.0);
   o.add(42.0);
   return o;
@@ -921,7 +918,7 @@ void checkUnnamed4213(core.List<core.double> o) {
 
 core.int buildCounterCropHintsParams = 0;
 api.CropHintsParams buildCropHintsParams() {
-  var o = api.CropHintsParams();
+  final o = api.CropHintsParams();
   buildCounterCropHintsParams++;
   if (buildCounterCropHintsParams < 3) {
     o.aspectRatios = buildUnnamed4213();
@@ -940,7 +937,7 @@ void checkCropHintsParams(api.CropHintsParams o) {
 
 core.int buildCounterDetectedBreak = 0;
 api.DetectedBreak buildDetectedBreak() {
-  var o = api.DetectedBreak();
+  final o = api.DetectedBreak();
   buildCounterDetectedBreak++;
   if (buildCounterDetectedBreak < 3) {
     o.isPrefix = true;
@@ -964,7 +961,7 @@ void checkDetectedBreak(api.DetectedBreak o) {
 
 core.int buildCounterDetectedLanguage = 0;
 api.DetectedLanguage buildDetectedLanguage() {
-  var o = api.DetectedLanguage();
+  final o = api.DetectedLanguage();
   buildCounterDetectedLanguage++;
   if (buildCounterDetectedLanguage < 3) {
     o.confidence = 42.0;
@@ -990,7 +987,7 @@ void checkDetectedLanguage(api.DetectedLanguage o) {
 }
 
 core.List<api.ColorInfo> buildUnnamed4214() {
-  var o = <api.ColorInfo>[];
+  final o = <api.ColorInfo>[];
   o.add(buildColorInfo());
   o.add(buildColorInfo());
   return o;
@@ -998,13 +995,13 @@ core.List<api.ColorInfo> buildUnnamed4214() {
 
 void checkUnnamed4214(core.List<api.ColorInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkColorInfo(o[0] as api.ColorInfo);
-  checkColorInfo(o[1] as api.ColorInfo);
+  checkColorInfo(o[0]);
+  checkColorInfo(o[1]);
 }
 
 core.int buildCounterDominantColorsAnnotation = 0;
 api.DominantColorsAnnotation buildDominantColorsAnnotation() {
-  var o = api.DominantColorsAnnotation();
+  final o = api.DominantColorsAnnotation();
   buildCounterDominantColorsAnnotation++;
   if (buildCounterDominantColorsAnnotation < 3) {
     o.colors = buildUnnamed4214();
@@ -1023,7 +1020,7 @@ void checkDominantColorsAnnotation(api.DominantColorsAnnotation o) {
 
 core.int buildCounterEmpty = 0;
 api.Empty buildEmpty() {
-  var o = api.Empty();
+  final o = api.Empty();
   buildCounterEmpty++;
   if (buildCounterEmpty < 3) {}
   buildCounterEmpty--;
@@ -1037,7 +1034,7 @@ void checkEmpty(api.Empty o) {
 }
 
 core.List<api.LocationInfo> buildUnnamed4215() {
-  var o = <api.LocationInfo>[];
+  final o = <api.LocationInfo>[];
   o.add(buildLocationInfo());
   o.add(buildLocationInfo());
   return o;
@@ -1045,12 +1042,12 @@ core.List<api.LocationInfo> buildUnnamed4215() {
 
 void checkUnnamed4215(core.List<api.LocationInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocationInfo(o[0] as api.LocationInfo);
-  checkLocationInfo(o[1] as api.LocationInfo);
+  checkLocationInfo(o[0]);
+  checkLocationInfo(o[1]);
 }
 
 core.List<api.Property> buildUnnamed4216() {
-  var o = <api.Property>[];
+  final o = <api.Property>[];
   o.add(buildProperty());
   o.add(buildProperty());
   return o;
@@ -1058,13 +1055,13 @@ core.List<api.Property> buildUnnamed4216() {
 
 void checkUnnamed4216(core.List<api.Property> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProperty(o[0] as api.Property);
-  checkProperty(o[1] as api.Property);
+  checkProperty(o[0]);
+  checkProperty(o[1]);
 }
 
 core.int buildCounterEntityAnnotation = 0;
 api.EntityAnnotation buildEntityAnnotation() {
-  var o = api.EntityAnnotation();
+  final o = api.EntityAnnotation();
   buildCounterEntityAnnotation++;
   if (buildCounterEntityAnnotation < 3) {
     o.boundingPoly = buildBoundingPoly();
@@ -1084,7 +1081,7 @@ api.EntityAnnotation buildEntityAnnotation() {
 void checkEntityAnnotation(api.EntityAnnotation o) {
   buildCounterEntityAnnotation++;
   if (buildCounterEntityAnnotation < 3) {
-    checkBoundingPoly(o.boundingPoly! as api.BoundingPoly);
+    checkBoundingPoly(o.boundingPoly!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
@@ -1116,7 +1113,7 @@ void checkEntityAnnotation(api.EntityAnnotation o) {
 }
 
 core.List<api.Landmark> buildUnnamed4217() {
-  var o = <api.Landmark>[];
+  final o = <api.Landmark>[];
   o.add(buildLandmark());
   o.add(buildLandmark());
   return o;
@@ -1124,13 +1121,13 @@ core.List<api.Landmark> buildUnnamed4217() {
 
 void checkUnnamed4217(core.List<api.Landmark> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLandmark(o[0] as api.Landmark);
-  checkLandmark(o[1] as api.Landmark);
+  checkLandmark(o[0]);
+  checkLandmark(o[1]);
 }
 
 core.int buildCounterFaceAnnotation = 0;
 api.FaceAnnotation buildFaceAnnotation() {
-  var o = api.FaceAnnotation();
+  final o = api.FaceAnnotation();
   buildCounterFaceAnnotation++;
   if (buildCounterFaceAnnotation < 3) {
     o.angerLikelihood = 'foo';
@@ -1164,12 +1161,12 @@ void checkFaceAnnotation(api.FaceAnnotation o) {
       o.blurredLikelihood!,
       unittest.equals('foo'),
     );
-    checkBoundingPoly(o.boundingPoly! as api.BoundingPoly);
+    checkBoundingPoly(o.boundingPoly!);
     unittest.expect(
       o.detectionConfidence!,
       unittest.equals(42.0),
     );
-    checkBoundingPoly(o.fdBoundingPoly! as api.BoundingPoly);
+    checkBoundingPoly(o.fdBoundingPoly!);
     unittest.expect(
       o.headwearLikelihood!,
       unittest.equals('foo'),
@@ -1213,7 +1210,7 @@ void checkFaceAnnotation(api.FaceAnnotation o) {
 
 core.int buildCounterFeature = 0;
 api.Feature buildFeature() {
-  var o = api.Feature();
+  final o = api.Feature();
   buildCounterFeature++;
   if (buildCounterFeature < 3) {
     o.maxResults = 42;
@@ -1245,7 +1242,7 @@ void checkFeature(api.Feature o) {
 
 core.int buildCounterGcsDestination = 0;
 api.GcsDestination buildGcsDestination() {
-  var o = api.GcsDestination();
+  final o = api.GcsDestination();
   buildCounterGcsDestination++;
   if (buildCounterGcsDestination < 3) {
     o.uri = 'foo';
@@ -1267,7 +1264,7 @@ void checkGcsDestination(api.GcsDestination o) {
 
 core.int buildCounterGcsSource = 0;
 api.GcsSource buildGcsSource() {
-  var o = api.GcsSource();
+  final o = api.GcsSource();
   buildCounterGcsSource++;
   if (buildCounterGcsSource < 3) {
     o.uri = 'foo';
@@ -1289,7 +1286,7 @@ void checkGcsSource(api.GcsSource o) {
 
 core.List<api.GoogleCloudVisionV1p1beta1AnnotateImageResponse>
     buildUnnamed4218() {
-  var o = <api.GoogleCloudVisionV1p1beta1AnnotateImageResponse>[];
+  final o = <api.GoogleCloudVisionV1p1beta1AnnotateImageResponse>[];
   o.add(buildGoogleCloudVisionV1p1beta1AnnotateImageResponse());
   o.add(buildGoogleCloudVisionV1p1beta1AnnotateImageResponse());
   return o;
@@ -1298,16 +1295,14 @@ core.List<api.GoogleCloudVisionV1p1beta1AnnotateImageResponse>
 void checkUnnamed4218(
     core.List<api.GoogleCloudVisionV1p1beta1AnnotateImageResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1AnnotateImageResponse(
-      o[0] as api.GoogleCloudVisionV1p1beta1AnnotateImageResponse);
-  checkGoogleCloudVisionV1p1beta1AnnotateImageResponse(
-      o[1] as api.GoogleCloudVisionV1p1beta1AnnotateImageResponse);
+  checkGoogleCloudVisionV1p1beta1AnnotateImageResponse(o[0]);
+  checkGoogleCloudVisionV1p1beta1AnnotateImageResponse(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p1beta1AnnotateFileResponse = 0;
 api.GoogleCloudVisionV1p1beta1AnnotateFileResponse
     buildGoogleCloudVisionV1p1beta1AnnotateFileResponse() {
-  var o = api.GoogleCloudVisionV1p1beta1AnnotateFileResponse();
+  final o = api.GoogleCloudVisionV1p1beta1AnnotateFileResponse();
   buildCounterGoogleCloudVisionV1p1beta1AnnotateFileResponse++;
   if (buildCounterGoogleCloudVisionV1p1beta1AnnotateFileResponse < 3) {
     o.error = buildStatus();
@@ -1323,9 +1318,8 @@ void checkGoogleCloudVisionV1p1beta1AnnotateFileResponse(
     api.GoogleCloudVisionV1p1beta1AnnotateFileResponse o) {
   buildCounterGoogleCloudVisionV1p1beta1AnnotateFileResponse++;
   if (buildCounterGoogleCloudVisionV1p1beta1AnnotateFileResponse < 3) {
-    checkStatus(o.error! as api.Status);
-    checkGoogleCloudVisionV1p1beta1InputConfig(
-        o.inputConfig! as api.GoogleCloudVisionV1p1beta1InputConfig);
+    checkStatus(o.error!);
+    checkGoogleCloudVisionV1p1beta1InputConfig(o.inputConfig!);
     checkUnnamed4218(o.responses!);
     unittest.expect(
       o.totalPages!,
@@ -1336,7 +1330,7 @@ void checkGoogleCloudVisionV1p1beta1AnnotateFileResponse(
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1FaceAnnotation> buildUnnamed4219() {
-  var o = <api.GoogleCloudVisionV1p1beta1FaceAnnotation>[];
+  final o = <api.GoogleCloudVisionV1p1beta1FaceAnnotation>[];
   o.add(buildGoogleCloudVisionV1p1beta1FaceAnnotation());
   o.add(buildGoogleCloudVisionV1p1beta1FaceAnnotation());
   return o;
@@ -1345,14 +1339,12 @@ core.List<api.GoogleCloudVisionV1p1beta1FaceAnnotation> buildUnnamed4219() {
 void checkUnnamed4219(
     core.List<api.GoogleCloudVisionV1p1beta1FaceAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1FaceAnnotation(
-      o[0] as api.GoogleCloudVisionV1p1beta1FaceAnnotation);
-  checkGoogleCloudVisionV1p1beta1FaceAnnotation(
-      o[1] as api.GoogleCloudVisionV1p1beta1FaceAnnotation);
+  checkGoogleCloudVisionV1p1beta1FaceAnnotation(o[0]);
+  checkGoogleCloudVisionV1p1beta1FaceAnnotation(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1EntityAnnotation> buildUnnamed4220() {
-  var o = <api.GoogleCloudVisionV1p1beta1EntityAnnotation>[];
+  final o = <api.GoogleCloudVisionV1p1beta1EntityAnnotation>[];
   o.add(buildGoogleCloudVisionV1p1beta1EntityAnnotation());
   o.add(buildGoogleCloudVisionV1p1beta1EntityAnnotation());
   return o;
@@ -1361,14 +1353,12 @@ core.List<api.GoogleCloudVisionV1p1beta1EntityAnnotation> buildUnnamed4220() {
 void checkUnnamed4220(
     core.List<api.GoogleCloudVisionV1p1beta1EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1EntityAnnotation(
-      o[0] as api.GoogleCloudVisionV1p1beta1EntityAnnotation);
-  checkGoogleCloudVisionV1p1beta1EntityAnnotation(
-      o[1] as api.GoogleCloudVisionV1p1beta1EntityAnnotation);
+  checkGoogleCloudVisionV1p1beta1EntityAnnotation(o[0]);
+  checkGoogleCloudVisionV1p1beta1EntityAnnotation(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1EntityAnnotation> buildUnnamed4221() {
-  var o = <api.GoogleCloudVisionV1p1beta1EntityAnnotation>[];
+  final o = <api.GoogleCloudVisionV1p1beta1EntityAnnotation>[];
   o.add(buildGoogleCloudVisionV1p1beta1EntityAnnotation());
   o.add(buildGoogleCloudVisionV1p1beta1EntityAnnotation());
   return o;
@@ -1377,15 +1367,13 @@ core.List<api.GoogleCloudVisionV1p1beta1EntityAnnotation> buildUnnamed4221() {
 void checkUnnamed4221(
     core.List<api.GoogleCloudVisionV1p1beta1EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1EntityAnnotation(
-      o[0] as api.GoogleCloudVisionV1p1beta1EntityAnnotation);
-  checkGoogleCloudVisionV1p1beta1EntityAnnotation(
-      o[1] as api.GoogleCloudVisionV1p1beta1EntityAnnotation);
+  checkGoogleCloudVisionV1p1beta1EntityAnnotation(o[0]);
+  checkGoogleCloudVisionV1p1beta1EntityAnnotation(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation>
     buildUnnamed4222() {
-  var o = <api.GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation>[];
+  final o = <api.GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation>[];
   o.add(buildGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation());
   o.add(buildGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation());
   return o;
@@ -1394,14 +1382,12 @@ core.List<api.GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation>
 void checkUnnamed4222(
     core.List<api.GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation(
-      o[0] as api.GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation);
-  checkGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation(
-      o[1] as api.GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation);
+  checkGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation(o[0]);
+  checkGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1EntityAnnotation> buildUnnamed4223() {
-  var o = <api.GoogleCloudVisionV1p1beta1EntityAnnotation>[];
+  final o = <api.GoogleCloudVisionV1p1beta1EntityAnnotation>[];
   o.add(buildGoogleCloudVisionV1p1beta1EntityAnnotation());
   o.add(buildGoogleCloudVisionV1p1beta1EntityAnnotation());
   return o;
@@ -1410,14 +1396,12 @@ core.List<api.GoogleCloudVisionV1p1beta1EntityAnnotation> buildUnnamed4223() {
 void checkUnnamed4223(
     core.List<api.GoogleCloudVisionV1p1beta1EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1EntityAnnotation(
-      o[0] as api.GoogleCloudVisionV1p1beta1EntityAnnotation);
-  checkGoogleCloudVisionV1p1beta1EntityAnnotation(
-      o[1] as api.GoogleCloudVisionV1p1beta1EntityAnnotation);
+  checkGoogleCloudVisionV1p1beta1EntityAnnotation(o[0]);
+  checkGoogleCloudVisionV1p1beta1EntityAnnotation(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1EntityAnnotation> buildUnnamed4224() {
-  var o = <api.GoogleCloudVisionV1p1beta1EntityAnnotation>[];
+  final o = <api.GoogleCloudVisionV1p1beta1EntityAnnotation>[];
   o.add(buildGoogleCloudVisionV1p1beta1EntityAnnotation());
   o.add(buildGoogleCloudVisionV1p1beta1EntityAnnotation());
   return o;
@@ -1426,16 +1410,14 @@ core.List<api.GoogleCloudVisionV1p1beta1EntityAnnotation> buildUnnamed4224() {
 void checkUnnamed4224(
     core.List<api.GoogleCloudVisionV1p1beta1EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1EntityAnnotation(
-      o[0] as api.GoogleCloudVisionV1p1beta1EntityAnnotation);
-  checkGoogleCloudVisionV1p1beta1EntityAnnotation(
-      o[1] as api.GoogleCloudVisionV1p1beta1EntityAnnotation);
+  checkGoogleCloudVisionV1p1beta1EntityAnnotation(o[0]);
+  checkGoogleCloudVisionV1p1beta1EntityAnnotation(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p1beta1AnnotateImageResponse = 0;
 api.GoogleCloudVisionV1p1beta1AnnotateImageResponse
     buildGoogleCloudVisionV1p1beta1AnnotateImageResponse() {
-  var o = api.GoogleCloudVisionV1p1beta1AnnotateImageResponse();
+  final o = api.GoogleCloudVisionV1p1beta1AnnotateImageResponse();
   buildCounterGoogleCloudVisionV1p1beta1AnnotateImageResponse++;
   if (buildCounterGoogleCloudVisionV1p1beta1AnnotateImageResponse < 3) {
     o.context = buildGoogleCloudVisionV1p1beta1ImageAnnotationContext();
@@ -1465,27 +1447,23 @@ void checkGoogleCloudVisionV1p1beta1AnnotateImageResponse(
     api.GoogleCloudVisionV1p1beta1AnnotateImageResponse o) {
   buildCounterGoogleCloudVisionV1p1beta1AnnotateImageResponse++;
   if (buildCounterGoogleCloudVisionV1p1beta1AnnotateImageResponse < 3) {
-    checkGoogleCloudVisionV1p1beta1ImageAnnotationContext(
-        o.context! as api.GoogleCloudVisionV1p1beta1ImageAnnotationContext);
-    checkGoogleCloudVisionV1p1beta1CropHintsAnnotation(o.cropHintsAnnotation!
-        as api.GoogleCloudVisionV1p1beta1CropHintsAnnotation);
-    checkStatus(o.error! as api.Status);
+    checkGoogleCloudVisionV1p1beta1ImageAnnotationContext(o.context!);
+    checkGoogleCloudVisionV1p1beta1CropHintsAnnotation(o.cropHintsAnnotation!);
+    checkStatus(o.error!);
     checkUnnamed4219(o.faceAnnotations!);
-    checkGoogleCloudVisionV1p1beta1TextAnnotation(
-        o.fullTextAnnotation! as api.GoogleCloudVisionV1p1beta1TextAnnotation);
-    checkGoogleCloudVisionV1p1beta1ImageProperties(o.imagePropertiesAnnotation!
-        as api.GoogleCloudVisionV1p1beta1ImageProperties);
+    checkGoogleCloudVisionV1p1beta1TextAnnotation(o.fullTextAnnotation!);
+    checkGoogleCloudVisionV1p1beta1ImageProperties(
+        o.imagePropertiesAnnotation!);
     checkUnnamed4220(o.labelAnnotations!);
     checkUnnamed4221(o.landmarkAnnotations!);
     checkUnnamed4222(o.localizedObjectAnnotations!);
     checkUnnamed4223(o.logoAnnotations!);
-    checkGoogleCloudVisionV1p1beta1ProductSearchResults(o.productSearchResults!
-        as api.GoogleCloudVisionV1p1beta1ProductSearchResults);
-    checkGoogleCloudVisionV1p1beta1SafeSearchAnnotation(o.safeSearchAnnotation!
-        as api.GoogleCloudVisionV1p1beta1SafeSearchAnnotation);
+    checkGoogleCloudVisionV1p1beta1ProductSearchResults(
+        o.productSearchResults!);
+    checkGoogleCloudVisionV1p1beta1SafeSearchAnnotation(
+        o.safeSearchAnnotation!);
     checkUnnamed4224(o.textAnnotations!);
-    checkGoogleCloudVisionV1p1beta1WebDetection(
-        o.webDetection! as api.GoogleCloudVisionV1p1beta1WebDetection);
+    checkGoogleCloudVisionV1p1beta1WebDetection(o.webDetection!);
   }
   buildCounterGoogleCloudVisionV1p1beta1AnnotateImageResponse--;
 }
@@ -1493,7 +1471,7 @@ void checkGoogleCloudVisionV1p1beta1AnnotateImageResponse(
 core.int buildCounterGoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse = 0;
 api.GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse
     buildGoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse() {
-  var o = api.GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse();
+  final o = api.GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse();
   buildCounterGoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse++;
   if (buildCounterGoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse < 3) {
     o.outputConfig = buildGoogleCloudVisionV1p1beta1OutputConfig();
@@ -1506,15 +1484,14 @@ void checkGoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse(
     api.GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse o) {
   buildCounterGoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse++;
   if (buildCounterGoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse < 3) {
-    checkGoogleCloudVisionV1p1beta1OutputConfig(
-        o.outputConfig! as api.GoogleCloudVisionV1p1beta1OutputConfig);
+    checkGoogleCloudVisionV1p1beta1OutputConfig(o.outputConfig!);
   }
   buildCounterGoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse--;
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse>
     buildUnnamed4225() {
-  var o = <api.GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse>[];
+  final o = <api.GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse>[];
   o.add(buildGoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse());
   o.add(buildGoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse());
   return o;
@@ -1523,17 +1500,15 @@ core.List<api.GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse>
 void checkUnnamed4225(
     core.List<api.GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse(
-      o[0] as api.GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse);
-  checkGoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse(
-      o[1] as api.GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse);
+  checkGoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse(o[0]);
+  checkGoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse =
     0;
 api.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse
     buildGoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse() {
-  var o = api.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse();
+  final o = api.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse();
   buildCounterGoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse++;
   if (buildCounterGoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse <
       3) {
@@ -1554,7 +1529,7 @@ void checkGoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse(
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1Paragraph> buildUnnamed4226() {
-  var o = <api.GoogleCloudVisionV1p1beta1Paragraph>[];
+  final o = <api.GoogleCloudVisionV1p1beta1Paragraph>[];
   o.add(buildGoogleCloudVisionV1p1beta1Paragraph());
   o.add(buildGoogleCloudVisionV1p1beta1Paragraph());
   return o;
@@ -1562,15 +1537,13 @@ core.List<api.GoogleCloudVisionV1p1beta1Paragraph> buildUnnamed4226() {
 
 void checkUnnamed4226(core.List<api.GoogleCloudVisionV1p1beta1Paragraph> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1Paragraph(
-      o[0] as api.GoogleCloudVisionV1p1beta1Paragraph);
-  checkGoogleCloudVisionV1p1beta1Paragraph(
-      o[1] as api.GoogleCloudVisionV1p1beta1Paragraph);
+  checkGoogleCloudVisionV1p1beta1Paragraph(o[0]);
+  checkGoogleCloudVisionV1p1beta1Paragraph(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p1beta1Block = 0;
 api.GoogleCloudVisionV1p1beta1Block buildGoogleCloudVisionV1p1beta1Block() {
-  var o = api.GoogleCloudVisionV1p1beta1Block();
+  final o = api.GoogleCloudVisionV1p1beta1Block();
   buildCounterGoogleCloudVisionV1p1beta1Block++;
   if (buildCounterGoogleCloudVisionV1p1beta1Block < 3) {
     o.blockType = 'foo';
@@ -1591,21 +1564,19 @@ void checkGoogleCloudVisionV1p1beta1Block(
       o.blockType!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudVisionV1p1beta1BoundingPoly(
-        o.boundingBox! as api.GoogleCloudVisionV1p1beta1BoundingPoly);
+    checkGoogleCloudVisionV1p1beta1BoundingPoly(o.boundingBox!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
     );
     checkUnnamed4226(o.paragraphs!);
-    checkGoogleCloudVisionV1p1beta1TextAnnotationTextProperty(o.property!
-        as api.GoogleCloudVisionV1p1beta1TextAnnotationTextProperty);
+    checkGoogleCloudVisionV1p1beta1TextAnnotationTextProperty(o.property!);
   }
   buildCounterGoogleCloudVisionV1p1beta1Block--;
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1NormalizedVertex> buildUnnamed4227() {
-  var o = <api.GoogleCloudVisionV1p1beta1NormalizedVertex>[];
+  final o = <api.GoogleCloudVisionV1p1beta1NormalizedVertex>[];
   o.add(buildGoogleCloudVisionV1p1beta1NormalizedVertex());
   o.add(buildGoogleCloudVisionV1p1beta1NormalizedVertex());
   return o;
@@ -1614,14 +1585,12 @@ core.List<api.GoogleCloudVisionV1p1beta1NormalizedVertex> buildUnnamed4227() {
 void checkUnnamed4227(
     core.List<api.GoogleCloudVisionV1p1beta1NormalizedVertex> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1NormalizedVertex(
-      o[0] as api.GoogleCloudVisionV1p1beta1NormalizedVertex);
-  checkGoogleCloudVisionV1p1beta1NormalizedVertex(
-      o[1] as api.GoogleCloudVisionV1p1beta1NormalizedVertex);
+  checkGoogleCloudVisionV1p1beta1NormalizedVertex(o[0]);
+  checkGoogleCloudVisionV1p1beta1NormalizedVertex(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1Vertex> buildUnnamed4228() {
-  var o = <api.GoogleCloudVisionV1p1beta1Vertex>[];
+  final o = <api.GoogleCloudVisionV1p1beta1Vertex>[];
   o.add(buildGoogleCloudVisionV1p1beta1Vertex());
   o.add(buildGoogleCloudVisionV1p1beta1Vertex());
   return o;
@@ -1629,16 +1598,14 @@ core.List<api.GoogleCloudVisionV1p1beta1Vertex> buildUnnamed4228() {
 
 void checkUnnamed4228(core.List<api.GoogleCloudVisionV1p1beta1Vertex> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1Vertex(
-      o[0] as api.GoogleCloudVisionV1p1beta1Vertex);
-  checkGoogleCloudVisionV1p1beta1Vertex(
-      o[1] as api.GoogleCloudVisionV1p1beta1Vertex);
+  checkGoogleCloudVisionV1p1beta1Vertex(o[0]);
+  checkGoogleCloudVisionV1p1beta1Vertex(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p1beta1BoundingPoly = 0;
 api.GoogleCloudVisionV1p1beta1BoundingPoly
     buildGoogleCloudVisionV1p1beta1BoundingPoly() {
-  var o = api.GoogleCloudVisionV1p1beta1BoundingPoly();
+  final o = api.GoogleCloudVisionV1p1beta1BoundingPoly();
   buildCounterGoogleCloudVisionV1p1beta1BoundingPoly++;
   if (buildCounterGoogleCloudVisionV1p1beta1BoundingPoly < 3) {
     o.normalizedVertices = buildUnnamed4227();
@@ -1661,7 +1628,7 @@ void checkGoogleCloudVisionV1p1beta1BoundingPoly(
 core.int buildCounterGoogleCloudVisionV1p1beta1ColorInfo = 0;
 api.GoogleCloudVisionV1p1beta1ColorInfo
     buildGoogleCloudVisionV1p1beta1ColorInfo() {
-  var o = api.GoogleCloudVisionV1p1beta1ColorInfo();
+  final o = api.GoogleCloudVisionV1p1beta1ColorInfo();
   buildCounterGoogleCloudVisionV1p1beta1ColorInfo++;
   if (buildCounterGoogleCloudVisionV1p1beta1ColorInfo < 3) {
     o.color = buildColor();
@@ -1676,7 +1643,7 @@ void checkGoogleCloudVisionV1p1beta1ColorInfo(
     api.GoogleCloudVisionV1p1beta1ColorInfo o) {
   buildCounterGoogleCloudVisionV1p1beta1ColorInfo++;
   if (buildCounterGoogleCloudVisionV1p1beta1ColorInfo < 3) {
-    checkColor(o.color! as api.Color);
+    checkColor(o.color!);
     unittest.expect(
       o.pixelFraction!,
       unittest.equals(42.0),
@@ -1692,7 +1659,7 @@ void checkGoogleCloudVisionV1p1beta1ColorInfo(
 core.int buildCounterGoogleCloudVisionV1p1beta1CropHint = 0;
 api.GoogleCloudVisionV1p1beta1CropHint
     buildGoogleCloudVisionV1p1beta1CropHint() {
-  var o = api.GoogleCloudVisionV1p1beta1CropHint();
+  final o = api.GoogleCloudVisionV1p1beta1CropHint();
   buildCounterGoogleCloudVisionV1p1beta1CropHint++;
   if (buildCounterGoogleCloudVisionV1p1beta1CropHint < 3) {
     o.boundingPoly = buildGoogleCloudVisionV1p1beta1BoundingPoly();
@@ -1707,8 +1674,7 @@ void checkGoogleCloudVisionV1p1beta1CropHint(
     api.GoogleCloudVisionV1p1beta1CropHint o) {
   buildCounterGoogleCloudVisionV1p1beta1CropHint++;
   if (buildCounterGoogleCloudVisionV1p1beta1CropHint < 3) {
-    checkGoogleCloudVisionV1p1beta1BoundingPoly(
-        o.boundingPoly! as api.GoogleCloudVisionV1p1beta1BoundingPoly);
+    checkGoogleCloudVisionV1p1beta1BoundingPoly(o.boundingPoly!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
@@ -1722,7 +1688,7 @@ void checkGoogleCloudVisionV1p1beta1CropHint(
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1CropHint> buildUnnamed4229() {
-  var o = <api.GoogleCloudVisionV1p1beta1CropHint>[];
+  final o = <api.GoogleCloudVisionV1p1beta1CropHint>[];
   o.add(buildGoogleCloudVisionV1p1beta1CropHint());
   o.add(buildGoogleCloudVisionV1p1beta1CropHint());
   return o;
@@ -1730,16 +1696,14 @@ core.List<api.GoogleCloudVisionV1p1beta1CropHint> buildUnnamed4229() {
 
 void checkUnnamed4229(core.List<api.GoogleCloudVisionV1p1beta1CropHint> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1CropHint(
-      o[0] as api.GoogleCloudVisionV1p1beta1CropHint);
-  checkGoogleCloudVisionV1p1beta1CropHint(
-      o[1] as api.GoogleCloudVisionV1p1beta1CropHint);
+  checkGoogleCloudVisionV1p1beta1CropHint(o[0]);
+  checkGoogleCloudVisionV1p1beta1CropHint(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p1beta1CropHintsAnnotation = 0;
 api.GoogleCloudVisionV1p1beta1CropHintsAnnotation
     buildGoogleCloudVisionV1p1beta1CropHintsAnnotation() {
-  var o = api.GoogleCloudVisionV1p1beta1CropHintsAnnotation();
+  final o = api.GoogleCloudVisionV1p1beta1CropHintsAnnotation();
   buildCounterGoogleCloudVisionV1p1beta1CropHintsAnnotation++;
   if (buildCounterGoogleCloudVisionV1p1beta1CropHintsAnnotation < 3) {
     o.cropHints = buildUnnamed4229();
@@ -1758,7 +1722,7 @@ void checkGoogleCloudVisionV1p1beta1CropHintsAnnotation(
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1ColorInfo> buildUnnamed4230() {
-  var o = <api.GoogleCloudVisionV1p1beta1ColorInfo>[];
+  final o = <api.GoogleCloudVisionV1p1beta1ColorInfo>[];
   o.add(buildGoogleCloudVisionV1p1beta1ColorInfo());
   o.add(buildGoogleCloudVisionV1p1beta1ColorInfo());
   return o;
@@ -1766,16 +1730,14 @@ core.List<api.GoogleCloudVisionV1p1beta1ColorInfo> buildUnnamed4230() {
 
 void checkUnnamed4230(core.List<api.GoogleCloudVisionV1p1beta1ColorInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1ColorInfo(
-      o[0] as api.GoogleCloudVisionV1p1beta1ColorInfo);
-  checkGoogleCloudVisionV1p1beta1ColorInfo(
-      o[1] as api.GoogleCloudVisionV1p1beta1ColorInfo);
+  checkGoogleCloudVisionV1p1beta1ColorInfo(o[0]);
+  checkGoogleCloudVisionV1p1beta1ColorInfo(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p1beta1DominantColorsAnnotation = 0;
 api.GoogleCloudVisionV1p1beta1DominantColorsAnnotation
     buildGoogleCloudVisionV1p1beta1DominantColorsAnnotation() {
-  var o = api.GoogleCloudVisionV1p1beta1DominantColorsAnnotation();
+  final o = api.GoogleCloudVisionV1p1beta1DominantColorsAnnotation();
   buildCounterGoogleCloudVisionV1p1beta1DominantColorsAnnotation++;
   if (buildCounterGoogleCloudVisionV1p1beta1DominantColorsAnnotation < 3) {
     o.colors = buildUnnamed4230();
@@ -1794,7 +1756,7 @@ void checkGoogleCloudVisionV1p1beta1DominantColorsAnnotation(
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1LocationInfo> buildUnnamed4231() {
-  var o = <api.GoogleCloudVisionV1p1beta1LocationInfo>[];
+  final o = <api.GoogleCloudVisionV1p1beta1LocationInfo>[];
   o.add(buildGoogleCloudVisionV1p1beta1LocationInfo());
   o.add(buildGoogleCloudVisionV1p1beta1LocationInfo());
   return o;
@@ -1802,14 +1764,12 @@ core.List<api.GoogleCloudVisionV1p1beta1LocationInfo> buildUnnamed4231() {
 
 void checkUnnamed4231(core.List<api.GoogleCloudVisionV1p1beta1LocationInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1LocationInfo(
-      o[0] as api.GoogleCloudVisionV1p1beta1LocationInfo);
-  checkGoogleCloudVisionV1p1beta1LocationInfo(
-      o[1] as api.GoogleCloudVisionV1p1beta1LocationInfo);
+  checkGoogleCloudVisionV1p1beta1LocationInfo(o[0]);
+  checkGoogleCloudVisionV1p1beta1LocationInfo(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1Property> buildUnnamed4232() {
-  var o = <api.GoogleCloudVisionV1p1beta1Property>[];
+  final o = <api.GoogleCloudVisionV1p1beta1Property>[];
   o.add(buildGoogleCloudVisionV1p1beta1Property());
   o.add(buildGoogleCloudVisionV1p1beta1Property());
   return o;
@@ -1817,16 +1777,14 @@ core.List<api.GoogleCloudVisionV1p1beta1Property> buildUnnamed4232() {
 
 void checkUnnamed4232(core.List<api.GoogleCloudVisionV1p1beta1Property> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1Property(
-      o[0] as api.GoogleCloudVisionV1p1beta1Property);
-  checkGoogleCloudVisionV1p1beta1Property(
-      o[1] as api.GoogleCloudVisionV1p1beta1Property);
+  checkGoogleCloudVisionV1p1beta1Property(o[0]);
+  checkGoogleCloudVisionV1p1beta1Property(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p1beta1EntityAnnotation = 0;
 api.GoogleCloudVisionV1p1beta1EntityAnnotation
     buildGoogleCloudVisionV1p1beta1EntityAnnotation() {
-  var o = api.GoogleCloudVisionV1p1beta1EntityAnnotation();
+  final o = api.GoogleCloudVisionV1p1beta1EntityAnnotation();
   buildCounterGoogleCloudVisionV1p1beta1EntityAnnotation++;
   if (buildCounterGoogleCloudVisionV1p1beta1EntityAnnotation < 3) {
     o.boundingPoly = buildGoogleCloudVisionV1p1beta1BoundingPoly();
@@ -1847,8 +1805,7 @@ void checkGoogleCloudVisionV1p1beta1EntityAnnotation(
     api.GoogleCloudVisionV1p1beta1EntityAnnotation o) {
   buildCounterGoogleCloudVisionV1p1beta1EntityAnnotation++;
   if (buildCounterGoogleCloudVisionV1p1beta1EntityAnnotation < 3) {
-    checkGoogleCloudVisionV1p1beta1BoundingPoly(
-        o.boundingPoly! as api.GoogleCloudVisionV1p1beta1BoundingPoly);
+    checkGoogleCloudVisionV1p1beta1BoundingPoly(o.boundingPoly!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
@@ -1881,7 +1838,7 @@ void checkGoogleCloudVisionV1p1beta1EntityAnnotation(
 
 core.List<api.GoogleCloudVisionV1p1beta1FaceAnnotationLandmark>
     buildUnnamed4233() {
-  var o = <api.GoogleCloudVisionV1p1beta1FaceAnnotationLandmark>[];
+  final o = <api.GoogleCloudVisionV1p1beta1FaceAnnotationLandmark>[];
   o.add(buildGoogleCloudVisionV1p1beta1FaceAnnotationLandmark());
   o.add(buildGoogleCloudVisionV1p1beta1FaceAnnotationLandmark());
   return o;
@@ -1890,16 +1847,14 @@ core.List<api.GoogleCloudVisionV1p1beta1FaceAnnotationLandmark>
 void checkUnnamed4233(
     core.List<api.GoogleCloudVisionV1p1beta1FaceAnnotationLandmark> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1FaceAnnotationLandmark(
-      o[0] as api.GoogleCloudVisionV1p1beta1FaceAnnotationLandmark);
-  checkGoogleCloudVisionV1p1beta1FaceAnnotationLandmark(
-      o[1] as api.GoogleCloudVisionV1p1beta1FaceAnnotationLandmark);
+  checkGoogleCloudVisionV1p1beta1FaceAnnotationLandmark(o[0]);
+  checkGoogleCloudVisionV1p1beta1FaceAnnotationLandmark(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p1beta1FaceAnnotation = 0;
 api.GoogleCloudVisionV1p1beta1FaceAnnotation
     buildGoogleCloudVisionV1p1beta1FaceAnnotation() {
-  var o = api.GoogleCloudVisionV1p1beta1FaceAnnotation();
+  final o = api.GoogleCloudVisionV1p1beta1FaceAnnotation();
   buildCounterGoogleCloudVisionV1p1beta1FaceAnnotation++;
   if (buildCounterGoogleCloudVisionV1p1beta1FaceAnnotation < 3) {
     o.angerLikelihood = 'foo';
@@ -1934,14 +1889,12 @@ void checkGoogleCloudVisionV1p1beta1FaceAnnotation(
       o.blurredLikelihood!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudVisionV1p1beta1BoundingPoly(
-        o.boundingPoly! as api.GoogleCloudVisionV1p1beta1BoundingPoly);
+    checkGoogleCloudVisionV1p1beta1BoundingPoly(o.boundingPoly!);
     unittest.expect(
       o.detectionConfidence!,
       unittest.equals(42.0),
     );
-    checkGoogleCloudVisionV1p1beta1BoundingPoly(
-        o.fdBoundingPoly! as api.GoogleCloudVisionV1p1beta1BoundingPoly);
+    checkGoogleCloudVisionV1p1beta1BoundingPoly(o.fdBoundingPoly!);
     unittest.expect(
       o.headwearLikelihood!,
       unittest.equals('foo'),
@@ -1986,7 +1939,7 @@ void checkGoogleCloudVisionV1p1beta1FaceAnnotation(
 core.int buildCounterGoogleCloudVisionV1p1beta1FaceAnnotationLandmark = 0;
 api.GoogleCloudVisionV1p1beta1FaceAnnotationLandmark
     buildGoogleCloudVisionV1p1beta1FaceAnnotationLandmark() {
-  var o = api.GoogleCloudVisionV1p1beta1FaceAnnotationLandmark();
+  final o = api.GoogleCloudVisionV1p1beta1FaceAnnotationLandmark();
   buildCounterGoogleCloudVisionV1p1beta1FaceAnnotationLandmark++;
   if (buildCounterGoogleCloudVisionV1p1beta1FaceAnnotationLandmark < 3) {
     o.position = buildGoogleCloudVisionV1p1beta1Position();
@@ -2000,8 +1953,7 @@ void checkGoogleCloudVisionV1p1beta1FaceAnnotationLandmark(
     api.GoogleCloudVisionV1p1beta1FaceAnnotationLandmark o) {
   buildCounterGoogleCloudVisionV1p1beta1FaceAnnotationLandmark++;
   if (buildCounterGoogleCloudVisionV1p1beta1FaceAnnotationLandmark < 3) {
-    checkGoogleCloudVisionV1p1beta1Position(
-        o.position! as api.GoogleCloudVisionV1p1beta1Position);
+    checkGoogleCloudVisionV1p1beta1Position(o.position!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -2013,7 +1965,7 @@ void checkGoogleCloudVisionV1p1beta1FaceAnnotationLandmark(
 core.int buildCounterGoogleCloudVisionV1p1beta1GcsDestination = 0;
 api.GoogleCloudVisionV1p1beta1GcsDestination
     buildGoogleCloudVisionV1p1beta1GcsDestination() {
-  var o = api.GoogleCloudVisionV1p1beta1GcsDestination();
+  final o = api.GoogleCloudVisionV1p1beta1GcsDestination();
   buildCounterGoogleCloudVisionV1p1beta1GcsDestination++;
   if (buildCounterGoogleCloudVisionV1p1beta1GcsDestination < 3) {
     o.uri = 'foo';
@@ -2037,7 +1989,7 @@ void checkGoogleCloudVisionV1p1beta1GcsDestination(
 core.int buildCounterGoogleCloudVisionV1p1beta1GcsSource = 0;
 api.GoogleCloudVisionV1p1beta1GcsSource
     buildGoogleCloudVisionV1p1beta1GcsSource() {
-  var o = api.GoogleCloudVisionV1p1beta1GcsSource();
+  final o = api.GoogleCloudVisionV1p1beta1GcsSource();
   buildCounterGoogleCloudVisionV1p1beta1GcsSource++;
   if (buildCounterGoogleCloudVisionV1p1beta1GcsSource < 3) {
     o.uri = 'foo';
@@ -2061,7 +2013,7 @@ void checkGoogleCloudVisionV1p1beta1GcsSource(
 core.int buildCounterGoogleCloudVisionV1p1beta1ImageAnnotationContext = 0;
 api.GoogleCloudVisionV1p1beta1ImageAnnotationContext
     buildGoogleCloudVisionV1p1beta1ImageAnnotationContext() {
-  var o = api.GoogleCloudVisionV1p1beta1ImageAnnotationContext();
+  final o = api.GoogleCloudVisionV1p1beta1ImageAnnotationContext();
   buildCounterGoogleCloudVisionV1p1beta1ImageAnnotationContext++;
   if (buildCounterGoogleCloudVisionV1p1beta1ImageAnnotationContext < 3) {
     o.pageNumber = 42;
@@ -2090,7 +2042,7 @@ void checkGoogleCloudVisionV1p1beta1ImageAnnotationContext(
 core.int buildCounterGoogleCloudVisionV1p1beta1ImageProperties = 0;
 api.GoogleCloudVisionV1p1beta1ImageProperties
     buildGoogleCloudVisionV1p1beta1ImageProperties() {
-  var o = api.GoogleCloudVisionV1p1beta1ImageProperties();
+  final o = api.GoogleCloudVisionV1p1beta1ImageProperties();
   buildCounterGoogleCloudVisionV1p1beta1ImageProperties++;
   if (buildCounterGoogleCloudVisionV1p1beta1ImageProperties < 3) {
     o.dominantColors =
@@ -2104,8 +2056,7 @@ void checkGoogleCloudVisionV1p1beta1ImageProperties(
     api.GoogleCloudVisionV1p1beta1ImageProperties o) {
   buildCounterGoogleCloudVisionV1p1beta1ImageProperties++;
   if (buildCounterGoogleCloudVisionV1p1beta1ImageProperties < 3) {
-    checkGoogleCloudVisionV1p1beta1DominantColorsAnnotation(o.dominantColors!
-        as api.GoogleCloudVisionV1p1beta1DominantColorsAnnotation);
+    checkGoogleCloudVisionV1p1beta1DominantColorsAnnotation(o.dominantColors!);
   }
   buildCounterGoogleCloudVisionV1p1beta1ImageProperties--;
 }
@@ -2113,7 +2064,7 @@ void checkGoogleCloudVisionV1p1beta1ImageProperties(
 core.int buildCounterGoogleCloudVisionV1p1beta1InputConfig = 0;
 api.GoogleCloudVisionV1p1beta1InputConfig
     buildGoogleCloudVisionV1p1beta1InputConfig() {
-  var o = api.GoogleCloudVisionV1p1beta1InputConfig();
+  final o = api.GoogleCloudVisionV1p1beta1InputConfig();
   buildCounterGoogleCloudVisionV1p1beta1InputConfig++;
   if (buildCounterGoogleCloudVisionV1p1beta1InputConfig < 3) {
     o.content = 'foo';
@@ -2132,8 +2083,7 @@ void checkGoogleCloudVisionV1p1beta1InputConfig(
       o.content!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudVisionV1p1beta1GcsSource(
-        o.gcsSource! as api.GoogleCloudVisionV1p1beta1GcsSource);
+    checkGoogleCloudVisionV1p1beta1GcsSource(o.gcsSource!);
     unittest.expect(
       o.mimeType!,
       unittest.equals('foo'),
@@ -2145,7 +2095,7 @@ void checkGoogleCloudVisionV1p1beta1InputConfig(
 core.int buildCounterGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation = 0;
 api.GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation
     buildGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation() {
-  var o = api.GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation();
+  final o = api.GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation();
   buildCounterGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation++;
   if (buildCounterGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation < 3) {
     o.boundingPoly = buildGoogleCloudVisionV1p1beta1BoundingPoly();
@@ -2162,8 +2112,7 @@ void checkGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation(
     api.GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation o) {
   buildCounterGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation++;
   if (buildCounterGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation < 3) {
-    checkGoogleCloudVisionV1p1beta1BoundingPoly(
-        o.boundingPoly! as api.GoogleCloudVisionV1p1beta1BoundingPoly);
+    checkGoogleCloudVisionV1p1beta1BoundingPoly(o.boundingPoly!);
     unittest.expect(
       o.languageCode!,
       unittest.equals('foo'),
@@ -2187,7 +2136,7 @@ void checkGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation(
 core.int buildCounterGoogleCloudVisionV1p1beta1LocationInfo = 0;
 api.GoogleCloudVisionV1p1beta1LocationInfo
     buildGoogleCloudVisionV1p1beta1LocationInfo() {
-  var o = api.GoogleCloudVisionV1p1beta1LocationInfo();
+  final o = api.GoogleCloudVisionV1p1beta1LocationInfo();
   buildCounterGoogleCloudVisionV1p1beta1LocationInfo++;
   if (buildCounterGoogleCloudVisionV1p1beta1LocationInfo < 3) {
     o.latLng = buildLatLng();
@@ -2200,7 +2149,7 @@ void checkGoogleCloudVisionV1p1beta1LocationInfo(
     api.GoogleCloudVisionV1p1beta1LocationInfo o) {
   buildCounterGoogleCloudVisionV1p1beta1LocationInfo++;
   if (buildCounterGoogleCloudVisionV1p1beta1LocationInfo < 3) {
-    checkLatLng(o.latLng! as api.LatLng);
+    checkLatLng(o.latLng!);
   }
   buildCounterGoogleCloudVisionV1p1beta1LocationInfo--;
 }
@@ -2208,7 +2157,7 @@ void checkGoogleCloudVisionV1p1beta1LocationInfo(
 core.int buildCounterGoogleCloudVisionV1p1beta1NormalizedVertex = 0;
 api.GoogleCloudVisionV1p1beta1NormalizedVertex
     buildGoogleCloudVisionV1p1beta1NormalizedVertex() {
-  var o = api.GoogleCloudVisionV1p1beta1NormalizedVertex();
+  final o = api.GoogleCloudVisionV1p1beta1NormalizedVertex();
   buildCounterGoogleCloudVisionV1p1beta1NormalizedVertex++;
   if (buildCounterGoogleCloudVisionV1p1beta1NormalizedVertex < 3) {
     o.x = 42.0;
@@ -2237,7 +2186,7 @@ void checkGoogleCloudVisionV1p1beta1NormalizedVertex(
 core.int buildCounterGoogleCloudVisionV1p1beta1OperationMetadata = 0;
 api.GoogleCloudVisionV1p1beta1OperationMetadata
     buildGoogleCloudVisionV1p1beta1OperationMetadata() {
-  var o = api.GoogleCloudVisionV1p1beta1OperationMetadata();
+  final o = api.GoogleCloudVisionV1p1beta1OperationMetadata();
   buildCounterGoogleCloudVisionV1p1beta1OperationMetadata++;
   if (buildCounterGoogleCloudVisionV1p1beta1OperationMetadata < 3) {
     o.createTime = 'foo';
@@ -2271,7 +2220,7 @@ void checkGoogleCloudVisionV1p1beta1OperationMetadata(
 core.int buildCounterGoogleCloudVisionV1p1beta1OutputConfig = 0;
 api.GoogleCloudVisionV1p1beta1OutputConfig
     buildGoogleCloudVisionV1p1beta1OutputConfig() {
-  var o = api.GoogleCloudVisionV1p1beta1OutputConfig();
+  final o = api.GoogleCloudVisionV1p1beta1OutputConfig();
   buildCounterGoogleCloudVisionV1p1beta1OutputConfig++;
   if (buildCounterGoogleCloudVisionV1p1beta1OutputConfig < 3) {
     o.batchSize = 42;
@@ -2289,14 +2238,13 @@ void checkGoogleCloudVisionV1p1beta1OutputConfig(
       o.batchSize!,
       unittest.equals(42),
     );
-    checkGoogleCloudVisionV1p1beta1GcsDestination(
-        o.gcsDestination! as api.GoogleCloudVisionV1p1beta1GcsDestination);
+    checkGoogleCloudVisionV1p1beta1GcsDestination(o.gcsDestination!);
   }
   buildCounterGoogleCloudVisionV1p1beta1OutputConfig--;
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1Block> buildUnnamed4234() {
-  var o = <api.GoogleCloudVisionV1p1beta1Block>[];
+  final o = <api.GoogleCloudVisionV1p1beta1Block>[];
   o.add(buildGoogleCloudVisionV1p1beta1Block());
   o.add(buildGoogleCloudVisionV1p1beta1Block());
   return o;
@@ -2304,15 +2252,13 @@ core.List<api.GoogleCloudVisionV1p1beta1Block> buildUnnamed4234() {
 
 void checkUnnamed4234(core.List<api.GoogleCloudVisionV1p1beta1Block> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1Block(
-      o[0] as api.GoogleCloudVisionV1p1beta1Block);
-  checkGoogleCloudVisionV1p1beta1Block(
-      o[1] as api.GoogleCloudVisionV1p1beta1Block);
+  checkGoogleCloudVisionV1p1beta1Block(o[0]);
+  checkGoogleCloudVisionV1p1beta1Block(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p1beta1Page = 0;
 api.GoogleCloudVisionV1p1beta1Page buildGoogleCloudVisionV1p1beta1Page() {
-  var o = api.GoogleCloudVisionV1p1beta1Page();
+  final o = api.GoogleCloudVisionV1p1beta1Page();
   buildCounterGoogleCloudVisionV1p1beta1Page++;
   if (buildCounterGoogleCloudVisionV1p1beta1Page < 3) {
     o.blocks = buildUnnamed4234();
@@ -2337,8 +2283,7 @@ void checkGoogleCloudVisionV1p1beta1Page(api.GoogleCloudVisionV1p1beta1Page o) {
       o.height!,
       unittest.equals(42),
     );
-    checkGoogleCloudVisionV1p1beta1TextAnnotationTextProperty(o.property!
-        as api.GoogleCloudVisionV1p1beta1TextAnnotationTextProperty);
+    checkGoogleCloudVisionV1p1beta1TextAnnotationTextProperty(o.property!);
     unittest.expect(
       o.width!,
       unittest.equals(42),
@@ -2348,7 +2293,7 @@ void checkGoogleCloudVisionV1p1beta1Page(api.GoogleCloudVisionV1p1beta1Page o) {
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1Word> buildUnnamed4235() {
-  var o = <api.GoogleCloudVisionV1p1beta1Word>[];
+  final o = <api.GoogleCloudVisionV1p1beta1Word>[];
   o.add(buildGoogleCloudVisionV1p1beta1Word());
   o.add(buildGoogleCloudVisionV1p1beta1Word());
   return o;
@@ -2356,16 +2301,14 @@ core.List<api.GoogleCloudVisionV1p1beta1Word> buildUnnamed4235() {
 
 void checkUnnamed4235(core.List<api.GoogleCloudVisionV1p1beta1Word> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1Word(
-      o[0] as api.GoogleCloudVisionV1p1beta1Word);
-  checkGoogleCloudVisionV1p1beta1Word(
-      o[1] as api.GoogleCloudVisionV1p1beta1Word);
+  checkGoogleCloudVisionV1p1beta1Word(o[0]);
+  checkGoogleCloudVisionV1p1beta1Word(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p1beta1Paragraph = 0;
 api.GoogleCloudVisionV1p1beta1Paragraph
     buildGoogleCloudVisionV1p1beta1Paragraph() {
-  var o = api.GoogleCloudVisionV1p1beta1Paragraph();
+  final o = api.GoogleCloudVisionV1p1beta1Paragraph();
   buildCounterGoogleCloudVisionV1p1beta1Paragraph++;
   if (buildCounterGoogleCloudVisionV1p1beta1Paragraph < 3) {
     o.boundingBox = buildGoogleCloudVisionV1p1beta1BoundingPoly();
@@ -2381,14 +2324,12 @@ void checkGoogleCloudVisionV1p1beta1Paragraph(
     api.GoogleCloudVisionV1p1beta1Paragraph o) {
   buildCounterGoogleCloudVisionV1p1beta1Paragraph++;
   if (buildCounterGoogleCloudVisionV1p1beta1Paragraph < 3) {
-    checkGoogleCloudVisionV1p1beta1BoundingPoly(
-        o.boundingBox! as api.GoogleCloudVisionV1p1beta1BoundingPoly);
+    checkGoogleCloudVisionV1p1beta1BoundingPoly(o.boundingBox!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
     );
-    checkGoogleCloudVisionV1p1beta1TextAnnotationTextProperty(o.property!
-        as api.GoogleCloudVisionV1p1beta1TextAnnotationTextProperty);
+    checkGoogleCloudVisionV1p1beta1TextAnnotationTextProperty(o.property!);
     checkUnnamed4235(o.words!);
   }
   buildCounterGoogleCloudVisionV1p1beta1Paragraph--;
@@ -2397,7 +2338,7 @@ void checkGoogleCloudVisionV1p1beta1Paragraph(
 core.int buildCounterGoogleCloudVisionV1p1beta1Position = 0;
 api.GoogleCloudVisionV1p1beta1Position
     buildGoogleCloudVisionV1p1beta1Position() {
-  var o = api.GoogleCloudVisionV1p1beta1Position();
+  final o = api.GoogleCloudVisionV1p1beta1Position();
   buildCounterGoogleCloudVisionV1p1beta1Position++;
   if (buildCounterGoogleCloudVisionV1p1beta1Position < 3) {
     o.x = 42.0;
@@ -2429,7 +2370,7 @@ void checkGoogleCloudVisionV1p1beta1Position(
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1ProductKeyValue> buildUnnamed4236() {
-  var o = <api.GoogleCloudVisionV1p1beta1ProductKeyValue>[];
+  final o = <api.GoogleCloudVisionV1p1beta1ProductKeyValue>[];
   o.add(buildGoogleCloudVisionV1p1beta1ProductKeyValue());
   o.add(buildGoogleCloudVisionV1p1beta1ProductKeyValue());
   return o;
@@ -2438,15 +2379,13 @@ core.List<api.GoogleCloudVisionV1p1beta1ProductKeyValue> buildUnnamed4236() {
 void checkUnnamed4236(
     core.List<api.GoogleCloudVisionV1p1beta1ProductKeyValue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1ProductKeyValue(
-      o[0] as api.GoogleCloudVisionV1p1beta1ProductKeyValue);
-  checkGoogleCloudVisionV1p1beta1ProductKeyValue(
-      o[1] as api.GoogleCloudVisionV1p1beta1ProductKeyValue);
+  checkGoogleCloudVisionV1p1beta1ProductKeyValue(o[0]);
+  checkGoogleCloudVisionV1p1beta1ProductKeyValue(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p1beta1Product = 0;
 api.GoogleCloudVisionV1p1beta1Product buildGoogleCloudVisionV1p1beta1Product() {
-  var o = api.GoogleCloudVisionV1p1beta1Product();
+  final o = api.GoogleCloudVisionV1p1beta1Product();
   buildCounterGoogleCloudVisionV1p1beta1Product++;
   if (buildCounterGoogleCloudVisionV1p1beta1Product < 3) {
     o.description = 'foo';
@@ -2487,7 +2426,7 @@ void checkGoogleCloudVisionV1p1beta1Product(
 core.int buildCounterGoogleCloudVisionV1p1beta1ProductKeyValue = 0;
 api.GoogleCloudVisionV1p1beta1ProductKeyValue
     buildGoogleCloudVisionV1p1beta1ProductKeyValue() {
-  var o = api.GoogleCloudVisionV1p1beta1ProductKeyValue();
+  final o = api.GoogleCloudVisionV1p1beta1ProductKeyValue();
   buildCounterGoogleCloudVisionV1p1beta1ProductKeyValue++;
   if (buildCounterGoogleCloudVisionV1p1beta1ProductKeyValue < 3) {
     o.key = 'foo';
@@ -2515,7 +2454,7 @@ void checkGoogleCloudVisionV1p1beta1ProductKeyValue(
 
 core.List<api.GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult>
     buildUnnamed4237() {
-  var o = <api.GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult>[];
+  final o = <api.GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult>[];
   o.add(buildGoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult());
   o.add(buildGoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult());
   return o;
@@ -2525,15 +2464,13 @@ void checkUnnamed4237(
     core.List<api.GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult(
-      o[0] as api.GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult);
-  checkGoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult(
-      o[1] as api.GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult);
+  checkGoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult(o[0]);
+  checkGoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult>
     buildUnnamed4238() {
-  var o = <api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult>[];
+  final o = <api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult>[];
   o.add(buildGoogleCloudVisionV1p1beta1ProductSearchResultsResult());
   o.add(buildGoogleCloudVisionV1p1beta1ProductSearchResultsResult());
   return o;
@@ -2542,16 +2479,14 @@ core.List<api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult>
 void checkUnnamed4238(
     core.List<api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1ProductSearchResultsResult(
-      o[0] as api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult);
-  checkGoogleCloudVisionV1p1beta1ProductSearchResultsResult(
-      o[1] as api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult);
+  checkGoogleCloudVisionV1p1beta1ProductSearchResultsResult(o[0]);
+  checkGoogleCloudVisionV1p1beta1ProductSearchResultsResult(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p1beta1ProductSearchResults = 0;
 api.GoogleCloudVisionV1p1beta1ProductSearchResults
     buildGoogleCloudVisionV1p1beta1ProductSearchResults() {
-  var o = api.GoogleCloudVisionV1p1beta1ProductSearchResults();
+  final o = api.GoogleCloudVisionV1p1beta1ProductSearchResults();
   buildCounterGoogleCloudVisionV1p1beta1ProductSearchResults++;
   if (buildCounterGoogleCloudVisionV1p1beta1ProductSearchResults < 3) {
     o.indexTime = 'foo';
@@ -2578,7 +2513,7 @@ void checkGoogleCloudVisionV1p1beta1ProductSearchResults(
 
 core.List<api.GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation>
     buildUnnamed4239() {
-  var o =
+  final o =
       <api.GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation>[];
   o.add(buildGoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation());
   o.add(buildGoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation());
@@ -2590,15 +2525,13 @@ void checkUnnamed4239(
             api.GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation(o[0]
-      as api.GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation);
-  checkGoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation(o[1]
-      as api.GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation);
+  checkGoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation(o[0]);
+  checkGoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult>
     buildUnnamed4240() {
-  var o = <api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult>[];
+  final o = <api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult>[];
   o.add(buildGoogleCloudVisionV1p1beta1ProductSearchResultsResult());
   o.add(buildGoogleCloudVisionV1p1beta1ProductSearchResultsResult());
   return o;
@@ -2607,17 +2540,15 @@ core.List<api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult>
 void checkUnnamed4240(
     core.List<api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1ProductSearchResultsResult(
-      o[0] as api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult);
-  checkGoogleCloudVisionV1p1beta1ProductSearchResultsResult(
-      o[1] as api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult);
+  checkGoogleCloudVisionV1p1beta1ProductSearchResultsResult(o[0]);
+  checkGoogleCloudVisionV1p1beta1ProductSearchResultsResult(o[1]);
 }
 
 core.int
     buildCounterGoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult = 0;
 api.GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult
     buildGoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult() {
-  var o = api.GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult();
+  final o = api.GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult();
   buildCounterGoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult++;
   if (buildCounterGoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult <
       3) {
@@ -2634,8 +2565,7 @@ void checkGoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult(
   buildCounterGoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult++;
   if (buildCounterGoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult <
       3) {
-    checkGoogleCloudVisionV1p1beta1BoundingPoly(
-        o.boundingPoly! as api.GoogleCloudVisionV1p1beta1BoundingPoly);
+    checkGoogleCloudVisionV1p1beta1BoundingPoly(o.boundingPoly!);
     checkUnnamed4239(o.objectAnnotations!);
     checkUnnamed4240(o.results!);
   }
@@ -2647,7 +2577,8 @@ core.int
     0;
 api.GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation
     buildGoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation() {
-  var o = api.GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation();
+  final o =
+      api.GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation();
   buildCounterGoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation++;
   if (buildCounterGoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation <
       3) {
@@ -2688,7 +2619,7 @@ void checkGoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation(
 core.int buildCounterGoogleCloudVisionV1p1beta1ProductSearchResultsResult = 0;
 api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult
     buildGoogleCloudVisionV1p1beta1ProductSearchResultsResult() {
-  var o = api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult();
+  final o = api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult();
   buildCounterGoogleCloudVisionV1p1beta1ProductSearchResultsResult++;
   if (buildCounterGoogleCloudVisionV1p1beta1ProductSearchResultsResult < 3) {
     o.image = 'foo';
@@ -2707,8 +2638,7 @@ void checkGoogleCloudVisionV1p1beta1ProductSearchResultsResult(
       o.image!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudVisionV1p1beta1Product(
-        o.product! as api.GoogleCloudVisionV1p1beta1Product);
+    checkGoogleCloudVisionV1p1beta1Product(o.product!);
     unittest.expect(
       o.score!,
       unittest.equals(42.0),
@@ -2720,7 +2650,7 @@ void checkGoogleCloudVisionV1p1beta1ProductSearchResultsResult(
 core.int buildCounterGoogleCloudVisionV1p1beta1Property = 0;
 api.GoogleCloudVisionV1p1beta1Property
     buildGoogleCloudVisionV1p1beta1Property() {
-  var o = api.GoogleCloudVisionV1p1beta1Property();
+  final o = api.GoogleCloudVisionV1p1beta1Property();
   buildCounterGoogleCloudVisionV1p1beta1Property++;
   if (buildCounterGoogleCloudVisionV1p1beta1Property < 3) {
     o.name = 'foo';
@@ -2754,7 +2684,7 @@ void checkGoogleCloudVisionV1p1beta1Property(
 core.int buildCounterGoogleCloudVisionV1p1beta1SafeSearchAnnotation = 0;
 api.GoogleCloudVisionV1p1beta1SafeSearchAnnotation
     buildGoogleCloudVisionV1p1beta1SafeSearchAnnotation() {
-  var o = api.GoogleCloudVisionV1p1beta1SafeSearchAnnotation();
+  final o = api.GoogleCloudVisionV1p1beta1SafeSearchAnnotation();
   buildCounterGoogleCloudVisionV1p1beta1SafeSearchAnnotation++;
   if (buildCounterGoogleCloudVisionV1p1beta1SafeSearchAnnotation < 3) {
     o.adult = 'foo';
@@ -2797,7 +2727,7 @@ void checkGoogleCloudVisionV1p1beta1SafeSearchAnnotation(
 
 core.int buildCounterGoogleCloudVisionV1p1beta1Symbol = 0;
 api.GoogleCloudVisionV1p1beta1Symbol buildGoogleCloudVisionV1p1beta1Symbol() {
-  var o = api.GoogleCloudVisionV1p1beta1Symbol();
+  final o = api.GoogleCloudVisionV1p1beta1Symbol();
   buildCounterGoogleCloudVisionV1p1beta1Symbol++;
   if (buildCounterGoogleCloudVisionV1p1beta1Symbol < 3) {
     o.boundingBox = buildGoogleCloudVisionV1p1beta1BoundingPoly();
@@ -2813,14 +2743,12 @@ void checkGoogleCloudVisionV1p1beta1Symbol(
     api.GoogleCloudVisionV1p1beta1Symbol o) {
   buildCounterGoogleCloudVisionV1p1beta1Symbol++;
   if (buildCounterGoogleCloudVisionV1p1beta1Symbol < 3) {
-    checkGoogleCloudVisionV1p1beta1BoundingPoly(
-        o.boundingBox! as api.GoogleCloudVisionV1p1beta1BoundingPoly);
+    checkGoogleCloudVisionV1p1beta1BoundingPoly(o.boundingBox!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
     );
-    checkGoogleCloudVisionV1p1beta1TextAnnotationTextProperty(o.property!
-        as api.GoogleCloudVisionV1p1beta1TextAnnotationTextProperty);
+    checkGoogleCloudVisionV1p1beta1TextAnnotationTextProperty(o.property!);
     unittest.expect(
       o.text!,
       unittest.equals('foo'),
@@ -2830,7 +2758,7 @@ void checkGoogleCloudVisionV1p1beta1Symbol(
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1Page> buildUnnamed4241() {
-  var o = <api.GoogleCloudVisionV1p1beta1Page>[];
+  final o = <api.GoogleCloudVisionV1p1beta1Page>[];
   o.add(buildGoogleCloudVisionV1p1beta1Page());
   o.add(buildGoogleCloudVisionV1p1beta1Page());
   return o;
@@ -2838,16 +2766,14 @@ core.List<api.GoogleCloudVisionV1p1beta1Page> buildUnnamed4241() {
 
 void checkUnnamed4241(core.List<api.GoogleCloudVisionV1p1beta1Page> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1Page(
-      o[0] as api.GoogleCloudVisionV1p1beta1Page);
-  checkGoogleCloudVisionV1p1beta1Page(
-      o[1] as api.GoogleCloudVisionV1p1beta1Page);
+  checkGoogleCloudVisionV1p1beta1Page(o[0]);
+  checkGoogleCloudVisionV1p1beta1Page(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p1beta1TextAnnotation = 0;
 api.GoogleCloudVisionV1p1beta1TextAnnotation
     buildGoogleCloudVisionV1p1beta1TextAnnotation() {
-  var o = api.GoogleCloudVisionV1p1beta1TextAnnotation();
+  final o = api.GoogleCloudVisionV1p1beta1TextAnnotation();
   buildCounterGoogleCloudVisionV1p1beta1TextAnnotation++;
   if (buildCounterGoogleCloudVisionV1p1beta1TextAnnotation < 3) {
     o.pages = buildUnnamed4241();
@@ -2873,7 +2799,7 @@ void checkGoogleCloudVisionV1p1beta1TextAnnotation(
 core.int buildCounterGoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak = 0;
 api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak
     buildGoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak() {
-  var o = api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak();
+  final o = api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak();
   buildCounterGoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak++;
   if (buildCounterGoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak < 3) {
     o.isPrefix = true;
@@ -2900,7 +2826,7 @@ core.int buildCounterGoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage =
     0;
 api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage
     buildGoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage() {
-  var o = api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage();
+  final o = api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage();
   buildCounterGoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage++;
   if (buildCounterGoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage <
       3) {
@@ -2930,7 +2856,7 @@ void checkGoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage(
 
 core.List<api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage>
     buildUnnamed4242() {
-  var o = <api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage>[];
+  final o = <api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage>[];
   o.add(buildGoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage());
   o.add(buildGoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage());
   return o;
@@ -2939,16 +2865,14 @@ core.List<api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage>
 void checkUnnamed4242(
     core.List<api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage(
-      o[0] as api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage);
-  checkGoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage(
-      o[1] as api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage);
+  checkGoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage(o[0]);
+  checkGoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p1beta1TextAnnotationTextProperty = 0;
 api.GoogleCloudVisionV1p1beta1TextAnnotationTextProperty
     buildGoogleCloudVisionV1p1beta1TextAnnotationTextProperty() {
-  var o = api.GoogleCloudVisionV1p1beta1TextAnnotationTextProperty();
+  final o = api.GoogleCloudVisionV1p1beta1TextAnnotationTextProperty();
   buildCounterGoogleCloudVisionV1p1beta1TextAnnotationTextProperty++;
   if (buildCounterGoogleCloudVisionV1p1beta1TextAnnotationTextProperty < 3) {
     o.detectedBreak =
@@ -2963,8 +2887,8 @@ void checkGoogleCloudVisionV1p1beta1TextAnnotationTextProperty(
     api.GoogleCloudVisionV1p1beta1TextAnnotationTextProperty o) {
   buildCounterGoogleCloudVisionV1p1beta1TextAnnotationTextProperty++;
   if (buildCounterGoogleCloudVisionV1p1beta1TextAnnotationTextProperty < 3) {
-    checkGoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak(o.detectedBreak!
-        as api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak);
+    checkGoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak(
+        o.detectedBreak!);
     checkUnnamed4242(o.detectedLanguages!);
   }
   buildCounterGoogleCloudVisionV1p1beta1TextAnnotationTextProperty--;
@@ -2972,7 +2896,7 @@ void checkGoogleCloudVisionV1p1beta1TextAnnotationTextProperty(
 
 core.int buildCounterGoogleCloudVisionV1p1beta1Vertex = 0;
 api.GoogleCloudVisionV1p1beta1Vertex buildGoogleCloudVisionV1p1beta1Vertex() {
-  var o = api.GoogleCloudVisionV1p1beta1Vertex();
+  final o = api.GoogleCloudVisionV1p1beta1Vertex();
   buildCounterGoogleCloudVisionV1p1beta1Vertex++;
   if (buildCounterGoogleCloudVisionV1p1beta1Vertex < 3) {
     o.x = 42;
@@ -3000,7 +2924,7 @@ void checkGoogleCloudVisionV1p1beta1Vertex(
 
 core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebLabel>
     buildUnnamed4243() {
-  var o = <api.GoogleCloudVisionV1p1beta1WebDetectionWebLabel>[];
+  final o = <api.GoogleCloudVisionV1p1beta1WebDetectionWebLabel>[];
   o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebLabel());
   o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebLabel());
   return o;
@@ -3009,15 +2933,13 @@ core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebLabel>
 void checkUnnamed4243(
     core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebLabel> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1WebDetectionWebLabel(
-      o[0] as api.GoogleCloudVisionV1p1beta1WebDetectionWebLabel);
-  checkGoogleCloudVisionV1p1beta1WebDetectionWebLabel(
-      o[1] as api.GoogleCloudVisionV1p1beta1WebDetectionWebLabel);
+  checkGoogleCloudVisionV1p1beta1WebDetectionWebLabel(o[0]);
+  checkGoogleCloudVisionV1p1beta1WebDetectionWebLabel(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>
     buildUnnamed4244() {
-  var o = <api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>[];
+  final o = <api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>[];
   o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebImage());
   o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebImage());
   return o;
@@ -3026,15 +2948,13 @@ core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>
 void checkUnnamed4244(
     core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(
-      o[0] as api.GoogleCloudVisionV1p1beta1WebDetectionWebImage);
-  checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(
-      o[1] as api.GoogleCloudVisionV1p1beta1WebDetectionWebImage);
+  checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(o[0]);
+  checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebPage>
     buildUnnamed4245() {
-  var o = <api.GoogleCloudVisionV1p1beta1WebDetectionWebPage>[];
+  final o = <api.GoogleCloudVisionV1p1beta1WebDetectionWebPage>[];
   o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebPage());
   o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebPage());
   return o;
@@ -3043,15 +2963,13 @@ core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebPage>
 void checkUnnamed4245(
     core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebPage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1WebDetectionWebPage(
-      o[0] as api.GoogleCloudVisionV1p1beta1WebDetectionWebPage);
-  checkGoogleCloudVisionV1p1beta1WebDetectionWebPage(
-      o[1] as api.GoogleCloudVisionV1p1beta1WebDetectionWebPage);
+  checkGoogleCloudVisionV1p1beta1WebDetectionWebPage(o[0]);
+  checkGoogleCloudVisionV1p1beta1WebDetectionWebPage(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>
     buildUnnamed4246() {
-  var o = <api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>[];
+  final o = <api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>[];
   o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebImage());
   o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebImage());
   return o;
@@ -3060,15 +2978,13 @@ core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>
 void checkUnnamed4246(
     core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(
-      o[0] as api.GoogleCloudVisionV1p1beta1WebDetectionWebImage);
-  checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(
-      o[1] as api.GoogleCloudVisionV1p1beta1WebDetectionWebImage);
+  checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(o[0]);
+  checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>
     buildUnnamed4247() {
-  var o = <api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>[];
+  final o = <api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>[];
   o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebImage());
   o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebImage());
   return o;
@@ -3077,15 +2993,13 @@ core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>
 void checkUnnamed4247(
     core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(
-      o[0] as api.GoogleCloudVisionV1p1beta1WebDetectionWebImage);
-  checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(
-      o[1] as api.GoogleCloudVisionV1p1beta1WebDetectionWebImage);
+  checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(o[0]);
+  checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebEntity>
     buildUnnamed4248() {
-  var o = <api.GoogleCloudVisionV1p1beta1WebDetectionWebEntity>[];
+  final o = <api.GoogleCloudVisionV1p1beta1WebDetectionWebEntity>[];
   o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebEntity());
   o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebEntity());
   return o;
@@ -3094,16 +3008,14 @@ core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebEntity>
 void checkUnnamed4248(
     core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1WebDetectionWebEntity(
-      o[0] as api.GoogleCloudVisionV1p1beta1WebDetectionWebEntity);
-  checkGoogleCloudVisionV1p1beta1WebDetectionWebEntity(
-      o[1] as api.GoogleCloudVisionV1p1beta1WebDetectionWebEntity);
+  checkGoogleCloudVisionV1p1beta1WebDetectionWebEntity(o[0]);
+  checkGoogleCloudVisionV1p1beta1WebDetectionWebEntity(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p1beta1WebDetection = 0;
 api.GoogleCloudVisionV1p1beta1WebDetection
     buildGoogleCloudVisionV1p1beta1WebDetection() {
-  var o = api.GoogleCloudVisionV1p1beta1WebDetection();
+  final o = api.GoogleCloudVisionV1p1beta1WebDetection();
   buildCounterGoogleCloudVisionV1p1beta1WebDetection++;
   if (buildCounterGoogleCloudVisionV1p1beta1WebDetection < 3) {
     o.bestGuessLabels = buildUnnamed4243();
@@ -3134,7 +3046,7 @@ void checkGoogleCloudVisionV1p1beta1WebDetection(
 core.int buildCounterGoogleCloudVisionV1p1beta1WebDetectionWebEntity = 0;
 api.GoogleCloudVisionV1p1beta1WebDetectionWebEntity
     buildGoogleCloudVisionV1p1beta1WebDetectionWebEntity() {
-  var o = api.GoogleCloudVisionV1p1beta1WebDetectionWebEntity();
+  final o = api.GoogleCloudVisionV1p1beta1WebDetectionWebEntity();
   buildCounterGoogleCloudVisionV1p1beta1WebDetectionWebEntity++;
   if (buildCounterGoogleCloudVisionV1p1beta1WebDetectionWebEntity < 3) {
     o.description = 'foo';
@@ -3168,7 +3080,7 @@ void checkGoogleCloudVisionV1p1beta1WebDetectionWebEntity(
 core.int buildCounterGoogleCloudVisionV1p1beta1WebDetectionWebImage = 0;
 api.GoogleCloudVisionV1p1beta1WebDetectionWebImage
     buildGoogleCloudVisionV1p1beta1WebDetectionWebImage() {
-  var o = api.GoogleCloudVisionV1p1beta1WebDetectionWebImage();
+  final o = api.GoogleCloudVisionV1p1beta1WebDetectionWebImage();
   buildCounterGoogleCloudVisionV1p1beta1WebDetectionWebImage++;
   if (buildCounterGoogleCloudVisionV1p1beta1WebDetectionWebImage < 3) {
     o.score = 42.0;
@@ -3197,7 +3109,7 @@ void checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(
 core.int buildCounterGoogleCloudVisionV1p1beta1WebDetectionWebLabel = 0;
 api.GoogleCloudVisionV1p1beta1WebDetectionWebLabel
     buildGoogleCloudVisionV1p1beta1WebDetectionWebLabel() {
-  var o = api.GoogleCloudVisionV1p1beta1WebDetectionWebLabel();
+  final o = api.GoogleCloudVisionV1p1beta1WebDetectionWebLabel();
   buildCounterGoogleCloudVisionV1p1beta1WebDetectionWebLabel++;
   if (buildCounterGoogleCloudVisionV1p1beta1WebDetectionWebLabel < 3) {
     o.label = 'foo';
@@ -3225,7 +3137,7 @@ void checkGoogleCloudVisionV1p1beta1WebDetectionWebLabel(
 
 core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>
     buildUnnamed4249() {
-  var o = <api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>[];
+  final o = <api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>[];
   o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebImage());
   o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebImage());
   return o;
@@ -3234,15 +3146,13 @@ core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>
 void checkUnnamed4249(
     core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(
-      o[0] as api.GoogleCloudVisionV1p1beta1WebDetectionWebImage);
-  checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(
-      o[1] as api.GoogleCloudVisionV1p1beta1WebDetectionWebImage);
+  checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(o[0]);
+  checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>
     buildUnnamed4250() {
-  var o = <api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>[];
+  final o = <api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>[];
   o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebImage());
   o.add(buildGoogleCloudVisionV1p1beta1WebDetectionWebImage());
   return o;
@@ -3251,16 +3161,14 @@ core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebImage>
 void checkUnnamed4250(
     core.List<api.GoogleCloudVisionV1p1beta1WebDetectionWebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(
-      o[0] as api.GoogleCloudVisionV1p1beta1WebDetectionWebImage);
-  checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(
-      o[1] as api.GoogleCloudVisionV1p1beta1WebDetectionWebImage);
+  checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(o[0]);
+  checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p1beta1WebDetectionWebPage = 0;
 api.GoogleCloudVisionV1p1beta1WebDetectionWebPage
     buildGoogleCloudVisionV1p1beta1WebDetectionWebPage() {
-  var o = api.GoogleCloudVisionV1p1beta1WebDetectionWebPage();
+  final o = api.GoogleCloudVisionV1p1beta1WebDetectionWebPage();
   buildCounterGoogleCloudVisionV1p1beta1WebDetectionWebPage++;
   if (buildCounterGoogleCloudVisionV1p1beta1WebDetectionWebPage < 3) {
     o.fullMatchingImages = buildUnnamed4249();
@@ -3296,7 +3204,7 @@ void checkGoogleCloudVisionV1p1beta1WebDetectionWebPage(
 }
 
 core.List<api.GoogleCloudVisionV1p1beta1Symbol> buildUnnamed4251() {
-  var o = <api.GoogleCloudVisionV1p1beta1Symbol>[];
+  final o = <api.GoogleCloudVisionV1p1beta1Symbol>[];
   o.add(buildGoogleCloudVisionV1p1beta1Symbol());
   o.add(buildGoogleCloudVisionV1p1beta1Symbol());
   return o;
@@ -3304,15 +3212,13 @@ core.List<api.GoogleCloudVisionV1p1beta1Symbol> buildUnnamed4251() {
 
 void checkUnnamed4251(core.List<api.GoogleCloudVisionV1p1beta1Symbol> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p1beta1Symbol(
-      o[0] as api.GoogleCloudVisionV1p1beta1Symbol);
-  checkGoogleCloudVisionV1p1beta1Symbol(
-      o[1] as api.GoogleCloudVisionV1p1beta1Symbol);
+  checkGoogleCloudVisionV1p1beta1Symbol(o[0]);
+  checkGoogleCloudVisionV1p1beta1Symbol(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p1beta1Word = 0;
 api.GoogleCloudVisionV1p1beta1Word buildGoogleCloudVisionV1p1beta1Word() {
-  var o = api.GoogleCloudVisionV1p1beta1Word();
+  final o = api.GoogleCloudVisionV1p1beta1Word();
   buildCounterGoogleCloudVisionV1p1beta1Word++;
   if (buildCounterGoogleCloudVisionV1p1beta1Word < 3) {
     o.boundingBox = buildGoogleCloudVisionV1p1beta1BoundingPoly();
@@ -3327,14 +3233,12 @@ api.GoogleCloudVisionV1p1beta1Word buildGoogleCloudVisionV1p1beta1Word() {
 void checkGoogleCloudVisionV1p1beta1Word(api.GoogleCloudVisionV1p1beta1Word o) {
   buildCounterGoogleCloudVisionV1p1beta1Word++;
   if (buildCounterGoogleCloudVisionV1p1beta1Word < 3) {
-    checkGoogleCloudVisionV1p1beta1BoundingPoly(
-        o.boundingBox! as api.GoogleCloudVisionV1p1beta1BoundingPoly);
+    checkGoogleCloudVisionV1p1beta1BoundingPoly(o.boundingBox!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
     );
-    checkGoogleCloudVisionV1p1beta1TextAnnotationTextProperty(o.property!
-        as api.GoogleCloudVisionV1p1beta1TextAnnotationTextProperty);
+    checkGoogleCloudVisionV1p1beta1TextAnnotationTextProperty(o.property!);
     checkUnnamed4251(o.symbols!);
   }
   buildCounterGoogleCloudVisionV1p1beta1Word--;
@@ -3342,7 +3246,7 @@ void checkGoogleCloudVisionV1p1beta1Word(api.GoogleCloudVisionV1p1beta1Word o) {
 
 core.List<api.GoogleCloudVisionV1p2beta1AnnotateImageResponse>
     buildUnnamed4252() {
-  var o = <api.GoogleCloudVisionV1p2beta1AnnotateImageResponse>[];
+  final o = <api.GoogleCloudVisionV1p2beta1AnnotateImageResponse>[];
   o.add(buildGoogleCloudVisionV1p2beta1AnnotateImageResponse());
   o.add(buildGoogleCloudVisionV1p2beta1AnnotateImageResponse());
   return o;
@@ -3351,16 +3255,14 @@ core.List<api.GoogleCloudVisionV1p2beta1AnnotateImageResponse>
 void checkUnnamed4252(
     core.List<api.GoogleCloudVisionV1p2beta1AnnotateImageResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1AnnotateImageResponse(
-      o[0] as api.GoogleCloudVisionV1p2beta1AnnotateImageResponse);
-  checkGoogleCloudVisionV1p2beta1AnnotateImageResponse(
-      o[1] as api.GoogleCloudVisionV1p2beta1AnnotateImageResponse);
+  checkGoogleCloudVisionV1p2beta1AnnotateImageResponse(o[0]);
+  checkGoogleCloudVisionV1p2beta1AnnotateImageResponse(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p2beta1AnnotateFileResponse = 0;
 api.GoogleCloudVisionV1p2beta1AnnotateFileResponse
     buildGoogleCloudVisionV1p2beta1AnnotateFileResponse() {
-  var o = api.GoogleCloudVisionV1p2beta1AnnotateFileResponse();
+  final o = api.GoogleCloudVisionV1p2beta1AnnotateFileResponse();
   buildCounterGoogleCloudVisionV1p2beta1AnnotateFileResponse++;
   if (buildCounterGoogleCloudVisionV1p2beta1AnnotateFileResponse < 3) {
     o.error = buildStatus();
@@ -3376,9 +3278,8 @@ void checkGoogleCloudVisionV1p2beta1AnnotateFileResponse(
     api.GoogleCloudVisionV1p2beta1AnnotateFileResponse o) {
   buildCounterGoogleCloudVisionV1p2beta1AnnotateFileResponse++;
   if (buildCounterGoogleCloudVisionV1p2beta1AnnotateFileResponse < 3) {
-    checkStatus(o.error! as api.Status);
-    checkGoogleCloudVisionV1p2beta1InputConfig(
-        o.inputConfig! as api.GoogleCloudVisionV1p2beta1InputConfig);
+    checkStatus(o.error!);
+    checkGoogleCloudVisionV1p2beta1InputConfig(o.inputConfig!);
     checkUnnamed4252(o.responses!);
     unittest.expect(
       o.totalPages!,
@@ -3389,7 +3290,7 @@ void checkGoogleCloudVisionV1p2beta1AnnotateFileResponse(
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1FaceAnnotation> buildUnnamed4253() {
-  var o = <api.GoogleCloudVisionV1p2beta1FaceAnnotation>[];
+  final o = <api.GoogleCloudVisionV1p2beta1FaceAnnotation>[];
   o.add(buildGoogleCloudVisionV1p2beta1FaceAnnotation());
   o.add(buildGoogleCloudVisionV1p2beta1FaceAnnotation());
   return o;
@@ -3398,14 +3299,12 @@ core.List<api.GoogleCloudVisionV1p2beta1FaceAnnotation> buildUnnamed4253() {
 void checkUnnamed4253(
     core.List<api.GoogleCloudVisionV1p2beta1FaceAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1FaceAnnotation(
-      o[0] as api.GoogleCloudVisionV1p2beta1FaceAnnotation);
-  checkGoogleCloudVisionV1p2beta1FaceAnnotation(
-      o[1] as api.GoogleCloudVisionV1p2beta1FaceAnnotation);
+  checkGoogleCloudVisionV1p2beta1FaceAnnotation(o[0]);
+  checkGoogleCloudVisionV1p2beta1FaceAnnotation(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1EntityAnnotation> buildUnnamed4254() {
-  var o = <api.GoogleCloudVisionV1p2beta1EntityAnnotation>[];
+  final o = <api.GoogleCloudVisionV1p2beta1EntityAnnotation>[];
   o.add(buildGoogleCloudVisionV1p2beta1EntityAnnotation());
   o.add(buildGoogleCloudVisionV1p2beta1EntityAnnotation());
   return o;
@@ -3414,14 +3313,12 @@ core.List<api.GoogleCloudVisionV1p2beta1EntityAnnotation> buildUnnamed4254() {
 void checkUnnamed4254(
     core.List<api.GoogleCloudVisionV1p2beta1EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1EntityAnnotation(
-      o[0] as api.GoogleCloudVisionV1p2beta1EntityAnnotation);
-  checkGoogleCloudVisionV1p2beta1EntityAnnotation(
-      o[1] as api.GoogleCloudVisionV1p2beta1EntityAnnotation);
+  checkGoogleCloudVisionV1p2beta1EntityAnnotation(o[0]);
+  checkGoogleCloudVisionV1p2beta1EntityAnnotation(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1EntityAnnotation> buildUnnamed4255() {
-  var o = <api.GoogleCloudVisionV1p2beta1EntityAnnotation>[];
+  final o = <api.GoogleCloudVisionV1p2beta1EntityAnnotation>[];
   o.add(buildGoogleCloudVisionV1p2beta1EntityAnnotation());
   o.add(buildGoogleCloudVisionV1p2beta1EntityAnnotation());
   return o;
@@ -3430,15 +3327,13 @@ core.List<api.GoogleCloudVisionV1p2beta1EntityAnnotation> buildUnnamed4255() {
 void checkUnnamed4255(
     core.List<api.GoogleCloudVisionV1p2beta1EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1EntityAnnotation(
-      o[0] as api.GoogleCloudVisionV1p2beta1EntityAnnotation);
-  checkGoogleCloudVisionV1p2beta1EntityAnnotation(
-      o[1] as api.GoogleCloudVisionV1p2beta1EntityAnnotation);
+  checkGoogleCloudVisionV1p2beta1EntityAnnotation(o[0]);
+  checkGoogleCloudVisionV1p2beta1EntityAnnotation(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation>
     buildUnnamed4256() {
-  var o = <api.GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation>[];
+  final o = <api.GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation>[];
   o.add(buildGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation());
   o.add(buildGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation());
   return o;
@@ -3447,14 +3342,12 @@ core.List<api.GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation>
 void checkUnnamed4256(
     core.List<api.GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation(
-      o[0] as api.GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation);
-  checkGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation(
-      o[1] as api.GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation);
+  checkGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation(o[0]);
+  checkGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1EntityAnnotation> buildUnnamed4257() {
-  var o = <api.GoogleCloudVisionV1p2beta1EntityAnnotation>[];
+  final o = <api.GoogleCloudVisionV1p2beta1EntityAnnotation>[];
   o.add(buildGoogleCloudVisionV1p2beta1EntityAnnotation());
   o.add(buildGoogleCloudVisionV1p2beta1EntityAnnotation());
   return o;
@@ -3463,14 +3356,12 @@ core.List<api.GoogleCloudVisionV1p2beta1EntityAnnotation> buildUnnamed4257() {
 void checkUnnamed4257(
     core.List<api.GoogleCloudVisionV1p2beta1EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1EntityAnnotation(
-      o[0] as api.GoogleCloudVisionV1p2beta1EntityAnnotation);
-  checkGoogleCloudVisionV1p2beta1EntityAnnotation(
-      o[1] as api.GoogleCloudVisionV1p2beta1EntityAnnotation);
+  checkGoogleCloudVisionV1p2beta1EntityAnnotation(o[0]);
+  checkGoogleCloudVisionV1p2beta1EntityAnnotation(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1EntityAnnotation> buildUnnamed4258() {
-  var o = <api.GoogleCloudVisionV1p2beta1EntityAnnotation>[];
+  final o = <api.GoogleCloudVisionV1p2beta1EntityAnnotation>[];
   o.add(buildGoogleCloudVisionV1p2beta1EntityAnnotation());
   o.add(buildGoogleCloudVisionV1p2beta1EntityAnnotation());
   return o;
@@ -3479,16 +3370,14 @@ core.List<api.GoogleCloudVisionV1p2beta1EntityAnnotation> buildUnnamed4258() {
 void checkUnnamed4258(
     core.List<api.GoogleCloudVisionV1p2beta1EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1EntityAnnotation(
-      o[0] as api.GoogleCloudVisionV1p2beta1EntityAnnotation);
-  checkGoogleCloudVisionV1p2beta1EntityAnnotation(
-      o[1] as api.GoogleCloudVisionV1p2beta1EntityAnnotation);
+  checkGoogleCloudVisionV1p2beta1EntityAnnotation(o[0]);
+  checkGoogleCloudVisionV1p2beta1EntityAnnotation(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p2beta1AnnotateImageResponse = 0;
 api.GoogleCloudVisionV1p2beta1AnnotateImageResponse
     buildGoogleCloudVisionV1p2beta1AnnotateImageResponse() {
-  var o = api.GoogleCloudVisionV1p2beta1AnnotateImageResponse();
+  final o = api.GoogleCloudVisionV1p2beta1AnnotateImageResponse();
   buildCounterGoogleCloudVisionV1p2beta1AnnotateImageResponse++;
   if (buildCounterGoogleCloudVisionV1p2beta1AnnotateImageResponse < 3) {
     o.context = buildGoogleCloudVisionV1p2beta1ImageAnnotationContext();
@@ -3518,27 +3407,23 @@ void checkGoogleCloudVisionV1p2beta1AnnotateImageResponse(
     api.GoogleCloudVisionV1p2beta1AnnotateImageResponse o) {
   buildCounterGoogleCloudVisionV1p2beta1AnnotateImageResponse++;
   if (buildCounterGoogleCloudVisionV1p2beta1AnnotateImageResponse < 3) {
-    checkGoogleCloudVisionV1p2beta1ImageAnnotationContext(
-        o.context! as api.GoogleCloudVisionV1p2beta1ImageAnnotationContext);
-    checkGoogleCloudVisionV1p2beta1CropHintsAnnotation(o.cropHintsAnnotation!
-        as api.GoogleCloudVisionV1p2beta1CropHintsAnnotation);
-    checkStatus(o.error! as api.Status);
+    checkGoogleCloudVisionV1p2beta1ImageAnnotationContext(o.context!);
+    checkGoogleCloudVisionV1p2beta1CropHintsAnnotation(o.cropHintsAnnotation!);
+    checkStatus(o.error!);
     checkUnnamed4253(o.faceAnnotations!);
-    checkGoogleCloudVisionV1p2beta1TextAnnotation(
-        o.fullTextAnnotation! as api.GoogleCloudVisionV1p2beta1TextAnnotation);
-    checkGoogleCloudVisionV1p2beta1ImageProperties(o.imagePropertiesAnnotation!
-        as api.GoogleCloudVisionV1p2beta1ImageProperties);
+    checkGoogleCloudVisionV1p2beta1TextAnnotation(o.fullTextAnnotation!);
+    checkGoogleCloudVisionV1p2beta1ImageProperties(
+        o.imagePropertiesAnnotation!);
     checkUnnamed4254(o.labelAnnotations!);
     checkUnnamed4255(o.landmarkAnnotations!);
     checkUnnamed4256(o.localizedObjectAnnotations!);
     checkUnnamed4257(o.logoAnnotations!);
-    checkGoogleCloudVisionV1p2beta1ProductSearchResults(o.productSearchResults!
-        as api.GoogleCloudVisionV1p2beta1ProductSearchResults);
-    checkGoogleCloudVisionV1p2beta1SafeSearchAnnotation(o.safeSearchAnnotation!
-        as api.GoogleCloudVisionV1p2beta1SafeSearchAnnotation);
+    checkGoogleCloudVisionV1p2beta1ProductSearchResults(
+        o.productSearchResults!);
+    checkGoogleCloudVisionV1p2beta1SafeSearchAnnotation(
+        o.safeSearchAnnotation!);
     checkUnnamed4258(o.textAnnotations!);
-    checkGoogleCloudVisionV1p2beta1WebDetection(
-        o.webDetection! as api.GoogleCloudVisionV1p2beta1WebDetection);
+    checkGoogleCloudVisionV1p2beta1WebDetection(o.webDetection!);
   }
   buildCounterGoogleCloudVisionV1p2beta1AnnotateImageResponse--;
 }
@@ -3546,7 +3431,7 @@ void checkGoogleCloudVisionV1p2beta1AnnotateImageResponse(
 core.int buildCounterGoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse = 0;
 api.GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse
     buildGoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse() {
-  var o = api.GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse();
+  final o = api.GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse();
   buildCounterGoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse++;
   if (buildCounterGoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse < 3) {
     o.outputConfig = buildGoogleCloudVisionV1p2beta1OutputConfig();
@@ -3559,15 +3444,14 @@ void checkGoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse(
     api.GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse o) {
   buildCounterGoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse++;
   if (buildCounterGoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse < 3) {
-    checkGoogleCloudVisionV1p2beta1OutputConfig(
-        o.outputConfig! as api.GoogleCloudVisionV1p2beta1OutputConfig);
+    checkGoogleCloudVisionV1p2beta1OutputConfig(o.outputConfig!);
   }
   buildCounterGoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse--;
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse>
     buildUnnamed4259() {
-  var o = <api.GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse>[];
+  final o = <api.GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse>[];
   o.add(buildGoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse());
   o.add(buildGoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse());
   return o;
@@ -3576,17 +3460,15 @@ core.List<api.GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse>
 void checkUnnamed4259(
     core.List<api.GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse(
-      o[0] as api.GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse);
-  checkGoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse(
-      o[1] as api.GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse);
+  checkGoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse(o[0]);
+  checkGoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse =
     0;
 api.GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse
     buildGoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse() {
-  var o = api.GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse();
+  final o = api.GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse();
   buildCounterGoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse++;
   if (buildCounterGoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse <
       3) {
@@ -3607,7 +3489,7 @@ void checkGoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse(
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1Paragraph> buildUnnamed4260() {
-  var o = <api.GoogleCloudVisionV1p2beta1Paragraph>[];
+  final o = <api.GoogleCloudVisionV1p2beta1Paragraph>[];
   o.add(buildGoogleCloudVisionV1p2beta1Paragraph());
   o.add(buildGoogleCloudVisionV1p2beta1Paragraph());
   return o;
@@ -3615,15 +3497,13 @@ core.List<api.GoogleCloudVisionV1p2beta1Paragraph> buildUnnamed4260() {
 
 void checkUnnamed4260(core.List<api.GoogleCloudVisionV1p2beta1Paragraph> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1Paragraph(
-      o[0] as api.GoogleCloudVisionV1p2beta1Paragraph);
-  checkGoogleCloudVisionV1p2beta1Paragraph(
-      o[1] as api.GoogleCloudVisionV1p2beta1Paragraph);
+  checkGoogleCloudVisionV1p2beta1Paragraph(o[0]);
+  checkGoogleCloudVisionV1p2beta1Paragraph(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p2beta1Block = 0;
 api.GoogleCloudVisionV1p2beta1Block buildGoogleCloudVisionV1p2beta1Block() {
-  var o = api.GoogleCloudVisionV1p2beta1Block();
+  final o = api.GoogleCloudVisionV1p2beta1Block();
   buildCounterGoogleCloudVisionV1p2beta1Block++;
   if (buildCounterGoogleCloudVisionV1p2beta1Block < 3) {
     o.blockType = 'foo';
@@ -3644,21 +3524,19 @@ void checkGoogleCloudVisionV1p2beta1Block(
       o.blockType!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudVisionV1p2beta1BoundingPoly(
-        o.boundingBox! as api.GoogleCloudVisionV1p2beta1BoundingPoly);
+    checkGoogleCloudVisionV1p2beta1BoundingPoly(o.boundingBox!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
     );
     checkUnnamed4260(o.paragraphs!);
-    checkGoogleCloudVisionV1p2beta1TextAnnotationTextProperty(o.property!
-        as api.GoogleCloudVisionV1p2beta1TextAnnotationTextProperty);
+    checkGoogleCloudVisionV1p2beta1TextAnnotationTextProperty(o.property!);
   }
   buildCounterGoogleCloudVisionV1p2beta1Block--;
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1NormalizedVertex> buildUnnamed4261() {
-  var o = <api.GoogleCloudVisionV1p2beta1NormalizedVertex>[];
+  final o = <api.GoogleCloudVisionV1p2beta1NormalizedVertex>[];
   o.add(buildGoogleCloudVisionV1p2beta1NormalizedVertex());
   o.add(buildGoogleCloudVisionV1p2beta1NormalizedVertex());
   return o;
@@ -3667,14 +3545,12 @@ core.List<api.GoogleCloudVisionV1p2beta1NormalizedVertex> buildUnnamed4261() {
 void checkUnnamed4261(
     core.List<api.GoogleCloudVisionV1p2beta1NormalizedVertex> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1NormalizedVertex(
-      o[0] as api.GoogleCloudVisionV1p2beta1NormalizedVertex);
-  checkGoogleCloudVisionV1p2beta1NormalizedVertex(
-      o[1] as api.GoogleCloudVisionV1p2beta1NormalizedVertex);
+  checkGoogleCloudVisionV1p2beta1NormalizedVertex(o[0]);
+  checkGoogleCloudVisionV1p2beta1NormalizedVertex(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1Vertex> buildUnnamed4262() {
-  var o = <api.GoogleCloudVisionV1p2beta1Vertex>[];
+  final o = <api.GoogleCloudVisionV1p2beta1Vertex>[];
   o.add(buildGoogleCloudVisionV1p2beta1Vertex());
   o.add(buildGoogleCloudVisionV1p2beta1Vertex());
   return o;
@@ -3682,16 +3558,14 @@ core.List<api.GoogleCloudVisionV1p2beta1Vertex> buildUnnamed4262() {
 
 void checkUnnamed4262(core.List<api.GoogleCloudVisionV1p2beta1Vertex> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1Vertex(
-      o[0] as api.GoogleCloudVisionV1p2beta1Vertex);
-  checkGoogleCloudVisionV1p2beta1Vertex(
-      o[1] as api.GoogleCloudVisionV1p2beta1Vertex);
+  checkGoogleCloudVisionV1p2beta1Vertex(o[0]);
+  checkGoogleCloudVisionV1p2beta1Vertex(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p2beta1BoundingPoly = 0;
 api.GoogleCloudVisionV1p2beta1BoundingPoly
     buildGoogleCloudVisionV1p2beta1BoundingPoly() {
-  var o = api.GoogleCloudVisionV1p2beta1BoundingPoly();
+  final o = api.GoogleCloudVisionV1p2beta1BoundingPoly();
   buildCounterGoogleCloudVisionV1p2beta1BoundingPoly++;
   if (buildCounterGoogleCloudVisionV1p2beta1BoundingPoly < 3) {
     o.normalizedVertices = buildUnnamed4261();
@@ -3714,7 +3588,7 @@ void checkGoogleCloudVisionV1p2beta1BoundingPoly(
 core.int buildCounterGoogleCloudVisionV1p2beta1ColorInfo = 0;
 api.GoogleCloudVisionV1p2beta1ColorInfo
     buildGoogleCloudVisionV1p2beta1ColorInfo() {
-  var o = api.GoogleCloudVisionV1p2beta1ColorInfo();
+  final o = api.GoogleCloudVisionV1p2beta1ColorInfo();
   buildCounterGoogleCloudVisionV1p2beta1ColorInfo++;
   if (buildCounterGoogleCloudVisionV1p2beta1ColorInfo < 3) {
     o.color = buildColor();
@@ -3729,7 +3603,7 @@ void checkGoogleCloudVisionV1p2beta1ColorInfo(
     api.GoogleCloudVisionV1p2beta1ColorInfo o) {
   buildCounterGoogleCloudVisionV1p2beta1ColorInfo++;
   if (buildCounterGoogleCloudVisionV1p2beta1ColorInfo < 3) {
-    checkColor(o.color! as api.Color);
+    checkColor(o.color!);
     unittest.expect(
       o.pixelFraction!,
       unittest.equals(42.0),
@@ -3745,7 +3619,7 @@ void checkGoogleCloudVisionV1p2beta1ColorInfo(
 core.int buildCounterGoogleCloudVisionV1p2beta1CropHint = 0;
 api.GoogleCloudVisionV1p2beta1CropHint
     buildGoogleCloudVisionV1p2beta1CropHint() {
-  var o = api.GoogleCloudVisionV1p2beta1CropHint();
+  final o = api.GoogleCloudVisionV1p2beta1CropHint();
   buildCounterGoogleCloudVisionV1p2beta1CropHint++;
   if (buildCounterGoogleCloudVisionV1p2beta1CropHint < 3) {
     o.boundingPoly = buildGoogleCloudVisionV1p2beta1BoundingPoly();
@@ -3760,8 +3634,7 @@ void checkGoogleCloudVisionV1p2beta1CropHint(
     api.GoogleCloudVisionV1p2beta1CropHint o) {
   buildCounterGoogleCloudVisionV1p2beta1CropHint++;
   if (buildCounterGoogleCloudVisionV1p2beta1CropHint < 3) {
-    checkGoogleCloudVisionV1p2beta1BoundingPoly(
-        o.boundingPoly! as api.GoogleCloudVisionV1p2beta1BoundingPoly);
+    checkGoogleCloudVisionV1p2beta1BoundingPoly(o.boundingPoly!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
@@ -3775,7 +3648,7 @@ void checkGoogleCloudVisionV1p2beta1CropHint(
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1CropHint> buildUnnamed4263() {
-  var o = <api.GoogleCloudVisionV1p2beta1CropHint>[];
+  final o = <api.GoogleCloudVisionV1p2beta1CropHint>[];
   o.add(buildGoogleCloudVisionV1p2beta1CropHint());
   o.add(buildGoogleCloudVisionV1p2beta1CropHint());
   return o;
@@ -3783,16 +3656,14 @@ core.List<api.GoogleCloudVisionV1p2beta1CropHint> buildUnnamed4263() {
 
 void checkUnnamed4263(core.List<api.GoogleCloudVisionV1p2beta1CropHint> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1CropHint(
-      o[0] as api.GoogleCloudVisionV1p2beta1CropHint);
-  checkGoogleCloudVisionV1p2beta1CropHint(
-      o[1] as api.GoogleCloudVisionV1p2beta1CropHint);
+  checkGoogleCloudVisionV1p2beta1CropHint(o[0]);
+  checkGoogleCloudVisionV1p2beta1CropHint(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p2beta1CropHintsAnnotation = 0;
 api.GoogleCloudVisionV1p2beta1CropHintsAnnotation
     buildGoogleCloudVisionV1p2beta1CropHintsAnnotation() {
-  var o = api.GoogleCloudVisionV1p2beta1CropHintsAnnotation();
+  final o = api.GoogleCloudVisionV1p2beta1CropHintsAnnotation();
   buildCounterGoogleCloudVisionV1p2beta1CropHintsAnnotation++;
   if (buildCounterGoogleCloudVisionV1p2beta1CropHintsAnnotation < 3) {
     o.cropHints = buildUnnamed4263();
@@ -3811,7 +3682,7 @@ void checkGoogleCloudVisionV1p2beta1CropHintsAnnotation(
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1ColorInfo> buildUnnamed4264() {
-  var o = <api.GoogleCloudVisionV1p2beta1ColorInfo>[];
+  final o = <api.GoogleCloudVisionV1p2beta1ColorInfo>[];
   o.add(buildGoogleCloudVisionV1p2beta1ColorInfo());
   o.add(buildGoogleCloudVisionV1p2beta1ColorInfo());
   return o;
@@ -3819,16 +3690,14 @@ core.List<api.GoogleCloudVisionV1p2beta1ColorInfo> buildUnnamed4264() {
 
 void checkUnnamed4264(core.List<api.GoogleCloudVisionV1p2beta1ColorInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1ColorInfo(
-      o[0] as api.GoogleCloudVisionV1p2beta1ColorInfo);
-  checkGoogleCloudVisionV1p2beta1ColorInfo(
-      o[1] as api.GoogleCloudVisionV1p2beta1ColorInfo);
+  checkGoogleCloudVisionV1p2beta1ColorInfo(o[0]);
+  checkGoogleCloudVisionV1p2beta1ColorInfo(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p2beta1DominantColorsAnnotation = 0;
 api.GoogleCloudVisionV1p2beta1DominantColorsAnnotation
     buildGoogleCloudVisionV1p2beta1DominantColorsAnnotation() {
-  var o = api.GoogleCloudVisionV1p2beta1DominantColorsAnnotation();
+  final o = api.GoogleCloudVisionV1p2beta1DominantColorsAnnotation();
   buildCounterGoogleCloudVisionV1p2beta1DominantColorsAnnotation++;
   if (buildCounterGoogleCloudVisionV1p2beta1DominantColorsAnnotation < 3) {
     o.colors = buildUnnamed4264();
@@ -3847,7 +3716,7 @@ void checkGoogleCloudVisionV1p2beta1DominantColorsAnnotation(
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1LocationInfo> buildUnnamed4265() {
-  var o = <api.GoogleCloudVisionV1p2beta1LocationInfo>[];
+  final o = <api.GoogleCloudVisionV1p2beta1LocationInfo>[];
   o.add(buildGoogleCloudVisionV1p2beta1LocationInfo());
   o.add(buildGoogleCloudVisionV1p2beta1LocationInfo());
   return o;
@@ -3855,14 +3724,12 @@ core.List<api.GoogleCloudVisionV1p2beta1LocationInfo> buildUnnamed4265() {
 
 void checkUnnamed4265(core.List<api.GoogleCloudVisionV1p2beta1LocationInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1LocationInfo(
-      o[0] as api.GoogleCloudVisionV1p2beta1LocationInfo);
-  checkGoogleCloudVisionV1p2beta1LocationInfo(
-      o[1] as api.GoogleCloudVisionV1p2beta1LocationInfo);
+  checkGoogleCloudVisionV1p2beta1LocationInfo(o[0]);
+  checkGoogleCloudVisionV1p2beta1LocationInfo(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1Property> buildUnnamed4266() {
-  var o = <api.GoogleCloudVisionV1p2beta1Property>[];
+  final o = <api.GoogleCloudVisionV1p2beta1Property>[];
   o.add(buildGoogleCloudVisionV1p2beta1Property());
   o.add(buildGoogleCloudVisionV1p2beta1Property());
   return o;
@@ -3870,16 +3737,14 @@ core.List<api.GoogleCloudVisionV1p2beta1Property> buildUnnamed4266() {
 
 void checkUnnamed4266(core.List<api.GoogleCloudVisionV1p2beta1Property> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1Property(
-      o[0] as api.GoogleCloudVisionV1p2beta1Property);
-  checkGoogleCloudVisionV1p2beta1Property(
-      o[1] as api.GoogleCloudVisionV1p2beta1Property);
+  checkGoogleCloudVisionV1p2beta1Property(o[0]);
+  checkGoogleCloudVisionV1p2beta1Property(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p2beta1EntityAnnotation = 0;
 api.GoogleCloudVisionV1p2beta1EntityAnnotation
     buildGoogleCloudVisionV1p2beta1EntityAnnotation() {
-  var o = api.GoogleCloudVisionV1p2beta1EntityAnnotation();
+  final o = api.GoogleCloudVisionV1p2beta1EntityAnnotation();
   buildCounterGoogleCloudVisionV1p2beta1EntityAnnotation++;
   if (buildCounterGoogleCloudVisionV1p2beta1EntityAnnotation < 3) {
     o.boundingPoly = buildGoogleCloudVisionV1p2beta1BoundingPoly();
@@ -3900,8 +3765,7 @@ void checkGoogleCloudVisionV1p2beta1EntityAnnotation(
     api.GoogleCloudVisionV1p2beta1EntityAnnotation o) {
   buildCounterGoogleCloudVisionV1p2beta1EntityAnnotation++;
   if (buildCounterGoogleCloudVisionV1p2beta1EntityAnnotation < 3) {
-    checkGoogleCloudVisionV1p2beta1BoundingPoly(
-        o.boundingPoly! as api.GoogleCloudVisionV1p2beta1BoundingPoly);
+    checkGoogleCloudVisionV1p2beta1BoundingPoly(o.boundingPoly!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
@@ -3934,7 +3798,7 @@ void checkGoogleCloudVisionV1p2beta1EntityAnnotation(
 
 core.List<api.GoogleCloudVisionV1p2beta1FaceAnnotationLandmark>
     buildUnnamed4267() {
-  var o = <api.GoogleCloudVisionV1p2beta1FaceAnnotationLandmark>[];
+  final o = <api.GoogleCloudVisionV1p2beta1FaceAnnotationLandmark>[];
   o.add(buildGoogleCloudVisionV1p2beta1FaceAnnotationLandmark());
   o.add(buildGoogleCloudVisionV1p2beta1FaceAnnotationLandmark());
   return o;
@@ -3943,16 +3807,14 @@ core.List<api.GoogleCloudVisionV1p2beta1FaceAnnotationLandmark>
 void checkUnnamed4267(
     core.List<api.GoogleCloudVisionV1p2beta1FaceAnnotationLandmark> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1FaceAnnotationLandmark(
-      o[0] as api.GoogleCloudVisionV1p2beta1FaceAnnotationLandmark);
-  checkGoogleCloudVisionV1p2beta1FaceAnnotationLandmark(
-      o[1] as api.GoogleCloudVisionV1p2beta1FaceAnnotationLandmark);
+  checkGoogleCloudVisionV1p2beta1FaceAnnotationLandmark(o[0]);
+  checkGoogleCloudVisionV1p2beta1FaceAnnotationLandmark(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p2beta1FaceAnnotation = 0;
 api.GoogleCloudVisionV1p2beta1FaceAnnotation
     buildGoogleCloudVisionV1p2beta1FaceAnnotation() {
-  var o = api.GoogleCloudVisionV1p2beta1FaceAnnotation();
+  final o = api.GoogleCloudVisionV1p2beta1FaceAnnotation();
   buildCounterGoogleCloudVisionV1p2beta1FaceAnnotation++;
   if (buildCounterGoogleCloudVisionV1p2beta1FaceAnnotation < 3) {
     o.angerLikelihood = 'foo';
@@ -3987,14 +3849,12 @@ void checkGoogleCloudVisionV1p2beta1FaceAnnotation(
       o.blurredLikelihood!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudVisionV1p2beta1BoundingPoly(
-        o.boundingPoly! as api.GoogleCloudVisionV1p2beta1BoundingPoly);
+    checkGoogleCloudVisionV1p2beta1BoundingPoly(o.boundingPoly!);
     unittest.expect(
       o.detectionConfidence!,
       unittest.equals(42.0),
     );
-    checkGoogleCloudVisionV1p2beta1BoundingPoly(
-        o.fdBoundingPoly! as api.GoogleCloudVisionV1p2beta1BoundingPoly);
+    checkGoogleCloudVisionV1p2beta1BoundingPoly(o.fdBoundingPoly!);
     unittest.expect(
       o.headwearLikelihood!,
       unittest.equals('foo'),
@@ -4039,7 +3899,7 @@ void checkGoogleCloudVisionV1p2beta1FaceAnnotation(
 core.int buildCounterGoogleCloudVisionV1p2beta1FaceAnnotationLandmark = 0;
 api.GoogleCloudVisionV1p2beta1FaceAnnotationLandmark
     buildGoogleCloudVisionV1p2beta1FaceAnnotationLandmark() {
-  var o = api.GoogleCloudVisionV1p2beta1FaceAnnotationLandmark();
+  final o = api.GoogleCloudVisionV1p2beta1FaceAnnotationLandmark();
   buildCounterGoogleCloudVisionV1p2beta1FaceAnnotationLandmark++;
   if (buildCounterGoogleCloudVisionV1p2beta1FaceAnnotationLandmark < 3) {
     o.position = buildGoogleCloudVisionV1p2beta1Position();
@@ -4053,8 +3913,7 @@ void checkGoogleCloudVisionV1p2beta1FaceAnnotationLandmark(
     api.GoogleCloudVisionV1p2beta1FaceAnnotationLandmark o) {
   buildCounterGoogleCloudVisionV1p2beta1FaceAnnotationLandmark++;
   if (buildCounterGoogleCloudVisionV1p2beta1FaceAnnotationLandmark < 3) {
-    checkGoogleCloudVisionV1p2beta1Position(
-        o.position! as api.GoogleCloudVisionV1p2beta1Position);
+    checkGoogleCloudVisionV1p2beta1Position(o.position!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -4066,7 +3925,7 @@ void checkGoogleCloudVisionV1p2beta1FaceAnnotationLandmark(
 core.int buildCounterGoogleCloudVisionV1p2beta1GcsDestination = 0;
 api.GoogleCloudVisionV1p2beta1GcsDestination
     buildGoogleCloudVisionV1p2beta1GcsDestination() {
-  var o = api.GoogleCloudVisionV1p2beta1GcsDestination();
+  final o = api.GoogleCloudVisionV1p2beta1GcsDestination();
   buildCounterGoogleCloudVisionV1p2beta1GcsDestination++;
   if (buildCounterGoogleCloudVisionV1p2beta1GcsDestination < 3) {
     o.uri = 'foo';
@@ -4090,7 +3949,7 @@ void checkGoogleCloudVisionV1p2beta1GcsDestination(
 core.int buildCounterGoogleCloudVisionV1p2beta1GcsSource = 0;
 api.GoogleCloudVisionV1p2beta1GcsSource
     buildGoogleCloudVisionV1p2beta1GcsSource() {
-  var o = api.GoogleCloudVisionV1p2beta1GcsSource();
+  final o = api.GoogleCloudVisionV1p2beta1GcsSource();
   buildCounterGoogleCloudVisionV1p2beta1GcsSource++;
   if (buildCounterGoogleCloudVisionV1p2beta1GcsSource < 3) {
     o.uri = 'foo';
@@ -4114,7 +3973,7 @@ void checkGoogleCloudVisionV1p2beta1GcsSource(
 core.int buildCounterGoogleCloudVisionV1p2beta1ImageAnnotationContext = 0;
 api.GoogleCloudVisionV1p2beta1ImageAnnotationContext
     buildGoogleCloudVisionV1p2beta1ImageAnnotationContext() {
-  var o = api.GoogleCloudVisionV1p2beta1ImageAnnotationContext();
+  final o = api.GoogleCloudVisionV1p2beta1ImageAnnotationContext();
   buildCounterGoogleCloudVisionV1p2beta1ImageAnnotationContext++;
   if (buildCounterGoogleCloudVisionV1p2beta1ImageAnnotationContext < 3) {
     o.pageNumber = 42;
@@ -4143,7 +4002,7 @@ void checkGoogleCloudVisionV1p2beta1ImageAnnotationContext(
 core.int buildCounterGoogleCloudVisionV1p2beta1ImageProperties = 0;
 api.GoogleCloudVisionV1p2beta1ImageProperties
     buildGoogleCloudVisionV1p2beta1ImageProperties() {
-  var o = api.GoogleCloudVisionV1p2beta1ImageProperties();
+  final o = api.GoogleCloudVisionV1p2beta1ImageProperties();
   buildCounterGoogleCloudVisionV1p2beta1ImageProperties++;
   if (buildCounterGoogleCloudVisionV1p2beta1ImageProperties < 3) {
     o.dominantColors =
@@ -4157,8 +4016,7 @@ void checkGoogleCloudVisionV1p2beta1ImageProperties(
     api.GoogleCloudVisionV1p2beta1ImageProperties o) {
   buildCounterGoogleCloudVisionV1p2beta1ImageProperties++;
   if (buildCounterGoogleCloudVisionV1p2beta1ImageProperties < 3) {
-    checkGoogleCloudVisionV1p2beta1DominantColorsAnnotation(o.dominantColors!
-        as api.GoogleCloudVisionV1p2beta1DominantColorsAnnotation);
+    checkGoogleCloudVisionV1p2beta1DominantColorsAnnotation(o.dominantColors!);
   }
   buildCounterGoogleCloudVisionV1p2beta1ImageProperties--;
 }
@@ -4166,7 +4024,7 @@ void checkGoogleCloudVisionV1p2beta1ImageProperties(
 core.int buildCounterGoogleCloudVisionV1p2beta1InputConfig = 0;
 api.GoogleCloudVisionV1p2beta1InputConfig
     buildGoogleCloudVisionV1p2beta1InputConfig() {
-  var o = api.GoogleCloudVisionV1p2beta1InputConfig();
+  final o = api.GoogleCloudVisionV1p2beta1InputConfig();
   buildCounterGoogleCloudVisionV1p2beta1InputConfig++;
   if (buildCounterGoogleCloudVisionV1p2beta1InputConfig < 3) {
     o.content = 'foo';
@@ -4185,8 +4043,7 @@ void checkGoogleCloudVisionV1p2beta1InputConfig(
       o.content!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudVisionV1p2beta1GcsSource(
-        o.gcsSource! as api.GoogleCloudVisionV1p2beta1GcsSource);
+    checkGoogleCloudVisionV1p2beta1GcsSource(o.gcsSource!);
     unittest.expect(
       o.mimeType!,
       unittest.equals('foo'),
@@ -4198,7 +4055,7 @@ void checkGoogleCloudVisionV1p2beta1InputConfig(
 core.int buildCounterGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation = 0;
 api.GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation
     buildGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation() {
-  var o = api.GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation();
+  final o = api.GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation();
   buildCounterGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation++;
   if (buildCounterGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation < 3) {
     o.boundingPoly = buildGoogleCloudVisionV1p2beta1BoundingPoly();
@@ -4215,8 +4072,7 @@ void checkGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation(
     api.GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation o) {
   buildCounterGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation++;
   if (buildCounterGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation < 3) {
-    checkGoogleCloudVisionV1p2beta1BoundingPoly(
-        o.boundingPoly! as api.GoogleCloudVisionV1p2beta1BoundingPoly);
+    checkGoogleCloudVisionV1p2beta1BoundingPoly(o.boundingPoly!);
     unittest.expect(
       o.languageCode!,
       unittest.equals('foo'),
@@ -4240,7 +4096,7 @@ void checkGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation(
 core.int buildCounterGoogleCloudVisionV1p2beta1LocationInfo = 0;
 api.GoogleCloudVisionV1p2beta1LocationInfo
     buildGoogleCloudVisionV1p2beta1LocationInfo() {
-  var o = api.GoogleCloudVisionV1p2beta1LocationInfo();
+  final o = api.GoogleCloudVisionV1p2beta1LocationInfo();
   buildCounterGoogleCloudVisionV1p2beta1LocationInfo++;
   if (buildCounterGoogleCloudVisionV1p2beta1LocationInfo < 3) {
     o.latLng = buildLatLng();
@@ -4253,7 +4109,7 @@ void checkGoogleCloudVisionV1p2beta1LocationInfo(
     api.GoogleCloudVisionV1p2beta1LocationInfo o) {
   buildCounterGoogleCloudVisionV1p2beta1LocationInfo++;
   if (buildCounterGoogleCloudVisionV1p2beta1LocationInfo < 3) {
-    checkLatLng(o.latLng! as api.LatLng);
+    checkLatLng(o.latLng!);
   }
   buildCounterGoogleCloudVisionV1p2beta1LocationInfo--;
 }
@@ -4261,7 +4117,7 @@ void checkGoogleCloudVisionV1p2beta1LocationInfo(
 core.int buildCounterGoogleCloudVisionV1p2beta1NormalizedVertex = 0;
 api.GoogleCloudVisionV1p2beta1NormalizedVertex
     buildGoogleCloudVisionV1p2beta1NormalizedVertex() {
-  var o = api.GoogleCloudVisionV1p2beta1NormalizedVertex();
+  final o = api.GoogleCloudVisionV1p2beta1NormalizedVertex();
   buildCounterGoogleCloudVisionV1p2beta1NormalizedVertex++;
   if (buildCounterGoogleCloudVisionV1p2beta1NormalizedVertex < 3) {
     o.x = 42.0;
@@ -4290,7 +4146,7 @@ void checkGoogleCloudVisionV1p2beta1NormalizedVertex(
 core.int buildCounterGoogleCloudVisionV1p2beta1OperationMetadata = 0;
 api.GoogleCloudVisionV1p2beta1OperationMetadata
     buildGoogleCloudVisionV1p2beta1OperationMetadata() {
-  var o = api.GoogleCloudVisionV1p2beta1OperationMetadata();
+  final o = api.GoogleCloudVisionV1p2beta1OperationMetadata();
   buildCounterGoogleCloudVisionV1p2beta1OperationMetadata++;
   if (buildCounterGoogleCloudVisionV1p2beta1OperationMetadata < 3) {
     o.createTime = 'foo';
@@ -4324,7 +4180,7 @@ void checkGoogleCloudVisionV1p2beta1OperationMetadata(
 core.int buildCounterGoogleCloudVisionV1p2beta1OutputConfig = 0;
 api.GoogleCloudVisionV1p2beta1OutputConfig
     buildGoogleCloudVisionV1p2beta1OutputConfig() {
-  var o = api.GoogleCloudVisionV1p2beta1OutputConfig();
+  final o = api.GoogleCloudVisionV1p2beta1OutputConfig();
   buildCounterGoogleCloudVisionV1p2beta1OutputConfig++;
   if (buildCounterGoogleCloudVisionV1p2beta1OutputConfig < 3) {
     o.batchSize = 42;
@@ -4342,14 +4198,13 @@ void checkGoogleCloudVisionV1p2beta1OutputConfig(
       o.batchSize!,
       unittest.equals(42),
     );
-    checkGoogleCloudVisionV1p2beta1GcsDestination(
-        o.gcsDestination! as api.GoogleCloudVisionV1p2beta1GcsDestination);
+    checkGoogleCloudVisionV1p2beta1GcsDestination(o.gcsDestination!);
   }
   buildCounterGoogleCloudVisionV1p2beta1OutputConfig--;
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1Block> buildUnnamed4268() {
-  var o = <api.GoogleCloudVisionV1p2beta1Block>[];
+  final o = <api.GoogleCloudVisionV1p2beta1Block>[];
   o.add(buildGoogleCloudVisionV1p2beta1Block());
   o.add(buildGoogleCloudVisionV1p2beta1Block());
   return o;
@@ -4357,15 +4212,13 @@ core.List<api.GoogleCloudVisionV1p2beta1Block> buildUnnamed4268() {
 
 void checkUnnamed4268(core.List<api.GoogleCloudVisionV1p2beta1Block> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1Block(
-      o[0] as api.GoogleCloudVisionV1p2beta1Block);
-  checkGoogleCloudVisionV1p2beta1Block(
-      o[1] as api.GoogleCloudVisionV1p2beta1Block);
+  checkGoogleCloudVisionV1p2beta1Block(o[0]);
+  checkGoogleCloudVisionV1p2beta1Block(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p2beta1Page = 0;
 api.GoogleCloudVisionV1p2beta1Page buildGoogleCloudVisionV1p2beta1Page() {
-  var o = api.GoogleCloudVisionV1p2beta1Page();
+  final o = api.GoogleCloudVisionV1p2beta1Page();
   buildCounterGoogleCloudVisionV1p2beta1Page++;
   if (buildCounterGoogleCloudVisionV1p2beta1Page < 3) {
     o.blocks = buildUnnamed4268();
@@ -4390,8 +4243,7 @@ void checkGoogleCloudVisionV1p2beta1Page(api.GoogleCloudVisionV1p2beta1Page o) {
       o.height!,
       unittest.equals(42),
     );
-    checkGoogleCloudVisionV1p2beta1TextAnnotationTextProperty(o.property!
-        as api.GoogleCloudVisionV1p2beta1TextAnnotationTextProperty);
+    checkGoogleCloudVisionV1p2beta1TextAnnotationTextProperty(o.property!);
     unittest.expect(
       o.width!,
       unittest.equals(42),
@@ -4401,7 +4253,7 @@ void checkGoogleCloudVisionV1p2beta1Page(api.GoogleCloudVisionV1p2beta1Page o) {
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1Word> buildUnnamed4269() {
-  var o = <api.GoogleCloudVisionV1p2beta1Word>[];
+  final o = <api.GoogleCloudVisionV1p2beta1Word>[];
   o.add(buildGoogleCloudVisionV1p2beta1Word());
   o.add(buildGoogleCloudVisionV1p2beta1Word());
   return o;
@@ -4409,16 +4261,14 @@ core.List<api.GoogleCloudVisionV1p2beta1Word> buildUnnamed4269() {
 
 void checkUnnamed4269(core.List<api.GoogleCloudVisionV1p2beta1Word> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1Word(
-      o[0] as api.GoogleCloudVisionV1p2beta1Word);
-  checkGoogleCloudVisionV1p2beta1Word(
-      o[1] as api.GoogleCloudVisionV1p2beta1Word);
+  checkGoogleCloudVisionV1p2beta1Word(o[0]);
+  checkGoogleCloudVisionV1p2beta1Word(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p2beta1Paragraph = 0;
 api.GoogleCloudVisionV1p2beta1Paragraph
     buildGoogleCloudVisionV1p2beta1Paragraph() {
-  var o = api.GoogleCloudVisionV1p2beta1Paragraph();
+  final o = api.GoogleCloudVisionV1p2beta1Paragraph();
   buildCounterGoogleCloudVisionV1p2beta1Paragraph++;
   if (buildCounterGoogleCloudVisionV1p2beta1Paragraph < 3) {
     o.boundingBox = buildGoogleCloudVisionV1p2beta1BoundingPoly();
@@ -4434,14 +4284,12 @@ void checkGoogleCloudVisionV1p2beta1Paragraph(
     api.GoogleCloudVisionV1p2beta1Paragraph o) {
   buildCounterGoogleCloudVisionV1p2beta1Paragraph++;
   if (buildCounterGoogleCloudVisionV1p2beta1Paragraph < 3) {
-    checkGoogleCloudVisionV1p2beta1BoundingPoly(
-        o.boundingBox! as api.GoogleCloudVisionV1p2beta1BoundingPoly);
+    checkGoogleCloudVisionV1p2beta1BoundingPoly(o.boundingBox!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
     );
-    checkGoogleCloudVisionV1p2beta1TextAnnotationTextProperty(o.property!
-        as api.GoogleCloudVisionV1p2beta1TextAnnotationTextProperty);
+    checkGoogleCloudVisionV1p2beta1TextAnnotationTextProperty(o.property!);
     checkUnnamed4269(o.words!);
   }
   buildCounterGoogleCloudVisionV1p2beta1Paragraph--;
@@ -4450,7 +4298,7 @@ void checkGoogleCloudVisionV1p2beta1Paragraph(
 core.int buildCounterGoogleCloudVisionV1p2beta1Position = 0;
 api.GoogleCloudVisionV1p2beta1Position
     buildGoogleCloudVisionV1p2beta1Position() {
-  var o = api.GoogleCloudVisionV1p2beta1Position();
+  final o = api.GoogleCloudVisionV1p2beta1Position();
   buildCounterGoogleCloudVisionV1p2beta1Position++;
   if (buildCounterGoogleCloudVisionV1p2beta1Position < 3) {
     o.x = 42.0;
@@ -4482,7 +4330,7 @@ void checkGoogleCloudVisionV1p2beta1Position(
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1ProductKeyValue> buildUnnamed4270() {
-  var o = <api.GoogleCloudVisionV1p2beta1ProductKeyValue>[];
+  final o = <api.GoogleCloudVisionV1p2beta1ProductKeyValue>[];
   o.add(buildGoogleCloudVisionV1p2beta1ProductKeyValue());
   o.add(buildGoogleCloudVisionV1p2beta1ProductKeyValue());
   return o;
@@ -4491,15 +4339,13 @@ core.List<api.GoogleCloudVisionV1p2beta1ProductKeyValue> buildUnnamed4270() {
 void checkUnnamed4270(
     core.List<api.GoogleCloudVisionV1p2beta1ProductKeyValue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1ProductKeyValue(
-      o[0] as api.GoogleCloudVisionV1p2beta1ProductKeyValue);
-  checkGoogleCloudVisionV1p2beta1ProductKeyValue(
-      o[1] as api.GoogleCloudVisionV1p2beta1ProductKeyValue);
+  checkGoogleCloudVisionV1p2beta1ProductKeyValue(o[0]);
+  checkGoogleCloudVisionV1p2beta1ProductKeyValue(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p2beta1Product = 0;
 api.GoogleCloudVisionV1p2beta1Product buildGoogleCloudVisionV1p2beta1Product() {
-  var o = api.GoogleCloudVisionV1p2beta1Product();
+  final o = api.GoogleCloudVisionV1p2beta1Product();
   buildCounterGoogleCloudVisionV1p2beta1Product++;
   if (buildCounterGoogleCloudVisionV1p2beta1Product < 3) {
     o.description = 'foo';
@@ -4540,7 +4386,7 @@ void checkGoogleCloudVisionV1p2beta1Product(
 core.int buildCounterGoogleCloudVisionV1p2beta1ProductKeyValue = 0;
 api.GoogleCloudVisionV1p2beta1ProductKeyValue
     buildGoogleCloudVisionV1p2beta1ProductKeyValue() {
-  var o = api.GoogleCloudVisionV1p2beta1ProductKeyValue();
+  final o = api.GoogleCloudVisionV1p2beta1ProductKeyValue();
   buildCounterGoogleCloudVisionV1p2beta1ProductKeyValue++;
   if (buildCounterGoogleCloudVisionV1p2beta1ProductKeyValue < 3) {
     o.key = 'foo';
@@ -4568,7 +4414,7 @@ void checkGoogleCloudVisionV1p2beta1ProductKeyValue(
 
 core.List<api.GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult>
     buildUnnamed4271() {
-  var o = <api.GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult>[];
+  final o = <api.GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult>[];
   o.add(buildGoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult());
   o.add(buildGoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult());
   return o;
@@ -4578,15 +4424,13 @@ void checkUnnamed4271(
     core.List<api.GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult(
-      o[0] as api.GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult);
-  checkGoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult(
-      o[1] as api.GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult);
+  checkGoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult(o[0]);
+  checkGoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult>
     buildUnnamed4272() {
-  var o = <api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult>[];
+  final o = <api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult>[];
   o.add(buildGoogleCloudVisionV1p2beta1ProductSearchResultsResult());
   o.add(buildGoogleCloudVisionV1p2beta1ProductSearchResultsResult());
   return o;
@@ -4595,16 +4439,14 @@ core.List<api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult>
 void checkUnnamed4272(
     core.List<api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1ProductSearchResultsResult(
-      o[0] as api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult);
-  checkGoogleCloudVisionV1p2beta1ProductSearchResultsResult(
-      o[1] as api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult);
+  checkGoogleCloudVisionV1p2beta1ProductSearchResultsResult(o[0]);
+  checkGoogleCloudVisionV1p2beta1ProductSearchResultsResult(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p2beta1ProductSearchResults = 0;
 api.GoogleCloudVisionV1p2beta1ProductSearchResults
     buildGoogleCloudVisionV1p2beta1ProductSearchResults() {
-  var o = api.GoogleCloudVisionV1p2beta1ProductSearchResults();
+  final o = api.GoogleCloudVisionV1p2beta1ProductSearchResults();
   buildCounterGoogleCloudVisionV1p2beta1ProductSearchResults++;
   if (buildCounterGoogleCloudVisionV1p2beta1ProductSearchResults < 3) {
     o.indexTime = 'foo';
@@ -4631,7 +4473,7 @@ void checkGoogleCloudVisionV1p2beta1ProductSearchResults(
 
 core.List<api.GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation>
     buildUnnamed4273() {
-  var o =
+  final o =
       <api.GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation>[];
   o.add(buildGoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation());
   o.add(buildGoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation());
@@ -4643,15 +4485,13 @@ void checkUnnamed4273(
             api.GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation(o[0]
-      as api.GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation);
-  checkGoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation(o[1]
-      as api.GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation);
+  checkGoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation(o[0]);
+  checkGoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult>
     buildUnnamed4274() {
-  var o = <api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult>[];
+  final o = <api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult>[];
   o.add(buildGoogleCloudVisionV1p2beta1ProductSearchResultsResult());
   o.add(buildGoogleCloudVisionV1p2beta1ProductSearchResultsResult());
   return o;
@@ -4660,17 +4500,15 @@ core.List<api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult>
 void checkUnnamed4274(
     core.List<api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1ProductSearchResultsResult(
-      o[0] as api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult);
-  checkGoogleCloudVisionV1p2beta1ProductSearchResultsResult(
-      o[1] as api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult);
+  checkGoogleCloudVisionV1p2beta1ProductSearchResultsResult(o[0]);
+  checkGoogleCloudVisionV1p2beta1ProductSearchResultsResult(o[1]);
 }
 
 core.int
     buildCounterGoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult = 0;
 api.GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult
     buildGoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult() {
-  var o = api.GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult();
+  final o = api.GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult();
   buildCounterGoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult++;
   if (buildCounterGoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult <
       3) {
@@ -4687,8 +4525,7 @@ void checkGoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult(
   buildCounterGoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult++;
   if (buildCounterGoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult <
       3) {
-    checkGoogleCloudVisionV1p2beta1BoundingPoly(
-        o.boundingPoly! as api.GoogleCloudVisionV1p2beta1BoundingPoly);
+    checkGoogleCloudVisionV1p2beta1BoundingPoly(o.boundingPoly!);
     checkUnnamed4273(o.objectAnnotations!);
     checkUnnamed4274(o.results!);
   }
@@ -4700,7 +4537,8 @@ core.int
     0;
 api.GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation
     buildGoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation() {
-  var o = api.GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation();
+  final o =
+      api.GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation();
   buildCounterGoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation++;
   if (buildCounterGoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation <
       3) {
@@ -4741,7 +4579,7 @@ void checkGoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation(
 core.int buildCounterGoogleCloudVisionV1p2beta1ProductSearchResultsResult = 0;
 api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult
     buildGoogleCloudVisionV1p2beta1ProductSearchResultsResult() {
-  var o = api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult();
+  final o = api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult();
   buildCounterGoogleCloudVisionV1p2beta1ProductSearchResultsResult++;
   if (buildCounterGoogleCloudVisionV1p2beta1ProductSearchResultsResult < 3) {
     o.image = 'foo';
@@ -4760,8 +4598,7 @@ void checkGoogleCloudVisionV1p2beta1ProductSearchResultsResult(
       o.image!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudVisionV1p2beta1Product(
-        o.product! as api.GoogleCloudVisionV1p2beta1Product);
+    checkGoogleCloudVisionV1p2beta1Product(o.product!);
     unittest.expect(
       o.score!,
       unittest.equals(42.0),
@@ -4773,7 +4610,7 @@ void checkGoogleCloudVisionV1p2beta1ProductSearchResultsResult(
 core.int buildCounterGoogleCloudVisionV1p2beta1Property = 0;
 api.GoogleCloudVisionV1p2beta1Property
     buildGoogleCloudVisionV1p2beta1Property() {
-  var o = api.GoogleCloudVisionV1p2beta1Property();
+  final o = api.GoogleCloudVisionV1p2beta1Property();
   buildCounterGoogleCloudVisionV1p2beta1Property++;
   if (buildCounterGoogleCloudVisionV1p2beta1Property < 3) {
     o.name = 'foo';
@@ -4807,7 +4644,7 @@ void checkGoogleCloudVisionV1p2beta1Property(
 core.int buildCounterGoogleCloudVisionV1p2beta1SafeSearchAnnotation = 0;
 api.GoogleCloudVisionV1p2beta1SafeSearchAnnotation
     buildGoogleCloudVisionV1p2beta1SafeSearchAnnotation() {
-  var o = api.GoogleCloudVisionV1p2beta1SafeSearchAnnotation();
+  final o = api.GoogleCloudVisionV1p2beta1SafeSearchAnnotation();
   buildCounterGoogleCloudVisionV1p2beta1SafeSearchAnnotation++;
   if (buildCounterGoogleCloudVisionV1p2beta1SafeSearchAnnotation < 3) {
     o.adult = 'foo';
@@ -4850,7 +4687,7 @@ void checkGoogleCloudVisionV1p2beta1SafeSearchAnnotation(
 
 core.int buildCounterGoogleCloudVisionV1p2beta1Symbol = 0;
 api.GoogleCloudVisionV1p2beta1Symbol buildGoogleCloudVisionV1p2beta1Symbol() {
-  var o = api.GoogleCloudVisionV1p2beta1Symbol();
+  final o = api.GoogleCloudVisionV1p2beta1Symbol();
   buildCounterGoogleCloudVisionV1p2beta1Symbol++;
   if (buildCounterGoogleCloudVisionV1p2beta1Symbol < 3) {
     o.boundingBox = buildGoogleCloudVisionV1p2beta1BoundingPoly();
@@ -4866,14 +4703,12 @@ void checkGoogleCloudVisionV1p2beta1Symbol(
     api.GoogleCloudVisionV1p2beta1Symbol o) {
   buildCounterGoogleCloudVisionV1p2beta1Symbol++;
   if (buildCounterGoogleCloudVisionV1p2beta1Symbol < 3) {
-    checkGoogleCloudVisionV1p2beta1BoundingPoly(
-        o.boundingBox! as api.GoogleCloudVisionV1p2beta1BoundingPoly);
+    checkGoogleCloudVisionV1p2beta1BoundingPoly(o.boundingBox!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
     );
-    checkGoogleCloudVisionV1p2beta1TextAnnotationTextProperty(o.property!
-        as api.GoogleCloudVisionV1p2beta1TextAnnotationTextProperty);
+    checkGoogleCloudVisionV1p2beta1TextAnnotationTextProperty(o.property!);
     unittest.expect(
       o.text!,
       unittest.equals('foo'),
@@ -4883,7 +4718,7 @@ void checkGoogleCloudVisionV1p2beta1Symbol(
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1Page> buildUnnamed4275() {
-  var o = <api.GoogleCloudVisionV1p2beta1Page>[];
+  final o = <api.GoogleCloudVisionV1p2beta1Page>[];
   o.add(buildGoogleCloudVisionV1p2beta1Page());
   o.add(buildGoogleCloudVisionV1p2beta1Page());
   return o;
@@ -4891,16 +4726,14 @@ core.List<api.GoogleCloudVisionV1p2beta1Page> buildUnnamed4275() {
 
 void checkUnnamed4275(core.List<api.GoogleCloudVisionV1p2beta1Page> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1Page(
-      o[0] as api.GoogleCloudVisionV1p2beta1Page);
-  checkGoogleCloudVisionV1p2beta1Page(
-      o[1] as api.GoogleCloudVisionV1p2beta1Page);
+  checkGoogleCloudVisionV1p2beta1Page(o[0]);
+  checkGoogleCloudVisionV1p2beta1Page(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p2beta1TextAnnotation = 0;
 api.GoogleCloudVisionV1p2beta1TextAnnotation
     buildGoogleCloudVisionV1p2beta1TextAnnotation() {
-  var o = api.GoogleCloudVisionV1p2beta1TextAnnotation();
+  final o = api.GoogleCloudVisionV1p2beta1TextAnnotation();
   buildCounterGoogleCloudVisionV1p2beta1TextAnnotation++;
   if (buildCounterGoogleCloudVisionV1p2beta1TextAnnotation < 3) {
     o.pages = buildUnnamed4275();
@@ -4926,7 +4759,7 @@ void checkGoogleCloudVisionV1p2beta1TextAnnotation(
 core.int buildCounterGoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak = 0;
 api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak
     buildGoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak() {
-  var o = api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak();
+  final o = api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak();
   buildCounterGoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak++;
   if (buildCounterGoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak < 3) {
     o.isPrefix = true;
@@ -4953,7 +4786,7 @@ core.int buildCounterGoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage =
     0;
 api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage
     buildGoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage() {
-  var o = api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage();
+  final o = api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage();
   buildCounterGoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage++;
   if (buildCounterGoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage <
       3) {
@@ -4983,7 +4816,7 @@ void checkGoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage(
 
 core.List<api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage>
     buildUnnamed4276() {
-  var o = <api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage>[];
+  final o = <api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage>[];
   o.add(buildGoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage());
   o.add(buildGoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage());
   return o;
@@ -4992,16 +4825,14 @@ core.List<api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage>
 void checkUnnamed4276(
     core.List<api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage(
-      o[0] as api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage);
-  checkGoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage(
-      o[1] as api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage);
+  checkGoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage(o[0]);
+  checkGoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p2beta1TextAnnotationTextProperty = 0;
 api.GoogleCloudVisionV1p2beta1TextAnnotationTextProperty
     buildGoogleCloudVisionV1p2beta1TextAnnotationTextProperty() {
-  var o = api.GoogleCloudVisionV1p2beta1TextAnnotationTextProperty();
+  final o = api.GoogleCloudVisionV1p2beta1TextAnnotationTextProperty();
   buildCounterGoogleCloudVisionV1p2beta1TextAnnotationTextProperty++;
   if (buildCounterGoogleCloudVisionV1p2beta1TextAnnotationTextProperty < 3) {
     o.detectedBreak =
@@ -5016,8 +4847,8 @@ void checkGoogleCloudVisionV1p2beta1TextAnnotationTextProperty(
     api.GoogleCloudVisionV1p2beta1TextAnnotationTextProperty o) {
   buildCounterGoogleCloudVisionV1p2beta1TextAnnotationTextProperty++;
   if (buildCounterGoogleCloudVisionV1p2beta1TextAnnotationTextProperty < 3) {
-    checkGoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak(o.detectedBreak!
-        as api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak);
+    checkGoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak(
+        o.detectedBreak!);
     checkUnnamed4276(o.detectedLanguages!);
   }
   buildCounterGoogleCloudVisionV1p2beta1TextAnnotationTextProperty--;
@@ -5025,7 +4856,7 @@ void checkGoogleCloudVisionV1p2beta1TextAnnotationTextProperty(
 
 core.int buildCounterGoogleCloudVisionV1p2beta1Vertex = 0;
 api.GoogleCloudVisionV1p2beta1Vertex buildGoogleCloudVisionV1p2beta1Vertex() {
-  var o = api.GoogleCloudVisionV1p2beta1Vertex();
+  final o = api.GoogleCloudVisionV1p2beta1Vertex();
   buildCounterGoogleCloudVisionV1p2beta1Vertex++;
   if (buildCounterGoogleCloudVisionV1p2beta1Vertex < 3) {
     o.x = 42;
@@ -5053,7 +4884,7 @@ void checkGoogleCloudVisionV1p2beta1Vertex(
 
 core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebLabel>
     buildUnnamed4277() {
-  var o = <api.GoogleCloudVisionV1p2beta1WebDetectionWebLabel>[];
+  final o = <api.GoogleCloudVisionV1p2beta1WebDetectionWebLabel>[];
   o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebLabel());
   o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebLabel());
   return o;
@@ -5062,15 +4893,13 @@ core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebLabel>
 void checkUnnamed4277(
     core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebLabel> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1WebDetectionWebLabel(
-      o[0] as api.GoogleCloudVisionV1p2beta1WebDetectionWebLabel);
-  checkGoogleCloudVisionV1p2beta1WebDetectionWebLabel(
-      o[1] as api.GoogleCloudVisionV1p2beta1WebDetectionWebLabel);
+  checkGoogleCloudVisionV1p2beta1WebDetectionWebLabel(o[0]);
+  checkGoogleCloudVisionV1p2beta1WebDetectionWebLabel(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>
     buildUnnamed4278() {
-  var o = <api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>[];
+  final o = <api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>[];
   o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebImage());
   o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebImage());
   return o;
@@ -5079,15 +4908,13 @@ core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>
 void checkUnnamed4278(
     core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(
-      o[0] as api.GoogleCloudVisionV1p2beta1WebDetectionWebImage);
-  checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(
-      o[1] as api.GoogleCloudVisionV1p2beta1WebDetectionWebImage);
+  checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(o[0]);
+  checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebPage>
     buildUnnamed4279() {
-  var o = <api.GoogleCloudVisionV1p2beta1WebDetectionWebPage>[];
+  final o = <api.GoogleCloudVisionV1p2beta1WebDetectionWebPage>[];
   o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebPage());
   o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebPage());
   return o;
@@ -5096,15 +4923,13 @@ core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebPage>
 void checkUnnamed4279(
     core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebPage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1WebDetectionWebPage(
-      o[0] as api.GoogleCloudVisionV1p2beta1WebDetectionWebPage);
-  checkGoogleCloudVisionV1p2beta1WebDetectionWebPage(
-      o[1] as api.GoogleCloudVisionV1p2beta1WebDetectionWebPage);
+  checkGoogleCloudVisionV1p2beta1WebDetectionWebPage(o[0]);
+  checkGoogleCloudVisionV1p2beta1WebDetectionWebPage(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>
     buildUnnamed4280() {
-  var o = <api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>[];
+  final o = <api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>[];
   o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebImage());
   o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebImage());
   return o;
@@ -5113,15 +4938,13 @@ core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>
 void checkUnnamed4280(
     core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(
-      o[0] as api.GoogleCloudVisionV1p2beta1WebDetectionWebImage);
-  checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(
-      o[1] as api.GoogleCloudVisionV1p2beta1WebDetectionWebImage);
+  checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(o[0]);
+  checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>
     buildUnnamed4281() {
-  var o = <api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>[];
+  final o = <api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>[];
   o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebImage());
   o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebImage());
   return o;
@@ -5130,15 +4953,13 @@ core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>
 void checkUnnamed4281(
     core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(
-      o[0] as api.GoogleCloudVisionV1p2beta1WebDetectionWebImage);
-  checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(
-      o[1] as api.GoogleCloudVisionV1p2beta1WebDetectionWebImage);
+  checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(o[0]);
+  checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebEntity>
     buildUnnamed4282() {
-  var o = <api.GoogleCloudVisionV1p2beta1WebDetectionWebEntity>[];
+  final o = <api.GoogleCloudVisionV1p2beta1WebDetectionWebEntity>[];
   o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebEntity());
   o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebEntity());
   return o;
@@ -5147,16 +4968,14 @@ core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebEntity>
 void checkUnnamed4282(
     core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1WebDetectionWebEntity(
-      o[0] as api.GoogleCloudVisionV1p2beta1WebDetectionWebEntity);
-  checkGoogleCloudVisionV1p2beta1WebDetectionWebEntity(
-      o[1] as api.GoogleCloudVisionV1p2beta1WebDetectionWebEntity);
+  checkGoogleCloudVisionV1p2beta1WebDetectionWebEntity(o[0]);
+  checkGoogleCloudVisionV1p2beta1WebDetectionWebEntity(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p2beta1WebDetection = 0;
 api.GoogleCloudVisionV1p2beta1WebDetection
     buildGoogleCloudVisionV1p2beta1WebDetection() {
-  var o = api.GoogleCloudVisionV1p2beta1WebDetection();
+  final o = api.GoogleCloudVisionV1p2beta1WebDetection();
   buildCounterGoogleCloudVisionV1p2beta1WebDetection++;
   if (buildCounterGoogleCloudVisionV1p2beta1WebDetection < 3) {
     o.bestGuessLabels = buildUnnamed4277();
@@ -5187,7 +5006,7 @@ void checkGoogleCloudVisionV1p2beta1WebDetection(
 core.int buildCounterGoogleCloudVisionV1p2beta1WebDetectionWebEntity = 0;
 api.GoogleCloudVisionV1p2beta1WebDetectionWebEntity
     buildGoogleCloudVisionV1p2beta1WebDetectionWebEntity() {
-  var o = api.GoogleCloudVisionV1p2beta1WebDetectionWebEntity();
+  final o = api.GoogleCloudVisionV1p2beta1WebDetectionWebEntity();
   buildCounterGoogleCloudVisionV1p2beta1WebDetectionWebEntity++;
   if (buildCounterGoogleCloudVisionV1p2beta1WebDetectionWebEntity < 3) {
     o.description = 'foo';
@@ -5221,7 +5040,7 @@ void checkGoogleCloudVisionV1p2beta1WebDetectionWebEntity(
 core.int buildCounterGoogleCloudVisionV1p2beta1WebDetectionWebImage = 0;
 api.GoogleCloudVisionV1p2beta1WebDetectionWebImage
     buildGoogleCloudVisionV1p2beta1WebDetectionWebImage() {
-  var o = api.GoogleCloudVisionV1p2beta1WebDetectionWebImage();
+  final o = api.GoogleCloudVisionV1p2beta1WebDetectionWebImage();
   buildCounterGoogleCloudVisionV1p2beta1WebDetectionWebImage++;
   if (buildCounterGoogleCloudVisionV1p2beta1WebDetectionWebImage < 3) {
     o.score = 42.0;
@@ -5250,7 +5069,7 @@ void checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(
 core.int buildCounterGoogleCloudVisionV1p2beta1WebDetectionWebLabel = 0;
 api.GoogleCloudVisionV1p2beta1WebDetectionWebLabel
     buildGoogleCloudVisionV1p2beta1WebDetectionWebLabel() {
-  var o = api.GoogleCloudVisionV1p2beta1WebDetectionWebLabel();
+  final o = api.GoogleCloudVisionV1p2beta1WebDetectionWebLabel();
   buildCounterGoogleCloudVisionV1p2beta1WebDetectionWebLabel++;
   if (buildCounterGoogleCloudVisionV1p2beta1WebDetectionWebLabel < 3) {
     o.label = 'foo';
@@ -5278,7 +5097,7 @@ void checkGoogleCloudVisionV1p2beta1WebDetectionWebLabel(
 
 core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>
     buildUnnamed4283() {
-  var o = <api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>[];
+  final o = <api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>[];
   o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebImage());
   o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebImage());
   return o;
@@ -5287,15 +5106,13 @@ core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>
 void checkUnnamed4283(
     core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(
-      o[0] as api.GoogleCloudVisionV1p2beta1WebDetectionWebImage);
-  checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(
-      o[1] as api.GoogleCloudVisionV1p2beta1WebDetectionWebImage);
+  checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(o[0]);
+  checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>
     buildUnnamed4284() {
-  var o = <api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>[];
+  final o = <api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>[];
   o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebImage());
   o.add(buildGoogleCloudVisionV1p2beta1WebDetectionWebImage());
   return o;
@@ -5304,16 +5121,14 @@ core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebImage>
 void checkUnnamed4284(
     core.List<api.GoogleCloudVisionV1p2beta1WebDetectionWebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(
-      o[0] as api.GoogleCloudVisionV1p2beta1WebDetectionWebImage);
-  checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(
-      o[1] as api.GoogleCloudVisionV1p2beta1WebDetectionWebImage);
+  checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(o[0]);
+  checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p2beta1WebDetectionWebPage = 0;
 api.GoogleCloudVisionV1p2beta1WebDetectionWebPage
     buildGoogleCloudVisionV1p2beta1WebDetectionWebPage() {
-  var o = api.GoogleCloudVisionV1p2beta1WebDetectionWebPage();
+  final o = api.GoogleCloudVisionV1p2beta1WebDetectionWebPage();
   buildCounterGoogleCloudVisionV1p2beta1WebDetectionWebPage++;
   if (buildCounterGoogleCloudVisionV1p2beta1WebDetectionWebPage < 3) {
     o.fullMatchingImages = buildUnnamed4283();
@@ -5349,7 +5164,7 @@ void checkGoogleCloudVisionV1p2beta1WebDetectionWebPage(
 }
 
 core.List<api.GoogleCloudVisionV1p2beta1Symbol> buildUnnamed4285() {
-  var o = <api.GoogleCloudVisionV1p2beta1Symbol>[];
+  final o = <api.GoogleCloudVisionV1p2beta1Symbol>[];
   o.add(buildGoogleCloudVisionV1p2beta1Symbol());
   o.add(buildGoogleCloudVisionV1p2beta1Symbol());
   return o;
@@ -5357,15 +5172,13 @@ core.List<api.GoogleCloudVisionV1p2beta1Symbol> buildUnnamed4285() {
 
 void checkUnnamed4285(core.List<api.GoogleCloudVisionV1p2beta1Symbol> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p2beta1Symbol(
-      o[0] as api.GoogleCloudVisionV1p2beta1Symbol);
-  checkGoogleCloudVisionV1p2beta1Symbol(
-      o[1] as api.GoogleCloudVisionV1p2beta1Symbol);
+  checkGoogleCloudVisionV1p2beta1Symbol(o[0]);
+  checkGoogleCloudVisionV1p2beta1Symbol(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p2beta1Word = 0;
 api.GoogleCloudVisionV1p2beta1Word buildGoogleCloudVisionV1p2beta1Word() {
-  var o = api.GoogleCloudVisionV1p2beta1Word();
+  final o = api.GoogleCloudVisionV1p2beta1Word();
   buildCounterGoogleCloudVisionV1p2beta1Word++;
   if (buildCounterGoogleCloudVisionV1p2beta1Word < 3) {
     o.boundingBox = buildGoogleCloudVisionV1p2beta1BoundingPoly();
@@ -5380,14 +5193,12 @@ api.GoogleCloudVisionV1p2beta1Word buildGoogleCloudVisionV1p2beta1Word() {
 void checkGoogleCloudVisionV1p2beta1Word(api.GoogleCloudVisionV1p2beta1Word o) {
   buildCounterGoogleCloudVisionV1p2beta1Word++;
   if (buildCounterGoogleCloudVisionV1p2beta1Word < 3) {
-    checkGoogleCloudVisionV1p2beta1BoundingPoly(
-        o.boundingBox! as api.GoogleCloudVisionV1p2beta1BoundingPoly);
+    checkGoogleCloudVisionV1p2beta1BoundingPoly(o.boundingBox!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
     );
-    checkGoogleCloudVisionV1p2beta1TextAnnotationTextProperty(o.property!
-        as api.GoogleCloudVisionV1p2beta1TextAnnotationTextProperty);
+    checkGoogleCloudVisionV1p2beta1TextAnnotationTextProperty(o.property!);
     checkUnnamed4285(o.symbols!);
   }
   buildCounterGoogleCloudVisionV1p2beta1Word--;
@@ -5395,7 +5206,7 @@ void checkGoogleCloudVisionV1p2beta1Word(api.GoogleCloudVisionV1p2beta1Word o) {
 
 core.List<api.GoogleCloudVisionV1p3beta1AnnotateImageResponse>
     buildUnnamed4286() {
-  var o = <api.GoogleCloudVisionV1p3beta1AnnotateImageResponse>[];
+  final o = <api.GoogleCloudVisionV1p3beta1AnnotateImageResponse>[];
   o.add(buildGoogleCloudVisionV1p3beta1AnnotateImageResponse());
   o.add(buildGoogleCloudVisionV1p3beta1AnnotateImageResponse());
   return o;
@@ -5404,16 +5215,14 @@ core.List<api.GoogleCloudVisionV1p3beta1AnnotateImageResponse>
 void checkUnnamed4286(
     core.List<api.GoogleCloudVisionV1p3beta1AnnotateImageResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1AnnotateImageResponse(
-      o[0] as api.GoogleCloudVisionV1p3beta1AnnotateImageResponse);
-  checkGoogleCloudVisionV1p3beta1AnnotateImageResponse(
-      o[1] as api.GoogleCloudVisionV1p3beta1AnnotateImageResponse);
+  checkGoogleCloudVisionV1p3beta1AnnotateImageResponse(o[0]);
+  checkGoogleCloudVisionV1p3beta1AnnotateImageResponse(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p3beta1AnnotateFileResponse = 0;
 api.GoogleCloudVisionV1p3beta1AnnotateFileResponse
     buildGoogleCloudVisionV1p3beta1AnnotateFileResponse() {
-  var o = api.GoogleCloudVisionV1p3beta1AnnotateFileResponse();
+  final o = api.GoogleCloudVisionV1p3beta1AnnotateFileResponse();
   buildCounterGoogleCloudVisionV1p3beta1AnnotateFileResponse++;
   if (buildCounterGoogleCloudVisionV1p3beta1AnnotateFileResponse < 3) {
     o.error = buildStatus();
@@ -5429,9 +5238,8 @@ void checkGoogleCloudVisionV1p3beta1AnnotateFileResponse(
     api.GoogleCloudVisionV1p3beta1AnnotateFileResponse o) {
   buildCounterGoogleCloudVisionV1p3beta1AnnotateFileResponse++;
   if (buildCounterGoogleCloudVisionV1p3beta1AnnotateFileResponse < 3) {
-    checkStatus(o.error! as api.Status);
-    checkGoogleCloudVisionV1p3beta1InputConfig(
-        o.inputConfig! as api.GoogleCloudVisionV1p3beta1InputConfig);
+    checkStatus(o.error!);
+    checkGoogleCloudVisionV1p3beta1InputConfig(o.inputConfig!);
     checkUnnamed4286(o.responses!);
     unittest.expect(
       o.totalPages!,
@@ -5442,7 +5250,7 @@ void checkGoogleCloudVisionV1p3beta1AnnotateFileResponse(
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1FaceAnnotation> buildUnnamed4287() {
-  var o = <api.GoogleCloudVisionV1p3beta1FaceAnnotation>[];
+  final o = <api.GoogleCloudVisionV1p3beta1FaceAnnotation>[];
   o.add(buildGoogleCloudVisionV1p3beta1FaceAnnotation());
   o.add(buildGoogleCloudVisionV1p3beta1FaceAnnotation());
   return o;
@@ -5451,14 +5259,12 @@ core.List<api.GoogleCloudVisionV1p3beta1FaceAnnotation> buildUnnamed4287() {
 void checkUnnamed4287(
     core.List<api.GoogleCloudVisionV1p3beta1FaceAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1FaceAnnotation(
-      o[0] as api.GoogleCloudVisionV1p3beta1FaceAnnotation);
-  checkGoogleCloudVisionV1p3beta1FaceAnnotation(
-      o[1] as api.GoogleCloudVisionV1p3beta1FaceAnnotation);
+  checkGoogleCloudVisionV1p3beta1FaceAnnotation(o[0]);
+  checkGoogleCloudVisionV1p3beta1FaceAnnotation(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1EntityAnnotation> buildUnnamed4288() {
-  var o = <api.GoogleCloudVisionV1p3beta1EntityAnnotation>[];
+  final o = <api.GoogleCloudVisionV1p3beta1EntityAnnotation>[];
   o.add(buildGoogleCloudVisionV1p3beta1EntityAnnotation());
   o.add(buildGoogleCloudVisionV1p3beta1EntityAnnotation());
   return o;
@@ -5467,14 +5273,12 @@ core.List<api.GoogleCloudVisionV1p3beta1EntityAnnotation> buildUnnamed4288() {
 void checkUnnamed4288(
     core.List<api.GoogleCloudVisionV1p3beta1EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1EntityAnnotation(
-      o[0] as api.GoogleCloudVisionV1p3beta1EntityAnnotation);
-  checkGoogleCloudVisionV1p3beta1EntityAnnotation(
-      o[1] as api.GoogleCloudVisionV1p3beta1EntityAnnotation);
+  checkGoogleCloudVisionV1p3beta1EntityAnnotation(o[0]);
+  checkGoogleCloudVisionV1p3beta1EntityAnnotation(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1EntityAnnotation> buildUnnamed4289() {
-  var o = <api.GoogleCloudVisionV1p3beta1EntityAnnotation>[];
+  final o = <api.GoogleCloudVisionV1p3beta1EntityAnnotation>[];
   o.add(buildGoogleCloudVisionV1p3beta1EntityAnnotation());
   o.add(buildGoogleCloudVisionV1p3beta1EntityAnnotation());
   return o;
@@ -5483,15 +5287,13 @@ core.List<api.GoogleCloudVisionV1p3beta1EntityAnnotation> buildUnnamed4289() {
 void checkUnnamed4289(
     core.List<api.GoogleCloudVisionV1p3beta1EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1EntityAnnotation(
-      o[0] as api.GoogleCloudVisionV1p3beta1EntityAnnotation);
-  checkGoogleCloudVisionV1p3beta1EntityAnnotation(
-      o[1] as api.GoogleCloudVisionV1p3beta1EntityAnnotation);
+  checkGoogleCloudVisionV1p3beta1EntityAnnotation(o[0]);
+  checkGoogleCloudVisionV1p3beta1EntityAnnotation(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation>
     buildUnnamed4290() {
-  var o = <api.GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation>[];
+  final o = <api.GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation>[];
   o.add(buildGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation());
   o.add(buildGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation());
   return o;
@@ -5500,14 +5302,12 @@ core.List<api.GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation>
 void checkUnnamed4290(
     core.List<api.GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation(
-      o[0] as api.GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation);
-  checkGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation(
-      o[1] as api.GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation);
+  checkGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation(o[0]);
+  checkGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1EntityAnnotation> buildUnnamed4291() {
-  var o = <api.GoogleCloudVisionV1p3beta1EntityAnnotation>[];
+  final o = <api.GoogleCloudVisionV1p3beta1EntityAnnotation>[];
   o.add(buildGoogleCloudVisionV1p3beta1EntityAnnotation());
   o.add(buildGoogleCloudVisionV1p3beta1EntityAnnotation());
   return o;
@@ -5516,14 +5316,12 @@ core.List<api.GoogleCloudVisionV1p3beta1EntityAnnotation> buildUnnamed4291() {
 void checkUnnamed4291(
     core.List<api.GoogleCloudVisionV1p3beta1EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1EntityAnnotation(
-      o[0] as api.GoogleCloudVisionV1p3beta1EntityAnnotation);
-  checkGoogleCloudVisionV1p3beta1EntityAnnotation(
-      o[1] as api.GoogleCloudVisionV1p3beta1EntityAnnotation);
+  checkGoogleCloudVisionV1p3beta1EntityAnnotation(o[0]);
+  checkGoogleCloudVisionV1p3beta1EntityAnnotation(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1EntityAnnotation> buildUnnamed4292() {
-  var o = <api.GoogleCloudVisionV1p3beta1EntityAnnotation>[];
+  final o = <api.GoogleCloudVisionV1p3beta1EntityAnnotation>[];
   o.add(buildGoogleCloudVisionV1p3beta1EntityAnnotation());
   o.add(buildGoogleCloudVisionV1p3beta1EntityAnnotation());
   return o;
@@ -5532,16 +5330,14 @@ core.List<api.GoogleCloudVisionV1p3beta1EntityAnnotation> buildUnnamed4292() {
 void checkUnnamed4292(
     core.List<api.GoogleCloudVisionV1p3beta1EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1EntityAnnotation(
-      o[0] as api.GoogleCloudVisionV1p3beta1EntityAnnotation);
-  checkGoogleCloudVisionV1p3beta1EntityAnnotation(
-      o[1] as api.GoogleCloudVisionV1p3beta1EntityAnnotation);
+  checkGoogleCloudVisionV1p3beta1EntityAnnotation(o[0]);
+  checkGoogleCloudVisionV1p3beta1EntityAnnotation(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p3beta1AnnotateImageResponse = 0;
 api.GoogleCloudVisionV1p3beta1AnnotateImageResponse
     buildGoogleCloudVisionV1p3beta1AnnotateImageResponse() {
-  var o = api.GoogleCloudVisionV1p3beta1AnnotateImageResponse();
+  final o = api.GoogleCloudVisionV1p3beta1AnnotateImageResponse();
   buildCounterGoogleCloudVisionV1p3beta1AnnotateImageResponse++;
   if (buildCounterGoogleCloudVisionV1p3beta1AnnotateImageResponse < 3) {
     o.context = buildGoogleCloudVisionV1p3beta1ImageAnnotationContext();
@@ -5571,27 +5367,23 @@ void checkGoogleCloudVisionV1p3beta1AnnotateImageResponse(
     api.GoogleCloudVisionV1p3beta1AnnotateImageResponse o) {
   buildCounterGoogleCloudVisionV1p3beta1AnnotateImageResponse++;
   if (buildCounterGoogleCloudVisionV1p3beta1AnnotateImageResponse < 3) {
-    checkGoogleCloudVisionV1p3beta1ImageAnnotationContext(
-        o.context! as api.GoogleCloudVisionV1p3beta1ImageAnnotationContext);
-    checkGoogleCloudVisionV1p3beta1CropHintsAnnotation(o.cropHintsAnnotation!
-        as api.GoogleCloudVisionV1p3beta1CropHintsAnnotation);
-    checkStatus(o.error! as api.Status);
+    checkGoogleCloudVisionV1p3beta1ImageAnnotationContext(o.context!);
+    checkGoogleCloudVisionV1p3beta1CropHintsAnnotation(o.cropHintsAnnotation!);
+    checkStatus(o.error!);
     checkUnnamed4287(o.faceAnnotations!);
-    checkGoogleCloudVisionV1p3beta1TextAnnotation(
-        o.fullTextAnnotation! as api.GoogleCloudVisionV1p3beta1TextAnnotation);
-    checkGoogleCloudVisionV1p3beta1ImageProperties(o.imagePropertiesAnnotation!
-        as api.GoogleCloudVisionV1p3beta1ImageProperties);
+    checkGoogleCloudVisionV1p3beta1TextAnnotation(o.fullTextAnnotation!);
+    checkGoogleCloudVisionV1p3beta1ImageProperties(
+        o.imagePropertiesAnnotation!);
     checkUnnamed4288(o.labelAnnotations!);
     checkUnnamed4289(o.landmarkAnnotations!);
     checkUnnamed4290(o.localizedObjectAnnotations!);
     checkUnnamed4291(o.logoAnnotations!);
-    checkGoogleCloudVisionV1p3beta1ProductSearchResults(o.productSearchResults!
-        as api.GoogleCloudVisionV1p3beta1ProductSearchResults);
-    checkGoogleCloudVisionV1p3beta1SafeSearchAnnotation(o.safeSearchAnnotation!
-        as api.GoogleCloudVisionV1p3beta1SafeSearchAnnotation);
+    checkGoogleCloudVisionV1p3beta1ProductSearchResults(
+        o.productSearchResults!);
+    checkGoogleCloudVisionV1p3beta1SafeSearchAnnotation(
+        o.safeSearchAnnotation!);
     checkUnnamed4292(o.textAnnotations!);
-    checkGoogleCloudVisionV1p3beta1WebDetection(
-        o.webDetection! as api.GoogleCloudVisionV1p3beta1WebDetection);
+    checkGoogleCloudVisionV1p3beta1WebDetection(o.webDetection!);
   }
   buildCounterGoogleCloudVisionV1p3beta1AnnotateImageResponse--;
 }
@@ -5599,7 +5391,7 @@ void checkGoogleCloudVisionV1p3beta1AnnotateImageResponse(
 core.int buildCounterGoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse = 0;
 api.GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse
     buildGoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse() {
-  var o = api.GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse();
+  final o = api.GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse();
   buildCounterGoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse++;
   if (buildCounterGoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse < 3) {
     o.outputConfig = buildGoogleCloudVisionV1p3beta1OutputConfig();
@@ -5612,15 +5404,14 @@ void checkGoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse(
     api.GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse o) {
   buildCounterGoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse++;
   if (buildCounterGoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse < 3) {
-    checkGoogleCloudVisionV1p3beta1OutputConfig(
-        o.outputConfig! as api.GoogleCloudVisionV1p3beta1OutputConfig);
+    checkGoogleCloudVisionV1p3beta1OutputConfig(o.outputConfig!);
   }
   buildCounterGoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse--;
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse>
     buildUnnamed4293() {
-  var o = <api.GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse>[];
+  final o = <api.GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse>[];
   o.add(buildGoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse());
   o.add(buildGoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse());
   return o;
@@ -5629,17 +5420,15 @@ core.List<api.GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse>
 void checkUnnamed4293(
     core.List<api.GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse(
-      o[0] as api.GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse);
-  checkGoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse(
-      o[1] as api.GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse);
+  checkGoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse(o[0]);
+  checkGoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse =
     0;
 api.GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse
     buildGoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse() {
-  var o = api.GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse();
+  final o = api.GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse();
   buildCounterGoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse++;
   if (buildCounterGoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse <
       3) {
@@ -5662,7 +5451,7 @@ void checkGoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse(
 core.int buildCounterGoogleCloudVisionV1p3beta1BatchOperationMetadata = 0;
 api.GoogleCloudVisionV1p3beta1BatchOperationMetadata
     buildGoogleCloudVisionV1p3beta1BatchOperationMetadata() {
-  var o = api.GoogleCloudVisionV1p3beta1BatchOperationMetadata();
+  final o = api.GoogleCloudVisionV1p3beta1BatchOperationMetadata();
   buildCounterGoogleCloudVisionV1p3beta1BatchOperationMetadata++;
   if (buildCounterGoogleCloudVisionV1p3beta1BatchOperationMetadata < 3) {
     o.endTime = 'foo';
@@ -5694,7 +5483,7 @@ void checkGoogleCloudVisionV1p3beta1BatchOperationMetadata(
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1Paragraph> buildUnnamed4294() {
-  var o = <api.GoogleCloudVisionV1p3beta1Paragraph>[];
+  final o = <api.GoogleCloudVisionV1p3beta1Paragraph>[];
   o.add(buildGoogleCloudVisionV1p3beta1Paragraph());
   o.add(buildGoogleCloudVisionV1p3beta1Paragraph());
   return o;
@@ -5702,15 +5491,13 @@ core.List<api.GoogleCloudVisionV1p3beta1Paragraph> buildUnnamed4294() {
 
 void checkUnnamed4294(core.List<api.GoogleCloudVisionV1p3beta1Paragraph> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1Paragraph(
-      o[0] as api.GoogleCloudVisionV1p3beta1Paragraph);
-  checkGoogleCloudVisionV1p3beta1Paragraph(
-      o[1] as api.GoogleCloudVisionV1p3beta1Paragraph);
+  checkGoogleCloudVisionV1p3beta1Paragraph(o[0]);
+  checkGoogleCloudVisionV1p3beta1Paragraph(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p3beta1Block = 0;
 api.GoogleCloudVisionV1p3beta1Block buildGoogleCloudVisionV1p3beta1Block() {
-  var o = api.GoogleCloudVisionV1p3beta1Block();
+  final o = api.GoogleCloudVisionV1p3beta1Block();
   buildCounterGoogleCloudVisionV1p3beta1Block++;
   if (buildCounterGoogleCloudVisionV1p3beta1Block < 3) {
     o.blockType = 'foo';
@@ -5731,21 +5518,19 @@ void checkGoogleCloudVisionV1p3beta1Block(
       o.blockType!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudVisionV1p3beta1BoundingPoly(
-        o.boundingBox! as api.GoogleCloudVisionV1p3beta1BoundingPoly);
+    checkGoogleCloudVisionV1p3beta1BoundingPoly(o.boundingBox!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
     );
     checkUnnamed4294(o.paragraphs!);
-    checkGoogleCloudVisionV1p3beta1TextAnnotationTextProperty(o.property!
-        as api.GoogleCloudVisionV1p3beta1TextAnnotationTextProperty);
+    checkGoogleCloudVisionV1p3beta1TextAnnotationTextProperty(o.property!);
   }
   buildCounterGoogleCloudVisionV1p3beta1Block--;
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1NormalizedVertex> buildUnnamed4295() {
-  var o = <api.GoogleCloudVisionV1p3beta1NormalizedVertex>[];
+  final o = <api.GoogleCloudVisionV1p3beta1NormalizedVertex>[];
   o.add(buildGoogleCloudVisionV1p3beta1NormalizedVertex());
   o.add(buildGoogleCloudVisionV1p3beta1NormalizedVertex());
   return o;
@@ -5754,14 +5539,12 @@ core.List<api.GoogleCloudVisionV1p3beta1NormalizedVertex> buildUnnamed4295() {
 void checkUnnamed4295(
     core.List<api.GoogleCloudVisionV1p3beta1NormalizedVertex> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1NormalizedVertex(
-      o[0] as api.GoogleCloudVisionV1p3beta1NormalizedVertex);
-  checkGoogleCloudVisionV1p3beta1NormalizedVertex(
-      o[1] as api.GoogleCloudVisionV1p3beta1NormalizedVertex);
+  checkGoogleCloudVisionV1p3beta1NormalizedVertex(o[0]);
+  checkGoogleCloudVisionV1p3beta1NormalizedVertex(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1Vertex> buildUnnamed4296() {
-  var o = <api.GoogleCloudVisionV1p3beta1Vertex>[];
+  final o = <api.GoogleCloudVisionV1p3beta1Vertex>[];
   o.add(buildGoogleCloudVisionV1p3beta1Vertex());
   o.add(buildGoogleCloudVisionV1p3beta1Vertex());
   return o;
@@ -5769,16 +5552,14 @@ core.List<api.GoogleCloudVisionV1p3beta1Vertex> buildUnnamed4296() {
 
 void checkUnnamed4296(core.List<api.GoogleCloudVisionV1p3beta1Vertex> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1Vertex(
-      o[0] as api.GoogleCloudVisionV1p3beta1Vertex);
-  checkGoogleCloudVisionV1p3beta1Vertex(
-      o[1] as api.GoogleCloudVisionV1p3beta1Vertex);
+  checkGoogleCloudVisionV1p3beta1Vertex(o[0]);
+  checkGoogleCloudVisionV1p3beta1Vertex(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p3beta1BoundingPoly = 0;
 api.GoogleCloudVisionV1p3beta1BoundingPoly
     buildGoogleCloudVisionV1p3beta1BoundingPoly() {
-  var o = api.GoogleCloudVisionV1p3beta1BoundingPoly();
+  final o = api.GoogleCloudVisionV1p3beta1BoundingPoly();
   buildCounterGoogleCloudVisionV1p3beta1BoundingPoly++;
   if (buildCounterGoogleCloudVisionV1p3beta1BoundingPoly < 3) {
     o.normalizedVertices = buildUnnamed4295();
@@ -5801,7 +5582,7 @@ void checkGoogleCloudVisionV1p3beta1BoundingPoly(
 core.int buildCounterGoogleCloudVisionV1p3beta1ColorInfo = 0;
 api.GoogleCloudVisionV1p3beta1ColorInfo
     buildGoogleCloudVisionV1p3beta1ColorInfo() {
-  var o = api.GoogleCloudVisionV1p3beta1ColorInfo();
+  final o = api.GoogleCloudVisionV1p3beta1ColorInfo();
   buildCounterGoogleCloudVisionV1p3beta1ColorInfo++;
   if (buildCounterGoogleCloudVisionV1p3beta1ColorInfo < 3) {
     o.color = buildColor();
@@ -5816,7 +5597,7 @@ void checkGoogleCloudVisionV1p3beta1ColorInfo(
     api.GoogleCloudVisionV1p3beta1ColorInfo o) {
   buildCounterGoogleCloudVisionV1p3beta1ColorInfo++;
   if (buildCounterGoogleCloudVisionV1p3beta1ColorInfo < 3) {
-    checkColor(o.color! as api.Color);
+    checkColor(o.color!);
     unittest.expect(
       o.pixelFraction!,
       unittest.equals(42.0),
@@ -5832,7 +5613,7 @@ void checkGoogleCloudVisionV1p3beta1ColorInfo(
 core.int buildCounterGoogleCloudVisionV1p3beta1CropHint = 0;
 api.GoogleCloudVisionV1p3beta1CropHint
     buildGoogleCloudVisionV1p3beta1CropHint() {
-  var o = api.GoogleCloudVisionV1p3beta1CropHint();
+  final o = api.GoogleCloudVisionV1p3beta1CropHint();
   buildCounterGoogleCloudVisionV1p3beta1CropHint++;
   if (buildCounterGoogleCloudVisionV1p3beta1CropHint < 3) {
     o.boundingPoly = buildGoogleCloudVisionV1p3beta1BoundingPoly();
@@ -5847,8 +5628,7 @@ void checkGoogleCloudVisionV1p3beta1CropHint(
     api.GoogleCloudVisionV1p3beta1CropHint o) {
   buildCounterGoogleCloudVisionV1p3beta1CropHint++;
   if (buildCounterGoogleCloudVisionV1p3beta1CropHint < 3) {
-    checkGoogleCloudVisionV1p3beta1BoundingPoly(
-        o.boundingPoly! as api.GoogleCloudVisionV1p3beta1BoundingPoly);
+    checkGoogleCloudVisionV1p3beta1BoundingPoly(o.boundingPoly!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
@@ -5862,7 +5642,7 @@ void checkGoogleCloudVisionV1p3beta1CropHint(
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1CropHint> buildUnnamed4297() {
-  var o = <api.GoogleCloudVisionV1p3beta1CropHint>[];
+  final o = <api.GoogleCloudVisionV1p3beta1CropHint>[];
   o.add(buildGoogleCloudVisionV1p3beta1CropHint());
   o.add(buildGoogleCloudVisionV1p3beta1CropHint());
   return o;
@@ -5870,16 +5650,14 @@ core.List<api.GoogleCloudVisionV1p3beta1CropHint> buildUnnamed4297() {
 
 void checkUnnamed4297(core.List<api.GoogleCloudVisionV1p3beta1CropHint> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1CropHint(
-      o[0] as api.GoogleCloudVisionV1p3beta1CropHint);
-  checkGoogleCloudVisionV1p3beta1CropHint(
-      o[1] as api.GoogleCloudVisionV1p3beta1CropHint);
+  checkGoogleCloudVisionV1p3beta1CropHint(o[0]);
+  checkGoogleCloudVisionV1p3beta1CropHint(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p3beta1CropHintsAnnotation = 0;
 api.GoogleCloudVisionV1p3beta1CropHintsAnnotation
     buildGoogleCloudVisionV1p3beta1CropHintsAnnotation() {
-  var o = api.GoogleCloudVisionV1p3beta1CropHintsAnnotation();
+  final o = api.GoogleCloudVisionV1p3beta1CropHintsAnnotation();
   buildCounterGoogleCloudVisionV1p3beta1CropHintsAnnotation++;
   if (buildCounterGoogleCloudVisionV1p3beta1CropHintsAnnotation < 3) {
     o.cropHints = buildUnnamed4297();
@@ -5898,7 +5676,7 @@ void checkGoogleCloudVisionV1p3beta1CropHintsAnnotation(
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1ColorInfo> buildUnnamed4298() {
-  var o = <api.GoogleCloudVisionV1p3beta1ColorInfo>[];
+  final o = <api.GoogleCloudVisionV1p3beta1ColorInfo>[];
   o.add(buildGoogleCloudVisionV1p3beta1ColorInfo());
   o.add(buildGoogleCloudVisionV1p3beta1ColorInfo());
   return o;
@@ -5906,16 +5684,14 @@ core.List<api.GoogleCloudVisionV1p3beta1ColorInfo> buildUnnamed4298() {
 
 void checkUnnamed4298(core.List<api.GoogleCloudVisionV1p3beta1ColorInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1ColorInfo(
-      o[0] as api.GoogleCloudVisionV1p3beta1ColorInfo);
-  checkGoogleCloudVisionV1p3beta1ColorInfo(
-      o[1] as api.GoogleCloudVisionV1p3beta1ColorInfo);
+  checkGoogleCloudVisionV1p3beta1ColorInfo(o[0]);
+  checkGoogleCloudVisionV1p3beta1ColorInfo(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p3beta1DominantColorsAnnotation = 0;
 api.GoogleCloudVisionV1p3beta1DominantColorsAnnotation
     buildGoogleCloudVisionV1p3beta1DominantColorsAnnotation() {
-  var o = api.GoogleCloudVisionV1p3beta1DominantColorsAnnotation();
+  final o = api.GoogleCloudVisionV1p3beta1DominantColorsAnnotation();
   buildCounterGoogleCloudVisionV1p3beta1DominantColorsAnnotation++;
   if (buildCounterGoogleCloudVisionV1p3beta1DominantColorsAnnotation < 3) {
     o.colors = buildUnnamed4298();
@@ -5934,7 +5710,7 @@ void checkGoogleCloudVisionV1p3beta1DominantColorsAnnotation(
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1LocationInfo> buildUnnamed4299() {
-  var o = <api.GoogleCloudVisionV1p3beta1LocationInfo>[];
+  final o = <api.GoogleCloudVisionV1p3beta1LocationInfo>[];
   o.add(buildGoogleCloudVisionV1p3beta1LocationInfo());
   o.add(buildGoogleCloudVisionV1p3beta1LocationInfo());
   return o;
@@ -5942,14 +5718,12 @@ core.List<api.GoogleCloudVisionV1p3beta1LocationInfo> buildUnnamed4299() {
 
 void checkUnnamed4299(core.List<api.GoogleCloudVisionV1p3beta1LocationInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1LocationInfo(
-      o[0] as api.GoogleCloudVisionV1p3beta1LocationInfo);
-  checkGoogleCloudVisionV1p3beta1LocationInfo(
-      o[1] as api.GoogleCloudVisionV1p3beta1LocationInfo);
+  checkGoogleCloudVisionV1p3beta1LocationInfo(o[0]);
+  checkGoogleCloudVisionV1p3beta1LocationInfo(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1Property> buildUnnamed4300() {
-  var o = <api.GoogleCloudVisionV1p3beta1Property>[];
+  final o = <api.GoogleCloudVisionV1p3beta1Property>[];
   o.add(buildGoogleCloudVisionV1p3beta1Property());
   o.add(buildGoogleCloudVisionV1p3beta1Property());
   return o;
@@ -5957,16 +5731,14 @@ core.List<api.GoogleCloudVisionV1p3beta1Property> buildUnnamed4300() {
 
 void checkUnnamed4300(core.List<api.GoogleCloudVisionV1p3beta1Property> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1Property(
-      o[0] as api.GoogleCloudVisionV1p3beta1Property);
-  checkGoogleCloudVisionV1p3beta1Property(
-      o[1] as api.GoogleCloudVisionV1p3beta1Property);
+  checkGoogleCloudVisionV1p3beta1Property(o[0]);
+  checkGoogleCloudVisionV1p3beta1Property(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p3beta1EntityAnnotation = 0;
 api.GoogleCloudVisionV1p3beta1EntityAnnotation
     buildGoogleCloudVisionV1p3beta1EntityAnnotation() {
-  var o = api.GoogleCloudVisionV1p3beta1EntityAnnotation();
+  final o = api.GoogleCloudVisionV1p3beta1EntityAnnotation();
   buildCounterGoogleCloudVisionV1p3beta1EntityAnnotation++;
   if (buildCounterGoogleCloudVisionV1p3beta1EntityAnnotation < 3) {
     o.boundingPoly = buildGoogleCloudVisionV1p3beta1BoundingPoly();
@@ -5987,8 +5759,7 @@ void checkGoogleCloudVisionV1p3beta1EntityAnnotation(
     api.GoogleCloudVisionV1p3beta1EntityAnnotation o) {
   buildCounterGoogleCloudVisionV1p3beta1EntityAnnotation++;
   if (buildCounterGoogleCloudVisionV1p3beta1EntityAnnotation < 3) {
-    checkGoogleCloudVisionV1p3beta1BoundingPoly(
-        o.boundingPoly! as api.GoogleCloudVisionV1p3beta1BoundingPoly);
+    checkGoogleCloudVisionV1p3beta1BoundingPoly(o.boundingPoly!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
@@ -6021,7 +5792,7 @@ void checkGoogleCloudVisionV1p3beta1EntityAnnotation(
 
 core.List<api.GoogleCloudVisionV1p3beta1FaceAnnotationLandmark>
     buildUnnamed4301() {
-  var o = <api.GoogleCloudVisionV1p3beta1FaceAnnotationLandmark>[];
+  final o = <api.GoogleCloudVisionV1p3beta1FaceAnnotationLandmark>[];
   o.add(buildGoogleCloudVisionV1p3beta1FaceAnnotationLandmark());
   o.add(buildGoogleCloudVisionV1p3beta1FaceAnnotationLandmark());
   return o;
@@ -6030,16 +5801,14 @@ core.List<api.GoogleCloudVisionV1p3beta1FaceAnnotationLandmark>
 void checkUnnamed4301(
     core.List<api.GoogleCloudVisionV1p3beta1FaceAnnotationLandmark> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1FaceAnnotationLandmark(
-      o[0] as api.GoogleCloudVisionV1p3beta1FaceAnnotationLandmark);
-  checkGoogleCloudVisionV1p3beta1FaceAnnotationLandmark(
-      o[1] as api.GoogleCloudVisionV1p3beta1FaceAnnotationLandmark);
+  checkGoogleCloudVisionV1p3beta1FaceAnnotationLandmark(o[0]);
+  checkGoogleCloudVisionV1p3beta1FaceAnnotationLandmark(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p3beta1FaceAnnotation = 0;
 api.GoogleCloudVisionV1p3beta1FaceAnnotation
     buildGoogleCloudVisionV1p3beta1FaceAnnotation() {
-  var o = api.GoogleCloudVisionV1p3beta1FaceAnnotation();
+  final o = api.GoogleCloudVisionV1p3beta1FaceAnnotation();
   buildCounterGoogleCloudVisionV1p3beta1FaceAnnotation++;
   if (buildCounterGoogleCloudVisionV1p3beta1FaceAnnotation < 3) {
     o.angerLikelihood = 'foo';
@@ -6074,14 +5843,12 @@ void checkGoogleCloudVisionV1p3beta1FaceAnnotation(
       o.blurredLikelihood!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudVisionV1p3beta1BoundingPoly(
-        o.boundingPoly! as api.GoogleCloudVisionV1p3beta1BoundingPoly);
+    checkGoogleCloudVisionV1p3beta1BoundingPoly(o.boundingPoly!);
     unittest.expect(
       o.detectionConfidence!,
       unittest.equals(42.0),
     );
-    checkGoogleCloudVisionV1p3beta1BoundingPoly(
-        o.fdBoundingPoly! as api.GoogleCloudVisionV1p3beta1BoundingPoly);
+    checkGoogleCloudVisionV1p3beta1BoundingPoly(o.fdBoundingPoly!);
     unittest.expect(
       o.headwearLikelihood!,
       unittest.equals('foo'),
@@ -6126,7 +5893,7 @@ void checkGoogleCloudVisionV1p3beta1FaceAnnotation(
 core.int buildCounterGoogleCloudVisionV1p3beta1FaceAnnotationLandmark = 0;
 api.GoogleCloudVisionV1p3beta1FaceAnnotationLandmark
     buildGoogleCloudVisionV1p3beta1FaceAnnotationLandmark() {
-  var o = api.GoogleCloudVisionV1p3beta1FaceAnnotationLandmark();
+  final o = api.GoogleCloudVisionV1p3beta1FaceAnnotationLandmark();
   buildCounterGoogleCloudVisionV1p3beta1FaceAnnotationLandmark++;
   if (buildCounterGoogleCloudVisionV1p3beta1FaceAnnotationLandmark < 3) {
     o.position = buildGoogleCloudVisionV1p3beta1Position();
@@ -6140,8 +5907,7 @@ void checkGoogleCloudVisionV1p3beta1FaceAnnotationLandmark(
     api.GoogleCloudVisionV1p3beta1FaceAnnotationLandmark o) {
   buildCounterGoogleCloudVisionV1p3beta1FaceAnnotationLandmark++;
   if (buildCounterGoogleCloudVisionV1p3beta1FaceAnnotationLandmark < 3) {
-    checkGoogleCloudVisionV1p3beta1Position(
-        o.position! as api.GoogleCloudVisionV1p3beta1Position);
+    checkGoogleCloudVisionV1p3beta1Position(o.position!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -6153,7 +5919,7 @@ void checkGoogleCloudVisionV1p3beta1FaceAnnotationLandmark(
 core.int buildCounterGoogleCloudVisionV1p3beta1GcsDestination = 0;
 api.GoogleCloudVisionV1p3beta1GcsDestination
     buildGoogleCloudVisionV1p3beta1GcsDestination() {
-  var o = api.GoogleCloudVisionV1p3beta1GcsDestination();
+  final o = api.GoogleCloudVisionV1p3beta1GcsDestination();
   buildCounterGoogleCloudVisionV1p3beta1GcsDestination++;
   if (buildCounterGoogleCloudVisionV1p3beta1GcsDestination < 3) {
     o.uri = 'foo';
@@ -6177,7 +5943,7 @@ void checkGoogleCloudVisionV1p3beta1GcsDestination(
 core.int buildCounterGoogleCloudVisionV1p3beta1GcsSource = 0;
 api.GoogleCloudVisionV1p3beta1GcsSource
     buildGoogleCloudVisionV1p3beta1GcsSource() {
-  var o = api.GoogleCloudVisionV1p3beta1GcsSource();
+  final o = api.GoogleCloudVisionV1p3beta1GcsSource();
   buildCounterGoogleCloudVisionV1p3beta1GcsSource++;
   if (buildCounterGoogleCloudVisionV1p3beta1GcsSource < 3) {
     o.uri = 'foo';
@@ -6201,7 +5967,7 @@ void checkGoogleCloudVisionV1p3beta1GcsSource(
 core.int buildCounterGoogleCloudVisionV1p3beta1ImageAnnotationContext = 0;
 api.GoogleCloudVisionV1p3beta1ImageAnnotationContext
     buildGoogleCloudVisionV1p3beta1ImageAnnotationContext() {
-  var o = api.GoogleCloudVisionV1p3beta1ImageAnnotationContext();
+  final o = api.GoogleCloudVisionV1p3beta1ImageAnnotationContext();
   buildCounterGoogleCloudVisionV1p3beta1ImageAnnotationContext++;
   if (buildCounterGoogleCloudVisionV1p3beta1ImageAnnotationContext < 3) {
     o.pageNumber = 42;
@@ -6230,7 +5996,7 @@ void checkGoogleCloudVisionV1p3beta1ImageAnnotationContext(
 core.int buildCounterGoogleCloudVisionV1p3beta1ImageProperties = 0;
 api.GoogleCloudVisionV1p3beta1ImageProperties
     buildGoogleCloudVisionV1p3beta1ImageProperties() {
-  var o = api.GoogleCloudVisionV1p3beta1ImageProperties();
+  final o = api.GoogleCloudVisionV1p3beta1ImageProperties();
   buildCounterGoogleCloudVisionV1p3beta1ImageProperties++;
   if (buildCounterGoogleCloudVisionV1p3beta1ImageProperties < 3) {
     o.dominantColors =
@@ -6244,14 +6010,13 @@ void checkGoogleCloudVisionV1p3beta1ImageProperties(
     api.GoogleCloudVisionV1p3beta1ImageProperties o) {
   buildCounterGoogleCloudVisionV1p3beta1ImageProperties++;
   if (buildCounterGoogleCloudVisionV1p3beta1ImageProperties < 3) {
-    checkGoogleCloudVisionV1p3beta1DominantColorsAnnotation(o.dominantColors!
-        as api.GoogleCloudVisionV1p3beta1DominantColorsAnnotation);
+    checkGoogleCloudVisionV1p3beta1DominantColorsAnnotation(o.dominantColors!);
   }
   buildCounterGoogleCloudVisionV1p3beta1ImageProperties--;
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1ReferenceImage> buildUnnamed4302() {
-  var o = <api.GoogleCloudVisionV1p3beta1ReferenceImage>[];
+  final o = <api.GoogleCloudVisionV1p3beta1ReferenceImage>[];
   o.add(buildGoogleCloudVisionV1p3beta1ReferenceImage());
   o.add(buildGoogleCloudVisionV1p3beta1ReferenceImage());
   return o;
@@ -6260,14 +6025,12 @@ core.List<api.GoogleCloudVisionV1p3beta1ReferenceImage> buildUnnamed4302() {
 void checkUnnamed4302(
     core.List<api.GoogleCloudVisionV1p3beta1ReferenceImage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1ReferenceImage(
-      o[0] as api.GoogleCloudVisionV1p3beta1ReferenceImage);
-  checkGoogleCloudVisionV1p3beta1ReferenceImage(
-      o[1] as api.GoogleCloudVisionV1p3beta1ReferenceImage);
+  checkGoogleCloudVisionV1p3beta1ReferenceImage(o[0]);
+  checkGoogleCloudVisionV1p3beta1ReferenceImage(o[1]);
 }
 
 core.List<api.Status> buildUnnamed4303() {
-  var o = <api.Status>[];
+  final o = <api.Status>[];
   o.add(buildStatus());
   o.add(buildStatus());
   return o;
@@ -6275,14 +6038,14 @@ core.List<api.Status> buildUnnamed4303() {
 
 void checkUnnamed4303(core.List<api.Status> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkStatus(o[0] as api.Status);
-  checkStatus(o[1] as api.Status);
+  checkStatus(o[0]);
+  checkStatus(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p3beta1ImportProductSetsResponse = 0;
 api.GoogleCloudVisionV1p3beta1ImportProductSetsResponse
     buildGoogleCloudVisionV1p3beta1ImportProductSetsResponse() {
-  var o = api.GoogleCloudVisionV1p3beta1ImportProductSetsResponse();
+  final o = api.GoogleCloudVisionV1p3beta1ImportProductSetsResponse();
   buildCounterGoogleCloudVisionV1p3beta1ImportProductSetsResponse++;
   if (buildCounterGoogleCloudVisionV1p3beta1ImportProductSetsResponse < 3) {
     o.referenceImages = buildUnnamed4302();
@@ -6305,7 +6068,7 @@ void checkGoogleCloudVisionV1p3beta1ImportProductSetsResponse(
 core.int buildCounterGoogleCloudVisionV1p3beta1InputConfig = 0;
 api.GoogleCloudVisionV1p3beta1InputConfig
     buildGoogleCloudVisionV1p3beta1InputConfig() {
-  var o = api.GoogleCloudVisionV1p3beta1InputConfig();
+  final o = api.GoogleCloudVisionV1p3beta1InputConfig();
   buildCounterGoogleCloudVisionV1p3beta1InputConfig++;
   if (buildCounterGoogleCloudVisionV1p3beta1InputConfig < 3) {
     o.content = 'foo';
@@ -6324,8 +6087,7 @@ void checkGoogleCloudVisionV1p3beta1InputConfig(
       o.content!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudVisionV1p3beta1GcsSource(
-        o.gcsSource! as api.GoogleCloudVisionV1p3beta1GcsSource);
+    checkGoogleCloudVisionV1p3beta1GcsSource(o.gcsSource!);
     unittest.expect(
       o.mimeType!,
       unittest.equals('foo'),
@@ -6337,7 +6099,7 @@ void checkGoogleCloudVisionV1p3beta1InputConfig(
 core.int buildCounterGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation = 0;
 api.GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation
     buildGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation() {
-  var o = api.GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation();
+  final o = api.GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation();
   buildCounterGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation++;
   if (buildCounterGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation < 3) {
     o.boundingPoly = buildGoogleCloudVisionV1p3beta1BoundingPoly();
@@ -6354,8 +6116,7 @@ void checkGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation(
     api.GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation o) {
   buildCounterGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation++;
   if (buildCounterGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation < 3) {
-    checkGoogleCloudVisionV1p3beta1BoundingPoly(
-        o.boundingPoly! as api.GoogleCloudVisionV1p3beta1BoundingPoly);
+    checkGoogleCloudVisionV1p3beta1BoundingPoly(o.boundingPoly!);
     unittest.expect(
       o.languageCode!,
       unittest.equals('foo'),
@@ -6379,7 +6140,7 @@ void checkGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation(
 core.int buildCounterGoogleCloudVisionV1p3beta1LocationInfo = 0;
 api.GoogleCloudVisionV1p3beta1LocationInfo
     buildGoogleCloudVisionV1p3beta1LocationInfo() {
-  var o = api.GoogleCloudVisionV1p3beta1LocationInfo();
+  final o = api.GoogleCloudVisionV1p3beta1LocationInfo();
   buildCounterGoogleCloudVisionV1p3beta1LocationInfo++;
   if (buildCounterGoogleCloudVisionV1p3beta1LocationInfo < 3) {
     o.latLng = buildLatLng();
@@ -6392,7 +6153,7 @@ void checkGoogleCloudVisionV1p3beta1LocationInfo(
     api.GoogleCloudVisionV1p3beta1LocationInfo o) {
   buildCounterGoogleCloudVisionV1p3beta1LocationInfo++;
   if (buildCounterGoogleCloudVisionV1p3beta1LocationInfo < 3) {
-    checkLatLng(o.latLng! as api.LatLng);
+    checkLatLng(o.latLng!);
   }
   buildCounterGoogleCloudVisionV1p3beta1LocationInfo--;
 }
@@ -6400,7 +6161,7 @@ void checkGoogleCloudVisionV1p3beta1LocationInfo(
 core.int buildCounterGoogleCloudVisionV1p3beta1NormalizedVertex = 0;
 api.GoogleCloudVisionV1p3beta1NormalizedVertex
     buildGoogleCloudVisionV1p3beta1NormalizedVertex() {
-  var o = api.GoogleCloudVisionV1p3beta1NormalizedVertex();
+  final o = api.GoogleCloudVisionV1p3beta1NormalizedVertex();
   buildCounterGoogleCloudVisionV1p3beta1NormalizedVertex++;
   if (buildCounterGoogleCloudVisionV1p3beta1NormalizedVertex < 3) {
     o.x = 42.0;
@@ -6429,7 +6190,7 @@ void checkGoogleCloudVisionV1p3beta1NormalizedVertex(
 core.int buildCounterGoogleCloudVisionV1p3beta1OperationMetadata = 0;
 api.GoogleCloudVisionV1p3beta1OperationMetadata
     buildGoogleCloudVisionV1p3beta1OperationMetadata() {
-  var o = api.GoogleCloudVisionV1p3beta1OperationMetadata();
+  final o = api.GoogleCloudVisionV1p3beta1OperationMetadata();
   buildCounterGoogleCloudVisionV1p3beta1OperationMetadata++;
   if (buildCounterGoogleCloudVisionV1p3beta1OperationMetadata < 3) {
     o.createTime = 'foo';
@@ -6463,7 +6224,7 @@ void checkGoogleCloudVisionV1p3beta1OperationMetadata(
 core.int buildCounterGoogleCloudVisionV1p3beta1OutputConfig = 0;
 api.GoogleCloudVisionV1p3beta1OutputConfig
     buildGoogleCloudVisionV1p3beta1OutputConfig() {
-  var o = api.GoogleCloudVisionV1p3beta1OutputConfig();
+  final o = api.GoogleCloudVisionV1p3beta1OutputConfig();
   buildCounterGoogleCloudVisionV1p3beta1OutputConfig++;
   if (buildCounterGoogleCloudVisionV1p3beta1OutputConfig < 3) {
     o.batchSize = 42;
@@ -6481,14 +6242,13 @@ void checkGoogleCloudVisionV1p3beta1OutputConfig(
       o.batchSize!,
       unittest.equals(42),
     );
-    checkGoogleCloudVisionV1p3beta1GcsDestination(
-        o.gcsDestination! as api.GoogleCloudVisionV1p3beta1GcsDestination);
+    checkGoogleCloudVisionV1p3beta1GcsDestination(o.gcsDestination!);
   }
   buildCounterGoogleCloudVisionV1p3beta1OutputConfig--;
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1Block> buildUnnamed4304() {
-  var o = <api.GoogleCloudVisionV1p3beta1Block>[];
+  final o = <api.GoogleCloudVisionV1p3beta1Block>[];
   o.add(buildGoogleCloudVisionV1p3beta1Block());
   o.add(buildGoogleCloudVisionV1p3beta1Block());
   return o;
@@ -6496,15 +6256,13 @@ core.List<api.GoogleCloudVisionV1p3beta1Block> buildUnnamed4304() {
 
 void checkUnnamed4304(core.List<api.GoogleCloudVisionV1p3beta1Block> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1Block(
-      o[0] as api.GoogleCloudVisionV1p3beta1Block);
-  checkGoogleCloudVisionV1p3beta1Block(
-      o[1] as api.GoogleCloudVisionV1p3beta1Block);
+  checkGoogleCloudVisionV1p3beta1Block(o[0]);
+  checkGoogleCloudVisionV1p3beta1Block(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p3beta1Page = 0;
 api.GoogleCloudVisionV1p3beta1Page buildGoogleCloudVisionV1p3beta1Page() {
-  var o = api.GoogleCloudVisionV1p3beta1Page();
+  final o = api.GoogleCloudVisionV1p3beta1Page();
   buildCounterGoogleCloudVisionV1p3beta1Page++;
   if (buildCounterGoogleCloudVisionV1p3beta1Page < 3) {
     o.blocks = buildUnnamed4304();
@@ -6529,8 +6287,7 @@ void checkGoogleCloudVisionV1p3beta1Page(api.GoogleCloudVisionV1p3beta1Page o) {
       o.height!,
       unittest.equals(42),
     );
-    checkGoogleCloudVisionV1p3beta1TextAnnotationTextProperty(o.property!
-        as api.GoogleCloudVisionV1p3beta1TextAnnotationTextProperty);
+    checkGoogleCloudVisionV1p3beta1TextAnnotationTextProperty(o.property!);
     unittest.expect(
       o.width!,
       unittest.equals(42),
@@ -6540,7 +6297,7 @@ void checkGoogleCloudVisionV1p3beta1Page(api.GoogleCloudVisionV1p3beta1Page o) {
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1Word> buildUnnamed4305() {
-  var o = <api.GoogleCloudVisionV1p3beta1Word>[];
+  final o = <api.GoogleCloudVisionV1p3beta1Word>[];
   o.add(buildGoogleCloudVisionV1p3beta1Word());
   o.add(buildGoogleCloudVisionV1p3beta1Word());
   return o;
@@ -6548,16 +6305,14 @@ core.List<api.GoogleCloudVisionV1p3beta1Word> buildUnnamed4305() {
 
 void checkUnnamed4305(core.List<api.GoogleCloudVisionV1p3beta1Word> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1Word(
-      o[0] as api.GoogleCloudVisionV1p3beta1Word);
-  checkGoogleCloudVisionV1p3beta1Word(
-      o[1] as api.GoogleCloudVisionV1p3beta1Word);
+  checkGoogleCloudVisionV1p3beta1Word(o[0]);
+  checkGoogleCloudVisionV1p3beta1Word(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p3beta1Paragraph = 0;
 api.GoogleCloudVisionV1p3beta1Paragraph
     buildGoogleCloudVisionV1p3beta1Paragraph() {
-  var o = api.GoogleCloudVisionV1p3beta1Paragraph();
+  final o = api.GoogleCloudVisionV1p3beta1Paragraph();
   buildCounterGoogleCloudVisionV1p3beta1Paragraph++;
   if (buildCounterGoogleCloudVisionV1p3beta1Paragraph < 3) {
     o.boundingBox = buildGoogleCloudVisionV1p3beta1BoundingPoly();
@@ -6573,14 +6328,12 @@ void checkGoogleCloudVisionV1p3beta1Paragraph(
     api.GoogleCloudVisionV1p3beta1Paragraph o) {
   buildCounterGoogleCloudVisionV1p3beta1Paragraph++;
   if (buildCounterGoogleCloudVisionV1p3beta1Paragraph < 3) {
-    checkGoogleCloudVisionV1p3beta1BoundingPoly(
-        o.boundingBox! as api.GoogleCloudVisionV1p3beta1BoundingPoly);
+    checkGoogleCloudVisionV1p3beta1BoundingPoly(o.boundingBox!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
     );
-    checkGoogleCloudVisionV1p3beta1TextAnnotationTextProperty(o.property!
-        as api.GoogleCloudVisionV1p3beta1TextAnnotationTextProperty);
+    checkGoogleCloudVisionV1p3beta1TextAnnotationTextProperty(o.property!);
     checkUnnamed4305(o.words!);
   }
   buildCounterGoogleCloudVisionV1p3beta1Paragraph--;
@@ -6589,7 +6342,7 @@ void checkGoogleCloudVisionV1p3beta1Paragraph(
 core.int buildCounterGoogleCloudVisionV1p3beta1Position = 0;
 api.GoogleCloudVisionV1p3beta1Position
     buildGoogleCloudVisionV1p3beta1Position() {
-  var o = api.GoogleCloudVisionV1p3beta1Position();
+  final o = api.GoogleCloudVisionV1p3beta1Position();
   buildCounterGoogleCloudVisionV1p3beta1Position++;
   if (buildCounterGoogleCloudVisionV1p3beta1Position < 3) {
     o.x = 42.0;
@@ -6621,7 +6374,7 @@ void checkGoogleCloudVisionV1p3beta1Position(
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1ProductKeyValue> buildUnnamed4306() {
-  var o = <api.GoogleCloudVisionV1p3beta1ProductKeyValue>[];
+  final o = <api.GoogleCloudVisionV1p3beta1ProductKeyValue>[];
   o.add(buildGoogleCloudVisionV1p3beta1ProductKeyValue());
   o.add(buildGoogleCloudVisionV1p3beta1ProductKeyValue());
   return o;
@@ -6630,15 +6383,13 @@ core.List<api.GoogleCloudVisionV1p3beta1ProductKeyValue> buildUnnamed4306() {
 void checkUnnamed4306(
     core.List<api.GoogleCloudVisionV1p3beta1ProductKeyValue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1ProductKeyValue(
-      o[0] as api.GoogleCloudVisionV1p3beta1ProductKeyValue);
-  checkGoogleCloudVisionV1p3beta1ProductKeyValue(
-      o[1] as api.GoogleCloudVisionV1p3beta1ProductKeyValue);
+  checkGoogleCloudVisionV1p3beta1ProductKeyValue(o[0]);
+  checkGoogleCloudVisionV1p3beta1ProductKeyValue(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p3beta1Product = 0;
 api.GoogleCloudVisionV1p3beta1Product buildGoogleCloudVisionV1p3beta1Product() {
-  var o = api.GoogleCloudVisionV1p3beta1Product();
+  final o = api.GoogleCloudVisionV1p3beta1Product();
   buildCounterGoogleCloudVisionV1p3beta1Product++;
   if (buildCounterGoogleCloudVisionV1p3beta1Product < 3) {
     o.description = 'foo';
@@ -6679,7 +6430,7 @@ void checkGoogleCloudVisionV1p3beta1Product(
 core.int buildCounterGoogleCloudVisionV1p3beta1ProductKeyValue = 0;
 api.GoogleCloudVisionV1p3beta1ProductKeyValue
     buildGoogleCloudVisionV1p3beta1ProductKeyValue() {
-  var o = api.GoogleCloudVisionV1p3beta1ProductKeyValue();
+  final o = api.GoogleCloudVisionV1p3beta1ProductKeyValue();
   buildCounterGoogleCloudVisionV1p3beta1ProductKeyValue++;
   if (buildCounterGoogleCloudVisionV1p3beta1ProductKeyValue < 3) {
     o.key = 'foo';
@@ -6707,7 +6458,7 @@ void checkGoogleCloudVisionV1p3beta1ProductKeyValue(
 
 core.List<api.GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult>
     buildUnnamed4307() {
-  var o = <api.GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult>[];
+  final o = <api.GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult>[];
   o.add(buildGoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult());
   o.add(buildGoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult());
   return o;
@@ -6717,15 +6468,13 @@ void checkUnnamed4307(
     core.List<api.GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult(
-      o[0] as api.GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult);
-  checkGoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult(
-      o[1] as api.GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult);
+  checkGoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult(o[0]);
+  checkGoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult>
     buildUnnamed4308() {
-  var o = <api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult>[];
+  final o = <api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult>[];
   o.add(buildGoogleCloudVisionV1p3beta1ProductSearchResultsResult());
   o.add(buildGoogleCloudVisionV1p3beta1ProductSearchResultsResult());
   return o;
@@ -6734,16 +6483,14 @@ core.List<api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult>
 void checkUnnamed4308(
     core.List<api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1ProductSearchResultsResult(
-      o[0] as api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult);
-  checkGoogleCloudVisionV1p3beta1ProductSearchResultsResult(
-      o[1] as api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult);
+  checkGoogleCloudVisionV1p3beta1ProductSearchResultsResult(o[0]);
+  checkGoogleCloudVisionV1p3beta1ProductSearchResultsResult(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p3beta1ProductSearchResults = 0;
 api.GoogleCloudVisionV1p3beta1ProductSearchResults
     buildGoogleCloudVisionV1p3beta1ProductSearchResults() {
-  var o = api.GoogleCloudVisionV1p3beta1ProductSearchResults();
+  final o = api.GoogleCloudVisionV1p3beta1ProductSearchResults();
   buildCounterGoogleCloudVisionV1p3beta1ProductSearchResults++;
   if (buildCounterGoogleCloudVisionV1p3beta1ProductSearchResults < 3) {
     o.indexTime = 'foo';
@@ -6770,7 +6517,7 @@ void checkGoogleCloudVisionV1p3beta1ProductSearchResults(
 
 core.List<api.GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation>
     buildUnnamed4309() {
-  var o =
+  final o =
       <api.GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation>[];
   o.add(buildGoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation());
   o.add(buildGoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation());
@@ -6782,15 +6529,13 @@ void checkUnnamed4309(
             api.GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation(o[0]
-      as api.GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation);
-  checkGoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation(o[1]
-      as api.GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation);
+  checkGoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation(o[0]);
+  checkGoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult>
     buildUnnamed4310() {
-  var o = <api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult>[];
+  final o = <api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult>[];
   o.add(buildGoogleCloudVisionV1p3beta1ProductSearchResultsResult());
   o.add(buildGoogleCloudVisionV1p3beta1ProductSearchResultsResult());
   return o;
@@ -6799,17 +6544,15 @@ core.List<api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult>
 void checkUnnamed4310(
     core.List<api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1ProductSearchResultsResult(
-      o[0] as api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult);
-  checkGoogleCloudVisionV1p3beta1ProductSearchResultsResult(
-      o[1] as api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult);
+  checkGoogleCloudVisionV1p3beta1ProductSearchResultsResult(o[0]);
+  checkGoogleCloudVisionV1p3beta1ProductSearchResultsResult(o[1]);
 }
 
 core.int
     buildCounterGoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult = 0;
 api.GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult
     buildGoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult() {
-  var o = api.GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult();
+  final o = api.GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult();
   buildCounterGoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult++;
   if (buildCounterGoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult <
       3) {
@@ -6826,8 +6569,7 @@ void checkGoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult(
   buildCounterGoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult++;
   if (buildCounterGoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult <
       3) {
-    checkGoogleCloudVisionV1p3beta1BoundingPoly(
-        o.boundingPoly! as api.GoogleCloudVisionV1p3beta1BoundingPoly);
+    checkGoogleCloudVisionV1p3beta1BoundingPoly(o.boundingPoly!);
     checkUnnamed4309(o.objectAnnotations!);
     checkUnnamed4310(o.results!);
   }
@@ -6839,7 +6581,8 @@ core.int
     0;
 api.GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation
     buildGoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation() {
-  var o = api.GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation();
+  final o =
+      api.GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation();
   buildCounterGoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation++;
   if (buildCounterGoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation <
       3) {
@@ -6880,7 +6623,7 @@ void checkGoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation(
 core.int buildCounterGoogleCloudVisionV1p3beta1ProductSearchResultsResult = 0;
 api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult
     buildGoogleCloudVisionV1p3beta1ProductSearchResultsResult() {
-  var o = api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult();
+  final o = api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult();
   buildCounterGoogleCloudVisionV1p3beta1ProductSearchResultsResult++;
   if (buildCounterGoogleCloudVisionV1p3beta1ProductSearchResultsResult < 3) {
     o.image = 'foo';
@@ -6899,8 +6642,7 @@ void checkGoogleCloudVisionV1p3beta1ProductSearchResultsResult(
       o.image!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudVisionV1p3beta1Product(
-        o.product! as api.GoogleCloudVisionV1p3beta1Product);
+    checkGoogleCloudVisionV1p3beta1Product(o.product!);
     unittest.expect(
       o.score!,
       unittest.equals(42.0),
@@ -6912,7 +6654,7 @@ void checkGoogleCloudVisionV1p3beta1ProductSearchResultsResult(
 core.int buildCounterGoogleCloudVisionV1p3beta1Property = 0;
 api.GoogleCloudVisionV1p3beta1Property
     buildGoogleCloudVisionV1p3beta1Property() {
-  var o = api.GoogleCloudVisionV1p3beta1Property();
+  final o = api.GoogleCloudVisionV1p3beta1Property();
   buildCounterGoogleCloudVisionV1p3beta1Property++;
   if (buildCounterGoogleCloudVisionV1p3beta1Property < 3) {
     o.name = 'foo';
@@ -6944,7 +6686,7 @@ void checkGoogleCloudVisionV1p3beta1Property(
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1BoundingPoly> buildUnnamed4311() {
-  var o = <api.GoogleCloudVisionV1p3beta1BoundingPoly>[];
+  final o = <api.GoogleCloudVisionV1p3beta1BoundingPoly>[];
   o.add(buildGoogleCloudVisionV1p3beta1BoundingPoly());
   o.add(buildGoogleCloudVisionV1p3beta1BoundingPoly());
   return o;
@@ -6952,16 +6694,14 @@ core.List<api.GoogleCloudVisionV1p3beta1BoundingPoly> buildUnnamed4311() {
 
 void checkUnnamed4311(core.List<api.GoogleCloudVisionV1p3beta1BoundingPoly> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1BoundingPoly(
-      o[0] as api.GoogleCloudVisionV1p3beta1BoundingPoly);
-  checkGoogleCloudVisionV1p3beta1BoundingPoly(
-      o[1] as api.GoogleCloudVisionV1p3beta1BoundingPoly);
+  checkGoogleCloudVisionV1p3beta1BoundingPoly(o[0]);
+  checkGoogleCloudVisionV1p3beta1BoundingPoly(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p3beta1ReferenceImage = 0;
 api.GoogleCloudVisionV1p3beta1ReferenceImage
     buildGoogleCloudVisionV1p3beta1ReferenceImage() {
-  var o = api.GoogleCloudVisionV1p3beta1ReferenceImage();
+  final o = api.GoogleCloudVisionV1p3beta1ReferenceImage();
   buildCounterGoogleCloudVisionV1p3beta1ReferenceImage++;
   if (buildCounterGoogleCloudVisionV1p3beta1ReferenceImage < 3) {
     o.boundingPolys = buildUnnamed4311();
@@ -6992,7 +6732,7 @@ void checkGoogleCloudVisionV1p3beta1ReferenceImage(
 core.int buildCounterGoogleCloudVisionV1p3beta1SafeSearchAnnotation = 0;
 api.GoogleCloudVisionV1p3beta1SafeSearchAnnotation
     buildGoogleCloudVisionV1p3beta1SafeSearchAnnotation() {
-  var o = api.GoogleCloudVisionV1p3beta1SafeSearchAnnotation();
+  final o = api.GoogleCloudVisionV1p3beta1SafeSearchAnnotation();
   buildCounterGoogleCloudVisionV1p3beta1SafeSearchAnnotation++;
   if (buildCounterGoogleCloudVisionV1p3beta1SafeSearchAnnotation < 3) {
     o.adult = 'foo';
@@ -7035,7 +6775,7 @@ void checkGoogleCloudVisionV1p3beta1SafeSearchAnnotation(
 
 core.int buildCounterGoogleCloudVisionV1p3beta1Symbol = 0;
 api.GoogleCloudVisionV1p3beta1Symbol buildGoogleCloudVisionV1p3beta1Symbol() {
-  var o = api.GoogleCloudVisionV1p3beta1Symbol();
+  final o = api.GoogleCloudVisionV1p3beta1Symbol();
   buildCounterGoogleCloudVisionV1p3beta1Symbol++;
   if (buildCounterGoogleCloudVisionV1p3beta1Symbol < 3) {
     o.boundingBox = buildGoogleCloudVisionV1p3beta1BoundingPoly();
@@ -7051,14 +6791,12 @@ void checkGoogleCloudVisionV1p3beta1Symbol(
     api.GoogleCloudVisionV1p3beta1Symbol o) {
   buildCounterGoogleCloudVisionV1p3beta1Symbol++;
   if (buildCounterGoogleCloudVisionV1p3beta1Symbol < 3) {
-    checkGoogleCloudVisionV1p3beta1BoundingPoly(
-        o.boundingBox! as api.GoogleCloudVisionV1p3beta1BoundingPoly);
+    checkGoogleCloudVisionV1p3beta1BoundingPoly(o.boundingBox!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
     );
-    checkGoogleCloudVisionV1p3beta1TextAnnotationTextProperty(o.property!
-        as api.GoogleCloudVisionV1p3beta1TextAnnotationTextProperty);
+    checkGoogleCloudVisionV1p3beta1TextAnnotationTextProperty(o.property!);
     unittest.expect(
       o.text!,
       unittest.equals('foo'),
@@ -7068,7 +6806,7 @@ void checkGoogleCloudVisionV1p3beta1Symbol(
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1Page> buildUnnamed4312() {
-  var o = <api.GoogleCloudVisionV1p3beta1Page>[];
+  final o = <api.GoogleCloudVisionV1p3beta1Page>[];
   o.add(buildGoogleCloudVisionV1p3beta1Page());
   o.add(buildGoogleCloudVisionV1p3beta1Page());
   return o;
@@ -7076,16 +6814,14 @@ core.List<api.GoogleCloudVisionV1p3beta1Page> buildUnnamed4312() {
 
 void checkUnnamed4312(core.List<api.GoogleCloudVisionV1p3beta1Page> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1Page(
-      o[0] as api.GoogleCloudVisionV1p3beta1Page);
-  checkGoogleCloudVisionV1p3beta1Page(
-      o[1] as api.GoogleCloudVisionV1p3beta1Page);
+  checkGoogleCloudVisionV1p3beta1Page(o[0]);
+  checkGoogleCloudVisionV1p3beta1Page(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p3beta1TextAnnotation = 0;
 api.GoogleCloudVisionV1p3beta1TextAnnotation
     buildGoogleCloudVisionV1p3beta1TextAnnotation() {
-  var o = api.GoogleCloudVisionV1p3beta1TextAnnotation();
+  final o = api.GoogleCloudVisionV1p3beta1TextAnnotation();
   buildCounterGoogleCloudVisionV1p3beta1TextAnnotation++;
   if (buildCounterGoogleCloudVisionV1p3beta1TextAnnotation < 3) {
     o.pages = buildUnnamed4312();
@@ -7111,7 +6847,7 @@ void checkGoogleCloudVisionV1p3beta1TextAnnotation(
 core.int buildCounterGoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak = 0;
 api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak
     buildGoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak() {
-  var o = api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak();
+  final o = api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak();
   buildCounterGoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak++;
   if (buildCounterGoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak < 3) {
     o.isPrefix = true;
@@ -7138,7 +6874,7 @@ core.int buildCounterGoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage =
     0;
 api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage
     buildGoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage() {
-  var o = api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage();
+  final o = api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage();
   buildCounterGoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage++;
   if (buildCounterGoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage <
       3) {
@@ -7168,7 +6904,7 @@ void checkGoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage(
 
 core.List<api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage>
     buildUnnamed4313() {
-  var o = <api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage>[];
+  final o = <api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage>[];
   o.add(buildGoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage());
   o.add(buildGoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage());
   return o;
@@ -7177,16 +6913,14 @@ core.List<api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage>
 void checkUnnamed4313(
     core.List<api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage(
-      o[0] as api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage);
-  checkGoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage(
-      o[1] as api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage);
+  checkGoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage(o[0]);
+  checkGoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p3beta1TextAnnotationTextProperty = 0;
 api.GoogleCloudVisionV1p3beta1TextAnnotationTextProperty
     buildGoogleCloudVisionV1p3beta1TextAnnotationTextProperty() {
-  var o = api.GoogleCloudVisionV1p3beta1TextAnnotationTextProperty();
+  final o = api.GoogleCloudVisionV1p3beta1TextAnnotationTextProperty();
   buildCounterGoogleCloudVisionV1p3beta1TextAnnotationTextProperty++;
   if (buildCounterGoogleCloudVisionV1p3beta1TextAnnotationTextProperty < 3) {
     o.detectedBreak =
@@ -7201,8 +6935,8 @@ void checkGoogleCloudVisionV1p3beta1TextAnnotationTextProperty(
     api.GoogleCloudVisionV1p3beta1TextAnnotationTextProperty o) {
   buildCounterGoogleCloudVisionV1p3beta1TextAnnotationTextProperty++;
   if (buildCounterGoogleCloudVisionV1p3beta1TextAnnotationTextProperty < 3) {
-    checkGoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak(o.detectedBreak!
-        as api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak);
+    checkGoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak(
+        o.detectedBreak!);
     checkUnnamed4313(o.detectedLanguages!);
   }
   buildCounterGoogleCloudVisionV1p3beta1TextAnnotationTextProperty--;
@@ -7210,7 +6944,7 @@ void checkGoogleCloudVisionV1p3beta1TextAnnotationTextProperty(
 
 core.int buildCounterGoogleCloudVisionV1p3beta1Vertex = 0;
 api.GoogleCloudVisionV1p3beta1Vertex buildGoogleCloudVisionV1p3beta1Vertex() {
-  var o = api.GoogleCloudVisionV1p3beta1Vertex();
+  final o = api.GoogleCloudVisionV1p3beta1Vertex();
   buildCounterGoogleCloudVisionV1p3beta1Vertex++;
   if (buildCounterGoogleCloudVisionV1p3beta1Vertex < 3) {
     o.x = 42;
@@ -7238,7 +6972,7 @@ void checkGoogleCloudVisionV1p3beta1Vertex(
 
 core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebLabel>
     buildUnnamed4314() {
-  var o = <api.GoogleCloudVisionV1p3beta1WebDetectionWebLabel>[];
+  final o = <api.GoogleCloudVisionV1p3beta1WebDetectionWebLabel>[];
   o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebLabel());
   o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebLabel());
   return o;
@@ -7247,15 +6981,13 @@ core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebLabel>
 void checkUnnamed4314(
     core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebLabel> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1WebDetectionWebLabel(
-      o[0] as api.GoogleCloudVisionV1p3beta1WebDetectionWebLabel);
-  checkGoogleCloudVisionV1p3beta1WebDetectionWebLabel(
-      o[1] as api.GoogleCloudVisionV1p3beta1WebDetectionWebLabel);
+  checkGoogleCloudVisionV1p3beta1WebDetectionWebLabel(o[0]);
+  checkGoogleCloudVisionV1p3beta1WebDetectionWebLabel(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>
     buildUnnamed4315() {
-  var o = <api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>[];
+  final o = <api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>[];
   o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebImage());
   o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebImage());
   return o;
@@ -7264,15 +6996,13 @@ core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>
 void checkUnnamed4315(
     core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(
-      o[0] as api.GoogleCloudVisionV1p3beta1WebDetectionWebImage);
-  checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(
-      o[1] as api.GoogleCloudVisionV1p3beta1WebDetectionWebImage);
+  checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(o[0]);
+  checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebPage>
     buildUnnamed4316() {
-  var o = <api.GoogleCloudVisionV1p3beta1WebDetectionWebPage>[];
+  final o = <api.GoogleCloudVisionV1p3beta1WebDetectionWebPage>[];
   o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebPage());
   o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebPage());
   return o;
@@ -7281,15 +7011,13 @@ core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebPage>
 void checkUnnamed4316(
     core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebPage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1WebDetectionWebPage(
-      o[0] as api.GoogleCloudVisionV1p3beta1WebDetectionWebPage);
-  checkGoogleCloudVisionV1p3beta1WebDetectionWebPage(
-      o[1] as api.GoogleCloudVisionV1p3beta1WebDetectionWebPage);
+  checkGoogleCloudVisionV1p3beta1WebDetectionWebPage(o[0]);
+  checkGoogleCloudVisionV1p3beta1WebDetectionWebPage(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>
     buildUnnamed4317() {
-  var o = <api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>[];
+  final o = <api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>[];
   o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebImage());
   o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebImage());
   return o;
@@ -7298,15 +7026,13 @@ core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>
 void checkUnnamed4317(
     core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(
-      o[0] as api.GoogleCloudVisionV1p3beta1WebDetectionWebImage);
-  checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(
-      o[1] as api.GoogleCloudVisionV1p3beta1WebDetectionWebImage);
+  checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(o[0]);
+  checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>
     buildUnnamed4318() {
-  var o = <api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>[];
+  final o = <api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>[];
   o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebImage());
   o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebImage());
   return o;
@@ -7315,15 +7041,13 @@ core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>
 void checkUnnamed4318(
     core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(
-      o[0] as api.GoogleCloudVisionV1p3beta1WebDetectionWebImage);
-  checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(
-      o[1] as api.GoogleCloudVisionV1p3beta1WebDetectionWebImage);
+  checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(o[0]);
+  checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebEntity>
     buildUnnamed4319() {
-  var o = <api.GoogleCloudVisionV1p3beta1WebDetectionWebEntity>[];
+  final o = <api.GoogleCloudVisionV1p3beta1WebDetectionWebEntity>[];
   o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebEntity());
   o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebEntity());
   return o;
@@ -7332,16 +7056,14 @@ core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebEntity>
 void checkUnnamed4319(
     core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1WebDetectionWebEntity(
-      o[0] as api.GoogleCloudVisionV1p3beta1WebDetectionWebEntity);
-  checkGoogleCloudVisionV1p3beta1WebDetectionWebEntity(
-      o[1] as api.GoogleCloudVisionV1p3beta1WebDetectionWebEntity);
+  checkGoogleCloudVisionV1p3beta1WebDetectionWebEntity(o[0]);
+  checkGoogleCloudVisionV1p3beta1WebDetectionWebEntity(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p3beta1WebDetection = 0;
 api.GoogleCloudVisionV1p3beta1WebDetection
     buildGoogleCloudVisionV1p3beta1WebDetection() {
-  var o = api.GoogleCloudVisionV1p3beta1WebDetection();
+  final o = api.GoogleCloudVisionV1p3beta1WebDetection();
   buildCounterGoogleCloudVisionV1p3beta1WebDetection++;
   if (buildCounterGoogleCloudVisionV1p3beta1WebDetection < 3) {
     o.bestGuessLabels = buildUnnamed4314();
@@ -7372,7 +7094,7 @@ void checkGoogleCloudVisionV1p3beta1WebDetection(
 core.int buildCounterGoogleCloudVisionV1p3beta1WebDetectionWebEntity = 0;
 api.GoogleCloudVisionV1p3beta1WebDetectionWebEntity
     buildGoogleCloudVisionV1p3beta1WebDetectionWebEntity() {
-  var o = api.GoogleCloudVisionV1p3beta1WebDetectionWebEntity();
+  final o = api.GoogleCloudVisionV1p3beta1WebDetectionWebEntity();
   buildCounterGoogleCloudVisionV1p3beta1WebDetectionWebEntity++;
   if (buildCounterGoogleCloudVisionV1p3beta1WebDetectionWebEntity < 3) {
     o.description = 'foo';
@@ -7406,7 +7128,7 @@ void checkGoogleCloudVisionV1p3beta1WebDetectionWebEntity(
 core.int buildCounterGoogleCloudVisionV1p3beta1WebDetectionWebImage = 0;
 api.GoogleCloudVisionV1p3beta1WebDetectionWebImage
     buildGoogleCloudVisionV1p3beta1WebDetectionWebImage() {
-  var o = api.GoogleCloudVisionV1p3beta1WebDetectionWebImage();
+  final o = api.GoogleCloudVisionV1p3beta1WebDetectionWebImage();
   buildCounterGoogleCloudVisionV1p3beta1WebDetectionWebImage++;
   if (buildCounterGoogleCloudVisionV1p3beta1WebDetectionWebImage < 3) {
     o.score = 42.0;
@@ -7435,7 +7157,7 @@ void checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(
 core.int buildCounterGoogleCloudVisionV1p3beta1WebDetectionWebLabel = 0;
 api.GoogleCloudVisionV1p3beta1WebDetectionWebLabel
     buildGoogleCloudVisionV1p3beta1WebDetectionWebLabel() {
-  var o = api.GoogleCloudVisionV1p3beta1WebDetectionWebLabel();
+  final o = api.GoogleCloudVisionV1p3beta1WebDetectionWebLabel();
   buildCounterGoogleCloudVisionV1p3beta1WebDetectionWebLabel++;
   if (buildCounterGoogleCloudVisionV1p3beta1WebDetectionWebLabel < 3) {
     o.label = 'foo';
@@ -7463,7 +7185,7 @@ void checkGoogleCloudVisionV1p3beta1WebDetectionWebLabel(
 
 core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>
     buildUnnamed4320() {
-  var o = <api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>[];
+  final o = <api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>[];
   o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebImage());
   o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebImage());
   return o;
@@ -7472,15 +7194,13 @@ core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>
 void checkUnnamed4320(
     core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(
-      o[0] as api.GoogleCloudVisionV1p3beta1WebDetectionWebImage);
-  checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(
-      o[1] as api.GoogleCloudVisionV1p3beta1WebDetectionWebImage);
+  checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(o[0]);
+  checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>
     buildUnnamed4321() {
-  var o = <api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>[];
+  final o = <api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>[];
   o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebImage());
   o.add(buildGoogleCloudVisionV1p3beta1WebDetectionWebImage());
   return o;
@@ -7489,16 +7209,14 @@ core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebImage>
 void checkUnnamed4321(
     core.List<api.GoogleCloudVisionV1p3beta1WebDetectionWebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(
-      o[0] as api.GoogleCloudVisionV1p3beta1WebDetectionWebImage);
-  checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(
-      o[1] as api.GoogleCloudVisionV1p3beta1WebDetectionWebImage);
+  checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(o[0]);
+  checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p3beta1WebDetectionWebPage = 0;
 api.GoogleCloudVisionV1p3beta1WebDetectionWebPage
     buildGoogleCloudVisionV1p3beta1WebDetectionWebPage() {
-  var o = api.GoogleCloudVisionV1p3beta1WebDetectionWebPage();
+  final o = api.GoogleCloudVisionV1p3beta1WebDetectionWebPage();
   buildCounterGoogleCloudVisionV1p3beta1WebDetectionWebPage++;
   if (buildCounterGoogleCloudVisionV1p3beta1WebDetectionWebPage < 3) {
     o.fullMatchingImages = buildUnnamed4320();
@@ -7534,7 +7252,7 @@ void checkGoogleCloudVisionV1p3beta1WebDetectionWebPage(
 }
 
 core.List<api.GoogleCloudVisionV1p3beta1Symbol> buildUnnamed4322() {
-  var o = <api.GoogleCloudVisionV1p3beta1Symbol>[];
+  final o = <api.GoogleCloudVisionV1p3beta1Symbol>[];
   o.add(buildGoogleCloudVisionV1p3beta1Symbol());
   o.add(buildGoogleCloudVisionV1p3beta1Symbol());
   return o;
@@ -7542,15 +7260,13 @@ core.List<api.GoogleCloudVisionV1p3beta1Symbol> buildUnnamed4322() {
 
 void checkUnnamed4322(core.List<api.GoogleCloudVisionV1p3beta1Symbol> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p3beta1Symbol(
-      o[0] as api.GoogleCloudVisionV1p3beta1Symbol);
-  checkGoogleCloudVisionV1p3beta1Symbol(
-      o[1] as api.GoogleCloudVisionV1p3beta1Symbol);
+  checkGoogleCloudVisionV1p3beta1Symbol(o[0]);
+  checkGoogleCloudVisionV1p3beta1Symbol(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p3beta1Word = 0;
 api.GoogleCloudVisionV1p3beta1Word buildGoogleCloudVisionV1p3beta1Word() {
-  var o = api.GoogleCloudVisionV1p3beta1Word();
+  final o = api.GoogleCloudVisionV1p3beta1Word();
   buildCounterGoogleCloudVisionV1p3beta1Word++;
   if (buildCounterGoogleCloudVisionV1p3beta1Word < 3) {
     o.boundingBox = buildGoogleCloudVisionV1p3beta1BoundingPoly();
@@ -7565,14 +7281,12 @@ api.GoogleCloudVisionV1p3beta1Word buildGoogleCloudVisionV1p3beta1Word() {
 void checkGoogleCloudVisionV1p3beta1Word(api.GoogleCloudVisionV1p3beta1Word o) {
   buildCounterGoogleCloudVisionV1p3beta1Word++;
   if (buildCounterGoogleCloudVisionV1p3beta1Word < 3) {
-    checkGoogleCloudVisionV1p3beta1BoundingPoly(
-        o.boundingBox! as api.GoogleCloudVisionV1p3beta1BoundingPoly);
+    checkGoogleCloudVisionV1p3beta1BoundingPoly(o.boundingBox!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
     );
-    checkGoogleCloudVisionV1p3beta1TextAnnotationTextProperty(o.property!
-        as api.GoogleCloudVisionV1p3beta1TextAnnotationTextProperty);
+    checkGoogleCloudVisionV1p3beta1TextAnnotationTextProperty(o.property!);
     checkUnnamed4322(o.symbols!);
   }
   buildCounterGoogleCloudVisionV1p3beta1Word--;
@@ -7580,7 +7294,7 @@ void checkGoogleCloudVisionV1p3beta1Word(api.GoogleCloudVisionV1p3beta1Word o) {
 
 core.List<api.GoogleCloudVisionV1p4beta1AnnotateImageResponse>
     buildUnnamed4323() {
-  var o = <api.GoogleCloudVisionV1p4beta1AnnotateImageResponse>[];
+  final o = <api.GoogleCloudVisionV1p4beta1AnnotateImageResponse>[];
   o.add(buildGoogleCloudVisionV1p4beta1AnnotateImageResponse());
   o.add(buildGoogleCloudVisionV1p4beta1AnnotateImageResponse());
   return o;
@@ -7589,16 +7303,14 @@ core.List<api.GoogleCloudVisionV1p4beta1AnnotateImageResponse>
 void checkUnnamed4323(
     core.List<api.GoogleCloudVisionV1p4beta1AnnotateImageResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1AnnotateImageResponse(
-      o[0] as api.GoogleCloudVisionV1p4beta1AnnotateImageResponse);
-  checkGoogleCloudVisionV1p4beta1AnnotateImageResponse(
-      o[1] as api.GoogleCloudVisionV1p4beta1AnnotateImageResponse);
+  checkGoogleCloudVisionV1p4beta1AnnotateImageResponse(o[0]);
+  checkGoogleCloudVisionV1p4beta1AnnotateImageResponse(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p4beta1AnnotateFileResponse = 0;
 api.GoogleCloudVisionV1p4beta1AnnotateFileResponse
     buildGoogleCloudVisionV1p4beta1AnnotateFileResponse() {
-  var o = api.GoogleCloudVisionV1p4beta1AnnotateFileResponse();
+  final o = api.GoogleCloudVisionV1p4beta1AnnotateFileResponse();
   buildCounterGoogleCloudVisionV1p4beta1AnnotateFileResponse++;
   if (buildCounterGoogleCloudVisionV1p4beta1AnnotateFileResponse < 3) {
     o.error = buildStatus();
@@ -7614,9 +7326,8 @@ void checkGoogleCloudVisionV1p4beta1AnnotateFileResponse(
     api.GoogleCloudVisionV1p4beta1AnnotateFileResponse o) {
   buildCounterGoogleCloudVisionV1p4beta1AnnotateFileResponse++;
   if (buildCounterGoogleCloudVisionV1p4beta1AnnotateFileResponse < 3) {
-    checkStatus(o.error! as api.Status);
-    checkGoogleCloudVisionV1p4beta1InputConfig(
-        o.inputConfig! as api.GoogleCloudVisionV1p4beta1InputConfig);
+    checkStatus(o.error!);
+    checkGoogleCloudVisionV1p4beta1InputConfig(o.inputConfig!);
     checkUnnamed4323(o.responses!);
     unittest.expect(
       o.totalPages!,
@@ -7627,7 +7338,7 @@ void checkGoogleCloudVisionV1p4beta1AnnotateFileResponse(
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1FaceAnnotation> buildUnnamed4324() {
-  var o = <api.GoogleCloudVisionV1p4beta1FaceAnnotation>[];
+  final o = <api.GoogleCloudVisionV1p4beta1FaceAnnotation>[];
   o.add(buildGoogleCloudVisionV1p4beta1FaceAnnotation());
   o.add(buildGoogleCloudVisionV1p4beta1FaceAnnotation());
   return o;
@@ -7636,14 +7347,12 @@ core.List<api.GoogleCloudVisionV1p4beta1FaceAnnotation> buildUnnamed4324() {
 void checkUnnamed4324(
     core.List<api.GoogleCloudVisionV1p4beta1FaceAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1FaceAnnotation(
-      o[0] as api.GoogleCloudVisionV1p4beta1FaceAnnotation);
-  checkGoogleCloudVisionV1p4beta1FaceAnnotation(
-      o[1] as api.GoogleCloudVisionV1p4beta1FaceAnnotation);
+  checkGoogleCloudVisionV1p4beta1FaceAnnotation(o[0]);
+  checkGoogleCloudVisionV1p4beta1FaceAnnotation(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1EntityAnnotation> buildUnnamed4325() {
-  var o = <api.GoogleCloudVisionV1p4beta1EntityAnnotation>[];
+  final o = <api.GoogleCloudVisionV1p4beta1EntityAnnotation>[];
   o.add(buildGoogleCloudVisionV1p4beta1EntityAnnotation());
   o.add(buildGoogleCloudVisionV1p4beta1EntityAnnotation());
   return o;
@@ -7652,14 +7361,12 @@ core.List<api.GoogleCloudVisionV1p4beta1EntityAnnotation> buildUnnamed4325() {
 void checkUnnamed4325(
     core.List<api.GoogleCloudVisionV1p4beta1EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1EntityAnnotation(
-      o[0] as api.GoogleCloudVisionV1p4beta1EntityAnnotation);
-  checkGoogleCloudVisionV1p4beta1EntityAnnotation(
-      o[1] as api.GoogleCloudVisionV1p4beta1EntityAnnotation);
+  checkGoogleCloudVisionV1p4beta1EntityAnnotation(o[0]);
+  checkGoogleCloudVisionV1p4beta1EntityAnnotation(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1EntityAnnotation> buildUnnamed4326() {
-  var o = <api.GoogleCloudVisionV1p4beta1EntityAnnotation>[];
+  final o = <api.GoogleCloudVisionV1p4beta1EntityAnnotation>[];
   o.add(buildGoogleCloudVisionV1p4beta1EntityAnnotation());
   o.add(buildGoogleCloudVisionV1p4beta1EntityAnnotation());
   return o;
@@ -7668,15 +7375,13 @@ core.List<api.GoogleCloudVisionV1p4beta1EntityAnnotation> buildUnnamed4326() {
 void checkUnnamed4326(
     core.List<api.GoogleCloudVisionV1p4beta1EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1EntityAnnotation(
-      o[0] as api.GoogleCloudVisionV1p4beta1EntityAnnotation);
-  checkGoogleCloudVisionV1p4beta1EntityAnnotation(
-      o[1] as api.GoogleCloudVisionV1p4beta1EntityAnnotation);
+  checkGoogleCloudVisionV1p4beta1EntityAnnotation(o[0]);
+  checkGoogleCloudVisionV1p4beta1EntityAnnotation(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation>
     buildUnnamed4327() {
-  var o = <api.GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation>[];
+  final o = <api.GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation>[];
   o.add(buildGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation());
   o.add(buildGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation());
   return o;
@@ -7685,14 +7390,12 @@ core.List<api.GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation>
 void checkUnnamed4327(
     core.List<api.GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation(
-      o[0] as api.GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation);
-  checkGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation(
-      o[1] as api.GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation);
+  checkGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation(o[0]);
+  checkGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1EntityAnnotation> buildUnnamed4328() {
-  var o = <api.GoogleCloudVisionV1p4beta1EntityAnnotation>[];
+  final o = <api.GoogleCloudVisionV1p4beta1EntityAnnotation>[];
   o.add(buildGoogleCloudVisionV1p4beta1EntityAnnotation());
   o.add(buildGoogleCloudVisionV1p4beta1EntityAnnotation());
   return o;
@@ -7701,14 +7404,12 @@ core.List<api.GoogleCloudVisionV1p4beta1EntityAnnotation> buildUnnamed4328() {
 void checkUnnamed4328(
     core.List<api.GoogleCloudVisionV1p4beta1EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1EntityAnnotation(
-      o[0] as api.GoogleCloudVisionV1p4beta1EntityAnnotation);
-  checkGoogleCloudVisionV1p4beta1EntityAnnotation(
-      o[1] as api.GoogleCloudVisionV1p4beta1EntityAnnotation);
+  checkGoogleCloudVisionV1p4beta1EntityAnnotation(o[0]);
+  checkGoogleCloudVisionV1p4beta1EntityAnnotation(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1EntityAnnotation> buildUnnamed4329() {
-  var o = <api.GoogleCloudVisionV1p4beta1EntityAnnotation>[];
+  final o = <api.GoogleCloudVisionV1p4beta1EntityAnnotation>[];
   o.add(buildGoogleCloudVisionV1p4beta1EntityAnnotation());
   o.add(buildGoogleCloudVisionV1p4beta1EntityAnnotation());
   return o;
@@ -7717,16 +7418,14 @@ core.List<api.GoogleCloudVisionV1p4beta1EntityAnnotation> buildUnnamed4329() {
 void checkUnnamed4329(
     core.List<api.GoogleCloudVisionV1p4beta1EntityAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1EntityAnnotation(
-      o[0] as api.GoogleCloudVisionV1p4beta1EntityAnnotation);
-  checkGoogleCloudVisionV1p4beta1EntityAnnotation(
-      o[1] as api.GoogleCloudVisionV1p4beta1EntityAnnotation);
+  checkGoogleCloudVisionV1p4beta1EntityAnnotation(o[0]);
+  checkGoogleCloudVisionV1p4beta1EntityAnnotation(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p4beta1AnnotateImageResponse = 0;
 api.GoogleCloudVisionV1p4beta1AnnotateImageResponse
     buildGoogleCloudVisionV1p4beta1AnnotateImageResponse() {
-  var o = api.GoogleCloudVisionV1p4beta1AnnotateImageResponse();
+  final o = api.GoogleCloudVisionV1p4beta1AnnotateImageResponse();
   buildCounterGoogleCloudVisionV1p4beta1AnnotateImageResponse++;
   if (buildCounterGoogleCloudVisionV1p4beta1AnnotateImageResponse < 3) {
     o.context = buildGoogleCloudVisionV1p4beta1ImageAnnotationContext();
@@ -7756,27 +7455,23 @@ void checkGoogleCloudVisionV1p4beta1AnnotateImageResponse(
     api.GoogleCloudVisionV1p4beta1AnnotateImageResponse o) {
   buildCounterGoogleCloudVisionV1p4beta1AnnotateImageResponse++;
   if (buildCounterGoogleCloudVisionV1p4beta1AnnotateImageResponse < 3) {
-    checkGoogleCloudVisionV1p4beta1ImageAnnotationContext(
-        o.context! as api.GoogleCloudVisionV1p4beta1ImageAnnotationContext);
-    checkGoogleCloudVisionV1p4beta1CropHintsAnnotation(o.cropHintsAnnotation!
-        as api.GoogleCloudVisionV1p4beta1CropHintsAnnotation);
-    checkStatus(o.error! as api.Status);
+    checkGoogleCloudVisionV1p4beta1ImageAnnotationContext(o.context!);
+    checkGoogleCloudVisionV1p4beta1CropHintsAnnotation(o.cropHintsAnnotation!);
+    checkStatus(o.error!);
     checkUnnamed4324(o.faceAnnotations!);
-    checkGoogleCloudVisionV1p4beta1TextAnnotation(
-        o.fullTextAnnotation! as api.GoogleCloudVisionV1p4beta1TextAnnotation);
-    checkGoogleCloudVisionV1p4beta1ImageProperties(o.imagePropertiesAnnotation!
-        as api.GoogleCloudVisionV1p4beta1ImageProperties);
+    checkGoogleCloudVisionV1p4beta1TextAnnotation(o.fullTextAnnotation!);
+    checkGoogleCloudVisionV1p4beta1ImageProperties(
+        o.imagePropertiesAnnotation!);
     checkUnnamed4325(o.labelAnnotations!);
     checkUnnamed4326(o.landmarkAnnotations!);
     checkUnnamed4327(o.localizedObjectAnnotations!);
     checkUnnamed4328(o.logoAnnotations!);
-    checkGoogleCloudVisionV1p4beta1ProductSearchResults(o.productSearchResults!
-        as api.GoogleCloudVisionV1p4beta1ProductSearchResults);
-    checkGoogleCloudVisionV1p4beta1SafeSearchAnnotation(o.safeSearchAnnotation!
-        as api.GoogleCloudVisionV1p4beta1SafeSearchAnnotation);
+    checkGoogleCloudVisionV1p4beta1ProductSearchResults(
+        o.productSearchResults!);
+    checkGoogleCloudVisionV1p4beta1SafeSearchAnnotation(
+        o.safeSearchAnnotation!);
     checkUnnamed4329(o.textAnnotations!);
-    checkGoogleCloudVisionV1p4beta1WebDetection(
-        o.webDetection! as api.GoogleCloudVisionV1p4beta1WebDetection);
+    checkGoogleCloudVisionV1p4beta1WebDetection(o.webDetection!);
   }
   buildCounterGoogleCloudVisionV1p4beta1AnnotateImageResponse--;
 }
@@ -7784,7 +7479,7 @@ void checkGoogleCloudVisionV1p4beta1AnnotateImageResponse(
 core.int buildCounterGoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse = 0;
 api.GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse
     buildGoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse() {
-  var o = api.GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse();
+  final o = api.GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse();
   buildCounterGoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse++;
   if (buildCounterGoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse < 3) {
     o.outputConfig = buildGoogleCloudVisionV1p4beta1OutputConfig();
@@ -7797,15 +7492,14 @@ void checkGoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse(
     api.GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse o) {
   buildCounterGoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse++;
   if (buildCounterGoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse < 3) {
-    checkGoogleCloudVisionV1p4beta1OutputConfig(
-        o.outputConfig! as api.GoogleCloudVisionV1p4beta1OutputConfig);
+    checkGoogleCloudVisionV1p4beta1OutputConfig(o.outputConfig!);
   }
   buildCounterGoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse--;
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse>
     buildUnnamed4330() {
-  var o = <api.GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse>[];
+  final o = <api.GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse>[];
   o.add(buildGoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse());
   o.add(buildGoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse());
   return o;
@@ -7814,17 +7508,15 @@ core.List<api.GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse>
 void checkUnnamed4330(
     core.List<api.GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse(
-      o[0] as api.GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse);
-  checkGoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse(
-      o[1] as api.GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse);
+  checkGoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse(o[0]);
+  checkGoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse =
     0;
 api.GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse
     buildGoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse() {
-  var o = api.GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse();
+  final o = api.GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse();
   buildCounterGoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse++;
   if (buildCounterGoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse <
       3) {
@@ -7848,7 +7540,7 @@ core.int
     buildCounterGoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse = 0;
 api.GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse
     buildGoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse() {
-  var o = api.GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse();
+  final o = api.GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse();
   buildCounterGoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse++;
   if (buildCounterGoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse <
       3) {
@@ -7863,15 +7555,14 @@ void checkGoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse(
   buildCounterGoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse++;
   if (buildCounterGoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse <
       3) {
-    checkGoogleCloudVisionV1p4beta1OutputConfig(
-        o.outputConfig! as api.GoogleCloudVisionV1p4beta1OutputConfig);
+    checkGoogleCloudVisionV1p4beta1OutputConfig(o.outputConfig!);
   }
   buildCounterGoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse--;
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1AnnotateFileResponse>
     buildUnnamed4331() {
-  var o = <api.GoogleCloudVisionV1p4beta1AnnotateFileResponse>[];
+  final o = <api.GoogleCloudVisionV1p4beta1AnnotateFileResponse>[];
   o.add(buildGoogleCloudVisionV1p4beta1AnnotateFileResponse());
   o.add(buildGoogleCloudVisionV1p4beta1AnnotateFileResponse());
   return o;
@@ -7880,16 +7571,14 @@ core.List<api.GoogleCloudVisionV1p4beta1AnnotateFileResponse>
 void checkUnnamed4331(
     core.List<api.GoogleCloudVisionV1p4beta1AnnotateFileResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1AnnotateFileResponse(
-      o[0] as api.GoogleCloudVisionV1p4beta1AnnotateFileResponse);
-  checkGoogleCloudVisionV1p4beta1AnnotateFileResponse(
-      o[1] as api.GoogleCloudVisionV1p4beta1AnnotateFileResponse);
+  checkGoogleCloudVisionV1p4beta1AnnotateFileResponse(o[0]);
+  checkGoogleCloudVisionV1p4beta1AnnotateFileResponse(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse = 0;
 api.GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse
     buildGoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse() {
-  var o = api.GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse();
+  final o = api.GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse();
   buildCounterGoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse++;
   if (buildCounterGoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse < 3) {
     o.responses = buildUnnamed4331();
@@ -7910,7 +7599,7 @@ void checkGoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse(
 core.int buildCounterGoogleCloudVisionV1p4beta1BatchOperationMetadata = 0;
 api.GoogleCloudVisionV1p4beta1BatchOperationMetadata
     buildGoogleCloudVisionV1p4beta1BatchOperationMetadata() {
-  var o = api.GoogleCloudVisionV1p4beta1BatchOperationMetadata();
+  final o = api.GoogleCloudVisionV1p4beta1BatchOperationMetadata();
   buildCounterGoogleCloudVisionV1p4beta1BatchOperationMetadata++;
   if (buildCounterGoogleCloudVisionV1p4beta1BatchOperationMetadata < 3) {
     o.endTime = 'foo';
@@ -7942,7 +7631,7 @@ void checkGoogleCloudVisionV1p4beta1BatchOperationMetadata(
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1Paragraph> buildUnnamed4332() {
-  var o = <api.GoogleCloudVisionV1p4beta1Paragraph>[];
+  final o = <api.GoogleCloudVisionV1p4beta1Paragraph>[];
   o.add(buildGoogleCloudVisionV1p4beta1Paragraph());
   o.add(buildGoogleCloudVisionV1p4beta1Paragraph());
   return o;
@@ -7950,15 +7639,13 @@ core.List<api.GoogleCloudVisionV1p4beta1Paragraph> buildUnnamed4332() {
 
 void checkUnnamed4332(core.List<api.GoogleCloudVisionV1p4beta1Paragraph> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1Paragraph(
-      o[0] as api.GoogleCloudVisionV1p4beta1Paragraph);
-  checkGoogleCloudVisionV1p4beta1Paragraph(
-      o[1] as api.GoogleCloudVisionV1p4beta1Paragraph);
+  checkGoogleCloudVisionV1p4beta1Paragraph(o[0]);
+  checkGoogleCloudVisionV1p4beta1Paragraph(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p4beta1Block = 0;
 api.GoogleCloudVisionV1p4beta1Block buildGoogleCloudVisionV1p4beta1Block() {
-  var o = api.GoogleCloudVisionV1p4beta1Block();
+  final o = api.GoogleCloudVisionV1p4beta1Block();
   buildCounterGoogleCloudVisionV1p4beta1Block++;
   if (buildCounterGoogleCloudVisionV1p4beta1Block < 3) {
     o.blockType = 'foo';
@@ -7979,21 +7666,19 @@ void checkGoogleCloudVisionV1p4beta1Block(
       o.blockType!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudVisionV1p4beta1BoundingPoly(
-        o.boundingBox! as api.GoogleCloudVisionV1p4beta1BoundingPoly);
+    checkGoogleCloudVisionV1p4beta1BoundingPoly(o.boundingBox!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
     );
     checkUnnamed4332(o.paragraphs!);
-    checkGoogleCloudVisionV1p4beta1TextAnnotationTextProperty(o.property!
-        as api.GoogleCloudVisionV1p4beta1TextAnnotationTextProperty);
+    checkGoogleCloudVisionV1p4beta1TextAnnotationTextProperty(o.property!);
   }
   buildCounterGoogleCloudVisionV1p4beta1Block--;
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1NormalizedVertex> buildUnnamed4333() {
-  var o = <api.GoogleCloudVisionV1p4beta1NormalizedVertex>[];
+  final o = <api.GoogleCloudVisionV1p4beta1NormalizedVertex>[];
   o.add(buildGoogleCloudVisionV1p4beta1NormalizedVertex());
   o.add(buildGoogleCloudVisionV1p4beta1NormalizedVertex());
   return o;
@@ -8002,14 +7687,12 @@ core.List<api.GoogleCloudVisionV1p4beta1NormalizedVertex> buildUnnamed4333() {
 void checkUnnamed4333(
     core.List<api.GoogleCloudVisionV1p4beta1NormalizedVertex> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1NormalizedVertex(
-      o[0] as api.GoogleCloudVisionV1p4beta1NormalizedVertex);
-  checkGoogleCloudVisionV1p4beta1NormalizedVertex(
-      o[1] as api.GoogleCloudVisionV1p4beta1NormalizedVertex);
+  checkGoogleCloudVisionV1p4beta1NormalizedVertex(o[0]);
+  checkGoogleCloudVisionV1p4beta1NormalizedVertex(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1Vertex> buildUnnamed4334() {
-  var o = <api.GoogleCloudVisionV1p4beta1Vertex>[];
+  final o = <api.GoogleCloudVisionV1p4beta1Vertex>[];
   o.add(buildGoogleCloudVisionV1p4beta1Vertex());
   o.add(buildGoogleCloudVisionV1p4beta1Vertex());
   return o;
@@ -8017,16 +7700,14 @@ core.List<api.GoogleCloudVisionV1p4beta1Vertex> buildUnnamed4334() {
 
 void checkUnnamed4334(core.List<api.GoogleCloudVisionV1p4beta1Vertex> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1Vertex(
-      o[0] as api.GoogleCloudVisionV1p4beta1Vertex);
-  checkGoogleCloudVisionV1p4beta1Vertex(
-      o[1] as api.GoogleCloudVisionV1p4beta1Vertex);
+  checkGoogleCloudVisionV1p4beta1Vertex(o[0]);
+  checkGoogleCloudVisionV1p4beta1Vertex(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p4beta1BoundingPoly = 0;
 api.GoogleCloudVisionV1p4beta1BoundingPoly
     buildGoogleCloudVisionV1p4beta1BoundingPoly() {
-  var o = api.GoogleCloudVisionV1p4beta1BoundingPoly();
+  final o = api.GoogleCloudVisionV1p4beta1BoundingPoly();
   buildCounterGoogleCloudVisionV1p4beta1BoundingPoly++;
   if (buildCounterGoogleCloudVisionV1p4beta1BoundingPoly < 3) {
     o.normalizedVertices = buildUnnamed4333();
@@ -8049,7 +7730,7 @@ void checkGoogleCloudVisionV1p4beta1BoundingPoly(
 core.int buildCounterGoogleCloudVisionV1p4beta1Celebrity = 0;
 api.GoogleCloudVisionV1p4beta1Celebrity
     buildGoogleCloudVisionV1p4beta1Celebrity() {
-  var o = api.GoogleCloudVisionV1p4beta1Celebrity();
+  final o = api.GoogleCloudVisionV1p4beta1Celebrity();
   buildCounterGoogleCloudVisionV1p4beta1Celebrity++;
   if (buildCounterGoogleCloudVisionV1p4beta1Celebrity < 3) {
     o.description = 'foo';
@@ -8083,7 +7764,7 @@ void checkGoogleCloudVisionV1p4beta1Celebrity(
 core.int buildCounterGoogleCloudVisionV1p4beta1ColorInfo = 0;
 api.GoogleCloudVisionV1p4beta1ColorInfo
     buildGoogleCloudVisionV1p4beta1ColorInfo() {
-  var o = api.GoogleCloudVisionV1p4beta1ColorInfo();
+  final o = api.GoogleCloudVisionV1p4beta1ColorInfo();
   buildCounterGoogleCloudVisionV1p4beta1ColorInfo++;
   if (buildCounterGoogleCloudVisionV1p4beta1ColorInfo < 3) {
     o.color = buildColor();
@@ -8098,7 +7779,7 @@ void checkGoogleCloudVisionV1p4beta1ColorInfo(
     api.GoogleCloudVisionV1p4beta1ColorInfo o) {
   buildCounterGoogleCloudVisionV1p4beta1ColorInfo++;
   if (buildCounterGoogleCloudVisionV1p4beta1ColorInfo < 3) {
-    checkColor(o.color! as api.Color);
+    checkColor(o.color!);
     unittest.expect(
       o.pixelFraction!,
       unittest.equals(42.0),
@@ -8114,7 +7795,7 @@ void checkGoogleCloudVisionV1p4beta1ColorInfo(
 core.int buildCounterGoogleCloudVisionV1p4beta1CropHint = 0;
 api.GoogleCloudVisionV1p4beta1CropHint
     buildGoogleCloudVisionV1p4beta1CropHint() {
-  var o = api.GoogleCloudVisionV1p4beta1CropHint();
+  final o = api.GoogleCloudVisionV1p4beta1CropHint();
   buildCounterGoogleCloudVisionV1p4beta1CropHint++;
   if (buildCounterGoogleCloudVisionV1p4beta1CropHint < 3) {
     o.boundingPoly = buildGoogleCloudVisionV1p4beta1BoundingPoly();
@@ -8129,8 +7810,7 @@ void checkGoogleCloudVisionV1p4beta1CropHint(
     api.GoogleCloudVisionV1p4beta1CropHint o) {
   buildCounterGoogleCloudVisionV1p4beta1CropHint++;
   if (buildCounterGoogleCloudVisionV1p4beta1CropHint < 3) {
-    checkGoogleCloudVisionV1p4beta1BoundingPoly(
-        o.boundingPoly! as api.GoogleCloudVisionV1p4beta1BoundingPoly);
+    checkGoogleCloudVisionV1p4beta1BoundingPoly(o.boundingPoly!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
@@ -8144,7 +7824,7 @@ void checkGoogleCloudVisionV1p4beta1CropHint(
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1CropHint> buildUnnamed4335() {
-  var o = <api.GoogleCloudVisionV1p4beta1CropHint>[];
+  final o = <api.GoogleCloudVisionV1p4beta1CropHint>[];
   o.add(buildGoogleCloudVisionV1p4beta1CropHint());
   o.add(buildGoogleCloudVisionV1p4beta1CropHint());
   return o;
@@ -8152,16 +7832,14 @@ core.List<api.GoogleCloudVisionV1p4beta1CropHint> buildUnnamed4335() {
 
 void checkUnnamed4335(core.List<api.GoogleCloudVisionV1p4beta1CropHint> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1CropHint(
-      o[0] as api.GoogleCloudVisionV1p4beta1CropHint);
-  checkGoogleCloudVisionV1p4beta1CropHint(
-      o[1] as api.GoogleCloudVisionV1p4beta1CropHint);
+  checkGoogleCloudVisionV1p4beta1CropHint(o[0]);
+  checkGoogleCloudVisionV1p4beta1CropHint(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p4beta1CropHintsAnnotation = 0;
 api.GoogleCloudVisionV1p4beta1CropHintsAnnotation
     buildGoogleCloudVisionV1p4beta1CropHintsAnnotation() {
-  var o = api.GoogleCloudVisionV1p4beta1CropHintsAnnotation();
+  final o = api.GoogleCloudVisionV1p4beta1CropHintsAnnotation();
   buildCounterGoogleCloudVisionV1p4beta1CropHintsAnnotation++;
   if (buildCounterGoogleCloudVisionV1p4beta1CropHintsAnnotation < 3) {
     o.cropHints = buildUnnamed4335();
@@ -8180,7 +7858,7 @@ void checkGoogleCloudVisionV1p4beta1CropHintsAnnotation(
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1ColorInfo> buildUnnamed4336() {
-  var o = <api.GoogleCloudVisionV1p4beta1ColorInfo>[];
+  final o = <api.GoogleCloudVisionV1p4beta1ColorInfo>[];
   o.add(buildGoogleCloudVisionV1p4beta1ColorInfo());
   o.add(buildGoogleCloudVisionV1p4beta1ColorInfo());
   return o;
@@ -8188,16 +7866,14 @@ core.List<api.GoogleCloudVisionV1p4beta1ColorInfo> buildUnnamed4336() {
 
 void checkUnnamed4336(core.List<api.GoogleCloudVisionV1p4beta1ColorInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1ColorInfo(
-      o[0] as api.GoogleCloudVisionV1p4beta1ColorInfo);
-  checkGoogleCloudVisionV1p4beta1ColorInfo(
-      o[1] as api.GoogleCloudVisionV1p4beta1ColorInfo);
+  checkGoogleCloudVisionV1p4beta1ColorInfo(o[0]);
+  checkGoogleCloudVisionV1p4beta1ColorInfo(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p4beta1DominantColorsAnnotation = 0;
 api.GoogleCloudVisionV1p4beta1DominantColorsAnnotation
     buildGoogleCloudVisionV1p4beta1DominantColorsAnnotation() {
-  var o = api.GoogleCloudVisionV1p4beta1DominantColorsAnnotation();
+  final o = api.GoogleCloudVisionV1p4beta1DominantColorsAnnotation();
   buildCounterGoogleCloudVisionV1p4beta1DominantColorsAnnotation++;
   if (buildCounterGoogleCloudVisionV1p4beta1DominantColorsAnnotation < 3) {
     o.colors = buildUnnamed4336();
@@ -8216,7 +7892,7 @@ void checkGoogleCloudVisionV1p4beta1DominantColorsAnnotation(
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1LocationInfo> buildUnnamed4337() {
-  var o = <api.GoogleCloudVisionV1p4beta1LocationInfo>[];
+  final o = <api.GoogleCloudVisionV1p4beta1LocationInfo>[];
   o.add(buildGoogleCloudVisionV1p4beta1LocationInfo());
   o.add(buildGoogleCloudVisionV1p4beta1LocationInfo());
   return o;
@@ -8224,14 +7900,12 @@ core.List<api.GoogleCloudVisionV1p4beta1LocationInfo> buildUnnamed4337() {
 
 void checkUnnamed4337(core.List<api.GoogleCloudVisionV1p4beta1LocationInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1LocationInfo(
-      o[0] as api.GoogleCloudVisionV1p4beta1LocationInfo);
-  checkGoogleCloudVisionV1p4beta1LocationInfo(
-      o[1] as api.GoogleCloudVisionV1p4beta1LocationInfo);
+  checkGoogleCloudVisionV1p4beta1LocationInfo(o[0]);
+  checkGoogleCloudVisionV1p4beta1LocationInfo(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1Property> buildUnnamed4338() {
-  var o = <api.GoogleCloudVisionV1p4beta1Property>[];
+  final o = <api.GoogleCloudVisionV1p4beta1Property>[];
   o.add(buildGoogleCloudVisionV1p4beta1Property());
   o.add(buildGoogleCloudVisionV1p4beta1Property());
   return o;
@@ -8239,16 +7913,14 @@ core.List<api.GoogleCloudVisionV1p4beta1Property> buildUnnamed4338() {
 
 void checkUnnamed4338(core.List<api.GoogleCloudVisionV1p4beta1Property> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1Property(
-      o[0] as api.GoogleCloudVisionV1p4beta1Property);
-  checkGoogleCloudVisionV1p4beta1Property(
-      o[1] as api.GoogleCloudVisionV1p4beta1Property);
+  checkGoogleCloudVisionV1p4beta1Property(o[0]);
+  checkGoogleCloudVisionV1p4beta1Property(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p4beta1EntityAnnotation = 0;
 api.GoogleCloudVisionV1p4beta1EntityAnnotation
     buildGoogleCloudVisionV1p4beta1EntityAnnotation() {
-  var o = api.GoogleCloudVisionV1p4beta1EntityAnnotation();
+  final o = api.GoogleCloudVisionV1p4beta1EntityAnnotation();
   buildCounterGoogleCloudVisionV1p4beta1EntityAnnotation++;
   if (buildCounterGoogleCloudVisionV1p4beta1EntityAnnotation < 3) {
     o.boundingPoly = buildGoogleCloudVisionV1p4beta1BoundingPoly();
@@ -8269,8 +7941,7 @@ void checkGoogleCloudVisionV1p4beta1EntityAnnotation(
     api.GoogleCloudVisionV1p4beta1EntityAnnotation o) {
   buildCounterGoogleCloudVisionV1p4beta1EntityAnnotation++;
   if (buildCounterGoogleCloudVisionV1p4beta1EntityAnnotation < 3) {
-    checkGoogleCloudVisionV1p4beta1BoundingPoly(
-        o.boundingPoly! as api.GoogleCloudVisionV1p4beta1BoundingPoly);
+    checkGoogleCloudVisionV1p4beta1BoundingPoly(o.boundingPoly!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
@@ -8303,7 +7974,7 @@ void checkGoogleCloudVisionV1p4beta1EntityAnnotation(
 
 core.List<api.GoogleCloudVisionV1p4beta1FaceAnnotationLandmark>
     buildUnnamed4339() {
-  var o = <api.GoogleCloudVisionV1p4beta1FaceAnnotationLandmark>[];
+  final o = <api.GoogleCloudVisionV1p4beta1FaceAnnotationLandmark>[];
   o.add(buildGoogleCloudVisionV1p4beta1FaceAnnotationLandmark());
   o.add(buildGoogleCloudVisionV1p4beta1FaceAnnotationLandmark());
   return o;
@@ -8312,15 +7983,13 @@ core.List<api.GoogleCloudVisionV1p4beta1FaceAnnotationLandmark>
 void checkUnnamed4339(
     core.List<api.GoogleCloudVisionV1p4beta1FaceAnnotationLandmark> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1FaceAnnotationLandmark(
-      o[0] as api.GoogleCloudVisionV1p4beta1FaceAnnotationLandmark);
-  checkGoogleCloudVisionV1p4beta1FaceAnnotationLandmark(
-      o[1] as api.GoogleCloudVisionV1p4beta1FaceAnnotationLandmark);
+  checkGoogleCloudVisionV1p4beta1FaceAnnotationLandmark(o[0]);
+  checkGoogleCloudVisionV1p4beta1FaceAnnotationLandmark(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1FaceRecognitionResult>
     buildUnnamed4340() {
-  var o = <api.GoogleCloudVisionV1p4beta1FaceRecognitionResult>[];
+  final o = <api.GoogleCloudVisionV1p4beta1FaceRecognitionResult>[];
   o.add(buildGoogleCloudVisionV1p4beta1FaceRecognitionResult());
   o.add(buildGoogleCloudVisionV1p4beta1FaceRecognitionResult());
   return o;
@@ -8329,16 +7998,14 @@ core.List<api.GoogleCloudVisionV1p4beta1FaceRecognitionResult>
 void checkUnnamed4340(
     core.List<api.GoogleCloudVisionV1p4beta1FaceRecognitionResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1FaceRecognitionResult(
-      o[0] as api.GoogleCloudVisionV1p4beta1FaceRecognitionResult);
-  checkGoogleCloudVisionV1p4beta1FaceRecognitionResult(
-      o[1] as api.GoogleCloudVisionV1p4beta1FaceRecognitionResult);
+  checkGoogleCloudVisionV1p4beta1FaceRecognitionResult(o[0]);
+  checkGoogleCloudVisionV1p4beta1FaceRecognitionResult(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p4beta1FaceAnnotation = 0;
 api.GoogleCloudVisionV1p4beta1FaceAnnotation
     buildGoogleCloudVisionV1p4beta1FaceAnnotation() {
-  var o = api.GoogleCloudVisionV1p4beta1FaceAnnotation();
+  final o = api.GoogleCloudVisionV1p4beta1FaceAnnotation();
   buildCounterGoogleCloudVisionV1p4beta1FaceAnnotation++;
   if (buildCounterGoogleCloudVisionV1p4beta1FaceAnnotation < 3) {
     o.angerLikelihood = 'foo';
@@ -8374,14 +8041,12 @@ void checkGoogleCloudVisionV1p4beta1FaceAnnotation(
       o.blurredLikelihood!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudVisionV1p4beta1BoundingPoly(
-        o.boundingPoly! as api.GoogleCloudVisionV1p4beta1BoundingPoly);
+    checkGoogleCloudVisionV1p4beta1BoundingPoly(o.boundingPoly!);
     unittest.expect(
       o.detectionConfidence!,
       unittest.equals(42.0),
     );
-    checkGoogleCloudVisionV1p4beta1BoundingPoly(
-        o.fdBoundingPoly! as api.GoogleCloudVisionV1p4beta1BoundingPoly);
+    checkGoogleCloudVisionV1p4beta1BoundingPoly(o.fdBoundingPoly!);
     unittest.expect(
       o.headwearLikelihood!,
       unittest.equals('foo'),
@@ -8427,7 +8092,7 @@ void checkGoogleCloudVisionV1p4beta1FaceAnnotation(
 core.int buildCounterGoogleCloudVisionV1p4beta1FaceAnnotationLandmark = 0;
 api.GoogleCloudVisionV1p4beta1FaceAnnotationLandmark
     buildGoogleCloudVisionV1p4beta1FaceAnnotationLandmark() {
-  var o = api.GoogleCloudVisionV1p4beta1FaceAnnotationLandmark();
+  final o = api.GoogleCloudVisionV1p4beta1FaceAnnotationLandmark();
   buildCounterGoogleCloudVisionV1p4beta1FaceAnnotationLandmark++;
   if (buildCounterGoogleCloudVisionV1p4beta1FaceAnnotationLandmark < 3) {
     o.position = buildGoogleCloudVisionV1p4beta1Position();
@@ -8441,8 +8106,7 @@ void checkGoogleCloudVisionV1p4beta1FaceAnnotationLandmark(
     api.GoogleCloudVisionV1p4beta1FaceAnnotationLandmark o) {
   buildCounterGoogleCloudVisionV1p4beta1FaceAnnotationLandmark++;
   if (buildCounterGoogleCloudVisionV1p4beta1FaceAnnotationLandmark < 3) {
-    checkGoogleCloudVisionV1p4beta1Position(
-        o.position! as api.GoogleCloudVisionV1p4beta1Position);
+    checkGoogleCloudVisionV1p4beta1Position(o.position!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -8454,7 +8118,7 @@ void checkGoogleCloudVisionV1p4beta1FaceAnnotationLandmark(
 core.int buildCounterGoogleCloudVisionV1p4beta1FaceRecognitionResult = 0;
 api.GoogleCloudVisionV1p4beta1FaceRecognitionResult
     buildGoogleCloudVisionV1p4beta1FaceRecognitionResult() {
-  var o = api.GoogleCloudVisionV1p4beta1FaceRecognitionResult();
+  final o = api.GoogleCloudVisionV1p4beta1FaceRecognitionResult();
   buildCounterGoogleCloudVisionV1p4beta1FaceRecognitionResult++;
   if (buildCounterGoogleCloudVisionV1p4beta1FaceRecognitionResult < 3) {
     o.celebrity = buildGoogleCloudVisionV1p4beta1Celebrity();
@@ -8468,8 +8132,7 @@ void checkGoogleCloudVisionV1p4beta1FaceRecognitionResult(
     api.GoogleCloudVisionV1p4beta1FaceRecognitionResult o) {
   buildCounterGoogleCloudVisionV1p4beta1FaceRecognitionResult++;
   if (buildCounterGoogleCloudVisionV1p4beta1FaceRecognitionResult < 3) {
-    checkGoogleCloudVisionV1p4beta1Celebrity(
-        o.celebrity! as api.GoogleCloudVisionV1p4beta1Celebrity);
+    checkGoogleCloudVisionV1p4beta1Celebrity(o.celebrity!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
@@ -8481,7 +8144,7 @@ void checkGoogleCloudVisionV1p4beta1FaceRecognitionResult(
 core.int buildCounterGoogleCloudVisionV1p4beta1GcsDestination = 0;
 api.GoogleCloudVisionV1p4beta1GcsDestination
     buildGoogleCloudVisionV1p4beta1GcsDestination() {
-  var o = api.GoogleCloudVisionV1p4beta1GcsDestination();
+  final o = api.GoogleCloudVisionV1p4beta1GcsDestination();
   buildCounterGoogleCloudVisionV1p4beta1GcsDestination++;
   if (buildCounterGoogleCloudVisionV1p4beta1GcsDestination < 3) {
     o.uri = 'foo';
@@ -8505,7 +8168,7 @@ void checkGoogleCloudVisionV1p4beta1GcsDestination(
 core.int buildCounterGoogleCloudVisionV1p4beta1GcsSource = 0;
 api.GoogleCloudVisionV1p4beta1GcsSource
     buildGoogleCloudVisionV1p4beta1GcsSource() {
-  var o = api.GoogleCloudVisionV1p4beta1GcsSource();
+  final o = api.GoogleCloudVisionV1p4beta1GcsSource();
   buildCounterGoogleCloudVisionV1p4beta1GcsSource++;
   if (buildCounterGoogleCloudVisionV1p4beta1GcsSource < 3) {
     o.uri = 'foo';
@@ -8529,7 +8192,7 @@ void checkGoogleCloudVisionV1p4beta1GcsSource(
 core.int buildCounterGoogleCloudVisionV1p4beta1ImageAnnotationContext = 0;
 api.GoogleCloudVisionV1p4beta1ImageAnnotationContext
     buildGoogleCloudVisionV1p4beta1ImageAnnotationContext() {
-  var o = api.GoogleCloudVisionV1p4beta1ImageAnnotationContext();
+  final o = api.GoogleCloudVisionV1p4beta1ImageAnnotationContext();
   buildCounterGoogleCloudVisionV1p4beta1ImageAnnotationContext++;
   if (buildCounterGoogleCloudVisionV1p4beta1ImageAnnotationContext < 3) {
     o.pageNumber = 42;
@@ -8558,7 +8221,7 @@ void checkGoogleCloudVisionV1p4beta1ImageAnnotationContext(
 core.int buildCounterGoogleCloudVisionV1p4beta1ImageProperties = 0;
 api.GoogleCloudVisionV1p4beta1ImageProperties
     buildGoogleCloudVisionV1p4beta1ImageProperties() {
-  var o = api.GoogleCloudVisionV1p4beta1ImageProperties();
+  final o = api.GoogleCloudVisionV1p4beta1ImageProperties();
   buildCounterGoogleCloudVisionV1p4beta1ImageProperties++;
   if (buildCounterGoogleCloudVisionV1p4beta1ImageProperties < 3) {
     o.dominantColors =
@@ -8572,14 +8235,13 @@ void checkGoogleCloudVisionV1p4beta1ImageProperties(
     api.GoogleCloudVisionV1p4beta1ImageProperties o) {
   buildCounterGoogleCloudVisionV1p4beta1ImageProperties++;
   if (buildCounterGoogleCloudVisionV1p4beta1ImageProperties < 3) {
-    checkGoogleCloudVisionV1p4beta1DominantColorsAnnotation(o.dominantColors!
-        as api.GoogleCloudVisionV1p4beta1DominantColorsAnnotation);
+    checkGoogleCloudVisionV1p4beta1DominantColorsAnnotation(o.dominantColors!);
   }
   buildCounterGoogleCloudVisionV1p4beta1ImageProperties--;
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1ReferenceImage> buildUnnamed4341() {
-  var o = <api.GoogleCloudVisionV1p4beta1ReferenceImage>[];
+  final o = <api.GoogleCloudVisionV1p4beta1ReferenceImage>[];
   o.add(buildGoogleCloudVisionV1p4beta1ReferenceImage());
   o.add(buildGoogleCloudVisionV1p4beta1ReferenceImage());
   return o;
@@ -8588,14 +8250,12 @@ core.List<api.GoogleCloudVisionV1p4beta1ReferenceImage> buildUnnamed4341() {
 void checkUnnamed4341(
     core.List<api.GoogleCloudVisionV1p4beta1ReferenceImage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1ReferenceImage(
-      o[0] as api.GoogleCloudVisionV1p4beta1ReferenceImage);
-  checkGoogleCloudVisionV1p4beta1ReferenceImage(
-      o[1] as api.GoogleCloudVisionV1p4beta1ReferenceImage);
+  checkGoogleCloudVisionV1p4beta1ReferenceImage(o[0]);
+  checkGoogleCloudVisionV1p4beta1ReferenceImage(o[1]);
 }
 
 core.List<api.Status> buildUnnamed4342() {
-  var o = <api.Status>[];
+  final o = <api.Status>[];
   o.add(buildStatus());
   o.add(buildStatus());
   return o;
@@ -8603,14 +8263,14 @@ core.List<api.Status> buildUnnamed4342() {
 
 void checkUnnamed4342(core.List<api.Status> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkStatus(o[0] as api.Status);
-  checkStatus(o[1] as api.Status);
+  checkStatus(o[0]);
+  checkStatus(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p4beta1ImportProductSetsResponse = 0;
 api.GoogleCloudVisionV1p4beta1ImportProductSetsResponse
     buildGoogleCloudVisionV1p4beta1ImportProductSetsResponse() {
-  var o = api.GoogleCloudVisionV1p4beta1ImportProductSetsResponse();
+  final o = api.GoogleCloudVisionV1p4beta1ImportProductSetsResponse();
   buildCounterGoogleCloudVisionV1p4beta1ImportProductSetsResponse++;
   if (buildCounterGoogleCloudVisionV1p4beta1ImportProductSetsResponse < 3) {
     o.referenceImages = buildUnnamed4341();
@@ -8633,7 +8293,7 @@ void checkGoogleCloudVisionV1p4beta1ImportProductSetsResponse(
 core.int buildCounterGoogleCloudVisionV1p4beta1InputConfig = 0;
 api.GoogleCloudVisionV1p4beta1InputConfig
     buildGoogleCloudVisionV1p4beta1InputConfig() {
-  var o = api.GoogleCloudVisionV1p4beta1InputConfig();
+  final o = api.GoogleCloudVisionV1p4beta1InputConfig();
   buildCounterGoogleCloudVisionV1p4beta1InputConfig++;
   if (buildCounterGoogleCloudVisionV1p4beta1InputConfig < 3) {
     o.content = 'foo';
@@ -8652,8 +8312,7 @@ void checkGoogleCloudVisionV1p4beta1InputConfig(
       o.content!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudVisionV1p4beta1GcsSource(
-        o.gcsSource! as api.GoogleCloudVisionV1p4beta1GcsSource);
+    checkGoogleCloudVisionV1p4beta1GcsSource(o.gcsSource!);
     unittest.expect(
       o.mimeType!,
       unittest.equals('foo'),
@@ -8665,7 +8324,7 @@ void checkGoogleCloudVisionV1p4beta1InputConfig(
 core.int buildCounterGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation = 0;
 api.GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation
     buildGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation() {
-  var o = api.GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation();
+  final o = api.GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation();
   buildCounterGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation++;
   if (buildCounterGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation < 3) {
     o.boundingPoly = buildGoogleCloudVisionV1p4beta1BoundingPoly();
@@ -8682,8 +8341,7 @@ void checkGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation(
     api.GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation o) {
   buildCounterGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation++;
   if (buildCounterGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation < 3) {
-    checkGoogleCloudVisionV1p4beta1BoundingPoly(
-        o.boundingPoly! as api.GoogleCloudVisionV1p4beta1BoundingPoly);
+    checkGoogleCloudVisionV1p4beta1BoundingPoly(o.boundingPoly!);
     unittest.expect(
       o.languageCode!,
       unittest.equals('foo'),
@@ -8707,7 +8365,7 @@ void checkGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation(
 core.int buildCounterGoogleCloudVisionV1p4beta1LocationInfo = 0;
 api.GoogleCloudVisionV1p4beta1LocationInfo
     buildGoogleCloudVisionV1p4beta1LocationInfo() {
-  var o = api.GoogleCloudVisionV1p4beta1LocationInfo();
+  final o = api.GoogleCloudVisionV1p4beta1LocationInfo();
   buildCounterGoogleCloudVisionV1p4beta1LocationInfo++;
   if (buildCounterGoogleCloudVisionV1p4beta1LocationInfo < 3) {
     o.latLng = buildLatLng();
@@ -8720,7 +8378,7 @@ void checkGoogleCloudVisionV1p4beta1LocationInfo(
     api.GoogleCloudVisionV1p4beta1LocationInfo o) {
   buildCounterGoogleCloudVisionV1p4beta1LocationInfo++;
   if (buildCounterGoogleCloudVisionV1p4beta1LocationInfo < 3) {
-    checkLatLng(o.latLng! as api.LatLng);
+    checkLatLng(o.latLng!);
   }
   buildCounterGoogleCloudVisionV1p4beta1LocationInfo--;
 }
@@ -8728,7 +8386,7 @@ void checkGoogleCloudVisionV1p4beta1LocationInfo(
 core.int buildCounterGoogleCloudVisionV1p4beta1NormalizedVertex = 0;
 api.GoogleCloudVisionV1p4beta1NormalizedVertex
     buildGoogleCloudVisionV1p4beta1NormalizedVertex() {
-  var o = api.GoogleCloudVisionV1p4beta1NormalizedVertex();
+  final o = api.GoogleCloudVisionV1p4beta1NormalizedVertex();
   buildCounterGoogleCloudVisionV1p4beta1NormalizedVertex++;
   if (buildCounterGoogleCloudVisionV1p4beta1NormalizedVertex < 3) {
     o.x = 42.0;
@@ -8757,7 +8415,7 @@ void checkGoogleCloudVisionV1p4beta1NormalizedVertex(
 core.int buildCounterGoogleCloudVisionV1p4beta1OperationMetadata = 0;
 api.GoogleCloudVisionV1p4beta1OperationMetadata
     buildGoogleCloudVisionV1p4beta1OperationMetadata() {
-  var o = api.GoogleCloudVisionV1p4beta1OperationMetadata();
+  final o = api.GoogleCloudVisionV1p4beta1OperationMetadata();
   buildCounterGoogleCloudVisionV1p4beta1OperationMetadata++;
   if (buildCounterGoogleCloudVisionV1p4beta1OperationMetadata < 3) {
     o.createTime = 'foo';
@@ -8791,7 +8449,7 @@ void checkGoogleCloudVisionV1p4beta1OperationMetadata(
 core.int buildCounterGoogleCloudVisionV1p4beta1OutputConfig = 0;
 api.GoogleCloudVisionV1p4beta1OutputConfig
     buildGoogleCloudVisionV1p4beta1OutputConfig() {
-  var o = api.GoogleCloudVisionV1p4beta1OutputConfig();
+  final o = api.GoogleCloudVisionV1p4beta1OutputConfig();
   buildCounterGoogleCloudVisionV1p4beta1OutputConfig++;
   if (buildCounterGoogleCloudVisionV1p4beta1OutputConfig < 3) {
     o.batchSize = 42;
@@ -8809,14 +8467,13 @@ void checkGoogleCloudVisionV1p4beta1OutputConfig(
       o.batchSize!,
       unittest.equals(42),
     );
-    checkGoogleCloudVisionV1p4beta1GcsDestination(
-        o.gcsDestination! as api.GoogleCloudVisionV1p4beta1GcsDestination);
+    checkGoogleCloudVisionV1p4beta1GcsDestination(o.gcsDestination!);
   }
   buildCounterGoogleCloudVisionV1p4beta1OutputConfig--;
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1Block> buildUnnamed4343() {
-  var o = <api.GoogleCloudVisionV1p4beta1Block>[];
+  final o = <api.GoogleCloudVisionV1p4beta1Block>[];
   o.add(buildGoogleCloudVisionV1p4beta1Block());
   o.add(buildGoogleCloudVisionV1p4beta1Block());
   return o;
@@ -8824,15 +8481,13 @@ core.List<api.GoogleCloudVisionV1p4beta1Block> buildUnnamed4343() {
 
 void checkUnnamed4343(core.List<api.GoogleCloudVisionV1p4beta1Block> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1Block(
-      o[0] as api.GoogleCloudVisionV1p4beta1Block);
-  checkGoogleCloudVisionV1p4beta1Block(
-      o[1] as api.GoogleCloudVisionV1p4beta1Block);
+  checkGoogleCloudVisionV1p4beta1Block(o[0]);
+  checkGoogleCloudVisionV1p4beta1Block(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p4beta1Page = 0;
 api.GoogleCloudVisionV1p4beta1Page buildGoogleCloudVisionV1p4beta1Page() {
-  var o = api.GoogleCloudVisionV1p4beta1Page();
+  final o = api.GoogleCloudVisionV1p4beta1Page();
   buildCounterGoogleCloudVisionV1p4beta1Page++;
   if (buildCounterGoogleCloudVisionV1p4beta1Page < 3) {
     o.blocks = buildUnnamed4343();
@@ -8857,8 +8512,7 @@ void checkGoogleCloudVisionV1p4beta1Page(api.GoogleCloudVisionV1p4beta1Page o) {
       o.height!,
       unittest.equals(42),
     );
-    checkGoogleCloudVisionV1p4beta1TextAnnotationTextProperty(o.property!
-        as api.GoogleCloudVisionV1p4beta1TextAnnotationTextProperty);
+    checkGoogleCloudVisionV1p4beta1TextAnnotationTextProperty(o.property!);
     unittest.expect(
       o.width!,
       unittest.equals(42),
@@ -8868,7 +8522,7 @@ void checkGoogleCloudVisionV1p4beta1Page(api.GoogleCloudVisionV1p4beta1Page o) {
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1Word> buildUnnamed4344() {
-  var o = <api.GoogleCloudVisionV1p4beta1Word>[];
+  final o = <api.GoogleCloudVisionV1p4beta1Word>[];
   o.add(buildGoogleCloudVisionV1p4beta1Word());
   o.add(buildGoogleCloudVisionV1p4beta1Word());
   return o;
@@ -8876,16 +8530,14 @@ core.List<api.GoogleCloudVisionV1p4beta1Word> buildUnnamed4344() {
 
 void checkUnnamed4344(core.List<api.GoogleCloudVisionV1p4beta1Word> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1Word(
-      o[0] as api.GoogleCloudVisionV1p4beta1Word);
-  checkGoogleCloudVisionV1p4beta1Word(
-      o[1] as api.GoogleCloudVisionV1p4beta1Word);
+  checkGoogleCloudVisionV1p4beta1Word(o[0]);
+  checkGoogleCloudVisionV1p4beta1Word(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p4beta1Paragraph = 0;
 api.GoogleCloudVisionV1p4beta1Paragraph
     buildGoogleCloudVisionV1p4beta1Paragraph() {
-  var o = api.GoogleCloudVisionV1p4beta1Paragraph();
+  final o = api.GoogleCloudVisionV1p4beta1Paragraph();
   buildCounterGoogleCloudVisionV1p4beta1Paragraph++;
   if (buildCounterGoogleCloudVisionV1p4beta1Paragraph < 3) {
     o.boundingBox = buildGoogleCloudVisionV1p4beta1BoundingPoly();
@@ -8901,14 +8553,12 @@ void checkGoogleCloudVisionV1p4beta1Paragraph(
     api.GoogleCloudVisionV1p4beta1Paragraph o) {
   buildCounterGoogleCloudVisionV1p4beta1Paragraph++;
   if (buildCounterGoogleCloudVisionV1p4beta1Paragraph < 3) {
-    checkGoogleCloudVisionV1p4beta1BoundingPoly(
-        o.boundingBox! as api.GoogleCloudVisionV1p4beta1BoundingPoly);
+    checkGoogleCloudVisionV1p4beta1BoundingPoly(o.boundingBox!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
     );
-    checkGoogleCloudVisionV1p4beta1TextAnnotationTextProperty(o.property!
-        as api.GoogleCloudVisionV1p4beta1TextAnnotationTextProperty);
+    checkGoogleCloudVisionV1p4beta1TextAnnotationTextProperty(o.property!);
     checkUnnamed4344(o.words!);
   }
   buildCounterGoogleCloudVisionV1p4beta1Paragraph--;
@@ -8917,7 +8567,7 @@ void checkGoogleCloudVisionV1p4beta1Paragraph(
 core.int buildCounterGoogleCloudVisionV1p4beta1Position = 0;
 api.GoogleCloudVisionV1p4beta1Position
     buildGoogleCloudVisionV1p4beta1Position() {
-  var o = api.GoogleCloudVisionV1p4beta1Position();
+  final o = api.GoogleCloudVisionV1p4beta1Position();
   buildCounterGoogleCloudVisionV1p4beta1Position++;
   if (buildCounterGoogleCloudVisionV1p4beta1Position < 3) {
     o.x = 42.0;
@@ -8949,7 +8599,7 @@ void checkGoogleCloudVisionV1p4beta1Position(
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1ProductKeyValue> buildUnnamed4345() {
-  var o = <api.GoogleCloudVisionV1p4beta1ProductKeyValue>[];
+  final o = <api.GoogleCloudVisionV1p4beta1ProductKeyValue>[];
   o.add(buildGoogleCloudVisionV1p4beta1ProductKeyValue());
   o.add(buildGoogleCloudVisionV1p4beta1ProductKeyValue());
   return o;
@@ -8958,15 +8608,13 @@ core.List<api.GoogleCloudVisionV1p4beta1ProductKeyValue> buildUnnamed4345() {
 void checkUnnamed4345(
     core.List<api.GoogleCloudVisionV1p4beta1ProductKeyValue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1ProductKeyValue(
-      o[0] as api.GoogleCloudVisionV1p4beta1ProductKeyValue);
-  checkGoogleCloudVisionV1p4beta1ProductKeyValue(
-      o[1] as api.GoogleCloudVisionV1p4beta1ProductKeyValue);
+  checkGoogleCloudVisionV1p4beta1ProductKeyValue(o[0]);
+  checkGoogleCloudVisionV1p4beta1ProductKeyValue(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p4beta1Product = 0;
 api.GoogleCloudVisionV1p4beta1Product buildGoogleCloudVisionV1p4beta1Product() {
-  var o = api.GoogleCloudVisionV1p4beta1Product();
+  final o = api.GoogleCloudVisionV1p4beta1Product();
   buildCounterGoogleCloudVisionV1p4beta1Product++;
   if (buildCounterGoogleCloudVisionV1p4beta1Product < 3) {
     o.description = 'foo';
@@ -9007,7 +8655,7 @@ void checkGoogleCloudVisionV1p4beta1Product(
 core.int buildCounterGoogleCloudVisionV1p4beta1ProductKeyValue = 0;
 api.GoogleCloudVisionV1p4beta1ProductKeyValue
     buildGoogleCloudVisionV1p4beta1ProductKeyValue() {
-  var o = api.GoogleCloudVisionV1p4beta1ProductKeyValue();
+  final o = api.GoogleCloudVisionV1p4beta1ProductKeyValue();
   buildCounterGoogleCloudVisionV1p4beta1ProductKeyValue++;
   if (buildCounterGoogleCloudVisionV1p4beta1ProductKeyValue < 3) {
     o.key = 'foo';
@@ -9035,7 +8683,7 @@ void checkGoogleCloudVisionV1p4beta1ProductKeyValue(
 
 core.List<api.GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult>
     buildUnnamed4346() {
-  var o = <api.GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult>[];
+  final o = <api.GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult>[];
   o.add(buildGoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult());
   o.add(buildGoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult());
   return o;
@@ -9045,15 +8693,13 @@ void checkUnnamed4346(
     core.List<api.GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult(
-      o[0] as api.GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult);
-  checkGoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult(
-      o[1] as api.GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult);
+  checkGoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult(o[0]);
+  checkGoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult>
     buildUnnamed4347() {
-  var o = <api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult>[];
+  final o = <api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult>[];
   o.add(buildGoogleCloudVisionV1p4beta1ProductSearchResultsResult());
   o.add(buildGoogleCloudVisionV1p4beta1ProductSearchResultsResult());
   return o;
@@ -9062,16 +8708,14 @@ core.List<api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult>
 void checkUnnamed4347(
     core.List<api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1ProductSearchResultsResult(
-      o[0] as api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult);
-  checkGoogleCloudVisionV1p4beta1ProductSearchResultsResult(
-      o[1] as api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult);
+  checkGoogleCloudVisionV1p4beta1ProductSearchResultsResult(o[0]);
+  checkGoogleCloudVisionV1p4beta1ProductSearchResultsResult(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p4beta1ProductSearchResults = 0;
 api.GoogleCloudVisionV1p4beta1ProductSearchResults
     buildGoogleCloudVisionV1p4beta1ProductSearchResults() {
-  var o = api.GoogleCloudVisionV1p4beta1ProductSearchResults();
+  final o = api.GoogleCloudVisionV1p4beta1ProductSearchResults();
   buildCounterGoogleCloudVisionV1p4beta1ProductSearchResults++;
   if (buildCounterGoogleCloudVisionV1p4beta1ProductSearchResults < 3) {
     o.indexTime = 'foo';
@@ -9098,7 +8742,7 @@ void checkGoogleCloudVisionV1p4beta1ProductSearchResults(
 
 core.List<api.GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation>
     buildUnnamed4348() {
-  var o =
+  final o =
       <api.GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation>[];
   o.add(buildGoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation());
   o.add(buildGoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation());
@@ -9110,15 +8754,13 @@ void checkUnnamed4348(
             api.GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation(o[0]
-      as api.GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation);
-  checkGoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation(o[1]
-      as api.GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation);
+  checkGoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation(o[0]);
+  checkGoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult>
     buildUnnamed4349() {
-  var o = <api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult>[];
+  final o = <api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult>[];
   o.add(buildGoogleCloudVisionV1p4beta1ProductSearchResultsResult());
   o.add(buildGoogleCloudVisionV1p4beta1ProductSearchResultsResult());
   return o;
@@ -9127,17 +8769,15 @@ core.List<api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult>
 void checkUnnamed4349(
     core.List<api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1ProductSearchResultsResult(
-      o[0] as api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult);
-  checkGoogleCloudVisionV1p4beta1ProductSearchResultsResult(
-      o[1] as api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult);
+  checkGoogleCloudVisionV1p4beta1ProductSearchResultsResult(o[0]);
+  checkGoogleCloudVisionV1p4beta1ProductSearchResultsResult(o[1]);
 }
 
 core.int
     buildCounterGoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult = 0;
 api.GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult
     buildGoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult() {
-  var o = api.GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult();
+  final o = api.GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult();
   buildCounterGoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult++;
   if (buildCounterGoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult <
       3) {
@@ -9154,8 +8794,7 @@ void checkGoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult(
   buildCounterGoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult++;
   if (buildCounterGoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult <
       3) {
-    checkGoogleCloudVisionV1p4beta1BoundingPoly(
-        o.boundingPoly! as api.GoogleCloudVisionV1p4beta1BoundingPoly);
+    checkGoogleCloudVisionV1p4beta1BoundingPoly(o.boundingPoly!);
     checkUnnamed4348(o.objectAnnotations!);
     checkUnnamed4349(o.results!);
   }
@@ -9167,7 +8806,8 @@ core.int
     0;
 api.GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation
     buildGoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation() {
-  var o = api.GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation();
+  final o =
+      api.GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation();
   buildCounterGoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation++;
   if (buildCounterGoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation <
       3) {
@@ -9208,7 +8848,7 @@ void checkGoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation(
 core.int buildCounterGoogleCloudVisionV1p4beta1ProductSearchResultsResult = 0;
 api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult
     buildGoogleCloudVisionV1p4beta1ProductSearchResultsResult() {
-  var o = api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult();
+  final o = api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult();
   buildCounterGoogleCloudVisionV1p4beta1ProductSearchResultsResult++;
   if (buildCounterGoogleCloudVisionV1p4beta1ProductSearchResultsResult < 3) {
     o.image = 'foo';
@@ -9227,8 +8867,7 @@ void checkGoogleCloudVisionV1p4beta1ProductSearchResultsResult(
       o.image!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudVisionV1p4beta1Product(
-        o.product! as api.GoogleCloudVisionV1p4beta1Product);
+    checkGoogleCloudVisionV1p4beta1Product(o.product!);
     unittest.expect(
       o.score!,
       unittest.equals(42.0),
@@ -9240,7 +8879,7 @@ void checkGoogleCloudVisionV1p4beta1ProductSearchResultsResult(
 core.int buildCounterGoogleCloudVisionV1p4beta1Property = 0;
 api.GoogleCloudVisionV1p4beta1Property
     buildGoogleCloudVisionV1p4beta1Property() {
-  var o = api.GoogleCloudVisionV1p4beta1Property();
+  final o = api.GoogleCloudVisionV1p4beta1Property();
   buildCounterGoogleCloudVisionV1p4beta1Property++;
   if (buildCounterGoogleCloudVisionV1p4beta1Property < 3) {
     o.name = 'foo';
@@ -9272,7 +8911,7 @@ void checkGoogleCloudVisionV1p4beta1Property(
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1BoundingPoly> buildUnnamed4350() {
-  var o = <api.GoogleCloudVisionV1p4beta1BoundingPoly>[];
+  final o = <api.GoogleCloudVisionV1p4beta1BoundingPoly>[];
   o.add(buildGoogleCloudVisionV1p4beta1BoundingPoly());
   o.add(buildGoogleCloudVisionV1p4beta1BoundingPoly());
   return o;
@@ -9280,16 +8919,14 @@ core.List<api.GoogleCloudVisionV1p4beta1BoundingPoly> buildUnnamed4350() {
 
 void checkUnnamed4350(core.List<api.GoogleCloudVisionV1p4beta1BoundingPoly> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1BoundingPoly(
-      o[0] as api.GoogleCloudVisionV1p4beta1BoundingPoly);
-  checkGoogleCloudVisionV1p4beta1BoundingPoly(
-      o[1] as api.GoogleCloudVisionV1p4beta1BoundingPoly);
+  checkGoogleCloudVisionV1p4beta1BoundingPoly(o[0]);
+  checkGoogleCloudVisionV1p4beta1BoundingPoly(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p4beta1ReferenceImage = 0;
 api.GoogleCloudVisionV1p4beta1ReferenceImage
     buildGoogleCloudVisionV1p4beta1ReferenceImage() {
-  var o = api.GoogleCloudVisionV1p4beta1ReferenceImage();
+  final o = api.GoogleCloudVisionV1p4beta1ReferenceImage();
   buildCounterGoogleCloudVisionV1p4beta1ReferenceImage++;
   if (buildCounterGoogleCloudVisionV1p4beta1ReferenceImage < 3) {
     o.boundingPolys = buildUnnamed4350();
@@ -9320,7 +8957,7 @@ void checkGoogleCloudVisionV1p4beta1ReferenceImage(
 core.int buildCounterGoogleCloudVisionV1p4beta1SafeSearchAnnotation = 0;
 api.GoogleCloudVisionV1p4beta1SafeSearchAnnotation
     buildGoogleCloudVisionV1p4beta1SafeSearchAnnotation() {
-  var o = api.GoogleCloudVisionV1p4beta1SafeSearchAnnotation();
+  final o = api.GoogleCloudVisionV1p4beta1SafeSearchAnnotation();
   buildCounterGoogleCloudVisionV1p4beta1SafeSearchAnnotation++;
   if (buildCounterGoogleCloudVisionV1p4beta1SafeSearchAnnotation < 3) {
     o.adult = 'foo';
@@ -9363,7 +9000,7 @@ void checkGoogleCloudVisionV1p4beta1SafeSearchAnnotation(
 
 core.int buildCounterGoogleCloudVisionV1p4beta1Symbol = 0;
 api.GoogleCloudVisionV1p4beta1Symbol buildGoogleCloudVisionV1p4beta1Symbol() {
-  var o = api.GoogleCloudVisionV1p4beta1Symbol();
+  final o = api.GoogleCloudVisionV1p4beta1Symbol();
   buildCounterGoogleCloudVisionV1p4beta1Symbol++;
   if (buildCounterGoogleCloudVisionV1p4beta1Symbol < 3) {
     o.boundingBox = buildGoogleCloudVisionV1p4beta1BoundingPoly();
@@ -9379,14 +9016,12 @@ void checkGoogleCloudVisionV1p4beta1Symbol(
     api.GoogleCloudVisionV1p4beta1Symbol o) {
   buildCounterGoogleCloudVisionV1p4beta1Symbol++;
   if (buildCounterGoogleCloudVisionV1p4beta1Symbol < 3) {
-    checkGoogleCloudVisionV1p4beta1BoundingPoly(
-        o.boundingBox! as api.GoogleCloudVisionV1p4beta1BoundingPoly);
+    checkGoogleCloudVisionV1p4beta1BoundingPoly(o.boundingBox!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
     );
-    checkGoogleCloudVisionV1p4beta1TextAnnotationTextProperty(o.property!
-        as api.GoogleCloudVisionV1p4beta1TextAnnotationTextProperty);
+    checkGoogleCloudVisionV1p4beta1TextAnnotationTextProperty(o.property!);
     unittest.expect(
       o.text!,
       unittest.equals('foo'),
@@ -9396,7 +9031,7 @@ void checkGoogleCloudVisionV1p4beta1Symbol(
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1Page> buildUnnamed4351() {
-  var o = <api.GoogleCloudVisionV1p4beta1Page>[];
+  final o = <api.GoogleCloudVisionV1p4beta1Page>[];
   o.add(buildGoogleCloudVisionV1p4beta1Page());
   o.add(buildGoogleCloudVisionV1p4beta1Page());
   return o;
@@ -9404,16 +9039,14 @@ core.List<api.GoogleCloudVisionV1p4beta1Page> buildUnnamed4351() {
 
 void checkUnnamed4351(core.List<api.GoogleCloudVisionV1p4beta1Page> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1Page(
-      o[0] as api.GoogleCloudVisionV1p4beta1Page);
-  checkGoogleCloudVisionV1p4beta1Page(
-      o[1] as api.GoogleCloudVisionV1p4beta1Page);
+  checkGoogleCloudVisionV1p4beta1Page(o[0]);
+  checkGoogleCloudVisionV1p4beta1Page(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p4beta1TextAnnotation = 0;
 api.GoogleCloudVisionV1p4beta1TextAnnotation
     buildGoogleCloudVisionV1p4beta1TextAnnotation() {
-  var o = api.GoogleCloudVisionV1p4beta1TextAnnotation();
+  final o = api.GoogleCloudVisionV1p4beta1TextAnnotation();
   buildCounterGoogleCloudVisionV1p4beta1TextAnnotation++;
   if (buildCounterGoogleCloudVisionV1p4beta1TextAnnotation < 3) {
     o.pages = buildUnnamed4351();
@@ -9439,7 +9072,7 @@ void checkGoogleCloudVisionV1p4beta1TextAnnotation(
 core.int buildCounterGoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak = 0;
 api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak
     buildGoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak() {
-  var o = api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak();
+  final o = api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak();
   buildCounterGoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak++;
   if (buildCounterGoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak < 3) {
     o.isPrefix = true;
@@ -9466,7 +9099,7 @@ core.int buildCounterGoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage =
     0;
 api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage
     buildGoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage() {
-  var o = api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage();
+  final o = api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage();
   buildCounterGoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage++;
   if (buildCounterGoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage <
       3) {
@@ -9496,7 +9129,7 @@ void checkGoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage(
 
 core.List<api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage>
     buildUnnamed4352() {
-  var o = <api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage>[];
+  final o = <api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage>[];
   o.add(buildGoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage());
   o.add(buildGoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage());
   return o;
@@ -9505,16 +9138,14 @@ core.List<api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage>
 void checkUnnamed4352(
     core.List<api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage(
-      o[0] as api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage);
-  checkGoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage(
-      o[1] as api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage);
+  checkGoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage(o[0]);
+  checkGoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p4beta1TextAnnotationTextProperty = 0;
 api.GoogleCloudVisionV1p4beta1TextAnnotationTextProperty
     buildGoogleCloudVisionV1p4beta1TextAnnotationTextProperty() {
-  var o = api.GoogleCloudVisionV1p4beta1TextAnnotationTextProperty();
+  final o = api.GoogleCloudVisionV1p4beta1TextAnnotationTextProperty();
   buildCounterGoogleCloudVisionV1p4beta1TextAnnotationTextProperty++;
   if (buildCounterGoogleCloudVisionV1p4beta1TextAnnotationTextProperty < 3) {
     o.detectedBreak =
@@ -9529,8 +9160,8 @@ void checkGoogleCloudVisionV1p4beta1TextAnnotationTextProperty(
     api.GoogleCloudVisionV1p4beta1TextAnnotationTextProperty o) {
   buildCounterGoogleCloudVisionV1p4beta1TextAnnotationTextProperty++;
   if (buildCounterGoogleCloudVisionV1p4beta1TextAnnotationTextProperty < 3) {
-    checkGoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak(o.detectedBreak!
-        as api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak);
+    checkGoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak(
+        o.detectedBreak!);
     checkUnnamed4352(o.detectedLanguages!);
   }
   buildCounterGoogleCloudVisionV1p4beta1TextAnnotationTextProperty--;
@@ -9538,7 +9169,7 @@ void checkGoogleCloudVisionV1p4beta1TextAnnotationTextProperty(
 
 core.int buildCounterGoogleCloudVisionV1p4beta1Vertex = 0;
 api.GoogleCloudVisionV1p4beta1Vertex buildGoogleCloudVisionV1p4beta1Vertex() {
-  var o = api.GoogleCloudVisionV1p4beta1Vertex();
+  final o = api.GoogleCloudVisionV1p4beta1Vertex();
   buildCounterGoogleCloudVisionV1p4beta1Vertex++;
   if (buildCounterGoogleCloudVisionV1p4beta1Vertex < 3) {
     o.x = 42;
@@ -9566,7 +9197,7 @@ void checkGoogleCloudVisionV1p4beta1Vertex(
 
 core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebLabel>
     buildUnnamed4353() {
-  var o = <api.GoogleCloudVisionV1p4beta1WebDetectionWebLabel>[];
+  final o = <api.GoogleCloudVisionV1p4beta1WebDetectionWebLabel>[];
   o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebLabel());
   o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebLabel());
   return o;
@@ -9575,15 +9206,13 @@ core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebLabel>
 void checkUnnamed4353(
     core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebLabel> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1WebDetectionWebLabel(
-      o[0] as api.GoogleCloudVisionV1p4beta1WebDetectionWebLabel);
-  checkGoogleCloudVisionV1p4beta1WebDetectionWebLabel(
-      o[1] as api.GoogleCloudVisionV1p4beta1WebDetectionWebLabel);
+  checkGoogleCloudVisionV1p4beta1WebDetectionWebLabel(o[0]);
+  checkGoogleCloudVisionV1p4beta1WebDetectionWebLabel(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>
     buildUnnamed4354() {
-  var o = <api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>[];
+  final o = <api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>[];
   o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebImage());
   o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebImage());
   return o;
@@ -9592,15 +9221,13 @@ core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>
 void checkUnnamed4354(
     core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(
-      o[0] as api.GoogleCloudVisionV1p4beta1WebDetectionWebImage);
-  checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(
-      o[1] as api.GoogleCloudVisionV1p4beta1WebDetectionWebImage);
+  checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(o[0]);
+  checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebPage>
     buildUnnamed4355() {
-  var o = <api.GoogleCloudVisionV1p4beta1WebDetectionWebPage>[];
+  final o = <api.GoogleCloudVisionV1p4beta1WebDetectionWebPage>[];
   o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebPage());
   o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebPage());
   return o;
@@ -9609,15 +9236,13 @@ core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebPage>
 void checkUnnamed4355(
     core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebPage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1WebDetectionWebPage(
-      o[0] as api.GoogleCloudVisionV1p4beta1WebDetectionWebPage);
-  checkGoogleCloudVisionV1p4beta1WebDetectionWebPage(
-      o[1] as api.GoogleCloudVisionV1p4beta1WebDetectionWebPage);
+  checkGoogleCloudVisionV1p4beta1WebDetectionWebPage(o[0]);
+  checkGoogleCloudVisionV1p4beta1WebDetectionWebPage(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>
     buildUnnamed4356() {
-  var o = <api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>[];
+  final o = <api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>[];
   o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebImage());
   o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebImage());
   return o;
@@ -9626,15 +9251,13 @@ core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>
 void checkUnnamed4356(
     core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(
-      o[0] as api.GoogleCloudVisionV1p4beta1WebDetectionWebImage);
-  checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(
-      o[1] as api.GoogleCloudVisionV1p4beta1WebDetectionWebImage);
+  checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(o[0]);
+  checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>
     buildUnnamed4357() {
-  var o = <api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>[];
+  final o = <api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>[];
   o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebImage());
   o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebImage());
   return o;
@@ -9643,15 +9266,13 @@ core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>
 void checkUnnamed4357(
     core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(
-      o[0] as api.GoogleCloudVisionV1p4beta1WebDetectionWebImage);
-  checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(
-      o[1] as api.GoogleCloudVisionV1p4beta1WebDetectionWebImage);
+  checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(o[0]);
+  checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebEntity>
     buildUnnamed4358() {
-  var o = <api.GoogleCloudVisionV1p4beta1WebDetectionWebEntity>[];
+  final o = <api.GoogleCloudVisionV1p4beta1WebDetectionWebEntity>[];
   o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebEntity());
   o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebEntity());
   return o;
@@ -9660,16 +9281,14 @@ core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebEntity>
 void checkUnnamed4358(
     core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1WebDetectionWebEntity(
-      o[0] as api.GoogleCloudVisionV1p4beta1WebDetectionWebEntity);
-  checkGoogleCloudVisionV1p4beta1WebDetectionWebEntity(
-      o[1] as api.GoogleCloudVisionV1p4beta1WebDetectionWebEntity);
+  checkGoogleCloudVisionV1p4beta1WebDetectionWebEntity(o[0]);
+  checkGoogleCloudVisionV1p4beta1WebDetectionWebEntity(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p4beta1WebDetection = 0;
 api.GoogleCloudVisionV1p4beta1WebDetection
     buildGoogleCloudVisionV1p4beta1WebDetection() {
-  var o = api.GoogleCloudVisionV1p4beta1WebDetection();
+  final o = api.GoogleCloudVisionV1p4beta1WebDetection();
   buildCounterGoogleCloudVisionV1p4beta1WebDetection++;
   if (buildCounterGoogleCloudVisionV1p4beta1WebDetection < 3) {
     o.bestGuessLabels = buildUnnamed4353();
@@ -9700,7 +9319,7 @@ void checkGoogleCloudVisionV1p4beta1WebDetection(
 core.int buildCounterGoogleCloudVisionV1p4beta1WebDetectionWebEntity = 0;
 api.GoogleCloudVisionV1p4beta1WebDetectionWebEntity
     buildGoogleCloudVisionV1p4beta1WebDetectionWebEntity() {
-  var o = api.GoogleCloudVisionV1p4beta1WebDetectionWebEntity();
+  final o = api.GoogleCloudVisionV1p4beta1WebDetectionWebEntity();
   buildCounterGoogleCloudVisionV1p4beta1WebDetectionWebEntity++;
   if (buildCounterGoogleCloudVisionV1p4beta1WebDetectionWebEntity < 3) {
     o.description = 'foo';
@@ -9734,7 +9353,7 @@ void checkGoogleCloudVisionV1p4beta1WebDetectionWebEntity(
 core.int buildCounterGoogleCloudVisionV1p4beta1WebDetectionWebImage = 0;
 api.GoogleCloudVisionV1p4beta1WebDetectionWebImage
     buildGoogleCloudVisionV1p4beta1WebDetectionWebImage() {
-  var o = api.GoogleCloudVisionV1p4beta1WebDetectionWebImage();
+  final o = api.GoogleCloudVisionV1p4beta1WebDetectionWebImage();
   buildCounterGoogleCloudVisionV1p4beta1WebDetectionWebImage++;
   if (buildCounterGoogleCloudVisionV1p4beta1WebDetectionWebImage < 3) {
     o.score = 42.0;
@@ -9763,7 +9382,7 @@ void checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(
 core.int buildCounterGoogleCloudVisionV1p4beta1WebDetectionWebLabel = 0;
 api.GoogleCloudVisionV1p4beta1WebDetectionWebLabel
     buildGoogleCloudVisionV1p4beta1WebDetectionWebLabel() {
-  var o = api.GoogleCloudVisionV1p4beta1WebDetectionWebLabel();
+  final o = api.GoogleCloudVisionV1p4beta1WebDetectionWebLabel();
   buildCounterGoogleCloudVisionV1p4beta1WebDetectionWebLabel++;
   if (buildCounterGoogleCloudVisionV1p4beta1WebDetectionWebLabel < 3) {
     o.label = 'foo';
@@ -9791,7 +9410,7 @@ void checkGoogleCloudVisionV1p4beta1WebDetectionWebLabel(
 
 core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>
     buildUnnamed4359() {
-  var o = <api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>[];
+  final o = <api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>[];
   o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebImage());
   o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebImage());
   return o;
@@ -9800,15 +9419,13 @@ core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>
 void checkUnnamed4359(
     core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(
-      o[0] as api.GoogleCloudVisionV1p4beta1WebDetectionWebImage);
-  checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(
-      o[1] as api.GoogleCloudVisionV1p4beta1WebDetectionWebImage);
+  checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(o[0]);
+  checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(o[1]);
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>
     buildUnnamed4360() {
-  var o = <api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>[];
+  final o = <api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>[];
   o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebImage());
   o.add(buildGoogleCloudVisionV1p4beta1WebDetectionWebImage());
   return o;
@@ -9817,16 +9434,14 @@ core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebImage>
 void checkUnnamed4360(
     core.List<api.GoogleCloudVisionV1p4beta1WebDetectionWebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(
-      o[0] as api.GoogleCloudVisionV1p4beta1WebDetectionWebImage);
-  checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(
-      o[1] as api.GoogleCloudVisionV1p4beta1WebDetectionWebImage);
+  checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(o[0]);
+  checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p4beta1WebDetectionWebPage = 0;
 api.GoogleCloudVisionV1p4beta1WebDetectionWebPage
     buildGoogleCloudVisionV1p4beta1WebDetectionWebPage() {
-  var o = api.GoogleCloudVisionV1p4beta1WebDetectionWebPage();
+  final o = api.GoogleCloudVisionV1p4beta1WebDetectionWebPage();
   buildCounterGoogleCloudVisionV1p4beta1WebDetectionWebPage++;
   if (buildCounterGoogleCloudVisionV1p4beta1WebDetectionWebPage < 3) {
     o.fullMatchingImages = buildUnnamed4359();
@@ -9862,7 +9477,7 @@ void checkGoogleCloudVisionV1p4beta1WebDetectionWebPage(
 }
 
 core.List<api.GoogleCloudVisionV1p4beta1Symbol> buildUnnamed4361() {
-  var o = <api.GoogleCloudVisionV1p4beta1Symbol>[];
+  final o = <api.GoogleCloudVisionV1p4beta1Symbol>[];
   o.add(buildGoogleCloudVisionV1p4beta1Symbol());
   o.add(buildGoogleCloudVisionV1p4beta1Symbol());
   return o;
@@ -9870,15 +9485,13 @@ core.List<api.GoogleCloudVisionV1p4beta1Symbol> buildUnnamed4361() {
 
 void checkUnnamed4361(core.List<api.GoogleCloudVisionV1p4beta1Symbol> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudVisionV1p4beta1Symbol(
-      o[0] as api.GoogleCloudVisionV1p4beta1Symbol);
-  checkGoogleCloudVisionV1p4beta1Symbol(
-      o[1] as api.GoogleCloudVisionV1p4beta1Symbol);
+  checkGoogleCloudVisionV1p4beta1Symbol(o[0]);
+  checkGoogleCloudVisionV1p4beta1Symbol(o[1]);
 }
 
 core.int buildCounterGoogleCloudVisionV1p4beta1Word = 0;
 api.GoogleCloudVisionV1p4beta1Word buildGoogleCloudVisionV1p4beta1Word() {
-  var o = api.GoogleCloudVisionV1p4beta1Word();
+  final o = api.GoogleCloudVisionV1p4beta1Word();
   buildCounterGoogleCloudVisionV1p4beta1Word++;
   if (buildCounterGoogleCloudVisionV1p4beta1Word < 3) {
     o.boundingBox = buildGoogleCloudVisionV1p4beta1BoundingPoly();
@@ -9893,21 +9506,19 @@ api.GoogleCloudVisionV1p4beta1Word buildGoogleCloudVisionV1p4beta1Word() {
 void checkGoogleCloudVisionV1p4beta1Word(api.GoogleCloudVisionV1p4beta1Word o) {
   buildCounterGoogleCloudVisionV1p4beta1Word++;
   if (buildCounterGoogleCloudVisionV1p4beta1Word < 3) {
-    checkGoogleCloudVisionV1p4beta1BoundingPoly(
-        o.boundingBox! as api.GoogleCloudVisionV1p4beta1BoundingPoly);
+    checkGoogleCloudVisionV1p4beta1BoundingPoly(o.boundingBox!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
     );
-    checkGoogleCloudVisionV1p4beta1TextAnnotationTextProperty(o.property!
-        as api.GoogleCloudVisionV1p4beta1TextAnnotationTextProperty);
+    checkGoogleCloudVisionV1p4beta1TextAnnotationTextProperty(o.property!);
     checkUnnamed4361(o.symbols!);
   }
   buildCounterGoogleCloudVisionV1p4beta1Word--;
 }
 
 core.List<api.ObjectAnnotation> buildUnnamed4362() {
-  var o = <api.ObjectAnnotation>[];
+  final o = <api.ObjectAnnotation>[];
   o.add(buildObjectAnnotation());
   o.add(buildObjectAnnotation());
   return o;
@@ -9915,12 +9526,12 @@ core.List<api.ObjectAnnotation> buildUnnamed4362() {
 
 void checkUnnamed4362(core.List<api.ObjectAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkObjectAnnotation(o[0] as api.ObjectAnnotation);
-  checkObjectAnnotation(o[1] as api.ObjectAnnotation);
+  checkObjectAnnotation(o[0]);
+  checkObjectAnnotation(o[1]);
 }
 
 core.List<api.Result> buildUnnamed4363() {
-  var o = <api.Result>[];
+  final o = <api.Result>[];
   o.add(buildResult());
   o.add(buildResult());
   return o;
@@ -9928,13 +9539,13 @@ core.List<api.Result> buildUnnamed4363() {
 
 void checkUnnamed4363(core.List<api.Result> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkResult(o[0] as api.Result);
-  checkResult(o[1] as api.Result);
+  checkResult(o[0]);
+  checkResult(o[1]);
 }
 
 core.int buildCounterGroupedResult = 0;
 api.GroupedResult buildGroupedResult() {
-  var o = api.GroupedResult();
+  final o = api.GroupedResult();
   buildCounterGroupedResult++;
   if (buildCounterGroupedResult < 3) {
     o.boundingPoly = buildBoundingPoly();
@@ -9948,7 +9559,7 @@ api.GroupedResult buildGroupedResult() {
 void checkGroupedResult(api.GroupedResult o) {
   buildCounterGroupedResult++;
   if (buildCounterGroupedResult < 3) {
-    checkBoundingPoly(o.boundingPoly! as api.BoundingPoly);
+    checkBoundingPoly(o.boundingPoly!);
     checkUnnamed4362(o.objectAnnotations!);
     checkUnnamed4363(o.results!);
   }
@@ -9957,7 +9568,7 @@ void checkGroupedResult(api.GroupedResult o) {
 
 core.int buildCounterImage = 0;
 api.Image buildImage() {
-  var o = api.Image();
+  final o = api.Image();
   buildCounterImage++;
   if (buildCounterImage < 3) {
     o.content = 'foo';
@@ -9974,14 +9585,14 @@ void checkImage(api.Image o) {
       o.content!,
       unittest.equals('foo'),
     );
-    checkImageSource(o.source! as api.ImageSource);
+    checkImageSource(o.source!);
   }
   buildCounterImage--;
 }
 
 core.int buildCounterImageAnnotationContext = 0;
 api.ImageAnnotationContext buildImageAnnotationContext() {
-  var o = api.ImageAnnotationContext();
+  final o = api.ImageAnnotationContext();
   buildCounterImageAnnotationContext++;
   if (buildCounterImageAnnotationContext < 3) {
     o.pageNumber = 42;
@@ -10007,7 +9618,7 @@ void checkImageAnnotationContext(api.ImageAnnotationContext o) {
 }
 
 core.List<core.String> buildUnnamed4364() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -10027,7 +9638,7 @@ void checkUnnamed4364(core.List<core.String> o) {
 
 core.int buildCounterImageContext = 0;
 api.ImageContext buildImageContext() {
-  var o = api.ImageContext();
+  final o = api.ImageContext();
   buildCounterImageContext++;
   if (buildCounterImageContext < 3) {
     o.cropHintsParams = buildCropHintsParams();
@@ -10044,19 +9655,19 @@ api.ImageContext buildImageContext() {
 void checkImageContext(api.ImageContext o) {
   buildCounterImageContext++;
   if (buildCounterImageContext < 3) {
-    checkCropHintsParams(o.cropHintsParams! as api.CropHintsParams);
+    checkCropHintsParams(o.cropHintsParams!);
     checkUnnamed4364(o.languageHints!);
-    checkLatLongRect(o.latLongRect! as api.LatLongRect);
-    checkProductSearchParams(o.productSearchParams! as api.ProductSearchParams);
-    checkTextDetectionParams(o.textDetectionParams! as api.TextDetectionParams);
-    checkWebDetectionParams(o.webDetectionParams! as api.WebDetectionParams);
+    checkLatLongRect(o.latLongRect!);
+    checkProductSearchParams(o.productSearchParams!);
+    checkTextDetectionParams(o.textDetectionParams!);
+    checkWebDetectionParams(o.webDetectionParams!);
   }
   buildCounterImageContext--;
 }
 
 core.int buildCounterImageProperties = 0;
 api.ImageProperties buildImageProperties() {
-  var o = api.ImageProperties();
+  final o = api.ImageProperties();
   buildCounterImageProperties++;
   if (buildCounterImageProperties < 3) {
     o.dominantColors = buildDominantColorsAnnotation();
@@ -10068,15 +9679,14 @@ api.ImageProperties buildImageProperties() {
 void checkImageProperties(api.ImageProperties o) {
   buildCounterImageProperties++;
   if (buildCounterImageProperties < 3) {
-    checkDominantColorsAnnotation(
-        o.dominantColors! as api.DominantColorsAnnotation);
+    checkDominantColorsAnnotation(o.dominantColors!);
   }
   buildCounterImageProperties--;
 }
 
 core.int buildCounterImageSource = 0;
 api.ImageSource buildImageSource() {
-  var o = api.ImageSource();
+  final o = api.ImageSource();
   buildCounterImageSource++;
   if (buildCounterImageSource < 3) {
     o.gcsImageUri = 'foo';
@@ -10103,7 +9713,7 @@ void checkImageSource(api.ImageSource o) {
 
 core.int buildCounterImportProductSetsGcsSource = 0;
 api.ImportProductSetsGcsSource buildImportProductSetsGcsSource() {
-  var o = api.ImportProductSetsGcsSource();
+  final o = api.ImportProductSetsGcsSource();
   buildCounterImportProductSetsGcsSource++;
   if (buildCounterImportProductSetsGcsSource < 3) {
     o.csvFileUri = 'foo';
@@ -10125,7 +9735,7 @@ void checkImportProductSetsGcsSource(api.ImportProductSetsGcsSource o) {
 
 core.int buildCounterImportProductSetsInputConfig = 0;
 api.ImportProductSetsInputConfig buildImportProductSetsInputConfig() {
-  var o = api.ImportProductSetsInputConfig();
+  final o = api.ImportProductSetsInputConfig();
   buildCounterImportProductSetsInputConfig++;
   if (buildCounterImportProductSetsInputConfig < 3) {
     o.gcsSource = buildImportProductSetsGcsSource();
@@ -10137,15 +9747,14 @@ api.ImportProductSetsInputConfig buildImportProductSetsInputConfig() {
 void checkImportProductSetsInputConfig(api.ImportProductSetsInputConfig o) {
   buildCounterImportProductSetsInputConfig++;
   if (buildCounterImportProductSetsInputConfig < 3) {
-    checkImportProductSetsGcsSource(
-        o.gcsSource! as api.ImportProductSetsGcsSource);
+    checkImportProductSetsGcsSource(o.gcsSource!);
   }
   buildCounterImportProductSetsInputConfig--;
 }
 
 core.int buildCounterImportProductSetsRequest = 0;
 api.ImportProductSetsRequest buildImportProductSetsRequest() {
-  var o = api.ImportProductSetsRequest();
+  final o = api.ImportProductSetsRequest();
   buildCounterImportProductSetsRequest++;
   if (buildCounterImportProductSetsRequest < 3) {
     o.inputConfig = buildImportProductSetsInputConfig();
@@ -10157,14 +9766,13 @@ api.ImportProductSetsRequest buildImportProductSetsRequest() {
 void checkImportProductSetsRequest(api.ImportProductSetsRequest o) {
   buildCounterImportProductSetsRequest++;
   if (buildCounterImportProductSetsRequest < 3) {
-    checkImportProductSetsInputConfig(
-        o.inputConfig! as api.ImportProductSetsInputConfig);
+    checkImportProductSetsInputConfig(o.inputConfig!);
   }
   buildCounterImportProductSetsRequest--;
 }
 
 core.List<api.ReferenceImage> buildUnnamed4365() {
-  var o = <api.ReferenceImage>[];
+  final o = <api.ReferenceImage>[];
   o.add(buildReferenceImage());
   o.add(buildReferenceImage());
   return o;
@@ -10172,12 +9780,12 @@ core.List<api.ReferenceImage> buildUnnamed4365() {
 
 void checkUnnamed4365(core.List<api.ReferenceImage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReferenceImage(o[0] as api.ReferenceImage);
-  checkReferenceImage(o[1] as api.ReferenceImage);
+  checkReferenceImage(o[0]);
+  checkReferenceImage(o[1]);
 }
 
 core.List<api.Status> buildUnnamed4366() {
-  var o = <api.Status>[];
+  final o = <api.Status>[];
   o.add(buildStatus());
   o.add(buildStatus());
   return o;
@@ -10185,13 +9793,13 @@ core.List<api.Status> buildUnnamed4366() {
 
 void checkUnnamed4366(core.List<api.Status> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkStatus(o[0] as api.Status);
-  checkStatus(o[1] as api.Status);
+  checkStatus(o[0]);
+  checkStatus(o[1]);
 }
 
 core.int buildCounterImportProductSetsResponse = 0;
 api.ImportProductSetsResponse buildImportProductSetsResponse() {
-  var o = api.ImportProductSetsResponse();
+  final o = api.ImportProductSetsResponse();
   buildCounterImportProductSetsResponse++;
   if (buildCounterImportProductSetsResponse < 3) {
     o.referenceImages = buildUnnamed4365();
@@ -10212,7 +9820,7 @@ void checkImportProductSetsResponse(api.ImportProductSetsResponse o) {
 
 core.int buildCounterInputConfig = 0;
 api.InputConfig buildInputConfig() {
-  var o = api.InputConfig();
+  final o = api.InputConfig();
   buildCounterInputConfig++;
   if (buildCounterInputConfig < 3) {
     o.content = 'foo';
@@ -10230,7 +9838,7 @@ void checkInputConfig(api.InputConfig o) {
       o.content!,
       unittest.equals('foo'),
     );
-    checkGcsSource(o.gcsSource! as api.GcsSource);
+    checkGcsSource(o.gcsSource!);
     unittest.expect(
       o.mimeType!,
       unittest.equals('foo'),
@@ -10241,7 +9849,7 @@ void checkInputConfig(api.InputConfig o) {
 
 core.int buildCounterKeyValue = 0;
 api.KeyValue buildKeyValue() {
-  var o = api.KeyValue();
+  final o = api.KeyValue();
   buildCounterKeyValue++;
   if (buildCounterKeyValue < 3) {
     o.key = 'foo';
@@ -10268,7 +9876,7 @@ void checkKeyValue(api.KeyValue o) {
 
 core.int buildCounterLandmark = 0;
 api.Landmark buildLandmark() {
-  var o = api.Landmark();
+  final o = api.Landmark();
   buildCounterLandmark++;
   if (buildCounterLandmark < 3) {
     o.position = buildPosition();
@@ -10281,7 +9889,7 @@ api.Landmark buildLandmark() {
 void checkLandmark(api.Landmark o) {
   buildCounterLandmark++;
   if (buildCounterLandmark < 3) {
-    checkPosition(o.position! as api.Position);
+    checkPosition(o.position!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -10292,7 +9900,7 @@ void checkLandmark(api.Landmark o) {
 
 core.int buildCounterLatLng = 0;
 api.LatLng buildLatLng() {
-  var o = api.LatLng();
+  final o = api.LatLng();
   buildCounterLatLng++;
   if (buildCounterLatLng < 3) {
     o.latitude = 42.0;
@@ -10319,7 +9927,7 @@ void checkLatLng(api.LatLng o) {
 
 core.int buildCounterLatLongRect = 0;
 api.LatLongRect buildLatLongRect() {
-  var o = api.LatLongRect();
+  final o = api.LatLongRect();
   buildCounterLatLongRect++;
   if (buildCounterLatLongRect < 3) {
     o.maxLatLng = buildLatLng();
@@ -10332,14 +9940,14 @@ api.LatLongRect buildLatLongRect() {
 void checkLatLongRect(api.LatLongRect o) {
   buildCounterLatLongRect++;
   if (buildCounterLatLongRect < 3) {
-    checkLatLng(o.maxLatLng! as api.LatLng);
-    checkLatLng(o.minLatLng! as api.LatLng);
+    checkLatLng(o.maxLatLng!);
+    checkLatLng(o.minLatLng!);
   }
   buildCounterLatLongRect--;
 }
 
 core.List<api.Operation> buildUnnamed4367() {
-  var o = <api.Operation>[];
+  final o = <api.Operation>[];
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
@@ -10347,13 +9955,13 @@ core.List<api.Operation> buildUnnamed4367() {
 
 void checkUnnamed4367(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOperation(o[0] as api.Operation);
-  checkOperation(o[1] as api.Operation);
+  checkOperation(o[0]);
+  checkOperation(o[1]);
 }
 
 core.int buildCounterListOperationsResponse = 0;
 api.ListOperationsResponse buildListOperationsResponse() {
-  var o = api.ListOperationsResponse();
+  final o = api.ListOperationsResponse();
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
@@ -10376,7 +9984,7 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
 }
 
 core.List<api.ProductSet> buildUnnamed4368() {
-  var o = <api.ProductSet>[];
+  final o = <api.ProductSet>[];
   o.add(buildProductSet());
   o.add(buildProductSet());
   return o;
@@ -10384,13 +9992,13 @@ core.List<api.ProductSet> buildUnnamed4368() {
 
 void checkUnnamed4368(core.List<api.ProductSet> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProductSet(o[0] as api.ProductSet);
-  checkProductSet(o[1] as api.ProductSet);
+  checkProductSet(o[0]);
+  checkProductSet(o[1]);
 }
 
 core.int buildCounterListProductSetsResponse = 0;
 api.ListProductSetsResponse buildListProductSetsResponse() {
-  var o = api.ListProductSetsResponse();
+  final o = api.ListProductSetsResponse();
   buildCounterListProductSetsResponse++;
   if (buildCounterListProductSetsResponse < 3) {
     o.nextPageToken = 'foo';
@@ -10413,7 +10021,7 @@ void checkListProductSetsResponse(api.ListProductSetsResponse o) {
 }
 
 core.List<api.Product> buildUnnamed4369() {
-  var o = <api.Product>[];
+  final o = <api.Product>[];
   o.add(buildProduct());
   o.add(buildProduct());
   return o;
@@ -10421,13 +10029,13 @@ core.List<api.Product> buildUnnamed4369() {
 
 void checkUnnamed4369(core.List<api.Product> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProduct(o[0] as api.Product);
-  checkProduct(o[1] as api.Product);
+  checkProduct(o[0]);
+  checkProduct(o[1]);
 }
 
 core.int buildCounterListProductsInProductSetResponse = 0;
 api.ListProductsInProductSetResponse buildListProductsInProductSetResponse() {
-  var o = api.ListProductsInProductSetResponse();
+  final o = api.ListProductsInProductSetResponse();
   buildCounterListProductsInProductSetResponse++;
   if (buildCounterListProductsInProductSetResponse < 3) {
     o.nextPageToken = 'foo';
@@ -10451,7 +10059,7 @@ void checkListProductsInProductSetResponse(
 }
 
 core.List<api.Product> buildUnnamed4370() {
-  var o = <api.Product>[];
+  final o = <api.Product>[];
   o.add(buildProduct());
   o.add(buildProduct());
   return o;
@@ -10459,13 +10067,13 @@ core.List<api.Product> buildUnnamed4370() {
 
 void checkUnnamed4370(core.List<api.Product> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProduct(o[0] as api.Product);
-  checkProduct(o[1] as api.Product);
+  checkProduct(o[0]);
+  checkProduct(o[1]);
 }
 
 core.int buildCounterListProductsResponse = 0;
 api.ListProductsResponse buildListProductsResponse() {
-  var o = api.ListProductsResponse();
+  final o = api.ListProductsResponse();
   buildCounterListProductsResponse++;
   if (buildCounterListProductsResponse < 3) {
     o.nextPageToken = 'foo';
@@ -10488,7 +10096,7 @@ void checkListProductsResponse(api.ListProductsResponse o) {
 }
 
 core.List<api.ReferenceImage> buildUnnamed4371() {
-  var o = <api.ReferenceImage>[];
+  final o = <api.ReferenceImage>[];
   o.add(buildReferenceImage());
   o.add(buildReferenceImage());
   return o;
@@ -10496,13 +10104,13 @@ core.List<api.ReferenceImage> buildUnnamed4371() {
 
 void checkUnnamed4371(core.List<api.ReferenceImage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReferenceImage(o[0] as api.ReferenceImage);
-  checkReferenceImage(o[1] as api.ReferenceImage);
+  checkReferenceImage(o[0]);
+  checkReferenceImage(o[1]);
 }
 
 core.int buildCounterListReferenceImagesResponse = 0;
 api.ListReferenceImagesResponse buildListReferenceImagesResponse() {
-  var o = api.ListReferenceImagesResponse();
+  final o = api.ListReferenceImagesResponse();
   buildCounterListReferenceImagesResponse++;
   if (buildCounterListReferenceImagesResponse < 3) {
     o.nextPageToken = 'foo';
@@ -10531,7 +10139,7 @@ void checkListReferenceImagesResponse(api.ListReferenceImagesResponse o) {
 
 core.int buildCounterLocalizedObjectAnnotation = 0;
 api.LocalizedObjectAnnotation buildLocalizedObjectAnnotation() {
-  var o = api.LocalizedObjectAnnotation();
+  final o = api.LocalizedObjectAnnotation();
   buildCounterLocalizedObjectAnnotation++;
   if (buildCounterLocalizedObjectAnnotation < 3) {
     o.boundingPoly = buildBoundingPoly();
@@ -10547,7 +10155,7 @@ api.LocalizedObjectAnnotation buildLocalizedObjectAnnotation() {
 void checkLocalizedObjectAnnotation(api.LocalizedObjectAnnotation o) {
   buildCounterLocalizedObjectAnnotation++;
   if (buildCounterLocalizedObjectAnnotation < 3) {
-    checkBoundingPoly(o.boundingPoly! as api.BoundingPoly);
+    checkBoundingPoly(o.boundingPoly!);
     unittest.expect(
       o.languageCode!,
       unittest.equals('foo'),
@@ -10570,7 +10178,7 @@ void checkLocalizedObjectAnnotation(api.LocalizedObjectAnnotation o) {
 
 core.int buildCounterLocationInfo = 0;
 api.LocationInfo buildLocationInfo() {
-  var o = api.LocationInfo();
+  final o = api.LocationInfo();
   buildCounterLocationInfo++;
   if (buildCounterLocationInfo < 3) {
     o.latLng = buildLatLng();
@@ -10582,14 +10190,14 @@ api.LocationInfo buildLocationInfo() {
 void checkLocationInfo(api.LocationInfo o) {
   buildCounterLocationInfo++;
   if (buildCounterLocationInfo < 3) {
-    checkLatLng(o.latLng! as api.LatLng);
+    checkLatLng(o.latLng!);
   }
   buildCounterLocationInfo--;
 }
 
 core.int buildCounterNormalizedVertex = 0;
 api.NormalizedVertex buildNormalizedVertex() {
-  var o = api.NormalizedVertex();
+  final o = api.NormalizedVertex();
   buildCounterNormalizedVertex++;
   if (buildCounterNormalizedVertex < 3) {
     o.x = 42.0;
@@ -10616,7 +10224,7 @@ void checkNormalizedVertex(api.NormalizedVertex o) {
 
 core.int buildCounterObjectAnnotation = 0;
 api.ObjectAnnotation buildObjectAnnotation() {
-  var o = api.ObjectAnnotation();
+  final o = api.ObjectAnnotation();
   buildCounterObjectAnnotation++;
   if (buildCounterObjectAnnotation < 3) {
     o.languageCode = 'foo';
@@ -10652,7 +10260,7 @@ void checkObjectAnnotation(api.ObjectAnnotation o) {
 }
 
 core.Map<core.String, core.Object> buildUnnamed4372() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -10699,7 +10307,7 @@ void checkUnnamed4372(core.Map<core.String, core.Object> o) {
 }
 
 core.Map<core.String, core.Object> buildUnnamed4373() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -10747,7 +10355,7 @@ void checkUnnamed4373(core.Map<core.String, core.Object> o) {
 
 core.int buildCounterOperation = 0;
 api.Operation buildOperation() {
-  var o = api.Operation();
+  final o = api.Operation();
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     o.done = true;
@@ -10764,7 +10372,7 @@ void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
-    checkStatus(o.error! as api.Status);
+    checkStatus(o.error!);
     checkUnnamed4372(o.metadata!);
     unittest.expect(
       o.name!,
@@ -10777,7 +10385,7 @@ void checkOperation(api.Operation o) {
 
 core.int buildCounterOperationMetadata = 0;
 api.OperationMetadata buildOperationMetadata() {
-  var o = api.OperationMetadata();
+  final o = api.OperationMetadata();
   buildCounterOperationMetadata++;
   if (buildCounterOperationMetadata < 3) {
     o.createTime = 'foo';
@@ -10809,7 +10417,7 @@ void checkOperationMetadata(api.OperationMetadata o) {
 
 core.int buildCounterOutputConfig = 0;
 api.OutputConfig buildOutputConfig() {
-  var o = api.OutputConfig();
+  final o = api.OutputConfig();
   buildCounterOutputConfig++;
   if (buildCounterOutputConfig < 3) {
     o.batchSize = 42;
@@ -10826,13 +10434,13 @@ void checkOutputConfig(api.OutputConfig o) {
       o.batchSize!,
       unittest.equals(42),
     );
-    checkGcsDestination(o.gcsDestination! as api.GcsDestination);
+    checkGcsDestination(o.gcsDestination!);
   }
   buildCounterOutputConfig--;
 }
 
 core.List<api.Block> buildUnnamed4374() {
-  var o = <api.Block>[];
+  final o = <api.Block>[];
   o.add(buildBlock());
   o.add(buildBlock());
   return o;
@@ -10840,13 +10448,13 @@ core.List<api.Block> buildUnnamed4374() {
 
 void checkUnnamed4374(core.List<api.Block> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBlock(o[0] as api.Block);
-  checkBlock(o[1] as api.Block);
+  checkBlock(o[0]);
+  checkBlock(o[1]);
 }
 
 core.int buildCounterPage = 0;
 api.Page buildPage() {
-  var o = api.Page();
+  final o = api.Page();
   buildCounterPage++;
   if (buildCounterPage < 3) {
     o.blocks = buildUnnamed4374();
@@ -10871,7 +10479,7 @@ void checkPage(api.Page o) {
       o.height!,
       unittest.equals(42),
     );
-    checkTextProperty(o.property! as api.TextProperty);
+    checkTextProperty(o.property!);
     unittest.expect(
       o.width!,
       unittest.equals(42),
@@ -10881,7 +10489,7 @@ void checkPage(api.Page o) {
 }
 
 core.List<api.Word> buildUnnamed4375() {
-  var o = <api.Word>[];
+  final o = <api.Word>[];
   o.add(buildWord());
   o.add(buildWord());
   return o;
@@ -10889,13 +10497,13 @@ core.List<api.Word> buildUnnamed4375() {
 
 void checkUnnamed4375(core.List<api.Word> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkWord(o[0] as api.Word);
-  checkWord(o[1] as api.Word);
+  checkWord(o[0]);
+  checkWord(o[1]);
 }
 
 core.int buildCounterParagraph = 0;
 api.Paragraph buildParagraph() {
-  var o = api.Paragraph();
+  final o = api.Paragraph();
   buildCounterParagraph++;
   if (buildCounterParagraph < 3) {
     o.boundingBox = buildBoundingPoly();
@@ -10910,12 +10518,12 @@ api.Paragraph buildParagraph() {
 void checkParagraph(api.Paragraph o) {
   buildCounterParagraph++;
   if (buildCounterParagraph < 3) {
-    checkBoundingPoly(o.boundingBox! as api.BoundingPoly);
+    checkBoundingPoly(o.boundingBox!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
     );
-    checkTextProperty(o.property! as api.TextProperty);
+    checkTextProperty(o.property!);
     checkUnnamed4375(o.words!);
   }
   buildCounterParagraph--;
@@ -10923,7 +10531,7 @@ void checkParagraph(api.Paragraph o) {
 
 core.int buildCounterPosition = 0;
 api.Position buildPosition() {
-  var o = api.Position();
+  final o = api.Position();
   buildCounterPosition++;
   if (buildCounterPosition < 3) {
     o.x = 42.0;
@@ -10954,7 +10562,7 @@ void checkPosition(api.Position o) {
 }
 
 core.List<api.KeyValue> buildUnnamed4376() {
-  var o = <api.KeyValue>[];
+  final o = <api.KeyValue>[];
   o.add(buildKeyValue());
   o.add(buildKeyValue());
   return o;
@@ -10962,13 +10570,13 @@ core.List<api.KeyValue> buildUnnamed4376() {
 
 void checkUnnamed4376(core.List<api.KeyValue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkKeyValue(o[0] as api.KeyValue);
-  checkKeyValue(o[1] as api.KeyValue);
+  checkKeyValue(o[0]);
+  checkKeyValue(o[1]);
 }
 
 core.int buildCounterProduct = 0;
 api.Product buildProduct() {
-  var o = api.Product();
+  final o = api.Product();
   buildCounterProduct++;
   if (buildCounterProduct < 3) {
     o.description = 'foo';
@@ -11006,7 +10614,7 @@ void checkProduct(api.Product o) {
 }
 
 core.List<core.String> buildUnnamed4377() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -11026,7 +10634,7 @@ void checkUnnamed4377(core.List<core.String> o) {
 
 core.int buildCounterProductSearchParams = 0;
 api.ProductSearchParams buildProductSearchParams() {
-  var o = api.ProductSearchParams();
+  final o = api.ProductSearchParams();
   buildCounterProductSearchParams++;
   if (buildCounterProductSearchParams < 3) {
     o.boundingPoly = buildBoundingPoly();
@@ -11041,7 +10649,7 @@ api.ProductSearchParams buildProductSearchParams() {
 void checkProductSearchParams(api.ProductSearchParams o) {
   buildCounterProductSearchParams++;
   if (buildCounterProductSearchParams < 3) {
-    checkBoundingPoly(o.boundingPoly! as api.BoundingPoly);
+    checkBoundingPoly(o.boundingPoly!);
     unittest.expect(
       o.filter!,
       unittest.equals('foo'),
@@ -11056,7 +10664,7 @@ void checkProductSearchParams(api.ProductSearchParams o) {
 }
 
 core.List<api.GroupedResult> buildUnnamed4378() {
-  var o = <api.GroupedResult>[];
+  final o = <api.GroupedResult>[];
   o.add(buildGroupedResult());
   o.add(buildGroupedResult());
   return o;
@@ -11064,12 +10672,12 @@ core.List<api.GroupedResult> buildUnnamed4378() {
 
 void checkUnnamed4378(core.List<api.GroupedResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGroupedResult(o[0] as api.GroupedResult);
-  checkGroupedResult(o[1] as api.GroupedResult);
+  checkGroupedResult(o[0]);
+  checkGroupedResult(o[1]);
 }
 
 core.List<api.Result> buildUnnamed4379() {
-  var o = <api.Result>[];
+  final o = <api.Result>[];
   o.add(buildResult());
   o.add(buildResult());
   return o;
@@ -11077,13 +10685,13 @@ core.List<api.Result> buildUnnamed4379() {
 
 void checkUnnamed4379(core.List<api.Result> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkResult(o[0] as api.Result);
-  checkResult(o[1] as api.Result);
+  checkResult(o[0]);
+  checkResult(o[1]);
 }
 
 core.int buildCounterProductSearchResults = 0;
 api.ProductSearchResults buildProductSearchResults() {
-  var o = api.ProductSearchResults();
+  final o = api.ProductSearchResults();
   buildCounterProductSearchResults++;
   if (buildCounterProductSearchResults < 3) {
     o.indexTime = 'foo';
@@ -11109,7 +10717,7 @@ void checkProductSearchResults(api.ProductSearchResults o) {
 
 core.int buildCounterProductSet = 0;
 api.ProductSet buildProductSet() {
-  var o = api.ProductSet();
+  final o = api.ProductSet();
   buildCounterProductSet++;
   if (buildCounterProductSet < 3) {
     o.displayName = 'foo';
@@ -11128,7 +10736,7 @@ void checkProductSet(api.ProductSet o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkStatus(o.indexError! as api.Status);
+    checkStatus(o.indexError!);
     unittest.expect(
       o.indexTime!,
       unittest.equals('foo'),
@@ -11143,7 +10751,7 @@ void checkProductSet(api.ProductSet o) {
 
 core.int buildCounterProductSetPurgeConfig = 0;
 api.ProductSetPurgeConfig buildProductSetPurgeConfig() {
-  var o = api.ProductSetPurgeConfig();
+  final o = api.ProductSetPurgeConfig();
   buildCounterProductSetPurgeConfig++;
   if (buildCounterProductSetPurgeConfig < 3) {
     o.productSetId = 'foo';
@@ -11165,7 +10773,7 @@ void checkProductSetPurgeConfig(api.ProductSetPurgeConfig o) {
 
 core.int buildCounterProperty = 0;
 api.Property buildProperty() {
-  var o = api.Property();
+  final o = api.Property();
   buildCounterProperty++;
   if (buildCounterProperty < 3) {
     o.name = 'foo';
@@ -11197,7 +10805,7 @@ void checkProperty(api.Property o) {
 
 core.int buildCounterPurgeProductsRequest = 0;
 api.PurgeProductsRequest buildPurgeProductsRequest() {
-  var o = api.PurgeProductsRequest();
+  final o = api.PurgeProductsRequest();
   buildCounterPurgeProductsRequest++;
   if (buildCounterPurgeProductsRequest < 3) {
     o.deleteOrphanProducts = true;
@@ -11213,14 +10821,13 @@ void checkPurgeProductsRequest(api.PurgeProductsRequest o) {
   if (buildCounterPurgeProductsRequest < 3) {
     unittest.expect(o.deleteOrphanProducts!, unittest.isTrue);
     unittest.expect(o.force!, unittest.isTrue);
-    checkProductSetPurgeConfig(
-        o.productSetPurgeConfig! as api.ProductSetPurgeConfig);
+    checkProductSetPurgeConfig(o.productSetPurgeConfig!);
   }
   buildCounterPurgeProductsRequest--;
 }
 
 core.List<api.BoundingPoly> buildUnnamed4380() {
-  var o = <api.BoundingPoly>[];
+  final o = <api.BoundingPoly>[];
   o.add(buildBoundingPoly());
   o.add(buildBoundingPoly());
   return o;
@@ -11228,13 +10835,13 @@ core.List<api.BoundingPoly> buildUnnamed4380() {
 
 void checkUnnamed4380(core.List<api.BoundingPoly> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBoundingPoly(o[0] as api.BoundingPoly);
-  checkBoundingPoly(o[1] as api.BoundingPoly);
+  checkBoundingPoly(o[0]);
+  checkBoundingPoly(o[1]);
 }
 
 core.int buildCounterReferenceImage = 0;
 api.ReferenceImage buildReferenceImage() {
-  var o = api.ReferenceImage();
+  final o = api.ReferenceImage();
   buildCounterReferenceImage++;
   if (buildCounterReferenceImage < 3) {
     o.boundingPolys = buildUnnamed4380();
@@ -11264,7 +10871,7 @@ void checkReferenceImage(api.ReferenceImage o) {
 core.int buildCounterRemoveProductFromProductSetRequest = 0;
 api.RemoveProductFromProductSetRequest
     buildRemoveProductFromProductSetRequest() {
-  var o = api.RemoveProductFromProductSetRequest();
+  final o = api.RemoveProductFromProductSetRequest();
   buildCounterRemoveProductFromProductSetRequest++;
   if (buildCounterRemoveProductFromProductSetRequest < 3) {
     o.product = 'foo';
@@ -11287,7 +10894,7 @@ void checkRemoveProductFromProductSetRequest(
 
 core.int buildCounterResult = 0;
 api.Result buildResult() {
-  var o = api.Result();
+  final o = api.Result();
   buildCounterResult++;
   if (buildCounterResult < 3) {
     o.image = 'foo';
@@ -11305,7 +10912,7 @@ void checkResult(api.Result o) {
       o.image!,
       unittest.equals('foo'),
     );
-    checkProduct(o.product! as api.Product);
+    checkProduct(o.product!);
     unittest.expect(
       o.score!,
       unittest.equals(42.0),
@@ -11316,7 +10923,7 @@ void checkResult(api.Result o) {
 
 core.int buildCounterSafeSearchAnnotation = 0;
 api.SafeSearchAnnotation buildSafeSearchAnnotation() {
-  var o = api.SafeSearchAnnotation();
+  final o = api.SafeSearchAnnotation();
   buildCounterSafeSearchAnnotation++;
   if (buildCounterSafeSearchAnnotation < 3) {
     o.adult = 'foo';
@@ -11357,7 +10964,7 @@ void checkSafeSearchAnnotation(api.SafeSearchAnnotation o) {
 }
 
 core.Map<core.String, core.Object> buildUnnamed4381() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -11404,7 +11011,7 @@ void checkUnnamed4381(core.Map<core.String, core.Object> o) {
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed4382() {
-  var o = <core.Map<core.String, core.Object>>[];
+  final o = <core.Map<core.String, core.Object>>[];
   o.add(buildUnnamed4381());
   o.add(buildUnnamed4381());
   return o;
@@ -11418,7 +11025,7 @@ void checkUnnamed4382(core.List<core.Map<core.String, core.Object>> o) {
 
 core.int buildCounterStatus = 0;
 api.Status buildStatus() {
-  var o = api.Status();
+  final o = api.Status();
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
@@ -11447,7 +11054,7 @@ void checkStatus(api.Status o) {
 
 core.int buildCounterSymbol = 0;
 api.Symbol buildSymbol() {
-  var o = api.Symbol();
+  final o = api.Symbol();
   buildCounterSymbol++;
   if (buildCounterSymbol < 3) {
     o.boundingBox = buildBoundingPoly();
@@ -11462,12 +11069,12 @@ api.Symbol buildSymbol() {
 void checkSymbol(api.Symbol o) {
   buildCounterSymbol++;
   if (buildCounterSymbol < 3) {
-    checkBoundingPoly(o.boundingBox! as api.BoundingPoly);
+    checkBoundingPoly(o.boundingBox!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
     );
-    checkTextProperty(o.property! as api.TextProperty);
+    checkTextProperty(o.property!);
     unittest.expect(
       o.text!,
       unittest.equals('foo'),
@@ -11477,7 +11084,7 @@ void checkSymbol(api.Symbol o) {
 }
 
 core.List<api.Page> buildUnnamed4383() {
-  var o = <api.Page>[];
+  final o = <api.Page>[];
   o.add(buildPage());
   o.add(buildPage());
   return o;
@@ -11485,13 +11092,13 @@ core.List<api.Page> buildUnnamed4383() {
 
 void checkUnnamed4383(core.List<api.Page> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPage(o[0] as api.Page);
-  checkPage(o[1] as api.Page);
+  checkPage(o[0]);
+  checkPage(o[1]);
 }
 
 core.int buildCounterTextAnnotation = 0;
 api.TextAnnotation buildTextAnnotation() {
-  var o = api.TextAnnotation();
+  final o = api.TextAnnotation();
   buildCounterTextAnnotation++;
   if (buildCounterTextAnnotation < 3) {
     o.pages = buildUnnamed4383();
@@ -11515,7 +11122,7 @@ void checkTextAnnotation(api.TextAnnotation o) {
 
 core.int buildCounterTextDetectionParams = 0;
 api.TextDetectionParams buildTextDetectionParams() {
-  var o = api.TextDetectionParams();
+  final o = api.TextDetectionParams();
   buildCounterTextDetectionParams++;
   if (buildCounterTextDetectionParams < 3) {
     o.enableTextDetectionConfidenceScore = true;
@@ -11533,7 +11140,7 @@ void checkTextDetectionParams(api.TextDetectionParams o) {
 }
 
 core.List<api.DetectedLanguage> buildUnnamed4384() {
-  var o = <api.DetectedLanguage>[];
+  final o = <api.DetectedLanguage>[];
   o.add(buildDetectedLanguage());
   o.add(buildDetectedLanguage());
   return o;
@@ -11541,13 +11148,13 @@ core.List<api.DetectedLanguage> buildUnnamed4384() {
 
 void checkUnnamed4384(core.List<api.DetectedLanguage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDetectedLanguage(o[0] as api.DetectedLanguage);
-  checkDetectedLanguage(o[1] as api.DetectedLanguage);
+  checkDetectedLanguage(o[0]);
+  checkDetectedLanguage(o[1]);
 }
 
 core.int buildCounterTextProperty = 0;
 api.TextProperty buildTextProperty() {
-  var o = api.TextProperty();
+  final o = api.TextProperty();
   buildCounterTextProperty++;
   if (buildCounterTextProperty < 3) {
     o.detectedBreak = buildDetectedBreak();
@@ -11560,7 +11167,7 @@ api.TextProperty buildTextProperty() {
 void checkTextProperty(api.TextProperty o) {
   buildCounterTextProperty++;
   if (buildCounterTextProperty < 3) {
-    checkDetectedBreak(o.detectedBreak! as api.DetectedBreak);
+    checkDetectedBreak(o.detectedBreak!);
     checkUnnamed4384(o.detectedLanguages!);
   }
   buildCounterTextProperty--;
@@ -11568,7 +11175,7 @@ void checkTextProperty(api.TextProperty o) {
 
 core.int buildCounterVertex = 0;
 api.Vertex buildVertex() {
-  var o = api.Vertex();
+  final o = api.Vertex();
   buildCounterVertex++;
   if (buildCounterVertex < 3) {
     o.x = 42;
@@ -11594,7 +11201,7 @@ void checkVertex(api.Vertex o) {
 }
 
 core.List<api.WebLabel> buildUnnamed4385() {
-  var o = <api.WebLabel>[];
+  final o = <api.WebLabel>[];
   o.add(buildWebLabel());
   o.add(buildWebLabel());
   return o;
@@ -11602,12 +11209,12 @@ core.List<api.WebLabel> buildUnnamed4385() {
 
 void checkUnnamed4385(core.List<api.WebLabel> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkWebLabel(o[0] as api.WebLabel);
-  checkWebLabel(o[1] as api.WebLabel);
+  checkWebLabel(o[0]);
+  checkWebLabel(o[1]);
 }
 
 core.List<api.WebImage> buildUnnamed4386() {
-  var o = <api.WebImage>[];
+  final o = <api.WebImage>[];
   o.add(buildWebImage());
   o.add(buildWebImage());
   return o;
@@ -11615,12 +11222,12 @@ core.List<api.WebImage> buildUnnamed4386() {
 
 void checkUnnamed4386(core.List<api.WebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkWebImage(o[0] as api.WebImage);
-  checkWebImage(o[1] as api.WebImage);
+  checkWebImage(o[0]);
+  checkWebImage(o[1]);
 }
 
 core.List<api.WebPage> buildUnnamed4387() {
-  var o = <api.WebPage>[];
+  final o = <api.WebPage>[];
   o.add(buildWebPage());
   o.add(buildWebPage());
   return o;
@@ -11628,12 +11235,12 @@ core.List<api.WebPage> buildUnnamed4387() {
 
 void checkUnnamed4387(core.List<api.WebPage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkWebPage(o[0] as api.WebPage);
-  checkWebPage(o[1] as api.WebPage);
+  checkWebPage(o[0]);
+  checkWebPage(o[1]);
 }
 
 core.List<api.WebImage> buildUnnamed4388() {
-  var o = <api.WebImage>[];
+  final o = <api.WebImage>[];
   o.add(buildWebImage());
   o.add(buildWebImage());
   return o;
@@ -11641,12 +11248,12 @@ core.List<api.WebImage> buildUnnamed4388() {
 
 void checkUnnamed4388(core.List<api.WebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkWebImage(o[0] as api.WebImage);
-  checkWebImage(o[1] as api.WebImage);
+  checkWebImage(o[0]);
+  checkWebImage(o[1]);
 }
 
 core.List<api.WebImage> buildUnnamed4389() {
-  var o = <api.WebImage>[];
+  final o = <api.WebImage>[];
   o.add(buildWebImage());
   o.add(buildWebImage());
   return o;
@@ -11654,12 +11261,12 @@ core.List<api.WebImage> buildUnnamed4389() {
 
 void checkUnnamed4389(core.List<api.WebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkWebImage(o[0] as api.WebImage);
-  checkWebImage(o[1] as api.WebImage);
+  checkWebImage(o[0]);
+  checkWebImage(o[1]);
 }
 
 core.List<api.WebEntity> buildUnnamed4390() {
-  var o = <api.WebEntity>[];
+  final o = <api.WebEntity>[];
   o.add(buildWebEntity());
   o.add(buildWebEntity());
   return o;
@@ -11667,13 +11274,13 @@ core.List<api.WebEntity> buildUnnamed4390() {
 
 void checkUnnamed4390(core.List<api.WebEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkWebEntity(o[0] as api.WebEntity);
-  checkWebEntity(o[1] as api.WebEntity);
+  checkWebEntity(o[0]);
+  checkWebEntity(o[1]);
 }
 
 core.int buildCounterWebDetection = 0;
 api.WebDetection buildWebDetection() {
-  var o = api.WebDetection();
+  final o = api.WebDetection();
   buildCounterWebDetection++;
   if (buildCounterWebDetection < 3) {
     o.bestGuessLabels = buildUnnamed4385();
@@ -11702,7 +11309,7 @@ void checkWebDetection(api.WebDetection o) {
 
 core.int buildCounterWebDetectionParams = 0;
 api.WebDetectionParams buildWebDetectionParams() {
-  var o = api.WebDetectionParams();
+  final o = api.WebDetectionParams();
   buildCounterWebDetectionParams++;
   if (buildCounterWebDetectionParams < 3) {
     o.includeGeoResults = true;
@@ -11721,7 +11328,7 @@ void checkWebDetectionParams(api.WebDetectionParams o) {
 
 core.int buildCounterWebEntity = 0;
 api.WebEntity buildWebEntity() {
-  var o = api.WebEntity();
+  final o = api.WebEntity();
   buildCounterWebEntity++;
   if (buildCounterWebEntity < 3) {
     o.description = 'foo';
@@ -11753,7 +11360,7 @@ void checkWebEntity(api.WebEntity o) {
 
 core.int buildCounterWebImage = 0;
 api.WebImage buildWebImage() {
-  var o = api.WebImage();
+  final o = api.WebImage();
   buildCounterWebImage++;
   if (buildCounterWebImage < 3) {
     o.score = 42.0;
@@ -11780,7 +11387,7 @@ void checkWebImage(api.WebImage o) {
 
 core.int buildCounterWebLabel = 0;
 api.WebLabel buildWebLabel() {
-  var o = api.WebLabel();
+  final o = api.WebLabel();
   buildCounterWebLabel++;
   if (buildCounterWebLabel < 3) {
     o.label = 'foo';
@@ -11806,7 +11413,7 @@ void checkWebLabel(api.WebLabel o) {
 }
 
 core.List<api.WebImage> buildUnnamed4391() {
-  var o = <api.WebImage>[];
+  final o = <api.WebImage>[];
   o.add(buildWebImage());
   o.add(buildWebImage());
   return o;
@@ -11814,12 +11421,12 @@ core.List<api.WebImage> buildUnnamed4391() {
 
 void checkUnnamed4391(core.List<api.WebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkWebImage(o[0] as api.WebImage);
-  checkWebImage(o[1] as api.WebImage);
+  checkWebImage(o[0]);
+  checkWebImage(o[1]);
 }
 
 core.List<api.WebImage> buildUnnamed4392() {
-  var o = <api.WebImage>[];
+  final o = <api.WebImage>[];
   o.add(buildWebImage());
   o.add(buildWebImage());
   return o;
@@ -11827,13 +11434,13 @@ core.List<api.WebImage> buildUnnamed4392() {
 
 void checkUnnamed4392(core.List<api.WebImage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkWebImage(o[0] as api.WebImage);
-  checkWebImage(o[1] as api.WebImage);
+  checkWebImage(o[0]);
+  checkWebImage(o[1]);
 }
 
 core.int buildCounterWebPage = 0;
 api.WebPage buildWebPage() {
-  var o = api.WebPage();
+  final o = api.WebPage();
   buildCounterWebPage++;
   if (buildCounterWebPage < 3) {
     o.fullMatchingImages = buildUnnamed4391();
@@ -11868,7 +11475,7 @@ void checkWebPage(api.WebPage o) {
 }
 
 core.List<api.Symbol> buildUnnamed4393() {
-  var o = <api.Symbol>[];
+  final o = <api.Symbol>[];
   o.add(buildSymbol());
   o.add(buildSymbol());
   return o;
@@ -11876,13 +11483,13 @@ core.List<api.Symbol> buildUnnamed4393() {
 
 void checkUnnamed4393(core.List<api.Symbol> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSymbol(o[0] as api.Symbol);
-  checkSymbol(o[1] as api.Symbol);
+  checkSymbol(o[0]);
+  checkSymbol(o[1]);
 }
 
 core.int buildCounterWord = 0;
 api.Word buildWord() {
-  var o = api.Word();
+  final o = api.Word();
   buildCounterWord++;
   if (buildCounterWord < 3) {
     o.boundingBox = buildBoundingPoly();
@@ -11897,12 +11504,12 @@ api.Word buildWord() {
 void checkWord(api.Word o) {
   buildCounterWord++;
   if (buildCounterWord < 3) {
-    checkBoundingPoly(o.boundingBox! as api.BoundingPoly);
+    checkBoundingPoly(o.boundingBox!);
     unittest.expect(
       o.confidence!,
       unittest.equals(42.0),
     );
-    checkTextProperty(o.property! as api.TextProperty);
+    checkTextProperty(o.property!);
     checkUnnamed4393(o.symbols!);
   }
   buildCounterWord--;
@@ -11911,369 +11518,365 @@ void checkWord(api.Word o) {
 void main() {
   unittest.group('obj-schema-AddProductToProductSetRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAddProductToProductSetRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AddProductToProductSetRequest.fromJson(
+      final o = buildAddProductToProductSetRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AddProductToProductSetRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAddProductToProductSetRequest(
-          od as api.AddProductToProductSetRequest);
+      checkAddProductToProductSetRequest(od);
     });
   });
 
   unittest.group('obj-schema-AnnotateFileRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAnnotateFileRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AnnotateFileRequest.fromJson(
+      final o = buildAnnotateFileRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AnnotateFileRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAnnotateFileRequest(od as api.AnnotateFileRequest);
+      checkAnnotateFileRequest(od);
     });
   });
 
   unittest.group('obj-schema-AnnotateFileResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAnnotateFileResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AnnotateFileResponse.fromJson(
+      final o = buildAnnotateFileResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AnnotateFileResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAnnotateFileResponse(od as api.AnnotateFileResponse);
+      checkAnnotateFileResponse(od);
     });
   });
 
   unittest.group('obj-schema-AnnotateImageRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAnnotateImageRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AnnotateImageRequest.fromJson(
+      final o = buildAnnotateImageRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AnnotateImageRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAnnotateImageRequest(od as api.AnnotateImageRequest);
+      checkAnnotateImageRequest(od);
     });
   });
 
   unittest.group('obj-schema-AnnotateImageResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAnnotateImageResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AnnotateImageResponse.fromJson(
+      final o = buildAnnotateImageResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AnnotateImageResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAnnotateImageResponse(od as api.AnnotateImageResponse);
+      checkAnnotateImageResponse(od);
     });
   });
 
   unittest.group('obj-schema-AsyncAnnotateFileRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAsyncAnnotateFileRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AsyncAnnotateFileRequest.fromJson(
+      final o = buildAsyncAnnotateFileRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AsyncAnnotateFileRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAsyncAnnotateFileRequest(od as api.AsyncAnnotateFileRequest);
+      checkAsyncAnnotateFileRequest(od);
     });
   });
 
   unittest.group('obj-schema-AsyncAnnotateFileResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAsyncAnnotateFileResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AsyncAnnotateFileResponse.fromJson(
+      final o = buildAsyncAnnotateFileResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AsyncAnnotateFileResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAsyncAnnotateFileResponse(od as api.AsyncAnnotateFileResponse);
+      checkAsyncAnnotateFileResponse(od);
     });
   });
 
   unittest.group('obj-schema-AsyncBatchAnnotateFilesRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAsyncBatchAnnotateFilesRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AsyncBatchAnnotateFilesRequest.fromJson(
+      final o = buildAsyncBatchAnnotateFilesRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AsyncBatchAnnotateFilesRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAsyncBatchAnnotateFilesRequest(
-          od as api.AsyncBatchAnnotateFilesRequest);
+      checkAsyncBatchAnnotateFilesRequest(od);
     });
   });
 
   unittest.group('obj-schema-AsyncBatchAnnotateFilesResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAsyncBatchAnnotateFilesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AsyncBatchAnnotateFilesResponse.fromJson(
+      final o = buildAsyncBatchAnnotateFilesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AsyncBatchAnnotateFilesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAsyncBatchAnnotateFilesResponse(
-          od as api.AsyncBatchAnnotateFilesResponse);
+      checkAsyncBatchAnnotateFilesResponse(od);
     });
   });
 
   unittest.group('obj-schema-AsyncBatchAnnotateImagesRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAsyncBatchAnnotateImagesRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AsyncBatchAnnotateImagesRequest.fromJson(
+      final o = buildAsyncBatchAnnotateImagesRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AsyncBatchAnnotateImagesRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAsyncBatchAnnotateImagesRequest(
-          od as api.AsyncBatchAnnotateImagesRequest);
+      checkAsyncBatchAnnotateImagesRequest(od);
     });
   });
 
   unittest.group('obj-schema-AsyncBatchAnnotateImagesResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAsyncBatchAnnotateImagesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AsyncBatchAnnotateImagesResponse.fromJson(
+      final o = buildAsyncBatchAnnotateImagesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AsyncBatchAnnotateImagesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAsyncBatchAnnotateImagesResponse(
-          od as api.AsyncBatchAnnotateImagesResponse);
+      checkAsyncBatchAnnotateImagesResponse(od);
     });
   });
 
   unittest.group('obj-schema-BatchAnnotateFilesRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBatchAnnotateFilesRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.BatchAnnotateFilesRequest.fromJson(
+      final o = buildBatchAnnotateFilesRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BatchAnnotateFilesRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkBatchAnnotateFilesRequest(od as api.BatchAnnotateFilesRequest);
+      checkBatchAnnotateFilesRequest(od);
     });
   });
 
   unittest.group('obj-schema-BatchAnnotateFilesResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBatchAnnotateFilesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.BatchAnnotateFilesResponse.fromJson(
+      final o = buildBatchAnnotateFilesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BatchAnnotateFilesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkBatchAnnotateFilesResponse(od as api.BatchAnnotateFilesResponse);
+      checkBatchAnnotateFilesResponse(od);
     });
   });
 
   unittest.group('obj-schema-BatchAnnotateImagesRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBatchAnnotateImagesRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.BatchAnnotateImagesRequest.fromJson(
+      final o = buildBatchAnnotateImagesRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BatchAnnotateImagesRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkBatchAnnotateImagesRequest(od as api.BatchAnnotateImagesRequest);
+      checkBatchAnnotateImagesRequest(od);
     });
   });
 
   unittest.group('obj-schema-BatchAnnotateImagesResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBatchAnnotateImagesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.BatchAnnotateImagesResponse.fromJson(
+      final o = buildBatchAnnotateImagesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BatchAnnotateImagesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkBatchAnnotateImagesResponse(od as api.BatchAnnotateImagesResponse);
+      checkBatchAnnotateImagesResponse(od);
     });
   });
 
   unittest.group('obj-schema-BatchOperationMetadata', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBatchOperationMetadata();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.BatchOperationMetadata.fromJson(
+      final o = buildBatchOperationMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BatchOperationMetadata.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkBatchOperationMetadata(od as api.BatchOperationMetadata);
+      checkBatchOperationMetadata(od);
     });
   });
 
   unittest.group('obj-schema-Block', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBlock();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Block.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkBlock(od as api.Block);
+      final o = buildBlock();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Block.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkBlock(od);
     });
   });
 
   unittest.group('obj-schema-BoundingPoly', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBoundingPoly();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.BoundingPoly.fromJson(
+      final o = buildBoundingPoly();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BoundingPoly.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkBoundingPoly(od as api.BoundingPoly);
+      checkBoundingPoly(od);
     });
   });
 
   unittest.group('obj-schema-CancelOperationRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCancelOperationRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CancelOperationRequest.fromJson(
+      final o = buildCancelOperationRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CancelOperationRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCancelOperationRequest(od as api.CancelOperationRequest);
+      checkCancelOperationRequest(od);
     });
   });
 
   unittest.group('obj-schema-Color', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildColor();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Color.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkColor(od as api.Color);
+      final o = buildColor();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Color.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkColor(od);
     });
   });
 
   unittest.group('obj-schema-ColorInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildColorInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildColorInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.ColorInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkColorInfo(od as api.ColorInfo);
+      checkColorInfo(od);
     });
   });
 
   unittest.group('obj-schema-CropHint', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCropHint();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildCropHint();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.CropHint.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkCropHint(od as api.CropHint);
+      checkCropHint(od);
     });
   });
 
   unittest.group('obj-schema-CropHintsAnnotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCropHintsAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CropHintsAnnotation.fromJson(
+      final o = buildCropHintsAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CropHintsAnnotation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCropHintsAnnotation(od as api.CropHintsAnnotation);
+      checkCropHintsAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-CropHintsParams', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCropHintsParams();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CropHintsParams.fromJson(
+      final o = buildCropHintsParams();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CropHintsParams.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCropHintsParams(od as api.CropHintsParams);
+      checkCropHintsParams(od);
     });
   });
 
   unittest.group('obj-schema-DetectedBreak', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDetectedBreak();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DetectedBreak.fromJson(
+      final o = buildDetectedBreak();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DetectedBreak.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDetectedBreak(od as api.DetectedBreak);
+      checkDetectedBreak(od);
     });
   });
 
   unittest.group('obj-schema-DetectedLanguage', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDetectedLanguage();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DetectedLanguage.fromJson(
+      final o = buildDetectedLanguage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DetectedLanguage.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDetectedLanguage(od as api.DetectedLanguage);
+      checkDetectedLanguage(od);
     });
   });
 
   unittest.group('obj-schema-DominantColorsAnnotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDominantColorsAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DominantColorsAnnotation.fromJson(
+      final o = buildDominantColorsAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DominantColorsAnnotation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDominantColorsAnnotation(od as api.DominantColorsAnnotation);
+      checkDominantColorsAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildEmpty();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkEmpty(od as api.Empty);
+      final o = buildEmpty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkEmpty(od);
     });
   });
 
   unittest.group('obj-schema-EntityAnnotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildEntityAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.EntityAnnotation.fromJson(
+      final o = buildEntityAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EntityAnnotation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkEntityAnnotation(od as api.EntityAnnotation);
+      checkEntityAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-FaceAnnotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildFaceAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.FaceAnnotation.fromJson(
+      final o = buildFaceAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FaceAnnotation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkFaceAnnotation(od as api.FaceAnnotation);
+      checkFaceAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-Feature', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildFeature();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildFeature();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Feature.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkFeature(od as api.Feature);
+      checkFeature(od);
     });
   });
 
   unittest.group('obj-schema-GcsDestination', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGcsDestination();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GcsDestination.fromJson(
+      final o = buildGcsDestination();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GcsDestination.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGcsDestination(od as api.GcsDestination);
+      checkGcsDestination(od);
     });
   });
 
   unittest.group('obj-schema-GcsSource', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGcsSource();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGcsSource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GcsSource.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGcsSource(od as api.GcsSource);
+      checkGcsSource(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1AnnotateFileResponse',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1AnnotateFileResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1AnnotateFileResponse.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1AnnotateFileResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1AnnotateFileResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1AnnotateFileResponse(
-          od as api.GoogleCloudVisionV1p1beta1AnnotateFileResponse);
+      checkGoogleCloudVisionV1p1beta1AnnotateFileResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1AnnotateImageResponse',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1AnnotateImageResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1AnnotateImageResponse.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1AnnotateImageResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1AnnotateImageResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1AnnotateImageResponse(
-          od as api.GoogleCloudVisionV1p1beta1AnnotateImageResponse);
+      checkGoogleCloudVisionV1p1beta1AnnotateImageResponse(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse(
-          od as api.GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse);
+      final o = buildGoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse(od);
     });
   });
 
@@ -12281,293 +11884,270 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse
+      final o =
+          buildGoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse
           .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse(
-          od as api.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse);
+      checkGoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Block', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1Block();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1Block.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1Block();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1Block.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1Block(
-          od as api.GoogleCloudVisionV1p1beta1Block);
+      checkGoogleCloudVisionV1p1beta1Block(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1BoundingPoly', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1BoundingPoly();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1BoundingPoly();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1BoundingPoly(
-          od as api.GoogleCloudVisionV1p1beta1BoundingPoly);
+      checkGoogleCloudVisionV1p1beta1BoundingPoly(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1ColorInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1ColorInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1ColorInfo.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1ColorInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1ColorInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1ColorInfo(
-          od as api.GoogleCloudVisionV1p1beta1ColorInfo);
+      checkGoogleCloudVisionV1p1beta1ColorInfo(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1CropHint', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1CropHint();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1CropHint.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1CropHint();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1CropHint.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1CropHint(
-          od as api.GoogleCloudVisionV1p1beta1CropHint);
+      checkGoogleCloudVisionV1p1beta1CropHint(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1CropHintsAnnotation',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1CropHintsAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1CropHintsAnnotation.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1CropHintsAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1CropHintsAnnotation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1CropHintsAnnotation(
-          od as api.GoogleCloudVisionV1p1beta1CropHintsAnnotation);
+      checkGoogleCloudVisionV1p1beta1CropHintsAnnotation(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p1beta1DominantColorsAnnotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1DominantColorsAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1DominantColorsAnnotation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1DominantColorsAnnotation(
-          od as api.GoogleCloudVisionV1p1beta1DominantColorsAnnotation);
+      final o = buildGoogleCloudVisionV1p1beta1DominantColorsAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudVisionV1p1beta1DominantColorsAnnotation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudVisionV1p1beta1DominantColorsAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1EntityAnnotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1EntityAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1EntityAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1EntityAnnotation(
-          od as api.GoogleCloudVisionV1p1beta1EntityAnnotation);
+      checkGoogleCloudVisionV1p1beta1EntityAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1FaceAnnotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1FaceAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1FaceAnnotation.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1FaceAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1FaceAnnotation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1FaceAnnotation(
-          od as api.GoogleCloudVisionV1p1beta1FaceAnnotation);
+      checkGoogleCloudVisionV1p1beta1FaceAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1FaceAnnotationLandmark',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1FaceAnnotationLandmark();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1FaceAnnotationLandmark.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1FaceAnnotationLandmark();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1FaceAnnotationLandmark.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1FaceAnnotationLandmark(
-          od as api.GoogleCloudVisionV1p1beta1FaceAnnotationLandmark);
+      checkGoogleCloudVisionV1p1beta1FaceAnnotationLandmark(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1GcsDestination', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1GcsDestination();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1GcsDestination.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1GcsDestination();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1GcsDestination.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1GcsDestination(
-          od as api.GoogleCloudVisionV1p1beta1GcsDestination);
+      checkGoogleCloudVisionV1p1beta1GcsDestination(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1GcsSource', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1GcsSource();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1GcsSource.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1GcsSource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1GcsSource.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1GcsSource(
-          od as api.GoogleCloudVisionV1p1beta1GcsSource);
+      checkGoogleCloudVisionV1p1beta1GcsSource(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1ImageAnnotationContext',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1ImageAnnotationContext();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1ImageAnnotationContext.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1ImageAnnotationContext();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1ImageAnnotationContext.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1ImageAnnotationContext(
-          od as api.GoogleCloudVisionV1p1beta1ImageAnnotationContext);
+      checkGoogleCloudVisionV1p1beta1ImageAnnotationContext(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1ImageProperties', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1ImageProperties();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1ImageProperties.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1ImageProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1ImageProperties.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1ImageProperties(
-          od as api.GoogleCloudVisionV1p1beta1ImageProperties);
+      checkGoogleCloudVisionV1p1beta1ImageProperties(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1InputConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1InputConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1InputConfig.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1InputConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1InputConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1InputConfig(
-          od as api.GoogleCloudVisionV1p1beta1InputConfig);
+      checkGoogleCloudVisionV1p1beta1InputConfig(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation(
-          od as api.GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation);
+      final o = buildGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1LocationInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1LocationInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1LocationInfo.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1LocationInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1LocationInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1LocationInfo(
-          od as api.GoogleCloudVisionV1p1beta1LocationInfo);
+      checkGoogleCloudVisionV1p1beta1LocationInfo(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1NormalizedVertex', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1NormalizedVertex();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1NormalizedVertex.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1NormalizedVertex();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1NormalizedVertex.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1NormalizedVertex(
-          od as api.GoogleCloudVisionV1p1beta1NormalizedVertex);
+      checkGoogleCloudVisionV1p1beta1NormalizedVertex(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1OperationMetadata', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1OperationMetadata();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1OperationMetadata.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1OperationMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1OperationMetadata.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1OperationMetadata(
-          od as api.GoogleCloudVisionV1p1beta1OperationMetadata);
+      checkGoogleCloudVisionV1p1beta1OperationMetadata(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1OutputConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1OutputConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1OutputConfig.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1OutputConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1OutputConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1OutputConfig(
-          od as api.GoogleCloudVisionV1p1beta1OutputConfig);
+      checkGoogleCloudVisionV1p1beta1OutputConfig(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Page', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1Page();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1Page.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1Page();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1Page.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1Page(
-          od as api.GoogleCloudVisionV1p1beta1Page);
+      checkGoogleCloudVisionV1p1beta1Page(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Paragraph', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1Paragraph();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1Paragraph.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1Paragraph();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1Paragraph.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1Paragraph(
-          od as api.GoogleCloudVisionV1p1beta1Paragraph);
+      checkGoogleCloudVisionV1p1beta1Paragraph(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Position', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1Position();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1Position.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1Position();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1Position.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1Position(
-          od as api.GoogleCloudVisionV1p1beta1Position);
+      checkGoogleCloudVisionV1p1beta1Position(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Product', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1Product();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1Product.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1Product();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1Product.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1Product(
-          od as api.GoogleCloudVisionV1p1beta1Product);
+      checkGoogleCloudVisionV1p1beta1Product(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1ProductKeyValue', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1ProductKeyValue();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1ProductKeyValue.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1ProductKeyValue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1ProductKeyValue.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1ProductKeyValue(
-          od as api.GoogleCloudVisionV1p1beta1ProductKeyValue);
+      checkGoogleCloudVisionV1p1beta1ProductKeyValue(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1ProductSearchResults',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1ProductSearchResults();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1ProductSearchResults.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1ProductSearchResults();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1ProductSearchResults.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1ProductSearchResults(
-          od as api.GoogleCloudVisionV1p1beta1ProductSearchResults);
+      checkGoogleCloudVisionV1p1beta1ProductSearchResults(od);
     });
   });
 
@@ -12575,13 +12155,12 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult',
       () {
     unittest.test('to-json--from-json', () async {
-      var o =
+      final o =
           buildGoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult
           .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult(od
-          as api.GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult);
+      checkGoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult(od);
     });
   });
 
@@ -12589,86 +12168,78 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation',
       () {
     unittest.test('to-json--from-json', () async {
-      var o =
+      final o =
           buildGoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation
               .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation(od
-          as api
-              .GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation);
+      checkGoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p1beta1ProductSearchResultsResult', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1ProductSearchResultsResult();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudVisionV1p1beta1ProductSearchResultsResult();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1ProductSearchResultsResult(
-          od as api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult);
+      checkGoogleCloudVisionV1p1beta1ProductSearchResultsResult(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Property', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1Property();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1Property.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1Property();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1Property.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1Property(
-          od as api.GoogleCloudVisionV1p1beta1Property);
+      checkGoogleCloudVisionV1p1beta1Property(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1SafeSearchAnnotation',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1SafeSearchAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1SafeSearchAnnotation.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1SafeSearchAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1SafeSearchAnnotation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1SafeSearchAnnotation(
-          od as api.GoogleCloudVisionV1p1beta1SafeSearchAnnotation);
+      checkGoogleCloudVisionV1p1beta1SafeSearchAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Symbol', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1Symbol();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1Symbol.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1Symbol();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1Symbol.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1Symbol(
-          od as api.GoogleCloudVisionV1p1beta1Symbol);
+      checkGoogleCloudVisionV1p1beta1Symbol(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1TextAnnotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1TextAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1TextAnnotation.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1TextAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1TextAnnotation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1TextAnnotation(
-          od as api.GoogleCloudVisionV1p1beta1TextAnnotation);
+      checkGoogleCloudVisionV1p1beta1TextAnnotation(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak(
-          od as api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak);
+      checkGoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak(od);
     });
   });
 
@@ -12676,143 +12247,132 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage(
-          od as api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage);
+      checkGoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p1beta1TextAnnotationTextProperty', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1TextAnnotationTextProperty();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudVisionV1p1beta1TextAnnotationTextProperty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudVisionV1p1beta1TextAnnotationTextProperty.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1TextAnnotationTextProperty(
-          od as api.GoogleCloudVisionV1p1beta1TextAnnotationTextProperty);
+      checkGoogleCloudVisionV1p1beta1TextAnnotationTextProperty(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Vertex', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1Vertex();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1Vertex.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1Vertex();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1Vertex.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1Vertex(
-          od as api.GoogleCloudVisionV1p1beta1Vertex);
+      checkGoogleCloudVisionV1p1beta1Vertex(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1WebDetection', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1WebDetection();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1WebDetection.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1WebDetection();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1WebDetection.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1WebDetection(
-          od as api.GoogleCloudVisionV1p1beta1WebDetection);
+      checkGoogleCloudVisionV1p1beta1WebDetection(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1WebDetectionWebEntity',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1WebDetectionWebEntity();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1WebDetectionWebEntity.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1WebDetectionWebEntity();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1WebDetectionWebEntity.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1WebDetectionWebEntity(
-          od as api.GoogleCloudVisionV1p1beta1WebDetectionWebEntity);
+      checkGoogleCloudVisionV1p1beta1WebDetectionWebEntity(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1WebDetectionWebImage',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1WebDetectionWebImage();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1WebDetectionWebImage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(
-          od as api.GoogleCloudVisionV1p1beta1WebDetectionWebImage);
+      checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1WebDetectionWebLabel',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1WebDetectionWebLabel();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1WebDetectionWebLabel.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1WebDetectionWebLabel();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1WebDetectionWebLabel.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1WebDetectionWebLabel(
-          od as api.GoogleCloudVisionV1p1beta1WebDetectionWebLabel);
+      checkGoogleCloudVisionV1p1beta1WebDetectionWebLabel(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1WebDetectionWebPage',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1WebDetectionWebPage();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1WebDetectionWebPage.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1WebDetectionWebPage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1WebDetectionWebPage.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1WebDetectionWebPage(
-          od as api.GoogleCloudVisionV1p1beta1WebDetectionWebPage);
+      checkGoogleCloudVisionV1p1beta1WebDetectionWebPage(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Word', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p1beta1Word();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p1beta1Word.fromJson(
+      final o = buildGoogleCloudVisionV1p1beta1Word();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p1beta1Word.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p1beta1Word(
-          od as api.GoogleCloudVisionV1p1beta1Word);
+      checkGoogleCloudVisionV1p1beta1Word(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1AnnotateFileResponse',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1AnnotateFileResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1AnnotateFileResponse.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1AnnotateFileResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1AnnotateFileResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1AnnotateFileResponse(
-          od as api.GoogleCloudVisionV1p2beta1AnnotateFileResponse);
+      checkGoogleCloudVisionV1p2beta1AnnotateFileResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1AnnotateImageResponse',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1AnnotateImageResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1AnnotateImageResponse.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1AnnotateImageResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1AnnotateImageResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1AnnotateImageResponse(
-          od as api.GoogleCloudVisionV1p2beta1AnnotateImageResponse);
+      checkGoogleCloudVisionV1p2beta1AnnotateImageResponse(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse(
-          od as api.GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse);
+      final o = buildGoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse(od);
     });
   });
 
@@ -12820,293 +12380,270 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse
+      final o =
+          buildGoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse
           .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse(
-          od as api.GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse);
+      checkGoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Block', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1Block();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1Block.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1Block();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1Block.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1Block(
-          od as api.GoogleCloudVisionV1p2beta1Block);
+      checkGoogleCloudVisionV1p2beta1Block(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1BoundingPoly', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1BoundingPoly();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1BoundingPoly();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1BoundingPoly(
-          od as api.GoogleCloudVisionV1p2beta1BoundingPoly);
+      checkGoogleCloudVisionV1p2beta1BoundingPoly(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1ColorInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1ColorInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1ColorInfo.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1ColorInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1ColorInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1ColorInfo(
-          od as api.GoogleCloudVisionV1p2beta1ColorInfo);
+      checkGoogleCloudVisionV1p2beta1ColorInfo(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1CropHint', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1CropHint();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1CropHint.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1CropHint();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1CropHint.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1CropHint(
-          od as api.GoogleCloudVisionV1p2beta1CropHint);
+      checkGoogleCloudVisionV1p2beta1CropHint(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1CropHintsAnnotation',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1CropHintsAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1CropHintsAnnotation.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1CropHintsAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1CropHintsAnnotation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1CropHintsAnnotation(
-          od as api.GoogleCloudVisionV1p2beta1CropHintsAnnotation);
+      checkGoogleCloudVisionV1p2beta1CropHintsAnnotation(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p2beta1DominantColorsAnnotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1DominantColorsAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1DominantColorsAnnotation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1DominantColorsAnnotation(
-          od as api.GoogleCloudVisionV1p2beta1DominantColorsAnnotation);
+      final o = buildGoogleCloudVisionV1p2beta1DominantColorsAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudVisionV1p2beta1DominantColorsAnnotation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudVisionV1p2beta1DominantColorsAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1EntityAnnotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1EntityAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1EntityAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1EntityAnnotation(
-          od as api.GoogleCloudVisionV1p2beta1EntityAnnotation);
+      checkGoogleCloudVisionV1p2beta1EntityAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1FaceAnnotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1FaceAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1FaceAnnotation.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1FaceAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1FaceAnnotation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1FaceAnnotation(
-          od as api.GoogleCloudVisionV1p2beta1FaceAnnotation);
+      checkGoogleCloudVisionV1p2beta1FaceAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1FaceAnnotationLandmark',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1FaceAnnotationLandmark();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1FaceAnnotationLandmark.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1FaceAnnotationLandmark();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1FaceAnnotationLandmark.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1FaceAnnotationLandmark(
-          od as api.GoogleCloudVisionV1p2beta1FaceAnnotationLandmark);
+      checkGoogleCloudVisionV1p2beta1FaceAnnotationLandmark(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1GcsDestination', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1GcsDestination();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1GcsDestination.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1GcsDestination();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1GcsDestination.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1GcsDestination(
-          od as api.GoogleCloudVisionV1p2beta1GcsDestination);
+      checkGoogleCloudVisionV1p2beta1GcsDestination(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1GcsSource', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1GcsSource();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1GcsSource.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1GcsSource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1GcsSource.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1GcsSource(
-          od as api.GoogleCloudVisionV1p2beta1GcsSource);
+      checkGoogleCloudVisionV1p2beta1GcsSource(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1ImageAnnotationContext',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1ImageAnnotationContext();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1ImageAnnotationContext.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1ImageAnnotationContext();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1ImageAnnotationContext.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1ImageAnnotationContext(
-          od as api.GoogleCloudVisionV1p2beta1ImageAnnotationContext);
+      checkGoogleCloudVisionV1p2beta1ImageAnnotationContext(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1ImageProperties', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1ImageProperties();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1ImageProperties.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1ImageProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1ImageProperties.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1ImageProperties(
-          od as api.GoogleCloudVisionV1p2beta1ImageProperties);
+      checkGoogleCloudVisionV1p2beta1ImageProperties(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1InputConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1InputConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1InputConfig.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1InputConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1InputConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1InputConfig(
-          od as api.GoogleCloudVisionV1p2beta1InputConfig);
+      checkGoogleCloudVisionV1p2beta1InputConfig(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation(
-          od as api.GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation);
+      final o = buildGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1LocationInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1LocationInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1LocationInfo.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1LocationInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1LocationInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1LocationInfo(
-          od as api.GoogleCloudVisionV1p2beta1LocationInfo);
+      checkGoogleCloudVisionV1p2beta1LocationInfo(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1NormalizedVertex', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1NormalizedVertex();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1NormalizedVertex.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1NormalizedVertex();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1NormalizedVertex.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1NormalizedVertex(
-          od as api.GoogleCloudVisionV1p2beta1NormalizedVertex);
+      checkGoogleCloudVisionV1p2beta1NormalizedVertex(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1OperationMetadata', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1OperationMetadata();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1OperationMetadata.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1OperationMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1OperationMetadata.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1OperationMetadata(
-          od as api.GoogleCloudVisionV1p2beta1OperationMetadata);
+      checkGoogleCloudVisionV1p2beta1OperationMetadata(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1OutputConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1OutputConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1OutputConfig.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1OutputConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1OutputConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1OutputConfig(
-          od as api.GoogleCloudVisionV1p2beta1OutputConfig);
+      checkGoogleCloudVisionV1p2beta1OutputConfig(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Page', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1Page();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1Page.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1Page();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1Page.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1Page(
-          od as api.GoogleCloudVisionV1p2beta1Page);
+      checkGoogleCloudVisionV1p2beta1Page(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Paragraph', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1Paragraph();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1Paragraph.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1Paragraph();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1Paragraph.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1Paragraph(
-          od as api.GoogleCloudVisionV1p2beta1Paragraph);
+      checkGoogleCloudVisionV1p2beta1Paragraph(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Position', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1Position();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1Position.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1Position();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1Position.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1Position(
-          od as api.GoogleCloudVisionV1p2beta1Position);
+      checkGoogleCloudVisionV1p2beta1Position(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Product', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1Product();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1Product.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1Product();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1Product.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1Product(
-          od as api.GoogleCloudVisionV1p2beta1Product);
+      checkGoogleCloudVisionV1p2beta1Product(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1ProductKeyValue', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1ProductKeyValue();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1ProductKeyValue.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1ProductKeyValue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1ProductKeyValue.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1ProductKeyValue(
-          od as api.GoogleCloudVisionV1p2beta1ProductKeyValue);
+      checkGoogleCloudVisionV1p2beta1ProductKeyValue(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1ProductSearchResults',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1ProductSearchResults();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1ProductSearchResults.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1ProductSearchResults();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1ProductSearchResults.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1ProductSearchResults(
-          od as api.GoogleCloudVisionV1p2beta1ProductSearchResults);
+      checkGoogleCloudVisionV1p2beta1ProductSearchResults(od);
     });
   });
 
@@ -13114,13 +12651,12 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult',
       () {
     unittest.test('to-json--from-json', () async {
-      var o =
+      final o =
           buildGoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult
           .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult(od
-          as api.GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult);
+      checkGoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult(od);
     });
   });
 
@@ -13128,86 +12664,78 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation',
       () {
     unittest.test('to-json--from-json', () async {
-      var o =
+      final o =
           buildGoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation
               .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation(od
-          as api
-              .GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation);
+      checkGoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p2beta1ProductSearchResultsResult', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1ProductSearchResultsResult();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudVisionV1p2beta1ProductSearchResultsResult();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1ProductSearchResultsResult(
-          od as api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult);
+      checkGoogleCloudVisionV1p2beta1ProductSearchResultsResult(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Property', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1Property();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1Property.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1Property();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1Property.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1Property(
-          od as api.GoogleCloudVisionV1p2beta1Property);
+      checkGoogleCloudVisionV1p2beta1Property(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1SafeSearchAnnotation',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1SafeSearchAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1SafeSearchAnnotation.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1SafeSearchAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1SafeSearchAnnotation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1SafeSearchAnnotation(
-          od as api.GoogleCloudVisionV1p2beta1SafeSearchAnnotation);
+      checkGoogleCloudVisionV1p2beta1SafeSearchAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Symbol', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1Symbol();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1Symbol.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1Symbol();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1Symbol.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1Symbol(
-          od as api.GoogleCloudVisionV1p2beta1Symbol);
+      checkGoogleCloudVisionV1p2beta1Symbol(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1TextAnnotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1TextAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1TextAnnotation.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1TextAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1TextAnnotation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1TextAnnotation(
-          od as api.GoogleCloudVisionV1p2beta1TextAnnotation);
+      checkGoogleCloudVisionV1p2beta1TextAnnotation(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak(
-          od as api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak);
+      checkGoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak(od);
     });
   });
 
@@ -13215,143 +12743,132 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage(
-          od as api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage);
+      checkGoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p2beta1TextAnnotationTextProperty', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1TextAnnotationTextProperty();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudVisionV1p2beta1TextAnnotationTextProperty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudVisionV1p2beta1TextAnnotationTextProperty.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1TextAnnotationTextProperty(
-          od as api.GoogleCloudVisionV1p2beta1TextAnnotationTextProperty);
+      checkGoogleCloudVisionV1p2beta1TextAnnotationTextProperty(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Vertex', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1Vertex();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1Vertex.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1Vertex();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1Vertex.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1Vertex(
-          od as api.GoogleCloudVisionV1p2beta1Vertex);
+      checkGoogleCloudVisionV1p2beta1Vertex(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1WebDetection', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1WebDetection();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1WebDetection.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1WebDetection();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1WebDetection.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1WebDetection(
-          od as api.GoogleCloudVisionV1p2beta1WebDetection);
+      checkGoogleCloudVisionV1p2beta1WebDetection(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1WebDetectionWebEntity',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1WebDetectionWebEntity();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1WebDetectionWebEntity.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1WebDetectionWebEntity();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1WebDetectionWebEntity.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1WebDetectionWebEntity(
-          od as api.GoogleCloudVisionV1p2beta1WebDetectionWebEntity);
+      checkGoogleCloudVisionV1p2beta1WebDetectionWebEntity(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1WebDetectionWebImage',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1WebDetectionWebImage();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1WebDetectionWebImage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(
-          od as api.GoogleCloudVisionV1p2beta1WebDetectionWebImage);
+      checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1WebDetectionWebLabel',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1WebDetectionWebLabel();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1WebDetectionWebLabel.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1WebDetectionWebLabel();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1WebDetectionWebLabel.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1WebDetectionWebLabel(
-          od as api.GoogleCloudVisionV1p2beta1WebDetectionWebLabel);
+      checkGoogleCloudVisionV1p2beta1WebDetectionWebLabel(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1WebDetectionWebPage',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1WebDetectionWebPage();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1WebDetectionWebPage.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1WebDetectionWebPage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1WebDetectionWebPage.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1WebDetectionWebPage(
-          od as api.GoogleCloudVisionV1p2beta1WebDetectionWebPage);
+      checkGoogleCloudVisionV1p2beta1WebDetectionWebPage(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Word', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p2beta1Word();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p2beta1Word.fromJson(
+      final o = buildGoogleCloudVisionV1p2beta1Word();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p2beta1Word.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p2beta1Word(
-          od as api.GoogleCloudVisionV1p2beta1Word);
+      checkGoogleCloudVisionV1p2beta1Word(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1AnnotateFileResponse',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1AnnotateFileResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1AnnotateFileResponse.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1AnnotateFileResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1AnnotateFileResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1AnnotateFileResponse(
-          od as api.GoogleCloudVisionV1p3beta1AnnotateFileResponse);
+      checkGoogleCloudVisionV1p3beta1AnnotateFileResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1AnnotateImageResponse',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1AnnotateImageResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1AnnotateImageResponse.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1AnnotateImageResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1AnnotateImageResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1AnnotateImageResponse(
-          od as api.GoogleCloudVisionV1p3beta1AnnotateImageResponse);
+      checkGoogleCloudVisionV1p3beta1AnnotateImageResponse(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse(
-          od as api.GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse);
+      final o = buildGoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse(od);
     });
   });
 
@@ -13359,317 +12876,293 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse
+      final o =
+          buildGoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse
           .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse(
-          od as api.GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse);
+      checkGoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1BatchOperationMetadata',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1BatchOperationMetadata();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1BatchOperationMetadata.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1BatchOperationMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1BatchOperationMetadata.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1BatchOperationMetadata(
-          od as api.GoogleCloudVisionV1p3beta1BatchOperationMetadata);
+      checkGoogleCloudVisionV1p3beta1BatchOperationMetadata(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Block', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1Block();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1Block.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1Block();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1Block.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1Block(
-          od as api.GoogleCloudVisionV1p3beta1Block);
+      checkGoogleCloudVisionV1p3beta1Block(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1BoundingPoly', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1BoundingPoly();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1BoundingPoly();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1BoundingPoly(
-          od as api.GoogleCloudVisionV1p3beta1BoundingPoly);
+      checkGoogleCloudVisionV1p3beta1BoundingPoly(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1ColorInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1ColorInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1ColorInfo.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1ColorInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1ColorInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1ColorInfo(
-          od as api.GoogleCloudVisionV1p3beta1ColorInfo);
+      checkGoogleCloudVisionV1p3beta1ColorInfo(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1CropHint', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1CropHint();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1CropHint.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1CropHint();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1CropHint.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1CropHint(
-          od as api.GoogleCloudVisionV1p3beta1CropHint);
+      checkGoogleCloudVisionV1p3beta1CropHint(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1CropHintsAnnotation',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1CropHintsAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1CropHintsAnnotation.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1CropHintsAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1CropHintsAnnotation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1CropHintsAnnotation(
-          od as api.GoogleCloudVisionV1p3beta1CropHintsAnnotation);
+      checkGoogleCloudVisionV1p3beta1CropHintsAnnotation(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p3beta1DominantColorsAnnotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1DominantColorsAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1DominantColorsAnnotation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1DominantColorsAnnotation(
-          od as api.GoogleCloudVisionV1p3beta1DominantColorsAnnotation);
+      final o = buildGoogleCloudVisionV1p3beta1DominantColorsAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudVisionV1p3beta1DominantColorsAnnotation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudVisionV1p3beta1DominantColorsAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1EntityAnnotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1EntityAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1EntityAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1EntityAnnotation(
-          od as api.GoogleCloudVisionV1p3beta1EntityAnnotation);
+      checkGoogleCloudVisionV1p3beta1EntityAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1FaceAnnotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1FaceAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1FaceAnnotation.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1FaceAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1FaceAnnotation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1FaceAnnotation(
-          od as api.GoogleCloudVisionV1p3beta1FaceAnnotation);
+      checkGoogleCloudVisionV1p3beta1FaceAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1FaceAnnotationLandmark',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1FaceAnnotationLandmark();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1FaceAnnotationLandmark.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1FaceAnnotationLandmark();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1FaceAnnotationLandmark.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1FaceAnnotationLandmark(
-          od as api.GoogleCloudVisionV1p3beta1FaceAnnotationLandmark);
+      checkGoogleCloudVisionV1p3beta1FaceAnnotationLandmark(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1GcsDestination', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1GcsDestination();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1GcsDestination.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1GcsDestination();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1GcsDestination.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1GcsDestination(
-          od as api.GoogleCloudVisionV1p3beta1GcsDestination);
+      checkGoogleCloudVisionV1p3beta1GcsDestination(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1GcsSource', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1GcsSource();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1GcsSource.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1GcsSource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1GcsSource.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1GcsSource(
-          od as api.GoogleCloudVisionV1p3beta1GcsSource);
+      checkGoogleCloudVisionV1p3beta1GcsSource(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1ImageAnnotationContext',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1ImageAnnotationContext();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1ImageAnnotationContext.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1ImageAnnotationContext();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1ImageAnnotationContext.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1ImageAnnotationContext(
-          od as api.GoogleCloudVisionV1p3beta1ImageAnnotationContext);
+      checkGoogleCloudVisionV1p3beta1ImageAnnotationContext(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1ImageProperties', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1ImageProperties();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1ImageProperties.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1ImageProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1ImageProperties.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1ImageProperties(
-          od as api.GoogleCloudVisionV1p3beta1ImageProperties);
+      checkGoogleCloudVisionV1p3beta1ImageProperties(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p3beta1ImportProductSetsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1ImportProductSetsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1ImportProductSetsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1ImportProductSetsResponse(
-          od as api.GoogleCloudVisionV1p3beta1ImportProductSetsResponse);
+      final o = buildGoogleCloudVisionV1p3beta1ImportProductSetsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudVisionV1p3beta1ImportProductSetsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudVisionV1p3beta1ImportProductSetsResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1InputConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1InputConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1InputConfig.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1InputConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1InputConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1InputConfig(
-          od as api.GoogleCloudVisionV1p3beta1InputConfig);
+      checkGoogleCloudVisionV1p3beta1InputConfig(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation(
-          od as api.GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation);
+      final o = buildGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1LocationInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1LocationInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1LocationInfo.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1LocationInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1LocationInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1LocationInfo(
-          od as api.GoogleCloudVisionV1p3beta1LocationInfo);
+      checkGoogleCloudVisionV1p3beta1LocationInfo(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1NormalizedVertex', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1NormalizedVertex();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1NormalizedVertex.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1NormalizedVertex();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1NormalizedVertex.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1NormalizedVertex(
-          od as api.GoogleCloudVisionV1p3beta1NormalizedVertex);
+      checkGoogleCloudVisionV1p3beta1NormalizedVertex(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1OperationMetadata', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1OperationMetadata();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1OperationMetadata.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1OperationMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1OperationMetadata.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1OperationMetadata(
-          od as api.GoogleCloudVisionV1p3beta1OperationMetadata);
+      checkGoogleCloudVisionV1p3beta1OperationMetadata(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1OutputConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1OutputConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1OutputConfig.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1OutputConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1OutputConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1OutputConfig(
-          od as api.GoogleCloudVisionV1p3beta1OutputConfig);
+      checkGoogleCloudVisionV1p3beta1OutputConfig(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Page', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1Page();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1Page.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1Page();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1Page.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1Page(
-          od as api.GoogleCloudVisionV1p3beta1Page);
+      checkGoogleCloudVisionV1p3beta1Page(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Paragraph', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1Paragraph();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1Paragraph.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1Paragraph();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1Paragraph.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1Paragraph(
-          od as api.GoogleCloudVisionV1p3beta1Paragraph);
+      checkGoogleCloudVisionV1p3beta1Paragraph(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Position', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1Position();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1Position.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1Position();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1Position.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1Position(
-          od as api.GoogleCloudVisionV1p3beta1Position);
+      checkGoogleCloudVisionV1p3beta1Position(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Product', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1Product();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1Product.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1Product();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1Product.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1Product(
-          od as api.GoogleCloudVisionV1p3beta1Product);
+      checkGoogleCloudVisionV1p3beta1Product(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1ProductKeyValue', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1ProductKeyValue();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1ProductKeyValue.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1ProductKeyValue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1ProductKeyValue.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1ProductKeyValue(
-          od as api.GoogleCloudVisionV1p3beta1ProductKeyValue);
+      checkGoogleCloudVisionV1p3beta1ProductKeyValue(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1ProductSearchResults',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1ProductSearchResults();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1ProductSearchResults.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1ProductSearchResults();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1ProductSearchResults.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1ProductSearchResults(
-          od as api.GoogleCloudVisionV1p3beta1ProductSearchResults);
+      checkGoogleCloudVisionV1p3beta1ProductSearchResults(od);
     });
   });
 
@@ -13677,13 +13170,12 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult',
       () {
     unittest.test('to-json--from-json', () async {
-      var o =
+      final o =
           buildGoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult
           .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult(od
-          as api.GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult);
+      checkGoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult(od);
     });
   });
 
@@ -13691,97 +13183,88 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation',
       () {
     unittest.test('to-json--from-json', () async {
-      var o =
+      final o =
           buildGoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation
               .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation(od
-          as api
-              .GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation);
+      checkGoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p3beta1ProductSearchResultsResult', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1ProductSearchResultsResult();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudVisionV1p3beta1ProductSearchResultsResult();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1ProductSearchResultsResult(
-          od as api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult);
+      checkGoogleCloudVisionV1p3beta1ProductSearchResultsResult(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Property', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1Property();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1Property.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1Property();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1Property.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1Property(
-          od as api.GoogleCloudVisionV1p3beta1Property);
+      checkGoogleCloudVisionV1p3beta1Property(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1ReferenceImage', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1ReferenceImage();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1ReferenceImage.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1ReferenceImage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1ReferenceImage.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1ReferenceImage(
-          od as api.GoogleCloudVisionV1p3beta1ReferenceImage);
+      checkGoogleCloudVisionV1p3beta1ReferenceImage(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1SafeSearchAnnotation',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1SafeSearchAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1SafeSearchAnnotation.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1SafeSearchAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1SafeSearchAnnotation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1SafeSearchAnnotation(
-          od as api.GoogleCloudVisionV1p3beta1SafeSearchAnnotation);
+      checkGoogleCloudVisionV1p3beta1SafeSearchAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Symbol', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1Symbol();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1Symbol.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1Symbol();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1Symbol.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1Symbol(
-          od as api.GoogleCloudVisionV1p3beta1Symbol);
+      checkGoogleCloudVisionV1p3beta1Symbol(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1TextAnnotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1TextAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1TextAnnotation.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1TextAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1TextAnnotation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1TextAnnotation(
-          od as api.GoogleCloudVisionV1p3beta1TextAnnotation);
+      checkGoogleCloudVisionV1p3beta1TextAnnotation(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak(
-          od as api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak);
+      checkGoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak(od);
     });
   });
 
@@ -13789,143 +13272,132 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage(
-          od as api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage);
+      checkGoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p3beta1TextAnnotationTextProperty', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1TextAnnotationTextProperty();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudVisionV1p3beta1TextAnnotationTextProperty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudVisionV1p3beta1TextAnnotationTextProperty.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1TextAnnotationTextProperty(
-          od as api.GoogleCloudVisionV1p3beta1TextAnnotationTextProperty);
+      checkGoogleCloudVisionV1p3beta1TextAnnotationTextProperty(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Vertex', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1Vertex();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1Vertex.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1Vertex();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1Vertex.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1Vertex(
-          od as api.GoogleCloudVisionV1p3beta1Vertex);
+      checkGoogleCloudVisionV1p3beta1Vertex(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1WebDetection', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1WebDetection();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1WebDetection.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1WebDetection();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1WebDetection.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1WebDetection(
-          od as api.GoogleCloudVisionV1p3beta1WebDetection);
+      checkGoogleCloudVisionV1p3beta1WebDetection(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1WebDetectionWebEntity',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1WebDetectionWebEntity();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1WebDetectionWebEntity.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1WebDetectionWebEntity();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1WebDetectionWebEntity.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1WebDetectionWebEntity(
-          od as api.GoogleCloudVisionV1p3beta1WebDetectionWebEntity);
+      checkGoogleCloudVisionV1p3beta1WebDetectionWebEntity(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1WebDetectionWebImage',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1WebDetectionWebImage();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1WebDetectionWebImage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(
-          od as api.GoogleCloudVisionV1p3beta1WebDetectionWebImage);
+      checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1WebDetectionWebLabel',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1WebDetectionWebLabel();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1WebDetectionWebLabel.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1WebDetectionWebLabel();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1WebDetectionWebLabel.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1WebDetectionWebLabel(
-          od as api.GoogleCloudVisionV1p3beta1WebDetectionWebLabel);
+      checkGoogleCloudVisionV1p3beta1WebDetectionWebLabel(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1WebDetectionWebPage',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1WebDetectionWebPage();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1WebDetectionWebPage.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1WebDetectionWebPage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1WebDetectionWebPage.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1WebDetectionWebPage(
-          od as api.GoogleCloudVisionV1p3beta1WebDetectionWebPage);
+      checkGoogleCloudVisionV1p3beta1WebDetectionWebPage(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Word', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p3beta1Word();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p3beta1Word.fromJson(
+      final o = buildGoogleCloudVisionV1p3beta1Word();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p3beta1Word.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p3beta1Word(
-          od as api.GoogleCloudVisionV1p3beta1Word);
+      checkGoogleCloudVisionV1p3beta1Word(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1AnnotateFileResponse',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1AnnotateFileResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1AnnotateFileResponse.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1AnnotateFileResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1AnnotateFileResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1AnnotateFileResponse(
-          od as api.GoogleCloudVisionV1p4beta1AnnotateFileResponse);
+      checkGoogleCloudVisionV1p4beta1AnnotateFileResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1AnnotateImageResponse',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1AnnotateImageResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1AnnotateImageResponse.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1AnnotateImageResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1AnnotateImageResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1AnnotateImageResponse(
-          od as api.GoogleCloudVisionV1p4beta1AnnotateImageResponse);
+      checkGoogleCloudVisionV1p4beta1AnnotateImageResponse(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse(
-          od as api.GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse);
+      final o = buildGoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse(od);
     });
   });
 
@@ -13933,12 +13405,12 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse
+      final o =
+          buildGoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse
           .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse(
-          od as api.GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse);
+      checkGoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse(od);
     });
   });
 
@@ -13946,353 +13418,326 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse
+      final o =
+          buildGoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse
           .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse(
-          od as api.GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse);
+      checkGoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse(
-          od as api.GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse);
+      checkGoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1BatchOperationMetadata',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1BatchOperationMetadata();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1BatchOperationMetadata.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1BatchOperationMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1BatchOperationMetadata.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1BatchOperationMetadata(
-          od as api.GoogleCloudVisionV1p4beta1BatchOperationMetadata);
+      checkGoogleCloudVisionV1p4beta1BatchOperationMetadata(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Block', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1Block();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1Block.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1Block();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1Block.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1Block(
-          od as api.GoogleCloudVisionV1p4beta1Block);
+      checkGoogleCloudVisionV1p4beta1Block(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1BoundingPoly', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1BoundingPoly();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1BoundingPoly();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1BoundingPoly(
-          od as api.GoogleCloudVisionV1p4beta1BoundingPoly);
+      checkGoogleCloudVisionV1p4beta1BoundingPoly(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Celebrity', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1Celebrity();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1Celebrity.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1Celebrity();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1Celebrity.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1Celebrity(
-          od as api.GoogleCloudVisionV1p4beta1Celebrity);
+      checkGoogleCloudVisionV1p4beta1Celebrity(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1ColorInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1ColorInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1ColorInfo.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1ColorInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1ColorInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1ColorInfo(
-          od as api.GoogleCloudVisionV1p4beta1ColorInfo);
+      checkGoogleCloudVisionV1p4beta1ColorInfo(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1CropHint', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1CropHint();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1CropHint.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1CropHint();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1CropHint.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1CropHint(
-          od as api.GoogleCloudVisionV1p4beta1CropHint);
+      checkGoogleCloudVisionV1p4beta1CropHint(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1CropHintsAnnotation',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1CropHintsAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1CropHintsAnnotation.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1CropHintsAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1CropHintsAnnotation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1CropHintsAnnotation(
-          od as api.GoogleCloudVisionV1p4beta1CropHintsAnnotation);
+      checkGoogleCloudVisionV1p4beta1CropHintsAnnotation(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p4beta1DominantColorsAnnotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1DominantColorsAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1DominantColorsAnnotation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1DominantColorsAnnotation(
-          od as api.GoogleCloudVisionV1p4beta1DominantColorsAnnotation);
+      final o = buildGoogleCloudVisionV1p4beta1DominantColorsAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudVisionV1p4beta1DominantColorsAnnotation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudVisionV1p4beta1DominantColorsAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1EntityAnnotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1EntityAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1EntityAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1EntityAnnotation(
-          od as api.GoogleCloudVisionV1p4beta1EntityAnnotation);
+      checkGoogleCloudVisionV1p4beta1EntityAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1FaceAnnotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1FaceAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1FaceAnnotation.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1FaceAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1FaceAnnotation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1FaceAnnotation(
-          od as api.GoogleCloudVisionV1p4beta1FaceAnnotation);
+      checkGoogleCloudVisionV1p4beta1FaceAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1FaceAnnotationLandmark',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1FaceAnnotationLandmark();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1FaceAnnotationLandmark.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1FaceAnnotationLandmark();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1FaceAnnotationLandmark.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1FaceAnnotationLandmark(
-          od as api.GoogleCloudVisionV1p4beta1FaceAnnotationLandmark);
+      checkGoogleCloudVisionV1p4beta1FaceAnnotationLandmark(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1FaceRecognitionResult',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1FaceRecognitionResult();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1FaceRecognitionResult.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1FaceRecognitionResult();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1FaceRecognitionResult.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1FaceRecognitionResult(
-          od as api.GoogleCloudVisionV1p4beta1FaceRecognitionResult);
+      checkGoogleCloudVisionV1p4beta1FaceRecognitionResult(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1GcsDestination', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1GcsDestination();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1GcsDestination.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1GcsDestination();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1GcsDestination.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1GcsDestination(
-          od as api.GoogleCloudVisionV1p4beta1GcsDestination);
+      checkGoogleCloudVisionV1p4beta1GcsDestination(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1GcsSource', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1GcsSource();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1GcsSource.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1GcsSource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1GcsSource.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1GcsSource(
-          od as api.GoogleCloudVisionV1p4beta1GcsSource);
+      checkGoogleCloudVisionV1p4beta1GcsSource(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1ImageAnnotationContext',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1ImageAnnotationContext();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1ImageAnnotationContext.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1ImageAnnotationContext();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1ImageAnnotationContext.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1ImageAnnotationContext(
-          od as api.GoogleCloudVisionV1p4beta1ImageAnnotationContext);
+      checkGoogleCloudVisionV1p4beta1ImageAnnotationContext(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1ImageProperties', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1ImageProperties();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1ImageProperties.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1ImageProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1ImageProperties.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1ImageProperties(
-          od as api.GoogleCloudVisionV1p4beta1ImageProperties);
+      checkGoogleCloudVisionV1p4beta1ImageProperties(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p4beta1ImportProductSetsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1ImportProductSetsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1ImportProductSetsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1ImportProductSetsResponse(
-          od as api.GoogleCloudVisionV1p4beta1ImportProductSetsResponse);
+      final o = buildGoogleCloudVisionV1p4beta1ImportProductSetsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudVisionV1p4beta1ImportProductSetsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudVisionV1p4beta1ImportProductSetsResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1InputConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1InputConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1InputConfig.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1InputConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1InputConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1InputConfig(
-          od as api.GoogleCloudVisionV1p4beta1InputConfig);
+      checkGoogleCloudVisionV1p4beta1InputConfig(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation(
-          od as api.GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation);
+      final o = buildGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1LocationInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1LocationInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1LocationInfo.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1LocationInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1LocationInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1LocationInfo(
-          od as api.GoogleCloudVisionV1p4beta1LocationInfo);
+      checkGoogleCloudVisionV1p4beta1LocationInfo(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1NormalizedVertex', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1NormalizedVertex();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1NormalizedVertex.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1NormalizedVertex();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1NormalizedVertex.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1NormalizedVertex(
-          od as api.GoogleCloudVisionV1p4beta1NormalizedVertex);
+      checkGoogleCloudVisionV1p4beta1NormalizedVertex(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1OperationMetadata', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1OperationMetadata();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1OperationMetadata.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1OperationMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1OperationMetadata.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1OperationMetadata(
-          od as api.GoogleCloudVisionV1p4beta1OperationMetadata);
+      checkGoogleCloudVisionV1p4beta1OperationMetadata(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1OutputConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1OutputConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1OutputConfig.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1OutputConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1OutputConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1OutputConfig(
-          od as api.GoogleCloudVisionV1p4beta1OutputConfig);
+      checkGoogleCloudVisionV1p4beta1OutputConfig(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Page', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1Page();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1Page.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1Page();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1Page.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1Page(
-          od as api.GoogleCloudVisionV1p4beta1Page);
+      checkGoogleCloudVisionV1p4beta1Page(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Paragraph', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1Paragraph();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1Paragraph.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1Paragraph();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1Paragraph.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1Paragraph(
-          od as api.GoogleCloudVisionV1p4beta1Paragraph);
+      checkGoogleCloudVisionV1p4beta1Paragraph(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Position', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1Position();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1Position.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1Position();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1Position.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1Position(
-          od as api.GoogleCloudVisionV1p4beta1Position);
+      checkGoogleCloudVisionV1p4beta1Position(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Product', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1Product();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1Product.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1Product();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1Product.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1Product(
-          od as api.GoogleCloudVisionV1p4beta1Product);
+      checkGoogleCloudVisionV1p4beta1Product(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1ProductKeyValue', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1ProductKeyValue();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1ProductKeyValue.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1ProductKeyValue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1ProductKeyValue.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1ProductKeyValue(
-          od as api.GoogleCloudVisionV1p4beta1ProductKeyValue);
+      checkGoogleCloudVisionV1p4beta1ProductKeyValue(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1ProductSearchResults',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1ProductSearchResults();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1ProductSearchResults.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1ProductSearchResults();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1ProductSearchResults.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1ProductSearchResults(
-          od as api.GoogleCloudVisionV1p4beta1ProductSearchResults);
+      checkGoogleCloudVisionV1p4beta1ProductSearchResults(od);
     });
   });
 
@@ -14300,13 +13745,12 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult',
       () {
     unittest.test('to-json--from-json', () async {
-      var o =
+      final o =
           buildGoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult
           .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult(od
-          as api.GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult);
+      checkGoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult(od);
     });
   });
 
@@ -14314,97 +13758,88 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation',
       () {
     unittest.test('to-json--from-json', () async {
-      var o =
+      final o =
           buildGoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation
               .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation(od
-          as api
-              .GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation);
+      checkGoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p4beta1ProductSearchResultsResult', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1ProductSearchResultsResult();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudVisionV1p4beta1ProductSearchResultsResult();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1ProductSearchResultsResult(
-          od as api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult);
+      checkGoogleCloudVisionV1p4beta1ProductSearchResultsResult(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Property', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1Property();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1Property.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1Property();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1Property.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1Property(
-          od as api.GoogleCloudVisionV1p4beta1Property);
+      checkGoogleCloudVisionV1p4beta1Property(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1ReferenceImage', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1ReferenceImage();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1ReferenceImage.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1ReferenceImage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1ReferenceImage.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1ReferenceImage(
-          od as api.GoogleCloudVisionV1p4beta1ReferenceImage);
+      checkGoogleCloudVisionV1p4beta1ReferenceImage(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1SafeSearchAnnotation',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1SafeSearchAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1SafeSearchAnnotation.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1SafeSearchAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1SafeSearchAnnotation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1SafeSearchAnnotation(
-          od as api.GoogleCloudVisionV1p4beta1SafeSearchAnnotation);
+      checkGoogleCloudVisionV1p4beta1SafeSearchAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Symbol', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1Symbol();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1Symbol.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1Symbol();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1Symbol.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1Symbol(
-          od as api.GoogleCloudVisionV1p4beta1Symbol);
+      checkGoogleCloudVisionV1p4beta1Symbol(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1TextAnnotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1TextAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1TextAnnotation.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1TextAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1TextAnnotation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1TextAnnotation(
-          od as api.GoogleCloudVisionV1p4beta1TextAnnotation);
+      checkGoogleCloudVisionV1p4beta1TextAnnotation(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak(
-          od as api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak);
+      checkGoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak(od);
     });
   });
 
@@ -14412,684 +13847,676 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage(
-          od as api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage);
+      checkGoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p4beta1TextAnnotationTextProperty', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1TextAnnotationTextProperty();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleCloudVisionV1p4beta1TextAnnotationTextProperty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleCloudVisionV1p4beta1TextAnnotationTextProperty.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1TextAnnotationTextProperty(
-          od as api.GoogleCloudVisionV1p4beta1TextAnnotationTextProperty);
+      checkGoogleCloudVisionV1p4beta1TextAnnotationTextProperty(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Vertex', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1Vertex();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1Vertex.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1Vertex();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1Vertex.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1Vertex(
-          od as api.GoogleCloudVisionV1p4beta1Vertex);
+      checkGoogleCloudVisionV1p4beta1Vertex(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1WebDetection', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1WebDetection();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1WebDetection.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1WebDetection();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1WebDetection.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1WebDetection(
-          od as api.GoogleCloudVisionV1p4beta1WebDetection);
+      checkGoogleCloudVisionV1p4beta1WebDetection(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1WebDetectionWebEntity',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1WebDetectionWebEntity();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1WebDetectionWebEntity.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1WebDetectionWebEntity();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1WebDetectionWebEntity.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1WebDetectionWebEntity(
-          od as api.GoogleCloudVisionV1p4beta1WebDetectionWebEntity);
+      checkGoogleCloudVisionV1p4beta1WebDetectionWebEntity(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1WebDetectionWebImage',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1WebDetectionWebImage();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1WebDetectionWebImage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(
-          od as api.GoogleCloudVisionV1p4beta1WebDetectionWebImage);
+      checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1WebDetectionWebLabel',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1WebDetectionWebLabel();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1WebDetectionWebLabel.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1WebDetectionWebLabel();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1WebDetectionWebLabel.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1WebDetectionWebLabel(
-          od as api.GoogleCloudVisionV1p4beta1WebDetectionWebLabel);
+      checkGoogleCloudVisionV1p4beta1WebDetectionWebLabel(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1WebDetectionWebPage',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1WebDetectionWebPage();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1WebDetectionWebPage.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1WebDetectionWebPage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1WebDetectionWebPage.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1WebDetectionWebPage(
-          od as api.GoogleCloudVisionV1p4beta1WebDetectionWebPage);
+      checkGoogleCloudVisionV1p4beta1WebDetectionWebPage(od);
     });
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Word', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleCloudVisionV1p4beta1Word();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleCloudVisionV1p4beta1Word.fromJson(
+      final o = buildGoogleCloudVisionV1p4beta1Word();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudVisionV1p4beta1Word.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudVisionV1p4beta1Word(
-          od as api.GoogleCloudVisionV1p4beta1Word);
+      checkGoogleCloudVisionV1p4beta1Word(od);
     });
   });
 
   unittest.group('obj-schema-GroupedResult', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGroupedResult();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GroupedResult.fromJson(
+      final o = buildGroupedResult();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GroupedResult.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGroupedResult(od as api.GroupedResult);
+      checkGroupedResult(od);
     });
   });
 
   unittest.group('obj-schema-Image', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildImage();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Image.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkImage(od as api.Image);
+      final o = buildImage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Image.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkImage(od);
     });
   });
 
   unittest.group('obj-schema-ImageAnnotationContext', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildImageAnnotationContext();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ImageAnnotationContext.fromJson(
+      final o = buildImageAnnotationContext();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ImageAnnotationContext.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkImageAnnotationContext(od as api.ImageAnnotationContext);
+      checkImageAnnotationContext(od);
     });
   });
 
   unittest.group('obj-schema-ImageContext', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildImageContext();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ImageContext.fromJson(
+      final o = buildImageContext();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ImageContext.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkImageContext(od as api.ImageContext);
+      checkImageContext(od);
     });
   });
 
   unittest.group('obj-schema-ImageProperties', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildImageProperties();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ImageProperties.fromJson(
+      final o = buildImageProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ImageProperties.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkImageProperties(od as api.ImageProperties);
+      checkImageProperties(od);
     });
   });
 
   unittest.group('obj-schema-ImageSource', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildImageSource();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ImageSource.fromJson(
+      final o = buildImageSource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ImageSource.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkImageSource(od as api.ImageSource);
+      checkImageSource(od);
     });
   });
 
   unittest.group('obj-schema-ImportProductSetsGcsSource', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildImportProductSetsGcsSource();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ImportProductSetsGcsSource.fromJson(
+      final o = buildImportProductSetsGcsSource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ImportProductSetsGcsSource.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkImportProductSetsGcsSource(od as api.ImportProductSetsGcsSource);
+      checkImportProductSetsGcsSource(od);
     });
   });
 
   unittest.group('obj-schema-ImportProductSetsInputConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildImportProductSetsInputConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ImportProductSetsInputConfig.fromJson(
+      final o = buildImportProductSetsInputConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ImportProductSetsInputConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkImportProductSetsInputConfig(od as api.ImportProductSetsInputConfig);
+      checkImportProductSetsInputConfig(od);
     });
   });
 
   unittest.group('obj-schema-ImportProductSetsRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildImportProductSetsRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ImportProductSetsRequest.fromJson(
+      final o = buildImportProductSetsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ImportProductSetsRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkImportProductSetsRequest(od as api.ImportProductSetsRequest);
+      checkImportProductSetsRequest(od);
     });
   });
 
   unittest.group('obj-schema-ImportProductSetsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildImportProductSetsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ImportProductSetsResponse.fromJson(
+      final o = buildImportProductSetsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ImportProductSetsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkImportProductSetsResponse(od as api.ImportProductSetsResponse);
+      checkImportProductSetsResponse(od);
     });
   });
 
   unittest.group('obj-schema-InputConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildInputConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.InputConfig.fromJson(
+      final o = buildInputConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InputConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkInputConfig(od as api.InputConfig);
+      checkInputConfig(od);
     });
   });
 
   unittest.group('obj-schema-KeyValue', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildKeyValue();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildKeyValue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.KeyValue.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkKeyValue(od as api.KeyValue);
+      checkKeyValue(od);
     });
   });
 
   unittest.group('obj-schema-Landmark', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLandmark();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildLandmark();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Landmark.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkLandmark(od as api.Landmark);
+      checkLandmark(od);
     });
   });
 
   unittest.group('obj-schema-LatLng', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLatLng();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildLatLng();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.LatLng.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkLatLng(od as api.LatLng);
+      checkLatLng(od);
     });
   });
 
   unittest.group('obj-schema-LatLongRect', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLatLongRect();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LatLongRect.fromJson(
+      final o = buildLatLongRect();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LatLongRect.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLatLongRect(od as api.LatLongRect);
+      checkLatLongRect(od);
     });
   });
 
   unittest.group('obj-schema-ListOperationsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListOperationsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListOperationsResponse.fromJson(
+      final o = buildListOperationsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListOperationsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListOperationsResponse(od as api.ListOperationsResponse);
+      checkListOperationsResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListProductSetsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListProductSetsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListProductSetsResponse.fromJson(
+      final o = buildListProductSetsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListProductSetsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListProductSetsResponse(od as api.ListProductSetsResponse);
+      checkListProductSetsResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListProductsInProductSetResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListProductsInProductSetResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListProductsInProductSetResponse.fromJson(
+      final o = buildListProductsInProductSetResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListProductsInProductSetResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListProductsInProductSetResponse(
-          od as api.ListProductsInProductSetResponse);
+      checkListProductsInProductSetResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListProductsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListProductsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListProductsResponse.fromJson(
+      final o = buildListProductsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListProductsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListProductsResponse(od as api.ListProductsResponse);
+      checkListProductsResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListReferenceImagesResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListReferenceImagesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListReferenceImagesResponse.fromJson(
+      final o = buildListReferenceImagesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListReferenceImagesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListReferenceImagesResponse(od as api.ListReferenceImagesResponse);
+      checkListReferenceImagesResponse(od);
     });
   });
 
   unittest.group('obj-schema-LocalizedObjectAnnotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLocalizedObjectAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LocalizedObjectAnnotation.fromJson(
+      final o = buildLocalizedObjectAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LocalizedObjectAnnotation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLocalizedObjectAnnotation(od as api.LocalizedObjectAnnotation);
+      checkLocalizedObjectAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-LocationInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLocationInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LocationInfo.fromJson(
+      final o = buildLocationInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LocationInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLocationInfo(od as api.LocationInfo);
+      checkLocationInfo(od);
     });
   });
 
   unittest.group('obj-schema-NormalizedVertex', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildNormalizedVertex();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.NormalizedVertex.fromJson(
+      final o = buildNormalizedVertex();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NormalizedVertex.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkNormalizedVertex(od as api.NormalizedVertex);
+      checkNormalizedVertex(od);
     });
   });
 
   unittest.group('obj-schema-ObjectAnnotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildObjectAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ObjectAnnotation.fromJson(
+      final o = buildObjectAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ObjectAnnotation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkObjectAnnotation(od as api.ObjectAnnotation);
+      checkObjectAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-Operation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOperation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildOperation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Operation.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkOperation(od as api.Operation);
+      checkOperation(od);
     });
   });
 
   unittest.group('obj-schema-OperationMetadata', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOperationMetadata();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OperationMetadata.fromJson(
+      final o = buildOperationMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OperationMetadata.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOperationMetadata(od as api.OperationMetadata);
+      checkOperationMetadata(od);
     });
   });
 
   unittest.group('obj-schema-OutputConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOutputConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OutputConfig.fromJson(
+      final o = buildOutputConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OutputConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOutputConfig(od as api.OutputConfig);
+      checkOutputConfig(od);
     });
   });
 
   unittest.group('obj-schema-Page', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPage();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Page.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkPage(od as api.Page);
+      final o = buildPage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Page.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkPage(od);
     });
   });
 
   unittest.group('obj-schema-Paragraph', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildParagraph();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildParagraph();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Paragraph.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkParagraph(od as api.Paragraph);
+      checkParagraph(od);
     });
   });
 
   unittest.group('obj-schema-Position', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPosition();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildPosition();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Position.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkPosition(od as api.Position);
+      checkPosition(od);
     });
   });
 
   unittest.group('obj-schema-Product', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProduct();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildProduct();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Product.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkProduct(od as api.Product);
+      checkProduct(od);
     });
   });
 
   unittest.group('obj-schema-ProductSearchParams', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProductSearchParams();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ProductSearchParams.fromJson(
+      final o = buildProductSearchParams();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProductSearchParams.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProductSearchParams(od as api.ProductSearchParams);
+      checkProductSearchParams(od);
     });
   });
 
   unittest.group('obj-schema-ProductSearchResults', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProductSearchResults();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ProductSearchResults.fromJson(
+      final o = buildProductSearchResults();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProductSearchResults.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProductSearchResults(od as api.ProductSearchResults);
+      checkProductSearchResults(od);
     });
   });
 
   unittest.group('obj-schema-ProductSet', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProductSet();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildProductSet();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.ProductSet.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkProductSet(od as api.ProductSet);
+      checkProductSet(od);
     });
   });
 
   unittest.group('obj-schema-ProductSetPurgeConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProductSetPurgeConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ProductSetPurgeConfig.fromJson(
+      final o = buildProductSetPurgeConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProductSetPurgeConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProductSetPurgeConfig(od as api.ProductSetPurgeConfig);
+      checkProductSetPurgeConfig(od);
     });
   });
 
   unittest.group('obj-schema-Property', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProperty();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildProperty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Property.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkProperty(od as api.Property);
+      checkProperty(od);
     });
   });
 
   unittest.group('obj-schema-PurgeProductsRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPurgeProductsRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PurgeProductsRequest.fromJson(
+      final o = buildPurgeProductsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PurgeProductsRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPurgeProductsRequest(od as api.PurgeProductsRequest);
+      checkPurgeProductsRequest(od);
     });
   });
 
   unittest.group('obj-schema-ReferenceImage', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReferenceImage();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReferenceImage.fromJson(
+      final o = buildReferenceImage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReferenceImage.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReferenceImage(od as api.ReferenceImage);
+      checkReferenceImage(od);
     });
   });
 
   unittest.group('obj-schema-RemoveProductFromProductSetRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRemoveProductFromProductSetRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RemoveProductFromProductSetRequest.fromJson(
+      final o = buildRemoveProductFromProductSetRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RemoveProductFromProductSetRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRemoveProductFromProductSetRequest(
-          od as api.RemoveProductFromProductSetRequest);
+      checkRemoveProductFromProductSetRequest(od);
     });
   });
 
   unittest.group('obj-schema-Result', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildResult();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildResult();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Result.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkResult(od as api.Result);
+      checkResult(od);
     });
   });
 
   unittest.group('obj-schema-SafeSearchAnnotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSafeSearchAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SafeSearchAnnotation.fromJson(
+      final o = buildSafeSearchAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SafeSearchAnnotation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSafeSearchAnnotation(od as api.SafeSearchAnnotation);
+      checkSafeSearchAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-Status', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildStatus();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkStatus(od as api.Status);
+      checkStatus(od);
     });
   });
 
   unittest.group('obj-schema-Symbol', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSymbol();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildSymbol();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Symbol.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkSymbol(od as api.Symbol);
+      checkSymbol(od);
     });
   });
 
   unittest.group('obj-schema-TextAnnotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTextAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TextAnnotation.fromJson(
+      final o = buildTextAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TextAnnotation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTextAnnotation(od as api.TextAnnotation);
+      checkTextAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-TextDetectionParams', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTextDetectionParams();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TextDetectionParams.fromJson(
+      final o = buildTextDetectionParams();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TextDetectionParams.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTextDetectionParams(od as api.TextDetectionParams);
+      checkTextDetectionParams(od);
     });
   });
 
   unittest.group('obj-schema-TextProperty', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTextProperty();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TextProperty.fromJson(
+      final o = buildTextProperty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TextProperty.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTextProperty(od as api.TextProperty);
+      checkTextProperty(od);
     });
   });
 
   unittest.group('obj-schema-Vertex', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildVertex();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildVertex();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Vertex.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkVertex(od as api.Vertex);
+      checkVertex(od);
     });
   });
 
   unittest.group('obj-schema-WebDetection', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildWebDetection();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.WebDetection.fromJson(
+      final o = buildWebDetection();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WebDetection.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkWebDetection(od as api.WebDetection);
+      checkWebDetection(od);
     });
   });
 
   unittest.group('obj-schema-WebDetectionParams', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildWebDetectionParams();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.WebDetectionParams.fromJson(
+      final o = buildWebDetectionParams();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WebDetectionParams.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkWebDetectionParams(od as api.WebDetectionParams);
+      checkWebDetectionParams(od);
     });
   });
 
   unittest.group('obj-schema-WebEntity', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildWebEntity();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildWebEntity();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.WebEntity.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkWebEntity(od as api.WebEntity);
+      checkWebEntity(od);
     });
   });
 
   unittest.group('obj-schema-WebImage', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildWebImage();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildWebImage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.WebImage.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkWebImage(od as api.WebImage);
+      checkWebImage(od);
     });
   });
 
   unittest.group('obj-schema-WebLabel', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildWebLabel();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildWebLabel();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.WebLabel.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkWebLabel(od as api.WebLabel);
+      checkWebLabel(od);
     });
   });
 
   unittest.group('obj-schema-WebPage', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildWebPage();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildWebPage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.WebPage.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkWebPage(od as api.WebPage);
+      checkWebPage(od);
     });
   });
 
   unittest.group('obj-schema-Word', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildWord();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Word.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkWord(od as api.Word);
+      final o = buildWord();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Word.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkWord(od);
     });
   });
 
   unittest.group('resource-FilesResource', () {
     unittest.test('method--annotate', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).files;
-      var arg_request = buildBatchAnnotateFilesRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).files;
+      final arg_request = buildBatchAnnotateFilesRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BatchAnnotateFilesRequest.fromJson(
+        final obj = api.BatchAnnotateFilesRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkBatchAnnotateFilesRequest(obj as api.BatchAnnotateFilesRequest);
+        checkBatchAnnotateFilesRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 17),
-          unittest.equals("v1/files:annotate"),
+          unittest.equals('v1/files:annotate'),
         );
         pathOffset += 17;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15097,14 +14524,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildBatchAnnotateFilesResponse());
+        final resp = convert.json.encode(buildBatchAnnotateFilesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.annotate(arg_request, $fields: arg_$fields);
@@ -15113,40 +14540,39 @@ void main() {
     });
 
     unittest.test('method--asyncBatchAnnotate', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).files;
-      var arg_request = buildAsyncBatchAnnotateFilesRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).files;
+      final arg_request = buildAsyncBatchAnnotateFilesRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AsyncBatchAnnotateFilesRequest.fromJson(
+        final obj = api.AsyncBatchAnnotateFilesRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkAsyncBatchAnnotateFilesRequest(
-            obj as api.AsyncBatchAnnotateFilesRequest);
+        checkAsyncBatchAnnotateFilesRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 27),
-          unittest.equals("v1/files:asyncBatchAnnotate"),
+          unittest.equals('v1/files:asyncBatchAnnotate'),
         );
         pathOffset += 27;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15154,14 +14580,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOperation());
+        final resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -15172,39 +14598,39 @@ void main() {
 
   unittest.group('resource-ImagesResource', () {
     unittest.test('method--annotate', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).images;
-      var arg_request = buildBatchAnnotateImagesRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).images;
+      final arg_request = buildBatchAnnotateImagesRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BatchAnnotateImagesRequest.fromJson(
+        final obj = api.BatchAnnotateImagesRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkBatchAnnotateImagesRequest(obj as api.BatchAnnotateImagesRequest);
+        checkBatchAnnotateImagesRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 18),
-          unittest.equals("v1/images:annotate"),
+          unittest.equals('v1/images:annotate'),
         );
         pathOffset += 18;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15212,14 +14638,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildBatchAnnotateImagesResponse());
+        final resp = convert.json.encode(buildBatchAnnotateImagesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.annotate(arg_request, $fields: arg_$fields);
@@ -15228,40 +14654,39 @@ void main() {
     });
 
     unittest.test('method--asyncBatchAnnotate', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).images;
-      var arg_request = buildAsyncBatchAnnotateImagesRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).images;
+      final arg_request = buildAsyncBatchAnnotateImagesRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AsyncBatchAnnotateImagesRequest.fromJson(
+        final obj = api.AsyncBatchAnnotateImagesRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkAsyncBatchAnnotateImagesRequest(
-            obj as api.AsyncBatchAnnotateImagesRequest);
+        checkAsyncBatchAnnotateImagesRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 28),
-          unittest.equals("v1/images:asyncBatchAnnotate"),
+          unittest.equals('v1/images:asyncBatchAnnotate'),
         );
         pathOffset += 28;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15269,14 +14694,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOperation());
+        final resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -15287,36 +14712,36 @@ void main() {
 
   unittest.group('resource-LocationsOperationsResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).locations.operations;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).locations.operations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15324,14 +14749,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOperation());
+        final resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -15341,41 +14766,41 @@ void main() {
 
   unittest.group('resource-OperationsResource', () {
     unittest.test('method--cancel', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).operations;
-      var arg_request = buildCancelOperationRequest();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).operations;
+      final arg_request = buildCancelOperationRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CancelOperationRequest.fromJson(
+        final obj = api.CancelOperationRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkCancelOperationRequest(obj as api.CancelOperationRequest);
+        checkCancelOperationRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15383,14 +14808,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildEmpty());
+        final resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -15399,36 +14824,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).operations;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).operations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15436,14 +14861,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildEmpty());
+        final resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -15451,36 +14876,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).operations;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).operations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15488,14 +14913,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOperation());
+        final resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -15503,39 +14928,39 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).operations;
-      var arg_name = 'foo';
-      var arg_filter = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).operations;
+      final arg_name = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15543,26 +14968,26 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["filter"]!.first,
+          queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListOperationsResponse());
+        final resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_name,
@@ -15576,41 +15001,41 @@ void main() {
 
   unittest.group('resource-ProjectsFilesResource', () {
     unittest.test('method--annotate', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).projects.files;
-      var arg_request = buildBatchAnnotateFilesRequest();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).projects.files;
+      final arg_request = buildBatchAnnotateFilesRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BatchAnnotateFilesRequest.fromJson(
+        final obj = api.BatchAnnotateFilesRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkBatchAnnotateFilesRequest(obj as api.BatchAnnotateFilesRequest);
+        checkBatchAnnotateFilesRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15618,14 +15043,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildBatchAnnotateFilesResponse());
+        final resp = convert.json.encode(buildBatchAnnotateFilesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -15635,42 +15060,41 @@ void main() {
     });
 
     unittest.test('method--asyncBatchAnnotate', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).projects.files;
-      var arg_request = buildAsyncBatchAnnotateFilesRequest();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).projects.files;
+      final arg_request = buildAsyncBatchAnnotateFilesRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AsyncBatchAnnotateFilesRequest.fromJson(
+        final obj = api.AsyncBatchAnnotateFilesRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkAsyncBatchAnnotateFilesRequest(
-            obj as api.AsyncBatchAnnotateFilesRequest);
+        checkAsyncBatchAnnotateFilesRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15678,14 +15102,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOperation());
+        final resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.asyncBatchAnnotate(arg_request, arg_parent,
@@ -15696,41 +15120,41 @@ void main() {
 
   unittest.group('resource-ProjectsImagesResource', () {
     unittest.test('method--annotate', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).projects.images;
-      var arg_request = buildBatchAnnotateImagesRequest();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).projects.images;
+      final arg_request = buildBatchAnnotateImagesRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BatchAnnotateImagesRequest.fromJson(
+        final obj = api.BatchAnnotateImagesRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkBatchAnnotateImagesRequest(obj as api.BatchAnnotateImagesRequest);
+        checkBatchAnnotateImagesRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15738,14 +15162,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildBatchAnnotateImagesResponse());
+        final resp = convert.json.encode(buildBatchAnnotateImagesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -15755,42 +15179,41 @@ void main() {
     });
 
     unittest.test('method--asyncBatchAnnotate', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).projects.images;
-      var arg_request = buildAsyncBatchAnnotateImagesRequest();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).projects.images;
+      final arg_request = buildAsyncBatchAnnotateImagesRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AsyncBatchAnnotateImagesRequest.fromJson(
+        final obj = api.AsyncBatchAnnotateImagesRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkAsyncBatchAnnotateImagesRequest(
-            obj as api.AsyncBatchAnnotateImagesRequest);
+        checkAsyncBatchAnnotateImagesRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15798,14 +15221,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOperation());
+        final resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.asyncBatchAnnotate(arg_request, arg_parent,
@@ -15816,41 +15239,41 @@ void main() {
 
   unittest.group('resource-ProjectsLocationsFilesResource', () {
     unittest.test('method--annotate', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).projects.locations.files;
-      var arg_request = buildBatchAnnotateFilesRequest();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).projects.locations.files;
+      final arg_request = buildBatchAnnotateFilesRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BatchAnnotateFilesRequest.fromJson(
+        final obj = api.BatchAnnotateFilesRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkBatchAnnotateFilesRequest(obj as api.BatchAnnotateFilesRequest);
+        checkBatchAnnotateFilesRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15858,14 +15281,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildBatchAnnotateFilesResponse());
+        final resp = convert.json.encode(buildBatchAnnotateFilesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -15875,42 +15298,41 @@ void main() {
     });
 
     unittest.test('method--asyncBatchAnnotate', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).projects.locations.files;
-      var arg_request = buildAsyncBatchAnnotateFilesRequest();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).projects.locations.files;
+      final arg_request = buildAsyncBatchAnnotateFilesRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AsyncBatchAnnotateFilesRequest.fromJson(
+        final obj = api.AsyncBatchAnnotateFilesRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkAsyncBatchAnnotateFilesRequest(
-            obj as api.AsyncBatchAnnotateFilesRequest);
+        checkAsyncBatchAnnotateFilesRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15918,14 +15340,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOperation());
+        final resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.asyncBatchAnnotate(arg_request, arg_parent,
@@ -15936,41 +15358,41 @@ void main() {
 
   unittest.group('resource-ProjectsLocationsImagesResource', () {
     unittest.test('method--annotate', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).projects.locations.images;
-      var arg_request = buildBatchAnnotateImagesRequest();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).projects.locations.images;
+      final arg_request = buildBatchAnnotateImagesRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BatchAnnotateImagesRequest.fromJson(
+        final obj = api.BatchAnnotateImagesRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkBatchAnnotateImagesRequest(obj as api.BatchAnnotateImagesRequest);
+        checkBatchAnnotateImagesRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -15978,14 +15400,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildBatchAnnotateImagesResponse());
+        final resp = convert.json.encode(buildBatchAnnotateImagesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -15995,42 +15417,41 @@ void main() {
     });
 
     unittest.test('method--asyncBatchAnnotate', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).projects.locations.images;
-      var arg_request = buildAsyncBatchAnnotateImagesRequest();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).projects.locations.images;
+      final arg_request = buildAsyncBatchAnnotateImagesRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AsyncBatchAnnotateImagesRequest.fromJson(
+        final obj = api.AsyncBatchAnnotateImagesRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkAsyncBatchAnnotateImagesRequest(
-            obj as api.AsyncBatchAnnotateImagesRequest);
+        checkAsyncBatchAnnotateImagesRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16038,14 +15459,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOperation());
+        final resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.asyncBatchAnnotate(arg_request, arg_parent,
@@ -16056,36 +15477,36 @@ void main() {
 
   unittest.group('resource-ProjectsLocationsOperationsResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).projects.locations.operations;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).projects.locations.operations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16093,14 +15514,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOperation());
+        final resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -16110,42 +15531,41 @@ void main() {
 
   unittest.group('resource-ProjectsLocationsProductSetsResource', () {
     unittest.test('method--addProduct', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).projects.locations.productSets;
-      var arg_request = buildAddProductToProductSetRequest();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).projects.locations.productSets;
+      final arg_request = buildAddProductToProductSetRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AddProductToProductSetRequest.fromJson(
+        final obj = api.AddProductToProductSetRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkAddProductToProductSetRequest(
-            obj as api.AddProductToProductSetRequest);
+        checkAddProductToProductSetRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16153,14 +15573,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildEmpty());
+        final resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -16169,42 +15589,42 @@ void main() {
     });
 
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).projects.locations.productSets;
-      var arg_request = buildProductSet();
-      var arg_parent = 'foo';
-      var arg_productSetId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).projects.locations.productSets;
+      final arg_request = buildProductSet();
+      final arg_parent = 'foo';
+      final arg_productSetId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ProductSet.fromJson(
+        final obj = api.ProductSet.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkProductSet(obj as api.ProductSet);
+        checkProductSet(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16212,18 +15632,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["productSetId"]!.first,
+          queryMap['productSetId']!.first,
           unittest.equals(arg_productSetId),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildProductSet());
+        final resp = convert.json.encode(buildProductSet());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
@@ -16232,36 +15652,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).projects.locations.productSets;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).projects.locations.productSets;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16269,14 +15689,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildEmpty());
+        final resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -16284,36 +15704,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).projects.locations.productSets;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).projects.locations.productSets;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16321,14 +15741,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildProductSet());
+        final resp = convert.json.encode(buildProductSet());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -16336,41 +15756,41 @@ void main() {
     });
 
     unittest.test('method--import', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).projects.locations.productSets;
-      var arg_request = buildImportProductSetsRequest();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).projects.locations.productSets;
+      final arg_request = buildImportProductSetsRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ImportProductSetsRequest.fromJson(
+        final obj = api.ImportProductSetsRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkImportProductSetsRequest(obj as api.ImportProductSetsRequest);
+        checkImportProductSetsRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16378,14 +15798,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOperation());
+        final resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -16394,38 +15814,38 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).projects.locations.productSets;
-      var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).projects.locations.productSets;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16433,22 +15853,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListProductSetsResponse());
+        final resp = convert.json.encode(buildListProductSetsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
@@ -16459,42 +15879,42 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).projects.locations.productSets;
-      var arg_request = buildProductSet();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).projects.locations.productSets;
+      final arg_request = buildProductSet();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ProductSet.fromJson(
+        final obj = api.ProductSet.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkProductSet(obj as api.ProductSet);
+        checkProductSet(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16502,18 +15922,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildProductSet());
+        final resp = convert.json.encode(buildProductSet());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_name,
@@ -16522,42 +15942,41 @@ void main() {
     });
 
     unittest.test('method--removeProduct', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).projects.locations.productSets;
-      var arg_request = buildRemoveProductFromProductSetRequest();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).projects.locations.productSets;
+      final arg_request = buildRemoveProductFromProductSetRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.RemoveProductFromProductSetRequest.fromJson(
+        final obj = api.RemoveProductFromProductSetRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkRemoveProductFromProductSetRequest(
-            obj as api.RemoveProductFromProductSetRequest);
+        checkRemoveProductFromProductSetRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16565,14 +15984,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildEmpty());
+        final resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -16583,38 +16002,38 @@ void main() {
 
   unittest.group('resource-ProjectsLocationsProductSetsProductsResource', () {
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).projects.locations.productSets.products;
-      var arg_name = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).projects.locations.productSets.products;
+      final arg_name = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16622,22 +16041,23 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListProductsInProductSetResponse());
+        final resp =
+            convert.json.encode(buildListProductsInProductSetResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_name,
@@ -16651,42 +16071,42 @@ void main() {
 
   unittest.group('resource-ProjectsLocationsProductsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).projects.locations.products;
-      var arg_request = buildProduct();
-      var arg_parent = 'foo';
-      var arg_productId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).projects.locations.products;
+      final arg_request = buildProduct();
+      final arg_parent = 'foo';
+      final arg_productId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Product.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkProduct(obj as api.Product);
+        checkProduct(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16694,18 +16114,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["productId"]!.first,
+          queryMap['productId']!.first,
           unittest.equals(arg_productId),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildProduct());
+        final resp = convert.json.encode(buildProduct());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
@@ -16714,36 +16134,36 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).projects.locations.products;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).projects.locations.products;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16751,14 +16171,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildEmpty());
+        final resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -16766,36 +16186,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).projects.locations.products;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).projects.locations.products;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16803,14 +16223,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildProduct());
+        final resp = convert.json.encode(buildProduct());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -16818,38 +16238,38 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).projects.locations.products;
-      var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).projects.locations.products;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16857,22 +16277,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListProductsResponse());
+        final resp = convert.json.encode(buildListProductsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
@@ -16883,42 +16303,42 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).projects.locations.products;
-      var arg_request = buildProduct();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).projects.locations.products;
+      final arg_request = buildProduct();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Product.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkProduct(obj as api.Product);
+        checkProduct(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16926,18 +16346,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildProduct());
+        final resp = convert.json.encode(buildProduct());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_name,
@@ -16946,41 +16366,41 @@ void main() {
     });
 
     unittest.test('method--purge', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).projects.locations.products;
-      var arg_request = buildPurgeProductsRequest();
-      var arg_parent = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).projects.locations.products;
+      final arg_request = buildPurgeProductsRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.PurgeProductsRequest.fromJson(
+        final obj = api.PurgeProductsRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkPurgeProductsRequest(obj as api.PurgeProductsRequest);
+        checkPurgeProductsRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -16988,14 +16408,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOperation());
+        final resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -17007,42 +16427,43 @@ void main() {
   unittest.group('resource-ProjectsLocationsProductsReferenceImagesResource',
       () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).projects.locations.products.referenceImages;
-      var arg_request = buildReferenceImage();
-      var arg_parent = 'foo';
-      var arg_referenceImageId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res =
+          api.VisionApi(mock).projects.locations.products.referenceImages;
+      final arg_request = buildReferenceImage();
+      final arg_parent = 'foo';
+      final arg_referenceImageId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ReferenceImage.fromJson(
+        final obj = api.ReferenceImage.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkReferenceImage(obj as api.ReferenceImage);
+        checkReferenceImage(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -17050,18 +16471,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["referenceImageId"]!.first,
+          queryMap['referenceImageId']!.first,
           unittest.equals(arg_referenceImageId),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildReferenceImage());
+        final resp = convert.json.encode(buildReferenceImage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
@@ -17070,36 +16491,37 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).projects.locations.products.referenceImages;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res =
+          api.VisionApi(mock).projects.locations.products.referenceImages;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -17107,14 +16529,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildEmpty());
+        final resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
@@ -17122,36 +16544,37 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).projects.locations.products.referenceImages;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res =
+          api.VisionApi(mock).projects.locations.products.referenceImages;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -17159,14 +16582,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildReferenceImage());
+        final resp = convert.json.encode(buildReferenceImage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -17174,38 +16597,39 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).projects.locations.products.referenceImages;
-      var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res =
+          api.VisionApi(mock).projects.locations.products.referenceImages;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -17213,22 +16637,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListReferenceImagesResponse());
+        final resp = convert.json.encode(buildListReferenceImagesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
@@ -17242,36 +16666,36 @@ void main() {
 
   unittest.group('resource-ProjectsOperationsResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.VisionApi(mock).projects.operations;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.VisionApi(mock).projects.operations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -17279,14 +16703,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOperation());
+        final resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);

@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -29,7 +28,7 @@ import '../test_shared.dart';
 
 core.int buildCounterAchievementConfiguration = 0;
 api.AchievementConfiguration buildAchievementConfiguration() {
-  var o = api.AchievementConfiguration();
+  final o = api.AchievementConfiguration();
   buildCounterAchievementConfiguration++;
   if (buildCounterAchievementConfiguration < 3) {
     o.achievementType = 'foo';
@@ -52,8 +51,7 @@ void checkAchievementConfiguration(api.AchievementConfiguration o) {
       o.achievementType!,
       unittest.equals('foo'),
     );
-    checkAchievementConfigurationDetail(
-        o.draft! as api.AchievementConfigurationDetail);
+    checkAchievementConfigurationDetail(o.draft!);
     unittest.expect(
       o.id!,
       unittest.equals('foo'),
@@ -66,8 +64,7 @@ void checkAchievementConfiguration(api.AchievementConfiguration o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkAchievementConfigurationDetail(
-        o.published! as api.AchievementConfigurationDetail);
+    checkAchievementConfigurationDetail(o.published!);
     unittest.expect(
       o.stepsToUnlock!,
       unittest.equals(42),
@@ -82,7 +79,7 @@ void checkAchievementConfiguration(api.AchievementConfiguration o) {
 
 core.int buildCounterAchievementConfigurationDetail = 0;
 api.AchievementConfigurationDetail buildAchievementConfigurationDetail() {
-  var o = api.AchievementConfigurationDetail();
+  final o = api.AchievementConfigurationDetail();
   buildCounterAchievementConfigurationDetail++;
   if (buildCounterAchievementConfigurationDetail < 3) {
     o.description = buildLocalizedStringBundle();
@@ -99,7 +96,7 @@ api.AchievementConfigurationDetail buildAchievementConfigurationDetail() {
 void checkAchievementConfigurationDetail(api.AchievementConfigurationDetail o) {
   buildCounterAchievementConfigurationDetail++;
   if (buildCounterAchievementConfigurationDetail < 3) {
-    checkLocalizedStringBundle(o.description! as api.LocalizedStringBundle);
+    checkLocalizedStringBundle(o.description!);
     unittest.expect(
       o.iconUrl!,
       unittest.equals('foo'),
@@ -108,7 +105,7 @@ void checkAchievementConfigurationDetail(api.AchievementConfigurationDetail o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkLocalizedStringBundle(o.name! as api.LocalizedStringBundle);
+    checkLocalizedStringBundle(o.name!);
     unittest.expect(
       o.pointValue!,
       unittest.equals(42),
@@ -122,7 +119,7 @@ void checkAchievementConfigurationDetail(api.AchievementConfigurationDetail o) {
 }
 
 core.List<api.AchievementConfiguration> buildUnnamed3651() {
-  var o = <api.AchievementConfiguration>[];
+  final o = <api.AchievementConfiguration>[];
   o.add(buildAchievementConfiguration());
   o.add(buildAchievementConfiguration());
   return o;
@@ -130,14 +127,14 @@ core.List<api.AchievementConfiguration> buildUnnamed3651() {
 
 void checkUnnamed3651(core.List<api.AchievementConfiguration> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAchievementConfiguration(o[0] as api.AchievementConfiguration);
-  checkAchievementConfiguration(o[1] as api.AchievementConfiguration);
+  checkAchievementConfiguration(o[0]);
+  checkAchievementConfiguration(o[1]);
 }
 
 core.int buildCounterAchievementConfigurationListResponse = 0;
 api.AchievementConfigurationListResponse
     buildAchievementConfigurationListResponse() {
-  var o = api.AchievementConfigurationListResponse();
+  final o = api.AchievementConfigurationListResponse();
   buildCounterAchievementConfigurationListResponse++;
   if (buildCounterAchievementConfigurationListResponse < 3) {
     o.items = buildUnnamed3651();
@@ -167,7 +164,7 @@ void checkAchievementConfigurationListResponse(
 
 core.int buildCounterGamesNumberAffixConfiguration = 0;
 api.GamesNumberAffixConfiguration buildGamesNumberAffixConfiguration() {
-  var o = api.GamesNumberAffixConfiguration();
+  final o = api.GamesNumberAffixConfiguration();
   buildCounterGamesNumberAffixConfiguration++;
   if (buildCounterGamesNumberAffixConfiguration < 3) {
     o.few = buildLocalizedStringBundle();
@@ -184,19 +181,19 @@ api.GamesNumberAffixConfiguration buildGamesNumberAffixConfiguration() {
 void checkGamesNumberAffixConfiguration(api.GamesNumberAffixConfiguration o) {
   buildCounterGamesNumberAffixConfiguration++;
   if (buildCounterGamesNumberAffixConfiguration < 3) {
-    checkLocalizedStringBundle(o.few! as api.LocalizedStringBundle);
-    checkLocalizedStringBundle(o.many! as api.LocalizedStringBundle);
-    checkLocalizedStringBundle(o.one! as api.LocalizedStringBundle);
-    checkLocalizedStringBundle(o.other! as api.LocalizedStringBundle);
-    checkLocalizedStringBundle(o.two! as api.LocalizedStringBundle);
-    checkLocalizedStringBundle(o.zero! as api.LocalizedStringBundle);
+    checkLocalizedStringBundle(o.few!);
+    checkLocalizedStringBundle(o.many!);
+    checkLocalizedStringBundle(o.one!);
+    checkLocalizedStringBundle(o.other!);
+    checkLocalizedStringBundle(o.two!);
+    checkLocalizedStringBundle(o.zero!);
   }
   buildCounterGamesNumberAffixConfiguration--;
 }
 
 core.int buildCounterGamesNumberFormatConfiguration = 0;
 api.GamesNumberFormatConfiguration buildGamesNumberFormatConfiguration() {
-  var o = api.GamesNumberFormatConfiguration();
+  final o = api.GamesNumberFormatConfiguration();
   buildCounterGamesNumberFormatConfiguration++;
   if (buildCounterGamesNumberFormatConfiguration < 3) {
     o.currencyCode = 'foo';
@@ -223,15 +220,14 @@ void checkGamesNumberFormatConfiguration(api.GamesNumberFormatConfiguration o) {
       o.numberFormatType!,
       unittest.equals('foo'),
     );
-    checkGamesNumberAffixConfiguration(
-        o.suffix! as api.GamesNumberAffixConfiguration);
+    checkGamesNumberAffixConfiguration(o.suffix!);
   }
   buildCounterGamesNumberFormatConfiguration--;
 }
 
 core.int buildCounterImageConfiguration = 0;
 api.ImageConfiguration buildImageConfiguration() {
-  var o = api.ImageConfiguration();
+  final o = api.ImageConfiguration();
   buildCounterImageConfiguration++;
   if (buildCounterImageConfiguration < 3) {
     o.imageType = 'foo';
@@ -268,7 +264,7 @@ void checkImageConfiguration(api.ImageConfiguration o) {
 
 core.int buildCounterLeaderboardConfiguration = 0;
 api.LeaderboardConfiguration buildLeaderboardConfiguration() {
-  var o = api.LeaderboardConfiguration();
+  final o = api.LeaderboardConfiguration();
   buildCounterLeaderboardConfiguration++;
   if (buildCounterLeaderboardConfiguration < 3) {
     o.draft = buildLeaderboardConfigurationDetail();
@@ -287,8 +283,7 @@ api.LeaderboardConfiguration buildLeaderboardConfiguration() {
 void checkLeaderboardConfiguration(api.LeaderboardConfiguration o) {
   buildCounterLeaderboardConfiguration++;
   if (buildCounterLeaderboardConfiguration < 3) {
-    checkLeaderboardConfigurationDetail(
-        o.draft! as api.LeaderboardConfigurationDetail);
+    checkLeaderboardConfigurationDetail(o.draft!);
     unittest.expect(
       o.id!,
       unittest.equals('foo'),
@@ -297,8 +292,7 @@ void checkLeaderboardConfiguration(api.LeaderboardConfiguration o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkLeaderboardConfigurationDetail(
-        o.published! as api.LeaderboardConfigurationDetail);
+    checkLeaderboardConfigurationDetail(o.published!);
     unittest.expect(
       o.scoreMax!,
       unittest.equals('foo'),
@@ -321,7 +315,7 @@ void checkLeaderboardConfiguration(api.LeaderboardConfiguration o) {
 
 core.int buildCounterLeaderboardConfigurationDetail = 0;
 api.LeaderboardConfigurationDetail buildLeaderboardConfigurationDetail() {
-  var o = api.LeaderboardConfigurationDetail();
+  final o = api.LeaderboardConfigurationDetail();
   buildCounterLeaderboardConfigurationDetail++;
   if (buildCounterLeaderboardConfigurationDetail < 3) {
     o.iconUrl = 'foo';
@@ -345,9 +339,8 @@ void checkLeaderboardConfigurationDetail(api.LeaderboardConfigurationDetail o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkLocalizedStringBundle(o.name! as api.LocalizedStringBundle);
-    checkGamesNumberFormatConfiguration(
-        o.scoreFormat! as api.GamesNumberFormatConfiguration);
+    checkLocalizedStringBundle(o.name!);
+    checkGamesNumberFormatConfiguration(o.scoreFormat!);
     unittest.expect(
       o.sortRank!,
       unittest.equals(42),
@@ -357,7 +350,7 @@ void checkLeaderboardConfigurationDetail(api.LeaderboardConfigurationDetail o) {
 }
 
 core.List<api.LeaderboardConfiguration> buildUnnamed3652() {
-  var o = <api.LeaderboardConfiguration>[];
+  final o = <api.LeaderboardConfiguration>[];
   o.add(buildLeaderboardConfiguration());
   o.add(buildLeaderboardConfiguration());
   return o;
@@ -365,14 +358,14 @@ core.List<api.LeaderboardConfiguration> buildUnnamed3652() {
 
 void checkUnnamed3652(core.List<api.LeaderboardConfiguration> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLeaderboardConfiguration(o[0] as api.LeaderboardConfiguration);
-  checkLeaderboardConfiguration(o[1] as api.LeaderboardConfiguration);
+  checkLeaderboardConfiguration(o[0]);
+  checkLeaderboardConfiguration(o[1]);
 }
 
 core.int buildCounterLeaderboardConfigurationListResponse = 0;
 api.LeaderboardConfigurationListResponse
     buildLeaderboardConfigurationListResponse() {
-  var o = api.LeaderboardConfigurationListResponse();
+  final o = api.LeaderboardConfigurationListResponse();
   buildCounterLeaderboardConfigurationListResponse++;
   if (buildCounterLeaderboardConfigurationListResponse < 3) {
     o.items = buildUnnamed3652();
@@ -402,7 +395,7 @@ void checkLeaderboardConfigurationListResponse(
 
 core.int buildCounterLocalizedString = 0;
 api.LocalizedString buildLocalizedString() {
-  var o = api.LocalizedString();
+  final o = api.LocalizedString();
   buildCounterLocalizedString++;
   if (buildCounterLocalizedString < 3) {
     o.kind = 'foo';
@@ -433,7 +426,7 @@ void checkLocalizedString(api.LocalizedString o) {
 }
 
 core.List<api.LocalizedString> buildUnnamed3653() {
-  var o = <api.LocalizedString>[];
+  final o = <api.LocalizedString>[];
   o.add(buildLocalizedString());
   o.add(buildLocalizedString());
   return o;
@@ -441,13 +434,13 @@ core.List<api.LocalizedString> buildUnnamed3653() {
 
 void checkUnnamed3653(core.List<api.LocalizedString> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocalizedString(o[0] as api.LocalizedString);
-  checkLocalizedString(o[1] as api.LocalizedString);
+  checkLocalizedString(o[0]);
+  checkLocalizedString(o[1]);
 }
 
 core.int buildCounterLocalizedStringBundle = 0;
 api.LocalizedStringBundle buildLocalizedStringBundle() {
-  var o = api.LocalizedStringBundle();
+  final o = api.LocalizedStringBundle();
   buildCounterLocalizedStringBundle++;
   if (buildCounterLocalizedStringBundle < 3) {
     o.kind = 'foo';
@@ -472,139 +465,133 @@ void checkLocalizedStringBundle(api.LocalizedStringBundle o) {
 void main() {
   unittest.group('obj-schema-AchievementConfiguration', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAchievementConfiguration();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AchievementConfiguration.fromJson(
+      final o = buildAchievementConfiguration();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AchievementConfiguration.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAchievementConfiguration(od as api.AchievementConfiguration);
+      checkAchievementConfiguration(od);
     });
   });
 
   unittest.group('obj-schema-AchievementConfigurationDetail', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAchievementConfigurationDetail();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AchievementConfigurationDetail.fromJson(
+      final o = buildAchievementConfigurationDetail();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AchievementConfigurationDetail.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAchievementConfigurationDetail(
-          od as api.AchievementConfigurationDetail);
+      checkAchievementConfigurationDetail(od);
     });
   });
 
   unittest.group('obj-schema-AchievementConfigurationListResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAchievementConfigurationListResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AchievementConfigurationListResponse.fromJson(
+      final o = buildAchievementConfigurationListResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AchievementConfigurationListResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAchievementConfigurationListResponse(
-          od as api.AchievementConfigurationListResponse);
+      checkAchievementConfigurationListResponse(od);
     });
   });
 
   unittest.group('obj-schema-GamesNumberAffixConfiguration', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGamesNumberAffixConfiguration();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GamesNumberAffixConfiguration.fromJson(
+      final o = buildGamesNumberAffixConfiguration();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GamesNumberAffixConfiguration.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGamesNumberAffixConfiguration(
-          od as api.GamesNumberAffixConfiguration);
+      checkGamesNumberAffixConfiguration(od);
     });
   });
 
   unittest.group('obj-schema-GamesNumberFormatConfiguration', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGamesNumberFormatConfiguration();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GamesNumberFormatConfiguration.fromJson(
+      final o = buildGamesNumberFormatConfiguration();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GamesNumberFormatConfiguration.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGamesNumberFormatConfiguration(
-          od as api.GamesNumberFormatConfiguration);
+      checkGamesNumberFormatConfiguration(od);
     });
   });
 
   unittest.group('obj-schema-ImageConfiguration', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildImageConfiguration();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ImageConfiguration.fromJson(
+      final o = buildImageConfiguration();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ImageConfiguration.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkImageConfiguration(od as api.ImageConfiguration);
+      checkImageConfiguration(od);
     });
   });
 
   unittest.group('obj-schema-LeaderboardConfiguration', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLeaderboardConfiguration();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LeaderboardConfiguration.fromJson(
+      final o = buildLeaderboardConfiguration();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LeaderboardConfiguration.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLeaderboardConfiguration(od as api.LeaderboardConfiguration);
+      checkLeaderboardConfiguration(od);
     });
   });
 
   unittest.group('obj-schema-LeaderboardConfigurationDetail', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLeaderboardConfigurationDetail();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LeaderboardConfigurationDetail.fromJson(
+      final o = buildLeaderboardConfigurationDetail();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LeaderboardConfigurationDetail.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLeaderboardConfigurationDetail(
-          od as api.LeaderboardConfigurationDetail);
+      checkLeaderboardConfigurationDetail(od);
     });
   });
 
   unittest.group('obj-schema-LeaderboardConfigurationListResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLeaderboardConfigurationListResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LeaderboardConfigurationListResponse.fromJson(
+      final o = buildLeaderboardConfigurationListResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LeaderboardConfigurationListResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLeaderboardConfigurationListResponse(
-          od as api.LeaderboardConfigurationListResponse);
+      checkLeaderboardConfigurationListResponse(od);
     });
   });
 
   unittest.group('obj-schema-LocalizedString', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLocalizedString();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LocalizedString.fromJson(
+      final o = buildLocalizedString();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LocalizedString.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLocalizedString(od as api.LocalizedString);
+      checkLocalizedString(od);
     });
   });
 
   unittest.group('obj-schema-LocalizedStringBundle', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLocalizedStringBundle();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LocalizedStringBundle.fromJson(
+      final o = buildLocalizedStringBundle();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LocalizedStringBundle.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLocalizedStringBundle(od as api.LocalizedStringBundle);
+      checkLocalizedStringBundle(od);
     });
   });
 
   unittest.group('resource-AchievementConfigurationsResource', () {
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.GamesConfigurationApi(mock).achievementConfigurations;
-      var arg_achievementId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GamesConfigurationApi(mock).achievementConfigurations;
+      final arg_achievementId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 35),
-          unittest.equals("games/v1configuration/achievements/"),
+          unittest.equals('games/v1configuration/achievements/'),
         );
         pathOffset += 35;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -614,15 +601,15 @@ void main() {
           unittest.equals('$arg_achievementId'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -630,37 +617,37 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_achievementId, $fields: arg_$fields);
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.GamesConfigurationApi(mock).achievementConfigurations;
-      var arg_achievementId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GamesConfigurationApi(mock).achievementConfigurations;
+      final arg_achievementId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 35),
-          unittest.equals("games/v1configuration/achievements/"),
+          unittest.equals('games/v1configuration/achievements/'),
         );
         pathOffset += 35;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -670,15 +657,15 @@ void main() {
           unittest.equals('$arg_achievementId'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -686,14 +673,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAchievementConfiguration());
+        final resp = convert.json.encode(buildAchievementConfiguration());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_achievementId, $fields: arg_$fields);
@@ -701,28 +688,28 @@ void main() {
     });
 
     unittest.test('method--insert', () async {
-      var mock = HttpServerMock();
-      var res = api.GamesConfigurationApi(mock).achievementConfigurations;
-      var arg_request = buildAchievementConfiguration();
-      var arg_applicationId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GamesConfigurationApi(mock).achievementConfigurations;
+      final arg_request = buildAchievementConfiguration();
+      final arg_applicationId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AchievementConfiguration.fromJson(
+        final obj = api.AchievementConfiguration.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkAchievementConfiguration(obj as api.AchievementConfiguration);
+        checkAchievementConfiguration(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 35),
-          unittest.equals("games/v1configuration/applications/"),
+          unittest.equals('games/v1configuration/applications/'),
         );
         pathOffset += 35;
         index = path.indexOf('/achievements', pathOffset);
@@ -736,19 +723,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("/achievements"),
+          unittest.equals('/achievements'),
         );
         pathOffset += 13;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -756,14 +743,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAchievementConfiguration());
+        final resp = convert.json.encode(buildAchievementConfiguration());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.insert(arg_request, arg_applicationId,
@@ -772,25 +759,25 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.GamesConfigurationApi(mock).achievementConfigurations;
-      var arg_applicationId = 'foo';
-      var arg_maxResults = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GamesConfigurationApi(mock).achievementConfigurations;
+      final arg_applicationId = 'foo';
+      final arg_maxResults = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 35),
-          unittest.equals("games/v1configuration/applications/"),
+          unittest.equals('games/v1configuration/applications/'),
         );
         pathOffset += 35;
         index = path.indexOf('/achievements', pathOffset);
@@ -804,19 +791,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("/achievements"),
+          unittest.equals('/achievements'),
         );
         pathOffset += 13;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -824,22 +811,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["maxResults"]!.first),
+          core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildAchievementConfigurationListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -852,28 +839,28 @@ void main() {
     });
 
     unittest.test('method--update', () async {
-      var mock = HttpServerMock();
-      var res = api.GamesConfigurationApi(mock).achievementConfigurations;
-      var arg_request = buildAchievementConfiguration();
-      var arg_achievementId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GamesConfigurationApi(mock).achievementConfigurations;
+      final arg_request = buildAchievementConfiguration();
+      final arg_achievementId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AchievementConfiguration.fromJson(
+        final obj = api.AchievementConfiguration.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkAchievementConfiguration(obj as api.AchievementConfiguration);
+        checkAchievementConfiguration(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 35),
-          unittest.equals("games/v1configuration/achievements/"),
+          unittest.equals('games/v1configuration/achievements/'),
         );
         pathOffset += 35;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -883,15 +870,15 @@ void main() {
           unittest.equals('$arg_achievementId'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -899,14 +886,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAchievementConfiguration());
+        final resp = convert.json.encode(buildAchievementConfiguration());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.update(arg_request, arg_achievementId,
@@ -920,24 +907,24 @@ void main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = HttpServerMock();
-      var res = api.GamesConfigurationApi(mock).imageConfigurations;
-      var arg_resourceId = 'foo';
-      var arg_imageType = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GamesConfigurationApi(mock).imageConfigurations;
+      final arg_resourceId = 'foo';
+      final arg_imageType = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 29),
-          unittest.equals("games/v1configuration/images/"),
+          unittest.equals('games/v1configuration/images/'),
         );
         pathOffset += 29;
         index = path.indexOf('/imageType/', pathOffset);
@@ -951,7 +938,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 11),
-          unittest.equals("/imageType/"),
+          unittest.equals('/imageType/'),
         );
         pathOffset += 11;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -961,15 +948,15 @@ void main() {
           unittest.equals('$arg_imageType'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -977,14 +964,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildImageConfiguration());
+        final resp = convert.json.encode(buildImageConfiguration());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -995,23 +982,23 @@ void main() {
 
   unittest.group('resource-LeaderboardConfigurationsResource', () {
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.GamesConfigurationApi(mock).leaderboardConfigurations;
-      var arg_leaderboardId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GamesConfigurationApi(mock).leaderboardConfigurations;
+      final arg_leaderboardId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 35),
-          unittest.equals("games/v1configuration/leaderboards/"),
+          unittest.equals('games/v1configuration/leaderboards/'),
         );
         pathOffset += 35;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -1021,15 +1008,15 @@ void main() {
           unittest.equals('$arg_leaderboardId'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1037,37 +1024,37 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_leaderboardId, $fields: arg_$fields);
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.GamesConfigurationApi(mock).leaderboardConfigurations;
-      var arg_leaderboardId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GamesConfigurationApi(mock).leaderboardConfigurations;
+      final arg_leaderboardId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 35),
-          unittest.equals("games/v1configuration/leaderboards/"),
+          unittest.equals('games/v1configuration/leaderboards/'),
         );
         pathOffset += 35;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -1077,15 +1064,15 @@ void main() {
           unittest.equals('$arg_leaderboardId'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1093,14 +1080,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildLeaderboardConfiguration());
+        final resp = convert.json.encode(buildLeaderboardConfiguration());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_leaderboardId, $fields: arg_$fields);
@@ -1108,28 +1095,28 @@ void main() {
     });
 
     unittest.test('method--insert', () async {
-      var mock = HttpServerMock();
-      var res = api.GamesConfigurationApi(mock).leaderboardConfigurations;
-      var arg_request = buildLeaderboardConfiguration();
-      var arg_applicationId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GamesConfigurationApi(mock).leaderboardConfigurations;
+      final arg_request = buildLeaderboardConfiguration();
+      final arg_applicationId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LeaderboardConfiguration.fromJson(
+        final obj = api.LeaderboardConfiguration.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkLeaderboardConfiguration(obj as api.LeaderboardConfiguration);
+        checkLeaderboardConfiguration(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 35),
-          unittest.equals("games/v1configuration/applications/"),
+          unittest.equals('games/v1configuration/applications/'),
         );
         pathOffset += 35;
         index = path.indexOf('/leaderboards', pathOffset);
@@ -1143,19 +1130,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("/leaderboards"),
+          unittest.equals('/leaderboards'),
         );
         pathOffset += 13;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1163,14 +1150,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildLeaderboardConfiguration());
+        final resp = convert.json.encode(buildLeaderboardConfiguration());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.insert(arg_request, arg_applicationId,
@@ -1179,25 +1166,25 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.GamesConfigurationApi(mock).leaderboardConfigurations;
-      var arg_applicationId = 'foo';
-      var arg_maxResults = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GamesConfigurationApi(mock).leaderboardConfigurations;
+      final arg_applicationId = 'foo';
+      final arg_maxResults = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 35),
-          unittest.equals("games/v1configuration/applications/"),
+          unittest.equals('games/v1configuration/applications/'),
         );
         pathOffset += 35;
         index = path.indexOf('/leaderboards', pathOffset);
@@ -1211,19 +1198,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("/leaderboards"),
+          unittest.equals('/leaderboards'),
         );
         pathOffset += 13;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1231,22 +1218,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["maxResults"]!.first),
+          core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildLeaderboardConfigurationListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -1259,28 +1246,28 @@ void main() {
     });
 
     unittest.test('method--update', () async {
-      var mock = HttpServerMock();
-      var res = api.GamesConfigurationApi(mock).leaderboardConfigurations;
-      var arg_request = buildLeaderboardConfiguration();
-      var arg_leaderboardId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.GamesConfigurationApi(mock).leaderboardConfigurations;
+      final arg_request = buildLeaderboardConfiguration();
+      final arg_leaderboardId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LeaderboardConfiguration.fromJson(
+        final obj = api.LeaderboardConfiguration.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkLeaderboardConfiguration(obj as api.LeaderboardConfiguration);
+        checkLeaderboardConfiguration(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 35),
-          unittest.equals("games/v1configuration/leaderboards/"),
+          unittest.equals('games/v1configuration/leaderboards/'),
         );
         pathOffset += 35;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -1290,15 +1277,15 @@ void main() {
           unittest.equals('$arg_leaderboardId'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1306,14 +1293,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildLeaderboardConfiguration());
+        final resp = convert.json.encode(buildLeaderboardConfiguration());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.update(arg_request, arg_leaderboardId,

@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -28,7 +27,7 @@ import 'package:test/test.dart' as unittest;
 import '../test_shared.dart';
 
 core.List<api.EnrolledService> buildUnnamed5721() {
-  var o = <api.EnrolledService>[];
+  final o = <api.EnrolledService>[];
   o.add(buildEnrolledService());
   o.add(buildEnrolledService());
   return o;
@@ -36,12 +35,12 @@ core.List<api.EnrolledService> buildUnnamed5721() {
 
 void checkUnnamed5721(core.List<api.EnrolledService> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEnrolledService(o[0] as api.EnrolledService);
-  checkEnrolledService(o[1] as api.EnrolledService);
+  checkEnrolledService(o[0]);
+  checkEnrolledService(o[1]);
 }
 
 core.List<core.String> buildUnnamed5722() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -61,7 +60,7 @@ void checkUnnamed5722(core.List<core.String> o) {
 
 core.int buildCounterAccessApprovalSettings = 0;
 api.AccessApprovalSettings buildAccessApprovalSettings() {
-  var o = api.AccessApprovalSettings();
+  final o = api.AccessApprovalSettings();
   buildCounterAccessApprovalSettings++;
   if (buildCounterAccessApprovalSettings < 3) {
     o.enrolledAncestor = true;
@@ -89,7 +88,7 @@ void checkAccessApprovalSettings(api.AccessApprovalSettings o) {
 
 core.int buildCounterAccessLocations = 0;
 api.AccessLocations buildAccessLocations() {
-  var o = api.AccessLocations();
+  final o = api.AccessLocations();
   buildCounterAccessLocations++;
   if (buildCounterAccessLocations < 3) {
     o.principalOfficeCountry = 'foo';
@@ -116,7 +115,7 @@ void checkAccessLocations(api.AccessLocations o) {
 
 core.int buildCounterAccessReason = 0;
 api.AccessReason buildAccessReason() {
-  var o = api.AccessReason();
+  final o = api.AccessReason();
   buildCounterAccessReason++;
   if (buildCounterAccessReason < 3) {
     o.detail = 'foo';
@@ -143,7 +142,7 @@ void checkAccessReason(api.AccessReason o) {
 
 core.int buildCounterApprovalRequest = 0;
 api.ApprovalRequest buildApprovalRequest() {
-  var o = api.ApprovalRequest();
+  final o = api.ApprovalRequest();
   buildCounterApprovalRequest++;
   if (buildCounterApprovalRequest < 3) {
     o.approve = buildApproveDecision();
@@ -163,8 +162,8 @@ api.ApprovalRequest buildApprovalRequest() {
 void checkApprovalRequest(api.ApprovalRequest o) {
   buildCounterApprovalRequest++;
   if (buildCounterApprovalRequest < 3) {
-    checkApproveDecision(o.approve! as api.ApproveDecision);
-    checkDismissDecision(o.dismiss! as api.DismissDecision);
+    checkApproveDecision(o.approve!);
+    checkDismissDecision(o.dismiss!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -177,21 +176,20 @@ void checkApprovalRequest(api.ApprovalRequest o) {
       o.requestedExpiration!,
       unittest.equals('foo'),
     );
-    checkAccessLocations(o.requestedLocations! as api.AccessLocations);
-    checkAccessReason(o.requestedReason! as api.AccessReason);
+    checkAccessLocations(o.requestedLocations!);
+    checkAccessReason(o.requestedReason!);
     unittest.expect(
       o.requestedResourceName!,
       unittest.equals('foo'),
     );
-    checkResourceProperties(
-        o.requestedResourceProperties! as api.ResourceProperties);
+    checkResourceProperties(o.requestedResourceProperties!);
   }
   buildCounterApprovalRequest--;
 }
 
 core.int buildCounterApproveApprovalRequestMessage = 0;
 api.ApproveApprovalRequestMessage buildApproveApprovalRequestMessage() {
-  var o = api.ApproveApprovalRequestMessage();
+  final o = api.ApproveApprovalRequestMessage();
   buildCounterApproveApprovalRequestMessage++;
   if (buildCounterApproveApprovalRequestMessage < 3) {
     o.expireTime = 'foo';
@@ -213,7 +211,7 @@ void checkApproveApprovalRequestMessage(api.ApproveApprovalRequestMessage o) {
 
 core.int buildCounterApproveDecision = 0;
 api.ApproveDecision buildApproveDecision() {
-  var o = api.ApproveDecision();
+  final o = api.ApproveDecision();
   buildCounterApproveDecision++;
   if (buildCounterApproveDecision < 3) {
     o.approveTime = 'foo';
@@ -240,7 +238,7 @@ void checkApproveDecision(api.ApproveDecision o) {
 
 core.int buildCounterDismissApprovalRequestMessage = 0;
 api.DismissApprovalRequestMessage buildDismissApprovalRequestMessage() {
-  var o = api.DismissApprovalRequestMessage();
+  final o = api.DismissApprovalRequestMessage();
   buildCounterDismissApprovalRequestMessage++;
   if (buildCounterDismissApprovalRequestMessage < 3) {}
   buildCounterDismissApprovalRequestMessage--;
@@ -255,7 +253,7 @@ void checkDismissApprovalRequestMessage(api.DismissApprovalRequestMessage o) {
 
 core.int buildCounterDismissDecision = 0;
 api.DismissDecision buildDismissDecision() {
-  var o = api.DismissDecision();
+  final o = api.DismissDecision();
   buildCounterDismissDecision++;
   if (buildCounterDismissDecision < 3) {
     o.dismissTime = 'foo';
@@ -279,7 +277,7 @@ void checkDismissDecision(api.DismissDecision o) {
 
 core.int buildCounterEmpty = 0;
 api.Empty buildEmpty() {
-  var o = api.Empty();
+  final o = api.Empty();
   buildCounterEmpty++;
   if (buildCounterEmpty < 3) {}
   buildCounterEmpty--;
@@ -294,7 +292,7 @@ void checkEmpty(api.Empty o) {
 
 core.int buildCounterEnrolledService = 0;
 api.EnrolledService buildEnrolledService() {
-  var o = api.EnrolledService();
+  final o = api.EnrolledService();
   buildCounterEnrolledService++;
   if (buildCounterEnrolledService < 3) {
     o.cloudProduct = 'foo';
@@ -320,7 +318,7 @@ void checkEnrolledService(api.EnrolledService o) {
 }
 
 core.List<api.ApprovalRequest> buildUnnamed5723() {
-  var o = <api.ApprovalRequest>[];
+  final o = <api.ApprovalRequest>[];
   o.add(buildApprovalRequest());
   o.add(buildApprovalRequest());
   return o;
@@ -328,13 +326,13 @@ core.List<api.ApprovalRequest> buildUnnamed5723() {
 
 void checkUnnamed5723(core.List<api.ApprovalRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkApprovalRequest(o[0] as api.ApprovalRequest);
-  checkApprovalRequest(o[1] as api.ApprovalRequest);
+  checkApprovalRequest(o[0]);
+  checkApprovalRequest(o[1]);
 }
 
 core.int buildCounterListApprovalRequestsResponse = 0;
 api.ListApprovalRequestsResponse buildListApprovalRequestsResponse() {
-  var o = api.ListApprovalRequestsResponse();
+  final o = api.ListApprovalRequestsResponse();
   buildCounterListApprovalRequestsResponse++;
   if (buildCounterListApprovalRequestsResponse < 3) {
     o.approvalRequests = buildUnnamed5723();
@@ -358,7 +356,7 @@ void checkListApprovalRequestsResponse(api.ListApprovalRequestsResponse o) {
 
 core.int buildCounterResourceProperties = 0;
 api.ResourceProperties buildResourceProperties() {
-  var o = api.ResourceProperties();
+  final o = api.ResourceProperties();
   buildCounterResourceProperties++;
   if (buildCounterResourceProperties < 3) {
     o.excludesDescendants = true;
@@ -378,157 +376,156 @@ void checkResourceProperties(api.ResourceProperties o) {
 void main() {
   unittest.group('obj-schema-AccessApprovalSettings', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccessApprovalSettings();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccessApprovalSettings.fromJson(
+      final o = buildAccessApprovalSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccessApprovalSettings.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccessApprovalSettings(od as api.AccessApprovalSettings);
+      checkAccessApprovalSettings(od);
     });
   });
 
   unittest.group('obj-schema-AccessLocations', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccessLocations();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccessLocations.fromJson(
+      final o = buildAccessLocations();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccessLocations.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccessLocations(od as api.AccessLocations);
+      checkAccessLocations(od);
     });
   });
 
   unittest.group('obj-schema-AccessReason', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccessReason();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccessReason.fromJson(
+      final o = buildAccessReason();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccessReason.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccessReason(od as api.AccessReason);
+      checkAccessReason(od);
     });
   });
 
   unittest.group('obj-schema-ApprovalRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildApprovalRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ApprovalRequest.fromJson(
+      final o = buildApprovalRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ApprovalRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkApprovalRequest(od as api.ApprovalRequest);
+      checkApprovalRequest(od);
     });
   });
 
   unittest.group('obj-schema-ApproveApprovalRequestMessage', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildApproveApprovalRequestMessage();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ApproveApprovalRequestMessage.fromJson(
+      final o = buildApproveApprovalRequestMessage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ApproveApprovalRequestMessage.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkApproveApprovalRequestMessage(
-          od as api.ApproveApprovalRequestMessage);
+      checkApproveApprovalRequestMessage(od);
     });
   });
 
   unittest.group('obj-schema-ApproveDecision', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildApproveDecision();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ApproveDecision.fromJson(
+      final o = buildApproveDecision();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ApproveDecision.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkApproveDecision(od as api.ApproveDecision);
+      checkApproveDecision(od);
     });
   });
 
   unittest.group('obj-schema-DismissApprovalRequestMessage', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDismissApprovalRequestMessage();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DismissApprovalRequestMessage.fromJson(
+      final o = buildDismissApprovalRequestMessage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DismissApprovalRequestMessage.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDismissApprovalRequestMessage(
-          od as api.DismissApprovalRequestMessage);
+      checkDismissApprovalRequestMessage(od);
     });
   });
 
   unittest.group('obj-schema-DismissDecision', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDismissDecision();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DismissDecision.fromJson(
+      final o = buildDismissDecision();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DismissDecision.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDismissDecision(od as api.DismissDecision);
+      checkDismissDecision(od);
     });
   });
 
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildEmpty();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkEmpty(od as api.Empty);
+      final o = buildEmpty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkEmpty(od);
     });
   });
 
   unittest.group('obj-schema-EnrolledService', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildEnrolledService();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.EnrolledService.fromJson(
+      final o = buildEnrolledService();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EnrolledService.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkEnrolledService(od as api.EnrolledService);
+      checkEnrolledService(od);
     });
   });
 
   unittest.group('obj-schema-ListApprovalRequestsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListApprovalRequestsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListApprovalRequestsResponse.fromJson(
+      final o = buildListApprovalRequestsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListApprovalRequestsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListApprovalRequestsResponse(od as api.ListApprovalRequestsResponse);
+      checkListApprovalRequestsResponse(od);
     });
   });
 
   unittest.group('obj-schema-ResourceProperties', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildResourceProperties();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ResourceProperties.fromJson(
+      final o = buildResourceProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ResourceProperties.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkResourceProperties(od as api.ResourceProperties);
+      checkResourceProperties(od);
     });
   });
 
   unittest.group('resource-FoldersResource', () {
     unittest.test('method--deleteAccessApprovalSettings', () async {
-      var mock = HttpServerMock();
-      var res = api.AccessApprovalApi(mock).folders;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AccessApprovalApi(mock).folders;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -536,14 +533,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildEmpty());
+        final resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.deleteAccessApprovalSettings(arg_name,
@@ -552,36 +549,36 @@ void main() {
     });
 
     unittest.test('method--getAccessApprovalSettings', () async {
-      var mock = HttpServerMock();
-      var res = api.AccessApprovalApi(mock).folders;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AccessApprovalApi(mock).folders;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -589,14 +586,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccessApprovalSettings());
+        final resp = convert.json.encode(buildAccessApprovalSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -605,42 +602,42 @@ void main() {
     });
 
     unittest.test('method--updateAccessApprovalSettings', () async {
-      var mock = HttpServerMock();
-      var res = api.AccessApprovalApi(mock).folders;
-      var arg_request = buildAccessApprovalSettings();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AccessApprovalApi(mock).folders;
+      final arg_request = buildAccessApprovalSettings();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AccessApprovalSettings.fromJson(
+        final obj = api.AccessApprovalSettings.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkAccessApprovalSettings(obj as api.AccessApprovalSettings);
+        checkAccessApprovalSettings(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -648,18 +645,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccessApprovalSettings());
+        final resp = convert.json.encode(buildAccessApprovalSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.updateAccessApprovalSettings(
@@ -671,42 +668,41 @@ void main() {
 
   unittest.group('resource-FoldersApprovalRequestsResource', () {
     unittest.test('method--approve', () async {
-      var mock = HttpServerMock();
-      var res = api.AccessApprovalApi(mock).folders.approvalRequests;
-      var arg_request = buildApproveApprovalRequestMessage();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AccessApprovalApi(mock).folders.approvalRequests;
+      final arg_request = buildApproveApprovalRequestMessage();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ApproveApprovalRequestMessage.fromJson(
+        final obj = api.ApproveApprovalRequestMessage.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkApproveApprovalRequestMessage(
-            obj as api.ApproveApprovalRequestMessage);
+        checkApproveApprovalRequestMessage(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -714,14 +710,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildApprovalRequest());
+        final resp = convert.json.encode(buildApprovalRequest());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -730,42 +726,41 @@ void main() {
     });
 
     unittest.test('method--dismiss', () async {
-      var mock = HttpServerMock();
-      var res = api.AccessApprovalApi(mock).folders.approvalRequests;
-      var arg_request = buildDismissApprovalRequestMessage();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AccessApprovalApi(mock).folders.approvalRequests;
+      final arg_request = buildDismissApprovalRequestMessage();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DismissApprovalRequestMessage.fromJson(
+        final obj = api.DismissApprovalRequestMessage.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkDismissApprovalRequestMessage(
-            obj as api.DismissApprovalRequestMessage);
+        checkDismissApprovalRequestMessage(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -773,14 +768,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildApprovalRequest());
+        final resp = convert.json.encode(buildApprovalRequest());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -789,36 +784,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.AccessApprovalApi(mock).folders.approvalRequests;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AccessApprovalApi(mock).folders.approvalRequests;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -826,14 +821,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildApprovalRequest());
+        final resp = convert.json.encode(buildApprovalRequest());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -841,39 +836,39 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.AccessApprovalApi(mock).folders.approvalRequests;
-      var arg_parent = 'foo';
-      var arg_filter = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AccessApprovalApi(mock).folders.approvalRequests;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -881,26 +876,26 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["filter"]!.first,
+          queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListApprovalRequestsResponse());
+        final resp = convert.json.encode(buildListApprovalRequestsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
@@ -915,36 +910,36 @@ void main() {
 
   unittest.group('resource-OrganizationsResource', () {
     unittest.test('method--deleteAccessApprovalSettings', () async {
-      var mock = HttpServerMock();
-      var res = api.AccessApprovalApi(mock).organizations;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AccessApprovalApi(mock).organizations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -952,14 +947,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildEmpty());
+        final resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.deleteAccessApprovalSettings(arg_name,
@@ -968,36 +963,36 @@ void main() {
     });
 
     unittest.test('method--getAccessApprovalSettings', () async {
-      var mock = HttpServerMock();
-      var res = api.AccessApprovalApi(mock).organizations;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AccessApprovalApi(mock).organizations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1005,14 +1000,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccessApprovalSettings());
+        final resp = convert.json.encode(buildAccessApprovalSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -1021,42 +1016,42 @@ void main() {
     });
 
     unittest.test('method--updateAccessApprovalSettings', () async {
-      var mock = HttpServerMock();
-      var res = api.AccessApprovalApi(mock).organizations;
-      var arg_request = buildAccessApprovalSettings();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AccessApprovalApi(mock).organizations;
+      final arg_request = buildAccessApprovalSettings();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AccessApprovalSettings.fromJson(
+        final obj = api.AccessApprovalSettings.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkAccessApprovalSettings(obj as api.AccessApprovalSettings);
+        checkAccessApprovalSettings(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1064,18 +1059,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccessApprovalSettings());
+        final resp = convert.json.encode(buildAccessApprovalSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.updateAccessApprovalSettings(
@@ -1087,42 +1082,41 @@ void main() {
 
   unittest.group('resource-OrganizationsApprovalRequestsResource', () {
     unittest.test('method--approve', () async {
-      var mock = HttpServerMock();
-      var res = api.AccessApprovalApi(mock).organizations.approvalRequests;
-      var arg_request = buildApproveApprovalRequestMessage();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AccessApprovalApi(mock).organizations.approvalRequests;
+      final arg_request = buildApproveApprovalRequestMessage();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ApproveApprovalRequestMessage.fromJson(
+        final obj = api.ApproveApprovalRequestMessage.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkApproveApprovalRequestMessage(
-            obj as api.ApproveApprovalRequestMessage);
+        checkApproveApprovalRequestMessage(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1130,14 +1124,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildApprovalRequest());
+        final resp = convert.json.encode(buildApprovalRequest());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -1146,42 +1140,41 @@ void main() {
     });
 
     unittest.test('method--dismiss', () async {
-      var mock = HttpServerMock();
-      var res = api.AccessApprovalApi(mock).organizations.approvalRequests;
-      var arg_request = buildDismissApprovalRequestMessage();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AccessApprovalApi(mock).organizations.approvalRequests;
+      final arg_request = buildDismissApprovalRequestMessage();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DismissApprovalRequestMessage.fromJson(
+        final obj = api.DismissApprovalRequestMessage.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkDismissApprovalRequestMessage(
-            obj as api.DismissApprovalRequestMessage);
+        checkDismissApprovalRequestMessage(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1189,14 +1182,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildApprovalRequest());
+        final resp = convert.json.encode(buildApprovalRequest());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -1205,36 +1198,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.AccessApprovalApi(mock).organizations.approvalRequests;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AccessApprovalApi(mock).organizations.approvalRequests;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1242,14 +1235,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildApprovalRequest());
+        final resp = convert.json.encode(buildApprovalRequest());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -1257,39 +1250,39 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.AccessApprovalApi(mock).organizations.approvalRequests;
-      var arg_parent = 'foo';
-      var arg_filter = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AccessApprovalApi(mock).organizations.approvalRequests;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1297,26 +1290,26 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["filter"]!.first,
+          queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListApprovalRequestsResponse());
+        final resp = convert.json.encode(buildListApprovalRequestsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
@@ -1331,36 +1324,36 @@ void main() {
 
   unittest.group('resource-ProjectsResource', () {
     unittest.test('method--deleteAccessApprovalSettings', () async {
-      var mock = HttpServerMock();
-      var res = api.AccessApprovalApi(mock).projects;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AccessApprovalApi(mock).projects;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1368,14 +1361,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildEmpty());
+        final resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.deleteAccessApprovalSettings(arg_name,
@@ -1384,36 +1377,36 @@ void main() {
     });
 
     unittest.test('method--getAccessApprovalSettings', () async {
-      var mock = HttpServerMock();
-      var res = api.AccessApprovalApi(mock).projects;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AccessApprovalApi(mock).projects;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1421,14 +1414,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccessApprovalSettings());
+        final resp = convert.json.encode(buildAccessApprovalSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -1437,42 +1430,42 @@ void main() {
     });
 
     unittest.test('method--updateAccessApprovalSettings', () async {
-      var mock = HttpServerMock();
-      var res = api.AccessApprovalApi(mock).projects;
-      var arg_request = buildAccessApprovalSettings();
-      var arg_name = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AccessApprovalApi(mock).projects;
+      final arg_request = buildAccessApprovalSettings();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AccessApprovalSettings.fromJson(
+        final obj = api.AccessApprovalSettings.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkAccessApprovalSettings(obj as api.AccessApprovalSettings);
+        checkAccessApprovalSettings(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1480,18 +1473,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccessApprovalSettings());
+        final resp = convert.json.encode(buildAccessApprovalSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.updateAccessApprovalSettings(
@@ -1503,42 +1496,41 @@ void main() {
 
   unittest.group('resource-ProjectsApprovalRequestsResource', () {
     unittest.test('method--approve', () async {
-      var mock = HttpServerMock();
-      var res = api.AccessApprovalApi(mock).projects.approvalRequests;
-      var arg_request = buildApproveApprovalRequestMessage();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AccessApprovalApi(mock).projects.approvalRequests;
+      final arg_request = buildApproveApprovalRequestMessage();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ApproveApprovalRequestMessage.fromJson(
+        final obj = api.ApproveApprovalRequestMessage.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkApproveApprovalRequestMessage(
-            obj as api.ApproveApprovalRequestMessage);
+        checkApproveApprovalRequestMessage(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1546,14 +1538,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildApprovalRequest());
+        final resp = convert.json.encode(buildApprovalRequest());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -1562,42 +1554,41 @@ void main() {
     });
 
     unittest.test('method--dismiss', () async {
-      var mock = HttpServerMock();
-      var res = api.AccessApprovalApi(mock).projects.approvalRequests;
-      var arg_request = buildDismissApprovalRequestMessage();
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AccessApprovalApi(mock).projects.approvalRequests;
+      final arg_request = buildDismissApprovalRequestMessage();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DismissApprovalRequestMessage.fromJson(
+        final obj = api.DismissApprovalRequestMessage.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkDismissApprovalRequestMessage(
-            obj as api.DismissApprovalRequestMessage);
+        checkDismissApprovalRequestMessage(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1605,14 +1596,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildApprovalRequest());
+        final resp = convert.json.encode(buildApprovalRequest());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -1621,36 +1612,36 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.AccessApprovalApi(mock).projects.approvalRequests;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AccessApprovalApi(mock).projects.approvalRequests;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1658,14 +1649,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildApprovalRequest());
+        final resp = convert.json.encode(buildApprovalRequest());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -1673,39 +1664,39 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.AccessApprovalApi(mock).projects.approvalRequests;
-      var arg_parent = 'foo';
-      var arg_filter = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.AccessApprovalApi(mock).projects.approvalRequests;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1713,26 +1704,26 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["filter"]!.first,
+          queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListApprovalRequestsResponse());
+        final resp = convert.json.encode(buildListApprovalRequestsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,

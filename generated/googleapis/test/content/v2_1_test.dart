@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -28,7 +27,7 @@ import 'package:test/test.dart' as unittest;
 import '../test_shared.dart';
 
 core.List<api.AccountAdsLink> buildUnnamed5015() {
-  var o = <api.AccountAdsLink>[];
+  final o = <api.AccountAdsLink>[];
   o.add(buildAccountAdsLink());
   o.add(buildAccountAdsLink());
   return o;
@@ -36,12 +35,12 @@ core.List<api.AccountAdsLink> buildUnnamed5015() {
 
 void checkUnnamed5015(core.List<api.AccountAdsLink> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccountAdsLink(o[0] as api.AccountAdsLink);
-  checkAccountAdsLink(o[1] as api.AccountAdsLink);
+  checkAccountAdsLink(o[0]);
+  checkAccountAdsLink(o[1]);
 }
 
 core.List<core.String> buildUnnamed5016() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -60,7 +59,7 @@ void checkUnnamed5016(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed5017() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -79,7 +78,7 @@ void checkUnnamed5017(core.List<core.String> o) {
 }
 
 core.List<api.AccountUser> buildUnnamed5018() {
-  var o = <api.AccountUser>[];
+  final o = <api.AccountUser>[];
   o.add(buildAccountUser());
   o.add(buildAccountUser());
   return o;
@@ -87,12 +86,12 @@ core.List<api.AccountUser> buildUnnamed5018() {
 
 void checkUnnamed5018(core.List<api.AccountUser> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccountUser(o[0] as api.AccountUser);
-  checkAccountUser(o[1] as api.AccountUser);
+  checkAccountUser(o[0]);
+  checkAccountUser(o[1]);
 }
 
 core.List<api.AccountYouTubeChannelLink> buildUnnamed5019() {
-  var o = <api.AccountYouTubeChannelLink>[];
+  final o = <api.AccountYouTubeChannelLink>[];
   o.add(buildAccountYouTubeChannelLink());
   o.add(buildAccountYouTubeChannelLink());
   return o;
@@ -100,13 +99,13 @@ core.List<api.AccountYouTubeChannelLink> buildUnnamed5019() {
 
 void checkUnnamed5019(core.List<api.AccountYouTubeChannelLink> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccountYouTubeChannelLink(o[0] as api.AccountYouTubeChannelLink);
-  checkAccountYouTubeChannelLink(o[1] as api.AccountYouTubeChannelLink);
+  checkAccountYouTubeChannelLink(o[0]);
+  checkAccountYouTubeChannelLink(o[1]);
 }
 
 core.int buildCounterAccount = 0;
 api.Account buildAccount() {
-  var o = api.Account();
+  final o = api.Account();
   buildCounterAccount++;
   if (buildCounterAccount < 3) {
     o.adsLinks = buildUnnamed5015();
@@ -134,14 +133,12 @@ void checkAccount(api.Account o) {
     checkUnnamed5015(o.adsLinks!);
     unittest.expect(o.adultContent!, unittest.isTrue);
     checkUnnamed5016(o.automaticLabelIds!);
-    checkAccountBusinessInformation(
-        o.businessInformation! as api.AccountBusinessInformation);
+    checkAccountBusinessInformation(o.businessInformation!);
     unittest.expect(
       o.cssId!,
       unittest.equals('foo'),
     );
-    checkAccountGoogleMyBusinessLink(
-        o.googleMyBusinessLink! as api.AccountGoogleMyBusinessLink);
+    checkAccountGoogleMyBusinessLink(o.googleMyBusinessLink!);
     unittest.expect(
       o.id!,
       unittest.equals('foo'),
@@ -171,7 +168,7 @@ void checkAccount(api.Account o) {
 
 core.int buildCounterAccountAddress = 0;
 api.AccountAddress buildAccountAddress() {
-  var o = api.AccountAddress();
+  final o = api.AccountAddress();
   buildCounterAccountAddress++;
   if (buildCounterAccountAddress < 3) {
     o.country = 'foo';
@@ -213,7 +210,7 @@ void checkAccountAddress(api.AccountAddress o) {
 
 core.int buildCounterAccountAdsLink = 0;
 api.AccountAdsLink buildAccountAdsLink() {
-  var o = api.AccountAdsLink();
+  final o = api.AccountAdsLink();
   buildCounterAccountAdsLink++;
   if (buildCounterAccountAdsLink < 3) {
     o.adsId = 'foo';
@@ -240,7 +237,7 @@ void checkAccountAdsLink(api.AccountAdsLink o) {
 
 core.int buildCounterAccountBusinessInformation = 0;
 api.AccountBusinessInformation buildAccountBusinessInformation() {
-  var o = api.AccountBusinessInformation();
+  final o = api.AccountBusinessInformation();
   buildCounterAccountBusinessInformation++;
   if (buildCounterAccountBusinessInformation < 3) {
     o.address = buildAccountAddress();
@@ -254,9 +251,8 @@ api.AccountBusinessInformation buildAccountBusinessInformation() {
 void checkAccountBusinessInformation(api.AccountBusinessInformation o) {
   buildCounterAccountBusinessInformation++;
   if (buildCounterAccountBusinessInformation < 3) {
-    checkAccountAddress(o.address! as api.AccountAddress);
-    checkAccountCustomerService(
-        o.customerService! as api.AccountCustomerService);
+    checkAccountAddress(o.address!);
+    checkAccountCustomerService(o.customerService!);
     unittest.expect(
       o.phoneNumber!,
       unittest.equals('foo'),
@@ -267,7 +263,7 @@ void checkAccountBusinessInformation(api.AccountBusinessInformation o) {
 
 core.int buildCounterAccountCredentials = 0;
 api.AccountCredentials buildAccountCredentials() {
-  var o = api.AccountCredentials();
+  final o = api.AccountCredentials();
   buildCounterAccountCredentials++;
   if (buildCounterAccountCredentials < 3) {
     o.accessToken = 'foo';
@@ -299,7 +295,7 @@ void checkAccountCredentials(api.AccountCredentials o) {
 
 core.int buildCounterAccountCustomerService = 0;
 api.AccountCustomerService buildAccountCustomerService() {
-  var o = api.AccountCustomerService();
+  final o = api.AccountCustomerService();
   buildCounterAccountCustomerService++;
   if (buildCounterAccountCustomerService < 3) {
     o.email = 'foo';
@@ -331,7 +327,7 @@ void checkAccountCustomerService(api.AccountCustomerService o) {
 
 core.int buildCounterAccountGoogleMyBusinessLink = 0;
 api.AccountGoogleMyBusinessLink buildAccountGoogleMyBusinessLink() {
-  var o = api.AccountGoogleMyBusinessLink();
+  final o = api.AccountGoogleMyBusinessLink();
   buildCounterAccountGoogleMyBusinessLink++;
   if (buildCounterAccountGoogleMyBusinessLink < 3) {
     o.gmbAccountId = 'foo';
@@ -363,7 +359,7 @@ void checkAccountGoogleMyBusinessLink(api.AccountGoogleMyBusinessLink o) {
 
 core.int buildCounterAccountIdentifier = 0;
 api.AccountIdentifier buildAccountIdentifier() {
-  var o = api.AccountIdentifier();
+  final o = api.AccountIdentifier();
   buildCounterAccountIdentifier++;
   if (buildCounterAccountIdentifier < 3) {
     o.aggregatorId = 'foo';
@@ -390,7 +386,7 @@ void checkAccountIdentifier(api.AccountIdentifier o) {
 
 core.int buildCounterAccountLabel = 0;
 api.AccountLabel buildAccountLabel() {
-  var o = api.AccountLabel();
+  final o = api.AccountLabel();
   buildCounterAccountLabel++;
   if (buildCounterAccountLabel < 3) {
     o.accountId = 'foo';
@@ -432,7 +428,7 @@ void checkAccountLabel(api.AccountLabel o) {
 
 core.int buildCounterAccountReturnCarrier = 0;
 api.AccountReturnCarrier buildAccountReturnCarrier() {
-  var o = api.AccountReturnCarrier();
+  final o = api.AccountReturnCarrier();
   buildCounterAccountReturnCarrier++;
   if (buildCounterAccountReturnCarrier < 3) {
     o.carrierAccountId = 'foo';
@@ -468,7 +464,7 @@ void checkAccountReturnCarrier(api.AccountReturnCarrier o) {
 }
 
 core.List<api.AccountStatusAccountLevelIssue> buildUnnamed5020() {
-  var o = <api.AccountStatusAccountLevelIssue>[];
+  final o = <api.AccountStatusAccountLevelIssue>[];
   o.add(buildAccountStatusAccountLevelIssue());
   o.add(buildAccountStatusAccountLevelIssue());
   return o;
@@ -476,14 +472,12 @@ core.List<api.AccountStatusAccountLevelIssue> buildUnnamed5020() {
 
 void checkUnnamed5020(core.List<api.AccountStatusAccountLevelIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccountStatusAccountLevelIssue(
-      o[0] as api.AccountStatusAccountLevelIssue);
-  checkAccountStatusAccountLevelIssue(
-      o[1] as api.AccountStatusAccountLevelIssue);
+  checkAccountStatusAccountLevelIssue(o[0]);
+  checkAccountStatusAccountLevelIssue(o[1]);
 }
 
 core.List<api.AccountStatusProducts> buildUnnamed5021() {
-  var o = <api.AccountStatusProducts>[];
+  final o = <api.AccountStatusProducts>[];
   o.add(buildAccountStatusProducts());
   o.add(buildAccountStatusProducts());
   return o;
@@ -491,13 +485,13 @@ core.List<api.AccountStatusProducts> buildUnnamed5021() {
 
 void checkUnnamed5021(core.List<api.AccountStatusProducts> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccountStatusProducts(o[0] as api.AccountStatusProducts);
-  checkAccountStatusProducts(o[1] as api.AccountStatusProducts);
+  checkAccountStatusProducts(o[0]);
+  checkAccountStatusProducts(o[1]);
 }
 
 core.int buildCounterAccountStatus = 0;
 api.AccountStatus buildAccountStatus() {
-  var o = api.AccountStatus();
+  final o = api.AccountStatus();
   buildCounterAccountStatus++;
   if (buildCounterAccountStatus < 3) {
     o.accountId = 'foo';
@@ -530,7 +524,7 @@ void checkAccountStatus(api.AccountStatus o) {
 
 core.int buildCounterAccountStatusAccountLevelIssue = 0;
 api.AccountStatusAccountLevelIssue buildAccountStatusAccountLevelIssue() {
-  var o = api.AccountStatusAccountLevelIssue();
+  final o = api.AccountStatusAccountLevelIssue();
   buildCounterAccountStatusAccountLevelIssue++;
   if (buildCounterAccountStatusAccountLevelIssue < 3) {
     o.country = 'foo';
@@ -582,7 +576,7 @@ void checkAccountStatusAccountLevelIssue(api.AccountStatusAccountLevelIssue o) {
 
 core.int buildCounterAccountStatusItemLevelIssue = 0;
 api.AccountStatusItemLevelIssue buildAccountStatusItemLevelIssue() {
-  var o = api.AccountStatusItemLevelIssue();
+  final o = api.AccountStatusItemLevelIssue();
   buildCounterAccountStatusItemLevelIssue++;
   if (buildCounterAccountStatusItemLevelIssue < 3) {
     o.attributeName = 'foo';
@@ -638,7 +632,7 @@ void checkAccountStatusItemLevelIssue(api.AccountStatusItemLevelIssue o) {
 }
 
 core.List<api.AccountStatusItemLevelIssue> buildUnnamed5022() {
-  var o = <api.AccountStatusItemLevelIssue>[];
+  final o = <api.AccountStatusItemLevelIssue>[];
   o.add(buildAccountStatusItemLevelIssue());
   o.add(buildAccountStatusItemLevelIssue());
   return o;
@@ -646,13 +640,13 @@ core.List<api.AccountStatusItemLevelIssue> buildUnnamed5022() {
 
 void checkUnnamed5022(core.List<api.AccountStatusItemLevelIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccountStatusItemLevelIssue(o[0] as api.AccountStatusItemLevelIssue);
-  checkAccountStatusItemLevelIssue(o[1] as api.AccountStatusItemLevelIssue);
+  checkAccountStatusItemLevelIssue(o[0]);
+  checkAccountStatusItemLevelIssue(o[1]);
 }
 
 core.int buildCounterAccountStatusProducts = 0;
 api.AccountStatusProducts buildAccountStatusProducts() {
-  var o = api.AccountStatusProducts();
+  final o = api.AccountStatusProducts();
   buildCounterAccountStatusProducts++;
   if (buildCounterAccountStatusProducts < 3) {
     o.channel = 'foo';
@@ -681,14 +675,14 @@ void checkAccountStatusProducts(api.AccountStatusProducts o) {
       unittest.equals('foo'),
     );
     checkUnnamed5022(o.itemLevelIssues!);
-    checkAccountStatusStatistics(o.statistics! as api.AccountStatusStatistics);
+    checkAccountStatusStatistics(o.statistics!);
   }
   buildCounterAccountStatusProducts--;
 }
 
 core.int buildCounterAccountStatusStatistics = 0;
 api.AccountStatusStatistics buildAccountStatusStatistics() {
-  var o = api.AccountStatusStatistics();
+  final o = api.AccountStatusStatistics();
   buildCounterAccountStatusStatistics++;
   if (buildCounterAccountStatusStatistics < 3) {
     o.active = 'foo';
@@ -724,7 +718,7 @@ void checkAccountStatusStatistics(api.AccountStatusStatistics o) {
 }
 
 core.List<api.AccountTaxTaxRule> buildUnnamed5023() {
-  var o = <api.AccountTaxTaxRule>[];
+  final o = <api.AccountTaxTaxRule>[];
   o.add(buildAccountTaxTaxRule());
   o.add(buildAccountTaxTaxRule());
   return o;
@@ -732,13 +726,13 @@ core.List<api.AccountTaxTaxRule> buildUnnamed5023() {
 
 void checkUnnamed5023(core.List<api.AccountTaxTaxRule> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccountTaxTaxRule(o[0] as api.AccountTaxTaxRule);
-  checkAccountTaxTaxRule(o[1] as api.AccountTaxTaxRule);
+  checkAccountTaxTaxRule(o[0]);
+  checkAccountTaxTaxRule(o[1]);
 }
 
 core.int buildCounterAccountTax = 0;
 api.AccountTax buildAccountTax() {
-  var o = api.AccountTax();
+  final o = api.AccountTax();
   buildCounterAccountTax++;
   if (buildCounterAccountTax < 3) {
     o.accountId = 'foo';
@@ -767,7 +761,7 @@ void checkAccountTax(api.AccountTax o) {
 
 core.int buildCounterAccountTaxTaxRule = 0;
 api.AccountTaxTaxRule buildAccountTaxTaxRule() {
-  var o = api.AccountTaxTaxRule();
+  final o = api.AccountTaxTaxRule();
   buildCounterAccountTaxTaxRule++;
   if (buildCounterAccountTaxTaxRule < 3) {
     o.country = 'foo';
@@ -803,7 +797,7 @@ void checkAccountTaxTaxRule(api.AccountTaxTaxRule o) {
 
 core.int buildCounterAccountUser = 0;
 api.AccountUser buildAccountUser() {
-  var o = api.AccountUser();
+  final o = api.AccountUser();
   buildCounterAccountUser++;
   if (buildCounterAccountUser < 3) {
     o.admin = true;
@@ -833,7 +827,7 @@ void checkAccountUser(api.AccountUser o) {
 
 core.int buildCounterAccountYouTubeChannelLink = 0;
 api.AccountYouTubeChannelLink buildAccountYouTubeChannelLink() {
-  var o = api.AccountYouTubeChannelLink();
+  final o = api.AccountYouTubeChannelLink();
   buildCounterAccountYouTubeChannelLink++;
   if (buildCounterAccountYouTubeChannelLink < 3) {
     o.channelId = 'foo';
@@ -859,7 +853,7 @@ void checkAccountYouTubeChannelLink(api.AccountYouTubeChannelLink o) {
 }
 
 core.List<api.AccountIdentifier> buildUnnamed5024() {
-  var o = <api.AccountIdentifier>[];
+  final o = <api.AccountIdentifier>[];
   o.add(buildAccountIdentifier());
   o.add(buildAccountIdentifier());
   return o;
@@ -867,13 +861,13 @@ core.List<api.AccountIdentifier> buildUnnamed5024() {
 
 void checkUnnamed5024(core.List<api.AccountIdentifier> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccountIdentifier(o[0] as api.AccountIdentifier);
-  checkAccountIdentifier(o[1] as api.AccountIdentifier);
+  checkAccountIdentifier(o[0]);
+  checkAccountIdentifier(o[1]);
 }
 
 core.int buildCounterAccountsAuthInfoResponse = 0;
 api.AccountsAuthInfoResponse buildAccountsAuthInfoResponse() {
-  var o = api.AccountsAuthInfoResponse();
+  final o = api.AccountsAuthInfoResponse();
   buildCounterAccountsAuthInfoResponse++;
   if (buildCounterAccountsAuthInfoResponse < 3) {
     o.accountIdentifiers = buildUnnamed5024();
@@ -897,7 +891,7 @@ void checkAccountsAuthInfoResponse(api.AccountsAuthInfoResponse o) {
 
 core.int buildCounterAccountsClaimWebsiteResponse = 0;
 api.AccountsClaimWebsiteResponse buildAccountsClaimWebsiteResponse() {
-  var o = api.AccountsClaimWebsiteResponse();
+  final o = api.AccountsClaimWebsiteResponse();
   buildCounterAccountsClaimWebsiteResponse++;
   if (buildCounterAccountsClaimWebsiteResponse < 3) {
     o.kind = 'foo';
@@ -918,7 +912,7 @@ void checkAccountsClaimWebsiteResponse(api.AccountsClaimWebsiteResponse o) {
 }
 
 core.List<api.AccountsCustomBatchRequestEntry> buildUnnamed5025() {
-  var o = <api.AccountsCustomBatchRequestEntry>[];
+  final o = <api.AccountsCustomBatchRequestEntry>[];
   o.add(buildAccountsCustomBatchRequestEntry());
   o.add(buildAccountsCustomBatchRequestEntry());
   return o;
@@ -926,15 +920,13 @@ core.List<api.AccountsCustomBatchRequestEntry> buildUnnamed5025() {
 
 void checkUnnamed5025(core.List<api.AccountsCustomBatchRequestEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccountsCustomBatchRequestEntry(
-      o[0] as api.AccountsCustomBatchRequestEntry);
-  checkAccountsCustomBatchRequestEntry(
-      o[1] as api.AccountsCustomBatchRequestEntry);
+  checkAccountsCustomBatchRequestEntry(o[0]);
+  checkAccountsCustomBatchRequestEntry(o[1]);
 }
 
 core.int buildCounterAccountsCustomBatchRequest = 0;
 api.AccountsCustomBatchRequest buildAccountsCustomBatchRequest() {
-  var o = api.AccountsCustomBatchRequest();
+  final o = api.AccountsCustomBatchRequest();
   buildCounterAccountsCustomBatchRequest++;
   if (buildCounterAccountsCustomBatchRequest < 3) {
     o.entries = buildUnnamed5025();
@@ -952,7 +944,7 @@ void checkAccountsCustomBatchRequest(api.AccountsCustomBatchRequest o) {
 }
 
 core.List<core.String> buildUnnamed5026() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -972,7 +964,7 @@ void checkUnnamed5026(core.List<core.String> o) {
 
 core.int buildCounterAccountsCustomBatchRequestEntry = 0;
 api.AccountsCustomBatchRequestEntry buildAccountsCustomBatchRequestEntry() {
-  var o = api.AccountsCustomBatchRequestEntry();
+  final o = api.AccountsCustomBatchRequestEntry();
   buildCounterAccountsCustomBatchRequestEntry++;
   if (buildCounterAccountsCustomBatchRequestEntry < 3) {
     o.account = buildAccount();
@@ -994,7 +986,7 @@ void checkAccountsCustomBatchRequestEntry(
     api.AccountsCustomBatchRequestEntry o) {
   buildCounterAccountsCustomBatchRequestEntry++;
   if (buildCounterAccountsCustomBatchRequestEntry < 3) {
-    checkAccount(o.account! as api.Account);
+    checkAccount(o.account!);
     unittest.expect(
       o.accountId!,
       unittest.equals('foo'),
@@ -1005,8 +997,7 @@ void checkAccountsCustomBatchRequestEntry(
     );
     unittest.expect(o.force!, unittest.isTrue);
     checkUnnamed5026(o.labelIds!);
-    checkAccountsCustomBatchRequestEntryLinkRequest(
-        o.linkRequest! as api.AccountsCustomBatchRequestEntryLinkRequest);
+    checkAccountsCustomBatchRequestEntryLinkRequest(o.linkRequest!);
     unittest.expect(
       o.merchantId!,
       unittest.equals('foo'),
@@ -1025,7 +1016,7 @@ void checkAccountsCustomBatchRequestEntry(
 }
 
 core.List<core.String> buildUnnamed5027() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1046,7 +1037,7 @@ void checkUnnamed5027(core.List<core.String> o) {
 core.int buildCounterAccountsCustomBatchRequestEntryLinkRequest = 0;
 api.AccountsCustomBatchRequestEntryLinkRequest
     buildAccountsCustomBatchRequestEntryLinkRequest() {
-  var o = api.AccountsCustomBatchRequestEntryLinkRequest();
+  final o = api.AccountsCustomBatchRequestEntryLinkRequest();
   buildCounterAccountsCustomBatchRequestEntryLinkRequest++;
   if (buildCounterAccountsCustomBatchRequestEntryLinkRequest < 3) {
     o.action = 'foo';
@@ -1080,7 +1071,7 @@ void checkAccountsCustomBatchRequestEntryLinkRequest(
 }
 
 core.List<api.AccountsCustomBatchResponseEntry> buildUnnamed5028() {
-  var o = <api.AccountsCustomBatchResponseEntry>[];
+  final o = <api.AccountsCustomBatchResponseEntry>[];
   o.add(buildAccountsCustomBatchResponseEntry());
   o.add(buildAccountsCustomBatchResponseEntry());
   return o;
@@ -1088,15 +1079,13 @@ core.List<api.AccountsCustomBatchResponseEntry> buildUnnamed5028() {
 
 void checkUnnamed5028(core.List<api.AccountsCustomBatchResponseEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccountsCustomBatchResponseEntry(
-      o[0] as api.AccountsCustomBatchResponseEntry);
-  checkAccountsCustomBatchResponseEntry(
-      o[1] as api.AccountsCustomBatchResponseEntry);
+  checkAccountsCustomBatchResponseEntry(o[0]);
+  checkAccountsCustomBatchResponseEntry(o[1]);
 }
 
 core.int buildCounterAccountsCustomBatchResponse = 0;
 api.AccountsCustomBatchResponse buildAccountsCustomBatchResponse() {
-  var o = api.AccountsCustomBatchResponse();
+  final o = api.AccountsCustomBatchResponse();
   buildCounterAccountsCustomBatchResponse++;
   if (buildCounterAccountsCustomBatchResponse < 3) {
     o.entries = buildUnnamed5028();
@@ -1120,7 +1109,7 @@ void checkAccountsCustomBatchResponse(api.AccountsCustomBatchResponse o) {
 
 core.int buildCounterAccountsCustomBatchResponseEntry = 0;
 api.AccountsCustomBatchResponseEntry buildAccountsCustomBatchResponseEntry() {
-  var o = api.AccountsCustomBatchResponseEntry();
+  final o = api.AccountsCustomBatchResponseEntry();
   buildCounterAccountsCustomBatchResponseEntry++;
   if (buildCounterAccountsCustomBatchResponseEntry < 3) {
     o.account = buildAccount();
@@ -1136,12 +1125,12 @@ void checkAccountsCustomBatchResponseEntry(
     api.AccountsCustomBatchResponseEntry o) {
   buildCounterAccountsCustomBatchResponseEntry++;
   if (buildCounterAccountsCustomBatchResponseEntry < 3) {
-    checkAccount(o.account! as api.Account);
+    checkAccount(o.account!);
     unittest.expect(
       o.batchId!,
       unittest.equals(42),
     );
-    checkErrors(o.errors! as api.Errors);
+    checkErrors(o.errors!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1151,7 +1140,7 @@ void checkAccountsCustomBatchResponseEntry(
 }
 
 core.List<core.String> buildUnnamed5029() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1171,7 +1160,7 @@ void checkUnnamed5029(core.List<core.String> o) {
 
 core.int buildCounterAccountsLinkRequest = 0;
 api.AccountsLinkRequest buildAccountsLinkRequest() {
-  var o = api.AccountsLinkRequest();
+  final o = api.AccountsLinkRequest();
   buildCounterAccountsLinkRequest++;
   if (buildCounterAccountsLinkRequest < 3) {
     o.action = 'foo';
@@ -1199,8 +1188,7 @@ void checkAccountsLinkRequest(api.AccountsLinkRequest o) {
       o.linkedAccountId!,
       unittest.equals('foo'),
     );
-    checkPaymentServiceProviderLinkInfo(o.paymentServiceProviderLinkInfo!
-        as api.PaymentServiceProviderLinkInfo);
+    checkPaymentServiceProviderLinkInfo(o.paymentServiceProviderLinkInfo!);
     checkUnnamed5029(o.services!);
   }
   buildCounterAccountsLinkRequest--;
@@ -1208,7 +1196,7 @@ void checkAccountsLinkRequest(api.AccountsLinkRequest o) {
 
 core.int buildCounterAccountsLinkResponse = 0;
 api.AccountsLinkResponse buildAccountsLinkResponse() {
-  var o = api.AccountsLinkResponse();
+  final o = api.AccountsLinkResponse();
   buildCounterAccountsLinkResponse++;
   if (buildCounterAccountsLinkResponse < 3) {
     o.kind = 'foo';
@@ -1229,7 +1217,7 @@ void checkAccountsLinkResponse(api.AccountsLinkResponse o) {
 }
 
 core.List<api.LinkedAccount> buildUnnamed5030() {
-  var o = <api.LinkedAccount>[];
+  final o = <api.LinkedAccount>[];
   o.add(buildLinkedAccount());
   o.add(buildLinkedAccount());
   return o;
@@ -1237,13 +1225,13 @@ core.List<api.LinkedAccount> buildUnnamed5030() {
 
 void checkUnnamed5030(core.List<api.LinkedAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLinkedAccount(o[0] as api.LinkedAccount);
-  checkLinkedAccount(o[1] as api.LinkedAccount);
+  checkLinkedAccount(o[0]);
+  checkLinkedAccount(o[1]);
 }
 
 core.int buildCounterAccountsListLinksResponse = 0;
 api.AccountsListLinksResponse buildAccountsListLinksResponse() {
-  var o = api.AccountsListLinksResponse();
+  final o = api.AccountsListLinksResponse();
   buildCounterAccountsListLinksResponse++;
   if (buildCounterAccountsListLinksResponse < 3) {
     o.kind = 'foo';
@@ -1271,7 +1259,7 @@ void checkAccountsListLinksResponse(api.AccountsListLinksResponse o) {
 }
 
 core.List<api.Account> buildUnnamed5031() {
-  var o = <api.Account>[];
+  final o = <api.Account>[];
   o.add(buildAccount());
   o.add(buildAccount());
   return o;
@@ -1279,13 +1267,13 @@ core.List<api.Account> buildUnnamed5031() {
 
 void checkUnnamed5031(core.List<api.Account> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccount(o[0] as api.Account);
-  checkAccount(o[1] as api.Account);
+  checkAccount(o[0]);
+  checkAccount(o[1]);
 }
 
 core.int buildCounterAccountsListResponse = 0;
 api.AccountsListResponse buildAccountsListResponse() {
-  var o = api.AccountsListResponse();
+  final o = api.AccountsListResponse();
   buildCounterAccountsListResponse++;
   if (buildCounterAccountsListResponse < 3) {
     o.kind = 'foo';
@@ -1313,7 +1301,7 @@ void checkAccountsListResponse(api.AccountsListResponse o) {
 }
 
 core.List<core.String> buildUnnamed5032() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1333,7 +1321,7 @@ void checkUnnamed5032(core.List<core.String> o) {
 
 core.int buildCounterAccountsUpdateLabelsRequest = 0;
 api.AccountsUpdateLabelsRequest buildAccountsUpdateLabelsRequest() {
-  var o = api.AccountsUpdateLabelsRequest();
+  final o = api.AccountsUpdateLabelsRequest();
   buildCounterAccountsUpdateLabelsRequest++;
   if (buildCounterAccountsUpdateLabelsRequest < 3) {
     o.labelIds = buildUnnamed5032();
@@ -1352,7 +1340,7 @@ void checkAccountsUpdateLabelsRequest(api.AccountsUpdateLabelsRequest o) {
 
 core.int buildCounterAccountsUpdateLabelsResponse = 0;
 api.AccountsUpdateLabelsResponse buildAccountsUpdateLabelsResponse() {
-  var o = api.AccountsUpdateLabelsResponse();
+  final o = api.AccountsUpdateLabelsResponse();
   buildCounterAccountsUpdateLabelsResponse++;
   if (buildCounterAccountsUpdateLabelsResponse < 3) {
     o.kind = 'foo';
@@ -1373,7 +1361,7 @@ void checkAccountsUpdateLabelsResponse(api.AccountsUpdateLabelsResponse o) {
 }
 
 core.List<api.AccountstatusesCustomBatchRequestEntry> buildUnnamed5033() {
-  var o = <api.AccountstatusesCustomBatchRequestEntry>[];
+  final o = <api.AccountstatusesCustomBatchRequestEntry>[];
   o.add(buildAccountstatusesCustomBatchRequestEntry());
   o.add(buildAccountstatusesCustomBatchRequestEntry());
   return o;
@@ -1381,15 +1369,13 @@ core.List<api.AccountstatusesCustomBatchRequestEntry> buildUnnamed5033() {
 
 void checkUnnamed5033(core.List<api.AccountstatusesCustomBatchRequestEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccountstatusesCustomBatchRequestEntry(
-      o[0] as api.AccountstatusesCustomBatchRequestEntry);
-  checkAccountstatusesCustomBatchRequestEntry(
-      o[1] as api.AccountstatusesCustomBatchRequestEntry);
+  checkAccountstatusesCustomBatchRequestEntry(o[0]);
+  checkAccountstatusesCustomBatchRequestEntry(o[1]);
 }
 
 core.int buildCounterAccountstatusesCustomBatchRequest = 0;
 api.AccountstatusesCustomBatchRequest buildAccountstatusesCustomBatchRequest() {
-  var o = api.AccountstatusesCustomBatchRequest();
+  final o = api.AccountstatusesCustomBatchRequest();
   buildCounterAccountstatusesCustomBatchRequest++;
   if (buildCounterAccountstatusesCustomBatchRequest < 3) {
     o.entries = buildUnnamed5033();
@@ -1408,7 +1394,7 @@ void checkAccountstatusesCustomBatchRequest(
 }
 
 core.List<core.String> buildUnnamed5034() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1429,7 +1415,7 @@ void checkUnnamed5034(core.List<core.String> o) {
 core.int buildCounterAccountstatusesCustomBatchRequestEntry = 0;
 api.AccountstatusesCustomBatchRequestEntry
     buildAccountstatusesCustomBatchRequestEntry() {
-  var o = api.AccountstatusesCustomBatchRequestEntry();
+  final o = api.AccountstatusesCustomBatchRequestEntry();
   buildCounterAccountstatusesCustomBatchRequestEntry++;
   if (buildCounterAccountstatusesCustomBatchRequestEntry < 3) {
     o.accountId = 'foo';
@@ -1468,7 +1454,7 @@ void checkAccountstatusesCustomBatchRequestEntry(
 }
 
 core.List<api.AccountstatusesCustomBatchResponseEntry> buildUnnamed5035() {
-  var o = <api.AccountstatusesCustomBatchResponseEntry>[];
+  final o = <api.AccountstatusesCustomBatchResponseEntry>[];
   o.add(buildAccountstatusesCustomBatchResponseEntry());
   o.add(buildAccountstatusesCustomBatchResponseEntry());
   return o;
@@ -1477,16 +1463,14 @@ core.List<api.AccountstatusesCustomBatchResponseEntry> buildUnnamed5035() {
 void checkUnnamed5035(
     core.List<api.AccountstatusesCustomBatchResponseEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccountstatusesCustomBatchResponseEntry(
-      o[0] as api.AccountstatusesCustomBatchResponseEntry);
-  checkAccountstatusesCustomBatchResponseEntry(
-      o[1] as api.AccountstatusesCustomBatchResponseEntry);
+  checkAccountstatusesCustomBatchResponseEntry(o[0]);
+  checkAccountstatusesCustomBatchResponseEntry(o[1]);
 }
 
 core.int buildCounterAccountstatusesCustomBatchResponse = 0;
 api.AccountstatusesCustomBatchResponse
     buildAccountstatusesCustomBatchResponse() {
-  var o = api.AccountstatusesCustomBatchResponse();
+  final o = api.AccountstatusesCustomBatchResponse();
   buildCounterAccountstatusesCustomBatchResponse++;
   if (buildCounterAccountstatusesCustomBatchResponse < 3) {
     o.entries = buildUnnamed5035();
@@ -1512,7 +1496,7 @@ void checkAccountstatusesCustomBatchResponse(
 core.int buildCounterAccountstatusesCustomBatchResponseEntry = 0;
 api.AccountstatusesCustomBatchResponseEntry
     buildAccountstatusesCustomBatchResponseEntry() {
-  var o = api.AccountstatusesCustomBatchResponseEntry();
+  final o = api.AccountstatusesCustomBatchResponseEntry();
   buildCounterAccountstatusesCustomBatchResponseEntry++;
   if (buildCounterAccountstatusesCustomBatchResponseEntry < 3) {
     o.accountStatus = buildAccountStatus();
@@ -1527,18 +1511,18 @@ void checkAccountstatusesCustomBatchResponseEntry(
     api.AccountstatusesCustomBatchResponseEntry o) {
   buildCounterAccountstatusesCustomBatchResponseEntry++;
   if (buildCounterAccountstatusesCustomBatchResponseEntry < 3) {
-    checkAccountStatus(o.accountStatus! as api.AccountStatus);
+    checkAccountStatus(o.accountStatus!);
     unittest.expect(
       o.batchId!,
       unittest.equals(42),
     );
-    checkErrors(o.errors! as api.Errors);
+    checkErrors(o.errors!);
   }
   buildCounterAccountstatusesCustomBatchResponseEntry--;
 }
 
 core.List<api.AccountStatus> buildUnnamed5036() {
-  var o = <api.AccountStatus>[];
+  final o = <api.AccountStatus>[];
   o.add(buildAccountStatus());
   o.add(buildAccountStatus());
   return o;
@@ -1546,13 +1530,13 @@ core.List<api.AccountStatus> buildUnnamed5036() {
 
 void checkUnnamed5036(core.List<api.AccountStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccountStatus(o[0] as api.AccountStatus);
-  checkAccountStatus(o[1] as api.AccountStatus);
+  checkAccountStatus(o[0]);
+  checkAccountStatus(o[1]);
 }
 
 core.int buildCounterAccountstatusesListResponse = 0;
 api.AccountstatusesListResponse buildAccountstatusesListResponse() {
-  var o = api.AccountstatusesListResponse();
+  final o = api.AccountstatusesListResponse();
   buildCounterAccountstatusesListResponse++;
   if (buildCounterAccountstatusesListResponse < 3) {
     o.kind = 'foo';
@@ -1580,7 +1564,7 @@ void checkAccountstatusesListResponse(api.AccountstatusesListResponse o) {
 }
 
 core.List<api.AccounttaxCustomBatchRequestEntry> buildUnnamed5037() {
-  var o = <api.AccounttaxCustomBatchRequestEntry>[];
+  final o = <api.AccounttaxCustomBatchRequestEntry>[];
   o.add(buildAccounttaxCustomBatchRequestEntry());
   o.add(buildAccounttaxCustomBatchRequestEntry());
   return o;
@@ -1588,15 +1572,13 @@ core.List<api.AccounttaxCustomBatchRequestEntry> buildUnnamed5037() {
 
 void checkUnnamed5037(core.List<api.AccounttaxCustomBatchRequestEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccounttaxCustomBatchRequestEntry(
-      o[0] as api.AccounttaxCustomBatchRequestEntry);
-  checkAccounttaxCustomBatchRequestEntry(
-      o[1] as api.AccounttaxCustomBatchRequestEntry);
+  checkAccounttaxCustomBatchRequestEntry(o[0]);
+  checkAccounttaxCustomBatchRequestEntry(o[1]);
 }
 
 core.int buildCounterAccounttaxCustomBatchRequest = 0;
 api.AccounttaxCustomBatchRequest buildAccounttaxCustomBatchRequest() {
-  var o = api.AccounttaxCustomBatchRequest();
+  final o = api.AccounttaxCustomBatchRequest();
   buildCounterAccounttaxCustomBatchRequest++;
   if (buildCounterAccounttaxCustomBatchRequest < 3) {
     o.entries = buildUnnamed5037();
@@ -1615,7 +1597,7 @@ void checkAccounttaxCustomBatchRequest(api.AccounttaxCustomBatchRequest o) {
 
 core.int buildCounterAccounttaxCustomBatchRequestEntry = 0;
 api.AccounttaxCustomBatchRequestEntry buildAccounttaxCustomBatchRequestEntry() {
-  var o = api.AccounttaxCustomBatchRequestEntry();
+  final o = api.AccounttaxCustomBatchRequestEntry();
   buildCounterAccounttaxCustomBatchRequestEntry++;
   if (buildCounterAccounttaxCustomBatchRequestEntry < 3) {
     o.accountId = 'foo';
@@ -1636,7 +1618,7 @@ void checkAccounttaxCustomBatchRequestEntry(
       o.accountId!,
       unittest.equals('foo'),
     );
-    checkAccountTax(o.accountTax! as api.AccountTax);
+    checkAccountTax(o.accountTax!);
     unittest.expect(
       o.batchId!,
       unittest.equals(42),
@@ -1654,7 +1636,7 @@ void checkAccounttaxCustomBatchRequestEntry(
 }
 
 core.List<api.AccounttaxCustomBatchResponseEntry> buildUnnamed5038() {
-  var o = <api.AccounttaxCustomBatchResponseEntry>[];
+  final o = <api.AccounttaxCustomBatchResponseEntry>[];
   o.add(buildAccounttaxCustomBatchResponseEntry());
   o.add(buildAccounttaxCustomBatchResponseEntry());
   return o;
@@ -1662,15 +1644,13 @@ core.List<api.AccounttaxCustomBatchResponseEntry> buildUnnamed5038() {
 
 void checkUnnamed5038(core.List<api.AccounttaxCustomBatchResponseEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccounttaxCustomBatchResponseEntry(
-      o[0] as api.AccounttaxCustomBatchResponseEntry);
-  checkAccounttaxCustomBatchResponseEntry(
-      o[1] as api.AccounttaxCustomBatchResponseEntry);
+  checkAccounttaxCustomBatchResponseEntry(o[0]);
+  checkAccounttaxCustomBatchResponseEntry(o[1]);
 }
 
 core.int buildCounterAccounttaxCustomBatchResponse = 0;
 api.AccounttaxCustomBatchResponse buildAccounttaxCustomBatchResponse() {
-  var o = api.AccounttaxCustomBatchResponse();
+  final o = api.AccounttaxCustomBatchResponse();
   buildCounterAccounttaxCustomBatchResponse++;
   if (buildCounterAccounttaxCustomBatchResponse < 3) {
     o.entries = buildUnnamed5038();
@@ -1695,7 +1675,7 @@ void checkAccounttaxCustomBatchResponse(api.AccounttaxCustomBatchResponse o) {
 core.int buildCounterAccounttaxCustomBatchResponseEntry = 0;
 api.AccounttaxCustomBatchResponseEntry
     buildAccounttaxCustomBatchResponseEntry() {
-  var o = api.AccounttaxCustomBatchResponseEntry();
+  final o = api.AccounttaxCustomBatchResponseEntry();
   buildCounterAccounttaxCustomBatchResponseEntry++;
   if (buildCounterAccounttaxCustomBatchResponseEntry < 3) {
     o.accountTax = buildAccountTax();
@@ -1711,12 +1691,12 @@ void checkAccounttaxCustomBatchResponseEntry(
     api.AccounttaxCustomBatchResponseEntry o) {
   buildCounterAccounttaxCustomBatchResponseEntry++;
   if (buildCounterAccounttaxCustomBatchResponseEntry < 3) {
-    checkAccountTax(o.accountTax! as api.AccountTax);
+    checkAccountTax(o.accountTax!);
     unittest.expect(
       o.batchId!,
       unittest.equals(42),
     );
-    checkErrors(o.errors! as api.Errors);
+    checkErrors(o.errors!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1726,7 +1706,7 @@ void checkAccounttaxCustomBatchResponseEntry(
 }
 
 core.List<api.AccountTax> buildUnnamed5039() {
-  var o = <api.AccountTax>[];
+  final o = <api.AccountTax>[];
   o.add(buildAccountTax());
   o.add(buildAccountTax());
   return o;
@@ -1734,13 +1714,13 @@ core.List<api.AccountTax> buildUnnamed5039() {
 
 void checkUnnamed5039(core.List<api.AccountTax> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccountTax(o[0] as api.AccountTax);
-  checkAccountTax(o[1] as api.AccountTax);
+  checkAccountTax(o[0]);
+  checkAccountTax(o[1]);
 }
 
 core.int buildCounterAccounttaxListResponse = 0;
 api.AccounttaxListResponse buildAccounttaxListResponse() {
-  var o = api.AccounttaxListResponse();
+  final o = api.AccounttaxListResponse();
   buildCounterAccounttaxListResponse++;
   if (buildCounterAccounttaxListResponse < 3) {
     o.kind = 'foo';
@@ -1769,7 +1749,7 @@ void checkAccounttaxListResponse(api.AccounttaxListResponse o) {
 
 core.int buildCounterActivateBuyOnGoogleProgramRequest = 0;
 api.ActivateBuyOnGoogleProgramRequest buildActivateBuyOnGoogleProgramRequest() {
-  var o = api.ActivateBuyOnGoogleProgramRequest();
+  final o = api.ActivateBuyOnGoogleProgramRequest();
   buildCounterActivateBuyOnGoogleProgramRequest++;
   if (buildCounterActivateBuyOnGoogleProgramRequest < 3) {}
   buildCounterActivateBuyOnGoogleProgramRequest--;
@@ -1785,7 +1765,7 @@ void checkActivateBuyOnGoogleProgramRequest(
 
 core.int buildCounterAmount = 0;
 api.Amount buildAmount() {
-  var o = api.Amount();
+  final o = api.Amount();
   buildCounterAmount++;
   if (buildCounterAmount < 3) {
     o.priceAmount = buildPrice();
@@ -1798,14 +1778,14 @@ api.Amount buildAmount() {
 void checkAmount(api.Amount o) {
   buildCounterAmount++;
   if (buildCounterAmount < 3) {
-    checkPrice(o.priceAmount! as api.Price);
-    checkPrice(o.taxAmount! as api.Price);
+    checkPrice(o.priceAmount!);
+    checkPrice(o.taxAmount!);
   }
   buildCounterAmount--;
 }
 
 core.List<core.String> buildUnnamed5040() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1825,7 +1805,7 @@ void checkUnnamed5040(core.List<core.String> o) {
 
 core.int buildCounterBusinessDayConfig = 0;
 api.BusinessDayConfig buildBusinessDayConfig() {
-  var o = api.BusinessDayConfig();
+  final o = api.BusinessDayConfig();
   buildCounterBusinessDayConfig++;
   if (buildCounterBusinessDayConfig < 3) {
     o.businessDays = buildUnnamed5040();
@@ -1844,7 +1824,7 @@ void checkBusinessDayConfig(api.BusinessDayConfig o) {
 
 core.int buildCounterBuyOnGoogleProgramStatus = 0;
 api.BuyOnGoogleProgramStatus buildBuyOnGoogleProgramStatus() {
-  var o = api.BuyOnGoogleProgramStatus();
+  final o = api.BuyOnGoogleProgramStatus();
   buildCounterBuyOnGoogleProgramStatus++;
   if (buildCounterBuyOnGoogleProgramStatus < 3) {
     o.customerServicePendingEmail = 'foo';
@@ -1876,7 +1856,7 @@ void checkBuyOnGoogleProgramStatus(api.BuyOnGoogleProgramStatus o) {
 
 core.int buildCounterCarrierRate = 0;
 api.CarrierRate buildCarrierRate() {
-  var o = api.CarrierRate();
+  final o = api.CarrierRate();
   buildCounterCarrierRate++;
   if (buildCounterCarrierRate < 3) {
     o.carrierName = 'foo';
@@ -1901,7 +1881,7 @@ void checkCarrierRate(api.CarrierRate o) {
       o.carrierService!,
       unittest.equals('foo'),
     );
-    checkPrice(o.flatAdjustment! as api.Price);
+    checkPrice(o.flatAdjustment!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1919,7 +1899,7 @@ void checkCarrierRate(api.CarrierRate o) {
 }
 
 core.List<core.String> buildUnnamed5041() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1938,7 +1918,7 @@ void checkUnnamed5041(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed5042() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -1958,7 +1938,7 @@ void checkUnnamed5042(core.List<core.String> o) {
 
 core.int buildCounterCarriersCarrier = 0;
 api.CarriersCarrier buildCarriersCarrier() {
-  var o = api.CarriersCarrier();
+  final o = api.CarriersCarrier();
   buildCounterCarriersCarrier++;
   if (buildCounterCarriersCarrier < 3) {
     o.country = 'foo';
@@ -1988,7 +1968,7 @@ void checkCarriersCarrier(api.CarriersCarrier o) {
 }
 
 core.List<api.CollectionFeaturedProduct> buildUnnamed5043() {
-  var o = <api.CollectionFeaturedProduct>[];
+  final o = <api.CollectionFeaturedProduct>[];
   o.add(buildCollectionFeaturedProduct());
   o.add(buildCollectionFeaturedProduct());
   return o;
@@ -1996,12 +1976,12 @@ core.List<api.CollectionFeaturedProduct> buildUnnamed5043() {
 
 void checkUnnamed5043(core.List<api.CollectionFeaturedProduct> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCollectionFeaturedProduct(o[0] as api.CollectionFeaturedProduct);
-  checkCollectionFeaturedProduct(o[1] as api.CollectionFeaturedProduct);
+  checkCollectionFeaturedProduct(o[0]);
+  checkCollectionFeaturedProduct(o[1]);
 }
 
 core.List<core.String> buildUnnamed5044() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -2020,7 +2000,7 @@ void checkUnnamed5044(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed5045() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -2040,7 +2020,7 @@ void checkUnnamed5045(core.List<core.String> o) {
 
 core.int buildCounterCollection = 0;
 api.Collection buildCollection() {
-  var o = api.Collection();
+  final o = api.Collection();
   buildCounterCollection++;
   if (buildCounterCollection < 3) {
     o.customLabel0 = 'foo';
@@ -2113,7 +2093,7 @@ void checkCollection(api.Collection o) {
 
 core.int buildCounterCollectionFeaturedProduct = 0;
 api.CollectionFeaturedProduct buildCollectionFeaturedProduct() {
-  var o = api.CollectionFeaturedProduct();
+  final o = api.CollectionFeaturedProduct();
   buildCounterCollectionFeaturedProduct++;
   if (buildCounterCollectionFeaturedProduct < 3) {
     o.offerId = 'foo';
@@ -2144,7 +2124,7 @@ void checkCollectionFeaturedProduct(api.CollectionFeaturedProduct o) {
 }
 
 core.List<api.CollectionStatusItemLevelIssue> buildUnnamed5046() {
-  var o = <api.CollectionStatusItemLevelIssue>[];
+  final o = <api.CollectionStatusItemLevelIssue>[];
   o.add(buildCollectionStatusItemLevelIssue());
   o.add(buildCollectionStatusItemLevelIssue());
   return o;
@@ -2152,14 +2132,12 @@ core.List<api.CollectionStatusItemLevelIssue> buildUnnamed5046() {
 
 void checkUnnamed5046(core.List<api.CollectionStatusItemLevelIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCollectionStatusItemLevelIssue(
-      o[0] as api.CollectionStatusItemLevelIssue);
-  checkCollectionStatusItemLevelIssue(
-      o[1] as api.CollectionStatusItemLevelIssue);
+  checkCollectionStatusItemLevelIssue(o[0]);
+  checkCollectionStatusItemLevelIssue(o[1]);
 }
 
 core.List<api.CollectionStatusDestinationStatus> buildUnnamed5047() {
-  var o = <api.CollectionStatusDestinationStatus>[];
+  final o = <api.CollectionStatusDestinationStatus>[];
   o.add(buildCollectionStatusDestinationStatus());
   o.add(buildCollectionStatusDestinationStatus());
   return o;
@@ -2167,15 +2145,13 @@ core.List<api.CollectionStatusDestinationStatus> buildUnnamed5047() {
 
 void checkUnnamed5047(core.List<api.CollectionStatusDestinationStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCollectionStatusDestinationStatus(
-      o[0] as api.CollectionStatusDestinationStatus);
-  checkCollectionStatusDestinationStatus(
-      o[1] as api.CollectionStatusDestinationStatus);
+  checkCollectionStatusDestinationStatus(o[0]);
+  checkCollectionStatusDestinationStatus(o[1]);
 }
 
 core.int buildCounterCollectionStatus = 0;
 api.CollectionStatus buildCollectionStatus() {
-  var o = api.CollectionStatus();
+  final o = api.CollectionStatus();
   buildCounterCollectionStatus++;
   if (buildCounterCollectionStatus < 3) {
     o.collectionLevelIssuses = buildUnnamed5046();
@@ -2211,7 +2187,7 @@ void checkCollectionStatus(api.CollectionStatus o) {
 
 core.int buildCounterCollectionStatusDestinationStatus = 0;
 api.CollectionStatusDestinationStatus buildCollectionStatusDestinationStatus() {
-  var o = api.CollectionStatusDestinationStatus();
+  final o = api.CollectionStatusDestinationStatus();
   buildCounterCollectionStatusDestinationStatus++;
   if (buildCounterCollectionStatusDestinationStatus < 3) {
     o.destination = 'foo';
@@ -2239,7 +2215,7 @@ void checkCollectionStatusDestinationStatus(
 
 core.int buildCounterCollectionStatusItemLevelIssue = 0;
 api.CollectionStatusItemLevelIssue buildCollectionStatusItemLevelIssue() {
-  var o = api.CollectionStatusItemLevelIssue();
+  final o = api.CollectionStatusItemLevelIssue();
   buildCounterCollectionStatusItemLevelIssue++;
   if (buildCounterCollectionStatusItemLevelIssue < 3) {
     o.attributeName = 'foo';
@@ -2295,7 +2271,7 @@ void checkCollectionStatusItemLevelIssue(api.CollectionStatusItemLevelIssue o) {
 }
 
 core.List<core.String> buildUnnamed5048() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -2315,7 +2291,7 @@ void checkUnnamed5048(core.List<core.String> o) {
 
 core.int buildCounterCss = 0;
 api.Css buildCss() {
-  var o = api.Css();
+  final o = api.Css();
   buildCounterCss++;
   if (buildCounterCss < 3) {
     o.cssDomainId = 'foo';
@@ -2358,7 +2334,7 @@ void checkCss(api.Css o) {
 }
 
 core.List<api.CustomAttribute> buildUnnamed5049() {
-  var o = <api.CustomAttribute>[];
+  final o = <api.CustomAttribute>[];
   o.add(buildCustomAttribute());
   o.add(buildCustomAttribute());
   return o;
@@ -2366,13 +2342,13 @@ core.List<api.CustomAttribute> buildUnnamed5049() {
 
 void checkUnnamed5049(core.List<api.CustomAttribute> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCustomAttribute(o[0] as api.CustomAttribute);
-  checkCustomAttribute(o[1] as api.CustomAttribute);
+  checkCustomAttribute(o[0]);
+  checkCustomAttribute(o[1]);
 }
 
 core.int buildCounterCustomAttribute = 0;
 api.CustomAttribute buildCustomAttribute() {
-  var o = api.CustomAttribute();
+  final o = api.CustomAttribute();
   buildCounterCustomAttribute++;
   if (buildCounterCustomAttribute < 3) {
     o.groupValues = buildUnnamed5049();
@@ -2401,7 +2377,7 @@ void checkCustomAttribute(api.CustomAttribute o) {
 
 core.int buildCounterCustomerReturnReason = 0;
 api.CustomerReturnReason buildCustomerReturnReason() {
-  var o = api.CustomerReturnReason();
+  final o = api.CustomerReturnReason();
   buildCounterCustomerReturnReason++;
   if (buildCounterCustomerReturnReason < 3) {
     o.description = 'foo';
@@ -2428,7 +2404,7 @@ void checkCustomerReturnReason(api.CustomerReturnReason o) {
 
 core.int buildCounterCutoffTime = 0;
 api.CutoffTime buildCutoffTime() {
-  var o = api.CutoffTime();
+  final o = api.CutoffTime();
   buildCounterCutoffTime++;
   if (buildCounterCutoffTime < 3) {
     o.hour = 42;
@@ -2459,7 +2435,7 @@ void checkCutoffTime(api.CutoffTime o) {
 }
 
 core.List<api.DatafeedTarget> buildUnnamed5050() {
-  var o = <api.DatafeedTarget>[];
+  final o = <api.DatafeedTarget>[];
   o.add(buildDatafeedTarget());
   o.add(buildDatafeedTarget());
   return o;
@@ -2467,13 +2443,13 @@ core.List<api.DatafeedTarget> buildUnnamed5050() {
 
 void checkUnnamed5050(core.List<api.DatafeedTarget> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDatafeedTarget(o[0] as api.DatafeedTarget);
-  checkDatafeedTarget(o[1] as api.DatafeedTarget);
+  checkDatafeedTarget(o[0]);
+  checkDatafeedTarget(o[1]);
 }
 
 core.int buildCounterDatafeed = 0;
 api.Datafeed buildDatafeed() {
-  var o = api.Datafeed();
+  final o = api.Datafeed();
   buildCounterDatafeed++;
   if (buildCounterDatafeed < 3) {
     o.attributeLanguage = 'foo';
@@ -2501,12 +2477,12 @@ void checkDatafeed(api.Datafeed o) {
       o.contentType!,
       unittest.equals('foo'),
     );
-    checkDatafeedFetchSchedule(o.fetchSchedule! as api.DatafeedFetchSchedule);
+    checkDatafeedFetchSchedule(o.fetchSchedule!);
     unittest.expect(
       o.fileName!,
       unittest.equals('foo'),
     );
-    checkDatafeedFormat(o.format! as api.DatafeedFormat);
+    checkDatafeedFormat(o.format!);
     unittest.expect(
       o.id!,
       unittest.equals('foo'),
@@ -2526,7 +2502,7 @@ void checkDatafeed(api.Datafeed o) {
 
 core.int buildCounterDatafeedFetchSchedule = 0;
 api.DatafeedFetchSchedule buildDatafeedFetchSchedule() {
-  var o = api.DatafeedFetchSchedule();
+  final o = api.DatafeedFetchSchedule();
   buildCounterDatafeedFetchSchedule++;
   if (buildCounterDatafeedFetchSchedule < 3) {
     o.dayOfMonth = 42;
@@ -2585,7 +2561,7 @@ void checkDatafeedFetchSchedule(api.DatafeedFetchSchedule o) {
 
 core.int buildCounterDatafeedFormat = 0;
 api.DatafeedFormat buildDatafeedFormat() {
-  var o = api.DatafeedFormat();
+  final o = api.DatafeedFormat();
   buildCounterDatafeedFormat++;
   if (buildCounterDatafeedFormat < 3) {
     o.columnDelimiter = 'foo';
@@ -2616,7 +2592,7 @@ void checkDatafeedFormat(api.DatafeedFormat o) {
 }
 
 core.List<api.DatafeedStatusError> buildUnnamed5051() {
-  var o = <api.DatafeedStatusError>[];
+  final o = <api.DatafeedStatusError>[];
   o.add(buildDatafeedStatusError());
   o.add(buildDatafeedStatusError());
   return o;
@@ -2624,12 +2600,12 @@ core.List<api.DatafeedStatusError> buildUnnamed5051() {
 
 void checkUnnamed5051(core.List<api.DatafeedStatusError> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDatafeedStatusError(o[0] as api.DatafeedStatusError);
-  checkDatafeedStatusError(o[1] as api.DatafeedStatusError);
+  checkDatafeedStatusError(o[0]);
+  checkDatafeedStatusError(o[1]);
 }
 
 core.List<api.DatafeedStatusError> buildUnnamed5052() {
-  var o = <api.DatafeedStatusError>[];
+  final o = <api.DatafeedStatusError>[];
   o.add(buildDatafeedStatusError());
   o.add(buildDatafeedStatusError());
   return o;
@@ -2637,13 +2613,13 @@ core.List<api.DatafeedStatusError> buildUnnamed5052() {
 
 void checkUnnamed5052(core.List<api.DatafeedStatusError> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDatafeedStatusError(o[0] as api.DatafeedStatusError);
-  checkDatafeedStatusError(o[1] as api.DatafeedStatusError);
+  checkDatafeedStatusError(o[0]);
+  checkDatafeedStatusError(o[1]);
 }
 
 core.int buildCounterDatafeedStatus = 0;
 api.DatafeedStatus buildDatafeedStatus() {
-  var o = api.DatafeedStatus();
+  final o = api.DatafeedStatus();
   buildCounterDatafeedStatus++;
   if (buildCounterDatafeedStatus < 3) {
     o.country = 'foo';
@@ -2703,7 +2679,7 @@ void checkDatafeedStatus(api.DatafeedStatus o) {
 }
 
 core.List<api.DatafeedStatusExample> buildUnnamed5053() {
-  var o = <api.DatafeedStatusExample>[];
+  final o = <api.DatafeedStatusExample>[];
   o.add(buildDatafeedStatusExample());
   o.add(buildDatafeedStatusExample());
   return o;
@@ -2711,13 +2687,13 @@ core.List<api.DatafeedStatusExample> buildUnnamed5053() {
 
 void checkUnnamed5053(core.List<api.DatafeedStatusExample> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDatafeedStatusExample(o[0] as api.DatafeedStatusExample);
-  checkDatafeedStatusExample(o[1] as api.DatafeedStatusExample);
+  checkDatafeedStatusExample(o[0]);
+  checkDatafeedStatusExample(o[1]);
 }
 
 core.int buildCounterDatafeedStatusError = 0;
 api.DatafeedStatusError buildDatafeedStatusError() {
-  var o = api.DatafeedStatusError();
+  final o = api.DatafeedStatusError();
   buildCounterDatafeedStatusError++;
   if (buildCounterDatafeedStatusError < 3) {
     o.code = 'foo';
@@ -2751,7 +2727,7 @@ void checkDatafeedStatusError(api.DatafeedStatusError o) {
 
 core.int buildCounterDatafeedStatusExample = 0;
 api.DatafeedStatusExample buildDatafeedStatusExample() {
-  var o = api.DatafeedStatusExample();
+  final o = api.DatafeedStatusExample();
   buildCounterDatafeedStatusExample++;
   if (buildCounterDatafeedStatusExample < 3) {
     o.itemId = 'foo';
@@ -2782,7 +2758,7 @@ void checkDatafeedStatusExample(api.DatafeedStatusExample o) {
 }
 
 core.List<core.String> buildUnnamed5054() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -2801,7 +2777,7 @@ void checkUnnamed5054(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed5055() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -2821,7 +2797,7 @@ void checkUnnamed5055(core.List<core.String> o) {
 
 core.int buildCounterDatafeedTarget = 0;
 api.DatafeedTarget buildDatafeedTarget() {
-  var o = api.DatafeedTarget();
+  final o = api.DatafeedTarget();
   buildCounterDatafeedTarget++;
   if (buildCounterDatafeedTarget < 3) {
     o.country = 'foo';
@@ -2851,7 +2827,7 @@ void checkDatafeedTarget(api.DatafeedTarget o) {
 }
 
 core.List<api.DatafeedsCustomBatchRequestEntry> buildUnnamed5056() {
-  var o = <api.DatafeedsCustomBatchRequestEntry>[];
+  final o = <api.DatafeedsCustomBatchRequestEntry>[];
   o.add(buildDatafeedsCustomBatchRequestEntry());
   o.add(buildDatafeedsCustomBatchRequestEntry());
   return o;
@@ -2859,15 +2835,13 @@ core.List<api.DatafeedsCustomBatchRequestEntry> buildUnnamed5056() {
 
 void checkUnnamed5056(core.List<api.DatafeedsCustomBatchRequestEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDatafeedsCustomBatchRequestEntry(
-      o[0] as api.DatafeedsCustomBatchRequestEntry);
-  checkDatafeedsCustomBatchRequestEntry(
-      o[1] as api.DatafeedsCustomBatchRequestEntry);
+  checkDatafeedsCustomBatchRequestEntry(o[0]);
+  checkDatafeedsCustomBatchRequestEntry(o[1]);
 }
 
 core.int buildCounterDatafeedsCustomBatchRequest = 0;
 api.DatafeedsCustomBatchRequest buildDatafeedsCustomBatchRequest() {
-  var o = api.DatafeedsCustomBatchRequest();
+  final o = api.DatafeedsCustomBatchRequest();
   buildCounterDatafeedsCustomBatchRequest++;
   if (buildCounterDatafeedsCustomBatchRequest < 3) {
     o.entries = buildUnnamed5056();
@@ -2886,7 +2860,7 @@ void checkDatafeedsCustomBatchRequest(api.DatafeedsCustomBatchRequest o) {
 
 core.int buildCounterDatafeedsCustomBatchRequestEntry = 0;
 api.DatafeedsCustomBatchRequestEntry buildDatafeedsCustomBatchRequestEntry() {
-  var o = api.DatafeedsCustomBatchRequestEntry();
+  final o = api.DatafeedsCustomBatchRequestEntry();
   buildCounterDatafeedsCustomBatchRequestEntry++;
   if (buildCounterDatafeedsCustomBatchRequestEntry < 3) {
     o.batchId = 42;
@@ -2907,7 +2881,7 @@ void checkDatafeedsCustomBatchRequestEntry(
       o.batchId!,
       unittest.equals(42),
     );
-    checkDatafeed(o.datafeed! as api.Datafeed);
+    checkDatafeed(o.datafeed!);
     unittest.expect(
       o.datafeedId!,
       unittest.equals('foo'),
@@ -2925,7 +2899,7 @@ void checkDatafeedsCustomBatchRequestEntry(
 }
 
 core.List<api.DatafeedsCustomBatchResponseEntry> buildUnnamed5057() {
-  var o = <api.DatafeedsCustomBatchResponseEntry>[];
+  final o = <api.DatafeedsCustomBatchResponseEntry>[];
   o.add(buildDatafeedsCustomBatchResponseEntry());
   o.add(buildDatafeedsCustomBatchResponseEntry());
   return o;
@@ -2933,15 +2907,13 @@ core.List<api.DatafeedsCustomBatchResponseEntry> buildUnnamed5057() {
 
 void checkUnnamed5057(core.List<api.DatafeedsCustomBatchResponseEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDatafeedsCustomBatchResponseEntry(
-      o[0] as api.DatafeedsCustomBatchResponseEntry);
-  checkDatafeedsCustomBatchResponseEntry(
-      o[1] as api.DatafeedsCustomBatchResponseEntry);
+  checkDatafeedsCustomBatchResponseEntry(o[0]);
+  checkDatafeedsCustomBatchResponseEntry(o[1]);
 }
 
 core.int buildCounterDatafeedsCustomBatchResponse = 0;
 api.DatafeedsCustomBatchResponse buildDatafeedsCustomBatchResponse() {
-  var o = api.DatafeedsCustomBatchResponse();
+  final o = api.DatafeedsCustomBatchResponse();
   buildCounterDatafeedsCustomBatchResponse++;
   if (buildCounterDatafeedsCustomBatchResponse < 3) {
     o.entries = buildUnnamed5057();
@@ -2965,7 +2937,7 @@ void checkDatafeedsCustomBatchResponse(api.DatafeedsCustomBatchResponse o) {
 
 core.int buildCounterDatafeedsCustomBatchResponseEntry = 0;
 api.DatafeedsCustomBatchResponseEntry buildDatafeedsCustomBatchResponseEntry() {
-  var o = api.DatafeedsCustomBatchResponseEntry();
+  final o = api.DatafeedsCustomBatchResponseEntry();
   buildCounterDatafeedsCustomBatchResponseEntry++;
   if (buildCounterDatafeedsCustomBatchResponseEntry < 3) {
     o.batchId = 42;
@@ -2984,15 +2956,15 @@ void checkDatafeedsCustomBatchResponseEntry(
       o.batchId!,
       unittest.equals(42),
     );
-    checkDatafeed(o.datafeed! as api.Datafeed);
-    checkErrors(o.errors! as api.Errors);
+    checkDatafeed(o.datafeed!);
+    checkErrors(o.errors!);
   }
   buildCounterDatafeedsCustomBatchResponseEntry--;
 }
 
 core.int buildCounterDatafeedsFetchNowResponse = 0;
 api.DatafeedsFetchNowResponse buildDatafeedsFetchNowResponse() {
-  var o = api.DatafeedsFetchNowResponse();
+  final o = api.DatafeedsFetchNowResponse();
   buildCounterDatafeedsFetchNowResponse++;
   if (buildCounterDatafeedsFetchNowResponse < 3) {
     o.kind = 'foo';
@@ -3013,7 +2985,7 @@ void checkDatafeedsFetchNowResponse(api.DatafeedsFetchNowResponse o) {
 }
 
 core.List<api.Datafeed> buildUnnamed5058() {
-  var o = <api.Datafeed>[];
+  final o = <api.Datafeed>[];
   o.add(buildDatafeed());
   o.add(buildDatafeed());
   return o;
@@ -3021,13 +2993,13 @@ core.List<api.Datafeed> buildUnnamed5058() {
 
 void checkUnnamed5058(core.List<api.Datafeed> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDatafeed(o[0] as api.Datafeed);
-  checkDatafeed(o[1] as api.Datafeed);
+  checkDatafeed(o[0]);
+  checkDatafeed(o[1]);
 }
 
 core.int buildCounterDatafeedsListResponse = 0;
 api.DatafeedsListResponse buildDatafeedsListResponse() {
-  var o = api.DatafeedsListResponse();
+  final o = api.DatafeedsListResponse();
   buildCounterDatafeedsListResponse++;
   if (buildCounterDatafeedsListResponse < 3) {
     o.kind = 'foo';
@@ -3055,7 +3027,7 @@ void checkDatafeedsListResponse(api.DatafeedsListResponse o) {
 }
 
 core.List<api.DatafeedstatusesCustomBatchRequestEntry> buildUnnamed5059() {
-  var o = <api.DatafeedstatusesCustomBatchRequestEntry>[];
+  final o = <api.DatafeedstatusesCustomBatchRequestEntry>[];
   o.add(buildDatafeedstatusesCustomBatchRequestEntry());
   o.add(buildDatafeedstatusesCustomBatchRequestEntry());
   return o;
@@ -3064,16 +3036,14 @@ core.List<api.DatafeedstatusesCustomBatchRequestEntry> buildUnnamed5059() {
 void checkUnnamed5059(
     core.List<api.DatafeedstatusesCustomBatchRequestEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDatafeedstatusesCustomBatchRequestEntry(
-      o[0] as api.DatafeedstatusesCustomBatchRequestEntry);
-  checkDatafeedstatusesCustomBatchRequestEntry(
-      o[1] as api.DatafeedstatusesCustomBatchRequestEntry);
+  checkDatafeedstatusesCustomBatchRequestEntry(o[0]);
+  checkDatafeedstatusesCustomBatchRequestEntry(o[1]);
 }
 
 core.int buildCounterDatafeedstatusesCustomBatchRequest = 0;
 api.DatafeedstatusesCustomBatchRequest
     buildDatafeedstatusesCustomBatchRequest() {
-  var o = api.DatafeedstatusesCustomBatchRequest();
+  final o = api.DatafeedstatusesCustomBatchRequest();
   buildCounterDatafeedstatusesCustomBatchRequest++;
   if (buildCounterDatafeedstatusesCustomBatchRequest < 3) {
     o.entries = buildUnnamed5059();
@@ -3094,7 +3064,7 @@ void checkDatafeedstatusesCustomBatchRequest(
 core.int buildCounterDatafeedstatusesCustomBatchRequestEntry = 0;
 api.DatafeedstatusesCustomBatchRequestEntry
     buildDatafeedstatusesCustomBatchRequestEntry() {
-  var o = api.DatafeedstatusesCustomBatchRequestEntry();
+  final o = api.DatafeedstatusesCustomBatchRequestEntry();
   buildCounterDatafeedstatusesCustomBatchRequestEntry++;
   if (buildCounterDatafeedstatusesCustomBatchRequestEntry < 3) {
     o.batchId = 42;
@@ -3141,7 +3111,7 @@ void checkDatafeedstatusesCustomBatchRequestEntry(
 }
 
 core.List<api.DatafeedstatusesCustomBatchResponseEntry> buildUnnamed5060() {
-  var o = <api.DatafeedstatusesCustomBatchResponseEntry>[];
+  final o = <api.DatafeedstatusesCustomBatchResponseEntry>[];
   o.add(buildDatafeedstatusesCustomBatchResponseEntry());
   o.add(buildDatafeedstatusesCustomBatchResponseEntry());
   return o;
@@ -3150,16 +3120,14 @@ core.List<api.DatafeedstatusesCustomBatchResponseEntry> buildUnnamed5060() {
 void checkUnnamed5060(
     core.List<api.DatafeedstatusesCustomBatchResponseEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDatafeedstatusesCustomBatchResponseEntry(
-      o[0] as api.DatafeedstatusesCustomBatchResponseEntry);
-  checkDatafeedstatusesCustomBatchResponseEntry(
-      o[1] as api.DatafeedstatusesCustomBatchResponseEntry);
+  checkDatafeedstatusesCustomBatchResponseEntry(o[0]);
+  checkDatafeedstatusesCustomBatchResponseEntry(o[1]);
 }
 
 core.int buildCounterDatafeedstatusesCustomBatchResponse = 0;
 api.DatafeedstatusesCustomBatchResponse
     buildDatafeedstatusesCustomBatchResponse() {
-  var o = api.DatafeedstatusesCustomBatchResponse();
+  final o = api.DatafeedstatusesCustomBatchResponse();
   buildCounterDatafeedstatusesCustomBatchResponse++;
   if (buildCounterDatafeedstatusesCustomBatchResponse < 3) {
     o.entries = buildUnnamed5060();
@@ -3185,7 +3153,7 @@ void checkDatafeedstatusesCustomBatchResponse(
 core.int buildCounterDatafeedstatusesCustomBatchResponseEntry = 0;
 api.DatafeedstatusesCustomBatchResponseEntry
     buildDatafeedstatusesCustomBatchResponseEntry() {
-  var o = api.DatafeedstatusesCustomBatchResponseEntry();
+  final o = api.DatafeedstatusesCustomBatchResponseEntry();
   buildCounterDatafeedstatusesCustomBatchResponseEntry++;
   if (buildCounterDatafeedstatusesCustomBatchResponseEntry < 3) {
     o.batchId = 42;
@@ -3204,14 +3172,14 @@ void checkDatafeedstatusesCustomBatchResponseEntry(
       o.batchId!,
       unittest.equals(42),
     );
-    checkDatafeedStatus(o.datafeedStatus! as api.DatafeedStatus);
-    checkErrors(o.errors! as api.Errors);
+    checkDatafeedStatus(o.datafeedStatus!);
+    checkErrors(o.errors!);
   }
   buildCounterDatafeedstatusesCustomBatchResponseEntry--;
 }
 
 core.List<api.DatafeedStatus> buildUnnamed5061() {
-  var o = <api.DatafeedStatus>[];
+  final o = <api.DatafeedStatus>[];
   o.add(buildDatafeedStatus());
   o.add(buildDatafeedStatus());
   return o;
@@ -3219,13 +3187,13 @@ core.List<api.DatafeedStatus> buildUnnamed5061() {
 
 void checkUnnamed5061(core.List<api.DatafeedStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDatafeedStatus(o[0] as api.DatafeedStatus);
-  checkDatafeedStatus(o[1] as api.DatafeedStatus);
+  checkDatafeedStatus(o[0]);
+  checkDatafeedStatus(o[1]);
 }
 
 core.int buildCounterDatafeedstatusesListResponse = 0;
 api.DatafeedstatusesListResponse buildDatafeedstatusesListResponse() {
-  var o = api.DatafeedstatusesListResponse();
+  final o = api.DatafeedstatusesListResponse();
   buildCounterDatafeedstatusesListResponse++;
   if (buildCounterDatafeedstatusesListResponse < 3) {
     o.kind = 'foo';
@@ -3254,7 +3222,7 @@ void checkDatafeedstatusesListResponse(api.DatafeedstatusesListResponse o) {
 
 core.int buildCounterDate = 0;
 api.Date buildDate() {
-  var o = api.Date();
+  final o = api.Date();
   buildCounterDate++;
   if (buildCounterDate < 3) {
     o.day = 42;
@@ -3286,7 +3254,7 @@ void checkDate(api.Date o) {
 
 core.int buildCounterDateTime = 0;
 api.DateTime buildDateTime() {
-  var o = api.DateTime();
+  final o = api.DateTime();
   buildCounterDateTime++;
   if (buildCounterDateTime < 3) {
     o.day = 42;
@@ -3330,7 +3298,7 @@ void checkDateTime(api.DateTime o) {
       o.seconds!,
       unittest.equals(42),
     );
-    checkTimeZone(o.timeZone! as api.TimeZone);
+    checkTimeZone(o.timeZone!);
     unittest.expect(
       o.utcOffset!,
       unittest.equals('foo'),
@@ -3344,7 +3312,7 @@ void checkDateTime(api.DateTime o) {
 }
 
 core.List<api.HolidayCutoff> buildUnnamed5062() {
-  var o = <api.HolidayCutoff>[];
+  final o = <api.HolidayCutoff>[];
   o.add(buildHolidayCutoff());
   o.add(buildHolidayCutoff());
   return o;
@@ -3352,12 +3320,12 @@ core.List<api.HolidayCutoff> buildUnnamed5062() {
 
 void checkUnnamed5062(core.List<api.HolidayCutoff> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkHolidayCutoff(o[0] as api.HolidayCutoff);
-  checkHolidayCutoff(o[1] as api.HolidayCutoff);
+  checkHolidayCutoff(o[0]);
+  checkHolidayCutoff(o[1]);
 }
 
 core.List<api.WarehouseBasedDeliveryTime> buildUnnamed5063() {
-  var o = <api.WarehouseBasedDeliveryTime>[];
+  final o = <api.WarehouseBasedDeliveryTime>[];
   o.add(buildWarehouseBasedDeliveryTime());
   o.add(buildWarehouseBasedDeliveryTime());
   return o;
@@ -3365,13 +3333,13 @@ core.List<api.WarehouseBasedDeliveryTime> buildUnnamed5063() {
 
 void checkUnnamed5063(core.List<api.WarehouseBasedDeliveryTime> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkWarehouseBasedDeliveryTime(o[0] as api.WarehouseBasedDeliveryTime);
-  checkWarehouseBasedDeliveryTime(o[1] as api.WarehouseBasedDeliveryTime);
+  checkWarehouseBasedDeliveryTime(o[0]);
+  checkWarehouseBasedDeliveryTime(o[1]);
 }
 
 core.int buildCounterDeliveryTime = 0;
 api.DeliveryTime buildDeliveryTime() {
-  var o = api.DeliveryTime();
+  final o = api.DeliveryTime();
   buildCounterDeliveryTime++;
   if (buildCounterDeliveryTime < 3) {
     o.cutoffTime = buildCutoffTime();
@@ -3392,9 +3360,8 @@ api.DeliveryTime buildDeliveryTime() {
 void checkDeliveryTime(api.DeliveryTime o) {
   buildCounterDeliveryTime++;
   if (buildCounterDeliveryTime < 3) {
-    checkCutoffTime(o.cutoffTime! as api.CutoffTime);
-    checkBusinessDayConfig(
-        o.handlingBusinessDayConfig! as api.BusinessDayConfig);
+    checkCutoffTime(o.cutoffTime!);
+    checkBusinessDayConfig(o.handlingBusinessDayConfig!);
     checkUnnamed5062(o.holidayCutoffs!);
     unittest.expect(
       o.maxHandlingTimeInDays!,
@@ -3412,9 +3379,8 @@ void checkDeliveryTime(api.DeliveryTime o) {
       o.minTransitTimeInDays!,
       unittest.equals(42),
     );
-    checkBusinessDayConfig(
-        o.transitBusinessDayConfig! as api.BusinessDayConfig);
-    checkTransitTable(o.transitTimeTable! as api.TransitTable);
+    checkBusinessDayConfig(o.transitBusinessDayConfig!);
+    checkTransitTable(o.transitTimeTable!);
     checkUnnamed5063(o.warehouseBasedDeliveryTimes!);
   }
   buildCounterDeliveryTime--;
@@ -3422,7 +3388,7 @@ void checkDeliveryTime(api.DeliveryTime o) {
 
 core.int buildCounterError = 0;
 api.Error buildError() {
-  var o = api.Error();
+  final o = api.Error();
   buildCounterError++;
   if (buildCounterError < 3) {
     o.domain = 'foo';
@@ -3453,7 +3419,7 @@ void checkError(api.Error o) {
 }
 
 core.List<api.Error> buildUnnamed5064() {
-  var o = <api.Error>[];
+  final o = <api.Error>[];
   o.add(buildError());
   o.add(buildError());
   return o;
@@ -3461,13 +3427,13 @@ core.List<api.Error> buildUnnamed5064() {
 
 void checkUnnamed5064(core.List<api.Error> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkError(o[0] as api.Error);
-  checkError(o[1] as api.Error);
+  checkError(o[0]);
+  checkError(o[1]);
 }
 
 core.int buildCounterErrors = 0;
 api.Errors buildErrors() {
-  var o = api.Errors();
+  final o = api.Errors();
   buildCounterErrors++;
   if (buildCounterErrors < 3) {
     o.code = 42;
@@ -3495,7 +3461,7 @@ void checkErrors(api.Errors o) {
 }
 
 core.List<api.GmbAccountsGmbAccount> buildUnnamed5065() {
-  var o = <api.GmbAccountsGmbAccount>[];
+  final o = <api.GmbAccountsGmbAccount>[];
   o.add(buildGmbAccountsGmbAccount());
   o.add(buildGmbAccountsGmbAccount());
   return o;
@@ -3503,13 +3469,13 @@ core.List<api.GmbAccountsGmbAccount> buildUnnamed5065() {
 
 void checkUnnamed5065(core.List<api.GmbAccountsGmbAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGmbAccountsGmbAccount(o[0] as api.GmbAccountsGmbAccount);
-  checkGmbAccountsGmbAccount(o[1] as api.GmbAccountsGmbAccount);
+  checkGmbAccountsGmbAccount(o[0]);
+  checkGmbAccountsGmbAccount(o[1]);
 }
 
 core.int buildCounterGmbAccounts = 0;
 api.GmbAccounts buildGmbAccounts() {
-  var o = api.GmbAccounts();
+  final o = api.GmbAccounts();
   buildCounterGmbAccounts++;
   if (buildCounterGmbAccounts < 3) {
     o.accountId = 'foo';
@@ -3533,7 +3499,7 @@ void checkGmbAccounts(api.GmbAccounts o) {
 
 core.int buildCounterGmbAccountsGmbAccount = 0;
 api.GmbAccountsGmbAccount buildGmbAccountsGmbAccount() {
-  var o = api.GmbAccountsGmbAccount();
+  final o = api.GmbAccountsGmbAccount();
   buildCounterGmbAccountsGmbAccount++;
   if (buildCounterGmbAccountsGmbAccount < 3) {
     o.email = 'foo';
@@ -3569,7 +3535,7 @@ void checkGmbAccountsGmbAccount(api.GmbAccountsGmbAccount o) {
 }
 
 core.List<api.LocationIdSet> buildUnnamed5066() {
-  var o = <api.LocationIdSet>[];
+  final o = <api.LocationIdSet>[];
   o.add(buildLocationIdSet());
   o.add(buildLocationIdSet());
   return o;
@@ -3577,12 +3543,12 @@ core.List<api.LocationIdSet> buildUnnamed5066() {
 
 void checkUnnamed5066(core.List<api.LocationIdSet> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocationIdSet(o[0] as api.LocationIdSet);
-  checkLocationIdSet(o[1] as api.LocationIdSet);
+  checkLocationIdSet(o[0]);
+  checkLocationIdSet(o[1]);
 }
 
 core.List<core.String> buildUnnamed5067() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -3601,7 +3567,7 @@ void checkUnnamed5067(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed5068() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -3620,7 +3586,7 @@ void checkUnnamed5068(core.List<core.String> o) {
 }
 
 core.List<api.Price> buildUnnamed5069() {
-  var o = <api.Price>[];
+  final o = <api.Price>[];
   o.add(buildPrice());
   o.add(buildPrice());
   return o;
@@ -3628,12 +3594,12 @@ core.List<api.Price> buildUnnamed5069() {
 
 void checkUnnamed5069(core.List<api.Price> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPrice(o[0] as api.Price);
-  checkPrice(o[1] as api.Price);
+  checkPrice(o[0]);
+  checkPrice(o[1]);
 }
 
 core.List<api.Weight> buildUnnamed5070() {
-  var o = <api.Weight>[];
+  final o = <api.Weight>[];
   o.add(buildWeight());
   o.add(buildWeight());
   return o;
@@ -3641,13 +3607,13 @@ core.List<api.Weight> buildUnnamed5070() {
 
 void checkUnnamed5070(core.List<api.Weight> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkWeight(o[0] as api.Weight);
-  checkWeight(o[1] as api.Weight);
+  checkWeight(o[0]);
+  checkWeight(o[1]);
 }
 
 core.int buildCounterHeaders = 0;
 api.Headers buildHeaders() {
-  var o = api.Headers();
+  final o = api.Headers();
   buildCounterHeaders++;
   if (buildCounterHeaders < 3) {
     o.locations = buildUnnamed5066();
@@ -3674,7 +3640,7 @@ void checkHeaders(api.Headers o) {
 
 core.int buildCounterHolidayCutoff = 0;
 api.HolidayCutoff buildHolidayCutoff() {
-  var o = api.HolidayCutoff();
+  final o = api.HolidayCutoff();
   buildCounterHolidayCutoff++;
   if (buildCounterHolidayCutoff < 3) {
     o.deadlineDate = 'foo';
@@ -3716,7 +3682,7 @@ void checkHolidayCutoff(api.HolidayCutoff o) {
 
 core.int buildCounterHolidaysHoliday = 0;
 api.HolidaysHoliday buildHolidaysHoliday() {
-  var o = api.HolidaysHoliday();
+  final o = api.HolidaysHoliday();
   buildCounterHolidaysHoliday++;
   if (buildCounterHolidaysHoliday < 3) {
     o.countryCode = 'foo';
@@ -3763,7 +3729,7 @@ void checkHolidaysHoliday(api.HolidaysHoliday o) {
 
 core.int buildCounterInapplicabilityDetails = 0;
 api.InapplicabilityDetails buildInapplicabilityDetails() {
-  var o = api.InapplicabilityDetails();
+  final o = api.InapplicabilityDetails();
   buildCounterInapplicabilityDetails++;
   if (buildCounterInapplicabilityDetails < 3) {
     o.inapplicableCount = 'foo';
@@ -3790,7 +3756,7 @@ void checkInapplicabilityDetails(api.InapplicabilityDetails o) {
 
 core.int buildCounterInstallment = 0;
 api.Installment buildInstallment() {
-  var o = api.Installment();
+  final o = api.Installment();
   buildCounterInstallment++;
   if (buildCounterInstallment < 3) {
     o.amount = buildPrice();
@@ -3803,7 +3769,7 @@ api.Installment buildInstallment() {
 void checkInstallment(api.Installment o) {
   buildCounterInstallment++;
   if (buildCounterInstallment < 3) {
-    checkPrice(o.amount! as api.Price);
+    checkPrice(o.amount!);
     unittest.expect(
       o.months!,
       unittest.equals('foo'),
@@ -3813,7 +3779,7 @@ void checkInstallment(api.Installment o) {
 }
 
 core.List<api.InvoiceSummaryAdditionalChargeSummary> buildUnnamed5071() {
-  var o = <api.InvoiceSummaryAdditionalChargeSummary>[];
+  final o = <api.InvoiceSummaryAdditionalChargeSummary>[];
   o.add(buildInvoiceSummaryAdditionalChargeSummary());
   o.add(buildInvoiceSummaryAdditionalChargeSummary());
   return o;
@@ -3821,15 +3787,13 @@ core.List<api.InvoiceSummaryAdditionalChargeSummary> buildUnnamed5071() {
 
 void checkUnnamed5071(core.List<api.InvoiceSummaryAdditionalChargeSummary> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkInvoiceSummaryAdditionalChargeSummary(
-      o[0] as api.InvoiceSummaryAdditionalChargeSummary);
-  checkInvoiceSummaryAdditionalChargeSummary(
-      o[1] as api.InvoiceSummaryAdditionalChargeSummary);
+  checkInvoiceSummaryAdditionalChargeSummary(o[0]);
+  checkInvoiceSummaryAdditionalChargeSummary(o[1]);
 }
 
 core.int buildCounterInvoiceSummary = 0;
 api.InvoiceSummary buildInvoiceSummary() {
-  var o = api.InvoiceSummary();
+  final o = api.InvoiceSummary();
   buildCounterInvoiceSummary++;
   if (buildCounterInvoiceSummary < 3) {
     o.additionalChargeSummaries = buildUnnamed5071();
@@ -3843,7 +3807,7 @@ void checkInvoiceSummary(api.InvoiceSummary o) {
   buildCounterInvoiceSummary++;
   if (buildCounterInvoiceSummary < 3) {
     checkUnnamed5071(o.additionalChargeSummaries!);
-    checkAmount(o.productTotal! as api.Amount);
+    checkAmount(o.productTotal!);
   }
   buildCounterInvoiceSummary--;
 }
@@ -3851,7 +3815,7 @@ void checkInvoiceSummary(api.InvoiceSummary o) {
 core.int buildCounterInvoiceSummaryAdditionalChargeSummary = 0;
 api.InvoiceSummaryAdditionalChargeSummary
     buildInvoiceSummaryAdditionalChargeSummary() {
-  var o = api.InvoiceSummaryAdditionalChargeSummary();
+  final o = api.InvoiceSummaryAdditionalChargeSummary();
   buildCounterInvoiceSummaryAdditionalChargeSummary++;
   if (buildCounterInvoiceSummaryAdditionalChargeSummary < 3) {
     o.totalAmount = buildAmount();
@@ -3865,7 +3829,7 @@ void checkInvoiceSummaryAdditionalChargeSummary(
     api.InvoiceSummaryAdditionalChargeSummary o) {
   buildCounterInvoiceSummaryAdditionalChargeSummary++;
   if (buildCounterInvoiceSummaryAdditionalChargeSummary < 3) {
-    checkAmount(o.totalAmount! as api.Amount);
+    checkAmount(o.totalAmount!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -3875,7 +3839,7 @@ void checkInvoiceSummaryAdditionalChargeSummary(
 }
 
 core.List<core.String> buildUnnamed5072() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -3895,7 +3859,7 @@ void checkUnnamed5072(core.List<core.String> o) {
 
 core.int buildCounterLabelIds = 0;
 api.LabelIds buildLabelIds() {
-  var o = api.LabelIds();
+  final o = api.LabelIds();
   buildCounterLabelIds++;
   if (buildCounterLabelIds < 3) {
     o.labelIds = buildUnnamed5072();
@@ -3914,7 +3878,7 @@ void checkLabelIds(api.LabelIds o) {
 
 core.int buildCounterLiaAboutPageSettings = 0;
 api.LiaAboutPageSettings buildLiaAboutPageSettings() {
-  var o = api.LiaAboutPageSettings();
+  final o = api.LiaAboutPageSettings();
   buildCounterLiaAboutPageSettings++;
   if (buildCounterLiaAboutPageSettings < 3) {
     o.status = 'foo';
@@ -3941,7 +3905,7 @@ void checkLiaAboutPageSettings(api.LiaAboutPageSettings o) {
 
 core.int buildCounterLiaCountrySettings = 0;
 api.LiaCountrySettings buildLiaCountrySettings() {
-  var o = api.LiaCountrySettings();
+  final o = api.LiaCountrySettings();
   buildCounterLiaCountrySettings++;
   if (buildCounterLiaCountrySettings < 3) {
     o.about = buildLiaAboutPageSettings();
@@ -3959,16 +3923,15 @@ api.LiaCountrySettings buildLiaCountrySettings() {
 void checkLiaCountrySettings(api.LiaCountrySettings o) {
   buildCounterLiaCountrySettings++;
   if (buildCounterLiaCountrySettings < 3) {
-    checkLiaAboutPageSettings(o.about! as api.LiaAboutPageSettings);
+    checkLiaAboutPageSettings(o.about!);
     unittest.expect(
       o.country!,
       unittest.equals('foo'),
     );
     unittest.expect(o.hostedLocalStorefrontActive!, unittest.isTrue);
-    checkLiaInventorySettings(o.inventory! as api.LiaInventorySettings);
-    checkLiaOnDisplayToOrderSettings(
-        o.onDisplayToOrder! as api.LiaOnDisplayToOrderSettings);
-    checkLiaPosDataProvider(o.posDataProvider! as api.LiaPosDataProvider);
+    checkLiaInventorySettings(o.inventory!);
+    checkLiaOnDisplayToOrderSettings(o.onDisplayToOrder!);
+    checkLiaPosDataProvider(o.posDataProvider!);
     unittest.expect(o.storePickupActive!, unittest.isTrue);
   }
   buildCounterLiaCountrySettings--;
@@ -3976,7 +3939,7 @@ void checkLiaCountrySettings(api.LiaCountrySettings o) {
 
 core.int buildCounterLiaInventorySettings = 0;
 api.LiaInventorySettings buildLiaInventorySettings() {
-  var o = api.LiaInventorySettings();
+  final o = api.LiaInventorySettings();
   buildCounterLiaInventorySettings++;
   if (buildCounterLiaInventorySettings < 3) {
     o.inventoryVerificationContactEmail = 'foo';
@@ -4013,7 +3976,7 @@ void checkLiaInventorySettings(api.LiaInventorySettings o) {
 
 core.int buildCounterLiaOnDisplayToOrderSettings = 0;
 api.LiaOnDisplayToOrderSettings buildLiaOnDisplayToOrderSettings() {
-  var o = api.LiaOnDisplayToOrderSettings();
+  final o = api.LiaOnDisplayToOrderSettings();
   buildCounterLiaOnDisplayToOrderSettings++;
   if (buildCounterLiaOnDisplayToOrderSettings < 3) {
     o.shippingCostPolicyUrl = 'foo';
@@ -4040,7 +4003,7 @@ void checkLiaOnDisplayToOrderSettings(api.LiaOnDisplayToOrderSettings o) {
 
 core.int buildCounterLiaPosDataProvider = 0;
 api.LiaPosDataProvider buildLiaPosDataProvider() {
-  var o = api.LiaPosDataProvider();
+  final o = api.LiaPosDataProvider();
   buildCounterLiaPosDataProvider++;
   if (buildCounterLiaPosDataProvider < 3) {
     o.posDataProviderId = 'foo';
@@ -4066,7 +4029,7 @@ void checkLiaPosDataProvider(api.LiaPosDataProvider o) {
 }
 
 core.List<api.LiaCountrySettings> buildUnnamed5073() {
-  var o = <api.LiaCountrySettings>[];
+  final o = <api.LiaCountrySettings>[];
   o.add(buildLiaCountrySettings());
   o.add(buildLiaCountrySettings());
   return o;
@@ -4074,13 +4037,13 @@ core.List<api.LiaCountrySettings> buildUnnamed5073() {
 
 void checkUnnamed5073(core.List<api.LiaCountrySettings> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLiaCountrySettings(o[0] as api.LiaCountrySettings);
-  checkLiaCountrySettings(o[1] as api.LiaCountrySettings);
+  checkLiaCountrySettings(o[0]);
+  checkLiaCountrySettings(o[1]);
 }
 
 core.int buildCounterLiaSettings = 0;
 api.LiaSettings buildLiaSettings() {
-  var o = api.LiaSettings();
+  final o = api.LiaSettings();
   buildCounterLiaSettings++;
   if (buildCounterLiaSettings < 3) {
     o.accountId = 'foo';
@@ -4108,7 +4071,7 @@ void checkLiaSettings(api.LiaSettings o) {
 }
 
 core.List<api.LiasettingsCustomBatchRequestEntry> buildUnnamed5074() {
-  var o = <api.LiasettingsCustomBatchRequestEntry>[];
+  final o = <api.LiasettingsCustomBatchRequestEntry>[];
   o.add(buildLiasettingsCustomBatchRequestEntry());
   o.add(buildLiasettingsCustomBatchRequestEntry());
   return o;
@@ -4116,15 +4079,13 @@ core.List<api.LiasettingsCustomBatchRequestEntry> buildUnnamed5074() {
 
 void checkUnnamed5074(core.List<api.LiasettingsCustomBatchRequestEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLiasettingsCustomBatchRequestEntry(
-      o[0] as api.LiasettingsCustomBatchRequestEntry);
-  checkLiasettingsCustomBatchRequestEntry(
-      o[1] as api.LiasettingsCustomBatchRequestEntry);
+  checkLiasettingsCustomBatchRequestEntry(o[0]);
+  checkLiasettingsCustomBatchRequestEntry(o[1]);
 }
 
 core.int buildCounterLiasettingsCustomBatchRequest = 0;
 api.LiasettingsCustomBatchRequest buildLiasettingsCustomBatchRequest() {
-  var o = api.LiasettingsCustomBatchRequest();
+  final o = api.LiasettingsCustomBatchRequest();
   buildCounterLiasettingsCustomBatchRequest++;
   if (buildCounterLiasettingsCustomBatchRequest < 3) {
     o.entries = buildUnnamed5074();
@@ -4144,7 +4105,7 @@ void checkLiasettingsCustomBatchRequest(api.LiasettingsCustomBatchRequest o) {
 core.int buildCounterLiasettingsCustomBatchRequestEntry = 0;
 api.LiasettingsCustomBatchRequestEntry
     buildLiasettingsCustomBatchRequestEntry() {
-  var o = api.LiasettingsCustomBatchRequestEntry();
+  final o = api.LiasettingsCustomBatchRequestEntry();
   buildCounterLiasettingsCustomBatchRequestEntry++;
   if (buildCounterLiasettingsCustomBatchRequestEntry < 3) {
     o.accountId = 'foo';
@@ -4191,7 +4152,7 @@ void checkLiasettingsCustomBatchRequestEntry(
       o.gmbEmail!,
       unittest.equals('foo'),
     );
-    checkLiaSettings(o.liaSettings! as api.LiaSettings);
+    checkLiaSettings(o.liaSettings!);
     unittest.expect(
       o.merchantId!,
       unittest.equals('foo'),
@@ -4213,7 +4174,7 @@ void checkLiasettingsCustomBatchRequestEntry(
 }
 
 core.List<api.LiasettingsCustomBatchResponseEntry> buildUnnamed5075() {
-  var o = <api.LiasettingsCustomBatchResponseEntry>[];
+  final o = <api.LiasettingsCustomBatchResponseEntry>[];
   o.add(buildLiasettingsCustomBatchResponseEntry());
   o.add(buildLiasettingsCustomBatchResponseEntry());
   return o;
@@ -4221,15 +4182,13 @@ core.List<api.LiasettingsCustomBatchResponseEntry> buildUnnamed5075() {
 
 void checkUnnamed5075(core.List<api.LiasettingsCustomBatchResponseEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLiasettingsCustomBatchResponseEntry(
-      o[0] as api.LiasettingsCustomBatchResponseEntry);
-  checkLiasettingsCustomBatchResponseEntry(
-      o[1] as api.LiasettingsCustomBatchResponseEntry);
+  checkLiasettingsCustomBatchResponseEntry(o[0]);
+  checkLiasettingsCustomBatchResponseEntry(o[1]);
 }
 
 core.int buildCounterLiasettingsCustomBatchResponse = 0;
 api.LiasettingsCustomBatchResponse buildLiasettingsCustomBatchResponse() {
-  var o = api.LiasettingsCustomBatchResponse();
+  final o = api.LiasettingsCustomBatchResponse();
   buildCounterLiasettingsCustomBatchResponse++;
   if (buildCounterLiasettingsCustomBatchResponse < 3) {
     o.entries = buildUnnamed5075();
@@ -4252,7 +4211,7 @@ void checkLiasettingsCustomBatchResponse(api.LiasettingsCustomBatchResponse o) {
 }
 
 core.List<api.PosDataProviders> buildUnnamed5076() {
-  var o = <api.PosDataProviders>[];
+  final o = <api.PosDataProviders>[];
   o.add(buildPosDataProviders());
   o.add(buildPosDataProviders());
   return o;
@@ -4260,14 +4219,14 @@ core.List<api.PosDataProviders> buildUnnamed5076() {
 
 void checkUnnamed5076(core.List<api.PosDataProviders> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPosDataProviders(o[0] as api.PosDataProviders);
-  checkPosDataProviders(o[1] as api.PosDataProviders);
+  checkPosDataProviders(o[0]);
+  checkPosDataProviders(o[1]);
 }
 
 core.int buildCounterLiasettingsCustomBatchResponseEntry = 0;
 api.LiasettingsCustomBatchResponseEntry
     buildLiasettingsCustomBatchResponseEntry() {
-  var o = api.LiasettingsCustomBatchResponseEntry();
+  final o = api.LiasettingsCustomBatchResponseEntry();
   buildCounterLiasettingsCustomBatchResponseEntry++;
   if (buildCounterLiasettingsCustomBatchResponseEntry < 3) {
     o.batchId = 42;
@@ -4289,20 +4248,20 @@ void checkLiasettingsCustomBatchResponseEntry(
       o.batchId!,
       unittest.equals(42),
     );
-    checkErrors(o.errors! as api.Errors);
-    checkGmbAccounts(o.gmbAccounts! as api.GmbAccounts);
+    checkErrors(o.errors!);
+    checkGmbAccounts(o.gmbAccounts!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkLiaSettings(o.liaSettings! as api.LiaSettings);
+    checkLiaSettings(o.liaSettings!);
     checkUnnamed5076(o.posDataProviders!);
   }
   buildCounterLiasettingsCustomBatchResponseEntry--;
 }
 
 core.List<api.GmbAccountsGmbAccount> buildUnnamed5077() {
-  var o = <api.GmbAccountsGmbAccount>[];
+  final o = <api.GmbAccountsGmbAccount>[];
   o.add(buildGmbAccountsGmbAccount());
   o.add(buildGmbAccountsGmbAccount());
   return o;
@@ -4310,14 +4269,14 @@ core.List<api.GmbAccountsGmbAccount> buildUnnamed5077() {
 
 void checkUnnamed5077(core.List<api.GmbAccountsGmbAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGmbAccountsGmbAccount(o[0] as api.GmbAccountsGmbAccount);
-  checkGmbAccountsGmbAccount(o[1] as api.GmbAccountsGmbAccount);
+  checkGmbAccountsGmbAccount(o[0]);
+  checkGmbAccountsGmbAccount(o[1]);
 }
 
 core.int buildCounterLiasettingsGetAccessibleGmbAccountsResponse = 0;
 api.LiasettingsGetAccessibleGmbAccountsResponse
     buildLiasettingsGetAccessibleGmbAccountsResponse() {
-  var o = api.LiasettingsGetAccessibleGmbAccountsResponse();
+  final o = api.LiasettingsGetAccessibleGmbAccountsResponse();
   buildCounterLiasettingsGetAccessibleGmbAccountsResponse++;
   if (buildCounterLiasettingsGetAccessibleGmbAccountsResponse < 3) {
     o.accountId = 'foo';
@@ -4346,7 +4305,7 @@ void checkLiasettingsGetAccessibleGmbAccountsResponse(
 }
 
 core.List<api.PosDataProviders> buildUnnamed5078() {
-  var o = <api.PosDataProviders>[];
+  final o = <api.PosDataProviders>[];
   o.add(buildPosDataProviders());
   o.add(buildPosDataProviders());
   return o;
@@ -4354,14 +4313,14 @@ core.List<api.PosDataProviders> buildUnnamed5078() {
 
 void checkUnnamed5078(core.List<api.PosDataProviders> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPosDataProviders(o[0] as api.PosDataProviders);
-  checkPosDataProviders(o[1] as api.PosDataProviders);
+  checkPosDataProviders(o[0]);
+  checkPosDataProviders(o[1]);
 }
 
 core.int buildCounterLiasettingsListPosDataProvidersResponse = 0;
 api.LiasettingsListPosDataProvidersResponse
     buildLiasettingsListPosDataProvidersResponse() {
-  var o = api.LiasettingsListPosDataProvidersResponse();
+  final o = api.LiasettingsListPosDataProvidersResponse();
   buildCounterLiasettingsListPosDataProvidersResponse++;
   if (buildCounterLiasettingsListPosDataProvidersResponse < 3) {
     o.kind = 'foo';
@@ -4385,7 +4344,7 @@ void checkLiasettingsListPosDataProvidersResponse(
 }
 
 core.List<api.LiaSettings> buildUnnamed5079() {
-  var o = <api.LiaSettings>[];
+  final o = <api.LiaSettings>[];
   o.add(buildLiaSettings());
   o.add(buildLiaSettings());
   return o;
@@ -4393,13 +4352,13 @@ core.List<api.LiaSettings> buildUnnamed5079() {
 
 void checkUnnamed5079(core.List<api.LiaSettings> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLiaSettings(o[0] as api.LiaSettings);
-  checkLiaSettings(o[1] as api.LiaSettings);
+  checkLiaSettings(o[0]);
+  checkLiaSettings(o[1]);
 }
 
 core.int buildCounterLiasettingsListResponse = 0;
 api.LiasettingsListResponse buildLiasettingsListResponse() {
-  var o = api.LiasettingsListResponse();
+  final o = api.LiasettingsListResponse();
   buildCounterLiasettingsListResponse++;
   if (buildCounterLiasettingsListResponse < 3) {
     o.kind = 'foo';
@@ -4429,7 +4388,7 @@ void checkLiasettingsListResponse(api.LiasettingsListResponse o) {
 core.int buildCounterLiasettingsRequestGmbAccessResponse = 0;
 api.LiasettingsRequestGmbAccessResponse
     buildLiasettingsRequestGmbAccessResponse() {
-  var o = api.LiasettingsRequestGmbAccessResponse();
+  final o = api.LiasettingsRequestGmbAccessResponse();
   buildCounterLiasettingsRequestGmbAccessResponse++;
   if (buildCounterLiasettingsRequestGmbAccessResponse < 3) {
     o.kind = 'foo';
@@ -4453,7 +4412,7 @@ void checkLiasettingsRequestGmbAccessResponse(
 core.int buildCounterLiasettingsRequestInventoryVerificationResponse = 0;
 api.LiasettingsRequestInventoryVerificationResponse
     buildLiasettingsRequestInventoryVerificationResponse() {
-  var o = api.LiasettingsRequestInventoryVerificationResponse();
+  final o = api.LiasettingsRequestInventoryVerificationResponse();
   buildCounterLiasettingsRequestInventoryVerificationResponse++;
   if (buildCounterLiasettingsRequestInventoryVerificationResponse < 3) {
     o.kind = 'foo';
@@ -4477,7 +4436,7 @@ void checkLiasettingsRequestInventoryVerificationResponse(
 core.int buildCounterLiasettingsSetInventoryVerificationContactResponse = 0;
 api.LiasettingsSetInventoryVerificationContactResponse
     buildLiasettingsSetInventoryVerificationContactResponse() {
-  var o = api.LiasettingsSetInventoryVerificationContactResponse();
+  final o = api.LiasettingsSetInventoryVerificationContactResponse();
   buildCounterLiasettingsSetInventoryVerificationContactResponse++;
   if (buildCounterLiasettingsSetInventoryVerificationContactResponse < 3) {
     o.kind = 'foo';
@@ -4501,7 +4460,7 @@ void checkLiasettingsSetInventoryVerificationContactResponse(
 core.int buildCounterLiasettingsSetPosDataProviderResponse = 0;
 api.LiasettingsSetPosDataProviderResponse
     buildLiasettingsSetPosDataProviderResponse() {
-  var o = api.LiasettingsSetPosDataProviderResponse();
+  final o = api.LiasettingsSetPosDataProviderResponse();
   buildCounterLiasettingsSetPosDataProviderResponse++;
   if (buildCounterLiasettingsSetPosDataProviderResponse < 3) {
     o.kind = 'foo';
@@ -4524,7 +4483,7 @@ void checkLiasettingsSetPosDataProviderResponse(
 
 core.int buildCounterLinkService = 0;
 api.LinkService buildLinkService() {
-  var o = api.LinkService();
+  final o = api.LinkService();
   buildCounterLinkService++;
   if (buildCounterLinkService < 3) {
     o.service = 'foo';
@@ -4550,7 +4509,7 @@ void checkLinkService(api.LinkService o) {
 }
 
 core.List<api.LinkService> buildUnnamed5080() {
-  var o = <api.LinkService>[];
+  final o = <api.LinkService>[];
   o.add(buildLinkService());
   o.add(buildLinkService());
   return o;
@@ -4558,13 +4517,13 @@ core.List<api.LinkService> buildUnnamed5080() {
 
 void checkUnnamed5080(core.List<api.LinkService> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLinkService(o[0] as api.LinkService);
-  checkLinkService(o[1] as api.LinkService);
+  checkLinkService(o[0]);
+  checkLinkService(o[1]);
 }
 
 core.int buildCounterLinkedAccount = 0;
 api.LinkedAccount buildLinkedAccount() {
-  var o = api.LinkedAccount();
+  final o = api.LinkedAccount();
   buildCounterLinkedAccount++;
   if (buildCounterLinkedAccount < 3) {
     o.linkedAccountId = 'foo';
@@ -4587,7 +4546,7 @@ void checkLinkedAccount(api.LinkedAccount o) {
 }
 
 core.List<api.AccountLabel> buildUnnamed5081() {
-  var o = <api.AccountLabel>[];
+  final o = <api.AccountLabel>[];
   o.add(buildAccountLabel());
   o.add(buildAccountLabel());
   return o;
@@ -4595,13 +4554,13 @@ core.List<api.AccountLabel> buildUnnamed5081() {
 
 void checkUnnamed5081(core.List<api.AccountLabel> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccountLabel(o[0] as api.AccountLabel);
-  checkAccountLabel(o[1] as api.AccountLabel);
+  checkAccountLabel(o[0]);
+  checkAccountLabel(o[1]);
 }
 
 core.int buildCounterListAccountLabelsResponse = 0;
 api.ListAccountLabelsResponse buildListAccountLabelsResponse() {
-  var o = api.ListAccountLabelsResponse();
+  final o = api.ListAccountLabelsResponse();
   buildCounterListAccountLabelsResponse++;
   if (buildCounterListAccountLabelsResponse < 3) {
     o.accountLabels = buildUnnamed5081();
@@ -4624,7 +4583,7 @@ void checkListAccountLabelsResponse(api.ListAccountLabelsResponse o) {
 }
 
 core.List<api.AccountReturnCarrier> buildUnnamed5082() {
-  var o = <api.AccountReturnCarrier>[];
+  final o = <api.AccountReturnCarrier>[];
   o.add(buildAccountReturnCarrier());
   o.add(buildAccountReturnCarrier());
   return o;
@@ -4632,13 +4591,13 @@ core.List<api.AccountReturnCarrier> buildUnnamed5082() {
 
 void checkUnnamed5082(core.List<api.AccountReturnCarrier> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccountReturnCarrier(o[0] as api.AccountReturnCarrier);
-  checkAccountReturnCarrier(o[1] as api.AccountReturnCarrier);
+  checkAccountReturnCarrier(o[0]);
+  checkAccountReturnCarrier(o[1]);
 }
 
 core.int buildCounterListAccountReturnCarrierResponse = 0;
 api.ListAccountReturnCarrierResponse buildListAccountReturnCarrierResponse() {
-  var o = api.ListAccountReturnCarrierResponse();
+  final o = api.ListAccountReturnCarrierResponse();
   buildCounterListAccountReturnCarrierResponse++;
   if (buildCounterListAccountReturnCarrierResponse < 3) {
     o.accountReturnCarriers = buildUnnamed5082();
@@ -4657,7 +4616,7 @@ void checkListAccountReturnCarrierResponse(
 }
 
 core.List<api.CollectionStatus> buildUnnamed5083() {
-  var o = <api.CollectionStatus>[];
+  final o = <api.CollectionStatus>[];
   o.add(buildCollectionStatus());
   o.add(buildCollectionStatus());
   return o;
@@ -4665,13 +4624,13 @@ core.List<api.CollectionStatus> buildUnnamed5083() {
 
 void checkUnnamed5083(core.List<api.CollectionStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCollectionStatus(o[0] as api.CollectionStatus);
-  checkCollectionStatus(o[1] as api.CollectionStatus);
+  checkCollectionStatus(o[0]);
+  checkCollectionStatus(o[1]);
 }
 
 core.int buildCounterListCollectionStatusesResponse = 0;
 api.ListCollectionStatusesResponse buildListCollectionStatusesResponse() {
-  var o = api.ListCollectionStatusesResponse();
+  final o = api.ListCollectionStatusesResponse();
   buildCounterListCollectionStatusesResponse++;
   if (buildCounterListCollectionStatusesResponse < 3) {
     o.nextPageToken = 'foo';
@@ -4694,7 +4653,7 @@ void checkListCollectionStatusesResponse(api.ListCollectionStatusesResponse o) {
 }
 
 core.List<api.Collection> buildUnnamed5084() {
-  var o = <api.Collection>[];
+  final o = <api.Collection>[];
   o.add(buildCollection());
   o.add(buildCollection());
   return o;
@@ -4702,13 +4661,13 @@ core.List<api.Collection> buildUnnamed5084() {
 
 void checkUnnamed5084(core.List<api.Collection> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCollection(o[0] as api.Collection);
-  checkCollection(o[1] as api.Collection);
+  checkCollection(o[0]);
+  checkCollection(o[1]);
 }
 
 core.int buildCounterListCollectionsResponse = 0;
 api.ListCollectionsResponse buildListCollectionsResponse() {
-  var o = api.ListCollectionsResponse();
+  final o = api.ListCollectionsResponse();
   buildCounterListCollectionsResponse++;
   if (buildCounterListCollectionsResponse < 3) {
     o.nextPageToken = 'foo';
@@ -4731,7 +4690,7 @@ void checkListCollectionsResponse(api.ListCollectionsResponse o) {
 }
 
 core.List<api.Css> buildUnnamed5085() {
-  var o = <api.Css>[];
+  final o = <api.Css>[];
   o.add(buildCss());
   o.add(buildCss());
   return o;
@@ -4739,13 +4698,13 @@ core.List<api.Css> buildUnnamed5085() {
 
 void checkUnnamed5085(core.List<api.Css> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCss(o[0] as api.Css);
-  checkCss(o[1] as api.Css);
+  checkCss(o[0]);
+  checkCss(o[1]);
 }
 
 core.int buildCounterListCssesResponse = 0;
 api.ListCssesResponse buildListCssesResponse() {
-  var o = api.ListCssesResponse();
+  final o = api.ListCssesResponse();
   buildCounterListCssesResponse++;
   if (buildCounterListCssesResponse < 3) {
     o.csses = buildUnnamed5085();
@@ -4768,7 +4727,7 @@ void checkListCssesResponse(api.ListCssesResponse o) {
 }
 
 core.List<api.Region> buildUnnamed5086() {
-  var o = <api.Region>[];
+  final o = <api.Region>[];
   o.add(buildRegion());
   o.add(buildRegion());
   return o;
@@ -4776,13 +4735,13 @@ core.List<api.Region> buildUnnamed5086() {
 
 void checkUnnamed5086(core.List<api.Region> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRegion(o[0] as api.Region);
-  checkRegion(o[1] as api.Region);
+  checkRegion(o[0]);
+  checkRegion(o[1]);
 }
 
 core.int buildCounterListRegionsResponse = 0;
 api.ListRegionsResponse buildListRegionsResponse() {
-  var o = api.ListRegionsResponse();
+  final o = api.ListRegionsResponse();
   buildCounterListRegionsResponse++;
   if (buildCounterListRegionsResponse < 3) {
     o.nextPageToken = 'foo';
@@ -4805,7 +4764,7 @@ void checkListRegionsResponse(api.ListRegionsResponse o) {
 }
 
 core.List<api.RepricingProductReport> buildUnnamed5087() {
-  var o = <api.RepricingProductReport>[];
+  final o = <api.RepricingProductReport>[];
   o.add(buildRepricingProductReport());
   o.add(buildRepricingProductReport());
   return o;
@@ -4813,14 +4772,14 @@ core.List<api.RepricingProductReport> buildUnnamed5087() {
 
 void checkUnnamed5087(core.List<api.RepricingProductReport> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRepricingProductReport(o[0] as api.RepricingProductReport);
-  checkRepricingProductReport(o[1] as api.RepricingProductReport);
+  checkRepricingProductReport(o[0]);
+  checkRepricingProductReport(o[1]);
 }
 
 core.int buildCounterListRepricingProductReportsResponse = 0;
 api.ListRepricingProductReportsResponse
     buildListRepricingProductReportsResponse() {
-  var o = api.ListRepricingProductReportsResponse();
+  final o = api.ListRepricingProductReportsResponse();
   buildCounterListRepricingProductReportsResponse++;
   if (buildCounterListRepricingProductReportsResponse < 3) {
     o.nextPageToken = 'foo';
@@ -4844,7 +4803,7 @@ void checkListRepricingProductReportsResponse(
 }
 
 core.List<api.RepricingRuleReport> buildUnnamed5088() {
-  var o = <api.RepricingRuleReport>[];
+  final o = <api.RepricingRuleReport>[];
   o.add(buildRepricingRuleReport());
   o.add(buildRepricingRuleReport());
   return o;
@@ -4852,13 +4811,13 @@ core.List<api.RepricingRuleReport> buildUnnamed5088() {
 
 void checkUnnamed5088(core.List<api.RepricingRuleReport> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRepricingRuleReport(o[0] as api.RepricingRuleReport);
-  checkRepricingRuleReport(o[1] as api.RepricingRuleReport);
+  checkRepricingRuleReport(o[0]);
+  checkRepricingRuleReport(o[1]);
 }
 
 core.int buildCounterListRepricingRuleReportsResponse = 0;
 api.ListRepricingRuleReportsResponse buildListRepricingRuleReportsResponse() {
-  var o = api.ListRepricingRuleReportsResponse();
+  final o = api.ListRepricingRuleReportsResponse();
   buildCounterListRepricingRuleReportsResponse++;
   if (buildCounterListRepricingRuleReportsResponse < 3) {
     o.nextPageToken = 'foo';
@@ -4882,7 +4841,7 @@ void checkListRepricingRuleReportsResponse(
 }
 
 core.List<api.RepricingRule> buildUnnamed5089() {
-  var o = <api.RepricingRule>[];
+  final o = <api.RepricingRule>[];
   o.add(buildRepricingRule());
   o.add(buildRepricingRule());
   return o;
@@ -4890,13 +4849,13 @@ core.List<api.RepricingRule> buildUnnamed5089() {
 
 void checkUnnamed5089(core.List<api.RepricingRule> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRepricingRule(o[0] as api.RepricingRule);
-  checkRepricingRule(o[1] as api.RepricingRule);
+  checkRepricingRule(o[0]);
+  checkRepricingRule(o[1]);
 }
 
 core.int buildCounterListRepricingRulesResponse = 0;
 api.ListRepricingRulesResponse buildListRepricingRulesResponse() {
-  var o = api.ListRepricingRulesResponse();
+  final o = api.ListRepricingRulesResponse();
   buildCounterListRepricingRulesResponse++;
   if (buildCounterListRepricingRulesResponse < 3) {
     o.nextPageToken = 'foo';
@@ -4919,7 +4878,7 @@ void checkListRepricingRulesResponse(api.ListRepricingRulesResponse o) {
 }
 
 core.List<api.ReturnPolicyOnline> buildUnnamed5090() {
-  var o = <api.ReturnPolicyOnline>[];
+  final o = <api.ReturnPolicyOnline>[];
   o.add(buildReturnPolicyOnline());
   o.add(buildReturnPolicyOnline());
   return o;
@@ -4927,13 +4886,13 @@ core.List<api.ReturnPolicyOnline> buildUnnamed5090() {
 
 void checkUnnamed5090(core.List<api.ReturnPolicyOnline> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReturnPolicyOnline(o[0] as api.ReturnPolicyOnline);
-  checkReturnPolicyOnline(o[1] as api.ReturnPolicyOnline);
+  checkReturnPolicyOnline(o[0]);
+  checkReturnPolicyOnline(o[1]);
 }
 
 core.int buildCounterListReturnPolicyOnlineResponse = 0;
 api.ListReturnPolicyOnlineResponse buildListReturnPolicyOnlineResponse() {
-  var o = api.ListReturnPolicyOnlineResponse();
+  final o = api.ListReturnPolicyOnlineResponse();
   buildCounterListReturnPolicyOnlineResponse++;
   if (buildCounterListReturnPolicyOnlineResponse < 3) {
     o.returnPolicies = buildUnnamed5090();
@@ -4952,7 +4911,7 @@ void checkListReturnPolicyOnlineResponse(api.ListReturnPolicyOnlineResponse o) {
 
 core.int buildCounterLocalInventory = 0;
 api.LocalInventory buildLocalInventory() {
-  var o = api.LocalInventory();
+  final o = api.LocalInventory();
   buildCounterLocalInventory++;
   if (buildCounterLocalInventory < 3) {
     o.availability = 'foo';
@@ -4993,12 +4952,12 @@ void checkLocalInventory(api.LocalInventory o) {
       o.pickupSla!,
       unittest.equals('foo'),
     );
-    checkPrice(o.price! as api.Price);
+    checkPrice(o.price!);
     unittest.expect(
       o.quantity!,
       unittest.equals(42),
     );
-    checkPrice(o.salePrice! as api.Price);
+    checkPrice(o.salePrice!);
     unittest.expect(
       o.salePriceEffectiveDate!,
       unittest.equals('foo'),
@@ -5012,7 +4971,7 @@ void checkLocalInventory(api.LocalInventory o) {
 }
 
 core.List<api.LocalinventoryCustomBatchRequestEntry> buildUnnamed5091() {
-  var o = <api.LocalinventoryCustomBatchRequestEntry>[];
+  final o = <api.LocalinventoryCustomBatchRequestEntry>[];
   o.add(buildLocalinventoryCustomBatchRequestEntry());
   o.add(buildLocalinventoryCustomBatchRequestEntry());
   return o;
@@ -5020,15 +4979,13 @@ core.List<api.LocalinventoryCustomBatchRequestEntry> buildUnnamed5091() {
 
 void checkUnnamed5091(core.List<api.LocalinventoryCustomBatchRequestEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocalinventoryCustomBatchRequestEntry(
-      o[0] as api.LocalinventoryCustomBatchRequestEntry);
-  checkLocalinventoryCustomBatchRequestEntry(
-      o[1] as api.LocalinventoryCustomBatchRequestEntry);
+  checkLocalinventoryCustomBatchRequestEntry(o[0]);
+  checkLocalinventoryCustomBatchRequestEntry(o[1]);
 }
 
 core.int buildCounterLocalinventoryCustomBatchRequest = 0;
 api.LocalinventoryCustomBatchRequest buildLocalinventoryCustomBatchRequest() {
-  var o = api.LocalinventoryCustomBatchRequest();
+  final o = api.LocalinventoryCustomBatchRequest();
   buildCounterLocalinventoryCustomBatchRequest++;
   if (buildCounterLocalinventoryCustomBatchRequest < 3) {
     o.entries = buildUnnamed5091();
@@ -5049,7 +5006,7 @@ void checkLocalinventoryCustomBatchRequest(
 core.int buildCounterLocalinventoryCustomBatchRequestEntry = 0;
 api.LocalinventoryCustomBatchRequestEntry
     buildLocalinventoryCustomBatchRequestEntry() {
-  var o = api.LocalinventoryCustomBatchRequestEntry();
+  final o = api.LocalinventoryCustomBatchRequestEntry();
   buildCounterLocalinventoryCustomBatchRequestEntry++;
   if (buildCounterLocalinventoryCustomBatchRequestEntry < 3) {
     o.batchId = 42;
@@ -5070,7 +5027,7 @@ void checkLocalinventoryCustomBatchRequestEntry(
       o.batchId!,
       unittest.equals(42),
     );
-    checkLocalInventory(o.localInventory! as api.LocalInventory);
+    checkLocalInventory(o.localInventory!);
     unittest.expect(
       o.merchantId!,
       unittest.equals('foo'),
@@ -5088,7 +5045,7 @@ void checkLocalinventoryCustomBatchRequestEntry(
 }
 
 core.List<api.LocalinventoryCustomBatchResponseEntry> buildUnnamed5092() {
-  var o = <api.LocalinventoryCustomBatchResponseEntry>[];
+  final o = <api.LocalinventoryCustomBatchResponseEntry>[];
   o.add(buildLocalinventoryCustomBatchResponseEntry());
   o.add(buildLocalinventoryCustomBatchResponseEntry());
   return o;
@@ -5096,15 +5053,13 @@ core.List<api.LocalinventoryCustomBatchResponseEntry> buildUnnamed5092() {
 
 void checkUnnamed5092(core.List<api.LocalinventoryCustomBatchResponseEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocalinventoryCustomBatchResponseEntry(
-      o[0] as api.LocalinventoryCustomBatchResponseEntry);
-  checkLocalinventoryCustomBatchResponseEntry(
-      o[1] as api.LocalinventoryCustomBatchResponseEntry);
+  checkLocalinventoryCustomBatchResponseEntry(o[0]);
+  checkLocalinventoryCustomBatchResponseEntry(o[1]);
 }
 
 core.int buildCounterLocalinventoryCustomBatchResponse = 0;
 api.LocalinventoryCustomBatchResponse buildLocalinventoryCustomBatchResponse() {
-  var o = api.LocalinventoryCustomBatchResponse();
+  final o = api.LocalinventoryCustomBatchResponse();
   buildCounterLocalinventoryCustomBatchResponse++;
   if (buildCounterLocalinventoryCustomBatchResponse < 3) {
     o.entries = buildUnnamed5092();
@@ -5130,7 +5085,7 @@ void checkLocalinventoryCustomBatchResponse(
 core.int buildCounterLocalinventoryCustomBatchResponseEntry = 0;
 api.LocalinventoryCustomBatchResponseEntry
     buildLocalinventoryCustomBatchResponseEntry() {
-  var o = api.LocalinventoryCustomBatchResponseEntry();
+  final o = api.LocalinventoryCustomBatchResponseEntry();
   buildCounterLocalinventoryCustomBatchResponseEntry++;
   if (buildCounterLocalinventoryCustomBatchResponseEntry < 3) {
     o.batchId = 42;
@@ -5149,7 +5104,7 @@ void checkLocalinventoryCustomBatchResponseEntry(
       o.batchId!,
       unittest.equals(42),
     );
-    checkErrors(o.errors! as api.Errors);
+    checkErrors(o.errors!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -5159,7 +5114,7 @@ void checkLocalinventoryCustomBatchResponseEntry(
 }
 
 core.List<core.String> buildUnnamed5093() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -5179,7 +5134,7 @@ void checkUnnamed5093(core.List<core.String> o) {
 
 core.int buildCounterLocationIdSet = 0;
 api.LocationIdSet buildLocationIdSet() {
-  var o = api.LocationIdSet();
+  final o = api.LocationIdSet();
   buildCounterLocationIdSet++;
   if (buildCounterLocationIdSet < 3) {
     o.locationIds = buildUnnamed5093();
@@ -5198,7 +5153,7 @@ void checkLocationIdSet(api.LocationIdSet o) {
 
 core.int buildCounterLoyaltyPoints = 0;
 api.LoyaltyPoints buildLoyaltyPoints() {
-  var o = api.LoyaltyPoints();
+  final o = api.LoyaltyPoints();
   buildCounterLoyaltyPoints++;
   if (buildCounterLoyaltyPoints < 3) {
     o.name = 'foo';
@@ -5229,7 +5184,7 @@ void checkLoyaltyPoints(api.LoyaltyPoints o) {
 }
 
 core.List<api.MerchantOrderReturnItem> buildUnnamed5094() {
-  var o = <api.MerchantOrderReturnItem>[];
+  final o = <api.MerchantOrderReturnItem>[];
   o.add(buildMerchantOrderReturnItem());
   o.add(buildMerchantOrderReturnItem());
   return o;
@@ -5237,12 +5192,12 @@ core.List<api.MerchantOrderReturnItem> buildUnnamed5094() {
 
 void checkUnnamed5094(core.List<api.MerchantOrderReturnItem> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMerchantOrderReturnItem(o[0] as api.MerchantOrderReturnItem);
-  checkMerchantOrderReturnItem(o[1] as api.MerchantOrderReturnItem);
+  checkMerchantOrderReturnItem(o[0]);
+  checkMerchantOrderReturnItem(o[1]);
 }
 
 core.List<api.ReturnShipment> buildUnnamed5095() {
-  var o = <api.ReturnShipment>[];
+  final o = <api.ReturnShipment>[];
   o.add(buildReturnShipment());
   o.add(buildReturnShipment());
   return o;
@@ -5250,13 +5205,13 @@ core.List<api.ReturnShipment> buildUnnamed5095() {
 
 void checkUnnamed5095(core.List<api.ReturnShipment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReturnShipment(o[0] as api.ReturnShipment);
-  checkReturnShipment(o[1] as api.ReturnShipment);
+  checkReturnShipment(o[0]);
+  checkReturnShipment(o[1]);
 }
 
 core.int buildCounterMerchantOrderReturn = 0;
 api.MerchantOrderReturn buildMerchantOrderReturn() {
-  var o = api.MerchantOrderReturn();
+  final o = api.MerchantOrderReturn();
   buildCounterMerchantOrderReturn++;
   if (buildCounterMerchantOrderReturn < 3) {
     o.creationDate = 'foo';
@@ -5291,14 +5246,14 @@ void checkMerchantOrderReturn(api.MerchantOrderReturn o) {
       unittest.equals('foo'),
     );
     checkUnnamed5094(o.returnItems!);
-    checkReturnPricingInfo(o.returnPricingInfo! as api.ReturnPricingInfo);
+    checkReturnPricingInfo(o.returnPricingInfo!);
     checkUnnamed5095(o.returnShipments!);
   }
   buildCounterMerchantOrderReturn--;
 }
 
 core.List<core.String> buildUnnamed5096() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -5318,7 +5273,7 @@ void checkUnnamed5096(core.List<core.String> o) {
 
 core.int buildCounterMerchantOrderReturnItem = 0;
 api.MerchantOrderReturnItem buildMerchantOrderReturnItem() {
-  var o = api.MerchantOrderReturnItem();
+  final o = api.MerchantOrderReturnItem();
   buildCounterMerchantOrderReturnItem++;
   if (buildCounterMerchantOrderReturnItem < 3) {
     o.customerReturnReason = buildCustomerReturnReason();
@@ -5340,17 +5295,15 @@ api.MerchantOrderReturnItem buildMerchantOrderReturnItem() {
 void checkMerchantOrderReturnItem(api.MerchantOrderReturnItem o) {
   buildCounterMerchantOrderReturnItem++;
   if (buildCounterMerchantOrderReturnItem < 3) {
-    checkCustomerReturnReason(
-        o.customerReturnReason! as api.CustomerReturnReason);
+    checkCustomerReturnReason(o.customerReturnReason!);
     unittest.expect(
       o.itemId!,
       unittest.equals('foo'),
     );
-    checkMerchantRejectionReason(
-        o.merchantRejectionReason! as api.MerchantRejectionReason);
-    checkRefundReason(o.merchantReturnReason! as api.RefundReason);
-    checkOrderLineItemProduct(o.product! as api.OrderLineItemProduct);
-    checkMonetaryAmount(o.refundableAmount! as api.MonetaryAmount);
+    checkMerchantRejectionReason(o.merchantRejectionReason!);
+    checkRefundReason(o.merchantReturnReason!);
+    checkOrderLineItemProduct(o.product!);
+    checkMonetaryAmount(o.refundableAmount!);
     unittest.expect(
       o.returnItemId!,
       unittest.equals('foo'),
@@ -5374,7 +5327,7 @@ void checkMerchantOrderReturnItem(api.MerchantOrderReturnItem o) {
 
 core.int buildCounterMerchantRejectionReason = 0;
 api.MerchantRejectionReason buildMerchantRejectionReason() {
-  var o = api.MerchantRejectionReason();
+  final o = api.MerchantRejectionReason();
   buildCounterMerchantRejectionReason++;
   if (buildCounterMerchantRejectionReason < 3) {
     o.description = 'foo';
@@ -5401,7 +5354,7 @@ void checkMerchantRejectionReason(api.MerchantRejectionReason o) {
 
 core.int buildCounterMetrics = 0;
 api.Metrics buildMetrics() {
-  var o = api.Metrics();
+  final o = api.Metrics();
   buildCounterMetrics++;
   if (buildCounterMetrics < 3) {
     o.aos = 42.0;
@@ -5517,7 +5470,7 @@ void checkMetrics(api.Metrics o) {
 }
 
 core.List<api.MinimumOrderValueTableStoreCodeSetWithMov> buildUnnamed5097() {
-  var o = <api.MinimumOrderValueTableStoreCodeSetWithMov>[];
+  final o = <api.MinimumOrderValueTableStoreCodeSetWithMov>[];
   o.add(buildMinimumOrderValueTableStoreCodeSetWithMov());
   o.add(buildMinimumOrderValueTableStoreCodeSetWithMov());
   return o;
@@ -5526,15 +5479,13 @@ core.List<api.MinimumOrderValueTableStoreCodeSetWithMov> buildUnnamed5097() {
 void checkUnnamed5097(
     core.List<api.MinimumOrderValueTableStoreCodeSetWithMov> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMinimumOrderValueTableStoreCodeSetWithMov(
-      o[0] as api.MinimumOrderValueTableStoreCodeSetWithMov);
-  checkMinimumOrderValueTableStoreCodeSetWithMov(
-      o[1] as api.MinimumOrderValueTableStoreCodeSetWithMov);
+  checkMinimumOrderValueTableStoreCodeSetWithMov(o[0]);
+  checkMinimumOrderValueTableStoreCodeSetWithMov(o[1]);
 }
 
 core.int buildCounterMinimumOrderValueTable = 0;
 api.MinimumOrderValueTable buildMinimumOrderValueTable() {
-  var o = api.MinimumOrderValueTable();
+  final o = api.MinimumOrderValueTable();
   buildCounterMinimumOrderValueTable++;
   if (buildCounterMinimumOrderValueTable < 3) {
     o.storeCodeSetWithMovs = buildUnnamed5097();
@@ -5552,7 +5503,7 @@ void checkMinimumOrderValueTable(api.MinimumOrderValueTable o) {
 }
 
 core.List<core.String> buildUnnamed5098() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -5573,7 +5524,7 @@ void checkUnnamed5098(core.List<core.String> o) {
 core.int buildCounterMinimumOrderValueTableStoreCodeSetWithMov = 0;
 api.MinimumOrderValueTableStoreCodeSetWithMov
     buildMinimumOrderValueTableStoreCodeSetWithMov() {
-  var o = api.MinimumOrderValueTableStoreCodeSetWithMov();
+  final o = api.MinimumOrderValueTableStoreCodeSetWithMov();
   buildCounterMinimumOrderValueTableStoreCodeSetWithMov++;
   if (buildCounterMinimumOrderValueTableStoreCodeSetWithMov < 3) {
     o.storeCodes = buildUnnamed5098();
@@ -5588,14 +5539,14 @@ void checkMinimumOrderValueTableStoreCodeSetWithMov(
   buildCounterMinimumOrderValueTableStoreCodeSetWithMov++;
   if (buildCounterMinimumOrderValueTableStoreCodeSetWithMov < 3) {
     checkUnnamed5098(o.storeCodes!);
-    checkPrice(o.value! as api.Price);
+    checkPrice(o.value!);
   }
   buildCounterMinimumOrderValueTableStoreCodeSetWithMov--;
 }
 
 core.int buildCounterMonetaryAmount = 0;
 api.MonetaryAmount buildMonetaryAmount() {
-  var o = api.MonetaryAmount();
+  final o = api.MonetaryAmount();
   buildCounterMonetaryAmount++;
   if (buildCounterMonetaryAmount < 3) {
     o.priceAmount = buildPrice();
@@ -5608,15 +5559,15 @@ api.MonetaryAmount buildMonetaryAmount() {
 void checkMonetaryAmount(api.MonetaryAmount o) {
   buildCounterMonetaryAmount++;
   if (buildCounterMonetaryAmount < 3) {
-    checkPrice(o.priceAmount! as api.Price);
-    checkPrice(o.taxAmount! as api.Price);
+    checkPrice(o.priceAmount!);
+    checkPrice(o.taxAmount!);
   }
   buildCounterMonetaryAmount--;
 }
 
 core.int buildCounterOnboardBuyOnGoogleProgramRequest = 0;
 api.OnboardBuyOnGoogleProgramRequest buildOnboardBuyOnGoogleProgramRequest() {
-  var o = api.OnboardBuyOnGoogleProgramRequest();
+  final o = api.OnboardBuyOnGoogleProgramRequest();
   buildCounterOnboardBuyOnGoogleProgramRequest++;
   if (buildCounterOnboardBuyOnGoogleProgramRequest < 3) {
     o.customerServiceEmail = 'foo';
@@ -5638,7 +5589,7 @@ void checkOnboardBuyOnGoogleProgramRequest(
 }
 
 core.List<api.OrderOrderAnnotation> buildUnnamed5099() {
-  var o = <api.OrderOrderAnnotation>[];
+  final o = <api.OrderOrderAnnotation>[];
   o.add(buildOrderOrderAnnotation());
   o.add(buildOrderOrderAnnotation());
   return o;
@@ -5646,12 +5597,12 @@ core.List<api.OrderOrderAnnotation> buildUnnamed5099() {
 
 void checkUnnamed5099(core.List<api.OrderOrderAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrderOrderAnnotation(o[0] as api.OrderOrderAnnotation);
-  checkOrderOrderAnnotation(o[1] as api.OrderOrderAnnotation);
+  checkOrderOrderAnnotation(o[0]);
+  checkOrderOrderAnnotation(o[1]);
 }
 
 core.List<api.OrderLineItem> buildUnnamed5100() {
-  var o = <api.OrderLineItem>[];
+  final o = <api.OrderLineItem>[];
   o.add(buildOrderLineItem());
   o.add(buildOrderLineItem());
   return o;
@@ -5659,12 +5610,12 @@ core.List<api.OrderLineItem> buildUnnamed5100() {
 
 void checkUnnamed5100(core.List<api.OrderLineItem> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrderLineItem(o[0] as api.OrderLineItem);
-  checkOrderLineItem(o[1] as api.OrderLineItem);
+  checkOrderLineItem(o[0]);
+  checkOrderLineItem(o[1]);
 }
 
 core.List<api.OrderPromotion> buildUnnamed5101() {
-  var o = <api.OrderPromotion>[];
+  final o = <api.OrderPromotion>[];
   o.add(buildOrderPromotion());
   o.add(buildOrderPromotion());
   return o;
@@ -5672,12 +5623,12 @@ core.List<api.OrderPromotion> buildUnnamed5101() {
 
 void checkUnnamed5101(core.List<api.OrderPromotion> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrderPromotion(o[0] as api.OrderPromotion);
-  checkOrderPromotion(o[1] as api.OrderPromotion);
+  checkOrderPromotion(o[0]);
+  checkOrderPromotion(o[1]);
 }
 
 core.List<api.OrderRefund> buildUnnamed5102() {
-  var o = <api.OrderRefund>[];
+  final o = <api.OrderRefund>[];
   o.add(buildOrderRefund());
   o.add(buildOrderRefund());
   return o;
@@ -5685,12 +5636,12 @@ core.List<api.OrderRefund> buildUnnamed5102() {
 
 void checkUnnamed5102(core.List<api.OrderRefund> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrderRefund(o[0] as api.OrderRefund);
-  checkOrderRefund(o[1] as api.OrderRefund);
+  checkOrderRefund(o[0]);
+  checkOrderRefund(o[1]);
 }
 
 core.List<api.OrderShipment> buildUnnamed5103() {
-  var o = <api.OrderShipment>[];
+  final o = <api.OrderShipment>[];
   o.add(buildOrderShipment());
   o.add(buildOrderShipment());
   return o;
@@ -5698,13 +5649,13 @@ core.List<api.OrderShipment> buildUnnamed5103() {
 
 void checkUnnamed5103(core.List<api.OrderShipment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrderShipment(o[0] as api.OrderShipment);
-  checkOrderShipment(o[1] as api.OrderShipment);
+  checkOrderShipment(o[0]);
+  checkOrderShipment(o[1]);
 }
 
 core.int buildCounterOrder = 0;
 api.Order buildOrder() {
-  var o = api.Order();
+  final o = api.Order();
   buildCounterOrder++;
   if (buildCounterOrder < 3) {
     o.acknowledged = true;
@@ -5739,9 +5690,9 @@ void checkOrder(api.Order o) {
   if (buildCounterOrder < 3) {
     unittest.expect(o.acknowledged!, unittest.isTrue);
     checkUnnamed5099(o.annotations!);
-    checkOrderAddress(o.billingAddress! as api.OrderAddress);
-    checkOrderCustomer(o.customer! as api.OrderCustomer);
-    checkOrderDeliveryDetails(o.deliveryDetails! as api.OrderDeliveryDetails);
+    checkOrderAddress(o.billingAddress!);
+    checkOrderCustomer(o.customer!);
+    checkOrderDeliveryDetails(o.deliveryDetails!);
     unittest.expect(
       o.id!,
       unittest.equals('foo'),
@@ -5759,13 +5710,13 @@ void checkOrder(api.Order o) {
       o.merchantOrderId!,
       unittest.equals('foo'),
     );
-    checkPrice(o.netPriceAmount! as api.Price);
-    checkPrice(o.netTaxAmount! as api.Price);
+    checkPrice(o.netPriceAmount!);
+    checkPrice(o.netTaxAmount!);
     unittest.expect(
       o.paymentStatus!,
       unittest.equals('foo'),
     );
-    checkOrderPickupDetails(o.pickupDetails! as api.OrderPickupDetails);
+    checkOrderPickupDetails(o.pickupDetails!);
     unittest.expect(
       o.placedDate!,
       unittest.equals('foo'),
@@ -5773,8 +5724,8 @@ void checkOrder(api.Order o) {
     checkUnnamed5101(o.promotions!);
     checkUnnamed5102(o.refunds!);
     checkUnnamed5103(o.shipments!);
-    checkPrice(o.shippingCost! as api.Price);
-    checkPrice(o.shippingCostTax! as api.Price);
+    checkPrice(o.shippingCost!);
+    checkPrice(o.shippingCostTax!);
     unittest.expect(
       o.status!,
       unittest.equals('foo'),
@@ -5788,7 +5739,7 @@ void checkOrder(api.Order o) {
 }
 
 core.List<core.String> buildUnnamed5104() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -5807,7 +5758,7 @@ void checkUnnamed5104(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed5105() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -5827,7 +5778,7 @@ void checkUnnamed5105(core.List<core.String> o) {
 
 core.int buildCounterOrderAddress = 0;
 api.OrderAddress buildOrderAddress() {
-  var o = api.OrderAddress();
+  final o = api.OrderAddress();
   buildCounterOrderAddress++;
   if (buildCounterOrderAddress < 3) {
     o.country = 'foo';
@@ -5875,7 +5826,7 @@ void checkOrderAddress(api.OrderAddress o) {
 
 core.int buildCounterOrderCancellation = 0;
 api.OrderCancellation buildOrderCancellation() {
-  var o = api.OrderCancellation();
+  final o = api.OrderCancellation();
   buildCounterOrderCancellation++;
   if (buildCounterOrderCancellation < 3) {
     o.actor = 'foo';
@@ -5917,7 +5868,7 @@ void checkOrderCancellation(api.OrderCancellation o) {
 
 core.int buildCounterOrderCustomer = 0;
 api.OrderCustomer buildOrderCustomer() {
-  var o = api.OrderCustomer();
+  final o = api.OrderCustomer();
   buildCounterOrderCustomer++;
   if (buildCounterOrderCustomer < 3) {
     o.fullName = 'foo';
@@ -5940,17 +5891,15 @@ void checkOrderCustomer(api.OrderCustomer o) {
       o.invoiceReceivingEmail!,
       unittest.equals('foo'),
     );
-    checkOrderCustomerLoyaltyInfo(
-        o.loyaltyInfo! as api.OrderCustomerLoyaltyInfo);
-    checkOrderCustomerMarketingRightsInfo(
-        o.marketingRightsInfo! as api.OrderCustomerMarketingRightsInfo);
+    checkOrderCustomerLoyaltyInfo(o.loyaltyInfo!);
+    checkOrderCustomerMarketingRightsInfo(o.marketingRightsInfo!);
   }
   buildCounterOrderCustomer--;
 }
 
 core.int buildCounterOrderCustomerLoyaltyInfo = 0;
 api.OrderCustomerLoyaltyInfo buildOrderCustomerLoyaltyInfo() {
-  var o = api.OrderCustomerLoyaltyInfo();
+  final o = api.OrderCustomerLoyaltyInfo();
   buildCounterOrderCustomerLoyaltyInfo++;
   if (buildCounterOrderCustomerLoyaltyInfo < 3) {
     o.loyaltyNumber = 'foo';
@@ -5977,7 +5926,7 @@ void checkOrderCustomerLoyaltyInfo(api.OrderCustomerLoyaltyInfo o) {
 
 core.int buildCounterOrderCustomerMarketingRightsInfo = 0;
 api.OrderCustomerMarketingRightsInfo buildOrderCustomerMarketingRightsInfo() {
-  var o = api.OrderCustomerMarketingRightsInfo();
+  final o = api.OrderCustomerMarketingRightsInfo();
   buildCounterOrderCustomerMarketingRightsInfo++;
   if (buildCounterOrderCustomerMarketingRightsInfo < 3) {
     o.explicitMarketingPreference = 'foo';
@@ -6010,7 +5959,7 @@ void checkOrderCustomerMarketingRightsInfo(
 
 core.int buildCounterOrderDeliveryDetails = 0;
 api.OrderDeliveryDetails buildOrderDeliveryDetails() {
-  var o = api.OrderDeliveryDetails();
+  final o = api.OrderDeliveryDetails();
   buildCounterOrderDeliveryDetails++;
   if (buildCounterOrderDeliveryDetails < 3) {
     o.address = buildOrderAddress();
@@ -6023,7 +5972,7 @@ api.OrderDeliveryDetails buildOrderDeliveryDetails() {
 void checkOrderDeliveryDetails(api.OrderDeliveryDetails o) {
   buildCounterOrderDeliveryDetails++;
   if (buildCounterOrderDeliveryDetails < 3) {
-    checkOrderAddress(o.address! as api.OrderAddress);
+    checkOrderAddress(o.address!);
     unittest.expect(
       o.phoneNumber!,
       unittest.equals('foo'),
@@ -6033,7 +5982,7 @@ void checkOrderDeliveryDetails(api.OrderDeliveryDetails o) {
 }
 
 core.List<api.OrderLineItemAdjustment> buildUnnamed5106() {
-  var o = <api.OrderLineItemAdjustment>[];
+  final o = <api.OrderLineItemAdjustment>[];
   o.add(buildOrderLineItemAdjustment());
   o.add(buildOrderLineItemAdjustment());
   return o;
@@ -6041,12 +5990,12 @@ core.List<api.OrderLineItemAdjustment> buildUnnamed5106() {
 
 void checkUnnamed5106(core.List<api.OrderLineItemAdjustment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrderLineItemAdjustment(o[0] as api.OrderLineItemAdjustment);
-  checkOrderLineItemAdjustment(o[1] as api.OrderLineItemAdjustment);
+  checkOrderLineItemAdjustment(o[0]);
+  checkOrderLineItemAdjustment(o[1]);
 }
 
 core.List<api.OrderMerchantProvidedAnnotation> buildUnnamed5107() {
-  var o = <api.OrderMerchantProvidedAnnotation>[];
+  final o = <api.OrderMerchantProvidedAnnotation>[];
   o.add(buildOrderMerchantProvidedAnnotation());
   o.add(buildOrderMerchantProvidedAnnotation());
   return o;
@@ -6054,14 +6003,12 @@ core.List<api.OrderMerchantProvidedAnnotation> buildUnnamed5107() {
 
 void checkUnnamed5107(core.List<api.OrderMerchantProvidedAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrderMerchantProvidedAnnotation(
-      o[0] as api.OrderMerchantProvidedAnnotation);
-  checkOrderMerchantProvidedAnnotation(
-      o[1] as api.OrderMerchantProvidedAnnotation);
+  checkOrderMerchantProvidedAnnotation(o[0]);
+  checkOrderMerchantProvidedAnnotation(o[1]);
 }
 
 core.List<api.OrderCancellation> buildUnnamed5108() {
-  var o = <api.OrderCancellation>[];
+  final o = <api.OrderCancellation>[];
   o.add(buildOrderCancellation());
   o.add(buildOrderCancellation());
   return o;
@@ -6069,12 +6016,12 @@ core.List<api.OrderCancellation> buildUnnamed5108() {
 
 void checkUnnamed5108(core.List<api.OrderCancellation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrderCancellation(o[0] as api.OrderCancellation);
-  checkOrderCancellation(o[1] as api.OrderCancellation);
+  checkOrderCancellation(o[0]);
+  checkOrderCancellation(o[1]);
 }
 
 core.List<api.OrderReturn> buildUnnamed5109() {
-  var o = <api.OrderReturn>[];
+  final o = <api.OrderReturn>[];
   o.add(buildOrderReturn());
   o.add(buildOrderReturn());
   return o;
@@ -6082,13 +6029,13 @@ core.List<api.OrderReturn> buildUnnamed5109() {
 
 void checkUnnamed5109(core.List<api.OrderReturn> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrderReturn(o[0] as api.OrderReturn);
-  checkOrderReturn(o[1] as api.OrderReturn);
+  checkOrderReturn(o[0]);
+  checkOrderReturn(o[1]);
 }
 
 core.int buildCounterOrderLineItem = 0;
 api.OrderLineItem buildOrderLineItem() {
-  var o = api.OrderLineItem();
+  final o = api.OrderLineItem();
   buildCounterOrderLineItem++;
   if (buildCounterOrderLineItem < 3) {
     o.adjustments = buildUnnamed5106();
@@ -6124,8 +6071,8 @@ void checkOrderLineItem(api.OrderLineItem o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkPrice(o.price! as api.Price);
-    checkOrderLineItemProduct(o.product! as api.OrderLineItemProduct);
+    checkPrice(o.price!);
+    checkOrderLineItemProduct(o.product!);
     unittest.expect(
       o.quantityCanceled!,
       unittest.equals(42),
@@ -6158,18 +6105,17 @@ void checkOrderLineItem(api.OrderLineItem o) {
       o.quantityUndeliverable!,
       unittest.equals(42),
     );
-    checkOrderLineItemReturnInfo(o.returnInfo! as api.OrderLineItemReturnInfo);
+    checkOrderLineItemReturnInfo(o.returnInfo!);
     checkUnnamed5109(o.returns!);
-    checkOrderLineItemShippingDetails(
-        o.shippingDetails! as api.OrderLineItemShippingDetails);
-    checkPrice(o.tax! as api.Price);
+    checkOrderLineItemShippingDetails(o.shippingDetails!);
+    checkPrice(o.tax!);
   }
   buildCounterOrderLineItem--;
 }
 
 core.int buildCounterOrderLineItemAdjustment = 0;
 api.OrderLineItemAdjustment buildOrderLineItemAdjustment() {
-  var o = api.OrderLineItemAdjustment();
+  final o = api.OrderLineItemAdjustment();
   buildCounterOrderLineItemAdjustment++;
   if (buildCounterOrderLineItemAdjustment < 3) {
     o.priceAdjustment = buildPrice();
@@ -6183,8 +6129,8 @@ api.OrderLineItemAdjustment buildOrderLineItemAdjustment() {
 void checkOrderLineItemAdjustment(api.OrderLineItemAdjustment o) {
   buildCounterOrderLineItemAdjustment++;
   if (buildCounterOrderLineItemAdjustment < 3) {
-    checkPrice(o.priceAdjustment! as api.Price);
-    checkPrice(o.taxAdjustment! as api.Price);
+    checkPrice(o.priceAdjustment!);
+    checkPrice(o.taxAdjustment!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -6194,7 +6140,7 @@ void checkOrderLineItemAdjustment(api.OrderLineItemAdjustment o) {
 }
 
 core.List<api.OrderLineItemProductFee> buildUnnamed5110() {
-  var o = <api.OrderLineItemProductFee>[];
+  final o = <api.OrderLineItemProductFee>[];
   o.add(buildOrderLineItemProductFee());
   o.add(buildOrderLineItemProductFee());
   return o;
@@ -6202,12 +6148,12 @@ core.List<api.OrderLineItemProductFee> buildUnnamed5110() {
 
 void checkUnnamed5110(core.List<api.OrderLineItemProductFee> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrderLineItemProductFee(o[0] as api.OrderLineItemProductFee);
-  checkOrderLineItemProductFee(o[1] as api.OrderLineItemProductFee);
+  checkOrderLineItemProductFee(o[0]);
+  checkOrderLineItemProductFee(o[1]);
 }
 
 core.List<api.OrderLineItemProductVariantAttribute> buildUnnamed5111() {
-  var o = <api.OrderLineItemProductVariantAttribute>[];
+  final o = <api.OrderLineItemProductVariantAttribute>[];
   o.add(buildOrderLineItemProductVariantAttribute());
   o.add(buildOrderLineItemProductVariantAttribute());
   return o;
@@ -6215,15 +6161,13 @@ core.List<api.OrderLineItemProductVariantAttribute> buildUnnamed5111() {
 
 void checkUnnamed5111(core.List<api.OrderLineItemProductVariantAttribute> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrderLineItemProductVariantAttribute(
-      o[0] as api.OrderLineItemProductVariantAttribute);
-  checkOrderLineItemProductVariantAttribute(
-      o[1] as api.OrderLineItemProductVariantAttribute);
+  checkOrderLineItemProductVariantAttribute(o[0]);
+  checkOrderLineItemProductVariantAttribute(o[1]);
 }
 
 core.int buildCounterOrderLineItemProduct = 0;
 api.OrderLineItemProduct buildOrderLineItemProduct() {
-  var o = api.OrderLineItemProduct();
+  final o = api.OrderLineItemProduct();
   buildCounterOrderLineItemProduct++;
   if (buildCounterOrderLineItemProduct < 3) {
     o.brand = 'foo';
@@ -6286,7 +6230,7 @@ void checkOrderLineItemProduct(api.OrderLineItemProduct o) {
       o.offerId!,
       unittest.equals('foo'),
     );
-    checkPrice(o.price! as api.Price);
+    checkPrice(o.price!);
     unittest.expect(
       o.shownImage!,
       unittest.equals('foo'),
@@ -6306,7 +6250,7 @@ void checkOrderLineItemProduct(api.OrderLineItemProduct o) {
 
 core.int buildCounterOrderLineItemProductFee = 0;
 api.OrderLineItemProductFee buildOrderLineItemProductFee() {
-  var o = api.OrderLineItemProductFee();
+  final o = api.OrderLineItemProductFee();
   buildCounterOrderLineItemProductFee++;
   if (buildCounterOrderLineItemProductFee < 3) {
     o.amount = buildPrice();
@@ -6319,7 +6263,7 @@ api.OrderLineItemProductFee buildOrderLineItemProductFee() {
 void checkOrderLineItemProductFee(api.OrderLineItemProductFee o) {
   buildCounterOrderLineItemProductFee++;
   if (buildCounterOrderLineItemProductFee < 3) {
-    checkPrice(o.amount! as api.Price);
+    checkPrice(o.amount!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -6331,7 +6275,7 @@ void checkOrderLineItemProductFee(api.OrderLineItemProductFee o) {
 core.int buildCounterOrderLineItemProductVariantAttribute = 0;
 api.OrderLineItemProductVariantAttribute
     buildOrderLineItemProductVariantAttribute() {
-  var o = api.OrderLineItemProductVariantAttribute();
+  final o = api.OrderLineItemProductVariantAttribute();
   buildCounterOrderLineItemProductVariantAttribute++;
   if (buildCounterOrderLineItemProductVariantAttribute < 3) {
     o.dimension = 'foo';
@@ -6359,7 +6303,7 @@ void checkOrderLineItemProductVariantAttribute(
 
 core.int buildCounterOrderLineItemReturnInfo = 0;
 api.OrderLineItemReturnInfo buildOrderLineItemReturnInfo() {
-  var o = api.OrderLineItemReturnInfo();
+  final o = api.OrderLineItemReturnInfo();
   buildCounterOrderLineItemReturnInfo++;
   if (buildCounterOrderLineItemReturnInfo < 3) {
     o.daysToReturn = 42;
@@ -6388,7 +6332,7 @@ void checkOrderLineItemReturnInfo(api.OrderLineItemReturnInfo o) {
 
 core.int buildCounterOrderLineItemShippingDetails = 0;
 api.OrderLineItemShippingDetails buildOrderLineItemShippingDetails() {
-  var o = api.OrderLineItemShippingDetails();
+  final o = api.OrderLineItemShippingDetails();
   buildCounterOrderLineItemShippingDetails++;
   if (buildCounterOrderLineItemShippingDetails < 3) {
     o.deliverByDate = 'foo';
@@ -6408,8 +6352,7 @@ void checkOrderLineItemShippingDetails(api.OrderLineItemShippingDetails o) {
       o.deliverByDate!,
       unittest.equals('foo'),
     );
-    checkOrderLineItemShippingDetailsMethod(
-        o.method! as api.OrderLineItemShippingDetailsMethod);
+    checkOrderLineItemShippingDetailsMethod(o.method!);
     unittest.expect(
       o.pickupPromiseInMinutes!,
       unittest.equals(42),
@@ -6429,7 +6372,7 @@ void checkOrderLineItemShippingDetails(api.OrderLineItemShippingDetails o) {
 core.int buildCounterOrderLineItemShippingDetailsMethod = 0;
 api.OrderLineItemShippingDetailsMethod
     buildOrderLineItemShippingDetailsMethod() {
-  var o = api.OrderLineItemShippingDetailsMethod();
+  final o = api.OrderLineItemShippingDetailsMethod();
   buildCounterOrderLineItemShippingDetailsMethod++;
   if (buildCounterOrderLineItemShippingDetailsMethod < 3) {
     o.carrier = 'foo';
@@ -6467,7 +6410,7 @@ void checkOrderLineItemShippingDetailsMethod(
 
 core.int buildCounterOrderMerchantProvidedAnnotation = 0;
 api.OrderMerchantProvidedAnnotation buildOrderMerchantProvidedAnnotation() {
-  var o = api.OrderMerchantProvidedAnnotation();
+  final o = api.OrderMerchantProvidedAnnotation();
   buildCounterOrderMerchantProvidedAnnotation++;
   if (buildCounterOrderMerchantProvidedAnnotation < 3) {
     o.key = 'foo';
@@ -6495,7 +6438,7 @@ void checkOrderMerchantProvidedAnnotation(
 
 core.int buildCounterOrderOrderAnnotation = 0;
 api.OrderOrderAnnotation buildOrderOrderAnnotation() {
-  var o = api.OrderOrderAnnotation();
+  final o = api.OrderOrderAnnotation();
   buildCounterOrderOrderAnnotation++;
   if (buildCounterOrderOrderAnnotation < 3) {
     o.key = 'foo';
@@ -6521,7 +6464,7 @@ void checkOrderOrderAnnotation(api.OrderOrderAnnotation o) {
 }
 
 core.List<api.OrderPickupDetailsCollector> buildUnnamed5112() {
-  var o = <api.OrderPickupDetailsCollector>[];
+  final o = <api.OrderPickupDetailsCollector>[];
   o.add(buildOrderPickupDetailsCollector());
   o.add(buildOrderPickupDetailsCollector());
   return o;
@@ -6529,13 +6472,13 @@ core.List<api.OrderPickupDetailsCollector> buildUnnamed5112() {
 
 void checkUnnamed5112(core.List<api.OrderPickupDetailsCollector> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrderPickupDetailsCollector(o[0] as api.OrderPickupDetailsCollector);
-  checkOrderPickupDetailsCollector(o[1] as api.OrderPickupDetailsCollector);
+  checkOrderPickupDetailsCollector(o[0]);
+  checkOrderPickupDetailsCollector(o[1]);
 }
 
 core.int buildCounterOrderPickupDetails = 0;
 api.OrderPickupDetails buildOrderPickupDetails() {
-  var o = api.OrderPickupDetails();
+  final o = api.OrderPickupDetails();
   buildCounterOrderPickupDetails++;
   if (buildCounterOrderPickupDetails < 3) {
     o.address = buildOrderAddress();
@@ -6550,7 +6493,7 @@ api.OrderPickupDetails buildOrderPickupDetails() {
 void checkOrderPickupDetails(api.OrderPickupDetails o) {
   buildCounterOrderPickupDetails++;
   if (buildCounterOrderPickupDetails < 3) {
-    checkOrderAddress(o.address! as api.OrderAddress);
+    checkOrderAddress(o.address!);
     checkUnnamed5112(o.collectors!);
     unittest.expect(
       o.locationId!,
@@ -6566,7 +6509,7 @@ void checkOrderPickupDetails(api.OrderPickupDetails o) {
 
 core.int buildCounterOrderPickupDetailsCollector = 0;
 api.OrderPickupDetailsCollector buildOrderPickupDetailsCollector() {
-  var o = api.OrderPickupDetailsCollector();
+  final o = api.OrderPickupDetailsCollector();
   buildCounterOrderPickupDetailsCollector++;
   if (buildCounterOrderPickupDetailsCollector < 3) {
     o.name = 'foo';
@@ -6592,7 +6535,7 @@ void checkOrderPickupDetailsCollector(api.OrderPickupDetailsCollector o) {
 }
 
 core.List<api.OrderPromotionItem> buildUnnamed5113() {
-  var o = <api.OrderPromotionItem>[];
+  final o = <api.OrderPromotionItem>[];
   o.add(buildOrderPromotionItem());
   o.add(buildOrderPromotionItem());
   return o;
@@ -6600,12 +6543,12 @@ core.List<api.OrderPromotionItem> buildUnnamed5113() {
 
 void checkUnnamed5113(core.List<api.OrderPromotionItem> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrderPromotionItem(o[0] as api.OrderPromotionItem);
-  checkOrderPromotionItem(o[1] as api.OrderPromotionItem);
+  checkOrderPromotionItem(o[0]);
+  checkOrderPromotionItem(o[1]);
 }
 
 core.List<api.OrderPromotionItem> buildUnnamed5114() {
-  var o = <api.OrderPromotionItem>[];
+  final o = <api.OrderPromotionItem>[];
   o.add(buildOrderPromotionItem());
   o.add(buildOrderPromotionItem());
   return o;
@@ -6613,13 +6556,13 @@ core.List<api.OrderPromotionItem> buildUnnamed5114() {
 
 void checkUnnamed5114(core.List<api.OrderPromotionItem> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrderPromotionItem(o[0] as api.OrderPromotionItem);
-  checkOrderPromotionItem(o[1] as api.OrderPromotionItem);
+  checkOrderPromotionItem(o[0]);
+  checkOrderPromotionItem(o[1]);
 }
 
 core.int buildCounterOrderPromotion = 0;
 api.OrderPromotion buildOrderPromotion() {
-  var o = api.OrderPromotion();
+  final o = api.OrderPromotion();
   buildCounterOrderPromotion++;
   if (buildCounterOrderPromotion < 3) {
     o.applicableItems = buildUnnamed5113();
@@ -6656,7 +6599,7 @@ void checkOrderPromotion(api.OrderPromotion o) {
       o.merchantPromotionId!,
       unittest.equals('foo'),
     );
-    checkPrice(o.priceValue! as api.Price);
+    checkPrice(o.priceValue!);
     unittest.expect(
       o.shortTitle!,
       unittest.equals('foo'),
@@ -6669,7 +6612,7 @@ void checkOrderPromotion(api.OrderPromotion o) {
       o.subtype!,
       unittest.equals('foo'),
     );
-    checkPrice(o.taxValue! as api.Price);
+    checkPrice(o.taxValue!);
     unittest.expect(
       o.title!,
       unittest.equals('foo'),
@@ -6684,7 +6627,7 @@ void checkOrderPromotion(api.OrderPromotion o) {
 
 core.int buildCounterOrderPromotionItem = 0;
 api.OrderPromotionItem buildOrderPromotionItem() {
-  var o = api.OrderPromotionItem();
+  final o = api.OrderPromotionItem();
   buildCounterOrderPromotionItem++;
   if (buildCounterOrderPromotionItem < 3) {
     o.lineItemId = 'foo';
@@ -6721,7 +6664,7 @@ void checkOrderPromotionItem(api.OrderPromotionItem o) {
 
 core.int buildCounterOrderRefund = 0;
 api.OrderRefund buildOrderRefund() {
-  var o = api.OrderRefund();
+  final o = api.OrderRefund();
   buildCounterOrderRefund++;
   if (buildCounterOrderRefund < 3) {
     o.actor = 'foo';
@@ -6741,7 +6684,7 @@ void checkOrderRefund(api.OrderRefund o) {
       o.actor!,
       unittest.equals('foo'),
     );
-    checkPrice(o.amount! as api.Price);
+    checkPrice(o.amount!);
     unittest.expect(
       o.creationDate!,
       unittest.equals('foo'),
@@ -6760,7 +6703,7 @@ void checkOrderRefund(api.OrderRefund o) {
 
 core.int buildCounterOrderReportDisbursement = 0;
 api.OrderReportDisbursement buildOrderReportDisbursement() {
-  var o = api.OrderReportDisbursement();
+  final o = api.OrderReportDisbursement();
   buildCounterOrderReportDisbursement++;
   if (buildCounterOrderReportDisbursement < 3) {
     o.disbursementAmount = buildPrice();
@@ -6776,7 +6719,7 @@ api.OrderReportDisbursement buildOrderReportDisbursement() {
 void checkOrderReportDisbursement(api.OrderReportDisbursement o) {
   buildCounterOrderReportDisbursement++;
   if (buildCounterOrderReportDisbursement < 3) {
-    checkPrice(o.disbursementAmount! as api.Price);
+    checkPrice(o.disbursementAmount!);
     unittest.expect(
       o.disbursementCreationDate!,
       unittest.equals('foo'),
@@ -6799,7 +6742,7 @@ void checkOrderReportDisbursement(api.OrderReportDisbursement o) {
 
 core.int buildCounterOrderReportTransaction = 0;
 api.OrderReportTransaction buildOrderReportTransaction() {
-  var o = api.OrderReportTransaction();
+  final o = api.OrderReportTransaction();
   buildCounterOrderReportTransaction++;
   if (buildCounterOrderReportTransaction < 3) {
     o.disbursementAmount = buildPrice();
@@ -6819,7 +6762,7 @@ api.OrderReportTransaction buildOrderReportTransaction() {
 void checkOrderReportTransaction(api.OrderReportTransaction o) {
   buildCounterOrderReportTransaction++;
   if (buildCounterOrderReportTransaction < 3) {
-    checkPrice(o.disbursementAmount! as api.Price);
+    checkPrice(o.disbursementAmount!);
     unittest.expect(
       o.disbursementCreationDate!,
       unittest.equals('foo'),
@@ -6844,7 +6787,7 @@ void checkOrderReportTransaction(api.OrderReportTransaction o) {
       o.orderId!,
       unittest.equals('foo'),
     );
-    checkProductAmount(o.productAmount! as api.ProductAmount);
+    checkProductAmount(o.productAmount!);
     unittest.expect(
       o.transactionDate!,
       unittest.equals('foo'),
@@ -6855,7 +6798,7 @@ void checkOrderReportTransaction(api.OrderReportTransaction o) {
 
 core.int buildCounterOrderReturn = 0;
 api.OrderReturn buildOrderReturn() {
-  var o = api.OrderReturn();
+  final o = api.OrderReturn();
   buildCounterOrderReturn++;
   if (buildCounterOrderReturn < 3) {
     o.actor = 'foo';
@@ -6896,7 +6839,7 @@ void checkOrderReturn(api.OrderReturn o) {
 }
 
 core.List<api.OrderShipmentLineItemShipment> buildUnnamed5115() {
-  var o = <api.OrderShipmentLineItemShipment>[];
+  final o = <api.OrderShipmentLineItemShipment>[];
   o.add(buildOrderShipmentLineItemShipment());
   o.add(buildOrderShipmentLineItemShipment());
   return o;
@@ -6904,13 +6847,13 @@ core.List<api.OrderShipmentLineItemShipment> buildUnnamed5115() {
 
 void checkUnnamed5115(core.List<api.OrderShipmentLineItemShipment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrderShipmentLineItemShipment(o[0] as api.OrderShipmentLineItemShipment);
-  checkOrderShipmentLineItemShipment(o[1] as api.OrderShipmentLineItemShipment);
+  checkOrderShipmentLineItemShipment(o[0]);
+  checkOrderShipmentLineItemShipment(o[1]);
 }
 
 core.int buildCounterOrderShipment = 0;
 api.OrderShipment buildOrderShipment() {
-  var o = api.OrderShipment();
+  final o = api.OrderShipment();
   buildCounterOrderShipment++;
   if (buildCounterOrderShipment < 3) {
     o.carrier = 'foo';
@@ -6947,8 +6890,7 @@ void checkOrderShipment(api.OrderShipment o) {
       unittest.equals('foo'),
     );
     checkUnnamed5115(o.lineItems!);
-    checkOrderShipmentScheduledDeliveryDetails(o.scheduledDeliveryDetails!
-        as api.OrderShipmentScheduledDeliveryDetails);
+    checkOrderShipmentScheduledDeliveryDetails(o.scheduledDeliveryDetails!);
     unittest.expect(
       o.shipmentGroupId!,
       unittest.equals('foo'),
@@ -6967,7 +6909,7 @@ void checkOrderShipment(api.OrderShipment o) {
 
 core.int buildCounterOrderShipmentLineItemShipment = 0;
 api.OrderShipmentLineItemShipment buildOrderShipmentLineItemShipment() {
-  var o = api.OrderShipmentLineItemShipment();
+  final o = api.OrderShipmentLineItemShipment();
   buildCounterOrderShipmentLineItemShipment++;
   if (buildCounterOrderShipmentLineItemShipment < 3) {
     o.lineItemId = 'foo';
@@ -7000,7 +6942,7 @@ void checkOrderShipmentLineItemShipment(api.OrderShipmentLineItemShipment o) {
 core.int buildCounterOrderShipmentScheduledDeliveryDetails = 0;
 api.OrderShipmentScheduledDeliveryDetails
     buildOrderShipmentScheduledDeliveryDetails() {
-  var o = api.OrderShipmentScheduledDeliveryDetails();
+  final o = api.OrderShipmentScheduledDeliveryDetails();
   buildCounterOrderShipmentScheduledDeliveryDetails++;
   if (buildCounterOrderShipmentScheduledDeliveryDetails < 3) {
     o.carrierPhoneNumber = 'foo';
@@ -7027,7 +6969,7 @@ void checkOrderShipmentScheduledDeliveryDetails(
 }
 
 core.List<api.OrderTrackingSignalLineItemDetails> buildUnnamed5116() {
-  var o = <api.OrderTrackingSignalLineItemDetails>[];
+  final o = <api.OrderTrackingSignalLineItemDetails>[];
   o.add(buildOrderTrackingSignalLineItemDetails());
   o.add(buildOrderTrackingSignalLineItemDetails());
   return o;
@@ -7035,14 +6977,12 @@ core.List<api.OrderTrackingSignalLineItemDetails> buildUnnamed5116() {
 
 void checkUnnamed5116(core.List<api.OrderTrackingSignalLineItemDetails> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrderTrackingSignalLineItemDetails(
-      o[0] as api.OrderTrackingSignalLineItemDetails);
-  checkOrderTrackingSignalLineItemDetails(
-      o[1] as api.OrderTrackingSignalLineItemDetails);
+  checkOrderTrackingSignalLineItemDetails(o[0]);
+  checkOrderTrackingSignalLineItemDetails(o[1]);
 }
 
 core.List<api.OrderTrackingSignalShipmentLineItemMapping> buildUnnamed5117() {
-  var o = <api.OrderTrackingSignalShipmentLineItemMapping>[];
+  final o = <api.OrderTrackingSignalShipmentLineItemMapping>[];
   o.add(buildOrderTrackingSignalShipmentLineItemMapping());
   o.add(buildOrderTrackingSignalShipmentLineItemMapping());
   return o;
@@ -7051,14 +6991,12 @@ core.List<api.OrderTrackingSignalShipmentLineItemMapping> buildUnnamed5117() {
 void checkUnnamed5117(
     core.List<api.OrderTrackingSignalShipmentLineItemMapping> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrderTrackingSignalShipmentLineItemMapping(
-      o[0] as api.OrderTrackingSignalShipmentLineItemMapping);
-  checkOrderTrackingSignalShipmentLineItemMapping(
-      o[1] as api.OrderTrackingSignalShipmentLineItemMapping);
+  checkOrderTrackingSignalShipmentLineItemMapping(o[0]);
+  checkOrderTrackingSignalShipmentLineItemMapping(o[1]);
 }
 
 core.List<api.OrderTrackingSignalShippingInfo> buildUnnamed5118() {
-  var o = <api.OrderTrackingSignalShippingInfo>[];
+  final o = <api.OrderTrackingSignalShippingInfo>[];
   o.add(buildOrderTrackingSignalShippingInfo());
   o.add(buildOrderTrackingSignalShippingInfo());
   return o;
@@ -7066,15 +7004,13 @@ core.List<api.OrderTrackingSignalShippingInfo> buildUnnamed5118() {
 
 void checkUnnamed5118(core.List<api.OrderTrackingSignalShippingInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrderTrackingSignalShippingInfo(
-      o[0] as api.OrderTrackingSignalShippingInfo);
-  checkOrderTrackingSignalShippingInfo(
-      o[1] as api.OrderTrackingSignalShippingInfo);
+  checkOrderTrackingSignalShippingInfo(o[0]);
+  checkOrderTrackingSignalShippingInfo(o[1]);
 }
 
 core.int buildCounterOrderTrackingSignal = 0;
 api.OrderTrackingSignal buildOrderTrackingSignal() {
-  var o = api.OrderTrackingSignal();
+  final o = api.OrderTrackingSignal();
   buildCounterOrderTrackingSignal++;
   if (buildCounterOrderTrackingSignal < 3) {
     o.customerShippingFee = buildPriceAmount();
@@ -7095,7 +7031,7 @@ api.OrderTrackingSignal buildOrderTrackingSignal() {
 void checkOrderTrackingSignal(api.OrderTrackingSignal o) {
   buildCounterOrderTrackingSignal++;
   if (buildCounterOrderTrackingSignal < 3) {
-    checkPriceAmount(o.customerShippingFee! as api.PriceAmount);
+    checkPriceAmount(o.customerShippingFee!);
     unittest.expect(
       o.deliveryPostalCode!,
       unittest.equals('foo'),
@@ -7109,7 +7045,7 @@ void checkOrderTrackingSignal(api.OrderTrackingSignal o) {
       o.merchantId!,
       unittest.equals('foo'),
     );
-    checkDateTime(o.orderCreatedTime! as api.DateTime);
+    checkDateTime(o.orderCreatedTime!);
     unittest.expect(
       o.orderId!,
       unittest.equals('foo'),
@@ -7127,7 +7063,7 @@ void checkOrderTrackingSignal(api.OrderTrackingSignal o) {
 core.int buildCounterOrderTrackingSignalLineItemDetails = 0;
 api.OrderTrackingSignalLineItemDetails
     buildOrderTrackingSignalLineItemDetails() {
-  var o = api.OrderTrackingSignalLineItemDetails();
+  final o = api.OrderTrackingSignalLineItemDetails();
   buildCounterOrderTrackingSignalLineItemDetails++;
   if (buildCounterOrderTrackingSignalLineItemDetails < 3) {
     o.gtin = 'foo';
@@ -7171,7 +7107,7 @@ void checkOrderTrackingSignalLineItemDetails(
 core.int buildCounterOrderTrackingSignalShipmentLineItemMapping = 0;
 api.OrderTrackingSignalShipmentLineItemMapping
     buildOrderTrackingSignalShipmentLineItemMapping() {
-  var o = api.OrderTrackingSignalShipmentLineItemMapping();
+  final o = api.OrderTrackingSignalShipmentLineItemMapping();
   buildCounterOrderTrackingSignalShipmentLineItemMapping++;
   if (buildCounterOrderTrackingSignalShipmentLineItemMapping < 3) {
     o.lineItemId = 'foo';
@@ -7204,7 +7140,7 @@ void checkOrderTrackingSignalShipmentLineItemMapping(
 
 core.int buildCounterOrderTrackingSignalShippingInfo = 0;
 api.OrderTrackingSignalShippingInfo buildOrderTrackingSignalShippingInfo() {
-  var o = api.OrderTrackingSignalShippingInfo();
+  final o = api.OrderTrackingSignalShippingInfo();
   buildCounterOrderTrackingSignalShippingInfo++;
   if (buildCounterOrderTrackingSignalShippingInfo < 3) {
     o.actualDeliveryTime = buildDateTime();
@@ -7227,7 +7163,7 @@ void checkOrderTrackingSignalShippingInfo(
     api.OrderTrackingSignalShippingInfo o) {
   buildCounterOrderTrackingSignalShippingInfo++;
   if (buildCounterOrderTrackingSignalShippingInfo < 3) {
-    checkDateTime(o.actualDeliveryTime! as api.DateTime);
+    checkDateTime(o.actualDeliveryTime!);
     unittest.expect(
       o.carrierName!,
       unittest.equals('foo'),
@@ -7236,8 +7172,8 @@ void checkOrderTrackingSignalShippingInfo(
       o.carrierServiceName!,
       unittest.equals('foo'),
     );
-    checkDateTime(o.earliestDeliveryPromiseTime! as api.DateTime);
-    checkDateTime(o.latestDeliveryPromiseTime! as api.DateTime);
+    checkDateTime(o.earliestDeliveryPromiseTime!);
+    checkDateTime(o.latestDeliveryPromiseTime!);
     unittest.expect(
       o.originPostalCode!,
       unittest.equals('foo'),
@@ -7250,7 +7186,7 @@ void checkOrderTrackingSignalShippingInfo(
       o.shipmentId!,
       unittest.equals('foo'),
     );
-    checkDateTime(o.shippedTime! as api.DateTime);
+    checkDateTime(o.shippedTime!);
     unittest.expect(
       o.shippingStatus!,
       unittest.equals('foo'),
@@ -7264,7 +7200,7 @@ void checkOrderTrackingSignalShippingInfo(
 }
 
 core.List<api.ShipmentInvoiceLineItemInvoice> buildUnnamed5119() {
-  var o = <api.ShipmentInvoiceLineItemInvoice>[];
+  final o = <api.ShipmentInvoiceLineItemInvoice>[];
   o.add(buildShipmentInvoiceLineItemInvoice());
   o.add(buildShipmentInvoiceLineItemInvoice());
   return o;
@@ -7272,16 +7208,14 @@ core.List<api.ShipmentInvoiceLineItemInvoice> buildUnnamed5119() {
 
 void checkUnnamed5119(core.List<api.ShipmentInvoiceLineItemInvoice> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkShipmentInvoiceLineItemInvoice(
-      o[0] as api.ShipmentInvoiceLineItemInvoice);
-  checkShipmentInvoiceLineItemInvoice(
-      o[1] as api.ShipmentInvoiceLineItemInvoice);
+  checkShipmentInvoiceLineItemInvoice(o[0]);
+  checkShipmentInvoiceLineItemInvoice(o[1]);
 }
 
 core.int buildCounterOrderinvoicesCreateChargeInvoiceRequest = 0;
 api.OrderinvoicesCreateChargeInvoiceRequest
     buildOrderinvoicesCreateChargeInvoiceRequest() {
-  var o = api.OrderinvoicesCreateChargeInvoiceRequest();
+  final o = api.OrderinvoicesCreateChargeInvoiceRequest();
   buildCounterOrderinvoicesCreateChargeInvoiceRequest++;
   if (buildCounterOrderinvoicesCreateChargeInvoiceRequest < 3) {
     o.invoiceId = 'foo';
@@ -7302,7 +7236,7 @@ void checkOrderinvoicesCreateChargeInvoiceRequest(
       o.invoiceId!,
       unittest.equals('foo'),
     );
-    checkInvoiceSummary(o.invoiceSummary! as api.InvoiceSummary);
+    checkInvoiceSummary(o.invoiceSummary!);
     checkUnnamed5119(o.lineItemInvoices!);
     unittest.expect(
       o.operationId!,
@@ -7319,7 +7253,7 @@ void checkOrderinvoicesCreateChargeInvoiceRequest(
 core.int buildCounterOrderinvoicesCreateChargeInvoiceResponse = 0;
 api.OrderinvoicesCreateChargeInvoiceResponse
     buildOrderinvoicesCreateChargeInvoiceResponse() {
-  var o = api.OrderinvoicesCreateChargeInvoiceResponse();
+  final o = api.OrderinvoicesCreateChargeInvoiceResponse();
   buildCounterOrderinvoicesCreateChargeInvoiceResponse++;
   if (buildCounterOrderinvoicesCreateChargeInvoiceResponse < 3) {
     o.executionStatus = 'foo';
@@ -7346,7 +7280,7 @@ void checkOrderinvoicesCreateChargeInvoiceResponse(
 }
 
 core.List<api.ShipmentInvoice> buildUnnamed5120() {
-  var o = <api.ShipmentInvoice>[];
+  final o = <api.ShipmentInvoice>[];
   o.add(buildShipmentInvoice());
   o.add(buildShipmentInvoice());
   return o;
@@ -7354,14 +7288,14 @@ core.List<api.ShipmentInvoice> buildUnnamed5120() {
 
 void checkUnnamed5120(core.List<api.ShipmentInvoice> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkShipmentInvoice(o[0] as api.ShipmentInvoice);
-  checkShipmentInvoice(o[1] as api.ShipmentInvoice);
+  checkShipmentInvoice(o[0]);
+  checkShipmentInvoice(o[1]);
 }
 
 core.int buildCounterOrderinvoicesCreateRefundInvoiceRequest = 0;
 api.OrderinvoicesCreateRefundInvoiceRequest
     buildOrderinvoicesCreateRefundInvoiceRequest() {
-  var o = api.OrderinvoicesCreateRefundInvoiceRequest();
+  final o = api.OrderinvoicesCreateRefundInvoiceRequest();
   buildCounterOrderinvoicesCreateRefundInvoiceRequest++;
   if (buildCounterOrderinvoicesCreateRefundInvoiceRequest < 3) {
     o.invoiceId = 'foo';
@@ -7389,11 +7323,9 @@ void checkOrderinvoicesCreateRefundInvoiceRequest(
       unittest.equals('foo'),
     );
     checkOrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption(
-        o.refundOnlyOption! as api
-            .OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption);
+        o.refundOnlyOption!);
     checkOrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption(
-        o.returnOption! as api
-            .OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption);
+        o.returnOption!);
     checkUnnamed5120(o.shipmentInvoices!);
   }
   buildCounterOrderinvoicesCreateRefundInvoiceRequest--;
@@ -7402,7 +7334,7 @@ void checkOrderinvoicesCreateRefundInvoiceRequest(
 core.int buildCounterOrderinvoicesCreateRefundInvoiceResponse = 0;
 api.OrderinvoicesCreateRefundInvoiceResponse
     buildOrderinvoicesCreateRefundInvoiceResponse() {
-  var o = api.OrderinvoicesCreateRefundInvoiceResponse();
+  final o = api.OrderinvoicesCreateRefundInvoiceResponse();
   buildCounterOrderinvoicesCreateRefundInvoiceResponse++;
   if (buildCounterOrderinvoicesCreateRefundInvoiceResponse < 3) {
     o.executionStatus = 'foo';
@@ -7433,7 +7365,7 @@ core.int
     0;
 api.OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption
     buildOrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption() {
-  var o =
+  final o =
       api.OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption();
   buildCounterOrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption++;
   if (buildCounterOrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption <
@@ -7467,7 +7399,7 @@ core.int
     0;
 api.OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption
     buildOrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption() {
-  var o =
+  final o =
       api.OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption();
   buildCounterOrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption++;
   if (buildCounterOrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption <
@@ -7497,7 +7429,7 @@ void checkOrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption(
 }
 
 core.List<api.OrderReportDisbursement> buildUnnamed5121() {
-  var o = <api.OrderReportDisbursement>[];
+  final o = <api.OrderReportDisbursement>[];
   o.add(buildOrderReportDisbursement());
   o.add(buildOrderReportDisbursement());
   return o;
@@ -7505,14 +7437,14 @@ core.List<api.OrderReportDisbursement> buildUnnamed5121() {
 
 void checkUnnamed5121(core.List<api.OrderReportDisbursement> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrderReportDisbursement(o[0] as api.OrderReportDisbursement);
-  checkOrderReportDisbursement(o[1] as api.OrderReportDisbursement);
+  checkOrderReportDisbursement(o[0]);
+  checkOrderReportDisbursement(o[1]);
 }
 
 core.int buildCounterOrderreportsListDisbursementsResponse = 0;
 api.OrderreportsListDisbursementsResponse
     buildOrderreportsListDisbursementsResponse() {
-  var o = api.OrderreportsListDisbursementsResponse();
+  final o = api.OrderreportsListDisbursementsResponse();
   buildCounterOrderreportsListDisbursementsResponse++;
   if (buildCounterOrderreportsListDisbursementsResponse < 3) {
     o.disbursements = buildUnnamed5121();
@@ -7541,7 +7473,7 @@ void checkOrderreportsListDisbursementsResponse(
 }
 
 core.List<api.OrderReportTransaction> buildUnnamed5122() {
-  var o = <api.OrderReportTransaction>[];
+  final o = <api.OrderReportTransaction>[];
   o.add(buildOrderReportTransaction());
   o.add(buildOrderReportTransaction());
   return o;
@@ -7549,14 +7481,14 @@ core.List<api.OrderReportTransaction> buildUnnamed5122() {
 
 void checkUnnamed5122(core.List<api.OrderReportTransaction> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrderReportTransaction(o[0] as api.OrderReportTransaction);
-  checkOrderReportTransaction(o[1] as api.OrderReportTransaction);
+  checkOrderReportTransaction(o[0]);
+  checkOrderReportTransaction(o[1]);
 }
 
 core.int buildCounterOrderreportsListTransactionsResponse = 0;
 api.OrderreportsListTransactionsResponse
     buildOrderreportsListTransactionsResponse() {
-  var o = api.OrderreportsListTransactionsResponse();
+  final o = api.OrderreportsListTransactionsResponse();
   buildCounterOrderreportsListTransactionsResponse++;
   if (buildCounterOrderreportsListTransactionsResponse < 3) {
     o.kind = 'foo';
@@ -7586,7 +7518,7 @@ void checkOrderreportsListTransactionsResponse(
 
 core.int buildCounterOrderreturnsAcknowledgeRequest = 0;
 api.OrderreturnsAcknowledgeRequest buildOrderreturnsAcknowledgeRequest() {
-  var o = api.OrderreturnsAcknowledgeRequest();
+  final o = api.OrderreturnsAcknowledgeRequest();
   buildCounterOrderreturnsAcknowledgeRequest++;
   if (buildCounterOrderreturnsAcknowledgeRequest < 3) {
     o.operationId = 'foo';
@@ -7608,7 +7540,7 @@ void checkOrderreturnsAcknowledgeRequest(api.OrderreturnsAcknowledgeRequest o) {
 
 core.int buildCounterOrderreturnsAcknowledgeResponse = 0;
 api.OrderreturnsAcknowledgeResponse buildOrderreturnsAcknowledgeResponse() {
-  var o = api.OrderreturnsAcknowledgeResponse();
+  final o = api.OrderreturnsAcknowledgeResponse();
   buildCounterOrderreturnsAcknowledgeResponse++;
   if (buildCounterOrderreturnsAcknowledgeResponse < 3) {
     o.executionStatus = 'foo';
@@ -7635,7 +7567,7 @@ void checkOrderreturnsAcknowledgeResponse(
 }
 
 core.List<api.OrderreturnsLineItem> buildUnnamed5123() {
-  var o = <api.OrderreturnsLineItem>[];
+  final o = <api.OrderreturnsLineItem>[];
   o.add(buildOrderreturnsLineItem());
   o.add(buildOrderreturnsLineItem());
   return o;
@@ -7643,14 +7575,14 @@ core.List<api.OrderreturnsLineItem> buildUnnamed5123() {
 
 void checkUnnamed5123(core.List<api.OrderreturnsLineItem> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrderreturnsLineItem(o[0] as api.OrderreturnsLineItem);
-  checkOrderreturnsLineItem(o[1] as api.OrderreturnsLineItem);
+  checkOrderreturnsLineItem(o[0]);
+  checkOrderreturnsLineItem(o[1]);
 }
 
 core.int buildCounterOrderreturnsCreateOrderReturnRequest = 0;
 api.OrderreturnsCreateOrderReturnRequest
     buildOrderreturnsCreateOrderReturnRequest() {
-  var o = api.OrderreturnsCreateOrderReturnRequest();
+  final o = api.OrderreturnsCreateOrderReturnRequest();
   buildCounterOrderreturnsCreateOrderReturnRequest++;
   if (buildCounterOrderreturnsCreateOrderReturnRequest < 3) {
     o.lineItems = buildUnnamed5123();
@@ -7686,7 +7618,7 @@ void checkOrderreturnsCreateOrderReturnRequest(
 core.int buildCounterOrderreturnsCreateOrderReturnResponse = 0;
 api.OrderreturnsCreateOrderReturnResponse
     buildOrderreturnsCreateOrderReturnResponse() {
-  var o = api.OrderreturnsCreateOrderReturnResponse();
+  final o = api.OrderreturnsCreateOrderReturnResponse();
   buildCounterOrderreturnsCreateOrderReturnResponse++;
   if (buildCounterOrderreturnsCreateOrderReturnResponse < 3) {
     o.executionStatus = 'foo';
@@ -7709,14 +7641,14 @@ void checkOrderreturnsCreateOrderReturnResponse(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkMerchantOrderReturn(o.orderReturn! as api.MerchantOrderReturn);
+    checkMerchantOrderReturn(o.orderReturn!);
   }
   buildCounterOrderreturnsCreateOrderReturnResponse--;
 }
 
 core.int buildCounterOrderreturnsLineItem = 0;
 api.OrderreturnsLineItem buildOrderreturnsLineItem() {
-  var o = api.OrderreturnsLineItem();
+  final o = api.OrderreturnsLineItem();
   buildCounterOrderreturnsLineItem++;
   if (buildCounterOrderreturnsLineItem < 3) {
     o.lineItemId = 'foo';
@@ -7747,7 +7679,7 @@ void checkOrderreturnsLineItem(api.OrderreturnsLineItem o) {
 }
 
 core.List<api.MerchantOrderReturn> buildUnnamed5124() {
-  var o = <api.MerchantOrderReturn>[];
+  final o = <api.MerchantOrderReturn>[];
   o.add(buildMerchantOrderReturn());
   o.add(buildMerchantOrderReturn());
   return o;
@@ -7755,13 +7687,13 @@ core.List<api.MerchantOrderReturn> buildUnnamed5124() {
 
 void checkUnnamed5124(core.List<api.MerchantOrderReturn> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMerchantOrderReturn(o[0] as api.MerchantOrderReturn);
-  checkMerchantOrderReturn(o[1] as api.MerchantOrderReturn);
+  checkMerchantOrderReturn(o[0]);
+  checkMerchantOrderReturn(o[1]);
 }
 
 core.int buildCounterOrderreturnsListResponse = 0;
 api.OrderreturnsListResponse buildOrderreturnsListResponse() {
-  var o = api.OrderreturnsListResponse();
+  final o = api.OrderreturnsListResponse();
   buildCounterOrderreturnsListResponse++;
   if (buildCounterOrderreturnsListResponse < 3) {
     o.kind = 'foo';
@@ -7790,7 +7722,7 @@ void checkOrderreturnsListResponse(api.OrderreturnsListResponse o) {
 
 core.int buildCounterOrderreturnsPartialRefund = 0;
 api.OrderreturnsPartialRefund buildOrderreturnsPartialRefund() {
-  var o = api.OrderreturnsPartialRefund();
+  final o = api.OrderreturnsPartialRefund();
   buildCounterOrderreturnsPartialRefund++;
   if (buildCounterOrderreturnsPartialRefund < 3) {
     o.priceAmount = buildPrice();
@@ -7803,14 +7735,14 @@ api.OrderreturnsPartialRefund buildOrderreturnsPartialRefund() {
 void checkOrderreturnsPartialRefund(api.OrderreturnsPartialRefund o) {
   buildCounterOrderreturnsPartialRefund++;
   if (buildCounterOrderreturnsPartialRefund < 3) {
-    checkPrice(o.priceAmount! as api.Price);
-    checkPrice(o.taxAmount! as api.Price);
+    checkPrice(o.priceAmount!);
+    checkPrice(o.taxAmount!);
   }
   buildCounterOrderreturnsPartialRefund--;
 }
 
 core.List<api.OrderreturnsReturnItem> buildUnnamed5125() {
-  var o = <api.OrderreturnsReturnItem>[];
+  final o = <api.OrderreturnsReturnItem>[];
   o.add(buildOrderreturnsReturnItem());
   o.add(buildOrderreturnsReturnItem());
   return o;
@@ -7818,13 +7750,13 @@ core.List<api.OrderreturnsReturnItem> buildUnnamed5125() {
 
 void checkUnnamed5125(core.List<api.OrderreturnsReturnItem> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrderreturnsReturnItem(o[0] as api.OrderreturnsReturnItem);
-  checkOrderreturnsReturnItem(o[1] as api.OrderreturnsReturnItem);
+  checkOrderreturnsReturnItem(o[0]);
+  checkOrderreturnsReturnItem(o[1]);
 }
 
 core.int buildCounterOrderreturnsProcessRequest = 0;
 api.OrderreturnsProcessRequest buildOrderreturnsProcessRequest() {
-  var o = api.OrderreturnsProcessRequest();
+  final o = api.OrderreturnsProcessRequest();
   buildCounterOrderreturnsProcessRequest++;
   if (buildCounterOrderreturnsProcessRequest < 3) {
     o.fullChargeReturnShippingCost = true;
@@ -7844,8 +7776,7 @@ void checkOrderreturnsProcessRequest(api.OrderreturnsProcessRequest o) {
       o.operationId!,
       unittest.equals('foo'),
     );
-    checkOrderreturnsRefundOperation(
-        o.refundShippingFee! as api.OrderreturnsRefundOperation);
+    checkOrderreturnsRefundOperation(o.refundShippingFee!);
     checkUnnamed5125(o.returnItems!);
   }
   buildCounterOrderreturnsProcessRequest--;
@@ -7853,7 +7784,7 @@ void checkOrderreturnsProcessRequest(api.OrderreturnsProcessRequest o) {
 
 core.int buildCounterOrderreturnsProcessResponse = 0;
 api.OrderreturnsProcessResponse buildOrderreturnsProcessResponse() {
-  var o = api.OrderreturnsProcessResponse();
+  final o = api.OrderreturnsProcessResponse();
   buildCounterOrderreturnsProcessResponse++;
   if (buildCounterOrderreturnsProcessResponse < 3) {
     o.executionStatus = 'foo';
@@ -7880,7 +7811,7 @@ void checkOrderreturnsProcessResponse(api.OrderreturnsProcessResponse o) {
 
 core.int buildCounterOrderreturnsRefundOperation = 0;
 api.OrderreturnsRefundOperation buildOrderreturnsRefundOperation() {
-  var o = api.OrderreturnsRefundOperation();
+  final o = api.OrderreturnsRefundOperation();
   buildCounterOrderreturnsRefundOperation++;
   if (buildCounterOrderreturnsRefundOperation < 3) {
     o.fullRefund = true;
@@ -7897,8 +7828,7 @@ void checkOrderreturnsRefundOperation(api.OrderreturnsRefundOperation o) {
   buildCounterOrderreturnsRefundOperation++;
   if (buildCounterOrderreturnsRefundOperation < 3) {
     unittest.expect(o.fullRefund!, unittest.isTrue);
-    checkOrderreturnsPartialRefund(
-        o.partialRefund! as api.OrderreturnsPartialRefund);
+    checkOrderreturnsPartialRefund(o.partialRefund!);
     unittest.expect(
       o.paymentType!,
       unittest.equals('foo'),
@@ -7917,7 +7847,7 @@ void checkOrderreturnsRefundOperation(api.OrderreturnsRefundOperation o) {
 
 core.int buildCounterOrderreturnsRejectOperation = 0;
 api.OrderreturnsRejectOperation buildOrderreturnsRejectOperation() {
-  var o = api.OrderreturnsRejectOperation();
+  final o = api.OrderreturnsRejectOperation();
   buildCounterOrderreturnsRejectOperation++;
   if (buildCounterOrderreturnsRejectOperation < 3) {
     o.reason = 'foo';
@@ -7944,7 +7874,7 @@ void checkOrderreturnsRejectOperation(api.OrderreturnsRejectOperation o) {
 
 core.int buildCounterOrderreturnsReturnItem = 0;
 api.OrderreturnsReturnItem buildOrderreturnsReturnItem() {
-  var o = api.OrderreturnsReturnItem();
+  final o = api.OrderreturnsReturnItem();
   buildCounterOrderreturnsReturnItem++;
   if (buildCounterOrderreturnsReturnItem < 3) {
     o.refund = buildOrderreturnsRefundOperation();
@@ -7958,10 +7888,8 @@ api.OrderreturnsReturnItem buildOrderreturnsReturnItem() {
 void checkOrderreturnsReturnItem(api.OrderreturnsReturnItem o) {
   buildCounterOrderreturnsReturnItem++;
   if (buildCounterOrderreturnsReturnItem < 3) {
-    checkOrderreturnsRefundOperation(
-        o.refund! as api.OrderreturnsRefundOperation);
-    checkOrderreturnsRejectOperation(
-        o.reject! as api.OrderreturnsRejectOperation);
+    checkOrderreturnsRefundOperation(o.refund!);
+    checkOrderreturnsRejectOperation(o.reject!);
     unittest.expect(
       o.returnItemId!,
       unittest.equals('foo'),
@@ -7972,7 +7900,7 @@ void checkOrderreturnsReturnItem(api.OrderreturnsReturnItem o) {
 
 core.int buildCounterOrdersAcknowledgeRequest = 0;
 api.OrdersAcknowledgeRequest buildOrdersAcknowledgeRequest() {
-  var o = api.OrdersAcknowledgeRequest();
+  final o = api.OrdersAcknowledgeRequest();
   buildCounterOrdersAcknowledgeRequest++;
   if (buildCounterOrdersAcknowledgeRequest < 3) {
     o.operationId = 'foo';
@@ -7994,7 +7922,7 @@ void checkOrdersAcknowledgeRequest(api.OrdersAcknowledgeRequest o) {
 
 core.int buildCounterOrdersAcknowledgeResponse = 0;
 api.OrdersAcknowledgeResponse buildOrdersAcknowledgeResponse() {
-  var o = api.OrdersAcknowledgeResponse();
+  final o = api.OrdersAcknowledgeResponse();
   buildCounterOrdersAcknowledgeResponse++;
   if (buildCounterOrdersAcknowledgeResponse < 3) {
     o.executionStatus = 'foo';
@@ -8021,7 +7949,7 @@ void checkOrdersAcknowledgeResponse(api.OrdersAcknowledgeResponse o) {
 
 core.int buildCounterOrdersAdvanceTestOrderResponse = 0;
 api.OrdersAdvanceTestOrderResponse buildOrdersAdvanceTestOrderResponse() {
-  var o = api.OrdersAdvanceTestOrderResponse();
+  final o = api.OrdersAdvanceTestOrderResponse();
   buildCounterOrdersAdvanceTestOrderResponse++;
   if (buildCounterOrdersAdvanceTestOrderResponse < 3) {
     o.kind = 'foo';
@@ -8043,7 +7971,7 @@ void checkOrdersAdvanceTestOrderResponse(api.OrdersAdvanceTestOrderResponse o) {
 
 core.int buildCounterOrdersCancelLineItemRequest = 0;
 api.OrdersCancelLineItemRequest buildOrdersCancelLineItemRequest() {
-  var o = api.OrdersCancelLineItemRequest();
+  final o = api.OrdersCancelLineItemRequest();
   buildCounterOrdersCancelLineItemRequest++;
   if (buildCounterOrdersCancelLineItemRequest < 3) {
     o.lineItemId = 'foo';
@@ -8090,7 +8018,7 @@ void checkOrdersCancelLineItemRequest(api.OrdersCancelLineItemRequest o) {
 
 core.int buildCounterOrdersCancelLineItemResponse = 0;
 api.OrdersCancelLineItemResponse buildOrdersCancelLineItemResponse() {
-  var o = api.OrdersCancelLineItemResponse();
+  final o = api.OrdersCancelLineItemResponse();
   buildCounterOrdersCancelLineItemResponse++;
   if (buildCounterOrdersCancelLineItemResponse < 3) {
     o.executionStatus = 'foo';
@@ -8117,7 +8045,7 @@ void checkOrdersCancelLineItemResponse(api.OrdersCancelLineItemResponse o) {
 
 core.int buildCounterOrdersCancelRequest = 0;
 api.OrdersCancelRequest buildOrdersCancelRequest() {
-  var o = api.OrdersCancelRequest();
+  final o = api.OrdersCancelRequest();
   buildCounterOrdersCancelRequest++;
   if (buildCounterOrdersCancelRequest < 3) {
     o.operationId = 'foo';
@@ -8149,7 +8077,7 @@ void checkOrdersCancelRequest(api.OrdersCancelRequest o) {
 
 core.int buildCounterOrdersCancelResponse = 0;
 api.OrdersCancelResponse buildOrdersCancelResponse() {
-  var o = api.OrdersCancelResponse();
+  final o = api.OrdersCancelResponse();
   buildCounterOrdersCancelResponse++;
   if (buildCounterOrdersCancelResponse < 3) {
     o.executionStatus = 'foo';
@@ -8177,7 +8105,7 @@ void checkOrdersCancelResponse(api.OrdersCancelResponse o) {
 core.int buildCounterOrdersCancelTestOrderByCustomerRequest = 0;
 api.OrdersCancelTestOrderByCustomerRequest
     buildOrdersCancelTestOrderByCustomerRequest() {
-  var o = api.OrdersCancelTestOrderByCustomerRequest();
+  final o = api.OrdersCancelTestOrderByCustomerRequest();
   buildCounterOrdersCancelTestOrderByCustomerRequest++;
   if (buildCounterOrdersCancelTestOrderByCustomerRequest < 3) {
     o.reason = 'foo';
@@ -8201,7 +8129,7 @@ void checkOrdersCancelTestOrderByCustomerRequest(
 core.int buildCounterOrdersCancelTestOrderByCustomerResponse = 0;
 api.OrdersCancelTestOrderByCustomerResponse
     buildOrdersCancelTestOrderByCustomerResponse() {
-  var o = api.OrdersCancelTestOrderByCustomerResponse();
+  final o = api.OrdersCancelTestOrderByCustomerResponse();
   buildCounterOrdersCancelTestOrderByCustomerResponse++;
   if (buildCounterOrdersCancelTestOrderByCustomerResponse < 3) {
     o.kind = 'foo';
@@ -8224,7 +8152,7 @@ void checkOrdersCancelTestOrderByCustomerResponse(
 
 core.int buildCounterOrdersCreateTestOrderRequest = 0;
 api.OrdersCreateTestOrderRequest buildOrdersCreateTestOrderRequest() {
-  var o = api.OrdersCreateTestOrderRequest();
+  final o = api.OrdersCreateTestOrderRequest();
   buildCounterOrdersCreateTestOrderRequest++;
   if (buildCounterOrdersCreateTestOrderRequest < 3) {
     o.country = 'foo';
@@ -8246,14 +8174,14 @@ void checkOrdersCreateTestOrderRequest(api.OrdersCreateTestOrderRequest o) {
       o.templateName!,
       unittest.equals('foo'),
     );
-    checkTestOrder(o.testOrder! as api.TestOrder);
+    checkTestOrder(o.testOrder!);
   }
   buildCounterOrdersCreateTestOrderRequest--;
 }
 
 core.int buildCounterOrdersCreateTestOrderResponse = 0;
 api.OrdersCreateTestOrderResponse buildOrdersCreateTestOrderResponse() {
-  var o = api.OrdersCreateTestOrderResponse();
+  final o = api.OrdersCreateTestOrderResponse();
   buildCounterOrdersCreateTestOrderResponse++;
   if (buildCounterOrdersCreateTestOrderResponse < 3) {
     o.kind = 'foo';
@@ -8280,7 +8208,7 @@ void checkOrdersCreateTestOrderResponse(api.OrdersCreateTestOrderResponse o) {
 
 core.List<api.OrdersCustomBatchRequestEntryCreateTestReturnReturnItem>
     buildUnnamed5126() {
-  var o = <api.OrdersCustomBatchRequestEntryCreateTestReturnReturnItem>[];
+  final o = <api.OrdersCustomBatchRequestEntryCreateTestReturnReturnItem>[];
   o.add(buildOrdersCustomBatchRequestEntryCreateTestReturnReturnItem());
   o.add(buildOrdersCustomBatchRequestEntryCreateTestReturnReturnItem());
   return o;
@@ -8289,15 +8217,13 @@ core.List<api.OrdersCustomBatchRequestEntryCreateTestReturnReturnItem>
 void checkUnnamed5126(
     core.List<api.OrdersCustomBatchRequestEntryCreateTestReturnReturnItem> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrdersCustomBatchRequestEntryCreateTestReturnReturnItem(
-      o[0] as api.OrdersCustomBatchRequestEntryCreateTestReturnReturnItem);
-  checkOrdersCustomBatchRequestEntryCreateTestReturnReturnItem(
-      o[1] as api.OrdersCustomBatchRequestEntryCreateTestReturnReturnItem);
+  checkOrdersCustomBatchRequestEntryCreateTestReturnReturnItem(o[0]);
+  checkOrdersCustomBatchRequestEntryCreateTestReturnReturnItem(o[1]);
 }
 
 core.int buildCounterOrdersCreateTestReturnRequest = 0;
 api.OrdersCreateTestReturnRequest buildOrdersCreateTestReturnRequest() {
-  var o = api.OrdersCreateTestReturnRequest();
+  final o = api.OrdersCreateTestReturnRequest();
   buildCounterOrdersCreateTestReturnRequest++;
   if (buildCounterOrdersCreateTestReturnRequest < 3) {
     o.items = buildUnnamed5126();
@@ -8316,7 +8242,7 @@ void checkOrdersCreateTestReturnRequest(api.OrdersCreateTestReturnRequest o) {
 
 core.int buildCounterOrdersCreateTestReturnResponse = 0;
 api.OrdersCreateTestReturnResponse buildOrdersCreateTestReturnResponse() {
-  var o = api.OrdersCreateTestReturnResponse();
+  final o = api.OrdersCreateTestReturnResponse();
   buildCounterOrdersCreateTestReturnResponse++;
   if (buildCounterOrdersCreateTestReturnResponse < 3) {
     o.kind = 'foo';
@@ -8345,7 +8271,7 @@ core.int buildCounterOrdersCustomBatchRequestEntryCreateTestReturnReturnItem =
     0;
 api.OrdersCustomBatchRequestEntryCreateTestReturnReturnItem
     buildOrdersCustomBatchRequestEntryCreateTestReturnReturnItem() {
-  var o = api.OrdersCustomBatchRequestEntryCreateTestReturnReturnItem();
+  final o = api.OrdersCustomBatchRequestEntryCreateTestReturnReturnItem();
   buildCounterOrdersCustomBatchRequestEntryCreateTestReturnReturnItem++;
   if (buildCounterOrdersCustomBatchRequestEntryCreateTestReturnReturnItem < 3) {
     o.lineItemId = 'foo';
@@ -8374,7 +8300,7 @@ void checkOrdersCustomBatchRequestEntryCreateTestReturnReturnItem(
 core.int buildCounterOrdersCustomBatchRequestEntryRefundItemItem = 0;
 api.OrdersCustomBatchRequestEntryRefundItemItem
     buildOrdersCustomBatchRequestEntryRefundItemItem() {
-  var o = api.OrdersCustomBatchRequestEntryRefundItemItem();
+  final o = api.OrdersCustomBatchRequestEntryRefundItemItem();
   buildCounterOrdersCustomBatchRequestEntryRefundItemItem++;
   if (buildCounterOrdersCustomBatchRequestEntryRefundItemItem < 3) {
     o.amount = buildMonetaryAmount();
@@ -8391,7 +8317,7 @@ void checkOrdersCustomBatchRequestEntryRefundItemItem(
     api.OrdersCustomBatchRequestEntryRefundItemItem o) {
   buildCounterOrdersCustomBatchRequestEntryRefundItemItem++;
   if (buildCounterOrdersCustomBatchRequestEntryRefundItemItem < 3) {
-    checkMonetaryAmount(o.amount! as api.MonetaryAmount);
+    checkMonetaryAmount(o.amount!);
     unittest.expect(o.fullRefund!, unittest.isTrue);
     unittest.expect(
       o.lineItemId!,
@@ -8412,7 +8338,7 @@ void checkOrdersCustomBatchRequestEntryRefundItemItem(
 core.int buildCounterOrdersCustomBatchRequestEntryRefundItemShipping = 0;
 api.OrdersCustomBatchRequestEntryRefundItemShipping
     buildOrdersCustomBatchRequestEntryRefundItemShipping() {
-  var o = api.OrdersCustomBatchRequestEntryRefundItemShipping();
+  final o = api.OrdersCustomBatchRequestEntryRefundItemShipping();
   buildCounterOrdersCustomBatchRequestEntryRefundItemShipping++;
   if (buildCounterOrdersCustomBatchRequestEntryRefundItemShipping < 3) {
     o.amount = buildPrice();
@@ -8426,7 +8352,7 @@ void checkOrdersCustomBatchRequestEntryRefundItemShipping(
     api.OrdersCustomBatchRequestEntryRefundItemShipping o) {
   buildCounterOrdersCustomBatchRequestEntryRefundItemShipping++;
   if (buildCounterOrdersCustomBatchRequestEntryRefundItemShipping < 3) {
-    checkPrice(o.amount! as api.Price);
+    checkPrice(o.amount!);
     unittest.expect(o.fullRefund!, unittest.isTrue);
   }
   buildCounterOrdersCustomBatchRequestEntryRefundItemShipping--;
@@ -8435,7 +8361,7 @@ void checkOrdersCustomBatchRequestEntryRefundItemShipping(
 core.int buildCounterOrdersCustomBatchRequestEntryShipLineItemsShipmentInfo = 0;
 api.OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo
     buildOrdersCustomBatchRequestEntryShipLineItemsShipmentInfo() {
-  var o = api.OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo();
+  final o = api.OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo();
   buildCounterOrdersCustomBatchRequestEntryShipLineItemsShipmentInfo++;
   if (buildCounterOrdersCustomBatchRequestEntryShipLineItemsShipmentInfo < 3) {
     o.carrier = 'foo';
@@ -8471,7 +8397,7 @@ core.int
     0;
 api.OrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails
     buildOrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails() {
-  var o =
+  final o =
       api.OrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails();
   buildCounterOrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails++;
   if (buildCounterOrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails <
@@ -8503,7 +8429,7 @@ void checkOrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails(
 core.int buildCounterOrdersGetByMerchantOrderIdResponse = 0;
 api.OrdersGetByMerchantOrderIdResponse
     buildOrdersGetByMerchantOrderIdResponse() {
-  var o = api.OrdersGetByMerchantOrderIdResponse();
+  final o = api.OrdersGetByMerchantOrderIdResponse();
   buildCounterOrdersGetByMerchantOrderIdResponse++;
   if (buildCounterOrdersGetByMerchantOrderIdResponse < 3) {
     o.kind = 'foo';
@@ -8521,7 +8447,7 @@ void checkOrdersGetByMerchantOrderIdResponse(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkOrder(o.order! as api.Order);
+    checkOrder(o.order!);
   }
   buildCounterOrdersGetByMerchantOrderIdResponse--;
 }
@@ -8529,7 +8455,7 @@ void checkOrdersGetByMerchantOrderIdResponse(
 core.int buildCounterOrdersGetTestOrderTemplateResponse = 0;
 api.OrdersGetTestOrderTemplateResponse
     buildOrdersGetTestOrderTemplateResponse() {
-  var o = api.OrdersGetTestOrderTemplateResponse();
+  final o = api.OrdersGetTestOrderTemplateResponse();
   buildCounterOrdersGetTestOrderTemplateResponse++;
   if (buildCounterOrdersGetTestOrderTemplateResponse < 3) {
     o.kind = 'foo';
@@ -8547,7 +8473,7 @@ void checkOrdersGetTestOrderTemplateResponse(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkTestOrder(o.template! as api.TestOrder);
+    checkTestOrder(o.template!);
   }
   buildCounterOrdersGetTestOrderTemplateResponse--;
 }
@@ -8555,7 +8481,7 @@ void checkOrdersGetTestOrderTemplateResponse(
 core.int buildCounterOrdersInStoreRefundLineItemRequest = 0;
 api.OrdersInStoreRefundLineItemRequest
     buildOrdersInStoreRefundLineItemRequest() {
-  var o = api.OrdersInStoreRefundLineItemRequest();
+  final o = api.OrdersInStoreRefundLineItemRequest();
   buildCounterOrdersInStoreRefundLineItemRequest++;
   if (buildCounterOrdersInStoreRefundLineItemRequest < 3) {
     o.lineItemId = 'foo';
@@ -8583,7 +8509,7 @@ void checkOrdersInStoreRefundLineItemRequest(
       o.operationId!,
       unittest.equals('foo'),
     );
-    checkPrice(o.priceAmount! as api.Price);
+    checkPrice(o.priceAmount!);
     unittest.expect(
       o.productId!,
       unittest.equals('foo'),
@@ -8600,7 +8526,7 @@ void checkOrdersInStoreRefundLineItemRequest(
       o.reasonText!,
       unittest.equals('foo'),
     );
-    checkPrice(o.taxAmount! as api.Price);
+    checkPrice(o.taxAmount!);
   }
   buildCounterOrdersInStoreRefundLineItemRequest--;
 }
@@ -8608,7 +8534,7 @@ void checkOrdersInStoreRefundLineItemRequest(
 core.int buildCounterOrdersInStoreRefundLineItemResponse = 0;
 api.OrdersInStoreRefundLineItemResponse
     buildOrdersInStoreRefundLineItemResponse() {
-  var o = api.OrdersInStoreRefundLineItemResponse();
+  final o = api.OrdersInStoreRefundLineItemResponse();
   buildCounterOrdersInStoreRefundLineItemResponse++;
   if (buildCounterOrdersInStoreRefundLineItemResponse < 3) {
     o.executionStatus = 'foo';
@@ -8635,7 +8561,7 @@ void checkOrdersInStoreRefundLineItemResponse(
 }
 
 core.List<api.Order> buildUnnamed5127() {
-  var o = <api.Order>[];
+  final o = <api.Order>[];
   o.add(buildOrder());
   o.add(buildOrder());
   return o;
@@ -8643,13 +8569,13 @@ core.List<api.Order> buildUnnamed5127() {
 
 void checkUnnamed5127(core.List<api.Order> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrder(o[0] as api.Order);
-  checkOrder(o[1] as api.Order);
+  checkOrder(o[0]);
+  checkOrder(o[1]);
 }
 
 core.int buildCounterOrdersListResponse = 0;
 api.OrdersListResponse buildOrdersListResponse() {
-  var o = api.OrdersListResponse();
+  final o = api.OrdersListResponse();
   buildCounterOrdersListResponse++;
   if (buildCounterOrdersListResponse < 3) {
     o.kind = 'foo';
@@ -8677,7 +8603,7 @@ void checkOrdersListResponse(api.OrdersListResponse o) {
 }
 
 core.List<api.OrdersCustomBatchRequestEntryRefundItemItem> buildUnnamed5128() {
-  var o = <api.OrdersCustomBatchRequestEntryRefundItemItem>[];
+  final o = <api.OrdersCustomBatchRequestEntryRefundItemItem>[];
   o.add(buildOrdersCustomBatchRequestEntryRefundItemItem());
   o.add(buildOrdersCustomBatchRequestEntryRefundItemItem());
   return o;
@@ -8686,15 +8612,13 @@ core.List<api.OrdersCustomBatchRequestEntryRefundItemItem> buildUnnamed5128() {
 void checkUnnamed5128(
     core.List<api.OrdersCustomBatchRequestEntryRefundItemItem> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrdersCustomBatchRequestEntryRefundItemItem(
-      o[0] as api.OrdersCustomBatchRequestEntryRefundItemItem);
-  checkOrdersCustomBatchRequestEntryRefundItemItem(
-      o[1] as api.OrdersCustomBatchRequestEntryRefundItemItem);
+  checkOrdersCustomBatchRequestEntryRefundItemItem(o[0]);
+  checkOrdersCustomBatchRequestEntryRefundItemItem(o[1]);
 }
 
 core.int buildCounterOrdersRefundItemRequest = 0;
 api.OrdersRefundItemRequest buildOrdersRefundItemRequest() {
-  var o = api.OrdersRefundItemRequest();
+  final o = api.OrdersRefundItemRequest();
   buildCounterOrdersRefundItemRequest++;
   if (buildCounterOrdersRefundItemRequest < 3) {
     o.items = buildUnnamed5128();
@@ -8723,15 +8647,14 @@ void checkOrdersRefundItemRequest(api.OrdersRefundItemRequest o) {
       o.reasonText!,
       unittest.equals('foo'),
     );
-    checkOrdersCustomBatchRequestEntryRefundItemShipping(
-        o.shipping! as api.OrdersCustomBatchRequestEntryRefundItemShipping);
+    checkOrdersCustomBatchRequestEntryRefundItemShipping(o.shipping!);
   }
   buildCounterOrdersRefundItemRequest--;
 }
 
 core.int buildCounterOrdersRefundItemResponse = 0;
 api.OrdersRefundItemResponse buildOrdersRefundItemResponse() {
-  var o = api.OrdersRefundItemResponse();
+  final o = api.OrdersRefundItemResponse();
   buildCounterOrdersRefundItemResponse++;
   if (buildCounterOrdersRefundItemResponse < 3) {
     o.executionStatus = 'foo';
@@ -8758,7 +8681,7 @@ void checkOrdersRefundItemResponse(api.OrdersRefundItemResponse o) {
 
 core.int buildCounterOrdersRefundOrderRequest = 0;
 api.OrdersRefundOrderRequest buildOrdersRefundOrderRequest() {
-  var o = api.OrdersRefundOrderRequest();
+  final o = api.OrdersRefundOrderRequest();
   buildCounterOrdersRefundOrderRequest++;
   if (buildCounterOrdersRefundOrderRequest < 3) {
     o.amount = buildMonetaryAmount();
@@ -8774,7 +8697,7 @@ api.OrdersRefundOrderRequest buildOrdersRefundOrderRequest() {
 void checkOrdersRefundOrderRequest(api.OrdersRefundOrderRequest o) {
   buildCounterOrdersRefundOrderRequest++;
   if (buildCounterOrdersRefundOrderRequest < 3) {
-    checkMonetaryAmount(o.amount! as api.MonetaryAmount);
+    checkMonetaryAmount(o.amount!);
     unittest.expect(o.fullRefund!, unittest.isTrue);
     unittest.expect(
       o.operationId!,
@@ -8794,7 +8717,7 @@ void checkOrdersRefundOrderRequest(api.OrdersRefundOrderRequest o) {
 
 core.int buildCounterOrdersRefundOrderResponse = 0;
 api.OrdersRefundOrderResponse buildOrdersRefundOrderResponse() {
-  var o = api.OrdersRefundOrderResponse();
+  final o = api.OrdersRefundOrderResponse();
   buildCounterOrdersRefundOrderResponse++;
   if (buildCounterOrdersRefundOrderResponse < 3) {
     o.executionStatus = 'foo';
@@ -8821,7 +8744,7 @@ void checkOrdersRefundOrderResponse(api.OrdersRefundOrderResponse o) {
 
 core.int buildCounterOrdersRejectReturnLineItemRequest = 0;
 api.OrdersRejectReturnLineItemRequest buildOrdersRejectReturnLineItemRequest() {
-  var o = api.OrdersRejectReturnLineItemRequest();
+  final o = api.OrdersRejectReturnLineItemRequest();
   buildCounterOrdersRejectReturnLineItemRequest++;
   if (buildCounterOrdersRejectReturnLineItemRequest < 3) {
     o.lineItemId = 'foo';
@@ -8870,7 +8793,7 @@ void checkOrdersRejectReturnLineItemRequest(
 core.int buildCounterOrdersRejectReturnLineItemResponse = 0;
 api.OrdersRejectReturnLineItemResponse
     buildOrdersRejectReturnLineItemResponse() {
-  var o = api.OrdersRejectReturnLineItemResponse();
+  final o = api.OrdersRejectReturnLineItemResponse();
   buildCounterOrdersRejectReturnLineItemResponse++;
   if (buildCounterOrdersRejectReturnLineItemResponse < 3) {
     o.executionStatus = 'foo';
@@ -8898,7 +8821,7 @@ void checkOrdersRejectReturnLineItemResponse(
 
 core.int buildCounterOrdersReturnRefundLineItemRequest = 0;
 api.OrdersReturnRefundLineItemRequest buildOrdersReturnRefundLineItemRequest() {
-  var o = api.OrdersReturnRefundLineItemRequest();
+  final o = api.OrdersReturnRefundLineItemRequest();
   buildCounterOrdersReturnRefundLineItemRequest++;
   if (buildCounterOrdersReturnRefundLineItemRequest < 3) {
     o.lineItemId = 'foo';
@@ -8926,7 +8849,7 @@ void checkOrdersReturnRefundLineItemRequest(
       o.operationId!,
       unittest.equals('foo'),
     );
-    checkPrice(o.priceAmount! as api.Price);
+    checkPrice(o.priceAmount!);
     unittest.expect(
       o.productId!,
       unittest.equals('foo'),
@@ -8943,7 +8866,7 @@ void checkOrdersReturnRefundLineItemRequest(
       o.reasonText!,
       unittest.equals('foo'),
     );
-    checkPrice(o.taxAmount! as api.Price);
+    checkPrice(o.taxAmount!);
   }
   buildCounterOrdersReturnRefundLineItemRequest--;
 }
@@ -8951,7 +8874,7 @@ void checkOrdersReturnRefundLineItemRequest(
 core.int buildCounterOrdersReturnRefundLineItemResponse = 0;
 api.OrdersReturnRefundLineItemResponse
     buildOrdersReturnRefundLineItemResponse() {
-  var o = api.OrdersReturnRefundLineItemResponse();
+  final o = api.OrdersReturnRefundLineItemResponse();
   buildCounterOrdersReturnRefundLineItemResponse++;
   if (buildCounterOrdersReturnRefundLineItemResponse < 3) {
     o.executionStatus = 'foo';
@@ -8978,7 +8901,7 @@ void checkOrdersReturnRefundLineItemResponse(
 }
 
 core.List<api.OrderMerchantProvidedAnnotation> buildUnnamed5129() {
-  var o = <api.OrderMerchantProvidedAnnotation>[];
+  final o = <api.OrderMerchantProvidedAnnotation>[];
   o.add(buildOrderMerchantProvidedAnnotation());
   o.add(buildOrderMerchantProvidedAnnotation());
   return o;
@@ -8986,15 +8909,13 @@ core.List<api.OrderMerchantProvidedAnnotation> buildUnnamed5129() {
 
 void checkUnnamed5129(core.List<api.OrderMerchantProvidedAnnotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrderMerchantProvidedAnnotation(
-      o[0] as api.OrderMerchantProvidedAnnotation);
-  checkOrderMerchantProvidedAnnotation(
-      o[1] as api.OrderMerchantProvidedAnnotation);
+  checkOrderMerchantProvidedAnnotation(o[0]);
+  checkOrderMerchantProvidedAnnotation(o[1]);
 }
 
 core.int buildCounterOrdersSetLineItemMetadataRequest = 0;
 api.OrdersSetLineItemMetadataRequest buildOrdersSetLineItemMetadataRequest() {
-  var o = api.OrdersSetLineItemMetadataRequest();
+  final o = api.OrdersSetLineItemMetadataRequest();
   buildCounterOrdersSetLineItemMetadataRequest++;
   if (buildCounterOrdersSetLineItemMetadataRequest < 3) {
     o.annotations = buildUnnamed5129();
@@ -9029,7 +8950,7 @@ void checkOrdersSetLineItemMetadataRequest(
 
 core.int buildCounterOrdersSetLineItemMetadataResponse = 0;
 api.OrdersSetLineItemMetadataResponse buildOrdersSetLineItemMetadataResponse() {
-  var o = api.OrdersSetLineItemMetadataResponse();
+  final o = api.OrdersSetLineItemMetadataResponse();
   buildCounterOrdersSetLineItemMetadataResponse++;
   if (buildCounterOrdersSetLineItemMetadataResponse < 3) {
     o.executionStatus = 'foo';
@@ -9056,7 +8977,7 @@ void checkOrdersSetLineItemMetadataResponse(
 }
 
 core.List<api.OrderShipmentLineItemShipment> buildUnnamed5130() {
-  var o = <api.OrderShipmentLineItemShipment>[];
+  final o = <api.OrderShipmentLineItemShipment>[];
   o.add(buildOrderShipmentLineItemShipment());
   o.add(buildOrderShipmentLineItemShipment());
   return o;
@@ -9064,13 +8985,13 @@ core.List<api.OrderShipmentLineItemShipment> buildUnnamed5130() {
 
 void checkUnnamed5130(core.List<api.OrderShipmentLineItemShipment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrderShipmentLineItemShipment(o[0] as api.OrderShipmentLineItemShipment);
-  checkOrderShipmentLineItemShipment(o[1] as api.OrderShipmentLineItemShipment);
+  checkOrderShipmentLineItemShipment(o[0]);
+  checkOrderShipmentLineItemShipment(o[1]);
 }
 
 core.List<api.OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo>
     buildUnnamed5131() {
-  var o = <api.OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo>[];
+  final o = <api.OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo>[];
   o.add(buildOrdersCustomBatchRequestEntryShipLineItemsShipmentInfo());
   o.add(buildOrdersCustomBatchRequestEntryShipLineItemsShipmentInfo());
   return o;
@@ -9079,15 +9000,13 @@ core.List<api.OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo>
 void checkUnnamed5131(
     core.List<api.OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrdersCustomBatchRequestEntryShipLineItemsShipmentInfo(
-      o[0] as api.OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo);
-  checkOrdersCustomBatchRequestEntryShipLineItemsShipmentInfo(
-      o[1] as api.OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo);
+  checkOrdersCustomBatchRequestEntryShipLineItemsShipmentInfo(o[0]);
+  checkOrdersCustomBatchRequestEntryShipLineItemsShipmentInfo(o[1]);
 }
 
 core.int buildCounterOrdersShipLineItemsRequest = 0;
 api.OrdersShipLineItemsRequest buildOrdersShipLineItemsRequest() {
-  var o = api.OrdersShipLineItemsRequest();
+  final o = api.OrdersShipLineItemsRequest();
   buildCounterOrdersShipLineItemsRequest++;
   if (buildCounterOrdersShipLineItemsRequest < 3) {
     o.lineItems = buildUnnamed5130();
@@ -9118,7 +9037,7 @@ void checkOrdersShipLineItemsRequest(api.OrdersShipLineItemsRequest o) {
 
 core.int buildCounterOrdersShipLineItemsResponse = 0;
 api.OrdersShipLineItemsResponse buildOrdersShipLineItemsResponse() {
-  var o = api.OrdersShipLineItemsResponse();
+  final o = api.OrdersShipLineItemsResponse();
   buildCounterOrdersShipLineItemsResponse++;
   if (buildCounterOrdersShipLineItemsResponse < 3) {
     o.executionStatus = 'foo';
@@ -9146,7 +9065,7 @@ void checkOrdersShipLineItemsResponse(api.OrdersShipLineItemsResponse o) {
 core.int buildCounterOrdersUpdateLineItemShippingDetailsRequest = 0;
 api.OrdersUpdateLineItemShippingDetailsRequest
     buildOrdersUpdateLineItemShippingDetailsRequest() {
-  var o = api.OrdersUpdateLineItemShippingDetailsRequest();
+  final o = api.OrdersUpdateLineItemShippingDetailsRequest();
   buildCounterOrdersUpdateLineItemShippingDetailsRequest++;
   if (buildCounterOrdersUpdateLineItemShippingDetailsRequest < 3) {
     o.deliverByDate = 'foo';
@@ -9190,7 +9109,7 @@ void checkOrdersUpdateLineItemShippingDetailsRequest(
 core.int buildCounterOrdersUpdateLineItemShippingDetailsResponse = 0;
 api.OrdersUpdateLineItemShippingDetailsResponse
     buildOrdersUpdateLineItemShippingDetailsResponse() {
-  var o = api.OrdersUpdateLineItemShippingDetailsResponse();
+  final o = api.OrdersUpdateLineItemShippingDetailsResponse();
   buildCounterOrdersUpdateLineItemShippingDetailsResponse++;
   if (buildCounterOrdersUpdateLineItemShippingDetailsResponse < 3) {
     o.executionStatus = 'foo';
@@ -9219,7 +9138,7 @@ void checkOrdersUpdateLineItemShippingDetailsResponse(
 core.int buildCounterOrdersUpdateMerchantOrderIdRequest = 0;
 api.OrdersUpdateMerchantOrderIdRequest
     buildOrdersUpdateMerchantOrderIdRequest() {
-  var o = api.OrdersUpdateMerchantOrderIdRequest();
+  final o = api.OrdersUpdateMerchantOrderIdRequest();
   buildCounterOrdersUpdateMerchantOrderIdRequest++;
   if (buildCounterOrdersUpdateMerchantOrderIdRequest < 3) {
     o.merchantOrderId = 'foo';
@@ -9248,7 +9167,7 @@ void checkOrdersUpdateMerchantOrderIdRequest(
 core.int buildCounterOrdersUpdateMerchantOrderIdResponse = 0;
 api.OrdersUpdateMerchantOrderIdResponse
     buildOrdersUpdateMerchantOrderIdResponse() {
-  var o = api.OrdersUpdateMerchantOrderIdResponse();
+  final o = api.OrdersUpdateMerchantOrderIdResponse();
   buildCounterOrdersUpdateMerchantOrderIdResponse++;
   if (buildCounterOrdersUpdateMerchantOrderIdResponse < 3) {
     o.executionStatus = 'foo';
@@ -9276,7 +9195,7 @@ void checkOrdersUpdateMerchantOrderIdResponse(
 
 core.int buildCounterOrdersUpdateShipmentRequest = 0;
 api.OrdersUpdateShipmentRequest buildOrdersUpdateShipmentRequest() {
-  var o = api.OrdersUpdateShipmentRequest();
+  final o = api.OrdersUpdateShipmentRequest();
   buildCounterOrdersUpdateShipmentRequest++;
   if (buildCounterOrdersUpdateShipmentRequest < 3) {
     o.carrier = 'foo';
@@ -9319,8 +9238,7 @@ void checkOrdersUpdateShipmentRequest(api.OrdersUpdateShipmentRequest o) {
       unittest.equals('foo'),
     );
     checkOrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails(
-        o.scheduledDeliveryDetails! as api
-            .OrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails);
+        o.scheduledDeliveryDetails!);
     unittest.expect(
       o.shipmentId!,
       unittest.equals('foo'),
@@ -9343,7 +9261,7 @@ void checkOrdersUpdateShipmentRequest(api.OrdersUpdateShipmentRequest o) {
 
 core.int buildCounterOrdersUpdateShipmentResponse = 0;
 api.OrdersUpdateShipmentResponse buildOrdersUpdateShipmentResponse() {
-  var o = api.OrdersUpdateShipmentResponse();
+  final o = api.OrdersUpdateShipmentResponse();
   buildCounterOrdersUpdateShipmentResponse++;
   if (buildCounterOrdersUpdateShipmentResponse < 3) {
     o.executionStatus = 'foo';
@@ -9370,7 +9288,7 @@ void checkOrdersUpdateShipmentResponse(api.OrdersUpdateShipmentResponse o) {
 
 core.int buildCounterPauseBuyOnGoogleProgramRequest = 0;
 api.PauseBuyOnGoogleProgramRequest buildPauseBuyOnGoogleProgramRequest() {
-  var o = api.PauseBuyOnGoogleProgramRequest();
+  final o = api.PauseBuyOnGoogleProgramRequest();
   buildCounterPauseBuyOnGoogleProgramRequest++;
   if (buildCounterPauseBuyOnGoogleProgramRequest < 3) {}
   buildCounterPauseBuyOnGoogleProgramRequest--;
@@ -9385,7 +9303,7 @@ void checkPauseBuyOnGoogleProgramRequest(api.PauseBuyOnGoogleProgramRequest o) {
 
 core.int buildCounterPaymentServiceProviderLinkInfo = 0;
 api.PaymentServiceProviderLinkInfo buildPaymentServiceProviderLinkInfo() {
-  var o = api.PaymentServiceProviderLinkInfo();
+  final o = api.PaymentServiceProviderLinkInfo();
   buildCounterPaymentServiceProviderLinkInfo++;
   if (buildCounterPaymentServiceProviderLinkInfo < 3) {
     o.externalAccountBusinessCountry = 'foo';
@@ -9412,7 +9330,7 @@ void checkPaymentServiceProviderLinkInfo(api.PaymentServiceProviderLinkInfo o) {
 
 core.int buildCounterPickupCarrierService = 0;
 api.PickupCarrierService buildPickupCarrierService() {
-  var o = api.PickupCarrierService();
+  final o = api.PickupCarrierService();
   buildCounterPickupCarrierService++;
   if (buildCounterPickupCarrierService < 3) {
     o.carrierName = 'foo';
@@ -9439,7 +9357,7 @@ void checkPickupCarrierService(api.PickupCarrierService o) {
 
 core.int buildCounterPickupServicesPickupService = 0;
 api.PickupServicesPickupService buildPickupServicesPickupService() {
-  var o = api.PickupServicesPickupService();
+  final o = api.PickupServicesPickupService();
   buildCounterPickupServicesPickupService++;
   if (buildCounterPickupServicesPickupService < 3) {
     o.carrierName = 'foo';
@@ -9470,7 +9388,7 @@ void checkPickupServicesPickupService(api.PickupServicesPickupService o) {
 }
 
 core.List<api.PosCustomBatchRequestEntry> buildUnnamed5132() {
-  var o = <api.PosCustomBatchRequestEntry>[];
+  final o = <api.PosCustomBatchRequestEntry>[];
   o.add(buildPosCustomBatchRequestEntry());
   o.add(buildPosCustomBatchRequestEntry());
   return o;
@@ -9478,13 +9396,13 @@ core.List<api.PosCustomBatchRequestEntry> buildUnnamed5132() {
 
 void checkUnnamed5132(core.List<api.PosCustomBatchRequestEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPosCustomBatchRequestEntry(o[0] as api.PosCustomBatchRequestEntry);
-  checkPosCustomBatchRequestEntry(o[1] as api.PosCustomBatchRequestEntry);
+  checkPosCustomBatchRequestEntry(o[0]);
+  checkPosCustomBatchRequestEntry(o[1]);
 }
 
 core.int buildCounterPosCustomBatchRequest = 0;
 api.PosCustomBatchRequest buildPosCustomBatchRequest() {
-  var o = api.PosCustomBatchRequest();
+  final o = api.PosCustomBatchRequest();
   buildCounterPosCustomBatchRequest++;
   if (buildCounterPosCustomBatchRequest < 3) {
     o.entries = buildUnnamed5132();
@@ -9503,7 +9421,7 @@ void checkPosCustomBatchRequest(api.PosCustomBatchRequest o) {
 
 core.int buildCounterPosCustomBatchRequestEntry = 0;
 api.PosCustomBatchRequestEntry buildPosCustomBatchRequestEntry() {
-  var o = api.PosCustomBatchRequestEntry();
+  final o = api.PosCustomBatchRequestEntry();
   buildCounterPosCustomBatchRequestEntry++;
   if (buildCounterPosCustomBatchRequestEntry < 3) {
     o.batchId = 42;
@@ -9526,7 +9444,7 @@ void checkPosCustomBatchRequestEntry(api.PosCustomBatchRequestEntry o) {
       o.batchId!,
       unittest.equals(42),
     );
-    checkPosInventory(o.inventory! as api.PosInventory);
+    checkPosInventory(o.inventory!);
     unittest.expect(
       o.merchantId!,
       unittest.equals('foo'),
@@ -9535,8 +9453,8 @@ void checkPosCustomBatchRequestEntry(api.PosCustomBatchRequestEntry o) {
       o.method!,
       unittest.equals('foo'),
     );
-    checkPosSale(o.sale! as api.PosSale);
-    checkPosStore(o.store! as api.PosStore);
+    checkPosSale(o.sale!);
+    checkPosStore(o.store!);
     unittest.expect(
       o.storeCode!,
       unittest.equals('foo'),
@@ -9550,7 +9468,7 @@ void checkPosCustomBatchRequestEntry(api.PosCustomBatchRequestEntry o) {
 }
 
 core.List<api.PosCustomBatchResponseEntry> buildUnnamed5133() {
-  var o = <api.PosCustomBatchResponseEntry>[];
+  final o = <api.PosCustomBatchResponseEntry>[];
   o.add(buildPosCustomBatchResponseEntry());
   o.add(buildPosCustomBatchResponseEntry());
   return o;
@@ -9558,13 +9476,13 @@ core.List<api.PosCustomBatchResponseEntry> buildUnnamed5133() {
 
 void checkUnnamed5133(core.List<api.PosCustomBatchResponseEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPosCustomBatchResponseEntry(o[0] as api.PosCustomBatchResponseEntry);
-  checkPosCustomBatchResponseEntry(o[1] as api.PosCustomBatchResponseEntry);
+  checkPosCustomBatchResponseEntry(o[0]);
+  checkPosCustomBatchResponseEntry(o[1]);
 }
 
 core.int buildCounterPosCustomBatchResponse = 0;
 api.PosCustomBatchResponse buildPosCustomBatchResponse() {
-  var o = api.PosCustomBatchResponse();
+  final o = api.PosCustomBatchResponse();
   buildCounterPosCustomBatchResponse++;
   if (buildCounterPosCustomBatchResponse < 3) {
     o.entries = buildUnnamed5133();
@@ -9588,7 +9506,7 @@ void checkPosCustomBatchResponse(api.PosCustomBatchResponse o) {
 
 core.int buildCounterPosCustomBatchResponseEntry = 0;
 api.PosCustomBatchResponseEntry buildPosCustomBatchResponseEntry() {
-  var o = api.PosCustomBatchResponseEntry();
+  final o = api.PosCustomBatchResponseEntry();
   buildCounterPosCustomBatchResponseEntry++;
   if (buildCounterPosCustomBatchResponseEntry < 3) {
     o.batchId = 42;
@@ -9609,20 +9527,20 @@ void checkPosCustomBatchResponseEntry(api.PosCustomBatchResponseEntry o) {
       o.batchId!,
       unittest.equals(42),
     );
-    checkErrors(o.errors! as api.Errors);
-    checkPosInventory(o.inventory! as api.PosInventory);
+    checkErrors(o.errors!);
+    checkPosInventory(o.inventory!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkPosSale(o.sale! as api.PosSale);
-    checkPosStore(o.store! as api.PosStore);
+    checkPosSale(o.sale!);
+    checkPosStore(o.store!);
   }
   buildCounterPosCustomBatchResponseEntry--;
 }
 
 core.List<api.PosDataProvidersPosDataProvider> buildUnnamed5134() {
-  var o = <api.PosDataProvidersPosDataProvider>[];
+  final o = <api.PosDataProvidersPosDataProvider>[];
   o.add(buildPosDataProvidersPosDataProvider());
   o.add(buildPosDataProvidersPosDataProvider());
   return o;
@@ -9630,15 +9548,13 @@ core.List<api.PosDataProvidersPosDataProvider> buildUnnamed5134() {
 
 void checkUnnamed5134(core.List<api.PosDataProvidersPosDataProvider> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPosDataProvidersPosDataProvider(
-      o[0] as api.PosDataProvidersPosDataProvider);
-  checkPosDataProvidersPosDataProvider(
-      o[1] as api.PosDataProvidersPosDataProvider);
+  checkPosDataProvidersPosDataProvider(o[0]);
+  checkPosDataProvidersPosDataProvider(o[1]);
 }
 
 core.int buildCounterPosDataProviders = 0;
 api.PosDataProviders buildPosDataProviders() {
-  var o = api.PosDataProviders();
+  final o = api.PosDataProviders();
   buildCounterPosDataProviders++;
   if (buildCounterPosDataProviders < 3) {
     o.country = 'foo';
@@ -9662,7 +9578,7 @@ void checkPosDataProviders(api.PosDataProviders o) {
 
 core.int buildCounterPosDataProvidersPosDataProvider = 0;
 api.PosDataProvidersPosDataProvider buildPosDataProvidersPosDataProvider() {
-  var o = api.PosDataProvidersPosDataProvider();
+  final o = api.PosDataProvidersPosDataProvider();
   buildCounterPosDataProvidersPosDataProvider++;
   if (buildCounterPosDataProvidersPosDataProvider < 3) {
     o.displayName = 'foo';
@@ -9695,7 +9611,7 @@ void checkPosDataProvidersPosDataProvider(
 
 core.int buildCounterPosInventory = 0;
 api.PosInventory buildPosInventory() {
-  var o = api.PosInventory();
+  final o = api.PosInventory();
   buildCounterPosInventory++;
   if (buildCounterPosInventory < 3) {
     o.contentLanguage = 'foo';
@@ -9731,7 +9647,7 @@ void checkPosInventory(api.PosInventory o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkPrice(o.price! as api.Price);
+    checkPrice(o.price!);
     unittest.expect(
       o.quantity!,
       unittest.equals('foo'),
@@ -9754,7 +9670,7 @@ void checkPosInventory(api.PosInventory o) {
 
 core.int buildCounterPosInventoryRequest = 0;
 api.PosInventoryRequest buildPosInventoryRequest() {
-  var o = api.PosInventoryRequest();
+  final o = api.PosInventoryRequest();
   buildCounterPosInventoryRequest++;
   if (buildCounterPosInventoryRequest < 3) {
     o.contentLanguage = 'foo';
@@ -9785,7 +9701,7 @@ void checkPosInventoryRequest(api.PosInventoryRequest o) {
       o.itemId!,
       unittest.equals('foo'),
     );
-    checkPrice(o.price! as api.Price);
+    checkPrice(o.price!);
     unittest.expect(
       o.quantity!,
       unittest.equals('foo'),
@@ -9808,7 +9724,7 @@ void checkPosInventoryRequest(api.PosInventoryRequest o) {
 
 core.int buildCounterPosInventoryResponse = 0;
 api.PosInventoryResponse buildPosInventoryResponse() {
-  var o = api.PosInventoryResponse();
+  final o = api.PosInventoryResponse();
   buildCounterPosInventoryResponse++;
   if (buildCounterPosInventoryResponse < 3) {
     o.contentLanguage = 'foo';
@@ -9844,7 +9760,7 @@ void checkPosInventoryResponse(api.PosInventoryResponse o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkPrice(o.price! as api.Price);
+    checkPrice(o.price!);
     unittest.expect(
       o.quantity!,
       unittest.equals('foo'),
@@ -9866,7 +9782,7 @@ void checkPosInventoryResponse(api.PosInventoryResponse o) {
 }
 
 core.List<api.PosStore> buildUnnamed5135() {
-  var o = <api.PosStore>[];
+  final o = <api.PosStore>[];
   o.add(buildPosStore());
   o.add(buildPosStore());
   return o;
@@ -9874,13 +9790,13 @@ core.List<api.PosStore> buildUnnamed5135() {
 
 void checkUnnamed5135(core.List<api.PosStore> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPosStore(o[0] as api.PosStore);
-  checkPosStore(o[1] as api.PosStore);
+  checkPosStore(o[0]);
+  checkPosStore(o[1]);
 }
 
 core.int buildCounterPosListResponse = 0;
 api.PosListResponse buildPosListResponse() {
-  var o = api.PosListResponse();
+  final o = api.PosListResponse();
   buildCounterPosListResponse++;
   if (buildCounterPosListResponse < 3) {
     o.kind = 'foo';
@@ -9904,7 +9820,7 @@ void checkPosListResponse(api.PosListResponse o) {
 
 core.int buildCounterPosSale = 0;
 api.PosSale buildPosSale() {
-  var o = api.PosSale();
+  final o = api.PosSale();
   buildCounterPosSale++;
   if (buildCounterPosSale < 3) {
     o.contentLanguage = 'foo';
@@ -9941,7 +9857,7 @@ void checkPosSale(api.PosSale o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkPrice(o.price! as api.Price);
+    checkPrice(o.price!);
     unittest.expect(
       o.quantity!,
       unittest.equals('foo'),
@@ -9968,7 +9884,7 @@ void checkPosSale(api.PosSale o) {
 
 core.int buildCounterPosSaleRequest = 0;
 api.PosSaleRequest buildPosSaleRequest() {
-  var o = api.PosSaleRequest();
+  final o = api.PosSaleRequest();
   buildCounterPosSaleRequest++;
   if (buildCounterPosSaleRequest < 3) {
     o.contentLanguage = 'foo';
@@ -10000,7 +9916,7 @@ void checkPosSaleRequest(api.PosSaleRequest o) {
       o.itemId!,
       unittest.equals('foo'),
     );
-    checkPrice(o.price! as api.Price);
+    checkPrice(o.price!);
     unittest.expect(
       o.quantity!,
       unittest.equals('foo'),
@@ -10027,7 +9943,7 @@ void checkPosSaleRequest(api.PosSaleRequest o) {
 
 core.int buildCounterPosSaleResponse = 0;
 api.PosSaleResponse buildPosSaleResponse() {
-  var o = api.PosSaleResponse();
+  final o = api.PosSaleResponse();
   buildCounterPosSaleResponse++;
   if (buildCounterPosSaleResponse < 3) {
     o.contentLanguage = 'foo';
@@ -10064,7 +9980,7 @@ void checkPosSaleResponse(api.PosSaleResponse o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkPrice(o.price! as api.Price);
+    checkPrice(o.price!);
     unittest.expect(
       o.quantity!,
       unittest.equals('foo'),
@@ -10091,7 +10007,7 @@ void checkPosSaleResponse(api.PosSaleResponse o) {
 
 core.int buildCounterPosStore = 0;
 api.PosStore buildPosStore() {
-  var o = api.PosStore();
+  final o = api.PosStore();
   buildCounterPosStore++;
   if (buildCounterPosStore < 3) {
     o.kind = 'foo';
@@ -10122,7 +10038,7 @@ void checkPosStore(api.PosStore o) {
 }
 
 core.List<api.PostalCodeRange> buildUnnamed5136() {
-  var o = <api.PostalCodeRange>[];
+  final o = <api.PostalCodeRange>[];
   o.add(buildPostalCodeRange());
   o.add(buildPostalCodeRange());
   return o;
@@ -10130,13 +10046,13 @@ core.List<api.PostalCodeRange> buildUnnamed5136() {
 
 void checkUnnamed5136(core.List<api.PostalCodeRange> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPostalCodeRange(o[0] as api.PostalCodeRange);
-  checkPostalCodeRange(o[1] as api.PostalCodeRange);
+  checkPostalCodeRange(o[0]);
+  checkPostalCodeRange(o[1]);
 }
 
 core.int buildCounterPostalCodeGroup = 0;
 api.PostalCodeGroup buildPostalCodeGroup() {
-  var o = api.PostalCodeGroup();
+  final o = api.PostalCodeGroup();
   buildCounterPostalCodeGroup++;
   if (buildCounterPostalCodeGroup < 3) {
     o.country = 'foo';
@@ -10165,7 +10081,7 @@ void checkPostalCodeGroup(api.PostalCodeGroup o) {
 
 core.int buildCounterPostalCodeRange = 0;
 api.PostalCodeRange buildPostalCodeRange() {
-  var o = api.PostalCodeRange();
+  final o = api.PostalCodeRange();
   buildCounterPostalCodeRange++;
   if (buildCounterPostalCodeRange < 3) {
     o.postalCodeRangeBegin = 'foo';
@@ -10192,7 +10108,7 @@ void checkPostalCodeRange(api.PostalCodeRange o) {
 
 core.int buildCounterPrice = 0;
 api.Price buildPrice() {
-  var o = api.Price();
+  final o = api.Price();
   buildCounterPrice++;
   if (buildCounterPrice < 3) {
     o.currency = 'foo';
@@ -10219,7 +10135,7 @@ void checkPrice(api.Price o) {
 
 core.int buildCounterPriceAmount = 0;
 api.PriceAmount buildPriceAmount() {
-  var o = api.PriceAmount();
+  final o = api.PriceAmount();
   buildCounterPriceAmount++;
   if (buildCounterPriceAmount < 3) {
     o.currency = 'foo';
@@ -10245,7 +10161,7 @@ void checkPriceAmount(api.PriceAmount o) {
 }
 
 core.List<core.String> buildUnnamed5137() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -10264,7 +10180,7 @@ void checkUnnamed5137(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed5138() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -10283,7 +10199,7 @@ void checkUnnamed5138(core.List<core.String> o) {
 }
 
 core.List<api.CustomAttribute> buildUnnamed5139() {
-  var o = <api.CustomAttribute>[];
+  final o = <api.CustomAttribute>[];
   o.add(buildCustomAttribute());
   o.add(buildCustomAttribute());
   return o;
@@ -10291,12 +10207,12 @@ core.List<api.CustomAttribute> buildUnnamed5139() {
 
 void checkUnnamed5139(core.List<api.CustomAttribute> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCustomAttribute(o[0] as api.CustomAttribute);
-  checkCustomAttribute(o[1] as api.CustomAttribute);
+  checkCustomAttribute(o[0]);
+  checkCustomAttribute(o[1]);
 }
 
 core.List<core.String> buildUnnamed5140() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -10315,7 +10231,7 @@ void checkUnnamed5140(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed5141() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -10334,7 +10250,7 @@ void checkUnnamed5141(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed5142() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -10353,7 +10269,7 @@ void checkUnnamed5142(core.List<core.String> o) {
 }
 
 core.List<api.ProductProductDetail> buildUnnamed5143() {
-  var o = <api.ProductProductDetail>[];
+  final o = <api.ProductProductDetail>[];
   o.add(buildProductProductDetail());
   o.add(buildProductProductDetail());
   return o;
@@ -10361,12 +10277,12 @@ core.List<api.ProductProductDetail> buildUnnamed5143() {
 
 void checkUnnamed5143(core.List<api.ProductProductDetail> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProductProductDetail(o[0] as api.ProductProductDetail);
-  checkProductProductDetail(o[1] as api.ProductProductDetail);
+  checkProductProductDetail(o[0]);
+  checkProductProductDetail(o[1]);
 }
 
 core.List<core.String> buildUnnamed5144() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -10385,7 +10301,7 @@ void checkUnnamed5144(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed5145() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -10404,7 +10320,7 @@ void checkUnnamed5145(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed5146() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -10423,7 +10339,7 @@ void checkUnnamed5146(core.List<core.String> o) {
 }
 
 core.List<api.ProductShipping> buildUnnamed5147() {
-  var o = <api.ProductShipping>[];
+  final o = <api.ProductShipping>[];
   o.add(buildProductShipping());
   o.add(buildProductShipping());
   return o;
@@ -10431,12 +10347,12 @@ core.List<api.ProductShipping> buildUnnamed5147() {
 
 void checkUnnamed5147(core.List<api.ProductShipping> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProductShipping(o[0] as api.ProductShipping);
-  checkProductShipping(o[1] as api.ProductShipping);
+  checkProductShipping(o[0]);
+  checkProductShipping(o[1]);
 }
 
 core.List<core.String> buildUnnamed5148() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -10455,7 +10371,7 @@ void checkUnnamed5148(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed5149() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -10474,7 +10390,7 @@ void checkUnnamed5149(core.List<core.String> o) {
 }
 
 core.List<api.ProductTax> buildUnnamed5150() {
-  var o = <api.ProductTax>[];
+  final o = <api.ProductTax>[];
   o.add(buildProductTax());
   o.add(buildProductTax());
   return o;
@@ -10482,13 +10398,13 @@ core.List<api.ProductTax> buildUnnamed5150() {
 
 void checkUnnamed5150(core.List<api.ProductTax> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProductTax(o[0] as api.ProductTax);
-  checkProductTax(o[1] as api.ProductTax);
+  checkProductTax(o[0]);
+  checkProductTax(o[1]);
 }
 
 core.int buildCounterProduct = 0;
 api.Product buildProduct() {
-  var o = api.Product();
+  final o = api.Product();
   buildCounterProduct++;
   if (buildCounterProduct < 3) {
     o.additionalImageLinks = buildUnnamed5137();
@@ -10635,7 +10551,7 @@ void checkProduct(api.Product o) {
       o.contentLanguage!,
       unittest.equals('foo'),
     );
-    checkPrice(o.costOfGoodsSold! as api.Price);
+    checkPrice(o.costOfGoodsSold!);
     checkUnnamed5139(o.customAttributes!);
     unittest.expect(
       o.customLabel0!,
@@ -10709,7 +10625,7 @@ void checkProduct(api.Product o) {
       unittest.equals('foo'),
     );
     checkUnnamed5142(o.includedDestinations!);
-    checkInstallment(o.installment! as api.Installment);
+    checkInstallment(o.installment!);
     unittest.expect(o.isBundle!, unittest.isTrue);
     unittest.expect(
       o.itemGroupId!,
@@ -10727,7 +10643,7 @@ void checkProduct(api.Product o) {
       o.linkTemplate!,
       unittest.equals('foo'),
     );
-    checkLoyaltyPoints(o.loyaltyPoints! as api.LoyaltyPoints);
+    checkLoyaltyPoints(o.loyaltyPoints!);
     unittest.expect(
       o.material!,
       unittest.equals('foo'),
@@ -10780,12 +10696,12 @@ void checkProduct(api.Product o) {
       o.pickupSla!,
       unittest.equals('foo'),
     );
-    checkPrice(o.price! as api.Price);
+    checkPrice(o.price!);
     checkUnnamed5143(o.productDetails!);
     checkUnnamed5144(o.productHighlights!);
     checkUnnamed5145(o.productTypes!);
     checkUnnamed5146(o.promotionIds!);
-    checkPrice(o.salePrice! as api.Price);
+    checkPrice(o.salePrice!);
     unittest.expect(
       o.salePriceEffectiveDate!,
       unittest.equals('foo'),
@@ -10795,17 +10711,14 @@ void checkProduct(api.Product o) {
       unittest.equals('foo'),
     );
     checkUnnamed5147(o.shipping!);
-    checkProductShippingDimension(
-        o.shippingHeight! as api.ProductShippingDimension);
+    checkProductShippingDimension(o.shippingHeight!);
     unittest.expect(
       o.shippingLabel!,
       unittest.equals('foo'),
     );
-    checkProductShippingDimension(
-        o.shippingLength! as api.ProductShippingDimension);
-    checkProductShippingWeight(o.shippingWeight! as api.ProductShippingWeight);
-    checkProductShippingDimension(
-        o.shippingWidth! as api.ProductShippingDimension);
+    checkProductShippingDimension(o.shippingLength!);
+    checkProductShippingWeight(o.shippingWeight!);
+    checkProductShippingDimension(o.shippingWidth!);
     checkUnnamed5148(o.shoppingAdsExcludedCountries!);
     unittest.expect(
       o.sizeSystem!,
@@ -10820,8 +10733,7 @@ void checkProduct(api.Product o) {
       o.source!,
       unittest.equals('foo'),
     );
-    checkProductSubscriptionCost(
-        o.subscriptionCost! as api.ProductSubscriptionCost);
+    checkProductSubscriptionCost(o.subscriptionCost!);
     unittest.expect(
       o.targetCountry!,
       unittest.equals('foo'),
@@ -10839,17 +10751,15 @@ void checkProduct(api.Product o) {
       o.transitTimeLabel!,
       unittest.equals('foo'),
     );
-    checkProductUnitPricingBaseMeasure(
-        o.unitPricingBaseMeasure! as api.ProductUnitPricingBaseMeasure);
-    checkProductUnitPricingMeasure(
-        o.unitPricingMeasure! as api.ProductUnitPricingMeasure);
+    checkProductUnitPricingBaseMeasure(o.unitPricingBaseMeasure!);
+    checkProductUnitPricingMeasure(o.unitPricingMeasure!);
   }
   buildCounterProduct--;
 }
 
 core.int buildCounterProductAmount = 0;
 api.ProductAmount buildProductAmount() {
-  var o = api.ProductAmount();
+  final o = api.ProductAmount();
   buildCounterProductAmount++;
   if (buildCounterProductAmount < 3) {
     o.priceAmount = buildPrice();
@@ -10863,16 +10773,16 @@ api.ProductAmount buildProductAmount() {
 void checkProductAmount(api.ProductAmount o) {
   buildCounterProductAmount++;
   if (buildCounterProductAmount < 3) {
-    checkPrice(o.priceAmount! as api.Price);
-    checkPrice(o.remittedTaxAmount! as api.Price);
-    checkPrice(o.taxAmount! as api.Price);
+    checkPrice(o.priceAmount!);
+    checkPrice(o.remittedTaxAmount!);
+    checkPrice(o.taxAmount!);
   }
   buildCounterProductAmount--;
 }
 
 core.int buildCounterProductProductDetail = 0;
 api.ProductProductDetail buildProductProductDetail() {
-  var o = api.ProductProductDetail();
+  final o = api.ProductProductDetail();
   buildCounterProductProductDetail++;
   if (buildCounterProductProductDetail < 3) {
     o.attributeName = 'foo';
@@ -10904,7 +10814,7 @@ void checkProductProductDetail(api.ProductProductDetail o) {
 
 core.int buildCounterProductShipping = 0;
 api.ProductShipping buildProductShipping() {
-  var o = api.ProductShipping();
+  final o = api.ProductShipping();
   buildCounterProductShipping++;
   if (buildCounterProductShipping < 3) {
     o.country = 'foo';
@@ -10958,7 +10868,7 @@ void checkProductShipping(api.ProductShipping o) {
       o.postalCode!,
       unittest.equals('foo'),
     );
-    checkPrice(o.price! as api.Price);
+    checkPrice(o.price!);
     unittest.expect(
       o.region!,
       unittest.equals('foo'),
@@ -10973,7 +10883,7 @@ void checkProductShipping(api.ProductShipping o) {
 
 core.int buildCounterProductShippingDimension = 0;
 api.ProductShippingDimension buildProductShippingDimension() {
-  var o = api.ProductShippingDimension();
+  final o = api.ProductShippingDimension();
   buildCounterProductShippingDimension++;
   if (buildCounterProductShippingDimension < 3) {
     o.unit = 'foo';
@@ -11000,7 +10910,7 @@ void checkProductShippingDimension(api.ProductShippingDimension o) {
 
 core.int buildCounterProductShippingWeight = 0;
 api.ProductShippingWeight buildProductShippingWeight() {
-  var o = api.ProductShippingWeight();
+  final o = api.ProductShippingWeight();
   buildCounterProductShippingWeight++;
   if (buildCounterProductShippingWeight < 3) {
     o.unit = 'foo';
@@ -11026,7 +10936,7 @@ void checkProductShippingWeight(api.ProductShippingWeight o) {
 }
 
 core.List<api.ProductStatusDestinationStatus> buildUnnamed5151() {
-  var o = <api.ProductStatusDestinationStatus>[];
+  final o = <api.ProductStatusDestinationStatus>[];
   o.add(buildProductStatusDestinationStatus());
   o.add(buildProductStatusDestinationStatus());
   return o;
@@ -11034,14 +10944,12 @@ core.List<api.ProductStatusDestinationStatus> buildUnnamed5151() {
 
 void checkUnnamed5151(core.List<api.ProductStatusDestinationStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProductStatusDestinationStatus(
-      o[0] as api.ProductStatusDestinationStatus);
-  checkProductStatusDestinationStatus(
-      o[1] as api.ProductStatusDestinationStatus);
+  checkProductStatusDestinationStatus(o[0]);
+  checkProductStatusDestinationStatus(o[1]);
 }
 
 core.List<api.ProductStatusItemLevelIssue> buildUnnamed5152() {
-  var o = <api.ProductStatusItemLevelIssue>[];
+  final o = <api.ProductStatusItemLevelIssue>[];
   o.add(buildProductStatusItemLevelIssue());
   o.add(buildProductStatusItemLevelIssue());
   return o;
@@ -11049,13 +10957,13 @@ core.List<api.ProductStatusItemLevelIssue> buildUnnamed5152() {
 
 void checkUnnamed5152(core.List<api.ProductStatusItemLevelIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProductStatusItemLevelIssue(o[0] as api.ProductStatusItemLevelIssue);
-  checkProductStatusItemLevelIssue(o[1] as api.ProductStatusItemLevelIssue);
+  checkProductStatusItemLevelIssue(o[0]);
+  checkProductStatusItemLevelIssue(o[1]);
 }
 
 core.int buildCounterProductStatus = 0;
 api.ProductStatus buildProductStatus() {
-  var o = api.ProductStatus();
+  final o = api.ProductStatus();
   buildCounterProductStatus++;
   if (buildCounterProductStatus < 3) {
     o.creationDate = 'foo';
@@ -11110,7 +11018,7 @@ void checkProductStatus(api.ProductStatus o) {
 }
 
 core.List<core.String> buildUnnamed5153() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -11129,7 +11037,7 @@ void checkUnnamed5153(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed5154() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -11148,7 +11056,7 @@ void checkUnnamed5154(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed5155() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -11168,7 +11076,7 @@ void checkUnnamed5155(core.List<core.String> o) {
 
 core.int buildCounterProductStatusDestinationStatus = 0;
 api.ProductStatusDestinationStatus buildProductStatusDestinationStatus() {
-  var o = api.ProductStatusDestinationStatus();
+  final o = api.ProductStatusDestinationStatus();
   buildCounterProductStatusDestinationStatus++;
   if (buildCounterProductStatusDestinationStatus < 3) {
     o.approvedCountries = buildUnnamed5153();
@@ -11200,7 +11108,7 @@ void checkProductStatusDestinationStatus(api.ProductStatusDestinationStatus o) {
 }
 
 core.List<core.String> buildUnnamed5156() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -11220,7 +11128,7 @@ void checkUnnamed5156(core.List<core.String> o) {
 
 core.int buildCounterProductStatusItemLevelIssue = 0;
 api.ProductStatusItemLevelIssue buildProductStatusItemLevelIssue() {
-  var o = api.ProductStatusItemLevelIssue();
+  final o = api.ProductStatusItemLevelIssue();
   buildCounterProductStatusItemLevelIssue++;
   if (buildCounterProductStatusItemLevelIssue < 3) {
     o.applicableCountries = buildUnnamed5156();
@@ -11279,7 +11187,7 @@ void checkProductStatusItemLevelIssue(api.ProductStatusItemLevelIssue o) {
 
 core.int buildCounterProductSubscriptionCost = 0;
 api.ProductSubscriptionCost buildProductSubscriptionCost() {
-  var o = api.ProductSubscriptionCost();
+  final o = api.ProductSubscriptionCost();
   buildCounterProductSubscriptionCost++;
   if (buildCounterProductSubscriptionCost < 3) {
     o.amount = buildPrice();
@@ -11293,7 +11201,7 @@ api.ProductSubscriptionCost buildProductSubscriptionCost() {
 void checkProductSubscriptionCost(api.ProductSubscriptionCost o) {
   buildCounterProductSubscriptionCost++;
   if (buildCounterProductSubscriptionCost < 3) {
-    checkPrice(o.amount! as api.Price);
+    checkPrice(o.amount!);
     unittest.expect(
       o.period!,
       unittest.equals('foo'),
@@ -11308,7 +11216,7 @@ void checkProductSubscriptionCost(api.ProductSubscriptionCost o) {
 
 core.int buildCounterProductTax = 0;
 api.ProductTax buildProductTax() {
-  var o = api.ProductTax();
+  final o = api.ProductTax();
   buildCounterProductTax++;
   if (buildCounterProductTax < 3) {
     o.country = 'foo';
@@ -11352,7 +11260,7 @@ void checkProductTax(api.ProductTax o) {
 
 core.int buildCounterProductUnitPricingBaseMeasure = 0;
 api.ProductUnitPricingBaseMeasure buildProductUnitPricingBaseMeasure() {
-  var o = api.ProductUnitPricingBaseMeasure();
+  final o = api.ProductUnitPricingBaseMeasure();
   buildCounterProductUnitPricingBaseMeasure++;
   if (buildCounterProductUnitPricingBaseMeasure < 3) {
     o.unit = 'foo';
@@ -11379,7 +11287,7 @@ void checkProductUnitPricingBaseMeasure(api.ProductUnitPricingBaseMeasure o) {
 
 core.int buildCounterProductUnitPricingMeasure = 0;
 api.ProductUnitPricingMeasure buildProductUnitPricingMeasure() {
-  var o = api.ProductUnitPricingMeasure();
+  final o = api.ProductUnitPricingMeasure();
   buildCounterProductUnitPricingMeasure++;
   if (buildCounterProductUnitPricingMeasure < 3) {
     o.unit = 'foo';
@@ -11405,7 +11313,7 @@ void checkProductUnitPricingMeasure(api.ProductUnitPricingMeasure o) {
 }
 
 core.List<api.ProductsCustomBatchRequestEntry> buildUnnamed5157() {
-  var o = <api.ProductsCustomBatchRequestEntry>[];
+  final o = <api.ProductsCustomBatchRequestEntry>[];
   o.add(buildProductsCustomBatchRequestEntry());
   o.add(buildProductsCustomBatchRequestEntry());
   return o;
@@ -11413,15 +11321,13 @@ core.List<api.ProductsCustomBatchRequestEntry> buildUnnamed5157() {
 
 void checkUnnamed5157(core.List<api.ProductsCustomBatchRequestEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProductsCustomBatchRequestEntry(
-      o[0] as api.ProductsCustomBatchRequestEntry);
-  checkProductsCustomBatchRequestEntry(
-      o[1] as api.ProductsCustomBatchRequestEntry);
+  checkProductsCustomBatchRequestEntry(o[0]);
+  checkProductsCustomBatchRequestEntry(o[1]);
 }
 
 core.int buildCounterProductsCustomBatchRequest = 0;
 api.ProductsCustomBatchRequest buildProductsCustomBatchRequest() {
-  var o = api.ProductsCustomBatchRequest();
+  final o = api.ProductsCustomBatchRequest();
   buildCounterProductsCustomBatchRequest++;
   if (buildCounterProductsCustomBatchRequest < 3) {
     o.entries = buildUnnamed5157();
@@ -11440,7 +11346,7 @@ void checkProductsCustomBatchRequest(api.ProductsCustomBatchRequest o) {
 
 core.int buildCounterProductsCustomBatchRequestEntry = 0;
 api.ProductsCustomBatchRequestEntry buildProductsCustomBatchRequestEntry() {
-  var o = api.ProductsCustomBatchRequestEntry();
+  final o = api.ProductsCustomBatchRequestEntry();
   buildCounterProductsCustomBatchRequestEntry++;
   if (buildCounterProductsCustomBatchRequestEntry < 3) {
     o.batchId = 42;
@@ -11475,7 +11381,7 @@ void checkProductsCustomBatchRequestEntry(
       o.method!,
       unittest.equals('foo'),
     );
-    checkProduct(o.product! as api.Product);
+    checkProduct(o.product!);
     unittest.expect(
       o.productId!,
       unittest.equals('foo'),
@@ -11489,7 +11395,7 @@ void checkProductsCustomBatchRequestEntry(
 }
 
 core.List<api.ProductsCustomBatchResponseEntry> buildUnnamed5158() {
-  var o = <api.ProductsCustomBatchResponseEntry>[];
+  final o = <api.ProductsCustomBatchResponseEntry>[];
   o.add(buildProductsCustomBatchResponseEntry());
   o.add(buildProductsCustomBatchResponseEntry());
   return o;
@@ -11497,15 +11403,13 @@ core.List<api.ProductsCustomBatchResponseEntry> buildUnnamed5158() {
 
 void checkUnnamed5158(core.List<api.ProductsCustomBatchResponseEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProductsCustomBatchResponseEntry(
-      o[0] as api.ProductsCustomBatchResponseEntry);
-  checkProductsCustomBatchResponseEntry(
-      o[1] as api.ProductsCustomBatchResponseEntry);
+  checkProductsCustomBatchResponseEntry(o[0]);
+  checkProductsCustomBatchResponseEntry(o[1]);
 }
 
 core.int buildCounterProductsCustomBatchResponse = 0;
 api.ProductsCustomBatchResponse buildProductsCustomBatchResponse() {
-  var o = api.ProductsCustomBatchResponse();
+  final o = api.ProductsCustomBatchResponse();
   buildCounterProductsCustomBatchResponse++;
   if (buildCounterProductsCustomBatchResponse < 3) {
     o.entries = buildUnnamed5158();
@@ -11529,7 +11433,7 @@ void checkProductsCustomBatchResponse(api.ProductsCustomBatchResponse o) {
 
 core.int buildCounterProductsCustomBatchResponseEntry = 0;
 api.ProductsCustomBatchResponseEntry buildProductsCustomBatchResponseEntry() {
-  var o = api.ProductsCustomBatchResponseEntry();
+  final o = api.ProductsCustomBatchResponseEntry();
   buildCounterProductsCustomBatchResponseEntry++;
   if (buildCounterProductsCustomBatchResponseEntry < 3) {
     o.batchId = 42;
@@ -11549,18 +11453,18 @@ void checkProductsCustomBatchResponseEntry(
       o.batchId!,
       unittest.equals(42),
     );
-    checkErrors(o.errors! as api.Errors);
+    checkErrors(o.errors!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkProduct(o.product! as api.Product);
+    checkProduct(o.product!);
   }
   buildCounterProductsCustomBatchResponseEntry--;
 }
 
 core.List<api.Product> buildUnnamed5159() {
-  var o = <api.Product>[];
+  final o = <api.Product>[];
   o.add(buildProduct());
   o.add(buildProduct());
   return o;
@@ -11568,13 +11472,13 @@ core.List<api.Product> buildUnnamed5159() {
 
 void checkUnnamed5159(core.List<api.Product> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProduct(o[0] as api.Product);
-  checkProduct(o[1] as api.Product);
+  checkProduct(o[0]);
+  checkProduct(o[1]);
 }
 
 core.int buildCounterProductsListResponse = 0;
 api.ProductsListResponse buildProductsListResponse() {
-  var o = api.ProductsListResponse();
+  final o = api.ProductsListResponse();
   buildCounterProductsListResponse++;
   if (buildCounterProductsListResponse < 3) {
     o.kind = 'foo';
@@ -11602,7 +11506,7 @@ void checkProductsListResponse(api.ProductsListResponse o) {
 }
 
 core.List<api.ProductstatusesCustomBatchRequestEntry> buildUnnamed5160() {
-  var o = <api.ProductstatusesCustomBatchRequestEntry>[];
+  final o = <api.ProductstatusesCustomBatchRequestEntry>[];
   o.add(buildProductstatusesCustomBatchRequestEntry());
   o.add(buildProductstatusesCustomBatchRequestEntry());
   return o;
@@ -11610,15 +11514,13 @@ core.List<api.ProductstatusesCustomBatchRequestEntry> buildUnnamed5160() {
 
 void checkUnnamed5160(core.List<api.ProductstatusesCustomBatchRequestEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProductstatusesCustomBatchRequestEntry(
-      o[0] as api.ProductstatusesCustomBatchRequestEntry);
-  checkProductstatusesCustomBatchRequestEntry(
-      o[1] as api.ProductstatusesCustomBatchRequestEntry);
+  checkProductstatusesCustomBatchRequestEntry(o[0]);
+  checkProductstatusesCustomBatchRequestEntry(o[1]);
 }
 
 core.int buildCounterProductstatusesCustomBatchRequest = 0;
 api.ProductstatusesCustomBatchRequest buildProductstatusesCustomBatchRequest() {
-  var o = api.ProductstatusesCustomBatchRequest();
+  final o = api.ProductstatusesCustomBatchRequest();
   buildCounterProductstatusesCustomBatchRequest++;
   if (buildCounterProductstatusesCustomBatchRequest < 3) {
     o.entries = buildUnnamed5160();
@@ -11637,7 +11539,7 @@ void checkProductstatusesCustomBatchRequest(
 }
 
 core.List<core.String> buildUnnamed5161() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -11658,7 +11560,7 @@ void checkUnnamed5161(core.List<core.String> o) {
 core.int buildCounterProductstatusesCustomBatchRequestEntry = 0;
 api.ProductstatusesCustomBatchRequestEntry
     buildProductstatusesCustomBatchRequestEntry() {
-  var o = api.ProductstatusesCustomBatchRequestEntry();
+  final o = api.ProductstatusesCustomBatchRequestEntry();
   buildCounterProductstatusesCustomBatchRequestEntry++;
   if (buildCounterProductstatusesCustomBatchRequestEntry < 3) {
     o.batchId = 42;
@@ -11699,7 +11601,7 @@ void checkProductstatusesCustomBatchRequestEntry(
 }
 
 core.List<api.ProductstatusesCustomBatchResponseEntry> buildUnnamed5162() {
-  var o = <api.ProductstatusesCustomBatchResponseEntry>[];
+  final o = <api.ProductstatusesCustomBatchResponseEntry>[];
   o.add(buildProductstatusesCustomBatchResponseEntry());
   o.add(buildProductstatusesCustomBatchResponseEntry());
   return o;
@@ -11708,16 +11610,14 @@ core.List<api.ProductstatusesCustomBatchResponseEntry> buildUnnamed5162() {
 void checkUnnamed5162(
     core.List<api.ProductstatusesCustomBatchResponseEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProductstatusesCustomBatchResponseEntry(
-      o[0] as api.ProductstatusesCustomBatchResponseEntry);
-  checkProductstatusesCustomBatchResponseEntry(
-      o[1] as api.ProductstatusesCustomBatchResponseEntry);
+  checkProductstatusesCustomBatchResponseEntry(o[0]);
+  checkProductstatusesCustomBatchResponseEntry(o[1]);
 }
 
 core.int buildCounterProductstatusesCustomBatchResponse = 0;
 api.ProductstatusesCustomBatchResponse
     buildProductstatusesCustomBatchResponse() {
-  var o = api.ProductstatusesCustomBatchResponse();
+  final o = api.ProductstatusesCustomBatchResponse();
   buildCounterProductstatusesCustomBatchResponse++;
   if (buildCounterProductstatusesCustomBatchResponse < 3) {
     o.entries = buildUnnamed5162();
@@ -11743,7 +11643,7 @@ void checkProductstatusesCustomBatchResponse(
 core.int buildCounterProductstatusesCustomBatchResponseEntry = 0;
 api.ProductstatusesCustomBatchResponseEntry
     buildProductstatusesCustomBatchResponseEntry() {
-  var o = api.ProductstatusesCustomBatchResponseEntry();
+  final o = api.ProductstatusesCustomBatchResponseEntry();
   buildCounterProductstatusesCustomBatchResponseEntry++;
   if (buildCounterProductstatusesCustomBatchResponseEntry < 3) {
     o.batchId = 42;
@@ -11763,18 +11663,18 @@ void checkProductstatusesCustomBatchResponseEntry(
       o.batchId!,
       unittest.equals(42),
     );
-    checkErrors(o.errors! as api.Errors);
+    checkErrors(o.errors!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkProductStatus(o.productStatus! as api.ProductStatus);
+    checkProductStatus(o.productStatus!);
   }
   buildCounterProductstatusesCustomBatchResponseEntry--;
 }
 
 core.List<api.ProductStatus> buildUnnamed5163() {
-  var o = <api.ProductStatus>[];
+  final o = <api.ProductStatus>[];
   o.add(buildProductStatus());
   o.add(buildProductStatus());
   return o;
@@ -11782,13 +11682,13 @@ core.List<api.ProductStatus> buildUnnamed5163() {
 
 void checkUnnamed5163(core.List<api.ProductStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProductStatus(o[0] as api.ProductStatus);
-  checkProductStatus(o[1] as api.ProductStatus);
+  checkProductStatus(o[0]);
+  checkProductStatus(o[1]);
 }
 
 core.int buildCounterProductstatusesListResponse = 0;
 api.ProductstatusesListResponse buildProductstatusesListResponse() {
-  var o = api.ProductstatusesListResponse();
+  final o = api.ProductstatusesListResponse();
   buildCounterProductstatusesListResponse++;
   if (buildCounterProductstatusesListResponse < 3) {
     o.kind = 'foo';
@@ -11816,7 +11716,7 @@ void checkProductstatusesListResponse(api.ProductstatusesListResponse o) {
 }
 
 core.List<core.String> buildUnnamed5164() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -11836,7 +11736,7 @@ void checkUnnamed5164(core.List<core.String> o) {
 
 core.int buildCounterPubsubNotificationSettings = 0;
 api.PubsubNotificationSettings buildPubsubNotificationSettings() {
-  var o = api.PubsubNotificationSettings();
+  final o = api.PubsubNotificationSettings();
   buildCounterPubsubNotificationSettings++;
   if (buildCounterPubsubNotificationSettings < 3) {
     o.cloudTopicName = 'foo';
@@ -11864,7 +11764,7 @@ void checkPubsubNotificationSettings(api.PubsubNotificationSettings o) {
 }
 
 core.List<core.String> buildUnnamed5165() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -11883,7 +11783,7 @@ void checkUnnamed5165(core.List<core.String> o) {
 }
 
 core.List<api.CarrierRate> buildUnnamed5166() {
-  var o = <api.CarrierRate>[];
+  final o = <api.CarrierRate>[];
   o.add(buildCarrierRate());
   o.add(buildCarrierRate());
   return o;
@@ -11891,12 +11791,12 @@ core.List<api.CarrierRate> buildUnnamed5166() {
 
 void checkUnnamed5166(core.List<api.CarrierRate> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCarrierRate(o[0] as api.CarrierRate);
-  checkCarrierRate(o[1] as api.CarrierRate);
+  checkCarrierRate(o[0]);
+  checkCarrierRate(o[1]);
 }
 
 core.List<api.Table> buildUnnamed5167() {
-  var o = <api.Table>[];
+  final o = <api.Table>[];
   o.add(buildTable());
   o.add(buildTable());
   return o;
@@ -11904,13 +11804,13 @@ core.List<api.Table> buildUnnamed5167() {
 
 void checkUnnamed5167(core.List<api.Table> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTable(o[0] as api.Table);
-  checkTable(o[1] as api.Table);
+  checkTable(o[0]);
+  checkTable(o[1]);
 }
 
 core.int buildCounterRateGroup = 0;
 api.RateGroup buildRateGroup() {
-  var o = api.RateGroup();
+  final o = api.RateGroup();
   buildCounterRateGroup++;
   if (buildCounterRateGroup < 3) {
     o.applicableShippingLabels = buildUnnamed5165();
@@ -11929,12 +11829,12 @@ void checkRateGroup(api.RateGroup o) {
   if (buildCounterRateGroup < 3) {
     checkUnnamed5165(o.applicableShippingLabels!);
     checkUnnamed5166(o.carrierRates!);
-    checkTable(o.mainTable! as api.Table);
+    checkTable(o.mainTable!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkValue(o.singleValue! as api.Value);
+    checkValue(o.singleValue!);
     checkUnnamed5167(o.subtables!);
   }
   buildCounterRateGroup--;
@@ -11942,7 +11842,7 @@ void checkRateGroup(api.RateGroup o) {
 
 core.int buildCounterRefundReason = 0;
 api.RefundReason buildRefundReason() {
-  var o = api.RefundReason();
+  final o = api.RefundReason();
   buildCounterRefundReason++;
   if (buildCounterRefundReason < 3) {
     o.description = 'foo';
@@ -11969,7 +11869,7 @@ void checkRefundReason(api.RefundReason o) {
 
 core.int buildCounterRegion = 0;
 api.Region buildRegion() {
-  var o = api.Region();
+  final o = api.Region();
   buildCounterRegion++;
   if (buildCounterRegion < 3) {
     o.displayName = 'foo';
@@ -11991,12 +11891,12 @@ void checkRegion(api.Region o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkRegionGeoTargetArea(o.geotargetArea! as api.RegionGeoTargetArea);
+    checkRegionGeoTargetArea(o.geotargetArea!);
     unittest.expect(
       o.merchantId!,
       unittest.equals('foo'),
     );
-    checkRegionPostalCodeArea(o.postalCodeArea! as api.RegionPostalCodeArea);
+    checkRegionPostalCodeArea(o.postalCodeArea!);
     unittest.expect(
       o.regionId!,
       unittest.equals('foo'),
@@ -12008,7 +11908,7 @@ void checkRegion(api.Region o) {
 }
 
 core.List<core.String> buildUnnamed5168() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -12028,7 +11928,7 @@ void checkUnnamed5168(core.List<core.String> o) {
 
 core.int buildCounterRegionGeoTargetArea = 0;
 api.RegionGeoTargetArea buildRegionGeoTargetArea() {
-  var o = api.RegionGeoTargetArea();
+  final o = api.RegionGeoTargetArea();
   buildCounterRegionGeoTargetArea++;
   if (buildCounterRegionGeoTargetArea < 3) {
     o.geotargetCriteriaIds = buildUnnamed5168();
@@ -12046,7 +11946,7 @@ void checkRegionGeoTargetArea(api.RegionGeoTargetArea o) {
 }
 
 core.List<api.RegionPostalCodeAreaPostalCodeRange> buildUnnamed5169() {
-  var o = <api.RegionPostalCodeAreaPostalCodeRange>[];
+  final o = <api.RegionPostalCodeAreaPostalCodeRange>[];
   o.add(buildRegionPostalCodeAreaPostalCodeRange());
   o.add(buildRegionPostalCodeAreaPostalCodeRange());
   return o;
@@ -12054,15 +11954,13 @@ core.List<api.RegionPostalCodeAreaPostalCodeRange> buildUnnamed5169() {
 
 void checkUnnamed5169(core.List<api.RegionPostalCodeAreaPostalCodeRange> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRegionPostalCodeAreaPostalCodeRange(
-      o[0] as api.RegionPostalCodeAreaPostalCodeRange);
-  checkRegionPostalCodeAreaPostalCodeRange(
-      o[1] as api.RegionPostalCodeAreaPostalCodeRange);
+  checkRegionPostalCodeAreaPostalCodeRange(o[0]);
+  checkRegionPostalCodeAreaPostalCodeRange(o[1]);
 }
 
 core.int buildCounterRegionPostalCodeArea = 0;
 api.RegionPostalCodeArea buildRegionPostalCodeArea() {
-  var o = api.RegionPostalCodeArea();
+  final o = api.RegionPostalCodeArea();
   buildCounterRegionPostalCodeArea++;
   if (buildCounterRegionPostalCodeArea < 3) {
     o.postalCodes = buildUnnamed5169();
@@ -12087,7 +11985,7 @@ void checkRegionPostalCodeArea(api.RegionPostalCodeArea o) {
 core.int buildCounterRegionPostalCodeAreaPostalCodeRange = 0;
 api.RegionPostalCodeAreaPostalCodeRange
     buildRegionPostalCodeAreaPostalCodeRange() {
-  var o = api.RegionPostalCodeAreaPostalCodeRange();
+  final o = api.RegionPostalCodeAreaPostalCodeRange();
   buildCounterRegionPostalCodeAreaPostalCodeRange++;
   if (buildCounterRegionPostalCodeAreaPostalCodeRange < 3) {
     o.begin = 'foo';
@@ -12114,7 +12012,7 @@ void checkRegionPostalCodeAreaPostalCodeRange(
 }
 
 core.List<api.CustomAttribute> buildUnnamed5170() {
-  var o = <api.CustomAttribute>[];
+  final o = <api.CustomAttribute>[];
   o.add(buildCustomAttribute());
   o.add(buildCustomAttribute());
   return o;
@@ -12122,13 +12020,13 @@ core.List<api.CustomAttribute> buildUnnamed5170() {
 
 void checkUnnamed5170(core.List<api.CustomAttribute> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCustomAttribute(o[0] as api.CustomAttribute);
-  checkCustomAttribute(o[1] as api.CustomAttribute);
+  checkCustomAttribute(o[0]);
+  checkCustomAttribute(o[1]);
 }
 
 core.int buildCounterRegionalInventory = 0;
 api.RegionalInventory buildRegionalInventory() {
-  var o = api.RegionalInventory();
+  final o = api.RegionalInventory();
   buildCounterRegionalInventory++;
   if (buildCounterRegionalInventory < 3) {
     o.availability = 'foo';
@@ -12155,12 +12053,12 @@ void checkRegionalInventory(api.RegionalInventory o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkPrice(o.price! as api.Price);
+    checkPrice(o.price!);
     unittest.expect(
       o.regionId!,
       unittest.equals('foo'),
     );
-    checkPrice(o.salePrice! as api.Price);
+    checkPrice(o.salePrice!);
     unittest.expect(
       o.salePriceEffectiveDate!,
       unittest.equals('foo'),
@@ -12170,7 +12068,7 @@ void checkRegionalInventory(api.RegionalInventory o) {
 }
 
 core.List<api.RegionalinventoryCustomBatchRequestEntry> buildUnnamed5171() {
-  var o = <api.RegionalinventoryCustomBatchRequestEntry>[];
+  final o = <api.RegionalinventoryCustomBatchRequestEntry>[];
   o.add(buildRegionalinventoryCustomBatchRequestEntry());
   o.add(buildRegionalinventoryCustomBatchRequestEntry());
   return o;
@@ -12179,16 +12077,14 @@ core.List<api.RegionalinventoryCustomBatchRequestEntry> buildUnnamed5171() {
 void checkUnnamed5171(
     core.List<api.RegionalinventoryCustomBatchRequestEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRegionalinventoryCustomBatchRequestEntry(
-      o[0] as api.RegionalinventoryCustomBatchRequestEntry);
-  checkRegionalinventoryCustomBatchRequestEntry(
-      o[1] as api.RegionalinventoryCustomBatchRequestEntry);
+  checkRegionalinventoryCustomBatchRequestEntry(o[0]);
+  checkRegionalinventoryCustomBatchRequestEntry(o[1]);
 }
 
 core.int buildCounterRegionalinventoryCustomBatchRequest = 0;
 api.RegionalinventoryCustomBatchRequest
     buildRegionalinventoryCustomBatchRequest() {
-  var o = api.RegionalinventoryCustomBatchRequest();
+  final o = api.RegionalinventoryCustomBatchRequest();
   buildCounterRegionalinventoryCustomBatchRequest++;
   if (buildCounterRegionalinventoryCustomBatchRequest < 3) {
     o.entries = buildUnnamed5171();
@@ -12209,7 +12105,7 @@ void checkRegionalinventoryCustomBatchRequest(
 core.int buildCounterRegionalinventoryCustomBatchRequestEntry = 0;
 api.RegionalinventoryCustomBatchRequestEntry
     buildRegionalinventoryCustomBatchRequestEntry() {
-  var o = api.RegionalinventoryCustomBatchRequestEntry();
+  final o = api.RegionalinventoryCustomBatchRequestEntry();
   buildCounterRegionalinventoryCustomBatchRequestEntry++;
   if (buildCounterRegionalinventoryCustomBatchRequestEntry < 3) {
     o.batchId = 42;
@@ -12242,13 +12138,13 @@ void checkRegionalinventoryCustomBatchRequestEntry(
       o.productId!,
       unittest.equals('foo'),
     );
-    checkRegionalInventory(o.regionalInventory! as api.RegionalInventory);
+    checkRegionalInventory(o.regionalInventory!);
   }
   buildCounterRegionalinventoryCustomBatchRequestEntry--;
 }
 
 core.List<api.RegionalinventoryCustomBatchResponseEntry> buildUnnamed5172() {
-  var o = <api.RegionalinventoryCustomBatchResponseEntry>[];
+  final o = <api.RegionalinventoryCustomBatchResponseEntry>[];
   o.add(buildRegionalinventoryCustomBatchResponseEntry());
   o.add(buildRegionalinventoryCustomBatchResponseEntry());
   return o;
@@ -12257,16 +12153,14 @@ core.List<api.RegionalinventoryCustomBatchResponseEntry> buildUnnamed5172() {
 void checkUnnamed5172(
     core.List<api.RegionalinventoryCustomBatchResponseEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRegionalinventoryCustomBatchResponseEntry(
-      o[0] as api.RegionalinventoryCustomBatchResponseEntry);
-  checkRegionalinventoryCustomBatchResponseEntry(
-      o[1] as api.RegionalinventoryCustomBatchResponseEntry);
+  checkRegionalinventoryCustomBatchResponseEntry(o[0]);
+  checkRegionalinventoryCustomBatchResponseEntry(o[1]);
 }
 
 core.int buildCounterRegionalinventoryCustomBatchResponse = 0;
 api.RegionalinventoryCustomBatchResponse
     buildRegionalinventoryCustomBatchResponse() {
-  var o = api.RegionalinventoryCustomBatchResponse();
+  final o = api.RegionalinventoryCustomBatchResponse();
   buildCounterRegionalinventoryCustomBatchResponse++;
   if (buildCounterRegionalinventoryCustomBatchResponse < 3) {
     o.entries = buildUnnamed5172();
@@ -12292,7 +12186,7 @@ void checkRegionalinventoryCustomBatchResponse(
 core.int buildCounterRegionalinventoryCustomBatchResponseEntry = 0;
 api.RegionalinventoryCustomBatchResponseEntry
     buildRegionalinventoryCustomBatchResponseEntry() {
-  var o = api.RegionalinventoryCustomBatchResponseEntry();
+  final o = api.RegionalinventoryCustomBatchResponseEntry();
   buildCounterRegionalinventoryCustomBatchResponseEntry++;
   if (buildCounterRegionalinventoryCustomBatchResponseEntry < 3) {
     o.batchId = 42;
@@ -12312,19 +12206,19 @@ void checkRegionalinventoryCustomBatchResponseEntry(
       o.batchId!,
       unittest.equals(42),
     );
-    checkErrors(o.errors! as api.Errors);
+    checkErrors(o.errors!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkRegionalInventory(o.regionalInventory! as api.RegionalInventory);
+    checkRegionalInventory(o.regionalInventory!);
   }
   buildCounterRegionalinventoryCustomBatchResponseEntry--;
 }
 
 core.int buildCounterReportRow = 0;
 api.ReportRow buildReportRow() {
-  var o = api.ReportRow();
+  final o = api.ReportRow();
   buildCounterReportRow++;
   if (buildCounterReportRow < 3) {
     o.metrics = buildMetrics();
@@ -12337,14 +12231,14 @@ api.ReportRow buildReportRow() {
 void checkReportRow(api.ReportRow o) {
   buildCounterReportRow++;
   if (buildCounterReportRow < 3) {
-    checkMetrics(o.metrics! as api.Metrics);
-    checkSegments(o.segments! as api.Segments);
+    checkMetrics(o.metrics!);
+    checkSegments(o.segments!);
   }
   buildCounterReportRow--;
 }
 
 core.List<api.InapplicabilityDetails> buildUnnamed5173() {
-  var o = <api.InapplicabilityDetails>[];
+  final o = <api.InapplicabilityDetails>[];
   o.add(buildInapplicabilityDetails());
   o.add(buildInapplicabilityDetails());
   return o;
@@ -12352,12 +12246,12 @@ core.List<api.InapplicabilityDetails> buildUnnamed5173() {
 
 void checkUnnamed5173(core.List<api.InapplicabilityDetails> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkInapplicabilityDetails(o[0] as api.InapplicabilityDetails);
-  checkInapplicabilityDetails(o[1] as api.InapplicabilityDetails);
+  checkInapplicabilityDetails(o[0]);
+  checkInapplicabilityDetails(o[1]);
 }
 
 core.List<core.String> buildUnnamed5174() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -12377,7 +12271,7 @@ void checkUnnamed5174(core.List<core.String> o) {
 
 core.int buildCounterRepricingProductReport = 0;
 api.RepricingProductReport buildRepricingProductReport() {
-  var o = api.RepricingProductReport();
+  final o = api.RepricingProductReport();
   buildCounterRepricingProductReport++;
   if (buildCounterRepricingProductReport < 3) {
     o.applicationCount = 'foo';
@@ -12404,18 +12298,17 @@ void checkRepricingProductReport(api.RepricingProductReport o) {
       unittest.equals('foo'),
     );
     checkRepricingProductReportBuyboxWinningProductStats(
-        o.buyboxWinningProductStats!
-            as api.RepricingProductReportBuyboxWinningProductStats);
-    checkDate(o.date! as api.Date);
-    checkPriceAmount(o.highWatermark! as api.PriceAmount);
+        o.buyboxWinningProductStats!);
+    checkDate(o.date!);
+    checkPriceAmount(o.highWatermark!);
     checkUnnamed5173(o.inapplicabilityDetails!);
-    checkPriceAmount(o.lowWatermark! as api.PriceAmount);
+    checkPriceAmount(o.lowWatermark!);
     unittest.expect(
       o.orderItemCount!,
       unittest.equals(42),
     );
     checkUnnamed5174(o.ruleIds!);
-    checkPriceAmount(o.totalGmv! as api.PriceAmount);
+    checkPriceAmount(o.totalGmv!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -12427,7 +12320,7 @@ void checkRepricingProductReport(api.RepricingProductReport o) {
 core.int buildCounterRepricingProductReportBuyboxWinningProductStats = 0;
 api.RepricingProductReportBuyboxWinningProductStats
     buildRepricingProductReportBuyboxWinningProductStats() {
-  var o = api.RepricingProductReportBuyboxWinningProductStats();
+  final o = api.RepricingProductReportBuyboxWinningProductStats();
   buildCounterRepricingProductReportBuyboxWinningProductStats++;
   if (buildCounterRepricingProductReportBuyboxWinningProductStats < 3) {
     o.buyboxWinsCount = 42;
@@ -12450,7 +12343,7 @@ void checkRepricingProductReportBuyboxWinningProductStats(
 
 core.int buildCounterRepricingRule = 0;
 api.RepricingRule buildRepricingRule() {
-  var o = api.RepricingRule();
+  final o = api.RepricingRule();
   buildCounterRepricingRule++;
   if (buildCounterRepricingRule < 3) {
     o.cogsBasedRule = buildRepricingRuleCostOfGoodsSaleRule();
@@ -12473,16 +12366,13 @@ api.RepricingRule buildRepricingRule() {
 void checkRepricingRule(api.RepricingRule o) {
   buildCounterRepricingRule++;
   if (buildCounterRepricingRule < 3) {
-    checkRepricingRuleCostOfGoodsSaleRule(
-        o.cogsBasedRule! as api.RepricingRuleCostOfGoodsSaleRule);
+    checkRepricingRuleCostOfGoodsSaleRule(o.cogsBasedRule!);
     unittest.expect(
       o.countryCode!,
       unittest.equals('foo'),
     );
-    checkRepricingRuleEffectiveTime(
-        o.effectiveTimePeriod! as api.RepricingRuleEffectiveTime);
-    checkRepricingRuleEligibleOfferMatcher(
-        o.eligibleOfferMatcher! as api.RepricingRuleEligibleOfferMatcher);
+    checkRepricingRuleEffectiveTime(o.effectiveTimePeriod!);
+    checkRepricingRuleEligibleOfferMatcher(o.eligibleOfferMatcher!);
     unittest.expect(
       o.languageCode!,
       unittest.equals('foo'),
@@ -12492,14 +12382,12 @@ void checkRepricingRule(api.RepricingRule o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.paused!, unittest.isTrue);
-    checkRepricingRuleRestriction(
-        o.restriction! as api.RepricingRuleRestriction);
+    checkRepricingRuleRestriction(o.restriction!);
     unittest.expect(
       o.ruleId!,
       unittest.equals('foo'),
     );
-    checkRepricingRuleStatsBasedRule(
-        o.statsBasedRule! as api.RepricingRuleStatsBasedRule);
+    checkRepricingRuleStatsBasedRule(o.statsBasedRule!);
     unittest.expect(
       o.title!,
       unittest.equals('foo'),
@@ -12514,7 +12402,7 @@ void checkRepricingRule(api.RepricingRule o) {
 
 core.int buildCounterRepricingRuleCostOfGoodsSaleRule = 0;
 api.RepricingRuleCostOfGoodsSaleRule buildRepricingRuleCostOfGoodsSaleRule() {
-  var o = api.RepricingRuleCostOfGoodsSaleRule();
+  final o = api.RepricingRuleCostOfGoodsSaleRule();
   buildCounterRepricingRuleCostOfGoodsSaleRule++;
   if (buildCounterRepricingRuleCostOfGoodsSaleRule < 3) {
     o.percentageDelta = 42;
@@ -12541,7 +12429,7 @@ void checkRepricingRuleCostOfGoodsSaleRule(
 }
 
 core.List<api.RepricingRuleEffectiveTimeFixedTimePeriod> buildUnnamed5175() {
-  var o = <api.RepricingRuleEffectiveTimeFixedTimePeriod>[];
+  final o = <api.RepricingRuleEffectiveTimeFixedTimePeriod>[];
   o.add(buildRepricingRuleEffectiveTimeFixedTimePeriod());
   o.add(buildRepricingRuleEffectiveTimeFixedTimePeriod());
   return o;
@@ -12550,15 +12438,13 @@ core.List<api.RepricingRuleEffectiveTimeFixedTimePeriod> buildUnnamed5175() {
 void checkUnnamed5175(
     core.List<api.RepricingRuleEffectiveTimeFixedTimePeriod> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRepricingRuleEffectiveTimeFixedTimePeriod(
-      o[0] as api.RepricingRuleEffectiveTimeFixedTimePeriod);
-  checkRepricingRuleEffectiveTimeFixedTimePeriod(
-      o[1] as api.RepricingRuleEffectiveTimeFixedTimePeriod);
+  checkRepricingRuleEffectiveTimeFixedTimePeriod(o[0]);
+  checkRepricingRuleEffectiveTimeFixedTimePeriod(o[1]);
 }
 
 core.int buildCounterRepricingRuleEffectiveTime = 0;
 api.RepricingRuleEffectiveTime buildRepricingRuleEffectiveTime() {
-  var o = api.RepricingRuleEffectiveTime();
+  final o = api.RepricingRuleEffectiveTime();
   buildCounterRepricingRuleEffectiveTime++;
   if (buildCounterRepricingRuleEffectiveTime < 3) {
     o.fixedTimePeriods = buildUnnamed5175();
@@ -12578,7 +12464,7 @@ void checkRepricingRuleEffectiveTime(api.RepricingRuleEffectiveTime o) {
 core.int buildCounterRepricingRuleEffectiveTimeFixedTimePeriod = 0;
 api.RepricingRuleEffectiveTimeFixedTimePeriod
     buildRepricingRuleEffectiveTimeFixedTimePeriod() {
-  var o = api.RepricingRuleEffectiveTimeFixedTimePeriod();
+  final o = api.RepricingRuleEffectiveTimeFixedTimePeriod();
   buildCounterRepricingRuleEffectiveTimeFixedTimePeriod++;
   if (buildCounterRepricingRuleEffectiveTimeFixedTimePeriod < 3) {
     o.endTime = 'foo';
@@ -12606,7 +12492,7 @@ void checkRepricingRuleEffectiveTimeFixedTimePeriod(
 
 core.int buildCounterRepricingRuleEligibleOfferMatcher = 0;
 api.RepricingRuleEligibleOfferMatcher buildRepricingRuleEligibleOfferMatcher() {
-  var o = api.RepricingRuleEligibleOfferMatcher();
+  final o = api.RepricingRuleEligibleOfferMatcher();
   buildCounterRepricingRuleEligibleOfferMatcher++;
   if (buildCounterRepricingRuleEligibleOfferMatcher < 3) {
     o.brandMatcher = buildRepricingRuleEligibleOfferMatcherStringMatcher();
@@ -12624,23 +12510,20 @@ void checkRepricingRuleEligibleOfferMatcher(
     api.RepricingRuleEligibleOfferMatcher o) {
   buildCounterRepricingRuleEligibleOfferMatcher++;
   if (buildCounterRepricingRuleEligibleOfferMatcher < 3) {
-    checkRepricingRuleEligibleOfferMatcherStringMatcher(
-        o.brandMatcher! as api.RepricingRuleEligibleOfferMatcherStringMatcher);
-    checkRepricingRuleEligibleOfferMatcherStringMatcher(o.itemGroupIdMatcher!
-        as api.RepricingRuleEligibleOfferMatcherStringMatcher);
+    checkRepricingRuleEligibleOfferMatcherStringMatcher(o.brandMatcher!);
+    checkRepricingRuleEligibleOfferMatcherStringMatcher(o.itemGroupIdMatcher!);
     unittest.expect(
       o.matcherOption!,
       unittest.equals('foo'),
     );
-    checkRepricingRuleEligibleOfferMatcherStringMatcher(o.offerIdMatcher!
-        as api.RepricingRuleEligibleOfferMatcherStringMatcher);
+    checkRepricingRuleEligibleOfferMatcherStringMatcher(o.offerIdMatcher!);
     unittest.expect(o.skipWhenOnPromotion!, unittest.isTrue);
   }
   buildCounterRepricingRuleEligibleOfferMatcher--;
 }
 
 core.List<core.String> buildUnnamed5176() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -12661,7 +12544,7 @@ void checkUnnamed5176(core.List<core.String> o) {
 core.int buildCounterRepricingRuleEligibleOfferMatcherStringMatcher = 0;
 api.RepricingRuleEligibleOfferMatcherStringMatcher
     buildRepricingRuleEligibleOfferMatcherStringMatcher() {
-  var o = api.RepricingRuleEligibleOfferMatcherStringMatcher();
+  final o = api.RepricingRuleEligibleOfferMatcherStringMatcher();
   buildCounterRepricingRuleEligibleOfferMatcherStringMatcher++;
   if (buildCounterRepricingRuleEligibleOfferMatcherStringMatcher < 3) {
     o.strAttributes = buildUnnamed5176();
@@ -12680,7 +12563,7 @@ void checkRepricingRuleEligibleOfferMatcherStringMatcher(
 }
 
 core.List<core.String> buildUnnamed5177() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -12699,7 +12582,7 @@ void checkUnnamed5177(core.List<core.String> o) {
 }
 
 core.List<api.InapplicabilityDetails> buildUnnamed5178() {
-  var o = <api.InapplicabilityDetails>[];
+  final o = <api.InapplicabilityDetails>[];
   o.add(buildInapplicabilityDetails());
   o.add(buildInapplicabilityDetails());
   return o;
@@ -12707,12 +12590,12 @@ core.List<api.InapplicabilityDetails> buildUnnamed5178() {
 
 void checkUnnamed5178(core.List<api.InapplicabilityDetails> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkInapplicabilityDetails(o[0] as api.InapplicabilityDetails);
-  checkInapplicabilityDetails(o[1] as api.InapplicabilityDetails);
+  checkInapplicabilityDetails(o[0]);
+  checkInapplicabilityDetails(o[1]);
 }
 
 core.List<core.String> buildUnnamed5179() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -12732,7 +12615,7 @@ void checkUnnamed5179(core.List<core.String> o) {
 
 core.int buildCounterRepricingRuleReport = 0;
 api.RepricingRuleReport buildRepricingRuleReport() {
-  var o = api.RepricingRuleReport();
+  final o = api.RepricingRuleReport();
   buildCounterRepricingRuleReport++;
   if (buildCounterRepricingRuleReport < 3) {
     o.buyboxWinningRuleStats = buildRepricingRuleReportBuyboxWinningRuleStats();
@@ -12752,9 +12635,8 @@ api.RepricingRuleReport buildRepricingRuleReport() {
 void checkRepricingRuleReport(api.RepricingRuleReport o) {
   buildCounterRepricingRuleReport++;
   if (buildCounterRepricingRuleReport < 3) {
-    checkRepricingRuleReportBuyboxWinningRuleStats(o.buyboxWinningRuleStats!
-        as api.RepricingRuleReportBuyboxWinningRuleStats);
-    checkDate(o.date! as api.Date);
+    checkRepricingRuleReportBuyboxWinningRuleStats(o.buyboxWinningRuleStats!);
+    checkDate(o.date!);
     checkUnnamed5177(o.impactedProducts!);
     checkUnnamed5178(o.inapplicabilityDetails!);
     checkUnnamed5179(o.inapplicableProducts!);
@@ -12766,7 +12648,7 @@ void checkRepricingRuleReport(api.RepricingRuleReport o) {
       o.ruleId!,
       unittest.equals('foo'),
     );
-    checkPriceAmount(o.totalGmv! as api.PriceAmount);
+    checkPriceAmount(o.totalGmv!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -12778,7 +12660,7 @@ void checkRepricingRuleReport(api.RepricingRuleReport o) {
 core.int buildCounterRepricingRuleReportBuyboxWinningRuleStats = 0;
 api.RepricingRuleReportBuyboxWinningRuleStats
     buildRepricingRuleReportBuyboxWinningRuleStats() {
-  var o = api.RepricingRuleReportBuyboxWinningRuleStats();
+  final o = api.RepricingRuleReportBuyboxWinningRuleStats();
   buildCounterRepricingRuleReportBuyboxWinningRuleStats++;
   if (buildCounterRepricingRuleReportBuyboxWinningRuleStats < 3) {
     o.buyboxWonProductCount = 42;
@@ -12801,7 +12683,7 @@ void checkRepricingRuleReportBuyboxWinningRuleStats(
 
 core.int buildCounterRepricingRuleRestriction = 0;
 api.RepricingRuleRestriction buildRepricingRuleRestriction() {
-  var o = api.RepricingRuleRestriction();
+  final o = api.RepricingRuleRestriction();
   buildCounterRepricingRuleRestriction++;
   if (buildCounterRepricingRuleRestriction < 3) {
     o.floor = buildRepricingRuleRestrictionBoundary();
@@ -12814,8 +12696,7 @@ api.RepricingRuleRestriction buildRepricingRuleRestriction() {
 void checkRepricingRuleRestriction(api.RepricingRuleRestriction o) {
   buildCounterRepricingRuleRestriction++;
   if (buildCounterRepricingRuleRestriction < 3) {
-    checkRepricingRuleRestrictionBoundary(
-        o.floor! as api.RepricingRuleRestrictionBoundary);
+    checkRepricingRuleRestrictionBoundary(o.floor!);
     unittest.expect(o.useAutoPricingMinPrice!, unittest.isTrue);
   }
   buildCounterRepricingRuleRestriction--;
@@ -12823,7 +12704,7 @@ void checkRepricingRuleRestriction(api.RepricingRuleRestriction o) {
 
 core.int buildCounterRepricingRuleRestrictionBoundary = 0;
 api.RepricingRuleRestrictionBoundary buildRepricingRuleRestrictionBoundary() {
-  var o = api.RepricingRuleRestrictionBoundary();
+  final o = api.RepricingRuleRestrictionBoundary();
   buildCounterRepricingRuleRestrictionBoundary++;
   if (buildCounterRepricingRuleRestrictionBoundary < 3) {
     o.percentageDelta = 42;
@@ -12851,7 +12732,7 @@ void checkRepricingRuleRestrictionBoundary(
 
 core.int buildCounterRepricingRuleStatsBasedRule = 0;
 api.RepricingRuleStatsBasedRule buildRepricingRuleStatsBasedRule() {
-  var o = api.RepricingRuleStatsBasedRule();
+  final o = api.RepricingRuleStatsBasedRule();
   buildCounterRepricingRuleStatsBasedRule++;
   if (buildCounterRepricingRuleStatsBasedRule < 3) {
     o.percentageDelta = 42;
@@ -12879,7 +12760,7 @@ void checkRepricingRuleStatsBasedRule(api.RepricingRuleStatsBasedRule o) {
 core.int buildCounterRequestReviewBuyOnGoogleProgramRequest = 0;
 api.RequestReviewBuyOnGoogleProgramRequest
     buildRequestReviewBuyOnGoogleProgramRequest() {
-  var o = api.RequestReviewBuyOnGoogleProgramRequest();
+  final o = api.RequestReviewBuyOnGoogleProgramRequest();
   buildCounterRequestReviewBuyOnGoogleProgramRequest++;
   if (buildCounterRequestReviewBuyOnGoogleProgramRequest < 3) {}
   buildCounterRequestReviewBuyOnGoogleProgramRequest--;
@@ -12895,7 +12776,7 @@ void checkRequestReviewBuyOnGoogleProgramRequest(
 
 core.int buildCounterReturnAddress = 0;
 api.ReturnAddress buildReturnAddress() {
-  var o = api.ReturnAddress();
+  final o = api.ReturnAddress();
   buildCounterReturnAddress++;
   if (buildCounterReturnAddress < 3) {
     o.address = buildReturnAddressAddress();
@@ -12912,7 +12793,7 @@ api.ReturnAddress buildReturnAddress() {
 void checkReturnAddress(api.ReturnAddress o) {
   buildCounterReturnAddress++;
   if (buildCounterReturnAddress < 3) {
-    checkReturnAddressAddress(o.address! as api.ReturnAddressAddress);
+    checkReturnAddressAddress(o.address!);
     unittest.expect(
       o.country!,
       unittest.equals('foo'),
@@ -12938,7 +12819,7 @@ void checkReturnAddress(api.ReturnAddress o) {
 }
 
 core.List<core.String> buildUnnamed5180() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -12958,7 +12839,7 @@ void checkUnnamed5180(core.List<core.String> o) {
 
 core.int buildCounterReturnAddressAddress = 0;
 api.ReturnAddressAddress buildReturnAddressAddress() {
-  var o = api.ReturnAddressAddress();
+  final o = api.ReturnAddressAddress();
   buildCounterReturnAddressAddress++;
   if (buildCounterReturnAddressAddress < 3) {
     o.country = 'foo';
@@ -13001,7 +12882,7 @@ void checkReturnAddressAddress(api.ReturnAddressAddress o) {
 }
 
 core.List<core.String> buildUnnamed5181() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -13020,7 +12901,7 @@ void checkUnnamed5181(core.List<core.String> o) {
 }
 
 core.List<api.ReturnPolicySeasonalOverride> buildUnnamed5182() {
-  var o = <api.ReturnPolicySeasonalOverride>[];
+  final o = <api.ReturnPolicySeasonalOverride>[];
   o.add(buildReturnPolicySeasonalOverride());
   o.add(buildReturnPolicySeasonalOverride());
   return o;
@@ -13028,13 +12909,13 @@ core.List<api.ReturnPolicySeasonalOverride> buildUnnamed5182() {
 
 void checkUnnamed5182(core.List<api.ReturnPolicySeasonalOverride> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReturnPolicySeasonalOverride(o[0] as api.ReturnPolicySeasonalOverride);
-  checkReturnPolicySeasonalOverride(o[1] as api.ReturnPolicySeasonalOverride);
+  checkReturnPolicySeasonalOverride(o[0]);
+  checkReturnPolicySeasonalOverride(o[1]);
 }
 
 core.int buildCounterReturnPolicy = 0;
 api.ReturnPolicy buildReturnPolicy() {
-  var o = api.ReturnPolicy();
+  final o = api.ReturnPolicy();
   buildCounterReturnPolicy++;
   if (buildCounterReturnPolicy < 3) {
     o.country = 'foo';
@@ -13071,19 +12952,19 @@ void checkReturnPolicy(api.ReturnPolicy o) {
       unittest.equals('foo'),
     );
     checkUnnamed5181(o.nonFreeReturnReasons!);
-    checkReturnPolicyPolicy(o.policy! as api.ReturnPolicyPolicy);
+    checkReturnPolicyPolicy(o.policy!);
     unittest.expect(
       o.returnPolicyId!,
       unittest.equals('foo'),
     );
-    checkPrice(o.returnShippingFee! as api.Price);
+    checkPrice(o.returnShippingFee!);
     checkUnnamed5182(o.seasonalOverrides!);
   }
   buildCounterReturnPolicy--;
 }
 
 core.List<core.String> buildUnnamed5183() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -13102,7 +12983,7 @@ void checkUnnamed5183(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed5184() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -13121,7 +13002,7 @@ void checkUnnamed5184(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed5185() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -13140,7 +13021,7 @@ void checkUnnamed5185(core.List<core.String> o) {
 }
 
 core.List<api.ReturnPolicyOnlineReturnReasonCategoryInfo> buildUnnamed5186() {
-  var o = <api.ReturnPolicyOnlineReturnReasonCategoryInfo>[];
+  final o = <api.ReturnPolicyOnlineReturnReasonCategoryInfo>[];
   o.add(buildReturnPolicyOnlineReturnReasonCategoryInfo());
   o.add(buildReturnPolicyOnlineReturnReasonCategoryInfo());
   return o;
@@ -13149,15 +13030,13 @@ core.List<api.ReturnPolicyOnlineReturnReasonCategoryInfo> buildUnnamed5186() {
 void checkUnnamed5186(
     core.List<api.ReturnPolicyOnlineReturnReasonCategoryInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReturnPolicyOnlineReturnReasonCategoryInfo(
-      o[0] as api.ReturnPolicyOnlineReturnReasonCategoryInfo);
-  checkReturnPolicyOnlineReturnReasonCategoryInfo(
-      o[1] as api.ReturnPolicyOnlineReturnReasonCategoryInfo);
+  checkReturnPolicyOnlineReturnReasonCategoryInfo(o[0]);
+  checkReturnPolicyOnlineReturnReasonCategoryInfo(o[1]);
 }
 
 core.int buildCounterReturnPolicyOnline = 0;
 api.ReturnPolicyOnline buildReturnPolicyOnline() {
-  var o = api.ReturnPolicyOnline();
+  final o = api.ReturnPolicyOnline();
   buildCounterReturnPolicyOnline++;
   if (buildCounterReturnPolicyOnline < 3) {
     o.countries = buildUnnamed5183();
@@ -13188,9 +13067,8 @@ void checkReturnPolicyOnline(api.ReturnPolicyOnline o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkReturnPolicyOnlinePolicy(o.policy! as api.ReturnPolicyOnlinePolicy);
-    checkReturnPolicyOnlineRestockingFee(
-        o.restockingFee! as api.ReturnPolicyOnlineRestockingFee);
+    checkReturnPolicyOnlinePolicy(o.policy!);
+    checkReturnPolicyOnlineRestockingFee(o.restockingFee!);
     checkUnnamed5185(o.returnMethods!);
     unittest.expect(
       o.returnPolicyId!,
@@ -13207,7 +13085,7 @@ void checkReturnPolicyOnline(api.ReturnPolicyOnline o) {
 
 core.int buildCounterReturnPolicyOnlinePolicy = 0;
 api.ReturnPolicyOnlinePolicy buildReturnPolicyOnlinePolicy() {
-  var o = api.ReturnPolicyOnlinePolicy();
+  final o = api.ReturnPolicyOnlinePolicy();
   buildCounterReturnPolicyOnlinePolicy++;
   if (buildCounterReturnPolicyOnlinePolicy < 3) {
     o.days = 'foo';
@@ -13234,7 +13112,7 @@ void checkReturnPolicyOnlinePolicy(api.ReturnPolicyOnlinePolicy o) {
 
 core.int buildCounterReturnPolicyOnlineRestockingFee = 0;
 api.ReturnPolicyOnlineRestockingFee buildReturnPolicyOnlineRestockingFee() {
-  var o = api.ReturnPolicyOnlineRestockingFee();
+  final o = api.ReturnPolicyOnlineRestockingFee();
   buildCounterReturnPolicyOnlineRestockingFee++;
   if (buildCounterReturnPolicyOnlineRestockingFee < 3) {
     o.fixedFee = buildPriceAmount();
@@ -13248,7 +13126,7 @@ void checkReturnPolicyOnlineRestockingFee(
     api.ReturnPolicyOnlineRestockingFee o) {
   buildCounterReturnPolicyOnlineRestockingFee++;
   if (buildCounterReturnPolicyOnlineRestockingFee < 3) {
-    checkPriceAmount(o.fixedFee! as api.PriceAmount);
+    checkPriceAmount(o.fixedFee!);
     unittest.expect(
       o.microPercent!,
       unittest.equals(42),
@@ -13260,7 +13138,7 @@ void checkReturnPolicyOnlineRestockingFee(
 core.int buildCounterReturnPolicyOnlineReturnReasonCategoryInfo = 0;
 api.ReturnPolicyOnlineReturnReasonCategoryInfo
     buildReturnPolicyOnlineReturnReasonCategoryInfo() {
-  var o = api.ReturnPolicyOnlineReturnReasonCategoryInfo();
+  final o = api.ReturnPolicyOnlineReturnReasonCategoryInfo();
   buildCounterReturnPolicyOnlineReturnReasonCategoryInfo++;
   if (buildCounterReturnPolicyOnlineReturnReasonCategoryInfo < 3) {
     o.returnLabelSource = 'foo';
@@ -13283,8 +13161,7 @@ void checkReturnPolicyOnlineReturnReasonCategoryInfo(
       o.returnReasonCategory!,
       unittest.equals('foo'),
     );
-    checkReturnPolicyOnlineReturnShippingFee(
-        o.returnShippingFee! as api.ReturnPolicyOnlineReturnShippingFee);
+    checkReturnPolicyOnlineReturnShippingFee(o.returnShippingFee!);
   }
   buildCounterReturnPolicyOnlineReturnReasonCategoryInfo--;
 }
@@ -13292,7 +13169,7 @@ void checkReturnPolicyOnlineReturnReasonCategoryInfo(
 core.int buildCounterReturnPolicyOnlineReturnShippingFee = 0;
 api.ReturnPolicyOnlineReturnShippingFee
     buildReturnPolicyOnlineReturnShippingFee() {
-  var o = api.ReturnPolicyOnlineReturnShippingFee();
+  final o = api.ReturnPolicyOnlineReturnShippingFee();
   buildCounterReturnPolicyOnlineReturnShippingFee++;
   if (buildCounterReturnPolicyOnlineReturnShippingFee < 3) {
     o.fixedFee = buildPriceAmount();
@@ -13306,7 +13183,7 @@ void checkReturnPolicyOnlineReturnShippingFee(
     api.ReturnPolicyOnlineReturnShippingFee o) {
   buildCounterReturnPolicyOnlineReturnShippingFee++;
   if (buildCounterReturnPolicyOnlineReturnShippingFee < 3) {
-    checkPriceAmount(o.fixedFee! as api.PriceAmount);
+    checkPriceAmount(o.fixedFee!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -13317,7 +13194,7 @@ void checkReturnPolicyOnlineReturnShippingFee(
 
 core.int buildCounterReturnPolicyPolicy = 0;
 api.ReturnPolicyPolicy buildReturnPolicyPolicy() {
-  var o = api.ReturnPolicyPolicy();
+  final o = api.ReturnPolicyPolicy();
   buildCounterReturnPolicyPolicy++;
   if (buildCounterReturnPolicyPolicy < 3) {
     o.lastReturnDate = 'foo';
@@ -13349,7 +13226,7 @@ void checkReturnPolicyPolicy(api.ReturnPolicyPolicy o) {
 
 core.int buildCounterReturnPolicySeasonalOverride = 0;
 api.ReturnPolicySeasonalOverride buildReturnPolicySeasonalOverride() {
-  var o = api.ReturnPolicySeasonalOverride();
+  final o = api.ReturnPolicySeasonalOverride();
   buildCounterReturnPolicySeasonalOverride++;
   if (buildCounterReturnPolicySeasonalOverride < 3) {
     o.endDate = 'foo';
@@ -13372,7 +13249,7 @@ void checkReturnPolicySeasonalOverride(api.ReturnPolicySeasonalOverride o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkReturnPolicyPolicy(o.policy! as api.ReturnPolicyPolicy);
+    checkReturnPolicyPolicy(o.policy!);
     unittest.expect(
       o.startDate!,
       unittest.equals('foo'),
@@ -13383,7 +13260,7 @@ void checkReturnPolicySeasonalOverride(api.ReturnPolicySeasonalOverride o) {
 
 core.int buildCounterReturnPricingInfo = 0;
 api.ReturnPricingInfo buildReturnPricingInfo() {
-  var o = api.ReturnPricingInfo();
+  final o = api.ReturnPricingInfo();
   buildCounterReturnPricingInfo++;
   if (buildCounterReturnPricingInfo < 3) {
     o.chargeReturnShippingFee = true;
@@ -13400,16 +13277,16 @@ void checkReturnPricingInfo(api.ReturnPricingInfo o) {
   buildCounterReturnPricingInfo++;
   if (buildCounterReturnPricingInfo < 3) {
     unittest.expect(o.chargeReturnShippingFee!, unittest.isTrue);
-    checkMonetaryAmount(o.maxReturnShippingFee! as api.MonetaryAmount);
-    checkMonetaryAmount(o.refundableItemsTotalAmount! as api.MonetaryAmount);
-    checkMonetaryAmount(o.refundableShippingAmount! as api.MonetaryAmount);
-    checkMonetaryAmount(o.totalRefundedAmount! as api.MonetaryAmount);
+    checkMonetaryAmount(o.maxReturnShippingFee!);
+    checkMonetaryAmount(o.refundableItemsTotalAmount!);
+    checkMonetaryAmount(o.refundableShippingAmount!);
+    checkMonetaryAmount(o.totalRefundedAmount!);
   }
   buildCounterReturnPricingInfo--;
 }
 
 core.List<api.ShipmentTrackingInfo> buildUnnamed5187() {
-  var o = <api.ShipmentTrackingInfo>[];
+  final o = <api.ShipmentTrackingInfo>[];
   o.add(buildShipmentTrackingInfo());
   o.add(buildShipmentTrackingInfo());
   return o;
@@ -13417,13 +13294,13 @@ core.List<api.ShipmentTrackingInfo> buildUnnamed5187() {
 
 void checkUnnamed5187(core.List<api.ShipmentTrackingInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkShipmentTrackingInfo(o[0] as api.ShipmentTrackingInfo);
-  checkShipmentTrackingInfo(o[1] as api.ShipmentTrackingInfo);
+  checkShipmentTrackingInfo(o[0]);
+  checkShipmentTrackingInfo(o[1]);
 }
 
 core.int buildCounterReturnShipment = 0;
 api.ReturnShipment buildReturnShipment() {
-  var o = api.ReturnShipment();
+  final o = api.ReturnShipment();
   buildCounterReturnShipment++;
   if (buildCounterReturnShipment < 3) {
     o.creationDate = 'foo';
@@ -13472,7 +13349,7 @@ void checkReturnShipment(api.ReturnShipment o) {
 
 core.int buildCounterReturnShippingLabel = 0;
 api.ReturnShippingLabel buildReturnShippingLabel() {
-  var o = api.ReturnShippingLabel();
+  final o = api.ReturnShippingLabel();
   buildCounterReturnShippingLabel++;
   if (buildCounterReturnShippingLabel < 3) {
     o.carrier = 'foo';
@@ -13503,7 +13380,7 @@ void checkReturnShippingLabel(api.ReturnShippingLabel o) {
 }
 
 core.List<api.ReturnaddressCustomBatchRequestEntry> buildUnnamed5188() {
-  var o = <api.ReturnaddressCustomBatchRequestEntry>[];
+  final o = <api.ReturnaddressCustomBatchRequestEntry>[];
   o.add(buildReturnaddressCustomBatchRequestEntry());
   o.add(buildReturnaddressCustomBatchRequestEntry());
   return o;
@@ -13511,15 +13388,13 @@ core.List<api.ReturnaddressCustomBatchRequestEntry> buildUnnamed5188() {
 
 void checkUnnamed5188(core.List<api.ReturnaddressCustomBatchRequestEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReturnaddressCustomBatchRequestEntry(
-      o[0] as api.ReturnaddressCustomBatchRequestEntry);
-  checkReturnaddressCustomBatchRequestEntry(
-      o[1] as api.ReturnaddressCustomBatchRequestEntry);
+  checkReturnaddressCustomBatchRequestEntry(o[0]);
+  checkReturnaddressCustomBatchRequestEntry(o[1]);
 }
 
 core.int buildCounterReturnaddressCustomBatchRequest = 0;
 api.ReturnaddressCustomBatchRequest buildReturnaddressCustomBatchRequest() {
-  var o = api.ReturnaddressCustomBatchRequest();
+  final o = api.ReturnaddressCustomBatchRequest();
   buildCounterReturnaddressCustomBatchRequest++;
   if (buildCounterReturnaddressCustomBatchRequest < 3) {
     o.entries = buildUnnamed5188();
@@ -13540,7 +13415,7 @@ void checkReturnaddressCustomBatchRequest(
 core.int buildCounterReturnaddressCustomBatchRequestEntry = 0;
 api.ReturnaddressCustomBatchRequestEntry
     buildReturnaddressCustomBatchRequestEntry() {
-  var o = api.ReturnaddressCustomBatchRequestEntry();
+  final o = api.ReturnaddressCustomBatchRequestEntry();
   buildCounterReturnaddressCustomBatchRequestEntry++;
   if (buildCounterReturnaddressCustomBatchRequestEntry < 3) {
     o.batchId = 42;
@@ -13569,7 +13444,7 @@ void checkReturnaddressCustomBatchRequestEntry(
       o.method!,
       unittest.equals('foo'),
     );
-    checkReturnAddress(o.returnAddress! as api.ReturnAddress);
+    checkReturnAddress(o.returnAddress!);
     unittest.expect(
       o.returnAddressId!,
       unittest.equals('foo'),
@@ -13579,7 +13454,7 @@ void checkReturnaddressCustomBatchRequestEntry(
 }
 
 core.List<api.ReturnaddressCustomBatchResponseEntry> buildUnnamed5189() {
-  var o = <api.ReturnaddressCustomBatchResponseEntry>[];
+  final o = <api.ReturnaddressCustomBatchResponseEntry>[];
   o.add(buildReturnaddressCustomBatchResponseEntry());
   o.add(buildReturnaddressCustomBatchResponseEntry());
   return o;
@@ -13587,15 +13462,13 @@ core.List<api.ReturnaddressCustomBatchResponseEntry> buildUnnamed5189() {
 
 void checkUnnamed5189(core.List<api.ReturnaddressCustomBatchResponseEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReturnaddressCustomBatchResponseEntry(
-      o[0] as api.ReturnaddressCustomBatchResponseEntry);
-  checkReturnaddressCustomBatchResponseEntry(
-      o[1] as api.ReturnaddressCustomBatchResponseEntry);
+  checkReturnaddressCustomBatchResponseEntry(o[0]);
+  checkReturnaddressCustomBatchResponseEntry(o[1]);
 }
 
 core.int buildCounterReturnaddressCustomBatchResponse = 0;
 api.ReturnaddressCustomBatchResponse buildReturnaddressCustomBatchResponse() {
-  var o = api.ReturnaddressCustomBatchResponse();
+  final o = api.ReturnaddressCustomBatchResponse();
   buildCounterReturnaddressCustomBatchResponse++;
   if (buildCounterReturnaddressCustomBatchResponse < 3) {
     o.entries = buildUnnamed5189();
@@ -13621,7 +13494,7 @@ void checkReturnaddressCustomBatchResponse(
 core.int buildCounterReturnaddressCustomBatchResponseEntry = 0;
 api.ReturnaddressCustomBatchResponseEntry
     buildReturnaddressCustomBatchResponseEntry() {
-  var o = api.ReturnaddressCustomBatchResponseEntry();
+  final o = api.ReturnaddressCustomBatchResponseEntry();
   buildCounterReturnaddressCustomBatchResponseEntry++;
   if (buildCounterReturnaddressCustomBatchResponseEntry < 3) {
     o.batchId = 42;
@@ -13641,18 +13514,18 @@ void checkReturnaddressCustomBatchResponseEntry(
       o.batchId!,
       unittest.equals(42),
     );
-    checkErrors(o.errors! as api.Errors);
+    checkErrors(o.errors!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkReturnAddress(o.returnAddress! as api.ReturnAddress);
+    checkReturnAddress(o.returnAddress!);
   }
   buildCounterReturnaddressCustomBatchResponseEntry--;
 }
 
 core.List<api.ReturnAddress> buildUnnamed5190() {
-  var o = <api.ReturnAddress>[];
+  final o = <api.ReturnAddress>[];
   o.add(buildReturnAddress());
   o.add(buildReturnAddress());
   return o;
@@ -13660,13 +13533,13 @@ core.List<api.ReturnAddress> buildUnnamed5190() {
 
 void checkUnnamed5190(core.List<api.ReturnAddress> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReturnAddress(o[0] as api.ReturnAddress);
-  checkReturnAddress(o[1] as api.ReturnAddress);
+  checkReturnAddress(o[0]);
+  checkReturnAddress(o[1]);
 }
 
 core.int buildCounterReturnaddressListResponse = 0;
 api.ReturnaddressListResponse buildReturnaddressListResponse() {
-  var o = api.ReturnaddressListResponse();
+  final o = api.ReturnaddressListResponse();
   buildCounterReturnaddressListResponse++;
   if (buildCounterReturnaddressListResponse < 3) {
     o.kind = 'foo';
@@ -13694,7 +13567,7 @@ void checkReturnaddressListResponse(api.ReturnaddressListResponse o) {
 }
 
 core.List<api.ReturnpolicyCustomBatchRequestEntry> buildUnnamed5191() {
-  var o = <api.ReturnpolicyCustomBatchRequestEntry>[];
+  final o = <api.ReturnpolicyCustomBatchRequestEntry>[];
   o.add(buildReturnpolicyCustomBatchRequestEntry());
   o.add(buildReturnpolicyCustomBatchRequestEntry());
   return o;
@@ -13702,15 +13575,13 @@ core.List<api.ReturnpolicyCustomBatchRequestEntry> buildUnnamed5191() {
 
 void checkUnnamed5191(core.List<api.ReturnpolicyCustomBatchRequestEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReturnpolicyCustomBatchRequestEntry(
-      o[0] as api.ReturnpolicyCustomBatchRequestEntry);
-  checkReturnpolicyCustomBatchRequestEntry(
-      o[1] as api.ReturnpolicyCustomBatchRequestEntry);
+  checkReturnpolicyCustomBatchRequestEntry(o[0]);
+  checkReturnpolicyCustomBatchRequestEntry(o[1]);
 }
 
 core.int buildCounterReturnpolicyCustomBatchRequest = 0;
 api.ReturnpolicyCustomBatchRequest buildReturnpolicyCustomBatchRequest() {
-  var o = api.ReturnpolicyCustomBatchRequest();
+  final o = api.ReturnpolicyCustomBatchRequest();
   buildCounterReturnpolicyCustomBatchRequest++;
   if (buildCounterReturnpolicyCustomBatchRequest < 3) {
     o.entries = buildUnnamed5191();
@@ -13730,7 +13601,7 @@ void checkReturnpolicyCustomBatchRequest(api.ReturnpolicyCustomBatchRequest o) {
 core.int buildCounterReturnpolicyCustomBatchRequestEntry = 0;
 api.ReturnpolicyCustomBatchRequestEntry
     buildReturnpolicyCustomBatchRequestEntry() {
-  var o = api.ReturnpolicyCustomBatchRequestEntry();
+  final o = api.ReturnpolicyCustomBatchRequestEntry();
   buildCounterReturnpolicyCustomBatchRequestEntry++;
   if (buildCounterReturnpolicyCustomBatchRequestEntry < 3) {
     o.batchId = 42;
@@ -13759,7 +13630,7 @@ void checkReturnpolicyCustomBatchRequestEntry(
       o.method!,
       unittest.equals('foo'),
     );
-    checkReturnPolicy(o.returnPolicy! as api.ReturnPolicy);
+    checkReturnPolicy(o.returnPolicy!);
     unittest.expect(
       o.returnPolicyId!,
       unittest.equals('foo'),
@@ -13769,7 +13640,7 @@ void checkReturnpolicyCustomBatchRequestEntry(
 }
 
 core.List<api.ReturnpolicyCustomBatchResponseEntry> buildUnnamed5192() {
-  var o = <api.ReturnpolicyCustomBatchResponseEntry>[];
+  final o = <api.ReturnpolicyCustomBatchResponseEntry>[];
   o.add(buildReturnpolicyCustomBatchResponseEntry());
   o.add(buildReturnpolicyCustomBatchResponseEntry());
   return o;
@@ -13777,15 +13648,13 @@ core.List<api.ReturnpolicyCustomBatchResponseEntry> buildUnnamed5192() {
 
 void checkUnnamed5192(core.List<api.ReturnpolicyCustomBatchResponseEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReturnpolicyCustomBatchResponseEntry(
-      o[0] as api.ReturnpolicyCustomBatchResponseEntry);
-  checkReturnpolicyCustomBatchResponseEntry(
-      o[1] as api.ReturnpolicyCustomBatchResponseEntry);
+  checkReturnpolicyCustomBatchResponseEntry(o[0]);
+  checkReturnpolicyCustomBatchResponseEntry(o[1]);
 }
 
 core.int buildCounterReturnpolicyCustomBatchResponse = 0;
 api.ReturnpolicyCustomBatchResponse buildReturnpolicyCustomBatchResponse() {
-  var o = api.ReturnpolicyCustomBatchResponse();
+  final o = api.ReturnpolicyCustomBatchResponse();
   buildCounterReturnpolicyCustomBatchResponse++;
   if (buildCounterReturnpolicyCustomBatchResponse < 3) {
     o.entries = buildUnnamed5192();
@@ -13811,7 +13680,7 @@ void checkReturnpolicyCustomBatchResponse(
 core.int buildCounterReturnpolicyCustomBatchResponseEntry = 0;
 api.ReturnpolicyCustomBatchResponseEntry
     buildReturnpolicyCustomBatchResponseEntry() {
-  var o = api.ReturnpolicyCustomBatchResponseEntry();
+  final o = api.ReturnpolicyCustomBatchResponseEntry();
   buildCounterReturnpolicyCustomBatchResponseEntry++;
   if (buildCounterReturnpolicyCustomBatchResponseEntry < 3) {
     o.batchId = 42;
@@ -13831,18 +13700,18 @@ void checkReturnpolicyCustomBatchResponseEntry(
       o.batchId!,
       unittest.equals(42),
     );
-    checkErrors(o.errors! as api.Errors);
+    checkErrors(o.errors!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkReturnPolicy(o.returnPolicy! as api.ReturnPolicy);
+    checkReturnPolicy(o.returnPolicy!);
   }
   buildCounterReturnpolicyCustomBatchResponseEntry--;
 }
 
 core.List<api.ReturnPolicy> buildUnnamed5193() {
-  var o = <api.ReturnPolicy>[];
+  final o = <api.ReturnPolicy>[];
   o.add(buildReturnPolicy());
   o.add(buildReturnPolicy());
   return o;
@@ -13850,13 +13719,13 @@ core.List<api.ReturnPolicy> buildUnnamed5193() {
 
 void checkUnnamed5193(core.List<api.ReturnPolicy> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReturnPolicy(o[0] as api.ReturnPolicy);
-  checkReturnPolicy(o[1] as api.ReturnPolicy);
+  checkReturnPolicy(o[0]);
+  checkReturnPolicy(o[1]);
 }
 
 core.int buildCounterReturnpolicyListResponse = 0;
 api.ReturnpolicyListResponse buildReturnpolicyListResponse() {
-  var o = api.ReturnpolicyListResponse();
+  final o = api.ReturnpolicyListResponse();
   buildCounterReturnpolicyListResponse++;
   if (buildCounterReturnpolicyListResponse < 3) {
     o.kind = 'foo';
@@ -13879,7 +13748,7 @@ void checkReturnpolicyListResponse(api.ReturnpolicyListResponse o) {
 }
 
 core.List<api.Value> buildUnnamed5194() {
-  var o = <api.Value>[];
+  final o = <api.Value>[];
   o.add(buildValue());
   o.add(buildValue());
   return o;
@@ -13887,13 +13756,13 @@ core.List<api.Value> buildUnnamed5194() {
 
 void checkUnnamed5194(core.List<api.Value> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkValue(o[0] as api.Value);
-  checkValue(o[1] as api.Value);
+  checkValue(o[0]);
+  checkValue(o[1]);
 }
 
 core.int buildCounterRow = 0;
 api.Row buildRow() {
-  var o = api.Row();
+  final o = api.Row();
   buildCounterRow++;
   if (buildCounterRow < 3) {
     o.cells = buildUnnamed5194();
@@ -13912,7 +13781,7 @@ void checkRow(api.Row o) {
 
 core.int buildCounterSearchRequest = 0;
 api.SearchRequest buildSearchRequest() {
-  var o = api.SearchRequest();
+  final o = api.SearchRequest();
   buildCounterSearchRequest++;
   if (buildCounterSearchRequest < 3) {
     o.pageSize = 42;
@@ -13943,7 +13812,7 @@ void checkSearchRequest(api.SearchRequest o) {
 }
 
 core.List<api.ReportRow> buildUnnamed5195() {
-  var o = <api.ReportRow>[];
+  final o = <api.ReportRow>[];
   o.add(buildReportRow());
   o.add(buildReportRow());
   return o;
@@ -13951,13 +13820,13 @@ core.List<api.ReportRow> buildUnnamed5195() {
 
 void checkUnnamed5195(core.List<api.ReportRow> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReportRow(o[0] as api.ReportRow);
-  checkReportRow(o[1] as api.ReportRow);
+  checkReportRow(o[0]);
+  checkReportRow(o[1]);
 }
 
 core.int buildCounterSearchResponse = 0;
 api.SearchResponse buildSearchResponse() {
-  var o = api.SearchResponse();
+  final o = api.SearchResponse();
   buildCounterSearchResponse++;
   if (buildCounterSearchResponse < 3) {
     o.nextPageToken = 'foo';
@@ -13981,7 +13850,7 @@ void checkSearchResponse(api.SearchResponse o) {
 
 core.int buildCounterSegments = 0;
 api.Segments buildSegments() {
-  var o = api.Segments();
+  final o = api.Segments();
   buildCounterSegments++;
   if (buildCounterSegments < 3) {
     o.brand = 'foo';
@@ -14062,7 +13931,7 @@ void checkSegments(api.Segments o) {
       o.customLabel4!,
       unittest.equals('foo'),
     );
-    checkDate(o.date! as api.Date);
+    checkDate(o.date!);
     unittest.expect(
       o.offerId!,
       unittest.equals('foo'),
@@ -14095,13 +13964,13 @@ void checkSegments(api.Segments o) {
       o.title!,
       unittest.equals('foo'),
     );
-    checkDate(o.week! as api.Date);
+    checkDate(o.week!);
   }
   buildCounterSegments--;
 }
 
 core.List<api.RateGroup> buildUnnamed5196() {
-  var o = <api.RateGroup>[];
+  final o = <api.RateGroup>[];
   o.add(buildRateGroup());
   o.add(buildRateGroup());
   return o;
@@ -14109,13 +13978,13 @@ core.List<api.RateGroup> buildUnnamed5196() {
 
 void checkUnnamed5196(core.List<api.RateGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRateGroup(o[0] as api.RateGroup);
-  checkRateGroup(o[1] as api.RateGroup);
+  checkRateGroup(o[0]);
+  checkRateGroup(o[1]);
 }
 
 core.int buildCounterService = 0;
 api.Service buildService() {
-  var o = api.Service();
+  final o = api.Service();
   buildCounterService++;
   if (buildCounterService < 3) {
     o.active = true;
@@ -14146,19 +14015,18 @@ void checkService(api.Service o) {
       o.deliveryCountry!,
       unittest.equals('foo'),
     );
-    checkDeliveryTime(o.deliveryTime! as api.DeliveryTime);
+    checkDeliveryTime(o.deliveryTime!);
     unittest.expect(
       o.eligibility!,
       unittest.equals('foo'),
     );
-    checkPrice(o.minimumOrderValue! as api.Price);
-    checkMinimumOrderValueTable(
-        o.minimumOrderValueTable! as api.MinimumOrderValueTable);
+    checkPrice(o.minimumOrderValue!);
+    checkMinimumOrderValueTable(o.minimumOrderValueTable!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkPickupCarrierService(o.pickupService! as api.PickupCarrierService);
+    checkPickupCarrierService(o.pickupService!);
     checkUnnamed5196(o.rateGroups!);
     unittest.expect(
       o.shipmentType!,
@@ -14169,7 +14037,7 @@ void checkService(api.Service o) {
 }
 
 core.List<core.String> buildUnnamed5197() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -14189,7 +14057,7 @@ void checkUnnamed5197(core.List<core.String> o) {
 
 core.int buildCounterSettlementReport = 0;
 api.SettlementReport buildSettlementReport() {
-  var o = api.SettlementReport();
+  final o = api.SettlementReport();
   buildCounterSettlementReport++;
   if (buildCounterSettlementReport < 3) {
     o.endDate = 'foo';
@@ -14216,7 +14084,7 @@ void checkSettlementReport(api.SettlementReport o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkPrice(o.previousBalance! as api.Price);
+    checkPrice(o.previousBalance!);
     unittest.expect(
       o.settlementId!,
       unittest.equals('foo'),
@@ -14225,7 +14093,7 @@ void checkSettlementReport(api.SettlementReport o) {
       o.startDate!,
       unittest.equals('foo'),
     );
-    checkPrice(o.transferAmount! as api.Price);
+    checkPrice(o.transferAmount!);
     unittest.expect(
       o.transferDate!,
       unittest.equals('foo'),
@@ -14237,7 +14105,7 @@ void checkSettlementReport(api.SettlementReport o) {
 
 core.int buildCounterSettlementTransaction = 0;
 api.SettlementTransaction buildSettlementTransaction() {
-  var o = api.SettlementTransaction();
+  final o = api.SettlementTransaction();
   buildCounterSettlementTransaction++;
   if (buildCounterSettlementTransaction < 3) {
     o.amount = buildSettlementTransactionAmount();
@@ -14252,23 +14120,20 @@ api.SettlementTransaction buildSettlementTransaction() {
 void checkSettlementTransaction(api.SettlementTransaction o) {
   buildCounterSettlementTransaction++;
   if (buildCounterSettlementTransaction < 3) {
-    checkSettlementTransactionAmount(
-        o.amount! as api.SettlementTransactionAmount);
-    checkSettlementTransactionIdentifiers(
-        o.identifiers! as api.SettlementTransactionIdentifiers);
+    checkSettlementTransactionAmount(o.amount!);
+    checkSettlementTransactionIdentifiers(o.identifiers!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkSettlementTransactionTransaction(
-        o.transaction! as api.SettlementTransactionTransaction);
+    checkSettlementTransactionTransaction(o.transaction!);
   }
   buildCounterSettlementTransaction--;
 }
 
 core.int buildCounterSettlementTransactionAmount = 0;
 api.SettlementTransactionAmount buildSettlementTransactionAmount() {
-  var o = api.SettlementTransactionAmount();
+  final o = api.SettlementTransactionAmount();
   buildCounterSettlementTransactionAmount++;
   if (buildCounterSettlementTransactionAmount < 3) {
     o.commission = buildSettlementTransactionAmountCommission();
@@ -14283,13 +14148,12 @@ api.SettlementTransactionAmount buildSettlementTransactionAmount() {
 void checkSettlementTransactionAmount(api.SettlementTransactionAmount o) {
   buildCounterSettlementTransactionAmount++;
   if (buildCounterSettlementTransactionAmount < 3) {
-    checkSettlementTransactionAmountCommission(
-        o.commission! as api.SettlementTransactionAmountCommission);
+    checkSettlementTransactionAmountCommission(o.commission!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
     );
-    checkPrice(o.transactionAmount! as api.Price);
+    checkPrice(o.transactionAmount!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -14301,7 +14165,7 @@ void checkSettlementTransactionAmount(api.SettlementTransactionAmount o) {
 core.int buildCounterSettlementTransactionAmountCommission = 0;
 api.SettlementTransactionAmountCommission
     buildSettlementTransactionAmountCommission() {
-  var o = api.SettlementTransactionAmountCommission();
+  final o = api.SettlementTransactionAmountCommission();
   buildCounterSettlementTransactionAmountCommission++;
   if (buildCounterSettlementTransactionAmountCommission < 3) {
     o.category = 'foo';
@@ -14328,7 +14192,7 @@ void checkSettlementTransactionAmountCommission(
 }
 
 core.List<core.String> buildUnnamed5198() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -14348,7 +14212,7 @@ void checkUnnamed5198(core.List<core.String> o) {
 
 core.int buildCounterSettlementTransactionIdentifiers = 0;
 api.SettlementTransactionIdentifiers buildSettlementTransactionIdentifiers() {
-  var o = api.SettlementTransactionIdentifiers();
+  final o = api.SettlementTransactionIdentifiers();
   buildCounterSettlementTransactionIdentifiers++;
   if (buildCounterSettlementTransactionIdentifiers < 3) {
     o.adjustmentId = 'foo';
@@ -14393,7 +14257,7 @@ void checkSettlementTransactionIdentifiers(
 
 core.int buildCounterSettlementTransactionTransaction = 0;
 api.SettlementTransactionTransaction buildSettlementTransactionTransaction() {
-  var o = api.SettlementTransactionTransaction();
+  final o = api.SettlementTransactionTransaction();
   buildCounterSettlementTransactionTransaction++;
   if (buildCounterSettlementTransactionTransaction < 3) {
     o.postDate = 'foo';
@@ -14420,7 +14284,7 @@ void checkSettlementTransactionTransaction(
 }
 
 core.List<api.SettlementReport> buildUnnamed5199() {
-  var o = <api.SettlementReport>[];
+  final o = <api.SettlementReport>[];
   o.add(buildSettlementReport());
   o.add(buildSettlementReport());
   return o;
@@ -14428,13 +14292,13 @@ core.List<api.SettlementReport> buildUnnamed5199() {
 
 void checkUnnamed5199(core.List<api.SettlementReport> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSettlementReport(o[0] as api.SettlementReport);
-  checkSettlementReport(o[1] as api.SettlementReport);
+  checkSettlementReport(o[0]);
+  checkSettlementReport(o[1]);
 }
 
 core.int buildCounterSettlementreportsListResponse = 0;
 api.SettlementreportsListResponse buildSettlementreportsListResponse() {
-  var o = api.SettlementreportsListResponse();
+  final o = api.SettlementreportsListResponse();
   buildCounterSettlementreportsListResponse++;
   if (buildCounterSettlementreportsListResponse < 3) {
     o.kind = 'foo';
@@ -14462,7 +14326,7 @@ void checkSettlementreportsListResponse(api.SettlementreportsListResponse o) {
 }
 
 core.List<api.SettlementTransaction> buildUnnamed5200() {
-  var o = <api.SettlementTransaction>[];
+  final o = <api.SettlementTransaction>[];
   o.add(buildSettlementTransaction());
   o.add(buildSettlementTransaction());
   return o;
@@ -14470,14 +14334,14 @@ core.List<api.SettlementTransaction> buildUnnamed5200() {
 
 void checkUnnamed5200(core.List<api.SettlementTransaction> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSettlementTransaction(o[0] as api.SettlementTransaction);
-  checkSettlementTransaction(o[1] as api.SettlementTransaction);
+  checkSettlementTransaction(o[0]);
+  checkSettlementTransaction(o[1]);
 }
 
 core.int buildCounterSettlementtransactionsListResponse = 0;
 api.SettlementtransactionsListResponse
     buildSettlementtransactionsListResponse() {
-  var o = api.SettlementtransactionsListResponse();
+  final o = api.SettlementtransactionsListResponse();
   buildCounterSettlementtransactionsListResponse++;
   if (buildCounterSettlementtransactionsListResponse < 3) {
     o.kind = 'foo';
@@ -14506,7 +14370,7 @@ void checkSettlementtransactionsListResponse(
 }
 
 core.List<api.ShipmentInvoiceLineItemInvoice> buildUnnamed5201() {
-  var o = <api.ShipmentInvoiceLineItemInvoice>[];
+  final o = <api.ShipmentInvoiceLineItemInvoice>[];
   o.add(buildShipmentInvoiceLineItemInvoice());
   o.add(buildShipmentInvoiceLineItemInvoice());
   return o;
@@ -14514,15 +14378,13 @@ core.List<api.ShipmentInvoiceLineItemInvoice> buildUnnamed5201() {
 
 void checkUnnamed5201(core.List<api.ShipmentInvoiceLineItemInvoice> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkShipmentInvoiceLineItemInvoice(
-      o[0] as api.ShipmentInvoiceLineItemInvoice);
-  checkShipmentInvoiceLineItemInvoice(
-      o[1] as api.ShipmentInvoiceLineItemInvoice);
+  checkShipmentInvoiceLineItemInvoice(o[0]);
+  checkShipmentInvoiceLineItemInvoice(o[1]);
 }
 
 core.int buildCounterShipmentInvoice = 0;
 api.ShipmentInvoice buildShipmentInvoice() {
-  var o = api.ShipmentInvoice();
+  final o = api.ShipmentInvoice();
   buildCounterShipmentInvoice++;
   if (buildCounterShipmentInvoice < 3) {
     o.invoiceSummary = buildInvoiceSummary();
@@ -14536,7 +14398,7 @@ api.ShipmentInvoice buildShipmentInvoice() {
 void checkShipmentInvoice(api.ShipmentInvoice o) {
   buildCounterShipmentInvoice++;
   if (buildCounterShipmentInvoice < 3) {
-    checkInvoiceSummary(o.invoiceSummary! as api.InvoiceSummary);
+    checkInvoiceSummary(o.invoiceSummary!);
     checkUnnamed5201(o.lineItemInvoices!);
     unittest.expect(
       o.shipmentGroupId!,
@@ -14547,7 +14409,7 @@ void checkShipmentInvoice(api.ShipmentInvoice o) {
 }
 
 core.List<core.String> buildUnnamed5202() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -14567,7 +14429,7 @@ void checkUnnamed5202(core.List<core.String> o) {
 
 core.int buildCounterShipmentInvoiceLineItemInvoice = 0;
 api.ShipmentInvoiceLineItemInvoice buildShipmentInvoiceLineItemInvoice() {
-  var o = api.ShipmentInvoiceLineItemInvoice();
+  final o = api.ShipmentInvoiceLineItemInvoice();
   buildCounterShipmentInvoiceLineItemInvoice++;
   if (buildCounterShipmentInvoiceLineItemInvoice < 3) {
     o.lineItemId = 'foo';
@@ -14591,14 +14453,14 @@ void checkShipmentInvoiceLineItemInvoice(api.ShipmentInvoiceLineItemInvoice o) {
       unittest.equals('foo'),
     );
     checkUnnamed5202(o.shipmentUnitIds!);
-    checkUnitInvoice(o.unitInvoice! as api.UnitInvoice);
+    checkUnitInvoice(o.unitInvoice!);
   }
   buildCounterShipmentInvoiceLineItemInvoice--;
 }
 
 core.int buildCounterShipmentTrackingInfo = 0;
 api.ShipmentTrackingInfo buildShipmentTrackingInfo() {
-  var o = api.ShipmentTrackingInfo();
+  final o = api.ShipmentTrackingInfo();
   buildCounterShipmentTrackingInfo++;
   if (buildCounterShipmentTrackingInfo < 3) {
     o.carrier = 'foo';
@@ -14624,7 +14486,7 @@ void checkShipmentTrackingInfo(api.ShipmentTrackingInfo o) {
 }
 
 core.List<api.PostalCodeGroup> buildUnnamed5203() {
-  var o = <api.PostalCodeGroup>[];
+  final o = <api.PostalCodeGroup>[];
   o.add(buildPostalCodeGroup());
   o.add(buildPostalCodeGroup());
   return o;
@@ -14632,12 +14494,12 @@ core.List<api.PostalCodeGroup> buildUnnamed5203() {
 
 void checkUnnamed5203(core.List<api.PostalCodeGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPostalCodeGroup(o[0] as api.PostalCodeGroup);
-  checkPostalCodeGroup(o[1] as api.PostalCodeGroup);
+  checkPostalCodeGroup(o[0]);
+  checkPostalCodeGroup(o[1]);
 }
 
 core.List<api.Service> buildUnnamed5204() {
-  var o = <api.Service>[];
+  final o = <api.Service>[];
   o.add(buildService());
   o.add(buildService());
   return o;
@@ -14645,13 +14507,13 @@ core.List<api.Service> buildUnnamed5204() {
 
 void checkUnnamed5204(core.List<api.Service> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkService(o[0] as api.Service);
-  checkService(o[1] as api.Service);
+  checkService(o[0]);
+  checkService(o[1]);
 }
 
 core.int buildCounterShippingSettings = 0;
 api.ShippingSettings buildShippingSettings() {
-  var o = api.ShippingSettings();
+  final o = api.ShippingSettings();
   buildCounterShippingSettings++;
   if (buildCounterShippingSettings < 3) {
     o.accountId = 'foo';
@@ -14676,7 +14538,7 @@ void checkShippingSettings(api.ShippingSettings o) {
 }
 
 core.List<api.ShippingsettingsCustomBatchRequestEntry> buildUnnamed5205() {
-  var o = <api.ShippingsettingsCustomBatchRequestEntry>[];
+  final o = <api.ShippingsettingsCustomBatchRequestEntry>[];
   o.add(buildShippingsettingsCustomBatchRequestEntry());
   o.add(buildShippingsettingsCustomBatchRequestEntry());
   return o;
@@ -14685,16 +14547,14 @@ core.List<api.ShippingsettingsCustomBatchRequestEntry> buildUnnamed5205() {
 void checkUnnamed5205(
     core.List<api.ShippingsettingsCustomBatchRequestEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkShippingsettingsCustomBatchRequestEntry(
-      o[0] as api.ShippingsettingsCustomBatchRequestEntry);
-  checkShippingsettingsCustomBatchRequestEntry(
-      o[1] as api.ShippingsettingsCustomBatchRequestEntry);
+  checkShippingsettingsCustomBatchRequestEntry(o[0]);
+  checkShippingsettingsCustomBatchRequestEntry(o[1]);
 }
 
 core.int buildCounterShippingsettingsCustomBatchRequest = 0;
 api.ShippingsettingsCustomBatchRequest
     buildShippingsettingsCustomBatchRequest() {
-  var o = api.ShippingsettingsCustomBatchRequest();
+  final o = api.ShippingsettingsCustomBatchRequest();
   buildCounterShippingsettingsCustomBatchRequest++;
   if (buildCounterShippingsettingsCustomBatchRequest < 3) {
     o.entries = buildUnnamed5205();
@@ -14715,7 +14575,7 @@ void checkShippingsettingsCustomBatchRequest(
 core.int buildCounterShippingsettingsCustomBatchRequestEntry = 0;
 api.ShippingsettingsCustomBatchRequestEntry
     buildShippingsettingsCustomBatchRequestEntry() {
-  var o = api.ShippingsettingsCustomBatchRequestEntry();
+  final o = api.ShippingsettingsCustomBatchRequestEntry();
   buildCounterShippingsettingsCustomBatchRequestEntry++;
   if (buildCounterShippingsettingsCustomBatchRequestEntry < 3) {
     o.accountId = 'foo';
@@ -14748,13 +14608,13 @@ void checkShippingsettingsCustomBatchRequestEntry(
       o.method!,
       unittest.equals('foo'),
     );
-    checkShippingSettings(o.shippingSettings! as api.ShippingSettings);
+    checkShippingSettings(o.shippingSettings!);
   }
   buildCounterShippingsettingsCustomBatchRequestEntry--;
 }
 
 core.List<api.ShippingsettingsCustomBatchResponseEntry> buildUnnamed5206() {
-  var o = <api.ShippingsettingsCustomBatchResponseEntry>[];
+  final o = <api.ShippingsettingsCustomBatchResponseEntry>[];
   o.add(buildShippingsettingsCustomBatchResponseEntry());
   o.add(buildShippingsettingsCustomBatchResponseEntry());
   return o;
@@ -14763,16 +14623,14 @@ core.List<api.ShippingsettingsCustomBatchResponseEntry> buildUnnamed5206() {
 void checkUnnamed5206(
     core.List<api.ShippingsettingsCustomBatchResponseEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkShippingsettingsCustomBatchResponseEntry(
-      o[0] as api.ShippingsettingsCustomBatchResponseEntry);
-  checkShippingsettingsCustomBatchResponseEntry(
-      o[1] as api.ShippingsettingsCustomBatchResponseEntry);
+  checkShippingsettingsCustomBatchResponseEntry(o[0]);
+  checkShippingsettingsCustomBatchResponseEntry(o[1]);
 }
 
 core.int buildCounterShippingsettingsCustomBatchResponse = 0;
 api.ShippingsettingsCustomBatchResponse
     buildShippingsettingsCustomBatchResponse() {
-  var o = api.ShippingsettingsCustomBatchResponse();
+  final o = api.ShippingsettingsCustomBatchResponse();
   buildCounterShippingsettingsCustomBatchResponse++;
   if (buildCounterShippingsettingsCustomBatchResponse < 3) {
     o.entries = buildUnnamed5206();
@@ -14798,7 +14656,7 @@ void checkShippingsettingsCustomBatchResponse(
 core.int buildCounterShippingsettingsCustomBatchResponseEntry = 0;
 api.ShippingsettingsCustomBatchResponseEntry
     buildShippingsettingsCustomBatchResponseEntry() {
-  var o = api.ShippingsettingsCustomBatchResponseEntry();
+  final o = api.ShippingsettingsCustomBatchResponseEntry();
   buildCounterShippingsettingsCustomBatchResponseEntry++;
   if (buildCounterShippingsettingsCustomBatchResponseEntry < 3) {
     o.batchId = 42;
@@ -14818,18 +14676,18 @@ void checkShippingsettingsCustomBatchResponseEntry(
       o.batchId!,
       unittest.equals(42),
     );
-    checkErrors(o.errors! as api.Errors);
+    checkErrors(o.errors!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkShippingSettings(o.shippingSettings! as api.ShippingSettings);
+    checkShippingSettings(o.shippingSettings!);
   }
   buildCounterShippingsettingsCustomBatchResponseEntry--;
 }
 
 core.List<api.CarriersCarrier> buildUnnamed5207() {
-  var o = <api.CarriersCarrier>[];
+  final o = <api.CarriersCarrier>[];
   o.add(buildCarriersCarrier());
   o.add(buildCarriersCarrier());
   return o;
@@ -14837,14 +14695,14 @@ core.List<api.CarriersCarrier> buildUnnamed5207() {
 
 void checkUnnamed5207(core.List<api.CarriersCarrier> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCarriersCarrier(o[0] as api.CarriersCarrier);
-  checkCarriersCarrier(o[1] as api.CarriersCarrier);
+  checkCarriersCarrier(o[0]);
+  checkCarriersCarrier(o[1]);
 }
 
 core.int buildCounterShippingsettingsGetSupportedCarriersResponse = 0;
 api.ShippingsettingsGetSupportedCarriersResponse
     buildShippingsettingsGetSupportedCarriersResponse() {
-  var o = api.ShippingsettingsGetSupportedCarriersResponse();
+  final o = api.ShippingsettingsGetSupportedCarriersResponse();
   buildCounterShippingsettingsGetSupportedCarriersResponse++;
   if (buildCounterShippingsettingsGetSupportedCarriersResponse < 3) {
     o.carriers = buildUnnamed5207();
@@ -14868,7 +14726,7 @@ void checkShippingsettingsGetSupportedCarriersResponse(
 }
 
 core.List<api.HolidaysHoliday> buildUnnamed5208() {
-  var o = <api.HolidaysHoliday>[];
+  final o = <api.HolidaysHoliday>[];
   o.add(buildHolidaysHoliday());
   o.add(buildHolidaysHoliday());
   return o;
@@ -14876,14 +14734,14 @@ core.List<api.HolidaysHoliday> buildUnnamed5208() {
 
 void checkUnnamed5208(core.List<api.HolidaysHoliday> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkHolidaysHoliday(o[0] as api.HolidaysHoliday);
-  checkHolidaysHoliday(o[1] as api.HolidaysHoliday);
+  checkHolidaysHoliday(o[0]);
+  checkHolidaysHoliday(o[1]);
 }
 
 core.int buildCounterShippingsettingsGetSupportedHolidaysResponse = 0;
 api.ShippingsettingsGetSupportedHolidaysResponse
     buildShippingsettingsGetSupportedHolidaysResponse() {
-  var o = api.ShippingsettingsGetSupportedHolidaysResponse();
+  final o = api.ShippingsettingsGetSupportedHolidaysResponse();
   buildCounterShippingsettingsGetSupportedHolidaysResponse++;
   if (buildCounterShippingsettingsGetSupportedHolidaysResponse < 3) {
     o.holidays = buildUnnamed5208();
@@ -14907,7 +14765,7 @@ void checkShippingsettingsGetSupportedHolidaysResponse(
 }
 
 core.List<api.PickupServicesPickupService> buildUnnamed5209() {
-  var o = <api.PickupServicesPickupService>[];
+  final o = <api.PickupServicesPickupService>[];
   o.add(buildPickupServicesPickupService());
   o.add(buildPickupServicesPickupService());
   return o;
@@ -14915,14 +14773,14 @@ core.List<api.PickupServicesPickupService> buildUnnamed5209() {
 
 void checkUnnamed5209(core.List<api.PickupServicesPickupService> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPickupServicesPickupService(o[0] as api.PickupServicesPickupService);
-  checkPickupServicesPickupService(o[1] as api.PickupServicesPickupService);
+  checkPickupServicesPickupService(o[0]);
+  checkPickupServicesPickupService(o[1]);
 }
 
 core.int buildCounterShippingsettingsGetSupportedPickupServicesResponse = 0;
 api.ShippingsettingsGetSupportedPickupServicesResponse
     buildShippingsettingsGetSupportedPickupServicesResponse() {
-  var o = api.ShippingsettingsGetSupportedPickupServicesResponse();
+  final o = api.ShippingsettingsGetSupportedPickupServicesResponse();
   buildCounterShippingsettingsGetSupportedPickupServicesResponse++;
   if (buildCounterShippingsettingsGetSupportedPickupServicesResponse < 3) {
     o.kind = 'foo';
@@ -14946,7 +14804,7 @@ void checkShippingsettingsGetSupportedPickupServicesResponse(
 }
 
 core.List<api.ShippingSettings> buildUnnamed5210() {
-  var o = <api.ShippingSettings>[];
+  final o = <api.ShippingSettings>[];
   o.add(buildShippingSettings());
   o.add(buildShippingSettings());
   return o;
@@ -14954,13 +14812,13 @@ core.List<api.ShippingSettings> buildUnnamed5210() {
 
 void checkUnnamed5210(core.List<api.ShippingSettings> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkShippingSettings(o[0] as api.ShippingSettings);
-  checkShippingSettings(o[1] as api.ShippingSettings);
+  checkShippingSettings(o[0]);
+  checkShippingSettings(o[1]);
 }
 
 core.int buildCounterShippingsettingsListResponse = 0;
 api.ShippingsettingsListResponse buildShippingsettingsListResponse() {
-  var o = api.ShippingsettingsListResponse();
+  final o = api.ShippingsettingsListResponse();
   buildCounterShippingsettingsListResponse++;
   if (buildCounterShippingsettingsListResponse < 3) {
     o.kind = 'foo';
@@ -14988,7 +14846,7 @@ void checkShippingsettingsListResponse(api.ShippingsettingsListResponse o) {
 }
 
 core.List<api.Row> buildUnnamed5211() {
-  var o = <api.Row>[];
+  final o = <api.Row>[];
   o.add(buildRow());
   o.add(buildRow());
   return o;
@@ -14996,13 +14854,13 @@ core.List<api.Row> buildUnnamed5211() {
 
 void checkUnnamed5211(core.List<api.Row> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRow(o[0] as api.Row);
-  checkRow(o[1] as api.Row);
+  checkRow(o[0]);
+  checkRow(o[1]);
 }
 
 core.int buildCounterTable = 0;
 api.Table buildTable() {
-  var o = api.Table();
+  final o = api.Table();
   buildCounterTable++;
   if (buildCounterTable < 3) {
     o.columnHeaders = buildHeaders();
@@ -15017,19 +14875,19 @@ api.Table buildTable() {
 void checkTable(api.Table o) {
   buildCounterTable++;
   if (buildCounterTable < 3) {
-    checkHeaders(o.columnHeaders! as api.Headers);
+    checkHeaders(o.columnHeaders!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkHeaders(o.rowHeaders! as api.Headers);
+    checkHeaders(o.rowHeaders!);
     checkUnnamed5211(o.rows!);
   }
   buildCounterTable--;
 }
 
 core.List<api.TestOrderLineItem> buildUnnamed5212() {
-  var o = <api.TestOrderLineItem>[];
+  final o = <api.TestOrderLineItem>[];
   o.add(buildTestOrderLineItem());
   o.add(buildTestOrderLineItem());
   return o;
@@ -15037,12 +14895,12 @@ core.List<api.TestOrderLineItem> buildUnnamed5212() {
 
 void checkUnnamed5212(core.List<api.TestOrderLineItem> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTestOrderLineItem(o[0] as api.TestOrderLineItem);
-  checkTestOrderLineItem(o[1] as api.TestOrderLineItem);
+  checkTestOrderLineItem(o[0]);
+  checkTestOrderLineItem(o[1]);
 }
 
 core.List<api.OrderPromotion> buildUnnamed5213() {
-  var o = <api.OrderPromotion>[];
+  final o = <api.OrderPromotion>[];
   o.add(buildOrderPromotion());
   o.add(buildOrderPromotion());
   return o;
@@ -15050,13 +14908,13 @@ core.List<api.OrderPromotion> buildUnnamed5213() {
 
 void checkUnnamed5213(core.List<api.OrderPromotion> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrderPromotion(o[0] as api.OrderPromotion);
-  checkOrderPromotion(o[1] as api.OrderPromotion);
+  checkOrderPromotion(o[0]);
+  checkOrderPromotion(o[1]);
 }
 
 core.int buildCounterTestOrder = 0;
 api.TestOrder buildTestOrder() {
-  var o = api.TestOrder();
+  final o = api.TestOrder();
   buildCounterTestOrder++;
   if (buildCounterTestOrder < 3) {
     o.deliveryDetails = buildTestOrderDeliveryDetails();
@@ -15080,8 +14938,7 @@ api.TestOrder buildTestOrder() {
 void checkTestOrder(api.TestOrder o) {
   buildCounterTestOrder++;
   if (buildCounterTestOrder < 3) {
-    checkTestOrderDeliveryDetails(
-        o.deliveryDetails! as api.TestOrderDeliveryDetails);
+    checkTestOrderDeliveryDetails(o.deliveryDetails!);
     unittest.expect(o.enableOrderinvoices!, unittest.isTrue);
     unittest.expect(
       o.kind!,
@@ -15092,7 +14949,7 @@ void checkTestOrder(api.TestOrder o) {
       o.notificationMode!,
       unittest.equals('foo'),
     );
-    checkTestOrderPickupDetails(o.pickupDetails! as api.TestOrderPickupDetails);
+    checkTestOrderPickupDetails(o.pickupDetails!);
     unittest.expect(
       o.predefinedBillingAddress!,
       unittest.equals('foo'),
@@ -15110,7 +14967,7 @@ void checkTestOrder(api.TestOrder o) {
       unittest.equals('foo'),
     );
     checkUnnamed5213(o.promotions!);
-    checkPrice(o.shippingCost! as api.Price);
+    checkPrice(o.shippingCost!);
     unittest.expect(
       o.shippingOption!,
       unittest.equals('foo'),
@@ -15120,7 +14977,7 @@ void checkTestOrder(api.TestOrder o) {
 }
 
 core.List<core.String> buildUnnamed5214() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -15139,7 +14996,7 @@ void checkUnnamed5214(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed5215() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -15159,7 +15016,7 @@ void checkUnnamed5215(core.List<core.String> o) {
 
 core.int buildCounterTestOrderAddress = 0;
 api.TestOrderAddress buildTestOrderAddress() {
-  var o = api.TestOrderAddress();
+  final o = api.TestOrderAddress();
   buildCounterTestOrderAddress++;
   if (buildCounterTestOrderAddress < 3) {
     o.country = 'foo';
@@ -15207,7 +15064,7 @@ void checkTestOrderAddress(api.TestOrderAddress o) {
 
 core.int buildCounterTestOrderDeliveryDetails = 0;
 api.TestOrderDeliveryDetails buildTestOrderDeliveryDetails() {
-  var o = api.TestOrderDeliveryDetails();
+  final o = api.TestOrderDeliveryDetails();
   buildCounterTestOrderDeliveryDetails++;
   if (buildCounterTestOrderDeliveryDetails < 3) {
     o.address = buildTestOrderAddress();
@@ -15221,7 +15078,7 @@ api.TestOrderDeliveryDetails buildTestOrderDeliveryDetails() {
 void checkTestOrderDeliveryDetails(api.TestOrderDeliveryDetails o) {
   buildCounterTestOrderDeliveryDetails++;
   if (buildCounterTestOrderDeliveryDetails < 3) {
-    checkTestOrderAddress(o.address! as api.TestOrderAddress);
+    checkTestOrderAddress(o.address!);
     unittest.expect(o.isScheduledDelivery!, unittest.isTrue);
     unittest.expect(
       o.phoneNumber!,
@@ -15233,7 +15090,7 @@ void checkTestOrderDeliveryDetails(api.TestOrderDeliveryDetails o) {
 
 core.int buildCounterTestOrderLineItem = 0;
 api.TestOrderLineItem buildTestOrderLineItem() {
-  var o = api.TestOrderLineItem();
+  final o = api.TestOrderLineItem();
   buildCounterTestOrderLineItem++;
   if (buildCounterTestOrderLineItem < 3) {
     o.product = buildTestOrderLineItemProduct();
@@ -15248,20 +15105,19 @@ api.TestOrderLineItem buildTestOrderLineItem() {
 void checkTestOrderLineItem(api.TestOrderLineItem o) {
   buildCounterTestOrderLineItem++;
   if (buildCounterTestOrderLineItem < 3) {
-    checkTestOrderLineItemProduct(o.product! as api.TestOrderLineItemProduct);
+    checkTestOrderLineItemProduct(o.product!);
     unittest.expect(
       o.quantityOrdered!,
       unittest.equals(42),
     );
-    checkOrderLineItemReturnInfo(o.returnInfo! as api.OrderLineItemReturnInfo);
-    checkOrderLineItemShippingDetails(
-        o.shippingDetails! as api.OrderLineItemShippingDetails);
+    checkOrderLineItemReturnInfo(o.returnInfo!);
+    checkOrderLineItemShippingDetails(o.shippingDetails!);
   }
   buildCounterTestOrderLineItem--;
 }
 
 core.List<api.OrderLineItemProductFee> buildUnnamed5216() {
-  var o = <api.OrderLineItemProductFee>[];
+  final o = <api.OrderLineItemProductFee>[];
   o.add(buildOrderLineItemProductFee());
   o.add(buildOrderLineItemProductFee());
   return o;
@@ -15269,12 +15125,12 @@ core.List<api.OrderLineItemProductFee> buildUnnamed5216() {
 
 void checkUnnamed5216(core.List<api.OrderLineItemProductFee> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrderLineItemProductFee(o[0] as api.OrderLineItemProductFee);
-  checkOrderLineItemProductFee(o[1] as api.OrderLineItemProductFee);
+  checkOrderLineItemProductFee(o[0]);
+  checkOrderLineItemProductFee(o[1]);
 }
 
 core.List<api.OrderLineItemProductVariantAttribute> buildUnnamed5217() {
-  var o = <api.OrderLineItemProductVariantAttribute>[];
+  final o = <api.OrderLineItemProductVariantAttribute>[];
   o.add(buildOrderLineItemProductVariantAttribute());
   o.add(buildOrderLineItemProductVariantAttribute());
   return o;
@@ -15282,15 +15138,13 @@ core.List<api.OrderLineItemProductVariantAttribute> buildUnnamed5217() {
 
 void checkUnnamed5217(core.List<api.OrderLineItemProductVariantAttribute> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrderLineItemProductVariantAttribute(
-      o[0] as api.OrderLineItemProductVariantAttribute);
-  checkOrderLineItemProductVariantAttribute(
-      o[1] as api.OrderLineItemProductVariantAttribute);
+  checkOrderLineItemProductVariantAttribute(o[0]);
+  checkOrderLineItemProductVariantAttribute(o[1]);
 }
 
 core.int buildCounterTestOrderLineItemProduct = 0;
 api.TestOrderLineItemProduct buildTestOrderLineItemProduct() {
-  var o = api.TestOrderLineItemProduct();
+  final o = api.TestOrderLineItemProduct();
   buildCounterTestOrderLineItemProduct++;
   if (buildCounterTestOrderLineItemProduct < 3) {
     o.brand = 'foo';
@@ -15347,7 +15201,7 @@ void checkTestOrderLineItemProduct(api.TestOrderLineItemProduct o) {
       o.offerId!,
       unittest.equals('foo'),
     );
-    checkPrice(o.price! as api.Price);
+    checkPrice(o.price!);
     unittest.expect(
       o.targetCountry!,
       unittest.equals('foo'),
@@ -15362,7 +15216,7 @@ void checkTestOrderLineItemProduct(api.TestOrderLineItemProduct o) {
 }
 
 core.List<api.TestOrderPickupDetailsPickupPerson> buildUnnamed5218() {
-  var o = <api.TestOrderPickupDetailsPickupPerson>[];
+  final o = <api.TestOrderPickupDetailsPickupPerson>[];
   o.add(buildTestOrderPickupDetailsPickupPerson());
   o.add(buildTestOrderPickupDetailsPickupPerson());
   return o;
@@ -15370,15 +15224,13 @@ core.List<api.TestOrderPickupDetailsPickupPerson> buildUnnamed5218() {
 
 void checkUnnamed5218(core.List<api.TestOrderPickupDetailsPickupPerson> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTestOrderPickupDetailsPickupPerson(
-      o[0] as api.TestOrderPickupDetailsPickupPerson);
-  checkTestOrderPickupDetailsPickupPerson(
-      o[1] as api.TestOrderPickupDetailsPickupPerson);
+  checkTestOrderPickupDetailsPickupPerson(o[0]);
+  checkTestOrderPickupDetailsPickupPerson(o[1]);
 }
 
 core.int buildCounterTestOrderPickupDetails = 0;
 api.TestOrderPickupDetails buildTestOrderPickupDetails() {
-  var o = api.TestOrderPickupDetails();
+  final o = api.TestOrderPickupDetails();
   buildCounterTestOrderPickupDetails++;
   if (buildCounterTestOrderPickupDetails < 3) {
     o.locationCode = 'foo';
@@ -15397,7 +15249,7 @@ void checkTestOrderPickupDetails(api.TestOrderPickupDetails o) {
       o.locationCode!,
       unittest.equals('foo'),
     );
-    checkTestOrderAddress(o.pickupLocationAddress! as api.TestOrderAddress);
+    checkTestOrderAddress(o.pickupLocationAddress!);
     unittest.expect(
       o.pickupLocationType!,
       unittest.equals('foo'),
@@ -15410,7 +15262,7 @@ void checkTestOrderPickupDetails(api.TestOrderPickupDetails o) {
 core.int buildCounterTestOrderPickupDetailsPickupPerson = 0;
 api.TestOrderPickupDetailsPickupPerson
     buildTestOrderPickupDetailsPickupPerson() {
-  var o = api.TestOrderPickupDetailsPickupPerson();
+  final o = api.TestOrderPickupDetailsPickupPerson();
   buildCounterTestOrderPickupDetailsPickupPerson++;
   if (buildCounterTestOrderPickupDetailsPickupPerson < 3) {
     o.name = 'foo';
@@ -15438,7 +15290,7 @@ void checkTestOrderPickupDetailsPickupPerson(
 
 core.int buildCounterTimeZone = 0;
 api.TimeZone buildTimeZone() {
-  var o = api.TimeZone();
+  final o = api.TimeZone();
   buildCounterTimeZone++;
   if (buildCounterTimeZone < 3) {
     o.id = 'foo';
@@ -15464,7 +15316,7 @@ void checkTimeZone(api.TimeZone o) {
 }
 
 core.List<core.String> buildUnnamed5219() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -15483,7 +15335,7 @@ void checkUnnamed5219(core.List<core.String> o) {
 }
 
 core.List<api.TransitTableTransitTimeRow> buildUnnamed5220() {
-  var o = <api.TransitTableTransitTimeRow>[];
+  final o = <api.TransitTableTransitTimeRow>[];
   o.add(buildTransitTableTransitTimeRow());
   o.add(buildTransitTableTransitTimeRow());
   return o;
@@ -15491,12 +15343,12 @@ core.List<api.TransitTableTransitTimeRow> buildUnnamed5220() {
 
 void checkUnnamed5220(core.List<api.TransitTableTransitTimeRow> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTransitTableTransitTimeRow(o[0] as api.TransitTableTransitTimeRow);
-  checkTransitTableTransitTimeRow(o[1] as api.TransitTableTransitTimeRow);
+  checkTransitTableTransitTimeRow(o[0]);
+  checkTransitTableTransitTimeRow(o[1]);
 }
 
 core.List<core.String> buildUnnamed5221() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -15516,7 +15368,7 @@ void checkUnnamed5221(core.List<core.String> o) {
 
 core.int buildCounterTransitTable = 0;
 api.TransitTable buildTransitTable() {
-  var o = api.TransitTable();
+  final o = api.TransitTable();
   buildCounterTransitTable++;
   if (buildCounterTransitTable < 3) {
     o.postalCodeGroupNames = buildUnnamed5219();
@@ -15538,7 +15390,7 @@ void checkTransitTable(api.TransitTable o) {
 }
 
 core.List<api.TransitTableTransitTimeRowTransitTimeValue> buildUnnamed5222() {
-  var o = <api.TransitTableTransitTimeRowTransitTimeValue>[];
+  final o = <api.TransitTableTransitTimeRowTransitTimeValue>[];
   o.add(buildTransitTableTransitTimeRowTransitTimeValue());
   o.add(buildTransitTableTransitTimeRowTransitTimeValue());
   return o;
@@ -15547,15 +15399,13 @@ core.List<api.TransitTableTransitTimeRowTransitTimeValue> buildUnnamed5222() {
 void checkUnnamed5222(
     core.List<api.TransitTableTransitTimeRowTransitTimeValue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTransitTableTransitTimeRowTransitTimeValue(
-      o[0] as api.TransitTableTransitTimeRowTransitTimeValue);
-  checkTransitTableTransitTimeRowTransitTimeValue(
-      o[1] as api.TransitTableTransitTimeRowTransitTimeValue);
+  checkTransitTableTransitTimeRowTransitTimeValue(o[0]);
+  checkTransitTableTransitTimeRowTransitTimeValue(o[1]);
 }
 
 core.int buildCounterTransitTableTransitTimeRow = 0;
 api.TransitTableTransitTimeRow buildTransitTableTransitTimeRow() {
-  var o = api.TransitTableTransitTimeRow();
+  final o = api.TransitTableTransitTimeRow();
   buildCounterTransitTableTransitTimeRow++;
   if (buildCounterTransitTableTransitTimeRow < 3) {
     o.values = buildUnnamed5222();
@@ -15575,7 +15425,7 @@ void checkTransitTableTransitTimeRow(api.TransitTableTransitTimeRow o) {
 core.int buildCounterTransitTableTransitTimeRowTransitTimeValue = 0;
 api.TransitTableTransitTimeRowTransitTimeValue
     buildTransitTableTransitTimeRowTransitTimeValue() {
-  var o = api.TransitTableTransitTimeRowTransitTimeValue();
+  final o = api.TransitTableTransitTimeRowTransitTimeValue();
   buildCounterTransitTableTransitTimeRowTransitTimeValue++;
   if (buildCounterTransitTableTransitTimeRowTransitTimeValue < 3) {
     o.maxTransitTimeInDays = 42;
@@ -15602,7 +15452,7 @@ void checkTransitTableTransitTimeRowTransitTimeValue(
 }
 
 core.List<api.UnitInvoiceAdditionalCharge> buildUnnamed5223() {
-  var o = <api.UnitInvoiceAdditionalCharge>[];
+  final o = <api.UnitInvoiceAdditionalCharge>[];
   o.add(buildUnitInvoiceAdditionalCharge());
   o.add(buildUnitInvoiceAdditionalCharge());
   return o;
@@ -15610,12 +15460,12 @@ core.List<api.UnitInvoiceAdditionalCharge> buildUnnamed5223() {
 
 void checkUnnamed5223(core.List<api.UnitInvoiceAdditionalCharge> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnitInvoiceAdditionalCharge(o[0] as api.UnitInvoiceAdditionalCharge);
-  checkUnitInvoiceAdditionalCharge(o[1] as api.UnitInvoiceAdditionalCharge);
+  checkUnitInvoiceAdditionalCharge(o[0]);
+  checkUnitInvoiceAdditionalCharge(o[1]);
 }
 
 core.List<api.UnitInvoiceTaxLine> buildUnnamed5224() {
-  var o = <api.UnitInvoiceTaxLine>[];
+  final o = <api.UnitInvoiceTaxLine>[];
   o.add(buildUnitInvoiceTaxLine());
   o.add(buildUnitInvoiceTaxLine());
   return o;
@@ -15623,13 +15473,13 @@ core.List<api.UnitInvoiceTaxLine> buildUnnamed5224() {
 
 void checkUnnamed5224(core.List<api.UnitInvoiceTaxLine> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnitInvoiceTaxLine(o[0] as api.UnitInvoiceTaxLine);
-  checkUnitInvoiceTaxLine(o[1] as api.UnitInvoiceTaxLine);
+  checkUnitInvoiceTaxLine(o[0]);
+  checkUnitInvoiceTaxLine(o[1]);
 }
 
 core.int buildCounterUnitInvoice = 0;
 api.UnitInvoice buildUnitInvoice() {
-  var o = api.UnitInvoice();
+  final o = api.UnitInvoice();
   buildCounterUnitInvoice++;
   if (buildCounterUnitInvoice < 3) {
     o.additionalCharges = buildUnnamed5223();
@@ -15644,7 +15494,7 @@ void checkUnitInvoice(api.UnitInvoice o) {
   buildCounterUnitInvoice++;
   if (buildCounterUnitInvoice < 3) {
     checkUnnamed5223(o.additionalCharges!);
-    checkPrice(o.unitPrice! as api.Price);
+    checkPrice(o.unitPrice!);
     checkUnnamed5224(o.unitPriceTaxes!);
   }
   buildCounterUnitInvoice--;
@@ -15652,7 +15502,7 @@ void checkUnitInvoice(api.UnitInvoice o) {
 
 core.int buildCounterUnitInvoiceAdditionalCharge = 0;
 api.UnitInvoiceAdditionalCharge buildUnitInvoiceAdditionalCharge() {
-  var o = api.UnitInvoiceAdditionalCharge();
+  final o = api.UnitInvoiceAdditionalCharge();
   buildCounterUnitInvoiceAdditionalCharge++;
   if (buildCounterUnitInvoiceAdditionalCharge < 3) {
     o.additionalChargeAmount = buildAmount();
@@ -15665,7 +15515,7 @@ api.UnitInvoiceAdditionalCharge buildUnitInvoiceAdditionalCharge() {
 void checkUnitInvoiceAdditionalCharge(api.UnitInvoiceAdditionalCharge o) {
   buildCounterUnitInvoiceAdditionalCharge++;
   if (buildCounterUnitInvoiceAdditionalCharge < 3) {
-    checkAmount(o.additionalChargeAmount! as api.Amount);
+    checkAmount(o.additionalChargeAmount!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -15676,7 +15526,7 @@ void checkUnitInvoiceAdditionalCharge(api.UnitInvoiceAdditionalCharge o) {
 
 core.int buildCounterUnitInvoiceTaxLine = 0;
 api.UnitInvoiceTaxLine buildUnitInvoiceTaxLine() {
-  var o = api.UnitInvoiceTaxLine();
+  final o = api.UnitInvoiceTaxLine();
   buildCounterUnitInvoiceTaxLine++;
   if (buildCounterUnitInvoiceTaxLine < 3) {
     o.taxAmount = buildPrice();
@@ -15690,7 +15540,7 @@ api.UnitInvoiceTaxLine buildUnitInvoiceTaxLine() {
 void checkUnitInvoiceTaxLine(api.UnitInvoiceTaxLine o) {
   buildCounterUnitInvoiceTaxLine++;
   if (buildCounterUnitInvoiceTaxLine < 3) {
-    checkPrice(o.taxAmount! as api.Price);
+    checkPrice(o.taxAmount!);
     unittest.expect(
       o.taxName!,
       unittest.equals('foo'),
@@ -15705,7 +15555,7 @@ void checkUnitInvoiceTaxLine(api.UnitInvoiceTaxLine o) {
 
 core.int buildCounterValue = 0;
 api.Value buildValue() {
-  var o = api.Value();
+  final o = api.Value();
   buildCounterValue++;
   if (buildCounterValue < 3) {
     o.carrierRateName = 'foo';
@@ -15725,7 +15575,7 @@ void checkValue(api.Value o) {
       o.carrierRateName!,
       unittest.equals('foo'),
     );
-    checkPrice(o.flatRate! as api.Price);
+    checkPrice(o.flatRate!);
     unittest.expect(o.noShipping!, unittest.isTrue);
     unittest.expect(
       o.pricePercentage!,
@@ -15741,7 +15591,7 @@ void checkValue(api.Value o) {
 
 core.int buildCounterWarehouseBasedDeliveryTime = 0;
 api.WarehouseBasedDeliveryTime buildWarehouseBasedDeliveryTime() {
-  var o = api.WarehouseBasedDeliveryTime();
+  final o = api.WarehouseBasedDeliveryTime();
   buildCounterWarehouseBasedDeliveryTime++;
   if (buildCounterWarehouseBasedDeliveryTime < 3) {
     o.carrier = 'foo';
@@ -15793,7 +15643,7 @@ void checkWarehouseBasedDeliveryTime(api.WarehouseBasedDeliveryTime o) {
 
 core.int buildCounterWeight = 0;
 api.Weight buildWeight() {
-  var o = api.Weight();
+  final o = api.Weight();
   buildCounterWeight++;
   if (buildCounterWeight < 3) {
     o.unit = 'foo';
@@ -15819,7 +15669,7 @@ void checkWeight(api.Weight o) {
 }
 
 core.List<core.String> buildUnnamed5225() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -15838,7 +15688,7 @@ void checkUnnamed5225(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed5226() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -15857,7 +15707,7 @@ void checkUnnamed5226(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed5227() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -15876,7 +15726,7 @@ void checkUnnamed5227(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed5228() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -15895,7 +15745,7 @@ void checkUnnamed5228(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed5229() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -15914,7 +15764,7 @@ void checkUnnamed5229(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed5230() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -15933,7 +15783,7 @@ void checkUnnamed5230(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed5231() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -15952,7 +15802,7 @@ void checkUnnamed5231(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed5232() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -15971,7 +15821,7 @@ void checkUnnamed5232(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed5233() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -15990,7 +15840,7 @@ void checkUnnamed5233(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed5234() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -16009,7 +15859,7 @@ void checkUnnamed5234(core.List<core.String> o) {
 }
 
 core.List<core.String> buildUnnamed5235() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -16030,1754 +15880,1703 @@ void checkUnnamed5235(core.List<core.String> o) {
 void main() {
   unittest.group('obj-schema-Account', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccount();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildAccount();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Account.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkAccount(od as api.Account);
+      checkAccount(od);
     });
   });
 
   unittest.group('obj-schema-AccountAddress', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountAddress();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountAddress.fromJson(
+      final o = buildAccountAddress();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountAddress.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountAddress(od as api.AccountAddress);
+      checkAccountAddress(od);
     });
   });
 
   unittest.group('obj-schema-AccountAdsLink', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountAdsLink();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountAdsLink.fromJson(
+      final o = buildAccountAdsLink();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountAdsLink.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountAdsLink(od as api.AccountAdsLink);
+      checkAccountAdsLink(od);
     });
   });
 
   unittest.group('obj-schema-AccountBusinessInformation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountBusinessInformation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountBusinessInformation.fromJson(
+      final o = buildAccountBusinessInformation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountBusinessInformation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountBusinessInformation(od as api.AccountBusinessInformation);
+      checkAccountBusinessInformation(od);
     });
   });
 
   unittest.group('obj-schema-AccountCredentials', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountCredentials();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountCredentials.fromJson(
+      final o = buildAccountCredentials();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountCredentials.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountCredentials(od as api.AccountCredentials);
+      checkAccountCredentials(od);
     });
   });
 
   unittest.group('obj-schema-AccountCustomerService', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountCustomerService();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountCustomerService.fromJson(
+      final o = buildAccountCustomerService();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountCustomerService.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountCustomerService(od as api.AccountCustomerService);
+      checkAccountCustomerService(od);
     });
   });
 
   unittest.group('obj-schema-AccountGoogleMyBusinessLink', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountGoogleMyBusinessLink();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountGoogleMyBusinessLink.fromJson(
+      final o = buildAccountGoogleMyBusinessLink();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountGoogleMyBusinessLink.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountGoogleMyBusinessLink(od as api.AccountGoogleMyBusinessLink);
+      checkAccountGoogleMyBusinessLink(od);
     });
   });
 
   unittest.group('obj-schema-AccountIdentifier', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountIdentifier();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountIdentifier.fromJson(
+      final o = buildAccountIdentifier();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountIdentifier.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountIdentifier(od as api.AccountIdentifier);
+      checkAccountIdentifier(od);
     });
   });
 
   unittest.group('obj-schema-AccountLabel', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountLabel();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountLabel.fromJson(
+      final o = buildAccountLabel();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountLabel.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountLabel(od as api.AccountLabel);
+      checkAccountLabel(od);
     });
   });
 
   unittest.group('obj-schema-AccountReturnCarrier', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountReturnCarrier();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountReturnCarrier.fromJson(
+      final o = buildAccountReturnCarrier();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountReturnCarrier.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountReturnCarrier(od as api.AccountReturnCarrier);
+      checkAccountReturnCarrier(od);
     });
   });
 
   unittest.group('obj-schema-AccountStatus', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountStatus();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountStatus.fromJson(
+      final o = buildAccountStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountStatus.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountStatus(od as api.AccountStatus);
+      checkAccountStatus(od);
     });
   });
 
   unittest.group('obj-schema-AccountStatusAccountLevelIssue', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountStatusAccountLevelIssue();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountStatusAccountLevelIssue.fromJson(
+      final o = buildAccountStatusAccountLevelIssue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountStatusAccountLevelIssue.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountStatusAccountLevelIssue(
-          od as api.AccountStatusAccountLevelIssue);
+      checkAccountStatusAccountLevelIssue(od);
     });
   });
 
   unittest.group('obj-schema-AccountStatusItemLevelIssue', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountStatusItemLevelIssue();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountStatusItemLevelIssue.fromJson(
+      final o = buildAccountStatusItemLevelIssue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountStatusItemLevelIssue.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountStatusItemLevelIssue(od as api.AccountStatusItemLevelIssue);
+      checkAccountStatusItemLevelIssue(od);
     });
   });
 
   unittest.group('obj-schema-AccountStatusProducts', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountStatusProducts();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountStatusProducts.fromJson(
+      final o = buildAccountStatusProducts();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountStatusProducts.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountStatusProducts(od as api.AccountStatusProducts);
+      checkAccountStatusProducts(od);
     });
   });
 
   unittest.group('obj-schema-AccountStatusStatistics', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountStatusStatistics();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountStatusStatistics.fromJson(
+      final o = buildAccountStatusStatistics();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountStatusStatistics.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountStatusStatistics(od as api.AccountStatusStatistics);
+      checkAccountStatusStatistics(od);
     });
   });
 
   unittest.group('obj-schema-AccountTax', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountTax();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildAccountTax();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.AccountTax.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkAccountTax(od as api.AccountTax);
+      checkAccountTax(od);
     });
   });
 
   unittest.group('obj-schema-AccountTaxTaxRule', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountTaxTaxRule();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountTaxTaxRule.fromJson(
+      final o = buildAccountTaxTaxRule();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountTaxTaxRule.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountTaxTaxRule(od as api.AccountTaxTaxRule);
+      checkAccountTaxTaxRule(od);
     });
   });
 
   unittest.group('obj-schema-AccountUser', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountUser();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountUser.fromJson(
+      final o = buildAccountUser();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountUser.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountUser(od as api.AccountUser);
+      checkAccountUser(od);
     });
   });
 
   unittest.group('obj-schema-AccountYouTubeChannelLink', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountYouTubeChannelLink();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountYouTubeChannelLink.fromJson(
+      final o = buildAccountYouTubeChannelLink();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountYouTubeChannelLink.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountYouTubeChannelLink(od as api.AccountYouTubeChannelLink);
+      checkAccountYouTubeChannelLink(od);
     });
   });
 
   unittest.group('obj-schema-AccountsAuthInfoResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountsAuthInfoResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountsAuthInfoResponse.fromJson(
+      final o = buildAccountsAuthInfoResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountsAuthInfoResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountsAuthInfoResponse(od as api.AccountsAuthInfoResponse);
+      checkAccountsAuthInfoResponse(od);
     });
   });
 
   unittest.group('obj-schema-AccountsClaimWebsiteResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountsClaimWebsiteResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountsClaimWebsiteResponse.fromJson(
+      final o = buildAccountsClaimWebsiteResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountsClaimWebsiteResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountsClaimWebsiteResponse(od as api.AccountsClaimWebsiteResponse);
+      checkAccountsClaimWebsiteResponse(od);
     });
   });
 
   unittest.group('obj-schema-AccountsCustomBatchRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountsCustomBatchRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountsCustomBatchRequest.fromJson(
+      final o = buildAccountsCustomBatchRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountsCustomBatchRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountsCustomBatchRequest(od as api.AccountsCustomBatchRequest);
+      checkAccountsCustomBatchRequest(od);
     });
   });
 
   unittest.group('obj-schema-AccountsCustomBatchRequestEntry', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountsCustomBatchRequestEntry();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountsCustomBatchRequestEntry.fromJson(
+      final o = buildAccountsCustomBatchRequestEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountsCustomBatchRequestEntry.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountsCustomBatchRequestEntry(
-          od as api.AccountsCustomBatchRequestEntry);
+      checkAccountsCustomBatchRequestEntry(od);
     });
   });
 
   unittest.group('obj-schema-AccountsCustomBatchRequestEntryLinkRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountsCustomBatchRequestEntryLinkRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountsCustomBatchRequestEntryLinkRequest.fromJson(
+      final o = buildAccountsCustomBatchRequestEntryLinkRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountsCustomBatchRequestEntryLinkRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountsCustomBatchRequestEntryLinkRequest(
-          od as api.AccountsCustomBatchRequestEntryLinkRequest);
+      checkAccountsCustomBatchRequestEntryLinkRequest(od);
     });
   });
 
   unittest.group('obj-schema-AccountsCustomBatchResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountsCustomBatchResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountsCustomBatchResponse.fromJson(
+      final o = buildAccountsCustomBatchResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountsCustomBatchResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountsCustomBatchResponse(od as api.AccountsCustomBatchResponse);
+      checkAccountsCustomBatchResponse(od);
     });
   });
 
   unittest.group('obj-schema-AccountsCustomBatchResponseEntry', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountsCustomBatchResponseEntry();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountsCustomBatchResponseEntry.fromJson(
+      final o = buildAccountsCustomBatchResponseEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountsCustomBatchResponseEntry.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountsCustomBatchResponseEntry(
-          od as api.AccountsCustomBatchResponseEntry);
+      checkAccountsCustomBatchResponseEntry(od);
     });
   });
 
   unittest.group('obj-schema-AccountsLinkRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountsLinkRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountsLinkRequest.fromJson(
+      final o = buildAccountsLinkRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountsLinkRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountsLinkRequest(od as api.AccountsLinkRequest);
+      checkAccountsLinkRequest(od);
     });
   });
 
   unittest.group('obj-schema-AccountsLinkResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountsLinkResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountsLinkResponse.fromJson(
+      final o = buildAccountsLinkResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountsLinkResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountsLinkResponse(od as api.AccountsLinkResponse);
+      checkAccountsLinkResponse(od);
     });
   });
 
   unittest.group('obj-schema-AccountsListLinksResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountsListLinksResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountsListLinksResponse.fromJson(
+      final o = buildAccountsListLinksResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountsListLinksResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountsListLinksResponse(od as api.AccountsListLinksResponse);
+      checkAccountsListLinksResponse(od);
     });
   });
 
   unittest.group('obj-schema-AccountsListResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountsListResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountsListResponse.fromJson(
+      final o = buildAccountsListResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountsListResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountsListResponse(od as api.AccountsListResponse);
+      checkAccountsListResponse(od);
     });
   });
 
   unittest.group('obj-schema-AccountsUpdateLabelsRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountsUpdateLabelsRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountsUpdateLabelsRequest.fromJson(
+      final o = buildAccountsUpdateLabelsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountsUpdateLabelsRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountsUpdateLabelsRequest(od as api.AccountsUpdateLabelsRequest);
+      checkAccountsUpdateLabelsRequest(od);
     });
   });
 
   unittest.group('obj-schema-AccountsUpdateLabelsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountsUpdateLabelsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountsUpdateLabelsResponse.fromJson(
+      final o = buildAccountsUpdateLabelsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountsUpdateLabelsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountsUpdateLabelsResponse(od as api.AccountsUpdateLabelsResponse);
+      checkAccountsUpdateLabelsResponse(od);
     });
   });
 
   unittest.group('obj-schema-AccountstatusesCustomBatchRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountstatusesCustomBatchRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountstatusesCustomBatchRequest.fromJson(
+      final o = buildAccountstatusesCustomBatchRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountstatusesCustomBatchRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountstatusesCustomBatchRequest(
-          od as api.AccountstatusesCustomBatchRequest);
+      checkAccountstatusesCustomBatchRequest(od);
     });
   });
 
   unittest.group('obj-schema-AccountstatusesCustomBatchRequestEntry', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountstatusesCustomBatchRequestEntry();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountstatusesCustomBatchRequestEntry.fromJson(
+      final o = buildAccountstatusesCustomBatchRequestEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountstatusesCustomBatchRequestEntry.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountstatusesCustomBatchRequestEntry(
-          od as api.AccountstatusesCustomBatchRequestEntry);
+      checkAccountstatusesCustomBatchRequestEntry(od);
     });
   });
 
   unittest.group('obj-schema-AccountstatusesCustomBatchResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountstatusesCustomBatchResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountstatusesCustomBatchResponse.fromJson(
+      final o = buildAccountstatusesCustomBatchResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountstatusesCustomBatchResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountstatusesCustomBatchResponse(
-          od as api.AccountstatusesCustomBatchResponse);
+      checkAccountstatusesCustomBatchResponse(od);
     });
   });
 
   unittest.group('obj-schema-AccountstatusesCustomBatchResponseEntry', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountstatusesCustomBatchResponseEntry();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountstatusesCustomBatchResponseEntry.fromJson(
+      final o = buildAccountstatusesCustomBatchResponseEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountstatusesCustomBatchResponseEntry.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountstatusesCustomBatchResponseEntry(
-          od as api.AccountstatusesCustomBatchResponseEntry);
+      checkAccountstatusesCustomBatchResponseEntry(od);
     });
   });
 
   unittest.group('obj-schema-AccountstatusesListResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccountstatusesListResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccountstatusesListResponse.fromJson(
+      final o = buildAccountstatusesListResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountstatusesListResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccountstatusesListResponse(od as api.AccountstatusesListResponse);
+      checkAccountstatusesListResponse(od);
     });
   });
 
   unittest.group('obj-schema-AccounttaxCustomBatchRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccounttaxCustomBatchRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccounttaxCustomBatchRequest.fromJson(
+      final o = buildAccounttaxCustomBatchRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccounttaxCustomBatchRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccounttaxCustomBatchRequest(od as api.AccounttaxCustomBatchRequest);
+      checkAccounttaxCustomBatchRequest(od);
     });
   });
 
   unittest.group('obj-schema-AccounttaxCustomBatchRequestEntry', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccounttaxCustomBatchRequestEntry();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccounttaxCustomBatchRequestEntry.fromJson(
+      final o = buildAccounttaxCustomBatchRequestEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccounttaxCustomBatchRequestEntry.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccounttaxCustomBatchRequestEntry(
-          od as api.AccounttaxCustomBatchRequestEntry);
+      checkAccounttaxCustomBatchRequestEntry(od);
     });
   });
 
   unittest.group('obj-schema-AccounttaxCustomBatchResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccounttaxCustomBatchResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccounttaxCustomBatchResponse.fromJson(
+      final o = buildAccounttaxCustomBatchResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccounttaxCustomBatchResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccounttaxCustomBatchResponse(
-          od as api.AccounttaxCustomBatchResponse);
+      checkAccounttaxCustomBatchResponse(od);
     });
   });
 
   unittest.group('obj-schema-AccounttaxCustomBatchResponseEntry', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccounttaxCustomBatchResponseEntry();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccounttaxCustomBatchResponseEntry.fromJson(
+      final o = buildAccounttaxCustomBatchResponseEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccounttaxCustomBatchResponseEntry.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccounttaxCustomBatchResponseEntry(
-          od as api.AccounttaxCustomBatchResponseEntry);
+      checkAccounttaxCustomBatchResponseEntry(od);
     });
   });
 
   unittest.group('obj-schema-AccounttaxListResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAccounttaxListResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.AccounttaxListResponse.fromJson(
+      final o = buildAccounttaxListResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccounttaxListResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkAccounttaxListResponse(od as api.AccounttaxListResponse);
+      checkAccounttaxListResponse(od);
     });
   });
 
   unittest.group('obj-schema-ActivateBuyOnGoogleProgramRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildActivateBuyOnGoogleProgramRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ActivateBuyOnGoogleProgramRequest.fromJson(
+      final o = buildActivateBuyOnGoogleProgramRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ActivateBuyOnGoogleProgramRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkActivateBuyOnGoogleProgramRequest(
-          od as api.ActivateBuyOnGoogleProgramRequest);
+      checkActivateBuyOnGoogleProgramRequest(od);
     });
   });
 
   unittest.group('obj-schema-Amount', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildAmount();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildAmount();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Amount.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkAmount(od as api.Amount);
+      checkAmount(od);
     });
   });
 
   unittest.group('obj-schema-BusinessDayConfig', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBusinessDayConfig();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.BusinessDayConfig.fromJson(
+      final o = buildBusinessDayConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BusinessDayConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkBusinessDayConfig(od as api.BusinessDayConfig);
+      checkBusinessDayConfig(od);
     });
   });
 
   unittest.group('obj-schema-BuyOnGoogleProgramStatus', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildBuyOnGoogleProgramStatus();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.BuyOnGoogleProgramStatus.fromJson(
+      final o = buildBuyOnGoogleProgramStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BuyOnGoogleProgramStatus.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkBuyOnGoogleProgramStatus(od as api.BuyOnGoogleProgramStatus);
+      checkBuyOnGoogleProgramStatus(od);
     });
   });
 
   unittest.group('obj-schema-CarrierRate', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCarrierRate();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CarrierRate.fromJson(
+      final o = buildCarrierRate();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CarrierRate.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCarrierRate(od as api.CarrierRate);
+      checkCarrierRate(od);
     });
   });
 
   unittest.group('obj-schema-CarriersCarrier', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCarriersCarrier();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CarriersCarrier.fromJson(
+      final o = buildCarriersCarrier();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CarriersCarrier.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCarriersCarrier(od as api.CarriersCarrier);
+      checkCarriersCarrier(od);
     });
   });
 
   unittest.group('obj-schema-Collection', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCollection();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildCollection();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Collection.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkCollection(od as api.Collection);
+      checkCollection(od);
     });
   });
 
   unittest.group('obj-schema-CollectionFeaturedProduct', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCollectionFeaturedProduct();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CollectionFeaturedProduct.fromJson(
+      final o = buildCollectionFeaturedProduct();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CollectionFeaturedProduct.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCollectionFeaturedProduct(od as api.CollectionFeaturedProduct);
+      checkCollectionFeaturedProduct(od);
     });
   });
 
   unittest.group('obj-schema-CollectionStatus', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCollectionStatus();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CollectionStatus.fromJson(
+      final o = buildCollectionStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CollectionStatus.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCollectionStatus(od as api.CollectionStatus);
+      checkCollectionStatus(od);
     });
   });
 
   unittest.group('obj-schema-CollectionStatusDestinationStatus', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCollectionStatusDestinationStatus();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CollectionStatusDestinationStatus.fromJson(
+      final o = buildCollectionStatusDestinationStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CollectionStatusDestinationStatus.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCollectionStatusDestinationStatus(
-          od as api.CollectionStatusDestinationStatus);
+      checkCollectionStatusDestinationStatus(od);
     });
   });
 
   unittest.group('obj-schema-CollectionStatusItemLevelIssue', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCollectionStatusItemLevelIssue();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CollectionStatusItemLevelIssue.fromJson(
+      final o = buildCollectionStatusItemLevelIssue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CollectionStatusItemLevelIssue.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCollectionStatusItemLevelIssue(
-          od as api.CollectionStatusItemLevelIssue);
+      checkCollectionStatusItemLevelIssue(od);
     });
   });
 
   unittest.group('obj-schema-Css', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCss();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Css.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkCss(od as api.Css);
+      final o = buildCss();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Css.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkCss(od);
     });
   });
 
   unittest.group('obj-schema-CustomAttribute', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCustomAttribute();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CustomAttribute.fromJson(
+      final o = buildCustomAttribute();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CustomAttribute.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCustomAttribute(od as api.CustomAttribute);
+      checkCustomAttribute(od);
     });
   });
 
   unittest.group('obj-schema-CustomerReturnReason', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCustomerReturnReason();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.CustomerReturnReason.fromJson(
+      final o = buildCustomerReturnReason();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CustomerReturnReason.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkCustomerReturnReason(od as api.CustomerReturnReason);
+      checkCustomerReturnReason(od);
     });
   });
 
   unittest.group('obj-schema-CutoffTime', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildCutoffTime();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildCutoffTime();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.CutoffTime.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkCutoffTime(od as api.CutoffTime);
+      checkCutoffTime(od);
     });
   });
 
   unittest.group('obj-schema-Datafeed', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDatafeed();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildDatafeed();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Datafeed.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkDatafeed(od as api.Datafeed);
+      checkDatafeed(od);
     });
   });
 
   unittest.group('obj-schema-DatafeedFetchSchedule', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDatafeedFetchSchedule();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DatafeedFetchSchedule.fromJson(
+      final o = buildDatafeedFetchSchedule();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DatafeedFetchSchedule.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDatafeedFetchSchedule(od as api.DatafeedFetchSchedule);
+      checkDatafeedFetchSchedule(od);
     });
   });
 
   unittest.group('obj-schema-DatafeedFormat', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDatafeedFormat();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DatafeedFormat.fromJson(
+      final o = buildDatafeedFormat();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DatafeedFormat.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDatafeedFormat(od as api.DatafeedFormat);
+      checkDatafeedFormat(od);
     });
   });
 
   unittest.group('obj-schema-DatafeedStatus', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDatafeedStatus();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DatafeedStatus.fromJson(
+      final o = buildDatafeedStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DatafeedStatus.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDatafeedStatus(od as api.DatafeedStatus);
+      checkDatafeedStatus(od);
     });
   });
 
   unittest.group('obj-schema-DatafeedStatusError', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDatafeedStatusError();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DatafeedStatusError.fromJson(
+      final o = buildDatafeedStatusError();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DatafeedStatusError.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDatafeedStatusError(od as api.DatafeedStatusError);
+      checkDatafeedStatusError(od);
     });
   });
 
   unittest.group('obj-schema-DatafeedStatusExample', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDatafeedStatusExample();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DatafeedStatusExample.fromJson(
+      final o = buildDatafeedStatusExample();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DatafeedStatusExample.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDatafeedStatusExample(od as api.DatafeedStatusExample);
+      checkDatafeedStatusExample(od);
     });
   });
 
   unittest.group('obj-schema-DatafeedTarget', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDatafeedTarget();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DatafeedTarget.fromJson(
+      final o = buildDatafeedTarget();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DatafeedTarget.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDatafeedTarget(od as api.DatafeedTarget);
+      checkDatafeedTarget(od);
     });
   });
 
   unittest.group('obj-schema-DatafeedsCustomBatchRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDatafeedsCustomBatchRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DatafeedsCustomBatchRequest.fromJson(
+      final o = buildDatafeedsCustomBatchRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DatafeedsCustomBatchRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDatafeedsCustomBatchRequest(od as api.DatafeedsCustomBatchRequest);
+      checkDatafeedsCustomBatchRequest(od);
     });
   });
 
   unittest.group('obj-schema-DatafeedsCustomBatchRequestEntry', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDatafeedsCustomBatchRequestEntry();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DatafeedsCustomBatchRequestEntry.fromJson(
+      final o = buildDatafeedsCustomBatchRequestEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DatafeedsCustomBatchRequestEntry.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDatafeedsCustomBatchRequestEntry(
-          od as api.DatafeedsCustomBatchRequestEntry);
+      checkDatafeedsCustomBatchRequestEntry(od);
     });
   });
 
   unittest.group('obj-schema-DatafeedsCustomBatchResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDatafeedsCustomBatchResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DatafeedsCustomBatchResponse.fromJson(
+      final o = buildDatafeedsCustomBatchResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DatafeedsCustomBatchResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDatafeedsCustomBatchResponse(od as api.DatafeedsCustomBatchResponse);
+      checkDatafeedsCustomBatchResponse(od);
     });
   });
 
   unittest.group('obj-schema-DatafeedsCustomBatchResponseEntry', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDatafeedsCustomBatchResponseEntry();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DatafeedsCustomBatchResponseEntry.fromJson(
+      final o = buildDatafeedsCustomBatchResponseEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DatafeedsCustomBatchResponseEntry.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDatafeedsCustomBatchResponseEntry(
-          od as api.DatafeedsCustomBatchResponseEntry);
+      checkDatafeedsCustomBatchResponseEntry(od);
     });
   });
 
   unittest.group('obj-schema-DatafeedsFetchNowResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDatafeedsFetchNowResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DatafeedsFetchNowResponse.fromJson(
+      final o = buildDatafeedsFetchNowResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DatafeedsFetchNowResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDatafeedsFetchNowResponse(od as api.DatafeedsFetchNowResponse);
+      checkDatafeedsFetchNowResponse(od);
     });
   });
 
   unittest.group('obj-schema-DatafeedsListResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDatafeedsListResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DatafeedsListResponse.fromJson(
+      final o = buildDatafeedsListResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DatafeedsListResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDatafeedsListResponse(od as api.DatafeedsListResponse);
+      checkDatafeedsListResponse(od);
     });
   });
 
   unittest.group('obj-schema-DatafeedstatusesCustomBatchRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDatafeedstatusesCustomBatchRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DatafeedstatusesCustomBatchRequest.fromJson(
+      final o = buildDatafeedstatusesCustomBatchRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DatafeedstatusesCustomBatchRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDatafeedstatusesCustomBatchRequest(
-          od as api.DatafeedstatusesCustomBatchRequest);
+      checkDatafeedstatusesCustomBatchRequest(od);
     });
   });
 
   unittest.group('obj-schema-DatafeedstatusesCustomBatchRequestEntry', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDatafeedstatusesCustomBatchRequestEntry();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DatafeedstatusesCustomBatchRequestEntry.fromJson(
+      final o = buildDatafeedstatusesCustomBatchRequestEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DatafeedstatusesCustomBatchRequestEntry.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDatafeedstatusesCustomBatchRequestEntry(
-          od as api.DatafeedstatusesCustomBatchRequestEntry);
+      checkDatafeedstatusesCustomBatchRequestEntry(od);
     });
   });
 
   unittest.group('obj-schema-DatafeedstatusesCustomBatchResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDatafeedstatusesCustomBatchResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DatafeedstatusesCustomBatchResponse.fromJson(
+      final o = buildDatafeedstatusesCustomBatchResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DatafeedstatusesCustomBatchResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDatafeedstatusesCustomBatchResponse(
-          od as api.DatafeedstatusesCustomBatchResponse);
+      checkDatafeedstatusesCustomBatchResponse(od);
     });
   });
 
   unittest.group('obj-schema-DatafeedstatusesCustomBatchResponseEntry', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDatafeedstatusesCustomBatchResponseEntry();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DatafeedstatusesCustomBatchResponseEntry.fromJson(
+      final o = buildDatafeedstatusesCustomBatchResponseEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DatafeedstatusesCustomBatchResponseEntry.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDatafeedstatusesCustomBatchResponseEntry(
-          od as api.DatafeedstatusesCustomBatchResponseEntry);
+      checkDatafeedstatusesCustomBatchResponseEntry(od);
     });
   });
 
   unittest.group('obj-schema-DatafeedstatusesListResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDatafeedstatusesListResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DatafeedstatusesListResponse.fromJson(
+      final o = buildDatafeedstatusesListResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DatafeedstatusesListResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDatafeedstatusesListResponse(od as api.DatafeedstatusesListResponse);
+      checkDatafeedstatusesListResponse(od);
     });
   });
 
   unittest.group('obj-schema-Date', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDate();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Date.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkDate(od as api.Date);
+      final o = buildDate();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Date.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkDate(od);
     });
   });
 
   unittest.group('obj-schema-DateTime', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDateTime();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildDateTime();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.DateTime.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkDateTime(od as api.DateTime);
+      checkDateTime(od);
     });
   });
 
   unittest.group('obj-schema-DeliveryTime', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildDeliveryTime();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.DeliveryTime.fromJson(
+      final o = buildDeliveryTime();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DeliveryTime.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkDeliveryTime(od as api.DeliveryTime);
+      checkDeliveryTime(od);
     });
   });
 
   unittest.group('obj-schema-Error', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildError();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Error.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkError(od as api.Error);
+      final o = buildError();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Error.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkError(od);
     });
   });
 
   unittest.group('obj-schema-Errors', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildErrors();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildErrors();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Errors.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkErrors(od as api.Errors);
+      checkErrors(od);
     });
   });
 
   unittest.group('obj-schema-GmbAccounts', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGmbAccounts();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GmbAccounts.fromJson(
+      final o = buildGmbAccounts();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GmbAccounts.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGmbAccounts(od as api.GmbAccounts);
+      checkGmbAccounts(od);
     });
   });
 
   unittest.group('obj-schema-GmbAccountsGmbAccount', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGmbAccountsGmbAccount();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GmbAccountsGmbAccount.fromJson(
+      final o = buildGmbAccountsGmbAccount();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GmbAccountsGmbAccount.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGmbAccountsGmbAccount(od as api.GmbAccountsGmbAccount);
+      checkGmbAccountsGmbAccount(od);
     });
   });
 
   unittest.group('obj-schema-Headers', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildHeaders();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildHeaders();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Headers.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkHeaders(od as api.Headers);
+      checkHeaders(od);
     });
   });
 
   unittest.group('obj-schema-HolidayCutoff', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildHolidayCutoff();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.HolidayCutoff.fromJson(
+      final o = buildHolidayCutoff();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.HolidayCutoff.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkHolidayCutoff(od as api.HolidayCutoff);
+      checkHolidayCutoff(od);
     });
   });
 
   unittest.group('obj-schema-HolidaysHoliday', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildHolidaysHoliday();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.HolidaysHoliday.fromJson(
+      final o = buildHolidaysHoliday();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.HolidaysHoliday.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkHolidaysHoliday(od as api.HolidaysHoliday);
+      checkHolidaysHoliday(od);
     });
   });
 
   unittest.group('obj-schema-InapplicabilityDetails', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildInapplicabilityDetails();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.InapplicabilityDetails.fromJson(
+      final o = buildInapplicabilityDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InapplicabilityDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkInapplicabilityDetails(od as api.InapplicabilityDetails);
+      checkInapplicabilityDetails(od);
     });
   });
 
   unittest.group('obj-schema-Installment', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildInstallment();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Installment.fromJson(
+      final o = buildInstallment();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Installment.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkInstallment(od as api.Installment);
+      checkInstallment(od);
     });
   });
 
   unittest.group('obj-schema-InvoiceSummary', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildInvoiceSummary();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.InvoiceSummary.fromJson(
+      final o = buildInvoiceSummary();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InvoiceSummary.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkInvoiceSummary(od as api.InvoiceSummary);
+      checkInvoiceSummary(od);
     });
   });
 
   unittest.group('obj-schema-InvoiceSummaryAdditionalChargeSummary', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildInvoiceSummaryAdditionalChargeSummary();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.InvoiceSummaryAdditionalChargeSummary.fromJson(
+      final o = buildInvoiceSummaryAdditionalChargeSummary();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InvoiceSummaryAdditionalChargeSummary.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkInvoiceSummaryAdditionalChargeSummary(
-          od as api.InvoiceSummaryAdditionalChargeSummary);
+      checkInvoiceSummaryAdditionalChargeSummary(od);
     });
   });
 
   unittest.group('obj-schema-LabelIds', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLabelIds();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildLabelIds();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.LabelIds.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkLabelIds(od as api.LabelIds);
+      checkLabelIds(od);
     });
   });
 
   unittest.group('obj-schema-LiaAboutPageSettings', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLiaAboutPageSettings();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LiaAboutPageSettings.fromJson(
+      final o = buildLiaAboutPageSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LiaAboutPageSettings.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLiaAboutPageSettings(od as api.LiaAboutPageSettings);
+      checkLiaAboutPageSettings(od);
     });
   });
 
   unittest.group('obj-schema-LiaCountrySettings', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLiaCountrySettings();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LiaCountrySettings.fromJson(
+      final o = buildLiaCountrySettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LiaCountrySettings.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLiaCountrySettings(od as api.LiaCountrySettings);
+      checkLiaCountrySettings(od);
     });
   });
 
   unittest.group('obj-schema-LiaInventorySettings', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLiaInventorySettings();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LiaInventorySettings.fromJson(
+      final o = buildLiaInventorySettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LiaInventorySettings.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLiaInventorySettings(od as api.LiaInventorySettings);
+      checkLiaInventorySettings(od);
     });
   });
 
   unittest.group('obj-schema-LiaOnDisplayToOrderSettings', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLiaOnDisplayToOrderSettings();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LiaOnDisplayToOrderSettings.fromJson(
+      final o = buildLiaOnDisplayToOrderSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LiaOnDisplayToOrderSettings.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLiaOnDisplayToOrderSettings(od as api.LiaOnDisplayToOrderSettings);
+      checkLiaOnDisplayToOrderSettings(od);
     });
   });
 
   unittest.group('obj-schema-LiaPosDataProvider', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLiaPosDataProvider();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LiaPosDataProvider.fromJson(
+      final o = buildLiaPosDataProvider();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LiaPosDataProvider.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLiaPosDataProvider(od as api.LiaPosDataProvider);
+      checkLiaPosDataProvider(od);
     });
   });
 
   unittest.group('obj-schema-LiaSettings', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLiaSettings();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LiaSettings.fromJson(
+      final o = buildLiaSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LiaSettings.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLiaSettings(od as api.LiaSettings);
+      checkLiaSettings(od);
     });
   });
 
   unittest.group('obj-schema-LiasettingsCustomBatchRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLiasettingsCustomBatchRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LiasettingsCustomBatchRequest.fromJson(
+      final o = buildLiasettingsCustomBatchRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LiasettingsCustomBatchRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLiasettingsCustomBatchRequest(
-          od as api.LiasettingsCustomBatchRequest);
+      checkLiasettingsCustomBatchRequest(od);
     });
   });
 
   unittest.group('obj-schema-LiasettingsCustomBatchRequestEntry', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLiasettingsCustomBatchRequestEntry();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LiasettingsCustomBatchRequestEntry.fromJson(
+      final o = buildLiasettingsCustomBatchRequestEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LiasettingsCustomBatchRequestEntry.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLiasettingsCustomBatchRequestEntry(
-          od as api.LiasettingsCustomBatchRequestEntry);
+      checkLiasettingsCustomBatchRequestEntry(od);
     });
   });
 
   unittest.group('obj-schema-LiasettingsCustomBatchResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLiasettingsCustomBatchResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LiasettingsCustomBatchResponse.fromJson(
+      final o = buildLiasettingsCustomBatchResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LiasettingsCustomBatchResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLiasettingsCustomBatchResponse(
-          od as api.LiasettingsCustomBatchResponse);
+      checkLiasettingsCustomBatchResponse(od);
     });
   });
 
   unittest.group('obj-schema-LiasettingsCustomBatchResponseEntry', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLiasettingsCustomBatchResponseEntry();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LiasettingsCustomBatchResponseEntry.fromJson(
+      final o = buildLiasettingsCustomBatchResponseEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LiasettingsCustomBatchResponseEntry.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLiasettingsCustomBatchResponseEntry(
-          od as api.LiasettingsCustomBatchResponseEntry);
+      checkLiasettingsCustomBatchResponseEntry(od);
     });
   });
 
   unittest.group('obj-schema-LiasettingsGetAccessibleGmbAccountsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLiasettingsGetAccessibleGmbAccountsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LiasettingsGetAccessibleGmbAccountsResponse.fromJson(
+      final o = buildLiasettingsGetAccessibleGmbAccountsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LiasettingsGetAccessibleGmbAccountsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLiasettingsGetAccessibleGmbAccountsResponse(
-          od as api.LiasettingsGetAccessibleGmbAccountsResponse);
+      checkLiasettingsGetAccessibleGmbAccountsResponse(od);
     });
   });
 
   unittest.group('obj-schema-LiasettingsListPosDataProvidersResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLiasettingsListPosDataProvidersResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LiasettingsListPosDataProvidersResponse.fromJson(
+      final o = buildLiasettingsListPosDataProvidersResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LiasettingsListPosDataProvidersResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLiasettingsListPosDataProvidersResponse(
-          od as api.LiasettingsListPosDataProvidersResponse);
+      checkLiasettingsListPosDataProvidersResponse(od);
     });
   });
 
   unittest.group('obj-schema-LiasettingsListResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLiasettingsListResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LiasettingsListResponse.fromJson(
+      final o = buildLiasettingsListResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LiasettingsListResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLiasettingsListResponse(od as api.LiasettingsListResponse);
+      checkLiasettingsListResponse(od);
     });
   });
 
   unittest.group('obj-schema-LiasettingsRequestGmbAccessResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLiasettingsRequestGmbAccessResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LiasettingsRequestGmbAccessResponse.fromJson(
+      final o = buildLiasettingsRequestGmbAccessResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LiasettingsRequestGmbAccessResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLiasettingsRequestGmbAccessResponse(
-          od as api.LiasettingsRequestGmbAccessResponse);
+      checkLiasettingsRequestGmbAccessResponse(od);
     });
   });
 
   unittest.group('obj-schema-LiasettingsRequestInventoryVerificationResponse',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLiasettingsRequestInventoryVerificationResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LiasettingsRequestInventoryVerificationResponse.fromJson(
+      final o = buildLiasettingsRequestInventoryVerificationResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LiasettingsRequestInventoryVerificationResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLiasettingsRequestInventoryVerificationResponse(
-          od as api.LiasettingsRequestInventoryVerificationResponse);
+      checkLiasettingsRequestInventoryVerificationResponse(od);
     });
   });
 
   unittest.group(
       'obj-schema-LiasettingsSetInventoryVerificationContactResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLiasettingsSetInventoryVerificationContactResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LiasettingsSetInventoryVerificationContactResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkLiasettingsSetInventoryVerificationContactResponse(
-          od as api.LiasettingsSetInventoryVerificationContactResponse);
+      final o = buildLiasettingsSetInventoryVerificationContactResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.LiasettingsSetInventoryVerificationContactResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkLiasettingsSetInventoryVerificationContactResponse(od);
     });
   });
 
   unittest.group('obj-schema-LiasettingsSetPosDataProviderResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLiasettingsSetPosDataProviderResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LiasettingsSetPosDataProviderResponse.fromJson(
+      final o = buildLiasettingsSetPosDataProviderResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LiasettingsSetPosDataProviderResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLiasettingsSetPosDataProviderResponse(
-          od as api.LiasettingsSetPosDataProviderResponse);
+      checkLiasettingsSetPosDataProviderResponse(od);
     });
   });
 
   unittest.group('obj-schema-LinkService', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLinkService();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LinkService.fromJson(
+      final o = buildLinkService();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LinkService.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLinkService(od as api.LinkService);
+      checkLinkService(od);
     });
   });
 
   unittest.group('obj-schema-LinkedAccount', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLinkedAccount();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LinkedAccount.fromJson(
+      final o = buildLinkedAccount();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LinkedAccount.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLinkedAccount(od as api.LinkedAccount);
+      checkLinkedAccount(od);
     });
   });
 
   unittest.group('obj-schema-ListAccountLabelsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListAccountLabelsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListAccountLabelsResponse.fromJson(
+      final o = buildListAccountLabelsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListAccountLabelsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListAccountLabelsResponse(od as api.ListAccountLabelsResponse);
+      checkListAccountLabelsResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListAccountReturnCarrierResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListAccountReturnCarrierResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListAccountReturnCarrierResponse.fromJson(
+      final o = buildListAccountReturnCarrierResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListAccountReturnCarrierResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListAccountReturnCarrierResponse(
-          od as api.ListAccountReturnCarrierResponse);
+      checkListAccountReturnCarrierResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListCollectionStatusesResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListCollectionStatusesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListCollectionStatusesResponse.fromJson(
+      final o = buildListCollectionStatusesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListCollectionStatusesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListCollectionStatusesResponse(
-          od as api.ListCollectionStatusesResponse);
+      checkListCollectionStatusesResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListCollectionsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListCollectionsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListCollectionsResponse.fromJson(
+      final o = buildListCollectionsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListCollectionsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListCollectionsResponse(od as api.ListCollectionsResponse);
+      checkListCollectionsResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListCssesResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListCssesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListCssesResponse.fromJson(
+      final o = buildListCssesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListCssesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListCssesResponse(od as api.ListCssesResponse);
+      checkListCssesResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListRegionsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListRegionsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListRegionsResponse.fromJson(
+      final o = buildListRegionsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListRegionsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListRegionsResponse(od as api.ListRegionsResponse);
+      checkListRegionsResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListRepricingProductReportsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListRepricingProductReportsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListRepricingProductReportsResponse.fromJson(
+      final o = buildListRepricingProductReportsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListRepricingProductReportsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListRepricingProductReportsResponse(
-          od as api.ListRepricingProductReportsResponse);
+      checkListRepricingProductReportsResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListRepricingRuleReportsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListRepricingRuleReportsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListRepricingRuleReportsResponse.fromJson(
+      final o = buildListRepricingRuleReportsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListRepricingRuleReportsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListRepricingRuleReportsResponse(
-          od as api.ListRepricingRuleReportsResponse);
+      checkListRepricingRuleReportsResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListRepricingRulesResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListRepricingRulesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListRepricingRulesResponse.fromJson(
+      final o = buildListRepricingRulesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListRepricingRulesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListRepricingRulesResponse(od as api.ListRepricingRulesResponse);
+      checkListRepricingRulesResponse(od);
     });
   });
 
   unittest.group('obj-schema-ListReturnPolicyOnlineResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildListReturnPolicyOnlineResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ListReturnPolicyOnlineResponse.fromJson(
+      final o = buildListReturnPolicyOnlineResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListReturnPolicyOnlineResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkListReturnPolicyOnlineResponse(
-          od as api.ListReturnPolicyOnlineResponse);
+      checkListReturnPolicyOnlineResponse(od);
     });
   });
 
   unittest.group('obj-schema-LocalInventory', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLocalInventory();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LocalInventory.fromJson(
+      final o = buildLocalInventory();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LocalInventory.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLocalInventory(od as api.LocalInventory);
+      checkLocalInventory(od);
     });
   });
 
   unittest.group('obj-schema-LocalinventoryCustomBatchRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLocalinventoryCustomBatchRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LocalinventoryCustomBatchRequest.fromJson(
+      final o = buildLocalinventoryCustomBatchRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LocalinventoryCustomBatchRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLocalinventoryCustomBatchRequest(
-          od as api.LocalinventoryCustomBatchRequest);
+      checkLocalinventoryCustomBatchRequest(od);
     });
   });
 
   unittest.group('obj-schema-LocalinventoryCustomBatchRequestEntry', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLocalinventoryCustomBatchRequestEntry();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LocalinventoryCustomBatchRequestEntry.fromJson(
+      final o = buildLocalinventoryCustomBatchRequestEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LocalinventoryCustomBatchRequestEntry.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLocalinventoryCustomBatchRequestEntry(
-          od as api.LocalinventoryCustomBatchRequestEntry);
+      checkLocalinventoryCustomBatchRequestEntry(od);
     });
   });
 
   unittest.group('obj-schema-LocalinventoryCustomBatchResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLocalinventoryCustomBatchResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LocalinventoryCustomBatchResponse.fromJson(
+      final o = buildLocalinventoryCustomBatchResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LocalinventoryCustomBatchResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLocalinventoryCustomBatchResponse(
-          od as api.LocalinventoryCustomBatchResponse);
+      checkLocalinventoryCustomBatchResponse(od);
     });
   });
 
   unittest.group('obj-schema-LocalinventoryCustomBatchResponseEntry', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLocalinventoryCustomBatchResponseEntry();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LocalinventoryCustomBatchResponseEntry.fromJson(
+      final o = buildLocalinventoryCustomBatchResponseEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LocalinventoryCustomBatchResponseEntry.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLocalinventoryCustomBatchResponseEntry(
-          od as api.LocalinventoryCustomBatchResponseEntry);
+      checkLocalinventoryCustomBatchResponseEntry(od);
     });
   });
 
   unittest.group('obj-schema-LocationIdSet', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLocationIdSet();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LocationIdSet.fromJson(
+      final o = buildLocationIdSet();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LocationIdSet.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLocationIdSet(od as api.LocationIdSet);
+      checkLocationIdSet(od);
     });
   });
 
   unittest.group('obj-schema-LoyaltyPoints', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildLoyaltyPoints();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.LoyaltyPoints.fromJson(
+      final o = buildLoyaltyPoints();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LoyaltyPoints.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkLoyaltyPoints(od as api.LoyaltyPoints);
+      checkLoyaltyPoints(od);
     });
   });
 
   unittest.group('obj-schema-MerchantOrderReturn', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildMerchantOrderReturn();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.MerchantOrderReturn.fromJson(
+      final o = buildMerchantOrderReturn();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MerchantOrderReturn.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkMerchantOrderReturn(od as api.MerchantOrderReturn);
+      checkMerchantOrderReturn(od);
     });
   });
 
   unittest.group('obj-schema-MerchantOrderReturnItem', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildMerchantOrderReturnItem();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.MerchantOrderReturnItem.fromJson(
+      final o = buildMerchantOrderReturnItem();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MerchantOrderReturnItem.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkMerchantOrderReturnItem(od as api.MerchantOrderReturnItem);
+      checkMerchantOrderReturnItem(od);
     });
   });
 
   unittest.group('obj-schema-MerchantRejectionReason', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildMerchantRejectionReason();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.MerchantRejectionReason.fromJson(
+      final o = buildMerchantRejectionReason();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MerchantRejectionReason.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkMerchantRejectionReason(od as api.MerchantRejectionReason);
+      checkMerchantRejectionReason(od);
     });
   });
 
   unittest.group('obj-schema-Metrics', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildMetrics();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildMetrics();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Metrics.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkMetrics(od as api.Metrics);
+      checkMetrics(od);
     });
   });
 
   unittest.group('obj-schema-MinimumOrderValueTable', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildMinimumOrderValueTable();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.MinimumOrderValueTable.fromJson(
+      final o = buildMinimumOrderValueTable();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MinimumOrderValueTable.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkMinimumOrderValueTable(od as api.MinimumOrderValueTable);
+      checkMinimumOrderValueTable(od);
     });
   });
 
   unittest.group('obj-schema-MinimumOrderValueTableStoreCodeSetWithMov', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildMinimumOrderValueTableStoreCodeSetWithMov();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.MinimumOrderValueTableStoreCodeSetWithMov.fromJson(
+      final o = buildMinimumOrderValueTableStoreCodeSetWithMov();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MinimumOrderValueTableStoreCodeSetWithMov.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkMinimumOrderValueTableStoreCodeSetWithMov(
-          od as api.MinimumOrderValueTableStoreCodeSetWithMov);
+      checkMinimumOrderValueTableStoreCodeSetWithMov(od);
     });
   });
 
   unittest.group('obj-schema-MonetaryAmount', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildMonetaryAmount();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.MonetaryAmount.fromJson(
+      final o = buildMonetaryAmount();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MonetaryAmount.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkMonetaryAmount(od as api.MonetaryAmount);
+      checkMonetaryAmount(od);
     });
   });
 
   unittest.group('obj-schema-OnboardBuyOnGoogleProgramRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOnboardBuyOnGoogleProgramRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OnboardBuyOnGoogleProgramRequest.fromJson(
+      final o = buildOnboardBuyOnGoogleProgramRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OnboardBuyOnGoogleProgramRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOnboardBuyOnGoogleProgramRequest(
-          od as api.OnboardBuyOnGoogleProgramRequest);
+      checkOnboardBuyOnGoogleProgramRequest(od);
     });
   });
 
   unittest.group('obj-schema-Order', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrder();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Order.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkOrder(od as api.Order);
+      final o = buildOrder();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Order.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkOrder(od);
     });
   });
 
   unittest.group('obj-schema-OrderAddress', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderAddress();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderAddress.fromJson(
+      final o = buildOrderAddress();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderAddress.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderAddress(od as api.OrderAddress);
+      checkOrderAddress(od);
     });
   });
 
   unittest.group('obj-schema-OrderCancellation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderCancellation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderCancellation.fromJson(
+      final o = buildOrderCancellation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderCancellation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderCancellation(od as api.OrderCancellation);
+      checkOrderCancellation(od);
     });
   });
 
   unittest.group('obj-schema-OrderCustomer', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderCustomer();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderCustomer.fromJson(
+      final o = buildOrderCustomer();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderCustomer.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderCustomer(od as api.OrderCustomer);
+      checkOrderCustomer(od);
     });
   });
 
   unittest.group('obj-schema-OrderCustomerLoyaltyInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderCustomerLoyaltyInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderCustomerLoyaltyInfo.fromJson(
+      final o = buildOrderCustomerLoyaltyInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderCustomerLoyaltyInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderCustomerLoyaltyInfo(od as api.OrderCustomerLoyaltyInfo);
+      checkOrderCustomerLoyaltyInfo(od);
     });
   });
 
   unittest.group('obj-schema-OrderCustomerMarketingRightsInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderCustomerMarketingRightsInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderCustomerMarketingRightsInfo.fromJson(
+      final o = buildOrderCustomerMarketingRightsInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderCustomerMarketingRightsInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderCustomerMarketingRightsInfo(
-          od as api.OrderCustomerMarketingRightsInfo);
+      checkOrderCustomerMarketingRightsInfo(od);
     });
   });
 
   unittest.group('obj-schema-OrderDeliveryDetails', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderDeliveryDetails();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderDeliveryDetails.fromJson(
+      final o = buildOrderDeliveryDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderDeliveryDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderDeliveryDetails(od as api.OrderDeliveryDetails);
+      checkOrderDeliveryDetails(od);
     });
   });
 
   unittest.group('obj-schema-OrderLineItem', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderLineItem();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderLineItem.fromJson(
+      final o = buildOrderLineItem();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderLineItem.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderLineItem(od as api.OrderLineItem);
+      checkOrderLineItem(od);
     });
   });
 
   unittest.group('obj-schema-OrderLineItemAdjustment', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderLineItemAdjustment();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderLineItemAdjustment.fromJson(
+      final o = buildOrderLineItemAdjustment();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderLineItemAdjustment.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderLineItemAdjustment(od as api.OrderLineItemAdjustment);
+      checkOrderLineItemAdjustment(od);
     });
   });
 
   unittest.group('obj-schema-OrderLineItemProduct', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderLineItemProduct();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderLineItemProduct.fromJson(
+      final o = buildOrderLineItemProduct();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderLineItemProduct.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderLineItemProduct(od as api.OrderLineItemProduct);
+      checkOrderLineItemProduct(od);
     });
   });
 
   unittest.group('obj-schema-OrderLineItemProductFee', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderLineItemProductFee();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderLineItemProductFee.fromJson(
+      final o = buildOrderLineItemProductFee();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderLineItemProductFee.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderLineItemProductFee(od as api.OrderLineItemProductFee);
+      checkOrderLineItemProductFee(od);
     });
   });
 
   unittest.group('obj-schema-OrderLineItemProductVariantAttribute', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderLineItemProductVariantAttribute();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderLineItemProductVariantAttribute.fromJson(
+      final o = buildOrderLineItemProductVariantAttribute();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderLineItemProductVariantAttribute.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderLineItemProductVariantAttribute(
-          od as api.OrderLineItemProductVariantAttribute);
+      checkOrderLineItemProductVariantAttribute(od);
     });
   });
 
   unittest.group('obj-schema-OrderLineItemReturnInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderLineItemReturnInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderLineItemReturnInfo.fromJson(
+      final o = buildOrderLineItemReturnInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderLineItemReturnInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderLineItemReturnInfo(od as api.OrderLineItemReturnInfo);
+      checkOrderLineItemReturnInfo(od);
     });
   });
 
   unittest.group('obj-schema-OrderLineItemShippingDetails', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderLineItemShippingDetails();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderLineItemShippingDetails.fromJson(
+      final o = buildOrderLineItemShippingDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderLineItemShippingDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderLineItemShippingDetails(od as api.OrderLineItemShippingDetails);
+      checkOrderLineItemShippingDetails(od);
     });
   });
 
   unittest.group('obj-schema-OrderLineItemShippingDetailsMethod', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderLineItemShippingDetailsMethod();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderLineItemShippingDetailsMethod.fromJson(
+      final o = buildOrderLineItemShippingDetailsMethod();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderLineItemShippingDetailsMethod.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderLineItemShippingDetailsMethod(
-          od as api.OrderLineItemShippingDetailsMethod);
+      checkOrderLineItemShippingDetailsMethod(od);
     });
   });
 
   unittest.group('obj-schema-OrderMerchantProvidedAnnotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderMerchantProvidedAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderMerchantProvidedAnnotation.fromJson(
+      final o = buildOrderMerchantProvidedAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderMerchantProvidedAnnotation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderMerchantProvidedAnnotation(
-          od as api.OrderMerchantProvidedAnnotation);
+      checkOrderMerchantProvidedAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-OrderOrderAnnotation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderOrderAnnotation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderOrderAnnotation.fromJson(
+      final o = buildOrderOrderAnnotation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderOrderAnnotation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderOrderAnnotation(od as api.OrderOrderAnnotation);
+      checkOrderOrderAnnotation(od);
     });
   });
 
   unittest.group('obj-schema-OrderPickupDetails', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderPickupDetails();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderPickupDetails.fromJson(
+      final o = buildOrderPickupDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderPickupDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderPickupDetails(od as api.OrderPickupDetails);
+      checkOrderPickupDetails(od);
     });
   });
 
   unittest.group('obj-schema-OrderPickupDetailsCollector', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderPickupDetailsCollector();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderPickupDetailsCollector.fromJson(
+      final o = buildOrderPickupDetailsCollector();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderPickupDetailsCollector.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderPickupDetailsCollector(od as api.OrderPickupDetailsCollector);
+      checkOrderPickupDetailsCollector(od);
     });
   });
 
   unittest.group('obj-schema-OrderPromotion', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderPromotion();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderPromotion.fromJson(
+      final o = buildOrderPromotion();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderPromotion.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderPromotion(od as api.OrderPromotion);
+      checkOrderPromotion(od);
     });
   });
 
   unittest.group('obj-schema-OrderPromotionItem', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderPromotionItem();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderPromotionItem.fromJson(
+      final o = buildOrderPromotionItem();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderPromotionItem.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderPromotionItem(od as api.OrderPromotionItem);
+      checkOrderPromotionItem(od);
     });
   });
 
   unittest.group('obj-schema-OrderRefund', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderRefund();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderRefund.fromJson(
+      final o = buildOrderRefund();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderRefund.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderRefund(od as api.OrderRefund);
+      checkOrderRefund(od);
     });
   });
 
   unittest.group('obj-schema-OrderReportDisbursement', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderReportDisbursement();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderReportDisbursement.fromJson(
+      final o = buildOrderReportDisbursement();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderReportDisbursement.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderReportDisbursement(od as api.OrderReportDisbursement);
+      checkOrderReportDisbursement(od);
     });
   });
 
   unittest.group('obj-schema-OrderReportTransaction', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderReportTransaction();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderReportTransaction.fromJson(
+      final o = buildOrderReportTransaction();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderReportTransaction.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderReportTransaction(od as api.OrderReportTransaction);
+      checkOrderReportTransaction(od);
     });
   });
 
   unittest.group('obj-schema-OrderReturn', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderReturn();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderReturn.fromJson(
+      final o = buildOrderReturn();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderReturn.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderReturn(od as api.OrderReturn);
+      checkOrderReturn(od);
     });
   });
 
   unittest.group('obj-schema-OrderShipment', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderShipment();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderShipment.fromJson(
+      final o = buildOrderShipment();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderShipment.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderShipment(od as api.OrderShipment);
+      checkOrderShipment(od);
     });
   });
 
   unittest.group('obj-schema-OrderShipmentLineItemShipment', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderShipmentLineItemShipment();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderShipmentLineItemShipment.fromJson(
+      final o = buildOrderShipmentLineItemShipment();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderShipmentLineItemShipment.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderShipmentLineItemShipment(
-          od as api.OrderShipmentLineItemShipment);
+      checkOrderShipmentLineItemShipment(od);
     });
   });
 
   unittest.group('obj-schema-OrderShipmentScheduledDeliveryDetails', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderShipmentScheduledDeliveryDetails();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderShipmentScheduledDeliveryDetails.fromJson(
+      final o = buildOrderShipmentScheduledDeliveryDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderShipmentScheduledDeliveryDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderShipmentScheduledDeliveryDetails(
-          od as api.OrderShipmentScheduledDeliveryDetails);
+      checkOrderShipmentScheduledDeliveryDetails(od);
     });
   });
 
   unittest.group('obj-schema-OrderTrackingSignal', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderTrackingSignal();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderTrackingSignal.fromJson(
+      final o = buildOrderTrackingSignal();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderTrackingSignal.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderTrackingSignal(od as api.OrderTrackingSignal);
+      checkOrderTrackingSignal(od);
     });
   });
 
   unittest.group('obj-schema-OrderTrackingSignalLineItemDetails', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderTrackingSignalLineItemDetails();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderTrackingSignalLineItemDetails.fromJson(
+      final o = buildOrderTrackingSignalLineItemDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderTrackingSignalLineItemDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderTrackingSignalLineItemDetails(
-          od as api.OrderTrackingSignalLineItemDetails);
+      checkOrderTrackingSignalLineItemDetails(od);
     });
   });
 
   unittest.group('obj-schema-OrderTrackingSignalShipmentLineItemMapping', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderTrackingSignalShipmentLineItemMapping();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderTrackingSignalShipmentLineItemMapping.fromJson(
+      final o = buildOrderTrackingSignalShipmentLineItemMapping();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderTrackingSignalShipmentLineItemMapping.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderTrackingSignalShipmentLineItemMapping(
-          od as api.OrderTrackingSignalShipmentLineItemMapping);
+      checkOrderTrackingSignalShipmentLineItemMapping(od);
     });
   });
 
   unittest.group('obj-schema-OrderTrackingSignalShippingInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderTrackingSignalShippingInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderTrackingSignalShippingInfo.fromJson(
+      final o = buildOrderTrackingSignalShippingInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderTrackingSignalShippingInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderTrackingSignalShippingInfo(
-          od as api.OrderTrackingSignalShippingInfo);
+      checkOrderTrackingSignalShippingInfo(od);
     });
   });
 
   unittest.group('obj-schema-OrderinvoicesCreateChargeInvoiceRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderinvoicesCreateChargeInvoiceRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderinvoicesCreateChargeInvoiceRequest.fromJson(
+      final o = buildOrderinvoicesCreateChargeInvoiceRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderinvoicesCreateChargeInvoiceRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderinvoicesCreateChargeInvoiceRequest(
-          od as api.OrderinvoicesCreateChargeInvoiceRequest);
+      checkOrderinvoicesCreateChargeInvoiceRequest(od);
     });
   });
 
   unittest.group('obj-schema-OrderinvoicesCreateChargeInvoiceResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderinvoicesCreateChargeInvoiceResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderinvoicesCreateChargeInvoiceResponse.fromJson(
+      final o = buildOrderinvoicesCreateChargeInvoiceResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderinvoicesCreateChargeInvoiceResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderinvoicesCreateChargeInvoiceResponse(
-          od as api.OrderinvoicesCreateChargeInvoiceResponse);
+      checkOrderinvoicesCreateChargeInvoiceResponse(od);
     });
   });
 
   unittest.group('obj-schema-OrderinvoicesCreateRefundInvoiceRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderinvoicesCreateRefundInvoiceRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderinvoicesCreateRefundInvoiceRequest.fromJson(
+      final o = buildOrderinvoicesCreateRefundInvoiceRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderinvoicesCreateRefundInvoiceRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderinvoicesCreateRefundInvoiceRequest(
-          od as api.OrderinvoicesCreateRefundInvoiceRequest);
+      checkOrderinvoicesCreateRefundInvoiceRequest(od);
     });
   });
 
   unittest.group('obj-schema-OrderinvoicesCreateRefundInvoiceResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderinvoicesCreateRefundInvoiceResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderinvoicesCreateRefundInvoiceResponse.fromJson(
+      final o = buildOrderinvoicesCreateRefundInvoiceResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderinvoicesCreateRefundInvoiceResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderinvoicesCreateRefundInvoiceResponse(
-          od as api.OrderinvoicesCreateRefundInvoiceResponse);
+      checkOrderinvoicesCreateRefundInvoiceResponse(od);
     });
   });
 
@@ -17785,15 +17584,14 @@ void main() {
       'obj-schema-OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption',
       () {
     unittest.test('to-json--from-json', () async {
-      var o =
+      final o =
           buildOrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption
               .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkOrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption(
-          od as api
-              .OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption);
+          od);
     });
   });
 
@@ -17801,346 +17599,329 @@ void main() {
       'obj-schema-OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption',
       () {
     unittest.test('to-json--from-json', () async {
-      var o =
+      final o =
           buildOrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption
               .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkOrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption(
-          od as api
-              .OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption);
+          od);
     });
   });
 
   unittest.group('obj-schema-OrderreportsListDisbursementsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderreportsListDisbursementsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderreportsListDisbursementsResponse.fromJson(
+      final o = buildOrderreportsListDisbursementsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderreportsListDisbursementsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderreportsListDisbursementsResponse(
-          od as api.OrderreportsListDisbursementsResponse);
+      checkOrderreportsListDisbursementsResponse(od);
     });
   });
 
   unittest.group('obj-schema-OrderreportsListTransactionsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderreportsListTransactionsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderreportsListTransactionsResponse.fromJson(
+      final o = buildOrderreportsListTransactionsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderreportsListTransactionsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderreportsListTransactionsResponse(
-          od as api.OrderreportsListTransactionsResponse);
+      checkOrderreportsListTransactionsResponse(od);
     });
   });
 
   unittest.group('obj-schema-OrderreturnsAcknowledgeRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderreturnsAcknowledgeRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderreturnsAcknowledgeRequest.fromJson(
+      final o = buildOrderreturnsAcknowledgeRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderreturnsAcknowledgeRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderreturnsAcknowledgeRequest(
-          od as api.OrderreturnsAcknowledgeRequest);
+      checkOrderreturnsAcknowledgeRequest(od);
     });
   });
 
   unittest.group('obj-schema-OrderreturnsAcknowledgeResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderreturnsAcknowledgeResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderreturnsAcknowledgeResponse.fromJson(
+      final o = buildOrderreturnsAcknowledgeResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderreturnsAcknowledgeResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderreturnsAcknowledgeResponse(
-          od as api.OrderreturnsAcknowledgeResponse);
+      checkOrderreturnsAcknowledgeResponse(od);
     });
   });
 
   unittest.group('obj-schema-OrderreturnsCreateOrderReturnRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderreturnsCreateOrderReturnRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderreturnsCreateOrderReturnRequest.fromJson(
+      final o = buildOrderreturnsCreateOrderReturnRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderreturnsCreateOrderReturnRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderreturnsCreateOrderReturnRequest(
-          od as api.OrderreturnsCreateOrderReturnRequest);
+      checkOrderreturnsCreateOrderReturnRequest(od);
     });
   });
 
   unittest.group('obj-schema-OrderreturnsCreateOrderReturnResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderreturnsCreateOrderReturnResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderreturnsCreateOrderReturnResponse.fromJson(
+      final o = buildOrderreturnsCreateOrderReturnResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderreturnsCreateOrderReturnResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderreturnsCreateOrderReturnResponse(
-          od as api.OrderreturnsCreateOrderReturnResponse);
+      checkOrderreturnsCreateOrderReturnResponse(od);
     });
   });
 
   unittest.group('obj-schema-OrderreturnsLineItem', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderreturnsLineItem();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderreturnsLineItem.fromJson(
+      final o = buildOrderreturnsLineItem();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderreturnsLineItem.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderreturnsLineItem(od as api.OrderreturnsLineItem);
+      checkOrderreturnsLineItem(od);
     });
   });
 
   unittest.group('obj-schema-OrderreturnsListResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderreturnsListResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderreturnsListResponse.fromJson(
+      final o = buildOrderreturnsListResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderreturnsListResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderreturnsListResponse(od as api.OrderreturnsListResponse);
+      checkOrderreturnsListResponse(od);
     });
   });
 
   unittest.group('obj-schema-OrderreturnsPartialRefund', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderreturnsPartialRefund();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderreturnsPartialRefund.fromJson(
+      final o = buildOrderreturnsPartialRefund();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderreturnsPartialRefund.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderreturnsPartialRefund(od as api.OrderreturnsPartialRefund);
+      checkOrderreturnsPartialRefund(od);
     });
   });
 
   unittest.group('obj-schema-OrderreturnsProcessRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderreturnsProcessRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderreturnsProcessRequest.fromJson(
+      final o = buildOrderreturnsProcessRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderreturnsProcessRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderreturnsProcessRequest(od as api.OrderreturnsProcessRequest);
+      checkOrderreturnsProcessRequest(od);
     });
   });
 
   unittest.group('obj-schema-OrderreturnsProcessResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderreturnsProcessResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderreturnsProcessResponse.fromJson(
+      final o = buildOrderreturnsProcessResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderreturnsProcessResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderreturnsProcessResponse(od as api.OrderreturnsProcessResponse);
+      checkOrderreturnsProcessResponse(od);
     });
   });
 
   unittest.group('obj-schema-OrderreturnsRefundOperation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderreturnsRefundOperation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderreturnsRefundOperation.fromJson(
+      final o = buildOrderreturnsRefundOperation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderreturnsRefundOperation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderreturnsRefundOperation(od as api.OrderreturnsRefundOperation);
+      checkOrderreturnsRefundOperation(od);
     });
   });
 
   unittest.group('obj-schema-OrderreturnsRejectOperation', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderreturnsRejectOperation();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderreturnsRejectOperation.fromJson(
+      final o = buildOrderreturnsRejectOperation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderreturnsRejectOperation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderreturnsRejectOperation(od as api.OrderreturnsRejectOperation);
+      checkOrderreturnsRejectOperation(od);
     });
   });
 
   unittest.group('obj-schema-OrderreturnsReturnItem', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrderreturnsReturnItem();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrderreturnsReturnItem.fromJson(
+      final o = buildOrderreturnsReturnItem();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrderreturnsReturnItem.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrderreturnsReturnItem(od as api.OrderreturnsReturnItem);
+      checkOrderreturnsReturnItem(od);
     });
   });
 
   unittest.group('obj-schema-OrdersAcknowledgeRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersAcknowledgeRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersAcknowledgeRequest.fromJson(
+      final o = buildOrdersAcknowledgeRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersAcknowledgeRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersAcknowledgeRequest(od as api.OrdersAcknowledgeRequest);
+      checkOrdersAcknowledgeRequest(od);
     });
   });
 
   unittest.group('obj-schema-OrdersAcknowledgeResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersAcknowledgeResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersAcknowledgeResponse.fromJson(
+      final o = buildOrdersAcknowledgeResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersAcknowledgeResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersAcknowledgeResponse(od as api.OrdersAcknowledgeResponse);
+      checkOrdersAcknowledgeResponse(od);
     });
   });
 
   unittest.group('obj-schema-OrdersAdvanceTestOrderResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersAdvanceTestOrderResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersAdvanceTestOrderResponse.fromJson(
+      final o = buildOrdersAdvanceTestOrderResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersAdvanceTestOrderResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersAdvanceTestOrderResponse(
-          od as api.OrdersAdvanceTestOrderResponse);
+      checkOrdersAdvanceTestOrderResponse(od);
     });
   });
 
   unittest.group('obj-schema-OrdersCancelLineItemRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersCancelLineItemRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersCancelLineItemRequest.fromJson(
+      final o = buildOrdersCancelLineItemRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersCancelLineItemRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersCancelLineItemRequest(od as api.OrdersCancelLineItemRequest);
+      checkOrdersCancelLineItemRequest(od);
     });
   });
 
   unittest.group('obj-schema-OrdersCancelLineItemResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersCancelLineItemResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersCancelLineItemResponse.fromJson(
+      final o = buildOrdersCancelLineItemResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersCancelLineItemResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersCancelLineItemResponse(od as api.OrdersCancelLineItemResponse);
+      checkOrdersCancelLineItemResponse(od);
     });
   });
 
   unittest.group('obj-schema-OrdersCancelRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersCancelRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersCancelRequest.fromJson(
+      final o = buildOrdersCancelRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersCancelRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersCancelRequest(od as api.OrdersCancelRequest);
+      checkOrdersCancelRequest(od);
     });
   });
 
   unittest.group('obj-schema-OrdersCancelResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersCancelResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersCancelResponse.fromJson(
+      final o = buildOrdersCancelResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersCancelResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersCancelResponse(od as api.OrdersCancelResponse);
+      checkOrdersCancelResponse(od);
     });
   });
 
   unittest.group('obj-schema-OrdersCancelTestOrderByCustomerRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersCancelTestOrderByCustomerRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersCancelTestOrderByCustomerRequest.fromJson(
+      final o = buildOrdersCancelTestOrderByCustomerRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersCancelTestOrderByCustomerRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersCancelTestOrderByCustomerRequest(
-          od as api.OrdersCancelTestOrderByCustomerRequest);
+      checkOrdersCancelTestOrderByCustomerRequest(od);
     });
   });
 
   unittest.group('obj-schema-OrdersCancelTestOrderByCustomerResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersCancelTestOrderByCustomerResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersCancelTestOrderByCustomerResponse.fromJson(
+      final o = buildOrdersCancelTestOrderByCustomerResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersCancelTestOrderByCustomerResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersCancelTestOrderByCustomerResponse(
-          od as api.OrdersCancelTestOrderByCustomerResponse);
+      checkOrdersCancelTestOrderByCustomerResponse(od);
     });
   });
 
   unittest.group('obj-schema-OrdersCreateTestOrderRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersCreateTestOrderRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersCreateTestOrderRequest.fromJson(
+      final o = buildOrdersCreateTestOrderRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersCreateTestOrderRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersCreateTestOrderRequest(od as api.OrdersCreateTestOrderRequest);
+      checkOrdersCreateTestOrderRequest(od);
     });
   });
 
   unittest.group('obj-schema-OrdersCreateTestOrderResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersCreateTestOrderResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersCreateTestOrderResponse.fromJson(
+      final o = buildOrdersCreateTestOrderResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersCreateTestOrderResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersCreateTestOrderResponse(
-          od as api.OrdersCreateTestOrderResponse);
+      checkOrdersCreateTestOrderResponse(od);
     });
   });
 
   unittest.group('obj-schema-OrdersCreateTestReturnRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersCreateTestReturnRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersCreateTestReturnRequest.fromJson(
+      final o = buildOrdersCreateTestReturnRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersCreateTestReturnRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersCreateTestReturnRequest(
-          od as api.OrdersCreateTestReturnRequest);
+      checkOrdersCreateTestReturnRequest(od);
     });
   });
 
   unittest.group('obj-schema-OrdersCreateTestReturnResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersCreateTestReturnResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersCreateTestReturnResponse.fromJson(
+      final o = buildOrdersCreateTestReturnResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersCreateTestReturnResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersCreateTestReturnResponse(
-          od as api.OrdersCreateTestReturnResponse);
+      checkOrdersCreateTestReturnResponse(od);
     });
   });
 
   unittest.group(
       'obj-schema-OrdersCustomBatchRequestEntryCreateTestReturnReturnItem', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersCustomBatchRequestEntryCreateTestReturnReturnItem();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildOrdersCustomBatchRequestEntryCreateTestReturnReturnItem();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.OrdersCustomBatchRequestEntryCreateTestReturnReturnItem.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersCustomBatchRequestEntryCreateTestReturnReturnItem(
-          od as api.OrdersCustomBatchRequestEntryCreateTestReturnReturnItem);
+      checkOrdersCustomBatchRequestEntryCreateTestReturnReturnItem(od);
     });
   });
 
   unittest.group('obj-schema-OrdersCustomBatchRequestEntryRefundItemItem', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersCustomBatchRequestEntryRefundItemItem();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersCustomBatchRequestEntryRefundItemItem.fromJson(
+      final o = buildOrdersCustomBatchRequestEntryRefundItemItem();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersCustomBatchRequestEntryRefundItemItem.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersCustomBatchRequestEntryRefundItemItem(
-          od as api.OrdersCustomBatchRequestEntryRefundItemItem);
+      checkOrdersCustomBatchRequestEntryRefundItemItem(od);
     });
   });
 
   unittest.group('obj-schema-OrdersCustomBatchRequestEntryRefundItemShipping',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersCustomBatchRequestEntryRefundItemShipping();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersCustomBatchRequestEntryRefundItemShipping.fromJson(
+      final o = buildOrdersCustomBatchRequestEntryRefundItemShipping();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersCustomBatchRequestEntryRefundItemShipping.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersCustomBatchRequestEntryRefundItemShipping(
-          od as api.OrdersCustomBatchRequestEntryRefundItemShipping);
+      checkOrdersCustomBatchRequestEntryRefundItemShipping(od);
     });
   });
 
   unittest.group(
       'obj-schema-OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersCustomBatchRequestEntryShipLineItemsShipmentInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildOrdersCustomBatchRequestEntryShipLineItemsShipmentInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersCustomBatchRequestEntryShipLineItemsShipmentInfo(
-          od as api.OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo);
+      checkOrdersCustomBatchRequestEntryShipLineItemsShipmentInfo(od);
     });
   });
 
@@ -18148,1726 +17929,1665 @@ void main() {
       'obj-schema-OrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails',
       () {
     unittest.test('to-json--from-json', () async {
-      var o =
+      final o =
           buildOrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.OrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails
               .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkOrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails(
-          od as api
-              .OrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails);
+          od);
     });
   });
 
   unittest.group('obj-schema-OrdersGetByMerchantOrderIdResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersGetByMerchantOrderIdResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersGetByMerchantOrderIdResponse.fromJson(
+      final o = buildOrdersGetByMerchantOrderIdResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersGetByMerchantOrderIdResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersGetByMerchantOrderIdResponse(
-          od as api.OrdersGetByMerchantOrderIdResponse);
+      checkOrdersGetByMerchantOrderIdResponse(od);
     });
   });
 
   unittest.group('obj-schema-OrdersGetTestOrderTemplateResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersGetTestOrderTemplateResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersGetTestOrderTemplateResponse.fromJson(
+      final o = buildOrdersGetTestOrderTemplateResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersGetTestOrderTemplateResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersGetTestOrderTemplateResponse(
-          od as api.OrdersGetTestOrderTemplateResponse);
+      checkOrdersGetTestOrderTemplateResponse(od);
     });
   });
 
   unittest.group('obj-schema-OrdersInStoreRefundLineItemRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersInStoreRefundLineItemRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersInStoreRefundLineItemRequest.fromJson(
+      final o = buildOrdersInStoreRefundLineItemRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersInStoreRefundLineItemRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersInStoreRefundLineItemRequest(
-          od as api.OrdersInStoreRefundLineItemRequest);
+      checkOrdersInStoreRefundLineItemRequest(od);
     });
   });
 
   unittest.group('obj-schema-OrdersInStoreRefundLineItemResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersInStoreRefundLineItemResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersInStoreRefundLineItemResponse.fromJson(
+      final o = buildOrdersInStoreRefundLineItemResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersInStoreRefundLineItemResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersInStoreRefundLineItemResponse(
-          od as api.OrdersInStoreRefundLineItemResponse);
+      checkOrdersInStoreRefundLineItemResponse(od);
     });
   });
 
   unittest.group('obj-schema-OrdersListResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersListResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersListResponse.fromJson(
+      final o = buildOrdersListResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersListResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersListResponse(od as api.OrdersListResponse);
+      checkOrdersListResponse(od);
     });
   });
 
   unittest.group('obj-schema-OrdersRefundItemRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersRefundItemRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersRefundItemRequest.fromJson(
+      final o = buildOrdersRefundItemRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersRefundItemRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersRefundItemRequest(od as api.OrdersRefundItemRequest);
+      checkOrdersRefundItemRequest(od);
     });
   });
 
   unittest.group('obj-schema-OrdersRefundItemResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersRefundItemResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersRefundItemResponse.fromJson(
+      final o = buildOrdersRefundItemResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersRefundItemResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersRefundItemResponse(od as api.OrdersRefundItemResponse);
+      checkOrdersRefundItemResponse(od);
     });
   });
 
   unittest.group('obj-schema-OrdersRefundOrderRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersRefundOrderRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersRefundOrderRequest.fromJson(
+      final o = buildOrdersRefundOrderRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersRefundOrderRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersRefundOrderRequest(od as api.OrdersRefundOrderRequest);
+      checkOrdersRefundOrderRequest(od);
     });
   });
 
   unittest.group('obj-schema-OrdersRefundOrderResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersRefundOrderResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersRefundOrderResponse.fromJson(
+      final o = buildOrdersRefundOrderResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersRefundOrderResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersRefundOrderResponse(od as api.OrdersRefundOrderResponse);
+      checkOrdersRefundOrderResponse(od);
     });
   });
 
   unittest.group('obj-schema-OrdersRejectReturnLineItemRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersRejectReturnLineItemRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersRejectReturnLineItemRequest.fromJson(
+      final o = buildOrdersRejectReturnLineItemRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersRejectReturnLineItemRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersRejectReturnLineItemRequest(
-          od as api.OrdersRejectReturnLineItemRequest);
+      checkOrdersRejectReturnLineItemRequest(od);
     });
   });
 
   unittest.group('obj-schema-OrdersRejectReturnLineItemResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersRejectReturnLineItemResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersRejectReturnLineItemResponse.fromJson(
+      final o = buildOrdersRejectReturnLineItemResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersRejectReturnLineItemResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersRejectReturnLineItemResponse(
-          od as api.OrdersRejectReturnLineItemResponse);
+      checkOrdersRejectReturnLineItemResponse(od);
     });
   });
 
   unittest.group('obj-schema-OrdersReturnRefundLineItemRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersReturnRefundLineItemRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersReturnRefundLineItemRequest.fromJson(
+      final o = buildOrdersReturnRefundLineItemRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersReturnRefundLineItemRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersReturnRefundLineItemRequest(
-          od as api.OrdersReturnRefundLineItemRequest);
+      checkOrdersReturnRefundLineItemRequest(od);
     });
   });
 
   unittest.group('obj-schema-OrdersReturnRefundLineItemResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersReturnRefundLineItemResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersReturnRefundLineItemResponse.fromJson(
+      final o = buildOrdersReturnRefundLineItemResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersReturnRefundLineItemResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersReturnRefundLineItemResponse(
-          od as api.OrdersReturnRefundLineItemResponse);
+      checkOrdersReturnRefundLineItemResponse(od);
     });
   });
 
   unittest.group('obj-schema-OrdersSetLineItemMetadataRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersSetLineItemMetadataRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersSetLineItemMetadataRequest.fromJson(
+      final o = buildOrdersSetLineItemMetadataRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersSetLineItemMetadataRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersSetLineItemMetadataRequest(
-          od as api.OrdersSetLineItemMetadataRequest);
+      checkOrdersSetLineItemMetadataRequest(od);
     });
   });
 
   unittest.group('obj-schema-OrdersSetLineItemMetadataResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersSetLineItemMetadataResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersSetLineItemMetadataResponse.fromJson(
+      final o = buildOrdersSetLineItemMetadataResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersSetLineItemMetadataResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersSetLineItemMetadataResponse(
-          od as api.OrdersSetLineItemMetadataResponse);
+      checkOrdersSetLineItemMetadataResponse(od);
     });
   });
 
   unittest.group('obj-schema-OrdersShipLineItemsRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersShipLineItemsRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersShipLineItemsRequest.fromJson(
+      final o = buildOrdersShipLineItemsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersShipLineItemsRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersShipLineItemsRequest(od as api.OrdersShipLineItemsRequest);
+      checkOrdersShipLineItemsRequest(od);
     });
   });
 
   unittest.group('obj-schema-OrdersShipLineItemsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersShipLineItemsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersShipLineItemsResponse.fromJson(
+      final o = buildOrdersShipLineItemsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersShipLineItemsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersShipLineItemsResponse(od as api.OrdersShipLineItemsResponse);
+      checkOrdersShipLineItemsResponse(od);
     });
   });
 
   unittest.group('obj-schema-OrdersUpdateLineItemShippingDetailsRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersUpdateLineItemShippingDetailsRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersUpdateLineItemShippingDetailsRequest.fromJson(
+      final o = buildOrdersUpdateLineItemShippingDetailsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersUpdateLineItemShippingDetailsRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersUpdateLineItemShippingDetailsRequest(
-          od as api.OrdersUpdateLineItemShippingDetailsRequest);
+      checkOrdersUpdateLineItemShippingDetailsRequest(od);
     });
   });
 
   unittest.group('obj-schema-OrdersUpdateLineItemShippingDetailsResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersUpdateLineItemShippingDetailsResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersUpdateLineItemShippingDetailsResponse.fromJson(
+      final o = buildOrdersUpdateLineItemShippingDetailsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersUpdateLineItemShippingDetailsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersUpdateLineItemShippingDetailsResponse(
-          od as api.OrdersUpdateLineItemShippingDetailsResponse);
+      checkOrdersUpdateLineItemShippingDetailsResponse(od);
     });
   });
 
   unittest.group('obj-schema-OrdersUpdateMerchantOrderIdRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersUpdateMerchantOrderIdRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersUpdateMerchantOrderIdRequest.fromJson(
+      final o = buildOrdersUpdateMerchantOrderIdRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersUpdateMerchantOrderIdRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersUpdateMerchantOrderIdRequest(
-          od as api.OrdersUpdateMerchantOrderIdRequest);
+      checkOrdersUpdateMerchantOrderIdRequest(od);
     });
   });
 
   unittest.group('obj-schema-OrdersUpdateMerchantOrderIdResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersUpdateMerchantOrderIdResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersUpdateMerchantOrderIdResponse.fromJson(
+      final o = buildOrdersUpdateMerchantOrderIdResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersUpdateMerchantOrderIdResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersUpdateMerchantOrderIdResponse(
-          od as api.OrdersUpdateMerchantOrderIdResponse);
+      checkOrdersUpdateMerchantOrderIdResponse(od);
     });
   });
 
   unittest.group('obj-schema-OrdersUpdateShipmentRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersUpdateShipmentRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersUpdateShipmentRequest.fromJson(
+      final o = buildOrdersUpdateShipmentRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersUpdateShipmentRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersUpdateShipmentRequest(od as api.OrdersUpdateShipmentRequest);
+      checkOrdersUpdateShipmentRequest(od);
     });
   });
 
   unittest.group('obj-schema-OrdersUpdateShipmentResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildOrdersUpdateShipmentResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.OrdersUpdateShipmentResponse.fromJson(
+      final o = buildOrdersUpdateShipmentResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrdersUpdateShipmentResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkOrdersUpdateShipmentResponse(od as api.OrdersUpdateShipmentResponse);
+      checkOrdersUpdateShipmentResponse(od);
     });
   });
 
   unittest.group('obj-schema-PauseBuyOnGoogleProgramRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPauseBuyOnGoogleProgramRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PauseBuyOnGoogleProgramRequest.fromJson(
+      final o = buildPauseBuyOnGoogleProgramRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PauseBuyOnGoogleProgramRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPauseBuyOnGoogleProgramRequest(
-          od as api.PauseBuyOnGoogleProgramRequest);
+      checkPauseBuyOnGoogleProgramRequest(od);
     });
   });
 
   unittest.group('obj-schema-PaymentServiceProviderLinkInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPaymentServiceProviderLinkInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PaymentServiceProviderLinkInfo.fromJson(
+      final o = buildPaymentServiceProviderLinkInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PaymentServiceProviderLinkInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPaymentServiceProviderLinkInfo(
-          od as api.PaymentServiceProviderLinkInfo);
+      checkPaymentServiceProviderLinkInfo(od);
     });
   });
 
   unittest.group('obj-schema-PickupCarrierService', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPickupCarrierService();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PickupCarrierService.fromJson(
+      final o = buildPickupCarrierService();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PickupCarrierService.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPickupCarrierService(od as api.PickupCarrierService);
+      checkPickupCarrierService(od);
     });
   });
 
   unittest.group('obj-schema-PickupServicesPickupService', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPickupServicesPickupService();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PickupServicesPickupService.fromJson(
+      final o = buildPickupServicesPickupService();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PickupServicesPickupService.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPickupServicesPickupService(od as api.PickupServicesPickupService);
+      checkPickupServicesPickupService(od);
     });
   });
 
   unittest.group('obj-schema-PosCustomBatchRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPosCustomBatchRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PosCustomBatchRequest.fromJson(
+      final o = buildPosCustomBatchRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PosCustomBatchRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPosCustomBatchRequest(od as api.PosCustomBatchRequest);
+      checkPosCustomBatchRequest(od);
     });
   });
 
   unittest.group('obj-schema-PosCustomBatchRequestEntry', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPosCustomBatchRequestEntry();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PosCustomBatchRequestEntry.fromJson(
+      final o = buildPosCustomBatchRequestEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PosCustomBatchRequestEntry.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPosCustomBatchRequestEntry(od as api.PosCustomBatchRequestEntry);
+      checkPosCustomBatchRequestEntry(od);
     });
   });
 
   unittest.group('obj-schema-PosCustomBatchResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPosCustomBatchResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PosCustomBatchResponse.fromJson(
+      final o = buildPosCustomBatchResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PosCustomBatchResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPosCustomBatchResponse(od as api.PosCustomBatchResponse);
+      checkPosCustomBatchResponse(od);
     });
   });
 
   unittest.group('obj-schema-PosCustomBatchResponseEntry', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPosCustomBatchResponseEntry();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PosCustomBatchResponseEntry.fromJson(
+      final o = buildPosCustomBatchResponseEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PosCustomBatchResponseEntry.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPosCustomBatchResponseEntry(od as api.PosCustomBatchResponseEntry);
+      checkPosCustomBatchResponseEntry(od);
     });
   });
 
   unittest.group('obj-schema-PosDataProviders', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPosDataProviders();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PosDataProviders.fromJson(
+      final o = buildPosDataProviders();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PosDataProviders.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPosDataProviders(od as api.PosDataProviders);
+      checkPosDataProviders(od);
     });
   });
 
   unittest.group('obj-schema-PosDataProvidersPosDataProvider', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPosDataProvidersPosDataProvider();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PosDataProvidersPosDataProvider.fromJson(
+      final o = buildPosDataProvidersPosDataProvider();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PosDataProvidersPosDataProvider.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPosDataProvidersPosDataProvider(
-          od as api.PosDataProvidersPosDataProvider);
+      checkPosDataProvidersPosDataProvider(od);
     });
   });
 
   unittest.group('obj-schema-PosInventory', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPosInventory();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PosInventory.fromJson(
+      final o = buildPosInventory();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PosInventory.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPosInventory(od as api.PosInventory);
+      checkPosInventory(od);
     });
   });
 
   unittest.group('obj-schema-PosInventoryRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPosInventoryRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PosInventoryRequest.fromJson(
+      final o = buildPosInventoryRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PosInventoryRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPosInventoryRequest(od as api.PosInventoryRequest);
+      checkPosInventoryRequest(od);
     });
   });
 
   unittest.group('obj-schema-PosInventoryResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPosInventoryResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PosInventoryResponse.fromJson(
+      final o = buildPosInventoryResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PosInventoryResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPosInventoryResponse(od as api.PosInventoryResponse);
+      checkPosInventoryResponse(od);
     });
   });
 
   unittest.group('obj-schema-PosListResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPosListResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PosListResponse.fromJson(
+      final o = buildPosListResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PosListResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPosListResponse(od as api.PosListResponse);
+      checkPosListResponse(od);
     });
   });
 
   unittest.group('obj-schema-PosSale', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPosSale();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildPosSale();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.PosSale.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkPosSale(od as api.PosSale);
+      checkPosSale(od);
     });
   });
 
   unittest.group('obj-schema-PosSaleRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPosSaleRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PosSaleRequest.fromJson(
+      final o = buildPosSaleRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PosSaleRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPosSaleRequest(od as api.PosSaleRequest);
+      checkPosSaleRequest(od);
     });
   });
 
   unittest.group('obj-schema-PosSaleResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPosSaleResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PosSaleResponse.fromJson(
+      final o = buildPosSaleResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PosSaleResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPosSaleResponse(od as api.PosSaleResponse);
+      checkPosSaleResponse(od);
     });
   });
 
   unittest.group('obj-schema-PosStore', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPosStore();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildPosStore();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.PosStore.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkPosStore(od as api.PosStore);
+      checkPosStore(od);
     });
   });
 
   unittest.group('obj-schema-PostalCodeGroup', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPostalCodeGroup();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PostalCodeGroup.fromJson(
+      final o = buildPostalCodeGroup();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PostalCodeGroup.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPostalCodeGroup(od as api.PostalCodeGroup);
+      checkPostalCodeGroup(od);
     });
   });
 
   unittest.group('obj-schema-PostalCodeRange', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPostalCodeRange();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PostalCodeRange.fromJson(
+      final o = buildPostalCodeRange();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PostalCodeRange.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPostalCodeRange(od as api.PostalCodeRange);
+      checkPostalCodeRange(od);
     });
   });
 
   unittest.group('obj-schema-Price', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPrice();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Price.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkPrice(od as api.Price);
+      final o = buildPrice();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Price.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkPrice(od);
     });
   });
 
   unittest.group('obj-schema-PriceAmount', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPriceAmount();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PriceAmount.fromJson(
+      final o = buildPriceAmount();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PriceAmount.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPriceAmount(od as api.PriceAmount);
+      checkPriceAmount(od);
     });
   });
 
   unittest.group('obj-schema-Product', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProduct();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildProduct();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Product.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkProduct(od as api.Product);
+      checkProduct(od);
     });
   });
 
   unittest.group('obj-schema-ProductAmount', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProductAmount();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ProductAmount.fromJson(
+      final o = buildProductAmount();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProductAmount.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProductAmount(od as api.ProductAmount);
+      checkProductAmount(od);
     });
   });
 
   unittest.group('obj-schema-ProductProductDetail', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProductProductDetail();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ProductProductDetail.fromJson(
+      final o = buildProductProductDetail();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProductProductDetail.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProductProductDetail(od as api.ProductProductDetail);
+      checkProductProductDetail(od);
     });
   });
 
   unittest.group('obj-schema-ProductShipping', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProductShipping();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ProductShipping.fromJson(
+      final o = buildProductShipping();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProductShipping.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProductShipping(od as api.ProductShipping);
+      checkProductShipping(od);
     });
   });
 
   unittest.group('obj-schema-ProductShippingDimension', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProductShippingDimension();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ProductShippingDimension.fromJson(
+      final o = buildProductShippingDimension();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProductShippingDimension.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProductShippingDimension(od as api.ProductShippingDimension);
+      checkProductShippingDimension(od);
     });
   });
 
   unittest.group('obj-schema-ProductShippingWeight', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProductShippingWeight();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ProductShippingWeight.fromJson(
+      final o = buildProductShippingWeight();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProductShippingWeight.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProductShippingWeight(od as api.ProductShippingWeight);
+      checkProductShippingWeight(od);
     });
   });
 
   unittest.group('obj-schema-ProductStatus', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProductStatus();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ProductStatus.fromJson(
+      final o = buildProductStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProductStatus.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProductStatus(od as api.ProductStatus);
+      checkProductStatus(od);
     });
   });
 
   unittest.group('obj-schema-ProductStatusDestinationStatus', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProductStatusDestinationStatus();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ProductStatusDestinationStatus.fromJson(
+      final o = buildProductStatusDestinationStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProductStatusDestinationStatus.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProductStatusDestinationStatus(
-          od as api.ProductStatusDestinationStatus);
+      checkProductStatusDestinationStatus(od);
     });
   });
 
   unittest.group('obj-schema-ProductStatusItemLevelIssue', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProductStatusItemLevelIssue();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ProductStatusItemLevelIssue.fromJson(
+      final o = buildProductStatusItemLevelIssue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProductStatusItemLevelIssue.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProductStatusItemLevelIssue(od as api.ProductStatusItemLevelIssue);
+      checkProductStatusItemLevelIssue(od);
     });
   });
 
   unittest.group('obj-schema-ProductSubscriptionCost', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProductSubscriptionCost();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ProductSubscriptionCost.fromJson(
+      final o = buildProductSubscriptionCost();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProductSubscriptionCost.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProductSubscriptionCost(od as api.ProductSubscriptionCost);
+      checkProductSubscriptionCost(od);
     });
   });
 
   unittest.group('obj-schema-ProductTax', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProductTax();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildProductTax();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.ProductTax.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkProductTax(od as api.ProductTax);
+      checkProductTax(od);
     });
   });
 
   unittest.group('obj-schema-ProductUnitPricingBaseMeasure', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProductUnitPricingBaseMeasure();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ProductUnitPricingBaseMeasure.fromJson(
+      final o = buildProductUnitPricingBaseMeasure();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProductUnitPricingBaseMeasure.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProductUnitPricingBaseMeasure(
-          od as api.ProductUnitPricingBaseMeasure);
+      checkProductUnitPricingBaseMeasure(od);
     });
   });
 
   unittest.group('obj-schema-ProductUnitPricingMeasure', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProductUnitPricingMeasure();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ProductUnitPricingMeasure.fromJson(
+      final o = buildProductUnitPricingMeasure();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProductUnitPricingMeasure.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProductUnitPricingMeasure(od as api.ProductUnitPricingMeasure);
+      checkProductUnitPricingMeasure(od);
     });
   });
 
   unittest.group('obj-schema-ProductsCustomBatchRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProductsCustomBatchRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ProductsCustomBatchRequest.fromJson(
+      final o = buildProductsCustomBatchRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProductsCustomBatchRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProductsCustomBatchRequest(od as api.ProductsCustomBatchRequest);
+      checkProductsCustomBatchRequest(od);
     });
   });
 
   unittest.group('obj-schema-ProductsCustomBatchRequestEntry', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProductsCustomBatchRequestEntry();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ProductsCustomBatchRequestEntry.fromJson(
+      final o = buildProductsCustomBatchRequestEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProductsCustomBatchRequestEntry.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProductsCustomBatchRequestEntry(
-          od as api.ProductsCustomBatchRequestEntry);
+      checkProductsCustomBatchRequestEntry(od);
     });
   });
 
   unittest.group('obj-schema-ProductsCustomBatchResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProductsCustomBatchResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ProductsCustomBatchResponse.fromJson(
+      final o = buildProductsCustomBatchResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProductsCustomBatchResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProductsCustomBatchResponse(od as api.ProductsCustomBatchResponse);
+      checkProductsCustomBatchResponse(od);
     });
   });
 
   unittest.group('obj-schema-ProductsCustomBatchResponseEntry', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProductsCustomBatchResponseEntry();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ProductsCustomBatchResponseEntry.fromJson(
+      final o = buildProductsCustomBatchResponseEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProductsCustomBatchResponseEntry.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProductsCustomBatchResponseEntry(
-          od as api.ProductsCustomBatchResponseEntry);
+      checkProductsCustomBatchResponseEntry(od);
     });
   });
 
   unittest.group('obj-schema-ProductsListResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProductsListResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ProductsListResponse.fromJson(
+      final o = buildProductsListResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProductsListResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProductsListResponse(od as api.ProductsListResponse);
+      checkProductsListResponse(od);
     });
   });
 
   unittest.group('obj-schema-ProductstatusesCustomBatchRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProductstatusesCustomBatchRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ProductstatusesCustomBatchRequest.fromJson(
+      final o = buildProductstatusesCustomBatchRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProductstatusesCustomBatchRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProductstatusesCustomBatchRequest(
-          od as api.ProductstatusesCustomBatchRequest);
+      checkProductstatusesCustomBatchRequest(od);
     });
   });
 
   unittest.group('obj-schema-ProductstatusesCustomBatchRequestEntry', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProductstatusesCustomBatchRequestEntry();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ProductstatusesCustomBatchRequestEntry.fromJson(
+      final o = buildProductstatusesCustomBatchRequestEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProductstatusesCustomBatchRequestEntry.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProductstatusesCustomBatchRequestEntry(
-          od as api.ProductstatusesCustomBatchRequestEntry);
+      checkProductstatusesCustomBatchRequestEntry(od);
     });
   });
 
   unittest.group('obj-schema-ProductstatusesCustomBatchResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProductstatusesCustomBatchResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ProductstatusesCustomBatchResponse.fromJson(
+      final o = buildProductstatusesCustomBatchResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProductstatusesCustomBatchResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProductstatusesCustomBatchResponse(
-          od as api.ProductstatusesCustomBatchResponse);
+      checkProductstatusesCustomBatchResponse(od);
     });
   });
 
   unittest.group('obj-schema-ProductstatusesCustomBatchResponseEntry', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProductstatusesCustomBatchResponseEntry();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ProductstatusesCustomBatchResponseEntry.fromJson(
+      final o = buildProductstatusesCustomBatchResponseEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProductstatusesCustomBatchResponseEntry.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProductstatusesCustomBatchResponseEntry(
-          od as api.ProductstatusesCustomBatchResponseEntry);
+      checkProductstatusesCustomBatchResponseEntry(od);
     });
   });
 
   unittest.group('obj-schema-ProductstatusesListResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProductstatusesListResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ProductstatusesListResponse.fromJson(
+      final o = buildProductstatusesListResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProductstatusesListResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProductstatusesListResponse(od as api.ProductstatusesListResponse);
+      checkProductstatusesListResponse(od);
     });
   });
 
   unittest.group('obj-schema-PubsubNotificationSettings', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildPubsubNotificationSettings();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.PubsubNotificationSettings.fromJson(
+      final o = buildPubsubNotificationSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PubsubNotificationSettings.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkPubsubNotificationSettings(od as api.PubsubNotificationSettings);
+      checkPubsubNotificationSettings(od);
     });
   });
 
   unittest.group('obj-schema-RateGroup', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRateGroup();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildRateGroup();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.RateGroup.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkRateGroup(od as api.RateGroup);
+      checkRateGroup(od);
     });
   });
 
   unittest.group('obj-schema-RefundReason', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRefundReason();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RefundReason.fromJson(
+      final o = buildRefundReason();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RefundReason.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRefundReason(od as api.RefundReason);
+      checkRefundReason(od);
     });
   });
 
   unittest.group('obj-schema-Region', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRegion();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildRegion();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Region.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkRegion(od as api.Region);
+      checkRegion(od);
     });
   });
 
   unittest.group('obj-schema-RegionGeoTargetArea', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRegionGeoTargetArea();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RegionGeoTargetArea.fromJson(
+      final o = buildRegionGeoTargetArea();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RegionGeoTargetArea.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRegionGeoTargetArea(od as api.RegionGeoTargetArea);
+      checkRegionGeoTargetArea(od);
     });
   });
 
   unittest.group('obj-schema-RegionPostalCodeArea', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRegionPostalCodeArea();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RegionPostalCodeArea.fromJson(
+      final o = buildRegionPostalCodeArea();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RegionPostalCodeArea.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRegionPostalCodeArea(od as api.RegionPostalCodeArea);
+      checkRegionPostalCodeArea(od);
     });
   });
 
   unittest.group('obj-schema-RegionPostalCodeAreaPostalCodeRange', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRegionPostalCodeAreaPostalCodeRange();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RegionPostalCodeAreaPostalCodeRange.fromJson(
+      final o = buildRegionPostalCodeAreaPostalCodeRange();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RegionPostalCodeAreaPostalCodeRange.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRegionPostalCodeAreaPostalCodeRange(
-          od as api.RegionPostalCodeAreaPostalCodeRange);
+      checkRegionPostalCodeAreaPostalCodeRange(od);
     });
   });
 
   unittest.group('obj-schema-RegionalInventory', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRegionalInventory();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RegionalInventory.fromJson(
+      final o = buildRegionalInventory();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RegionalInventory.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRegionalInventory(od as api.RegionalInventory);
+      checkRegionalInventory(od);
     });
   });
 
   unittest.group('obj-schema-RegionalinventoryCustomBatchRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRegionalinventoryCustomBatchRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RegionalinventoryCustomBatchRequest.fromJson(
+      final o = buildRegionalinventoryCustomBatchRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RegionalinventoryCustomBatchRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRegionalinventoryCustomBatchRequest(
-          od as api.RegionalinventoryCustomBatchRequest);
+      checkRegionalinventoryCustomBatchRequest(od);
     });
   });
 
   unittest.group('obj-schema-RegionalinventoryCustomBatchRequestEntry', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRegionalinventoryCustomBatchRequestEntry();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RegionalinventoryCustomBatchRequestEntry.fromJson(
+      final o = buildRegionalinventoryCustomBatchRequestEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RegionalinventoryCustomBatchRequestEntry.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRegionalinventoryCustomBatchRequestEntry(
-          od as api.RegionalinventoryCustomBatchRequestEntry);
+      checkRegionalinventoryCustomBatchRequestEntry(od);
     });
   });
 
   unittest.group('obj-schema-RegionalinventoryCustomBatchResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRegionalinventoryCustomBatchResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RegionalinventoryCustomBatchResponse.fromJson(
+      final o = buildRegionalinventoryCustomBatchResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RegionalinventoryCustomBatchResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRegionalinventoryCustomBatchResponse(
-          od as api.RegionalinventoryCustomBatchResponse);
+      checkRegionalinventoryCustomBatchResponse(od);
     });
   });
 
   unittest.group('obj-schema-RegionalinventoryCustomBatchResponseEntry', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRegionalinventoryCustomBatchResponseEntry();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RegionalinventoryCustomBatchResponseEntry.fromJson(
+      final o = buildRegionalinventoryCustomBatchResponseEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RegionalinventoryCustomBatchResponseEntry.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRegionalinventoryCustomBatchResponseEntry(
-          od as api.RegionalinventoryCustomBatchResponseEntry);
+      checkRegionalinventoryCustomBatchResponseEntry(od);
     });
   });
 
   unittest.group('obj-schema-ReportRow', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReportRow();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildReportRow();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.ReportRow.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkReportRow(od as api.ReportRow);
+      checkReportRow(od);
     });
   });
 
   unittest.group('obj-schema-RepricingProductReport', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRepricingProductReport();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RepricingProductReport.fromJson(
+      final o = buildRepricingProductReport();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RepricingProductReport.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRepricingProductReport(od as api.RepricingProductReport);
+      checkRepricingProductReport(od);
     });
   });
 
   unittest.group('obj-schema-RepricingProductReportBuyboxWinningProductStats',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRepricingProductReportBuyboxWinningProductStats();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RepricingProductReportBuyboxWinningProductStats.fromJson(
+      final o = buildRepricingProductReportBuyboxWinningProductStats();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RepricingProductReportBuyboxWinningProductStats.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRepricingProductReportBuyboxWinningProductStats(
-          od as api.RepricingProductReportBuyboxWinningProductStats);
+      checkRepricingProductReportBuyboxWinningProductStats(od);
     });
   });
 
   unittest.group('obj-schema-RepricingRule', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRepricingRule();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RepricingRule.fromJson(
+      final o = buildRepricingRule();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RepricingRule.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRepricingRule(od as api.RepricingRule);
+      checkRepricingRule(od);
     });
   });
 
   unittest.group('obj-schema-RepricingRuleCostOfGoodsSaleRule', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRepricingRuleCostOfGoodsSaleRule();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RepricingRuleCostOfGoodsSaleRule.fromJson(
+      final o = buildRepricingRuleCostOfGoodsSaleRule();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RepricingRuleCostOfGoodsSaleRule.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRepricingRuleCostOfGoodsSaleRule(
-          od as api.RepricingRuleCostOfGoodsSaleRule);
+      checkRepricingRuleCostOfGoodsSaleRule(od);
     });
   });
 
   unittest.group('obj-schema-RepricingRuleEffectiveTime', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRepricingRuleEffectiveTime();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RepricingRuleEffectiveTime.fromJson(
+      final o = buildRepricingRuleEffectiveTime();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RepricingRuleEffectiveTime.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRepricingRuleEffectiveTime(od as api.RepricingRuleEffectiveTime);
+      checkRepricingRuleEffectiveTime(od);
     });
   });
 
   unittest.group('obj-schema-RepricingRuleEffectiveTimeFixedTimePeriod', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRepricingRuleEffectiveTimeFixedTimePeriod();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RepricingRuleEffectiveTimeFixedTimePeriod.fromJson(
+      final o = buildRepricingRuleEffectiveTimeFixedTimePeriod();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RepricingRuleEffectiveTimeFixedTimePeriod.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRepricingRuleEffectiveTimeFixedTimePeriod(
-          od as api.RepricingRuleEffectiveTimeFixedTimePeriod);
+      checkRepricingRuleEffectiveTimeFixedTimePeriod(od);
     });
   });
 
   unittest.group('obj-schema-RepricingRuleEligibleOfferMatcher', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRepricingRuleEligibleOfferMatcher();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RepricingRuleEligibleOfferMatcher.fromJson(
+      final o = buildRepricingRuleEligibleOfferMatcher();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RepricingRuleEligibleOfferMatcher.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRepricingRuleEligibleOfferMatcher(
-          od as api.RepricingRuleEligibleOfferMatcher);
+      checkRepricingRuleEligibleOfferMatcher(od);
     });
   });
 
   unittest.group('obj-schema-RepricingRuleEligibleOfferMatcherStringMatcher',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRepricingRuleEligibleOfferMatcherStringMatcher();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RepricingRuleEligibleOfferMatcherStringMatcher.fromJson(
+      final o = buildRepricingRuleEligibleOfferMatcherStringMatcher();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RepricingRuleEligibleOfferMatcherStringMatcher.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRepricingRuleEligibleOfferMatcherStringMatcher(
-          od as api.RepricingRuleEligibleOfferMatcherStringMatcher);
+      checkRepricingRuleEligibleOfferMatcherStringMatcher(od);
     });
   });
 
   unittest.group('obj-schema-RepricingRuleReport', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRepricingRuleReport();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RepricingRuleReport.fromJson(
+      final o = buildRepricingRuleReport();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RepricingRuleReport.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRepricingRuleReport(od as api.RepricingRuleReport);
+      checkRepricingRuleReport(od);
     });
   });
 
   unittest.group('obj-schema-RepricingRuleReportBuyboxWinningRuleStats', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRepricingRuleReportBuyboxWinningRuleStats();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RepricingRuleReportBuyboxWinningRuleStats.fromJson(
+      final o = buildRepricingRuleReportBuyboxWinningRuleStats();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RepricingRuleReportBuyboxWinningRuleStats.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRepricingRuleReportBuyboxWinningRuleStats(
-          od as api.RepricingRuleReportBuyboxWinningRuleStats);
+      checkRepricingRuleReportBuyboxWinningRuleStats(od);
     });
   });
 
   unittest.group('obj-schema-RepricingRuleRestriction', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRepricingRuleRestriction();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RepricingRuleRestriction.fromJson(
+      final o = buildRepricingRuleRestriction();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RepricingRuleRestriction.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRepricingRuleRestriction(od as api.RepricingRuleRestriction);
+      checkRepricingRuleRestriction(od);
     });
   });
 
   unittest.group('obj-schema-RepricingRuleRestrictionBoundary', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRepricingRuleRestrictionBoundary();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RepricingRuleRestrictionBoundary.fromJson(
+      final o = buildRepricingRuleRestrictionBoundary();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RepricingRuleRestrictionBoundary.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRepricingRuleRestrictionBoundary(
-          od as api.RepricingRuleRestrictionBoundary);
+      checkRepricingRuleRestrictionBoundary(od);
     });
   });
 
   unittest.group('obj-schema-RepricingRuleStatsBasedRule', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRepricingRuleStatsBasedRule();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RepricingRuleStatsBasedRule.fromJson(
+      final o = buildRepricingRuleStatsBasedRule();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RepricingRuleStatsBasedRule.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRepricingRuleStatsBasedRule(od as api.RepricingRuleStatsBasedRule);
+      checkRepricingRuleStatsBasedRule(od);
     });
   });
 
   unittest.group('obj-schema-RequestReviewBuyOnGoogleProgramRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRequestReviewBuyOnGoogleProgramRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.RequestReviewBuyOnGoogleProgramRequest.fromJson(
+      final o = buildRequestReviewBuyOnGoogleProgramRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RequestReviewBuyOnGoogleProgramRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkRequestReviewBuyOnGoogleProgramRequest(
-          od as api.RequestReviewBuyOnGoogleProgramRequest);
+      checkRequestReviewBuyOnGoogleProgramRequest(od);
     });
   });
 
   unittest.group('obj-schema-ReturnAddress', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReturnAddress();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReturnAddress.fromJson(
+      final o = buildReturnAddress();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReturnAddress.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReturnAddress(od as api.ReturnAddress);
+      checkReturnAddress(od);
     });
   });
 
   unittest.group('obj-schema-ReturnAddressAddress', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReturnAddressAddress();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReturnAddressAddress.fromJson(
+      final o = buildReturnAddressAddress();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReturnAddressAddress.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReturnAddressAddress(od as api.ReturnAddressAddress);
+      checkReturnAddressAddress(od);
     });
   });
 
   unittest.group('obj-schema-ReturnPolicy', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReturnPolicy();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReturnPolicy.fromJson(
+      final o = buildReturnPolicy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReturnPolicy.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReturnPolicy(od as api.ReturnPolicy);
+      checkReturnPolicy(od);
     });
   });
 
   unittest.group('obj-schema-ReturnPolicyOnline', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReturnPolicyOnline();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReturnPolicyOnline.fromJson(
+      final o = buildReturnPolicyOnline();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReturnPolicyOnline.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReturnPolicyOnline(od as api.ReturnPolicyOnline);
+      checkReturnPolicyOnline(od);
     });
   });
 
   unittest.group('obj-schema-ReturnPolicyOnlinePolicy', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReturnPolicyOnlinePolicy();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReturnPolicyOnlinePolicy.fromJson(
+      final o = buildReturnPolicyOnlinePolicy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReturnPolicyOnlinePolicy.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReturnPolicyOnlinePolicy(od as api.ReturnPolicyOnlinePolicy);
+      checkReturnPolicyOnlinePolicy(od);
     });
   });
 
   unittest.group('obj-schema-ReturnPolicyOnlineRestockingFee', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReturnPolicyOnlineRestockingFee();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReturnPolicyOnlineRestockingFee.fromJson(
+      final o = buildReturnPolicyOnlineRestockingFee();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReturnPolicyOnlineRestockingFee.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReturnPolicyOnlineRestockingFee(
-          od as api.ReturnPolicyOnlineRestockingFee);
+      checkReturnPolicyOnlineRestockingFee(od);
     });
   });
 
   unittest.group('obj-schema-ReturnPolicyOnlineReturnReasonCategoryInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReturnPolicyOnlineReturnReasonCategoryInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReturnPolicyOnlineReturnReasonCategoryInfo.fromJson(
+      final o = buildReturnPolicyOnlineReturnReasonCategoryInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReturnPolicyOnlineReturnReasonCategoryInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReturnPolicyOnlineReturnReasonCategoryInfo(
-          od as api.ReturnPolicyOnlineReturnReasonCategoryInfo);
+      checkReturnPolicyOnlineReturnReasonCategoryInfo(od);
     });
   });
 
   unittest.group('obj-schema-ReturnPolicyOnlineReturnShippingFee', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReturnPolicyOnlineReturnShippingFee();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReturnPolicyOnlineReturnShippingFee.fromJson(
+      final o = buildReturnPolicyOnlineReturnShippingFee();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReturnPolicyOnlineReturnShippingFee.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReturnPolicyOnlineReturnShippingFee(
-          od as api.ReturnPolicyOnlineReturnShippingFee);
+      checkReturnPolicyOnlineReturnShippingFee(od);
     });
   });
 
   unittest.group('obj-schema-ReturnPolicyPolicy', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReturnPolicyPolicy();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReturnPolicyPolicy.fromJson(
+      final o = buildReturnPolicyPolicy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReturnPolicyPolicy.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReturnPolicyPolicy(od as api.ReturnPolicyPolicy);
+      checkReturnPolicyPolicy(od);
     });
   });
 
   unittest.group('obj-schema-ReturnPolicySeasonalOverride', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReturnPolicySeasonalOverride();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReturnPolicySeasonalOverride.fromJson(
+      final o = buildReturnPolicySeasonalOverride();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReturnPolicySeasonalOverride.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReturnPolicySeasonalOverride(od as api.ReturnPolicySeasonalOverride);
+      checkReturnPolicySeasonalOverride(od);
     });
   });
 
   unittest.group('obj-schema-ReturnPricingInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReturnPricingInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReturnPricingInfo.fromJson(
+      final o = buildReturnPricingInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReturnPricingInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReturnPricingInfo(od as api.ReturnPricingInfo);
+      checkReturnPricingInfo(od);
     });
   });
 
   unittest.group('obj-schema-ReturnShipment', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReturnShipment();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReturnShipment.fromJson(
+      final o = buildReturnShipment();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReturnShipment.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReturnShipment(od as api.ReturnShipment);
+      checkReturnShipment(od);
     });
   });
 
   unittest.group('obj-schema-ReturnShippingLabel', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReturnShippingLabel();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReturnShippingLabel.fromJson(
+      final o = buildReturnShippingLabel();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReturnShippingLabel.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReturnShippingLabel(od as api.ReturnShippingLabel);
+      checkReturnShippingLabel(od);
     });
   });
 
   unittest.group('obj-schema-ReturnaddressCustomBatchRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReturnaddressCustomBatchRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReturnaddressCustomBatchRequest.fromJson(
+      final o = buildReturnaddressCustomBatchRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReturnaddressCustomBatchRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReturnaddressCustomBatchRequest(
-          od as api.ReturnaddressCustomBatchRequest);
+      checkReturnaddressCustomBatchRequest(od);
     });
   });
 
   unittest.group('obj-schema-ReturnaddressCustomBatchRequestEntry', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReturnaddressCustomBatchRequestEntry();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReturnaddressCustomBatchRequestEntry.fromJson(
+      final o = buildReturnaddressCustomBatchRequestEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReturnaddressCustomBatchRequestEntry.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReturnaddressCustomBatchRequestEntry(
-          od as api.ReturnaddressCustomBatchRequestEntry);
+      checkReturnaddressCustomBatchRequestEntry(od);
     });
   });
 
   unittest.group('obj-schema-ReturnaddressCustomBatchResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReturnaddressCustomBatchResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReturnaddressCustomBatchResponse.fromJson(
+      final o = buildReturnaddressCustomBatchResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReturnaddressCustomBatchResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReturnaddressCustomBatchResponse(
-          od as api.ReturnaddressCustomBatchResponse);
+      checkReturnaddressCustomBatchResponse(od);
     });
   });
 
   unittest.group('obj-schema-ReturnaddressCustomBatchResponseEntry', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReturnaddressCustomBatchResponseEntry();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReturnaddressCustomBatchResponseEntry.fromJson(
+      final o = buildReturnaddressCustomBatchResponseEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReturnaddressCustomBatchResponseEntry.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReturnaddressCustomBatchResponseEntry(
-          od as api.ReturnaddressCustomBatchResponseEntry);
+      checkReturnaddressCustomBatchResponseEntry(od);
     });
   });
 
   unittest.group('obj-schema-ReturnaddressListResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReturnaddressListResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReturnaddressListResponse.fromJson(
+      final o = buildReturnaddressListResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReturnaddressListResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReturnaddressListResponse(od as api.ReturnaddressListResponse);
+      checkReturnaddressListResponse(od);
     });
   });
 
   unittest.group('obj-schema-ReturnpolicyCustomBatchRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReturnpolicyCustomBatchRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReturnpolicyCustomBatchRequest.fromJson(
+      final o = buildReturnpolicyCustomBatchRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReturnpolicyCustomBatchRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReturnpolicyCustomBatchRequest(
-          od as api.ReturnpolicyCustomBatchRequest);
+      checkReturnpolicyCustomBatchRequest(od);
     });
   });
 
   unittest.group('obj-schema-ReturnpolicyCustomBatchRequestEntry', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReturnpolicyCustomBatchRequestEntry();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReturnpolicyCustomBatchRequestEntry.fromJson(
+      final o = buildReturnpolicyCustomBatchRequestEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReturnpolicyCustomBatchRequestEntry.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReturnpolicyCustomBatchRequestEntry(
-          od as api.ReturnpolicyCustomBatchRequestEntry);
+      checkReturnpolicyCustomBatchRequestEntry(od);
     });
   });
 
   unittest.group('obj-schema-ReturnpolicyCustomBatchResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReturnpolicyCustomBatchResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReturnpolicyCustomBatchResponse.fromJson(
+      final o = buildReturnpolicyCustomBatchResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReturnpolicyCustomBatchResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReturnpolicyCustomBatchResponse(
-          od as api.ReturnpolicyCustomBatchResponse);
+      checkReturnpolicyCustomBatchResponse(od);
     });
   });
 
   unittest.group('obj-schema-ReturnpolicyCustomBatchResponseEntry', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReturnpolicyCustomBatchResponseEntry();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReturnpolicyCustomBatchResponseEntry.fromJson(
+      final o = buildReturnpolicyCustomBatchResponseEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReturnpolicyCustomBatchResponseEntry.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReturnpolicyCustomBatchResponseEntry(
-          od as api.ReturnpolicyCustomBatchResponseEntry);
+      checkReturnpolicyCustomBatchResponseEntry(od);
     });
   });
 
   unittest.group('obj-schema-ReturnpolicyListResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildReturnpolicyListResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ReturnpolicyListResponse.fromJson(
+      final o = buildReturnpolicyListResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReturnpolicyListResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkReturnpolicyListResponse(od as api.ReturnpolicyListResponse);
+      checkReturnpolicyListResponse(od);
     });
   });
 
   unittest.group('obj-schema-Row', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildRow();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Row.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkRow(od as api.Row);
+      final o = buildRow();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Row.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkRow(od);
     });
   });
 
   unittest.group('obj-schema-SearchRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSearchRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SearchRequest.fromJson(
+      final o = buildSearchRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SearchRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSearchRequest(od as api.SearchRequest);
+      checkSearchRequest(od);
     });
   });
 
   unittest.group('obj-schema-SearchResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSearchResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SearchResponse.fromJson(
+      final o = buildSearchResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SearchResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSearchResponse(od as api.SearchResponse);
+      checkSearchResponse(od);
     });
   });
 
   unittest.group('obj-schema-Segments', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSegments();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildSegments();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Segments.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkSegments(od as api.Segments);
+      checkSegments(od);
     });
   });
 
   unittest.group('obj-schema-Service', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildService();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildService();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Service.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkService(od as api.Service);
+      checkService(od);
     });
   });
 
   unittest.group('obj-schema-SettlementReport', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSettlementReport();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SettlementReport.fromJson(
+      final o = buildSettlementReport();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SettlementReport.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSettlementReport(od as api.SettlementReport);
+      checkSettlementReport(od);
     });
   });
 
   unittest.group('obj-schema-SettlementTransaction', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSettlementTransaction();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SettlementTransaction.fromJson(
+      final o = buildSettlementTransaction();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SettlementTransaction.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSettlementTransaction(od as api.SettlementTransaction);
+      checkSettlementTransaction(od);
     });
   });
 
   unittest.group('obj-schema-SettlementTransactionAmount', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSettlementTransactionAmount();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SettlementTransactionAmount.fromJson(
+      final o = buildSettlementTransactionAmount();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SettlementTransactionAmount.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSettlementTransactionAmount(od as api.SettlementTransactionAmount);
+      checkSettlementTransactionAmount(od);
     });
   });
 
   unittest.group('obj-schema-SettlementTransactionAmountCommission', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSettlementTransactionAmountCommission();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SettlementTransactionAmountCommission.fromJson(
+      final o = buildSettlementTransactionAmountCommission();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SettlementTransactionAmountCommission.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSettlementTransactionAmountCommission(
-          od as api.SettlementTransactionAmountCommission);
+      checkSettlementTransactionAmountCommission(od);
     });
   });
 
   unittest.group('obj-schema-SettlementTransactionIdentifiers', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSettlementTransactionIdentifiers();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SettlementTransactionIdentifiers.fromJson(
+      final o = buildSettlementTransactionIdentifiers();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SettlementTransactionIdentifiers.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSettlementTransactionIdentifiers(
-          od as api.SettlementTransactionIdentifiers);
+      checkSettlementTransactionIdentifiers(od);
     });
   });
 
   unittest.group('obj-schema-SettlementTransactionTransaction', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSettlementTransactionTransaction();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SettlementTransactionTransaction.fromJson(
+      final o = buildSettlementTransactionTransaction();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SettlementTransactionTransaction.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSettlementTransactionTransaction(
-          od as api.SettlementTransactionTransaction);
+      checkSettlementTransactionTransaction(od);
     });
   });
 
   unittest.group('obj-schema-SettlementreportsListResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSettlementreportsListResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SettlementreportsListResponse.fromJson(
+      final o = buildSettlementreportsListResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SettlementreportsListResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSettlementreportsListResponse(
-          od as api.SettlementreportsListResponse);
+      checkSettlementreportsListResponse(od);
     });
   });
 
   unittest.group('obj-schema-SettlementtransactionsListResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildSettlementtransactionsListResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.SettlementtransactionsListResponse.fromJson(
+      final o = buildSettlementtransactionsListResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SettlementtransactionsListResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkSettlementtransactionsListResponse(
-          od as api.SettlementtransactionsListResponse);
+      checkSettlementtransactionsListResponse(od);
     });
   });
 
   unittest.group('obj-schema-ShipmentInvoice', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildShipmentInvoice();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ShipmentInvoice.fromJson(
+      final o = buildShipmentInvoice();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ShipmentInvoice.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkShipmentInvoice(od as api.ShipmentInvoice);
+      checkShipmentInvoice(od);
     });
   });
 
   unittest.group('obj-schema-ShipmentInvoiceLineItemInvoice', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildShipmentInvoiceLineItemInvoice();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ShipmentInvoiceLineItemInvoice.fromJson(
+      final o = buildShipmentInvoiceLineItemInvoice();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ShipmentInvoiceLineItemInvoice.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkShipmentInvoiceLineItemInvoice(
-          od as api.ShipmentInvoiceLineItemInvoice);
+      checkShipmentInvoiceLineItemInvoice(od);
     });
   });
 
   unittest.group('obj-schema-ShipmentTrackingInfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildShipmentTrackingInfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ShipmentTrackingInfo.fromJson(
+      final o = buildShipmentTrackingInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ShipmentTrackingInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkShipmentTrackingInfo(od as api.ShipmentTrackingInfo);
+      checkShipmentTrackingInfo(od);
     });
   });
 
   unittest.group('obj-schema-ShippingSettings', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildShippingSettings();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ShippingSettings.fromJson(
+      final o = buildShippingSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ShippingSettings.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkShippingSettings(od as api.ShippingSettings);
+      checkShippingSettings(od);
     });
   });
 
   unittest.group('obj-schema-ShippingsettingsCustomBatchRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildShippingsettingsCustomBatchRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ShippingsettingsCustomBatchRequest.fromJson(
+      final o = buildShippingsettingsCustomBatchRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ShippingsettingsCustomBatchRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkShippingsettingsCustomBatchRequest(
-          od as api.ShippingsettingsCustomBatchRequest);
+      checkShippingsettingsCustomBatchRequest(od);
     });
   });
 
   unittest.group('obj-schema-ShippingsettingsCustomBatchRequestEntry', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildShippingsettingsCustomBatchRequestEntry();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ShippingsettingsCustomBatchRequestEntry.fromJson(
+      final o = buildShippingsettingsCustomBatchRequestEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ShippingsettingsCustomBatchRequestEntry.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkShippingsettingsCustomBatchRequestEntry(
-          od as api.ShippingsettingsCustomBatchRequestEntry);
+      checkShippingsettingsCustomBatchRequestEntry(od);
     });
   });
 
   unittest.group('obj-schema-ShippingsettingsCustomBatchResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildShippingsettingsCustomBatchResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ShippingsettingsCustomBatchResponse.fromJson(
+      final o = buildShippingsettingsCustomBatchResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ShippingsettingsCustomBatchResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkShippingsettingsCustomBatchResponse(
-          od as api.ShippingsettingsCustomBatchResponse);
+      checkShippingsettingsCustomBatchResponse(od);
     });
   });
 
   unittest.group('obj-schema-ShippingsettingsCustomBatchResponseEntry', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildShippingsettingsCustomBatchResponseEntry();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ShippingsettingsCustomBatchResponseEntry.fromJson(
+      final o = buildShippingsettingsCustomBatchResponseEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ShippingsettingsCustomBatchResponseEntry.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkShippingsettingsCustomBatchResponseEntry(
-          od as api.ShippingsettingsCustomBatchResponseEntry);
+      checkShippingsettingsCustomBatchResponseEntry(od);
     });
   });
 
   unittest.group('obj-schema-ShippingsettingsGetSupportedCarriersResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildShippingsettingsGetSupportedCarriersResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ShippingsettingsGetSupportedCarriersResponse.fromJson(
+      final o = buildShippingsettingsGetSupportedCarriersResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ShippingsettingsGetSupportedCarriersResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkShippingsettingsGetSupportedCarriersResponse(
-          od as api.ShippingsettingsGetSupportedCarriersResponse);
+      checkShippingsettingsGetSupportedCarriersResponse(od);
     });
   });
 
   unittest.group('obj-schema-ShippingsettingsGetSupportedHolidaysResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildShippingsettingsGetSupportedHolidaysResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ShippingsettingsGetSupportedHolidaysResponse.fromJson(
+      final o = buildShippingsettingsGetSupportedHolidaysResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ShippingsettingsGetSupportedHolidaysResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkShippingsettingsGetSupportedHolidaysResponse(
-          od as api.ShippingsettingsGetSupportedHolidaysResponse);
+      checkShippingsettingsGetSupportedHolidaysResponse(od);
     });
   });
 
   unittest.group(
       'obj-schema-ShippingsettingsGetSupportedPickupServicesResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildShippingsettingsGetSupportedPickupServicesResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ShippingsettingsGetSupportedPickupServicesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkShippingsettingsGetSupportedPickupServicesResponse(
-          od as api.ShippingsettingsGetSupportedPickupServicesResponse);
+      final o = buildShippingsettingsGetSupportedPickupServicesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.ShippingsettingsGetSupportedPickupServicesResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkShippingsettingsGetSupportedPickupServicesResponse(od);
     });
   });
 
   unittest.group('obj-schema-ShippingsettingsListResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildShippingsettingsListResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.ShippingsettingsListResponse.fromJson(
+      final o = buildShippingsettingsListResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ShippingsettingsListResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkShippingsettingsListResponse(od as api.ShippingsettingsListResponse);
+      checkShippingsettingsListResponse(od);
     });
   });
 
   unittest.group('obj-schema-Table', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTable();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Table.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkTable(od as api.Table);
+      final o = buildTable();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Table.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkTable(od);
     });
   });
 
   unittest.group('obj-schema-TestOrder', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTestOrder();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildTestOrder();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.TestOrder.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkTestOrder(od as api.TestOrder);
+      checkTestOrder(od);
     });
   });
 
   unittest.group('obj-schema-TestOrderAddress', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTestOrderAddress();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TestOrderAddress.fromJson(
+      final o = buildTestOrderAddress();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TestOrderAddress.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTestOrderAddress(od as api.TestOrderAddress);
+      checkTestOrderAddress(od);
     });
   });
 
   unittest.group('obj-schema-TestOrderDeliveryDetails', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTestOrderDeliveryDetails();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TestOrderDeliveryDetails.fromJson(
+      final o = buildTestOrderDeliveryDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TestOrderDeliveryDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTestOrderDeliveryDetails(od as api.TestOrderDeliveryDetails);
+      checkTestOrderDeliveryDetails(od);
     });
   });
 
   unittest.group('obj-schema-TestOrderLineItem', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTestOrderLineItem();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TestOrderLineItem.fromJson(
+      final o = buildTestOrderLineItem();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TestOrderLineItem.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTestOrderLineItem(od as api.TestOrderLineItem);
+      checkTestOrderLineItem(od);
     });
   });
 
   unittest.group('obj-schema-TestOrderLineItemProduct', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTestOrderLineItemProduct();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TestOrderLineItemProduct.fromJson(
+      final o = buildTestOrderLineItemProduct();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TestOrderLineItemProduct.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTestOrderLineItemProduct(od as api.TestOrderLineItemProduct);
+      checkTestOrderLineItemProduct(od);
     });
   });
 
   unittest.group('obj-schema-TestOrderPickupDetails', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTestOrderPickupDetails();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TestOrderPickupDetails.fromJson(
+      final o = buildTestOrderPickupDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TestOrderPickupDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTestOrderPickupDetails(od as api.TestOrderPickupDetails);
+      checkTestOrderPickupDetails(od);
     });
   });
 
   unittest.group('obj-schema-TestOrderPickupDetailsPickupPerson', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTestOrderPickupDetailsPickupPerson();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TestOrderPickupDetailsPickupPerson.fromJson(
+      final o = buildTestOrderPickupDetailsPickupPerson();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TestOrderPickupDetailsPickupPerson.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTestOrderPickupDetailsPickupPerson(
-          od as api.TestOrderPickupDetailsPickupPerson);
+      checkTestOrderPickupDetailsPickupPerson(od);
     });
   });
 
   unittest.group('obj-schema-TimeZone', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTimeZone();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildTimeZone();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.TimeZone.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkTimeZone(od as api.TimeZone);
+      checkTimeZone(od);
     });
   });
 
   unittest.group('obj-schema-TransitTable', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTransitTable();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TransitTable.fromJson(
+      final o = buildTransitTable();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TransitTable.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTransitTable(od as api.TransitTable);
+      checkTransitTable(od);
     });
   });
 
   unittest.group('obj-schema-TransitTableTransitTimeRow', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTransitTableTransitTimeRow();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TransitTableTransitTimeRow.fromJson(
+      final o = buildTransitTableTransitTimeRow();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TransitTableTransitTimeRow.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTransitTableTransitTimeRow(od as api.TransitTableTransitTimeRow);
+      checkTransitTableTransitTimeRow(od);
     });
   });
 
   unittest.group('obj-schema-TransitTableTransitTimeRowTransitTimeValue', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTransitTableTransitTimeRowTransitTimeValue();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.TransitTableTransitTimeRowTransitTimeValue.fromJson(
+      final o = buildTransitTableTransitTimeRowTransitTimeValue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TransitTableTransitTimeRowTransitTimeValue.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkTransitTableTransitTimeRowTransitTimeValue(
-          od as api.TransitTableTransitTimeRowTransitTimeValue);
+      checkTransitTableTransitTimeRowTransitTimeValue(od);
     });
   });
 
   unittest.group('obj-schema-UnitInvoice', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildUnitInvoice();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.UnitInvoice.fromJson(
+      final o = buildUnitInvoice();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UnitInvoice.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkUnitInvoice(od as api.UnitInvoice);
+      checkUnitInvoice(od);
     });
   });
 
   unittest.group('obj-schema-UnitInvoiceAdditionalCharge', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildUnitInvoiceAdditionalCharge();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.UnitInvoiceAdditionalCharge.fromJson(
+      final o = buildUnitInvoiceAdditionalCharge();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UnitInvoiceAdditionalCharge.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkUnitInvoiceAdditionalCharge(od as api.UnitInvoiceAdditionalCharge);
+      checkUnitInvoiceAdditionalCharge(od);
     });
   });
 
   unittest.group('obj-schema-UnitInvoiceTaxLine', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildUnitInvoiceTaxLine();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.UnitInvoiceTaxLine.fromJson(
+      final o = buildUnitInvoiceTaxLine();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UnitInvoiceTaxLine.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkUnitInvoiceTaxLine(od as api.UnitInvoiceTaxLine);
+      checkUnitInvoiceTaxLine(od);
     });
   });
 
   unittest.group('obj-schema-Value', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildValue();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Value.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkValue(od as api.Value);
+      final o = buildValue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Value.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkValue(od);
     });
   });
 
   unittest.group('obj-schema-WarehouseBasedDeliveryTime', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildWarehouseBasedDeliveryTime();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.WarehouseBasedDeliveryTime.fromJson(
+      final o = buildWarehouseBasedDeliveryTime();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WarehouseBasedDeliveryTime.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkWarehouseBasedDeliveryTime(od as api.WarehouseBasedDeliveryTime);
+      checkWarehouseBasedDeliveryTime(od);
     });
   });
 
   unittest.group('obj-schema-Weight', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildWeight();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildWeight();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Weight.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkWeight(od as api.Weight);
+      checkWeight(od);
     });
   });
 
   unittest.group('resource-AccountsResource', () {
     unittest.test('method--authinfo', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).accounts;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).accounts;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("content/v2.1/"),
+          unittest.equals('content/v2.1/'),
         );
         pathOffset += 13;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 17),
-          unittest.equals("accounts/authinfo"),
+          unittest.equals('accounts/authinfo'),
         );
         pathOffset += 17;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -19875,14 +19595,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccountsAuthInfoResponse());
+        final resp = convert.json.encode(buildAccountsAuthInfoResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.authinfo($fields: arg_$fields);
@@ -19890,32 +19610,32 @@ void main() {
     });
 
     unittest.test('method--claimwebsite', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).accounts;
-      var arg_merchantId = 'foo';
-      var arg_accountId = 'foo';
-      var arg_overwrite = true;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).accounts;
+      final arg_merchantId = 'foo';
+      final arg_accountId = 'foo';
+      final arg_overwrite = true;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -19923,18 +19643,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["overwrite"]!.first,
-          unittest.equals("$arg_overwrite"),
+          queryMap['overwrite']!.first,
+          unittest.equals('$arg_overwrite'),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccountsClaimWebsiteResponse());
+        final resp = convert.json.encode(buildAccountsClaimWebsiteResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.claimwebsite(arg_merchantId, arg_accountId,
@@ -19944,44 +19664,44 @@ void main() {
     });
 
     unittest.test('method--custombatch', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).accounts;
-      var arg_request = buildAccountsCustomBatchRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).accounts;
+      final arg_request = buildAccountsCustomBatchRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AccountsCustomBatchRequest.fromJson(
+        final obj = api.AccountsCustomBatchRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkAccountsCustomBatchRequest(obj as api.AccountsCustomBatchRequest);
+        checkAccountsCustomBatchRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("content/v2.1/"),
+          unittest.equals('content/v2.1/'),
         );
         pathOffset += 13;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 14),
-          unittest.equals("accounts/batch"),
+          unittest.equals('accounts/batch'),
         );
         pathOffset += 14;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -19989,14 +19709,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccountsCustomBatchResponse());
+        final resp = convert.json.encode(buildAccountsCustomBatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.custombatch(arg_request, $fields: arg_$fields);
@@ -20005,32 +19725,32 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).accounts;
-      var arg_merchantId = 'foo';
-      var arg_accountId = 'foo';
-      var arg_force = true;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).accounts;
+      final arg_merchantId = 'foo';
+      final arg_accountId = 'foo';
+      final arg_force = true;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20038,18 +19758,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["force"]!.first,
-          unittest.equals("$arg_force"),
+          queryMap['force']!.first,
+          unittest.equals('$arg_force'),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_merchantId, arg_accountId,
@@ -20057,32 +19777,32 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).accounts;
-      var arg_merchantId = 'foo';
-      var arg_accountId = 'foo';
-      var arg_view = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).accounts;
+      final arg_merchantId = 'foo';
+      final arg_accountId = 'foo';
+      final arg_view = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20090,18 +19810,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["view"]!.first,
+          queryMap['view']!.first,
           unittest.equals(arg_view),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccount());
+        final resp = convert.json.encode(buildAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_merchantId, arg_accountId,
@@ -20110,35 +19830,35 @@ void main() {
     });
 
     unittest.test('method--insert', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).accounts;
-      var arg_request = buildAccount();
-      var arg_merchantId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).accounts;
+      final arg_request = buildAccount();
+      final arg_merchantId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Account.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkAccount(obj as api.Account);
+        checkAccount(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20146,14 +19866,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccount());
+        final resp = convert.json.encode(buildAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -20162,36 +19882,36 @@ void main() {
     });
 
     unittest.test('method--link', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).accounts;
-      var arg_request = buildAccountsLinkRequest();
-      var arg_merchantId = 'foo';
-      var arg_accountId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).accounts;
+      final arg_request = buildAccountsLinkRequest();
+      final arg_merchantId = 'foo';
+      final arg_accountId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AccountsLinkRequest.fromJson(
+        final obj = api.AccountsLinkRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkAccountsLinkRequest(obj as api.AccountsLinkRequest);
+        checkAccountsLinkRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20199,14 +19919,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccountsLinkResponse());
+        final resp = convert.json.encode(buildAccountsLinkResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.link(
@@ -20216,34 +19936,34 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).accounts;
-      var arg_merchantId = 'foo';
-      var arg_label = 'foo';
-      var arg_maxResults = 42;
-      var arg_pageToken = 'foo';
-      var arg_view = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).accounts;
+      final arg_merchantId = 'foo';
+      final arg_label = 'foo';
+      final arg_maxResults = 42;
+      final arg_pageToken = 'foo';
+      final arg_view = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20251,30 +19971,30 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["label"]!.first,
+          queryMap['label']!.first,
           unittest.equals(arg_label),
         );
         unittest.expect(
-          core.int.parse(queryMap["maxResults"]!.first),
+          core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["view"]!.first,
+          queryMap['view']!.first,
           unittest.equals(arg_view),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccountsListResponse());
+        final resp = convert.json.encode(buildAccountsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_merchantId,
@@ -20287,33 +20007,33 @@ void main() {
     });
 
     unittest.test('method--listlinks', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).accounts;
-      var arg_merchantId = 'foo';
-      var arg_accountId = 'foo';
-      var arg_maxResults = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).accounts;
+      final arg_merchantId = 'foo';
+      final arg_accountId = 'foo';
+      final arg_maxResults = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20321,22 +20041,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["maxResults"]!.first),
+          core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccountsListLinksResponse());
+        final resp = convert.json.encode(buildAccountsListLinksResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.listlinks(arg_merchantId, arg_accountId,
@@ -20347,36 +20067,36 @@ void main() {
     });
 
     unittest.test('method--update', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).accounts;
-      var arg_request = buildAccount();
-      var arg_merchantId = 'foo';
-      var arg_accountId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).accounts;
+      final arg_request = buildAccount();
+      final arg_merchantId = 'foo';
+      final arg_accountId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Account.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkAccount(obj as api.Account);
+        checkAccount(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20384,14 +20104,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccount());
+        final resp = convert.json.encode(buildAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.update(
@@ -20401,37 +20121,36 @@ void main() {
     });
 
     unittest.test('method--updatelabels', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).accounts;
-      var arg_request = buildAccountsUpdateLabelsRequest();
-      var arg_merchantId = 'foo';
-      var arg_accountId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).accounts;
+      final arg_request = buildAccountsUpdateLabelsRequest();
+      final arg_merchantId = 'foo';
+      final arg_accountId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AccountsUpdateLabelsRequest.fromJson(
+        final obj = api.AccountsUpdateLabelsRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkAccountsUpdateLabelsRequest(
-            obj as api.AccountsUpdateLabelsRequest);
+        checkAccountsUpdateLabelsRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20439,14 +20158,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccountsUpdateLabelsResponse());
+        final resp = convert.json.encode(buildAccountsUpdateLabelsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.updatelabels(
@@ -20459,33 +20178,33 @@ void main() {
 
   unittest.group('resource-AccountsCredentialsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).accounts.credentials;
-      var arg_request = buildAccountCredentials();
-      var arg_accountId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).accounts.credentials;
+      final arg_request = buildAccountCredentials();
+      final arg_accountId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AccountCredentials.fromJson(
+        final obj = api.AccountCredentials.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkAccountCredentials(obj as api.AccountCredentials);
+        checkAccountCredentials(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("content/v2.1/"),
+          unittest.equals('content/v2.1/'),
         );
         pathOffset += 13;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("accounts/"),
+          unittest.equals('accounts/'),
         );
         pathOffset += 9;
         index = path.indexOf('/credentials', pathOffset);
@@ -20499,19 +20218,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 12),
-          unittest.equals("/credentials"),
+          unittest.equals('/credentials'),
         );
         pathOffset += 12;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20519,14 +20238,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccountCredentials());
+        final resp = convert.json.encode(buildAccountCredentials());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -20537,33 +20256,33 @@ void main() {
 
   unittest.group('resource-AccountsLabelsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).accounts.labels;
-      var arg_request = buildAccountLabel();
-      var arg_accountId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).accounts.labels;
+      final arg_request = buildAccountLabel();
+      final arg_accountId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AccountLabel.fromJson(
+        final obj = api.AccountLabel.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkAccountLabel(obj as api.AccountLabel);
+        checkAccountLabel(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("content/v2.1/"),
+          unittest.equals('content/v2.1/'),
         );
         pathOffset += 13;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("accounts/"),
+          unittest.equals('accounts/'),
         );
         pathOffset += 9;
         index = path.indexOf('/labels', pathOffset);
@@ -20577,19 +20296,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 7),
-          unittest.equals("/labels"),
+          unittest.equals('/labels'),
         );
         pathOffset += 7;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20597,14 +20316,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccountLabel());
+        final resp = convert.json.encode(buildAccountLabel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -20613,29 +20332,29 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).accounts.labels;
-      var arg_accountId = 'foo';
-      var arg_labelId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).accounts.labels;
+      final arg_accountId = 'foo';
+      final arg_labelId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("content/v2.1/"),
+          unittest.equals('content/v2.1/'),
         );
         pathOffset += 13;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("accounts/"),
+          unittest.equals('accounts/'),
         );
         pathOffset += 9;
         index = path.indexOf('/labels/', pathOffset);
@@ -20649,7 +20368,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("/labels/"),
+          unittest.equals('/labels/'),
         );
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -20659,15 +20378,15 @@ void main() {
           unittest.equals('$arg_labelId'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20675,44 +20394,44 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_accountId, arg_labelId, $fields: arg_$fields);
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).accounts.labels;
-      var arg_accountId = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).accounts.labels;
+      final arg_accountId = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("content/v2.1/"),
+          unittest.equals('content/v2.1/'),
         );
         pathOffset += 13;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("accounts/"),
+          unittest.equals('accounts/'),
         );
         pathOffset += 9;
         index = path.indexOf('/labels', pathOffset);
@@ -20726,19 +20445,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 7),
-          unittest.equals("/labels"),
+          unittest.equals('/labels'),
         );
         pathOffset += 7;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20746,22 +20465,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListAccountLabelsResponse());
+        final resp = convert.json.encode(buildListAccountLabelsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_accountId,
@@ -20772,34 +20491,34 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).accounts.labels;
-      var arg_request = buildAccountLabel();
-      var arg_accountId = 'foo';
-      var arg_labelId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).accounts.labels;
+      final arg_request = buildAccountLabel();
+      final arg_accountId = 'foo';
+      final arg_labelId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AccountLabel.fromJson(
+        final obj = api.AccountLabel.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkAccountLabel(obj as api.AccountLabel);
+        checkAccountLabel(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("content/v2.1/"),
+          unittest.equals('content/v2.1/'),
         );
         pathOffset += 13;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("accounts/"),
+          unittest.equals('accounts/'),
         );
         pathOffset += 9;
         index = path.indexOf('/labels/', pathOffset);
@@ -20813,7 +20532,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 8),
-          unittest.equals("/labels/"),
+          unittest.equals('/labels/'),
         );
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -20823,15 +20542,15 @@ void main() {
           unittest.equals('$arg_labelId'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20839,14 +20558,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccountLabel());
+        final resp = convert.json.encode(buildAccountLabel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_accountId, arg_labelId,
@@ -20857,33 +20576,33 @@ void main() {
 
   unittest.group('resource-AccountsReturncarrierResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).accounts.returncarrier;
-      var arg_request = buildAccountReturnCarrier();
-      var arg_accountId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).accounts.returncarrier;
+      final arg_request = buildAccountReturnCarrier();
+      final arg_accountId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AccountReturnCarrier.fromJson(
+        final obj = api.AccountReturnCarrier.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkAccountReturnCarrier(obj as api.AccountReturnCarrier);
+        checkAccountReturnCarrier(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("content/v2.1/"),
+          unittest.equals('content/v2.1/'),
         );
         pathOffset += 13;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("accounts/"),
+          unittest.equals('accounts/'),
         );
         pathOffset += 9;
         index = path.indexOf('/returncarrier', pathOffset);
@@ -20897,19 +20616,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 14),
-          unittest.equals("/returncarrier"),
+          unittest.equals('/returncarrier'),
         );
         pathOffset += 14;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20917,14 +20636,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccountReturnCarrier());
+        final resp = convert.json.encode(buildAccountReturnCarrier());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -20933,29 +20652,29 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).accounts.returncarrier;
-      var arg_accountId = 'foo';
-      var arg_carrierAccountId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).accounts.returncarrier;
+      final arg_accountId = 'foo';
+      final arg_carrierAccountId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("content/v2.1/"),
+          unittest.equals('content/v2.1/'),
         );
         pathOffset += 13;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("accounts/"),
+          unittest.equals('accounts/'),
         );
         pathOffset += 9;
         index = path.indexOf('/returncarrier/', pathOffset);
@@ -20969,7 +20688,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("/returncarrier/"),
+          unittest.equals('/returncarrier/'),
         );
         pathOffset += 15;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -20979,15 +20698,15 @@ void main() {
           unittest.equals('$arg_carrierAccountId'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -20995,14 +20714,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_accountId, arg_carrierAccountId,
@@ -21010,28 +20729,28 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).accounts.returncarrier;
-      var arg_accountId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).accounts.returncarrier;
+      final arg_accountId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("content/v2.1/"),
+          unittest.equals('content/v2.1/'),
         );
         pathOffset += 13;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("accounts/"),
+          unittest.equals('accounts/'),
         );
         pathOffset += 9;
         index = path.indexOf('/returncarrier', pathOffset);
@@ -21045,19 +20764,19 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 14),
-          unittest.equals("/returncarrier"),
+          unittest.equals('/returncarrier'),
         );
         pathOffset += 14;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21065,14 +20784,15 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListAccountReturnCarrierResponse());
+        final resp =
+            convert.json.encode(buildListAccountReturnCarrierResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_accountId, $fields: arg_$fields);
@@ -21081,34 +20801,34 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).accounts.returncarrier;
-      var arg_request = buildAccountReturnCarrier();
-      var arg_accountId = 'foo';
-      var arg_carrierAccountId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).accounts.returncarrier;
+      final arg_request = buildAccountReturnCarrier();
+      final arg_accountId = 'foo';
+      final arg_carrierAccountId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AccountReturnCarrier.fromJson(
+        final obj = api.AccountReturnCarrier.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkAccountReturnCarrier(obj as api.AccountReturnCarrier);
+        checkAccountReturnCarrier(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("content/v2.1/"),
+          unittest.equals('content/v2.1/'),
         );
         pathOffset += 13;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("accounts/"),
+          unittest.equals('accounts/'),
         );
         pathOffset += 9;
         index = path.indexOf('/returncarrier/', pathOffset);
@@ -21122,7 +20842,7 @@ void main() {
         );
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("/returncarrier/"),
+          unittest.equals('/returncarrier/'),
         );
         pathOffset += 15;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
@@ -21132,15 +20852,15 @@ void main() {
           unittest.equals('$arg_carrierAccountId'),
         );
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21148,14 +20868,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccountReturnCarrier());
+        final resp = convert.json.encode(buildAccountReturnCarrier());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(
@@ -21167,45 +20887,44 @@ void main() {
 
   unittest.group('resource-AccountstatusesResource', () {
     unittest.test('method--custombatch', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).accountstatuses;
-      var arg_request = buildAccountstatusesCustomBatchRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).accountstatuses;
+      final arg_request = buildAccountstatusesCustomBatchRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AccountstatusesCustomBatchRequest.fromJson(
+        final obj = api.AccountstatusesCustomBatchRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkAccountstatusesCustomBatchRequest(
-            obj as api.AccountstatusesCustomBatchRequest);
+        checkAccountstatusesCustomBatchRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("content/v2.1/"),
+          unittest.equals('content/v2.1/'),
         );
         pathOffset += 13;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 21),
-          unittest.equals("accountstatuses/batch"),
+          unittest.equals('accountstatuses/batch'),
         );
         pathOffset += 21;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21213,14 +20932,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildAccountstatusesCustomBatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -21230,32 +20949,32 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).accountstatuses;
-      var arg_merchantId = 'foo';
-      var arg_accountId = 'foo';
-      var arg_destinations = buildUnnamed5225();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).accountstatuses;
+      final arg_merchantId = 'foo';
+      final arg_accountId = 'foo';
+      final arg_destinations = buildUnnamed5225();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21263,18 +20982,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["destinations"]!,
+          queryMap['destinations']!,
           unittest.equals(arg_destinations),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccountStatus());
+        final resp = convert.json.encode(buildAccountStatus());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_merchantId, arg_accountId,
@@ -21283,33 +21002,33 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).accountstatuses;
-      var arg_merchantId = 'foo';
-      var arg_destinations = buildUnnamed5226();
-      var arg_maxResults = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).accountstatuses;
+      final arg_merchantId = 'foo';
+      final arg_destinations = buildUnnamed5226();
+      final arg_maxResults = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21317,26 +21036,26 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["destinations"]!,
+          queryMap['destinations']!,
           unittest.equals(arg_destinations),
         );
         unittest.expect(
-          core.int.parse(queryMap["maxResults"]!.first),
+          core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccountstatusesListResponse());
+        final resp = convert.json.encode(buildAccountstatusesListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_merchantId,
@@ -21351,45 +21070,44 @@ void main() {
 
   unittest.group('resource-AccounttaxResource', () {
     unittest.test('method--custombatch', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).accounttax;
-      var arg_request = buildAccounttaxCustomBatchRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).accounttax;
+      final arg_request = buildAccounttaxCustomBatchRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AccounttaxCustomBatchRequest.fromJson(
+        final obj = api.AccounttaxCustomBatchRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkAccounttaxCustomBatchRequest(
-            obj as api.AccounttaxCustomBatchRequest);
+        checkAccounttaxCustomBatchRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("content/v2.1/"),
+          unittest.equals('content/v2.1/'),
         );
         pathOffset += 13;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 16),
-          unittest.equals("accounttax/batch"),
+          unittest.equals('accounttax/batch'),
         );
         pathOffset += 16;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21397,14 +21115,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccounttaxCustomBatchResponse());
+        final resp = convert.json.encode(buildAccounttaxCustomBatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.custombatch(arg_request, $fields: arg_$fields);
@@ -21413,31 +21131,31 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).accounttax;
-      var arg_merchantId = 'foo';
-      var arg_accountId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).accounttax;
+      final arg_merchantId = 'foo';
+      final arg_accountId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21445,14 +21163,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccountTax());
+        final resp = convert.json.encode(buildAccountTax());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -21461,32 +21179,32 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).accounttax;
-      var arg_merchantId = 'foo';
-      var arg_maxResults = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).accounttax;
+      final arg_merchantId = 'foo';
+      final arg_maxResults = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21494,22 +21212,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["maxResults"]!.first),
+          core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccounttaxListResponse());
+        final resp = convert.json.encode(buildAccounttaxListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_merchantId,
@@ -21520,36 +21238,36 @@ void main() {
     });
 
     unittest.test('method--update', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).accounttax;
-      var arg_request = buildAccountTax();
-      var arg_merchantId = 'foo';
-      var arg_accountId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).accounttax;
+      final arg_request = buildAccountTax();
+      final arg_merchantId = 'foo';
+      final arg_accountId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AccountTax.fromJson(
+        final obj = api.AccountTax.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkAccountTax(obj as api.AccountTax);
+        checkAccountTax(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21557,14 +21275,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildAccountTax());
+        final resp = convert.json.encode(buildAccountTax());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.update(
@@ -21576,37 +21294,36 @@ void main() {
 
   unittest.group('resource-BuyongoogleprogramsResource', () {
     unittest.test('method--activate', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).buyongoogleprograms;
-      var arg_request = buildActivateBuyOnGoogleProgramRequest();
-      var arg_merchantId = 'foo';
-      var arg_regionCode = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).buyongoogleprograms;
+      final arg_request = buildActivateBuyOnGoogleProgramRequest();
+      final arg_merchantId = 'foo';
+      final arg_regionCode = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ActivateBuyOnGoogleProgramRequest.fromJson(
+        final obj = api.ActivateBuyOnGoogleProgramRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkActivateBuyOnGoogleProgramRequest(
-            obj as api.ActivateBuyOnGoogleProgramRequest);
+        checkActivateBuyOnGoogleProgramRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21614,14 +21331,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.activate(arg_request, arg_merchantId, arg_regionCode,
@@ -21629,31 +21346,31 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).buyongoogleprograms;
-      var arg_merchantId = 'foo';
-      var arg_regionCode = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).buyongoogleprograms;
+      final arg_merchantId = 'foo';
+      final arg_regionCode = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21661,14 +21378,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildBuyOnGoogleProgramStatus());
+        final resp = convert.json.encode(buildBuyOnGoogleProgramStatus());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -21677,37 +21394,36 @@ void main() {
     });
 
     unittest.test('method--onboard', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).buyongoogleprograms;
-      var arg_request = buildOnboardBuyOnGoogleProgramRequest();
-      var arg_merchantId = 'foo';
-      var arg_regionCode = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).buyongoogleprograms;
+      final arg_request = buildOnboardBuyOnGoogleProgramRequest();
+      final arg_merchantId = 'foo';
+      final arg_regionCode = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.OnboardBuyOnGoogleProgramRequest.fromJson(
+        final obj = api.OnboardBuyOnGoogleProgramRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkOnboardBuyOnGoogleProgramRequest(
-            obj as api.OnboardBuyOnGoogleProgramRequest);
+        checkOnboardBuyOnGoogleProgramRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21715,14 +21431,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.onboard(arg_request, arg_merchantId, arg_regionCode,
@@ -21730,37 +21446,36 @@ void main() {
     });
 
     unittest.test('method--pause', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).buyongoogleprograms;
-      var arg_request = buildPauseBuyOnGoogleProgramRequest();
-      var arg_merchantId = 'foo';
-      var arg_regionCode = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).buyongoogleprograms;
+      final arg_request = buildPauseBuyOnGoogleProgramRequest();
+      final arg_merchantId = 'foo';
+      final arg_regionCode = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.PauseBuyOnGoogleProgramRequest.fromJson(
+        final obj = api.PauseBuyOnGoogleProgramRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkPauseBuyOnGoogleProgramRequest(
-            obj as api.PauseBuyOnGoogleProgramRequest);
+        checkPauseBuyOnGoogleProgramRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21768,14 +21483,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.pause(arg_request, arg_merchantId, arg_regionCode,
@@ -21783,37 +21498,36 @@ void main() {
     });
 
     unittest.test('method--requestreview', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).buyongoogleprograms;
-      var arg_request = buildRequestReviewBuyOnGoogleProgramRequest();
-      var arg_merchantId = 'foo';
-      var arg_regionCode = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).buyongoogleprograms;
+      final arg_request = buildRequestReviewBuyOnGoogleProgramRequest();
+      final arg_merchantId = 'foo';
+      final arg_regionCode = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.RequestReviewBuyOnGoogleProgramRequest.fromJson(
+        final obj = api.RequestReviewBuyOnGoogleProgramRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkRequestReviewBuyOnGoogleProgramRequest(
-            obj as api.RequestReviewBuyOnGoogleProgramRequest);
+        checkRequestReviewBuyOnGoogleProgramRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21821,14 +21535,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.requestreview(arg_request, arg_merchantId, arg_regionCode,
@@ -21838,35 +21552,35 @@ void main() {
 
   unittest.group('resource-CollectionsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).collections;
-      var arg_request = buildCollection();
-      var arg_merchantId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).collections;
+      final arg_request = buildCollection();
+      final arg_merchantId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Collection.fromJson(
+        final obj = api.Collection.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkCollection(obj as api.Collection);
+        checkCollection(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21874,14 +21588,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildCollection());
+        final resp = convert.json.encode(buildCollection());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -21890,31 +21604,31 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).collections;
-      var arg_merchantId = 'foo';
-      var arg_collectionId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).collections;
+      final arg_merchantId = 'foo';
+      final arg_collectionId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21922,45 +21636,45 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_merchantId, arg_collectionId, $fields: arg_$fields);
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).collections;
-      var arg_merchantId = 'foo';
-      var arg_collectionId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).collections;
+      final arg_merchantId = 'foo';
+      final arg_collectionId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -21968,14 +21682,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildCollection());
+        final resp = convert.json.encode(buildCollection());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -21984,32 +21698,32 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).collections;
-      var arg_merchantId = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).collections;
+      final arg_merchantId = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22017,22 +21731,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListCollectionsResponse());
+        final resp = convert.json.encode(buildListCollectionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_merchantId,
@@ -22045,31 +21759,31 @@ void main() {
 
   unittest.group('resource-CollectionstatusesResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).collectionstatuses;
-      var arg_merchantId = 'foo';
-      var arg_collectionId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).collectionstatuses;
+      final arg_merchantId = 'foo';
+      final arg_collectionId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22077,14 +21791,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildCollectionStatus());
+        final resp = convert.json.encode(buildCollectionStatus());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -22093,32 +21807,32 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).collectionstatuses;
-      var arg_merchantId = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).collectionstatuses;
+      final arg_merchantId = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22126,22 +21840,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListCollectionStatusesResponse());
+        final resp = convert.json.encode(buildListCollectionStatusesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_merchantId,
@@ -22155,31 +21869,31 @@ void main() {
 
   unittest.group('resource-CssesResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).csses;
-      var arg_cssGroupId = 'foo';
-      var arg_cssDomainId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).csses;
+      final arg_cssGroupId = 'foo';
+      final arg_cssDomainId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22187,14 +21901,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildCss());
+        final resp = convert.json.encode(buildCss());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -22203,32 +21917,32 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).csses;
-      var arg_cssGroupId = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).csses;
+      final arg_cssGroupId = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22236,22 +21950,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListCssesResponse());
+        final resp = convert.json.encode(buildListCssesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_cssGroupId,
@@ -22262,36 +21976,36 @@ void main() {
     });
 
     unittest.test('method--updatelabels', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).csses;
-      var arg_request = buildLabelIds();
-      var arg_cssGroupId = 'foo';
-      var arg_cssDomainId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).csses;
+      final arg_request = buildLabelIds();
+      final arg_cssGroupId = 'foo';
+      final arg_cssDomainId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.LabelIds.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkLabelIds(obj as api.LabelIds);
+        checkLabelIds(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22299,14 +22013,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildCss());
+        final resp = convert.json.encode(buildCss());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.updatelabels(
@@ -22318,45 +22032,44 @@ void main() {
 
   unittest.group('resource-DatafeedsResource', () {
     unittest.test('method--custombatch', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).datafeeds;
-      var arg_request = buildDatafeedsCustomBatchRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).datafeeds;
+      final arg_request = buildDatafeedsCustomBatchRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DatafeedsCustomBatchRequest.fromJson(
+        final obj = api.DatafeedsCustomBatchRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkDatafeedsCustomBatchRequest(
-            obj as api.DatafeedsCustomBatchRequest);
+        checkDatafeedsCustomBatchRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("content/v2.1/"),
+          unittest.equals('content/v2.1/'),
         );
         pathOffset += 13;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 15),
-          unittest.equals("datafeeds/batch"),
+          unittest.equals('datafeeds/batch'),
         );
         pathOffset += 15;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22364,14 +22077,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildDatafeedsCustomBatchResponse());
+        final resp = convert.json.encode(buildDatafeedsCustomBatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.custombatch(arg_request, $fields: arg_$fields);
@@ -22380,31 +22093,31 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).datafeeds;
-      var arg_merchantId = 'foo';
-      var arg_datafeedId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).datafeeds;
+      final arg_merchantId = 'foo';
+      final arg_datafeedId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22412,45 +22125,45 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_merchantId, arg_datafeedId, $fields: arg_$fields);
     });
 
     unittest.test('method--fetchnow', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).datafeeds;
-      var arg_merchantId = 'foo';
-      var arg_datafeedId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).datafeeds;
+      final arg_merchantId = 'foo';
+      final arg_datafeedId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22458,14 +22171,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildDatafeedsFetchNowResponse());
+        final resp = convert.json.encode(buildDatafeedsFetchNowResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.fetchnow(arg_merchantId, arg_datafeedId,
@@ -22474,31 +22187,31 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).datafeeds;
-      var arg_merchantId = 'foo';
-      var arg_datafeedId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).datafeeds;
+      final arg_merchantId = 'foo';
+      final arg_datafeedId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22506,14 +22219,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildDatafeed());
+        final resp = convert.json.encode(buildDatafeed());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -22522,35 +22235,35 @@ void main() {
     });
 
     unittest.test('method--insert', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).datafeeds;
-      var arg_request = buildDatafeed();
-      var arg_merchantId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).datafeeds;
+      final arg_request = buildDatafeed();
+      final arg_merchantId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Datafeed.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkDatafeed(obj as api.Datafeed);
+        checkDatafeed(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22558,14 +22271,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildDatafeed());
+        final resp = convert.json.encode(buildDatafeed());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -22574,32 +22287,32 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).datafeeds;
-      var arg_merchantId = 'foo';
-      var arg_maxResults = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).datafeeds;
+      final arg_merchantId = 'foo';
+      final arg_maxResults = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22607,22 +22320,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["maxResults"]!.first),
+          core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildDatafeedsListResponse());
+        final resp = convert.json.encode(buildDatafeedsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_merchantId,
@@ -22633,36 +22346,36 @@ void main() {
     });
 
     unittest.test('method--update', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).datafeeds;
-      var arg_request = buildDatafeed();
-      var arg_merchantId = 'foo';
-      var arg_datafeedId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).datafeeds;
+      final arg_request = buildDatafeed();
+      final arg_merchantId = 'foo';
+      final arg_datafeedId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Datafeed.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkDatafeed(obj as api.Datafeed);
+        checkDatafeed(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22670,14 +22383,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildDatafeed());
+        final resp = convert.json.encode(buildDatafeed());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.update(
@@ -22689,45 +22402,44 @@ void main() {
 
   unittest.group('resource-DatafeedstatusesResource', () {
     unittest.test('method--custombatch', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).datafeedstatuses;
-      var arg_request = buildDatafeedstatusesCustomBatchRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).datafeedstatuses;
+      final arg_request = buildDatafeedstatusesCustomBatchRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DatafeedstatusesCustomBatchRequest.fromJson(
+        final obj = api.DatafeedstatusesCustomBatchRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkDatafeedstatusesCustomBatchRequest(
-            obj as api.DatafeedstatusesCustomBatchRequest);
+        checkDatafeedstatusesCustomBatchRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("content/v2.1/"),
+          unittest.equals('content/v2.1/'),
         );
         pathOffset += 13;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 22),
-          unittest.equals("datafeedstatuses/batch"),
+          unittest.equals('datafeedstatuses/batch'),
         );
         pathOffset += 22;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22735,14 +22447,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildDatafeedstatusesCustomBatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -22752,33 +22464,33 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).datafeedstatuses;
-      var arg_merchantId = 'foo';
-      var arg_datafeedId = 'foo';
-      var arg_country = 'foo';
-      var arg_language = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).datafeedstatuses;
+      final arg_merchantId = 'foo';
+      final arg_datafeedId = 'foo';
+      final arg_country = 'foo';
+      final arg_language = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22786,22 +22498,22 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["country"]!.first,
+          queryMap['country']!.first,
           unittest.equals(arg_country),
         );
         unittest.expect(
-          queryMap["language"]!.first,
+          queryMap['language']!.first,
           unittest.equals(arg_language),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildDatafeedStatus());
+        final resp = convert.json.encode(buildDatafeedStatus());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_merchantId, arg_datafeedId,
@@ -22810,32 +22522,32 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).datafeedstatuses;
-      var arg_merchantId = 'foo';
-      var arg_maxResults = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).datafeedstatuses;
+      final arg_merchantId = 'foo';
+      final arg_maxResults = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22843,22 +22555,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["maxResults"]!.first),
+          core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildDatafeedstatusesListResponse());
+        final resp = convert.json.encode(buildDatafeedstatusesListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_merchantId,
@@ -22872,45 +22584,44 @@ void main() {
 
   unittest.group('resource-LiasettingsResource', () {
     unittest.test('method--custombatch', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).liasettings;
-      var arg_request = buildLiasettingsCustomBatchRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).liasettings;
+      final arg_request = buildLiasettingsCustomBatchRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LiasettingsCustomBatchRequest.fromJson(
+        final obj = api.LiasettingsCustomBatchRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkLiasettingsCustomBatchRequest(
-            obj as api.LiasettingsCustomBatchRequest);
+        checkLiasettingsCustomBatchRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("content/v2.1/"),
+          unittest.equals('content/v2.1/'),
         );
         pathOffset += 13;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 17),
-          unittest.equals("liasettings/batch"),
+          unittest.equals('liasettings/batch'),
         );
         pathOffset += 17;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22918,14 +22629,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildLiasettingsCustomBatchResponse());
+        final resp = convert.json.encode(buildLiasettingsCustomBatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.custombatch(arg_request, $fields: arg_$fields);
@@ -22934,31 +22645,31 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).liasettings;
-      var arg_merchantId = 'foo';
-      var arg_accountId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).liasettings;
+      final arg_merchantId = 'foo';
+      final arg_accountId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -22966,14 +22677,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildLiaSettings());
+        final resp = convert.json.encode(buildLiaSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -22982,31 +22693,31 @@ void main() {
     });
 
     unittest.test('method--getaccessiblegmbaccounts', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).liasettings;
-      var arg_merchantId = 'foo';
-      var arg_accountId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).liasettings;
+      final arg_merchantId = 'foo';
+      final arg_accountId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23014,14 +22725,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildLiasettingsGetAccessibleGmbAccountsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -23033,32 +22744,32 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).liasettings;
-      var arg_merchantId = 'foo';
-      var arg_maxResults = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).liasettings;
+      final arg_merchantId = 'foo';
+      final arg_maxResults = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23066,22 +22777,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["maxResults"]!.first),
+          core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildLiasettingsListResponse());
+        final resp = convert.json.encode(buildLiasettingsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_merchantId,
@@ -23092,39 +22803,39 @@ void main() {
     });
 
     unittest.test('method--listposdataproviders', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).liasettings;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).liasettings;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("content/v2.1/"),
+          unittest.equals('content/v2.1/'),
         );
         pathOffset += 13;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 28),
-          unittest.equals("liasettings/posdataproviders"),
+          unittest.equals('liasettings/posdataproviders'),
         );
         pathOffset += 28;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23132,14 +22843,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildLiasettingsListPosDataProvidersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -23149,32 +22860,32 @@ void main() {
     });
 
     unittest.test('method--requestgmbaccess', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).liasettings;
-      var arg_merchantId = 'foo';
-      var arg_accountId = 'foo';
-      var arg_gmbEmail = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).liasettings;
+      final arg_merchantId = 'foo';
+      final arg_accountId = 'foo';
+      final arg_gmbEmail = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23182,18 +22893,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["gmbEmail"]!.first,
+          queryMap['gmbEmail']!.first,
           unittest.equals(arg_gmbEmail),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildLiasettingsRequestGmbAccessResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -23205,32 +22916,32 @@ void main() {
     });
 
     unittest.test('method--requestinventoryverification', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).liasettings;
-      var arg_merchantId = 'foo';
-      var arg_accountId = 'foo';
-      var arg_country = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).liasettings;
+      final arg_merchantId = 'foo';
+      final arg_accountId = 'foo';
+      final arg_country = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23238,14 +22949,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildLiasettingsRequestInventoryVerificationResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -23257,35 +22968,35 @@ void main() {
     });
 
     unittest.test('method--setinventoryverificationcontact', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).liasettings;
-      var arg_merchantId = 'foo';
-      var arg_accountId = 'foo';
-      var arg_country = 'foo';
-      var arg_language = 'foo';
-      var arg_contactName = 'foo';
-      var arg_contactEmail = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).liasettings;
+      final arg_merchantId = 'foo';
+      final arg_accountId = 'foo';
+      final arg_country = 'foo';
+      final arg_language = 'foo';
+      final arg_contactName = 'foo';
+      final arg_contactEmail = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23293,30 +23004,30 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["country"]!.first,
+          queryMap['country']!.first,
           unittest.equals(arg_country),
         );
         unittest.expect(
-          queryMap["language"]!.first,
+          queryMap['language']!.first,
           unittest.equals(arg_language),
         );
         unittest.expect(
-          queryMap["contactName"]!.first,
+          queryMap['contactName']!.first,
           unittest.equals(arg_contactName),
         );
         unittest.expect(
-          queryMap["contactEmail"]!.first,
+          queryMap['contactEmail']!.first,
           unittest.equals(arg_contactEmail),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildLiasettingsSetInventoryVerificationContactResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -23333,34 +23044,34 @@ void main() {
     });
 
     unittest.test('method--setposdataprovider', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).liasettings;
-      var arg_merchantId = 'foo';
-      var arg_accountId = 'foo';
-      var arg_country = 'foo';
-      var arg_posDataProviderId = 'foo';
-      var arg_posExternalAccountId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).liasettings;
+      final arg_merchantId = 'foo';
+      final arg_accountId = 'foo';
+      final arg_country = 'foo';
+      final arg_posDataProviderId = 'foo';
+      final arg_posExternalAccountId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23368,26 +23079,26 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["country"]!.first,
+          queryMap['country']!.first,
           unittest.equals(arg_country),
         );
         unittest.expect(
-          queryMap["posDataProviderId"]!.first,
+          queryMap['posDataProviderId']!.first,
           unittest.equals(arg_posDataProviderId),
         );
         unittest.expect(
-          queryMap["posExternalAccountId"]!.first,
+          queryMap['posExternalAccountId']!.first,
           unittest.equals(arg_posExternalAccountId),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildLiasettingsSetPosDataProviderResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -23401,36 +23112,36 @@ void main() {
     });
 
     unittest.test('method--update', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).liasettings;
-      var arg_request = buildLiaSettings();
-      var arg_merchantId = 'foo';
-      var arg_accountId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).liasettings;
+      final arg_request = buildLiaSettings();
+      final arg_merchantId = 'foo';
+      final arg_accountId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LiaSettings.fromJson(
+        final obj = api.LiaSettings.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkLiaSettings(obj as api.LiaSettings);
+        checkLiaSettings(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23438,14 +23149,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildLiaSettings());
+        final resp = convert.json.encode(buildLiaSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.update(
@@ -23457,45 +23168,44 @@ void main() {
 
   unittest.group('resource-LocalinventoryResource', () {
     unittest.test('method--custombatch', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).localinventory;
-      var arg_request = buildLocalinventoryCustomBatchRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).localinventory;
+      final arg_request = buildLocalinventoryCustomBatchRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LocalinventoryCustomBatchRequest.fromJson(
+        final obj = api.LocalinventoryCustomBatchRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkLocalinventoryCustomBatchRequest(
-            obj as api.LocalinventoryCustomBatchRequest);
+        checkLocalinventoryCustomBatchRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("content/v2.1/"),
+          unittest.equals('content/v2.1/'),
         );
         pathOffset += 13;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 20),
-          unittest.equals("localinventory/batch"),
+          unittest.equals('localinventory/batch'),
         );
         pathOffset += 20;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23503,14 +23213,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildLocalinventoryCustomBatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -23520,36 +23230,36 @@ void main() {
     });
 
     unittest.test('method--insert', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).localinventory;
-      var arg_request = buildLocalInventory();
-      var arg_merchantId = 'foo';
-      var arg_productId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).localinventory;
+      final arg_request = buildLocalInventory();
+      final arg_merchantId = 'foo';
+      final arg_productId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LocalInventory.fromJson(
+        final obj = api.LocalInventory.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkLocalInventory(obj as api.LocalInventory);
+        checkLocalInventory(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23557,14 +23267,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildLocalInventory());
+        final resp = convert.json.encode(buildLocalInventory());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.insert(
@@ -23576,37 +23286,36 @@ void main() {
 
   unittest.group('resource-OrderinvoicesResource', () {
     unittest.test('method--createchargeinvoice', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orderinvoices;
-      var arg_request = buildOrderinvoicesCreateChargeInvoiceRequest();
-      var arg_merchantId = 'foo';
-      var arg_orderId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orderinvoices;
+      final arg_request = buildOrderinvoicesCreateChargeInvoiceRequest();
+      final arg_merchantId = 'foo';
+      final arg_orderId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.OrderinvoicesCreateChargeInvoiceRequest.fromJson(
+        final obj = api.OrderinvoicesCreateChargeInvoiceRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkOrderinvoicesCreateChargeInvoiceRequest(
-            obj as api.OrderinvoicesCreateChargeInvoiceRequest);
+        checkOrderinvoicesCreateChargeInvoiceRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23614,14 +23323,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildOrderinvoicesCreateChargeInvoiceResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -23633,37 +23342,36 @@ void main() {
     });
 
     unittest.test('method--createrefundinvoice', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orderinvoices;
-      var arg_request = buildOrderinvoicesCreateRefundInvoiceRequest();
-      var arg_merchantId = 'foo';
-      var arg_orderId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orderinvoices;
+      final arg_request = buildOrderinvoicesCreateRefundInvoiceRequest();
+      final arg_merchantId = 'foo';
+      final arg_orderId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.OrderinvoicesCreateRefundInvoiceRequest.fromJson(
+        final obj = api.OrderinvoicesCreateRefundInvoiceRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkOrderinvoicesCreateRefundInvoiceRequest(
-            obj as api.OrderinvoicesCreateRefundInvoiceRequest);
+        checkOrderinvoicesCreateRefundInvoiceRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23671,14 +23379,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildOrderinvoicesCreateRefundInvoiceResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -23692,34 +23400,34 @@ void main() {
 
   unittest.group('resource-OrderreportsResource', () {
     unittest.test('method--listdisbursements', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orderreports;
-      var arg_merchantId = 'foo';
-      var arg_disbursementEndDate = 'foo';
-      var arg_disbursementStartDate = 'foo';
-      var arg_maxResults = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orderreports;
+      final arg_merchantId = 'foo';
+      final arg_disbursementEndDate = 'foo';
+      final arg_disbursementStartDate = 'foo';
+      final arg_maxResults = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23727,30 +23435,30 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["disbursementEndDate"]!.first,
+          queryMap['disbursementEndDate']!.first,
           unittest.equals(arg_disbursementEndDate),
         );
         unittest.expect(
-          queryMap["disbursementStartDate"]!.first,
+          queryMap['disbursementStartDate']!.first,
           unittest.equals(arg_disbursementStartDate),
         );
         unittest.expect(
-          core.int.parse(queryMap["maxResults"]!.first),
+          core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildOrderreportsListDisbursementsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -23765,35 +23473,35 @@ void main() {
     });
 
     unittest.test('method--listtransactions', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orderreports;
-      var arg_merchantId = 'foo';
-      var arg_disbursementId = 'foo';
-      var arg_maxResults = 42;
-      var arg_pageToken = 'foo';
-      var arg_transactionEndDate = 'foo';
-      var arg_transactionStartDate = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orderreports;
+      final arg_merchantId = 'foo';
+      final arg_disbursementId = 'foo';
+      final arg_maxResults = 42;
+      final arg_pageToken = 'foo';
+      final arg_transactionEndDate = 'foo';
+      final arg_transactionStartDate = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23801,30 +23509,30 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["maxResults"]!.first),
+          core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["transactionEndDate"]!.first,
+          queryMap['transactionEndDate']!.first,
           unittest.equals(arg_transactionEndDate),
         );
         unittest.expect(
-          queryMap["transactionStartDate"]!.first,
+          queryMap['transactionStartDate']!.first,
           unittest.equals(arg_transactionStartDate),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildOrderreportsListTransactionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -23842,37 +23550,36 @@ void main() {
 
   unittest.group('resource-OrderreturnsResource', () {
     unittest.test('method--acknowledge', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orderreturns;
-      var arg_request = buildOrderreturnsAcknowledgeRequest();
-      var arg_merchantId = 'foo';
-      var arg_returnId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orderreturns;
+      final arg_request = buildOrderreturnsAcknowledgeRequest();
+      final arg_merchantId = 'foo';
+      final arg_returnId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.OrderreturnsAcknowledgeRequest.fromJson(
+        final obj = api.OrderreturnsAcknowledgeRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkOrderreturnsAcknowledgeRequest(
-            obj as api.OrderreturnsAcknowledgeRequest);
+        checkOrderreturnsAcknowledgeRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23880,14 +23587,15 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOrderreturnsAcknowledgeResponse());
+        final resp =
+            convert.json.encode(buildOrderreturnsAcknowledgeResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.acknowledge(
@@ -23898,36 +23606,35 @@ void main() {
     });
 
     unittest.test('method--createorderreturn', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orderreturns;
-      var arg_request = buildOrderreturnsCreateOrderReturnRequest();
-      var arg_merchantId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orderreturns;
+      final arg_request = buildOrderreturnsCreateOrderReturnRequest();
+      final arg_merchantId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.OrderreturnsCreateOrderReturnRequest.fromJson(
+        final obj = api.OrderreturnsCreateOrderReturnRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkOrderreturnsCreateOrderReturnRequest(
-            obj as api.OrderreturnsCreateOrderReturnRequest);
+        checkOrderreturnsCreateOrderReturnRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23935,14 +23642,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildOrderreturnsCreateOrderReturnResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -23953,31 +23660,31 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orderreturns;
-      var arg_merchantId = 'foo';
-      var arg_returnId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orderreturns;
+      final arg_merchantId = 'foo';
+      final arg_returnId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -23985,14 +23692,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildMerchantOrderReturn());
+        final resp = convert.json.encode(buildMerchantOrderReturn());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -24001,41 +23708,41 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orderreturns;
-      var arg_merchantId = 'foo';
-      var arg_acknowledged = true;
-      var arg_createdEndDate = 'foo';
-      var arg_createdStartDate = 'foo';
-      var arg_googleOrderIds = buildUnnamed5227();
-      var arg_maxResults = 42;
-      var arg_orderBy = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_shipmentStates = buildUnnamed5228();
-      var arg_shipmentStatus = buildUnnamed5229();
-      var arg_shipmentTrackingNumbers = buildUnnamed5230();
-      var arg_shipmentTypes = buildUnnamed5231();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orderreturns;
+      final arg_merchantId = 'foo';
+      final arg_acknowledged = true;
+      final arg_createdEndDate = 'foo';
+      final arg_createdStartDate = 'foo';
+      final arg_googleOrderIds = buildUnnamed5227();
+      final arg_maxResults = 42;
+      final arg_orderBy = 'foo';
+      final arg_pageToken = 'foo';
+      final arg_shipmentStates = buildUnnamed5228();
+      final arg_shipmentStatus = buildUnnamed5229();
+      final arg_shipmentTrackingNumbers = buildUnnamed5230();
+      final arg_shipmentTypes = buildUnnamed5231();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -24043,58 +23750,58 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["acknowledged"]!.first,
-          unittest.equals("$arg_acknowledged"),
+          queryMap['acknowledged']!.first,
+          unittest.equals('$arg_acknowledged'),
         );
         unittest.expect(
-          queryMap["createdEndDate"]!.first,
+          queryMap['createdEndDate']!.first,
           unittest.equals(arg_createdEndDate),
         );
         unittest.expect(
-          queryMap["createdStartDate"]!.first,
+          queryMap['createdStartDate']!.first,
           unittest.equals(arg_createdStartDate),
         );
         unittest.expect(
-          queryMap["googleOrderIds"]!,
+          queryMap['googleOrderIds']!,
           unittest.equals(arg_googleOrderIds),
         );
         unittest.expect(
-          core.int.parse(queryMap["maxResults"]!.first),
+          core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
         unittest.expect(
-          queryMap["orderBy"]!.first,
+          queryMap['orderBy']!.first,
           unittest.equals(arg_orderBy),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["shipmentStates"]!,
+          queryMap['shipmentStates']!,
           unittest.equals(arg_shipmentStates),
         );
         unittest.expect(
-          queryMap["shipmentStatus"]!,
+          queryMap['shipmentStatus']!,
           unittest.equals(arg_shipmentStatus),
         );
         unittest.expect(
-          queryMap["shipmentTrackingNumbers"]!,
+          queryMap['shipmentTrackingNumbers']!,
           unittest.equals(arg_shipmentTrackingNumbers),
         );
         unittest.expect(
-          queryMap["shipmentTypes"]!,
+          queryMap['shipmentTypes']!,
           unittest.equals(arg_shipmentTypes),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOrderreturnsListResponse());
+        final resp = convert.json.encode(buildOrderreturnsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_merchantId,
@@ -24114,36 +23821,36 @@ void main() {
     });
 
     unittest.test('method--process', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orderreturns;
-      var arg_request = buildOrderreturnsProcessRequest();
-      var arg_merchantId = 'foo';
-      var arg_returnId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orderreturns;
+      final arg_request = buildOrderreturnsProcessRequest();
+      final arg_merchantId = 'foo';
+      final arg_returnId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.OrderreturnsProcessRequest.fromJson(
+        final obj = api.OrderreturnsProcessRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkOrderreturnsProcessRequest(obj as api.OrderreturnsProcessRequest);
+        checkOrderreturnsProcessRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -24151,14 +23858,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOrderreturnsProcessResponse());
+        final resp = convert.json.encode(buildOrderreturnsProcessResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.process(
@@ -24171,36 +23878,36 @@ void main() {
 
   unittest.group('resource-OrderreturnsLabelsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orderreturns.labels;
-      var arg_request = buildReturnShippingLabel();
-      var arg_merchantId = 'foo';
-      var arg_returnId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orderreturns.labels;
+      final arg_request = buildReturnShippingLabel();
+      final arg_merchantId = 'foo';
+      final arg_returnId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ReturnShippingLabel.fromJson(
+        final obj = api.ReturnShippingLabel.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkReturnShippingLabel(obj as api.ReturnShippingLabel);
+        checkReturnShippingLabel(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -24208,14 +23915,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildReturnShippingLabel());
+        final resp = convert.json.encode(buildReturnShippingLabel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(
@@ -24227,36 +23934,36 @@ void main() {
 
   unittest.group('resource-OrdersResource', () {
     unittest.test('method--acknowledge', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orders;
-      var arg_request = buildOrdersAcknowledgeRequest();
-      var arg_merchantId = 'foo';
-      var arg_orderId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orders;
+      final arg_request = buildOrdersAcknowledgeRequest();
+      final arg_merchantId = 'foo';
+      final arg_orderId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.OrdersAcknowledgeRequest.fromJson(
+        final obj = api.OrdersAcknowledgeRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkOrdersAcknowledgeRequest(obj as api.OrdersAcknowledgeRequest);
+        checkOrdersAcknowledgeRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -24264,14 +23971,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOrdersAcknowledgeResponse());
+        final resp = convert.json.encode(buildOrdersAcknowledgeResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.acknowledge(
@@ -24281,31 +23988,31 @@ void main() {
     });
 
     unittest.test('method--advancetestorder', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orders;
-      var arg_merchantId = 'foo';
-      var arg_orderId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orders;
+      final arg_merchantId = 'foo';
+      final arg_orderId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -24313,14 +24020,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOrdersAdvanceTestOrderResponse());
+        final resp = convert.json.encode(buildOrdersAdvanceTestOrderResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.advancetestorder(arg_merchantId, arg_orderId,
@@ -24330,36 +24037,36 @@ void main() {
     });
 
     unittest.test('method--cancel', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orders;
-      var arg_request = buildOrdersCancelRequest();
-      var arg_merchantId = 'foo';
-      var arg_orderId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orders;
+      final arg_request = buildOrdersCancelRequest();
+      final arg_merchantId = 'foo';
+      final arg_orderId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.OrdersCancelRequest.fromJson(
+        final obj = api.OrdersCancelRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkOrdersCancelRequest(obj as api.OrdersCancelRequest);
+        checkOrdersCancelRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -24367,14 +24074,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOrdersCancelResponse());
+        final resp = convert.json.encode(buildOrdersCancelResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.cancel(
@@ -24384,37 +24091,36 @@ void main() {
     });
 
     unittest.test('method--cancellineitem', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orders;
-      var arg_request = buildOrdersCancelLineItemRequest();
-      var arg_merchantId = 'foo';
-      var arg_orderId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orders;
+      final arg_request = buildOrdersCancelLineItemRequest();
+      final arg_merchantId = 'foo';
+      final arg_orderId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.OrdersCancelLineItemRequest.fromJson(
+        final obj = api.OrdersCancelLineItemRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkOrdersCancelLineItemRequest(
-            obj as api.OrdersCancelLineItemRequest);
+        checkOrdersCancelLineItemRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -24422,14 +24128,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOrdersCancelLineItemResponse());
+        final resp = convert.json.encode(buildOrdersCancelLineItemResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.cancellineitem(
@@ -24440,37 +24146,36 @@ void main() {
     });
 
     unittest.test('method--canceltestorderbycustomer', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orders;
-      var arg_request = buildOrdersCancelTestOrderByCustomerRequest();
-      var arg_merchantId = 'foo';
-      var arg_orderId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orders;
+      final arg_request = buildOrdersCancelTestOrderByCustomerRequest();
+      final arg_merchantId = 'foo';
+      final arg_orderId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.OrdersCancelTestOrderByCustomerRequest.fromJson(
+        final obj = api.OrdersCancelTestOrderByCustomerRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkOrdersCancelTestOrderByCustomerRequest(
-            obj as api.OrdersCancelTestOrderByCustomerRequest);
+        checkOrdersCancelTestOrderByCustomerRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -24478,14 +24183,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildOrdersCancelTestOrderByCustomerResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -24497,36 +24202,35 @@ void main() {
     });
 
     unittest.test('method--createtestorder', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orders;
-      var arg_request = buildOrdersCreateTestOrderRequest();
-      var arg_merchantId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orders;
+      final arg_request = buildOrdersCreateTestOrderRequest();
+      final arg_merchantId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.OrdersCreateTestOrderRequest.fromJson(
+        final obj = api.OrdersCreateTestOrderRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkOrdersCreateTestOrderRequest(
-            obj as api.OrdersCreateTestOrderRequest);
+        checkOrdersCreateTestOrderRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -24534,14 +24238,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOrdersCreateTestOrderResponse());
+        final resp = convert.json.encode(buildOrdersCreateTestOrderResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.createtestorder(arg_request, arg_merchantId,
@@ -24551,37 +24255,36 @@ void main() {
     });
 
     unittest.test('method--createtestreturn', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orders;
-      var arg_request = buildOrdersCreateTestReturnRequest();
-      var arg_merchantId = 'foo';
-      var arg_orderId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orders;
+      final arg_request = buildOrdersCreateTestReturnRequest();
+      final arg_merchantId = 'foo';
+      final arg_orderId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.OrdersCreateTestReturnRequest.fromJson(
+        final obj = api.OrdersCreateTestReturnRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkOrdersCreateTestReturnRequest(
-            obj as api.OrdersCreateTestReturnRequest);
+        checkOrdersCreateTestReturnRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -24589,14 +24292,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOrdersCreateTestReturnResponse());
+        final resp = convert.json.encode(buildOrdersCreateTestReturnResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.createtestreturn(
@@ -24607,31 +24310,31 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orders;
-      var arg_merchantId = 'foo';
-      var arg_orderId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orders;
+      final arg_merchantId = 'foo';
+      final arg_orderId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -24639,14 +24342,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOrder());
+        final resp = convert.json.encode(buildOrder());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -24655,31 +24358,31 @@ void main() {
     });
 
     unittest.test('method--getbymerchantorderid', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orders;
-      var arg_merchantId = 'foo';
-      var arg_merchantOrderId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orders;
+      final arg_merchantId = 'foo';
+      final arg_merchantOrderId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -24687,14 +24390,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildOrdersGetByMerchantOrderIdResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -24706,32 +24409,32 @@ void main() {
     });
 
     unittest.test('method--gettestordertemplate', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orders;
-      var arg_merchantId = 'foo';
-      var arg_templateName = 'foo';
-      var arg_country = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orders;
+      final arg_merchantId = 'foo';
+      final arg_templateName = 'foo';
+      final arg_country = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -24739,18 +24442,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["country"]!.first,
+          queryMap['country']!.first,
           unittest.equals(arg_country),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildOrdersGetTestOrderTemplateResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -24762,37 +24465,36 @@ void main() {
     });
 
     unittest.test('method--instorerefundlineitem', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orders;
-      var arg_request = buildOrdersInStoreRefundLineItemRequest();
-      var arg_merchantId = 'foo';
-      var arg_orderId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orders;
+      final arg_request = buildOrdersInStoreRefundLineItemRequest();
+      final arg_merchantId = 'foo';
+      final arg_orderId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.OrdersInStoreRefundLineItemRequest.fromJson(
+        final obj = api.OrdersInStoreRefundLineItemRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkOrdersInStoreRefundLineItemRequest(
-            obj as api.OrdersInStoreRefundLineItemRequest);
+        checkOrdersInStoreRefundLineItemRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -24800,14 +24502,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildOrdersInStoreRefundLineItemResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -24819,37 +24521,37 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orders;
-      var arg_merchantId = 'foo';
-      var arg_acknowledged = true;
-      var arg_maxResults = 42;
-      var arg_orderBy = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_placedDateEnd = 'foo';
-      var arg_placedDateStart = 'foo';
-      var arg_statuses = buildUnnamed5232();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orders;
+      final arg_merchantId = 'foo';
+      final arg_acknowledged = true;
+      final arg_maxResults = 42;
+      final arg_orderBy = 'foo';
+      final arg_pageToken = 'foo';
+      final arg_placedDateEnd = 'foo';
+      final arg_placedDateStart = 'foo';
+      final arg_statuses = buildUnnamed5232();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -24857,42 +24559,42 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["acknowledged"]!.first,
-          unittest.equals("$arg_acknowledged"),
+          queryMap['acknowledged']!.first,
+          unittest.equals('$arg_acknowledged'),
         );
         unittest.expect(
-          core.int.parse(queryMap["maxResults"]!.first),
+          core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
         unittest.expect(
-          queryMap["orderBy"]!.first,
+          queryMap['orderBy']!.first,
           unittest.equals(arg_orderBy),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["placedDateEnd"]!.first,
+          queryMap['placedDateEnd']!.first,
           unittest.equals(arg_placedDateEnd),
         );
         unittest.expect(
-          queryMap["placedDateStart"]!.first,
+          queryMap['placedDateStart']!.first,
           unittest.equals(arg_placedDateStart),
         );
         unittest.expect(
-          queryMap["statuses"]!,
+          queryMap['statuses']!,
           unittest.equals(arg_statuses),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOrdersListResponse());
+        final resp = convert.json.encode(buildOrdersListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_merchantId,
@@ -24908,36 +24610,36 @@ void main() {
     });
 
     unittest.test('method--refunditem', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orders;
-      var arg_request = buildOrdersRefundItemRequest();
-      var arg_merchantId = 'foo';
-      var arg_orderId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orders;
+      final arg_request = buildOrdersRefundItemRequest();
+      final arg_merchantId = 'foo';
+      final arg_orderId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.OrdersRefundItemRequest.fromJson(
+        final obj = api.OrdersRefundItemRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkOrdersRefundItemRequest(obj as api.OrdersRefundItemRequest);
+        checkOrdersRefundItemRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -24945,14 +24647,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOrdersRefundItemResponse());
+        final resp = convert.json.encode(buildOrdersRefundItemResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.refunditem(
@@ -24962,36 +24664,36 @@ void main() {
     });
 
     unittest.test('method--refundorder', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orders;
-      var arg_request = buildOrdersRefundOrderRequest();
-      var arg_merchantId = 'foo';
-      var arg_orderId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orders;
+      final arg_request = buildOrdersRefundOrderRequest();
+      final arg_merchantId = 'foo';
+      final arg_orderId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.OrdersRefundOrderRequest.fromJson(
+        final obj = api.OrdersRefundOrderRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkOrdersRefundOrderRequest(obj as api.OrdersRefundOrderRequest);
+        checkOrdersRefundOrderRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -24999,14 +24701,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOrdersRefundOrderResponse());
+        final resp = convert.json.encode(buildOrdersRefundOrderResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.refundorder(
@@ -25016,37 +24718,36 @@ void main() {
     });
 
     unittest.test('method--rejectreturnlineitem', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orders;
-      var arg_request = buildOrdersRejectReturnLineItemRequest();
-      var arg_merchantId = 'foo';
-      var arg_orderId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orders;
+      final arg_request = buildOrdersRejectReturnLineItemRequest();
+      final arg_merchantId = 'foo';
+      final arg_orderId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.OrdersRejectReturnLineItemRequest.fromJson(
+        final obj = api.OrdersRejectReturnLineItemRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkOrdersRejectReturnLineItemRequest(
-            obj as api.OrdersRejectReturnLineItemRequest);
+        checkOrdersRejectReturnLineItemRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -25054,14 +24755,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildOrdersRejectReturnLineItemResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -25073,37 +24774,36 @@ void main() {
     });
 
     unittest.test('method--returnrefundlineitem', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orders;
-      var arg_request = buildOrdersReturnRefundLineItemRequest();
-      var arg_merchantId = 'foo';
-      var arg_orderId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orders;
+      final arg_request = buildOrdersReturnRefundLineItemRequest();
+      final arg_merchantId = 'foo';
+      final arg_orderId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.OrdersReturnRefundLineItemRequest.fromJson(
+        final obj = api.OrdersReturnRefundLineItemRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkOrdersReturnRefundLineItemRequest(
-            obj as api.OrdersReturnRefundLineItemRequest);
+        checkOrdersReturnRefundLineItemRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -25111,14 +24811,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildOrdersReturnRefundLineItemResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -25130,37 +24830,36 @@ void main() {
     });
 
     unittest.test('method--setlineitemmetadata', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orders;
-      var arg_request = buildOrdersSetLineItemMetadataRequest();
-      var arg_merchantId = 'foo';
-      var arg_orderId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orders;
+      final arg_request = buildOrdersSetLineItemMetadataRequest();
+      final arg_merchantId = 'foo';
+      final arg_orderId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.OrdersSetLineItemMetadataRequest.fromJson(
+        final obj = api.OrdersSetLineItemMetadataRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkOrdersSetLineItemMetadataRequest(
-            obj as api.OrdersSetLineItemMetadataRequest);
+        checkOrdersSetLineItemMetadataRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -25168,14 +24867,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildOrdersSetLineItemMetadataResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -25187,36 +24886,36 @@ void main() {
     });
 
     unittest.test('method--shiplineitems', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orders;
-      var arg_request = buildOrdersShipLineItemsRequest();
-      var arg_merchantId = 'foo';
-      var arg_orderId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orders;
+      final arg_request = buildOrdersShipLineItemsRequest();
+      final arg_merchantId = 'foo';
+      final arg_orderId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.OrdersShipLineItemsRequest.fromJson(
+        final obj = api.OrdersShipLineItemsRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkOrdersShipLineItemsRequest(obj as api.OrdersShipLineItemsRequest);
+        checkOrdersShipLineItemsRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -25224,14 +24923,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOrdersShipLineItemsResponse());
+        final resp = convert.json.encode(buildOrdersShipLineItemsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.shiplineitems(
@@ -25242,37 +24941,36 @@ void main() {
     });
 
     unittest.test('method--updatelineitemshippingdetails', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orders;
-      var arg_request = buildOrdersUpdateLineItemShippingDetailsRequest();
-      var arg_merchantId = 'foo';
-      var arg_orderId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orders;
+      final arg_request = buildOrdersUpdateLineItemShippingDetailsRequest();
+      final arg_merchantId = 'foo';
+      final arg_orderId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.OrdersUpdateLineItemShippingDetailsRequest.fromJson(
+        final obj = api.OrdersUpdateLineItemShippingDetailsRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkOrdersUpdateLineItemShippingDetailsRequest(
-            obj as api.OrdersUpdateLineItemShippingDetailsRequest);
+        checkOrdersUpdateLineItemShippingDetailsRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -25280,14 +24978,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildOrdersUpdateLineItemShippingDetailsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -25299,37 +24997,36 @@ void main() {
     });
 
     unittest.test('method--updatemerchantorderid', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orders;
-      var arg_request = buildOrdersUpdateMerchantOrderIdRequest();
-      var arg_merchantId = 'foo';
-      var arg_orderId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orders;
+      final arg_request = buildOrdersUpdateMerchantOrderIdRequest();
+      final arg_merchantId = 'foo';
+      final arg_orderId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.OrdersUpdateMerchantOrderIdRequest.fromJson(
+        final obj = api.OrdersUpdateMerchantOrderIdRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkOrdersUpdateMerchantOrderIdRequest(
-            obj as api.OrdersUpdateMerchantOrderIdRequest);
+        checkOrdersUpdateMerchantOrderIdRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -25337,14 +25034,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildOrdersUpdateMerchantOrderIdResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -25356,37 +25053,36 @@ void main() {
     });
 
     unittest.test('method--updateshipment', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).orders;
-      var arg_request = buildOrdersUpdateShipmentRequest();
-      var arg_merchantId = 'foo';
-      var arg_orderId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).orders;
+      final arg_request = buildOrdersUpdateShipmentRequest();
+      final arg_merchantId = 'foo';
+      final arg_orderId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.OrdersUpdateShipmentRequest.fromJson(
+        final obj = api.OrdersUpdateShipmentRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkOrdersUpdateShipmentRequest(
-            obj as api.OrdersUpdateShipmentRequest);
+        checkOrdersUpdateShipmentRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -25394,14 +25090,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOrdersUpdateShipmentResponse());
+        final resp = convert.json.encode(buildOrdersUpdateShipmentResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.updateshipment(
@@ -25414,35 +25110,35 @@ void main() {
 
   unittest.group('resource-OrdertrackingsignalsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).ordertrackingsignals;
-      var arg_request = buildOrderTrackingSignal();
-      var arg_merchantId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).ordertrackingsignals;
+      final arg_request = buildOrderTrackingSignal();
+      final arg_merchantId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.OrderTrackingSignal.fromJson(
+        final obj = api.OrderTrackingSignal.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkOrderTrackingSignal(obj as api.OrderTrackingSignal);
+        checkOrderTrackingSignal(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -25450,14 +25146,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildOrderTrackingSignal());
+        final resp = convert.json.encode(buildOrderTrackingSignal());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -25468,44 +25164,44 @@ void main() {
 
   unittest.group('resource-PosResource', () {
     unittest.test('method--custombatch', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).pos;
-      var arg_request = buildPosCustomBatchRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).pos;
+      final arg_request = buildPosCustomBatchRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.PosCustomBatchRequest.fromJson(
+        final obj = api.PosCustomBatchRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkPosCustomBatchRequest(obj as api.PosCustomBatchRequest);
+        checkPosCustomBatchRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("content/v2.1/"),
+          unittest.equals('content/v2.1/'),
         );
         pathOffset += 13;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 9),
-          unittest.equals("pos/batch"),
+          unittest.equals('pos/batch'),
         );
         pathOffset += 9;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -25513,14 +25209,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildPosCustomBatchResponse());
+        final resp = convert.json.encode(buildPosCustomBatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.custombatch(arg_request, $fields: arg_$fields);
@@ -25528,32 +25224,32 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).pos;
-      var arg_merchantId = 'foo';
-      var arg_targetMerchantId = 'foo';
-      var arg_storeCode = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).pos;
+      final arg_merchantId = 'foo';
+      final arg_targetMerchantId = 'foo';
+      final arg_storeCode = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -25561,14 +25257,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_merchantId, arg_targetMerchantId, arg_storeCode,
@@ -25576,32 +25272,32 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).pos;
-      var arg_merchantId = 'foo';
-      var arg_targetMerchantId = 'foo';
-      var arg_storeCode = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).pos;
+      final arg_merchantId = 'foo';
+      final arg_targetMerchantId = 'foo';
+      final arg_storeCode = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -25609,14 +25305,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildPosStore());
+        final resp = convert.json.encode(buildPosStore());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(
@@ -25626,36 +25322,36 @@ void main() {
     });
 
     unittest.test('method--insert', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).pos;
-      var arg_request = buildPosStore();
-      var arg_merchantId = 'foo';
-      var arg_targetMerchantId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).pos;
+      final arg_request = buildPosStore();
+      final arg_merchantId = 'foo';
+      final arg_targetMerchantId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.PosStore.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkPosStore(obj as api.PosStore);
+        checkPosStore(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -25663,14 +25359,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildPosStore());
+        final resp = convert.json.encode(buildPosStore());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.insert(
@@ -25680,36 +25376,36 @@ void main() {
     });
 
     unittest.test('method--inventory', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).pos;
-      var arg_request = buildPosInventoryRequest();
-      var arg_merchantId = 'foo';
-      var arg_targetMerchantId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).pos;
+      final arg_request = buildPosInventoryRequest();
+      final arg_merchantId = 'foo';
+      final arg_targetMerchantId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.PosInventoryRequest.fromJson(
+        final obj = api.PosInventoryRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkPosInventoryRequest(obj as api.PosInventoryRequest);
+        checkPosInventoryRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -25717,14 +25413,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildPosInventoryResponse());
+        final resp = convert.json.encode(buildPosInventoryResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.inventory(
@@ -25734,31 +25430,31 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).pos;
-      var arg_merchantId = 'foo';
-      var arg_targetMerchantId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).pos;
+      final arg_merchantId = 'foo';
+      final arg_targetMerchantId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -25766,14 +25462,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildPosListResponse());
+        final resp = convert.json.encode(buildPosListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_merchantId, arg_targetMerchantId,
@@ -25782,36 +25478,36 @@ void main() {
     });
 
     unittest.test('method--sale', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).pos;
-      var arg_request = buildPosSaleRequest();
-      var arg_merchantId = 'foo';
-      var arg_targetMerchantId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).pos;
+      final arg_request = buildPosSaleRequest();
+      final arg_merchantId = 'foo';
+      final arg_targetMerchantId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.PosSaleRequest.fromJson(
+        final obj = api.PosSaleRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkPosSaleRequest(obj as api.PosSaleRequest);
+        checkPosSaleRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -25819,14 +25515,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildPosSaleResponse());
+        final resp = convert.json.encode(buildPosSaleResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.sale(
@@ -25838,44 +25534,44 @@ void main() {
 
   unittest.group('resource-ProductsResource', () {
     unittest.test('method--custombatch', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).products;
-      var arg_request = buildProductsCustomBatchRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).products;
+      final arg_request = buildProductsCustomBatchRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ProductsCustomBatchRequest.fromJson(
+        final obj = api.ProductsCustomBatchRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkProductsCustomBatchRequest(obj as api.ProductsCustomBatchRequest);
+        checkProductsCustomBatchRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("content/v2.1/"),
+          unittest.equals('content/v2.1/'),
         );
         pathOffset += 13;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 14),
-          unittest.equals("products/batch"),
+          unittest.equals('products/batch'),
         );
         pathOffset += 14;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -25883,14 +25579,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildProductsCustomBatchResponse());
+        final resp = convert.json.encode(buildProductsCustomBatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.custombatch(arg_request, $fields: arg_$fields);
@@ -25899,32 +25595,32 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).products;
-      var arg_merchantId = 'foo';
-      var arg_productId = 'foo';
-      var arg_feedId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).products;
+      final arg_merchantId = 'foo';
+      final arg_productId = 'foo';
+      final arg_feedId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -25932,18 +25628,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["feedId"]!.first,
+          queryMap['feedId']!.first,
           unittest.equals(arg_feedId),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_merchantId, arg_productId,
@@ -25951,31 +25647,31 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).products;
-      var arg_merchantId = 'foo';
-      var arg_productId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).products;
+      final arg_merchantId = 'foo';
+      final arg_productId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -25983,14 +25679,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildProduct());
+        final resp = convert.json.encode(buildProduct());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -25999,36 +25695,36 @@ void main() {
     });
 
     unittest.test('method--insert', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).products;
-      var arg_request = buildProduct();
-      var arg_merchantId = 'foo';
-      var arg_feedId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).products;
+      final arg_request = buildProduct();
+      final arg_merchantId = 'foo';
+      final arg_feedId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Product.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkProduct(obj as api.Product);
+        checkProduct(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -26036,18 +25732,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["feedId"]!.first,
+          queryMap['feedId']!.first,
           unittest.equals(arg_feedId),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildProduct());
+        final resp = convert.json.encode(buildProduct());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.insert(arg_request, arg_merchantId,
@@ -26056,32 +25752,32 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).products;
-      var arg_merchantId = 'foo';
-      var arg_maxResults = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).products;
+      final arg_merchantId = 'foo';
+      final arg_maxResults = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -26089,22 +25785,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["maxResults"]!.first),
+          core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildProductsListResponse());
+        final resp = convert.json.encode(buildProductsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_merchantId,
@@ -26115,37 +25811,37 @@ void main() {
     });
 
     unittest.test('method--update', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).products;
-      var arg_request = buildProduct();
-      var arg_merchantId = 'foo';
-      var arg_productId = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).products;
+      final arg_request = buildProduct();
+      final arg_merchantId = 'foo';
+      final arg_productId = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Product.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkProduct(obj as api.Product);
+        checkProduct(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -26153,18 +25849,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildProduct());
+        final resp = convert.json.encode(buildProduct());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.update(
@@ -26176,45 +25872,44 @@ void main() {
 
   unittest.group('resource-ProductstatusesResource', () {
     unittest.test('method--custombatch', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).productstatuses;
-      var arg_request = buildProductstatusesCustomBatchRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).productstatuses;
+      final arg_request = buildProductstatusesCustomBatchRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ProductstatusesCustomBatchRequest.fromJson(
+        final obj = api.ProductstatusesCustomBatchRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkProductstatusesCustomBatchRequest(
-            obj as api.ProductstatusesCustomBatchRequest);
+        checkProductstatusesCustomBatchRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("content/v2.1/"),
+          unittest.equals('content/v2.1/'),
         );
         pathOffset += 13;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 21),
-          unittest.equals("productstatuses/batch"),
+          unittest.equals('productstatuses/batch'),
         );
         pathOffset += 21;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -26222,14 +25917,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildProductstatusesCustomBatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -26239,32 +25934,32 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).productstatuses;
-      var arg_merchantId = 'foo';
-      var arg_productId = 'foo';
-      var arg_destinations = buildUnnamed5233();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).productstatuses;
+      final arg_merchantId = 'foo';
+      final arg_productId = 'foo';
+      final arg_destinations = buildUnnamed5233();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -26272,18 +25967,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["destinations"]!,
+          queryMap['destinations']!,
           unittest.equals(arg_destinations),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildProductStatus());
+        final resp = convert.json.encode(buildProductStatus());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_merchantId, arg_productId,
@@ -26292,33 +25987,33 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).productstatuses;
-      var arg_merchantId = 'foo';
-      var arg_destinations = buildUnnamed5234();
-      var arg_maxResults = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).productstatuses;
+      final arg_merchantId = 'foo';
+      final arg_destinations = buildUnnamed5234();
+      final arg_maxResults = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -26326,26 +26021,26 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["destinations"]!,
+          queryMap['destinations']!,
           unittest.equals(arg_destinations),
         );
         unittest.expect(
-          core.int.parse(queryMap["maxResults"]!.first),
+          core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildProductstatusesListResponse());
+        final resp = convert.json.encode(buildProductstatusesListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_merchantId,
@@ -26360,36 +26055,36 @@ void main() {
 
   unittest.group('resource-ProductstatusesRepricingreportsResource', () {
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).productstatuses.repricingreports;
-      var arg_merchantId = 'foo';
-      var arg_productId = 'foo';
-      var arg_endDate = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_ruleId = 'foo';
-      var arg_startDate = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).productstatuses.repricingreports;
+      final arg_merchantId = 'foo';
+      final arg_productId = 'foo';
+      final arg_endDate = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_ruleId = 'foo';
+      final arg_startDate = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -26397,34 +26092,34 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["endDate"]!.first,
+          queryMap['endDate']!.first,
           unittest.equals(arg_endDate),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["ruleId"]!.first,
+          queryMap['ruleId']!.first,
           unittest.equals(arg_ruleId),
         );
         unittest.expect(
-          queryMap["startDate"]!.first,
+          queryMap['startDate']!.first,
           unittest.equals(arg_startDate),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildListRepricingProductReportsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -26442,30 +26137,30 @@ void main() {
 
   unittest.group('resource-PubsubnotificationsettingsResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).pubsubnotificationsettings;
-      var arg_merchantId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).pubsubnotificationsettings;
+      final arg_merchantId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -26473,14 +26168,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildPubsubNotificationSettings());
+        final resp = convert.json.encode(buildPubsubNotificationSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_merchantId, $fields: arg_$fields);
@@ -26489,35 +26184,35 @@ void main() {
     });
 
     unittest.test('method--update', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).pubsubnotificationsettings;
-      var arg_request = buildPubsubNotificationSettings();
-      var arg_merchantId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).pubsubnotificationsettings;
+      final arg_request = buildPubsubNotificationSettings();
+      final arg_merchantId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.PubsubNotificationSettings.fromJson(
+        final obj = api.PubsubNotificationSettings.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkPubsubNotificationSettings(obj as api.PubsubNotificationSettings);
+        checkPubsubNotificationSettings(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -26525,14 +26220,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildPubsubNotificationSettings());
+        final resp = convert.json.encode(buildPubsubNotificationSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -26544,45 +26239,44 @@ void main() {
 
   unittest.group('resource-RegionalinventoryResource', () {
     unittest.test('method--custombatch', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).regionalinventory;
-      var arg_request = buildRegionalinventoryCustomBatchRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).regionalinventory;
+      final arg_request = buildRegionalinventoryCustomBatchRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.RegionalinventoryCustomBatchRequest.fromJson(
+        final obj = api.RegionalinventoryCustomBatchRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkRegionalinventoryCustomBatchRequest(
-            obj as api.RegionalinventoryCustomBatchRequest);
+        checkRegionalinventoryCustomBatchRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("content/v2.1/"),
+          unittest.equals('content/v2.1/'),
         );
         pathOffset += 13;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 23),
-          unittest.equals("regionalinventory/batch"),
+          unittest.equals('regionalinventory/batch'),
         );
         pathOffset += 23;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -26590,14 +26284,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildRegionalinventoryCustomBatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -26607,36 +26301,36 @@ void main() {
     });
 
     unittest.test('method--insert', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).regionalinventory;
-      var arg_request = buildRegionalInventory();
-      var arg_merchantId = 'foo';
-      var arg_productId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).regionalinventory;
+      final arg_request = buildRegionalInventory();
+      final arg_merchantId = 'foo';
+      final arg_productId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.RegionalInventory.fromJson(
+        final obj = api.RegionalInventory.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkRegionalInventory(obj as api.RegionalInventory);
+        checkRegionalInventory(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -26644,14 +26338,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildRegionalInventory());
+        final resp = convert.json.encode(buildRegionalInventory());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.insert(
@@ -26663,36 +26357,36 @@ void main() {
 
   unittest.group('resource-RegionsResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).regions;
-      var arg_request = buildRegion();
-      var arg_merchantId = 'foo';
-      var arg_regionId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).regions;
+      final arg_request = buildRegion();
+      final arg_merchantId = 'foo';
+      final arg_regionId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Region.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkRegion(obj as api.Region);
+        checkRegion(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -26700,18 +26394,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["regionId"]!.first,
+          queryMap['regionId']!.first,
           unittest.equals(arg_regionId),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildRegion());
+        final resp = convert.json.encode(buildRegion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_merchantId,
@@ -26720,31 +26414,31 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).regions;
-      var arg_merchantId = 'foo';
-      var arg_regionId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).regions;
+      final arg_merchantId = 'foo';
+      final arg_regionId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -26752,45 +26446,45 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_merchantId, arg_regionId, $fields: arg_$fields);
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).regions;
-      var arg_merchantId = 'foo';
-      var arg_regionId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).regions;
+      final arg_merchantId = 'foo';
+      final arg_regionId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -26798,14 +26492,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildRegion());
+        final resp = convert.json.encode(buildRegion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -26814,32 +26508,32 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).regions;
-      var arg_merchantId = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).regions;
+      final arg_merchantId = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -26847,22 +26541,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListRegionsResponse());
+        final resp = convert.json.encode(buildListRegionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_merchantId,
@@ -26873,37 +26567,37 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).regions;
-      var arg_request = buildRegion();
-      var arg_merchantId = 'foo';
-      var arg_regionId = 'foo';
-      var arg_updateMask = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).regions;
+      final arg_request = buildRegion();
+      final arg_merchantId = 'foo';
+      final arg_regionId = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.Region.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkRegion(obj as api.Region);
+        checkRegion(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -26911,18 +26605,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["updateMask"]!.first,
+          queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildRegion());
+        final resp = convert.json.encode(buildRegion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(
@@ -26934,35 +26628,35 @@ void main() {
 
   unittest.group('resource-ReportsResource', () {
     unittest.test('method--search', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).reports;
-      var arg_request = buildSearchRequest();
-      var arg_merchantId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).reports;
+      final arg_request = buildSearchRequest();
+      final arg_merchantId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SearchRequest.fromJson(
+        final obj = api.SearchRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkSearchRequest(obj as api.SearchRequest);
+        checkSearchRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -26970,14 +26664,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSearchResponse());
+        final resp = convert.json.encode(buildSearchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -26988,36 +26682,36 @@ void main() {
 
   unittest.group('resource-RepricingrulesResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).repricingrules;
-      var arg_request = buildRepricingRule();
-      var arg_merchantId = 'foo';
-      var arg_ruleId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).repricingrules;
+      final arg_request = buildRepricingRule();
+      final arg_merchantId = 'foo';
+      final arg_ruleId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.RepricingRule.fromJson(
+        final obj = api.RepricingRule.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkRepricingRule(obj as api.RepricingRule);
+        checkRepricingRule(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -27025,18 +26719,18 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["ruleId"]!.first,
+          queryMap['ruleId']!.first,
           unittest.equals(arg_ruleId),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildRepricingRule());
+        final resp = convert.json.encode(buildRepricingRule());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_merchantId,
@@ -27045,31 +26739,31 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).repricingrules;
-      var arg_merchantId = 'foo';
-      var arg_ruleId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).repricingrules;
+      final arg_merchantId = 'foo';
+      final arg_ruleId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -27077,45 +26771,45 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_merchantId, arg_ruleId, $fields: arg_$fields);
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).repricingrules;
-      var arg_merchantId = 'foo';
-      var arg_ruleId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).repricingrules;
+      final arg_merchantId = 'foo';
+      final arg_ruleId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -27123,14 +26817,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildRepricingRule());
+        final resp = convert.json.encode(buildRepricingRule());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -27139,34 +26833,34 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).repricingrules;
-      var arg_merchantId = 'foo';
-      var arg_countryCode = 'foo';
-      var arg_languageCode = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).repricingrules;
+      final arg_merchantId = 'foo';
+      final arg_countryCode = 'foo';
+      final arg_languageCode = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -27174,30 +26868,30 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["countryCode"]!.first,
+          queryMap['countryCode']!.first,
           unittest.equals(arg_countryCode),
         );
         unittest.expect(
-          queryMap["languageCode"]!.first,
+          queryMap['languageCode']!.first,
           unittest.equals(arg_languageCode),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListRepricingRulesResponse());
+        final resp = convert.json.encode(buildListRepricingRulesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_merchantId,
@@ -27211,36 +26905,36 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).repricingrules;
-      var arg_request = buildRepricingRule();
-      var arg_merchantId = 'foo';
-      var arg_ruleId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).repricingrules;
+      final arg_request = buildRepricingRule();
+      final arg_merchantId = 'foo';
+      final arg_ruleId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.RepricingRule.fromJson(
+        final obj = api.RepricingRule.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkRepricingRule(obj as api.RepricingRule);
+        checkRepricingRule(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -27248,14 +26942,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildRepricingRule());
+        final resp = convert.json.encode(buildRepricingRule());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_merchantId, arg_ruleId,
@@ -27266,35 +26960,35 @@ void main() {
 
   unittest.group('resource-RepricingrulesRepricingreportsResource', () {
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).repricingrules.repricingreports;
-      var arg_merchantId = 'foo';
-      var arg_ruleId = 'foo';
-      var arg_endDate = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_startDate = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).repricingrules.repricingreports;
+      final arg_merchantId = 'foo';
+      final arg_ruleId = 'foo';
+      final arg_endDate = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_startDate = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -27302,30 +26996,31 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["endDate"]!.first,
+          queryMap['endDate']!.first,
           unittest.equals(arg_endDate),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["startDate"]!.first,
+          queryMap['startDate']!.first,
           unittest.equals(arg_startDate),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListRepricingRuleReportsResponse());
+        final resp =
+            convert.json.encode(buildListRepricingRuleReportsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_merchantId, arg_ruleId,
@@ -27341,45 +27036,44 @@ void main() {
 
   unittest.group('resource-ReturnaddressResource', () {
     unittest.test('method--custombatch', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).returnaddress;
-      var arg_request = buildReturnaddressCustomBatchRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).returnaddress;
+      final arg_request = buildReturnaddressCustomBatchRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ReturnaddressCustomBatchRequest.fromJson(
+        final obj = api.ReturnaddressCustomBatchRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkReturnaddressCustomBatchRequest(
-            obj as api.ReturnaddressCustomBatchRequest);
+        checkReturnaddressCustomBatchRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("content/v2.1/"),
+          unittest.equals('content/v2.1/'),
         );
         pathOffset += 13;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 19),
-          unittest.equals("returnaddress/batch"),
+          unittest.equals('returnaddress/batch'),
         );
         pathOffset += 19;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -27387,14 +27081,15 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildReturnaddressCustomBatchResponse());
+        final resp =
+            convert.json.encode(buildReturnaddressCustomBatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.custombatch(arg_request, $fields: arg_$fields);
@@ -27403,31 +27098,31 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).returnaddress;
-      var arg_merchantId = 'foo';
-      var arg_returnAddressId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).returnaddress;
+      final arg_merchantId = 'foo';
+      final arg_returnAddressId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -27435,14 +27130,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_merchantId, arg_returnAddressId,
@@ -27450,31 +27145,31 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).returnaddress;
-      var arg_merchantId = 'foo';
-      var arg_returnAddressId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).returnaddress;
+      final arg_merchantId = 'foo';
+      final arg_returnAddressId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -27482,14 +27177,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildReturnAddress());
+        final resp = convert.json.encode(buildReturnAddress());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_merchantId, arg_returnAddressId,
@@ -27498,35 +27193,35 @@ void main() {
     });
 
     unittest.test('method--insert', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).returnaddress;
-      var arg_request = buildReturnAddress();
-      var arg_merchantId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).returnaddress;
+      final arg_request = buildReturnAddress();
+      final arg_merchantId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ReturnAddress.fromJson(
+        final obj = api.ReturnAddress.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkReturnAddress(obj as api.ReturnAddress);
+        checkReturnAddress(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -27534,14 +27229,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildReturnAddress());
+        final resp = convert.json.encode(buildReturnAddress());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -27550,33 +27245,33 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).returnaddress;
-      var arg_merchantId = 'foo';
-      var arg_country = 'foo';
-      var arg_maxResults = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).returnaddress;
+      final arg_merchantId = 'foo';
+      final arg_country = 'foo';
+      final arg_maxResults = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -27584,26 +27279,26 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["country"]!.first,
+          queryMap['country']!.first,
           unittest.equals(arg_country),
         );
         unittest.expect(
-          core.int.parse(queryMap["maxResults"]!.first),
+          core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildReturnaddressListResponse());
+        final resp = convert.json.encode(buildReturnaddressListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_merchantId,
@@ -27617,45 +27312,44 @@ void main() {
 
   unittest.group('resource-ReturnpolicyResource', () {
     unittest.test('method--custombatch', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).returnpolicy;
-      var arg_request = buildReturnpolicyCustomBatchRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).returnpolicy;
+      final arg_request = buildReturnpolicyCustomBatchRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ReturnpolicyCustomBatchRequest.fromJson(
+        final obj = api.ReturnpolicyCustomBatchRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkReturnpolicyCustomBatchRequest(
-            obj as api.ReturnpolicyCustomBatchRequest);
+        checkReturnpolicyCustomBatchRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("content/v2.1/"),
+          unittest.equals('content/v2.1/'),
         );
         pathOffset += 13;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 18),
-          unittest.equals("returnpolicy/batch"),
+          unittest.equals('returnpolicy/batch'),
         );
         pathOffset += 18;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -27663,14 +27357,15 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildReturnpolicyCustomBatchResponse());
+        final resp =
+            convert.json.encode(buildReturnpolicyCustomBatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.custombatch(arg_request, $fields: arg_$fields);
@@ -27679,31 +27374,31 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).returnpolicy;
-      var arg_merchantId = 'foo';
-      var arg_returnPolicyId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).returnpolicy;
+      final arg_merchantId = 'foo';
+      final arg_returnPolicyId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -27711,14 +27406,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_merchantId, arg_returnPolicyId,
@@ -27726,31 +27421,31 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).returnpolicy;
-      var arg_merchantId = 'foo';
-      var arg_returnPolicyId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).returnpolicy;
+      final arg_merchantId = 'foo';
+      final arg_returnPolicyId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -27758,14 +27453,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildReturnPolicy());
+        final resp = convert.json.encode(buildReturnPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_merchantId, arg_returnPolicyId,
@@ -27774,35 +27469,35 @@ void main() {
     });
 
     unittest.test('method--insert', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).returnpolicy;
-      var arg_request = buildReturnPolicy();
-      var arg_merchantId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).returnpolicy;
+      final arg_request = buildReturnPolicy();
+      final arg_merchantId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ReturnPolicy.fromJson(
+        final obj = api.ReturnPolicy.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkReturnPolicy(obj as api.ReturnPolicy);
+        checkReturnPolicy(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -27810,14 +27505,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildReturnPolicy());
+        final resp = convert.json.encode(buildReturnPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -27826,30 +27521,30 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).returnpolicy;
-      var arg_merchantId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).returnpolicy;
+      final arg_merchantId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -27857,14 +27552,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildReturnpolicyListResponse());
+        final resp = convert.json.encode(buildReturnpolicyListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_merchantId, $fields: arg_$fields);
@@ -27874,35 +27569,35 @@ void main() {
 
   unittest.group('resource-ReturnpolicyonlineResource', () {
     unittest.test('method--create', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).returnpolicyonline;
-      var arg_request = buildReturnPolicyOnline();
-      var arg_merchantId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).returnpolicyonline;
+      final arg_request = buildReturnPolicyOnline();
+      final arg_merchantId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ReturnPolicyOnline.fromJson(
+        final obj = api.ReturnPolicyOnline.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkReturnPolicyOnline(obj as api.ReturnPolicyOnline);
+        checkReturnPolicyOnline(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -27910,14 +27605,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildReturnPolicyOnline());
+        final resp = convert.json.encode(buildReturnPolicyOnline());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -27926,31 +27621,31 @@ void main() {
     });
 
     unittest.test('method--delete', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).returnpolicyonline;
-      var arg_merchantId = 'foo';
-      var arg_returnPolicyId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).returnpolicyonline;
+      final arg_merchantId = 'foo';
+      final arg_returnPolicyId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -27958,14 +27653,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        final resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_merchantId, arg_returnPolicyId,
@@ -27973,31 +27668,31 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).returnpolicyonline;
-      var arg_merchantId = 'foo';
-      var arg_returnPolicyId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).returnpolicyonline;
+      final arg_merchantId = 'foo';
+      final arg_returnPolicyId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -28005,14 +27700,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildReturnPolicyOnline());
+        final resp = convert.json.encode(buildReturnPolicyOnline());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_merchantId, arg_returnPolicyId,
@@ -28021,30 +27716,30 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).returnpolicyonline;
-      var arg_merchantId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).returnpolicyonline;
+      final arg_merchantId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -28052,14 +27747,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildListReturnPolicyOnlineResponse());
+        final resp = convert.json.encode(buildListReturnPolicyOnlineResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_merchantId, $fields: arg_$fields);
@@ -28068,36 +27763,36 @@ void main() {
     });
 
     unittest.test('method--patch', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).returnpolicyonline;
-      var arg_request = buildReturnPolicyOnline();
-      var arg_merchantId = 'foo';
-      var arg_returnPolicyId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).returnpolicyonline;
+      final arg_request = buildReturnPolicyOnline();
+      final arg_merchantId = 'foo';
+      final arg_returnPolicyId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ReturnPolicyOnline.fromJson(
+        final obj = api.ReturnPolicyOnline.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkReturnPolicyOnline(obj as api.ReturnPolicyOnline);
+        checkReturnPolicyOnline(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -28105,14 +27800,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildReturnPolicyOnline());
+        final resp = convert.json.encode(buildReturnPolicyOnline());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(
@@ -28124,31 +27819,31 @@ void main() {
 
   unittest.group('resource-SettlementreportsResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).settlementreports;
-      var arg_merchantId = 'foo';
-      var arg_settlementId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).settlementreports;
+      final arg_merchantId = 'foo';
+      final arg_settlementId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -28156,14 +27851,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSettlementReport());
+        final resp = convert.json.encode(buildSettlementReport());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -28172,34 +27867,34 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).settlementreports;
-      var arg_merchantId = 'foo';
-      var arg_maxResults = 42;
-      var arg_pageToken = 'foo';
-      var arg_transferEndDate = 'foo';
-      var arg_transferStartDate = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).settlementreports;
+      final arg_merchantId = 'foo';
+      final arg_maxResults = 42;
+      final arg_pageToken = 'foo';
+      final arg_transferEndDate = 'foo';
+      final arg_transferStartDate = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -28207,30 +27902,30 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["maxResults"]!.first),
+          core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["transferEndDate"]!.first,
+          queryMap['transferEndDate']!.first,
           unittest.equals(arg_transferEndDate),
         );
         unittest.expect(
-          queryMap["transferStartDate"]!.first,
+          queryMap['transferStartDate']!.first,
           unittest.equals(arg_transferStartDate),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildSettlementreportsListResponse());
+        final resp = convert.json.encode(buildSettlementreportsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_merchantId,
@@ -28246,34 +27941,34 @@ void main() {
 
   unittest.group('resource-SettlementtransactionsResource', () {
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).settlementtransactions;
-      var arg_merchantId = 'foo';
-      var arg_settlementId = 'foo';
-      var arg_maxResults = 42;
-      var arg_pageToken = 'foo';
-      var arg_transactionIds = buildUnnamed5235();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).settlementtransactions;
+      final arg_merchantId = 'foo';
+      final arg_settlementId = 'foo';
+      final arg_maxResults = 42;
+      final arg_pageToken = 'foo';
+      final arg_transactionIds = buildUnnamed5235();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -28281,26 +27976,26 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["maxResults"]!.first),
+          core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["transactionIds"]!,
+          queryMap['transactionIds']!,
           unittest.equals(arg_transactionIds),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildSettlementtransactionsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -28316,45 +28011,44 @@ void main() {
 
   unittest.group('resource-ShippingsettingsResource', () {
     unittest.test('method--custombatch', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).shippingsettings;
-      var arg_request = buildShippingsettingsCustomBatchRequest();
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).shippingsettings;
+      final arg_request = buildShippingsettingsCustomBatchRequest();
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ShippingsettingsCustomBatchRequest.fromJson(
+        final obj = api.ShippingsettingsCustomBatchRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkShippingsettingsCustomBatchRequest(
-            obj as api.ShippingsettingsCustomBatchRequest);
+        checkShippingsettingsCustomBatchRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 13),
-          unittest.equals("content/v2.1/"),
+          unittest.equals('content/v2.1/'),
         );
         pathOffset += 13;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 22),
-          unittest.equals("shippingsettings/batch"),
+          unittest.equals('shippingsettings/batch'),
         );
         pathOffset += 22;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -28362,14 +28056,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildShippingsettingsCustomBatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -28379,31 +28073,31 @@ void main() {
     });
 
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).shippingsettings;
-      var arg_merchantId = 'foo';
-      var arg_accountId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).shippingsettings;
+      final arg_merchantId = 'foo';
+      final arg_accountId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -28411,14 +28105,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildShippingSettings());
+        final resp = convert.json.encode(buildShippingSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
@@ -28427,30 +28121,30 @@ void main() {
     });
 
     unittest.test('method--getsupportedcarriers', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).shippingsettings;
-      var arg_merchantId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).shippingsettings;
+      final arg_merchantId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -28458,14 +28152,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildShippingsettingsGetSupportedCarriersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -28476,30 +28170,30 @@ void main() {
     });
 
     unittest.test('method--getsupportedholidays', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).shippingsettings;
-      var arg_merchantId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).shippingsettings;
+      final arg_merchantId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -28507,14 +28201,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildShippingsettingsGetSupportedHolidaysResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -28525,30 +28219,30 @@ void main() {
     });
 
     unittest.test('method--getsupportedpickupservices', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).shippingsettings;
-      var arg_merchantId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).shippingsettings;
+      final arg_merchantId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -28556,14 +28250,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildShippingsettingsGetSupportedPickupServicesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -28574,32 +28268,32 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).shippingsettings;
-      var arg_merchantId = 'foo';
-      var arg_maxResults = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).shippingsettings;
+      final arg_merchantId = 'foo';
+      final arg_maxResults = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -28607,22 +28301,22 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap["maxResults"]!.first),
+          core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildShippingsettingsListResponse());
+        final resp = convert.json.encode(buildShippingsettingsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_merchantId,
@@ -28634,36 +28328,36 @@ void main() {
     });
 
     unittest.test('method--update', () async {
-      var mock = HttpServerMock();
-      var res = api.ShoppingContentApi(mock).shippingsettings;
-      var arg_request = buildShippingSettings();
-      var arg_merchantId = 'foo';
-      var arg_accountId = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).shippingsettings;
+      final arg_request = buildShippingSettings();
+      final arg_merchantId = 'foo';
+      final arg_accountId = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ShippingSettings.fromJson(
+        final obj = api.ShippingSettings.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkShippingSettings(obj as api.ShippingSettings);
+        checkShippingSettings(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -28671,14 +28365,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildShippingSettings());
+        final resp = convert.json.encode(buildShippingSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.update(

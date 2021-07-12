@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -30,7 +29,7 @@ import '../test_shared.dart';
 core.int buildCounterGoogleChromePolicyV1AdditionalTargetKeyName = 0;
 api.GoogleChromePolicyV1AdditionalTargetKeyName
     buildGoogleChromePolicyV1AdditionalTargetKeyName() {
-  var o = api.GoogleChromePolicyV1AdditionalTargetKeyName();
+  final o = api.GoogleChromePolicyV1AdditionalTargetKeyName();
   buildCounterGoogleChromePolicyV1AdditionalTargetKeyName++;
   if (buildCounterGoogleChromePolicyV1AdditionalTargetKeyName < 3) {
     o.key = 'foo';
@@ -58,7 +57,7 @@ void checkGoogleChromePolicyV1AdditionalTargetKeyName(
 
 core.List<api.GoogleChromePolicyV1InheritOrgUnitPolicyRequest>
     buildUnnamed7559() {
-  var o = <api.GoogleChromePolicyV1InheritOrgUnitPolicyRequest>[];
+  final o = <api.GoogleChromePolicyV1InheritOrgUnitPolicyRequest>[];
   o.add(buildGoogleChromePolicyV1InheritOrgUnitPolicyRequest());
   o.add(buildGoogleChromePolicyV1InheritOrgUnitPolicyRequest());
   return o;
@@ -67,16 +66,14 @@ core.List<api.GoogleChromePolicyV1InheritOrgUnitPolicyRequest>
 void checkUnnamed7559(
     core.List<api.GoogleChromePolicyV1InheritOrgUnitPolicyRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleChromePolicyV1InheritOrgUnitPolicyRequest(
-      o[0] as api.GoogleChromePolicyV1InheritOrgUnitPolicyRequest);
-  checkGoogleChromePolicyV1InheritOrgUnitPolicyRequest(
-      o[1] as api.GoogleChromePolicyV1InheritOrgUnitPolicyRequest);
+  checkGoogleChromePolicyV1InheritOrgUnitPolicyRequest(o[0]);
+  checkGoogleChromePolicyV1InheritOrgUnitPolicyRequest(o[1]);
 }
 
 core.int buildCounterGoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest = 0;
 api.GoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest
     buildGoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest() {
-  var o = api.GoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest();
+  final o = api.GoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest();
   buildCounterGoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest++;
   if (buildCounterGoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest < 3) {
     o.requests = buildUnnamed7559();
@@ -96,7 +93,7 @@ void checkGoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest(
 
 core.List<api.GoogleChromePolicyV1ModifyOrgUnitPolicyRequest>
     buildUnnamed7560() {
-  var o = <api.GoogleChromePolicyV1ModifyOrgUnitPolicyRequest>[];
+  final o = <api.GoogleChromePolicyV1ModifyOrgUnitPolicyRequest>[];
   o.add(buildGoogleChromePolicyV1ModifyOrgUnitPolicyRequest());
   o.add(buildGoogleChromePolicyV1ModifyOrgUnitPolicyRequest());
   return o;
@@ -105,16 +102,14 @@ core.List<api.GoogleChromePolicyV1ModifyOrgUnitPolicyRequest>
 void checkUnnamed7560(
     core.List<api.GoogleChromePolicyV1ModifyOrgUnitPolicyRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleChromePolicyV1ModifyOrgUnitPolicyRequest(
-      o[0] as api.GoogleChromePolicyV1ModifyOrgUnitPolicyRequest);
-  checkGoogleChromePolicyV1ModifyOrgUnitPolicyRequest(
-      o[1] as api.GoogleChromePolicyV1ModifyOrgUnitPolicyRequest);
+  checkGoogleChromePolicyV1ModifyOrgUnitPolicyRequest(o[0]);
+  checkGoogleChromePolicyV1ModifyOrgUnitPolicyRequest(o[1]);
 }
 
 core.int buildCounterGoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest = 0;
 api.GoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest
     buildGoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest() {
-  var o = api.GoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest();
+  final o = api.GoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest();
   buildCounterGoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest++;
   if (buildCounterGoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest < 3) {
     o.requests = buildUnnamed7560();
@@ -135,7 +130,7 @@ void checkGoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest(
 core.int buildCounterGoogleChromePolicyV1InheritOrgUnitPolicyRequest = 0;
 api.GoogleChromePolicyV1InheritOrgUnitPolicyRequest
     buildGoogleChromePolicyV1InheritOrgUnitPolicyRequest() {
-  var o = api.GoogleChromePolicyV1InheritOrgUnitPolicyRequest();
+  final o = api.GoogleChromePolicyV1InheritOrgUnitPolicyRequest();
   buildCounterGoogleChromePolicyV1InheritOrgUnitPolicyRequest++;
   if (buildCounterGoogleChromePolicyV1InheritOrgUnitPolicyRequest < 3) {
     o.policySchema = 'foo';
@@ -153,14 +148,13 @@ void checkGoogleChromePolicyV1InheritOrgUnitPolicyRequest(
       o.policySchema!,
       unittest.equals('foo'),
     );
-    checkGoogleChromePolicyV1PolicyTargetKey(
-        o.policyTargetKey! as api.GoogleChromePolicyV1PolicyTargetKey);
+    checkGoogleChromePolicyV1PolicyTargetKey(o.policyTargetKey!);
   }
   buildCounterGoogleChromePolicyV1InheritOrgUnitPolicyRequest--;
 }
 
 core.List<api.GoogleChromePolicyV1PolicySchema> buildUnnamed7561() {
-  var o = <api.GoogleChromePolicyV1PolicySchema>[];
+  final o = <api.GoogleChromePolicyV1PolicySchema>[];
   o.add(buildGoogleChromePolicyV1PolicySchema());
   o.add(buildGoogleChromePolicyV1PolicySchema());
   return o;
@@ -168,16 +162,14 @@ core.List<api.GoogleChromePolicyV1PolicySchema> buildUnnamed7561() {
 
 void checkUnnamed7561(core.List<api.GoogleChromePolicyV1PolicySchema> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleChromePolicyV1PolicySchema(
-      o[0] as api.GoogleChromePolicyV1PolicySchema);
-  checkGoogleChromePolicyV1PolicySchema(
-      o[1] as api.GoogleChromePolicyV1PolicySchema);
+  checkGoogleChromePolicyV1PolicySchema(o[0]);
+  checkGoogleChromePolicyV1PolicySchema(o[1]);
 }
 
 core.int buildCounterGoogleChromePolicyV1ListPolicySchemasResponse = 0;
 api.GoogleChromePolicyV1ListPolicySchemasResponse
     buildGoogleChromePolicyV1ListPolicySchemasResponse() {
-  var o = api.GoogleChromePolicyV1ListPolicySchemasResponse();
+  final o = api.GoogleChromePolicyV1ListPolicySchemasResponse();
   buildCounterGoogleChromePolicyV1ListPolicySchemasResponse++;
   if (buildCounterGoogleChromePolicyV1ListPolicySchemasResponse < 3) {
     o.nextPageToken = 'foo';
@@ -203,7 +195,7 @@ void checkGoogleChromePolicyV1ListPolicySchemasResponse(
 core.int buildCounterGoogleChromePolicyV1ModifyOrgUnitPolicyRequest = 0;
 api.GoogleChromePolicyV1ModifyOrgUnitPolicyRequest
     buildGoogleChromePolicyV1ModifyOrgUnitPolicyRequest() {
-  var o = api.GoogleChromePolicyV1ModifyOrgUnitPolicyRequest();
+  final o = api.GoogleChromePolicyV1ModifyOrgUnitPolicyRequest();
   buildCounterGoogleChromePolicyV1ModifyOrgUnitPolicyRequest++;
   if (buildCounterGoogleChromePolicyV1ModifyOrgUnitPolicyRequest < 3) {
     o.policyTargetKey = buildGoogleChromePolicyV1PolicyTargetKey();
@@ -218,10 +210,8 @@ void checkGoogleChromePolicyV1ModifyOrgUnitPolicyRequest(
     api.GoogleChromePolicyV1ModifyOrgUnitPolicyRequest o) {
   buildCounterGoogleChromePolicyV1ModifyOrgUnitPolicyRequest++;
   if (buildCounterGoogleChromePolicyV1ModifyOrgUnitPolicyRequest < 3) {
-    checkGoogleChromePolicyV1PolicyTargetKey(
-        o.policyTargetKey! as api.GoogleChromePolicyV1PolicyTargetKey);
-    checkGoogleChromePolicyV1PolicyValue(
-        o.policyValue! as api.GoogleChromePolicyV1PolicyValue);
+    checkGoogleChromePolicyV1PolicyTargetKey(o.policyTargetKey!);
+    checkGoogleChromePolicyV1PolicyValue(o.policyValue!);
     unittest.expect(
       o.updateMask!,
       unittest.equals('foo'),
@@ -231,7 +221,7 @@ void checkGoogleChromePolicyV1ModifyOrgUnitPolicyRequest(
 }
 
 core.List<core.String> buildUnnamed7562() {
-  var o = <core.String>[];
+  final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
@@ -250,7 +240,7 @@ void checkUnnamed7562(core.List<core.String> o) {
 }
 
 core.List<api.GoogleChromePolicyV1AdditionalTargetKeyName> buildUnnamed7563() {
-  var o = <api.GoogleChromePolicyV1AdditionalTargetKeyName>[];
+  final o = <api.GoogleChromePolicyV1AdditionalTargetKeyName>[];
   o.add(buildGoogleChromePolicyV1AdditionalTargetKeyName());
   o.add(buildGoogleChromePolicyV1AdditionalTargetKeyName());
   return o;
@@ -259,15 +249,13 @@ core.List<api.GoogleChromePolicyV1AdditionalTargetKeyName> buildUnnamed7563() {
 void checkUnnamed7563(
     core.List<api.GoogleChromePolicyV1AdditionalTargetKeyName> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleChromePolicyV1AdditionalTargetKeyName(
-      o[0] as api.GoogleChromePolicyV1AdditionalTargetKeyName);
-  checkGoogleChromePolicyV1AdditionalTargetKeyName(
-      o[1] as api.GoogleChromePolicyV1AdditionalTargetKeyName);
+  checkGoogleChromePolicyV1AdditionalTargetKeyName(o[0]);
+  checkGoogleChromePolicyV1AdditionalTargetKeyName(o[1]);
 }
 
 core.List<api.GoogleChromePolicyV1PolicySchemaFieldDescription>
     buildUnnamed7564() {
-  var o = <api.GoogleChromePolicyV1PolicySchemaFieldDescription>[];
+  final o = <api.GoogleChromePolicyV1PolicySchemaFieldDescription>[];
   o.add(buildGoogleChromePolicyV1PolicySchemaFieldDescription());
   o.add(buildGoogleChromePolicyV1PolicySchemaFieldDescription());
   return o;
@@ -276,15 +264,13 @@ core.List<api.GoogleChromePolicyV1PolicySchemaFieldDescription>
 void checkUnnamed7564(
     core.List<api.GoogleChromePolicyV1PolicySchemaFieldDescription> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleChromePolicyV1PolicySchemaFieldDescription(
-      o[0] as api.GoogleChromePolicyV1PolicySchemaFieldDescription);
-  checkGoogleChromePolicyV1PolicySchemaFieldDescription(
-      o[1] as api.GoogleChromePolicyV1PolicySchemaFieldDescription);
+  checkGoogleChromePolicyV1PolicySchemaFieldDescription(o[0]);
+  checkGoogleChromePolicyV1PolicySchemaFieldDescription(o[1]);
 }
 
 core.List<api.GoogleChromePolicyV1PolicySchemaNoticeDescription>
     buildUnnamed7565() {
-  var o = <api.GoogleChromePolicyV1PolicySchemaNoticeDescription>[];
+  final o = <api.GoogleChromePolicyV1PolicySchemaNoticeDescription>[];
   o.add(buildGoogleChromePolicyV1PolicySchemaNoticeDescription());
   o.add(buildGoogleChromePolicyV1PolicySchemaNoticeDescription());
   return o;
@@ -293,15 +279,13 @@ core.List<api.GoogleChromePolicyV1PolicySchemaNoticeDescription>
 void checkUnnamed7565(
     core.List<api.GoogleChromePolicyV1PolicySchemaNoticeDescription> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleChromePolicyV1PolicySchemaNoticeDescription(
-      o[0] as api.GoogleChromePolicyV1PolicySchemaNoticeDescription);
-  checkGoogleChromePolicyV1PolicySchemaNoticeDescription(
-      o[1] as api.GoogleChromePolicyV1PolicySchemaNoticeDescription);
+  checkGoogleChromePolicyV1PolicySchemaNoticeDescription(o[0]);
+  checkGoogleChromePolicyV1PolicySchemaNoticeDescription(o[1]);
 }
 
 core.int buildCounterGoogleChromePolicyV1PolicySchema = 0;
 api.GoogleChromePolicyV1PolicySchema buildGoogleChromePolicyV1PolicySchema() {
-  var o = api.GoogleChromePolicyV1PolicySchema();
+  final o = api.GoogleChromePolicyV1PolicySchema();
   buildCounterGoogleChromePolicyV1PolicySchema++;
   if (buildCounterGoogleChromePolicyV1PolicySchema < 3) {
     o.accessRestrictions = buildUnnamed7562();
@@ -324,8 +308,7 @@ void checkGoogleChromePolicyV1PolicySchema(
   if (buildCounterGoogleChromePolicyV1PolicySchema < 3) {
     checkUnnamed7562(o.accessRestrictions!);
     checkUnnamed7563(o.additionalTargetKeyNames!);
-    checkProto2FileDescriptorProto(
-        o.definition! as api.Proto2FileDescriptorProto);
+    checkProto2FileDescriptorProto(o.definition!);
     checkUnnamed7564(o.fieldDescriptions!);
     unittest.expect(
       o.name!,
@@ -350,7 +333,7 @@ void checkGoogleChromePolicyV1PolicySchema(
 
 core.List<api.GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription>
     buildUnnamed7566() {
-  var o = <api.GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription>[];
+  final o = <api.GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription>[];
   o.add(buildGoogleChromePolicyV1PolicySchemaFieldKnownValueDescription());
   o.add(buildGoogleChromePolicyV1PolicySchemaFieldKnownValueDescription());
   return o;
@@ -360,15 +343,13 @@ void checkUnnamed7566(
     core.List<api.GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleChromePolicyV1PolicySchemaFieldKnownValueDescription(
-      o[0] as api.GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription);
-  checkGoogleChromePolicyV1PolicySchemaFieldKnownValueDescription(
-      o[1] as api.GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription);
+  checkGoogleChromePolicyV1PolicySchemaFieldKnownValueDescription(o[0]);
+  checkGoogleChromePolicyV1PolicySchemaFieldKnownValueDescription(o[1]);
 }
 
 core.List<api.GoogleChromePolicyV1PolicySchemaFieldDescription>
     buildUnnamed7567() {
-  var o = <api.GoogleChromePolicyV1PolicySchemaFieldDescription>[];
+  final o = <api.GoogleChromePolicyV1PolicySchemaFieldDescription>[];
   o.add(buildGoogleChromePolicyV1PolicySchemaFieldDescription());
   o.add(buildGoogleChromePolicyV1PolicySchemaFieldDescription());
   return o;
@@ -377,16 +358,14 @@ core.List<api.GoogleChromePolicyV1PolicySchemaFieldDescription>
 void checkUnnamed7567(
     core.List<api.GoogleChromePolicyV1PolicySchemaFieldDescription> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleChromePolicyV1PolicySchemaFieldDescription(
-      o[0] as api.GoogleChromePolicyV1PolicySchemaFieldDescription);
-  checkGoogleChromePolicyV1PolicySchemaFieldDescription(
-      o[1] as api.GoogleChromePolicyV1PolicySchemaFieldDescription);
+  checkGoogleChromePolicyV1PolicySchemaFieldDescription(o[0]);
+  checkGoogleChromePolicyV1PolicySchemaFieldDescription(o[1]);
 }
 
 core.int buildCounterGoogleChromePolicyV1PolicySchemaFieldDescription = 0;
 api.GoogleChromePolicyV1PolicySchemaFieldDescription
     buildGoogleChromePolicyV1PolicySchemaFieldDescription() {
-  var o = api.GoogleChromePolicyV1PolicySchemaFieldDescription();
+  final o = api.GoogleChromePolicyV1PolicySchemaFieldDescription();
   buildCounterGoogleChromePolicyV1PolicySchemaFieldDescription++;
   if (buildCounterGoogleChromePolicyV1PolicySchemaFieldDescription < 3) {
     o.description = 'foo';
@@ -425,7 +404,7 @@ core.int
     buildCounterGoogleChromePolicyV1PolicySchemaFieldKnownValueDescription = 0;
 api.GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription
     buildGoogleChromePolicyV1PolicySchemaFieldKnownValueDescription() {
-  var o = api.GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription();
+  final o = api.GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription();
   buildCounterGoogleChromePolicyV1PolicySchemaFieldKnownValueDescription++;
   if (buildCounterGoogleChromePolicyV1PolicySchemaFieldKnownValueDescription <
       3) {
@@ -456,7 +435,7 @@ void checkGoogleChromePolicyV1PolicySchemaFieldKnownValueDescription(
 core.int buildCounterGoogleChromePolicyV1PolicySchemaNoticeDescription = 0;
 api.GoogleChromePolicyV1PolicySchemaNoticeDescription
     buildGoogleChromePolicyV1PolicySchemaNoticeDescription() {
-  var o = api.GoogleChromePolicyV1PolicySchemaNoticeDescription();
+  final o = api.GoogleChromePolicyV1PolicySchemaNoticeDescription();
   buildCounterGoogleChromePolicyV1PolicySchemaNoticeDescription++;
   if (buildCounterGoogleChromePolicyV1PolicySchemaNoticeDescription < 3) {
     o.acknowledgementRequired = true;
@@ -490,7 +469,7 @@ void checkGoogleChromePolicyV1PolicySchemaNoticeDescription(
 }
 
 core.Map<core.String, core.String> buildUnnamed7568() {
-  var o = <core.String, core.String>{};
+  final o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
@@ -511,7 +490,7 @@ void checkUnnamed7568(core.Map<core.String, core.String> o) {
 core.int buildCounterGoogleChromePolicyV1PolicyTargetKey = 0;
 api.GoogleChromePolicyV1PolicyTargetKey
     buildGoogleChromePolicyV1PolicyTargetKey() {
-  var o = api.GoogleChromePolicyV1PolicyTargetKey();
+  final o = api.GoogleChromePolicyV1PolicyTargetKey();
   buildCounterGoogleChromePolicyV1PolicyTargetKey++;
   if (buildCounterGoogleChromePolicyV1PolicyTargetKey < 3) {
     o.additionalTargetKeys = buildUnnamed7568();
@@ -535,7 +514,7 @@ void checkGoogleChromePolicyV1PolicyTargetKey(
 }
 
 core.Map<core.String, core.Object> buildUnnamed7569() {
-  var o = <core.String, core.Object>{};
+  final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -583,7 +562,7 @@ void checkUnnamed7569(core.Map<core.String, core.Object> o) {
 
 core.int buildCounterGoogleChromePolicyV1PolicyValue = 0;
 api.GoogleChromePolicyV1PolicyValue buildGoogleChromePolicyV1PolicyValue() {
-  var o = api.GoogleChromePolicyV1PolicyValue();
+  final o = api.GoogleChromePolicyV1PolicyValue();
   buildCounterGoogleChromePolicyV1PolicyValue++;
   if (buildCounterGoogleChromePolicyV1PolicyValue < 3) {
     o.policySchema = 'foo';
@@ -609,7 +588,7 @@ void checkGoogleChromePolicyV1PolicyValue(
 core.int buildCounterGoogleChromePolicyV1ResolveRequest = 0;
 api.GoogleChromePolicyV1ResolveRequest
     buildGoogleChromePolicyV1ResolveRequest() {
-  var o = api.GoogleChromePolicyV1ResolveRequest();
+  final o = api.GoogleChromePolicyV1ResolveRequest();
   buildCounterGoogleChromePolicyV1ResolveRequest++;
   if (buildCounterGoogleChromePolicyV1ResolveRequest < 3) {
     o.pageSize = 42;
@@ -637,14 +616,13 @@ void checkGoogleChromePolicyV1ResolveRequest(
       o.policySchemaFilter!,
       unittest.equals('foo'),
     );
-    checkGoogleChromePolicyV1PolicyTargetKey(
-        o.policyTargetKey! as api.GoogleChromePolicyV1PolicyTargetKey);
+    checkGoogleChromePolicyV1PolicyTargetKey(o.policyTargetKey!);
   }
   buildCounterGoogleChromePolicyV1ResolveRequest--;
 }
 
 core.List<api.GoogleChromePolicyV1ResolvedPolicy> buildUnnamed7570() {
-  var o = <api.GoogleChromePolicyV1ResolvedPolicy>[];
+  final o = <api.GoogleChromePolicyV1ResolvedPolicy>[];
   o.add(buildGoogleChromePolicyV1ResolvedPolicy());
   o.add(buildGoogleChromePolicyV1ResolvedPolicy());
   return o;
@@ -652,16 +630,14 @@ core.List<api.GoogleChromePolicyV1ResolvedPolicy> buildUnnamed7570() {
 
 void checkUnnamed7570(core.List<api.GoogleChromePolicyV1ResolvedPolicy> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleChromePolicyV1ResolvedPolicy(
-      o[0] as api.GoogleChromePolicyV1ResolvedPolicy);
-  checkGoogleChromePolicyV1ResolvedPolicy(
-      o[1] as api.GoogleChromePolicyV1ResolvedPolicy);
+  checkGoogleChromePolicyV1ResolvedPolicy(o[0]);
+  checkGoogleChromePolicyV1ResolvedPolicy(o[1]);
 }
 
 core.int buildCounterGoogleChromePolicyV1ResolveResponse = 0;
 api.GoogleChromePolicyV1ResolveResponse
     buildGoogleChromePolicyV1ResolveResponse() {
-  var o = api.GoogleChromePolicyV1ResolveResponse();
+  final o = api.GoogleChromePolicyV1ResolveResponse();
   buildCounterGoogleChromePolicyV1ResolveResponse++;
   if (buildCounterGoogleChromePolicyV1ResolveResponse < 3) {
     o.nextPageToken = 'foo';
@@ -687,7 +663,7 @@ void checkGoogleChromePolicyV1ResolveResponse(
 core.int buildCounterGoogleChromePolicyV1ResolvedPolicy = 0;
 api.GoogleChromePolicyV1ResolvedPolicy
     buildGoogleChromePolicyV1ResolvedPolicy() {
-  var o = api.GoogleChromePolicyV1ResolvedPolicy();
+  final o = api.GoogleChromePolicyV1ResolvedPolicy();
   buildCounterGoogleChromePolicyV1ResolvedPolicy++;
   if (buildCounterGoogleChromePolicyV1ResolvedPolicy < 3) {
     o.sourceKey = buildGoogleChromePolicyV1PolicyTargetKey();
@@ -702,12 +678,9 @@ void checkGoogleChromePolicyV1ResolvedPolicy(
     api.GoogleChromePolicyV1ResolvedPolicy o) {
   buildCounterGoogleChromePolicyV1ResolvedPolicy++;
   if (buildCounterGoogleChromePolicyV1ResolvedPolicy < 3) {
-    checkGoogleChromePolicyV1PolicyTargetKey(
-        o.sourceKey! as api.GoogleChromePolicyV1PolicyTargetKey);
-    checkGoogleChromePolicyV1PolicyTargetKey(
-        o.targetKey! as api.GoogleChromePolicyV1PolicyTargetKey);
-    checkGoogleChromePolicyV1PolicyValue(
-        o.value! as api.GoogleChromePolicyV1PolicyValue);
+    checkGoogleChromePolicyV1PolicyTargetKey(o.sourceKey!);
+    checkGoogleChromePolicyV1PolicyTargetKey(o.targetKey!);
+    checkGoogleChromePolicyV1PolicyValue(o.value!);
   }
   buildCounterGoogleChromePolicyV1ResolvedPolicy--;
 }
@@ -715,7 +688,7 @@ void checkGoogleChromePolicyV1ResolvedPolicy(
 core.int buildCounterGoogleChromePolicyV1UploadPolicyFileRequest = 0;
 api.GoogleChromePolicyV1UploadPolicyFileRequest
     buildGoogleChromePolicyV1UploadPolicyFileRequest() {
-  var o = api.GoogleChromePolicyV1UploadPolicyFileRequest();
+  final o = api.GoogleChromePolicyV1UploadPolicyFileRequest();
   buildCounterGoogleChromePolicyV1UploadPolicyFileRequest++;
   if (buildCounterGoogleChromePolicyV1UploadPolicyFileRequest < 3) {
     o.policyField = 'foo';
@@ -739,7 +712,7 @@ void checkGoogleChromePolicyV1UploadPolicyFileRequest(
 core.int buildCounterGoogleChromePolicyV1UploadPolicyFileResponse = 0;
 api.GoogleChromePolicyV1UploadPolicyFileResponse
     buildGoogleChromePolicyV1UploadPolicyFileResponse() {
-  var o = api.GoogleChromePolicyV1UploadPolicyFileResponse();
+  final o = api.GoogleChromePolicyV1UploadPolicyFileResponse();
   buildCounterGoogleChromePolicyV1UploadPolicyFileResponse++;
   if (buildCounterGoogleChromePolicyV1UploadPolicyFileResponse < 3) {
     o.downloadUri = 'foo';
@@ -762,7 +735,7 @@ void checkGoogleChromePolicyV1UploadPolicyFileResponse(
 
 core.int buildCounterGoogleProtobufEmpty = 0;
 api.GoogleProtobufEmpty buildGoogleProtobufEmpty() {
-  var o = api.GoogleProtobufEmpty();
+  final o = api.GoogleProtobufEmpty();
   buildCounterGoogleProtobufEmpty++;
   if (buildCounterGoogleProtobufEmpty < 3) {}
   buildCounterGoogleProtobufEmpty--;
@@ -776,7 +749,7 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
 }
 
 core.List<api.Proto2EnumDescriptorProto> buildUnnamed7571() {
-  var o = <api.Proto2EnumDescriptorProto>[];
+  final o = <api.Proto2EnumDescriptorProto>[];
   o.add(buildProto2EnumDescriptorProto());
   o.add(buildProto2EnumDescriptorProto());
   return o;
@@ -784,12 +757,12 @@ core.List<api.Proto2EnumDescriptorProto> buildUnnamed7571() {
 
 void checkUnnamed7571(core.List<api.Proto2EnumDescriptorProto> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProto2EnumDescriptorProto(o[0] as api.Proto2EnumDescriptorProto);
-  checkProto2EnumDescriptorProto(o[1] as api.Proto2EnumDescriptorProto);
+  checkProto2EnumDescriptorProto(o[0]);
+  checkProto2EnumDescriptorProto(o[1]);
 }
 
 core.List<api.Proto2FieldDescriptorProto> buildUnnamed7572() {
-  var o = <api.Proto2FieldDescriptorProto>[];
+  final o = <api.Proto2FieldDescriptorProto>[];
   o.add(buildProto2FieldDescriptorProto());
   o.add(buildProto2FieldDescriptorProto());
   return o;
@@ -797,12 +770,12 @@ core.List<api.Proto2FieldDescriptorProto> buildUnnamed7572() {
 
 void checkUnnamed7572(core.List<api.Proto2FieldDescriptorProto> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProto2FieldDescriptorProto(o[0] as api.Proto2FieldDescriptorProto);
-  checkProto2FieldDescriptorProto(o[1] as api.Proto2FieldDescriptorProto);
+  checkProto2FieldDescriptorProto(o[0]);
+  checkProto2FieldDescriptorProto(o[1]);
 }
 
 core.List<api.Proto2DescriptorProto> buildUnnamed7573() {
-  var o = <api.Proto2DescriptorProto>[];
+  final o = <api.Proto2DescriptorProto>[];
   o.add(buildProto2DescriptorProto());
   o.add(buildProto2DescriptorProto());
   return o;
@@ -810,12 +783,12 @@ core.List<api.Proto2DescriptorProto> buildUnnamed7573() {
 
 void checkUnnamed7573(core.List<api.Proto2DescriptorProto> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProto2DescriptorProto(o[0] as api.Proto2DescriptorProto);
-  checkProto2DescriptorProto(o[1] as api.Proto2DescriptorProto);
+  checkProto2DescriptorProto(o[0]);
+  checkProto2DescriptorProto(o[1]);
 }
 
 core.List<api.Proto2OneofDescriptorProto> buildUnnamed7574() {
-  var o = <api.Proto2OneofDescriptorProto>[];
+  final o = <api.Proto2OneofDescriptorProto>[];
   o.add(buildProto2OneofDescriptorProto());
   o.add(buildProto2OneofDescriptorProto());
   return o;
@@ -823,13 +796,13 @@ core.List<api.Proto2OneofDescriptorProto> buildUnnamed7574() {
 
 void checkUnnamed7574(core.List<api.Proto2OneofDescriptorProto> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProto2OneofDescriptorProto(o[0] as api.Proto2OneofDescriptorProto);
-  checkProto2OneofDescriptorProto(o[1] as api.Proto2OneofDescriptorProto);
+  checkProto2OneofDescriptorProto(o[0]);
+  checkProto2OneofDescriptorProto(o[1]);
 }
 
 core.int buildCounterProto2DescriptorProto = 0;
 api.Proto2DescriptorProto buildProto2DescriptorProto() {
-  var o = api.Proto2DescriptorProto();
+  final o = api.Proto2DescriptorProto();
   buildCounterProto2DescriptorProto++;
   if (buildCounterProto2DescriptorProto < 3) {
     o.enumType = buildUnnamed7571();
@@ -858,7 +831,7 @@ void checkProto2DescriptorProto(api.Proto2DescriptorProto o) {
 }
 
 core.List<api.Proto2EnumValueDescriptorProto> buildUnnamed7575() {
-  var o = <api.Proto2EnumValueDescriptorProto>[];
+  final o = <api.Proto2EnumValueDescriptorProto>[];
   o.add(buildProto2EnumValueDescriptorProto());
   o.add(buildProto2EnumValueDescriptorProto());
   return o;
@@ -866,15 +839,13 @@ core.List<api.Proto2EnumValueDescriptorProto> buildUnnamed7575() {
 
 void checkUnnamed7575(core.List<api.Proto2EnumValueDescriptorProto> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProto2EnumValueDescriptorProto(
-      o[0] as api.Proto2EnumValueDescriptorProto);
-  checkProto2EnumValueDescriptorProto(
-      o[1] as api.Proto2EnumValueDescriptorProto);
+  checkProto2EnumValueDescriptorProto(o[0]);
+  checkProto2EnumValueDescriptorProto(o[1]);
 }
 
 core.int buildCounterProto2EnumDescriptorProto = 0;
 api.Proto2EnumDescriptorProto buildProto2EnumDescriptorProto() {
-  var o = api.Proto2EnumDescriptorProto();
+  final o = api.Proto2EnumDescriptorProto();
   buildCounterProto2EnumDescriptorProto++;
   if (buildCounterProto2EnumDescriptorProto < 3) {
     o.name = 'foo';
@@ -898,7 +869,7 @@ void checkProto2EnumDescriptorProto(api.Proto2EnumDescriptorProto o) {
 
 core.int buildCounterProto2EnumValueDescriptorProto = 0;
 api.Proto2EnumValueDescriptorProto buildProto2EnumValueDescriptorProto() {
-  var o = api.Proto2EnumValueDescriptorProto();
+  final o = api.Proto2EnumValueDescriptorProto();
   buildCounterProto2EnumValueDescriptorProto++;
   if (buildCounterProto2EnumValueDescriptorProto < 3) {
     o.name = 'foo';
@@ -925,7 +896,7 @@ void checkProto2EnumValueDescriptorProto(api.Proto2EnumValueDescriptorProto o) {
 
 core.int buildCounterProto2FieldDescriptorProto = 0;
 api.Proto2FieldDescriptorProto buildProto2FieldDescriptorProto() {
-  var o = api.Proto2FieldDescriptorProto();
+  final o = api.Proto2FieldDescriptorProto();
   buildCounterProto2FieldDescriptorProto++;
   if (buildCounterProto2FieldDescriptorProto < 3) {
     o.defaultValue = 'foo';
@@ -983,7 +954,7 @@ void checkProto2FieldDescriptorProto(api.Proto2FieldDescriptorProto o) {
 }
 
 core.List<api.Proto2EnumDescriptorProto> buildUnnamed7576() {
-  var o = <api.Proto2EnumDescriptorProto>[];
+  final o = <api.Proto2EnumDescriptorProto>[];
   o.add(buildProto2EnumDescriptorProto());
   o.add(buildProto2EnumDescriptorProto());
   return o;
@@ -991,12 +962,12 @@ core.List<api.Proto2EnumDescriptorProto> buildUnnamed7576() {
 
 void checkUnnamed7576(core.List<api.Proto2EnumDescriptorProto> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProto2EnumDescriptorProto(o[0] as api.Proto2EnumDescriptorProto);
-  checkProto2EnumDescriptorProto(o[1] as api.Proto2EnumDescriptorProto);
+  checkProto2EnumDescriptorProto(o[0]);
+  checkProto2EnumDescriptorProto(o[1]);
 }
 
 core.List<api.Proto2DescriptorProto> buildUnnamed7577() {
-  var o = <api.Proto2DescriptorProto>[];
+  final o = <api.Proto2DescriptorProto>[];
   o.add(buildProto2DescriptorProto());
   o.add(buildProto2DescriptorProto());
   return o;
@@ -1004,13 +975,13 @@ core.List<api.Proto2DescriptorProto> buildUnnamed7577() {
 
 void checkUnnamed7577(core.List<api.Proto2DescriptorProto> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProto2DescriptorProto(o[0] as api.Proto2DescriptorProto);
-  checkProto2DescriptorProto(o[1] as api.Proto2DescriptorProto);
+  checkProto2DescriptorProto(o[0]);
+  checkProto2DescriptorProto(o[1]);
 }
 
 core.int buildCounterProto2FileDescriptorProto = 0;
 api.Proto2FileDescriptorProto buildProto2FileDescriptorProto() {
-  var o = api.Proto2FileDescriptorProto();
+  final o = api.Proto2FileDescriptorProto();
   buildCounterProto2FileDescriptorProto++;
   if (buildCounterProto2FileDescriptorProto < 3) {
     o.enumType = buildUnnamed7576();
@@ -1046,7 +1017,7 @@ void checkProto2FileDescriptorProto(api.Proto2FileDescriptorProto o) {
 
 core.int buildCounterProto2OneofDescriptorProto = 0;
 api.Proto2OneofDescriptorProto buildProto2OneofDescriptorProto() {
-  var o = api.Proto2OneofDescriptorProto();
+  final o = api.Proto2OneofDescriptorProto();
   buildCounterProto2OneofDescriptorProto++;
   if (buildCounterProto2OneofDescriptorProto < 3) {
     o.name = 'foo';
@@ -1069,97 +1040,89 @@ void checkProto2OneofDescriptorProto(api.Proto2OneofDescriptorProto o) {
 void main() {
   unittest.group('obj-schema-GoogleChromePolicyV1AdditionalTargetKeyName', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleChromePolicyV1AdditionalTargetKeyName();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleChromePolicyV1AdditionalTargetKeyName.fromJson(
+      final o = buildGoogleChromePolicyV1AdditionalTargetKeyName();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleChromePolicyV1AdditionalTargetKeyName.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleChromePolicyV1AdditionalTargetKeyName(
-          od as api.GoogleChromePolicyV1AdditionalTargetKeyName);
+      checkGoogleChromePolicyV1AdditionalTargetKeyName(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest(
-          od as api.GoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest);
+      checkGoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest(od);
     });
   });
 
   unittest.group(
       'obj-schema-GoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildGoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.GoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest(
-          od as api.GoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest);
+      checkGoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest(od);
     });
   });
 
   unittest.group('obj-schema-GoogleChromePolicyV1InheritOrgUnitPolicyRequest',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleChromePolicyV1InheritOrgUnitPolicyRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleChromePolicyV1InheritOrgUnitPolicyRequest.fromJson(
+      final o = buildGoogleChromePolicyV1InheritOrgUnitPolicyRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleChromePolicyV1InheritOrgUnitPolicyRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleChromePolicyV1InheritOrgUnitPolicyRequest(
-          od as api.GoogleChromePolicyV1InheritOrgUnitPolicyRequest);
+      checkGoogleChromePolicyV1InheritOrgUnitPolicyRequest(od);
     });
   });
 
   unittest.group('obj-schema-GoogleChromePolicyV1ListPolicySchemasResponse',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleChromePolicyV1ListPolicySchemasResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleChromePolicyV1ListPolicySchemasResponse.fromJson(
+      final o = buildGoogleChromePolicyV1ListPolicySchemasResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleChromePolicyV1ListPolicySchemasResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleChromePolicyV1ListPolicySchemasResponse(
-          od as api.GoogleChromePolicyV1ListPolicySchemasResponse);
+      checkGoogleChromePolicyV1ListPolicySchemasResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleChromePolicyV1ModifyOrgUnitPolicyRequest',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleChromePolicyV1ModifyOrgUnitPolicyRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleChromePolicyV1ModifyOrgUnitPolicyRequest.fromJson(
+      final o = buildGoogleChromePolicyV1ModifyOrgUnitPolicyRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleChromePolicyV1ModifyOrgUnitPolicyRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleChromePolicyV1ModifyOrgUnitPolicyRequest(
-          od as api.GoogleChromePolicyV1ModifyOrgUnitPolicyRequest);
+      checkGoogleChromePolicyV1ModifyOrgUnitPolicyRequest(od);
     });
   });
 
   unittest.group('obj-schema-GoogleChromePolicyV1PolicySchema', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleChromePolicyV1PolicySchema();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleChromePolicyV1PolicySchema.fromJson(
+      final o = buildGoogleChromePolicyV1PolicySchema();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleChromePolicyV1PolicySchema.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleChromePolicyV1PolicySchema(
-          od as api.GoogleChromePolicyV1PolicySchema);
+      checkGoogleChromePolicyV1PolicySchema(od);
     });
   });
 
   unittest.group('obj-schema-GoogleChromePolicyV1PolicySchemaFieldDescription',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleChromePolicyV1PolicySchemaFieldDescription();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleChromePolicyV1PolicySchemaFieldDescription.fromJson(
+      final o = buildGoogleChromePolicyV1PolicySchemaFieldDescription();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleChromePolicyV1PolicySchemaFieldDescription.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleChromePolicyV1PolicySchemaFieldDescription(
-          od as api.GoogleChromePolicyV1PolicySchemaFieldDescription);
+      checkGoogleChromePolicyV1PolicySchemaFieldDescription(od);
     });
   });
 
@@ -1167,213 +1130,203 @@ void main() {
       'obj-schema-GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleChromePolicyV1PolicySchemaFieldKnownValueDescription();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription
+      final o =
+          buildGoogleChromePolicyV1PolicySchemaFieldKnownValueDescription();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription
           .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleChromePolicyV1PolicySchemaFieldKnownValueDescription(
-          od as api.GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription);
+      checkGoogleChromePolicyV1PolicySchemaFieldKnownValueDescription(od);
     });
   });
 
   unittest.group('obj-schema-GoogleChromePolicyV1PolicySchemaNoticeDescription',
       () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleChromePolicyV1PolicySchemaNoticeDescription();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleChromePolicyV1PolicySchemaNoticeDescription.fromJson(
+      final o = buildGoogleChromePolicyV1PolicySchemaNoticeDescription();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleChromePolicyV1PolicySchemaNoticeDescription.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleChromePolicyV1PolicySchemaNoticeDescription(
-          od as api.GoogleChromePolicyV1PolicySchemaNoticeDescription);
+      checkGoogleChromePolicyV1PolicySchemaNoticeDescription(od);
     });
   });
 
   unittest.group('obj-schema-GoogleChromePolicyV1PolicyTargetKey', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleChromePolicyV1PolicyTargetKey();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleChromePolicyV1PolicyTargetKey.fromJson(
+      final o = buildGoogleChromePolicyV1PolicyTargetKey();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleChromePolicyV1PolicyTargetKey.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleChromePolicyV1PolicyTargetKey(
-          od as api.GoogleChromePolicyV1PolicyTargetKey);
+      checkGoogleChromePolicyV1PolicyTargetKey(od);
     });
   });
 
   unittest.group('obj-schema-GoogleChromePolicyV1PolicyValue', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleChromePolicyV1PolicyValue();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleChromePolicyV1PolicyValue.fromJson(
+      final o = buildGoogleChromePolicyV1PolicyValue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleChromePolicyV1PolicyValue.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleChromePolicyV1PolicyValue(
-          od as api.GoogleChromePolicyV1PolicyValue);
+      checkGoogleChromePolicyV1PolicyValue(od);
     });
   });
 
   unittest.group('obj-schema-GoogleChromePolicyV1ResolveRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleChromePolicyV1ResolveRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleChromePolicyV1ResolveRequest.fromJson(
+      final o = buildGoogleChromePolicyV1ResolveRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleChromePolicyV1ResolveRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleChromePolicyV1ResolveRequest(
-          od as api.GoogleChromePolicyV1ResolveRequest);
+      checkGoogleChromePolicyV1ResolveRequest(od);
     });
   });
 
   unittest.group('obj-schema-GoogleChromePolicyV1ResolveResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleChromePolicyV1ResolveResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleChromePolicyV1ResolveResponse.fromJson(
+      final o = buildGoogleChromePolicyV1ResolveResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleChromePolicyV1ResolveResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleChromePolicyV1ResolveResponse(
-          od as api.GoogleChromePolicyV1ResolveResponse);
+      checkGoogleChromePolicyV1ResolveResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleChromePolicyV1ResolvedPolicy', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleChromePolicyV1ResolvedPolicy();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleChromePolicyV1ResolvedPolicy.fromJson(
+      final o = buildGoogleChromePolicyV1ResolvedPolicy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleChromePolicyV1ResolvedPolicy.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleChromePolicyV1ResolvedPolicy(
-          od as api.GoogleChromePolicyV1ResolvedPolicy);
+      checkGoogleChromePolicyV1ResolvedPolicy(od);
     });
   });
 
   unittest.group('obj-schema-GoogleChromePolicyV1UploadPolicyFileRequest', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleChromePolicyV1UploadPolicyFileRequest();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleChromePolicyV1UploadPolicyFileRequest.fromJson(
+      final o = buildGoogleChromePolicyV1UploadPolicyFileRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleChromePolicyV1UploadPolicyFileRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleChromePolicyV1UploadPolicyFileRequest(
-          od as api.GoogleChromePolicyV1UploadPolicyFileRequest);
+      checkGoogleChromePolicyV1UploadPolicyFileRequest(od);
     });
   });
 
   unittest.group('obj-schema-GoogleChromePolicyV1UploadPolicyFileResponse', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleChromePolicyV1UploadPolicyFileResponse();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleChromePolicyV1UploadPolicyFileResponse.fromJson(
+      final o = buildGoogleChromePolicyV1UploadPolicyFileResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleChromePolicyV1UploadPolicyFileResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleChromePolicyV1UploadPolicyFileResponse(
-          od as api.GoogleChromePolicyV1UploadPolicyFileResponse);
+      checkGoogleChromePolicyV1UploadPolicyFileResponse(od);
     });
   });
 
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildGoogleProtobufEmpty();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.GoogleProtobufEmpty.fromJson(
+      final o = buildGoogleProtobufEmpty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleProtobufEmpty.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleProtobufEmpty(od as api.GoogleProtobufEmpty);
+      checkGoogleProtobufEmpty(od);
     });
   });
 
   unittest.group('obj-schema-Proto2DescriptorProto', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProto2DescriptorProto();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Proto2DescriptorProto.fromJson(
+      final o = buildProto2DescriptorProto();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Proto2DescriptorProto.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProto2DescriptorProto(od as api.Proto2DescriptorProto);
+      checkProto2DescriptorProto(od);
     });
   });
 
   unittest.group('obj-schema-Proto2EnumDescriptorProto', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProto2EnumDescriptorProto();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Proto2EnumDescriptorProto.fromJson(
+      final o = buildProto2EnumDescriptorProto();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Proto2EnumDescriptorProto.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProto2EnumDescriptorProto(od as api.Proto2EnumDescriptorProto);
+      checkProto2EnumDescriptorProto(od);
     });
   });
 
   unittest.group('obj-schema-Proto2EnumValueDescriptorProto', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProto2EnumValueDescriptorProto();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Proto2EnumValueDescriptorProto.fromJson(
+      final o = buildProto2EnumValueDescriptorProto();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Proto2EnumValueDescriptorProto.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProto2EnumValueDescriptorProto(
-          od as api.Proto2EnumValueDescriptorProto);
+      checkProto2EnumValueDescriptorProto(od);
     });
   });
 
   unittest.group('obj-schema-Proto2FieldDescriptorProto', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProto2FieldDescriptorProto();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Proto2FieldDescriptorProto.fromJson(
+      final o = buildProto2FieldDescriptorProto();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Proto2FieldDescriptorProto.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProto2FieldDescriptorProto(od as api.Proto2FieldDescriptorProto);
+      checkProto2FieldDescriptorProto(od);
     });
   });
 
   unittest.group('obj-schema-Proto2FileDescriptorProto', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProto2FileDescriptorProto();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Proto2FileDescriptorProto.fromJson(
+      final o = buildProto2FileDescriptorProto();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Proto2FileDescriptorProto.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProto2FileDescriptorProto(od as api.Proto2FileDescriptorProto);
+      checkProto2FileDescriptorProto(od);
     });
   });
 
   unittest.group('obj-schema-Proto2OneofDescriptorProto', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildProto2OneofDescriptorProto();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od = api.Proto2OneofDescriptorProto.fromJson(
+      final o = buildProto2OneofDescriptorProto();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Proto2OneofDescriptorProto.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkProto2OneofDescriptorProto(od as api.Proto2OneofDescriptorProto);
+      checkProto2OneofDescriptorProto(od);
     });
   });
 
   unittest.group('resource-CustomersPoliciesResource', () {
     unittest.test('method--resolve', () async {
-      var mock = HttpServerMock();
-      var res = api.ChromePolicyApi(mock).customers.policies;
-      var arg_request = buildGoogleChromePolicyV1ResolveRequest();
-      var arg_customer = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ChromePolicyApi(mock).customers.policies;
+      final arg_request = buildGoogleChromePolicyV1ResolveRequest();
+      final arg_customer = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleChromePolicyV1ResolveRequest.fromJson(
+        final obj = api.GoogleChromePolicyV1ResolveRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleChromePolicyV1ResolveRequest(
-            obj as api.GoogleChromePolicyV1ResolveRequest);
+        checkGoogleChromePolicyV1ResolveRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1381,14 +1334,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp =
+        final resp =
             convert.json.encode(buildGoogleChromePolicyV1ResolveResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -1401,44 +1354,43 @@ void main() {
 
   unittest.group('resource-CustomersPoliciesOrgunitsResource', () {
     unittest.test('method--batchInherit', () async {
-      var mock = HttpServerMock();
-      var res = api.ChromePolicyApi(mock).customers.policies.orgunits;
-      var arg_request =
+      final mock = HttpServerMock();
+      final res = api.ChromePolicyApi(mock).customers.policies.orgunits;
+      final arg_request =
           buildGoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest();
-      var arg_customer = 'foo';
-      var arg_$fields = 'foo';
+      final arg_customer = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.GoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest.fromJson(
                 json as core.Map<core.String, core.dynamic>);
-        checkGoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest(
-            obj as api.GoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest);
+        checkGoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1446,14 +1398,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleProtobufEmpty());
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.batchInherit(arg_request, arg_customer,
@@ -1462,44 +1414,43 @@ void main() {
     });
 
     unittest.test('method--batchModify', () async {
-      var mock = HttpServerMock();
-      var res = api.ChromePolicyApi(mock).customers.policies.orgunits;
-      var arg_request =
+      final mock = HttpServerMock();
+      final res = api.ChromePolicyApi(mock).customers.policies.orgunits;
+      final arg_request =
           buildGoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest();
-      var arg_customer = 'foo';
-      var arg_$fields = 'foo';
+      final arg_customer = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
+        final obj =
             api.GoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest.fromJson(
                 json as core.Map<core.String, core.dynamic>);
-        checkGoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest(
-            obj as api.GoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest);
+        checkGoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1507,14 +1458,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleProtobufEmpty());
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.batchModify(arg_request, arg_customer,
@@ -1525,36 +1476,36 @@ void main() {
 
   unittest.group('resource-CustomersPolicySchemasResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.ChromePolicyApi(mock).customers.policySchemas;
-      var arg_name = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ChromePolicyApi(mock).customers.policySchemas;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1562,14 +1513,15 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildGoogleChromePolicyV1PolicySchema());
+        final resp =
+            convert.json.encode(buildGoogleChromePolicyV1PolicySchema());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
@@ -1578,39 +1530,39 @@ void main() {
     });
 
     unittest.test('method--list', () async {
-      var mock = HttpServerMock();
-      var res = api.ChromePolicyApi(mock).customers.policySchemas;
-      var arg_parent = 'foo';
-      var arg_filter = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ChromePolicyApi(mock).customers.policySchemas;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1618,26 +1570,26 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["filter"]!.first,
+          queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          core.int.parse(queryMap["pageSize"]!.first),
+          core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
         unittest.expect(
-          queryMap["pageToken"]!.first,
+          queryMap['pageToken']!.first,
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleChromePolicyV1ListPolicySchemasResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
@@ -1656,42 +1608,41 @@ void main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = HttpServerMock();
-      var res = api.ChromePolicyApi(mock).media;
-      var arg_request = buildGoogleChromePolicyV1UploadPolicyFileRequest();
-      var arg_customer = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.ChromePolicyApi(mock).media;
+      final arg_request = buildGoogleChromePolicyV1UploadPolicyFileRequest();
+      final arg_customer = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleChromePolicyV1UploadPolicyFileRequest.fromJson(
+        final obj = api.GoogleChromePolicyV1UploadPolicyFileRequest.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleChromePolicyV1UploadPolicyFileRequest(
-            obj as api.GoogleChromePolicyV1UploadPolicyFileRequest);
+        checkGoogleChromePolicyV1UploadPolicyFileRequest(obj);
 
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 3),
-          unittest.equals("v1/"),
+          unittest.equals('v1/'),
         );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -1699,14 +1650,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json
+        final resp = convert.json
             .encode(buildGoogleChromePolicyV1UploadPolicyFileResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);

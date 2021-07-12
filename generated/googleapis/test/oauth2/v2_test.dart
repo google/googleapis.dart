@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_returning_null
 // ignore_for_file: camel_case_types
 // ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
@@ -6,10 +5,10 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_const_declarations
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
-// ignore_for_file: prefer_single_quotes
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
@@ -29,7 +28,7 @@ import '../test_shared.dart';
 
 core.int buildCounterTokeninfo = 0;
 api.Tokeninfo buildTokeninfo() {
-  var o = api.Tokeninfo();
+  final o = api.Tokeninfo();
   buildCounterTokeninfo++;
   if (buildCounterTokeninfo < 3) {
     o.audience = 'foo';
@@ -78,7 +77,7 @@ void checkTokeninfo(api.Tokeninfo o) {
 
 core.int buildCounterUserinfo = 0;
 api.Userinfo buildUserinfo() {
-  var o = api.Userinfo();
+  final o = api.Userinfo();
   buildCounterUserinfo++;
   if (buildCounterUserinfo < 3) {
     o.email = 'foo';
@@ -148,56 +147,56 @@ void checkUserinfo(api.Userinfo o) {
 void main() {
   unittest.group('obj-schema-Tokeninfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildTokeninfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildTokeninfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Tokeninfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkTokeninfo(od as api.Tokeninfo);
+      checkTokeninfo(od);
     });
   });
 
   unittest.group('obj-schema-Userinfo', () {
     unittest.test('to-json--from-json', () async {
-      var o = buildUserinfo();
-      var oJson = convert.jsonDecode(convert.jsonEncode(o));
-      var od =
+      final o = buildUserinfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
           api.Userinfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkUserinfo(od as api.Userinfo);
+      checkUserinfo(od);
     });
   });
 
   unittest.group('resource-Oauth2Api', () {
     unittest.test('method--tokeninfo', () async {
-      var mock = HttpServerMock();
-      var res = api.Oauth2Api(mock);
-      var arg_accessToken = 'foo';
-      var arg_idToken = 'foo';
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.Oauth2Api(mock);
+      final arg_accessToken = 'foo';
+      final arg_idToken = 'foo';
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 19),
-          unittest.equals("oauth2/v2/tokeninfo"),
+          unittest.equals('oauth2/v2/tokeninfo'),
         );
         pathOffset += 19;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -205,22 +204,22 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["access_token"]!.first,
+          queryMap['access_token']!.first,
           unittest.equals(arg_accessToken),
         );
         unittest.expect(
-          queryMap["id_token"]!.first,
+          queryMap['id_token']!.first,
           unittest.equals(arg_idToken),
         );
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildTokeninfo());
+        final resp = convert.json.encode(buildTokeninfo());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.tokeninfo(
@@ -233,34 +232,34 @@ void main() {
 
   unittest.group('resource-UserinfoResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.Oauth2Api(mock).userinfo;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.Oauth2Api(mock).userinfo;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 18),
-          unittest.equals("oauth2/v2/userinfo"),
+          unittest.equals('oauth2/v2/userinfo'),
         );
         pathOffset += 18;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -268,14 +267,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildUserinfo());
+        final resp = convert.json.encode(buildUserinfo());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get($fields: arg_$fields);
@@ -285,34 +284,34 @@ void main() {
 
   unittest.group('resource-UserinfoV2MeResource', () {
     unittest.test('method--get', () async {
-      var mock = HttpServerMock();
-      var res = api.Oauth2Api(mock).userinfo.v2.me;
-      var arg_$fields = 'foo';
+      final mock = HttpServerMock();
+      final res = api.Oauth2Api(mock).userinfo.v2.me;
+      final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
+        final path = (req.url).path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 1),
-          unittest.equals("/"),
+          unittest.equals('/'),
         );
         pathOffset += 1;
         unittest.expect(
           path.substring(pathOffset, pathOffset + 14),
-          unittest.equals("userinfo/v2/me"),
+          unittest.equals('userinfo/v2/me'),
         );
         pathOffset += 14;
 
-        var query = (req.url).query;
+        final query = (req.url).query;
         var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
+        final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
             queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
-            var keyValue = part.split('=');
+            final keyValue = part.split('=');
             addQueryParam(
               core.Uri.decodeQueryComponent(keyValue[0]),
               core.Uri.decodeQueryComponent(keyValue[1]),
@@ -320,14 +319,14 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap["fields"]!.first,
+          queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
 
-        var h = {
+        final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = convert.json.encode(buildUserinfo());
+        final resp = convert.json.encode(buildUserinfo());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get($fields: arg_$fields);
