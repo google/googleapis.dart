@@ -41,12 +41,10 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-core.List<api.PlaceActionLink> buildUnnamed6648() {
-  final o = <api.PlaceActionLink>[];
-  o.add(buildPlaceActionLink());
-  o.add(buildPlaceActionLink());
-  return o;
-}
+core.List<api.PlaceActionLink> buildUnnamed6648() => [
+      buildPlaceActionLink(),
+      buildPlaceActionLink(),
+    ];
 
 void checkUnnamed6648(core.List<api.PlaceActionLink> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -78,12 +76,10 @@ void checkListPlaceActionLinksResponse(api.ListPlaceActionLinksResponse o) {
   buildCounterListPlaceActionLinksResponse--;
 }
 
-core.List<api.PlaceActionTypeMetadata> buildUnnamed6649() {
-  final o = <api.PlaceActionTypeMetadata>[];
-  o.add(buildPlaceActionTypeMetadata());
-  o.add(buildPlaceActionTypeMetadata());
-  return o;
-}
+core.List<api.PlaceActionTypeMetadata> buildUnnamed6649() => [
+      buildPlaceActionTypeMetadata(),
+      buildPlaceActionTypeMetadata(),
+    ];
 
 void checkUnnamed6649(core.List<api.PlaceActionTypeMetadata> o) {
   unittest.expect(o, unittest.hasLength(2));

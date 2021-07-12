@@ -73,12 +73,10 @@ void checkAttributeValue(api.AttributeValue o) {
   buildCounterAttributeValue--;
 }
 
-core.Map<core.String, api.AttributeValue> buildUnnamed1636() {
-  final o = <core.String, api.AttributeValue>{};
-  o['x'] = buildAttributeValue();
-  o['y'] = buildAttributeValue();
-  return o;
-}
+core.Map<core.String, api.AttributeValue> buildUnnamed1636() => {
+      'x': buildAttributeValue(),
+      'y': buildAttributeValue(),
+    };
 
 void checkUnnamed1636(core.Map<core.String, api.AttributeValue> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -110,12 +108,10 @@ void checkAttributes(api.Attributes o) {
   buildCounterAttributes--;
 }
 
-core.List<api.Span> buildUnnamed1637() {
-  final o = <api.Span>[];
-  o.add(buildSpan());
-  o.add(buildSpan());
-  return o;
-}
+core.List<api.Span> buildUnnamed1637() => [
+      buildSpan(),
+      buildSpan(),
+    ];
 
 void checkUnnamed1637(core.List<api.Span> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -191,12 +187,10 @@ void checkLink(api.Link o) {
   buildCounterLink--;
 }
 
-core.List<api.Link> buildUnnamed1638() {
-  final o = <api.Link>[];
-  o.add(buildLink());
-  o.add(buildLink());
-  return o;
-}
+core.List<api.Link> buildUnnamed1638() => [
+      buildLink(),
+      buildLink(),
+    ];
 
 void checkUnnamed1638(core.List<api.Link> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -389,12 +383,10 @@ void checkStackFrame(api.StackFrame o) {
   buildCounterStackFrame--;
 }
 
-core.List<api.StackFrame> buildUnnamed1639() {
-  final o = <api.StackFrame>[];
-  o.add(buildStackFrame());
-  o.add(buildStackFrame());
-  return o;
-}
+core.List<api.StackFrame> buildUnnamed1639() => [
+      buildStackFrame(),
+      buildStackFrame(),
+    ];
 
 void checkUnnamed1639(core.List<api.StackFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -450,20 +442,18 @@ void checkStackTrace(api.StackTrace o) {
   buildCounterStackTrace--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed1640() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed1640() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed1640(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -497,12 +487,10 @@ void checkUnnamed1640(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed1641() {
-  final o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed1640());
-  o.add(buildUnnamed1640());
-  return o;
-}
+core.List<core.Map<core.String, core.Object>> buildUnnamed1641() => [
+      buildUnnamed1640(),
+      buildUnnamed1640(),
+    ];
 
 void checkUnnamed1641(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -565,12 +553,10 @@ void checkTimeEvent(api.TimeEvent o) {
   buildCounterTimeEvent--;
 }
 
-core.List<api.TimeEvent> buildUnnamed1642() {
-  final o = <api.TimeEvent>[];
-  o.add(buildTimeEvent());
-  o.add(buildTimeEvent());
-  return o;
-}
+core.List<api.TimeEvent> buildUnnamed1642() => [
+      buildTimeEvent(),
+      buildTimeEvent(),
+    ];
 
 void checkUnnamed1642(core.List<api.TimeEvent> o) {
   unittest.expect(o, unittest.hasLength(2));

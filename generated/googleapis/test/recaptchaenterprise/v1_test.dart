@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<core.String> buildUnnamed3725() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed3725() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed3725(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -66,12 +64,10 @@ void checkGoogleCloudRecaptchaenterpriseV1AndroidKeySettings(
   buildCounterGoogleCloudRecaptchaenterpriseV1AndroidKeySettings--;
 }
 
-core.List<core.String> buildUnnamed3726() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed3726() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed3726(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -247,12 +243,10 @@ void checkGoogleCloudRecaptchaenterpriseV1Event(
   buildCounterGoogleCloudRecaptchaenterpriseV1Event--;
 }
 
-core.List<core.String> buildUnnamed3727() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed3727() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed3727(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -287,12 +281,10 @@ void checkGoogleCloudRecaptchaenterpriseV1IOSKeySettings(
   buildCounterGoogleCloudRecaptchaenterpriseV1IOSKeySettings--;
 }
 
-core.Map<core.String, core.String> buildUnnamed3728() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed3728() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed3728(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -351,12 +343,10 @@ void checkGoogleCloudRecaptchaenterpriseV1Key(
   buildCounterGoogleCloudRecaptchaenterpriseV1Key--;
 }
 
-core.List<api.GoogleCloudRecaptchaenterpriseV1Key> buildUnnamed3729() {
-  final o = <api.GoogleCloudRecaptchaenterpriseV1Key>[];
-  o.add(buildGoogleCloudRecaptchaenterpriseV1Key());
-  o.add(buildGoogleCloudRecaptchaenterpriseV1Key());
-  return o;
-}
+core.List<api.GoogleCloudRecaptchaenterpriseV1Key> buildUnnamed3729() => [
+      buildGoogleCloudRecaptchaenterpriseV1Key(),
+      buildGoogleCloudRecaptchaenterpriseV1Key(),
+    ];
 
 void checkUnnamed3729(core.List<api.GoogleCloudRecaptchaenterpriseV1Key> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -391,12 +381,10 @@ void checkGoogleCloudRecaptchaenterpriseV1ListKeysResponse(
 }
 
 core.List<api.GoogleCloudRecaptchaenterpriseV1ChallengeMetrics>
-    buildUnnamed3730() {
-  final o = <api.GoogleCloudRecaptchaenterpriseV1ChallengeMetrics>[];
-  o.add(buildGoogleCloudRecaptchaenterpriseV1ChallengeMetrics());
-  o.add(buildGoogleCloudRecaptchaenterpriseV1ChallengeMetrics());
-  return o;
-}
+    buildUnnamed3730() => [
+          buildGoogleCloudRecaptchaenterpriseV1ChallengeMetrics(),
+          buildGoogleCloudRecaptchaenterpriseV1ChallengeMetrics(),
+        ];
 
 void checkUnnamed3730(
     core.List<api.GoogleCloudRecaptchaenterpriseV1ChallengeMetrics> o) {
@@ -405,12 +393,11 @@ void checkUnnamed3730(
   checkGoogleCloudRecaptchaenterpriseV1ChallengeMetrics(o[1]);
 }
 
-core.List<api.GoogleCloudRecaptchaenterpriseV1ScoreMetrics> buildUnnamed3731() {
-  final o = <api.GoogleCloudRecaptchaenterpriseV1ScoreMetrics>[];
-  o.add(buildGoogleCloudRecaptchaenterpriseV1ScoreMetrics());
-  o.add(buildGoogleCloudRecaptchaenterpriseV1ScoreMetrics());
-  return o;
-}
+core.List<api.GoogleCloudRecaptchaenterpriseV1ScoreMetrics>
+    buildUnnamed3731() => [
+          buildGoogleCloudRecaptchaenterpriseV1ScoreMetrics(),
+          buildGoogleCloudRecaptchaenterpriseV1ScoreMetrics(),
+        ];
 
 void checkUnnamed3731(
     core.List<api.GoogleCloudRecaptchaenterpriseV1ScoreMetrics> o) {
@@ -464,12 +451,10 @@ void checkGoogleCloudRecaptchaenterpriseV1MigrateKeyRequest(
   buildCounterGoogleCloudRecaptchaenterpriseV1MigrateKeyRequest--;
 }
 
-core.List<core.String> buildUnnamed3732() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed3732() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed3732(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -509,12 +494,10 @@ void checkGoogleCloudRecaptchaenterpriseV1RiskAnalysis(
   buildCounterGoogleCloudRecaptchaenterpriseV1RiskAnalysis--;
 }
 
-core.Map<core.String, core.String> buildUnnamed3733() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed3733() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed3733(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -550,13 +533,10 @@ void checkGoogleCloudRecaptchaenterpriseV1ScoreDistribution(
 }
 
 core.Map<core.String, api.GoogleCloudRecaptchaenterpriseV1ScoreDistribution>
-    buildUnnamed3734() {
-  final o =
-      <core.String, api.GoogleCloudRecaptchaenterpriseV1ScoreDistribution>{};
-  o['x'] = buildGoogleCloudRecaptchaenterpriseV1ScoreDistribution();
-  o['y'] = buildGoogleCloudRecaptchaenterpriseV1ScoreDistribution();
-  return o;
-}
+    buildUnnamed3734() => {
+          'x': buildGoogleCloudRecaptchaenterpriseV1ScoreDistribution(),
+          'y': buildGoogleCloudRecaptchaenterpriseV1ScoreDistribution(),
+        };
 
 void checkUnnamed3734(
     core.Map<core.String, api.GoogleCloudRecaptchaenterpriseV1ScoreDistribution>
@@ -659,12 +639,10 @@ void checkGoogleCloudRecaptchaenterpriseV1TokenProperties(
   buildCounterGoogleCloudRecaptchaenterpriseV1TokenProperties--;
 }
 
-core.List<core.String> buildUnnamed3735() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed3735() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed3735(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));

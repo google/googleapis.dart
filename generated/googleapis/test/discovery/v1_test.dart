@@ -53,12 +53,10 @@ void checkDirectoryListItemsIcons(api.DirectoryListItemsIcons o) {
   buildCounterDirectoryListItemsIcons--;
 }
 
-core.List<core.String> buildUnnamed748() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed748() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed748(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -140,12 +138,10 @@ void checkDirectoryListItems(api.DirectoryListItems o) {
   buildCounterDirectoryListItems--;
 }
 
-core.List<api.DirectoryListItems> buildUnnamed749() {
-  final o = <api.DirectoryListItems>[];
-  o.add(buildDirectoryListItems());
-  o.add(buildDirectoryListItems());
-  return o;
-}
+core.List<api.DirectoryListItems> buildUnnamed749() => [
+      buildDirectoryListItems(),
+      buildDirectoryListItems(),
+    ];
 
 void checkUnnamed749(core.List<api.DirectoryListItems> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -182,12 +178,10 @@ void checkDirectoryList(api.DirectoryList o) {
   buildCounterDirectoryList--;
 }
 
-core.List<core.String> buildUnnamed750() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed750() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed750(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -220,12 +214,10 @@ void checkJsonSchemaAnnotations(api.JsonSchemaAnnotations o) {
   buildCounterJsonSchemaAnnotations--;
 }
 
-core.List<core.String> buildUnnamed751() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed751() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed751(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -239,12 +231,10 @@ void checkUnnamed751(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed752() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed752() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed752(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -258,12 +248,10 @@ void checkUnnamed752(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, api.JsonSchema> buildUnnamed753() {
-  final o = <core.String, api.JsonSchema>{};
-  o['x'] = buildJsonSchema();
-  o['y'] = buildJsonSchema();
-  return o;
-}
+core.Map<core.String, api.JsonSchema> buildUnnamed753() => {
+      'x': buildJsonSchema(),
+      'y': buildJsonSchema(),
+    };
 
 void checkUnnamed753(core.Map<core.String, api.JsonSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -298,12 +286,10 @@ void checkJsonSchemaVariantMap(api.JsonSchemaVariantMap o) {
   buildCounterJsonSchemaVariantMap--;
 }
 
-core.List<api.JsonSchemaVariantMap> buildUnnamed754() {
-  final o = <api.JsonSchemaVariantMap>[];
-  o.add(buildJsonSchemaVariantMap());
-  o.add(buildJsonSchemaVariantMap());
-  return o;
-}
+core.List<api.JsonSchemaVariantMap> buildUnnamed754() => [
+      buildJsonSchemaVariantMap(),
+      buildJsonSchemaVariantMap(),
+    ];
 
 void checkUnnamed754(core.List<api.JsonSchemaVariantMap> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -447,12 +433,10 @@ void checkRestDescriptionAuthOauth2ScopesValue(
 }
 
 core.Map<core.String, api.RestDescriptionAuthOauth2ScopesValue>
-    buildUnnamed755() {
-  final o = <core.String, api.RestDescriptionAuthOauth2ScopesValue>{};
-  o['x'] = buildRestDescriptionAuthOauth2ScopesValue();
-  o['y'] = buildRestDescriptionAuthOauth2ScopesValue();
-  return o;
-}
+    buildUnnamed755() => {
+          'x': buildRestDescriptionAuthOauth2ScopesValue(),
+          'y': buildRestDescriptionAuthOauth2ScopesValue(),
+        };
 
 void checkUnnamed755(
     core.Map<core.String, api.RestDescriptionAuthOauth2ScopesValue> o) {
@@ -499,12 +483,10 @@ void checkRestDescriptionAuth(api.RestDescriptionAuth o) {
   buildCounterRestDescriptionAuth--;
 }
 
-core.List<core.String> buildUnnamed756() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed756() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed756(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -545,12 +527,10 @@ void checkRestDescriptionIcons(api.RestDescriptionIcons o) {
   buildCounterRestDescriptionIcons--;
 }
 
-core.List<core.String> buildUnnamed757() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed757() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed757(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -564,12 +544,10 @@ void checkUnnamed757(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, api.RestMethod> buildUnnamed758() {
-  final o = <core.String, api.RestMethod>{};
-  o['x'] = buildRestMethod();
-  o['y'] = buildRestMethod();
-  return o;
-}
+core.Map<core.String, api.RestMethod> buildUnnamed758() => {
+      'x': buildRestMethod(),
+      'y': buildRestMethod(),
+    };
 
 void checkUnnamed758(core.Map<core.String, api.RestMethod> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -577,12 +555,10 @@ void checkUnnamed758(core.Map<core.String, api.RestMethod> o) {
   checkRestMethod(o['y']!);
 }
 
-core.Map<core.String, api.JsonSchema> buildUnnamed759() {
-  final o = <core.String, api.JsonSchema>{};
-  o['x'] = buildJsonSchema();
-  o['y'] = buildJsonSchema();
-  return o;
-}
+core.Map<core.String, api.JsonSchema> buildUnnamed759() => {
+      'x': buildJsonSchema(),
+      'y': buildJsonSchema(),
+    };
 
 void checkUnnamed759(core.Map<core.String, api.JsonSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -590,12 +566,10 @@ void checkUnnamed759(core.Map<core.String, api.JsonSchema> o) {
   checkJsonSchema(o['y']!);
 }
 
-core.Map<core.String, api.RestResource> buildUnnamed760() {
-  final o = <core.String, api.RestResource>{};
-  o['x'] = buildRestResource();
-  o['y'] = buildRestResource();
-  return o;
-}
+core.Map<core.String, api.RestResource> buildUnnamed760() => {
+      'x': buildRestResource(),
+      'y': buildRestResource(),
+    };
 
 void checkUnnamed760(core.Map<core.String, api.RestResource> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -603,12 +577,10 @@ void checkUnnamed760(core.Map<core.String, api.RestResource> o) {
   checkRestResource(o['y']!);
 }
 
-core.Map<core.String, api.JsonSchema> buildUnnamed761() {
-  final o = <core.String, api.JsonSchema>{};
-  o['x'] = buildJsonSchema();
-  o['y'] = buildJsonSchema();
-  return o;
-}
+core.Map<core.String, api.JsonSchema> buildUnnamed761() => {
+      'x': buildJsonSchema(),
+      'y': buildJsonSchema(),
+    };
 
 void checkUnnamed761(core.Map<core.String, api.JsonSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -753,12 +725,10 @@ void checkRestDescription(api.RestDescription o) {
   buildCounterRestDescription--;
 }
 
-core.List<core.String> buildUnnamed762() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed762() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed762(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -871,12 +841,10 @@ void checkRestMethodMediaUpload(api.RestMethodMediaUpload o) {
   buildCounterRestMethodMediaUpload--;
 }
 
-core.List<core.String> buildUnnamed763() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed763() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed763(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -890,12 +858,10 @@ void checkUnnamed763(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, api.JsonSchema> buildUnnamed764() {
-  final o = <core.String, api.JsonSchema>{};
-  o['x'] = buildJsonSchema();
-  o['y'] = buildJsonSchema();
-  return o;
-}
+core.Map<core.String, api.JsonSchema> buildUnnamed764() => {
+      'x': buildJsonSchema(),
+      'y': buildJsonSchema(),
+    };
 
 void checkUnnamed764(core.Map<core.String, api.JsonSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -952,12 +918,10 @@ void checkRestMethodResponse(api.RestMethodResponse o) {
   buildCounterRestMethodResponse--;
 }
 
-core.List<core.String> buildUnnamed765() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed765() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed765(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1035,12 +999,10 @@ void checkRestMethod(api.RestMethod o) {
   buildCounterRestMethod--;
 }
 
-core.Map<core.String, api.RestMethod> buildUnnamed766() {
-  final o = <core.String, api.RestMethod>{};
-  o['x'] = buildRestMethod();
-  o['y'] = buildRestMethod();
-  return o;
-}
+core.Map<core.String, api.RestMethod> buildUnnamed766() => {
+      'x': buildRestMethod(),
+      'y': buildRestMethod(),
+    };
 
 void checkUnnamed766(core.Map<core.String, api.RestMethod> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1048,12 +1010,10 @@ void checkUnnamed766(core.Map<core.String, api.RestMethod> o) {
   checkRestMethod(o['y']!);
 }
 
-core.Map<core.String, api.RestResource> buildUnnamed767() {
-  final o = <core.String, api.RestResource>{};
-  o['x'] = buildRestResource();
-  o['y'] = buildRestResource();
-  return o;
-}
+core.Map<core.String, api.RestResource> buildUnnamed767() => {
+      'x': buildRestResource(),
+      'y': buildRestResource(),
+    };
 
 void checkUnnamed767(core.Map<core.String, api.RestResource> o) {
   unittest.expect(o, unittest.hasLength(2));

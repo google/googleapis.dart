@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.AuditLogConfig> buildUnnamed5317() {
-  final o = <api.AuditLogConfig>[];
-  o.add(buildAuditLogConfig());
-  o.add(buildAuditLogConfig());
-  return o;
-}
+core.List<api.AuditLogConfig> buildUnnamed5317() => [
+      buildAuditLogConfig(),
+      buildAuditLogConfig(),
+    ];
 
 void checkUnnamed5317(core.List<api.AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -63,12 +61,10 @@ void checkAuditConfig(api.AuditConfig o) {
   buildCounterAuditConfig--;
 }
 
-core.List<core.String> buildUnnamed5318() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5318() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5318(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -106,12 +102,10 @@ void checkAuditLogConfig(api.AuditLogConfig o) {
   buildCounterAuditLogConfig--;
 }
 
-core.List<core.String> buildUnnamed5319() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5319() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5319(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -173,12 +167,10 @@ void checkConfigFile(api.ConfigFile o) {
   buildCounterConfigFile--;
 }
 
-core.List<api.DeploymentLabelEntry> buildUnnamed5320() {
-  final o = <api.DeploymentLabelEntry>[];
-  o.add(buildDeploymentLabelEntry());
-  o.add(buildDeploymentLabelEntry());
-  return o;
-}
+core.List<api.DeploymentLabelEntry> buildUnnamed5320() => [
+      buildDeploymentLabelEntry(),
+      buildDeploymentLabelEntry(),
+    ];
 
 void checkUnnamed5320(core.List<api.DeploymentLabelEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -278,12 +270,10 @@ void checkDeploymentLabelEntry(api.DeploymentLabelEntry o) {
   buildCounterDeploymentLabelEntry--;
 }
 
-core.List<api.DeploymentUpdateLabelEntry> buildUnnamed5321() {
-  final o = <api.DeploymentUpdateLabelEntry>[];
-  o.add(buildDeploymentUpdateLabelEntry());
-  o.add(buildDeploymentUpdateLabelEntry());
-  return o;
-}
+core.List<api.DeploymentUpdateLabelEntry> buildUnnamed5321() => [
+      buildDeploymentUpdateLabelEntry(),
+      buildDeploymentUpdateLabelEntry(),
+    ];
 
 void checkUnnamed5321(core.List<api.DeploymentUpdateLabelEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -370,12 +360,10 @@ void checkDeploymentsCancelPreviewRequest(
   buildCounterDeploymentsCancelPreviewRequest--;
 }
 
-core.List<api.Deployment> buildUnnamed5322() {
-  final o = <api.Deployment>[];
-  o.add(buildDeployment());
-  o.add(buildDeployment());
-  return o;
-}
+core.List<api.Deployment> buildUnnamed5322() => [
+      buildDeployment(),
+      buildDeployment(),
+    ];
 
 void checkUnnamed5322(core.List<api.Deployment> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -466,12 +454,10 @@ void checkExpr(api.Expr o) {
   buildCounterExpr--;
 }
 
-core.List<api.Binding> buildUnnamed5323() {
-  final o = <api.Binding>[];
-  o.add(buildBinding());
-  o.add(buildBinding());
-  return o;
-}
+core.List<api.Binding> buildUnnamed5323() => [
+      buildBinding(),
+      buildBinding(),
+    ];
 
 void checkUnnamed5323(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -532,12 +518,10 @@ void checkImportFile(api.ImportFile o) {
   buildCounterImportFile--;
 }
 
-core.List<api.ImportFile> buildUnnamed5324() {
-  final o = <api.ImportFile>[];
-  o.add(buildImportFile());
-  o.add(buildImportFile());
-  return o;
-}
+core.List<api.ImportFile> buildUnnamed5324() => [
+      buildImportFile(),
+      buildImportFile(),
+    ];
 
 void checkUnnamed5324(core.List<api.ImportFile> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -606,12 +590,10 @@ void checkManifest(api.Manifest o) {
   buildCounterManifest--;
 }
 
-core.List<api.Manifest> buildUnnamed5325() {
-  final o = <api.Manifest>[];
-  o.add(buildManifest());
-  o.add(buildManifest());
-  return o;
-}
+core.List<api.Manifest> buildUnnamed5325() => [
+      buildManifest(),
+      buildManifest(),
+    ];
 
 void checkUnnamed5325(core.List<api.Manifest> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -675,12 +657,10 @@ void checkOperationErrorErrors(api.OperationErrorErrors o) {
   buildCounterOperationErrorErrors--;
 }
 
-core.List<api.OperationErrorErrors> buildUnnamed5326() {
-  final o = <api.OperationErrorErrors>[];
-  o.add(buildOperationErrorErrors());
-  o.add(buildOperationErrorErrors());
-  return o;
-}
+core.List<api.OperationErrorErrors> buildUnnamed5326() => [
+      buildOperationErrorErrors(),
+      buildOperationErrorErrors(),
+    ];
 
 void checkUnnamed5326(core.List<api.OperationErrorErrors> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -734,12 +714,10 @@ void checkOperationWarningsData(api.OperationWarningsData o) {
   buildCounterOperationWarningsData--;
 }
 
-core.List<api.OperationWarningsData> buildUnnamed5327() {
-  final o = <api.OperationWarningsData>[];
-  o.add(buildOperationWarningsData());
-  o.add(buildOperationWarningsData());
-  return o;
-}
+core.List<api.OperationWarningsData> buildUnnamed5327() => [
+      buildOperationWarningsData(),
+      buildOperationWarningsData(),
+    ];
 
 void checkUnnamed5327(core.List<api.OperationWarningsData> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -776,12 +754,10 @@ void checkOperationWarnings(api.OperationWarnings o) {
   buildCounterOperationWarnings--;
 }
 
-core.List<api.OperationWarnings> buildUnnamed5328() {
-  final o = <api.OperationWarnings>[];
-  o.add(buildOperationWarnings());
-  o.add(buildOperationWarnings());
-  return o;
-}
+core.List<api.OperationWarnings> buildUnnamed5328() => [
+      buildOperationWarnings(),
+      buildOperationWarnings(),
+    ];
 
 void checkUnnamed5328(core.List<api.OperationWarnings> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -920,12 +896,10 @@ void checkOperation(api.Operation o) {
   buildCounterOperation--;
 }
 
-core.List<api.Operation> buildUnnamed5329() {
-  final o = <api.Operation>[];
-  o.add(buildOperation());
-  o.add(buildOperation());
-  return o;
-}
+core.List<api.Operation> buildUnnamed5329() => [
+      buildOperation(),
+      buildOperation(),
+    ];
 
 void checkUnnamed5329(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -957,12 +931,10 @@ void checkOperationsListResponse(api.OperationsListResponse o) {
   buildCounterOperationsListResponse--;
 }
 
-core.List<api.AuditConfig> buildUnnamed5330() {
-  final o = <api.AuditConfig>[];
-  o.add(buildAuditConfig());
-  o.add(buildAuditConfig());
-  return o;
-}
+core.List<api.AuditConfig> buildUnnamed5330() => [
+      buildAuditConfig(),
+      buildAuditConfig(),
+    ];
 
 void checkUnnamed5330(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -970,12 +942,10 @@ void checkUnnamed5330(core.List<api.AuditConfig> o) {
   checkAuditConfig(o[1]);
 }
 
-core.List<api.Binding> buildUnnamed5331() {
-  final o = <api.Binding>[];
-  o.add(buildBinding());
-  o.add(buildBinding());
-  return o;
-}
+core.List<api.Binding> buildUnnamed5331() => [
+      buildBinding(),
+      buildBinding(),
+    ];
 
 void checkUnnamed5331(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1041,12 +1011,10 @@ void checkResourceWarningsData(api.ResourceWarningsData o) {
   buildCounterResourceWarningsData--;
 }
 
-core.List<api.ResourceWarningsData> buildUnnamed5332() {
-  final o = <api.ResourceWarningsData>[];
-  o.add(buildResourceWarningsData());
-  o.add(buildResourceWarningsData());
-  return o;
-}
+core.List<api.ResourceWarningsData> buildUnnamed5332() => [
+      buildResourceWarningsData(),
+      buildResourceWarningsData(),
+    ];
 
 void checkUnnamed5332(core.List<api.ResourceWarningsData> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1083,12 +1051,10 @@ void checkResourceWarnings(api.ResourceWarnings o) {
   buildCounterResourceWarnings--;
 }
 
-core.List<api.ResourceWarnings> buildUnnamed5333() {
-  final o = <api.ResourceWarnings>[];
-  o.add(buildResourceWarnings());
-  o.add(buildResourceWarnings());
-  return o;
-}
+core.List<api.ResourceWarnings> buildUnnamed5333() => [
+      buildResourceWarnings(),
+      buildResourceWarnings(),
+    ];
 
 void checkUnnamed5333(core.List<api.ResourceWarnings> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1218,12 +1184,10 @@ void checkResourceUpdateErrorErrors(api.ResourceUpdateErrorErrors o) {
   buildCounterResourceUpdateErrorErrors--;
 }
 
-core.List<api.ResourceUpdateErrorErrors> buildUnnamed5334() {
-  final o = <api.ResourceUpdateErrorErrors>[];
-  o.add(buildResourceUpdateErrorErrors());
-  o.add(buildResourceUpdateErrorErrors());
-  return o;
-}
+core.List<api.ResourceUpdateErrorErrors> buildUnnamed5334() => [
+      buildResourceUpdateErrorErrors(),
+      buildResourceUpdateErrorErrors(),
+    ];
 
 void checkUnnamed5334(core.List<api.ResourceUpdateErrorErrors> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1277,12 +1241,10 @@ void checkResourceUpdateWarningsData(api.ResourceUpdateWarningsData o) {
   buildCounterResourceUpdateWarningsData--;
 }
 
-core.List<api.ResourceUpdateWarningsData> buildUnnamed5335() {
-  final o = <api.ResourceUpdateWarningsData>[];
-  o.add(buildResourceUpdateWarningsData());
-  o.add(buildResourceUpdateWarningsData());
-  return o;
-}
+core.List<api.ResourceUpdateWarningsData> buildUnnamed5335() => [
+      buildResourceUpdateWarningsData(),
+      buildResourceUpdateWarningsData(),
+    ];
 
 void checkUnnamed5335(core.List<api.ResourceUpdateWarningsData> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1319,12 +1281,10 @@ void checkResourceUpdateWarnings(api.ResourceUpdateWarnings o) {
   buildCounterResourceUpdateWarnings--;
 }
 
-core.List<api.ResourceUpdateWarnings> buildUnnamed5336() {
-  final o = <api.ResourceUpdateWarnings>[];
-  o.add(buildResourceUpdateWarnings());
-  o.add(buildResourceUpdateWarnings());
-  return o;
-}
+core.List<api.ResourceUpdateWarnings> buildUnnamed5336() => [
+      buildResourceUpdateWarnings(),
+      buildResourceUpdateWarnings(),
+    ];
 
 void checkUnnamed5336(core.List<api.ResourceUpdateWarnings> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1380,12 +1340,10 @@ void checkResourceUpdate(api.ResourceUpdate o) {
   buildCounterResourceUpdate--;
 }
 
-core.List<api.Resource> buildUnnamed5337() {
-  final o = <api.Resource>[];
-  o.add(buildResource());
-  o.add(buildResource());
-  return o;
-}
+core.List<api.Resource> buildUnnamed5337() => [
+      buildResource(),
+      buildResource(),
+    ];
 
 void checkUnnamed5337(core.List<api.Resource> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1417,12 +1375,10 @@ void checkResourcesListResponse(api.ResourcesListResponse o) {
   buildCounterResourcesListResponse--;
 }
 
-core.List<api.ImportFile> buildUnnamed5338() {
-  final o = <api.ImportFile>[];
-  o.add(buildImportFile());
-  o.add(buildImportFile());
-  return o;
-}
+core.List<api.ImportFile> buildUnnamed5338() => [
+      buildImportFile(),
+      buildImportFile(),
+    ];
 
 void checkUnnamed5338(core.List<api.ImportFile> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1451,12 +1407,10 @@ void checkTargetConfiguration(api.TargetConfiguration o) {
   buildCounterTargetConfiguration--;
 }
 
-core.List<core.String> buildUnnamed5339() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5339() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5339(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1489,12 +1443,10 @@ void checkTestPermissionsRequest(api.TestPermissionsRequest o) {
   buildCounterTestPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed5340() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5340() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5340(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1566,12 +1518,10 @@ void checkType(api.Type o) {
   buildCounterType--;
 }
 
-core.List<api.Type> buildUnnamed5341() {
-  final o = <api.Type>[];
-  o.add(buildType());
-  o.add(buildType());
-  return o;
-}
+core.List<api.Type> buildUnnamed5341() => [
+      buildType(),
+      buildType(),
+    ];
 
 void checkUnnamed5341(core.List<api.Type> o) {
   unittest.expect(o, unittest.hasLength(2));

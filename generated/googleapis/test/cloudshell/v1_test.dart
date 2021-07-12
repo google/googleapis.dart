@@ -207,12 +207,10 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-core.List<core.String> buildUnnamed2425() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2425() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2425(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -285,12 +283,10 @@ void checkEnvironment(api.Environment o) {
   buildCounterEnvironment--;
 }
 
-core.List<api.Operation> buildUnnamed2426() {
-  final o = <api.Operation>[];
-  o.add(buildOperation());
-  o.add(buildOperation());
-  return o;
-}
+core.List<api.Operation> buildUnnamed2426() => [
+      buildOperation(),
+      buildOperation(),
+    ];
 
 void checkUnnamed2426(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -322,20 +318,18 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
   buildCounterListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed2427() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed2427() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed2427(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -369,20 +363,18 @@ void checkUnnamed2427(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed2428() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed2428() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed2428(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -520,12 +512,10 @@ void checkStartEnvironmentMetadata(api.StartEnvironmentMetadata o) {
   buildCounterStartEnvironmentMetadata--;
 }
 
-core.List<core.String> buildUnnamed2429() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2429() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2429(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -582,20 +572,18 @@ void checkStartEnvironmentResponse(api.StartEnvironmentResponse o) {
   buildCounterStartEnvironmentResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed2430() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed2430() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed2430(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -629,12 +617,10 @@ void checkUnnamed2430(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed2431() {
-  final o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed2430());
-  o.add(buildUnnamed2430());
-  return o;
-}
+core.List<core.Map<core.String, core.Object>> buildUnnamed2431() => [
+      buildUnnamed2430(),
+      buildUnnamed2430(),
+    ];
 
 void checkUnnamed2431(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));

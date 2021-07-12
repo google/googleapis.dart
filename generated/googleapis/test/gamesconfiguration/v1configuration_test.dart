@@ -118,12 +118,10 @@ void checkAchievementConfigurationDetail(api.AchievementConfigurationDetail o) {
   buildCounterAchievementConfigurationDetail--;
 }
 
-core.List<api.AchievementConfiguration> buildUnnamed3662() {
-  final o = <api.AchievementConfiguration>[];
-  o.add(buildAchievementConfiguration());
-  o.add(buildAchievementConfiguration());
-  return o;
-}
+core.List<api.AchievementConfiguration> buildUnnamed3662() => [
+      buildAchievementConfiguration(),
+      buildAchievementConfiguration(),
+    ];
 
 void checkUnnamed3662(core.List<api.AchievementConfiguration> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -349,12 +347,10 @@ void checkLeaderboardConfigurationDetail(api.LeaderboardConfigurationDetail o) {
   buildCounterLeaderboardConfigurationDetail--;
 }
 
-core.List<api.LeaderboardConfiguration> buildUnnamed3663() {
-  final o = <api.LeaderboardConfiguration>[];
-  o.add(buildLeaderboardConfiguration());
-  o.add(buildLeaderboardConfiguration());
-  return o;
-}
+core.List<api.LeaderboardConfiguration> buildUnnamed3663() => [
+      buildLeaderboardConfiguration(),
+      buildLeaderboardConfiguration(),
+    ];
 
 void checkUnnamed3663(core.List<api.LeaderboardConfiguration> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -425,12 +421,10 @@ void checkLocalizedString(api.LocalizedString o) {
   buildCounterLocalizedString--;
 }
 
-core.List<api.LocalizedString> buildUnnamed3664() {
-  final o = <api.LocalizedString>[];
-  o.add(buildLocalizedString());
-  o.add(buildLocalizedString());
-  return o;
-}
+core.List<api.LocalizedString> buildUnnamed3664() => [
+      buildLocalizedString(),
+      buildLocalizedString(),
+    ];
 
 void checkUnnamed3664(core.List<api.LocalizedString> o) {
   unittest.expect(o, unittest.hasLength(2));

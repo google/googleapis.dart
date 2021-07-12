@@ -45,12 +45,10 @@ void checkEmptyResponse(api.EmptyResponse o) {
   buildCounterEmptyResponse--;
 }
 
-core.List<core.String> buildUnnamed6264() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed6264() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed6264(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -113,12 +111,10 @@ void checkErrorProto(api.ErrorProto o) {
   buildCounterErrorProto--;
 }
 
-core.List<api.ErrorProto> buildUnnamed6265() {
-  final o = <api.ErrorProto>[];
-  o.add(buildErrorProto());
-  o.add(buildErrorProto());
-  return o;
-}
+core.List<api.ErrorProto> buildUnnamed6265() => [
+      buildErrorProto(),
+      buildErrorProto(),
+    ];
 
 void checkUnnamed6265(core.List<api.ErrorProto> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -315,12 +311,10 @@ void checkGroupSnippet(api.GroupSnippet o) {
   buildCounterGroupSnippet--;
 }
 
-core.List<api.GroupItem> buildUnnamed6266() {
-  final o = <api.GroupItem>[];
-  o.add(buildGroupItem());
-  o.add(buildGroupItem());
-  return o;
-}
+core.List<api.GroupItem> buildUnnamed6266() => [
+      buildGroupItem(),
+      buildGroupItem(),
+    ];
 
 void checkUnnamed6266(core.List<api.GroupItem> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -359,12 +353,10 @@ void checkListGroupItemsResponse(api.ListGroupItemsResponse o) {
   buildCounterListGroupItemsResponse--;
 }
 
-core.List<api.Group> buildUnnamed6267() {
-  final o = <api.Group>[];
-  o.add(buildGroup());
-  o.add(buildGroup());
-  return o;
-}
+core.List<api.Group> buildUnnamed6267() => [
+      buildGroup(),
+      buildGroup(),
+    ];
 
 void checkUnnamed6267(core.List<api.Group> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -408,12 +400,10 @@ void checkListGroupsResponse(api.ListGroupsResponse o) {
   buildCounterListGroupsResponse--;
 }
 
-core.List<api.ResultTableColumnHeader> buildUnnamed6268() {
-  final o = <api.ResultTableColumnHeader>[];
-  o.add(buildResultTableColumnHeader());
-  o.add(buildResultTableColumnHeader());
-  return o;
-}
+core.List<api.ResultTableColumnHeader> buildUnnamed6268() => [
+      buildResultTableColumnHeader(),
+      buildResultTableColumnHeader(),
+    ];
 
 void checkUnnamed6268(core.List<api.ResultTableColumnHeader> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -421,20 +411,18 @@ void checkUnnamed6268(core.List<api.ResultTableColumnHeader> o) {
   checkResultTableColumnHeader(o[1]);
 }
 
-core.List<core.Object> buildUnnamed6269() {
-  final o = <core.Object>[];
-  o.add({
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  });
-  o.add({
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  });
-  return o;
-}
+core.List<core.Object> buildUnnamed6269() => [
+      {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    ];
 
 void checkUnnamed6269(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -468,12 +456,10 @@ void checkUnnamed6269(core.List<core.Object> o) {
   );
 }
 
-core.List<core.List<core.Object>> buildUnnamed6270() {
-  final o = <core.List<core.Object>>[];
-  o.add(buildUnnamed6269());
-  o.add(buildUnnamed6269());
-  return o;
-}
+core.List<core.List<core.Object>> buildUnnamed6270() => [
+      buildUnnamed6269(),
+      buildUnnamed6269(),
+    ];
 
 void checkUnnamed6270(core.List<core.List<core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));

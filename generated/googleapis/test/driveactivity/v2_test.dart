@@ -213,12 +213,10 @@ void checkAssignment(api.Assignment o) {
   buildCounterAssignment--;
 }
 
-core.List<api.User> buildUnnamed5267() {
-  final o = <api.User>[];
-  o.add(buildUser());
-  o.add(buildUser());
-  return o;
-}
+core.List<api.User> buildUnnamed5267() => [
+      buildUser(),
+      buildUser(),
+    ];
 
 void checkUnnamed5267(core.List<api.User> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -429,12 +427,10 @@ void checkDrive(api.Drive o) {
   buildCounterDrive--;
 }
 
-core.List<api.Action> buildUnnamed5268() {
-  final o = <api.Action>[];
-  o.add(buildAction());
-  o.add(buildAction());
-  return o;
-}
+core.List<api.Action> buildUnnamed5268() => [
+      buildAction(),
+      buildAction(),
+    ];
 
 void checkUnnamed5268(core.List<api.Action> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -442,12 +438,10 @@ void checkUnnamed5268(core.List<api.Action> o) {
   checkAction(o[1]);
 }
 
-core.List<api.Actor> buildUnnamed5269() {
-  final o = <api.Actor>[];
-  o.add(buildActor());
-  o.add(buildActor());
-  return o;
-}
+core.List<api.Actor> buildUnnamed5269() => [
+      buildActor(),
+      buildActor(),
+    ];
 
 void checkUnnamed5269(core.List<api.Actor> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -455,12 +449,10 @@ void checkUnnamed5269(core.List<api.Actor> o) {
   checkActor(o[1]);
 }
 
-core.List<api.Target> buildUnnamed5270() {
-  final o = <api.Target>[];
-  o.add(buildTarget());
-  o.add(buildTarget());
-  return o;
-}
+core.List<api.Target> buildUnnamed5270() => [
+      buildTarget(),
+      buildTarget(),
+    ];
 
 void checkUnnamed5270(core.List<api.Target> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -812,12 +804,10 @@ void checkLegacy(api.Legacy o) {
   buildCounterLegacy--;
 }
 
-core.List<api.TargetReference> buildUnnamed5271() {
-  final o = <api.TargetReference>[];
-  o.add(buildTargetReference());
-  o.add(buildTargetReference());
-  return o;
-}
+core.List<api.TargetReference> buildUnnamed5271() => [
+      buildTargetReference(),
+      buildTargetReference(),
+    ];
 
 void checkUnnamed5271(core.List<api.TargetReference> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -825,12 +815,10 @@ void checkUnnamed5271(core.List<api.TargetReference> o) {
   checkTargetReference(o[1]);
 }
 
-core.List<api.TargetReference> buildUnnamed5272() {
-  final o = <api.TargetReference>[];
-  o.add(buildTargetReference());
-  o.add(buildTargetReference());
-  return o;
-}
+core.List<api.TargetReference> buildUnnamed5272() => [
+      buildTargetReference(),
+      buildTargetReference(),
+    ];
 
 void checkUnnamed5272(core.List<api.TargetReference> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -946,12 +934,10 @@ void checkPermission(api.Permission o) {
   buildCounterPermission--;
 }
 
-core.List<api.Permission> buildUnnamed5273() {
-  final o = <api.Permission>[];
-  o.add(buildPermission());
-  o.add(buildPermission());
-  return o;
-}
+core.List<api.Permission> buildUnnamed5273() => [
+      buildPermission(),
+      buildPermission(),
+    ];
 
 void checkUnnamed5273(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -959,12 +945,10 @@ void checkUnnamed5273(core.List<api.Permission> o) {
   checkPermission(o[1]);
 }
 
-core.List<api.Permission> buildUnnamed5274() {
-  final o = <api.Permission>[];
-  o.add(buildPermission());
-  o.add(buildPermission());
-  return o;
-}
+core.List<api.Permission> buildUnnamed5274() => [
+      buildPermission(),
+      buildPermission(),
+    ];
 
 void checkUnnamed5274(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1059,12 +1043,10 @@ void checkQueryDriveActivityRequest(api.QueryDriveActivityRequest o) {
   buildCounterQueryDriveActivityRequest--;
 }
 
-core.List<api.DriveActivity> buildUnnamed5275() {
-  final o = <api.DriveActivity>[];
-  o.add(buildDriveActivity());
-  o.add(buildDriveActivity());
-  return o;
-}
+core.List<api.DriveActivity> buildUnnamed5275() => [
+      buildDriveActivity(),
+      buildDriveActivity(),
+    ];
 
 void checkUnnamed5275(core.List<api.DriveActivity> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1172,12 +1154,10 @@ void checkRestrictionChange(api.RestrictionChange o) {
   buildCounterRestrictionChange--;
 }
 
-core.List<api.RestrictionChange> buildUnnamed5276() {
-  final o = <api.RestrictionChange>[];
-  o.add(buildRestrictionChange());
-  o.add(buildRestrictionChange());
-  return o;
-}
+core.List<api.RestrictionChange> buildUnnamed5276() => [
+      buildRestrictionChange(),
+      buildRestrictionChange(),
+    ];
 
 void checkUnnamed5276(core.List<api.RestrictionChange> o) {
   unittest.expect(o, unittest.hasLength(2));

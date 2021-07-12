@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.Operation> buildUnnamed6062() {
-  final o = <api.Operation>[];
-  o.add(buildOperation());
-  o.add(buildOperation());
-  return o;
-}
+core.List<api.Operation> buildUnnamed6062() => [
+      buildOperation(),
+      buildOperation(),
+    ];
 
 void checkUnnamed6062(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -121,12 +119,10 @@ void checkLongRunningRecognizeRequest(api.LongRunningRecognizeRequest o) {
   buildCounterLongRunningRecognizeRequest--;
 }
 
-core.List<api.SpeechRecognitionResult> buildUnnamed6063() {
-  final o = <api.SpeechRecognitionResult>[];
-  o.add(buildSpeechRecognitionResult());
-  o.add(buildSpeechRecognitionResult());
-  return o;
-}
+core.List<api.SpeechRecognitionResult> buildUnnamed6063() => [
+      buildSpeechRecognitionResult(),
+      buildSpeechRecognitionResult(),
+    ];
 
 void checkUnnamed6063(core.List<api.SpeechRecognitionResult> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -153,20 +149,18 @@ void checkLongRunningRecognizeResponse(api.LongRunningRecognizeResponse o) {
   buildCounterLongRunningRecognizeResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed6064() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed6064() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed6064(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -200,20 +194,18 @@ void checkUnnamed6064(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed6065() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed6065() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed6065(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -304,12 +296,10 @@ void checkRecognitionAudio(api.RecognitionAudio o) {
   buildCounterRecognitionAudio--;
 }
 
-core.List<api.SpeechContext> buildUnnamed6066() {
-  final o = <api.SpeechContext>[];
-  o.add(buildSpeechContext());
-  o.add(buildSpeechContext());
-  return o;
-}
+core.List<api.SpeechContext> buildUnnamed6066() => [
+      buildSpeechContext(),
+      buildSpeechContext(),
+    ];
 
 void checkUnnamed6066(core.List<api.SpeechContext> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -458,12 +448,10 @@ void checkRecognizeRequest(api.RecognizeRequest o) {
   buildCounterRecognizeRequest--;
 }
 
-core.List<api.SpeechRecognitionResult> buildUnnamed6067() {
-  final o = <api.SpeechRecognitionResult>[];
-  o.add(buildSpeechRecognitionResult());
-  o.add(buildSpeechRecognitionResult());
-  return o;
-}
+core.List<api.SpeechRecognitionResult> buildUnnamed6067() => [
+      buildSpeechRecognitionResult(),
+      buildSpeechRecognitionResult(),
+    ];
 
 void checkUnnamed6067(core.List<api.SpeechRecognitionResult> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -524,12 +512,10 @@ void checkSpeakerDiarizationConfig(api.SpeakerDiarizationConfig o) {
   buildCounterSpeakerDiarizationConfig--;
 }
 
-core.List<core.String> buildUnnamed6068() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed6068() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed6068(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -562,12 +548,10 @@ void checkSpeechContext(api.SpeechContext o) {
   buildCounterSpeechContext--;
 }
 
-core.List<api.WordInfo> buildUnnamed6069() {
-  final o = <api.WordInfo>[];
-  o.add(buildWordInfo());
-  o.add(buildWordInfo());
-  return o;
-}
+core.List<api.WordInfo> buildUnnamed6069() => [
+      buildWordInfo(),
+      buildWordInfo(),
+    ];
 
 void checkUnnamed6069(core.List<api.WordInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -604,12 +588,10 @@ void checkSpeechRecognitionAlternative(api.SpeechRecognitionAlternative o) {
   buildCounterSpeechRecognitionAlternative--;
 }
 
-core.List<api.SpeechRecognitionAlternative> buildUnnamed6070() {
-  final o = <api.SpeechRecognitionAlternative>[];
-  o.add(buildSpeechRecognitionAlternative());
-  o.add(buildSpeechRecognitionAlternative());
-  return o;
-}
+core.List<api.SpeechRecognitionAlternative> buildUnnamed6070() => [
+      buildSpeechRecognitionAlternative(),
+      buildSpeechRecognitionAlternative(),
+    ];
 
 void checkUnnamed6070(core.List<api.SpeechRecognitionAlternative> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -641,20 +623,18 @@ void checkSpeechRecognitionResult(api.SpeechRecognitionResult o) {
   buildCounterSpeechRecognitionResult--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed6071() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed6071() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed6071(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -688,12 +668,10 @@ void checkUnnamed6071(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed6072() {
-  final o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed6071());
-  o.add(buildUnnamed6071());
-  return o;
-}
+core.List<core.Map<core.String, core.Object>> buildUnnamed6072() => [
+      buildUnnamed6071(),
+      buildUnnamed6071(),
+    ];
 
 void checkUnnamed6072(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));

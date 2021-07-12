@@ -156,12 +156,10 @@ void checkFixedOrPercent(api.FixedOrPercent o) {
 }
 
 core.List<api.InstanceOSPoliciesComplianceOSPolicyCompliance>
-    buildUnnamed8721() {
-  final o = <api.InstanceOSPoliciesComplianceOSPolicyCompliance>[];
-  o.add(buildInstanceOSPoliciesComplianceOSPolicyCompliance());
-  o.add(buildInstanceOSPoliciesComplianceOSPolicyCompliance());
-  return o;
-}
+    buildUnnamed8721() => [
+          buildInstanceOSPoliciesComplianceOSPolicyCompliance(),
+          buildInstanceOSPoliciesComplianceOSPolicyCompliance(),
+        ];
 
 void checkUnnamed8721(
     core.List<api.InstanceOSPoliciesComplianceOSPolicyCompliance> o) {
@@ -224,12 +222,10 @@ void checkInstanceOSPoliciesCompliance(api.InstanceOSPoliciesCompliance o) {
   buildCounterInstanceOSPoliciesCompliance--;
 }
 
-core.List<api.OSPolicyResourceCompliance> buildUnnamed8722() {
-  final o = <api.OSPolicyResourceCompliance>[];
-  o.add(buildOSPolicyResourceCompliance());
-  o.add(buildOSPolicyResourceCompliance());
-  return o;
-}
+core.List<api.OSPolicyResourceCompliance> buildUnnamed8722() => [
+      buildOSPolicyResourceCompliance(),
+      buildOSPolicyResourceCompliance(),
+    ];
 
 void checkUnnamed8722(core.List<api.OSPolicyResourceCompliance> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -273,12 +269,10 @@ void checkInstanceOSPoliciesComplianceOSPolicyCompliance(
   buildCounterInstanceOSPoliciesComplianceOSPolicyCompliance--;
 }
 
-core.Map<core.String, api.InventoryItem> buildUnnamed8723() {
-  final o = <core.String, api.InventoryItem>{};
-  o['x'] = buildInventoryItem();
-  o['y'] = buildInventoryItem();
-  return o;
-}
+core.Map<core.String, api.InventoryItem> buildUnnamed8723() => {
+      'x': buildInventoryItem(),
+      'y': buildInventoryItem(),
+    };
 
 void checkUnnamed8723(core.Map<core.String, api.InventoryItem> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -525,12 +519,10 @@ void checkInventoryWindowsQuickFixEngineeringPackage(
 }
 
 core.List<api.InventoryWindowsUpdatePackageWindowsUpdateCategory>
-    buildUnnamed8724() {
-  final o = <api.InventoryWindowsUpdatePackageWindowsUpdateCategory>[];
-  o.add(buildInventoryWindowsUpdatePackageWindowsUpdateCategory());
-  o.add(buildInventoryWindowsUpdatePackageWindowsUpdateCategory());
-  return o;
-}
+    buildUnnamed8724() => [
+          buildInventoryWindowsUpdatePackageWindowsUpdateCategory(),
+          buildInventoryWindowsUpdatePackageWindowsUpdateCategory(),
+        ];
 
 void checkUnnamed8724(
     core.List<api.InventoryWindowsUpdatePackageWindowsUpdateCategory> o) {
@@ -539,12 +531,10 @@ void checkUnnamed8724(
   checkInventoryWindowsUpdatePackageWindowsUpdateCategory(o[1]);
 }
 
-core.List<core.String> buildUnnamed8725() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8725() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8725(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -558,12 +548,10 @@ void checkUnnamed8725(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed8726() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8726() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8726(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -696,12 +684,10 @@ void checkInventoryZypperPatch(api.InventoryZypperPatch o) {
   buildCounterInventoryZypperPatch--;
 }
 
-core.List<api.InstanceOSPoliciesCompliance> buildUnnamed8727() {
-  final o = <api.InstanceOSPoliciesCompliance>[];
-  o.add(buildInstanceOSPoliciesCompliance());
-  o.add(buildInstanceOSPoliciesCompliance());
-  return o;
-}
+core.List<api.InstanceOSPoliciesCompliance> buildUnnamed8727() => [
+      buildInstanceOSPoliciesCompliance(),
+      buildInstanceOSPoliciesCompliance(),
+    ];
 
 void checkUnnamed8727(core.List<api.InstanceOSPoliciesCompliance> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -735,12 +721,10 @@ void checkListInstanceOSPoliciesCompliancesResponse(
   buildCounterListInstanceOSPoliciesCompliancesResponse--;
 }
 
-core.List<api.Inventory> buildUnnamed8728() {
-  final o = <api.Inventory>[];
-  o.add(buildInventory());
-  o.add(buildInventory());
-  return o;
-}
+core.List<api.Inventory> buildUnnamed8728() => [
+      buildInventory(),
+      buildInventory(),
+    ];
 
 void checkUnnamed8728(core.List<api.Inventory> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -772,12 +756,10 @@ void checkListInventoriesResponse(api.ListInventoriesResponse o) {
   buildCounterListInventoriesResponse--;
 }
 
-core.List<api.OSPolicyAssignment> buildUnnamed8729() {
-  final o = <api.OSPolicyAssignment>[];
-  o.add(buildOSPolicyAssignment());
-  o.add(buildOSPolicyAssignment());
-  return o;
-}
+core.List<api.OSPolicyAssignment> buildUnnamed8729() => [
+      buildOSPolicyAssignment(),
+      buildOSPolicyAssignment(),
+    ];
 
 void checkUnnamed8729(core.List<api.OSPolicyAssignment> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -811,12 +793,10 @@ void checkListOSPolicyAssignmentRevisionsResponse(
   buildCounterListOSPolicyAssignmentRevisionsResponse--;
 }
 
-core.List<api.OSPolicyAssignment> buildUnnamed8730() {
-  final o = <api.OSPolicyAssignment>[];
-  o.add(buildOSPolicyAssignment());
-  o.add(buildOSPolicyAssignment());
-  return o;
-}
+core.List<api.OSPolicyAssignment> buildUnnamed8730() => [
+      buildOSPolicyAssignment(),
+      buildOSPolicyAssignment(),
+    ];
 
 void checkUnnamed8730(core.List<api.OSPolicyAssignment> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -849,12 +829,10 @@ void checkListOSPolicyAssignmentsResponse(
   buildCounterListOSPolicyAssignmentsResponse--;
 }
 
-core.List<api.VulnerabilityReport> buildUnnamed8731() {
-  final o = <api.VulnerabilityReport>[];
-  o.add(buildVulnerabilityReport());
-  o.add(buildVulnerabilityReport());
-  return o;
-}
+core.List<api.VulnerabilityReport> buildUnnamed8731() => [
+      buildVulnerabilityReport(),
+      buildVulnerabilityReport(),
+    ];
 
 void checkUnnamed8731(core.List<api.VulnerabilityReport> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -887,12 +865,10 @@ void checkListVulnerabilityReportsResponse(
   buildCounterListVulnerabilityReportsResponse--;
 }
 
-core.List<api.OSPolicyResourceGroup> buildUnnamed8732() {
-  final o = <api.OSPolicyResourceGroup>[];
-  o.add(buildOSPolicyResourceGroup());
-  o.add(buildOSPolicyResourceGroup());
-  return o;
-}
+core.List<api.OSPolicyResourceGroup> buildUnnamed8732() => [
+      buildOSPolicyResourceGroup(),
+      buildOSPolicyResourceGroup(),
+    ];
 
 void checkUnnamed8732(core.List<api.OSPolicyResourceGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -936,12 +912,10 @@ void checkOSPolicy(api.OSPolicy o) {
   buildCounterOSPolicy--;
 }
 
-core.List<api.OSPolicy> buildUnnamed8733() {
-  final o = <api.OSPolicy>[];
-  o.add(buildOSPolicy());
-  o.add(buildOSPolicy());
-  return o;
-}
+core.List<api.OSPolicy> buildUnnamed8733() => [
+      buildOSPolicy(),
+      buildOSPolicy(),
+    ];
 
 void checkUnnamed8733(core.List<api.OSPolicy> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1008,12 +982,10 @@ void checkOSPolicyAssignment(api.OSPolicyAssignment o) {
   buildCounterOSPolicyAssignment--;
 }
 
-core.List<api.OSPolicyAssignmentLabelSet> buildUnnamed8734() {
-  final o = <api.OSPolicyAssignmentLabelSet>[];
-  o.add(buildOSPolicyAssignmentLabelSet());
-  o.add(buildOSPolicyAssignmentLabelSet());
-  return o;
-}
+core.List<api.OSPolicyAssignmentLabelSet> buildUnnamed8734() => [
+      buildOSPolicyAssignmentLabelSet(),
+      buildOSPolicyAssignmentLabelSet(),
+    ];
 
 void checkUnnamed8734(core.List<api.OSPolicyAssignmentLabelSet> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1021,12 +993,10 @@ void checkUnnamed8734(core.List<api.OSPolicyAssignmentLabelSet> o) {
   checkOSPolicyAssignmentLabelSet(o[1]);
 }
 
-core.List<api.OSPolicyAssignmentLabelSet> buildUnnamed8735() {
-  final o = <api.OSPolicyAssignmentLabelSet>[];
-  o.add(buildOSPolicyAssignmentLabelSet());
-  o.add(buildOSPolicyAssignmentLabelSet());
-  return o;
-}
+core.List<api.OSPolicyAssignmentLabelSet> buildUnnamed8735() => [
+      buildOSPolicyAssignmentLabelSet(),
+      buildOSPolicyAssignmentLabelSet(),
+    ];
 
 void checkUnnamed8735(core.List<api.OSPolicyAssignmentLabelSet> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1034,12 +1004,10 @@ void checkUnnamed8735(core.List<api.OSPolicyAssignmentLabelSet> o) {
   checkOSPolicyAssignmentLabelSet(o[1]);
 }
 
-core.List<core.String> buildUnnamed8736() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8736() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8736(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1079,12 +1047,10 @@ void checkOSPolicyAssignmentInstanceFilter(
   buildCounterOSPolicyAssignmentInstanceFilter--;
 }
 
-core.Map<core.String, core.String> buildUnnamed8737() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed8737() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed8737(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1242,12 +1208,10 @@ void checkOSPolicyResource(api.OSPolicyResource o) {
   buildCounterOSPolicyResource--;
 }
 
-core.List<api.OSPolicyResourceConfigStep> buildUnnamed8738() {
-  final o = <api.OSPolicyResourceConfigStep>[];
-  o.add(buildOSPolicyResourceConfigStep());
-  o.add(buildOSPolicyResourceConfigStep());
-  return o;
-}
+core.List<api.OSPolicyResourceConfigStep> buildUnnamed8738() => [
+      buildOSPolicyResourceConfigStep(),
+      buildOSPolicyResourceConfigStep(),
+    ];
 
 void checkUnnamed8738(core.List<api.OSPolicyResourceConfigStep> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1363,12 +1327,10 @@ void checkOSPolicyResourceExecResource(api.OSPolicyResourceExecResource o) {
   buildCounterOSPolicyResourceExecResource--;
 }
 
-core.List<core.String> buildUnnamed8739() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8739() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8739(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1545,12 +1507,10 @@ void checkOSPolicyResourceFileResource(api.OSPolicyResourceFileResource o) {
   buildCounterOSPolicyResourceFileResource--;
 }
 
-core.List<api.OSPolicyResource> buildUnnamed8740() {
-  final o = <api.OSPolicyResource>[];
-  o.add(buildOSPolicyResource());
-  o.add(buildOSPolicyResource());
-  return o;
-}
+core.List<api.OSPolicyResource> buildUnnamed8740() => [
+      buildOSPolicyResource(),
+      buildOSPolicyResource(),
+    ];
 
 void checkUnnamed8740(core.List<api.OSPolicyResource> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1687,12 +1647,10 @@ void checkOSPolicyResourcePackageResourceGooGet(
   buildCounterOSPolicyResourcePackageResourceGooGet--;
 }
 
-core.List<core.String> buildUnnamed8741() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8741() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8741(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1827,12 +1785,10 @@ void checkOSPolicyResourceRepositoryResource(
   buildCounterOSPolicyResourceRepositoryResource--;
 }
 
-core.List<core.String> buildUnnamed8742() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8742() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8742(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1916,12 +1872,10 @@ void checkOSPolicyResourceRepositoryResourceGooRepository(
   buildCounterOSPolicyResourceRepositoryResourceGooRepository--;
 }
 
-core.List<core.String> buildUnnamed8743() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8743() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8743(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1971,12 +1925,10 @@ void checkOSPolicyResourceRepositoryResourceYumRepository(
   buildCounterOSPolicyResourceRepositoryResourceYumRepository--;
 }
 
-core.List<core.String> buildUnnamed8744() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8744() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8744(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2026,20 +1978,18 @@ void checkOSPolicyResourceRepositoryResourceZypperRepository(
   buildCounterOSPolicyResourceRepositoryResourceZypperRepository--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed8745() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed8745() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed8745(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2073,20 +2023,18 @@ void checkUnnamed8745(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed8746() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed8746() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed8746(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2150,20 +2098,18 @@ void checkOperation(api.Operation o) {
   buildCounterOperation--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed8747() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed8747() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed8747(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2197,12 +2143,10 @@ void checkUnnamed8747(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed8748() {
-  final o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed8747());
-  o.add(buildUnnamed8747());
-  return o;
-}
+core.List<core.Map<core.String, core.Object>> buildUnnamed8748() => [
+      buildUnnamed8747(),
+      buildUnnamed8747(),
+    ];
 
 void checkUnnamed8748(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2239,12 +2183,10 @@ void checkStatus(api.Status o) {
   buildCounterStatus--;
 }
 
-core.List<api.VulnerabilityReportVulnerability> buildUnnamed8749() {
-  final o = <api.VulnerabilityReportVulnerability>[];
-  o.add(buildVulnerabilityReportVulnerability());
-  o.add(buildVulnerabilityReportVulnerability());
-  return o;
-}
+core.List<api.VulnerabilityReportVulnerability> buildUnnamed8749() => [
+      buildVulnerabilityReportVulnerability(),
+      buildVulnerabilityReportVulnerability(),
+    ];
 
 void checkUnnamed8749(core.List<api.VulnerabilityReportVulnerability> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2281,12 +2223,10 @@ void checkVulnerabilityReport(api.VulnerabilityReport o) {
   buildCounterVulnerabilityReport--;
 }
 
-core.List<core.String> buildUnnamed8750() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8750() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8750(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2300,12 +2240,10 @@ void checkUnnamed8750(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed8751() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8751() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8751(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2354,12 +2292,10 @@ void checkVulnerabilityReportVulnerability(
 }
 
 core.List<api.VulnerabilityReportVulnerabilityDetailsReference>
-    buildUnnamed8752() {
-  final o = <api.VulnerabilityReportVulnerabilityDetailsReference>[];
-  o.add(buildVulnerabilityReportVulnerabilityDetailsReference());
-  o.add(buildVulnerabilityReportVulnerabilityDetailsReference());
-  return o;
-}
+    buildUnnamed8752() => [
+          buildVulnerabilityReportVulnerabilityDetailsReference(),
+          buildVulnerabilityReportVulnerabilityDetailsReference(),
+        ];
 
 void checkUnnamed8752(
     core.List<api.VulnerabilityReportVulnerabilityDetailsReference> o) {

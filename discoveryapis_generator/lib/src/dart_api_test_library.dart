@@ -739,16 +739,15 @@ class UnnamedMapTest extends UnnamedSchemaTest<UnnamedMapType> {
   @override
   String get buildSchemaFunction {
     final innerTest = apiTestLibrary.schemaTests[schema.toType]!;
-    final toType = apiTestLibrary.schemaTests[schema.toType]!.declaration;
 
-    final sb = StringBuffer();
-    withFunc(0, sb, '$declaration buildUnnamed$_id', '', () {
-      sb.writeln('  final o = <core.String, $toType>{};');
-      sb.writeln("  o['x'] = ${innerTest.newSchemaExpr};");
-      sb.writeln("  o['y'] = ${innerTest.newSchemaExpr};");
-      sb.writeln('  return o;');
-    });
-    return '$sb';
+    return '''
+$declaration buildUnnamed$_id() => 
+  {
+    'x': ${innerTest.newSchemaExpr},
+    'y': ${innerTest.newSchemaExpr},
+  };
+
+''';
   }
 
   @override
@@ -779,20 +778,14 @@ class UnnamedArrayTest<T> extends UnnamedSchemaTest<UnnamedArrayType> {
   String get buildSchemaFunction {
     final innerTest = apiTestLibrary.schemaTests[schema.innerType]!;
 
-    final sb = StringBuffer();
-    withFunc(
-      0,
-      sb,
-      'core.List<${innerTest.declaration}> buildUnnamed$_id',
-      '',
-      () {
-        sb.writeln('  final o = <${innerTest.declaration}>[];');
-        sb.writeln('  o.add(${innerTest.newSchemaExpr});');
-        sb.writeln('  o.add(${innerTest.newSchemaExpr});');
-        sb.writeln('  return o;');
-      },
-    );
-    return '$sb';
+    return '''
+core.List<${innerTest.declaration}> buildUnnamed$_id() => 
+  [
+    ${innerTest.newSchemaExpr},
+    ${innerTest.newSchemaExpr},
+  ];
+
+''';
   }
 
   @override

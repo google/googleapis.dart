@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<core.int> buildUnnamed1657() {
-  final o = <core.int>[];
-  o.add(42);
-  o.add(42);
-  return o;
-}
+core.List<core.int> buildUnnamed1657() => [
+      42,
+      42,
+    ];
 
 void checkUnnamed1657(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -45,12 +43,10 @@ void checkUnnamed1657(core.List<core.int> o) {
   );
 }
 
-core.List<core.int> buildUnnamed1658() {
-  final o = <core.int>[];
-  o.add(42);
-  o.add(42);
-  return o;
-}
+core.List<core.int> buildUnnamed1658() => [
+      42,
+      42,
+    ];
 
 void checkUnnamed1658(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -64,12 +60,10 @@ void checkUnnamed1658(core.List<core.int> o) {
   );
 }
 
-core.List<core.int> buildUnnamed1659() {
-  final o = <core.int>[];
-  o.add(42);
-  o.add(42);
-  return o;
-}
+core.List<core.int> buildUnnamed1659() => [
+      42,
+      42,
+    ];
 
 void checkUnnamed1659(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -183,12 +177,10 @@ void checkExtrudedArea(api.ExtrudedArea o) {
   buildCounterExtrudedArea--;
 }
 
-core.List<api.Relation> buildUnnamed1660() {
-  final o = <api.Relation>[];
-  o.add(buildRelation());
-  o.add(buildRelation());
-  return o;
-}
+core.List<api.Relation> buildUnnamed1660() => [
+      buildRelation(),
+      buildRelation(),
+    ];
 
 void checkUnnamed1660(core.List<api.Relation> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -234,12 +226,10 @@ void checkFeature(api.Feature o) {
   buildCounterFeature--;
 }
 
-core.List<api.Feature> buildUnnamed1661() {
-  final o = <api.Feature>[];
-  o.add(buildFeature());
-  o.add(buildFeature());
-  return o;
-}
+core.List<api.Feature> buildUnnamed1661() => [
+      buildFeature(),
+      buildFeature(),
+    ];
 
 void checkUnnamed1661(core.List<api.Feature> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -247,12 +237,10 @@ void checkUnnamed1661(core.List<api.Feature> o) {
   checkFeature(o[1]);
 }
 
-core.List<api.ProviderInfo> buildUnnamed1662() {
-  final o = <api.ProviderInfo>[];
-  o.add(buildProviderInfo());
-  o.add(buildProviderInfo());
-  return o;
-}
+core.List<api.ProviderInfo> buildUnnamed1662() => [
+      buildProviderInfo(),
+      buildProviderInfo(),
+    ];
 
 void checkUnnamed1662(core.List<api.ProviderInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -298,12 +286,10 @@ void checkFeatureTile(api.FeatureTile o) {
   buildCounterFeatureTile--;
 }
 
-core.List<api.Row> buildUnnamed1663() {
-  final o = <api.Row>[];
-  o.add(buildRow());
-  o.add(buildRow());
-  return o;
-}
+core.List<api.Row> buildUnnamed1663() => [
+      buildRow(),
+      buildRow(),
+    ];
 
 void checkUnnamed1663(core.List<api.Row> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -335,12 +321,10 @@ void checkFirstDerivativeElevationGrid(api.FirstDerivativeElevationGrid o) {
   buildCounterFirstDerivativeElevationGrid--;
 }
 
-core.List<api.Area> buildUnnamed1664() {
-  final o = <api.Area>[];
-  o.add(buildArea());
-  o.add(buildArea());
-  return o;
-}
+core.List<api.Area> buildUnnamed1664() => [
+      buildArea(),
+      buildArea(),
+    ];
 
 void checkUnnamed1664(core.List<api.Area> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -348,12 +332,10 @@ void checkUnnamed1664(core.List<api.Area> o) {
   checkArea(o[1]);
 }
 
-core.List<api.ExtrudedArea> buildUnnamed1665() {
-  final o = <api.ExtrudedArea>[];
-  o.add(buildExtrudedArea());
-  o.add(buildExtrudedArea());
-  return o;
-}
+core.List<api.ExtrudedArea> buildUnnamed1665() => [
+      buildExtrudedArea(),
+      buildExtrudedArea(),
+    ];
 
 void checkUnnamed1665(core.List<api.ExtrudedArea> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -361,12 +343,10 @@ void checkUnnamed1665(core.List<api.ExtrudedArea> o) {
   checkExtrudedArea(o[1]);
 }
 
-core.List<api.Line> buildUnnamed1666() {
-  final o = <api.Line>[];
-  o.add(buildLine());
-  o.add(buildLine());
-  return o;
-}
+core.List<api.Line> buildUnnamed1666() => [
+      buildLine(),
+      buildLine(),
+    ];
 
 void checkUnnamed1666(core.List<api.Line> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -374,12 +354,10 @@ void checkUnnamed1666(core.List<api.Line> o) {
   checkLine(o[1]);
 }
 
-core.List<api.ModeledVolume> buildUnnamed1667() {
-  final o = <api.ModeledVolume>[];
-  o.add(buildModeledVolume());
-  o.add(buildModeledVolume());
-  return o;
-}
+core.List<api.ModeledVolume> buildUnnamed1667() => [
+      buildModeledVolume(),
+      buildModeledVolume(),
+    ];
 
 void checkUnnamed1667(core.List<api.ModeledVolume> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -438,12 +416,10 @@ void checkLine(api.Line o) {
   buildCounterLine--;
 }
 
-core.List<api.TriangleStrip> buildUnnamed1668() {
-  final o = <api.TriangleStrip>[];
-  o.add(buildTriangleStrip());
-  o.add(buildTriangleStrip());
-  return o;
-}
+core.List<api.TriangleStrip> buildUnnamed1668() => [
+      buildTriangleStrip(),
+      buildTriangleStrip(),
+    ];
 
 void checkUnnamed1668(core.List<api.TriangleStrip> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -540,12 +516,10 @@ void checkRoadInfo(api.RoadInfo o) {
   buildCounterRoadInfo--;
 }
 
-core.List<core.int> buildUnnamed1669() {
-  final o = <core.int>[];
-  o.add(42);
-  o.add(42);
-  return o;
-}
+core.List<core.int> buildUnnamed1669() => [
+      42,
+      42,
+    ];
 
 void checkUnnamed1669(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -694,12 +668,10 @@ void checkTileCoordinates(api.TileCoordinates o) {
   buildCounterTileCoordinates--;
 }
 
-core.List<core.int> buildUnnamed1670() {
-  final o = <core.int>[];
-  o.add(42);
-  o.add(42);
-  return o;
-}
+core.List<core.int> buildUnnamed1670() => [
+      42,
+      42,
+    ];
 
 void checkUnnamed1670(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -732,12 +704,10 @@ void checkTriangleStrip(api.TriangleStrip o) {
   buildCounterTriangleStrip--;
 }
 
-core.List<core.int> buildUnnamed1671() {
-  final o = <core.int>[];
-  o.add(42);
-  o.add(42);
-  return o;
-}
+core.List<core.int> buildUnnamed1671() => [
+      42,
+      42,
+    ];
 
 void checkUnnamed1671(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -751,12 +721,10 @@ void checkUnnamed1671(core.List<core.int> o) {
   );
 }
 
-core.List<core.int> buildUnnamed1672() {
-  final o = <core.int>[];
-  o.add(42);
-  o.add(42);
-  return o;
-}
+core.List<core.int> buildUnnamed1672() => [
+      42,
+      42,
+    ];
 
 void checkUnnamed1672(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -791,12 +759,10 @@ void checkVertex2DList(api.Vertex2DList o) {
   buildCounterVertex2DList--;
 }
 
-core.List<core.int> buildUnnamed1673() {
-  final o = <core.int>[];
-  o.add(42);
-  o.add(42);
-  return o;
-}
+core.List<core.int> buildUnnamed1673() => [
+      42,
+      42,
+    ];
 
 void checkUnnamed1673(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -810,12 +776,10 @@ void checkUnnamed1673(core.List<core.int> o) {
   );
 }
 
-core.List<core.int> buildUnnamed1674() {
-  final o = <core.int>[];
-  o.add(42);
-  o.add(42);
-  return o;
-}
+core.List<core.int> buildUnnamed1674() => [
+      42,
+      42,
+    ];
 
 void checkUnnamed1674(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -829,12 +793,10 @@ void checkUnnamed1674(core.List<core.int> o) {
   );
 }
 
-core.List<core.int> buildUnnamed1675() {
-  final o = <core.int>[];
-  o.add(42);
-  o.add(42);
-  return o;
-}
+core.List<core.int> buildUnnamed1675() => [
+      42,
+      42,
+    ];
 
 void checkUnnamed1675(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -871,12 +833,10 @@ void checkVertex3DList(api.Vertex3DList o) {
   buildCounterVertex3DList--;
 }
 
-core.List<core.String> buildUnnamed1676() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed1676() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed1676(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));

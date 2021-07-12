@@ -84,12 +84,10 @@ void checkClaimDeviceResponse(api.ClaimDeviceResponse o) {
   buildCounterClaimDeviceResponse--;
 }
 
-core.List<api.PartnerClaim> buildUnnamed4475() {
-  final o = <api.PartnerClaim>[];
-  o.add(buildPartnerClaim());
-  o.add(buildPartnerClaim());
-  return o;
-}
+core.List<api.PartnerClaim> buildUnnamed4475() => [
+      buildPartnerClaim(),
+      buildPartnerClaim(),
+    ];
 
 void checkUnnamed4475(core.List<api.PartnerClaim> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -116,12 +114,10 @@ void checkClaimDevicesRequest(api.ClaimDevicesRequest o) {
   buildCounterClaimDevicesRequest--;
 }
 
-core.List<core.String> buildUnnamed4476() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed4476() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed4476(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -135,12 +131,10 @@ void checkUnnamed4476(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed4477() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed4477() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed4477(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -310,12 +304,10 @@ void checkCustomerApplyConfigurationRequest(
   buildCounterCustomerApplyConfigurationRequest--;
 }
 
-core.List<api.Configuration> buildUnnamed4478() {
-  final o = <api.Configuration>[];
-  o.add(buildConfiguration());
-  o.add(buildConfiguration());
-  return o;
-}
+core.List<api.Configuration> buildUnnamed4478() => [
+      buildConfiguration(),
+      buildConfiguration(),
+    ];
 
 void checkUnnamed4478(core.List<api.Configuration> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -344,12 +336,10 @@ void checkCustomerListConfigurationsResponse(
   buildCounterCustomerListConfigurationsResponse--;
 }
 
-core.List<api.Company> buildUnnamed4479() {
-  final o = <api.Company>[];
-  o.add(buildCompany());
-  o.add(buildCompany());
-  return o;
-}
+core.List<api.Company> buildUnnamed4479() => [
+      buildCompany(),
+      buildCompany(),
+    ];
 
 void checkUnnamed4479(core.List<api.Company> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -381,12 +371,10 @@ void checkCustomerListCustomersResponse(api.CustomerListCustomersResponse o) {
   buildCounterCustomerListCustomersResponse--;
 }
 
-core.List<api.Device> buildUnnamed4480() {
-  final o = <api.Device>[];
-  o.add(buildDevice());
-  o.add(buildDevice());
-  return o;
-}
+core.List<api.Device> buildUnnamed4480() => [
+      buildDevice(),
+      buildDevice(),
+    ];
 
 void checkUnnamed4480(core.List<api.Device> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -418,12 +406,10 @@ void checkCustomerListDevicesResponse(api.CustomerListDevicesResponse o) {
   buildCounterCustomerListDevicesResponse--;
 }
 
-core.List<api.Dpc> buildUnnamed4481() {
-  final o = <api.Dpc>[];
-  o.add(buildDpc());
-  o.add(buildDpc());
-  return o;
-}
+core.List<api.Dpc> buildUnnamed4481() => [
+      buildDpc(),
+      buildDpc(),
+    ];
 
 void checkUnnamed4481(core.List<api.Dpc> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -490,12 +476,10 @@ void checkCustomerUnclaimDeviceRequest(api.CustomerUnclaimDeviceRequest o) {
   buildCounterCustomerUnclaimDeviceRequest--;
 }
 
-core.List<api.DeviceClaim> buildUnnamed4482() {
-  final o = <api.DeviceClaim>[];
-  o.add(buildDeviceClaim());
-  o.add(buildDeviceClaim());
-  return o;
-}
+core.List<api.DeviceClaim> buildUnnamed4482() => [
+      buildDeviceClaim(),
+      buildDeviceClaim(),
+    ];
 
 void checkUnnamed4482(core.List<api.DeviceClaim> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -625,12 +609,10 @@ void checkDeviceIdentifier(api.DeviceIdentifier o) {
   buildCounterDeviceIdentifier--;
 }
 
-core.Map<core.String, core.String> buildUnnamed4483() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed4483() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed4483(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -721,12 +703,10 @@ void checkDevicesLongRunningOperationMetadata(
   buildCounterDevicesLongRunningOperationMetadata--;
 }
 
-core.List<api.OperationPerDevice> buildUnnamed4484() {
-  final o = <api.OperationPerDevice>[];
-  o.add(buildOperationPerDevice());
-  o.add(buildOperationPerDevice());
-  return o;
-}
+core.List<api.OperationPerDevice> buildUnnamed4484() => [
+      buildOperationPerDevice(),
+      buildOperationPerDevice(),
+    ];
 
 void checkUnnamed4484(core.List<api.OperationPerDevice> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -838,12 +818,10 @@ void checkFindDevicesByDeviceIdentifierRequest(
   buildCounterFindDevicesByDeviceIdentifierRequest--;
 }
 
-core.List<api.Device> buildUnnamed4485() {
-  final o = <api.Device>[];
-  o.add(buildDevice());
-  o.add(buildDevice());
-  return o;
-}
+core.List<api.Device> buildUnnamed4485() => [
+      buildDevice(),
+      buildDevice(),
+    ];
 
 void checkUnnamed4485(core.List<api.Device> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -882,12 +860,10 @@ void checkFindDevicesByDeviceIdentifierResponse(
   buildCounterFindDevicesByDeviceIdentifierResponse--;
 }
 
-core.List<core.String> buildUnnamed4486() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed4486() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed4486(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -935,12 +911,10 @@ void checkFindDevicesByOwnerRequest(api.FindDevicesByOwnerRequest o) {
   buildCounterFindDevicesByOwnerRequest--;
 }
 
-core.List<api.Device> buildUnnamed4487() {
-  final o = <api.Device>[];
-  o.add(buildDevice());
-  o.add(buildDevice());
-  return o;
-}
+core.List<api.Device> buildUnnamed4487() => [
+      buildDevice(),
+      buildDevice(),
+    ];
 
 void checkUnnamed4487(core.List<api.Device> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -977,12 +951,10 @@ void checkFindDevicesByOwnerResponse(api.FindDevicesByOwnerResponse o) {
   buildCounterFindDevicesByOwnerResponse--;
 }
 
-core.List<api.Company> buildUnnamed4488() {
-  final o = <api.Company>[];
-  o.add(buildCompany());
-  o.add(buildCompany());
-  return o;
-}
+core.List<api.Company> buildUnnamed4488() => [
+      buildCompany(),
+      buildCompany(),
+    ];
 
 void checkUnnamed4488(core.List<api.Company> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1019,12 +991,10 @@ void checkListCustomersResponse(api.ListCustomersResponse o) {
   buildCounterListCustomersResponse--;
 }
 
-core.List<api.Company> buildUnnamed4489() {
-  final o = <api.Company>[];
-  o.add(buildCompany());
-  o.add(buildCompany());
-  return o;
-}
+core.List<api.Company> buildUnnamed4489() => [
+      buildCompany(),
+      buildCompany(),
+    ];
 
 void checkUnnamed4489(core.List<api.Company> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1061,12 +1031,10 @@ void checkListVendorCustomersResponse(api.ListVendorCustomersResponse o) {
   buildCounterListVendorCustomersResponse--;
 }
 
-core.List<api.Company> buildUnnamed4490() {
-  final o = <api.Company>[];
-  o.add(buildCompany());
-  o.add(buildCompany());
-  return o;
-}
+core.List<api.Company> buildUnnamed4490() => [
+      buildCompany(),
+      buildCompany(),
+    ];
 
 void checkUnnamed4490(core.List<api.Company> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1103,20 +1071,18 @@ void checkListVendorsResponse(api.ListVendorsResponse o) {
   buildCounterListVendorsResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed4491() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed4491() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed4491(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1150,20 +1116,18 @@ void checkUnnamed4491(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed4492() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed4492() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed4492(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1359,20 +1323,18 @@ void checkPerDeviceStatusInBatch(api.PerDeviceStatusInBatch o) {
   buildCounterPerDeviceStatusInBatch--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed4493() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed4493() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed4493(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1406,12 +1368,10 @@ void checkUnnamed4493(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed4494() {
-  final o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed4493());
-  o.add(buildUnnamed4493());
-  return o;
-}
+core.List<core.Map<core.String, core.Object>> buildUnnamed4494() => [
+      buildUnnamed4493(),
+      buildUnnamed4493(),
+    ];
 
 void checkUnnamed4494(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1487,12 +1447,10 @@ void checkUnclaimDeviceRequest(api.UnclaimDeviceRequest o) {
   buildCounterUnclaimDeviceRequest--;
 }
 
-core.List<api.PartnerUnclaim> buildUnnamed4495() {
-  final o = <api.PartnerUnclaim>[];
-  o.add(buildPartnerUnclaim());
-  o.add(buildPartnerUnclaim());
-  return o;
-}
+core.List<api.PartnerUnclaim> buildUnnamed4495() => [
+      buildPartnerUnclaim(),
+      buildPartnerUnclaim(),
+    ];
 
 void checkUnnamed4495(core.List<api.PartnerUnclaim> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1519,12 +1477,10 @@ void checkUnclaimDevicesRequest(api.UnclaimDevicesRequest o) {
   buildCounterUnclaimDevicesRequest--;
 }
 
-core.List<api.UpdateMetadataArguments> buildUnnamed4496() {
-  final o = <api.UpdateMetadataArguments>[];
-  o.add(buildUpdateMetadataArguments());
-  o.add(buildUpdateMetadataArguments());
-  return o;
-}
+core.List<api.UpdateMetadataArguments> buildUnnamed4496() => [
+      buildUpdateMetadataArguments(),
+      buildUpdateMetadataArguments(),
+    ];
 
 void checkUnnamed4496(core.List<api.UpdateMetadataArguments> o) {
   unittest.expect(o, unittest.hasLength(2));

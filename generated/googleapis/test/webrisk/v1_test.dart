@@ -121,12 +121,10 @@ void checkGoogleCloudWebriskV1RawHashes(api.GoogleCloudWebriskV1RawHashes o) {
   buildCounterGoogleCloudWebriskV1RawHashes--;
 }
 
-core.List<core.int> buildUnnamed1643() {
-  final o = <core.int>[];
-  o.add(42);
-  o.add(42);
-  return o;
-}
+core.List<core.int> buildUnnamed1643() => [
+      42,
+      42,
+    ];
 
 void checkUnnamed1643(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -199,12 +197,10 @@ void checkGoogleCloudWebriskV1RiceDeltaEncoding(
 }
 
 core.List<api.GoogleCloudWebriskV1SearchHashesResponseThreatHash>
-    buildUnnamed1644() {
-  final o = <api.GoogleCloudWebriskV1SearchHashesResponseThreatHash>[];
-  o.add(buildGoogleCloudWebriskV1SearchHashesResponseThreatHash());
-  o.add(buildGoogleCloudWebriskV1SearchHashesResponseThreatHash());
-  return o;
-}
+    buildUnnamed1644() => [
+          buildGoogleCloudWebriskV1SearchHashesResponseThreatHash(),
+          buildGoogleCloudWebriskV1SearchHashesResponseThreatHash(),
+        ];
 
 void checkUnnamed1644(
     core.List<api.GoogleCloudWebriskV1SearchHashesResponseThreatHash> o) {
@@ -239,12 +235,10 @@ void checkGoogleCloudWebriskV1SearchHashesResponse(
   buildCounterGoogleCloudWebriskV1SearchHashesResponse--;
 }
 
-core.List<core.String> buildUnnamed1645() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed1645() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed1645(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -310,12 +304,10 @@ void checkGoogleCloudWebriskV1SearchUrisResponse(
   buildCounterGoogleCloudWebriskV1SearchUrisResponse--;
 }
 
-core.List<core.String> buildUnnamed1646() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed1646() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed1646(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -355,12 +347,10 @@ void checkGoogleCloudWebriskV1SearchUrisResponseThreatUri(
   buildCounterGoogleCloudWebriskV1SearchUrisResponseThreatUri--;
 }
 
-core.List<core.String> buildUnnamed1647() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed1647() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed1647(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -453,12 +443,10 @@ void checkGoogleCloudWebriskV1SubmitUriRequest(
   buildCounterGoogleCloudWebriskV1SubmitUriRequest--;
 }
 
-core.List<api.GoogleCloudWebriskV1RawHashes> buildUnnamed1648() {
-  final o = <api.GoogleCloudWebriskV1RawHashes>[];
-  o.add(buildGoogleCloudWebriskV1RawHashes());
-  o.add(buildGoogleCloudWebriskV1RawHashes());
-  return o;
-}
+core.List<api.GoogleCloudWebriskV1RawHashes> buildUnnamed1648() => [
+      buildGoogleCloudWebriskV1RawHashes(),
+      buildGoogleCloudWebriskV1RawHashes(),
+    ];
 
 void checkUnnamed1648(core.List<api.GoogleCloudWebriskV1RawHashes> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -529,12 +517,10 @@ void checkGoogleLongrunningCancelOperationRequest(
   buildCounterGoogleLongrunningCancelOperationRequest--;
 }
 
-core.List<api.GoogleLongrunningOperation> buildUnnamed1649() {
-  final o = <api.GoogleLongrunningOperation>[];
-  o.add(buildGoogleLongrunningOperation());
-  o.add(buildGoogleLongrunningOperation());
-  return o;
-}
+core.List<api.GoogleLongrunningOperation> buildUnnamed1649() => [
+      buildGoogleLongrunningOperation(),
+      buildGoogleLongrunningOperation(),
+    ];
 
 void checkUnnamed1649(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -568,20 +554,18 @@ void checkGoogleLongrunningListOperationsResponse(
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed1650() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed1650() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed1650(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -615,20 +599,18 @@ void checkUnnamed1650(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed1651() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed1651() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed1651(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -707,20 +689,18 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed1652() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed1652() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed1652(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -754,12 +734,10 @@ void checkUnnamed1652(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed1653() {
-  final o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed1652());
-  o.add(buildUnnamed1652());
-  return o;
-}
+core.List<core.Map<core.String, core.Object>> buildUnnamed1653() => [
+      buildUnnamed1652(),
+      buildUnnamed1652(),
+    ];
 
 void checkUnnamed1653(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -796,12 +774,10 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
   buildCounterGoogleRpcStatus--;
 }
 
-core.List<core.String> buildUnnamed1654() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed1654() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed1654(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -815,12 +791,10 @@ void checkUnnamed1654(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed1655() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed1655() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed1655(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -834,12 +808,10 @@ void checkUnnamed1655(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed1656() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed1656() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed1656(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));

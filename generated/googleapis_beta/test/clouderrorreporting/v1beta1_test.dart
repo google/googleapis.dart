@@ -41,12 +41,10 @@ void checkDeleteEventsResponse(api.DeleteEventsResponse o) {
   buildCounterDeleteEventsResponse--;
 }
 
-core.List<api.SourceReference> buildUnnamed8308() {
-  final o = <api.SourceReference>[];
-  o.add(buildSourceReference());
-  o.add(buildSourceReference());
-  return o;
-}
+core.List<api.SourceReference> buildUnnamed8308() => [
+      buildSourceReference(),
+      buildSourceReference(),
+    ];
 
 void checkUnnamed8308(core.List<api.SourceReference> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -113,12 +111,10 @@ void checkErrorEvent(api.ErrorEvent o) {
   buildCounterErrorEvent--;
 }
 
-core.List<api.TrackingIssue> buildUnnamed8309() {
-  final o = <api.TrackingIssue>[];
-  o.add(buildTrackingIssue());
-  o.add(buildTrackingIssue());
-  return o;
-}
+core.List<api.TrackingIssue> buildUnnamed8309() => [
+      buildTrackingIssue(),
+      buildTrackingIssue(),
+    ];
 
 void checkUnnamed8309(core.List<api.TrackingIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -160,12 +156,10 @@ void checkErrorGroup(api.ErrorGroup o) {
   buildCounterErrorGroup--;
 }
 
-core.List<api.ServiceContext> buildUnnamed8310() {
-  final o = <api.ServiceContext>[];
-  o.add(buildServiceContext());
-  o.add(buildServiceContext());
-  return o;
-}
+core.List<api.ServiceContext> buildUnnamed8310() => [
+      buildServiceContext(),
+      buildServiceContext(),
+    ];
 
 void checkUnnamed8310(core.List<api.ServiceContext> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -173,12 +167,10 @@ void checkUnnamed8310(core.List<api.ServiceContext> o) {
   checkServiceContext(o[1]);
 }
 
-core.List<api.TimedCount> buildUnnamed8311() {
-  final o = <api.TimedCount>[];
-  o.add(buildTimedCount());
-  o.add(buildTimedCount());
-  return o;
-}
+core.List<api.TimedCount> buildUnnamed8311() => [
+      buildTimedCount(),
+      buildTimedCount(),
+    ];
 
 void checkUnnamed8311(core.List<api.TimedCount> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -283,12 +275,10 @@ void checkHttpRequestContext(api.HttpRequestContext o) {
   buildCounterHttpRequestContext--;
 }
 
-core.List<api.ErrorEvent> buildUnnamed8312() {
-  final o = <api.ErrorEvent>[];
-  o.add(buildErrorEvent());
-  o.add(buildErrorEvent());
-  return o;
-}
+core.List<api.ErrorEvent> buildUnnamed8312() => [
+      buildErrorEvent(),
+      buildErrorEvent(),
+    ];
 
 void checkUnnamed8312(core.List<api.ErrorEvent> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -325,12 +315,10 @@ void checkListEventsResponse(api.ListEventsResponse o) {
   buildCounterListEventsResponse--;
 }
 
-core.List<api.ErrorGroupStats> buildUnnamed8313() {
-  final o = <api.ErrorGroupStats>[];
-  o.add(buildErrorGroupStats());
-  o.add(buildErrorGroupStats());
-  return o;
-}
+core.List<api.ErrorGroupStats> buildUnnamed8313() => [
+      buildErrorGroupStats(),
+      buildErrorGroupStats(),
+    ];
 
 void checkUnnamed8313(core.List<api.ErrorGroupStats> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -558,12 +546,10 @@ void checkTrackingIssue(api.TrackingIssue o) {
   buildCounterTrackingIssue--;
 }
 
-core.List<core.String> buildUnnamed8314() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8314() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8314(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));

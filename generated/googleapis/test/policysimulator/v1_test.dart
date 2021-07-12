@@ -90,15 +90,12 @@ void checkGoogleCloudPolicysimulatorV1AccessTuple(
 
 core.Map<core.String,
         api.GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership>
-    buildUnnamed341() {
-  final o = <core.String,
-      api.GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership>{};
-  o['x'] =
-      buildGoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership();
-  o['y'] =
-      buildGoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership();
-  return o;
-}
+    buildUnnamed341() => {
+          'x':
+              buildGoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership(),
+          'y':
+              buildGoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership(),
+        };
 
 void checkUnnamed341(
     core.Map<core.String,
@@ -193,12 +190,10 @@ void checkGoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership(
   buildCounterGoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed342() {
-  final o = <api.GoogleRpcStatus>[];
-  o.add(buildGoogleRpcStatus());
-  o.add(buildGoogleRpcStatus());
-  return o;
-}
+core.List<api.GoogleRpcStatus> buildUnnamed342() => [
+      buildGoogleRpcStatus(),
+      buildGoogleRpcStatus(),
+    ];
 
 void checkUnnamed342(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -206,12 +201,11 @@ void checkUnnamed342(core.List<api.GoogleRpcStatus> o) {
   checkGoogleRpcStatus(o[1]);
 }
 
-core.List<api.GoogleCloudPolicysimulatorV1ExplainedPolicy> buildUnnamed343() {
-  final o = <api.GoogleCloudPolicysimulatorV1ExplainedPolicy>[];
-  o.add(buildGoogleCloudPolicysimulatorV1ExplainedPolicy());
-  o.add(buildGoogleCloudPolicysimulatorV1ExplainedPolicy());
-  return o;
-}
+core.List<api.GoogleCloudPolicysimulatorV1ExplainedPolicy> buildUnnamed343() =>
+    [
+      buildGoogleCloudPolicysimulatorV1ExplainedPolicy(),
+      buildGoogleCloudPolicysimulatorV1ExplainedPolicy(),
+    ];
 
 void checkUnnamed343(
     core.List<api.GoogleCloudPolicysimulatorV1ExplainedPolicy> o) {
@@ -249,12 +243,10 @@ void checkGoogleCloudPolicysimulatorV1ExplainedAccess(
 }
 
 core.List<api.GoogleCloudPolicysimulatorV1BindingExplanation>
-    buildUnnamed344() {
-  final o = <api.GoogleCloudPolicysimulatorV1BindingExplanation>[];
-  o.add(buildGoogleCloudPolicysimulatorV1BindingExplanation());
-  o.add(buildGoogleCloudPolicysimulatorV1BindingExplanation());
-  return o;
-}
+    buildUnnamed344() => [
+          buildGoogleCloudPolicysimulatorV1BindingExplanation(),
+          buildGoogleCloudPolicysimulatorV1BindingExplanation(),
+        ];
 
 void checkUnnamed344(
     core.List<api.GoogleCloudPolicysimulatorV1BindingExplanation> o) {
@@ -301,12 +293,10 @@ void checkGoogleCloudPolicysimulatorV1ExplainedPolicy(
   buildCounterGoogleCloudPolicysimulatorV1ExplainedPolicy--;
 }
 
-core.List<api.GoogleCloudPolicysimulatorV1ReplayResult> buildUnnamed345() {
-  final o = <api.GoogleCloudPolicysimulatorV1ReplayResult>[];
-  o.add(buildGoogleCloudPolicysimulatorV1ReplayResult());
-  o.add(buildGoogleCloudPolicysimulatorV1ReplayResult());
-  return o;
-}
+core.List<api.GoogleCloudPolicysimulatorV1ReplayResult> buildUnnamed345() => [
+      buildGoogleCloudPolicysimulatorV1ReplayResult(),
+      buildGoogleCloudPolicysimulatorV1ReplayResult(),
+    ];
 
 void checkUnnamed345(
     core.List<api.GoogleCloudPolicysimulatorV1ReplayResult> o) {
@@ -374,12 +364,10 @@ void checkGoogleCloudPolicysimulatorV1Replay(
   buildCounterGoogleCloudPolicysimulatorV1Replay--;
 }
 
-core.Map<core.String, api.GoogleIamV1Policy> buildUnnamed346() {
-  final o = <core.String, api.GoogleIamV1Policy>{};
-  o['x'] = buildGoogleIamV1Policy();
-  o['y'] = buildGoogleIamV1Policy();
-  return o;
-}
+core.Map<core.String, api.GoogleIamV1Policy> buildUnnamed346() => {
+      'x': buildGoogleIamV1Policy(),
+      'y': buildGoogleIamV1Policy(),
+    };
 
 void checkUnnamed346(core.Map<core.String, api.GoogleIamV1Policy> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -573,12 +561,10 @@ void checkGoogleCloudPolicysimulatorV1beta1Replay(
   buildCounterGoogleCloudPolicysimulatorV1beta1Replay--;
 }
 
-core.Map<core.String, api.GoogleIamV1Policy> buildUnnamed347() {
-  final o = <core.String, api.GoogleIamV1Policy>{};
-  o['x'] = buildGoogleIamV1Policy();
-  o['y'] = buildGoogleIamV1Policy();
-  return o;
-}
+core.Map<core.String, api.GoogleIamV1Policy> buildUnnamed347() => {
+      'x': buildGoogleIamV1Policy(),
+      'y': buildGoogleIamV1Policy(),
+    };
 
 void checkUnnamed347(core.Map<core.String, api.GoogleIamV1Policy> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -682,12 +668,10 @@ void checkGoogleCloudPolicysimulatorV1beta1ReplayResultsSummary(
   buildCounterGoogleCloudPolicysimulatorV1beta1ReplayResultsSummary--;
 }
 
-core.List<api.GoogleIamV1AuditLogConfig> buildUnnamed348() {
-  final o = <api.GoogleIamV1AuditLogConfig>[];
-  o.add(buildGoogleIamV1AuditLogConfig());
-  o.add(buildGoogleIamV1AuditLogConfig());
-  return o;
-}
+core.List<api.GoogleIamV1AuditLogConfig> buildUnnamed348() => [
+      buildGoogleIamV1AuditLogConfig(),
+      buildGoogleIamV1AuditLogConfig(),
+    ];
 
 void checkUnnamed348(core.List<api.GoogleIamV1AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -719,12 +703,10 @@ void checkGoogleIamV1AuditConfig(api.GoogleIamV1AuditConfig o) {
   buildCounterGoogleIamV1AuditConfig--;
 }
 
-core.List<core.String> buildUnnamed349() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed349() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed349(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -762,12 +744,10 @@ void checkGoogleIamV1AuditLogConfig(api.GoogleIamV1AuditLogConfig o) {
   buildCounterGoogleIamV1AuditLogConfig--;
 }
 
-core.List<core.String> buildUnnamed350() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed350() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed350(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -807,12 +787,10 @@ void checkGoogleIamV1Binding(api.GoogleIamV1Binding o) {
   buildCounterGoogleIamV1Binding--;
 }
 
-core.List<api.GoogleIamV1AuditConfig> buildUnnamed351() {
-  final o = <api.GoogleIamV1AuditConfig>[];
-  o.add(buildGoogleIamV1AuditConfig());
-  o.add(buildGoogleIamV1AuditConfig());
-  return o;
-}
+core.List<api.GoogleIamV1AuditConfig> buildUnnamed351() => [
+      buildGoogleIamV1AuditConfig(),
+      buildGoogleIamV1AuditConfig(),
+    ];
 
 void checkUnnamed351(core.List<api.GoogleIamV1AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -820,12 +798,10 @@ void checkUnnamed351(core.List<api.GoogleIamV1AuditConfig> o) {
   checkGoogleIamV1AuditConfig(o[1]);
 }
 
-core.List<api.GoogleIamV1Binding> buildUnnamed352() {
-  final o = <api.GoogleIamV1Binding>[];
-  o.add(buildGoogleIamV1Binding());
-  o.add(buildGoogleIamV1Binding());
-  return o;
-}
+core.List<api.GoogleIamV1Binding> buildUnnamed352() => [
+      buildGoogleIamV1Binding(),
+      buildGoogleIamV1Binding(),
+    ];
 
 void checkUnnamed352(core.List<api.GoogleIamV1Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -864,12 +840,10 @@ void checkGoogleIamV1Policy(api.GoogleIamV1Policy o) {
   buildCounterGoogleIamV1Policy--;
 }
 
-core.List<api.GoogleLongrunningOperation> buildUnnamed353() {
-  final o = <api.GoogleLongrunningOperation>[];
-  o.add(buildGoogleLongrunningOperation());
-  o.add(buildGoogleLongrunningOperation());
-  return o;
-}
+core.List<api.GoogleLongrunningOperation> buildUnnamed353() => [
+      buildGoogleLongrunningOperation(),
+      buildGoogleLongrunningOperation(),
+    ];
 
 void checkUnnamed353(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -903,20 +877,18 @@ void checkGoogleLongrunningListOperationsResponse(
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed354() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed354() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed354(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -950,20 +922,18 @@ void checkUnnamed354(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed355() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed355() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed355(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1027,20 +997,18 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   buildCounterGoogleLongrunningOperation--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed356() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed356() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed356(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1074,12 +1042,10 @@ void checkUnnamed356(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed357() {
-  final o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed356());
-  o.add(buildUnnamed356());
-  return o;
-}
+core.List<core.Map<core.String, core.Object>> buildUnnamed357() => [
+      buildUnnamed356(),
+      buildUnnamed356(),
+    ];
 
 void checkUnnamed357(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));

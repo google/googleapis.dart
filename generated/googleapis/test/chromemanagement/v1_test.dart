@@ -70,12 +70,10 @@ void checkGoogleChromeManagementV1BrowserVersion(
   buildCounterGoogleChromeManagementV1BrowserVersion--;
 }
 
-core.List<api.GoogleChromeManagementV1BrowserVersion> buildUnnamed1467() {
-  final o = <api.GoogleChromeManagementV1BrowserVersion>[];
-  o.add(buildGoogleChromeManagementV1BrowserVersion());
-  o.add(buildGoogleChromeManagementV1BrowserVersion());
-  return o;
-}
+core.List<api.GoogleChromeManagementV1BrowserVersion> buildUnnamed1467() => [
+      buildGoogleChromeManagementV1BrowserVersion(),
+      buildGoogleChromeManagementV1BrowserVersion(),
+    ];
 
 void checkUnnamed1467(core.List<api.GoogleChromeManagementV1BrowserVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -114,12 +112,10 @@ void checkGoogleChromeManagementV1CountChromeVersionsResponse(
   buildCounterGoogleChromeManagementV1CountChromeVersionsResponse--;
 }
 
-core.List<api.GoogleChromeManagementV1InstalledApp> buildUnnamed1468() {
-  final o = <api.GoogleChromeManagementV1InstalledApp>[];
-  o.add(buildGoogleChromeManagementV1InstalledApp());
-  o.add(buildGoogleChromeManagementV1InstalledApp());
-  return o;
-}
+core.List<api.GoogleChromeManagementV1InstalledApp> buildUnnamed1468() => [
+      buildGoogleChromeManagementV1InstalledApp(),
+      buildGoogleChromeManagementV1InstalledApp(),
+    ];
 
 void checkUnnamed1468(core.List<api.GoogleChromeManagementV1InstalledApp> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -185,12 +181,10 @@ void checkGoogleChromeManagementV1Device(api.GoogleChromeManagementV1Device o) {
   buildCounterGoogleChromeManagementV1Device--;
 }
 
-core.List<api.GoogleChromeManagementV1Device> buildUnnamed1469() {
-  final o = <api.GoogleChromeManagementV1Device>[];
-  o.add(buildGoogleChromeManagementV1Device());
-  o.add(buildGoogleChromeManagementV1Device());
-  return o;
-}
+core.List<api.GoogleChromeManagementV1Device> buildUnnamed1469() => [
+      buildGoogleChromeManagementV1Device(),
+      buildGoogleChromeManagementV1Device(),
+    ];
 
 void checkUnnamed1469(core.List<api.GoogleChromeManagementV1Device> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -230,12 +224,10 @@ void checkGoogleChromeManagementV1FindInstalledAppDevicesResponse(
   buildCounterGoogleChromeManagementV1FindInstalledAppDevicesResponse--;
 }
 
-core.List<core.String> buildUnnamed1470() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed1470() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed1470(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));

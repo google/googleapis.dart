@@ -112,12 +112,10 @@ void checkAdminSdkConfig(api.AdminSdkConfig o) {
   buildCounterAdminSdkConfig--;
 }
 
-core.List<api.StreamMapping> buildUnnamed8172() {
-  final o = <api.StreamMapping>[];
-  o.add(buildStreamMapping());
-  o.add(buildStreamMapping());
-  return o;
-}
+core.List<api.StreamMapping> buildUnnamed8172() => [
+      buildStreamMapping(),
+      buildStreamMapping(),
+    ];
 
 void checkUnnamed8172(core.List<api.StreamMapping> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -476,12 +474,10 @@ void checkIosAppConfig(api.IosAppConfig o) {
   buildCounterIosAppConfig--;
 }
 
-core.List<api.AndroidApp> buildUnnamed8173() {
-  final o = <api.AndroidApp>[];
-  o.add(buildAndroidApp());
-  o.add(buildAndroidApp());
-  return o;
-}
+core.List<api.AndroidApp> buildUnnamed8173() => [
+      buildAndroidApp(),
+      buildAndroidApp(),
+    ];
 
 void checkUnnamed8173(core.List<api.AndroidApp> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -513,12 +509,10 @@ void checkListAndroidAppsResponse(api.ListAndroidAppsResponse o) {
   buildCounterListAndroidAppsResponse--;
 }
 
-core.List<api.Location> buildUnnamed8174() {
-  final o = <api.Location>[];
-  o.add(buildLocation());
-  o.add(buildLocation());
-  return o;
-}
+core.List<api.Location> buildUnnamed8174() => [
+      buildLocation(),
+      buildLocation(),
+    ];
 
 void checkUnnamed8174(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -550,12 +544,10 @@ void checkListAvailableLocationsResponse(api.ListAvailableLocationsResponse o) {
   buildCounterListAvailableLocationsResponse--;
 }
 
-core.List<api.ProjectInfo> buildUnnamed8175() {
-  final o = <api.ProjectInfo>[];
-  o.add(buildProjectInfo());
-  o.add(buildProjectInfo());
-  return o;
-}
+core.List<api.ProjectInfo> buildUnnamed8175() => [
+      buildProjectInfo(),
+      buildProjectInfo(),
+    ];
 
 void checkUnnamed8175(core.List<api.ProjectInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -587,12 +579,10 @@ void checkListAvailableProjectsResponse(api.ListAvailableProjectsResponse o) {
   buildCounterListAvailableProjectsResponse--;
 }
 
-core.List<api.FirebaseProject> buildUnnamed8176() {
-  final o = <api.FirebaseProject>[];
-  o.add(buildFirebaseProject());
-  o.add(buildFirebaseProject());
-  return o;
-}
+core.List<api.FirebaseProject> buildUnnamed8176() => [
+      buildFirebaseProject(),
+      buildFirebaseProject(),
+    ];
 
 void checkUnnamed8176(core.List<api.FirebaseProject> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -624,12 +614,10 @@ void checkListFirebaseProjectsResponse(api.ListFirebaseProjectsResponse o) {
   buildCounterListFirebaseProjectsResponse--;
 }
 
-core.List<api.IosApp> buildUnnamed8177() {
-  final o = <api.IosApp>[];
-  o.add(buildIosApp());
-  o.add(buildIosApp());
-  return o;
-}
+core.List<api.IosApp> buildUnnamed8177() => [
+      buildIosApp(),
+      buildIosApp(),
+    ];
 
 void checkUnnamed8177(core.List<api.IosApp> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -661,12 +649,10 @@ void checkListIosAppsResponse(api.ListIosAppsResponse o) {
   buildCounterListIosAppsResponse--;
 }
 
-core.List<api.ShaCertificate> buildUnnamed8178() {
-  final o = <api.ShaCertificate>[];
-  o.add(buildShaCertificate());
-  o.add(buildShaCertificate());
-  return o;
-}
+core.List<api.ShaCertificate> buildUnnamed8178() => [
+      buildShaCertificate(),
+      buildShaCertificate(),
+    ];
 
 void checkUnnamed8178(core.List<api.ShaCertificate> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -693,12 +679,10 @@ void checkListShaCertificatesResponse(api.ListShaCertificatesResponse o) {
   buildCounterListShaCertificatesResponse--;
 }
 
-core.List<api.WebApp> buildUnnamed8179() {
-  final o = <api.WebApp>[];
-  o.add(buildWebApp());
-  o.add(buildWebApp());
-  return o;
-}
+core.List<api.WebApp> buildUnnamed8179() => [
+      buildWebApp(),
+      buildWebApp(),
+    ];
 
 void checkUnnamed8179(core.List<api.WebApp> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -730,12 +714,10 @@ void checkListWebAppsResponse(api.ListWebAppsResponse o) {
   buildCounterListWebAppsResponse--;
 }
 
-core.List<core.String> buildUnnamed8180() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8180() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8180(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -793,20 +775,18 @@ void checkMessageSet(api.MessageSet o) {
   buildCounterMessageSet--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed8181() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed8181() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed8181(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -840,20 +820,18 @@ void checkUnnamed8181(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed8182() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed8182() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed8182(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -971,12 +949,10 @@ void checkRemoveAnalyticsRequest(api.RemoveAnalyticsRequest o) {
   buildCounterRemoveAnalyticsRequest--;
 }
 
-core.List<api.FirebaseAppInfo> buildUnnamed8183() {
-  final o = <api.FirebaseAppInfo>[];
-  o.add(buildFirebaseAppInfo());
-  o.add(buildFirebaseAppInfo());
-  return o;
-}
+core.List<api.FirebaseAppInfo> buildUnnamed8183() => [
+      buildFirebaseAppInfo(),
+      buildFirebaseAppInfo(),
+    ];
 
 void checkUnnamed8183(core.List<api.FirebaseAppInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1040,20 +1016,18 @@ void checkShaCertificate(api.ShaCertificate o) {
   buildCounterShaCertificate--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed8184() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed8184() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed8184(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1087,12 +1061,10 @@ void checkUnnamed8184(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed8185() {
-  final o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed8184());
-  o.add(buildUnnamed8184());
-  return o;
-}
+core.List<core.Map<core.String, core.Object>> buildUnnamed8185() => [
+      buildUnnamed8184(),
+      buildUnnamed8184(),
+    ];
 
 void checkUnnamed8185(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1200,12 +1172,10 @@ void checkStreamMapping(api.StreamMapping o) {
   buildCounterStreamMapping--;
 }
 
-core.List<core.String> buildUnnamed8186() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8186() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8186(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));

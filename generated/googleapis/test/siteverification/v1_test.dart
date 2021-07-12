@@ -110,12 +110,10 @@ void checkSiteVerificationWebResourceGettokenResponse(
   buildCounterSiteVerificationWebResourceGettokenResponse--;
 }
 
-core.List<api.SiteVerificationWebResourceResource> buildUnnamed5731() {
-  final o = <api.SiteVerificationWebResourceResource>[];
-  o.add(buildSiteVerificationWebResourceResource());
-  o.add(buildSiteVerificationWebResourceResource());
-  return o;
-}
+core.List<api.SiteVerificationWebResourceResource> buildUnnamed5731() => [
+      buildSiteVerificationWebResourceResource(),
+      buildSiteVerificationWebResourceResource(),
+    ];
 
 void checkUnnamed5731(core.List<api.SiteVerificationWebResourceResource> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -144,12 +142,10 @@ void checkSiteVerificationWebResourceListResponse(
   buildCounterSiteVerificationWebResourceListResponse--;
 }
 
-core.List<core.String> buildUnnamed5732() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5732() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5732(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));

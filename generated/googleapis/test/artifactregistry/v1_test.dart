@@ -88,12 +88,10 @@ void checkCancelOperationRequest(api.CancelOperationRequest o) {
   buildCounterCancelOperationRequest--;
 }
 
-core.List<core.String> buildUnnamed5010() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5010() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5010(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -192,12 +190,10 @@ void checkImportAptArtifactsErrorInfo(api.ImportAptArtifactsErrorInfo o) {
   buildCounterImportAptArtifactsErrorInfo--;
 }
 
-core.List<core.String> buildUnnamed5011() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5011() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5011(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -232,12 +228,10 @@ void checkImportAptArtifactsGcsSource(api.ImportAptArtifactsGcsSource o) {
   buildCounterImportAptArtifactsGcsSource--;
 }
 
-core.List<api.AptArtifact> buildUnnamed5012() {
-  final o = <api.AptArtifact>[];
-  o.add(buildAptArtifact());
-  o.add(buildAptArtifact());
-  return o;
-}
+core.List<api.AptArtifact> buildUnnamed5012() => [
+      buildAptArtifact(),
+      buildAptArtifact(),
+    ];
 
 void checkUnnamed5012(core.List<api.AptArtifact> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -245,12 +239,10 @@ void checkUnnamed5012(core.List<api.AptArtifact> o) {
   checkAptArtifact(o[1]);
 }
 
-core.List<api.ImportAptArtifactsErrorInfo> buildUnnamed5013() {
-  final o = <api.ImportAptArtifactsErrorInfo>[];
-  o.add(buildImportAptArtifactsErrorInfo());
-  o.add(buildImportAptArtifactsErrorInfo());
-  return o;
-}
+core.List<api.ImportAptArtifactsErrorInfo> buildUnnamed5013() => [
+      buildImportAptArtifactsErrorInfo(),
+      buildImportAptArtifactsErrorInfo(),
+    ];
 
 void checkUnnamed5013(core.List<api.ImportAptArtifactsErrorInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -300,12 +292,10 @@ void checkImportYumArtifactsErrorInfo(api.ImportYumArtifactsErrorInfo o) {
   buildCounterImportYumArtifactsErrorInfo--;
 }
 
-core.List<core.String> buildUnnamed5014() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5014() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5014(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -340,12 +330,10 @@ void checkImportYumArtifactsGcsSource(api.ImportYumArtifactsGcsSource o) {
   buildCounterImportYumArtifactsGcsSource--;
 }
 
-core.List<api.ImportYumArtifactsErrorInfo> buildUnnamed5015() {
-  final o = <api.ImportYumArtifactsErrorInfo>[];
-  o.add(buildImportYumArtifactsErrorInfo());
-  o.add(buildImportYumArtifactsErrorInfo());
-  return o;
-}
+core.List<api.ImportYumArtifactsErrorInfo> buildUnnamed5015() => [
+      buildImportYumArtifactsErrorInfo(),
+      buildImportYumArtifactsErrorInfo(),
+    ];
 
 void checkUnnamed5015(core.List<api.ImportYumArtifactsErrorInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -353,12 +341,10 @@ void checkUnnamed5015(core.List<api.ImportYumArtifactsErrorInfo> o) {
   checkImportYumArtifactsErrorInfo(o[1]);
 }
 
-core.List<api.YumArtifact> buildUnnamed5016() {
-  final o = <api.YumArtifact>[];
-  o.add(buildYumArtifact());
-  o.add(buildYumArtifact());
-  return o;
-}
+core.List<api.YumArtifact> buildUnnamed5016() => [
+      buildYumArtifact(),
+      buildYumArtifact(),
+    ];
 
 void checkUnnamed5016(core.List<api.YumArtifact> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -387,12 +373,10 @@ void checkImportYumArtifactsResponse(api.ImportYumArtifactsResponse o) {
   buildCounterImportYumArtifactsResponse--;
 }
 
-core.List<api.DockerImage> buildUnnamed5017() {
-  final o = <api.DockerImage>[];
-  o.add(buildDockerImage());
-  o.add(buildDockerImage());
-  return o;
-}
+core.List<api.DockerImage> buildUnnamed5017() => [
+      buildDockerImage(),
+      buildDockerImage(),
+    ];
 
 void checkUnnamed5017(core.List<api.DockerImage> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -424,12 +408,10 @@ void checkListDockerImagesResponse(api.ListDockerImagesResponse o) {
   buildCounterListDockerImagesResponse--;
 }
 
-core.List<api.Operation> buildUnnamed5018() {
-  final o = <api.Operation>[];
-  o.add(buildOperation());
-  o.add(buildOperation());
-  return o;
-}
+core.List<api.Operation> buildUnnamed5018() => [
+      buildOperation(),
+      buildOperation(),
+    ];
 
 void checkUnnamed5018(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -461,12 +443,10 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
   buildCounterListOperationsResponse--;
 }
 
-core.List<api.Repository> buildUnnamed5019() {
-  final o = <api.Repository>[];
-  o.add(buildRepository());
-  o.add(buildRepository());
-  return o;
-}
+core.List<api.Repository> buildUnnamed5019() => [
+      buildRepository(),
+      buildRepository(),
+    ];
 
 void checkUnnamed5019(core.List<api.Repository> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -498,20 +478,18 @@ void checkListRepositoriesResponse(api.ListRepositoriesResponse o) {
   buildCounterListRepositoriesResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed5020() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed5020() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed5020(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -545,20 +523,18 @@ void checkUnnamed5020(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed5021() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed5021() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed5021(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -622,12 +598,10 @@ void checkOperation(api.Operation o) {
   buildCounterOperation--;
 }
 
-core.Map<core.String, core.String> buildUnnamed5022() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed5022() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed5022(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -690,20 +664,18 @@ void checkRepository(api.Repository o) {
   buildCounterRepository--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed5023() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed5023() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed5023(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -737,12 +709,10 @@ void checkUnnamed5023(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed5024() {
-  final o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed5023());
-  o.add(buildUnnamed5023());
-  return o;
-}
+core.List<core.Map<core.String, core.Object>> buildUnnamed5024() => [
+      buildUnnamed5023(),
+      buildUnnamed5023(),
+    ];
 
 void checkUnnamed5024(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -798,12 +768,10 @@ void checkUploadAptArtifactMediaResponse(api.UploadAptArtifactMediaResponse o) {
   buildCounterUploadAptArtifactMediaResponse--;
 }
 
-core.List<api.AptArtifact> buildUnnamed5025() {
-  final o = <api.AptArtifact>[];
-  o.add(buildAptArtifact());
-  o.add(buildAptArtifact());
-  return o;
-}
+core.List<api.AptArtifact> buildUnnamed5025() => [
+      buildAptArtifact(),
+      buildAptArtifact(),
+    ];
 
 void checkUnnamed5025(core.List<api.AptArtifact> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -849,12 +817,10 @@ void checkUploadYumArtifactMediaResponse(api.UploadYumArtifactMediaResponse o) {
   buildCounterUploadYumArtifactMediaResponse--;
 }
 
-core.List<api.YumArtifact> buildUnnamed5026() {
-  final o = <api.YumArtifact>[];
-  o.add(buildYumArtifact());
-  o.add(buildYumArtifact());
-  return o;
-}
+core.List<api.YumArtifact> buildUnnamed5026() => [
+      buildYumArtifact(),
+      buildYumArtifact(),
+    ];
 
 void checkUnnamed5026(core.List<api.YumArtifact> o) {
   unittest.expect(o, unittest.hasLength(2));

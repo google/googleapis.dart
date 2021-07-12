@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<core.String> buildUnnamed2962() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2962() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2962(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -66,12 +64,10 @@ void checkCreateProfileRequest(api.CreateProfileRequest o) {
   buildCounterCreateProfileRequest--;
 }
 
-core.Map<core.String, core.String> buildUnnamed2963() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed2963() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed2963(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -114,12 +110,10 @@ void checkDeployment(api.Deployment o) {
   buildCounterDeployment--;
 }
 
-core.Map<core.String, core.String> buildUnnamed2964() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed2964() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed2964(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));

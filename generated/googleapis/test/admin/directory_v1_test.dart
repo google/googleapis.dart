@@ -68,20 +68,18 @@ void checkAlias(api.Alias o) {
   buildCounterAlias--;
 }
 
-core.List<core.Object> buildUnnamed2033() {
-  final o = <core.Object>[];
-  o.add({
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  });
-  o.add({
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  });
-  return o;
-}
+core.List<core.Object> buildUnnamed2033() => [
+      {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    ];
 
 void checkUnnamed2033(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -196,12 +194,10 @@ void checkAsp(api.Asp o) {
   buildCounterAsp--;
 }
 
-core.List<api.Asp> buildUnnamed2034() {
-  final o = <api.Asp>[];
-  o.add(buildAsp());
-  o.add(buildAsp());
-  return o;
-}
+core.List<api.Asp> buildUnnamed2034() => [
+      buildAsp(),
+      buildAsp(),
+    ];
 
 void checkUnnamed2034(core.List<api.Asp> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -270,12 +266,10 @@ void checkAuxiliaryMessage(api.AuxiliaryMessage o) {
   buildCounterAuxiliaryMessage--;
 }
 
-core.List<api.CreatePrinterRequest> buildUnnamed2035() {
-  final o = <api.CreatePrinterRequest>[];
-  o.add(buildCreatePrinterRequest());
-  o.add(buildCreatePrinterRequest());
-  return o;
-}
+core.List<api.CreatePrinterRequest> buildUnnamed2035() => [
+      buildCreatePrinterRequest(),
+      buildCreatePrinterRequest(),
+    ];
 
 void checkUnnamed2035(core.List<api.CreatePrinterRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -302,12 +296,10 @@ void checkBatchCreatePrintersRequest(api.BatchCreatePrintersRequest o) {
   buildCounterBatchCreatePrintersRequest--;
 }
 
-core.List<api.FailureInfo> buildUnnamed2036() {
-  final o = <api.FailureInfo>[];
-  o.add(buildFailureInfo());
-  o.add(buildFailureInfo());
-  return o;
-}
+core.List<api.FailureInfo> buildUnnamed2036() => [
+      buildFailureInfo(),
+      buildFailureInfo(),
+    ];
 
 void checkUnnamed2036(core.List<api.FailureInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -315,12 +307,10 @@ void checkUnnamed2036(core.List<api.FailureInfo> o) {
   checkFailureInfo(o[1]);
 }
 
-core.List<api.Printer> buildUnnamed2037() {
-  final o = <api.Printer>[];
-  o.add(buildPrinter());
-  o.add(buildPrinter());
-  return o;
-}
+core.List<api.Printer> buildUnnamed2037() => [
+      buildPrinter(),
+      buildPrinter(),
+    ];
 
 void checkUnnamed2037(core.List<api.Printer> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -349,12 +339,10 @@ void checkBatchCreatePrintersResponse(api.BatchCreatePrintersResponse o) {
   buildCounterBatchCreatePrintersResponse--;
 }
 
-core.List<core.String> buildUnnamed2038() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2038() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2038(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -387,12 +375,10 @@ void checkBatchDeletePrintersRequest(api.BatchDeletePrintersRequest o) {
   buildCounterBatchDeletePrintersRequest--;
 }
 
-core.List<api.FailureInfo> buildUnnamed2039() {
-  final o = <api.FailureInfo>[];
-  o.add(buildFailureInfo());
-  o.add(buildFailureInfo());
-  return o;
-}
+core.List<api.FailureInfo> buildUnnamed2039() => [
+      buildFailureInfo(),
+      buildFailureInfo(),
+    ];
 
 void checkUnnamed2039(core.List<api.FailureInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -400,12 +386,10 @@ void checkUnnamed2039(core.List<api.FailureInfo> o) {
   checkFailureInfo(o[1]);
 }
 
-core.List<core.String> buildUnnamed2040() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2040() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2040(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -440,12 +424,10 @@ void checkBatchDeletePrintersResponse(api.BatchDeletePrintersResponse o) {
   buildCounterBatchDeletePrintersResponse--;
 }
 
-core.List<core.String> buildUnnamed2041() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2041() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2041(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -507,12 +489,10 @@ void checkBuilding(api.Building o) {
   buildCounterBuilding--;
 }
 
-core.List<core.String> buildUnnamed2042() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2042() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2042(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -602,12 +582,10 @@ void checkBuildingCoordinates(api.BuildingCoordinates o) {
   buildCounterBuildingCoordinates--;
 }
 
-core.List<api.Building> buildUnnamed2043() {
-  final o = <api.Building>[];
-  o.add(buildBuilding());
-  o.add(buildBuilding());
-  return o;
-}
+core.List<api.Building> buildUnnamed2043() => [
+      buildBuilding(),
+      buildBuilding(),
+    ];
 
 void checkUnnamed2043(core.List<api.Building> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -755,12 +733,10 @@ void checkCalendarResource(api.CalendarResource o) {
   buildCounterCalendarResource--;
 }
 
-core.List<api.CalendarResource> buildUnnamed2044() {
-  final o = <api.CalendarResource>[];
-  o.add(buildCalendarResource());
-  o.add(buildCalendarResource());
-  return o;
-}
+core.List<api.CalendarResource> buildUnnamed2044() => [
+      buildCalendarResource(),
+      buildCalendarResource(),
+    ];
 
 void checkUnnamed2044(core.List<api.CalendarResource> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -802,12 +778,10 @@ void checkCalendarResources(api.CalendarResources o) {
   buildCounterCalendarResources--;
 }
 
-core.Map<core.String, core.String> buildUnnamed2045() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed2045() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed2045(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -909,12 +883,10 @@ void checkChromeOsDeviceActiveTimeRanges(api.ChromeOsDeviceActiveTimeRanges o) {
   buildCounterChromeOsDeviceActiveTimeRanges--;
 }
 
-core.List<api.ChromeOsDeviceActiveTimeRanges> buildUnnamed2046() {
-  final o = <api.ChromeOsDeviceActiveTimeRanges>[];
-  o.add(buildChromeOsDeviceActiveTimeRanges());
-  o.add(buildChromeOsDeviceActiveTimeRanges());
-  return o;
-}
+core.List<api.ChromeOsDeviceActiveTimeRanges> buildUnnamed2046() => [
+      buildChromeOsDeviceActiveTimeRanges(),
+      buildChromeOsDeviceActiveTimeRanges(),
+    ];
 
 void checkUnnamed2046(core.List<api.ChromeOsDeviceActiveTimeRanges> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -952,12 +924,10 @@ void checkChromeOsDeviceCpuStatusReportsCpuTemperatureInfo(
 }
 
 core.List<api.ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo>
-    buildUnnamed2047() {
-  final o = <api.ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo>[];
-  o.add(buildChromeOsDeviceCpuStatusReportsCpuTemperatureInfo());
-  o.add(buildChromeOsDeviceCpuStatusReportsCpuTemperatureInfo());
-  return o;
-}
+    buildUnnamed2047() => [
+          buildChromeOsDeviceCpuStatusReportsCpuTemperatureInfo(),
+          buildChromeOsDeviceCpuStatusReportsCpuTemperatureInfo(),
+        ];
 
 void checkUnnamed2047(
     core.List<api.ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo> o) {
@@ -966,12 +936,10 @@ void checkUnnamed2047(
   checkChromeOsDeviceCpuStatusReportsCpuTemperatureInfo(o[1]);
 }
 
-core.List<core.int> buildUnnamed2048() {
-  final o = <core.int>[];
-  o.add(42);
-  o.add(42);
-  return o;
-}
+core.List<core.int> buildUnnamed2048() => [
+      42,
+      42,
+    ];
 
 void checkUnnamed2048(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1011,12 +979,10 @@ void checkChromeOsDeviceCpuStatusReports(api.ChromeOsDeviceCpuStatusReports o) {
   buildCounterChromeOsDeviceCpuStatusReports--;
 }
 
-core.List<api.ChromeOsDeviceCpuStatusReports> buildUnnamed2049() {
-  final o = <api.ChromeOsDeviceCpuStatusReports>[];
-  o.add(buildChromeOsDeviceCpuStatusReports());
-  o.add(buildChromeOsDeviceCpuStatusReports());
-  return o;
-}
+core.List<api.ChromeOsDeviceCpuStatusReports> buildUnnamed2049() => [
+      buildChromeOsDeviceCpuStatusReports(),
+      buildChromeOsDeviceCpuStatusReports(),
+    ];
 
 void checkUnnamed2049(core.List<api.ChromeOsDeviceCpuStatusReports> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1061,12 +1027,10 @@ void checkChromeOsDeviceDeviceFiles(api.ChromeOsDeviceDeviceFiles o) {
   buildCounterChromeOsDeviceDeviceFiles--;
 }
 
-core.List<api.ChromeOsDeviceDeviceFiles> buildUnnamed2050() {
-  final o = <api.ChromeOsDeviceDeviceFiles>[];
-  o.add(buildChromeOsDeviceDeviceFiles());
-  o.add(buildChromeOsDeviceDeviceFiles());
-  return o;
-}
+core.List<api.ChromeOsDeviceDeviceFiles> buildUnnamed2050() => [
+      buildChromeOsDeviceDeviceFiles(),
+      buildChromeOsDeviceDeviceFiles(),
+    ];
 
 void checkUnnamed2050(core.List<api.ChromeOsDeviceDeviceFiles> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1108,12 +1072,10 @@ void checkChromeOsDeviceDiskVolumeReportsVolumeInfo(
   buildCounterChromeOsDeviceDiskVolumeReportsVolumeInfo--;
 }
 
-core.List<api.ChromeOsDeviceDiskVolumeReportsVolumeInfo> buildUnnamed2051() {
-  final o = <api.ChromeOsDeviceDiskVolumeReportsVolumeInfo>[];
-  o.add(buildChromeOsDeviceDiskVolumeReportsVolumeInfo());
-  o.add(buildChromeOsDeviceDiskVolumeReportsVolumeInfo());
-  return o;
-}
+core.List<api.ChromeOsDeviceDiskVolumeReportsVolumeInfo> buildUnnamed2051() => [
+      buildChromeOsDeviceDiskVolumeReportsVolumeInfo(),
+      buildChromeOsDeviceDiskVolumeReportsVolumeInfo(),
+    ];
 
 void checkUnnamed2051(
     core.List<api.ChromeOsDeviceDiskVolumeReportsVolumeInfo> o) {
@@ -1142,12 +1104,10 @@ void checkChromeOsDeviceDiskVolumeReports(
   buildCounterChromeOsDeviceDiskVolumeReports--;
 }
 
-core.List<api.ChromeOsDeviceDiskVolumeReports> buildUnnamed2052() {
-  final o = <api.ChromeOsDeviceDiskVolumeReports>[];
-  o.add(buildChromeOsDeviceDiskVolumeReports());
-  o.add(buildChromeOsDeviceDiskVolumeReports());
-  return o;
-}
+core.List<api.ChromeOsDeviceDiskVolumeReports> buildUnnamed2052() => [
+      buildChromeOsDeviceDiskVolumeReports(),
+      buildChromeOsDeviceDiskVolumeReports(),
+    ];
 
 void checkUnnamed2052(core.List<api.ChromeOsDeviceDiskVolumeReports> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1182,12 +1142,10 @@ void checkChromeOsDeviceLastKnownNetwork(api.ChromeOsDeviceLastKnownNetwork o) {
   buildCounterChromeOsDeviceLastKnownNetwork--;
 }
 
-core.List<api.ChromeOsDeviceLastKnownNetwork> buildUnnamed2053() {
-  final o = <api.ChromeOsDeviceLastKnownNetwork>[];
-  o.add(buildChromeOsDeviceLastKnownNetwork());
-  o.add(buildChromeOsDeviceLastKnownNetwork());
-  return o;
-}
+core.List<api.ChromeOsDeviceLastKnownNetwork> buildUnnamed2053() => [
+      buildChromeOsDeviceLastKnownNetwork(),
+      buildChromeOsDeviceLastKnownNetwork(),
+    ];
 
 void checkUnnamed2053(core.List<api.ChromeOsDeviceLastKnownNetwork> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1222,12 +1180,10 @@ void checkChromeOsDeviceRecentUsers(api.ChromeOsDeviceRecentUsers o) {
   buildCounterChromeOsDeviceRecentUsers--;
 }
 
-core.List<api.ChromeOsDeviceRecentUsers> buildUnnamed2054() {
-  final o = <api.ChromeOsDeviceRecentUsers>[];
-  o.add(buildChromeOsDeviceRecentUsers());
-  o.add(buildChromeOsDeviceRecentUsers());
-  return o;
-}
+core.List<api.ChromeOsDeviceRecentUsers> buildUnnamed2054() => [
+      buildChromeOsDeviceRecentUsers(),
+      buildChromeOsDeviceRecentUsers(),
+    ];
 
 void checkUnnamed2054(core.List<api.ChromeOsDeviceRecentUsers> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1272,12 +1228,10 @@ void checkChromeOsDeviceScreenshotFiles(api.ChromeOsDeviceScreenshotFiles o) {
   buildCounterChromeOsDeviceScreenshotFiles--;
 }
 
-core.List<api.ChromeOsDeviceScreenshotFiles> buildUnnamed2055() {
-  final o = <api.ChromeOsDeviceScreenshotFiles>[];
-  o.add(buildChromeOsDeviceScreenshotFiles());
-  o.add(buildChromeOsDeviceScreenshotFiles());
-  return o;
-}
+core.List<api.ChromeOsDeviceScreenshotFiles> buildUnnamed2055() => [
+      buildChromeOsDeviceScreenshotFiles(),
+      buildChromeOsDeviceScreenshotFiles(),
+    ];
 
 void checkUnnamed2055(core.List<api.ChromeOsDeviceScreenshotFiles> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1285,12 +1239,10 @@ void checkUnnamed2055(core.List<api.ChromeOsDeviceScreenshotFiles> o) {
   checkChromeOsDeviceScreenshotFiles(o[1]);
 }
 
-core.List<core.String> buildUnnamed2056() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2056() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2056(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1330,12 +1282,10 @@ void checkChromeOsDeviceSystemRamFreeReports(
   buildCounterChromeOsDeviceSystemRamFreeReports--;
 }
 
-core.List<api.ChromeOsDeviceSystemRamFreeReports> buildUnnamed2057() {
-  final o = <api.ChromeOsDeviceSystemRamFreeReports>[];
-  o.add(buildChromeOsDeviceSystemRamFreeReports());
-  o.add(buildChromeOsDeviceSystemRamFreeReports());
-  return o;
-}
+core.List<api.ChromeOsDeviceSystemRamFreeReports> buildUnnamed2057() => [
+      buildChromeOsDeviceSystemRamFreeReports(),
+      buildChromeOsDeviceSystemRamFreeReports(),
+    ];
 
 void checkUnnamed2057(core.List<api.ChromeOsDeviceSystemRamFreeReports> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1589,12 +1539,10 @@ void checkChromeOsDeviceAction(api.ChromeOsDeviceAction o) {
   buildCounterChromeOsDeviceAction--;
 }
 
-core.List<api.ChromeOsDevice> buildUnnamed2058() {
-  final o = <api.ChromeOsDevice>[];
-  o.add(buildChromeOsDevice());
-  o.add(buildChromeOsDevice());
-  return o;
-}
+core.List<api.ChromeOsDevice> buildUnnamed2058() => [
+      buildChromeOsDevice(),
+      buildChromeOsDevice(),
+    ];
 
 void checkUnnamed2058(core.List<api.ChromeOsDevice> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1636,12 +1584,10 @@ void checkChromeOsDevices(api.ChromeOsDevices o) {
   buildCounterChromeOsDevices--;
 }
 
-core.List<core.String> buildUnnamed2059() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2059() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2059(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2000,12 +1946,10 @@ void checkDomainAlias(api.DomainAlias o) {
   buildCounterDomainAlias--;
 }
 
-core.List<api.DomainAlias> buildUnnamed2060() {
-  final o = <api.DomainAlias>[];
-  o.add(buildDomainAlias());
-  o.add(buildDomainAlias());
-  return o;
-}
+core.List<api.DomainAlias> buildUnnamed2060() => [
+      buildDomainAlias(),
+      buildDomainAlias(),
+    ];
 
 void checkUnnamed2060(core.List<api.DomainAlias> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2042,12 +1986,10 @@ void checkDomainAliases(api.DomainAliases o) {
   buildCounterDomainAliases--;
 }
 
-core.List<api.DomainAlias> buildUnnamed2061() {
-  final o = <api.DomainAlias>[];
-  o.add(buildDomainAlias());
-  o.add(buildDomainAlias());
-  return o;
-}
+core.List<api.DomainAlias> buildUnnamed2061() => [
+      buildDomainAlias(),
+      buildDomainAlias(),
+    ];
 
 void checkUnnamed2061(core.List<api.DomainAlias> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2098,12 +2040,10 @@ void checkDomains(api.Domains o) {
   buildCounterDomains--;
 }
 
-core.List<api.Domains> buildUnnamed2062() {
-  final o = <api.Domains>[];
-  o.add(buildDomains());
-  o.add(buildDomains());
-  return o;
-}
+core.List<api.Domains> buildUnnamed2062() => [
+      buildDomains(),
+      buildDomains(),
+    ];
 
 void checkUnnamed2062(core.List<api.Domains> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2262,12 +2202,10 @@ void checkFeatureRename(api.FeatureRename o) {
   buildCounterFeatureRename--;
 }
 
-core.List<api.Feature> buildUnnamed2063() {
-  final o = <api.Feature>[];
-  o.add(buildFeature());
-  o.add(buildFeature());
-  return o;
-}
+core.List<api.Feature> buildUnnamed2063() => [
+      buildFeature(),
+      buildFeature(),
+    ];
 
 void checkUnnamed2063(core.List<api.Feature> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2309,12 +2247,10 @@ void checkFeatures(api.Features o) {
   buildCounterFeatures--;
 }
 
-core.List<core.String> buildUnnamed2064() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2064() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2064(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2328,12 +2264,10 @@ void checkUnnamed2064(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed2065() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2065() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2065(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2405,12 +2339,10 @@ void checkGroup(api.Group o) {
   buildCounterGroup--;
 }
 
-core.List<api.Group> buildUnnamed2066() {
-  final o = <api.Group>[];
-  o.add(buildGroup());
-  o.add(buildGroup());
-  return o;
-}
+core.List<api.Group> buildUnnamed2066() => [
+      buildGroup(),
+      buildGroup(),
+    ];
 
 void checkUnnamed2066(core.List<api.Group> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2452,12 +2384,10 @@ void checkGroups(api.Groups o) {
   buildCounterGroups--;
 }
 
-core.List<api.PrinterModel> buildUnnamed2067() {
-  final o = <api.PrinterModel>[];
-  o.add(buildPrinterModel());
-  o.add(buildPrinterModel());
-  return o;
-}
+core.List<api.PrinterModel> buildUnnamed2067() => [
+      buildPrinterModel(),
+      buildPrinterModel(),
+    ];
 
 void checkUnnamed2067(core.List<api.PrinterModel> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2489,12 +2419,10 @@ void checkListPrinterModelsResponse(api.ListPrinterModelsResponse o) {
   buildCounterListPrinterModelsResponse--;
 }
 
-core.List<api.Printer> buildUnnamed2068() {
-  final o = <api.Printer>[];
-  o.add(buildPrinter());
-  o.add(buildPrinter());
-  return o;
-}
+core.List<api.Printer> buildUnnamed2068() => [
+      buildPrinter(),
+      buildPrinter(),
+    ];
 
 void checkUnnamed2068(core.List<api.Printer> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2583,12 +2511,10 @@ void checkMember(api.Member o) {
   buildCounterMember--;
 }
 
-core.List<api.Member> buildUnnamed2069() {
-  final o = <api.Member>[];
-  o.add(buildMember());
-  o.add(buildMember());
-  return o;
-}
+core.List<api.Member> buildUnnamed2069() => [
+      buildMember(),
+      buildMember(),
+    ];
 
 void checkUnnamed2069(core.List<api.Member> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2649,12 +2575,10 @@ void checkMembersHasMember(api.MembersHasMember o) {
   buildCounterMembersHasMember--;
 }
 
-core.List<core.String> buildUnnamed2070() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2070() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2070(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2707,12 +2631,10 @@ void checkMobileDeviceApplications(api.MobileDeviceApplications o) {
   buildCounterMobileDeviceApplications--;
 }
 
-core.List<api.MobileDeviceApplications> buildUnnamed2071() {
-  final o = <api.MobileDeviceApplications>[];
-  o.add(buildMobileDeviceApplications());
-  o.add(buildMobileDeviceApplications());
-  return o;
-}
+core.List<api.MobileDeviceApplications> buildUnnamed2071() => [
+      buildMobileDeviceApplications(),
+      buildMobileDeviceApplications(),
+    ];
 
 void checkUnnamed2071(core.List<api.MobileDeviceApplications> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2720,12 +2642,10 @@ void checkUnnamed2071(core.List<api.MobileDeviceApplications> o) {
   checkMobileDeviceApplications(o[1]);
 }
 
-core.List<core.String> buildUnnamed2072() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2072() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2072(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2739,12 +2659,10 @@ void checkUnnamed2072(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed2073() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2073() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2073(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2758,12 +2676,10 @@ void checkUnnamed2073(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed2074() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2074() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2074(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2989,12 +2905,10 @@ void checkMobileDeviceAction(api.MobileDeviceAction o) {
   buildCounterMobileDeviceAction--;
 }
 
-core.List<api.MobileDevice> buildUnnamed2075() {
-  final o = <api.MobileDevice>[];
-  o.add(buildMobileDevice());
-  o.add(buildMobileDevice());
-  return o;
-}
+core.List<api.MobileDevice> buildUnnamed2075() => [
+      buildMobileDevice(),
+      buildMobileDevice(),
+    ];
 
 void checkUnnamed2075(core.List<api.MobileDevice> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3095,12 +3009,10 @@ void checkOrgUnit(api.OrgUnit o) {
   buildCounterOrgUnit--;
 }
 
-core.List<api.OrgUnit> buildUnnamed2076() {
-  final o = <api.OrgUnit>[];
-  o.add(buildOrgUnit());
-  o.add(buildOrgUnit());
-  return o;
-}
+core.List<api.OrgUnit> buildUnnamed2076() => [
+      buildOrgUnit(),
+      buildOrgUnit(),
+    ];
 
 void checkUnnamed2076(core.List<api.OrgUnit> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3137,12 +3049,10 @@ void checkOrgUnits(api.OrgUnits o) {
   buildCounterOrgUnits--;
 }
 
-core.List<api.AuxiliaryMessage> buildUnnamed2077() {
-  final o = <api.AuxiliaryMessage>[];
-  o.add(buildAuxiliaryMessage());
-  o.add(buildAuxiliaryMessage());
-  return o;
-}
+core.List<api.AuxiliaryMessage> buildUnnamed2077() => [
+      buildAuxiliaryMessage(),
+      buildAuxiliaryMessage(),
+    ];
 
 void checkUnnamed2077(core.List<api.AuxiliaryMessage> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3243,12 +3153,10 @@ void checkPrinterModel(api.PrinterModel o) {
   buildCounterPrinterModel--;
 }
 
-core.List<api.Privilege> buildUnnamed2078() {
-  final o = <api.Privilege>[];
-  o.add(buildPrivilege());
-  o.add(buildPrivilege());
-  return o;
-}
+core.List<api.Privilege> buildUnnamed2078() => [
+      buildPrivilege(),
+      buildPrivilege(),
+    ];
 
 void checkUnnamed2078(core.List<api.Privilege> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3302,12 +3210,10 @@ void checkPrivilege(api.Privilege o) {
   buildCounterPrivilege--;
 }
 
-core.List<api.Privilege> buildUnnamed2079() {
-  final o = <api.Privilege>[];
-  o.add(buildPrivilege());
-  o.add(buildPrivilege());
-  return o;
-}
+core.List<api.Privilege> buildUnnamed2079() => [
+      buildPrivilege(),
+      buildPrivilege(),
+    ];
 
 void checkUnnamed2079(core.List<api.Privilege> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3371,12 +3277,10 @@ void checkRoleRolePrivileges(api.RoleRolePrivileges o) {
   buildCounterRoleRolePrivileges--;
 }
 
-core.List<api.RoleRolePrivileges> buildUnnamed2080() {
-  final o = <api.RoleRolePrivileges>[];
-  o.add(buildRoleRolePrivileges());
-  o.add(buildRoleRolePrivileges());
-  return o;
-}
+core.List<api.RoleRolePrivileges> buildUnnamed2080() => [
+      buildRoleRolePrivileges(),
+      buildRoleRolePrivileges(),
+    ];
 
 void checkUnnamed2080(core.List<api.RoleRolePrivileges> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3484,12 +3388,10 @@ void checkRoleAssignment(api.RoleAssignment o) {
   buildCounterRoleAssignment--;
 }
 
-core.List<api.RoleAssignment> buildUnnamed2081() {
-  final o = <api.RoleAssignment>[];
-  o.add(buildRoleAssignment());
-  o.add(buildRoleAssignment());
-  return o;
-}
+core.List<api.RoleAssignment> buildUnnamed2081() => [
+      buildRoleAssignment(),
+      buildRoleAssignment(),
+    ];
 
 void checkUnnamed2081(core.List<api.RoleAssignment> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3531,12 +3433,10 @@ void checkRoleAssignments(api.RoleAssignments o) {
   buildCounterRoleAssignments--;
 }
 
-core.List<api.Role> buildUnnamed2082() {
-  final o = <api.Role>[];
-  o.add(buildRole());
-  o.add(buildRole());
-  return o;
-}
+core.List<api.Role> buildUnnamed2082() => [
+      buildRole(),
+      buildRole(),
+    ];
 
 void checkUnnamed2082(core.List<api.Role> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3578,12 +3478,10 @@ void checkRoles(api.Roles o) {
   buildCounterRoles--;
 }
 
-core.List<api.SchemaFieldSpec> buildUnnamed2083() {
-  final o = <api.SchemaFieldSpec>[];
-  o.add(buildSchemaFieldSpec());
-  o.add(buildSchemaFieldSpec());
-  return o;
-}
+core.List<api.SchemaFieldSpec> buildUnnamed2083() => [
+      buildSchemaFieldSpec(),
+      buildSchemaFieldSpec(),
+    ];
 
 void checkUnnamed2083(core.List<api.SchemaFieldSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3722,12 +3620,10 @@ void checkSchemaFieldSpec(api.SchemaFieldSpec o) {
   buildCounterSchemaFieldSpec--;
 }
 
-core.List<api.Schema> buildUnnamed2084() {
-  final o = <api.Schema>[];
-  o.add(buildSchema());
-  o.add(buildSchema());
-  return o;
-}
+core.List<api.Schema> buildUnnamed2084() => [
+      buildSchema(),
+      buildSchema(),
+    ];
 
 void checkUnnamed2084(core.List<api.Schema> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3764,12 +3660,10 @@ void checkSchemas(api.Schemas o) {
   buildCounterSchemas--;
 }
 
-core.List<core.String> buildUnnamed2085() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2085() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2085(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3831,12 +3725,10 @@ void checkToken(api.Token o) {
   buildCounterToken--;
 }
 
-core.List<api.Token> buildUnnamed2086() {
-  final o = <api.Token>[];
-  o.add(buildToken());
-  o.add(buildToken());
-  return o;
-}
+core.List<api.Token> buildUnnamed2086() => [
+      buildToken(),
+      buildToken(),
+    ];
 
 void checkUnnamed2086(core.List<api.Token> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3873,12 +3765,10 @@ void checkTokens(api.Tokens o) {
   buildCounterTokens--;
 }
 
-core.List<core.String> buildUnnamed2087() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2087() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2087(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3892,12 +3782,10 @@ void checkUnnamed2087(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, api.UserCustomProperties> buildUnnamed2088() {
-  final o = <core.String, api.UserCustomProperties>{};
-  o['x'] = buildUserCustomProperties();
-  o['y'] = buildUserCustomProperties();
-  return o;
-}
+core.Map<core.String, api.UserCustomProperties> buildUnnamed2088() => {
+      'x': buildUserCustomProperties(),
+      'y': buildUserCustomProperties(),
+    };
 
 void checkUnnamed2088(core.Map<core.String, api.UserCustomProperties> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3905,12 +3793,10 @@ void checkUnnamed2088(core.Map<core.String, api.UserCustomProperties> o) {
   checkUserCustomProperties(o['y']!);
 }
 
-core.List<core.String> buildUnnamed2089() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2089() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2089(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5139,12 +5025,10 @@ void checkUserWebsite(api.UserWebsite o) {
   buildCounterUserWebsite--;
 }
 
-core.List<api.User> buildUnnamed2090() {
-  final o = <api.User>[];
-  o.add(buildUser());
-  o.add(buildUser());
-  return o;
-}
+core.List<api.User> buildUnnamed2090() => [
+      buildUser(),
+      buildUser(),
+    ];
 
 void checkUnnamed2090(core.List<api.User> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5228,12 +5112,10 @@ void checkVerificationCode(api.VerificationCode o) {
   buildCounterVerificationCode--;
 }
 
-core.List<api.VerificationCode> buildUnnamed2091() {
-  final o = <api.VerificationCode>[];
-  o.add(buildVerificationCode());
-  o.add(buildVerificationCode());
-  return o;
-}
+core.List<api.VerificationCode> buildUnnamed2091() => [
+      buildVerificationCode(),
+      buildVerificationCode(),
+    ];
 
 void checkUnnamed2091(core.List<api.VerificationCode> o) {
   unittest.expect(o, unittest.hasLength(2));

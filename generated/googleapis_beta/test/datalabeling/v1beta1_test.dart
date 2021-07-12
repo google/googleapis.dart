@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.GoogleRpcStatus> buildUnnamed8187() {
-  final o = <api.GoogleRpcStatus>[];
-  o.add(buildGoogleRpcStatus());
-  o.add(buildGoogleRpcStatus());
-  return o;
-}
+core.List<api.GoogleRpcStatus> buildUnnamed8187() => [
+      buildGoogleRpcStatus(),
+      buildGoogleRpcStatus(),
+    ];
 
 void checkUnnamed8187(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -73,12 +71,10 @@ void checkGoogleCloudDatalabelingV1alpha1CreateInstructionMetadata(
   buildCounterGoogleCloudDatalabelingV1alpha1CreateInstructionMetadata--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed8188() {
-  final o = <api.GoogleRpcStatus>[];
-  o.add(buildGoogleRpcStatus());
-  o.add(buildGoogleRpcStatus());
-  return o;
-}
+core.List<api.GoogleRpcStatus> buildUnnamed8188() => [
+      buildGoogleRpcStatus(),
+      buildGoogleRpcStatus(),
+    ];
 
 void checkUnnamed8188(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -224,12 +220,10 @@ void checkGoogleCloudDatalabelingV1alpha1GcsFolderDestination(
   buildCounterGoogleCloudDatalabelingV1alpha1GcsFolderDestination--;
 }
 
-core.List<core.String> buildUnnamed8189() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8189() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8189(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -304,12 +298,10 @@ void checkGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig(
   buildCounterGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed8190() {
-  final o = <api.GoogleRpcStatus>[];
-  o.add(buildGoogleRpcStatus());
-  o.add(buildGoogleRpcStatus());
-  return o;
-}
+core.List<api.GoogleRpcStatus> buildUnnamed8190() => [
+      buildGoogleRpcStatus(),
+      buildGoogleRpcStatus(),
+    ];
 
 void checkUnnamed8190(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -549,12 +541,10 @@ void checkGoogleCloudDatalabelingV1alpha1LabelImageSegmentationOperationMetadata
   buildCounterGoogleCloudDatalabelingV1alpha1LabelImageSegmentationOperationMetadata--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed8191() {
-  final o = <api.GoogleRpcStatus>[];
-  o.add(buildGoogleRpcStatus());
-  o.add(buildGoogleRpcStatus());
-  return o;
-}
+core.List<api.GoogleRpcStatus> buildUnnamed8191() => [
+      buildGoogleRpcStatus(),
+      buildGoogleRpcStatus(),
+    ];
 
 void checkUnnamed8191(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -651,12 +641,10 @@ void checkGoogleCloudDatalabelingV1alpha1LabelOperationMetadata(
   buildCounterGoogleCloudDatalabelingV1alpha1LabelOperationMetadata--;
 }
 
-core.Map<core.String, core.String> buildUnnamed8192() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed8192() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed8192(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -877,12 +865,10 @@ void checkGoogleCloudDatalabelingV1alpha1OutputConfig(
   buildCounterGoogleCloudDatalabelingV1alpha1OutputConfig--;
 }
 
-core.List<core.String> buildUnnamed8193() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8193() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8193(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1115,12 +1101,11 @@ void checkGoogleCloudDatalabelingV1beta1AnnotationSpec(
   buildCounterGoogleCloudDatalabelingV1beta1AnnotationSpec--;
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1AnnotationSpec> buildUnnamed8194() {
-  final o = <api.GoogleCloudDatalabelingV1beta1AnnotationSpec>[];
-  o.add(buildGoogleCloudDatalabelingV1beta1AnnotationSpec());
-  o.add(buildGoogleCloudDatalabelingV1beta1AnnotationSpec());
-  return o;
-}
+core.List<api.GoogleCloudDatalabelingV1beta1AnnotationSpec>
+    buildUnnamed8194() => [
+          buildGoogleCloudDatalabelingV1beta1AnnotationSpec(),
+          buildGoogleCloudDatalabelingV1beta1AnnotationSpec(),
+        ];
 
 void checkUnnamed8194(
     core.List<api.GoogleCloudDatalabelingV1beta1AnnotationSpec> o) {
@@ -1129,12 +1114,10 @@ void checkUnnamed8194(
   checkGoogleCloudDatalabelingV1beta1AnnotationSpec(o[1]);
 }
 
-core.List<core.String> buildUnnamed8195() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8195() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8195(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1267,12 +1250,10 @@ void checkGoogleCloudDatalabelingV1beta1AnnotationValue(
   buildCounterGoogleCloudDatalabelingV1beta1AnnotationValue--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed8196() {
-  final o = <api.GoogleRpcStatus>[];
-  o.add(buildGoogleRpcStatus());
-  o.add(buildGoogleRpcStatus());
-  return o;
-}
+core.List<api.GoogleRpcStatus> buildUnnamed8196() => [
+      buildGoogleRpcStatus(),
+      buildGoogleRpcStatus(),
+    ];
 
 void checkUnnamed8196(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1357,12 +1338,10 @@ void checkGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions(
   buildCounterGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions--;
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1Vertex> buildUnnamed8197() {
-  final o = <api.GoogleCloudDatalabelingV1beta1Vertex>[];
-  o.add(buildGoogleCloudDatalabelingV1beta1Vertex());
-  o.add(buildGoogleCloudDatalabelingV1beta1Vertex());
-  return o;
-}
+core.List<api.GoogleCloudDatalabelingV1beta1Vertex> buildUnnamed8197() => [
+      buildGoogleCloudDatalabelingV1beta1Vertex(),
+      buildGoogleCloudDatalabelingV1beta1Vertex(),
+    ];
 
 void checkUnnamed8197(core.List<api.GoogleCloudDatalabelingV1beta1Vertex> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1533,12 +1512,10 @@ void checkGoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry(
   buildCounterGoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry--;
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1Row> buildUnnamed8198() {
-  final o = <api.GoogleCloudDatalabelingV1beta1Row>[];
-  o.add(buildGoogleCloudDatalabelingV1beta1Row());
-  o.add(buildGoogleCloudDatalabelingV1beta1Row());
-  return o;
-}
+core.List<api.GoogleCloudDatalabelingV1beta1Row> buildUnnamed8198() => [
+      buildGoogleCloudDatalabelingV1beta1Row(),
+      buildGoogleCloudDatalabelingV1beta1Row(),
+    ];
 
 void checkUnnamed8198(core.List<api.GoogleCloudDatalabelingV1beta1Row> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1664,12 +1641,10 @@ void checkGoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest(
   buildCounterGoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed8199() {
-  final o = <api.GoogleRpcStatus>[];
-  o.add(buildGoogleRpcStatus());
-  o.add(buildGoogleRpcStatus());
-  return o;
-}
+core.List<api.GoogleRpcStatus> buildUnnamed8199() => [
+      buildGoogleRpcStatus(),
+      buildGoogleRpcStatus(),
+    ];
 
 void checkUnnamed8199(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1784,12 +1759,10 @@ void checkGoogleCloudDatalabelingV1beta1DataItem(
   buildCounterGoogleCloudDatalabelingV1beta1DataItem--;
 }
 
-core.List<core.String> buildUnnamed8200() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8200() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8200(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1803,12 +1776,10 @@ void checkUnnamed8200(core.List<core.String> o) {
   );
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1InputConfig> buildUnnamed8201() {
-  final o = <api.GoogleCloudDatalabelingV1beta1InputConfig>[];
-  o.add(buildGoogleCloudDatalabelingV1beta1InputConfig());
-  o.add(buildGoogleCloudDatalabelingV1beta1InputConfig());
-  return o;
-}
+core.List<api.GoogleCloudDatalabelingV1beta1InputConfig> buildUnnamed8201() => [
+      buildGoogleCloudDatalabelingV1beta1InputConfig(),
+      buildGoogleCloudDatalabelingV1beta1InputConfig(),
+    ];
 
 void checkUnnamed8201(
     core.List<api.GoogleCloudDatalabelingV1beta1InputConfig> o) {
@@ -1942,12 +1913,10 @@ void checkGoogleCloudDatalabelingV1beta1EvaluationConfig(
   buildCounterGoogleCloudDatalabelingV1beta1EvaluationConfig--;
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1Attempt> buildUnnamed8202() {
-  final o = <api.GoogleCloudDatalabelingV1beta1Attempt>[];
-  o.add(buildGoogleCloudDatalabelingV1beta1Attempt());
-  o.add(buildGoogleCloudDatalabelingV1beta1Attempt());
-  return o;
-}
+core.List<api.GoogleCloudDatalabelingV1beta1Attempt> buildUnnamed8202() => [
+      buildGoogleCloudDatalabelingV1beta1Attempt(),
+      buildGoogleCloudDatalabelingV1beta1Attempt(),
+    ];
 
 void checkUnnamed8202(core.List<api.GoogleCloudDatalabelingV1beta1Attempt> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2046,12 +2015,10 @@ void checkGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig(
   buildCounterGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig--;
 }
 
-core.Map<core.String, core.String> buildUnnamed8203() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed8203() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed8203(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2147,12 +2114,10 @@ void checkGoogleCloudDatalabelingV1beta1EvaluationMetrics(
   buildCounterGoogleCloudDatalabelingV1beta1EvaluationMetrics--;
 }
 
-core.List<core.String> buildUnnamed8204() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8204() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8204(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2197,12 +2162,10 @@ void checkGoogleCloudDatalabelingV1beta1EventConfig(
   buildCounterGoogleCloudDatalabelingV1beta1EventConfig--;
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1Annotation> buildUnnamed8205() {
-  final o = <api.GoogleCloudDatalabelingV1beta1Annotation>[];
-  o.add(buildGoogleCloudDatalabelingV1beta1Annotation());
-  o.add(buildGoogleCloudDatalabelingV1beta1Annotation());
-  return o;
-}
+core.List<api.GoogleCloudDatalabelingV1beta1Annotation> buildUnnamed8205() => [
+      buildGoogleCloudDatalabelingV1beta1Annotation(),
+      buildGoogleCloudDatalabelingV1beta1Annotation(),
+    ];
 
 void checkUnnamed8205(
     core.List<api.GoogleCloudDatalabelingV1beta1Annotation> o) {
@@ -2243,12 +2206,10 @@ void checkGoogleCloudDatalabelingV1beta1Example(
   buildCounterGoogleCloudDatalabelingV1beta1Example--;
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1Example> buildUnnamed8206() {
-  final o = <api.GoogleCloudDatalabelingV1beta1Example>[];
-  o.add(buildGoogleCloudDatalabelingV1beta1Example());
-  o.add(buildGoogleCloudDatalabelingV1beta1Example());
-  return o;
-}
+core.List<api.GoogleCloudDatalabelingV1beta1Example> buildUnnamed8206() => [
+      buildGoogleCloudDatalabelingV1beta1Example(),
+      buildGoogleCloudDatalabelingV1beta1Example(),
+    ];
 
 void checkUnnamed8206(core.List<api.GoogleCloudDatalabelingV1beta1Example> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2279,12 +2240,10 @@ void checkGoogleCloudDatalabelingV1beta1ExampleComparison(
   buildCounterGoogleCloudDatalabelingV1beta1ExampleComparison--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed8207() {
-  final o = <api.GoogleRpcStatus>[];
-  o.add(buildGoogleRpcStatus());
-  o.add(buildGoogleRpcStatus());
-  return o;
-}
+core.List<api.GoogleRpcStatus> buildUnnamed8207() => [
+      buildGoogleRpcStatus(),
+      buildGoogleRpcStatus(),
+    ];
 
 void checkUnnamed8207(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2609,12 +2568,10 @@ void checkGoogleCloudDatalabelingV1beta1GcsSource(
   buildCounterGoogleCloudDatalabelingV1beta1GcsSource--;
 }
 
-core.List<core.String> buildUnnamed8208() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8208() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8208(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2842,12 +2799,10 @@ void checkGoogleCloudDatalabelingV1beta1ImagePolylineAnnotation(
 }
 
 core.Map<core.String, api.GoogleCloudDatalabelingV1beta1AnnotationSpec>
-    buildUnnamed8209() {
-  final o = <core.String, api.GoogleCloudDatalabelingV1beta1AnnotationSpec>{};
-  o['x'] = buildGoogleCloudDatalabelingV1beta1AnnotationSpec();
-  o['y'] = buildGoogleCloudDatalabelingV1beta1AnnotationSpec();
-  return o;
-}
+    buildUnnamed8209() => {
+          'x': buildGoogleCloudDatalabelingV1beta1AnnotationSpec(),
+          'y': buildGoogleCloudDatalabelingV1beta1AnnotationSpec(),
+        };
 
 void checkUnnamed8209(
     core.Map<core.String, api.GoogleCloudDatalabelingV1beta1AnnotationSpec> o) {
@@ -2890,12 +2845,10 @@ void checkGoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation(
   buildCounterGoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed8210() {
-  final o = <api.GoogleRpcStatus>[];
-  o.add(buildGoogleRpcStatus());
-  o.add(buildGoogleRpcStatus());
-  return o;
-}
+core.List<api.GoogleRpcStatus> buildUnnamed8210() => [
+      buildGoogleRpcStatus(),
+      buildGoogleRpcStatus(),
+    ];
 
 void checkUnnamed8210(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3039,12 +2992,10 @@ void checkGoogleCloudDatalabelingV1beta1InputConfig(
   buildCounterGoogleCloudDatalabelingV1beta1InputConfig--;
 }
 
-core.List<core.String> buildUnnamed8211() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8211() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8211(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3314,12 +3265,10 @@ void checkGoogleCloudDatalabelingV1beta1LabelImageSegmentationOperationMetadata(
   buildCounterGoogleCloudDatalabelingV1beta1LabelImageSegmentationOperationMetadata--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed8212() {
-  final o = <api.GoogleRpcStatus>[];
-  o.add(buildGoogleRpcStatus());
-  o.add(buildGoogleRpcStatus());
-  return o;
-}
+core.List<api.GoogleRpcStatus> buildUnnamed8212() => [
+      buildGoogleRpcStatus(),
+      buildGoogleRpcStatus(),
+    ];
 
 void checkUnnamed8212(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3416,12 +3365,10 @@ void checkGoogleCloudDatalabelingV1beta1LabelOperationMetadata(
   buildCounterGoogleCloudDatalabelingV1beta1LabelOperationMetadata--;
 }
 
-core.Map<core.String, core.String> buildUnnamed8213() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed8213() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed8213(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3692,12 +3639,10 @@ void checkGoogleCloudDatalabelingV1beta1LabelVideoRequest(
 }
 
 core.List<api.GoogleCloudDatalabelingV1beta1AnnotatedDataset>
-    buildUnnamed8214() {
-  final o = <api.GoogleCloudDatalabelingV1beta1AnnotatedDataset>[];
-  o.add(buildGoogleCloudDatalabelingV1beta1AnnotatedDataset());
-  o.add(buildGoogleCloudDatalabelingV1beta1AnnotatedDataset());
-  return o;
-}
+    buildUnnamed8214() => [
+          buildGoogleCloudDatalabelingV1beta1AnnotatedDataset(),
+          buildGoogleCloudDatalabelingV1beta1AnnotatedDataset(),
+        ];
 
 void checkUnnamed8214(
     core.List<api.GoogleCloudDatalabelingV1beta1AnnotatedDataset> o) {
@@ -3736,12 +3681,10 @@ void checkGoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse(
 }
 
 core.List<api.GoogleCloudDatalabelingV1beta1AnnotationSpecSet>
-    buildUnnamed8215() {
-  final o = <api.GoogleCloudDatalabelingV1beta1AnnotationSpecSet>[];
-  o.add(buildGoogleCloudDatalabelingV1beta1AnnotationSpecSet());
-  o.add(buildGoogleCloudDatalabelingV1beta1AnnotationSpecSet());
-  return o;
-}
+    buildUnnamed8215() => [
+          buildGoogleCloudDatalabelingV1beta1AnnotationSpecSet(),
+          buildGoogleCloudDatalabelingV1beta1AnnotationSpecSet(),
+        ];
 
 void checkUnnamed8215(
     core.List<api.GoogleCloudDatalabelingV1beta1AnnotationSpecSet> o) {
@@ -3780,12 +3723,10 @@ void checkGoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse(
   buildCounterGoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse--;
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1DataItem> buildUnnamed8216() {
-  final o = <api.GoogleCloudDatalabelingV1beta1DataItem>[];
-  o.add(buildGoogleCloudDatalabelingV1beta1DataItem());
-  o.add(buildGoogleCloudDatalabelingV1beta1DataItem());
-  return o;
-}
+core.List<api.GoogleCloudDatalabelingV1beta1DataItem> buildUnnamed8216() => [
+      buildGoogleCloudDatalabelingV1beta1DataItem(),
+      buildGoogleCloudDatalabelingV1beta1DataItem(),
+    ];
 
 void checkUnnamed8216(core.List<api.GoogleCloudDatalabelingV1beta1DataItem> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3819,12 +3760,10 @@ void checkGoogleCloudDatalabelingV1beta1ListDataItemsResponse(
   buildCounterGoogleCloudDatalabelingV1beta1ListDataItemsResponse--;
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1Dataset> buildUnnamed8217() {
-  final o = <api.GoogleCloudDatalabelingV1beta1Dataset>[];
-  o.add(buildGoogleCloudDatalabelingV1beta1Dataset());
-  o.add(buildGoogleCloudDatalabelingV1beta1Dataset());
-  return o;
-}
+core.List<api.GoogleCloudDatalabelingV1beta1Dataset> buildUnnamed8217() => [
+      buildGoogleCloudDatalabelingV1beta1Dataset(),
+      buildGoogleCloudDatalabelingV1beta1Dataset(),
+    ];
 
 void checkUnnamed8217(core.List<api.GoogleCloudDatalabelingV1beta1Dataset> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3858,12 +3797,11 @@ void checkGoogleCloudDatalabelingV1beta1ListDatasetsResponse(
   buildCounterGoogleCloudDatalabelingV1beta1ListDatasetsResponse--;
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1EvaluationJob> buildUnnamed8218() {
-  final o = <api.GoogleCloudDatalabelingV1beta1EvaluationJob>[];
-  o.add(buildGoogleCloudDatalabelingV1beta1EvaluationJob());
-  o.add(buildGoogleCloudDatalabelingV1beta1EvaluationJob());
-  return o;
-}
+core.List<api.GoogleCloudDatalabelingV1beta1EvaluationJob> buildUnnamed8218() =>
+    [
+      buildGoogleCloudDatalabelingV1beta1EvaluationJob(),
+      buildGoogleCloudDatalabelingV1beta1EvaluationJob(),
+    ];
 
 void checkUnnamed8218(
     core.List<api.GoogleCloudDatalabelingV1beta1EvaluationJob> o) {
@@ -3901,12 +3839,10 @@ void checkGoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse(
   buildCounterGoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse--;
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1Example> buildUnnamed8219() {
-  final o = <api.GoogleCloudDatalabelingV1beta1Example>[];
-  o.add(buildGoogleCloudDatalabelingV1beta1Example());
-  o.add(buildGoogleCloudDatalabelingV1beta1Example());
-  return o;
-}
+core.List<api.GoogleCloudDatalabelingV1beta1Example> buildUnnamed8219() => [
+      buildGoogleCloudDatalabelingV1beta1Example(),
+      buildGoogleCloudDatalabelingV1beta1Example(),
+    ];
 
 void checkUnnamed8219(core.List<api.GoogleCloudDatalabelingV1beta1Example> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3941,12 +3877,10 @@ void checkGoogleCloudDatalabelingV1beta1ListExamplesResponse(
 }
 
 core.List<api.GoogleCloudDatalabelingV1beta1FeedbackMessage>
-    buildUnnamed8220() {
-  final o = <api.GoogleCloudDatalabelingV1beta1FeedbackMessage>[];
-  o.add(buildGoogleCloudDatalabelingV1beta1FeedbackMessage());
-  o.add(buildGoogleCloudDatalabelingV1beta1FeedbackMessage());
-  return o;
-}
+    buildUnnamed8220() => [
+          buildGoogleCloudDatalabelingV1beta1FeedbackMessage(),
+          buildGoogleCloudDatalabelingV1beta1FeedbackMessage(),
+        ];
 
 void checkUnnamed8220(
     core.List<api.GoogleCloudDatalabelingV1beta1FeedbackMessage> o) {
@@ -3984,12 +3918,11 @@ void checkGoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse(
   buildCounterGoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse--;
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1FeedbackThread> buildUnnamed8221() {
-  final o = <api.GoogleCloudDatalabelingV1beta1FeedbackThread>[];
-  o.add(buildGoogleCloudDatalabelingV1beta1FeedbackThread());
-  o.add(buildGoogleCloudDatalabelingV1beta1FeedbackThread());
-  return o;
-}
+core.List<api.GoogleCloudDatalabelingV1beta1FeedbackThread>
+    buildUnnamed8221() => [
+          buildGoogleCloudDatalabelingV1beta1FeedbackThread(),
+          buildGoogleCloudDatalabelingV1beta1FeedbackThread(),
+        ];
 
 void checkUnnamed8221(
     core.List<api.GoogleCloudDatalabelingV1beta1FeedbackThread> o) {
@@ -4027,12 +3960,10 @@ void checkGoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse(
   buildCounterGoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse--;
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1Instruction> buildUnnamed8222() {
-  final o = <api.GoogleCloudDatalabelingV1beta1Instruction>[];
-  o.add(buildGoogleCloudDatalabelingV1beta1Instruction());
-  o.add(buildGoogleCloudDatalabelingV1beta1Instruction());
-  return o;
-}
+core.List<api.GoogleCloudDatalabelingV1beta1Instruction> buildUnnamed8222() => [
+      buildGoogleCloudDatalabelingV1beta1Instruction(),
+      buildGoogleCloudDatalabelingV1beta1Instruction(),
+    ];
 
 void checkUnnamed8222(
     core.List<api.GoogleCloudDatalabelingV1beta1Instruction> o) {
@@ -4068,12 +3999,10 @@ void checkGoogleCloudDatalabelingV1beta1ListInstructionsResponse(
 }
 
 core.List<api.GoogleCloudDatalabelingV1beta1NormalizedVertex>
-    buildUnnamed8223() {
-  final o = <api.GoogleCloudDatalabelingV1beta1NormalizedVertex>[];
-  o.add(buildGoogleCloudDatalabelingV1beta1NormalizedVertex());
-  o.add(buildGoogleCloudDatalabelingV1beta1NormalizedVertex());
-  return o;
-}
+    buildUnnamed8223() => [
+          buildGoogleCloudDatalabelingV1beta1NormalizedVertex(),
+          buildGoogleCloudDatalabelingV1beta1NormalizedVertex(),
+        ];
 
 void checkUnnamed8223(
     core.List<api.GoogleCloudDatalabelingV1beta1NormalizedVertex> o) {
@@ -4104,12 +4033,10 @@ void checkGoogleCloudDatalabelingV1beta1NormalizedBoundingPoly(
 }
 
 core.List<api.GoogleCloudDatalabelingV1beta1NormalizedVertex>
-    buildUnnamed8224() {
-  final o = <api.GoogleCloudDatalabelingV1beta1NormalizedVertex>[];
-  o.add(buildGoogleCloudDatalabelingV1beta1NormalizedVertex());
-  o.add(buildGoogleCloudDatalabelingV1beta1NormalizedVertex());
-  return o;
-}
+    buildUnnamed8224() => [
+          buildGoogleCloudDatalabelingV1beta1NormalizedVertex(),
+          buildGoogleCloudDatalabelingV1beta1NormalizedVertex(),
+        ];
 
 void checkUnnamed8224(
     core.List<api.GoogleCloudDatalabelingV1beta1NormalizedVertex> o) {
@@ -4299,12 +4226,10 @@ void checkGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata(
   buildCounterGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata--;
 }
 
-core.List<core.String> buildUnnamed8225() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8225() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8225(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -4423,12 +4348,10 @@ void checkGoogleCloudDatalabelingV1beta1PdfInstruction(
   buildCounterGoogleCloudDatalabelingV1beta1PdfInstruction--;
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1Vertex> buildUnnamed8226() {
-  final o = <api.GoogleCloudDatalabelingV1beta1Vertex>[];
-  o.add(buildGoogleCloudDatalabelingV1beta1Vertex());
-  o.add(buildGoogleCloudDatalabelingV1beta1Vertex());
-  return o;
-}
+core.List<api.GoogleCloudDatalabelingV1beta1Vertex> buildUnnamed8226() => [
+      buildGoogleCloudDatalabelingV1beta1Vertex(),
+      buildGoogleCloudDatalabelingV1beta1Vertex(),
+    ];
 
 void checkUnnamed8226(core.List<api.GoogleCloudDatalabelingV1beta1Vertex> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -4487,12 +4410,10 @@ void checkGoogleCloudDatalabelingV1beta1PolylineConfig(
 }
 
 core.List<api.GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry>
-    buildUnnamed8227() {
-  final o = <api.GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry>[];
-  o.add(buildGoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry());
-  o.add(buildGoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry());
-  return o;
-}
+    buildUnnamed8227() => [
+          buildGoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry(),
+          buildGoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry(),
+        ];
 
 void checkUnnamed8227(
     core.List<api.GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry> o) {
@@ -4575,12 +4496,10 @@ void checkGoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest(
 }
 
 core.List<api.GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry>
-    buildUnnamed8228() {
-  final o = <api.GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry>[];
-  o.add(buildGoogleCloudDatalabelingV1beta1ConfusionMatrixEntry());
-  o.add(buildGoogleCloudDatalabelingV1beta1ConfusionMatrixEntry());
-  return o;
-}
+    buildUnnamed8228() => [
+          buildGoogleCloudDatalabelingV1beta1ConfusionMatrixEntry(),
+          buildGoogleCloudDatalabelingV1beta1ConfusionMatrixEntry(),
+        ];
 
 void checkUnnamed8228(
     core.List<api.GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry> o) {
@@ -4611,12 +4530,10 @@ void checkGoogleCloudDatalabelingV1beta1Row(
   buildCounterGoogleCloudDatalabelingV1beta1Row--;
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1Evaluation> buildUnnamed8229() {
-  final o = <api.GoogleCloudDatalabelingV1beta1Evaluation>[];
-  o.add(buildGoogleCloudDatalabelingV1beta1Evaluation());
-  o.add(buildGoogleCloudDatalabelingV1beta1Evaluation());
-  return o;
-}
+core.List<api.GoogleCloudDatalabelingV1beta1Evaluation> buildUnnamed8229() => [
+      buildGoogleCloudDatalabelingV1beta1Evaluation(),
+      buildGoogleCloudDatalabelingV1beta1Evaluation(),
+    ];
 
 void checkUnnamed8229(
     core.List<api.GoogleCloudDatalabelingV1beta1Evaluation> o) {
@@ -4686,12 +4603,10 @@ void checkGoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest(
 }
 
 core.List<api.GoogleCloudDatalabelingV1beta1ExampleComparison>
-    buildUnnamed8230() {
-  final o = <api.GoogleCloudDatalabelingV1beta1ExampleComparison>[];
-  o.add(buildGoogleCloudDatalabelingV1beta1ExampleComparison());
-  o.add(buildGoogleCloudDatalabelingV1beta1ExampleComparison());
-  return o;
-}
+    buildUnnamed8230() => [
+          buildGoogleCloudDatalabelingV1beta1ExampleComparison(),
+          buildGoogleCloudDatalabelingV1beta1ExampleComparison(),
+        ];
 
 void checkUnnamed8230(
     core.List<api.GoogleCloudDatalabelingV1beta1ExampleComparison> o) {
@@ -5050,12 +4965,10 @@ void checkGoogleCloudDatalabelingV1beta1VideoClassificationAnnotation(
 }
 
 core.List<api.GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig>
-    buildUnnamed8231() {
-  final o = <api.GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig>[];
-  o.add(buildGoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig());
-  o.add(buildGoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig());
-  return o;
-}
+    buildUnnamed8231() => [
+          buildGoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig(),
+          buildGoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig(),
+        ];
 
 void checkUnnamed8231(
     core.List<api.GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig> o) {
@@ -5112,12 +5025,10 @@ void checkGoogleCloudDatalabelingV1beta1VideoEventAnnotation(
 }
 
 core.List<api.GoogleCloudDatalabelingV1beta1ObjectTrackingFrame>
-    buildUnnamed8232() {
-  final o = <api.GoogleCloudDatalabelingV1beta1ObjectTrackingFrame>[];
-  o.add(buildGoogleCloudDatalabelingV1beta1ObjectTrackingFrame());
-  o.add(buildGoogleCloudDatalabelingV1beta1ObjectTrackingFrame());
-  return o;
-}
+    buildUnnamed8232() => [
+          buildGoogleCloudDatalabelingV1beta1ObjectTrackingFrame(),
+          buildGoogleCloudDatalabelingV1beta1ObjectTrackingFrame(),
+        ];
 
 void checkUnnamed8232(
     core.List<api.GoogleCloudDatalabelingV1beta1ObjectTrackingFrame> o) {
@@ -5154,12 +5065,11 @@ void checkGoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation(
   buildCounterGoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation--;
 }
 
-core.List<api.GoogleCloudDatalabelingV1beta1VideoThumbnail> buildUnnamed8233() {
-  final o = <api.GoogleCloudDatalabelingV1beta1VideoThumbnail>[];
-  o.add(buildGoogleCloudDatalabelingV1beta1VideoThumbnail());
-  o.add(buildGoogleCloudDatalabelingV1beta1VideoThumbnail());
-  return o;
-}
+core.List<api.GoogleCloudDatalabelingV1beta1VideoThumbnail>
+    buildUnnamed8233() => [
+          buildGoogleCloudDatalabelingV1beta1VideoThumbnail(),
+          buildGoogleCloudDatalabelingV1beta1VideoThumbnail(),
+        ];
 
 void checkUnnamed8233(
     core.List<api.GoogleCloudDatalabelingV1beta1VideoThumbnail> o) {
@@ -5238,12 +5148,10 @@ void checkGoogleCloudDatalabelingV1beta1VideoThumbnail(
   buildCounterGoogleCloudDatalabelingV1beta1VideoThumbnail--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed8234() {
-  final o = <api.GoogleRpcStatus>[];
-  o.add(buildGoogleRpcStatus());
-  o.add(buildGoogleRpcStatus());
-  return o;
-}
+core.List<api.GoogleRpcStatus> buildUnnamed8234() => [
+      buildGoogleRpcStatus(),
+      buildGoogleRpcStatus(),
+    ];
 
 void checkUnnamed8234(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5285,12 +5193,10 @@ void checkGoogleCloudDatalabelingV1p1alpha1CreateInstructionMetadata(
   buildCounterGoogleCloudDatalabelingV1p1alpha1CreateInstructionMetadata--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed8235() {
-  final o = <api.GoogleRpcStatus>[];
-  o.add(buildGoogleRpcStatus());
-  o.add(buildGoogleRpcStatus());
-  return o;
-}
+core.List<api.GoogleRpcStatus> buildUnnamed8235() => [
+      buildGoogleRpcStatus(),
+      buildGoogleRpcStatus(),
+    ];
 
 void checkUnnamed8235(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5473,12 +5379,10 @@ void checkGoogleCloudDatalabelingV1p1alpha1GenerateAnalysisReportOperationMetada
   buildCounterGoogleCloudDatalabelingV1p1alpha1GenerateAnalysisReportOperationMetadata--;
 }
 
-core.List<core.String> buildUnnamed8236() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8236() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8236(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5553,12 +5457,10 @@ void checkGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig(
   buildCounterGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed8237() {
-  final o = <api.GoogleRpcStatus>[];
-  o.add(buildGoogleRpcStatus());
-  o.add(buildGoogleRpcStatus());
-  return o;
-}
+core.List<api.GoogleRpcStatus> buildUnnamed8237() => [
+      buildGoogleRpcStatus(),
+      buildGoogleRpcStatus(),
+    ];
 
 void checkUnnamed8237(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5807,12 +5709,10 @@ void checkGoogleCloudDatalabelingV1p1alpha1LabelImageSegmentationOperationMetada
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelImageSegmentationOperationMetadata--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed8238() {
-  final o = <api.GoogleRpcStatus>[];
-  o.add(buildGoogleRpcStatus());
-  o.add(buildGoogleRpcStatus());
-  return o;
-}
+core.List<api.GoogleRpcStatus> buildUnnamed8238() => [
+      buildGoogleRpcStatus(),
+      buildGoogleRpcStatus(),
+    ];
 
 void checkUnnamed8238(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5910,12 +5810,10 @@ void checkGoogleCloudDatalabelingV1p1alpha1LabelOperationMetadata(
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelOperationMetadata--;
 }
 
-core.Map<core.String, core.String> buildUnnamed8239() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed8239() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed8239(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6142,12 +6040,10 @@ void checkGoogleCloudDatalabelingV1p1alpha1OutputConfig(
   buildCounterGoogleCloudDatalabelingV1p1alpha1OutputConfig--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed8240() {
-  final o = <api.GoogleRpcStatus>[];
-  o.add(buildGoogleRpcStatus());
-  o.add(buildGoogleRpcStatus());
-  return o;
-}
+core.List<api.GoogleRpcStatus> buildUnnamed8240() => [
+      buildGoogleRpcStatus(),
+      buildGoogleRpcStatus(),
+    ];
 
 void checkUnnamed8240(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6189,12 +6085,10 @@ void checkGoogleCloudDatalabelingV1p2alpha1CreateInstructionMetadata(
   buildCounterGoogleCloudDatalabelingV1p2alpha1CreateInstructionMetadata--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed8241() {
-  final o = <api.GoogleRpcStatus>[];
-  o.add(buildGoogleRpcStatus());
-  o.add(buildGoogleRpcStatus());
-  return o;
-}
+core.List<api.GoogleRpcStatus> buildUnnamed8241() => [
+      buildGoogleRpcStatus(),
+      buildGoogleRpcStatus(),
+    ];
 
 void checkUnnamed8241(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6342,12 +6236,10 @@ void checkGoogleCloudDatalabelingV1p2alpha1GcsFolderDestination(
   buildCounterGoogleCloudDatalabelingV1p2alpha1GcsFolderDestination--;
 }
 
-core.List<core.String> buildUnnamed8242() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8242() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8242(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6422,12 +6314,10 @@ void checkGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig(
   buildCounterGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed8243() {
-  final o = <api.GoogleRpcStatus>[];
-  o.add(buildGoogleRpcStatus());
-  o.add(buildGoogleRpcStatus());
-  return o;
-}
+core.List<api.GoogleRpcStatus> buildUnnamed8243() => [
+      buildGoogleRpcStatus(),
+      buildGoogleRpcStatus(),
+    ];
 
 void checkUnnamed8243(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6676,12 +6566,10 @@ void checkGoogleCloudDatalabelingV1p2alpha1LabelImageSegmentationOperationMetada
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelImageSegmentationOperationMetadata--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed8244() {
-  final o = <api.GoogleRpcStatus>[];
-  o.add(buildGoogleRpcStatus());
-  o.add(buildGoogleRpcStatus());
-  return o;
-}
+core.List<api.GoogleRpcStatus> buildUnnamed8244() => [
+      buildGoogleRpcStatus(),
+      buildGoogleRpcStatus(),
+    ];
 
 void checkUnnamed8244(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -6779,12 +6667,10 @@ void checkGoogleCloudDatalabelingV1p2alpha1LabelOperationMetadata(
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelOperationMetadata--;
 }
 
-core.Map<core.String, core.String> buildUnnamed8245() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed8245() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed8245(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -7011,12 +6897,10 @@ void checkGoogleCloudDatalabelingV1p2alpha1OutputConfig(
   buildCounterGoogleCloudDatalabelingV1p2alpha1OutputConfig--;
 }
 
-core.List<api.GoogleLongrunningOperation> buildUnnamed8246() {
-  final o = <api.GoogleLongrunningOperation>[];
-  o.add(buildGoogleLongrunningOperation());
-  o.add(buildGoogleLongrunningOperation());
-  return o;
-}
+core.List<api.GoogleLongrunningOperation> buildUnnamed8246() => [
+      buildGoogleLongrunningOperation(),
+      buildGoogleLongrunningOperation(),
+    ];
 
 void checkUnnamed8246(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -7050,20 +6934,18 @@ void checkGoogleLongrunningListOperationsResponse(
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed8247() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed8247() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed8247(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -7097,20 +6979,18 @@ void checkUnnamed8247(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed8248() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed8248() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed8248(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -7189,20 +7069,18 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed8249() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed8249() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed8249(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -7236,12 +7114,10 @@ void checkUnnamed8249(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed8250() {
-  final o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed8249());
-  o.add(buildUnnamed8249());
-  return o;
-}
+core.List<core.Map<core.String, core.Object>> buildUnnamed8250() => [
+      buildUnnamed8249(),
+      buildUnnamed8249(),
+    ];
 
 void checkUnnamed8250(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));

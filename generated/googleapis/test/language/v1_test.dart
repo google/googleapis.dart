@@ -50,12 +50,10 @@ void checkAnalyzeEntitiesRequest(api.AnalyzeEntitiesRequest o) {
   buildCounterAnalyzeEntitiesRequest--;
 }
 
-core.List<api.Entity> buildUnnamed3022() {
-  final o = <api.Entity>[];
-  o.add(buildEntity());
-  o.add(buildEntity());
-  return o;
-}
+core.List<api.Entity> buildUnnamed3022() => [
+      buildEntity(),
+      buildEntity(),
+    ];
 
 void checkUnnamed3022(core.List<api.Entity> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -111,12 +109,10 @@ void checkAnalyzeEntitySentimentRequest(api.AnalyzeEntitySentimentRequest o) {
   buildCounterAnalyzeEntitySentimentRequest--;
 }
 
-core.List<api.Entity> buildUnnamed3023() {
-  final o = <api.Entity>[];
-  o.add(buildEntity());
-  o.add(buildEntity());
-  return o;
-}
+core.List<api.Entity> buildUnnamed3023() => [
+      buildEntity(),
+      buildEntity(),
+    ];
 
 void checkUnnamed3023(core.List<api.Entity> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -172,12 +168,10 @@ void checkAnalyzeSentimentRequest(api.AnalyzeSentimentRequest o) {
   buildCounterAnalyzeSentimentRequest--;
 }
 
-core.List<api.Sentence> buildUnnamed3024() {
-  final o = <api.Sentence>[];
-  o.add(buildSentence());
-  o.add(buildSentence());
-  return o;
-}
+core.List<api.Sentence> buildUnnamed3024() => [
+      buildSentence(),
+      buildSentence(),
+    ];
 
 void checkUnnamed3024(core.List<api.Sentence> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -235,12 +229,10 @@ void checkAnalyzeSyntaxRequest(api.AnalyzeSyntaxRequest o) {
   buildCounterAnalyzeSyntaxRequest--;
 }
 
-core.List<api.Sentence> buildUnnamed3025() {
-  final o = <api.Sentence>[];
-  o.add(buildSentence());
-  o.add(buildSentence());
-  return o;
-}
+core.List<api.Sentence> buildUnnamed3025() => [
+      buildSentence(),
+      buildSentence(),
+    ];
 
 void checkUnnamed3025(core.List<api.Sentence> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -248,12 +240,10 @@ void checkUnnamed3025(core.List<api.Sentence> o) {
   checkSentence(o[1]);
 }
 
-core.List<api.Token> buildUnnamed3026() {
-  final o = <api.Token>[];
-  o.add(buildToken());
-  o.add(buildToken());
-  return o;
-}
+core.List<api.Token> buildUnnamed3026() => [
+      buildToken(),
+      buildToken(),
+    ];
 
 void checkUnnamed3026(core.List<api.Token> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -313,12 +303,10 @@ void checkAnnotateTextRequest(api.AnnotateTextRequest o) {
   buildCounterAnnotateTextRequest--;
 }
 
-core.List<api.ClassificationCategory> buildUnnamed3027() {
-  final o = <api.ClassificationCategory>[];
-  o.add(buildClassificationCategory());
-  o.add(buildClassificationCategory());
-  return o;
-}
+core.List<api.ClassificationCategory> buildUnnamed3027() => [
+      buildClassificationCategory(),
+      buildClassificationCategory(),
+    ];
 
 void checkUnnamed3027(core.List<api.ClassificationCategory> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -326,12 +314,10 @@ void checkUnnamed3027(core.List<api.ClassificationCategory> o) {
   checkClassificationCategory(o[1]);
 }
 
-core.List<api.Entity> buildUnnamed3028() {
-  final o = <api.Entity>[];
-  o.add(buildEntity());
-  o.add(buildEntity());
-  return o;
-}
+core.List<api.Entity> buildUnnamed3028() => [
+      buildEntity(),
+      buildEntity(),
+    ];
 
 void checkUnnamed3028(core.List<api.Entity> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -339,12 +325,10 @@ void checkUnnamed3028(core.List<api.Entity> o) {
   checkEntity(o[1]);
 }
 
-core.List<api.Sentence> buildUnnamed3029() {
-  final o = <api.Sentence>[];
-  o.add(buildSentence());
-  o.add(buildSentence());
-  return o;
-}
+core.List<api.Sentence> buildUnnamed3029() => [
+      buildSentence(),
+      buildSentence(),
+    ];
 
 void checkUnnamed3029(core.List<api.Sentence> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -352,12 +336,10 @@ void checkUnnamed3029(core.List<api.Sentence> o) {
   checkSentence(o[1]);
 }
 
-core.List<api.Token> buildUnnamed3030() {
-  final o = <api.Token>[];
-  o.add(buildToken());
-  o.add(buildToken());
-  return o;
-}
+core.List<api.Token> buildUnnamed3030() => [
+      buildToken(),
+      buildToken(),
+    ];
 
 void checkUnnamed3030(core.List<api.Token> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -443,12 +425,10 @@ void checkClassifyTextRequest(api.ClassifyTextRequest o) {
   buildCounterClassifyTextRequest--;
 }
 
-core.List<api.ClassificationCategory> buildUnnamed3031() {
-  final o = <api.ClassificationCategory>[];
-  o.add(buildClassificationCategory());
-  o.add(buildClassificationCategory());
-  return o;
-}
+core.List<api.ClassificationCategory> buildUnnamed3031() => [
+      buildClassificationCategory(),
+      buildClassificationCategory(),
+    ];
 
 void checkUnnamed3031(core.List<api.ClassificationCategory> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -539,12 +519,10 @@ void checkDocument(api.Document o) {
   buildCounterDocument--;
 }
 
-core.List<api.EntityMention> buildUnnamed3032() {
-  final o = <api.EntityMention>[];
-  o.add(buildEntityMention());
-  o.add(buildEntityMention());
-  return o;
-}
+core.List<api.EntityMention> buildUnnamed3032() => [
+      buildEntityMention(),
+      buildEntityMention(),
+    ];
 
 void checkUnnamed3032(core.List<api.EntityMention> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -552,12 +530,10 @@ void checkUnnamed3032(core.List<api.EntityMention> o) {
   checkEntityMention(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed3033() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed3033() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed3033(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -787,20 +763,18 @@ void checkSentiment(api.Sentiment o) {
   buildCounterSentiment--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed3034() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed3034() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed3034(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -834,12 +808,10 @@ void checkUnnamed3034(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed3035() {
-  final o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed3034());
-  o.add(buildUnnamed3034());
-  return o;
-}
+core.List<core.Map<core.String, core.Object>> buildUnnamed3035() => [
+      buildUnnamed3034(),
+      buildUnnamed3034(),
+    ];
 
 void checkUnnamed3035(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));

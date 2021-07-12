@@ -79,12 +79,10 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-core.List<api.ExpressionReport> buildUnnamed7521() {
-  final o = <api.ExpressionReport>[];
-  o.add(buildExpressionReport());
-  o.add(buildExpressionReport());
-  return o;
-}
+core.List<api.ExpressionReport> buildUnnamed7521() => [
+      buildExpressionReport(),
+      buildExpressionReport(),
+    ];
 
 void checkUnnamed7521(core.List<api.ExpressionReport> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -92,12 +90,10 @@ void checkUnnamed7521(core.List<api.ExpressionReport> o) {
   checkExpressionReport(o[1]);
 }
 
-core.List<api.ValueCount> buildUnnamed7522() {
-  final o = <api.ValueCount>[];
-  o.add(buildValueCount());
-  o.add(buildValueCount());
-  return o;
-}
+core.List<api.ValueCount> buildUnnamed7522() => [
+      buildValueCount(),
+      buildValueCount(),
+    ];
 
 void checkUnnamed7522(core.List<api.ValueCount> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -160,20 +156,18 @@ void checkFile(api.File o) {
   buildCounterFile--;
 }
 
-core.List<core.Object> buildUnnamed7523() {
-  final o = <core.Object>[];
-  o.add({
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  });
-  o.add({
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  });
-  return o;
-}
+core.List<core.Object> buildUnnamed7523() => [
+      {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    ];
 
 void checkUnnamed7523(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -231,12 +225,10 @@ void checkFunctionCall(api.FunctionCall o) {
   buildCounterFunctionCall--;
 }
 
-core.List<api.Arg> buildUnnamed7524() {
-  final o = <api.Arg>[];
-  o.add(buildArg());
-  o.add(buildArg());
-  return o;
-}
+core.List<api.Arg> buildUnnamed7524() => [
+      buildArg(),
+      buildArg(),
+    ];
 
 void checkUnnamed7524(core.List<api.Arg> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -346,12 +338,10 @@ void checkIssue(api.Issue o) {
   buildCounterIssue--;
 }
 
-core.List<api.Release> buildUnnamed7525() {
-  final o = <api.Release>[];
-  o.add(buildRelease());
-  o.add(buildRelease());
-  return o;
-}
+core.List<api.Release> buildUnnamed7525() => [
+      buildRelease(),
+      buildRelease(),
+    ];
 
 void checkUnnamed7525(core.List<api.Release> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -383,12 +373,10 @@ void checkListReleasesResponse(api.ListReleasesResponse o) {
   buildCounterListReleasesResponse--;
 }
 
-core.List<api.Ruleset> buildUnnamed7526() {
-  final o = <api.Ruleset>[];
-  o.add(buildRuleset());
-  o.add(buildRuleset());
-  return o;
-}
+core.List<api.Ruleset> buildUnnamed7526() => [
+      buildRuleset(),
+      buildRuleset(),
+    ];
 
 void checkUnnamed7526(core.List<api.Ruleset> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -420,12 +408,10 @@ void checkListRulesetsResponse(api.ListRulesetsResponse o) {
   buildCounterListRulesetsResponse--;
 }
 
-core.List<core.String> buildUnnamed7527() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed7527() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed7527(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -564,12 +550,10 @@ void checkRuleset(api.Ruleset o) {
   buildCounterRuleset--;
 }
 
-core.List<api.File> buildUnnamed7528() {
-  final o = <api.File>[];
-  o.add(buildFile());
-  o.add(buildFile());
-  return o;
-}
+core.List<api.File> buildUnnamed7528() => [
+      buildFile(),
+      buildFile(),
+    ];
 
 void checkUnnamed7528(core.List<api.File> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -638,12 +622,10 @@ void checkSourcePosition(api.SourcePosition o) {
   buildCounterSourcePosition--;
 }
 
-core.List<api.FunctionMock> buildUnnamed7529() {
-  final o = <api.FunctionMock>[];
-  o.add(buildFunctionMock());
-  o.add(buildFunctionMock());
-  return o;
-}
+core.List<api.FunctionMock> buildUnnamed7529() => [
+      buildFunctionMock(),
+      buildFunctionMock(),
+    ];
 
 void checkUnnamed7529(core.List<api.FunctionMock> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -723,12 +705,10 @@ void checkTestCase(api.TestCase o) {
   buildCounterTestCase--;
 }
 
-core.List<core.String> buildUnnamed7530() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed7530() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed7530(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -742,12 +722,10 @@ void checkUnnamed7530(core.List<core.String> o) {
   );
 }
 
-core.List<api.ExpressionReport> buildUnnamed7531() {
-  final o = <api.ExpressionReport>[];
-  o.add(buildExpressionReport());
-  o.add(buildExpressionReport());
-  return o;
-}
+core.List<api.ExpressionReport> buildUnnamed7531() => [
+      buildExpressionReport(),
+      buildExpressionReport(),
+    ];
 
 void checkUnnamed7531(core.List<api.ExpressionReport> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -755,12 +733,10 @@ void checkUnnamed7531(core.List<api.ExpressionReport> o) {
   checkExpressionReport(o[1]);
 }
 
-core.List<api.FunctionCall> buildUnnamed7532() {
-  final o = <api.FunctionCall>[];
-  o.add(buildFunctionCall());
-  o.add(buildFunctionCall());
-  return o;
-}
+core.List<api.FunctionCall> buildUnnamed7532() => [
+      buildFunctionCall(),
+      buildFunctionCall(),
+    ];
 
 void checkUnnamed7532(core.List<api.FunctionCall> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -768,12 +744,10 @@ void checkUnnamed7532(core.List<api.FunctionCall> o) {
   checkFunctionCall(o[1]);
 }
 
-core.List<api.VisitedExpression> buildUnnamed7533() {
-  final o = <api.VisitedExpression>[];
-  o.add(buildVisitedExpression());
-  o.add(buildVisitedExpression());
-  return o;
-}
+core.List<api.VisitedExpression> buildUnnamed7533() => [
+      buildVisitedExpression(),
+      buildVisitedExpression(),
+    ];
 
 void checkUnnamed7533(core.List<api.VisitedExpression> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -834,12 +808,10 @@ void checkTestRulesetRequest(api.TestRulesetRequest o) {
   buildCounterTestRulesetRequest--;
 }
 
-core.List<api.Issue> buildUnnamed7534() {
-  final o = <api.Issue>[];
-  o.add(buildIssue());
-  o.add(buildIssue());
-  return o;
-}
+core.List<api.Issue> buildUnnamed7534() => [
+      buildIssue(),
+      buildIssue(),
+    ];
 
 void checkUnnamed7534(core.List<api.Issue> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -847,12 +819,10 @@ void checkUnnamed7534(core.List<api.Issue> o) {
   checkIssue(o[1]);
 }
 
-core.List<api.TestResult> buildUnnamed7535() {
-  final o = <api.TestResult>[];
-  o.add(buildTestResult());
-  o.add(buildTestResult());
-  return o;
-}
+core.List<api.TestResult> buildUnnamed7535() => [
+      buildTestResult(),
+      buildTestResult(),
+    ];
 
 void checkUnnamed7535(core.List<api.TestResult> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -881,12 +851,10 @@ void checkTestRulesetResponse(api.TestRulesetResponse o) {
   buildCounterTestRulesetResponse--;
 }
 
-core.List<api.TestCase> buildUnnamed7536() {
-  final o = <api.TestCase>[];
-  o.add(buildTestCase());
-  o.add(buildTestCase());
-  return o;
-}
+core.List<api.TestCase> buildUnnamed7536() => [
+      buildTestCase(),
+      buildTestCase(),
+    ];
 
 void checkUnnamed7536(core.List<api.TestCase> o) {
   unittest.expect(o, unittest.hasLength(2));

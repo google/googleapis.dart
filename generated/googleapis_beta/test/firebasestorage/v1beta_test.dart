@@ -85,12 +85,10 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-core.List<api.Bucket> buildUnnamed8920() {
-  final o = <api.Bucket>[];
-  o.add(buildBucket());
-  o.add(buildBucket());
-  return o;
-}
+core.List<api.Bucket> buildUnnamed8920() => [
+      buildBucket(),
+      buildBucket(),
+    ];
 
 void checkUnnamed8920(core.List<api.Bucket> o) {
   unittest.expect(o, unittest.hasLength(2));

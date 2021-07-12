@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<core.String> buildUnnamed554() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed554() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed554(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -64,12 +62,10 @@ void checkAcknowledgeRequest(api.AcknowledgeRequest o) {
   buildCounterAcknowledgeRequest--;
 }
 
-core.List<core.String> buildUnnamed555() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed555() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed555(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -109,12 +105,10 @@ void checkBinding(api.Binding o) {
   buildCounterBinding--;
 }
 
-core.Map<core.String, core.String> buildUnnamed556() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed556() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed556(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -268,12 +262,10 @@ void checkExpr(api.Expr o) {
   buildCounterExpr--;
 }
 
-core.List<api.Schema> buildUnnamed557() {
-  final o = <api.Schema>[];
-  o.add(buildSchema());
-  o.add(buildSchema());
-  return o;
-}
+core.List<api.Schema> buildUnnamed557() => [
+      buildSchema(),
+      buildSchema(),
+    ];
 
 void checkUnnamed557(core.List<api.Schema> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -305,12 +297,10 @@ void checkListSchemasResponse(api.ListSchemasResponse o) {
   buildCounterListSchemasResponse--;
 }
 
-core.List<api.Snapshot> buildUnnamed558() {
-  final o = <api.Snapshot>[];
-  o.add(buildSnapshot());
-  o.add(buildSnapshot());
-  return o;
-}
+core.List<api.Snapshot> buildUnnamed558() => [
+      buildSnapshot(),
+      buildSnapshot(),
+    ];
 
 void checkUnnamed558(core.List<api.Snapshot> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -342,12 +332,10 @@ void checkListSnapshotsResponse(api.ListSnapshotsResponse o) {
   buildCounterListSnapshotsResponse--;
 }
 
-core.List<api.Subscription> buildUnnamed559() {
-  final o = <api.Subscription>[];
-  o.add(buildSubscription());
-  o.add(buildSubscription());
-  return o;
-}
+core.List<api.Subscription> buildUnnamed559() => [
+      buildSubscription(),
+      buildSubscription(),
+    ];
 
 void checkUnnamed559(core.List<api.Subscription> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -379,12 +367,10 @@ void checkListSubscriptionsResponse(api.ListSubscriptionsResponse o) {
   buildCounterListSubscriptionsResponse--;
 }
 
-core.List<core.String> buildUnnamed560() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed560() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed560(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -422,12 +408,10 @@ void checkListTopicSnapshotsResponse(api.ListTopicSnapshotsResponse o) {
   buildCounterListTopicSnapshotsResponse--;
 }
 
-core.List<core.String> buildUnnamed561() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed561() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed561(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -465,12 +449,10 @@ void checkListTopicSubscriptionsResponse(api.ListTopicSubscriptionsResponse o) {
   buildCounterListTopicSubscriptionsResponse--;
 }
 
-core.List<api.Topic> buildUnnamed562() {
-  final o = <api.Topic>[];
-  o.add(buildTopic());
-  o.add(buildTopic());
-  return o;
-}
+core.List<api.Topic> buildUnnamed562() => [
+      buildTopic(),
+      buildTopic(),
+    ];
 
 void checkUnnamed562(core.List<api.Topic> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -502,12 +484,10 @@ void checkListTopicsResponse(api.ListTopicsResponse o) {
   buildCounterListTopicsResponse--;
 }
 
-core.List<core.String> buildUnnamed563() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed563() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed563(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -540,12 +520,10 @@ void checkMessageStoragePolicy(api.MessageStoragePolicy o) {
   buildCounterMessageStoragePolicy--;
 }
 
-core.List<core.String> buildUnnamed564() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed564() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed564(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -629,12 +607,10 @@ void checkOidcToken(api.OidcToken o) {
   buildCounterOidcToken--;
 }
 
-core.List<api.Binding> buildUnnamed565() {
-  final o = <api.Binding>[];
-  o.add(buildBinding());
-  o.add(buildBinding());
-  return o;
-}
+core.List<api.Binding> buildUnnamed565() => [
+      buildBinding(),
+      buildBinding(),
+    ];
 
 void checkUnnamed565(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -671,12 +647,10 @@ void checkPolicy(api.Policy o) {
   buildCounterPolicy--;
 }
 
-core.List<api.PubsubMessage> buildUnnamed566() {
-  final o = <api.PubsubMessage>[];
-  o.add(buildPubsubMessage());
-  o.add(buildPubsubMessage());
-  return o;
-}
+core.List<api.PubsubMessage> buildUnnamed566() => [
+      buildPubsubMessage(),
+      buildPubsubMessage(),
+    ];
 
 void checkUnnamed566(core.List<api.PubsubMessage> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -703,12 +677,10 @@ void checkPublishRequest(api.PublishRequest o) {
   buildCounterPublishRequest--;
 }
 
-core.List<core.String> buildUnnamed567() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed567() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed567(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -741,12 +713,10 @@ void checkPublishResponse(api.PublishResponse o) {
   buildCounterPublishResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed568() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed568() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed568(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -823,12 +793,10 @@ void checkPullRequest(api.PullRequest o) {
   buildCounterPullRequest--;
 }
 
-core.List<api.ReceivedMessage> buildUnnamed569() {
-  final o = <api.ReceivedMessage>[];
-  o.add(buildReceivedMessage());
-  o.add(buildReceivedMessage());
-  return o;
-}
+core.List<api.ReceivedMessage> buildUnnamed569() => [
+      buildReceivedMessage(),
+      buildReceivedMessage(),
+    ];
 
 void checkUnnamed569(core.List<api.ReceivedMessage> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -855,12 +823,10 @@ void checkPullResponse(api.PullResponse o) {
   buildCounterPullResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed570() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed570() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed570(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1076,12 +1042,10 @@ void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-core.Map<core.String, core.String> buildUnnamed571() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed571() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed571(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1129,12 +1093,10 @@ void checkSnapshot(api.Snapshot o) {
   buildCounterSnapshot--;
 }
 
-core.Map<core.String, core.String> buildUnnamed572() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed572() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed572(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1206,12 +1168,10 @@ void checkSubscription(api.Subscription o) {
   buildCounterSubscription--;
 }
 
-core.List<core.String> buildUnnamed573() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed573() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed573(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1244,12 +1204,10 @@ void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed574() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed574() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed574(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1282,12 +1240,10 @@ void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed575() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed575() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed575(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));

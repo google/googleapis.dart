@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.GoogleCloudEssentialcontactsV1Contact> buildUnnamed640() {
-  final o = <api.GoogleCloudEssentialcontactsV1Contact>[];
-  o.add(buildGoogleCloudEssentialcontactsV1Contact());
-  o.add(buildGoogleCloudEssentialcontactsV1Contact());
-  return o;
-}
+core.List<api.GoogleCloudEssentialcontactsV1Contact> buildUnnamed640() => [
+      buildGoogleCloudEssentialcontactsV1Contact(),
+      buildGoogleCloudEssentialcontactsV1Contact(),
+    ];
 
 void checkUnnamed640(core.List<api.GoogleCloudEssentialcontactsV1Contact> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -65,12 +63,10 @@ void checkGoogleCloudEssentialcontactsV1ComputeContactsResponse(
   buildCounterGoogleCloudEssentialcontactsV1ComputeContactsResponse--;
 }
 
-core.List<core.String> buildUnnamed641() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed641() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed641(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -130,12 +126,10 @@ void checkGoogleCloudEssentialcontactsV1Contact(
   buildCounterGoogleCloudEssentialcontactsV1Contact--;
 }
 
-core.List<api.GoogleCloudEssentialcontactsV1Contact> buildUnnamed642() {
-  final o = <api.GoogleCloudEssentialcontactsV1Contact>[];
-  o.add(buildGoogleCloudEssentialcontactsV1Contact());
-  o.add(buildGoogleCloudEssentialcontactsV1Contact());
-  return o;
-}
+core.List<api.GoogleCloudEssentialcontactsV1Contact> buildUnnamed642() => [
+      buildGoogleCloudEssentialcontactsV1Contact(),
+      buildGoogleCloudEssentialcontactsV1Contact(),
+    ];
 
 void checkUnnamed642(core.List<api.GoogleCloudEssentialcontactsV1Contact> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -169,12 +163,10 @@ void checkGoogleCloudEssentialcontactsV1ListContactsResponse(
   buildCounterGoogleCloudEssentialcontactsV1ListContactsResponse--;
 }
 
-core.List<core.String> buildUnnamed643() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed643() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed643(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -229,12 +221,10 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.List<core.String> buildUnnamed644() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed644() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed644(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -248,12 +238,10 @@ void checkUnnamed644(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed645() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed645() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed645(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -267,12 +255,10 @@ void checkUnnamed645(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed646() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed646() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed646(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));

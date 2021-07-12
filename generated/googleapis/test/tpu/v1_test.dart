@@ -68,12 +68,10 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-core.List<api.AcceleratorType> buildUnnamed7255() {
-  final o = <api.AcceleratorType>[];
-  o.add(buildAcceleratorType());
-  o.add(buildAcceleratorType());
-  return o;
-}
+core.List<api.AcceleratorType> buildUnnamed7255() => [
+      buildAcceleratorType(),
+      buildAcceleratorType(),
+    ];
 
 void checkUnnamed7255(core.List<api.AcceleratorType> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -81,12 +79,10 @@ void checkUnnamed7255(core.List<api.AcceleratorType> o) {
   checkAcceleratorType(o[1]);
 }
 
-core.List<core.String> buildUnnamed7256() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed7256() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed7256(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -126,12 +122,10 @@ void checkListAcceleratorTypesResponse(api.ListAcceleratorTypesResponse o) {
   buildCounterListAcceleratorTypesResponse--;
 }
 
-core.List<api.Location> buildUnnamed7257() {
-  final o = <api.Location>[];
-  o.add(buildLocation());
-  o.add(buildLocation());
-  return o;
-}
+core.List<api.Location> buildUnnamed7257() => [
+      buildLocation(),
+      buildLocation(),
+    ];
 
 void checkUnnamed7257(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -163,12 +157,10 @@ void checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse--;
 }
 
-core.List<api.Node> buildUnnamed7258() {
-  final o = <api.Node>[];
-  o.add(buildNode());
-  o.add(buildNode());
-  return o;
-}
+core.List<api.Node> buildUnnamed7258() => [
+      buildNode(),
+      buildNode(),
+    ];
 
 void checkUnnamed7258(core.List<api.Node> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -176,12 +168,10 @@ void checkUnnamed7258(core.List<api.Node> o) {
   checkNode(o[1]);
 }
 
-core.List<core.String> buildUnnamed7259() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed7259() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed7259(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -221,12 +211,10 @@ void checkListNodesResponse(api.ListNodesResponse o) {
   buildCounterListNodesResponse--;
 }
 
-core.List<api.Operation> buildUnnamed7260() {
-  final o = <api.Operation>[];
-  o.add(buildOperation());
-  o.add(buildOperation());
-  return o;
-}
+core.List<api.Operation> buildUnnamed7260() => [
+      buildOperation(),
+      buildOperation(),
+    ];
 
 void checkUnnamed7260(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -258,12 +246,10 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
   buildCounterListOperationsResponse--;
 }
 
-core.List<api.TensorFlowVersion> buildUnnamed7261() {
-  final o = <api.TensorFlowVersion>[];
-  o.add(buildTensorFlowVersion());
-  o.add(buildTensorFlowVersion());
-  return o;
-}
+core.List<api.TensorFlowVersion> buildUnnamed7261() => [
+      buildTensorFlowVersion(),
+      buildTensorFlowVersion(),
+    ];
 
 void checkUnnamed7261(core.List<api.TensorFlowVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -271,12 +257,10 @@ void checkUnnamed7261(core.List<api.TensorFlowVersion> o) {
   checkTensorFlowVersion(o[1]);
 }
 
-core.List<core.String> buildUnnamed7262() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed7262() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed7262(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -316,12 +300,10 @@ void checkListTensorFlowVersionsResponse(api.ListTensorFlowVersionsResponse o) {
   buildCounterListTensorFlowVersionsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed7263() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed7263() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed7263(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -335,20 +317,18 @@ void checkUnnamed7263(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed7264() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed7264() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed7264(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -445,12 +425,10 @@ void checkNetworkEndpoint(api.NetworkEndpoint o) {
   buildCounterNetworkEndpoint--;
 }
 
-core.Map<core.String, core.String> buildUnnamed7265() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed7265() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed7265(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -464,12 +442,10 @@ void checkUnnamed7265(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<api.NetworkEndpoint> buildUnnamed7266() {
-  final o = <api.NetworkEndpoint>[];
-  o.add(buildNetworkEndpoint());
-  o.add(buildNetworkEndpoint());
-  return o;
-}
+core.List<api.NetworkEndpoint> buildUnnamed7266() => [
+      buildNetworkEndpoint(),
+      buildNetworkEndpoint(),
+    ];
 
 void checkUnnamed7266(core.List<api.NetworkEndpoint> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -477,12 +453,10 @@ void checkUnnamed7266(core.List<api.NetworkEndpoint> o) {
   checkNetworkEndpoint(o[1]);
 }
 
-core.List<api.Symptom> buildUnnamed7267() {
-  final o = <api.Symptom>[];
-  o.add(buildSymptom());
-  o.add(buildSymptom());
-  return o;
-}
+core.List<api.Symptom> buildUnnamed7267() => [
+      buildSymptom(),
+      buildSymptom(),
+    ];
 
 void checkUnnamed7267(core.List<api.Symptom> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -587,20 +561,18 @@ void checkNode(api.Node o) {
   buildCounterNode--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed7268() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed7268() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed7268(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -634,20 +606,18 @@ void checkUnnamed7268(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed7269() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed7269() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed7269(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -818,20 +788,18 @@ void checkStartNodeRequest(api.StartNodeRequest o) {
   buildCounterStartNodeRequest--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed7270() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed7270() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed7270(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -865,12 +833,10 @@ void checkUnnamed7270(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed7271() {
-  final o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed7270());
-  o.add(buildUnnamed7270());
-  return o;
-}
+core.List<core.Map<core.String, core.Object>> buildUnnamed7271() => [
+      buildUnnamed7270(),
+      buildUnnamed7270(),
+    ];
 
 void checkUnnamed7271(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));

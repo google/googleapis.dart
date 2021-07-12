@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.AclRule> buildUnnamed5285() {
-  final o = <api.AclRule>[];
-  o.add(buildAclRule());
-  o.add(buildAclRule());
-  return o;
-}
+core.List<api.AclRule> buildUnnamed5285() => [
+      buildAclRule(),
+      buildAclRule(),
+    ];
 
 void checkUnnamed5285(core.List<api.AclRule> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -198,12 +196,10 @@ void checkCalendar(api.Calendar o) {
   buildCounterCalendar--;
 }
 
-core.List<api.CalendarListEntry> buildUnnamed5286() {
-  final o = <api.CalendarListEntry>[];
-  o.add(buildCalendarListEntry());
-  o.add(buildCalendarListEntry());
-  return o;
-}
+core.List<api.CalendarListEntry> buildUnnamed5286() => [
+      buildCalendarListEntry(),
+      buildCalendarListEntry(),
+    ];
 
 void checkUnnamed5286(core.List<api.CalendarListEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -250,12 +246,10 @@ void checkCalendarList(api.CalendarList o) {
   buildCounterCalendarList--;
 }
 
-core.List<api.EventReminder> buildUnnamed5287() {
-  final o = <api.EventReminder>[];
-  o.add(buildEventReminder());
-  o.add(buildEventReminder());
-  return o;
-}
+core.List<api.EventReminder> buildUnnamed5287() => [
+      buildEventReminder(),
+      buildEventReminder(),
+    ];
 
 void checkUnnamed5287(core.List<api.EventReminder> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -263,12 +257,10 @@ void checkUnnamed5287(core.List<api.EventReminder> o) {
   checkEventReminder(o[1]);
 }
 
-core.List<api.CalendarNotification> buildUnnamed5288() {
-  final o = <api.CalendarNotification>[];
-  o.add(buildCalendarNotification());
-  o.add(buildCalendarNotification());
-  return o;
-}
+core.List<api.CalendarNotification> buildUnnamed5288() => [
+      buildCalendarNotification(),
+      buildCalendarNotification(),
+    ];
 
 void checkUnnamed5288(core.List<api.CalendarNotification> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -415,12 +407,10 @@ void checkCalendarNotification(api.CalendarNotification o) {
   buildCounterCalendarNotification--;
 }
 
-core.Map<core.String, core.String> buildUnnamed5289() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed5289() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed5289(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -522,12 +512,10 @@ void checkColorDefinition(api.ColorDefinition o) {
   buildCounterColorDefinition--;
 }
 
-core.Map<core.String, api.ColorDefinition> buildUnnamed5290() {
-  final o = <core.String, api.ColorDefinition>{};
-  o['x'] = buildColorDefinition();
-  o['y'] = buildColorDefinition();
-  return o;
-}
+core.Map<core.String, api.ColorDefinition> buildUnnamed5290() => {
+      'x': buildColorDefinition(),
+      'y': buildColorDefinition(),
+    };
 
 void checkUnnamed5290(core.Map<core.String, api.ColorDefinition> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -535,12 +523,10 @@ void checkUnnamed5290(core.Map<core.String, api.ColorDefinition> o) {
   checkColorDefinition(o['y']!);
 }
 
-core.Map<core.String, api.ColorDefinition> buildUnnamed5291() {
-  final o = <core.String, api.ColorDefinition>{};
-  o['x'] = buildColorDefinition();
-  o['y'] = buildColorDefinition();
-  return o;
-}
+core.Map<core.String, api.ColorDefinition> buildUnnamed5291() => {
+      'x': buildColorDefinition(),
+      'y': buildColorDefinition(),
+    };
 
 void checkUnnamed5291(core.Map<core.String, api.ColorDefinition> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -579,12 +565,10 @@ void checkColors(api.Colors o) {
   buildCounterColors--;
 }
 
-core.List<api.EntryPoint> buildUnnamed5292() {
-  final o = <api.EntryPoint>[];
-  o.add(buildEntryPoint());
-  o.add(buildEntryPoint());
-  return o;
-}
+core.List<api.EntryPoint> buildUnnamed5292() => [
+      buildEntryPoint(),
+      buildEntryPoint(),
+    ];
 
 void checkUnnamed5292(core.List<api.EntryPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -651,12 +635,10 @@ void checkConferenceParameters(api.ConferenceParameters o) {
   buildCounterConferenceParameters--;
 }
 
-core.Map<core.String, core.String> buildUnnamed5293() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed5293() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed5293(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -691,12 +673,10 @@ void checkConferenceParametersAddOnParameters(
   buildCounterConferenceParametersAddOnParameters--;
 }
 
-core.List<core.String> buildUnnamed5294() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5294() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5294(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -828,12 +808,10 @@ void checkCreateConferenceRequest(api.CreateConferenceRequest o) {
   buildCounterCreateConferenceRequest--;
 }
 
-core.List<core.String> buildUnnamed5295() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5295() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5295(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -938,12 +916,10 @@ void checkError(api.Error o) {
   buildCounterError--;
 }
 
-core.List<api.EventAttachment> buildUnnamed5296() {
-  final o = <api.EventAttachment>[];
-  o.add(buildEventAttachment());
-  o.add(buildEventAttachment());
-  return o;
-}
+core.List<api.EventAttachment> buildUnnamed5296() => [
+      buildEventAttachment(),
+      buildEventAttachment(),
+    ];
 
 void checkUnnamed5296(core.List<api.EventAttachment> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -951,12 +927,10 @@ void checkUnnamed5296(core.List<api.EventAttachment> o) {
   checkEventAttachment(o[1]);
 }
 
-core.List<api.EventAttendee> buildUnnamed5297() {
-  final o = <api.EventAttendee>[];
-  o.add(buildEventAttendee());
-  o.add(buildEventAttendee());
-  return o;
-}
+core.List<api.EventAttendee> buildUnnamed5297() => [
+      buildEventAttendee(),
+      buildEventAttendee(),
+    ];
 
 void checkUnnamed5297(core.List<api.EventAttendee> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -998,12 +972,10 @@ void checkEventCreator(api.EventCreator o) {
   buildCounterEventCreator--;
 }
 
-core.Map<core.String, core.String> buildUnnamed5298() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed5298() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed5298(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1017,12 +989,10 @@ void checkUnnamed5298(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed5299() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed5299() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed5299(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1057,12 +1027,10 @@ void checkEventExtendedProperties(api.EventExtendedProperties o) {
   buildCounterEventExtendedProperties--;
 }
 
-core.Map<core.String, core.String> buildUnnamed5300() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed5300() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed5300(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1164,12 +1132,10 @@ void checkEventOrganizer(api.EventOrganizer o) {
   buildCounterEventOrganizer--;
 }
 
-core.List<core.String> buildUnnamed5301() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5301() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5301(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1183,12 +1149,10 @@ void checkUnnamed5301(core.List<core.String> o) {
   );
 }
 
-core.List<api.EventReminder> buildUnnamed5302() {
-  final o = <api.EventReminder>[];
-  o.add(buildEventReminder());
-  o.add(buildEventReminder());
-  return o;
-}
+core.List<api.EventReminder> buildUnnamed5302() => [
+      buildEventReminder(),
+      buildEventReminder(),
+    ];
 
 void checkUnnamed5302(core.List<api.EventReminder> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1549,12 +1513,10 @@ void checkEventReminder(api.EventReminder o) {
   buildCounterEventReminder--;
 }
 
-core.List<api.EventReminder> buildUnnamed5303() {
-  final o = <api.EventReminder>[];
-  o.add(buildEventReminder());
-  o.add(buildEventReminder());
-  return o;
-}
+core.List<api.EventReminder> buildUnnamed5303() => [
+      buildEventReminder(),
+      buildEventReminder(),
+    ];
 
 void checkUnnamed5303(core.List<api.EventReminder> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1562,12 +1524,10 @@ void checkUnnamed5303(core.List<api.EventReminder> o) {
   checkEventReminder(o[1]);
 }
 
-core.List<api.Event> buildUnnamed5304() {
-  final o = <api.Event>[];
-  o.add(buildEvent());
-  o.add(buildEvent());
-  return o;
-}
+core.List<api.Event> buildUnnamed5304() => [
+      buildEvent(),
+      buildEvent(),
+    ];
 
 void checkUnnamed5304(core.List<api.Event> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1641,12 +1601,10 @@ void checkEvents(api.Events o) {
   buildCounterEvents--;
 }
 
-core.List<api.TimePeriod> buildUnnamed5305() {
-  final o = <api.TimePeriod>[];
-  o.add(buildTimePeriod());
-  o.add(buildTimePeriod());
-  return o;
-}
+core.List<api.TimePeriod> buildUnnamed5305() => [
+      buildTimePeriod(),
+      buildTimePeriod(),
+    ];
 
 void checkUnnamed5305(core.List<api.TimePeriod> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1654,12 +1612,10 @@ void checkUnnamed5305(core.List<api.TimePeriod> o) {
   checkTimePeriod(o[1]);
 }
 
-core.List<api.Error> buildUnnamed5306() {
-  final o = <api.Error>[];
-  o.add(buildError());
-  o.add(buildError());
-  return o;
-}
+core.List<api.Error> buildUnnamed5306() => [
+      buildError(),
+      buildError(),
+    ];
 
 void checkUnnamed5306(core.List<api.Error> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1688,12 +1644,10 @@ void checkFreeBusyCalendar(api.FreeBusyCalendar o) {
   buildCounterFreeBusyCalendar--;
 }
 
-core.List<core.String> buildUnnamed5307() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5307() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5307(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1707,12 +1661,10 @@ void checkUnnamed5307(core.List<core.String> o) {
   );
 }
 
-core.List<api.Error> buildUnnamed5308() {
-  final o = <api.Error>[];
-  o.add(buildError());
-  o.add(buildError());
-  return o;
-}
+core.List<api.Error> buildUnnamed5308() => [
+      buildError(),
+      buildError(),
+    ];
 
 void checkUnnamed5308(core.List<api.Error> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1741,12 +1693,10 @@ void checkFreeBusyGroup(api.FreeBusyGroup o) {
   buildCounterFreeBusyGroup--;
 }
 
-core.List<api.FreeBusyRequestItem> buildUnnamed5309() {
-  final o = <api.FreeBusyRequestItem>[];
-  o.add(buildFreeBusyRequestItem());
-  o.add(buildFreeBusyRequestItem());
-  return o;
-}
+core.List<api.FreeBusyRequestItem> buildUnnamed5309() => [
+      buildFreeBusyRequestItem(),
+      buildFreeBusyRequestItem(),
+    ];
 
 void checkUnnamed5309(core.List<api.FreeBusyRequestItem> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1820,12 +1770,10 @@ void checkFreeBusyRequestItem(api.FreeBusyRequestItem o) {
   buildCounterFreeBusyRequestItem--;
 }
 
-core.Map<core.String, api.FreeBusyCalendar> buildUnnamed5310() {
-  final o = <core.String, api.FreeBusyCalendar>{};
-  o['x'] = buildFreeBusyCalendar();
-  o['y'] = buildFreeBusyCalendar();
-  return o;
-}
+core.Map<core.String, api.FreeBusyCalendar> buildUnnamed5310() => {
+      'x': buildFreeBusyCalendar(),
+      'y': buildFreeBusyCalendar(),
+    };
 
 void checkUnnamed5310(core.Map<core.String, api.FreeBusyCalendar> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1833,12 +1781,10 @@ void checkUnnamed5310(core.Map<core.String, api.FreeBusyCalendar> o) {
   checkFreeBusyCalendar(o['y']!);
 }
 
-core.Map<core.String, api.FreeBusyGroup> buildUnnamed5311() {
-  final o = <core.String, api.FreeBusyGroup>{};
-  o['x'] = buildFreeBusyGroup();
-  o['y'] = buildFreeBusyGroup();
-  return o;
-}
+core.Map<core.String, api.FreeBusyGroup> buildUnnamed5311() => {
+      'x': buildFreeBusyGroup(),
+      'y': buildFreeBusyGroup(),
+    };
 
 void checkUnnamed5311(core.Map<core.String, api.FreeBusyGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1919,12 +1865,10 @@ void checkSetting(api.Setting o) {
   buildCounterSetting--;
 }
 
-core.List<api.Setting> buildUnnamed5312() {
-  final o = <api.Setting>[];
-  o.add(buildSetting());
-  o.add(buildSetting());
-  return o;
-}
+core.List<api.Setting> buildUnnamed5312() => [
+      buildSetting(),
+      buildSetting(),
+    ];
 
 void checkUnnamed5312(core.List<api.Setting> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1998,12 +1942,10 @@ void checkTimePeriod(api.TimePeriod o) {
   buildCounterTimePeriod--;
 }
 
-core.List<core.String> buildUnnamed5313() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5313() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5313(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2017,12 +1959,10 @@ void checkUnnamed5313(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5314() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5314() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5314(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2036,12 +1976,10 @@ void checkUnnamed5314(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5315() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5315() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5315(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2055,12 +1993,10 @@ void checkUnnamed5315(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5316() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5316() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5316(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));

@@ -62,15 +62,12 @@ void checkGoogleCloudPolicytroubleshooterV1AccessTuple(
 
 core.Map<core.String,
         api.GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership>
-    buildUnnamed768() {
-  final o = <core.String,
-      api.GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership>{};
-  o['x'] =
-      buildGoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership();
-  o['y'] =
-      buildGoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership();
-  return o;
-}
+    buildUnnamed768() => {
+          'x':
+              buildGoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership(),
+          'y':
+              buildGoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership(),
+        };
 
 void checkUnnamed768(
     core.Map<core.String,
@@ -167,12 +164,10 @@ void checkGoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership
 }
 
 core.List<api.GoogleCloudPolicytroubleshooterV1BindingExplanation>
-    buildUnnamed769() {
-  final o = <api.GoogleCloudPolicytroubleshooterV1BindingExplanation>[];
-  o.add(buildGoogleCloudPolicytroubleshooterV1BindingExplanation());
-  o.add(buildGoogleCloudPolicytroubleshooterV1BindingExplanation());
-  return o;
-}
+    buildUnnamed769() => [
+          buildGoogleCloudPolicytroubleshooterV1BindingExplanation(),
+          buildGoogleCloudPolicytroubleshooterV1BindingExplanation(),
+        ];
 
 void checkUnnamed769(
     core.List<api.GoogleCloudPolicytroubleshooterV1BindingExplanation> o) {
@@ -245,12 +240,10 @@ void checkGoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest(
 }
 
 core.List<api.GoogleCloudPolicytroubleshooterV1ExplainedPolicy>
-    buildUnnamed770() {
-  final o = <api.GoogleCloudPolicytroubleshooterV1ExplainedPolicy>[];
-  o.add(buildGoogleCloudPolicytroubleshooterV1ExplainedPolicy());
-  o.add(buildGoogleCloudPolicytroubleshooterV1ExplainedPolicy());
-  return o;
-}
+    buildUnnamed770() => [
+          buildGoogleCloudPolicytroubleshooterV1ExplainedPolicy(),
+          buildGoogleCloudPolicytroubleshooterV1ExplainedPolicy(),
+        ];
 
 void checkUnnamed770(
     core.List<api.GoogleCloudPolicytroubleshooterV1ExplainedPolicy> o) {
@@ -290,12 +283,10 @@ void checkGoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse(
   buildCounterGoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse--;
 }
 
-core.List<api.GoogleIamV1AuditLogConfig> buildUnnamed771() {
-  final o = <api.GoogleIamV1AuditLogConfig>[];
-  o.add(buildGoogleIamV1AuditLogConfig());
-  o.add(buildGoogleIamV1AuditLogConfig());
-  return o;
-}
+core.List<api.GoogleIamV1AuditLogConfig> buildUnnamed771() => [
+      buildGoogleIamV1AuditLogConfig(),
+      buildGoogleIamV1AuditLogConfig(),
+    ];
 
 void checkUnnamed771(core.List<api.GoogleIamV1AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -327,12 +318,10 @@ void checkGoogleIamV1AuditConfig(api.GoogleIamV1AuditConfig o) {
   buildCounterGoogleIamV1AuditConfig--;
 }
 
-core.List<core.String> buildUnnamed772() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed772() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed772(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -370,12 +359,10 @@ void checkGoogleIamV1AuditLogConfig(api.GoogleIamV1AuditLogConfig o) {
   buildCounterGoogleIamV1AuditLogConfig--;
 }
 
-core.List<core.String> buildUnnamed773() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed773() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed773(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -415,12 +402,10 @@ void checkGoogleIamV1Binding(api.GoogleIamV1Binding o) {
   buildCounterGoogleIamV1Binding--;
 }
 
-core.List<api.GoogleIamV1AuditConfig> buildUnnamed774() {
-  final o = <api.GoogleIamV1AuditConfig>[];
-  o.add(buildGoogleIamV1AuditConfig());
-  o.add(buildGoogleIamV1AuditConfig());
-  return o;
-}
+core.List<api.GoogleIamV1AuditConfig> buildUnnamed774() => [
+      buildGoogleIamV1AuditConfig(),
+      buildGoogleIamV1AuditConfig(),
+    ];
 
 void checkUnnamed774(core.List<api.GoogleIamV1AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -428,12 +413,10 @@ void checkUnnamed774(core.List<api.GoogleIamV1AuditConfig> o) {
   checkGoogleIamV1AuditConfig(o[1]);
 }
 
-core.List<api.GoogleIamV1Binding> buildUnnamed775() {
-  final o = <api.GoogleIamV1Binding>[];
-  o.add(buildGoogleIamV1Binding());
-  o.add(buildGoogleIamV1Binding());
-  return o;
-}
+core.List<api.GoogleIamV1Binding> buildUnnamed775() => [
+      buildGoogleIamV1Binding(),
+      buildGoogleIamV1Binding(),
+    ];
 
 void checkUnnamed775(core.List<api.GoogleIamV1Binding> o) {
   unittest.expect(o, unittest.hasLength(2));

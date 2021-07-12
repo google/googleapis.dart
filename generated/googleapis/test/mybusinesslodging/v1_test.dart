@@ -615,12 +615,10 @@ void checkGuestUnitFeatures(api.GuestUnitFeatures o) {
   buildCounterGuestUnitFeatures--;
 }
 
-core.List<core.String> buildUnnamed5264() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5264() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5264(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1400,12 +1398,10 @@ void checkLivingAreaSleeping(api.LivingAreaSleeping o) {
   buildCounterLivingAreaSleeping--;
 }
 
-core.List<api.GuestUnitType> buildUnnamed5265() {
-  final o = <api.GuestUnitType>[];
-  o.add(buildGuestUnitType());
-  o.add(buildGuestUnitType());
-  return o;
-}
+core.List<api.GuestUnitType> buildUnnamed5265() => [
+      buildGuestUnitType(),
+      buildGuestUnitType(),
+    ];
 
 void checkUnnamed5265(core.List<api.GuestUnitType> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2087,12 +2083,10 @@ void checkProperty(api.Property o) {
   buildCounterProperty--;
 }
 
-core.List<api.LanguageSpoken> buildUnnamed5266() {
-  final o = <api.LanguageSpoken>[];
-  o.add(buildLanguageSpoken());
-  o.add(buildLanguageSpoken());
-  return o;
-}
+core.List<api.LanguageSpoken> buildUnnamed5266() => [
+      buildLanguageSpoken(),
+      buildLanguageSpoken(),
+    ];
 
 void checkUnnamed5266(core.List<api.LanguageSpoken> o) {
   unittest.expect(o, unittest.hasLength(2));

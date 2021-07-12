@@ -85,12 +85,10 @@ void checkGoogleFirebaseAppcheckV1betaAttestationTokenResponse(
 }
 
 core.List<api.GoogleFirebaseAppcheckV1betaDeviceCheckConfig>
-    buildUnnamed8784() {
-  final o = <api.GoogleFirebaseAppcheckV1betaDeviceCheckConfig>[];
-  o.add(buildGoogleFirebaseAppcheckV1betaDeviceCheckConfig());
-  o.add(buildGoogleFirebaseAppcheckV1betaDeviceCheckConfig());
-  return o;
-}
+    buildUnnamed8784() => [
+          buildGoogleFirebaseAppcheckV1betaDeviceCheckConfig(),
+          buildGoogleFirebaseAppcheckV1betaDeviceCheckConfig(),
+        ];
 
 void checkUnnamed8784(
     core.List<api.GoogleFirebaseAppcheckV1betaDeviceCheckConfig> o) {
@@ -125,12 +123,11 @@ void checkGoogleFirebaseAppcheckV1betaBatchGetDeviceCheckConfigsResponse(
   buildCounterGoogleFirebaseAppcheckV1betaBatchGetDeviceCheckConfigsResponse--;
 }
 
-core.List<api.GoogleFirebaseAppcheckV1betaRecaptchaConfig> buildUnnamed8785() {
-  final o = <api.GoogleFirebaseAppcheckV1betaRecaptchaConfig>[];
-  o.add(buildGoogleFirebaseAppcheckV1betaRecaptchaConfig());
-  o.add(buildGoogleFirebaseAppcheckV1betaRecaptchaConfig());
-  return o;
-}
+core.List<api.GoogleFirebaseAppcheckV1betaRecaptchaConfig> buildUnnamed8785() =>
+    [
+      buildGoogleFirebaseAppcheckV1betaRecaptchaConfig(),
+      buildGoogleFirebaseAppcheckV1betaRecaptchaConfig(),
+    ];
 
 void checkUnnamed8785(
     core.List<api.GoogleFirebaseAppcheckV1betaRecaptchaConfig> o) {
@@ -165,12 +162,10 @@ void checkGoogleFirebaseAppcheckV1betaBatchGetRecaptchaConfigsResponse(
 }
 
 core.List<api.GoogleFirebaseAppcheckV1betaUpdateServiceRequest>
-    buildUnnamed8786() {
-  final o = <api.GoogleFirebaseAppcheckV1betaUpdateServiceRequest>[];
-  o.add(buildGoogleFirebaseAppcheckV1betaUpdateServiceRequest());
-  o.add(buildGoogleFirebaseAppcheckV1betaUpdateServiceRequest());
-  return o;
-}
+    buildUnnamed8786() => [
+          buildGoogleFirebaseAppcheckV1betaUpdateServiceRequest(),
+          buildGoogleFirebaseAppcheckV1betaUpdateServiceRequest(),
+        ];
 
 void checkUnnamed8786(
     core.List<api.GoogleFirebaseAppcheckV1betaUpdateServiceRequest> o) {
@@ -205,12 +200,10 @@ void checkGoogleFirebaseAppcheckV1betaBatchUpdateServicesRequest(
   buildCounterGoogleFirebaseAppcheckV1betaBatchUpdateServicesRequest--;
 }
 
-core.List<api.GoogleFirebaseAppcheckV1betaService> buildUnnamed8787() {
-  final o = <api.GoogleFirebaseAppcheckV1betaService>[];
-  o.add(buildGoogleFirebaseAppcheckV1betaService());
-  o.add(buildGoogleFirebaseAppcheckV1betaService());
-  return o;
-}
+core.List<api.GoogleFirebaseAppcheckV1betaService> buildUnnamed8787() => [
+      buildGoogleFirebaseAppcheckV1betaService(),
+      buildGoogleFirebaseAppcheckV1betaService(),
+    ];
 
 void checkUnnamed8787(core.List<api.GoogleFirebaseAppcheckV1betaService> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -570,12 +563,10 @@ void checkGoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest(
   buildCounterGoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest--;
 }
 
-core.List<api.GoogleFirebaseAppcheckV1betaDebugToken> buildUnnamed8788() {
-  final o = <api.GoogleFirebaseAppcheckV1betaDebugToken>[];
-  o.add(buildGoogleFirebaseAppcheckV1betaDebugToken());
-  o.add(buildGoogleFirebaseAppcheckV1betaDebugToken());
-  return o;
-}
+core.List<api.GoogleFirebaseAppcheckV1betaDebugToken> buildUnnamed8788() => [
+      buildGoogleFirebaseAppcheckV1betaDebugToken(),
+      buildGoogleFirebaseAppcheckV1betaDebugToken(),
+    ];
 
 void checkUnnamed8788(core.List<api.GoogleFirebaseAppcheckV1betaDebugToken> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -609,12 +600,10 @@ void checkGoogleFirebaseAppcheckV1betaListDebugTokensResponse(
   buildCounterGoogleFirebaseAppcheckV1betaListDebugTokensResponse--;
 }
 
-core.List<api.GoogleFirebaseAppcheckV1betaService> buildUnnamed8789() {
-  final o = <api.GoogleFirebaseAppcheckV1betaService>[];
-  o.add(buildGoogleFirebaseAppcheckV1betaService());
-  o.add(buildGoogleFirebaseAppcheckV1betaService());
-  return o;
-}
+core.List<api.GoogleFirebaseAppcheckV1betaService> buildUnnamed8789() => [
+      buildGoogleFirebaseAppcheckV1betaService(),
+      buildGoogleFirebaseAppcheckV1betaService(),
+    ];
 
 void checkUnnamed8789(core.List<api.GoogleFirebaseAppcheckV1betaService> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -697,12 +686,10 @@ void checkGoogleFirebaseAppcheckV1betaPublicJwk(
   buildCounterGoogleFirebaseAppcheckV1betaPublicJwk--;
 }
 
-core.List<api.GoogleFirebaseAppcheckV1betaPublicJwk> buildUnnamed8790() {
-  final o = <api.GoogleFirebaseAppcheckV1betaPublicJwk>[];
-  o.add(buildGoogleFirebaseAppcheckV1betaPublicJwk());
-  o.add(buildGoogleFirebaseAppcheckV1betaPublicJwk());
-  return o;
-}
+core.List<api.GoogleFirebaseAppcheckV1betaPublicJwk> buildUnnamed8790() => [
+      buildGoogleFirebaseAppcheckV1betaPublicJwk(),
+      buildGoogleFirebaseAppcheckV1betaPublicJwk(),
+    ];
 
 void checkUnnamed8790(core.List<api.GoogleFirebaseAppcheckV1betaPublicJwk> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -832,12 +819,10 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.List<core.String> buildUnnamed8791() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8791() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8791(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -851,12 +836,10 @@ void checkUnnamed8791(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed8792() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8792() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8792(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));

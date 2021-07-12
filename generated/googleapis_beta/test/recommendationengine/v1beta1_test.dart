@@ -26,20 +26,18 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.Map<core.String, core.Object> buildUnnamed8853() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed8853() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed8853(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -73,12 +71,10 @@ void checkUnnamed8853(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed8854() {
-  final o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed8853());
-  o.add(buildUnnamed8853());
-  return o;
-}
+core.List<core.Map<core.String, core.Object>> buildUnnamed8854() => [
+      buildUnnamed8853(),
+      buildUnnamed8853(),
+    ];
 
 void checkUnnamed8854(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -286,12 +282,10 @@ void checkGoogleCloudRecommendationengineV1beta1Catalog(
 }
 
 core.List<api.GoogleCloudRecommendationengineV1beta1CatalogItem>
-    buildUnnamed8855() {
-  final o = <api.GoogleCloudRecommendationengineV1beta1CatalogItem>[];
-  o.add(buildGoogleCloudRecommendationengineV1beta1CatalogItem());
-  o.add(buildGoogleCloudRecommendationengineV1beta1CatalogItem());
-  return o;
-}
+    buildUnnamed8855() => [
+          buildGoogleCloudRecommendationengineV1beta1CatalogItem(),
+          buildGoogleCloudRecommendationengineV1beta1CatalogItem(),
+        ];
 
 void checkUnnamed8855(
     core.List<api.GoogleCloudRecommendationengineV1beta1CatalogItem> o) {
@@ -326,15 +320,10 @@ void checkGoogleCloudRecommendationengineV1beta1CatalogInlineSource(
 
 core.List<
         api.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>
-    buildUnnamed8856() {
-  final o = <
-      api.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>[];
-  o.add(
-      buildGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy());
-  o.add(
-      buildGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy());
-  return o;
-}
+    buildUnnamed8856() => [
+          buildGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy(),
+          buildGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy(),
+        ];
 
 void checkUnnamed8856(
     core.List<
@@ -345,12 +334,10 @@ void checkUnnamed8856(
   checkGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy(o[1]);
 }
 
-core.List<core.String> buildUnnamed8857() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8857() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8857(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -418,12 +405,10 @@ void checkGoogleCloudRecommendationengineV1beta1CatalogItem(
   buildCounterGoogleCloudRecommendationengineV1beta1CatalogItem--;
 }
 
-core.List<core.String> buildUnnamed8858() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8858() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8858(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -525,12 +510,10 @@ void checkGoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrati
   buildCounterGoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest--;
 }
 
-core.List<core.String> buildUnnamed8859() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8859() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8859(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -589,13 +572,12 @@ void checkGoogleCloudRecommendationengineV1beta1EventDetail(
 
 core.Map<core.String,
         api.GoogleCloudRecommendationengineV1beta1FeatureMapStringList>
-    buildUnnamed8860() {
-  final o = <core.String,
-      api.GoogleCloudRecommendationengineV1beta1FeatureMapStringList>{};
-  o['x'] = buildGoogleCloudRecommendationengineV1beta1FeatureMapStringList();
-  o['y'] = buildGoogleCloudRecommendationengineV1beta1FeatureMapStringList();
-  return o;
-}
+    buildUnnamed8860() => {
+          'x':
+              buildGoogleCloudRecommendationengineV1beta1FeatureMapStringList(),
+          'y':
+              buildGoogleCloudRecommendationengineV1beta1FeatureMapStringList(),
+        };
 
 void checkUnnamed8860(
     core.Map<core.String,
@@ -608,13 +590,10 @@ void checkUnnamed8860(
 
 core.Map<core.String,
         api.GoogleCloudRecommendationengineV1beta1FeatureMapFloatList>
-    buildUnnamed8861() {
-  final o = <core.String,
-      api.GoogleCloudRecommendationengineV1beta1FeatureMapFloatList>{};
-  o['x'] = buildGoogleCloudRecommendationengineV1beta1FeatureMapFloatList();
-  o['y'] = buildGoogleCloudRecommendationengineV1beta1FeatureMapFloatList();
-  return o;
-}
+    buildUnnamed8861() => {
+          'x': buildGoogleCloudRecommendationengineV1beta1FeatureMapFloatList(),
+          'y': buildGoogleCloudRecommendationengineV1beta1FeatureMapFloatList(),
+        };
 
 void checkUnnamed8861(
     core.Map<core.String,
@@ -648,12 +627,10 @@ void checkGoogleCloudRecommendationengineV1beta1FeatureMap(
   buildCounterGoogleCloudRecommendationengineV1beta1FeatureMap--;
 }
 
-core.List<core.double> buildUnnamed8862() {
-  final o = <core.double>[];
-  o.add(42.0);
-  o.add(42.0);
-  return o;
-}
+core.List<core.double> buildUnnamed8862() => [
+      42.0,
+      42.0,
+    ];
 
 void checkUnnamed8862(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -691,12 +668,10 @@ void checkGoogleCloudRecommendationengineV1beta1FeatureMapFloatList(
   buildCounterGoogleCloudRecommendationengineV1beta1FeatureMapFloatList--;
 }
 
-core.List<core.String> buildUnnamed8863() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8863() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8863(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -734,12 +709,10 @@ void checkGoogleCloudRecommendationengineV1beta1FeatureMapStringList(
   buildCounterGoogleCloudRecommendationengineV1beta1FeatureMapStringList--;
 }
 
-core.List<core.String> buildUnnamed8864() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8864() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8864(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -853,12 +826,10 @@ void checkGoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest(
   buildCounterGoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed8865() {
-  final o = <api.GoogleRpcStatus>[];
-  o.add(buildGoogleRpcStatus());
-  o.add(buildGoogleRpcStatus());
-  return o;
-}
+core.List<api.GoogleRpcStatus> buildUnnamed8865() => [
+      buildGoogleRpcStatus(),
+      buildGoogleRpcStatus(),
+    ];
 
 void checkUnnamed8865(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1006,12 +977,10 @@ void checkGoogleCloudRecommendationengineV1beta1ImportUserEventsRequest(
   buildCounterGoogleCloudRecommendationengineV1beta1ImportUserEventsRequest--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed8866() {
-  final o = <api.GoogleRpcStatus>[];
-  o.add(buildGoogleRpcStatus());
-  o.add(buildGoogleRpcStatus());
-  return o;
-}
+core.List<api.GoogleRpcStatus> buildUnnamed8866() => [
+      buildGoogleRpcStatus(),
+      buildGoogleRpcStatus(),
+    ];
 
 void checkUnnamed8866(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1087,12 +1056,10 @@ void checkGoogleCloudRecommendationengineV1beta1InputConfig(
 }
 
 core.List<api.GoogleCloudRecommendationengineV1beta1CatalogItem>
-    buildUnnamed8867() {
-  final o = <api.GoogleCloudRecommendationengineV1beta1CatalogItem>[];
-  o.add(buildGoogleCloudRecommendationengineV1beta1CatalogItem());
-  o.add(buildGoogleCloudRecommendationengineV1beta1CatalogItem());
-  return o;
-}
+    buildUnnamed8867() => [
+          buildGoogleCloudRecommendationengineV1beta1CatalogItem(),
+          buildGoogleCloudRecommendationengineV1beta1CatalogItem(),
+        ];
 
 void checkUnnamed8867(
     core.List<api.GoogleCloudRecommendationengineV1beta1CatalogItem> o) {
@@ -1133,12 +1100,10 @@ void checkGoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse(
 }
 
 core.List<api.GoogleCloudRecommendationengineV1beta1Catalog>
-    buildUnnamed8868() {
-  final o = <api.GoogleCloudRecommendationengineV1beta1Catalog>[];
-  o.add(buildGoogleCloudRecommendationengineV1beta1Catalog());
-  o.add(buildGoogleCloudRecommendationengineV1beta1Catalog());
-  return o;
-}
+    buildUnnamed8868() => [
+          buildGoogleCloudRecommendationengineV1beta1Catalog(),
+          buildGoogleCloudRecommendationengineV1beta1Catalog(),
+        ];
 
 void checkUnnamed8868(
     core.List<api.GoogleCloudRecommendationengineV1beta1Catalog> o) {
@@ -1178,15 +1143,10 @@ void checkGoogleCloudRecommendationengineV1beta1ListCatalogsResponse(
 
 core.List<
         api.GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration>
-    buildUnnamed8869() {
-  final o = <
-      api.GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration>[];
-  o.add(
-      buildGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration());
-  o.add(
-      buildGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration());
-  return o;
-}
+    buildUnnamed8869() => [
+          buildGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration(),
+          buildGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration(),
+        ];
 
 void checkUnnamed8869(
     core.List<
@@ -1230,12 +1190,10 @@ void checkGoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistration
 }
 
 core.List<api.GoogleCloudRecommendationengineV1beta1UserEvent>
-    buildUnnamed8870() {
-  final o = <api.GoogleCloudRecommendationengineV1beta1UserEvent>[];
-  o.add(buildGoogleCloudRecommendationengineV1beta1UserEvent());
-  o.add(buildGoogleCloudRecommendationengineV1beta1UserEvent());
-  return o;
-}
+    buildUnnamed8870() => [
+          buildGoogleCloudRecommendationengineV1beta1UserEvent(),
+          buildGoogleCloudRecommendationengineV1beta1UserEvent(),
+        ];
 
 void checkUnnamed8870(
     core.List<api.GoogleCloudRecommendationengineV1beta1UserEvent> o) {
@@ -1274,12 +1232,10 @@ void checkGoogleCloudRecommendationengineV1beta1ListUserEventsResponse(
   buildCounterGoogleCloudRecommendationengineV1beta1ListUserEventsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed8871() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed8871() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed8871(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1293,20 +1249,18 @@ void checkUnnamed8871(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed8872() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed8872() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed8872(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1382,12 +1336,10 @@ void checkGoogleCloudRecommendationengineV1beta1PredictRequest(
   buildCounterGoogleCloudRecommendationengineV1beta1PredictRequest--;
 }
 
-core.List<core.String> buildUnnamed8873() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8873() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8873(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1401,20 +1353,18 @@ void checkUnnamed8873(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed8874() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed8874() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed8874(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1450,15 +1400,10 @@ void checkUnnamed8874(core.Map<core.String, core.Object> o) {
 
 core.List<
         api.GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult>
-    buildUnnamed8875() {
-  final o = <
-      api.GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult>[];
-  o.add(
-      buildGoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult());
-  o.add(
-      buildGoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult());
-  return o;
-}
+    buildUnnamed8875() => [
+          buildGoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult(),
+          buildGoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult(),
+        ];
 
 void checkUnnamed8875(
     core.List<
@@ -1508,20 +1453,18 @@ void checkGoogleCloudRecommendationengineV1beta1PredictResponse(
   buildCounterGoogleCloudRecommendationengineV1beta1PredictResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed8876() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed8876() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed8876(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1616,12 +1559,10 @@ void checkGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration(
   buildCounterGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration--;
 }
 
-core.Map<core.String, core.double> buildUnnamed8877() {
-  final o = <core.String, core.double>{};
-  o['x'] = 42.0;
-  o['y'] = 42.0;
-  return o;
-}
+core.Map<core.String, core.double> buildUnnamed8877() => {
+      'x': 42.0,
+      'y': 42.0,
+    };
 
 void checkUnnamed8877(core.Map<core.String, core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1635,12 +1576,11 @@ void checkUnnamed8877(core.Map<core.String, core.double> o) {
   );
 }
 
-core.List<api.GoogleCloudRecommendationengineV1beta1Image> buildUnnamed8878() {
-  final o = <api.GoogleCloudRecommendationengineV1beta1Image>[];
-  o.add(buildGoogleCloudRecommendationengineV1beta1Image());
-  o.add(buildGoogleCloudRecommendationengineV1beta1Image());
-  return o;
-}
+core.List<api.GoogleCloudRecommendationengineV1beta1Image> buildUnnamed8878() =>
+    [
+      buildGoogleCloudRecommendationengineV1beta1Image(),
+      buildGoogleCloudRecommendationengineV1beta1Image(),
+    ];
 
 void checkUnnamed8878(
     core.List<api.GoogleCloudRecommendationengineV1beta1Image> o) {
@@ -1829,15 +1769,10 @@ void checkGoogleCloudRecommendationengineV1beta1ProductDetail(
 
 core.List<
         api.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>
-    buildUnnamed8879() {
-  final o = <
-      api.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>[];
-  o.add(
-      buildGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy());
-  o.add(
-      buildGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy());
-  return o;
-}
+    buildUnnamed8879() => [
+          buildGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy(),
+          buildGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy(),
+        ];
 
 void checkUnnamed8879(
     core.List<
@@ -1849,12 +1784,10 @@ void checkUnnamed8879(
 }
 
 core.List<api.GoogleCloudRecommendationengineV1beta1ProductDetail>
-    buildUnnamed8880() {
-  final o = <api.GoogleCloudRecommendationengineV1beta1ProductDetail>[];
-  o.add(buildGoogleCloudRecommendationengineV1beta1ProductDetail());
-  o.add(buildGoogleCloudRecommendationengineV1beta1ProductDetail());
-  return o;
-}
+    buildUnnamed8880() => [
+          buildGoogleCloudRecommendationengineV1beta1ProductDetail(),
+          buildGoogleCloudRecommendationengineV1beta1ProductDetail(),
+        ];
 
 void checkUnnamed8880(
     core.List<api.GoogleCloudRecommendationengineV1beta1ProductDetail> o) {
@@ -1908,12 +1841,10 @@ void checkGoogleCloudRecommendationengineV1beta1ProductEventDetail(
   buildCounterGoogleCloudRecommendationengineV1beta1ProductEventDetail--;
 }
 
-core.Map<core.String, core.double> buildUnnamed8881() {
-  final o = <core.String, core.double>{};
-  o['x'] = 42.0;
-  o['y'] = 42.0;
-  return o;
-}
+core.Map<core.String, core.double> buildUnnamed8881() => {
+      'x': 42.0,
+      'y': 42.0,
+    };
 
 void checkUnnamed8881(core.Map<core.String, core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1927,12 +1858,10 @@ void checkUnnamed8881(core.Map<core.String, core.double> o) {
   );
 }
 
-core.Map<core.String, core.double> buildUnnamed8882() {
-  final o = <core.String, core.double>{};
-  o['x'] = 42.0;
-  o['y'] = 42.0;
-  return o;
-}
+core.Map<core.String, core.double> buildUnnamed8882() => {
+      'x': 42.0,
+      'y': 42.0,
+    };
 
 void checkUnnamed8882(core.Map<core.String, core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2051,12 +1980,10 @@ void checkGoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest(
 }
 
 core.List<api.GoogleCloudRecommendationengineV1beta1UserEvent>
-    buildUnnamed8883() {
-  final o = <api.GoogleCloudRecommendationengineV1beta1UserEvent>[];
-  o.add(buildGoogleCloudRecommendationengineV1beta1UserEvent());
-  o.add(buildGoogleCloudRecommendationengineV1beta1UserEvent());
-  return o;
-}
+    buildUnnamed8883() => [
+          buildGoogleCloudRecommendationengineV1beta1UserEvent(),
+          buildGoogleCloudRecommendationengineV1beta1UserEvent(),
+        ];
 
 void checkUnnamed8883(
     core.List<api.GoogleCloudRecommendationengineV1beta1UserEvent> o) {
@@ -2250,12 +2177,10 @@ void checkGoogleCloudRecommendationengineV1beta1UserEventImportSummary(
 }
 
 core.List<api.GoogleCloudRecommendationengineV1beta1UserEvent>
-    buildUnnamed8884() {
-  final o = <api.GoogleCloudRecommendationengineV1beta1UserEvent>[];
-  o.add(buildGoogleCloudRecommendationengineV1beta1UserEvent());
-  o.add(buildGoogleCloudRecommendationengineV1beta1UserEvent());
-  return o;
-}
+    buildUnnamed8884() => [
+          buildGoogleCloudRecommendationengineV1beta1UserEvent(),
+          buildGoogleCloudRecommendationengineV1beta1UserEvent(),
+        ];
 
 void checkUnnamed8884(
     core.List<api.GoogleCloudRecommendationengineV1beta1UserEvent> o) {
@@ -2329,12 +2254,10 @@ void checkGoogleCloudRecommendationengineV1beta1UserInfo(
   buildCounterGoogleCloudRecommendationengineV1beta1UserInfo--;
 }
 
-core.List<api.GoogleLongrunningOperation> buildUnnamed8885() {
-  final o = <api.GoogleLongrunningOperation>[];
-  o.add(buildGoogleLongrunningOperation());
-  o.add(buildGoogleLongrunningOperation());
-  return o;
-}
+core.List<api.GoogleLongrunningOperation> buildUnnamed8885() => [
+      buildGoogleLongrunningOperation(),
+      buildGoogleLongrunningOperation(),
+    ];
 
 void checkUnnamed8885(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2368,20 +2291,18 @@ void checkGoogleLongrunningListOperationsResponse(
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed8886() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed8886() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed8886(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2415,20 +2336,18 @@ void checkUnnamed8886(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed8887() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed8887() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed8887(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2507,20 +2426,18 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed8888() {
-  final o = <core.String, core.Object>{};
-  o['x'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['y'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
+core.Map<core.String, core.Object> buildUnnamed8888() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
 
 void checkUnnamed8888(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2554,12 +2471,10 @@ void checkUnnamed8888(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed8889() {
-  final o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed8888());
-  o.add(buildUnnamed8888());
-  return o;
-}
+core.List<core.Map<core.String, core.Object>> buildUnnamed8889() => [
+      buildUnnamed8888(),
+      buildUnnamed8888(),
+    ];
 
 void checkUnnamed8889(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));

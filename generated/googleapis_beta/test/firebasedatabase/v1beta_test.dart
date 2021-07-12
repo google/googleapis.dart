@@ -83,12 +83,10 @@ void checkDisableDatabaseInstanceRequest(api.DisableDatabaseInstanceRequest o) {
   buildCounterDisableDatabaseInstanceRequest--;
 }
 
-core.List<api.DatabaseInstance> buildUnnamed8793() {
-  final o = <api.DatabaseInstance>[];
-  o.add(buildDatabaseInstance());
-  o.add(buildDatabaseInstance());
-  return o;
-}
+core.List<api.DatabaseInstance> buildUnnamed8793() => [
+      buildDatabaseInstance(),
+      buildDatabaseInstance(),
+    ];
 
 void checkUnnamed8793(core.List<api.DatabaseInstance> o) {
   unittest.expect(o, unittest.hasLength(2));

@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.Format> buildUnnamed5715() {
-  final o = <api.Format>[];
-  o.add(buildFormat());
-  o.add(buildFormat());
-  return o;
-}
+core.List<api.Format> buildUnnamed5715() => [
+      buildFormat(),
+      buildFormat(),
+    ];
 
 void checkUnnamed5715(core.List<api.Format> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -174,12 +172,10 @@ void checkFile(api.File o) {
   buildCounterFile--;
 }
 
-core.List<api.File> buildUnnamed5716() {
-  final o = <api.File>[];
-  o.add(buildFile());
-  o.add(buildFile());
-  return o;
-}
+core.List<api.File> buildUnnamed5716() => [
+      buildFile(),
+      buildFile(),
+    ];
 
 void checkUnnamed5716(core.List<api.File> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -269,12 +265,10 @@ void checkImageError(api.ImageError o) {
   buildCounterImageError--;
 }
 
-core.List<api.Asset> buildUnnamed5717() {
-  final o = <api.Asset>[];
-  o.add(buildAsset());
-  o.add(buildAsset());
-  return o;
-}
+core.List<api.Asset> buildUnnamed5717() => [
+      buildAsset(),
+      buildAsset(),
+    ];
 
 void checkUnnamed5717(core.List<api.Asset> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -311,12 +305,10 @@ void checkListAssetsResponse(api.ListAssetsResponse o) {
   buildCounterListAssetsResponse--;
 }
 
-core.List<api.Asset> buildUnnamed5718() {
-  final o = <api.Asset>[];
-  o.add(buildAsset());
-  o.add(buildAsset());
-  return o;
-}
+core.List<api.Asset> buildUnnamed5718() => [
+      buildAsset(),
+      buildAsset(),
+    ];
 
 void checkUnnamed5718(core.List<api.Asset> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -353,12 +345,10 @@ void checkListLikedAssetsResponse(api.ListLikedAssetsResponse o) {
   buildCounterListLikedAssetsResponse--;
 }
 
-core.List<api.UserAsset> buildUnnamed5719() {
-  final o = <api.UserAsset>[];
-  o.add(buildUserAsset());
-  o.add(buildUserAsset());
-  return o;
-}
+core.List<api.UserAsset> buildUnnamed5719() => [
+      buildUserAsset(),
+      buildUserAsset(),
+    ];
 
 void checkUnnamed5719(core.List<api.UserAsset> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -508,12 +498,10 @@ void checkQuaternion(api.Quaternion o) {
   buildCounterQuaternion--;
 }
 
-core.List<core.String> buildUnnamed5720() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5720() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5720(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -546,12 +534,10 @@ void checkRemixInfo(api.RemixInfo o) {
   buildCounterRemixInfo--;
 }
 
-core.List<api.AssetImportMessage> buildUnnamed5721() {
-  final o = <api.AssetImportMessage>[];
-  o.add(buildAssetImportMessage());
-  o.add(buildAssetImportMessage());
-  return o;
-}
+core.List<api.AssetImportMessage> buildUnnamed5721() => [
+      buildAssetImportMessage(),
+      buildAssetImportMessage(),
+    ];
 
 void checkUnnamed5721(core.List<api.AssetImportMessage> o) {
   unittest.expect(o, unittest.hasLength(2));

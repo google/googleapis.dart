@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.Rule> buildUnnamed6377() {
-  final o = <api.Rule>[];
-  o.add(buildRule());
-  o.add(buildRule());
-  return o;
-}
+core.List<api.Rule> buildUnnamed6377() => [
+      buildRule(),
+      buildRule(),
+    ];
 
 void checkUnnamed6377(core.List<api.Rule> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -68,12 +66,10 @@ void checkChannelGrouping(api.ChannelGrouping o) {
   buildCounterChannelGrouping--;
 }
 
-core.List<api.EventFilter> buildUnnamed6378() {
-  final o = <api.EventFilter>[];
-  o.add(buildEventFilter());
-  o.add(buildEventFilter());
-  return o;
-}
+core.List<api.EventFilter> buildUnnamed6378() => [
+      buildEventFilter(),
+      buildEventFilter(),
+    ];
 
 void checkUnnamed6378(core.List<api.EventFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -146,12 +142,10 @@ void checkFilterPair(api.FilterPair o) {
   buildCounterFilterPair--;
 }
 
-core.List<api.Query> buildUnnamed6379() {
-  final o = <api.Query>[];
-  o.add(buildQuery());
-  o.add(buildQuery());
-  return o;
-}
+core.List<api.Query> buildUnnamed6379() => [
+      buildQuery(),
+      buildQuery(),
+    ];
 
 void checkUnnamed6379(core.List<api.Query> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -188,12 +182,10 @@ void checkListQueriesResponse(api.ListQueriesResponse o) {
   buildCounterListQueriesResponse--;
 }
 
-core.List<api.Report> buildUnnamed6380() {
-  final o = <api.Report>[];
-  o.add(buildReport());
-  o.add(buildReport());
-  return o;
-}
+core.List<api.Report> buildUnnamed6380() => [
+      buildReport(),
+      buildReport(),
+    ];
 
 void checkUnnamed6380(core.List<api.Report> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -251,12 +243,10 @@ void checkOptions(api.Options o) {
   buildCounterOptions--;
 }
 
-core.List<api.FilterPair> buildUnnamed6381() {
-  final o = <api.FilterPair>[];
-  o.add(buildFilterPair());
-  o.add(buildFilterPair());
-  return o;
-}
+core.List<api.FilterPair> buildUnnamed6381() => [
+      buildFilterPair(),
+      buildFilterPair(),
+    ];
 
 void checkUnnamed6381(core.List<api.FilterPair> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -264,12 +254,10 @@ void checkUnnamed6381(core.List<api.FilterPair> o) {
   checkFilterPair(o[1]);
 }
 
-core.List<core.String> buildUnnamed6382() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed6382() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed6382(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -283,12 +271,10 @@ void checkUnnamed6382(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed6383() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed6383() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed6383(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -334,12 +320,10 @@ void checkParameters(api.Parameters o) {
   buildCounterParameters--;
 }
 
-core.List<api.EventFilter> buildUnnamed6384() {
-  final o = <api.EventFilter>[];
-  o.add(buildEventFilter());
-  o.add(buildEventFilter());
-  return o;
-}
+core.List<api.EventFilter> buildUnnamed6384() => [
+      buildEventFilter(),
+      buildEventFilter(),
+    ];
 
 void checkUnnamed6384(core.List<api.EventFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -371,12 +355,10 @@ void checkPathFilter(api.PathFilter o) {
   buildCounterPathFilter--;
 }
 
-core.List<api.PathFilter> buildUnnamed6385() {
-  final o = <api.PathFilter>[];
-  o.add(buildPathFilter());
-  o.add(buildPathFilter());
-  return o;
-}
+core.List<api.PathFilter> buildUnnamed6385() => [
+      buildPathFilter(),
+      buildPathFilter(),
+    ];
 
 void checkUnnamed6385(core.List<api.PathFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -405,12 +387,10 @@ void checkPathQueryOptions(api.PathQueryOptions o) {
   buildCounterPathQueryOptions--;
 }
 
-core.List<core.String> buildUnnamed6386() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed6386() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed6386(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -501,12 +481,10 @@ void checkQuery(api.Query o) {
   buildCounterQuery--;
 }
 
-core.List<core.String> buildUnnamed6387() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed6387() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed6387(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -765,12 +743,10 @@ void checkReportStatus(api.ReportStatus o) {
   buildCounterReportStatus--;
 }
 
-core.List<api.DisjunctiveMatchStatement> buildUnnamed6388() {
-  final o = <api.DisjunctiveMatchStatement>[];
-  o.add(buildDisjunctiveMatchStatement());
-  o.add(buildDisjunctiveMatchStatement());
-  return o;
-}
+core.List<api.DisjunctiveMatchStatement> buildUnnamed6388() => [
+      buildDisjunctiveMatchStatement(),
+      buildDisjunctiveMatchStatement(),
+    ];
 
 void checkUnnamed6388(core.List<api.DisjunctiveMatchStatement> o) {
   unittest.expect(o, unittest.hasLength(2));

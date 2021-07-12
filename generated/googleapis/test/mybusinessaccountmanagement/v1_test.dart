@@ -205,12 +205,10 @@ void checkInvitation(api.Invitation o) {
   buildCounterInvitation--;
 }
 
-core.List<api.Admin> buildUnnamed5907() {
-  final o = <api.Admin>[];
-  o.add(buildAdmin());
-  o.add(buildAdmin());
-  return o;
-}
+core.List<api.Admin> buildUnnamed5907() => [
+      buildAdmin(),
+      buildAdmin(),
+    ];
 
 void checkUnnamed5907(core.List<api.Admin> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -237,12 +235,10 @@ void checkListAccountAdminsResponse(api.ListAccountAdminsResponse o) {
   buildCounterListAccountAdminsResponse--;
 }
 
-core.List<api.Account> buildUnnamed5908() {
-  final o = <api.Account>[];
-  o.add(buildAccount());
-  o.add(buildAccount());
-  return o;
-}
+core.List<api.Account> buildUnnamed5908() => [
+      buildAccount(),
+      buildAccount(),
+    ];
 
 void checkUnnamed5908(core.List<api.Account> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -274,12 +270,10 @@ void checkListAccountsResponse(api.ListAccountsResponse o) {
   buildCounterListAccountsResponse--;
 }
 
-core.List<api.Invitation> buildUnnamed5909() {
-  final o = <api.Invitation>[];
-  o.add(buildInvitation());
-  o.add(buildInvitation());
-  return o;
-}
+core.List<api.Invitation> buildUnnamed5909() => [
+      buildInvitation(),
+      buildInvitation(),
+    ];
 
 void checkUnnamed5909(core.List<api.Invitation> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -306,12 +300,10 @@ void checkListInvitationsResponse(api.ListInvitationsResponse o) {
   buildCounterListInvitationsResponse--;
 }
 
-core.List<api.Admin> buildUnnamed5910() {
-  final o = <api.Admin>[];
-  o.add(buildAdmin());
-  o.add(buildAdmin());
-  return o;
-}
+core.List<api.Admin> buildUnnamed5910() => [
+      buildAdmin(),
+      buildAdmin(),
+    ];
 
 void checkUnnamed5910(core.List<api.Admin> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -367,12 +359,10 @@ void checkOrganizationInfo(api.OrganizationInfo o) {
   buildCounterOrganizationInfo--;
 }
 
-core.List<core.String> buildUnnamed5911() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5911() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5911(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -386,12 +376,10 @@ void checkUnnamed5911(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed5912() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5912() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5912(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));

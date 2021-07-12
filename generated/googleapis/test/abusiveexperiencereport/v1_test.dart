@@ -75,12 +75,10 @@ void checkSiteSummaryResponse(api.SiteSummaryResponse o) {
   buildCounterSiteSummaryResponse--;
 }
 
-core.List<api.SiteSummaryResponse> buildUnnamed6300() {
-  final o = <api.SiteSummaryResponse>[];
-  o.add(buildSiteSummaryResponse());
-  o.add(buildSiteSummaryResponse());
-  return o;
-}
+core.List<api.SiteSummaryResponse> buildUnnamed6300() => [
+      buildSiteSummaryResponse(),
+      buildSiteSummaryResponse(),
+    ];
 
 void checkUnnamed6300(core.List<api.SiteSummaryResponse> o) {
   unittest.expect(o, unittest.hasLength(2));

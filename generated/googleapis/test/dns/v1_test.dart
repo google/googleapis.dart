@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.ResourceRecordSet> buildUnnamed2250() {
-  final o = <api.ResourceRecordSet>[];
-  o.add(buildResourceRecordSet());
-  o.add(buildResourceRecordSet());
-  return o;
-}
+core.List<api.ResourceRecordSet> buildUnnamed2250() => [
+      buildResourceRecordSet(),
+      buildResourceRecordSet(),
+    ];
 
 void checkUnnamed2250(core.List<api.ResourceRecordSet> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -39,12 +37,10 @@ void checkUnnamed2250(core.List<api.ResourceRecordSet> o) {
   checkResourceRecordSet(o[1]);
 }
 
-core.List<api.ResourceRecordSet> buildUnnamed2251() {
-  final o = <api.ResourceRecordSet>[];
-  o.add(buildResourceRecordSet());
-  o.add(buildResourceRecordSet());
-  return o;
-}
+core.List<api.ResourceRecordSet> buildUnnamed2251() => [
+      buildResourceRecordSet(),
+      buildResourceRecordSet(),
+    ];
 
 void checkUnnamed2251(core.List<api.ResourceRecordSet> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -95,12 +91,10 @@ void checkChange(api.Change o) {
   buildCounterChange--;
 }
 
-core.List<api.Change> buildUnnamed2252() {
-  final o = <api.Change>[];
-  o.add(buildChange());
-  o.add(buildChange());
-  return o;
-}
+core.List<api.Change> buildUnnamed2252() => [
+      buildChange(),
+      buildChange(),
+    ];
 
 void checkUnnamed2252(core.List<api.Change> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -139,12 +133,10 @@ void checkChangesListResponse(api.ChangesListResponse o) {
   buildCounterChangesListResponse--;
 }
 
-core.List<api.DnsKeyDigest> buildUnnamed2253() {
-  final o = <api.DnsKeyDigest>[];
-  o.add(buildDnsKeyDigest());
-  o.add(buildDnsKeyDigest());
-  return o;
-}
+core.List<api.DnsKeyDigest> buildUnnamed2253() => [
+      buildDnsKeyDigest(),
+      buildDnsKeyDigest(),
+    ];
 
 void checkUnnamed2253(core.List<api.DnsKeyDigest> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -282,12 +274,10 @@ void checkDnsKeySpec(api.DnsKeySpec o) {
   buildCounterDnsKeySpec--;
 }
 
-core.List<api.DnsKey> buildUnnamed2254() {
-  final o = <api.DnsKey>[];
-  o.add(buildDnsKey());
-  o.add(buildDnsKey());
-  return o;
-}
+core.List<api.DnsKey> buildUnnamed2254() => [
+      buildDnsKey(),
+      buildDnsKey(),
+    ];
 
 void checkUnnamed2254(core.List<api.DnsKey> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -326,12 +316,10 @@ void checkDnsKeysListResponse(api.DnsKeysListResponse o) {
   buildCounterDnsKeysListResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed2255() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed2255() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed2255(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -345,12 +333,10 @@ void checkUnnamed2255(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed2256() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2256() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2256(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -437,12 +423,10 @@ void checkManagedZone(api.ManagedZone o) {
   buildCounterManagedZone--;
 }
 
-core.List<api.DnsKeySpec> buildUnnamed2257() {
-  final o = <api.DnsKeySpec>[];
-  o.add(buildDnsKeySpec());
-  o.add(buildDnsKeySpec());
-  return o;
-}
+core.List<api.DnsKeySpec> buildUnnamed2257() => [
+      buildDnsKeySpec(),
+      buildDnsKeySpec(),
+    ];
 
 void checkUnnamed2257(core.List<api.DnsKeySpec> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -484,12 +468,11 @@ void checkManagedZoneDnsSecConfig(api.ManagedZoneDnsSecConfig o) {
   buildCounterManagedZoneDnsSecConfig--;
 }
 
-core.List<api.ManagedZoneForwardingConfigNameServerTarget> buildUnnamed2258() {
-  final o = <api.ManagedZoneForwardingConfigNameServerTarget>[];
-  o.add(buildManagedZoneForwardingConfigNameServerTarget());
-  o.add(buildManagedZoneForwardingConfigNameServerTarget());
-  return o;
-}
+core.List<api.ManagedZoneForwardingConfigNameServerTarget> buildUnnamed2258() =>
+    [
+      buildManagedZoneForwardingConfigNameServerTarget(),
+      buildManagedZoneForwardingConfigNameServerTarget(),
+    ];
 
 void checkUnnamed2258(
     core.List<api.ManagedZoneForwardingConfigNameServerTarget> o) {
@@ -556,12 +539,10 @@ void checkManagedZoneForwardingConfigNameServerTarget(
   buildCounterManagedZoneForwardingConfigNameServerTarget--;
 }
 
-core.List<api.Operation> buildUnnamed2259() {
-  final o = <api.Operation>[];
-  o.add(buildOperation());
-  o.add(buildOperation());
-  return o;
-}
+core.List<api.Operation> buildUnnamed2259() => [
+      buildOperation(),
+      buildOperation(),
+    ];
 
 void checkUnnamed2259(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -659,12 +640,10 @@ void checkManagedZonePeeringConfigTargetNetwork(
   buildCounterManagedZonePeeringConfigTargetNetwork--;
 }
 
-core.List<api.ManagedZonePrivateVisibilityConfigNetwork> buildUnnamed2260() {
-  final o = <api.ManagedZonePrivateVisibilityConfigNetwork>[];
-  o.add(buildManagedZonePrivateVisibilityConfigNetwork());
-  o.add(buildManagedZonePrivateVisibilityConfigNetwork());
-  return o;
-}
+core.List<api.ManagedZonePrivateVisibilityConfigNetwork> buildUnnamed2260() => [
+      buildManagedZonePrivateVisibilityConfigNetwork(),
+      buildManagedZonePrivateVisibilityConfigNetwork(),
+    ];
 
 void checkUnnamed2260(
     core.List<api.ManagedZonePrivateVisibilityConfigNetwork> o) {
@@ -809,12 +788,10 @@ void checkManagedZoneServiceDirectoryConfigNamespace(
   buildCounterManagedZoneServiceDirectoryConfigNamespace--;
 }
 
-core.List<api.ManagedZone> buildUnnamed2261() {
-  final o = <api.ManagedZone>[];
-  o.add(buildManagedZone());
-  o.add(buildManagedZone());
-  return o;
-}
+core.List<api.ManagedZone> buildUnnamed2261() => [
+      buildManagedZone(),
+      buildManagedZone(),
+    ];
 
 void checkUnnamed2261(core.List<api.ManagedZone> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -946,12 +923,10 @@ void checkOperationManagedZoneContext(api.OperationManagedZoneContext o) {
   buildCounterOperationManagedZoneContext--;
 }
 
-core.List<api.Policy> buildUnnamed2262() {
-  final o = <api.Policy>[];
-  o.add(buildPolicy());
-  o.add(buildPolicy());
-  return o;
-}
+core.List<api.Policy> buildUnnamed2262() => [
+      buildPolicy(),
+      buildPolicy(),
+    ];
 
 void checkUnnamed2262(core.List<api.Policy> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1032,12 +1007,10 @@ void checkPoliciesUpdateResponse(api.PoliciesUpdateResponse o) {
   buildCounterPoliciesUpdateResponse--;
 }
 
-core.List<api.PolicyNetwork> buildUnnamed2263() {
-  final o = <api.PolicyNetwork>[];
-  o.add(buildPolicyNetwork());
-  o.add(buildPolicyNetwork());
-  return o;
-}
+core.List<api.PolicyNetwork> buildUnnamed2263() => [
+      buildPolicyNetwork(),
+      buildPolicyNetwork(),
+    ];
 
 void checkUnnamed2263(core.List<api.PolicyNetwork> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1091,12 +1064,10 @@ void checkPolicy(api.Policy o) {
 }
 
 core.List<api.PolicyAlternativeNameServerConfigTargetNameServer>
-    buildUnnamed2264() {
-  final o = <api.PolicyAlternativeNameServerConfigTargetNameServer>[];
-  o.add(buildPolicyAlternativeNameServerConfigTargetNameServer());
-  o.add(buildPolicyAlternativeNameServerConfigTargetNameServer());
-  return o;
-}
+    buildUnnamed2264() => [
+          buildPolicyAlternativeNameServerConfigTargetNameServer(),
+          buildPolicyAlternativeNameServerConfigTargetNameServer(),
+        ];
 
 void checkUnnamed2264(
     core.List<api.PolicyAlternativeNameServerConfigTargetNameServer> o) {
@@ -1225,12 +1196,10 @@ void checkProject(api.Project o) {
   buildCounterProject--;
 }
 
-core.List<api.DnsKeySpec> buildUnnamed2265() {
-  final o = <api.DnsKeySpec>[];
-  o.add(buildDnsKeySpec());
-  o.add(buildDnsKeySpec());
-  return o;
-}
+core.List<api.DnsKeySpec> buildUnnamed2265() => [
+      buildDnsKeySpec(),
+      buildDnsKeySpec(),
+    ];
 
 void checkUnnamed2265(core.List<api.DnsKeySpec> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1327,12 +1296,10 @@ void checkQuota(api.Quota o) {
   buildCounterQuota--;
 }
 
-core.List<core.String> buildUnnamed2266() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2266() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2266(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1346,12 +1313,10 @@ void checkUnnamed2266(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed2267() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2267() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2267(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1422,12 +1387,10 @@ void checkResourceRecordSetsDeleteResponse(
   buildCounterResourceRecordSetsDeleteResponse--;
 }
 
-core.List<api.ResourceRecordSet> buildUnnamed2268() {
-  final o = <api.ResourceRecordSet>[];
-  o.add(buildResourceRecordSet());
-  o.add(buildResourceRecordSet());
-  return o;
-}
+core.List<api.ResourceRecordSet> buildUnnamed2268() => [
+      buildResourceRecordSet(),
+      buildResourceRecordSet(),
+    ];
 
 void checkUnnamed2268(core.List<api.ResourceRecordSet> o) {
   unittest.expect(o, unittest.hasLength(2));

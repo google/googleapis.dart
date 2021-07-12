@@ -120,12 +120,10 @@ void checkCreateManagedShortLinkRequest(api.CreateManagedShortLinkRequest o) {
   buildCounterCreateManagedShortLinkRequest--;
 }
 
-core.List<api.DynamicLinkWarning> buildUnnamed3624() {
-  final o = <api.DynamicLinkWarning>[];
-  o.add(buildDynamicLinkWarning());
-  o.add(buildDynamicLinkWarning());
-  return o;
-}
+core.List<api.DynamicLinkWarning> buildUnnamed3624() => [
+      buildDynamicLinkWarning(),
+      buildDynamicLinkWarning(),
+    ];
 
 void checkUnnamed3624(core.List<api.DynamicLinkWarning> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -190,12 +188,10 @@ void checkCreateShortDynamicLinkRequest(api.CreateShortDynamicLinkRequest o) {
   buildCounterCreateShortDynamicLinkRequest--;
 }
 
-core.List<api.DynamicLinkWarning> buildUnnamed3625() {
-  final o = <api.DynamicLinkWarning>[];
-  o.add(buildDynamicLinkWarning());
-  o.add(buildDynamicLinkWarning());
-  return o;
-}
+core.List<api.DynamicLinkWarning> buildUnnamed3625() => [
+      buildDynamicLinkWarning(),
+      buildDynamicLinkWarning(),
+    ];
 
 void checkUnnamed3625(core.List<api.DynamicLinkWarning> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -382,12 +378,10 @@ void checkDynamicLinkInfo(api.DynamicLinkInfo o) {
   buildCounterDynamicLinkInfo--;
 }
 
-core.List<api.DynamicLinkEventStat> buildUnnamed3626() {
-  final o = <api.DynamicLinkEventStat>[];
-  o.add(buildDynamicLinkEventStat());
-  o.add(buildDynamicLinkEventStat());
-  return o;
-}
+core.List<api.DynamicLinkEventStat> buildUnnamed3626() => [
+      buildDynamicLinkEventStat(),
+      buildDynamicLinkEventStat(),
+    ];
 
 void checkUnnamed3626(core.List<api.DynamicLinkEventStat> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -829,12 +823,10 @@ void checkIosInfo(api.IosInfo o) {
   buildCounterIosInfo--;
 }
 
-core.List<core.String> buildUnnamed3627() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed3627() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed3627(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));

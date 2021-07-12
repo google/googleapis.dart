@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<core.String> buildUnnamed2416() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2416() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2416(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -69,12 +67,10 @@ void checkAttachment(api.Attachment o) {
   buildCounterAttachment--;
 }
 
-core.List<api.CreatePermissionRequest> buildUnnamed2417() {
-  final o = <api.CreatePermissionRequest>[];
-  o.add(buildCreatePermissionRequest());
-  o.add(buildCreatePermissionRequest());
-  return o;
-}
+core.List<api.CreatePermissionRequest> buildUnnamed2417() => [
+      buildCreatePermissionRequest(),
+      buildCreatePermissionRequest(),
+    ];
 
 void checkUnnamed2417(core.List<api.CreatePermissionRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -101,12 +97,10 @@ void checkBatchCreatePermissionsRequest(api.BatchCreatePermissionsRequest o) {
   buildCounterBatchCreatePermissionsRequest--;
 }
 
-core.List<api.Permission> buildUnnamed2418() {
-  final o = <api.Permission>[];
-  o.add(buildPermission());
-  o.add(buildPermission());
-  return o;
-}
+core.List<api.Permission> buildUnnamed2418() => [
+      buildPermission(),
+      buildPermission(),
+    ];
 
 void checkUnnamed2418(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -133,12 +127,10 @@ void checkBatchCreatePermissionsResponse(api.BatchCreatePermissionsResponse o) {
   buildCounterBatchCreatePermissionsResponse--;
 }
 
-core.List<core.String> buildUnnamed2419() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed2419() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed2419(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -247,12 +239,10 @@ void checkGroup(api.Group o) {
   buildCounterGroup--;
 }
 
-core.List<api.ListItem> buildUnnamed2420() {
-  final o = <api.ListItem>[];
-  o.add(buildListItem());
-  o.add(buildListItem());
-  return o;
-}
+core.List<api.ListItem> buildUnnamed2420() => [
+      buildListItem(),
+      buildListItem(),
+    ];
 
 void checkUnnamed2420(core.List<api.ListItem> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -279,12 +269,10 @@ void checkListContent(api.ListContent o) {
   buildCounterListContent--;
 }
 
-core.List<api.ListItem> buildUnnamed2421() {
-  final o = <api.ListItem>[];
-  o.add(buildListItem());
-  o.add(buildListItem());
-  return o;
-}
+core.List<api.ListItem> buildUnnamed2421() => [
+      buildListItem(),
+      buildListItem(),
+    ];
 
 void checkUnnamed2421(core.List<api.ListItem> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -315,12 +303,10 @@ void checkListItem(api.ListItem o) {
   buildCounterListItem--;
 }
 
-core.List<api.Note> buildUnnamed2422() {
-  final o = <api.Note>[];
-  o.add(buildNote());
-  o.add(buildNote());
-  return o;
-}
+core.List<api.Note> buildUnnamed2422() => [
+      buildNote(),
+      buildNote(),
+    ];
 
 void checkUnnamed2422(core.List<api.Note> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -352,12 +338,10 @@ void checkListNotesResponse(api.ListNotesResponse o) {
   buildCounterListNotesResponse--;
 }
 
-core.List<api.Attachment> buildUnnamed2423() {
-  final o = <api.Attachment>[];
-  o.add(buildAttachment());
-  o.add(buildAttachment());
-  return o;
-}
+core.List<api.Attachment> buildUnnamed2423() => [
+      buildAttachment(),
+      buildAttachment(),
+    ];
 
 void checkUnnamed2423(core.List<api.Attachment> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -365,12 +349,10 @@ void checkUnnamed2423(core.List<api.Attachment> o) {
   checkAttachment(o[1]);
 }
 
-core.List<api.Permission> buildUnnamed2424() {
-  final o = <api.Permission>[];
-  o.add(buildPermission());
-  o.add(buildPermission());
-  return o;
-}
+core.List<api.Permission> buildUnnamed2424() => [
+      buildPermission(),
+      buildPermission(),
+    ];
 
 void checkUnnamed2424(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));

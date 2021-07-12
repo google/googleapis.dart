@@ -53,12 +53,10 @@ void checkAliasContext(api.AliasContext o) {
   buildCounterAliasContext--;
 }
 
-core.List<api.Variable> buildUnnamed5248() {
-  final o = <api.Variable>[];
-  o.add(buildVariable());
-  o.add(buildVariable());
-  return o;
-}
+core.List<api.Variable> buildUnnamed5248() => [
+      buildVariable(),
+      buildVariable(),
+    ];
 
 void checkUnnamed5248(core.List<api.Variable> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -66,12 +64,10 @@ void checkUnnamed5248(core.List<api.Variable> o) {
   checkVariable(o[1]);
 }
 
-core.List<core.String> buildUnnamed5249() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5249() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5249(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -85,12 +81,10 @@ void checkUnnamed5249(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed5250() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed5250() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed5250(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -104,12 +98,10 @@ void checkUnnamed5250(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<api.StackFrame> buildUnnamed5251() {
-  final o = <api.StackFrame>[];
-  o.add(buildStackFrame());
-  o.add(buildStackFrame());
-  return o;
-}
+core.List<api.StackFrame> buildUnnamed5251() => [
+      buildStackFrame(),
+      buildStackFrame(),
+    ];
 
 void checkUnnamed5251(core.List<api.StackFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -117,12 +109,10 @@ void checkUnnamed5251(core.List<api.StackFrame> o) {
   checkStackFrame(o[1]);
 }
 
-core.List<api.Variable> buildUnnamed5252() {
-  final o = <api.Variable>[];
-  o.add(buildVariable());
-  o.add(buildVariable());
-  return o;
-}
+core.List<api.Variable> buildUnnamed5252() => [
+      buildVariable(),
+      buildVariable(),
+    ];
 
 void checkUnnamed5252(core.List<api.Variable> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -292,12 +282,10 @@ void checkCloudWorkspaceSourceContext(api.CloudWorkspaceSourceContext o) {
   buildCounterCloudWorkspaceSourceContext--;
 }
 
-core.List<api.ExtendedSourceContext> buildUnnamed5253() {
-  final o = <api.ExtendedSourceContext>[];
-  o.add(buildExtendedSourceContext());
-  o.add(buildExtendedSourceContext());
-  return o;
-}
+core.List<api.ExtendedSourceContext> buildUnnamed5253() => [
+      buildExtendedSourceContext(),
+      buildExtendedSourceContext(),
+    ];
 
 void checkUnnamed5253(core.List<api.ExtendedSourceContext> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -305,12 +293,10 @@ void checkUnnamed5253(core.List<api.ExtendedSourceContext> o) {
   checkExtendedSourceContext(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed5254() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed5254() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed5254(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -324,12 +310,10 @@ void checkUnnamed5254(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<api.SourceContext> buildUnnamed5255() {
-  final o = <api.SourceContext>[];
-  o.add(buildSourceContext());
-  o.add(buildSourceContext());
-  return o;
-}
+core.List<api.SourceContext> buildUnnamed5255() => [
+      buildSourceContext(),
+      buildSourceContext(),
+    ];
 
 void checkUnnamed5255(core.List<api.SourceContext> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -411,12 +395,10 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-core.Map<core.String, core.String> buildUnnamed5256() {
-  final o = <core.String, core.String>{};
-  o['x'] = 'foo';
-  o['y'] = 'foo';
-  return o;
-}
+core.Map<core.String, core.String> buildUnnamed5256() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
 void checkUnnamed5256(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -451,12 +433,10 @@ void checkExtendedSourceContext(api.ExtendedSourceContext o) {
   buildCounterExtendedSourceContext--;
 }
 
-core.List<core.String> buildUnnamed5257() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed5257() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed5257(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -579,12 +559,10 @@ void checkGitSourceContext(api.GitSourceContext o) {
   buildCounterGitSourceContext--;
 }
 
-core.List<api.Breakpoint> buildUnnamed5258() {
-  final o = <api.Breakpoint>[];
-  o.add(buildBreakpoint());
-  o.add(buildBreakpoint());
-  return o;
-}
+core.List<api.Breakpoint> buildUnnamed5258() => [
+      buildBreakpoint(),
+      buildBreakpoint(),
+    ];
 
 void checkUnnamed5258(core.List<api.Breakpoint> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -618,12 +596,10 @@ void checkListActiveBreakpointsResponse(api.ListActiveBreakpointsResponse o) {
   buildCounterListActiveBreakpointsResponse--;
 }
 
-core.List<api.Breakpoint> buildUnnamed5259() {
-  final o = <api.Breakpoint>[];
-  o.add(buildBreakpoint());
-  o.add(buildBreakpoint());
-  return o;
-}
+core.List<api.Breakpoint> buildUnnamed5259() => [
+      buildBreakpoint(),
+      buildBreakpoint(),
+    ];
 
 void checkUnnamed5259(core.List<api.Breakpoint> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -655,12 +631,10 @@ void checkListBreakpointsResponse(api.ListBreakpointsResponse o) {
   buildCounterListBreakpointsResponse--;
 }
 
-core.List<api.Debuggee> buildUnnamed5260() {
-  final o = <api.Debuggee>[];
-  o.add(buildDebuggee());
-  o.add(buildDebuggee());
-  return o;
-}
+core.List<api.Debuggee> buildUnnamed5260() => [
+      buildDebuggee(),
+      buildDebuggee(),
+    ];
 
 void checkUnnamed5260(core.List<api.Debuggee> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -857,12 +831,10 @@ void checkSourceLocation(api.SourceLocation o) {
   buildCounterSourceLocation--;
 }
 
-core.List<api.Variable> buildUnnamed5261() {
-  final o = <api.Variable>[];
-  o.add(buildVariable());
-  o.add(buildVariable());
-  return o;
-}
+core.List<api.Variable> buildUnnamed5261() => [
+      buildVariable(),
+      buildVariable(),
+    ];
 
 void checkUnnamed5261(core.List<api.Variable> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -870,12 +842,10 @@ void checkUnnamed5261(core.List<api.Variable> o) {
   checkVariable(o[1]);
 }
 
-core.List<api.Variable> buildUnnamed5262() {
-  final o = <api.Variable>[];
-  o.add(buildVariable());
-  o.add(buildVariable());
-  return o;
-}
+core.List<api.Variable> buildUnnamed5262() => [
+      buildVariable(),
+      buildVariable(),
+    ];
 
 void checkUnnamed5262(core.List<api.Variable> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -971,12 +941,10 @@ void checkUpdateActiveBreakpointResponse(api.UpdateActiveBreakpointResponse o) {
   buildCounterUpdateActiveBreakpointResponse--;
 }
 
-core.List<api.Variable> buildUnnamed5263() {
-  final o = <api.Variable>[];
-  o.add(buildVariable());
-  o.add(buildVariable());
-  return o;
-}
+core.List<api.Variable> buildUnnamed5263() => [
+      buildVariable(),
+      buildVariable(),
+    ];
 
 void checkUnnamed5263(core.List<api.Variable> o) {
   unittest.expect(o, unittest.hasLength(2));

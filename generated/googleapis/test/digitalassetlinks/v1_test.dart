@@ -93,12 +93,10 @@ void checkCertificateInfo(api.CertificateInfo o) {
   buildCounterCertificateInfo--;
 }
 
-core.List<core.String> buildUnnamed3659() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed3659() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed3659(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -143,12 +141,10 @@ void checkCheckResponse(api.CheckResponse o) {
   buildCounterCheckResponse--;
 }
 
-core.List<core.String> buildUnnamed3660() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed3660() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed3660(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -162,12 +158,10 @@ void checkUnnamed3660(core.List<core.String> o) {
   );
 }
 
-core.List<api.Statement> buildUnnamed3661() {
-  final o = <api.Statement>[];
-  o.add(buildStatement());
-  o.add(buildStatement());
-  return o;
-}
+core.List<api.Statement> buildUnnamed3661() => [
+      buildStatement(),
+      buildStatement(),
+    ];
 
 void checkUnnamed3661(core.List<api.Statement> o) {
   unittest.expect(o, unittest.hasLength(2));

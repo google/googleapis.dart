@@ -309,12 +309,10 @@ void checkGoogleAdsHomeservicesLocalservicesV1PhoneLead(
 }
 
 core.List<api.GoogleAdsHomeservicesLocalservicesV1AccountReport>
-    buildUnnamed3265() {
-  final o = <api.GoogleAdsHomeservicesLocalservicesV1AccountReport>[];
-  o.add(buildGoogleAdsHomeservicesLocalservicesV1AccountReport());
-  o.add(buildGoogleAdsHomeservicesLocalservicesV1AccountReport());
-  return o;
-}
+    buildUnnamed3265() => [
+          buildGoogleAdsHomeservicesLocalservicesV1AccountReport(),
+          buildGoogleAdsHomeservicesLocalservicesV1AccountReport(),
+        ];
 
 void checkUnnamed3265(
     core.List<api.GoogleAdsHomeservicesLocalservicesV1AccountReport> o) {
@@ -355,12 +353,10 @@ void checkGoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse(
 }
 
 core.List<api.GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport>
-    buildUnnamed3266() {
-  final o = <api.GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport>[];
-  o.add(buildGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport());
-  o.add(buildGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport());
-  return o;
-}
+    buildUnnamed3266() => [
+          buildGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport(),
+          buildGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport(),
+        ];
 
 void checkUnnamed3266(
     core.List<api.GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport> o) {

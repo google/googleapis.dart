@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<core.String> buildUnnamed1779() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed1779() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed1779(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -116,12 +114,10 @@ void checkApiDimensionFilter(api.ApiDimensionFilter o) {
   buildCounterApiDimensionFilter--;
 }
 
-core.List<api.ApiDimensionFilter> buildUnnamed1780() {
-  final o = <api.ApiDimensionFilter>[];
-  o.add(buildApiDimensionFilter());
-  o.add(buildApiDimensionFilter());
-  return o;
-}
+core.List<api.ApiDimensionFilter> buildUnnamed1780() => [
+      buildApiDimensionFilter(),
+      buildApiDimensionFilter(),
+    ];
 
 void checkUnnamed1780(core.List<api.ApiDimensionFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -267,12 +263,10 @@ void checkRunMobileFriendlyTestRequest(api.RunMobileFriendlyTestRequest o) {
   buildCounterRunMobileFriendlyTestRequest--;
 }
 
-core.List<api.MobileFriendlyIssue> buildUnnamed1781() {
-  final o = <api.MobileFriendlyIssue>[];
-  o.add(buildMobileFriendlyIssue());
-  o.add(buildMobileFriendlyIssue());
-  return o;
-}
+core.List<api.MobileFriendlyIssue> buildUnnamed1781() => [
+      buildMobileFriendlyIssue(),
+      buildMobileFriendlyIssue(),
+    ];
 
 void checkUnnamed1781(core.List<api.MobileFriendlyIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -280,12 +274,10 @@ void checkUnnamed1781(core.List<api.MobileFriendlyIssue> o) {
   checkMobileFriendlyIssue(o[1]);
 }
 
-core.List<api.ResourceIssue> buildUnnamed1782() {
-  final o = <api.ResourceIssue>[];
-  o.add(buildResourceIssue());
-  o.add(buildResourceIssue());
-  return o;
-}
+core.List<api.ResourceIssue> buildUnnamed1782() => [
+      buildResourceIssue(),
+      buildResourceIssue(),
+    ];
 
 void checkUnnamed1782(core.List<api.ResourceIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -323,12 +315,10 @@ void checkRunMobileFriendlyTestResponse(api.RunMobileFriendlyTestResponse o) {
   buildCounterRunMobileFriendlyTestResponse--;
 }
 
-core.List<api.ApiDimensionFilterGroup> buildUnnamed1783() {
-  final o = <api.ApiDimensionFilterGroup>[];
-  o.add(buildApiDimensionFilterGroup());
-  o.add(buildApiDimensionFilterGroup());
-  return o;
-}
+core.List<api.ApiDimensionFilterGroup> buildUnnamed1783() => [
+      buildApiDimensionFilterGroup(),
+      buildApiDimensionFilterGroup(),
+    ];
 
 void checkUnnamed1783(core.List<api.ApiDimensionFilterGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -336,12 +326,10 @@ void checkUnnamed1783(core.List<api.ApiDimensionFilterGroup> o) {
   checkApiDimensionFilterGroup(o[1]);
 }
 
-core.List<core.String> buildUnnamed1784() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed1784() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed1784(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -411,12 +399,10 @@ void checkSearchAnalyticsQueryRequest(api.SearchAnalyticsQueryRequest o) {
   buildCounterSearchAnalyticsQueryRequest--;
 }
 
-core.List<api.ApiDataRow> buildUnnamed1785() {
-  final o = <api.ApiDataRow>[];
-  o.add(buildApiDataRow());
-  o.add(buildApiDataRow());
-  return o;
-}
+core.List<api.ApiDataRow> buildUnnamed1785() => [
+      buildApiDataRow(),
+      buildApiDataRow(),
+    ];
 
 void checkUnnamed1785(core.List<api.ApiDataRow> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -448,12 +434,10 @@ void checkSearchAnalyticsQueryResponse(api.SearchAnalyticsQueryResponse o) {
   buildCounterSearchAnalyticsQueryResponse--;
 }
 
-core.List<api.WmxSitemap> buildUnnamed1786() {
-  final o = <api.WmxSitemap>[];
-  o.add(buildWmxSitemap());
-  o.add(buildWmxSitemap());
-  return o;
-}
+core.List<api.WmxSitemap> buildUnnamed1786() => [
+      buildWmxSitemap(),
+      buildWmxSitemap(),
+    ];
 
 void checkUnnamed1786(core.List<api.WmxSitemap> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -480,12 +464,10 @@ void checkSitemapsListResponse(api.SitemapsListResponse o) {
   buildCounterSitemapsListResponse--;
 }
 
-core.List<api.WmxSite> buildUnnamed1787() {
-  final o = <api.WmxSite>[];
-  o.add(buildWmxSite());
-  o.add(buildWmxSite());
-  return o;
-}
+core.List<api.WmxSite> buildUnnamed1787() => [
+      buildWmxSite(),
+      buildWmxSite(),
+    ];
 
 void checkUnnamed1787(core.List<api.WmxSite> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -566,12 +548,10 @@ void checkWmxSite(api.WmxSite o) {
   buildCounterWmxSite--;
 }
 
-core.List<api.WmxSitemapContent> buildUnnamed1788() {
-  final o = <api.WmxSitemapContent>[];
-  o.add(buildWmxSitemapContent());
-  o.add(buildWmxSitemapContent());
-  return o;
-}
+core.List<api.WmxSitemapContent> buildUnnamed1788() => [
+      buildWmxSitemapContent(),
+      buildWmxSitemapContent(),
+    ];
 
 void checkUnnamed1788(core.List<api.WmxSitemapContent> o) {
   unittest.expect(o, unittest.hasLength(2));

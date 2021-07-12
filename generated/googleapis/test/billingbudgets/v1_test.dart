@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.GoogleCloudBillingBudgetsV1ThresholdRule> buildUnnamed1702() {
-  final o = <api.GoogleCloudBillingBudgetsV1ThresholdRule>[];
-  o.add(buildGoogleCloudBillingBudgetsV1ThresholdRule());
-  o.add(buildGoogleCloudBillingBudgetsV1ThresholdRule());
-  return o;
-}
+core.List<api.GoogleCloudBillingBudgetsV1ThresholdRule> buildUnnamed1702() => [
+      buildGoogleCloudBillingBudgetsV1ThresholdRule(),
+      buildGoogleCloudBillingBudgetsV1ThresholdRule(),
+    ];
 
 void checkUnnamed1702(
     core.List<api.GoogleCloudBillingBudgetsV1ThresholdRule> o) {
@@ -127,12 +125,10 @@ void checkGoogleCloudBillingBudgetsV1CustomPeriod(
   buildCounterGoogleCloudBillingBudgetsV1CustomPeriod--;
 }
 
-core.List<core.String> buildUnnamed1703() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed1703() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed1703(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -146,20 +142,18 @@ void checkUnnamed1703(core.List<core.String> o) {
   );
 }
 
-core.List<core.Object> buildUnnamed1704() {
-  final o = <core.Object>[];
-  o.add({
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  });
-  o.add({
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  });
-  return o;
-}
+core.List<core.Object> buildUnnamed1704() => [
+      {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    ];
 
 void checkUnnamed1704(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -193,12 +187,10 @@ void checkUnnamed1704(core.List<core.Object> o) {
   );
 }
 
-core.Map<core.String, core.List<core.Object>> buildUnnamed1705() {
-  final o = <core.String, core.List<core.Object>>{};
-  o['x'] = buildUnnamed1704();
-  o['y'] = buildUnnamed1704();
-  return o;
-}
+core.Map<core.String, core.List<core.Object>> buildUnnamed1705() => {
+      'x': buildUnnamed1704(),
+      'y': buildUnnamed1704(),
+    };
 
 void checkUnnamed1705(core.Map<core.String, core.List<core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -206,12 +198,10 @@ void checkUnnamed1705(core.Map<core.String, core.List<core.Object>> o) {
   checkUnnamed1704(o['y']!);
 }
 
-core.List<core.String> buildUnnamed1706() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed1706() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed1706(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -225,12 +215,10 @@ void checkUnnamed1706(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed1707() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed1707() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed1707(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -244,12 +232,10 @@ void checkUnnamed1707(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed1708() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed1708() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed1708(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -320,12 +306,10 @@ void checkGoogleCloudBillingBudgetsV1LastPeriodAmount(
   buildCounterGoogleCloudBillingBudgetsV1LastPeriodAmount--;
 }
 
-core.List<api.GoogleCloudBillingBudgetsV1Budget> buildUnnamed1709() {
-  final o = <api.GoogleCloudBillingBudgetsV1Budget>[];
-  o.add(buildGoogleCloudBillingBudgetsV1Budget());
-  o.add(buildGoogleCloudBillingBudgetsV1Budget());
-  return o;
-}
+core.List<api.GoogleCloudBillingBudgetsV1Budget> buildUnnamed1709() => [
+      buildGoogleCloudBillingBudgetsV1Budget(),
+      buildGoogleCloudBillingBudgetsV1Budget(),
+    ];
 
 void checkUnnamed1709(core.List<api.GoogleCloudBillingBudgetsV1Budget> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -359,12 +343,10 @@ void checkGoogleCloudBillingBudgetsV1ListBudgetsResponse(
   buildCounterGoogleCloudBillingBudgetsV1ListBudgetsResponse--;
 }
 
-core.List<core.String> buildUnnamed1710() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed1710() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed1710(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));

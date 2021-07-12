@@ -26,12 +26,10 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.RunPivotReportRequest> buildUnnamed8465() {
-  final o = <api.RunPivotReportRequest>[];
-  o.add(buildRunPivotReportRequest());
-  o.add(buildRunPivotReportRequest());
-  return o;
-}
+core.List<api.RunPivotReportRequest> buildUnnamed8465() => [
+      buildRunPivotReportRequest(),
+      buildRunPivotReportRequest(),
+    ];
 
 void checkUnnamed8465(core.List<api.RunPivotReportRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -58,12 +56,10 @@ void checkBatchRunPivotReportsRequest(api.BatchRunPivotReportsRequest o) {
   buildCounterBatchRunPivotReportsRequest--;
 }
 
-core.List<api.RunPivotReportResponse> buildUnnamed8466() {
-  final o = <api.RunPivotReportResponse>[];
-  o.add(buildRunPivotReportResponse());
-  o.add(buildRunPivotReportResponse());
-  return o;
-}
+core.List<api.RunPivotReportResponse> buildUnnamed8466() => [
+      buildRunPivotReportResponse(),
+      buildRunPivotReportResponse(),
+    ];
 
 void checkUnnamed8466(core.List<api.RunPivotReportResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -95,12 +91,10 @@ void checkBatchRunPivotReportsResponse(api.BatchRunPivotReportsResponse o) {
   buildCounterBatchRunPivotReportsResponse--;
 }
 
-core.List<api.RunReportRequest> buildUnnamed8467() {
-  final o = <api.RunReportRequest>[];
-  o.add(buildRunReportRequest());
-  o.add(buildRunReportRequest());
-  return o;
-}
+core.List<api.RunReportRequest> buildUnnamed8467() => [
+      buildRunReportRequest(),
+      buildRunReportRequest(),
+    ];
 
 void checkUnnamed8467(core.List<api.RunReportRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -127,12 +121,10 @@ void checkBatchRunReportsRequest(api.BatchRunReportsRequest o) {
   buildCounterBatchRunReportsRequest--;
 }
 
-core.List<api.RunReportResponse> buildUnnamed8468() {
-  final o = <api.RunReportResponse>[];
-  o.add(buildRunReportResponse());
-  o.add(buildRunReportResponse());
-  return o;
-}
+core.List<api.RunReportResponse> buildUnnamed8468() => [
+      buildRunReportResponse(),
+      buildRunReportResponse(),
+    ];
 
 void checkUnnamed8468(core.List<api.RunReportResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -255,12 +247,10 @@ void checkCohortReportSettings(api.CohortReportSettings o) {
   buildCounterCohortReportSettings--;
 }
 
-core.List<api.Cohort> buildUnnamed8469() {
-  final o = <api.Cohort>[];
-  o.add(buildCohort());
-  o.add(buildCohort());
-  return o;
-}
+core.List<api.Cohort> buildUnnamed8469() => [
+      buildCohort(),
+      buildCohort(),
+    ];
 
 void checkUnnamed8469(core.List<api.Cohort> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -323,12 +313,10 @@ void checkCohortsRange(api.CohortsRange o) {
   buildCounterCohortsRange--;
 }
 
-core.List<core.String> buildUnnamed8470() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8470() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8470(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -467,12 +455,10 @@ void checkDimensionHeader(api.DimensionHeader o) {
   buildCounterDimensionHeader--;
 }
 
-core.List<core.String> buildUnnamed8471() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8471() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8471(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -626,12 +612,10 @@ void checkFilterExpression(api.FilterExpression o) {
   buildCounterFilterExpression--;
 }
 
-core.List<api.FilterExpression> buildUnnamed8472() {
-  final o = <api.FilterExpression>[];
-  o.add(buildFilterExpression());
-  o.add(buildFilterExpression());
-  return o;
-}
+core.List<api.FilterExpression> buildUnnamed8472() => [
+      buildFilterExpression(),
+      buildFilterExpression(),
+    ];
 
 void checkUnnamed8472(core.List<api.FilterExpression> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -658,12 +642,10 @@ void checkFilterExpressionList(api.FilterExpressionList o) {
   buildCounterFilterExpressionList--;
 }
 
-core.List<core.String> buildUnnamed8473() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8473() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8473(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -698,12 +680,10 @@ void checkInListFilter(api.InListFilter o) {
   buildCounterInListFilter--;
 }
 
-core.List<api.DimensionMetadata> buildUnnamed8474() {
-  final o = <api.DimensionMetadata>[];
-  o.add(buildDimensionMetadata());
-  o.add(buildDimensionMetadata());
-  return o;
-}
+core.List<api.DimensionMetadata> buildUnnamed8474() => [
+      buildDimensionMetadata(),
+      buildDimensionMetadata(),
+    ];
 
 void checkUnnamed8474(core.List<api.DimensionMetadata> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -711,12 +691,10 @@ void checkUnnamed8474(core.List<api.DimensionMetadata> o) {
   checkDimensionMetadata(o[1]);
 }
 
-core.List<api.MetricMetadata> buildUnnamed8475() {
-  final o = <api.MetricMetadata>[];
-  o.add(buildMetricMetadata());
-  o.add(buildMetricMetadata());
-  return o;
-}
+core.List<api.MetricMetadata> buildUnnamed8475() => [
+      buildMetricMetadata(),
+      buildMetricMetadata(),
+    ];
 
 void checkUnnamed8475(core.List<api.MetricMetadata> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -806,12 +784,10 @@ void checkMetricHeader(api.MetricHeader o) {
   buildCounterMetricHeader--;
 }
 
-core.List<core.String> buildUnnamed8476() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8476() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8476(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1023,12 +999,10 @@ void checkOrderBy(api.OrderBy o) {
   buildCounterOrderBy--;
 }
 
-core.List<core.String> buildUnnamed8477() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8477() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8477(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1042,12 +1016,10 @@ void checkUnnamed8477(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed8478() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8478() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8478(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1061,12 +1033,10 @@ void checkUnnamed8478(core.List<core.String> o) {
   );
 }
 
-core.List<api.OrderBy> buildUnnamed8479() {
-  final o = <api.OrderBy>[];
-  o.add(buildOrderBy());
-  o.add(buildOrderBy());
-  return o;
-}
+core.List<api.OrderBy> buildUnnamed8479() => [
+      buildOrderBy(),
+      buildOrderBy(),
+    ];
 
 void checkUnnamed8479(core.List<api.OrderBy> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1107,12 +1077,10 @@ void checkPivot(api.Pivot o) {
   buildCounterPivot--;
 }
 
-core.List<api.DimensionValue> buildUnnamed8480() {
-  final o = <api.DimensionValue>[];
-  o.add(buildDimensionValue());
-  o.add(buildDimensionValue());
-  return o;
-}
+core.List<api.DimensionValue> buildUnnamed8480() => [
+      buildDimensionValue(),
+      buildDimensionValue(),
+    ];
 
 void checkUnnamed8480(core.List<api.DimensionValue> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1139,12 +1107,10 @@ void checkPivotDimensionHeader(api.PivotDimensionHeader o) {
   buildCounterPivotDimensionHeader--;
 }
 
-core.List<api.PivotDimensionHeader> buildUnnamed8481() {
-  final o = <api.PivotDimensionHeader>[];
-  o.add(buildPivotDimensionHeader());
-  o.add(buildPivotDimensionHeader());
-  return o;
-}
+core.List<api.PivotDimensionHeader> buildUnnamed8481() => [
+      buildPivotDimensionHeader(),
+      buildPivotDimensionHeader(),
+    ];
 
 void checkUnnamed8481(core.List<api.PivotDimensionHeader> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1176,12 +1142,10 @@ void checkPivotHeader(api.PivotHeader o) {
   buildCounterPivotHeader--;
 }
 
-core.List<api.PivotSelection> buildUnnamed8482() {
-  final o = <api.PivotSelection>[];
-  o.add(buildPivotSelection());
-  o.add(buildPivotSelection());
-  return o;
-}
+core.List<api.PivotSelection> buildUnnamed8482() => [
+      buildPivotSelection(),
+      buildPivotSelection(),
+    ];
 
 void checkUnnamed8482(core.List<api.PivotSelection> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1313,12 +1277,10 @@ void checkResponseMetaData(api.ResponseMetaData o) {
   buildCounterResponseMetaData--;
 }
 
-core.List<api.DimensionValue> buildUnnamed8483() {
-  final o = <api.DimensionValue>[];
-  o.add(buildDimensionValue());
-  o.add(buildDimensionValue());
-  return o;
-}
+core.List<api.DimensionValue> buildUnnamed8483() => [
+      buildDimensionValue(),
+      buildDimensionValue(),
+    ];
 
 void checkUnnamed8483(core.List<api.DimensionValue> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1326,12 +1288,10 @@ void checkUnnamed8483(core.List<api.DimensionValue> o) {
   checkDimensionValue(o[1]);
 }
 
-core.List<api.MetricValue> buildUnnamed8484() {
-  final o = <api.MetricValue>[];
-  o.add(buildMetricValue());
-  o.add(buildMetricValue());
-  return o;
-}
+core.List<api.MetricValue> buildUnnamed8484() => [
+      buildMetricValue(),
+      buildMetricValue(),
+    ];
 
 void checkUnnamed8484(core.List<api.MetricValue> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1360,12 +1320,10 @@ void checkRow(api.Row o) {
   buildCounterRow--;
 }
 
-core.List<api.DateRange> buildUnnamed8485() {
-  final o = <api.DateRange>[];
-  o.add(buildDateRange());
-  o.add(buildDateRange());
-  return o;
-}
+core.List<api.DateRange> buildUnnamed8485() => [
+      buildDateRange(),
+      buildDateRange(),
+    ];
 
 void checkUnnamed8485(core.List<api.DateRange> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1373,12 +1331,10 @@ void checkUnnamed8485(core.List<api.DateRange> o) {
   checkDateRange(o[1]);
 }
 
-core.List<api.Dimension> buildUnnamed8486() {
-  final o = <api.Dimension>[];
-  o.add(buildDimension());
-  o.add(buildDimension());
-  return o;
-}
+core.List<api.Dimension> buildUnnamed8486() => [
+      buildDimension(),
+      buildDimension(),
+    ];
 
 void checkUnnamed8486(core.List<api.Dimension> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1386,12 +1342,10 @@ void checkUnnamed8486(core.List<api.Dimension> o) {
   checkDimension(o[1]);
 }
 
-core.List<api.Metric> buildUnnamed8487() {
-  final o = <api.Metric>[];
-  o.add(buildMetric());
-  o.add(buildMetric());
-  return o;
-}
+core.List<api.Metric> buildUnnamed8487() => [
+      buildMetric(),
+      buildMetric(),
+    ];
 
 void checkUnnamed8487(core.List<api.Metric> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1399,12 +1353,10 @@ void checkUnnamed8487(core.List<api.Metric> o) {
   checkMetric(o[1]);
 }
 
-core.List<api.Pivot> buildUnnamed8488() {
-  final o = <api.Pivot>[];
-  o.add(buildPivot());
-  o.add(buildPivot());
-  return o;
-}
+core.List<api.Pivot> buildUnnamed8488() => [
+      buildPivot(),
+      buildPivot(),
+    ];
 
 void checkUnnamed8488(core.List<api.Pivot> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1457,12 +1409,10 @@ void checkRunPivotReportRequest(api.RunPivotReportRequest o) {
   buildCounterRunPivotReportRequest--;
 }
 
-core.List<api.Row> buildUnnamed8489() {
-  final o = <api.Row>[];
-  o.add(buildRow());
-  o.add(buildRow());
-  return o;
-}
+core.List<api.Row> buildUnnamed8489() => [
+      buildRow(),
+      buildRow(),
+    ];
 
 void checkUnnamed8489(core.List<api.Row> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1470,12 +1420,10 @@ void checkUnnamed8489(core.List<api.Row> o) {
   checkRow(o[1]);
 }
 
-core.List<api.DimensionHeader> buildUnnamed8490() {
-  final o = <api.DimensionHeader>[];
-  o.add(buildDimensionHeader());
-  o.add(buildDimensionHeader());
-  return o;
-}
+core.List<api.DimensionHeader> buildUnnamed8490() => [
+      buildDimensionHeader(),
+      buildDimensionHeader(),
+    ];
 
 void checkUnnamed8490(core.List<api.DimensionHeader> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1483,12 +1431,10 @@ void checkUnnamed8490(core.List<api.DimensionHeader> o) {
   checkDimensionHeader(o[1]);
 }
 
-core.List<api.MetricHeader> buildUnnamed8491() {
-  final o = <api.MetricHeader>[];
-  o.add(buildMetricHeader());
-  o.add(buildMetricHeader());
-  return o;
-}
+core.List<api.MetricHeader> buildUnnamed8491() => [
+      buildMetricHeader(),
+      buildMetricHeader(),
+    ];
 
 void checkUnnamed8491(core.List<api.MetricHeader> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1496,12 +1442,10 @@ void checkUnnamed8491(core.List<api.MetricHeader> o) {
   checkMetricHeader(o[1]);
 }
 
-core.List<api.PivotHeader> buildUnnamed8492() {
-  final o = <api.PivotHeader>[];
-  o.add(buildPivotHeader());
-  o.add(buildPivotHeader());
-  return o;
-}
+core.List<api.PivotHeader> buildUnnamed8492() => [
+      buildPivotHeader(),
+      buildPivotHeader(),
+    ];
 
 void checkUnnamed8492(core.List<api.PivotHeader> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1509,12 +1453,10 @@ void checkUnnamed8492(core.List<api.PivotHeader> o) {
   checkPivotHeader(o[1]);
 }
 
-core.List<api.Row> buildUnnamed8493() {
-  final o = <api.Row>[];
-  o.add(buildRow());
-  o.add(buildRow());
-  return o;
-}
+core.List<api.Row> buildUnnamed8493() => [
+      buildRow(),
+      buildRow(),
+    ];
 
 void checkUnnamed8493(core.List<api.Row> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1558,12 +1500,10 @@ void checkRunPivotReportResponse(api.RunPivotReportResponse o) {
   buildCounterRunPivotReportResponse--;
 }
 
-core.List<api.Dimension> buildUnnamed8494() {
-  final o = <api.Dimension>[];
-  o.add(buildDimension());
-  o.add(buildDimension());
-  return o;
-}
+core.List<api.Dimension> buildUnnamed8494() => [
+      buildDimension(),
+      buildDimension(),
+    ];
 
 void checkUnnamed8494(core.List<api.Dimension> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1571,12 +1511,10 @@ void checkUnnamed8494(core.List<api.Dimension> o) {
   checkDimension(o[1]);
 }
 
-core.List<core.String> buildUnnamed8495() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8495() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8495(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1590,12 +1528,10 @@ void checkUnnamed8495(core.List<core.String> o) {
   );
 }
 
-core.List<api.Metric> buildUnnamed8496() {
-  final o = <api.Metric>[];
-  o.add(buildMetric());
-  o.add(buildMetric());
-  return o;
-}
+core.List<api.Metric> buildUnnamed8496() => [
+      buildMetric(),
+      buildMetric(),
+    ];
 
 void checkUnnamed8496(core.List<api.Metric> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1603,12 +1539,10 @@ void checkUnnamed8496(core.List<api.Metric> o) {
   checkMetric(o[1]);
 }
 
-core.List<api.MinuteRange> buildUnnamed8497() {
-  final o = <api.MinuteRange>[];
-  o.add(buildMinuteRange());
-  o.add(buildMinuteRange());
-  return o;
-}
+core.List<api.MinuteRange> buildUnnamed8497() => [
+      buildMinuteRange(),
+      buildMinuteRange(),
+    ];
 
 void checkUnnamed8497(core.List<api.MinuteRange> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1616,12 +1550,10 @@ void checkUnnamed8497(core.List<api.MinuteRange> o) {
   checkMinuteRange(o[1]);
 }
 
-core.List<api.OrderBy> buildUnnamed8498() {
-  final o = <api.OrderBy>[];
-  o.add(buildOrderBy());
-  o.add(buildOrderBy());
-  return o;
-}
+core.List<api.OrderBy> buildUnnamed8498() => [
+      buildOrderBy(),
+      buildOrderBy(),
+    ];
 
 void checkUnnamed8498(core.List<api.OrderBy> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1667,12 +1599,10 @@ void checkRunRealtimeReportRequest(api.RunRealtimeReportRequest o) {
   buildCounterRunRealtimeReportRequest--;
 }
 
-core.List<api.DimensionHeader> buildUnnamed8499() {
-  final o = <api.DimensionHeader>[];
-  o.add(buildDimensionHeader());
-  o.add(buildDimensionHeader());
-  return o;
-}
+core.List<api.DimensionHeader> buildUnnamed8499() => [
+      buildDimensionHeader(),
+      buildDimensionHeader(),
+    ];
 
 void checkUnnamed8499(core.List<api.DimensionHeader> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1680,12 +1610,10 @@ void checkUnnamed8499(core.List<api.DimensionHeader> o) {
   checkDimensionHeader(o[1]);
 }
 
-core.List<api.Row> buildUnnamed8500() {
-  final o = <api.Row>[];
-  o.add(buildRow());
-  o.add(buildRow());
-  return o;
-}
+core.List<api.Row> buildUnnamed8500() => [
+      buildRow(),
+      buildRow(),
+    ];
 
 void checkUnnamed8500(core.List<api.Row> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1693,12 +1621,10 @@ void checkUnnamed8500(core.List<api.Row> o) {
   checkRow(o[1]);
 }
 
-core.List<api.MetricHeader> buildUnnamed8501() {
-  final o = <api.MetricHeader>[];
-  o.add(buildMetricHeader());
-  o.add(buildMetricHeader());
-  return o;
-}
+core.List<api.MetricHeader> buildUnnamed8501() => [
+      buildMetricHeader(),
+      buildMetricHeader(),
+    ];
 
 void checkUnnamed8501(core.List<api.MetricHeader> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1706,12 +1632,10 @@ void checkUnnamed8501(core.List<api.MetricHeader> o) {
   checkMetricHeader(o[1]);
 }
 
-core.List<api.Row> buildUnnamed8502() {
-  final o = <api.Row>[];
-  o.add(buildRow());
-  o.add(buildRow());
-  return o;
-}
+core.List<api.Row> buildUnnamed8502() => [
+      buildRow(),
+      buildRow(),
+    ];
 
 void checkUnnamed8502(core.List<api.Row> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1719,12 +1643,10 @@ void checkUnnamed8502(core.List<api.Row> o) {
   checkRow(o[1]);
 }
 
-core.List<api.Row> buildUnnamed8503() {
-  final o = <api.Row>[];
-  o.add(buildRow());
-  o.add(buildRow());
-  return o;
-}
+core.List<api.Row> buildUnnamed8503() => [
+      buildRow(),
+      buildRow(),
+    ];
 
 void checkUnnamed8503(core.List<api.Row> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1732,12 +1654,10 @@ void checkUnnamed8503(core.List<api.Row> o) {
   checkRow(o[1]);
 }
 
-core.List<api.Row> buildUnnamed8504() {
-  final o = <api.Row>[];
-  o.add(buildRow());
-  o.add(buildRow());
-  return o;
-}
+core.List<api.Row> buildUnnamed8504() => [
+      buildRow(),
+      buildRow(),
+    ];
 
 void checkUnnamed8504(core.List<api.Row> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1786,12 +1706,10 @@ void checkRunRealtimeReportResponse(api.RunRealtimeReportResponse o) {
   buildCounterRunRealtimeReportResponse--;
 }
 
-core.List<api.DateRange> buildUnnamed8505() {
-  final o = <api.DateRange>[];
-  o.add(buildDateRange());
-  o.add(buildDateRange());
-  return o;
-}
+core.List<api.DateRange> buildUnnamed8505() => [
+      buildDateRange(),
+      buildDateRange(),
+    ];
 
 void checkUnnamed8505(core.List<api.DateRange> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1799,12 +1717,10 @@ void checkUnnamed8505(core.List<api.DateRange> o) {
   checkDateRange(o[1]);
 }
 
-core.List<api.Dimension> buildUnnamed8506() {
-  final o = <api.Dimension>[];
-  o.add(buildDimension());
-  o.add(buildDimension());
-  return o;
-}
+core.List<api.Dimension> buildUnnamed8506() => [
+      buildDimension(),
+      buildDimension(),
+    ];
 
 void checkUnnamed8506(core.List<api.Dimension> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1812,12 +1728,10 @@ void checkUnnamed8506(core.List<api.Dimension> o) {
   checkDimension(o[1]);
 }
 
-core.List<core.String> buildUnnamed8507() {
-  final o = <core.String>[];
-  o.add('foo');
-  o.add('foo');
-  return o;
-}
+core.List<core.String> buildUnnamed8507() => [
+      'foo',
+      'foo',
+    ];
 
 void checkUnnamed8507(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1831,12 +1745,10 @@ void checkUnnamed8507(core.List<core.String> o) {
   );
 }
 
-core.List<api.Metric> buildUnnamed8508() {
-  final o = <api.Metric>[];
-  o.add(buildMetric());
-  o.add(buildMetric());
-  return o;
-}
+core.List<api.Metric> buildUnnamed8508() => [
+      buildMetric(),
+      buildMetric(),
+    ];
 
 void checkUnnamed8508(core.List<api.Metric> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1844,12 +1756,10 @@ void checkUnnamed8508(core.List<api.Metric> o) {
   checkMetric(o[1]);
 }
 
-core.List<api.OrderBy> buildUnnamed8509() {
-  final o = <api.OrderBy>[];
-  o.add(buildOrderBy());
-  o.add(buildOrderBy());
-  return o;
-}
+core.List<api.OrderBy> buildUnnamed8509() => [
+      buildOrderBy(),
+      buildOrderBy(),
+    ];
 
 void checkUnnamed8509(core.List<api.OrderBy> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1914,12 +1824,10 @@ void checkRunReportRequest(api.RunReportRequest o) {
   buildCounterRunReportRequest--;
 }
 
-core.List<api.DimensionHeader> buildUnnamed8510() {
-  final o = <api.DimensionHeader>[];
-  o.add(buildDimensionHeader());
-  o.add(buildDimensionHeader());
-  return o;
-}
+core.List<api.DimensionHeader> buildUnnamed8510() => [
+      buildDimensionHeader(),
+      buildDimensionHeader(),
+    ];
 
 void checkUnnamed8510(core.List<api.DimensionHeader> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1927,12 +1835,10 @@ void checkUnnamed8510(core.List<api.DimensionHeader> o) {
   checkDimensionHeader(o[1]);
 }
 
-core.List<api.Row> buildUnnamed8511() {
-  final o = <api.Row>[];
-  o.add(buildRow());
-  o.add(buildRow());
-  return o;
-}
+core.List<api.Row> buildUnnamed8511() => [
+      buildRow(),
+      buildRow(),
+    ];
 
 void checkUnnamed8511(core.List<api.Row> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1940,12 +1846,10 @@ void checkUnnamed8511(core.List<api.Row> o) {
   checkRow(o[1]);
 }
 
-core.List<api.MetricHeader> buildUnnamed8512() {
-  final o = <api.MetricHeader>[];
-  o.add(buildMetricHeader());
-  o.add(buildMetricHeader());
-  return o;
-}
+core.List<api.MetricHeader> buildUnnamed8512() => [
+      buildMetricHeader(),
+      buildMetricHeader(),
+    ];
 
 void checkUnnamed8512(core.List<api.MetricHeader> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1953,12 +1857,10 @@ void checkUnnamed8512(core.List<api.MetricHeader> o) {
   checkMetricHeader(o[1]);
 }
 
-core.List<api.Row> buildUnnamed8513() {
-  final o = <api.Row>[];
-  o.add(buildRow());
-  o.add(buildRow());
-  return o;
-}
+core.List<api.Row> buildUnnamed8513() => [
+      buildRow(),
+      buildRow(),
+    ];
 
 void checkUnnamed8513(core.List<api.Row> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1966,12 +1868,10 @@ void checkUnnamed8513(core.List<api.Row> o) {
   checkRow(o[1]);
 }
 
-core.List<api.Row> buildUnnamed8514() {
-  final o = <api.Row>[];
-  o.add(buildRow());
-  o.add(buildRow());
-  return o;
-}
+core.List<api.Row> buildUnnamed8514() => [
+      buildRow(),
+      buildRow(),
+    ];
 
 void checkUnnamed8514(core.List<api.Row> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1979,12 +1879,10 @@ void checkUnnamed8514(core.List<api.Row> o) {
   checkRow(o[1]);
 }
 
-core.List<api.Row> buildUnnamed8515() {
-  final o = <api.Row>[];
-  o.add(buildRow());
-  o.add(buildRow());
-  return o;
-}
+core.List<api.Row> buildUnnamed8515() => [
+      buildRow(),
+      buildRow(),
+    ];
 
 void checkUnnamed8515(core.List<api.Row> o) {
   unittest.expect(o, unittest.hasLength(2));

@@ -73,12 +73,10 @@ void checkAvailability(api.Availability o) {
   buildCounterAvailability--;
 }
 
-core.List<api.CustomDimension> buildUnnamed1789() {
-  final o = <api.CustomDimension>[];
-  o.add(buildCustomDimension());
-  o.add(buildCustomDimension());
-  return o;
-}
+core.List<api.CustomDimension> buildUnnamed1789() => [
+      buildCustomDimension(),
+      buildCustomDimension(),
+    ];
 
 void checkUnnamed1789(core.List<api.CustomDimension> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -86,12 +84,10 @@ void checkUnnamed1789(core.List<api.CustomDimension> o) {
   checkCustomDimension(o[1]);
 }
 
-core.List<api.CustomMetric> buildUnnamed1790() {
-  final o = <api.CustomMetric>[];
-  o.add(buildCustomMetric());
-  o.add(buildCustomMetric());
-  return o;
-}
+core.List<api.CustomMetric> buildUnnamed1790() => [
+      buildCustomMetric(),
+      buildCustomMetric(),
+    ];
 
 void checkUnnamed1790(core.List<api.CustomMetric> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -275,12 +271,10 @@ void checkConversion(api.Conversion o) {
   buildCounterConversion--;
 }
 
-core.List<api.Conversion> buildUnnamed1791() {
-  final o = <api.Conversion>[];
-  o.add(buildConversion());
-  o.add(buildConversion());
-  return o;
-}
+core.List<api.Conversion> buildUnnamed1791() => [
+      buildConversion(),
+      buildConversion(),
+    ];
 
 void checkUnnamed1791(core.List<api.Conversion> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -393,12 +387,10 @@ void checkReportFiles(api.ReportFiles o) {
   buildCounterReportFiles--;
 }
 
-core.List<api.ReportFiles> buildUnnamed1792() {
-  final o = <api.ReportFiles>[];
-  o.add(buildReportFiles());
-  o.add(buildReportFiles());
-  return o;
-}
+core.List<api.ReportFiles> buildUnnamed1792() => [
+      buildReportFiles(),
+      buildReportFiles(),
+    ];
 
 void checkUnnamed1792(core.List<api.ReportFiles> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -406,12 +398,10 @@ void checkUnnamed1792(core.List<api.ReportFiles> o) {
   checkReportFiles(o[1]);
 }
 
-core.List<api.ReportRow> buildUnnamed1793() {
-  final o = <api.ReportRow>[];
-  o.add(buildReportRow());
-  o.add(buildReportRow());
-  return o;
-}
+core.List<api.ReportRow> buildUnnamed1793() => [
+      buildReportRow(),
+      buildReportRow(),
+    ];
 
 void checkUnnamed1793(core.List<api.ReportRow> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -533,12 +523,10 @@ void checkReportApiColumnSpec(api.ReportApiColumnSpec o) {
   buildCounterReportApiColumnSpec--;
 }
 
-core.List<api.ReportApiColumnSpec> buildUnnamed1794() {
-  final o = <api.ReportApiColumnSpec>[];
-  o.add(buildReportApiColumnSpec());
-  o.add(buildReportApiColumnSpec());
-  return o;
-}
+core.List<api.ReportApiColumnSpec> buildUnnamed1794() => [
+      buildReportApiColumnSpec(),
+      buildReportApiColumnSpec(),
+    ];
 
 void checkUnnamed1794(core.List<api.ReportApiColumnSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -546,20 +534,18 @@ void checkUnnamed1794(core.List<api.ReportApiColumnSpec> o) {
   checkReportApiColumnSpec(o[1]);
 }
 
-core.List<core.Object> buildUnnamed1795() {
-  final o = <core.Object>[];
-  o.add({
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  });
-  o.add({
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  });
-  return o;
-}
+core.List<core.Object> buildUnnamed1795() => [
+      {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    ];
 
 void checkUnnamed1795(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -619,12 +605,10 @@ void checkReportRequestFilters(api.ReportRequestFilters o) {
   buildCounterReportRequestFilters--;
 }
 
-core.List<api.ReportRequestFilters> buildUnnamed1796() {
-  final o = <api.ReportRequestFilters>[];
-  o.add(buildReportRequestFilters());
-  o.add(buildReportRequestFilters());
-  return o;
-}
+core.List<api.ReportRequestFilters> buildUnnamed1796() => [
+      buildReportRequestFilters(),
+      buildReportRequestFilters(),
+    ];
 
 void checkUnnamed1796(core.List<api.ReportRequestFilters> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -656,12 +640,10 @@ void checkReportRequestOrderBy(api.ReportRequestOrderBy o) {
   buildCounterReportRequestOrderBy--;
 }
 
-core.List<api.ReportRequestOrderBy> buildUnnamed1797() {
-  final o = <api.ReportRequestOrderBy>[];
-  o.add(buildReportRequestOrderBy());
-  o.add(buildReportRequestOrderBy());
-  return o;
-}
+core.List<api.ReportRequestOrderBy> buildUnnamed1797() => [
+      buildReportRequestOrderBy(),
+      buildReportRequestOrderBy(),
+    ];
 
 void checkUnnamed1797(core.List<api.ReportRequestOrderBy> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -900,12 +882,10 @@ void checkSavedColumn(api.SavedColumn o) {
   buildCounterSavedColumn--;
 }
 
-core.List<api.SavedColumn> buildUnnamed1798() {
-  final o = <api.SavedColumn>[];
-  o.add(buildSavedColumn());
-  o.add(buildSavedColumn());
-  return o;
-}
+core.List<api.SavedColumn> buildUnnamed1798() => [
+      buildSavedColumn(),
+      buildSavedColumn(),
+    ];
 
 void checkUnnamed1798(core.List<api.SavedColumn> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -937,12 +917,10 @@ void checkSavedColumnList(api.SavedColumnList o) {
   buildCounterSavedColumnList--;
 }
 
-core.List<api.Availability> buildUnnamed1799() {
-  final o = <api.Availability>[];
-  o.add(buildAvailability());
-  o.add(buildAvailability());
-  return o;
-}
+core.List<api.Availability> buildUnnamed1799() => [
+      buildAvailability(),
+      buildAvailability(),
+    ];
 
 void checkUnnamed1799(core.List<api.Availability> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -969,12 +947,10 @@ void checkUpdateAvailabilityRequest(api.UpdateAvailabilityRequest o) {
   buildCounterUpdateAvailabilityRequest--;
 }
 
-core.List<api.Availability> buildUnnamed1800() {
-  final o = <api.Availability>[];
-  o.add(buildAvailability());
-  o.add(buildAvailability());
-  return o;
-}
+core.List<api.Availability> buildUnnamed1800() => [
+      buildAvailability(),
+      buildAvailability(),
+    ];
 
 void checkUnnamed1800(core.List<api.Availability> o) {
   unittest.expect(o, unittest.hasLength(2));
