@@ -1,5 +1,5 @@
 name: googleapis
-version: 4.0.0-dev
+version: 4.0.0
 description: Auto-generated client libraries for accessing Google APIs described through the API discovery service.
 repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
 environment:
