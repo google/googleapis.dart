@@ -4675,8 +4675,8 @@ class ClusterStatus {
   /// for use.
   /// - "ERROR" : The cluster encountered an error. It is not ready for use.
   /// - "ERROR_DUE_TO_UPDATE" : The cluster has encountered an error while being
-  /// updated. Jobs can still be submitted to the cluster, but it can no longer
-  /// be updated.
+  /// updated. Jobs can be submitted to the cluster, but the cluster cannot be
+  /// updated.
   /// - "DELETING" : The cluster is being deleted. It cannot be used.
   /// - "UPDATING" : The cluster is being updated. It continues to accept and
   /// process jobs.

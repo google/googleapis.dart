@@ -1432,10 +1432,16 @@ class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
   /// This should be equal to SaasInstanceNode.node_id.
   core.String? nodeId;
 
+  /// If present, this will override eligibility for the node coming from
+  /// instance or exclusions for specified SLIs.
+  GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility?
+      perSliEligibility;
+
   GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata({
     this.exclusions,
     this.location,
     this.nodeId,
+    this.perSliEligibility,
   });
 
   GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata.fromJson(
@@ -1456,6 +1462,11 @@ class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
           nodeId: _json.containsKey('nodeId')
               ? _json['nodeId'] as core.String
               : null,
+          perSliEligibility: _json.containsKey('perSliEligibility')
+              ? GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility
+                  .fromJson(_json['perSliEligibility']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1463,6 +1474,8 @@ class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
           'exclusions': exclusions!.map((value) => value.toJson()).toList(),
         if (location != null) 'location': location!,
         if (nodeId != null) 'nodeId': nodeId!,
+        if (perSliEligibility != null)
+          'perSliEligibility': perSliEligibility!.toJson(),
       };
 }
 

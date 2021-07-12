@@ -647,10 +647,13 @@ class AwsS3Data {
 
   /// Input only.
   ///
-  /// Role arn to support temporary credentials via AssumeRoleWithWebIdentity.
-  /// When role arn is provided, transfer service will fetch temporary
-  /// credentials for the session using AssumeRoleWithWebIdentity call for the
-  /// provided role using the \[GoogleServiceAccount\] for this project.
+  /// The Amazon Resource Name (ARN) of the role to support temporary
+  /// credentials via `AssumeRoleWithWebIdentity`. For more information about
+  /// ARNs, see
+  /// [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns).
+  /// When a role ARN is provided, Transfer Service fetches temporary
+  /// credentials for the session using a `AssumeRoleWithWebIdentity` call for
+  /// the provided role using the GoogleServiceAccount for this project.
   core.String? roleArn;
 
   AwsS3Data({
@@ -979,7 +982,7 @@ class ErrorSummary {
 
   /// Error samples.
   ///
-  /// At most 5 error log entries will be recorded for a given error code for a
+  /// At most 5 error log entries are recorded for a given error code for a
   /// single transfer operation.
   core.List<ErrorLogEntry>? errorLogEntries;
 
@@ -1098,9 +1101,9 @@ class GoogleServiceAccount {
 /// When an object located at `http(s)://hostname:port/` is transferred to a
 /// data sink, the name of the object at the data sink is `/`. * If the
 /// specified size of an object does not match the actual size of the object
-/// fetched, the object will not be transferred. * If the specified MD5 does not
-/// match the MD5 computed from the transferred bytes, the object transfer will
-/// fail. * Ensure that each URL you specify is publicly accessible. For
+/// fetched, the object is not transferred. * If the specified MD5 does not
+/// match the MD5 computed from the transferred bytes, the object transfer
+/// fails. * Ensure that each URL you specify is publicly accessible. For
 /// example, in Cloud Storage you can \[share an object publicly\]
 /// (/storage/docs/cloud-console#_sharingdata) and get a link to it. * Storage
 /// Transfer Service obeys `robots.txt` rules and requires the source HTTP
@@ -1198,14 +1201,14 @@ class ListTransferJobsResponse {
       };
 }
 
-/// Specification to configure notifications published to Cloud Pub/Sub.
+/// Specification to configure notifications published to Pub/Sub.
 ///
-/// Notifications will be published to the customer-provided topic using the
+/// Notifications are published to the customer-provided topic using the
 /// following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType
 /// values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`:
 /// the project_id of the `TransferOperation` * `"transferJobName"`: the
 /// transfer_job_name of the `TransferOperation` * `"transferOperationName"`:
-/// the name of the `TransferOperation` The `PubsubMessage.data` will contain a
+/// the name of the `TransferOperation` The `PubsubMessage.data` contains a
 /// TransferOperation resource formatted according to the specified
 /// `PayloadFormat`.
 class NotificationConfig {
@@ -1226,11 +1229,10 @@ class NotificationConfig {
   /// in application/json.
   core.String? payloadFormat;
 
-  /// The `Topic.name` of the Cloud Pub/Sub topic to which to publish
-  /// notifications.
+  /// The `Topic.name` of the Pub/Sub topic to which to publish notifications.
   ///
   /// Must be of the format: `projects/{project}/topics/{topic}`. Not matching
-  /// this format will result in an INVALID_ARGUMENT error.
+  /// this format results in an INVALID_ARGUMENT error.
   ///
   /// Required.
   core.String? pubsubTopic;
@@ -1263,7 +1265,7 @@ class NotificationConfig {
       };
 }
 
-/// Conditions that determine which objects will be transferred.
+/// Conditions that determine which objects are transferred.
 ///
 /// Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The
 /// "last modification time" refers to the time of the last change to the
@@ -1316,7 +1318,7 @@ class ObjectConditions {
   core.List<core.String>? includePrefixes;
 
   /// If specified, only objects with a "last modification time" before this
-  /// timestamp and objects that don't have a "last modification time" will be
+  /// timestamp and objects that don't have a "last modification time" are
   /// transferred.
   core.String? lastModifiedBefore;
 
@@ -1548,12 +1550,12 @@ class Schedule {
 
   /// The last day a transfer runs.
   ///
-  /// Date boundaries are determined relative to UTC time. A job will run once
-  /// per 24 hours within the following guidelines: * If `schedule_end_date` and
+  /// Date boundaries are determined relative to UTC time. A job runs once per
+  /// 24 hours within the following guidelines: * If `schedule_end_date` and
   /// schedule_start_date are the same and in the future relative to UTC, the
   /// transfer is executed only one time. * If `schedule_end_date` is later than
   /// `schedule_start_date` and `schedule_end_date` is in the future relative to
-  /// UTC, the job will run each day at start_time_of_day through
+  /// UTC, the job runs each day at start_time_of_day through
   /// `schedule_end_date`.
   Date? scheduleEndDate;
 
@@ -1563,12 +1565,12 @@ class Schedule {
   /// `schedule_start_date` and start_time_of_day are in the past relative to
   /// the job's creation time, the transfer starts the day after you schedule
   /// the transfer request. **Note:** When starting jobs at or near midnight UTC
-  /// it is possible that a job will start later than expected. For example, if
-  /// you send an outbound request on June 1 one millisecond prior to midnight
-  /// UTC and the Storage Transfer Service server receives the request on June
-  /// 2, then it will create a TransferJob with `schedule_start_date` set to
-  /// June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled
-  /// TransferOperation will take place on June 3 at midnight UTC.
+  /// it is possible that a job starts later than expected. For example, if you
+  /// send an outbound request on June 1 one millisecond prior to midnight UTC
+  /// and the Storage Transfer Service server receives the request on June 2,
+  /// then it creates a TransferJob with `schedule_start_date` set to June 2 and
+  /// a `start_time_of_day` set to midnight UTC. The first scheduled
+  /// TransferOperation takes place on June 3 at midnight UTC.
   ///
   /// Required.
   Date? scheduleStartDate;
@@ -1939,14 +1941,14 @@ class TransferJob {
   /// created.
   ///
   /// If this field is empty in a CreateTransferJobRequest, Storage Transfer
-  /// Service will assign a unique name. Otherwise, the specified name is used
-  /// as the unique name for this job. If the specified name is in use by a job,
+  /// Service assigns a unique name. Otherwise, the specified name is used as
+  /// the unique name for this job. If the specified name is in use by a job,
   /// the creation request fails with an ALREADY_EXISTS error. This name must
   /// start with `"transferJobs/"` prefix and end with a letter or a number, and
   /// should be no more than 128 characters. This name must not start with
   /// 'transferJobs/OPI'. 'transferJobs/OPI' is a reserved prefix. Example:
   /// `"transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$"` Invalid job names
-  /// will fail with an INVALID_ARGUMENT error.
+  /// fail with an INVALID_ARGUMENT error.
   core.String? name;
 
   /// Notification configuration.
@@ -1957,8 +1959,8 @@ class TransferJob {
 
   /// Specifies schedule for the transfer job.
   ///
-  /// This is an optional field. When the field is not set, the job will never
-  /// execute a transfer, unless you invoke RunTransferJob or update the job to
+  /// This is an optional field. When the field is not set, the job never
+  /// executes a transfer, unless you invoke RunTransferJob or update the job to
   /// have a non-empty schedule.
   Schedule? schedule;
 
@@ -1971,8 +1973,8 @@ class TransferJob {
   /// affect the current operation.
   /// Possible string values are:
   /// - "STATUS_UNSPECIFIED" : Zero is an illegal value.
-  /// - "ENABLED" : New transfers will be performed based on the schedule.
-  /// - "DISABLED" : New transfers will not be scheduled.
+  /// - "ENABLED" : New transfers are performed based on the schedule.
+  /// - "DISABLED" : New transfers are not scheduled.
   /// - "DELETED" : This is a soft delete state. After a transfer job is set to
   /// this state, the job and all the transfer executions are subject to garbage
   /// collection. Transfer jobs become eligible for garbage collection 30 days
@@ -2180,7 +2182,7 @@ class TransferOptions {
   ///
   /// The default is that only objects that are different from the source are
   /// ovewritten. If true, all objects in the sink whose name matches an object
-  /// in the source will be overwritten with the source object.
+  /// in the source are overwritten with the source object.
   core.bool? overwriteObjectsAlreadyExistingInSink;
 
   TransferOptions({

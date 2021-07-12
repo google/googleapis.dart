@@ -364,7 +364,7 @@
             }
         }
     },
-    "revision": "20210708",
+    "revision": "20210709",
     "rootUrl": "https://paymentsresellersubscription.googleapis.com/",
     "schemas": {
         "GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest": {

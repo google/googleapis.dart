@@ -26,14 +26,14 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.Rule> buildUnnamed6365() {
+core.List<api.Rule> buildUnnamed6377() {
   final o = <api.Rule>[];
   o.add(buildRule());
   o.add(buildRule());
   return o;
 }
 
-void checkUnnamed6365(core.List<api.Rule> o) {
+void checkUnnamed6377(core.List<api.Rule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRule(o[0]);
   checkRule(o[1]);
@@ -46,7 +46,7 @@ api.ChannelGrouping buildChannelGrouping() {
   if (buildCounterChannelGrouping < 3) {
     o.fallbackName = 'foo';
     o.name = 'foo';
-    o.rules = buildUnnamed6365();
+    o.rules = buildUnnamed6377();
   }
   buildCounterChannelGrouping--;
   return o;
@@ -63,19 +63,19 @@ void checkChannelGrouping(api.ChannelGrouping o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed6365(o.rules!);
+    checkUnnamed6377(o.rules!);
   }
   buildCounterChannelGrouping--;
 }
 
-core.List<api.EventFilter> buildUnnamed6366() {
+core.List<api.EventFilter> buildUnnamed6378() {
   final o = <api.EventFilter>[];
   o.add(buildEventFilter());
   o.add(buildEventFilter());
   return o;
 }
 
-void checkUnnamed6366(core.List<api.EventFilter> o) {
+void checkUnnamed6378(core.List<api.EventFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEventFilter(o[0]);
   checkEventFilter(o[1]);
@@ -86,7 +86,7 @@ api.DisjunctiveMatchStatement buildDisjunctiveMatchStatement() {
   final o = api.DisjunctiveMatchStatement();
   buildCounterDisjunctiveMatchStatement++;
   if (buildCounterDisjunctiveMatchStatement < 3) {
-    o.eventFilters = buildUnnamed6366();
+    o.eventFilters = buildUnnamed6378();
   }
   buildCounterDisjunctiveMatchStatement--;
   return o;
@@ -95,7 +95,7 @@ api.DisjunctiveMatchStatement buildDisjunctiveMatchStatement() {
 void checkDisjunctiveMatchStatement(api.DisjunctiveMatchStatement o) {
   buildCounterDisjunctiveMatchStatement++;
   if (buildCounterDisjunctiveMatchStatement < 3) {
-    checkUnnamed6366(o.eventFilters!);
+    checkUnnamed6378(o.eventFilters!);
   }
   buildCounterDisjunctiveMatchStatement--;
 }
@@ -146,14 +146,14 @@ void checkFilterPair(api.FilterPair o) {
   buildCounterFilterPair--;
 }
 
-core.List<api.Query> buildUnnamed6367() {
+core.List<api.Query> buildUnnamed6379() {
   final o = <api.Query>[];
   o.add(buildQuery());
   o.add(buildQuery());
   return o;
 }
 
-void checkUnnamed6367(core.List<api.Query> o) {
+void checkUnnamed6379(core.List<api.Query> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkQuery(o[0]);
   checkQuery(o[1]);
@@ -166,7 +166,7 @@ api.ListQueriesResponse buildListQueriesResponse() {
   if (buildCounterListQueriesResponse < 3) {
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.queries = buildUnnamed6367();
+    o.queries = buildUnnamed6379();
   }
   buildCounterListQueriesResponse--;
   return o;
@@ -183,19 +183,19 @@ void checkListQueriesResponse(api.ListQueriesResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed6367(o.queries!);
+    checkUnnamed6379(o.queries!);
   }
   buildCounterListQueriesResponse--;
 }
 
-core.List<api.Report> buildUnnamed6368() {
+core.List<api.Report> buildUnnamed6380() {
   final o = <api.Report>[];
   o.add(buildReport());
   o.add(buildReport());
   return o;
 }
 
-void checkUnnamed6368(core.List<api.Report> o) {
+void checkUnnamed6380(core.List<api.Report> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReport(o[0]);
   checkReport(o[1]);
@@ -208,7 +208,7 @@ api.ListReportsResponse buildListReportsResponse() {
   if (buildCounterListReportsResponse < 3) {
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.reports = buildUnnamed6368();
+    o.reports = buildUnnamed6380();
   }
   buildCounterListReportsResponse--;
   return o;
@@ -225,7 +225,7 @@ void checkListReportsResponse(api.ListReportsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed6368(o.reports!);
+    checkUnnamed6380(o.reports!);
   }
   buildCounterListReportsResponse--;
 }
@@ -251,27 +251,27 @@ void checkOptions(api.Options o) {
   buildCounterOptions--;
 }
 
-core.List<api.FilterPair> buildUnnamed6369() {
+core.List<api.FilterPair> buildUnnamed6381() {
   final o = <api.FilterPair>[];
   o.add(buildFilterPair());
   o.add(buildFilterPair());
   return o;
 }
 
-void checkUnnamed6369(core.List<api.FilterPair> o) {
+void checkUnnamed6381(core.List<api.FilterPair> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFilterPair(o[0]);
   checkFilterPair(o[1]);
 }
 
-core.List<core.String> buildUnnamed6370() {
+core.List<core.String> buildUnnamed6382() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6370(core.List<core.String> o) {
+void checkUnnamed6382(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -283,14 +283,14 @@ void checkUnnamed6370(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed6371() {
+core.List<core.String> buildUnnamed6383() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6371(core.List<core.String> o) {
+void checkUnnamed6383(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -307,10 +307,10 @@ api.Parameters buildParameters() {
   final o = api.Parameters();
   buildCounterParameters++;
   if (buildCounterParameters < 3) {
-    o.filters = buildUnnamed6369();
-    o.groupBys = buildUnnamed6370();
+    o.filters = buildUnnamed6381();
+    o.groupBys = buildUnnamed6382();
     o.includeInviteData = true;
-    o.metrics = buildUnnamed6371();
+    o.metrics = buildUnnamed6383();
     o.options = buildOptions();
     o.type = 'foo';
   }
@@ -321,10 +321,10 @@ api.Parameters buildParameters() {
 void checkParameters(api.Parameters o) {
   buildCounterParameters++;
   if (buildCounterParameters < 3) {
-    checkUnnamed6369(o.filters!);
-    checkUnnamed6370(o.groupBys!);
+    checkUnnamed6381(o.filters!);
+    checkUnnamed6382(o.groupBys!);
     unittest.expect(o.includeInviteData!, unittest.isTrue);
-    checkUnnamed6371(o.metrics!);
+    checkUnnamed6383(o.metrics!);
     checkOptions(o.options!);
     unittest.expect(
       o.type!,
@@ -334,14 +334,14 @@ void checkParameters(api.Parameters o) {
   buildCounterParameters--;
 }
 
-core.List<api.EventFilter> buildUnnamed6372() {
+core.List<api.EventFilter> buildUnnamed6384() {
   final o = <api.EventFilter>[];
   o.add(buildEventFilter());
   o.add(buildEventFilter());
   return o;
 }
 
-void checkUnnamed6372(core.List<api.EventFilter> o) {
+void checkUnnamed6384(core.List<api.EventFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEventFilter(o[0]);
   checkEventFilter(o[1]);
@@ -352,7 +352,7 @@ api.PathFilter buildPathFilter() {
   final o = api.PathFilter();
   buildCounterPathFilter++;
   if (buildCounterPathFilter < 3) {
-    o.eventFilters = buildUnnamed6372();
+    o.eventFilters = buildUnnamed6384();
     o.pathMatchPosition = 'foo';
   }
   buildCounterPathFilter--;
@@ -362,7 +362,7 @@ api.PathFilter buildPathFilter() {
 void checkPathFilter(api.PathFilter o) {
   buildCounterPathFilter++;
   if (buildCounterPathFilter < 3) {
-    checkUnnamed6372(o.eventFilters!);
+    checkUnnamed6384(o.eventFilters!);
     unittest.expect(
       o.pathMatchPosition!,
       unittest.equals('foo'),
@@ -371,14 +371,14 @@ void checkPathFilter(api.PathFilter o) {
   buildCounterPathFilter--;
 }
 
-core.List<api.PathFilter> buildUnnamed6373() {
+core.List<api.PathFilter> buildUnnamed6385() {
   final o = <api.PathFilter>[];
   o.add(buildPathFilter());
   o.add(buildPathFilter());
   return o;
 }
 
-void checkUnnamed6373(core.List<api.PathFilter> o) {
+void checkUnnamed6385(core.List<api.PathFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPathFilter(o[0]);
   checkPathFilter(o[1]);
@@ -390,7 +390,7 @@ api.PathQueryOptions buildPathQueryOptions() {
   buildCounterPathQueryOptions++;
   if (buildCounterPathQueryOptions < 3) {
     o.channelGrouping = buildChannelGrouping();
-    o.pathFilters = buildUnnamed6373();
+    o.pathFilters = buildUnnamed6385();
   }
   buildCounterPathQueryOptions--;
   return o;
@@ -400,19 +400,19 @@ void checkPathQueryOptions(api.PathQueryOptions o) {
   buildCounterPathQueryOptions++;
   if (buildCounterPathQueryOptions < 3) {
     checkChannelGrouping(o.channelGrouping!);
-    checkUnnamed6373(o.pathFilters!);
+    checkUnnamed6385(o.pathFilters!);
   }
   buildCounterPathQueryOptions--;
 }
 
-core.List<core.String> buildUnnamed6374() {
+core.List<core.String> buildUnnamed6386() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6374(core.List<core.String> o) {
+void checkUnnamed6386(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -431,7 +431,7 @@ api.PathQueryOptionsFilter buildPathQueryOptionsFilter() {
   if (buildCounterPathQueryOptionsFilter < 3) {
     o.filter = 'foo';
     o.match = 'foo';
-    o.values = buildUnnamed6374();
+    o.values = buildUnnamed6386();
   }
   buildCounterPathQueryOptionsFilter--;
   return o;
@@ -448,7 +448,7 @@ void checkPathQueryOptionsFilter(api.PathQueryOptionsFilter o) {
       o.match!,
       unittest.equals('foo'),
     );
-    checkUnnamed6374(o.values!);
+    checkUnnamed6386(o.values!);
   }
   buildCounterPathQueryOptionsFilter--;
 }
@@ -501,14 +501,14 @@ void checkQuery(api.Query o) {
   buildCounterQuery--;
 }
 
-core.List<core.String> buildUnnamed6375() {
+core.List<core.String> buildUnnamed6387() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6375(core.List<core.String> o) {
+void checkUnnamed6387(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -534,7 +534,7 @@ api.QueryMetadata buildQueryMetadata() {
     o.reportCount = 42;
     o.running = true;
     o.sendNotification = true;
-    o.shareEmailAddress = buildUnnamed6375();
+    o.shareEmailAddress = buildUnnamed6387();
     o.title = 'foo';
   }
   buildCounterQueryMetadata--;
@@ -574,7 +574,7 @@ void checkQueryMetadata(api.QueryMetadata o) {
     );
     unittest.expect(o.running!, unittest.isTrue);
     unittest.expect(o.sendNotification!, unittest.isTrue);
-    checkUnnamed6375(o.shareEmailAddress!);
+    checkUnnamed6387(o.shareEmailAddress!);
     unittest.expect(
       o.title!,
       unittest.equals('foo'),
@@ -765,14 +765,14 @@ void checkReportStatus(api.ReportStatus o) {
   buildCounterReportStatus--;
 }
 
-core.List<api.DisjunctiveMatchStatement> buildUnnamed6376() {
+core.List<api.DisjunctiveMatchStatement> buildUnnamed6388() {
   final o = <api.DisjunctiveMatchStatement>[];
   o.add(buildDisjunctiveMatchStatement());
   o.add(buildDisjunctiveMatchStatement());
   return o;
 }
 
-void checkUnnamed6376(core.List<api.DisjunctiveMatchStatement> o) {
+void checkUnnamed6388(core.List<api.DisjunctiveMatchStatement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDisjunctiveMatchStatement(o[0]);
   checkDisjunctiveMatchStatement(o[1]);
@@ -783,7 +783,7 @@ api.Rule buildRule() {
   final o = api.Rule();
   buildCounterRule++;
   if (buildCounterRule < 3) {
-    o.disjunctiveMatchStatements = buildUnnamed6376();
+    o.disjunctiveMatchStatements = buildUnnamed6388();
     o.name = 'foo';
   }
   buildCounterRule--;
@@ -793,7 +793,7 @@ api.Rule buildRule() {
 void checkRule(api.Rule o) {
   buildCounterRule++;
   if (buildCounterRule < 3) {
-    checkUnnamed6376(o.disjunctiveMatchStatements!);
+    checkUnnamed6388(o.disjunctiveMatchStatements!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),

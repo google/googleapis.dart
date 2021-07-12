@@ -123,14 +123,14 @@ void checkKey(api.Key o) {
   buildCounterKey--;
 }
 
-core.List<api.Bin> buildUnnamed7240() {
+core.List<api.Bin> buildUnnamed7252() {
   final o = <api.Bin>[];
   o.add(buildBin());
   o.add(buildBin());
   return o;
 }
 
-void checkUnnamed7240(core.List<api.Bin> o) {
+void checkUnnamed7252(core.List<api.Bin> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBin(o[0]);
   checkBin(o[1]);
@@ -141,7 +141,7 @@ api.Metric buildMetric() {
   final o = api.Metric();
   buildCounterMetric++;
   if (buildCounterMetric < 3) {
-    o.histogram = buildUnnamed7240();
+    o.histogram = buildUnnamed7252();
     o.percentiles = buildPercentiles();
   }
   buildCounterMetric--;
@@ -151,7 +151,7 @@ api.Metric buildMetric() {
 void checkMetric(api.Metric o) {
   buildCounterMetric++;
   if (buildCounterMetric < 3) {
-    checkUnnamed7240(o.histogram!);
+    checkUnnamed7252(o.histogram!);
     checkPercentiles(o.percentiles!);
   }
   buildCounterMetric--;
@@ -193,14 +193,14 @@ void checkPercentiles(api.Percentiles o) {
   buildCounterPercentiles--;
 }
 
-core.List<core.String> buildUnnamed7241() {
+core.List<core.String> buildUnnamed7253() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed7241(core.List<core.String> o) {
+void checkUnnamed7253(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -219,7 +219,7 @@ api.QueryRequest buildQueryRequest() {
   if (buildCounterQueryRequest < 3) {
     o.effectiveConnectionType = 'foo';
     o.formFactor = 'foo';
-    o.metrics = buildUnnamed7241();
+    o.metrics = buildUnnamed7253();
     o.origin = 'foo';
     o.url = 'foo';
   }
@@ -238,7 +238,7 @@ void checkQueryRequest(api.QueryRequest o) {
       o.formFactor!,
       unittest.equals('foo'),
     );
-    checkUnnamed7241(o.metrics!);
+    checkUnnamed7253(o.metrics!);
     unittest.expect(
       o.origin!,
       unittest.equals('foo'),
@@ -272,14 +272,14 @@ void checkQueryResponse(api.QueryResponse o) {
   buildCounterQueryResponse--;
 }
 
-core.Map<core.String, api.Metric> buildUnnamed7242() {
+core.Map<core.String, api.Metric> buildUnnamed7254() {
   final o = <core.String, api.Metric>{};
   o['x'] = buildMetric();
   o['y'] = buildMetric();
   return o;
 }
 
-void checkUnnamed7242(core.Map<core.String, api.Metric> o) {
+void checkUnnamed7254(core.Map<core.String, api.Metric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetric(o['x']!);
   checkMetric(o['y']!);
@@ -291,7 +291,7 @@ api.Record buildRecord() {
   buildCounterRecord++;
   if (buildCounterRecord < 3) {
     o.key = buildKey();
-    o.metrics = buildUnnamed7242();
+    o.metrics = buildUnnamed7254();
   }
   buildCounterRecord--;
   return o;
@@ -301,7 +301,7 @@ void checkRecord(api.Record o) {
   buildCounterRecord++;
   if (buildCounterRecord < 3) {
     checkKey(o.key!);
-    checkUnnamed7242(o.metrics!);
+    checkUnnamed7254(o.metrics!);
   }
   buildCounterRecord--;
 }

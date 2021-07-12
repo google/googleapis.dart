@@ -26,14 +26,14 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<core.int> buildUnnamed1646() {
+core.List<core.int> buildUnnamed1657() {
   final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
 }
 
-void checkUnnamed1646(core.List<core.int> o) {
+void checkUnnamed1657(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -45,14 +45,14 @@ void checkUnnamed1646(core.List<core.int> o) {
   );
 }
 
-core.List<core.int> buildUnnamed1647() {
+core.List<core.int> buildUnnamed1658() {
   final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
 }
 
-void checkUnnamed1647(core.List<core.int> o) {
+void checkUnnamed1658(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -64,14 +64,14 @@ void checkUnnamed1647(core.List<core.int> o) {
   );
 }
 
-core.List<core.int> buildUnnamed1648() {
+core.List<core.int> buildUnnamed1659() {
   final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
 }
 
-void checkUnnamed1648(core.List<core.int> o) {
+void checkUnnamed1659(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -90,9 +90,9 @@ api.Area buildArea() {
   if (buildCounterArea < 3) {
     o.basemapZOrder = buildBasemapZOrder();
     o.hasExternalEdges = true;
-    o.internalEdges = buildUnnamed1646();
-    o.loopBreaks = buildUnnamed1647();
-    o.triangleIndices = buildUnnamed1648();
+    o.internalEdges = buildUnnamed1657();
+    o.loopBreaks = buildUnnamed1658();
+    o.triangleIndices = buildUnnamed1659();
     o.type = 'foo';
     o.vertexOffsets = buildVertex2DList();
     o.zOrder = 42;
@@ -106,9 +106,9 @@ void checkArea(api.Area o) {
   if (buildCounterArea < 3) {
     checkBasemapZOrder(o.basemapZOrder!);
     unittest.expect(o.hasExternalEdges!, unittest.isTrue);
-    checkUnnamed1646(o.internalEdges!);
-    checkUnnamed1647(o.loopBreaks!);
-    checkUnnamed1648(o.triangleIndices!);
+    checkUnnamed1657(o.internalEdges!);
+    checkUnnamed1658(o.loopBreaks!);
+    checkUnnamed1659(o.triangleIndices!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -183,14 +183,14 @@ void checkExtrudedArea(api.ExtrudedArea o) {
   buildCounterExtrudedArea--;
 }
 
-core.List<api.Relation> buildUnnamed1649() {
+core.List<api.Relation> buildUnnamed1660() {
   final o = <api.Relation>[];
   o.add(buildRelation());
   o.add(buildRelation());
   return o;
 }
 
-void checkUnnamed1649(core.List<api.Relation> o) {
+void checkUnnamed1660(core.List<api.Relation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRelation(o[0]);
   checkRelation(o[1]);
@@ -204,7 +204,7 @@ api.Feature buildFeature() {
     o.displayName = 'foo';
     o.geometry = buildGeometry();
     o.placeId = 'foo';
-    o.relations = buildUnnamed1649();
+    o.relations = buildUnnamed1660();
     o.segmentInfo = buildSegmentInfo();
     o.type = 'foo';
   }
@@ -224,7 +224,7 @@ void checkFeature(api.Feature o) {
       o.placeId!,
       unittest.equals('foo'),
     );
-    checkUnnamed1649(o.relations!);
+    checkUnnamed1660(o.relations!);
     checkSegmentInfo(o.segmentInfo!);
     unittest.expect(
       o.type!,
@@ -234,27 +234,27 @@ void checkFeature(api.Feature o) {
   buildCounterFeature--;
 }
 
-core.List<api.Feature> buildUnnamed1650() {
+core.List<api.Feature> buildUnnamed1661() {
   final o = <api.Feature>[];
   o.add(buildFeature());
   o.add(buildFeature());
   return o;
 }
 
-void checkUnnamed1650(core.List<api.Feature> o) {
+void checkUnnamed1661(core.List<api.Feature> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFeature(o[0]);
   checkFeature(o[1]);
 }
 
-core.List<api.ProviderInfo> buildUnnamed1651() {
+core.List<api.ProviderInfo> buildUnnamed1662() {
   final o = <api.ProviderInfo>[];
   o.add(buildProviderInfo());
   o.add(buildProviderInfo());
   return o;
 }
 
-void checkUnnamed1651(core.List<api.ProviderInfo> o) {
+void checkUnnamed1662(core.List<api.ProviderInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProviderInfo(o[0]);
   checkProviderInfo(o[1]);
@@ -266,9 +266,9 @@ api.FeatureTile buildFeatureTile() {
   buildCounterFeatureTile++;
   if (buildCounterFeatureTile < 3) {
     o.coordinates = buildTileCoordinates();
-    o.features = buildUnnamed1650();
+    o.features = buildUnnamed1661();
     o.name = 'foo';
-    o.providers = buildUnnamed1651();
+    o.providers = buildUnnamed1662();
     o.status = 'foo';
     o.versionId = 'foo';
   }
@@ -280,12 +280,12 @@ void checkFeatureTile(api.FeatureTile o) {
   buildCounterFeatureTile++;
   if (buildCounterFeatureTile < 3) {
     checkTileCoordinates(o.coordinates!);
-    checkUnnamed1650(o.features!);
+    checkUnnamed1661(o.features!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed1651(o.providers!);
+    checkUnnamed1662(o.providers!);
     unittest.expect(
       o.status!,
       unittest.equals('foo'),
@@ -298,14 +298,14 @@ void checkFeatureTile(api.FeatureTile o) {
   buildCounterFeatureTile--;
 }
 
-core.List<api.Row> buildUnnamed1652() {
+core.List<api.Row> buildUnnamed1663() {
   final o = <api.Row>[];
   o.add(buildRow());
   o.add(buildRow());
   return o;
 }
 
-void checkUnnamed1652(core.List<api.Row> o) {
+void checkUnnamed1663(core.List<api.Row> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRow(o[0]);
   checkRow(o[1]);
@@ -317,7 +317,7 @@ api.FirstDerivativeElevationGrid buildFirstDerivativeElevationGrid() {
   buildCounterFirstDerivativeElevationGrid++;
   if (buildCounterFirstDerivativeElevationGrid < 3) {
     o.altitudeMultiplier = 42.0;
-    o.rows = buildUnnamed1652();
+    o.rows = buildUnnamed1663();
   }
   buildCounterFirstDerivativeElevationGrid--;
   return o;
@@ -330,58 +330,58 @@ void checkFirstDerivativeElevationGrid(api.FirstDerivativeElevationGrid o) {
       o.altitudeMultiplier!,
       unittest.equals(42.0),
     );
-    checkUnnamed1652(o.rows!);
+    checkUnnamed1663(o.rows!);
   }
   buildCounterFirstDerivativeElevationGrid--;
 }
 
-core.List<api.Area> buildUnnamed1653() {
+core.List<api.Area> buildUnnamed1664() {
   final o = <api.Area>[];
   o.add(buildArea());
   o.add(buildArea());
   return o;
 }
 
-void checkUnnamed1653(core.List<api.Area> o) {
+void checkUnnamed1664(core.List<api.Area> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkArea(o[0]);
   checkArea(o[1]);
 }
 
-core.List<api.ExtrudedArea> buildUnnamed1654() {
+core.List<api.ExtrudedArea> buildUnnamed1665() {
   final o = <api.ExtrudedArea>[];
   o.add(buildExtrudedArea());
   o.add(buildExtrudedArea());
   return o;
 }
 
-void checkUnnamed1654(core.List<api.ExtrudedArea> o) {
+void checkUnnamed1665(core.List<api.ExtrudedArea> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkExtrudedArea(o[0]);
   checkExtrudedArea(o[1]);
 }
 
-core.List<api.Line> buildUnnamed1655() {
+core.List<api.Line> buildUnnamed1666() {
   final o = <api.Line>[];
   o.add(buildLine());
   o.add(buildLine());
   return o;
 }
 
-void checkUnnamed1655(core.List<api.Line> o) {
+void checkUnnamed1666(core.List<api.Line> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLine(o[0]);
   checkLine(o[1]);
 }
 
-core.List<api.ModeledVolume> buildUnnamed1656() {
+core.List<api.ModeledVolume> buildUnnamed1667() {
   final o = <api.ModeledVolume>[];
   o.add(buildModeledVolume());
   o.add(buildModeledVolume());
   return o;
 }
 
-void checkUnnamed1656(core.List<api.ModeledVolume> o) {
+void checkUnnamed1667(core.List<api.ModeledVolume> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkModeledVolume(o[0]);
   checkModeledVolume(o[1]);
@@ -392,10 +392,10 @@ api.Geometry buildGeometry() {
   final o = api.Geometry();
   buildCounterGeometry++;
   if (buildCounterGeometry < 3) {
-    o.areas = buildUnnamed1653();
-    o.extrudedAreas = buildUnnamed1654();
-    o.lines = buildUnnamed1655();
-    o.modeledVolumes = buildUnnamed1656();
+    o.areas = buildUnnamed1664();
+    o.extrudedAreas = buildUnnamed1665();
+    o.lines = buildUnnamed1666();
+    o.modeledVolumes = buildUnnamed1667();
   }
   buildCounterGeometry--;
   return o;
@@ -404,10 +404,10 @@ api.Geometry buildGeometry() {
 void checkGeometry(api.Geometry o) {
   buildCounterGeometry++;
   if (buildCounterGeometry < 3) {
-    checkUnnamed1653(o.areas!);
-    checkUnnamed1654(o.extrudedAreas!);
-    checkUnnamed1655(o.lines!);
-    checkUnnamed1656(o.modeledVolumes!);
+    checkUnnamed1664(o.areas!);
+    checkUnnamed1665(o.extrudedAreas!);
+    checkUnnamed1666(o.lines!);
+    checkUnnamed1667(o.modeledVolumes!);
   }
   buildCounterGeometry--;
 }
@@ -438,14 +438,14 @@ void checkLine(api.Line o) {
   buildCounterLine--;
 }
 
-core.List<api.TriangleStrip> buildUnnamed1657() {
+core.List<api.TriangleStrip> buildUnnamed1668() {
   final o = <api.TriangleStrip>[];
   o.add(buildTriangleStrip());
   o.add(buildTriangleStrip());
   return o;
 }
 
-void checkUnnamed1657(core.List<api.TriangleStrip> o) {
+void checkUnnamed1668(core.List<api.TriangleStrip> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTriangleStrip(o[0]);
   checkTriangleStrip(o[1]);
@@ -456,7 +456,7 @@ api.ModeledVolume buildModeledVolume() {
   final o = api.ModeledVolume();
   buildCounterModeledVolume++;
   if (buildCounterModeledVolume < 3) {
-    o.strips = buildUnnamed1657();
+    o.strips = buildUnnamed1668();
     o.vertexOffsets = buildVertex3DList();
   }
   buildCounterModeledVolume--;
@@ -466,7 +466,7 @@ api.ModeledVolume buildModeledVolume() {
 void checkModeledVolume(api.ModeledVolume o) {
   buildCounterModeledVolume++;
   if (buildCounterModeledVolume < 3) {
-    checkUnnamed1657(o.strips!);
+    checkUnnamed1668(o.strips!);
     checkVertex3DList(o.vertexOffsets!);
   }
   buildCounterModeledVolume--;
@@ -540,14 +540,14 @@ void checkRoadInfo(api.RoadInfo o) {
   buildCounterRoadInfo--;
 }
 
-core.List<core.int> buildUnnamed1658() {
+core.List<core.int> buildUnnamed1669() {
   final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
 }
 
-void checkUnnamed1658(core.List<core.int> o) {
+void checkUnnamed1669(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -564,7 +564,7 @@ api.Row buildRow() {
   final o = api.Row();
   buildCounterRow++;
   if (buildCounterRow < 3) {
-    o.altitudeDiffs = buildUnnamed1658();
+    o.altitudeDiffs = buildUnnamed1669();
   }
   buildCounterRow--;
   return o;
@@ -573,7 +573,7 @@ api.Row buildRow() {
 void checkRow(api.Row o) {
   buildCounterRow++;
   if (buildCounterRow < 3) {
-    checkUnnamed1658(o.altitudeDiffs!);
+    checkUnnamed1669(o.altitudeDiffs!);
   }
   buildCounterRow--;
 }
@@ -694,14 +694,14 @@ void checkTileCoordinates(api.TileCoordinates o) {
   buildCounterTileCoordinates--;
 }
 
-core.List<core.int> buildUnnamed1659() {
+core.List<core.int> buildUnnamed1670() {
   final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
 }
 
-void checkUnnamed1659(core.List<core.int> o) {
+void checkUnnamed1670(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -718,7 +718,7 @@ api.TriangleStrip buildTriangleStrip() {
   final o = api.TriangleStrip();
   buildCounterTriangleStrip++;
   if (buildCounterTriangleStrip < 3) {
-    o.vertexIndices = buildUnnamed1659();
+    o.vertexIndices = buildUnnamed1670();
   }
   buildCounterTriangleStrip--;
   return o;
@@ -727,19 +727,19 @@ api.TriangleStrip buildTriangleStrip() {
 void checkTriangleStrip(api.TriangleStrip o) {
   buildCounterTriangleStrip++;
   if (buildCounterTriangleStrip < 3) {
-    checkUnnamed1659(o.vertexIndices!);
+    checkUnnamed1670(o.vertexIndices!);
   }
   buildCounterTriangleStrip--;
 }
 
-core.List<core.int> buildUnnamed1660() {
+core.List<core.int> buildUnnamed1671() {
   final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
 }
 
-void checkUnnamed1660(core.List<core.int> o) {
+void checkUnnamed1671(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -751,14 +751,14 @@ void checkUnnamed1660(core.List<core.int> o) {
   );
 }
 
-core.List<core.int> buildUnnamed1661() {
+core.List<core.int> buildUnnamed1672() {
   final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
 }
 
-void checkUnnamed1661(core.List<core.int> o) {
+void checkUnnamed1672(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -775,8 +775,8 @@ api.Vertex2DList buildVertex2DList() {
   final o = api.Vertex2DList();
   buildCounterVertex2DList++;
   if (buildCounterVertex2DList < 3) {
-    o.xOffsets = buildUnnamed1660();
-    o.yOffsets = buildUnnamed1661();
+    o.xOffsets = buildUnnamed1671();
+    o.yOffsets = buildUnnamed1672();
   }
   buildCounterVertex2DList--;
   return o;
@@ -785,20 +785,20 @@ api.Vertex2DList buildVertex2DList() {
 void checkVertex2DList(api.Vertex2DList o) {
   buildCounterVertex2DList++;
   if (buildCounterVertex2DList < 3) {
-    checkUnnamed1660(o.xOffsets!);
-    checkUnnamed1661(o.yOffsets!);
+    checkUnnamed1671(o.xOffsets!);
+    checkUnnamed1672(o.yOffsets!);
   }
   buildCounterVertex2DList--;
 }
 
-core.List<core.int> buildUnnamed1662() {
+core.List<core.int> buildUnnamed1673() {
   final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
 }
 
-void checkUnnamed1662(core.List<core.int> o) {
+void checkUnnamed1673(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -810,14 +810,14 @@ void checkUnnamed1662(core.List<core.int> o) {
   );
 }
 
-core.List<core.int> buildUnnamed1663() {
+core.List<core.int> buildUnnamed1674() {
   final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
 }
 
-void checkUnnamed1663(core.List<core.int> o) {
+void checkUnnamed1674(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -829,14 +829,14 @@ void checkUnnamed1663(core.List<core.int> o) {
   );
 }
 
-core.List<core.int> buildUnnamed1664() {
+core.List<core.int> buildUnnamed1675() {
   final o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
 }
 
-void checkUnnamed1664(core.List<core.int> o) {
+void checkUnnamed1675(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -853,9 +853,9 @@ api.Vertex3DList buildVertex3DList() {
   final o = api.Vertex3DList();
   buildCounterVertex3DList++;
   if (buildCounterVertex3DList < 3) {
-    o.xOffsets = buildUnnamed1662();
-    o.yOffsets = buildUnnamed1663();
-    o.zOffsets = buildUnnamed1664();
+    o.xOffsets = buildUnnamed1673();
+    o.yOffsets = buildUnnamed1674();
+    o.zOffsets = buildUnnamed1675();
   }
   buildCounterVertex3DList--;
   return o;
@@ -864,21 +864,21 @@ api.Vertex3DList buildVertex3DList() {
 void checkVertex3DList(api.Vertex3DList o) {
   buildCounterVertex3DList++;
   if (buildCounterVertex3DList < 3) {
-    checkUnnamed1662(o.xOffsets!);
-    checkUnnamed1663(o.yOffsets!);
-    checkUnnamed1664(o.zOffsets!);
+    checkUnnamed1673(o.xOffsets!);
+    checkUnnamed1674(o.yOffsets!);
+    checkUnnamed1675(o.zOffsets!);
   }
   buildCounterVertex3DList--;
 }
 
-core.List<core.String> buildUnnamed1665() {
+core.List<core.String> buildUnnamed1676() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed1665(core.List<core.String> o) {
+void checkUnnamed1676(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1262,7 +1262,7 @@ void main() {
       final arg_clientInfo_userId = 'foo';
       final arg_maxElevationResolutionCells = 42;
       final arg_minElevationResolutionCells = 42;
-      final arg_terrainFormats = buildUnnamed1665();
+      final arg_terrainFormats = buildUnnamed1676();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;

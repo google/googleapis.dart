@@ -26,14 +26,14 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<api.AuditLogConfig> buildUnnamed8033() {
+core.List<api.AuditLogConfig> buildUnnamed8045() {
   final o = <api.AuditLogConfig>[];
   o.add(buildAuditLogConfig());
   o.add(buildAuditLogConfig());
   return o;
 }
 
-void checkUnnamed8033(core.List<api.AuditLogConfig> o) {
+void checkUnnamed8045(core.List<api.AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditLogConfig(o[0]);
   checkAuditLogConfig(o[1]);
@@ -44,7 +44,7 @@ api.AuditConfig buildAuditConfig() {
   final o = api.AuditConfig();
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
-    o.auditLogConfigs = buildUnnamed8033();
+    o.auditLogConfigs = buildUnnamed8045();
     o.service = 'foo';
   }
   buildCounterAuditConfig--;
@@ -54,7 +54,7 @@ api.AuditConfig buildAuditConfig() {
 void checkAuditConfig(api.AuditConfig o) {
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
-    checkUnnamed8033(o.auditLogConfigs!);
+    checkUnnamed8045(o.auditLogConfigs!);
     unittest.expect(
       o.service!,
       unittest.equals('foo'),
@@ -63,14 +63,14 @@ void checkAuditConfig(api.AuditConfig o) {
   buildCounterAuditConfig--;
 }
 
-core.List<core.String> buildUnnamed8034() {
+core.List<core.String> buildUnnamed8046() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed8034(core.List<core.String> o) {
+void checkUnnamed8046(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -87,7 +87,7 @@ api.AuditLogConfig buildAuditLogConfig() {
   final o = api.AuditLogConfig();
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    o.exemptedMembers = buildUnnamed8034();
+    o.exemptedMembers = buildUnnamed8046();
     o.logType = 'foo';
   }
   buildCounterAuditLogConfig--;
@@ -97,7 +97,7 @@ api.AuditLogConfig buildAuditLogConfig() {
 void checkAuditLogConfig(api.AuditLogConfig o) {
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    checkUnnamed8034(o.exemptedMembers!);
+    checkUnnamed8046(o.exemptedMembers!);
     unittest.expect(
       o.logType!,
       unittest.equals('foo'),
@@ -106,14 +106,14 @@ void checkAuditLogConfig(api.AuditLogConfig o) {
   buildCounterAuditLogConfig--;
 }
 
-core.List<core.String> buildUnnamed8035() {
+core.List<core.String> buildUnnamed8047() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed8035(core.List<core.String> o) {
+void checkUnnamed8047(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -131,7 +131,7 @@ api.Binding buildBinding() {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     o.condition = buildExpr();
-    o.members = buildUnnamed8035();
+    o.members = buildUnnamed8047();
     o.role = 'foo';
   }
   buildCounterBinding--;
@@ -142,7 +142,7 @@ void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     checkExpr(o.condition!);
-    checkUnnamed8035(o.members!);
+    checkUnnamed8047(o.members!);
     unittest.expect(
       o.role!,
       unittest.equals('foo'),
@@ -220,14 +220,14 @@ void checkGoogleLongrunningCancelOperationRequest(
   buildCounterGoogleLongrunningCancelOperationRequest--;
 }
 
-core.List<api.GoogleLongrunningOperation> buildUnnamed8036() {
+core.List<api.GoogleLongrunningOperation> buildUnnamed8048() {
   final o = <api.GoogleLongrunningOperation>[];
   o.add(buildGoogleLongrunningOperation());
   o.add(buildGoogleLongrunningOperation());
   return o;
 }
 
-void checkUnnamed8036(core.List<api.GoogleLongrunningOperation> o) {
+void checkUnnamed8048(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleLongrunningOperation(o[0]);
   checkGoogleLongrunningOperation(o[1]);
@@ -240,7 +240,7 @@ api.GoogleLongrunningListOperationsResponse
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed8036();
+    o.operations = buildUnnamed8048();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
@@ -254,12 +254,12 @@ void checkGoogleLongrunningListOperationsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed8036(o.operations!);
+    checkUnnamed8048(o.operations!);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed8037() {
+core.Map<core.String, core.Object> buildUnnamed8049() {
   final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -274,7 +274,7 @@ core.Map<core.String, core.Object> buildUnnamed8037() {
   return o;
 }
 
-void checkUnnamed8037(core.Map<core.String, core.Object> o) {
+void checkUnnamed8049(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -306,7 +306,7 @@ void checkUnnamed8037(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed8038() {
+core.Map<core.String, core.Object> buildUnnamed8050() {
   final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -321,7 +321,7 @@ core.Map<core.String, core.Object> buildUnnamed8038() {
   return o;
 }
 
-void checkUnnamed8038(core.Map<core.String, core.Object> o) {
+void checkUnnamed8050(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -360,9 +360,9 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed8037();
+    o.metadata = buildUnnamed8049();
     o.name = 'foo';
-    o.response = buildUnnamed8038();
+    o.response = buildUnnamed8050();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -373,17 +373,17 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkGoogleRpcStatus(o.error!);
-    checkUnnamed8037(o.metadata!);
+    checkUnnamed8049(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed8038(o.response!);
+    checkUnnamed8050(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed8039() {
+core.Map<core.String, core.Object> buildUnnamed8051() {
   final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -398,7 +398,7 @@ core.Map<core.String, core.Object> buildUnnamed8039() {
   return o;
 }
 
-void checkUnnamed8039(core.Map<core.String, core.Object> o) {
+void checkUnnamed8051(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -430,17 +430,17 @@ void checkUnnamed8039(core.Map<core.String, core.Object> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed8040() {
+core.List<core.Map<core.String, core.Object>> buildUnnamed8052() {
   final o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed8039());
-  o.add(buildUnnamed8039());
+  o.add(buildUnnamed8051());
+  o.add(buildUnnamed8051());
   return o;
 }
 
-void checkUnnamed8040(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed8052(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed8039(o[0]);
-  checkUnnamed8039(o[1]);
+  checkUnnamed8051(o[0]);
+  checkUnnamed8051(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -449,7 +449,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed8040();
+    o.details = buildUnnamed8052();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -463,7 +463,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed8040(o.details!);
+    checkUnnamed8052(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -472,14 +472,14 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
   buildCounterGoogleRpcStatus--;
 }
 
-core.Map<core.String, core.String> buildUnnamed8041() {
+core.Map<core.String, core.String> buildUnnamed8053() {
   final o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed8041(core.Map<core.String, core.String> o) {
+void checkUnnamed8053(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -491,14 +491,14 @@ void checkUnnamed8041(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed8042() {
+core.List<core.String> buildUnnamed8054() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed8042(core.List<core.String> o) {
+void checkUnnamed8054(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -517,9 +517,9 @@ api.Hub buildHub() {
   if (buildCounterHub < 3) {
     o.createTime = 'foo';
     o.description = 'foo';
-    o.labels = buildUnnamed8041();
+    o.labels = buildUnnamed8053();
     o.name = 'foo';
-    o.spokes = buildUnnamed8042();
+    o.spokes = buildUnnamed8054();
     o.state = 'foo';
     o.uniqueId = 'foo';
     o.updateTime = 'foo';
@@ -539,12 +539,12 @@ void checkHub(api.Hub o) {
       o.description!,
       unittest.equals('foo'),
     );
-    checkUnnamed8041(o.labels!);
+    checkUnnamed8053(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed8042(o.spokes!);
+    checkUnnamed8054(o.spokes!);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -561,27 +561,27 @@ void checkHub(api.Hub o) {
   buildCounterHub--;
 }
 
-core.List<api.Hub> buildUnnamed8043() {
+core.List<api.Hub> buildUnnamed8055() {
   final o = <api.Hub>[];
   o.add(buildHub());
   o.add(buildHub());
   return o;
 }
 
-void checkUnnamed8043(core.List<api.Hub> o) {
+void checkUnnamed8055(core.List<api.Hub> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHub(o[0]);
   checkHub(o[1]);
 }
 
-core.List<core.String> buildUnnamed8044() {
+core.List<core.String> buildUnnamed8056() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed8044(core.List<core.String> o) {
+void checkUnnamed8056(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -598,9 +598,9 @@ api.ListHubsResponse buildListHubsResponse() {
   final o = api.ListHubsResponse();
   buildCounterListHubsResponse++;
   if (buildCounterListHubsResponse < 3) {
-    o.hubs = buildUnnamed8043();
+    o.hubs = buildUnnamed8055();
     o.nextPageToken = 'foo';
-    o.unreachable = buildUnnamed8044();
+    o.unreachable = buildUnnamed8056();
   }
   buildCounterListHubsResponse--;
   return o;
@@ -609,24 +609,24 @@ api.ListHubsResponse buildListHubsResponse() {
 void checkListHubsResponse(api.ListHubsResponse o) {
   buildCounterListHubsResponse++;
   if (buildCounterListHubsResponse < 3) {
-    checkUnnamed8043(o.hubs!);
+    checkUnnamed8055(o.hubs!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed8044(o.unreachable!);
+    checkUnnamed8056(o.unreachable!);
   }
   buildCounterListHubsResponse--;
 }
 
-core.List<api.Location> buildUnnamed8045() {
+core.List<api.Location> buildUnnamed8057() {
   final o = <api.Location>[];
   o.add(buildLocation());
   o.add(buildLocation());
   return o;
 }
 
-void checkUnnamed8045(core.List<api.Location> o) {
+void checkUnnamed8057(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocation(o[0]);
   checkLocation(o[1]);
@@ -637,7 +637,7 @@ api.ListLocationsResponse buildListLocationsResponse() {
   final o = api.ListLocationsResponse();
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    o.locations = buildUnnamed8045();
+    o.locations = buildUnnamed8057();
     o.nextPageToken = 'foo';
   }
   buildCounterListLocationsResponse--;
@@ -647,7 +647,7 @@ api.ListLocationsResponse buildListLocationsResponse() {
 void checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    checkUnnamed8045(o.locations!);
+    checkUnnamed8057(o.locations!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -656,27 +656,27 @@ void checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse--;
 }
 
-core.List<api.Spoke> buildUnnamed8046() {
+core.List<api.Spoke> buildUnnamed8058() {
   final o = <api.Spoke>[];
   o.add(buildSpoke());
   o.add(buildSpoke());
   return o;
 }
 
-void checkUnnamed8046(core.List<api.Spoke> o) {
+void checkUnnamed8058(core.List<api.Spoke> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSpoke(o[0]);
   checkSpoke(o[1]);
 }
 
-core.List<core.String> buildUnnamed8047() {
+core.List<core.String> buildUnnamed8059() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed8047(core.List<core.String> o) {
+void checkUnnamed8059(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -694,8 +694,8 @@ api.ListSpokesResponse buildListSpokesResponse() {
   buildCounterListSpokesResponse++;
   if (buildCounterListSpokesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.spokes = buildUnnamed8046();
-    o.unreachable = buildUnnamed8047();
+    o.spokes = buildUnnamed8058();
+    o.unreachable = buildUnnamed8059();
   }
   buildCounterListSpokesResponse--;
   return o;
@@ -708,20 +708,20 @@ void checkListSpokesResponse(api.ListSpokesResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed8046(o.spokes!);
-    checkUnnamed8047(o.unreachable!);
+    checkUnnamed8058(o.spokes!);
+    checkUnnamed8059(o.unreachable!);
   }
   buildCounterListSpokesResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed8048() {
+core.Map<core.String, core.String> buildUnnamed8060() {
   final o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed8048(core.Map<core.String, core.String> o) {
+void checkUnnamed8060(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -733,7 +733,7 @@ void checkUnnamed8048(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object> buildUnnamed8049() {
+core.Map<core.String, core.Object> buildUnnamed8061() {
   final o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -748,7 +748,7 @@ core.Map<core.String, core.Object> buildUnnamed8049() {
   return o;
 }
 
-void checkUnnamed8049(core.Map<core.String, core.Object> o) {
+void checkUnnamed8061(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -786,9 +786,9 @@ api.Location buildLocation() {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     o.displayName = 'foo';
-    o.labels = buildUnnamed8048();
+    o.labels = buildUnnamed8060();
     o.locationId = 'foo';
-    o.metadata = buildUnnamed8049();
+    o.metadata = buildUnnamed8061();
     o.name = 'foo';
   }
   buildCounterLocation--;
@@ -802,12 +802,12 @@ void checkLocation(api.Location o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed8048(o.labels!);
+    checkUnnamed8060(o.labels!);
     unittest.expect(
       o.locationId!,
       unittest.equals('foo'),
     );
-    checkUnnamed8049(o.metadata!);
+    checkUnnamed8061(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -865,27 +865,27 @@ void checkOperationMetadata(api.OperationMetadata o) {
   buildCounterOperationMetadata--;
 }
 
-core.List<api.AuditConfig> buildUnnamed8050() {
+core.List<api.AuditConfig> buildUnnamed8062() {
   final o = <api.AuditConfig>[];
   o.add(buildAuditConfig());
   o.add(buildAuditConfig());
   return o;
 }
 
-void checkUnnamed8050(core.List<api.AuditConfig> o) {
+void checkUnnamed8062(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditConfig(o[0]);
   checkAuditConfig(o[1]);
 }
 
-core.List<api.Binding> buildUnnamed8051() {
+core.List<api.Binding> buildUnnamed8063() {
   final o = <api.Binding>[];
   o.add(buildBinding());
   o.add(buildBinding());
   return o;
 }
 
-void checkUnnamed8051(core.List<api.Binding> o) {
+void checkUnnamed8063(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -896,8 +896,8 @@ api.Policy buildPolicy() {
   final o = api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.auditConfigs = buildUnnamed8050();
-    o.bindings = buildUnnamed8051();
+    o.auditConfigs = buildUnnamed8062();
+    o.bindings = buildUnnamed8063();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -908,8 +908,8 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed8050(o.auditConfigs!);
-    checkUnnamed8051(o.bindings!);
+    checkUnnamed8062(o.auditConfigs!);
+    checkUnnamed8063(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -978,14 +978,14 @@ void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-core.Map<core.String, core.String> buildUnnamed8052() {
+core.Map<core.String, core.String> buildUnnamed8064() {
   final o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed8052(core.Map<core.String, core.String> o) {
+void checkUnnamed8064(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -997,14 +997,14 @@ void checkUnnamed8052(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed8053() {
+core.List<core.String> buildUnnamed8065() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed8053(core.List<core.String> o) {
+void checkUnnamed8065(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1016,27 +1016,27 @@ void checkUnnamed8053(core.List<core.String> o) {
   );
 }
 
-core.List<api.RouterApplianceInstance> buildUnnamed8054() {
+core.List<api.RouterApplianceInstance> buildUnnamed8066() {
   final o = <api.RouterApplianceInstance>[];
   o.add(buildRouterApplianceInstance());
   o.add(buildRouterApplianceInstance());
   return o;
 }
 
-void checkUnnamed8054(core.List<api.RouterApplianceInstance> o) {
+void checkUnnamed8066(core.List<api.RouterApplianceInstance> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRouterApplianceInstance(o[0]);
   checkRouterApplianceInstance(o[1]);
 }
 
-core.List<core.String> buildUnnamed8055() {
+core.List<core.String> buildUnnamed8067() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed8055(core.List<core.String> o) {
+void checkUnnamed8067(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1056,10 +1056,10 @@ api.Spoke buildSpoke() {
     o.createTime = 'foo';
     o.description = 'foo';
     o.hub = 'foo';
-    o.labels = buildUnnamed8052();
-    o.linkedInterconnectAttachments = buildUnnamed8053();
-    o.linkedRouterApplianceInstances = buildUnnamed8054();
-    o.linkedVpnTunnels = buildUnnamed8055();
+    o.labels = buildUnnamed8064();
+    o.linkedInterconnectAttachments = buildUnnamed8065();
+    o.linkedRouterApplianceInstances = buildUnnamed8066();
+    o.linkedVpnTunnels = buildUnnamed8067();
     o.name = 'foo';
     o.state = 'foo';
     o.uniqueId = 'foo';
@@ -1084,10 +1084,10 @@ void checkSpoke(api.Spoke o) {
       o.hub!,
       unittest.equals('foo'),
     );
-    checkUnnamed8052(o.labels!);
-    checkUnnamed8053(o.linkedInterconnectAttachments!);
-    checkUnnamed8054(o.linkedRouterApplianceInstances!);
-    checkUnnamed8055(o.linkedVpnTunnels!);
+    checkUnnamed8064(o.labels!);
+    checkUnnamed8065(o.linkedInterconnectAttachments!);
+    checkUnnamed8066(o.linkedRouterApplianceInstances!);
+    checkUnnamed8067(o.linkedVpnTunnels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1108,14 +1108,14 @@ void checkSpoke(api.Spoke o) {
   buildCounterSpoke--;
 }
 
-core.List<core.String> buildUnnamed8056() {
+core.List<core.String> buildUnnamed8068() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed8056(core.List<core.String> o) {
+void checkUnnamed8068(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1132,7 +1132,7 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
   final o = api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed8056();
+    o.permissions = buildUnnamed8068();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -1141,19 +1141,19 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
 void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed8056(o.permissions!);
+    checkUnnamed8068(o.permissions!);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed8057() {
+core.List<core.String> buildUnnamed8069() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed8057(core.List<core.String> o) {
+void checkUnnamed8069(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1170,7 +1170,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed8057();
+    o.permissions = buildUnnamed8069();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -1179,7 +1179,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed8057(o.permissions!);
+    checkUnnamed8069(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }

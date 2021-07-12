@@ -21,6 +21,7 @@
 /// Create an instance of [SQLAdminApi] to access these resources:
 ///
 /// - [BackupRunsResource]
+/// - [ConnectResource]
 /// - [DatabasesResource]
 /// - [FlagsResource]
 /// - [InstancesResource]
@@ -57,6 +58,7 @@ class SQLAdminApi {
   final commons.ApiRequester _requester;
 
   BackupRunsResource get backupRuns => BackupRunsResource(_requester);
+  ConnectResource get connect => ConnectResource(_requester);
   DatabasesResource get databases => DatabasesResource(_requester);
   FlagsResource get flags => FlagsResource(_requester);
   InstancesResource get instances => InstancesResource(_requester);
@@ -217,14 +219,16 @@ class BackupRunsResource {
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists all backup runs associated with a given instance and configuration
-  /// in the reverse chronological order of the backup initiation time.
+  /// Lists all backup runs associated with the project or a given instance and
+  /// configuration in the reverse chronological order of the backup initiation
+  /// time.
   ///
   /// Request parameters:
   ///
   /// [project] - Project ID of the project that contains the instance.
   ///
-  /// [instance] - Cloud SQL instance ID. This does not include the project ID.
+  /// [instance] - Cloud SQL instance ID, or "-" for all instances. This does
+  /// not include the project ID.
   ///
   /// [maxResults] - Maximum number of backup runs per response.
   ///
@@ -266,6 +270,110 @@ class BackupRunsResource {
       queryParams: _queryParams,
     );
     return BackupRunsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ConnectResource {
+  final commons.ApiRequester _requester;
+
+  ConnectResource(commons.ApiRequester client) : _requester = client;
+
+  /// Generates a short-lived X509 certificate containing the provided public
+  /// key and signed by a private key specific to the target instance.
+  ///
+  /// Users may use the certificate to authenticate as themselves when
+  /// connecting to the database.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID of the project that contains the instance.
+  ///
+  /// [instance] - Cloud SQL instance ID. This does not include the project ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GenerateEphemeralCertResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GenerateEphemeralCertResponse> generateEphemeralCert(
+    GenerateEphemeralCertRequest request,
+    core.String project,
+    core.String instance, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request.toJson());
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'sql/v1beta4/projects/' +
+        commons.escapeVariable('$project') +
+        '/instances/' +
+        commons.escapeVariable('$instance') +
+        ':generateEphemeralCert';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GenerateEphemeralCertResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves connect settings about a Cloud SQL instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID of the project that contains the instance.
+  ///
+  /// [instance] - Cloud SQL instance ID. This does not include the project ID.
+  ///
+  /// [readTime] - Optional. Optional snapshot read timestamp to trade freshness
+  /// for performance.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ConnectSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ConnectSettings> get(
+    core.String project,
+    core.String instance, {
+    core.String? readTime,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (readTime != null) 'readTime': [readTime],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'sql/v1beta4/projects/' +
+        commons.escapeVariable('$project') +
+        '/instances/' +
+        commons.escapeVariable('$instance') +
+        '/connectSettings';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ConnectSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2431,7 +2539,7 @@ class BackupConfiguration {
   /// Location of the backup
   core.String? location;
 
-  /// Reserved for future use.
+  /// (Postgres only) Whether point in time recovery is enabled.
   core.bool? pointInTimeRecoveryEnabled;
 
   /// Reserved for future use.
@@ -2847,7 +2955,8 @@ class CloneContext {
   /// Reserved for future use.
   core.String? pitrTimestampMs;
 
-  /// Reserved for future use.
+  /// Timestamp, if specified, identifies the time to which the source instance
+  /// is cloned.
   core.String? pointInTime;
 
   CloneContext({
@@ -2884,6 +2993,106 @@ class CloneContext {
         if (kind != null) 'kind': kind!,
         if (pitrTimestampMs != null) 'pitrTimestampMs': pitrTimestampMs!,
         if (pointInTime != null) 'pointInTime': pointInTime!,
+      };
+}
+
+/// Connect settings retrieval response.
+class ConnectSettings {
+  /// **SECOND_GEN**: Cloud SQL database instance.
+  ///
+  /// **EXTERNAL**: A database server that is not managed by Google. This
+  /// property is read-only; use the **tier** property in the **settings**
+  /// object to determine the database type.
+  /// Possible string values are:
+  /// - "SQL_BACKEND_TYPE_UNSPECIFIED" : This is an unknown backend type for
+  /// instance.
+  /// - "FIRST_GEN" : V1 speckle instance.
+  /// - "SECOND_GEN" : V2 speckle instance.
+  /// - "EXTERNAL" : On premises instance.
+  core.String? backendType;
+
+  /// The database engine type and version.
+  ///
+  /// The **databaseVersion** field cannot be changed after instance creation.
+  /// MySQL instances: **MYSQL_8_0**, **MYSQL_5_7** (default), or **MYSQL_5_6**.
+  /// PostgreSQL instances: **POSTGRES_9_6**, **POSTGRES_10**, **POSTGRES_11**
+  /// or **POSTGRES_12** (default). SQL Server instances:
+  /// **SQLSERVER_2017_STANDARD** (default), **SQLSERVER_2017_ENTERPRISE**,
+  /// **SQLSERVER_2017_EXPRESS**, or **SQLSERVER_2017_WEB**.
+  /// Possible string values are:
+  /// - "SQL_DATABASE_VERSION_UNSPECIFIED" : This is an unknown database
+  /// version.
+  /// - "MYSQL_5_1" : The database version is MySQL 5.1.
+  /// - "MYSQL_5_5" : The database version is MySQL 5.5.
+  /// - "MYSQL_5_6" : The database version is MySQL 5.6.
+  /// - "MYSQL_5_7" : The database version is MySQL 5.7.
+  /// - "POSTGRES_9_6" : The database version is PostgreSQL 9.6.
+  /// - "POSTGRES_11" : The database version is PostgreSQL 11.
+  /// - "SQLSERVER_2017_STANDARD" : The database version is SQL Server 2017
+  /// Standard.
+  /// - "SQLSERVER_2017_ENTERPRISE" : The database version is SQL Server 2017
+  /// Enterprise.
+  /// - "SQLSERVER_2017_EXPRESS" : The database version is SQL Server 2017
+  /// Express.
+  /// - "SQLSERVER_2017_WEB" : The database version is SQL Server 2017 Web.
+  /// - "POSTGRES_10" : The database version is PostgreSQL 10.
+  /// - "POSTGRES_12" : The database version is PostgreSQL 12.
+  /// - "MYSQL_8_0" : The database version is MySQL 8.
+  /// - "POSTGRES_13" : The database version is PostgreSQL 13.
+  /// - "SQLSERVER_2019_STANDARD" : The database version is SQL Server 2019
+  /// Standard.
+  /// - "SQLSERVER_2019_ENTERPRISE" : The database version is SQL Server 2019
+  /// Enterprise.
+  /// - "SQLSERVER_2019_EXPRESS" : The database version is SQL Server 2019
+  /// Express.
+  /// - "SQLSERVER_2019_WEB" : The database version is SQL Server 2019 Web.
+  core.String? databaseVersion;
+
+  /// The assigned IP addresses for the instance.
+  core.List<IpMapping>? ipAddresses;
+
+  /// This is always `sql#connectSettings`.
+  core.String? kind;
+
+  /// SSL configuration.
+  SslCert? serverCaCert;
+
+  ConnectSettings({
+    this.backendType,
+    this.databaseVersion,
+    this.ipAddresses,
+    this.kind,
+    this.serverCaCert,
+  });
+
+  ConnectSettings.fromJson(core.Map _json)
+      : this(
+          backendType: _json.containsKey('backendType')
+              ? _json['backendType'] as core.String
+              : null,
+          databaseVersion: _json.containsKey('databaseVersion')
+              ? _json['databaseVersion'] as core.String
+              : null,
+          ipAddresses: _json.containsKey('ipAddresses')
+              ? (_json['ipAddresses'] as core.List)
+                  .map<IpMapping>((value) => IpMapping.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          serverCaCert: _json.containsKey('serverCaCert')
+              ? SslCert.fromJson(
+                  _json['serverCaCert'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backendType != null) 'backendType': backendType!,
+        if (databaseVersion != null) 'databaseVersion': databaseVersion!,
+        if (ipAddresses != null)
+          'ipAddresses': ipAddresses!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (serverCaCert != null) 'serverCaCert': serverCaCert!.toJson(),
       };
 }
 
@@ -4116,6 +4325,69 @@ class FlagsListResponse {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
+      };
+}
+
+/// Ephemeral certificate creation request.
+class GenerateEphemeralCertRequest {
+  /// Access token to include in the signed certificate.
+  ///
+  /// Optional.
+  core.String? accessToken;
+
+  /// PEM encoded public key to include in the signed certificate.
+  core.String? publicKey;
+
+  /// Optional snapshot read timestamp to trade freshness for performance.
+  ///
+  /// Optional.
+  core.String? readTime;
+
+  GenerateEphemeralCertRequest({
+    this.accessToken,
+    this.publicKey,
+    this.readTime,
+  });
+
+  GenerateEphemeralCertRequest.fromJson(core.Map _json)
+      : this(
+          accessToken: _json.containsKey('access_token')
+              ? _json['access_token'] as core.String
+              : null,
+          publicKey: _json.containsKey('public_key')
+              ? _json['public_key'] as core.String
+              : null,
+          readTime: _json.containsKey('readTime')
+              ? _json['readTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessToken != null) 'access_token': accessToken!,
+        if (publicKey != null) 'public_key': publicKey!,
+        if (readTime != null) 'readTime': readTime!,
+      };
+}
+
+/// Ephemeral certificate creation request.
+class GenerateEphemeralCertResponse {
+  /// Generated cert
+  SslCert? ephemeralCert;
+
+  GenerateEphemeralCertResponse({
+    this.ephemeralCert,
+  });
+
+  GenerateEphemeralCertResponse.fromJson(core.Map _json)
+      : this(
+          ephemeralCert: _json.containsKey('ephemeralCert')
+              ? SslCert.fromJson(
+                  _json['ephemeralCert'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ephemeralCert != null) 'ephemeralCert': ephemeralCert!.toJson(),
       };
 }
 
@@ -6070,12 +6342,16 @@ class SqlScheduledMaintenance {
   /// If the scheduled maintenance can be rescheduled.
   core.bool? canReschedule;
 
+  /// Maintenance cannot be rescheduled to start beyond this deadline.
+  core.String? scheduleDeadlineTime;
+
   /// The start time of any upcoming scheduled maintenance for this instance.
   core.String? startTime;
 
   SqlScheduledMaintenance({
     this.canDefer,
     this.canReschedule,
+    this.scheduleDeadlineTime,
     this.startTime,
   });
 
@@ -6087,6 +6363,9 @@ class SqlScheduledMaintenance {
           canReschedule: _json.containsKey('canReschedule')
               ? _json['canReschedule'] as core.bool
               : null,
+          scheduleDeadlineTime: _json.containsKey('scheduleDeadlineTime')
+              ? _json['scheduleDeadlineTime'] as core.String
+              : null,
           startTime: _json.containsKey('startTime')
               ? _json['startTime'] as core.String
               : null,
@@ -6095,6 +6374,8 @@ class SqlScheduledMaintenance {
   core.Map<core.String, core.dynamic> toJson() => {
         if (canDefer != null) 'canDefer': canDefer!,
         if (canReschedule != null) 'canReschedule': canReschedule!,
+        if (scheduleDeadlineTime != null)
+          'scheduleDeadlineTime': scheduleDeadlineTime!,
         if (startTime != null) 'startTime': startTime!,
       };
 }

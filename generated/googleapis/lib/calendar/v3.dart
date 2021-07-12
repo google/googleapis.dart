@@ -3446,7 +3446,7 @@ class ConferenceSolutionKey {
   /// The possible values are:
   /// - "eventHangout" for Hangouts for consumers (http://hangouts.google.com)
   /// - "eventNamedHangout" for classic Hangouts for Google Workspace users
-  /// (http://hangouts.google.com)
+  /// (deprecated; http://hangouts.google.com)
   /// - "hangoutsMeet" for Google Meet (http://meet.google.com)
   /// - "addOn" for 3P conference providers
   core.String? type;

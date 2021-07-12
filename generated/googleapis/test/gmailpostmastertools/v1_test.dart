@@ -117,14 +117,14 @@ void checkFeedbackLoop(api.FeedbackLoop o) {
   buildCounterFeedbackLoop--;
 }
 
-core.List<core.String> buildUnnamed6124() {
+core.List<core.String> buildUnnamed6136() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6124(core.List<core.String> o) {
+void checkUnnamed6136(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -143,7 +143,7 @@ api.IpReputation buildIpReputation() {
   if (buildCounterIpReputation < 3) {
     o.ipCount = 'foo';
     o.reputation = 'foo';
-    o.sampleIps = buildUnnamed6124();
+    o.sampleIps = buildUnnamed6136();
   }
   buildCounterIpReputation--;
   return o;
@@ -160,19 +160,19 @@ void checkIpReputation(api.IpReputation o) {
       o.reputation!,
       unittest.equals('foo'),
     );
-    checkUnnamed6124(o.sampleIps!);
+    checkUnnamed6136(o.sampleIps!);
   }
   buildCounterIpReputation--;
 }
 
-core.List<api.Domain> buildUnnamed6125() {
+core.List<api.Domain> buildUnnamed6137() {
   final o = <api.Domain>[];
   o.add(buildDomain());
   o.add(buildDomain());
   return o;
 }
 
-void checkUnnamed6125(core.List<api.Domain> o) {
+void checkUnnamed6137(core.List<api.Domain> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDomain(o[0]);
   checkDomain(o[1]);
@@ -183,7 +183,7 @@ api.ListDomainsResponse buildListDomainsResponse() {
   final o = api.ListDomainsResponse();
   buildCounterListDomainsResponse++;
   if (buildCounterListDomainsResponse < 3) {
-    o.domains = buildUnnamed6125();
+    o.domains = buildUnnamed6137();
     o.nextPageToken = 'foo';
   }
   buildCounterListDomainsResponse--;
@@ -193,7 +193,7 @@ api.ListDomainsResponse buildListDomainsResponse() {
 void checkListDomainsResponse(api.ListDomainsResponse o) {
   buildCounterListDomainsResponse++;
   if (buildCounterListDomainsResponse < 3) {
-    checkUnnamed6125(o.domains!);
+    checkUnnamed6137(o.domains!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -202,14 +202,14 @@ void checkListDomainsResponse(api.ListDomainsResponse o) {
   buildCounterListDomainsResponse--;
 }
 
-core.List<api.TrafficStats> buildUnnamed6126() {
+core.List<api.TrafficStats> buildUnnamed6138() {
   final o = <api.TrafficStats>[];
   o.add(buildTrafficStats());
   o.add(buildTrafficStats());
   return o;
 }
 
-void checkUnnamed6126(core.List<api.TrafficStats> o) {
+void checkUnnamed6138(core.List<api.TrafficStats> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrafficStats(o[0]);
   checkTrafficStats(o[1]);
@@ -221,7 +221,7 @@ api.ListTrafficStatsResponse buildListTrafficStatsResponse() {
   buildCounterListTrafficStatsResponse++;
   if (buildCounterListTrafficStatsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.trafficStats = buildUnnamed6126();
+    o.trafficStats = buildUnnamed6138();
   }
   buildCounterListTrafficStatsResponse--;
   return o;
@@ -234,45 +234,45 @@ void checkListTrafficStatsResponse(api.ListTrafficStatsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed6126(o.trafficStats!);
+    checkUnnamed6138(o.trafficStats!);
   }
   buildCounterListTrafficStatsResponse--;
 }
 
-core.List<api.DeliveryError> buildUnnamed6127() {
+core.List<api.DeliveryError> buildUnnamed6139() {
   final o = <api.DeliveryError>[];
   o.add(buildDeliveryError());
   o.add(buildDeliveryError());
   return o;
 }
 
-void checkUnnamed6127(core.List<api.DeliveryError> o) {
+void checkUnnamed6139(core.List<api.DeliveryError> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDeliveryError(o[0]);
   checkDeliveryError(o[1]);
 }
 
-core.List<api.IpReputation> buildUnnamed6128() {
+core.List<api.IpReputation> buildUnnamed6140() {
   final o = <api.IpReputation>[];
   o.add(buildIpReputation());
   o.add(buildIpReputation());
   return o;
 }
 
-void checkUnnamed6128(core.List<api.IpReputation> o) {
+void checkUnnamed6140(core.List<api.IpReputation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkIpReputation(o[0]);
   checkIpReputation(o[1]);
 }
 
-core.List<api.FeedbackLoop> buildUnnamed6129() {
+core.List<api.FeedbackLoop> buildUnnamed6141() {
   final o = <api.FeedbackLoop>[];
   o.add(buildFeedbackLoop());
   o.add(buildFeedbackLoop());
   return o;
 }
 
-void checkUnnamed6129(core.List<api.FeedbackLoop> o) {
+void checkUnnamed6141(core.List<api.FeedbackLoop> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFeedbackLoop(o[0]);
   checkFeedbackLoop(o[1]);
@@ -283,15 +283,15 @@ api.TrafficStats buildTrafficStats() {
   final o = api.TrafficStats();
   buildCounterTrafficStats++;
   if (buildCounterTrafficStats < 3) {
-    o.deliveryErrors = buildUnnamed6127();
+    o.deliveryErrors = buildUnnamed6139();
     o.dkimSuccessRatio = 42.0;
     o.dmarcSuccessRatio = 42.0;
     o.domainReputation = 'foo';
     o.inboundEncryptionRatio = 42.0;
-    o.ipReputations = buildUnnamed6128();
+    o.ipReputations = buildUnnamed6140();
     o.name = 'foo';
     o.outboundEncryptionRatio = 42.0;
-    o.spammyFeedbackLoops = buildUnnamed6129();
+    o.spammyFeedbackLoops = buildUnnamed6141();
     o.spfSuccessRatio = 42.0;
     o.userReportedSpamRatio = 42.0;
   }
@@ -302,7 +302,7 @@ api.TrafficStats buildTrafficStats() {
 void checkTrafficStats(api.TrafficStats o) {
   buildCounterTrafficStats++;
   if (buildCounterTrafficStats < 3) {
-    checkUnnamed6127(o.deliveryErrors!);
+    checkUnnamed6139(o.deliveryErrors!);
     unittest.expect(
       o.dkimSuccessRatio!,
       unittest.equals(42.0),
@@ -319,7 +319,7 @@ void checkTrafficStats(api.TrafficStats o) {
       o.inboundEncryptionRatio!,
       unittest.equals(42.0),
     );
-    checkUnnamed6128(o.ipReputations!);
+    checkUnnamed6140(o.ipReputations!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -328,7 +328,7 @@ void checkTrafficStats(api.TrafficStats o) {
       o.outboundEncryptionRatio!,
       unittest.equals(42.0),
     );
-    checkUnnamed6129(o.spammyFeedbackLoops!);
+    checkUnnamed6141(o.spammyFeedbackLoops!);
     unittest.expect(
       o.spfSuccessRatio!,
       unittest.equals(42.0),

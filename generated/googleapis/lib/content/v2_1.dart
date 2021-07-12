@@ -454,6 +454,9 @@ class AccountsResource {
   /// [maxResults] - The maximum number of accounts to return in the response,
   /// used for paging.
   ///
+  /// [name] - If set, only the accounts with the given name (case sensitive)
+  /// will be returned.
+  ///
   /// [pageToken] - The token returned by the previous request.
   ///
   /// [view] - Controls which fields will be populated. Acceptable values are:
@@ -476,6 +479,7 @@ class AccountsResource {
     core.String merchantId, {
     core.String? label,
     core.int? maxResults,
+    core.String? name,
     core.String? pageToken,
     core.String? view,
     core.String? $fields,
@@ -483,6 +487,7 @@ class AccountsResource {
     final _queryParams = <core.String, core.List<core.String>>{
       if (label != null) 'label': [label],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (name != null) 'name': [name],
       if (pageToken != null) 'pageToken': [pageToken],
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
@@ -1157,6 +1162,9 @@ class AccountstatusesResource {
   /// [maxResults] - The maximum number of account statuses to return in the
   /// response, used for paging.
   ///
+  /// [name] - If set, only the accounts with the given name (case sensitive)
+  /// will be returned.
+  ///
   /// [pageToken] - The token returned by the previous request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1173,12 +1181,14 @@ class AccountstatusesResource {
     core.String merchantId, {
     core.List<core.String>? destinations,
     core.int? maxResults,
+    core.String? name,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (destinations != null) 'destinations': destinations,
       if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (name != null) 'name': [name],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
@@ -7397,6 +7407,11 @@ class ShippingsettingsResource {
 /// fully operational. The methods delete, insert, and update require the admin
 /// role.
 class Account {
+  /// How the account is managed.
+  ///
+  /// Acceptable values are: - "`manual`" - "`automatic`"
+  core.String? accountManagement;
+
   /// Linked Ads accounts that are active or pending approval.
   ///
   /// To create a new link request, add a new link with status `active` to the
@@ -7460,6 +7475,7 @@ class Account {
   core.List<AccountYouTubeChannelLink>? youtubeChannelLinks;
 
   Account({
+    this.accountManagement,
     this.adsLinks,
     this.adultContent,
     this.automaticLabelIds,
@@ -7478,6 +7494,9 @@ class Account {
 
   Account.fromJson(core.Map _json)
       : this(
+          accountManagement: _json.containsKey('accountManagement')
+              ? _json['accountManagement'] as core.String
+              : null,
           adsLinks: _json.containsKey('adsLinks')
               ? (_json['adsLinks'] as core.List)
                   .map<AccountAdsLink>((value) => AccountAdsLink.fromJson(
@@ -7533,6 +7552,7 @@ class Account {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (accountManagement != null) 'accountManagement': accountManagement!,
         if (adsLinks != null)
           'adsLinks': adsLinks!.map((value) => value.toJson()).toList(),
         if (adultContent != null) 'adultContent': adultContent!,
@@ -7972,6 +7992,11 @@ class AccountStatus {
   /// A list of account level issues.
   core.List<AccountStatusAccountLevelIssue>? accountLevelIssues;
 
+  /// How the account is managed.
+  ///
+  /// Acceptable values are: - "`manual`" - "`automatic`"
+  core.String? accountManagement;
+
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "`content#accountStatus`"
@@ -7988,6 +8013,7 @@ class AccountStatus {
   AccountStatus({
     this.accountId,
     this.accountLevelIssues,
+    this.accountManagement,
     this.kind,
     this.products,
     this.websiteClaimed,
@@ -8004,6 +8030,9 @@ class AccountStatus {
                       AccountStatusAccountLevelIssue.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          accountManagement: _json.containsKey('accountManagement')
+              ? _json['accountManagement'] as core.String
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           products: _json.containsKey('products')
@@ -8023,6 +8052,7 @@ class AccountStatus {
         if (accountLevelIssues != null)
           'accountLevelIssues':
               accountLevelIssues!.map((value) => value.toJson()).toList(),
+        if (accountManagement != null) 'accountManagement': accountManagement!,
         if (kind != null) 'kind': kind!,
         if (products != null)
           'products': products!.map((value) => value.toJson()).toList(),
@@ -27110,8 +27140,12 @@ class UnitInvoice {
   /// Additional charges for a unit, e.g. shipping costs.
   core.List<UnitInvoiceAdditionalCharge>? additionalCharges;
 
-  /// Pre-tax or post-tax price of the unit depending on the locality of the
+  /// Pre-tax or post-tax price of one unit depending on the locality of the
   /// order.
+  ///
+  /// *Note:* Invoicing works on a per unit basis. The `unitPrice` is the price
+  /// of a single unit, and will be multiplied by the number of entries in
+  /// `shipmentUnitId`.
   ///
   /// Required.
   Price? unitPrice;
@@ -27159,7 +27193,11 @@ class UnitInvoice {
 }
 
 class UnitInvoiceAdditionalCharge {
-  /// Amount of the additional charge.
+  /// Amount of the additional charge per unit.
+  ///
+  /// *Note:* Invoicing works on a per unit bases. The `additionalChargeAmount`
+  /// is the amount charged per unit, and will be multiplied by the number of
+  /// entries in `shipmentUnitID`.
   ///
   /// Required.
   Amount? additionalChargeAmount;

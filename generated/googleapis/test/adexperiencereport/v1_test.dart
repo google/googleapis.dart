@@ -26,14 +26,14 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<core.String> buildUnnamed3432() {
+core.List<core.String> buildUnnamed3443() {
   final o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3432(core.List<core.String> o) {
+void checkUnnamed3443(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -54,7 +54,7 @@ api.PlatformSummary buildPlatformSummary() {
     o.enforcementTime = 'foo';
     o.filterStatus = 'foo';
     o.lastChangeTime = 'foo';
-    o.region = buildUnnamed3432();
+    o.region = buildUnnamed3443();
     o.reportUrl = 'foo';
     o.underReview = true;
   }
@@ -81,7 +81,7 @@ void checkPlatformSummary(api.PlatformSummary o) {
       o.lastChangeTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed3432(o.region!);
+    checkUnnamed3443(o.region!);
     unittest.expect(
       o.reportUrl!,
       unittest.equals('foo'),
@@ -117,14 +117,14 @@ void checkSiteSummaryResponse(api.SiteSummaryResponse o) {
   buildCounterSiteSummaryResponse--;
 }
 
-core.List<api.SiteSummaryResponse> buildUnnamed3433() {
+core.List<api.SiteSummaryResponse> buildUnnamed3444() {
   final o = <api.SiteSummaryResponse>[];
   o.add(buildSiteSummaryResponse());
   o.add(buildSiteSummaryResponse());
   return o;
 }
 
-void checkUnnamed3433(core.List<api.SiteSummaryResponse> o) {
+void checkUnnamed3444(core.List<api.SiteSummaryResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSiteSummaryResponse(o[0]);
   checkSiteSummaryResponse(o[1]);
@@ -135,7 +135,7 @@ api.ViolatingSitesResponse buildViolatingSitesResponse() {
   final o = api.ViolatingSitesResponse();
   buildCounterViolatingSitesResponse++;
   if (buildCounterViolatingSitesResponse < 3) {
-    o.violatingSites = buildUnnamed3433();
+    o.violatingSites = buildUnnamed3444();
   }
   buildCounterViolatingSitesResponse--;
   return o;
@@ -144,7 +144,7 @@ api.ViolatingSitesResponse buildViolatingSitesResponse() {
 void checkViolatingSitesResponse(api.ViolatingSitesResponse o) {
   buildCounterViolatingSitesResponse++;
   if (buildCounterViolatingSitesResponse < 3) {
-    checkUnnamed3433(o.violatingSites!);
+    checkUnnamed3444(o.violatingSites!);
   }
   buildCounterViolatingSitesResponse--;
 }
